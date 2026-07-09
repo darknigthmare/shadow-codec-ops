@@ -4,7 +4,7 @@ Base de projet privée pour un **simulateur Codec tactique** avec un module **Si
 
 ## Version actuelle
 
-`0.8.0` — Passe 9 : **VR Missions + rewards tapes**.
+`1.0.0` — Passe 11 : **Side Ops Mission Pack 2 / multi-missions**.
 
 ## Contenu actuel
 
@@ -30,10 +30,18 @@ Base de projet privée pour un **simulateur Codec tactique** avec un module **Si
 - Catégories Tape Archive : Mission, Intel, Character, Mother Base, Weapon, Anomaly
 - Import/export JSON des tapes custom et export de la progression/favoris
 - **VR Missions** : sélection de défis courts, Time Attack, No Alert, Weapon Training, CQC, Surveillance, Boss Challenge
+- **Lore Database** : personnages, organisations, lieux, fréquences, missions, items, ennemis, boss, tapes, VR et systèmes
+- Recherche Lore globale + filtres par catégorie, ère et couche canon/simulation/gameplay/custom
+- Entrées Lore auto-générées depuis contacts, fréquences, missions, items, ennemis, boss, tapes et VR Missions
+- Entrées manuelles `loreEntries.json` pour les gros concepts/personnages/organisations
+- Liens rapides depuis la Lore Database vers Codec, Side Ops, Tapes, VR et Settings
+- Favoris, historique, notes locales et import/export JSON de lore custom
 - Training board VR avec timer, stats, évaluation, rank, accuracy, failures et records locaux
 - Déblocage local de tapes et badges VR selon le rank obtenu
 - Tape Archive compatible avec les rewards VR : les cassettes conditionnelles restent verrouillées tant que la mission VR associée n’est pas validée
 - Side Ops 2D Phaser jouable : joueur, plateformes, gardes, caméra, projecteur, keycard, porte, boss, secrets, extraction
+- **Mission Select Side Ops** avec deux missions jouables et meilleurs scores séparés par mission
+- **Mission 002 — Tanker Hold Sabotage** : nouvel environnement MGS2 simulation, rain deck, bulkhead keycard, search zone, Shielded Deck Commander
 - Gameplay core Side Ops : SOCOM, munitions, vie, dégâts, ration, chaff, CQC non létal, tirs ennemis
 - Alert System complet : NORMAL / SUSPICION / ALERT / EVASION / CAUTION / MISSION FAILED
 - Suspicion progressive avec source de détection : garde, caméra, projecteur, bruit, tir, CQC visible
@@ -46,9 +54,9 @@ Base de projet privée pour un **simulateur Codec tactique** avec un module **Si
 - Conversation Studio : création, duplication, édition, prévisualisation Codec, import/export JSON
 - Trigger overrides locaux : une conversation custom peut remplacer un appel Codec Side Ops selon mission + trigger
 - Conversations custom visibles dans le Codec Simulator et les appels Side Ops
-- Meilleur score local sauvegardé pour Dock Infiltration
+- Meilleur score local sauvegardé séparément pour chaque mission Side Ops
 - Rank final détaillé : stealth score, objectifs, secrets, boss, alertes, renforts, kills, neutralisations, tirs, dégâts, rations, caméras
-- Données JSON locales : eras, contacts, conversations, missions, items, ennemis, boss, thèmes, tapes, vrMissions
+- Données JSON locales : eras, contacts, conversations, missions, items, ennemis, boss, thèmes, tapes, vrMissions, loreEntries
 - Build web vérifié avec `npm run build`
 
 ## Installation
@@ -86,6 +94,21 @@ npm run tauri:build
 - R : ration si blessé
 - C : demande Codec manuelle
 - ENTER / ESC sur l’écran de fin : rejouer la mission
+
+## Side Ops Missions
+
+Le module **SIDE OPS** propose maintenant une sélection de missions jouables :
+
+- `Mission 001 — Dock Infiltration` : vertical slice Shadow Moses, keycard, projecteur, boss Armored Guard Captain ;
+- `Mission 002 — Tanker Hold Sabotage` : route Tanker/MGS2 simulation avec plus de patrouilles, bulkhead lock, long deck, nouveaux secrets et boss Shielded Deck Commander.
+
+Chaque mission possède :
+
+- ses objectifs ;
+- ses positions de plateformes, gardes, caméra, projecteur, boss et extraction ;
+- ses conversations Codec dédiées ;
+- son meilleur score local ;
+- ses entrées Lore/Tape associées.
 
 ## VR Missions
 
@@ -127,6 +150,23 @@ Le module **STUDIO** permet de :
 - sauvegarder des **trigger overrides** pour que Side Ops utilise localement une conversation custom sur un événement précis.
 
 Les données Studio sont stockées en `localStorage` via les clés internes `studio-custom-conversations` et `studio-trigger-overrides`.
+
+
+## Lore Database
+
+Le module **LORE DB** permet maintenant de :
+
+- parcourir une base locale par catégories : personnages, organisations, lieux, événements, fréquences, missions, items, ennemis, boss, tapes, VR et systèmes ;
+- rechercher dans titres, résumés, tags, détails, alias, affiliations et liens ;
+- filtrer par ère et par couche : canon reference, simulation layer, gameplay system ou custom local ;
+- ouvrir des entrées générées automatiquement depuis les données existantes du projet ;
+- consulter les relations vers contacts, conversations, missions, items, boss, tapes et VR ;
+- utiliser les liens rapides pour retourner vers CODEC, SIDE OPS, TAPES, VR ou SETTINGS ;
+- ajouter des favoris, conserver un historique de consultation et écrire des notes locales par entrée ;
+- importer/exporter des entrées Lore custom en JSON ;
+- exporter l’entrée sélectionnée, les entrées visibles, tout le bundle Lore ou l’état local favoris/notes/historique.
+
+Les données Lore locales sont stockées via `lore-database-state` et `lore-custom-entries`.
 
 ## Tape Archive / iDroid Deck
 

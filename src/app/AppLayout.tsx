@@ -46,7 +46,7 @@ export function AppLayout({ route, onRouteChange, settings, children }: AppLayou
           <p>SIGNAL: STABLE</p>
           <p>ERA: {settings.selectedEra.toUpperCase()}</p>
           <p>THEME: {settings.selectedTheme.toUpperCase()}</p>
-          <p>BUILD: 0.8.0</p>
+          <p>BUILD: 1.0.0</p>
         </div>
       </aside>
       <main className="main-content">{children}</main>

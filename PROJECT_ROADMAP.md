@@ -2,7 +2,7 @@
 
 ## État actuel
 
-Version `0.8.0` — Passe 9 terminée.
+Version `1.0.0` — Passe 11 terminée.
 
 Le projet contient maintenant :
 
@@ -21,7 +21,11 @@ Le projet contient maintenant :
 13. **Tape Archive / iDroid Deck** complet : bibliothèque, playback simulé, waveform, transcriptions, favoris, notes, historique, import/export JSON.
 14. **VR Missions** complet en première version : mission select, training board, score, ranks, records, unlocks tapes/badges.
 15. Tape Archive branché aux unlocks VR pour afficher/verrouiller les tapes conditionnelles.
-16. Build web vérifié.
+16. **Lore Database** complète : recherche, filtres, favoris, historique, notes, import/export et liens inter-modules.
+17. Entrées Lore générées depuis contacts, fréquences, missions, items, ennemis, boss, tapes et VR Missions.
+18. Side Ops Mission Select avec deux missions jouables.
+19. Mission 002 — Tanker Hold Sabotage : nouvel environnement, nouvelles patrouilles, boss dédié, Codec MGS2, secrets et meilleur score local par mission.
+20. Build web vérifié.
 
 ## Passes réalisées
 
@@ -124,29 +128,22 @@ Le projet contient maintenant :
 - Tape Archive compatible avec les locks VR
 - Styles `vr.css`
 
-## Prochaines passes recommandées
-
 ### Passe 10 — Lore Database
 
-- Personnages
-- Fréquences
-- Organisations
-- Lieux
-- Boss
-- Items
-- Liens chronologiques
-- Recherche + filtres
-- Liens vers conversations, tapes, missions VR et Side Ops
+- Recherche, filtres, favoris, historique, notes, import/export et liens inter-modules.
 
 ### Passe 11 — Side Ops Mission Pack 2
 
-- Deuxième mission
-- Nouvel environnement
-- Nouveaux ennemis
-- Nouveau boss
-- Appels Codec dédiés
-- Unlocks / progression
-- Tapes de débriefing liées au rank
+- Mission Select Side Ops
+- Deuxième mission jouable : Tanker Hold Sabotage
+- Nouvel environnement rain deck/cargo hold
+- Nouvelles patrouilles et renforts Tanker
+- Nouveau boss : Shielded Deck Commander
+- Appels Codec MGS2 dédiés
+- Meilleurs scores locaux séparés par mission
+- Entrées Lore et Tape associées
+
+## Prochaines passes recommandées
 
 ### Passe 12 — VR Phaser Bridge
 

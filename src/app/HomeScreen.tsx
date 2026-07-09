@@ -22,7 +22,7 @@ export function HomeScreen({ onRouteChange, settings }: HomeScreenProps) {
         <p>
           Simulateur Codec tactique + prototype Side Ops 2D. La base actuelle pose le terminal,
           les fréquences, les contacts, les appels, une mission side-scroller jouable, un Studio de conversations
-          plusieurs packs visuels Codec, un vrai Tape Archive / iDroid Deck et des VR Missions locales.
+          plusieurs packs visuels Codec, un vrai Tape Archive / iDroid Deck, des VR Missions locales et une Lore Database reliée aux modules.
         </p>
         <div className="hero-actions">
           <button className="primary-action" type="button" onClick={() => onRouteChange('codec')}>
@@ -52,6 +52,7 @@ export function HomeScreen({ onRouteChange, settings }: HomeScreenProps) {
           <StatusBadge label="VR MISSIONS ONLINE" tone="success" />
           <StatusBadge label="CONVERSATION STUDIO ONLINE" tone="success" />
           <StatusBadge label="TAPE ARCHIVE ONLINE" tone="success" />
+          <StatusBadge label="LORE DATABASE ONLINE" tone="success" />
         </div>
       </Panel>
     </section>

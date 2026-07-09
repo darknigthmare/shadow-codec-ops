@@ -40,6 +40,31 @@ export class PreloadScene extends Phaser.Scene {
     graphics.generateTexture('reinforcementGuard', 32, 48);
     graphics.clear();
 
+
+    graphics.fillStyle(0x9fd4ff, 1);
+    graphics.fillRect(7, 0, 18, 10);
+    graphics.fillRect(5, 10, 22, 22);
+    graphics.fillRect(4, 32, 8, 14);
+    graphics.fillRect(20, 32, 8, 14);
+    graphics.fillStyle(0x102838, 1);
+    graphics.fillRect(8, 8, 16, 7);
+    graphics.fillStyle(0xd8ffd4, 1);
+    graphics.fillRect(6, 16, 20, 4);
+    graphics.generateTexture('deckGuard', 32, 48);
+    graphics.clear();
+
+    graphics.fillStyle(0xffdf85, 1);
+    graphics.fillRect(7, 0, 18, 10);
+    graphics.fillRect(5, 10, 22, 22);
+    graphics.fillRect(4, 32, 8, 14);
+    graphics.fillRect(20, 32, 8, 14);
+    graphics.fillStyle(0x123047, 1);
+    graphics.fillRect(8, 8, 16, 7);
+    graphics.fillStyle(0x9fd4ff, 1);
+    graphics.fillRect(6, 16, 20, 4);
+    graphics.generateTexture('deckReinforcement', 32, 48);
+    graphics.clear();
+
     graphics.fillStyle(0x31593a, 1);
     graphics.fillRect(0, 0, 64, 16);
     graphics.lineStyle(1, 0x7cff6b, 0.6);
@@ -127,6 +152,23 @@ export class PreloadScene extends Phaser.Scene {
     graphics.lineStyle(2, 0xf8f49a, 1);
     graphics.strokeRect(6, 12, 36, 30);
     graphics.generateTexture('bossCaptain', 48, 64);
+    graphics.clear();
+
+
+    graphics.fillStyle(0x9fd4ff, 1);
+    graphics.fillRect(10, 0, 28, 12);
+    graphics.fillRect(6, 12, 36, 30);
+    graphics.fillRect(4, 42, 12, 20);
+    graphics.fillRect(32, 42, 12, 20);
+    graphics.fillStyle(0x112c3f, 1);
+    graphics.fillRect(12, 12, 24, 8);
+    graphics.fillStyle(0xf8f49a, 1);
+    graphics.fillRect(5, 24, 38, 5);
+    graphics.lineStyle(2, 0x9fd4ff, 1);
+    graphics.strokeRect(6, 12, 36, 30);
+    graphics.fillStyle(0xd8ffd4, 1);
+    graphics.fillRect(0, 20, 9, 28);
+    graphics.generateTexture('bossDeckCommander', 48, 64);
     graphics.clear();
 
     graphics.fillStyle(0x7cff6b, 1);

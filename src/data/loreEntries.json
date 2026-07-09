@@ -1,0 +1,978 @@
+[
+  {
+    "id": "lore_solid_snake",
+    "title": "Solid Snake",
+    "subtitle": "FOXHOUND operative / infiltration specialist",
+    "category": "character",
+    "era": "multi",
+    "canonStatus": "canon",
+    "importance": "critical",
+    "summary": "Legendary stealth operative used as the main reference for the Classic Codec and Side Ops prototype.",
+    "details": [
+      "Built around infiltration discipline: avoid detection, use equipment carefully, preserve mission options.",
+      "In this app, Solid Snake is the default Side Ops player identity for the Shadow Moses-era prototype.",
+      "Codec support should stay mission-focused: objective reminders, alert warnings, item hints, and boss advice."
+    ],
+    "tags": [
+      "snake",
+      "foxhound",
+      "infiltration",
+      "side ops",
+      "codec"
+    ],
+    "aliases": [
+      "Snake",
+      "Solid"
+    ],
+    "affiliations": [
+      "FOXHOUND",
+      "Philanthropy"
+    ],
+    "timeline": "MSX era through later Solid Snake operations",
+    "related": [
+      {
+        "type": "mission",
+        "id": "shadow_dock_001",
+        "label": "Dock Infiltration"
+      },
+      {
+        "type": "contact",
+        "id": "campbell_mgs1",
+        "label": "Colonel Campbell"
+      },
+      {
+        "type": "item",
+        "id": "socom_suppressor",
+        "label": "SOCOM Suppressed"
+      }
+    ]
+  },
+  {
+    "id": "lore_colonel_campbell",
+    "title": "Roy Campbell",
+    "subtitle": "Mission command and tactical support",
+    "category": "character",
+    "era": "multi",
+    "canonStatus": "canon",
+    "importance": "critical",
+    "summary": "Primary mission support contact for multiple classic-era simulations.",
+    "details": [
+      "Campbell’s role is to keep the player aligned with the mission objective and warn against unnecessary exposure.",
+      "The app maps him to mission commander support in both MSX/MG2 and Shadow Moses visual packs.",
+      "Side Ops uses Campbell as the default trigger voice for mission_start, suspicion, alert and mission_complete."
+    ],
+    "tags": [
+      "campbell",
+      "mission commander",
+      "codec",
+      "frequency"
+    ],
+    "aliases": [
+      "Colonel",
+      "Roy Campbell"
+    ],
+    "affiliations": [
+      "FOXHOUND"
+    ],
+    "frequency": 140.85,
+    "related": [
+      {
+        "type": "contact",
+        "id": "campbell_mgs1"
+      },
+      {
+        "type": "contact",
+        "id": "campbell_msx"
+      },
+      {
+        "type": "conversation",
+        "id": "mgs1_campbell_mission_start"
+      }
+    ]
+  },
+  {
+    "id": "lore_mei_ling",
+    "title": "Mei Ling",
+    "subtitle": "Save contact and memory support",
+    "category": "character",
+    "era": "mgs1",
+    "canonStatus": "canon",
+    "importance": "high",
+    "summary": "Shadow Moses-era save/memory contact used by the app as the local simulation save anchor.",
+    "details": [
+      "The app uses Mei Ling to explain local save state, memory contacts and call history.",
+      "Her module is intentionally separated from tactical command so save/contact memory can evolve independently.",
+      "Future passes can connect her to proverb-style flavor, save slots and mission replay comments."
+    ],
+    "tags": [
+      "mei ling",
+      "save",
+      "memory",
+      "mgs1"
+    ],
+    "frequency": 140.96,
+    "related": [
+      {
+        "type": "contact",
+        "id": "mei_ling_mgs1"
+      },
+      {
+        "type": "conversation",
+        "id": "mgs1_mei_ling_save"
+      },
+      {
+        "type": "system",
+        "id": "lore_system_save_engine",
+        "label": "Save Engine"
+      }
+    ]
+  },
+  {
+    "id": "lore_hal_emmerich",
+    "title": "Hal Emmerich / Otacon",
+    "subtitle": "Technical support, systems and robotics specialist",
+    "category": "character",
+    "era": "multi",
+    "canonStatus": "canon",
+    "importance": "high",
+    "summary": "Technical Codec contact used for cameras, locked systems, robotics and digital support packs.",
+    "details": [
+      "Otacon is best used when the player interacts with electronics, surveillance, remote systems or hangar technology.",
+      "The app includes MGS1 and MGS2-flavored support entries so the same role can adapt per era.",
+      "Future Side Ops missions can use him to explain terminals, drone doors, turret blind spots and equipment upgrades."
+    ],
+    "tags": [
+      "otacon",
+      "technical support",
+      "robotics",
+      "mgs1",
+      "mgs2"
+    ],
+    "aliases": [
+      "Otacon",
+      "Hal"
+    ],
+    "frequency": 141.12,
+    "related": [
+      {
+        "type": "contact",
+        "id": "otacon_mgs1"
+      },
+      {
+        "type": "contact",
+        "id": "otacon_mgs2"
+      },
+      {
+        "type": "enemy",
+        "id": "camera_turret_placeholder",
+        "label": "Security Camera Node"
+      }
+    ]
+  },
+  {
+    "id": "lore_naomi_hunter",
+    "title": "Naomi Hunter",
+    "subtitle": "Medical, genetics and nanomachine support",
+    "category": "character",
+    "era": "mgs1",
+    "canonStatus": "canon",
+    "importance": "high",
+    "summary": "Medical support contact used for low-health triggers and biological/intel explanations.",
+    "details": [
+      "Naomi’s in-app role is to explain damage, rations, stress and low-health behavior.",
+      "Her support should be reserved for medical or biological context instead of generic mission hints.",
+      "The Side Ops low_health trigger can be expanded into detailed injury state comments later."
+    ],
+    "tags": [
+      "naomi",
+      "medical",
+      "genetics",
+      "low health"
+    ],
+    "frequency": 140.85,
+    "related": [
+      {
+        "type": "contact",
+        "id": "naomi_mgs1"
+      },
+      {
+        "type": "conversation",
+        "id": "mgs1_low_health"
+      },
+      {
+        "type": "item",
+        "id": "ration"
+      }
+    ]
+  },
+  {
+    "id": "lore_naked_snake",
+    "title": "Naked Snake / Big Boss",
+    "subtitle": "Survival-era field operative and future legend",
+    "category": "character",
+    "era": "mgs3",
+    "canonStatus": "canon",
+    "importance": "critical",
+    "summary": "Core identity for MGS3-style survival radio packs and future jungle Side Ops missions.",
+    "details": [
+      "The MGS3 radio pack should focus on survival, camouflage, food, injuries, weapon handling and field mentor advice.",
+      "Future missions can use separate support voices for mission command, medical save, weapon technique and mentor guidance.",
+      "This entry helps prevent mixing Shadow Moses Codec behavior into the survival radio era."
+    ],
+    "tags": [
+      "big boss",
+      "naked snake",
+      "mgs3",
+      "survival",
+      "radio"
+    ],
+    "aliases": [
+      "Naked Snake",
+      "Big Boss",
+      "Snake"
+    ],
+    "affiliations": [
+      "FOX"
+    ],
+    "related": [
+      {
+        "type": "contact",
+        "id": "major_zero_mgs3",
+        "label": "Major Zero"
+      },
+      {
+        "type": "contact",
+        "id": "paramedic_mgs3",
+        "label": "Para-Medic"
+      },
+      {
+        "type": "contact",
+        "id": "the_boss_mgs3",
+        "label": "The Boss"
+      }
+    ]
+  },
+  {
+    "id": "lore_raiden",
+    "title": "Raiden",
+    "subtitle": "Big Shell field operative / digital support subject",
+    "category": "character",
+    "era": "mgs2",
+    "canonStatus": "canon",
+    "importance": "high",
+    "summary": "Ideal player identity for future MGS2 digital Codec and VR-heavy training paths.",
+    "details": [
+      "Raiden fits the VR Missions module because his context strongly supports training simulation logic.",
+      "MGS2-style calls should separate mission protocol from personal support and digital identity pressure.",
+      "Future missions can branch between Tanker-style Snake support and Plant-style Raiden support."
+    ],
+    "tags": [
+      "raiden",
+      "mgs2",
+      "vr",
+      "digital codec"
+    ],
+    "affiliations": [
+      "FOXHOUND simulation",
+      "Plant mission"
+    ],
+    "related": [
+      {
+        "type": "contact",
+        "id": "colonel_mgs2",
+        "label": "Colonel AI Support"
+      },
+      {
+        "type": "contact",
+        "id": "rose_mgs2",
+        "label": "Rose"
+      },
+      {
+        "type": "vr",
+        "id": "vr_ghost_dock_002",
+        "label": "Ghost Dock"
+      }
+    ]
+  },
+  {
+    "id": "lore_venom_snake",
+    "title": "Venom Snake",
+    "subtitle": "MGSV field commander simulation identity",
+    "category": "character",
+    "era": "mgsv",
+    "canonStatus": "canon",
+    "importance": "high",
+    "summary": "Default anchor for future MGSV/iDroid missions, cassette logs and open Side Ops variants.",
+    "details": [
+      "The MGSV pack should be driven more by iDroid, tapes and mission intel than by classic frequency tuning.",
+      "Future gameplay can add extraction, outpost capture and Mother Base recovery loops.",
+      "The current app uses simulated channels instead of pretending every MGSV contact has a classic Codec frequency."
+    ],
+    "tags": [
+      "venom snake",
+      "mgsv",
+      "idroid",
+      "diamond dogs",
+      "tapes"
+    ],
+    "affiliations": [
+      "Diamond Dogs"
+    ],
+    "related": [
+      {
+        "type": "tape",
+        "id": "tape_mgsv_idroid_tape_basics",
+        "label": "iDroid Tape Basics"
+      },
+      {
+        "type": "contact",
+        "id": "kaz_mgsv",
+        "label": "Kazuhira Miller"
+      },
+      {
+        "type": "contact",
+        "id": "ocelot_mgsv",
+        "label": "Ocelot"
+      }
+    ]
+  },
+  {
+    "id": "lore_foxhound",
+    "title": "FOXHOUND",
+    "subtitle": "Special forces unit and classic Codec support identity",
+    "category": "organization",
+    "era": "multi",
+    "canonStatus": "canon",
+    "importance": "critical",
+    "summary": "Central organization reference for classic Snake operations, support contacts and the rank vocabulary.",
+    "details": [
+      "The app uses FOXHOUND as both lore organization and rank flavor: Hound, Fox, Foxhound, Big Boss.",
+      "It should remain tied to classic operations and not be used as a generic label for every faction.",
+      "Future databases can distinguish unit history, personnel, defectors and simulation-only extensions."
+    ],
+    "tags": [
+      "foxhound",
+      "organization",
+      "rank",
+      "classic"
+    ],
+    "related": [
+      {
+        "type": "contact",
+        "id": "campbell_mgs1"
+      },
+      {
+        "type": "system",
+        "id": "lore_system_rank_engine",
+        "label": "Rank Engine"
+      }
+    ]
+  },
+  {
+    "id": "lore_outer_heaven",
+    "title": "Outer Heaven",
+    "subtitle": "Militarized fortress state concept",
+    "category": "organization",
+    "era": "msx",
+    "canonStatus": "canon",
+    "importance": "critical",
+    "summary": "MSX-era reference for retro radio operations and future fortress infiltration packs.",
+    "details": [
+      "Outer Heaven should drive MSX-style missions: simple radio UI, fortress rooms, item progression and classic infiltration loops.",
+      "The current MSX pack is only a visual/radio foundation; real MSX-style maps can be added later.",
+      "Keep it visually distinct from Shadow Moses to avoid collapsing all eras into one green Codec skin."
+    ],
+    "tags": [
+      "outer heaven",
+      "msx",
+      "fortress",
+      "radio"
+    ],
+    "related": [
+      {
+        "type": "contact",
+        "id": "campbell_msx"
+      },
+      {
+        "type": "contact",
+        "id": "miller_msx"
+      }
+    ]
+  },
+  {
+    "id": "lore_patriots_ai",
+    "title": "Patriots AI Layer",
+    "subtitle": "Corrupted simulation / meta-communication mode",
+    "category": "organization",
+    "era": "patriots_ai",
+    "canonStatus": "simulation",
+    "importance": "critical",
+    "summary": "Glitch mode used to create unstable calls, fake protocol messages and meta anomalies without damaging the real app state.",
+    "details": [
+      "This app treats Patriots AI as a visual and narrative corruption layer, not as a destructive system feature.",
+      "Useful effects include wrong speaker labels, repeated mission text, corrupted signals and abnormal CALL timing.",
+      "All corruption should remain cosmetic/local and reversible from Settings."
+    ],
+    "tags": [
+      "patriots",
+      "ai",
+      "glitch",
+      "corruption",
+      "simulation"
+    ],
+    "related": [
+      {
+        "type": "system",
+        "id": "lore_system_theme_engine",
+        "label": "Theme Engine"
+      },
+      {
+        "type": "contact",
+        "id": "patriots_ai_node",
+        "label": "Patriots AI Node"
+      }
+    ]
+  },
+  {
+    "id": "lore_shadow_moses",
+    "title": "Shadow Moses",
+    "subtitle": "Snowbound nuclear disposal facility context",
+    "category": "location",
+    "era": "mgs1",
+    "canonStatus": "canon",
+    "importance": "critical",
+    "summary": "Primary visual and mission reference for the first Side Ops vertical slice.",
+    "details": [
+      "The current Dock Infiltration mission is a simulation inspired by Shadow Moses-style entry logic, not a direct map recreation.",
+      "Its palette should stay cold, industrial and military: snow, dock metal, security lights and hangar approach.",
+      "Future mission packs can branch into heliport, tank hangar, nuclear storage, labs and tower-like zones."
+    ],
+    "tags": [
+      "shadow moses",
+      "mgs1",
+      "snow",
+      "facility",
+      "dock"
+    ],
+    "related": [
+      {
+        "type": "mission",
+        "id": "shadow_dock_001",
+        "label": "Dock Infiltration"
+      },
+      {
+        "type": "boss",
+        "id": "armored_guard_captain"
+      }
+    ]
+  },
+  {
+    "id": "lore_big_shell",
+    "title": "Big Shell",
+    "subtitle": "Offshore facility / digital Codec context",
+    "category": "location",
+    "era": "mgs2",
+    "canonStatus": "canon",
+    "importance": "high",
+    "summary": "Future location pack for MGS2-style digital support, platform traversal and identity-heavy VR logic.",
+    "details": [
+      "Big Shell missions should emphasize struts, bridges, cameras, water, hostage logic and digital support interruptions.",
+      "The visual pack should stay cleaner and more blue/digital than the Shadow Moses Codec.",
+      "Future Side Ops could use segmented platform stages rather than a single linear dock route."
+    ],
+    "tags": [
+      "big shell",
+      "mgs2",
+      "offshore",
+      "digital"
+    ],
+    "related": [
+      {
+        "type": "contact",
+        "id": "colonel_mgs2"
+      },
+      {
+        "type": "tape",
+        "id": "tape_mgs2_digital_support_protocol"
+      }
+    ]
+  },
+  {
+    "id": "lore_mother_base",
+    "title": "Mother Base",
+    "subtitle": "MSF / Diamond Dogs management and briefing hub",
+    "category": "location",
+    "era": "multi",
+    "canonStatus": "canon",
+    "importance": "high",
+    "summary": "Best future hub for tapes, staff management, mission selection and iDroid-style support.",
+    "details": [
+      "Mother Base should not behave like a classic Codec screen; it fits better as a management/tape/briefing hub.",
+      "A future pass can add departments, staff morale, mission deployment and replayable Side Ops selection.",
+      "The current Tape Archive already lays the foundation for this module."
+    ],
+    "tags": [
+      "mother base",
+      "msf",
+      "diamond dogs",
+      "hub",
+      "tapes"
+    ],
+    "affiliations": [
+      "MSF",
+      "Diamond Dogs"
+    ],
+    "related": [
+      {
+        "type": "tape",
+        "id": "tape_mgsv_idroid_tape_basics"
+      },
+      {
+        "type": "system",
+        "id": "lore_system_tape_archive",
+        "label": "Tape Archive"
+      }
+    ]
+  },
+  {
+    "id": "lore_dock_infiltration",
+    "title": "Mission 001 — Dock Infiltration",
+    "subtitle": "Side Ops vertical slice",
+    "category": "mission",
+    "era": "mgs1",
+    "canonStatus": "simulation",
+    "importance": "critical",
+    "summary": "First playable mission: side-scroller infiltration, keycard, alert states, searchlight yard, mini-boss, secrets and extraction.",
+    "details": [
+      "This mission validates the fusion between Side Ops gameplay and Codec triggers.",
+      "It is a local simulation mission designed to test systems, not a direct remake of a canonical map.",
+      "The objective chain is intentionally compact so future missions can reuse and expand its systems."
+    ],
+    "tags": [
+      "mission 001",
+      "dock",
+      "side ops",
+      "vertical slice",
+      "boss"
+    ],
+    "related": [
+      {
+        "type": "mission",
+        "id": "shadow_dock_001"
+      },
+      {
+        "type": "boss",
+        "id": "armored_guard_captain"
+      },
+      {
+        "type": "conversation",
+        "id": "mgs1_campbell_mission_start"
+      }
+    ]
+  },
+  {
+    "id": "lore_armored_guard_captain",
+    "title": "Armored Guard Captain",
+    "subtitle": "Simulation mini-boss / Side Ops systems test",
+    "category": "boss",
+    "era": "mgs1",
+    "canonStatus": "simulation",
+    "importance": "high",
+    "summary": "Original local mini-boss used to test boss phases, Codec hints, extraction lock and rank scoring.",
+    "details": [
+      "The captain is intentionally simulation-only so early balancing does not depend on a major canonical boss.",
+      "His two-phase behavior tests player pressure, distance control, ration timing and disciplined fire.",
+      "Future boss packs can replace or extend this with era-specific characters once the gameplay shell is stable."
+    ],
+    "tags": [
+      "boss",
+      "simulation",
+      "armored",
+      "side ops"
+    ],
+    "related": [
+      {
+        "type": "boss",
+        "id": "armored_guard_captain"
+      },
+      {
+        "type": "enemy",
+        "id": "armored_guard_captain"
+      },
+      {
+        "type": "conversation",
+        "id": "mgs1_boss_intro"
+      }
+    ]
+  },
+  {
+    "id": "lore_socom_suppressor",
+    "title": "SOCOM Suppressed",
+    "subtitle": "Default Side Ops firearm",
+    "category": "item",
+    "era": "mgs1",
+    "canonStatus": "gameplay",
+    "importance": "high",
+    "summary": "Core weapon for the first Side Ops prototype: accurate enough for action, limited enough to preserve stealth pressure.",
+    "details": [
+      "The suppressor reduces the gameplay noise footprint but should not make shots consequence-free.",
+      "The rank system tracks shots fired, hits, kills and stealth score separately.",
+      "Future weapon training VR missions can reuse the same weapon discipline model."
+    ],
+    "tags": [
+      "socom",
+      "weapon",
+      "suppressed",
+      "vr",
+      "side ops"
+    ],
+    "related": [
+      {
+        "type": "item",
+        "id": "socom_suppressor"
+      },
+      {
+        "type": "vr",
+        "id": "vr_socom_range_003",
+        "label": "SOCOM Range"
+      },
+      {
+        "type": "tape",
+        "id": "tape_vr_weapon_range_analysis"
+      }
+    ]
+  },
+  {
+    "id": "lore_chaff_grenade",
+    "title": "Chaff Grenade",
+    "subtitle": "Electronic disruption gadget",
+    "category": "item",
+    "era": "mgs1",
+    "canonStatus": "gameplay",
+    "importance": "high",
+    "summary": "Prototype gadget that disables camera/projector windows and creates a clean surveillance challenge path.",
+    "details": [
+      "The current Side Ops implementation uses chaff as temporary electronic disruption against camera and searchlight logic.",
+      "It should remain timing-based: chaff creates a window, not a permanent solution.",
+      "The Chaff Breaker VR mission is built around this doctrine."
+    ],
+    "tags": [
+      "chaff",
+      "camera",
+      "surveillance",
+      "gadget"
+    ],
+    "related": [
+      {
+        "type": "item",
+        "id": "chaff_grenade"
+      },
+      {
+        "type": "enemy",
+        "id": "camera_turret_placeholder"
+      },
+      {
+        "type": "vr",
+        "id": "vr_chaff_breaker_005",
+        "label": "Chaff Breaker"
+      }
+    ]
+  },
+  {
+    "id": "lore_codec_system",
+    "title": "Codec System",
+    "subtitle": "Shared tactical communication engine",
+    "category": "system",
+    "era": "multi",
+    "canonStatus": "gameplay",
+    "importance": "critical",
+    "summary": "Shared engine for manual calls, incoming calls, memory contacts, custom conversations and Side Ops triggers.",
+    "details": [
+      "The Codec Simulator and Side Ops both read the same conversation/contact data instead of duplicating dialogue logic.",
+      "Custom conversations from the Studio can override mission triggers locally.",
+      "This keeps the project modular: new missions can reuse old contacts and new contacts can appear in both simulation and gameplay."
+    ],
+    "tags": [
+      "codec",
+      "engine",
+      "calls",
+      "studio",
+      "side ops"
+    ],
+    "related": [
+      {
+        "type": "system",
+        "id": "lore_system_conversation_studio",
+        "label": "Conversation Studio"
+      },
+      {
+        "type": "conversation",
+        "id": "mgs1_campbell_default"
+      },
+      {
+        "type": "contact",
+        "id": "campbell_mgs1"
+      }
+    ]
+  },
+  {
+    "id": "lore_system_tape_archive",
+    "title": "Tape Archive / iDroid Deck",
+    "subtitle": "Cassette, briefing and debriefing archive",
+    "category": "system",
+    "era": "multi",
+    "canonStatus": "gameplay",
+    "importance": "high",
+    "summary": "Archive module for tapes, transcripts, notes, favorites, VR rewards and future Mother Base content.",
+    "details": [
+      "The deck supports simulated playback, waveform, transcript navigation and local notes.",
+      "VR Missions can unlock conditional tapes through local rank progress.",
+      "Future passes can connect Side Ops rank results to debriefing tapes automatically."
+    ],
+    "tags": [
+      "tape archive",
+      "idroid",
+      "mother base",
+      "vr rewards"
+    ],
+    "related": [
+      {
+        "type": "tape",
+        "id": "tape_mgsv_idroid_tape_basics"
+      },
+      {
+        "type": "vr",
+        "id": "vr_dock_sprint_001"
+      }
+    ]
+  },
+  {
+    "id": "lore_system_rank_engine",
+    "title": "Rank Engine",
+    "subtitle": "Mission evaluation and stealth scoring layer",
+    "category": "system",
+    "era": "multi",
+    "canonStatus": "gameplay",
+    "importance": "high",
+    "summary": "Scoring logic used by Side Ops and VR Missions to evaluate stealth discipline, speed, damage, kills and secrets.",
+    "details": [
+      "The Side Ops mission result tracks alert count, kills, neutralizations, shots, damage, rations, secrets and boss status.",
+      "VR Missions have independent requirement-based scoring and unlocks.",
+      "Future improvements can unify both into one profile progression layer."
+    ],
+    "tags": [
+      "rank",
+      "score",
+      "stealth",
+      "vr",
+      "side ops"
+    ],
+    "related": [
+      {
+        "type": "mission",
+        "id": "shadow_dock_001"
+      },
+      {
+        "type": "vr",
+        "id": "vr_ghost_dock_002"
+      },
+      {
+        "type": "tape",
+        "id": "tape_vr_no_alert_after_action"
+      }
+    ]
+  },
+  {
+    "id": "lore_system_conversation_studio",
+    "title": "Conversation Studio",
+    "subtitle": "Local Codec script editor",
+    "category": "system",
+    "era": "multi",
+    "canonStatus": "gameplay",
+    "importance": "high",
+    "summary": "Tool for creating custom Codec conversations, previewing them and assigning them to Side Ops triggers.",
+    "details": [
+      "The Studio saves custom conversations in localStorage and can export/import JSON.",
+      "Trigger overrides allow a custom script to replace a built-in call for mission_start, first_alert, boss_intro and more.",
+      "This is the main authoring tool for private fan scenarios and future mission packs."
+    ],
+    "tags": [
+      "studio",
+      "custom",
+      "conversation",
+      "trigger override"
+    ],
+    "related": [
+      {
+        "type": "system",
+        "id": "lore_codec_system",
+        "label": "Codec System"
+      },
+      {
+        "type": "mission",
+        "id": "shadow_dock_001"
+      }
+    ]
+  },
+  {
+    "id": "lore_vr_training",
+    "title": "VR Training Layer",
+    "subtitle": "Short challenge and unlock system",
+    "category": "system",
+    "era": "vr_simulation",
+    "canonStatus": "gameplay",
+    "importance": "high",
+    "summary": "Separate challenge layer for time attack, no alert, weapon discipline, CQC, surveillance and boss drills.",
+    "details": [
+      "The current VR module is a scoring/training board, not yet a Phaser gameplay bridge.",
+      "It already stores best runs, recent records, badges and tape unlocks locally.",
+      "Future passes can connect each VR entry to compact real scenes derived from the Side Ops map."
+    ],
+    "tags": [
+      "vr",
+      "training",
+      "challenge",
+      "unlock",
+      "tapes"
+    ],
+    "related": [
+      {
+        "type": "vr",
+        "id": "vr_dock_sprint_001"
+      },
+      {
+        "type": "vr",
+        "id": "vr_armored_duel_006"
+      },
+      {
+        "type": "system",
+        "id": "lore_system_rank_engine",
+        "label": "Rank Engine"
+      }
+    ]
+  },
+  {
+    "id": "lore_frequency_protocol",
+    "title": "Frequency Protocol",
+    "subtitle": "Manual tuning, memory contacts and signal states",
+    "category": "frequency",
+    "era": "multi",
+    "canonStatus": "gameplay",
+    "importance": "critical",
+    "summary": "Rules that keep old-school Codec tuning consistent across eras while allowing modern packs to use simulated channels.",
+    "details": [
+      "Classic eras use exact or near-exact frequency matching and Memory contacts.",
+      "Modern packs such as MGSV/iDroid should be treated as simulated channels or tape entries instead of forcing classic frequencies.",
+      "Signal states include stable, weak, jammed, encrypted, unknown and Patriots corrupt."
+    ],
+    "tags": [
+      "frequency",
+      "memory",
+      "signal",
+      "codec"
+    ],
+    "related": [
+      {
+        "type": "contact",
+        "id": "campbell_mgs1"
+      },
+      {
+        "type": "contact",
+        "id": "mei_ling_mgs1"
+      },
+      {
+        "type": "system",
+        "id": "lore_codec_system",
+        "label": "Codec System"
+      }
+    ]
+  },
+  {
+    "id": "lore_tanker_hold_sabotage",
+    "title": "Mission 002 — Tanker Hold Sabotage",
+    "subtitle": "Second playable Side Ops mission",
+    "category": "mission",
+    "era": "mgs2",
+    "canonStatus": "simulation",
+    "importance": "high",
+    "summary": "Second Side Ops route, built as a MGS2-era simulation with rain deck traversal, bulkhead lock, searchlight zone, and a shielded commander boss.",
+    "details": [
+      "Introduces selectable Side Ops missions instead of a single hard-coded dock route.",
+      "Uses Otacon MGS2 as the main support contact for briefing, warnings, boss hints, and completion.",
+      "Stores best rank locally per mission, allowing Dock and Tanker routes to be replayed independently."
+    ],
+    "tags": [
+      "side ops",
+      "mission 002",
+      "tanker",
+      "mgs2",
+      "boss"
+    ],
+    "aliases": [
+      "Tanker Hold",
+      "Mission 002"
+    ],
+    "affiliations": [
+      "Philanthropy",
+      "Tanker Simulation"
+    ],
+    "timeline": "MGS2-era simulation layer",
+    "related": [
+      {
+        "type": "contact",
+        "id": "otacon_mgs2",
+        "label": "Otacon"
+      },
+      {
+        "type": "boss",
+        "id": "shielded_deck_commander",
+        "label": "Shielded Deck Commander"
+      },
+      {
+        "type": "tape",
+        "id": "tape_side_ops_tanker_hold_002",
+        "label": "Side Ops Design Log 002"
+      }
+    ]
+  },
+  {
+    "id": "lore_shielded_deck_commander",
+    "title": "Shielded Deck Commander",
+    "subtitle": "Mission 002 boss",
+    "category": "boss",
+    "era": "mgs2",
+    "canonStatus": "simulation",
+    "importance": "medium",
+    "summary": "Side Ops boss designed to test repositioning, cover timing, CQC risk, and chaff-assisted movement in the tanker mission pack.",
+    "details": [
+      "The boss has more health than the first Armored Guard Captain and uses a faster second phase.",
+      "The fight locks the cargo hold exit until defeated.",
+      "Codec guidance is routed through Otacon's MGS2 support channel."
+    ],
+    "tags": [
+      "boss",
+      "side ops",
+      "tanker",
+      "shield"
+    ],
+    "aliases": [
+      "Deck Commander"
+    ],
+    "affiliations": [
+      "Tanker Simulation Security"
+    ],
+    "timeline": "Mission 002 simulation",
+    "related": [
+      {
+        "type": "mission",
+        "id": "tanker_hold_002",
+        "label": "Tanker Hold Sabotage"
+      },
+      {
+        "type": "conversation",
+        "id": "mgs2_otacon_tanker_boss_intro",
+        "label": "Shielded Commander Codec"
+      }
+    ]
+  }
+]

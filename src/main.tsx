@@ -9,6 +9,7 @@ import './styles/sideops.css';
 import './styles/studio.css';
 import './styles/tapes.css';
 import './styles/vr.css';
+import './styles/lore.css';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

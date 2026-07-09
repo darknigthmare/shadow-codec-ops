@@ -19,6 +19,9 @@ export interface CodecRequestPayload {
 }
 
 export interface MissionHudPayload {
+  missionId: string;
+  missionTitle: string;
+  bossName: string;
   health: number;
   maxHealth: number;
   ammo: number;
@@ -40,6 +43,7 @@ export interface MissionHudPayload {
   objective: string;
   objectiveStage: string;
   objectivesCompleted: number;
+  totalObjectives: number;
   secretsFound: number;
   totalSecrets: number;
   bossActive: boolean;
@@ -51,6 +55,8 @@ export interface MissionHudPayload {
 
 export interface MissionCompletePayload {
   missionId: string;
+  missionTitle: string;
+  bossName: string;
   success: boolean;
   outcome: string;
   rankPreview: string;
@@ -63,6 +69,7 @@ export interface MissionCompletePayload {
   damageTaken: number;
   camerasDisabled: number;
   objectivesCompleted: number;
+  totalObjectives: number;
   secretsFound: number;
   totalSecrets: number;
   bossDefeated: boolean;
@@ -73,6 +80,8 @@ export interface MissionCompletePayload {
 }
 
 export interface AlertEventPayload {
+  missionId: string;
+  missionTitle: string;
   level: string;
   alerts: number;
   source: string;

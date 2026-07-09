@@ -43,7 +43,254 @@ interface BossUnit {
   lastChargeAt: number;
 }
 
+type PickupKind = 'ration' | 'chaff' | 'ammo';
+
+interface CodecProfileCall {
+  trigger: CodecRequestPayload['trigger'];
+  contactId: string;
+  conversationId: string;
+  message: string;
+  pauseGame: boolean;
+}
+
+interface MissionProfile {
+  id: string;
+  title: string;
+  location: string;
+  header: string;
+  worldWidth: number;
+  groundColor: number;
+  backdropColor: number;
+  structureColor: number;
+  start: { x: number; y: number };
+  startAmmo: number;
+  startRations: number;
+  startChaff: number;
+  initialObjectives: string[];
+  totalObjectives: number;
+  door: { x: number; y: number; label: string };
+  camera: { x: number; y: number };
+  searchlight: { x: number; y: number; sweep: number };
+  elevator: { x: number; y: number; label: string };
+  keycard: { x: number; y: number; label: string };
+  boss: { name: string; x: number; y: number; hp: number; texture: string; tintPhaseOne: number; tintPhaseTwo: number };
+  guardTexture: string;
+  reinforcementTexture: string;
+  platforms: Array<{ x: number; y: number; scaleX: number }>;
+  crates: Array<{ x: number; y: number }>;
+  guards: Array<{ x: number; y: number; patrolMin: number; patrolMax: number; role: GuardRole }>;
+  pickups: Array<{ x: number; y: number; kind: PickupKind }>;
+  secrets: Array<{ x: number; y: number; id: string; label: string }>;
+  stageLabels: Record<ObjectiveStage, string>;
+  completionX: { openDoor: number; crossYard: number; bossArena: number };
+  codec: {
+    missionStart: CodecProfileCall;
+    keycardFound: CodecProfileCall;
+    lowHealth: CodecProfileCall;
+    missionFailed: CodecProfileCall;
+    missionComplete: CodecProfileCall;
+    manual: CodecProfileCall;
+    chaff: CodecProfileCall;
+    cameraDown: CodecProfileCall;
+    cqc: CodecProfileCall;
+    firstAlert: CodecProfileCall;
+    suspicion: CodecProfileCall;
+    evasion: CodecProfileCall;
+    caution: CodecProfileCall;
+    reinforcement: CodecProfileCall;
+    cameraDetected: CodecProfileCall;
+    searchlight: CodecProfileCall;
+    bossIntro: CodecProfileCall;
+    bossMidfight: CodecProfileCall;
+    bossDefeated: CodecProfileCall;
+    secret: CodecProfileCall;
+  };
+}
+
+const MISSION_STORAGE_KEY = 'sideops-active-mission-id';
+
+const SHADOW_DOCK_PROFILE: MissionProfile = {
+  id: 'shadow_dock_001',
+  title: 'Dock Infiltration',
+  location: 'Snowfield Docks',
+  header: 'MISSION 001 // DOCK INFILTRATION // SHADOW MOSES SIMULATION',
+  worldWidth: 3800,
+  groundColor: 0x06120a,
+  backdropColor: 0x041007,
+  structureColor: 0x0d2a14,
+  start: { x: 90, y: 454 },
+  startAmmo: 26,
+  startRations: 1,
+  startChaff: 1,
+  initialObjectives: ['enter_dock'],
+  totalObjectives: 6,
+  door: { x: 1510, y: 462, label: 'Lv.1 security door' },
+  camera: { x: 1210, y: 235 },
+  searchlight: { x: 1990, y: 118, sweep: 360 },
+  elevator: { x: 3630, y: 470, label: 'cargo elevator' },
+  keycard: { x: 1000, y: 290, label: 'Keycard Lv.1' },
+  boss: { name: 'Armored Guard Captain', x: 2990, y: 456, hp: 10, texture: 'bossCaptain', tintPhaseOne: 0xffdf85, tintPhaseTwo: 0xff6b6b },
+  guardTexture: 'guard',
+  reinforcementTexture: 'reinforcementGuard',
+  platforms: [
+    { x: 480, y: 520, scaleX: 16 }, { x: 1120, y: 520, scaleX: 16 }, { x: 1760, y: 520, scaleX: 16 },
+    { x: 2410, y: 520, scaleX: 16 }, { x: 3150, y: 520, scaleX: 22 }, { x: 520, y: 410, scaleX: 3 },
+    { x: 960, y: 330, scaleX: 4 }, { x: 1320, y: 430, scaleX: 3 }, { x: 1940, y: 360, scaleX: 4 },
+    { x: 2320, y: 315, scaleX: 3 }, { x: 3050, y: 385, scaleX: 4 }, { x: 3390, y: 305, scaleX: 3 }
+  ],
+  crates: [
+    { x: 360, y: 480 }, { x: 1380, y: 390 }, { x: 1810, y: 480 }, { x: 2055, y: 320 },
+    { x: 2550, y: 480 }, { x: 2750, y: 480 }, { x: 3220, y: 480 }
+  ],
+  guards: [
+    { x: 700, y: 454, patrolMin: 540, patrolMax: 805, role: 'patrol' },
+    { x: 1690, y: 454, patrolMin: 1580, patrolMax: 1880, role: 'patrol' },
+    { x: 2200, y: 454, patrolMin: 2080, patrolMax: 2400, role: 'patrol' }
+  ],
+  pickups: [
+    { x: 430, y: 380, kind: 'ration' }, { x: 1320, y: 390, kind: 'chaff' }, { x: 2050, y: 320, kind: 'ammo' }
+  ],
+  secrets: [
+    { x: 560, y: 374, id: 'dog_tag_secret', label: 'DOG TAG CACHE' },
+    { x: 2320, y: 275, id: 'mo_disc_secret', label: 'OPTICAL DISC' },
+    { x: 3405, y: 265, id: 'cassette_secret', label: 'CODEC TAPE' }
+  ],
+  stageLabels: {
+    recover_keycard: 'Recover Keycard Lv.1',
+    open_security_door: 'Open Lv.1 security door',
+    cross_security_yard: 'Cross searchlight yard',
+    defeat_captain: 'Defeat Armored Guard Captain',
+    extract: 'Reach cargo elevator'
+  },
+  completionX: { openDoor: 1545, crossYard: 2140, bossArena: 2580 },
+  codec: {
+    missionStart: { trigger: 'mission_start', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_mission_start', message: 'Mission briefing ready.', pauseGame: true },
+    keycardFound: { trigger: 'keycard_found', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_keycard_found', message: 'Keycard Lv.1 recovered. Codec hint available.', pauseGame: false },
+    lowHealth: { trigger: 'low_health', contactId: 'naomi_mgs1', conversationId: 'mgs1_naomi_medical', message: 'Health critical. Medical support available.', pauseGame: true },
+    missionFailed: { trigger: 'low_health', contactId: 'naomi_mgs1', conversationId: 'mgs1_naomi_mission_failed', message: 'Snake is down. Mission failed.', pauseGame: false },
+    missionComplete: { trigger: 'mission_complete', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_mission_complete', message: 'Mission complete.', pauseGame: true },
+    manual: { trigger: 'manual_call', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_default', message: 'Manual Codec request from Side Ops.', pauseGame: false },
+    chaff: { trigger: 'manual_call', contactId: 'otacon_mgs1', conversationId: 'mgs1_otacon_chaff_hint', message: 'Chaff deployed. Camera and searchlight signals disrupted.', pauseGame: false },
+    cameraDown: { trigger: 'camera_detected', contactId: 'otacon_mgs1', conversationId: 'mgs1_otacon_camera_down', message: 'Security camera disabled.', pauseGame: false },
+    cqc: { trigger: 'manual_call', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_cqc_hint', message: 'Guard neutralized quietly.', pauseGame: false },
+    firstAlert: { trigger: 'first_alert', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_first_alert', message: 'ALERT triggered. Codec support available.', pauseGame: true },
+    suspicion: { trigger: 'suspicion', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_suspicion', message: 'Suspicion detected. Codec support available.', pauseGame: false },
+    evasion: { trigger: 'evasion', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_evasion', message: 'Evasion phase active.', pauseGame: false },
+    caution: { trigger: 'caution', contactId: 'miller_mgs1', conversationId: 'mgs1_miller_caution', message: 'Caution phase active.', pauseGame: false },
+    reinforcement: { trigger: 'reinforcement', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_reinforcement', message: 'Reinforcements deployed.', pauseGame: false },
+    cameraDetected: { trigger: 'camera_detected', contactId: 'otacon_mgs1', conversationId: 'mgs1_otacon_tech', message: 'Camera sightline detected. Technical support available.', pauseGame: false },
+    searchlight: { trigger: 'searchlight_detected', contactId: 'otacon_mgs1', conversationId: 'mgs1_otacon_searchlight_hint', message: 'Searchlight sweep detected. Technical support available.', pauseGame: false },
+    bossIntro: { trigger: 'boss_intro', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_boss_intro', message: 'Armored Guard Captain encountered.', pauseGame: true },
+    bossMidfight: { trigger: 'boss_midfight', contactId: 'naomi_mgs1', conversationId: 'mgs1_naomi_boss_midfight', message: 'Boss armor pattern changed.', pauseGame: false },
+    bossDefeated: { trigger: 'boss_defeated', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_boss_defeated', message: 'Boss defeated. Extraction route open.', pauseGame: true },
+    secret: { trigger: 'secret_frequency', contactId: 'otacon_mgs1', conversationId: 'mgs1_otacon_secret_found', message: 'Hidden signal archive recovered.', pauseGame: false }
+  }
+};
+
+const TANKER_HOLD_PROFILE: MissionProfile = {
+  id: 'tanker_hold_002',
+  title: 'Tanker Hold Sabotage',
+  location: 'Rain Deck / Cargo Hold',
+  header: 'MISSION 002 // TANKER HOLD SABOTAGE // MGS2 SIMULATION',
+  worldWidth: 4300,
+  groundColor: 0x08131c,
+  backdropColor: 0x030a12,
+  structureColor: 0x10283a,
+  start: { x: 90, y: 454 },
+  startAmmo: 32,
+  startRations: 1,
+  startChaff: 2,
+  initialObjectives: ['enter_deck'],
+  totalObjectives: 6,
+  door: { x: 1720, y: 462, label: 'bulkhead access lock' },
+  camera: { x: 1450, y: 228 },
+  searchlight: { x: 2360, y: 105, sweep: 430 },
+  elevator: { x: 4110, y: 470, label: 'cargo hold exit' },
+  keycard: { x: 1195, y: 285, label: 'Bulkhead Keycard' },
+  boss: { name: 'Shielded Deck Commander', x: 3470, y: 456, hp: 12, texture: 'bossDeckCommander', tintPhaseOne: 0x9fd4ff, tintPhaseTwo: 0xffdf85 },
+  guardTexture: 'deckGuard',
+  reinforcementTexture: 'deckReinforcement',
+  platforms: [
+    { x: 490, y: 520, scaleX: 16 }, { x: 1150, y: 520, scaleX: 17 }, { x: 1820, y: 520, scaleX: 17 },
+    { x: 2500, y: 520, scaleX: 18 }, { x: 3200, y: 520, scaleX: 18 }, { x: 3900, y: 520, scaleX: 16 },
+    { x: 520, y: 395, scaleX: 4 }, { x: 1120, y: 325, scaleX: 4 }, { x: 1500, y: 418, scaleX: 3 },
+    { x: 2150, y: 340, scaleX: 5 }, { x: 2620, y: 395, scaleX: 3 }, { x: 3030, y: 315, scaleX: 4 },
+    { x: 3650, y: 370, scaleX: 5 }, { x: 3970, y: 295, scaleX: 3 }
+  ],
+  crates: [
+    { x: 340, y: 480 }, { x: 760, y: 480 }, { x: 1510, y: 378 }, { x: 1980, y: 480 },
+    { x: 2420, y: 480 }, { x: 2760, y: 480 }, { x: 3230, y: 480 }, { x: 3820, y: 480 }
+  ],
+  guards: [
+    { x: 640, y: 454, patrolMin: 500, patrolMax: 835, role: 'patrol' },
+    { x: 1880, y: 454, patrolMin: 1760, patrolMax: 2060, role: 'patrol' },
+    { x: 2520, y: 454, patrolMin: 2370, patrolMax: 2740, role: 'patrol' },
+    { x: 3080, y: 454, patrolMin: 2960, patrolMax: 3265, role: 'patrol' }
+  ],
+  pickups: [
+    { x: 515, y: 365, kind: 'ration' }, { x: 1540, y: 380, kind: 'ammo' }, { x: 2170, y: 305, kind: 'chaff' }, { x: 3680, y: 335, kind: 'ammo' }
+  ],
+  secrets: [
+    { x: 1120, y: 288, id: 'rain_deck_photo', label: 'RAIN DECK PHOTO' },
+    { x: 3030, y: 278, id: 'hold_projector_reel', label: 'HOLD PROJECTOR REEL' },
+    { x: 3985, y: 258, id: 'tanker_tape_secret', label: 'TANKER AUDIO LOG' }
+  ],
+  stageLabels: {
+    recover_keycard: 'Recover Bulkhead Keycard',
+    open_security_door: 'Open bulkhead access lock',
+    cross_security_yard: 'Cross rain deck search zone',
+    defeat_captain: 'Defeat Shielded Deck Commander',
+    extract: 'Reach cargo hold exit'
+  },
+  completionX: { openDoor: 1760, crossYard: 2820, bossArena: 3180 },
+  codec: {
+    missionStart: { trigger: 'mission_start', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_mission_start', message: 'Tanker sabotage briefing ready.', pauseGame: true },
+    keycardFound: { trigger: 'keycard_found', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_keycard_found', message: 'Bulkhead keycard recovered.', pauseGame: false },
+    lowHealth: { trigger: 'low_health', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_low_health', message: 'Health critical. Support channel open.', pauseGame: true },
+    missionFailed: { trigger: 'low_health', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_mission_failed', message: 'Tanker op failed.', pauseGame: false },
+    missionComplete: { trigger: 'mission_complete', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_mission_complete', message: 'Tanker route clear.', pauseGame: true },
+    manual: { trigger: 'manual_call', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_support', message: 'Manual Codec request from Side Ops.', pauseGame: false },
+    chaff: { trigger: 'manual_call', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_chaff_hint', message: 'Chaff deployed on tanker deck.', pauseGame: false },
+    cameraDown: { trigger: 'camera_detected', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_camera_down', message: 'Tanker camera disabled.', pauseGame: false },
+    cqc: { trigger: 'manual_call', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_cqc_hint', message: 'Deck guard neutralized.', pauseGame: false },
+    firstAlert: { trigger: 'first_alert', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_first_alert', message: 'Deck alert triggered. Codec support available.', pauseGame: true },
+    suspicion: { trigger: 'suspicion', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_suspicion', message: 'Tanker guard suspicion rising.', pauseGame: false },
+    evasion: { trigger: 'evasion', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_evasion', message: 'Evasion phase active.', pauseGame: false },
+    caution: { trigger: 'caution', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_caution', message: 'Caution phase active.', pauseGame: false },
+    reinforcement: { trigger: 'reinforcement', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_reinforcement', message: 'Deck reinforcements deployed.', pauseGame: false },
+    cameraDetected: { trigger: 'camera_detected', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_camera_detected', message: 'Tanker camera sightline detected.', pauseGame: false },
+    searchlight: { trigger: 'searchlight_detected', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_searchlight_hint', message: 'Searchlight sweep detected on deck.', pauseGame: false },
+    bossIntro: { trigger: 'boss_intro', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_boss_intro', message: 'Shielded Deck Commander encountered.', pauseGame: true },
+    bossMidfight: { trigger: 'boss_midfight', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_boss_midfight', message: 'Commander pattern changed.', pauseGame: false },
+    bossDefeated: { trigger: 'boss_defeated', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_boss_defeated', message: 'Deck commander down.', pauseGame: true },
+    secret: { trigger: 'secret_frequency', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_secret_found', message: 'Tanker hidden archive recovered.', pauseGame: false }
+  }
+};
+
+const MISSION_PROFILES: Record<string, MissionProfile> = {
+  [SHADOW_DOCK_PROFILE.id]: SHADOW_DOCK_PROFILE,
+  [TANKER_HOLD_PROFILE.id]: TANKER_HOLD_PROFILE
+};
+
+function getActiveMissionProfile(): MissionProfile {
+  if (typeof window === 'undefined') return SHADOW_DOCK_PROFILE;
+  const rawMissionId = window.localStorage.getItem(MISSION_STORAGE_KEY);
+  let requestedMissionId = SHADOW_DOCK_PROFILE.id;
+
+  if (rawMissionId) {
+    try {
+      const parsed = JSON.parse(rawMissionId) as unknown;
+      requestedMissionId = typeof parsed === 'string' ? parsed : rawMissionId;
+    } catch {
+      requestedMissionId = rawMissionId;
+    }
+  }
+
+  return MISSION_PROFILES[requestedMissionId] ?? SHADOW_DOCK_PROFILE;
+}
+
 export class SideOpsScene extends Phaser.Scene {
+  private profile: MissionProfile = SHADOW_DOCK_PROFILE;
   private player!: Phaser.Physics.Arcade.Sprite;
   private cameraNode!: Phaser.Physics.Arcade.Sprite;
   private lockedDoor!: Phaser.Physics.Arcade.Sprite;
@@ -123,42 +370,25 @@ export class SideOpsScene extends Phaser.Scene {
   }
 
   create(): void {
+    this.profile = getActiveMissionProfile();
     this.resetMissionState();
     this.missionStartTime = this.time.now;
-    this.physics.world.setBounds(0, 0, 3800, 540);
-    this.cameras.main.setBounds(0, 0, 3800, 540);
+    this.physics.world.setBounds(0, 0, this.profile.worldWidth, 540);
+    this.cameras.main.setBounds(0, 0, this.profile.worldWidth, 540);
 
     this.addSkyAndBackdrops();
 
     this.platforms = this.physics.add.staticGroup();
-    this.createPlatform(this.platforms, 480, 520, 16);
-    this.createPlatform(this.platforms, 1120, 520, 16);
-    this.createPlatform(this.platforms, 1760, 520, 16);
-    this.createPlatform(this.platforms, 2410, 520, 16);
-    this.createPlatform(this.platforms, 3150, 520, 22);
-    this.createPlatform(this.platforms, 520, 410, 3);
-    this.createPlatform(this.platforms, 960, 330, 4);
-    this.createPlatform(this.platforms, 1320, 430, 3);
-    this.createPlatform(this.platforms, 1940, 360, 4);
-    this.createPlatform(this.platforms, 2320, 315, 3);
-    this.createPlatform(this.platforms, 3050, 385, 4);
-    this.createPlatform(this.platforms, 3390, 305, 3);
+    this.profile.platforms.forEach((platform) => this.createPlatform(this.platforms, platform.x, platform.y, platform.scaleX));
+    this.profile.crates.forEach((crate) => this.addCrate(crate.x, crate.y, this.platforms));
 
-    this.addCrate(360, 480, this.platforms);
-    this.addCrate(1380, 390, this.platforms);
-    this.addCrate(1810, 480, this.platforms);
-    this.addCrate(2055, 320, this.platforms);
-    this.addCrate(2550, 480, this.platforms);
-    this.addCrate(2750, 480, this.platforms);
-    this.addCrate(3220, 480, this.platforms);
-
-    this.player = this.physics.add.sprite(90, 454, 'player');
+    this.player = this.physics.add.sprite(this.profile.start.x, this.profile.start.y, 'player');
     this.player.setCollideWorldBounds(true);
     this.player.setDragX(1250);
     this.player.setMaxVelocity(270, 540);
     this.physics.add.collider(this.player, this.platforms);
 
-    this.lockedDoor = this.physics.add.staticSprite(1510, 462, 'door');
+    this.lockedDoor = this.physics.add.staticSprite(this.profile.door.x, this.profile.door.y, 'door');
     this.physics.add.collider(
       this.player,
       this.lockedDoor,
@@ -167,7 +397,7 @@ export class SideOpsScene extends Phaser.Scene {
       this
     );
 
-    this.cameraNode = this.physics.add.staticSprite(1210, 235, 'cameraNode');
+    this.cameraNode = this.physics.add.staticSprite(this.profile.camera.x, this.profile.camera.y, 'cameraNode');
 
     this.bullets = this.physics.add.group({ defaultKey: 'bullet', maxSize: 34 });
     this.enemyBullets = this.physics.add.group({ defaultKey: 'enemyBullet', maxSize: 42 });
@@ -182,14 +412,12 @@ export class SideOpsScene extends Phaser.Scene {
       this.damagePlayer(14, 'rifle');
     });
 
-    this.spawnGuard({ x: 700, y: 454, patrolMin: 540, patrolMax: 805, role: 'patrol' });
-    this.spawnGuard({ x: 1690, y: 454, patrolMin: 1580, patrolMax: 1880, role: 'patrol' });
-    this.spawnGuard({ x: 2200, y: 454, patrolMin: 2080, patrolMax: 2400, role: 'patrol' });
+    this.profile.guards.forEach((guard) => this.spawnGuard(guard));
 
     this.createPickups(this.platforms);
     this.createBoss();
 
-    this.elevator = this.physics.add.staticSprite(3630, 470, 'elevator');
+    this.elevator = this.physics.add.staticSprite(this.profile.elevator.x, this.profile.elevator.y, 'elevator');
     this.physics.add.overlap(this.player, this.elevator, () => this.completeMission());
 
     this.cameras.main.startFollow(this.player, true, 0.08, 0.08);
@@ -208,7 +436,7 @@ export class SideOpsScene extends Phaser.Scene {
       this.offMissionRestart?.();
     });
 
-    this.emitCodec('mission_start', 'campbell_mgs1', 'mgs1_campbell_mission_start', 'Mission briefing ready.', true);
+    this.emitProfileCodec(this.profile.codec.missionStart);
     this.emitHudUpdate();
   }
 
@@ -236,15 +464,15 @@ export class SideOpsScene extends Phaser.Scene {
     this.maxHealth = 100;
     this.health = 100;
     this.maxAmmo = 30;
-    this.ammo = 26;
-    this.rations = 1;
-    this.chaff = 1;
+    this.ammo = this.profile.startAmmo;
+    this.rations = this.profile.startRations;
+    this.chaff = this.profile.startChaff;
     this.chaffActiveUntil = 0;
     this.hasKeycard = false;
     this.cameraDisabled = false;
     this.missionCompleted = false;
     this.objectiveStage = 'recover_keycard';
-    this.completedObjectives = new Set(['enter_dock']);
+    this.completedObjectives = new Set(this.profile.initialObjectives);
     this.secretsFound = new Set();
     this.alertState = 'NORMAL';
     this.suspicionMeter = 0;
@@ -279,20 +507,35 @@ export class SideOpsScene extends Phaser.Scene {
   }
 
   private addSkyAndBackdrops(): void {
-    this.add.rectangle(1900, 270, 3800, 540, 0x041007).setDepth(-20);
-    this.add.rectangle(1900, 515, 3800, 52, 0x06120a).setDepth(-12);
-    for (let x = 120; x < 3800; x += 190) {
-      this.add.rectangle(x, 486, 80, 44, 0x081c0e).setDepth(-5);
+    const width = this.profile.worldWidth;
+    this.add.rectangle(width / 2, 270, width, 540, this.profile.backdropColor).setDepth(-20);
+    this.add.rectangle(width / 2, 515, width, 52, this.profile.groundColor).setDepth(-12);
+
+    for (let x = 120; x < width; x += this.profile.id === 'tanker_hold_002' ? 155 : 190) {
+      this.add.rectangle(x, 486, this.profile.id === 'tanker_hold_002' ? 120 : 80, 44, this.profile.structureColor).setDepth(-5);
     }
-    for (let x = 250; x < 3740; x += 420) {
-      this.add.rectangle(x, 300, 34, 380, 0x07190d).setDepth(-10);
-      this.add.rectangle(x, 110, 120, 14, 0x0d2a14).setDepth(-9);
+
+    for (let x = 250; x < width - 60; x += this.profile.id === 'tanker_hold_002' ? 360 : 420) {
+      this.add.rectangle(x, 300, this.profile.id === 'tanker_hold_002' ? 46 : 34, 380, this.profile.structureColor).setDepth(-10);
+      this.add.rectangle(x, 110, this.profile.id === 'tanker_hold_002' ? 160 : 120, 14, 0x1c526f).setDepth(-9);
     }
-    for (let x = 1680; x < 3500; x += 320) {
-      this.add.rectangle(x, 455, 120, 68, 0x0b2011).setDepth(-4);
-      this.add.rectangle(x, 418, 132, 10, 0x174820).setDepth(-3);
+
+    if (this.profile.id === 'tanker_hold_002') {
+      for (let x = 90; x < width; x += 130) {
+        this.add.line(x, 0, 0, 0, -60, 540, 0x72b7ff, 0.14).setDepth(-2);
+      }
+      for (let x = 1680; x < width - 200; x += 300) {
+        this.add.rectangle(x, 455, 160, 68, 0x0d2433).setDepth(-4);
+        this.add.rectangle(x, 416, 174, 10, 0x2b6c91).setDepth(-3);
+      }
+    } else {
+      for (let x = 1680; x < width - 300; x += 320) {
+        this.add.rectangle(x, 455, 120, 68, 0x0b2011).setDepth(-4);
+        this.add.rectangle(x, 418, 132, 10, 0x174820).setDepth(-3);
+      }
     }
-    this.add.text(28, 24, 'MISSION 001 // DOCK INFILTRATION // COMPLETE PROTOTYPE', {
+
+    this.add.text(28, 24, this.profile.header, {
       fontFamily: 'monospace',
       fontSize: '18px',
       color: '#7cff6b'
@@ -306,7 +549,7 @@ export class SideOpsScene extends Phaser.Scene {
       color: '#caffbd'
     }).setScrollFactor(0).setDepth(50);
 
-    this.objectiveText = this.add.text(28, 80, 'OBJECTIVE: Recover Keycard Lv.1', {
+    this.objectiveText = this.add.text(28, 80, `OBJECTIVE: ${this.getObjectiveLabel()}`,  {
       fontFamily: 'monospace',
       fontSize: '14px',
       color: '#f8f49a'
@@ -333,7 +576,7 @@ export class SideOpsScene extends Phaser.Scene {
 
   private createPlatform(group: Phaser.Physics.Arcade.StaticGroup, x: number, y: number, scaleX: number): void {
     const platform = group.create(x, y, 'platform') as Phaser.Physics.Arcade.Sprite;
-    platform.setScale(scaleX, 1).refreshBody();
+    platform.setScale(scaleX, 1).setTint(this.profile.id === 'tanker_hold_002' ? 0x5fb8d6 : 0x7cff6b).refreshBody();
   }
 
   private addCrate(x: number, y: number, platforms: Phaser.Physics.Arcade.StaticGroup): void {
@@ -342,7 +585,7 @@ export class SideOpsScene extends Phaser.Scene {
   }
 
   private spawnGuard(config: { x: number; y: number; patrolMin: number; patrolMax: number; role: GuardRole }): GuardUnit {
-    const key = config.role === 'reinforcement' ? 'reinforcementGuard' : 'guard';
+    const key = config.role === 'reinforcement' ? this.profile.reinforcementTexture : this.profile.guardTexture;
     const sprite = this.physics.add.sprite(config.x, config.y, key);
     sprite.setCollideWorldBounds(true);
     sprite.setDragX(900);
@@ -371,12 +614,12 @@ export class SideOpsScene extends Phaser.Scene {
   }
 
   private createBoss(): void {
-    const sprite = this.physics.add.sprite(2990, 456, 'bossCaptain');
+    const sprite = this.physics.add.sprite(this.profile.boss.x, this.profile.boss.y, this.profile.boss.texture);
     sprite.setDragX(850);
     sprite.setMaxVelocity(170, 500);
     sprite.setTint(0x7a8f62);
     this.physics.add.collider(sprite, this.platforms);
-    this.physics.add.overlap(this.player, sprite, () => this.damagePlayer(this.boss?.phase === 2 ? 16 : 11, 'armored captain'), undefined, this);
+    this.physics.add.overlap(this.player, sprite, () => this.damagePlayer(this.boss?.phase === 2 ? 16 : 11, this.profile.boss.name), undefined, this);
     this.physics.add.overlap(this.bullets, sprite, (bullet) => {
       this.destroyPhysicsObject(bullet);
       this.hitBoss('SOCOM');
@@ -384,8 +627,8 @@ export class SideOpsScene extends Phaser.Scene {
 
     this.boss = {
       sprite,
-      hp: 10,
-      maxHp: 10,
+      hp: this.profile.boss.hp,
+      maxHp: this.profile.boss.hp,
       active: false,
       defeated: false,
       phase: 1,
@@ -396,7 +639,7 @@ export class SideOpsScene extends Phaser.Scene {
   }
 
   private createPickups(platforms: Phaser.Physics.Arcade.StaticGroup): void {
-    const keycard = this.physics.add.sprite(1000, 290, 'keycard');
+    const keycard = this.physics.add.sprite(this.profile.keycard.x, this.profile.keycard.y, 'keycard');
     keycard.setImmovable(true);
     this.physics.add.collider(keycard, platforms);
     this.physics.add.overlap(this.player, keycard, () => {
@@ -404,28 +647,32 @@ export class SideOpsScene extends Phaser.Scene {
       this.hasKeycard = true;
       this.completedObjectives.add('recover_keycard');
       keycard.destroy();
-      this.objectiveText.setText('OBJECTIVE: Open the Lv.1 security door');
-      this.emitCodec('keycard_found', 'campbell_mgs1', 'mgs1_campbell_keycard_found', 'Keycard Lv.1 recovered. Codec hint available.', false);
+      this.objectiveText.setText(`OBJECTIVE: ${this.profile.stageLabels.open_security_door}`);
+      this.emitProfileCodec(this.profile.codec.keycardFound);
     });
 
-    this.createPickup(430, 380, 'ration', () => {
-      this.rations += 1;
-      this.flashStatus('RATION ACQUIRED');
-    }, platforms);
+    this.profile.pickups.forEach((pickup) => {
+      if (pickup.kind === 'ration') {
+        this.createPickup(pickup.x, pickup.y, 'ration', () => {
+          this.rations += 1;
+          this.flashStatus('RATION ACQUIRED');
+        }, platforms);
+      }
+      if (pickup.kind === 'chaff') {
+        this.createPickup(pickup.x, pickup.y, 'chaffPickup', () => {
+          this.chaff += 1;
+          this.flashStatus('CHAFF GRENADE ACQUIRED');
+        }, platforms);
+      }
+      if (pickup.kind === 'ammo') {
+        this.createPickup(pickup.x, pickup.y, 'ammoBox', () => {
+          this.ammo = Math.min(this.maxAmmo, this.ammo + 10);
+          this.flashStatus('SOCOM AMMO ACQUIRED');
+        }, platforms);
+      }
+    });
 
-    this.createPickup(1320, 390, 'chaffPickup', () => {
-      this.chaff += 1;
-      this.flashStatus('CHAFF GRENADE ACQUIRED');
-    }, platforms);
-
-    this.createPickup(2050, 320, 'ammoBox', () => {
-      this.ammo = Math.min(this.maxAmmo, this.ammo + 10);
-      this.flashStatus('SOCOM AMMO ACQUIRED');
-    }, platforms);
-
-    this.createSecret(560, 374, 'dog_tag_secret', 'DOG TAG CACHE');
-    this.createSecret(2320, 275, 'mo_disc_secret', 'OPTICAL DISC');
-    this.createSecret(3405, 265, 'cassette_secret', 'CODEC TAPE');
+    this.profile.secrets.forEach((secret) => this.createSecret(secret.x, secret.y, secret.id, secret.label));
   }
 
   private createPickup(
@@ -456,7 +703,7 @@ export class SideOpsScene extends Phaser.Scene {
       this.flashStatus(`SECRET FOUND: ${label}`);
       if (!this.secretCodecEmitted) {
         this.secretCodecEmitted = true;
-        this.emitCodec('secret_frequency', 'otacon_mgs1', 'mgs1_otacon_secret_found', 'Hidden signal archive recovered.', false);
+        this.emitProfileCodec(this.profile.codec.secret);
       }
     });
   }
@@ -498,8 +745,7 @@ export class SideOpsScene extends Phaser.Scene {
     if (Phaser.Input.Keyboard.JustDown(this.keys.F)) this.useChaff();
     if (Phaser.Input.Keyboard.JustDown(this.keys.R)) this.useRation();
     if (Phaser.Input.Keyboard.JustDown(this.keys.C)) {
-      const conversationId = this.objectiveStage === 'defeat_captain' ? 'mgs1_campbell_boss_intro' : 'mgs1_campbell_default';
-      this.emitCodec('manual_call', 'campbell_mgs1', conversationId, 'Manual Codec request from Side Ops.', false);
+      this.emitProfileCodec(this.objectiveStage === 'defeat_captain' ? this.profile.codec.bossIntro : this.profile.codec.manual);
     }
   }
 
@@ -535,7 +781,7 @@ export class SideOpsScene extends Phaser.Scene {
     this.chaff -= 1;
     this.chaffActiveUntil = this.time.now + 6500;
     this.flashStatus('CHAFF ACTIVE: ELECTRONICS DISRUPTED');
-    this.emitCodec('manual_call', 'otacon_mgs1', 'mgs1_otacon_chaff_hint', 'Chaff deployed. Camera and searchlight signals disrupted.', false);
+    this.emitProfileCodec(this.profile.codec.chaff);
   }
 
   private useRation(): void {
@@ -579,7 +825,7 @@ export class SideOpsScene extends Phaser.Scene {
   private handleBoss(): void {
     if (!this.boss || this.boss.defeated || this.health <= 0) return;
 
-    if (!this.boss.active && this.player.x > 2580) {
+    if (!this.boss.active && this.player.x > this.profile.completionX.bossArena) {
       this.activateBoss();
     }
 
@@ -608,13 +854,13 @@ export class SideOpsScene extends Phaser.Scene {
     if (!this.boss || this.boss.active) return;
     this.boss.active = true;
     this.boss.sprite.clearTint();
-    this.boss.sprite.setTint(0xffdf85);
+    this.boss.sprite.setTint(this.profile.boss.tintPhaseOne);
     this.completedObjectives.add('reach_boss_arena');
     this.objectiveStage = 'defeat_captain';
-    this.triggerAlert('armored captain encounter');
+    this.triggerAlert(`${this.profile.boss.name.toLowerCase()} encounter`);
     if (!this.bossIntroEmitted) {
       this.bossIntroEmitted = true;
-      this.emitCodec('boss_intro', 'campbell_mgs1', 'mgs1_campbell_boss_intro', 'Armored Guard Captain encountered.', true);
+      this.emitProfileCodec(this.profile.codec.bossIntro);
     }
   }
 
@@ -636,16 +882,16 @@ export class SideOpsScene extends Phaser.Scene {
 
     boss.hp = Math.max(0, boss.hp - (source === 'CQC' ? 1 : 1));
     boss.sprite.setTint(0xff9f6b);
-    this.time.delayedCall(120, () => boss.sprite.active && !boss.defeated && boss.sprite.setTint(boss.phase === 2 ? 0xff6b6b : 0xffdf85));
-    this.flashStatus(`CAPTAIN ARMOR HIT: ${boss.hp}/${boss.maxHp}`);
+    this.time.delayedCall(120, () => boss.sprite.active && !boss.defeated && boss.sprite.setTint(boss.phase === 2 ? this.profile.boss.tintPhaseTwo : this.profile.boss.tintPhaseOne));
+    this.flashStatus(`${this.profile.boss.name.toUpperCase()} ARMOR HIT: ${boss.hp}/${boss.maxHp}`);
 
     if (boss.hp <= Math.floor(boss.maxHp / 2) && boss.phase === 1) {
       boss.phase = 2;
       boss.sprite.setTint(0xff6b6b);
-      this.flashStatus('BOSS PHASE 2: AGGRESSIVE PATTERN');
+      this.flashStatus(`${this.profile.boss.name.toUpperCase()} PHASE 2: AGGRESSIVE PATTERN`);
       if (!this.bossMidfightEmitted) {
         this.bossMidfightEmitted = true;
-        this.emitCodec('boss_midfight', 'naomi_mgs1', 'mgs1_naomi_boss_midfight', 'Boss armor pattern changed.', false);
+        this.emitProfileCodec(this.profile.codec.bossMidfight);
       }
     }
 
@@ -662,10 +908,10 @@ export class SideOpsScene extends Phaser.Scene {
     this.completedObjectives.add('defeat_captain');
     this.objectiveStage = 'extract';
     this.suspicionMeter = Math.min(this.suspicionMeter, 45);
-    this.flashStatus('ARMORED GUARD CAPTAIN DEFEATED');
+    this.flashStatus(`${this.profile.boss.name.toUpperCase()} DEFEATED`);
     if (!this.bossDefeatedEmitted) {
       this.bossDefeatedEmitted = true;
-      this.emitCodec('boss_defeated', 'campbell_mgs1', 'mgs1_campbell_boss_defeated', 'Boss defeated. Extraction route open.', true);
+      this.emitProfileCodec(this.profile.codec.bossDefeated);
     }
   }
 
@@ -695,10 +941,10 @@ export class SideOpsScene extends Phaser.Scene {
   private handleSearchlightSweep(): void {
     this.searchlightGraphics.clear();
     const chaffActive = this.isChaffActive();
-    const originX = 1990;
-    const originY = 118;
+    const originX = this.profile.searchlight.x;
+    const originY = this.profile.searchlight.y;
     const sweep = Math.sin(this.time.now / 980);
-    const targetX = originX + sweep * 360;
+    const targetX = originX + sweep * this.profile.searchlight.sweep;
     const targetY = 505;
 
     this.searchlightGraphics.fillStyle(chaffActive ? 0x88a8ff : 0xf8f49a, chaffActive ? 0.05 : 0.13);
@@ -714,9 +960,9 @@ export class SideOpsScene extends Phaser.Scene {
     this.bossBarrierGraphics.clear();
     if (this.boss?.active && !this.boss.defeated) {
       this.bossBarrierGraphics.fillStyle(0xff6b6b, 0.1);
-      this.bossBarrierGraphics.fillRect(2580, 110, 580, 410);
+      this.bossBarrierGraphics.fillRect(this.profile.completionX.bossArena, 110, 580, 410);
       this.bossBarrierGraphics.lineStyle(2, 0xff6b6b, 0.45);
-      this.bossBarrierGraphics.strokeRect(2580, 110, 580, 410);
+      this.bossBarrierGraphics.strokeRect(this.profile.completionX.bossArena, 110, 580, 410);
     }
   }
 
@@ -752,7 +998,7 @@ export class SideOpsScene extends Phaser.Scene {
 
     if (this.boss?.active && !this.boss.defeated && Math.abs(this.player.x - this.boss.sprite.x) < 620) {
       detectionAmount = Math.max(detectionAmount, 2.2);
-      source = 'armored captain line of fire';
+      source = `${this.profile.boss.name.toLowerCase()} line of fire`;
     }
 
     if (detectionAmount > 0) {
@@ -797,9 +1043,9 @@ export class SideOpsScene extends Phaser.Scene {
   }
 
   private isPlayerInSearchlightCone(): boolean {
-    const originX = 1990;
+    const originX = this.profile.searchlight.x;
     const sweep = Math.sin(this.time.now / 980);
-    const targetX = originX + sweep * 360;
+    const targetX = originX + sweep * this.profile.searchlight.sweep;
     const dx = Math.abs(this.player.x - targetX);
     return this.player.y > 330 && dx < 108;
   }
@@ -808,11 +1054,11 @@ export class SideOpsScene extends Phaser.Scene {
     this.lastAlertSource = source;
     if (source === 'security camera' && !this.firstCameraDetectionEmitted) {
       this.firstCameraDetectionEmitted = true;
-      this.emitCodec('camera_detected', 'otacon_mgs1', 'mgs1_otacon_tech', 'Camera sightline detected. Technical support available.', false);
+      this.emitProfileCodec(this.profile.codec.cameraDetected);
     }
     if (source === 'searchlight sweep' && !this.firstSearchlightDetectionEmitted) {
       this.firstSearchlightDetectionEmitted = true;
-      this.emitCodec('searchlight_detected', 'otacon_mgs1', 'mgs1_otacon_searchlight_hint', 'Searchlight sweep detected. Technical support available.', false);
+      this.emitProfileCodec(this.profile.codec.searchlight);
     }
     this.suspicionDecayBlockedUntil = this.time.now + 450;
 
@@ -830,7 +1076,7 @@ export class SideOpsScene extends Phaser.Scene {
       this.setAlertState('SUSPICION', source, 'Suspicion rising');
       if (!this.firstSuspicionEmitted) {
         this.firstSuspicionEmitted = true;
-        this.emitCodec('suspicion', 'campbell_mgs1', 'mgs1_campbell_suspicion', 'Suspicion detected. Codec support available.', false);
+        this.emitProfileCodec(this.profile.codec.suspicion);
       }
     }
 
@@ -866,7 +1112,7 @@ export class SideOpsScene extends Phaser.Scene {
 
     if (!this.firstAlertEmitted) {
       this.firstAlertEmitted = true;
-      this.emitCodec('first_alert', 'campbell_mgs1', 'mgs1_campbell_first_alert', 'ALERT triggered. Codec support available.', true);
+      this.emitProfileCodec(this.profile.codec.firstAlert);
     }
   }
 
@@ -888,7 +1134,7 @@ export class SideOpsScene extends Phaser.Scene {
       this.alertPhaseEndsAt = this.time.now + 2600;
       if (!this.firstEvasionEmitted) {
         this.firstEvasionEmitted = true;
-        this.emitCodec('evasion', 'campbell_mgs1', 'mgs1_campbell_evasion', 'Evasion phase started. Stay hidden.', false);
+        this.emitProfileCodec(this.profile.codec.evasion);
       }
     } else if (this.alertState === 'EVASION' && this.time.now > this.alertPhaseEndsAt) {
       this.suspicionMeter = 45;
@@ -896,7 +1142,7 @@ export class SideOpsScene extends Phaser.Scene {
       this.alertPhaseEndsAt = this.time.now + 3600;
       if (!this.firstCautionEmitted) {
         this.firstCautionEmitted = true;
-        this.emitCodec('caution', 'miller_mgs1', 'mgs1_miller_caution', 'Caution phase active. Patrols remain tense.', false);
+        this.emitProfileCodec(this.profile.codec.caution);
       }
     } else if (this.alertState === 'CAUTION' && (this.time.now > this.alertPhaseEndsAt || this.suspicionMeter <= 3)) {
       this.suspicionMeter = 0;
@@ -913,6 +1159,8 @@ export class SideOpsScene extends Phaser.Scene {
 
   private emitAlertEvent(level: string, source: string, message: string): void {
     const payload: AlertEventPayload = {
+      missionId: this.profile.id,
+      missionTitle: this.profile.title,
       level,
       alerts: this.alertCount,
       source,
@@ -935,9 +1183,9 @@ export class SideOpsScene extends Phaser.Scene {
     if (this.reinforcementCount >= 3) return;
     if (this.nextReinforcementAt === 0 || this.time.now < this.nextReinforcementAt) return;
 
-    const spawnX = this.player.x < 1900 ? 3460 : 260;
-    const patrolMin = Phaser.Math.Clamp(spawnX - 260, 80, 3660);
-    const patrolMax = Phaser.Math.Clamp(spawnX + 260, 160, 3720);
+    const spawnX = this.player.x < this.profile.worldWidth / 2 ? this.profile.worldWidth - 340 : 260;
+    const patrolMin = Phaser.Math.Clamp(spawnX - 260, 80, this.profile.worldWidth - 140);
+    const patrolMax = Phaser.Math.Clamp(spawnX + 260, 160, this.profile.worldWidth - 80);
     const guard = this.spawnGuard({ x: spawnX, y: 454, patrolMin, patrolMax, role: 'reinforcement' });
     guard.direction = spawnX > this.player.x ? -1 : 1;
     guard.sprite.setTint(0xffdf85);
@@ -947,7 +1195,7 @@ export class SideOpsScene extends Phaser.Scene {
 
     if (!this.reinforcementCodecEmitted) {
       this.reinforcementCodecEmitted = true;
-      this.emitCodec('reinforcement', 'campbell_mgs1', 'mgs1_campbell_reinforcement', 'Reinforcements deployed. Codec warning available.', false);
+      this.emitProfileCodec(this.profile.codec.reinforcement);
     }
 
     if (this.reinforcementCount < 3 && !this.boss?.active) this.scheduleReinforcement();
@@ -1019,7 +1267,7 @@ export class SideOpsScene extends Phaser.Scene {
     target.sprite.setTint(0x456b49);
     this.neutralizations += 1;
     this.flashStatus(behindGuard ? 'CQC NON-LETHAL TAKEDOWN' : 'CQC TAKEDOWN');
-    this.emitCodec('manual_call', 'campbell_mgs1', 'mgs1_campbell_cqc_hint', 'Guard neutralized quietly.', false);
+    this.emitProfileCodec(this.profile.codec.cqc);
 
     if (!behindGuard && this.alertState !== 'ALERT') this.increaseSuspicion(22, 'visible CQC takedown');
   }
@@ -1049,7 +1297,7 @@ export class SideOpsScene extends Phaser.Scene {
     this.camerasDisabled += 1;
     this.cameraNode.setTint(0x456b49);
     this.flashStatus('CAMERA DESTROYED');
-    this.emitCodec('camera_detected', 'otacon_mgs1', 'mgs1_otacon_camera_down', 'Security camera disabled.', false);
+    this.emitProfileCodec(this.profile.codec.cameraDown);
     this.registerNoise(20, 'camera destroyed');
   }
 
@@ -1064,7 +1312,7 @@ export class SideOpsScene extends Phaser.Scene {
 
     if (this.health <= 35 && !this.lowHealthEmitted) {
       this.lowHealthEmitted = true;
-      this.emitCodec('low_health', 'naomi_mgs1', 'mgs1_naomi_medical', 'Health critical. Medical support available.', true);
+      this.emitProfileCodec(this.profile.codec.lowHealth);
     }
 
     if (this.health <= 0) this.failMission(source);
@@ -1077,7 +1325,7 @@ export class SideOpsScene extends Phaser.Scene {
     this.player.setTint(0x333333);
     this.player.setVelocity(0, 0);
     this.objectiveText.setText('MISSION FAILED: press ENTER in result screen to retry');
-    this.emitCodec('low_health', 'naomi_mgs1', 'mgs1_naomi_mission_failed', 'Snake is down. Mission failed.', false);
+    this.emitProfileCodec(this.profile.codec.missionFailed);
     this.emitHudUpdate();
 
     const result = this.buildMissionResult(false, `Mission failed: ${source}`);
@@ -1096,8 +1344,8 @@ export class SideOpsScene extends Phaser.Scene {
       return;
     }
 
-    if (this.player.x > 1545) this.completedObjectives.add('open_security_door');
-    if (this.player.x > 2140) this.completedObjectives.add('cross_security_yard');
+    if (this.player.x > this.profile.completionX.openDoor) this.completedObjectives.add('open_security_door');
+    if (this.player.x > this.profile.completionX.crossYard) this.completedObjectives.add('cross_security_yard');
 
     if (this.boss?.active && !this.boss.defeated) this.objectiveStage = 'defeat_captain';
     else if (this.boss?.defeated) this.objectiveStage = 'extract';
@@ -1106,20 +1354,13 @@ export class SideOpsScene extends Phaser.Scene {
   }
 
   private getObjectiveLabel(): string {
-    switch (this.objectiveStage) {
-      case 'recover_keycard': return 'Recover Keycard Lv.1';
-      case 'open_security_door': return 'Open Lv.1 security door';
-      case 'cross_security_yard': return 'Cross searchlight yard';
-      case 'defeat_captain': return 'Defeat Armored Guard Captain';
-      case 'extract': return 'Reach cargo elevator';
-      default: return 'Advance mission';
-    }
+    return this.profile.stageLabels[this.objectiveStage] ?? 'Advance mission';
   }
 
   private updateHudText(): void {
     const chaffLabel = this.isChaffActive() ? 'ACTIVE' : 'READY';
     this.statusText.setText(
-      `STATUS: ${this.alertState} | CARD: ${this.hasKeycard ? 'LV.1' : 'NONE'} | OBJ ${this.completedObjectives.size}/5 | SECRETS ${this.secretsFound.size}/${this.totalSecrets} | STEALTH ${this.getStealthScore()}`
+      `STATUS: ${this.alertState} | CARD: ${this.hasKeycard ? 'LV.1' : 'NONE'} | OBJ ${this.completedObjectives.size}/${this.profile.totalObjectives} | SECRETS ${this.secretsFound.size}/${this.totalSecrets} | STEALTH ${this.getStealthScore()}`
     );
     this.objectiveText.setText(`OBJECTIVE: ${this.getObjectiveLabel()}`);
     this.alertText.setText(
@@ -1129,7 +1370,7 @@ export class SideOpsScene extends Phaser.Scene {
       `HP ${this.health}/${this.maxHealth} | SOCOM ${this.ammo}/${this.maxAmmo} | RATION ${this.rations} | CHAFF ${this.chaff} ${chaffLabel} | J SHOOT | SPACE CQC | F CHAFF | R RATION | C CODEC`
     );
     if (this.boss?.active && !this.boss.defeated) {
-      this.bossText.setText(`BOSS: ARMORED GUARD CAPTAIN | PHASE ${this.boss.phase} | ARMOR ${this.boss.hp}/${this.boss.maxHp}`);
+      this.bossText.setText(`BOSS: ${this.profile.boss.name.toUpperCase()} | PHASE ${this.boss.phase} | ARMOR ${this.boss.hp}/${this.boss.maxHp}`);
     } else if (this.boss?.defeated) {
       this.bossText.setText('BOSS: NEUTRALIZED | EXTRACTION ROUTE OPEN');
     } else {
@@ -1141,6 +1382,9 @@ export class SideOpsScene extends Phaser.Scene {
     const bossActive = Boolean(this.boss?.active && !this.boss?.defeated);
     const bossDefeated = Boolean(this.boss?.defeated);
     const payload: MissionHudPayload = {
+      missionId: this.profile.id,
+      missionTitle: this.profile.title,
+      bossName: this.profile.boss.name,
       health: this.health,
       maxHealth: this.maxHealth,
       ammo: this.ammo,
@@ -1162,6 +1406,7 @@ export class SideOpsScene extends Phaser.Scene {
       objective: this.getObjectiveLabel(),
       objectiveStage: this.objectiveStage,
       objectivesCompleted: this.completedObjectives.size,
+      totalObjectives: this.profile.totalObjectives,
       secretsFound: this.secretsFound.size,
       totalSecrets: this.totalSecrets,
       bossActive,
@@ -1232,23 +1477,27 @@ export class SideOpsScene extends Phaser.Scene {
     }
   }
 
+  private emitProfileCodec(call: CodecProfileCall): void {
+    this.emitCodec(call.trigger, call.contactId, call.conversationId, call.message, call.pauseGame);
+  }
+
   private completeMission(): void {
     if (this.missionCompleted) return;
     if (!this.hasKeycard) {
-      this.objectiveText.setText('OBJECTIVE: Need Keycard Lv.1 before extraction');
+      this.objectiveText.setText(`OBJECTIVE: Need ${this.profile.keycard.label} before extraction`);
       return;
     }
     if (!this.boss?.defeated) {
-      this.objectiveText.setText('OBJECTIVE: Armored Captain still controls extraction route');
+      this.objectiveText.setText(`OBJECTIVE: ${this.profile.boss.name} still controls extraction route`);
       if (!this.boss?.active) this.activateBoss();
       return;
     }
 
     this.missionCompleted = true;
     this.completedObjectives.add('extract');
-    const result = this.buildMissionResult(true, 'Mission clear: cargo elevator reached');
+    const result = this.buildMissionResult(true, `Mission clear: ${this.profile.elevator.label} reached`);
     emitGameEvent<MissionCompletePayload>(GAME_EVENT.MISSION_COMPLETE, result);
-    this.emitCodec('mission_complete', 'campbell_mgs1', 'mgs1_campbell_mission_complete', `Mission complete. Rank preview: ${result.rankPreview}`, true);
+    this.emitProfileCodec({ ...this.profile.codec.missionComplete, message: `Mission complete. Rank preview: ${result.rankPreview}` });
     this.scene.start('MissionCompleteScene', result);
   }
 
@@ -1268,7 +1517,9 @@ export class SideOpsScene extends Phaser.Scene {
       : 'MISSION FAILED';
 
     return {
-      missionId: 'shadow_dock_001',
+      missionId: this.profile.id,
+      missionTitle: this.profile.title,
+      bossName: this.profile.boss.name,
       success,
       outcome,
       rankPreview,
@@ -1281,6 +1532,7 @@ export class SideOpsScene extends Phaser.Scene {
       damageTaken: this.damageTaken,
       camerasDisabled: this.camerasDisabled,
       objectivesCompleted: this.completedObjectives.size,
+      totalObjectives: this.profile.totalObjectives,
       secretsFound: this.secretsFound.size,
       totalSecrets: this.totalSecrets,
       bossDefeated: Boolean(this.boss?.defeated),

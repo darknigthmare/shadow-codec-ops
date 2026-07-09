@@ -166,5 +166,172 @@
         "pauseGame": false
       }
     ]
+  },
+  {
+    "id": "tanker_hold_002",
+    "title": "Tanker Hold Sabotage",
+    "era": "mgs2",
+    "mode": "side_scroller",
+    "location": "Rain Deck / Cargo Hold",
+    "mainCharacter": "solid_snake",
+    "difficulty": 3,
+    "mapKey": "sideops_tanker_hold_v1",
+    "briefingConversation": "mgs2_otacon_tanker_mission_start",
+    "debriefingConversation": "mgs2_otacon_tanker_mission_complete",
+    "objectives": [
+      {
+        "id": "enter_deck",
+        "label": "Enter the tanker deck",
+        "completedByDefault": true
+      },
+      {
+        "id": "recover_keycard",
+        "label": "Recover the bulkhead keycard",
+        "completedByDefault": false
+      },
+      {
+        "id": "open_security_door",
+        "label": "Open the bulkhead access lock",
+        "completedByDefault": false
+      },
+      {
+        "id": "cross_security_yard",
+        "label": "Cross the rain deck search zone",
+        "completedByDefault": false
+      },
+      {
+        "id": "defeat_captain",
+        "label": "Defeat Shielded Deck Commander",
+        "completedByDefault": false
+      },
+      {
+        "id": "extract",
+        "label": "Reach the cargo hold exit",
+        "completedByDefault": false
+      }
+    ],
+    "availableItems": [
+      "socom_suppressor",
+      "ration",
+      "chaff_grenade",
+      "keycard_lv1",
+      "ammo_box",
+      "hidden_archive_fragment"
+    ],
+    "enemies": [
+      "tanker_deck_guard",
+      "tanker_deck_reinforcement",
+      "camera_turret_placeholder",
+      "searchlight_sweep",
+      "shielded_deck_commander"
+    ],
+    "boss": "shielded_deck_commander",
+    "codecTriggers": [
+      {
+        "trigger": "mission_start",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_mission_start",
+        "priority": "normal",
+        "pauseGame": true
+      },
+      {
+        "trigger": "first_alert",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_first_alert",
+        "priority": "urgent",
+        "pauseGame": true
+      },
+      {
+        "trigger": "keycard_found",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_keycard_found",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "mission_complete",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_mission_complete",
+        "priority": "normal",
+        "pauseGame": true
+      },
+      {
+        "trigger": "low_health",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_low_health",
+        "priority": "urgent",
+        "pauseGame": true
+      },
+      {
+        "trigger": "suspicion",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_suspicion",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "evasion",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_evasion",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "caution",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_caution",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "reinforcement",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_reinforcement",
+        "priority": "urgent",
+        "pauseGame": false
+      },
+      {
+        "trigger": "camera_detected",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_camera_detected",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "searchlight_detected",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_searchlight_hint",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "boss_intro",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_boss_intro",
+        "priority": "urgent",
+        "pauseGame": true
+      },
+      {
+        "trigger": "boss_midfight",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_boss_midfight",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "boss_defeated",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_boss_defeated",
+        "priority": "normal",
+        "pauseGame": true
+      },
+      {
+        "trigger": "secret_frequency",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_secret_found",
+        "priority": "secret",
+        "pauseGame": false
+      }
+    ]
   }
 ]

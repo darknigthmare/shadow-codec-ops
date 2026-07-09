@@ -3,11 +3,11 @@ import { AppLayout, type AppRoute } from './AppLayout';
 import { HomeScreen } from './HomeScreen';
 import { CodecScreen } from '../components/codec/CodecScreen';
 import { SideOpsLauncher } from '../components/sideops/SideOpsLauncher';
-import { PlaceholderScreen } from '../components/common/PlaceholderScreen';
 import { VRMissionsScreen } from '../components/vr/VRMissionsScreen';
 import { TapeArchive } from '../components/tapes/TapeArchive';
 import { ConversationStudio } from '../components/studio/ConversationStudio';
 import { SettingsScreen } from '../components/settings/SettingsScreen';
+import { LoreDatabase } from '../components/lore/LoreDatabase';
 import { loadJson, saveJson } from '../systems/saveEngine';
 import { applyThemeClass } from '../systems/themeEngine';
 import { defaultSettings, type UserSettings } from '../types/theme.types';
@@ -31,12 +31,7 @@ export function App() {
         {route === 'vr' && <VRMissionsScreen />}
         {route === 'tapes' && <TapeArchive />}
         {route === 'studio' && <ConversationStudio />}
-        {route === 'lore' && (
-          <PlaceholderScreen
-            title="LORE DATABASE"
-            subtitle="Base locale personnages, fréquences, organisations, missions, boss, items."
-          />
-        )}
+        {route === 'lore' && <LoreDatabase onRouteChange={setRoute} />}
         {route === 'settings' && <SettingsScreen settings={settings} onSettingsChange={setSettings} />}
       </AppLayout>
     </div>

@@ -1255,5 +1255,379 @@
         "glitchLevel": 3
       }
     ]
+  },
+  {
+    "id": "mgs2_otacon_tanker_mission_start",
+    "era": "mgs2",
+    "title": "Tanker Hold Briefing",
+    "contactId": "otacon_mgs2",
+    "frequency": 141.12,
+    "trigger": "mission_start",
+    "canReplay": true,
+    "lines": [
+      {
+        "speaker": "otacon",
+        "text": "Snake, this side simulation is using the tanker layout pack. Rain, narrow decks, and security cameras will make the route less forgiving.",
+        "emotion": "serious"
+      },
+      {
+        "speaker": "snake",
+        "text": "Objective?",
+        "emotion": "neutral"
+      },
+      {
+        "speaker": "otacon",
+        "text": "Recover the bulkhead keycard, get through the cargo access lock, and sabotage the commander controlling the exit route.",
+        "emotion": "warning"
+      }
+    ]
+  },
+  {
+    "id": "mgs2_otacon_tanker_first_alert",
+    "era": "mgs2",
+    "title": "Deck Alert",
+    "contactId": "otacon_mgs2",
+    "frequency": 141.12,
+    "trigger": "first_alert",
+    "canReplay": true,
+    "lines": [
+      {
+        "speaker": "otacon",
+        "text": "Snake, they triggered a deck-wide alert. The patrol pattern is going to tighten fast.",
+        "emotion": "warning"
+      },
+      {
+        "speaker": "snake",
+        "text": "I noticed.",
+        "emotion": "serious"
+      },
+      {
+        "speaker": "otacon",
+        "text": "Break line of sight. The rain makes visibility unstable, but the searchlights will still catch you if you run straight through.",
+        "emotion": "serious"
+      }
+    ]
+  },
+  {
+    "id": "mgs2_otacon_tanker_keycard_found",
+    "era": "mgs2",
+    "title": "Bulkhead Keycard",
+    "contactId": "otacon_mgs2",
+    "frequency": 141.12,
+    "trigger": "keycard_found",
+    "canReplay": true,
+    "lines": [
+      {
+        "speaker": "otacon",
+        "text": "That keycard should open the bulkhead lock ahead.",
+        "emotion": "neutral"
+      },
+      {
+        "speaker": "snake",
+        "text": "Any surprises?",
+        "emotion": "neutral"
+      },
+      {
+        "speaker": "otacon",
+        "text": "Expect cameras near the door. Chaff is your safest opening if you want to preserve a no-alert run.",
+        "emotion": "serious"
+      }
+    ]
+  },
+  {
+    "id": "mgs2_otacon_tanker_low_health",
+    "era": "mgs2",
+    "title": "Emergency Status",
+    "contactId": "otacon_mgs2",
+    "frequency": 141.12,
+    "trigger": "low_health",
+    "canReplay": true,
+    "lines": [
+      {
+        "speaker": "otacon",
+        "text": "Snake, your vitals are dropping. Use a ration before you push into the hold.",
+        "emotion": "warning"
+      },
+      {
+        "speaker": "snake",
+        "text": "I can keep moving.",
+        "emotion": "serious"
+      },
+      {
+        "speaker": "otacon",
+        "text": "You can, but one burst from the commander will end the mission. Recover first, then advance.",
+        "emotion": "warning"
+      }
+    ]
+  },
+  {
+    "id": "mgs2_otacon_tanker_mission_failed",
+    "era": "mgs2",
+    "title": "Tanker Op Failed",
+    "contactId": "otacon_mgs2",
+    "frequency": 141.12,
+    "trigger": "low_health",
+    "canReplay": true,
+    "lines": [
+      {
+        "speaker": "otacon",
+        "text": "Snake? Snake! The signal is flat. Simulation failed.",
+        "emotion": "warning"
+      },
+      {
+        "speaker": "system",
+        "text": "Side Ops note: retry from mission select or use ENTER on the failure scene.",
+        "emotion": "neutral"
+      }
+    ]
+  },
+  {
+    "id": "mgs2_otacon_tanker_mission_complete",
+    "era": "mgs2",
+    "title": "Cargo Route Clear",
+    "contactId": "otacon_mgs2",
+    "frequency": 141.12,
+    "trigger": "mission_complete",
+    "canReplay": true,
+    "lines": [
+      {
+        "speaker": "otacon",
+        "text": "Cargo route clear. Good work, Snake.",
+        "emotion": "calm"
+      },
+      {
+        "speaker": "snake",
+        "text": "Upload the run data.",
+        "emotion": "neutral"
+      },
+      {
+        "speaker": "otacon",
+        "text": "Done. Ranking, secrets, and alert history are stored locally for this mission pack.",
+        "emotion": "neutral"
+      }
+    ]
+  },
+  {
+    "id": "mgs2_otacon_tanker_chaff_hint",
+    "era": "mgs2",
+    "title": "Chaff on Deck",
+    "contactId": "otacon_mgs2",
+    "frequency": 141.12,
+    "trigger": "manual_call",
+    "canReplay": true,
+    "lines": [
+      {
+        "speaker": "otacon",
+        "text": "Chaff is scrambling the camera and searchlight controllers. It will not stop human patrols, so keep moving.",
+        "emotion": "serious"
+      }
+    ]
+  },
+  {
+    "id": "mgs2_otacon_tanker_camera_down",
+    "era": "mgs2",
+    "title": "Camera Node Down",
+    "contactId": "otacon_mgs2",
+    "frequency": 141.12,
+    "trigger": "camera_detected",
+    "canReplay": true,
+    "lines": [
+      {
+        "speaker": "otacon",
+        "text": "Camera feed is down. That helps, but the impact noise may still draw a patrol.",
+        "emotion": "serious"
+      }
+    ]
+  },
+  {
+    "id": "mgs2_otacon_tanker_cqc_hint",
+    "era": "mgs2",
+    "title": "Deck CQC",
+    "contactId": "otacon_mgs2",
+    "frequency": 141.12,
+    "trigger": "manual_call",
+    "canReplay": true,
+    "lines": [
+      {
+        "speaker": "otacon",
+        "text": "Quiet takedown confirmed. CQC is still your cleanest option when the rain hides your approach.",
+        "emotion": "calm"
+      }
+    ]
+  },
+  {
+    "id": "mgs2_otacon_tanker_suspicion",
+    "era": "mgs2",
+    "title": "Suspicion on Deck",
+    "contactId": "otacon_mgs2",
+    "frequency": 141.12,
+    "trigger": "suspicion",
+    "canReplay": true,
+    "lines": [
+      {
+        "speaker": "otacon",
+        "text": "They are getting suspicious. Slow down, crouch, or break the sightline before it becomes an alert.",
+        "emotion": "warning"
+      }
+    ]
+  },
+  {
+    "id": "mgs2_otacon_tanker_evasion",
+    "era": "mgs2",
+    "title": "Evasion on Deck",
+    "contactId": "otacon_mgs2",
+    "frequency": 141.12,
+    "trigger": "evasion",
+    "canReplay": true,
+    "lines": [
+      {
+        "speaker": "otacon",
+        "text": "You are out of direct sight. Stay hidden until their search pattern cools down.",
+        "emotion": "calm"
+      }
+    ]
+  },
+  {
+    "id": "mgs2_otacon_tanker_caution",
+    "era": "mgs2",
+    "title": "Caution Pattern",
+    "contactId": "otacon_mgs2",
+    "frequency": 141.12,
+    "trigger": "caution",
+    "canReplay": true,
+    "lines": [
+      {
+        "speaker": "otacon",
+        "text": "They are still on caution. The deck route is open, but every guard will react faster now.",
+        "emotion": "serious"
+      }
+    ]
+  },
+  {
+    "id": "mgs2_otacon_tanker_reinforcement",
+    "era": "mgs2",
+    "title": "Deck Reinforcements",
+    "contactId": "otacon_mgs2",
+    "frequency": 141.12,
+    "trigger": "reinforcement",
+    "canReplay": true,
+    "lines": [
+      {
+        "speaker": "otacon",
+        "text": "Reinforcements are entering from the deck edge. Do not get pinned between them and the commander arena.",
+        "emotion": "warning"
+      }
+    ]
+  },
+  {
+    "id": "mgs2_otacon_tanker_camera_detected",
+    "era": "mgs2",
+    "title": "Tanker Camera Sightline",
+    "contactId": "otacon_mgs2",
+    "frequency": 141.12,
+    "trigger": "camera_detected",
+    "canReplay": true,
+    "lines": [
+      {
+        "speaker": "otacon",
+        "text": "Camera cone ahead. You can time the sweep, destroy it, or throw chaff for a safer pass.",
+        "emotion": "serious"
+      }
+    ]
+  },
+  {
+    "id": "mgs2_otacon_tanker_searchlight_hint",
+    "era": "mgs2",
+    "title": "Rain Deck Searchlight",
+    "contactId": "otacon_mgs2",
+    "frequency": 141.12,
+    "trigger": "searchlight_detected",
+    "canReplay": true,
+    "lines": [
+      {
+        "speaker": "otacon",
+        "text": "That searchlight is scanning the deck. Crouching helps, but chaff gives you the cleanest window.",
+        "emotion": "warning"
+      }
+    ]
+  },
+  {
+    "id": "mgs2_otacon_tanker_boss_intro",
+    "era": "mgs2",
+    "title": "Shielded Commander",
+    "contactId": "otacon_mgs2",
+    "frequency": 141.12,
+    "trigger": "boss_intro",
+    "canReplay": true,
+    "lines": [
+      {
+        "speaker": "otacon",
+        "text": "Snake, the commander is using a shielded firing pattern. Do not stay in front of him for long.",
+        "emotion": "warning"
+      },
+      {
+        "speaker": "snake",
+        "text": "Weak point?",
+        "emotion": "neutral"
+      },
+      {
+        "speaker": "otacon",
+        "text": "Force him to reposition, then punish the recovery window. CQC works, but only if you accept a counter-hit risk.",
+        "emotion": "serious"
+      }
+    ]
+  },
+  {
+    "id": "mgs2_otacon_tanker_boss_midfight",
+    "era": "mgs2",
+    "title": "Commander Phase Shift",
+    "contactId": "otacon_mgs2",
+    "frequency": 141.12,
+    "trigger": "boss_midfight",
+    "canReplay": true,
+    "lines": [
+      {
+        "speaker": "otacon",
+        "text": "His pattern changed. He is firing faster now. Use the crates and avoid trading shots.",
+        "emotion": "warning"
+      }
+    ]
+  },
+  {
+    "id": "mgs2_otacon_tanker_boss_defeated",
+    "era": "mgs2",
+    "title": "Commander Neutralized",
+    "contactId": "otacon_mgs2",
+    "frequency": 141.12,
+    "trigger": "boss_defeated",
+    "canReplay": true,
+    "lines": [
+      {
+        "speaker": "otacon",
+        "text": "Commander neutralized. Cargo hold exit is open.",
+        "emotion": "calm"
+      },
+      {
+        "speaker": "snake",
+        "text": "Heading out.",
+        "emotion": "neutral"
+      }
+    ]
+  },
+  {
+    "id": "mgs2_otacon_tanker_secret_found",
+    "era": "mgs2",
+    "title": "Hidden Tanker Archive",
+    "contactId": "otacon_mgs2",
+    "frequency": 141.12,
+    "trigger": "secret_frequency",
+    "canReplay": true,
+    "lines": [
+      {
+        "speaker": "otacon",
+        "text": "You found a hidden tanker archive fragment. I am tagging it for the Tape Deck and Lore database.",
+        "emotion": "calm"
+      }
+    ]
   }
 ]

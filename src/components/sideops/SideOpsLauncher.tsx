@@ -1,7 +1,9 @@
 import Phaser from 'phaser';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import conversationsJson from '../../data/conversations.json';
+import missionsJson from '../../data/missions.json';
 import type { ConversationDefinition } from '../../types/codec.types';
+import type { MissionDefinition } from '../../types/mission.types';
 import { createGameConfig } from '../../game/core/GameConfig';
 import {
   emitGameEvent,
@@ -27,46 +29,65 @@ interface SideOpsLauncherProps {
 }
 
 const builtInConversations = conversationsJson as ConversationDefinition[];
+const sideOpsMissions = (missionsJson as MissionDefinition[]).filter((mission) => mission.mode === 'side_scroller');
+const DEFAULT_MISSION_ID = sideOpsMissions[0]?.id ?? 'shadow_dock_001';
+const ACTIVE_MISSION_KEY = 'sideops-active-mission-id';
 
-const initialHud: MissionHudPayload = {
-  health: 100,
-  maxHealth: 100,
-  ammo: 26,
-  maxAmmo: 30,
-  rations: 1,
-  chaff: 1,
-  hasKeycard: false,
-  alertState: 'NORMAL',
-  suspicion: 0,
-  stealthScore: 1000,
-  reinforcementCount: 0,
-  activeEnemies: 3,
-  lastAlertSource: 'none',
-  alerts: 0,
-  shotsFired: 0,
-  kills: 0,
-  neutralizations: 0,
-  camerasDisabled: 0,
-  objective: 'Recover Keycard Lv.1',
-  objectiveStage: 'recover_keycard',
-  objectivesCompleted: 1,
-  secretsFound: 0,
-  totalSecrets: 3,
-  bossActive: false,
-  bossDefeated: false,
-  bossHealth: 0,
-  bossMaxHealth: 10,
-  chaffActive: false
-};
+function bestRunKey(missionId: string): string {
+  return `sideops-${missionId}-best`;
+}
+
+function resolveMission(missionId: string): MissionDefinition {
+  return sideOpsMissions.find((mission) => mission.id === missionId) ?? sideOpsMissions[0];
+}
+
+function buildInitialHud(mission: MissionDefinition): MissionHudPayload {
+  return {
+    missionId: mission.id,
+    missionTitle: mission.title,
+    bossName: mission.boss ?? 'Mission Boss',
+    health: 100,
+    maxHealth: 100,
+    ammo: mission.id === 'tanker_hold_002' ? 32 : 26,
+    maxAmmo: 30,
+    rations: 1,
+    chaff: mission.id === 'tanker_hold_002' ? 2 : 1,
+    hasKeycard: false,
+    alertState: 'NORMAL',
+    suspicion: 0,
+    stealthScore: 1000,
+    reinforcementCount: 0,
+    activeEnemies: mission.id === 'tanker_hold_002' ? 4 : 3,
+    lastAlertSource: 'none',
+    alerts: 0,
+    shotsFired: 0,
+    kills: 0,
+    neutralizations: 0,
+    camerasDisabled: 0,
+    objective: mission.objectives.find((objective) => !objective.completedByDefault)?.label ?? 'Advance mission',
+    objectiveStage: 'recover_keycard',
+    objectivesCompleted: mission.objectives.filter((objective) => objective.completedByDefault).length,
+    totalObjectives: mission.objectives.length,
+    secretsFound: 0,
+    totalSecrets: 3,
+    bossActive: false,
+    bossDefeated: false,
+    bossHealth: 0,
+    bossMaxHealth: mission.id === 'tanker_hold_002' ? 12 : 10,
+    chaffActive: false
+  };
+}
 
 export function SideOpsLauncher({ onOpenCodec }: SideOpsLauncherProps) {
+  const [activeMissionId, setActiveMissionId] = useState(() => loadJson(ACTIVE_MISSION_KEY, DEFAULT_MISSION_ID));
+  const activeMission = useMemo(() => resolveMission(activeMissionId), [activeMissionId]);
   const gameRef = useRef<Phaser.Game | null>(null);
   const [codecRequest, setCodecRequest] = useState<CodecRequestPayload | null>(null);
   const [codecLineIndex, setCodecLineIndex] = useState(0);
   const [missionResult, setMissionResult] = useState<MissionCompletePayload | null>(null);
-  const [hud, setHud] = useState<MissionHudPayload>(initialHud);
+  const [hud, setHud] = useState<MissionHudPayload>(() => buildInitialHud(activeMission));
   const [alertLog, setAlertLog] = useState<AlertEventPayload[]>([]);
-  const [bestResult, setBestResult] = useState<MissionCompletePayload | null>(() => loadJson<MissionCompletePayload | null>('sideops-shadow-dock-best', null));
+  const [bestResult, setBestResult] = useState<MissionCompletePayload | null>(() => loadJson<MissionCompletePayload | null>(bestRunKey(activeMission.id), null));
   const [customConversations] = useState(() => loadCustomConversations());
   const [triggerOverrides] = useState(() => loadTriggerOverrides());
 
@@ -76,12 +97,22 @@ export function SideOpsLauncher({ onOpenCodec }: SideOpsLauncherProps) {
   );
 
   useEffect(() => {
+    saveJson(ACTIVE_MISSION_KEY, activeMission.id);
+    setBestResult(loadJson<MissionCompletePayload | null>(bestRunKey(activeMission.id), null));
+    setMissionResult(null);
+    setCodecRequest(null);
+    setCodecLineIndex(0);
+    setAlertLog([]);
+    setHud(buildInitialHud(activeMission));
+  }, [activeMission.id]);
+
+  useEffect(() => {
     if (!gameRef.current) {
       gameRef.current = new Phaser.Game(createGameConfig('sideops-phaser-root'));
     }
 
     const offCodec = onGameEvent<CodecRequestPayload>(GAME_EVENT.REQUEST_CODEC_CALL, (payload) => {
-      const routedPayload = applyStudioTriggerOverride('shadow_dock_001', payload, triggerOverrides);
+      const routedPayload = applyStudioTriggerOverride(activeMission.id, payload, triggerOverrides);
       setCodecRequest(routedPayload);
       setCodecLineIndex(0);
     });
@@ -90,7 +121,7 @@ export function SideOpsLauncher({ onOpenCodec }: SideOpsLauncherProps) {
       if (payload.success) {
         setBestResult((current) => {
           if (!current || payload.stealthScore > current.stealthScore || (payload.stealthScore === current.stealthScore && payload.timeSeconds < current.timeSeconds)) {
-            saveJson('sideops-shadow-dock-best', payload);
+            saveJson(bestRunKey(payload.missionId), payload);
             return payload;
           }
           return current;
@@ -112,12 +143,12 @@ export function SideOpsLauncher({ onOpenCodec }: SideOpsLauncherProps) {
       gameRef.current?.destroy(true);
       gameRef.current = null;
     };
-  }, []);
+  }, [activeMission.id, triggerOverrides]);
 
   const activeConversation = useMemo(() => {
     if (!codecRequest) return null;
     return conversations.find((conversation) => conversation.id === codecRequest.conversationId) ?? null;
-  }, [codecRequest]);
+  }, [codecRequest, conversations]);
 
   const activeCodecLine = activeConversation?.lines[codecLineIndex];
 
@@ -143,9 +174,16 @@ export function SideOpsLauncher({ onOpenCodec }: SideOpsLauncherProps) {
     setCodecRequest(null);
     setCodecLineIndex(0);
     setMissionResult(null);
-    setHud(initialHud);
+    setHud(buildInitialHud(activeMission));
     setAlertLog([]);
-    emitGameEvent(GAME_EVENT.MISSION_RESTART, { requested: true });
+    saveJson(ACTIVE_MISSION_KEY, activeMission.id);
+    emitGameEvent(GAME_EVENT.MISSION_RESTART, { requested: true, missionId: activeMission.id });
+  }
+
+  function selectMission(missionId: string) {
+    const mission = resolveMission(missionId);
+    setActiveMissionId(mission.id);
+    saveJson(ACTIVE_MISSION_KEY, mission.id);
   }
 
   const alertTone = hud.alertState === 'ALERT' || hud.alertState === 'MISSION FAILED'
@@ -157,12 +195,28 @@ export function SideOpsLauncher({ onOpenCodec }: SideOpsLauncherProps) {
   return (
     <section className="sideops-page">
       <Panel className="sideops-info-panel">
-        <StatusBadge label="SIDE OPS ALERT CORE" tone="success" />
-        <h2>Mission 001 — Dock Infiltration</h2>
+        <StatusBadge label="SIDE OPS MISSION PACK" tone="success" />
+        <h2>{activeMission.title}</h2>
         <p>
-          Passe 6 : Mission 001 conserve la vertical slice complète et peut maintenant utiliser
-          les conversations custom du Studio via des trigger overrides locaux.
+          Passe 11 : Side Ops possède maintenant plusieurs missions sélectionnables. La deuxième mission ajoute
+          un environnement Tanker, plus de patrouilles, un boss dédié et des conversations Codec MGS2.
         </p>
+
+        <div className="mission-select-grid">
+          {sideOpsMissions.map((mission) => (
+            <button
+              key={mission.id}
+              type="button"
+              className={`mission-card-button ${activeMission.id === mission.id ? 'active' : ''}`}
+              onClick={() => selectMission(mission.id)}
+            >
+              <strong>{mission.title}</strong>
+              <span>{mission.location}</span>
+              <small>{mission.era.toUpperCase()} // Difficulty {mission.difficulty}</small>
+            </button>
+          ))}
+        </div>
+
         <ul className="mission-list">
           <li>Flèches / WASD : déplacement</li>
           <li>Shift : marche lente, réduit la détection sonore</li>
@@ -172,8 +226,15 @@ export function SideOpsLauncher({ onOpenCodec }: SideOpsLauncherProps) {
           <li>F : chaff grenade contre caméra et projecteur</li>
           <li>R : ration si blessé</li>
           <li>C : demande Codec manuelle</li>
-          <li>Objectif final : keycard → porte → yard → boss → extraction</li>
         </ul>
+
+        <div className="mission-objectives-card">
+          <strong>Active Objectives</strong>
+          {activeMission.objectives.map((objective) => (
+            <span key={objective.id}>{objective.completedByDefault ? '✓' : '□'} {objective.label}</span>
+          ))}
+        </div>
+
         <div className="sideops-panel-actions">
           <button className="primary-action" type="button" onClick={onOpenCodec}>Open Full Codec Simulator</button>
           <button className="primary-action secondary" type="button" onClick={restartMission}>Restart Mission</button>
@@ -183,7 +244,7 @@ export function SideOpsLauncher({ onOpenCodec }: SideOpsLauncherProps) {
           {bestResult ? (
             <span>{bestResult.rankPreview} // {bestResult.stealthScore} pts // {bestResult.timeSeconds}s // Secrets {bestResult.secretsFound}/{bestResult.totalSecrets}</span>
           ) : (
-            <span>No completed run yet.</span>
+            <span>No completed run yet for this mission.</span>
           )}
         </div>
       </Panel>
@@ -191,15 +252,16 @@ export function SideOpsLauncher({ onOpenCodec }: SideOpsLauncherProps) {
       <div className="sideops-game-shell panel">
         <div className="sideops-react-hud">
           <StatusBadge label={hud.alertState} tone={alertTone} />
+          <div><span>Mission</span><strong>{hud.missionTitle}</strong></div>
           <div><span>HP</span><strong>{hud.health}/{hud.maxHealth}</strong></div>
           <div><span>SOCOM</span><strong>{hud.ammo}/{hud.maxAmmo}</strong></div>
           <div><span>Ration</span><strong>{hud.rations}</strong></div>
           <div><span>Chaff</span><strong>{hud.chaff}{hud.chaffActive ? ' ACTIVE' : ''}</strong></div>
-          <div><span>Card</span><strong>{hud.hasKeycard ? 'LV.1' : 'NONE'}</strong></div>
+          <div><span>Card</span><strong>{hud.hasKeycard ? 'ACTIVE' : 'NONE'}</strong></div>
           <div><span>Stealth</span><strong>{hud.stealthScore}</strong></div>
           <div><span>Enemies</span><strong>{hud.activeEnemies} / Reinf {hud.reinforcementCount}</strong></div>
           <div><span>Objective</span><strong>{hud.objective}</strong></div>
-          <div><span>Obj</span><strong>{hud.objectivesCompleted}/5</strong></div>
+          <div><span>Obj</span><strong>{hud.objectivesCompleted}/{hud.totalObjectives}</strong></div>
           <div><span>Secrets</span><strong>{hud.secretsFound}/{hud.totalSecrets}</strong></div>
         </div>
 
@@ -212,7 +274,7 @@ export function SideOpsLauncher({ onOpenCodec }: SideOpsLauncherProps) {
 
         {(hud.bossActive || hud.bossDefeated) && (
           <div className="boss-meter">
-            <span>{hud.bossDefeated ? 'Boss neutralized' : 'Armored Guard Captain'}</span>
+            <span>{hud.bossDefeated ? `${hud.bossName} neutralized` : hud.bossName}</span>
             <div><i style={{ width: hud.bossMaxHealth > 0 ? `${Math.round((hud.bossHealth / hud.bossMaxHealth) * 100)}%` : '0%' }} /></div>
             <strong>{hud.bossHealth}/{hud.bossMaxHealth}</strong>
           </div>
@@ -237,7 +299,7 @@ export function SideOpsLauncher({ onOpenCodec }: SideOpsLauncherProps) {
           ) : (
             alertLog.map((event, index) => (
               <span key={`${event.timeSeconds}-${event.level}-${index}`}>
-                T+{event.timeSeconds}s // {event.level} // {event.source} // {event.message}
+                T+{event.timeSeconds}s // {event.missionTitle} // {event.level} // {event.source} // {event.message}
               </span>
             ))
           )}
@@ -266,11 +328,12 @@ export function SideOpsLauncher({ onOpenCodec }: SideOpsLauncherProps) {
         {missionResult && (
           <div className="mission-result-toast">
             <strong>{missionResult.success ? 'MISSION RESULT' : 'MISSION FAILED'}</strong>
+            <span>{missionResult.missionTitle}</span>
             <span>{missionResult.outcome}</span>
             <span>Rank: {missionResult.rankPreview}</span>
             <span>Stealth Score: {missionResult.stealthScore}</span>
-            <span>Objectives: {missionResult.objectivesCompleted}/5 / Secrets: {missionResult.secretsFound}/{missionResult.totalSecrets}</span>
-            <span>Boss defeated: {missionResult.bossDefeated ? 'YES' : 'NO'}</span>
+            <span>Objectives: {missionResult.objectivesCompleted}/{missionResult.totalObjectives} / Secrets: {missionResult.secretsFound}/{missionResult.totalSecrets}</span>
+            <span>Boss defeated: {missionResult.bossDefeated ? 'YES' : 'NO'} — {missionResult.bossName}</span>
             <span>Alerts: {missionResult.alerts} / Kills: {missionResult.kills}</span>
             <span>Reinforcements: {missionResult.reinforcementCount}</span>
             <span>Time: {missionResult.timeSeconds}s</span>
