@@ -1,0 +1,359 @@
+.vr-missions-grid {
+  display: grid;
+  grid-template-columns: 330px minmax(0, 1fr) 330px;
+  gap: 18px;
+  align-items: start;
+}
+
+.vr-library-panel,
+.vr-side-column,
+.vr-main-column {
+  min-width: 0;
+}
+
+.vr-main-column,
+.vr-side-column {
+  display: grid;
+  gap: 18px;
+}
+
+.vr-status-row,
+.vr-badges,
+.vr-control-grid,
+.vr-category-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.vr-search {
+  width: 100%;
+  margin: 14px 0 12px;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.32);
+  color: var(--primary-soft);
+}
+
+.vr-chip,
+.vr-control-grid button,
+.vr-history-list button {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--primary-soft);
+  padding: 8px 10px;
+}
+
+.vr-chip:hover,
+.vr-chip.active,
+.vr-control-grid button:hover,
+.vr-history-list button:hover {
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-glow);
+}
+
+.vr-chip span {
+  color: var(--primary);
+}
+
+.vr-mission-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+  max-height: calc(100vh - 285px);
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.vr-mission-row {
+  width: 100%;
+  display: grid;
+  gap: 8px;
+  text-align: left;
+  border: 1px solid rgba(124, 255, 107, 0.25);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.24);
+  padding: 12px;
+  color: var(--primary-soft);
+}
+
+.vr-mission-row:hover,
+.vr-mission-row.active {
+  border-color: var(--line-strong);
+  background: rgba(124, 255, 107, 0.08);
+}
+
+.vr-row-main,
+.vr-row-meta {
+  display: grid;
+  gap: 3px;
+}
+
+.vr-row-main strong {
+  color: var(--primary);
+  letter-spacing: 0.04em;
+}
+
+.vr-row-main small,
+.vr-row-meta {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.vr-row-meta {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.vr-briefing-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 330px;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(124, 255, 107, 0.18), transparent 24%),
+    linear-gradient(135deg, rgba(0, 0, 0, 0.44), rgba(3, 37, 22, 0.82));
+}
+
+.vr-briefing-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(124, 255, 107, 0.06) 1px, transparent 1px),
+    linear-gradient(rgba(124, 255, 107, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: linear-gradient(to bottom, black, transparent 88%);
+}
+
+.vr-briefing-header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.vr-kicker {
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.vr-briefing-header h2 {
+  color: var(--primary);
+  text-shadow: var(--shadow-glow);
+  font-size: clamp(30px, 4.6vw, 60px);
+  line-height: 0.95;
+  margin: 14px 0;
+}
+
+.vr-briefing-header p,
+.vr-briefing-text p {
+  color: var(--primary-soft);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.vr-briefing-text {
+  position: relative;
+  margin-top: 18px;
+  padding: 12px;
+  border-left: 3px solid var(--primary);
+  background: rgba(0, 0, 0, 0.22);
+}
+
+.vr-briefing-text strong,
+.vr-mission-matrix strong,
+.vr-evaluation-panel strong {
+  color: var(--primary);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.vr-mission-matrix {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.vr-mission-matrix > div {
+  border: 1px solid rgba(124, 255, 107, 0.2);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.24);
+  padding: 12px;
+}
+
+.vr-mission-matrix ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: grid;
+  gap: 8px;
+}
+
+.vr-mission-matrix li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 12px;
+  border-bottom: 1px solid rgba(124, 255, 107, 0.1);
+  padding-bottom: 6px;
+}
+
+.vr-mission-matrix b {
+  color: var(--primary-soft);
+  text-align: right;
+}
+
+.vr-run-hud,
+.vr-stat-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.vr-run-hud {
+  grid-template-columns: auto repeat(4, minmax(90px, 1fr));
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 10px;
+  border: 1px solid rgba(124, 255, 107, 0.2);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.22);
+}
+
+.vr-run-hud div,
+.vr-stat-grid div {
+  display: grid;
+  gap: 2px;
+}
+
+.vr-run-hud span,
+.vr-stat-grid span {
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.vr-run-hud strong,
+.vr-stat-grid strong {
+  color: var(--primary-soft);
+}
+
+.vr-stat-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  margin-bottom: 14px;
+}
+
+.vr-stat-grid div {
+  padding: 10px;
+  border: 1px solid rgba(124, 255, 107, 0.16);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.vr-control-grid {
+  margin: 12px 0;
+}
+
+.vr-control-grid button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.vr-evaluation-panel,
+.vr-record-card,
+.vr-reward-list,
+.vr-history-list {
+  display: grid;
+  gap: 8px;
+}
+
+.vr-evaluation-panel {
+  margin-top: 14px;
+  padding: 12px;
+  border: 1px solid rgba(248, 244, 154, 0.2);
+  border-radius: 12px;
+  background: rgba(248, 244, 154, 0.035);
+}
+
+.vr-evaluation-panel em {
+  color: var(--warning);
+  font-style: normal;
+  font-size: 12px;
+}
+
+.vr-pass {
+  color: var(--primary);
+}
+
+.vr-fail {
+  color: var(--warning);
+}
+
+.vr-record-card,
+.vr-reward-list,
+.vr-history-list button {
+  padding: 10px;
+  border: 1px solid rgba(124, 255, 107, 0.18);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.24);
+  color: var(--primary-soft);
+  text-align: left;
+}
+
+.vr-record-card.success {
+  border-color: rgba(124, 255, 107, 0.45);
+}
+
+.vr-record-card.failed {
+  border-color: rgba(255, 107, 107, 0.45);
+}
+
+.vr-record-card strong,
+.vr-history-list strong {
+  color: var(--primary);
+}
+
+.vr-record-card span,
+.vr-reward-list span,
+.vr-history-list span,
+.vr-empty {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.vr-pack-vr_training {
+  --primary: #7cff6b;
+  --line: rgba(124, 255, 107, 0.38);
+}
+
+@media (max-width: 1320px) {
+  .vr-missions-grid {
+    grid-template-columns: 320px minmax(0, 1fr);
+  }
+  .vr-side-column {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 980px) {
+  .vr-missions-grid,
+  .vr-side-column,
+  .vr-mission-matrix,
+  .vr-run-hud {
+    grid-template-columns: 1fr;
+  }
+  .vr-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

@@ -1,0 +1,187 @@
+[
+  {
+    "id": "vr_dock_sprint_001",
+    "title": "Dock Sprint",
+    "subtitle": "Time Attack / Shadow Moses entry route",
+    "era": "vr_simulation",
+    "visualPack": "vr_training",
+    "category": "time_attack",
+    "difficulty": 1,
+    "mapVariant": "dock_infiltration_short",
+    "objective": "Reach the extraction marker as fast as possible while keeping combat noise low.",
+    "briefing": "A compact VR version of Mission 001. Route memory matters more than firepower.",
+    "restrictions": ["No boss phase", "Keycard route shortened", "Timer pressure active"],
+    "recommendedGear": ["SOCOM", "Ration", "Keycard Lv.1"],
+    "requirements": {
+      "targetTimeSeconds": 130,
+      "maxAlerts": 1,
+      "maxKills": 2,
+      "maxDamage": 50,
+      "minObjectivesCompleted": 3,
+      "requiredTool": "mixed"
+    },
+    "rewards": [
+      {
+        "tapeId": "tape_vr_route_memory_notes",
+        "unlockRank": "FOX",
+        "badge": "ROUTE_MEMORY",
+        "description": "Unlocks a route-memory tape when you clear with FOX rank or better."
+      }
+    ]
+  },
+  {
+    "id": "vr_ghost_dock_002",
+    "title": "Ghost Dock",
+    "subtitle": "No Alert infiltration drill",
+    "era": "vr_simulation",
+    "visualPack": "vr_training",
+    "category": "no_alert",
+    "difficulty": 2,
+    "mapVariant": "dock_infiltration_stealth",
+    "objective": "Complete the route with zero full alerts and no lethal takedowns.",
+    "briefing": "This drill rewards patience: slow movement, crouch timing, and clean line-of-sight breaks.",
+    "restrictions": ["No lethal kills", "Alert invalidates FOXHOUND threshold", "CQC allowed"],
+    "recommendedGear": ["CQC", "Cardboard Box", "Chaff Grenade"],
+    "requirements": {
+      "targetTimeSeconds": 220,
+      "maxAlerts": 0,
+      "maxKills": 0,
+      "maxDamage": 30,
+      "minObjectivesCompleted": 4,
+      "requiredTool": "stealth"
+    },
+    "rewards": [
+      {
+        "tapeId": "tape_vr_no_alert_after_action",
+        "unlockRank": "FOXHOUND",
+        "badge": "NO_ALERT_DISCIPLINE",
+        "description": "Unlocks a no-alert after-action tape when you reach FOXHOUND or better."
+      }
+    ]
+  },
+  {
+    "id": "vr_socom_range_003",
+    "title": "SOCOM Range",
+    "subtitle": "Weapon training / accuracy evaluation",
+    "era": "vr_simulation",
+    "visualPack": "vr_training",
+    "category": "weapon_training",
+    "difficulty": 2,
+    "mapVariant": "weapon_range_linear",
+    "objective": "Neutralize target drones with controlled fire and avoid wasting ammunition.",
+    "briefing": "Suppressed fire is not magic. Every shot should have a purpose.",
+    "restrictions": ["SOCOM only", "Accuracy tracked", "CQC does not count toward weapon objective"],
+    "recommendedGear": ["SOCOM", "Ammo Box"],
+    "requirements": {
+      "targetTimeSeconds": 160,
+      "maxAlerts": 1,
+      "maxKills": 4,
+      "maxDamage": 45,
+      "minShotsFired": 8,
+      "maxShotsFired": 24,
+      "minObjectivesCompleted": 5,
+      "requiredTool": "socom"
+    },
+    "rewards": [
+      {
+        "tapeId": "tape_vr_weapon_range_analysis",
+        "unlockRank": "FOX",
+        "badge": "CONTROLLED_FIRE",
+        "description": "Unlocks a weapon discipline tape when the result reaches FOX rank or better."
+      }
+    ]
+  },
+  {
+    "id": "vr_cqc_quiet_004",
+    "title": "Quiet CQC",
+    "subtitle": "Non-lethal close quarters drill",
+    "era": "vr_simulation",
+    "visualPack": "vr_training",
+    "category": "cqc",
+    "difficulty": 3,
+    "mapVariant": "cqc_corridor",
+    "objective": "Clear the corridor using non-lethal takedowns and minimal gunfire.",
+    "briefing": "CQC is useful when distance collapses, but it is risky if another guard has sightline.",
+    "restrictions": ["No lethal kills", "Shots penalized", "Neutralizations required"],
+    "recommendedGear": ["CQC", "Ration"],
+    "requirements": {
+      "targetTimeSeconds": 190,
+      "maxAlerts": 1,
+      "maxKills": 0,
+      "maxDamage": 60,
+      "maxShotsFired": 6,
+      "minNeutralizations": 5,
+      "minObjectivesCompleted": 4,
+      "requiredTool": "cqc"
+    },
+    "rewards": [
+      {
+        "unlockRank": "FOX",
+        "badge": "NON_LETHAL_OPERATOR",
+        "description": "Adds a local VR badge for clean non-lethal doctrine."
+      }
+    ]
+  },
+  {
+    "id": "vr_chaff_breaker_005",
+    "title": "Chaff Breaker",
+    "subtitle": "Camera and searchlight disruption drill",
+    "era": "vr_simulation",
+    "visualPack": "vr_training",
+    "category": "surveillance",
+    "difficulty": 3,
+    "mapVariant": "surveillance_yard",
+    "objective": "Disable surveillance windows with chaff and cross the yard without full compromise.",
+    "briefing": "Electronics can be disrupted, not defeated forever. Timing matters.",
+    "restrictions": ["Chaff required", "Camera disables tracked", "Alert count heavily penalized"],
+    "recommendedGear": ["Chaff Grenade", "SOCOM", "Ration"],
+    "requirements": {
+      "targetTimeSeconds": 210,
+      "maxAlerts": 1,
+      "maxKills": 1,
+      "maxDamage": 55,
+      "minCamerasDisabled": 3,
+      "minObjectivesCompleted": 4,
+      "requiredTool": "chaff"
+    },
+    "rewards": [
+      {
+        "unlockRank": "HOUND",
+        "badge": "SIGNAL_BREAKER",
+        "description": "Adds a local VR badge for surveillance disruption."
+      }
+    ]
+  },
+  {
+    "id": "vr_armored_duel_006",
+    "title": "Armored Captain Duel",
+    "subtitle": "Boss challenge / shield pressure test",
+    "era": "vr_simulation",
+    "visualPack": "vr_training",
+    "category": "boss_challenge",
+    "difficulty": 4,
+    "mapVariant": "boss_arena_vr",
+    "objective": "Defeat the Armored Guard Captain with limited damage and disciplined fire.",
+    "briefing": "A boss drill built from Mission 001. Read the pattern, preserve distance, and do not panic-fire.",
+    "restrictions": ["Boss defeat required", "Damage heavily penalized", "Time pressure active"],
+    "recommendedGear": ["SOCOM", "Ration", "Grenade"],
+    "requirements": {
+      "targetTimeSeconds": 180,
+      "maxAlerts": 2,
+      "maxKills": 1,
+      "maxDamage": 70,
+      "maxRations": 1,
+      "minObjectivesCompleted": 3,
+      "bossDefeated": true,
+      "requiredTool": "mixed"
+    },
+    "rewards": [
+      {
+        "tapeId": "tape_vr_boss_duel_replay",
+        "unlockRank": "FOX",
+        "badge": "CAPTAIN_BREAKER",
+        "description": "Unlocks the boss duel replay tape when you reach FOX rank or better."
+      }
+    ]
+  }
+]

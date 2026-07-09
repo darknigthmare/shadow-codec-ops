@@ -1,0 +1,170 @@
+[
+  {
+    "id": "shadow_dock_001",
+    "title": "Dock Infiltration",
+    "era": "mgs1",
+    "mode": "side_scroller",
+    "location": "Snowfield Docks",
+    "mainCharacter": "solid_snake",
+    "difficulty": 2,
+    "mapKey": "sideops_dock_complete_v1",
+    "briefingConversation": "mgs1_campbell_mission_start",
+    "debriefingConversation": "mgs1_campbell_mission_complete",
+    "objectives": [
+      {
+        "id": "enter_dock",
+        "label": "Enter the dock area",
+        "completedByDefault": true
+      },
+      {
+        "id": "recover_keycard",
+        "label": "Recover Keycard Lv.1",
+        "completedByDefault": false
+      },
+      {
+        "id": "open_security_door",
+        "label": "Open the Lv.1 security door",
+        "completedByDefault": false
+      },
+      {
+        "id": "cross_security_yard",
+        "label": "Cross the searchlight yard",
+        "completedByDefault": false
+      },
+      {
+        "id": "defeat_captain",
+        "label": "Defeat Armored Guard Captain",
+        "completedByDefault": false
+      },
+      {
+        "id": "extract",
+        "label": "Reach the cargo elevator",
+        "completedByDefault": false
+      }
+    ],
+    "availableItems": [
+      "socom_suppressor",
+      "ration",
+      "chaff_grenade",
+      "cardboard_box",
+      "keycard_lv1",
+      "ammo_box",
+      "hidden_archive_fragment"
+    ],
+    "enemies": [
+      "guard_patrol",
+      "camera_turret_placeholder",
+      "guard_reinforcement",
+      "searchlight_sweep",
+      "armored_guard_captain"
+    ],
+    "boss": "armored_guard_captain",
+    "codecTriggers": [
+      {
+        "trigger": "mission_start",
+        "contactId": "campbell_mgs1",
+        "conversationId": "mgs1_campbell_mission_start",
+        "priority": "normal",
+        "pauseGame": true
+      },
+      {
+        "trigger": "first_alert",
+        "contactId": "campbell_mgs1",
+        "conversationId": "mgs1_campbell_first_alert",
+        "priority": "urgent",
+        "pauseGame": true
+      },
+      {
+        "trigger": "keycard_found",
+        "contactId": "campbell_mgs1",
+        "conversationId": "mgs1_campbell_keycard_found",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "mission_complete",
+        "contactId": "campbell_mgs1",
+        "conversationId": "mgs1_campbell_mission_complete",
+        "priority": "normal",
+        "pauseGame": true
+      },
+      {
+        "trigger": "low_health",
+        "contactId": "naomi_mgs1",
+        "conversationId": "mgs1_naomi_medical",
+        "priority": "urgent",
+        "pauseGame": true
+      },
+      {
+        "trigger": "manual_call",
+        "contactId": "otacon_mgs1",
+        "conversationId": "mgs1_otacon_chaff_hint",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "suspicion",
+        "contactId": "campbell_mgs1",
+        "conversationId": "mgs1_campbell_suspicion",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "evasion",
+        "contactId": "campbell_mgs1",
+        "conversationId": "mgs1_campbell_evasion",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "caution",
+        "contactId": "miller_mgs1",
+        "conversationId": "mgs1_miller_caution",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "reinforcement",
+        "contactId": "campbell_mgs1",
+        "conversationId": "mgs1_campbell_reinforcement",
+        "priority": "urgent",
+        "pauseGame": false
+      },
+      {
+        "trigger": "searchlight_detected",
+        "contactId": "otacon_mgs1",
+        "conversationId": "mgs1_otacon_searchlight_hint",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "boss_intro",
+        "contactId": "campbell_mgs1",
+        "conversationId": "mgs1_campbell_boss_intro",
+        "priority": "urgent",
+        "pauseGame": true
+      },
+      {
+        "trigger": "boss_midfight",
+        "contactId": "naomi_mgs1",
+        "conversationId": "mgs1_naomi_boss_midfight",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "boss_defeated",
+        "contactId": "campbell_mgs1",
+        "conversationId": "mgs1_campbell_boss_defeated",
+        "priority": "normal",
+        "pauseGame": true
+      },
+      {
+        "trigger": "secret_frequency",
+        "contactId": "otacon_mgs1",
+        "conversationId": "mgs1_otacon_secret_found",
+        "priority": "secret",
+        "pauseGame": false
+      }
+    ]
+  }
+]

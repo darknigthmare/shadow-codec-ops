@@ -1,0 +1,57 @@
+[
+  {
+    "id": "guard_patrol",
+    "name": "Guard Patrol",
+    "era": "mgs1",
+    "visionRange": 245,
+    "hearingRange": 370,
+    "health": 1,
+    "canCallBackup": true,
+    "alertBehavior": "patrol_to_chase",
+    "notes": "Patrouille standard : suspicion progressive avant alerte complète."
+  },
+  {
+    "id": "guard_reinforcement",
+    "name": "Reinforcement Guard",
+    "era": "mgs1",
+    "visionRange": 420,
+    "hearingRange": 400,
+    "health": 2,
+    "canCallBackup": false,
+    "alertBehavior": "spawn_on_alert",
+    "notes": "Unité déployée si l’alerte dure trop longtemps. Plus résistante et cadence de tir plus rapide."
+  },
+  {
+    "id": "camera_turret_placeholder",
+    "name": "Security Camera Node",
+    "era": "mgs1",
+    "visionRange": 300,
+    "hearingRange": 0,
+    "health": 1,
+    "canCallBackup": true,
+    "alertBehavior": "electronic_detection",
+    "notes": "Caméra balayante, neutralisable par tir ou temporairement par chaff."
+  },
+  {
+    "id": "searchlight_sweep",
+    "name": "Searchlight Sweep",
+    "era": "mgs1",
+    "visionRange": 360,
+    "hearingRange": 0,
+    "health": 999,
+    "canCallBackup": true,
+    "alertBehavior": "soft_detection_zone",
+    "notes": "Projecteur de zone qui augmente la suspicion et se brouille pendant le chaff."
+  },
+  {
+    "id": "armored_guard_captain",
+    "name": "Armored Guard Captain",
+    "era": "mgs1",
+    "visionRange": 640,
+    "hearingRange": 450,
+    "health": 10,
+    "canCallBackup": false,
+    "alertBehavior": "boss_arena_controller",
+    "notes": "Mini-boss en deux phases : verrouille l’extraction, tire en rafales, charge à courte portée et déclenche boss_intro/boss_midfight/boss_defeated."
+  }
+]

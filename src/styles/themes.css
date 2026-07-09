@@ -1,0 +1,199 @@
+.theme-classic_mgs1 {
+  --primary: #7cff6b;
+  --primary-soft: #d8ffd4;
+  --bg: #06140c;
+  --bg-deep: #020703;
+  --panel: rgba(8, 31, 15, 0.84);
+  --panel-strong: rgba(12, 46, 22, 0.92);
+  --line: rgba(124, 255, 107, 0.35);
+  --line-strong: rgba(124, 255, 107, 0.85);
+  --muted: #8ac985;
+  --warning: #f8f49a;
+  --danger: #ff6b6b;
+  --shadow-glow: 0 0 16px rgba(124, 255, 107, 0.28);
+}
+
+.theme-msx_terminal {
+  --primary: #8cff7a;
+  --primary-soft: #d8ffd1;
+  --bg: #020b04;
+  --bg-deep: #010401;
+  --panel: rgba(4, 20, 6, 0.9);
+  --panel-strong: rgba(6, 31, 9, 0.96);
+  --line: rgba(140, 255, 122, 0.28);
+  --line-strong: rgba(140, 255, 122, 0.78);
+  --muted: #76bb6d;
+  --warning: #caffbd;
+  --shadow-glow: 0 0 8px rgba(140, 255, 122, 0.18);
+}
+
+.theme-mgs2_digital {
+  --primary: #74c8ff;
+  --primary-soft: #d7f2ff;
+  --bg: #031221;
+  --bg-deep: #010711;
+  --panel: rgba(5, 22, 42, 0.86);
+  --panel-strong: rgba(8, 40, 70, 0.94);
+  --line: rgba(116, 200, 255, 0.32);
+  --line-strong: rgba(116, 200, 255, 0.86);
+  --muted: #8ebfdd;
+  --warning: #bde9ff;
+  --danger: #ff7676;
+  --shadow-glow: 0 0 18px rgba(116, 200, 255, 0.28);
+}
+
+.theme-mgs3_radio {
+  --primary: #e2d08a;
+  --primary-soft: #fff2bd;
+  --bg: #171208;
+  --bg-deep: #070502;
+  --panel: rgba(39, 29, 12, 0.88);
+  --panel-strong: rgba(58, 42, 18, 0.95);
+  --line: rgba(226, 208, 138, 0.34);
+  --line-strong: rgba(226, 208, 138, 0.86);
+  --muted: #b9a977;
+  --warning: #7dff83;
+  --danger: #ff7a4e;
+  --shadow-glow: 0 0 14px rgba(226, 208, 138, 0.22);
+}
+
+.theme-mgs4_modern {
+  --primary: #d6e6f2;
+  --primary-soft: #ffffff;
+  --bg: #071018;
+  --bg-deep: #020509;
+  --panel: rgba(12, 22, 31, 0.9);
+  --panel-strong: rgba(24, 36, 45, 0.95);
+  --line: rgba(214, 230, 242, 0.28);
+  --line-strong: rgba(255, 184, 107, 0.75);
+  --muted: #9eafba;
+  --warning: #ffb86b;
+  --danger: #ff6b6b;
+  --shadow-glow: 0 0 18px rgba(214, 230, 242, 0.14);
+}
+
+.theme-mgsv_idroid {
+  --primary: #5fe2d1;
+  --primary-soft: #d2fff8;
+  --bg: #041817;
+  --bg-deep: #010807;
+  --panel: rgba(5, 32, 31, 0.88);
+  --panel-strong: rgba(9, 54, 50, 0.96);
+  --line: rgba(95, 226, 209, 0.32);
+  --line-strong: rgba(95, 226, 209, 0.86);
+  --muted: #83bdb5;
+  --warning: #f2d36b;
+  --danger: #ff806f;
+  --shadow-glow: 0 0 18px rgba(95, 226, 209, 0.24);
+}
+
+.theme-vr_training {
+  --primary: #61f4ff;
+  --primary-soft: #c9fbff;
+  --bg: #03161c;
+  --bg-deep: #01090d;
+  --panel: rgba(3, 23, 30, 0.86);
+  --panel-strong: rgba(6, 41, 52, 0.95);
+  --line: rgba(97, 244, 255, 0.35);
+  --line-strong: rgba(97, 244, 255, 0.85);
+  --muted: #8bdce4;
+  --warning: #ffffff;
+  --shadow-glow: 0 0 16px rgba(97, 244, 255, 0.25);
+}
+
+.theme-patriots_glitch {
+  --primary: #e2fff0;
+  --primary-soft: #ffffff;
+  --bg: #111;
+  --bg-deep: #030303;
+  --panel: rgba(20, 20, 20, 0.9);
+  --panel-strong: rgba(35, 15, 20, 0.94);
+  --line: rgba(255, 255, 255, 0.25);
+  --line-strong: rgba(255, 107, 107, 0.75);
+  --muted: #a8b2ad;
+  --warning: #ff6b6b;
+  --danger: #ff3333;
+  --shadow-glow: 0 0 18px rgba(255, 107, 107, 0.22);
+}
+
+.theme-msx_terminal.app-shell,
+.theme-msx_terminal .app-shell {
+  image-rendering: pixelated;
+}
+
+.theme-msx_terminal .panel,
+.theme-msx_terminal .codec-frame,
+.theme-msx_terminal .codec-dialogue-box,
+.theme-msx_terminal .codec-portrait {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.theme-msx_terminal .frequency-display {
+  font-size: clamp(34px, 6vw, 64px);
+  text-shadow: none;
+}
+
+.theme-mgs2_digital .codec-frame {
+  background:
+    linear-gradient(90deg, rgba(116, 200, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(116, 200, 255, 0.06) 1px, transparent 1px),
+    radial-gradient(circle at center, rgba(116, 200, 255, 0.15), transparent 48%),
+    rgba(1, 8, 17, 0.62);
+  background-size: 34px 34px, 34px 34px, auto, auto;
+}
+
+.theme-mgs3_radio .codec-frame,
+.theme-mgs3_radio .codec-dialogue-box {
+  background:
+    linear-gradient(135deg, rgba(226, 208, 138, 0.07), transparent 35%),
+    repeating-linear-gradient(90deg, rgba(226, 208, 138, 0.04), rgba(226, 208, 138, 0.04) 2px, transparent 2px, transparent 11px),
+    rgba(18, 12, 5, 0.68);
+}
+
+.theme-mgs4_modern .codec-frame {
+  background:
+    linear-gradient(120deg, rgba(214, 230, 242, 0.09), transparent 45%),
+    linear-gradient(90deg, rgba(255, 184, 107, 0.08), transparent 22%, rgba(214, 230, 242, 0.04)),
+    rgba(5, 8, 12, 0.72);
+}
+
+.theme-mgsv_idroid .codec-frame,
+.theme-mgsv_idroid .codec-dialogue-box {
+  background:
+    linear-gradient(90deg, rgba(95, 226, 209, 0.10) 1px, transparent 1px),
+    radial-gradient(circle at top, rgba(95, 226, 209, 0.15), transparent 52%),
+    rgba(2, 14, 13, 0.72);
+  background-size: 46px 46px, auto, auto;
+}
+
+.theme-vr_training .codec-frame {
+  background:
+    linear-gradient(90deg, rgba(97, 244, 255, 0.11) 1px, transparent 1px),
+    linear-gradient(rgba(97, 244, 255, 0.11) 1px, transparent 1px),
+    radial-gradient(circle at center, rgba(97, 244, 255, 0.12), transparent 50%),
+    rgba(0, 11, 16, 0.7);
+  background-size: 28px 28px, 28px 28px, auto, auto;
+}
+
+.theme-patriots_glitch .codec-frame,
+.theme-patriots_glitch .codec-dialogue-box,
+.theme-patriots_glitch .codec-portrait {
+  animation: glitchPulse 1.25s infinite steps(2, end);
+}
+
+.theme-patriots_glitch .frequency-display,
+.theme-patriots_glitch .brand-block h1,
+.theme-patriots_glitch .dialogue-speaker {
+  text-shadow:
+    2px 0 rgba(255, 0, 0, 0.55),
+    -2px 0 rgba(0, 255, 255, 0.45),
+    var(--shadow-glow);
+}
+
+@keyframes glitchPulse {
+  0%, 100% { filter: none; transform: translateX(0); }
+  48% { filter: contrast(1.15) saturate(1.35); transform: translateX(0); }
+  50% { filter: contrast(1.4) saturate(1.8); transform: translateX(1px); }
+  52% { filter: contrast(1.1) saturate(1.2); transform: translateX(-1px); }
+}
