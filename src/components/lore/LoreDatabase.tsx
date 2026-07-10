@@ -1,3 +1,4 @@
+import '../../styles/lore.css';
 import { useEffect, useMemo, useState } from 'react';
 import loreEntriesJson from '../../data/loreEntries.json';
 import contactsJson from '../../data/contacts.json';
@@ -28,6 +29,7 @@ import {
 } from '../../systems/loreStorage';
 import { Panel } from '../common/Panel';
 import { StatusBadge } from '../common/StatusBadge';
+import { consumeCampaignLaunchDirective, recordCampaignLoreViewed } from '../../systems/campaignStorage';
 
 interface LoreDatabaseProps {
   onRouteChange?: (route: AppRoute) => void;
@@ -403,13 +405,14 @@ function makeEntryJson(entry: LoreEntry): string {
 }
 
 export function LoreDatabase({ onRouteChange }: LoreDatabaseProps) {
+  const [campaignDirective] = useState(() => consumeCampaignLaunchDirective('lore'));
   const [customEntries, setCustomEntries] = useState<LoreEntry[]>(() => loadCustomLoreEntries());
   const [state, setState] = useState(() => loadLoreState());
   const [selectedCategory, setSelectedCategory] = useState<LoreCategory | 'all' | 'favorites' | 'history' | 'notes'>('all');
   const [selectedEra, setSelectedEra] = useState<LoreEntry['era'] | 'all'>('all');
   const [selectedCanon, setSelectedCanon] = useState<LoreCanonStatus | 'all'>('all');
   const [search, setSearch] = useState('');
-  const [selectedEntryId, setSelectedEntryId] = useState('lore_codec_system');
+  const [selectedEntryId, setSelectedEntryId] = useState(campaignDirective?.targetId ?? 'lore_codec_system');
   const [importBuffer, setImportBuffer] = useState('');
   const [exportMode, setExportMode] = useState<'selected' | 'visible' | 'all' | 'state'>('selected');
   const [systemMessage, setSystemMessage] = useState('LORE DATABASE ONLINE');
@@ -474,6 +477,10 @@ export function LoreDatabase({ onRouteChange }: LoreDatabaseProps) {
   }, [state]);
 
   useEffect(() => {
+    if (selectedEntryId) recordCampaignLoreViewed(selectedEntryId);
+  }, [selectedEntryId]);
+
+  useEffect(() => {
     if (!selectedEntry && allEntries[0]) setSelectedEntryId(allEntries[0].id);
   }, [allEntries, selectedEntry]);
 
@@ -487,6 +494,7 @@ export function LoreDatabase({ onRouteChange }: LoreDatabaseProps) {
     if (!entry) return;
     setSelectedEntryId(entryId);
     persistState(pushLoreHistory(state, entryId), `LOADED: ${entry.title.toUpperCase()}`);
+    recordCampaignLoreViewed(entryId);
   }
 
   function toggleFavorite() {

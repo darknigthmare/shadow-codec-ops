@@ -1,7 +1,11 @@
 import Phaser from 'phaser';
 import type { MissionCompletePayload } from '../core/GameEvents';
+import { RuntimeInputController } from '../core/RuntimeInput';
 
 export class MissionCompleteScene extends Phaser.Scene {
+  private inputController!: RuntimeInputController;
+  private restartLocked = false;
+
   constructor() {
     super('MissionCompleteScene');
   }
@@ -11,6 +15,9 @@ export class MissionCompleteScene extends Phaser.Scene {
     const rank = data.rankPreview ?? (success ? 'HOUND' : 'MISSION FAILED');
     const title = success ? 'MISSION CLEAR' : 'MISSION FAILED';
     const titleColor = success ? '#7cff6b' : '#ff6b6b';
+
+    this.inputController = new RuntimeInputController(this);
+    this.restartLocked = false;
 
     this.add.rectangle(480, 270, 960, 540, 0x020703, 0.96);
     this.add.rectangle(480, 270, 760, 430, 0x06140c, 0.88).setStrokeStyle(2, success ? 0x7cff6b : 0xff6b6b, 0.8);
@@ -56,17 +63,20 @@ export class MissionCompleteScene extends Phaser.Scene {
       });
     });
 
-    this.add.text(240, 488, 'Press ENTER to replay. Press ESC to restart instantly.', {
+    this.add.text(206, 488, 'Confirm / Start-Options to replay. Cancel / Back-Share also restarts.', {
       fontFamily: 'monospace',
       fontSize: '16px',
       color: '#7cff6b'
     });
+  }
 
-    this.input.keyboard?.once('keydown-ENTER', () => {
+  update(): void {
+    if (this.restartLocked) return;
+    this.inputController.update();
+    if (this.inputController.justDown('confirm') || this.inputController.justDown('cancel')) {
+      this.restartLocked = true;
+      this.inputController.vibrate(55, 0.12, 0.22);
       this.scene.start('SideOpsScene');
-    });
-    this.input.keyboard?.once('keydown-ESC', () => {
-      this.scene.start('SideOpsScene');
-    });
+    }
   }
 }

@@ -1,0 +1,335 @@
+/* Pass 16: PWA, safe areas and retractable tactical touch controls */
+:root {
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+}
+
+html {
+  min-height: 100%;
+  background: #020703;
+  overscroll-behavior: none;
+}
+
+body {
+  min-height: 100%;
+  padding: 0;
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.layout-shell {
+  padding-top: max(18px, var(--safe-top));
+  padding-right: max(18px, var(--safe-right));
+  padding-bottom: max(18px, var(--safe-bottom));
+  padding-left: max(18px, var(--safe-left));
+}
+
+.pwa-runtime-banner {
+  position: fixed;
+  z-index: 12000;
+  top: max(10px, var(--safe-top));
+  right: max(10px, var(--safe-right));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  width: min(520px, calc(100vw - var(--safe-left) - var(--safe-right) - 20px));
+  padding: 12px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  background: rgba(2, 14, 7, 0.97);
+  box-shadow: var(--shadow-glow);
+  color: var(--primary-soft);
+}
+
+.pwa-runtime-banner.offline {
+  border-color: rgba(248, 244, 154, 0.72);
+}
+
+.pwa-runtime-banner > div:first-child {
+  display: grid;
+  gap: 4px;
+}
+
+.pwa-runtime-banner strong {
+  color: var(--primary);
+  letter-spacing: 0.1em;
+  font-size: 12px;
+}
+
+.pwa-runtime-banner span {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.pwa-runtime-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.pwa-runtime-actions button {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.42);
+  color: var(--primary);
+  padding: 8px 10px;
+}
+
+.touch-game-surface,
+.touch-game-surface canvas {
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.touch-control-overlay {
+  --touch-scale: 1;
+  --touch-opacity: 0.82;
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  font-family: var(--font-ui);
+}
+
+.touch-control-overlay.collapsed {
+  inset: auto max(8px, var(--safe-right)) max(8px, var(--safe-bottom)) auto;
+}
+
+.touch-control-button,
+.touch-collapse-toggle {
+  pointer-events: auto;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  border: 1px solid rgba(124, 255, 107, 0.68);
+  background: rgba(2, 12, 6, var(--touch-opacity));
+  color: #d9ffd2;
+  box-shadow: 0 0 14px rgba(124, 255, 107, 0.18), inset 0 0 12px rgba(124, 255, 107, 0.08);
+  min-width: calc(52px * var(--touch-scale));
+  min-height: calc(52px * var(--touch-scale));
+  padding: calc(8px * var(--touch-scale));
+  border-radius: 50%;
+  font-size: calc(11px * var(--touch-scale));
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+.touch-control-button:active {
+  transform: scale(0.92);
+  border-color: #fff;
+  background: rgba(76, 151, 72, 0.92);
+}
+
+.touch-collapse-toggle {
+  position: absolute;
+  top: max(8px, var(--safe-top));
+  right: max(8px, var(--safe-right));
+  min-width: auto;
+  min-height: 36px;
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 10px;
+}
+
+.touch-control-overlay.collapsed .touch-collapse-toggle {
+  position: static;
+}
+
+.touch-movement-cluster,
+.touch-action-cluster,
+.touch-utility-cluster,
+.touch-system-cluster {
+  position: absolute;
+  display: grid;
+  gap: calc(7px * var(--touch-scale));
+  pointer-events: none;
+}
+
+.touch-movement-cluster {
+  left: max(12px, var(--safe-left));
+  bottom: max(16px, var(--safe-bottom));
+  grid-template-columns: repeat(3, calc(52px * var(--touch-scale)));
+  grid-template-areas:
+    '. jump .'
+    'left crouch right';
+}
+
+.touch-movement-cluster > :nth-child(1) { grid-area: left; }
+.touch-movement-cluster > :nth-child(2) { grid-area: crouch; }
+.touch-movement-cluster > :nth-child(3) { grid-area: right; }
+.touch-movement-cluster > :nth-child(4) { grid-area: jump; }
+
+.touch-action-cluster {
+  right: max(12px, var(--safe-right));
+  bottom: max(16px, var(--safe-bottom));
+  grid-template-columns: repeat(2, calc(58px * var(--touch-scale)));
+  transform: rotate(-8deg);
+}
+
+.touch-action-cluster .touch-control-button {
+  transform: rotate(8deg);
+}
+
+.touch-action-cluster .touch-control-button:active {
+  transform: rotate(8deg) scale(0.92);
+}
+
+.touch-action-cluster .touch-fire {
+  border-color: rgba(255, 159, 107, 0.88);
+  color: #ffe3cc;
+  min-width: calc(62px * var(--touch-scale));
+  min-height: calc(62px * var(--touch-scale));
+}
+
+.touch-utility-cluster {
+  left: max(12px, var(--safe-left));
+  top: max(10px, var(--safe-top));
+  grid-auto-flow: column;
+}
+
+.touch-utility-cluster .touch-control-button,
+.touch-system-cluster .touch-control-button {
+  min-width: calc(60px * var(--touch-scale));
+  min-height: calc(36px * var(--touch-scale));
+  border-radius: 999px;
+}
+
+.touch-system-cluster {
+  right: max(82px, calc(var(--safe-right) + 70px));
+  top: max(10px, var(--safe-top));
+  grid-auto-flow: column;
+}
+
+.touch-orientation-hint {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(82%, 430px);
+  padding: 14px;
+  border: 1px solid rgba(248, 244, 154, 0.7);
+  border-radius: 10px;
+  background: rgba(1, 8, 3, 0.9);
+  color: var(--warning);
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  pointer-events: none;
+}
+
+@media (display-mode: standalone) {
+  .layout-shell {
+    min-height: 100dvh;
+  }
+
+  .brand-subtitle::after {
+    content: ' // PWA';
+    color: var(--primary);
+  }
+}
+
+@media (max-width: 980px) {
+  body {
+    overflow: hidden;
+  }
+
+  .layout-shell {
+    height: 100dvh;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 10px;
+    padding-top: max(8px, var(--safe-top));
+    padding-right: max(8px, var(--safe-right));
+    padding-bottom: max(8px, var(--safe-bottom));
+    padding-left: max(8px, var(--safe-left));
+  }
+
+  .side-nav {
+    padding: 10px;
+    gap: 10px;
+    overflow: visible;
+  }
+
+  .brand-block {
+    display: none;
+  }
+
+  .side-nav nav {
+    display: flex;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+
+  .side-nav nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-button {
+    flex: 0 0 auto;
+    min-height: 42px;
+    padding: 8px 11px;
+    white-space: nowrap;
+  }
+
+  .system-card {
+    display: none;
+  }
+
+  .main-content {
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+    padding-right: 0;
+    padding-bottom: max(6px, var(--safe-bottom));
+  }
+
+  .panel {
+    border-radius: 10px;
+    padding: 12px;
+  }
+
+  .sideops-game-shell,
+  #sideops-phaser-root {
+    min-height: min(58dvh, 540px);
+  }
+
+  .vr-phaser-root.active {
+    min-height: min(58dvh, 420px);
+  }
+
+  .pwa-runtime-banner {
+    top: auto;
+    bottom: max(8px, var(--safe-bottom));
+    left: max(8px, var(--safe-left));
+    right: max(8px, var(--safe-right));
+    width: auto;
+  }
+}
+
+@media (max-height: 560px) and (orientation: landscape) {
+  .touch-control-button,
+  .touch-collapse-toggle {
+    --touch-scale: 0.84;
+  }
+
+  .touch-utility-cluster,
+  .touch-system-cluster {
+    top: 5px;
+  }
+}
+
+@media (pointer: fine) {
+  .touch-control-overlay:not(.force-touch-controls) .touch-orientation-hint {
+    display: none;
+  }
+}

@@ -1,17 +1,39 @@
-import Phaser from 'phaser';
-import { BootScene } from '../scenes/BootScene';
-import { PreloadScene } from '../scenes/PreloadScene';
-import { SideOpsScene } from '../scenes/SideOpsScene';
-import { MissionCompleteScene } from '../scenes/MissionCompleteScene';
+import type Phaser from 'phaser';
 
-export function createGameConfig(parent: string): Phaser.Types.Core.GameConfig {
+type PhaserRuntime = typeof Phaser;
+export type GameStartScene = 'SideOpsScene' | 'VRTrainingScene';
+
+export async function createGameConfig(
+  PhaserRuntime: PhaserRuntime,
+  parent: string,
+  startScene: GameStartScene = 'SideOpsScene'
+): Promise<Phaser.Types.Core.GameConfig> {
+  window.localStorage.setItem('shadow-codec-phaser-start-scene', startScene);
+
+  const [{ BootScene }, { PreloadScene }] = await Promise.all([
+    import('../scenes/BootScene'),
+    import('../scenes/PreloadScene')
+  ]);
+
+  const scene = startScene === 'VRTrainingScene'
+    ? [BootScene, PreloadScene, (await import('../scenes/VRTrainingScene')).VRTrainingScene]
+    : [
+        BootScene,
+        PreloadScene,
+        (await import('../scenes/SideOpsScene')).SideOpsScene,
+        (await import('../scenes/MissionCompleteScene')).MissionCompleteScene
+      ];
+
   return {
-    type: Phaser.AUTO,
+    type: PhaserRuntime.AUTO,
     parent,
     width: 960,
     height: 540,
     backgroundColor: '#06140c',
     pixelArt: true,
+    input: {
+      gamepad: true
+    },
     physics: {
       default: 'arcade',
       arcade: {
@@ -19,10 +41,10 @@ export function createGameConfig(parent: string): Phaser.Types.Core.GameConfig {
         debug: false
       }
     },
-    scene: [BootScene, PreloadScene, SideOpsScene, MissionCompleteScene],
+    scene,
     scale: {
-      mode: Phaser.Scale.FIT,
-      autoCenter: Phaser.Scale.CENTER_BOTH
+      mode: PhaserRuntime.Scale.FIT,
+      autoCenter: PhaserRuntime.Scale.CENTER_BOTH
     }
   };
 }

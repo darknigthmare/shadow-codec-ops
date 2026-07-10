@@ -1,7 +1,7 @@
 {
   "name": "shadow-codec-ops",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.2.0",
   "type": "module",
   "description": "Private fan-made tactical codec simulator plus Side Ops 2D prototype.",
   "scripts": {
@@ -10,9 +10,20 @@
     "preview": "vite preview",
     "lint": "tsc --noEmit",
     "tauri:dev": "tauri dev",
-    "tauri:build": "tauri build"
+    "tauri:build": "tauri build",
+    "desktop:check": "npm run build && cargo check --manifest-path src-tauri/Cargo.toml",
+    "tauri:build:debug": "tauri build --debug",
+    "tauri:icon": "tauri icon app-icon.png",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "qa": "npm run lint && npm run test && npm run build && npm run pwa:check",
+    "pwa:preview": "npm run build && vite preview --host 0.0.0.0",
+    "pwa:check": "node scripts/check-pwa.mjs"
   },
   "dependencies": {
+    "@tauri-apps/api": "^2.11.1",
+    "@tauri-apps/plugin-store": "^2.4.3",
+    "@tauri-apps/plugin-window-state": "^2.4.1",
     "@vitejs/plugin-react": "^4.3.4",
     "phaser": "^3.87.0",
     "react": "^18.3.1",
@@ -24,6 +35,10 @@
     "@types/node": "^26.1.1",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
-    "typescript": "^5.7.2"
+    "jsdom": "^29.1.1",
+    "typescript": "^5.7.2",
+    "vite-plugin-pwa": "^1.3.0",
+    "vitest": "^4.1.10",
+    "workbox-window": "^7.4.1"
   }
 }

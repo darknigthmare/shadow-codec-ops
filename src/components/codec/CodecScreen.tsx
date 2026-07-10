@@ -1,3 +1,4 @@
+import '../../styles/codec.css';
 import { useEffect, useMemo, useState } from 'react';
 import contactsJson from '../../data/contacts.json';
 import conversationsJson from '../../data/conversations.json';
@@ -18,8 +19,16 @@ import { formatFrequency, normalizeFrequency, scanFrequency } from '../../system
 import { loadJson, saveJson } from '../../systems/saveEngine';
 import { loadCustomConversations, mergeStudioConversations } from '../../systems/studioStorage';
 import { playBeep, playCodecConnect, playIncomingRing, playNoResponse } from '../../systems/audioEngine';
+import { getAudioProfileForEra, playNarrativeAudioSource, playNarrativeVoiceCue, startNarrativeNoise, stopNarrativeNoise } from '../../systems/narrativeAudioEngine';
+import { resolveLocalizedText } from '../../systems/localizationEngine';
+import { consumeCampaignLaunchDirective, recordCampaignCodecCall } from '../../systems/campaignStorage';
 import { Panel } from '../common/Panel';
 import { StatusBadge } from '../common/StatusBadge';
+import { SubtitleTrack } from '../common/SubtitleTrack';
+import { AnimatedCodecPortrait } from '../common/AnimatedCodecPortrait';
+import { loadVoicePackState, resolvePortraitAsset, resolveVoiceAsset } from '../../systems/voicePackStorage';
+import { getDirectorSequenceLibrary } from '../../systems/directorStorage';
+import { requestDirectorSequence } from '../../systems/directorBus';
 
 const contacts = contactsJson as ContactDefinition[];
 const builtInConversations = conversationsJson as ConversationDefinition[];
@@ -54,16 +63,18 @@ function getSignalStrength(status: string): number {
 }
 
 export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
-  const [selectedEra, setSelectedEra] = useState<EraId>(settings.selectedEra as EraId);
+  const [campaignDirective] = useState(() => consumeCampaignLaunchDirective('codec'));
+  const campaignContact = contacts.find((contact) => contact.id === campaignDirective?.targetId);
+  const [selectedEra, setSelectedEra] = useState<EraId>((campaignContact?.era ?? settings.selectedEra) as EraId);
   const currentEra = eras.find((era) => era.id === selectedEra) ?? eras[0];
   const currentTheme = themePacks.find((theme) => theme.id === settings.selectedTheme) ?? themePacks.find((theme) => theme.id === currentEra.visualStyle) ?? themePacks[0];
-  const [frequency, setFrequency] = useState<number>(() => loadJson('last-frequency', currentEra.defaultFrequency));
+  const [frequency, setFrequency] = useState<number>(() => campaignContact?.frequency ?? loadJson('last-frequency', currentEra.defaultFrequency));
   const [codecState, setCodecState] = useState<CodecState>('idle');
   const [activeCall, setActiveCall] = useState<ActiveCall | null>(null);
   const [lineIndex, setLineIndex] = useState(0);
   const [memoryOpen, setMemoryOpen] = useState(false);
   const [historyOpen, setHistoryOpen] = useState(false);
-  const [message, setMessage] = useState('SYSTEM READY');
+  const [message, setMessage] = useState(campaignContact ? `CAMPAIGN TARGET: ${campaignContact.name.toUpperCase()}` : 'SYSTEM READY');
   const [memoryContactIds, setMemoryContactIds] = useState<string[]>(() =>
     loadJson(
       'codec-memory',
@@ -72,6 +83,9 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
   );
   const [callHistory, setCallHistory] = useState<CallHistoryEntry[]>(() => loadJson('call-history', []));
   const [customConversations] = useState(() => loadCustomConversations());
+  const [voicePackState, setVoicePackState] = useState(() => loadVoicePackState());
+  const directorSequences = useMemo(() => getDirectorSequenceLibrary().filter((sequence) => sequence.contexts.includes('codec')), []);
+  const [selectedDirectorSequenceId, setSelectedDirectorSequenceId] = useState(() => directorSequences[0]?.id ?? '');
 
   const conversations = useMemo(
     () => mergeStudioConversations(builtInConversations, customConversations),
@@ -81,6 +95,12 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
   useEffect(() => {
     saveJson('last-frequency', frequency);
   }, [frequency]);
+
+  useEffect(() => {
+    const refresh = () => setVoicePackState(loadVoicePackState());
+    window.addEventListener('shadow-codec:voice-packs-changed', refresh);
+    return () => window.removeEventListener('shadow-codec:voice-packs-changed', refresh);
+  }, []);
 
   useEffect(() => {
     saveJson('codec-memory', memoryContactIds);
@@ -103,6 +123,38 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
   const scan = useMemo(() => scanFrequency(selectedEra, frequency, contacts), [selectedEra, frequency]);
   const currentLine = activeCall?.conversation.lines[lineIndex];
   const signalStrength = getSignalStrength(scan.status);
+  const localizedLineText = resolveLocalizedText(currentLine?.localizedText ?? currentLine?.text, settings.locale);
+  const portraitExpression = settings.portraitExpressions ? (currentLine?.portraitExpression ?? currentLine?.emotion ?? 'neutral') : 'neutral';
+  const playerSpeakerIds = ['snake', 'solid_snake', 'raiden', 'naked_snake', 'venom_snake', 'player'];
+  const playerSpeaking = Boolean(currentLine && playerSpeakerIds.includes(currentLine.speaker));
+  const contactSpeaking = Boolean(currentLine && !playerSpeaking);
+  const resolvedVoiceAsset = activeCall && settings.voicePackEnabled ? resolveVoiceAsset(activeCall.conversation.id, lineIndex, activeCall.contact.era, voicePackState) : undefined;
+  const contactPortraitImage = activeCall && settings.voicePackEnabled ? resolvePortraitAsset(activeCall.contact.id, portraitExpression, activeCall.contact.era, voicePackState) : undefined;
+
+  useEffect(() => {
+    if (!activeCall || !currentLine || !settings.narrativeAudioEnabled) {
+      stopNarrativeNoise();
+      return;
+    }
+    const profile = getAudioProfileForEra(activeCall.contact.era);
+    startNarrativeNoise(profile, settings.radioNoiseVolume * settings.narrativeAudioVolume);
+    playNarrativeVoiceCue(profile, currentLine.emotion ?? 'neutral', settings.narrativeAudioVolume);
+    let localAudio: HTMLAudioElement | null = null;
+    void playNarrativeAudioSource(resolvedVoiceAsset?.source ?? currentLine.audioSource, settings.narrativeAudioVolume).then((audio) => { localAudio = audio; });
+    return () => {
+      stopNarrativeNoise();
+      localAudio?.pause();
+    };
+  }, [activeCall, currentLine, resolvedVoiceAsset?.source, settings.narrativeAudioEnabled, settings.narrativeAudioVolume, settings.radioNoiseVolume]);
+
+  useEffect(() => () => stopNarrativeNoise(), []);
+
+  useEffect(() => {
+    if (!settings.autoAdvance || !activeCall || !currentLine) return;
+    const duration = Math.max(600, (currentLine.endMs ?? 2500) - (currentLine.startMs ?? 0));
+    const timer = window.setTimeout(() => nextLine(), duration);
+    return () => window.clearTimeout(timer);
+  }, [activeCall, currentLine, settings.autoAdvance]);
 
   function changeEra(eraId: EraId) {
     const era = eras.find((entry) => entry.id === eraId);
@@ -211,7 +263,9 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
         completed
       };
       setCallHistory((entries) => [entry, ...entries].slice(0, 30));
+      if (completed) recordCampaignCodecCall(activeCall.contact.id, activeCall.conversation.id);
     }
+    stopNarrativeNoise();
     setActiveCall(null);
     setLineIndex(0);
     setCodecState('idle');
@@ -249,11 +303,16 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
         </div>
 
         <div className="codec-frame">
-          <div className="codec-portrait left">
-            <span className="portrait-label">PLAYER</span>
-            <span className="codec-portrait-avatar">{selectedEra === 'mgs2' ? 'R' : selectedEra === 'mgs3' ? 'BB' : selectedEra === 'mgsv' ? 'VS' : 'S'}</span>
-            <strong>{selectedEra === 'mgs2' ? 'RAIDEN' : selectedEra === 'mgs3' ? 'NAKED\nSNAKE' : selectedEra === 'mgsv' ? 'VENOM\nSNAKE' : 'SOLID\nSNAKE'}</strong>
-          </div>
+          <AnimatedCodecPortrait
+            side="left"
+            label="PLAYER"
+            initials={selectedEra === 'mgs2' ? 'R' : selectedEra === 'mgs3' ? 'BB' : selectedEra === 'mgsv' ? 'VS' : 'S'}
+            name={selectedEra === 'mgs2' ? 'RAIDEN' : selectedEra === 'mgs3' ? 'NAKED SNAKE' : selectedEra === 'mgsv' ? 'VENOM SNAKE' : 'SOLID SNAKE'}
+            expression={playerSpeaking ? portraitExpression : 'neutral'}
+            emotion={currentLine?.emotion}
+            speaking={playerSpeaking}
+            enabled={settings.portraitAnimationEnabled}
+          />
 
           <div className="codec-frequency-core">
             <span className="frequency-caption">FREQUENCY / CHANNEL</span>
@@ -277,14 +336,24 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
               <button type="button" onClick={() => setMemoryOpen((open) => !open)}>MEMORY</button>
               <button type="button" onClick={() => setHistoryOpen((open) => !open)}>HISTORY</button>
               <button type="button" onClick={() => incomingCall()}>SIMULATE CALL</button>
+              <select aria-label="Director sequence" value={selectedDirectorSequenceId} onChange={(event) => setSelectedDirectorSequenceId(event.target.value)}>
+                {directorSequences.map((sequence) => <option key={sequence.id} value={sequence.id}>{sequence.title}</option>)}
+              </select>
+              <button type="button" disabled={!selectedDirectorSequenceId} onClick={() => requestDirectorSequence(selectedDirectorSequenceId, 'codec', 'Codec Simulator')}>DIRECTOR</button>
             </div>
           </div>
 
-          <div className="codec-portrait right">
-            <span className="portrait-label">CONTACT</span>
-            <span className="codec-portrait-avatar contact-avatar">{activeCall ? activeCall.contact.codename?.slice(0, 2).toUpperCase() ?? 'C' : scan.contact?.codename?.slice(0, 2).toUpperCase() ?? '??'}</span>
-            <strong>{activeCall ? activeCall.contact.name : scan.contact?.name ?? 'NO SIGNAL'}</strong>
-          </div>
+          <AnimatedCodecPortrait
+            side="right"
+            label="CONTACT"
+            initials={activeCall ? activeCall.contact.codename?.slice(0, 2).toUpperCase() ?? 'C' : scan.contact?.codename?.slice(0, 2).toUpperCase() ?? '??'}
+            name={activeCall ? activeCall.contact.name : scan.contact?.name ?? 'NO SIGNAL'}
+            expression={portraitExpression}
+            emotion={currentLine?.emotion}
+            image={contactPortraitImage}
+            speaking={contactSpeaking}
+            enabled={settings.portraitAnimationEnabled}
+          />
         </div>
 
         <div className="codec-dialogue-box">
@@ -296,7 +365,17 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
                   <span className="glitch-level"> GLITCH {currentLine.glitchLevel}</span>
                 )}
               </div>
-              <p>{currentLine.text}</p>
+              <p>{localizedLineText}</p>
+              <span className="portrait-expression">EXPRESSION: {portraitExpression.toUpperCase()}</span>
+              <SubtitleTrack
+                speaker={getSpeakerLabel(currentLine.speaker, activeCall.contact)}
+                text={currentLine.localizedText ?? currentLine.text}
+                locale={settings.locale}
+                startMs={currentLine.startMs}
+                endMs={currentLine.endMs}
+                emotion={currentLine.emotion}
+                enabled={settings.subtitlesEnabled}
+              />
               <div className="dialogue-actions">
                 <button type="button" onClick={nextLine}>
                   {lineIndex < activeCall.conversation.lines.length - 1 ? 'NEXT' : 'END CALL'}

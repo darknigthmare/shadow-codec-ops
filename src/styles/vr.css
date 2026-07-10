@@ -357,3 +357,70 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+.vr-phaser-panel {
+  border-color: rgba(124, 255, 107, 0.4);
+}
+
+.vr-bridge-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 0.85rem;
+}
+
+.vr-bridge-header strong,
+.vr-bridge-header span {
+  display: block;
+}
+
+.vr-bridge-header span {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  line-height: 1.35;
+  margin-top: 0.25rem;
+}
+
+.vr-bridge-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 260px;
+}
+
+.vr-phaser-root {
+  min-height: 280px;
+  border: 1px solid rgba(124, 255, 107, 0.28);
+  background: radial-gradient(circle at center, rgba(124, 255, 107, 0.08), rgba(0, 0, 0, 0.74) 68%);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.vr-phaser-root.active {
+  min-height: 360px;
+}
+
+.vr-phaser-root canvas {
+  width: 100% !important;
+  height: auto !important;
+  image-rendering: pixelated;
+}
+
+.vr-phaser-root > span {
+  color: var(--text-muted);
+  font-family: var(--mono-font);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.vr-bridge-help {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  line-height: 1.4;
+  margin: 0.75rem 0 0;
+}

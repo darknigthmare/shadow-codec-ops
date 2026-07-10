@@ -1,3 +1,4 @@
+import '../../styles/studio.css';
 import { useMemo, useState } from 'react';
 import contactsJson from '../../data/contacts.json';
 import conversationsJson from '../../data/conversations.json';
@@ -15,6 +16,7 @@ import type { MissionDefinition } from '../../types/mission.types';
 import type { StudioConversationRecord, StudioTriggerOverride, StudioTriggerPriority } from '../../types/studio.types';
 import { getSpeakerLabel } from '../../systems/conversationEngine';
 import { formatFrequency, normalizeFrequency } from '../../systems/frequencyEngine';
+import { conversationToSrt } from '../../systems/subtitleExport';
 import {
   cloneBuiltInConversation,
   createStudioConversationId,
@@ -28,6 +30,7 @@ import {
 } from '../../systems/studioStorage';
 import { Panel } from '../common/Panel';
 import { StatusBadge } from '../common/StatusBadge';
+import { conversationToDirectorSequence, loadCustomDirectorSequences, saveCustomDirectorSequences } from '../../systems/directorStorage';
 
 const contacts = contactsJson as ContactDefinition[];
 const builtInConversations = conversationsJson as ConversationDefinition[];
@@ -333,6 +336,19 @@ export function ConversationStudio() {
     setStudioMessage('EXPORT JSON COPIED');
   }
 
+  function copySrt(locale: 'en' | 'fr') {
+    void navigator.clipboard?.writeText(conversationToSrt(draft, locale));
+    setStudioMessage(`SUBTITLE SRT COPIED: ${locale.toUpperCase()}`);
+  }
+
+
+  function sendToDirector() {
+    const sequence = conversationToDirectorSequence(draft);
+    const current = loadCustomDirectorSequences();
+    saveCustomDirectorSequences([sequence, ...current.filter((item) => item.id !== sequence.id)]);
+    setStudioMessage(`DIRECTOR SEQUENCE CREATED: ${sequence.title.toUpperCase()}`);
+  }
+
   return (
     <section className="studio-page">
       <Panel className="studio-browser-panel">
@@ -480,11 +496,22 @@ export function ConversationStudio() {
                   />
                 </label>
               </div>
+              <div className="narrative-timing-grid">
+                <label><span>Start ms</span><input type="number" min="0" value={line.startMs ?? 0} onChange={(event) => updateLine(index, { startMs: Number(event.target.value) })} /></label>
+                <label><span>End ms</span><input type="number" min="0" value={line.endMs ?? 2500} onChange={(event) => updateLine(index, { endMs: Number(event.target.value) })} /></label>
+                <label><span>Portrait expression</span><input value={line.portraitExpression ?? line.emotion ?? 'neutral'} onChange={(event) => updateLine(index, { portraitExpression: event.target.value })} /></label>
+                <label><span>Local audio path</span><input placeholder="/audio/custom/line.ogg" value={line.audioSource ?? ''} onChange={(event) => updateLine(index, { audioSource: event.target.value || undefined })} /></label>
+              </div>
               <textarea
                 value={line.text}
                 onChange={(event) => updateLine(index, { text: event.target.value })}
                 rows={3}
+                placeholder="Legacy / English fallback text"
               />
+              <div className="narrative-language-row">
+                <textarea rows={2} placeholder="English subtitle" value={line.localizedText?.en ?? line.text} onChange={(event) => updateLine(index, { localizedText: { en: event.target.value, fr: line.localizedText?.fr, ja: line.localizedText?.ja } })} />
+                <textarea rows={2} placeholder="Sous-titre français" value={line.localizedText?.fr ?? ''} onChange={(event) => updateLine(index, { localizedText: { en: line.localizedText?.en ?? line.text, fr: event.target.value || undefined, ja: line.localizedText?.ja } })} />
+              </div>
             </div>
           ))}
         </div>
@@ -500,7 +527,8 @@ export function ConversationStudio() {
             <span className="frequency-caption">PREVIEW // {formatFrequency(draft.frequency)}</span>
             <strong>{draft.title}</strong>
             <p>{getSpeakerLabel(previewLine?.speaker ?? 'snake', selectedContact)}</p>
-            <blockquote>{previewLine?.text ?? 'No line selected.'}</blockquote>
+            <blockquote>{previewLine?.localizedText?.en ?? previewLine?.text ?? 'No line selected.'}</blockquote>
+            <small>{previewLine?.startMs ?? 0}ms → {previewLine?.endMs ?? 2500}ms · {previewLine?.portraitExpression ?? previewLine?.emotion ?? 'neutral'}</small>
             <div className="dialogue-actions">
               <button type="button" onClick={() => setPreviewLineIndex((index) => Math.max(0, index - 1))}>Prev</button>
               <button type="button" onClick={() => setPreviewLineIndex((index) => Math.min(draft.lines.length - 1, index + 1))}>Next</button>
@@ -575,6 +603,9 @@ export function ConversationStudio() {
             <option value="overrides">Trigger overrides</option>
           </select>
           <button className="primary-action" type="button" onClick={copyExportToClipboard}>Copy Export</button>
+          <button className="primary-action secondary" type="button" onClick={sendToDirector}>Send to Director</button>
+          <button className="primary-action secondary" type="button" onClick={() => copySrt('en')}>Copy SRT EN</button>
+          <button className="primary-action secondary" type="button" onClick={() => copySrt('fr')}>Copy SRT FR</button>
         </div>
         <textarea value={exportPayload} readOnly rows={9} />
         <textarea

@@ -1,19 +1,19 @@
 import Phaser from 'phaser';
+import { getStorageKey } from '../../systems/saveEngine';
 import {
   emitGameEvent,
   onGameEvent,
   GAME_EVENT,
   type AlertEventPayload,
   type CodecRequestPayload,
+  type DirectorDirectivePayload,
   type MissionCompletePayload,
   type MissionHudPayload
 } from '../core/GameEvents';
 import { calculateSideOpsRank } from '../systems/rankSystem';
-
-type KeyMap = Record<
-  'W' | 'A' | 'S' | 'D' | 'SPACE' | 'C' | 'J' | 'F' | 'R' | 'SHIFT',
-  Phaser.Input.Keyboard.Key
->;
+import { RuntimeInputController } from '../core/RuntimeInput';
+import { resolveBuilderSideOpsProfile } from '../../systems/missionBuilderStorage';
+import { getCampaignLoadoutBonuses } from '../../systems/campaignStorage';
 
 type AlertState = 'NORMAL' | 'SUSPICION' | 'ALERT' | 'EVASION' | 'CAUTION' | 'MISSION FAILED';
 type GuardRole = 'patrol' | 'reinforcement';
@@ -55,6 +55,7 @@ interface CodecProfileCall {
 
 interface MissionProfile {
   id: string;
+  environment: 'dock' | 'tanker' | 'jungle' | 'facility' | 'vr';
   title: string;
   location: string;
   header: string;
@@ -78,7 +79,7 @@ interface MissionProfile {
   reinforcementTexture: string;
   platforms: Array<{ x: number; y: number; scaleX: number }>;
   crates: Array<{ x: number; y: number }>;
-  guards: Array<{ x: number; y: number; patrolMin: number; patrolMax: number; role: GuardRole }>;
+  guards: Array<{ x: number; y: number; patrolMin: number; patrolMax: number; role: GuardRole; hp?: number }>;
   pickups: Array<{ x: number; y: number; kind: PickupKind }>;
   secrets: Array<{ x: number; y: number; id: string; label: string }>;
   stageLabels: Record<ObjectiveStage, string>;
@@ -111,6 +112,7 @@ const MISSION_STORAGE_KEY = 'sideops-active-mission-id';
 
 const SHADOW_DOCK_PROFILE: MissionProfile = {
   id: 'shadow_dock_001',
+  environment: 'dock',
   title: 'Dock Infiltration',
   location: 'Snowfield Docks',
   header: 'MISSION 001 // DOCK INFILTRATION // SHADOW MOSES SIMULATION',
@@ -189,6 +191,7 @@ const SHADOW_DOCK_PROFILE: MissionProfile = {
 
 const TANKER_HOLD_PROFILE: MissionProfile = {
   id: 'tanker_hold_002',
+  environment: 'tanker',
   title: 'Tanker Hold Sabotage',
   location: 'Rain Deck / Cargo Hold',
   header: 'MISSION 002 // TANKER HOLD SABOTAGE // MGS2 SIMULATION',
@@ -274,7 +277,7 @@ const MISSION_PROFILES: Record<string, MissionProfile> = {
 
 function getActiveMissionProfile(): MissionProfile {
   if (typeof window === 'undefined') return SHADOW_DOCK_PROFILE;
-  const rawMissionId = window.localStorage.getItem(MISSION_STORAGE_KEY);
+  const rawMissionId = window.localStorage.getItem(getStorageKey(MISSION_STORAGE_KEY));
   let requestedMissionId = SHADOW_DOCK_PROFILE.id;
 
   if (rawMissionId) {
@@ -286,7 +289,8 @@ function getActiveMissionProfile(): MissionProfile {
     }
   }
 
-  return MISSION_PROFILES[requestedMissionId] ?? SHADOW_DOCK_PROFILE;
+  const builderProfile = resolveBuilderSideOpsProfile(requestedMissionId);
+  return builderProfile ?? MISSION_PROFILES[requestedMissionId] ?? SHADOW_DOCK_PROFILE;
 }
 
 export class SideOpsScene extends Phaser.Scene {
@@ -298,8 +302,7 @@ export class SideOpsScene extends Phaser.Scene {
   private platforms!: Phaser.Physics.Arcade.StaticGroup;
   private bullets!: Phaser.Physics.Arcade.Group;
   private enemyBullets!: Phaser.Physics.Arcade.Group;
-  private cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
-  private keys!: KeyMap;
+  private inputController!: RuntimeInputController;
   private statusText!: Phaser.GameObjects.Text;
   private objectiveText!: Phaser.GameObjects.Text;
   private hudText!: Phaser.GameObjects.Text;
@@ -310,6 +313,7 @@ export class SideOpsScene extends Phaser.Scene {
   private bossBarrierGraphics!: Phaser.GameObjects.Graphics;
   private offCodecResume?: () => void;
   private offMissionRestart?: () => void;
+  private offDirectorDirective?: () => void;
 
   private guards: GuardUnit[] = [];
   private guardSequence = 0;
@@ -329,7 +333,7 @@ export class SideOpsScene extends Phaser.Scene {
   private objectiveStage: ObjectiveStage = 'recover_keycard';
   private completedObjectives = new Set<string>();
   private secretsFound = new Set<string>();
-  private readonly totalSecrets = 3;
+  private totalSecrets = 3;
 
   private alertState: AlertState = 'NORMAL';
   private suspicionMeter = 0;
@@ -420,9 +424,9 @@ export class SideOpsScene extends Phaser.Scene {
     this.elevator = this.physics.add.staticSprite(this.profile.elevator.x, this.profile.elevator.y, 'elevator');
     this.physics.add.overlap(this.player, this.elevator, () => this.completeMission());
 
-    this.cameras.main.startFollow(this.player, true, 0.08, 0.08);
-    this.cursors = this.input.keyboard!.createCursorKeys();
-    this.keys = this.input.keyboard!.addKeys('W,A,S,D,SPACE,C,J,F,R,SHIFT') as KeyMap;
+    this.inputController = new RuntimeInputController(this);
+    const cameraLerp = this.inputController.profile.reducedMotion ? 1 : 0.08;
+    this.cameras.main.startFollow(this.player, true, cameraLerp, cameraLerp);
 
     this.cameraScanGraphics = this.add.graphics();
     this.searchlightGraphics = this.add.graphics();
@@ -431,9 +435,20 @@ export class SideOpsScene extends Phaser.Scene {
     this.addFixedHud();
     this.offCodecResume = onGameEvent(GAME_EVENT.CODEC_RESUME, () => this.scene.resume());
     this.offMissionRestart = onGameEvent(GAME_EVENT.MISSION_RESTART, () => this.scene.restart());
+    this.offDirectorDirective = onGameEvent<DirectorDirectivePayload>(GAME_EVENT.DIRECTOR_DIRECTIVE, (directive) => {
+      if (directive.support === 'silent') {
+        this.chaff += 1;
+        this.rations += 1;
+      } else if (directive.support === 'aggressive') {
+        this.maxAmmo += 8;
+        this.ammo = Math.min(this.maxAmmo, this.ammo + 8);
+      }
+      this.emitHudUpdate();
+    });
     this.events.once('shutdown', () => {
       this.offCodecResume?.();
       this.offMissionRestart?.();
+      this.offDirectorDirective?.();
     });
 
     this.emitProfileCodec(this.profile.codec.missionStart);
@@ -442,6 +457,7 @@ export class SideOpsScene extends Phaser.Scene {
 
   update(): void {
     if (this.missionCompleted) return;
+    this.inputController.update();
     this.handlePlayerInput();
     this.handleGuardPatrol();
     this.handleBoss();
@@ -463,10 +479,11 @@ export class SideOpsScene extends Phaser.Scene {
     this.boss = null;
     this.maxHealth = 100;
     this.health = 100;
-    this.maxAmmo = 30;
-    this.ammo = this.profile.startAmmo;
-    this.rations = this.profile.startRations;
-    this.chaff = this.profile.startChaff;
+    const campaignBonuses = getCampaignLoadoutBonuses();
+    this.maxAmmo = Math.max(30, this.profile.startAmmo + campaignBonuses.ammo);
+    this.ammo = this.profile.startAmmo + campaignBonuses.ammo;
+    this.rations = this.profile.startRations + campaignBonuses.rations;
+    this.chaff = this.profile.startChaff + campaignBonuses.chaff;
     this.chaffActiveUntil = 0;
     this.hasKeycard = false;
     this.cameraDisabled = false;
@@ -474,6 +491,7 @@ export class SideOpsScene extends Phaser.Scene {
     this.objectiveStage = 'recover_keycard';
     this.completedObjectives = new Set(this.profile.initialObjectives);
     this.secretsFound = new Set();
+    this.totalSecrets = this.profile.secrets.length;
     this.alertState = 'NORMAL';
     this.suspicionMeter = 0;
     this.suspicionPeak = 0;
@@ -511,16 +529,16 @@ export class SideOpsScene extends Phaser.Scene {
     this.add.rectangle(width / 2, 270, width, 540, this.profile.backdropColor).setDepth(-20);
     this.add.rectangle(width / 2, 515, width, 52, this.profile.groundColor).setDepth(-12);
 
-    for (let x = 120; x < width; x += this.profile.id === 'tanker_hold_002' ? 155 : 190) {
-      this.add.rectangle(x, 486, this.profile.id === 'tanker_hold_002' ? 120 : 80, 44, this.profile.structureColor).setDepth(-5);
+    for (let x = 120; x < width; x += this.profile.environment === 'tanker' ? 155 : 190) {
+      this.add.rectangle(x, 486, this.profile.environment === 'tanker' ? 120 : 80, 44, this.profile.structureColor).setDepth(-5);
     }
 
-    for (let x = 250; x < width - 60; x += this.profile.id === 'tanker_hold_002' ? 360 : 420) {
-      this.add.rectangle(x, 300, this.profile.id === 'tanker_hold_002' ? 46 : 34, 380, this.profile.structureColor).setDepth(-10);
-      this.add.rectangle(x, 110, this.profile.id === 'tanker_hold_002' ? 160 : 120, 14, 0x1c526f).setDepth(-9);
+    for (let x = 250; x < width - 60; x += this.profile.environment === 'tanker' ? 360 : 420) {
+      this.add.rectangle(x, 300, this.profile.environment === 'tanker' ? 46 : 34, 380, this.profile.structureColor).setDepth(-10);
+      this.add.rectangle(x, 110, this.profile.environment === 'tanker' ? 160 : 120, 14, 0x1c526f).setDepth(-9);
     }
 
-    if (this.profile.id === 'tanker_hold_002') {
+    if (this.profile.environment === 'tanker') {
       for (let x = 90; x < width; x += 130) {
         this.add.line(x, 0, 0, 0, -60, 540, 0x72b7ff, 0.14).setDepth(-2);
       }
@@ -576,7 +594,7 @@ export class SideOpsScene extends Phaser.Scene {
 
   private createPlatform(group: Phaser.Physics.Arcade.StaticGroup, x: number, y: number, scaleX: number): void {
     const platform = group.create(x, y, 'platform') as Phaser.Physics.Arcade.Sprite;
-    platform.setScale(scaleX, 1).setTint(this.profile.id === 'tanker_hold_002' ? 0x5fb8d6 : 0x7cff6b).refreshBody();
+    platform.setScale(scaleX, 1).setTint(this.profile.environment === 'tanker' ? 0x5fb8d6 : 0x7cff6b).refreshBody();
   }
 
   private addCrate(x: number, y: number, platforms: Phaser.Physics.Arcade.StaticGroup): void {
@@ -584,7 +602,7 @@ export class SideOpsScene extends Phaser.Scene {
     crate.refreshBody();
   }
 
-  private spawnGuard(config: { x: number; y: number; patrolMin: number; patrolMax: number; role: GuardRole }): GuardUnit {
+  private spawnGuard(config: { x: number; y: number; patrolMin: number; patrolMax: number; role: GuardRole; hp?: number }): GuardUnit {
     const key = config.role === 'reinforcement' ? this.profile.reinforcementTexture : this.profile.guardTexture;
     const sprite = this.physics.add.sprite(config.x, config.y, key);
     sprite.setCollideWorldBounds(true);
@@ -599,7 +617,7 @@ export class SideOpsScene extends Phaser.Scene {
       patrolMax: config.patrolMax,
       direction: -1,
       disabled: false,
-      hp: config.role === 'reinforcement' ? 2 : 1,
+      hp: config.hp ?? (config.role === 'reinforcement' ? 2 : 1),
       role: config.role,
       lastShotAt: 0
     };
@@ -714,11 +732,11 @@ export class SideOpsScene extends Phaser.Scene {
       return;
     }
 
-    const left = this.cursors.left.isDown || this.keys.A.isDown;
-    const right = this.cursors.right.isDown || this.keys.D.isDown;
-    const down = this.cursors.down.isDown || this.keys.S.isDown;
-    const slowWalk = this.keys.SHIFT.isDown;
-    const jump = Phaser.Input.Keyboard.JustDown(this.cursors.up) || Phaser.Input.Keyboard.JustDown(this.keys.W);
+    const left = this.inputController.isDown('moveLeft');
+    const right = this.inputController.isDown('moveRight');
+    const down = this.inputController.isDown('crouch');
+    const slowWalk = this.inputController.isDown('sprint');
+    const jump = this.inputController.justDown('jump');
     const body = this.player.body as Phaser.Physics.Arcade.Body;
     const speed = down ? 80 : slowWalk ? 120 : 210;
 
@@ -740,11 +758,11 @@ export class SideOpsScene extends Phaser.Scene {
     if (down) this.player.setTint(0x86cc80);
     else if (this.health > 0) this.player.clearTint();
 
-    if (Phaser.Input.Keyboard.JustDown(this.keys.J)) this.shootSocom();
-    if (Phaser.Input.Keyboard.JustDown(this.keys.SPACE)) this.tryCqc();
-    if (Phaser.Input.Keyboard.JustDown(this.keys.F)) this.useChaff();
-    if (Phaser.Input.Keyboard.JustDown(this.keys.R)) this.useRation();
-    if (Phaser.Input.Keyboard.JustDown(this.keys.C)) {
+    if (this.inputController.justDown('fire')) this.shootSocom();
+    if (this.inputController.justDown('cqc')) this.tryCqc();
+    if (this.inputController.justDown('chaff')) this.useChaff();
+    if (this.inputController.justDown('ration')) this.useRation();
+    if (this.inputController.justDown('codec')) {
       this.emitProfileCodec(this.objectiveStage === 'defeat_captain' ? this.profile.codec.bossIntro : this.profile.codec.manual);
     }
   }
@@ -759,6 +777,7 @@ export class SideOpsScene extends Phaser.Scene {
     this.nextPlayerShotAt = this.time.now + 220;
     this.ammo -= 1;
     this.shotsFired += 1;
+    this.inputController.vibrate(35, 0.12, 0.18);
     this.registerNoise(10, 'suppressed SOCOM shot');
 
     const direction = this.player.flipX ? -1 : 1;
@@ -780,6 +799,7 @@ export class SideOpsScene extends Phaser.Scene {
     }
     this.chaff -= 1;
     this.chaffActiveUntil = this.time.now + 6500;
+    this.inputController.vibrate(80, 0.18, 0.28);
     this.flashStatus('CHAFF ACTIVE: ELECTRONICS DISRUPTED');
     this.emitProfileCodec(this.profile.codec.chaff);
   }
@@ -796,6 +816,7 @@ export class SideOpsScene extends Phaser.Scene {
     this.rations -= 1;
     this.rationsUsed += 1;
     this.health = Math.min(this.maxHealth, this.health + 55);
+    this.inputController.vibrate(70, 0.1, 0.2);
     this.flashStatus('RATION USED');
   }
 
@@ -855,7 +876,6 @@ export class SideOpsScene extends Phaser.Scene {
     this.boss.active = true;
     this.boss.sprite.clearTint();
     this.boss.sprite.setTint(this.profile.boss.tintPhaseOne);
-    this.completedObjectives.add('reach_boss_arena');
     this.objectiveStage = 'defeat_captain';
     this.triggerAlert(`${this.profile.boss.name.toLowerCase()} encounter`);
     if (!this.bossIntroEmitted) {
@@ -1305,6 +1325,7 @@ export class SideOpsScene extends Phaser.Scene {
     if (this.health <= 0 || this.time.now < this.lastDamageTime + 650) return;
     this.lastDamageTime = this.time.now;
     this.health = Math.max(0, this.health - amount);
+    this.inputController.vibrate(130, 0.62, 0.45);
     this.damageTaken += amount;
     this.player.setTint(0xff6b6b);
     this.time.delayedCall(160, () => this.player.active && !this.isPlayerCrouched() && this.player.clearTint());
@@ -1427,11 +1448,11 @@ export class SideOpsScene extends Phaser.Scene {
   }
 
   private isPlayerCrouched(): boolean {
-    return this.cursors.down.isDown || this.keys.S.isDown;
+    return this.inputController.isDown('crouch');
   }
 
   private isPlayerSlowWalking(): boolean {
-    return this.keys.SHIFT.isDown;
+    return this.inputController.isDown('sprint');
   }
 
   private isChaffActive(): boolean {

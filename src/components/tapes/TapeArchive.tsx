@@ -1,3 +1,4 @@
+import '../../styles/tapes.css';
 import { useEffect, useMemo, useState } from 'react';
 import tapesJson from '../../data/tapes.json';
 import type { TapeArchiveState, TapeCategory, TapeDefinition, TapeTranscriptLine } from '../../types/tape.types';
@@ -15,6 +16,7 @@ import {
   updateTapeProgress
 } from '../../systems/tapeStorage';
 import { loadVrTapeUnlocks } from '../../systems/vrStorage';
+import { consumeCampaignLaunchDirective, getCampaignTapeUnlocks, recordCampaignTapeListened } from '../../systems/campaignStorage';
 import { Panel } from '../common/Panel';
 import { StatusBadge } from '../common/StatusBadge';
 
@@ -67,16 +69,18 @@ function makeTapeLabel(tape: TapeDefinition): string {
 }
 
 
-function isTapeUnlocked(tape: TapeDefinition, vrUnlockedTapeIds: string[]): boolean {
-  return tape.unlockState === 'unlocked' || tape.id.startsWith('custom_') || vrUnlockedTapeIds.includes(tape.id);
+function isTapeUnlocked(tape: TapeDefinition, vrUnlockedTapeIds: string[], campaignUnlockedTapeIds: string[]): boolean {
+  return tape.unlockState === 'unlocked' || tape.id.startsWith('custom_') || vrUnlockedTapeIds.includes(tape.id) || campaignUnlockedTapeIds.includes(tape.id);
 }
 
 export function TapeArchive() {
+  const [campaignDirective] = useState(() => consumeCampaignLaunchDirective('tapes'));
   const [customTapes, setCustomTapes] = useState<TapeDefinition[]>(() => loadCustomTapes());
   const allTapes = useMemo(() => [...builtInTapes, ...customTapes], [customTapes]);
   const [archiveState, setArchiveState] = useState<TapeArchiveState>(() => loadTapeArchiveState());
   const [vrUnlockedTapeIds] = useState(() => loadVrTapeUnlocks());
-  const [selectedTapeId, setSelectedTapeId] = useState(() => allTapes[0]?.id ?? '');
+  const [campaignUnlockedTapeIds] = useState(() => getCampaignTapeUnlocks());
+  const [selectedTapeId, setSelectedTapeId] = useState(() => campaignDirective?.targetId ?? allTapes[0]?.id ?? '');
   const [selectedCategory, setSelectedCategory] = useState<TapeCategory | 'all' | 'favorites' | 'history'>('all');
   const [search, setSearch] = useState('');
   const [isPlaying, setIsPlaying] = useState(false);
@@ -85,7 +89,7 @@ export function TapeArchive() {
   const [deckMessage, setDeckMessage] = useState('IDROID TAPE DECK READY');
 
   const selectedTape = allTapes.find((tape) => tape.id === selectedTapeId) ?? allTapes[0];
-  const selectedTapeUnlocked = selectedTape ? isTapeUnlocked(selectedTape, vrUnlockedTapeIds) : false;
+  const selectedTapeUnlocked = selectedTape ? isTapeUnlocked(selectedTape, vrUnlockedTapeIds, campaignUnlockedTapeIds) : false;
   const selectedProgress = selectedTape ? getTapeProgress(archiveState, selectedTape.id) : undefined;
   const waveform = useMemo(() => (selectedTape ? getTapeWaveform(selectedTape.id) : []), [selectedTape]);
   const activeLine = selectedTape && selectedProgress
@@ -107,10 +111,10 @@ export function TapeArchive() {
   }, [allTapes, archiveState.favorites, archiveState.history, search, selectedCategory]);
 
   const stats = useMemo(() => {
-    const listened = allTapes.filter((tape) => isTapeUnlocked(tape, vrUnlockedTapeIds) && getTapeProgress(archiveState, tape.id).listened).length;
+    const listened = allTapes.filter((tape) => isTapeUnlocked(tape, vrUnlockedTapeIds, campaignUnlockedTapeIds) && getTapeProgress(archiveState, tape.id).listened).length;
     const favoriteCount = archiveState.favorites.length;
     const totalDuration = allTapes.reduce((sum, tape) => sum + tape.duration, 0);
-    const locked = allTapes.filter((tape) => !isTapeUnlocked(tape, vrUnlockedTapeIds)).length;
+    const locked = allTapes.filter((tape) => !isTapeUnlocked(tape, vrUnlockedTapeIds, campaignUnlockedTapeIds)).length;
     return { listened, favoriteCount, totalDuration, locked };
   }, [allTapes, archiveState, vrUnlockedTapeIds]);
 
@@ -131,7 +135,10 @@ export function TapeArchive() {
         const progress = getTapeProgress(current, selectedTape.id);
         const nextTime = clampTime(progress.currentTime + 0.75, selectedTape.duration);
         const completed = nextTime >= selectedTape.duration;
-        if (completed) setIsPlaying(false);
+        if (completed) {
+          setIsPlaying(false);
+          if (!progress.listened) recordCampaignTapeListened(selectedTape.id);
+        }
         return updateTapeProgress(current, selectedTape, {
           currentTime: nextTime,
           listened: completed || progress.listened,
@@ -153,8 +160,8 @@ export function TapeArchive() {
     if (!tape) return;
     setSelectedTapeId(tape.id);
     setIsPlaying(false);
-    if (!isTapeUnlocked(tape, vrUnlockedTapeIds)) {
-      setDeckMessage(`LOCKED VR REWARD: ${tape.title.toUpperCase()}`);
+    if (!isTapeUnlocked(tape, vrUnlockedTapeIds, campaignUnlockedTapeIds)) {
+      setDeckMessage(`PROGRESSION LOCKED: ${tape.title.toUpperCase()}`);
       return;
     }
     persistArchive(pushTapeHistory(archiveState, tape.id), `LOADED: ${tape.title.toUpperCase()}`);
@@ -162,7 +169,7 @@ export function TapeArchive() {
 
   function togglePlayback() {
     if (!selectedTape || !selectedProgress || !selectedTapeUnlocked) {
-      setDeckMessage('TAPE LOCKED: CLEAR THE REQUIRED VR MISSION');
+      setDeckMessage('TAPE LOCKED: COMPLETE THE REQUIRED PROGRESSION NODE');
       return;
     }
     if (selectedProgress.currentTime >= selectedTape.duration) {
@@ -189,6 +196,7 @@ export function TapeArchive() {
       listenCount: progress.listenCount + 1,
       lastPlayedAt: new Date().toISOString()
     }), 'TAPE MARKED AS LISTENED');
+    recordCampaignTapeListened(selectedTape.id);
     setIsPlaying(false);
   }
 
@@ -305,7 +313,7 @@ export function TapeArchive() {
           {filteredTapes.map((tape) => {
             const progress = getTapeProgress(archiveState, tape.id);
             const percent = getCompletionPercent(progress.currentTime, tape.duration);
-            const unlocked = isTapeUnlocked(tape, vrUnlockedTapeIds);
+            const unlocked = isTapeUnlocked(tape, vrUnlockedTapeIds, campaignUnlockedTapeIds);
             return (
               <button
                 key={tape.id}
@@ -321,7 +329,7 @@ export function TapeArchive() {
                 <span className="tape-row-meta">
                   <span>{tape.era.toUpperCase()}</span>
                   <span>{formatTapeTime(tape.duration)}</span>
-                  <span>{!unlocked ? 'VR LOCKED' : progress.listened ? 'LISTENED' : `${percent}%`}</span>
+                  <span>{!unlocked ? 'LOCKED' : progress.listened ? 'LISTENED' : `${percent}%`}</span>
                 </span>
               </button>
             );
@@ -340,7 +348,7 @@ export function TapeArchive() {
             <div className="tape-deck-badges">
               <StatusBadge label={categoryLabels[selectedTape.category]} tone={categoryTone[selectedTape.category]} />
               <StatusBadge label={selectedTape.importance.toUpperCase()} tone={selectedTape.importance === 'critical' ? 'danger' : 'neutral'} />
-              <StatusBadge label={!selectedTapeUnlocked ? 'VR LOCKED' : isPlaying ? 'PLAYING' : 'STANDBY'} tone={!selectedTapeUnlocked ? 'danger' : isPlaying ? 'success' : 'neutral'} />
+              <StatusBadge label={!selectedTapeUnlocked ? 'LOCKED' : isPlaying ? 'PLAYING' : 'STANDBY'} tone={!selectedTapeUnlocked ? 'danger' : isPlaying ? 'success' : 'neutral'} />
             </div>
           </div>
 

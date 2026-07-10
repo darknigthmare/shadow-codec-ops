@@ -1,0 +1,312 @@
+[
+  {
+    "schemaVersion": 1,
+    "id": "director_codec_training",
+    "title": "Director Training Signal",
+    "description": "Interactive Codec sequence demonstrating dialogue branches, events and a nested interruption.",
+    "era": "mgs1",
+    "entryNodeId": "training_intro",
+    "contexts": ["standalone", "codec"],
+    "tags": ["tutorial", "codec", "branching", "interrupt"],
+    "initialVariables": { "doctrine": "unset", "signalIntegrity": 100 },
+    "nodes": [
+      {
+        "id": "training_intro",
+        "kind": "line",
+        "speaker": "campbell",
+        "speakerId": "campbell_mgs1",
+        "text": { "en": "Snake, the Director layer is online. Your answers can now alter the transmission flow.", "fr": "Snake, la couche Director est en ligne. Tes réponses peuvent maintenant modifier le déroulement de la transmission." },
+        "emotion": "serious",
+        "portraitExpression": "serious",
+        "cameraCue": "push_in",
+        "durationMs": 4200,
+        "nextId": "training_choice"
+      },
+      {
+        "id": "training_choice",
+        "kind": "choice",
+        "prompt": { "en": "Select an operational doctrine.", "fr": "Sélectionne une doctrine opérationnelle." },
+        "options": [
+          {
+            "id": "ghost",
+            "label": { "en": "Ghost approach", "fr": "Approche fantôme" },
+            "description": { "en": "Preserve signal discipline and avoid direct contact.", "fr": "Préserver la discipline radio et éviter le contact direct." },
+            "nextId": "ghost_line",
+            "effects": [
+              { "operation": "set", "variable": "doctrine", "value": "ghost" },
+              { "operation": "emit", "eventName": "director:doctrine-selected", "payload": { "doctrine": "ghost" } }
+            ]
+          },
+          {
+            "id": "direct",
+            "label": { "en": "Direct action", "fr": "Action directe" },
+            "description": { "en": "Prioritize speed and force the channel open.", "fr": "Prioriser la vitesse et forcer l'ouverture du canal." },
+            "nextId": "direct_line",
+            "effects": [
+              { "operation": "set", "variable": "doctrine", "value": "direct" },
+              { "operation": "decrement", "variable": "signalIntegrity", "value": 15 },
+              { "operation": "emit", "eventName": "director:doctrine-selected", "payload": { "doctrine": "direct" } }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ghost_line",
+        "kind": "line",
+        "speaker": "snake",
+        "text": { "en": "I'll stay off their radar and keep the frequency clean.", "fr": "Je reste hors de leurs radars et je garde la fréquence propre." },
+        "emotion": "calm",
+        "durationMs": 3000,
+        "nextId": "training_interrupt"
+      },
+      {
+        "id": "direct_line",
+        "kind": "line",
+        "speaker": "snake",
+        "text": { "en": "No time to circle around. I'll punch through the interference.", "fr": "Pas le temps de contourner. Je vais traverser les interférences." },
+        "emotion": "warning",
+        "durationMs": 3200,
+        "nextId": "training_interrupt"
+      },
+      {
+        "id": "training_interrupt",
+        "kind": "interrupt",
+        "sequenceId": "director_patriots_intrusion",
+        "resumeMode": "resume",
+        "banner": { "en": "UNAUTHORIZED SIGNAL INSERTION", "fr": "INSERTION DE SIGNAL NON AUTORISÉE" },
+        "nextId": "training_after_interrupt"
+      },
+      {
+        "id": "training_after_interrupt",
+        "kind": "event",
+        "eventName": "director:training-resumed",
+        "payload": { "module": "codec" },
+        "effects": [{ "operation": "set", "variable": "interruptionSurvived", "value": true }],
+        "nextId": "training_debrief"
+      },
+      {
+        "id": "training_debrief",
+        "kind": "line",
+        "speaker": "campbell",
+        "speakerId": "campbell_mgs1",
+        "text": { "en": "The original channel is restored. Director events can now be reused by Campaign and Side Ops.", "fr": "Le canal d'origine est rétabli. Les événements Director peuvent maintenant être réutilisés par Campaign et Side Ops." },
+        "emotion": "serious",
+        "durationMs": 4300,
+        "nextId": "training_end"
+      },
+      {
+        "id": "training_end",
+        "kind": "end",
+        "outcomeId": "director_training_complete",
+        "title": { "en": "Director layer synchronized", "fr": "Couche Director synchronisée" },
+        "summary": { "en": "The branching transmission, event bus and interruption stack were validated.", "fr": "La transmission à embranchements, le bus d'événements et la pile d'interruptions ont été validés." }
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "id": "director_patriots_intrusion",
+    "title": "Patriots Signal Intrusion",
+    "description": "Nested interruption sequence used to test priority transmissions and resume behavior.",
+    "era": "patriots_ai",
+    "entryNodeId": "intrusion_open",
+    "contexts": ["standalone", "codec", "campaign", "sideops"],
+    "tags": ["interrupt", "patriots", "glitch"],
+    "initialVariables": { "intrusionAccepted": false },
+    "nodes": [
+      {
+        "id": "intrusion_open",
+        "kind": "line",
+        "speaker": "colonel_ai",
+        "speakerId": "patriots_colonel_ai",
+        "text": { "en": "The mission parameters have changed. Disregard the previous speaker.", "fr": "Les paramètres de mission ont changé. Ignore l'interlocuteur précédent." },
+        "emotion": "glitch",
+        "portraitExpression": "glitch",
+        "cameraCue": "glitch_cut",
+        "durationMs": 3400,
+        "nextId": "intrusion_choice"
+      },
+      {
+        "id": "intrusion_choice",
+        "kind": "choice",
+        "prompt": { "en": "Authorize the injected command?", "fr": "Autoriser la commande injectée ?" },
+        "options": [
+          {
+            "id": "reject",
+            "label": { "en": "Reject transmission", "fr": "Rejeter la transmission" },
+            "nextId": "intrusion_reject",
+            "effects": [
+              { "operation": "set", "variable": "intrusionAccepted", "value": false },
+              { "operation": "emit", "eventName": "director:intrusion-rejected" }
+            ]
+          },
+          {
+            "id": "accept",
+            "label": { "en": "Accept command", "fr": "Accepter la commande" },
+            "nextId": "intrusion_accept",
+            "effects": [
+              { "operation": "set", "variable": "intrusionAccepted", "value": true },
+              { "operation": "emit", "eventName": "director:intrusion-accepted" }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "intrusion_reject",
+        "kind": "line",
+        "speaker": "snake",
+        "text": { "en": "Nice try. I'm cutting this channel now.", "fr": "Bien essayé. Je coupe ce canal maintenant." },
+        "emotion": "warning",
+        "cameraCue": "shake",
+        "durationMs": 2300,
+        "nextId": "intrusion_end_reject"
+      },
+      {
+        "id": "intrusion_accept",
+        "kind": "line",
+        "speaker": "colonel_ai",
+        "speakerId": "patriots_colonel_ai",
+        "text": { "en": "Compliance registered. Your operational profile has been updated.", "fr": "Conformité enregistrée. Ton profil opérationnel a été mis à jour." },
+        "emotion": "glitch",
+        "durationMs": 2800,
+        "nextId": "intrusion_end_accept"
+      },
+      {
+        "id": "intrusion_end_reject",
+        "kind": "end",
+        "outcomeId": "intrusion_rejected",
+        "title": { "en": "Injection rejected", "fr": "Injection rejetée" }
+      },
+      {
+        "id": "intrusion_end_accept",
+        "kind": "end",
+        "outcomeId": "intrusion_accepted",
+        "title": { "en": "Injection accepted", "fr": "Injection acceptée" }
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "id": "director_campaign_briefing",
+    "title": "Legacy Signal Director Briefing",
+    "description": "Reusable Campaign Ops briefing with a strategic decision and persistent event emission.",
+    "era": "mgs2",
+    "entryNodeId": "campaign_open",
+    "contexts": ["standalone", "campaign", "codec"],
+    "tags": ["campaign", "briefing", "choice"],
+    "initialVariables": { "priority": "undecided" },
+    "nodes": [
+      {
+        "id": "campaign_open",
+        "kind": "line",
+        "speaker": "otacon",
+        "speakerId": "otacon_mgs2",
+        "text": { "en": "We've recovered two signal trails. We only have enough bandwidth to prioritize one.", "fr": "Nous avons récupéré deux pistes de signal. Nous n'avons assez de bande passante que pour en prioriser une." },
+        "emotion": "serious",
+        "durationMs": 4200,
+        "nextId": "campaign_choice"
+      },
+      {
+        "id": "campaign_choice",
+        "kind": "choice",
+        "prompt": { "en": "Which operation receives priority?", "fr": "Quelle opération reçoit la priorité ?" },
+        "options": [
+          {
+            "id": "intel",
+            "label": { "en": "Decrypt the intelligence archive", "fr": "Déchiffrer les archives de renseignement" },
+            "nextId": "campaign_intel",
+            "effects": [{ "operation": "set", "variable": "priority", "value": "intel" }]
+          },
+          {
+            "id": "field",
+            "label": { "en": "Support the active field team", "fr": "Soutenir l'équipe actuellement sur le terrain" },
+            "nextId": "campaign_field",
+            "effects": [{ "operation": "set", "variable": "priority", "value": "field" }]
+          }
+        ]
+      },
+      {
+        "id": "campaign_intel",
+        "kind": "event",
+        "eventName": "campaign:director-priority",
+        "payload": { "priority": "intel" },
+        "nextId": "campaign_end"
+      },
+      {
+        "id": "campaign_field",
+        "kind": "event",
+        "eventName": "campaign:director-priority",
+        "payload": { "priority": "field" },
+        "nextId": "campaign_end"
+      },
+      {
+        "id": "campaign_end",
+        "kind": "end",
+        "outcomeId": "campaign_director_briefed",
+        "title": { "en": "Priority transmitted", "fr": "Priorité transmise" },
+        "summary": { "en": "The choice was recorded in the Director event log for Campaign Ops.", "fr": "Le choix a été enregistré dans le journal Director pour Campaign Ops." }
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "id": "director_sideops_briefing",
+    "title": "Side Ops Field Insertion",
+    "description": "Reusable pre-mission briefing demonstrating Side Ops launch events.",
+    "era": "mgs1",
+    "entryNodeId": "field_open",
+    "contexts": ["standalone", "sideops", "codec"],
+    "tags": ["sideops", "mission", "briefing"],
+    "nodes": [
+      {
+        "id": "field_open",
+        "kind": "line",
+        "speaker": "campbell",
+        "speakerId": "campbell_mgs1",
+        "text": { "en": "The route ahead is covered by cameras and a mobile patrol. Decide how you want the support team to react.", "fr": "La route est couverte par des caméras et une patrouille mobile. Décide comment l'équipe de soutien doit réagir." },
+        "emotion": "serious",
+        "durationMs": 4300,
+        "nextId": "field_choice"
+      },
+      {
+        "id": "field_choice",
+        "kind": "choice",
+        "prompt": { "en": "Select field support protocol.", "fr": "Sélectionne le protocole de soutien terrain." },
+        "options": [
+          {
+            "id": "silent",
+            "label": { "en": "Silent support", "fr": "Soutien silencieux" },
+            "nextId": "field_event_silent",
+            "effects": [{ "operation": "set", "variable": "support", "value": "silent" }]
+          },
+          {
+            "id": "aggressive",
+            "label": { "en": "Aggressive support", "fr": "Soutien agressif" },
+            "nextId": "field_event_aggressive",
+            "effects": [{ "operation": "set", "variable": "support", "value": "aggressive" }]
+          }
+        ]
+      },
+      {
+        "id": "field_event_silent",
+        "kind": "event",
+        "eventName": "sideops:director-support",
+        "payload": { "support": "silent" },
+        "nextId": "field_end"
+      },
+      {
+        "id": "field_event_aggressive",
+        "kind": "event",
+        "eventName": "sideops:director-support",
+        "payload": { "support": "aggressive" },
+        "nextId": "field_end"
+      },
+      {
+        "id": "field_end",
+        "kind": "end",
+        "outcomeId": "sideops_director_briefed",
+        "title": { "en": "Insertion protocol ready", "fr": "Protocole d'insertion prêt" }
+      }
+    ]
+  }
+]

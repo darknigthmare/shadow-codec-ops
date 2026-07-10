@@ -1,4 +1,5 @@
 import type { ConversationTrigger } from '../../types/codec.types';
+import type { VrRunStats } from '../../types/vr.types';
 
 export const GAME_EVENT = {
   REQUEST_CODEC_CALL: 'sideops:request-codec-call',
@@ -7,8 +8,18 @@ export const GAME_EVENT = {
   ALERT: 'sideops:alert',
   HUD_UPDATE: 'sideops:hud-update',
   MISSION_RESTART: 'sideops:mission-restart',
-  CODEC_RESUME: 'sideops:codec-resume'
+  CODEC_RESUME: 'sideops:codec-resume',
+  VR_HUD_UPDATE: 'vr:run-hud-update',
+  VR_RUN_COMPLETE: 'vr:run-complete',
+  DIRECTOR_DIRECTIVE: 'sideops:director-directive'
 } as const;
+
+
+export interface DirectorDirectivePayload {
+  sequenceId: string;
+  eventName: string;
+  support?: string;
+}
 
 export interface CodecRequestPayload {
   trigger: ConversationTrigger;
@@ -77,6 +88,16 @@ export interface MissionCompletePayload {
   noKill: boolean;
   stealthScore: number;
   reinforcementCount: number;
+}
+
+
+
+export interface VrRunGamePayload {
+  missionId: string;
+  missionTitle: string;
+  stats: VrRunStats;
+  status: 'standby' | 'running' | 'clear' | 'failed' | 'aborted';
+  message: string;
 }
 
 export interface AlertEventPayload {

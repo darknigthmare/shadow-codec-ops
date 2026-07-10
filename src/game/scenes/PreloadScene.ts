@@ -187,6 +187,9 @@ export class PreloadScene extends Phaser.Scene {
     graphics.generateTexture('crate', 28, 40);
     graphics.destroy();
 
-    this.scene.start('SideOpsScene');
+    const startScene = window.localStorage.getItem('shadow-codec-phaser-start-scene') === 'VRTrainingScene'
+      ? 'VRTrainingScene'
+      : 'SideOpsScene';
+    this.scene.start(startScene);
   }
 }

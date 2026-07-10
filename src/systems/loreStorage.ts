@@ -1,4 +1,5 @@
 import type { LoreDatabaseState, LoreEntry, LoreNoteRecord } from '../types/lore.types';
+import { loadJson, saveJson } from './saveEngine';
 
 const LORE_STATE_KEY = 'lore-database-state';
 const CUSTOM_LORE_KEY = 'lore-custom-entries';
@@ -9,26 +10,8 @@ export const defaultLoreState: LoreDatabaseState = {
   notes: []
 };
 
-function readJson<T>(key: string, fallback: T): T {
-  try {
-    const raw = window.localStorage.getItem(key);
-    if (!raw) return fallback;
-    return JSON.parse(raw) as T;
-  } catch {
-    return fallback;
-  }
-}
-
-function writeJson<T>(key: string, value: T): void {
-  try {
-    window.localStorage.setItem(key, JSON.stringify(value));
-  } catch {
-    // Local storage can be disabled in privacy modes. The app keeps working without persistence.
-  }
-}
-
 export function loadLoreState(): LoreDatabaseState {
-  const state = readJson<LoreDatabaseState>(LORE_STATE_KEY, defaultLoreState);
+  const state = loadJson<LoreDatabaseState>(LORE_STATE_KEY, defaultLoreState);
   return {
     favorites: Array.isArray(state.favorites) ? state.favorites : [],
     history: Array.isArray(state.history) ? state.history : [],
@@ -37,16 +20,16 @@ export function loadLoreState(): LoreDatabaseState {
 }
 
 export function saveLoreState(state: LoreDatabaseState): void {
-  writeJson(LORE_STATE_KEY, state);
+  saveJson(LORE_STATE_KEY, state);
 }
 
 export function loadCustomLoreEntries(): LoreEntry[] {
-  const entries = readJson<LoreEntry[]>(CUSTOM_LORE_KEY, []);
+  const entries = loadJson<LoreEntry[]>(CUSTOM_LORE_KEY, []);
   return Array.isArray(entries) ? entries : [];
 }
 
 export function saveCustomLoreEntries(entries: LoreEntry[]): void {
-  writeJson(CUSTOM_LORE_KEY, entries);
+  saveJson(CUSTOM_LORE_KEY, entries);
 }
 
 export function toggleLoreFavorite(state: LoreDatabaseState, entryId: string): LoreDatabaseState {

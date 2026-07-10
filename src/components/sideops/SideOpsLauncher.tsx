@@ -1,16 +1,18 @@
-import Phaser from 'phaser';
+import '../../styles/sideops.css';
+import type { Game } from 'phaser';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import conversationsJson from '../../data/conversations.json';
 import missionsJson from '../../data/missions.json';
 import type { ConversationDefinition } from '../../types/codec.types';
 import type { MissionDefinition } from '../../types/mission.types';
-import { createGameConfig } from '../../game/core/GameConfig';
+import type { MissionDefinitionWithSource } from '../../types/missionBuilder.types';
 import {
   emitGameEvent,
   GAME_EVENT,
   onGameEvent,
   type AlertEventPayload,
   type CodecRequestPayload,
+  type DirectorDirectivePayload,
   type MissionCompletePayload,
   type MissionHudPayload
 } from '../../game/core/GameEvents';
@@ -23,41 +25,62 @@ import {
 } from '../../systems/studioStorage';
 import { Panel } from '../common/Panel';
 import { StatusBadge } from '../common/StatusBadge';
+import { TouchControlOverlay } from '../common/TouchControlOverlay';
+import type { UserSettings } from '../../types/theme.types';
+import {
+  convertBuilderDocumentToMissionDefinition,
+  convertBuiltInMissionDefinition,
+  loadPlayableBuilderDocuments,
+  resolveBuilderSideOpsProfile
+} from '../../systems/missionBuilderStorage';
+import { getCampaignLoadoutBonuses, recordCampaignSideOpsResult } from '../../systems/campaignStorage';
+import { requestDirectorSequence, subscribeDirectorRuntimeEvents } from '../../systems/directorBus';
 
 interface SideOpsLauncherProps {
+  settings: UserSettings;
   onOpenCodec: () => void;
+  onOpenBuilder: () => void;
 }
 
 const builtInConversations = conversationsJson as ConversationDefinition[];
-const sideOpsMissions = (missionsJson as MissionDefinition[]).filter((mission) => mission.mode === 'side_scroller');
-const DEFAULT_MISSION_ID = sideOpsMissions[0]?.id ?? 'shadow_dock_001';
+const builtInSideOpsMissions = (missionsJson as MissionDefinition[])
+  .filter((mission) => mission.mode === 'side_scroller')
+  .map(convertBuiltInMissionDefinition);
+const DEFAULT_MISSION_ID = builtInSideOpsMissions[0]?.id ?? 'shadow_dock_001';
 const ACTIVE_MISSION_KEY = 'sideops-active-mission-id';
 
 function bestRunKey(missionId: string): string {
   return `sideops-${missionId}-best`;
 }
 
-function resolveMission(missionId: string): MissionDefinition {
-  return sideOpsMissions.find((mission) => mission.id === missionId) ?? sideOpsMissions[0];
+function loadSideOpsMissionLibrary(): MissionDefinitionWithSource[] {
+  const customMissions = loadPlayableBuilderDocuments().map(convertBuilderDocumentToMissionDefinition);
+  return [...customMissions, ...builtInSideOpsMissions];
 }
 
-function buildInitialHud(mission: MissionDefinition): MissionHudPayload {
+function resolveMission(missions: MissionDefinitionWithSource[], missionId: string): MissionDefinitionWithSource {
+  return missions.find((mission) => mission.id === missionId) ?? missions[0] ?? builtInSideOpsMissions[0];
+}
+
+function buildInitialHud(mission: MissionDefinitionWithSource): MissionHudPayload {
+  const campaignBonuses = getCampaignLoadoutBonuses();
+  const builderProfile = mission.source === 'builder' ? resolveBuilderSideOpsProfile(mission.id) : null;
   return {
     missionId: mission.id,
     missionTitle: mission.title,
     bossName: mission.boss ?? 'Mission Boss',
     health: 100,
     maxHealth: 100,
-    ammo: mission.id === 'tanker_hold_002' ? 32 : 26,
-    maxAmmo: 30,
-    rations: 1,
-    chaff: mission.id === 'tanker_hold_002' ? 2 : 1,
+    ammo: (builderProfile?.startAmmo ?? (mission.id === 'tanker_hold_002' ? 32 : 26)) + campaignBonuses.ammo,
+    maxAmmo: Math.max(30, (builderProfile?.startAmmo ?? (mission.id === 'tanker_hold_002' ? 32 : 26)) + campaignBonuses.ammo),
+    rations: (builderProfile?.startRations ?? 1) + campaignBonuses.rations,
+    chaff: (builderProfile?.startChaff ?? (mission.id === 'tanker_hold_002' ? 2 : 1)) + campaignBonuses.chaff,
     hasKeycard: false,
     alertState: 'NORMAL',
     suspicion: 0,
     stealthScore: 1000,
     reinforcementCount: 0,
-    activeEnemies: mission.id === 'tanker_hold_002' ? 4 : 3,
+    activeEnemies: builderProfile?.guards.length ?? (mission.id === 'tanker_hold_002' ? 4 : 3),
     lastAlertSource: 'none',
     alerts: 0,
     shotsFired: 0,
@@ -69,19 +92,23 @@ function buildInitialHud(mission: MissionDefinition): MissionHudPayload {
     objectivesCompleted: mission.objectives.filter((objective) => objective.completedByDefault).length,
     totalObjectives: mission.objectives.length,
     secretsFound: 0,
-    totalSecrets: 3,
+    totalSecrets: builderProfile?.secrets.length ?? 3,
     bossActive: false,
     bossDefeated: false,
     bossHealth: 0,
-    bossMaxHealth: mission.id === 'tanker_hold_002' ? 12 : 10,
+    bossMaxHealth: builderProfile?.boss.hp ?? (mission.id === 'tanker_hold_002' ? 12 : 10),
     chaffActive: false
   };
 }
 
-export function SideOpsLauncher({ onOpenCodec }: SideOpsLauncherProps) {
+export function SideOpsLauncher({ settings, onOpenCodec, onOpenBuilder }: SideOpsLauncherProps) {
+  const controlBindings = settings.keyboardBindings;
+  const [sideOpsMissions] = useState<MissionDefinitionWithSource[]>(loadSideOpsMissionLibrary);
   const [activeMissionId, setActiveMissionId] = useState(() => loadJson(ACTIVE_MISSION_KEY, DEFAULT_MISSION_ID));
-  const activeMission = useMemo(() => resolveMission(activeMissionId), [activeMissionId]);
-  const gameRef = useRef<Phaser.Game | null>(null);
+  const activeMission = useMemo(() => resolveMission(sideOpsMissions, activeMissionId), [activeMissionId, sideOpsMissions]);
+  const gameRef = useRef<Game | null>(null);
+  const [engineStatus, setEngineStatus] = useState<'loading' | 'ready' | 'error'>('loading');
+  const [engineError, setEngineError] = useState('');
   const [codecRequest, setCodecRequest] = useState<CodecRequestPayload | null>(null);
   const [codecLineIndex, setCodecLineIndex] = useState(0);
   const [missionResult, setMissionResult] = useState<MissionCompletePayload | null>(null);
@@ -90,11 +117,23 @@ export function SideOpsLauncher({ onOpenCodec }: SideOpsLauncherProps) {
   const [bestResult, setBestResult] = useState<MissionCompletePayload | null>(() => loadJson<MissionCompletePayload | null>(bestRunKey(activeMission.id), null));
   const [customConversations] = useState(() => loadCustomConversations());
   const [triggerOverrides] = useState(() => loadTriggerOverrides());
+  const [directorSupport, setDirectorSupport] = useState('NONE');
 
   const conversations = useMemo(
     () => mergeStudioConversations(builtInConversations, customConversations),
     [customConversations]
   );
+
+  useEffect(() => subscribeDirectorRuntimeEvents((event) => {
+    if (event.eventName !== 'sideops:director-support') return;
+    const support = String(event.payload?.support ?? 'unknown').toUpperCase();
+    setDirectorSupport(support);
+    emitGameEvent<DirectorDirectivePayload>(GAME_EVENT.DIRECTOR_DIRECTIVE, {
+      sequenceId: event.sequenceId,
+      eventName: event.eventName,
+      support: String(event.payload?.support ?? '')
+    });
+  }), []);
 
   useEffect(() => {
     saveJson(ACTIVE_MISSION_KEY, activeMission.id);
@@ -107,9 +146,9 @@ export function SideOpsLauncher({ onOpenCodec }: SideOpsLauncherProps) {
   }, [activeMission.id]);
 
   useEffect(() => {
-    if (!gameRef.current) {
-      gameRef.current = new Phaser.Game(createGameConfig('sideops-phaser-root'));
-    }
+    let disposed = false;
+    setEngineStatus('loading');
+    setEngineError('');
 
     const offCodec = onGameEvent<CodecRequestPayload>(GAME_EVENT.REQUEST_CODEC_CALL, (payload) => {
       const routedPayload = applyStudioTriggerOverride(activeMission.id, payload, triggerOverrides);
@@ -118,6 +157,7 @@ export function SideOpsLauncher({ onOpenCodec }: SideOpsLauncherProps) {
     });
     const offComplete = onGameEvent<MissionCompletePayload>(GAME_EVENT.MISSION_COMPLETE, (payload) => {
       setMissionResult(payload);
+      recordCampaignSideOpsResult(payload);
       if (payload.success) {
         setBestResult((current) => {
           if (!current || payload.stealthScore > current.stealthScore || (payload.stealthScore === current.stealthScore && payload.timeSeconds < current.timeSeconds)) {
@@ -135,7 +175,31 @@ export function SideOpsLauncher({ onOpenCodec }: SideOpsLauncherProps) {
       setAlertLog((current) => [payload, ...current].slice(0, 7));
     });
 
+    async function bootEngine() {
+      try {
+        const [{ default: Phaser }, { createGameConfig }] = await Promise.all([
+          import('phaser'),
+          import('../../game/core/GameConfig')
+        ]);
+        if (disposed) return;
+        gameRef.current?.destroy(true);
+        const config = await createGameConfig(Phaser, 'sideops-phaser-root');
+        if (disposed) return;
+        gameRef.current = new Phaser.Game(config);
+        setEngineStatus('ready');
+      } catch (error) {
+        if (disposed) return;
+        const message = error instanceof Error ? error.message : 'Unknown Phaser boot failure.';
+        setEngineError(message);
+        setEngineStatus('error');
+        console.error('[SideOps] Failed to stream Phaser engine.', error);
+      }
+    }
+
+    void bootEngine();
+
     return () => {
+      disposed = true;
       offCodec();
       offComplete();
       offHud();
@@ -181,7 +245,7 @@ export function SideOpsLauncher({ onOpenCodec }: SideOpsLauncherProps) {
   }
 
   function selectMission(missionId: string) {
-    const mission = resolveMission(missionId);
+    const mission = resolveMission(sideOpsMissions, missionId);
     setActiveMissionId(mission.id);
     saveJson(ACTIVE_MISSION_KEY, mission.id);
   }
@@ -195,11 +259,11 @@ export function SideOpsLauncher({ onOpenCodec }: SideOpsLauncherProps) {
   return (
     <section className="sideops-page">
       <Panel className="sideops-info-panel">
-        <StatusBadge label="SIDE OPS MISSION PACK" tone="success" />
+        <StatusBadge label="SIDE OPS MISSION LIBRARY" tone="success" />
         <h2>{activeMission.title}</h2>
         <p>
-          Passe 11 : Side Ops possède maintenant plusieurs missions sélectionnables. La deuxième mission ajoute
-          un environnement Tanker, plus de patrouilles, un boss dédié et des conversations Codec MGS2.
+          Les missions intégrées et les packs publiés depuis le Mission Builder partagent maintenant le même runtime.
+          Les brouillons armés en Playtest apparaissent également ici sans modifier les fichiers source.
         </p>
 
         <div className="mission-select-grid">
@@ -212,20 +276,22 @@ export function SideOpsLauncher({ onOpenCodec }: SideOpsLauncherProps) {
             >
               <strong>{mission.title}</strong>
               <span>{mission.location}</span>
-              <small>{mission.era.toUpperCase()} // Difficulty {mission.difficulty}</small>
+              <small>{mission.era.toUpperCase()} // Difficulty {mission.difficulty} // {mission.source === 'builder' ? (mission.published ? 'CUSTOM PUBLISHED' : 'CUSTOM PLAYTEST') : 'BUILT-IN'}</small>
             </button>
           ))}
         </div>
 
-        <ul className="mission-list">
-          <li>Flèches / WASD : déplacement</li>
-          <li>Shift : marche lente, réduit la détection sonore</li>
-          <li>Bas / S : accroupi, réduit fortement la détection visuelle</li>
-          <li>J : tir SOCOM, silencieux mais pas totalement invisible</li>
-          <li>Espace : CQC non létal proche</li>
-          <li>F : chaff grenade contre caméra et projecteur</li>
-          <li>R : ration si blessé</li>
-          <li>C : demande Codec manuelle</li>
+        <ul className="mission-list" aria-label="Current Side Ops controls">
+          <li>Flèches / {controlBindings.moveLeft} + {controlBindings.moveRight} : déplacement</li>
+          <li>{controlBindings.sprint} : marche tactique, réduit la détection sonore</li>
+          <li>Bas / {controlBindings.crouch} : accroupi, réduit fortement la détection visuelle</li>
+          <li>{controlBindings.jump} / Flèche haut : saut</li>
+          <li>{controlBindings.fire} : tir SOCOM, silencieux mais pas totalement invisible</li>
+          <li>{controlBindings.cqc} : CQC non létal proche</li>
+          <li>{controlBindings.chaff} : chaff grenade contre caméra et projecteur</li>
+          <li>{controlBindings.ration} : ration si blessé</li>
+          <li>{controlBindings.codec} : demande Codec manuelle</li>
+          <li>Manette standard : stick/D-pad, A saut, X tir, B CQC, Y chaff, LB ration, RB Codec</li>
         </ul>
 
         <div className="mission-objectives-card">
@@ -237,6 +303,8 @@ export function SideOpsLauncher({ onOpenCodec }: SideOpsLauncherProps) {
 
         <div className="sideops-panel-actions">
           <button className="primary-action" type="button" onClick={onOpenCodec}>Open Full Codec Simulator</button>
+          <button className="primary-action secondary" type="button" onClick={() => requestDirectorSequence('director_sideops_briefing', 'sideops', activeMission.title, { missionId: activeMission.id })}>Director Field Briefing</button>
+          <button className="primary-action secondary" type="button" onClick={onOpenBuilder}>Open Mission Builder</button>
           <button className="primary-action secondary" type="button" onClick={restartMission}>Restart Mission</button>
         </div>
         <div className="best-run-card">
@@ -259,6 +327,7 @@ export function SideOpsLauncher({ onOpenCodec }: SideOpsLauncherProps) {
           <div><span>Chaff</span><strong>{hud.chaff}{hud.chaffActive ? ' ACTIVE' : ''}</strong></div>
           <div><span>Card</span><strong>{hud.hasKeycard ? 'ACTIVE' : 'NONE'}</strong></div>
           <div><span>Stealth</span><strong>{hud.stealthScore}</strong></div>
+          <div><span>Director Support</span><strong>{directorSupport}</strong></div>
           <div><span>Enemies</span><strong>{hud.activeEnemies} / Reinf {hud.reinforcementCount}</strong></div>
           <div><span>Objective</span><strong>{hud.objective}</strong></div>
           <div><span>Obj</span><strong>{hud.objectivesCompleted}/{hud.totalObjectives}</strong></div>
@@ -280,7 +349,16 @@ export function SideOpsLauncher({ onOpenCodec }: SideOpsLauncherProps) {
           </div>
         )}
 
-        <div id="sideops-phaser-root" />
+        <div className="game-stage-shell">
+          <div id="sideops-phaser-root" className="touch-game-surface" />
+          <TouchControlOverlay settings={settings} context="sideops" />
+          {engineStatus !== 'ready' && (
+            <div className={`game-engine-status ${engineStatus}`} role={engineStatus === 'error' ? 'alert' : 'status'}>
+              <strong>{engineStatus === 'error' ? 'SIDE OPS ENGINE OFFLINE' : 'STREAMING PHASER ENGINE'}</strong>
+              <span>{engineStatus === 'error' ? engineError : 'Loading gameplay runtime only for this mission module…'}</span>
+            </div>
+          )}
+        </div>
 
         <div className="sideops-stats-strip">
           <span>Alerts: <strong>{hud.alerts}</strong></span>

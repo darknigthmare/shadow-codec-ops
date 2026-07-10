@@ -1,3 +1,6 @@
+import type { KeyboardBindings } from './accessibility.types';
+import { defaultKeyboardBindings } from './accessibility.types';
+import type { AppLocale } from './narrative.types';
 export type ThemeId =
   | 'classic_mgs1'
   | 'msx_terminal'
@@ -20,6 +23,25 @@ export interface UserSettings {
   uiBeepVolume: number;
   classicCodecPausesGame: boolean;
   pixelPerfect: boolean;
+  reducedMotion: boolean;
+  highContrast: boolean;
+  largeText: boolean;
+  reduceFlashes: boolean;
+  screenReaderAnnouncements: boolean;
+  gamepadEnabled: boolean;
+  gamepadVibration: boolean;
+  keyboardBindings: KeyboardBindings;
+  touchControlsMode: 'auto' | 'always' | 'off';
+  touchControlScale: number;
+  touchControlOpacity: number;
+  touchHaptics: boolean;
+  locale: AppLocale;
+  subtitlesEnabled: boolean;
+  narrativeAudioEnabled: boolean;
+  narrativeAudioVolume: number;
+  portraitExpressions: boolean;
+  portraitAnimationEnabled: boolean;
+  voicePackEnabled: boolean;
 }
 
 export interface ThemePackDefinition {
@@ -47,5 +69,24 @@ export const defaultSettings: UserSettings = {
   radioNoiseVolume: 0.35,
   uiBeepVolume: 0.45,
   classicCodecPausesGame: true,
-  pixelPerfect: true
+  pixelPerfect: true,
+  reducedMotion: false,
+  highContrast: false,
+  largeText: false,
+  reduceFlashes: false,
+  screenReaderAnnouncements: true,
+  gamepadEnabled: true,
+  gamepadVibration: true,
+  keyboardBindings: { ...defaultKeyboardBindings },
+  touchControlsMode: 'auto',
+  touchControlScale: 1,
+  touchControlOpacity: 0.82,
+  touchHaptics: true,
+  locale: 'en',
+  subtitlesEnabled: true,
+  narrativeAudioEnabled: true,
+  narrativeAudioVolume: 0.65,
+  portraitExpressions: true,
+  portraitAnimationEnabled: true,
+  voicePackEnabled: true
 };

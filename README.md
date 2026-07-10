@@ -1,16 +1,30 @@
 # Shadow Codec Ops
 
-Base de projet privée pour un **simulateur Codec tactique** avec un module **Side Ops 2D** old-school, un deck **Tape Archive / iDroid** et des **VR Missions** locales.
+Base de projet privée pour un **simulateur Codec tactique** avec une campagne interconnectée, un module **Side Ops 2D** old-school, un deck **Tape Archive / iDroid**, des **VR Missions** et des outils de création locaux.
+
+## Passe 23 — Codec Director Mode
+
+- timeline narrative avec nœuds dialogue, choix, interruption, événement, délai, saut et fin ;
+- runtime plein écran partagé avec pile d'interruptions imbriquées ;
+- variables locales, conditions, effets et historique des choix ;
+- bus d'événements réutilisé par Codec, Campaign Ops et Side Ops ;
+- caméra narrative : push-in, pull-back, shake, focus et glitch cut ;
+- éditeur visuel avec validation, playtest, import/export JSON et journal runtime ;
+- conversion d'une conversation Studio vers une séquence Director ;
+- sauvegarde locale des séquences, événements et outcomes.
 
 ## Version actuelle
 
-`1.0.0` — Passe 11 : **Side Ops Mission Pack 2 / multi-missions**.
+`2.2.0` — Passe 23 : **Codec Director Mode**.
 
 ## Contenu actuel
 
 - React + Vite + TypeScript
 - Structure prête pour Tauri Desktop
+- PWA installable et utilisable hors ligne après le premier chargement
+- HUD tactile rétractable partagé par Side Ops et VR
 - Codec Simulator V1 jouable : fréquence, CALL, MEMORY, conversations, historique
+- **Codec Director Mode** : timeline à embranchements, choix, interruptions, événements, variables, camera cues et séquences cross-module
 - **Packs visuels sélectionnables** :
   - MSX Military Radio
   - Classic MGS1 Codec
@@ -40,7 +54,19 @@ Base de projet privée pour un **simulateur Codec tactique** avec un module **Si
 - Déblocage local de tapes et badges VR selon le rank obtenu
 - Tape Archive compatible avec les rewards VR : les cassettes conditionnelles restent verrouillées tant que la mission VR associée n’est pas validée
 - Side Ops 2D Phaser jouable : joueur, plateformes, gardes, caméra, projecteur, keycard, porte, boss, secrets, extraction
-- **Mission Select Side Ops** avec deux missions jouables et meilleurs scores séparés par mission
+- **Campaign Ops** : campagne connectée Codec → Side Ops → Tapes → VR → Lore
+- **Campaign Builder** : graphe visuel, conditions AND/OR, branches exclusives, fins alternatives, playtest et packs JSON
+- **Campaign Presentation** : briefings/débriefings plein écran, scènes multi-beat, événements narratifs, variables persistantes, choix de branche cinématiques et galerie des fins
+- campagne intégrée **Legacy Signal**, de Shadow Moses au Tanker, avec chapitre final à doctrine exclusive
+- graphe de progression avec prérequis, ranks minimums, nœuds optionnels, conditions multiples AND/OR et récompenses automatiques
+- trois slots de campagne séparés avec New Game/Continue, export/import JSON, embranchements persistants et New Game+
+- ressources persistantes : Command Points, Intel, Supplies et Credits
+- niveau opérateur, XP, badges et journal des opérations
+- déblocages interconnectés de missions, VR, tapes, contacts et dossiers Lore
+- synchronisation explicite des anciennes performances Codec/Side Ops/VR/Tape/Lore
+- améliorations permanentes de départ : munitions SOCOM, ration et chaff supplémentaires
+- **Mission Select Side Ops** avec missions intégrées + missions custom publiées depuis le Builder
+- **Mission Builder** : placement visuel, objectifs, triggers Codec, validation, playtest et import/export de packs JSON
 - **Mission 002 — Tanker Hold Sabotage** : nouvel environnement MGS2 simulation, rain deck, bulkhead keycard, search zone, Shielded Deck Commander
 - Gameplay core Side Ops : SOCOM, munitions, vie, dégâts, ration, chaff, CQC non létal, tirs ennemis
 - Alert System complet : NORMAL / SUSPICION / ALERT / EVASION / CAUTION / MISSION FAILED
@@ -51,13 +77,51 @@ Base de projet privée pour un **simulateur Codec tactique** avec un module **Si
 - HUD React + HUD Phaser synchronisés via EventTarget
 - Mission 001 complète : objectifs intermédiaires, searchlight yard, Armored Guard Captain, boss phases, secrets, extraction verrouillée
 - Mission failed/retry avec écran résultat dédié
-- Conversation Studio : création, duplication, édition, prévisualisation Codec, import/export JSON
+- Conversation Studio : création, duplication, édition, prévisualisation Codec, import/export JSON et conversion directe vers Director
 - Trigger overrides locaux : une conversation custom peut remplacer un appel Codec Side Ops selon mission + trigger
 - Conversations custom visibles dans le Codec Simulator et les appels Side Ops
 - Meilleur score local sauvegardé séparément pour chaque mission Side Ops
 - Rank final détaillé : stealth score, objectifs, secrets, boss, alertes, renforts, kills, neutralisations, tirs, dégâts, rations, caméras
-- Données JSON locales : eras, contacts, conversations, missions, items, ennemis, boss, thèmes, tapes, vrMissions, loreEntries
+- Données JSON locales : eras, contacts, conversations, missions, items, ennemis, boss, thèmes, tapes, vrMissions, loreEntries, campaigns
+- **VR Phaser Bridge** : les VR Missions peuvent maintenant lancer une vraie scène Phaser jouable, puis renvoyer les stats au système de rank/rewards
 - Build web vérifié avec `npm run build`
+- Chargement paresseux de tous les gros modules React : Campaign Ops, Campaign Builder, Codec, Codec Director, Side Ops, VR, Tapes, Studio, Mission Builder, Lore et Settings
+- Phaser isolé dans un chunk dédié et chargé uniquement au lancement d’une scène jouable
+- Scènes Phaser Side Ops et VR importées séparément selon le mode demandé
+- Écran de démarrage global et écran de streaming par module
+- Error Boundary global + Error Boundary par route avec rapport d’incident local
+- Migration automatique des anciennes clés de sauvegarde et diagnostic de schéma
+- Bundle initial maintenu à environ 28,4 kB de code applicatif malgré la couche narrative, hors React et modules différés
+- **Remapping clavier local** avec détection des conflits et échange automatique des touches
+- **Support manette standard** dans Side Ops, VR Training et les écrans de résultat
+- Vibration manette optionnelle pour tirs, dégâts, soins et chaff
+- Options d’accessibilité : mouvements réduits, flashs réduits, contraste renforcé, texte agrandi et annonces lecteur d’écran
+- Navigation clavier renforcée avec skip link, focus visible et focus automatique sur le module actif
+- Panneau Runtime Diagnostics avec export JSON
+- Tests Vitest pour contrôles, migrations, ranks et intégrité des données JSON
+- Commande de validation complète `npm run qa`
+
+
+## Campaign Presentation & Narrative Events
+
+La Passe 20 transforme la progression Campaign Ops en couche narrative complète :
+
+- briefing et débriefing globaux de campagne ;
+- briefing et débriefing de chaque chapitre ;
+- scènes de fin d’opération et épilogues ;
+- présentations multi-beat avec speaker, ton et niveaux d’emphase ;
+- cartes plein écran pour les choix de doctrine ;
+- événements déclenchés par début/fin de campagne, chapitre, nœud, branche, fin ou condition de variable ;
+- variables persistantes `string / number / boolean` ;
+- mutations `set / increment / decrement / toggle` ;
+- conditions `variable_compare` utilisables par les opérations et les événements ;
+- historique narratif rejouable ;
+- galerie des fins découvertes ;
+- statistiques agrégées Side Ops, VR, Codec, Tapes et Lore ;
+- création de ces éléments directement dans Campaign Builder ;
+- migration automatique des slots v1.8 vers Campaign Progress schema 3.
+
+Les mutations d’un nœud sont appliquées au moment où sa récompense est validée. L’écran narratif affiche ensuite la conséquence sans la réappliquer, ce qui évite les doubles effets.
 
 ## Installation
 
@@ -66,11 +130,19 @@ npm install
 npm run dev
 ```
 
-## Build web
+## Build web et QA
 
 ```bash
+npm run lint
+npm run test
 npm run build
 npm run preview
+```
+
+Pour exécuter toute la validation en une commande :
+
+```bash
+npm run qa
 ```
 
 ## Desktop Tauri
@@ -82,18 +154,128 @@ npm run tauri:dev
 npm run tauri:build
 ```
 
-## Contrôles Side Ops
+## Contrôles Side Ops et VR
 
-- Flèches / WASD : déplacement
-- Shift : marche lente, réduit la détection sonore
-- Haut / W : saut
-- Bas / S : accroupi, réduit fortement la détection visuelle
+Les touches clavier sont désormais configurables dans **Settings → Controls & Gamepad**. Le profil par défaut reste :
+
+- Flèches / A-D : déplacement
+- W / flèche haut : saut
+- S / flèche bas : accroupi
+- Shift : marche tactique
 - J : tir SOCOM
-- Espace : CQC non létal proche
-- F : chaff grenade contre caméra et projecteur
-- R : ration si blessé
-- C : demande Codec manuelle
-- ENTER / ESC sur l’écran de fin : rejouer la mission
+- Espace : CQC
+- F : chaff
+- R : ration
+- C : Codec
+- Entrée : confirmer / évaluer
+- Échap : annuler / abandonner
+
+Preset manette standard :
+
+- stick gauche ou D-pad : déplacement
+- A / Cross : saut
+- X / Square : tir
+- B / Circle : CQC
+- Y / Triangle : chaff
+- LB / L1 : ration
+- RB / R1 : Codec
+- LT / L2 : marche tactique
+- Start / Options : confirmer
+- Back / Share : annuler
+
+Les remappings sont sauvegardés localement et lus directement par les scènes Phaser au prochain lancement de mission.
+
+
+## Campaign Ops & Progression Layer
+
+Le module **CAMPAIGN OPS** relie les systèmes qui restaient auparavant indépendants :
+
+- appel de briefing via le Codec ;
+- lancement de la mission Side Ops ciblée ;
+- validation d’un rank minimum ;
+- écoute d’une cassette débloquée ;
+- défi VR ;
+- consultation d’un dossier Lore ;
+- déblocage du chapitre suivant.
+
+La campagne intégrée **Legacy Signal** contient désormais trois chapitres :
+
+1. **Shadow Moses Signal** : briefing Campbell, Dock Infiltration, archive, VR Dock Sprint et dossier Shadow Moses ;
+2. **Tanker Intercept** : liaison Otacon, Tanker Hold Sabotage, Ghost Dock, archive Tanker et milestone final ;
+3. **Final Doctrine** : choix exclusif Ghost/Direct Action, route opposée bloquée et deux fins alternatives.
+
+La progression comprend :
+
+- XP et niveau opérateur ;
+- Command Points, Intel, Supplies et Credits ;
+- badges et historique d’opérations ;
+- missions, VR, tapes, contacts et dossiers débloqués ;
+- trois slots indépendants ;
+- export/import JSON du slot actif ;
+- synchronisation volontaire des records Free Play déjà existants ;
+- améliorations permanentes appliquées réellement au loadout Side Ops ;
+- choix de branche exclusifs enregistrés par slot ;
+- archive des fins obtenues ;
+- New Game+ conservant XP, ressources, améliorations, badges et fins découvertes.
+
+Le slot 1 peut reprendre automatiquement les anciennes sauvegardes lors de sa première initialisation. Les slots 2 et 3 restent vierges jusqu’à leur création. Le bouton **SYNC ALL MODULES** importe les performances globales dans le slot actif.
+
+Les clés principales sont `campaign-progress-slot_1`, `campaign-progress-slot_2`, `campaign-progress-slot_3`, `campaign-active-slot` et `campaign-launch-directive`. Le schéma global de sauvegarde est désormais en version 6 et le schéma Campaign Progress en version 2.
+
+Le détail technique est documenté dans `CAMPAIGN_OPS_REPORT.md`.
+
+
+## Campaign Builder & Branching Ops
+
+Le module **CAMPAIGN BUILDER** permet de construire des campagnes complètes sans modifier les sources :
+
+- bibliothèque locale multi-campagnes avec brouillon/publication ;
+- graphe 2D déplaçable avec connexions de prérequis ;
+- chapitres ajoutables et supprimables ;
+- nœuds ciblant Campaign, Codec, Side Ops, VR, Tapes ou Lore ;
+- conditions principales et conditions supplémentaires ;
+- logique `ALL (AND)` ou `ANY (OR)` ;
+- conditions de rank, ressources, badges, appels, cassettes et dossiers Lore ;
+- branches exclusives par `groupId` et `optionId` ;
+- fins héroïques, neutres, sombres ou secrètes ;
+- récompenses XP, ressources, badges et déblocages ;
+- validation des IDs, cycles, prérequis, dépendances et fins ;
+- playtest direct dans Campaign Ops ;
+- publication des campagnes custom dans le sélecteur Campaign Ops ;
+- import/export d’une campagne ou d’un pack versionné avec manifest de dépendances.
+
+Le document de départ inclut deux doctrines exclusives et deux fins afin de servir de modèle immédiatement exploitable. Une fois une doctrine choisie dans un slot, la route opposée passe à l’état `BLOCKED` jusqu’au reset ou au prochain cycle New Game+.
+
+Les clés locales sont `campaign-builder-library` et `campaign-builder-preview-id`. Le détail du format est documenté dans `CAMPAIGN_BUILDER_REPORT.md`.
+
+## Mission Builder & Content Pipeline
+
+Le module **MISSION BUILDER** permet de créer des missions Side Ops sans modifier les fichiers source :
+
+- bibliothèque locale multi-documents ;
+- création, duplication, suppression, brouillon et publication ;
+- métadonnées : titre, ID, auteur, ère, environnement, lieu, personnage, difficulté et ressources de départ ;
+- stage 2D scrollable avec grille et coordonnées tactiques ;
+- placement et déplacement par glisser-déposer de :
+  - point de départ ;
+  - plateformes et caisses ;
+  - gardes et renforts ;
+  - caméra et projecteur ;
+  - keycard, porte et extraction ;
+  - ration, chaff et munitions ;
+  - secrets et boss ;
+- inspecteur d’entités avec position, taille, HP et limites de patrouille ;
+- éditeur d’objectifs ;
+- routeur de triggers Codec compatible avec les conversations intégrées et les conversations custom du Studio ;
+- validation des objectifs requis, entités critiques, coordonnées, IDs et références Codec ;
+- **PLAYTEST** direct dans le runtime Phaser existant ;
+- publication dans le Mission Select Side Ops ;
+- import/export d’une mission ou de toute la bibliothèque au format JSON versionné ;
+- manifeste de pack avec dépendances contacts, conversations, items, ennemis et boss.
+
+Les documents sont stockés via `shadow-codec-ops:mission-builder-library`. Le dernier brouillon armé en playtest utilise `shadow-codec-ops:mission-builder-preview-id`.
+
+Le format détaillé est documenté dans `MISSION_BUILDER_REPORT.md`.
 
 ## Side Ops Missions
 
@@ -134,9 +316,14 @@ Chaque mission VR possède :
 - historique de records ;
 - unlocks de tapes/badges selon le rank.
 
-Le Training Board VR est volontairement léger pour l’instant : il sert de simulateur d’évaluation et de progression locale avant de connecter ces défis à de vraies scènes Phaser dédiées.
+Depuis la v1.1, le module VR possède deux couches :
 
-Les données VR sont stockées en `localStorage` via `vr-mission-progress` et `vr-unlocked-tapes`.
+- **Playable VR Phaser Bridge** : lance une arène Phaser compacte pour la mission sélectionnée, avec contrôles réels, tirs, CQC, chaff, caméras, boss et sortie VR ;
+- **Training Board** : reste disponible comme outil debug/balancing pour simuler rapidement des stats et tester les seuils de score.
+
+Les scènes jouables renvoient automatiquement `timeSeconds`, alertes, tirs, hits, kills, CQC, dégâts, rations, caméras, objectifs, secrets et boss defeated vers `vrStorage`, ce qui permet de débloquer les tapes/badges VR avec les vraies performances.
+
+Les données VR sont stockées en `localStorage` via `vr-mission-progress`, `vr-unlocked-tapes` et `shadow-codec-vr-active-mission-id`.
 
 ## Conversation Studio
 
@@ -194,3 +381,143 @@ Les données Tape Archive sont stockées en `localStorage` via `tape-archive-sta
 Les fréquences MSX/MG2, MGS2 et MGS3 ajoutées en v0.6 suivent les tableaux des manuels / sources de référence disponibles. Les packs MGS4 et MGSV utilisent des **canaux de simulation** parce que ces interfaces ne reposent pas sur le même fonctionnement de fréquence classique dans l’app.
 
 Les conversations, tapes et missions fournies sont des textes originaux de simulation, conçus pour relier le Codec, Side Ops, VR Missions, Mother Base et les futurs modules sans inclure d’assets officiels. Les assets visuels sont des placeholders générés par code avec Phaser/CSS, aucun asset officiel n'est inclus.
+
+## v1.2.0 — Passe 13: Tauri/Desktop polish
+
+- Native desktop status and controls in Settings.
+- Fullscreen support in both browser and Tauri builds.
+- Maximize/restore and reset-to-1280x720 commands for Tauri.
+- Automatic window position/size restoration via `tauri-plugin-window-state`.
+- Browser `localStorage` remains the synchronous runtime cache.
+- Tauri builds mirror the complete application save namespace into an on-disk `tauri-plugin-store` file.
+- Portable full-backup import/export in JSON.
+- Hardened Tauri CSP and explicit desktop capabilities.
+- App metadata, installer targets and generated multi-platform icon set.
+- New verification scripts: `npm run desktop:check`, `npm run tauri:build:debug`, and `npm run tauri:icon`.
+
+### Desktop verification
+
+```bash
+npm install
+npm run build
+npm run desktop:check
+npm run tauri:dev
+npm run tauri:build
+```
+
+The native commands require the Rust toolchain and the platform prerequisites documented by Tauri.
+## v1.3.0 — Passe 14 : Performance & architecture polish
+
+- Les routes principales utilisent maintenant `React.lazy` et `Suspense`.
+- Le survol/focus de la navigation précharge le module correspondant sans bloquer le démarrage.
+- Phaser est produit dans un chunk `phaser-engine` séparé et n’est téléchargé qu’à l’ouverture de Side Ops ou VR.
+- `GameConfig` importe uniquement la scène Phaser nécessaire : Side Ops ou VR Training.
+- Un écran de boot initialise le stockage desktop, exécute les migrations et garde un mode de secours local en cas d’échec.
+- Un Error Boundary global et un Error Boundary par route empêchent une panne de module de faire tomber toute l’application.
+- Les cinq derniers diagnostics de crash React sont conservés localement dans `shadow-codec-ops:crash-reports`.
+- Le schéma de sauvegarde est versionné et les anciennes clés non préfixées sont migrées automatiquement.
+- Le diagnostic de démarrage est stocké sous `shadow-codec-ops:runtime-diagnostics`.
+
+### Résultat du build v1.3.0
+
+```text
+Application initiale : ~18.5 kB JS (hors React)
+React partagé : ~142.9 kB
+Phaser différé : ~1.48 MB, chargé uniquement pour Side Ops/VR
+Build TypeScript + Vite : validé
+```
+
+
+## v1.4.0 — Passe 15 : QA, accessibilité et contrôles
+
+- Remapping clavier partagé entre React et Phaser.
+- Gestion des conflits avec permutation automatique des touches.
+- Support manette standard et vibration optionnelle.
+- Contrôles utilisés dans Side Ops, VR Training et Mission Complete.
+- Modes reduced motion, reduced flashes, high contrast et large text.
+- Respect automatique de `prefers-reduced-motion`.
+- Skip link, focus visible, `aria-current` et annonces optionnelles des routes.
+- Runtime Diagnostics visible et exportable depuis Settings.
+- Schéma de sauvegarde v3 avec migration automatique des anciens réglages.
+- Vitest et JSDOM ajoutés au projet.
+- Tests d’intégrité des références JSON.
+- Correction des anciennes références Tape Archive détectées par la QA.
+- Rapport détaillé disponible dans `QA_REPORT.md`.
+
+
+## v1.5.0 — Passe 16 : Mobile/PWA et contrôles tactiles
+
+- Manifest PWA, service worker Workbox et mode hors ligne contrôlé.
+- Installation standalone avec raccourcis Codec, Side Ops, VR et Mission Builder.
+- Safe areas iOS/Android et recommandation paysage.
+- HUD tactile multi-touch rétractable pour Side Ops et VR.
+- Mode tactile auto/forcé/désactivé, taille, opacité et vibration configurables.
+- Service worker neutralisé dans Tauri pour éviter les conflits desktop.
+
+## v1.6.0 — Passe 17 : Side Ops Mission Builder & Content Pipeline
+
+- Nouveau module lazy-loadé `MissionBuilder`.
+- Bibliothèque locale de documents versionnés.
+- Stage visuel scrollable avec placement, sélection, drag, duplication et inspecteur.
+- Éditeur de métadonnées, objectifs et triggers Codec.
+- Validation bloquante avant publication/playtest.
+- Conversion automatique des documents vers `MissionDefinition` et profil runtime `SideOpsMissionProfile`.
+- Missions custom publiées et brouillons de playtest visibles dans le Mission Select.
+- Import/export de packs JSON avec manifeste de dépendances.
+- Tests unitaires du sanitizer, validator, converter et pack pipeline.
+- Correction du comptage d’objectifs Side Ops lors de l’entrée dans l’arène du boss.
+
+## v1.7.0 — Passe 18 : Campaign Ops & Progression Layer
+
+- route lazy-loadée Campaign Ops ;
+- campagne Legacy Signal en deux chapitres ;
+- graphe de nœuds multi-modules ;
+- XP, niveau, ressources, badges et récompenses ;
+- ranks Side Ops/VR utilisés comme conditions ;
+- trois slots de campagne séparés ;
+- New Game/Continue, reset, export/import JSON ;
+- migration et synchronisation des anciennes sauvegardes ;
+- launch directives vers Codec, Side Ops, VR, Tapes et Lore ;
+- améliorations permanentes réellement appliquées au loadout Side Ops ;
+- tests d’idempotence, de ranks, d’achats et d’isolation des slots.
+
+
+## v2.1 — Voice packs and animated portraits
+
+Settings now includes a **Voice & Portrait Pack Manager**. Private/local audio and portraits can be installed through a versioned JSON manifest without bundling protected assets.
+
+Assets belong in:
+
+```text
+public/audio/custom/
+public/portraits/custom/
+```
+
+The Codec resolves enabled voice replacements per conversation line and portrait replacements per character/expression. Animated portraits react to the active speaker and respect reduced-motion preferences.
+
+See `VOICE_PACK_REPORT.md` for the manifest format.
+
+
+## Codec Director Mode
+
+Le module **DIRECTOR** permet de créer des transmissions narratives réutilisables dans plusieurs contextes :
+
+- `standalone` pour le playtest ;
+- `codec` depuis le simulateur ;
+- `campaign` depuis Campaign Ops ;
+- `sideops` comme briefing et directive terrain ;
+- `vr` pour de futurs scénarios d'entraînement.
+
+Nœuds disponibles :
+
+- `line` : dialogue localisé, audio, émotion, expression et camera cue ;
+- `choice` : options conditionnelles et effets ;
+- `interrupt` : insertion d'une séquence prioritaire avec reprise ou remplacement ;
+- `event` : émission d'un événement cross-module ;
+- `delay` : pause temporisée ;
+- `jump` : saut vers un autre nœud ;
+- `end` : outcome et archivage du run.
+
+Les séquences custom utilisent la clé `director-custom-sequences`. Les événements et résultats sont conservés dans `director-event-log` et `director-outcomes`. Le schéma global de sauvegarde est en version 10.
+
+Le rapport détaillé se trouve dans `DIRECTOR_MODE_REPORT.md`.

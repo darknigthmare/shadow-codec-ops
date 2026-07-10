@@ -81,6 +81,11 @@ export type ConversationTrigger =
 export interface ConversationLine {
   speaker: string;
   text: string;
+  localizedText?: { en: string; fr?: string; ja?: string };
+  startMs?: number;
+  endMs?: number;
+  audioSource?: string;
+  portraitExpression?: string;
   emotion?: 'neutral' | 'serious' | 'warning' | 'calm' | 'glitch' | 'humor';
   speed?: 'slow' | 'normal' | 'fast';
   glitchLevel?: number;

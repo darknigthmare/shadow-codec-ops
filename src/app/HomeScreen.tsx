@@ -21,15 +21,28 @@ export function HomeScreen({ onRouteChange, settings }: HomeScreenProps) {
         <h2>Shadow Codec Ops</h2>
         <p>
           Simulateur Codec tactique + prototype Side Ops 2D. La base actuelle pose le terminal,
-          les fréquences, les contacts, les appels, une mission side-scroller jouable, un Studio de conversations
-          plusieurs packs visuels Codec, un vrai Tape Archive / iDroid Deck, des VR Missions locales et une Lore Database reliée aux modules.
+          les fréquences, les contacts, les appels, plusieurs missions side-scroller jouables, un Studio de conversations,
+          un Mission Builder avec export de packs JSON, un Campaign Builder avec embranchements et fins alternatives, une couche Campaign Ops interconnectée, plusieurs packs visuels Codec, un vrai Tape Archive / iDroid Deck,
+          des VR Missions locales, une Lore Database reliée aux modules et un Codec Director à embranchements réutilisable.
         </p>
         <div className="hero-actions">
-          <button className="primary-action" type="button" onClick={() => onRouteChange('codec')}>
+          <button className="primary-action" type="button" onClick={() => onRouteChange('campaign')}>
+            START CAMPAIGN OPS
+          </button>
+          <button className="primary-action secondary" type="button" onClick={() => onRouteChange('campaignBuilder')}>
+            OPEN CAMPAIGN BUILDER
+          </button>
+          <button className="primary-action secondary" type="button" onClick={() => onRouteChange('codec')}>
             START CODEC
+          </button>
+          <button className="primary-action secondary" type="button" onClick={() => onRouteChange('director')}>
+            OPEN CODEC DIRECTOR
           </button>
           <button className="primary-action secondary" type="button" onClick={() => onRouteChange('sideops')}>
             LAUNCH SIDE OPS
+          </button>
+          <button className="primary-action secondary" type="button" onClick={() => onRouteChange('builder')}>
+            OPEN MISSION BUILDER
           </button>
         </div>
       </Panel>
@@ -46,11 +59,15 @@ export function HomeScreen({ onRouteChange, settings }: HomeScreenProps) {
 
       <Panel title="Module Status">
         <div className="module-list">
+          <StatusBadge label="CAMPAIGN OPS ONLINE" tone="success" />
+          <StatusBadge label="CAMPAIGN BUILDER ONLINE" tone="success" />
           <StatusBadge label="CODEC SIMULATOR ONLINE" tone="success" />
+          <StatusBadge label="CODEC DIRECTOR ONLINE" tone="success" />
           <StatusBadge label="SIDE OPS ALERT CORE READY" tone="warning" />
           <StatusBadge label="VISUAL PACKS ONLINE" tone="success" />
           <StatusBadge label="VR MISSIONS ONLINE" tone="success" />
           <StatusBadge label="CONVERSATION STUDIO ONLINE" tone="success" />
+          <StatusBadge label="MISSION BUILDER ONLINE" tone="success" />
           <StatusBadge label="TAPE ARCHIVE ONLINE" tone="success" />
           <StatusBadge label="LORE DATABASE ONLINE" tone="success" />
         </div>

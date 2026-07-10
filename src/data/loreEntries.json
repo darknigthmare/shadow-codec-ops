@@ -974,5 +974,274 @@
         "label": "Shielded Commander Codec"
       }
     ]
+  },
+  {
+    "id": "lore_vr_phaser_bridge",
+    "title": "VR Phaser Bridge",
+    "subtitle": "Playable VR mission bridge",
+    "category": "system",
+    "era": "vr_simulation",
+    "canonStatus": "gameplay",
+    "importance": "high",
+    "summary": "System layer that turns VR Mission definitions into compact playable Phaser arenas and routes the resulting performance stats back into the VR rank and reward engine.",
+    "details": [
+      "The bridge reads the selected VR mission from localStorage and starts VRTrainingScene through the shared Phaser config.",
+      "It supports Time Attack, No Alert, Weapon Training, CQC, Surveillance and Boss Challenge variants using the same input doctrine as Side Ops.",
+      "The scene emits live stats and completion payloads through the global GameEvents bus so the React VR screen can evaluate real play rather than mock training-board values."
+    ],
+    "tags": [
+      "vr",
+      "phaser",
+      "bridge",
+      "training",
+      "gameplay"
+    ],
+    "aliases": [
+      "Playable VR Bridge",
+      "VRTrainingScene"
+    ],
+    "affiliations": [
+      "VR Simulation Layer"
+    ],
+    "timeline": "v1.1.0 Passe 12",
+    "related": [
+      {
+        "type": "system",
+        "id": "vrStorage",
+        "label": "VR storage / evaluation"
+      },
+      {
+        "type": "mission",
+        "id": "vr_armored_duel_006",
+        "label": "Armored Captain Duel"
+      },
+      {
+        "type": "mission",
+        "id": "vr_socom_range_003",
+        "label": "SOCOM Range"
+      }
+    ]
+  },
+  {
+    "id": "lore_mission_builder_pipeline",
+    "title": "Side Ops Mission Builder",
+    "subtitle": "Local mission authoring and content-pack pipeline",
+    "category": "system",
+    "era": "vr_simulation",
+    "canonStatus": "gameplay",
+    "importance": "high",
+    "summary": "Editor layer that creates Side Ops missions from placed entities, validates their required gameplay flow, and converts them into profiles consumed by the existing Phaser runtime.",
+    "details": [
+      "Mission documents store metadata, objectives, Codec trigger routes, entities, starting resources and publication state in a versioned local library.",
+      "The stage editor supports placement and dragging of platforms, crates, guards, security devices, pickups, secrets, a boss, mission keys and extraction points.",
+      "Valid missions can be armed for immediate playtesting or published into the normal Side Ops mission selector without modifying source JSON.",
+      "Single missions or complete libraries can be exported as dependency-aware JSON content packs and imported again on another installation."
+    ],
+    "tags": [
+      "mission builder",
+      "side ops",
+      "content pipeline",
+      "json",
+      "editor",
+      "phaser"
+    ],
+    "aliases": [
+      "Mission Editor",
+      "Side Ops Builder",
+      "Content Pack Pipeline"
+    ],
+    "affiliations": [
+      "Side Ops Runtime",
+      "Codec Trigger Router"
+    ],
+    "timeline": "v1.6.0 Passe 17",
+    "related": [
+      {
+        "type": "mission",
+        "id": "shadow_dock_001",
+        "label": "Dock Infiltration"
+      },
+      {
+        "type": "mission",
+        "id": "tanker_hold_002",
+        "label": "Tanker Hold Sabotage"
+      },
+      {
+        "type": "system",
+        "id": "conversation_studio",
+        "label": "Conversation Studio"
+      }
+    ]
+  },
+  {
+    "id": "lore_campaign_ops_progression",
+    "title": "Campaign Ops Progression Layer",
+    "subtitle": "Connected operations, resources and cross-module unlocks",
+    "category": "system",
+    "era": "multi",
+    "canonStatus": "gameplay",
+    "importance": "high",
+    "summary": "Persistent campaign layer that connects Codec calls, Side Ops ranks, VR records, tape listening and Lore review into one operation graph with resources and unlocks.",
+    "details": [
+      "Campaign nodes use prerequisites and minimum-rank conditions to create a sequential tactical operation without restricting the normal Free Play modules.",
+      "Rewards include XP, command points, intel, supplies, credits, tapes, contacts, dossiers, VR missions and Side Ops routes.",
+      "Three independent campaign slots support New Game, Continue, export and import while existing module records can be synchronized retroactively.",
+      "Field requisitions spend persistent resources to increase starting SOCOM ammunition, rations or chaff in every Side Ops deployment."
+    ],
+    "tags": [
+      "campaign",
+      "progression",
+      "side ops",
+      "vr",
+      "codec",
+      "tapes",
+      "resources",
+      "save slots"
+    ],
+    "aliases": [
+      "Campaign Ops",
+      "Connected Operations Layer",
+      "Progression Network"
+    ],
+    "affiliations": [
+      "Side Ops Runtime",
+      "VR Simulation Layer",
+      "Codec Network",
+      "Tape Archive"
+    ],
+    "timeline": "v1.7.0 Passe 18",
+    "related": [
+      {
+        "type": "mission",
+        "id": "shadow_dock_001",
+        "label": "Dock Infiltration"
+      },
+      {
+        "type": "mission",
+        "id": "tanker_hold_002",
+        "label": "Tanker Hold Sabotage"
+      },
+      {
+        "type": "system",
+        "id": "vrStorage",
+        "label": "VR progression storage"
+      },
+      {
+        "type": "system",
+        "id": "tape_archive",
+        "label": "Tape Archive"
+      }
+    ]
+  },
+  {
+    "id": "lore_campaign_builder_system",
+    "title": "Campaign Builder System",
+    "subtitle": "Branching operations authoring and ending pipeline",
+    "category": "system",
+    "era": "multi",
+    "canonStatus": "gameplay",
+    "importance": "high",
+    "summary": "Visual authoring system used to create custom Campaign Ops graphs with exclusive choices, prerequisites, rewards and alternative endings.",
+    "details": [
+      "Campaign documents are stored locally and can remain drafts, be published to Campaign Ops, or be launched as one-shot playtests.",
+      "Each operation node can target Codec, Side Ops, VR, Tape Archive, Lore Database or an internal campaign milestone.",
+      "Branch groups make route choices exclusive per campaign slot; choosing one option blocks the alternatives until that slot is reset.",
+      "Ending nodes award persistent ending records and can use heroic, neutral, dark or secret presentation tones.",
+      "Campaign packs are portable JSON manifests containing dependency lists for missions, contacts, tapes, VR missions and lore dossiers."
+    ],
+    "tags": [
+      "campaign builder",
+      "branching",
+      "alternative endings",
+      "content pipeline",
+      "campaign ops"
+    ],
+    "aliases": [
+      "Branching Ops Builder",
+      "Campaign Authoring System"
+    ],
+    "timeline": "Shadow Codec Ops v1.8 authoring layer",
+    "related": [
+      {
+        "type": "system",
+        "id": "lore_campaign_ops_progression",
+        "label": "Campaign Ops"
+      },
+      {
+        "type": "system",
+        "id": "lore_mission_builder_pipeline",
+        "label": "Mission Builder"
+      }
+    ]
+  },
+  {
+    "id": "lore_campaign_narrative_system",
+    "title": "Campaign Narrative System",
+    "subtitle": "Persistent briefings, debriefings, events and campaign dossiers",
+    "category": "system",
+    "era": "multi",
+    "canonStatus": "gameplay",
+    "importance": "high",
+    "summary": "Presentation layer that turns Campaign Ops progression into multi-beat briefings, persistent narrative events, full-screen branch decisions and replayable ending dossiers.",
+    "details": [
+      "Campaign, chapter, operation and ending presentations are queued from live campaign progress and acknowledged independently in each save slot.",
+      "Narrative variables can store strings, numbers or booleans and can be changed by set, increment, decrement and toggle operations.",
+      "Variable comparison conditions allow later operations and events to react to consequences recorded earlier in the campaign.",
+      "The narrative archive preserves viewed scenes while the ending gallery records every conclusion discovered across New Game+ cycles.",
+      "Campaign statistics aggregate Side Ops, VR, Codec, Tape Archive and Lore activity into one operation dossier."
+    ],
+    "tags": [
+      "campaign narrative",
+      "briefing",
+      "debriefing",
+      "persistent variables",
+      "ending gallery",
+      "story events"
+    ],
+    "aliases": [
+      "Narrative Events Layer",
+      "Campaign Presentation System"
+    ],
+    "timeline": "Shadow Codec Ops v1.9 narrative layer",
+    "related": [
+      {
+        "type": "system",
+        "id": "lore_campaign_ops_progression",
+        "label": "Campaign Ops"
+      },
+      {
+        "type": "system",
+        "id": "lore_campaign_builder_system",
+        "label": "Campaign Builder"
+      }
+    ]
+  },
+  {
+    "id": "system_narrative_pipeline",
+    "title": "Narrative Audio & Localization Pipeline",
+    "category": "system",
+    "era": "vr_simulation",
+    "layer": "gameplay",
+    "summary": "Shared dialogue runtime for localized subtitles, era-specific audio filters, timecodes and portrait expressions.",
+    "details": [
+      "Supports EN/FR with English fallback and a JA-ready data structure.",
+      "Conversation Studio exports subtitle tracks in SRT format.",
+      "Local voice files remain optional and user-provided."
+    ],
+    "tags": [
+      "audio",
+      "localization",
+      "subtitles",
+      "codec",
+      "studio"
+    ],
+    "aliases": [
+      "Narrative Pipeline"
+    ],
+    "affiliations": [
+      "Shadow Codec Ops"
+    ],
+    "timeline": "Shadow Codec Ops v2.0 narrative layer",
+    "relations": []
   }
 ]

@@ -1,0 +1,815 @@
+[
+  {
+    "id": "legacy_signal_campaign",
+    "title": "Legacy Signal",
+    "subtitle": "Shadow Moses → Tanker tactical simulation",
+    "description": "A connected operations campaign that uses Codec briefings, Side Ops missions, VR validation, tape analysis and Lore dossiers as one progression loop.",
+    "era": "multi",
+    "initialUnlocks": {
+      "missionIds": [],
+      "vrMissionIds": [],
+      "tapeIds": [
+        "tape_mgs1_shadow_moses_entry"
+      ],
+      "contactIds": [
+        "campbell_mgs1",
+        "mei_ling_mgs1",
+        "naomi_mgs1"
+      ],
+      "loreIds": [
+        "lore_codec_system",
+        "lore_colonel_campbell"
+      ]
+    },
+    "chapters": [
+      {
+        "id": "chapter_shadow_moses",
+        "title": "Chapter I — Shadow Moses Signal",
+        "subtitle": "Establish the network and breach the dock perimeter",
+        "description": "Complete the briefing chain, infiltrate the snowfield docks and validate the route in VR.",
+        "nodes": [
+          {
+            "id": "legacy_campbell_briefing",
+            "title": "Operation Briefing",
+            "description": "Call Colonel Campbell and complete the opening mission briefing.",
+            "module": "codec",
+            "targetId": "campbell_mgs1",
+            "era": "mgs1",
+            "prerequisites": [],
+            "condition": {
+              "type": "codec_call",
+              "contactId": "campbell_mgs1"
+            },
+            "reward": {
+              "xp": 75,
+              "resources": {
+                "intel": 20,
+                "credits": 100
+              },
+              "unlockMissionIds": [
+                "shadow_dock_001"
+              ],
+              "badges": [
+                "SIGNAL ESTABLISHED"
+              ]
+            },
+            "completionPresentation": {
+              "id": "legacy_campbell_briefing_complete",
+              "eyebrow": "SIGNAL ESTABLISHED",
+              "title": "Campbell Link Online",
+              "speaker": "SYSTEM",
+              "tone": "system",
+              "body": "The opening frequency is authenticated. Dock Infiltration is now available."
+            }
+          },
+          {
+            "id": "legacy_shadow_dock_clear",
+            "title": "Dock Infiltration",
+            "description": "Clear Dock Infiltration with at least a HOUND rank.",
+            "module": "sideops",
+            "targetId": "shadow_dock_001",
+            "era": "mgs1",
+            "prerequisites": [
+              "legacy_campbell_briefing"
+            ],
+            "condition": {
+              "type": "sideops_clear",
+              "missionId": "shadow_dock_001",
+              "minimumRank": "HOUND"
+            },
+            "reward": {
+              "xp": 280,
+              "resources": {
+                "commandPoints": 1,
+                "intel": 35,
+                "supplies": 55,
+                "credits": 350
+              },
+              "unlockVrMissionIds": [
+                "vr_dock_sprint_001"
+              ],
+              "unlockTapeIds": [
+                "tape_side_ops_design_log_001"
+              ],
+              "unlockContactIds": [
+                "otacon_mgs1"
+              ],
+              "unlockLoreIds": [
+                "lore_dock_infiltration",
+                "lore_armored_guard_captain"
+              ]
+            },
+            "completionPresentation": {
+              "id": "legacy_shadow_dock_complete",
+              "eyebrow": "AFTER ACTION",
+              "title": "Dock Perimeter Breached",
+              "speaker": "CAMPBELL",
+              "tone": "debriefing",
+              "body": "The route is open. Analyze the recovered tape and validate your movement profile in VR."
+            },
+            "variableEffects": [
+              {
+                "variable": "network.integrity",
+                "operation": "decrement",
+                "value": 5
+              },
+              {
+                "variable": "shadow_moses.dockCleared",
+                "operation": "set",
+                "value": true
+              }
+            ]
+          },
+          {
+            "id": "legacy_dock_archive",
+            "title": "After-Action Tape",
+            "description": "Listen to the Side Ops Design Log recovered from the dock operation.",
+            "module": "tapes",
+            "targetId": "tape_side_ops_design_log_001",
+            "era": "mgs1",
+            "prerequisites": [
+              "legacy_shadow_dock_clear"
+            ],
+            "condition": {
+              "type": "tape_listened",
+              "tapeId": "tape_side_ops_design_log_001"
+            },
+            "reward": {
+              "xp": 90,
+              "resources": {
+                "intel": 45
+              },
+              "unlockLoreIds": [
+                "lore_shadow_moses"
+              ]
+            }
+          },
+          {
+            "id": "legacy_dock_sprint",
+            "title": "VR Route Validation",
+            "description": "Clear Dock Sprint with at least a HOUND rank.",
+            "module": "vr",
+            "targetId": "vr_dock_sprint_001",
+            "era": "vr_simulation",
+            "prerequisites": [
+              "legacy_shadow_dock_clear"
+            ],
+            "condition": {
+              "type": "vr_clear",
+              "missionId": "vr_dock_sprint_001",
+              "minimumRank": "HOUND"
+            },
+            "reward": {
+              "xp": 130,
+              "resources": {
+                "supplies": 25,
+                "credits": 175
+              },
+              "unlockVrMissionIds": [
+                "vr_ghost_dock_002"
+              ],
+              "unlockTapeIds": [
+                "tape_vr_route_memory_notes"
+              ]
+            }
+          },
+          {
+            "id": "legacy_shadow_dossier",
+            "title": "Shadow Moses Dossier",
+            "description": "Open and review the Shadow Moses Lore dossier.",
+            "module": "lore",
+            "targetId": "lore_shadow_moses",
+            "era": "mgs1",
+            "prerequisites": [
+              "legacy_dock_archive"
+            ],
+            "condition": {
+              "type": "lore_viewed",
+              "loreId": "lore_shadow_moses"
+            },
+            "reward": {
+              "xp": 70,
+              "resources": {
+                "intel": 40,
+                "commandPoints": 1
+              },
+              "unlockContactIds": [
+                "otacon_mgs2"
+              ]
+            }
+          }
+        ],
+        "briefing": {
+          "id": "chapter_shadow_moses_briefing",
+          "eyebrow": "CHAPTER I BRIEFING",
+          "title": "Shadow Moses Signal",
+          "speaker": "COLONEL CAMPBELL",
+          "tone": "briefing",
+          "beats": [
+            {
+              "speaker": "CAMPBELL",
+              "text": "Your first objective is to establish a secure Codec link and breach the dock perimeter."
+            },
+            {
+              "speaker": "CAMPBELL",
+              "text": "Keep the operation quiet. The quality of the infiltration will determine which simulation routes unlock next.",
+              "emphasis": "urgent"
+            }
+          ]
+        },
+        "debriefing": {
+          "id": "chapter_shadow_moses_debriefing",
+          "eyebrow": "CHAPTER I DEBRIEF",
+          "title": "Dock Network Secured",
+          "speaker": "ANALYSIS CELL",
+          "tone": "debriefing",
+          "body": "The Shadow Moses route is stable. Recovered dossiers and VR telemetry have opened the tanker support channel."
+        }
+      },
+      {
+        "id": "chapter_tanker",
+        "title": "Chapter II — Tanker Intercept",
+        "subtitle": "Transfer the network to the rain deck operation",
+        "description": "Establish Otacon support, sabotage the tanker route and complete the Ghost validation run.",
+        "nodes": [
+          {
+            "id": "legacy_otacon_briefing",
+            "title": "Tanker Support Link",
+            "description": "Call Otacon on the MGS2 channel to establish mission support.",
+            "module": "codec",
+            "targetId": "otacon_mgs2",
+            "era": "mgs2",
+            "prerequisites": [
+              "legacy_shadow_dossier",
+              "legacy_dock_sprint"
+            ],
+            "condition": {
+              "type": "codec_call",
+              "contactId": "otacon_mgs2"
+            },
+            "reward": {
+              "xp": 90,
+              "resources": {
+                "intel": 25,
+                "credits": 125
+              },
+              "unlockMissionIds": [
+                "tanker_hold_002"
+              ]
+            }
+          },
+          {
+            "id": "legacy_tanker_clear",
+            "title": "Tanker Hold Sabotage",
+            "description": "Clear Tanker Hold Sabotage with at least a HOUND rank.",
+            "module": "sideops",
+            "targetId": "tanker_hold_002",
+            "era": "mgs2",
+            "prerequisites": [
+              "legacy_otacon_briefing"
+            ],
+            "condition": {
+              "type": "sideops_clear",
+              "missionId": "tanker_hold_002",
+              "minimumRank": "HOUND"
+            },
+            "reward": {
+              "xp": 340,
+              "resources": {
+                "commandPoints": 2,
+                "intel": 50,
+                "supplies": 70,
+                "credits": 500
+              },
+              "unlockTapeIds": [
+                "tape_side_ops_tanker_hold_002"
+              ],
+              "unlockLoreIds": [
+                "lore_tanker_hold_sabotage",
+                "lore_shielded_deck_commander"
+              ],
+              "unlockVrMissionIds": [
+                "vr_armored_duel_006"
+              ]
+            },
+            "completionPresentation": {
+              "id": "legacy_tanker_clear_complete",
+              "eyebrow": "AFTER ACTION",
+              "title": "Tanker Hold Compromised",
+              "speaker": "OTACON",
+              "tone": "debriefing",
+              "body": "The hold is no longer secure. The remaining data can reveal the shape of the hostile network."
+            },
+            "variableEffects": [
+              {
+                "variable": "network.integrity",
+                "operation": "decrement",
+                "value": 15
+              },
+              {
+                "variable": "tanker.holdSabotaged",
+                "operation": "set",
+                "value": true
+              }
+            ]
+          },
+          {
+            "id": "legacy_ghost_validation",
+            "title": "Ghost Dock Validation",
+            "description": "Clear Ghost Dock with at least a FOX rank.",
+            "module": "vr",
+            "targetId": "vr_ghost_dock_002",
+            "era": "vr_simulation",
+            "prerequisites": [
+              "legacy_tanker_clear"
+            ],
+            "condition": {
+              "type": "vr_clear",
+              "missionId": "vr_ghost_dock_002",
+              "minimumRank": "FOX"
+            },
+            "reward": {
+              "xp": 180,
+              "resources": {
+                "commandPoints": 1,
+                "supplies": 35,
+                "credits": 250
+              },
+              "unlockTapeIds": [
+                "tape_vr_no_alert_after_action"
+              ],
+              "badges": [
+                "GHOST ROUTE"
+              ]
+            }
+          },
+          {
+            "id": "legacy_tanker_archive",
+            "title": "Tanker Archive Review",
+            "description": "Listen to the Tanker Hold operation tape.",
+            "module": "tapes",
+            "targetId": "tape_side_ops_tanker_hold_002",
+            "era": "mgs2",
+            "prerequisites": [
+              "legacy_tanker_clear"
+            ],
+            "condition": {
+              "type": "tape_listened",
+              "tapeId": "tape_side_ops_tanker_hold_002"
+            },
+            "reward": {
+              "xp": 100,
+              "resources": {
+                "intel": 55,
+                "credits": 125
+              },
+              "unlockLoreIds": [
+                "lore_big_shell"
+              ]
+            }
+          },
+          {
+            "id": "legacy_campaign_complete",
+            "title": "Legacy Signal Complete",
+            "description": "Complete the Tanker archive and Ghost validation branches.",
+            "module": "campaign",
+            "era": "multi",
+            "prerequisites": [
+              "legacy_ghost_validation",
+              "legacy_tanker_archive"
+            ],
+            "condition": {
+              "type": "all_prerequisites"
+            },
+            "reward": {
+              "xp": 500,
+              "resources": {
+                "commandPoints": 4,
+                "intel": 100,
+                "supplies": 100,
+                "credits": 1000
+              },
+              "unlockTapeIds": [
+                "tape_patriots_ai_memory_leak"
+              ],
+              "unlockContactIds": [
+                "patriots_colonel_ai"
+              ],
+              "unlockLoreIds": [
+                "lore_patriots_ai"
+              ],
+              "badges": [
+                "LEGACY SIGNAL COMPLETE"
+              ]
+            },
+            "completionPresentation": {
+              "id": "legacy_campaign_milestone_complete",
+              "eyebrow": "MILESTONE",
+              "title": "Legacy Network Fully Reconstructed",
+              "speaker": "CAMPAIGN CONTROL",
+              "tone": "system",
+              "body": "All pre-doctrine operations are complete. The final branch decision is now available."
+            }
+          }
+        ],
+        "briefing": {
+          "id": "chapter_tanker_briefing",
+          "eyebrow": "CHAPTER II BRIEFING",
+          "title": "Tanker Intercept",
+          "speaker": "OTACON",
+          "tone": "briefing",
+          "beats": [
+            {
+              "speaker": "OTACON",
+              "text": "The network has transferred to a tanker simulation. Rain, cameras and reinforced guards will make the route less predictable."
+            },
+            {
+              "speaker": "OTACON",
+              "text": "Sabotage the hold, recover the archive and validate the operation through Ghost Dock.",
+              "emphasis": "urgent"
+            }
+          ]
+        },
+        "debriefing": {
+          "id": "chapter_tanker_debriefing",
+          "eyebrow": "CHAPTER II DEBRIEF",
+          "title": "Tanker Signal Captured",
+          "speaker": "OTACON",
+          "tone": "debriefing",
+          "body": "The tanker operation has exposed the hostile network. One final doctrine must decide whether the signal disappears or becomes impossible to ignore."
+        }
+      },
+      {
+        "id": "chapter_final_doctrine",
+        "title": "Chapter III — Final Doctrine",
+        "subtitle": "Commit the simulation to one operational ending",
+        "description": "Choose an exclusive doctrine. The unselected route is permanently blocked for this campaign slot until reset.",
+        "nodes": [
+          {
+            "id": "legacy_doctrine_ghost",
+            "title": "Ghost Doctrine",
+            "description": "Commit the final operation to a zero-signature validation route.",
+            "module": "campaign",
+            "era": "multi",
+            "prerequisites": [
+              "legacy_campaign_complete"
+            ],
+            "condition": {
+              "type": "all_prerequisites"
+            },
+            "reward": {
+              "xp": 100,
+              "resources": {
+                "intel": 75
+              },
+              "badges": [
+                "GHOST DOCTRINE"
+              ]
+            },
+            "branch": {
+              "groupId": "legacy_final_doctrine",
+              "optionId": "ghost",
+              "label": "Ghost Doctrine",
+              "description": "Erase the operation from the hostile network through perfect stealth validation.",
+              "choicePresentation": {
+                "id": "legacy_doctrine_ghost_choice",
+                "eyebrow": "FINAL DOCTRINE",
+                "title": "Ghost Doctrine",
+                "tone": "choice",
+                "body": "Commit to a route that erases every tactical trace."
+              },
+              "consequenceText": "Requires a FOXHOUND Ghost Dock result. The direct action ending will be blocked."
+            },
+            "layout": {
+              "x": 360,
+              "y": 80
+            }
+          },
+          {
+            "id": "legacy_doctrine_assault",
+            "title": "Direct Action Doctrine",
+            "description": "Commit the final operation to an overt tactical breach.",
+            "module": "campaign",
+            "era": "multi",
+            "prerequisites": [
+              "legacy_campaign_complete"
+            ],
+            "condition": {
+              "type": "all_prerequisites"
+            },
+            "reward": {
+              "xp": 100,
+              "resources": {
+                "supplies": 75
+              },
+              "badges": [
+                "DIRECT ACTION DOCTRINE"
+              ]
+            },
+            "branch": {
+              "groupId": "legacy_final_doctrine",
+              "optionId": "assault",
+              "label": "Direct Action Doctrine",
+              "description": "Expose and destroy the hostile network through a decisive combat operation.",
+              "choicePresentation": {
+                "id": "legacy_doctrine_assault_choice",
+                "eyebrow": "FINAL DOCTRINE",
+                "title": "Direct Action Doctrine",
+                "tone": "choice",
+                "body": "Commit to a route that destroys the network in open combat."
+              },
+              "consequenceText": "Requires a FOX Tanker Hold result. The ghost ending will be blocked."
+            },
+            "layout": {
+              "x": 360,
+              "y": 300
+            }
+          },
+          {
+            "id": "legacy_ending_silent_signal",
+            "title": "Ending — Silent Signal",
+            "description": "Clear Ghost Dock with a FOXHOUND rank to erase the final hostile trace.",
+            "module": "vr",
+            "targetId": "vr_ghost_dock_002",
+            "era": "vr_simulation",
+            "prerequisites": [
+              "legacy_doctrine_ghost"
+            ],
+            "condition": {
+              "type": "vr_clear",
+              "missionId": "vr_ghost_dock_002",
+              "minimumRank": "FOXHOUND"
+            },
+            "reward": {
+              "xp": 750,
+              "resources": {
+                "commandPoints": 5,
+                "intel": 150,
+                "credits": 1500
+              },
+              "unlockTapeIds": [
+                "tape_patriots_ai_memory_leak"
+              ],
+              "badges": [
+                "ENDING: SILENT SIGNAL"
+              ]
+            },
+            "branch": {
+              "groupId": "legacy_final_doctrine",
+              "optionId": "ghost",
+              "label": "Ghost Doctrine"
+            },
+            "ending": {
+              "id": "legacy_silent_signal",
+              "title": "Silent Signal",
+              "summary": "The hostile network collapses without ever proving the operator existed. The final transmission becomes a ghost in the archive.",
+              "tone": "secret",
+              "epilogue": {
+                "id": "legacy_silent_signal_epilogue",
+                "eyebrow": "SECRET ENDING",
+                "title": "Silent Signal",
+                "speaker": "ARCHIVE CONTROL",
+                "tone": "secret",
+                "beats": [
+                  {
+                    "speaker": "ARCHIVE CONTROL",
+                    "text": "No hostile log can prove that the operator entered the network."
+                  },
+                  {
+                    "speaker": "UNKNOWN SIGNAL",
+                    "text": "The final transmission remains, but only as noise between frequencies.",
+                    "emphasis": "classified"
+                  }
+                ],
+                "confirmLabel": "SEAL THE ARCHIVE"
+              }
+            },
+            "layout": {
+              "x": 760,
+              "y": 80
+            }
+          },
+          {
+            "id": "legacy_ending_open_signal",
+            "title": "Ending — Open Signal",
+            "description": "Clear Tanker Hold Sabotage with a FOX rank to finish the campaign through direct action.",
+            "module": "sideops",
+            "targetId": "tanker_hold_002",
+            "era": "mgs2",
+            "prerequisites": [
+              "legacy_doctrine_assault"
+            ],
+            "condition": {
+              "type": "sideops_clear",
+              "missionId": "tanker_hold_002",
+              "minimumRank": "FOX"
+            },
+            "reward": {
+              "xp": 750,
+              "resources": {
+                "commandPoints": 5,
+                "supplies": 150,
+                "credits": 1500
+              },
+              "unlockTapeIds": [
+                "tape_patriots_ai_memory_leak"
+              ],
+              "badges": [
+                "ENDING: OPEN SIGNAL"
+              ]
+            },
+            "branch": {
+              "groupId": "legacy_final_doctrine",
+              "optionId": "assault",
+              "label": "Direct Action Doctrine"
+            },
+            "ending": {
+              "id": "legacy_open_signal",
+              "title": "Open Signal",
+              "summary": "The hostile network is shattered in public view. The operator leaves a tactical signature no enemy can ignore.",
+              "tone": "heroic",
+              "epilogue": {
+                "id": "legacy_open_signal_epilogue",
+                "eyebrow": "HEROIC ENDING",
+                "title": "Open Signal",
+                "speaker": "ARCHIVE CONTROL",
+                "tone": "heroic",
+                "beats": [
+                  {
+                    "speaker": "ARCHIVE CONTROL",
+                    "text": "The hostile network is exposed and destroyed under full tactical observation."
+                  },
+                  {
+                    "speaker": "CAMPAIGN CONTROL",
+                    "text": "Every enemy channel now recognizes the operator signature.",
+                    "emphasis": "urgent"
+                  }
+                ],
+                "confirmLabel": "RECORD THE VICTORY"
+              }
+            },
+            "layout": {
+              "x": 760,
+              "y": 300
+            }
+          }
+        ],
+        "briefing": {
+          "id": "chapter_final_doctrine_briefing",
+          "eyebrow": "FINAL CHAPTER",
+          "title": "Choose the Final Doctrine",
+          "speaker": "CAMPAIGN CONTROL",
+          "tone": "choice",
+          "body": "Both doctrines can complete the campaign, but only one route can remain active in this cycle. Review the consequences before committing."
+        },
+        "debriefing": {
+          "id": "chapter_final_doctrine_debriefing",
+          "eyebrow": "FINAL CHAPTER COMPLETE",
+          "title": "Doctrine Recorded",
+          "speaker": "SYSTEM",
+          "tone": "debriefing",
+          "body": "The selected doctrine and resulting ending have been written to the conclusion archive."
+        }
+      }
+    ],
+    "initialVariables": {
+      "operator.callsign": "SNAKE",
+      "network.integrity": 100,
+      "shadow_moses.intelRecovered": false,
+      "tanker.signalExposed": false,
+      "doctrine.selected": "uncommitted"
+    },
+    "briefing": {
+      "id": "legacy_signal_campaign_briefing",
+      "eyebrow": "CAMPAIGN INITIALIZATION",
+      "title": "Legacy Signal",
+      "subtitle": "A tactical network built from recovered mission fragments",
+      "speaker": "CAMPAIGN CONTROL",
+      "tone": "briefing",
+      "beats": [
+        {
+          "speaker": "CAMPAIGN CONTROL",
+          "text": "Multiple mission archives have been connected into a single operational simulation. Every call, sortie and recovered file can alter the route ahead.",
+          "emphasis": "normal"
+        },
+        {
+          "speaker": "CAMPAIGN CONTROL",
+          "text": "Establish the Shadow Moses signal first. The campaign will then transfer the network to the tanker intercept.",
+          "emphasis": "urgent"
+        },
+        {
+          "speaker": "SYSTEM",
+          "text": "Branch choices are persistent per save slot. Final doctrines can only be reversed through a reset or New Game+.",
+          "emphasis": "classified"
+        }
+      ],
+      "confirmLabel": "BEGIN OPERATIONS",
+      "skippable": true
+    },
+    "debriefing": {
+      "id": "legacy_signal_campaign_debriefing",
+      "eyebrow": "CAMPAIGN DEBRIEF",
+      "title": "Signal Cycle Complete",
+      "subtitle": "The network has recorded an ending",
+      "speaker": "CAMPAIGN CONTROL",
+      "tone": "debriefing",
+      "body": "Your completed route, doctrine and recovered intelligence are now preserved in the campaign archive. New Game+ can reopen the blocked branch while retaining permanent progression.",
+      "confirmLabel": "ARCHIVE CAMPAIGN"
+    },
+    "narrativeEvents": [
+      {
+        "id": "legacy_network_integrity_warning",
+        "trigger": "variable_condition",
+        "once": true,
+        "condition": {
+          "type": "variable_compare",
+          "variable": "network.integrity",
+          "operator": "lte",
+          "value": 70
+        },
+        "presentation": {
+          "id": "legacy_network_integrity_warning_card",
+          "eyebrow": "NETWORK WARNING",
+          "title": "Signal Integrity Degraded",
+          "speaker": "SYSTEM",
+          "tone": "warning",
+          "body": "Repeated exposure has damaged the simulation network. Recover intelligence and complete stealth validations to stabilize the signal.",
+          "confirmLabel": "ACKNOWLEDGE DAMAGE"
+        }
+      },
+      {
+        "id": "legacy_shadow_intel_recovered",
+        "trigger": "node_complete",
+        "targetId": "legacy_shadow_dossier",
+        "once": true,
+        "presentation": {
+          "id": "legacy_shadow_intel_recovered_card",
+          "eyebrow": "INTELLIGENCE EVENT",
+          "title": "Shadow Moses Archive Reconstructed",
+          "speaker": "ANALYSIS CELL",
+          "tone": "system",
+          "body": "The recovered dossier closes the first intelligence gap. Otacon support can now be routed to the tanker operation."
+        },
+        "variableEffects": [
+          {
+            "variable": "shadow_moses.intelRecovered",
+            "operation": "set",
+            "value": true
+          },
+          {
+            "variable": "network.integrity",
+            "operation": "increment",
+            "value": 10
+          }
+        ]
+      },
+      {
+        "id": "legacy_ghost_doctrine_event",
+        "trigger": "branch_choice",
+        "targetId": "legacy_final_doctrine:ghost",
+        "once": true,
+        "presentation": {
+          "id": "legacy_ghost_doctrine_event_card",
+          "eyebrow": "DOCTRINE COMMITTED",
+          "title": "Ghost Doctrine",
+          "speaker": "CAMPAIGN CONTROL",
+          "tone": "choice",
+          "body": "The operation will prioritize zero-signature validation. Direct action routes are sealed for this cycle."
+        },
+        "variableEffects": [
+          {
+            "variable": "doctrine.selected",
+            "operation": "set",
+            "value": "ghost"
+          }
+        ]
+      },
+      {
+        "id": "legacy_assault_doctrine_event",
+        "trigger": "branch_choice",
+        "targetId": "legacy_final_doctrine:assault",
+        "once": true,
+        "presentation": {
+          "id": "legacy_assault_doctrine_event_card",
+          "eyebrow": "DOCTRINE COMMITTED",
+          "title": "Direct Action Doctrine",
+          "speaker": "CAMPAIGN CONTROL",
+          "tone": "choice",
+          "body": "The operation will force the hostile network into the open. Ghost validation routes are sealed for this cycle."
+        },
+        "variableEffects": [
+          {
+            "variable": "doctrine.selected",
+            "operation": "set",
+            "value": "assault"
+          },
+          {
+            "variable": "tanker.signalExposed",
+            "operation": "set",
+            "value": true
+          }
+        ]
+      }
+    ]
+  }
+]

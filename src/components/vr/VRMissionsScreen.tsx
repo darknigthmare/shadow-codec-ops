@@ -1,4 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
+import '../../styles/vr.css';
+import type { Game } from 'phaser';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import vrMissionsJson from '../../data/vrMissions.json';
 import type { VrMissionCategory, VrMissionDefinition, VrMissionRecord, VrRunStats } from '../../types/vr.types';
 import {
@@ -11,8 +13,13 @@ import {
   recordVrRun,
   saveVrProgress
 } from '../../systems/vrStorage';
+import { recordCampaignVrResult } from '../../systems/campaignStorage';
+import { GAME_EVENT, onGameEvent, type VrRunGamePayload } from '../../game/core/GameEvents';
+import { VR_ACTIVE_MISSION_KEY } from '../../game/core/vrConstants';
 import { Panel } from '../common/Panel';
 import { StatusBadge } from '../common/StatusBadge';
+import { TouchControlOverlay } from '../common/TouchControlOverlay';
+import type { UserSettings } from '../../types/theme.types';
 
 const vrMissions = vrMissionsJson as VrMissionDefinition[];
 const categories: Array<{ id: VrMissionCategory | 'all'; label: string }> = [
@@ -77,7 +84,12 @@ function makeRecordTitle(record: VrMissionRecord, mission?: VrMissionDefinition)
   return `${missionTitle} // ${record.rank} // ${record.score} pts`;
 }
 
-export function VRMissionsScreen() {
+interface VRMissionsScreenProps {
+  settings: UserSettings;
+}
+
+export function VRMissionsScreen({ settings }: VRMissionsScreenProps) {
+  const controlBindings = settings.keyboardBindings;
   const [progress, setProgress] = useState(() => loadVrProgress());
   const [selectedMissionId, setSelectedMissionId] = useState(() => progress.activeMissionId ?? vrMissions[0]?.id ?? '');
   const [selectedCategory, setSelectedCategory] = useState<VrMissionCategory | 'all'>('all');
@@ -86,6 +98,12 @@ export function VRMissionsScreen() {
   const [isRunning, setIsRunning] = useState(false);
   const [lastRecord, setLastRecord] = useState<VrMissionRecord | null>(null);
   const [systemMessage, setSystemMessage] = useState('VR MODULE READY');
+  const [playableActive, setPlayableActive] = useState(false);
+  const [playableStatus, setPlayableStatus] = useState<VrRunGamePayload['status']>('standby');
+  const [playableRunId, setPlayableRunId] = useState(0);
+  const vrGameRef = useRef<Game | null>(null);
+  const [engineStatus, setEngineStatus] = useState<'idle' | 'loading' | 'ready' | 'error'>('idle');
+  const [engineError, setEngineError] = useState('');
 
   const selectedMission = vrMissions.find((mission) => mission.id === selectedMissionId) ?? vrMissions[0];
   const evaluation = useMemo(
@@ -109,12 +127,94 @@ export function VRMissionsScreen() {
   }, [search, selectedCategory]);
 
   useEffect(() => {
-    if (!isRunning) return;
+    if (!isRunning || playableActive) return;
     const interval = window.setInterval(() => {
       setRunStats((current) => ({ ...current, timeSeconds: current.timeSeconds + 1 }));
     }, 1000);
     return () => window.clearInterval(interval);
-  }, [isRunning]);
+  }, [isRunning, playableActive]);
+
+
+  useEffect(() => {
+    const offHud = onGameEvent<VrRunGamePayload>(GAME_EVENT.VR_HUD_UPDATE, (payload) => {
+      if (payload.missionId !== selectedMission.id) return;
+      setRunStats(payload.stats);
+      setPlayableStatus(payload.status);
+      setSystemMessage(payload.message.toUpperCase());
+    });
+
+    const offComplete = onGameEvent<VrRunGamePayload>(GAME_EVENT.VR_RUN_COMPLETE, (payload) => {
+      if (payload.missionId !== selectedMission.id) return;
+      setRunStats(payload.stats);
+      setPlayableStatus(payload.status);
+      setIsRunning(false);
+      setPlayableActive(false);
+
+      const finalEvaluation = evaluateVrRun(selectedMission, payload.stats, progress.unlockedTapeIds, progress.unlockedBadges);
+      const record = createVrRecord(selectedMission, payload.stats, finalEvaluation);
+      const nextProgress = recordVrRun(progress, selectedMission, record, finalEvaluation);
+      setLastRecord(record);
+      recordCampaignVrResult(record);
+      persistProgress(
+        nextProgress,
+        finalEvaluation.success
+          ? `PLAYABLE VR CLEAR: ${record.rank} / ${record.score} PTS${finalEvaluation.unlockedTapeIds.length ? ' / TAPE UNLOCKED' : ''}`
+          : `PLAYABLE VR FAILED: ${finalEvaluation.failures[0] ?? payload.message}`
+      );
+    });
+
+    return () => {
+      offHud();
+      offComplete();
+    };
+  }, [progress, selectedMission]);
+
+  useEffect(() => {
+    let disposed = false;
+
+    if (!playableActive) {
+      vrGameRef.current?.destroy(true);
+      vrGameRef.current = null;
+      setEngineStatus('idle');
+      setEngineError('');
+      return;
+    }
+
+    window.localStorage.setItem(VR_ACTIVE_MISSION_KEY, selectedMission.id);
+    setEngineStatus('loading');
+    setEngineError('');
+
+    async function bootEngine() {
+      try {
+        const [{ default: Phaser }, { createGameConfig }] = await Promise.all([
+          import('phaser'),
+          import('../../game/core/GameConfig')
+        ]);
+        if (disposed) return;
+        vrGameRef.current?.destroy(true);
+        const config = await createGameConfig(Phaser, 'vr-phaser-root', 'VRTrainingScene');
+        if (disposed) return;
+        vrGameRef.current = new Phaser.Game(config);
+        setEngineStatus('ready');
+      } catch (error) {
+        if (disposed) return;
+        const message = error instanceof Error ? error.message : 'Unknown Phaser boot failure.';
+        setEngineError(message);
+        setEngineStatus('error');
+        setPlayableActive(false);
+        setIsRunning(false);
+        console.error('[VR] Failed to stream Phaser engine.', error);
+      }
+    }
+
+    void bootEngine();
+
+    return () => {
+      disposed = true;
+      vrGameRef.current?.destroy(true);
+      vrGameRef.current = null;
+    };
+  }, [playableActive, playableRunId, selectedMission.id]);
 
   function persistProgress(nextProgress: typeof progress, message?: string) {
     setProgress(nextProgress);
@@ -125,6 +225,8 @@ export function VRMissionsScreen() {
   function selectMission(missionId: string) {
     setSelectedMissionId(missionId);
     setIsRunning(false);
+    setPlayableActive(false);
+    setPlayableStatus('standby');
     setRunStats(createEmptyVrStats());
     setLastRecord(null);
     const mission = vrMissions.find((item) => item.id === missionId);
@@ -132,6 +234,8 @@ export function VRMissionsScreen() {
   }
 
   function startRun() {
+    setPlayableActive(false);
+    setPlayableStatus('standby');
     setRunStats(createEmptyVrStats());
     setLastRecord(null);
     setIsRunning(true);
@@ -140,6 +244,8 @@ export function VRMissionsScreen() {
 
   function abortRun() {
     setIsRunning(false);
+    setPlayableActive(false);
+    setPlayableStatus('aborted');
     setSystemMessage('VR RUN ABORTED');
   }
 
@@ -150,16 +256,48 @@ export function VRMissionsScreen() {
 
   function completeRun() {
     setIsRunning(false);
+    setPlayableActive(false);
     const finalEvaluation = evaluateVrRun(selectedMission, runStats, progress.unlockedTapeIds, progress.unlockedBadges);
     const record = createVrRecord(selectedMission, runStats, finalEvaluation);
     const nextProgress = recordVrRun(progress, selectedMission, record, finalEvaluation);
     setLastRecord(record);
+    recordCampaignVrResult(record);
     persistProgress(
       nextProgress,
       finalEvaluation.success
         ? `RUN CLEAR: ${record.rank} / ${record.score} PTS${finalEvaluation.unlockedTapeIds.length ? ' / TAPE UNLOCKED' : ''}`
         : `RUN FAILED: ${finalEvaluation.failures[0] ?? 'OBJECTIVE NOT MET'}`
     );
+  }
+
+
+  function launchPlayableRun() {
+    window.localStorage.setItem(VR_ACTIVE_MISSION_KEY, selectedMission.id);
+    setRunStats(createEmptyVrStats());
+    setLastRecord(null);
+    setIsRunning(true);
+    setPlayableStatus('running');
+    setPlayableActive(true);
+    setPlayableRunId((current) => current + 1);
+    setSystemMessage(`PLAYABLE VR BRIDGE: ${selectedMission.title.toUpperCase()}`);
+  }
+
+  function restartPlayableRun() {
+    window.localStorage.setItem(VR_ACTIVE_MISSION_KEY, selectedMission.id);
+    setRunStats(createEmptyVrStats());
+    setLastRecord(null);
+    setIsRunning(true);
+    setPlayableStatus('running');
+    setPlayableActive(true);
+    setPlayableRunId((current) => current + 1);
+    setSystemMessage(`PLAYABLE VR RESTART: ${selectedMission.title.toUpperCase()}`);
+  }
+
+  function stopPlayableRun() {
+    setPlayableActive(false);
+    setIsRunning(false);
+    setPlayableStatus('aborted');
+    setSystemMessage('PLAYABLE VR BRIDGE STOPPED');
   }
 
   function quickPerfectRun() {
@@ -283,6 +421,40 @@ export function VRMissionsScreen() {
               </ul>
             </div>
           </div>
+        </Panel>
+
+        <Panel className="vr-phaser-panel" title="Playable VR Phaser Bridge">
+          <div className="vr-bridge-header">
+            <div>
+              <strong>Live scene bridge</strong>
+              <span>Runs the selected VR mission as a playable Phaser arena, then sends the real stats back to the VR evaluation system.</span>
+            </div>
+            <div className="vr-bridge-actions">
+              <StatusBadge label={playableStatus.toUpperCase()} tone={playableStatus === 'clear' ? 'success' : playableStatus === 'failed' || playableStatus === 'aborted' ? 'danger' : playableStatus === 'running' ? 'success' : 'neutral'} />
+              <button className="primary-action" type="button" onClick={launchPlayableRun}>Launch Playable VR</button>
+              <button type="button" onClick={restartPlayableRun} disabled={!playableActive}>Restart Scene</button>
+              <button type="button" onClick={stopPlayableRun} disabled={!playableActive}>Stop Scene</button>
+            </div>
+          </div>
+          <div className="vr-engine-shell">
+            <div id="vr-phaser-root" className={`vr-phaser-root touch-game-surface ${playableActive ? 'active' : ''}`} />
+            {playableActive && <TouchControlOverlay settings={settings} context="vr" />}
+            {!playableActive && engineStatus !== 'error' && (
+              <span className="vr-engine-placeholder">Select a VR mission, then launch the playable bridge.</span>
+            )}
+            {(engineStatus === 'loading' || engineStatus === 'error') && (
+              <div className={`game-engine-status ${engineStatus}`} role={engineStatus === 'error' ? 'alert' : 'status'}>
+                <strong>{engineStatus === 'error' ? 'VR ENGINE OFFLINE' : 'STREAMING PHASER ENGINE'}</strong>
+                <span>{engineStatus === 'error' ? engineError : 'Loading the playable training runtime on demand…'}</span>
+              </div>
+            )}
+          </div>
+          <p className="vr-bridge-help">
+            Controls: arrows/{controlBindings.moveLeft}+{controlBindings.moveRight} move, {controlBindings.jump}/up jump,
+            {controlBindings.crouch}/down crouch, {controlBindings.fire} shoot, {controlBindings.cqc} CQC,
+            {controlBindings.chaff} chaff, {controlBindings.ration} ration, {controlBindings.confirm} evaluate,
+            {controlBindings.cancel} abort. Standard gamepad is supported.
+          </p>
         </Panel>
 
         <Panel title="Live VR Run / Training Board">
