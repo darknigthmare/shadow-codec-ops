@@ -1,4 +1,12 @@
-# Shadow Codec Ops — v3.0.0
+# Shadow Codec Ops - v3.2.0
+
+## MGS1-D and complete MGS2 Codec layer
+
+Version 3.2 closes the MGS1 reference implementation with an executable final audit and brings MGS2 to the same structured standard. The Tanker, Plant, bomb-disposal, Shell 1 and Arsenal contexts now expose seven complete personnel/system dossiers, contextual incoming calls, identity transitions, zones, equipment, timeline events, portrait states and 43 bilingual lore-grounded conversations.
+
+See `MGS1_CODEC_PASS_D_REPORT.md` and `MGS2_COMPLETE_CODEC_REPORT.md`.
+
+## Previous release - v3.0.0
 
 ## MGS1 Codec Pass B — Complete
 

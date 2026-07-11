@@ -319,4 +319,17 @@ Next MGS1 pass: encyclopedic biographies, relationship graph, complete item/area
 - Narrative timeline
 - Portrait/expression variants
 
-Next: MGS1-D final polish and dedicated MGS1 QA.
+MGS1-D final polish and dedicated QA are complete in v3.2.
+
+## Completed - MGS2 Complete Codec Layer (v3.2)
+
+- seven principal Tanker/Plant contacts
+- five mission contexts from Tanker to Arsenal Gear
+- contextual incoming-call schedule
+- personnel and system dossier UI
+- identity transitions for Pliskin, Colonel and Mr. X
+- zone, equipment, timeline and portrait catalogues
+- 43 bilingual lore-grounded MGS2 conversations
+- automated coverage and data-integrity tests
+
+Next franchise priority: apply the same dossier and contextual-call standard to MGS3.
