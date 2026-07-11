@@ -65,8 +65,7 @@ button {
 }
 
 .layout-shell {
-  display: grid;
-  grid-template-columns: 280px 1fr;
+  display: block;
   height: 100vh;
   padding: 18px;
   gap: 18px;
@@ -75,6 +74,7 @@ button {
 }
 
 .main-content {
+  height: 100%;
   min-width: 0;
   overflow: auto;
   padding-right: 4px;
@@ -98,10 +98,63 @@ button {
 }
 
 .side-nav {
+  position: fixed;
+  z-index: 5100;
+  top: 18px;
+  bottom: 18px;
+  left: 18px;
+  width: min(320px, calc(100vw - 36px));
   display: flex;
   flex-direction: column;
   gap: 18px;
   overflow: hidden;
+  transform: translateX(calc(-100% - 32px));
+  visibility: hidden;
+  transition: transform 180ms ease, visibility 180ms linear;
+}
+
+.navigation-open .side-nav {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.main-drawer-handle {
+  position: fixed;
+  z-index: 5200;
+  top: 50%;
+  left: 0;
+  width: 42px;
+  height: 68px;
+  padding: 0;
+  border: 1px solid var(--line-strong);
+  border-left: 0;
+  border-radius: 0 8px 8px 0;
+  background: rgba(2, 14, 7, 0.96);
+  color: var(--primary);
+  transform: translateY(-50%);
+  box-shadow: var(--shadow-glow);
+}
+
+.main-drawer-handle > span {
+  display: grid;
+  gap: 5px;
+  width: 18px;
+  margin: auto;
+}
+
+.main-drawer-handle i {
+  display: block;
+  height: 2px;
+  background: currentColor;
+}
+
+.drawer-backdrop {
+  position: fixed;
+  z-index: 5000;
+  inset: 0;
+  border: 0;
+  background: rgba(0, 0, 0, 0.58);
+  backdrop-filter: blur(2px);
 }
 
 .brand-block h1 {
@@ -294,10 +347,17 @@ input[type="number"],
 
 @media (max-width: 980px) {
   body { overflow: auto; }
-  .layout-shell { grid-template-columns: 1fr; height: auto; }
+  .layout-shell { height: 100dvh; }
   .screen-grid,
   .settings-grid { grid-template-columns: 1fr; }
-  .side-nav nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .side-nav,
+  .side-panel {
+    transition: none;
+    animation: none;
+  }
 }
 
 .theme-active-card {

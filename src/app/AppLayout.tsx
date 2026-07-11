@@ -1,4 +1,4 @@
-import { useEffect, useRef, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import type { UserSettings } from '../types/theme.types';
 import { APP_VERSION } from './version';
 
@@ -29,21 +29,47 @@ interface AppLayoutProps {
 
 export function AppLayout({ route, onRouteChange, onPrefetchRoute, settings, children }: AppLayoutProps) {
   const mainRef = useRef<HTMLElement>(null);
+  const [navigationOpen, setNavigationOpen] = useState(route === 'home');
   const activeItem = navItems.find((item) => item.route === route) ?? navItems[0];
 
   useEffect(() => {
     mainRef.current?.focus({ preventScroll: true });
   }, [route]);
 
+  useEffect(() => {
+    if (!navigationOpen) return;
+    const closeDrawer = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setNavigationOpen(false);
+    };
+    window.addEventListener('keydown', closeDrawer);
+    return () => window.removeEventListener('keydown', closeDrawer);
+  }, [navigationOpen]);
+
+  const selectRoute = (nextRoute: AppRoute) => {
+    onRouteChange(nextRoute);
+    setNavigationOpen(false);
+  };
+
   return (
-    <div className="layout-shell" data-route={route}>
+    <div className={`layout-shell ${navigationOpen ? 'navigation-open' : ''}`} data-route={route}>
       <a className="skip-link" href="#main-content">Skip to active module</a>
       {settings.screenReaderAnnouncements && (
         <div className="sr-only" aria-live="polite" aria-atomic="true">
           {activeItem.description} loaded.
         </div>
       )}
-      <aside className="side-nav panel" aria-label="Application navigation">
+      <button
+        className="main-drawer-handle"
+        type="button"
+        aria-label={navigationOpen ? 'Close main menu' : 'Open main menu'}
+        aria-expanded={navigationOpen}
+        aria-controls="main-navigation-drawer"
+        onClick={() => setNavigationOpen((open) => !open)}
+      >
+        <span aria-hidden="true"><i /><i /><i /></span>
+      </button>
+      {navigationOpen && <button className="drawer-backdrop" type="button" aria-label="Close main menu" onClick={() => setNavigationOpen(false)} />}
+      <aside id="main-navigation-drawer" className="side-nav panel" aria-label="Application navigation" aria-hidden={!navigationOpen}>
         <div className="brand-block">
           <span className="brand-kicker">TACTICAL COMMUNICATION</span>
           <h1>SHADOW CODEC OPS</h1>
@@ -54,7 +80,7 @@ export function AppLayout({ route, onRouteChange, onPrefetchRoute, settings, chi
             <button
               key={item.route}
               className={`nav-button ${route === item.route ? 'active' : ''}`}
-              onClick={() => onRouteChange(item.route)}
+              onClick={() => selectRoute(item.route)}
               onMouseEnter={() => onPrefetchRoute?.(item.route)}
               onFocus={() => onPrefetchRoute?.(item.route)}
               type="button"

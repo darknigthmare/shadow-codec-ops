@@ -1,4 +1,12 @@
-# Shadow Codec Ops - v3.3.0
+# Shadow Codec Ops - v3.4.0
+
+## Retractable command drawers and first character portrait pack
+
+Version 3.4 replaces the permanent left navigation and Codec utility column with overlay drawers that stay closed while a module is in use. Both drawers support backdrop dismissal, keyboard dismissal and compact mobile safe-area placement.
+
+The first character-specific MGS1 portrait pack adds Solid Snake and Roy Campbell with six automatically selected emotional states: neutral, serious, warning, calm, humor and glitch. The generated portraits contain no text or UI decoration and remain overrideable by local Voice Packs.
+
+See `CODEC_DRAWERS_AND_AVATARS_REPORT.md`.
 
 ## Complete MGS3 Survival Radio
 

@@ -14,7 +14,11 @@ export default defineConfig({
         'pwa-64x64.png',
         'pwa-192x192.png',
         'pwa-512x512.png',
-        'pwa-maskable-512x512.png'
+        'pwa-maskable-512x512.png',
+        ...['neutral', 'serious', 'warning', 'calm', 'humor', 'glitch'].flatMap((expression) => [
+          `portraits/mgs1/solid_snake/${expression}.webp`,
+          `portraits/mgs1/campbell/${expression}.webp`
+        ])
       ],
       manifest: {
         id: '/',
@@ -45,7 +49,7 @@ export default defineConfig({
         ]
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,json,png,svg,ico,woff2}'],
+        globPatterns: ['**/*.{js,css,html,json,png,webp,svg,ico,woff2}'],
         navigateFallback: 'index.html',
         cleanupOutdatedCaches: true,
         clientsClaim: true,

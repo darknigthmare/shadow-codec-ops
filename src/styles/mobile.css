@@ -244,8 +244,6 @@ body {
 
   .layout-shell {
     height: 100dvh;
-    grid-template-rows: auto minmax(0, 1fr);
-    gap: 10px;
     padding-top: max(8px, var(--safe-top));
     padding-right: max(8px, var(--safe-right));
     padding-bottom: max(8px, var(--safe-bottom));
@@ -253,9 +251,13 @@ body {
   }
 
   .side-nav {
+    top: max(8px, var(--safe-top));
+    bottom: max(8px, var(--safe-bottom));
+    left: max(8px, var(--safe-left));
+    width: min(320px, calc(100vw - var(--safe-left) - var(--safe-right) - 16px));
     padding: 10px;
     gap: 10px;
-    overflow: visible;
+    overflow: hidden;
   }
 
   .brand-block {

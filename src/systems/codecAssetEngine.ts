@@ -22,6 +22,21 @@ export function getBuiltInPortrait(era: EraId, side: 'player' | 'contact'): stri
   return getCodecAssetPack(era).builtInPortraits[side];
 }
 
+const characterPortraitSets: Record<string, string> = {
+  solid_snake_mgs1: '/portraits/mgs1/solid_snake',
+  campbell_mgs1: '/portraits/mgs1/campbell'
+};
+
+export function getCharacterPortrait(characterId: string | undefined, expression = 'neutral'): string | undefined {
+  if (!characterId) return undefined;
+  const basePath = characterPortraitSets[characterId];
+  if (!basePath) return undefined;
+  const supportedExpression = getCodecAssetPack('mgs1').expressionSupport.includes(expression)
+    ? expression
+    : 'neutral';
+  return `${basePath}/${supportedExpression}.webp`;
+}
+
 const cueMap: Record<string, Record<CodecUiCue, [number, number, OscillatorType]>> = {
   '8bit': { tune:[520,30,'square'],connect:[880,90,'square'],disconnect:[240,90,'square'],incoming:[760,120,'square'],no_response:[120,180,'square'],confirm:[980,45,'square'],error:[150,140,'square'],memory:[660,50,'square'] },
   codec: { tune:[640,35,'square'],connect:[900,80,'square'],disconnect:[360,75,'square'],incoming:[860,100,'square'],no_response:[180,160,'square'],confirm:[1040,45,'square'],error:[170,150,'sawtooth'],memory:[720,55,'square'] },

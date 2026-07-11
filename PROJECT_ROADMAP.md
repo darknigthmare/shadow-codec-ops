@@ -344,3 +344,14 @@ MGS3 now uses the same dossier and contextual-call standard in v3.3.
 - automated coverage tests
 
 Next franchise priority: Peace Walker/MSF briefing and support network.
+
+## Completed - Retractable Drawers & MGS1 Avatar Pack 01 (v3.4)
+
+- main navigation converted to a closed-by-default left drawer after module selection
+- Codec tools, dossiers and status converted to a closed-by-default right drawer
+- backdrop, Escape key and accessible expanded-state handling
+- full-width active modules on desktop and mobile
+- Solid Snake and Roy Campbell character-specific portraits
+- six emotional states per character, resolved automatically by the Codec runtime
+
+Next avatar priority: complete the remaining MGS1 contacts before producing era-specific packs for MGS2 and MGS3.

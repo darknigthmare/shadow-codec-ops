@@ -37,7 +37,7 @@ import { formatFrequency, getPreferredContactFrequency, normalizeFrequency, scan
 import { loadJson, saveJson } from '../../systems/saveEngine';
 import { loadCustomConversations, mergeStudioConversations } from '../../systems/studioStorage';
 import { playBeep } from '../../systems/audioEngine';
-import { getBuiltInPortrait, playCodecUiCue, startCodecAmbience, stopCodecAmbience } from '../../systems/codecAssetEngine';
+import { getBuiltInPortrait, getCharacterPortrait, playCodecUiCue, startCodecAmbience, stopCodecAmbience } from '../../systems/codecAssetEngine';
 import { getAudioProfileForEra, playNarrativeAudioSource, playNarrativeVoiceCue, startNarrativeNoise, stopNarrativeNoise } from '../../systems/narrativeAudioEngine';
 import { resolveLocalizedText } from '../../systems/localizationEngine';
 import { consumeCampaignLaunchDirective, recordCampaignCodecCall } from '../../systems/campaignStorage';
@@ -89,7 +89,7 @@ const eras = erasJson as EraDefinition[];
 const themePacks = themesJson as ThemePackDefinition[];
 const radioSignals = radioSignalsJson as RadioSignalDefinition[];
 
-type SidePanel = 'memory' | 'history' | 'router' | 'save' | 'scan' | 'replay' | 'mgs1_dossier' | 'mgs2_dossier' | 'mgs3_dossier' | null;
+type SidePanel = 'status' | 'memory' | 'history' | 'router' | 'save' | 'scan' | 'replay' | 'mgs1_dossier' | 'mgs2_dossier' | 'mgs3_dossier' | null;
 
 interface StoredCodecContextState {
   contextId: string;
@@ -361,10 +361,15 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
   const resolvedVoiceAsset = activeCall && settings.voicePackEnabled
     ? resolveVoiceAsset(activeCall.conversation.id, lineIndex, activeCall.contact.era, voicePackState)
     : undefined;
+  const routedPortraitContactId = activeCall?.contact.id ?? selectedContact?.id;
   const contactPortraitImage = (activeCall && settings.voicePackEnabled
     ? resolvePortraitAsset(activeCall.contact.id, portraitExpression, activeCall.contact.era, voicePackState)
-    : undefined) ?? (settings.builtInPortraitsEnabled ? getBuiltInPortrait(selectedEra, 'contact') : undefined);
-  const playerPortraitImage = settings.builtInPortraitsEnabled ? getBuiltInPortrait(selectedEra, 'player') : undefined;
+    : undefined) ?? (settings.builtInPortraitsEnabled
+      ? getCharacterPortrait(routedPortraitContactId, portraitExpression) ?? getBuiltInPortrait(selectedEra, 'contact')
+      : undefined);
+  const playerPortraitImage = settings.builtInPortraitsEnabled
+    ? getCharacterPortrait(selectedPlayer?.id, playerSpeaking ? portraitExpression : 'neutral') ?? getBuiltInPortrait(selectedEra, 'player')
+    : undefined;
   const displayContact = activeCall?.contact ?? selectedContact ?? (!scan.ambiguous ? scan.contact : undefined);
   const displayContactSources = getContactSources(displayContact, canonSources);
   const currentCanonCoverage = canonCoverage.find((entry) => entry.era === selectedEra);
@@ -375,6 +380,15 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
   const mgs2Coverage = useMemo(() => selectedEra === 'mgs2' ? getMgs2Coverage(conversations) : null, [selectedEra, conversations]);
   const mgs3Profile = selectedEra === 'mgs3' ? getMgs3Profile(displayContact?.id) : undefined;
   const mgs3Coverage = useMemo(() => selectedEra === 'mgs3' ? getMgs3Coverage(conversations) : null, [selectedEra, conversations]);
+
+  useEffect(() => {
+    if (!sidePanel) return;
+    const closeDrawer = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setSidePanel(null);
+    };
+    window.addEventListener('keydown', closeDrawer);
+    return () => window.removeEventListener('keydown', closeDrawer);
+  }, [sidePanel]);
   const missedCallCount = callHistory.filter((entry) => entry.disposition === 'missed' || entry.disposition === 'ignored').length;
 
   useEffect(() => {
@@ -1047,6 +1061,16 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
     <div ref={codecCaptureRef} className={`codec-capture-root ${streamOverlay ? 'codec-stream-overlay' : ''} ${recording ? 'codec-is-recording' : ''}`}>
     {streamOverlay && <button type="button" data-capture-exclude="true" className="codec-overlay-exit" onClick={() => setStreamOverlay(false)}>EXIT STREAM OVERLAY</button>}
     <section className={`codec-page codec-skin-${settings.selectedTheme}`}>
+      <button
+        type="button"
+        className="codec-drawer-handle"
+        aria-label={sidePanel ? 'Close Codec tools drawer' : 'Open Codec tools drawer'}
+        aria-expanded={Boolean(sidePanel)}
+        onClick={() => setSidePanel((panel) => panel ? null : 'status')}
+      >
+        <span aria-hidden="true">{sidePanel ? '›' : '‹'}</span>
+      </button>
+      {sidePanel && <button type="button" className="codec-drawer-backdrop" aria-label="Close Codec tools drawer" onClick={() => setSidePanel(null)} />}
       <Panel className="codec-main-panel">
         <div className="codec-topbar">
           <StatusBadge label={message} tone={getToneForState(codecState, scan.status)} />
@@ -1252,7 +1276,7 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
         </Panel>
       )}
 
-      {!sidePanel && (
+      {sidePanel === 'status' && (
         <Panel title="Context & Channel Status" className="side-panel visual-pack-panel">
           <StatusBadge label={currentTheme.mood} tone="success" />
           <h3>{currentTheme.name}</h3>
