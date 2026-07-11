@@ -21,7 +21,7 @@ export function HomeScreen({ onRouteChange, settings }: HomeScreenProps) {
         <h2>Shadow Codec Ops</h2>
         <p>
           Simulateur Codec tactique + prototype Side Ops 2D. La base actuelle pose le terminal,
-          les fréquences, les contacts, les appels, plusieurs missions side-scroller jouables, un Studio de conversations,
+          les fréquences partagées, les contextes de mission, les contacts conditionnels, les appels entrants gérés, plusieurs missions side-scroller jouables, un Studio de conversations,
           un Mission Builder avec export de packs JSON, un Campaign Builder avec embranchements et fins alternatives, une couche Campaign Ops interconnectée, plusieurs packs visuels Codec, un vrai Tape Archive / iDroid Deck,
           des VR Missions locales, une Lore Database reliée aux modules et un Codec Director à embranchements réutilisable.
         </p>
@@ -61,7 +61,7 @@ export function HomeScreen({ onRouteChange, settings }: HomeScreenProps) {
         <div className="module-list">
           <StatusBadge label="CAMPAIGN OPS ONLINE" tone="success" />
           <StatusBadge label="CAMPAIGN BUILDER ONLINE" tone="success" />
-          <StatusBadge label="CODEC SIMULATOR ONLINE" tone="success" />
+          <StatusBadge label="CODEC CORE FIDELITY ONLINE" tone="success" />
           <StatusBadge label="CODEC DIRECTOR ONLINE" tone="success" />
           <StatusBadge label="SIDE OPS ALERT CORE READY" tone="warning" />
           <StatusBadge label="VISUAL PACKS ONLINE" tone="success" />

@@ -28,7 +28,7 @@ describe('save migrations', () => {
     window.localStorage.setItem(getStorageKey('campaign-progress-slot_1'), JSON.stringify({ completedNodeIds: [], schemaVersion: 1 }));
     const report = runSaveMigrations();
     const progress = JSON.parse(window.localStorage.getItem(getStorageKey('campaign-progress-slot_1')) ?? '{}') as Record<string, unknown>;
-    expect(report.toVersion).toBe(10);
+    expect(report.toVersion).toBe(14);
     expect(progress.schemaVersion).toBe(3);
     expect(progress.branchChoices).toEqual({});
     expect(progress.achievedEndingIds).toEqual([]);
@@ -36,6 +36,35 @@ describe('save migrations', () => {
     expect(progress.variables).toEqual({});
     expect(progress.seenPresentationIds).toEqual([]);
     expect(progress.presentationHistory).toEqual([]);
+  });
+
+
+  it('normalizes legacy Codec call history for Core Fidelity', () => {
+    window.localStorage.setItem(getStorageKey('save-schema-version'), JSON.stringify(10));
+    window.localStorage.setItem(getStorageKey('call-history'), JSON.stringify([{ callId: 'old', completed: false }]));
+    const report = runSaveMigrations();
+    const history = JSON.parse(window.localStorage.getItem(getStorageKey('call-history')) ?? '[]') as Array<Record<string, unknown>>;
+    expect(report.toVersion).toBe(14);
+    expect(history[0].disposition).toBe('aborted');
+  });
+
+
+  it('initializes persistent radio intelligence state', () => {
+    window.localStorage.setItem(getStorageKey('save-schema-version'), JSON.stringify(11));
+    const report = runSaveMigrations();
+    const radioState = JSON.parse(window.localStorage.getItem(getStorageKey('radio-intelligence-state')) ?? '{}') as Record<string, unknown>;
+    expect(report.toVersion).toBe(14);
+    expect(radioState.schemaVersion).toBe(1);
+    expect(radioState.discoveries).toEqual({});
+    expect(radioState.scanCount).toBe(0);
+  });
+
+
+  it('initializes replay library and stream overlay migration', () => {
+    const report = runSaveMigrations();
+    const replayLibrary = JSON.parse(window.localStorage.getItem(getStorageKey('codec-replay-library')) ?? 'null');
+    expect(report.toVersion).toBe(14);
+    expect(replayLibrary).toEqual({ schemaVersion: 1, records: [], autoArchive: true });
   });
 
 });

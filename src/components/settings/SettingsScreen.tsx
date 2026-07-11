@@ -20,6 +20,8 @@ import { StatusBadge } from '../common/StatusBadge';
 import { ControlBindingEditor } from './ControlBindingEditor';
 import { PwaSettingsPanel } from './PwaSettingsPanel';
 import { VoicePackManager } from './VoicePackManager';
+import { CodecAssetManager } from './CodecAssetManager';
+import '../../styles/codec-assets.css';
 
 const themePacks = themesJson as ThemePackDefinition[];
 
@@ -221,6 +223,8 @@ export function SettingsScreen({ settings, onSettingsChange }: SettingsScreenPro
         </label>
         <p className="desktop-note">Conversation files accept localized EN/FR/JA text, timecodes, optional local audio sources and portrait expressions.</p>
       </Panel>
+
+      <CodecAssetManager settings={settings} onSettingsChange={onSettingsChange} />
 
       <VoicePackManager />
 

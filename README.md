@@ -1,21 +1,70 @@
+# Shadow Codec Ops — v3.0.0
+
+## MGS1 Codec Pass B — Complete
+
+Version 3.0 expands the Shadow Moses Codec library to 137 bilingual, original lore-grounded conversations. It adds twenty rotating Mei Ling proverbs, detailed Nastasha weapon files, boss intelligence for every major encounter, medical and technical support variants, field reports, Deepthroat warnings, and one persistent automatic incoming call for each of the ten MGS1 chapter contexts.
+
+The scheduled calls are queued through the same ACCEPT / IGNORE / MISSED CALL system as the rest of the Codec and are stored locally so one-shot chapter calls do not repeat.
+
+## MGS1 Codec Pass A — Personnel Architecture
+
+The MGS1 Codec now includes eight structured personnel files, ten Shadow Moses contexts, sixty MGS1 conversations, chapter-aware topics, discovery progress and identity transitions for Miller/Liquid and Deepthroat/Gray Fox. See `MGS1_CODEC_PASS_A_REPORT.md`.
+
 # Shadow Codec Ops
 
 Base de projet privée pour un **simulateur Codec tactique** avec une campagne interconnectée, un module **Side Ops 2D** old-school, un deck **Tape Archive / iDroid**, des **VR Missions** et des outils de création locaux.
 
-## Passe 23 — Codec Director Mode
+## Passe Codec 4 — Radio Scan & Signal Intelligence
 
-- timeline narrative avec nœuds dialogue, choix, interruption, événement, délai, saut et fin ;
-- runtime plein écran partagé avec pile d'interruptions imbriquées ;
-- variables locales, conditions, effets et historique des choix ;
-- bus d'événements réutilisé par Codec, Campaign Ops et Side Ops ;
-- caméra narrative : push-in, pull-back, shake, focus et glitch cut ;
-- éditeur visuel avec validation, playtest, import/export JSON et journal runtime ;
-- conversion d'une conversation Studio vers une séquence Director ;
-- sauvegarde locale des séquences, événements et outcomes.
+- spectre radio interactif avec vue globale par époque ou zoom local ;
+- balayage manuel, recherche du pic précédent/suivant et auto-sweep ;
+- 24 signaux contextuels : interceptions, contacts secrets, numbers stations, paquets chiffrés, anomalies et leurres ;
+- signaux intermittents et porteuses à dérive temporelle ;
+- verrouillage fondé sur la puissance réelle du signal et la distance à la fréquence centrale ;
+- quatre familles de puzzles : codeword, séquence de fréquences, checksum et clé de contexte ;
+- journal persistant des découvertes, déchiffrements, tentatives, notes et points Intel ;
+- déblocage automatique de contacts/conversations après interception ou décodage ;
+- export JSON du dossier Signal Intelligence ;
+- séparation stricte entre fréquences canoniques documentées et transmissions de simulation lore-compatible.
+
+## Passe Codec 3 — Canon Data Expansion
+
+- 55 contacts répartis par jeu, chapitre et contexte ;
+- 32 contextes de mission et 55 règles de disponibilité ;
+- 102 conversations bilingues originales et lore-compatible ;
+- registre de sources distinguant manuels officiels, références en jeu et design de simulation ;
+- variantes de fréquence par contexte et sujet, dont les canaux de sauvegarde ;
+- contacts Peace Walker/MSF, MGS4 et MGSV enrichis sans présenter les routes modernes comme fréquences officielles ;
+- dossier canon visible par contact avec jeu, année, rôle, alias, canaux et sources ;
+- matrice de couverture par époque avec lacunes restantes ;
+- tests d'intégrité entre contacts, contextes, règles, conversations, sources et couverture.
+
+## Passe Codec 2 — Visual Identity
+
+- neuf profils visuels data-driven, un par époque Codec ;
+- sept compositions réellement distinctes pour MSX, MGS1, MGS2, MGS3, MGS4, Peace Walker et MGSV ;
+- terminal texte MSX, twin Codec MGS1, HUD numérique MGS2 et radio analogique MGS3 ;
+- appel vidéo cinématique MGS4, dossier MSF Peace Walker et iDroid holographique MGSV ;
+- présentations VR et Patriots conservées comme layouts spécialisés ;
+- libellés CALL/MEMORY/HISTORY/DATA propres à chaque époque ;
+- animations d'appel entrant et panneaux mémoire/sauvegarde adaptés à l'appareil ;
+- pack Peace Walker/MSF dédié, indépendant du thème MGSV ;
+- responsive mobile et respect de la réduction des mouvements.
+
+## Passe Codec 1 — Core Fidelity
+
+- contextes de jeu, chapitre, mission et personnage jouable ;
+- disponibilité réelle des contacts selon le contexte et la mémoire ;
+- résolution explicite des fréquences partagées ;
+- menu de sujets par contact et rotation des conversations déjà entendues ;
+- appels entrants avec priorité, file d'attente, acceptation, refus et appels manqués ;
+- historique enrichi avec rappel préparé ;
+- trois slots de sauvegarde Codec locale ;
+- authoring des sujets et restrictions de contexte dans Conversation Studio.
 
 ## Version actuelle
 
-`2.2.0` — Passe 23 : **Codec Director Mode**.
+`2.6.0` — **Passe Codec 4 : Radio Scan & Signal Intelligence**.
 
 ## Contenu actuel
 
@@ -23,7 +72,7 @@ Base de projet privée pour un **simulateur Codec tactique** avec une campagne i
 - Structure prête pour Tauri Desktop
 - PWA installable et utilisable hors ligne après le premier chargement
 - HUD tactile rétractable partagé par Side Ops et VR
-- Codec Simulator V1 jouable : fréquence, CALL, MEMORY, conversations, historique
+- Codec Core Fidelity : contextes de mission, profils joueur, fréquences partagées, routage, sujets, CALL entrants, MEMORY, appels manqués et sauvegardes
 - **Codec Director Mode** : timeline à embranchements, choix, interruptions, événements, variables, camera cues et séquences cross-module
 - **Packs visuels sélectionnables** :
   - MSX Military Radio
@@ -31,13 +80,15 @@ Base de projet privée pour un **simulateur Codec tactique** avec une campagne i
   - MGS2 Digital Codec
   - MGS3 Survival Radio
   - MGS4 Modern Codec
+  - Peace Walker MSF Briefing Files
   - MGSV iDroid / Cassette Deck
   - VR Training Grid
   - Patriots AI Corruption
 - Galerie de thèmes dans Settings avec description, layout, humeur et effets
 - Sélecteur d’époque + sélecteur de skin directement dans l’écran Codec
 - Panneau **Visual Pack Status** avec description de l’era, contacts connus, contacts mémoire et effets actifs
-- Contacts/conversations de base ajoutés pour MSX/MG2, MGS2, MGS3, MGS4 simulation, MGSV simulation, VR et Patriots AI
+- Base canonique étendue : 55 contacts, 32 contextes, 55 règles de disponibilité, 102 conversations et 13 sources enregistrées
+- **Signal Intelligence** : spectre interactif, auto-sweep, pics de porteuse, interceptions, chiffrement, dérive de fréquence et journal Intel persistant
 - Signal meter visuel + gestion signal stable/faible/corrompu
 - Labels speakers améliorés pour contacts multi-époques
 - **Tape Archive / iDroid Deck** complet : bibliothèque, cassettes, waveform CSS, lecture simulée, transcriptions, favoris, notes et progression locale
@@ -518,6 +569,92 @@ Nœuds disponibles :
 - `jump` : saut vers un autre nœud ;
 - `end` : outcome et archivage du run.
 
-Les séquences custom utilisent la clé `director-custom-sequences`. Les événements et résultats sont conservés dans `director-event-log` et `director-outcomes`. Le schéma global de sauvegarde est en version 10.
+Les séquences custom utilisent la clé `director-custom-sequences`. Les événements et résultats sont conservés dans `director-event-log` et `director-outcomes`. Le schéma global de sauvegarde est en version 12.
 
 Le rapport détaillé se trouve dans `DIRECTOR_MODE_REPORT.md`.
+
+
+## Passe Codec 1 — Core Fidelity — COMPLETE (v2.3.0)
+
+- 17 contextes Codec couvrant les principales ères déjà intégrées ;
+- profils de joueur dépendants du chapitre et de la mission ;
+- 26 règles de disponibilité de contact entièrement pilotées par les données ;
+- contacts disponibles, verrouillés, entrants uniquement, brouillés, morts ou inconnus ;
+- déblocage par contexte, drapeau de mission ou mémoire Codec ;
+- résolution des fréquences partagées sans sélection silencieuse du premier contact ;
+- routeur de canal pour choisir Campbell ou Naomi sur 140.85 ;
+- sujets d'appel, descriptions et rotation vers les conversations les moins entendues ;
+- appels entrants routine/priorité/urgence avec délai d'expiration ;
+- Accept, Ignore, Required Call, Missed Call et file d'attente persistante ;
+- événements externes `shadow-codec:incoming-call` pour les autres modules ;
+- historique avec dispositions completed/aborted/ignored/missed/failed et rappel ;
+- trois slots locaux de sauvegarde/restauration du contexte Codec ;
+- Conversation Studio compatible sujets, libellés et restrictions de contexte ;
+- migration du schéma global vers la version 11 ;
+- 75 tests automatisés et build/PWA validés.
+
+La Passe 24 Director Timeline Advanced reste volontairement mise de côté. La priorité suivante est **Passe Codec 5 — Content & Assets**, afin de compléter portraits, expressions, sons d’interface, ambiances radio, conversations contextuelles et packs visuels/audio par époque.
+
+
+## Passe Codec 2 — Visual Identity — COMPLETE (v2.4.0)
+
+- profils visuels centralisés dans `codecVisualIdentity.ts` ;
+- composant `CodecVisualStage` avec neuf layouts ;
+- terminal MSX entièrement textuel et pixelisé ;
+- Codec MGS1 à doubles portraits et fréquence centrale ;
+- Codec MGS2 sous forme de HUD numérique bleu et panneaux biseautés ;
+- radio MGS3 avec boîtier, écran LCD, jauges, molettes et tuner analogique ;
+- Codec MGS4 en appel vidéo large avec sidebar tactique et lower-third ;
+- interface Peace Walker sous forme de dossier MSF papier avec onglets et fiches personnel ;
+- iDroid MGSV avec navigation latérale, waveform, carte Intel et dock de commandes ;
+- layouts VR et Patriots dédiés ;
+- CALL, historique, mémoire et sauvegarde renommés selon l’époque ;
+- overlays d’appels entrants et panneaux latéraux adaptés à chaque identité ;
+- animations par état Codec avec fallback reduced-motion ;
+- pack `peace_walker_msf` ajouté aux thèmes ;
+- 79 tests automatisés et build/PWA validés.
+
+
+## Passe Codec 3 — Canon Data Expansion — COMPLETE (v2.5.0)
+
+- [x] 55 contacts répartis entre MSX/MG2, MGS1, MGS2, MGS3, MGS4, Peace Walker, MGSV, VR et Patriots.
+- [x] 32 contextes de jeu/chapitre/mission.
+- [x] 55 règles de disponibilité contextuelle.
+- [x] 102 conversations bilingues originales marquées comme simulation lore-compatible.
+- [x] Registre de 13 sources et provenance par contact/conversation.
+- [x] 56 variantes de canal, dont 30 variantes numériques canoniques.
+- [x] Fréquences alternatives par contexte et sujet.
+- [x] Canaux réseau/MSF/iDroid explicitement séparés des fréquences officielles.
+- [x] Canon Data Dossier visible dans le Codec.
+- [x] Canon Coverage Matrix synchronisée avec les données réelles.
+- [x] 86 tests automatisés et build/PWA validés.
+
+## Passe Codec 4 — Radio Scan & Signal Intelligence — COMPLETE (v2.6.0)
+
+- [x] Spectre radio SVG interactif avec vue par époque et zoom local.
+- [x] Clic sur le spectre, pas fin, recherche des pics et balayage automatique.
+- [x] 24 signaux contextuels répartis sur MSX, MGS1, MGS2, MGS3, MGS4, Peace Walker, MGSV, VR et Patriots.
+- [x] Contacts connus, contacts classifiés, interceptions, numbers stations, paquets chiffrés, anomalies et leurres.
+- [x] Émissions intermittentes et fréquences à dérive temporelle.
+- [x] Verrouillage avec seuil de puissance de 72 %.
+- [x] Puzzles codeword, séquence de fréquences, checksum et clé contextuelle.
+- [x] Journal persistant des découvertes, notes, tentatives, Intel et déchiffrements.
+- [x] Récompenses avec points Intel, badges, contacts et conversations.
+- [x] Export JSON du dossier Signal Intelligence.
+- [x] Migration globale vers le schéma 12.
+- [x] 98 tests automatisés et build/PWA validés.
+
+
+
+## v2.7 Codec Content & Assets
+
+Adds original built-in simulation portraits, era-specific procedural UI cues, connected ambience, an asset readiness deck and additional bilingual context calls. Local Voice Packs still override all built-in placeholders.
+
+
+## v3.1 — MGS1-C Encyclopedia
+
+- 15 Shadow Moses zone files
+- 24 weapon/item/equipment files
+- visual relationship network
+- 11-stage narrative timeline
+- portrait/expression and story-variant catalogue for all 8 principal contacts

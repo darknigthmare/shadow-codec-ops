@@ -197,3 +197,31 @@
   50% { filter: contrast(1.4) saturate(1.8); transform: translateX(1px); }
   52% { filter: contrast(1.1) saturate(1.2); transform: translateX(-1px); }
 }
+
+.theme-peace_walker_msf {
+  --primary: #44513b;
+  --primary-soft: #1f291d;
+  --bg: #a69b72;
+  --bg-deep: #59523b;
+  --panel: rgba(218, 208, 169, 0.93);
+  --panel-strong: rgba(235, 226, 190, 0.97);
+  --line: rgba(54, 67, 47, 0.46);
+  --line-strong: rgba(42, 57, 37, 0.88);
+  --muted: #63705a;
+  --warning: #9a4c32;
+  --danger: #a4342c;
+  --text: #1f281c;
+  --shadow-glow: 0 4px 16px rgba(42, 48, 30, 0.22);
+}
+
+.theme-peace_walker_msf .app-shell {
+  background:
+    linear-gradient(90deg, rgba(60, 68, 48, 0.06) 1px, transparent 1px),
+    linear-gradient(rgba(60, 68, 48, 0.04) 1px, transparent 1px),
+    linear-gradient(145deg, #6f684c, #a69b72 42%, #c5b98d);
+  background-size: 26px 26px, 26px 26px, auto;
+}
+
+.theme-peace_walker_msf .panel {
+  backdrop-filter: none;
+}

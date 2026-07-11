@@ -13,6 +13,28 @@ const DEFAULT_LINE: Record<string, unknown> = {
   glitchLevel: 0
 };
 
+
+function getDefaultSubjectForContact(contact: ContactDefinition): string {
+  const subjects: Record<ContactDefinition['role'], string> = {
+    mission_commander: 'mission',
+    save_contact: 'save',
+    technical_support: 'technology',
+    medical_support: 'medical',
+    weapon_specialist: 'weapons',
+    survival_mentor: 'survival',
+    field_contact: 'field',
+    secret_contact: 'warning',
+    ai_anomaly: 'warning',
+    bomb_specialist: 'bombs',
+    operations_officer: 'operations',
+    intelligence_officer: 'intelligence',
+    scientist: 'science',
+    pilot: 'extraction',
+    ai_construct: 'ai'
+  };
+  return subjects[contact.role] ?? 'general';
+}
+
 export function loadCustomConversations(): StudioConversationRecord[] {
   return loadJson<StudioConversationRecord[]>(STUDIO_CUSTOM_CONVERSATIONS_KEY, []);
 }
@@ -48,6 +70,9 @@ export function makeBlankConversation(
     frequency: contact.frequency,
     trigger,
     canReplay: true,
+    subjectId: getDefaultSubjectForContact(contact),
+    topicLabel: 'General Support',
+    topicDescription: 'Custom call subject shown in the Codec topic selector.',
     lines: [
       {
         speaker: contact.codename?.toLowerCase().replace(/\s+/g, '_') ?? contact.id.split('_')[0],
@@ -125,12 +150,25 @@ export function sanitizeImportedConversation(value: unknown, fallbackContact: Co
     frequency: typeof candidate.frequency === 'number' ? candidate.frequency : fallbackContact.frequency,
     trigger: (candidate.trigger as ConversationTrigger) ?? 'manual_call',
     canReplay: candidate.canReplay ?? true,
+    subjectId: typeof candidate.subjectId === 'string' && candidate.subjectId.trim() ? candidate.subjectId.trim() : getDefaultSubjectForContact(fallbackContact),
+    topicLabel: typeof candidate.topicLabel === 'string' ? candidate.topicLabel : undefined,
+    topicDescription: typeof candidate.topicDescription === 'string' ? candidate.topicDescription : undefined,
+    contextIds: Array.isArray(candidate.contextIds) ? candidate.contextIds.filter((value): value is string => typeof value === 'string') : undefined,
+    priority: typeof candidate.priority === 'number' ? candidate.priority : undefined,
     lines: candidate.lines.length > 0
       ? candidate.lines.map((line) => {
         const safeLine = line && typeof line === 'object' ? line as unknown as Record<string, unknown> : DEFAULT_LINE;
+        const localizedText = safeLine.localizedText && typeof safeLine.localizedText === 'object'
+          ? safeLine.localizedText as StudioConversationRecord['lines'][number]['localizedText']
+          : undefined;
         return {
           speaker: typeof safeLine.speaker === 'string' ? safeLine.speaker : 'snake',
           text: typeof safeLine.text === 'string' ? safeLine.text : '...',
+          localizedText,
+          startMs: typeof safeLine.startMs === 'number' ? safeLine.startMs : undefined,
+          endMs: typeof safeLine.endMs === 'number' ? safeLine.endMs : undefined,
+          audioSource: typeof safeLine.audioSource === 'string' ? safeLine.audioSource : undefined,
+          portraitExpression: typeof safeLine.portraitExpression === 'string' ? safeLine.portraitExpression : undefined,
           emotion: typeof safeLine.emotion === 'string' ? safeLine.emotion as StudioConversationRecord['lines'][number]['emotion'] : 'neutral',
           speed: typeof safeLine.speed === 'string' ? safeLine.speed as StudioConversationRecord['lines'][number]['speed'] : 'normal',
           glitchLevel: typeof safeLine.glitchLevel === 'number' ? safeLine.glitchLevel : 0

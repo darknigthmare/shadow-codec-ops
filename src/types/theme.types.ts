@@ -7,6 +7,7 @@ export type ThemeId =
   | 'mgs2_digital'
   | 'mgs3_radio'
   | 'mgs4_modern'
+  | 'peace_walker_msf'
   | 'mgsv_idroid'
   | 'vr_training'
   | 'patriots_glitch';
@@ -42,6 +43,10 @@ export interface UserSettings {
   portraitExpressions: boolean;
   portraitAnimationEnabled: boolean;
   voicePackEnabled: boolean;
+  builtInPortraitsEnabled: boolean;
+  eraUiAudioEnabled: boolean;
+  codecAmbienceEnabled: boolean;
+  codecAmbienceVolume: number;
 }
 
 export interface ThemePackDefinition {
@@ -88,5 +93,9 @@ export const defaultSettings: UserSettings = {
   narrativeAudioVolume: 0.65,
   portraitExpressions: true,
   portraitAnimationEnabled: true,
-  voicePackEnabled: true
+  voicePackEnabled: true,
+  builtInPortraitsEnabled: true,
+  eraUiAudioEnabled: true,
+  codecAmbienceEnabled: true,
+  codecAmbienceVolume: 0.28
 };

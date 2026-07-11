@@ -1,0 +1,213 @@
+.radio-intel-console {
+  display: grid;
+  gap: 14px;
+  color: var(--primary-soft);
+}
+
+.radio-intel-heading,
+.radio-spectrum-toolbar,
+.radio-journal-heading,
+.radio-payload-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.radio-intel-heading span,
+.radio-live-lock > span,
+.radio-payload-card > span,
+.radio-journal-heading span {
+  color: var(--warning);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+}
+
+.radio-intel-heading h3,
+.radio-payload-title h4 {
+  margin: 3px 0 0;
+  color: var(--primary);
+}
+
+.radio-intel-stats {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.radio-intel-stats span {
+  display: grid;
+  min-width: 72px;
+  padding: 7px 9px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.28);
+  color: var(--muted);
+}
+
+.radio-intel-stats strong { color: var(--primary); font-size: 18px; }
+
+.radio-spectrum-toolbar button.active,
+.radio-spectrum-toolbar button.primary,
+.radio-payload-card button.primary {
+  color: #041109;
+  background: var(--primary);
+  border-color: var(--primary);
+  font-weight: 900;
+}
+
+.radio-spectrum-toolbar button.danger { color: #160303; background: var(--danger); border-color: var(--danger); }
+
+.radio-spectrum-shell {
+  position: relative;
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  overflow: hidden;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 9.8%, rgba(124, 255, 107, 0.07) 10%),
+    repeating-linear-gradient(0deg, transparent 0 19.5%, rgba(124, 255, 107, 0.055) 20%),
+    rgba(0, 6, 2, 0.82);
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.72);
+}
+
+.radio-spectrum-readout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 10px 0;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.radio-spectrum-readout strong { color: var(--primary); font-size: 16px; text-shadow: var(--shadow-glow); }
+
+.radio-spectrum {
+  display: block;
+  width: 100%;
+  height: 210px;
+  color: var(--primary);
+  cursor: crosshair;
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--primary), transparent 30%));
+}
+
+.spectrum-marker {
+  stroke: var(--warning);
+  stroke-width: 1.2;
+  stroke-dasharray: 3 2;
+}
+
+.radio-signal-strength {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 24px;
+  padding: 0 10px 8px;
+  position: relative;
+}
+
+.radio-signal-strength::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  right: 100px;
+  height: 5px;
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.radio-signal-strength span {
+  position: relative;
+  z-index: 1;
+  display: block;
+  height: 5px;
+  max-width: calc(100% - 90px);
+  background: linear-gradient(90deg, var(--warning), var(--primary));
+  box-shadow: 0 0 8px var(--primary);
+  transition: width 80ms linear;
+}
+
+.radio-signal-strength strong { color: var(--primary); font-size: 10px; }
+
+.radio-intel-columns {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.65fr) minmax(260px, 1.35fr);
+  gap: 12px;
+}
+
+.radio-live-lock,
+.radio-payload-card,
+.radio-journal {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.32);
+}
+
+.radio-live-lock h4 { margin: 8px 0; color: var(--primary); }
+.radio-live-lock p, .radio-payload-card p { color: var(--muted); line-height: 1.45; }
+.radio-live-lock small { color: var(--warning); }
+.radio-payload-title b { color: var(--warning); font-size: 10px; }
+
+.radio-puzzle {
+  display: grid;
+  gap: 9px;
+  padding: 10px;
+  border: 1px dashed var(--warning);
+  background: rgba(255, 193, 61, 0.04);
+}
+
+.radio-puzzle small { color: var(--muted); }
+.radio-puzzle > div { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+.radio-puzzle-message { display: block; margin: 8px 0; color: var(--warning); }
+.radio-payload-card blockquote {
+  margin: 10px 0;
+  padding: 10px 12px;
+  border-left: 3px solid var(--primary);
+  background: rgba(124, 255, 107, 0.055);
+  color: var(--primary-soft);
+  line-height: 1.55;
+}
+
+.radio-note-field { display: grid; gap: 6px; margin-top: 10px; color: var(--muted); font-size: 10px; letter-spacing: 0.1em; }
+.radio-note-field textarea { min-height: 74px; resize: vertical; }
+
+.radio-journal-heading > div { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.radio-journal-list { display: grid; gap: 7px; margin-top: 10px; }
+.radio-journal-list button {
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  align-items: center;
+  gap: 9px;
+  text-align: left;
+}
+.radio-journal-list button.active { border-color: var(--primary); box-shadow: inset 0 0 14px rgba(124,255,107,0.08); }
+.radio-journal-list span { color: var(--warning); }
+.radio-journal-list small { color: var(--muted); }
+
+.theme-msx_terminal .radio-spectrum-shell,
+.layout-msx .radio-intel-console * { border-radius: 0; }
+.theme-mgs2_digital .radio-spectrum-shell { background-color: rgba(0, 8, 18, 0.88); }
+.theme-mgs3_radio .radio-spectrum-shell { color: #9aa66d; filter: sepia(0.35); }
+.theme-peace_walker_msf .radio-intel-console { color: #3f4931; }
+.theme-mgsv_idroid .radio-spectrum { color: #8ff4ff; }
+.theme-patriots_glitch .radio-spectrum { animation: radio-spectrum-corrupt 900ms steps(2) infinite; }
+
+@keyframes radio-spectrum-corrupt {
+  0%, 100% { transform: translateX(0); filter: none; }
+  35% { transform: translateX(2px); filter: hue-rotate(45deg); }
+  70% { transform: translateX(-1px); filter: contrast(1.4); }
+}
+
+@media (max-width: 760px) {
+  .radio-intel-columns { grid-template-columns: 1fr; }
+  .radio-spectrum { height: 150px; }
+  .radio-journal-list button { grid-template-columns: 68px 1fr; }
+  .radio-journal-list small { grid-column: 2; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-patriots_glitch .radio-spectrum { animation: none; }
+  .radio-signal-strength span { transition: none; }
+}

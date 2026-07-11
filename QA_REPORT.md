@@ -1,26 +1,11 @@
-# QA Report — v2.2
+# QA Report — v3.1.0
 
-The automated suite contains 59 passing tests across 14 files.
+MGS1-C adds and validates:
 
-New Director coverage includes:
+- 15 Shadow Moses zone files
+- 24 item, weapon, equipment and mission-object files
+- 11-event narrative timeline
+- portrait/expression catalogues for 8 principal contacts
+- relationship-network and field-intelligence dossier tabs
 
-- validation of all built-in sequence references;
-- branching choices and variable effects;
-- conditional node skipping without applying blocked effects;
-- preservation of imported node/option conditions and effects;
-- event emission;
-- nested interruption and resume behavior;
-- explicit outcomes;
-- custom library precedence;
-- Conversation Studio conversion;
-- global launch event dispatch;
-- save migration to schema 10.
-
-Commands validated:
-
-```bash
-npm run lint
-npm run test
-npm run build
-npm run pwa:check
-```
+Automated result: 121/121 tests passed.

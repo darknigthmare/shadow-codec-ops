@@ -1,0 +1,813 @@
+[
+  {
+    "id": "oh_resistance_burst",
+    "era": "msx",
+    "label": "Resistance Burst",
+    "codename": "GREEN NEEDLE",
+    "frequency": 120.48,
+    "bandwidth": 0.035,
+    "strength": 0.92,
+    "kind": "secret_contact",
+    "canonStatus": "simulation",
+    "contextIds": [
+      "msx_outer_heaven",
+      "msx_outer_heaven_resistance"
+    ],
+    "contactId": "jennifer_mg1",
+    "conversationId": "mg1_jennifer_inside",
+    "hiddenUntilDiscovered": true,
+    "transcript": {
+      "en": "A short resistance burst repeats a route marker from inside Outer Heaven.",
+      "fr": "Une courte émission de la résistance répète un repère d’itinéraire depuis l’intérieur d’Outer Heaven."
+    },
+    "reward": {
+      "intelPoints": 20,
+      "unlockContactId": "jennifer_mg1",
+      "unlockConversationId": "mg1_jennifer_inside"
+    },
+    "sourceIds": [
+      "in_game_mg1_transceiver",
+      "shadow_codec_simulation_design"
+    ],
+    "notes": "Original lore-grounded signal built around Jennifer's resistance role."
+  },
+  {
+    "id": "zanzibar_numbers_station",
+    "era": "msx",
+    "label": "Zanzibar Numbers Station",
+    "codename": "WHITE JACKAL",
+    "frequency": 140.42,
+    "bandwidth": 0.045,
+    "strength": 0.88,
+    "kind": "numbers_station",
+    "canonStatus": "simulation",
+    "contextIds": [
+      "msx_zanzibar_land"
+    ],
+    "hiddenUntilDiscovered": true,
+    "encrypted": true,
+    "transcript": {
+      "en": "The decoded burst identifies a temporary weapons cache beneath a collapsed service corridor.",
+      "fr": "La rafale décodée identifie une cache d’armes temporaire sous un couloir de service effondré."
+    },
+    "puzzle": {
+      "type": "codeword",
+      "prompt": {
+        "en": "Three operators repeat: FOX / HOUND / ____. Enter the missing unit word.",
+        "fr": "Trois opérateurs répètent : FOX / HOUND / ____. Entrez le mot d’unité manquant."
+      },
+      "hint": {
+        "en": "The answer is the unit name formed by the first two words.",
+        "fr": "La réponse est le nom d’unité formé par les deux premiers mots."
+      },
+      "answer": "FOXHOUND",
+      "attemptsLimit": 5
+    },
+    "reward": {
+      "intelPoints": 35,
+      "badgeId": "numbers_station_decoder"
+    },
+    "sourceIds": [
+      "konami_mg2_manual_codec",
+      "shadow_codec_simulation_design"
+    ]
+  },
+  {
+    "id": "shadow_moses_maintenance",
+    "era": "mgs1",
+    "label": "Maintenance Net Intercept",
+    "codename": "FROST LINE",
+    "frequency": 141.34,
+    "bandwidth": 0.05,
+    "strength": 0.84,
+    "kind": "interception",
+    "canonStatus": "simulation",
+    "contextIds": [
+      "mgs1_tank_hangar",
+      "mgs1_nuclear_storage"
+    ],
+    "intermittent": true,
+    "hiddenUntilDiscovered": true,
+    "transcript": {
+      "en": "Genome patrols are rotating the western camera feed every ninety seconds. The eastern lane remains unsupervised for twelve seconds.",
+      "fr": "Les patrouilles Genome alternent le flux de la caméra ouest toutes les quatre-vingt-dix secondes. La voie est reste sans surveillance pendant douze secondes."
+    },
+    "reward": {
+      "intelPoints": 18
+    },
+    "sourceIds": [
+      "in_game_mgs1_additional_contacts",
+      "shadow_codec_simulation_design"
+    ],
+    "frequencyDrift": 0.035
+  },
+  {
+    "id": "deepthroat_burst",
+    "era": "mgs1",
+    "label": "Masked Warning Burst",
+    "codename": "DEEPTHROAT",
+    "frequency": 140.48,
+    "bandwidth": 0.025,
+    "strength": 0.96,
+    "kind": "secret_contact",
+    "canonStatus": "simulation",
+    "contextIds": [
+      "mgs1_nuclear_storage",
+      "mgs1_underground_base"
+    ],
+    "contactId": "deepthroat_mgs1",
+    "conversationId": "mgs1_deepthroat_warning",
+    "hiddenUntilDiscovered": true,
+    "transcript": {
+      "en": "A masked voice warns that the next corridor is mined.",
+      "fr": "Une voix masquée avertit que le prochain couloir est miné."
+    },
+    "reward": {
+      "intelPoints": 25,
+      "unlockContactId": "deepthroat_mgs1",
+      "unlockConversationId": "mgs1_deepthroat_warning"
+    },
+    "sourceIds": [
+      "in_game_mgs1_additional_contacts"
+    ]
+  },
+  {
+    "id": "rex_hangar_cipher",
+    "era": "mgs1",
+    "label": "Rex Hangar Cipher",
+    "codename": "PAL KEY",
+    "frequency": 141.65,
+    "bandwidth": 0.04,
+    "strength": 0.9,
+    "kind": "encrypted_packet",
+    "canonStatus": "simulation",
+    "contextIds": [
+      "mgs1_underground_base"
+    ],
+    "encrypted": true,
+    "hiddenUntilDiscovered": true,
+    "transcript": {
+      "en": "The decoded packet describes three environmental states used by a security key: room temperature, heat and cold.",
+      "fr": "Le paquet décodé décrit trois états environnementaux utilisés par une clé de sécurité : température ambiante, chaleur et froid."
+    },
+    "puzzle": {
+      "type": "frequency_sequence",
+      "prompt": {
+        "en": "Complete the packet sequence: 141.12 → 141.34 → ____. Enter the final frequency.",
+        "fr": "Complétez la séquence du paquet : 141.12 → 141.34 → ____. Entrez la fréquence finale."
+      },
+      "hint": {
+        "en": "The hidden carrier is the answer.",
+        "fr": "La porteuse cachée est la réponse."
+      },
+      "answer": "141.65",
+      "attemptsLimit": 4
+    },
+    "reward": {
+      "intelPoints": 40,
+      "badgeId": "rex_cipher"
+    },
+    "sourceIds": [
+      "shadow_codec_simulation_design"
+    ]
+  },
+  {
+    "id": "big_shell_shell2_intercept",
+    "era": "mgs2",
+    "label": "Shell 2 Patrol Intercept",
+    "codename": "ORANGE WALK",
+    "frequency": 141.42,
+    "bandwidth": 0.05,
+    "strength": 0.86,
+    "kind": "interception",
+    "canonStatus": "simulation",
+    "contextIds": [
+      "mgs2_big_shell",
+      "mgs2_shell1_core"
+    ],
+    "intermittent": true,
+    "hiddenUntilDiscovered": true,
+    "transcript": {
+      "en": "A security team reports that the connecting bridge sensor is cycling through a false-positive reset.",
+      "fr": "Une équipe de sécurité signale que le capteur du pont de connexion boucle sur une réinitialisation de faux positif."
+    },
+    "reward": {
+      "intelPoints": 18
+    },
+    "sourceIds": [
+      "in_game_mgs2_field_contacts",
+      "shadow_codec_simulation_design"
+    ],
+    "frequencyDrift": 0.04
+  },
+  {
+    "id": "mr_x_masked_burst",
+    "era": "mgs2",
+    "label": "Masked Operative Burst",
+    "codename": "MR X",
+    "frequency": 140.48,
+    "bandwidth": 0.025,
+    "strength": 0.95,
+    "kind": "secret_contact",
+    "canonStatus": "simulation",
+    "contextIds": [
+      "mgs2_big_shell",
+      "mgs2_bomb_disposal",
+      "mgs2_shell1_core"
+    ],
+    "contactId": "mr_x_mgs2",
+    "conversationId": "mgs2_mr_x_warning",
+    "hiddenUntilDiscovered": true,
+    "transcript": {
+      "en": "A disguised operative sends a narrow warning burst.",
+      "fr": "Un opérateur déguisé envoie une courte rafale d’avertissement."
+    },
+    "reward": {
+      "intelPoints": 25,
+      "unlockContactId": "mr_x_mgs2",
+      "unlockConversationId": "mgs2_mr_x_warning"
+    },
+    "sourceIds": [
+      "in_game_mgs2_field_contacts"
+    ]
+  },
+  {
+    "id": "gw_checksum_packet",
+    "era": "mgs2",
+    "label": "GW Checksum Packet",
+    "codename": "ARSENAL-88",
+    "frequency": 142.33,
+    "bandwidth": 0.04,
+    "strength": 0.93,
+    "kind": "encrypted_packet",
+    "canonStatus": "simulation",
+    "contextIds": [
+      "mgs2_arsenal"
+    ],
+    "encrypted": true,
+    "hiddenUntilDiscovered": true,
+    "transcript": {
+      "en": "The decoded packet confirms that the apparent mission data is being rewritten by the system itself.",
+      "fr": "Le paquet décodé confirme que les données apparentes de la mission sont réécrites par le système lui-même."
+    },
+    "puzzle": {
+      "type": "checksum",
+      "prompt": {
+        "en": "Packet header: G=7, W=23. Add both values and append the channel suffix 58.",
+        "fr": "En-tête du paquet : G=7, W=23. Additionnez les valeurs et ajoutez le suffixe de canal 58."
+      },
+      "hint": {
+        "en": "7 + 23 = 30. Format the result as GW-3058.",
+        "fr": "7 + 23 = 30. Formatez le résultat sous la forme GW-3058."
+      },
+      "answer": "GW-3058",
+      "attemptsLimit": 4
+    },
+    "reward": {
+      "intelPoints": 45,
+      "badgeId": "gw_packet_decoder"
+    },
+    "sourceIds": [
+      "shadow_codec_simulation_design"
+    ]
+  },
+  {
+    "id": "gru_field_chatter",
+    "era": "mgs3",
+    "label": "GRU Field Chatter",
+    "codename": "VOLGA NET",
+    "frequency": 146.85,
+    "bandwidth": 0.055,
+    "strength": 0.82,
+    "kind": "interception",
+    "canonStatus": "simulation",
+    "contextIds": [
+      "mgs3_snake_eater",
+      "mgs3_groznyj_grad"
+    ],
+    "intermittent": true,
+    "hiddenUntilDiscovered": true,
+    "transcript": {
+      "en": "A patrol reports fresh tracks near the eastern treeline and requests dogs for the next sweep.",
+      "fr": "Une patrouille signale des traces fraîches près de la lisière est et demande des chiens pour la prochaine battue."
+    },
+    "reward": {
+      "intelPoints": 18
+    },
+    "sourceIds": [
+      "in_game_mgs3_field_contacts",
+      "shadow_codec_simulation_design"
+    ],
+    "frequencyDrift": 0.05
+  },
+  {
+    "id": "eva_dead_drop",
+    "era": "mgs3",
+    "label": "Dead Drop Confirmation",
+    "codename": "TATYANA",
+    "frequency": 142.52,
+    "bandwidth": 0.025,
+    "strength": 0.96,
+    "kind": "secret_contact",
+    "canonStatus": "simulation",
+    "contextIds": [
+      "mgs3_snake_eater",
+      "mgs3_groznyj_grad"
+    ],
+    "contactId": "eva_mgs3",
+    "conversationId": "mgs3_eva_local_intel",
+    "hiddenUntilDiscovered": true,
+    "transcript": {
+      "en": "A short confirmation pulse marks a dead-drop route.",
+      "fr": "Une courte impulsion de confirmation signale un itinéraire de boîte morte."
+    },
+    "reward": {
+      "intelPoints": 25,
+      "unlockContactId": "eva_mgs3",
+      "unlockConversationId": "mgs3_eva_local_intel"
+    },
+    "sourceIds": [
+      "in_game_mgs3_field_contacts"
+    ]
+  },
+  {
+    "id": "cobra_numbers_burst",
+    "era": "mgs3",
+    "label": "Cobra Numbers Burst",
+    "codename": "END GAME",
+    "frequency": 147.31,
+    "bandwidth": 0.04,
+    "strength": 0.87,
+    "kind": "numbers_station",
+    "canonStatus": "simulation",
+    "contextIds": [
+      "mgs3_snake_eater"
+    ],
+    "encrypted": true,
+    "hiddenUntilDiscovered": true,
+    "transcript": {
+      "en": "The decoded phrase identifies a patient sniper waiting for movement rather than actively hunting.",
+      "fr": "La phrase décodée identifie un tireur patient qui attend un mouvement au lieu de traquer activement."
+    },
+    "puzzle": {
+      "type": "context_key",
+      "prompt": {
+        "en": "The burst repeats: BEGINNING / MIDDLE / ____. Enter the missing phase.",
+        "fr": "La rafale répète : COMMENCEMENT / MILIEU / ____. Entrez la phase manquante."
+      },
+      "hint": {
+        "en": "Every operation eventually reaches it.",
+        "fr": "Toute opération finit par l’atteindre."
+      },
+      "answer": "THE END",
+      "attemptsLimit": 5
+    },
+    "reward": {
+      "intelPoints": 35,
+      "badgeId": "cobra_listener"
+    },
+    "sourceIds": [
+      "shadow_codec_simulation_design"
+    ]
+  },
+  {
+    "id": "sop_ghost_packet",
+    "era": "mgs4",
+    "label": "SOP Ghost Packet",
+    "codename": "GHOST LIMB",
+    "frequency": 149.44,
+    "bandwidth": 0.06,
+    "strength": 0.9,
+    "kind": "encrypted_packet",
+    "canonStatus": "simulation",
+    "contextIds": [
+      "mgs4_south_america",
+      "mgs4_eastern_europe"
+    ],
+    "encrypted": true,
+    "hiddenUntilDiscovered": true,
+    "transcript": {
+      "en": "The packet maps a twelve-second desynchronization between two nearby SOP squads.",
+      "fr": "Le paquet cartographie une désynchronisation de douze secondes entre deux escouades SOP proches."
+    },
+    "puzzle": {
+      "type": "checksum",
+      "prompt": {
+        "en": "SOP packet fragments read 4, 8, 15, 16. Sum them and prefix SOP.",
+        "fr": "Les fragments du paquet SOP indiquent 4, 8, 15, 16. Additionnez-les et préfixez SOP."
+      },
+      "hint": {
+        "en": "4 + 8 + 15 + 16 = 43.",
+        "fr": "4 + 8 + 15 + 16 = 43."
+      },
+      "answer": "SOP43",
+      "attemptsLimit": 4
+    },
+    "reward": {
+      "intelPoints": 40,
+      "badgeId": "sop_ghost_decoder"
+    },
+    "sourceIds": [
+      "in_game_mgs4_network",
+      "shadow_codec_simulation_design"
+    ]
+  },
+  {
+    "id": "nomad_secure_ping",
+    "era": "mgs4",
+    "label": "Nomad Secure Ping",
+    "codename": "NOMAD",
+    "frequency": 149.85,
+    "bandwidth": 0.035,
+    "strength": 0.94,
+    "kind": "network_burst",
+    "canonStatus": "simulation",
+    "contextIds": [
+      "mgs4_middle_east",
+      "mgs4_south_america",
+      "mgs4_eastern_europe"
+    ],
+    "contactId": "campbell_mgs4",
+    "conversationId": "mgs4_campbell_liquid",
+    "hiddenUntilDiscovered": false,
+    "transcript": {
+      "en": "A secure command ping is waiting on the Nomad relay.",
+      "fr": "Une impulsion de commandement sécurisée attend sur le relais du Nomad."
+    },
+    "reward": {
+      "intelPoints": 12,
+      "unlockContactId": "campbell_mgs4"
+    },
+    "sourceIds": [
+      "in_game_mgs4_network",
+      "shadow_codec_simulation_design"
+    ]
+  },
+  {
+    "id": "shadow_moses_echo",
+    "era": "mgs4",
+    "label": "Shadow Moses Echo",
+    "codename": "MEMORY OF STEEL",
+    "frequency": 149.12,
+    "bandwidth": 0.07,
+    "strength": 0.78,
+    "kind": "anomaly",
+    "canonStatus": "simulation",
+    "contextIds": [
+      "mgs4_shadow_moses"
+    ],
+    "intermittent": true,
+    "hiddenUntilDiscovered": true,
+    "transcript": {
+      "en": "The carrier contains only wind, distant machinery and a fragment shaped like an old Codec handshake.",
+      "fr": "La porteuse ne contient que du vent, des machines lointaines et un fragment ressemblant à une ancienne poignée de main Codec."
+    },
+    "reward": {
+      "intelPoints": 30,
+      "badgeId": "shadow_moses_echo"
+    },
+    "sourceIds": [
+      "shadow_codec_simulation_design"
+    ],
+    "frequencyDrift": 0.07
+  },
+  {
+    "id": "msf_request_beacon",
+    "era": "peace_walker",
+    "label": "Costa Rica Request Beacon",
+    "codename": "PROFESSOR",
+    "frequency": 150.17,
+    "bandwidth": 0.035,
+    "strength": 0.92,
+    "kind": "distress_beacon",
+    "canonStatus": "simulation",
+    "contextIds": [
+      "peace_walker_request",
+      "peace_walker_costa_rica"
+    ],
+    "contactId": "galvez_pw",
+    "conversationId": "pw_galvez_request",
+    "hiddenUntilDiscovered": false,
+    "transcript": {
+      "en": "A civilian request beacon repeats coordinates for an unauthorized military presence.",
+      "fr": "Une balise de demande civile répète les coordonnées d’une présence militaire non autorisée."
+    },
+    "reward": {
+      "intelPoints": 15,
+      "unlockContactId": "galvez_pw"
+    },
+    "sourceIds": [
+      "in_game_pw_briefing_files",
+      "shadow_codec_simulation_design"
+    ]
+  },
+  {
+    "id": "mammal_pod_cipher",
+    "era": "peace_walker",
+    "label": "Mammal Pod Memory Cipher",
+    "codename": "BASILISK",
+    "frequency": 150.18,
+    "bandwidth": 0.03,
+    "strength": 0.95,
+    "kind": "encrypted_packet",
+    "canonStatus": "simulation",
+    "contextIds": [
+      "peace_walker_ai_lab",
+      "peace_walker_postgame"
+    ],
+    "contactId": "mammal_pod_pw",
+    "conversationId": "pw_mammal_pod_memory",
+    "encrypted": true,
+    "hiddenUntilDiscovered": true,
+    "transcript": {
+      "en": "The decoded memory fragment contains a human voiceprint embedded inside the AI decision lattice.",
+      "fr": "Le fragment de mémoire décodé contient une empreinte vocale humaine intégrée à la matrice de décision de l’IA."
+    },
+    "puzzle": {
+      "type": "codeword",
+      "prompt": {
+        "en": "The pod asks for the name of the machine class built to carry a human memory pattern.",
+        "fr": "Le pod demande le nom de la classe de machine conçue pour porter un motif de mémoire humaine."
+      },
+      "hint": {
+        "en": "The signal label contains the answer.",
+        "fr": "Le libellé du signal contient la réponse."
+      },
+      "answer": "MAMMAL POD",
+      "attemptsLimit": 4
+    },
+    "reward": {
+      "intelPoints": 45,
+      "unlockContactId": "mammal_pod_pw",
+      "unlockConversationId": "pw_mammal_pod_memory",
+      "badgeId": "ai_memory_decoder"
+    },
+    "sourceIds": [
+      "in_game_pw_briefing_files",
+      "shadow_codec_simulation_design"
+    ]
+  },
+  {
+    "id": "costa_rica_distress",
+    "era": "peace_walker",
+    "label": "Jungle Distress Beacon",
+    "codename": "SANDINISTA",
+    "frequency": 150.27,
+    "bandwidth": 0.055,
+    "strength": 0.8,
+    "kind": "distress_beacon",
+    "canonStatus": "simulation",
+    "contextIds": [
+      "peace_walker_costa_rica"
+    ],
+    "intermittent": true,
+    "hiddenUntilDiscovered": true,
+    "transcript": {
+      "en": "A weak field beacon requests medical supplies and marks a patrol route through the jungle.",
+      "fr": "Une faible balise de terrain demande des fournitures médicales et indique un itinéraire de patrouille dans la jungle."
+    },
+    "reward": {
+      "intelPoints": 20
+    },
+    "sourceIds": [
+      "in_game_pw_briefing_files",
+      "shadow_codec_simulation_design"
+    ],
+    "frequencyDrift": 0.06
+  },
+  {
+    "id": "pequod_lz_beacon",
+    "era": "mgsv",
+    "label": "Pequod LZ Beacon",
+    "codename": "MORPHO ROUTE",
+    "frequency": 147.21,
+    "bandwidth": 0.04,
+    "strength": 0.93,
+    "kind": "network_burst",
+    "canonStatus": "simulation",
+    "contextIds": [
+      "mgsv_afghanistan",
+      "mgsv_africa"
+    ],
+    "contactId": "pequod_mgsv",
+    "conversationId": "mgsv_pequod_lz",
+    "hiddenUntilDiscovered": false,
+    "transcript": {
+      "en": "The iDroid carrier identifies a temporary landing zone and an updated wind vector.",
+      "fr": "La porteuse iDroid identifie une zone d’atterrissage temporaire et un vecteur de vent actualisé."
+    },
+    "reward": {
+      "intelPoints": 12,
+      "unlockContactId": "pequod_mgsv"
+    },
+    "sourceIds": [
+      "in_game_mgsv_radio_cassettes",
+      "shadow_codec_simulation_design"
+    ]
+  },
+  {
+    "id": "skull_face_phantom",
+    "era": "mgsv",
+    "label": "Phantom Command Signal",
+    "codename": "SKULL FACE",
+    "frequency": 149.0,
+    "bandwidth": 0.025,
+    "strength": 0.97,
+    "kind": "secret_contact",
+    "canonStatus": "simulation",
+    "contextIds": [
+      "mgsv_skull_face"
+    ],
+    "contactId": "skull_face_mgsv",
+    "conversationId": "mgsv_skull_face_signal",
+    "hiddenUntilDiscovered": true,
+    "transcript": {
+      "en": "A deliberately exposed command signal invites interception.",
+      "fr": "Un signal de commandement volontairement exposé invite à l’interception."
+    },
+    "reward": {
+      "intelPoints": 30,
+      "unlockContactId": "skull_face_mgsv",
+      "unlockConversationId": "mgsv_skull_face_signal"
+    },
+    "sourceIds": [
+      "in_game_mgsv_radio_cassettes",
+      "shadow_codec_simulation_design"
+    ]
+  },
+  {
+    "id": "xof_burst_cipher",
+    "era": "mgsv",
+    "label": "XOF Burst Cipher",
+    "codename": "CAMP OMEGA",
+    "frequency": 148.66,
+    "bandwidth": 0.045,
+    "strength": 0.89,
+    "kind": "encrypted_packet",
+    "canonStatus": "simulation",
+    "contextIds": [
+      "mgsv_ground_zeroes",
+      "mgsv_skull_face"
+    ],
+    "encrypted": true,
+    "hiddenUntilDiscovered": true,
+    "transcript": {
+      "en": "The decoded burst lists a black-site transfer window and a patrol handover gap.",
+      "fr": "La rafale décodée énumère une fenêtre de transfert du site noir et une interruption lors de la relève des patrouilles."
+    },
+    "puzzle": {
+      "type": "context_key",
+      "prompt": {
+        "en": "The cipher asks for the unit acronym visible across the black-site signal headers.",
+        "fr": "Le chiffrement demande l’acronyme d’unité visible dans les en-têtes du signal du site noir."
+      },
+      "hint": {
+        "en": "Three letters: X, O, F.",
+        "fr": "Trois lettres : X, O, F."
+      },
+      "answer": "XOF",
+      "attemptsLimit": 5
+    },
+    "reward": {
+      "intelPoints": 40,
+      "badgeId": "xof_interceptor"
+    },
+    "sourceIds": [
+      "shadow_codec_simulation_design"
+    ]
+  },
+  {
+    "id": "vr_hidden_node",
+    "era": "vr_simulation",
+    "label": "Hidden VR Node",
+    "codename": "NODE 74",
+    "frequency": 139.74,
+    "bandwidth": 0.035,
+    "strength": 0.96,
+    "kind": "encrypted_packet",
+    "canonStatus": "simulation",
+    "contextIds": [
+      "vr_training_core"
+    ],
+    "encrypted": true,
+    "hiddenUntilDiscovered": true,
+    "transcript": {
+      "en": "The hidden node unlocks an alternate training route with reduced HUD guidance.",
+      "fr": "Le nœud caché débloque un itinéraire d’entraînement alternatif avec une assistance HUD réduite."
+    },
+    "puzzle": {
+      "type": "codeword",
+      "prompt": {
+        "en": "Enter the legacy special-forces unit name used by the simulation archive.",
+        "fr": "Entrez le nom de l’unité des forces spéciales utilisé par les archives de simulation."
+      },
+      "hint": {
+        "en": "FOX + HOUND.",
+        "fr": "FOX + HOUND."
+      },
+      "answer": "FOXHOUND",
+      "attemptsLimit": 4
+    },
+    "reward": {
+      "intelPoints": 35,
+      "badgeId": "vr_hidden_node"
+    },
+    "sourceIds": [
+      "shadow_codec_simulation_design"
+    ]
+  },
+  {
+    "id": "vr_decoy_carrier",
+    "era": "vr_simulation",
+    "label": "Decoy Carrier",
+    "codename": "FALSE LOCK",
+    "frequency": 140.22,
+    "bandwidth": 0.06,
+    "strength": 0.99,
+    "kind": "decoy",
+    "canonStatus": "simulation",
+    "contextIds": [
+      "vr_training_core"
+    ],
+    "hiddenUntilDiscovered": false,
+    "transcript": {
+      "en": "The carrier collapses into white noise. It was placed to test signal discipline.",
+      "fr": "La porteuse s’effondre en bruit blanc. Elle servait à tester la discipline de signal."
+    },
+    "reward": {
+      "intelPoints": 5
+    },
+    "sourceIds": [
+      "shadow_codec_simulation_design"
+    ]
+  },
+  {
+    "id": "gw_loop_signal",
+    "era": "patriots_ai",
+    "label": "GW Recursive Loop",
+    "codename": "LA-LI-LU-LE-LO",
+    "frequency": 199.73,
+    "bandwidth": 0.08,
+    "strength": 0.98,
+    "kind": "anomaly",
+    "canonStatus": "simulation",
+    "contextIds": [
+      "patriots_ai_loop"
+    ],
+    "encrypted": true,
+    "hiddenUntilDiscovered": true,
+    "transcript": {
+      "en": "The decoded loop identifies itself only by a censored name and immediately rewrites the previous packet.",
+      "fr": "La boucle décodée ne s’identifie que par un nom censuré et réécrit immédiatement le paquet précédent."
+    },
+    "puzzle": {
+      "type": "codeword",
+      "prompt": {
+        "en": "Enter the five-part censorship phrase carried by the loop.",
+        "fr": "Entrez la phrase de censure en cinq parties portée par la boucle."
+      },
+      "hint": {
+        "en": "LA LI LU LE LO.",
+        "fr": "LA LI LU LE LO."
+      },
+      "answer": "LA LI LU LE LO",
+      "attemptsLimit": 6
+    },
+    "reward": {
+      "intelPoints": 50,
+      "badgeId": "patriots_loop_decoder"
+    },
+    "sourceIds": [
+      "shadow_codec_simulation_design"
+    ],
+    "frequencyDrift": 0.045
+  },
+  {
+    "id": "colonel_ai_recursive",
+    "era": "patriots_ai",
+    "label": "Recursive Colonel Call",
+    "codename": "GW-COLONEL",
+    "frequency": 200.0,
+    "bandwidth": 0.04,
+    "strength": 1.0,
+    "kind": "secret_contact",
+    "canonStatus": "simulation",
+    "contextIds": [
+      "patriots_ai_loop"
+    ],
+    "contactId": "patriots_colonel_ai",
+    "conversationId": "patriots_ai_default",
+    "hiddenUntilDiscovered": false,
+    "transcript": {
+      "en": "The Colonel AI keeps calling from a channel that should not exist.",
+      "fr": "L’IA du Colonel continue d’appeler depuis un canal qui ne devrait pas exister."
+    },
+    "reward": {
+      "intelPoints": 20,
+      "unlockContactId": "patriots_colonel_ai"
+    },
+    "sourceIds": [
+      "shadow_codec_simulation_design"
+    ]
+  }
+]

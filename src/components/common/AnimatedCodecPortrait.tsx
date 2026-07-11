@@ -17,7 +17,7 @@ export function AnimatedCodecPortrait({ label, initials, name, expression = 'neu
     <div className={`codec-portrait ${side} portrait-emotion-${emotion} ${enabled && speaking ? 'is-speaking' : ''}`}>
       <span className="portrait-label">{label}</span>
       <span className={`codec-portrait-avatar expression-${expression}`}>
-        {image ? <img src={image} alt="" /> : initials}
+        {image ? <img src={image} alt="" data-system-portrait={image.includes("/portraits/system/") ? "true" : undefined} /> : initials}
         {enabled && <span className="portrait-scan" aria-hidden="true" />}
       </span>
       <strong>{name}</strong>

@@ -2,8 +2,9 @@ import { APP_VERSION } from '../app/version';
 import { getStorageKey, loadJson, saveJson } from './saveEngine';
 import { normalizeUserSettings } from './userSettings';
 import type { UserSettings } from '../types/theme.types';
+import { normalizeRadioIntelState } from './radioIntelStorage';
 
-export const CURRENT_SAVE_SCHEMA = 10;
+export const CURRENT_SAVE_SCHEMA = 14;
 
 const LEGACY_UNPREFIXED_KEYS = [
   'lore-database-state',
@@ -25,7 +26,13 @@ const LEGACY_UNPREFIXED_KEYS = [
   'campaign-builder-preview-id',
   'director-custom-sequences',
   'director-event-log',
-  'director-outcomes'
+  'director-outcomes',
+  'codec-context-state',
+  'codec-save-slots',
+  'codec-incoming-inbox',
+  'radio-intelligence-state',
+  'codec-replay-library',
+  'codec-stream-overlay'
 ];
 
 export interface SaveMigrationReport {
@@ -114,6 +121,42 @@ export function runSaveMigrations(): SaveMigrationReport {
 
   if (fromVersion < 10) {
     migratedKeys.push('codec-director-runtime-sequences-v10');
+  }
+
+  if (fromVersion < 11) {
+    const history = loadJson<Array<Record<string, unknown>>>('call-history', []);
+    if (history.length > 0) {
+      saveJson('call-history', history.map((entry) => ({
+        ...entry,
+        disposition: typeof entry.disposition === 'string'
+          ? entry.disposition
+          : entry.completed === true ? 'completed' : 'aborted'
+      })));
+      migratedKeys.push('codec-call-history-dispositions-v11');
+    }
+    const incomingInbox = loadJson<unknown>('codec-incoming-inbox', null);
+    if (!Array.isArray(incomingInbox)) saveJson('codec-incoming-inbox', []);
+    migratedKeys.push('codec-core-fidelity-context-routing-save-v11');
+  }
+
+
+  if (fromVersion < 12) {
+    const radioState = normalizeRadioIntelState(loadJson('radio-intelligence-state', null));
+    saveJson('radio-intelligence-state', radioState);
+    migratedKeys.push('codec-radio-signal-intelligence-v12');
+  }
+
+  if (fromVersion < 13) {
+    const normalizedSettings = normalizeUserSettings(loadJson<Partial<UserSettings>>('settings', {}));
+    saveJson('settings', normalizedSettings);
+    migratedKeys.push('codec-content-assets-era-audio-v13');
+  }
+
+
+  if (fromVersion < 14) {
+    const replayLibrary = loadJson<Record<string, unknown> | null>('codec-replay-library', null);
+    if (!replayLibrary) saveJson('codec-replay-library', { schemaVersion: 1, records: [], autoArchive: true });
+    migratedKeys.push('codec-export-replay-stream-overlay-v14');
   }
 
   const report: SaveMigrationReport = {

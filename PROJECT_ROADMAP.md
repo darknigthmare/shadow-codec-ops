@@ -1,3 +1,9 @@
+# Current priority
+
+- **Codec Pass 6 — Export, Replay & Final Codec QA: COMPLETE (v2.8.0)**
+- Director Timeline Advanced / former Pass 24 remains intentionally deferred.
+- Next work should be a user-led polish/content pass rather than another large subsystem.
+
 # Shadow Codec Ops — Project Roadmap
 
 ## État actuel
@@ -182,6 +188,135 @@ La même base fonctionne en web, PWA installable, Tauri desktop et interface tac
 - [x] Migration du schéma global vers v10.
 - [x] 59 tests automatisés et build/PWA validés.
 
-### Next suggested pass
 
-Passe 24 — Director Timeline Advanced: courbes audio, marqueurs de synchronisation, conditions de contexte, undo/redo et export de packs Director complets.
+## Passe Codec 1 — Core Fidelity — COMPLETE (v2.3.0)
+
+- [x] Contextes de jeu/chapitre/mission data-driven.
+- [x] Profils de personnage jouable par contexte.
+- [x] Contact Availability Engine avec états available/locked/incoming-only/jammed/dead/unknown.
+- [x] Règles par contexte, flags, mémoire et type d'appel.
+- [x] Résolution des fréquences partagées et routeur de contact.
+- [x] Menu de sujets par contact.
+- [x] Rotation des conversations selon l'historique d'écoute.
+- [x] Appels entrants avec priorité, acceptation, refus, expiration et file d'attente.
+- [x] Appels obligatoires auto-acceptés à expiration.
+- [x] Historique des appels manqués/ignorés et préparation du rappel.
+- [x] Bus persistant d'appels entrants pour Campaign/Side Ops/VR.
+- [x] Trois slots de sauvegarde Codec.
+- [x] Conversation Studio compatible sujets et contextes.
+- [x] Migration globale vers le schéma 11.
+- [x] 75 tests automatisés et build/PWA validés.
+
+## Passe Codec 2 — Visual Identity — COMPLETE (v2.4.0)
+
+- [x] Profil visuel data-driven pour chaque époque.
+- [x] Layout MSX terminal texte.
+- [x] Layout MGS1 twin Codec classique.
+- [x] Layout MGS2 HUD numérique.
+- [x] Layout MGS3 radio analogique de terrain.
+- [x] Layout MGS4 appel vidéo cinématique.
+- [x] Layout Peace Walker dossier MSF dédié.
+- [x] Layout MGSV iDroid holographique et waveform.
+- [x] Layouts VR et Patriots spécialisés.
+- [x] Libellés et commandes propres à chaque appareil.
+- [x] CALL entrants, panneaux mémoire/historique/data visuellement adaptés.
+- [x] Responsive mobile et reduced-motion.
+- [x] Pack `peace_walker_msf` indépendant de MGSV.
+- [x] 79 tests automatisés et build/PWA validés.
+
+## Passe Codec 3 — Canon Data Expansion — COMPLETE (v2.5.0)
+
+- [x] 55 contacts avec métadonnées jeu, année, alias, rôle et provenance.
+- [x] 32 contextes de jeu/chapitre/mission.
+- [x] 55 règles de disponibilité contextuelle.
+- [x] 102 conversations bilingues originales lore-compatible.
+- [x] 13 sources enregistrées et liées aux données.
+- [x] Variantes de fréquence par contexte et sujet.
+- [x] Canaux modernes identifiés comme routes réseau/MSF/iDroid de simulation.
+- [x] Contacts Peace Walker/MSF, MGS4 et MGSV enrichis.
+- [x] Canon Data Dossier dans le Codec.
+- [x] Canon Coverage Matrix par époque.
+- [x] 86 tests automatisés et build/PWA validés.
+
+## Passe Codec 4 — Radio Scan & Signal Intelligence — COMPLETE (v2.6.0)
+
+- [x] Spectre radio manuel et automatique.
+- [x] Vue globale par époque et zoom local autour de la fréquence courante.
+- [x] Pics de signal, force modulée par proximité et seuil de verrouillage.
+- [x] 24 signaux contextuels et fréquences secrètes.
+- [x] Signaux intermittents et porteuses à dérive temporelle.
+- [x] Interceptions, contacts secrets, numbers stations, anomalies et leurres.
+- [x] Messages cryptés avec codeword, séquence, checksum et clé de contexte.
+- [x] Journal persistant des signaux découverts, décodés et annotés.
+- [x] Récompenses Intel, badges, contacts et conversations.
+- [x] Export JSON du dossier Signal Intelligence.
+- [x] Migration globale vers le schéma 12.
+- [x] 98 tests automatisés et build/PWA validés.
+
+## Priorité suivante
+
+### Passe Codec 5 — Content & Assets
+
+- portraits complets et variantes émotionnelles par contact ;
+- sons CALL, connexion, déconnexion et commandes propres à chaque époque ;
+- ambiances radio, parasites et profils audio affinés ;
+- conversations contextuelles supplémentaires par zone, équipement, santé et comportement ;
+- packs d’assets locaux documentés et contrôlés ;
+- audit final de cohérence visuelle/audio des sept appareils principaux.
+
+### Mise de côté
+
+- Passe 24 — Director Timeline Advanced, à reprendre après la finalisation du Codec.
+
+## Completed — Codec Pass 5 / v2.7
+
+- Original abstract portrait placeholders for all nine eras
+- Era-specific procedural UI cue profiles
+- Connected Codec ambience profiles
+- Asset Deck and readiness matrix in Settings
+- 18 additional localized context conversations
+- Save schema 13 migration
+
+## Next Codec Priority
+
+Codec Pass 6 — Export, replay and final Codec QA. Director Pass 24 remains deferred.
+
+
+## MGS1 Codec Pass A — COMPLETE (v2.9.0)
+
+- [x] Eight principal MGS1 personnel profiles.
+- [x] Ten Shadow Moses mission contexts.
+- [x] Sixty MGS1 conversations.
+- [x] Personnel dossier UI with biography, relations and topic directory.
+- [x] Discovery completion metrics.
+- [x] Miller/Liquid identity transition.
+- [x] Deepthroat/Gray Fox reveal states.
+- [x] 112 automated tests, build and PWA validation.
+
+### Next MGS1 priority
+
+MGS1-B: larger contextual conversation library, automatic incoming-call schedules, Mei Ling proverb rotation and weapon/boss topic expansion.
+
+
+## MGS1 Codec Pass B — COMPLETE (v3.0.0)
+
+- 137 MGS1 conversations
+- 20 rotating original Mei Ling proverbs
+- 12 Nastasha weapon and safety dossiers
+- 9 major boss intelligence calls
+- expanded Naomi medical, Otacon technical, Meryl field, Campbell objective and Deepthroat warning content
+- one automatic incoming call for every Shadow Moses chapter context
+- persistent one-shot schedule state
+- live MGS1 library coverage indicator
+- 115 automated tests passing
+
+Next MGS1 pass: encyclopedic biographies, relationship graph, complete item/area catalog, portrait variants and final MGS1 QA.
+
+
+## Completed — MGS1-C Encyclopedia (v3.1)
+- Zone and equipment catalogues
+- Relationship network
+- Narrative timeline
+- Portrait/expression variants
+
+Next: MGS1-D final polish and dedicated MGS1 QA.

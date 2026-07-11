@@ -115,7 +115,7 @@ export function ConversationStudio() {
       if (conversation.era !== selectedEra) return false;
       if (!normalized) return true;
       const contactName = contacts.find((contact) => contact.id === conversation.contactId)?.name ?? conversation.contactId;
-      return [conversation.title, conversation.id, conversation.trigger, contactName]
+      return [conversation.title, conversation.id, conversation.trigger, conversation.subjectId, conversation.topicLabel, contactName]
         .join(' ')
         .toLowerCase()
         .includes(normalized);
@@ -436,6 +436,26 @@ export function ConversationStudio() {
             <select value={draft.trigger} onChange={(event) => updateDraftField('trigger', event.target.value as ConversationTrigger)}>
               {triggerOptions.map((trigger) => <option key={trigger} value={trigger}>{trigger}</option>)}
             </select>
+          </label>
+          <label>
+            <span>Call Subject ID</span>
+            <input value={draft.subjectId ?? ''} onChange={(event) => updateDraftField('subjectId', event.target.value || undefined)} placeholder="mission / medical / save" />
+          </label>
+          <label>
+            <span>Topic Label</span>
+            <input value={draft.topicLabel ?? ''} onChange={(event) => updateDraftField('topicLabel', event.target.value || undefined)} placeholder="Mission Support" />
+          </label>
+          <label className="studio-wide-field">
+            <span>Topic Description</span>
+            <input value={draft.topicDescription ?? ''} onChange={(event) => updateDraftField('topicDescription', event.target.value || undefined)} placeholder="Shown in the Codec subject selector" />
+          </label>
+          <label className="studio-wide-field">
+            <span>Context IDs (comma separated)</span>
+            <input
+              value={(draft.contextIds ?? []).join(', ')}
+              onChange={(event) => updateDraftField('contextIds', event.target.value.split(',').map((value) => value.trim()).filter(Boolean))}
+              placeholder="mgs1_tank_hangar, mgs1_cellblock"
+            />
           </label>
           <label className="studio-checkbox-row">
             <input

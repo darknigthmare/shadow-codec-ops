@@ -1,7 +1,7 @@
 {
   "name": "shadow-codec-ops",
   "private": true,
-  "version": "2.2.0",
+  "version": "3.1.0",
   "type": "module",
   "description": "Private fan-made tactical codec simulator plus Side Ops 2D prototype.",
   "scripts": {
@@ -14,7 +14,7 @@
     "desktop:check": "npm run build && cargo check --manifest-path src-tauri/Cargo.toml",
     "tauri:build:debug": "tauri build --debug",
     "tauri:icon": "tauri icon app-icon.png",
-    "test": "vitest run",
+    "test": "vitest run --no-isolate --pool=threads --maxWorkers=1 --no-file-parallelism --reporter=default",
     "test:watch": "vitest",
     "qa": "npm run lint && npm run test && npm run build && npm run pwa:check",
     "pwa:preview": "npm run build && vite preview --host 0.0.0.0",

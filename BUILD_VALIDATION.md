@@ -1,13 +1,10 @@
-# Build Validation — Shadow Codec Ops v2.2
+# Build Validation — v3.1.0
 
 - TypeScript / lint: PASS
-- Automated tests: 59/59 PASS
+- Tests: 121/121 PASS across 30 files
 - Production build: PASS
-- PWA validation: PASS
-- Vite modules transformed: 133
-- PWA precache: 68 entries / approximately 2444.29 KiB
-- Initial application chunk: approximately 31.01 kB
-- Codec Director editor chunk: approximately 19.60 kB
-- Director runtime overlay: approximately 9.20 kB
-- Director storage/data chunk: approximately 16.41 kB
-- Phaser remains lazy-loaded in a separate approximately 1.48 MB chunk.
+- PWA check: PASS
+- Vite modules transformed: 166
+- PWA precache: 87 entries, ~2912.72 KiB
+- Codec chunk: ~164.70 kB
+- Phaser remains lazy-loaded: ~1.48 MB
