@@ -48,6 +48,19 @@ function Waveform({ strength }: { strength: number }) {
 }
 
 function Tuner({ identity, frequency, signalStrength, onTune, onFrequencyInput, onCall }: Pick<CodecVisualStageProps, 'identity' | 'frequency' | 'signalStrength' | 'onTune' | 'onFrequencyInput' | 'onCall'>) {
+  if (!identity.supportsClassicTuning) {
+    return (
+      <div className={`visual-tuner modern-link-deck tuner-${identity.controlStyle}`}>
+        <div className="visual-tuner-heading">
+          <span>{identity.frequencyLabel}</span>
+          <strong>{identity.shellLabel}</strong>
+        </div>
+        <div className="modern-link-status"><span>ACTIVE ROUTE</span><strong>{signalStrength}%</strong></div>
+        <Waveform strength={signalStrength} />
+        <button type="button" className="visual-call-button" onClick={onCall}>{identity.callLabel}</button>
+      </div>
+    );
+  }
   const largeStep = identity.supportsClassicTuning ? 0.1 : 1;
   const smallStep = identity.supportsClassicTuning ? 0.01 : 0.1;
   return (
@@ -110,10 +123,11 @@ export function CodecVisualStage(props: CodecVisualStageProps) {
   const role = contactRole?.replace(/_/g, ' ').toUpperCase() ?? 'UNKNOWN';
 
   if (identity.layoutId === 'msx_terminal') {
+    const isMg2 = chapterLabel.includes('zanzibar');
     return (
-      <div className="codec-visual-stage layout-msx" data-era={era} data-state={codecState}>
+      <div className={`codec-visual-stage layout-msx ${isMg2 ? 'msx-variant-mg2' : 'msx-variant-mg1'}`} data-era={era} data-state={codecState}>
         <header className="msx-radio-header">
-          <span>FOXHOUND COMM SYSTEM</span><strong>RADIO</strong><span>{state}</span>
+          <span>{isMg2 ? 'SOLID SNAKE' : 'OPERATION INTRUDE N313'}</span><strong>TRANSCEIVER</strong><span>{state}</span>
         </header>
         <div className="msx-terminal-window">
           <div className="msx-operator-line">OPERATIVE: {playerName} / LOCATION: {contextName}</div>
@@ -122,6 +136,7 @@ export function CodecVisualStage(props: CodecVisualStageProps) {
             {tuner}
             <div className="msx-character-block">{rightPortrait}</div>
           </div>
+          {isMg2 && <div className="msx-mg2-keypad" aria-hidden="true">{['1','2','3','4','5','6','7','8','9','*','0','#'].map((key) => <span key={key}>{key}</span>)}</div>}
           <div className="msx-route-line">CONTACT: {contactName} / CLASS: {role} / ACCESS: {access}</div>
           {topicSelector}
           <div className="msx-text-buffer"><span>{identity.dialogueLabel}</span>{dialogue}</div>
@@ -161,13 +176,13 @@ export function CodecVisualStage(props: CodecVisualStageProps) {
     return (
       <div className="codec-visual-stage layout-mgs3" data-era={era} data-state={codecState}>
         <div className="mgs3-radio-casing">
-          <header><span>US ARMY FIELD RADIO</span><strong>{contextName}</strong><b>{state}</b></header>
+          <header><span>RADIO</span><strong>{contextName}</strong><b>{state}</b></header>
           <div className="mgs3-hardware-row">
             <div className="mgs3-lcd portrait-lcd">{leftPortrait}</div>
             <div className="mgs3-control-bank">
-              <div className="mgs3-meter-bank"><span>BATTERY</span><i /><i /><i /><span>SIGNAL</span><SignalBars strength={signalStrength} /></div>
+              <div className="mgs3-meter-bank"><span>MEM</span><span>SEND</span><span>TUNE</span><SignalBars strength={signalStrength} /></div>
               {tuner}
-              <div className="mgs3-knob-row"><span>VOL</span><i /><span>SQUELCH</span><i /><span>BAND</span><i /></div>
+              <div className="mgs3-page-index"><span>RADIO CONTACT</span><strong>02/04</strong></div>
               {topicSelector}
             </div>
             <div className="mgs3-lcd portrait-lcd">{rightPortrait}</div>
@@ -197,11 +212,12 @@ export function CodecVisualStage(props: CodecVisualStageProps) {
   }
 
   if (identity.layoutId === 'peace_walker_briefing') {
+    const isRealtimeCall = codecState === 'dialogue_playing' || codecState === 'incoming_call' || codecState === 'connected';
     return (
       <div className="codec-visual-stage layout-peace-walker" data-era={era} data-state={codecState}>
         <div className="pw-file-cover">
           <header><span>MILITAIRES SANS FRONTIÈRES</span><strong>OPERATIONS FILE</strong><b>{chapterLabel}</b></header>
-          <div className="pw-folder-tabs"><span>BRIEFING</span><span>STAFF</span><span>INTEL</span><span>MISSION LOG</span></div>
+          <div className="pw-folder-tabs"><span>{isRealtimeCall ? 'REAL-TIME CODEC' : 'BRIEFING FILES'}</span><span>STAFF</span><span>INTEL</span><span>MISSION LOG</span></div>
           <div className="pw-dossier-grid">
             <section className="pw-photo-card">{leftPortrait}<small>FIELD COMMANDER</small></section>
             <section className="pw-file-body">

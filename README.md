@@ -1,4 +1,10 @@
-# Shadow Codec Ops - v3.4.0
+# Shadow Codec Ops - v3.5.0
+
+## Franchise Codec Fidelity Audit
+
+Version 3.5 performs a source-backed fidelity pass over every communication generation. It separates MG and MG2 transceiver details, restores MGS2's green illustrated Codec, rebuilds MGS3 as a muted radio overlay, removes false frequency tuning from MGS4/PW/MGSV, distinguishes Peace Walker real-time calls from Briefing Files and adds generation-specific procedural SFX cadences.
+
+See `CODEC_FIDELITY_AUDIT.md` and the in-app Reference Fidelity Profile.
 
 ## Retractable command drawers and first character portrait pack
 

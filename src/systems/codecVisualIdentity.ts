@@ -73,7 +73,7 @@ const identities: Record<EraId, CodecVisualIdentity> = {
     dialogueLabel: 'DIGITAL TRANSMISSION',
     portraitMode: 'digital',
     supportsClassicTuning: true,
-    visualFeatureLabels: ['BLUE GLASS HUD', 'PRIORITY ROUTING', 'DIGITAL BRACKETS']
+    visualFeatureLabels: ['GREEN MONOCHROME', 'ILLUSTRATED PORTRAITS', 'CAMERA REACTION']
   },
   mgs3: {
     era: 'mgs3',
@@ -88,14 +88,14 @@ const identities: Record<EraId, CodecVisualIdentity> = {
     dialogueLabel: 'FIELD TRANSMISSION',
     portraitMode: 'radio_lcd',
     supportsClassicTuning: true,
-    visualFeatureLabels: ['ANALOG DIAL', 'SURVIVAL TELEMETRY', 'FIELD CASING']
+    visualFeatureLabels: ['MONOCHROME RADIO', 'MEM / SEND / TUNE', 'PERSONAL DATA']
   },
   mgs4: {
     era: 'mgs4',
     layoutId: 'mgs4_cinematic_codec',
     controlStyle: 'cinematic',
     shellLabel: 'NOMAD SECURE VISUAL LINK',
-    frequencyLabel: 'SECURE CHANNEL',
+    frequencyLabel: 'SECURE VIDEO LINK',
     callLabel: 'CONNECT',
     memoryLabel: 'NETWORK',
     historyLabel: 'ARCHIVE',
@@ -110,7 +110,7 @@ const identities: Record<EraId, CodecVisualIdentity> = {
     layoutId: 'peace_walker_briefing',
     controlStyle: 'briefing',
     shellLabel: 'MSF OPERATIONS BRIEFING FILE',
-    frequencyLabel: 'FILE CHANNEL',
+    frequencyLabel: 'BRIEFING FILE',
     callLabel: 'OPEN FILE',
     memoryLabel: 'STAFF FILES',
     historyLabel: 'BRIEFING LOG',
@@ -125,7 +125,7 @@ const identities: Record<EraId, CodecVisualIdentity> = {
     layoutId: 'mgsv_idroid',
     controlStyle: 'idroid',
     shellLabel: 'iDROID / DIAMOND DOGS COMMS',
-    frequencyLabel: 'COMMS BUS',
+    frequencyLabel: 'iDROID AUDIO BUS',
     callLabel: 'PLAY / CONNECT',
     memoryLabel: 'CONTACTS',
     historyLabel: 'LOGS',

@@ -49,15 +49,36 @@ const cueMap: Record<string, Record<CodecUiCue, [number, number, OscillatorType]
   corrupt: { tune:[330,45,'sawtooth'],connect:[770,120,'sawtooth'],disconnect:[90,160,'sawtooth'],incoming:[690,160,'sawtooth'],no_response:[70,240,'sawtooth'],confirm:[880,60,'sawtooth'],error:[55,260,'sawtooth'],memory:[430,90,'sawtooth'] }
 };
 
+const cueCadence: Record<CodecUiCue, number[]> = {
+  tune: [1],
+  connect: [1, 1.38],
+  disconnect: [1, 0.62],
+  incoming: [1, 1, 1],
+  no_response: [1, 0.74],
+  confirm: [1, 1.25],
+  error: [1, 0.72, 0.48],
+  memory: [1, 1.18]
+};
+
+export function getCodecUiCueSignature(era: EraId, cue: CodecUiCue): { profile: CodecAssetPackDefinition['uiProfile']; tones: number; waveform: OscillatorType } {
+  const profile = getCodecAssetPack(era).uiProfile;
+  return { profile, tones: cueCadence[cue].length, waveform: cueMap[profile][cue][2] };
+}
+
 export function playCodecUiCue(era: EraId, cue: CodecUiCue, volume = 0.35): void {
   const ctx = getContext(); if (!ctx || volume <= 0) return;
-  const [frequency, duration, type] = cueMap[getCodecAssetPack(era).uiProfile][cue];
-  const oscillator = ctx.createOscillator(); const gain = ctx.createGain();
-  oscillator.type = type; oscillator.frequency.value = frequency;
-  gain.gain.setValueAtTime(0.0001, ctx.currentTime);
-  gain.gain.exponentialRampToValueAtTime(Math.max(0.001, volume * 0.09), ctx.currentTime + 0.008);
-  gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration / 1000);
-  oscillator.connect(gain); gain.connect(ctx.destination); oscillator.start(); oscillator.stop(ctx.currentTime + duration / 1000 + 0.01);
+  const profile = getCodecAssetPack(era).uiProfile;
+  const [frequency, duration, type] = cueMap[profile][cue];
+  const spacing = Math.max(52, duration * 0.72) / 1000;
+  cueCadence[cue].forEach((ratio, index) => {
+    const start = ctx.currentTime + index * spacing;
+    const oscillator = ctx.createOscillator(); const gain = ctx.createGain();
+    oscillator.type = type; oscillator.frequency.value = frequency * ratio;
+    gain.gain.setValueAtTime(0.0001, start);
+    gain.gain.exponentialRampToValueAtTime(Math.max(0.001, volume * 0.09), start + 0.008);
+    gain.gain.exponentialRampToValueAtTime(0.0001, start + duration / 1000);
+    oscillator.connect(gain); gain.connect(ctx.destination); oscillator.start(start); oscillator.stop(start + duration / 1000 + 0.01);
+  });
 }
 
 export function stopCodecAmbience(): void { ambience?.stop(); ambience = null; }

@@ -91,7 +91,7 @@ export interface EraDefinition {
   id: EraId;
   name: string;
   visualStyle: CodecVisualStyle;
-  codecType: 'classic_frequency' | 'radio_frequency' | 'cassette' | 'idroid' | 'simulation' | 'corrupted';
+  codecType: 'classic_frequency' | 'radio_frequency' | 'secure_video' | 'briefing_files' | 'cassette' | 'idroid' | 'simulation' | 'corrupted';
   defaultFrequency: number;
   description: string;
   availableModes: string[];

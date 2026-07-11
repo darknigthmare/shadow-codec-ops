@@ -355,3 +355,17 @@ Next franchise priority: Peace Walker/MSF briefing and support network.
 - six emotional states per character, resolved automatically by the Codec runtime
 
 Next avatar priority: complete the remaining MGS1 contacts before producing era-specific packs for MGS2 and MGS3.
+
+## Completed - Franchise Codec Fidelity Audit (v3.5)
+
+- official/manual-backed device and interaction profile for every era
+- MG and MG2 visual differentiation with MG2 keypad treatment
+- MGS2 restored to green monochrome illustrated Codec presentation
+- MGS3 rebuilt as a muted 1964 radio overlay with MEM / SEND / TUNE controls
+- MGS4 secure video link without fictional frequency tuning
+- Peace Walker Real-Time Codec and Briefing Files distinction
+- MGSV iDroid audio bus without classic frequency controls
+- multi-tone procedural SFX signatures per hardware generation
+- in-app fidelity profile with reference links
+
+Next visual priority: finish character-specific emotional portrait packs without embedding extracted copyrighted game assets.

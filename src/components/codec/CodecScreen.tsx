@@ -12,6 +12,7 @@ import canonCoverageJson from '../../data/codecCanonCoverage.json';
 import erasJson from '../../data/eras.json';
 import themesJson from '../../data/themes.json';
 import radioSignalsJson from '../../data/radioSignals.json';
+import fidelityProfilesJson from '../../data/codecFidelityProfiles.json';
 import type {
   CallHistoryEntry,
   CodecCallPriority,
@@ -82,6 +83,7 @@ import { downloadCodecWebm, exportCodecJson, exportCodecPng, startDomWebmRecordi
 const contacts = contactsJson as ContactDefinition[];
 const builtInConversations = conversationsJson as ConversationDefinition[];
 const contexts = contextsJson as CodecContextDefinition[];
+const fidelityProfiles = fidelityProfilesJson as Array<{ era: EraId; device: string; interaction: string; visual: string; audio: string; sources: string[] }>;
 const contactRules = contactRulesJson as CodecContactRuleDefinition[];
 const canonSources = canonSourcesJson as CodecCanonSourceDefinition[];
 const canonCoverage = canonCoverageJson as CodecCanonCoverageEntry[];
@@ -373,6 +375,7 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
   const displayContact = activeCall?.contact ?? selectedContact ?? (!scan.ambiguous ? scan.contact : undefined);
   const displayContactSources = getContactSources(displayContact, canonSources);
   const currentCanonCoverage = canonCoverage.find((entry) => entry.era === selectedEra);
+  const currentFidelityProfile = fidelityProfiles.find((profile) => profile.era === selectedEra);
   const displayChannelVariants = displayContact ? getContactChannelVariants(displayContact, currentContext.id) : [];
   const mgs1Profile = selectedEra === 'mgs1' ? getMgs1Profile(displayContact?.id) : undefined;
   const mgs1Coverage = useMemo(() => selectedEra === 'mgs1' ? getMgs1ConversationCoverage(conversations) : null, [selectedEra, conversations]);
@@ -433,6 +436,9 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
     onSettingsChange({ ...settings, selectedEra: eraId, selectedTheme: era?.visualStyle ?? settings.selectedTheme });
     if (era) setFrequency(era.defaultFrequency);
     endCall(false, false);
+    setPendingIncoming(null);
+    setIncomingQueue([]);
+    stopCodecAmbience();
     setSidePanel(null);
     setPreferredContactId(null);
     setMessage(`ERA SWITCHED: ${era?.name ?? eraId}`);
@@ -443,6 +449,10 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
     if (!context) return;
     setSelectedContextId(context.id);
     setSelectedPlayerId(context.defaultPlayerId);
+    endCall(false, false);
+    setPendingIncoming(null);
+    setIncomingQueue([]);
+    stopCodecAmbience();
     setPreferredContactId(null);
     setSidePanel(null);
     setMessage(`MISSION CONTEXT: ${context.name.toUpperCase()}`);
@@ -1294,6 +1304,18 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
             {visualIdentity.visualFeatureLabels.map((feature) => <span key={feature}>{feature}</span>)}
             {currentContext.flags.map((flag) => <span key={flag}>{flag}</span>)}
           </div>
+          {currentFidelityProfile && (
+            <article className="codec-fidelity-profile">
+              <span>REFERENCE FIDELITY PROFILE</span>
+              <h4>{currentFidelityProfile.device}</h4>
+              <dl>
+                <div><dt>Interaction</dt><dd>{currentFidelityProfile.interaction}</dd></div>
+                <div><dt>Visual</dt><dd>{currentFidelityProfile.visual}</dd></div>
+                <div><dt>Audio</dt><dd>{currentFidelityProfile.audio}</dd></div>
+              </dl>
+              {currentFidelityProfile.sources.length > 0 && <div className="fidelity-source-links">{currentFidelityProfile.sources.map((source, index) => <a key={source} href={source} target="_blank" rel="noreferrer">SOURCE {index + 1}</a>)}</div>}
+            </article>
+          )}
           <div className="visual-pack-actions">
             {memoryContacts.slice(0, 6).map((contact) => (
               <button key={contact.id} type="button" onClick={() => selectMemoryContact(contact)}>

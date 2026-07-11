@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { codecAssetPacks, getBuiltInPortrait, getCharacterPortrait, getCodecAssetPack } from './codecAssetEngine';
+import { codecAssetPacks, getBuiltInPortrait, getCharacterPortrait, getCodecAssetPack, getCodecUiCueSignature } from './codecAssetEngine';
 
 describe('codec asset packs', () => {
   it('covers every codec era exactly once', () => {
@@ -20,5 +20,11 @@ describe('codec asset packs', () => {
     expect(getCharacterPortrait('campbell_mgs1', 'calm')).toBe('/portraits/mgs1/campbell/calm.webp');
     expect(getCharacterPortrait('solid_snake_mgs1', 'unsupported')).toBe('/portraits/mgs1/solid_snake/neutral.webp');
     expect(getCharacterPortrait('unknown_character', 'neutral')).toBeUndefined();
+  });
+  it('keeps distinct procedural UI signatures for each hardware generation', () => {
+    expect(getCodecUiCueSignature('msx', 'incoming')).toMatchObject({ profile: '8bit', tones: 3, waveform: 'square' });
+    expect(getCodecUiCueSignature('mgs3', 'connect').profile).toBe('analog');
+    expect(getCodecUiCueSignature('mgs4', 'connect').profile).toBe('secure');
+    expect(getCodecUiCueSignature('mgsv', 'connect').profile).toBe('idroid');
   });
 });
