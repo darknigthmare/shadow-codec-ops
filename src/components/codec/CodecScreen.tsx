@@ -71,6 +71,8 @@ import { Mgs1ContactDossier } from './Mgs1ContactDossier';
 import { getMgs1ConversationCoverage, getMgs1Profile, getMgs1ScheduledIncomingForContext } from '../../systems/mgs1ContentEngine';
 import { Mgs2ContactDossier } from './Mgs2ContactDossier';
 import { getMgs2Coverage, getMgs2Profile, getMgs2ScheduledIncomingForContext } from '../../systems/mgs2ContentEngine';
+import { Mgs3ContactDossier } from './Mgs3ContactDossier';
+import { getMgs3Coverage, getMgs3Profile, getMgs3ScheduledIncomingForContext } from '../../systems/mgs3ContentEngine';
 import { getCodecVisualIdentity } from '../../systems/codecVisualIdentity';
 import { getCanonStatusLabel, getContactChannelDisplay, getContactChannelVariants, getContactSources } from '../../systems/codecCanonRegistry';
 import type { CodecReplayRecord } from '../../types/codecReplay.types';
@@ -87,7 +89,7 @@ const eras = erasJson as EraDefinition[];
 const themePacks = themesJson as ThemePackDefinition[];
 const radioSignals = radioSignalsJson as RadioSignalDefinition[];
 
-type SidePanel = 'memory' | 'history' | 'router' | 'save' | 'scan' | 'replay' | 'mgs1_dossier' | 'mgs2_dossier' | null;
+type SidePanel = 'memory' | 'history' | 'router' | 'save' | 'scan' | 'replay' | 'mgs1_dossier' | 'mgs2_dossier' | 'mgs3_dossier' | null;
 
 interface StoredCodecContextState {
   contextId: string;
@@ -177,6 +179,7 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
   const [callHistory, setCallHistory] = useState<CallHistoryEntry[]>(() => loadJson('call-history', []));
   const [mgs1ScheduledCallIds, setMgs1ScheduledCallIds] = useState<string[]>(() => loadJson('mgs1-scheduled-call-ids', []));
   const [mgs2ScheduledCallIds, setMgs2ScheduledCallIds] = useState<string[]>(() => loadJson('mgs2-scheduled-call-ids', []));
+  const [mgs3ScheduledCallIds, setMgs3ScheduledCallIds] = useState<string[]>(() => loadJson('mgs3-scheduled-call-ids', []));
   const [customConversations] = useState(() => loadCustomConversations());
   const [voicePackState, setVoicePackState] = useState(() => loadVoicePackState());
   const [preferredContactId, setPreferredContactId] = useState<string | null>(campaignContact?.id ?? null);
@@ -206,6 +209,7 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
   useEffect(() => saveJson('call-history', callHistory), [callHistory]);
   useEffect(() => saveJson('mgs1-scheduled-call-ids', mgs1ScheduledCallIds), [mgs1ScheduledCallIds]);
   useEffect(() => saveJson('mgs2-scheduled-call-ids', mgs2ScheduledCallIds), [mgs2ScheduledCallIds]);
+  useEffect(() => saveJson('mgs3-scheduled-call-ids', mgs3ScheduledCallIds), [mgs3ScheduledCallIds]);
   useEffect(() => saveJson('codec-stream-overlay', streamOverlay), [streamOverlay]);
   useEffect(() => {
     document.body.classList.toggle('codec-overlay-body', streamOverlay);
@@ -235,6 +239,17 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
     }, entry.delayMs));
     return () => timers.forEach((timer) => window.clearTimeout(timer));
   }, [selectedEra, currentContext.id]);
+
+  useEffect(() => {
+    if (selectedEra !== 'mgs3') return;
+    const scheduled = getMgs3ScheduledIncomingForContext(currentContext.id, mgs3ScheduledCallIds);
+    if (!scheduled.length) return;
+    const timers = scheduled.map((entry) => window.setTimeout(() => {
+      queueCodecIncomingCall(entry.contactId, {conversationId:entry.conversationId,priority:entry.priority,required:entry.required,expiresInMs:entry.required?15_000:22_000,sourceLabel:entry.sourceLabel});
+      if(entry.once)setMgs3ScheduledCallIds(ids=>ids.includes(entry.id)?ids:[...ids,entry.id]);
+    },entry.delayMs));
+    return()=>timers.forEach(timer=>window.clearTimeout(timer));
+  },[selectedEra,currentContext.id]);
 
   useEffect(() => {
     if (selectedEra !== 'mgs2') return;
@@ -358,6 +373,8 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
   const mgs1Coverage = useMemo(() => selectedEra === 'mgs1' ? getMgs1ConversationCoverage(conversations) : null, [selectedEra, conversations]);
   const mgs2Profile = selectedEra === 'mgs2' ? getMgs2Profile(displayContact?.id) : undefined;
   const mgs2Coverage = useMemo(() => selectedEra === 'mgs2' ? getMgs2Coverage(conversations) : null, [selectedEra, conversations]);
+  const mgs3Profile = selectedEra === 'mgs3' ? getMgs3Profile(displayContact?.id) : undefined;
+  const mgs3Coverage = useMemo(() => selectedEra === 'mgs3' ? getMgs3Coverage(conversations) : null, [selectedEra, conversations]);
   const missedCallCount = callHistory.filter((entry) => entry.disposition === 'missed' || entry.disposition === 'ignored').length;
 
   useEffect(() => {
@@ -978,6 +995,8 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
       {selectedEra === 'mgs1' && mgs1Coverage && <span className="codec-mgs1-library-count" title="MGS1 conversation library coverage">LIBRARY {mgs1Coverage.total} · PROVERBS {mgs1Coverage.proverbCount} · BOSS {mgs1Coverage.bossIntelCount}</span>}
       {selectedEra === 'mgs2' && mgs2Profile && <button type="button" onClick={() => setSidePanel(sidePanel === 'mgs2_dossier' ? null : 'mgs2_dossier')}>MGS2 DOSSIER</button>}
       {selectedEra === 'mgs2' && mgs2Coverage && <span className="codec-mgs1-library-count" title="MGS2 Codec coverage">CONTACTS {mgs2Coverage.contacts} · LIBRARY {mgs2Coverage.conversations} · OPS {mgs2Coverage.contexts}</span>}
+      {selectedEra === 'mgs3' && mgs3Profile && <button type="button" onClick={() => setSidePanel(sidePanel === 'mgs3_dossier' ? null : 'mgs3_dossier')}>MGS3 FIELD FILE</button>}
+      {selectedEra === 'mgs3' && mgs3Coverage && <span className="codec-mgs1-library-count">CONTACTS {mgs3Coverage.contacts} · LIBRARY {mgs3Coverage.conversations} · FIELD {mgs3Coverage.items}</span>}
       <button type="button" onClick={capturePng}>CAPTURE PNG</button>
       <button type="button" className={recording ? 'recording-active' : ''} onClick={() => void toggleWebmRecording()}>{recording ? 'STOP WEBM' : 'RECORD WEBM'}</button>
       <button type="button" onClick={() => setStreamOverlay((enabled) => !enabled)}>{streamOverlay ? 'EXIT OVERLAY' : 'STREAM OVERLAY'}</button>
@@ -1225,6 +1244,11 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
               setMessage(`MGS2 TOPIC READY: ${topicId.replace(/_/g, ' ').toUpperCase()}`);
             }}
           />
+        </Panel>
+      )}
+      {sidePanel === 'mgs3_dossier' && mgs3Profile && displayContact && (
+        <Panel title="MGS3 SURVIVAL RADIO DOSSIER" className={`side-panel visual-side-panel visual-side-${visualIdentity.layoutId}`}>
+          <Mgs3ContactDossier profile={mgs3Profile} contact={displayContact} context={currentContext} conversations={conversations} history={callHistory} locale={settings.locale} onSelectTopic={(topicId)=>{const preferred=getPreferredContactFrequency(displayContact,currentContext.id,topicId);setFrequency(preferred.frequency);setPreferredContactId(displayContact.id);setSelectedSubjectId(topicId);setSidePanel(null);setMessage(`MGS3 TOPIC READY: ${topicId.replace(/_/g,' ').toUpperCase()}`);}} />
         </Panel>
       )}
 

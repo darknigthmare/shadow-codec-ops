@@ -332,4 +332,15 @@ MGS1-D final polish and dedicated QA are complete in v3.2.
 - 43 bilingual lore-grounded MGS2 conversations
 - automated coverage and data-integrity tests
 
-Next franchise priority: apply the same dossier and contextual-call standard to MGS3.
+MGS3 now uses the same dossier and contextual-call standard in v3.3.
+
+## Completed - MGS3 Survival Radio (v3.3)
+
+- six complete radio channels
+- three operation contexts
+- survival, medical, food, wildlife, weapon and field-intelligence topics
+- contextual incoming calls
+- zone, equipment, timeline and portrait catalogues
+- automated coverage tests
+
+Next franchise priority: Peace Walker/MSF briefing and support network.

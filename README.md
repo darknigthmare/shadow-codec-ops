@@ -1,4 +1,10 @@
-# Shadow Codec Ops - v3.2.0
+# Shadow Codec Ops - v3.3.0
+
+## Complete MGS3 Survival Radio
+
+Version 3.3 completes the MGS3 radio structure: six operational channels, Virtuous Mission/Snake Eater/Groznyj Grad calls, character dossiers, survival field files, equipment, food, wildlife, timeline, identity states and bilingual lore-grounded conversations.
+
+See `MGS3_COMPLETE_CODEC_REPORT.md`.
 
 ## MGS1-D and complete MGS2 Codec layer
 
