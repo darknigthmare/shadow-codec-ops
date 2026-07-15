@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import { getStorageKey } from '../../systems/saveEngine';
 import { parseStoredSideOpsMissionId, resolveSideOpsRuntimeScene } from '../../systems/sideOpsRuntimeResolver';
 import { SIDEOPS_PLAYABLE_OPERATIVE_ASSETS } from '../../systems/sideOpsCharacterResolver';
+import { MG1_ACTOR_ANIMATION_ASSETS } from '../core/mg1ActorAnimationRegistry';
 import {
   MG1_SIDEOPS_ALL_ASSETS,
   type Mg1SideOpsAsset
@@ -131,6 +132,13 @@ export class PreloadScene extends Phaser.Scene {
     this.load.image('vrBoss', '/vr/characters/vr-armored-captain.png');
     SIDEOPS_PLAYABLE_OPERATIVE_ASSETS.forEach((asset) => this.load.image(asset.textureKey, asset.path));
     MG1_SIDEOPS_ALL_ASSETS.forEach((asset) => preloadMg1Asset(this, asset));
+    MG1_ACTOR_ANIMATION_ASSETS.forEach((asset) => {
+      this.load.spritesheet(asset.textureKey, asset.path, {
+        frameWidth: asset.frameWidth,
+        frameHeight: asset.frameHeight,
+        endFrame: asset.frameCount - 1
+      });
+    });
   }
 
   create(): void {

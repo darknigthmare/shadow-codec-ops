@@ -14,6 +14,13 @@ import { calculateSideOpsRank } from '../systems/rankSystem';
 import { RuntimeInputController } from '../core/RuntimeInput';
 import { resolveBuilderSideOpsProfile } from '../../systems/missionBuilderStorage';
 import { getCampaignLoadoutBonuses } from '../../systems/campaignStorage';
+import {
+  getMg1ActorAnimationAssetBySourceTexture,
+  getMg1ActorAnimationKey,
+  MG1_ACTOR_ANIMATION_ASSETS,
+  type Mg1ActorAnimationAsset,
+  type Mg1ActorAnimationState
+} from '../core/mg1ActorAnimationRegistry';
 
 type AlertState = 'NORMAL' | 'SUSPICION' | 'ALERT' | 'EVASION' | 'CAUTION' | 'MISSION FAILED';
 type GuardRole = 'patrol' | 'reinforcement';
@@ -389,6 +396,7 @@ export class SideOpsScene extends Phaser.Scene {
     this.missionStartTime = this.time.now;
     this.physics.world.setBounds(0, 0, this.profile.worldWidth, 540);
     this.cameras.main.setBounds(0, 0, this.profile.worldWidth, 540);
+    this.createMg1ActorAnimations();
 
     this.addSkyAndBackdrops();
 
@@ -396,7 +404,12 @@ export class SideOpsScene extends Phaser.Scene {
     this.profile.platforms.forEach((platform) => this.createPlatform(this.platforms, platform.x, platform.y, platform.scaleX));
     this.profile.crates.forEach((crate) => this.addCrate(crate.x, crate.y, this.platforms));
 
-    this.player = this.physics.add.sprite(this.profile.start.x, this.profile.start.y, this.profile.playerTexture);
+    this.player = this.physics.add.sprite(
+      this.profile.start.x,
+      this.profile.start.y,
+      this.resolveMg1ActorTexture(this.profile.playerTexture)
+    );
+    this.configureMg1ActorSprite(this.player, this.profile.playerTexture);
     this.player.setCollideWorldBounds(true);
     this.player.setDragX(1250);
     this.player.setMaxVelocity(270, 540);
@@ -539,6 +552,78 @@ export class SideOpsScene extends Phaser.Scene {
     this.camerasDisabled = 0;
   }
 
+  /** Makes MG1 Builder missions use the same animated pack as Operation N313. */
+  private createMg1ActorAnimations(): void {
+    MG1_ACTOR_ANIMATION_ASSETS.forEach((asset) => {
+      if (!this.textures.exists(asset.textureKey)) return;
+      (Object.entries(asset.clips) as [Mg1ActorAnimationState, NonNullable<Mg1ActorAnimationAsset['clips'][Mg1ActorAnimationState]>][])
+        .forEach(([state, clip]) => {
+          const key = getMg1ActorAnimationKey(asset.textureKey, state);
+          if (this.anims.exists(key)) return;
+          this.anims.create({
+            key,
+            frames: this.anims.generateFrameNumbers(asset.textureKey, { start: clip.start, end: clip.end }),
+            frameRate: clip.frameRate,
+            repeat: clip.repeat
+          });
+        });
+    });
+  }
+
+  private resolveMg1ActorTexture(sourceTextureKey: string): string {
+    const asset = getMg1ActorAnimationAssetBySourceTexture(sourceTextureKey);
+    return asset && this.textures.exists(asset.textureKey) ? asset.textureKey : sourceTextureKey;
+  }
+
+  private configureMg1ActorSprite(sprite: Phaser.GameObjects.Sprite, sourceTextureKey: string): void {
+    sprite.setData('mg1SourceTextureKey', sourceTextureKey);
+    sprite.setData('mg1AnimationLock', '');
+    sprite.setData('mg1AnimationPriority', 0);
+    const asset = getMg1ActorAnimationAssetBySourceTexture(sourceTextureKey);
+    if (!asset || !this.textures.exists(asset.textureKey)) return;
+    sprite.setTexture(asset.textureKey, asset.clips.idle?.start ?? 0);
+    const body = (sprite as unknown as Phaser.Physics.Arcade.Sprite).body as Phaser.Physics.Arcade.Body | null;
+    if (body) {
+      body.setSize(asset.sourceWidth, asset.sourceHeight, false);
+      body.setOffset(Math.floor((asset.frameWidth - asset.sourceWidth) / 2), 0);
+    }
+    this.playMg1ActorLoop(sprite, 'idle');
+  }
+
+  private getMg1ActorAsset(sprite: Phaser.GameObjects.Sprite): Mg1ActorAnimationAsset | undefined {
+    return getMg1ActorAnimationAssetBySourceTexture(String(sprite.getData('mg1SourceTextureKey') ?? ''));
+  }
+
+  private playMg1ActorLoop(sprite: Phaser.GameObjects.Sprite, state: Mg1ActorAnimationState): void {
+    const asset = this.getMg1ActorAsset(sprite);
+    if (!asset || !this.textures.exists(asset.textureKey) || Number(sprite.getData('mg1AnimationPriority') ?? 0) > 0) return;
+    const resolved = asset.clips[state] ? state : 'idle';
+    const key = getMg1ActorAnimationKey(asset.textureKey, resolved);
+    if (this.anims.exists(key) && (sprite.anims.currentAnim?.key !== key || !sprite.anims.isPlaying)) sprite.play(key);
+  }
+
+  private playMg1ActorAction(sprite: Phaser.GameObjects.Sprite, state: Mg1ActorAnimationState): void {
+    const asset = this.getMg1ActorAsset(sprite);
+    const clip = asset?.clips[state];
+    if (!asset || !clip || !this.textures.exists(asset.textureKey)) return;
+    const priority = state === 'death' ? 4 : state === 'hit' ? 3 : 2;
+    const currentPriority = Number(sprite.getData('mg1AnimationPriority') ?? 0);
+    if (currentPriority === 4 || currentPriority >= priority) return;
+    const key = getMg1ActorAnimationKey(asset.textureKey, state);
+    if (!this.anims.exists(key)) return;
+    const lock = `${state}-${this.time.now}-${Phaser.Math.Between(0, 99999)}`;
+    sprite.setData('mg1AnimationLock', lock);
+    sprite.setData('mg1AnimationPriority', priority);
+    sprite.play(key);
+    if (state === 'death') return;
+    const durationMs = Math.ceil(((clip.end - clip.start + 1) / clip.frameRate) * 1000) + 34;
+    this.time.delayedCall(durationMs, () => {
+      if (!sprite.active || sprite.getData('mg1AnimationLock') !== lock) return;
+      sprite.setData('mg1AnimationLock', '');
+      sprite.setData('mg1AnimationPriority', 0);
+    });
+  }
+
   private addSkyAndBackdrops(): void {
     const width = this.profile.worldWidth;
     this.add.rectangle(width / 2, 270, width, 540, this.profile.backdropColor).setDepth(-20);
@@ -619,7 +704,8 @@ export class SideOpsScene extends Phaser.Scene {
 
   private spawnGuard(config: { x: number; y: number; patrolMin: number; patrolMax: number; role: GuardRole; hp?: number }): GuardUnit {
     const key = config.role === 'reinforcement' ? this.profile.reinforcementTexture : this.profile.guardTexture;
-    const sprite = this.physics.add.sprite(config.x, config.y, key);
+    const sprite = this.physics.add.sprite(config.x, config.y, this.resolveMg1ActorTexture(key));
+    this.configureMg1ActorSprite(sprite, key);
     sprite.setCollideWorldBounds(true);
     sprite.setDragX(900);
     this.physics.add.collider(sprite, this.platforms);
@@ -647,7 +733,12 @@ export class SideOpsScene extends Phaser.Scene {
   }
 
   private createBoss(): void {
-    const sprite = this.physics.add.sprite(this.profile.boss.x, this.profile.boss.y, this.profile.boss.texture);
+    const sprite = this.physics.add.sprite(
+      this.profile.boss.x,
+      this.profile.boss.y,
+      this.resolveMg1ActorTexture(this.profile.boss.texture)
+    );
+    this.configureMg1ActorSprite(sprite, this.profile.boss.texture);
     sprite.setDragX(850);
     sprite.setMaxVelocity(170, 500);
     sprite.setTint(0x7a8f62);
@@ -765,6 +856,7 @@ export class SideOpsScene extends Phaser.Scene {
     } else {
       this.player.setVelocityX(0);
     }
+    this.playMg1ActorLoop(this.player, left || right ? 'move' : 'idle');
 
     if (jump && body.blocked.down && !down) {
       this.player.setVelocityY(-430);
@@ -805,6 +897,7 @@ export class SideOpsScene extends Phaser.Scene {
     bullet.setVelocityX(direction * 680);
     bullet.setVelocityY(0);
     bullet.setFlipX(direction < 0);
+    this.playMg1ActorAction(this.player, 'attack');
     this.time.delayedCall(900, () => bullet.active && bullet.destroy());
   }
 
@@ -856,6 +949,7 @@ export class SideOpsScene extends Phaser.Scene {
       }
 
       guard.sprite.setFlipX(guard.direction < 0);
+      this.playMg1ActorLoop(guard.sprite, 'move');
     });
   }
 
@@ -873,6 +967,7 @@ export class SideOpsScene extends Phaser.Scene {
     boss.direction = this.player.x < boss.sprite.x ? -1 : 1;
     boss.sprite.setFlipX(boss.baseFacingRight ? boss.direction < 0 : boss.direction > 0);
     boss.sprite.setVelocityX((boss.phase === 2 ? 95 : 66) * boss.direction);
+    this.playMg1ActorLoop(boss.sprite, 'move');
 
     if (distanceX < 105 && this.time.now > boss.lastChargeAt) {
       boss.lastChargeAt = this.time.now + 1550;
@@ -901,6 +996,7 @@ export class SideOpsScene extends Phaser.Scene {
   }
 
   private fireBossShot(boss: BossUnit): void {
+    this.playMg1ActorAction(boss.sprite, 'attack');
     const direction = boss.direction;
     const bullet = this.enemyBullets.get(boss.sprite.x + direction * 28, boss.sprite.y - 12, 'enemyBullet') as Phaser.Physics.Arcade.Sprite | null;
     if (!bullet) return;
@@ -917,6 +1013,7 @@ export class SideOpsScene extends Phaser.Scene {
     if (!boss.active) this.activateBoss();
 
     boss.hp = Math.max(0, boss.hp - (source === 'CQC' ? 1 : 1));
+    this.playMg1ActorAction(boss.sprite, 'hit');
     boss.sprite.setTint(0xff9f6b);
     this.time.delayedCall(120, () => boss.sprite.active && !boss.defeated && boss.sprite.setTint(boss.phase === 2 ? this.profile.boss.tintPhaseTwo : this.profile.boss.tintPhaseOne));
     this.flashStatus(`${this.profile.boss.name.toUpperCase()} ARMOR HIT: ${boss.hp}/${boss.maxHp}`);
@@ -941,6 +1038,7 @@ export class SideOpsScene extends Phaser.Scene {
     boss.active = false;
     boss.sprite.setVelocity(0, 0);
     boss.sprite.setTint(0x456b49);
+    this.playMg1ActorAction(boss.sprite, 'death');
     this.completedObjectives.add('defeat_captain');
     this.objectiveStage = 'extract';
     this.suspicionMeter = Math.min(this.suspicionMeter, 45);
@@ -1256,6 +1354,7 @@ export class SideOpsScene extends Phaser.Scene {
       bullet.body?.reset(guard.sprite.x + direction * 18, guard.sprite.y - 6);
       bullet.setVelocityX(direction * (guard.role === 'reinforcement' ? 520 : 460));
       bullet.setVelocityY(0);
+      this.playMg1ActorAction(guard.sprite, 'attack');
       this.time.delayedCall(1200, () => bullet.active && bullet.destroy());
     });
   }
@@ -1279,6 +1378,7 @@ export class SideOpsScene extends Phaser.Scene {
     if (this.boss?.active && !this.boss.defeated) {
       const distanceToBoss = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.boss.sprite.x, this.boss.sprite.y);
       if (distanceToBoss < 92) {
+        this.playMg1ActorAction(this.player, 'attack');
         this.hitBoss('CQC');
         this.damagePlayer(this.boss.phase === 2 ? 10 : 6, 'counter impact');
         return;
@@ -1299,8 +1399,10 @@ export class SideOpsScene extends Phaser.Scene {
 
     const behindGuard = target.direction < 0 ? this.player.x > target.sprite.x : this.player.x < target.sprite.x;
     target.disabled = true;
+    this.playMg1ActorAction(this.player, 'attack');
     target.sprite.setVelocity(0, 0);
     target.sprite.setTint(0x456b49);
+    this.playMg1ActorAction(target.sprite, 'death');
     this.neutralizations += 1;
     this.flashStatus(behindGuard ? 'CQC NON-LETHAL TAKEDOWN' : 'CQC TAKEDOWN');
     this.emitProfileCodec(this.profile.codec.cqc);
@@ -1314,6 +1416,7 @@ export class SideOpsScene extends Phaser.Scene {
     guard.sprite.setTint(0xff9f6b);
 
     if (guard.hp > 0) {
+      this.playMg1ActorAction(guard.sprite, 'hit');
       this.flashStatus('ARMORED TARGET HIT');
       this.triggerAlert('weapon impact');
       return;
@@ -1323,6 +1426,7 @@ export class SideOpsScene extends Phaser.Scene {
     this.kills += 1;
     guard.sprite.setTint(0xff6b6b);
     guard.sprite.setVelocity(0, 0);
+    this.playMg1ActorAction(guard.sprite, 'death');
     this.triggerAlert('lethal shot');
     this.flashStatus(guard.role === 'reinforcement' ? 'REINFORCEMENT DOWN' : 'GUARD DOWN - LETHAL SHOT');
   }
@@ -1344,7 +1448,8 @@ export class SideOpsScene extends Phaser.Scene {
     this.inputController.vibrate(130, 0.62, 0.45);
     this.damageTaken += amount;
     this.player.setTint(0xff6b6b);
-    this.time.delayedCall(160, () => this.player.active && !this.isPlayerCrouched() && this.player.clearTint());
+    if (this.health > 0) this.playMg1ActorAction(this.player, 'hit');
+    this.time.delayedCall(160, () => this.player.active && this.health > 0 && !this.isPlayerCrouched() && this.player.clearTint());
     this.flashStatus(`DAMAGE: ${source.toUpperCase()}`);
 
     if (this.health <= 35 && !this.lowHealthEmitted) {
@@ -1361,13 +1466,15 @@ export class SideOpsScene extends Phaser.Scene {
     this.alertState = 'MISSION FAILED';
     this.player.setTint(0x333333);
     this.player.setVelocity(0, 0);
+    this.playMg1ActorAction(this.player, 'death');
     this.objectiveText.setText('MISSION FAILED: press ENTER in result screen to retry');
     this.emitProfileCodec(this.profile.codec.missionFailed);
     this.emitHudUpdate();
 
     const result = this.buildMissionResult(false, `Mission failed: ${source}`);
     emitGameEvent<MissionCompletePayload>(GAME_EVENT.MISSION_COMPLETE, result);
-    this.time.delayedCall(350, () => this.scene.start('MissionCompleteScene', result));
+    const deathDelayMs = this.getMg1ActorAsset(this.player) ? 900 : 350;
+    this.time.delayedCall(deathDelayMs, () => this.scene.start('MissionCompleteScene', result));
   }
 
   private updateDoorState(): void {

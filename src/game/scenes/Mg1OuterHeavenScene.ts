@@ -38,6 +38,13 @@ import {
   type Mg1Leg,
   type Mg1PlayerAttack
 } from '../core/mg1OuterHeavenMission';
+import {
+  getMg1ActorAnimationAssetBySourceTexture,
+  getMg1ActorAnimationKey,
+  MG1_ACTOR_ANIMATION_ASSETS,
+  type Mg1ActorAnimationAsset,
+  type Mg1ActorAnimationState
+} from '../core/mg1ActorAnimationRegistry';
 import { MG1_SIDEOPS_VFX_ASSETS } from '../core/mg1SideOpsAssetRegistry';
 import { RuntimeInputController } from '../core/RuntimeInput';
 import { calculateSideOpsRank } from '../systems/rankSystem';
@@ -167,11 +174,17 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
     this.physics.world.setBounds(0, 0, MG1_OUTER_HEAVEN_WORLD.worldWidth, 540);
     this.cameras.main.setBounds(0, 0, MG1_OUTER_HEAVEN_WORLD.worldWidth, 540);
 
+    this.createActorAnimations();
     this.createVfxAnimations();
     this.createOuterHeavenBackdrop();
     this.createWorldGeometry();
 
-    this.player = this.physics.add.sprite(MG1_OUTER_HEAVEN_WORLD.start.x, MG1_OUTER_HEAVEN_WORLD.start.y, PLAYER_TEXTURE);
+    this.player = this.physics.add.sprite(
+      MG1_OUTER_HEAVEN_WORLD.start.x,
+      MG1_OUTER_HEAVEN_WORLD.start.y,
+      this.resolveActorTexture(PLAYER_TEXTURE)
+    );
+    this.configureActorSprite(this.player, PLAYER_TEXTURE);
     this.player.setCollideWorldBounds(true).setDragX(1250).setMaxVelocity(270, 540);
     this.physics.add.collider(this.player, this.platforms);
 
@@ -279,6 +292,101 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
     this.completedObjectives = new Set(['infiltrate_outer_heaven']);
   }
 
+  /** Registers every MG1 actor sheet once while retaining the static texture as fallback. */
+  private createActorAnimations(): void {
+    MG1_ACTOR_ANIMATION_ASSETS.forEach((asset) => {
+      if (!this.textures.exists(asset.textureKey)) return;
+      (Object.entries(asset.clips) as [Mg1ActorAnimationState, NonNullable<Mg1ActorAnimationAsset['clips'][Mg1ActorAnimationState]>][])
+        .forEach(([state, clip]) => {
+          const animationKey = getMg1ActorAnimationKey(asset.textureKey, state);
+          if (this.anims.exists(animationKey)) return;
+          this.anims.create({
+            key: animationKey,
+            frames: this.anims.generateFrameNumbers(asset.textureKey, { start: clip.start, end: clip.end }),
+            frameRate: clip.frameRate,
+            repeat: clip.repeat
+          });
+        });
+    });
+  }
+
+  private resolveActorTexture(sourceTextureKey: string): string {
+    const asset = getMg1ActorAnimationAssetBySourceTexture(sourceTextureKey);
+    return asset && this.textures.exists(asset.textureKey) ? asset.textureKey : sourceTextureKey;
+  }
+
+  private configureActorSprite<T extends Phaser.GameObjects.Sprite>(
+    sprite: T,
+    sourceTextureKey: string,
+    initialState: Mg1ActorAnimationState = 'idle'
+  ): T {
+    sprite.setData('mg1SourceTextureKey', sourceTextureKey);
+    sprite.setData('mg1AnimationLock', '');
+    sprite.setData('mg1AnimationPriority', 0);
+    const asset = getMg1ActorAnimationAssetBySourceTexture(sourceTextureKey);
+    if (!asset || !this.textures.exists(asset.textureKey)) {
+      sprite.setTexture(sourceTextureKey);
+      return sprite;
+    }
+
+    sprite.setTexture(asset.textureKey, asset.clips.idle?.start ?? 0);
+    const body = (sprite as unknown as Phaser.Physics.Arcade.Sprite).body as Phaser.Physics.Arcade.Body | Phaser.Physics.Arcade.StaticBody | null;
+    if (body) {
+      body.setSize(asset.sourceWidth, asset.sourceHeight, false);
+      body.setOffset(Math.floor((asset.frameWidth - asset.sourceWidth) / 2), 0);
+      if (body instanceof Phaser.Physics.Arcade.StaticBody) body.updateFromGameObject();
+    }
+    this.playActorLoop(sprite, initialState);
+    return sprite;
+  }
+
+  private getActorAsset(sprite: Phaser.GameObjects.Sprite): Mg1ActorAnimationAsset | undefined {
+    return getMg1ActorAnimationAssetBySourceTexture(String(sprite.getData('mg1SourceTextureKey') ?? ''));
+  }
+
+  private playActorLoop(
+    sprite: Phaser.GameObjects.Sprite,
+    state: Mg1ActorAnimationState,
+    force = false
+  ): void {
+    const asset = this.getActorAsset(sprite);
+    if (!asset || !this.textures.exists(asset.textureKey)) return;
+    if (sprite.getData('mg1AnimationPriority') === 4) return;
+    if (!force && Number(sprite.getData('mg1AnimationPriority') ?? 0) > 0) return;
+    const resolvedState = asset.clips[state] ? state : 'idle';
+    const animationKey = getMg1ActorAnimationKey(asset.textureKey, resolvedState);
+    if (!this.anims.exists(animationKey)) return;
+    if (force) {
+      sprite.setData('mg1AnimationLock', '');
+      sprite.setData('mg1AnimationPriority', 0);
+    }
+    if (sprite.anims.currentAnim?.key !== animationKey || !sprite.anims.isPlaying) sprite.play(animationKey);
+  }
+
+  private playActorAction(sprite: Phaser.GameObjects.Sprite, state: Mg1ActorAnimationState): void {
+    const asset = this.getActorAsset(sprite);
+    const clip = asset?.clips[state];
+    if (!asset || !clip || !this.textures.exists(asset.textureKey)) return;
+    const priority = state === 'death' ? 4 : state === 'hit' ? 3 : 2;
+    const currentPriority = Number(sprite.getData('mg1AnimationPriority') ?? 0);
+    if (currentPriority === 4 || currentPriority >= priority) return;
+    const animationKey = getMg1ActorAnimationKey(asset.textureKey, state);
+    if (!this.anims.exists(animationKey)) return;
+
+    const lock = `${state}-${this.time.now}-${Phaser.Math.Between(0, 99999)}`;
+    sprite.setData('mg1AnimationLock', lock);
+    sprite.setData('mg1AnimationPriority', priority);
+    sprite.play(animationKey);
+    if (state === 'death') return;
+
+    const durationMs = Math.ceil(((clip.end - clip.start + 1) / clip.frameRate) * 1000) + 34;
+    this.time.delayedCall(durationMs, () => {
+      if (!sprite.active || sprite.getData('mg1AnimationLock') !== lock) return;
+      sprite.setData('mg1AnimationLock', '');
+      sprite.setData('mg1AnimationPriority', 0);
+    });
+  }
+
   private createVfxAnimations(): void {
     const runtimeVfxKeys = new Set<string>(MG1_RUNTIME_VFX_KEYS);
     MG1_SIDEOPS_VFX_ASSETS.filter((asset) => runtimeVfxKeys.has(asset.textureKey)).forEach((asset) => {
@@ -316,8 +424,10 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
       fontFamily: 'monospace', fontSize: '18px', color: '#a9e879'
     }).setScrollFactor(0).setDepth(80);
 
-    this.add.image(315, 466, 'mg1TransportTruck').setDepth(-4);
-    this.add.image(455, 466, 'mg1TransportTruck').setDepth(-4).setFlipX(true);
+    const leftTruck = this.add.sprite(315, 466, this.resolveActorTexture('mg1TransportTruck')).setDepth(-4);
+    const rightTruck = this.add.sprite(455, 466, this.resolveActorTexture('mg1TransportTruck')).setDepth(-4).setFlipX(true);
+    this.configureActorSprite(leftTruck, 'mg1TransportTruck');
+    this.configureActorSprite(rightTruck, 'mg1TransportTruck');
   }
 
   private createWorldGeometry(): void {
@@ -355,7 +465,8 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
 
   private spawnNpcCheckpoints(): void {
     MG1_NPC_CHECKPOINTS.forEach((checkpoint) => {
-      const sprite = this.add.sprite(checkpoint.x, checkpoint.y, checkpoint.textureKey).setDepth(3).setTint(0xb8c99c);
+      const sprite = this.add.sprite(checkpoint.x, checkpoint.y, this.resolveActorTexture(checkpoint.textureKey)).setDepth(3).setTint(0xb8c99c);
+      this.configureActorSprite(sprite, checkpoint.textureKey);
       this.add.text(checkpoint.x - 42, checkpoint.y - 48, checkpoint.label, {
         fontFamily: 'monospace', fontSize: '9px', color: '#a9c38b', backgroundColor: '#071009'
       }).setDepth(4);
@@ -388,7 +499,8 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
   }
 
   private spawnHazard(definition: Mg1HazardDefinition): void {
-    const sprite = this.physics.add.sprite(definition.x, definition.y, definition.textureKey);
+    const sprite = this.physics.add.sprite(definition.x, definition.y, this.resolveActorTexture(definition.textureKey));
+    this.configureActorSprite(sprite, definition.textureKey);
     sprite.setCollideWorldBounds(true).setDragX(750);
     const airborne = definition.behavior === 'air_trooper' || definition.behavior === 'gun_camera';
     if (airborne) (sprite.body as Phaser.Physics.Arcade.Body).setAllowGravity(false);
@@ -404,7 +516,10 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
       baseY: definition.y
     };
     this.physics.add.overlap(this.player, sprite, () => {
-      if (!unit.disabled && definition.contactDamage > 0) this.damagePlayer(definition.contactDamage, definition.behavior);
+      if (!unit.disabled && definition.contactDamage > 0) {
+        if (definition.behavior === 'attack_dog' || definition.behavior === 'scorpion') this.playActorAction(sprite, 'attack');
+        this.damagePlayer(definition.contactDamage, definition.behavior);
+      }
     }, undefined, this);
     this.physics.add.overlap(this.playerProjectiles, sprite, (projectile) => {
       this.hitHazard(unit, projectile as Phaser.Physics.Arcade.Sprite);
@@ -437,6 +552,7 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
     } else {
       this.player.setVelocityX(0);
     }
+    this.playActorLoop(this.player, left || right ? 'move' : 'idle');
     if (this.inputController.justDown('jump') && body.blocked.down && !crouch) this.player.setVelocityY(-430);
     if (this.inputController.justDown('fire')) this.fireContextualWeapon();
     if (this.inputController.justDown('cqc')) this.tryActionOrCqc();
@@ -454,6 +570,7 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
     }
 
     this.player.setVelocityX(0);
+    this.playActorLoop(this.player, 'remote', true);
     const horizontal = Number(this.inputController.isDown('moveRight')) - Number(this.inputController.isDown('moveLeft'));
     const vertical = Number(this.inputController.isDown('crouch')) - Number(this.inputController.isDown('jump'));
     if (horizontal !== 0 || vertical !== 0) {
@@ -517,6 +634,7 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
       this.flashStatus('REMOTE MISSILE CONTROL // SNAKE IMMOBILIZED');
     }
     this.playVfx('mg1MuzzleFlashVfx', x, y, direction < 0);
+    this.playActorAction(this.player, 'attack');
     this.inputController.vibrate(35, 0.12, 0.18);
     this.scheduleProjectileExpiry(projectile, attack === 'landmine' ? 12000 : PLAYER_BULLET_LIFETIME_MS, 'player');
   }
@@ -537,8 +655,10 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
       this.flashStatus('NO CQC TARGET');
       return;
     }
+    this.playActorAction(this.player, 'attack');
     target.disabled = true;
     target.sprite.setVelocity(0, 0).setTint(0x52634d);
+    this.playActorAction(target.sprite, 'death');
     this.neutralizations += 1;
     this.flashStatus('CQC TAKEDOWN');
   }
@@ -564,6 +684,8 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
     const explosiveX = tx55.sprite.x + (leg === 'left' ? -27 : 27);
     const explosiveY = tx55.sprite.y + 43;
     const explosive = this.add.image(explosiveX, explosiveY, 'mg1PlasticExplosive').setDepth(8);
+    this.playActorAction(this.player, 'plant');
+    this.playActorAction(tx55.sprite, leg === 'left' ? 'chargeLeft' : 'chargeRight');
     this.activeTx55Charge = true;
     this.ammo -= 1;
     this.shotsFired += 1;
@@ -619,7 +741,8 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
     for (let index = 0; index < encounter.unitCount; index += 1) {
       const unitX = encounter.unitCount === 2 ? encounter.arenaX + 70 + index * 230 : encounter.arenaX + 210;
       const unitY = encounter.rules.airborne ? 255 : encounter.behavior === 'tx55_sabotage' ? 425 : encounter.behavior === 'tank' || encounter.behavior === 'bulldozer' ? 458 : 454;
-      const sprite = this.physics.add.sprite(unitX, unitY, encounter.textureKey).setDepth(6);
+      const sprite = this.physics.add.sprite(unitX, unitY, this.resolveActorTexture(encounter.textureKey)).setDepth(6);
+      this.configureActorSprite(sprite, encounter.textureKey);
       sprite.setCollideWorldBounds(true).setDragX(700);
       const body = sprite.body as Phaser.Physics.Arcade.Body;
       if (encounter.rules.airborne || encounter.rules.stationary) body.setAllowGravity(false);
@@ -637,7 +760,10 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
         nextDustAt: 0
       };
       this.physics.add.overlap(this.player, sprite, () => {
-        if (!unit.defeated && encounter.contactDamage > 0) this.damagePlayer(encounter.contactDamage, encounter.name);
+        if (!unit.defeated && encounter.contactDamage > 0) {
+          if (encounter.behavior === 'dual_cyborg' || encounter.behavior === 'bulldozer') this.playActorAction(sprite, 'attack');
+          this.damagePlayer(encounter.contactDamage, encounter.name);
+        }
       }, undefined, this);
       this.physics.add.overlap(this.playerProjectiles, sprite, (projectile) => {
         this.hitEncounterUnit(unit, projectile as Phaser.Physics.Arcade.Sprite);
@@ -668,9 +794,14 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
     });
 
     for (let index = 0; index < hostageCount; index += 1) {
-      const hostage = this.physics.add.staticSprite(encounter.arenaX - 110 + index * 105, 488, 'mg1OuterHeavenPow')
+      const hostage = this.physics.add.staticSprite(
+        encounter.arenaX - 110 + index * 105,
+        488,
+        this.resolveActorTexture('mg1OuterHeavenPow')
+      )
         .setTint(0xd8d4ba)
         .setDepth(5);
+      this.configureActorSprite(hostage, 'mg1OuterHeavenPow');
       hostage.setData('protectedHostage', true);
       const label = this.add.text(hostage.x - 18, hostage.y - 42, `POW ${index + 1}`, {
         fontFamily: 'monospace', fontSize: '9px', color: '#f1df9b', backgroundColor: '#071009'
@@ -691,7 +822,8 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
     hostage.harmed = true;
     this.hostagesHarmed += 1;
     this.completedObjectives.delete('defeat_dirty_duck');
-    hostage.sprite.setTint(0x6f3d3d).setAngle(90).setY(hostage.sprite.y + 13);
+    hostage.sprite.setTint(0x6f3d3d);
+    this.playActorAction(hostage.sprite, 'death');
     hostage.label.setText('POW DOWN').setColor('#ff7a66').setY(hostage.sprite.y - 18);
     const body = hostage.sprite.body as Phaser.Physics.Arcade.StaticBody;
     body.updateFromGameObject();
@@ -714,13 +846,16 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
 
     if (encounter.behavior === 'tx55_sabotage') {
       unit.sprite.setVelocity(0, 0);
+      this.playActorLoop(unit.sprite, 'idle');
       return;
     }
     if (encounter.behavior === 'aircraft') {
-      unit.sprite.setVelocityX(unit.direction * 48);
-      unit.sprite.y = 250 + Math.sin(this.time.now / 380) * 42;
+      // The MG1 Hind D is a fixed gunship target; only its rotor and weapon cycle animate.
+      unit.sprite.setVelocity(0, 0).setY(250);
+      this.playActorLoop(unit.sprite, 'idle');
     } else if (encounter.behavior === 'bulldozer') {
       unit.sprite.setFlipX(true).setVelocityX(-168);
+      this.playActorLoop(unit.sprite, 'move');
       if (unit.sprite.x < encounter.arenaX - 300) unit.sprite.x = encounter.gateX - 90;
       if (this.time.now >= unit.nextDustAt) {
         unit.nextDustAt = this.time.now + 260;
@@ -728,12 +863,16 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
       }
     } else if (encounter.behavior === 'tank') {
       unit.sprite.setVelocityX(unit.direction * 46);
+      this.playActorLoop(unit.sprite, 'move');
     } else if (encounter.behavior === 'hostage_boomerang') {
       unit.sprite.setVelocityX(unit.direction * 38);
+      this.playActorLoop(unit.sprite, 'move');
     } else if (encounter.behavior === 'dual_cyborg') {
       unit.sprite.setVelocityX(unit.direction * 92);
+      this.playActorLoop(unit.sprite, 'move');
     } else {
       unit.sprite.setVelocityX(unit.direction * (encounter.behavior === 'final_duel' ? 105 : 62));
+      this.playActorLoop(unit.sprite, 'move');
     }
 
     if (!encounter.rules.firesProjectiles || !encounter.enemyProjectileTextureKey || distanceX > 720 || this.time.now < unit.lastShotAt) return;
@@ -742,6 +881,7 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
   }
 
   private fireEncounterPattern(encounter: Mg1EncounterDefinition, unit: Mg1BossUnit): void {
+    this.playActorAction(unit.sprite, 'attack');
     const direction = unit.direction;
     if (encounter.behavior === 'shotgun') {
       [-120, -60, 0, 60, 120].forEach((velocityY) => this.fireEnemyProjectile(unit, encounter, direction * 435, velocityY, 10));
@@ -844,12 +984,14 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
     unit.hp = Math.max(0, unit.hp - 1);
     const machine = encounter.rules.airborne || encounter.behavior === 'tank' || encounter.behavior === 'bulldozer';
     this.playVfx(machine ? 'mg1MetalSparksVfx' : 'mg1BulletImpactVfx', impactX, impactY);
+    this.playActorAction(unit.sprite, 'hit');
     unit.sprite.setTint(0xff9966);
     this.time.delayedCall(110, () => unit.sprite.active && !unit.defeated && unit.sprite.clearTint());
     this.emitBossMidfightWhenReady(encounter);
     if (unit.hp <= 0) {
       unit.defeated = true;
       unit.sprite.setVelocity(0, 0).setTint(0x4c5b45);
+      this.playActorAction(unit.sprite, 'death');
       this.kills += 1;
       this.playVfx(machine ? 'mg1ExplosionLargeVfx' : 'mg1ExplosionSmallVfx', unit.sprite.x, unit.sprite.y);
       if (machine) this.playVfx('mg1SmokePlumeVfx', unit.sprite.x, unit.sprite.y - 35);
@@ -866,6 +1008,7 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
         tx55.defeated = true;
         tx55.hp = 0;
         tx55.sprite.setTint(0x46504a);
+        this.playActorAction(tx55.sprite, 'death');
         this.playVfx('mg1ExplosionLargeVfx', tx55.sprite.x, tx55.sprite.y);
         this.playVfx('mg1SmokePlumeVfx', tx55.sprite.x, tx55.sprite.y - 55);
       }
@@ -908,12 +1051,14 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
         if (hazard.sprite.x >= definition.patrolMax) hazard.direction = -1;
         if (this.alertState === 'ALERT' && distanceX < 620) hazard.direction = direction;
         hazard.sprite.setVelocityX(hazard.direction * (this.alertState === 'ALERT' ? 112 : 70)).setFlipX(hazard.direction < 0);
+        this.playActorLoop(hazard.sprite, 'move');
         if (distanceX < 330 && Math.abs(this.player.y - hazard.sprite.y) < 90) this.triggerAlert('Outer Heaven soldier');
       } else if (definition.behavior === 'air_trooper') {
         if (hazard.sprite.x <= definition.patrolMin) hazard.direction = 1;
         if (hazard.sprite.x >= definition.patrolMax) hazard.direction = -1;
         hazard.sprite.setVelocityX(hazard.direction * 76).setFlipX(hazard.direction < 0);
         hazard.sprite.y = hazard.baseY + Math.sin(this.time.now / 330) * 28;
+        this.playActorLoop(hazard.sprite, 'move');
         if (distanceX < 520) this.triggerAlert('Air Trooper');
       } else if (definition.behavior === 'attack_dog') {
         if (distanceX < 470) {
@@ -924,15 +1069,18 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
           if (hazard.sprite.x >= definition.patrolMax) hazard.direction = -1;
         }
         hazard.sprite.setVelocityX(hazard.direction * (distanceX < 470 ? 155 : 78)).setFlipX(hazard.direction < 0);
+        this.playActorLoop(hazard.sprite, 'move');
       } else if (definition.behavior === 'scorpion') {
         if (hazard.sprite.x <= definition.patrolMin) hazard.direction = 1;
         if (hazard.sprite.x >= definition.patrolMax) hazard.direction = -1;
         hazard.sprite.setVelocityX(hazard.direction * 46).setFlipX(hazard.direction < 0);
+        this.playActorLoop(hazard.sprite, 'move');
       } else {
         if (hazard.sprite.x <= definition.patrolMin) hazard.direction = 1;
         if (hazard.sprite.x >= definition.patrolMax) hazard.direction = -1;
         hazard.sprite.setVelocityX(hazard.direction * 52).setVelocityY(0).setFlipX(hazard.direction < 0);
         hazard.sprite.y = hazard.baseY + Math.sin((this.time.now + definition.x) / 260) * 5;
+        this.playActorLoop(hazard.sprite, 'idle');
         if (distanceX < 520 && !this.isChaffActive()) this.triggerAlert('gun camera');
       }
 
@@ -946,6 +1094,7 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
       projectile.setData('damage', definition.behavior === 'gun_camera' ? 8 : definition.behavior === 'air_trooper' ? 12 : 10);
       projectile.setData('source', definition.behavior);
       projectile.setData('impactVfx', definition.behavior === 'gun_camera' ? 'mg1LaserImpactVfx' : 'mg1BulletImpactVfx');
+      this.playActorAction(hazard.sprite, 'attack');
       this.playVfx('mg1MuzzleFlashVfx', projectile.x, projectile.y, direction < 0);
       this.scheduleProjectileExpiry(projectile, 1500, 'enemy');
     });
@@ -959,9 +1108,13 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
     hazard.hp -= 1;
     const mechanical = hazard.definition.behavior === 'gun_camera';
     this.playVfx(mechanical ? 'mg1MetalSparksVfx' : 'mg1BulletImpactVfx', x, y);
-    if (hazard.hp > 0) return;
+    if (hazard.hp > 0) {
+      this.playActorAction(hazard.sprite, 'hit');
+      return;
+    }
     hazard.disabled = true;
     hazard.sprite.setVelocity(0, 0).setTint(0x4c5b45);
+    this.playActorAction(hazard.sprite, 'death');
     this.kills += 1;
     if (mechanical) this.camerasDisabled += 1;
     this.playVfx('mg1ExplosionSmallVfx', hazard.sprite.x, hazard.sprite.y);
@@ -1018,6 +1171,7 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
       this.activeRemoteMissile = null;
       const cameraLerp = this.inputController.profile.reducedMotion ? 1 : 0.08;
       this.cameras.main.startFollow(this.player, true, cameraLerp, cameraLerp);
+      this.playActorLoop(this.player, 'idle', true);
     }
   }
 
@@ -1044,7 +1198,8 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
     this.health = Math.max(0, this.health - amount);
     this.damageTaken += amount;
     this.player.setTint(0xff6b5e);
-    this.time.delayedCall(130, () => this.player.active && this.player.clearTint());
+    if (this.health > 0) this.playActorAction(this.player, 'hit');
+    this.time.delayedCall(130, () => this.player.active && this.health > 0 && this.player.clearTint());
     this.inputController.vibrate(120, 0.6, 0.45);
     if (this.health <= 30 && !this.lowHealthCodecEmitted) {
       this.lowHealthCodecEmitted = true;
@@ -1182,10 +1337,11 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
     this.missionCompleted = true;
     this.alertState = 'MISSION FAILED';
     this.player.setVelocity(0, 0).setTint(0x333333);
+    this.playActorAction(this.player, 'death');
     this.emitCodec(MG1_CODEC.failed);
     const result = this.buildMissionResult(false, `Operation failed: ${source}`);
     emitGameEvent<MissionCompletePayload>(GAME_EVENT.MISSION_COMPLETE, result);
-    this.time.delayedCall(350, () => this.scene.start('MissionCompleteScene', result));
+    this.time.delayedCall(900, () => this.scene.start('MissionCompleteScene', result));
   }
 
   private buildMissionResult(success: boolean, outcome: string): MissionCompletePayload {

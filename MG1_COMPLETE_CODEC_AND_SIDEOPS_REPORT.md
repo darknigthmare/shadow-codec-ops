@@ -5,9 +5,10 @@ Mission 003 recreates the 1987 MSX2 Operation Intrude N313 as an original fan-ma
 ## Included visual assets
 
 - 30 lossless 512 x 512 Codec portraits: Solid Snake, Big Boss, Schneider, Diane and Jennifer, each with six expressions.
-- 23 transparent 2D sprites: named prisoners and resistance contacts, a protected POW, regular Outer Heaven threats, six human bosses, four vehicles and the stationary TX-55.
+- 23 transparent 2D actor sprites plus Solid Snake, all preserved as static fallback identities.
+- 24 dedicated animated spritesheets / 387 hand-rigged frames: idle, movement, role-correct action, impact and death/destruction cycles, plus Snake's C4 and remote-missile poses.
 - 12 projectile textures and 9 animated VFX sheets, including the gun-camera laser and its impact effect.
-- Typed preload registry, exact-dimension tests and automatic transparent fallbacks.
+- Typed preload/animation registry, exact-dimension and binary-alpha tests, fixed original-size hitboxes and automatic static fallbacks.
 
 ## Playable Mission 003
 
@@ -27,6 +28,8 @@ The character art was created with OpenAI built-in image generation using two co
 
 Chroma backgrounds were removed, sprites were normalized with nearest-neighbour scaling, and projectile/VFX textures were produced deterministically in project code.
 
+The animation pass keeps those OpenAI-authored identity anchors intact and uses a deterministic nearest-neighbour rig for limbs, weapons, treads, rotors, doors, warning lights and destruction pieces. It is wired both into Mission 003 and MG1 missions launched from the Mission Builder. Canon-specific sheets deliberately omit invented actions: the gun camera has no locomotion clip, the TX-55 has no movement or firing clip, the Hind D stays fixed, and the Bulldozer only advances/crushes.
+
 ## Canon references
 
 - [Konami MG1 character archive](https://www.konami.com/mg/archive/mg/chara.html)
@@ -34,6 +37,7 @@ Chroma backgrounds were removed, sprites were normalized with nearest-neighbour 
 - [Official MG1 MSX manual](https://metalgear.konami.net/manual/mc1/mg1_msx/pc/en/index.html)
 - [Official weapons page](https://metalgear.konami.net/manual/mc1/mg1_msx/pc/en/page10.html)
 - [Official equipment page](https://metalgear.konami.net/manual/mc1/mg1_msx/pc/en/page11.html)
+- [MSX2 sprite silhouette cross-check](https://www.spriters-resource.com/msx2/metalgear/)
 - [MSX boss mechanics reference](https://gamefaqs.gamespot.com/msx/578853-metal-gear/faqs/35361)
 - [MSX walkthrough cross-check](https://thesnakesoup.org/metal-gear-msx-walkthrough/)
 
