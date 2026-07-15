@@ -24,7 +24,14 @@ export function getBuiltInPortrait(era: EraId, side: 'player' | 'contact'): stri
 
 const characterPortraitSets: Record<string, string> = {
   solid_snake_mgs1: '/portraits/mgs1/solid_snake',
-  campbell_mgs1: '/portraits/mgs1/campbell'
+  campbell_mgs1: '/portraits/mgs1/campbell',
+  mei_ling_mgs1: '/portraits/mgs1/mei_ling',
+  naomi_mgs1: '/portraits/mgs1/naomi',
+  otacon_mgs1: '/portraits/mgs1/otacon',
+  nastasha_mgs1: '/portraits/mgs1/nastasha',
+  miller_mgs1: '/portraits/mgs1/miller',
+  meryl_mgs1: '/portraits/mgs1/meryl',
+  deepthroat_mgs1: '/portraits/mgs1/deepthroat'
 };
 
 export function getCharacterPortrait(characterId: string | undefined, expression = 'neutral'): string | undefined {

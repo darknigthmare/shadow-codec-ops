@@ -5,65 +5,96 @@ export class PreloadScene extends Phaser.Scene {
     super('PreloadScene');
   }
 
+  preload(): void {
+    this.load.image('player', '/sideops/characters/solid-snake-mgs1.png');
+    this.load.image('playerTanker', '/sideops/characters/solid-snake-mgs2.png');
+    this.load.image('guard', '/sideops/characters/genome-guard.png');
+    this.load.image('reinforcementGuard', '/sideops/characters/genome-reinforcement.png');
+    this.load.image('deckGuard', '/sideops/characters/tanker-guard.png');
+    this.load.image('deckReinforcement', '/sideops/characters/tanker-reinforcement.png');
+    this.load.image('bossCaptain', '/sideops/characters/armored-guard-captain.png');
+    this.load.image('bossDeckCommander', '/sideops/characters/shielded-deck-commander.png');
+  }
+
   create(): void {
     const graphics = this.add.graphics();
     graphics.setVisible(false);
 
-    graphics.fillStyle(0x7cff6b, 1);
-    graphics.fillRect(8, 0, 16, 10);
-    graphics.fillRect(6, 10, 20, 24);
-    graphics.fillRect(4, 34, 8, 14);
-    graphics.fillRect(20, 34, 8, 14);
-    graphics.fillStyle(0x102814, 1);
-    graphics.fillRect(11, 4, 10, 3);
-    graphics.generateTexture('player', 32, 48);
-    graphics.clear();
+    if (!this.textures.exists('player')) {
+      graphics.fillStyle(0x7cff6b, 1);
+      graphics.fillRect(8, 0, 16, 10);
+      graphics.fillRect(6, 10, 20, 24);
+      graphics.fillRect(4, 34, 8, 14);
+      graphics.fillRect(20, 34, 8, 14);
+      graphics.fillStyle(0x102814, 1);
+      graphics.fillRect(11, 4, 10, 3);
+      graphics.generateTexture('player', 32, 48);
+      graphics.clear();
+    }
 
-    graphics.fillStyle(0x9aff8a, 1);
-    graphics.fillRect(7, 0, 18, 10);
-    graphics.fillRect(5, 10, 22, 22);
-    graphics.fillRect(4, 32, 8, 14);
-    graphics.fillRect(20, 32, 8, 14);
-    graphics.fillStyle(0x122416, 1);
-    graphics.fillRect(8, 8, 16, 7);
-    graphics.generateTexture('guard', 32, 48);
-    graphics.clear();
+    if (!this.textures.exists('playerTanker')) {
+      graphics.fillStyle(0x9fd4ff, 1);
+      graphics.fillRect(8, 0, 16, 10);
+      graphics.fillRect(6, 10, 20, 24);
+      graphics.fillRect(4, 34, 8, 14);
+      graphics.fillRect(20, 34, 8, 14);
+      graphics.fillStyle(0x102838, 1);
+      graphics.fillRect(11, 4, 10, 3);
+      graphics.generateTexture('playerTanker', 32, 48);
+      graphics.clear();
+    }
 
+    if (!this.textures.exists('guard')) {
+      graphics.fillStyle(0x9aff8a, 1);
+      graphics.fillRect(7, 0, 18, 10);
+      graphics.fillRect(5, 10, 22, 22);
+      graphics.fillRect(4, 32, 8, 14);
+      graphics.fillRect(20, 32, 8, 14);
+      graphics.fillStyle(0x122416, 1);
+      graphics.fillRect(8, 8, 16, 7);
+      graphics.generateTexture('guard', 32, 48);
+      graphics.clear();
+    }
 
-    graphics.fillStyle(0xffdf85, 1);
-    graphics.fillRect(7, 0, 18, 10);
-    graphics.fillRect(5, 10, 22, 22);
-    graphics.fillRect(4, 32, 8, 14);
-    graphics.fillRect(20, 32, 8, 14);
-    graphics.fillStyle(0x2a220b, 1);
-    graphics.fillRect(8, 8, 16, 7);
-    graphics.generateTexture('reinforcementGuard', 32, 48);
-    graphics.clear();
+    if (!this.textures.exists('reinforcementGuard')) {
+      graphics.fillStyle(0xffdf85, 1);
+      graphics.fillRect(7, 0, 18, 10);
+      graphics.fillRect(5, 10, 22, 22);
+      graphics.fillRect(4, 32, 8, 14);
+      graphics.fillRect(20, 32, 8, 14);
+      graphics.fillStyle(0x2a220b, 1);
+      graphics.fillRect(8, 8, 16, 7);
+      graphics.generateTexture('reinforcementGuard', 32, 48);
+      graphics.clear();
+    }
 
+    if (!this.textures.exists('deckGuard')) {
+      graphics.fillStyle(0x9fd4ff, 1);
+      graphics.fillRect(7, 0, 18, 10);
+      graphics.fillRect(5, 10, 22, 22);
+      graphics.fillRect(4, 32, 8, 14);
+      graphics.fillRect(20, 32, 8, 14);
+      graphics.fillStyle(0x102838, 1);
+      graphics.fillRect(8, 8, 16, 7);
+      graphics.fillStyle(0xd8ffd4, 1);
+      graphics.fillRect(6, 16, 20, 4);
+      graphics.generateTexture('deckGuard', 32, 48);
+      graphics.clear();
+    }
 
-    graphics.fillStyle(0x9fd4ff, 1);
-    graphics.fillRect(7, 0, 18, 10);
-    graphics.fillRect(5, 10, 22, 22);
-    graphics.fillRect(4, 32, 8, 14);
-    graphics.fillRect(20, 32, 8, 14);
-    graphics.fillStyle(0x102838, 1);
-    graphics.fillRect(8, 8, 16, 7);
-    graphics.fillStyle(0xd8ffd4, 1);
-    graphics.fillRect(6, 16, 20, 4);
-    graphics.generateTexture('deckGuard', 32, 48);
-    graphics.clear();
-
-    graphics.fillStyle(0xffdf85, 1);
-    graphics.fillRect(7, 0, 18, 10);
-    graphics.fillRect(5, 10, 22, 22);
-    graphics.fillRect(4, 32, 8, 14);
-    graphics.fillRect(20, 32, 8, 14);
-    graphics.fillStyle(0x123047, 1);
-    graphics.fillRect(8, 8, 16, 7);
-    graphics.fillStyle(0x9fd4ff, 1);
-    graphics.fillRect(6, 16, 20, 4);
-    graphics.generateTexture('deckReinforcement', 32, 48);
-    graphics.clear();
+    if (!this.textures.exists('deckReinforcement')) {
+      graphics.fillStyle(0xffdf85, 1);
+      graphics.fillRect(7, 0, 18, 10);
+      graphics.fillRect(5, 10, 22, 22);
+      graphics.fillRect(4, 32, 8, 14);
+      graphics.fillRect(20, 32, 8, 14);
+      graphics.fillStyle(0x123047, 1);
+      graphics.fillRect(8, 8, 16, 7);
+      graphics.fillStyle(0x9fd4ff, 1);
+      graphics.fillRect(6, 16, 20, 4);
+      graphics.generateTexture('deckReinforcement', 32, 48);
+      graphics.clear();
+    }
 
     graphics.fillStyle(0x31593a, 1);
     graphics.fillRect(0, 0, 64, 16);
@@ -140,36 +171,39 @@ export class PreloadScene extends Phaser.Scene {
 
 
 
-    graphics.fillStyle(0xffdf85, 1);
-    graphics.fillRect(10, 0, 28, 12);
-    graphics.fillRect(6, 12, 36, 30);
-    graphics.fillRect(4, 42, 12, 20);
-    graphics.fillRect(32, 42, 12, 20);
-    graphics.fillStyle(0x3b2b10, 1);
-    graphics.fillRect(12, 12, 24, 8);
-    graphics.fillStyle(0xff6b6b, 1);
-    graphics.fillRect(5, 24, 38, 5);
-    graphics.lineStyle(2, 0xf8f49a, 1);
-    graphics.strokeRect(6, 12, 36, 30);
-    graphics.generateTexture('bossCaptain', 48, 64);
-    graphics.clear();
+    if (!this.textures.exists('bossCaptain')) {
+      graphics.fillStyle(0xffdf85, 1);
+      graphics.fillRect(10, 0, 28, 12);
+      graphics.fillRect(6, 12, 36, 30);
+      graphics.fillRect(4, 42, 12, 20);
+      graphics.fillRect(32, 42, 12, 20);
+      graphics.fillStyle(0x3b2b10, 1);
+      graphics.fillRect(12, 12, 24, 8);
+      graphics.fillStyle(0xff6b6b, 1);
+      graphics.fillRect(5, 24, 38, 5);
+      graphics.lineStyle(2, 0xf8f49a, 1);
+      graphics.strokeRect(6, 12, 36, 30);
+      graphics.generateTexture('bossCaptain', 48, 64);
+      graphics.clear();
+    }
 
-
-    graphics.fillStyle(0x9fd4ff, 1);
-    graphics.fillRect(10, 0, 28, 12);
-    graphics.fillRect(6, 12, 36, 30);
-    graphics.fillRect(4, 42, 12, 20);
-    graphics.fillRect(32, 42, 12, 20);
-    graphics.fillStyle(0x112c3f, 1);
-    graphics.fillRect(12, 12, 24, 8);
-    graphics.fillStyle(0xf8f49a, 1);
-    graphics.fillRect(5, 24, 38, 5);
-    graphics.lineStyle(2, 0x9fd4ff, 1);
-    graphics.strokeRect(6, 12, 36, 30);
-    graphics.fillStyle(0xd8ffd4, 1);
-    graphics.fillRect(0, 20, 9, 28);
-    graphics.generateTexture('bossDeckCommander', 48, 64);
-    graphics.clear();
+    if (!this.textures.exists('bossDeckCommander')) {
+      graphics.fillStyle(0x9fd4ff, 1);
+      graphics.fillRect(10, 0, 28, 12);
+      graphics.fillRect(6, 12, 36, 30);
+      graphics.fillRect(4, 42, 12, 20);
+      graphics.fillRect(32, 42, 12, 20);
+      graphics.fillStyle(0x112c3f, 1);
+      graphics.fillRect(12, 12, 24, 8);
+      graphics.fillStyle(0xf8f49a, 1);
+      graphics.fillRect(5, 24, 38, 5);
+      graphics.lineStyle(2, 0x9fd4ff, 1);
+      graphics.strokeRect(6, 12, 36, 30);
+      graphics.fillStyle(0xd8ffd4, 1);
+      graphics.fillRect(0, 20, 9, 28);
+      graphics.generateTexture('bossDeckCommander', 48, 64);
+      graphics.clear();
+    }
 
     graphics.fillStyle(0x7cff6b, 1);
     graphics.fillRect(0, 0, 12, 12);

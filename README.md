@@ -6,11 +6,13 @@ Version 3.5 performs a source-backed fidelity pass over every communication gene
 
 See `CODEC_FIDELITY_AUDIT.md` and the in-app Reference Fidelity Profile.
 
-## Retractable command drawers and first character portrait pack
+## Retractable command drawers and original character art
 
 Version 3.4 replaces the permanent left navigation and Codec utility column with overlay drawers that stay closed while a module is in use. Both drawers support backdrop dismissal, keyboard dismissal and compact mobile safe-area placement.
 
-The first character-specific MGS1 portrait pack adds Solid Snake and Roy Campbell with six automatically selected emotional states: neutral, serious, warning, calm, humor and glitch. The generated portraits contain no text or UI decoration and remain overrideable by local Voice Packs.
+The character-specific MGS1 portrait library now covers Solid Snake, Roy Campbell, Mei Ling, Naomi Hunter, Otacon, Nastasha Romanenko, Master Miller, Meryl Silverburgh and Deepthroat. The seven new contact packs add 42 optimized WebP portraits to the original 12 Snake/Campbell portraits, for 54 portraits total. Every character has six automatically selected emotional states: neutral, serious, warning, calm, humor and glitch.
+
+Side Ops now loads eight dedicated 2D character sprites from `public/sideops/characters/`: Solid Snake in MGS1 and MGS2 variants, four guard/reinforcement variants and two mission bosses. The portraits and sprites are original fan-made creations inspired by official reference material, not extracted game assets. They contain no text or surrounding UI, and local Voice Packs remain able to override the built-in Codec portraits. The next avatar production priority is MGS2 and MGS3.
 
 See `CODEC_DRAWERS_AND_AVATARS_REPORT.md`.
 
@@ -133,6 +135,7 @@ Base de projet privée pour un **simulateur Codec tactique** avec une campagne i
 - Déblocage local de tapes et badges VR selon le rank obtenu
 - Tape Archive compatible avec les rewards VR : les cassettes conditionnelles restent verrouillées tant que la mission VR associée n’est pas validée
 - Side Ops 2D Phaser jouable : joueur, plateformes, gardes, caméra, projecteur, keycard, porte, boss, secrets, extraction
+- Huit sprites de personnages Side Ops originaux sous `public/sideops/characters/` : Snake MGS1/MGS2, quatre gardes/renforts et deux boss
 - **Campaign Ops** : campagne connectée Codec → Side Ops → Tapes → VR → Lore
 - **Campaign Builder** : graphe visuel, conditions AND/OR, branches exclusives, fins alternatives, playtest et packs JSON
 - **Campaign Presentation** : briefings/débriefings plein écran, scènes multi-beat, événements narratifs, variables persistantes, choix de branche cinématiques et galerie des fins
@@ -459,7 +462,7 @@ Les données Tape Archive sont stockées en `localStorage` via `tape-archive-sta
 
 Les fréquences MSX/MG2, MGS2 et MGS3 ajoutées en v0.6 suivent les tableaux des manuels / sources de référence disponibles. Les packs MGS4 et MGSV utilisent des **canaux de simulation** parce que ces interfaces ne reposent pas sur le même fonctionnement de fréquence classique dans l’app.
 
-Les conversations, tapes et missions fournies sont des textes originaux de simulation, conçus pour relier le Codec, Side Ops, VR Missions, Mother Base et les futurs modules sans inclure d’assets officiels. Les assets visuels sont des placeholders générés par code avec Phaser/CSS, aucun asset officiel n'est inclus.
+Les conversations, tapes et missions fournies sont des textes originaux de simulation, conçus pour relier le Codec, Side Ops, VR Missions, Mother Base et les futurs modules sans inclure d’assets officiels. Les portraits Codec et les sprites Side Ops 2D intégrés sont des créations originales fan-made inspirées de références officielles, jamais des extractions ; les autres éléments visuels restent générés par Phaser/CSS. Aucun asset officiel n'est inclus.
 
 ## v1.2.0 — Passe 13: Tauri/Desktop polish
 

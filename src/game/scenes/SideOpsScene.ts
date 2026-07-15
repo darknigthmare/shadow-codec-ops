@@ -33,6 +33,7 @@ interface GuardUnit {
 
 interface BossUnit {
   sprite: Phaser.Physics.Arcade.Sprite;
+  baseFacingRight: boolean;
   hp: number;
   maxHp: number;
   active: boolean;
@@ -64,6 +65,7 @@ interface MissionProfile {
   backdropColor: number;
   structureColor: number;
   start: { x: number; y: number };
+  playerTexture: string;
   startAmmo: number;
   startRations: number;
   startChaff: number;
@@ -74,7 +76,7 @@ interface MissionProfile {
   searchlight: { x: number; y: number; sweep: number };
   elevator: { x: number; y: number; label: string };
   keycard: { x: number; y: number; label: string };
-  boss: { name: string; x: number; y: number; hp: number; texture: string; tintPhaseOne: number; tintPhaseTwo: number };
+  boss: { name: string; x: number; y: number; hp: number; texture: string; baseFacingRight: boolean; tintPhaseOne: number; tintPhaseTwo: number };
   guardTexture: string;
   reinforcementTexture: string;
   platforms: Array<{ x: number; y: number; scaleX: number }>;
@@ -121,6 +123,7 @@ const SHADOW_DOCK_PROFILE: MissionProfile = {
   backdropColor: 0x041007,
   structureColor: 0x0d2a14,
   start: { x: 90, y: 454 },
+  playerTexture: 'player',
   startAmmo: 26,
   startRations: 1,
   startChaff: 1,
@@ -131,7 +134,7 @@ const SHADOW_DOCK_PROFILE: MissionProfile = {
   searchlight: { x: 1990, y: 118, sweep: 360 },
   elevator: { x: 3630, y: 470, label: 'cargo elevator' },
   keycard: { x: 1000, y: 290, label: 'Keycard Lv.1' },
-  boss: { name: 'Armored Guard Captain', x: 2990, y: 456, hp: 10, texture: 'bossCaptain', tintPhaseOne: 0xffdf85, tintPhaseTwo: 0xff6b6b },
+  boss: { name: 'Armored Guard Captain', x: 2990, y: 456, hp: 10, texture: 'bossCaptain', baseFacingRight: true, tintPhaseOne: 0xffdf85, tintPhaseTwo: 0xff6b6b },
   guardTexture: 'guard',
   reinforcementTexture: 'reinforcementGuard',
   platforms: [
@@ -200,6 +203,7 @@ const TANKER_HOLD_PROFILE: MissionProfile = {
   backdropColor: 0x030a12,
   structureColor: 0x10283a,
   start: { x: 90, y: 454 },
+  playerTexture: 'playerTanker',
   startAmmo: 32,
   startRations: 1,
   startChaff: 2,
@@ -210,7 +214,7 @@ const TANKER_HOLD_PROFILE: MissionProfile = {
   searchlight: { x: 2360, y: 105, sweep: 430 },
   elevator: { x: 4110, y: 470, label: 'cargo hold exit' },
   keycard: { x: 1195, y: 285, label: 'Bulkhead Keycard' },
-  boss: { name: 'Shielded Deck Commander', x: 3470, y: 456, hp: 12, texture: 'bossDeckCommander', tintPhaseOne: 0x9fd4ff, tintPhaseTwo: 0xffdf85 },
+  boss: { name: 'Shielded Deck Commander', x: 3470, y: 456, hp: 12, texture: 'bossDeckCommander', baseFacingRight: false, tintPhaseOne: 0x9fd4ff, tintPhaseTwo: 0xffdf85 },
   guardTexture: 'deckGuard',
   reinforcementTexture: 'deckReinforcement',
   platforms: [
@@ -290,7 +294,14 @@ function getActiveMissionProfile(): MissionProfile {
   }
 
   const builderProfile = resolveBuilderSideOpsProfile(requestedMissionId);
-  return builderProfile ?? MISSION_PROFILES[requestedMissionId] ?? SHADOW_DOCK_PROFILE;
+  if (builderProfile) {
+    return {
+      ...builderProfile,
+      playerTexture: 'player',
+      boss: { ...builderProfile.boss, baseFacingRight: true }
+    };
+  }
+  return MISSION_PROFILES[requestedMissionId] ?? SHADOW_DOCK_PROFILE;
 }
 
 export class SideOpsScene extends Phaser.Scene {
@@ -386,7 +397,7 @@ export class SideOpsScene extends Phaser.Scene {
     this.profile.platforms.forEach((platform) => this.createPlatform(this.platforms, platform.x, platform.y, platform.scaleX));
     this.profile.crates.forEach((crate) => this.addCrate(crate.x, crate.y, this.platforms));
 
-    this.player = this.physics.add.sprite(this.profile.start.x, this.profile.start.y, 'player');
+    this.player = this.physics.add.sprite(this.profile.start.x, this.profile.start.y, this.profile.playerTexture);
     this.player.setCollideWorldBounds(true);
     this.player.setDragX(1250);
     this.player.setMaxVelocity(270, 540);
@@ -645,6 +656,7 @@ export class SideOpsScene extends Phaser.Scene {
 
     this.boss = {
       sprite,
+      baseFacingRight: this.profile.boss.baseFacingRight,
       hp: this.profile.boss.hp,
       maxHp: this.profile.boss.hp,
       active: false,
@@ -839,7 +851,7 @@ export class SideOpsScene extends Phaser.Scene {
         guard.sprite.setVelocityX((guard.role === 'reinforcement' ? 88 : 72) * guard.direction);
       }
 
-      guard.sprite.setFlipX(guard.direction > 0);
+      guard.sprite.setFlipX(guard.direction < 0);
     });
   }
 
@@ -855,7 +867,7 @@ export class SideOpsScene extends Phaser.Scene {
     const boss = this.boss;
     const distanceX = Math.abs(this.player.x - boss.sprite.x);
     boss.direction = this.player.x < boss.sprite.x ? -1 : 1;
-    boss.sprite.setFlipX(boss.direction > 0);
+    boss.sprite.setFlipX(boss.baseFacingRight ? boss.direction < 0 : boss.direction > 0);
     boss.sprite.setVelocityX((boss.phase === 2 ? 95 : 66) * boss.direction);
 
     if (distanceX < 105 && this.time.now > boss.lastChargeAt) {

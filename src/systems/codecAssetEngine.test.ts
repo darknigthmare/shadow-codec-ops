@@ -15,11 +15,28 @@ describe('codec asset packs', () => {
     expect(getBuiltInPortrait('mgs3', 'contact')).toContain('mgs3-contact.svg');
     expect(getCodecAssetPack('peace_walker').uiProfile).toBe('briefing');
   });
-  it('resolves character-specific emotional portrait sets with a neutral fallback', () => {
-    expect(getCharacterPortrait('solid_snake_mgs1', 'warning')).toBe('/portraits/mgs1/solid_snake/warning.webp');
-    expect(getCharacterPortrait('campbell_mgs1', 'calm')).toBe('/portraits/mgs1/campbell/calm.webp');
+  it('resolves every built-in MGS1 character portrait set', () => {
+    const portraitDirectories = {
+      solid_snake_mgs1: 'solid_snake',
+      campbell_mgs1: 'campbell',
+      mei_ling_mgs1: 'mei_ling',
+      naomi_mgs1: 'naomi',
+      otacon_mgs1: 'otacon',
+      nastasha_mgs1: 'nastasha',
+      miller_mgs1: 'miller',
+      meryl_mgs1: 'meryl',
+      deepthroat_mgs1: 'deepthroat'
+    };
+
+    for (const [characterId, directory] of Object.entries(portraitDirectories)) {
+      expect(getCharacterPortrait(characterId, 'warning')).toBe(`/portraits/mgs1/${directory}/warning.webp`);
+    }
+  });
+  it('uses a neutral fallback for unsupported expressions and no fallback for unknown characters', () => {
     expect(getCharacterPortrait('solid_snake_mgs1', 'unsupported')).toBe('/portraits/mgs1/solid_snake/neutral.webp');
+    expect(getCharacterPortrait('mei_ling_mgs1', 'unsupported')).toBe('/portraits/mgs1/mei_ling/neutral.webp');
     expect(getCharacterPortrait('unknown_character', 'neutral')).toBeUndefined();
+    expect(getCharacterPortrait(undefined, 'neutral')).toBeUndefined();
   });
   it('keeps distinct procedural UI signatures for each hardware generation', () => {
     expect(getCodecUiCueSignature('msx', 'incoming')).toMatchObject({ profile: '8bit', tones: 3, waveform: 'square' });
