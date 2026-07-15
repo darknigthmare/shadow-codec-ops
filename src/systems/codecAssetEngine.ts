@@ -1,4 +1,5 @@
 import packsJson from '../data/codecAssetPacks.json';
+import mg1PortraitSetsJson from '../data/mg1PortraitSets.json';
 import type { EraId } from '../types/codec.types';
 import type { CodecAssetPackDefinition, CodecUiCue } from '../types/codecAssets.types';
 
@@ -27,10 +28,25 @@ interface CharacterPortraitSet {
   expressions: readonly string[];
 }
 
+interface Mg1PortraitSetDefinition {
+  characterId: string;
+  directory: string;
+  aliases: string[];
+  expressions: string[];
+}
+
 const standardPortraitExpressions = ['neutral', 'serious', 'warning', 'calm', 'glitch', 'humor'] as const;
 const portraitSet = (basePath: string, expressions: readonly string[] = standardPortraitExpressions): CharacterPortraitSet => ({ basePath, expressions });
 
+const mg1CharacterPortraitSets = Object.fromEntries(
+  (mg1PortraitSetsJson as Mg1PortraitSetDefinition[]).flatMap(({ characterId, directory, aliases, expressions }) => {
+    const set = portraitSet(`/portraits/msx/mg1/${directory}`, expressions);
+    return [characterId, ...aliases].map((id) => [id, set]);
+  })
+) as Record<string, CharacterPortraitSet>;
+
 const characterPortraitSets: Record<string, CharacterPortraitSet> = {
+  ...mg1CharacterPortraitSets,
   solid_snake_mgs1: portraitSet('/portraits/mgs1/solid_snake'),
   campbell_mgs1: portraitSet('/portraits/mgs1/campbell'),
   mei_ling_mgs1: portraitSet('/portraits/mgs1/mei_ling'),

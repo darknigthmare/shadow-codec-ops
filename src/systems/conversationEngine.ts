@@ -219,7 +219,7 @@ export function getSpeakerLabel(speaker: string, contact?: ContactDefinition): s
     holly: 'Holly White',
     jacobsen: 'Johan Jacobsen',
     bigbossmg1: 'Big Boss',
-    schneider: 'Kyle Schneider',
+    schneider: 'Schneider',
     diane: 'Diane',
     jennifer: 'Jennifer',
     pliskin: 'Iroquois Pliskin',

@@ -13,7 +13,7 @@ interface AnimatedCodecPortraitProps {
 }
 
 export function AnimatedCodecPortrait({ label, initials, name, expression = 'neutral', emotion = 'neutral', image, speaking = false, enabled = true, side }: AnimatedCodecPortraitProps) {
-  const isCharacterPortrait = Boolean(image && ['/portraits/mgs1/', '/portraits/mgs2/', '/portraits/mgs3/'].some((path) => image.includes(path)));
+  const isCharacterPortrait = Boolean(image && ['/portraits/msx/', '/portraits/mgs1/', '/portraits/mgs2/', '/portraits/mgs3/'].some((path) => image.includes(path)));
 
   return (
     <div className={`codec-portrait ${side} portrait-emotion-${emotion} ${enabled && speaking ? 'is-speaking' : ''}`}>

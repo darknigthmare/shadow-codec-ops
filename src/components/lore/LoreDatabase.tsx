@@ -53,9 +53,14 @@ interface EnemyRecord {
   canCallBackup: boolean;
   alertBehavior: string;
   notes: string;
+  aliases?: string[];
+  projectiles?: string[];
+  weakness?: string;
+  canonStatus?: LoreCanonStatus;
+  assetTextureKey?: string;
 }
 
-interface BossRecord {
+export interface BossRecord {
   id: string;
   name: string;
   era: EraId;
@@ -63,6 +68,11 @@ interface BossRecord {
   phaseCount: number;
   weakness: string;
   description: string;
+  aliases?: string[];
+  projectiles?: string[];
+  canonStatus?: LoreCanonStatus;
+  runtimeStatus?: 'asset_registry_only' | 'dedicated_mission_003';
+  assetTextureKey?: string;
 }
 
 const baseLoreEntries = loreEntriesJson as LoreEntry[];
@@ -269,41 +279,61 @@ function enemyToLoreEntry(enemy: EnemyRecord): LoreEntry {
     subtitle: `${humanize(enemy.alertBehavior)} / HP ${enemy.health}`,
     category: 'enemy',
     era: enemy.era,
-    canonStatus: enemy.id.includes('captain') ? 'simulation' : 'gameplay',
+    canonStatus: enemy.canonStatus ?? (enemy.id.includes('captain') ? 'simulation' : 'gameplay'),
     importance: enemy.id.includes('captain') ? 'high' : 'medium',
     summary: enemy.notes,
     details: [
       `Vision range: ${enemy.visionRange}`,
       `Hearing range: ${enemy.hearingRange}`,
       `Can call backup: ${enemy.canCallBackup ? 'yes' : 'no'}`,
-      `Behavior: ${humanize(enemy.alertBehavior)}`
+      `Behavior: ${humanize(enemy.alertBehavior)}`,
+      ...(enemy.weakness ? [`Weakness / doctrine: ${humanize(enemy.weakness)}`] : []),
+      ...(enemy.projectiles?.length ? [`Projectiles: ${enemy.projectiles.map(humanize).join(', ')}`] : []),
+      ...(enemy.assetTextureKey ? [`2D asset key: ${enemy.assetTextureKey}`] : [])
     ],
-    tags: unique(['enemy', enemy.era, enemy.alertBehavior, enemy.canCallBackup ? 'backup' : 'no backup']),
+    tags: unique(['enemy', enemy.era, enemy.alertBehavior, enemy.weakness ?? '', enemy.canCallBackup ? 'backup' : 'no backup']),
+    aliases: enemy.aliases,
     related: [{ type: 'enemy', id: enemy.id, label: enemy.name }]
   };
 }
 
-function bossToLoreEntry(boss: BossRecord): LoreEntry {
+export function bossToLoreEntry(boss: BossRecord): LoreEntry {
+  const registryOnly = boss.runtimeStatus === 'asset_registry_only';
+  const dedicatedMission003 = boss.runtimeStatus === 'dedicated_mission_003';
   return {
     id: `boss_${boss.id}`,
     title: boss.name,
     subtitle: `${boss.phaseCount} phases / HP ${boss.health}`,
     category: 'boss',
     era: boss.era,
-    canonStatus: 'simulation',
+    canonStatus: boss.canonStatus ?? 'simulation',
     importance: 'high',
     summary: boss.description,
     details: [
       `Health: ${boss.health}`,
       `Phase count: ${boss.phaseCount}`,
       `Weakness / doctrine: ${humanize(boss.weakness)}`,
-      'Designed as a local boss systems test before adding era-specific major bosses.'
+      ...(boss.projectiles?.length ? [`Projectiles: ${boss.projectiles.map(humanize).join(', ')}`] : []),
+      ...(boss.assetTextureKey ? [`2D asset key: ${boss.assetTextureKey}`] : []),
+      registryOnly
+        ? 'Canonical asset metadata is ready; dedicated encounter behavior is not wired yet.'
+        : dedicatedMission003
+          ? 'Playable in the dedicated Operation Intrude N313 Mission 003 runtime.'
+          : 'Designed as a local boss systems test before adding era-specific major bosses.'
     ],
     tags: unique(['boss', boss.era, boss.weakness, 'side ops']),
-    related: [
-      { type: 'boss', id: boss.id, label: boss.name },
-      { type: 'mission', id: 'shadow_dock_001', label: 'Dock Infiltration' }
-    ]
+    aliases: boss.aliases,
+    related: registryOnly
+      ? [{ type: 'boss', id: boss.id, label: boss.name }]
+      : dedicatedMission003
+        ? [
+            { type: 'boss', id: boss.id, label: boss.name },
+            { type: 'mission', id: 'outer_heaven_intrude_n313', label: 'Operation Intrude N313' }
+          ]
+        : [
+            { type: 'boss', id: boss.id, label: boss.name },
+            { type: 'mission', id: 'shadow_dock_001', label: 'Dock Infiltration' }
+          ]
   };
 }
 

@@ -1,5 +1,6 @@
 import type { EraId } from '../types/codec.types';
 import type { BuilderEnvironment } from '../types/missionBuilder.types';
+import { MG1_SIDEOPS_DEFAULT_HOSTILE_TEXTURES } from '../game/core/mg1SideOpsAssetRegistry';
 
 export interface SideOpsOperativeAsset {
   id: string;
@@ -161,9 +162,9 @@ function resolvePlayerTexture(input: SideOpsCharacterResolutionInput): string {
 
 /**
  * Resolves the four character roles used by SideOpsScene. Player identity is
- * era-aware; hostile roles retain the current environment packs until their
- * own era-specific art packs are added. VR deliberately uses vrGuard for both
- * hostile roles because Side Ops has no target-drone role.
+ * era-aware. Outer Heaven Builder missions use the MG1 hostile registry while
+ * Tanker and VR environments keep their dedicated packs. VR deliberately uses
+ * vrGuard for both hostile roles because Side Ops has no target-drone role.
  */
 export function resolveSideOpsCharacterTextures(input: SideOpsCharacterResolutionInput): SideOpsCharacterTextureSet {
   if (input.environment === 'vr') {
@@ -176,6 +177,13 @@ export function resolveSideOpsCharacterTextures(input: SideOpsCharacterResolutio
   }
 
   const tanker = input.environment === 'tanker';
+  if (input.era === 'msx' && !tanker) {
+    return {
+      playerTexture: resolvePlayerTexture(input),
+      ...MG1_SIDEOPS_DEFAULT_HOSTILE_TEXTURES
+    };
+  }
+
   return {
     playerTexture: resolvePlayerTexture(input),
     guardTexture: tanker ? 'deckGuard' : 'guard',

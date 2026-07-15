@@ -455,11 +455,16 @@ export class SideOpsScene extends Phaser.Scene {
       }
       this.emitHudUpdate();
     });
-    this.events.once('shutdown', () => {
+    const removeExternalListeners = () => {
       this.offCodecResume?.();
       this.offMissionRestart?.();
       this.offDirectorDirective?.();
-    });
+      this.offCodecResume = undefined;
+      this.offMissionRestart = undefined;
+      this.offDirectorDirective = undefined;
+    };
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, removeExternalListeners);
+    this.events.once(Phaser.Scenes.Events.DESTROY, removeExternalListeners);
 
     this.emitProfileCodec(this.profile.codec.missionStart);
     this.emitHudUpdate();

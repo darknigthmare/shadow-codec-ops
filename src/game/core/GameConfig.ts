@@ -21,6 +21,7 @@ export async function createGameConfig(
         BootScene,
         PreloadScene,
         (await import('../scenes/SideOpsScene')).SideOpsScene,
+        (await import('../scenes/Mg1OuterHeavenScene')).Mg1OuterHeavenScene,
         (await import('../scenes/MissionCompleteScene')).MissionCompleteScene
       ];
 

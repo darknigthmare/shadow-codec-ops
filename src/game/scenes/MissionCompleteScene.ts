@@ -1,10 +1,13 @@
 import Phaser from 'phaser';
-import type { MissionCompletePayload } from '../core/GameEvents';
+import { GAME_EVENT, onGameEvent, type MissionCompletePayload } from '../core/GameEvents';
 import { RuntimeInputController } from '../core/RuntimeInput';
+import { resolveSideOpsRuntimeScene, type SideOpsRuntimeSceneKey } from '../../systems/sideOpsRuntimeResolver';
 
 export class MissionCompleteScene extends Phaser.Scene {
   private inputController!: RuntimeInputController;
   private restartLocked = false;
+  private restartScene: SideOpsRuntimeSceneKey = 'SideOpsScene';
+  private offMissionRestart?: () => void;
 
   constructor() {
     super('MissionCompleteScene');
@@ -18,6 +21,18 @@ export class MissionCompleteScene extends Phaser.Scene {
 
     this.inputController = new RuntimeInputController(this);
     this.restartLocked = false;
+    this.restartScene = resolveSideOpsRuntimeScene(data.missionId ?? 'shadow_dock_001');
+    this.offMissionRestart = onGameEvent<{ missionId?: string }>(GAME_EVENT.MISSION_RESTART, (payload) => {
+      if (this.restartLocked) return;
+      this.restartLocked = true;
+      this.scene.start(resolveSideOpsRuntimeScene(payload?.missionId ?? data.missionId ?? 'shadow_dock_001'));
+    });
+    const removeExternalListeners = () => {
+      this.offMissionRestart?.();
+      this.offMissionRestart = undefined;
+    };
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, removeExternalListeners);
+    this.events.once(Phaser.Scenes.Events.DESTROY, removeExternalListeners);
 
     this.add.rectangle(480, 270, 960, 540, 0x020703, 0.96);
     this.add.rectangle(480, 270, 760, 430, 0x06140c, 0.88).setStrokeStyle(2, success ? 0x7cff6b : 0xff6b6b, 0.8);
@@ -41,7 +56,7 @@ export class MissionCompleteScene extends Phaser.Scene {
 
     const rows = [
       `STEALTH SCORE: ${data.stealthScore ?? 0}`,
-      `OBJECTIVES: ${data.objectivesCompleted ?? 0}/5`,
+      `OBJECTIVES: ${data.objectivesCompleted ?? 0}/${data.totalObjectives ?? 5}`,
       `SECRETS: ${data.secretsFound ?? 0}/${data.totalSecrets ?? 0}`,
       `BOSS DEFEATED: ${data.bossDefeated ? 'YES' : 'NO'}`,
       `TIME: ${data.timeSeconds ?? 0}s`,
@@ -76,7 +91,7 @@ export class MissionCompleteScene extends Phaser.Scene {
     if (this.inputController.justDown('confirm') || this.inputController.justDown('cancel')) {
       this.restartLocked = true;
       this.inputController.vibrate(55, 0.12, 0.22);
-      this.scene.start('SideOpsScene');
+      this.scene.start(this.restartScene);
     }
   }
 }

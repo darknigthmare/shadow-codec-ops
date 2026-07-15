@@ -35,6 +35,7 @@ import {
 } from '../../systems/missionBuilderStorage';
 import { getCampaignLoadoutBonuses, recordCampaignSideOpsResult } from '../../systems/campaignStorage';
 import { requestDirectorSequence, subscribeDirectorRuntimeEvents } from '../../systems/directorBus';
+import { MG1_HAZARD_SEQUENCE, MG1_OUTER_HEAVEN_MISSION_ID, MG1_OUTER_HEAVEN_WORLD } from '../../game/core/mg1OuterHeavenMission';
 
 interface SideOpsLauncherProps {
   settings: UserSettings;
@@ -65,22 +66,28 @@ function resolveMission(missions: MissionDefinitionWithSource[], missionId: stri
 function buildInitialHud(mission: MissionDefinitionWithSource): MissionHudPayload {
   const campaignBonuses = getCampaignLoadoutBonuses();
   const builderProfile = mission.source === 'builder' ? resolveBuilderSideOpsProfile(mission.id) : null;
+  const isMg1OuterHeaven = mission.id === MG1_OUTER_HEAVEN_MISSION_ID;
+  const startAmmo = builderProfile?.startAmmo
+    ?? (isMg1OuterHeaven ? MG1_OUTER_HEAVEN_WORLD.startAmmo : mission.id === 'tanker_hold_002' ? 32 : 26);
+  const baseMaxAmmo = isMg1OuterHeaven ? MG1_OUTER_HEAVEN_WORLD.maxAmmo : 30;
   return {
     missionId: mission.id,
     missionTitle: mission.title,
     bossName: mission.boss ?? 'Mission Boss',
     health: 100,
     maxHealth: 100,
-    ammo: (builderProfile?.startAmmo ?? (mission.id === 'tanker_hold_002' ? 32 : 26)) + campaignBonuses.ammo,
-    maxAmmo: Math.max(30, (builderProfile?.startAmmo ?? (mission.id === 'tanker_hold_002' ? 32 : 26)) + campaignBonuses.ammo),
-    rations: (builderProfile?.startRations ?? 1) + campaignBonuses.rations,
-    chaff: (builderProfile?.startChaff ?? (mission.id === 'tanker_hold_002' ? 2 : 1)) + campaignBonuses.chaff,
+    ammo: startAmmo + campaignBonuses.ammo,
+    maxAmmo: Math.max(baseMaxAmmo, startAmmo + campaignBonuses.ammo),
+    rations: (builderProfile?.startRations ?? (isMg1OuterHeaven ? MG1_OUTER_HEAVEN_WORLD.startRations : 1)) + campaignBonuses.rations,
+    chaff: isMg1OuterHeaven
+      ? 0
+      : (builderProfile?.startChaff ?? (mission.id === 'tanker_hold_002' ? 2 : 1)) + campaignBonuses.chaff,
     hasKeycard: false,
     alertState: 'NORMAL',
     suspicion: 0,
     stealthScore: 1000,
     reinforcementCount: 0,
-    activeEnemies: builderProfile?.guards.length ?? (mission.id === 'tanker_hold_002' ? 4 : 3),
+    activeEnemies: builderProfile?.guards.length ?? (isMg1OuterHeaven ? MG1_HAZARD_SEQUENCE.length : mission.id === 'tanker_hold_002' ? 4 : 3),
     lastAlertSource: 'none',
     alerts: 0,
     shotsFired: 0,
@@ -92,11 +99,11 @@ function buildInitialHud(mission: MissionDefinitionWithSource): MissionHudPayloa
     objectivesCompleted: mission.objectives.filter((objective) => objective.completedByDefault).length,
     totalObjectives: mission.objectives.length,
     secretsFound: 0,
-    totalSecrets: builderProfile?.secrets.length ?? 3,
+    totalSecrets: builderProfile?.secrets.length ?? (isMg1OuterHeaven ? 0 : 3),
     bossActive: false,
     bossDefeated: false,
     bossHealth: 0,
-    bossMaxHealth: builderProfile?.boss.hp ?? (mission.id === 'tanker_hold_002' ? 12 : 10),
+    bossMaxHealth: builderProfile?.boss.hp ?? (isMg1OuterHeaven ? 8 : mission.id === 'tanker_hold_002' ? 12 : 10),
     chaffActive: false
   };
 }
@@ -106,6 +113,7 @@ export function SideOpsLauncher({ settings, onOpenCodec, onOpenBuilder }: SideOp
   const [sideOpsMissions] = useState<MissionDefinitionWithSource[]>(loadSideOpsMissionLibrary);
   const [activeMissionId, setActiveMissionId] = useState(() => loadJson(ACTIVE_MISSION_KEY, DEFAULT_MISSION_ID));
   const activeMission = useMemo(() => resolveMission(sideOpsMissions, activeMissionId), [activeMissionId, sideOpsMissions]);
+  const isMg1OuterHeaven = activeMission.id === MG1_OUTER_HEAVEN_MISSION_ID;
   const gameRef = useRef<Game | null>(null);
   const [engineStatus, setEngineStatus] = useState<'loading' | 'ready' | 'error'>('loading');
   const [engineError, setEngineError] = useState('');
@@ -286,12 +294,12 @@ export function SideOpsLauncher({ settings, onOpenCodec, onOpenBuilder }: SideOp
           <li>{controlBindings.sprint} : marche tactique, réduit la détection sonore</li>
           <li>Bas / {controlBindings.crouch} : accroupi, réduit fortement la détection visuelle</li>
           <li>{controlBindings.jump} / Flèche haut : saut</li>
-          <li>{controlBindings.fire} : tir SOCOM, silencieux mais pas totalement invisible</li>
-          <li>{controlBindings.cqc} : CQC non létal proche</li>
-          <li>{controlBindings.chaff} : chaff grenade contre caméra et projecteur</li>
+          <li>{controlBindings.fire} : {isMg1OuterHeaven ? 'arme contextuelle MG1 (pistolet, grenade, mine, missile ou roquette)' : 'tir SOCOM, silencieux mais pas totalement invisible'}</li>
+          <li>{controlBindings.cqc} : {isMg1OuterHeaven ? 'action / CQC, puis pose du plastic sur les jambes du TX-55' : 'CQC non létal proche'}</li>
+          <li>{controlBindings.chaff} : {isMg1OuterHeaven ? 'indisponible — la chaff n’existe pas encore dans MG1' : 'chaff grenade contre caméra et projecteur'}</li>
           <li>{controlBindings.ration} : ration si blessé</li>
           <li>{controlBindings.codec} : demande Codec manuelle</li>
-          <li>Manette standard : stick/D-pad, A saut, X tir, B CQC, Y chaff, LB ration, RB Codec</li>
+          <li>Manette standard : stick/D-pad, A saut, X tir, B CQC, Y {isMg1OuterHeaven ? 'sans fonction dans MG1' : 'chaff'}, LB ration, RB Codec</li>
         </ul>
 
         <div className="mission-objectives-card">
@@ -322,9 +330,9 @@ export function SideOpsLauncher({ settings, onOpenCodec, onOpenBuilder }: SideOp
           <StatusBadge label={hud.alertState} tone={alertTone} />
           <div><span>Mission</span><strong>{hud.missionTitle}</strong></div>
           <div><span>HP</span><strong>{hud.health}/{hud.maxHealth}</strong></div>
-          <div><span>SOCOM</span><strong>{hud.ammo}/{hud.maxAmmo}</strong></div>
+          <div><span>{isMg1OuterHeaven ? 'AMMO' : 'SOCOM'}</span><strong>{hud.ammo}/{hud.maxAmmo}</strong></div>
           <div><span>Ration</span><strong>{hud.rations}</strong></div>
-          <div><span>Chaff</span><strong>{hud.chaff}{hud.chaffActive ? ' ACTIVE' : ''}</strong></div>
+          <div><span>{isMg1OuterHeaven ? 'ITEM' : 'Chaff'}</span><strong>{isMg1OuterHeaven ? 'CONTEXTUAL' : `${hud.chaff}${hud.chaffActive ? ' ACTIVE' : ''}`}</strong></div>
           <div><span>Card</span><strong>{hud.hasKeycard ? 'ACTIVE' : 'NONE'}</strong></div>
           <div><span>Stealth</span><strong>{hud.stealthScore}</strong></div>
           <div><span>Director Support</span><strong>{directorSupport}</strong></div>

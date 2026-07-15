@@ -39,6 +39,24 @@ describe('Side Ops playable operative resolver', () => {
     expect(resolveSideOpsCharacterTextures({ era: 'mgs2', mainCharacter: 'solid_snake_mgs2', environment: 'tanker' }).playerTexture).toBe('playerTanker');
   });
 
+  it.each(['dock', 'jungle', 'facility'] as const)('routes MSX Builder hostiles to the Outer Heaven pack in %s', (environment) => {
+    expect(resolveSideOpsCharacterTextures({ era: 'msx', mainCharacter: 'solid_snake_msx', environment })).toEqual({
+      playerTexture: 'playerSolidSnakeMg1',
+      guardTexture: 'mg1Guard',
+      reinforcementTexture: 'mg1Guard',
+      bossTexture: 'mg1Shotmaker'
+    });
+  });
+
+  it('keeps the Tanker hostile pack ahead of the generic MSX route', () => {
+    expect(resolveSideOpsCharacterTextures({ era: 'msx', mainCharacter: 'solid_snake_msx', environment: 'tanker' })).toEqual({
+      playerTexture: 'playerSolidSnakeMg1',
+      guardTexture: 'deckGuard',
+      reinforcementTexture: 'deckReinforcement',
+      bossTexture: 'bossDeckCommander'
+    });
+  });
+
   it('uses era and environment defaults when the character alias is unknown', () => {
     expect(resolveSideOpsCharacterTextures({ era: 'mgs2', mainCharacter: 'unknown', environment: 'tanker' }).playerTexture).toBe('playerTanker');
     expect(resolveSideOpsCharacterTextures({ era: 'mgs2', mainCharacter: 'unknown', environment: 'facility' }).playerTexture).toBe('playerRaidenMgs2');

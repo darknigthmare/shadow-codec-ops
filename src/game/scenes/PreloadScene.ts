@@ -1,5 +1,115 @@
 import Phaser from 'phaser';
+import { getStorageKey } from '../../systems/saveEngine';
+import { parseStoredSideOpsMissionId, resolveSideOpsRuntimeScene } from '../../systems/sideOpsRuntimeResolver';
 import { SIDEOPS_PLAYABLE_OPERATIVE_ASSETS } from '../../systems/sideOpsCharacterResolver';
+import {
+  MG1_SIDEOPS_ALL_ASSETS,
+  type Mg1SideOpsAsset
+} from '../core/mg1SideOpsAssetRegistry';
+
+function preloadMg1Asset(scene: Phaser.Scene, asset: Mg1SideOpsAsset): void {
+  if (asset.loader === 'spritesheet') {
+    scene.load.spritesheet(asset.textureKey, asset.path, {
+      frameWidth: asset.frameWidth,
+      frameHeight: asset.frameHeight,
+      endFrame: asset.frameCount - 1
+    });
+    return;
+  }
+  scene.load.image(asset.textureKey, asset.path);
+}
+
+function drawMg1HumanoidFallback(graphics: Phaser.GameObjects.Graphics, asset: Mg1SideOpsAsset): void {
+  const center = Math.floor(asset.width / 2);
+  const headWidth = Math.max(8, Math.floor(asset.width * 0.36));
+  const headHeight = Math.max(8, Math.floor(asset.height * 0.2));
+  const torsoWidth = Math.max(10, Math.floor(asset.width * 0.56));
+  const torsoY = headHeight;
+  const torsoHeight = Math.max(12, Math.floor(asset.height * 0.45));
+  const legWidth = Math.max(4, Math.floor(asset.width * 0.2));
+  const legY = torsoY + torsoHeight;
+  graphics.fillStyle(asset.fallbackPrimaryColor, 1);
+  graphics.fillRect(center - Math.floor(headWidth / 2), 0, headWidth, headHeight);
+  graphics.fillRect(center - Math.floor(torsoWidth / 2), torsoY, torsoWidth, torsoHeight);
+  graphics.fillRect(center - legWidth - 1, legY, legWidth, asset.height - legY);
+  graphics.fillRect(center + 1, legY, legWidth, asset.height - legY);
+  graphics.fillStyle(asset.fallbackAccentColor, 1);
+  graphics.fillRect(center - Math.floor(torsoWidth / 2), torsoY + Math.floor(torsoHeight * 0.38), torsoWidth, Math.max(2, Math.floor(asset.height * 0.06)));
+  graphics.fillRect(center + Math.floor(torsoWidth * 0.35), torsoY + Math.floor(torsoHeight * 0.52), Math.max(3, Math.floor(asset.width * 0.28)), 3);
+}
+
+function drawMg1AnimalFallback(graphics: Phaser.GameObjects.Graphics, asset: Mg1SideOpsAsset): void {
+  const bodyY = Math.max(2, Math.floor(asset.height * 0.34));
+  const bodyHeight = Math.max(5, Math.floor(asset.height * 0.42));
+  graphics.fillStyle(asset.fallbackPrimaryColor, 1);
+  graphics.fillRect(1, bodyY, Math.max(5, Math.floor(asset.width * 0.68)), bodyHeight);
+  graphics.fillCircle(Math.floor(asset.width * 0.78), bodyY + Math.floor(bodyHeight / 2), Math.max(3, Math.floor(asset.height * 0.2)));
+  graphics.fillRect(Math.floor(asset.width * 0.18), bodyY + bodyHeight, Math.max(2, Math.floor(asset.width * 0.1)), Math.max(2, asset.height - bodyY - bodyHeight));
+  graphics.fillRect(Math.floor(asset.width * 0.56), bodyY + bodyHeight, Math.max(2, Math.floor(asset.width * 0.1)), Math.max(2, asset.height - bodyY - bodyHeight));
+  graphics.fillStyle(asset.fallbackAccentColor, 1);
+  graphics.fillRect(Math.floor(asset.width * 0.78), bodyY + 1, Math.max(2, Math.floor(asset.width * 0.14)), 2);
+}
+
+function drawMg1MachineFallback(graphics: Phaser.GameObjects.Graphics, asset: Mg1SideOpsAsset): void {
+  const bodyY = Math.floor(asset.height * 0.24);
+  const bodyHeight = Math.max(12, Math.floor(asset.height * 0.48));
+  graphics.fillStyle(asset.fallbackPrimaryColor, 1);
+  graphics.fillRect(Math.floor(asset.width * 0.08), bodyY, Math.floor(asset.width * 0.84), bodyHeight);
+  graphics.fillRect(Math.floor(asset.width * 0.32), Math.floor(asset.height * 0.08), Math.floor(asset.width * 0.36), Math.max(6, Math.floor(asset.height * 0.2)));
+  if (asset.height > asset.width) {
+    const legY = bodyY + bodyHeight;
+    graphics.fillRect(Math.floor(asset.width * 0.18), legY, Math.floor(asset.width * 0.22), asset.height - legY);
+    graphics.fillRect(Math.floor(asset.width * 0.6), legY, Math.floor(asset.width * 0.22), asset.height - legY);
+  } else {
+    graphics.fillRect(0, bodyY + bodyHeight - 3, asset.width, Math.max(4, Math.floor(asset.height * 0.18)));
+  }
+  graphics.fillStyle(asset.fallbackAccentColor, 1);
+  graphics.fillRect(Math.floor(asset.width * 0.66), bodyY + 3, Math.floor(asset.width * 0.3), Math.max(3, Math.floor(asset.height * 0.08)));
+  graphics.lineStyle(2, asset.fallbackAccentColor, 1);
+  graphics.strokeRect(Math.floor(asset.width * 0.08), bodyY, Math.floor(asset.width * 0.84), bodyHeight);
+}
+
+function drawMg1EffectFallback(graphics: Phaser.GameObjects.Graphics, asset: Mg1SideOpsAsset): void {
+  if (asset.loader !== 'spritesheet') return;
+  for (let frame = 0; frame < asset.frameCount; frame += 1) {
+    const frameX = frame * asset.frameWidth;
+    const progress = (frame + 1) / asset.frameCount;
+    const radius = Math.max(2, Math.floor(Math.min(asset.frameWidth, asset.frameHeight) * 0.42 * progress));
+    graphics.fillStyle(asset.fallbackPrimaryColor, Math.max(0.25, 1 - progress * 0.45));
+    graphics.fillCircle(frameX + Math.floor(asset.frameWidth / 2), Math.floor(asset.frameHeight / 2), radius);
+    graphics.fillStyle(asset.fallbackAccentColor, Math.max(0.2, 1 - progress * 0.6));
+    graphics.fillCircle(frameX + Math.floor(asset.frameWidth / 2), Math.floor(asset.frameHeight / 2), Math.max(1, Math.floor(radius * 0.45)));
+  }
+}
+
+function createMg1FallbackTexture(scene: Phaser.Scene, graphics: Phaser.GameObjects.Graphics, asset: Mg1SideOpsAsset): void {
+  if (scene.textures.exists(asset.textureKey)) return;
+  graphics.clear();
+  if (asset.fallbackShape === 'humanoid') drawMg1HumanoidFallback(graphics, asset);
+  if (asset.fallbackShape === 'animal') drawMg1AnimalFallback(graphics, asset);
+  if (asset.fallbackShape === 'machine') drawMg1MachineFallback(graphics, asset);
+  if (asset.fallbackShape === 'sensor') {
+    graphics.fillStyle(asset.fallbackPrimaryColor, 1);
+    graphics.fillRect(0, 0, asset.width, asset.height);
+    graphics.fillStyle(asset.fallbackAccentColor, 1);
+    graphics.fillCircle(Math.floor(asset.width / 2), Math.floor(asset.height / 2), Math.max(2, Math.floor(asset.height * 0.22)));
+  }
+  if (asset.fallbackShape === 'projectile') {
+    graphics.fillStyle(asset.fallbackPrimaryColor, 1);
+    graphics.fillRect(0, Math.max(0, Math.floor(asset.height * 0.2)), asset.width, Math.max(2, Math.ceil(asset.height * 0.6)));
+    graphics.fillStyle(asset.fallbackAccentColor, 1);
+    graphics.fillRect(Math.max(0, asset.width - Math.max(2, Math.floor(asset.width * 0.28))), 0, Math.max(2, Math.floor(asset.width * 0.28)), asset.height);
+  }
+  if (asset.fallbackShape === 'effect') drawMg1EffectFallback(graphics, asset);
+  graphics.generateTexture(asset.textureKey, asset.width, asset.height);
+  if (asset.loader === 'spritesheet') {
+    const texture = scene.textures.get(asset.textureKey);
+    for (let frame = 0; frame < asset.frameCount; frame += 1) {
+      texture.add(frame, 0, frame * asset.frameWidth, 0, asset.frameWidth, asset.frameHeight);
+    }
+  }
+  graphics.clear();
+}
 
 export class PreloadScene extends Phaser.Scene {
   constructor() {
@@ -20,6 +130,7 @@ export class PreloadScene extends Phaser.Scene {
     this.load.image('vrTarget', '/vr/characters/vr-target-drone.png');
     this.load.image('vrBoss', '/vr/characters/vr-armored-captain.png');
     SIDEOPS_PLAYABLE_OPERATIVE_ASSETS.forEach((asset) => this.load.image(asset.textureKey, asset.path));
+    MG1_SIDEOPS_ALL_ASSETS.forEach((asset) => preloadMg1Asset(this, asset));
   }
 
   create(): void {
@@ -65,6 +176,8 @@ export class PreloadScene extends Phaser.Scene {
       graphics.generateTexture(asset.textureKey, 32, 48);
       graphics.clear();
     });
+
+    MG1_SIDEOPS_ALL_ASSETS.forEach((asset) => createMg1FallbackTexture(this, graphics, asset));
 
     if (!this.textures.exists('guard')) {
       graphics.fillStyle(0x9aff8a, 1);
@@ -300,9 +413,12 @@ export class PreloadScene extends Phaser.Scene {
     graphics.generateTexture('crate', 28, 40);
     graphics.destroy();
 
-    const startScene = window.localStorage.getItem('shadow-codec-phaser-start-scene') === 'VRTrainingScene'
+    const requestedStartScene = window.localStorage.getItem('shadow-codec-phaser-start-scene');
+    const storedMissionId = window.localStorage.getItem(getStorageKey('sideops-active-mission-id'))
+      ?? window.localStorage.getItem('sideops-active-mission-id');
+    const startScene = requestedStartScene === 'VRTrainingScene'
       ? 'VRTrainingScene'
-      : 'SideOpsScene';
+      : resolveSideOpsRuntimeScene(parseStoredSideOpsMissionId(storedMissionId));
     this.scene.start(startScene);
   }
 }

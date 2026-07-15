@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import mg1PortraitSetsJson from '../data/mg1PortraitSets.json';
 import mgs2PortraitSetsJson from '../data/mgs2PortraitSets.json';
 import mgs3PortraitSetsJson from '../data/mgs3PortraitSets.json';
 import { codecAssetPacks, getBuiltInPortrait, getCharacterPortrait, getCodecAssetPack, getCodecUiCueSignature } from './codecAssetEngine';
@@ -16,6 +17,32 @@ describe('codec asset packs', () => {
     }
     expect(getBuiltInPortrait('mgs3', 'contact')).toContain('mgs3-contact.svg');
     expect(getCodecAssetPack('peace_walker').uiProfile).toBe('briefing');
+  });
+  it('resolves every MG1 MSX portrait expression and player alias', () => {
+    const expectedExpressions = ['neutral', 'serious', 'warning', 'calm', 'glitch', 'humor'];
+    const portraitDirectories: Record<string, string> = {
+      solid_snake_msx: 'solid_snake',
+      big_boss_mg1: 'big_boss',
+      schneider_mg1: 'schneider',
+      diane_mg1: 'diane',
+      jennifer_mg1: 'jennifer'
+    };
+
+    expect(mg1PortraitSetsJson.map(({ characterId }) => characterId)).toEqual(Object.keys(portraitDirectories));
+    for (const { characterId, directory, aliases, expressions } of mg1PortraitSetsJson) {
+      expect(directory).toBe(portraitDirectories[characterId]);
+      expect(expressions).toEqual(expectedExpressions);
+      for (const expression of expressions) {
+        const expectedPath = `/portraits/msx/mg1/${directory}/${expression}.webp`;
+        expect(getCharacterPortrait(characterId, expression)).toBe(expectedPath);
+        for (const alias of aliases) expect(getCharacterPortrait(alias, expression)).toBe(expectedPath);
+      }
+    }
+
+    const msxPack = getCodecAssetPack('msx');
+    expect(msxPack.includedAssets).toContain('MG1 character-specific portrait pack');
+    expect(msxPack.missingRecommendedAssets).not.toContain('character-specific portrait pack');
+    expect(msxPack.missingRecommendedAssets).toContain('MG2 character-specific portrait pack');
   });
   it('resolves every built-in MGS1 character portrait set', () => {
     const portraitDirectories = {
@@ -82,6 +109,9 @@ describe('codec asset packs', () => {
     expect(getCharacterPortrait('eva_mgs3', 'urgent')).toBe('/portraits/mgs3/eva/urgent.webp');
   });
   it('uses a neutral fallback for unsupported expressions and no fallback for unknown characters', () => {
+    expect(getCharacterPortrait('solid_snake_msx', 'unsupported')).toBe('/portraits/msx/mg1/solid_snake/neutral.webp');
+    expect(getCharacterPortrait('solid_snake_mg1', 'unsupported')).toBe('/portraits/msx/mg1/solid_snake/neutral.webp');
+    expect(getCharacterPortrait('big_boss_mg1', 'unsupported')).toBe('/portraits/msx/mg1/big_boss/neutral.webp');
     expect(getCharacterPortrait('solid_snake_mgs1', 'unsupported')).toBe('/portraits/mgs1/solid_snake/neutral.webp');
     expect(getCharacterPortrait('mei_ling_mgs1', 'unsupported')).toBe('/portraits/mgs1/mei_ling/neutral.webp');
     expect(getCharacterPortrait('otacon_mgs2', 'glitch')).toBe('/portraits/mgs2/otacon/neutral.webp');

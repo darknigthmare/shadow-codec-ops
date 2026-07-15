@@ -333,5 +333,74 @@
         "pauseGame": false
       }
     ]
+  },
+  {
+    "id": "outer_heaven_intrude_n313",
+    "title": "Operation Intrude N313",
+    "era": "msx",
+    "mode": "side_scroller",
+    "location": "Outer Heaven",
+    "mainCharacter": "solid_snake_msx",
+    "difficulty": 5,
+    "mapKey": "sideops_outer_heaven_intrude_n313_v1",
+    "briefingConversation": "mg1_big_boss_orders",
+    "debriefingConversation": "mg1_schneider_facility",
+    "objectives": [
+      { "id": "infiltrate_outer_heaven", "label": "Infiltrate Outer Heaven", "completedByDefault": true },
+      { "id": "establish_resistance_contact", "label": "Find Gray Fox and establish resistance contact", "completedByDefault": false },
+      { "id": "defeat_shotmaker", "label": "Defeat Shotmaker", "completedByDefault": false },
+      { "id": "defeat_machinegun_kid", "label": "Defeat Machinegun Kid", "completedByDefault": false },
+      { "id": "defeat_hind_d", "label": "Destroy the Hind D", "completedByDefault": false },
+      { "id": "defeat_outer_heaven_tank", "label": "Neutralize the Outer Heaven Tank with landmines", "completedByDefault": false },
+      { "id": "defeat_bulldozer", "label": "Stop the advancing Bulldozer", "completedByDefault": false },
+      { "id": "defeat_fire_trooper", "label": "Defeat Fire Trooper", "completedByDefault": false },
+      { "id": "defeat_bloody_brad_pair", "label": "Destroy both Bloody Brad TX-11 units", "completedByDefault": false },
+      { "id": "defeat_dirty_duck", "label": "Defeat Dirty Duck without harming the hostages", "completedByDefault": false },
+      { "id": "defeat_tx55_metal_gear", "label": "Sabotage TX-55 with the ordered sixteen-charge leg sequence", "completedByDefault": false },
+      { "id": "defeat_big_boss", "label": "Defeat Big Boss", "completedByDefault": false },
+      { "id": "escape_outer_heaven", "label": "Escape the self-destructing fortress", "completedByDefault": false }
+    ],
+    "availableItems": [
+      "handgun_mg1",
+      "landmine_mg1",
+      "plastic_explosive_mg1",
+      "remote_missile_mg1",
+      "grenade_launcher_mg1",
+      "rocket_launcher_mg1",
+      "outer_heaven_access_card",
+      "ration",
+      "ammo_box"
+    ],
+    "enemies": [
+      "outer_heaven_soldier_mg1",
+      "air_trooper_mg1",
+      "attack_dog_mg1",
+      "scorpion_mg1",
+      "gun_camera_mg1",
+      "shotmaker_mg1",
+      "machinegun_kid_mg1",
+      "hind_d_mg1",
+      "outer_heaven_tank_mg1",
+      "bulldozer_mg1",
+      "fire_trooper_mg1",
+      "bloody_brad_mg1",
+      "dirty_duck_mg1",
+      "tx55_metal_gear_mg1",
+      "big_boss_mg1"
+    ],
+    "boss": "big_boss_mg1",
+    "codecTriggers": [
+      { "trigger": "mission_start", "contactId": "big_boss_mg1", "conversationId": "mg1_big_boss_orders", "priority": "urgent", "pauseGame": true },
+      { "trigger": "first_alert", "contactId": "big_boss_mg1", "conversationId": "mg1_big_boss_equipment", "priority": "urgent", "pauseGame": false },
+      { "trigger": "keycard_found", "contactId": "schneider_mg1", "conversationId": "mg1_schneider_facility", "priority": "normal", "pauseGame": false },
+      { "trigger": "mission_complete", "contactId": "schneider_mg1", "conversationId": "mg1_schneider_facility", "priority": "urgent", "pauseGame": true },
+      { "trigger": "low_health", "contactId": "jennifer_mg1", "conversationId": "mg1_jennifer_inside", "priority": "urgent", "pauseGame": false },
+      { "trigger": "manual_call", "contactId": "schneider_mg1", "conversationId": "mg1_schneider_facility", "priority": "normal", "pauseGame": false },
+      { "trigger": "camera_detected", "contactId": "jennifer_mg1", "conversationId": "mg1_jennifer_inside", "priority": "normal", "pauseGame": false },
+      { "trigger": "boss_intro", "contactId": "diane_mg1", "conversationId": "mg1_diane_mercenaries", "priority": "urgent", "pauseGame": false },
+      { "trigger": "boss_midfight", "contactId": "diane_mg1", "conversationId": "mg1_diane_mercenaries", "priority": "normal", "pauseGame": false },
+      { "trigger": "boss_defeated", "contactId": "diane_mg1", "conversationId": "mg1_diane_mercenaries", "priority": "normal", "pauseGame": false },
+      { "trigger": "secret_frequency", "contactId": "jennifer_mg1", "conversationId": "mg1_jennifer_inside", "priority": "secret", "pauseGame": false }
+    ]
   }
 ]
