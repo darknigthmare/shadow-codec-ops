@@ -105,6 +105,7 @@ export interface SideOpsMissionProfile {
   backdropColor: number;
   structureColor: number;
   start: { x: number; y: number };
+  playerTexture: string;
   startAmmo: number;
   startRations: number;
   startChaff: number;

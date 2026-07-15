@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import { SIDEOPS_PLAYABLE_OPERATIVE_ASSETS } from '../../systems/sideOpsCharacterResolver';
 
 export class PreloadScene extends Phaser.Scene {
   constructor() {
@@ -18,6 +19,7 @@ export class PreloadScene extends Phaser.Scene {
     this.load.image('vrGuard', '/vr/characters/vr-guard.png');
     this.load.image('vrTarget', '/vr/characters/vr-target-drone.png');
     this.load.image('vrBoss', '/vr/characters/vr-armored-captain.png');
+    SIDEOPS_PLAYABLE_OPERATIVE_ASSETS.forEach((asset) => this.load.image(asset.textureKey, asset.path));
   }
 
   create(): void {
@@ -47,6 +49,22 @@ export class PreloadScene extends Phaser.Scene {
       graphics.generateTexture('playerTanker', 32, 48);
       graphics.clear();
     }
+
+    SIDEOPS_PLAYABLE_OPERATIVE_ASSETS.forEach((asset) => {
+      if (this.textures.exists(asset.textureKey)) return;
+      graphics.fillStyle(asset.fallbackBodyColor, 1);
+      graphics.fillRect(8, 0, 16, 10);
+      graphics.fillRect(6, 10, 20, 24);
+      graphics.fillRect(4, 34, 8, 14);
+      graphics.fillRect(20, 34, 8, 14);
+      graphics.fillStyle(0x101614, 1);
+      graphics.fillRect(11, 4, 10, 3);
+      graphics.fillStyle(asset.fallbackAccentColor, 1);
+      graphics.fillRect(9, 17, 15, 4);
+      graphics.fillRect(23, 19, 8, 3);
+      graphics.generateTexture(asset.textureKey, 32, 48);
+      graphics.clear();
+    });
 
     if (!this.textures.exists('guard')) {
       graphics.fillStyle(0x9aff8a, 1);

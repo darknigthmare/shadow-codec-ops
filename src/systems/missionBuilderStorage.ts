@@ -15,6 +15,7 @@ import type {
 } from '../types/missionBuilder.types';
 import type { MissionCodecTrigger, MissionDefinition, MissionObjective } from '../types/mission.types';
 import { loadJson, saveJson } from './saveEngine';
+import { resolveSideOpsCharacterTextures } from './sideOpsCharacterResolver';
 import { loadCustomConversations } from './studioStorage';
 
 export const MISSION_BUILDER_LIBRARY_KEY = 'mission-builder-library';
@@ -466,7 +467,11 @@ export function convertBuilderDocumentToSideOpsProfile(document: MissionBuilderD
   const keycard = firstEntity(document, 'keycard', { id: 'keycard', kind: 'keycard', x: Math.round(document.worldWidth * 0.25), y: 300, label: 'security keycard' });
   const boss = firstEntity(document, 'boss', { id: 'boss', kind: 'boss', x: Math.round(document.worldWidth * 0.78), y: 456, label: 'Builder Mission Commander', hp: 10 });
   const colors = ENVIRONMENT_COLORS[document.environment] ?? ENVIRONMENT_COLORS.facility;
-  const isTanker = document.environment === 'tanker';
+  const characterTextures = resolveSideOpsCharacterTextures({
+    era: document.era,
+    mainCharacter: document.mainCharacter,
+    environment: document.environment
+  });
   const secrets = document.entities.filter((entity) => entity.kind === 'secret');
 
   return {
@@ -478,6 +483,7 @@ export function convertBuilderDocumentToSideOpsProfile(document: MissionBuilderD
     worldWidth: document.worldWidth,
     ...colors,
     start: { x: start.x, y: start.y },
+    playerTexture: characterTextures.playerTexture,
     startAmmo: document.startAmmo,
     startRations: document.startRations,
     startChaff: document.startChaff,
@@ -493,12 +499,12 @@ export function convertBuilderDocumentToSideOpsProfile(document: MissionBuilderD
       x: boss.x,
       y: boss.y,
       hp: boss.hp ?? 10,
-      texture: isTanker ? 'bossDeckCommander' : 'bossCaptain',
-      tintPhaseOne: isTanker ? 0x9fd4ff : 0xffdf85,
+      texture: characterTextures.bossTexture,
+      tintPhaseOne: document.environment === 'tanker' ? 0x9fd4ff : 0xffdf85,
       tintPhaseTwo: 0xff6b6b
     },
-    guardTexture: isTanker ? 'deckGuard' : 'guard',
-    reinforcementTexture: isTanker ? 'deckReinforcement' : 'reinforcementGuard',
+    guardTexture: characterTextures.guardTexture,
+    reinforcementTexture: characterTextures.reinforcementTexture,
     platforms: document.entities.filter((entity) => entity.kind === 'platform').map((entity) => ({ x: entity.x, y: entity.y, scaleX: entity.scaleX ?? 4 })),
     crates: document.entities.filter((entity) => entity.kind === 'crate').map((entity) => ({ x: entity.x, y: entity.y })),
     guards: document.entities

@@ -32,6 +32,35 @@ describe('mission builder content pipeline', () => {
     expect(profile.guards.length).toBeGreaterThan(0);
     expect(profile.boss.hp).toBe(10);
     expect(profile.codec.missionStart.contactId).toBe('campbell_mgs1');
+    expect(profile.playerTexture).toBe('player');
+  });
+
+  it('resolves Builder player art from era and main character aliases', () => {
+    const document = {
+      ...createBlankMissionBuilderDocument(),
+      era: 'mgs3' as const,
+      environment: 'jungle' as const,
+      mainCharacter: 'naked_snake_mgs3'
+    };
+    const profile = convertBuilderDocumentToSideOpsProfile(document);
+    expect(profile.playerTexture).toBe('playerNakedSnakeMgs3');
+    expect(profile.guardTexture).toBe('guard');
+    expect(profile.reinforcementTexture).toBe('reinforcementGuard');
+    expect(profile.boss.texture).toBe('bossCaptain');
+  });
+
+  it('uses the VR Side Ops role pack for VR Builder environments', () => {
+    const document = {
+      ...createBlankMissionBuilderDocument(),
+      era: 'vr_simulation' as const,
+      environment: 'vr' as const,
+      mainCharacter: 'vr_operative'
+    };
+    const profile = convertBuilderDocumentToSideOpsProfile(document);
+    expect(profile.playerTexture).toBe('vrPlayer');
+    expect(profile.guardTexture).toBe('vrGuard');
+    expect(profile.reinforcementTexture).toBe('vrGuard');
+    expect(profile.boss.texture).toBe('vrBoss');
   });
 
   it('sanitizes imported positions and numeric limits', () => {

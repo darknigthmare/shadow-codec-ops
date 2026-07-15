@@ -297,7 +297,6 @@ function getActiveMissionProfile(): MissionProfile {
   if (builderProfile) {
     return {
       ...builderProfile,
-      playerTexture: 'player',
       boss: { ...builderProfile.boss, baseFacingRight: true }
     };
   }

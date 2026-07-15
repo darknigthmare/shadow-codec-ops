@@ -47,6 +47,20 @@ Chaque `MissionBuilderDocument` contient :
 - entités placées ;
 - dates de création et modification.
 
+## Résolution des personnages 2D
+
+Le profil Side Ops ne force plus toutes les missions Builder à utiliser le même Snake MGS1. Le resolver combine maintenant `era`, `mainCharacter` et `environment` :
+
+- `msx` sélectionne Solid Snake MG1 par défaut et accepte notamment `solid_snake_msx` ou `solid_snake_mg2` pour distinguer MG1 de MG2 ;
+- `mgs1` conserve le sprite Solid Snake MGS1 existant ;
+- `mgs2` sélectionne Raiden par défaut, tandis qu’une mission Tanker sans identité reconnue conserve le Snake MGS2 existant ;
+- `mgs3`, `mgs4`, `peace_walker`, `mgsv` et `patriots_ai` sélectionnent respectivement Naked Snake, Old Snake, Big Boss, Venom Snake et Raiden ;
+- `vr_simulation` utilise le personnage `vrPlayer` du pack VR existant ;
+- les alias Codec jumelés, dont `naked_snake`/`naked_snake_mgs3`, `old_snake`/`old_snake_mgs4`, `venom_snake`/`venom_snake_mgsv` et `raiden_corrupted`, partagent leur sprite canonique ;
+- dans l’ère `mgsv`, `big_boss_gz` sélectionne explicitement Big Boss Ground Zeroes à la place du Venom Snake par défaut.
+
+L’environnement `vr` est prioritaire sur l’ère et le personnage. Il réutilise les rôles de VR Character Pack 01 : `vrPlayer` pour le joueur, `vrGuard` pour les gardes et renforts, et `vrBoss` pour le boss. Le détail complet des huit fichiers 32 x 48 RGBA et de leurs alias est consigné dans `CODEC_DRAWERS_AND_AVATARS_REPORT.md`.
+
 ## Entités disponibles
 
 ```text
@@ -158,7 +172,7 @@ Les triggers du document deviennent les appels runtime utilisés pour briefing, 
 - un seul boss principal est supporté ;
 - les caméras et projecteurs multiples seront ajoutés dans une extension future ;
 - le Builder est optimisé pour desktop/tablette paysage, pas pour petit écran portrait ;
-- les assets restent des placeholders procéduraux Phaser/CSS.
+- les personnages jouables utilisent les packs Side Ops/VR dédiés avec un fallback procédural 32 x 48 ; les rôles hostiles non-VR conservent les packs général ou Tanker existants.
 
 ## QA
 
