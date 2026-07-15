@@ -68,6 +68,47 @@ Side Ops now loads eight dedicated character sprites from `public/sideops/charac
 
 The set covers two Solid Snake mission variants, four guard/reinforcement roles and two mission bosses. Like the Codec portraits, these sprites are original fan-made creations inspired by official reference material and are not extracted game assets.
 
-## Next avatar priority
+## Delivery status
 
-The next character-specific portrait production pass targets MGS2 and MGS3.
+The character-specific production pass is complete: 94 portraits across MGS2 and MGS3, plus VR Character Pack 01.
+
+## Completed MGS2/MGS3 portrait expansion
+
+The delivered and verified portrait lot contains:
+
+- 55 optimized MGS2 portraits for the player identities and seven support contacts;
+- 39 optimized MGS3 portraits for Naked Snake and the five distinct support characters.
+
+Each era keeps its data-driven expression catalogue and adds runtime-only states that are already requested by conversations. The plan also preserves story identities without duplicating routing logic:
+
+- MGS2 links Solid Snake with Pliskin and Mr. X with Olga while retaining their disguise/reveal expressions;
+- MGS3 routes `naked_snake` and `naked_snake_mgs3` to the same character pack;
+- MGS3 routes `para_medic_save_mgs3` and `para_medic_mgs3` to the same Para-Medic pack while preserving the `cinema` and `medical` states;
+- SIGINT and EVA include the additional `urgent` state already used by active conversations.
+
+Final asset roots:
+
+```text
+public/portraits/mgs2/
+public/portraits/mgs3/
+```
+
+The portrait resolution contract is:
+
+1. enabled local Voice Pack override;
+2. requested built-in character expression;
+3. `neutral` portrait for the same character;
+4. existing player/contact system silhouette for the selected era.
+
+This layered fallback keeps the Codec usable when an alias, special expression or individual file is unavailable. All 94 portraits are original fan-made creations inspired by official reference material, not extracted game assets.
+
+## Completed VR Character Pack 01
+
+VR Character Pack 01 delivers four original sprites under `public/vr/characters/` matching the preferred runtime texture roles:
+
+- `vrPlayer`;
+- `vrTarget`;
+- `vrGuard`;
+- `vrBoss`.
+
+The previous Side Ops/procedural gameplay textures remain available as a runtime fallback. The four delivered sprites follow the same original fan-made, non-extracted asset policy as the Codec portraits and Side Ops character pack.

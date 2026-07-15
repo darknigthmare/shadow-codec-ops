@@ -12,9 +12,17 @@ Version 3.4 replaces the permanent left navigation and Codec utility column with
 
 The character-specific MGS1 portrait library now covers Solid Snake, Roy Campbell, Mei Ling, Naomi Hunter, Otacon, Nastasha Romanenko, Master Miller, Meryl Silverburgh and Deepthroat. The seven new contact packs add 42 optimized WebP portraits to the original 12 Snake/Campbell portraits, for 54 portraits total. Every character has six automatically selected emotional states: neutral, serious, warning, calm, humor and glitch.
 
-Side Ops now loads eight dedicated 2D character sprites from `public/sideops/characters/`: Solid Snake in MGS1 and MGS2 variants, four guard/reinforcement variants and two mission bosses. The portraits and sprites are original fan-made creations inspired by official reference material, not extracted game assets. They contain no text or surrounding UI, and local Voice Packs remain able to override the built-in Codec portraits. The next avatar production priority is MGS2 and MGS3.
+Side Ops now loads eight dedicated 2D character sprites from `public/sideops/characters/`: Solid Snake in MGS1 and MGS2 variants, four guard/reinforcement variants and two mission bosses. The portraits and sprites are original fan-made creations inspired by official reference material, not extracted game assets. They contain no text or surrounding UI, and local Voice Packs remain able to override the built-in Codec portraits.
 
 See `CODEC_DRAWERS_AND_AVATARS_REPORT.md`.
+
+## Completed MGS2/MGS3 portrait expansion and VR Character Pack 01
+
+The completed character-art lot delivers 94 optimized portraits: 55 for MGS2 and 39 for MGS3. It covers player and support identities, their data-driven emotional/story expressions and the additional runtime states requested by conversations. Alias routing keeps linked identities coherent, including Solid Snake/Pliskin and Mr. X/Olga in MGS2, plus both Naked Snake IDs and both Para-Medic channels in MGS3.
+
+The lookup order is local Voice Pack override, requested built-in expression, neutral portrait for the same character, then the existing era system silhouette. VR Character Pack 01 delivers four original sprites under `public/vr/characters/` for the `vrPlayer`, `vrTarget`, `vrGuard` and `vrBoss` runtime roles, with the previous gameplay textures retained as fallbacks.
+
+As with the MGS1 and Side Ops packs, all delivered visuals are original fan-made creations inspired by official reference material, not extracted game assets.
 
 ## Complete MGS3 Survival Radio
 

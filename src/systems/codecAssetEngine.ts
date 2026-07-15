@@ -22,26 +22,51 @@ export function getBuiltInPortrait(era: EraId, side: 'player' | 'contact'): stri
   return getCodecAssetPack(era).builtInPortraits[side];
 }
 
-const characterPortraitSets: Record<string, string> = {
-  solid_snake_mgs1: '/portraits/mgs1/solid_snake',
-  campbell_mgs1: '/portraits/mgs1/campbell',
-  mei_ling_mgs1: '/portraits/mgs1/mei_ling',
-  naomi_mgs1: '/portraits/mgs1/naomi',
-  otacon_mgs1: '/portraits/mgs1/otacon',
-  nastasha_mgs1: '/portraits/mgs1/nastasha',
-  miller_mgs1: '/portraits/mgs1/miller',
-  meryl_mgs1: '/portraits/mgs1/meryl',
-  deepthroat_mgs1: '/portraits/mgs1/deepthroat'
+interface CharacterPortraitSet {
+  basePath: string;
+  expressions: readonly string[];
+}
+
+const standardPortraitExpressions = ['neutral', 'serious', 'warning', 'calm', 'glitch', 'humor'] as const;
+const portraitSet = (basePath: string, expressions: readonly string[] = standardPortraitExpressions): CharacterPortraitSet => ({ basePath, expressions });
+
+const characterPortraitSets: Record<string, CharacterPortraitSet> = {
+  solid_snake_mgs1: portraitSet('/portraits/mgs1/solid_snake'),
+  campbell_mgs1: portraitSet('/portraits/mgs1/campbell'),
+  mei_ling_mgs1: portraitSet('/portraits/mgs1/mei_ling'),
+  naomi_mgs1: portraitSet('/portraits/mgs1/naomi'),
+  otacon_mgs1: portraitSet('/portraits/mgs1/otacon'),
+  nastasha_mgs1: portraitSet('/portraits/mgs1/nastasha'),
+  miller_mgs1: portraitSet('/portraits/mgs1/miller'),
+  meryl_mgs1: portraitSet('/portraits/mgs1/meryl'),
+  deepthroat_mgs1: portraitSet('/portraits/mgs1/deepthroat'),
+  solid_snake_mgs2: portraitSet('/portraits/mgs2/solid_snake'),
+  raiden_mgs2: portraitSet('/portraits/mgs2/raiden'),
+  otacon_mgs2: portraitSet('/portraits/mgs2/otacon', ['neutral', 'serious', 'warning', 'calm', 'humor', 'grief']),
+  colonel_mgs2: portraitSet('/portraits/mgs2/colonel', ['neutral', 'serious', 'warning', 'calm', 'glitch', 'corrupt']),
+  rose_mgs2: portraitSet('/portraits/mgs2/rose'),
+  pliskin_mgs2: portraitSet('/portraits/mgs2/pliskin', ['neutral', 'serious', 'warning', 'calm', 'humor', 'revealed']),
+  stillman_mgs2: portraitSet('/portraits/mgs2/stillman', ['neutral', 'serious', 'warning', 'calm', 'regret', 'urgent']),
+  mr_x_mgs2: portraitSet('/portraits/mgs2/mr_x', ['neutral', 'serious', 'warning', 'calm', 'masked', 'revealed', 'urgent']),
+  emma_mgs2: portraitSet('/portraits/mgs2/emma', ['neutral', 'serious', 'warning', 'calm', 'humor', 'grief']),
+  naked_snake: portraitSet('/portraits/mgs3/naked_snake'),
+  naked_snake_mgs3: portraitSet('/portraits/mgs3/naked_snake'),
+  major_mgs3: portraitSet('/portraits/mgs3/major_zero', ['neutral', 'serious', 'warning', 'calm', 'humor', 'urgent']),
+  para_medic_save_mgs3: portraitSet('/portraits/mgs3/para_medic', ['neutral', 'serious', 'warning', 'calm', 'humor', 'cinema']),
+  para_medic_mgs3: portraitSet('/portraits/mgs3/para_medic', ['neutral', 'serious', 'warning', 'calm', 'humor', 'medical']),
+  the_boss_mgs3: portraitSet('/portraits/mgs3/the_boss', ['neutral', 'serious', 'warning', 'calm', 'mentor', 'enemy']),
+  sigint_mgs3: portraitSet('/portraits/mgs3/sigint', ['neutral', 'serious', 'warning', 'calm', 'humor', 'technical', 'urgent']),
+  eva_mgs3: portraitSet('/portraits/mgs3/eva', ['neutral', 'serious', 'warning', 'calm', 'humor', 'injured', 'urgent'])
 };
 
 export function getCharacterPortrait(characterId: string | undefined, expression = 'neutral'): string | undefined {
   if (!characterId) return undefined;
-  const basePath = characterPortraitSets[characterId];
-  if (!basePath) return undefined;
-  const supportedExpression = getCodecAssetPack('mgs1').expressionSupport.includes(expression)
+  const set = characterPortraitSets[characterId];
+  if (!set) return undefined;
+  const supportedExpression = set.expressions.includes(expression)
     ? expression
     : 'neutral';
-  return `${basePath}/${supportedExpression}.webp`;
+  return `${set.basePath}/${supportedExpression}.webp`;
 }
 
 const cueMap: Record<string, Record<CodecUiCue, [number, number, OscillatorType]>> = {

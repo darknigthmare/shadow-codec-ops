@@ -3,7 +3,7 @@
 - **Codec Pass 6 — Export, Replay & Final Codec QA: COMPLETE (v2.8.0)**
 - Director Timeline Advanced / former Pass 24 remains intentionally deferred.
 - Next work should be a user-led polish/content pass rather than another large subsystem.
-- Next avatar production priority: original character-specific packs for MGS2 and MGS3.
+- **Character Art Expansion: COMPLETE** — 94 portraits for MGS2/MGS3 (55 + 39) and VR Character Pack 01 with four sprites under `public/vr/characters/`.
 
 # Shadow Codec Ops — Project Roadmap
 
@@ -358,7 +358,16 @@ Next franchise priority: Peace Walker/MSF briefing and support network.
 - eight Side Ops 2D sprites under `public/sideops/characters/`: MGS1/MGS2 Snake, four guard/reinforcement variants and two bosses
 - all portraits and sprites are original fan-made creations inspired by official references, not extracted game assets
 
-Next avatar priority: produce character-specific emotional portrait packs for MGS2 and MGS3.
+Character-art delivery status: 94 MGS2/MGS3 portraits and VR Character Pack 01 complete.
+
+## Completed - MGS2/MGS3 Portrait Expansion & VR Character Pack 01
+
+- 55 optimized MGS2 portraits covering player identities, seven support contacts, story expressions and the extra runtime state used by current conversations
+- 39 optimized MGS3 portraits covering Naked Snake and the five distinct support characters while sharing art across the two Naked Snake IDs and the two Para-Medic channels
+- alias-aware routing for Solid Snake/Pliskin, Mr. X/Olga, Naked Snake and Para-Medic identities
+- fallback chain: local Voice Pack, requested built-in expression, same-character neutral portrait, then era system silhouette
+- four delivered VR sprites under `public/vr/characters/` for `vrPlayer`, `vrTarget`, `vrGuard` and `vrBoss`, with legacy gameplay textures retained as fallbacks
+- original fan-made visuals inspired by official references, never extracted game assets
 
 ## Completed - Franchise Codec Fidelity Audit (v3.5)
 
@@ -372,4 +381,4 @@ Next avatar priority: produce character-specific emotional portrait packs for MG
 - multi-tone procedural SFX signatures per hardware generation
 - in-app fidelity profile with reference links
 
-Next visual priority: produce original fan-made MGS2 and MGS3 emotional portrait packs while continuing to avoid extracted game assets.
+Next visual priority: post-delivery visual QA, polish and selection of the next era-specific character pack; MGS2/MGS3 production is no longer pending.

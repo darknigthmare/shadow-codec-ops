@@ -113,7 +113,8 @@ export class VRTrainingScene extends Phaser.Scene {
     this.addPlatform(1115, 400, 3);
     this.addPlatform(1450, 345, 3);
 
-    this.player = this.physics.add.sprite(85, 450, 'player');
+    const playerTexture = this.textures.exists('vrPlayer') ? 'vrPlayer' : 'player';
+    this.player = this.physics.add.sprite(85, 450, playerTexture);
     this.player.setCollideWorldBounds(true);
     this.player.setDragX(1300);
     this.player.setMaxVelocity(250, 560);
@@ -274,9 +275,12 @@ export class VRTrainingScene extends Phaser.Scene {
   }
 
   private spawnActor(id: string, x: number, y: number, type: VrActorType, hp: number, patrolMin: number, patrolMax: number): void {
-    const texture = type === 'boss' ? 'bossCaptain' : type === 'target' ? 'reinforcementGuard' : 'guard';
+    const preferredTexture = type === 'boss' ? 'vrBoss' : type === 'target' ? 'vrTarget' : 'vrGuard';
+    const legacyTexture = type === 'boss' ? 'bossCaptain' : type === 'target' ? 'reinforcementGuard' : 'guard';
+    const texture = this.textures.exists(preferredTexture) ? preferredTexture : legacyTexture;
     const sprite = this.physics.add.sprite(x, y, texture);
     sprite.setCollideWorldBounds(true);
+    sprite.setFlipX(true);
     this.physics.add.collider(sprite, this.platforms);
     if (type === 'target') sprite.setTint(0x9fd4ff);
     if (type === 'cqc_guard') sprite.setTint(0xf8f49a);
@@ -317,9 +321,15 @@ export class VRTrainingScene extends Phaser.Scene {
     const slow = this.inputController.isDown('sprint');
     const speed = slow ? 110 : 210;
 
-    if (left) this.player.setVelocityX(-speed);
-    else if (right) this.player.setVelocityX(speed);
-    else this.player.setVelocityX(0);
+    if (left) {
+      this.player.setVelocityX(-speed);
+      this.player.setFlipX(true);
+    } else if (right) {
+      this.player.setVelocityX(speed);
+      this.player.setFlipX(false);
+    } else {
+      this.player.setVelocityX(0);
+    }
 
     if (this.inputController.justDown('jump') && this.player.body?.blocked.down) {
       this.player.setVelocityY(-455);
@@ -399,6 +409,7 @@ export class VRTrainingScene extends Phaser.Scene {
         actor.sprite.setVelocityX(actor.direction * (actor.type === 'boss' ? 75 : 55));
         if (actor.sprite.x <= actor.patrolMin) actor.direction = 1;
         if (actor.sprite.x >= actor.patrolMax) actor.direction = -1;
+        actor.sprite.setFlipX(actor.direction < 0);
       }
       if (actor.type === 'boss' && Math.abs(actor.sprite.x - this.player.x) < 120 && this.time.now > actor.lastDamageAt + 900) {
         actor.lastDamageAt = this.time.now;

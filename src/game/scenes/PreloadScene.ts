@@ -14,6 +14,10 @@ export class PreloadScene extends Phaser.Scene {
     this.load.image('deckReinforcement', '/sideops/characters/tanker-reinforcement.png');
     this.load.image('bossCaptain', '/sideops/characters/armored-guard-captain.png');
     this.load.image('bossDeckCommander', '/sideops/characters/shielded-deck-commander.png');
+    this.load.image('vrPlayer', '/vr/characters/vr-operator.png');
+    this.load.image('vrGuard', '/vr/characters/vr-guard.png');
+    this.load.image('vrTarget', '/vr/characters/vr-target-drone.png');
+    this.load.image('vrBoss', '/vr/characters/vr-armored-captain.png');
   }
 
   create(): void {
@@ -93,6 +97,47 @@ export class PreloadScene extends Phaser.Scene {
       graphics.fillStyle(0x9fd4ff, 1);
       graphics.fillRect(6, 16, 20, 4);
       graphics.generateTexture('deckReinforcement', 32, 48);
+      graphics.clear();
+    }
+
+    if (!this.textures.exists('vrPlayer')) {
+      graphics.fillStyle(0x80f8ff, 1);
+      graphics.fillRect(8, 0, 16, 10);
+      graphics.fillRect(6, 10, 20, 24);
+      graphics.fillRect(4, 34, 8, 14);
+      graphics.fillRect(20, 34, 8, 14);
+      graphics.fillStyle(0x07131b, 1);
+      graphics.fillRect(11, 4, 10, 3);
+      graphics.fillRect(9, 18, 14, 4);
+      graphics.generateTexture('vrPlayer', 32, 48);
+      graphics.clear();
+    }
+
+    if (!this.textures.exists('vrGuard')) {
+      graphics.fillStyle(0xff6b6b, 1);
+      graphics.fillRect(7, 0, 18, 10);
+      graphics.fillRect(5, 10, 22, 22);
+      graphics.fillRect(4, 32, 8, 14);
+      graphics.fillRect(20, 32, 8, 14);
+      graphics.fillStyle(0x220b12, 1);
+      graphics.fillRect(8, 7, 16, 7);
+      graphics.fillStyle(0x80f8ff, 1);
+      graphics.fillRect(7, 18, 18, 3);
+      graphics.generateTexture('vrGuard', 32, 48);
+      graphics.clear();
+    }
+
+    if (!this.textures.exists('vrTarget')) {
+      graphics.fillStyle(0x9fd4ff, 1);
+      graphics.fillRect(8, 2, 16, 6);
+      graphics.fillRect(5, 8, 22, 30);
+      graphics.fillRect(3, 38, 10, 8);
+      graphics.fillRect(19, 38, 10, 8);
+      graphics.fillStyle(0x07131b, 1);
+      graphics.fillCircle(16, 22, 8);
+      graphics.fillStyle(0xf8f49a, 1);
+      graphics.fillCircle(16, 22, 3);
+      graphics.generateTexture('vrTarget', 32, 48);
       graphics.clear();
     }
 
@@ -202,6 +247,22 @@ export class PreloadScene extends Phaser.Scene {
       graphics.fillStyle(0xd8ffd4, 1);
       graphics.fillRect(0, 20, 9, 28);
       graphics.generateTexture('bossDeckCommander', 48, 64);
+      graphics.clear();
+    }
+
+    if (!this.textures.exists('vrBoss')) {
+      graphics.fillStyle(0xff6b6b, 1);
+      graphics.fillRect(10, 0, 28, 12);
+      graphics.fillRect(6, 12, 36, 30);
+      graphics.fillRect(4, 42, 12, 20);
+      graphics.fillRect(32, 42, 12, 20);
+      graphics.fillStyle(0x220b12, 1);
+      graphics.fillRect(12, 10, 24, 9);
+      graphics.fillStyle(0x80f8ff, 1);
+      graphics.fillRect(5, 25, 38, 5);
+      graphics.lineStyle(2, 0xf8f49a, 1);
+      graphics.strokeRect(6, 12, 36, 30);
+      graphics.generateTexture('vrBoss', 48, 64);
       graphics.clear();
     }
 
