@@ -8,6 +8,7 @@ import {
   type Mg1SideOpsAsset
 } from '../core/mg1SideOpsAssetRegistry';
 import { MGS1_ACTOR_ANIMATION_ASSETS } from '../core/mgs1ActorAnimationRegistry';
+import { MGS1_VR_ALL_ASSETS } from '../core/mgs1VrEnvironmentRegistry';
 import {
   MGS1_SIDEOPS_ALL_ASSETS,
   type Mgs1SideOpsAsset
@@ -140,6 +141,7 @@ export class PreloadScene extends Phaser.Scene {
     SIDEOPS_PLAYABLE_OPERATIVE_ASSETS.forEach((asset) => this.load.image(asset.textureKey, asset.path));
     MG1_SIDEOPS_ALL_ASSETS.forEach((asset) => preloadRegistryAsset(this, asset));
     MGS1_SIDEOPS_ALL_ASSETS.forEach((asset) => preloadRegistryAsset(this, asset));
+    MGS1_VR_ALL_ASSETS.forEach((asset) => this.load.image(asset.textureKey, asset.path));
     MG1_ACTOR_ANIMATION_ASSETS.forEach((asset) => {
       this.load.spritesheet(asset.textureKey, asset.path, {
         frameWidth: asset.frameWidth,
@@ -428,6 +430,18 @@ export class PreloadScene extends Phaser.Scene {
     graphics.lineStyle(1, 0xd8ffd4, 1);
     graphics.strokeRect(0, 0, 12, 12);
     graphics.generateTexture('secretItem', 12, 12);
+    graphics.clear();
+
+    // Procedural VR marker: readable goal fallback, never an industrial door.
+    graphics.fillStyle(0x071713, 1);
+    graphics.fillRect(8, 18, 26, 50);
+    graphics.fillStyle(0x66ffcc, 0.7);
+    graphics.fillTriangle(21, 0, 42, 20, 0, 20);
+    graphics.fillStyle(0xd8ffd4, 1);
+    graphics.fillCircle(21, 13, 5);
+    graphics.lineStyle(2, 0x66ffcc, 1);
+    graphics.strokeRect(8, 18, 26, 50);
+    graphics.generateTexture('vrGoalBeaconFallback', 42, 68);
     graphics.clear();
 
     graphics.fillStyle(0x456b49, 1);

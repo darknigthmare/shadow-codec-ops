@@ -2,6 +2,11 @@ import Phaser from 'phaser';
 import vrMissionsJson from '../../data/vrMissions.json';
 import type { VrMissionDefinition, VrRunStats } from '../../types/vr.types';
 import { emitGameEvent, GAME_EVENT, type VrRunGamePayload } from '../core/GameEvents';
+import {
+  MGS1_VR_ALL_ASSETS,
+  resolveMgs1VrEnvironment,
+  type Mgs1VrEnvironmentLayout
+} from '../core/mgs1VrEnvironmentRegistry';
 
 import { VR_ACTIVE_MISSION_KEY } from '../core/vrConstants';
 import { RuntimeInputController } from '../core/RuntimeInput';
@@ -27,6 +32,13 @@ interface VrCameraProbe {
 }
 
 const vrMissions = vrMissionsJson as VrMissionDefinition[];
+const mgs1VrEnvironmentAssetById = new Map(
+  MGS1_VR_ALL_ASSETS.map((asset) => [asset.id, asset] as const)
+);
+// SOCOM stages canonically use the stationary blue cube target. The other
+// target families stay registered for their dedicated CQC, Claymore and
+// Stinger drills instead of pretending to share SOCOM behaviour.
+const MGS1_VR_SOCOM_TARGET_TEXTURE = 'mgs1VrEnvTargetCubeBlue';
 
 function createEmptyStats(): VrRunStats {
   return {
@@ -123,8 +135,12 @@ export class VRTrainingScene extends Phaser.Scene {
     this.bullets = this.physics.add.group({ defaultKey: 'bullet', maxSize: 44 });
     this.physics.add.collider(this.bullets, this.platforms, (bullet) => this.destroyObject(bullet));
 
-    this.exitPad = this.physics.add.staticSprite(1810, 468, 'elevator');
-    this.exitPad.setTint(0x66ffcc);
+    const goalTexture = this.textures.exists('mgs1VrEnvHazardGoalBeacon')
+      ? 'mgs1VrEnvHazardGoalBeacon'
+      : 'vrGoalBeaconFallback';
+    this.exitPad = this.physics.add.staticSprite(1810, 468, goalTexture);
+    // Keep the original 42 x 68 overlap footprint while replacing the industrial-door art.
+    this.exitPad.setDisplaySize(42, 68).refreshBody();
     this.physics.add.overlap(this.player, this.exitPad, () => this.tryCompleteRun());
 
     this.inputController = new RuntimeInputController(this);
@@ -153,19 +169,58 @@ export class VRTrainingScene extends Phaser.Scene {
   }
 
   private addArenaBackdrop(): void {
-    this.add.rectangle(950, 270, 1900, 540, 0x030b08).setDepth(-20);
-    this.add.rectangle(950, 518, 1900, 44, 0x082214).setDepth(-12);
-    for (let x = 80; x < 1900; x += 140) {
-      this.add.line(x, 0, 0, 0, 0, 540, 0x2dff8a, 0.08).setDepth(-15);
-    }
-    for (let y = 80; y < 520; y += 80) {
-      this.add.line(0, y, 0, 0, 1900, 0, 0x2dff8a, 0.05).setDepth(-15);
-    }
+    const layout = resolveMgs1VrEnvironment(this.mission.mapVariant);
+    this.add.rectangle(950, 270, 1900, 540, layout.voidColor).setDepth(-30);
+
+    this.addArenaTileLayer(layout.voidTextureKey, 950, 270, 1900, 540, -29, 0.82);
+    const hasGridTexture = this.addArenaTileLayer(layout.gridTextureKey, 950, 270, 1900, 540, -26, 0.38);
+    const hasAccentTexture = this.addArenaTileLayer(layout.accentTextureKey, 950, 470, 1900, 140, -23, 0.3);
+
+    if (!hasGridTexture) this.addProceduralArenaGrid(layout.gridColor);
+    if (!hasAccentTexture) this.add.rectangle(950, 518, 1900, 44, layout.accentColor, 0.28).setDepth(-12);
+    this.addEnvironmentDecor(layout);
+
     this.add.text(24, 22, 'VR PHASER BRIDGE // PLAYABLE TRAINING SCENE', {
       fontFamily: 'monospace',
       fontSize: '18px',
       color: '#7cff6b'
     }).setScrollFactor(0).setDepth(60);
+  }
+
+  private addArenaTileLayer(
+    textureKey: string,
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+    depth: number,
+    alpha: number
+  ): boolean {
+    if (!this.textures.exists(textureKey)) return false;
+    this.add.tileSprite(x, y, width, height, textureKey).setDepth(depth).setAlpha(alpha);
+    return true;
+  }
+
+  private addProceduralArenaGrid(gridColor: number): void {
+    for (let x = 80; x < 1900; x += 140) {
+      this.add.line(x, 0, 0, 0, 0, 540, gridColor, 0.08).setDepth(-15);
+    }
+    for (let y = 80; y < 520; y += 80) {
+      this.add.line(0, y, 0, 0, 1900, 0, gridColor, 0.05).setDepth(-15);
+    }
+  }
+
+  private addEnvironmentDecor(layout: Mgs1VrEnvironmentLayout): void {
+    layout.placements.forEach((placement) => {
+      const asset = mgs1VrEnvironmentAssetById.get(placement.assetId);
+      if (!asset || !this.textures.exists(asset.textureKey)) return;
+
+      const image = this.add.image(placement.x, placement.y, asset.textureKey)
+        .setDepth(Math.min(-1, placement.depth))
+        .setScale(placement.scale)
+        .setAlpha(placement.alpha);
+      if (placement.flipX) image.setFlipX(true);
+    });
   }
 
   private addFixedHud(): void {
@@ -193,8 +248,15 @@ export class VRTrainingScene extends Phaser.Scene {
   }
 
   private addPlatform(x: number, y: number, scaleX: number): void {
+    // The legacy rectangle remains the invisible collision authority. The
+    // OpenAI grid slab is repeated above it, so transparent art margins never
+    // create invisible ledges and the grid is not horizontally distorted.
     const platform = this.platforms.create(x, y, 'platform') as Phaser.Physics.Arcade.Sprite;
     platform.setScale(scaleX, 1).refreshBody();
+    if (this.textures.exists('mgs1VrEnvPropPlatformTile')) {
+      platform.setVisible(false);
+      this.add.tileSprite(x, y, 64 * scaleX, 16, 'mgs1VrEnvPropPlatformTile').setDepth(-1);
+    }
   }
 
   private configureChallenge(): void {
@@ -232,7 +294,7 @@ export class VRTrainingScene extends Phaser.Scene {
         this.spawnActor('target_01', 470, 454, 'target', 2, 470, 470);
         this.spawnActor('target_02', 710, 304, 'target', 2, 710, 710);
         this.spawnActor('target_03', 965, 454, 'target', 2, 965, 965);
-        this.spawnActor('target_04', 1240, 374, 'target', 2, 1240, 1240);
+        this.spawnActor('target_04', 1180, 374, 'target', 2, 1180, 1180);
         this.spawnActor('target_05', 1510, 454, 'target', 2, 1510, 1510);
         this.spawnSecret(1680, 450);
         break;
@@ -261,6 +323,7 @@ export class VRTrainingScene extends Phaser.Scene {
         break;
     }
 
+    if (this.mission.category === 'weapon_training') this.exitPad.disableBody(true, true);
     this.requirementText.setText(this.buildRequirementSummary());
   }
 
@@ -268,21 +331,25 @@ export class VRTrainingScene extends Phaser.Scene {
     const spacing = 1500 / Math.max(1, count);
     for (let index = 1; index <= count; index += 1) {
       const x = 180 + spacing * index;
-      const marker = this.add.rectangle(x, 478, 28, 56, 0x7cff6b, 0.16);
-      marker.setStrokeStyle(1, 0x7cff6b, 0.45);
+      const marker = this.textures.exists('mgs1VrEnvPropRouteMarker')
+        ? this.add.image(x, 478, 'mgs1VrEnvPropRouteMarker')
+        : this.add.rectangle(x, 478, 28, 56, 0x7cff6b, 0.16).setStrokeStyle(1, 0x7cff6b, 0.45);
       marker.setData('objectiveId', `route_${index}`);
     }
   }
 
   private spawnActor(id: string, x: number, y: number, type: VrActorType, hp: number, patrolMin: number, patrolMax: number): void {
-    const preferredTexture = type === 'boss' ? 'vrBoss' : type === 'target' ? 'vrTarget' : 'vrGuard';
+    const officialTargetTexture = type === 'target' && this.mission.category === 'weapon_training'
+      ? this.resolveWeaponTargetTexture()
+      : undefined;
+    const preferredTexture = officialTargetTexture ?? (type === 'boss' ? 'vrBoss' : type === 'target' ? 'vrTarget' : 'vrGuard');
     const legacyTexture = type === 'boss' ? 'bossCaptain' : type === 'target' ? 'reinforcementGuard' : 'guard';
     const texture = this.textures.exists(preferredTexture) ? preferredTexture : legacyTexture;
     const sprite = this.physics.add.sprite(x, y, texture);
     sprite.setCollideWorldBounds(true);
     sprite.setFlipX(true);
     this.physics.add.collider(sprite, this.platforms);
-    if (type === 'target') sprite.setTint(0x9fd4ff);
+    if (type === 'target' && !officialTargetTexture) sprite.setTint(0x9fd4ff);
     if (type === 'cqc_guard') sprite.setTint(0xf8f49a);
     if (type === 'boss') sprite.setTint(0xff6b6b).setScale(1.15);
     const actor: VrActor = { id, sprite, type, hp, disabled: false, direction: -1, patrolMin, patrolMax, lastDamageAt: 0 };
@@ -293,8 +360,17 @@ export class VRTrainingScene extends Phaser.Scene {
     });
   }
 
+  private resolveWeaponTargetTexture(): string | undefined {
+    return this.textures.exists(MGS1_VR_SOCOM_TARGET_TEXTURE) ? MGS1_VR_SOCOM_TARGET_TEXTURE : undefined;
+  }
+
   private spawnCameraProbe(id: string, x: number, y: number, sweepOffset: number): void {
-    const sprite = this.physics.add.staticSprite(x, y, 'cameraNode');
+    const cameraTexture = this.textures.exists('mgs1VrEnvHazardGunCamera')
+      ? 'mgs1VrEnvHazardGunCamera'
+      : this.textures.exists('mgs1VrEnvPropCameraNode')
+        ? 'mgs1VrEnvPropCameraNode'
+        : 'cameraNode';
+    const sprite = this.physics.add.staticSprite(x, y, cameraTexture);
     const probe: VrCameraProbe = { id, sprite, disabled: false, sweepOffset };
     this.cameraProbes.push(probe);
     this.physics.add.overlap(this.bullets, sprite, (bullet) => {
@@ -304,7 +380,13 @@ export class VRTrainingScene extends Phaser.Scene {
   }
 
   private spawnSecret(x: number, y: number): void {
-    const secret = this.physics.add.staticSprite(x, y, 'secretItem');
+    const hasVrSecretTexture = this.textures.exists('mgs1VrEnvPropSecretNode');
+    const secret = this.physics.add.staticSprite(
+      x,
+      y,
+      hasVrSecretTexture ? 'mgs1VrEnvPropSecretNode' : 'secretItem'
+    );
+    if (hasVrSecretTexture) secret.setScale(0.75).refreshBody();
     this.physics.add.overlap(this.player, secret, () => {
       if (this.secretCollected) return;
       this.secretCollected = true;
@@ -503,7 +585,19 @@ export class VRTrainingScene extends Phaser.Scene {
       this.registerAlert('lethal takedown');
     }
 
+    if (actor.type === 'target' && this.areWeaponTargetsCleared()) {
+      this.exitPad.enableBody(false, 1810, 468, true, true);
+      this.flashStatus('ALL CUBE-B TARGETS DOWN // GOAL MATERIALIZED');
+      return;
+    }
+
     this.flashStatus('TARGET DISABLED');
+  }
+
+  private areWeaponTargetsCleared(): boolean {
+    return this.mission.category === 'weapon_training'
+      && this.actors.some((candidate) => candidate.type === 'target')
+      && this.actors.filter((candidate) => candidate.type === 'target').every((candidate) => candidate.disabled);
   }
 
   private disableCameraProbe(probe: VrCameraProbe, source: string): void {
@@ -535,6 +629,10 @@ export class VRTrainingScene extends Phaser.Scene {
 
   private tryCompleteRun(): void {
     if (this.completed) return;
+    if (this.mission.category === 'weapon_training' && !this.areWeaponTargetsCleared()) {
+      this.flashStatus('DESTROY ALL CUBE-B TARGETS TO MATERIALIZE GOAL');
+      return;
+    }
     if (this.mission.requirements.bossDefeated && !this.stats.bossDefeated) {
       this.flashStatus('BOSS DEFEAT REQUIRED BEFORE EXIT');
       return;
