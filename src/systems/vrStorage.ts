@@ -26,6 +26,11 @@ const rankOrder: Record<VrRank, number> = {
   'BIG BOSS': 5
 };
 
+function isForcedCombatMission(mission: VrMissionDefinition): boolean {
+  return mission.category === 'special_minute_battle'
+    || mission.category === 'special_vs12_battle';
+}
+
 export function loadVrProgress(): VrMissionProgress {
   const state = loadJson<VrMissionProgress>('vr-mission-progress', DEFAULT_VR_PROGRESS);
   return {
@@ -104,7 +109,9 @@ export function evaluateVrRun(
 ): VrRunEvaluation {
   const failures = getVrFailures(mission, stats);
   const success = failures.length === 0;
-  const accuracy = stats.shotsFired > 0 ? Math.round((stats.hits / stats.shotsFired) * 100) : 100;
+  const accuracy = stats.shotsFired > 0
+    ? Math.min(100, Math.round((stats.hits / stats.shotsFired) * 100))
+    : 100;
   const score = calculateVrScore(mission, stats, success, accuracy);
   const rank = calculateVrRank(score, stats, mission, success);
   const unlockedTapeIds = success
@@ -200,23 +207,33 @@ function getVrFailures(mission: VrMissionDefinition, stats: VrRunStats): string[
 
 function calculateVrScore(mission: VrMissionDefinition, stats: VrRunStats, success: boolean, accuracy: number): number {
   const req = mission.requirements;
+  const forcedCombat = isForcedCombatMission(mission);
   let score = success ? 1000 : 650;
   const targetTime = req.targetTimeSeconds ?? 180;
   if (stats.timeSeconds > targetTime) score -= (stats.timeSeconds - targetTime) * 3;
   else score += Math.min(90, (targetTime - stats.timeSeconds) * 0.8);
-  if (mission.category !== 'special_minute_battle') score -= stats.alerts * 160;
-  // Ordinary stealth missions penalize unnecessary lethal force. 1 MIN.
-  // BATTLE / VS ENEMY explicitly asks the player to exceed the clear quota.
-  if (mission.category !== 'special_minute_battle') {
+  if (!forcedCombat) score -= stats.alerts * 160;
+  // Ordinary stealth missions penalize unnecessary lethal force. The Special
+  // combat formats require an alerted battle and explicit elimination quotas.
+  if (!forcedCombat) {
     score -= Math.max(0, stats.kills - (req.minKills ?? 0)) * 120;
   }
   score -= stats.damageTaken * 2;
   score -= stats.rationsUsed * 65;
-  score -= Math.max(0, stats.shotsFired - (req.maxShotsFired ?? 18)) * 10;
+  // Mixed-arsenal battles routinely need more than the generic 18 actions.
+  // Accuracy remains the discriminator unless the mission sets a real limit.
+  if (!forcedCombat || req.maxShotsFired !== undefined) {
+    score -= Math.max(0, stats.shotsFired - (req.maxShotsFired ?? 18)) * 10;
+  }
   score -= Math.max(0, (req.minShotsFired ?? 0) - stats.shotsFired) * 20;
   score += stats.neutralizations * 18;
   score += stats.camerasDisabled * 24;
-  score += stats.objectivesCompleted * 32;
+  // Required combat quota progress is the clear condition, not bonus score.
+  // Eliminations above the quota still reward 1 MIN. BATTLE score chasing.
+  const bonusObjectives = forcedCombat
+    ? Math.max(0, stats.objectivesCompleted - (req.minObjectivesCompleted ?? 0))
+    : stats.objectivesCompleted;
+  score += bonusObjectives * 32;
   score += stats.secretsFound * 45;
   score += stats.bossDefeated ? 85 : 0;
   score += Math.max(-80, Math.min(80, accuracy - 65));
@@ -227,8 +244,12 @@ function calculateVrScore(mission: VrMissionDefinition, stats: VrRunStats, succe
 function calculateVrRank(score: number, stats: VrRunStats, mission: VrMissionDefinition, success: boolean): VrRank {
   if (!success) return score >= 620 ? 'RAT' : 'ROOKIE';
   const target = mission.requirements.targetTimeSeconds ?? 180;
-  if (score >= 1000 && stats.alerts === 0 && stats.kills === 0 && stats.damageTaken === 0 && stats.timeSeconds <= target) return 'BIG BOSS';
-  if (score >= 930 && stats.alerts === 0) return 'FOXHOUND';
+  const forcedCombat = isForcedCombatMission(mission);
+  if (score >= 1000
+    && (forcedCombat || (stats.alerts === 0 && stats.kills === 0))
+    && stats.damageTaken === 0
+    && stats.timeSeconds <= target) return 'BIG BOSS';
+  if (score >= 930 && (forcedCombat || stats.alerts === 0)) return 'FOXHOUND';
   if (score >= 820) return 'FOX';
   if (score >= 650) return 'HOUND';
   if (score >= 450) return 'RAT';

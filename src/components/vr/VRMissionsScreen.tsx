@@ -55,6 +55,7 @@ const categories: Array<{ id: VrLibraryFilter; label: string }> = [
   { id: 'surveillance', label: 'Surveillance' },
   { id: 'boss_challenge', label: 'Boss' },
   { id: 'special_minute_battle', label: '1 Min. Battle' },
+  { id: 'special_vs12_battle', label: 'VS. 12 Battle' },
   { id: 'special_ninja', label: 'Ninja' },
   { id: 'special_mystery', label: 'Mystery' },
   { id: 'extra', label: 'Extra' }
@@ -68,6 +69,7 @@ const categoryLabels: Record<VrMissionCategory, string> = {
   surveillance: 'Surveillance',
   boss_challenge: 'Boss Challenge',
   special_minute_battle: '1 Min. Battle',
+  special_vs12_battle: 'VS. 12 Battle',
   special_ninja: 'Ninja',
   special_mystery: 'Mystery'
 };
@@ -80,6 +82,7 @@ const categoryTone: Record<VrMissionCategory, 'success' | 'warning' | 'danger' |
   surveillance: 'warning',
   boss_challenge: 'danger',
   special_minute_battle: 'danger',
+  special_vs12_battle: 'danger',
   special_ninja: 'danger',
   special_mystery: 'warning'
 };
@@ -87,6 +90,7 @@ const categoryTone: Record<VrMissionCategory, 'success' | 'warning' | 'danger' |
 function resolvePlayableScene(mode: VrPlayableMode, mission: VrMissionDefinition): GameStartScene {
   if (mode === 'photoshoot') return 'VRPhotoshootScene';
   if (mission.category === 'special_minute_battle') return 'VRMinuteBattleScene';
+  if (mission.category === 'special_vs12_battle') return 'VRVs12BattleScene';
   if (mission.category === 'special_ninja') return 'VRNinjaScene';
   if (mission.category === 'special_mystery') return 'VRMysteryScene';
   return 'VRTrainingScene';
@@ -463,11 +467,13 @@ export function VRMissionsScreen({ settings }: VRMissionsScreenProps) {
     ? 'vr-photoshoot'
     : selectedMission.category === 'special_minute_battle'
       ? 'vr-minute-battle'
-      : selectedMission.category === 'special_ninja'
-        ? 'vr-ninja'
-        : selectedMission.category === 'special_mystery'
-          ? 'vr-mystery'
-          : 'vr';
+      : selectedMission.category === 'special_vs12_battle'
+        ? 'vr-vs12'
+        : selectedMission.category === 'special_ninja'
+          ? 'vr-ninja'
+          : selectedMission.category === 'special_mystery'
+            ? 'vr-mystery'
+            : 'vr';
 
   return (
     <section className="vr-missions-grid">
@@ -602,6 +608,9 @@ export function VRMissionsScreen({ settings }: VRMissionsScreenProps) {
             {selectedMission.category === 'special_minute_battle' && (
               <p><strong>1 MIN. BATTLE:</strong> score as many valid eliminations as possible before the sixty-second combat clock expires.</p>
             )}
+            {selectedMission.category === 'special_vs12_battle' && (
+              <p><strong>VS. 12 BATTLE:</strong> eliminate all 12 Genome Soldiers, with no more than four active at once, then reach the materialized goal before the 300-second limit.</p>
+            )}
           </div>
 
           <div className="vr-mission-matrix">
@@ -635,12 +644,20 @@ export function VRMissionsScreen({ settings }: VRMissionsScreenProps) {
                 ? 'Runs the canonical-style camera session and saves real WebP captures to the local album.'
                 : selectedMission.category === 'special_minute_battle'
                   ? 'Runs the dedicated sixty-second VS Target or VS Enemy arena and reports its real combat total.'
-                : 'Runs the selected VR mission as a playable Phaser arena, then sends the real stats back to the VR evaluation system.'}</span>
+                : selectedMission.category === 'special_vs12_battle'
+                  ? 'Runs the dedicated five-minute, twelve-guard deployment with its fixed arsenal, four-enemy cap, and final checkpoint.'
+                  : 'Runs the selected VR mission as a playable Phaser arena, then sends the real stats back to the VR evaluation system.'}</span>
             </div>
             <div className="vr-bridge-actions">
               <StatusBadge label={playableStatus.toUpperCase()} tone={playableStatus === 'clear' ? 'success' : playableStatus === 'failed' || playableStatus === 'aborted' ? 'danger' : playableStatus === 'running' ? 'success' : 'neutral'} />
               <button className="primary-action" type="button" onClick={launchPlayableRun}>
-                {extraSelected ? 'Launch Photoshoot' : selectedMission.category === 'special_minute_battle' ? 'Launch 1 Min. Battle' : 'Launch Playable VR'}
+                {extraSelected
+                  ? 'Launch Photoshoot'
+                  : selectedMission.category === 'special_minute_battle'
+                    ? 'Launch 1 Min. Battle'
+                    : selectedMission.category === 'special_vs12_battle'
+                      ? 'Launch VS. 12 Battle'
+                      : 'Launch Playable VR'}
               </button>
               <button type="button" onClick={restartPlayableRun} disabled={!playableActive}>Restart Scene</button>
               <button type="button" onClick={stopPlayableRun} disabled={!playableActive}>Stop Scene</button>
@@ -666,6 +683,9 @@ export function VRMissionsScreen({ settings }: VRMissionsScreenProps) {
             ) : selectedMission.category === 'special_minute_battle' ? (
               <>Controls: move/jump/crouch, {controlBindings.fire} attack with the assigned weapon, {controlBindings.cqc} CQC,
                 or detonate planted C4, {controlBindings.cancel} abort. The combat clock stops automatically at 60 seconds.</>
+            ) : selectedMission.category === 'special_vs12_battle' ? (
+              <>Controls: move/jump/crouch, {controlBindings.fire} fire the selected weapon, {controlBindings.cqc} CQC or detonate C4/Nikita,
+                {controlBindings.chaff} previous weapon, {controlBindings.ration} next weapon, {controlBindings.cancel} abort. Eliminate 12 guards, then reach the goal within 300 seconds.</>
             ) : selectedMission.category === 'special_ninja' ? (
               <>Controls: move/jump, {controlBindings.fire} slash, hold {controlBindings.cqc} cross-slash,
                 {controlBindings.chaff} Body Disruption, hold {controlBindings.ration} stealth.</>

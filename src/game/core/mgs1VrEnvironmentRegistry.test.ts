@@ -24,7 +24,15 @@ const EXPECTED_VARIANTS = [
   'weapon_range_linear',
   'cqc_corridor',
   'surveillance_yard',
-  'boss_arena_vr'
+  'boss_arena_vr',
+  'vs12_battle_01',
+  'vs12_battle_02',
+  'vs12_battle_03',
+  'vs12_battle_04',
+  'vs12_battle_05',
+  'vs12_battle_06',
+  'vs12_battle_07',
+  'vs12_battle_08'
 ] as const;
 
 interface DecodedPng {
@@ -190,7 +198,7 @@ describe('MGS1 VR environment registry', () => {
     }
   });
 
-  it('covers exactly the six map variants declared by mission data', () => {
+  it('covers exactly the fourteen map variants declared by mission data', () => {
     const missionVariants = [...new Set(vrMissions.map((mission) => mission.mapVariant))].sort();
     const layoutVariants = Object.keys(MGS1_VR_ENVIRONMENT_LAYOUTS).sort();
     expect(layoutVariants).toEqual([...EXPECTED_VARIANTS].sort());

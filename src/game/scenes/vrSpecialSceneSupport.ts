@@ -115,8 +115,11 @@ export function addSpecialVrBackdrop(
   colors: { void: number; grid: number; accent: number } = { void: 0x020b12, grid: 0x1de9b6, accent: 0x66ffcc }
 ): void {
   scene.add.rectangle(960, 270, 1920, 540, colors.void).setDepth(-50);
-  if (scene.textures.exists('mgs1VrEnvTileSpecialBackdrop')) {
-    scene.add.tileSprite(960, 270, 1920, 540, 'mgs1VrEnvTileSpecialBackdrop').setAlpha(0.42).setDepth(-48);
+  // The generated VR pack already ships a canonical matrix void tile. Reuse
+  // it for every Special scene instead of relying on the old, unregistered
+  // `mgs1VrEnvTileSpecialBackdrop` placeholder key.
+  if (scene.textures.exists('mgs1VrEnvTileMatrixVoid')) {
+    scene.add.tileSprite(960, 270, 1920, 540, 'mgs1VrEnvTileMatrixVoid').setAlpha(0.42).setDepth(-48);
   }
   for (let x = 0; x <= 1920; x += 80) {
     scene.add.line(x, 0, 0, 0, 0, 540, colors.grid, x % 320 === 0 ? 0.2 : 0.08).setDepth(-40);

@@ -39,8 +39,8 @@ describe('MGS1 VR 1 MIN. BATTLE registry', () => {
   });
 
   it('links the 18 profiles one-to-one with the appended mission definitions', () => {
-    expect(missions).toHaveLength(45);
-    expect(missions.slice(27).map((mission) => mission.id)).toEqual(
+    expect(missions).toHaveLength(53);
+    expect(missions.slice(27, 45).map((mission) => mission.id)).toEqual(
       MGS1_VR_MINUTE_BATTLE_PROFILES.map((profile) => profile.missionId)
     );
     expect(new Set(MGS1_VR_MINUTE_BATTLE_PROFILES.map((profile) => profile.id)).size).toBe(18);

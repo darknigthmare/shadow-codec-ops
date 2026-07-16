@@ -469,6 +469,7 @@ export class PreloadScene extends Phaser.Scene {
     const vrStartScenes = new Set([
       'VRTrainingScene',
       'VRMinuteBattleScene',
+      'VRVs12BattleScene',
       'VRNinjaScene',
       'VRMysteryScene',
       'VRPhotoshootScene'

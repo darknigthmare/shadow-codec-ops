@@ -8,7 +8,7 @@ interface TouchControlOverlayProps {
   context?: TouchControlContext;
 }
 
-export type TouchControlContext = 'sideops' | 'vr' | 'vr-minute-battle' | 'vr-ninja' | 'vr-mystery' | 'vr-photoshoot';
+export type TouchControlContext = 'sideops' | 'vr' | 'vr-minute-battle' | 'vr-vs12' | 'vr-ninja' | 'vr-mystery' | 'vr-photoshoot';
 
 interface TouchButtonDefinition {
   action: ControlAction;
@@ -34,6 +34,13 @@ const actionButtons: TouchButtonDefinition[] = [
 const minuteBattleActionButtons: TouchButtonDefinition[] = [
   { action: 'fire', label: 'Attack with the assigned weapon', short: 'ATTACK', className: 'touch-fire' },
   { action: 'cqc', label: 'Use CQC or detonate planted C4', short: 'CQC / DET' }
+];
+
+const vs12BattleActionButtons: TouchButtonDefinition[] = [
+  { action: 'fire', label: 'Fire the selected weapon', short: 'FIRE', className: 'touch-fire' },
+  { action: 'cqc', label: 'Use CQC or detonate planted C4 or Nikita', short: 'CQC / DET' },
+  { action: 'chaff', label: 'Select previous weapon', short: 'PREV' },
+  { action: 'ration', label: 'Select next weapon', short: 'NEXT' }
 ];
 
 const ninjaActionButtons: TouchButtonDefinition[] = [
@@ -70,6 +77,8 @@ function controlsForContext(context: TouchControlContext): {
   switch (context) {
     case 'vr-minute-battle':
       return { movement: movementButtons, actions: minuteBattleActionButtons };
+    case 'vr-vs12':
+      return { movement: movementButtons, actions: vs12BattleActionButtons };
     case 'vr-ninja':
       return { movement: movementButtons, actions: ninjaActionButtons };
     case 'vr-mystery':

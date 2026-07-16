@@ -50,6 +50,17 @@ describe('TouchControlOverlay contexts', () => {
     expect(actionText(document, 'ration')).toBeNull();
   });
 
+  it('maps the VS. 12 arsenal and detonation controls to their runtime actions', () => {
+    const document = renderControls('vr-vs12');
+
+    expect(document.querySelector('.touch-context-vr-vs12')).not.toBeNull();
+    expect(actionText(document, 'fire')).toBe('FIRE');
+    expect(actionText(document, 'cqc')).toBe('CQC / DET');
+    expect(actionText(document, 'chaff')).toBe('PREV');
+    expect(actionText(document, 'ration')).toBe('NEXT');
+    expect(document.querySelector('.touch-system-cluster [data-touch-action="cancel"]')).not.toBeNull();
+  });
+
   it('exposes the investigation, arrest, crawl and delivery actions for Mystery', () => {
     const document = renderControls('vr-mystery');
 

@@ -29,7 +29,7 @@ describe('MGS1 VR canonical mission profile registry', () => {
   it('preserves the six original missions and the complete 14-stage core block', () => {
     expect(missions.slice(0, originalMissionIds.length).map((mission) => mission.id)).toEqual(originalMissionIds);
     expect(missions.slice(0, 14)).toHaveLength(14);
-    expect(missions).toHaveLength(45);
+    expect(missions).toHaveLength(53);
     expect(new Set(missions.map((mission) => mission.id)).size).toBe(missions.length);
   });
 

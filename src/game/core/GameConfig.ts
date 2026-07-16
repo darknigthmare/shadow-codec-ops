@@ -5,6 +5,7 @@ export type GameStartScene =
   | 'SideOpsScene'
   | 'VRTrainingScene'
   | 'VRMinuteBattleScene'
+  | 'VRVs12BattleScene'
   | 'VRNinjaScene'
   | 'VRMysteryScene'
   | 'VRPhotoshootScene';
@@ -26,6 +27,8 @@ export async function createGameConfig(
     scene = [BootScene, PreloadScene, (await import('../scenes/VRTrainingScene')).VRTrainingScene];
   } else if (startScene === 'VRMinuteBattleScene') {
     scene = [BootScene, PreloadScene, (await import('../scenes/VRMinuteBattleScene')).VRMinuteBattleScene];
+  } else if (startScene === 'VRVs12BattleScene') {
+    scene = [BootScene, PreloadScene, (await import('../scenes/VRVs12BattleScene')).VRVs12BattleScene];
   } else if (startScene === 'VRNinjaScene') {
     scene = [BootScene, PreloadScene, (await import('../scenes/VRNinjaScene')).VRNinjaScene];
   } else if (startScene === 'VRMysteryScene') {

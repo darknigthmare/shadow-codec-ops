@@ -9,7 +9,8 @@ export type VrMissionCategory =
   | 'boss_challenge'
   | 'special_ninja'
   | 'special_mystery'
-  | 'special_minute_battle';
+  | 'special_minute_battle'
+  | 'special_vs12_battle';
 export type VrRank = 'BIG BOSS' | 'FOXHOUND' | 'FOX' | 'HOUND' | 'RAT' | 'ROOKIE';
 
 /** The eight main weapons represented by the MGS1 VR weapon drills. */
@@ -22,6 +23,9 @@ export type Mgs1VrWeaponId =
   | 'claymore'
   | 'stinger'
   | 'nikita';
+
+/** VS. 12 BATTLE uses every main weapon except the FA-MAS. */
+export type Mgs1VrVs12WeaponId = Exclude<Mgs1VrWeaponId, 'famas'>;
 
 /** Target names are kept exactly as listed in Konami's VR Training manual. */
 export type Mgs1VrTargetFamily =
@@ -69,6 +73,40 @@ export interface Mgs1VrMinuteBattleMissionProfile {
   quota: number;
   /** VS ENEMY profiles use Genome Soldiers instead of a target family. */
   targetFamily: Mgs1VrTargetFamily | null;
+  manualBehavior: string;
+}
+
+export type Mgs1VrVs12Level = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+
+export type Mgs1VrVs12CheckpointPosition =
+  | 'center'
+  | 'south_west'
+  | 'north_east'
+  | 'north'
+  | 'south'
+  | 'north_ammo_cache'
+  | 'north_center'
+  | 'near_start';
+
+export interface Mgs1VrVs12InventoryEntry {
+  weapon: Mgs1VrVs12WeaponId;
+  ammo: number;
+}
+
+/** Data contract shared by the eight canonical VS. 12 BATTLE stages. */
+export interface Mgs1VrVs12BattleMissionProfile {
+  id: string;
+  missionId: string;
+  mode: 'vs12_battle';
+  level: Mgs1VrVs12Level;
+  durationSeconds: 300;
+  quota: 12;
+  maxActiveEnemies: 4;
+  checkpointPosition: Mgs1VrVs12CheckpointPosition;
+  /** Level 6 uniquely starts with no usable weapon and places its whole arsenal in the north cache. */
+  startsUnarmed: boolean;
+  initialInventory: readonly Mgs1VrVs12InventoryEntry[];
+  pickupInventory: readonly Mgs1VrVs12InventoryEntry[];
   manualBehavior: string;
 }
 

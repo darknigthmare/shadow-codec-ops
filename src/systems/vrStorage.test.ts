@@ -6,6 +6,7 @@ import { applyVrRuntimeOutcome, evaluateVrRun, MAX_VR_RECORDS, recordVrRun } fro
 const missions = vrMissionsJson as VrMissionDefinition[];
 const ninjaGuardSweep = missions.find((mission) => mission.id === 'vr_ninja_guard_sweep_016') as VrMissionDefinition;
 const minuteEnemySocom = missions.find((mission) => mission.id === 'vr_minute_enemy_socom_038') as VrMissionDefinition;
+const vs12BattleLevel1 = missions.find((mission) => mission.id === 'vr_vs12_battle_01_046') as VrMissionDefinition;
 
 function guardSweepStats(kills: number): VrRunStats {
   return {
@@ -96,6 +97,75 @@ describe('VR mission scoring', () => {
 
     expect(evaluateVrRun(minuteEnemySocom, { ...baseline, alerts: 12 }).score)
       .toBe(evaluateVrRun(minuteEnemySocom, baseline).score);
+  });
+
+  it('allows a canonical alerted 12-kill VS 12 clear to earn BIG BOSS', () => {
+    const stats: VrRunStats = {
+      ...guardSweepStats(12),
+      timeSeconds: 300,
+      alerts: 12,
+      shotsFired: 24,
+      hits: 24,
+      objectivesCompleted: 12
+    };
+
+    const evaluation = evaluateVrRun(vs12BattleLevel1, stats);
+
+    expect(evaluation.success).toBe(true);
+    expect(evaluation.score).toBeGreaterThanOrEqual(1000);
+    expect(evaluation.rank).toBe('BIG BOSS');
+  });
+
+  it('does not penalize canonical alerts, quota kills, or mixed-arsenal action counts in VS 12', () => {
+    const baseline: VrRunStats = {
+      ...guardSweepStats(12),
+      timeSeconds: 300,
+      shotsFired: 12,
+      hits: 12,
+      objectivesCompleted: 12
+    };
+    const canonicalBattle = {
+      ...baseline,
+      alerts: 12,
+      shotsFired: 24,
+      hits: 24,
+      kills: 14
+    };
+
+    expect(evaluateVrRun(vs12BattleLevel1, canonicalBattle).score)
+      .toBe(evaluateVrRun(vs12BattleLevel1, baseline).score);
+  });
+
+  it('keeps time, damage, and accuracy discriminating VS 12 performance', () => {
+    const baseline: VrRunStats = {
+      ...guardSweepStats(12),
+      timeSeconds: 300,
+      alerts: 12,
+      shotsFired: 24,
+      hits: 24,
+      objectivesCompleted: 12
+    };
+    const pristine = evaluateVrRun(vs12BattleLevel1, baseline);
+    const faster = evaluateVrRun(vs12BattleLevel1, { ...baseline, timeSeconds: 240 });
+    const damaged = evaluateVrRun(vs12BattleLevel1, { ...baseline, damageTaken: 6 });
+    const inaccurate = evaluateVrRun(vs12BattleLevel1, { ...baseline, hits: 12 });
+
+    expect(faster.score).toBeGreaterThan(pristine.score);
+    expect(damaged.score).toBeLessThan(pristine.score);
+    expect(inaccurate.score).toBeLessThan(pristine.score);
+    expect(damaged.rank).not.toBe('BIG BOSS');
+  });
+
+  it('caps blast multi-hit accuracy at 100 percent', () => {
+    const blastStats: VrRunStats = {
+      ...guardSweepStats(12),
+      timeSeconds: 240,
+      shotsFired: 6,
+      hits: 12,
+      objectivesCompleted: 12
+    };
+
+    expect(evaluateVrRun(vs12BattleLevel1, blastStats).accuracy).toBe(100);
   });
 
   it('never converts a live-scene death or abort into a clear after the quota was reached', () => {

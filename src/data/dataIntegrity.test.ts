@@ -44,12 +44,24 @@ describe('local JSON data integrity', () => {
 
   it('keeps the complete 1 MIN. BATTLE data block contiguous and profile-linked', () => {
     const minuteBattles = vrMissions.filter((mission) => mission.category === 'special_minute_battle');
-    expect(vrMissions).toHaveLength(45);
+    expect(vrMissions).toHaveLength(53);
     expect(minuteBattles).toHaveLength(18);
-    expect(vrMissions.slice(27)).toEqual(minuteBattles);
+    expect(vrMissions.slice(27, 45)).toEqual(minuteBattles);
     expect(new Set(minuteBattles.map((mission) => mission.missionProfileId)).size).toBe(18);
     expect(minuteBattles.every((mission) => mission.missionProfileId?.startsWith('mgs1_vr_special_minute_'))).toBe(true);
     expect(minuteBattles.every((mission) => mission.requirements.targetTimeSeconds === 60)).toBe(true);
+  });
+
+  it('keeps the complete VS 12 BATTLE data block contiguous and profile-linked', () => {
+    const vs12Battles = vrMissions.filter((mission) => mission.category === 'special_vs12_battle');
+    expect(vs12Battles).toHaveLength(8);
+    expect(vrMissions.slice(45)).toEqual(vs12Battles);
+    expect(new Set(vs12Battles.map((mission) => mission.missionProfileId)).size).toBe(8);
+    expect(vs12Battles.every((mission) => mission.missionProfileId?.startsWith('mgs1_vr_special_vs12_'))).toBe(true);
+    expect(vs12Battles.every((mission) => mission.requirements.targetTimeSeconds === 300)).toBe(true);
+    expect(vs12Battles.every((mission) => mission.requirements.minKills === 12)).toBe(true);
+    expect(vs12Battles.every((mission) => mission.requirements.minObjectivesCompleted === 12)).toBe(true);
+    expect(vs12Battles.every((mission) => mission.requirements.requiredTool === 'mixed')).toBe(true);
   });
 
   it('keeps contact and conversation references valid', () => {

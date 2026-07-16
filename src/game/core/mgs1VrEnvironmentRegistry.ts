@@ -106,7 +106,15 @@ export type Mgs1VrMapVariant =
   | 'weapon_range_linear'
   | 'cqc_corridor'
   | 'surveillance_yard'
-  | 'boss_arena_vr';
+  | 'boss_arena_vr'
+  | 'vs12_battle_01'
+  | 'vs12_battle_02'
+  | 'vs12_battle_03'
+  | 'vs12_battle_04'
+  | 'vs12_battle_05'
+  | 'vs12_battle_06'
+  | 'vs12_battle_07'
+  | 'vs12_battle_08';
 
 export interface Mgs1VrEnvironmentPlacement {
   assetId: Mgs1VrEnvironmentAssetId;
@@ -140,6 +148,20 @@ const decoration = (
   alpha = 0.9,
   flipX?: boolean
 ): Mgs1VrEnvironmentPlacement => ({ assetId, x, y, depth, scale, alpha, flipX, physical: false });
+
+const vs12Layout = (
+  mapVariant: Extract<Mgs1VrMapVariant, `vs12_battle_${string}`>,
+  placements: readonly Mgs1VrEnvironmentPlacement[]
+): Mgs1VrEnvironmentLayout => ({
+  mapVariant,
+  voidColor: 0x081007,
+  gridColor: 0x79f073,
+  accentColor: 0xffd85a,
+  voidTextureKey: 'mgs1VrEnvTileMatrixVoid',
+  gridTextureKey: 'mgs1VrEnvTileGridGreen',
+  accentTextureKey: 'mgs1VrEnvTileGridAmber',
+  placements
+});
 
 /**
  * Six additive visual layouts matching the six mission-data map variants.
@@ -267,7 +289,86 @@ export const MGS1_VR_ENVIRONMENT_LAYOUTS: Readonly<Record<Mgs1VrMapVariant, Mgs1
       decoration('mgs1_vr_env_prop_laser_beacon', 1670, 456, -7, 1, 0.94),
       decoration('mgs1_vr_env_prop_boundary_pillar', 1800, 418, -9, 1, 0.78)
     ]
-  }
+  },
+  vs12_battle_01: vs12Layout('vs12_battle_01', [
+    decoration('mgs1_vr_env_structure_raised_platform', 430, 382, -9, 1.45, 0.8),
+    decoration('mgs1_vr_env_structure_bridge', 950, 348, -9, 2.1, 0.82),
+    decoration('mgs1_vr_env_structure_raised_platform', 1470, 382, -9, 1.45, 0.8, true),
+    decoration('mgs1_vr_env_prop_boundary_pillar', 90, 418, -10, 1, 0.68),
+    decoration('mgs1_vr_env_prop_boundary_pillar', 1810, 418, -10, 1, 0.68, true)
+  ]),
+  vs12_battle_02: vs12Layout('vs12_battle_02', [
+    decoration('mgs1_vr_env_structure_bridge', 390, 390, -9, 1.8, 0.82),
+    decoration('mgs1_vr_env_structure_raised_platform', 940, 350, -9, 1.5, 0.82),
+    decoration('mgs1_vr_env_structure_stairs', 1280, 444, -9, 1.2, 0.8, true),
+    decoration('mgs1_vr_env_structure_bridge', 1450, 410, -9, 1.55, 0.78),
+    decoration('mgs1_vr_env_prop_wall_block', 650, 468, -8, 0.65, 0.7),
+    decoration('mgs1_vr_env_structure_low_wall', 1120, 474, -8, 0.72, 0.7),
+    decoration('mgs1_vr_env_prop_route_marker', 185, 462, -8, 0.86, 0.72)
+  ]),
+  vs12_battle_03: vs12Layout('vs12_battle_03', [
+    decoration('mgs1_vr_env_structure_stairs', 610, 430, -9, 1.3, 0.82),
+    decoration('mgs1_vr_env_structure_bridge', 1080, 370, -9, 1.65, 0.8),
+    decoration('mgs1_vr_env_structure_stairs', 1370, 446, -9, 1.15, 0.78),
+    decoration('mgs1_vr_env_structure_raised_platform', 1680, 358, -9, 1.65, 0.84),
+    decoration('mgs1_vr_env_prop_wall_block', 310, 446, -8, 0.85, 0.74),
+    decoration('mgs1_vr_env_structure_low_wall', 790, 474, -8, 0.82, 0.72),
+    decoration('mgs1_vr_env_prop_wall_block', 1210, 306, -8, 0.75, 0.72),
+    decoration('mgs1_vr_env_structure_low_wall', 1530, 474, -8, 0.82, 0.72),
+    decoration('mgs1_vr_env_prop_boundary_pillar', 1815, 418, -10, 1, 0.68)
+  ]),
+  vs12_battle_04: vs12Layout('vs12_battle_04', [
+    decoration('mgs1_vr_env_structure_bridge', 350, 430, -9, 2.6, 0.82),
+    decoration('mgs1_vr_env_structure_bridge', 850, 360, -9, 2.6, 0.84),
+    decoration('mgs1_vr_env_structure_bridge', 1400, 290, -9, 2.6, 0.84),
+    decoration('mgs1_vr_env_structure_bridge', 650, 220, -9, 2.2, 0.82),
+    decoration('mgs1_vr_env_structure_stairs', 610, 398, -8, 1.2, 0.78),
+    decoration('mgs1_vr_env_structure_stairs', 1120, 328, -8, 1.2, 0.78, true)
+  ]),
+  vs12_battle_05: vs12Layout('vs12_battle_05', [
+    decoration('mgs1_vr_env_structure_raised_platform', 330, 360, -9, 1.7, 0.82),
+    decoration('mgs1_vr_env_structure_bridge', 950, 400, -9, 1.9, 0.8),
+    decoration('mgs1_vr_env_structure_raised_platform', 1570, 360, -9, 1.7, 0.82, true),
+    decoration('mgs1_vr_env_structure_stairs', 650, 430, -8, 1.15, 0.78),
+    decoration('mgs1_vr_env_structure_stairs', 1250, 430, -8, 1.15, 0.78, true),
+    decoration('mgs1_vr_env_prop_boundary_pillar', 900, 348, -8, 0.72, 0.66),
+    decoration('mgs1_vr_env_prop_boundary_pillar', 1000, 348, -8, 0.72, 0.66),
+    decoration('mgs1_vr_env_prop_hazard_strip', 760, 506, -8, 1.4, 0.68),
+    decoration('mgs1_vr_env_prop_hazard_strip', 1140, 506, -8, 1.4, 0.68)
+  ]),
+  vs12_battle_06: vs12Layout('vs12_battle_06', [
+    decoration('mgs1_vr_env_structure_bridge', 250, 358, -9, 2.4, 0.84),
+    decoration('mgs1_vr_env_prop_boundary_pillar', 80, 306, -8, 0.82, 0.7),
+    decoration('mgs1_vr_env_prop_boundary_pillar', 450, 306, -8, 0.82, 0.7, true),
+    decoration('mgs1_vr_env_structure_stairs', 740, 444, -9, 1.15, 0.8),
+    decoration('mgs1_vr_env_structure_raised_platform', 1180, 410, -9, 1.5, 0.82),
+    decoration('mgs1_vr_env_prop_wall_block', 1040, 458, -8, 0.65, 0.68),
+    decoration('mgs1_vr_env_prop_wall_block', 1320, 458, -8, 0.65, 0.68)
+  ]),
+  vs12_battle_07: vs12Layout('vs12_battle_07', [
+    decoration('mgs1_vr_env_structure_stairs', 560, 444, -9, 1.15, 0.8),
+    decoration('mgs1_vr_env_structure_bridge', 850, 358, -9, 1.45, 0.84),
+    decoration('mgs1_vr_env_structure_bridge', 1050, 358, -9, 1.45, 0.84),
+    decoration('mgs1_vr_env_structure_stairs', 1340, 444, -9, 1.15, 0.8, true),
+    decoration('mgs1_vr_env_prop_boundary_pillar', 950, 306, -8, 0.78, 0.64)
+  ]),
+  vs12_battle_08: vs12Layout('vs12_battle_08', [
+    decoration('mgs1_vr_env_structure_raised_platform', 460, 370, -9, 1.45, 0.82),
+    decoration('mgs1_vr_env_structure_bridge', 930, 410, -9, 1.65, 0.8),
+    decoration('mgs1_vr_env_structure_raised_platform', 1400, 350, -9, 1.55, 0.84, true),
+    decoration('mgs1_vr_env_prop_wall_block', 260, 458, -8, 0.7, 0.72),
+    decoration('mgs1_vr_env_prop_wall_block', 520, 438, -8, 0.7, 0.72),
+    decoration('mgs1_vr_env_prop_wall_block', 780, 458, -8, 0.7, 0.72),
+    decoration('mgs1_vr_env_prop_wall_block', 1040, 438, -8, 0.7, 0.72),
+    decoration('mgs1_vr_env_prop_wall_block', 1300, 458, -8, 0.7, 0.72),
+    decoration('mgs1_vr_env_prop_wall_block', 1560, 438, -8, 0.7, 0.72),
+    decoration('mgs1_vr_env_prop_wall_block', 390, 306, -8, 0.68, 0.68),
+    decoration('mgs1_vr_env_prop_wall_block', 650, 286, -8, 0.68, 0.68),
+    decoration('mgs1_vr_env_prop_wall_block', 910, 306, -8, 0.68, 0.68),
+    decoration('mgs1_vr_env_prop_wall_block', 1170, 286, -8, 0.68, 0.68),
+    decoration('mgs1_vr_env_prop_wall_block', 1430, 306, -8, 0.68, 0.68),
+    decoration('mgs1_vr_env_prop_route_marker', 1650, 462, -8, 0.86, 0.72)
+  ])
 };
 
 const FALLBACK_MGS1_VR_VARIANT: Mgs1VrMapVariant = 'dock_infiltration_short';
