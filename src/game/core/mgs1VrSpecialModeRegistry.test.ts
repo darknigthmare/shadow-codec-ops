@@ -19,11 +19,11 @@ const extras = vrExtrasJson as Mgs1VrPhotoshootExtra[];
 
 describe('MGS1 VR Special Mode registry', () => {
   it('adds exactly three Ninja and ten Mystery stages after the 14 existing stages', () => {
-    expect(missions).toHaveLength(27);
+    expect(missions).toHaveLength(45);
     expect(MGS1_VR_NINJA_PROFILES).toHaveLength(3);
     expect(MGS1_VR_MYSTERY_PROFILES).toHaveLength(10);
     expect(MGS1_VR_SPECIAL_MISSION_PROFILES).toHaveLength(13);
-    expect(missions.slice(14).map((mission) => mission.id)).toEqual(
+    expect(missions.slice(14, 27).map((mission) => mission.id)).toEqual(
       MGS1_VR_SPECIAL_MISSION_PROFILES.map((profile) => profile.missionId)
     );
   });

@@ -468,6 +468,7 @@ export class PreloadScene extends Phaser.Scene {
       ?? window.localStorage.getItem('sideops-active-mission-id');
     const vrStartScenes = new Set([
       'VRTrainingScene',
+      'VRMinuteBattleScene',
       'VRNinjaScene',
       'VRMysteryScene',
       'VRPhotoshootScene'

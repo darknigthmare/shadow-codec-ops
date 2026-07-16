@@ -40,6 +40,16 @@ describe('TouchControlOverlay contexts', () => {
     expect(actionText(document, 'ration')).toBe('STEALTH');
   });
 
+  it('exposes the primary one-minute battle actions', () => {
+    const document = renderControls('vr-minute-battle');
+
+    expect(document.querySelector('.touch-context-vr-minute-battle')).not.toBeNull();
+    expect(actionText(document, 'fire')).toBe('ATTACK');
+    expect(actionText(document, 'cqc')).toBe('CQC / DET');
+    expect(actionText(document, 'chaff')).toBeNull();
+    expect(actionText(document, 'ration')).toBeNull();
+  });
+
   it('exposes the investigation, arrest, crawl and delivery actions for Mystery', () => {
     const document = renderControls('vr-mystery');
 

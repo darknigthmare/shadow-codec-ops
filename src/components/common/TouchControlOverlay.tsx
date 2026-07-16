@@ -8,7 +8,7 @@ interface TouchControlOverlayProps {
   context?: TouchControlContext;
 }
 
-export type TouchControlContext = 'sideops' | 'vr' | 'vr-ninja' | 'vr-mystery' | 'vr-photoshoot';
+export type TouchControlContext = 'sideops' | 'vr' | 'vr-minute-battle' | 'vr-ninja' | 'vr-mystery' | 'vr-photoshoot';
 
 interface TouchButtonDefinition {
   action: ControlAction;
@@ -29,6 +29,11 @@ const actionButtons: TouchButtonDefinition[] = [
   { action: 'cqc', label: 'CQC action', short: 'CQC' },
   { action: 'chaff', label: 'Deploy chaff', short: 'CHAF' },
   { action: 'ration', label: 'Use ration', short: 'RAT' }
+];
+
+const minuteBattleActionButtons: TouchButtonDefinition[] = [
+  { action: 'fire', label: 'Attack with the assigned weapon', short: 'ATTACK', className: 'touch-fire' },
+  { action: 'cqc', label: 'Use CQC or detonate planted C4', short: 'CQC / DET' }
 ];
 
 const ninjaActionButtons: TouchButtonDefinition[] = [
@@ -63,6 +68,8 @@ function controlsForContext(context: TouchControlContext): {
   actions: readonly TouchButtonDefinition[];
 } {
   switch (context) {
+    case 'vr-minute-battle':
+      return { movement: movementButtons, actions: minuteBattleActionButtons };
     case 'vr-ninja':
       return { movement: movementButtons, actions: ninjaActionButtons };
     case 'vr-mystery':

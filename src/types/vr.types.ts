@@ -8,7 +8,8 @@ export type VrMissionCategory =
   | 'surveillance'
   | 'boss_challenge'
   | 'special_ninja'
-  | 'special_mystery';
+  | 'special_mystery'
+  | 'special_minute_battle';
 export type VrRank = 'BIG BOSS' | 'FOXHOUND' | 'FOX' | 'HOUND' | 'RAT' | 'ROOKIE';
 
 /** The eight main weapons represented by the MGS1 VR weapon drills. */
@@ -48,6 +49,26 @@ export interface Mgs1VrMissionProfile extends Mgs1VrTargetBehaviorFlags {
   weapon: Mgs1VrWeaponId | null;
   targetFamily: Mgs1VrTargetFamily;
   targetCount: number;
+  manualBehavior: string;
+}
+
+export type Mgs1VrMinuteBattleVariant = 'target' | 'enemy';
+export type Mgs1VrMinuteBattleLoadout = 'unarmed' | Mgs1VrWeaponId;
+
+/** Data contract shared by the eighteen canonical 1 MIN. BATTLE drills. */
+export interface Mgs1VrMinuteBattleMissionProfile {
+  id: string;
+  missionId: string;
+  mode: 'minute_battle';
+  variant: Mgs1VrMinuteBattleVariant;
+  /** Level number inside the selected VS TARGET or VS ENEMY list. */
+  level: number;
+  loadout: Mgs1VrMinuteBattleLoadout;
+  durationSeconds: 60;
+  /** Original one-minute clear threshold for targets or enemies. */
+  quota: number;
+  /** VS ENEMY profiles use Genome Soldiers instead of a target family. */
+  targetFamily: Mgs1VrTargetFamily | null;
   manualBehavior: string;
 }
 

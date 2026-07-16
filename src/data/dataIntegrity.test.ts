@@ -42,6 +42,16 @@ describe('local JSON data integrity', () => {
     expectUniqueIds('Radio signals', radioSignals);
   });
 
+  it('keeps the complete 1 MIN. BATTLE data block contiguous and profile-linked', () => {
+    const minuteBattles = vrMissions.filter((mission) => mission.category === 'special_minute_battle');
+    expect(vrMissions).toHaveLength(45);
+    expect(minuteBattles).toHaveLength(18);
+    expect(vrMissions.slice(27)).toEqual(minuteBattles);
+    expect(new Set(minuteBattles.map((mission) => mission.missionProfileId)).size).toBe(18);
+    expect(minuteBattles.every((mission) => mission.missionProfileId?.startsWith('mgs1_vr_special_minute_'))).toBe(true);
+    expect(minuteBattles.every((mission) => mission.requirements.targetTimeSeconds === 60)).toBe(true);
+  });
+
   it('keeps contact and conversation references valid', () => {
     const contactIds = new Set(contacts.map((contact) => contact.id));
     const conversationIds = new Set(conversations.map((conversation) => conversation.id));

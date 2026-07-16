@@ -14,6 +14,9 @@ const DEFAULT_VR_PROGRESS: VrMissionProgress = {
   unlockedBadges: []
 };
 
+/** Four retained attempts per one of the 300 canonical MGS1 VR stages. */
+export const MAX_VR_RECORDS = 1200;
+
 const rankOrder: Record<VrRank, number> = {
   ROOKIE: 0,
   RAT: 1,
@@ -118,6 +121,30 @@ export function evaluateVrRun(
   return { success, score, rank, accuracy, failures, unlockedTapeIds, unlockedBadges };
 }
 
+/**
+ * A live Phaser scene can fail for reasons that are not expressible as a
+ * numeric mission requirement (death, abort, wrong target, detection, etc.).
+ * Preserve the real run stats while preventing a failed runtime outcome from
+ * being reclassified as a clear by the shared evaluator.
+ */
+export function applyVrRuntimeOutcome(
+  evaluation: VrRunEvaluation,
+  runtimeStatus: 'standby' | 'running' | 'clear' | 'failed' | 'aborted',
+  message: string
+): VrRunEvaluation {
+  if (runtimeStatus === 'clear') return evaluation;
+  const score = Math.min(650, evaluation.score);
+  return {
+    ...evaluation,
+    success: false,
+    score,
+    rank: score >= 620 ? 'RAT' : 'ROOKIE',
+    failures: [message || `Runtime ended with status ${runtimeStatus}`, ...evaluation.failures],
+    unlockedTapeIds: [],
+    unlockedBadges: []
+  };
+}
+
 export function createVrRecord(
   mission: VrMissionDefinition,
   stats: VrRunStats,
@@ -141,7 +168,7 @@ export function recordVrRun(
   record: VrMissionRecord,
   evaluation: VrRunEvaluation
 ): VrMissionProgress {
-  const records = [record, ...progress.records].slice(0, 120);
+  const records = [record, ...progress.records].slice(0, MAX_VR_RECORDS);
   const unlockedTapeIds = Array.from(new Set([...progress.unlockedTapeIds, ...evaluation.unlockedTapeIds]));
   const unlockedBadges = Array.from(new Set([...progress.unlockedBadges, ...evaluation.unlockedBadges]));
   return {
@@ -177,8 +204,12 @@ function calculateVrScore(mission: VrMissionDefinition, stats: VrRunStats, succe
   const targetTime = req.targetTimeSeconds ?? 180;
   if (stats.timeSeconds > targetTime) score -= (stats.timeSeconds - targetTime) * 3;
   else score += Math.min(90, (targetTime - stats.timeSeconds) * 0.8);
-  score -= stats.alerts * 160;
-  score -= Math.max(0, stats.kills - (req.minKills ?? 0)) * 120;
+  if (mission.category !== 'special_minute_battle') score -= stats.alerts * 160;
+  // Ordinary stealth missions penalize unnecessary lethal force. 1 MIN.
+  // BATTLE / VS ENEMY explicitly asks the player to exceed the clear quota.
+  if (mission.category !== 'special_minute_battle') {
+    score -= Math.max(0, stats.kills - (req.minKills ?? 0)) * 120;
+  }
   score -= stats.damageTaken * 2;
   score -= stats.rationsUsed * 65;
   score -= Math.max(0, stats.shotsFired - (req.maxShotsFired ?? 18)) * 10;

@@ -4,6 +4,7 @@ type PhaserRuntime = typeof Phaser;
 export type GameStartScene =
   | 'SideOpsScene'
   | 'VRTrainingScene'
+  | 'VRMinuteBattleScene'
   | 'VRNinjaScene'
   | 'VRMysteryScene'
   | 'VRPhotoshootScene';
@@ -23,6 +24,8 @@ export async function createGameConfig(
   let scene: Phaser.Types.Scenes.SceneType[];
   if (startScene === 'VRTrainingScene') {
     scene = [BootScene, PreloadScene, (await import('../scenes/VRTrainingScene')).VRTrainingScene];
+  } else if (startScene === 'VRMinuteBattleScene') {
+    scene = [BootScene, PreloadScene, (await import('../scenes/VRMinuteBattleScene')).VRMinuteBattleScene];
   } else if (startScene === 'VRNinjaScene') {
     scene = [BootScene, PreloadScene, (await import('../scenes/VRNinjaScene')).VRNinjaScene];
   } else if (startScene === 'VRMysteryScene') {
