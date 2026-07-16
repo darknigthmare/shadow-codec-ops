@@ -158,6 +158,7 @@ function getVrFailures(mission: VrMissionDefinition, stats: VrRunStats): string[
   const failures: string[] = [];
   if (req.targetTimeSeconds !== undefined && stats.timeSeconds > req.targetTimeSeconds) failures.push(`Time exceeded: ${stats.timeSeconds}s / ${req.targetTimeSeconds}s`);
   if (req.maxAlerts !== undefined && stats.alerts > req.maxAlerts) failures.push(`Too many alerts: ${stats.alerts} / ${req.maxAlerts}`);
+  if (req.minKills !== undefined && stats.kills < req.minKills) failures.push(`Required eliminations missing: ${stats.kills} / ${req.minKills}`);
   if (req.maxKills !== undefined && stats.kills > req.maxKills) failures.push(`Kill limit exceeded: ${stats.kills} / ${req.maxKills}`);
   if (req.maxDamage !== undefined && stats.damageTaken > req.maxDamage) failures.push(`Damage limit exceeded: ${stats.damageTaken} / ${req.maxDamage}`);
   if (req.maxRations !== undefined && stats.rationsUsed > req.maxRations) failures.push(`Ration limit exceeded: ${stats.rationsUsed} / ${req.maxRations}`);
@@ -177,7 +178,7 @@ function calculateVrScore(mission: VrMissionDefinition, stats: VrRunStats, succe
   if (stats.timeSeconds > targetTime) score -= (stats.timeSeconds - targetTime) * 3;
   else score += Math.min(90, (targetTime - stats.timeSeconds) * 0.8);
   score -= stats.alerts * 160;
-  score -= stats.kills * 120;
+  score -= Math.max(0, stats.kills - (req.minKills ?? 0)) * 120;
   score -= stats.damageTaken * 2;
   score -= stats.rationsUsed * 65;
   score -= Math.max(0, stats.shotsFired - (req.maxShotsFired ?? 18)) * 10;

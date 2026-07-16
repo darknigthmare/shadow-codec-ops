@@ -185,10 +185,11 @@ export class VRTrainingScene extends Phaser.Scene {
     this.plantedC4 = undefined;
     this.claymores = [];
     this.guidedMissile = undefined;
-    this.startTime = this.time.now;
+    this.startTime = performance.now();
 
     this.createGameplayAnimations();
 
+    this.cameras.main.setViewport(0, 0, 960, 540);
     this.physics.world.setBounds(0, 0, 1900, 540);
     this.cameras.main.setBounds(0, 0, 1900, 540);
     this.addArenaBackdrop();
@@ -1333,7 +1334,7 @@ export class VRTrainingScene extends Phaser.Scene {
   }
 
   private syncTime(): void {
-    this.stats.timeSeconds = Math.max(1, Math.round((this.time.now - this.startTime) / 1000));
+    this.stats.timeSeconds = Math.max(1, Math.round((performance.now() - this.startTime) / 1000));
   }
 
   private updateHudText(): void {
@@ -1354,6 +1355,7 @@ export class VRTrainingScene extends Phaser.Scene {
     const rows: string[] = [];
     if (req.targetTimeSeconds !== undefined) rows.push(`TIME <= ${req.targetTimeSeconds}s`);
     if (req.maxAlerts !== undefined) rows.push(`ALERTS <= ${req.maxAlerts}`);
+    if (req.minKills !== undefined) rows.push(`ELIMINATIONS >= ${req.minKills}`);
     if (req.maxKills !== undefined) rows.push(`KILLS <= ${req.maxKills}`);
     if (req.minNeutralizations !== undefined) rows.push(`CQC >= ${req.minNeutralizations}`);
     if (req.minShotsFired !== undefined) rows.push(`SHOTS >= ${req.minShotsFired}`);

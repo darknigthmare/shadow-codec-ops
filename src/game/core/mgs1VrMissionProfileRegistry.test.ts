@@ -26,9 +26,10 @@ const behaviorFlags = (family: Mgs1VrTargetFamily) => {
 };
 
 describe('MGS1 VR canonical mission profile registry', () => {
-  it('preserves the six existing missions and adds eight focused drills', () => {
+  it('preserves the six original missions and the complete 14-stage core block', () => {
     expect(missions.slice(0, originalMissionIds.length).map((mission) => mission.id)).toEqual(originalMissionIds);
-    expect(missions).toHaveLength(14);
+    expect(missions.slice(0, 14)).toHaveLength(14);
+    expect(missions).toHaveLength(27);
     expect(new Set(missions.map((mission) => mission.id)).size).toBe(missions.length);
   });
 

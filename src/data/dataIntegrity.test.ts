@@ -7,6 +7,7 @@ import items from './items.json';
 import missions from './missions.json';
 import tapes from './tapes.json';
 import vrMissions from './vrMissions.json';
+import vrExtras from './vrExtras.json';
 import campaigns from './campaigns.json';
 import loreEntries from './loreEntries.json';
 import codecContexts from './codecContexts.json';
@@ -34,6 +35,7 @@ describe('local JSON data integrity', () => {
     expectUniqueIds('bosses', bosses);
     expectUniqueIds('tapes', tapes);
     expectUniqueIds('VR missions', vrMissions);
+    expectUniqueIds('VR extras', vrExtras);
     expectUniqueIds('campaigns', campaigns);
     expectUniqueIds('Codec contexts', codecContexts);
     expectUniqueIds('Codec canon sources', codecCanonSources);

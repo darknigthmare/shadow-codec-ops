@@ -5,8 +5,10 @@ import { resetTouchActions, setTouchAction } from '../../systems/touchInput';
 
 interface TouchControlOverlayProps {
   settings: UserSettings;
-  context?: 'sideops' | 'vr';
+  context?: TouchControlContext;
 }
+
+export type TouchControlContext = 'sideops' | 'vr' | 'vr-ninja' | 'vr-mystery' | 'vr-photoshoot';
 
 interface TouchButtonDefinition {
   action: ControlAction;
@@ -29,9 +31,53 @@ const actionButtons: TouchButtonDefinition[] = [
   { action: 'ration', label: 'Use ration', short: 'RAT' }
 ];
 
+const ninjaActionButtons: TouchButtonDefinition[] = [
+  { action: 'fire', label: 'Slash with the high-frequency blade', short: 'SLASH', className: 'touch-fire' },
+  { action: 'cqc', label: 'Hold cross-slash guard', short: 'CROSS' },
+  { action: 'chaff', label: 'Body disruption', short: 'BODY' },
+  { action: 'ration', label: 'Hold stealth camouflage', short: 'STEALTH' }
+];
+
+const mysteryActionButtons: TouchButtonDefinition[] = [
+  { action: 'fire', label: 'Inspect evidence or suspect', short: 'INSPECT', className: 'touch-fire' },
+  { action: 'cqc', label: 'Grab or release suspect', short: 'GRAB' },
+  { action: 'chaff', label: 'Crawl without leaving footprints', short: 'CRAWL' },
+  { action: 'ration', label: 'Deliver suspect to goal', short: 'DELIVER' }
+];
+
+const photoshootMovementButtons: TouchButtonDefinition[] = [
+  { action: 'moveLeft', label: 'Frame left', short: '◀' },
+  { action: 'crouch', label: 'Frame down', short: '▼' },
+  { action: 'moveRight', label: 'Frame right', short: '▶' },
+  { action: 'jump', label: 'Frame up', short: '▲', className: 'touch-jump' }
+];
+
+const photoshootActionButtons: TouchButtonDefinition[] = [
+  { action: 'fire', label: 'Release camera shutter', short: 'SHUTTER', className: 'touch-fire' },
+  { action: 'chaff', label: 'Zoom out', short: 'ZOOM-' },
+  { action: 'ration', label: 'Zoom in', short: 'ZOOM+' }
+];
+
+function controlsForContext(context: TouchControlContext): {
+  movement: readonly TouchButtonDefinition[];
+  actions: readonly TouchButtonDefinition[];
+} {
+  switch (context) {
+    case 'vr-ninja':
+      return { movement: movementButtons, actions: ninjaActionButtons };
+    case 'vr-mystery':
+      return { movement: movementButtons, actions: mysteryActionButtons };
+    case 'vr-photoshoot':
+      return { movement: photoshootMovementButtons, actions: photoshootActionButtons };
+    default:
+      return { movement: movementButtons, actions: actionButtons };
+  }
+}
+
 function hasTouchCapability(): boolean {
   if (typeof window === 'undefined') return false;
-  return navigator.maxTouchPoints > 0 || window.matchMedia('(pointer: coarse)').matches;
+  return navigator.maxTouchPoints > 0
+    || (typeof window.matchMedia === 'function' && window.matchMedia('(pointer: coarse)').matches);
 }
 
 export function TouchControlOverlay({ settings, context = 'sideops' }: TouchControlOverlayProps) {
@@ -40,19 +86,21 @@ export function TouchControlOverlay({ settings, context = 'sideops' }: TouchCont
   const [portrait, setPortrait] = useState(() => typeof window !== 'undefined' && window.innerHeight > window.innerWidth);
 
   useEffect(() => {
-    const pointerQuery = window.matchMedia('(pointer: coarse)');
+    const pointerQuery = typeof window.matchMedia === 'function'
+      ? window.matchMedia('(pointer: coarse)')
+      : null;
     const update = () => {
       setTouchCapable(hasTouchCapability());
       setPortrait(window.innerHeight > window.innerWidth);
     };
     update();
-    pointerQuery.addEventListener('change', update);
+    pointerQuery?.addEventListener('change', update);
     window.addEventListener('resize', update);
     window.addEventListener('orientationchange', update);
     window.addEventListener('blur', resetTouchActions);
     document.addEventListener('visibilitychange', resetTouchActions);
     return () => {
-      pointerQuery.removeEventListener('change', update);
+      pointerQuery?.removeEventListener('change', update);
       window.removeEventListener('resize', update);
       window.removeEventListener('orientationchange', update);
       window.removeEventListener('blur', resetTouchActions);
@@ -68,6 +116,7 @@ export function TouchControlOverlay({ settings, context = 'sideops' }: TouchCont
     '--touch-scale': String(settings.touchControlScale),
     '--touch-opacity': String(settings.touchControlOpacity)
   }) as CSSProperties, [settings.touchControlOpacity, settings.touchControlScale]);
+  const controls = controlsForContext(context);
 
   if (!visible) return null;
 
@@ -95,6 +144,7 @@ export function TouchControlOverlay({ settings, context = 'sideops' }: TouchCont
         type="button"
         className={`touch-control-button ${button.className ?? ''}`}
         aria-label={button.label}
+        data-touch-action={button.action}
         onPointerDown={(event) => press(button.action, event)}
         onPointerUp={(event) => release(button.action, event)}
         onPointerCancel={(event) => release(button.action, event)}
@@ -135,8 +185,8 @@ export function TouchControlOverlay({ settings, context = 'sideops' }: TouchCont
             {renderButton({ action: 'sprint', label: 'Tactical walk', short: 'TACT' })}
             {renderButton({ action: 'codec', label: 'Open Codec', short: 'CODEC' })}
           </div>
-          <div className="touch-movement-cluster">{movementButtons.map(renderButton)}</div>
-          <div className="touch-action-cluster">{actionButtons.map(renderButton)}</div>
+          <div className="touch-movement-cluster">{controls.movement.map(renderButton)}</div>
+          <div className="touch-action-cluster">{controls.actions.map(renderButton)}</div>
           <div className="touch-system-cluster">
             {renderButton({ action: 'cancel', label: 'Cancel or abort', short: 'BACK' })}
             {renderButton({ action: 'confirm', label: 'Confirm or restart', short: 'OK' })}

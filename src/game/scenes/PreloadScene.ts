@@ -466,8 +466,14 @@ export class PreloadScene extends Phaser.Scene {
     const requestedStartScene = window.localStorage.getItem('shadow-codec-phaser-start-scene');
     const storedMissionId = window.localStorage.getItem(getStorageKey('sideops-active-mission-id'))
       ?? window.localStorage.getItem('sideops-active-mission-id');
-    const startScene = requestedStartScene === 'VRTrainingScene'
-      ? 'VRTrainingScene'
+    const vrStartScenes = new Set([
+      'VRTrainingScene',
+      'VRNinjaScene',
+      'VRMysteryScene',
+      'VRPhotoshootScene'
+    ]);
+    const startScene = requestedStartScene && vrStartScenes.has(requestedStartScene)
+      ? requestedStartScene
       : resolveSideOpsRuntimeScene(parseStoredSideOpsMissionId(storedMissionId));
     this.scene.start(startScene);
   }

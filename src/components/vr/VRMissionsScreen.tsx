@@ -2,7 +2,14 @@ import '../../styles/vr.css';
 import type { Game } from 'phaser';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import vrMissionsJson from '../../data/vrMissions.json';
-import type { VrMissionCategory, VrMissionDefinition, VrMissionRecord, VrRunStats } from '../../types/vr.types';
+import vrExtrasJson from '../../data/vrExtras.json';
+import type {
+  Mgs1VrPhotoshootExtra,
+  VrMissionCategory,
+  VrMissionDefinition,
+  VrMissionRecord,
+  VrRunStats
+} from '../../types/vr.types';
 import {
   createEmptyVrStats,
   createVrRecord,
@@ -14,22 +21,41 @@ import {
   saveVrProgress
 } from '../../systems/vrStorage';
 import { recordCampaignVrResult } from '../../systems/campaignStorage';
-import { GAME_EVENT, onGameEvent, type VrRunGamePayload } from '../../game/core/GameEvents';
-import { VR_ACTIVE_MISSION_KEY } from '../../game/core/vrConstants';
+import {
+  deleteMgs1VrPhotoshootPhoto,
+  listMgs1VrPhotoshootAlbum,
+  type Mgs1VrPhotoshootRecord
+} from '../../systems/mgs1VrPhotoshootStorage';
+import {
+  GAME_EVENT,
+  onGameEvent,
+  type VrPhotoCapturedPayload,
+  type VrPhotoshootStatePayload,
+  type VrRunGamePayload
+} from '../../game/core/GameEvents';
+import type { GameStartScene } from '../../game/core/GameConfig';
+import { VR_ACTIVE_EXTRA_KEY, VR_ACTIVE_MISSION_KEY } from '../../game/core/vrConstants';
 import { Panel } from '../common/Panel';
 import { StatusBadge } from '../common/StatusBadge';
 import { TouchControlOverlay } from '../common/TouchControlOverlay';
 import type { UserSettings } from '../../types/theme.types';
 
 const vrMissions = vrMissionsJson as VrMissionDefinition[];
-const categories: Array<{ id: VrMissionCategory | 'all'; label: string }> = [
+const vrExtras = vrExtrasJson as Mgs1VrPhotoshootExtra[];
+type VrLibraryFilter = VrMissionCategory | 'all' | 'extra';
+type VrPlayableMode = 'mission' | 'photoshoot';
+
+const categories: Array<{ id: VrLibraryFilter; label: string }> = [
   { id: 'all', label: 'All' },
   { id: 'time_attack', label: 'Time Attack' },
   { id: 'no_alert', label: 'No Alert' },
   { id: 'weapon_training', label: 'Weapon' },
   { id: 'cqc', label: 'CQC' },
   { id: 'surveillance', label: 'Surveillance' },
-  { id: 'boss_challenge', label: 'Boss' }
+  { id: 'boss_challenge', label: 'Boss' },
+  { id: 'special_ninja', label: 'Ninja' },
+  { id: 'special_mystery', label: 'Mystery' },
+  { id: 'extra', label: 'Extra' }
 ];
 
 const categoryLabels: Record<VrMissionCategory, string> = {
@@ -38,7 +64,9 @@ const categoryLabels: Record<VrMissionCategory, string> = {
   weapon_training: 'Weapon Training',
   cqc: 'CQC',
   surveillance: 'Surveillance',
-  boss_challenge: 'Boss Challenge'
+  boss_challenge: 'Boss Challenge',
+  special_ninja: 'Ninja',
+  special_mystery: 'Mystery'
 };
 
 const categoryTone: Record<VrMissionCategory, 'success' | 'warning' | 'danger' | 'neutral'> = {
@@ -47,8 +75,17 @@ const categoryTone: Record<VrMissionCategory, 'success' | 'warning' | 'danger' |
   weapon_training: 'neutral',
   cqc: 'success',
   surveillance: 'warning',
-  boss_challenge: 'danger'
+  boss_challenge: 'danger',
+  special_ninja: 'danger',
+  special_mystery: 'warning'
 };
+
+function resolvePlayableScene(mode: VrPlayableMode, mission: VrMissionDefinition): GameStartScene {
+  if (mode === 'photoshoot') return 'VRPhotoshootScene';
+  if (mission.category === 'special_ninja') return 'VRNinjaScene';
+  if (mission.category === 'special_mystery') return 'VRMysteryScene';
+  return 'VRTrainingScene';
+}
 
 function formatDuration(totalSeconds: number): string {
   const seconds = Math.max(0, Math.floor(totalSeconds));
@@ -66,6 +103,7 @@ function getRequirementRows(mission: VrMissionDefinition): Array<[string, string
   const rows: Array<[string, string]> = [];
   if (req.targetTimeSeconds !== undefined) rows.push(['Target time', formatDuration(req.targetTimeSeconds)]);
   if (req.maxAlerts !== undefined) rows.push(['Max alerts', String(req.maxAlerts)]);
+  if (req.minKills !== undefined) rows.push(['Min eliminations', String(req.minKills)]);
   if (req.maxKills !== undefined) rows.push(['Max kills', String(req.maxKills)]);
   if (req.maxDamage !== undefined) rows.push(['Max damage', String(req.maxDamage)]);
   if (req.maxRations !== undefined) rows.push(['Max rations', String(req.maxRations)]);
@@ -92,7 +130,12 @@ export function VRMissionsScreen({ settings }: VRMissionsScreenProps) {
   const controlBindings = settings.keyboardBindings;
   const [progress, setProgress] = useState(() => loadVrProgress());
   const [selectedMissionId, setSelectedMissionId] = useState(() => progress.activeMissionId ?? vrMissions[0]?.id ?? '');
-  const [selectedCategory, setSelectedCategory] = useState<VrMissionCategory | 'all'>('all');
+  const [selectedCategory, setSelectedCategory] = useState<VrLibraryFilter>('all');
+  const [selectedExtraId, setSelectedExtraId] = useState(() => vrExtras[0]?.id ?? '');
+  const [playableMode, setPlayableMode] = useState<VrPlayableMode>('mission');
+  const [photoAlbum, setPhotoAlbum] = useState<Mgs1VrPhotoshootRecord[]>([]);
+  const [albumBackend, setAlbumBackend] = useState<'indexeddb' | 'fallback'>('indexeddb');
+  const [photoshootState, setPhotoshootState] = useState<VrPhotoshootStatePayload | null>(null);
   const [search, setSearch] = useState('');
   const [runStats, setRunStats] = useState<VrRunStats>(() => createEmptyVrStats());
   const [isRunning, setIsRunning] = useState(false);
@@ -106,6 +149,7 @@ export function VRMissionsScreen({ settings }: VRMissionsScreenProps) {
   const [engineError, setEngineError] = useState('');
 
   const selectedMission = vrMissions.find((mission) => mission.id === selectedMissionId) ?? vrMissions[0];
+  const selectedExtra = vrExtras.find((extra) => extra.id === selectedExtraId) ?? vrExtras[0];
   const evaluation = useMemo(
     () => evaluateVrRun(selectedMission, runStats, progress.unlockedTapeIds, progress.unlockedBadges),
     [progress.unlockedBadges, progress.unlockedTapeIds, runStats, selectedMission]
@@ -116,6 +160,7 @@ export function VRMissionsScreen({ settings }: VRMissionsScreenProps) {
 
   const filteredMissions = useMemo(() => {
     const normalizedSearch = search.trim().toLowerCase();
+    if (selectedCategory === 'extra') return [];
     return vrMissions.filter((mission) => {
       if (selectedCategory !== 'all' && mission.category !== selectedCategory) return false;
       if (!normalizedSearch) return true;
@@ -125,6 +170,26 @@ export function VRMissionsScreen({ settings }: VRMissionsScreenProps) {
         .includes(normalizedSearch);
     });
   }, [search, selectedCategory]);
+
+  const filteredExtras = useMemo(() => {
+    if (selectedCategory !== 'extra') return [];
+    const normalizedSearch = search.trim().toLowerCase();
+    return vrExtras.filter((extra) => !normalizedSearch || [extra.title, extra.modelName, extra.objective, extra.unlockCondition]
+      .join(' ')
+      .toLowerCase()
+      .includes(normalizedSearch));
+  }, [search, selectedCategory]);
+
+  async function refreshPhotoAlbum(): Promise<void> {
+    const result = await listMgs1VrPhotoshootAlbum();
+    setPhotoAlbum(result.value);
+    setAlbumBackend(result.backend);
+    if (result.issues.length) setSystemMessage(result.issues[0].message.toUpperCase());
+  }
+
+  useEffect(() => {
+    void refreshPhotoAlbum();
+  }, []);
 
   useEffect(() => {
     if (!isRunning || playableActive) return;
@@ -170,6 +235,26 @@ export function VRMissionsScreen({ settings }: VRMissionsScreenProps) {
   }, [progress, selectedMission]);
 
   useEffect(() => {
+    const offState = onGameEvent<VrPhotoshootStatePayload>(GAME_EVENT.VR_PHOTOSHOOT_STATE, (payload) => {
+      if (payload.extraId !== selectedExtra.id) return;
+      setPhotoshootState(payload);
+      setPlayableStatus(payload.status === 'complete' ? 'clear' : payload.status);
+      setSystemMessage(payload.message.toUpperCase());
+      if (payload.status !== 'running') setIsRunning(false);
+    });
+    const offCaptured = onGameEvent<VrPhotoCapturedPayload>(GAME_EVENT.VR_PHOTO_CAPTURED, (payload) => {
+      if (payload.extraId !== selectedExtra.id) return;
+      setPhotoshootState(payload);
+      setSystemMessage(`${payload.subject.toUpperCase()} PHOTO SAVED // ${payload.score} PTS // ${payload.storageBackend.toUpperCase()}`);
+      void refreshPhotoAlbum();
+    });
+    return () => {
+      offState();
+      offCaptured();
+    };
+  }, [selectedExtra.id]);
+
+  useEffect(() => {
     let disposed = false;
 
     if (!playableActive) {
@@ -180,7 +265,8 @@ export function VRMissionsScreen({ settings }: VRMissionsScreenProps) {
       return;
     }
 
-    window.localStorage.setItem(VR_ACTIVE_MISSION_KEY, selectedMission.id);
+    if (playableMode === 'photoshoot') window.localStorage.setItem(VR_ACTIVE_EXTRA_KEY, selectedExtra.id);
+    else window.localStorage.setItem(VR_ACTIVE_MISSION_KEY, selectedMission.id);
     setEngineStatus('loading');
     setEngineError('');
 
@@ -192,7 +278,7 @@ export function VRMissionsScreen({ settings }: VRMissionsScreenProps) {
         ]);
         if (disposed) return;
         vrGameRef.current?.destroy(true);
-        const config = await createGameConfig(Phaser, 'vr-phaser-root', 'VRTrainingScene');
+        const config = await createGameConfig(Phaser, 'vr-phaser-root', resolvePlayableScene(playableMode, selectedMission));
         if (disposed) return;
         vrGameRef.current = new Phaser.Game(config);
         setEngineStatus('ready');
@@ -214,7 +300,7 @@ export function VRMissionsScreen({ settings }: VRMissionsScreenProps) {
       vrGameRef.current?.destroy(true);
       vrGameRef.current = null;
     };
-  }, [playableActive, playableRunId, selectedMission.id]);
+  }, [playableActive, playableRunId, playableMode, selectedExtra.id, selectedMission.id]);
 
   function persistProgress(nextProgress: typeof progress, message?: string) {
     setProgress(nextProgress);
@@ -223,6 +309,7 @@ export function VRMissionsScreen({ settings }: VRMissionsScreenProps) {
   }
 
   function selectMission(missionId: string) {
+    setPlayableMode('mission');
     setSelectedMissionId(missionId);
     setIsRunning(false);
     setPlayableActive(false);
@@ -231,6 +318,33 @@ export function VRMissionsScreen({ settings }: VRMissionsScreenProps) {
     setLastRecord(null);
     const mission = vrMissions.find((item) => item.id === missionId);
     persistProgress({ ...progress, activeMissionId: missionId }, mission ? `LOADED: ${mission.title.toUpperCase()}` : 'MISSION LOADED');
+  }
+
+  function selectExtra(extraId: string) {
+    const extra = vrExtras.find((item) => item.id === extraId);
+    setSelectedExtraId(extraId);
+    setPlayableMode('photoshoot');
+    setPlayableActive(false);
+    setIsRunning(false);
+    setPlayableStatus('standby');
+    setPhotoshootState(null);
+    if (extra) {
+      window.localStorage.setItem(VR_ACTIVE_EXTRA_KEY, extra.id);
+      setSystemMessage(`EXTRA LOADED: ${extra.modelName.toUpperCase()}`);
+    }
+  }
+
+  function selectLibraryCategory(category: VrLibraryFilter) {
+    setSelectedCategory(category);
+    setPlayableActive(false);
+    setIsRunning(false);
+    setPlayableStatus('standby');
+    if (category === 'extra') {
+      setPlayableMode('photoshoot');
+      if (selectedExtra) window.localStorage.setItem(VR_ACTIVE_EXTRA_KEY, selectedExtra.id);
+    } else {
+      setPlayableMode('mission');
+    }
   }
 
   function startRun() {
@@ -272,32 +386,46 @@ export function VRMissionsScreen({ settings }: VRMissionsScreenProps) {
 
 
   function launchPlayableRun() {
-    window.localStorage.setItem(VR_ACTIVE_MISSION_KEY, selectedMission.id);
+    if (playableMode === 'photoshoot') window.localStorage.setItem(VR_ACTIVE_EXTRA_KEY, selectedExtra.id);
+    else window.localStorage.setItem(VR_ACTIVE_MISSION_KEY, selectedMission.id);
     setRunStats(createEmptyVrStats());
     setLastRecord(null);
+    setPhotoshootState(null);
     setIsRunning(true);
     setPlayableStatus('running');
     setPlayableActive(true);
     setPlayableRunId((current) => current + 1);
-    setSystemMessage(`PLAYABLE VR BRIDGE: ${selectedMission.title.toUpperCase()}`);
+    setSystemMessage(playableMode === 'photoshoot'
+      ? `PHOTOSHOOT: ${selectedExtra.modelName.toUpperCase()}`
+      : `PLAYABLE VR BRIDGE: ${selectedMission.title.toUpperCase()}`);
   }
 
   function restartPlayableRun() {
-    window.localStorage.setItem(VR_ACTIVE_MISSION_KEY, selectedMission.id);
+    if (playableMode === 'photoshoot') window.localStorage.setItem(VR_ACTIVE_EXTRA_KEY, selectedExtra.id);
+    else window.localStorage.setItem(VR_ACTIVE_MISSION_KEY, selectedMission.id);
     setRunStats(createEmptyVrStats());
     setLastRecord(null);
     setIsRunning(true);
     setPlayableStatus('running');
     setPlayableActive(true);
     setPlayableRunId((current) => current + 1);
-    setSystemMessage(`PLAYABLE VR RESTART: ${selectedMission.title.toUpperCase()}`);
+    setSystemMessage(playableMode === 'photoshoot'
+      ? `PHOTOSHOOT RESTART: ${selectedExtra.modelName.toUpperCase()}`
+      : `PLAYABLE VR RESTART: ${selectedMission.title.toUpperCase()}`);
   }
 
   function stopPlayableRun() {
     setPlayableActive(false);
     setIsRunning(false);
     setPlayableStatus('aborted');
-    setSystemMessage('PLAYABLE VR BRIDGE STOPPED');
+    setSystemMessage(playableMode === 'photoshoot' ? 'PHOTOSHOOT STOPPED' : 'PLAYABLE VR BRIDGE STOPPED');
+  }
+
+  async function deleteAlbumPhoto(photoId: string): Promise<void> {
+    const result = await deleteMgs1VrPhotoshootPhoto(photoId);
+    setAlbumBackend(result.backend);
+    setSystemMessage(result.value ? 'ALBUM PHOTO DELETED' : 'ALBUM PHOTO NOT FOUND');
+    await refreshPhotoAlbum();
   }
 
   function quickPerfectRun() {
@@ -307,7 +435,7 @@ export function VRMissionsScreen({ settings }: VRMissionsScreenProps) {
       alerts: 0,
       shotsFired: selectedMission.requirements.minShotsFired ?? 8,
       hits: selectedMission.requirements.minShotsFired ?? 8,
-      kills: 0,
+      kills: selectedMission.requirements.minKills ?? 0,
       neutralizations: selectedMission.requirements.minNeutralizations ?? 2,
       damageTaken: 0,
       rationsUsed: 0,
@@ -324,6 +452,14 @@ export function VRMissionsScreen({ settings }: VRMissionsScreenProps) {
   const selectedMissionIndex = vrMissions.findIndex((mission) => mission.id === selectedMission.id) + 1;
   const requirements = getRequirementRows(selectedMission);
   const unlockPreview = selectedMission.rewards.map((reward) => reward.tapeId ? `${reward.tapeId} @ ${reward.unlockRank}` : `${reward.badge} @ ${reward.unlockRank}`);
+  const extraSelected = selectedCategory === 'extra';
+  const touchContext = playableMode === 'photoshoot'
+    ? 'vr-photoshoot'
+    : selectedMission.category === 'special_ninja'
+      ? 'vr-ninja'
+      : selectedMission.category === 'special_mystery'
+        ? 'vr-mystery'
+        : 'vr';
 
   return (
     <section className="vr-missions-grid">
@@ -342,13 +478,17 @@ export function VRMissionsScreen({ settings }: VRMissionsScreenProps) {
 
         <div className="vr-category-strip">
           {categories.map((category) => {
-            const count = category.id === 'all' ? vrMissions.length : vrMissions.filter((mission) => mission.category === category.id).length;
+            const count = category.id === 'all'
+              ? vrMissions.length
+              : category.id === 'extra'
+                ? vrExtras.length
+                : vrMissions.filter((mission) => mission.category === category.id).length;
             return (
               <button
                 key={category.id}
                 className={`vr-chip ${selectedCategory === category.id ? 'active' : ''}`}
                 type="button"
-                onClick={() => setSelectedCategory(category.id)}
+                onClick={() => selectLibraryCategory(category.id)}
               >
                 {category.label} <span>{count}</span>
               </button>
@@ -378,10 +518,62 @@ export function VRMissionsScreen({ settings }: VRMissionsScreenProps) {
               </button>
             );
           })}
+          {filteredExtras.map((extra) => (
+            <button
+              key={extra.id}
+              className={`vr-mission-row ${selectedExtra.id === extra.id ? 'active' : ''}`}
+              type="button"
+              onClick={() => selectExtra(extra.id)}
+            >
+              <span className="vr-row-main">
+                <strong>{extra.title}</strong>
+                <small>EXTRA / PHOTOGRAPHING</small>
+              </span>
+              <span className="vr-row-meta">
+                <span>{extra.modelName}</span>
+                <span>ALBUM</span>
+                <span>{photoAlbum.filter((photo) => photo.subject === (extra.modelId === 'naomi_hunter' ? 'naomi' : 'mei_ling')).length} PHOTOS</span>
+              </span>
+            </button>
+          ))}
         </div>
       </Panel>
 
       <div className="vr-main-column">
+        {extraSelected ? (
+          <Panel className="vr-briefing-card vr-photoshoot-briefing">
+            <div className="vr-briefing-header">
+              <div>
+                <span className="vr-kicker">MGS1 VR MISSIONS // EXTRA // PHOTOGRAPHING</span>
+                <h2>{selectedExtra.title}</h2>
+                <p>{selectedExtra.objective}</p>
+              </div>
+              <div className="vr-badges">
+                <StatusBadge label="EXTRA / NOT A STAGE" tone="neutral" />
+                <StatusBadge label={albumBackend.toUpperCase()} tone={albumBackend === 'indexeddb' ? 'success' : 'warning'} />
+                <StatusBadge label={isRunning ? 'RUNNING' : 'STANDBY'} tone={isRunning ? 'success' : 'neutral'} />
+              </div>
+            </div>
+            <div className="vr-photoshoot-model-card">
+              <img
+                src={selectedExtra.modelId === 'naomi_hunter'
+                  ? '/vr/mgs1/gameplay/characters/naomi-photoshoot-vr.png'
+                  : '/vr/mgs1/gameplay/characters/mei-ling-photoshoot-vr.png'}
+                alt={`${selectedExtra.modelName} VR Photoshoot sprite`}
+              />
+              <div>
+                <strong>{selectedExtra.modelName}</strong>
+                <span>Canon unlock: {selectedExtra.unlockCondition}</span>
+                <span>Distance and session time increase with rank. This local preview remains launchable because campaign clear-data parity is not yet available.</span>
+              </div>
+            </div>
+            <div className="vr-mission-matrix">
+              <div><strong>Camera</strong><ul><li><span>Move viewfinder</span></li><li><span>Rank-limited zoom</span></li><li><span>Shutter score</span></li></ul></div>
+              <div><strong>Album</strong><ul><li><span>IndexedDB first</span></li><li><span>WebP thumbnails</span></li><li><span>40-photo limit</span></li></ul></div>
+              <div><strong>Session</strong><ul><li><span>{photoshootState?.photosTaken ?? 0} photos this run</span></li><li><span>Best {photoshootState?.bestScore ?? 0} pts</span></li><li><span>{photoAlbum.length} stored</span></li></ul></div>
+            </div>
+          </Panel>
+        ) : (
         <Panel className={`vr-briefing-card vr-pack-${selectedMission.visualPack}`}>
           <div className="vr-briefing-header">
             <div>
@@ -422,25 +614,28 @@ export function VRMissionsScreen({ settings }: VRMissionsScreenProps) {
             </div>
           </div>
         </Panel>
+        )}
 
         <Panel className="vr-phaser-panel" title="Playable VR Phaser Bridge">
           <div className="vr-bridge-header">
             <div>
-              <strong>Live scene bridge</strong>
-              <span>Runs the selected VR mission as a playable Phaser arena, then sends the real stats back to the VR evaluation system.</span>
+              <strong>{extraSelected ? 'Live Photoshoot runtime' : 'Live scene bridge'}</strong>
+              <span>{extraSelected
+                ? 'Runs the canonical-style camera session and saves real WebP captures to the local album.'
+                : 'Runs the selected VR mission as a playable Phaser arena, then sends the real stats back to the VR evaluation system.'}</span>
             </div>
             <div className="vr-bridge-actions">
               <StatusBadge label={playableStatus.toUpperCase()} tone={playableStatus === 'clear' ? 'success' : playableStatus === 'failed' || playableStatus === 'aborted' ? 'danger' : playableStatus === 'running' ? 'success' : 'neutral'} />
-              <button className="primary-action" type="button" onClick={launchPlayableRun}>Launch Playable VR</button>
+              <button className="primary-action" type="button" onClick={launchPlayableRun}>{extraSelected ? 'Launch Photoshoot' : 'Launch Playable VR'}</button>
               <button type="button" onClick={restartPlayableRun} disabled={!playableActive}>Restart Scene</button>
               <button type="button" onClick={stopPlayableRun} disabled={!playableActive}>Stop Scene</button>
             </div>
           </div>
           <div className="vr-engine-shell">
             <div id="vr-phaser-root" className={`vr-phaser-root touch-game-surface ${playableActive ? 'active' : ''}`} />
-            {playableActive && <TouchControlOverlay settings={settings} context="vr" />}
+            {playableActive && <TouchControlOverlay settings={settings} context={touchContext} />}
             {!playableActive && engineStatus !== 'error' && (
-              <span className="vr-engine-placeholder">Select a VR mission, then launch the playable bridge.</span>
+              <span className="vr-engine-placeholder">{extraSelected ? 'Select Naomi or Mei Ling, then launch Photoshoot.' : 'Select a VR mission, then launch the playable bridge.'}</span>
             )}
             {(engineStatus === 'loading' || engineStatus === 'error') && (
               <div className={`game-engine-status ${engineStatus}`} role={engineStatus === 'error' ? 'alert' : 'status'}>
@@ -450,14 +645,25 @@ export function VRMissionsScreen({ settings }: VRMissionsScreenProps) {
             )}
           </div>
           <p className="vr-bridge-help">
-            Controls: arrows/{controlBindings.moveLeft}+{controlBindings.moveRight} move, {controlBindings.jump}/up jump,
-            {controlBindings.crouch}/down crouch, {controlBindings.fire} shoot, {controlBindings.cqc} CQC,
-            {controlBindings.chaff} chaff, {controlBindings.ration} ration, {controlBindings.confirm} evaluate,
-            {controlBindings.cancel} abort. Standard gamepad is supported.
+            {extraSelected ? (
+              <>Controls: arrows frame, {controlBindings.fire} shutter, {controlBindings.chaff}/{controlBindings.ration} zoom -/+,
+                {controlBindings.confirm} next pose, {controlBindings.cancel} exit. Standard gamepad and touch are supported.</>
+            ) : selectedMission.category === 'special_ninja' ? (
+              <>Controls: move/jump, {controlBindings.fire} slash, hold {controlBindings.cqc} cross-slash,
+                {controlBindings.chaff} Body Disruption, hold {controlBindings.ration} stealth.</>
+            ) : selectedMission.category === 'special_mystery' ? (
+              <>Controls: move/crawl, {controlBindings.fire} inspect, {controlBindings.cqc} grab/release,
+                {controlBindings.confirm} deliver suspect, {controlBindings.cancel} abort.</>
+            ) : (
+              <>Controls: arrows/{controlBindings.moveLeft}+{controlBindings.moveRight} move, {controlBindings.jump}/up jump,
+                {controlBindings.crouch}/down crouch, {controlBindings.fire} shoot, {controlBindings.cqc} CQC,
+                {controlBindings.chaff} chaff, {controlBindings.ration} ration, {controlBindings.confirm} evaluate,
+                {controlBindings.cancel} abort. Standard gamepad is supported.</>
+            )}
           </p>
         </Panel>
 
-        <Panel title="Live VR Run / Training Board">
+        {!extraSelected && <Panel title="Live VR Run / Training Board">
           <div className="vr-run-hud">
             <StatusBadge label={evaluation.success ? 'OBJECTIVES VALID' : 'OBJECTIVES INCOMPLETE'} tone={evaluation.success ? 'success' : 'warning'} />
             <div><span>Time</span><strong>{formatDuration(runStats.timeSeconds)}</strong></div>
@@ -508,7 +714,7 @@ export function VRMissionsScreen({ settings }: VRMissionsScreenProps) {
             )}
             {unlockPreview.length > 0 && <em>Rewards: {unlockPreview.join(' // ')}</em>}
           </div>
-        </Panel>
+        </Panel>}
       </div>
 
       <div className="vr-side-column">
@@ -522,6 +728,7 @@ export function VRMissionsScreen({ settings }: VRMissionsScreenProps) {
           </ul>
         </Panel>
 
+        {!extraSelected && <>
         <Panel title="Best Selected Run">
           {bestRecord ? (
             <div className="vr-record-card success">
@@ -545,6 +752,26 @@ export function VRMissionsScreen({ settings }: VRMissionsScreenProps) {
             <p className="vr-empty">No run completed in this session.</p>
           )}
         </Panel>
+        </>}
+
+        {extraSelected && (
+          <Panel title={`Photoshoot Album // ${photoAlbum.length}/40`}>
+            <div className="vr-photo-album" data-album-backend={albumBackend}>
+              {photoAlbum.length === 0 ? (
+                <p className="vr-empty">No photographs saved yet. Center the model and release the shutter.</p>
+              ) : photoAlbum.map((photo) => (
+                <article key={photo.id} className="vr-photo-card">
+                  {photo.thumbnail ? <img src={photo.thumbnail} alt={`${photo.subject} Photoshoot capture`} /> : <span className="vr-photo-missing">THUMBNAIL UNAVAILABLE</span>}
+                  <div>
+                    <strong>{photo.subject === 'naomi' ? 'NAOMI HUNTER' : 'MEI LING'} // {photo.score} PTS</strong>
+                    <span>{new Date(photo.capturedAt).toLocaleString()} // ZOOM {photo.zoom.toFixed(2)}x</span>
+                    <button type="button" onClick={() => void deleteAlbumPhoto(photo.id)}>Delete</button>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </Panel>
+        )}
 
         <Panel title="Unlocked VR Rewards">
           <div className="vr-reward-list">

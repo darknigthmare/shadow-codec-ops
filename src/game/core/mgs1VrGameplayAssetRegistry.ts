@@ -1,4 +1,4 @@
-export type Mgs1VrGameplayAssetCategory = 'actor' | 'static-character' | 'weapon' | 'projectile' | 'vfx';
+export type Mgs1VrGameplayAssetCategory = 'actor' | 'static-character' | 'weapon' | 'projectile' | 'special-prop' | 'vfx';
 
 export type Mgs1VrActorAnimationProfile = 'snake' | 'genome' | 'ninja' | 'genola';
 
@@ -128,6 +128,51 @@ export const MGS1_VR_PROJECTILE_ASSETS = [
   { id: 'mgs1_vr_projectile_nikita_missile', category: 'projectile', textureKey: 'mgs1VrProjectileNikitaMissile', path: '/vr/mgs1/gameplay/projectiles/nikita-missile.png', width: 28, height: 10, loader: 'image' }
 ] as const satisfies readonly Mgs1VrImageAsset[];
 
+/** Evidence and identity clues used across the ten Mystery investigations. */
+export const MGS1_VR_MYSTERY_PROP_ASSETS = [
+  { id: 'mgs1_vr_mystery_broken_camera', category: 'special-prop', textureKey: 'mgs1VrMysteryBrokenCamera', path: '/vr/mgs1/gameplay/special/mystery/broken-camera.png', width: 52, height: 36, loader: 'image' },
+  { id: 'mgs1_vr_mystery_black_balaclava', category: 'special-prop', textureKey: 'mgs1VrMysteryBlackBalaclava', path: '/vr/mgs1/gameplay/special/mystery/black-balaclava.png', width: 32, height: 36, loader: 'image' },
+  { id: 'mgs1_vr_mystery_pink_sock', category: 'special-prop', textureKey: 'mgs1VrMysteryPinkSock', path: '/vr/mgs1/gameplay/special/mystery/pink-sock.png', width: 28, height: 36, loader: 'image' },
+  { id: 'mgs1_vr_mystery_blue_popsicle', category: 'special-prop', textureKey: 'mgs1VrMysteryBluePopsicle', path: '/vr/mgs1/gameplay/special/mystery/blue-popsicle.png', width: 18, height: 36, loader: 'image' },
+  { id: 'mgs1_vr_mystery_round_glasses', category: 'special-prop', textureKey: 'mgs1VrMysteryRoundGlasses', path: '/vr/mgs1/gameplay/special/mystery/round-glasses.png', width: 48, height: 24, loader: 'image' },
+  { id: 'mgs1_vr_mystery_blond_wig', category: 'special-prop', textureKey: 'mgs1VrMysteryBlondWig', path: '/vr/mgs1/gameplay/special/mystery/blond-wig.png', width: 44, height: 36, loader: 'image' },
+  { id: 'mgs1_vr_mystery_security_panel', category: 'special-prop', textureKey: 'mgs1VrMysterySecurityPanel', path: '/vr/mgs1/gameplay/special/mystery/security-panel.png', width: 56, height: 32, loader: 'image' },
+  { id: 'mgs1_vr_mystery_footprints', category: 'special-prop', textureKey: 'mgs1VrMysteryFootprints', path: '/vr/mgs1/gameplay/special/mystery/footprints.png', width: 56, height: 40, loader: 'image' },
+  { id: 'mgs1_vr_mystery_broken_vase', category: 'special-prop', textureKey: 'mgs1VrMysteryBrokenVase', path: '/vr/mgs1/gameplay/special/mystery/broken-vase.png', width: 48, height: 40, loader: 'image' },
+  { id: 'mgs1_vr_mystery_broken_chair', category: 'special-prop', textureKey: 'mgs1VrMysteryBrokenChair', path: '/vr/mgs1/gameplay/special/mystery/broken-chair.png', width: 48, height: 48, loader: 'image' },
+  { id: 'mgs1_vr_mystery_rifle', category: 'special-prop', textureKey: 'mgs1VrMysteryRifle', path: '/vr/mgs1/gameplay/special/mystery/rifle.png', width: 56, height: 32, loader: 'image' },
+  { id: 'mgs1_vr_mystery_grandfather_clock', category: 'special-prop', textureKey: 'mgs1VrMysteryGrandfatherClock', path: '/vr/mgs1/gameplay/special/mystery/grandfather-clock.png', width: 36, height: 64, loader: 'image' },
+  { id: 'mgs1_vr_mystery_broken_monitor', category: 'special-prop', textureKey: 'mgs1VrMysteryBrokenMonitor', path: '/vr/mgs1/gameplay/special/mystery/broken-monitor.png', width: 48, height: 40, loader: 'image' },
+  { id: 'mgs1_vr_mystery_ketchup_bottle', category: 'special-prop', textureKey: 'mgs1VrMysteryKetchupBottle', path: '/vr/mgs1/gameplay/special/mystery/ketchup-bottle.png', width: 20, height: 40, loader: 'image' },
+  { id: 'mgs1_vr_mystery_key', category: 'special-prop', textureKey: 'mgs1VrMysteryKey', path: '/vr/mgs1/gameplay/special/mystery/key.png', width: 40, height: 24, loader: 'image' },
+  { id: 'mgs1_vr_mystery_portrait_mask', category: 'special-prop', textureKey: 'mgs1VrMysteryPortraitMask', path: '/vr/mgs1/gameplay/special/mystery/portrait-mask.png', width: 48, height: 40, loader: 'image' }
+] as const satisfies readonly Mgs1VrImageAsset[];
+
+/** Camera, framing and studio props for Naomi and Mei Ling Photoshoot stages. */
+export const MGS1_VR_PHOTOSHOOT_PROP_ASSETS = [
+  { id: 'mgs1_vr_photoshoot_camera', category: 'special-prop', textureKey: 'mgs1VrPhotoshootCamera', path: '/vr/mgs1/gameplay/special/photoshoot/camera.png', width: 56, height: 48, loader: 'image' },
+  { id: 'mgs1_vr_photoshoot_viewfinder', category: 'special-prop', textureKey: 'mgs1VrPhotoshootViewfinder', path: '/vr/mgs1/gameplay/special/photoshoot/viewfinder.png', width: 128, height: 80, loader: 'image' },
+  { id: 'mgs1_vr_photoshoot_shutter_flash', category: 'special-prop', textureKey: 'mgs1VrPhotoshootShutterFlash', path: '/vr/mgs1/gameplay/special/photoshoot/shutter-flash.png', width: 64, height: 64, loader: 'image' },
+  { id: 'mgs1_vr_photoshoot_photo_album', category: 'special-prop', textureKey: 'mgs1VrPhotoshootPhotoAlbum', path: '/vr/mgs1/gameplay/special/photoshoot/photo-album.png', width: 48, height: 56, loader: 'image' },
+  { id: 'mgs1_vr_photoshoot_backdrop', category: 'special-prop', textureKey: 'mgs1VrPhotoshootBackdrop', path: '/vr/mgs1/gameplay/special/photoshoot/backdrop.png', width: 96, height: 72, loader: 'image' },
+  { id: 'mgs1_vr_photoshoot_spotlight', category: 'special-prop', textureKey: 'mgs1VrPhotoshootSpotlight', path: '/vr/mgs1/gameplay/special/photoshoot/spotlight.png', width: 48, height: 56, loader: 'image' },
+  { id: 'mgs1_vr_photoshoot_film_cartridge', category: 'special-prop', textureKey: 'mgs1VrPhotoshootFilmCartridge', path: '/vr/mgs1/gameplay/special/photoshoot/film-cartridge.png', width: 48, height: 32, loader: 'image' },
+  { id: 'mgs1_vr_photoshoot_pose_marker', category: 'special-prop', textureKey: 'mgs1VrPhotoshootPoseMarker', path: '/vr/mgs1/gameplay/special/photoshoot/pose-marker.png', width: 64, height: 64, loader: 'image' }
+] as const satisfies readonly Mgs1VrImageAsset[];
+
+/** Intact, severed and fragment states for the Ninja sword-cut challenge. */
+export const MGS1_VR_NINJA_PROP_ASSETS = [
+  { id: 'mgs1_vr_ninja_pole_intact', category: 'special-prop', textureKey: 'mgs1VrNinjaPoleIntact', path: '/vr/mgs1/gameplay/special/ninja/pole-intact.png', width: 32, height: 96, loader: 'image' },
+  { id: 'mgs1_vr_ninja_pole_cut', category: 'special-prop', textureKey: 'mgs1VrNinjaPoleCut', path: '/vr/mgs1/gameplay/special/ninja/pole-cut.png', width: 48, height: 96, loader: 'image' },
+  { id: 'mgs1_vr_ninja_pole_debris', category: 'special-prop', textureKey: 'mgs1VrNinjaPoleDebris', path: '/vr/mgs1/gameplay/special/ninja/pole-debris.png', width: 56, height: 24, loader: 'image' }
+] as const satisfies readonly Mgs1VrImageAsset[];
+
+export const MGS1_VR_SPECIAL_PROP_ASSETS = [
+  ...MGS1_VR_MYSTERY_PROP_ASSETS,
+  ...MGS1_VR_PHOTOSHOOT_PROP_ASSETS,
+  ...MGS1_VR_NINJA_PROP_ASSETS
+] as const satisfies readonly Mgs1VrImageAsset[];
+
 export const MGS1_VR_VFX_ASSETS = [
   { id: 'mgs1_vr_vfx_muzzle_flash', category: 'vfx', textureKey: 'mgs1VrVfxMuzzleFlash', path: '/vr/mgs1/gameplay/vfx/muzzle-flash.png', width: 64, height: 16, loader: 'spritesheet', frameWidth: 16, frameHeight: 16, frameCount: 4, clip: { start: 0, end: 3, frameRate: 16, repeat: 0 } },
   { id: 'mgs1_vr_vfx_bullet_impact', category: 'vfx', textureKey: 'mgs1VrVfxBulletImpact', path: '/vr/mgs1/gameplay/vfx/bullet-impact.png', width: 64, height: 16, loader: 'spritesheet', frameWidth: 16, frameHeight: 16, frameCount: 4, clip: { start: 0, end: 3, frameRate: 14, repeat: 0 } },
@@ -152,6 +197,7 @@ export const MGS1_VR_GAMEPLAY_ALL_ASSETS = [
   ...MGS1_VR_STATIC_CHARACTER_ASSETS,
   ...MGS1_VR_WEAPON_ASSETS,
   ...MGS1_VR_PROJECTILE_ASSETS,
+  ...MGS1_VR_SPECIAL_PROP_ASSETS,
   ...MGS1_VR_VFX_ASSETS
 ] as const satisfies readonly Mgs1VrGameplayAsset[];
 

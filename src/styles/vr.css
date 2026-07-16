@@ -424,3 +424,90 @@
   line-height: 1.4;
   margin: 0.75rem 0 0;
 }
+
+.vr-photoshoot-briefing {
+  background:
+    radial-gradient(circle at 70% 20%, rgba(63, 225, 255, 0.14), transparent 36%),
+    linear-gradient(145deg, rgba(4, 18, 31, 0.97), rgba(18, 7, 29, 0.96));
+}
+
+.vr-photoshoot-model-card {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.9rem;
+  border: 1px solid rgba(78, 231, 255, 0.28);
+  background: rgba(3, 12, 24, 0.72);
+}
+
+.vr-photoshoot-model-card img {
+  width: 80px;
+  height: 128px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 12px rgba(76, 240, 255, 0.42));
+}
+
+.vr-photoshoot-model-card div,
+.vr-photo-card div {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.vr-photoshoot-model-card strong {
+  color: var(--accent);
+  font-size: 1.05rem;
+}
+
+.vr-photoshoot-model-card span {
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.vr-photo-album {
+  display: grid;
+  gap: 0.75rem;
+  max-height: 620px;
+  overflow: auto;
+  padding-right: 0.25rem;
+}
+
+.vr-photo-card {
+  display: grid;
+  gap: 0.55rem;
+  padding: 0.55rem;
+  border: 1px solid rgba(88, 234, 255, 0.25);
+  background: rgba(2, 13, 25, 0.76);
+}
+
+.vr-photo-card img,
+.vr-photo-missing {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  image-rendering: pixelated;
+  border: 1px solid rgba(124, 255, 216, 0.28);
+  background: #020812;
+}
+
+.vr-photo-missing {
+  display: grid;
+  place-items: center;
+  color: var(--text-muted);
+  font-size: 0.68rem;
+}
+
+.vr-photo-card strong {
+  color: #7cffd8;
+  font-size: 0.76rem;
+}
+
+.vr-photo-card span {
+  color: var(--text-muted);
+  font-size: 0.68rem;
+}
+
+.vr-photo-card button {
+  justify-self: start;
+}

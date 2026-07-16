@@ -11,6 +11,8 @@ export const GAME_EVENT = {
   CODEC_RESUME: 'sideops:codec-resume',
   VR_HUD_UPDATE: 'vr:run-hud-update',
   VR_RUN_COMPLETE: 'vr:run-complete',
+  VR_PHOTOSHOOT_STATE: 'vr:photoshoot-state',
+  VR_PHOTO_CAPTURED: 'vr:photo-captured',
   DIRECTOR_DIRECTIVE: 'sideops:director-directive'
 } as const;
 
@@ -98,6 +100,23 @@ export interface VrRunGamePayload {
   stats: VrRunStats;
   status: 'standby' | 'running' | 'clear' | 'failed' | 'aborted';
   message: string;
+}
+
+export interface VrPhotoshootStatePayload {
+  extraId: string;
+  subject: 'naomi' | 'mei_ling';
+  status: 'running' | 'complete' | 'aborted';
+  timeRemaining: number;
+  photosTaken: number;
+  bestScore: number;
+  zoom: number;
+  message: string;
+}
+
+export interface VrPhotoCapturedPayload extends VrPhotoshootStatePayload {
+  photoId: string;
+  score: number;
+  storageBackend: 'indexeddb' | 'fallback';
 }
 
 export interface AlertEventPayload {

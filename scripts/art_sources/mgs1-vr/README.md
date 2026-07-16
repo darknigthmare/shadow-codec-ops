@@ -1,8 +1,9 @@
 # MGS1 VR art sources
 
-These nine atlases were generated with OpenAI Image Gen. The five environment
-boards become the 48 PNGs under `public/vr/mgs1/environment/`; the four gameplay
-boards become the 41 actors, weapons, projectiles and VFX under
+These eleven atlases were generated with OpenAI Image Gen. The five environment
+boards become the 48 PNGs under `public/vr/mgs1/environment/`; the six gameplay
+boards, plus three deterministic Ninja pole states derived from the modular
+pillar, become the 68 actors, weapons, projectiles, props and VFX under
 `public/vr/mgs1/gameplay/`.
 
 ## Visual references
@@ -23,6 +24,9 @@ boards become the 41 actors, weapons, projectiles and VFX under
   https://metalgear.konami.net/manual/mc1/mgs1_vr_missions/pc/en/page12.html
 - Konami historical Ninja VR reference:
   https://www.konami.com/mg/archive/integral/vr/nja.html
+- Konami historical Mystery and Photoshoot references:
+  https://www.konami.com/mg/archive/integral/vr/enquete2.html
+  https://metalgear.konami.net/manual/mc1/mgs1_vr_missions/pc/en/page11.html
 - Supplemental gameplay gallery:
   https://www.mobygames.com/game/3783/metal-gear-solid-vr-missions/screenshots/
 
@@ -49,6 +53,10 @@ boards become the 41 actors, weapons, projectiles and VFX under
   missile explosion and GOAL materialization.
 - `vr-special-vfx-openai-atlas.png`: Ninja slash/ricochet/electrical effects,
   stealth shimmer, Claymore blast, glass shatter, WALL crumble and UFO blast.
+- `vr-mystery-evidence-openai-atlas.png`: sixteen investigation clues in a
+  fixed 4x4 board, from the broken camera through the portrait and mask.
+- `vr-photoshoot-openai-atlas.png`: camera, viewfinder, shutter flash, album,
+  studio backdrop, spotlight, film cartridge and model pose marker.
 
 Transparent boards use a solid `#ff00ff` chroma background. Final runtime art
 uses binary alpha, exact registered dimensions and a limited pixel-art palette.

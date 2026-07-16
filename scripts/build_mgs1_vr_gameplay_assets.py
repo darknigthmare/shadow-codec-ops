@@ -2,7 +2,8 @@
 
 The source boards are identity/style anchors.  This builder extracts their
 magenta-keyed cells, turns the four active actors into deterministic animation
-sheets, and emits exact-size Phaser assets for weapons, projectiles and VFX.
+sheets, and emits exact-size Phaser assets for weapons, projectiles, VFX and
+the Mystery, Photoshoot and Ninja special modes.
 """
 
 from __future__ import annotations
@@ -11,7 +12,7 @@ from dataclasses import dataclass
 import math
 from pathlib import Path
 
-from PIL import Image
+from PIL import Image, ImageDraw
 
 import build_mgs1_vr_environment_assets as env
 import generate_mg1_actor_animations as rig
@@ -58,6 +59,9 @@ CHARACTER_ATLAS = "vr-special-characters-openai-atlas.png"
 WEAPON_ATLAS = "vr-weapons-openai-atlas.png"
 PROJECTILE_VFX_ATLAS = "vr-projectiles-vfx-openai-atlas.png"
 SPECIAL_VFX_ATLAS = "vr-special-vfx-openai-atlas.png"
+MYSTERY_ATLAS = "vr-mystery-evidence-openai-atlas.png"
+PHOTOSHOOT_ATLAS = "vr-photoshoot-openai-atlas.png"
+MODULAR_PROPS_ATLAS = "vr-modular-props-openai-atlas.png"
 
 
 ACTORS = (
@@ -97,6 +101,55 @@ PROJECTILES = tuple(
             ("nikita-missile", (28, 10)),
         )
     )
+)
+
+
+MYSTERY_PROPS = tuple(
+    StaticSpec(MYSTERY_ATLAS, 4, 4, index, f"special/mystery/{slug}.png", size)
+    for index, (slug, size) in enumerate(
+        (
+            ("broken-camera", (52, 36)),
+            ("black-balaclava", (32, 36)),
+            ("pink-sock", (28, 36)),
+            ("blue-popsicle", (18, 36)),
+            ("round-glasses", (48, 24)),
+            ("blond-wig", (44, 36)),
+            ("security-panel", (56, 32)),
+            ("footprints", (56, 40)),
+            ("broken-vase", (48, 40)),
+            ("broken-chair", (48, 48)),
+            ("rifle", (56, 32)),
+            ("grandfather-clock", (36, 64)),
+            ("broken-monitor", (48, 40)),
+            ("ketchup-bottle", (20, 40)),
+            ("key", (40, 24)),
+            ("portrait-mask", (48, 40)),
+        )
+    )
+)
+
+
+PHOTOSHOOT_PROPS = tuple(
+    StaticSpec(PHOTOSHOOT_ATLAS, 4, 2, index, f"special/photoshoot/{slug}.png", size)
+    for index, (slug, size) in enumerate(
+        (
+            ("camera", (56, 48)),
+            ("viewfinder", (128, 80)),
+            ("shutter-flash", (64, 64)),
+            ("photo-album", (48, 56)),
+            ("backdrop", (96, 72)),
+            ("spotlight", (48, 56)),
+            ("film-cartridge", (48, 32)),
+            ("pose-marker", (64, 64)),
+        )
+    )
+)
+
+
+NINJA_PROP_OUTPUTS = (
+    ("special/ninja/pole-intact.png", (32, 96)),
+    ("special/ninja/pole-cut.png", (48, 96)),
+    ("special/ninja/pole-debris.png", (56, 24)),
 )
 
 
@@ -230,6 +283,43 @@ def build_effect(spec: EffectSpec) -> None:
     save(rig.make_sheet(frames, spec.frame_size), spec.output)
 
 
+def build_ninja_props() -> None:
+    """Derive the Ninja pole states from the existing VR boundary pillar.
+
+    The intact state keeps the environment silhouette and palette.  The cut
+    state separates and tilts its upper half, while the debris sprite uses the
+    same navy/cyan ramp so slash fragments remain visually coherent.
+    """
+
+    anchor = extract_cell(MODULAR_PROPS_ATLAS, 4, 3, 7)
+    intact = env.fit_sprite(anchor, NINJA_PROP_OUTPUTS[0][1])
+    save(intact, NINJA_PROP_OUTPUTS[0][0])
+
+    upper = intact.crop((0, 0, intact.width, intact.height // 2 + 2))
+    lower = intact.crop((0, intact.height // 2 - 2, intact.width, intact.height))
+    upper = upper.rotate(-12, resample=Image.Resampling.NEAREST, expand=True)
+    cut = Image.new("RGBA", NINJA_PROP_OUTPUTS[1][1], (0, 0, 0, 0))
+    cut.alpha_composite(lower, (4, 47))
+    cut.alpha_composite(upper, (12, 1))
+    cut_draw = ImageDraw.Draw(cut)
+    cut_draw.line(((13, 49), (28, 47)), fill=(98, 255, 250, 255), width=2)
+    save(env.quantize_rgba(cut, colours=32), NINJA_PROP_OUTPUTS[1][0])
+
+    debris = Image.new("RGBA", NINJA_PROP_OUTPUTS[2][1], (0, 0, 0, 0))
+    debris_draw = ImageDraw.Draw(debris)
+    shard_colours = (
+        ((4, 13), (15, 5), (21, 10), (13, 18)),
+        ((22, 15), (31, 7), (37, 12), (30, 19)),
+        ((36, 17), (45, 10), (51, 14), (44, 21)),
+        ((16, 20), (23, 16), (28, 21), (21, 23)),
+    )
+    for points in shard_colours:
+        debris_draw.polygon(points, fill=(7, 38, 53, 255))
+        debris_draw.line((*points, points[0]), fill=(59, 239, 233, 255), width=1)
+    debris_draw.point(((12, 8), (33, 20), (52, 18)), fill=(149, 255, 249, 255))
+    save(env.quantize_rgba(debris, colours=16), NINJA_PROP_OUTPUTS[2][0])
+
+
 def all_outputs() -> tuple[tuple[str, tuple[int, int]], ...]:
     outputs: list[tuple[str, tuple[int, int]]] = []
     outputs.extend((spec.output, (spec.frame_size[0] * spec.expected_frames, spec.frame_size[1])) for spec in ACTORS)
@@ -237,13 +327,16 @@ def all_outputs() -> tuple[tuple[str, tuple[int, int]], ...]:
     outputs.extend((spec.output, spec.size) for spec in WEAPONS)
     outputs.extend((spec.output, spec.size) for spec in PROJECTILES)
     outputs.extend((spec.output, (spec.frame_size[0] * spec.frame_count, spec.frame_size[1])) for spec in EFFECTS)
+    outputs.extend((spec.output, spec.size) for spec in MYSTERY_PROPS)
+    outputs.extend((spec.output, spec.size) for spec in PHOTOSHOOT_PROPS)
+    outputs.extend(NINJA_PROP_OUTPUTS)
     return tuple(outputs)
 
 
 def validate() -> None:
     outputs = all_outputs()
-    if len(outputs) != 41:
-        raise RuntimeError(f"Expected 41 runtime assets, declared {len(outputs)}")
+    if len(outputs) != 68:
+        raise RuntimeError(f"Expected 68 runtime assets, declared {len(outputs)}")
     if len({path for path, _size in outputs}) != len(outputs):
         raise RuntimeError("Duplicate runtime output path")
     for relative_path, expected_size in outputs:
@@ -260,12 +353,13 @@ def validate() -> None:
 def main() -> None:
     for spec in ACTORS:
         build_actor(spec)
-    for spec in (*STATIC_CHARACTERS, *WEAPONS, *PROJECTILES):
+    for spec in (*STATIC_CHARACTERS, *WEAPONS, *PROJECTILES, *MYSTERY_PROPS, *PHOTOSHOOT_PROPS):
         build_static(spec)
     for spec in EFFECTS:
         build_effect(spec)
+    build_ninja_props()
     validate()
-    print(f"Built 41 MGS1 VR gameplay assets in {OUTPUT}")
+    print(f"Built 68 MGS1 VR gameplay assets in {OUTPUT}")
 
 
 if __name__ == "__main__":

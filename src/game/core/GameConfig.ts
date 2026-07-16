@@ -1,7 +1,12 @@
 import type Phaser from 'phaser';
 
 type PhaserRuntime = typeof Phaser;
-export type GameStartScene = 'SideOpsScene' | 'VRTrainingScene';
+export type GameStartScene =
+  | 'SideOpsScene'
+  | 'VRTrainingScene'
+  | 'VRNinjaScene'
+  | 'VRMysteryScene'
+  | 'VRPhotoshootScene';
 
 export async function createGameConfig(
   PhaserRuntime: PhaserRuntime,
@@ -15,9 +20,17 @@ export async function createGameConfig(
     import('../scenes/PreloadScene')
   ]);
 
-  const scene = startScene === 'VRTrainingScene'
-    ? [BootScene, PreloadScene, (await import('../scenes/VRTrainingScene')).VRTrainingScene]
-    : [
+  let scene: Phaser.Types.Scenes.SceneType[];
+  if (startScene === 'VRTrainingScene') {
+    scene = [BootScene, PreloadScene, (await import('../scenes/VRTrainingScene')).VRTrainingScene];
+  } else if (startScene === 'VRNinjaScene') {
+    scene = [BootScene, PreloadScene, (await import('../scenes/VRNinjaScene')).VRNinjaScene];
+  } else if (startScene === 'VRMysteryScene') {
+    scene = [BootScene, PreloadScene, (await import('../scenes/VRMysteryScene')).VRMysteryScene];
+  } else if (startScene === 'VRPhotoshootScene') {
+    scene = [BootScene, PreloadScene, (await import('../scenes/VRPhotoshootScene')).VRPhotoshootScene];
+  } else {
+    scene = [
         BootScene,
         PreloadScene,
         (await import('../scenes/SideOpsScene')).SideOpsScene,
@@ -25,9 +38,12 @@ export async function createGameConfig(
         (await import('../scenes/Mg1OuterHeavenScene')).Mg1OuterHeavenScene,
         (await import('../scenes/MissionCompleteScene')).MissionCompleteScene
       ];
+  }
 
   return {
-    type: PhaserRuntime.AUTO,
+    // The VR bridge uses the deterministic 2D canvas renderer so pixel-art
+    // framing and Photoshoot captures match what is actually stored.
+    type: startScene === 'SideOpsScene' ? PhaserRuntime.AUTO : PhaserRuntime.CANVAS,
     parent,
     width: 960,
     height: 540,

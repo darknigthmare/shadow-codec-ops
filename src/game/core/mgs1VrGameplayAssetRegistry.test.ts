@@ -6,7 +6,11 @@ import { describe, expect, it } from 'vitest';
 import {
   MGS1_VR_ACTOR_ASSETS,
   MGS1_VR_GAMEPLAY_ALL_ASSETS,
+  MGS1_VR_MYSTERY_PROP_ASSETS,
+  MGS1_VR_NINJA_PROP_ASSETS,
+  MGS1_VR_PHOTOSHOOT_PROP_ASSETS,
   MGS1_VR_PROJECTILE_ASSETS,
+  MGS1_VR_SPECIAL_PROP_ASSETS,
   MGS1_VR_STATIC_CHARACTER_ASSETS,
   MGS1_VR_VFX_ASSETS,
   MGS1_VR_WEAPON_ASSETS,
@@ -22,23 +26,64 @@ import {
 const PNG_SIGNATURE = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
 
 describe('MGS1 VR gameplay asset registry', () => {
-  it('registers the complete 41-asset gameplay pack by category', () => {
+  it('registers the complete 68-asset gameplay pack by category', () => {
     expect(MGS1_VR_ACTOR_ASSETS).toHaveLength(4);
     expect(MGS1_VR_STATIC_CHARACTER_ASSETS).toHaveLength(5);
     expect(MGS1_VR_WEAPON_ASSETS).toHaveLength(8);
     expect(MGS1_VR_PROJECTILE_ASSETS).toHaveLength(8);
+    expect(MGS1_VR_MYSTERY_PROP_ASSETS).toHaveLength(16);
+    expect(MGS1_VR_PHOTOSHOOT_PROP_ASSETS).toHaveLength(8);
+    expect(MGS1_VR_NINJA_PROP_ASSETS).toHaveLength(3);
+    expect(MGS1_VR_SPECIAL_PROP_ASSETS).toHaveLength(27);
     expect(MGS1_VR_VFX_ASSETS).toHaveLength(16);
-    expect(MGS1_VR_GAMEPLAY_ALL_ASSETS).toHaveLength(41);
+    expect(MGS1_VR_GAMEPLAY_ALL_ASSETS).toHaveLength(68);
   });
 
   it('keeps ids, Phaser texture keys and local paths unique and scoped', () => {
-    expect(new Set(MGS1_VR_GAMEPLAY_ALL_ASSETS.map((asset) => asset.id)).size).toBe(41);
-    expect(new Set(MGS1_VR_GAMEPLAY_ALL_ASSETS.map((asset) => asset.textureKey)).size).toBe(41);
-    expect(new Set(MGS1_VR_GAMEPLAY_ALL_ASSETS.map((asset) => asset.path)).size).toBe(41);
+    expect(new Set(MGS1_VR_GAMEPLAY_ALL_ASSETS.map((asset) => asset.id)).size).toBe(68);
+    expect(new Set(MGS1_VR_GAMEPLAY_ALL_ASSETS.map((asset) => asset.textureKey)).size).toBe(68);
+    expect(new Set(MGS1_VR_GAMEPLAY_ALL_ASSETS.map((asset) => asset.path)).size).toBe(68);
     for (const asset of MGS1_VR_GAMEPLAY_ALL_ASSETS) {
       expect(asset.path.startsWith('/vr/mgs1/gameplay/'), asset.path).toBe(true);
       expect(asset.path.endsWith('.png'), asset.path).toBe(true);
     }
+  });
+
+  it('locks the Special-mode texture keys consumed by gameplay scenes', () => {
+    expect(MGS1_VR_MYSTERY_PROP_ASSETS.map((asset) => asset.textureKey)).toEqual([
+      'mgs1VrMysteryBrokenCamera',
+      'mgs1VrMysteryBlackBalaclava',
+      'mgs1VrMysteryPinkSock',
+      'mgs1VrMysteryBluePopsicle',
+      'mgs1VrMysteryRoundGlasses',
+      'mgs1VrMysteryBlondWig',
+      'mgs1VrMysterySecurityPanel',
+      'mgs1VrMysteryFootprints',
+      'mgs1VrMysteryBrokenVase',
+      'mgs1VrMysteryBrokenChair',
+      'mgs1VrMysteryRifle',
+      'mgs1VrMysteryGrandfatherClock',
+      'mgs1VrMysteryBrokenMonitor',
+      'mgs1VrMysteryKetchupBottle',
+      'mgs1VrMysteryKey',
+      'mgs1VrMysteryPortraitMask'
+    ]);
+    expect(MGS1_VR_PHOTOSHOOT_PROP_ASSETS.map((asset) => asset.textureKey)).toEqual([
+      'mgs1VrPhotoshootCamera',
+      'mgs1VrPhotoshootViewfinder',
+      'mgs1VrPhotoshootShutterFlash',
+      'mgs1VrPhotoshootPhotoAlbum',
+      'mgs1VrPhotoshootBackdrop',
+      'mgs1VrPhotoshootSpotlight',
+      'mgs1VrPhotoshootFilmCartridge',
+      'mgs1VrPhotoshootPoseMarker'
+    ]);
+    expect(MGS1_VR_NINJA_PROP_ASSETS.map((asset) => asset.textureKey)).toEqual([
+      'mgs1VrNinjaPoleIntact',
+      'mgs1VrNinjaPoleCut',
+      'mgs1VrNinjaPoleDebris'
+    ]);
+    expect(MGS1_VR_SPECIAL_PROP_ASSETS.every((asset) => asset.category === 'special-prop')).toBe(true);
   });
 
   it('registers exact packed and per-frame dimensions', () => {
@@ -100,7 +145,7 @@ describe('MGS1 VR gameplay asset registry', () => {
       MGS1_VR_ACTOR_ASSETS[0],
       MGS1_VR_VFX_ASSETS[0]
     ]);
-    expect(collected).toHaveLength(41);
+    expect(collected).toHaveLength(68);
     expect(collected).toEqual(MGS1_VR_GAMEPLAY_ALL_ASSETS);
   });
 
@@ -112,7 +157,7 @@ describe('MGS1 VR gameplay asset registry', () => {
     const existing = paths.filter(({ absolutePath }) => existsSync(absolutePath));
     if (existing.length === 0) return;
 
-    expect(existing, 'The generated gameplay pack must be complete, not partial').toHaveLength(41);
+    expect(existing, 'The generated gameplay pack must be complete, not partial').toHaveLength(68);
     for (const { asset, absolutePath } of existing) {
       const png = readFileSync(absolutePath);
       expect(png.subarray(0, 8), absolutePath).toEqual(PNG_SIGNATURE);
