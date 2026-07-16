@@ -364,10 +364,13 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
     ? resolveVoiceAsset(activeCall.conversation.id, lineIndex, activeCall.contact.era, voicePackState)
     : undefined;
   const routedPortraitContactId = activeCall?.contact.id ?? selectedContact?.id;
+  const portraitRoutingContext = selectedEra === 'mgs1'
+    ? { contextId: currentContext.id, flags: currentContext.flags }
+    : undefined;
   const contactPortraitImage = (activeCall && settings.voicePackEnabled
     ? resolvePortraitAsset(activeCall.contact.id, portraitExpression, activeCall.contact.era, voicePackState)
     : undefined) ?? (settings.builtInPortraitsEnabled
-      ? getCharacterPortrait(routedPortraitContactId, portraitExpression) ?? getBuiltInPortrait(selectedEra, 'contact')
+      ? getCharacterPortrait(routedPortraitContactId, portraitExpression, portraitRoutingContext) ?? getBuiltInPortrait(selectedEra, 'contact')
       : undefined);
   const playerPortraitImage = settings.builtInPortraitsEnabled
     ? getCharacterPortrait(selectedPlayer?.id, playerSpeaking ? portraitExpression : 'neutral') ?? getBuiltInPortrait(selectedEra, 'player')

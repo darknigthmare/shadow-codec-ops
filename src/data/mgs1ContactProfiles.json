@@ -45,6 +45,7 @@
       "mgs1_comm_tower",
       "mgs1_snowfield",
       "mgs1_rex_hangar",
+      "mgs1_underground_base",
       "mgs1_escape"
     ],
     "topics": [
@@ -111,6 +112,7 @@
       "mgs1_comm_tower",
       "mgs1_snowfield",
       "mgs1_rex_hangar",
+      "mgs1_underground_base",
       "mgs1_escape"
     ],
     "topics": [
@@ -154,7 +156,10 @@
       {
         "personId": "gray_fox",
         "label": "Family bond",
-        "detail": "Her history with Gray Fox is central to her motivation."
+        "detail": "Her history with Gray Fox is central to her motivation.",
+        "requiredFlags": [
+          "gray_fox_identity_revealed"
+        ]
       },
       {
         "personId": "solid_snake",
@@ -175,7 +180,8 @@
       "mgs1_nuclear_storage",
       "mgs1_comm_tower",
       "mgs1_snowfield",
-      "mgs1_rex_hangar"
+      "mgs1_rex_hangar",
+      "mgs1_underground_base"
     ],
     "topics": [
       "medical",
@@ -240,6 +246,7 @@
       "mgs1_comm_tower",
       "mgs1_snowfield",
       "mgs1_rex_hangar",
+      "mgs1_underground_base",
       "mgs1_escape"
     ],
     "topics": [
@@ -297,7 +304,8 @@
       "mgs1_nuclear_storage",
       "mgs1_comm_tower",
       "mgs1_snowfield",
-      "mgs1_rex_hangar"
+      "mgs1_rex_hangar",
+      "mgs1_underground_base"
     ],
     "topics": [
       "weapons",
@@ -360,7 +368,8 @@
       "mgs1_nuclear_storage",
       "mgs1_comm_tower",
       "mgs1_snowfield",
-      "mgs1_rex_hangar"
+      "mgs1_rex_hangar",
+      "mgs1_underground_base"
     ],
     "topics": [
       "survival",
@@ -432,6 +441,7 @@
       "mgs1_nuclear_storage",
       "mgs1_comm_tower",
       "mgs1_snowfield",
+      "mgs1_underground_base",
       "mgs1_escape"
     ],
     "topics": [
@@ -477,11 +487,17 @@
       {
         "personId": "solid_snake",
         "label": "Former comrade",
-        "detail": "Their shared history is initially concealed."
+        "detail": "Their shared history is initially concealed.",
+        "requiredFlags": [
+          "gray_fox_identity_revealed"
+        ]
       },
       {
         "personId": "naomi_hunter",
         "label": "Family bond",
+        "requiredFlags": [
+          "gray_fox_identity_revealed"
+        ],
         "detail": "Connection becomes relevant to Naomi’s dossier."
       }
     ],
@@ -489,7 +505,8 @@
       "mgs1_nuclear_storage",
       "mgs1_comm_tower",
       "mgs1_snowfield",
-      "mgs1_rex_hangar"
+      "mgs1_rex_hangar",
+      "mgs1_underground_base"
     ],
     "topics": [
       "warning",
@@ -528,6 +545,103 @@
     "loreNotes": [
       "Frequency 140.48.",
       "Incoming-only until memory or narrative flags permit recall."
+    ]
+  },
+  {
+    "id": "houseman_mgs1",
+    "personId": "jim_houseman",
+    "displayName": "Jim Houseman",
+    "codename": "Secretary of Defense",
+    "birthYear": null,
+    "affiliations": [
+      "United States Department of Defense"
+    ],
+    "role": "Final-operation command authority",
+    "canonStatus": "canon",
+    "summary": {
+      "en": "The Secretary of Defense enters the Codec chain during the final command crisis.",
+      "fr": "Le secretaire a la Defense intervient sur le Codec pendant la crise finale du commandement."
+    },
+    "biography": {
+      "en": "Houseman's transmissions represent political command intervention and the threat of an air strike over Shadow Moses. His route is incoming-only and has no claimed canon numeric frequency.",
+      "fr": "Les transmissions de Houseman representent l'intervention politique du commandement et la menace d'une frappe aerienne sur Shadow Moses. Sa route est uniquement entrante et ne revendique aucune frequence numerique canonique."
+    },
+    "relations": [
+      {
+        "personId": "roy_campbell",
+        "label": "Command override",
+        "detail": "Supersedes the field command chain during the final crisis."
+      },
+      {
+        "personId": "solid_snake",
+        "label": "Field operative",
+        "detail": "Addresses Snake through a contextual incoming transmission."
+      }
+    ],
+    "chapterAvailability": [
+      "mgs1_underground_base",
+      "mgs1_escape"
+    ],
+    "topics": [
+      "command_override",
+      "air_strike"
+    ],
+    "incomingTriggers": [
+      "mission_complete"
+    ],
+    "revealState": "public",
+    "loreNotes": [
+      "Incoming-only event contact.",
+      "The 199.01 simulator route is deliberately non-canonical."
+    ]
+  },
+  {
+    "id": "sniper_wolf_mgs1",
+    "personId": "sniper_wolf",
+    "displayName": "Sniper Wolf",
+    "codename": "Wolf",
+    "birthYear": null,
+    "affiliations": [
+      "FOXHOUND"
+    ],
+    "role": "Enemy event transmission",
+    "canonStatus": "canon",
+    "summary": {
+      "en": "FOXHOUND sniper whose contextual transmissions frame the prison threat and snowfield duel.",
+      "fr": "Tireuse d'elite de FOXHOUND dont les transmissions contextuelles encadrent la menace en prison et le duel dans le champ de neige."
+    },
+    "biography": {
+      "en": "Wolf is not a support contact. Her Codec presence is limited to incoming enemy transmissions tied to scripted encounters, with no claimed canon numeric frequency.",
+      "fr": "Wolf n'est pas un contact de soutien. Sa presence Codec se limite aux transmissions ennemies entrantes liees aux rencontres scenarisees, sans frequence numerique canonique revendiquee."
+    },
+    "relations": [
+      {
+        "personId": "solid_snake",
+        "label": "Enemy target",
+        "detail": "Challenges Snake across prepared long-range firing lanes."
+      },
+      {
+        "personId": "hal_emmerich",
+        "label": "Personal attachment",
+        "detail": "Otacon's feelings shape his reaction to her fate."
+      }
+    ],
+    "chapterAvailability": [
+      "mgs1_cellblock",
+      "mgs1_snowfield"
+    ],
+    "topics": [
+      "enemy_transmission",
+      "sniper_threat",
+      "snowfield"
+    ],
+    "incomingTriggers": [
+      "boss_intro"
+    ],
+    "revealState": "public",
+    "loreNotes": [
+      "Incoming-only event contact.",
+      "The 199.02 simulator route is deliberately non-canonical."
     ]
   }
 ]

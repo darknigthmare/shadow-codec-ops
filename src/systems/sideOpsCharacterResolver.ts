@@ -1,6 +1,7 @@
 import type { EraId } from '../types/codec.types';
 import type { BuilderEnvironment } from '../types/missionBuilder.types';
 import { MG1_SIDEOPS_DEFAULT_HOSTILE_TEXTURES } from '../game/core/mg1SideOpsAssetRegistry';
+import { MGS1_SIDEOPS_DEFAULT_HOSTILE_TEXTURES } from '../game/core/mgs1SideOpsAssetRegistry';
 
 export interface SideOpsOperativeAsset {
   id: string;
@@ -181,6 +182,13 @@ export function resolveSideOpsCharacterTextures(input: SideOpsCharacterResolutio
     return {
       playerTexture: resolvePlayerTexture(input),
       ...MG1_SIDEOPS_DEFAULT_HOSTILE_TEXTURES
+    };
+  }
+
+  if (input.era === 'mgs1' && !tanker) {
+    return {
+      playerTexture: resolvePlayerTexture(input),
+      ...MGS1_SIDEOPS_DEFAULT_HOSTILE_TEXTURES
     };
   }
 

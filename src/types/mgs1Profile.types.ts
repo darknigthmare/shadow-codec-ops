@@ -9,6 +9,7 @@ export interface Mgs1ContactRelation {
   personId: string;
   label: string;
   detail: string;
+  requiredFlags?: string[];
 }
 
 export interface Mgs1IdentityVariant {

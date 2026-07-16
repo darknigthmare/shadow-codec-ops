@@ -25,7 +25,8 @@ export function auditMgs1Codec(
     const contact = mgs1Contacts.find((entry) => entry.id === profile.id);
     const contactConversations = mgs1Conversations.filter((entry) => entry.contactId === profile.id);
     if (!contact) issues.push(`Missing contact: ${profile.id}`);
-    if (contactConversations.length < 4) issues.push(`Insufficient conversations: ${profile.id}`);
+    const minimumConversationCount = contact?.manualCallAllowed === false ? 1 : 4;
+    if (contactConversations.length < minimumConversationCount) issues.push(`Insufficient conversations: ${profile.id}`);
     if (!profile.topics.length) issues.push(`Missing topics: ${profile.id}`);
     if (!profile.chapterAvailability.length) issues.push(`Missing chapters: ${profile.id}`);
   });

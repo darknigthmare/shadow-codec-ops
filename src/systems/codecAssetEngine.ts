@@ -2,6 +2,7 @@ import packsJson from '../data/codecAssetPacks.json';
 import mg1PortraitSetsJson from '../data/mg1PortraitSets.json';
 import type { EraId } from '../types/codec.types';
 import type { CodecAssetPackDefinition, CodecUiCue } from '../types/codecAssets.types';
+import { resolveMgs1StoryVariant } from './mgs1ContentEngine';
 
 export const codecAssetPacks = packsJson as CodecAssetPackDefinition[];
 let audioContext: AudioContext | null = null;
@@ -26,6 +27,11 @@ export function getBuiltInPortrait(era: EraId, side: 'player' | 'contact'): stri
 interface CharacterPortraitSet {
   basePath: string;
   expressions: readonly string[];
+}
+
+export interface CharacterPortraitRoutingContext {
+  contextId: string;
+  flags: readonly string[];
 }
 
 interface Mg1PortraitSetDefinition {
@@ -56,6 +62,8 @@ const characterPortraitSets: Record<string, CharacterPortraitSet> = {
   miller_mgs1: portraitSet('/portraits/mgs1/miller'),
   meryl_mgs1: portraitSet('/portraits/mgs1/meryl'),
   deepthroat_mgs1: portraitSet('/portraits/mgs1/deepthroat'),
+  houseman_mgs1: portraitSet('/portraits/mgs1/houseman'),
+  sniper_wolf_mgs1: portraitSet('/portraits/mgs1/sniper_wolf'),
   solid_snake_mgs2: portraitSet('/portraits/mgs2/solid_snake'),
   raiden_mgs2: portraitSet('/portraits/mgs2/raiden'),
   otacon_mgs2: portraitSet('/portraits/mgs2/otacon', ['neutral', 'serious', 'warning', 'calm', 'humor', 'grief']),
@@ -75,13 +83,25 @@ const characterPortraitSets: Record<string, CharacterPortraitSet> = {
   eva_mgs3: portraitSet('/portraits/mgs3/eva', ['neutral', 'serious', 'warning', 'calm', 'humor', 'injured', 'urgent'])
 };
 
-export function getCharacterPortrait(characterId: string | undefined, expression = 'neutral'): string | undefined {
+export function getCharacterPortrait(
+  characterId: string | undefined,
+  expression = 'neutral',
+  routingContext?: CharacterPortraitRoutingContext
+): string | undefined {
   if (!characterId) return undefined;
   const set = characterPortraitSets[characterId];
   if (!set) return undefined;
   const supportedExpression = set.expressions.includes(expression)
     ? expression
     : 'neutral';
+  const storyVariant = routingContext
+    ? resolveMgs1StoryVariant(characterId, routingContext.contextId, routingContext.flags)
+    : undefined;
+  const baseStoryVariants = ['medical_support', 'master_miller', 'field_contact'];
+  if (storyVariant && !baseStoryVariants.includes(storyVariant)) {
+    const directory = set.basePath.split('/').slice(-1)[0];
+    return `/portraits/mgs1/variants/${directory}/${storyVariant}/${supportedExpression}.webp`;
+  }
   return `${set.basePath}/${supportedExpression}.webp`;
 }
 

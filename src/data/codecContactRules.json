@@ -170,6 +170,7 @@
       "mgs1_nuclear_storage",
       "mgs1_comm_tower",
       "mgs1_snowfield",
+      "mgs1_underground_base",
       "mgs1_escape"
     ],
     "requiredFlags": [
@@ -213,6 +214,34 @@
       "tank",
       "rex",
       "identity"
+    ]
+  },
+  {
+    "contactId": "houseman_mgs1",
+    "contextIds": [
+      "mgs1_underground_base",
+      "mgs1_escape"
+    ],
+    "manualCall": "deny",
+    "incomingCall": "allow",
+    "sharedFrequencyPriority": 150,
+    "subjectIds": [
+      "command_override",
+      "air_strike"
+    ]
+  },
+  {
+    "contactId": "sniper_wolf_mgs1",
+    "contextIds": [
+      "mgs1_cellblock",
+      "mgs1_snowfield"
+    ],
+    "manualCall": "deny",
+    "incomingCall": "allow",
+    "sharedFrequencyPriority": 150,
+    "subjectIds": [
+      "enemy_transmission",
+      "sniper_threat"
     ]
   },
   {

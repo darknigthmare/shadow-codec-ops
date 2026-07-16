@@ -1,44 +1,79 @@
 [
   {
     "id": "shadow_dock_001",
-    "title": "Dock Infiltration",
+    "title": "Shadow Moses Operation",
     "era": "mgs1",
     "mode": "side_scroller",
-    "location": "Snowfield Docks",
+    "location": "Shadow Moses Island",
     "mainCharacter": "solid_snake",
-    "difficulty": 2,
-    "mapKey": "sideops_dock_complete_v1",
+    "difficulty": 5,
+    "mapKey": "sideops_shadow_moses_condensed_v1",
     "briefingConversation": "mgs1_campbell_mission_start",
     "debriefingConversation": "mgs1_campbell_mission_complete",
     "objectives": [
       {
-        "id": "enter_dock",
-        "label": "Enter the dock area",
+        "id": "infiltrate_shadow_moses",
+        "label": "Infiltrate Shadow Moses through the docks",
         "completedByDefault": true
       },
       {
-        "id": "recover_keycard",
-        "label": "Recover Keycard Lv.1",
+        "id": "defeat_revolver_ocelot",
+        "label": "Defeat Revolver Ocelot",
         "completedByDefault": false
       },
       {
-        "id": "open_security_door",
-        "label": "Open the Lv.1 security door",
+        "id": "neutralize_m1_tank",
+        "label": "Neutralize the M1 Tank",
         "completedByDefault": false
       },
       {
-        "id": "cross_security_yard",
-        "label": "Cross the searchlight yard",
+        "id": "reveal_decoy_octopus",
+        "label": "Uncover Decoy Octopus in the DARPA Chief disguise",
         "completedByDefault": false
       },
       {
-        "id": "defeat_captain",
-        "label": "Defeat Armored Guard Captain",
+        "id": "defeat_cyborg_ninja",
+        "label": "Defeat the Cyborg Ninja",
         "completedByDefault": false
       },
       {
-        "id": "extract",
-        "label": "Reach the cargo elevator",
+        "id": "defeat_psycho_mantis",
+        "label": "Break Psycho Mantis's control",
+        "completedByDefault": false
+      },
+      {
+        "id": "defeat_sniper_wolf",
+        "label": "Defeat Sniper Wolf",
+        "completedByDefault": false
+      },
+      {
+        "id": "destroy_hind_d",
+        "label": "Destroy Liquid's Hind D",
+        "completedByDefault": false
+      },
+      {
+        "id": "defeat_vulcan_raven",
+        "label": "Defeat Vulcan Raven",
+        "completedByDefault": false
+      },
+      {
+        "id": "destroy_metal_gear_rex",
+        "label": "Destroy Metal Gear REX",
+        "completedByDefault": false
+      },
+      {
+        "id": "defeat_liquid_snake",
+        "label": "Defeat Liquid Snake",
+        "completedByDefault": false
+      },
+      {
+        "id": "secure_escape_vehicles",
+        "label": "Secure the jeep and snowmobile escape route",
+        "completedByDefault": false
+      },
+      {
+        "id": "escape_shadow_moses",
+        "label": "Escape by jeep and reach the snowmobile rendezvous",
         "completedByDefault": false
       }
     ],
@@ -52,13 +87,24 @@
       "hidden_archive_fragment"
     ],
     "enemies": [
-      "guard_patrol",
-      "camera_turret_placeholder",
-      "guard_reinforcement",
+      "genome_light_infantry_mgs1",
+      "genome_arctic_trooper_mgs1",
+      "genome_nbc_trooper_mgs1",
+      "genome_heavy_trooper_mgs1",
+      "wolf_dog_mgs1",
+      "gun_camera_mgs1",
       "searchlight_sweep",
-      "armored_guard_captain"
+      "revolver_ocelot",
+      "m1_tank",
+      "cyborg_ninja",
+      "psycho_mantis",
+      "sniper_wolf",
+      "hind_d",
+      "vulcan_raven",
+      "metal_gear_rex",
+      "liquid_snake"
     ],
-    "boss": "armored_guard_captain",
+    "boss": "liquid_snake",
     "codecTriggers": [
       {
         "trigger": "mission_start",
@@ -221,7 +267,7 @@
     "enemies": [
       "tanker_deck_guard",
       "tanker_deck_reinforcement",
-      "camera_turret_placeholder",
+      "security_camera",
       "searchlight_sweep",
       "shielded_deck_commander"
     ],

@@ -18,9 +18,10 @@ describe('MGS1-D final audit', () => {
   });
 
   it('keeps the completed MGS1 content floor', () => {
-    expect(result.metrics.contacts).toBe(8);
-    expect(result.metrics.conversations).toBeGreaterThanOrEqual(130);
+    expect(result.metrics.contacts).toBe(10);
+    expect(result.metrics.profiles).toBe(10);
+    expect(result.metrics.conversations).toBeGreaterThanOrEqual(141);
     expect(result.metrics.contexts).toBeGreaterThanOrEqual(10);
-    expect(result.metrics.scheduledCalls).toBeGreaterThanOrEqual(10);
+    expect(result.metrics.scheduledCalls).toBeGreaterThanOrEqual(14);
   });
 });

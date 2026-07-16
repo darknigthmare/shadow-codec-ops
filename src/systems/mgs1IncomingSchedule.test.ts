@@ -32,7 +32,7 @@ describe('MGS1-B content expansion', () => {
     expect(coverage.proverbCount).toBeGreaterThanOrEqual(20);
     expect(coverage.weaponCount).toBeGreaterThanOrEqual(10);
     expect(coverage.bossIntelCount).toBeGreaterThanOrEqual(9);
-    expect(coverage.chapterIncomingCount).toBe(10);
-    expect(Object.keys(coverage.byContact)).toHaveLength(8);
+    expect(coverage.chapterIncomingCount).toBe(14);
+    expect(Object.keys(coverage.byContact)).toHaveLength(10);
   });
 });

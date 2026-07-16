@@ -7,7 +7,7 @@
     "frequency": 140.85,
     "role": "mission_commander",
     "availability": "available",
-    "portrait": "placeholder_campbell",
+    "portrait": "/portraits/mgs1/campbell/neutral.webp",
     "defaultConversation": "mgs1_campbell_default",
     "specialties": [
       "mission_advice",
@@ -45,7 +45,7 @@
     "frequency": 140.96,
     "role": "save_contact",
     "availability": "available",
-    "portrait": "placeholder_mei_ling",
+    "portrait": "/portraits/mgs1/mei_ling/neutral.webp",
     "defaultConversation": "mgs1_mei_ling_save",
     "specialties": [
       "save",
@@ -82,7 +82,7 @@
     "frequency": 141.12,
     "role": "technical_support",
     "availability": "available",
-    "portrait": "placeholder_otacon",
+    "portrait": "/portraits/mgs1/otacon/neutral.webp",
     "defaultConversation": "mgs1_otacon_tech",
     "specialties": [
       "technology",
@@ -119,7 +119,7 @@
     "frequency": 140.85,
     "role": "medical_support",
     "availability": "available",
-    "portrait": "placeholder_naomi",
+    "portrait": "/portraits/mgs1/naomi/neutral.webp",
     "defaultConversation": "mgs1_naomi_medical",
     "specialties": [
       "medical",
@@ -157,7 +157,7 @@
     "frequency": 141.52,
     "role": "weapon_specialist",
     "availability": "available",
-    "portrait": "placeholder_nastasha",
+    "portrait": "/portraits/mgs1/nastasha/neutral.webp",
     "defaultConversation": "mgs1_nastasha_weapons",
     "specialties": [
       "weapons",
@@ -194,7 +194,7 @@
     "frequency": 141.8,
     "role": "survival_mentor",
     "availability": "conditional",
-    "portrait": "placeholder_miller",
+    "portrait": "/portraits/mgs1/miller/neutral.webp",
     "defaultConversation": "mgs1_miller_survival",
     "specialties": [
       "survival",
@@ -231,7 +231,7 @@
     "frequency": 140.15,
     "role": "field_contact",
     "availability": "conditional",
-    "portrait": "placeholder_meryl",
+    "portrait": "/portraits/mgs1/meryl/neutral.webp",
     "defaultConversation": "mgs1_meryl_field",
     "specialties": [
       "field_contact",
@@ -267,7 +267,7 @@
     "frequency": 140.48,
     "role": "secret_contact",
     "availability": "unknown",
-    "portrait": "placeholder_unknown",
+    "portrait": "/portraits/mgs1/variants/deepthroat/unknown_signal/neutral.webp",
     "defaultConversation": "mgs1_deepthroat_warning",
     "specialties": [
       "secret_warning",
@@ -294,6 +294,102 @@
         "sourceId": "in_game_mgs1_additional_contacts"
       }
     ]
+  },
+  {
+    "id": "houseman_mgs1",
+    "name": "Jim Houseman",
+    "codename": "Secretary of Defense",
+    "era": "mgs1",
+    "frequency": 199.01,
+    "role": "mission_commander",
+    "availability": "conditional",
+    "portrait": "/portraits/mgs1/houseman/neutral.webp",
+    "defaultConversation": "mgs1_houseman_command_takeover",
+    "specialties": [
+      "command_override",
+      "political_directive",
+      "air_strike_warning"
+    ],
+    "unlockedByDefault": false,
+    "isSecret": false,
+    "description": "Transmission Ã©vÃ©nementielle de la chaÃ®ne de commandement amÃ©ricaine pendant la phase finale.",
+    "manualCallAllowed": false,
+    "incomingCallAllowed": true,
+    "canonStatus": "canon",
+    "aliases": [
+      "Secretary of Defense"
+    ],
+    "personId": "jim_houseman",
+    "frequencyKind": "incoming_only",
+    "frequencyLabel": "INCOMING EVENT",
+    "sourceIds": [
+      "in_game_mgs1_additional_contacts"
+    ],
+    "gameTitle": "Metal Gear Solid",
+    "timelineYear": 2005,
+    "frequencyVariants": [
+      {
+        "frequency": 199.01,
+        "label": "INCOMING EVENT",
+        "kind": "incoming_only",
+        "canonical": false,
+        "contextIds": [
+          "mgs1_underground_base",
+          "mgs1_escape"
+        ],
+        "sourceId": "in_game_mgs1_additional_contacts",
+        "notes": "Synthetic simulator route for a contextual incoming call; no canon numeric frequency is claimed."
+      }
+    ],
+    "availabilityNotes": "Incoming-only during the final command crisis and escape."
+  },
+  {
+    "id": "sniper_wolf_mgs1",
+    "name": "Sniper Wolf",
+    "codename": "Wolf",
+    "era": "mgs1",
+    "frequency": 199.02,
+    "role": "secret_contact",
+    "availability": "conditional",
+    "portrait": "/portraits/mgs1/sniper_wolf/neutral.webp",
+    "defaultConversation": "mgs1_sniper_wolf_prison_transmission",
+    "specialties": [
+      "enemy_transmission",
+      "sniper_threat",
+      "snowfield"
+    ],
+    "unlockedByDefault": false,
+    "isSecret": false,
+    "description": "Transmission ennemie contextuelle liÃ©e Ã  la capture et aux affrontements de Sniper Wolf.",
+    "manualCallAllowed": false,
+    "incomingCallAllowed": true,
+    "canonStatus": "canon",
+    "aliases": [
+      "Wolf"
+    ],
+    "personId": "sniper_wolf",
+    "frequencyKind": "incoming_only",
+    "frequencyLabel": "ENEMY TRANSMISSION",
+    "sourceIds": [
+      "in_game_mgs1_additional_contacts"
+    ],
+    "gameTitle": "Metal Gear Solid",
+    "timelineYear": 2005,
+    "frequencyVariants": [
+      {
+        "frequency": 199.02,
+        "label": "ENEMY TRANSMISSION",
+        "kind": "incoming_only",
+        "canonical": false,
+        "contextIds": [
+          "mgs1_cellblock",
+          "mgs1_snowfield"
+        ],
+        "sourceId": "in_game_mgs1_additional_contacts",
+        "notes": "Synthetic simulator route for a contextual enemy transmission; no canon numeric frequency is claimed."
+      }
+    ],
+    "availabilityNotes": "Incoming-only during prison and snowfield events."
   },
   {
     "id": "campbell_msx",

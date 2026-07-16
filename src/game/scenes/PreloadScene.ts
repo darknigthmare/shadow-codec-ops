@@ -7,8 +7,15 @@ import {
   MG1_SIDEOPS_ALL_ASSETS,
   type Mg1SideOpsAsset
 } from '../core/mg1SideOpsAssetRegistry';
+import { MGS1_ACTOR_ANIMATION_ASSETS } from '../core/mgs1ActorAnimationRegistry';
+import {
+  MGS1_SIDEOPS_ALL_ASSETS,
+  type Mgs1SideOpsAsset
+} from '../core/mgs1SideOpsAssetRegistry';
 
-function preloadMg1Asset(scene: Phaser.Scene, asset: Mg1SideOpsAsset): void {
+type RegistryAsset = Mg1SideOpsAsset | Mgs1SideOpsAsset;
+
+function preloadRegistryAsset(scene: Phaser.Scene, asset: RegistryAsset): void {
   if (asset.loader === 'spritesheet') {
     scene.load.spritesheet(asset.textureKey, asset.path, {
       frameWidth: asset.frameWidth,
@@ -20,7 +27,7 @@ function preloadMg1Asset(scene: Phaser.Scene, asset: Mg1SideOpsAsset): void {
   scene.load.image(asset.textureKey, asset.path);
 }
 
-function drawMg1HumanoidFallback(graphics: Phaser.GameObjects.Graphics, asset: Mg1SideOpsAsset): void {
+function drawMg1HumanoidFallback(graphics: Phaser.GameObjects.Graphics, asset: RegistryAsset): void {
   const center = Math.floor(asset.width / 2);
   const headWidth = Math.max(8, Math.floor(asset.width * 0.36));
   const headHeight = Math.max(8, Math.floor(asset.height * 0.2));
@@ -39,7 +46,7 @@ function drawMg1HumanoidFallback(graphics: Phaser.GameObjects.Graphics, asset: M
   graphics.fillRect(center + Math.floor(torsoWidth * 0.35), torsoY + Math.floor(torsoHeight * 0.52), Math.max(3, Math.floor(asset.width * 0.28)), 3);
 }
 
-function drawMg1AnimalFallback(graphics: Phaser.GameObjects.Graphics, asset: Mg1SideOpsAsset): void {
+function drawMg1AnimalFallback(graphics: Phaser.GameObjects.Graphics, asset: RegistryAsset): void {
   const bodyY = Math.max(2, Math.floor(asset.height * 0.34));
   const bodyHeight = Math.max(5, Math.floor(asset.height * 0.42));
   graphics.fillStyle(asset.fallbackPrimaryColor, 1);
@@ -51,7 +58,7 @@ function drawMg1AnimalFallback(graphics: Phaser.GameObjects.Graphics, asset: Mg1
   graphics.fillRect(Math.floor(asset.width * 0.78), bodyY + 1, Math.max(2, Math.floor(asset.width * 0.14)), 2);
 }
 
-function drawMg1MachineFallback(graphics: Phaser.GameObjects.Graphics, asset: Mg1SideOpsAsset): void {
+function drawMg1MachineFallback(graphics: Phaser.GameObjects.Graphics, asset: RegistryAsset): void {
   const bodyY = Math.floor(asset.height * 0.24);
   const bodyHeight = Math.max(12, Math.floor(asset.height * 0.48));
   graphics.fillStyle(asset.fallbackPrimaryColor, 1);
@@ -70,7 +77,7 @@ function drawMg1MachineFallback(graphics: Phaser.GameObjects.Graphics, asset: Mg
   graphics.strokeRect(Math.floor(asset.width * 0.08), bodyY, Math.floor(asset.width * 0.84), bodyHeight);
 }
 
-function drawMg1EffectFallback(graphics: Phaser.GameObjects.Graphics, asset: Mg1SideOpsAsset): void {
+function drawMg1EffectFallback(graphics: Phaser.GameObjects.Graphics, asset: RegistryAsset): void {
   if (asset.loader !== 'spritesheet') return;
   for (let frame = 0; frame < asset.frameCount; frame += 1) {
     const frameX = frame * asset.frameWidth;
@@ -83,7 +90,7 @@ function drawMg1EffectFallback(graphics: Phaser.GameObjects.Graphics, asset: Mg1
   }
 }
 
-function createMg1FallbackTexture(scene: Phaser.Scene, graphics: Phaser.GameObjects.Graphics, asset: Mg1SideOpsAsset): void {
+function createRegistryFallbackTexture(scene: Phaser.Scene, graphics: Phaser.GameObjects.Graphics, asset: RegistryAsset): void {
   if (scene.textures.exists(asset.textureKey)) return;
   graphics.clear();
   if (asset.fallbackShape === 'humanoid') drawMg1HumanoidFallback(graphics, asset);
@@ -131,8 +138,16 @@ export class PreloadScene extends Phaser.Scene {
     this.load.image('vrTarget', '/vr/characters/vr-target-drone.png');
     this.load.image('vrBoss', '/vr/characters/vr-armored-captain.png');
     SIDEOPS_PLAYABLE_OPERATIVE_ASSETS.forEach((asset) => this.load.image(asset.textureKey, asset.path));
-    MG1_SIDEOPS_ALL_ASSETS.forEach((asset) => preloadMg1Asset(this, asset));
+    MG1_SIDEOPS_ALL_ASSETS.forEach((asset) => preloadRegistryAsset(this, asset));
+    MGS1_SIDEOPS_ALL_ASSETS.forEach((asset) => preloadRegistryAsset(this, asset));
     MG1_ACTOR_ANIMATION_ASSETS.forEach((asset) => {
+      this.load.spritesheet(asset.textureKey, asset.path, {
+        frameWidth: asset.frameWidth,
+        frameHeight: asset.frameHeight,
+        endFrame: asset.frameCount - 1
+      });
+    });
+    MGS1_ACTOR_ANIMATION_ASSETS.forEach((asset) => {
       this.load.spritesheet(asset.textureKey, asset.path, {
         frameWidth: asset.frameWidth,
         frameHeight: asset.frameHeight,
@@ -185,7 +200,8 @@ export class PreloadScene extends Phaser.Scene {
       graphics.clear();
     });
 
-    MG1_SIDEOPS_ALL_ASSETS.forEach((asset) => createMg1FallbackTexture(this, graphics, asset));
+    MG1_SIDEOPS_ALL_ASSETS.forEach((asset) => createRegistryFallbackTexture(this, graphics, asset));
+    MGS1_SIDEOPS_ALL_ASSETS.forEach((asset) => createRegistryFallbackTexture(this, graphics, asset));
 
     if (!this.textures.exists('guard')) {
       graphics.fillStyle(0x9aff8a, 1);

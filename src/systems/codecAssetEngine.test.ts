@@ -54,12 +54,48 @@ describe('codec asset packs', () => {
       nastasha_mgs1: 'nastasha',
       miller_mgs1: 'miller',
       meryl_mgs1: 'meryl',
-      deepthroat_mgs1: 'deepthroat'
+      deepthroat_mgs1: 'deepthroat',
+      houseman_mgs1: 'houseman',
+      sniper_wolf_mgs1: 'sniper_wolf'
     };
 
     for (const [characterId, directory] of Object.entries(portraitDirectories)) {
       expect(getCharacterPortrait(characterId, 'warning')).toBe(`/portraits/mgs1/${directory}/warning.webp`);
     }
+  });
+  it('resolves the active MGS1 story variant into its dedicated portrait directory', () => {
+    expect(getCharacterPortrait('naomi_mgs1', 'neutral', {
+      contextId: 'mgs1_insertion',
+      flags: []
+    })).toBe('/portraits/mgs1/naomi/neutral.webp');
+    expect(getCharacterPortrait('miller_mgs1', 'neutral', {
+      contextId: 'mgs1_insertion',
+      flags: []
+    })).toBe('/portraits/mgs1/miller/neutral.webp');
+    expect(getCharacterPortrait('meryl_mgs1', 'neutral', {
+      contextId: 'mgs1_cellblock',
+      flags: ['met_meryl']
+    })).toBe('/portraits/mgs1/meryl/neutral.webp');
+    expect(getCharacterPortrait('naomi_mgs1', 'serious', {
+      contextId: 'mgs1_underground_base',
+      flags: ['late_operation']
+    })).toBe('/portraits/mgs1/variants/naomi/restricted/serious.webp');
+    expect(getCharacterPortrait('miller_mgs1', 'warning', {
+      contextId: 'mgs1_rex_hangar',
+      flags: ['miller_identity_revealed']
+    })).toBe('/portraits/mgs1/variants/miller/liquid_revealed/warning.webp');
+    expect(getCharacterPortrait('meryl_mgs1', 'calm', {
+      contextId: 'mgs1_escape',
+      flags: ['escape_sequence']
+    })).toBe('/portraits/mgs1/variants/meryl/escape/calm.webp');
+    expect(getCharacterPortrait('deepthroat_mgs1', 'neutral', {
+      contextId: 'mgs1_nuclear_storage',
+      flags: ['deepthroat_signal_detected']
+    })).toBe('/portraits/mgs1/variants/deepthroat/unknown_signal/neutral.webp');
+    expect(getCharacterPortrait('deepthroat_mgs1', 'neutral', {
+      contextId: 'mgs1_rex_hangar',
+      flags: ['deepthroat_signal_detected', 'gray_fox_identity_revealed']
+    })).toBe('/portraits/mgs1/variants/deepthroat/gray_fox/neutral.webp');
   });
   it('resolves MGS2 players, contacts and their exact portrait expressions', () => {
     const contactDirectories: Record<string, string> = {

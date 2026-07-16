@@ -78,7 +78,7 @@
   {
     "id": "mgs1_campbell_mission_start",
     "era": "mgs1",
-    "title": "Dock Infiltration Briefing",
+    "title": "Shadow Moses Mission Briefing",
     "contactId": "campbell_mgs1",
     "frequency": 140.85,
     "trigger": "mission_start",
@@ -86,19 +86,19 @@
     "lines": [
       {
         "speaker": "campbell",
-        "text": "Snake, your first objective is simple: enter the dock area and recover a Level 1 keycard.",
+        "text": "Snake, infiltrate Shadow Moses and stop FOXHOUND. This condensed route keeps every major threat active.",
         "emotion": "serious",
         "speed": "normal"
       },
       {
         "speaker": "snake",
-        "text": "And after that?",
+        "text": "Ocelot, the tank, the specialists... and REX.",
         "emotion": "neutral",
         "speed": "normal"
       },
       {
         "speaker": "campbell",
-        "text": "Reach the cargo elevator. Avoid unnecessary alerts. This is still an infiltration mission.",
+        "text": "Correct. Break through each sector, expose Decoy Octopus's deception, destroy REX, and escape the island.",
         "emotion": "warning",
         "speed": "normal"
       }
@@ -188,19 +188,19 @@
     "lines": [
       {
         "speaker": "campbell",
-        "text": "Objective complete. The Side Ops prototype is responding correctly.",
+        "text": "REX is disabled and FOXHOUND's route is broken. The jeep and snowmobile escape route is secure.",
         "emotion": "calm",
         "speed": "normal"
       },
       {
         "speaker": "snake",
-        "text": "So the Codec integration works.",
+        "text": "Shadow Moses is behind us.",
         "emotion": "neutral",
         "speed": "normal"
       },
       {
         "speaker": "campbell",
-        "text": "For now, yes. Next step: enemies, cameras, weapons, and rank calculation.",
+        "text": "Mission complete. Return to debriefing.",
         "emotion": "serious",
         "speed": "normal"
       }
@@ -10970,6 +10970,178 @@
           "fr": "Des que nous partirons, la route ne restera pas calme. Couvre l'arriere, surveille le carburant et laisse-moi garder la moto devant la poursuite."
         },
         "emotion": "urgent"
+      }
+    ]
+  },
+  {
+    "id": "mgs1_houseman_command_takeover",
+    "era": "mgs1",
+    "title": "Command Authority Override",
+    "contactId": "houseman_mgs1",
+    "frequency": 199.01,
+    "trigger": "incoming_call",
+    "canReplay": true,
+    "subjectId": "command_override",
+    "topicLabel": "Command Override",
+    "topicDescription": "Late-operation intervention by the Secretary of Defense.",
+    "contextIds": [
+      "mgs1_underground_base"
+    ],
+    "priority": 130,
+    "canonStatus": "canon",
+    "loreBasis": "paraphrased_reference",
+    "sourceIds": [
+      "in_game_mgs1_additional_contacts"
+    ],
+    "lines": [
+      {
+        "speaker": "houseman",
+        "text": "This operation is now under my authority. The island is being treated as a containment crisis, and the military response is already moving.",
+        "localizedText": {
+          "en": "This operation is now under my authority. The island is being treated as a containment crisis, and the military response is already moving.",
+          "fr": "Cette operation releve desormais de mon autorite. L'ile est traitee comme une crise de confinement et la reponse militaire est deja en mouvement."
+        },
+        "emotion": "serious",
+        "portraitExpression": "serious"
+      },
+      {
+        "speaker": "snake",
+        "text": "You are willing to erase everyone still on the island?",
+        "localizedText": {
+          "en": "You are willing to erase everyone still on the island?",
+          "fr": "Vous etes pret a effacer tous ceux qui se trouvent encore sur l'ile ?"
+        },
+        "emotion": "warning",
+        "portraitExpression": "warning"
+      }
+    ]
+  },
+  {
+    "id": "mgs1_houseman_air_strike",
+    "era": "mgs1",
+    "title": "Air Strike Directive",
+    "contactId": "houseman_mgs1",
+    "frequency": 199.01,
+    "trigger": "incoming_call",
+    "canReplay": true,
+    "subjectId": "air_strike",
+    "topicLabel": "Air Strike",
+    "topicDescription": "Final warning concerning the planned destruction of Shadow Moses.",
+    "contextIds": [
+      "mgs1_escape"
+    ],
+    "priority": 135,
+    "canonStatus": "canon",
+    "loreBasis": "paraphrased_reference",
+    "sourceIds": [
+      "in_game_mgs1_additional_contacts"
+    ],
+    "lines": [
+      {
+        "speaker": "houseman",
+        "text": "The strike order has been issued. Leave the facility immediately; no further extraction window can be guaranteed.",
+        "localizedText": {
+          "en": "The strike order has been issued. Leave the facility immediately; no further extraction window can be guaranteed.",
+          "fr": "L'ordre de frappe a ete donne. Quittez immediatement l'installation ; aucune autre fenetre d'extraction ne peut etre garantie."
+        },
+        "emotion": "warning",
+        "portraitExpression": "warning"
+      },
+      {
+        "speaker": "snake",
+        "text": "Then we will be gone before your aircraft arrive.",
+        "localizedText": {
+          "en": "Then we will be gone before your aircraft arrive.",
+          "fr": "Alors nous serons partis avant l'arrivee de vos appareils."
+        },
+        "emotion": "serious",
+        "portraitExpression": "serious"
+      }
+    ]
+  },
+  {
+    "id": "mgs1_sniper_wolf_prison_transmission",
+    "era": "mgs1",
+    "title": "Prison Threat",
+    "contactId": "sniper_wolf_mgs1",
+    "frequency": 199.02,
+    "trigger": "incoming_call",
+    "canReplay": true,
+    "subjectId": "enemy_transmission",
+    "topicLabel": "Enemy Transmission",
+    "topicDescription": "Contextual threat from Sniper Wolf during the capture sequence.",
+    "contextIds": [
+      "mgs1_cellblock"
+    ],
+    "priority": 120,
+    "canonStatus": "canon",
+    "loreBasis": "paraphrased_reference",
+    "sourceIds": [
+      "in_game_mgs1_additional_contacts"
+    ],
+    "lines": [
+      {
+        "speaker": "wolf",
+        "text": "You crossed my sights once and survived. The next shot will decide whether that was skill or luck.",
+        "localizedText": {
+          "en": "You crossed my sights once and survived. The next shot will decide whether that was skill or luck.",
+          "fr": "Tu as traverse ma ligne de mire une fois et tu as survecu. Le prochain tir dira si c'etait du talent ou de la chance."
+        },
+        "emotion": "calm",
+        "portraitExpression": "calm"
+      },
+      {
+        "speaker": "snake",
+        "text": "I will be ready.",
+        "localizedText": {
+          "en": "I will be ready.",
+          "fr": "Je serai pret."
+        },
+        "emotion": "serious",
+        "portraitExpression": "serious"
+      }
+    ]
+  },
+  {
+    "id": "mgs1_sniper_wolf_snowfield_transmission",
+    "era": "mgs1",
+    "title": "Snowfield Challenge",
+    "contactId": "sniper_wolf_mgs1",
+    "frequency": 199.02,
+    "trigger": "incoming_call",
+    "canReplay": true,
+    "subjectId": "sniper_threat",
+    "topicLabel": "Snowfield Challenge",
+    "topicDescription": "Enemy transmission before the long-range snowfield confrontation.",
+    "contextIds": [
+      "mgs1_snowfield"
+    ],
+    "priority": 125,
+    "canonStatus": "canon",
+    "loreBasis": "paraphrased_reference",
+    "sourceIds": [
+      "in_game_mgs1_additional_contacts"
+    ],
+    "lines": [
+      {
+        "speaker": "wolf",
+        "text": "The snowfield leaves nowhere to hide. Bring your rifle and face me across the distance.",
+        "localizedText": {
+          "en": "The snowfield leaves nowhere to hide. Bring your rifle and face me across the distance.",
+          "fr": "Le champ de neige ne laisse aucun endroit ou se cacher. Prends ton fusil et affronte-moi a distance."
+        },
+        "emotion": "warning",
+        "portraitExpression": "warning"
+      },
+      {
+        "speaker": "snake",
+        "text": "This ends here, Wolf.",
+        "localizedText": {
+          "en": "This ends here, Wolf.",
+          "fr": "Ca se termine ici, Wolf."
+        },
+        "emotion": "serious",
+        "portraitExpression": "serious"
       }
     ]
   }

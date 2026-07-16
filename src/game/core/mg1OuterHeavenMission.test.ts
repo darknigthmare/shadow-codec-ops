@@ -88,7 +88,7 @@ describe('Operation Intrude N313 mission selection and data', () => {
     expect(parseStoredSideOpsMissionId(MG1_OUTER_HEAVEN_MISSION_ID)).toBe(MG1_OUTER_HEAVEN_MISSION_ID);
     expect(parseStoredSideOpsMissionId(JSON.stringify({ id: MG1_OUTER_HEAVEN_MISSION_ID }))).toBe('shadow_dock_001');
     expect(resolveSideOpsRuntimeScene(MG1_OUTER_HEAVEN_MISSION_ID)).toBe('Mg1OuterHeavenScene');
-    expect(resolveSideOpsRuntimeScene('shadow_dock_001')).toBe('SideOpsScene');
+    expect(resolveSideOpsRuntimeScene('shadow_dock_001')).toBe('Mgs1ShadowMosesScene');
     expect(resolveSideOpsRuntimeScene('tanker_hold_002')).toBe('SideOpsScene');
   });
 });

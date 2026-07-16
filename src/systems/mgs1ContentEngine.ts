@@ -20,6 +20,52 @@ export function resolveMgs1IdentityLabel(profile: Mgs1ContactProfile, flags: str
   return matching?.label ?? profile.codename;
 }
 
+export function resolveMgs1StoryVariant(
+  contactId: string | undefined,
+  contextId: string,
+  flags: readonly string[]
+): string | undefined {
+  if (!contactId) return undefined;
+  if (contactId === 'naomi_mgs1') {
+    return flags.includes('late_operation') || flags.includes('naomi_restricted') ? 'restricted' : 'medical_support';
+  }
+  if (contactId === 'miller_mgs1') {
+    return flags.includes('miller_identity_revealed') ? 'liquid_revealed' : 'master_miller';
+  }
+  if (contactId === 'meryl_mgs1') {
+    if (flags.includes('escape_sequence') || contextId === 'mgs1_escape') return 'escape';
+    return flags.includes('meryl_injured') ? 'injured' : 'field_contact';
+  }
+  if (contactId === 'deepthroat_mgs1') {
+    if (flags.includes('gray_fox_identity_revealed')) return 'gray_fox';
+    if (contextId === 'mgs1_nuclear_storage' || !flags.includes('deepthroat_signal_detected')) return 'unknown_signal';
+    return 'deepthroat';
+  }
+  return undefined;
+}
+
+export function getMgs1VisibleStoryVariants(
+  profile: Mgs1ContactProfile,
+  contextId: string,
+  flags: readonly string[]
+): string[] {
+  const activeVariant = resolveMgs1StoryVariant(profile.id, contextId, flags);
+  switch (profile.id) {
+    case 'naomi_mgs1':
+      return activeVariant === 'restricted' ? ['medical_support', 'restricted'] : ['medical_support'];
+    case 'miller_mgs1':
+      return activeVariant === 'liquid_revealed' ? ['master_miller', 'liquid_revealed'] : ['master_miller'];
+    case 'meryl_mgs1':
+      if (activeVariant === 'escape') return ['field_contact', 'injured', 'escape'];
+      return activeVariant === 'injured' ? ['field_contact', 'injured'] : ['field_contact'];
+    case 'deepthroat_mgs1':
+      if (activeVariant === 'gray_fox') return ['unknown_signal', 'deepthroat', 'gray_fox'];
+      return activeVariant === 'deepthroat' ? ['unknown_signal', 'deepthroat'] : ['unknown_signal'];
+    default:
+      return ['default'];
+  }
+}
+
 export function isMgs1ProfileAvailableInContext(profile: Mgs1ContactProfile, contextId: string): boolean {
   return profile.chapterAvailability.includes(contextId);
 }

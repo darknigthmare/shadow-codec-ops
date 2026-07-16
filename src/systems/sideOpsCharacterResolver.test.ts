@@ -48,6 +48,15 @@ describe('Side Ops playable operative resolver', () => {
     });
   });
 
+  it.each(['dock', 'facility'] as const)('routes MGS1 Builder hostiles to the Shadow Moses pack in %s', (environment) => {
+    expect(resolveSideOpsCharacterTextures({ era: 'mgs1', mainCharacter: 'solid_snake_mgs1', environment })).toEqual({
+      playerTexture: 'player',
+      guardTexture: 'mgs1GenomeLightInfantry',
+      reinforcementTexture: 'mgs1GenomeArcticTrooper',
+      bossTexture: 'mgs1RevolverOcelot'
+    });
+  });
+
   it('keeps the Tanker hostile pack ahead of the generic MSX route', () => {
     expect(resolveSideOpsCharacterTextures({ era: 'msx', mainCharacter: 'solid_snake_msx', environment: 'tanker' })).toEqual({
       playerTexture: 'playerSolidSnakeMg1',

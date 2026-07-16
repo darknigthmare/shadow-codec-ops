@@ -33,7 +33,7 @@
       {
         "type": "mission",
         "id": "shadow_dock_001",
-        "label": "Dock Infiltration"
+        "label": "Shadow Moses Operation"
       },
       {
         "type": "contact",
@@ -164,8 +164,8 @@
       },
       {
         "type": "enemy",
-        "id": "camera_turret_placeholder",
-        "label": "Security Camera Node"
+        "id": "gun_camera_mgs1",
+        "label": "Shadow Moses Gun Camera"
       }
     ]
   },
@@ -441,11 +441,11 @@
     "era": "mgs1",
     "canonStatus": "canon",
     "importance": "critical",
-    "summary": "Primary visual and mission reference for the first Side Ops vertical slice.",
+    "summary": "Site de l’insurrection FOXHOUND et cadre de l’opération MGS1 condensée de Side Ops.",
     "details": [
-      "The current Dock Infiltration mission is a simulation inspired by Shadow Moses-style entry logic, not a direct map recreation.",
-      "Its palette should stay cold, industrial and military: snow, dock metal, security lights and hangar approach.",
-      "Future mission packs can branch into heliport, tank hangar, nuclear storage, labs and tower-like zones."
+      "La mission suit une route condensée des docks jusqu’au hangar de REX, puis l’évasion, sans prétendre reproduire à l’identique chaque salle du jeu d’origine.",
+      "Elle conserve les étapes majeures : Ocelot, le M1 Tank, le Cyborg Ninja, Psycho Mantis, Sniper Wolf, le Hind D, Vulcan Raven, Metal Gear REX et Liquid Snake.",
+      "Decoy Octopus reste une révélation narrative sous l’apparence du chef du DARPA, conformément au fait que Snake ne le combat pas directement."
     ],
     "tags": [
       "shadow moses",
@@ -458,11 +458,12 @@
       {
         "type": "mission",
         "id": "shadow_dock_001",
-        "label": "Dock Infiltration"
+        "label": "Shadow Moses Operation"
       },
       {
         "type": "boss",
-        "id": "armored_guard_captain"
+        "id": "metal_gear_rex",
+        "label": "Metal Gear REX"
       }
     ]
   },
@@ -536,24 +537,24 @@
   },
   {
     "id": "lore_dock_infiltration",
-    "title": "Mission 001 — Dock Infiltration",
-    "subtitle": "Side Ops vertical slice",
+    "title": "Mission 001 — Shadow Moses Operation",
+    "subtitle": "Condensed MGS1 Side Ops route",
     "category": "mission",
     "era": "mgs1",
     "canonStatus": "simulation",
     "importance": "critical",
-    "summary": "First playable mission: side-scroller infiltration, keycard, alert states, searchlight yard, mini-boss, secrets and extraction.",
+    "summary": "Opération Side Ops condensée qui relie l’infiltration des docks, les rencontres majeures de Shadow Moses, la destruction de REX et l’évasion finale.",
     "details": [
-      "This mission validates the fusion between Side Ops gameplay and Codec triggers.",
-      "It is a local simulation mission designed to test systems, not a direct remake of a canonical map.",
-      "The objective chain is intentionally compact so future missions can reuse and expand its systems."
+      "Le parcours conserve l’ordre dramatique des principaux combats tout en comprimant les distances et transitions pour le mode 2D.",
+      "Les quatre classes de soldats Genome, le chien-loup et la caméra armée assurent les séquences d’infiltration entre les arènes.",
+      "Decoy Octopus est traité comme un checkpoint narratif ; l’extraction ne s’ouvre qu’après REX, Liquid Snake et le départ en jeep vers le rendez-vous en motoneige."
     ],
     "tags": [
       "mission 001",
-      "dock",
+      "shadow moses",
       "side ops",
-      "vertical slice",
-      "boss"
+      "mgs1",
+      "boss route"
     ],
     "related": [
       {
@@ -562,7 +563,8 @@
       },
       {
         "type": "boss",
-        "id": "armored_guard_captain"
+        "id": "metal_gear_rex",
+        "label": "Metal Gear REX"
       },
       {
         "type": "conversation",
@@ -571,37 +573,34 @@
     ]
   },
   {
-    "id": "lore_armored_guard_captain",
-    "title": "Armored Guard Captain",
-    "subtitle": "Simulation mini-boss / Side Ops systems test",
+    "id": "lore_metal_gear_rex",
+    "title": "Metal Gear REX",
+    "subtitle": "Shadow Moses nuclear weapons platform",
     "category": "boss",
     "era": "mgs1",
-    "canonStatus": "simulation",
-    "importance": "high",
-    "summary": "Original local mini-boss used to test boss phases, Codec hints, extraction lock and rank scoring.",
+    "canonStatus": "canon",
+    "importance": "critical",
+    "summary": "Bipedal nuclear weapons platform and central objective of the Shadow Moses incident.",
     "details": [
-      "The captain is intentionally simulation-only so early balancing does not depend on a major canonical boss.",
-      "His two-phase behavior tests player pressure, distance control, ration timing and disciplined fire.",
-      "Future boss packs can replace or extend this with era-specific characters once the gameplay shell is stable."
+      "REX carries a rail gun intended to launch an undetectable nuclear warhead and is piloted by Liquid Snake during the finale.",
+      "The first phase targets its radome; the second follows the Cyborg Ninja’s intervention and exposes the cockpit.",
+      "The 2D route gives REX dedicated missile, laser and rail-gun attacks instead of the former generic captain pattern."
     ],
     "tags": [
       "boss",
-      "simulation",
-      "armored",
-      "side ops"
+      "metal gear",
+      "rex",
+      "shadow moses"
     ],
     "related": [
       {
         "type": "boss",
-        "id": "armored_guard_captain"
-      },
-      {
-        "type": "enemy",
-        "id": "armored_guard_captain"
+        "id": "metal_gear_rex"
       },
       {
         "type": "conversation",
-        "id": "mgs1_boss_intro"
+        "id": "mgs1_otacon_rex_systems",
+        "label": "REX systems analysis"
       }
     ]
   },
@@ -669,7 +668,7 @@
       },
       {
         "type": "enemy",
-        "id": "camera_turret_placeholder"
+        "id": "gun_camera_mgs1"
       },
       {
         "type": "vr",
@@ -945,7 +944,7 @@
     "importance": "medium",
     "summary": "Side Ops boss designed to test repositioning, cover timing, CQC risk, and chaff-assisted movement in the tanker mission pack.",
     "details": [
-      "The boss has more health than the first Armored Guard Captain and uses a faster second phase.",
+      "The boss has more health than the opening Revolver Ocelot encounter and uses a faster second phase.",
       "The fight locks the cargo hold exit until defeated.",
       "Codec guidance is routed through Otacon's MGS2 support channel."
     ],
@@ -1059,7 +1058,7 @@
       {
         "type": "mission",
         "id": "shadow_dock_001",
-        "label": "Dock Infiltration"
+        "label": "Shadow Moses Operation"
       },
       {
         "type": "mission",
@@ -1114,7 +1113,7 @@
       {
         "type": "mission",
         "id": "shadow_dock_001",
-        "label": "Dock Infiltration"
+        "label": "Shadow Moses Operation"
       },
       {
         "type": "mission",

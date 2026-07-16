@@ -25,8 +25,8 @@
       {
         "id": "chapter_shadow_moses",
         "title": "Chapter I — Shadow Moses Signal",
-        "subtitle": "Establish the network and breach the dock perimeter",
-        "description": "Complete the briefing chain, infiltrate the snowfield docks and validate the route in VR.",
+        "subtitle": "Establish the network and complete the Shadow Moses route",
+        "description": "Complete the briefing chain, cross the condensed Shadow Moses operation and validate the entry route in VR.",
         "nodes": [
           {
             "id": "legacy_campbell_briefing",
@@ -59,13 +59,13 @@
               "title": "Campbell Link Online",
               "speaker": "SYSTEM",
               "tone": "system",
-              "body": "The opening frequency is authenticated. Dock Infiltration is now available."
+              "body": "The opening frequency is authenticated. Shadow Moses Operation is now available."
             }
           },
           {
             "id": "legacy_shadow_dock_clear",
-            "title": "Dock Infiltration",
-            "description": "Clear Dock Infiltration with at least a HOUND rank.",
+            "title": "Shadow Moses Operation",
+            "description": "Clear the condensed Shadow Moses Operation with at least a HOUND rank.",
             "module": "sideops",
             "targetId": "shadow_dock_001",
             "era": "mgs1",
@@ -96,16 +96,16 @@
               ],
               "unlockLoreIds": [
                 "lore_dock_infiltration",
-                "lore_armored_guard_captain"
+                "lore_metal_gear_rex"
               ]
             },
             "completionPresentation": {
               "id": "legacy_shadow_dock_complete",
               "eyebrow": "AFTER ACTION",
-              "title": "Dock Perimeter Breached",
+              "title": "Shadow Moses Route Cleared",
               "speaker": "CAMPBELL",
               "tone": "debriefing",
-              "body": "The route is open. Analyze the recovered tape and validate your movement profile in VR."
+              "body": "REX is down and the escape route is open. Analyze the recovered tape and validate your infiltration profile in VR."
             },
             "variableEffects": [
               {
@@ -123,7 +123,7 @@
           {
             "id": "legacy_dock_archive",
             "title": "After-Action Tape",
-            "description": "Listen to the Side Ops Design Log recovered from the dock operation.",
+            "description": "Listen to the Side Ops Design Log recovered from the Shadow Moses operation.",
             "module": "tapes",
             "targetId": "tape_side_ops_design_log_001",
             "era": "mgs1",
@@ -208,7 +208,7 @@
           "beats": [
             {
               "speaker": "CAMPBELL",
-              "text": "Your first objective is to establish a secure Codec link and breach the dock perimeter."
+              "text": "Your first objective is to establish a secure Codec link and complete the Shadow Moses infiltration route."
             },
             {
               "speaker": "CAMPBELL",
@@ -220,7 +220,7 @@
         "debriefing": {
           "id": "chapter_shadow_moses_debriefing",
           "eyebrow": "CHAPTER I DEBRIEF",
-          "title": "Dock Network Secured",
+          "title": "Shadow Moses Network Secured",
           "speaker": "ANALYSIS CELL",
           "tone": "debriefing",
           "body": "The Shadow Moses route is stable. Recovered dossiers and VR telemetry have opened the tanker support channel."
