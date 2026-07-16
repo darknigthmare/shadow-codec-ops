@@ -9,6 +9,7 @@ import {
 } from '../core/mg1SideOpsAssetRegistry';
 import { MGS1_ACTOR_ANIMATION_ASSETS } from '../core/mgs1ActorAnimationRegistry';
 import { MGS1_VR_ALL_ASSETS } from '../core/mgs1VrEnvironmentRegistry';
+import { MGS1_VR_GAMEPLAY_ALL_ASSETS } from '../core/mgs1VrGameplayAssetRegistry';
 import {
   MGS1_SIDEOPS_ALL_ASSETS,
   type Mgs1SideOpsAsset
@@ -142,6 +143,17 @@ export class PreloadScene extends Phaser.Scene {
     MG1_SIDEOPS_ALL_ASSETS.forEach((asset) => preloadRegistryAsset(this, asset));
     MGS1_SIDEOPS_ALL_ASSETS.forEach((asset) => preloadRegistryAsset(this, asset));
     MGS1_VR_ALL_ASSETS.forEach((asset) => this.load.image(asset.textureKey, asset.path));
+    MGS1_VR_GAMEPLAY_ALL_ASSETS.forEach((asset) => {
+      if (asset.loader === 'spritesheet') {
+        this.load.spritesheet(asset.textureKey, asset.path, {
+          frameWidth: asset.frameWidth,
+          frameHeight: asset.frameHeight,
+          endFrame: asset.frameCount - 1
+        });
+        return;
+      }
+      this.load.image(asset.textureKey, asset.path);
+    });
     MG1_ACTOR_ANIMATION_ASSETS.forEach((asset) => {
       this.load.spritesheet(asset.textureKey, asset.path, {
         frameWidth: asset.frameWidth,

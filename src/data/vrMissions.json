@@ -68,6 +68,7 @@
     "category": "weapon_training",
     "difficulty": 2,
     "mapVariant": "weapon_range_linear",
+    "missionProfileId": "mgs1_vr_profile_socom_cube_b",
     "objective": "Neutralize target drones with controlled fire and avoid wasting ammunition.",
     "briefing": "Suppressed fire is not magic. Every shot should have a purpose.",
     "restrictions": ["SOCOM only", "Accuracy tracked", "CQC does not count toward weapon objective"],
@@ -181,6 +182,258 @@
         "unlockRank": "FOX",
         "badge": "CAPTAIN_BREAKER",
         "description": "Unlocks the boss duel replay tape when you reach FOX rank or better."
+      }
+    ]
+  },
+  {
+    "id": "vr_famas_move_007",
+    "title": "FAMAS Moving Line",
+    "subtitle": "Weapon Mode / MOVE-B tracking drill",
+    "era": "vr_simulation",
+    "visualPack": "vr_training",
+    "category": "weapon_training",
+    "difficulty": 3,
+    "mapVariant": "weapon_range_linear",
+    "missionProfileId": "mgs1_vr_profile_famas_move_b",
+    "objective": "Destroy all eight MOVE-B targets while controlling automatic fire.",
+    "briefing": "MOVE-B targets stay mobile. Lead each target and use short FAMAS bursts instead of emptying the magazine.",
+    "restrictions": ["FAMAS only", "Moving targets", "Ammunition efficiency scored"],
+    "recommendedGear": ["FAMAS", "Ammo Box"],
+    "requirements": {
+      "targetTimeSeconds": 150,
+      "maxAlerts": 1,
+      "maxKills": 0,
+      "maxDamage": 40,
+      "minShotsFired": 12,
+      "maxShotsFired": 40,
+      "minObjectivesCompleted": 8,
+      "requiredTool": "famas"
+    },
+    "rewards": [
+      {
+        "unlockRank": "FOX",
+        "badge": "FAMAS_TRACKER",
+        "description": "Recognizes disciplined burst control against moving VR targets."
+      }
+    ]
+  },
+  {
+    "id": "vr_psg1_precision_008",
+    "title": "PSG1 Precision Grid",
+    "subtitle": "Weapon Mode / long-range CUBE-B drill",
+    "era": "vr_simulation",
+    "visualPack": "vr_training",
+    "category": "weapon_training",
+    "difficulty": 3,
+    "mapVariant": "weapon_range_linear",
+    "missionProfileId": "mgs1_vr_profile_psg1_cube_b",
+    "objective": "Destroy six distant CUBE-B targets with minimal PSG1 ammunition.",
+    "briefing": "CUBE-B targets remain fixed, making this a pure test of sight alignment, timing and shot economy.",
+    "restrictions": ["PSG1 only", "Stationary targets", "Missed shots heavily penalized"],
+    "recommendedGear": ["PSG1", "Diazepam"],
+    "requirements": {
+      "targetTimeSeconds": 170,
+      "maxAlerts": 1,
+      "maxKills": 0,
+      "maxDamage": 30,
+      "minShotsFired": 6,
+      "maxShotsFired": 10,
+      "minObjectivesCompleted": 6,
+      "requiredTool": "psg1"
+    },
+    "rewards": [
+      {
+        "unlockRank": "FOX",
+        "badge": "PSG1_PRECISION",
+        "description": "Recognizes economical long-range fire against fixed VR targets."
+      }
+    ]
+  },
+  {
+    "id": "vr_grenade_chain_009",
+    "title": "CUBE-R Chain",
+    "subtitle": "Weapon Mode / grenade blast drill",
+    "era": "vr_simulation",
+    "visualPack": "vr_training",
+    "category": "weapon_training",
+    "difficulty": 3,
+    "mapVariant": "boss_arena_vr",
+    "missionProfileId": "mgs1_vr_profile_grenade_cube_r",
+    "objective": "Clear six explosive CUBE-R targets with controlled grenade chain reactions.",
+    "briefing": "CUBE-R targets can trigger nearby red targets. Maintain blast distance and choose the first detonation carefully.",
+    "restrictions": ["Grenades only", "Explosive chain reactions", "Blast damage penalized"],
+    "recommendedGear": ["Grenade", "Ration"],
+    "requirements": {
+      "targetTimeSeconds": 165,
+      "maxAlerts": 1,
+      "maxKills": 0,
+      "maxDamage": 35,
+      "minShotsFired": 2,
+      "maxShotsFired": 8,
+      "minObjectivesCompleted": 6,
+      "requiredTool": "grenade"
+    },
+    "rewards": [
+      {
+        "unlockRank": "FOX",
+        "badge": "CHAIN_REACTION",
+        "description": "Recognizes safe use of explosive target chain reactions."
+      }
+    ]
+  },
+  {
+    "id": "vr_c4_wall_010",
+    "title": "C4 Wall Breach",
+    "subtitle": "Weapon Mode / destructible WALL drill",
+    "era": "vr_simulation",
+    "visualPack": "vr_training",
+    "category": "weapon_training",
+    "difficulty": 3,
+    "mapVariant": "cqc_corridor",
+    "missionProfileId": "mgs1_vr_profile_c4_wall",
+    "objective": "Plant C4 and destroy five WALL obstructions to open the goal route.",
+    "briefing": "WALL targets are destructible obstacles. Place each charge, withdraw beyond the blast and detonate deliberately.",
+    "restrictions": ["C4 only", "Five destructible walls", "Self-inflicted damage penalized"],
+    "recommendedGear": ["C4", "Ration"],
+    "requirements": {
+      "targetTimeSeconds": 190,
+      "maxAlerts": 1,
+      "maxKills": 0,
+      "maxDamage": 30,
+      "minObjectivesCompleted": 5,
+      "requiredTool": "c4"
+    },
+    "rewards": [
+      {
+        "unlockRank": "FOX",
+        "badge": "VR_BREACHER",
+        "description": "Recognizes clean C4 placement against destructible VR walls."
+      }
+    ]
+  },
+  {
+    "id": "vr_claymore_kokeshi_011",
+    "title": "KOKESHI-B Mine Lane",
+    "subtitle": "Weapon Mode / Claymore interception drill",
+    "era": "vr_simulation",
+    "visualPack": "vr_training",
+    "category": "weapon_training",
+    "difficulty": 4,
+    "mapVariant": "surveillance_yard",
+    "missionProfileId": "mgs1_vr_profile_claymore_kokeshi_b",
+    "objective": "Use Claymores to intercept six moving KOKESHI-B targets.",
+    "briefing": "KOKESHI-B is the dedicated Claymore-training target. Read its route before committing each directional mine.",
+    "restrictions": ["Claymore only", "Moving targets", "Mine placement limited"],
+    "recommendedGear": ["Claymore", "Mine Detector"],
+    "requirements": {
+      "targetTimeSeconds": 210,
+      "maxAlerts": 1,
+      "maxKills": 0,
+      "maxDamage": 30,
+      "minObjectivesCompleted": 6,
+      "requiredTool": "claymore"
+    },
+    "rewards": [
+      {
+        "unlockRank": "FOX",
+        "badge": "MINE_INTERCEPTOR",
+        "description": "Recognizes correct Claymore placement against KOKESHI-B targets."
+      }
+    ]
+  },
+  {
+    "id": "vr_stinger_ufo_012",
+    "title": "Stinger UFO Hunt",
+    "subtitle": "Weapon Mode / airborne explosive target drill",
+    "era": "vr_simulation",
+    "visualPack": "vr_training",
+    "category": "weapon_training",
+    "difficulty": 4,
+    "mapVariant": "boss_arena_vr",
+    "missionProfileId": "mgs1_vr_profile_stinger_ufo",
+    "objective": "Acquire clean Stinger locks and destroy four moving UFO targets.",
+    "briefing": "UFO is a large moving explosive target designed for Stinger practice. Keep clear of overlapping blast zones.",
+    "restrictions": ["Stinger only", "Flying targets", "Explosive chain reactions"],
+    "recommendedGear": ["Stinger", "Ration"],
+    "requirements": {
+      "targetTimeSeconds": 200,
+      "maxAlerts": 1,
+      "maxKills": 0,
+      "maxDamage": 40,
+      "minShotsFired": 4,
+      "maxShotsFired": 8,
+      "minObjectivesCompleted": 4,
+      "requiredTool": "stinger"
+    },
+    "rewards": [
+      {
+        "unlockRank": "FOX",
+        "badge": "UFO_LOCK",
+        "description": "Recognizes efficient Stinger locks against airborne VR targets."
+      }
+    ]
+  },
+  {
+    "id": "vr_nikita_move_013",
+    "title": "Nikita Red Route",
+    "subtitle": "Weapon Mode / guided MOVE-R drill",
+    "era": "vr_simulation",
+    "visualPack": "vr_training",
+    "category": "weapon_training",
+    "difficulty": 4,
+    "mapVariant": "dock_infiltration_stealth",
+    "missionProfileId": "mgs1_vr_profile_nikita_move_r",
+    "objective": "Guide Nikita missiles through the route and destroy six explosive MOVE-R targets.",
+    "briefing": "MOVE-R targets move and detonate. Steer around cover, break the correct cluster and keep Snake outside the blast.",
+    "restrictions": ["Nikita only", "Guided missiles", "Moving explosive targets"],
+    "recommendedGear": ["Nikita", "Ration"],
+    "requirements": {
+      "targetTimeSeconds": 220,
+      "maxAlerts": 1,
+      "maxKills": 0,
+      "maxDamage": 40,
+      "minShotsFired": 3,
+      "maxShotsFired": 10,
+      "minObjectivesCompleted": 6,
+      "requiredTool": "nikita"
+    },
+    "rewards": [
+      {
+        "unlockRank": "FOX",
+        "badge": "REMOTE_GUIDANCE",
+        "description": "Recognizes controlled Nikita routing against MOVE-R targets."
+      }
+    ]
+  },
+  {
+    "id": "vr_kokeshi_cqc_014",
+    "title": "KOKESHI-G Unarmed",
+    "subtitle": "Special Mode / bare-handed moving-target drill",
+    "era": "vr_simulation",
+    "visualPack": "vr_training",
+    "category": "cqc",
+    "difficulty": 3,
+    "mapVariant": "cqc_corridor",
+    "missionProfileId": "mgs1_vr_profile_unarmed_kokeshi_g",
+    "objective": "Neutralize six moving KOKESHI-G targets using bare-handed combat only.",
+    "briefing": "KOKESHI-G is reserved for unarmed training. Close distance, commit to each strike and do not fire.",
+    "restrictions": ["No weapon", "KOKESHI-G targets only", "Six neutralizations required"],
+    "recommendedGear": ["CQC"],
+    "requirements": {
+      "targetTimeSeconds": 160,
+      "maxAlerts": 1,
+      "maxKills": 0,
+      "maxDamage": 45,
+      "maxShotsFired": 0,
+      "minNeutralizations": 6,
+      "minObjectivesCompleted": 6,
+      "requiredTool": "cqc"
+    },
+    "rewards": [
+      {
+        "unlockRank": "FOX",
+        "badge": "KOKESHI_UNARMED",
+        "description": "Recognizes a clean bare-handed KOKESHI-G clear."
       }
     ]
   }
