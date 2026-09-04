@@ -12,7 +12,8 @@ import type {
   MissionBuilderEntity,
   MissionBuilderEntity as BuilderEntity,
   MissionBuilderIssueSeverity,
-  MissionBuilderLibrary
+  MissionBuilderLibrary,
+  SideOpsVisualPackId
 } from '../../types/missionBuilder.types';
 import { loadCustomConversations } from '../../systems/studioStorage';
 import {
@@ -28,6 +29,7 @@ import {
   saveMissionBuilderLibrary,
   validateMissionBuilderDocument
 } from '../../systems/missionBuilderStorage';
+import { getCompatibleSideOpsVisualPackIds } from '../../systems/sideOpsCharacterResolver';
 
 interface MissionBuilderProps {
   onPlaytest: (missionId: string) => void;
@@ -50,6 +52,21 @@ const TRIGGERS: ConversationTrigger[] = [
 ];
 
 const ENVIRONMENTS: BuilderEnvironment[] = ['dock', 'tanker', 'jungle', 'facility', 'vr'];
+
+const VISUAL_PACK_LABELS: Record<SideOpsVisualPackId, string> = {
+  mg1: 'MG1 - Outer Heaven',
+  mg2: 'MG2 - Zanzibar Land',
+  mgs1: 'MGS1 - Shadow Moses',
+  mgs2_tanker: 'MGS2 - Tanker',
+  mgs2_plant: 'MGS2 - Big Shell',
+  mgs3: 'MGS3 - Operation Snake Eater',
+  mgs4: 'MGS4 - Guns of the Patriots',
+  peace_walker: 'Peace Walker - 1974',
+  mgsv_ground_zeroes: 'MGSV - Ground Zeroes',
+  mgsv_phantom_pain: 'MGSV - The Phantom Pain',
+  vr_simulation: 'MGS1 - VR Simulation',
+  patriots_ai: 'Patriots AI - Arsenal Gear'
+};
 
 const PALETTE_GROUPS: Array<{ title: string; entities: Array<{ kind: BuilderEntity['kind']; label: string; icon: string }> }> = [
   {
@@ -159,6 +176,7 @@ export function MissionBuilder({ onPlaytest }: MissionBuilderProps) {
   const issues = useMemo(() => validateMissionBuilderDocument(activeDocument), [activeDocument]);
   const errorCount = issues.filter((issue) => issue.severity === 'error').length;
   const warningCount = issues.filter((issue) => issue.severity === 'warning').length;
+  const compatibleVisualPackIds = getCompatibleSideOpsVisualPackIds(activeDocument.era);
   const eraContacts = contacts.filter((contact) => contact.era === activeDocument.era);
   const allConversations = useMemo(() => [...customConversations, ...conversations], [customConversations]);
 
@@ -182,6 +200,17 @@ export function MissionBuilder({ onPlaytest }: MissionBuilderProps) {
 
   function updateField<K extends keyof MissionBuilderDocument>(key: K, value: MissionBuilderDocument[K]): void {
     replaceActive((document) => ({ ...document, [key]: value }));
+  }
+
+  function updateEra(era: MissionBuilderDocument['era']): void {
+    const compatiblePackIds = getCompatibleSideOpsVisualPackIds(era);
+    replaceActive((document) => ({
+      ...document,
+      era,
+      visualPackId: document.visualPackId && compatiblePackIds.includes(document.visualPackId)
+        ? document.visualPackId
+        : compatiblePackIds[0]
+    }));
   }
 
   function updateMissionId(value: string): void {
@@ -461,7 +490,18 @@ export function MissionBuilder({ onPlaytest }: MissionBuilderProps) {
           <div className="builder-metadata-compact">
             <label><span>Title</span><input value={activeDocument.title} onChange={(event) => updateField('title', event.target.value)} /></label>
             <label><span>Mission ID</span><input value={activeDocument.id} onChange={(event) => updateMissionId(event.target.value)} /></label>
-            <label><span>Era</span><select value={activeDocument.era} onChange={(event) => updateField('era', event.target.value as MissionBuilderDocument['era'])}>{eras.map((era) => <option key={era.id} value={era.id}>{era.name}</option>)}</select></label>
+            <label><span>Era</span><select value={activeDocument.era} onChange={(event) => updateEra(event.target.value as MissionBuilderDocument['era'])}>{eras.map((era) => <option key={era.id} value={era.id}>{era.name}</option>)}</select></label>
+            <label>
+              <span>Visual Pack</span>
+              <select
+                value={activeDocument.visualPackId ?? compatibleVisualPackIds[0]}
+                onChange={(event) => updateField('visualPackId', event.target.value as SideOpsVisualPackId)}
+              >
+                {compatibleVisualPackIds.map((packId) => (
+                  <option key={packId} value={packId}>{VISUAL_PACK_LABELS[packId]}</option>
+                ))}
+              </select>
+            </label>
             <label><span>Environment</span><select value={activeDocument.environment} onChange={(event) => updateField('environment', event.target.value as BuilderEnvironment)}>{ENVIRONMENTS.map((environment) => <option key={environment} value={environment}>{environment.toUpperCase()}</option>)}</select></label>
             <label><span>Location</span><input value={activeDocument.location} onChange={(event) => updateField('location', event.target.value)} /></label>
             <label><span>Main Character</span><input value={activeDocument.mainCharacter} onChange={(event) => updateField('mainCharacter', event.target.value)} /></label>

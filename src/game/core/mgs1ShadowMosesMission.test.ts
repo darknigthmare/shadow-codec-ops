@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import missionsJson from '../../data/missions.json';
 import { getMgs1ActorAnimationAssetBySourceTexture } from './mgs1ActorAnimationRegistry';
 import { MGS1_SIDEOPS_ALL_ASSETS } from './mgs1SideOpsAssetRegistry';
 import {
@@ -11,11 +12,15 @@ import {
   MGS1_BOSS_SEQUENCE,
   MGS1_DECOY_OCTOPUS_REVEAL,
   MGS1_ESCAPE_VEHICLES,
+  MGS1_FIELD_PICKUPS,
   MGS1_HAZARD_SEQUENCE,
   MGS1_NPC_CHECKPOINTS,
+  MGS1_PLAYER_WEAPON_PROFILES,
+  MGS1_SEARCHLIGHTS,
   MGS1_SHADOW_MOSES_MISSION_ID,
   MGS1_SHADOW_MOSES_WORLD,
   revealMgs1DecoyOctopus,
+  resolveMgs1PlayerWeaponProfile,
   type Mgs1MissionFlowState
 } from './mgs1ShadowMosesMission';
 
@@ -60,7 +65,7 @@ describe('MGS1 Shadow Moses condensed mission', () => {
   });
 
   it('gives every boss a real projectile, VFX and playable specialist animation', () => {
-    const assetKeys = new Set(MGS1_SIDEOPS_ALL_ASSETS.map((asset) => asset.textureKey));
+    const assetKeys = new Set<string>(MGS1_SIDEOPS_ALL_ASSETS.map((asset) => asset.textureKey));
     MGS1_BOSS_SEQUENCE.forEach((encounter) => {
       expect(assetKeys.has(encounter.textureKey), `${encounter.id}:actor`).toBe(true);
       const animation = getMgs1ActorAnimationAssetBySourceTexture(encounter.textureKey);
@@ -70,6 +75,9 @@ describe('MGS1 Shadow Moses condensed mission', () => {
       encounter.attacks.forEach((attack) => {
         expect(assetKeys.has(attack.projectileTextureKey), `${encounter.id}:${attack.projectileTextureKey}`).toBe(true);
         expect(assetKeys.has(attack.vfxTextureKey), `${encounter.id}:${attack.vfxTextureKey}`).toBe(true);
+        if (attack.impactVfxTextureKey) {
+          expect(assetKeys.has(attack.impactVfxTextureKey), `${encounter.id}:${attack.impactVfxTextureKey}`).toBe(true);
+        }
         expect(animation?.clips[attack.actionClip], `${encounter.id}:${attack.actionClip}`).toBeDefined();
         expect(attack.intervalMs).toBeGreaterThan(0);
         expect(attack.damage).toBeGreaterThan(0);
@@ -96,6 +104,49 @@ describe('MGS1 Shadow Moses condensed mission', () => {
       'mgs1Otacon',
       'mgs1JohnnySasaki'
     ]);
+  });
+
+  it('places every declared field item and both searchlight zones inside the world', () => {
+    const mission = missionsJson.find((entry) => entry.id === MGS1_SHADOW_MOSES_MISSION_ID);
+    expect(mission).toBeDefined();
+    const representedItemIds = new Set([
+      'socom_suppressor',
+      ...MGS1_FIELD_PICKUPS.map((pickup) => pickup.missionItemId)
+    ]);
+    expect([...new Set(mission?.availableItems)].every((itemId) => representedItemIds.has(itemId))).toBe(true);
+    expect(MGS1_FIELD_PICKUPS.map((pickup) => pickup.kind)).toEqual(expect.arrayContaining([
+      'keycard', 'ration', 'chaff', 'ammo', 'cardboard_box', 'secret'
+    ]));
+    MGS1_FIELD_PICKUPS.forEach((pickup) => {
+      expect(pickup.x).toBeGreaterThan(0);
+      expect(pickup.x).toBeLessThan(MGS1_SHADOW_MOSES_WORLD.worldWidth);
+      expect(pickup.y).toBeGreaterThan(0);
+      expect(pickup.y).toBeLessThan(520);
+    });
+    expect(MGS1_SEARCHLIGHTS).toHaveLength(2);
+    MGS1_SEARCHLIGHTS.forEach((searchlight) => {
+      expect(searchlight.x - searchlight.sweep).toBeGreaterThan(0);
+      expect(searchlight.x + searchlight.sweep).toBeLessThan(MGS1_SHADOW_MOSES_WORLD.worldWidth);
+      expect(searchlight.detectionRadius).toBeGreaterThan(0);
+    });
+  });
+
+  it('uses existing canon-appropriate player projectiles for specialist boss counters', () => {
+    expect(resolveMgs1PlayerWeaponProfile('revolver_ocelot').id).toBe('socom');
+    expect(resolveMgs1PlayerWeaponProfile('m1_tank').id).toBe('grenade');
+    expect(resolveMgs1PlayerWeaponProfile('cyborg_ninja').id).toBe('cqc');
+    expect(resolveMgs1PlayerWeaponProfile('sniper_wolf').id).toBe('psg1');
+    expect(resolveMgs1PlayerWeaponProfile('hind_d').id).toBe('stinger');
+    expect(resolveMgs1PlayerWeaponProfile('vulcan_raven').id).toBe('nikita');
+    expect(resolveMgs1PlayerWeaponProfile('metal_gear_rex').id).toBe('stinger');
+    expect(resolveMgs1PlayerWeaponProfile('liquid_snake').id).toBe('cqc');
+
+    const assetKeys = new Set<string>(MGS1_SIDEOPS_ALL_ASSETS.map((asset) => asset.textureKey));
+    Object.values(MGS1_PLAYER_WEAPON_PROFILES).forEach((weapon) => {
+      if (weapon.projectileTextureKey) expect(assetKeys.has(weapon.projectileTextureKey), weapon.id).toBe(true);
+      if (weapon.launchVfxTextureKey) expect(assetKeys.has(weapon.launchVfxTextureKey), weapon.id).toBe(true);
+      if (weapon.impactVfxTextureKey) expect(assetKeys.has(weapon.impactVfxTextureKey), weapon.id).toBe(true);
+    });
   });
 
   it('advances one arena at a time and only unlocks extraction after story and escape setup', () => {

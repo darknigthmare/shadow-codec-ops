@@ -10,7 +10,9 @@ import {
   MGS1_SIDEOPS_ENEMY_ASSETS,
   MGS1_SIDEOPS_MACHINE_ASSETS,
   MGS1_SIDEOPS_NPC_ASSETS,
+  MGS1_SIDEOPS_PROP_ASSETS,
   MGS1_SIDEOPS_PROJECTILE_ASSETS,
+  MGS1_SIDEOPS_RUNTIME_TEXTURES,
   MGS1_SIDEOPS_VFX_ASSETS
 } from './mgs1SideOpsAssetRegistry';
 
@@ -92,7 +94,8 @@ describe('MGS1 Side Ops asset registry', () => {
     expect(MGS1_SIDEOPS_MACHINE_ASSETS).toHaveLength(5);
     expect(MGS1_SIDEOPS_PROJECTILE_ASSETS).toHaveLength(20);
     expect(MGS1_SIDEOPS_VFX_ASSETS).toHaveLength(18);
-    expect(MGS1_SIDEOPS_ALL_ASSETS).toHaveLength(61);
+    expect(MGS1_SIDEOPS_PROP_ASSETS).toHaveLength(1);
+    expect(MGS1_SIDEOPS_ALL_ASSETS).toHaveLength(62);
   });
 
   it('keeps every id, texture key and source path unique', () => {
@@ -118,7 +121,7 @@ describe('MGS1 Side Ops asset registry', () => {
 
   it('uses only local MGS1 paths, positive dimensions and valid fallback colors', () => {
     for (const asset of MGS1_SIDEOPS_ALL_ASSETS) {
-      expect(asset.path).toMatch(/^\/sideops\/mgs1\/(npcs|enemies|bosses|vehicles|projectiles|vfx)\/[a-z0-9-]+\.png$/);
+      expect(asset.path).toMatch(/^\/sideops\/mgs1\/(npcs|enemies|bosses|vehicles|projectiles|vfx|props)\/[a-z0-9-]+\.png$/);
       expect(asset.width).toBeGreaterThan(0);
       expect(asset.height).toBeGreaterThan(0);
       expect(asset.fallbackPrimaryColor).toBeGreaterThanOrEqual(0);
@@ -160,5 +163,23 @@ describe('MGS1 Side Ops asset registry', () => {
     expect(textureKeys.has(MGS1_SIDEOPS_DEFAULT_HOSTILE_TEXTURES.guardTexture)).toBe(true);
     expect(textureKeys.has(MGS1_SIDEOPS_DEFAULT_HOSTILE_TEXTURES.reinforcementTexture)).toBe(true);
     expect(textureKeys.has(MGS1_SIDEOPS_DEFAULT_HOSTILE_TEXTURES.bossTexture)).toBe(true);
+  });
+
+  it('exposes the complete MGS1 Builder visual contract', () => {
+    expect(MGS1_SIDEOPS_RUNTIME_TEXTURES).toEqual({
+      playerTexture: 'player',
+      guardTexture: 'mgs1GenomeLightInfantry',
+      reinforcementTexture: 'mgs1GenomeArcticTrooper',
+      bossTexture: 'mgs1RevolverOcelot',
+      enemyProjectileTexture: 'mgs1FamasTracer',
+      impactVfxTexture: 'mgs1BulletImpactVfx',
+      battlefieldPropTexture: 'mgs1ShadowMosesSupplyContainer'
+    });
+    expect(MGS1_SIDEOPS_PROP_ASSETS).toContainEqual(expect.objectContaining({
+      textureKey: MGS1_SIDEOPS_RUNTIME_TEXTURES.battlefieldPropTexture,
+      path: '/sideops/mgs1/props/shadow-moses-supply-container.png',
+      width: 48,
+      height: 40
+    }));
   });
 });

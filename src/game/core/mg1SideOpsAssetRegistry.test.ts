@@ -12,7 +12,9 @@ import {
   MG1_SIDEOPS_ENEMY_ASSETS,
   MG1_SIDEOPS_MACHINE_ASSETS,
   MG1_SIDEOPS_NPC_ASSETS,
+  MG1_SIDEOPS_PROP_ASSETS,
   MG1_SIDEOPS_PROJECTILE_ASSETS,
+  MG1_SIDEOPS_RUNTIME_TEXTURES,
   MG1_SIDEOPS_VFX_ASSETS
 } from './mg1SideOpsAssetRegistry';
 
@@ -33,7 +35,8 @@ describe('MG1 Side Ops asset registry', () => {
     expect(MG1_SIDEOPS_MACHINE_ASSETS).toHaveLength(5);
     expect(MG1_SIDEOPS_PROJECTILE_ASSETS).toHaveLength(12);
     expect(MG1_SIDEOPS_VFX_ASSETS).toHaveLength(9);
-    expect(MG1_SIDEOPS_ALL_ASSETS).toHaveLength(44);
+    expect(MG1_SIDEOPS_PROP_ASSETS).toHaveLength(1);
+    expect(MG1_SIDEOPS_ALL_ASSETS).toHaveLength(45);
   });
 
   it('keeps every id, texture key and source path unique', () => {
@@ -56,7 +59,7 @@ describe('MG1 Side Ops asset registry', () => {
 
   it('uses local MG1 paths, positive dimensions and valid fallback colors', () => {
     for (const asset of MG1_SIDEOPS_ALL_ASSETS) {
-      expect(asset.path).toMatch(/^\/sideops\/mg1\/(npcs|enemies|bosses|vehicles|projectiles|vfx)\/[a-z0-9-]+\.png$/);
+      expect(asset.path).toMatch(/^\/sideops\/mg1\/(npcs|enemies|bosses|vehicles|projectiles|vfx|props)\/[a-z0-9-]+\.png$/);
       expect(asset.width).toBeGreaterThan(0);
       expect(asset.height).toBeGreaterThan(0);
       expect(asset.fallbackPrimaryColor).toBeGreaterThanOrEqual(0);
@@ -113,6 +116,24 @@ describe('MG1 Side Ops asset registry', () => {
       bossTexture: 'mg1Shotmaker'
     });
     expect(MG1_SIDEOPS_BOSS_ASSETS.some((asset) => asset.textureKey === MG1_SIDEOPS_DEFAULT_HOSTILE_TEXTURES.bossTexture)).toBe(true);
+  });
+
+  it('exposes the complete MG1 Builder visual contract', () => {
+    expect(MG1_SIDEOPS_RUNTIME_TEXTURES).toEqual({
+      playerTexture: 'playerSolidSnakeMg1',
+      guardTexture: 'mg1Guard',
+      reinforcementTexture: 'mg1Guard',
+      bossTexture: 'mg1Shotmaker',
+      enemyProjectileTexture: 'mg1EnemyTracer',
+      impactVfxTexture: 'mg1BulletImpactVfx',
+      battlefieldPropTexture: 'mg1OuterHeavenSupplyCrate'
+    });
+    expect(MG1_SIDEOPS_PROP_ASSETS).toContainEqual(expect.objectContaining({
+      textureKey: MG1_SIDEOPS_RUNTIME_TEXTURES.battlefieldPropTexture,
+      path: '/sideops/mg1/props/outer-heaven-supply-crate.png',
+      width: 48,
+      height: 40
+    }));
   });
 
   it('keeps canonical enemy and boss metadata aligned with registry keys and projectile ids', () => {

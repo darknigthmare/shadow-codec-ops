@@ -22,6 +22,22 @@ describe('AnimatedCodecPortrait', () => {
     expect(markup).not.toContain('data-system-portrait="true"');
   });
 
+  it.each([
+    '/portraits/mgs4/old_snake/neutral.webp',
+    '/portraits/peace_walker/miller/neutral.webp',
+    '/portraits/mgsv/quiet/neutral.webp',
+    '/portraits/vr_simulation/instructor/neutral.webp',
+    '/portraits/patriots_ai/colonel/neutral.webp',
+    '/portraits/custom/local-contact.webp'
+  ])('marks future and custom local portrait path %s as character art', (image) => {
+    const markup = renderToStaticMarkup(
+      <AnimatedCodecPortrait {...baseProps} image={image} />
+    );
+
+    expect(markup).toContain('data-character-portrait="true"');
+    expect(markup).not.toContain('data-system-portrait="true"');
+  });
+
   it('keeps the MSX system fallback marked as a system portrait', () => {
     const markup = renderToStaticMarkup(
       <AnimatedCodecPortrait

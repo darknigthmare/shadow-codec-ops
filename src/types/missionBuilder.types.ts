@@ -3,6 +3,20 @@ import type { MissionCodecTrigger, MissionDefinition, MissionObjective } from '.
 
 export type BuilderEnvironment = 'dock' | 'tanker' | 'jungle' | 'facility' | 'vr';
 
+export type SideOpsVisualPackId =
+  | 'mg1'
+  | 'mg2'
+  | 'mgs1'
+  | 'mgs2_tanker'
+  | 'mgs2_plant'
+  | 'mgs3'
+  | 'mgs4'
+  | 'peace_walker'
+  | 'mgsv_ground_zeroes'
+  | 'mgsv_phantom_pain'
+  | 'vr_simulation'
+  | 'patriots_ai';
+
 export type MissionEntityKind =
   | 'player_start'
   | 'platform'
@@ -39,6 +53,8 @@ export interface MissionBuilderDocument {
   description: string;
   author: string;
   era: EraId;
+  /** Optional on authored documents so legacy imports can derive the correct visual pack. */
+  visualPackId?: SideOpsVisualPackId;
   environment: BuilderEnvironment;
   location: string;
   mainCharacter: string;
@@ -99,6 +115,8 @@ export interface SideOpsMissionProfile {
   title: string;
   location: string;
   header: string;
+  era: EraId;
+  visualPackId: SideOpsVisualPackId;
   environment: BuilderEnvironment;
   worldWidth: number;
   groundColor: number;

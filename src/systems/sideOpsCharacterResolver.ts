@@ -1,7 +1,6 @@
 import type { EraId } from '../types/codec.types';
-import type { BuilderEnvironment } from '../types/missionBuilder.types';
-import { MG1_SIDEOPS_DEFAULT_HOSTILE_TEXTURES } from '../game/core/mg1SideOpsAssetRegistry';
-import { MGS1_SIDEOPS_DEFAULT_HOSTILE_TEXTURES } from '../game/core/mgs1SideOpsAssetRegistry';
+import type { BuilderEnvironment, SideOpsVisualPackId } from '../types/missionBuilder.types';
+import { SIDEOPS_VISUAL_PACK_RUNTIME_TEXTURES } from '../game/core/sideOpsVisualPackRuntime';
 
 export interface SideOpsOperativeAsset {
   id: string;
@@ -24,6 +23,47 @@ export interface SideOpsCharacterResolutionInput {
   era: EraId;
   mainCharacter?: string | null;
   environment: BuilderEnvironment;
+  location?: string | null;
+  visualPackId?: SideOpsVisualPackId | string | null;
+}
+
+export const SIDEOPS_VISUAL_PACK_IDS = [
+  'mg1',
+  'mg2',
+  'mgs1',
+  'mgs2_tanker',
+  'mgs2_plant',
+  'mgs3',
+  'mgs4',
+  'peace_walker',
+  'mgsv_ground_zeroes',
+  'mgsv_phantom_pain',
+  'vr_simulation',
+  'patriots_ai'
+] as const satisfies readonly SideOpsVisualPackId[];
+
+const VISUAL_PACK_ERAS: Record<SideOpsVisualPackId, readonly EraId[]> = {
+  mg1: ['msx'],
+  mg2: ['msx'],
+  mgs1: ['mgs1'],
+  mgs2_tanker: ['mgs2'],
+  mgs2_plant: ['mgs2'],
+  mgs3: ['mgs3'],
+  mgs4: ['mgs4'],
+  peace_walker: ['peace_walker'],
+  mgsv_ground_zeroes: ['mgsv'],
+  mgsv_phantom_pain: ['mgsv'],
+  vr_simulation: ['vr_simulation'],
+  patriots_ai: ['patriots_ai']
+};
+
+export function isSideOpsVisualPackId(value: unknown): value is SideOpsVisualPackId {
+  return typeof value === 'string' && SIDEOPS_VISUAL_PACK_IDS.some((packId) => packId === value);
+}
+
+/** Visual packs that can be authored explicitly for a Mission Builder era. */
+export function getCompatibleSideOpsVisualPackIds(era: EraId): readonly SideOpsVisualPackId[] {
+  return SIDEOPS_VISUAL_PACK_IDS.filter((packId) => VISUAL_PACK_ERAS[packId].some((candidate) => candidate === era));
 }
 
 /**
@@ -123,14 +163,17 @@ const LEGACY_PLAYER_ALIASES: Partial<Record<EraId, Record<string, string>>> = {
   }
 };
 
-const DEFAULT_PLAYER_BY_ERA: Record<EraId, string> = {
-  msx: 'playerSolidSnakeMg1',
+const DEFAULT_PLAYER_BY_VISUAL_PACK: Record<SideOpsVisualPackId, string> = {
+  mg1: 'playerSolidSnakeMg1',
+  mg2: 'playerSolidSnakeMg2',
   mgs1: 'player',
-  mgs2: 'playerRaidenMgs2',
+  mgs2_tanker: 'playerTanker',
+  mgs2_plant: 'playerRaidenMgs2',
   mgs3: 'playerNakedSnakeMgs3',
   mgs4: 'playerOldSnakeMgs4',
   peace_walker: 'playerBigBossPeaceWalker',
-  mgsv: 'playerVenomSnakeMgsv',
+  mgsv_ground_zeroes: 'playerBigBossGroundZeroes',
+  mgsv_phantom_pain: 'playerVenomSnakeMgsv',
   vr_simulation: 'vrPlayer',
   patriots_ai: 'playerRaidenMgs2'
 };
@@ -145,8 +188,59 @@ export function normalizeSideOpsCharacterAlias(value: string | null | undefined)
     .replace(/^_+|_+$/g, '');
 }
 
-function resolvePlayerTexture(input: SideOpsCharacterResolutionInput): string {
-  if (input.environment === 'vr' || input.era === 'vr_simulation') return 'vrPlayer';
+export function resolveSideOpsVisualPackId(input: SideOpsCharacterResolutionInput): SideOpsVisualPackId {
+  if (
+    isSideOpsVisualPackId(input.visualPackId)
+    && (
+      VISUAL_PACK_ERAS[input.visualPackId].some((era) => era === input.era)
+      || (input.visualPackId === 'vr_simulation' && input.environment === 'vr')
+      || (input.visualPackId === 'mgs2_tanker' && input.environment === 'tanker')
+    )
+  ) {
+    return input.visualPackId;
+  }
+
+  if (input.environment === 'vr' || input.era === 'vr_simulation') return 'vr_simulation';
+  if (input.environment === 'tanker') return 'mgs2_tanker';
+
+  const character = normalizeSideOpsCharacterAlias(input.mainCharacter);
+  const location = normalizeSideOpsCharacterAlias(input.location);
+
+  switch (input.era) {
+    case 'msx':
+      return character.includes('mg2') || character.includes('zanzibar') || location.includes('zanzibar')
+        ? 'mg2'
+        : 'mg1';
+    case 'mgs1':
+      return 'mgs1';
+    case 'mgs2':
+      return location.includes('tanker')
+        || character.includes('solid_snake')
+        || character.includes('pliskin')
+        ? 'mgs2_tanker'
+        : 'mgs2_plant';
+    case 'mgs3':
+      return 'mgs3';
+    case 'mgs4':
+      return 'mgs4';
+    case 'peace_walker':
+      return 'peace_walker';
+    case 'mgsv':
+      return character.includes('big_boss_gz')
+        || character.includes('ground_zeroes')
+        || location.includes('ground_zeroes')
+        || location.includes('camp_omega')
+        ? 'mgsv_ground_zeroes'
+        : 'mgsv_phantom_pain';
+    case 'patriots_ai':
+      return 'patriots_ai';
+    default:
+      return 'vr_simulation';
+  }
+}
+
+function resolvePlayerTexture(input: SideOpsCharacterResolutionInput, visualPackId: SideOpsVisualPackId): string {
+  if (visualPackId === 'vr_simulation') return 'vrPlayer';
 
   const alias = normalizeSideOpsCharacterAlias(input.mainCharacter);
   const legacyTexture = LEGACY_PLAYER_ALIASES[input.era]?.[alias];
@@ -157,45 +251,22 @@ function resolvePlayerTexture(input: SideOpsCharacterResolutionInput): string {
   );
   if (operative) return operative.textureKey;
 
-  if (input.era === 'mgs2' && input.environment === 'tanker') return 'playerTanker';
-  return DEFAULT_PLAYER_BY_ERA[input.era] ?? 'player';
+  return DEFAULT_PLAYER_BY_VISUAL_PACK[visualPackId];
 }
 
 /**
  * Resolves the four character roles used by SideOpsScene. Player identity is
- * era-aware. Outer Heaven Builder missions use the MG1 hostile registry while
- * Tanker and VR environments keep their dedicated packs. VR deliberately uses
- * vrGuard for both hostile roles because Side Ops has no target-drone role.
+ * era-aware. Every hostile role comes from the exhaustive visual-pack runtime
+ * matrix, so SideOps never falls back to the retired generic actor aliases.
  */
 export function resolveSideOpsCharacterTextures(input: SideOpsCharacterResolutionInput): SideOpsCharacterTextureSet {
-  if (input.environment === 'vr') {
-    return {
-      playerTexture: 'vrPlayer',
-      guardTexture: 'vrGuard',
-      reinforcementTexture: 'vrGuard',
-      bossTexture: 'vrBoss'
-    };
-  }
-
-  const tanker = input.environment === 'tanker';
-  if (input.era === 'msx' && !tanker) {
-    return {
-      playerTexture: resolvePlayerTexture(input),
-      ...MG1_SIDEOPS_DEFAULT_HOSTILE_TEXTURES
-    };
-  }
-
-  if (input.era === 'mgs1' && !tanker) {
-    return {
-      playerTexture: resolvePlayerTexture(input),
-      ...MGS1_SIDEOPS_DEFAULT_HOSTILE_TEXTURES
-    };
-  }
+  const visualPackId = resolveSideOpsVisualPackId(input);
+  const runtimeTextures = SIDEOPS_VISUAL_PACK_RUNTIME_TEXTURES[visualPackId];
 
   return {
-    playerTexture: resolvePlayerTexture(input),
-    guardTexture: tanker ? 'deckGuard' : 'guard',
-    reinforcementTexture: tanker ? 'deckReinforcement' : 'reinforcementGuard',
-    bossTexture: tanker ? 'bossDeckCommander' : 'bossCaptain'
+    playerTexture: resolvePlayerTexture(input, visualPackId),
+    guardTexture: runtimeTextures.guardTexture,
+    reinforcementTexture: runtimeTextures.reinforcementTexture,
+    bossTexture: runtimeTextures.bossTexture
   };
 }

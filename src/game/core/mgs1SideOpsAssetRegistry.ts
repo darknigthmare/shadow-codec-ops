@@ -1,4 +1,4 @@
-export type Mgs1SideOpsAssetCategory = 'npc' | 'enemy' | 'boss' | 'machine' | 'projectile' | 'vfx';
+export type Mgs1SideOpsAssetCategory = 'npc' | 'enemy' | 'boss' | 'machine' | 'projectile' | 'vfx' | 'prop';
 
 export type Mgs1SideOpsFallbackShape =
   | 'humanoid'
@@ -114,18 +114,46 @@ export const MGS1_SIDEOPS_VFX_ASSETS = [
   { id: 'mgs1_missile_trail_vfx', category: 'vfx', textureKey: 'mgs1MissileTrailVfx', path: '/sideops/mgs1/vfx/missile-trail.png', width: 96, height: 24, loader: 'spritesheet', frameWidth: 24, frameHeight: 24, frameCount: 4, fallbackShape: 'effect', fallbackPrimaryColor: 0x9ca39e, fallbackAccentColor: 0xe5ebe7 }
 ] as const satisfies readonly Mgs1SideOpsSpriteSheetAsset[];
 
+/** Shadow Moses field storage used by generic Builder layouts. */
+export const MGS1_SIDEOPS_PROP_ASSETS = [
+  {
+    id: 'mgs1_shadow_moses_supply_container',
+    category: 'prop',
+    textureKey: 'mgs1ShadowMosesSupplyContainer',
+    path: '/sideops/mgs1/props/shadow-moses-supply-container.png',
+    width: 48,
+    height: 40,
+    loader: 'image',
+    fallbackShape: 'machine',
+    fallbackPrimaryColor: 0x667276,
+    fallbackAccentColor: 0xb8c2c3
+  }
+] as const satisfies readonly Mgs1SideOpsImageAsset[];
+
 export const MGS1_SIDEOPS_ALL_ASSETS = [
   ...MGS1_SIDEOPS_NPC_ASSETS,
   ...MGS1_SIDEOPS_ENEMY_ASSETS,
   ...MGS1_SIDEOPS_BOSS_ASSETS,
   ...MGS1_SIDEOPS_MACHINE_ASSETS,
   ...MGS1_SIDEOPS_PROJECTILE_ASSETS,
-  ...MGS1_SIDEOPS_VFX_ASSETS
+  ...MGS1_SIDEOPS_VFX_ASSETS,
+  ...MGS1_SIDEOPS_PROP_ASSETS
 ] as const satisfies readonly Mgs1SideOpsAsset[];
+
+/** Complete visual contract for generic Shadow Moses Builder missions. */
+export const MGS1_SIDEOPS_RUNTIME_TEXTURES = {
+  playerTexture: 'player',
+  guardTexture: 'mgs1GenomeLightInfantry',
+  reinforcementTexture: 'mgs1GenomeArcticTrooper',
+  bossTexture: 'mgs1RevolverOcelot',
+  enemyProjectileTexture: 'mgs1FamasTracer',
+  impactVfxTexture: 'mgs1BulletImpactVfx',
+  battlefieldPropTexture: 'mgs1ShadowMosesSupplyContainer'
+} as const;
 
 /** Stable defaults for generic Shadow Moses Builder encounters. */
 export const MGS1_SIDEOPS_DEFAULT_HOSTILE_TEXTURES = {
-  guardTexture: 'mgs1GenomeLightInfantry',
-  reinforcementTexture: 'mgs1GenomeArcticTrooper',
-  bossTexture: 'mgs1RevolverOcelot'
+  guardTexture: MGS1_SIDEOPS_RUNTIME_TEXTURES.guardTexture,
+  reinforcementTexture: MGS1_SIDEOPS_RUNTIME_TEXTURES.reinforcementTexture,
+  bossTexture: MGS1_SIDEOPS_RUNTIME_TEXTURES.bossTexture
 } as const;

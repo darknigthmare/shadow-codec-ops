@@ -4,18 +4,64 @@ import { parseStoredSideOpsMissionId, resolveSideOpsRuntimeScene } from '../../s
 import { SIDEOPS_PLAYABLE_OPERATIVE_ASSETS } from '../../systems/sideOpsCharacterResolver';
 import { MG1_ACTOR_ANIMATION_ASSETS } from '../core/mg1ActorAnimationRegistry';
 import {
-  MG1_SIDEOPS_ALL_ASSETS,
-  type Mg1SideOpsAsset
+  MG1_SIDEOPS_ALL_ASSETS
 } from '../core/mg1SideOpsAssetRegistry';
 import { MGS1_ACTOR_ANIMATION_ASSETS } from '../core/mgs1ActorAnimationRegistry';
 import { MGS1_VR_ALL_ASSETS } from '../core/mgs1VrEnvironmentRegistry';
 import { MGS1_VR_GAMEPLAY_ALL_ASSETS } from '../core/mgs1VrGameplayAssetRegistry';
 import {
-  MGS1_SIDEOPS_ALL_ASSETS,
-  type Mgs1SideOpsAsset
+  MGS1_SIDEOPS_ALL_ASSETS
 } from '../core/mgs1SideOpsAssetRegistry';
+import {
+  MGS2_PLANT_SIDEOPS_ALL_ASSETS
+} from '../core/mgs2PlantSideOpsAssetRegistry';
+import {
+  MGS2_TANKER_SIDEOPS_ALL_ASSETS
+} from '../core/mgs2TankerSideOpsAssetRegistry';
+import {
+  MG2_SIDEOPS_ALL_ASSETS
+} from '../core/mg2SideOpsAssetRegistry';
+import {
+  MGS4_SIDEOPS_ALL_ASSETS
+} from '../core/mgs4SideOpsAssetRegistry';
+import {
+  MGSV_PHANTOM_PAIN_SIDEOPS_ALL_ASSETS
+} from '../core/mgsvPhantomPainSideOpsAssetRegistry';
+import {
+  MGSV_GROUND_ZEROES_SIDEOPS_ALL_ASSETS
+} from '../core/mgsvGroundZeroesSideOpsAssetRegistry';
+import {
+  PEACE_WALKER_SIDEOPS_ALL_ASSETS
+} from '../core/peaceWalkerSideOpsAssetRegistry';
+import {
+  PATRIOTS_AI_SIDEOPS_ALL_ASSETS
+} from '../core/patriotsAiSideOpsAssetRegistry';
+import {
+  MGS3_SIDEOPS_ALL_ASSETS
+} from '../core/mgs3SideOpsAssetRegistry';
+import { SIDEOPS_GENERATED_BACKDROP_ASSETS } from '../core/sideOpsBackdropRegistry';
 
-type RegistryAsset = Mg1SideOpsAsset | Mgs1SideOpsAsset;
+type RegistryFallbackShape = 'humanoid' | 'animal' | 'machine' | 'sensor' | 'projectile' | 'effect';
+
+interface RegistryAssetBase {
+  readonly textureKey: string;
+  readonly path: string;
+  readonly width: number;
+  readonly height: number;
+  readonly fallbackShape: RegistryFallbackShape;
+  readonly fallbackPrimaryColor: number;
+  readonly fallbackAccentColor: number;
+}
+
+type RegistryAsset = RegistryAssetBase & (
+  | { readonly loader: 'image' }
+  | {
+    readonly loader: 'spritesheet';
+    readonly frameWidth: number;
+    readonly frameHeight: number;
+    readonly frameCount: number;
+  }
+);
 
 function preloadRegistryAsset(scene: Phaser.Scene, asset: RegistryAsset): void {
   if (asset.loader === 'spritesheet') {
@@ -131,17 +177,24 @@ export class PreloadScene extends Phaser.Scene {
     this.load.image('playerTanker', '/sideops/characters/solid-snake-mgs2.png');
     this.load.image('guard', '/sideops/characters/genome-guard.png');
     this.load.image('reinforcementGuard', '/sideops/characters/genome-reinforcement.png');
-    this.load.image('deckGuard', '/sideops/characters/tanker-guard.png');
-    this.load.image('deckReinforcement', '/sideops/characters/tanker-reinforcement.png');
     this.load.image('bossCaptain', '/sideops/characters/armored-guard-captain.png');
-    this.load.image('bossDeckCommander', '/sideops/characters/shielded-deck-commander.png');
     this.load.image('vrPlayer', '/vr/characters/vr-operator.png');
     this.load.image('vrGuard', '/vr/characters/vr-guard.png');
     this.load.image('vrTarget', '/vr/characters/vr-target-drone.png');
     this.load.image('vrBoss', '/vr/characters/vr-armored-captain.png');
     SIDEOPS_PLAYABLE_OPERATIVE_ASSETS.forEach((asset) => this.load.image(asset.textureKey, asset.path));
     MG1_SIDEOPS_ALL_ASSETS.forEach((asset) => preloadRegistryAsset(this, asset));
+    MG2_SIDEOPS_ALL_ASSETS.forEach((asset) => preloadRegistryAsset(this, asset));
     MGS1_SIDEOPS_ALL_ASSETS.forEach((asset) => preloadRegistryAsset(this, asset));
+    MGS2_TANKER_SIDEOPS_ALL_ASSETS.forEach((asset) => preloadRegistryAsset(this, asset));
+    MGS2_PLANT_SIDEOPS_ALL_ASSETS.forEach((asset) => preloadRegistryAsset(this, asset));
+    MGS3_SIDEOPS_ALL_ASSETS.forEach((asset) => preloadRegistryAsset(this, asset));
+    MGS4_SIDEOPS_ALL_ASSETS.forEach((asset) => preloadRegistryAsset(this, asset));
+    PEACE_WALKER_SIDEOPS_ALL_ASSETS.forEach((asset) => preloadRegistryAsset(this, asset));
+    MGSV_GROUND_ZEROES_SIDEOPS_ALL_ASSETS.forEach((asset) => preloadRegistryAsset(this, asset));
+    MGSV_PHANTOM_PAIN_SIDEOPS_ALL_ASSETS.forEach((asset) => preloadRegistryAsset(this, asset));
+    PATRIOTS_AI_SIDEOPS_ALL_ASSETS.forEach((asset) => preloadRegistryAsset(this, asset));
+    SIDEOPS_GENERATED_BACKDROP_ASSETS.forEach((asset) => this.load.image(asset.textureKey, asset.path));
     MGS1_VR_ALL_ASSETS.forEach((asset) => this.load.image(asset.textureKey, asset.path));
     MGS1_VR_GAMEPLAY_ALL_ASSETS.forEach((asset) => {
       if (asset.loader === 'spritesheet') {
@@ -215,7 +268,16 @@ export class PreloadScene extends Phaser.Scene {
     });
 
     MG1_SIDEOPS_ALL_ASSETS.forEach((asset) => createRegistryFallbackTexture(this, graphics, asset));
+    MG2_SIDEOPS_ALL_ASSETS.forEach((asset) => createRegistryFallbackTexture(this, graphics, asset));
     MGS1_SIDEOPS_ALL_ASSETS.forEach((asset) => createRegistryFallbackTexture(this, graphics, asset));
+    MGS2_TANKER_SIDEOPS_ALL_ASSETS.forEach((asset) => createRegistryFallbackTexture(this, graphics, asset));
+    MGS2_PLANT_SIDEOPS_ALL_ASSETS.forEach((asset) => createRegistryFallbackTexture(this, graphics, asset));
+    MGS3_SIDEOPS_ALL_ASSETS.forEach((asset) => createRegistryFallbackTexture(this, graphics, asset));
+    MGS4_SIDEOPS_ALL_ASSETS.forEach((asset) => createRegistryFallbackTexture(this, graphics, asset));
+    PEACE_WALKER_SIDEOPS_ALL_ASSETS.forEach((asset) => createRegistryFallbackTexture(this, graphics, asset));
+    MGSV_GROUND_ZEROES_SIDEOPS_ALL_ASSETS.forEach((asset) => createRegistryFallbackTexture(this, graphics, asset));
+    MGSV_PHANTOM_PAIN_SIDEOPS_ALL_ASSETS.forEach((asset) => createRegistryFallbackTexture(this, graphics, asset));
+    PATRIOTS_AI_SIDEOPS_ALL_ASSETS.forEach((asset) => createRegistryFallbackTexture(this, graphics, asset));
 
     if (!this.textures.exists('guard')) {
       graphics.fillStyle(0x9aff8a, 1);
@@ -238,34 +300,6 @@ export class PreloadScene extends Phaser.Scene {
       graphics.fillStyle(0x2a220b, 1);
       graphics.fillRect(8, 8, 16, 7);
       graphics.generateTexture('reinforcementGuard', 32, 48);
-      graphics.clear();
-    }
-
-    if (!this.textures.exists('deckGuard')) {
-      graphics.fillStyle(0x9fd4ff, 1);
-      graphics.fillRect(7, 0, 18, 10);
-      graphics.fillRect(5, 10, 22, 22);
-      graphics.fillRect(4, 32, 8, 14);
-      graphics.fillRect(20, 32, 8, 14);
-      graphics.fillStyle(0x102838, 1);
-      graphics.fillRect(8, 8, 16, 7);
-      graphics.fillStyle(0xd8ffd4, 1);
-      graphics.fillRect(6, 16, 20, 4);
-      graphics.generateTexture('deckGuard', 32, 48);
-      graphics.clear();
-    }
-
-    if (!this.textures.exists('deckReinforcement')) {
-      graphics.fillStyle(0xffdf85, 1);
-      graphics.fillRect(7, 0, 18, 10);
-      graphics.fillRect(5, 10, 22, 22);
-      graphics.fillRect(4, 32, 8, 14);
-      graphics.fillRect(20, 32, 8, 14);
-      graphics.fillStyle(0x123047, 1);
-      graphics.fillRect(8, 8, 16, 7);
-      graphics.fillStyle(0x9fd4ff, 1);
-      graphics.fillRect(6, 16, 20, 4);
-      graphics.generateTexture('deckReinforcement', 32, 48);
       graphics.clear();
     }
 
@@ -398,24 +432,6 @@ export class PreloadScene extends Phaser.Scene {
       graphics.lineStyle(2, 0xf8f49a, 1);
       graphics.strokeRect(6, 12, 36, 30);
       graphics.generateTexture('bossCaptain', 48, 64);
-      graphics.clear();
-    }
-
-    if (!this.textures.exists('bossDeckCommander')) {
-      graphics.fillStyle(0x9fd4ff, 1);
-      graphics.fillRect(10, 0, 28, 12);
-      graphics.fillRect(6, 12, 36, 30);
-      graphics.fillRect(4, 42, 12, 20);
-      graphics.fillRect(32, 42, 12, 20);
-      graphics.fillStyle(0x112c3f, 1);
-      graphics.fillRect(12, 12, 24, 8);
-      graphics.fillStyle(0xf8f49a, 1);
-      graphics.fillRect(5, 24, 38, 5);
-      graphics.lineStyle(2, 0x9fd4ff, 1);
-      graphics.strokeRect(6, 12, 36, 30);
-      graphics.fillStyle(0xd8ffd4, 1);
-      graphics.fillRect(0, 20, 9, 28);
-      graphics.generateTexture('bossDeckCommander', 48, 64);
       graphics.clear();
     }
 

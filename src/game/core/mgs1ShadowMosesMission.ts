@@ -17,6 +17,8 @@ export interface Mgs1BossAttackPattern {
   readonly id: string;
   readonly projectileTextureKey: string;
   readonly vfxTextureKey: string;
+  /** Optional impact override when launch and detonation need distinct effects. */
+  readonly impactVfxTextureKey?: string;
   readonly actionClip: Mgs1ActorAnimationState;
   readonly intervalMs: number;
   readonly speed: number;
@@ -51,65 +53,65 @@ export const MGS1_BOSS_SEQUENCE = [
     id: 'revolver_ocelot', name: 'Revolver Ocelot', behavior: 'ricochet', textureKey: 'mgs1RevolverOcelot',
     activationX: 1150, arenaX: 1450, gateX: 1810, y: 452, hp: 5, contactDamage: 10, signatureClip: 'reload',
     attacks: [
-      { id: 'single_action_ricochet', projectileTextureKey: 'mgs1OcelotRound', vfxTextureKey: 'mgs1MuzzleFlashVfx', actionClip: 'attack', intervalMs: 1050, speed: 410, damage: 10 }
+      { id: 'single_action_ricochet', projectileTextureKey: 'mgs1OcelotRound', vfxTextureKey: 'mgs1MuzzleFlashVfx', impactVfxTextureKey: 'mgs1MetalRicochetVfx', actionClip: 'attack', intervalMs: 1050, speed: 410, damage: 10 }
     ]
   },
   {
     id: 'm1_tank', name: 'M1 Tank', behavior: 'tank', textureKey: 'mgs1M1Tank',
     activationX: 2250, arenaX: 2550, gateX: 2940, y: 458, hp: 7, contactDamage: 35, stationary: true, signatureClip: 'attack',
     attacks: [
-      { id: 'main_cannon', projectileTextureKey: 'mgs1TankShell', vfxTextureKey: 'mgs1GrenadeExplosionVfx', actionClip: 'attack', intervalMs: 1450, speed: 290, damage: 22 }
+      { id: 'main_cannon', projectileTextureKey: 'mgs1TankShell', vfxTextureKey: 'mgs1MuzzleFlashVfx', impactVfxTextureKey: 'mgs1GrenadeExplosionVfx', actionClip: 'attack', intervalMs: 1450, speed: 290, damage: 22 }
     ]
   },
   {
     id: 'cyborg_ninja', name: 'Cyborg Ninja', behavior: 'ninja', textureKey: 'mgs1CyborgNinja',
     activationX: 3750, arenaX: 4050, gateX: 4410, y: 448, hp: 7, contactDamage: 18, signatureClip: 'vanish',
     attacks: [
-      { id: 'high_frequency_slash', projectileTextureKey: 'mgs1NinjaSlash', vfxTextureKey: 'mgs1NinjaElectricVfx', actionClip: 'slash', intervalMs: 820, speed: 470, damage: 15 }
+      { id: 'high_frequency_slash', projectileTextureKey: 'mgs1NinjaSlash', vfxTextureKey: 'mgs1NinjaElectricVfx', impactVfxTextureKey: 'mgs1NinjaElectricVfx', actionClip: 'slash', intervalMs: 820, speed: 470, damage: 15 }
     ]
   },
   {
     id: 'psycho_mantis', name: 'Psycho Mantis', behavior: 'psychic', textureKey: 'mgs1PsychoMantis',
     activationX: 4850, arenaX: 5150, gateX: 5510, y: 385, hp: 8, contactDamage: 12, airborne: true, signatureClip: 'psychic',
     attacks: [
-      { id: 'telekinetic_orb', projectileTextureKey: 'mgs1MantisPsychicOrb', vfxTextureKey: 'mgs1MantisPsychicWaveVfx', actionClip: 'psychic', intervalMs: 1180, speed: 260, damage: 14 }
+      { id: 'telekinetic_orb', projectileTextureKey: 'mgs1MantisPsychicOrb', vfxTextureKey: 'mgs1MantisPsychicWaveVfx', impactVfxTextureKey: 'mgs1MantisPsychicWaveVfx', actionClip: 'psychic', intervalMs: 1180, speed: 260, damage: 14 }
     ]
   },
   {
     id: 'sniper_wolf', name: 'Sniper Wolf', behavior: 'sniper', textureKey: 'mgs1SniperWolf',
     activationX: 6050, arenaX: 6350, gateX: 6710, y: 452, hp: 7, contactDamage: 12, stationary: true, signatureClip: 'snipe',
     attacks: [
-      { id: 'psg1_shot', projectileTextureKey: 'mgs1WolfRound', vfxTextureKey: 'mgs1SnowPuffVfx', actionClip: 'snipe', intervalMs: 1350, speed: 650, damage: 24 }
+      { id: 'psg1_shot', projectileTextureKey: 'mgs1WolfRound', vfxTextureKey: 'mgs1MuzzleFlashVfx', impactVfxTextureKey: 'mgs1SnowPuffVfx', actionClip: 'snipe', intervalMs: 1350, speed: 650, damage: 24 }
     ]
   },
   {
     id: 'hind_d', name: 'Hind D', behavior: 'aircraft', textureKey: 'mgs1HindD',
     activationX: 7250, arenaX: 7550, gateX: 7940, y: 260, hp: 9, contactDamage: 30, airborne: true, signatureClip: 'attack',
     attacks: [
-      { id: 'hind_rocket_salvo', projectileTextureKey: 'mgs1HindRocket', vfxTextureKey: 'mgs1RotorWashVfx', actionClip: 'attack', intervalMs: 1250, speed: 330, damage: 20 }
+      { id: 'hind_rocket_salvo', projectileTextureKey: 'mgs1HindRocket', vfxTextureKey: 'mgs1RotorWashVfx', impactVfxTextureKey: 'mgs1MissileExplosionVfx', actionClip: 'attack', intervalMs: 1250, speed: 330, damage: 20 }
     ]
   },
   {
     id: 'vulcan_raven', name: 'Vulcan Raven', behavior: 'vulcan', textureKey: 'mgs1VulcanRaven',
     activationX: 8550, arenaX: 8850, gateX: 9210, y: 444, hp: 10, contactDamage: 22, signatureClip: 'attack',
     attacks: [
-      { id: 'm61_vulcan_burst', projectileTextureKey: 'mgs1VulcanTracer', vfxTextureKey: 'mgs1FirePlumeVfx', actionClip: 'attack', intervalMs: 760, speed: 520, damage: 12 }
+      { id: 'm61_vulcan_burst', projectileTextureKey: 'mgs1VulcanTracer', vfxTextureKey: 'mgs1FirePlumeVfx', impactVfxTextureKey: 'mgs1BulletImpactVfx', actionClip: 'attack', intervalMs: 760, speed: 520, damage: 12 }
     ]
   },
   {
     id: 'metal_gear_rex', name: 'Metal Gear REX', behavior: 'rex', textureKey: 'mgs1MetalGearRex',
     activationX: 9850, arenaX: 10200, gateX: 10620, y: 414, hp: 15, contactDamage: 45, stationary: true, signatureClip: 'missile',
     attacks: [
-      { id: 'rex_missile', projectileTextureKey: 'mgs1RexMissile', vfxTextureKey: 'mgs1MissileTrailVfx', actionClip: 'missile', intervalMs: 1250, speed: 300, damage: 18 },
-      { id: 'rex_laser', projectileTextureKey: 'mgs1RexLaser', vfxTextureKey: 'mgs1RexLaserImpactVfx', actionClip: 'laser', intervalMs: 900, speed: 620, damage: 16 },
-      { id: 'rex_railgun', projectileTextureKey: 'mgs1RexRailgunSlug', vfxTextureKey: 'mgs1RexExplosionVfx', actionClip: 'railgun', intervalMs: 1550, speed: 470, damage: 28 }
+      { id: 'rex_missile', projectileTextureKey: 'mgs1RexMissile', vfxTextureKey: 'mgs1MissileTrailVfx', impactVfxTextureKey: 'mgs1MissileExplosionVfx', actionClip: 'missile', intervalMs: 1250, speed: 300, damage: 18 },
+      { id: 'rex_laser', projectileTextureKey: 'mgs1RexLaser', vfxTextureKey: 'mgs1RexLaserImpactVfx', impactVfxTextureKey: 'mgs1RexLaserImpactVfx', actionClip: 'laser', intervalMs: 900, speed: 620, damage: 16 },
+      { id: 'rex_railgun', projectileTextureKey: 'mgs1RexRailgunSlug', vfxTextureKey: 'mgs1MuzzleFlashVfx', impactVfxTextureKey: 'mgs1RexExplosionVfx', actionClip: 'railgun', intervalMs: 1550, speed: 470, damage: 28 }
     ]
   },
   {
     id: 'liquid_snake', name: 'Liquid Snake', behavior: 'final_duel', textureKey: 'mgs1LiquidSnake',
     activationX: 11250, arenaX: 11550, gateX: 11910, y: 448, hp: 10, contactDamage: 20, signatureClip: 'melee',
     attacks: [
-      { id: 'jeep_famas_burst', projectileTextureKey: 'mgs1FamasTracer', vfxTextureKey: 'mgs1MuzzleFlashVfx', actionClip: 'melee', intervalMs: 850, speed: 490, damage: 14 }
+      { id: 'jeep_famas_burst', projectileTextureKey: 'mgs1FamasTracer', vfxTextureKey: 'mgs1MuzzleFlashVfx', impactVfxTextureKey: 'mgs1BulletImpactVfx', actionClip: 'melee', intervalMs: 850, speed: 490, damage: 14 }
     ]
   }
 ] as const satisfies readonly Mgs1BossEncounterDefinition[];
@@ -139,6 +141,96 @@ export const MGS1_HAZARD_SEQUENCE = [
   { id: 'genome_heavy_tower', behavior: 'heavy', textureKey: 'mgs1GenomeHeavyTrooper', x: 8150, y: 444, patrolMin: 8030, patrolMax: 8330, hp: 4, contactDamage: 14, projectileTextureKey: 'mgs1VulcanTracer' },
   { id: 'gun_camera_rex_hangar', behavior: 'gun_camera', textureKey: 'mgs1GunCamera', x: 9520, y: 235, patrolMin: 9440, patrolMax: 9600, hp: 2, contactDamage: 0, projectileTextureKey: 'mgs1FamasTracer' }
 ] as const satisfies readonly Mgs1HazardDefinition[];
+
+export type Mgs1FieldPickupKind = 'keycard' | 'ration' | 'chaff' | 'ammo' | 'cardboard_box' | 'secret';
+
+export interface Mgs1FieldPickupDefinition {
+  readonly id: string;
+  readonly missionItemId: string;
+  readonly kind: Mgs1FieldPickupKind;
+  readonly label: string;
+  readonly textureKey: string;
+  readonly fallbackTextureKey: string;
+  readonly x: number;
+  readonly y: number;
+  readonly amount?: number;
+  readonly tint?: number;
+}
+
+/**
+ * Every non-weapon item declared by `shadow_dock_001` receives a physical,
+ * collectible representation. Repeated supplies preserve the long condensed
+ * route without introducing equipment that the mission does not declare.
+ */
+export const MGS1_FIELD_PICKUPS: readonly Mgs1FieldPickupDefinition[] = [
+  { id: 'dock_card_1', missionItemId: 'keycard_lv1', kind: 'keycard', label: 'CARD 1', textureKey: 'keycard', fallbackTextureKey: 'keycard', x: 850, y: 320 },
+  { id: 'heliport_box_a', missionItemId: 'cardboard_box', kind: 'cardboard_box', label: 'CARDBOARD BOX A', textureKey: 'crate', fallbackTextureKey: 'crate', x: 1940, y: 430, tint: 0xb98a55 },
+  { id: 'canyon_ration', missionItemId: 'ration', kind: 'ration', label: 'RATION', textureKey: 'ration', fallbackTextureKey: 'ration', x: 3040, y: 430, amount: 1 },
+  { id: 'storage_chaff', missionItemId: 'chaff_grenade', kind: 'chaff', label: 'CHAFF GRENADE', textureKey: 'chaffPickup', fallbackTextureKey: 'chaffPickup', x: 4510, y: 430, amount: 1 },
+  { id: 'cave_ammo', missionItemId: 'ammo_box', kind: 'ammo', label: 'SOCOM AMMO', textureKey: 'ammoBox', fallbackTextureKey: 'ammoBox', x: 5620, y: 430, amount: 12 },
+  { id: 'snowfield_ration', missionItemId: 'ration', kind: 'ration', label: 'RATION', textureKey: 'ration', fallbackTextureKey: 'ration', x: 6810, y: 430, amount: 1 },
+  { id: 'tower_ammo', missionItemId: 'ammo_box', kind: 'ammo', label: 'SOCOM AMMO', textureKey: 'ammoBox', fallbackTextureKey: 'ammoBox', x: 8060, y: 430, amount: 14 },
+  { id: 'warehouse_chaff', missionItemId: 'chaff_grenade', kind: 'chaff', label: 'CHAFF GRENADE', textureKey: 'chaffPickup', fallbackTextureKey: 'chaffPickup', x: 9300, y: 430, amount: 1 },
+  { id: 'rex_archive', missionItemId: 'hidden_archive_fragment', kind: 'secret', label: 'HIDDEN ARCHIVE', textureKey: 'mgs1VrEnvPropSecretNode', fallbackTextureKey: 'secretItem', x: 9650, y: 285 },
+  { id: 'escape_ammo', missionItemId: 'ammo_box', kind: 'ammo', label: 'SOCOM AMMO', textureKey: 'ammoBox', fallbackTextureKey: 'ammoBox', x: 10720, y: 430, amount: 16 }
+];
+
+export interface Mgs1SearchlightDefinition {
+  readonly id: string;
+  readonly x: number;
+  readonly y: number;
+  readonly sweep: number;
+  readonly periodMs: number;
+  readonly detectionRadius: number;
+  readonly phase: number;
+}
+
+/** Heliport and communications-tower search zones represented in the mission metadata. */
+export const MGS1_SEARCHLIGHTS = [
+  { id: 'heliport_searchlight', x: 2020, y: 120, sweep: 320, periodMs: 980, detectionRadius: 105, phase: 0 },
+  { id: 'tower_searchlight', x: 7060, y: 105, sweep: 360, periodMs: 1120, detectionRadius: 112, phase: Math.PI }
+] as const satisfies readonly Mgs1SearchlightDefinition[];
+
+export type Mgs1PlayerWeaponId = 'socom' | 'grenade' | 'psg1' | 'nikita' | 'stinger' | 'cqc';
+
+export interface Mgs1PlayerWeaponProfile {
+  readonly id: Mgs1PlayerWeaponId;
+  readonly label: string;
+  readonly projectileTextureKey?: string;
+  readonly launchVfxTextureKey?: string;
+  readonly impactVfxTextureKey?: string;
+  readonly speed: number;
+  readonly damage: number;
+  readonly intervalMs: number;
+  readonly ammoCost: number;
+}
+
+/**
+ * Condensed automatic loadout: each existing boss keeps its canonical counter
+ * without adding a weapon-selection screen to the established control scheme.
+ */
+export const MGS1_PLAYER_WEAPON_PROFILES: Readonly<Record<Mgs1PlayerWeaponId, Mgs1PlayerWeaponProfile>> = {
+  socom: { id: 'socom', label: 'SOCOM', projectileTextureKey: 'mgs1SocomBullet', launchVfxTextureKey: 'mgs1MuzzleFlashVfx', impactVfxTextureKey: 'mgs1BulletImpactVfx', speed: 620, damage: 1, intervalMs: 245, ammoCost: 1 },
+  grenade: { id: 'grenade', label: 'GRENADE', projectileTextureKey: 'mgs1Grenade', impactVfxTextureKey: 'mgs1GrenadeExplosionVfx', speed: 430, damage: 1, intervalMs: 520, ammoCost: 1 },
+  psg1: { id: 'psg1', label: 'PSG1', projectileTextureKey: 'mgs1Psg1Round', launchVfxTextureKey: 'mgs1MuzzleFlashVfx', impactVfxTextureKey: 'mgs1BulletImpactVfx', speed: 760, damage: 1, intervalMs: 620, ammoCost: 1 },
+  nikita: { id: 'nikita', label: 'NIKITA', projectileTextureKey: 'mgs1NikitaMissile', launchVfxTextureKey: 'mgs1MissileTrailVfx', impactVfxTextureKey: 'mgs1MissileExplosionVfx', speed: 390, damage: 1, intervalMs: 650, ammoCost: 1 },
+  stinger: { id: 'stinger', label: 'STINGER', projectileTextureKey: 'mgs1StingerMissile', launchVfxTextureKey: 'mgs1MissileTrailVfx', impactVfxTextureKey: 'mgs1MissileExplosionVfx', speed: 520, damage: 1, intervalMs: 720, ammoCost: 1 },
+  cqc: { id: 'cqc', label: 'CQC', speed: 0, damage: 1, intervalMs: 320, ammoCost: 0 }
+};
+
+const MGS1_PLAYER_WEAPON_BY_ENCOUNTER: Readonly<Partial<Record<string, Mgs1PlayerWeaponId>>> = {
+  m1_tank: 'grenade',
+  cyborg_ninja: 'cqc',
+  sniper_wolf: 'psg1',
+  hind_d: 'stinger',
+  vulcan_raven: 'nikita',
+  metal_gear_rex: 'stinger',
+  liquid_snake: 'cqc'
+};
+
+export function resolveMgs1PlayerWeaponProfile(encounterId: string | null | undefined): Mgs1PlayerWeaponProfile {
+  return MGS1_PLAYER_WEAPON_PROFILES[MGS1_PLAYER_WEAPON_BY_ENCOUNTER[encounterId ?? ''] ?? 'socom'];
+}
 
 export const MGS1_NPC_CHECKPOINTS = [
   { id: 'meryl', name: 'MERYL', textureKey: 'mgs1MerylSilverburgh', x: 1980, y: 452 },

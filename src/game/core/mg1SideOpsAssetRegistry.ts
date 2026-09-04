@@ -1,4 +1,4 @@
-export type Mg1SideOpsAssetCategory = 'npc' | 'enemy' | 'boss' | 'machine' | 'projectile' | 'vfx';
+export type Mg1SideOpsAssetCategory = 'npc' | 'enemy' | 'boss' | 'machine' | 'projectile' | 'vfx' | 'prop';
 
 export type Mg1SideOpsFallbackShape =
   | 'humanoid'
@@ -101,21 +101,49 @@ export const MG1_SIDEOPS_VFX_ASSETS = [
   { id: 'mg1_dust_puff_vfx', category: 'vfx', textureKey: 'mg1DustPuffVfx', path: '/sideops/mg1/vfx/dust-puff.png', width: 64, height: 16, loader: 'spritesheet', frameWidth: 16, frameHeight: 16, frameCount: 4, fallbackShape: 'effect', fallbackPrimaryColor: 0x9b875f, fallbackAccentColor: 0xd5c596 }
 ] as const satisfies readonly Mg1SideOpsSpriteSheetAsset[];
 
+/** Outer Heaven field storage used by generic Builder layouts. */
+export const MG1_SIDEOPS_PROP_ASSETS = [
+  {
+    id: 'mg1_outer_heaven_supply_crate',
+    category: 'prop',
+    textureKey: 'mg1OuterHeavenSupplyCrate',
+    path: '/sideops/mg1/props/outer-heaven-supply-crate.png',
+    width: 48,
+    height: 40,
+    loader: 'image',
+    fallbackShape: 'machine',
+    fallbackPrimaryColor: 0x4f5638,
+    fallbackAccentColor: 0x98815b
+  }
+] as const satisfies readonly Mg1SideOpsImageAsset[];
+
 export const MG1_SIDEOPS_ALL_ASSETS = [
   ...MG1_SIDEOPS_NPC_ASSETS,
   ...MG1_SIDEOPS_ENEMY_ASSETS,
   ...MG1_SIDEOPS_BOSS_ASSETS,
   ...MG1_SIDEOPS_MACHINE_ASSETS,
   ...MG1_SIDEOPS_PROJECTILE_ASSETS,
-  ...MG1_SIDEOPS_VFX_ASSETS
+  ...MG1_SIDEOPS_VFX_ASSETS,
+  ...MG1_SIDEOPS_PROP_ASSETS
 ] as const satisfies readonly Mg1SideOpsAsset[];
+
+/** Complete visual contract for generic Outer Heaven Builder missions. */
+export const MG1_SIDEOPS_RUNTIME_TEXTURES = {
+  playerTexture: 'playerSolidSnakeMg1',
+  guardTexture: 'mg1Guard',
+  reinforcementTexture: 'mg1Guard',
+  bossTexture: 'mg1Shotmaker',
+  enemyProjectileTexture: 'mg1EnemyTracer',
+  impactVfxTexture: 'mg1BulletImpactVfx',
+  battlefieldPropTexture: 'mg1OuterHeavenSupplyCrate'
+} as const;
 
 /**
  * The first canonical named mercenary is the safest generic Builder boss.
  * Big Boss and TX-55 remain reserved for explicit finale/sabotage profiles.
  */
 export const MG1_SIDEOPS_DEFAULT_HOSTILE_TEXTURES = {
-  guardTexture: 'mg1Guard',
-  reinforcementTexture: 'mg1Guard',
-  bossTexture: 'mg1Shotmaker'
+  guardTexture: MG1_SIDEOPS_RUNTIME_TEXTURES.guardTexture,
+  reinforcementTexture: MG1_SIDEOPS_RUNTIME_TEXTURES.reinforcementTexture,
+  bossTexture: MG1_SIDEOPS_RUNTIME_TEXTURES.bossTexture
 } as const;

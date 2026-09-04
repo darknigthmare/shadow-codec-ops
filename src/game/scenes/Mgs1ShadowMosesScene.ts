@@ -29,13 +29,17 @@ import {
   MGS1_BOSS_SEQUENCE,
   MGS1_DECOY_OCTOPUS_REVEAL,
   MGS1_ESCAPE_VEHICLES,
+  MGS1_FIELD_PICKUPS,
   MGS1_HAZARD_SEQUENCE,
   MGS1_NPC_CHECKPOINTS,
+  MGS1_SEARCHLIGHTS,
   MGS1_SHADOW_MOSES_MISSION_ID,
   MGS1_SHADOW_MOSES_WORLD,
   revealMgs1DecoyOctopus,
+  resolveMgs1PlayerWeaponProfile,
   type Mgs1BossAttackPattern,
   type Mgs1BossEncounterDefinition,
+  type Mgs1FieldPickupDefinition,
   type Mgs1HazardDefinition,
   type Mgs1MissionFlowState
 } from '../core/mgs1ShadowMosesMission';
@@ -81,6 +85,7 @@ const MGS1_CODEC = {
   rex: { trigger: 'boss_intro', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_rex', message: 'Metal Gear REX is active.', pauseGame: true },
   decoy: { trigger: 'secret_frequency', contactId: 'naomi_mgs1', conversationId: 'mgs1_naomi_genetics_manual', message: 'The DARPA Chief identity was a biological disguise.', pauseGame: false },
   manual: { trigger: 'manual_call', contactId: 'otacon_mgs1', conversationId: 'mgs1_otacon_security_manual', message: 'Otacon is monitoring Shadow Moses security.', pauseGame: false },
+  searchlight: { trigger: 'searchlight_detected', contactId: 'otacon_mgs1', conversationId: 'mgs1_otacon_searchlight_hint', message: 'The heliport searchlights have acquired Snake.', pauseGame: false },
   lowHealth: { trigger: 'low_health', contactId: 'naomi_mgs1', conversationId: 'mgs1_naomi_medical', message: 'Snake needs medical support.', pauseGame: false },
   complete: { trigger: 'mission_complete', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_mission_complete', message: 'Shadow Moses escaped. Mission complete.', pauseGame: true },
   failed: { trigger: 'low_health', contactId: 'naomi_mgs1', conversationId: 'mgs1_naomi_mission_failed', message: 'Snake is down. Mission failed.', pauseGame: false }
@@ -104,6 +109,8 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
   private decoyLabel: Phaser.GameObjects.Text | null = null;
   private escapeJeep: Phaser.Physics.Arcade.Sprite | null = null;
   private snowmobile: Phaser.GameObjects.Sprite | null = null;
+  private cardboardBoxSprite: Phaser.GameObjects.Sprite | null = null;
+  private searchlightGraphics!: Phaser.GameObjects.Graphics;
 
   private flow: Mgs1MissionFlowState = createMgs1MissionFlowState();
   private maxHealth = 100;
@@ -113,11 +120,16 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
   private rations: number = MGS1_SHADOW_MOSES_WORLD.startRations;
   private chaff: number = MGS1_SHADOW_MOSES_WORLD.startChaff;
   private chaffActiveUntil = 0;
+  private hasKeycard = false;
+  private hasCardboardBox = false;
+  private hiddenArchiveFound = false;
   private missionCompleted = false;
   private alertState: Mgs1AlertState = 'NORMAL';
   private alertUntil = 0;
   private lastAlertSource = 'none';
   private lowHealthCodecEmitted = false;
+  private searchlightCodecEmitted = false;
+  private nextSearchlightAlertAt = 0;
   private nextPlayerShotAt = 0;
   private lastDamageAt = 0;
 
@@ -155,6 +167,7 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
     this.createVfxAnimations();
     this.createShadowMosesBackdrop();
     this.createWorldGeometry();
+    this.searchlightGraphics = this.add.graphics().setDepth(2);
 
     this.player = this.physics.add.sprite(
       MGS1_SHADOW_MOSES_WORLD.start.x,
@@ -164,6 +177,8 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
     this.configureActorSprite(this.player, 'player', 'player');
     this.player.setCollideWorldBounds(true).setDragX(1300).setMaxVelocity(320, 540);
     this.physics.add.collider(this.player, this.platforms);
+    this.createCardboardBoxOverlay();
+    this.spawnFieldPickups();
 
     this.playerProjectiles = this.physics.add.group({ maxSize: 48 });
     this.enemyProjectiles = this.physics.add.group({ maxSize: 96 });
@@ -213,6 +228,8 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
     if (this.missionCompleted) return;
     this.inputController.update();
     this.handlePlayerInput();
+    this.updateCardboardBox();
+    this.updateSearchlights();
     this.handleDecoyReveal();
     this.activateEncounterWhenReady();
     this.updateActiveBoss();
@@ -233,6 +250,7 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
     this.decoyLabel = null;
     this.escapeJeep = null;
     this.snowmobile = null;
+    this.cardboardBoxSprite = null;
     this.maxHealth = 100;
     this.health = 100;
     this.maxAmmo = Math.max(MGS1_SHADOW_MOSES_WORLD.maxAmmo, MGS1_SHADOW_MOSES_WORLD.startAmmo + bonuses.ammo);
@@ -240,11 +258,16 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
     this.rations = MGS1_SHADOW_MOSES_WORLD.startRations + bonuses.rations;
     this.chaff = MGS1_SHADOW_MOSES_WORLD.startChaff;
     this.chaffActiveUntil = 0;
+    this.hasKeycard = false;
+    this.hasCardboardBox = false;
+    this.hiddenArchiveFound = false;
     this.missionCompleted = false;
     this.alertState = 'NORMAL';
     this.alertUntil = 0;
     this.lastAlertSource = 'none';
     this.lowHealthCodecEmitted = false;
+    this.searchlightCodecEmitted = false;
+    this.nextSearchlightAlertAt = 0;
     this.nextPlayerShotAt = 0;
     this.lastDamageAt = 0;
     this.shotsFired = 0;
@@ -401,6 +424,98 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
     }
   }
 
+  /** Turns every mission-declared field item into a visible collectible. */
+  private spawnFieldPickups(): void {
+    MGS1_FIELD_PICKUPS.forEach((definition) => {
+      const textureKey = this.resolveTexture(definition.textureKey, definition.fallbackTextureKey);
+      const pickup = this.physics.add.sprite(definition.x, definition.y, textureKey).setDepth(9);
+      if (definition.tint) pickup.setTint(definition.tint);
+      if (definition.kind === 'cardboard_box') pickup.setScale(0.9, 0.72);
+      this.physics.add.collider(pickup, this.platforms);
+      const label = this.add.text(definition.x, definition.y - 30, definition.label, {
+        fontFamily: 'monospace', fontSize: '9px', color: definition.kind === 'secret' ? '#7cebd8' : '#d8dfb3', backgroundColor: '#061015bb'
+      }).setOrigin(0.5).setDepth(9);
+      this.physics.add.overlap(this.player, pickup, () => {
+        if (!pickup.active) return;
+        this.collectFieldPickup(definition);
+        pickup.destroy();
+        label.destroy();
+      }, undefined, this);
+    });
+  }
+
+  private collectFieldPickup(definition: Mgs1FieldPickupDefinition): void {
+    const amount = definition.amount ?? 1;
+    if (definition.kind === 'keycard') this.hasKeycard = true;
+    if (definition.kind === 'cardboard_box') this.hasCardboardBox = true;
+    if (definition.kind === 'ration') this.rations += amount;
+    if (definition.kind === 'chaff') this.chaff += amount;
+    if (definition.kind === 'ammo') this.ammo = Math.min(this.maxAmmo, this.ammo + amount);
+    if (definition.kind === 'secret') this.hiddenArchiveFound = true;
+    this.flashStatus(`${definition.label} RECOVERED`);
+    this.emitHudUpdate();
+  }
+
+  /** Box A reuses the established crate fallback and the existing crouch input. */
+  private createCardboardBoxOverlay(): void {
+    this.cardboardBoxSprite = this.add.sprite(this.player.x, this.player.y + 8, 'crate')
+      .setDepth(11)
+      .setScale(1.05, 0.9)
+      .setTint(0xb98a55)
+      .setVisible(false);
+  }
+
+  private updateCardboardBox(): void {
+    const active = this.isCardboardBoxActive();
+    this.player.setAlpha(active ? 0.08 : 1);
+    this.cardboardBoxSprite
+      ?.setPosition(this.player.x, this.player.y + 8)
+      .setVisible(active);
+  }
+
+  private isCardboardBoxActive(): boolean {
+    const body = this.player?.body as Phaser.Physics.Arcade.Body | undefined;
+    return this.hasCardboardBox
+      && Boolean(body?.blocked.down)
+      && Math.abs(body?.velocity.x ?? 0) < 4
+      && Boolean(this.inputController?.isDown('crouch'));
+  }
+
+  /** Draws and evaluates the two search zones declared by the MGS1 mission. */
+  private updateSearchlights(): void {
+    this.searchlightGraphics.clear();
+    const jammed = this.isChaffActive();
+    const concealed = this.isCardboardBoxActive() && this.alertState !== 'ALERT';
+    let detectedBy: string | null = null;
+
+    MGS1_SEARCHLIGHTS.forEach((searchlight) => {
+      const sweep = Math.sin(this.time.now / searchlight.periodMs + searchlight.phase);
+      const targetX = searchlight.x + sweep * searchlight.sweep;
+      const targetY = 505;
+      this.searchlightGraphics.fillStyle(jammed ? 0x88a8ff : 0xf8f49a, jammed ? 0.045 : 0.12);
+      this.searchlightGraphics.beginPath();
+      this.searchlightGraphics.moveTo(searchlight.x, searchlight.y);
+      this.searchlightGraphics.lineTo(targetX - searchlight.detectionRadius, targetY);
+      this.searchlightGraphics.lineTo(targetX + searchlight.detectionRadius, targetY);
+      this.searchlightGraphics.closePath();
+      this.searchlightGraphics.fillPath();
+      this.searchlightGraphics.fillStyle(jammed ? 0x88a8ff : 0xf8f49a, 0.82);
+      this.searchlightGraphics.fillCircle(searchlight.x, searchlight.y, 7);
+
+      if (!jammed && !concealed && this.player.y > 330 && Math.abs(this.player.x - targetX) < searchlight.detectionRadius) {
+        detectedBy = searchlight.id;
+      }
+    });
+
+    if (!detectedBy || this.time.now < this.nextSearchlightAlertAt) return;
+    this.nextSearchlightAlertAt = this.time.now + 5200;
+    this.triggerAlert(detectedBy);
+    if (!this.searchlightCodecEmitted) {
+      this.searchlightCodecEmitted = true;
+      this.emitCodec(MGS1_CODEC.searchlight);
+    }
+  }
+
   private spawnNpcCheckpoints(): void {
     MGS1_NPC_CHECKPOINTS.forEach((checkpoint) => {
       const sprite = this.add.sprite(
@@ -505,25 +620,32 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
     else if (Math.abs(this.player.body?.velocity.x ?? 0) > 4) this.playActorLoop(this.player, 'move');
     else this.playActorLoop(this.player, 'idle');
 
-    if (this.inputController.isDown('fire') && this.time.now >= this.nextPlayerShotAt) this.fireSocom();
+    if (this.inputController.isDown('fire') && this.time.now >= this.nextPlayerShotAt && !this.isCardboardBoxActive()) this.fireEquippedWeapon();
     if (this.inputController.justDown('cqc')) this.performCqc();
     if (this.inputController.justDown('chaff')) this.useChaff();
     if (this.inputController.justDown('ration')) this.useRation();
     if (this.inputController.justDown('codec')) this.emitCodec(MGS1_CODEC.manual);
   }
 
-  private fireSocom(): void {
-    if (this.ammo <= 0) {
-      this.flashStatus('SOCOM AMMUNITION DEPLETED');
+  private fireEquippedWeapon(): void {
+    const weapon = resolveMgs1PlayerWeaponProfile(this.activeBoss?.definition.id);
+    if (weapon.id === 'cqc') {
+      this.flashStatus('CQC REQUIRED // USE CLOSE-QUARTERS ATTACK');
+      this.nextPlayerShotAt = this.time.now + weapon.intervalMs;
+      return;
+    }
+    if (this.ammo < weapon.ammoCost) {
+      this.flashStatus(`${weapon.label} AMMUNITION DEPLETED`);
       this.nextPlayerShotAt = this.time.now + 300;
       return;
     }
+    if (!weapon.projectileTextureKey) return;
     const direction = this.player.flipX ? -1 : 1;
     const projectile = this.obtainProjectile(
       this.playerProjectiles,
       this.player.x + direction * 22,
       this.player.y - 8,
-      'mgs1SocomBullet',
+      weapon.projectileTextureKey,
       'bullet'
     );
     if (!projectile) return;
@@ -537,20 +659,21 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
       const dy = target.y - projectile.y;
       const distance = Math.max(1, Math.sqrt(dx * dx + dy * dy));
       projectile
-        .setVelocity((dx / distance) * 620, (dy / distance) * 620)
+        .setVelocity((dx / distance) * weapon.speed, (dy / distance) * weapon.speed)
         .setRotation(Math.atan2(dy, dx));
     } else {
-      projectile.setVelocity(direction * 620, 0);
+      projectile.setVelocity(direction * weapon.speed, 0);
     }
-    projectile.setData('damage', 1);
+    projectile.setData('damage', weapon.damage);
+    projectile.setData('impactVfx', weapon.impactVfxTextureKey ?? 'mgs1BulletImpactVfx');
     this.time.delayedCall(PLAYER_PROJECTILE_LIFETIME_MS, () => {
       if (projectile.active) this.expireProjectile(projectile, false);
     });
-    this.ammo -= 1;
+    this.ammo -= weapon.ammoCost;
     this.shotsFired += 1;
-    this.nextPlayerShotAt = this.time.now + 245;
+    this.nextPlayerShotAt = this.time.now + weapon.intervalMs;
     this.playActorAction(this.player, 'attack');
-    this.playVfx('mgs1MuzzleFlashVfx', projectile.x, projectile.y, direction < 0);
+    if (weapon.launchVfxTextureKey) this.playVfx(weapon.launchVfxTextureKey, projectile.x, projectile.y, direction < 0);
   }
 
   /** CQC remains useful against patrols and gives the Liquid duel a close-range option. */
@@ -574,7 +697,29 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
     }
     this.chaff -= 1;
     this.chaffActiveUntil = this.time.now + 7000;
-    this.playVfx('mgs1ChaffBurstVfx', this.player.x, this.player.y - 15);
+    const direction = this.player.flipX ? -1 : 1;
+    const chaffGrenade = this.add.image(
+      this.player.x + direction * 18,
+      this.player.y - 12,
+      this.resolveTexture('mgs1ChaffGrenade', 'chaffPickup')
+    ).setDepth(34).setFlipX(direction < 0);
+    const detonate = () => {
+      if (!chaffGrenade.active) return;
+      this.playVfx('mgs1ChaffBurstVfx', chaffGrenade.x, chaffGrenade.y);
+      chaffGrenade.destroy();
+    };
+    if (this.inputController.profile.reducedMotion) detonate();
+    else {
+      this.tweens.add({
+        targets: chaffGrenade,
+        x: chaffGrenade.x + direction * 86,
+        y: chaffGrenade.y - 38,
+        angle: direction * 160,
+        duration: 220,
+        ease: 'Sine.Out',
+        onComplete: detonate
+      });
+    }
     this.hazards.filter((unit) => unit.definition.behavior === 'gun_camera' && !unit.disabled).forEach((unit) => {
       unit.sprite.setTint(0x6faaa4);
     });
@@ -634,7 +779,10 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
     // The opening shot is immediate so even a very fast player sees each registered projectile/VFX pair.
     this.fireBossAttack(unit);
     this.triggerAlert(`${encounter.name} arena`);
-    this.flashStatus(`${encounter.name.toUpperCase()} // BOSS BATTLE`);
+    const weapon = resolveMgs1PlayerWeaponProfile(encounter.id);
+    this.flashStatus(
+      `${encounter.name.toUpperCase()} // ${weapon.label} ${weapon.id === 'cqc' ? 'REQUIRED' : 'EQUIPPED'}`,
+    );
     this.emitCodec(encounter.id === 'metal_gear_rex' ? MGS1_CODEC.rex : MGS1_CODEC.foxhound);
   }
 
@@ -685,7 +833,7 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
     if (!projectile) return;
     this.aimProjectileAtPlayer(projectile, pattern);
     projectile.setData('damage', pattern.damage);
-    projectile.setData('impactVfx', pattern.vfxTextureKey);
+    projectile.setData('impactVfx', pattern.impactVfxTextureKey ?? pattern.vfxTextureKey);
     this.time.delayedCall(2600, () => {
       if (projectile.active) this.expireEnemyProjectile(projectile, false);
     });
@@ -719,7 +867,14 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
     unit.sprite.setVelocity(0, 0);
     (unit.sprite.body as Phaser.Physics.Arcade.Body).enable = false;
     this.playActorAction(unit.sprite, 'death');
-    this.playVfx(unit.definition.id === 'metal_gear_rex' ? 'mgs1RexExplosionVfx' : 'mgs1GrenadeExplosionVfx', unit.sprite.x, unit.sprite.y - 15);
+    const machineBoss = ['m1_tank', 'hind_d', 'metal_gear_rex'].includes(unit.definition.id);
+    const defeatVfx = unit.definition.id === 'metal_gear_rex'
+      ? 'mgs1RexExplosionVfx'
+      : unit.definition.id === 'hind_d'
+        ? 'mgs1MissileExplosionVfx'
+        : 'mgs1GrenadeExplosionVfx';
+    this.playVfx(defeatVfx, unit.sprite.x, unit.sprite.y - 15);
+    if (machineBoss) this.playVfx('mgs1SmokePlumeVfx', unit.sprite.x, unit.sprite.y - 45);
     this.kills += 1;
     this.completedObjectives.add(`defeat_${unit.definition.id}`);
     const ammoBeforeRecovery = this.ammo;
@@ -741,12 +896,15 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
   }
 
   private updateHazards(): void {
+    const concealed = this.isCardboardBoxActive() && this.alertState !== 'ALERT';
     this.hazards.forEach((unit) => {
       if (unit.disabled || !unit.sprite.active) return;
       const definition = unit.definition;
       const cameraJammed = definition.behavior === 'gun_camera' && this.isChaffActive();
       if (definition.behavior === 'gun_camera') {
         unit.sprite.setVelocity(0, 0);
+        if (cameraJammed) unit.sprite.setTint(0x6faaa4);
+        else unit.sprite.clearTint();
         this.playActorLoop(unit.sprite, cameraJammed ? 'hit' : 'idle');
       } else {
         if (unit.sprite.x <= definition.patrolMin) unit.direction = 1;
@@ -759,7 +917,7 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
         this.playActorLoop(unit.sprite, 'move');
       }
 
-      if (!cameraJammed && definition.projectileTextureKey && Math.abs(this.player.x - unit.sprite.x) <= 430 && this.time.now >= unit.nextAttackAt) {
+      if (!cameraJammed && !concealed && definition.projectileTextureKey && Math.abs(this.player.x - unit.sprite.x) <= 430 && this.time.now >= unit.nextAttackAt) {
         this.fireHazardProjectile(unit);
       }
     });
@@ -851,7 +1009,10 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
 
   private expireProjectile(projectile: Phaser.Physics.Arcade.Sprite, impact: boolean): void {
     if (!projectile.active) return;
-    if (impact) this.playVfx('mgs1BulletImpactVfx', projectile.x, projectile.y);
+    if (impact) {
+      const vfx = String(projectile.getData('impactVfx') ?? '');
+      this.playVfx(vfx || 'mgs1BulletImpactVfx', projectile.x, projectile.y);
+    }
     projectile.disableBody(true, true);
   }
 
@@ -931,7 +1092,9 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
 
   private updateHud(): void {
     if (!this.hudText) return;
-    this.hudText.setText(`LIFE ${this.health}/${this.maxHealth}  SOCOM ${this.ammo}/${this.maxAmmo}  RATION ${this.rations}  CHAFF ${this.chaff}`);
+    const weapon = resolveMgs1PlayerWeaponProfile(this.activeBoss?.definition.id);
+    const boxState = this.isCardboardBoxActive() ? 'DEPLOYED' : this.hasCardboardBox ? 'READY' : '--';
+    this.hudText.setText(`LIFE ${this.health}/${this.maxHealth}  ${weapon.label} ${weapon.id === 'cqc' ? '--' : `${this.ammo}/${this.maxAmmo}`}  RATION ${this.rations}  CHAFF ${this.chaff}  CARD ${this.hasKeycard ? '1' : '--'}  BOX ${boxState}`);
     this.objectiveText.setText(`OBJECTIVE: ${getMgs1ObjectiveLabel(this.flow)}`);
     this.statusText.setText(`SHADOW MOSES ${this.flow.defeatedEncounterIds.length}/${MGS1_BOSS_SEQUENCE.length}  DECOY ${this.flow.decoyRevealed ? 'EXPOSED' : 'UNKNOWN'}  ${this.isChaffActive() ? 'CHAFF ACTIVE' : ''}`);
     this.alertText.setText(this.alertState === 'ALERT' ? `! ALERT // ${this.lastAlertSource}` : 'NORMAL');
@@ -951,7 +1114,7 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
       maxAmmo: this.maxAmmo,
       rations: this.rations,
       chaff: this.chaff,
-      hasKeycard: this.flow.decoyRevealed,
+      hasKeycard: this.hasKeycard,
       alertState: this.alertState,
       suspicion: this.alertState === 'ALERT' ? 100 : 0,
       stealthScore: this.getStealthScore(),
@@ -967,8 +1130,8 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
       objectiveStage: activeBoss?.definition.id ?? (this.flow.escapeVehiclesDeployed ? 'escape' : 'infiltration'),
       objectivesCompleted: this.completedObjectives.size,
       totalObjectives: MGS1_SHADOW_MOSES_WORLD.totalObjectives,
-      secretsFound: this.flow.decoyRevealed ? 1 : 0,
-      totalSecrets: 1,
+      secretsFound: Number(this.flow.decoyRevealed) + Number(this.hiddenArchiveFound),
+      totalSecrets: 2,
       bossActive: Boolean(activeBoss),
       bossDefeated: isMgs1BossRouteComplete(this.flow),
       bossHealth: activeBoss?.hp ?? 0,
@@ -1037,8 +1200,8 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
       camerasDisabled: this.camerasDisabled,
       objectivesCompleted: this.completedObjectives.size,
       totalObjectives: MGS1_SHADOW_MOSES_WORLD.totalObjectives,
-      secretsFound: this.flow.decoyRevealed ? 1 : 0,
-      totalSecrets: 1,
+      secretsFound: Number(this.flow.decoyRevealed) + Number(this.hiddenArchiveFound),
+      totalSecrets: 2,
       bossDefeated: isMgs1BossRouteComplete(this.flow),
       noAlert: this.alertCount === 0,
       noKill: this.kills === 0,

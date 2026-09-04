@@ -1,4 +1,6 @@
 import Phaser from 'phaser';
+import type { EraId } from '../../types/codec.types';
+import type { SideOpsVisualPackId } from '../../types/missionBuilder.types';
 import { getStorageKey } from '../../systems/saveEngine';
 import {
   emitGameEvent,
@@ -21,6 +23,13 @@ import {
   type Mg1ActorAnimationAsset,
   type Mg1ActorAnimationState
 } from '../core/mg1ActorAnimationRegistry';
+import { MGS1_SIDEOPS_RUNTIME_TEXTURES } from '../core/mgs1SideOpsAssetRegistry';
+import { MGS2_TANKER_SIDEOPS_RUNTIME_TEXTURES } from '../core/mgs2TankerSideOpsAssetRegistry';
+import {
+  SIDEOPS_SUPPLEMENTAL_RUNTIME_TEXTURES,
+  type SideOpsSupplementalRuntimeTextures
+} from '../core/sideOpsVisualPackRuntime';
+import { resolveSideOpsBackdropTexture } from '../core/sideOpsBackdropRegistry';
 
 type AlertState = 'NORMAL' | 'SUSPICION' | 'ALERT' | 'EVASION' | 'CAUTION' | 'MISSION FAILED';
 type GuardRole = 'patrol' | 'reinforcement';
@@ -63,6 +72,8 @@ interface CodecProfileCall {
 
 interface MissionProfile {
   id: string;
+  era: EraId;
+  visualPackId: SideOpsVisualPackId;
   environment: 'dock' | 'tanker' | 'jungle' | 'facility' | 'vr';
   title: string;
   location: string;
@@ -121,6 +132,8 @@ const MISSION_STORAGE_KEY = 'sideops-active-mission-id';
 
 const SHADOW_DOCK_PROFILE: MissionProfile = {
   id: 'shadow_dock_001',
+  era: 'mgs1',
+  visualPackId: 'mgs1',
   environment: 'dock',
   title: 'Dock Infiltration',
   location: 'Snowfield Docks',
@@ -130,7 +143,7 @@ const SHADOW_DOCK_PROFILE: MissionProfile = {
   backdropColor: 0x041007,
   structureColor: 0x0d2a14,
   start: { x: 90, y: 454 },
-  playerTexture: 'player',
+  playerTexture: MGS1_SIDEOPS_RUNTIME_TEXTURES.playerTexture,
   startAmmo: 26,
   startRations: 1,
   startChaff: 1,
@@ -141,9 +154,9 @@ const SHADOW_DOCK_PROFILE: MissionProfile = {
   searchlight: { x: 1990, y: 118, sweep: 360 },
   elevator: { x: 3630, y: 470, label: 'cargo elevator' },
   keycard: { x: 1000, y: 290, label: 'Keycard Lv.1' },
-  boss: { name: 'Armored Guard Captain', x: 2990, y: 456, hp: 10, texture: 'bossCaptain', baseFacingRight: true, tintPhaseOne: 0xffdf85, tintPhaseTwo: 0xff6b6b },
-  guardTexture: 'guard',
-  reinforcementTexture: 'reinforcementGuard',
+  boss: { name: 'Revolver Ocelot', x: 2990, y: 456, hp: 10, texture: MGS1_SIDEOPS_RUNTIME_TEXTURES.bossTexture, baseFacingRight: true, tintPhaseOne: 0xffdf85, tintPhaseTwo: 0xff6b6b },
+  guardTexture: MGS1_SIDEOPS_RUNTIME_TEXTURES.guardTexture,
+  reinforcementTexture: MGS1_SIDEOPS_RUNTIME_TEXTURES.reinforcementTexture,
   platforms: [
     { x: 480, y: 520, scaleX: 16 }, { x: 1120, y: 520, scaleX: 16 }, { x: 1760, y: 520, scaleX: 16 },
     { x: 2410, y: 520, scaleX: 16 }, { x: 3150, y: 520, scaleX: 22 }, { x: 520, y: 410, scaleX: 3 },
@@ -171,7 +184,7 @@ const SHADOW_DOCK_PROFILE: MissionProfile = {
     recover_keycard: 'Recover Keycard Lv.1',
     open_security_door: 'Open Lv.1 security door',
     cross_security_yard: 'Cross searchlight yard',
-    defeat_captain: 'Defeat Armored Guard Captain',
+    defeat_captain: 'Defeat Revolver Ocelot',
     extract: 'Reach cargo elevator'
   },
   completionX: { openDoor: 1545, crossYard: 2140, bossArena: 2580 },
@@ -192,15 +205,17 @@ const SHADOW_DOCK_PROFILE: MissionProfile = {
     reinforcement: { trigger: 'reinforcement', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_reinforcement', message: 'Reinforcements deployed.', pauseGame: false },
     cameraDetected: { trigger: 'camera_detected', contactId: 'otacon_mgs1', conversationId: 'mgs1_otacon_tech', message: 'Camera sightline detected. Technical support available.', pauseGame: false },
     searchlight: { trigger: 'searchlight_detected', contactId: 'otacon_mgs1', conversationId: 'mgs1_otacon_searchlight_hint', message: 'Searchlight sweep detected. Technical support available.', pauseGame: false },
-    bossIntro: { trigger: 'boss_intro', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_boss_intro', message: 'Armored Guard Captain encountered.', pauseGame: true },
-    bossMidfight: { trigger: 'boss_midfight', contactId: 'naomi_mgs1', conversationId: 'mgs1_naomi_boss_midfight', message: 'Boss armor pattern changed.', pauseGame: false },
-    bossDefeated: { trigger: 'boss_defeated', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_boss_defeated', message: 'Boss defeated. Extraction route open.', pauseGame: true },
+    bossIntro: { trigger: 'boss_intro', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_boss_intro', message: 'Revolver Ocelot has sealed the dock route.', pauseGame: true },
+    bossMidfight: { trigger: 'boss_midfight', contactId: 'naomi_mgs1', conversationId: 'mgs1_naomi_boss_midfight', message: 'Ocelot is accelerating his ricochet pattern.', pauseGame: false },
+    bossDefeated: { trigger: 'boss_defeated', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_boss_defeated', message: 'Ocelot is down. Extraction route open.', pauseGame: true },
     secret: { trigger: 'secret_frequency', contactId: 'otacon_mgs1', conversationId: 'mgs1_otacon_secret_found', message: 'Hidden signal archive recovered.', pauseGame: false }
   }
 };
 
 const TANKER_HOLD_PROFILE: MissionProfile = {
   id: 'tanker_hold_002',
+  era: 'mgs2',
+  visualPackId: 'mgs2_tanker',
   environment: 'tanker',
   title: 'Tanker Hold Sabotage',
   location: 'Rain Deck / Cargo Hold',
@@ -221,9 +236,9 @@ const TANKER_HOLD_PROFILE: MissionProfile = {
   searchlight: { x: 2360, y: 105, sweep: 430 },
   elevator: { x: 4110, y: 470, label: 'cargo hold exit' },
   keycard: { x: 1195, y: 285, label: 'Bulkhead Keycard' },
-  boss: { name: 'Shielded Deck Commander', x: 3470, y: 456, hp: 12, texture: 'bossDeckCommander', baseFacingRight: false, tintPhaseOne: 0x9fd4ff, tintPhaseTwo: 0xffdf85 },
-  guardTexture: 'deckGuard',
-  reinforcementTexture: 'deckReinforcement',
+  boss: { name: 'Olga Gurlukovich', x: 3470, y: 456, hp: 12, texture: MGS2_TANKER_SIDEOPS_RUNTIME_TEXTURES.bossTexture, baseFacingRight: false, tintPhaseOne: 0x9fd4ff, tintPhaseTwo: 0xffdf85 },
+  guardTexture: MGS2_TANKER_SIDEOPS_RUNTIME_TEXTURES.guardTexture,
+  reinforcementTexture: MGS2_TANKER_SIDEOPS_RUNTIME_TEXTURES.reinforcementTexture,
   platforms: [
     { x: 490, y: 520, scaleX: 16 }, { x: 1150, y: 520, scaleX: 17 }, { x: 1820, y: 520, scaleX: 17 },
     { x: 2500, y: 520, scaleX: 18 }, { x: 3200, y: 520, scaleX: 18 }, { x: 3900, y: 520, scaleX: 16 },
@@ -253,7 +268,7 @@ const TANKER_HOLD_PROFILE: MissionProfile = {
     recover_keycard: 'Recover Bulkhead Keycard',
     open_security_door: 'Open bulkhead access lock',
     cross_security_yard: 'Cross rain deck search zone',
-    defeat_captain: 'Defeat Shielded Deck Commander',
+    defeat_captain: 'Defeat Olga Gurlukovich',
     extract: 'Reach cargo hold exit'
   },
   completionX: { openDoor: 1760, crossYard: 2820, bossArena: 3180 },
@@ -274,9 +289,9 @@ const TANKER_HOLD_PROFILE: MissionProfile = {
     reinforcement: { trigger: 'reinforcement', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_reinforcement', message: 'Deck reinforcements deployed.', pauseGame: false },
     cameraDetected: { trigger: 'camera_detected', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_camera_detected', message: 'Tanker camera sightline detected.', pauseGame: false },
     searchlight: { trigger: 'searchlight_detected', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_searchlight_hint', message: 'Searchlight sweep detected on deck.', pauseGame: false },
-    bossIntro: { trigger: 'boss_intro', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_boss_intro', message: 'Shielded Deck Commander encountered.', pauseGame: true },
-    bossMidfight: { trigger: 'boss_midfight', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_boss_midfight', message: 'Commander pattern changed.', pauseGame: false },
-    bossDefeated: { trigger: 'boss_defeated', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_boss_defeated', message: 'Deck commander down.', pauseGame: true },
+    bossIntro: { trigger: 'boss_intro', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_boss_intro', message: 'Olga Gurlukovich encountered on the rain deck.', pauseGame: true },
+    bossMidfight: { trigger: 'boss_midfight', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_boss_midfight', message: 'Olga changed her firing pattern.', pauseGame: false },
+    bossDefeated: { trigger: 'boss_defeated', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_boss_defeated', message: 'Olga neutralized.', pauseGame: true },
     secret: { trigger: 'secret_frequency', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_secret_found', message: 'Tanker hidden archive recovered.', pauseGame: false }
   }
 };
@@ -397,12 +412,15 @@ export class SideOpsScene extends Phaser.Scene {
     this.physics.world.setBounds(0, 0, this.profile.worldWidth, 540);
     this.cameras.main.setBounds(0, 0, this.profile.worldWidth, 540);
     this.createMg1ActorAnimations();
+    this.createVisualPackAnimations();
 
     this.addSkyAndBackdrops();
 
     this.platforms = this.physics.add.staticGroup();
     this.profile.platforms.forEach((platform) => this.createPlatform(this.platforms, platform.x, platform.y, platform.scaleX));
-    this.profile.crates.forEach((crate) => this.addCrate(crate.x, crate.y, this.platforms));
+    this.profile.crates.forEach((crate, index, crates) => {
+      this.addCrate(crate.x, crate.y, this.platforms, index === Math.floor(crates.length / 2));
+    });
 
     this.player = this.physics.add.sprite(
       this.profile.start.x,
@@ -426,15 +444,27 @@ export class SideOpsScene extends Phaser.Scene {
 
     this.cameraNode = this.physics.add.staticSprite(this.profile.camera.x, this.profile.camera.y, 'cameraNode');
 
-    this.bullets = this.physics.add.group({ defaultKey: 'bullet', maxSize: 34 });
-    this.enemyBullets = this.physics.add.group({ defaultKey: 'enemyBullet', maxSize: 42 });
-    this.physics.add.collider(this.bullets, this.platforms, (bullet) => this.destroyPhysicsObject(bullet));
-    this.physics.add.collider(this.enemyBullets, this.platforms, (bullet) => this.destroyPhysicsObject(bullet));
+    this.bullets = this.physics.add.group({ defaultKey: this.getPlayerProjectileTexture(), maxSize: 34 });
+    this.enemyBullets = this.physics.add.group({ defaultKey: this.getEnemyProjectileTexture(), maxSize: 42 });
+    this.physics.add.collider(this.bullets, this.platforms, (bullet) => {
+      const projectile = bullet as Phaser.Physics.Arcade.Sprite;
+      this.spawnPlayerImpactVfx(projectile.x, projectile.y);
+      this.destroyPhysicsObject(bullet);
+    });
+    this.physics.add.collider(this.enemyBullets, this.platforms, (bullet) => {
+      const projectile = bullet as Phaser.Physics.Arcade.Sprite;
+      this.spawnEnemyImpactVfx(projectile.x, projectile.y);
+      this.destroyPhysicsObject(bullet);
+    });
     this.physics.add.overlap(this.bullets, this.cameraNode, (bullet) => {
+      const projectile = bullet as Phaser.Physics.Arcade.Sprite;
+      this.spawnPlayerImpactVfx(projectile.x, projectile.y);
       this.destroyPhysicsObject(bullet);
       this.hitCamera();
     }, undefined, this);
     this.physics.add.overlap(this.enemyBullets, this.player, (bullet) => {
+      const projectile = bullet as Phaser.Physics.Arcade.Sprite;
+      this.spawnEnemyImpactVfx(projectile.x, projectile.y);
       this.destroyPhysicsObject(bullet);
       this.damagePlayer(14, 'rifle');
     });
@@ -627,6 +657,21 @@ export class SideOpsScene extends Phaser.Scene {
   private addSkyAndBackdrops(): void {
     const width = this.profile.worldWidth;
     this.add.rectangle(width / 2, 270, width, 540, this.profile.backdropColor).setDepth(-20);
+    const backdropTexture = resolveSideOpsBackdropTexture(this.profile.visualPackId);
+    if (this.textures.exists(backdropTexture)) {
+      if (this.profile.visualPackId === 'vr_simulation') {
+        this.add.tileSprite(480, 270, 960, 540, backdropTexture)
+          .setScrollFactor(0)
+          .setDepth(-19)
+          .setAlpha(0.68);
+      } else {
+        this.add.image(0, 0, backdropTexture)
+          .setOrigin(0)
+          .setScrollFactor(0)
+          .setDepth(-19)
+          .setAlpha(0.88);
+      }
+    }
     this.add.rectangle(width / 2, 515, width, 52, this.profile.groundColor).setDepth(-12);
 
     for (let x = 120; x < width; x += this.profile.environment === 'tanker' ? 155 : 190) {
@@ -653,6 +698,10 @@ export class SideOpsScene extends Phaser.Scene {
       }
     }
 
+    this.add.rectangle(0, 0, Math.max(960, this.scale.width), 176, 0x010603, 0.68)
+      .setOrigin(0, 0)
+      .setScrollFactor(0)
+      .setDepth(49);
     this.add.text(28, 24, this.profile.header, {
       fontFamily: 'monospace',
       fontSize: '18px',
@@ -697,8 +746,69 @@ export class SideOpsScene extends Phaser.Scene {
     platform.setScale(scaleX, 1).setTint(this.profile.environment === 'tanker' ? 0x5fb8d6 : 0x7cff6b).refreshBody();
   }
 
-  private addCrate(x: number, y: number, platforms: Phaser.Physics.Arcade.StaticGroup): void {
-    const crate = platforms.create(x, y, 'crate') as Phaser.Physics.Arcade.Sprite;
+  private createVisualPackAnimations(): void {
+    const runtimeTextures = this.getSupplementalRuntimeTextures();
+    new Set([runtimeTextures.playerImpactVfxTexture, runtimeTextures.impactVfxTexture])
+      .forEach((textureKey) => this.createImpactAnimation(textureKey));
+  }
+
+  private createImpactAnimation(textureKey: string): void {
+    if (!this.textures.exists(textureKey)) return;
+    const animationKey = this.getImpactAnimationKey(textureKey);
+    if (this.anims.exists(animationKey)) return;
+    this.anims.create({
+      key: animationKey,
+      frames: this.anims.generateFrameNumbers(textureKey, { start: 0, end: 3 }),
+      frameRate: 18,
+      repeat: 0
+    });
+  }
+
+  private getSupplementalRuntimeTextures(): SideOpsSupplementalRuntimeTextures {
+    return SIDEOPS_SUPPLEMENTAL_RUNTIME_TEXTURES[this.profile.visualPackId];
+  }
+
+  private getImpactAnimationKey(textureKey: string): string {
+    return `sideOpsImpact-${textureKey}`;
+  }
+
+  private getPlayerProjectileTexture(): string {
+    return this.getSupplementalRuntimeTextures().playerProjectileTexture;
+  }
+
+  private getEnemyProjectileTexture(): string {
+    return this.getSupplementalRuntimeTextures().enemyProjectileTexture;
+  }
+
+  private spawnPlayerImpactVfx(x: number, y: number): void {
+    this.spawnImpactVfx(this.getSupplementalRuntimeTextures().playerImpactVfxTexture, x, y);
+  }
+
+  private spawnEnemyImpactVfx(x: number, y: number): void {
+    this.spawnImpactVfx(this.getSupplementalRuntimeTextures().impactVfxTexture, x, y);
+  }
+
+  private spawnImpactVfx(textureKey: string, x: number, y: number): void {
+    const animationKey = this.getImpactAnimationKey(textureKey);
+    const effect = this.add.sprite(x, y, textureKey).setDepth(24);
+    if (this.anims.exists(animationKey)) {
+      effect.play(animationKey);
+      effect.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => effect.destroy());
+      return;
+    }
+    this.time.delayedCall(120, () => effect.destroy());
+  }
+
+  private addCrate(
+    x: number,
+    y: number,
+    platforms: Phaser.Physics.Arcade.StaticGroup,
+    useVisualPackProp = false
+  ): void {
+    const texture = useVisualPackProp
+      ? this.getSupplementalRuntimeTextures().battlefieldPropTexture
+      : 'crate';
+    const crate = platforms.create(x, y, texture) as Phaser.Physics.Arcade.Sprite;
     crate.refreshBody();
   }
 
@@ -724,6 +834,8 @@ export class SideOpsScene extends Phaser.Scene {
     };
 
     this.physics.add.overlap(this.bullets, sprite, (bullet) => {
+      const projectile = bullet as Phaser.Physics.Arcade.Sprite;
+      this.spawnPlayerImpactVfx(projectile.x, projectile.y);
       this.destroyPhysicsObject(bullet);
       this.hitGuard(guard);
     }, undefined, this);
@@ -741,10 +853,12 @@ export class SideOpsScene extends Phaser.Scene {
     this.configureMg1ActorSprite(sprite, this.profile.boss.texture);
     sprite.setDragX(850);
     sprite.setMaxVelocity(170, 500);
-    sprite.setTint(0x7a8f62);
+    sprite.clearTint();
     this.physics.add.collider(sprite, this.platforms);
     this.physics.add.overlap(this.player, sprite, () => this.damagePlayer(this.boss?.phase === 2 ? 16 : 11, this.profile.boss.name), undefined, this);
     this.physics.add.overlap(this.bullets, sprite, (bullet) => {
+      const projectile = bullet as Phaser.Physics.Arcade.Sprite;
+      this.spawnPlayerImpactVfx(projectile.x, projectile.y);
       this.destroyPhysicsObject(bullet);
       this.hitBoss('SOCOM');
     }, undefined, this);
@@ -889,7 +1003,11 @@ export class SideOpsScene extends Phaser.Scene {
     this.registerNoise(10, 'suppressed SOCOM shot');
 
     const direction = this.player.flipX ? -1 : 1;
-    const bullet = this.bullets.get(this.player.x + direction * 22, this.player.y - 6, 'bullet') as Phaser.Physics.Arcade.Sprite | null;
+    const bullet = this.bullets.get(
+      this.player.x + direction * 22,
+      this.player.y - 6,
+      this.getPlayerProjectileTexture()
+    ) as Phaser.Physics.Arcade.Sprite | null;
     if (!bullet) return;
 
     bullet.setActive(true).setVisible(true);
@@ -985,8 +1103,7 @@ export class SideOpsScene extends Phaser.Scene {
   private activateBoss(): void {
     if (!this.boss || this.boss.active) return;
     this.boss.active = true;
-    this.boss.sprite.clearTint();
-    this.boss.sprite.setTint(this.profile.boss.tintPhaseOne);
+    this.applyBossPhaseTint(this.boss.sprite, 1);
     this.objectiveStage = 'defeat_captain';
     this.triggerAlert(`${this.profile.boss.name.toLowerCase()} encounter`);
     if (!this.bossIntroEmitted) {
@@ -998,7 +1115,11 @@ export class SideOpsScene extends Phaser.Scene {
   private fireBossShot(boss: BossUnit): void {
     this.playMg1ActorAction(boss.sprite, 'attack');
     const direction = boss.direction;
-    const bullet = this.enemyBullets.get(boss.sprite.x + direction * 28, boss.sprite.y - 12, 'enemyBullet') as Phaser.Physics.Arcade.Sprite | null;
+    const bullet = this.enemyBullets.get(
+      boss.sprite.x + direction * 28,
+      boss.sprite.y - 12,
+      this.getEnemyProjectileTexture()
+    ) as Phaser.Physics.Arcade.Sprite | null;
     if (!bullet) return;
     bullet.setActive(true).setVisible(true);
     bullet.body?.reset(boss.sprite.x + direction * 28, boss.sprite.y - 12);
@@ -1015,12 +1136,14 @@ export class SideOpsScene extends Phaser.Scene {
     boss.hp = Math.max(0, boss.hp - (source === 'CQC' ? 1 : 1));
     this.playMg1ActorAction(boss.sprite, 'hit');
     boss.sprite.setTint(0xff9f6b);
-    this.time.delayedCall(120, () => boss.sprite.active && !boss.defeated && boss.sprite.setTint(boss.phase === 2 ? this.profile.boss.tintPhaseTwo : this.profile.boss.tintPhaseOne));
+    this.time.delayedCall(120, () => {
+      if (boss.sprite.active && !boss.defeated) this.applyBossPhaseTint(boss.sprite, boss.phase);
+    });
     this.flashStatus(`${this.profile.boss.name.toUpperCase()} ARMOR HIT: ${boss.hp}/${boss.maxHp}`);
 
     if (boss.hp <= Math.floor(boss.maxHp / 2) && boss.phase === 1) {
       boss.phase = 2;
-      boss.sprite.setTint(0xff6b6b);
+      this.applyBossPhaseTint(boss.sprite, 2);
       this.flashStatus(`${this.profile.boss.name.toUpperCase()} PHASE 2: AGGRESSIVE PATTERN`);
       if (!this.bossMidfightEmitted) {
         this.bossMidfightEmitted = true;
@@ -1029,6 +1152,11 @@ export class SideOpsScene extends Phaser.Scene {
     }
 
     if (boss.hp <= 0) this.defeatBoss();
+  }
+
+  private applyBossPhaseTint(sprite: Phaser.Physics.Arcade.Sprite, phase: 1 | 2): void {
+    void phase;
+    sprite.clearTint();
   }
 
   private defeatBoss(): void {
@@ -1322,7 +1450,7 @@ export class SideOpsScene extends Phaser.Scene {
     const patrolMax = Phaser.Math.Clamp(spawnX + 260, 160, this.profile.worldWidth - 80);
     const guard = this.spawnGuard({ x: spawnX, y: 454, patrolMin, patrolMax, role: 'reinforcement' });
     guard.direction = spawnX > this.player.x ? -1 : 1;
-    guard.sprite.setTint(0xffdf85);
+    guard.sprite.clearTint();
     this.reinforcementCount += 1;
     this.nextReinforcementAt = 0;
     this.emitAlertEvent('REINFORCEMENT', 'base security response', 'Reinforcement unit deployed');
@@ -1347,7 +1475,11 @@ export class SideOpsScene extends Phaser.Scene {
 
       guard.lastShotAt = this.time.now + (guard.role === 'reinforcement' ? 720 : 900);
       const direction = this.player.x < guard.sprite.x ? -1 : 1;
-      const bullet = this.enemyBullets.get(guard.sprite.x + direction * 18, guard.sprite.y - 6, 'enemyBullet') as Phaser.Physics.Arcade.Sprite | null;
+      const bullet = this.enemyBullets.get(
+        guard.sprite.x + direction * 18,
+        guard.sprite.y - 6,
+        this.getEnemyProjectileTexture()
+      ) as Phaser.Physics.Arcade.Sprite | null;
       if (!bullet) return;
 
       bullet.setActive(true).setVisible(true);

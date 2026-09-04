@@ -1,5 +1,11 @@
 import packsJson from '../data/codecAssetPacks.json';
 import mg1PortraitSetsJson from '../data/mg1PortraitSets.json';
+import mg2PortraitSetsJson from '../data/mg2PortraitSets.json';
+import mgs4PortraitSetsJson from '../data/mgs4PortraitSets.json';
+import mgsvPortraitSetsJson from '../data/mgsvPortraitSets.json';
+import patriotsAiPortraitSetsJson from '../data/patriotsAiPortraitSets.json';
+import peaceWalkerPortraitSetsJson from '../data/peaceWalkerPortraitSets.json';
+import vrSimulationPortraitSetsJson from '../data/vrSimulationPortraitSets.json';
 import type { EraId } from '../types/codec.types';
 import type { CodecAssetPackDefinition, CodecUiCue } from '../types/codecAssets.types';
 import { resolveMgs1StoryVariant } from './mgs1ContentEngine';
@@ -41,6 +47,41 @@ interface Mg1PortraitSetDefinition {
   expressions: string[];
 }
 
+interface Mg2PortraitSetDefinition {
+  characterId: string;
+  directory: string;
+  aliases: string[];
+  expressions: string[];
+}
+
+interface PeaceWalkerPortraitSetDefinition {
+  characterId: string;
+  directory: string;
+  aliases: string[];
+  expressions: string[];
+}
+
+interface MgsvPortraitSetDefinition {
+  characterId: string;
+  directory: string;
+  aliases: string[];
+  expressions: string[];
+}
+
+interface SyntheticPortraitSetDefinition {
+  characterId: string;
+  directory: string;
+  aliases: string[];
+  expressions: string[];
+}
+
+interface CodecPortraitSetDefinition {
+  contactId: string;
+  directory: string;
+  aliases: string[];
+  expressions: string[];
+}
+
 const standardPortraitExpressions = ['neutral', 'serious', 'warning', 'calm', 'glitch', 'humor'] as const;
 const portraitSet = (basePath: string, expressions: readonly string[] = standardPortraitExpressions): CharacterPortraitSet => ({ basePath, expressions });
 
@@ -51,8 +92,51 @@ const mg1CharacterPortraitSets = Object.fromEntries(
   })
 ) as Record<string, CharacterPortraitSet>;
 
+const mg2CharacterPortraitSets = Object.fromEntries(
+  (mg2PortraitSetsJson as Mg2PortraitSetDefinition[]).flatMap(({ characterId, directory, aliases, expressions }) => {
+    const set = portraitSet(`/portraits/msx/mg2/${directory}`, expressions);
+    return [characterId, ...aliases].map((id) => [id, set]);
+  })
+) as Record<string, CharacterPortraitSet>;
+
+const mgs4CharacterPortraitSets = Object.fromEntries(
+  (mgs4PortraitSetsJson as CodecPortraitSetDefinition[]).flatMap(({ contactId, directory, aliases, expressions }) => {
+    const set = portraitSet(`/portraits/mgs4/${directory}`, expressions);
+    return [contactId, ...aliases].map((id) => [id, set]);
+  })
+) as Record<string, CharacterPortraitSet>;
+
+const peaceWalkerCharacterPortraitSets = Object.fromEntries(
+  (peaceWalkerPortraitSetsJson as PeaceWalkerPortraitSetDefinition[]).flatMap(({ characterId, directory, aliases, expressions }) => {
+    const set = portraitSet(`/portraits/peace_walker/${directory}`, expressions);
+    return [characterId, ...aliases].map((id) => [id, set]);
+  })
+) as Record<string, CharacterPortraitSet>;
+
+const mgsvCharacterPortraitSets = Object.fromEntries(
+  (mgsvPortraitSetsJson as MgsvPortraitSetDefinition[]).flatMap(({ characterId, directory, aliases, expressions }) => {
+    const set = portraitSet(`/portraits/mgsv/${directory}`, expressions);
+    return [characterId, ...aliases].map((id) => [id, set]);
+  })
+) as Record<string, CharacterPortraitSet>;
+
+const vrSimulationCharacterPortraitSets = Object.fromEntries(
+  (vrSimulationPortraitSetsJson as SyntheticPortraitSetDefinition[]).flatMap(({ characterId, directory, aliases, expressions }) => {
+    const set = portraitSet(`/portraits/vr_simulation/${directory}`, expressions);
+    return [characterId, ...aliases].map((id) => [id, set]);
+  })
+) as Record<string, CharacterPortraitSet>;
+
+const patriotsAiCharacterPortraitSets = Object.fromEntries(
+  (patriotsAiPortraitSetsJson as SyntheticPortraitSetDefinition[]).flatMap(({ characterId, directory, aliases, expressions }) => {
+    const set = portraitSet(`/portraits/patriots_ai/${directory}`, expressions);
+    return [characterId, ...aliases].map((id) => [id, set]);
+  })
+) as Record<string, CharacterPortraitSet>;
+
 const characterPortraitSets: Record<string, CharacterPortraitSet> = {
   ...mg1CharacterPortraitSets,
+  ...mg2CharacterPortraitSets,
   solid_snake_mgs1: portraitSet('/portraits/mgs1/solid_snake'),
   campbell_mgs1: portraitSet('/portraits/mgs1/campbell'),
   mei_ling_mgs1: portraitSet('/portraits/mgs1/mei_ling'),
@@ -80,7 +164,12 @@ const characterPortraitSets: Record<string, CharacterPortraitSet> = {
   para_medic_mgs3: portraitSet('/portraits/mgs3/para_medic', ['neutral', 'serious', 'warning', 'calm', 'humor', 'medical']),
   the_boss_mgs3: portraitSet('/portraits/mgs3/the_boss', ['neutral', 'serious', 'warning', 'calm', 'mentor', 'enemy']),
   sigint_mgs3: portraitSet('/portraits/mgs3/sigint', ['neutral', 'serious', 'warning', 'calm', 'humor', 'technical', 'urgent']),
-  eva_mgs3: portraitSet('/portraits/mgs3/eva', ['neutral', 'serious', 'warning', 'calm', 'humor', 'injured', 'urgent'])
+  eva_mgs3: portraitSet('/portraits/mgs3/eva', ['neutral', 'serious', 'warning', 'calm', 'humor', 'injured', 'urgent']),
+  ...mgs4CharacterPortraitSets,
+  ...peaceWalkerCharacterPortraitSets,
+  ...mgsvCharacterPortraitSets,
+  ...vrSimulationCharacterPortraitSets,
+  ...patriotsAiCharacterPortraitSets
 };
 
 export function getCharacterPortrait(
