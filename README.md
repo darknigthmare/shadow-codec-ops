@@ -1,4 +1,16 @@
-# Shadow Codec Ops - v3.6.0
+# Shadow Codec Ops - v3.7.0
+
+## Dedicated Operations — décors, acteurs et fiabilité
+
+Les scènes dédiées MG1 et MGS1 utilisent douze nouveaux panoramas intérieurs OpenAI, sélectionnés par secteur, et les terrains/props déjà produits. Les routes physiques d’origine sont conservées, avec trois marches ajoutées pour rendre CARD1 et l’archive REX accessibles au saut. Les PNJ MGS1 sont posés sur les véritables supports physiques.
+
+Ocelot, Otacon et REX disposent de six nouvelles planches (96 poses, 24 clips) : Ocelot recharge après ses rafales, Otacon réagit à la présence du joueur et au danger, REX emploie ses séquences missile/laser/railgun. Les huit actions disponibles par acteur ne sont pas toutes utilisées par toutes les scènes ; la locomotion de REX reste désactivée dans sa rencontre stationnaire.
+
+Les collisions projectile/cible ont été corrigées dans les trois scènes principales pour ne plus désactiver la cible à la place du projectile. Les objets soumis à la gravité et les boss stationnaires au sol restent séparables des plateformes. Ces corrections sont couvertes par des tests de callbacks et de physique, complétés par des collectes et combats dans Chromium.
+
+Ground Zeroes utilise désormais les portraits et identités Miller/Morpho de 1975, sans reprendre les contacts de 1984. Douze nouveaux états Codec OpenAI complètent cette séparation ; les visuels de The Phantom Pain restent disponibles dans leur propre contexte.
+
+Sources et contrats : [animations spécialisées](scripts/art_sources/special-animations/README.md), [intérieurs dédiés](scripts/art_sources/dedicated-interiors/README.md), [portraits Ground Zeroes](scripts/art_sources/all-eras-codec/GROUND_ZEROES.md).
 
 ## Tactical Anthology — 5 septembre 2026
 
@@ -6,7 +18,7 @@ Le mode Side Ops propose maintenant 24 simulations tactiques originales sur douz
 
 La nouvelle série OpenAI comprend 72 planches d’animation (1 152 poses, trois rôles par époque) et 24 matériaux de terrain. L’interface privilégie le jeu, avec pause réelle, choix d’opération suspendu, plein écran et dossier repliable. Le chronomètre mesure le temps actif, y compris dans les scènes dédiées MG1/MGS1.
 
-Validation : 492 tests réussis, build et PWA valides ; six tests Python vérifient l’importeur. Les 24 parcours et extractions ont été contrôlés dans Chromium avec inputs clavier et physique réelle. Le décor Costa Rica de Peace Walker est sélectionné selon le contexte, sans remplacer Mother Base ailleurs. Il s’agit de simulations fan-made, pas d’une reconstitution 1:1 ni d’animations exhaustives de chaque boss, PNJ et véhicule de la franchise.
+Validation de la vague 3.6.0 : 492 tests réussis, build et PWA valides ; six tests Python vérifient l’importeur. Les 24 opérations ont été chargées dans Chromium, les sauts testés au clavier et les conditions d’extraction contrôlées avec un état de préparation instrumenté. Il ne s’agissait pas de 24 parties complètes jouées manuellement. Le décor Costa Rica de Peace Walker est sélectionné selon le contexte, sans remplacer Mother Base ailleurs. Il s’agit de simulations fan-made, pas d’une reconstitution 1:1 ni d’animations exhaustives de chaque boss, PNJ et véhicule de la franchise.
 
 Voir [le contrat de campagne](docs/SIDEOPS_TACTICAL_ANTHOLOGY.md) et [la provenance des animations](scripts/art_sources/actor-animations/README.md).
 

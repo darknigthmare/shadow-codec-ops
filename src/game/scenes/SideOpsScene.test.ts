@@ -164,6 +164,34 @@ describe('Side Ops authored animation scene integration', () => {
     expect(sprite.play).toHaveBeenCalledTimes(3);
     expect(sprite.getData('mg1AnimationPriority')).toBe(4);
   });
+
+  it('plays Ocelot authored reload and hit while keeping death locked', () => {
+    const scene = createHarness('sideops_mgs1_assault');
+    scene.anims = { exists: () => true };
+    scene.time.delayedCall = () => {};
+    const sprite = spriteHarness();
+    sprite.setData('sideopsAuthoredPack', undefined).setData('sideopsAuthoredRole', undefined);
+    sprite.setData('sideopsSpecialSourceTexture', 'mgs1RevolverOcelot');
+    scene.playMg1ActorAction(sprite, 'reload');
+    expect(sprite.play).toHaveBeenLastCalledWith('sideops-special:mgs1-revolver-ocelot:reload');
+    scene.playMg1ActorAction(sprite, 'hit');
+    expect(sprite.play).toHaveBeenLastCalledWith('sideops-special:mgs1-revolver-ocelot:hit');
+    scene.playMg1ActorAction(sprite, 'death');
+    scene.playMg1ActorLoop(sprite, 'move');
+    expect(sprite.play).toHaveBeenLastCalledWith('sideops-special:mgs1-revolver-ocelot:death');
+    expect(sprite.play).toHaveBeenCalledTimes(3);
+  });
+
+  it('does not replace an unsupported special action with a legacy or generic pose', () => {
+    const scene = createHarness('sideops_mgs1_assault');
+    scene.anims = { exists: () => true };
+    const sprite = spriteHarness();
+    sprite.setData('sideopsAuthoredPack', undefined).setData('sideopsAuthoredRole', undefined);
+    sprite.setData('sideopsSpecialSourceTexture', 'mgs1RevolverOcelot');
+    scene.playMg1ActorLoop(sprite, 'scan');
+    scene.playMg1ActorAction(sprite, 'laser');
+    expect(sprite.play).not.toHaveBeenCalled();
+  });
 });
 
 describe('Side Ops terrain rendering integration', () => {

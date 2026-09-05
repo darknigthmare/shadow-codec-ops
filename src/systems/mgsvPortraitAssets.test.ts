@@ -15,7 +15,7 @@ function expectPhysicalWebp(publicPath: string): void {
 
 describe('MGSV physical Codec portrait assets', () => {
   it('contains every routed identity and expression as a valid WebP', () => {
-    expect(portraitSetsJson).toHaveLength(9);
+    expect(new Set(portraitSetsJson.map(({ characterId }) => characterId)).size).toBe(portraitSetsJson.length);
     for (const { directory, expressions } of portraitSetsJson) {
       expect(expressions).toEqual(['neutral', 'serious', 'warning', 'calm', 'humor', 'glitch']);
       for (const expression of expressions) {

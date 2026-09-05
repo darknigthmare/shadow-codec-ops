@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "provider": "OpenAI",
+  "mode": "built-in-imagegen",
+  "packId": "mg1",
+  "grid": [
+    2,
+    2
+  ],
+  "source": "scripts/art_sources/dedicated-interiors/mg1-interiors-openai.png",
+  "sourceSize": [
+    1672,
+    941
+  ],
+  "sourceSha256": "81f1e0c7f19c27fdbe6a317e55d7f51a5958a56332ef37900c89a6fe98850946",
+  "prompt": "Use case: stylized-concept. Production environment-art atlas for a side-view 2D stealth game. ExactlyFOUR separate landscape16:9panoramas arranged in a2columnsby2rowsgrid, with a thin straight purecyan dividing line centered both horizontally and vertically. Overallcanvas16:9; ideally3072x1728. Everypanel depicts a different EMPTY interior as a polished realistically hand-painted game matte painting. Side-scrolling camera facing broad backwall at eye-level, not isometric, no overhead. Lower25percent of EVERYpanel clear level uninterrupted foreground floor, dark/subdued enough for moving pixelcharacters, no holes/steps or central props. Architecture mainly above that floor. Preserve a grounded earlyMetalGear industrial military atmosphere. NO people, soldiers, faces, silhouettes of people, animals, vehicles, mechs, robots, actual MetalGear, weapons, text, labels, signs, logos, UI, borders apart from the cyan dividers. No ocean/outdoor view, no windows tosky. Create original faithful side-view adaptations, not copies of official screenshots.\nFRANCHISE: MetalGear1987MSX, OuterHeaven SouthAfrica1995, ColdWar brutalist interiors, mutedolive/concrete/steel, practical incandescent and fluorescent lighting, no futuristic holograms.\nTOPLEFT: OuterHeaven prison holdingblock, barred emptycells in broad rearwall, battered concrete, secured steel doors, walllamps and sparse bench behindbars.\nTOPRIGHT: OuterHeaven industrial passage, long horizontal corridor with olivegreen paintedconcrete, rivetedmetal, exposed pipes and conduit, yellowblack cautiontrim restrained, no vanishingpointtunnel.\nBOTTOMLEFT: TX55 underground maintenancehangar EMPTY, huge reinforced concrete chamber, gantrybeams overhead, industrial cableconduits and sidewall accesswalkways. Centralrearbay dark and VACANT; there is NO mech, no tank, no robot, no large silhouette.\nBOTTOMRIGHT: undergroundcommandroom, old analogcontrolconsoles and blank dark CRTscreens set into rearwall, ventilationgrilles, heavy steel bulkheads, olive institutionalwalls and dim amberlights. No chairs or tables in the foreground.\nOfficial narrativeandvisual reference https://www.konami.com/mg/archive/mg25th/truth/mg.html .",
+  "references": [
+    "https://www.konami.com/mg/archive/mg25th/truth/mg.html"
+  ],
+  "provenance": "Original fan-made side-view adaptations, no copied official textures.",
+  "processing": "Detected cyan guides excluded; four crops normalized with LANCZOS. No content synthesis or retouch.",
+  "panels": [
+    {
+      "id": "prison",
+      "crop": [
+        3,
+        3,
+        831,
+        466
+      ],
+      "width": 960,
+      "height": 540,
+      "path": "/sideops/backdrops/dedicated/mg1-prison.webp",
+      "sha256": "4004dd685e2db915c75b9ca31052a99b9b85de86cf995dcc079875583e0fd24f"
+    },
+    {
+      "id": "corridor",
+      "crop": [
+        841,
+        3,
+        1669,
+        466
+      ],
+      "width": 960,
+      "height": 540,
+      "path": "/sideops/backdrops/dedicated/mg1-corridor.webp",
+      "sha256": "91a95dc576256ac47ca479da579d695c206d7740e89a83be725bb7444359cbc0"
+    },
+    {
+      "id": "tx55-hangar",
+      "crop": [
+        3,
+        475,
+        831,
+        938
+      ],
+      "width": 960,
+      "height": 540,
+      "path": "/sideops/backdrops/dedicated/mg1-tx55-hangar.webp",
+      "sha256": "1ab1d5ec8123e9d7422505941905b4185fca80cd4d08501d4b4c1f35638ab9dc"
+    },
+    {
+      "id": "command",
+      "crop": [
+        841,
+        475,
+        1669,
+        938
+      ],
+      "width": 960,
+      "height": 540,
+      "path": "/sideops/backdrops/dedicated/mg1-command.webp",
+      "sha256": "138631eea35b56926f7549711559b5b5f52925f2e89600f4a57879cf01a27ee4"
+    }
+  ]
+}

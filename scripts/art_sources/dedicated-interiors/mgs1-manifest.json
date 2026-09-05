@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "provider": "OpenAI",
+  "mode": "built-in-imagegen",
+  "packId": "mgs1",
+  "grid": [
+    2,
+    2
+  ],
+  "source": "scripts/art_sources/dedicated-interiors/mgs1-interiors-openai.png",
+  "sourceSize": [
+    1672,
+    941
+  ],
+  "sourceSha256": "c5744e8ca6f09f76f914a87ef9d12508a4ec5eea583d11898e4cf0a40c2798b4",
+  "prompt": "Use case: stylized-concept. Production environment-art atlas for a side-view 2D stealth game. ExactlyFOUR separate landscape16:9panoramas arranged in a2columnsby2rowsgrid, with a thin straight purecyan dividing line centered both horizontally and vertically. Overallcanvas16:9; ideally3072x1728. Everypanel depicts a different EMPTY interior as a polished realistically hand-painted game matte painting. Side-scrolling camera facing broad backwall at eye-level, not isometric, no overhead. Lower25percent of EVERYpanel clear level uninterrupted foreground floor, dark/subdued enough for moving pixelcharacters, no holes/steps or central props. Architecture mainly above that floor. Preserve a grounded earlyMetalGear industrial military atmosphere. NO people, soldiers, faces, silhouettes of people, animals, vehicles, mechs, robots, actual MetalGear, weapons, text, labels, signs, logos, UI, borders apart from the cyan dividers. No ocean/outdoor view, no windows tosky. Create original faithful side-view adaptations, not copies of official screenshots.\nFRANCHISE: MetalGearSolid1998 PS1, ShadowMosesAlaska2005, coldbluegray reinforcedconcrete andsteel, dim practicalstriplamps, worn PS1-era militaryindustrial silhouettes, no futuristic holograms.\nTOPLEFT: underground loadingdock interior, huge dimconcrete cavern, rearwall servicecatwalk and metalrailings, flat enclosed quay floor inforeground; a narrowdark recessed waterchannel behindmidground railings only, no boats, no sea or sky.\nTOPRIGHT: ShadowMoses armory storageroom, broad concretebackwall with emptylocked steel storagecabinets, ventilationducts, sparsewood crates againstrearwall, cold militarybunker lighting. No weapons visible.\nBOTTOMLEFT: ShadowMoses officelaboratory, scientificworkbenches and beigecomputerworkstations againstbroadrearwall with blankCRTmonitors, glass partitions andwallcabling, fluorescentcoldlight, flatclearfloor. No scientists.\nBOTTOMRIGHT: underground REXhangar EMPTY, enormous reinforcedconcrete/steel chamber, maintenancegantries across rearwall andoverhead, high ceilings, cableducts and industrialamberworklamps, wide VACANT centralbay. NO MetalGearREX or robot or vehicle, no central silhouette.\nOfficial references https://www.konami.com/mg/archive/mgs_tlc/ and https://www.konami.com/mg/archive/mg25th/truth/mgs.html .",
+  "references": [
+    "https://www.konami.com/mg/archive/mgs_tlc/"
+  ],
+  "provenance": "Original fan-made side-view adaptations, no copied official textures.",
+  "processing": "Detected cyan guides excluded; four crops normalized with LANCZOS. No content synthesis or retouch.",
+  "panels": [
+    {
+      "id": "dock",
+      "crop": [
+        3,
+        3,
+        831,
+        466
+      ],
+      "width": 960,
+      "height": 540,
+      "path": "/sideops/backdrops/dedicated/mgs1-dock.webp",
+      "sha256": "b1bc44106c6f2688fca241235e2476f8454ee0ed4b519681833f6df50425ad11"
+    },
+    {
+      "id": "armory",
+      "crop": [
+        840,
+        3,
+        1669,
+        466
+      ],
+      "width": 960,
+      "height": 540,
+      "path": "/sideops/backdrops/dedicated/mgs1-armory.webp",
+      "sha256": "ad8634a9ba39ae44a3375ab5d9db2cb2f32d18b335528886c6b38e5aee4f5d5d"
+    },
+    {
+      "id": "laboratory",
+      "crop": [
+        3,
+        475,
+        831,
+        938
+      ],
+      "width": 960,
+      "height": 540,
+      "path": "/sideops/backdrops/dedicated/mgs1-laboratory.webp",
+      "sha256": "d1c41ff16eb4ac041e2ee58d630d6907de0408ec6774b0f991c573368490bb24"
+    },
+    {
+      "id": "rex-hangar",
+      "crop": [
+        840,
+        475,
+        1669,
+        938
+      ],
+      "width": 960,
+      "height": 540,
+      "path": "/sideops/backdrops/dedicated/mgs1-rex-hangar.webp",
+      "sha256": "2618852b631caf9a41eced36e306c2810cfb51bce42fa39d63a3a10775de2072"
+    }
+  ]
+}

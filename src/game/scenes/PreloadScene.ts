@@ -41,6 +41,7 @@ import {
 } from '../core/mgs3SideOpsAssetRegistry';
 import { SIDEOPS_GENERATED_BACKDROP_ASSETS } from '../core/sideOpsBackdropRegistry';
 import { SIDEOPS_ACTOR_ANIMATION_SHEETS } from '../core/sideOpsActorAnimationRegistry';
+import { SIDEOPS_SPECIAL_ACTOR_ANIMATION_SHEETS } from '../core/sideOpsSpecialActorAnimationRegistry';
 import { SIDEOPS_TERRAIN_ASSETS } from '../core/sideOpsTerrainRegistry';
 
 type RegistryFallbackShape = 'humanoid' | 'animal' | 'machine' | 'sensor' | 'projectile' | 'effect';
@@ -198,7 +199,7 @@ export class PreloadScene extends Phaser.Scene {
     PATRIOTS_AI_SIDEOPS_ALL_ASSETS.forEach((asset) => preloadRegistryAsset(this, asset));
     SIDEOPS_GENERATED_BACKDROP_ASSETS.forEach((asset) => this.load.image(asset.textureKey, asset.path));
     SIDEOPS_TERRAIN_ASSETS.forEach((asset) => this.load.image(asset.textureKey, asset.path));
-    SIDEOPS_ACTOR_ANIMATION_SHEETS.forEach((asset) => this.load.spritesheet(asset.textureKey, asset.path, {
+    [...SIDEOPS_ACTOR_ANIMATION_SHEETS, ...SIDEOPS_SPECIAL_ACTOR_ANIMATION_SHEETS].forEach((asset) => this.load.spritesheet(asset.textureKey, asset.path, {
       frameWidth: asset.frameWidth,
       frameHeight: asset.frameHeight,
       endFrame: asset.frameCount - 1

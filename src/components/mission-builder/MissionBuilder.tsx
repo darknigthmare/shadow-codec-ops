@@ -16,6 +16,7 @@ import type {
   SideOpsVisualPackId
 } from '../../types/missionBuilder.types';
 import { loadCustomConversations } from '../../systems/studioStorage';
+import { resolveConversationContactRoute } from '../../systems/conversationEngine';
 import {
   cloneMissionBuilderDocument,
   createBlankMissionBuilderDocument,
@@ -29,7 +30,7 @@ import {
   saveMissionBuilderLibrary,
   validateMissionBuilderDocument
 } from '../../systems/missionBuilderStorage';
-import { getCompatibleSideOpsVisualPackIds } from '../../systems/sideOpsCharacterResolver';
+import { getCompatibleSideOpsVisualPackIds, resolveSideOpsVisualPackId } from '../../systems/sideOpsCharacterResolver';
 
 interface MissionBuilderProps {
   onPlaytest: (missionId: string) => void;
@@ -177,8 +178,21 @@ export function MissionBuilder({ onPlaytest }: MissionBuilderProps) {
   const errorCount = issues.filter((issue) => issue.severity === 'error').length;
   const warningCount = issues.filter((issue) => issue.severity === 'warning').length;
   const compatibleVisualPackIds = getCompatibleSideOpsVisualPackIds(activeDocument.era);
-  const eraContacts = contacts.filter((contact) => contact.era === activeDocument.era);
+  const groundZeroesCodec = resolveSideOpsVisualPackId(activeDocument) === 'mgsv_ground_zeroes';
+  const eraContacts = contacts.filter((contact) => contact.era === activeDocument.era
+    && (activeDocument.era !== 'mgsv' || (groundZeroesCodec
+      ? ['miller_gz', 'morpho_gz'].includes(contact.id)
+      : !['miller_gz', 'morpho_gz'].includes(contact.id))));
   const allConversations = useMemo(() => [...customConversations, ...conversations], [customConversations]);
+
+  function conversationsForBuilderContact(contactId: string): ConversationDefinition[] {
+    const contact = contacts.find((item) => item.id === contactId);
+    if (!groundZeroesCodec || !contact) return allConversations.filter((conversation) => conversation.contactId === contactId);
+    return allConversations.flatMap((conversation) => {
+      const routed = resolveConversationContactRoute(conversation, contact, 'mgsv_ground_zeroes');
+      return routed ? [routed] : [];
+    });
+  }
 
   function persist(next: MissionBuilderLibrary): MissionBuilderLibrary {
     saveMissionBuilderLibrary(next);
@@ -390,7 +404,8 @@ export function MissionBuilder({ onPlaytest }: MissionBuilderProps) {
 
   function addCodecTrigger(): void {
     const contact = eraContacts[0] ?? contacts[0];
-    const conversation = allConversations.find((entry) => entry.contactId === contact.id) ?? allConversations[0];
+    const conversation = conversationsForBuilderContact(contact.id)[0];
+    if (!conversation) return;
     replaceActive((document) => ({
       ...document,
       codecTriggers: [...document.codecTriggers, {
@@ -411,7 +426,7 @@ export function MissionBuilder({ onPlaytest }: MissionBuilderProps) {
   }
 
   function changeTriggerContact(index: number, contactId: string): void {
-    const firstConversation = allConversations.find((conversation) => conversation.contactId === contactId);
+    const firstConversation = conversationsForBuilderContact(contactId)[0];
     updateCodecTrigger(index, { contactId, conversationId: firstConversation?.id ?? activeDocument.codecTriggers[index].conversationId });
   }
 
@@ -616,8 +631,8 @@ export function MissionBuilder({ onPlaytest }: MissionBuilderProps) {
         <Panel title="Codec Trigger Router">
           <div className="builder-trigger-list">
             {activeDocument.codecTriggers.map((trigger, index) => {
-              const triggerContacts = contacts.filter((contact) => contact.era === activeDocument.era || contact.id === trigger.contactId);
-              const contactConversations = allConversations.filter((conversation) => conversation.contactId === trigger.contactId);
+              const triggerContacts = contacts.filter((contact) => eraContacts.includes(contact) || contact.id === trigger.contactId);
+              const contactConversations = conversationsForBuilderContact(trigger.contactId);
               return (
                 <div key={`${trigger.trigger}-${index}`}>
                   <select value={trigger.trigger} aria-label={`Codec trigger ${index + 1}`} onChange={(event) => updateCodecTrigger(index, { trigger: event.target.value as ConversationTrigger })}>{TRIGGERS.map((entry) => <option key={entry} value={entry}>{entry}</option>)}</select>

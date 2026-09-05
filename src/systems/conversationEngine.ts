@@ -61,6 +61,33 @@ function conversationAllowedInContext(conversation: ConversationDefinition, cont
   return !conversation.contextIds?.length || Boolean(contextId && conversation.contextIds.includes(contextId));
 }
 
+export function resolveConversationContactRoute(
+  conversation: ConversationDefinition,
+  contact: ContactDefinition,
+  contextId?: string
+): ConversationDefinition | undefined {
+  const route = conversation.contextContactRoutes?.find((candidate) =>
+    candidate.contactId === contact.id && Boolean(contextId && candidate.contextIds.includes(contextId))
+  );
+  if (route) {
+    return {
+      ...conversation,
+      contactId: contact.id,
+      frequency: contact.frequency,
+      contextIds: route.contextIds,
+      subjectId: route.subjectId ?? conversation.subjectId,
+      // Only the speaker reference changes. Text, translations, timings and
+      // the stable replay ID stay exactly as authored in the source script.
+      lines: conversation.lines.map((line) => line.speaker === conversation.contactId
+        ? { ...line, speaker: contact.id }
+        : line)
+    };
+  }
+  return conversation.contactId === contact.id && conversationAllowedInContext(conversation, contextId)
+    ? conversation
+    : undefined;
+}
+
 function getHistoryCount(conversationId: string, history: CallHistoryEntry[]): number {
   return history.filter((entry) => entry.conversationId === conversationId && entry.disposition === 'completed').length;
 }
@@ -73,9 +100,10 @@ export function getConversationForContact(
   contextId?: string,
   history: CallHistoryEntry[] = []
 ): ConversationDefinition | undefined {
-  const candidates = conversations.filter(
-    (conversation) => conversation.contactId === contact.id && conversationAllowedInContext(conversation, contextId)
-  );
+  const candidates = conversations.flatMap((conversation) => {
+    const routed = resolveConversationContactRoute(conversation, contact, contextId);
+    return routed ? [routed] : [];
+  });
 
   const subjectMatches = subjectId
     ? candidates.filter((conversation) => conversation.subjectId === subjectId)
@@ -102,7 +130,10 @@ export function getConversationTopics(
   conversations: ConversationDefinition[],
   contextId?: string
 ): CodecCallTopic[] {
-  const manualConversations = conversations.filter(
+  const manualConversations = conversations.flatMap((conversation) => {
+    const routed = resolveConversationContactRoute(conversation, contact, contextId);
+    return routed ? [routed] : [];
+  }).filter(
     (conversation) =>
       conversation.contactId === contact.id &&
       (conversation.trigger === 'manual_call' || conversation.trigger === 'save_request' || conversation.trigger === 'secret_frequency') &&

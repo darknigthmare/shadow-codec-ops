@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "provider": "OpenAI",
+  "mode": "built-in-imagegen",
+  "packId": "mgs1-extra",
+  "grid": [
+    2,
+    2
+  ],
+  "source": "scripts/art_sources/dedicated-interiors/mgs1-extra-interiors-openai.png",
+  "sourceSize": [
+    1672,
+    941
+  ],
+  "sourceSha256": "e3900cf257b17581e35e1735d1dfd8f15bc2905614a15012d21dcd5b657cc3d7",
+  "prompt": "Use case: stylized-concept. Production environment-art atlas for a side-view2Dstealth game. Exactly FOUR separate landscape16:9panoramas arranged2columnsby2rows, with one thin purecyan verticaldivider and one purecyan horizontaldivider centered. Overall16:9canvas, ideally3072x1728. Each panel is a new original realistic hand-painted side-view adaptation of a MetalGearSolid1998 ShadowMoses2005 interior. Flat clear uninterrupted foregroundplayfloor in lower25percent of EVERYpanel, suitable for pixelcharacters added later. EnvironmentONLY. No people, mannequins, body statues, portraits of people, animals, ghosts, robots, vehicles, mechs, weapons, text, numbers, labels, UI, logos, watermarks. No outside snowfield, sky or ocean. Never copy an official screenshot; preserve recognizable materials/layout motifs, no claim of exact official reproduction.\nTOPLEFT: ShadowMoses undergroundholdingcells, grayconcretebunker with empty steelbarredcells facing camera, simple emptybunks againstbackwall, fluorescentlamps, metalpipes. Cold bluegraycolorgrade, clear flatconcretefrontfloor.\nTOPRIGHT: the commander's office/study where PsychoMantis is fought, restrained dark classicaloffice inside militaryfacility: darkwood bookshelves onrearwall, mutedgreen walls anddarkwood trim, a plainwooddesk againstbackwall, dark redbrown patternedrug onlyinmiddleground. Modest old officeroom, not cathedral or occulttemple. No statues, paintings of people, magic, floatingobjects, candles or invented symbols. Lowerforegroundcleardarkwoodorstonefloor; shelvesanddeskkeptbehind gameplayband.\nBOTTOMLEFT: wolfdog cave interior atShadowMoses, rough naturalgrayrock walls, low jaggedrockceiling and shallowrecesses, dark cool rocky atmosphere, no frozenicecave, no buildings, no torchfantasy, no animals. Lateral horizontal cavepassage with levelpackedearth+stoneforefloor, allrocksconfinedtobackwall/upperedges socharacterscanmove clearly.\nBOTTOMRIGHT: VulcanRaven refrigeratedstoragewarehouse, cold industrialroom, stacked largegraymetalstoragecontainers alongbackwall, insulatedmetalwallpanels and overheadrefrigerationpipes/vents, light frost oncontaineredges, mutedbluegraycold lighting, clear flatconcretefloor with subtlecoldhaze. No monster, no person, no robot, no palletjack. Containers behindgameplayband; NO cratesblockingforeground.\nPrimary era reference https://www.konami.com/mg/history/jp/ja/mgs and Konamiarchive https://www.konami.com/mg/archive/mg25th/truth/mgs.html . Original game screenshots consulted for room motifs only: https://www.mobygames.com/game/3635/metal-gear-solid/screenshots/windows/36803/ and https://www.mobygames.com/game/windows/metal-gear-solid__/screenshots/gameShotId%2C36807/ .",
+  "references": [
+    "https://www.konami.com/mg/history/jp/ja/mgs",
+    "https://www.konami.com/mg/archive/mg25th/truth/mgs.html",
+    "https://www.mobygames.com/game/3635/metal-gear-solid/screenshots/windows/36803/",
+    "https://www.mobygames.com/game/windows/metal-gear-solid__/screenshots/gameShotId%2C36807/"
+  ],
+  "provenance": "Original fan-made side-view adaptations, no copied official textures.",
+  "processing": "Detected cyan guides excluded; four crops normalized with LANCZOS. No content synthesis or retouch.",
+  "panels": [
+    {
+      "id": "holding-cells",
+      "crop": [
+        3,
+        3,
+        831,
+        466
+      ],
+      "width": 960,
+      "height": 540,
+      "path": "/sideops/backdrops/dedicated/mgs1-holding-cells.webp",
+      "sha256": "7e2f29b7c25744d38d3abf50c92f09aba107024714017233a59e8e7239ddac3a"
+    },
+    {
+      "id": "mantis-study",
+      "crop": [
+        840,
+        3,
+        1669,
+        466
+      ],
+      "width": 960,
+      "height": 540,
+      "path": "/sideops/backdrops/dedicated/mgs1-mantis-study.webp",
+      "sha256": "80a1dc15b9bad1e1e9c5291f831b0d9002632df1ff9b33b6dc0c39fc372df6bf"
+    },
+    {
+      "id": "wolfdog-cave",
+      "crop": [
+        3,
+        475,
+        831,
+        938
+      ],
+      "width": 960,
+      "height": 540,
+      "path": "/sideops/backdrops/dedicated/mgs1-wolfdog-cave.webp",
+      "sha256": "bb572c7ef6930046901be74ae1dd9fc703074a0e32311acfa1c2c0317cecea7f"
+    },
+    {
+      "id": "cold-storage",
+      "crop": [
+        840,
+        475,
+        1669,
+        938
+      ],
+      "width": 960,
+      "height": 540,
+      "path": "/sideops/backdrops/dedicated/mgs1-cold-storage.webp",
+      "sha256": "eacca45b9af045bb9094286b7610392ae3ec517cad95477d62c77871394f67f2"
+    }
+  ]
+}

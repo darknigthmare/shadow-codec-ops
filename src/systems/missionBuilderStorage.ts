@@ -64,7 +64,7 @@ const ERA_DEFAULTS: Record<EraId, { contactId: string; conversationId: string }>
   mgs2: { contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_support' },
   mgs3: { contactId: 'major_mgs3', conversationId: 'mgs3_major_support' },
   mgs4: { contactId: 'otacon_mgs4', conversationId: 'mgs4_otacon_modern' },
-  peace_walker: { contactId: 'miller_mgsv', conversationId: 'mgsv_miller_idroid' },
+  peace_walker: { contactId: 'miller_pw', conversationId: 'pw_miller_briefing' },
   mgsv: { contactId: 'miller_mgsv', conversationId: 'mgsv_miller_idroid' },
   vr_simulation: { contactId: 'vr_instructor', conversationId: 'vr_instructor_default' },
   patriots_ai: { contactId: 'patriots_colonel_ai', conversationId: 'patriots_ai_default' }
@@ -416,7 +416,9 @@ function firstEntity(document: MissionBuilderDocument, kind: MissionBuilderEntit
 }
 
 function callFromTrigger(document: MissionBuilderDocument, trigger: ConversationTrigger, fallbackTrigger: ConversationTrigger = trigger): RuntimeCodecCall {
-  const fallback = ERA_DEFAULTS[document.era] ?? ERA_DEFAULTS.mgs1;
+  const fallback = resolveSideOpsVisualPackId(document) === 'mgsv_ground_zeroes'
+    ? { contactId: 'miller_gz', conversationId: 'mgsv_assetpass_area_report' }
+    : ERA_DEFAULTS[document.era] ?? ERA_DEFAULTS.mgs1;
   const configured = document.codecTriggers.find((entry) => entry.trigger === trigger)
     ?? document.codecTriggers.find((entry) => entry.trigger === fallbackTrigger)
     ?? document.codecTriggers[0];

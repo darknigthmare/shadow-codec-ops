@@ -44,6 +44,8 @@ import {
   registerAuthoredSideOpsActorAnimations
 } from '../core/sideOpsActorAnimationRuntime';
 import type { SideOpsActorAnimationState, SideOpsActorRole } from '../core/sideOpsActorAnimationRegistry';
+import { configureAuthoredSideOpsSpecialActor, getAuthoredSideOpsSpecialActorClip, registerAuthoredSideOpsSpecialActorAnimations } from '../core/sideOpsSpecialActorAnimationRuntime';
+import type { SideOpsSpecialActorState } from '../core/sideOpsSpecialActorAnimationRegistry';
 import { getSideOpsTerrainAsset, SIDEOPS_TERRAIN_COVER_TEXTURES } from '../core/sideOpsTerrainRegistry';
 import {
   createSideOpsEnemyState,
@@ -457,6 +459,7 @@ export class SideOpsScene extends Phaser.Scene {
     this.createMg1ActorAnimations();
     this.createVisualPackAnimations();
     registerAuthoredSideOpsActorAnimations(this);
+    registerAuthoredSideOpsSpecialActorAnimations(this);
 
     this.addSkyAndBackdrops();
 
@@ -500,23 +503,24 @@ export class SideOpsScene extends Phaser.Scene {
       this.spawnEnemyImpactVfx(projectile.x, projectile.y);
       this.destroyPhysicsObject(bullet);
     });
-    this.physics.add.overlap(this.bullets, this.cameraNode, (bullet) => {
+    // Arcade always reports the single sprite before the group member.
+    this.physics.add.overlap(this.cameraNode, this.bullets, (_camera, bullet) => {
       const projectile = bullet as Phaser.Physics.Arcade.Sprite;
       this.spawnPlayerImpactVfx(projectile.x, projectile.y);
       this.destroyPhysicsObject(bullet);
       this.hitCamera();
     }, undefined, this);
-    this.physics.add.collider(this.bullets, this.lockedDoor, (bullet) => {
+    this.physics.add.collider(this.lockedDoor, this.bullets, (_door, bullet) => {
       const projectile = bullet as Phaser.Physics.Arcade.Sprite;
       this.spawnPlayerImpactVfx(projectile.x, projectile.y);
       this.destroyPhysicsObject(bullet);
     }, () => !this.hasKeycard, this);
-    this.physics.add.collider(this.enemyBullets, this.lockedDoor, (bullet) => {
+    this.physics.add.collider(this.lockedDoor, this.enemyBullets, (_door, bullet) => {
       const projectile = bullet as Phaser.Physics.Arcade.Sprite;
       this.spawnEnemyImpactVfx(projectile.x, projectile.y);
       this.destroyPhysicsObject(bullet);
     }, () => !this.hasKeycard, this);
-    this.physics.add.overlap(this.enemyBullets, this.player, (bullet) => {
+    this.physics.add.overlap(this.player, this.enemyBullets, (_player, bullet) => {
       const projectile = bullet as Phaser.Physics.Arcade.Sprite;
       const damage = Number(projectile.getData('damage') ?? 14);
       const source = String(projectile.getData('source') ?? 'rifle');
@@ -677,6 +681,10 @@ export class SideOpsScene extends Phaser.Scene {
       this.playMg1ActorLoop(sprite, 'idle');
       return;
     }
+    if (configureAuthoredSideOpsSpecialActor(this, sprite, sourceTextureKey)) {
+      this.playMg1ActorLoop(sprite, 'idle');
+      return;
+    }
     const asset = getMg1ActorAnimationAssetBySourceTexture(sourceTextureKey);
     if (!asset || !this.textures.exists(asset.textureKey)) return;
     sprite.setTexture(asset.textureKey, asset.clips.idle?.start ?? 0);
@@ -692,8 +700,9 @@ export class SideOpsScene extends Phaser.Scene {
     return getMg1ActorAnimationAssetBySourceTexture(String(sprite.getData('mg1SourceTextureKey') ?? ''));
   }
 
-  private playMg1ActorLoop(sprite: Phaser.GameObjects.Sprite, state: Mg1ActorAnimationState | SideOpsActorAnimationState): void {
-    const authored = getAuthoredSideOpsActorClip(sprite, state);
+  private playMg1ActorLoop(sprite: Phaser.GameObjects.Sprite, state: Mg1ActorAnimationState | SideOpsActorAnimationState | SideOpsSpecialActorState): void {
+    const authored = getAuthoredSideOpsSpecialActorClip(sprite, state) ?? getAuthoredSideOpsActorClip(sprite, state);
+    if (sprite.getData('sideopsSpecialSourceTexture') && !authored) return;
     if (authored) {
       if (Number(sprite.getData('mg1AnimationPriority') ?? 0) > 0 || !this.anims.exists(authored.key)) return;
       if (sprite.anims.currentAnim?.key !== authored.key || (!sprite.anims.isPlaying && authored.repeat === -1)) sprite.play(authored.key);
@@ -706,8 +715,9 @@ export class SideOpsScene extends Phaser.Scene {
     if (this.anims.exists(key) && (sprite.anims.currentAnim?.key !== key || !sprite.anims.isPlaying)) sprite.play(key);
   }
 
-  private playMg1ActorAction(sprite: Phaser.GameObjects.Sprite, state: Mg1ActorAnimationState | SideOpsActorAnimationState): void {
-    const authored = getAuthoredSideOpsActorClip(sprite, state);
+  private playMg1ActorAction(sprite: Phaser.GameObjects.Sprite, state: Mg1ActorAnimationState | SideOpsActorAnimationState | SideOpsSpecialActorState): void {
+    const authored = getAuthoredSideOpsSpecialActorClip(sprite, state) ?? getAuthoredSideOpsActorClip(sprite, state);
+    if (sprite.getData('sideopsSpecialSourceTexture') && !authored) return;
     if (authored) {
       const priority = state === 'death' ? 4 : state === 'hit' ? 3 : state === 'jump' ? 1 : 2;
       if (Number(sprite.getData('mg1AnimationPriority') ?? 0) >= priority || !this.anims.exists(authored.key)) return;
@@ -963,7 +973,7 @@ export class SideOpsScene extends Phaser.Scene {
       this.damagePlayer(8, 'contact');
     }, undefined, this);
 
-    this.physics.add.overlap(this.bullets, sprite, (bullet) => {
+    this.physics.add.overlap(sprite, this.bullets, (_guard, bullet) => {
       const projectile = bullet as Phaser.Physics.Arcade.Sprite;
       this.spawnPlayerImpactVfx(projectile.x, projectile.y);
       this.destroyPhysicsObject(bullet);
@@ -992,7 +1002,7 @@ export class SideOpsScene extends Phaser.Scene {
         this.damagePlayer(contactDamage, `${this.profile.boss.name} charge`);
       }
     }, undefined, this);
-    this.physics.add.overlap(this.bullets, sprite, (bullet) => {
+    this.physics.add.overlap(sprite, this.bullets, (_boss, bullet) => {
       const projectile = bullet as Phaser.Physics.Arcade.Sprite;
       this.spawnPlayerImpactVfx(projectile.x, projectile.y);
       this.destroyPhysicsObject(bullet);
@@ -1001,7 +1011,8 @@ export class SideOpsScene extends Phaser.Scene {
 
     this.boss = {
       sprite,
-      baseFacingRight: this.profile.boss.baseFacingRight,
+      baseFacingRight: typeof sprite.getData('sideopsSpecialSourceFacingRight') === 'boolean'
+        ? sprite.getData('sideopsSpecialSourceFacingRight') as boolean : this.profile.boss.baseFacingRight,
       hp: this.profile.boss.hp,
       maxHp: this.profile.boss.hp,
       active: false,
@@ -1015,7 +1026,9 @@ export class SideOpsScene extends Phaser.Scene {
 
   private createPickups(platforms: Phaser.Physics.Arcade.StaticGroup): void {
     const keycard = this.physics.add.sprite(this.profile.keycard.x, this.profile.keycard.y, 'keycard');
-    keycard.setImmovable(true);
+    // A falling collectible must remain separable from static platforms.
+    // Two immovable Arcade bodies are not separated, so the card fell through.
+    keycard.setImmovable(false);
     this.physics.add.collider(keycard, platforms);
     this.physics.add.overlap(this.player, keycard, () => {
       if (this.hasKeycard) return;
@@ -1289,6 +1302,12 @@ export class SideOpsScene extends Phaser.Scene {
     boss.sprite.setVelocityX(decision.velocityX);
     this.playMg1ActorLoop(boss.sprite, decision.animation === 'move' ? 'move' : 'idle');
     if (decision.animation === 'attack') this.playMg1ActorAction(boss.sprite, 'attack');
+    // Wait for the final recoil/hit clip, then show one reload per recovery window.
+    if (decision.state.mode === 'recover' && Number(boss.sprite.getData('mg1AnimationPriority') ?? 0) === 0
+      && boss.sprite.getData('reloadWindow') !== decision.state.stateUntil) {
+      this.playMg1ActorAction(boss.sprite, 'reload');
+      boss.sprite.setData('reloadWindow', decision.state.stateUntil);
+    }
     decision.projectiles.forEach((projectile) => this.fireBossShot(boss, projectile));
     if (decision.telegraph) {
       const target = decision.telegraph;

@@ -34,7 +34,7 @@ import type {
   RadioSignalDefinition
 } from '../../types/codec.types';
 import type { ThemePackDefinition, UserSettings } from '../../types/theme.types';
-import { getConversationForContact, getConversationTopics, getSpeakerLabel } from '../../systems/conversationEngine';
+import { getConversationForContact, getConversationTopics, getSpeakerLabel, resolveConversationContactRoute } from '../../systems/conversationEngine';
 import { formatFrequency, getPreferredContactFrequency, normalizeFrequency, scanFrequency } from '../../systems/frequencyEngine';
 import { loadJson, saveJson } from '../../systems/saveEngine';
 import { loadCustomConversations, mergeStudioConversations } from '../../systems/studioStorage';
@@ -44,6 +44,7 @@ import { getAudioProfileForEra, playNarrativeAudioSource, playNarrativeVoiceCue,
 import { resolveLocalizedText } from '../../systems/localizationEngine';
 import { consumeCampaignLaunchDirective, recordCampaignCodecCall } from '../../systems/campaignStorage';
 import { evaluateContactAvailability, sortContactsForSharedFrequency } from '../../systems/contactAvailabilityEngine';
+import { resolveMgsvContactContext } from '../../systems/mgsvCodecContext';
 import {
   CODEC_INCOMING_EVENT,
   consumeCodecIncomingInbox,
@@ -67,7 +68,7 @@ import { getDirectorSequenceLibrary } from '../../systems/directorStorage';
 import { requestDirectorSequence } from '../../systems/directorBus';
 import { IncomingCallOverlay } from './IncomingCallOverlay';
 import { CodecSavePanel } from './CodecSavePanel';
-import { CodecVisualStage } from './CodecVisualStage';
+import { CodecVisualStage, resolveCodecVisualStageIdentity } from './CodecVisualStage';
 import { RadioScanPanel } from './RadioScanPanel';
 import { Mgs1ContactDossier } from './Mgs1ContactDossier';
 import { getMgs1ConversationCoverage, getMgs1Profile, getMgs1ScheduledIncomingForContext } from '../../systems/mgs1ContentEngine';
@@ -326,7 +327,7 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
   }
 
   const memoryContacts = useMemo(
-    () => eraContacts.filter((contact) => availabilityFor(contact).visibleInMemory),
+    () => eraContacts.filter((contact) => !currentContext.blockedContactIds?.includes(contact.id) && availabilityFor(contact).visibleInMemory),
     [eraContacts, memoryContactIds, currentContext, runtimeContext]
   );
 
@@ -501,11 +502,16 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
     conversationId?: string,
     subjectId?: string,
     priority?: CodecCallPriority,
-    incomingRequestId?: string
+    incomingRequestId?: string,
+    contextOverride?: CodecContextDefinition
   ) {
+    const callContext = contextOverride ?? currentContext;
+    const requestedConversation = conversationId ? conversations.find((item) => item.id === conversationId) : undefined;
     const conversation =
-      (conversationId ? conversations.find((item) => item.id === conversationId) : undefined)
-      ?? getConversationForContact(contact, conversations, source, subjectId, currentContext.id, callHistory);
+      (requestedConversation
+        ? resolveConversationContactRoute(requestedConversation, contact, callContext.id)
+        : undefined)
+      ?? getConversationForContact(contact, conversations, source, subjectId, callContext.id, callHistory);
 
     if (!conversation) {
       setCodecState('no_response');
@@ -535,7 +541,7 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
     setMemoryContactIds((ids) => (ids.includes(contact.id) ? ids : [...ids, contact.id]));
     setMessage(`CONNECTED: ${contact.name}`);
     setPreferredContactId(contact.id);
-    const routedVariant = getPreferredContactFrequency(contact, currentContext.id, subjectId ?? conversation.subjectId);
+    const routedVariant = getPreferredContactFrequency(contact, callContext.id, subjectId ?? conversation.subjectId);
     setFrequency(routedVariant.frequency);
   }
 
@@ -633,8 +639,12 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
       return;
     }
 
-    if (contact.era !== selectedEra) {
-      const context = contexts.find((entry) => entry.era === contact.era && entry.unlockedContactIds.includes(contact.id)) ?? getFirstContextForEra(contact.era);
+    const incomingContext = resolveMgsvContactContext(contact.id, currentContext, contexts);
+    const context = incomingContext !== currentContext ? incomingContext
+      : contact.era !== selectedEra
+        ? contexts.find((entry) => entry.era === contact.era && entry.unlockedContactIds.includes(contact.id)) ?? getFirstContextForEra(contact.era)
+        : currentContext;
+    if (contact.era !== selectedEra || context.id !== currentContext.id) {
       const era = eras.find((entry) => entry.id === contact.era);
       setSelectedEra(contact.era);
       setSelectedContextId(context.id);
@@ -643,7 +653,7 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
       onSettingsChange({ ...settings, selectedEra: contact.era, selectedTheme: era?.visualStyle ?? settings.selectedTheme });
     }
 
-    startCall(contact, 'incoming_call', request.conversationId, undefined, request.priority, request.id);
+    startCall(contact, 'incoming_call', request.conversationId, undefined, request.priority, request.id, context);
   }
 
   function ignoreIncomingCall() {
@@ -954,13 +964,19 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
     startCall(contact, 'secret_frequency', signal.conversationId, 'signal_intelligence', 'priority');
   }
 
+  // Presentation only: retain the full candidate pool for actual call routing.
+  const callableRouteCount = exactCandidates.filter((contact) => availabilityFor(contact).manualCallable).length;
   const scanLabel = exactCandidates.length > 1
-    ? `SHARED FREQUENCY: ${exactCandidates.length} ROUTES`
+    ? callableRouteCount > 1
+      ? `SHARED FREQUENCY: ${callableRouteCount} ROUTES`
+      : callableRouteCount === 1
+        ? 'SIGNAL STABLE: 1 AVAILABLE ROUTE'
+        : 'NO CALLABLE ROUTE IN THIS CONTEXT'
     : selectedContact && selectedAvailability && !selectedAvailability.manualCallable
       ? selectedAvailability.reason.toUpperCase()
       : scan.label;
 
-  const visualIdentity = getCodecVisualIdentity(selectedEra);
+  const visualIdentity = resolveCodecVisualStageIdentity(getCodecVisualIdentity(selectedEra), currentContext.id);
   const visualContactName = displayContact
     ? (displayContact.availability === 'unknown' && !memoryContactIds.includes(displayContact.id) ? 'UNKNOWN SIGNAL' : displayContact.name)
     : exactCandidates.length > 1 ? 'ROUTE REQUIRED' : 'NO SIGNAL';

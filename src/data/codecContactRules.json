@@ -339,9 +339,24 @@
   },
   {
     "contactId": "miller_mgsv",
+    "excludedContextIds": ["mgsv_ground_zeroes"],
     "manualCall": "allow",
     "incomingCall": "allow",
     "sharedFrequencyPriority": 100
+  },
+  {
+    "contactId": "miller_gz",
+    "contextIds": ["mgsv_ground_zeroes"],
+    "manualCall": "allow",
+    "incomingCall": "allow",
+    "sharedFrequencyPriority": 100
+  },
+  {
+    "contactId": "morpho_gz",
+    "contextIds": ["mgsv_ground_zeroes"],
+    "manualCall": "allow",
+    "incomingCall": "allow",
+    "subjectIds": ["extraction", "support"]
   },
   {
     "contactId": "ocelot_mgsv",
@@ -701,7 +716,6 @@
   {
     "contactId": "pequod_mgsv",
     "contextIds": [
-      "mgsv_ground_zeroes",
       "mgsv_afghanistan",
       "mgsv_africa",
       "mgsv_mother_base",

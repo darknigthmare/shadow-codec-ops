@@ -247,6 +247,8 @@ export interface ConversationDefinition {
   topicLabel?: string;
   topicDescription?: string;
   contextIds?: string[];
+  /** Reuse an unchanged simulation script through an explicitly scoped era contact. */
+  contextContactRoutes?: Array<{ contactId: string; contextIds: string[]; subjectId?: string }>;
   priority?: number;
   canonStatus?: CodecCanonStatus;
   loreBasis?: 'verbatim_reference' | 'paraphrased_reference' | 'original_lore_grounded' | 'custom';

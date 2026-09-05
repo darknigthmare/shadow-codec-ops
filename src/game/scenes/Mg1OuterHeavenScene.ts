@@ -49,6 +49,8 @@ import { MG1_SIDEOPS_VFX_ASSETS } from '../core/mg1SideOpsAssetRegistry';
 import { RuntimeInputController } from '../core/RuntimeInput';
 import { configureAuthoredSideOpsActor, getAuthoredSideOpsActorClip, registerAuthoredSideOpsActorAnimations } from '../core/sideOpsActorAnimationRuntime';
 import { calculateSideOpsRank } from '../systems/rankSystem';
+import { resolveSideOpsBackdropTexture } from '../core/sideOpsBackdropRegistry';
+import { getSideOpsTerrainAsset, SIDEOPS_TERRAIN_COVER_TEXTURES, type SideOpsTerrainKind } from '../core/sideOpsTerrainRegistry';
 
 type Mg1AlertState = 'NORMAL' | 'ALERT' | 'MISSION FAILED';
 
@@ -91,6 +93,33 @@ const MISSION_TITLE = 'Operation Intrude N313';
 const PLAYER_TEXTURE = 'playerSolidSnakeMg1';
 const PLAYER_BULLET_LIFETIME_MS = 1600;
 
+export const MG1_DEDICATED_INTERIOR_ASSETS = ['prison', 'corridor', 'tx55-hangar', 'command'].map((id) => ({
+  id, textureKey: `dedicatedBackdrop:mg1:${id}`, path: `/sideops/backdrops/dedicated/mg1-${id}.webp`
+}));
+
+/** Art-only boundaries for the condensed route; never used by encounter logic. */
+export const MG1_OUTER_HEAVEN_ART_SECTORS = [
+  { id: 'entry-yard', startX: 0, endX: 900, art: 'outside' },
+  { id: 'prison', startX: 900, endX: 2350, art: 'prison' },
+  { id: 'roof-passage', startX: 2350, endX: 2500, art: 'outside' },
+  { id: 'machinegun-hall', startX: 2500, endX: 3350, art: 'corridor' },
+  { id: 'hind-rooftop', startX: 3350, endX: 4350, art: 'outside' },
+  { id: 'tank-yard', startX: 4350, endX: 5450, art: 'outside' },
+  { id: 'bulldozer-passage', startX: 5450, endX: 6200, art: 'corridor' },
+  { id: 'desert-crossing', startX: 6200, endX: 6450, art: 'outside' },
+  { id: 'fire-trooper-hall', startX: 6450, endX: 7350, art: 'corridor' },
+  { id: 'cyborg-hall', startX: 7350, endX: 8350, art: 'corridor' },
+  { id: 'hostage-block', startX: 8350, endX: 9500, art: 'prison' },
+  { id: 'tx55-hangar', startX: 9500, endX: 10600, art: 'tx55-hangar' },
+  { id: 'command-bunker', startX: 10600, endX: 11800, art: 'command' },
+  { id: 'extraction-passage', startX: 11800, endX: MG1_OUTER_HEAVEN_WORLD.worldWidth, art: 'corridor' }
+] as const;
+
+export function getMg1OuterHeavenArtSector(x: number) {
+  return MG1_OUTER_HEAVEN_ART_SECTORS.find((sector) => x >= sector.startX && x < sector.endX)
+    ?? MG1_OUTER_HEAVEN_ART_SECTORS[x < 0 ? 0 : MG1_OUTER_HEAVEN_ART_SECTORS.length - 1];
+}
+
 const MG1_CODEC = {
   missionStart: { trigger: 'mission_start', contactId: 'big_boss_mg1', conversationId: 'mg1_big_boss_orders', message: 'Operation Intrude N313 orders received.', pauseGame: true },
   firstAlert: { trigger: 'first_alert', contactId: 'big_boss_mg1', conversationId: 'mg1_big_boss_equipment', message: 'Big Boss is transmitting equipment guidance.', pauseGame: false },
@@ -114,6 +143,9 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
   private accessDoor!: Phaser.Physics.Arcade.Sprite;
   private extraction!: Phaser.Physics.Arcade.Sprite;
   private arenaGate: Phaser.Physics.Arcade.Sprite | null = null;
+  private environmentArtwork: Phaser.GameObjects.Image | null = null;
+  private groundFallbackArtwork: Phaser.GameObjects.Rectangle | null = null;
+  private currentArtSectorId = '';
 
   private statusText!: Phaser.GameObjects.Text;
   private objectiveText!: Phaser.GameObjects.Text;
@@ -169,6 +201,12 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
     super('Mg1OuterHeavenScene');
   }
 
+  preload(): void {
+    MG1_DEDICATED_INTERIOR_ASSETS.forEach((asset) => {
+      if (!this.textures.exists(asset.textureKey)) this.load.image(asset.textureKey, asset.path);
+    });
+  }
+
   create(): void {
     this.resetMissionState();
     this.missionElapsedMs = 0;
@@ -199,7 +237,8 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
       this
     );
     this.physics.add.collider(this.enemyProjectiles, this.platforms, (projectile) => this.expireEnemyProjectile(projectile as Phaser.Physics.Arcade.Sprite, true));
-    this.physics.add.overlap(this.enemyProjectiles, this.player, (projectile) => this.hitPlayerWithProjectile(projectile as Phaser.Physics.Arcade.Sprite), undefined, this);
+    // Arcade reports the single sprite first, then the projectile group member.
+    this.physics.add.overlap(this.player, this.enemyProjectiles, (_player, projectile) => this.hitPlayerWithProjectile(projectile as Phaser.Physics.Arcade.Sprite), undefined, this);
 
     this.createAccessObjective();
     this.spawnNpcCheckpoints();
@@ -245,6 +284,7 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
     if (this.missionCompleted) return;
     this.missionElapsedMs += Math.max(0, delta);
     this.inputController.update();
+    this.updateEnvironmentArtwork();
     if (!this.controlActiveRemoteMissile()) this.handlePlayerInput();
     this.activateEncounterWhenReady();
     this.handleEncounter();
@@ -415,9 +455,24 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
   private createOuterHeavenBackdrop(): void {
     const width = MG1_OUTER_HEAVEN_WORLD.worldWidth;
     this.add.rectangle(width / 2, 270, width, 540, 0x071009).setDepth(-30);
-    this.add.rectangle(width / 2, 515, width, 52, 0x24301d).setDepth(-15);
+    this.groundFallbackArtwork = this.add.rectangle(width / 2, 515, width, 52, 0x24301d).setDepth(-15);
+    const exteriorKey = resolveSideOpsBackdropTexture('mg1');
+    this.currentArtSectorId = '';
+    const initialKey = [exteriorKey, ...MG1_DEDICATED_INTERIOR_ASSETS.map((asset) => asset.textureKey)].find((key) => this.textures.exists(key));
+    this.environmentArtwork = initialKey
+      ? this.add.image(0, 0, initialKey).setOrigin(0).setScrollFactor(0).setDepth(-29).setName('dedicated-environment-art')
+      : null;
+    this.updateEnvironmentArtwork(MG1_OUTER_HEAVEN_WORLD.start.x);
 
     for (let x = 180; x < width; x += 360) {
+      const sector = getMg1OuterHeavenArtSector(x);
+      if (this.textures.exists(this.getEnvironmentTexture(x))) continue;
+      if (sector.art !== 'outside') {
+        // Opaque room fallback if its painting fails to load; never exterior sky.
+        this.add.rectangle(x, 270, 360, 540, 0x10170f).setDepth(-28);
+        this.add.rectangle(x, 270, 8, 440, 0x2b3729).setDepth(-27);
+        continue;
+      }
       const towerHeight = x % 720 === 180 ? 270 : 190;
       this.add.rectangle(x, 500 - towerHeight / 2, 145, towerHeight, 0x172619).setDepth(-12);
       this.add.rectangle(x, 500 - towerHeight, 168, 14, 0x516440).setDepth(-11);
@@ -426,6 +481,7 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
     }
 
     for (let x = 1420; x < width - 300; x += 1000) {
+      if (this.textures.exists(this.getEnvironmentTexture(x))) continue;
       this.add.rectangle(x, 466, 500, 78, 0x263923).setDepth(-8);
       this.add.rectangle(x, 421, 520, 12, 0x8b6c3f).setDepth(-7);
       this.add.text(x - 108, 438, 'OUTER HEAVEN', { fontFamily: 'monospace', fontSize: '14px', color: '#b9cf8a' }).setDepth(-6);
@@ -441,17 +497,58 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
     this.configureActorSprite(rightTruck, 'mg1TransportTruck');
   }
 
+  private getEnvironmentTexture(x: number): string {
+    const sector = getMg1OuterHeavenArtSector(x);
+    return sector.art === 'outside' ? resolveSideOpsBackdropTexture('mg1') : `dedicatedBackdrop:mg1:${sector.art}`;
+  }
+
+  private updateEnvironmentArtwork(x = this.player?.x ?? MG1_OUTER_HEAVEN_WORLD.start.x): void {
+    const sector = getMg1OuterHeavenArtSector(x);
+    if (sector.id === this.currentArtSectorId) return;
+    this.currentArtSectorId = sector.id;
+    const textureKey = this.getEnvironmentTexture(x);
+    const available = this.textures.exists(textureKey);
+    this.groundFallbackArtwork?.setVisible(!available);
+    this.environmentArtwork?.setVisible(available).setData('artSector', sector.id).setData('artMode', sector.art);
+    if (available) this.environmentArtwork?.setTexture(textureKey);
+  }
+
+  /** Paint over a static surface without changing its texture, scale or body. */
+  private applyTerrainArtwork(surface: Phaser.Physics.Arcade.Sprite, kind: SideOpsTerrainKind): void {
+    const sector = getMg1OuterHeavenArtSector(surface.x);
+    const material = getSideOpsTerrainAsset('mg1', kind === 'ground' && sector.art !== 'outside' ? 'structure' : kind);
+    if (!this.textures.exists(material.textureKey)) return;
+    const body = surface.body as Phaser.Physics.Arcade.StaticBody;
+    this.add.tileSprite(body.x, body.y, body.width, body.height, material.textureKey)
+      .setOrigin(0).setDepth(-2).setName('dedicated-terrain-art')
+      .setData('terrainKind', kind).setData('artSector', sector.id)
+      .setData('sourceBodyBounds', { x: body.x, y: body.y, width: body.width, height: body.height });
+    surface.setVisible(false);
+  }
+
+  private applyCrateArtwork(surface: Phaser.Physics.Arcade.Sprite): void {
+    const textureKey = SIDEOPS_TERRAIN_COVER_TEXTURES.mg1;
+    if (!this.textures.exists(textureKey)) return;
+    const body = surface.body as Phaser.Physics.Arcade.StaticBody;
+    this.add.image(body.center.x, body.center.y, textureKey).setDisplaySize(body.width, body.height)
+      .setDepth(-1).setName('dedicated-cover-art');
+    surface.setVisible(false);
+  }
+
   private createWorldGeometry(): void {
     this.platforms = this.physics.add.staticGroup();
     for (let x = 256; x < MG1_OUTER_HEAVEN_WORLD.worldWidth; x += 512) {
       const platform = this.platforms.create(x, 520, 'platform') as Phaser.Physics.Arcade.Sprite;
       platform.setScale(16, 1).setTint(0x80945d).refreshBody();
+      this.applyTerrainArtwork(platform, 'ground');
     }
     for (let x = 620; x < MG1_OUTER_HEAVEN_WORLD.worldWidth - 500; x += 920) {
       const ledge = this.platforms.create(x, x % 1840 === 620 ? 350 : 405, 'platform') as Phaser.Physics.Arcade.Sprite;
       ledge.setScale(4, 1).setTint(0x64784f).refreshBody();
+      this.applyTerrainArtwork(ledge, 'structure');
       const crate = this.platforms.create(x + 120, 480, 'crate') as Phaser.Physics.Arcade.Sprite;
       crate.setTint(0x74633f).refreshBody();
+      this.applyCrateArtwork(crate);
     }
   }
 
@@ -461,7 +558,9 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
     this.physics.add.collider(this.player, this.accessDoor, undefined, () => !this.hasAccessCard, this);
 
     const card = this.physics.add.sprite(MG1_OUTER_HEAVEN_WORLD.keycard.x, MG1_OUTER_HEAVEN_WORLD.keycard.y, 'keycard');
-    card.setImmovable(true);
+    // Gravity places the card on its authored support; static terrain must
+    // be allowed to separate this dynamic pickup on contact.
+    card.setImmovable(false);
     this.physics.add.collider(card, this.platforms);
     this.physics.add.overlap(this.player, card, () => {
       if (this.hasAccessCard) return;
@@ -489,7 +588,7 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
     MG1_ENCOUNTER_SEQUENCE.slice(0, -1).forEach((encounter, index) => {
       const texture = index % 3 === 2 ? 'ration' : 'ammoBox';
       const pickup = this.physics.add.sprite(encounter.gateX + 115, texture === 'ration' ? 455 : 470, texture);
-      pickup.setImmovable(true);
+      pickup.setImmovable(false);
       this.physics.add.collider(pickup, this.platforms);
       this.physics.add.overlap(this.player, pickup, () => {
         if (!pickup.active) return;
@@ -532,7 +631,7 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
         this.damagePlayer(definition.contactDamage, definition.behavior);
       }
     }, undefined, this);
-    this.physics.add.overlap(this.playerProjectiles, sprite, (projectile) => {
+    this.physics.add.overlap(sprite, this.playerProjectiles, (_hazard, projectile) => {
       this.hitHazard(unit, projectile as Phaser.Physics.Arcade.Sprite);
     }, undefined, this);
     this.hazards.push(unit);
@@ -779,7 +878,7 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
           this.damagePlayer(encounter.contactDamage, encounter.name);
         }
       }, undefined, this);
-      this.physics.add.overlap(this.playerProjectiles, sprite, (projectile) => {
+      this.physics.add.overlap(sprite, this.playerProjectiles, (_boss, projectile) => {
         this.hitEncounterUnit(unit, projectile as Phaser.Physics.Arcade.Sprite);
       }, undefined, this);
       this.bossUnits.push(unit);
@@ -821,7 +920,7 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
         fontFamily: 'monospace', fontSize: '9px', color: '#f1df9b', backgroundColor: '#071009'
       }).setDepth(6);
       const protectedHostage: Mg1ProtectedHostage = { sprite: hostage, label, harmed: false };
-      this.physics.add.overlap(this.playerProjectiles, hostage, (projectile) => {
+      this.physics.add.overlap(hostage, this.playerProjectiles, (_hostage, projectile) => {
         this.harmProtectedHostage(protectedHostage, projectile as Phaser.Physics.Arcade.Sprite);
       }, undefined, this);
       this.protectedHostages.push(protectedHostage);

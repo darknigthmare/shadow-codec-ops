@@ -3,9 +3,26 @@ import type { CodecState, EraId } from '../../types/codec.types';
 import type { CodecVisualIdentity } from '../../systems/codecVisualIdentity';
 import { formatFrequency } from '../../systems/frequencyEngine';
 
+interface ContextualCodecVisualIdentity extends CodecVisualIdentity {
+  organizationLabel?: string;
+}
+
+export function resolveCodecVisualStageIdentity(
+  identity: CodecVisualIdentity,
+  contextId: string
+): ContextualCodecVisualIdentity {
+  if (identity.era !== 'mgsv') return identity;
+  const groundZeroes = contextId === 'mgsv_ground_zeroes';
+  return {
+    ...identity,
+    organizationLabel: groundZeroes ? 'MSF' : 'DIAMOND DOGS',
+    shellLabel: groundZeroes ? 'iDROID / MSF COMMS' : identity.shellLabel
+  };
+}
+
 interface CodecVisualStageProps {
   era: EraId;
-  identity: CodecVisualIdentity;
+  identity: ContextualCodecVisualIdentity;
   contextName: string;
   chapterLabel: string;
   playerName: string;
@@ -237,7 +254,7 @@ export function CodecVisualStage(props: CodecVisualStageProps) {
   if (identity.layoutId === 'mgsv_idroid') {
     return (
       <div className="codec-visual-stage layout-mgsv" data-era={era} data-state={codecState}>
-        <header className="idroid-header"><span>DIAMOND DOGS</span><strong>iDROID COMMUNICATIONS</strong><b>{state}</b></header>
+        <header className="idroid-header"><span>{identity.organizationLabel ?? 'DIAMOND DOGS'}</span><strong>iDROID COMMUNICATIONS</strong><b>{state}</b></header>
         <div className="idroid-grid">
           <nav className="idroid-nav"><span className="active">COMMS</span><span>MAP</span><span>MISSIONS</span><span>CASSETTES</span><span>STAFF</span></nav>
           <main className="idroid-main">

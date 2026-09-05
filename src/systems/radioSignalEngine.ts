@@ -1,4 +1,8 @@
+import contactRulesJson from '../data/codecContactRules.json';
+import contextsJson from '../data/codecContexts.json';
 import type {
+  CodecContactRuleDefinition,
+  CodecContextDefinition,
   ContactDefinition,
   EraId,
   RadioCarrierDefinition,
@@ -47,9 +51,22 @@ export function buildRadioCarriers(
   discoveredSignalIds: string[] = [],
   memoryContactIds: string[] = []
 ): RadioCarrierDefinition[] {
+  const context = (contextsJson as CodecContextDefinition[]).find((entry) => entry.id === contextId && entry.era === era);
+  const rules = contactRulesJson as CodecContactRuleDefinition[];
   const contactCarriers = contacts
-    .filter((contact) => contact.era === era)
-    .flatMap((contact) => getContactFrequencyVariants(contact, contextId).map((variant, index) => ({
+    .filter((contact) => {
+      if (contact.era !== era || context?.blockedContactIds?.includes(contact.id)) return false;
+      const rule = rules.find((entry) => entry.contactId === contact.id);
+      return (!rule?.contextIds?.length || rule.contextIds.includes(contextId))
+        && !rule?.excludedContextIds?.includes(contextId)
+        && !rule?.requiredFlags?.some((flag) => !flags.includes(flag))
+        && !rule?.forbiddenFlags?.some((flag) => flags.includes(flag));
+      // Deliberately do not test memory/manual-call access here: classified
+      // contacts remain discoverable inside their valid chapter.
+    })
+    .flatMap((contact) => getContactFrequencyVariants(contact, contextId)
+      .filter((variant) => !variant.contextIds?.length || variant.contextIds.includes(contextId))
+      .map((variant, index) => ({
       id: `contact:${contact.id}:${variant.frequency}:${index}`,
       era,
       label: contact.isSecret && !memoryContactIds.includes(contact.id) ? 'CLASSIFIED CONTACT' : contact.name,

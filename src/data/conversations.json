@@ -1408,6 +1408,7 @@
       }
     ],
     "subjectId": "mission",
+    "contextIds": ["mgsv_afghanistan", "mgsv_mother_base", "mgsv_africa", "mgsv_skull_face"],
     "canonStatus": "simulation",
     "loreBasis": "original_lore_grounded",
     "sourceIds": [
@@ -3772,7 +3773,6 @@
       "shadow_codec_simulation_design"
     ],
     "contextIds": [
-      "mgsv_ground_zeroes",
       "mgsv_afghanistan",
       "mgsv_africa",
       "mgsv_mother_base",
@@ -4454,9 +4454,12 @@
     "contextIds": [
       "mgsv_afghanistan",
       "mgsv_mother_base",
-      "mgsv_ground_zeroes",
       "mgsv_africa",
       "mgsv_skull_face"
+    ],
+    "contextContactRoutes": [
+      {"contactId": "miller_gz", "contextIds": ["mgsv_ground_zeroes"]},
+      {"contactId": "morpho_gz", "contextIds": ["mgsv_ground_zeroes"], "subjectId": "extraction"}
     ],
     "priority": 5,
     "canonStatus": "simulation",
@@ -4506,9 +4509,11 @@
     "contextIds": [
       "mgsv_afghanistan",
       "mgsv_mother_base",
-      "mgsv_ground_zeroes",
       "mgsv_africa",
       "mgsv_skull_face"
+    ],
+    "contextContactRoutes": [
+      {"contactId": "miller_gz", "contextIds": ["mgsv_ground_zeroes"]}
     ],
     "priority": 5,
     "canonStatus": "simulation",

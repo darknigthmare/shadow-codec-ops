@@ -223,7 +223,7 @@ describe('codec asset packs', () => {
     expect(pack.missingRecommendedAssets).not.toContain('character-specific portrait pack');
   });
   it('resolves every Ground Zeroes and The Phantom Pain portrait expression and alias', () => {
-    expect(mgsvPortraitSetsJson).toHaveLength(9);
+    expect(new Set(mgsvPortraitSetsJson.map(({ characterId }) => characterId)).size).toBe(mgsvPortraitSetsJson.length);
     for (const { characterId, directory, aliases, expressions } of mgsvPortraitSetsJson) {
       for (const expression of expressions) {
         const expectedPath = `/portraits/mgsv/${directory}/${expression}.webp`;

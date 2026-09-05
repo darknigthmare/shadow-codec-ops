@@ -46,7 +46,12 @@ import {
 import { MGS1_SIDEOPS_VFX_ASSETS } from '../core/mgs1SideOpsAssetRegistry';
 import { RuntimeInputController } from '../core/RuntimeInput';
 import { configureAuthoredSideOpsActor, getAuthoredSideOpsActorClip, registerAuthoredSideOpsActorAnimations } from '../core/sideOpsActorAnimationRuntime';
+import { configureAuthoredSideOpsSpecialActor, getAuthoredSideOpsSpecialActorClip, registerAuthoredSideOpsSpecialActorAnimations } from '../core/sideOpsSpecialActorAnimationRuntime';
+import type { SideOpsSpecialActorState } from '../core/sideOpsSpecialActorAnimationRegistry';
+import { getGroundedNpcY, getSpecialNpcReaction } from '../core/sideOpsNpcPresentation';
 import { calculateSideOpsRank } from '../systems/rankSystem';
+import { resolveSideOpsBackdropTexture } from '../core/sideOpsBackdropRegistry';
+import { getSideOpsTerrainAsset, SIDEOPS_TERRAIN_COVER_TEXTURES, type SideOpsTerrainKind } from '../core/sideOpsTerrainRegistry';
 
 type Mgs1AlertState = 'NORMAL' | 'ALERT' | 'MISSION FAILED';
 
@@ -80,6 +85,33 @@ interface Mgs1CodecCall {
 const MISSION_TITLE = 'Shadow Moses Incident';
 const PLAYER_PROJECTILE_LIFETIME_MS = 1500;
 
+export const MGS1_DEDICATED_INTERIOR_ASSETS = ['dock', 'armory', 'laboratory', 'rex-hangar', 'holding-cells', 'mantis-study', 'wolfdog-cave', 'cold-storage'].map((id) => ({
+  id, textureKey: `dedicatedBackdrop:mgs1:${id}`, path: `/sideops/backdrops/dedicated/mgs1-${id}.webp`
+}));
+
+/** Visual sectors only: boss gates, encounters, pickups and triggers stay separate. */
+export const MGS1_SHADOW_MOSES_ART_SECTORS = [
+  { id: 'underground-dock', startX: 0, endX: 1050, art: 'dock' },
+  { id: 'armory', startX: 1050, endX: 1850, art: 'armory' },
+  { id: 'heliport', startX: 1850, endX: 2250, art: 'outside' },
+  { id: 'canyon', startX: 2250, endX: 3340, art: 'outside' },
+  { id: 'holding-cells', startX: 3340, endX: 3650, art: 'holding-cells' },
+  { id: 'laboratory', startX: 3650, endX: 4800, art: 'laboratory' },
+  { id: 'mantis-study', startX: 4800, endX: 5560, art: 'mantis-study' },
+  { id: 'wolfdog-cave', startX: 5560, endX: 5950, art: 'wolfdog-cave' },
+  { id: 'snowfield', startX: 5950, endX: 6900, art: 'outside' },
+  { id: 'communications-towers', startX: 6900, endX: 8350, art: 'outside' },
+  { id: 'cold-storage', startX: 8350, endX: 9400, art: 'cold-storage' },
+  { id: 'rex-hangar', startX: 9400, endX: 10750, art: 'rex-hangar' },
+  { id: 'escape-hangar', startX: 10750, endX: 12500, art: 'rex-hangar' },
+  { id: 'snowmobile-exit', startX: 12500, endX: MGS1_SHADOW_MOSES_WORLD.worldWidth, art: 'outside' }
+] as const;
+
+export function getMgs1ShadowMosesArtSector(x: number) {
+  return MGS1_SHADOW_MOSES_ART_SECTORS.find((sector) => x >= sector.startX && x < sector.endX)
+    ?? MGS1_SHADOW_MOSES_ART_SECTORS[x < 0 ? 0 : MGS1_SHADOW_MOSES_ART_SECTORS.length - 1];
+}
+
 const MGS1_CODEC = {
   missionStart: { trigger: 'mission_start', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_mission_start', message: 'Shadow Moses infiltration orders received.', pauseGame: true },
   foxhound: { trigger: 'boss_intro', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_foxhound', message: 'A FOXHOUND operative blocks the route.', pauseGame: false },
@@ -105,6 +137,7 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
   private inputController!: RuntimeInputController;
   private activeBoss: ActiveBossUnit | null = null;
   private hazards: Mgs1HazardUnit[] = [];
+  private npcActors: Array<{ sprite: Phaser.GameObjects.Sprite; sourceTextureKey: string; nextReactionAt: number; cycle: number }> = [];
   private arenaGate: Phaser.Physics.Arcade.Sprite | null = null;
   private decoySprite: Phaser.GameObjects.Sprite | null = null;
   private decoyLabel: Phaser.GameObjects.Text | null = null;
@@ -112,6 +145,9 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
   private snowmobile: Phaser.GameObjects.Sprite | null = null;
   private cardboardBoxSprite: Phaser.GameObjects.Sprite | null = null;
   private searchlightGraphics!: Phaser.GameObjects.Graphics;
+  private environmentArtwork: Phaser.GameObjects.Image | null = null;
+  private groundFallbackArtwork: Phaser.GameObjects.Rectangle | null = null;
+  private currentArtSectorId = '';
 
   private flow: Mgs1MissionFlowState = createMgs1MissionFlowState();
   private maxHealth = 100;
@@ -158,6 +194,12 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
     super('Mgs1ShadowMosesScene');
   }
 
+  preload(): void {
+    MGS1_DEDICATED_INTERIOR_ASSETS.forEach((asset) => {
+      if (!this.textures.exists(asset.textureKey)) this.load.image(asset.textureKey, asset.path);
+    });
+  }
+
   create(): void {
     this.resetMissionState();
     this.missionElapsedMs = 0;
@@ -189,7 +231,8 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
     this.physics.add.collider(this.enemyProjectiles, this.platforms, (projectile) => {
       this.expireEnemyProjectile(projectile as Phaser.Physics.Arcade.Sprite, true);
     });
-    this.physics.add.overlap(this.enemyProjectiles, this.player, (projectile) => {
+    // Arcade reports the single sprite first, then the projectile group member.
+    this.physics.add.overlap(this.player, this.enemyProjectiles, (_player, projectile) => {
       this.hitPlayerWithProjectile(projectile as Phaser.Physics.Arcade.Sprite);
     }, undefined, this);
 
@@ -229,12 +272,14 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
     if (this.missionCompleted) return;
     this.missionElapsedMs += Math.max(0, delta);
     this.inputController.update();
+    this.updateEnvironmentArtwork();
     this.handlePlayerInput();
     this.updateCardboardBox();
     this.updateSearchlights();
     this.handleDecoyReveal();
     this.activateEncounterWhenReady();
     this.updateActiveBoss();
+    this.updateNpcReactions();
     this.updateHazards();
     this.updateEscapeSequence();
     if (this.alertState === 'ALERT' && this.time.now >= this.alertUntil) this.alertState = 'NORMAL';
@@ -247,6 +292,7 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
     this.flow = createMgs1MissionFlowState();
     this.activeBoss = null;
     this.hazards = [];
+    this.npcActors = [];
     this.arenaGate = null;
     this.decoySprite = null;
     this.decoyLabel = null;
@@ -285,6 +331,7 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
   /** Registers all generated actor sheets while retaining static sprites as fallback. */
   private createActorAnimations(): void {
     registerAuthoredSideOpsActorAnimations(this);
+    registerAuthoredSideOpsSpecialActorAnimations(this);
     MGS1_ACTOR_ANIMATION_ASSETS.forEach((asset) => {
       if (!this.textures.exists(asset.textureKey)) return;
       (Object.entries(asset.clips) as [Mgs1ActorAnimationState, NonNullable<Mgs1ActorAnimationAsset['clips'][Mgs1ActorAnimationState]>][])
@@ -355,6 +402,7 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
       body.setOffset(Math.floor((asset.frameWidth - asset.sourceWidth) / 2), 0);
       if (body instanceof Phaser.Physics.Arcade.StaticBody) body.updateFromGameObject();
     }
+    configureAuthoredSideOpsSpecialActor(this, sprite, sourceTextureKey);
     this.playActorLoop(sprite, initialState);
     return sprite;
   }
@@ -363,12 +411,14 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
     return getMgs1ActorAnimationAssetBySourceTexture(String(sprite.getData('mgs1SourceTextureKey') ?? ''));
   }
 
-  private playActorLoop(sprite: Phaser.GameObjects.Sprite, state: Mgs1ActorAnimationState, force = false): void {
+  private playActorLoop(sprite: Phaser.GameObjects.Sprite, state: Mgs1ActorAnimationState | SideOpsSpecialActorState, force = false): void {
     const asset = this.getActorAsset(sprite);
-    const authored = getAuthoredSideOpsActorClip(sprite, state);
+    const authored = getAuthoredSideOpsSpecialActorClip(sprite, state) ?? getAuthoredSideOpsActorClip(sprite, state);
+    if (sprite.getData('sideopsSpecialSourceTexture') && !authored) return;
     if (!authored && (!asset || !this.textures.exists(asset.textureKey))) return;
     if (!force && Number(sprite.getData('mgs1AnimationPriority') ?? 0) > 0) return;
-    const resolved = asset?.clips[state] ? state : 'idle';
+    const legacyState = state as Mgs1ActorAnimationState;
+    const resolved = asset?.clips[legacyState] ? legacyState : 'idle';
     const key = authored?.key ?? getMgs1ActorAnimationKey(asset!.textureKey, resolved);
     if (!this.anims.exists(key)) return;
     if (force) {
@@ -378,15 +428,17 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
     if (sprite.anims.currentAnim?.key !== key || !sprite.anims.isPlaying) sprite.play(key);
   }
 
-  private playActorAction(sprite: Phaser.GameObjects.Sprite, state: Mgs1ActorAnimationState): void {
+  private playActorAction(sprite: Phaser.GameObjects.Sprite, state: Mgs1ActorAnimationState | SideOpsSpecialActorState): void {
     const asset = this.getActorAsset(sprite);
-    const authored = getAuthoredSideOpsActorClip(sprite, state);
-    const clip = authored ?? asset?.clips[state];
+    const authored = getAuthoredSideOpsSpecialActorClip(sprite, state) ?? getAuthoredSideOpsActorClip(sprite, state);
+    if (sprite.getData('sideopsSpecialSourceTexture') && !authored) return;
+    const legacyState = state as Mgs1ActorAnimationState;
+    const clip = authored ?? asset?.clips[legacyState];
     if (!clip || (!authored && (!asset || !this.textures.exists(asset.textureKey)))) return;
     const priority = state === 'death' ? 4 : state === 'hit' ? 3 : 2;
     const currentPriority = Number(sprite.getData('mgs1AnimationPriority') ?? 0);
     if (currentPriority === 4 || currentPriority >= priority) return;
-    const key = authored?.key ?? getMgs1ActorAnimationKey(asset!.textureKey, state);
+    const key = authored?.key ?? getMgs1ActorAnimationKey(asset!.textureKey, legacyState);
     if (!this.anims.exists(key)) return;
     const lock = `${state}-${this.time.now}-${Phaser.Math.Between(0, 99999)}`;
     sprite.setData('mgs1AnimationLock', lock);
@@ -404,14 +456,34 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
   private createShadowMosesBackdrop(): void {
     const width = MGS1_SHADOW_MOSES_WORLD.worldWidth;
     this.add.rectangle(width / 2, 270, width, 540, 0x061015).setDepth(-40);
-    this.add.rectangle(width / 2, 90, width, 180, 0x10202a).setDepth(-39);
-    this.add.rectangle(width / 2, 510, width, 60, 0x253039).setDepth(-20);
+    this.groundFallbackArtwork = this.add.rectangle(width / 2, 510, width, 60, 0x253039).setDepth(-20);
+    const exteriorKey = resolveSideOpsBackdropTexture('mgs1');
+    this.currentArtSectorId = '';
+    const initialKey = [exteriorKey, ...MGS1_DEDICATED_INTERIOR_ASSETS.map((asset) => asset.textureKey)].find((key) => this.textures.exists(key));
+    this.environmentArtwork = initialKey
+      ? this.add.image(0, 0, initialKey).setOrigin(0).setScrollFactor(0).setDepth(-39).setName('dedicated-environment-art')
+      : null;
+    this.updateEnvironmentArtwork(MGS1_SHADOW_MOSES_WORLD.start.x);
 
     for (let x = 120; x < width; x += 240) {
+      if (getMgs1ShadowMosesArtSector(x).art !== 'outside') continue;
       this.add.circle(x, 115 + (x % 5) * 13, 2, 0xdfe8e7, 0.75).setDepth(-35);
-      this.add.rectangle(x, 490, 130, 22, 0xd7e0df, 0.23).setDepth(-19);
+      if (!this.textures.exists(exteriorKey)) this.add.rectangle(x, 490, 130, 22, 0xd7e0df, 0.23).setDepth(-19);
     }
+    MGS1_SHADOW_MOSES_ART_SECTORS.forEach((sector) => {
+      const key = this.getEnvironmentTexture(sector.startX);
+      if (key && this.textures.exists(key)) return;
+      // Preserve an opaque room fallback if its specific painting fails to load.
+      // A cave/study/freezer must never inherit the exterior heliport panorama.
+      const tint = sector.id === 'wolfdog-cave' ? 0x15171a : sector.id === 'mantis-study' ? 0x211916 : 0x152028;
+      this.add.rectangle(sector.startX, 0, sector.endX - sector.startX, 540, tint)
+        .setOrigin(0).setDepth(-38).setName('dedicated-interior-fallback').setData('artSector', sector.id);
+      for (let x = sector.startX + 100; x < sector.endX; x += 220) {
+        this.add.rectangle(x, 250, 14, 460, 0x26343a).setDepth(-37);
+      }
+    });
     for (let x = 700; x < width - 300; x += 850) {
+      if (getMgs1ShadowMosesArtSector(x).art !== 'outside' || this.textures.exists(exteriorKey)) continue;
       const height = x % 1700 === 700 ? 230 : 165;
       this.add.rectangle(x, 500 - height / 2, 250, height, 0x17252b).setDepth(-16);
       this.add.rectangle(x, 500 - height, 270, 14, 0x53656a).setDepth(-15);
@@ -424,15 +496,75 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
     }).setScrollFactor(0).setDepth(90);
   }
 
+  private getEnvironmentTexture(x: number): string | null {
+    const sector = getMgs1ShadowMosesArtSector(x);
+    return sector.art === 'outside' ? resolveSideOpsBackdropTexture('mgs1')
+      : sector.art ? `dedicatedBackdrop:mgs1:${sector.art}` : null;
+  }
+
+  private updateEnvironmentArtwork(x = this.player?.x ?? MGS1_SHADOW_MOSES_WORLD.start.x): void {
+    const sector = getMgs1ShadowMosesArtSector(x);
+    if (sector.id === this.currentArtSectorId) return;
+    this.currentArtSectorId = sector.id;
+    const textureKey = this.getEnvironmentTexture(x);
+    const available = Boolean(textureKey && this.textures.exists(textureKey));
+    this.groundFallbackArtwork?.setVisible(!available);
+    this.environmentArtwork?.setVisible(available).setData('artSector', sector.id).setData('artMode', sector.art ?? 'interior-fallback');
+    if (available && textureKey) this.environmentArtwork?.setTexture(textureKey);
+  }
+
+  /** A visual coating, never a resize or replacement of the static collision body. */
+  private applyTerrainArtwork(surface: Phaser.Physics.Arcade.Sprite, kind: SideOpsTerrainKind): void {
+    const body = surface.body as Phaser.Physics.Arcade.StaticBody;
+    const sectors = kind === 'ground'
+      ? MGS1_SHADOW_MOSES_ART_SECTORS.filter((sector) => sector.endX > body.x && sector.startX < body.x + body.width)
+      : [getMgs1ShadowMosesArtSector(surface.x)];
+    // Split the artwork, not the body: a512px floor can straddle an indoor boundary.
+    // The cave and study already have authored earth/wood floors in their painting.
+    const segments = sectors.map((sector) => {
+      const left = kind === 'ground' ? Math.max(body.x, sector.startX) : body.x;
+      const right = kind === 'ground' ? Math.min(body.x + body.width, sector.endX) : body.x + body.width;
+      const paintingKey = this.getEnvironmentTexture(sector.startX);
+      const paintedFloor = kind === 'ground' && (sector.art === 'wolfdog-cave' || sector.art === 'mantis-study')
+        && Boolean(paintingKey && this.textures.exists(paintingKey));
+      const material = getSideOpsTerrainAsset('mgs1', kind === 'ground' && sector.art !== 'outside' ? 'structure' : kind);
+      return { sector, left, right, paintedFloor, material };
+    });
+    if (segments.some((segment) => !segment.paintedFloor && !this.textures.exists(segment.material.textureKey))) return;
+    for (const { sector, left, right, paintedFloor, material } of segments) {
+      if (paintedFloor) continue;
+      this.add.tileSprite(left, body.y, right - left, body.height, material.textureKey)
+        .setOrigin(0).setDepth(-2).setName('dedicated-terrain-art')
+        .setData('terrainKind', kind).setData('artSector', sector.id)
+        .setData('sourceBodyBounds', { x: body.x, y: body.y, width: body.width, height: body.height });
+    }
+    surface.setVisible(false);
+  }
+
   private createWorldGeometry(): void {
     this.platforms = this.physics.add.staticGroup();
     for (let x = 256; x < MGS1_SHADOW_MOSES_WORLD.worldWidth; x += 512) {
       const platform = this.platforms.create(x, 516, 'platform') as Phaser.Physics.Arcade.Sprite;
       platform.setScale(8, 1).refreshBody();
+      this.applyTerrainArtwork(platform, 'ground');
     }
     for (let x = 850; x < MGS1_SHADOW_MOSES_WORLD.worldWidth - 400; x += 1100) {
       const ledge = this.platforms.create(x, 390 - (x % 3) * 28, 'platform') as Phaser.Physics.Arcade.Sprite;
       ledge.setScale(3, 1).refreshBody();
+      this.applyTerrainArtwork(ledge, 'structure');
+    }
+    // QA-proven collectible access: add supports without moving legacy geometry.
+    for (const step of [{ x: 740, top: 430 }, { x: 9460, top: 438 }, { x: 9530, top: 366 }]) {
+      const support = this.platforms.create(step.x, step.top + 8, 'platform') as Phaser.Physics.Arcade.Sprite;
+      support.setScale(2, 1).setData('pickupApproach', true).refreshBody();
+      this.applyTerrainArtwork(support, 'structure');
+    }
+    const supplyTexture = SIDEOPS_TERRAIN_COVER_TEXTURES.mgs1;
+    if (this.textures.exists(supplyTexture)) {
+      for (const x of [1210, 4660, 8500, 9160]) {
+        this.add.image(x, 472, supplyTexture).setDepth(-18).setAlpha(0.82)
+          .setName('dedicated-background-supply').setData('decorativeOnly', true);
+      }
     }
   }
 
@@ -536,10 +668,29 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
         this.resolveActorTexture(checkpoint.textureKey, 'guard')
       ).setDepth(5);
       this.configureActorSprite(sprite, checkpoint.textureKey, 'guard');
-      this.add.text(checkpoint.x, checkpoint.y - 55, checkpoint.name, {
+      const bodyHeight = getMgs1ActorAnimationAssetBySourceTexture(checkpoint.textureKey)?.sourceHeight ?? 48;
+      const supports = this.platforms.getChildren().map((platform) => (platform as Phaser.Physics.Arcade.Sprite).body as Phaser.Physics.Arcade.StaticBody);
+      sprite.setY(getGroundedNpcY(checkpoint.x, checkpoint.y, bodyHeight, supports, 508));
+      this.npcActors.push({ sprite, sourceTextureKey: checkpoint.textureKey, nextReactionAt: 0, cycle: 0 });
+      this.add.text(checkpoint.x, sprite.y - 55, checkpoint.name, {
         fontFamily: 'monospace', fontSize: '10px', color: '#a7c8bd', backgroundColor: '#061015aa'
       }).setOrigin(0.5).setDepth(6);
     });
+  }
+
+  private updateNpcReactions(): void {
+    for (const npc of this.npcActors) {
+      if (!npc.sprite.active) continue;
+      this.playActorLoop(npc.sprite, 'idle');
+      if (this.time.now < npc.nextReactionAt) continue;
+      const distance = Math.abs(this.player.x - npc.sprite.x);
+      const nearbyThreat = Boolean(this.activeBoss && Math.abs(this.activeBoss.sprite.x - npc.sprite.x) < 650);
+      const reaction = getSpecialNpcReaction(npc.sourceTextureKey, distance, nearbyThreat, npc.cycle);
+      if (!reaction) continue;
+      this.playActorAction(npc.sprite, reaction);
+      npc.cycle += 1;
+      npc.nextReactionAt = this.time.now + 2600;
+    }
   }
 
   private spawnDecoyNarrativeEncounter(): void {
@@ -597,7 +748,7 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
       this.physics.add.overlap(this.player, sprite, () => {
         if (!unit.disabled) this.damagePlayer(definition.contactDamage, definition.id);
       }, undefined, this);
-      this.physics.add.overlap(this.playerProjectiles, sprite, (projectile) => {
+      this.physics.add.overlap(sprite, this.playerProjectiles, (_hazard, projectile) => {
         this.hitHazard(unit, projectile as Phaser.Physics.Arcade.Sprite);
       }, undefined, this);
     });
@@ -770,7 +921,9 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
     this.configureActorSprite(sprite, encounter.textureKey, 'bossCaptain');
     if (encounter.airborne) sprite.body.setAllowGravity(false);
     else this.physics.add.collider(sprite, this.platforms);
-    if (encounter.stationary) sprite.setImmovable(true);
+    // Stationary controls horizontal AI, not collision separation. Grounded
+    // bosses must still settle against static terrain under gravity.
+    if (encounter.stationary) sprite.setImmovable(false);
 
     const unit: ActiveBossUnit = {
       definition: encounter,
@@ -785,7 +938,7 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
     this.physics.add.overlap(this.player, sprite, () => {
       if (this.activeBoss === unit) this.damagePlayer(encounter.contactDamage, encounter.name);
     }, undefined, this);
-    this.physics.add.overlap(this.playerProjectiles, sprite, (projectile) => {
+    this.physics.add.overlap(sprite, this.playerProjectiles, (_boss, projectile) => {
       if (this.activeBoss === unit) this.hitBoss(unit, projectile as Phaser.Physics.Arcade.Sprite);
     }, undefined, this);
 
@@ -806,7 +959,8 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
     if (!unit || !unit.sprite.active) return;
     const encounter = unit.definition;
     const distanceX = this.player.x - unit.sprite.x;
-    unit.sprite.setFlipX(distanceX < 0);
+    const authoredFacing = unit.sprite.getData('sideopsSpecialSourceFacingRight');
+    unit.sprite.setFlipX(authoredFacing === false ? distanceX > 0 : distanceX < 0);
 
     if (encounter.airborne) {
       const hoverY = encounter.y + Math.sin(this.time.now / 420) * (encounter.behavior === 'aircraft' ? 48 : 24);
