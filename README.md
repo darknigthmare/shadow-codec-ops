@@ -1,4 +1,14 @@
-# Shadow Codec Ops - v3.5.0
+# Shadow Codec Ops - v3.6.0
+
+## Tactical Anthology — 5 septembre 2026
+
+Le mode Side Ops propose maintenant 24 simulations tactiques originales sur douze époques : reconnaissance et assaut, routes hautes/basses, renseignements, ravitaillement et extraction. Les gardes utilisent les couverts, enquêtent sur les bruits et le dernier contact connu, visent avant de tirer et rechargent ; les rencontres lourdes annoncent leurs attaques.
+
+La nouvelle série OpenAI comprend 72 planches d’animation (1 152 poses, trois rôles par époque) et 24 matériaux de terrain. L’interface privilégie le jeu, avec pause réelle, choix d’opération suspendu, plein écran et dossier repliable. Le chronomètre mesure le temps actif, y compris dans les scènes dédiées MG1/MGS1.
+
+Validation : 492 tests réussis, build et PWA valides ; six tests Python vérifient l’importeur. Les 24 parcours et extractions ont été contrôlés dans Chromium avec inputs clavier et physique réelle. Le décor Costa Rica de Peace Walker est sélectionné selon le contexte, sans remplacer Mother Base ailleurs. Il s’agit de simulations fan-made, pas d’une reconstitution 1:1 ni d’animations exhaustives de chaque boss, PNJ et véhicule de la franchise.
+
+Voir [le contrat de campagne](docs/SIDEOPS_TACTICAL_ANTHOLOGY.md) et [la provenance des animations](scripts/art_sources/actor-animations/README.md).
 
 ## Franchise Codec Fidelity Audit
 

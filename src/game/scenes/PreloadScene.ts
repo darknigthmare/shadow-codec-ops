@@ -40,6 +40,8 @@ import {
   MGS3_SIDEOPS_ALL_ASSETS
 } from '../core/mgs3SideOpsAssetRegistry';
 import { SIDEOPS_GENERATED_BACKDROP_ASSETS } from '../core/sideOpsBackdropRegistry';
+import { SIDEOPS_ACTOR_ANIMATION_SHEETS } from '../core/sideOpsActorAnimationRegistry';
+import { SIDEOPS_TERRAIN_ASSETS } from '../core/sideOpsTerrainRegistry';
 
 type RegistryFallbackShape = 'humanoid' | 'animal' | 'machine' | 'sensor' | 'projectile' | 'effect';
 
@@ -195,6 +197,12 @@ export class PreloadScene extends Phaser.Scene {
     MGSV_PHANTOM_PAIN_SIDEOPS_ALL_ASSETS.forEach((asset) => preloadRegistryAsset(this, asset));
     PATRIOTS_AI_SIDEOPS_ALL_ASSETS.forEach((asset) => preloadRegistryAsset(this, asset));
     SIDEOPS_GENERATED_BACKDROP_ASSETS.forEach((asset) => this.load.image(asset.textureKey, asset.path));
+    SIDEOPS_TERRAIN_ASSETS.forEach((asset) => this.load.image(asset.textureKey, asset.path));
+    SIDEOPS_ACTOR_ANIMATION_SHEETS.forEach((asset) => this.load.spritesheet(asset.textureKey, asset.path, {
+      frameWidth: asset.frameWidth,
+      frameHeight: asset.frameHeight,
+      endFrame: asset.frameCount - 1
+    }));
     MGS1_VR_ALL_ASSETS.forEach((asset) => this.load.image(asset.textureKey, asset.path));
     MGS1_VR_GAMEPLAY_ALL_ASSETS.forEach((asset) => {
       if (asset.loader === 'spritesheet') {

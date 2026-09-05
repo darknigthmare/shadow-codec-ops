@@ -1,12 +1,12 @@
 import Phaser from 'phaser';
-import { GAME_EVENT, onGameEvent, type MissionCompletePayload } from '../core/GameEvents';
+import { emitGameEvent, GAME_EVENT, onGameEvent, type MissionCompletePayload } from '../core/GameEvents';
 import { RuntimeInputController } from '../core/RuntimeInput';
-import { resolveSideOpsRuntimeScene, type SideOpsRuntimeSceneKey } from '../../systems/sideOpsRuntimeResolver';
+import { resolveSideOpsRuntimeScene } from '../../systems/sideOpsRuntimeResolver';
 
 export class MissionCompleteScene extends Phaser.Scene {
   private inputController!: RuntimeInputController;
   private restartLocked = false;
-  private restartScene: SideOpsRuntimeSceneKey = 'SideOpsScene';
+  private missionId = 'shadow_dock_001';
   private offMissionRestart?: () => void;
 
   constructor() {
@@ -21,7 +21,7 @@ export class MissionCompleteScene extends Phaser.Scene {
 
     this.inputController = new RuntimeInputController(this);
     this.restartLocked = false;
-    this.restartScene = resolveSideOpsRuntimeScene(data.missionId ?? 'shadow_dock_001');
+    this.missionId = data.missionId ?? 'shadow_dock_001';
     this.offMissionRestart = onGameEvent<{ missionId?: string }>(GAME_EVENT.MISSION_RESTART, (payload) => {
       if (this.restartLocked) return;
       this.restartLocked = true;
@@ -58,7 +58,7 @@ export class MissionCompleteScene extends Phaser.Scene {
       `STEALTH SCORE: ${data.stealthScore ?? 0}`,
       `OBJECTIVES: ${data.objectivesCompleted ?? 0}/${data.totalObjectives ?? 5}`,
       `SECRETS: ${data.secretsFound ?? 0}/${data.totalSecrets ?? 0}`,
-      `BOSS DEFEATED: ${data.bossDefeated ? 'YES' : 'NO'}`,
+      data.bossRequired === false ? `RECONNAISSANCE: ${success ? 'COMPLETE' : 'INCOMPLETE'}` : `BOSS DEFEATED: ${data.bossDefeated ? 'YES' : 'NO'}`,
       `TIME: ${data.timeSeconds ?? 0}s`,
       `ALERTS: ${data.alerts ?? 0} ${data.noAlert ? '// NO ALERT BONUS' : ''}`,
       `REINFORCEMENTS: ${data.reinforcementCount ?? 0}`,
@@ -89,9 +89,9 @@ export class MissionCompleteScene extends Phaser.Scene {
     if (this.restartLocked) return;
     this.inputController.update();
     if (this.inputController.justDown('confirm') || this.inputController.justDown('cancel')) {
-      this.restartLocked = true;
       this.inputController.vibrate(55, 0.12, 0.22);
-      this.scene.start(this.restartScene);
+      // The same event drives buttons, keyboard and gamepad, including React cleanup.
+      emitGameEvent(GAME_EVENT.MISSION_RESTART, { requested: true, missionId: this.missionId });
     }
   }
 }

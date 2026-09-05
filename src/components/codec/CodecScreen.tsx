@@ -5,6 +5,7 @@ import '../../styles/codec-assets.css';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import contactsJson from '../../data/contacts.json';
 import conversationsJson from '../../data/conversations.json';
+import { SIDEOPS_CAMPAIGN_CONVERSATIONS } from '../../game/core/sideOpsCampaign';
 import contextsJson from '../../data/codecContexts.json';
 import contactRulesJson from '../../data/codecContactRules.json';
 import canonSourcesJson from '../../data/codecCanonSources.json';
@@ -81,7 +82,7 @@ import { appendCodecReplay, clearCodecReplays, deleteCodecReplay, loadCodecRepla
 import { downloadCodecWebm, exportCodecJson, exportCodecPng, startDomWebmRecording, type DomWebmRecorder } from '../../systems/codecCaptureEngine';
 
 const contacts = contactsJson as ContactDefinition[];
-const builtInConversations = conversationsJson as ConversationDefinition[];
+const builtInConversations = [...conversationsJson as ConversationDefinition[], ...SIDEOPS_CAMPAIGN_CONVERSATIONS];
 const contexts = contextsJson as CodecContextDefinition[];
 const fidelityProfiles = fidelityProfilesJson as Array<{ era: EraId; device: string; interaction: string; visual: string; audio: string; sources: string[] }>;
 const contactRules = contactRulesJson as CodecContactRuleDefinition[];

@@ -30,6 +30,38 @@ import {
   type SideOpsSupplementalRuntimeTextures
 } from '../core/sideOpsVisualPackRuntime';
 import { resolveSideOpsBackdropTexture } from '../core/sideOpsBackdropRegistry';
+import {
+  evaluateSideOpsCampaignChallenges,
+  getSideOpsCampaignExtractionBlocker,
+  getSideOpsCampaignMission,
+  getSideOpsCampaignSector,
+  resolveSideOpsCampaignProfile,
+  type SideOpsCampaignMission
+} from '../core/sideOpsCampaign';
+import {
+  configureAuthoredSideOpsActor,
+  getAuthoredSideOpsActorClip,
+  registerAuthoredSideOpsActorAnimations
+} from '../core/sideOpsActorAnimationRuntime';
+import type { SideOpsActorAnimationState, SideOpsActorRole } from '../core/sideOpsActorAnimationRegistry';
+import { getSideOpsTerrainAsset, SIDEOPS_TERRAIN_COVER_TEXTURES } from '../core/sideOpsTerrainRegistry';
+import {
+  createSideOpsEnemyState,
+  sideOpsEnemyHasLineOfSight,
+  sideOpsEnemySightHit,
+  updateSideOpsEnemy,
+  type SideOpsEnemyDecision,
+  type SideOpsEnemyObstacle,
+  type SideOpsEnemyState,
+  type SideOpsEnemyStimulus
+} from '../core/sideOpsEnemyTactics';
+import {
+  createSideOpsBossState,
+  updateSideOpsBoss,
+  type SideOpsBossDecision,
+  type SideOpsBossProjectile,
+  type SideOpsBossState
+} from '../core/sideOpsEnemyBossTactics';
 
 type AlertState = 'NORMAL' | 'SUSPICION' | 'ALERT' | 'EVASION' | 'CAUTION' | 'MISSION FAILED';
 type GuardRole = 'patrol' | 'reinforcement';
@@ -44,7 +76,9 @@ interface GuardUnit {
   disabled: boolean;
   hp: number;
   role: GuardRole;
-  lastShotAt: number;
+  brain: SideOpsEnemyState;
+  decision: SideOpsEnemyDecision | null;
+  indicator: Phaser.GameObjects.Text;
 }
 
 interface BossUnit {
@@ -54,10 +88,10 @@ interface BossUnit {
   maxHp: number;
   active: boolean;
   defeated: boolean;
-  phase: 1 | 2;
+  phase: 1 | 2 | 3;
   direction: number;
-  lastShotAt: number;
-  lastChargeAt: number;
+  brain: SideOpsBossState;
+  decision: SideOpsBossDecision | null;
 }
 
 type PickupKind = 'ration' | 'chaff' | 'ammo';
@@ -315,6 +349,8 @@ function getActiveMissionProfile(): MissionProfile {
     }
   }
 
+  const campaignProfile = resolveSideOpsCampaignProfile(requestedMissionId);
+  if (campaignProfile) return campaignProfile;
   const builderProfile = resolveBuilderSideOpsProfile(requestedMissionId);
   if (builderProfile) {
     return {
@@ -327,6 +363,7 @@ function getActiveMissionProfile(): MissionProfile {
 
 export class SideOpsScene extends Phaser.Scene {
   private profile: MissionProfile = SHADOW_DOCK_PROFILE;
+  private campaignMission: SideOpsCampaignMission | undefined;
   private player!: Phaser.Physics.Arcade.Sprite;
   private cameraNode!: Phaser.Physics.Arcade.Sprite;
   private lockedDoor!: Phaser.Physics.Arcade.Sprite;
@@ -340,9 +377,14 @@ export class SideOpsScene extends Phaser.Scene {
   private hudText!: Phaser.GameObjects.Text;
   private alertText!: Phaser.GameObjects.Text;
   private bossText!: Phaser.GameObjects.Text;
+  private sectorText!: Phaser.GameObjects.Text;
   private cameraScanGraphics!: Phaser.GameObjects.Graphics;
   private searchlightGraphics!: Phaser.GameObjects.Graphics;
   private bossBarrierGraphics!: Phaser.GameObjects.Graphics;
+  private bossTelegraphGraphics!: Phaser.GameObjects.Graphics;
+  private tacticalObstacles: SideOpsEnemyObstacle[] = [];
+  private latestNoise: SideOpsEnemyStimulus | null = null;
+  private noiseSequence = 0;
   private offCodecResume?: () => void;
   private offMissionRestart?: () => void;
   private offDirectorDirective?: () => void;
@@ -387,7 +429,7 @@ export class SideOpsScene extends Phaser.Scene {
   private bossDefeatedEmitted = false;
   private secretCodecEmitted = false;
 
-  private missionStartTime = 0;
+  private missionElapsedMs = 0;
   private nextPlayerShotAt = 0;
   private lastDamageTime = 0;
   private nextReinforcementAt = 0;
@@ -407,12 +449,14 @@ export class SideOpsScene extends Phaser.Scene {
 
   create(): void {
     this.profile = getActiveMissionProfile();
+    this.campaignMission = getSideOpsCampaignMission(this.profile.id);
     this.resetMissionState();
-    this.missionStartTime = this.time.now;
+    this.missionElapsedMs = 0;
     this.physics.world.setBounds(0, 0, this.profile.worldWidth, 540);
     this.cameras.main.setBounds(0, 0, this.profile.worldWidth, 540);
     this.createMg1ActorAnimations();
     this.createVisualPackAnimations();
+    registerAuthoredSideOpsActorAnimations(this);
 
     this.addSkyAndBackdrops();
 
@@ -427,7 +471,7 @@ export class SideOpsScene extends Phaser.Scene {
       this.profile.start.y,
       this.resolveMg1ActorTexture(this.profile.playerTexture)
     );
-    this.configureMg1ActorSprite(this.player, this.profile.playerTexture);
+    this.configureMg1ActorSprite(this.player, this.profile.playerTexture, 'player');
     this.player.setCollideWorldBounds(true);
     this.player.setDragX(1250);
     this.player.setMaxVelocity(270, 540);
@@ -462,17 +506,29 @@ export class SideOpsScene extends Phaser.Scene {
       this.destroyPhysicsObject(bullet);
       this.hitCamera();
     }, undefined, this);
-    this.physics.add.overlap(this.enemyBullets, this.player, (bullet) => {
+    this.physics.add.collider(this.bullets, this.lockedDoor, (bullet) => {
+      const projectile = bullet as Phaser.Physics.Arcade.Sprite;
+      this.spawnPlayerImpactVfx(projectile.x, projectile.y);
+      this.destroyPhysicsObject(bullet);
+    }, () => !this.hasKeycard, this);
+    this.physics.add.collider(this.enemyBullets, this.lockedDoor, (bullet) => {
       const projectile = bullet as Phaser.Physics.Arcade.Sprite;
       this.spawnEnemyImpactVfx(projectile.x, projectile.y);
       this.destroyPhysicsObject(bullet);
-      this.damagePlayer(14, 'rifle');
+    }, () => !this.hasKeycard, this);
+    this.physics.add.overlap(this.enemyBullets, this.player, (bullet) => {
+      const projectile = bullet as Phaser.Physics.Arcade.Sprite;
+      const damage = Number(projectile.getData('damage') ?? 14);
+      const source = String(projectile.getData('source') ?? 'rifle');
+      this.spawnEnemyImpactVfx(projectile.x, projectile.y);
+      this.destroyPhysicsObject(bullet);
+      this.damagePlayer(damage, source);
     });
 
     this.profile.guards.forEach((guard) => this.spawnGuard(guard));
 
     this.createPickups(this.platforms);
-    this.createBoss();
+    if (this.campaignMission?.rules.bossRequired !== false) this.createBoss();
 
     this.elevator = this.physics.add.staticSprite(this.profile.elevator.x, this.profile.elevator.y, 'elevator');
     this.physics.add.overlap(this.player, this.elevator, () => this.completeMission());
@@ -484,6 +540,7 @@ export class SideOpsScene extends Phaser.Scene {
     this.cameraScanGraphics = this.add.graphics();
     this.searchlightGraphics = this.add.graphics();
     this.bossBarrierGraphics = this.add.graphics();
+    this.bossTelegraphGraphics = this.add.graphics().setDepth(25);
 
     this.addFixedHud();
     this.offCodecResume = onGameEvent(GAME_EVENT.CODEC_RESUME, () => this.scene.resume());
@@ -513,10 +570,13 @@ export class SideOpsScene extends Phaser.Scene {
     this.emitHudUpdate();
   }
 
-  update(): void {
+  update(_time = 0, delta = 0): void {
     if (this.missionCompleted) return;
+    // Count active gameplay only; initial Clock.now and paused wall time must not affect ranks.
+    this.missionElapsedMs += Math.max(0, delta);
     this.inputController.update();
     this.handlePlayerInput();
+    this.refreshTacticalObstacles();
     this.handleGuardPatrol();
     this.handleBoss();
     this.handleCameraSweep();
@@ -535,6 +595,9 @@ export class SideOpsScene extends Phaser.Scene {
     this.guards = [];
     this.guardSequence = 0;
     this.boss = null;
+    this.tacticalObstacles = [];
+    this.latestNoise = null;
+    this.noiseSequence = 0;
     this.maxHealth = 100;
     this.health = 100;
     const campaignBonuses = getCampaignLoadoutBonuses();
@@ -605,10 +668,15 @@ export class SideOpsScene extends Phaser.Scene {
     return asset && this.textures.exists(asset.textureKey) ? asset.textureKey : sourceTextureKey;
   }
 
-  private configureMg1ActorSprite(sprite: Phaser.GameObjects.Sprite, sourceTextureKey: string): void {
+  private configureMg1ActorSprite(sprite: Phaser.GameObjects.Sprite, sourceTextureKey: string, role?: SideOpsActorRole): void {
     sprite.setData('mg1SourceTextureKey', sourceTextureKey);
     sprite.setData('mg1AnimationLock', '');
     sprite.setData('mg1AnimationPriority', 0);
+    if (role && configureAuthoredSideOpsActor(this, sprite, this.profile.visualPackId, role)) {
+      (sprite as Phaser.Physics.Arcade.Sprite).body?.updateFromGameObject();
+      this.playMg1ActorLoop(sprite, 'idle');
+      return;
+    }
     const asset = getMg1ActorAnimationAssetBySourceTexture(sourceTextureKey);
     if (!asset || !this.textures.exists(asset.textureKey)) return;
     sprite.setTexture(asset.textureKey, asset.clips.idle?.start ?? 0);
@@ -624,22 +692,44 @@ export class SideOpsScene extends Phaser.Scene {
     return getMg1ActorAnimationAssetBySourceTexture(String(sprite.getData('mg1SourceTextureKey') ?? ''));
   }
 
-  private playMg1ActorLoop(sprite: Phaser.GameObjects.Sprite, state: Mg1ActorAnimationState): void {
+  private playMg1ActorLoop(sprite: Phaser.GameObjects.Sprite, state: Mg1ActorAnimationState | SideOpsActorAnimationState): void {
+    const authored = getAuthoredSideOpsActorClip(sprite, state);
+    if (authored) {
+      if (Number(sprite.getData('mg1AnimationPriority') ?? 0) > 0 || !this.anims.exists(authored.key)) return;
+      if (sprite.anims.currentAnim?.key !== authored.key || (!sprite.anims.isPlaying && authored.repeat === -1)) sprite.play(authored.key);
+      return;
+    }
     const asset = this.getMg1ActorAsset(sprite);
     if (!asset || !this.textures.exists(asset.textureKey) || Number(sprite.getData('mg1AnimationPriority') ?? 0) > 0) return;
-    const resolved = asset.clips[state] ? state : 'idle';
+    const resolved = state in asset.clips ? state as Mg1ActorAnimationState : 'idle';
     const key = getMg1ActorAnimationKey(asset.textureKey, resolved);
     if (this.anims.exists(key) && (sprite.anims.currentAnim?.key !== key || !sprite.anims.isPlaying)) sprite.play(key);
   }
 
-  private playMg1ActorAction(sprite: Phaser.GameObjects.Sprite, state: Mg1ActorAnimationState): void {
+  private playMg1ActorAction(sprite: Phaser.GameObjects.Sprite, state: Mg1ActorAnimationState | SideOpsActorAnimationState): void {
+    const authored = getAuthoredSideOpsActorClip(sprite, state);
+    if (authored) {
+      const priority = state === 'death' ? 4 : state === 'hit' ? 3 : state === 'jump' ? 1 : 2;
+      if (Number(sprite.getData('mg1AnimationPriority') ?? 0) >= priority || !this.anims.exists(authored.key)) return;
+      const lock = `${state}-${this.time.now}`;
+      sprite.setData('mg1AnimationLock', lock).setData('mg1AnimationPriority', priority);
+      sprite.play(authored.key);
+      if (state === 'death') return;
+      const durationMs = Math.ceil((authored.end - authored.start + 1) / authored.frameRate * 1000) + 34;
+      this.time.delayedCall(durationMs, () => {
+        if (!sprite.active || sprite.getData('mg1AnimationLock') !== lock) return;
+        sprite.setData('mg1AnimationLock', '').setData('mg1AnimationPriority', 0);
+      });
+      return;
+    }
     const asset = this.getMg1ActorAsset(sprite);
-    const clip = asset?.clips[state];
+    const legacyState: Mg1ActorAnimationState = state === 'melee' ? 'attack' : state as Mg1ActorAnimationState;
+    const clip = asset?.clips[legacyState];
     if (!asset || !clip || !this.textures.exists(asset.textureKey)) return;
     const priority = state === 'death' ? 4 : state === 'hit' ? 3 : 2;
     const currentPriority = Number(sprite.getData('mg1AnimationPriority') ?? 0);
     if (currentPriority === 4 || currentPriority >= priority) return;
-    const key = getMg1ActorAnimationKey(asset.textureKey, state);
+    const key = getMg1ActorAnimationKey(asset.textureKey, legacyState);
     if (!this.anims.exists(key)) return;
     const lock = `${state}-${this.time.now}-${Phaser.Math.Between(0, 99999)}`;
     sprite.setData('mg1AnimationLock', lock);
@@ -657,7 +747,7 @@ export class SideOpsScene extends Phaser.Scene {
   private addSkyAndBackdrops(): void {
     const width = this.profile.worldWidth;
     this.add.rectangle(width / 2, 270, width, 540, this.profile.backdropColor).setDepth(-20);
-    const backdropTexture = resolveSideOpsBackdropTexture(this.profile.visualPackId);
+    const backdropTexture = resolveSideOpsBackdropTexture(this.profile.visualPackId, this.profile.environment);
     if (this.textures.exists(backdropTexture)) {
       if (this.profile.visualPackId === 'vr_simulation') {
         this.add.tileSprite(480, 270, 960, 540, backdropTexture)
@@ -674,6 +764,8 @@ export class SideOpsScene extends Phaser.Scene {
     }
     this.add.rectangle(width / 2, 515, width, 52, this.profile.groundColor).setDepth(-12);
 
+    // The authored panorama replaces legacy placeholder architecture, not physics.
+    if (!this.textures.exists(backdropTexture)) {
     for (let x = 120; x < width; x += this.profile.environment === 'tanker' ? 155 : 190) {
       this.add.rectangle(x, 486, this.profile.environment === 'tanker' ? 120 : 80, 44, this.profile.structureColor).setDepth(-5);
     }
@@ -698,52 +790,70 @@ export class SideOpsScene extends Phaser.Scene {
       }
     }
 
-    this.add.rectangle(0, 0, Math.max(960, this.scale.width), 176, 0x010603, 0.68)
+    }
+    this.add.rectangle(0, 0, Math.max(960, this.scale.width), 132, 0x010603, 0.68)
       .setOrigin(0, 0)
       .setScrollFactor(0)
       .setDepth(49);
-    this.add.text(28, 24, this.profile.header, {
+    this.add.text(20, 16, this.profile.header, {
       fontFamily: 'monospace',
-      fontSize: '18px',
+      fontSize: '14px',
       color: '#7cff6b'
     }).setScrollFactor(0).setDepth(50);
   }
 
   private addFixedHud(): void {
-    this.statusText = this.add.text(28, 56, '', {
+    this.statusText = this.add.text(20, 84, '', {
       fontFamily: 'monospace',
       fontSize: '14px',
       color: '#caffbd'
-    }).setScrollFactor(0).setDepth(50);
+    }).setScrollFactor(0).setDepth(50).setVisible(false);
 
-    this.objectiveText = this.add.text(28, 80, `OBJECTIVE: ${this.getObjectiveLabel()}`,  {
+    this.objectiveText = this.add.text(20, 62, `OBJECTIVE: ${this.getObjectiveLabel()}`,  {
       fontFamily: 'monospace',
       fontSize: '14px',
       color: '#f8f49a'
     }).setScrollFactor(0).setDepth(50);
 
-    this.alertText = this.add.text(28, 104, '', {
+    this.alertText = this.add.text(20, 84, '', {
       fontFamily: 'monospace',
       fontSize: '13px',
       color: '#ffdf85'
     }).setScrollFactor(0).setDepth(50);
 
-    this.hudText = this.add.text(28, 128, '', {
+    this.hudText = this.add.text(20, 39, '', {
       fontFamily: 'monospace',
       fontSize: '13px',
       color: '#8ac985'
     }).setScrollFactor(0).setDepth(50);
 
-    this.bossText = this.add.text(28, 152, '', {
+    this.bossText = this.add.text(20, 106, '', {
       fontFamily: 'monospace',
       fontSize: '13px',
       color: '#ff9f6b'
     }).setScrollFactor(0).setDepth(50);
+    if (this.campaignMission) {
+      this.add.rectangle(0, this.scale.height - 30, this.scale.width, 30, 0x010603, 0.88)
+        .setOrigin(0).setScrollFactor(0).setDepth(49);
+    }
+    this.sectorText = this.add.text(20, this.scale.height - 24, '', {
+      fontFamily: 'monospace', fontSize: '12px', color: '#caffbd'
+    }).setScrollFactor(0).setDepth(50).setVisible(Boolean(this.campaignMission));
   }
 
   private createPlatform(group: Phaser.Physics.Arcade.StaticGroup, x: number, y: number, scaleX: number): void {
     const platform = group.create(x, y, 'platform') as Phaser.Physics.Arcade.Sprite;
     platform.setScale(scaleX, 1).setTint(this.profile.environment === 'tanker' ? 0x5fb8d6 : 0x7cff6b).refreshBody();
+    const kind = y >= 500 ? 'ground' : 'structure';
+    const terrain = getSideOpsTerrainAsset(this.profile.visualPackId, kind);
+    if (!this.textures.exists(terrain.textureKey)) return;
+    const body = platform.body as Phaser.Physics.Arcade.StaticBody;
+    // Keep the original 64x16 scaled collider. Only the decorative underside grows.
+    platform.setVisible(false);
+    const visual = this.add.tileSprite(body.left, body.top, body.width, terrain.height, terrain.textureKey)
+      .setOrigin(0).setDepth(-1);
+    visual.tilePositionX = body.left;
+    visual.setData('sideopsTerrainKind', kind).setData('sideopsTerrainPack', this.profile.visualPackId);
   }
 
   private createVisualPackAnimations(): void {
@@ -810,16 +920,25 @@ export class SideOpsScene extends Phaser.Scene {
       : 'crate';
     const crate = platforms.create(x, y, texture) as Phaser.Physics.Arcade.Sprite;
     crate.refreshBody();
+    if (useVisualPackProp) return;
+    const coverTexture = SIDEOPS_TERRAIN_COVER_TEXTURES[this.profile.visualPackId];
+    if (!this.textures.exists(coverTexture)) return;
+    const body = crate.body as Phaser.Physics.Arcade.StaticBody;
+    const image = this.add.image(body.center.x, body.bottom, coverTexture).setOrigin(0.5, 1).setDepth(1);
+    // Preserve the prop's aspect ratio and the existing 28x40 cover collider.
+    image.setScale(body.height / image.height);
+    image.setData('sideopsCoverPack', this.profile.visualPackId);
+    crate.setVisible(false);
   }
 
   private spawnGuard(config: { x: number; y: number; patrolMin: number; patrolMax: number; role: GuardRole; hp?: number }): GuardUnit {
     const key = config.role === 'reinforcement' ? this.profile.reinforcementTexture : this.profile.guardTexture;
     const sprite = this.physics.add.sprite(config.x, config.y, this.resolveMg1ActorTexture(key));
-    this.configureMg1ActorSprite(sprite, key);
+    this.configureMg1ActorSprite(sprite, key, config.role === 'patrol' ? 'guard' : 'reinforcement');
     sprite.setCollideWorldBounds(true);
     sprite.setDragX(900);
     this.physics.add.collider(sprite, this.platforms);
-    this.physics.add.overlap(this.player, sprite, () => this.damagePlayer(8, 'contact'), undefined, this);
+    this.physics.add.collider(sprite, this.lockedDoor, undefined, () => !this.hasKeycard, this);
 
     const guard: GuardUnit = {
       id: `${config.role}_${++this.guardSequence}`,
@@ -830,15 +949,26 @@ export class SideOpsScene extends Phaser.Scene {
       disabled: false,
       hp: config.hp ?? (config.role === 'reinforcement' ? 2 : 1),
       role: config.role,
-      lastShotAt: 0
+      brain: createSideOpsEnemyState(config.role, -1),
+      decision: null,
+      indicator: this.add.text(sprite.x, sprite.y - 42, '', {
+        fontFamily: 'monospace', fontSize: '18px', color: '#ffdf85',
+        backgroundColor: '#041007', padding: { x: 4, y: 2 }
+      }).setOrigin(0.5).setDepth(26).setVisible(false)
     };
+
+    this.physics.add.overlap(this.player, sprite, () => {
+      if (guard.disabled) return;
+      this.increaseSuspicion(100, 'guard physical contact');
+      this.damagePlayer(8, 'contact');
+    }, undefined, this);
 
     this.physics.add.overlap(this.bullets, sprite, (bullet) => {
       const projectile = bullet as Phaser.Physics.Arcade.Sprite;
       this.spawnPlayerImpactVfx(projectile.x, projectile.y);
       this.destroyPhysicsObject(bullet);
       this.hitGuard(guard);
-    }, undefined, this);
+    }, () => !guard.disabled, this);
 
     this.guards.push(guard);
     return guard;
@@ -852,16 +982,22 @@ export class SideOpsScene extends Phaser.Scene {
     );
     this.configureMg1ActorSprite(sprite, this.profile.boss.texture);
     sprite.setDragX(850);
-    sprite.setMaxVelocity(170, 500);
+    sprite.setMaxVelocity(330, 500);
+    sprite.setCollideWorldBounds(true);
     sprite.clearTint();
     this.physics.add.collider(sprite, this.platforms);
-    this.physics.add.overlap(this.player, sprite, () => this.damagePlayer(this.boss?.phase === 2 ? 16 : 11, this.profile.boss.name), undefined, this);
+    this.physics.add.overlap(this.player, sprite, () => {
+      const contactDamage = this.boss?.decision?.contactDamage ?? 0;
+      if (this.boss?.active && !this.boss.defeated && contactDamage > 0) {
+        this.damagePlayer(contactDamage, `${this.profile.boss.name} charge`);
+      }
+    }, undefined, this);
     this.physics.add.overlap(this.bullets, sprite, (bullet) => {
       const projectile = bullet as Phaser.Physics.Arcade.Sprite;
       this.spawnPlayerImpactVfx(projectile.x, projectile.y);
       this.destroyPhysicsObject(bullet);
       this.hitBoss('SOCOM');
-    }, undefined, this);
+    }, () => !this.boss?.defeated, this);
 
     this.boss = {
       sprite,
@@ -872,8 +1008,8 @@ export class SideOpsScene extends Phaser.Scene {
       defeated: false,
       phase: 1,
       direction: -1,
-      lastShotAt: 0,
-      lastChargeAt: 0
+      brain: createSideOpsBossState(),
+      decision: null
     };
   }
 
@@ -970,15 +1106,16 @@ export class SideOpsScene extends Phaser.Scene {
     } else {
       this.player.setVelocityX(0);
     }
-    this.playMg1ActorLoop(this.player, left || right ? 'move' : 'idle');
+    this.playMg1ActorLoop(this.player, !body.blocked.down ? 'jump' : down ? 'crouch' : left || right ? 'move' : 'idle');
 
     if (jump && body.blocked.down && !down) {
       this.player.setVelocityY(-430);
       this.registerNoise(14, 'jump landing prep');
     }
 
-    if (down) this.player.setTint(0x86cc80);
-    else if (this.health > 0) this.player.clearTint();
+    // Preserve each era's costume; only damage briefly changes its colors.
+    if (this.lastDamageTime > 0 && this.time.now < this.lastDamageTime + 160) this.player.setTint(0xff6b6b);
+    else this.player.clearTint();
 
     if (this.inputController.justDown('fire')) this.shootSocom();
     if (this.inputController.justDown('cqc')) this.tryCqc();
@@ -1012,6 +1149,7 @@ export class SideOpsScene extends Phaser.Scene {
 
     bullet.setActive(true).setVisible(true);
     bullet.body?.reset(this.player.x + direction * 22, this.player.y - 6);
+    (bullet.body as Phaser.Physics.Arcade.Body).setAllowGravity(false);
     bullet.setVelocityX(direction * 680);
     bullet.setVelocityY(0);
     bullet.setFlipX(direction < 0);
@@ -1049,29 +1187,80 @@ export class SideOpsScene extends Phaser.Scene {
 
   private handleGuardPatrol(): void {
     this.guards.forEach((guard) => {
-      if (guard.disabled) {
-        guard.sprite.setVelocityX(0);
-        return;
-      }
-
-      const sameLevel = Math.abs(this.player.y - guard.sprite.y) < 95;
-      const chase = this.alertState === 'ALERT' && sameLevel && Math.abs(this.player.x - guard.sprite.x) < 620;
-
-      if (chase) {
-        guard.direction = this.player.x < guard.sprite.x ? -1 : 1;
-        guard.sprite.setVelocityX((guard.role === 'reinforcement' ? 132 : 112) * guard.direction);
-      } else {
-        if (guard.sprite.x < guard.patrolMin) guard.direction = 1;
-        if (guard.sprite.x > guard.patrolMax) guard.direction = -1;
-        guard.sprite.setVelocityX((guard.role === 'reinforcement' ? 88 : 72) * guard.direction);
-      }
-
+      const body = guard.sprite.body as Phaser.Physics.Arcade.Body;
+      const decision = updateSideOpsEnemy(guard.brain, {
+        now: this.time.now, x: guard.sprite.x, y: guard.sprite.y, role: guard.role,
+        player: { x: this.player.x, y: this.player.y, crouched: this.isPlayerCrouched(), slowWalking: this.isPlayerSlowWalking() },
+        patrolMin: guard.patrolMin, patrolMax: guard.patrolMax,
+        worldMin: body.halfWidth, worldMax: this.profile.worldWidth - body.halfWidth,
+        alert: this.alertState, disabled: guard.disabled,
+        obstacles: this.tacticalObstacles, noise: this.latestNoise,
+        blockedLeft: body.blocked.left, blockedRight: body.blocked.right,
+        ledgeAhead: body.blocked.down && !this.hasGroundAhead(guard.sprite, guard.direction)
+      });
+      guard.brain = decision.state;
+      guard.decision = decision;
+      guard.direction = decision.direction;
+      guard.sprite.setVelocityX(decision.velocityX);
       guard.sprite.setFlipX(guard.direction < 0);
-      this.playMg1ActorLoop(guard.sprite, 'move');
+      guard.indicator.setPosition(guard.sprite.x, body.top - 16)
+        .setText(decision.indicator)
+        .setColor(decision.indicator === '!' ? '#ff6b6b' : '#ffdf85')
+        .setVisible(!guard.disabled && decision.indicator.length > 0);
+      if (!guard.disabled) this.playMg1ActorLoop(guard.sprite, decision.animation === 'move' ? 'move' : 'idle');
     });
   }
 
+  /** Physical geometry is shared by vision, cameras and ballistic collision. */
+  private refreshTacticalObstacles(): void {
+    this.tacticalObstacles = this.platforms.getChildren().flatMap((object) => {
+      const body = (object as Phaser.Physics.Arcade.Sprite).body;
+      return body?.enable ? [{ left: body.left, right: body.right, top: body.top, bottom: body.bottom }] : [];
+    });
+    const door = this.lockedDoor.body;
+    if (!this.hasKeycard && door?.enable) {
+      this.tacticalObstacles.push({ left: door.left, right: door.right, top: door.top, bottom: door.bottom });
+    }
+  }
+
+  private hasGroundAhead(sprite: Phaser.Physics.Arcade.Sprite, direction: number): boolean {
+    const body = sprite.body as Phaser.Physics.Arcade.Body;
+    const probeX = body.center.x + direction * (body.halfWidth + 14);
+    return this.platforms.getChildren().some((object) => {
+      const surface = (object as Phaser.Physics.Arcade.Sprite).body;
+      return surface?.enable && probeX >= surface.left && probeX <= surface.right
+        && surface.top >= body.bottom - 8 && surface.top <= body.bottom + 30;
+    });
+  }
+
+  private hasTacticalLineOfSight(fromX: number, fromY: number, toX = this.player.x, toY = this.player.y - 10): boolean {
+    return sideOpsEnemyHasLineOfSight({ x: fromX, y: fromY }, { x: toX, y: toY }, this.tacticalObstacles);
+  }
+
+  /** The visible cone follows the same cover geometry as detection. */
+  private drawOccludedCone(
+    graphics: Phaser.GameObjects.Graphics,
+    origin: { x: number; y: number },
+    edgeA: { x: number; y: number },
+    edgeB: { x: number; y: number },
+    color: number,
+    alpha: number
+  ): void {
+    graphics.fillStyle(color, alpha);
+    graphics.beginPath();
+    graphics.moveTo(origin.x, origin.y);
+    for (let index = 0; index <= 16; index += 1) {
+      const fraction = index / 16;
+      const target = { x: edgeA.x + (edgeB.x - edgeA.x) * fraction, y: edgeA.y + (edgeB.y - edgeA.y) * fraction };
+      const near = sideOpsEnemySightHit(origin, target, this.tacticalObstacles) ?? 1;
+      graphics.lineTo(origin.x + (target.x - origin.x) * near, origin.y + (target.y - origin.y) * near);
+    }
+    graphics.closePath();
+    graphics.fillPath();
+  }
+
   private handleBoss(): void {
+    this.bossTelegraphGraphics.clear();
     if (!this.boss || this.boss.defeated || this.health <= 0) return;
 
     if (!this.boss.active && this.player.x > this.profile.completionX.bossArena) {
@@ -1081,22 +1270,44 @@ export class SideOpsScene extends Phaser.Scene {
     if (!this.boss.active) return;
 
     const boss = this.boss;
-    const distanceX = Math.abs(this.player.x - boss.sprite.x);
-    boss.direction = this.player.x < boss.sprite.x ? -1 : 1;
+    const body = boss.sprite.body as Phaser.Physics.Arcade.Body;
+    const previousPhase = boss.phase;
+    const decision = updateSideOpsBoss(boss.brain, {
+      now: this.time.now, packId: this.profile.visualPackId, active: boss.active,
+      hp: boss.hp, maxHp: boss.maxHp, x: boss.sprite.x, y: boss.sprite.y,
+      playerX: this.player.x, playerY: this.player.y,
+      hasLineOfSight: this.hasTacticalLineOfSight(boss.sprite.x, boss.sprite.y - 12),
+      arenaMin: this.profile.completionX.bossArena + body.halfWidth,
+      arenaMax: this.profile.worldWidth - 100 - body.halfWidth,
+      blockedLeft: body.blocked.left, blockedRight: body.blocked.right
+    });
+    boss.brain = decision.state;
+    boss.decision = decision;
+    boss.phase = decision.state.phase;
+    boss.direction = decision.direction;
     boss.sprite.setFlipX(boss.baseFacingRight ? boss.direction < 0 : boss.direction > 0);
-    boss.sprite.setVelocityX((boss.phase === 2 ? 95 : 66) * boss.direction);
-    this.playMg1ActorLoop(boss.sprite, 'move');
-
-    if (distanceX < 105 && this.time.now > boss.lastChargeAt) {
-      boss.lastChargeAt = this.time.now + 1550;
-      boss.sprite.setVelocityX(250 * boss.direction);
-      this.damagePlayer(boss.phase === 2 ? 15 : 10, 'shield bash');
+    boss.sprite.setVelocityX(decision.velocityX);
+    this.playMg1ActorLoop(boss.sprite, decision.animation === 'move' ? 'move' : 'idle');
+    if (decision.animation === 'attack') this.playMg1ActorAction(boss.sprite, 'attack');
+    decision.projectiles.forEach((projectile) => this.fireBossShot(boss, projectile));
+    if (decision.telegraph) {
+      const target = decision.telegraph;
+      const color = target.kind === 'charge' ? 0xffa24c : 0xff5c65;
+      this.bossTelegraphGraphics.lineStyle(2, color, 0.35 + target.progress * 0.5);
+      this.bossTelegraphGraphics.lineBetween(boss.sprite.x, boss.sprite.y - 12, target.x, target.y);
+      this.bossTelegraphGraphics.strokeCircle(target.x, target.y, 12 + (1 - target.progress) * 22);
+      this.bossTelegraphGraphics.lineBetween(target.x - 19, target.y, target.x + 19, target.y);
+      this.bossTelegraphGraphics.lineBetween(target.x, target.y - 19, target.x, target.y + 19);
+    } else if (decision.vulnerable) {
+      this.bossTelegraphGraphics.lineStyle(2, 0x7cff6b, 0.8);
+      this.bossTelegraphGraphics.strokeRect(body.left - 4, body.top - 4, body.width + 8, body.height + 8);
     }
-
-    if (this.time.now > boss.lastShotAt && distanceX < 640) {
-      boss.lastShotAt = this.time.now + (boss.phase === 2 ? 650 : 950);
-      this.fireBossShot(boss);
-      if (boss.phase === 2) this.time.delayedCall(160, () => boss.active && !boss.defeated && this.fireBossShot(boss));
+    if (boss.phase > previousPhase) {
+      this.flashStatus(`${this.profile.boss.name.toUpperCase()} PHASE ${boss.phase}: WATCH THE TARGET LOCK`);
+      if (!this.bossMidfightEmitted) {
+        this.bossMidfightEmitted = true;
+        this.emitProfileCodec(this.profile.codec.bossMidfight);
+      }
     }
   }
 
@@ -1112,9 +1323,9 @@ export class SideOpsScene extends Phaser.Scene {
     }
   }
 
-  private fireBossShot(boss: BossUnit): void {
+  private fireBossShot(boss: BossUnit, shot: SideOpsBossProjectile): void {
     this.playMg1ActorAction(boss.sprite, 'attack');
-    const direction = boss.direction;
+    const direction = shot.velocityX < 0 ? -1 : 1;
     const bullet = this.enemyBullets.get(
       boss.sprite.x + direction * 28,
       boss.sprite.y - 12,
@@ -1123,9 +1334,11 @@ export class SideOpsScene extends Phaser.Scene {
     if (!bullet) return;
     bullet.setActive(true).setVisible(true);
     bullet.body?.reset(boss.sprite.x + direction * 28, boss.sprite.y - 12);
-    bullet.setVelocityX(direction * (boss.phase === 2 ? 590 : 520));
-    bullet.setVelocityY(Phaser.Math.Between(-35, 35));
-    this.time.delayedCall(1300, () => bullet.active && bullet.destroy());
+    (bullet.body as Phaser.Physics.Arcade.Body).setAllowGravity(false);
+    bullet.setVelocity(shot.velocityX, shot.velocityY);
+    bullet.setData('damage', shot.damage).setData('source', this.profile.boss.name);
+    bullet.setFlipX(direction < 0);
+    this.time.delayedCall(1800, () => bullet.active && bullet.destroy());
   }
 
   private hitBoss(source: 'SOCOM' | 'CQC'): void {
@@ -1133,28 +1346,19 @@ export class SideOpsScene extends Phaser.Scene {
     if (!boss || boss.defeated) return;
     if (!boss.active) this.activateBoss();
 
-    boss.hp = Math.max(0, boss.hp - (source === 'CQC' ? 1 : 1));
+    const damage = source === 'SOCOM' && boss.decision?.vulnerable ? 2 : 1;
+    boss.hp = Math.max(0, boss.hp - damage);
     this.playMg1ActorAction(boss.sprite, 'hit');
     boss.sprite.setTint(0xff9f6b);
     this.time.delayedCall(120, () => {
       if (boss.sprite.active && !boss.defeated) this.applyBossPhaseTint(boss.sprite, boss.phase);
     });
-    this.flashStatus(`${this.profile.boss.name.toUpperCase()} ARMOR HIT: ${boss.hp}/${boss.maxHp}`);
-
-    if (boss.hp <= Math.floor(boss.maxHp / 2) && boss.phase === 1) {
-      boss.phase = 2;
-      this.applyBossPhaseTint(boss.sprite, 2);
-      this.flashStatus(`${this.profile.boss.name.toUpperCase()} PHASE 2: AGGRESSIVE PATTERN`);
-      if (!this.bossMidfightEmitted) {
-        this.bossMidfightEmitted = true;
-        this.emitProfileCodec(this.profile.codec.bossMidfight);
-      }
-    }
+    this.flashStatus(`${this.profile.boss.name.toUpperCase()} ${damage > 1 ? 'WEAK POINT' : 'ARMOR'} HIT: ${boss.hp}/${boss.maxHp}`);
 
     if (boss.hp <= 0) this.defeatBoss();
   }
 
-  private applyBossPhaseTint(sprite: Phaser.Physics.Arcade.Sprite, phase: 1 | 2): void {
+  private applyBossPhaseTint(sprite: Phaser.Physics.Arcade.Sprite, phase: 1 | 2 | 3): void {
     void phase;
     sprite.clearTint();
   }
@@ -1164,6 +1368,8 @@ export class SideOpsScene extends Phaser.Scene {
     if (!boss || boss.defeated) return;
     boss.defeated = true;
     boss.active = false;
+    boss.decision = null;
+    this.bossTelegraphGraphics.clear();
     boss.sprite.setVelocity(0, 0);
     boss.sprite.setTint(0x456b49);
     this.playMg1ActorAction(boss.sprite, 'death');
@@ -1188,13 +1394,8 @@ export class SideOpsScene extends Phaser.Scene {
     const x = this.cameraNode.x;
     const y = this.cameraNode.y + 10;
 
-    this.cameraScanGraphics.fillStyle(coneColor, alpha);
-    this.cameraScanGraphics.beginPath();
-    this.cameraScanGraphics.moveTo(x, y);
-    this.cameraScanGraphics.lineTo(x + direction * 285, y + 220);
-    this.cameraScanGraphics.lineTo(x + direction * 45, y + 220);
-    this.cameraScanGraphics.closePath();
-    this.cameraScanGraphics.fillPath();
+    this.drawOccludedCone(this.cameraScanGraphics, { x, y },
+      { x: x + direction * 285, y: y + 220 }, { x: x + direction * 45, y: y + 220 }, coneColor, alpha);
 
     if (chaffActive) this.cameraNode.setTint(0x88a8ff);
     else this.cameraNode.clearTint();
@@ -1209,13 +1410,9 @@ export class SideOpsScene extends Phaser.Scene {
     const targetX = originX + sweep * this.profile.searchlight.sweep;
     const targetY = 505;
 
-    this.searchlightGraphics.fillStyle(chaffActive ? 0x88a8ff : 0xf8f49a, chaffActive ? 0.05 : 0.13);
-    this.searchlightGraphics.beginPath();
-    this.searchlightGraphics.moveTo(originX, originY);
-    this.searchlightGraphics.lineTo(targetX - 90, targetY);
-    this.searchlightGraphics.lineTo(targetX + 90, targetY);
-    this.searchlightGraphics.closePath();
-    this.searchlightGraphics.fillPath();
+    this.drawOccludedCone(this.searchlightGraphics, { x: originX, y: originY },
+      { x: targetX - 90, y: targetY }, { x: targetX + 90, y: targetY },
+      chaffActive ? 0x88a8ff : 0xf8f49a, chaffActive ? 0.05 : 0.13);
     this.searchlightGraphics.fillStyle(chaffActive ? 0x88a8ff : 0xf8f49a, 0.85);
     this.searchlightGraphics.fillCircle(originX, originY, 8);
 
@@ -1258,7 +1455,8 @@ export class SideOpsScene extends Phaser.Scene {
       }
     }
 
-    if (this.boss?.active && !this.boss.defeated && Math.abs(this.player.x - this.boss.sprite.x) < 620) {
+    if (this.boss?.active && !this.boss.defeated && Math.abs(this.player.x - this.boss.sprite.x) < 620
+      && this.hasTacticalLineOfSight(this.boss.sprite.x, this.boss.sprite.y - 12)) {
       detectionAmount = Math.max(detectionAmount, 2.2);
       source = `${this.profile.boss.name.toLowerCase()} line of fire`;
     }
@@ -1274,26 +1472,7 @@ export class SideOpsScene extends Phaser.Scene {
 
   private getGuardDetection(guard: GuardUnit): { amount: number; source: string } {
     if (guard.disabled) return { amount: 0, source: '' };
-
-    const distanceX = Math.abs(this.player.x - guard.sprite.x);
-    const distanceY = Math.abs(this.player.y - guard.sprite.y);
-    const sameLevel = distanceY < 78;
-    if (!sameLevel) return { amount: 0, source: '' };
-
-    const guardFacingPlayer = guard.direction < 0 ? this.player.x < guard.sprite.x : this.player.x > guard.sprite.x;
-    const alertVision = this.alertState === 'ALERT' && distanceX < 420;
-    const normalVision = guardFacingPlayer && distanceX < 245;
-    if (!alertVision && !normalVision) return { amount: 0, source: '' };
-
-    if (this.isPlayerCrouched() && this.alertState !== 'ALERT') {
-      return { amount: distanceX < 105 ? 0.85 : 0.32, source: `${guard.role} guard sightline` };
-    }
-
-    if (this.isPlayerSlowWalking() && this.alertState !== 'ALERT') {
-      return { amount: 0.72, source: `${guard.role} guard sightline` };
-    }
-
-    return { amount: this.alertState === 'ALERT' ? 1.65 : 1.35, source: `${guard.role} guard sightline` };
+    return { amount: (guard.decision?.detectionPerSecond ?? 0) / 60, source: `${guard.role} guard sightline` };
   }
 
   private isPlayerInCameraCone(): boolean {
@@ -1301,7 +1480,8 @@ export class SideOpsScene extends Phaser.Scene {
     const dx = this.player.x - this.cameraNode.x;
     const dy = this.player.y - this.cameraNode.y;
     const playerInFront = direction > 0 ? dx > 0 : dx < 0;
-    return playerInFront && Math.abs(dx) < 300 && dy > 20 && dy < 235 && Math.abs(dx) < 65 + dy * 1.35;
+    return playerInFront && Math.abs(dx) < 300 && dy > 20 && dy < 235 && Math.abs(dx) < 65 + dy * 1.35
+      && this.hasTacticalLineOfSight(this.cameraNode.x, this.cameraNode.y + 10);
   }
 
   private isPlayerInSearchlightCone(): boolean {
@@ -1309,7 +1489,8 @@ export class SideOpsScene extends Phaser.Scene {
     const sweep = Math.sin(this.time.now / 980);
     const targetX = originX + sweep * this.profile.searchlight.sweep;
     const dx = Math.abs(this.player.x - targetX);
-    return this.player.y > 330 && dx < 108;
+    return this.player.y > 330 && dx < 108
+      && this.hasTacticalLineOfSight(originX, this.profile.searchlight.y);
   }
 
   private increaseSuspicion(amount: number, source: string): void {
@@ -1427,7 +1608,7 @@ export class SideOpsScene extends Phaser.Scene {
       alerts: this.alertCount,
       source,
       message,
-      timeSeconds: Math.round((this.time.now - this.missionStartTime) / 1000),
+      timeSeconds: Math.round(this.missionElapsedMs / 1000),
       suspicion: Math.round(this.suspicionMeter),
       stealthScore: this.getStealthScore()
     };
@@ -1450,6 +1631,15 @@ export class SideOpsScene extends Phaser.Scene {
     const patrolMax = Phaser.Math.Clamp(spawnX + 260, 160, this.profile.worldWidth - 80);
     const guard = this.spawnGuard({ x: spawnX, y: 454, patrolMin, patrolMax, role: 'reinforcement' });
     guard.direction = spawnX > this.player.x ? -1 : 1;
+    guard.brain.direction = guard.direction < 0 ? -1 : 1;
+    // Radio reports a fixed last-contact location; reinforcements must reacquire visually.
+    const contact = this.guards.find((unit) => unit.decision?.seesPlayer && !unit.disabled)?.brain;
+    if (contact?.lastKnownX !== null && contact?.lastKnownX !== undefined) {
+      guard.brain.lastKnownX = contact.lastKnownX;
+      guard.brain.lastKnownY = contact.lastKnownY;
+      guard.brain.lastContactAt = this.time.now;
+      guard.brain.mode = 'investigate';
+    }
     guard.sprite.clearTint();
     this.reinforcementCount += 1;
     this.nextReinforcementAt = 0;
@@ -1467,14 +1657,8 @@ export class SideOpsScene extends Phaser.Scene {
     if (this.health <= 0 || this.alertState !== 'ALERT') return;
 
     this.guards.forEach((guard) => {
-      if (guard.disabled || this.time.now < guard.lastShotAt) return;
-
-      const distanceX = Math.abs(this.player.x - guard.sprite.x);
-      const sameLevel = Math.abs(this.player.y - guard.sprite.y) < 95;
-      if (distanceX > 520 || !sameLevel) return;
-
-      guard.lastShotAt = this.time.now + (guard.role === 'reinforcement' ? 720 : 900);
-      const direction = this.player.x < guard.sprite.x ? -1 : 1;
+      if (guard.disabled || !guard.decision?.fire) return;
+      const direction = guard.direction;
       const bullet = this.enemyBullets.get(
         guard.sprite.x + direction * 18,
         guard.sprite.y - 6,
@@ -1484,16 +1668,25 @@ export class SideOpsScene extends Phaser.Scene {
 
       bullet.setActive(true).setVisible(true);
       bullet.body?.reset(guard.sprite.x + direction * 18, guard.sprite.y - 6);
-      bullet.setVelocityX(direction * (guard.role === 'reinforcement' ? 520 : 460));
+      (bullet.body as Phaser.Physics.Arcade.Body).setAllowGravity(false);
+      bullet.setVelocityX(direction * guard.decision.projectileSpeed);
       bullet.setVelocityY(0);
+      bullet.setData('damage', guard.role === 'reinforcement' ? 14 : 11).setData('source', `${guard.role} rifle`);
+      bullet.setFlipX(direction < 0);
       this.playMg1ActorAction(guard.sprite, 'attack');
       this.time.delayedCall(1200, () => bullet.active && bullet.destroy());
     });
   }
 
   private registerNoise(amount: number, source: string): void {
+    const radius = Math.min(500, 130 + amount * 8);
+    this.latestNoise = {
+      id: `noise-${++this.noiseSequence}`, x: this.player.x, y: this.player.y,
+      radius, occurredAt: this.time.now
+    };
     const nearestAwakeGuard = this.guards.some(
-      (guard) => !guard.disabled && Math.abs(guard.sprite.x - this.player.x) < 370 && Math.abs(guard.sprite.y - this.player.y) < 130
+      (guard) => !guard.disabled && Math.hypot(guard.sprite.x - this.player.x, guard.sprite.y - this.player.y) < radius
+        && Math.abs(guard.sprite.y - this.player.y) < 180
     );
     if (!nearestAwakeGuard || this.alertState === 'ALERT') return;
     this.increaseSuspicion(amount, source);
@@ -1509,10 +1702,14 @@ export class SideOpsScene extends Phaser.Scene {
 
     if (this.boss?.active && !this.boss.defeated) {
       const distanceToBoss = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.boss.sprite.x, this.boss.sprite.y);
-      if (distanceToBoss < 92) {
-        this.playMg1ActorAction(this.player, 'attack');
+      if (distanceToBoss < 92 && this.hasTacticalLineOfSight(this.player.x, this.player.y - 10, this.boss.sprite.x, this.boss.sprite.y - 10)) {
+        if (!['mg1', 'mgs1', 'mgs2_tanker', 'vr_simulation'].includes(this.profile.visualPackId)) {
+          this.flashStatus('HEAVY ARMOR — USE WEAPONS DURING THE RECOVERY OPENING');
+          return;
+        }
+        this.playMg1ActorAction(this.player, 'melee');
         this.hitBoss('CQC');
-        this.damagePlayer(this.boss.phase === 2 ? 10 : 6, 'counter impact');
+        if (!this.boss.decision?.vulnerable) this.damagePlayer(6 + this.boss.phase * 2, 'counter impact');
         return;
       }
     }
@@ -1521,6 +1718,7 @@ export class SideOpsScene extends Phaser.Scene {
       .filter((guard) => !guard.disabled)
       .map((guard) => ({ guard, distance: Phaser.Math.Distance.Between(this.player.x, this.player.y, guard.sprite.x, guard.sprite.y) }))
       .filter((entry) => entry.distance < 100)
+      .filter((entry) => this.hasTacticalLineOfSight(this.player.x, this.player.y - 10, entry.guard.sprite.x, entry.guard.sprite.y - 10))
       .sort((a, b) => a.distance - b.distance);
 
     const target = candidates[0]?.guard;
@@ -1531,7 +1729,8 @@ export class SideOpsScene extends Phaser.Scene {
 
     const behindGuard = target.direction < 0 ? this.player.x > target.sprite.x : this.player.x < target.sprite.x;
     target.disabled = true;
-    this.playMg1ActorAction(this.player, 'attack');
+    target.indicator.setVisible(false);
+    this.playMg1ActorAction(this.player, 'melee');
     target.sprite.setVelocity(0, 0);
     target.sprite.setTint(0x456b49);
     this.playMg1ActorAction(target.sprite, 'death');
@@ -1555,6 +1754,7 @@ export class SideOpsScene extends Phaser.Scene {
     }
 
     guard.disabled = true;
+    guard.indicator.setVisible(false);
     this.kills += 1;
     guard.sprite.setTint(0xff6b6b);
     guard.sprite.setVelocity(0, 0);
@@ -1581,7 +1781,6 @@ export class SideOpsScene extends Phaser.Scene {
     this.damageTaken += amount;
     this.player.setTint(0xff6b6b);
     if (this.health > 0) this.playMg1ActorAction(this.player, 'hit');
-    this.time.delayedCall(160, () => this.player.active && this.health > 0 && !this.isPlayerCrouched() && this.player.clearTint());
     this.flashStatus(`DAMAGE: ${source.toUpperCase()}`);
 
     if (this.health <= 35 && !this.lowHealthEmitted) {
@@ -1605,7 +1804,10 @@ export class SideOpsScene extends Phaser.Scene {
 
     const result = this.buildMissionResult(false, `Mission failed: ${source}`);
     emitGameEvent<MissionCompletePayload>(GAME_EVENT.MISSION_COMPLETE, result);
-    const deathDelayMs = this.getMg1ActorAsset(this.player) ? 900 : 350;
+    const authoredDeath = getAuthoredSideOpsActorClip(this.player, 'death');
+    const deathDelayMs = authoredDeath
+      ? Math.ceil((authoredDeath.end - authoredDeath.start + 1) / authoredDeath.frameRate * 1000) + 100
+      : this.getMg1ActorAsset(this.player) ? 900 : 350;
     this.time.delayedCall(deathDelayMs, () => this.scene.start('MissionCompleteScene', result));
   }
 
@@ -1621,16 +1823,20 @@ export class SideOpsScene extends Phaser.Scene {
     }
 
     if (this.player.x > this.profile.completionX.openDoor) this.completedObjectives.add('open_security_door');
-    if (this.player.x > this.profile.completionX.crossYard) this.completedObjectives.add('cross_security_yard');
+    const enoughIntel = !this.campaignMission || this.secretsFound.size >= this.campaignMission.rules.minimumSecrets;
+    if (this.player.x > this.profile.completionX.crossYard && enoughIntel) this.completedObjectives.add('cross_security_yard');
 
     if (this.boss?.active && !this.boss.defeated) this.objectiveStage = 'defeat_captain';
-    else if (this.boss?.defeated) this.objectiveStage = 'extract';
-    else if (this.player.x < 1545) this.objectiveStage = 'open_security_door';
+    else if ((this.boss?.defeated || this.campaignMission?.rules.bossRequired === false)
+      && enoughIntel && this.completedObjectives.has('cross_security_yard')) this.objectiveStage = 'extract';
+    else if (this.player.x < this.profile.completionX.openDoor && !this.completedObjectives.has('open_security_door')) this.objectiveStage = 'open_security_door';
     else this.objectiveStage = 'cross_security_yard';
   }
 
   private getObjectiveLabel(): string {
-    return this.profile.stageLabels[this.objectiveStage] ?? 'Advance mission';
+    const label = this.profile.stageLabels[this.objectiveStage] ?? 'Advance mission';
+    if (!this.campaignMission) return label;
+    return `${label} | INTEL ${this.secretsFound.size}/${this.campaignMission.rules.minimumSecrets}`;
   }
 
   private updateHudText(): void {
@@ -1643,14 +1849,22 @@ export class SideOpsScene extends Phaser.Scene {
       `SUSPICION: ${Math.round(this.suspicionMeter).toString().padStart(3, '0')}% | SOURCE: ${this.lastAlertSource.toUpperCase()} | REINF: ${this.reinforcementCount}/3`
     );
     this.hudText.setText(
-      `HP ${this.health}/${this.maxHealth} | SOCOM ${this.ammo}/${this.maxAmmo} | RATION ${this.rations} | CHAFF ${this.chaff} ${chaffLabel} | J SHOOT | SPACE CQC | F CHAFF | R RATION | C CODEC`
+      `HP ${this.health}/${this.maxHealth} | AMMO ${this.ammo}/${this.maxAmmo} | RATION ${this.rations} | CHAFF ${this.chaff} ${chaffLabel} | CARD ${this.hasKeycard ? 'YES' : '--'} | SCORE ${this.getStealthScore()}`
     );
     if (this.boss?.active && !this.boss.defeated) {
-      this.bossText.setText(`BOSS: ${this.profile.boss.name.toUpperCase()} | PHASE ${this.boss.phase} | ARMOR ${this.boss.hp}/${this.boss.maxHp}`);
+      this.bossText.setText(`BOSS: ${this.profile.boss.name.toUpperCase()} | PHASE ${this.boss.phase} | HP ${this.boss.hp}/${this.boss.maxHp} | ${this.boss.decision?.status ?? 'ENGAGING'}`);
     } else if (this.boss?.defeated) {
       this.bossText.setText('BOSS: NEUTRALIZED | EXTRACTION ROUTE OPEN');
     } else {
-      this.bossText.setText('');
+      this.bossText.setText(this.campaignMission?.rules.bossRequired === false ? 'RECON: RECOVER INTELLIGENCE AND EXTRACT' : '');
+    }
+    if (this.campaignMission) {
+      const sector = getSideOpsCampaignSector(this.profile.id, this.player.x);
+      const timeSeconds = Math.floor(this.missionElapsedMs / 1000);
+      const speedChallenge = this.campaignMission.challenges.find((challenge) => challenge.kind === 'speed');
+      const intelRemaining = Math.max(0, this.campaignMission.rules.minimumSecrets - this.secretsFound.size);
+      const mastery = evaluateSideOpsCampaignChallenges(this.profile.id, this.getCampaignRunSnapshot(timeSeconds));
+      this.sectorText.setText(`SECTOR: ${sector?.label.toUpperCase() ?? 'APPROACH'} | INTEL LEFT ${intelRemaining} | TIME ${timeSeconds}/${speedChallenge?.target ?? '--'}s | MASTERY ${mastery.filter((challenge) => challenge.completed).length}/${mastery.length} (OPTIONAL)`);
     }
   }
 
@@ -1660,7 +1874,7 @@ export class SideOpsScene extends Phaser.Scene {
     const payload: MissionHudPayload = {
       missionId: this.profile.id,
       missionTitle: this.profile.title,
-      bossName: this.profile.boss.name,
+      bossName: this.boss ? this.profile.boss.name : '',
       health: this.health,
       maxHealth: this.maxHealth,
       ammo: this.ammo,
@@ -1759,11 +1973,19 @@ export class SideOpsScene extends Phaser.Scene {
 
   private completeMission(): void {
     if (this.missionCompleted) return;
+    if (this.campaignMission) {
+      const blocker = getSideOpsCampaignExtractionBlocker(this.profile.id, this.getCampaignRunSnapshot());
+      if (blocker) {
+        this.objectiveText.setText(`OBJECTIVE: ${blocker}`);
+        if (this.campaignMission.rules.bossRequired && this.boss && !this.boss.active && !this.boss.defeated) this.activateBoss();
+        return;
+      }
+    }
     if (!this.hasKeycard) {
       this.objectiveText.setText(`OBJECTIVE: Need ${this.profile.keycard.label} before extraction`);
       return;
     }
-    if (!this.boss?.defeated) {
+    if (this.campaignMission?.rules.bossRequired !== false && !this.boss?.defeated) {
       this.objectiveText.setText(`OBJECTIVE: ${this.profile.boss.name} still controls extraction route`);
       if (!this.boss?.active) this.activateBoss();
       return;
@@ -1777,8 +1999,19 @@ export class SideOpsScene extends Phaser.Scene {
     this.scene.start('MissionCompleteScene', result);
   }
 
-  private buildMissionResult(success: boolean, outcome: string): MissionCompletePayload {
-    const timeSeconds = Math.round((this.time.now - this.missionStartTime) / 1000);
+  private getCampaignRunSnapshot(timeSeconds = Math.floor(this.missionElapsedMs / 1000)) {
+    return {
+      hasKeycard: this.hasKeycard, bossDefeated: Boolean(this.boss?.defeated), secretsFound: this.secretsFound.size,
+      alerts: this.alertCount, kills: this.kills, damageTaken: this.damageTaken, timeSeconds
+    };
+  }
+
+  private buildMissionResult(success: boolean, outcome: string): MissionCompletePayload & {
+    bossRequired: boolean;
+    campaignChallenges: ReturnType<typeof evaluateSideOpsCampaignChallenges>;
+  } {
+    const timeSeconds = Math.round(this.missionElapsedMs / 1000);
+    const campaignChallenges = evaluateSideOpsCampaignChallenges(this.profile.id, this.getCampaignRunSnapshot(timeSeconds));
     const rankPreview = success
       ? calculateSideOpsRank({
         alerts: this.alertCount,
@@ -1795,9 +2028,11 @@ export class SideOpsScene extends Phaser.Scene {
     return {
       missionId: this.profile.id,
       missionTitle: this.profile.title,
-      bossName: this.profile.boss.name,
+      bossName: this.boss ? this.profile.boss.name : '',
       success,
-      outcome,
+      outcome: success && this.campaignMission ? `Extraction confirmed | Mastery ${campaignChallenges.filter((challenge) => challenge.completed).length}/${campaignChallenges.length}` : outcome,
+      bossRequired: this.campaignMission?.rules.bossRequired !== false,
+      campaignChallenges,
       rankPreview,
       alerts: this.alertCount,
       timeSeconds,

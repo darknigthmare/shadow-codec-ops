@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "peace-walker-costa-rica-jungle",
+  "visualPackId": "peace_walker",
+  "environment": "jungle",
+  "textureKey": "sideOpsBackdropPeaceWalkerCostaRicaJungle",
+  "generation": {
+    "provider": "OpenAI",
+    "mode": "built-in-imagegen",
+    "useCase": "stylized-concept",
+    "prompt": "Use case: stylized-concept.\nAsset type: production 16:9 side-scrolling 2D stealth game environment background, landscape panorama, intended runtime960x540.\nPrimary request: an original fan-made environment painting faithfully evoking Metal Gear Solid Peace Walker, Costa Rica1974, a Peace Sentinel supply encampment concealed in tropical rainforest. This is inland Costa Rican jungle, NOT Mother Base, NOT an offshore platform.\nScene: dense humid broadleaf rainforest with tall tropical canopy, ferns, vines and moss-covered rock, misty forested ridges farther back. A modest Cold War encampment in middle distance: olive canvas tents, timber watch post, weathered corrugated-metal supply shed, low sandbag perimeter and some stacked plain wooden crates, all period1974 and partially reclaimed by vegetation. Green canopy dominates, structures modest rather than giant fortress.\nComposition: camera at side-view gameplay eye level, wide lateral establishing shot, horizon horizontal, terrain level left to right. Bottom25percent a continuous clear flat dark-earth trail spanning entire image, subdued low contrast and no obstacles, safe for game sprites and pickups. Camp and vegetation in upper/middle background only, readable layered silhouettes and depth; no vanishing road aimed at camera, no overhead/isometric view. Match polished realistic hand-painted game matte painting style, detailed weathered materials, warm diffuse tropical daylight under soft canopy, olive/damp-earth palette and restrained mist. No actual pixel art, no cartoon outlines.\nConstraints: environment ONLY, no people, animals, soldiers, vehicles, tanks, helicopters, robots, Metal Gear, weapons, firing, text, labels, numbers, emblem, logo, UI, watermark, border. No ocean, dock, offshore steel platforms, snow, desert, modern architecture, sci-fi machinery. Do not copy an official screenshot; create a new faithful side-view composition informed by the official1974Costa Rica setting reference https://www.konami.com/mg/history/jp/ja/mgspw ."
+  },
+  "references": [
+    "https://www.konami.com/mg/history/jp/ja/mgspw"
+  ],
+  "provenance": "Original fan-made environment painting, no copied official screenshot or texture. Faithful1974Costa Rica setting adaptation; not a1:1official level reconstruction.",
+  "source": {
+    "path": "scripts/art_sources/all-eras-backdrops/peace-walker-costa-rica-jungle-openai.png",
+    "bytes": 2854941,
+    "sha256": "27407fc068341ac0dddd80191cb0f1a4de313420fbab03dce14bc6fc389f5cb7"
+  },
+  "runtime": {
+    "path": "public/sideops/backdrops/peace-walker-costa-rica-jungle.webp",
+    "bytes": 149686,
+    "sha256": "be4b0c87c82b5fd3ac26342cd3d3f2822cd52a98bd5719f0b59cfffa8cb2df49",
+    "width": 960,
+    "height": 540
+  },
+  "normalization": {
+    "script": "scripts/normalizeSideOpsBackdrop.py",
+    "method": "ImageOps.fit LANCZOS",
+    "quality": 86,
+    "centeringY": 0.48
+  },
+  "review": {
+    "source": "Approved: inland tropical jungle,1974encampment, lateral clear path, no people/animals/vehicles/text.",
+    "runtime": "960x540 WebP displayed and approved after normalization.",
+    "routing": "Selected only for peace_walker + jungle. Existing Mother Base default retained for all other contexts."
+  }
+}

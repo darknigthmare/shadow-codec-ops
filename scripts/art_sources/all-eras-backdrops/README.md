@@ -1,6 +1,6 @@
 # Side Ops all-era backdrop sources
 
-These eleven source paintings are original fan-made assets generated with
+These twelve source paintings are original fan-made assets generated with
 OpenAI ImageGen. Official Konami pages were used only as visual and narrative
 reference; no official game texture, screenshot, logo or key art is shipped in
 the runtime files.
@@ -24,10 +24,18 @@ painting follows the same contract:
 | MGS3 | `mgs3-groznyj-grad-openai.png` | `/sideops/backdrops/mgs3-groznyj-grad.webp` | [Konami MGS3 history](https://www.konami.com/mg/archive/mg25th/truth/mgs3.html) |
 | MGS4 | `mgs4-middle-east-openai.png` | `/sideops/backdrops/mgs4-middle-east.webp` | [Konami MGS4 history](https://www.konami.com/mg/archive/mg25th/truth/mgs4.html) |
 | Peace Walker | `peace-walker-mother-base-openai.png` | `/sideops/backdrops/peace-walker-mother-base.webp` | [Konami Mother Base](https://www.konami.com/mg/archive/mgs_pw/jp/base/base.html) |
+| Peace Walker / jungle | `peace-walker-costa-rica-jungle-openai.png` | `/sideops/backdrops/peace-walker-costa-rica-jungle.webp` | [Konami Peace Walker / Costa Rica1974](https://www.konami.com/mg/history/jp/ja/mgspw) |
 | Ground Zeroes | `mgsv-ground-zeroes-camp-omega-openai.png` | `/sideops/backdrops/mgsv-ground-zeroes-camp-omega.webp` | [Konami GZ introduction](https://www.konami.com/mg/mgs5/gz/jp/introduction/index.php) |
 | The Phantom Pain | `mgsv-phantom-pain-afghanistan-openai.png` | `/sideops/backdrops/mgsv-phantom-pain-afghanistan.webp` | [Konami TPP story](https://www.konami.com/mg/mgs5/tpp/jp/story/) |
 | Patriots AI | `patriots-ai-gw-openai.png` | `/sideops/backdrops/patriots-ai-gw.webp` | [Konami MGS2 history](https://www.konami.com/mg/archive/mg25th/truth/mgs2.html) |
 
 VR Simulation deliberately reuses the already generated
 `mgs1VrEnvTileMatrixVoid` surface from the exhaustive MGS1 VR environment
-pack instead of adding a twelfth redundant backdrop.
+pack instead of adding a redundant backdrop.
+
+Peace Walker profiles with `environment: 'jungle'` use the Costa Rica encampment
+panorama. Mother Base remains the default for every other Peace Walker context.
+The jungle panorama is an original lateral adaptation, with no people or vehicles,
+not a claim to reproduce one particular official level screenshot. Its generation
+prompt, reference and content hashes are recorded in
+`peace-walker-costa-rica-jungle.manifest.json`.

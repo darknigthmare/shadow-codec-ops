@@ -47,6 +47,7 @@ import {
 } from '../core/mg1ActorAnimationRegistry';
 import { MG1_SIDEOPS_VFX_ASSETS } from '../core/mg1SideOpsAssetRegistry';
 import { RuntimeInputController } from '../core/RuntimeInput';
+import { configureAuthoredSideOpsActor, getAuthoredSideOpsActorClip, registerAuthoredSideOpsActorAnimations } from '../core/sideOpsActorAnimationRuntime';
 import { calculateSideOpsRank } from '../systems/rankSystem';
 
 type Mg1AlertState = 'NORMAL' | 'ALERT' | 'MISSION FAILED';
@@ -148,7 +149,7 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
   private bossMidfightCodecEmitted = new Set<string>();
   private hostagesHarmed = 0;
 
-  private missionStartTime = 0;
+  private missionElapsedMs = 0;
   private nextPlayerShotAt = 0;
   private lastDamageAt = 0;
   private shotsFired = 0;
@@ -170,7 +171,7 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
 
   create(): void {
     this.resetMissionState();
-    this.missionStartTime = this.time.now;
+    this.missionElapsedMs = 0;
     this.physics.world.setBounds(0, 0, MG1_OUTER_HEAVEN_WORLD.worldWidth, 540);
     this.cameras.main.setBounds(0, 0, MG1_OUTER_HEAVEN_WORLD.worldWidth, 540);
 
@@ -240,8 +241,9 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
     this.emitHudUpdate();
   }
 
-  update(): void {
+  update(_time = 0, delta = 0): void {
     if (this.missionCompleted) return;
+    this.missionElapsedMs += Math.max(0, delta);
     this.inputController.update();
     if (!this.controlActiveRemoteMissile()) this.handlePlayerInput();
     this.activateEncounterWhenReady();
@@ -294,6 +296,7 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
 
   /** Registers every MG1 actor sheet once while retaining the static texture as fallback. */
   private createActorAnimations(): void {
+    registerAuthoredSideOpsActorAnimations(this);
     MG1_ACTOR_ANIMATION_ASSETS.forEach((asset) => {
       if (!this.textures.exists(asset.textureKey)) return;
       (Object.entries(asset.clips) as [Mg1ActorAnimationState, NonNullable<Mg1ActorAnimationAsset['clips'][Mg1ActorAnimationState]>][])
@@ -324,6 +327,11 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
     sprite.setData('mg1AnimationLock', '');
     sprite.setData('mg1AnimationPriority', 0);
     const asset = getMg1ActorAnimationAssetBySourceTexture(sourceTextureKey);
+    const authoredRole = sourceTextureKey === PLAYER_TEXTURE ? 'player' : sourceTextureKey === 'mg1Guard' ? 'guard' : undefined;
+    if (authoredRole && configureAuthoredSideOpsActor(this, sprite, 'mg1', authoredRole, asset?.sourceWidth, asset?.sourceHeight)) {
+      this.playActorLoop(sprite, initialState);
+      return sprite;
+    }
     if (!asset || !this.textures.exists(asset.textureKey)) {
       sprite.setTexture(sourceTextureKey);
       return sprite;
@@ -350,11 +358,12 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
     force = false
   ): void {
     const asset = this.getActorAsset(sprite);
-    if (!asset || !this.textures.exists(asset.textureKey)) return;
+    const authored = getAuthoredSideOpsActorClip(sprite, state);
+    if (!authored && (!asset || !this.textures.exists(asset.textureKey))) return;
     if (sprite.getData('mg1AnimationPriority') === 4) return;
     if (!force && Number(sprite.getData('mg1AnimationPriority') ?? 0) > 0) return;
-    const resolvedState = asset.clips[state] ? state : 'idle';
-    const animationKey = getMg1ActorAnimationKey(asset.textureKey, resolvedState);
+    const resolvedState = asset?.clips[state] ? state : 'idle';
+    const animationKey = authored?.key ?? getMg1ActorAnimationKey(asset!.textureKey, resolvedState);
     if (!this.anims.exists(animationKey)) return;
     if (force) {
       sprite.setData('mg1AnimationLock', '');
@@ -363,14 +372,16 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
     if (sprite.anims.currentAnim?.key !== animationKey || !sprite.anims.isPlaying) sprite.play(animationKey);
   }
 
-  private playActorAction(sprite: Phaser.GameObjects.Sprite, state: Mg1ActorAnimationState): void {
+  private playActorAction(sprite: Phaser.GameObjects.Sprite, state: Mg1ActorAnimationState | 'melee'): void {
     const asset = this.getActorAsset(sprite);
-    const clip = asset?.clips[state];
-    if (!asset || !clip || !this.textures.exists(asset.textureKey)) return;
+    const legacyState: Mg1ActorAnimationState = state === 'melee' ? 'attack' : state;
+    const authored = getAuthoredSideOpsActorClip(sprite, state);
+    const clip = authored ?? asset?.clips[legacyState];
+    if (!clip || (!authored && (!asset || !this.textures.exists(asset.textureKey)))) return;
     const priority = state === 'death' ? 4 : state === 'hit' ? 3 : 2;
     const currentPriority = Number(sprite.getData('mg1AnimationPriority') ?? 0);
     if (currentPriority === 4 || currentPriority >= priority) return;
-    const animationKey = getMg1ActorAnimationKey(asset.textureKey, state);
+    const animationKey = authored?.key ?? getMg1ActorAnimationKey(asset!.textureKey, legacyState);
     if (!this.anims.exists(animationKey)) return;
 
     const lock = `${state}-${this.time.now}-${Phaser.Math.Between(0, 99999)}`;
@@ -552,8 +563,11 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
     } else {
       this.player.setVelocityX(0);
     }
-    this.playActorLoop(this.player, left || right ? 'move' : 'idle');
     if (this.inputController.justDown('jump') && body.blocked.down && !crouch) this.player.setVelocityY(-430);
+    const jumpClip = getAuthoredSideOpsActorClip(this.player, 'jump');
+    if (!body.blocked.down && jumpClip && Number(this.player.getData('mg1AnimationPriority') ?? 0) === 0) {
+      if (this.player.anims.currentAnim?.key !== jumpClip.key) this.player.play(jumpClip.key);
+    } else this.playActorLoop(this.player, crouch ? 'remote' : left || right ? 'move' : 'idle');
     if (this.inputController.justDown('fire')) this.fireContextualWeapon();
     if (this.inputController.justDown('cqc')) this.tryActionOrCqc();
     if (this.inputController.justDown('chaff')) this.useChaff();
@@ -655,7 +669,7 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
       this.flashStatus('NO CQC TARGET');
       return;
     }
-    this.playActorAction(this.player, 'attack');
+    this.playActorAction(this.player, 'melee');
     target.disabled = true;
     target.sprite.setVelocity(0, 0).setTint(0x52634d);
     this.playActorAction(target.sprite, 'death');
@@ -1228,7 +1242,7 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
       alerts: this.alertCount,
       source,
       message: `${source} detected Snake`,
-      timeSeconds: Math.round((this.time.now - this.missionStartTime) / 1000),
+      timeSeconds: Math.round(this.missionElapsedMs / 1000),
       suspicion: 100,
       stealthScore: this.getStealthScore()
     };
@@ -1345,7 +1359,7 @@ export class Mg1OuterHeavenScene extends Phaser.Scene {
   }
 
   private buildMissionResult(success: boolean, outcome: string): MissionCompletePayload {
-    const timeSeconds = Math.round((this.time.now - this.missionStartTime) / 1000);
+    const timeSeconds = Math.round(this.missionElapsedMs / 1000);
     const rankPreview = success
       ? calculateSideOpsRank({
         alerts: this.alertCount,

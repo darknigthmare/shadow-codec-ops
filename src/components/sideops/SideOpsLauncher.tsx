@@ -1,4 +1,5 @@
 import '../../styles/sideops.css';
+import '../../styles/sideops-gameplay.css';
 import type { Game } from 'phaser';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import conversationsJson from '../../data/conversations.json';
@@ -36,6 +37,7 @@ import {
 import { getCampaignLoadoutBonuses, recordCampaignSideOpsResult } from '../../systems/campaignStorage';
 import { requestDirectorSequence, subscribeDirectorRuntimeEvents } from '../../systems/directorBus';
 import { MG1_HAZARD_SEQUENCE, MG1_OUTER_HEAVEN_MISSION_ID, MG1_OUTER_HEAVEN_WORLD } from '../../game/core/mg1OuterHeavenMission';
+import { resolveSideOpsCampaignProfile, SIDEOPS_CAMPAIGN_CONVERSATIONS, SIDEOPS_CAMPAIGN_MISSIONS } from '../../game/core/sideOpsCampaign';
 
 interface SideOpsLauncherProps {
   settings: UserSettings;
@@ -43,8 +45,8 @@ interface SideOpsLauncherProps {
   onOpenBuilder: () => void;
 }
 
-const builtInConversations = conversationsJson as ConversationDefinition[];
-const builtInSideOpsMissions = (missionsJson as MissionDefinition[])
+const builtInConversations = [...conversationsJson as ConversationDefinition[], ...SIDEOPS_CAMPAIGN_CONVERSATIONS];
+const builtInSideOpsMissions = [...missionsJson as MissionDefinition[], ...SIDEOPS_CAMPAIGN_MISSIONS]
   .filter((mission) => mission.mode === 'side_scroller')
   .map(convertBuiltInMissionDefinition);
 const DEFAULT_MISSION_ID = builtInSideOpsMissions[0]?.id ?? 'shadow_dock_001';
@@ -65,7 +67,7 @@ function resolveMission(missions: MissionDefinitionWithSource[], missionId: stri
 
 function buildInitialHud(mission: MissionDefinitionWithSource): MissionHudPayload {
   const campaignBonuses = getCampaignLoadoutBonuses();
-  const builderProfile = mission.source === 'builder' ? resolveBuilderSideOpsProfile(mission.id) : null;
+  const builderProfile = resolveSideOpsCampaignProfile(mission.id) ?? (mission.source === 'builder' ? resolveBuilderSideOpsProfile(mission.id) : null);
   const isMg1OuterHeaven = mission.id === MG1_OUTER_HEAVEN_MISSION_ID;
   const startAmmo = builderProfile?.startAmmo
     ?? (isMg1OuterHeaven ? MG1_OUTER_HEAVEN_WORLD.startAmmo : mission.id === 'tanker_hold_002' ? 32 : 26);
@@ -115,12 +117,19 @@ export function SideOpsLauncher({ settings, onOpenCodec, onOpenBuilder }: SideOp
   const activeMission = useMemo(() => resolveMission(sideOpsMissions, activeMissionId), [activeMissionId, sideOpsMissions]);
   const isMg1OuterHeaven = activeMission.id === MG1_OUTER_HEAVEN_MISSION_ID;
   const gameRef = useRef<Game | null>(null);
+  const shellRef = useRef<HTMLElement | null>(null);
+  const [operationsOpen, setOperationsOpen] = useState(false);
+  const [tacticalDetails, setTacticalDetails] = useState(false);
+  const [paused, setPaused] = useState(false);
+  const [fullscreenError, setFullscreenError] = useState('');
   const [engineStatus, setEngineStatus] = useState<'loading' | 'ready' | 'error'>('loading');
   const [engineError, setEngineError] = useState('');
   const [codecRequest, setCodecRequest] = useState<CodecRequestPayload | null>(null);
   const [codecLineIndex, setCodecLineIndex] = useState(0);
   const [missionResult, setMissionResult] = useState<MissionCompletePayload | null>(null);
   const [hud, setHud] = useState<MissionHudPayload>(() => buildInitialHud(activeMission));
+  const lastHudRef = useRef<MissionHudPayload | null>(null);
+  const lastHudPaintAtRef = useRef(0);
   const [alertLog, setAlertLog] = useState<AlertEventPayload[]>([]);
   const [bestResult, setBestResult] = useState<MissionCompletePayload | null>(() => loadJson<MissionCompletePayload | null>(bestRunKey(activeMission.id), null));
   const [customConversations] = useState(() => loadCustomConversations());
@@ -151,6 +160,9 @@ export function SideOpsLauncher({ settings, onOpenCodec, onOpenBuilder }: SideOp
     setCodecLineIndex(0);
     setAlertLog([]);
     setHud(buildInitialHud(activeMission));
+    setPaused(false);
+    lastHudRef.current = null;
+    lastHudPaintAtRef.current = 0;
   }, [activeMission.id]);
 
   useEffect(() => {
@@ -177,10 +189,27 @@ export function SideOpsLauncher({ settings, onOpenCodec, onOpenBuilder }: SideOp
       }
     });
     const offHud = onGameEvent<MissionHudPayload>(GAME_EVENT.HUD_UPDATE, (payload) => {
+      const previous = lastHudRef.current;
+      const now = performance.now();
+      const urgent = !previous || payload.health !== previous.health || payload.objective !== previous.objective || payload.bossDefeated !== previous.bossDefeated;
+      if (!urgent && now - lastHudPaintAtRef.current < 100) return;
+      if (previous && Object.keys(payload).every((key) => payload[key as keyof MissionHudPayload] === previous[key as keyof MissionHudPayload])) return;
+      lastHudRef.current = payload;
+      lastHudPaintAtRef.current = now;
       setHud(payload);
     });
     const offAlert = onGameEvent<AlertEventPayload>(GAME_EVENT.ALERT, (payload) => {
       setAlertLog((current) => [payload, ...current].slice(0, 7));
+    });
+    const offRestart = onGameEvent(GAME_EVENT.MISSION_RESTART, () => {
+      setPaused(false);
+      setMissionResult(null);
+      setCodecRequest(null);
+      setCodecLineIndex(0);
+      setAlertLog([]);
+      lastHudRef.current = null;
+      lastHudPaintAtRef.current = 0;
+      setHud(buildInitialHud(activeMission));
     });
 
     async function bootEngine() {
@@ -212,6 +241,7 @@ export function SideOpsLauncher({ settings, onOpenCodec, onOpenBuilder }: SideOp
       offComplete();
       offHud();
       offAlert();
+      offRestart();
       gameRef.current?.destroy(true);
       gameRef.current = null;
     };
@@ -243,6 +273,13 @@ export function SideOpsLauncher({ settings, onOpenCodec, onOpenBuilder }: SideOp
   }
 
   function restartMission() {
+    const manager = gameRef.current?.scene;
+    for (const key of ['SideOpsScene', 'Mg1OuterHeavenScene', 'Mgs1ShadowMosesScene']) {
+      if (manager?.isPaused(key)) manager.resume(key);
+    }
+    setPaused(false);
+    lastHudRef.current = null;
+    lastHudPaintAtRef.current = 0;
     setCodecRequest(null);
     setCodecLineIndex(0);
     setMissionResult(null);
@@ -254,8 +291,45 @@ export function SideOpsLauncher({ settings, onOpenCodec, onOpenBuilder }: SideOp
 
   function selectMission(missionId: string) {
     const mission = resolveMission(sideOpsMissions, missionId);
+    if (mission.id === activeMission.id) restartMission();
     setActiveMissionId(mission.id);
     saveJson(ACTIVE_MISSION_KEY, mission.id);
+    setOperationsOpen(false);
+    setPaused(false);
+  }
+
+  function togglePause() {
+    if (codecRequest?.pauseGame || missionResult) return;
+    const manager = gameRef.current?.scene;
+    if (!manager) return;
+    for (const key of ['SideOpsScene', 'Mg1OuterHeavenScene', 'Mgs1ShadowMosesScene']) {
+      if (paused && manager.isPaused(key)) manager.resume(key);
+      else if (!paused && manager.isActive(key)) manager.pause(key);
+    }
+    setPaused(!paused);
+  }
+
+  function toggleOperations() {
+    const opening = !operationsOpen;
+    if (opening && !paused && !codecRequest?.pauseGame && !missionResult) {
+      const manager = gameRef.current?.scene;
+      let pausedScene = false;
+      for (const key of ['SideOpsScene', 'Mg1OuterHeavenScene', 'Mgs1ShadowMosesScene']) {
+        if (manager?.isActive(key)) { manager.pause(key); pausedScene = true; }
+      }
+      if (pausedScene) setPaused(true);
+    }
+    setOperationsOpen(opening);
+  }
+
+  async function toggleFullscreen() {
+    try {
+      if (document.fullscreenElement) await document.exitFullscreen();
+      else await shellRef.current?.requestFullscreen();
+      setFullscreenError('');
+    } catch {
+      setFullscreenError('Le plein écran est indisponible sur cet appareil.');
+    }
   }
 
   const alertTone = hud.alertState === 'ALERT' || hud.alertState === 'MISSION FAILED'
@@ -265,13 +339,24 @@ export function SideOpsLauncher({ settings, onOpenCodec, onOpenBuilder }: SideOp
       : 'success';
 
   return (
-    <section className="sideops-page">
+    <section ref={shellRef} className={'sideops-page sideops-play-focus' + (operationsOpen ? ' operations-open' : '') + (tacticalDetails ? ' tactical-details-open' : '')}>
+      <div className="sideops-command-bar">
+        <div><span>TACTICAL OPERATIONS</span><strong>{activeMission.title}</strong></div>
+        <nav aria-label="Commandes de mission">
+          <button type="button" aria-expanded={operationsOpen} onClick={toggleOperations}>Opérations</button>
+          <button type="button" onClick={togglePause} disabled={engineStatus !== 'ready' || Boolean(codecRequest?.pauseGame || missionResult)}>{paused ? 'Reprendre' : 'Pause'}</button>
+          <button type="button" onClick={restartMission}>Recommencer</button>
+          <button type="button" aria-pressed={tacticalDetails} onClick={() => setTacticalDetails(!tacticalDetails)}>Dossier tactique</button>
+          <button type="button" onClick={() => void toggleFullscreen()}>Plein écran</button>
+        </nav>
+      </div>
+      {fullscreenError && <p role="status">{fullscreenError}</p>}
       <Panel className="sideops-info-panel">
-        <StatusBadge label="SIDE OPS MISSION LIBRARY" tone="success" />
+        <StatusBadge label="CHOISIR UNE OPÉRATION" tone="success" />
         <h2>{activeMission.title}</h2>
         <p>
-          Les missions intégrées et les packs publiés depuis le Mission Builder partagent maintenant le même runtime.
-          Les brouillons armés en Playtest apparaissent également ici sans modifier les fichiers source.
+          Traversez les époques de Metal Gear : observez les patrouilles, cherchez un itinéraire discret,
+          récupérez les renseignements et rejoignez votre point d’extraction.
         </p>
 
         <div className="mission-select-grid">
@@ -360,10 +445,11 @@ export function SideOpsLauncher({ settings, onOpenCodec, onOpenBuilder }: SideOp
         <div className="game-stage-shell">
           <div id="sideops-phaser-root" className="touch-game-surface" />
           <TouchControlOverlay settings={settings} context="sideops" />
+          {paused && <div className="sideops-pause-overlay"><strong>MISSION EN PAUSE</strong><span>{activeMission.title}</span><button className="primary-action" type="button" onClick={togglePause}>Reprendre l’opération</button></div>}
           {engineStatus !== 'ready' && (
             <div className={`game-engine-status ${engineStatus}`} role={engineStatus === 'error' ? 'alert' : 'status'}>
-              <strong>{engineStatus === 'error' ? 'SIDE OPS ENGINE OFFLINE' : 'STREAMING PHASER ENGINE'}</strong>
-              <span>{engineStatus === 'error' ? engineError : 'Loading gameplay runtime only for this mission module…'}</span>
+              <strong>{engineStatus === 'error' ? 'OPÉRATION INDISPONIBLE' : 'PRÉPARATION DE L’OPÉRATION'}</strong>
+              <span>{engineStatus === 'error' ? engineError : 'Chargement du terrain et de votre équipement…'}</span>
             </div>
           )}
         </div>
@@ -419,11 +505,13 @@ export function SideOpsLauncher({ settings, onOpenCodec, onOpenBuilder }: SideOp
             <span>Rank: {missionResult.rankPreview}</span>
             <span>Stealth Score: {missionResult.stealthScore}</span>
             <span>Objectives: {missionResult.objectivesCompleted}/{missionResult.totalObjectives} / Secrets: {missionResult.secretsFound}/{missionResult.totalSecrets}</span>
-            <span>Boss defeated: {missionResult.bossDefeated ? 'YES' : 'NO'} — {missionResult.bossName}</span>
+            {missionResult.bossRequired !== false && <span>Boss defeated: {missionResult.bossDefeated ? 'YES' : 'NO'} — {missionResult.bossName}</span>}
             <span>Alerts: {missionResult.alerts} / Kills: {missionResult.kills}</span>
             <span>Reinforcements: {missionResult.reinforcementCount}</span>
             <span>Time: {missionResult.timeSeconds}s</span>
             <span>No Alert: {missionResult.noAlert ? 'YES' : 'NO'} / No Kill: {missionResult.noKill ? 'YES' : 'NO'}</span>
+            {missionResult.campaignChallenges?.map((challenge) => <span key={challenge.id}>{challenge.completed ? '✓' : '□'} {challenge.label}</span>)}
+            <div><button className="primary-action" type="button" onClick={restartMission}>Rejouer</button><button className="primary-action secondary" type="button" onClick={() => setOperationsOpen(true)}>Choisir une opération</button></div>
           </div>
         )}
       </div>

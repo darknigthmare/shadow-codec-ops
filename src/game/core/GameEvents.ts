@@ -67,6 +67,8 @@ export interface MissionHudPayload {
 }
 
 export interface MissionCompletePayload {
+  bossRequired?: boolean;
+  campaignChallenges?: Array<{ id: string; label: string; completed: boolean }>;
   missionId: string;
   missionTitle: string;
   bossName: string;

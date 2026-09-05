@@ -1,4 +1,5 @@
 import campaignsJson from '../data/campaigns.json';
+import { SIDEOPS_CAMPAIGN_DEFINITION } from '../game/core/sideOpsCampaign';
 import type { CallHistoryEntry } from '../types/codec.types';
 import type { MissionCompletePayload } from '../game/core/GameEvents';
 import type { DirectorRuntimeEvent } from '../types/director.types';
@@ -44,7 +45,7 @@ export function setActiveCampaignSlot(slotId: CampaignSlotId): void {
 }
 
 
-const builtInCampaigns = (campaignsJson as CampaignDefinition[]).map((campaign) => ({ ...campaign, source: 'built_in' as const, published: true }));
+const builtInCampaigns = [...campaignsJson as CampaignDefinition[], SIDEOPS_CAMPAIGN_DEFINITION].map((campaign) => ({ ...campaign, source: 'built_in' as const, published: true }));
 
 const EMPTY_WALLET: CampaignResourceWallet = {
   commandPoints: 0,

@@ -45,6 +45,7 @@ import {
 } from '../core/mgs1ShadowMosesMission';
 import { MGS1_SIDEOPS_VFX_ASSETS } from '../core/mgs1SideOpsAssetRegistry';
 import { RuntimeInputController } from '../core/RuntimeInput';
+import { configureAuthoredSideOpsActor, getAuthoredSideOpsActorClip, registerAuthoredSideOpsActorAnimations } from '../core/sideOpsActorAnimationRuntime';
 import { calculateSideOpsRank } from '../systems/rankSystem';
 
 type Mgs1AlertState = 'NORMAL' | 'ALERT' | 'MISSION FAILED';
@@ -133,7 +134,7 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
   private nextPlayerShotAt = 0;
   private lastDamageAt = 0;
 
-  private missionStartTime = 0;
+  private missionElapsedMs = 0;
   private shotsFired = 0;
   private kills = 0;
   private neutralizations = 0;
@@ -159,7 +160,7 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
 
   create(): void {
     this.resetMissionState();
-    this.missionStartTime = this.time.now;
+    this.missionElapsedMs = 0;
     this.physics.world.setBounds(0, 0, MGS1_SHADOW_MOSES_WORLD.worldWidth, 540);
     this.cameras.main.setBounds(0, 0, MGS1_SHADOW_MOSES_WORLD.worldWidth, 540);
 
@@ -224,8 +225,9 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
     this.emitHudUpdate();
   }
 
-  update(): void {
+  update(_time = 0, delta = 0): void {
     if (this.missionCompleted) return;
+    this.missionElapsedMs += Math.max(0, delta);
     this.inputController.update();
     this.handlePlayerInput();
     this.updateCardboardBox();
@@ -282,6 +284,7 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
 
   /** Registers all generated actor sheets while retaining static sprites as fallback. */
   private createActorAnimations(): void {
+    registerAuthoredSideOpsActorAnimations(this);
     MGS1_ACTOR_ANIMATION_ASSETS.forEach((asset) => {
       if (!this.textures.exists(asset.textureKey)) return;
       (Object.entries(asset.clips) as [Mgs1ActorAnimationState, NonNullable<Mgs1ActorAnimationAsset['clips'][Mgs1ActorAnimationState]>][])
@@ -332,6 +335,13 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
     sprite.setData('mgs1AnimationLock', '');
     sprite.setData('mgs1AnimationPriority', 0);
     const asset = getMgs1ActorAnimationAssetBySourceTexture(sourceTextureKey);
+    const authoredRole = sourceTextureKey === 'player' ? 'player'
+      : sourceTextureKey === 'mgs1GenomeLightInfantry' ? 'guard'
+        : sourceTextureKey === 'mgs1GenomeArcticTrooper' ? 'reinforcement' : undefined;
+    if (authoredRole && configureAuthoredSideOpsActor(this, sprite, 'mgs1', authoredRole, asset?.sourceWidth, asset?.sourceHeight)) {
+      this.playActorLoop(sprite, initialState);
+      return sprite;
+    }
     if (!asset || !this.textures.exists(asset.textureKey)) {
       sprite.setTexture(this.resolveTexture(sourceTextureKey, fallback));
       return sprite;
@@ -355,10 +365,11 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
 
   private playActorLoop(sprite: Phaser.GameObjects.Sprite, state: Mgs1ActorAnimationState, force = false): void {
     const asset = this.getActorAsset(sprite);
-    if (!asset || !this.textures.exists(asset.textureKey)) return;
+    const authored = getAuthoredSideOpsActorClip(sprite, state);
+    if (!authored && (!asset || !this.textures.exists(asset.textureKey))) return;
     if (!force && Number(sprite.getData('mgs1AnimationPriority') ?? 0) > 0) return;
-    const resolved = asset.clips[state] ? state : 'idle';
-    const key = getMgs1ActorAnimationKey(asset.textureKey, resolved);
+    const resolved = asset?.clips[state] ? state : 'idle';
+    const key = authored?.key ?? getMgs1ActorAnimationKey(asset!.textureKey, resolved);
     if (!this.anims.exists(key)) return;
     if (force) {
       sprite.setData('mgs1AnimationPriority', 0);
@@ -369,12 +380,13 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
 
   private playActorAction(sprite: Phaser.GameObjects.Sprite, state: Mgs1ActorAnimationState): void {
     const asset = this.getActorAsset(sprite);
-    const clip = asset?.clips[state];
-    if (!asset || !clip || !this.textures.exists(asset.textureKey)) return;
+    const authored = getAuthoredSideOpsActorClip(sprite, state);
+    const clip = authored ?? asset?.clips[state];
+    if (!clip || (!authored && (!asset || !this.textures.exists(asset.textureKey)))) return;
     const priority = state === 'death' ? 4 : state === 'hit' ? 3 : 2;
     const currentPriority = Number(sprite.getData('mgs1AnimationPriority') ?? 0);
     if (currentPriority === 4 || currentPriority >= priority) return;
-    const key = getMgs1ActorAnimationKey(asset.textureKey, state);
+    const key = authored?.key ?? getMgs1ActorAnimationKey(asset!.textureKey, state);
     if (!this.anims.exists(key)) return;
     const lock = `${state}-${this.time.now}-${Phaser.Math.Between(0, 99999)}`;
     sprite.setData('mgs1AnimationLock', lock);
@@ -616,7 +628,10 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
 
     const body = this.player.body as Phaser.Physics.Arcade.Body;
     if (this.inputController.justDown('jump') && body.blocked.down) this.player.setVelocityY(-390);
-    if (crouching) this.playActorLoop(this.player, 'crouch');
+    const jumpClip = getAuthoredSideOpsActorClip(this.player, 'jump');
+    if (!body.blocked.down && jumpClip && Number(this.player.getData('mgs1AnimationPriority') ?? 0) === 0) {
+      if (this.player.anims.currentAnim?.key !== jumpClip.key) this.player.play(jumpClip.key);
+    } else if (crouching) this.playActorLoop(this.player, 'crouch');
     else if (Math.abs(this.player.body?.velocity.x ?? 0) > 4) this.playActorLoop(this.player, 'move');
     else this.playActorLoop(this.player, 'idle');
 
@@ -1062,7 +1077,7 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
       alerts: this.alertCount,
       source,
       message: `${source} detected Snake`,
-      timeSeconds: Math.round((this.time.now - this.missionStartTime) / 1000),
+      timeSeconds: Math.round(this.missionElapsedMs / 1000),
       suspicion: 100,
       stealthScore: this.getStealthScore()
     };
@@ -1170,7 +1185,7 @@ export class Mgs1ShadowMosesScene extends Phaser.Scene {
   }
 
   private buildMissionResult(success: boolean, outcome: string): MissionCompletePayload {
-    const timeSeconds = Math.round((this.time.now - this.missionStartTime) / 1000);
+    const timeSeconds = Math.round(this.missionElapsedMs / 1000);
     const rankPreview = success
       ? calculateSideOpsRank({
         alerts: this.alertCount,
