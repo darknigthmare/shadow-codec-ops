@@ -45,7 +45,9 @@ import {
 } from '../core/sideOpsActorAnimationRuntime';
 import type { SideOpsActorAnimationState, SideOpsActorRole } from '../core/sideOpsActorAnimationRegistry';
 import { configureAuthoredSideOpsSpecialActor, getAuthoredSideOpsSpecialActorClip, registerAuthoredSideOpsSpecialActorAnimations } from '../core/sideOpsSpecialActorAnimationRuntime';
-import type { SideOpsSpecialActorState } from '../core/sideOpsSpecialActorAnimationRegistry';
+import { getSideOpsSpecialActorDefinition, type SideOpsSpecialActorState } from '../core/sideOpsSpecialActorAnimationRegistry';
+import { getSideOpsAuthoredBossCombatContract, resolveSideOpsMechaCombatAnimation, resolveSideOpsMechaCombatPlayback } from '../core/sideOpsMechaCombatAnimation';
+import { resolveSideOpsBossProjectileVisual, resolveSideOpsBossProjectileMuzzle, resolveSideOpsBossProjectileVelocity } from '../core/sideOpsBossProjectileRegistry';
 import { getSideOpsTerrainAsset, SIDEOPS_TERRAIN_COVER_TEXTURES } from '../core/sideOpsTerrainRegistry';
 import {
   createSideOpsEnemyState,
@@ -700,6 +702,11 @@ export class SideOpsScene extends Phaser.Scene {
     return getMg1ActorAnimationAssetBySourceTexture(String(sprite.getData('mg1SourceTextureKey') ?? ''));
   }
 
+  private getAuthoredBossCombat(sprite: Phaser.GameObjects.Sprite) {
+    const source = sprite.getData('sideopsSpecialSourceTexture');
+    return typeof source === 'string' ? getSideOpsAuthoredBossCombatContract(getSideOpsSpecialActorDefinition(source)) : undefined;
+  }
+
   private playMg1ActorLoop(sprite: Phaser.GameObjects.Sprite, state: Mg1ActorAnimationState | SideOpsActorAnimationState | SideOpsSpecialActorState): void {
     const authored = getAuthoredSideOpsSpecialActorClip(sprite, state) ?? getAuthoredSideOpsActorClip(sprite, state);
     if (sprite.getData('sideopsSpecialSourceTexture') && !authored) return;
@@ -715,12 +722,13 @@ export class SideOpsScene extends Phaser.Scene {
     if (this.anims.exists(key) && (sprite.anims.currentAnim?.key !== key || !sprite.anims.isPlaying)) sprite.play(key);
   }
 
-  private playMg1ActorAction(sprite: Phaser.GameObjects.Sprite, state: Mg1ActorAnimationState | SideOpsActorAnimationState | SideOpsSpecialActorState): void {
+  private playMg1ActorAction(sprite: Phaser.GameObjects.Sprite, state: Mg1ActorAnimationState | SideOpsActorAnimationState | SideOpsSpecialActorState, interruptSamePriority = false): void {
     const authored = getAuthoredSideOpsSpecialActorClip(sprite, state) ?? getAuthoredSideOpsActorClip(sprite, state);
     if (sprite.getData('sideopsSpecialSourceTexture') && !authored) return;
     if (authored) {
       const priority = state === 'death' ? 4 : state === 'hit' ? 3 : state === 'jump' ? 1 : 2;
-      if (Number(sprite.getData('mg1AnimationPriority') ?? 0) >= priority || !this.anims.exists(authored.key)) return;
+      const currentPriority = Number(sprite.getData('mg1AnimationPriority') ?? 0);
+      if (currentPriority > priority || (currentPriority === priority && !interruptSamePriority) || !this.anims.exists(authored.key)) return;
       const lock = `${state}-${this.time.now}`;
       sprite.setData('mg1AnimationLock', lock).setData('mg1AnimationPriority', priority);
       sprite.play(authored.key);
@@ -991,6 +999,19 @@ export class SideOpsScene extends Phaser.Scene {
       this.resolveMg1ActorTexture(this.profile.boss.texture)
     );
     this.configureMg1ActorSprite(sprite, this.profile.boss.texture);
+    // Large authored bodies can start across the floor's top. Arcade separation
+    // cannot recover a body already underneath it, so lift only an intersecting
+    // support below the body's center; airborne spawns keep their original Y.
+    const body = sprite.body as Phaser.Physics.Arcade.Body;
+    const supportTops = this.platforms.getChildren().flatMap((object) => {
+      const surface = (object as Phaser.Physics.Arcade.Sprite).body;
+      return surface?.enable && body.right > surface.left && body.left < surface.right
+        && body.center.y <= surface.top && surface.top < body.bottom ? [surface.top] : [];
+    });
+    if (supportTops.length > 0) {
+      sprite.setY(sprite.y + Math.min(...supportTops) - body.bottom);
+      body.updateFromGameObject();
+    }
     sprite.setDragX(850);
     sprite.setMaxVelocity(330, 500);
     sprite.setCollideWorldBounds(true);
@@ -1280,7 +1301,11 @@ export class SideOpsScene extends Phaser.Scene {
       this.activateBoss();
     }
 
-    if (!this.boss.active) return;
+    if (!this.boss.active) {
+      const contract = this.getAuthoredBossCombat(this.boss.sprite);
+      if (contract) this.playMg1ActorLoop(this.boss.sprite, contract.dormant);
+      return;
+    }
 
     const boss = this.boss;
     const body = boss.sprite.body as Phaser.Physics.Arcade.Body;
@@ -1300,13 +1325,39 @@ export class SideOpsScene extends Phaser.Scene {
     boss.direction = decision.direction;
     boss.sprite.setFlipX(boss.baseFacingRight ? boss.direction < 0 : boss.direction > 0);
     boss.sprite.setVelocityX(decision.velocityX);
-    this.playMg1ActorLoop(boss.sprite, decision.animation === 'move' ? 'move' : 'idle');
-    if (decision.animation === 'attack') this.playMg1ActorAction(boss.sprite, 'attack');
-    // Wait for the final recoil/hit clip, then show one reload per recovery window.
-    if (decision.state.mode === 'recover' && Number(boss.sprite.getData('mg1AnimationPriority') ?? 0) === 0
-      && boss.sprite.getData('reloadWindow') !== decision.state.stateUntil) {
-      this.playMg1ActorAction(boss.sprite, 'reload');
-      boss.sprite.setData('reloadWindow', decision.state.stateUntil);
+    const contract = this.getAuthoredBossCombat(boss.sprite);
+    if (contract) {
+      const presentation = resolveSideOpsMechaCombatAnimation(decision, contract);
+      const actionClip = presentation.action ? getAuthoredSideOpsSpecialActorClip(boss.sprite, presentation.action) : undefined;
+      const playback = resolveSideOpsMechaCombatPlayback(presentation, {
+        priority: Number(boss.sprite.getData('mg1AnimationPriority') ?? 0),
+        lastEventKey: boss.sprite.getData('authoredBossAnimationEvent'),
+        currentActionMatches: Boolean(actionClip && boss.sprite.anims.currentAnim?.key === actionClip.key)
+      });
+      if (playback === 'loop') this.playMg1ActorLoop(boss.sprite, presentation.loop);
+      else if (playback === 'hold-final' && actionClip && this.anims.exists(actionClip.key)) {
+        // A hit may replace the windup clip. Restore its final pose only once
+        // the hit lock expires, without extending aim time or hiding an impact.
+        boss.sprite.play({ key: actionClip.key, startFrame: actionClip.end - actionClip.start });
+        boss.sprite.anims.stop();
+      }
+      // Real salvos may interrupt windup/recoil, never a higher-priority hit/death.
+      // Recovery waits for the final recoil and is only acknowledged after playback.
+      if (presentation.action && playback === 'play-action') {
+        this.playMg1ActorAction(boss.sprite, presentation.action, presentation.action === 'attack');
+        if (boss.sprite.anims.currentAnim?.key === getAuthoredSideOpsSpecialActorClip(boss.sprite, presentation.action)?.key) {
+          boss.sprite.setData('authoredBossAnimationEvent', presentation.eventKey);
+        }
+      }
+    } else {
+      this.playMg1ActorLoop(boss.sprite, decision.animation === 'move' ? 'move' : 'idle');
+      if (decision.animation === 'attack') this.playMg1ActorAction(boss.sprite, 'attack');
+      // Ocelot retains his authored reload, not a machine recovery alias.
+      if (decision.state.mode === 'recover' && Number(boss.sprite.getData('mg1AnimationPriority') ?? 0) === 0
+        && boss.sprite.getData('reloadWindow') !== decision.state.stateUntil) {
+        this.playMg1ActorAction(boss.sprite, 'reload');
+        boss.sprite.setData('reloadWindow', decision.state.stateUntil);
+      }
     }
     decision.projectiles.forEach((projectile) => this.fireBossShot(boss, projectile));
     if (decision.telegraph) {
@@ -1343,21 +1394,61 @@ export class SideOpsScene extends Phaser.Scene {
   }
 
   private fireBossShot(boss: BossUnit, shot: SideOpsBossProjectile): void {
-    this.playMg1ActorAction(boss.sprite, 'attack');
+    // handleBoss owns one authored action per salvo, not one per spread projectile.
     const direction = shot.velocityX < 0 ? -1 : 1;
-    const bullet = this.enemyBullets.get(
-      boss.sprite.x + direction * 28,
-      boss.sprite.y - 12,
-      this.getEnemyProjectileTexture()
-    ) as Phaser.Physics.Arcade.Sprite | null;
+    const source = String(boss.sprite.getData('sideopsSpecialSourceTexture') ?? '');
+    const candidate = resolveSideOpsBossProjectileVisual(source);
+    const visual = candidate && this.textures.exists(candidate.textureKey) && this.anims.exists(candidate.clip.key) ? candidate : undefined;
+    const muzzle = visual && boss.sprite.body ? resolveSideOpsBossProjectileMuzzle(source, boss.sprite.body, direction) : undefined;
+    const origin = muzzle ?? { x: boss.sprite.x + direction * 28, y: boss.sprite.y - 12 };
+    const textureKey = visual?.textureKey ?? this.getEnemyProjectileTexture();
+    const bullet = this.enemyBullets.get(origin.x, origin.y, textureKey) as Phaser.Physics.Arcade.Sprite | null;
     if (!bullet) return;
-    bullet.setActive(true).setVisible(true);
-    bullet.body?.reset(boss.sprite.x + direction * 28, boss.sprite.y - 12);
-    (bullet.body as Phaser.Physics.Arcade.Body).setAllowGravity(false);
-    bullet.setVelocity(shot.velocityX, shot.velocityY);
+    const body = this.resetEnemyProjectile(bullet, textureKey, origin.x, origin.y);
+    const velocity = muzzle ? resolveSideOpsBossProjectileVelocity(shot,
+      { x: boss.sprite.x, y: boss.sprite.y - 12 }, muzzle,
+      { x: boss.brain.targetX, y: boss.brain.targetY }) : shot;
+    if (visual) {
+      bullet.setDisplaySize(visual.width, visual.height);
+      body.updateFromGameObject();
+      body.setSize(visual.hitbox.width / Math.abs(bullet.scaleX), visual.hitbox.height / Math.abs(bullet.scaleY), true);
+      bullet.setRotation(Math.atan2(velocity.velocityY, velocity.velocityX));
+      bullet.play(visual.clip.key).setData('sideopsBossProjectileVisual', visual.id);
+    } else {
+      bullet.setFlipX(direction < 0);
+    }
+    // Changing the padded sheet's scale/offset is not physical travel. Align the
+    // previous positions too, or Arcade postUpdate adds that delta to the muzzle.
+    body.updateFromGameObject();
+    body.prev.copy(body.position);
+    body.prevFrame.copy(body.position);
+    bullet.setVelocity(velocity.velocityX, velocity.velocityY);
     bullet.setData('damage', shot.damage).setData('source', this.profile.boss.name);
-    bullet.setFlipX(direction < 0);
-    this.time.delayedCall(1800, () => bullet.active && bullet.destroy());
+    this.expireEnemyProjectileAfter(bullet, 1800);
+  }
+
+  /** A pooled guard round must never inherit a boss sheet, scale, rotation or hitbox. */
+  private resetEnemyProjectile(bullet: Phaser.Physics.Arcade.Sprite, textureKey: string, x: number, y: number): Phaser.Physics.Arcade.Body {
+    bullet.anims.stop();
+    bullet.setTexture(textureKey, 0).setOrigin(0.5).setScale(1).setRotation(0).setFlip(false, false).clearTint();
+    bullet.enableBody(true, x, y, true, true);
+    const body = bullet.body as Phaser.Physics.Arcade.Body;
+    body.updateFromGameObject();
+    body.setSize(bullet.width, bullet.height, true).setAllowGravity(false);
+    body.updateFromGameObject();
+    body.prev.copy(body.position);
+    body.prevFrame.copy(body.position);
+    bullet.setData('sideopsBossProjectileVisual', null);
+    return body;
+  }
+
+  /** Old timers cannot destroy the next flight if a projectile is recycled. */
+  private expireEnemyProjectileAfter(bullet: Phaser.Physics.Arcade.Sprite, lifetimeMs: number): void {
+    const flight = Number(bullet.getData('enemyProjectileFlight') ?? 0) + 1;
+    bullet.setData('enemyProjectileFlight', flight);
+    this.time.delayedCall(lifetimeMs, () => {
+      if (bullet.active && bullet.getData('enemyProjectileFlight') === flight) bullet.destroy();
+    });
   }
 
   private hitBoss(source: 'SOCOM' | 'CQC'): void {
@@ -1685,15 +1776,13 @@ export class SideOpsScene extends Phaser.Scene {
       ) as Phaser.Physics.Arcade.Sprite | null;
       if (!bullet) return;
 
-      bullet.setActive(true).setVisible(true);
-      bullet.body?.reset(guard.sprite.x + direction * 18, guard.sprite.y - 6);
-      (bullet.body as Phaser.Physics.Arcade.Body).setAllowGravity(false);
+      this.resetEnemyProjectile(bullet, this.getEnemyProjectileTexture(), guard.sprite.x + direction * 18, guard.sprite.y - 6);
       bullet.setVelocityX(direction * guard.decision.projectileSpeed);
       bullet.setVelocityY(0);
       bullet.setData('damage', guard.role === 'reinforcement' ? 14 : 11).setData('source', `${guard.role} rifle`);
       bullet.setFlipX(direction < 0);
       this.playMg1ActorAction(guard.sprite, 'attack');
-      this.time.delayedCall(1200, () => bullet.active && bullet.destroy());
+      this.expireEnemyProjectileAfter(bullet, 1200);
     });
   }
 

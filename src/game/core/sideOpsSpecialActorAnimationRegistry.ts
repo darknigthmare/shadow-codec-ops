@@ -1,15 +1,19 @@
 import manifest from '../../data/sideopsSpecialActorAnimations.json';
+import type { EraId } from '../../types/codec.types';
+import type { SideOpsVisualPackId } from '../../types/missionBuilder.types';
 
-export type SideOpsSpecialActorId = 'mgs1-revolver-ocelot' | 'mgs1-otacon' | 'mgs1-metal-gear-rex';
+/** Asset identities come from the shared importer/runtime manifest. */
+export type SideOpsSpecialActorId = string;
 export type SideOpsSpecialActorBoard = 'core' | 'special';
 export type SideOpsSpecialActorState =
   | 'idle' | 'move' | 'attack' | 'reload' | 'melee' | 'hit' | 'death' | 'interact'
-  | 'crouch' | 'radio' | 'fear' | 'missile' | 'laser' | 'railgun' | 'scan';
+  | 'crouch' | 'radio' | 'fear' | 'missile' | 'laser' | 'railgun' | 'scan'
+  | 'charge' | 'recover';
 
 export interface SideOpsSpecialActorDefinition {
   readonly id: SideOpsSpecialActorId;
   readonly name: string;
-  readonly era: 'mgs1';
+  readonly era: EraId | SideOpsVisualPackId;
   readonly kind: 'boss' | 'npc' | 'machine';
   /** Original texture identifies the actor, never its current animation frame. */
   readonly sourceTextureKey: string;
@@ -21,6 +25,8 @@ export interface SideOpsSpecialActorDefinition {
   /** Existing world-space collision contract, independent of authored art. */
   readonly bodyWidth: number;
   readonly bodyHeight: number;
+  /** Alpha bounds of core idle frame 0, measured AFTER the shared import scale. */
+  readonly idleBounds?: { readonly x: number; readonly y: number; readonly width: number; readonly height: number };
   readonly states: Readonly<Record<SideOpsSpecialActorBoard, readonly SideOpsSpecialActorState[]>>;
 }
 
@@ -61,7 +67,8 @@ const timing: Record<SideOpsSpecialActorState, { frameRate: number; repeat: -1 |
   crouch: { frameRate: 5, repeat: -1 }, radio: { frameRate: 6, repeat: 0 },
   fear: { frameRate: 8, repeat: 0 }, missile: { frameRate: 8, repeat: 0 },
   laser: { frameRate: 8, repeat: 0 }, railgun: { frameRate: 8, repeat: 0 },
-  scan: { frameRate: 4, repeat: -1 }
+  scan: { frameRate: 4, repeat: -1 },
+  charge: { frameRate: 5, repeat: 0 }, recover: { frameRate: 6, repeat: 0 }
 };
 
 const actorsBySource = new Map<string, SideOpsSpecialActorDefinition>(
@@ -102,18 +109,34 @@ export function getSideOpsSpecialActorAnimation(
   return actor ? clipsByKey.get(`sideops-special:${actor.id}:${state}`) : undefined;
 }
 
-/** Centered legacy bodies keep both size and bottom Y when the frame changes. */
+/** One visual scale for ALL poses; collision dimensions remain in world pixels. */
 export function getSideOpsSpecialActorGeometry(
   actor: SideOpsSpecialActorDefinition,
   worldWidth = actor.bodyWidth,
   worldHeight = actor.bodyHeight
 ) {
-  const scale = worldHeight / (actor.frameSize - 2 * actor.padding);
+  const bounds = actor.idleBounds;
+  if (bounds && (![bounds.x, bounds.y, bounds.width, bounds.height].every(Number.isFinite)
+    || bounds.x < 0 || bounds.y < 0 || bounds.width <= 0 || bounds.height <= 0
+    || bounds.x + bounds.width > actor.frameSize || bounds.y + bounds.height > actor.frameSize)) {
+    throw new RangeError(`Invalid idle bounds for ${actor.id}`);
+  }
+  // Wide machines fit both legacy dimensions without stretching. Upright actors
+  // are height-calibrated; absent metadata keeps the previous geometry unchanged.
+  const scale = bounds
+    ? actor.kind === 'machine' && worldWidth > worldHeight
+      ? Math.min(worldWidth / bounds.width, worldHeight / bounds.height)
+      : worldHeight / bounds.height
+    : worldHeight / (actor.frameSize - 2 * actor.padding);
   const width = worldWidth / scale;
   const height = worldHeight / scale;
+  const offsetX = bounds ? bounds.x + (bounds.width - width) / 2 : (actor.frameSize - width) / 2;
+  const offsetY = bounds ? bounds.y + bounds.height - height : actor.frameSize - actor.padding - height;
   return {
     scale, width, height,
-    offsetX: (actor.frameSize - width) / 2,
-    offsetY: actor.frameSize - actor.padding - height
+    offsetX, offsetY,
+    // The inherited body center, rather than the padded cell center, anchors art.
+    originX: (offsetX + width / 2) / actor.frameSize,
+    originY: (offsetY + height / 2) / actor.frameSize
   };
 }

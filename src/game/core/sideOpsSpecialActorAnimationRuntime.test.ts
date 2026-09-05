@@ -1,7 +1,7 @@
 import type Phaser from 'phaser';
 import { describe, expect, it, vi } from 'vitest';
 
-interface SpriteSurface { x: number; y: number; scaleX: number; scaleY: number; frameSize: number }
+interface SpriteSurface { x: number; y: number; scaleX: number; scaleY: number; frameSize: number; originX: number; originY: number }
 
 const { StaticBody } = vi.hoisted(() => ({
   StaticBody: class {
@@ -10,18 +10,37 @@ const { StaticBody } = vi.hoisted(() => ({
     center = { x: 100, y: 200 };
     calls: string[] = [];
     sprite: SpriteSurface | null = null;
-    setOffset() { this.calls.push('offset'); return this; }
+    position = { x: 52, y: 136 };
+    offset = { x: 0, y: 0 };
+    updateCenter() { this.center = { x: this.position.x + this.width / 2, y: this.position.y + this.height / 2 }; }
+    setOffset(x: number, y: number) {
+      this.calls.push('offset');
+      this.position.x += x - this.offset.x;
+      this.position.y += y - this.offset.y;
+      this.offset = { x, y };
+      this.updateCenter();
+      return this;
+    }
     updateFromGameObject() {
       this.calls.push('update');
       this.width = this.sprite!.frameSize * this.sprite!.scaleX;
       this.height = this.sprite!.frameSize * this.sprite!.scaleY;
-      this.center = { x: this.sprite!.x, y: this.sprite!.y };
+      this.position = { x: this.sprite!.x - this.width * this.sprite!.originX, y: this.sprite!.y - this.height * this.sprite!.originY };
+      this.updateCenter();
       return this;
     }
-    setSize(width: number, height: number) {
+    setSize(width: number, height: number, center = true) {
       this.calls.push('size');
       this.width = width;
       this.height = height;
+      if (center) {
+        const x = this.sprite!.frameSize * this.sprite!.scaleX / 2 - width / 2;
+        const y = this.sprite!.frameSize * this.sprite!.scaleY / 2 - height / 2;
+        this.position.x += x - this.offset.x;
+        this.position.y += y - this.offset.y;
+        this.offset = { x, y };
+      }
+      this.updateCenter();
       return this;
     }
   }
@@ -34,6 +53,7 @@ import {
   getAuthoredSideOpsSpecialActorClip,
   registerAuthoredSideOpsSpecialActorAnimations
 } from './sideOpsSpecialActorAnimationRuntime';
+import * as registry from './sideOpsSpecialActorAnimationRegistry';
 
 class DynamicBody {
   width = 96;
@@ -43,7 +63,9 @@ class DynamicBody {
   center = { x: 100, y: 200 };
   calls: string[] = [];
   sprite: SpriteSurface | null = null;
-  setOffset() { this.calls.push('offset'); return this; }
+  offsetX = 8;
+  offsetY = 0;
+  setOffset(x: number, y: number) { this.calls.push('offset'); this.offsetX = x; this.offsetY = y; return this; }
   setSize(width: number, height: number) {
     this.calls.push('size');
     this.sourceWidth = width;
@@ -54,7 +76,10 @@ class DynamicBody {
     this.calls.push('update');
     this.width = this.sourceWidth * this.sprite!.scaleX;
     this.height = this.sourceHeight * this.sprite!.scaleY;
-    this.center = { x: this.sprite!.x, y: this.sprite!.y };
+    this.center = {
+      x: this.sprite!.x + (this.offsetX + this.sourceWidth / 2 - this.sprite!.frameSize * this.sprite!.originX) * this.sprite!.scaleX,
+      y: this.sprite!.y + (this.offsetY + this.sourceHeight / 2 - this.sprite!.frameSize * this.sprite!.originY) * this.sprite!.scaleY
+    };
     return this;
   }
 }
@@ -65,6 +90,8 @@ class Sprite implements SpriteSurface {
   scaleX = 2;
   scaleY = 2;
   frameSize = 64;
+  originX = 0.5;
+  originY = 0.5;
   data = new Map<string, unknown>();
   constructor(public body: DynamicBody | InstanceType<typeof StaticBody> | null = null) {
     if (body) body.sprite = this;
@@ -72,7 +99,7 @@ class Sprite implements SpriteSurface {
   getData(key: string) { return this.data.get(key); }
   setData(key: string, value: unknown) { this.data.set(key, value); return this; }
   setTexture(key: string) { this.frameSize = key.includes('metal-gear-rex') ? 256 : 128; return this; }
-  setOrigin() { return this; }
+  setOrigin(x: number, y: number) { this.originX = x; this.originY = y; return this; }
   setScale(scale: number) { this.scaleX = scale; this.scaleY = scale; return this; }
   setPosition(x: number, y: number) { this.x = x; this.y = y; return this; }
 }
@@ -121,6 +148,36 @@ describe('special actor runtime geometry and fallback', () => {
     expect(configureAuthoredSideOpsSpecialActor(loadedScene, asSprite(rex), 'mgs1MetalGearRex')).toBe(true);
     expect(rex.data.get('sideopsSpecialSourceFacingRight')).toBe(false);
     expect(getAuthoredSideOpsSpecialActorClip(asSprite(rex), 'reload')).toBeUndefined();
+  });
+
+  it('keeps dynamic and static world centers/feet unchanged with upright and wide idle anchors', () => {
+    const definition = registry.getSideOpsSpecialActorDefinition('mgs1MetalGearRex')!;
+    for (const wide of [false, true]) {
+      const bounds = wide ? { x: 20, y: 70, width: 216, height: 108 } : { x: 60, y: 40, width: 119, height: 200 };
+      const width = wide ? 160 : 96, height = wide ? 96 : 128;
+      for (const body of [new DynamicBody(), new StaticBody()]) {
+        if (body instanceof DynamicBody) {
+          body.sourceWidth = width / 2;
+          body.sourceHeight = height / 2;
+          body.offsetX = (64 - body.sourceWidth) / 2;
+          body.offsetY = (64 - body.sourceHeight) / 2;
+        } else {
+          body.width = width;
+          body.height = height;
+        }
+        const sprite = new Sprite(body);
+        const spy = vi.spyOn(registry, 'getSideOpsSpecialActorDefinition').mockReturnValueOnce({ ...definition, idleBounds: bounds });
+        expect(configureAuthoredSideOpsSpecialActor(loadedScene, asSprite(sprite), 'mgs1MetalGearRex')).toBe(true);
+        spy.mockRestore();
+        expect(body.width).toBeCloseTo(width);
+        expect(body.height).toBeCloseTo(height);
+        expect(body.center.x).toBeCloseTo(100);
+        expect(body.center.y).toBeCloseTo(200);
+        const visualFeetY = sprite.y + (bounds.y + bounds.height - sprite.frameSize * sprite.originY) * sprite.scaleY;
+        expect(visualFeetY).toBeCloseTo(200 + height / 2);
+        expect(sprite.scaleY).toBeCloseTo(wide ? width / bounds.width : height / bounds.height);
+      }
+    }
   });
 
   it('registers only loaded, not-yet-created clips', () => {

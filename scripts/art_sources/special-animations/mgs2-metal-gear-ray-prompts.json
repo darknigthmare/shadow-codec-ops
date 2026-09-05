@@ -1,0 +1,46 @@
+{
+  "actorId": "mgs2-metal-gear-ray",
+  "generatedWith": "OpenAI built-in imagegen",
+  "date": "2026-09-05",
+  "sourceFacing": "right",
+  "variant": "MGS2 Plant autonomous mass-production RAY; not manned prototype or Revengeance",
+  "sources": [
+    {
+      "url": "https://www.kotobukiya.co.jp/en/product/detail/p4934054049172/",
+      "kind": "licensed manufacturer specifications, water jet confirmed"
+    },
+    {
+      "url": "https://www.konami.com/mg/archive/mgs2/art/third.html",
+      "kind": "official Shinkawa interview, streamlined armor and joint design"
+    },
+    {
+      "url": "https://www.hlj.com/productthumbs/kby/kbykp-266_1_1484522809.jpg?v=1484522809",
+      "kind": "licensed Kotobukiya model photo visually inspected"
+    },
+    {
+      "url": "https://osgpod.com/posts/media/0019/rayfight.webp",
+      "kind": "MGS2 gameplay screenshot visually inspected, secondary host"
+    },
+    {
+      "url": "https://osgpod.com/posts/media/0019/ray4.jpg",
+      "kind": "published concept artwork visually inspected, secondary host"
+    },
+    {
+      "url": "https://metalgear.fandom.com/wiki/Metal_Gear_RAY_%28unmanned%29",
+      "kind": "variant corroboration; tail absent, round knees, single sensor"
+    }
+  ],
+  "prompts": {
+    "core": "Use case: stylized-concept. Asset type: production pixel-art sprite animation atlas for a 2D side-scrolling Metal Gear fan game. Generate a NEW original 1024x1024 bitmap, exactly 4 columns by 4 rows of equal 256x256 cells. Background is absolutely flat solid chroma magenta #ff00ff. Exactly five thin straight cyan guide lines vertically and five horizontally on outer boundaries and at each quarter division. No text, numbering, labels, logos, scenery, floor, shadows or UI.\nSubject identity: Metal Gear RAY, specifically the autonomous mass-produced MGS2 PLANT / Arsenal Gear model, NOT the manned Tanker prototype, NOT the MGS4 manned hybrid, NOT Metal Gear Rising Revengeance. Faithful streamlined aquatic biped silhouette: low long pointed wedge/snouted head with ONE central optical sensor, opening upper/lower jaw housing high-pressure WATER jet cutter; compact ribbed torso; TWO long flattened tapered wing/flipper ARMS with rounded contours and no hands; exactly TWO articulated mechanical LEGS, broad armor on upper thighs, unmistakable round knee joints, narrow tapering shin/ankle feet. NO long tail, NO railgun, NO radar dish, NO sword or heat blade, NO humanoid fists, NO four-legged body. Muted olive-gunmetal and russet-brown armor with tan/brass joint rings, dark mechanical gaps, crisp controlled highlights; use the original MGS2 military finish, not bright teal toy plastic.\nArt: carefully hand-placed chunky crisp pixel clusters, dark 1-2 pixel contour, restrained 16-bit/32-bit game shading, no photorealistic rendering and no antialias softness. Fixed orthographic SIDE VIEW, every cell facing SCREEN RIGHT, never front view or rear view. Wings may sweep back/up but remain side-view, one near leg and one clearly offset far leg. Entire same-size machine visible inside every cell with at least 24 pixels empty magenta padding all around. Common virtual ground baseline y=228 in every cell; no feet below it, identity and torso volume consistent between frames. Body occupies about 185px height, except deliberate charge crouch. No camera angle changes.\nAnimation frames, left to right in each row: ROW1 IDLE four distinct subtle mechanical breathing/weight-balancing poses, head tilt and wings a few degrees. ROW2 MOVE a real heavy biped walking cycle: near-foot forward heel/contact, weight passing, far-foot forward contact, opposite passing; feet articulate and knee positions visibly change, no duplicated idle poses. ROW3 CHARGE four poses: brace knees, lower head, jaw begins opening, jaw fully open nozzle aiming RIGHT, wings raise slightly to stabilize. ROW4 ATTACK four consecutive poses: open jaw fires a VERY SHORT pale-blue/white water-nozzle burst (maximum 20px beyond mouth), recoil neck/torso, continued short water spray, water emission diminishing; keep the machine recognizable and entirely contained. A long gameplay beam will be rendered separately, so never draw a long beam or water reaching a gridline. Exactly one whole RAY per cell, sixteen purposeful and distinct animation poses, no extra people or mini-figures.",
+    "coreCorrection": "Use case: precise-object-edit. Edit this RAY sprite atlas only to correct the canonical proportions. Keep the exact 4x4 grid, flat magenta background and cyan guidelines, all sixteen actions and RIGHT-facing side view, color palette, identity, cell locations and full-containment margins unchanged. Make the TWO legs on every RAY noticeably longer and slimmer, as in the actual Metal Gear RAY: thighs and round knee armor remain, long tapered shin/ankle sections carry the body high above the feet; the legs should account for about 55 percent of standing height, with a compact rather than long ribbed torso. Keep wing/flipper arms sleek and without hands. Keep the same one-eye MGS2 autonomous machine with NO TAIL, no human fists, no extra limbs, no radar, no rifle. Do not enlarge total standing height or change the baseline: shorten the central torso a little to give more height to the legs. Do not replace water spray with bullets. This is one targeted anatomical correction, preserve everything else and the distinct gait poses.",
+    "special": "Use case: identity-preserve. Create the companion SPECIAL animation atlas by editing the supplied RAY CORE atlas. Image 1 is the exact identity, palette, pixel-art style, scale and side-view reference. Preserve the corrected longer slender legs, round knees, compact ribbed torso, two tapered flipper arms, single-eye opening snout, olive-gunmetal/russet armor with brass joints, NO TAIL, autonomous MGS2 Plant RAY only. Preserve canvas square, exact 4x4 grid with FIVE thin cyan vertical and FIVE cyan horizontal boundary/division lines, absolutely flat magenta #ff00ff background. No letters, numbering, UI, scenery, floor or cast shadows. Every pose faces SCREEN RIGHT. Keep the same standing height and virtual foot baseline as the provided core, do not scale up this board. Entire body and wings always fully inside its cell with 24-pixel margins.\nReplace all 16 poses with these new actions. ROW1 RECOVER: four distinct phases after the short water attack, jaw open low and knees bent, jaw closing as torso raises, wings lowering, returning to idle. ROW2 HIT: four distinct damage reactions, torso jerks slightly backward and head lifts with tiny localized amber sparks, one knee gives slightly, head recoils then regains balance. NO missing limbs or change to silhouette here. ROW3 DEATH: frame1 stance buckles and head drops; frame2 machine kneels with wings sagging; frame3 collapsing on its side with knees folded and low snout; frame4 definitive inert wreck lying low, legs folded and wings crumpled, dark single eye, NO standing revival. Keep all debris attached/contained and the same overall size; no huge explosions obscuring the machine. ROW4 SCAN: four upright active idle scan poses at the SAME HEIGHT AND BASELINE AS CORE ROW1, head slowly tilts up/level/down/level and a tiny single green sensor pulses, wing angles subtly vary. This final row is a looping scan, not a revival from death.\nMake all 16 real authored poses distinct, no copy-paste row. Exactly one RAY per cell. No new weapons, no plasma, no heat blade, no human hands, no long tail or long water beam. Clean high quality 2D game sprite pixels. Keep all cell scales consistent; only actual animation changes body pose."
+  },
+  "visualReview": {
+    "grid": "4x4 cyan-guided",
+    "poseCount": 32,
+    "identity": "separate from REX; no tail, two flipper arms, two legs, single optic and opening jaw",
+    "correction": "Lengthened/slimmed legs while shortening central torso, original draft not selected",
+    "effects": "Only compact water emission in cells; long jet and projectile physics are separate runtime work",
+    "fidelity": "Original pixel-art adaptation based on references, not a 1:1 official asset or extracted model"
+  }
+}

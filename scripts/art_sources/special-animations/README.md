@@ -1,4 +1,10 @@
-# Acteurs spéciaux Side Ops — Ocelot, Otacon et REX
+# Acteurs spéciaux Side Ops — planches OpenAI
+
+Le registre couvre désormais dix acteurs (20 planches, 320 poses, 80 clips). La [vague 3.8 du 5 septembre 2026](../../../ASSET_WAVE_2026-09-05.md) ajoute Sahelanthropus, RAY, Metal Gear D, Shagohod, Pupa, Gekko et Olga Tanker, avec références, projectiles dédiés et limites de couverture. Ses prompts sont conservés par acteur dans `<id>-prompts.json` et ses calibrations exactes dans les fichiers runtime `provenance.json`.
+
+Les sections suivantes documentent la vague initiale 3.7 (Ocelot, Otacon et REX) et restent un historique de ses contrôles, pas le décompte de la vague 3.8.
+
+## Vague initiale 3.7
 
 Cette vague ajoute trois sujets avec de vraies phases OpenAI, distinctes des rigs dérivés d’une image fixe. Contrat : **6 planches runtime, 96 poses, 24 clips**, soit deux planches de 16 poses et huit actions de quatre phases par acteur. Ce n’est pas la couverture exhaustive des boss, PNJ ou véhicules de Metal Gear.
 
@@ -20,7 +26,7 @@ Python avec Pillow, depuis la racine du dépôt :
 python scripts/importSideOpsSpecialActorBoards.py --actor mgs1-revolver-ocelot --core scripts/art_sources/special-animations/mgs1-revolver-ocelot-core-openai.png --special scripts/art_sources/special-animations/mgs1-revolver-ocelot-special-openai.png
 ```
 
-La même commande s’applique à Otacon avec son identifiant et ses fichiers. `--dry-run` valide sans écrire. `--inset` vaut 3 par défaut ; `--core-inset` et `--special-inset` permettent de déclarer les marges propres aux deux sources. On ne doit jamais rogner de vrais pixels pour contourner un rejet.
+La même commande s’applique aux autres acteurs avec leur identifiant et leurs fichiers. `--dry-run` valide sans écrire. `--output-root` permet un export de préparation sur un autre disque, à recopier et vérifier avant toute intégration runtime. `--inset` vaut 3 par défaut ; `--core-inset` et `--special-inset` permettent de déclarer les marges propres aux deux sources. On ne doit jamais rogner de vrais pixels pour contourner un rejet.
 
 Les deux sources REX retenues avaient une magnification différente. Après extraction, l’ancre debout `core[0]` mesurait 244 pixels de hauteur et `special[12]` 154. La calibration retenue est donc :
 

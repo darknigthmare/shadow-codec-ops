@@ -49,15 +49,16 @@ function decode(png: Buffer, size: number): Uint8Array {
 }
 
 describe('special authored Side Ops actors', () => {
-  it('declares the exact six-sheet, 24-clip contract with independent actor identities', () => {
-    expect(SIDEOPS_SPECIAL_ACTORS).toHaveLength(3);
-    expect(SIDEOPS_SPECIAL_ACTOR_ANIMATION_SHEETS).toHaveLength(6);
-    expect(SIDEOPS_SPECIAL_ACTOR_ANIMATION_CLIPS).toHaveLength(24);
-    expect(new Set(SIDEOPS_SPECIAL_ACTOR_ANIMATION_CLIPS.map((clip) => clip.key)).size).toBe(24);
-    expect(new Set(SIDEOPS_SPECIAL_ACTOR_ANIMATION_SHEETS.map((sheet) => sheet.path)).size).toBe(6);
+  it('declares two sheets and eight clips per independently identified actor', () => {
+    expect(SIDEOPS_SPECIAL_ACTORS.length).toBeGreaterThanOrEqual(3);
+    expect(SIDEOPS_SPECIAL_ACTOR_ANIMATION_SHEETS).toHaveLength(SIDEOPS_SPECIAL_ACTORS.length * 2);
+    expect(SIDEOPS_SPECIAL_ACTOR_ANIMATION_CLIPS).toHaveLength(SIDEOPS_SPECIAL_ACTORS.length * 8);
+    expect(new Set(SIDEOPS_SPECIAL_ACTOR_ANIMATION_CLIPS.map((clip) => clip.key)).size).toBe(SIDEOPS_SPECIAL_ACTORS.length * 8);
+    expect(new Set(SIDEOPS_SPECIAL_ACTOR_ANIMATION_SHEETS.map((sheet) => sheet.path)).size).toBe(SIDEOPS_SPECIAL_ACTORS.length * 2);
+    expect(new Set(SIDEOPS_SPECIAL_ACTORS.map((actor) => actor.sourceTextureKey)).size).toBe(SIDEOPS_SPECIAL_ACTORS.length);
     for (const actor of SIDEOPS_SPECIAL_ACTORS) {
-      expect(actor.sourceFacing).toBe(actor.kind === 'machine' ? 'left' : 'right');
-      expect(actor.era).toBe('mgs1');
+      expect(['left', 'right']).toContain(actor.sourceFacing);
+      expect(actor.era.length).toBeGreaterThan(0);
       expect(new Set([...actor.states.core, ...actor.states.special]).size).toBe(8);
       for (const [board, states] of Object.entries(actor.states)) {
         expect(states).toHaveLength(4);
@@ -90,13 +91,31 @@ describe('special authored Side Ops actors', () => {
         const geometry = getSideOpsSpecialActorGeometry(actor, width, height);
         expect(geometry.width * geometry.scale).toBeCloseTo(width);
         expect(geometry.height * geometry.scale).toBeCloseTo(height);
-        expect((-actor.frameSize / 2 + geometry.offsetX + geometry.width / 2) * geometry.scale).toBeCloseTo(0);
-        expect((-actor.frameSize / 2 + geometry.offsetY + geometry.height) * geometry.scale).toBeCloseTo(height / 2);
+        expect((-actor.frameSize * geometry.originX + geometry.offsetX + geometry.width / 2) * geometry.scale).toBeCloseTo(0);
+        expect((-actor.frameSize * geometry.originY + geometry.offsetY + geometry.height) * geometry.scale).toBeCloseTo(height / 2);
       }
     }
   });
 
-  it('ships six genuine sheets with matching source provenance and distinct visible phases', () => {
+  it('fits upright and wide idle anchors without changing world bodies or per-pose scale', () => {
+    const base = getSideOpsSpecialActorDefinition('mgs1MetalGearRex')!;
+    const upright = { ...base, idleBounds: { x: 60, y: 40, width: 119, height: 200 } };
+    const wide = { ...base, idleBounds: { x: 20, y: 70, width: 216, height: 108 } };
+    for (const [actor, width, height] of [[upright, 144, 144], [wide, 160, 96]] as const) {
+      const geometry = getSideOpsSpecialActorGeometry(actor, width, height);
+      expect(geometry.width * geometry.scale).toBeCloseTo(width);
+      expect(geometry.height * geometry.scale).toBeCloseTo(height);
+      expect((-actor.frameSize * geometry.originX + actor.idleBounds.x + actor.idleBounds.width / 2) * geometry.scale).toBeCloseTo(0);
+      expect((-actor.frameSize * geometry.originY + actor.idleBounds.y + actor.idleBounds.height) * geometry.scale).toBeCloseTo(height / 2);
+    }
+    expect(getSideOpsSpecialActorGeometry(upright, 144, 144).scale).toBeCloseTo(0.72);
+    const wideScale = getSideOpsSpecialActorGeometry(wide, 160, 96).scale;
+    expect(wideScale).toBeCloseTo(160 / 216);
+    expect(wide.idleBounds.height * wideScale).toBeLessThanOrEqual(96);
+    expect(() => getSideOpsSpecialActorGeometry({ ...base, idleBounds: { x: 0, y: 0, width: 0, height: 20 } })).toThrow('Invalid idle bounds');
+  });
+
+  it('ships genuine sheets with matching source provenance and distinct visible phases', () => {
     for (const actor of SIDEOPS_SPECIAL_ACTORS) {
       const provenance = JSON.parse(readFileSync(resolve('public/sideops/special-animations', actor.id, 'provenance.json'), 'utf8'));
       expect(provenance.actorId).toBe(actor.id);
@@ -117,6 +136,7 @@ describe('special authored Side Ops actors', () => {
         for (let index = 0; index < 16; index += 1) {
           const frame = new Uint8Array(size * size * 4);
           let occupied = 0, border = 0, hiddenRgb = 0;
+          let minX: number = size, minY: number = size, maxX = -1, maxY = -1;
           for (let y = 0; y < size; y += 1) {
             for (let x = 0; x < size; x += 1) {
               const source = ((Math.floor(index / 4) * size + y) * sheetSize + index % 4 * size + x) * 4;
@@ -124,6 +144,8 @@ describe('special authored Side Ops actors', () => {
               frame.set(pixels.subarray(source, source + 4), offset);
               if (frame[offset + 3]) {
                 occupied += 1;
+                minX = Math.min(minX, x); minY = Math.min(minY, y);
+                maxX = Math.max(maxX, x); maxY = Math.max(maxY, y);
                 if (x < actor.padding || y < actor.padding || x >= size - actor.padding || y >= size - actor.padding) border += 1;
               } else if (frame[offset] || frame[offset + 1] || frame[offset + 2]) hiddenRgb += 1;
             }
@@ -131,6 +153,11 @@ describe('special authored Side Ops actors', () => {
           expect(occupied, `${sheet.textureKey}/${index}`).toBeGreaterThan(100);
           expect(border).toBe(0);
           expect(hiddenRgb).toBe(0);
+          if (sheet.board === 'core' && index === 0 && actor.idleBounds) {
+            expect(actor.idleBounds, `${actor.id}: calibrated idle anchor must match shipped pixels`).toEqual({
+              x: minX, y: minY, width: maxX - minX + 1, height: maxY - minY + 1
+            });
+          }
           hashes.push(createHash('sha256').update(frame).digest('hex'));
         }
         expect(hashes).toEqual(recorded.frameHashes);

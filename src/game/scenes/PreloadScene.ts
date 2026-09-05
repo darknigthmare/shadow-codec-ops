@@ -43,6 +43,7 @@ import { SIDEOPS_GENERATED_BACKDROP_ASSETS } from '../core/sideOpsBackdropRegist
 import { SIDEOPS_ACTOR_ANIMATION_SHEETS } from '../core/sideOpsActorAnimationRegistry';
 import { SIDEOPS_SPECIAL_ACTOR_ANIMATION_SHEETS } from '../core/sideOpsSpecialActorAnimationRegistry';
 import { SIDEOPS_TERRAIN_ASSETS } from '../core/sideOpsTerrainRegistry';
+import { SIDEOPS_BOSS_PROJECTILE_VISUALS, SIDEOPS_BOSS_PROJECTILE_CLIPS } from '../core/sideOpsBossProjectileRegistry';
 
 type RegistryFallbackShape = 'humanoid' | 'animal' | 'machine' | 'sensor' | 'projectile' | 'effect';
 
@@ -199,6 +200,9 @@ export class PreloadScene extends Phaser.Scene {
     PATRIOTS_AI_SIDEOPS_ALL_ASSETS.forEach((asset) => preloadRegistryAsset(this, asset));
     SIDEOPS_GENERATED_BACKDROP_ASSETS.forEach((asset) => this.load.image(asset.textureKey, asset.path));
     SIDEOPS_TERRAIN_ASSETS.forEach((asset) => this.load.image(asset.textureKey, asset.path));
+    SIDEOPS_BOSS_PROJECTILE_VISUALS.forEach((asset) => this.load.spritesheet(asset.textureKey, asset.path, {
+      frameWidth: asset.frameWidth, frameHeight: asset.frameHeight, endFrame: asset.frameCount - 1
+    }));
     [...SIDEOPS_ACTOR_ANIMATION_SHEETS, ...SIDEOPS_SPECIAL_ACTOR_ANIMATION_SHEETS].forEach((asset) => this.load.spritesheet(asset.textureKey, asset.path, {
       frameWidth: asset.frameWidth,
       frameHeight: asset.frameHeight,
@@ -233,6 +237,14 @@ export class PreloadScene extends Phaser.Scene {
   }
 
   create(): void {
+    for (const clip of SIDEOPS_BOSS_PROJECTILE_CLIPS) {
+      if (!this.textures.exists(clip.textureKey) || this.anims.exists(clip.key)) continue;
+      this.anims.create({
+        key: clip.key,
+        frames: this.anims.generateFrameNumbers(clip.textureKey, { start: clip.start, end: clip.end }),
+        frameRate: clip.frameRate, repeat: clip.repeat
+      });
+    }
     const graphics = this.add.graphics();
     graphics.setVisible(false);
 

@@ -177,6 +177,8 @@ def main() -> None:
     parser.add_argument('--special-scale', type=float, default=1, help='Explicit uniform scale for all 16 special poses, calibrated from upright source anchors')
     parser.add_argument('--core-anchor', type=int, default=0)
     parser.add_argument('--special-anchor', type=int, default=12)
+    parser.add_argument('--output-root', type=Path, default=ROOT / 'public' / 'sideops' / 'special-animations',
+                        help='Runtime actor directory root; allows verified staging on another disk before integration')
     parser.add_argument('--dry-run', action='store_true', help='Validate both boards without writing runtime files')
     args = parser.parse_args()
     actor = actors[args.actor]
@@ -191,7 +193,7 @@ def main() -> None:
     if args.dry_run:
         print(f'Validated {actor["id"]}: 2 sheets, 32 authored poses, 8 actions; dry-run, no files changed')
         return
-    destination = ROOT / 'public' / 'sideops' / 'special-animations' / actor['id']
+    destination = args.output_root.resolve() / actor['id']
     report = {
         'schemaVersion': 1, 'actorId': actor['id'], 'sourceTextureKey': actor['sourceTextureKey'],
         'provenance': 'openai-authored-poses', 'sourceFacing': actor['sourceFacing'],

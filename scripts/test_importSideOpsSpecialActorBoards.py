@@ -23,7 +23,11 @@ def pose_frames(width=100, height=120):
 class SpecialActorImportTests(unittest.TestCase):
     def test_manifest_keeps_otacon_unarmed_and_rex_weapon_actions_separate(self):
         actors = actor_definitions()
-        self.assertEqual(len(actors), 3)
+        self.assertEqual(set(actors), {
+            'mgs1-revolver-ocelot', 'mgs1-otacon', 'mgs1-metal-gear-rex',
+            'mgsv-sahelanthropus', 'mgs2-metal-gear-ray', 'mg2-metal-gear-d',
+            'mgs3-shagohod', 'peace-walker-pupa', 'mgs2-olga-gurlukovich', 'mgs4-gekko'
+        })
         otacon = actors['mgs1-otacon']
         self.assertNotIn('attack', otacon['states']['core'] + otacon['states']['special'])
         self.assertEqual(actors['mgs1-metal-gear-rex']['states']['core'], ['idle', 'move', 'missile', 'laser'])
