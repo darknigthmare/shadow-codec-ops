@@ -1,7 +1,8 @@
 import '../../styles/sideops.css';
 import '../../styles/sideops-gameplay.css';
 import type { Game } from 'phaser';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
+import type { EraCharacterArchiveEntry } from '../../systems/eraCharacterArchive';
 import conversationsJson from '../../data/conversations.json';
 import missionsJson from '../../data/missions.json';
 import type { ConversationDefinition } from '../../types/codec.types';
@@ -38,6 +39,8 @@ import { getCampaignLoadoutBonuses, recordCampaignSideOpsResult } from '../../sy
 import { requestDirectorSequence, subscribeDirectorRuntimeEvents } from '../../systems/directorBus';
 import { MG1_HAZARD_SEQUENCE, MG1_OUTER_HEAVEN_MISSION_ID, MG1_OUTER_HEAVEN_WORLD } from '../../game/core/mg1OuterHeavenMission';
 import { resolveSideOpsCampaignProfile, SIDEOPS_CAMPAIGN_CONVERSATIONS, SIDEOPS_CAMPAIGN_MISSIONS } from '../../game/core/sideOpsCampaign';
+
+const EraCharacterArchive = lazy(() => import('./EraCharacterArchive').then(module => ({ default: module.EraCharacterArchive })));
 
 interface SideOpsLauncherProps {
   settings: UserSettings;
@@ -120,6 +123,7 @@ export function SideOpsLauncher({ settings, onOpenCodec, onOpenBuilder }: SideOp
   const shellRef = useRef<HTMLElement | null>(null);
   const [operationsOpen, setOperationsOpen] = useState(false);
   const [tacticalDetails, setTacticalDetails] = useState(false);
+  const [characterArchiveOpen, setCharacterArchiveOpen] = useState(false);
   const [paused, setPaused] = useState(false);
   const [fullscreenError, setFullscreenError] = useState('');
   const [engineStatus, setEngineStatus] = useState<'loading' | 'ready' | 'error'>('loading');
@@ -322,6 +326,30 @@ export function SideOpsLauncher({ settings, onOpenCodec, onOpenBuilder }: SideOp
     setOperationsOpen(opening);
   }
 
+  function openCharacterArchive() {
+    if (!paused && !codecRequest?.pauseGame && !missionResult) {
+      const manager = gameRef.current?.scene;
+      let pausedScene = false;
+      for (const key of ['SideOpsScene', 'Mg1OuterHeavenScene', 'Mgs1ShadowMosesScene']) {
+        if (manager?.isActive(key)) { manager.pause(key); pausedScene = true; }
+      }
+      if (pausedScene) setPaused(true);
+    }
+    setCharacterArchiveOpen(true);
+  }
+
+  function inspectArchiveCharacter(entry: EraCharacterArchiveEntry) {
+    saveJson('sideops-archive-inspection-id', entry.id);
+    setCharacterArchiveOpen(false);
+    selectMission(`sideops_${entry.visualPackId}_recon`);
+  }
+
+  function clearArchiveInspection() {
+    saveJson('sideops-archive-inspection-id', null);
+    setCharacterArchiveOpen(false);
+    restartMission();
+  }
+
   async function toggleFullscreen() {
     try {
       if (document.fullscreenElement) await document.exitFullscreen();
@@ -347,10 +375,12 @@ export function SideOpsLauncher({ settings, onOpenCodec, onOpenBuilder }: SideOp
           <button type="button" onClick={togglePause} disabled={engineStatus !== 'ready' || Boolean(codecRequest?.pauseGame || missionResult)}>{paused ? 'Reprendre' : 'Pause'}</button>
           <button type="button" onClick={restartMission}>Recommencer</button>
           <button type="button" aria-pressed={tacticalDetails} onClick={() => setTacticalDetails(!tacticalDetails)}>Dossier tactique</button>
+          <button type="button" aria-haspopup="dialog" onClick={openCharacterArchive}>Archives PW / TPP</button>
           <button type="button" onClick={() => void toggleFullscreen()}>Plein écran</button>
         </nav>
       </div>
       {fullscreenError && <p role="status">{fullscreenError}</p>}
+      {characterArchiveOpen ? <Suspense fallback={<p role="status">Chargement des archives visuelles…</p>}><EraCharacterArchive onClose={() => setCharacterArchiveOpen(false)} onInspect={inspectArchiveCharacter} onClearInspection={clearArchiveInspection} /></Suspense> : null}
       <Panel className="sideops-info-panel">
         <StatusBadge label="CHOISIR UNE OPÉRATION" tone="success" />
         <h2>{activeMission.title}</h2>

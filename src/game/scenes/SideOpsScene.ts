@@ -51,6 +51,7 @@ import { resolveSideOpsBossProjectileVisual, resolveSideOpsBossProjectileMuzzle,
 import { getSideOpsTerrainAsset, SIDEOPS_TERRAIN_COVER_TEXTURES } from '../core/sideOpsTerrainRegistry';
 import { resolveSideOpsAuthoredIdentityPack } from '../core/sideOpsActorIdentity';
 import { resolveSideOpsBossHoverContract } from '../core/sideOpsBossLocomotion';
+import { createSideOpsArchiveInspection, type SideOpsArchiveInspection } from '../core/sideOpsArchiveInspectionRuntime';
 import {
   createSideOpsEnemyState,
   sideOpsEnemyHasLineOfSight,
@@ -368,6 +369,7 @@ function getActiveMissionProfile(): MissionProfile {
 }
 
 export class SideOpsScene extends Phaser.Scene {
+  private archiveInspection: SideOpsArchiveInspection | undefined;
   private profile: MissionProfile = SHADOW_DOCK_PROFILE;
   private campaignMission: SideOpsCampaignMission | undefined;
   private player!: Phaser.Physics.Arcade.Sprite;
@@ -551,6 +553,7 @@ export class SideOpsScene extends Phaser.Scene {
     this.bossTelegraphGraphics = this.add.graphics().setDepth(25);
 
     this.addFixedHud();
+    this.archiveInspection = createSideOpsArchiveInspection(this, this.profile.visualPackId, this.profile.start.x);
     this.offCodecResume = onGameEvent(GAME_EVENT.CODEC_RESUME, () => this.scene.resume());
     this.offMissionRestart = onGameEvent(GAME_EVENT.MISSION_RESTART, () => this.scene.restart());
     this.offDirectorDirective = onGameEvent<DirectorDirectivePayload>(GAME_EVENT.DIRECTOR_DIRECTIVE, (directive) => {
@@ -584,6 +587,7 @@ export class SideOpsScene extends Phaser.Scene {
     this.missionElapsedMs += Math.max(0, delta);
     this.inputController.update();
     this.handlePlayerInput();
+    this.archiveInspection?.update(delta, this.player.x, this.alertState === 'ALERT');
     this.refreshTacticalObstacles();
     this.handleGuardPatrol();
     this.handleBoss();

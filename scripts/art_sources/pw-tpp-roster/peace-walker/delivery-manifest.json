@@ -1,0 +1,257 @@
+{
+  "generatedAt": "2026-09-08",
+  "generator": "OpenAI built-in imagegen",
+  "pack": "peace-walker",
+  "scope": "Nine previously missing named human 2D identities plus Coldman Codec portraits. BigBoss and five existing machines preserved. Shared runtime integration owned by parent agent.",
+  "runtimeContract": {
+    "sheetSize": [
+      512,
+      512
+    ],
+    "frameSize": [
+      128,
+      128
+    ],
+    "columns": 4,
+    "rows": 4,
+    "states": [
+      "idle",
+      "move",
+      "interact",
+      "react"
+    ],
+    "framesPerState": 4,
+    "facing": "right",
+    "transparent": true,
+    "scale": "one uniform scale shared across all16poses of each character"
+  },
+  "assets": [
+    {
+      "id": "miller",
+      "idleBounds": {
+        "x": 47,
+        "y": 12,
+        "width": 38,
+        "height": 108
+      },
+      "uniquePoses": 16,
+      "source": "scripts/art_sources/pw-tpp-roster/peace-walker/miller-v2-openai.png",
+      "sourceSha256": "2433f0987c88924f0a404f75a05497672a22c47a4359b469954c81fb56832973",
+      "sheetSha256": "06c258d2e008271546391f74dea6bbad28d295930fc032007e433e80e32b9075",
+      "idleSha256": "093fdfcf6e2713b2b9dd533310aeae9ab11b086b0d9af5e38cb9f77dc2ad8b67",
+      "sheet": "/sideops/roster/peace-walker/miller.png",
+      "idle": "/sideops/roster/peace-walker/miller-idle.png",
+      "provenance": "/sideops/roster/peace-walker/miller.provenance.json"
+    },
+    {
+      "id": "paz",
+      "idleBounds": {
+        "x": 47,
+        "y": 15,
+        "width": 27,
+        "height": 105
+      },
+      "uniquePoses": 16,
+      "source": "scripts/art_sources/pw-tpp-roster/peace-walker/paz-v2-openai.png",
+      "sourceSha256": "7eb444b5703b5c0a91535abb82706e319f172a25a8d34576817c3e3173630838",
+      "sheetSha256": "177935a7e87a6a4008e757e7c4bef4dbbafcc6828cbeeaf917f39a9e1a983b56",
+      "idleSha256": "6f0d575ee1a3d6ba8181d0ab76402c5b50e699f20a1af79da5f6a888623d985e",
+      "sheet": "/sideops/roster/peace-walker/paz.png",
+      "idle": "/sideops/roster/peace-walker/paz-idle.png",
+      "provenance": "/sideops/roster/peace-walker/paz.provenance.json"
+    },
+    {
+      "id": "huey",
+      "idleBounds": {
+        "x": 18,
+        "y": 14,
+        "width": 93,
+        "height": 106
+      },
+      "uniquePoses": 16,
+      "source": "scripts/art_sources/pw-tpp-roster/peace-walker/huey-openai.png",
+      "sourceSha256": "2d7f380a9470af4474677e1365ed74a37f9a63109d25b66853e9ccbd17d88985",
+      "sheetSha256": "b690eb6c222210fc87f0a89c229f4d4252d8a3438b902d27f50ef018d6976e89",
+      "idleSha256": "cae6a4add443b43be9c98f681bb50ab8faab9dae77b5aab0ce5979a21d140a5d",
+      "sheet": "/sideops/roster/peace-walker/huey.png",
+      "idle": "/sideops/roster/peace-walker/huey-idle.png",
+      "provenance": "/sideops/roster/peace-walker/huey.provenance.json"
+    },
+    {
+      "id": "amanda",
+      "idleBounds": {
+        "x": 40,
+        "y": 11,
+        "width": 34,
+        "height": 109
+      },
+      "uniquePoses": 16,
+      "source": "scripts/art_sources/pw-tpp-roster/peace-walker/amanda-v2-openai.png",
+      "sourceSha256": "1be8eae2fb6ecc2a5659007e7a274a5c76751f548f8b560e9f1f36608fd156b7",
+      "sheetSha256": "5cc58c5f3346cbd94910bb475e8898fdfc89b2a14b846a43e1869dae6e6a3c35",
+      "idleSha256": "4c6a6ce50cf667190211e6112edf8b776854d34d5c47965c04f4dd42f87afbf2",
+      "sheet": "/sideops/roster/peace-walker/amanda.png",
+      "idle": "/sideops/roster/peace-walker/amanda-idle.png",
+      "provenance": "/sideops/roster/peace-walker/amanda.provenance.json"
+    },
+    {
+      "id": "chico",
+      "idleBounds": {
+        "x": 42,
+        "y": 17,
+        "width": 41,
+        "height": 103
+      },
+      "uniquePoses": 16,
+      "source": "scripts/art_sources/pw-tpp-roster/peace-walker/chico-openai.png",
+      "sourceSha256": "18c59ff796a997a23d47a52d57cd466692ea3aee09ebde81eb0f5db7b3c9bf53",
+      "sheetSha256": "20eef4197292e34a1022c8e139b903fb5c7cc54bb4f3358bfe57289d81940903",
+      "idleSha256": "bcf584c6a35dc874f0e72308b83b96665b17b5145ed0befdfeb3d25b4f7016fa",
+      "sheet": "/sideops/roster/peace-walker/chico.png",
+      "idle": "/sideops/roster/peace-walker/chico-idle.png",
+      "provenance": "/sideops/roster/peace-walker/chico.provenance.json"
+    },
+    {
+      "id": "cecile",
+      "idleBounds": {
+        "x": 49,
+        "y": 15,
+        "width": 33,
+        "height": 105
+      },
+      "uniquePoses": 16,
+      "source": "scripts/art_sources/pw-tpp-roster/peace-walker/cecile-openai.png",
+      "sourceSha256": "b61faab16df8b6b5bd5b363dcbd6c7d506adea7f5c9819944c28a7a5eff569ca",
+      "sheetSha256": "63cc5bfccdfed3c683faead7aa786ada941f1a9cbaa9a60528b8fc9f91e1780b",
+      "idleSha256": "c47c04c2cdf39d11bdf1ae7d33dffd79b930ed4b988d0d39b3994d958f73c671",
+      "sheet": "/sideops/roster/peace-walker/cecile.png",
+      "idle": "/sideops/roster/peace-walker/cecile-idle.png",
+      "provenance": "/sideops/roster/peace-walker/cecile.provenance.json"
+    },
+    {
+      "id": "strangelove",
+      "idleBounds": {
+        "x": 44,
+        "y": 15,
+        "width": 35,
+        "height": 105
+      },
+      "uniquePoses": 16,
+      "source": "scripts/art_sources/pw-tpp-roster/peace-walker/strangelove-openai.png",
+      "sourceSha256": "8aaf21bf8ac3c149c2ae69019e9e439e92b66cacc8b3023debda2c8618314791",
+      "sheetSha256": "78a4723ee30f893247d9251c5f235e20bfcf10b46d375d93af5506604382082d",
+      "idleSha256": "ae42c303fefb80db04f7d4b32a9d63adadc414fffd19dff19f939e212b0c8746",
+      "sheet": "/sideops/roster/peace-walker/strangelove.png",
+      "idle": "/sideops/roster/peace-walker/strangelove-idle.png",
+      "provenance": "/sideops/roster/peace-walker/strangelove.provenance.json"
+    },
+    {
+      "id": "galvez",
+      "idleBounds": {
+        "x": 46,
+        "y": 16,
+        "width": 35,
+        "height": 104
+      },
+      "uniquePoses": 16,
+      "source": "scripts/art_sources/pw-tpp-roster/peace-walker/galvez-v3-openai.png",
+      "sourceSha256": "2e131f417140bd42b6b845b09e2c51c94a2bb914e8f6353e17f0070edf7d3075",
+      "sheetSha256": "03a6661b64fa06f7e02a2301d8af30769959cf60e337a88ee7e5c6512939a203",
+      "idleSha256": "5ea3993765a3373c9722395c231eab4d0aa8c2b6da47226f001a6d3e3b2e71fc",
+      "sheet": "/sideops/roster/peace-walker/galvez.png",
+      "idle": "/sideops/roster/peace-walker/galvez-idle.png",
+      "provenance": "/sideops/roster/peace-walker/galvez.provenance.json"
+    },
+    {
+      "id": "coldman",
+      "idleBounds": {
+        "x": 43,
+        "y": 11,
+        "width": 35,
+        "height": 109
+      },
+      "uniquePoses": 16,
+      "source": "scripts/art_sources/pw-tpp-roster/peace-walker/coldman-openai.png",
+      "sourceSha256": "5a649f0385b51402f6bf1bff1400f13605ea81606f56c6ebb1b370549f30b4f2",
+      "sheetSha256": "98b1431bbbe7f25fa438b8b15ea82e5a71312d93678af52d1a7a4245b268d37c",
+      "idleSha256": "3e189009d113db5bb82b266651c9ffe3841aec15af198e1a54a11b98b71ec91a",
+      "sheet": "/sideops/roster/peace-walker/coldman.png",
+      "idle": "/sideops/roster/peace-walker/coldman-idle.png",
+      "provenance": "/sideops/roster/peace-walker/coldman.provenance.json"
+    }
+  ],
+  "portrait": {
+    "schemaVersion": 1,
+    "characterId": "coldman_pw",
+    "generator": "OpenAI built-in imagegen",
+    "generatedAt": "2026-09-08",
+    "source": {
+      "file": "scripts/art_sources/pw-tpp-roster/peace-walker/coldman-portraits-openai.png",
+      "sha256": "836064af39bf032fff161fb7e10cdbfd259ed4280f25f5bb3ff8376a8478c39b"
+    },
+    "promptSpec": "scripts/art_sources/pw-tpp-roster/peace-walker/coldman-portraits-prompts.json",
+    "processing": "Project splitCodecPortraitSheet.py: 3x2 equal cells into six512x512WebP, quality88; no portrait synthesis after generation.",
+    "expressions": [
+      {
+        "id": "neutral",
+        "path": "/portraits/peace_walker/coldman/neutral.webp",
+        "sha256": "6e25416c90e3d67cc04ee5e81db261574022cccdd9fdd9ec268614aae45c31bb"
+      },
+      {
+        "id": "serious",
+        "path": "/portraits/peace_walker/coldman/serious.webp",
+        "sha256": "0b2787794e4e0239a11c9fb2c4c3a85dcb9fafc156f1c887f8e4b6a364b4b40d"
+      },
+      {
+        "id": "warning",
+        "path": "/portraits/peace_walker/coldman/warning.webp",
+        "sha256": "7468c63bc7e45182b23d3f19422c4933e3e4942e6addb25c69d86bbcbfd5e161"
+      },
+      {
+        "id": "calm",
+        "path": "/portraits/peace_walker/coldman/calm.webp",
+        "sha256": "f5f02aa4a060363669cefaa4cda065953659304324e759a60f951f607ccee0da"
+      },
+      {
+        "id": "humor",
+        "path": "/portraits/peace_walker/coldman/humor.webp",
+        "sha256": "5e21a463575249c350be1fa588e5a823d1a8cd6bd62adcd100d041665f57b412"
+      },
+      {
+        "id": "glitch",
+        "path": "/portraits/peace_walker/coldman/glitch.webp",
+        "sha256": "9c2f0e697a7b282d703926c1bd4f59e1c1d2b107ee7dea77c4c749c0febff4bb"
+      }
+    ],
+    "referenceUrls": [
+      "https://www.konami.com/mg/history/jp/ja/mgspw",
+      "https://www.konami.com/mg/s/img/history/chara_pw/chara_10.png"
+    ],
+    "visualReview": "Six separately authored expressions inspected: bald older angular face, gray shirt, black tie/suspenders, olive-brown backdrop, consistent framing. Original fan-made interpretation; not a claim of perfect1:1 reproduction."
+  },
+  "validation": {
+    "normalizerTests": 11,
+    "existingPeaceWalkerTests": 19,
+    "authoredRuntimePoses": 144,
+    "sourceBoardsVisuallyInspected": true,
+    "duplicatesRejected": true,
+    "sourceClippingRejected": true,
+    "publicPaths": "repository-relative forward slashes; source/sheet/idle SHA verified",
+    "browserInspection": "Huey/Miller/Galvez: 512-square sheet, no physics body, uniform scale, idle alpha baseline512, real move click, mission restart and clear inspection pass; Quiet attack crops12-15 cycle."
+  },
+  "revisions": {
+    "miller": "v2 distinct contact/passing walk phases",
+    "paz": "v2 distinct contact/passing walk phases",
+    "amanda": "v2 distinct contact/passing walk phases",
+    "galvez": "v3 corrected to one red right prosthetic hand; react keeps arms down to prevent second prosthesis"
+  },
+  "limitations": [
+    "Four noncombat actions per person; not a complete playable combat animation suite.",
+    "Side-view fan-made adaptation from official full-body renders, no promise of 1:1 physical or temporal fidelity.",
+    "Four-frame gait remains stylized, not motion-capture smoothness. Pixel uniqueness alone is not visual fidelity proof.",
+    "Huey remains seated in the powered wheelchair. Chico uses childlike proportions; world scale should not be inferred from the normalized frame size.",
+    "Gálvez/Zadornov are one person, no duplicate identity; glasses were omitted because official render has none.",
+    "MammalPod and machine portraits are outside this human art delivery and handled by parent.",
+    "Authored grounding retains small inter-action vertical offsets: rendered bottoms can be2-3.5px above idle baseline. No independent per-pose recentering or scaling was applied."
+  ]
+}

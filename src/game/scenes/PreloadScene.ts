@@ -44,6 +44,7 @@ import { SIDEOPS_ACTOR_ANIMATION_SHEETS } from '../core/sideOpsActorAnimationReg
 import { SIDEOPS_SPECIAL_ACTOR_ANIMATION_SHEETS } from '../core/sideOpsSpecialActorAnimationRegistry';
 import { SIDEOPS_TERRAIN_ASSETS } from '../core/sideOpsTerrainRegistry';
 import { SIDEOPS_COMMON_PROP_ASSETS } from '../core/sideOpsCommonPropRegistry';
+import { preloadSideOpsArchiveSheets } from '../core/sideOpsArchiveInspectionRuntime';
 import { SIDEOPS_BOSS_PROJECTILE_VISUALS, SIDEOPS_BOSS_PROJECTILE_CLIPS } from '../core/sideOpsBossProjectileRegistry';
 
 type RegistryFallbackShape = 'humanoid' | 'animal' | 'machine' | 'sensor' | 'projectile' | 'effect';
@@ -210,6 +211,7 @@ export class PreloadScene extends Phaser.Scene {
       frameHeight: asset.frameHeight,
       endFrame: asset.frameCount - 1
     }));
+    preloadSideOpsArchiveSheets(this);
     MGS1_VR_ALL_ASSETS.forEach((asset) => this.load.image(asset.textureKey, asset.path));
     MGS1_VR_GAMEPLAY_ALL_ASSETS.forEach((asset) => {
       if (asset.loader === 'spritesheet') {
