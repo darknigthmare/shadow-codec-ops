@@ -3,11 +3,26 @@ import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import provenance from '../../scripts/art_sources/pw-tpp-roster/portraits/all-archive-portraits.provenance.json';
-import detailedThree from '../../scripts/art_sources/pw-tpp-roster/portraits/archive-portraits.provenance.json';
 import { getCharacterPortrait } from './codecAssetEngine';
 import { getEraCharacterArchiveEntry } from './eraCharacterArchive';
 import contacts from '../data/contacts.json';
+
+interface PortraitFileProof { path: string; sha256: string; bytes: number }
+interface PortraitSetProof {
+  characterId: string;
+  source: PortraitFileProof;
+  prompt: PortraitFileProof & { canonicalization: 'utf8-lf' };
+  outputs: PortraitFileProof[];
+}
+interface PortraitProvenance { subjects: PortraitSetProof[]; expressions: string[] }
+
+// These production-source proofs are needed by tests, not by the browser build.
+// Read them at test runtime so Vercel can omit the heavy art_sources directory.
+const readProof = (name: string): PortraitProvenance => JSON.parse(readFileSync(
+  resolve('scripts/art_sources/pw-tpp-roster/portraits', name), 'utf8'
+));
+const provenance = readProof('all-archive-portraits.provenance.json');
+const detailedThree = readProof('archive-portraits.provenance.json');
 
 function webpDimensions(buffer: Buffer): [number, number] {
   expect(buffer.subarray(0, 4).toString('ascii')).toBe('RIFF');

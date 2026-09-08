@@ -69,3 +69,5 @@ Les rendus de modèles de fans et captures secondaires utilisés pour certaines 
 - Inspection réelle Huey/Miller/Gálvez : déplacements, absence de collision, origine idle au sol, redémarrage et suppression validés. Clips Quiet frames 12–15 vérifiés ; HUD corrigé puis recontrôlé visuellement.
 
 Les preuves navigateur restent dans `G:/CodexBuild/shadowcodecops/qa/character-archive-final` et les fichiers temporaires de QA ne sont pas publiés. Cette version livre les visuels et leur inspection, pas trente nouvelles missions de combat. Les installateurs natifs de la version précédente ne sont pas présentés comme des binaires 3.10.0 ; ce lot est livré sur le web/Vercel.
+
+Le premier build Vercel a révélé que le test des portraits importait statiquement deux rapports situés dans `scripts/art_sources`, répertoire volontairement exclu du déploiement. Le test lit désormais ces preuves à son exécution : le contrôle de provenance reste complet en QA et le compilateur de production ne demande plus les sources graphiques. Les temporaires `tmp` ont été déplacés sur G: avec comparaison SHA des fichiers restants et conservation du chemin local via une jonction.
