@@ -71,6 +71,79 @@ describe('campaign progression', () => {
     expect(qualified.unlockedVrMissionIds).toContain('vr_dock_sprint_001');
   });
 
+  it('migrates new mission follow-ups from an old rewarded save without replaying changed rewards', () => {
+    const base = createDefaultCampaignProgress(campaigns);
+    const rewarded = reconcileCampaignProgress({
+      ...base,
+      evidence: { ...base.evidence, codecContactIds: ['campbell_mgs1'] }
+    }, campaigns);
+    // A serialized pre-update save already consumed the original node reward.
+    const oldSave = JSON.parse(JSON.stringify(rewarded)) as CampaignProgress;
+    const updatedDefinitions = structuredClone(campaigns);
+    const updatedNode = updatedDefinitions.flatMap(campaign => campaign.chapters.flatMap(chapter => chapter.nodes))
+      .find(node => node.id === 'legacy_campbell_briefing')!;
+    updatedNode.reward = {
+      ...updatedNode.reward,
+      xp: 9999,
+      resources: { commandPoints: 99, credits: 9999, intel: 999, supplies: 999 },
+      badges: ['SHOULD_NOT_BE_REAWARDED'],
+      unlockMissionIds: [...(updatedNode.reward.unlockMissionIds ?? []), 'new_followup_a', 'new_followup_b', 'new_followup_a']
+    };
+    updatedNode.variableEffects = [{ variable: 'test.replayedReward', operation: 'increment', value: 1 }];
+
+    const migrated = reconcileCampaignProgress(oldSave, updatedDefinitions);
+    const repeated = reconcileCampaignProgress(migrated, updatedDefinitions);
+    for (const progress of [migrated, repeated]) {
+      expect(progress.unlockedMissionIds).toContain('new_followup_a');
+      expect(progress.unlockedMissionIds).toContain('new_followup_b');
+      expect(progress.unlockedMissionIds.filter(id => id === 'new_followup_a')).toHaveLength(1);
+      expect(progress.xp).toBe(oldSave.xp);
+      expect(progress.resources).toEqual(oldSave.resources);
+      expect(progress.badges).toEqual(oldSave.badges);
+      expect(progress.variables).toEqual(oldSave.variables);
+      expect(progress.events).toEqual(oldSave.events);
+      expect(progress.claimedRewardIds).toEqual(oldSave.claimedRewardIds);
+      expect(progress.completedNodeIds).toEqual(oldSave.completedNodeIds);
+    }
+    expect(oldSave.unlockedMissionIds).not.toContain('new_followup_a');
+  });
+
+  it('reconciles only completed nodes in the active campaign and selected branch', () => {
+    const original = campaigns[0];
+    const template = original.chapters[0].nodes[0];
+    const makeNode = (id: string, optionId?: string) => ({
+      ...template,
+      id,
+      prerequisites: [],
+      condition: { type: 'badge_owned' as const, badge: 'UNMET_TEST_CONDITION' },
+      reward: { unlockMissionIds: [`${id}_followup`] },
+      ...(optionId ? { branch: { groupId: 'test_route', optionId, label: optionId } } : {})
+    });
+    const active: CampaignDefinition = {
+      ...original,
+      chapters: [{ ...original.chapters[0], nodes: [makeNode('selected', 'left'), makeNode('opposite', 'right'), makeNode('unfinished')] }]
+    };
+    const inactive: CampaignDefinition = {
+      ...original,
+      id: 'inactive_campaign',
+      chapters: [{ ...original.chapters[0], nodes: [makeNode('inactive_completed')] }]
+    };
+    const base = createDefaultCampaignProgress([active, inactive]);
+    const oldSave: CampaignProgress = {
+      ...base,
+      completedNodeIds: ['selected', 'opposite', 'inactive_completed'],
+      claimedRewardIds: ['selected', 'opposite', 'inactive_completed'],
+      branchChoices: { test_route: 'left' }
+    };
+    const migrated = reconcileCampaignProgress(oldSave, [active, inactive]);
+    expect(migrated.unlockedMissionIds).toContain('selected_followup');
+    expect(migrated.unlockedMissionIds).not.toContain('opposite_followup');
+    expect(migrated.unlockedMissionIds).not.toContain('unfinished_followup');
+    expect(migrated.unlockedMissionIds).not.toContain('inactive_completed_followup');
+    expect(migrated.events).toEqual(oldSave.events);
+    expect(migrated.xp).toBe(oldSave.xp);
+  });
+
   it('purchases permanent loadout upgrades with campaign resources', () => {
     const base = createDefaultCampaignProgress(campaigns);
     saveCampaignProgress({

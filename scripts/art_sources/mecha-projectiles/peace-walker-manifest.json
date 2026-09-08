@@ -1,0 +1,224 @@
+{
+  "generator": "OpenAI built-in imagegen",
+  "provenance": "openai-authored-phases",
+  "source": "scripts/art_sources/mecha-projectiles/peace-walker-projectiles-openai.png",
+  "sourceSha256": "2a315e47a5e10fff9611add9ad87279831cb61f4149a9c68c2c0d31272970282",
+  "promptSpec": {
+    "generatedAt": "2026-09-05",
+    "provider": "OpenAI",
+    "tool": "image_gen",
+    "prompt": "Use case: stylized-concept.\nAsset type: original fan-made pixel-art 2D combat projectile sprite sheet for a Metal Gear Solid: Peace Walker tactical game adaptation.\nGenerate exactly FOUR columns and TWO rows: eight distinct authored animation phases. Landscape sheet, perfectly orthographic side view, every projectile travels screen RIGHT. Pure solid #FF00FF magenta background. Precisely five straight cyan vertical guide lines including outer borders, and three straight cyan horizontal guide lines including outer borders. No additional grid lines. The guides separate equal-sized cells.\nRow 1: the conventional non-nuclear railgun discharge projectile used by Metal Gear ZEKE. A thin intense white-blue electromagnetic tracer with a very compact pale yellow-white point, tiny trailing ion sparks; four different time phases of the same moving shot. A compact airborne projectile, not an entire gun or a continuous beam across the cell.\nRow 2: a small conventional missile projectile for the Peace Walker AI weapon. A clearly readable gray metal pointed missile body with restrained tiny rear fins and a warm white-orange rocket exhaust directed LEFT; four authored exhaust phases. This is a stylized gameplay projectile, not a technical weapon diagram, no nuclear warhead markings.\nMatch detailed retro military pixel art with crisp edges, readable silhouettes, transparent-safe separation. In every cell keep the whole projectile and all sparks/exhaust small and centered: at least 32 source pixels of completely empty magenta from all guides; never touch or cross cell borders. Equal scale and fixed center across each row. No blur, no scenery, no characters, no weapon launcher, no captions, no numbers, no letters, no UI, no logos, no watermark. Do not add any projectile beyond the eight specified. The source references establish ZEKE as the 1974 biped and Peace Walker as a separate AI weapon; these original bitmap effects are a side-view ballistic game adaptation, not copied official artwork.",
+    "referenceUrls": [
+      "https://www.konami.com/mg/archive/ssg/advice_pw/advice_mgspw_07.html",
+      "https://www.konami.com/mg/archive/ssg/advice_pw/advice_mgspw_08.html"
+    ],
+    "description": "Original fan-made projectile phases for side-on gameplay; no official image files copied."
+  },
+  "grid": {
+    "sourceSize": [
+      1672,
+      941
+    ],
+    "xGuides": [
+      [
+        11,
+        13
+      ],
+      [
+        422,
+        424
+      ],
+      [
+        834,
+        837
+      ],
+      [
+        1247,
+        1249
+      ],
+      [
+        1658,
+        1660
+      ]
+    ],
+    "yGuides": [
+      [
+        11,
+        13
+      ],
+      [
+        468,
+        470
+      ],
+      [
+        925,
+        927
+      ]
+    ],
+    "cellRects": [
+      [
+        17,
+        17,
+        419,
+        465
+      ],
+      [
+        428,
+        17,
+        831,
+        465
+      ],
+      [
+        841,
+        17,
+        1244,
+        465
+      ],
+      [
+        1253,
+        17,
+        1655,
+        465
+      ],
+      [
+        17,
+        474,
+        419,
+        922
+      ],
+      [
+        428,
+        474,
+        831,
+        922
+      ],
+      [
+        841,
+        474,
+        1244,
+        922
+      ],
+      [
+        1253,
+        474,
+        1655,
+        922
+      ]
+    ],
+    "guideInset": 3
+  },
+  "operations": [
+    "cyan-grid crop",
+    "magenta background removal",
+    "shared row bounds",
+    "uniform nearest-neighbor scaling",
+    "RGBA atlas assembly"
+  ],
+  "authoredPhases": 8,
+  "synthesizedPhases": 0,
+  "outputs": [
+    {
+      "id": "zeke-railgun",
+      "path": "/sideops/boss-projectiles/zeke-railgun.png",
+      "width": 768,
+      "height": 64,
+      "sha256": "6b2923f4b2618f860fdafc92ed197a709f4ee1458950e5b55fece27ebdd2bc7c",
+      "sourceUnion": [
+        55,
+        196,
+        346,
+        240
+      ],
+      "uniformScale": 0.6048109965635738,
+      "normalizedSize": [
+        176,
+        27
+      ],
+      "alignment": "one shared crop and scale per row; fixed center",
+      "frameAlphaBounds": [
+        [
+          56,
+          24,
+          126,
+          39
+        ],
+        [
+          33,
+          18,
+          155,
+          45
+        ],
+        [
+          29,
+          24,
+          169,
+          43
+        ],
+        [
+          8,
+          24,
+          184,
+          41
+        ]
+      ],
+      "frameRgbaSha256": [
+        "79db2baa9c0a5534392d9b1bc7d290257778e8dcda42d5c6b9f69f41fb2b3720",
+        "0a3e17bc048bc626ded627c91f305c51f0f7b4edd0540dc32666ba6568133ad1",
+        "a03b706bc0bc23e70bb1372bc499dfcff90f96a1c5c7a406938719547b1d1501",
+        "24b928a74b7cc2973411006ce7df64bbecb1f54d649ccb5ba18a05e6f75b8567"
+      ]
+    },
+    {
+      "id": "peace-walker-missile",
+      "path": "/sideops/boss-projectiles/peace-walker-missile.png",
+      "width": 768,
+      "height": 64,
+      "sha256": "c3b7d02f0475bda9ccdc004bd9f310d2ddfa71282e0496ff57a13203ba6252ad",
+      "sourceUnion": [
+        55,
+        179,
+        317,
+        230
+      ],
+      "uniformScale": 0.6717557251908397,
+      "normalizedSize": [
+        176,
+        34
+      ],
+      "alignment": "one shared crop and scale per row; fixed center",
+      "frameAlphaBounds": [
+        [
+          44,
+          16,
+          161,
+          48
+        ],
+        [
+          21,
+          16,
+          171,
+          48
+        ],
+        [
+          15,
+          16,
+          182,
+          48
+        ],
+        [
+          8,
+          15,
+          180,
+          49
+        ]
+      ],
+      "frameRgbaSha256": [
+        "04336d1245737683419373e30d678f02a93e57e990008b6d502f2ea7a1db09ec",
+        "d171b3f6544031948e79ab9f4fb98a946b2ee0c4511ceca01a786bf496c9dce9",
+        "ca229fd9bc52537b9e9b2b8baa448f0f8d54b239606b97ab2e94191862d3cd5e",
+        "21b6b61ce42f68f4372e43239687bf0b2d4feee4da2ee99d17a65a5eb2f30dc7"
+      ]
+    }
+  ],
+  "sheetId": "peace-walker"
+}

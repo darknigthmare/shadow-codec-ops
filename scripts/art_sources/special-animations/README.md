@@ -1,8 +1,8 @@
 # Acteurs spéciaux Side Ops — planches OpenAI
 
-Le registre couvre désormais dix acteurs (20 planches, 320 poses, 80 clips). La [vague 3.8 du 5 septembre 2026](../../../ASSET_WAVE_2026-09-05.md) ajoute Sahelanthropus, RAY, Metal Gear D, Shagohod, Pupa, Gekko et Olga Tanker, avec références, projectiles dédiés et limites de couverture. Ses prompts sont conservés par acteur dans `<id>-prompts.json` et ses calibrations exactes dans les fichiers runtime `provenance.json`.
+Le registre couvre désormais quatorze acteurs (28 planches, 448 poses, 112 clips). La [vague 3.9](../../../ASSET_WAVE_3.9.0.md) ajoute Peace Walker/Basilisk, ZEKE, Chrysalis et Cocoon, avec opérations jouables, projectiles dédiés et limites de couverture. La [vague 3.8 du 5 septembre 2026](../../../ASSET_WAVE_2026-09-05.md) documente Sahelanthropus, RAY, Metal Gear D, Shagohod, Pupa, Gekko et Olga Tanker. Les prompts sont conservés par acteur dans `<id>-prompts.json` et les calibrations exactes dans les fichiers runtime `provenance.json`.
 
-Les sections suivantes documentent la vague initiale 3.7 (Ocelot, Otacon et REX) et restent un historique de ses contrôles, pas le décompte de la vague 3.8.
+Les sections suivantes documentent la vague initiale 3.7 (Ocelot, Otacon et REX) et restent un historique de ses contrôles, pas le décompte des vagues ultérieures.
 
 ## Vague initiale 3.7
 

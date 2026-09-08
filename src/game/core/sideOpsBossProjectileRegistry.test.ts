@@ -6,18 +6,20 @@ import { describe, expect, it } from 'vitest';
 import { SIDEOPS_BOSS_PROJECTILE_VISUALS, SIDEOPS_BOSS_PROJECTILE_CLIPS, resolveSideOpsBossProjectileVisual, resolveSideOpsBossProjectileMuzzle, resolveSideOpsBossProjectileVelocity } from './sideOpsBossProjectileRegistry';
 
 describe('authored mecha projectile visuals', () => {
-  it('separates the four source machines and their actual weapon signatures', () => {
+  it('separates eight source machines and their weapon signatures without replacing Pupa', () => {
     expect(SIDEOPS_BOSS_PROJECTILE_VISUALS.map((item) => [item.sourceTextureKey, item.weaponKind])).toEqual([
       ['mgsvTppSahelanthropus', 'railgun'], ['mgs2PlantMetalGearRay', 'water-cutter'],
-      ['mg2MetalGearD', 'autocannon'], ['peaceWalkerPupa', 'electric-shock']
+      ['mg2MetalGearD', 'autocannon'], ['peaceWalkerPupa', 'electric-shock'],
+      ['peaceWalkerZeke', 'railgun'], ['peaceWalkerBasilisk', 'missile'],
+      ['peaceWalkerChrysalis', 'railgun'], ['peaceWalkerCocoon', 'cannon']
     ]);
-    expect(new Set(SIDEOPS_BOSS_PROJECTILE_VISUALS.map((item) => item.textureKey)).size).toBe(4);
+    expect(new Set(SIDEOPS_BOSS_PROJECTILE_VISUALS.map((item) => item.textureKey)).size).toBe(8);
     expect(resolveSideOpsBossProjectileVisual('guard')).toBeUndefined();
     expect(resolveSideOpsBossProjectileVisual('sideops-special:mgs2-metal-gear-ray:core')).toBeUndefined();
   });
 
   it('exposes four authored flight phases per machine without fabricating beam or water physics', () => {
-    expect(SIDEOPS_BOSS_PROJECTILE_CLIPS).toHaveLength(4);
+    expect(SIDEOPS_BOSS_PROJECTILE_CLIPS).toHaveLength(8);
     for (const visual of SIDEOPS_BOSS_PROJECTILE_VISUALS) {
       const routed = resolveSideOpsBossProjectileVisual(visual.sourceTextureKey)!;
       expect(routed.clip).toMatchObject({ textureKey: visual.textureKey, start: 0, end: 3, frameRate: 12, repeat: -1 });
@@ -26,6 +28,18 @@ describe('authored mecha projectile visuals', () => {
       expect(visual.hitbox).toEqual({ width: 24, height: 8 });
       expect(visual.sourceFacing).toBe('right');
     }
+  });
+
+  it('keeps the original sheet implicit and gives the two new visuals their own row mapping', () => {
+    expect(SIDEOPS_BOSS_PROJECTILE_VISUALS.slice(0, 4).map((item) => [item.sheetId, item.row])).toEqual([
+      [undefined, 0], [undefined, 1], [undefined, 2], [undefined, 3]
+    ]);
+    expect(resolveSideOpsBossProjectileVisual('peaceWalkerZeke')).toMatchObject({
+      sheetId: 'peace-walker', row: 0, width: 48, height: 16, muzzle: { x: .5, y: -.23 }
+    });
+    expect(resolveSideOpsBossProjectileVisual('peaceWalkerBasilisk')).toMatchObject({
+      sheetId: 'peace-walker', row: 1, width: 42, height: 14, weaponKind: 'missile', muzzle: { x: .5, y: -.2 }
+    });
   });
 
   it('anchors each muzzle to the live world body center and mirrors only its horizontal offset', () => {
@@ -96,16 +110,20 @@ describe('authored mecha projectile visuals', () => {
     expect(resolveSideOpsBossProjectileVelocity(stopped, original, muzzle, target)).toBe(stopped);
   });
 
-  it('ships the exact RGBA sheet geometry and source/output provenance hashes', () => {
-    const manifestPath = resolve(process.cwd(), 'scripts/art_sources/mecha-projectiles/manifest.json');
+  it.each(['mecha', 'peace-walker', 'peace-walker-support'])('ships exact RGBA geometry and independently hashed %s provenance', sheetId => {
+    const assets = SIDEOPS_BOSS_PROJECTILE_VISUALS.filter((item) => (item.sheetId ?? 'mecha') === sheetId);
+    const filename = sheetId === 'mecha' ? 'manifest.json' : `${sheetId}-manifest.json`;
+    const manifestPath = resolve(process.cwd(), 'scripts/art_sources/mecha-projectiles', filename);
     const manifest = JSON.parse(readFileSync(manifestPath, 'utf8')) as {
-      source: string; sourceSha256: string; authoredPhases: number; synthesizedPhases: number;
+      sheetId?: string; source: string; sourceSha256: string; authoredPhases: number; synthesizedPhases: number;
       outputs: Array<{ id: string; sha256: string; frameRgbaSha256: string[]; frameAlphaBounds: number[][] }>;
     };
-    expect(manifest.authoredPhases).toBe(16);
+    expect(manifest.sheetId ?? 'mecha').toBe(sheetId);
+    expect(manifest.authoredPhases).toBe(assets.length * 4);
+    expect(manifest.outputs.map((item) => item.id)).toEqual(assets.map((item) => item.id));
     expect(manifest.synthesizedPhases).toBe(0);
     expect(createHash('sha256').update(readFileSync(resolve(process.cwd(), manifest.source))).digest('hex')).toBe(manifest.sourceSha256);
-    for (const asset of SIDEOPS_BOSS_PROJECTILE_VISUALS) {
+    for (const asset of assets) {
       const png = readFileSync(resolve(process.cwd(), 'public', asset.path.replace(/^\//, '')));
       expect(png.subarray(1, 4).toString('ascii')).toBe('PNG');
       expect(png.readUInt32BE(16)).toBe(asset.frameWidth * asset.frameCount);

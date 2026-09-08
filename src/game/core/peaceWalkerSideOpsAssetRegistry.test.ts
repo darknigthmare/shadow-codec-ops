@@ -18,6 +18,10 @@ const expectedFiles = [
   ['peace-sentinel-soldier.png', 32, 48],
   ['peace-sentinel-heavy-reinforcement.png', 40, 56],
   ['pupa.png', 128, 80],
+  ['chrysalis.png', 176, 112],
+  ['cocoon.png', 208, 144],
+  ['peace-walker.png', 176, 128],
+  ['metal-gear-zeke.png', 128, 144],
   ['peace-sentinel-tracer.png', 24, 8],
   ['metal-impact.png', 96, 24],
   ['mother-base-life-ring.png', 48, 48]
@@ -33,13 +37,13 @@ const expectedSourceFiles = [
 ] as const;
 
 describe('Peace Walker Side Ops asset registry', () => {
-  it('covers all six requested 1974 asset families', () => {
+  it('covers the 1974 roster including five distinct heavy machines', () => {
     expect(PEACE_WALKER_SIDEOPS_ENEMY_ASSETS).toHaveLength(2);
-    expect(PEACE_WALKER_SIDEOPS_BOSS_ASSETS).toHaveLength(1);
+    expect(PEACE_WALKER_SIDEOPS_BOSS_ASSETS).toHaveLength(5);
     expect(PEACE_WALKER_SIDEOPS_PROJECTILE_ASSETS).toHaveLength(1);
     expect(PEACE_WALKER_SIDEOPS_VFX_ASSETS).toHaveLength(1);
     expect(PEACE_WALKER_SIDEOPS_PROP_ASSETS).toHaveLength(1);
-    expect(PEACE_WALKER_SIDEOPS_ALL_ASSETS).toHaveLength(6);
+    expect(PEACE_WALKER_SIDEOPS_ALL_ASSETS).toHaveLength(10);
   });
 
   it('keeps every id, texture key and runtime path unique', () => {

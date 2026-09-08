@@ -2,9 +2,11 @@ import definitions from '../../data/sideopsBossProjectileVisuals.json';
 
 export interface SideOpsBossProjectileVisual {
   readonly id: string;
+  /** Omitted on the original four definitions for backward compatibility. */
+  readonly sheetId?: 'mecha' | 'peace-walker' | 'peace-walker-support';
   readonly sourceTextureKey: string;
   readonly label: string;
-  readonly weaponKind: 'railgun' | 'water-cutter' | 'autocannon' | 'electric-shock';
+  readonly weaponKind: 'railgun' | 'water-cutter' | 'autocannon' | 'electric-shock' | 'missile' | 'cannon';
   readonly palette: string;
   readonly row: number;
   readonly textureKey: string;

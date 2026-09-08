@@ -26,7 +26,8 @@ class SpecialActorImportTests(unittest.TestCase):
         self.assertEqual(set(actors), {
             'mgs1-revolver-ocelot', 'mgs1-otacon', 'mgs1-metal-gear-rex',
             'mgsv-sahelanthropus', 'mgs2-metal-gear-ray', 'mg2-metal-gear-d',
-            'mgs3-shagohod', 'peace-walker-pupa', 'mgs2-olga-gurlukovich', 'mgs4-gekko'
+            'mgs3-shagohod', 'peace-walker-pupa', 'mgs2-olga-gurlukovich', 'mgs4-gekko',
+            'peace-walker-zeke', 'peace-walker-basilisk', 'peace-walker-chrysalis', 'peace-walker-cocoon'
         })
         otacon = actors['mgs1-otacon']
         self.assertNotIn('attack', otacon['states']['core'] + otacon['states']['special'])

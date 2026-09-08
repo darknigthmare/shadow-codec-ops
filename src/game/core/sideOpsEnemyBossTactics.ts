@@ -30,6 +30,35 @@ export const SIDEOPS_BOSS_TACTICS: Record<SideOpsVisualPackId, SideOpsBossTuning
   patriots_ai: { label: 'GW simulation core', pattern: ['spread', 'precision', 'burst'], aimMs: 1100, recoveryMs: 1750, volleyCount: 3, intervalMs: 280, projectileSpeed: 430, moveSpeed: 0 }
 };
 
+/**
+ * Distinct roster identities, not replacements for the Peace Walker pack's Pupa.
+ * Konami's official PW lineup keeps the AI weapons and ZEKE distinct:
+ * https://www.konami.com/mg/archive/mgs_pw/jp/lineup/item.html
+ * Chrysalis fires from a fixed hover altitude; Cocoon moves slowly on the ground.
+ * Neither receives the shared high-speed physical-charge attack.
+ * These precision/salvo/rush cycles are original SideOps encounter adaptations,
+ * not a complete canonical moveset or a nuclear-launch simulation.
+ * A Map also guarantees unknown/inherited-looking keys fall back to their pack.
+ */
+export const SIDEOPS_BOSS_IDENTITY_TACTICS: ReadonlyMap<string, SideOpsBossTuning> = new Map([
+  ['peaceWalkerChrysalis', {
+    label: 'Chrysalis', pattern: ['precision', 'burst', 'spread'],
+    aimMs: 1500, recoveryMs: 2100, volleyCount: 3, intervalMs: 280, projectileSpeed: 460, moveSpeed: 48
+  }],
+  ['peaceWalkerCocoon', {
+    label: 'Cocoon', pattern: ['burst', 'spread', 'precision'],
+    aimMs: 1800, recoveryMs: 2500, volleyCount: 5, intervalMs: 260, projectileSpeed: 390, moveSpeed: 24
+  }],
+  ['peaceWalkerZeke', {
+    label: 'Metal Gear ZEKE', pattern: ['precision', 'burst', 'charge'],
+    aimMs: 1600, recoveryMs: 2100, volleyCount: 3, intervalMs: 320, projectileSpeed: 540, moveSpeed: 54
+  }],
+  ['peaceWalkerBasilisk', {
+    label: 'Peace Walker (Basilisk)', pattern: ['spread', 'burst', 'charge'],
+    aimMs: 1450, recoveryMs: 2300, volleyCount: 3, intervalMs: 300, projectileSpeed: 370, moveSpeed: 40
+  }]
+]);
+
 export interface SideOpsBossState {
   mode: SideOpsBossMode;
   phase: 1 | 2 | 3;
@@ -45,6 +74,8 @@ export interface SideOpsBossState {
 export interface SideOpsBossInput {
   now: number;
   packId: SideOpsVisualPackId;
+  /** Stable source texture identity, never the currently playing sheet/frame. */
+  bossTextureKey?: string;
   active: boolean;
   hp: number;
   maxHp: number;
@@ -88,7 +119,8 @@ export function createSideOpsBossState(): SideOpsBossState {
 /** Targets lock at the start of each windup so movement and cover can evade attacks. */
 export function updateSideOpsBoss(previous: SideOpsBossState, input: SideOpsBossInput): SideOpsBossDecision {
   const state = { ...previous };
-  const tuning = SIDEOPS_BOSS_TACTICS[input.packId];
+  const tuning = (input.bossTextureKey ? SIDEOPS_BOSS_IDENTITY_TACTICS.get(input.bossTextureKey) : undefined)
+    ?? SIDEOPS_BOSS_TACTICS[input.packId];
   const healthRatio = input.maxHp > 0 ? Math.max(0, input.hp) / input.maxHp : 0;
   // Phases only advance; healing or temporary armor cannot rewind the encounter.
   state.phase = Math.max(state.phase, healthRatio <= 0.3 ? 3 : healthRatio <= 0.65 ? 2 : 1) as 1 | 2 | 3;

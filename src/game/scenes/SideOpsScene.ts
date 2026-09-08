@@ -49,6 +49,8 @@ import { getSideOpsSpecialActorDefinition, type SideOpsSpecialActorState } from 
 import { getSideOpsAuthoredBossCombatContract, resolveSideOpsMechaCombatAnimation, resolveSideOpsMechaCombatPlayback } from '../core/sideOpsMechaCombatAnimation';
 import { resolveSideOpsBossProjectileVisual, resolveSideOpsBossProjectileMuzzle, resolveSideOpsBossProjectileVelocity } from '../core/sideOpsBossProjectileRegistry';
 import { getSideOpsTerrainAsset, SIDEOPS_TERRAIN_COVER_TEXTURES } from '../core/sideOpsTerrainRegistry';
+import { resolveSideOpsAuthoredIdentityPack } from '../core/sideOpsActorIdentity';
+import { resolveSideOpsBossHoverContract } from '../core/sideOpsBossLocomotion';
 import {
   createSideOpsEnemyState,
   sideOpsEnemyHasLineOfSight,
@@ -678,7 +680,8 @@ export class SideOpsScene extends Phaser.Scene {
     sprite.setData('mg1SourceTextureKey', sourceTextureKey);
     sprite.setData('mg1AnimationLock', '');
     sprite.setData('mg1AnimationPriority', 0);
-    if (role && configureAuthoredSideOpsActor(this, sprite, this.profile.visualPackId, role)) {
+    const identityPack = role ? resolveSideOpsAuthoredIdentityPack(this.profile.visualPackId, role, sourceTextureKey) : undefined;
+    if (role && identityPack && configureAuthoredSideOpsActor(this, sprite, identityPack, role)) {
       (sprite as Phaser.Physics.Arcade.Sprite).body?.updateFromGameObject();
       this.playMg1ActorLoop(sprite, 'idle');
       return;
@@ -1012,6 +1015,7 @@ export class SideOpsScene extends Phaser.Scene {
       sprite.setY(sprite.y + Math.min(...supportTops) - body.bottom);
       body.updateFromGameObject();
     }
+    this.maintainBossHover(sprite);
     sprite.setDragX(850);
     sprite.setMaxVelocity(330, 500);
     sprite.setCollideWorldBounds(true);
@@ -1293,9 +1297,26 @@ export class SideOpsScene extends Phaser.Scene {
     graphics.fillPath();
   }
 
+  private maintainBossHover(sprite: Phaser.Physics.Arcade.Sprite): void {
+    const hover = resolveSideOpsBossHoverContract(this.profile.boss.texture, this.profile.boss.y);
+    if (!hover) return;
+    const body = sprite.body as Phaser.Physics.Arcade.Body;
+    body.setAllowGravity(hover.allowGravity);
+    sprite.setVelocityY(hover.velocityY);
+    // Chrysalis alone holds its side-view flight corridor, including before
+    // activation. Synchronize Arcade history after correcting a collision drift.
+    if (sprite.y !== hover.altitude) {
+      sprite.setY(hover.altitude);
+      body.updateFromGameObject();
+      body.prev.copy(body.position);
+      body.prevFrame.copy(body.position);
+    }
+  }
+
   private handleBoss(): void {
     this.bossTelegraphGraphics.clear();
     if (!this.boss || this.boss.defeated || this.health <= 0) return;
+    this.maintainBossHover(this.boss.sprite);
 
     if (!this.boss.active && this.player.x > this.profile.completionX.bossArena) {
       this.activateBoss();
@@ -1311,7 +1332,7 @@ export class SideOpsScene extends Phaser.Scene {
     const body = boss.sprite.body as Phaser.Physics.Arcade.Body;
     const previousPhase = boss.phase;
     const decision = updateSideOpsBoss(boss.brain, {
-      now: this.time.now, packId: this.profile.visualPackId, active: boss.active,
+      now: this.time.now, packId: this.profile.visualPackId, bossTextureKey: this.profile.boss.texture, active: boss.active,
       hp: boss.hp, maxHp: boss.maxHp, x: boss.sprite.x, y: boss.sprite.y,
       playerX: this.player.x, playerY: this.player.y,
       hasLineOfSight: this.hasTacticalLineOfSight(boss.sprite.x, boss.sprite.y - 12),

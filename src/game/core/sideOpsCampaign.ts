@@ -1,4 +1,5 @@
 import contacts from '../../data/contacts.json';
+import { createPeaceWalkerHeavyOperations } from './peaceWalkerHeavyOperations';
 import type { CampaignDefinition } from '../../types/campaign.types';
 import type { ConversationDefinition, ConversationTrigger, EraId } from '../../types/codec.types';
 import type { MissionDefinition } from '../../types/mission.types';
@@ -44,6 +45,8 @@ export interface SideOpsCampaignMission {
   sectors: readonly SideOpsCampaignSector[];
   challenges: readonly SideOpsCampaignChallenge[];
   prerequisites: readonly string[];
+  /** Additive trials never revoke the historical main route's access. */
+  optional?: boolean;
 }
 
 interface ChapterDesign {
@@ -225,7 +228,11 @@ function createMission(design: ChapterDesign, order: 1 | 2): SideOpsCampaignMiss
   };
 }
 
-export const SIDEOPS_CAMPAIGN_OPERATIONS: readonly SideOpsCampaignMission[] = CHAPTERS.flatMap((chapter) => [createMission(chapter, 1), createMission(chapter, 2)]);
+const coreOperations = CHAPTERS.flatMap((chapter) => [createMission(chapter, 1), createMission(chapter, 2)]);
+export const SIDEOPS_CAMPAIGN_OPERATIONS: readonly SideOpsCampaignMission[] = [
+  ...coreOperations,
+  ...createPeaceWalkerHeavyOperations(coreOperations.find((operation) => operation.id === 'sideops_peace_walker_assault')!)
+];
 export const SIDEOPS_CAMPAIGN_MISSIONS: readonly MissionDefinition[] = SIDEOPS_CAMPAIGN_OPERATIONS.map((operation) => operation.definition);
 
 /** Mission-specific, original support text prevents cross-era narrative leaks
@@ -275,9 +282,9 @@ export function evaluateSideOpsCampaignChallenges(missionId: string, snapshot: S
 }
 
 export const SIDEOPS_CAMPAIGN_DEFINITION: CampaignDefinition = {
-  id: 'sideops_tactical_anthology', title: 'Tactical Anthology', subtitle: '24 operations / 12 theaters',
+  id: 'sideops_tactical_anthology', title: 'Tactical Anthology', subtitle: '28 operations / 12 theaters',
   description: 'Original tactical simulations across Metal Gear eras. Infiltrate, recover intelligence, master alternate routes and clear a heavy encounter in each theater.',
-  era: 'multi', author: 'Shadow Codec Ops', version: '1.0.0', source: 'built_in', published: true,
+  era: 'multi', author: 'Shadow Codec Ops', version: '1.2.0', source: 'built_in', published: true,
   briefing: { id: 'anthology_briefing', title: 'Tactical Anthology', body: 'Each theater begins with reconnaissance. Recover intelligence and extract to unlock its combat operation. Ghost, no-casualty, complete-intelligence and speed challenges reward mastery.', tone: 'briefing', confirmLabel: 'Choose an operation' },
   initialUnlocks: { missionIds: SIDEOPS_CAMPAIGN_OPERATIONS.filter((operation) => operation.order === 1).map((operation) => operation.id), vrMissionIds: [], tapeIds: [], contactIds: [], loreIds: [] },
   chapters: CHAPTERS.map((design) => {
@@ -285,14 +292,15 @@ export const SIDEOPS_CAMPAIGN_DEFINITION: CampaignDefinition = {
     return {
       id: `sideops_chapter_${design.pack}`, title: design.name, subtitle: design.location, description: design.route,
       briefing: { id: `anthology_${design.pack}_briefing`, title: design.name, body: design.route, tone: 'briefing' as const },
-      nodes: operations.map((operation) => ({
+      nodes: operations.map((operation, operationIndex) => ({
         id: `node_${operation.id}`, title: operation.definition.title, description: operation.briefing,
         module: 'sideops' as const, targetId: operation.id, era: design.era,
         prerequisites: operation.prerequisites.map((id) => `node_${id}`),
+        ...(operation.optional ? { optional: true } : {}),
         condition: { type: 'sideops_clear' as const, missionId: operation.id },
-        reward: { xp: operation.order === 1 ? 240 : 420, resources: { commandPoints: operation.order === 1 ? 2 : 4, intel: operation.order === 1 ? 3 : 2, supplies: operation.order === 1 ? 2 : 4 }, unlockMissionIds: operation.order === 1 ? [operations[1].id] : [], ...(operation.order === 2 ? { badges: [`${design.name.toUpperCase()} FIELD CERTIFIED`] } : {}) },
-        layout: { x: operation.order === 1 ? 0 : 350, y: 0 },
-        completionPresentation: { id: `${operation.id}_debrief`, title: operation.order === 1 ? 'Reconnaissance complete' : 'Theater certified', body: operation.order === 1 ? `Intelligence secured. ${operations[1].definition.title} is now available.` : `${design.name} combat operation cleared. Replay either operation to master the optional challenges.`, tone: 'debriefing' as const }
+        reward: { xp: operation.order === 1 ? 240 : 420, resources: { commandPoints: operation.order === 1 ? 2 : 4, intel: operation.order === 1 ? 3 : 2, supplies: operation.order === 1 ? 2 : 4 }, unlockMissionIds: operations.filter((candidate) => candidate.prerequisites.includes(operation.id)).map((candidate) => candidate.id), ...(operation.order === 2 ? { badges: [`${design.name.toUpperCase()} FIELD CERTIFIED`] } : {}) },
+        layout: { x: operationIndex * 350, y: operation.optional ? 140 : 0 },
+        completionPresentation: { id: `${operation.id}_debrief`, title: operation.order === 1 ? 'Reconnaissance complete' : 'Theater certified', body: operation.order === 1 ? `Intelligence secured. ${operations[1].definition.title} is now available.` : `${design.name} combat operation cleared. ${operations.filter((candidate) => candidate.prerequisites.includes(operation.id)).map((candidate) => `${candidate.definition.title} is now available. `).join('')}Replay cleared operations to master the optional challenges.`, tone: 'debriefing' as const }
       }))
     };
   })

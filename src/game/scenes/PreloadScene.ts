@@ -43,6 +43,7 @@ import { SIDEOPS_GENERATED_BACKDROP_ASSETS } from '../core/sideOpsBackdropRegist
 import { SIDEOPS_ACTOR_ANIMATION_SHEETS } from '../core/sideOpsActorAnimationRegistry';
 import { SIDEOPS_SPECIAL_ACTOR_ANIMATION_SHEETS } from '../core/sideOpsSpecialActorAnimationRegistry';
 import { SIDEOPS_TERRAIN_ASSETS } from '../core/sideOpsTerrainRegistry';
+import { SIDEOPS_COMMON_PROP_ASSETS } from '../core/sideOpsCommonPropRegistry';
 import { SIDEOPS_BOSS_PROJECTILE_VISUALS, SIDEOPS_BOSS_PROJECTILE_CLIPS } from '../core/sideOpsBossProjectileRegistry';
 
 type RegistryFallbackShape = 'humanoid' | 'animal' | 'machine' | 'sensor' | 'projectile' | 'effect';
@@ -200,6 +201,7 @@ export class PreloadScene extends Phaser.Scene {
     PATRIOTS_AI_SIDEOPS_ALL_ASSETS.forEach((asset) => preloadRegistryAsset(this, asset));
     SIDEOPS_GENERATED_BACKDROP_ASSETS.forEach((asset) => this.load.image(asset.textureKey, asset.path));
     SIDEOPS_TERRAIN_ASSETS.forEach((asset) => this.load.image(asset.textureKey, asset.path));
+    SIDEOPS_COMMON_PROP_ASSETS.forEach((asset) => this.load.image(asset.textureKey, asset.path));
     SIDEOPS_BOSS_PROJECTILE_VISUALS.forEach((asset) => this.load.spritesheet(asset.textureKey, asset.path, {
       frameWidth: asset.frameWidth, frameHeight: asset.frameHeight, endFrame: asset.frameCount - 1
     }));
@@ -372,37 +374,47 @@ export class PreloadScene extends Phaser.Scene {
     graphics.generateTexture('platform', 64, 16);
     graphics.clear();
 
-    graphics.fillStyle(0xf8f49a, 1);
-    graphics.fillRect(0, 0, 14, 10);
-    graphics.fillStyle(0x102814, 1);
-    graphics.fillRect(2, 3, 10, 2);
-    graphics.generateTexture('keycard', 14, 10);
-    graphics.clear();
+    // Original bitmap props keep the existing collision sizes. These shapes
+    // remain emergency fallbacks only if an actual image fails to load.
+    if (!this.textures.exists('keycard')) {
+      graphics.fillStyle(0xf8f49a, 1);
+      graphics.fillRect(0, 0, 14, 10);
+      graphics.fillStyle(0x102814, 1);
+      graphics.fillRect(2, 3, 10, 2);
+      graphics.generateTexture('keycard', 14, 10);
+      graphics.clear();
+    }
 
-    graphics.fillStyle(0x66ffcc, 1);
-    graphics.fillRect(0, 0, 42, 68);
-    graphics.lineStyle(2, 0x0b1f12, 1);
-    graphics.strokeRect(0, 0, 42, 68);
-    graphics.generateTexture('elevator', 42, 68);
-    graphics.clear();
+    if (!this.textures.exists('elevator')) {
+      graphics.fillStyle(0x66ffcc, 1);
+      graphics.fillRect(0, 0, 42, 68);
+      graphics.lineStyle(2, 0x0b1f12, 1);
+      graphics.strokeRect(0, 0, 42, 68);
+      graphics.generateTexture('elevator', 42, 68);
+      graphics.clear();
+    }
 
-    graphics.fillStyle(0x143f20, 1);
-    graphics.fillRect(0, 0, 34, 92);
-    graphics.lineStyle(2, 0x7cff6b, 0.85);
-    graphics.strokeRect(0, 0, 34, 92);
-    graphics.fillStyle(0xff6b6b, 1);
-    graphics.fillRect(8, 12, 18, 5);
-    graphics.generateTexture('door', 34, 92);
-    graphics.clear();
+    if (!this.textures.exists('door')) {
+      graphics.fillStyle(0x143f20, 1);
+      graphics.fillRect(0, 0, 34, 92);
+      graphics.lineStyle(2, 0x7cff6b, 0.85);
+      graphics.strokeRect(0, 0, 34, 92);
+      graphics.fillStyle(0xff6b6b, 1);
+      graphics.fillRect(8, 12, 18, 5);
+      graphics.generateTexture('door', 34, 92);
+      graphics.clear();
+    }
 
-    graphics.fillStyle(0x6aefef, 1);
-    graphics.fillRect(0, 0, 30, 20);
-    graphics.fillStyle(0x102814, 1);
-    graphics.fillRect(6, 6, 18, 8);
-    graphics.fillStyle(0x7cff6b, 1);
-    graphics.fillCircle(15, 10, 4);
-    graphics.generateTexture('cameraNode', 30, 20);
-    graphics.clear();
+    if (!this.textures.exists('cameraNode')) {
+      graphics.fillStyle(0x6aefef, 1);
+      graphics.fillRect(0, 0, 30, 20);
+      graphics.fillStyle(0x102814, 1);
+      graphics.fillRect(6, 6, 18, 8);
+      graphics.fillStyle(0x7cff6b, 1);
+      graphics.fillCircle(15, 10, 4);
+      graphics.generateTexture('cameraNode', 30, 20);
+      graphics.clear();
+    }
 
     graphics.fillStyle(0xff4f4f, 1);
     graphics.fillRect(0, 0, 8, 3);
@@ -414,29 +426,35 @@ export class PreloadScene extends Phaser.Scene {
     graphics.generateTexture('enemyBullet', 10, 4);
     graphics.clear();
 
-    graphics.fillStyle(0xd8ffd4, 1);
-    graphics.fillRect(0, 0, 18, 12);
-    graphics.lineStyle(1, 0x7cff6b, 1);
-    graphics.strokeRect(0, 0, 18, 12);
-    graphics.generateTexture('ration', 18, 12);
-    graphics.clear();
+    if (!this.textures.exists('ration')) {
+      graphics.fillStyle(0xd8ffd4, 1);
+      graphics.fillRect(0, 0, 18, 12);
+      graphics.lineStyle(1, 0x7cff6b, 1);
+      graphics.strokeRect(0, 0, 18, 12);
+      graphics.generateTexture('ration', 18, 12);
+      graphics.clear();
+    }
 
-    graphics.fillStyle(0x88a8ff, 1);
-    graphics.fillCircle(8, 8, 8);
-    graphics.lineStyle(1, 0xd8ffd4, 1);
-    graphics.strokeCircle(8, 8, 7);
-    graphics.generateTexture('chaffPickup', 16, 16);
-    graphics.clear();
+    if (!this.textures.exists('chaffPickup')) {
+      graphics.fillStyle(0x88a8ff, 1);
+      graphics.fillCircle(8, 8, 8);
+      graphics.lineStyle(1, 0xd8ffd4, 1);
+      graphics.strokeCircle(8, 8, 7);
+      graphics.generateTexture('chaffPickup', 16, 16);
+      graphics.clear();
+    }
 
 
-    graphics.fillStyle(0x9fd4ff, 1);
-    graphics.fillRect(0, 0, 20, 12);
-    graphics.fillStyle(0x102814, 1);
-    graphics.fillRect(3, 4, 14, 4);
-    graphics.lineStyle(1, 0xd8ffd4, 1);
-    graphics.strokeRect(0, 0, 20, 12);
-    graphics.generateTexture('ammoBox', 20, 12);
-    graphics.clear();
+    if (!this.textures.exists('ammoBox')) {
+      graphics.fillStyle(0x9fd4ff, 1);
+      graphics.fillRect(0, 0, 20, 12);
+      graphics.fillStyle(0x102814, 1);
+      graphics.fillRect(3, 4, 14, 4);
+      graphics.lineStyle(1, 0xd8ffd4, 1);
+      graphics.strokeRect(0, 0, 20, 12);
+      graphics.generateTexture('ammoBox', 20, 12);
+      graphics.clear();
+    }
 
 
 
@@ -472,14 +490,16 @@ export class PreloadScene extends Phaser.Scene {
       graphics.clear();
     }
 
-    graphics.fillStyle(0x7cff6b, 1);
-    graphics.fillRect(0, 0, 12, 12);
-    graphics.fillStyle(0xf8f49a, 1);
-    graphics.fillRect(3, 3, 6, 6);
-    graphics.lineStyle(1, 0xd8ffd4, 1);
-    graphics.strokeRect(0, 0, 12, 12);
-    graphics.generateTexture('secretItem', 12, 12);
-    graphics.clear();
+    if (!this.textures.exists('secretItem')) {
+      graphics.fillStyle(0x7cff6b, 1);
+      graphics.fillRect(0, 0, 12, 12);
+      graphics.fillStyle(0xf8f49a, 1);
+      graphics.fillRect(3, 3, 6, 6);
+      graphics.lineStyle(1, 0xd8ffd4, 1);
+      graphics.strokeRect(0, 0, 12, 12);
+      graphics.generateTexture('secretItem', 12, 12);
+      graphics.clear();
+    }
 
     // Procedural VR marker: readable goal fallback, never an industrial door.
     graphics.fillStyle(0x071713, 1);

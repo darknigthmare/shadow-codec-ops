@@ -28,6 +28,7 @@ function spawn(width: number, height: number, y = 456, surfaces: Surface[] = [fl
     physics: { add: { sprite: vi.fn(() => item), collider: vi.fn(), overlap: vi.fn() } },
     platforms: { getChildren: () => surfaces.map(body => ({ body })) },
     configureMg1ActorSprite: vi.fn(), resolveMg1ActorTexture: (key: string) => key,
+    maintainBossHover: vi.fn(),
     player: {}, bullets: {}, boss: undefined as unknown
   };
   (SideOpsScene.prototype as unknown as { createBoss(): void }).createBoss.call(subject);
