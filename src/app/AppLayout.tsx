@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import type { UserSettings } from '../types/theme.types';
 import { APP_VERSION } from './version';
 
-export type AppRoute = 'home' | 'campaign' | 'campaignBuilder' | 'codec' | 'director' | 'sideops' | 'vr' | 'tapes' | 'studio' | 'builder' | 'lore' | 'settings';
+export type AppRoute = 'home' | 'campaign' | 'campaignBuilder' | 'codec' | 'director' | 'sideops' | 'cqc' | 'vr' | 'tapes' | 'studio' | 'builder' | 'lore' | 'settings';
 
 const navItems: Array<{ route: AppRoute; label: string; description: string }> = [
   { route: 'home', label: 'HOME', description: 'Command overview' },
@@ -11,6 +11,7 @@ const navItems: Array<{ route: AppRoute; label: string; description: string }> =
   { route: 'codec', label: 'CODEC', description: 'Codec simulator' },
   { route: 'director', label: 'DIRECTOR', description: 'Branching Codec sequence editor and runtime' },
   { route: 'sideops', label: 'SIDE OPS', description: 'Side-scrolling missions' },
+  { route: 'cqc', label: 'CQC VERSUS', description: 'CQC Versus Legacy, duels et chroniques' },
   { route: 'vr', label: 'VR MISSIONS', description: 'Virtual training missions' },
   { route: 'tapes', label: 'TAPES', description: 'Tape and briefing archive' },
   { route: 'studio', label: 'STUDIO', description: 'Conversation editor' },

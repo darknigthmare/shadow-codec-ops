@@ -1,0 +1,553 @@
+{
+  "schema": "cqc.pass5.projectile-origin-independent-arithmetic/1",
+  "status": "passed",
+  "checks": 24,
+  "failures": 0,
+  "maximumIndependentlyRecalculatedResidualCanvasPixels": 3.489015487878944e-05,
+  "method": "Read-only rederive camera zoom from fixed groundCanvasY568 minus actual source anchor Y divided by source world muzzle/hand height, then apply one actual first-frame raw unchanged profile horizontalSpeed*facing and initialVy to source anchor. Compare to saved actual projectile canvas point; no reuse of original browser pixelResidual assertion. Grounded source fixture, 1280/390, both faces, three UIDs; no browser or test invocation.",
+  "inputSHA": [
+    {
+      "file": "/workspace/cqc-game-working/cqc-versus-v056/data/combat-profiles-v051.json",
+      "sha256": "8f8319323fa3c2da6e12b2b01bbdb3e984d37d4396f96c6c8473539c305b5d7a"
+    },
+    {
+      "file": "/workspace/cqc-pass5-projectile-browser-qa/verification.json",
+      "sha256": "062ca1ab8f3c3db2da0dd19f74c35ba61819d6b8d45e25164ee3e24ebe747d2a"
+    }
+  ],
+  "observations": [
+    {
+      "name": "origin-1280-core__fortune-1-special",
+      "facing": 1,
+      "slot": "special",
+      "actualNativeAnchorCanvas": [
+        438.0179214478624,
+        386.2409767171333
+      ],
+      "independentlyDerivedCanvasZoom": 1.061224511691502,
+      "rawOriginalProfileSpeed": 32,
+      "rawOriginalProfileInitialVy": 0,
+      "independentlyExpectedFirstMovedProjectileCanvas": [
+        471.9771058219905,
+        386.2409767171333
+      ],
+      "savedActualProjectileCanvas": [
+        471.9770812988281,
+        386.240966796875
+      ],
+      "independentlyRecalculatedResidualCanvasPixels": 2.645367683930804e-05,
+      "passed": true
+    },
+    {
+      "name": "origin-1280-core__fortune-1-super",
+      "facing": 1,
+      "slot": "super",
+      "actualNativeAnchorCanvas": [
+        438.0179214478624,
+        386.2409767171333
+      ],
+      "independentlyDerivedCanvasZoom": 1.061224511691502,
+      "rawOriginalProfileSpeed": 36,
+      "rawOriginalProfileInitialVy": 0,
+      "independentlyExpectedFirstMovedProjectileCanvas": [
+        476.2220038687565,
+        386.2409767171333
+      ],
+      "savedActualProjectileCanvas": [
+        476.2219848632813,
+        386.240966796875
+      ],
+      "independentlyRecalculatedResidualCanvasPixels": 2.1438740902565594e-05,
+      "passed": true
+    },
+    {
+      "name": "origin-1280-core__fortune--1-special",
+      "facing": -1,
+      "slot": "special",
+      "actualNativeAnchorCanvas": [
+        827.9542964994023,
+        387.2838698208165
+      ],
+      "independentlyDerivedCanvasZoom": 1.061224511691502,
+      "rawOriginalProfileSpeed": 32,
+      "rawOriginalProfileInitialVy": 0,
+      "independentlyExpectedFirstMovedProjectileCanvas": [
+        793.9951121252742,
+        387.2838698208165
+      ],
+      "savedActualProjectileCanvas": [
+        793.9951171875,
+        387.2838745117187
+      ],
+      "independentlyRecalculatedResidualCanvasPixels": 6.90149935462594e-06,
+      "passed": true
+    },
+    {
+      "name": "origin-1280-core__fortune--1-super",
+      "facing": -1,
+      "slot": "super",
+      "actualNativeAnchorCanvas": [
+        827.9542964994023,
+        387.2838698208165
+      ],
+      "independentlyDerivedCanvasZoom": 1.061224511691502,
+      "rawOriginalProfileSpeed": 36,
+      "rawOriginalProfileInitialVy": 0,
+      "independentlyExpectedFirstMovedProjectileCanvas": [
+        789.7502140785082,
+        387.2838698208165
+      ],
+      "savedActualProjectileCanvas": [
+        789.7501831054688,
+        387.2838745117187
+      ],
+      "independentlyRecalculatedResidualCanvasPixels": 3.132624674004022e-05,
+      "passed": true
+    },
+    {
+      "name": "origin-1280-core__fatman-1-special",
+      "facing": 1,
+      "slot": "special",
+      "actualNativeAnchorCanvas": [
+        440.1642446963587,
+        316.5869197522179
+      ],
+      "independentlyDerivedCanvasZoom": 1.0612245116915022,
+      "rawOriginalProfileSpeed": 18,
+      "rawOriginalProfileInitialVy": 0,
+      "independentlyExpectedFirstMovedProjectileCanvas": [
+        459.26628590680576,
+        316.5869197522179
+      ],
+      "savedActualProjectileCanvas": [
+        459.2662658691406,
+        316.5869140625
+      ],
+      "independentlyRecalculatedResidualCanvasPixels": 2.0829808305931496e-05,
+      "passed": true
+    },
+    {
+      "name": "origin-1280-core__fatman-1-super",
+      "facing": 1,
+      "slot": "super",
+      "actualNativeAnchorCanvas": [
+        430.9266317884169,
+        306.9171858965341
+      ],
+      "independentlyDerivedCanvasZoom": 1.0612245116915018,
+      "rawOriginalProfileSpeed": 7,
+      "rawOriginalProfileInitialVy": -8,
+      "independentlyExpectedFirstMovedProjectileCanvas": [
+        438.3552033702574,
+        298.4273898030021
+      ],
+      "savedActualProjectileCanvas": [
+        438.3551940917969,
+        298.4273986816406
+      ],
+      "independentlyRecalculatedResidualCanvasPixels": 1.2842120240540593e-05,
+      "passed": true
+    },
+    {
+      "name": "origin-1280-core__fatman--1-special",
+      "facing": -1,
+      "slot": "special",
+      "actualNativeAnchorCanvas": [
+        857.5062763239506,
+        335.91208312356264
+      ],
+      "independentlyDerivedCanvasZoom": 1.0612245116915018,
+      "rawOriginalProfileSpeed": 18,
+      "rawOriginalProfileInitialVy": 0,
+      "independentlyExpectedFirstMovedProjectileCanvas": [
+        838.4042351135035,
+        335.91208312356264
+      ],
+      "savedActualProjectileCanvas": [
+        838.4042358398438,
+        335.9120788574219
+      ],
+      "independentlyRecalculatedResidualCanvasPixels": 4.327531294443251e-06,
+      "passed": true
+    },
+    {
+      "name": "origin-1280-core__fatman--1-super",
+      "facing": -1,
+      "slot": "super",
+      "actualNativeAnchorCanvas": [
+        822.6872283358155,
+        329.1604346326117
+      ],
+      "independentlyDerivedCanvasZoom": 1.0612245116915018,
+      "rawOriginalProfileSpeed": 7,
+      "rawOriginalProfileInitialVy": -8,
+      "independentlyExpectedFirstMovedProjectileCanvas": [
+        815.258656753975,
+        320.67063853907973
+      ],
+      "savedActualProjectileCanvas": [
+        815.2586669921875,
+        320.670654296875
+      ],
+      "independentlyRecalculatedResidualCanvasPixels": 1.8791729776335665e-05,
+      "passed": true
+    },
+    {
+      "name": "origin-1280-core__vamp-1-special",
+      "facing": 1,
+      "slot": "special",
+      "actualNativeAnchorCanvas": [
+        413.7270941836907,
+        354.6184082958433
+      ],
+      "independentlyDerivedCanvasZoom": 1.0612245116915022,
+      "rawOriginalProfileSpeed": 13,
+      "rawOriginalProfileInitialVy": 0,
+      "independentlyExpectedFirstMovedProjectileCanvas": [
+        427.5230128356803,
+        354.6184082958433
+      ],
+      "savedActualProjectileCanvas": [
+        427.52301025390625,
+        354.618408203125
+      ],
+      "independentlyRecalculatedResidualCanvasPixels": 2.5834383700411274e-06,
+      "passed": true
+    },
+    {
+      "name": "origin-1280-core__vamp-1-specialDown",
+      "facing": 1,
+      "slot": "specialDown",
+      "actualNativeAnchorCanvas": [
+        409.64505289350114,
+        467.76380745569867
+      ],
+      "independentlyDerivedCanvasZoom": 1.0612245116915016,
+      "rawOriginalProfileSpeed": 9,
+      "rawOriginalProfileInitialVy": 0,
+      "independentlyExpectedFirstMovedProjectileCanvas": [
+        419.1960734987247,
+        467.76380745569867
+      ],
+      "savedActualProjectileCanvas": [
+        419.196044921875,
+        467.7638244628906
+      ],
+      "independentlyRecalculatedResidualCanvasPixels": 3.32547878576816e-05,
+      "passed": true
+    },
+    {
+      "name": "origin-1280-core__vamp--1-special",
+      "facing": -1,
+      "slot": "special",
+      "actualNativeAnchorCanvas": [
+        844.8211568928026,
+        356.6822042289687
+      ],
+      "independentlyDerivedCanvasZoom": 1.0612245116915022,
+      "rawOriginalProfileSpeed": 13,
+      "rawOriginalProfileInitialVy": 0,
+      "independentlyExpectedFirstMovedProjectileCanvas": [
+        831.0252382408131,
+        356.6822042289687
+      ],
+      "savedActualProjectileCanvas": [
+        831.0252075195312,
+        356.6822204589844
+      ],
+      "independentlyRecalculatedResidualCanvasPixels": 3.4744935853176656e-05,
+      "passed": true
+    },
+    {
+      "name": "origin-1280-core__vamp--1-specialDown",
+      "facing": -1,
+      "slot": "specialDown",
+      "actualNativeAnchorCanvas": [
+        870.4600514424613,
+        483.3051691552613
+      ],
+      "independentlyDerivedCanvasZoom": 1.0612245116915018,
+      "rawOriginalProfileSpeed": 9,
+      "rawOriginalProfileInitialVy": 0,
+      "independentlyExpectedFirstMovedProjectileCanvas": [
+        860.9090308372379,
+        483.3051691552613
+      ],
+      "savedActualProjectileCanvas": [
+        860.9089965820312,
+        483.30517578125
+      ],
+      "independentlyRecalculatedResidualCanvasPixels": 3.489015487878944e-05,
+      "passed": true
+    },
+    {
+      "name": "origin-390-core__fortune-1-special",
+      "facing": 1,
+      "slot": "special",
+      "actualNativeAnchorCanvas": [
+        438.0179214478624,
+        386.2409767171333
+      ],
+      "independentlyDerivedCanvasZoom": 1.061224511691502,
+      "rawOriginalProfileSpeed": 32,
+      "rawOriginalProfileInitialVy": 0,
+      "independentlyExpectedFirstMovedProjectileCanvas": [
+        471.9771058219905,
+        386.2409767171333
+      ],
+      "savedActualProjectileCanvas": [
+        471.9770812988281,
+        386.240966796875
+      ],
+      "independentlyRecalculatedResidualCanvasPixels": 2.645367683930804e-05,
+      "passed": true
+    },
+    {
+      "name": "origin-390-core__fortune-1-super",
+      "facing": 1,
+      "slot": "super",
+      "actualNativeAnchorCanvas": [
+        438.0179214478624,
+        386.2409767171333
+      ],
+      "independentlyDerivedCanvasZoom": 1.061224511691502,
+      "rawOriginalProfileSpeed": 36,
+      "rawOriginalProfileInitialVy": 0,
+      "independentlyExpectedFirstMovedProjectileCanvas": [
+        476.2220038687565,
+        386.2409767171333
+      ],
+      "savedActualProjectileCanvas": [
+        476.2219848632813,
+        386.240966796875
+      ],
+      "independentlyRecalculatedResidualCanvasPixels": 2.1438740902565594e-05,
+      "passed": true
+    },
+    {
+      "name": "origin-390-core__fortune--1-special",
+      "facing": -1,
+      "slot": "special",
+      "actualNativeAnchorCanvas": [
+        827.9542964994023,
+        387.2838698208165
+      ],
+      "independentlyDerivedCanvasZoom": 1.061224511691502,
+      "rawOriginalProfileSpeed": 32,
+      "rawOriginalProfileInitialVy": 0,
+      "independentlyExpectedFirstMovedProjectileCanvas": [
+        793.9951121252742,
+        387.2838698208165
+      ],
+      "savedActualProjectileCanvas": [
+        793.9951171875,
+        387.2838745117187
+      ],
+      "independentlyRecalculatedResidualCanvasPixels": 6.90149935462594e-06,
+      "passed": true
+    },
+    {
+      "name": "origin-390-core__fortune--1-super",
+      "facing": -1,
+      "slot": "super",
+      "actualNativeAnchorCanvas": [
+        827.9542964994023,
+        387.2838698208165
+      ],
+      "independentlyDerivedCanvasZoom": 1.061224511691502,
+      "rawOriginalProfileSpeed": 36,
+      "rawOriginalProfileInitialVy": 0,
+      "independentlyExpectedFirstMovedProjectileCanvas": [
+        789.7502140785082,
+        387.2838698208165
+      ],
+      "savedActualProjectileCanvas": [
+        789.7501831054688,
+        387.2838745117187
+      ],
+      "independentlyRecalculatedResidualCanvasPixels": 3.132624674004022e-05,
+      "passed": true
+    },
+    {
+      "name": "origin-390-core__fatman-1-special",
+      "facing": 1,
+      "slot": "special",
+      "actualNativeAnchorCanvas": [
+        440.1642446963587,
+        316.5869197522179
+      ],
+      "independentlyDerivedCanvasZoom": 1.0612245116915022,
+      "rawOriginalProfileSpeed": 18,
+      "rawOriginalProfileInitialVy": 0,
+      "independentlyExpectedFirstMovedProjectileCanvas": [
+        459.26628590680576,
+        316.5869197522179
+      ],
+      "savedActualProjectileCanvas": [
+        459.2662658691406,
+        316.5869140625
+      ],
+      "independentlyRecalculatedResidualCanvasPixels": 2.0829808305931496e-05,
+      "passed": true
+    },
+    {
+      "name": "origin-390-core__fatman-1-super",
+      "facing": 1,
+      "slot": "super",
+      "actualNativeAnchorCanvas": [
+        430.9266317884169,
+        306.9171858965341
+      ],
+      "independentlyDerivedCanvasZoom": 1.0612245116915018,
+      "rawOriginalProfileSpeed": 7,
+      "rawOriginalProfileInitialVy": -8,
+      "independentlyExpectedFirstMovedProjectileCanvas": [
+        438.3552033702574,
+        298.4273898030021
+      ],
+      "savedActualProjectileCanvas": [
+        438.3551940917969,
+        298.4273986816406
+      ],
+      "independentlyRecalculatedResidualCanvasPixels": 1.2842120240540593e-05,
+      "passed": true
+    },
+    {
+      "name": "origin-390-core__fatman--1-special",
+      "facing": -1,
+      "slot": "special",
+      "actualNativeAnchorCanvas": [
+        857.5062763239506,
+        335.91208312356264
+      ],
+      "independentlyDerivedCanvasZoom": 1.0612245116915018,
+      "rawOriginalProfileSpeed": 18,
+      "rawOriginalProfileInitialVy": 0,
+      "independentlyExpectedFirstMovedProjectileCanvas": [
+        838.4042351135035,
+        335.91208312356264
+      ],
+      "savedActualProjectileCanvas": [
+        838.4042358398438,
+        335.9120788574219
+      ],
+      "independentlyRecalculatedResidualCanvasPixels": 4.327531294443251e-06,
+      "passed": true
+    },
+    {
+      "name": "origin-390-core__fatman--1-super",
+      "facing": -1,
+      "slot": "super",
+      "actualNativeAnchorCanvas": [
+        822.6872283358155,
+        329.1604346326117
+      ],
+      "independentlyDerivedCanvasZoom": 1.0612245116915018,
+      "rawOriginalProfileSpeed": 7,
+      "rawOriginalProfileInitialVy": -8,
+      "independentlyExpectedFirstMovedProjectileCanvas": [
+        815.258656753975,
+        320.67063853907973
+      ],
+      "savedActualProjectileCanvas": [
+        815.2586669921875,
+        320.670654296875
+      ],
+      "independentlyRecalculatedResidualCanvasPixels": 1.8791729776335665e-05,
+      "passed": true
+    },
+    {
+      "name": "origin-390-core__vamp-1-special",
+      "facing": 1,
+      "slot": "special",
+      "actualNativeAnchorCanvas": [
+        413.7270941836907,
+        354.6184082958433
+      ],
+      "independentlyDerivedCanvasZoom": 1.0612245116915022,
+      "rawOriginalProfileSpeed": 13,
+      "rawOriginalProfileInitialVy": 0,
+      "independentlyExpectedFirstMovedProjectileCanvas": [
+        427.5230128356803,
+        354.6184082958433
+      ],
+      "savedActualProjectileCanvas": [
+        427.52301025390625,
+        354.618408203125
+      ],
+      "independentlyRecalculatedResidualCanvasPixels": 2.5834383700411274e-06,
+      "passed": true
+    },
+    {
+      "name": "origin-390-core__vamp-1-specialDown",
+      "facing": 1,
+      "slot": "specialDown",
+      "actualNativeAnchorCanvas": [
+        409.64505289350114,
+        467.76380745569867
+      ],
+      "independentlyDerivedCanvasZoom": 1.0612245116915016,
+      "rawOriginalProfileSpeed": 9,
+      "rawOriginalProfileInitialVy": 0,
+      "independentlyExpectedFirstMovedProjectileCanvas": [
+        419.1960734987247,
+        467.76380745569867
+      ],
+      "savedActualProjectileCanvas": [
+        419.196044921875,
+        467.7638244628906
+      ],
+      "independentlyRecalculatedResidualCanvasPixels": 3.32547878576816e-05,
+      "passed": true
+    },
+    {
+      "name": "origin-390-core__vamp--1-special",
+      "facing": -1,
+      "slot": "special",
+      "actualNativeAnchorCanvas": [
+        844.8211568928026,
+        356.6822042289687
+      ],
+      "independentlyDerivedCanvasZoom": 1.0612245116915022,
+      "rawOriginalProfileSpeed": 13,
+      "rawOriginalProfileInitialVy": 0,
+      "independentlyExpectedFirstMovedProjectileCanvas": [
+        831.0252382408131,
+        356.6822042289687
+      ],
+      "savedActualProjectileCanvas": [
+        831.0252075195312,
+        356.6822204589844
+      ],
+      "independentlyRecalculatedResidualCanvasPixels": 3.4744935853176656e-05,
+      "passed": true
+    },
+    {
+      "name": "origin-390-core__vamp--1-specialDown",
+      "facing": -1,
+      "slot": "specialDown",
+      "actualNativeAnchorCanvas": [
+        870.4600514424613,
+        483.3051691552613
+      ],
+      "independentlyDerivedCanvasZoom": 1.0612245116915018,
+      "rawOriginalProfileSpeed": 9,
+      "rawOriginalProfileInitialVy": 0,
+      "independentlyExpectedFirstMovedProjectileCanvas": [
+        860.9090308372379,
+        483.3051691552613
+      ],
+      "savedActualProjectileCanvas": [
+        860.9089965820312,
+        483.30517578125
+      ],
+      "independentlyRecalculatedResidualCanvasPixels": 3.489015487878944e-05,
+      "passed": true
+    }
+  ],
+  "limitations": [
+    "Saved browser source anchors/projectile canvas coordinates are inputs, not a fresh independent browser capture.",
+    "This independent kinematic check assumes the existing fixture is grounded at568 and records first moved projectile frame, confirmed by current browser verification records/screenshots.",
+    "Floating32bit versus double canvas rounding causes up to0.000035worldCanvas pixels residual; not mobile CSS precision or source-exact PS2 fidelity."
+  ]
+}

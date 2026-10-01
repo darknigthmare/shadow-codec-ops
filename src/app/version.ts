@@ -1,1 +1,3 @@
-export const APP_VERSION = '3.9.0';
+import packageMetadata from '../../package.json';
+
+export const APP_VERSION = packageMetadata.version;

@@ -1,6 +1,48 @@
-# Shadow Codec Ops - v3.7.0
+# Shadow Codec Ops - v3.10.0
 
-## Dedicated Operations — décors, acteurs et fiabilité
+## CQC — continuation PASS5 du 1er octobre 2026
+
+Fortune, Fatman, Vamp et Solidus MGS2 ajoutent **24 PNG natifs et 288 poses**, avec deux orientations indépendantes. Total : **18 ensembles /108 PNG /1296 poses**, dont l’OC PARALLAXE. Les couteaux de Vamp et les C4 de Fatman utilisent des images natives. Douze tableaux terminent Jungle Evil et Night Fright MG2 : **474 peintures /79 récits complets**, avec les textes et routes antérieurs conservés. Les 30 stages restent conservés. Le même contenu est disponible dans l’onglet CQC VERSUS et à `/cqc/index.html`. Objectif 1:1 au mieux, verdict `closest_supported` avec preuves et limites. Lire [les notes PASS5](docs/REPRISE_CQC_PASS5_2026-10-01.md).
+
+
+## CQC — continuation PASS4 du 1er octobre 2026
+
+Bloody Brad et Fire Trooper MSX2, Sniper Wolf et Psycho Mantis PS1 : **14 ensembles natifs /84 PNG /1008 poses**, avec PARALLAXE. Douze tableaux terminent Dirty Duck et le Gray Fox humain MG1, dont le portrait est corrigé : **462 tableaux /77 récits**. Mantis utilise trois objets de son combat original ; Wolf dépense une cartouche pour son super PSG1. **30 stages /123 plans** restent intégrés et inchangés. [Guide, commandes et limites](docs/CQC_PASS4_2026-10-01.md). Les versions précédentes sont conservées ci-dessous.
+
+## CQC — continuation PASS3 du 1er octobre 2026
+
+Meryl, Liquid et Gray Fox MGS1 PS1, plus le jeune Ocelot MGS3 PS2 : **10 ensembles natifs /60 PNG /720 poses** avec PARALLAXE. Les récits de Bloody Brad et Fire Trooper ajoutent12tableaux : **450 peintures complètes /75 récits**. Les30stages /123plans de parallaxe restent intégrés. [Guide et limites de fidélité](docs/CQC_PASS3_2026-10-01.md). Les versions et comptes historiques ci-dessous restent préservés.
+
+## État de reprise — 1er octobre 2026
+
+Le dernier lot de sources retrouvé est la **3.10.0**, sur la branche [`codex/add-missing-character-art`](https://github.com/darknigthmare/shadow-codec-ops/tree/codex/add-missing-character-art), commit [`eb8a791`](https://github.com/darknigthmare/shadow-codec-ops/commit/eb8a791f1c559da92fd940a36ffb06f8e01bd70e). La branche `main` ne décrit pas ce dernier lot.
+
+- [Dépôt GitHub](https://github.com/darknigthmare/shadow-codec-ops)
+- [Application Vercel](https://shadow-codec-ops.vercel.app) et [projet Vercel](https://vercel.com/darknigthmares-projects/shadow-codec-ops)
+- [Feuille de route actualisée](PROJECT_ROADMAP.md)
+- [Rapport de récupération et validation de la reprise](RECOVERY_REPORT_2026-10-01.md)
+- [Exigence de fidélité aux univers : cible 1:1 et références exactes](UNIVERSE_FIDELITY_REQUIREMENTS.md)
+- [CQC Versus Legacy : onglet intégré et lancement indépendant](docs/CQC_INTEGRATION.md)
+
+**CQC VERSUS** ouvre désormais le jeu CQC dans son propre module, chargé à la demande. Le lancement indépendant est disponible depuis cet onglet et à `/cqc/index.html` ; les deux vues web partagent la progression CQC, avec des clés distinctes des sauvegardes Shadow. Le paquet autonome complet reste la source de travail pour CQC. Les fichiers utilisés pour jouer sont synchronisés et vérifiés dans `public/cqc/`, sans embarquer les conversations privées ni les archives de production.
+
+Side Ops comprend **28 opérations de campagne sur 12 packs** : les 24 simulations Tactical Anthology d'origine et quatre essais Peace Walker (Basilisk, ZEKE, Chrysalis et Cocoon). Les scènes dédiées MG1/MGS1 et les modes VR conservent leurs propres contrats. Le registre des acteurs spéciaux contient 14 identités avec 28 planches ; les six objets communs acceptés sont chargés, tandis que la porte et l'ascenseur restent procéduraux et différés.
+
+**Archives PW / TPP** contient **40 dossiers**, dont 16 Peace Walker et 24 The Phantom Pain. Les visuels et l'inspection en 2D sont disponibles ; les trente nouveaux corps n'ajoutent pas trente missions, IA de compagnon ou combats. Quiet, Man on Fire, Eli, D-Walker, Walker Gear et les soutiens de ce registre ne sont donc plus des visuels absents, mais leur présence dans une archive ne vaut pas une intégration au combat.
+
+Les rapports du 8 septembre 2026 se lisent dans cet ordre : [audit initial de couverture](ASSET_COVERAGE_AUDIT_2026-09-08.md), [livraison 3.9.0](ASSET_WAVE_3.9.0.md), puis [livraison 3.10.0](ASSET_WAVE_3.10.0.md). L'audit initial est un **instantané antérieur aux corrections** : ses deux PNG ZEKE/Basilisk manquants, sa calibration, son ancien roster et son risque d'identité dans le Builder ont été traités par la 3.9. Les preuves et résultats historiques appartiennent aux rapports correspondants ; ils ne constituent pas une nouvelle recette du 1er octobre. La 3.10 est un lot web ; les installateurs Windows 3.9 ne sont pas des binaires 3.10.
+
+## Travaux restants confirmés dans les sources
+
+- Produire une porte 34 × 92 et un ascenseur 42 × 68 qui passent les contrôles de proportions, puis remplacer leurs secours procéduraux sans modifier les collisions.
+- Remplacer les animations historiques MG1/MGS1 encore dérivées d'images fixes, ainsi que les projectiles et effets encore procéduraux, en préservant les comportements des scènes dédiées.
+- Compléter les corps et rencontres absents des autres registres : MG2 (Holly, Gustava, Kio Marv, Madnar, Gray Fox, Big Boss), MGS2 (soutiens, Pliskin, Dead Cell, Solidus, RAY prototype Tanker), MGS3 (soutiens, The Boss, Cobra, Volgin, Ocelot) et MGS4 (Beauty and the Beast, Vamp, Liquid Ocelot, Raiden, alliés, Mk. II/III).
+- Pour Peace Walker / TPP, distinguer les visuels d'archive déjà livrés des comportements de jeu restant à définir ; les variantes, armements et attaques secondaires des machines ne sont pas exhaustifs.
+- Enrichir les props, décors, interactions et VFX propres à chaque jeu selon un roster explicite. Les épisodes supplémentaires demandent leur propre contrat ; les douze packs ne couvrent pas toute la franchise.
+
+L'historique des versions ci-dessous est conservé. Ses anciens comptes et annonces de prochaine passe décrivent leur version d'origine ; l'état de reprise ci-dessus fait référence au dernier lot retrouvé.
+
+## Historique v3.7.0 — Dedicated Operations, décors, acteurs et fiabilité
 
 Les scènes dédiées MG1 et MGS1 utilisent douze nouveaux panoramas intérieurs OpenAI, sélectionnés par secteur, et les terrains/props déjà produits. Les routes physiques d’origine sont conservées, avec trois marches ajoutées pour rendre CARD1 et l’archive REX accessibles au saut. Les PNJ MGS1 sont posés sur les véritables supports physiques.
 
@@ -12,9 +54,9 @@ Ground Zeroes utilise désormais les portraits et identités Miller/Morpho de 19
 
 Sources et contrats : [animations spécialisées](scripts/art_sources/special-animations/README.md), [intérieurs dédiés](scripts/art_sources/dedicated-interiors/README.md), [portraits Ground Zeroes](scripts/art_sources/all-eras-codec/GROUND_ZEROES.md).
 
-## Tactical Anthology — 5 septembre 2026
+## Historique v3.6.0 — Tactical Anthology, 5 septembre 2026
 
-Le mode Side Ops propose maintenant 24 simulations tactiques originales sur douze époques : reconnaissance et assaut, routes hautes/basses, renseignements, ravitaillement et extraction. Les gardes utilisent les couverts, enquêtent sur les bruits et le dernier contact connu, visent avant de tirer et rechargent ; les rencontres lourdes annoncent leurs attaques.
+Dans cette version, le mode Side Ops proposait 24 simulations tactiques originales sur douze époques : reconnaissance et assaut, routes hautes/basses, renseignements, ravitaillement et extraction. Les gardes utilisent les couverts, enquêtent sur les bruits et le dernier contact connu, visent avant de tirer et rechargent ; les rencontres lourdes annoncent leurs attaques.
 
 La nouvelle série OpenAI comprend 72 planches d’animation (1 152 poses, trois rôles par époque) et 24 matériaux de terrain. L’interface privilégie le jeu, avec pause réelle, choix d’opération suspendu, plein écran et dossier repliable. Le chronomètre mesure le temps actif, y compris dans les scènes dédiées MG1/MGS1.
 
@@ -126,7 +168,9 @@ Base de projet privée pour un **simulateur Codec tactique** avec une campagne i
 
 ## Version actuelle
 
-`2.6.0` — **Passe Codec 4 : Radio Scan & Signal Intelligence**.
+`3.10.0` — **Archives Peace Walker / The Phantom Pain**, après les machines et objets Side Ops de la 3.9. Voir l'état de reprise en tête de document.
+
+Repère historique conservé : `2.6.0` — **Passe Codec 4 : Radio Scan & Signal Intelligence**. La liste détaillée ci-dessous provient de cette étape et des passes ajoutées ensuite ; ses comptes historiques ne remplacent pas ceux du lot 3.10.
 
 ## Contenu actuel
 

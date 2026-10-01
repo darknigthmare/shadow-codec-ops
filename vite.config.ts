@@ -44,13 +44,26 @@ export default defineConfig({
           { name: 'Codec Simulator', short_name: 'Codec', url: '/?module=codec', icons: [{ src: 'pwa-192x192.png', sizes: '192x192' }] },
           { name: 'Codec Director', short_name: 'Director', url: '/?module=director', icons: [{ src: 'pwa-192x192.png', sizes: '192x192' }] },
           { name: 'Side Ops', short_name: 'Side Ops', url: '/?module=sideops', icons: [{ src: 'pwa-192x192.png', sizes: '192x192' }] },
+          { name: 'CQC Versus Legacy', short_name: 'CQC Versus', url: '/?module=cqc', icons: [{ src: 'pwa-192x192.png', sizes: '192x192' }] },
           { name: 'VR Missions', short_name: 'VR', url: '/?module=vr', icons: [{ src: 'pwa-192x192.png', sizes: '192x192' }] },
           { name: 'Mission Builder', short_name: 'Builder', url: '/?module=builder', icons: [{ src: 'pwa-192x192.png', sizes: '192x192' }] }
         ]
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,json,png,webp,svg,ico,woff2}'],
+        globIgnores: ['cqc/**'],
         navigateFallback: 'index.html',
+        navigateFallbackDenylist: [/^\/cqc(?:\/|$)/],
+        runtimeCaching: [{
+          urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.startsWith('/cqc/'),
+          handler: 'NetworkFirst',
+          options: {
+            cacheName: 'cqc-runtime',
+            networkTimeoutSeconds: 5,
+            cacheableResponse: { statuses: [200] },
+            expiration: { maxEntries: 300, maxAgeSeconds: 30 * 24 * 60 * 60 }
+          }
+        }],
         cleanupOutdatedCaches: true,
         clientsClaim: true,
         skipWaiting: false,

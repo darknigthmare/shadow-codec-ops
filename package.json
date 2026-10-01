@@ -16,9 +16,11 @@
     "tauri:icon": "tauri icon app-icon.png",
     "test": "vitest run --no-isolate --pool=threads --maxWorkers=1 --no-file-parallelism --reporter=default",
     "test:watch": "vitest",
-    "qa": "npm run lint && npm run test && npm run build && npm run pwa:check",
+    "qa": "npm run cqc:check && npm run lint && npm run test && npm run build && npm run pwa:check",
     "pwa:preview": "npm run build && vite preview --host 0.0.0.0",
-    "pwa:check": "node scripts/check-pwa.mjs"
+    "pwa:check": "node scripts/check-pwa.mjs",
+    "cqc:sync": "node scripts/sync-cqc-runtime.mjs",
+    "cqc:check": "node scripts/sync-cqc-runtime.mjs --verify"
   },
   "dependencies": {
     "@tauri-apps/api": "^2.11.1",

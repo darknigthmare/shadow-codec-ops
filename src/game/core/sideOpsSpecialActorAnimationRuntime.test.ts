@@ -1,7 +1,13 @@
 import type Phaser from 'phaser';
-import { describe, expect, it, vi } from 'vitest';
+import { afterAll, describe, expect, it, vi } from 'vitest';
 
 interface SpriteSurface { x: number; y: number; scaleX: number; scaleY: number; frameSize: number; originX: number; originY: number }
+
+vi.hoisted(() => {
+  // Other scene tests import this runtime with a lighter Phaser mock. The
+  // shared worker must load it again with this test's physical body doubles.
+  vi.resetModules();
+});
 
 const { StaticBody } = vi.hoisted(() => ({
   StaticBody: class {
@@ -106,6 +112,11 @@ class Sprite implements SpriteSurface {
 
 const asSprite = (sprite: Sprite) => sprite as unknown as Phaser.GameObjects.Sprite;
 const loadedScene = { textures: { exists: () => true } } as unknown as Phaser.Scene;
+
+afterAll(() => {
+  vi.doUnmock('phaser');
+  vi.resetModules();
+});
 
 describe('special actor runtime geometry and fallback', () => {
   it('does not mutate a sprite until both authored source boards are available', () => {

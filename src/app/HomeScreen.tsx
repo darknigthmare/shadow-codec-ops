@@ -41,6 +41,9 @@ export function HomeScreen({ onRouteChange, settings }: HomeScreenProps) {
           <button className="primary-action secondary" type="button" onClick={() => onRouteChange('sideops')}>
             LAUNCH SIDE OPS
           </button>
+          <button className="primary-action secondary" type="button" onClick={() => onRouteChange('cqc')}>
+            LAUNCH CQC VERSUS
+          </button>
           <button className="primary-action secondary" type="button" onClick={() => onRouteChange('builder')}>
             OPEN MISSION BUILDER
           </button>
@@ -64,6 +67,7 @@ export function HomeScreen({ onRouteChange, settings }: HomeScreenProps) {
           <StatusBadge label="CODEC CORE FIDELITY ONLINE" tone="success" />
           <StatusBadge label="CODEC DIRECTOR ONLINE" tone="success" />
           <StatusBadge label="SIDE OPS ALERT CORE READY" tone="warning" />
+          <StatusBadge label="CQC VERSUS ONLINE" tone="success" />
           <StatusBadge label="VISUAL PACKS ONLINE" tone="success" />
           <StatusBadge label="VR MISSIONS ONLINE" tone="success" />
           <StatusBadge label="CONVERSATION STUDIO ONLINE" tone="success" />
