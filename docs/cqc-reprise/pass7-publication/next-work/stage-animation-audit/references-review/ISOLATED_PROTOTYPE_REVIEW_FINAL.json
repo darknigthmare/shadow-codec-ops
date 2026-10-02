@@ -1,0 +1,129 @@
+{
+  "schema": "cqc.isolated-stage-prototype-independent-corrections-review/1",
+  "createdAt": "2026-10-02T03:43:39.523956+00:00",
+  "reviewer": "/root/pass7_disk_preservation/existing_stage_reference_review",
+  "status": "accepted_isolated_analytical_only",
+  "scope": "Read-only verification of two requested corrections, their three new disable cases and final report identity. No independent browser/raster run.",
+  "productionWrites": false,
+  "productionFilesReviewedForChanges": false,
+  "browserVerified": false,
+  "assertions": 8,
+  "failed": 0,
+  "findings": [],
+  "priorFindingsResolved": [
+    "README selected-pixel total corrected from1933 to1934.",
+    "Prototype now returns zero for options.animate===false, including the renderer-normalized option."
+  ],
+  "inputPins": {
+    "README.md": {
+      "path": "/workspace/cqc-next-stage-animation-audit/README.md",
+      "bytes": 7645,
+      "sha256": "1c4fb1aff4f5c50657a076d16090cf391d0b545d4b4b705c69670b83fb5ee6d6"
+    },
+    "luminance-study.js": {
+      "path": "/workspace/cqc-next-stage-animation-audit/luminance-study.js",
+      "bytes": 3703,
+      "sha256": "9f4e6d9b97bf8d545544a384bda3b7772286a96800341fba0d1be9bf41c9cbbb"
+    },
+    "PROTOTYPE_CONFIG.json": {
+      "path": "/workspace/cqc-next-stage-animation-audit/PROTOTYPE_CONFIG.json",
+      "bytes": 9331,
+      "sha256": "8f5e97edd2b02b6f459384763c7f184d529d7fa05dd38b47508b6d14b7e44f12"
+    },
+    "ANALYTICAL_VERIFICATION.final.json": {
+      "path": "/workspace/cqc-next-stage-animation-audit/ANALYTICAL_VERIFICATION.final.json",
+      "bytes": 110650,
+      "sha256": "ad55b6ea34c83b6371293f0525dca486a3de30bac27e669f0c3d575803881637"
+    },
+    "ANALYTICAL_VERIFICATION.json": {
+      "path": "/workspace/cqc-next-stage-animation-audit/ANALYTICAL_VERIFICATION.json",
+      "bytes": 110083,
+      "sha256": "a9cd884bce533851631b715165a0790865d6dbb4eeb52dbf47bbd80b83fbfcc0"
+    }
+  },
+  "checks": [
+    {
+      "name": "README_corrected_selected_pixels",
+      "passed": true,
+      "evidence": {
+        "selectedPixels": 1934,
+        "rectanglePixels": 3267
+      }
+    },
+    {
+      "name": "prototype_honors_normalized_animate_false",
+      "passed": true,
+      "evidence": {
+        "moduleLine": 57
+      }
+    },
+    {
+      "name": "three_stage_normalized_disable_cases_pass",
+      "passed": true,
+      "evidence": [
+        {
+          "name": "prototype_zero_draw/outer_heaven/normalized_animate_off",
+          "passed": true,
+          "evidence": {
+            "returnedDraws": 0,
+            "traceLength": 0
+          }
+        },
+        {
+          "name": "prototype_zero_draw/zanzibar/normalized_animate_off",
+          "passed": true,
+          "evidence": {
+            "returnedDraws": 0,
+            "traceLength": 0
+          }
+        },
+        {
+          "name": "prototype_zero_draw/arsenal_corridor/normalized_animate_off",
+          "passed": true,
+          "evidence": {
+            "returnedDraws": 0,
+            "traceLength": 0
+          }
+        }
+      ]
+    },
+    {
+      "name": "final_analytical_report_138_pass",
+      "passed": true,
+      "evidence": {
+        "assertions": 138,
+        "failed": 0
+      }
+    },
+    {
+      "name": "initial_135_report_preserved",
+      "passed": true,
+      "evidence": {
+        "path": "/workspace/cqc-next-stage-animation-audit/ANALYTICAL_VERIFICATION.json",
+        "bytes": 110083,
+        "sha256": "a9cd884bce533851631b715165a0790865d6dbb4eeb52dbf47bbd80b83fbfcc0"
+      }
+    },
+    {
+      "name": "README_links_final_and_retains_initial_qualification",
+      "passed": true,
+      "evidence": {
+        "linkedFinalReport": "ANALYTICAL_VERIFICATION.final.json"
+      }
+    },
+    {
+      "name": "browser_scope_stays_explicitly_unverified",
+      "passed": true,
+      "evidence": {
+        "browserVerified": false
+      }
+    },
+    {
+      "name": "review_input_bytes_stable",
+      "passed": true,
+      "evidence": {
+        "pinnedFiles": 5
+      }
+    }
+  ]
+}

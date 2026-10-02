@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Étude des trois ambiances CQC</title>
+<style>
+html { color-scheme: dark; background:#0a1110; color:#c9ddce; font:15px system-ui; }
+body { max-width:1280px; margin:24px auto; padding:0 16px; }
+h1 { font-size:24px; } p { max-width:900px; line-height:1.5; }
+.controls { display:flex; gap:20px; flex-wrap:wrap; margin:18px 0; align-items:center; }
+label { display:flex; gap:8px; align-items:center; } select { padding:7px; }
+canvas { display:block; width:100%; aspect-ratio:16/9; background:#050b09; }
+output { font-family:monospace; } .note { color:#a1baa8; }
+</style>
+<h1>Étude isolée des ambiances</h1>
+<p>Les quatre plans actuels restent en place. Cette étude module uniquement les pixels rouges,
+cyan ou ocre déjà présents : cadence d’auteur au plus proche, sans preuve temporelle 1:1.
+Aucune intégration au jeu publié. Les préférences de mouvement réduit sont respectées.</p>
+<div class="controls">
+  <label>Stage <select id="stage">
+    <option value="outer_heaven">Outer Heaven — centres rouges</option>
+    <option value="arsenal_corridor">Arsenal — lampes cyan</option>
+    <option value="zanzibar">Zanzibar — marques ocre, option exploratoire</option>
+  </select></label>
+  <label><input type="checkbox" id="adaptation">Prévisualiser la modulation</label>
+  <label>Caméra <input type="range" id="camera" min="-220" max="220" value="0"></label>
+  <label>Zoom <input type="range" id="zoom" min="0.78" max="1.08" step="0.01" value="0.78"></label>
+  <output id="status">Chargement…</output>
+</div>
+<canvas id="canvas" width="1280" height="720"></canvas>
+<p class="note" id="qualification"></p>
+<script src="../cqc-game-working/cqc-versus-v056/src/cqc-stage-layers.js"></script>
+<script src="luminance-study.js"></script>
+<script>
+(async function () {
+  const root = '../cqc-game-working/cqc-versus-v056/';
+  const loadJSON = async path => { const r = await fetch(path); if (!r.ok) throw Error(path+': '+r.status); return r.json(); };
+  const [catalog, config] = await Promise.all([loadJSON(root+'data/stage-layer-catalog-reprise.json'),loadJSON('PROTOTYPE_CONFIG.json')]);
+  const renderer = CQC_STAGE_LAYER_ENGINE.createRenderer(catalog, {baseURL:root});
+  const study = CQC_STAGE_LUMINANCE_STUDY, canvas = document.querySelector('#canvas'), ctx = canvas.getContext('2d');
+  const selection = document.querySelector('#stage'), checkbox = document.querySelector('#adaptation');
+  const status = document.querySelector('#status'), qualification = document.querySelector('#qualification');
+  const prepared = new Map(); let selected, sequence = 0;
+  async function choose() {
+    const request = ++sequence, id = selection.value;
+    checkbox.checked = false; status.textContent = 'Chargement…';
+    const row = config.stages.find(x=>x.id===id);
+    await renderer.preload(id);
+    if (!prepared.has(id)) {
+      const image = new Image(); image.src = root + row.anchorFile; await image.decode();
+      prepared.set(id, {row, masks:study.createMasks(image,row)});
+    }
+    if (request!==sequence) return;
+    selected = prepared.get(id);
+    qualification.textContent = id==='arsenal_corridor' ?
+      'Arsenal : capture de référence Substance PC2003 ; textures et effets PS2 non certifiés.' :
+      id==='zanzibar' ? 'Zanzibar : la fonction lumineuse des marques ocre est inconnue. Le choix statique offre la meilleure fidélité établie.' :
+      'Outer Heaven : les centres rouges restent aux flancs d’origine ; certains sortent du cadre à zoom 1.';
+  }
+  selection.addEventListener('change',()=>choose().catch(fail));
+  function fail(error) { status.textContent=error.message; console.error(error); }
+  function frame(now) {
+    if (selected) {
+      const row=selected.row, options={time:now/1000,camera:Number(document.querySelector('#camera').value),
+        zoom:Number(document.querySelector('#zoom').value),motion:true,preview:true};
+      if (renderer.drawBackground(ctx,row.id,options)) {
+        study.paint(ctx,row,selected.masks,CQC_STAGE_LAYER_ENGINE.layerTransform,{...options,enabled:checkbox.checked});
+        renderer.drawForeground(ctx,row.id,options);
+      }
+      const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+      status.textContent=checkbox.checked&&!reduced ? 'Adaptation isolée · '+Math.round(row.maximumDimmingFraction*100)+'% maximum' : 'Plans actuels · modulation inactive';
+    }
+    requestAnimationFrame(frame);
+  }
+  await choose(); requestAnimationFrame(frame);
+})().catch(error=>{document.querySelector('#status').textContent=error.message;console.error(error);});
+</script>
+</html>
