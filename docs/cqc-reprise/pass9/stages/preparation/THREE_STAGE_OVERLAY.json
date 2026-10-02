@@ -1,0 +1,596 @@
+{
+  "schema": "cqc.pass9.stage-local-luminance-overlay/1",
+  "productionMutated": false,
+  "rows": [
+    {
+      "id": "outer_heaven",
+      "beforeStageSha256": "57bd0a5dcdbdb906a3ab8cd6786833c2c1bfd4dbe0cc0de2055d316522c34002",
+      "afterStage": {
+        "id": "outer_heaven",
+        "name": "OUTER HEAVEN",
+        "incarnation": "Metal Gear (1987), original MSX2 TX-55 hangar, empty-room adaptation",
+        "approved": true,
+        "review": {
+          "status": "accepted_closest",
+          "notes": "Capture originale Metal Gear (1987) MSX2 réellement examinée : trois gros renforts trapézoïdaux, quatre équipements gris striés disposés deux de chaque côté, mur gris horizontal et sol olive à plaques répétées. Palette et arêtes de pixel sont conservées au plus proche ; la taille des blocs et la perspective frontale sont adaptées au combat latéral. Le TX-55 visible dans la capture a volontairement été retiré du master : adaptation documentée de salle vide pour éviter un second combattant figé dans le décor. Aucun hangar moderne, pont roulant ou éclairage supplémentaire inventé. Le sol a été corrigé par génération pour continuer derrière les colonnes en plein cadre. Les bandes extérieures de 192 px contiennent seulement les plaques olive et peuvent laisser des raccords de perspective visibles lors du prolongement. Premier plan indépendant à 2176 px et architecture à faible parallaxe pour garder les découpes intrinsèques hors champ. Cadrage vertical des plans arrière/sol/architecture réancré ensemble sur le point y=650 du même sol continu pour rendre les éléments canoniques visibles en caméra centrale ; la ligne de combat reste y=568. Le premier plan conserve son ancrage séparé pour rester sous les pieds. Préparation PASS9 : le rythme de luminance local est une adaptation d’auteur, sans cadence canonique établie par les captures fixes. Aucun PNG ni placement n’est modifié.",
+          "runtimeEvidence": "Seven browser captures for this stage: central view, camera ±220 at zoom 0.78 and 1.08, desktop 1024 px and mobile 390 px. All four layers ready and no browser errors; floor stays at logical y=568. Camera adaptation and visible repeated-texture seams are described explicitly."
+        },
+        "registration": {
+          "groundY": 568,
+          "markersReviewed": true,
+          "sourceGroundY": 650
+        },
+        "references": [
+          {
+            "url": "https://lparchive.org/Metal-Gear-1-2/Update%2012/23-Metal_Gear_0585.png",
+            "source": "LP Archive, original Metal Gear MSX2 TX-55 hangar gameplay",
+            "incarnation": "Metal Gear (1987), original MSX2 TX-55 hangar, empty-room adaptation",
+            "sha256": "b7dba54c63e97ff42130b91c858f56c9a6b1f0d883f033213559b527842d343f",
+            "sourceType": "original_game_capture",
+            "file": "preparation/canonical-stage-references/outer_heaven/reference-01-b7dba54c63e9.png"
+          }
+        ],
+        "layers": [
+          {
+            "id": "sky",
+            "role": "sky",
+            "phase": "background",
+            "parallax": 0,
+            "transparent": false,
+            "file": "assets/stages-reprise/outer_heaven/sky.png",
+            "sha256": "84613cc829358445291b4547907b80d43f7e80e29661037acf7cd67cf5b203a1",
+            "width": 1672,
+            "height": 941,
+            "rect": {
+              "x": -220.0,
+              "y": -100.66028708133967,
+              "width": 1720,
+              "height": 968.0143540669857
+            },
+            "referenceURLs": [
+              "https://lparchive.org/Metal-Gear-1-2/Update%2012/23-Metal_Gear_0585.png"
+            ]
+          },
+          {
+            "id": "ground",
+            "role": "ground",
+            "phase": "background",
+            "parallax": 1,
+            "transparent": true,
+            "file": "assets/stages-reprise/outer_heaven/ground.png",
+            "sha256": "732c1668c132ffbc5adc6f55be52358da3f86f1b2b4c2a123345f3ade1049e8e",
+            "width": 1671,
+            "height": 941,
+            "rect": {
+              "x": -220.0,
+              "y": -101.06044284859365,
+              "width": 1720,
+              "height": 968.5936564931179
+            },
+            "referenceURLs": [
+              "https://lparchive.org/Metal-Gear-1-2/Update%2012/23-Metal_Gear_0585.png"
+            ],
+            "edgeRepeatPixels": 192,
+            "edgeRepeatReviewed": true
+          },
+          {
+            "id": "architecture",
+            "role": "architecture",
+            "phase": "background",
+            "parallax": 0.12,
+            "transparent": true,
+            "file": "assets/stages-reprise/outer_heaven/architecture.png",
+            "sha256": "348c1e087869c08a24a7b1b670d339c225be416254cefd178767ec59c828bef9",
+            "width": 1671,
+            "height": 941,
+            "rect": {
+              "x": -220.0,
+              "y": -101.06044284859365,
+              "width": 1720,
+              "height": 968.5936564931179
+            },
+            "referenceURLs": [
+              "https://lparchive.org/Metal-Gear-1-2/Update%2012/23-Metal_Gear_0585.png"
+            ],
+            "localLuminance": {
+              "enabled": true,
+              "anchorSha256": "348c1e087869c08a24a7b1b670d339c225be416254cefd178767ec59c828bef9",
+              "maskColor": "red",
+              "maximumDimmingFraction": 0.02,
+              "authoredPeriodSeconds": [
+                7,
+                9,
+                8,
+                9
+              ],
+              "sourcePixelRegions": [
+                {
+                  "x": 145,
+                  "y": 358,
+                  "width": 10,
+                  "height": 4
+                },
+                {
+                  "x": 1516,
+                  "y": 358,
+                  "width": 9,
+                  "height": 5
+                },
+                {
+                  "x": 145,
+                  "y": 461,
+                  "width": 10,
+                  "height": 6
+                },
+                {
+                  "x": 1516,
+                  "y": 462,
+                  "width": 10,
+                  "height": 4
+                }
+              ],
+              "sourceCanonicalTiming": false,
+              "sourceStatus": "fixed_capture_temporal_reference_not_established",
+              "operation": "source_color_selected_local_composite_dimming",
+              "maskResampling": "nearest_neighbor",
+              "qualification": "Authored cycle; selected original alpha bounds composite darkening. Original PNG untouched."
+            }
+          },
+          {
+            "id": "foreground",
+            "role": "foreground",
+            "phase": "foreground",
+            "parallax": 1.2,
+            "transparent": true,
+            "file": "assets/stages-reprise/outer_heaven/foreground.png",
+            "sha256": "083e272308e925d427642696c5fda1a5979746f11233cf775ff53007a2d0b786",
+            "width": 1671,
+            "height": 941,
+            "rect": {
+              "x": -448.0,
+              "y": -398.69150874393233,
+              "width": 2176,
+              "height": 1225.3836026331537
+            },
+            "referenceURLs": [
+              "https://lparchive.org/Metal-Gear-1-2/Update%2012/23-Metal_Gear_0585.png"
+            ]
+          }
+        ],
+        "weather": {
+          "type": "none",
+          "enabled": false,
+          "count": 34
+        },
+        "fillColor": "#050b09",
+        "master": {
+          "file": "preparation/stage-layers-reprise/generated-history/outer_heaven/exec-1d400308-9ac8-48e9-8094-ac08f8f0a963.png",
+          "sha256": "247fcf3048bdc89e546dadafbf3cf06608339fc603dacd3236877da8edfa0601",
+          "width": 1672,
+          "height": 941
+        },
+        "status": "reviewed_layers_ready",
+        "legacyVisualDefinition": {
+          "id": "outer_heaven",
+          "name": "OUTER HEAVEN",
+          "ep": "METAL GEAR",
+          "family": "retro_forest",
+          "sky": [
+            "#a8b58a",
+            "#53654d",
+            "#172018"
+          ],
+          "weather": "dust",
+          "props": [
+            "walls",
+            "towers",
+            "forest"
+          ]
+        },
+        "geometry": {
+          "width": 1280,
+          "height": 720,
+          "ground": 568,
+          "cameraMin": -220,
+          "cameraMax": 220,
+          "collisionChange": false
+        },
+        "routeCards": 378
+      }
+    },
+    {
+      "id": "zanzibar",
+      "beforeStageSha256": "ef2ba7a42cf3001d6a3b59ff62c6de07a74119d3a38a0e7874da06cbaf189b63",
+      "afterStage": {
+        "id": "zanzibar",
+        "name": "ZANZIBAR",
+        "incarnation": "Metal Gear 2: Solid Snake (1990), original MSX2 Metal Gear D hangar after destruction",
+        "approved": true,
+        "review": {
+          "status": "accepted_closest",
+          "notes": "Captures originales MG2 Solid Snake MSX2 réellement examinées : variante éclairée du hangar après destruction de Metal Gear D, huit panneaux striés verts en haut du mur, bordures fines, sol teal quadrillé et riveté. Le premier master à sept panneaux a été rejeté puis corrigé à huit ; aucun Metal Gear D actif n’est peint dans cette variante vide. La perspective frontale, la densité du motif et les proportions des panneaux sont adaptées à l’arène latérale ; cette adaptation n’est pas une reproduction de la caméra de dessus au pixel près. Le plan lointain a été corrigé pour retirer une bande de sol conservée par erreur ; le sol séparé a été prolongé derrière les murs jusqu’aux bords. Les bandes extérieures de 192 px ne contiennent que le motif de sol, avec des raccords de perspective potentiellement visibles aux caméras extrêmes. Premier plan indépendant à 2176 px et architecture à faible parallaxe pour garder les découpes intrinsèques hors champ. Cadrage vertical des plans arrière/sol/architecture réancré ensemble sur le point y=615 du même sol continu pour rendre les éléments canoniques visibles en caméra centrale ; la ligne de combat reste y=568. Le premier plan conserve son ancrage séparé pour rester sous les pieds. Soubassement mural original restauré par génération dans le plan architecture, derrière le sol séparé. Préparation PASS9 : aucune modulation de luminance n’est activée ; la fonction lumineuse des marques ocre reste inconnue. Aucun PNG ni placement n’est modifié.",
+          "runtimeEvidence": "Seven browser captures for this stage: central view, camera ±220 at zoom 0.78 and 1.08, desktop 1024 px and mobile 390 px. All four layers ready and no browser errors; floor stays at logical y=568. Camera adaptation and visible repeated-texture seams are described explicitly.",
+          "localLuminanceDecision": {
+            "policy": "static",
+            "enabled": false,
+            "sourceCanonicalTiming": false,
+            "reason": "Fonction lumineuse des marques ocre inconnue ; aucune modulation active.",
+            "reviewOnlyNativeRegions": [
+              {
+                "x": 544,
+                "y": 154,
+                "width": 57,
+                "height": 7
+              },
+              {
+                "x": 735,
+                "y": 154,
+                "width": 56,
+                "height": 7
+              },
+              {
+                "x": 924,
+                "y": 154,
+                "width": 55,
+                "height": 7
+              },
+              {
+                "x": 1111,
+                "y": 154,
+                "width": 58,
+                "height": 7
+              }
+            ]
+          }
+        },
+        "registration": {
+          "groundY": 568,
+          "markersReviewed": true,
+          "sourceGroundY": 615
+        },
+        "references": [
+          {
+            "url": "https://lparchive.org/Metal-Gear-1-2/Update%2041/22-Metal_Gear_2_1515.png",
+            "source": "LP Archive, original MG2 Solid Snake MSX2 hangar after Metal Gear D destruction",
+            "incarnation": "Metal Gear 2: Solid Snake (1990), original MSX2 Metal Gear D hangar after destruction",
+            "sha256": "4232515eb6eaa6f81a75b21ff15d3e989f5bf3ef21900c776ef4e962f9b60177",
+            "sourceType": "original_game_capture",
+            "file": "preparation/canonical-stage-references/zanzibar/reference-01-4232515eb6ea.png"
+          },
+          {
+            "url": "https://lparchive.org/Metal-Gear-1-2/Update%2041/9-Metal_Gear_2_1505.png",
+            "source": "LP Archive, same original MSX2 Metal Gear D room before destruction",
+            "incarnation": "Metal Gear 2: Solid Snake (1990), original MSX2 Metal Gear D hangar after destruction",
+            "sha256": "e35bd15911e76d7de01ccb621678a652f243ab95f794862a8053643b651fcb73",
+            "sourceType": "original_game_capture",
+            "file": "preparation/canonical-stage-references/zanzibar/reference-02-e35bd15911e7.png"
+          }
+        ],
+        "layers": [
+          {
+            "id": "sky",
+            "role": "sky",
+            "phase": "background",
+            "parallax": 0,
+            "transparent": false,
+            "file": "assets/stages-reprise/zanzibar/sky.png",
+            "sha256": "7102267592bb06277f20bf19aebb0948b29182a8922f7dfbc24f4041a155ea1b",
+            "width": 1672,
+            "height": 941,
+            "rect": {
+              "x": -220.0,
+              "y": -64.65550239234449,
+              "width": 1720,
+              "height": 968.0143540669857
+            },
+            "referenceURLs": [
+              "https://lparchive.org/Metal-Gear-1-2/Update%2041/22-Metal_Gear_2_1515.png",
+              "https://lparchive.org/Metal-Gear-1-2/Update%2041/9-Metal_Gear_2_1505.png"
+            ]
+          },
+          {
+            "id": "ground",
+            "role": "ground",
+            "phase": "background",
+            "parallax": 1,
+            "transparent": true,
+            "file": "assets/stages-reprise/zanzibar/ground.png",
+            "sha256": "85a1ae11f47e74c5287804878296353b7503a44daa8ac7e479d79dbee5f645ee",
+            "width": 1672,
+            "height": 941,
+            "rect": {
+              "x": -220.0,
+              "y": -64.65550239234449,
+              "width": 1720,
+              "height": 968.0143540669857
+            },
+            "referenceURLs": [
+              "https://lparchive.org/Metal-Gear-1-2/Update%2041/22-Metal_Gear_2_1515.png",
+              "https://lparchive.org/Metal-Gear-1-2/Update%2041/9-Metal_Gear_2_1505.png"
+            ],
+            "edgeRepeatPixels": 192,
+            "edgeRepeatReviewed": true
+          },
+          {
+            "id": "architecture",
+            "role": "architecture",
+            "phase": "background",
+            "parallax": 0.12,
+            "transparent": true,
+            "file": "assets/stages-reprise/zanzibar/architecture.png",
+            "sha256": "b9b2eb483e49dbd7c7744751074ba5b6d23aeab8307180c2a96b5ebac029359f",
+            "width": 1672,
+            "height": 941,
+            "rect": {
+              "x": -220.0,
+              "y": -64.65550239234449,
+              "width": 1720,
+              "height": 968.0143540669857
+            },
+            "referenceURLs": [
+              "https://lparchive.org/Metal-Gear-1-2/Update%2041/22-Metal_Gear_2_1515.png",
+              "https://lparchive.org/Metal-Gear-1-2/Update%2041/9-Metal_Gear_2_1505.png"
+            ]
+          },
+          {
+            "id": "foreground",
+            "role": "foreground",
+            "phase": "foreground",
+            "parallax": 1.2,
+            "transparent": true,
+            "file": "assets/stages-reprise/zanzibar/foreground.png",
+            "sha256": "75810f9c0f696d0e170dff32b91f4d06404a4487f9336bb8fee256542f83366f",
+            "width": 1672,
+            "height": 941,
+            "rect": {
+              "x": -448.0,
+              "y": -398.11334396597556,
+              "width": 2176,
+              "height": 1224.6507177033493
+            },
+            "referenceURLs": [
+              "https://lparchive.org/Metal-Gear-1-2/Update%2041/22-Metal_Gear_2_1515.png",
+              "https://lparchive.org/Metal-Gear-1-2/Update%2041/9-Metal_Gear_2_1505.png"
+            ]
+          }
+        ],
+        "weather": {
+          "type": "none",
+          "enabled": false,
+          "count": 34
+        },
+        "fillColor": "#050b09",
+        "master": {
+          "file": "preparation/stage-layers-reprise/generated-history/zanzibar/exec-268d8a71-bf1a-43e3-90ee-49834875f971.png",
+          "sha256": "0a001e81811ff5b30c7fb7e02f5c58794ab773186076bbf1c00f6d87bb69b309",
+          "width": 1672,
+          "height": 941
+        },
+        "status": "reviewed_layers_ready",
+        "legacyVisualDefinition": {
+          "id": "zanzibar",
+          "name": "ZANZIBAR HANGAR",
+          "ep": "METAL GEAR 2",
+          "family": "industrial_green",
+          "sky": [
+            "#87977a",
+            "#455345",
+            "#101711"
+          ],
+          "weather": "sparks",
+          "props": [
+            "gantries",
+            "hangar",
+            "pipes"
+          ]
+        },
+        "geometry": {
+          "width": 1280,
+          "height": 720,
+          "ground": 568,
+          "cameraMin": -220,
+          "cameraMax": 220,
+          "collisionChange": false
+        },
+        "routeCards": 266
+      }
+    },
+    {
+      "id": "arsenal_corridor",
+      "beforeStageSha256": "cbea0095c87ba1851f8ac2d609c4950f8511e933dc3df2bb8a05ac9938aa75fc",
+      "afterStage": {
+        "id": "arsenal_corridor",
+        "name": "ARSENAL CORRIDOR",
+        "incarnation": "Metal Gear Solid 2: Sons of Liberty, original PS2 Snake/Raiden/Tengu corridor",
+        "approved": true,
+        "review": {
+          "status": "accepted_closest",
+          "notes": "Capture originale Substance PC2003 réellement examinée : corridor rectangulaire du combat Snake/Raiden contre Tengu, grandes colonnes gris-vert à bases trapézoïdales, coffrets mécaniques, petites lampes cyan et sol à grands panneaux. La scène ne correspond pas à l’arène circulaire Ascending Colon. La capture ne contient aucun sous-titre établissant le nom Jejunum : ce nom précis reste non certifié. La caméra frontale, les répétitions de colonnes et leur espacement sont adaptés au combat latéral. Aucun ennemi peint dans le décor, aucune météo inventée. Les bandes extérieures de 192 px du sol ne contiennent que le matériau de panneaux et ses joints ordinaires ; leur prolongement extérieur peut rendre des raccords de perspective visibles à caméra extrême. La couture centrale unique ne se répète pas. Premier plan indépendant à 2176 px et architecture à faible parallaxe pour garder les découpes intrinsèques hors champ. Cadrage vertical des plans arrière/sol/architecture réancré ensemble sur le point y=568 du même sol continu pour rendre les éléments canoniques visibles en caméra centrale ; la ligne de combat reste y=568. Le premier plan conserve son ancrage séparé pour rester sous les pieds. Source de cette capture réattribuée après vérification : le playthrough déclare employer le port PC2003 Substance (Update1). La scène et la géométrie MGS2 sont communes à la cible PS2, mais les textures/effets PS2 ne sont pas certifiés par cette capture. Preuve : https://lparchive.org/Metal-Gear-Solid-2-(Screenshot)/Update%201/ . Préparation PASS9 : le rythme de luminance local est une adaptation d’auteur, sans cadence canonique établie par les captures fixes. Aucun PNG ni placement n’est modifié.",
+          "runtimeEvidence": "Seven browser captures for this stage: central view, camera ±220 at zoom 0.78 and 1.08, desktop 1024 px and mobile 390 px. All four layers ready and no browser errors; floor stays at logical y=568. Camera adaptation and visible repeated-texture seams are described explicitly.",
+          "absolute1to1Certified": false
+        },
+        "registration": {
+          "groundY": 568,
+          "markersReviewed": true,
+          "sourceGroundY": 568
+        },
+        "references": [
+          {
+            "url": "https://lparchive.org/Metal-Gear-Solid-2-(Screenshot)/Update%2030/mgs2_106_ae8.jpg",
+            "source": "Actual MGS2: Substance PC2003 capture from screenshot playthrough; PC edition explicitly declared in Update1",
+            "incarnation": "Metal Gear Solid2: Substance, PC port2003; original MGS2 shared environment geometry",
+            "sha256": "9b37c6e13ab35308c595a4b3a5630a73c735eb2d7025a302bdc0346fd94bcca7",
+            "sourceType": "original_game_capture",
+            "file": "preparation/canonical-stage-references/arsenal_corridor/reference-01-9b37c6e13ab3.jpg"
+          }
+        ],
+        "layers": [
+          {
+            "id": "sky",
+            "role": "sky",
+            "phase": "background",
+            "parallax": 0,
+            "transparent": false,
+            "file": "assets/stages-reprise/arsenal_corridor/sky.png",
+            "sha256": "ff22921fe7f16071430d0722f82e07964c078dd3287fcd5cee4921e199424bb1",
+            "width": 1672,
+            "height": 941,
+            "rect": {
+              "x": -220.0,
+              "y": -16.30622009569379,
+              "width": 1720,
+              "height": 968.0143540669857
+            },
+            "referenceURLs": [
+              "https://lparchive.org/Metal-Gear-Solid-2-(Screenshot)/Update%2030/mgs2_106_ae8.jpg"
+            ]
+          },
+          {
+            "id": "ground",
+            "role": "ground",
+            "phase": "background",
+            "parallax": 1,
+            "transparent": true,
+            "file": "assets/stages-reprise/arsenal_corridor/ground.png",
+            "sha256": "5d14994685dba3607f1d97386f8f8098664541cebe3e6c609af5cbc7249796cf",
+            "width": 1672,
+            "height": 941,
+            "rect": {
+              "x": -220.0,
+              "y": -16.30622009569379,
+              "width": 1720,
+              "height": 968.0143540669857
+            },
+            "referenceURLs": [
+              "https://lparchive.org/Metal-Gear-Solid-2-(Screenshot)/Update%2030/mgs2_106_ae8.jpg"
+            ],
+            "edgeRepeatPixels": 192,
+            "edgeRepeatReviewed": true
+          },
+          {
+            "id": "architecture",
+            "role": "architecture",
+            "phase": "background",
+            "parallax": 0.12,
+            "transparent": true,
+            "file": "assets/stages-reprise/arsenal_corridor/architecture.png",
+            "sha256": "c7ed5cb616e4724c95acd09b0a31b0f424446fa1048a439e8b4d4f62c7b403b6",
+            "width": 1672,
+            "height": 941,
+            "rect": {
+              "x": -220.0,
+              "y": -16.30622009569379,
+              "width": 1720,
+              "height": 968.0143540669857
+            },
+            "referenceURLs": [
+              "https://lparchive.org/Metal-Gear-Solid-2-(Screenshot)/Update%2030/mgs2_106_ae8.jpg"
+            ],
+            "localLuminance": {
+              "enabled": true,
+              "anchorSha256": "c7ed5cb616e4724c95acd09b0a31b0f424446fa1048a439e8b4d4f62c7b403b6",
+              "maskColor": "cyan",
+              "maximumDimmingFraction": 0.03,
+              "authoredPeriodSeconds": [
+                6,
+                8,
+                7,
+                8
+              ],
+              "sourcePixelRegions": [
+                {
+                  "x": 258,
+                  "y": 31,
+                  "width": 32,
+                  "height": 19
+                },
+                {
+                  "x": 480,
+                  "y": 62,
+                  "width": 21,
+                  "height": 10
+                },
+                {
+                  "x": 1170,
+                  "y": 62,
+                  "width": 22,
+                  "height": 10
+                },
+                {
+                  "x": 1380,
+                  "y": 35,
+                  "width": 33,
+                  "height": 14
+                }
+              ],
+              "sourceCanonicalTiming": false,
+              "sourceStatus": "fixed_capture_temporal_reference_not_established",
+              "operation": "source_color_selected_local_composite_dimming",
+              "maskResampling": "nearest_neighbor",
+              "qualification": "Authored cycle; selected original alpha bounds composite darkening. Original PNG untouched."
+            }
+          },
+          {
+            "id": "foreground",
+            "role": "foreground",
+            "phase": "foreground",
+            "parallax": 1.2,
+            "transparent": true,
+            "file": "assets/stages-reprise/arsenal_corridor/foreground.png",
+            "sha256": "0a8027fe89bb7f256684d7e2ecf2e6ca86a7775f86b0e68a736052d837cbfcdb",
+            "width": 1671,
+            "height": 941,
+            "rect": {
+              "x": -448.0,
+              "y": -398.69150874393233,
+              "width": 2176,
+              "height": 1225.3836026331537
+            },
+            "referenceURLs": [
+              "https://lparchive.org/Metal-Gear-Solid-2-(Screenshot)/Update%2030/mgs2_106_ae8.jpg"
+            ]
+          }
+        ],
+        "weather": {
+          "type": "none",
+          "enabled": false,
+          "count": 34
+        },
+        "fillColor": "#050b09",
+        "master": {
+          "file": "preparation/stage-layers-reprise/generated-history/arsenal_corridor/exec-9ea40655-a596-48c2-8da3-4c53c42899d2.png",
+          "sha256": "af1a6b8071d29438fffca077858e8f900d9486d2049f9479e12354a9f2fd6bc4",
+          "width": 1672,
+          "height": 941
+        },
+        "status": "reviewed_layers_ready",
+        "legacyVisualDefinition": {
+          "id": "arsenal_corridor",
+          "name": "ARSENAL GEAR CORRIDOR",
+          "ep": "MGS2",
+          "family": "industrial",
+          "sky": [
+            "#7f8c98",
+            "#344451",
+            "#0b1118"
+          ],
+          "weather": "sparks",
+          "props": [
+            "corridor",
+            "bulkheads",
+            "cables"
+          ]
+        },
+        "geometry": {
+          "width": 1280,
+          "height": 720,
+          "ground": 568,
+          "cameraMin": -220,
+          "cameraMax": 220,
+          "collisionChange": false
+        },
+        "routeCards": 0
+      }
+    }
+  ]
+}

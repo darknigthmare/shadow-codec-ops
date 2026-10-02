@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/workspace/cqc-pass9-generation/red-blaster/tools/create_red_blaster_delivery.py", line 113, in <module>
+    write('PRODUCER_VALIDATION_REVIEW.json',{'schema':'cqc.pass9.red-blaster-producer-validation/1','entry':entry,'sourceFiles':source_rows,'physical':physical_check,'independentAlpha80BodyHashes':body_digests,'poseCount':72,'imagePixelsEdited':False,'catalogImported':False,'scope':'Pure validate_entry on producer metadata; browser/helper/runtime integration not performed.'})
+  File "/workspace/cqc-pass9-generation/red-blaster/tools/create_red_blaster_delivery.py", line 19, in write
+    raw=(json.dumps(data,ensure_ascii=False,indent=2)+'\n').encode()
+TypeError: Object of type PosixPath is not JSON serializable

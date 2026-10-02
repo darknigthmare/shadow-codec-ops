@@ -1,0 +1,2509 @@
+[
+  {
+    "command": [
+      "set",
+      "viewport",
+      "1280",
+      "1000"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "deviceScaleFactor": 1.0,
+        "height": 1000,
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "mobile": false,
+        "width": 1280
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "open",
+      "http://127.0.0.1:8642/cqc-pass9-stage-preparation/preview.html"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "targetId": "B2439AD577987F465C67EB35115CFAC2",
+        "title": "CQC PASS9 — préparation isolée des stages",
+        "url": "http://127.0.0.1:8642/cqc-pass9-stage-preparation/preview.html"
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "wait",
+      "--load",
+      "networkidle"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "state": "networkidle"
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "screenshot",
+      "/workspace/cqc-pass9-stage-browser-proof/run-final04/initial-page.png"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "path": "/workspace/cqc-pass9-stage-browser-proof/run-final04/initial-page.png"
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "snapshot",
+      "-i"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "origin": "http://127.0.0.1:8642/cqc-pass9-stage-preparation/preview.html",
+        "refs": {
+          "e1": {
+            "name": "CQC — revue isolée des trois stages",
+            "role": "heading"
+          },
+          "e2": {
+            "name": "Afficher à caméra centrale, zoom 0,78, temps 4 s",
+            "role": "button"
+          },
+          "e3": {
+            "name": "Stage ",
+            "role": "combobox"
+          },
+          "e4": {
+            "name": "outer_heaven",
+            "role": "option"
+          },
+          "e5": {
+            "name": "arsenal_corridor",
+            "role": "option"
+          },
+          "e6": {
+            "name": "zanzibar",
+            "role": "option"
+          }
+        },
+        "removedRefs": [],
+        "snapshot": "- heading \"CQC — revue isolée des trois stages\" [level=1, ref=e1]\n- combobox \"Stage \" [expanded=false, ref=e3]: outer_heaven\n  - option \"outer_heaven\" [selected, ref=e4]\n  - option \"arsenal_corridor\" [ref=e5]\n  - option \"zanzibar\" [ref=e6]\n- button \"Afficher à caméra centrale, zoom 0,78, temps 4 s\" [ref=e2]"
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "errors"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "errors": [],
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        }
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "eval",
+      "(()=>{const t=document.body.innerText.trim();if(t.length<100||document.querySelector('vite-error-overlay,.vite-error-overlay,[data-nextjs-dialog]'))throw Error('Blank/error overlay');return{title:document.title,bodyCharacters:t.length,viewport:{width:innerWidth,height:innerHeight}}})()"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "origin": "http://127.0.0.1:8642/cqc-pass9-stage-preparation/preview.html",
+        "result": {
+          "bodyCharacters": 713,
+          "title": "CQC PASS9 — préparation isolée des stages",
+          "viewport": {
+            "height": 1000,
+            "width": 1280
+          }
+        }
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "eval",
+      "(async()=>{for(let i=0;i<100&&!window.__stageReviewReady;i++)await new Promise(r=>setTimeout(r,100));if(!window.__stageReviewReady)throw Error(JSON.stringify(window.__consoleErrors));return{ready:true,consoleErrors:window.__consoleErrors}})()"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "origin": "http://127.0.0.1:8642/cqc-pass9-stage-preparation/preview.html",
+        "result": {
+          "consoleErrors": [],
+          "ready": true
+        }
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "eval",
+      "window.PASS9_STAGE_REVIEW.rasterChecks()"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "origin": "http://127.0.0.1:8642/cqc-pass9-stage-preparation/preview.html",
+        "result": {
+          "actualNativePNGHashes": [
+            {
+              "bytes": 945058,
+              "path": "/workspace/cqc-game-working/cqc-versus-v056/assets/stages-reprise/outer_heaven/sky.png",
+              "sha256": "84613cc829358445291b4547907b80d43f7e80e29661037acf7cd67cf5b203a1"
+            },
+            {
+              "bytes": 1391949,
+              "path": "/workspace/cqc-game-working/cqc-versus-v056/assets/stages-reprise/outer_heaven/ground.png",
+              "sha256": "732c1668c132ffbc5adc6f55be52358da3f86f1b2b4c2a123345f3ade1049e8e"
+            },
+            {
+              "bytes": 431374,
+              "path": "/workspace/cqc-game-working/cqc-versus-v056/assets/stages-reprise/outer_heaven/architecture.png",
+              "sha256": "348c1e087869c08a24a7b1b670d339c225be416254cefd178767ec59c828bef9"
+            },
+            {
+              "bytes": 81923,
+              "path": "/workspace/cqc-game-working/cqc-versus-v056/assets/stages-reprise/outer_heaven/foreground.png",
+              "sha256": "083e272308e925d427642696c5fda1a5979746f11233cf775ff53007a2d0b786"
+            },
+            {
+              "bytes": 970496,
+              "path": "/workspace/cqc-game-working/cqc-versus-v056/assets/stages-reprise/zanzibar/sky.png",
+              "sha256": "7102267592bb06277f20bf19aebb0948b29182a8922f7dfbc24f4041a155ea1b"
+            },
+            {
+              "bytes": 1459874,
+              "path": "/workspace/cqc-game-working/cqc-versus-v056/assets/stages-reprise/zanzibar/ground.png",
+              "sha256": "85a1ae11f47e74c5287804878296353b7503a44daa8ac7e479d79dbee5f645ee"
+            },
+            {
+              "bytes": 535100,
+              "path": "/workspace/cqc-game-working/cqc-versus-v056/assets/stages-reprise/zanzibar/architecture.png",
+              "sha256": "b9b2eb483e49dbd7c7744751074ba5b6d23aeab8307180c2a96b5ebac029359f"
+            },
+            {
+              "bytes": 66000,
+              "path": "/workspace/cqc-game-working/cqc-versus-v056/assets/stages-reprise/zanzibar/foreground.png",
+              "sha256": "75810f9c0f696d0e170dff32b91f4d06404a4487f9336bb8fee256542f83366f"
+            },
+            {
+              "bytes": 1084683,
+              "path": "/workspace/cqc-game-working/cqc-versus-v056/assets/stages-reprise/arsenal_corridor/sky.png",
+              "sha256": "ff22921fe7f16071430d0722f82e07964c078dd3287fcd5cee4921e199424bb1"
+            },
+            {
+              "bytes": 1139539,
+              "path": "/workspace/cqc-game-working/cqc-versus-v056/assets/stages-reprise/arsenal_corridor/ground.png",
+              "sha256": "5d14994685dba3607f1d97386f8f8098664541cebe3e6c609af5cbc7249796cf"
+            },
+            {
+              "bytes": 767366,
+              "path": "/workspace/cqc-game-working/cqc-versus-v056/assets/stages-reprise/arsenal_corridor/architecture.png",
+              "sha256": "c7ed5cb616e4724c95acd09b0a31b0f424446fa1048a439e8b4d4f62c7b403b6"
+            },
+            {
+              "bytes": 145214,
+              "path": "/workspace/cqc-game-working/cqc-versus-v056/assets/stages-reprise/arsenal_corridor/foreground.png",
+              "sha256": "0a8027fe89bb7f256684d7e2ecf2e6ca86a7775f86b0e68a736052d837cbfcdb"
+            }
+          ],
+          "allStagesValidated": 30,
+          "fidelity": "Authored cycles only; final composed pixels darken locally, including the tiny underlying contribution at original alpha249–254. Native source RGB files untouched.",
+          "maskAllocations": 8,
+          "rasterComparisons": 56,
+          "results": [
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 112,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 5,
+              "options": {
+                "camera": -220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": -220,
+                "time": 4,
+                "zoom": 1
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": -220,
+                "time": 4,
+                "zoom": 1.08
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 116,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 5,
+              "options": {
+                "camera": 0,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 0,
+                "time": 4,
+                "zoom": 1
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 0,
+                "time": 4,
+                "zoom": 1.08
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 111,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 5,
+              "options": {
+                "camera": 220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 220,
+                "time": 4,
+                "zoom": 1
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 220,
+                "time": 4,
+                "zoom": 1.08
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "outer_heaven",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 0,
+                "time": 0,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 116,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 3,
+              "options": {
+                "camera": 0,
+                "time": 2,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 62,
+              "id": "outer_heaven",
+              "maskDraws": 2,
+              "maxChannelDecrease": 3,
+              "options": {
+                "camera": 0,
+                "time": 9,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "outer_heaven",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 220,
+                "motion": false,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "outer_heaven",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "animate": false,
+                "camera": 220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "outer_heaven",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "allowAmbientLuminance": false,
+                "camera": 220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "outer_heaven",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "ambient": false,
+                "camera": 220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": -220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": -220,
+                "time": 4,
+                "zoom": 1
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": -220,
+                "time": 4,
+                "zoom": 1.08
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 0,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 0,
+                "time": 4,
+                "zoom": 1
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 0,
+                "time": 4,
+                "zoom": 1.08
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 220,
+                "time": 4,
+                "zoom": 1
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 220,
+                "time": 4,
+                "zoom": 1.08
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 0,
+                "time": 0,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 0,
+                "time": 2,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 0,
+                "time": 9,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 220,
+                "motion": false,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "animate": false,
+                "camera": 220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "allowAmbientLuminance": false,
+                "camera": 220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "ambient": false,
+                "camera": 220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 708,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": -220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 1165,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": -220,
+                "time": 4,
+                "zoom": 1
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 393,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": -220,
+                "time": 4,
+                "zoom": 1.08
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 720,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": 0,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 1158,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": 0,
+                "time": 4,
+                "zoom": 1
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 418,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": 0,
+                "time": 4,
+                "zoom": 1.08
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 700,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": 220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 1166,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": 220,
+                "time": 4,
+                "zoom": 1
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 393,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": 220,
+                "time": 4,
+                "zoom": 1.08
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "arsenal_corridor",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 0,
+                "time": 0,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 720,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 6,
+              "options": {
+                "camera": 0,
+                "time": 2,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 720,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": 0,
+                "time": 9,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "arsenal_corridor",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 220,
+                "motion": false,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "arsenal_corridor",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "animate": false,
+                "camera": 220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "arsenal_corridor",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "allowAmbientLuminance": false,
+                "camera": 220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "arsenal_corridor",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "ambient": false,
+                "camera": 220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 116,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 5,
+              "options": {
+                "camera": 0,
+                "time": 3.5,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 116,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 5,
+              "options": {
+                "camera": 0,
+                "time": 4.5,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 116,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 5,
+              "options": {
+                "camera": 0,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 116,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 5,
+              "options": {
+                "camera": 0,
+                "time": 4.5,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 720,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": 0,
+                "time": 3,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 720,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": 0,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 720,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": 0,
+                "time": 3.5,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 720,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": 0,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            }
+          ],
+          "status": "passed"
+        }
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "eval",
+      "window.PASS9_STAGE_REVIEW.actualMaskChecks()"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "origin": "http://127.0.0.1:8642/cqc-pass9-stage-preparation/preview.html",
+        "result": {
+          "checks": [
+            {
+              "excludedStructurePixels": 0,
+              "id": "outer_heaven",
+              "index": 0,
+              "region": {
+                "height": 4,
+                "width": 10,
+                "x": 145,
+                "y": 358
+              },
+              "selectedSourcePixels": 40,
+              "sourceAlphaPreserved": true
+            },
+            {
+              "excludedStructurePixels": 2,
+              "id": "outer_heaven",
+              "index": 1,
+              "region": {
+                "height": 5,
+                "width": 9,
+                "x": 1516,
+                "y": 358
+              },
+              "selectedSourcePixels": 43,
+              "sourceAlphaPreserved": true
+            },
+            {
+              "excludedStructurePixels": 3,
+              "id": "outer_heaven",
+              "index": 2,
+              "region": {
+                "height": 6,
+                "width": 10,
+                "x": 145,
+                "y": 461
+              },
+              "selectedSourcePixels": 57,
+              "sourceAlphaPreserved": true
+            },
+            {
+              "excludedStructurePixels": 0,
+              "id": "outer_heaven",
+              "index": 3,
+              "region": {
+                "height": 4,
+                "width": 10,
+                "x": 1516,
+                "y": 462
+              },
+              "selectedSourcePixels": 40,
+              "sourceAlphaPreserved": true
+            },
+            {
+              "excludedStructurePixels": 156,
+              "id": "arsenal_corridor",
+              "index": 0,
+              "region": {
+                "height": 19,
+                "width": 32,
+                "x": 258,
+                "y": 31
+              },
+              "selectedSourcePixels": 452,
+              "sourceAlphaPreserved": true
+            },
+            {
+              "excludedStructurePixels": 60,
+              "id": "arsenal_corridor",
+              "index": 1,
+              "region": {
+                "height": 10,
+                "width": 21,
+                "x": 480,
+                "y": 62
+              },
+              "selectedSourcePixels": 150,
+              "sourceAlphaPreserved": true
+            },
+            {
+              "excludedStructurePixels": 50,
+              "id": "arsenal_corridor",
+              "index": 2,
+              "region": {
+                "height": 10,
+                "width": 22,
+                "x": 1170,
+                "y": 62
+              },
+              "selectedSourcePixels": 170,
+              "sourceAlphaPreserved": true
+            },
+            {
+              "excludedStructurePixels": 148,
+              "id": "arsenal_corridor",
+              "index": 3,
+              "region": {
+                "height": 14,
+                "width": 33,
+                "x": 1380,
+                "y": 35
+              },
+              "selectedSourcePixels": 314,
+              "sourceAlphaPreserved": true
+            }
+          ],
+          "nativeMaskRegions": 8,
+          "status": "passed",
+          "totalSelectedSourcePixels": 1266
+        }
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "eval",
+      "window.PASS9_STAGE_REVIEW.coldAndEvictionChecks()"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "origin": "http://127.0.0.1:8642/cqc-pass9-stage-preparation/preview.html",
+        "result": {
+          "cacheInfo": {
+            "decodedBytes": 25162340,
+            "decodedBytesMethod": "Retained PNG width × height × 4 estimate; browser allocations may differ.",
+            "images": 4,
+            "limit": 1,
+            "luminanceMaskBytes": 740,
+            "luminanceMaskCanvases": 4,
+            "pinnedStages": [],
+            "readyStages": [
+              "outer_heaven"
+            ]
+          },
+          "coldCases": [
+            {
+              "allocated": 0,
+              "gate": {
+                "motion": false
+              },
+              "overlayCalls": 0
+            },
+            {
+              "allocated": 0,
+              "gate": {
+                "animate": false
+              },
+              "overlayCalls": 0
+            },
+            {
+              "allocated": 0,
+              "gate": {
+                "allowAmbientLuminance": false
+              },
+              "overlayCalls": 0
+            },
+            {
+              "allocated": 0,
+              "gate": {
+                "ambient": false
+              },
+              "overlayCalls": 0
+            },
+            {
+              "allocated": 0,
+              "gate": {
+                "reducedMotion": true
+              },
+              "overlayCalls": 0
+            }
+          ],
+          "evictedMaskCanvasesFreed": 4,
+          "reloadedMaskCanvases": 4,
+          "status": "passed"
+        }
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "eval",
+      "window.PASS9_STAGE_REVIEW.display(\"outer_heaven\",4,0,.78)"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "origin": "http://127.0.0.1:8642/cqc-pass9-stage-preparation/preview.html",
+        "result": {
+          "camera": 0,
+          "id": "outer_heaven",
+          "time": 4,
+          "zoom": 0.78
+        }
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "screenshot",
+      "/workspace/cqc-pass9-stage-browser-proof/run-final04/outer_heaven-wide-view-actual.png"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "path": "/workspace/cqc-pass9-stage-browser-proof/run-final04/outer_heaven-wide-view-actual.png"
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "eval",
+      "window.PASS9_STAGE_REVIEW.display(\"arsenal_corridor\",4,0,.78)"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "origin": "http://127.0.0.1:8642/cqc-pass9-stage-preparation/preview.html",
+        "result": {
+          "camera": 0,
+          "id": "arsenal_corridor",
+          "time": 4,
+          "zoom": 0.78
+        }
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "screenshot",
+      "/workspace/cqc-pass9-stage-browser-proof/run-final04/arsenal_corridor-wide-view-actual.png"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "path": "/workspace/cqc-pass9-stage-browser-proof/run-final04/arsenal_corridor-wide-view-actual.png"
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "eval",
+      "window.PASS9_STAGE_REVIEW.display(\"zanzibar\",4,0,.78)"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "origin": "http://127.0.0.1:8642/cqc-pass9-stage-preparation/preview.html",
+        "result": {
+          "camera": 0,
+          "id": "zanzibar",
+          "time": 4,
+          "zoom": 0.78
+        }
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "screenshot",
+      "/workspace/cqc-pass9-stage-browser-proof/run-final04/zanzibar-wide-view-actual.png"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "path": "/workspace/cqc-pass9-stage-browser-proof/run-final04/zanzibar-wide-view-actual.png"
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "set",
+      "viewport",
+      "390",
+      "844"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "deviceScaleFactor": 1.0,
+        "height": 844,
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "mobile": false,
+        "width": 390
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "eval",
+      "window.PASS9_STAGE_REVIEW.rasterChecks()"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "origin": "http://127.0.0.1:8642/cqc-pass9-stage-preparation/preview.html",
+        "result": {
+          "actualNativePNGHashes": [
+            {
+              "bytes": 945058,
+              "path": "/workspace/cqc-game-working/cqc-versus-v056/assets/stages-reprise/outer_heaven/sky.png",
+              "sha256": "84613cc829358445291b4547907b80d43f7e80e29661037acf7cd67cf5b203a1"
+            },
+            {
+              "bytes": 1391949,
+              "path": "/workspace/cqc-game-working/cqc-versus-v056/assets/stages-reprise/outer_heaven/ground.png",
+              "sha256": "732c1668c132ffbc5adc6f55be52358da3f86f1b2b4c2a123345f3ade1049e8e"
+            },
+            {
+              "bytes": 431374,
+              "path": "/workspace/cqc-game-working/cqc-versus-v056/assets/stages-reprise/outer_heaven/architecture.png",
+              "sha256": "348c1e087869c08a24a7b1b670d339c225be416254cefd178767ec59c828bef9"
+            },
+            {
+              "bytes": 81923,
+              "path": "/workspace/cqc-game-working/cqc-versus-v056/assets/stages-reprise/outer_heaven/foreground.png",
+              "sha256": "083e272308e925d427642696c5fda1a5979746f11233cf775ff53007a2d0b786"
+            },
+            {
+              "bytes": 970496,
+              "path": "/workspace/cqc-game-working/cqc-versus-v056/assets/stages-reprise/zanzibar/sky.png",
+              "sha256": "7102267592bb06277f20bf19aebb0948b29182a8922f7dfbc24f4041a155ea1b"
+            },
+            {
+              "bytes": 1459874,
+              "path": "/workspace/cqc-game-working/cqc-versus-v056/assets/stages-reprise/zanzibar/ground.png",
+              "sha256": "85a1ae11f47e74c5287804878296353b7503a44daa8ac7e479d79dbee5f645ee"
+            },
+            {
+              "bytes": 535100,
+              "path": "/workspace/cqc-game-working/cqc-versus-v056/assets/stages-reprise/zanzibar/architecture.png",
+              "sha256": "b9b2eb483e49dbd7c7744751074ba5b6d23aeab8307180c2a96b5ebac029359f"
+            },
+            {
+              "bytes": 66000,
+              "path": "/workspace/cqc-game-working/cqc-versus-v056/assets/stages-reprise/zanzibar/foreground.png",
+              "sha256": "75810f9c0f696d0e170dff32b91f4d06404a4487f9336bb8fee256542f83366f"
+            },
+            {
+              "bytes": 1084683,
+              "path": "/workspace/cqc-game-working/cqc-versus-v056/assets/stages-reprise/arsenal_corridor/sky.png",
+              "sha256": "ff22921fe7f16071430d0722f82e07964c078dd3287fcd5cee4921e199424bb1"
+            },
+            {
+              "bytes": 1139539,
+              "path": "/workspace/cqc-game-working/cqc-versus-v056/assets/stages-reprise/arsenal_corridor/ground.png",
+              "sha256": "5d14994685dba3607f1d97386f8f8098664541cebe3e6c609af5cbc7249796cf"
+            },
+            {
+              "bytes": 767366,
+              "path": "/workspace/cqc-game-working/cqc-versus-v056/assets/stages-reprise/arsenal_corridor/architecture.png",
+              "sha256": "c7ed5cb616e4724c95acd09b0a31b0f424446fa1048a439e8b4d4f62c7b403b6"
+            },
+            {
+              "bytes": 145214,
+              "path": "/workspace/cqc-game-working/cqc-versus-v056/assets/stages-reprise/arsenal_corridor/foreground.png",
+              "sha256": "0a8027fe89bb7f256684d7e2ecf2e6ca86a7775f86b0e68a736052d837cbfcdb"
+            }
+          ],
+          "allStagesValidated": 30,
+          "fidelity": "Authored cycles only; final composed pixels darken locally, including the tiny underlying contribution at original alpha249–254. Native source RGB files untouched.",
+          "maskAllocations": 8,
+          "rasterComparisons": 56,
+          "results": [
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 112,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 5,
+              "options": {
+                "camera": -220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": -220,
+                "time": 4,
+                "zoom": 1
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": -220,
+                "time": 4,
+                "zoom": 1.08
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 116,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 5,
+              "options": {
+                "camera": 0,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 0,
+                "time": 4,
+                "zoom": 1
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 0,
+                "time": 4,
+                "zoom": 1.08
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 111,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 5,
+              "options": {
+                "camera": 220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 220,
+                "time": 4,
+                "zoom": 1
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 220,
+                "time": 4,
+                "zoom": 1.08
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "outer_heaven",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 0,
+                "time": 0,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 116,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 3,
+              "options": {
+                "camera": 0,
+                "time": 2,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 62,
+              "id": "outer_heaven",
+              "maskDraws": 2,
+              "maxChannelDecrease": 3,
+              "options": {
+                "camera": 0,
+                "time": 9,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "outer_heaven",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 220,
+                "motion": false,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "outer_heaven",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "animate": false,
+                "camera": 220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "outer_heaven",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "allowAmbientLuminance": false,
+                "camera": 220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "outer_heaven",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "ambient": false,
+                "camera": 220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": -220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": -220,
+                "time": 4,
+                "zoom": 1
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": -220,
+                "time": 4,
+                "zoom": 1.08
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 0,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 0,
+                "time": 4,
+                "zoom": 1
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 0,
+                "time": 4,
+                "zoom": 1.08
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 220,
+                "time": 4,
+                "zoom": 1
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 220,
+                "time": 4,
+                "zoom": 1.08
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 0,
+                "time": 0,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 0,
+                "time": 2,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 0,
+                "time": 9,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 220,
+                "motion": false,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "animate": false,
+                "camera": 220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "allowAmbientLuminance": false,
+                "camera": 220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "zanzibar",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "ambient": false,
+                "camera": 220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 708,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": -220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 1165,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": -220,
+                "time": 4,
+                "zoom": 1
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 393,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": -220,
+                "time": 4,
+                "zoom": 1.08
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 720,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": 0,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 1158,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": 0,
+                "time": 4,
+                "zoom": 1
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 418,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": 0,
+                "time": 4,
+                "zoom": 1.08
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 700,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": 220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 1166,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": 220,
+                "time": 4,
+                "zoom": 1
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 393,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": 220,
+                "time": 4,
+                "zoom": 1.08
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 0,
+              "id": "arsenal_corridor",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 0,
+                "time": 0,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 720,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 6,
+              "options": {
+                "camera": 0,
+                "time": 2,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 720,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": 0,
+                "time": 9,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "arsenal_corridor",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "camera": 220,
+                "motion": false,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "arsenal_corridor",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "animate": false,
+                "camera": 220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "arsenal_corridor",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "allowAmbientLuminance": false,
+                "camera": 220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 5,
+              "changedPixels": 0,
+              "id": "arsenal_corridor",
+              "maskDraws": 0,
+              "maxChannelDecrease": 0,
+              "options": {
+                "ambient": false,
+                "camera": 220,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 116,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 5,
+              "options": {
+                "camera": 0,
+                "time": 3.5,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 116,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 5,
+              "options": {
+                "camera": 0,
+                "time": 4.5,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 116,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 5,
+              "options": {
+                "camera": 0,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 116,
+              "id": "outer_heaven",
+              "maskDraws": 4,
+              "maxChannelDecrease": 5,
+              "options": {
+                "camera": 0,
+                "time": 4.5,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 720,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": 0,
+                "time": 3,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 720,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": 0,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 720,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": 0,
+                "time": 3.5,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            },
+            {
+              "basePlaneDraws": 4,
+              "changedPixels": 720,
+              "id": "arsenal_corridor",
+              "maskDraws": 4,
+              "maxChannelDecrease": 8,
+              "options": {
+                "camera": 0,
+                "time": 4,
+                "zoom": 0.78
+              },
+              "quantizationBound": "controlOpacityCap +1/255 alpha quantization, then1 RGB unit rounding"
+            }
+          ],
+          "status": "passed"
+        }
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "eval",
+      "window.PASS9_STAGE_REVIEW.display(\"arsenal_corridor\",4,220,.78)"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "origin": "http://127.0.0.1:8642/cqc-pass9-stage-preparation/preview.html",
+        "result": {
+          "camera": 220,
+          "id": "arsenal_corridor",
+          "time": 4,
+          "zoom": 0.78
+        }
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "screenshot",
+      "/workspace/cqc-pass9-stage-browser-proof/run-final04/arsenal-mobile-actual.png"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "path": "/workspace/cqc-pass9-stage-browser-proof/run-final04/arsenal-mobile-actual.png"
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "errors"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "errors": [],
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        }
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "close"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "closed": true,
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": false,
+            "engine": "chrome",
+            "launchHash": null
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": false,
+          "saveStatus": "not_configured"
+        },
+        "restoreStatus": "not_configured",
+        "saveStatus": "not_configured"
+      },
+      "error": null
+    },
+    "stderr": ""
+  }
+]

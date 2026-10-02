@@ -1,0 +1,70 @@
+{
+  "schema": "cqc.pass9.root-approved-catalog-chunk-execution-plan/1",
+  "status": "approved",
+  "authorization": "Explicit ROOT GO relayed by parent /root/bb_screaming_mantis",
+  "approvedDeliverySha256": "c94ac7d966fedc8ed5be87c71bd65c90768019dd0adedb054b51f06db096607c",
+  "verifiedToolPins": [
+    {
+      "path": "/workspace/cqc-pass9-publication-preparation/lossless-tools/lossless_chunks.py",
+      "bytes": 27474,
+      "sha256": "7e7796bcb3f7a528cafb474ecf7e829c554d251a0715b581bf2e96590f03c5ae"
+    },
+    {
+      "path": "/workspace/cqc-pass9-publication-preparation/lossless-tools/chunk_snapshot.py",
+      "bytes": 1377,
+      "sha256": "c34cd176b7d29847bcfd71db8f1d79b16a1f5d73fca17eeeeff6408429599f75"
+    },
+    {
+      "path": "/workspace/cqc-pass9-publication-preparation/lossless-tools/restore_snapshot.py",
+      "bytes": 1279,
+      "sha256": "47ce8aea209b12a52acba1680e85c4d642536ae43859e716cb3d3caaf971856b"
+    },
+    {
+      "path": "/workspace/cqc-pass9-publication-preparation/lossless-tools/test_lossless_chunks.py",
+      "bytes": 26703,
+      "sha256": "b4836c882aa9181d3ac5b76d5f97ddefb0290056fa7d9d9adeff66fa1f556bf7"
+    },
+    {
+      "path": "/workspace/cqc-pass9-publication-preparation/lossless-tools/README.md",
+      "bytes": 5322,
+      "sha256": "8aa2ac2d0f419dbdf4a4446f57fdfb7a19dd6bfe9c466b13f9d5e625d3ee325b"
+    }
+  ],
+  "frozenManifest": {
+    "path": "/workspace/cqc-pass9-final-qa/actual43-source-freeze.json",
+    "sha256": "dea09b3b8870c5c7d3eb6f6fbe88c9540a0852422d7f255c30d6d51546687052",
+    "entryCount": 43,
+    "confirmedByRoot": true,
+    "status": "frozen"
+  },
+  "frozenSource": {
+    "path": "/workspace/cqc-game-working/cqc-versus-v056/data/combat-sprite-catalog-v1.json",
+    "bytes": 53967500,
+    "sha256": "3e86a705f212492542c5f95f50bddf53a0d0b832c24090a63c094479b91d78dd",
+    "runtimePath": "data/combat-sprite-catalog-v1.json"
+  },
+  "sourceContentReadByThisPreflight": false,
+  "chunkArgv": [
+    "python",
+    "/workspace/cqc-pass9-publication-preparation/lossless-tools/chunk_snapshot.py",
+    "--source",
+    "/workspace/cqc-game-working/cqc-versus-v056/data/combat-sprite-catalog-v1.json",
+    "--logical-path",
+    "source-code/data/combat-sprite-catalog-v1.json",
+    "--output",
+    "/workspace/cqc-pass9-publication-preparation/catalog43-chunks-v1",
+    "--expected-source-sha256",
+    "3e86a705f212492542c5f95f50bddf53a0d0b832c24090a63c094479b91d78dd",
+    "--expected-source-bytes",
+    "53967500",
+    "--frozen-manifest",
+    "/workspace/cqc-pass9-final-qa/actual43-source-freeze.json",
+    "--expected-frozen-manifest-sha256",
+    "dea09b3b8870c5c7d3eb6f6fbe88c9540a0852422d7f255c30d6d51546687052"
+  ],
+  "outputMustBeAbsent": true,
+  "noUncompressedCatalogArchiveCopy": true,
+  "runtimeSourceWrites": 0,
+  "gitOperations": 0,
+  "apiOperations": 0
+}

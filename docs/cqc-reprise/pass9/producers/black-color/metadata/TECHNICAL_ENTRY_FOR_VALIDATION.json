@@ -1,0 +1,1538 @@
+{
+  "entry": {
+    "uid": "core__ninja_mg2",
+    "name": "BLACK NINJA / BLACK COLOR",
+    "game": "Metal Gear 2: Solid Snake (1990, MSX2)",
+    "incarnation": "Kyle Schneider as original MSX2 Black Color; limited original gray/cyan and dark teal flex-armor sprite reconstruction, not Gray Fox or MG1 contact portrait",
+    "coverage": "action-frames",
+    "displayHeight": 224,
+    "baseFrameHeight": 350,
+    "sourceFrameHeights": {
+      "assets/combat-sprites/core__ninja_mg2/a-right-v1.png": 271.0,
+      "assets/combat-sprites/core__ninja_mg2/a-left-v1.png": 279.5,
+      "assets/combat-sprites/core__ninja_mg2/b-right-v1.png": 287.0,
+      "assets/combat-sprites/core__ninja_mg2/b-left-v1.png": 259.5,
+      "assets/combat-sprites/core__ninja_mg2/c-right-v1.png": 280.5,
+      "assets/combat-sprites/core__ninja_mg2/c-left-v1.png": 271.5
+    },
+    "facing": 1,
+    "mirror": false,
+    "fallbackMissingActions": true,
+    "actionMap": {
+      "light": "punch",
+      "heavy": "heavy",
+      "low": "low",
+      "throw": "throw",
+      "special": "shoot",
+      "specialDown": "heavy",
+      "specialForward": "deploy",
+      "specialBack": "deploy",
+      "super": "shoot",
+      "utility": "recover"
+    },
+    "phaseMap": {
+      "punch": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "heavy": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "low": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "shoot": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "deploy": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "throw": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "recover": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "guard": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          0
+        ]
+      },
+      "jump": {
+        "startup": [
+          0
+        ],
+        "active": [
+          0
+        ],
+        "recovery": [
+          1
+        ]
+      },
+      "attack": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      }
+    },
+    "review": {
+      "status": "approved",
+      "reviewer": "/root/paz_two_versions_eva producer; physically viewed original references and six full native sheets/72 cells",
+      "reviewedAt": "2026-10-02",
+      "sourceKind": "original-game-capture",
+      "checks": {
+        "identity": true,
+        "costume": true,
+        "equipment": true,
+        "anatomicalSides": true,
+        "singleFigure": true,
+        "transparentBackground": true
+      },
+      "fidelityStatus": "closest_supported",
+      "absolute1to1Certified": false,
+      "sources": [
+        {
+          "file": "/workspace/cqc-pass8-reference-selection/core__ninja_mg2/manual-original1990-page42.png",
+          "url": "https://archive.org/download/metal-gear-2-solid-snake-manual-original/MetalGear%202%20-%20SolidSnake%20Manual%20%28Original%29_text.pdf#page=42",
+          "sourceKind": "original-manual-page",
+          "scope": "reference-only rendering from saved manual scan",
+          "viewed": true,
+          "sha256": "878fa8490a695d6e98bba9abbce4bf685e72faba264533a5136fcfc8ad2a13d9",
+          "bytes": 680293,
+          "immutableExternalReference": true
+        },
+        {
+          "file": "/workspace/cqc-pass8-reference-selection/core__ninja_mg2/mirror-Black_Ninja.webp",
+          "url": "https://thecodex.wiki/images/9/92/Black_Ninja.webp",
+          "sourceKind": "tiny-original-era-sprite-mirror",
+          "scope": "tiny sprite mirror; source game pixels/palette physically compared; hosting fan power statistics excluded",
+          "viewed": true,
+          "sha256": "49bea446997af7569035db0dccb492330dacf3e39bc15af950ef99c5d7aa94b0",
+          "bytes": 228,
+          "immutableExternalReference": true
+        },
+        {
+          "file": "/workspace/cqc-pass8-reference-selection/core__ninja_mg2/lp21-39-Metal_Gear_2_0143.png",
+          "url": "https://lparchive.org/Metal-Gear-1-2/Update%2021/39-Metal_Gear_2_0143.png",
+          "sourceKind": "original-game-capture",
+          "scope": "original-era MSX2 graphical capture with English translated text hosted in a secondary LP; ROM/patch unverified; tiny visual evidence, not unmodified-Japanese-ROM or LP-commentary authority",
+          "viewed": true,
+          "sha256": "b5e8bfc487b798ddeaac11a13a430340aaf05665d4d8c72ab480678b0bbfc871",
+          "bytes": 9821,
+          "immutableExternalReference": true
+        },
+        {
+          "file": "/workspace/cqc-pass8-reference-selection/core__ninja_mg2/lp21-41-Metal_Gear_2_0148.png",
+          "url": "https://lparchive.org/Metal-Gear-1-2/Update%2021/41-Metal_Gear_2_0148.png",
+          "sourceKind": "original-game-capture",
+          "scope": "original-era MSX2 graphical capture with English translated text hosted in a secondary LP; ROM/patch unverified; tiny visual evidence, not unmodified-Japanese-ROM or LP-commentary authority",
+          "viewed": true,
+          "sha256": "9a30e47bdc6d47b6d0405fea6f89dea0d6987e837abc8e889f37a7b4da0a1f42",
+          "bytes": 10146,
+          "immutableExternalReference": true
+        },
+        {
+          "file": "/workspace/cqc-pass8-reference-selection/core__ninja_mg2/lp21-42-Metal_Gear_2_0112.png",
+          "url": "https://lparchive.org/Metal-Gear-1-2/Update%2021/42-Metal_Gear_2_0112.png",
+          "sourceKind": "original-game-capture",
+          "scope": "original-era MSX2 graphical capture with English translated text hosted in a secondary LP; ROM/patch unverified; tiny visual evidence, not unmodified-Japanese-ROM or LP-commentary authority",
+          "viewed": true,
+          "sha256": "3fede0a5584132aaaedcc9bb8720c995396e887de1643e08c2608bbd064bc53f",
+          "bytes": 9486,
+          "immutableExternalReference": true
+        },
+        {
+          "file": "/workspace/cqc-pass8-reference-selection/core__ninja_mg2/lp21-43-Metal_Gear_2_0113.png",
+          "url": "https://lparchive.org/Metal-Gear-1-2/Update%2021/43-Metal_Gear_2_0113.png",
+          "sourceKind": "original-game-capture",
+          "scope": "original-era MSX2 graphical capture with English translated text hosted in a secondary LP; ROM/patch unverified; tiny visual evidence, not unmodified-Japanese-ROM or LP-commentary authority",
+          "viewed": true,
+          "sha256": "a95aede830fa06dfc45804b6bde152f2dfcb25b0d4f3acf41ea0fb8a92769770",
+          "bytes": 9012,
+          "immutableExternalReference": true
+        }
+      ],
+      "limits": [
+        "Closest supported original1990 MSX2 Black Color/Kyle Schneider reconstruction; no absolute1:1 or pixel-exact face, material, seam, palette, animation or reverse-side certification.",
+        "Original Japanese manual page42 establishes flex armor and enhanced ninja lore. Tiny gray/cyan+dark teal sprite mirror and original-era boss corpse captures establish a limited palette/silhouette, with unresolved realistic face/hair and fine tailoring. The sprite mirror extraction/native enlargement provenance is unverified. Codec portrait images show Kessler and Snake, not Schneider; no MG1 portrait is used as his face.",
+        "English LP images are original-era MSX2 graphical evidence, but ROM, emulator and translation patch are unverified. Secondary LP prose supports throwing stars and sudden relocation; selected captures do not establish a detailed active star projectile or hardware pattern. The held plain4-point star is a restrained authored interpretation, not a certified exact original model.",
+        "All72 versus poses, their CQC strikes, sweep, jump, hit/KO, bounded evade and reserve recovery are authored adaptations. These are new native illustrations in a crisp original-era pixel style, not extracted or upscaled original animations. No katana, scabbard, firearm, Gray Fox optic, cyborg eye, Zandatsu, optical invisibility or universal invulnerability is source-supported or depicted.",
+        "Independent right/left ImageGen requests are preserved. No software flip, native resize, cleanup, transparency removal or pixel editing was performed. ImageGen correction can alter untargeted pixels; previous candidates remain immutable and exact preservation of other cells is not claimed. LEFT hit9 naturally tilts/turns the head backward during recoil; LEFT KO10 now faces LEFT and KO11 lies fully toward its leftward head.",
+        "Native sources have true zero-alpha space and12 large separated bodies, but tiny detached alpha residue and low-alpha glow/fringe remain unedited. Full opacity254 rather than255 and fine fringe purity are not certified. All complete native sheets were physically viewed; automated components do not certify image quality or unseen geometry. Actual browser Canvas, combat phases/collisions and mobile/public runtime review belong to root.",
+        "Runtime group shoot means hand-thrown star, deploy means bounded evade, throw means unarmed CQC, recover means reserve recovery. Damage, speed, costs, meter, range and super count are not canonical data and require a scoped root gameplay adapter; raw legacy blade/cloak/exoskeleton profile is retained read-only and must not silently drive this exact incarnation."
+      ],
+      "approvalScope": "Qualified original-era palette/silhouette, complete native72 action poses and two actual release-hand points; root integration/Canvas/gameplay review remains separate."
+    },
+    "actions": {
+      "idle": {
+        "fps": 4,
+        "loop": true,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/a-right-v1.png",
+            "sha256": "c4a30d0a5e05401dbb3be31700c537d8dfa0b9c5fbc643ff8f7e77c291e310b7",
+            "rect": [
+              133,
+              56,
+              142,
+              282
+            ],
+            "pivot": [
+              0.49709976319545857,
+              0.9822695035460993
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/a-right-v1.png",
+            "sha256": "c4a30d0a5e05401dbb3be31700c537d8dfa0b9c5fbc643ff8f7e77c291e310b7",
+            "rect": [
+              499,
+              58,
+              148,
+              280
+            ],
+            "pivot": [
+              0.4928831829331411,
+              0.9821428571428571
+            ]
+          }
+        ]
+      },
+      "walk": {
+        "fps": 9,
+        "loop": true,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/a-right-v1.png",
+            "sha256": "c4a30d0a5e05401dbb3be31700c537d8dfa0b9c5fbc643ff8f7e77c291e310b7",
+            "rect": [
+              883,
+              57,
+              177,
+              281
+            ],
+            "pivot": [
+              0.43448593234498695,
+              0.9822064056939501
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/a-right-v1.png",
+            "sha256": "c4a30d0a5e05401dbb3be31700c537d8dfa0b9c5fbc643ff8f7e77c291e310b7",
+            "rect": [
+              1262,
+              56,
+              181,
+              283
+            ],
+            "pivot": [
+              0.44576637939367825,
+              0.9823321554770318
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/a-right-v1.png",
+            "sha256": "c4a30d0a5e05401dbb3be31700c537d8dfa0b9c5fbc643ff8f7e77c291e310b7",
+            "rect": [
+              95,
+              397,
+              200,
+              267
+            ],
+            "pivot": [
+              0.5332734164832478,
+              0.9812734082397003
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/a-right-v1.png",
+            "sha256": "c4a30d0a5e05401dbb3be31700c537d8dfa0b9c5fbc643ff8f7e77c291e310b7",
+            "rect": [
+              491,
+              397,
+              185,
+              269
+            ],
+            "pivot": [
+              0.4440558408365251,
+              0.9814126394052045
+            ]
+          }
+        ]
+      },
+      "guard": {
+        "fps": 5,
+        "loop": true,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/a-right-v1.png",
+            "sha256": "c4a30d0a5e05401dbb3be31700c537d8dfa0b9c5fbc643ff8f7e77c291e310b7",
+            "rect": [
+              889,
+              397,
+              153,
+              270
+            ],
+            "pivot": [
+              0.47084577334076544,
+              0.9814814814814815
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/a-right-v1.png",
+            "sha256": "c4a30d0a5e05401dbb3be31700c537d8dfa0b9c5fbc643ff8f7e77c291e310b7",
+            "rect": [
+              1282,
+              392,
+              153,
+              275
+            ],
+            "pivot": [
+              0.47937555323086795,
+              0.9818181818181818
+            ]
+          }
+        ]
+      },
+      "crouch": {
+        "fps": 4,
+        "loop": true,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/a-right-v1.png",
+            "sha256": "c4a30d0a5e05401dbb3be31700c537d8dfa0b9c5fbc643ff8f7e77c291e310b7",
+            "rect": [
+              109,
+              787,
+              196,
+              186
+            ],
+            "pivot": [
+              0.48674117854132115,
+              0.9731182795698925
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/a-right-v1.png",
+            "sha256": "c4a30d0a5e05401dbb3be31700c537d8dfa0b9c5fbc643ff8f7e77c291e310b7",
+            "rect": [
+              507,
+              776,
+              155,
+              197
+            ],
+            "pivot": [
+              0.4593059010643937,
+              0.9746192893401016
+            ]
+          }
+        ]
+      },
+      "jump": {
+        "fps": 6,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/a-right-v1.png",
+            "sha256": "c4a30d0a5e05401dbb3be31700c537d8dfa0b9c5fbc643ff8f7e77c291e310b7",
+            "rect": [
+              903,
+              707,
+              152,
+              195
+            ],
+            "pivot": [
+              0.35917560220493866,
+              0.9743589743589743
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/a-right-v1.png",
+            "sha256": "c4a30d0a5e05401dbb3be31700c537d8dfa0b9c5fbc643ff8f7e77c291e310b7",
+            "rect": [
+              1282,
+              708,
+              189,
+              267
+            ],
+            "pivot": [
+              0.46555213699119763,
+              0.9812734082397003
+            ]
+          }
+        ]
+      },
+      "punch": {
+        "fps": 12,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-right-v1.png",
+            "sha256": "02ee5d2281c02495c58a8b98db153ca26157f5e18db3255a75e333f0892f4485",
+            "rect": [
+              74,
+              57,
+              193,
+              301
+            ],
+            "pivot": [
+              0.5105109213964313,
+              0.9833887043189369
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-right-v1.png",
+            "sha256": "02ee5d2281c02495c58a8b98db153ca26157f5e18db3255a75e333f0892f4485",
+            "rect": [
+              442,
+              70,
+              318,
+              288
+            ],
+            "pivot": [
+              0.43366915215032786,
+              0.9826388888888888
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-right-v1.png",
+            "sha256": "02ee5d2281c02495c58a8b98db153ca26157f5e18db3255a75e333f0892f4485",
+            "rect": [
+              831,
+              70,
+              202,
+              293
+            ],
+            "pivot": [
+              0.5376811417269963,
+              0.9829351535836177
+            ]
+          }
+        ]
+      },
+      "heavy": {
+        "fps": 10,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-right-v1.png",
+            "sha256": "02ee5d2281c02495c58a8b98db153ca26157f5e18db3255a75e333f0892f4485",
+            "rect": [
+              1237,
+              33,
+              222,
+              328
+            ],
+            "pivot": [
+              0.5689733672540205,
+              0.9847560975609756
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-right-v1.png",
+            "sha256": "02ee5d2281c02495c58a8b98db153ca26157f5e18db3255a75e333f0892f4485",
+            "rect": [
+              74,
+              429,
+              292,
+              255
+            ],
+            "pivot": [
+              0.5774662932834672,
+              0.9803921568627451
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-right-v1.png",
+            "sha256": "02ee5d2281c02495c58a8b98db153ca26157f5e18db3255a75e333f0892f4485",
+            "rect": [
+              469,
+              398,
+              208,
+              286
+            ],
+            "pivot": [
+              0.5328399289059603,
+              0.9825174825174825
+            ]
+          }
+        ]
+      },
+      "low": {
+        "fps": 10,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-right-v1.png",
+            "sha256": "02ee5d2281c02495c58a8b98db153ca26157f5e18db3255a75e333f0892f4485",
+            "rect": [
+              838,
+              491,
+              219,
+              199
+            ],
+            "pivot": [
+              0.5002247028871231,
+              0.9748743718592965
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-right-v1.png",
+            "sha256": "02ee5d2281c02495c58a8b98db153ca26157f5e18db3255a75e333f0892f4485",
+            "rect": [
+              1187,
+              495,
+              304,
+              189
+            ],
+            "pivot": [
+              0.3151176993115697,
+              0.9735449735449735
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-right-v1.png",
+            "sha256": "02ee5d2281c02495c58a8b98db153ca26157f5e18db3255a75e333f0892f4485",
+            "rect": [
+              82,
+              789,
+              233,
+              194
+            ],
+            "pivot": [
+              0.5216039986631414,
+              0.9742268041237113
+            ]
+          }
+        ]
+      },
+      "hit": {
+        "fps": 0,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-right-v1.png",
+            "sha256": "02ee5d2281c02495c58a8b98db153ca26157f5e18db3255a75e333f0892f4485",
+            "rect": [
+              458,
+              709,
+              235,
+              278
+            ],
+            "pivot": [
+              0.5401846000831686,
+              0.9820143884892086
+            ]
+          }
+        ]
+      },
+      "ko": {
+        "fps": 6,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-right-v1.png",
+            "sha256": "02ee5d2281c02495c58a8b98db153ca26157f5e18db3255a75e333f0892f4485",
+            "rect": [
+              806,
+              809,
+              246,
+              174
+            ],
+            "pivot": [
+              0.5335705790907137,
+              0.9712643678160919
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-right-v1.png",
+            "sha256": "02ee5d2281c02495c58a8b98db153ca26157f5e18db3255a75e333f0892f4485",
+            "rect": [
+              1113,
+              884,
+              400,
+              103
+            ],
+            "pivot": [
+              0.5043100342280673,
+              0.9514563106796117
+            ]
+          }
+        ]
+      },
+      "shoot": {
+        "fps": 10,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/c-right-v1.png",
+            "sha256": "a45a16fe70c977324ca79bfe43623711d5ac0e3776e9edd55f58ef4fb22a17ea",
+            "rect": [
+              96,
+              33,
+              212,
+              314
+            ],
+            "pivot": [
+              0.5282845516586987,
+              0.9840764331210191
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/c-right-v1.png",
+            "sha256": "a45a16fe70c977324ca79bfe43623711d5ac0e3776e9edd55f58ef4fb22a17ea",
+            "rect": [
+              441,
+              56,
+              304,
+              290
+            ],
+            "pivot": [
+              0.4223102646118056,
+              0.9827586206896551
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/c-right-v1.png",
+            "sha256": "a45a16fe70c977324ca79bfe43623711d5ac0e3776e9edd55f58ef4fb22a17ea",
+            "rect": [
+              847,
+              56,
+              213,
+              290
+            ],
+            "pivot": [
+              0.5242529470048432,
+              0.9827586206896551
+            ]
+          }
+        ]
+      },
+      "deploy": {
+        "fps": 8,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/c-right-v1.png",
+            "sha256": "a45a16fe70c977324ca79bfe43623711d5ac0e3776e9edd55f58ef4fb22a17ea",
+            "rect": [
+              1236,
+              100,
+              213,
+              243
+            ],
+            "pivot": [
+              0.5448833969549388,
+              0.9794238683127572
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/c-right-v1.png",
+            "sha256": "a45a16fe70c977324ca79bfe43623711d5ac0e3776e9edd55f58ef4fb22a17ea",
+            "rect": [
+              45,
+              446,
+              311,
+              215
+            ],
+            "pivot": [
+              0.5844043076325544,
+              0.9767441860465116
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/c-right-v1.png",
+            "sha256": "a45a16fe70c977324ca79bfe43623711d5ac0e3776e9edd55f58ef4fb22a17ea",
+            "rect": [
+              468,
+              396,
+              192,
+              267
+            ],
+            "pivot": [
+              0.4672854785478548,
+              0.9812734082397003
+            ]
+          }
+        ]
+      },
+      "throw": {
+        "fps": 10,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/c-right-v1.png",
+            "sha256": "a45a16fe70c977324ca79bfe43623711d5ac0e3776e9edd55f58ef4fb22a17ea",
+            "rect": [
+              822,
+              396,
+              291,
+              274
+            ],
+            "pivot": [
+              0.4017797293284121,
+              0.9817518248175182
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/c-right-v1.png",
+            "sha256": "a45a16fe70c977324ca79bfe43623711d5ac0e3776e9edd55f58ef4fb22a17ea",
+            "rect": [
+              1231,
+              380,
+              253,
+              289
+            ],
+            "pivot": [
+              0.5729420096964998,
+              0.9826989619377162
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/c-right-v1.png",
+            "sha256": "a45a16fe70c977324ca79bfe43623711d5ac0e3776e9edd55f58ef4fb22a17ea",
+            "rect": [
+              81,
+              754,
+              200,
+              237
+            ],
+            "pivot": [
+              0.5155413676656818,
+              0.9789029535864979
+            ]
+          }
+        ]
+      },
+      "recover": {
+        "fps": 5,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/c-right-v1.png",
+            "sha256": "a45a16fe70c977324ca79bfe43623711d5ac0e3776e9edd55f58ef4fb22a17ea",
+            "rect": [
+              483,
+              711,
+              175,
+              279
+            ],
+            "pivot": [
+              0.49255123674911633,
+              0.982078853046595
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/c-right-v1.png",
+            "sha256": "a45a16fe70c977324ca79bfe43623711d5ac0e3776e9edd55f58ef4fb22a17ea",
+            "rect": [
+              879,
+              702,
+              158,
+              291
+            ],
+            "pivot": [
+              0.4996792933260725,
+              0.9828178694158075
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/c-right-v1.png",
+            "sha256": "a45a16fe70c977324ca79bfe43623711d5ac0e3776e9edd55f58ef4fb22a17ea",
+            "rect": [
+              1281,
+              692,
+              141,
+              302
+            ],
+            "pivot": [
+              0.4934605037906585,
+              0.9834437086092715
+            ]
+          }
+        ]
+      },
+      "attack": {
+        "fps": 12,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-right-v1.png",
+            "sha256": "02ee5d2281c02495c58a8b98db153ca26157f5e18db3255a75e333f0892f4485",
+            "rect": [
+              74,
+              57,
+              193,
+              301
+            ],
+            "pivot": [
+              0.5105109213964313,
+              0.9833887043189369
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-right-v1.png",
+            "sha256": "02ee5d2281c02495c58a8b98db153ca26157f5e18db3255a75e333f0892f4485",
+            "rect": [
+              442,
+              70,
+              318,
+              288
+            ],
+            "pivot": [
+              0.43366915215032786,
+              0.9826388888888888
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-right-v1.png",
+            "sha256": "02ee5d2281c02495c58a8b98db153ca26157f5e18db3255a75e333f0892f4485",
+            "rect": [
+              831,
+              70,
+              202,
+              293
+            ],
+            "pivot": [
+              0.5376811417269963,
+              0.9829351535836177
+            ]
+          }
+        ]
+      }
+    },
+    "oppositeActions": {
+      "idle": {
+        "fps": 4,
+        "loop": true,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/a-left-v1.png",
+            "sha256": "bc2ca67d76226d3c1d7891e7a4ca3c8e8f95ac7164bcd0b8d87622a6dc11e530",
+            "rect": [
+              152,
+              56,
+              142,
+              290
+            ],
+            "pivot": [
+              0.4908610696793439,
+              0.9827586206896551
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/a-left-v1.png",
+            "sha256": "bc2ca67d76226d3c1d7891e7a4ca3c8e8f95ac7164bcd0b8d87622a6dc11e530",
+            "rect": [
+              489,
+              56,
+              165,
+              289
+            ],
+            "pivot": [
+              0.5115622702369378,
+              0.9826989619377162
+            ]
+          }
+        ]
+      },
+      "walk": {
+        "fps": 9,
+        "loop": true,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/a-left-v1.png",
+            "sha256": "bc2ca67d76226d3c1d7891e7a4ca3c8e8f95ac7164bcd0b8d87622a6dc11e530",
+            "rect": [
+              858,
+              66,
+              192,
+              280
+            ],
+            "pivot": [
+              0.5298927057070824,
+              0.9821428571428571
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/a-left-v1.png",
+            "sha256": "bc2ca67d76226d3c1d7891e7a4ca3c8e8f95ac7164bcd0b8d87622a6dc11e530",
+            "rect": [
+              1219,
+              55,
+              190,
+              291
+            ],
+            "pivot": [
+              0.5232018830066373,
+              0.9828178694158075
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/a-left-v1.png",
+            "sha256": "bc2ca67d76226d3c1d7891e7a4ca3c8e8f95ac7164bcd0b8d87622a6dc11e530",
+            "rect": [
+              119,
+              400,
+              206,
+              278
+            ],
+            "pivot": [
+              0.5103900925148325,
+              0.9820143884892086
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/a-left-v1.png",
+            "sha256": "bc2ca67d76226d3c1d7891e7a4ca3c8e8f95ac7164bcd0b8d87622a6dc11e530",
+            "rect": [
+              502,
+              397,
+              204,
+              282
+            ],
+            "pivot": [
+              0.500208825219327,
+              0.9822695035460993
+            ]
+          }
+        ]
+      },
+      "guard": {
+        "fps": 5,
+        "loop": true,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/a-left-v1.png",
+            "sha256": "bc2ca67d76226d3c1d7891e7a4ca3c8e8f95ac7164bcd0b8d87622a6dc11e530",
+            "rect": [
+              875,
+              395,
+              177,
+              284
+            ],
+            "pivot": [
+              0.5516352271140855,
+              0.9823943661971831
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/a-left-v1.png",
+            "sha256": "bc2ca67d76226d3c1d7891e7a4ca3c8e8f95ac7164bcd0b8d87622a6dc11e530",
+            "rect": [
+              1255,
+              403,
+              172,
+              276
+            ],
+            "pivot": [
+              0.5159233758070971,
+              0.9818840579710145
+            ]
+          }
+        ]
+      },
+      "crouch": {
+        "fps": 4,
+        "loop": true,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/a-left-v1.png",
+            "sha256": "bc2ca67d76226d3c1d7891e7a4ca3c8e8f95ac7164bcd0b8d87622a6dc11e530",
+            "rect": [
+              135,
+              791,
+              192,
+              193
+            ],
+            "pivot": [
+              0.5038466323822163,
+              0.9740932642487047
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/a-left-v1.png",
+            "sha256": "bc2ca67d76226d3c1d7891e7a4ca3c8e8f95ac7164bcd0b8d87622a6dc11e530",
+            "rect": [
+              511,
+              781,
+              167,
+              197
+            ],
+            "pivot": [
+              0.5168536958454659,
+              0.9746192893401016
+            ]
+          }
+        ]
+      },
+      "jump": {
+        "fps": 6,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/a-left-v1.png",
+            "sha256": "bc2ca67d76226d3c1d7891e7a4ca3c8e8f95ac7164bcd0b8d87622a6dc11e530",
+            "rect": [
+              868,
+              708,
+              174,
+              207
+            ],
+            "pivot": [
+              0.6175228712174525,
+              0.9758454106280193
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/a-left-v1.png",
+            "sha256": "bc2ca67d76226d3c1d7891e7a4ca3c8e8f95ac7164bcd0b8d87622a6dc11e530",
+            "rect": [
+              1226,
+              716,
+              212,
+              271
+            ],
+            "pivot": [
+              0.518045016406891,
+              0.981549815498155
+            ]
+          }
+        ]
+      },
+      "punch": {
+        "fps": 12,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-left-v1.png",
+            "sha256": "ebaf196b04a35d9acb382813c8d79923b3523e45386dd41642d5b7a294adc6fd",
+            "rect": [
+              112,
+              67,
+              201,
+              270
+            ],
+            "pivot": [
+              0.5030710335814649,
+              0.9814814814814815
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-left-v1.png",
+            "sha256": "ebaf196b04a35d9acb382813c8d79923b3523e45386dd41642d5b7a294adc6fd",
+            "rect": [
+              438,
+              71,
+              261,
+              267
+            ],
+            "pivot": [
+              0.5869456594507975,
+              0.9812734082397003
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-left-v1.png",
+            "sha256": "ebaf196b04a35d9acb382813c8d79923b3523e45386dd41642d5b7a294adc6fd",
+            "rect": [
+              859,
+              70,
+              216,
+              269
+            ],
+            "pivot": [
+              0.4801019394042651,
+              0.9814126394052045
+            ]
+          }
+        ]
+      },
+      "heavy": {
+        "fps": 10,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-left-v1.png",
+            "sha256": "ebaf196b04a35d9acb382813c8d79923b3523e45386dd41642d5b7a294adc6fd",
+            "rect": [
+              1237,
+              47,
+              208,
+              292
+            ],
+            "pivot": [
+              0.5757440854744337,
+              0.9828767123287672
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-left-v1.png",
+            "sha256": "ebaf196b04a35d9acb382813c8d79923b3523e45386dd41642d5b7a294adc6fd",
+            "rect": [
+              74,
+              396,
+              267,
+              267
+            ],
+            "pivot": [
+              0.5494093211276001,
+              0.9812734082397003
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-left-v1.png",
+            "sha256": "ebaf196b04a35d9acb382813c8d79923b3523e45386dd41642d5b7a294adc6fd",
+            "rect": [
+              490,
+              396,
+              210,
+              267
+            ],
+            "pivot": [
+              0.5185925605744063,
+              0.9812734082397003
+            ]
+          }
+        ]
+      },
+      "low": {
+        "fps": 10,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-left-v1.png",
+            "sha256": "ebaf196b04a35d9acb382813c8d79923b3523e45386dd41642d5b7a294adc6fd",
+            "rect": [
+              842,
+              470,
+              193,
+              194
+            ],
+            "pivot": [
+              0.5421641852644089,
+              0.9742268041237113
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-left-v1.png",
+            "sha256": "ebaf196b04a35d9acb382813c8d79923b3523e45386dd41642d5b7a294adc6fd",
+            "rect": [
+              1183,
+              491,
+              312,
+              174
+            ],
+            "pivot": [
+              0.5704239776905801,
+              0.9712643678160919
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-left-v1.png",
+            "sha256": "ebaf196b04a35d9acb382813c8d79923b3523e45386dd41642d5b7a294adc6fd",
+            "rect": [
+              107,
+              787,
+              193,
+              187
+            ],
+            "pivot": [
+              0.4746072077830226,
+              0.9732620320855615
+            ]
+          }
+        ]
+      },
+      "hit": {
+        "fps": 0,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-left-v1.png",
+            "sha256": "ebaf196b04a35d9acb382813c8d79923b3523e45386dd41642d5b7a294adc6fd",
+            "rect": [
+              480,
+              709,
+              219,
+              265
+            ],
+            "pivot": [
+              0.4701598392413874,
+              0.9811320754716981
+            ]
+          }
+        ]
+      },
+      "ko": {
+        "fps": 6,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-left-v1.png",
+            "sha256": "ebaf196b04a35d9acb382813c8d79923b3523e45386dd41642d5b7a294adc6fd",
+            "rect": [
+              835,
+              770,
+              217,
+              204
+            ],
+            "pivot": [
+              0.48224261019683534,
+              0.9754901960784313
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-left-v1.png",
+            "sha256": "ebaf196b04a35d9acb382813c8d79923b3523e45386dd41642d5b7a294adc6fd",
+            "rect": [
+              1158,
+              862,
+              349,
+              108
+            ],
+            "pivot": [
+              0.4564975833765582,
+              0.9537037037037037
+            ]
+          }
+        ]
+      },
+      "shoot": {
+        "fps": 10,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/c-left-v1.png",
+            "sha256": "7bb1553543a8a6383381c11d9557b7c919be1d52c26d4c12b68da8a424e7f80a",
+            "rect": [
+              99,
+              54,
+              217,
+              273
+            ],
+            "pivot": [
+              0.5987766693366344,
+              0.9816849816849816
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/c-left-v1.png",
+            "sha256": "7bb1553543a8a6383381c11d9557b7c919be1d52c26d4c12b68da8a424e7f80a",
+            "rect": [
+              434,
+              62,
+              277,
+              265
+            ],
+            "pivot": [
+              0.617268323122498,
+              0.9811320754716981
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/c-left-v1.png",
+            "sha256": "7bb1553543a8a6383381c11d9557b7c919be1d52c26d4c12b68da8a424e7f80a",
+            "rect": [
+              873,
+              57,
+              192,
+              266
+            ],
+            "pivot": [
+              0.4554552301350003,
+              0.981203007518797
+            ]
+          }
+        ]
+      },
+      "deploy": {
+        "fps": 8,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/c-left-v1.png",
+            "sha256": "7bb1553543a8a6383381c11d9557b7c919be1d52c26d4c12b68da8a424e7f80a",
+            "rect": [
+              1256,
+              124,
+              197,
+              203
+            ],
+            "pivot": [
+              0.5108306030151433,
+              0.9753694581280788
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/c-left-v1.png",
+            "sha256": "7bb1553543a8a6383381c11d9557b7c919be1d52c26d4c12b68da8a424e7f80a",
+            "rect": [
+              89,
+              424,
+              291,
+              212
+            ],
+            "pivot": [
+              0.41655034219517517,
+              0.9764150943396226
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/c-left-v1.png",
+            "sha256": "7bb1553543a8a6383381c11d9557b7c919be1d52c26d4c12b68da8a424e7f80a",
+            "rect": [
+              512,
+              416,
+              192,
+              225
+            ],
+            "pivot": [
+              0.36697203126278727,
+              0.9777777777777777
+            ]
+          }
+        ]
+      },
+      "throw": {
+        "fps": 10,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/c-left-v1.png",
+            "sha256": "7bb1553543a8a6383381c11d9557b7c919be1d52c26d4c12b68da8a424e7f80a",
+            "rect": [
+              843,
+              379,
+              235,
+              266
+            ],
+            "pivot": [
+              0.5807733016524461,
+              0.981203007518797
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/c-left-v1.png",
+            "sha256": "7bb1553543a8a6383381c11d9557b7c919be1d52c26d4c12b68da8a424e7f80a",
+            "rect": [
+              1174,
+              381,
+              299,
+              261
+            ],
+            "pivot": [
+              0.5550882730536184,
+              0.9808429118773946
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/c-left-v1.png",
+            "sha256": "7bb1553543a8a6383381c11d9557b7c919be1d52c26d4c12b68da8a424e7f80a",
+            "rect": [
+              131,
+              713,
+              212,
+              258
+            ],
+            "pivot": [
+              0.4356752115681332,
+              0.9806201550387597
+            ]
+          }
+        ]
+      },
+      "recover": {
+        "fps": 5,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/c-left-v1.png",
+            "sha256": "7bb1553543a8a6383381c11d9557b7c919be1d52c26d4c12b68da8a424e7f80a",
+            "rect": [
+              501,
+              696,
+              203,
+              272
+            ],
+            "pivot": [
+              0.44836235296547605,
+              0.9816176470588235
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/c-left-v1.png",
+            "sha256": "7bb1553543a8a6383381c11d9557b7c919be1d52c26d4c12b68da8a424e7f80a",
+            "rect": [
+              908,
+              698,
+              165,
+              269
+            ],
+            "pivot": [
+              0.5071722247601642,
+              0.9814126394052045
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/c-left-v1.png",
+            "sha256": "7bb1553543a8a6383381c11d9557b7c919be1d52c26d4c12b68da8a424e7f80a",
+            "rect": [
+              1277,
+              678,
+              142,
+              291
+            ],
+            "pivot": [
+              0.48956853947491474,
+              0.9828178694158075
+            ]
+          }
+        ]
+      },
+      "attack": {
+        "fps": 12,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-left-v1.png",
+            "sha256": "ebaf196b04a35d9acb382813c8d79923b3523e45386dd41642d5b7a294adc6fd",
+            "rect": [
+              112,
+              67,
+              201,
+              270
+            ],
+            "pivot": [
+              0.5030710335814649,
+              0.9814814814814815
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-left-v1.png",
+            "sha256": "ebaf196b04a35d9acb382813c8d79923b3523e45386dd41642d5b7a294adc6fd",
+            "rect": [
+              438,
+              71,
+              261,
+              267
+            ],
+            "pivot": [
+              0.5869456594507975,
+              0.9812734082397003
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__ninja_mg2/b-left-v1.png",
+            "sha256": "ebaf196b04a35d9acb382813c8d79923b3523e45386dd41642d5b7a294adc6fd",
+            "rect": [
+              859,
+              70,
+              216,
+              269
+            ],
+            "pivot": [
+              0.4801019394042651,
+              0.9814126394052045
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "sourceFiles": [
+    {
+      "file": "assets/combat-sprites/core__ninja_mg2/a-right-v1.png",
+      "source": "/workspace/cqc-pass9-generation/black-color/sources/A_RIGHT_FULL_01.png"
+    },
+    {
+      "file": "assets/combat-sprites/core__ninja_mg2/a-left-v1.png",
+      "source": "/workspace/cqc-pass9-generation/black-color/sources/A_LEFT_FULL_02.png"
+    },
+    {
+      "file": "assets/combat-sprites/core__ninja_mg2/b-right-v1.png",
+      "source": "/workspace/cqc-pass9-generation/black-color/sources/B_RIGHT_FULL_03.png"
+    },
+    {
+      "file": "assets/combat-sprites/core__ninja_mg2/b-left-v1.png",
+      "source": "/workspace/cqc-pass9-generation/black-color/sources/B_LEFT_FULL_04.png"
+    },
+    {
+      "file": "assets/combat-sprites/core__ninja_mg2/c-right-v1.png",
+      "source": "/workspace/cqc-pass9-generation/black-color/sources/C_RIGHT_FULL_03.png"
+    },
+    {
+      "file": "assets/combat-sprites/core__ninja_mg2/c-left-v1.png",
+      "source": "/workspace/cqc-pass9-generation/black-color/sources/C_LEFT_FULL_03.png"
+    }
+  ],
+  "notImported": true,
+  "producerOnlyEvidence": true
+}

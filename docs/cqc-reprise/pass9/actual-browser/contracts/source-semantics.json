@@ -1,0 +1,103 @@
+{
+  "schema": "cqc.pass9.browser-source-semantics/1",
+  "status": "prepared-not-installed",
+  "uids": [
+    "core__runner_mg2",
+    "core__ninja_mg2",
+    "core__redblaster_mg2",
+    "core__jungle_evil"
+  ],
+  "nativeSources": 24,
+  "uniquePoses": 288,
+  "sourceClaims": {
+    "fidelityStatus": "closest_supported",
+    "absolute1to1Certified": false,
+    "nativeAnimationsExtractedFromMSX2": false,
+    "nativeImageBytesEditedByPreparation": false,
+    "numerical1to1Certified": false,
+    "canonicalBallisticsOrBalanceClaimed": false,
+    "browserCanvasReviewPerformed": false,
+    "independentPhysicalReviewPerformedHere": false
+  },
+  "commonQualifications": [
+    "All 72 poses per fighter are newly authored versus interpretations, not original animation extraction or upscaling.",
+    "Original Japanese manual page42 supports names/lore; tiny sprite mirrors and secondary LP screenshots constrain only observable appearance. LP ROM/emulator/translation patch and sprite extraction provenance remain unverified.",
+    "Fine garment, face, reverse-side topology and exact weapon hardware are unresolved. Display heights, renderer pivots, collisions, phase timings, damage, costs, reserve counts and super counts are versus adaptations.",
+    "Native transparent regions coexist with low-alpha fringe/speckles and near-opaque body pixels; no alpha255 purity, native cleanup or exact hidden topology certification.",
+    "Measured point SHA/RGBA/rect/pivot agreement validates the metadata relationship, not canon, physical appearance or live collision behavior."
+  ],
+  "entries": {
+    "core__runner_mg2": {
+      "identity": "RUNNING MAN, original1990 MSX2",
+      "weapon": "unarmed",
+      "activeOrigins": 0,
+      "sourceActions": {
+        "shoot": "visible sprint",
+        "charge": "running/contact",
+        "recover": "stationary breathing"
+      },
+      "required": [
+        "no gun",
+        "no projectile or ground object launch",
+        "no emitted gas or placed mine"
+      ],
+      "qualification": "Original running/nerve-gas encounter does not prove personal weapon or attacks; versus normals/guard/throws/contact remain authored."
+    },
+    "core__ninja_mg2": {
+      "identity": "BLACK COLOR / KYLE SCHNEIDER, original1990 MSX2",
+      "weapon": "hand-thrown stars",
+      "activeOrigins": 2,
+      "sourceActions": {
+        "shoot": "visible star-release hand",
+        "deploy": "visible bounded evade"
+      },
+      "required": [
+        "alpha1 in cloak branch",
+        "no cloak/invisibility",
+        "no firearm muzzle origin",
+        "no katana/exoskeleton/Zandatsu"
+      ],
+      "qualification": "Exact star hardware, trajectory, eight-unit reserve and three-star super are not canonical data."
+    },
+    "core__redblaster_mg2": {
+      "identity": "RED BLASTER, original1990 MSX2",
+      "weapon": "qualified hand-grenade interpretation",
+      "activeOrigins": 2,
+      "documentaryInactiveOrigins": 2,
+      "sourceActions": {
+        "shoot": "qualified hand-grenade release",
+        "specialDown": "A crouch source8/9, local0/1"
+      },
+      "producerDeliveryDown": "deploy",
+      "preparedFinalDown": "crouch",
+      "required": [
+        "Down stationary travel0 damage0 cost0",
+        "Down no projectile/trap/wire/ground-object origin",
+        "deploy absent from active actionMap"
+      ],
+      "qualification": "Grenades and immobilizing wires are source-supported categories; exact launcher/model/original animation unresolved. C4 white segment remains blade/wire/handle ambiguous and only documentary. Corrected manual lore names Lumumba University; no Leningrad/Bergen claim."
+    },
+    "core__jungle_evil": {
+      "identity": "PREDATOR, runtime alias JUNGLE EVIL, original1990 MSX2",
+      "weapon": "generic conventional longgun silhouette",
+      "activeOrigins": 2,
+      "sourceActions": {
+        "shoot": "visible native muzzle tip",
+        "deploy": "always-visible low movement"
+      },
+      "required": [
+        "exact UID without _mg2",
+        "alpha1 in cloak branch",
+        "no cloak/invisibility",
+        "no grenade/flame/laser/plasma"
+      ],
+      "qualification": "Human guerrillero, not film alien. Brand/caliber/feed/fire mode, twelve-unit reserve, reload restoration and six-shot super are authored or unresolved."
+    }
+  },
+  "runtimeHookRecommendations": [
+    "Install exact-UID adapter last; compare exact action/phase/source geometry with expected4.",
+    "Evaluate all14 slot/face origin fixtures against typed points; empty runner origin routes must remain empty.",
+    "Prepend PASS9 hasSourceFinisher before PASS6 drawFinisher so legacy drawing side effects are bypassed.",
+    "Use PASS9 cloakAlpha before earlier adapters/fallback so Black/Jungle visible low poses remain alpha1."
+  ]
+}

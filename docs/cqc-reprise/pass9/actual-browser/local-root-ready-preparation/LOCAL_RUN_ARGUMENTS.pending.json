@@ -1,0 +1,40 @@
+{
+  "status": "pending-root-local-READY-no-browser-started",
+  "baseURL": "http://127.0.0.1:5178",
+  "runnerPath": "/workspace/cqc-pass9-browser-preparation/verify-pass9-browser.py",
+  "runnerSHA256": "5f65941671ce119b2130caafd123fb2434e533d2e111e75f3bdb86674d435b05",
+  "argvTemplate": [
+    "python",
+    "/workspace/cqc-pass9-browser-preparation/verify-pass9-browser.py",
+    "--run-after-root-ready",
+    "--scope",
+    "local-root-ready",
+    "--base",
+    "http://127.0.0.1:5178",
+    "--label",
+    "browser-local-pass9-root43-01",
+    "--manifest",
+    "ROOT_FINAL_MANIFEST_PATH",
+    "--manifest-sha256",
+    "ROOT_FINAL_MANIFEST_SHA256",
+    "--source-freeze",
+    "ROOT_FREEZE43_PATH",
+    "--source-freeze-sha256",
+    "ROOT_FREEZE43_SHA256",
+    "--catalog",
+    "/workspace/cqc-game-working/cqc-versus-v056/data/combat-sprite-catalog-v1.json",
+    "--catalog-sha256",
+    "ROOT_CANONICAL43_SHA256"
+  ],
+  "expectedCommit": null,
+  "browserOwnedOnly": true,
+  "screenMaximum": 6,
+  "reportBudgetBytes": 8388608,
+  "mustConfirmBeforeExecuting": [
+    "Root READY explicitly authorizes this local43 run",
+    "S public/cqc has completed runtime sync for exact final graph",
+    "43 source freeze and expected runtime manifest SHA supplied by root",
+    "Root keeps R/S frozen throughout the live run"
+  ],
+  "stageGameplayCoverage": "Parallel stage agent owns three source-supported stage gameflow checks; this runner owns actors, engine poses/launches, native star and preserved boots/layout."
+}

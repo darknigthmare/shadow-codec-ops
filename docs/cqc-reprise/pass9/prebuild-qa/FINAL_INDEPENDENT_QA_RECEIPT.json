@@ -1,0 +1,103 @@
+{
+  "schema": "cqc.pass9.final-independent-source-qa/1",
+  "status": "passed",
+  "checkedAt": "2026-10-02T12:30:33.177158+00:00",
+  "sourceFreeze": {
+    "path": "/workspace/cqc-pass9-final-qa/actual43-source-freeze.json",
+    "bytes": 102955,
+    "sha256": "dea09b3b8870c5c7d3eb6f6fbe88c9540a0852422d7f255c30d6d51546687052"
+  },
+  "actualEntryCount": 43,
+  "integratedRealEngine": {
+    "path": "/workspace/cqc-pass9-final-qa/runs/integrated-real-engine-final43-02/REAL_ENGINE_PROOF.json",
+    "bytes": 144353,
+    "sha256": "b8279b179c0876dc6706d0469c778f9d9efec0b9986f504bed5a79702a60736c"
+  },
+  "actualInstalledNativeStarMetadataEngine": {
+    "path": "/workspace/cqc-pass9-final-qa/runs/native-star-installed-final43-01/NATIVE_STAR_RENDERER_PROOF.json",
+    "bytes": 43357,
+    "sha256": "8c0c050275cd6566b66835781a3250230f958cf7ae2901497c627e01871bf351"
+  },
+  "gameplayChecks": {
+    "passed": 413,
+    "total": 413,
+    "unrelatedProfilesAndFinishersPreserved": 350,
+    "parityTicks": 56000,
+    "actual43InstalledSources": true
+  },
+  "nativeStarSupplementalChecks": {
+    "passed": 8,
+    "total": 8,
+    "actualInstalledRendererAndAtlas": true,
+    "actualHydrated354Fighters": true,
+    "actualEngineAges": true,
+    "actualModuleDispatchBeforeParentRotation": true,
+    "ImageLoadingUsesExplicitMetadataTestDouble": true,
+    "actualBrowserDecodingClaimed": false,
+    "checksOverlapMain413": true
+  },
+  "shadow": {
+    "lint": {
+      "status": "passed",
+      "log": {
+        "path": "/workspace/cqc-pass9-final-qa/shadow/lint.log",
+        "bytes": 48,
+        "sha256": "13e1df7fc0771fe4d563f2feb673e2d753a6dccd2858cbb3b94b0d6886d5a168"
+      }
+    },
+    "cqcCheck": {
+      "status": "passed",
+      "graphFiles": 1017,
+      "log": {
+        "path": "/workspace/cqc-pass9-final-qa/shadow/cqc-check.log",
+        "bytes": 131,
+        "sha256": "d6487da89de5815e9947310a6a672e88ab08e70dd73134f732b3c6ece3e280f3"
+      }
+    },
+    "defaultVitest": {
+      "status": "passed",
+      "testFiles": 104,
+      "tests": 705,
+      "log": {
+        "path": "/workspace/cqc-pass9-final-qa/shadow/test-default-archive-exclusion-fixed-03.log",
+        "bytes": 7283,
+        "sha256": "6a77e2f75c8da8d48d2a6e5f61f8022a4835fc84332f50fc0a5cabfae3aac7a2"
+      }
+    },
+    "reviewedToolingChange": {
+      "file": {
+        "path": "/workspace/shadow-codec-recovered/vitest.config.ts",
+        "bytes": 255,
+        "sha256": "318e87ea6a06826cc96d3d811dfac9d450c7566a93c1cbb7ba3df659cc0e60cc"
+      },
+      "retainedOriginal": {
+        "path": "/workspace/cqc-pass9-final-qa/vitest-config-original.ts",
+        "bytes": 186,
+        "sha256": "a1af797cb46f5592d876c1d4419d6b98b980efe4c191cfc5d50479075745b731"
+      },
+      "scope": "Exclude documentary archives from application test discovery; preserve default Vitest exclusions"
+    },
+    "priorAttemptsPreserved": true,
+    "unchangedCoreSourceFiles": 345
+  },
+  "frozenFilesRehashedAfterAllQA": 334,
+  "allFrozenSourceBytesUnchanged": true,
+  "shadowCoreSourceBytesUnchanged": true,
+  "accidentalNewFixturePreserved": {
+    "path": "/workspace/cqc-pass9-final-qa/retained-accidental-fixtures/RENAME_RECEIPT.json",
+    "bytes": 738,
+    "sha256": "4e5ee3b991aa7a0fd006976ebf45cd7b3dddc36c65b8595c76041b932e48a909"
+  },
+  "applicationWrittenByQA": false,
+  "sourcePNGEdited": false,
+  "catalogCopied": false,
+  "absolute1to1Certified": false,
+  "fidelityStatus": "closest_supported",
+  "browserVerified": false,
+  "productionVerified": false,
+  "limits": [
+    "Eight native PNG frames are selected by real engine age with metadata Image double; actual browser decode/Canvas matrix remains a separate Raven check.",
+    "Numerical balance, sprite poses, spin cadence and stage dimming periods remain authored Versus adaptations.",
+    "The705 tests verify actual Shadow application/scripts; preserved documentary fixture suites are excluded from discovery and remain intact."
+  ]
+}

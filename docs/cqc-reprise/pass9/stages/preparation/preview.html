@@ -1,0 +1,16 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CQC PASS9 — préparation isolée des stages</title>
+<style>body{margin:16px;background:#101820;color:#edf3f4;font:14px system-ui}canvas{display:block;width:min(100%,1280px);height:auto}select,button{font:inherit}p{max-width:1000px}</style>
+<h1>CQC — revue isolée des trois stages</h1>
+<p>Outer Heaven : modulation locale des centres rouges existants, opacité du masque limitée à 2%. Arsenal : petites lampes cyan existantes, opacité du masque limitée à 3%, capture Substance PC2003. Le rendu RGB tient compte des arrondis Canvas à 8 bits. Cadences d’auteur non établies par les sources fixes. Zanzibar : marques ocre conservées strictement statiques. Les quatre plans et leurs PNG originaux restent inchangés. Cette page ne modifie pas les jeux publiés.</p>
+<label>Stage <select id="stage"><option>outer_heaven</option><option>arsenal_corridor</option><option>zanzibar</option></select></label>
+<button id="view">Afficher à caméra centrale, zoom 0,78, temps 4 s</button>
+<p id="state">Chargement des plans originaux…</p>
+<canvas id="stageCanvas" width="1280" height="720"></canvas>
+<script>window.__consoleErrors=[];window.addEventListener('error',e=>window.__consoleErrors.push(e.message));</script>
+<script src="../cqc-game-working/cqc-versus-v056/src/cqc-stage-layers.js"></script>
+<script>window.BASELINE_STAGE_ENGINE=window.CQC_STAGE_LAYER_ENGINE;</script>
+<script src="cqc-stage-layers.candidate.js"></script>
+<script src="browser-observers.js"></script>
