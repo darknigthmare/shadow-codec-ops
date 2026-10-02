@@ -1,0 +1,4220 @@
+{
+  "schema": "cqc-pass9-real-parent-toast-fix-browser/v1",
+  "checkedAt": "2026-10-02T13:42:54.009914+00:00",
+  "status": "failed",
+  "failure": {
+    "type": "AssertionError",
+    "message": "A real touch button centre is occluded or outside the viewport"
+  },
+  "scope": "local",
+  "baseURL": "http://127.0.0.1:5179",
+  "expectedPublishedCommit40": null,
+  "localGitHEADAtStartAndEnd": "26c5a845dce307c2f2a593cb4859882b023600e7",
+  "sourcePinsBefore": [
+    {
+      "path": "/workspace/shadow-codec-recovered/src/app/App.tsx",
+      "bytes": 7749,
+      "sha256": "ea4d24ab423d3026718708f5f7501538832cc2de8108e0024e74780959267300"
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/src/styles/mobile.css",
+      "bytes": 7528,
+      "sha256": "e368860a9d1f7e27a60f9d1d8a703b31a8a7710d5d1b367919dbefc632c1aeb4"
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/src/components/common/PwaRuntimeBanner.tsx",
+      "bytes": 1226,
+      "sha256": "733542e9cf05c560ad543cc4b2b8b688192353c7438f167fe67bdbfabd8c6217"
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/src/systems/pwaEngine.ts",
+      "bytes": 3608,
+      "sha256": "aff802bd25640268498658e2ac0aedae479f1d038d80eb57445fedfa6c7eebcf"
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/src/components/cqc/CqcLauncher.tsx",
+      "bytes": 2096,
+      "sha256": "cfd90ed2b14dc3802799f5604029a498b082ea03844fd893a83821689a78a51d"
+    }
+  ],
+  "sourcePinsAfter": [
+    {
+      "path": "/workspace/shadow-codec-recovered/src/app/App.tsx",
+      "bytes": 7749,
+      "sha256": "ea4d24ab423d3026718708f5f7501538832cc2de8108e0024e74780959267300"
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/src/styles/mobile.css",
+      "bytes": 7528,
+      "sha256": "e368860a9d1f7e27a60f9d1d8a703b31a8a7710d5d1b367919dbefc632c1aeb4"
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/src/components/common/PwaRuntimeBanner.tsx",
+      "bytes": 1226,
+      "sha256": "733542e9cf05c560ad543cc4b2b8b688192353c7438f167fe67bdbfabd8c6217"
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/src/systems/pwaEngine.ts",
+      "bytes": 3608,
+      "sha256": "aff802bd25640268498658e2ac0aedae479f1d038d80eb57445fedfa6c7eebcf"
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/src/components/cqc/CqcLauncher.tsx",
+      "bytes": 2096,
+      "sha256": "cfd90ed2b14dc3802799f5604029a498b082ea03844fd893a83821689a78a51d"
+    }
+  ],
+  "native334SourcesUnchangedBeforeAndAfter": true,
+  "nativeSourceFreeze": {
+    "path": "/workspace/cqc-pass9-final-qa/actual43-source-freeze.json",
+    "bytes": 102955,
+    "sha256": "dea09b3b8870c5c7d3eb6f6fbe88c9540a0852422d7f255c30d6d51546687052"
+  },
+  "tool": {
+    "path": "/workspace/cqc-pass9-browser-preparation/verify-mobile-toast-fix-v2.py",
+    "bytes": 16044,
+    "sha256": "a1cd617ead79aba0a38490e1b291ebf30b86503c68e12eb3462cdadfae65800a"
+  },
+  "actualArgs": {
+    "base": "http://127.0.0.1:5179",
+    "scope": "local",
+    "label": "mobile-toast-local-02",
+    "commit": null,
+    "root_ready": null,
+    "root_ready_sha256": null
+  },
+  "actualBrowserPrefix": [
+    "/tmp/cqc-browser-npm-cache/_npx/6de2aa2fded2970c/node_modules/agent-browser/bin/agent-browser-linux-x64",
+    "--session",
+    "vc9-toast-fix-261381-3062912",
+    "--executable-path",
+    "/usr/bin/chromium",
+    "--args",
+    "--no-sandbox,--disk-cache-size=1,--media-cache-size=1",
+    "--json"
+  ],
+  "commands": [
+    {
+      "command": [
+        "set",
+        "offline",
+        "off"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "offline": false
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "set",
+        "viewport",
+        "390",
+        "844"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "deviceScaleFactor": 1.0,
+          "height": 844,
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "mobile": false,
+          "width": 390
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "open",
+        "http://127.0.0.1:5179/?module=cqc"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "targetId": "69A364C6ECFE0CECC3078A6B3BF2D978",
+          "title": "Shadow Codec Ops",
+          "url": "http://127.0.0.1:5179/?module=cqc"
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "wait",
+        "--load",
+        "networkidle"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "state": "networkidle"
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "eval",
+        "(()=>{const h=document.querySelector(\".main-drawer-handle\");return h&&getComputedStyle(h).display!==\"none\"&&h.getAttribute(\"aria-expanded\")===\"false\"})()"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "origin": "http://127.0.0.1:5179/?module=cqc",
+          "result": true
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "click",
+        ".main-drawer-handle"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "clicked": ".main-drawer-handle",
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          }
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "eval",
+        "(()=>{const b=document.querySelector(\"button.nav-button[aria-label^=\\\"HOME:\\\"]\");const r=b.getBoundingClientRect(),e=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);return{reached:e===b||b.contains(e),target:{left:r.left,top:r.top,right:r.right,bottom:r.bottom},hit:e?{tag:e.tagName,className:e.className,text:e.textContent.slice(0,80)}:null}})()"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "origin": "http://127.0.0.1:5179/?module=cqc",
+          "result": {
+            "hit": {
+              "className": "nav-button ",
+              "tag": "BUTTON",
+              "text": "HOME"
+            },
+            "reached": true,
+            "target": {
+              "bottom": 63,
+              "left": 21,
+              "right": 83.40625,
+              "top": 21
+            }
+          }
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "click",
+        "button.nav-button[aria-label^=\"HOME:\"]"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "clicked": "button.nav-button[aria-label^=\"HOME:\"]",
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          }
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "eval",
+        "(async()=>{for(let i=0;i<150;i++){if(document.querySelector(\".app-shell\")?.dataset.route===\"home\")return true;await new Promise(r=>setTimeout(r,100))}throw Error(\"Actual route not ready\")})()"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "origin": "http://127.0.0.1:5179/?module=cqc",
+          "result": true
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "eval",
+        "(()=>{const e=document.querySelector('.app-shell'),b=e?.querySelector(':scope > .pwa-runtime-banner');const r=b?.getBoundingClientRect(),c=b?getComputedStyle(b):null;return{route:e?.dataset.route,online:navigator.onLine,viewport:{width:innerWidth,height:innerHeight},banner:b?{connected:b.isConnected,display:c.display,visible:c.display!=='none'&&c.visibility!=='hidden'&&r.width>0&&r.height>0,text:b.innerText,rect:{left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height},sameElementAsFirstOffline:b===window.__toastQARef}:null,realNetworkEvents:window.__toastNetworkEvents||[],drawer:document.querySelector('.main-drawer-handle')?.getAttribute('aria-expanded')}})()"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "origin": "http://127.0.0.1:5179/?module=cqc",
+          "result": {
+            "banner": null,
+            "drawer": "false",
+            "online": true,
+            "realNetworkEvents": [],
+            "route": "home",
+            "viewport": {
+              "height": 844,
+              "width": 390
+            }
+          }
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "eval",
+        "(()=>{const h=document.querySelector(\".main-drawer-handle\");return h&&getComputedStyle(h).display!==\"none\"&&h.getAttribute(\"aria-expanded\")===\"false\"})()"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "origin": "http://127.0.0.1:5179/?module=cqc",
+          "result": true
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "click",
+        ".main-drawer-handle"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "clicked": ".main-drawer-handle",
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          }
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "eval",
+        "(()=>{const b=document.querySelector(\"button.nav-button[aria-label^=\\\"SETTINGS:\\\"]\");const r=b.getBoundingClientRect(),e=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);return{reached:e===b||b.contains(e),target:{left:r.left,top:r.top,right:r.right,bottom:r.bottom},hit:e?{tag:e.tagName,className:e.className,text:e.textContent.slice(0,80)}:null}})()"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "origin": "http://127.0.0.1:5179/?module=cqc",
+          "result": {
+            "hit": null,
+            "reached": false,
+            "target": {
+              "bottom": 63,
+              "left": 1432.40625,
+              "right": 1533.21875,
+              "top": 21
+            }
+          }
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scrollintoview",
+        "button.nav-button[aria-label^=\"SETTINGS:\"]"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "scrolled": "button.nav-button[aria-label^=\"SETTINGS:\"]"
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "click",
+        "button.nav-button[aria-label^=\"SETTINGS:\"]"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "clicked": "button.nav-button[aria-label^=\"SETTINGS:\"]",
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          }
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "eval",
+        "(async()=>{for(let i=0;i<150;i++){if(document.querySelector(\".app-shell\")?.dataset.route===\"settings\")return true;await new Promise(r=>setTimeout(r,100))}throw Error(\"Actual route not ready\")})()"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "origin": "http://127.0.0.1:5179/?module=cqc",
+          "result": true
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "eval",
+        "(()=>{const e=document.querySelector('.app-shell'),b=e?.querySelector(':scope > .pwa-runtime-banner');const r=b?.getBoundingClientRect(),c=b?getComputedStyle(b):null;return{route:e?.dataset.route,online:navigator.onLine,viewport:{width:innerWidth,height:innerHeight},banner:b?{connected:b.isConnected,display:c.display,visible:c.display!=='none'&&c.visibility!=='hidden'&&r.width>0&&r.height>0,text:b.innerText,rect:{left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height},sameElementAsFirstOffline:b===window.__toastQARef}:null,realNetworkEvents:window.__toastNetworkEvents||[],drawer:document.querySelector('.main-drawer-handle')?.getAttribute('aria-expanded')}})()"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "origin": "http://127.0.0.1:5179/?module=cqc",
+          "result": {
+            "banner": null,
+            "drawer": "false",
+            "online": true,
+            "realNetworkEvents": [],
+            "route": "settings",
+            "viewport": {
+              "height": 844,
+              "width": 390
+            }
+          }
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "eval",
+        "(()=>{const h=document.querySelector(\".main-drawer-handle\");return h&&getComputedStyle(h).display!==\"none\"&&h.getAttribute(\"aria-expanded\")===\"false\"})()"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "origin": "http://127.0.0.1:5179/?module=cqc",
+          "result": true
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "click",
+        ".main-drawer-handle"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "clicked": ".main-drawer-handle",
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          }
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "eval",
+        "(()=>{const b=document.querySelector(\"button.nav-button[aria-label^=\\\"CQC VERSUS:\\\"]\");const r=b.getBoundingClientRect(),e=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);return{reached:e===b||b.contains(e),target:{left:r.left,top:r.top,right:r.right,bottom:r.bottom},hit:e?{tag:e.tagName,className:e.className,text:e.textContent.slice(0,80)}:null}})()"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "origin": "http://127.0.0.1:5179/?module=cqc",
+          "result": {
+            "hit": null,
+            "reached": false,
+            "target": {
+              "bottom": 63,
+              "left": -499.109375,
+              "right": -379.09375,
+              "top": 21
+            }
+          }
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scrollintoview",
+        "button.nav-button[aria-label^=\"CQC VERSUS:\"]"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "scrolled": "button.nav-button[aria-label^=\"CQC VERSUS:\"]"
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "click",
+        "button.nav-button[aria-label^=\"CQC VERSUS:\"]"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "clicked": "button.nav-button[aria-label^=\"CQC VERSUS:\"]",
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          }
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "eval",
+        "(async()=>{for(let i=0;i<150;i++){if(document.querySelector(\".app-shell\")?.dataset.route===\"cqc\")return true;await new Promise(r=>setTimeout(r,100))}throw Error(\"Actual route not ready\")})()"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "origin": "http://127.0.0.1:5179/?module=cqc",
+          "result": true
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "eval",
+        "(async()=>{for(let i=0;i<150;i++){const d=document.querySelector('.cqc-game-frame')?.contentDocument;if(d?.readyState==='complete'&&d.querySelector('[data-mode=versus]')){const t=d.querySelector('[data-mode=versus]');t.dispatchEvent(new d.defaultView.MouseEvent('mouseenter'));t.click();return true}await new Promise(r=>setTimeout(r,100))}throw Error('Actual front not ready')})()"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "origin": "http://127.0.0.1:5179/?module=cqc",
+          "result": true
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "eval",
+        "(async()=>{for(let i=0;i<150;i++){const w=document.querySelector(\".cqc-game-frame\")?.contentDocument?.querySelector(\"#moduleFrame\")?.contentWindow;if(w?.__CQC055Versus?.engine){const a=w.__CQC055Versus;a.startExternal({p1:\"core__redblaster_mg2\",p2:\"core__snake\",stage:\"shadow_heliport\",mode:\"training\",dummy:\"idle\",autoheal:false,freeResource:false,rounds:1,seconds:99,finishers:\"off\",source:\"pass9-parent-toast-ui-qa\"});await w.CQC_COMBAT_SPRITES.whenReady(\"core__redblaster_mg2\");a.pause(true);w.__toastQAPointers=[];w.document.querySelector(\"#touch45\").addEventListener(\"pointerdown\",e=>w.__toastQAPointers.push({type:e.type,trusted:e.isTrusted,code:e.target.dataset.code,time:w.performance.now()}),{capture:true,passive:true});return{nativeLoaded:true,uid:a.getState().a.f.uid}}await new Promise(r=>setTimeout(r,100))}throw Error(\"Actual versus absent\")})()"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "origin": "http://127.0.0.1:5179/?module=cqc",
+          "result": {
+            "nativeLoaded": true,
+            "uid": "core__redblaster_mg2"
+          }
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "eval",
+        "(()=>{window.__toastNetworkEvents=[];for(const type of [\"offline\",\"online\"])window.addEventListener(type,e=>window.__toastNetworkEvents.push({type:e.type,trusted:e.isTrusted,online:navigator.onLine,time:performance.now()}),{passive:true});return true})()"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "origin": "http://127.0.0.1:5179/?module=cqc",
+          "result": true
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "set",
+        "offline",
+        "on"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "offline": true
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "eval",
+        "(()=>{const e=document.querySelector('.app-shell'),b=e?.querySelector(':scope > .pwa-runtime-banner');const r=b?.getBoundingClientRect(),c=b?getComputedStyle(b):null;return{route:e?.dataset.route,online:navigator.onLine,viewport:{width:innerWidth,height:innerHeight},banner:b?{connected:b.isConnected,display:c.display,visible:c.display!=='none'&&c.visibility!=='hidden'&&r.width>0&&r.height>0,text:b.innerText,rect:{left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height},sameElementAsFirstOffline:b===window.__toastQARef}:null,realNetworkEvents:window.__toastNetworkEvents||[],drawer:document.querySelector('.main-drawer-handle')?.getAttribute('aria-expanded')}})()"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "origin": "http://127.0.0.1:5179/?module=cqc",
+          "result": {
+            "banner": {
+              "connected": true,
+              "display": "none",
+              "rect": {
+                "bottom": 0,
+                "height": 0,
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "width": 0
+              },
+              "sameElementAsFirstOffline": false,
+              "text": "OFFLINE MODEOffline mode active. Cached modules remain available.×",
+              "visible": false
+            },
+            "drawer": "false",
+            "online": false,
+            "realNetworkEvents": [
+              {
+                "online": false,
+                "time": 4901.29999999702,
+                "trusted": true,
+                "type": "offline"
+              }
+            ],
+            "route": "cqc",
+            "viewport": {
+              "height": 844,
+              "width": 390
+            }
+          }
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "eval",
+        "window.__toastQARef=document.querySelector(\".app-shell > .pwa-runtime-banner\");true"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "origin": "http://127.0.0.1:5179/?module=cqc",
+          "result": true
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "eval",
+        "(()=>{\n const rect=r=>({left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height});\n const f1=document.querySelector('.cqc-game-frame'),f2=f1?.contentDocument?.querySelector('#moduleFrame'),w=f2?.contentWindow;\n if(!w?.__CQC055Versus)throw Error('Actual nested versus absent');\n const r1=f1.getBoundingClientRect(),r2=f2.getBoundingClientRect(),ox=r1.left+f1.clientLeft+r2.left+f2.clientLeft,oy=r1.top+f1.clientTop+r2.top+f2.clientTop;\n const describe=e=>e?{tag:e.tagName,id:e.id,className:typeof e.className==='string'?e.className:null,code:e.dataset?.code,text:e.textContent?.trim().slice(0,80)}:null;\n const map=el=>{const r=el.getBoundingClientRect(),c=w.getComputedStyle(el),x=ox+r.left+r.width/2,y=oy+r.top+r.height/2,top=rect({left:ox+r.left,top:oy+r.top,right:ox+r.right,bottom:oy+r.bottom,width:r.width,height:r.height});\n  const p=document.elementFromPoint(x,y),middle=p===f1?f1.contentDocument.elementFromPoint(x-r1.left-f1.clientLeft,y-r1.top-f1.clientTop):null,inner=middle===f2?w.document.elementFromPoint(x-ox,y-oy):null;\n  return{label:el.textContent,code:el.dataset.code,id:el.id,display:c.display,visible:r.width>0&&r.height>0&&c.visibility!=='hidden'&&c.display!=='none',local:rect(r),top,center:{x,y},centerInTopViewport:x>=0&&x<innerWidth&&y>=0&&y<innerHeight,hitPath:[describe(p),describe(middle),describe(inner)],actualElementReached:inner===el||!!inner&&el.contains(inner)};};\n const main=document.querySelector('.main-content'),a=w.__CQC055Versus,s=a.getState();\n return{wallTime:Date.now(),moduleViewport:{width:w.innerWidth,height:w.innerHeight},frames:{outer:rect(r1),inner:rect(r2),outerTransform:getComputedStyle(f1).transform,innerTransform:f1.contentWindow.getComputedStyle(f2).transform},main:{rect:rect(main.getBoundingClientRect()),scrollTop:main.scrollTop,scrollHeight:main.scrollHeight,clientHeight:main.clientHeight},touchVisible:w.getComputedStyle(w.document.querySelector('#touch45')).display!=='none',buttons:[...w.document.querySelectorAll('#touch45 button')].map(map),resume:map(w.document.querySelector('#resume43')),desktopHelpVisible:w.getComputedStyle(w.document.querySelector('.game-help')).display!=='none',pointerEvents:w.__toastQAPointers||[],diagnostics:a.diagnostics(),state:s?{phase:s.phase,phaseT:s.phaseT,frame:s.frame,a:{uid:s.a.f.uid,x:s.a.x,y:s.a.y,r:s.a.r,meter:s.a.meter,move:s.a.move,resource:s.a.f.combat.resource},b:{x:s.b.x,ai:s.b.ai},utility:s.a.f.combat.moves.utility}:null};\n})()"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "origin": "http://127.0.0.1:5179/?module=cqc",
+          "result": {
+            "buttons": [
+              {
+                "actualElementReached": false,
+                "center": {
+                  "x": 42.9140625,
+                  "y": 754.25
+                },
+                "centerInTopViewport": true,
+                "code": "ArrowLeft",
+                "display": "block",
+                "hitPath": [
+                  {
+                    "className": "cqc-game-frame",
+                    "id": "",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "id": "moduleFrame",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "paused43",
+                    "id": "pause43",
+                    "tag": "DIV",
+                    "text": "PAUSELe combat et son chronomètre sont suspendus.REPRENDRE"
+                  }
+                ],
+                "id": "",
+                "label": "←",
+                "local": {
+                  "bottom": 573.5,
+                  "height": 42.5,
+                  "left": 6,
+                  "right": 61.828125,
+                  "top": 531,
+                  "width": 55.828125
+                },
+                "top": {
+                  "bottom": 775.5,
+                  "height": 42.5,
+                  "left": 15,
+                  "right": 70.828125,
+                  "top": 733,
+                  "width": 55.828125
+                },
+                "visible": true
+              },
+              {
+                "actualElementReached": false,
+                "center": {
+                  "x": 103.7421875,
+                  "y": 754.25
+                },
+                "centerInTopViewport": true,
+                "code": "ArrowRight",
+                "display": "block",
+                "hitPath": [
+                  {
+                    "className": "cqc-game-frame",
+                    "id": "",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "id": "moduleFrame",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "paused43",
+                    "id": "pause43",
+                    "tag": "DIV",
+                    "text": "PAUSELe combat et son chronomètre sont suspendus.REPRENDRE"
+                  }
+                ],
+                "id": "",
+                "label": "→",
+                "local": {
+                  "bottom": 573.5,
+                  "height": 42.5,
+                  "left": 66.828125,
+                  "right": 122.65625,
+                  "top": 531,
+                  "width": 55.828125
+                },
+                "top": {
+                  "bottom": 775.5,
+                  "height": 42.5,
+                  "left": 75.828125,
+                  "right": 131.65625,
+                  "top": 733,
+                  "width": 55.828125
+                },
+                "visible": true
+              },
+              {
+                "actualElementReached": false,
+                "center": {
+                  "x": 164.5703125,
+                  "y": 754.25
+                },
+                "centerInTopViewport": true,
+                "code": "ArrowUp",
+                "display": "block",
+                "hitPath": [
+                  {
+                    "className": "cqc-game-frame",
+                    "id": "",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "id": "moduleFrame",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "paused43",
+                    "id": "pause43",
+                    "tag": "DIV",
+                    "text": "PAUSELe combat et son chronomètre sont suspendus.REPRENDRE"
+                  }
+                ],
+                "id": "",
+                "label": "↑",
+                "local": {
+                  "bottom": 573.5,
+                  "height": 42.5,
+                  "left": 127.65625,
+                  "right": 183.484375,
+                  "top": 531,
+                  "width": 55.828125
+                },
+                "top": {
+                  "bottom": 775.5,
+                  "height": 42.5,
+                  "left": 136.65625,
+                  "right": 192.484375,
+                  "top": 733,
+                  "width": 55.828125
+                },
+                "visible": true
+              },
+              {
+                "actualElementReached": false,
+                "center": {
+                  "x": 225.40625,
+                  "y": 754.25
+                },
+                "centerInTopViewport": true,
+                "code": "ArrowDown",
+                "display": "block",
+                "hitPath": [
+                  {
+                    "className": "cqc-game-frame",
+                    "id": "",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "id": "moduleFrame",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "paused43",
+                    "id": "pause43",
+                    "tag": "DIV",
+                    "text": "PAUSELe combat et son chronomètre sont suspendus.REPRENDRE"
+                  }
+                ],
+                "id": "",
+                "label": "↓",
+                "local": {
+                  "bottom": 573.5,
+                  "height": 42.5,
+                  "left": 188.484375,
+                  "right": 244.328125,
+                  "top": 531,
+                  "width": 55.84375
+                },
+                "top": {
+                  "bottom": 775.5,
+                  "height": 42.5,
+                  "left": 197.484375,
+                  "right": 253.328125,
+                  "top": 733,
+                  "width": 55.84375
+                },
+                "visible": true
+              },
+              {
+                "actualElementReached": false,
+                "center": {
+                  "x": 286.2421875,
+                  "y": 754.25
+                },
+                "centerInTopViewport": true,
+                "code": "Space",
+                "display": "block",
+                "hitPath": [
+                  {
+                    "className": "cqc-game-frame",
+                    "id": "",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "id": "moduleFrame",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "paused43",
+                    "id": "pause43",
+                    "tag": "DIV",
+                    "text": "PAUSELe combat et son chronomètre sont suspendus.REPRENDRE"
+                  }
+                ],
+                "id": "",
+                "label": "GARDE",
+                "local": {
+                  "bottom": 573.5,
+                  "height": 42.5,
+                  "left": 249.328125,
+                  "right": 305.15625,
+                  "top": 531,
+                  "width": 55.828125
+                },
+                "top": {
+                  "bottom": 775.5,
+                  "height": 42.5,
+                  "left": 258.328125,
+                  "right": 314.15625,
+                  "top": 733,
+                  "width": 55.828125
+                },
+                "visible": true
+              },
+              {
+                "actualElementReached": false,
+                "center": {
+                  "x": 347.0703125,
+                  "y": 754.25
+                },
+                "centerInTopViewport": true,
+                "code": "ShiftRight",
+                "display": "block",
+                "hitPath": [
+                  {
+                    "className": "cqc-game-frame",
+                    "id": "",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "id": "moduleFrame",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "paused43",
+                    "id": "pause43",
+                    "tag": "DIV",
+                    "text": "PAUSELe combat et son chronomètre sont suspendus.REPRENDRE"
+                  }
+                ],
+                "id": "",
+                "label": "DASH",
+                "local": {
+                  "bottom": 573.5,
+                  "height": 42.5,
+                  "left": 310.15625,
+                  "right": 365.984375,
+                  "top": 531,
+                  "width": 55.828125
+                },
+                "top": {
+                  "bottom": 775.5,
+                  "height": 42.5,
+                  "left": 319.15625,
+                  "right": 374.984375,
+                  "top": 733,
+                  "width": 55.828125
+                },
+                "visible": true
+              },
+              {
+                "actualElementReached": true,
+                "center": {
+                  "x": 42.9140625,
+                  "y": 801.75
+                },
+                "centerInTopViewport": true,
+                "code": "KeyJ",
+                "display": "block",
+                "hitPath": [
+                  {
+                    "className": "cqc-game-frame",
+                    "id": "",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "id": "moduleFrame",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "code": "KeyJ",
+                    "id": "",
+                    "tag": "BUTTON",
+                    "text": "J"
+                  }
+                ],
+                "id": "",
+                "label": "J",
+                "local": {
+                  "bottom": 621,
+                  "height": 42.5,
+                  "left": 6,
+                  "right": 61.828125,
+                  "top": 578.5,
+                  "width": 55.828125
+                },
+                "top": {
+                  "bottom": 823,
+                  "height": 42.5,
+                  "left": 15,
+                  "right": 70.828125,
+                  "top": 780.5,
+                  "width": 55.828125
+                },
+                "visible": true
+              },
+              {
+                "actualElementReached": true,
+                "center": {
+                  "x": 103.7421875,
+                  "y": 801.75
+                },
+                "centerInTopViewport": true,
+                "code": "KeyK",
+                "display": "block",
+                "hitPath": [
+                  {
+                    "className": "cqc-game-frame",
+                    "id": "",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "id": "moduleFrame",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "code": "KeyK",
+                    "id": "",
+                    "tag": "BUTTON",
+                    "text": "K"
+                  }
+                ],
+                "id": "",
+                "label": "K",
+                "local": {
+                  "bottom": 621,
+                  "height": 42.5,
+                  "left": 66.828125,
+                  "right": 122.65625,
+                  "top": 578.5,
+                  "width": 55.828125
+                },
+                "top": {
+                  "bottom": 823,
+                  "height": 42.5,
+                  "left": 75.828125,
+                  "right": 131.65625,
+                  "top": 780.5,
+                  "width": 55.828125
+                },
+                "visible": true
+              },
+              {
+                "actualElementReached": true,
+                "center": {
+                  "x": 164.5703125,
+                  "y": 801.75
+                },
+                "centerInTopViewport": true,
+                "code": "KeyI",
+                "display": "block",
+                "hitPath": [
+                  {
+                    "className": "cqc-game-frame",
+                    "id": "",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "id": "moduleFrame",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "code": "KeyI",
+                    "id": "",
+                    "tag": "BUTTON",
+                    "text": "I"
+                  }
+                ],
+                "id": "",
+                "label": "I",
+                "local": {
+                  "bottom": 621,
+                  "height": 42.5,
+                  "left": 127.65625,
+                  "right": 183.484375,
+                  "top": 578.5,
+                  "width": 55.828125
+                },
+                "top": {
+                  "bottom": 823,
+                  "height": 42.5,
+                  "left": 136.65625,
+                  "right": 192.484375,
+                  "top": 780.5,
+                  "width": 55.828125
+                },
+                "visible": true
+              },
+              {
+                "actualElementReached": true,
+                "center": {
+                  "x": 225.40625,
+                  "y": 801.75
+                },
+                "centerInTopViewport": true,
+                "code": "KeyU",
+                "display": "block",
+                "hitPath": [
+                  {
+                    "className": "cqc-game-frame",
+                    "id": "",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "id": "moduleFrame",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "code": "KeyU",
+                    "id": "",
+                    "tag": "BUTTON",
+                    "text": "U"
+                  }
+                ],
+                "id": "",
+                "label": "U",
+                "local": {
+                  "bottom": 621,
+                  "height": 42.5,
+                  "left": 188.484375,
+                  "right": 244.328125,
+                  "top": 578.5,
+                  "width": 55.84375
+                },
+                "top": {
+                  "bottom": 823,
+                  "height": 42.5,
+                  "left": 197.484375,
+                  "right": 253.328125,
+                  "top": 780.5,
+                  "width": 55.84375
+                },
+                "visible": true
+              },
+              {
+                "actualElementReached": true,
+                "center": {
+                  "x": 286.2421875,
+                  "y": 801.75
+                },
+                "centerInTopViewport": true,
+                "code": "KeyO",
+                "display": "block",
+                "hitPath": [
+                  {
+                    "className": "cqc-game-frame",
+                    "id": "",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "id": "moduleFrame",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "code": "KeyO",
+                    "id": "",
+                    "tag": "BUTTON",
+                    "text": "O"
+                  }
+                ],
+                "id": "",
+                "label": "O",
+                "local": {
+                  "bottom": 621,
+                  "height": 42.5,
+                  "left": 249.328125,
+                  "right": 305.15625,
+                  "top": 578.5,
+                  "width": 55.828125
+                },
+                "top": {
+                  "bottom": 823,
+                  "height": 42.5,
+                  "left": 258.328125,
+                  "right": 314.15625,
+                  "top": 780.5,
+                  "width": 55.828125
+                },
+                "visible": true
+              },
+              {
+                "actualElementReached": true,
+                "center": {
+                  "x": 347.0703125,
+                  "y": 801.75
+                },
+                "centerInTopViewport": true,
+                "code": "KeyL",
+                "display": "block",
+                "hitPath": [
+                  {
+                    "className": "cqc-game-frame",
+                    "id": "",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "id": "moduleFrame",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "code": "KeyL",
+                    "id": "",
+                    "tag": "BUTTON",
+                    "text": "L"
+                  }
+                ],
+                "id": "",
+                "label": "L",
+                "local": {
+                  "bottom": 621,
+                  "height": 42.5,
+                  "left": 310.15625,
+                  "right": 365.984375,
+                  "top": 578.5,
+                  "width": 55.828125
+                },
+                "top": {
+                  "bottom": 823,
+                  "height": 42.5,
+                  "left": 319.15625,
+                  "right": 374.984375,
+                  "top": 780.5,
+                  "width": 55.828125
+                },
+                "visible": true
+              }
+            ],
+            "desktopHelpVisible": false,
+            "diagnostics": {
+              "finishScene": false,
+              "finishWindow": false,
+              "keys": [],
+              "paused": true,
+              "rejected": 0,
+              "results": 0,
+              "running": true,
+              "starts": 0,
+              "token": null
+            },
+            "frames": {
+              "inner": {
+                "bottom": 675,
+                "height": 627,
+                "left": 0,
+                "right": 372,
+                "top": 48,
+                "width": 372
+              },
+              "innerTransform": "none",
+              "outer": {
+                "bottom": 829,
+                "height": 675,
+                "left": 9,
+                "right": 381,
+                "top": 154,
+                "width": 372
+              },
+              "outerTransform": "none"
+            },
+            "main": {
+              "clientHeight": 828,
+              "rect": {
+                "bottom": 836,
+                "height": 828,
+                "left": 8,
+                "right": 382,
+                "top": 8,
+                "width": 374
+              },
+              "scrollHeight": 828,
+              "scrollTop": 0
+            },
+            "moduleViewport": {
+              "height": 627,
+              "width": 372
+            },
+            "pointerEvents": [],
+            "resume": {
+              "actualElementReached": true,
+              "center": {
+                "x": 194.984375,
+                "y": 567
+              },
+              "centerInTopViewport": true,
+              "display": "inline-block",
+              "hitPath": [
+                {
+                  "className": "cqc-game-frame",
+                  "id": "",
+                  "tag": "IFRAME",
+                  "text": ""
+                },
+                {
+                  "className": "",
+                  "id": "moduleFrame",
+                  "tag": "IFRAME",
+                  "text": ""
+                },
+                {
+                  "className": "",
+                  "id": "resume43",
+                  "tag": "BUTTON",
+                  "text": "REPRENDRE"
+                }
+              ],
+              "id": "resume43",
+              "label": "REPRENDRE",
+              "local": {
+                "bottom": 387,
+                "height": 44,
+                "left": 122.75,
+                "right": 249.21875,
+                "top": 343,
+                "width": 126.46875
+              },
+              "top": {
+                "bottom": 589,
+                "height": 44,
+                "left": 131.75,
+                "right": 258.21875,
+                "top": 545,
+                "width": 126.46875
+              },
+              "visible": true
+            },
+            "state": {
+              "a": {
+                "meter": 100,
+                "r": 10,
+                "resource": {
+                  "kind": "ammo",
+                  "label": "GRENADES — VERSUS",
+                  "max": 10,
+                  "regen": 0,
+                  "reload": 58
+                },
+                "uid": "core__redblaster_mg2",
+                "x": 380,
+                "y": 568
+              },
+              "b": {
+                "ai": false,
+                "x": 900
+              },
+              "frame": 10,
+              "phase": "fight",
+              "phaseT": 0,
+              "utility": {
+                "active": 1,
+                "cooldown": 0,
+                "cost": 0,
+                "counterplay": "Pause interrompable avant restauration de la réserve du versus ; aucun soin, armure ou pouvoir ajouté.",
+                "damage": 0,
+                "id": "core__redblaster_mg2::utility",
+                "kind": "recover",
+                "level": "mid",
+                "lore": "adaptation",
+                "meter": 0,
+                "name": "Reprendre la réserve de grenades — adaptation",
+                "reach": 0,
+                "recovery": 20,
+                "restore": 4,
+                "slot": "utility",
+                "startup": 54,
+                "tag": "recovery"
+              }
+            },
+            "touchVisible": true,
+            "wallTime": 1790948573371
+          }
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "eval",
+        "(()=>{\n const rect=r=>({left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height});\n const f1=document.querySelector('.cqc-game-frame'),f2=f1?.contentDocument?.querySelector('#moduleFrame'),w=f2?.contentWindow;\n if(!w?.__CQC055Versus)throw Error('Actual nested versus absent');\n const r1=f1.getBoundingClientRect(),r2=f2.getBoundingClientRect(),ox=r1.left+f1.clientLeft+r2.left+f2.clientLeft,oy=r1.top+f1.clientTop+r2.top+f2.clientTop;\n const describe=e=>e?{tag:e.tagName,id:e.id,className:typeof e.className==='string'?e.className:null,code:e.dataset?.code,text:e.textContent?.trim().slice(0,80)}:null;\n const map=el=>{const r=el.getBoundingClientRect(),c=w.getComputedStyle(el),x=ox+r.left+r.width/2,y=oy+r.top+r.height/2,top=rect({left:ox+r.left,top:oy+r.top,right:ox+r.right,bottom:oy+r.bottom,width:r.width,height:r.height});\n  const p=document.elementFromPoint(x,y),middle=p===f1?f1.contentDocument.elementFromPoint(x-r1.left-f1.clientLeft,y-r1.top-f1.clientTop):null,inner=middle===f2?w.document.elementFromPoint(x-ox,y-oy):null;\n  return{label:el.textContent,code:el.dataset.code,id:el.id,display:c.display,visible:r.width>0&&r.height>0&&c.visibility!=='hidden'&&c.display!=='none',local:rect(r),top,center:{x,y},centerInTopViewport:x>=0&&x<innerWidth&&y>=0&&y<innerHeight,hitPath:[describe(p),describe(middle),describe(inner)],actualElementReached:inner===el||!!inner&&el.contains(inner)};};\n const main=document.querySelector('.main-content'),a=w.__CQC055Versus,s=a.getState();\n return{wallTime:Date.now(),moduleViewport:{width:w.innerWidth,height:w.innerHeight},frames:{outer:rect(r1),inner:rect(r2),outerTransform:getComputedStyle(f1).transform,innerTransform:f1.contentWindow.getComputedStyle(f2).transform},main:{rect:rect(main.getBoundingClientRect()),scrollTop:main.scrollTop,scrollHeight:main.scrollHeight,clientHeight:main.clientHeight},touchVisible:w.getComputedStyle(w.document.querySelector('#touch45')).display!=='none',buttons:[...w.document.querySelectorAll('#touch45 button')].map(map),resume:map(w.document.querySelector('#resume43')),desktopHelpVisible:w.getComputedStyle(w.document.querySelector('.game-help')).display!=='none',pointerEvents:w.__toastQAPointers||[],diagnostics:a.diagnostics(),state:s?{phase:s.phase,phaseT:s.phaseT,frame:s.frame,a:{uid:s.a.f.uid,x:s.a.x,y:s.a.y,r:s.a.r,meter:s.a.meter,move:s.a.move,resource:s.a.f.combat.resource},b:{x:s.b.x,ai:s.b.ai},utility:s.a.f.combat.moves.utility}:null};\n})()"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "origin": "http://127.0.0.1:5179/?module=cqc",
+          "result": {
+            "buttons": [
+              {
+                "actualElementReached": false,
+                "center": {
+                  "x": 42.9140625,
+                  "y": 754.25
+                },
+                "centerInTopViewport": true,
+                "code": "ArrowLeft",
+                "display": "block",
+                "hitPath": [
+                  {
+                    "className": "cqc-game-frame",
+                    "id": "",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "id": "moduleFrame",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "paused43",
+                    "id": "pause43",
+                    "tag": "DIV",
+                    "text": "PAUSELe combat et son chronomètre sont suspendus.REPRENDRE"
+                  }
+                ],
+                "id": "",
+                "label": "←",
+                "local": {
+                  "bottom": 573.5,
+                  "height": 42.5,
+                  "left": 6,
+                  "right": 61.828125,
+                  "top": 531,
+                  "width": 55.828125
+                },
+                "top": {
+                  "bottom": 775.5,
+                  "height": 42.5,
+                  "left": 15,
+                  "right": 70.828125,
+                  "top": 733,
+                  "width": 55.828125
+                },
+                "visible": true
+              },
+              {
+                "actualElementReached": false,
+                "center": {
+                  "x": 103.7421875,
+                  "y": 754.25
+                },
+                "centerInTopViewport": true,
+                "code": "ArrowRight",
+                "display": "block",
+                "hitPath": [
+                  {
+                    "className": "cqc-game-frame",
+                    "id": "",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "id": "moduleFrame",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "paused43",
+                    "id": "pause43",
+                    "tag": "DIV",
+                    "text": "PAUSELe combat et son chronomètre sont suspendus.REPRENDRE"
+                  }
+                ],
+                "id": "",
+                "label": "→",
+                "local": {
+                  "bottom": 573.5,
+                  "height": 42.5,
+                  "left": 66.828125,
+                  "right": 122.65625,
+                  "top": 531,
+                  "width": 55.828125
+                },
+                "top": {
+                  "bottom": 775.5,
+                  "height": 42.5,
+                  "left": 75.828125,
+                  "right": 131.65625,
+                  "top": 733,
+                  "width": 55.828125
+                },
+                "visible": true
+              },
+              {
+                "actualElementReached": false,
+                "center": {
+                  "x": 164.5703125,
+                  "y": 754.25
+                },
+                "centerInTopViewport": true,
+                "code": "ArrowUp",
+                "display": "block",
+                "hitPath": [
+                  {
+                    "className": "cqc-game-frame",
+                    "id": "",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "id": "moduleFrame",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "paused43",
+                    "id": "pause43",
+                    "tag": "DIV",
+                    "text": "PAUSELe combat et son chronomètre sont suspendus.REPRENDRE"
+                  }
+                ],
+                "id": "",
+                "label": "↑",
+                "local": {
+                  "bottom": 573.5,
+                  "height": 42.5,
+                  "left": 127.65625,
+                  "right": 183.484375,
+                  "top": 531,
+                  "width": 55.828125
+                },
+                "top": {
+                  "bottom": 775.5,
+                  "height": 42.5,
+                  "left": 136.65625,
+                  "right": 192.484375,
+                  "top": 733,
+                  "width": 55.828125
+                },
+                "visible": true
+              },
+              {
+                "actualElementReached": false,
+                "center": {
+                  "x": 225.40625,
+                  "y": 754.25
+                },
+                "centerInTopViewport": true,
+                "code": "ArrowDown",
+                "display": "block",
+                "hitPath": [
+                  {
+                    "className": "cqc-game-frame",
+                    "id": "",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "id": "moduleFrame",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "paused43",
+                    "id": "pause43",
+                    "tag": "DIV",
+                    "text": "PAUSELe combat et son chronomètre sont suspendus.REPRENDRE"
+                  }
+                ],
+                "id": "",
+                "label": "↓",
+                "local": {
+                  "bottom": 573.5,
+                  "height": 42.5,
+                  "left": 188.484375,
+                  "right": 244.328125,
+                  "top": 531,
+                  "width": 55.84375
+                },
+                "top": {
+                  "bottom": 775.5,
+                  "height": 42.5,
+                  "left": 197.484375,
+                  "right": 253.328125,
+                  "top": 733,
+                  "width": 55.84375
+                },
+                "visible": true
+              },
+              {
+                "actualElementReached": false,
+                "center": {
+                  "x": 286.2421875,
+                  "y": 754.25
+                },
+                "centerInTopViewport": true,
+                "code": "Space",
+                "display": "block",
+                "hitPath": [
+                  {
+                    "className": "cqc-game-frame",
+                    "id": "",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "id": "moduleFrame",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "paused43",
+                    "id": "pause43",
+                    "tag": "DIV",
+                    "text": "PAUSELe combat et son chronomètre sont suspendus.REPRENDRE"
+                  }
+                ],
+                "id": "",
+                "label": "GARDE",
+                "local": {
+                  "bottom": 573.5,
+                  "height": 42.5,
+                  "left": 249.328125,
+                  "right": 305.15625,
+                  "top": 531,
+                  "width": 55.828125
+                },
+                "top": {
+                  "bottom": 775.5,
+                  "height": 42.5,
+                  "left": 258.328125,
+                  "right": 314.15625,
+                  "top": 733,
+                  "width": 55.828125
+                },
+                "visible": true
+              },
+              {
+                "actualElementReached": false,
+                "center": {
+                  "x": 347.0703125,
+                  "y": 754.25
+                },
+                "centerInTopViewport": true,
+                "code": "ShiftRight",
+                "display": "block",
+                "hitPath": [
+                  {
+                    "className": "cqc-game-frame",
+                    "id": "",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "id": "moduleFrame",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "paused43",
+                    "id": "pause43",
+                    "tag": "DIV",
+                    "text": "PAUSELe combat et son chronomètre sont suspendus.REPRENDRE"
+                  }
+                ],
+                "id": "",
+                "label": "DASH",
+                "local": {
+                  "bottom": 573.5,
+                  "height": 42.5,
+                  "left": 310.15625,
+                  "right": 365.984375,
+                  "top": 531,
+                  "width": 55.828125
+                },
+                "top": {
+                  "bottom": 775.5,
+                  "height": 42.5,
+                  "left": 319.15625,
+                  "right": 374.984375,
+                  "top": 733,
+                  "width": 55.828125
+                },
+                "visible": true
+              },
+              {
+                "actualElementReached": true,
+                "center": {
+                  "x": 42.9140625,
+                  "y": 801.75
+                },
+                "centerInTopViewport": true,
+                "code": "KeyJ",
+                "display": "block",
+                "hitPath": [
+                  {
+                    "className": "cqc-game-frame",
+                    "id": "",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "id": "moduleFrame",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "code": "KeyJ",
+                    "id": "",
+                    "tag": "BUTTON",
+                    "text": "J"
+                  }
+                ],
+                "id": "",
+                "label": "J",
+                "local": {
+                  "bottom": 621,
+                  "height": 42.5,
+                  "left": 6,
+                  "right": 61.828125,
+                  "top": 578.5,
+                  "width": 55.828125
+                },
+                "top": {
+                  "bottom": 823,
+                  "height": 42.5,
+                  "left": 15,
+                  "right": 70.828125,
+                  "top": 780.5,
+                  "width": 55.828125
+                },
+                "visible": true
+              },
+              {
+                "actualElementReached": true,
+                "center": {
+                  "x": 103.7421875,
+                  "y": 801.75
+                },
+                "centerInTopViewport": true,
+                "code": "KeyK",
+                "display": "block",
+                "hitPath": [
+                  {
+                    "className": "cqc-game-frame",
+                    "id": "",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "id": "moduleFrame",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "code": "KeyK",
+                    "id": "",
+                    "tag": "BUTTON",
+                    "text": "K"
+                  }
+                ],
+                "id": "",
+                "label": "K",
+                "local": {
+                  "bottom": 621,
+                  "height": 42.5,
+                  "left": 66.828125,
+                  "right": 122.65625,
+                  "top": 578.5,
+                  "width": 55.828125
+                },
+                "top": {
+                  "bottom": 823,
+                  "height": 42.5,
+                  "left": 75.828125,
+                  "right": 131.65625,
+                  "top": 780.5,
+                  "width": 55.828125
+                },
+                "visible": true
+              },
+              {
+                "actualElementReached": true,
+                "center": {
+                  "x": 164.5703125,
+                  "y": 801.75
+                },
+                "centerInTopViewport": true,
+                "code": "KeyI",
+                "display": "block",
+                "hitPath": [
+                  {
+                    "className": "cqc-game-frame",
+                    "id": "",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "id": "moduleFrame",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "code": "KeyI",
+                    "id": "",
+                    "tag": "BUTTON",
+                    "text": "I"
+                  }
+                ],
+                "id": "",
+                "label": "I",
+                "local": {
+                  "bottom": 621,
+                  "height": 42.5,
+                  "left": 127.65625,
+                  "right": 183.484375,
+                  "top": 578.5,
+                  "width": 55.828125
+                },
+                "top": {
+                  "bottom": 823,
+                  "height": 42.5,
+                  "left": 136.65625,
+                  "right": 192.484375,
+                  "top": 780.5,
+                  "width": 55.828125
+                },
+                "visible": true
+              },
+              {
+                "actualElementReached": true,
+                "center": {
+                  "x": 225.40625,
+                  "y": 801.75
+                },
+                "centerInTopViewport": true,
+                "code": "KeyU",
+                "display": "block",
+                "hitPath": [
+                  {
+                    "className": "cqc-game-frame",
+                    "id": "",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "id": "moduleFrame",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "code": "KeyU",
+                    "id": "",
+                    "tag": "BUTTON",
+                    "text": "U"
+                  }
+                ],
+                "id": "",
+                "label": "U",
+                "local": {
+                  "bottom": 621,
+                  "height": 42.5,
+                  "left": 188.484375,
+                  "right": 244.328125,
+                  "top": 578.5,
+                  "width": 55.84375
+                },
+                "top": {
+                  "bottom": 823,
+                  "height": 42.5,
+                  "left": 197.484375,
+                  "right": 253.328125,
+                  "top": 780.5,
+                  "width": 55.84375
+                },
+                "visible": true
+              },
+              {
+                "actualElementReached": true,
+                "center": {
+                  "x": 286.2421875,
+                  "y": 801.75
+                },
+                "centerInTopViewport": true,
+                "code": "KeyO",
+                "display": "block",
+                "hitPath": [
+                  {
+                    "className": "cqc-game-frame",
+                    "id": "",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "id": "moduleFrame",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "code": "KeyO",
+                    "id": "",
+                    "tag": "BUTTON",
+                    "text": "O"
+                  }
+                ],
+                "id": "",
+                "label": "O",
+                "local": {
+                  "bottom": 621,
+                  "height": 42.5,
+                  "left": 249.328125,
+                  "right": 305.15625,
+                  "top": 578.5,
+                  "width": 55.828125
+                },
+                "top": {
+                  "bottom": 823,
+                  "height": 42.5,
+                  "left": 258.328125,
+                  "right": 314.15625,
+                  "top": 780.5,
+                  "width": 55.828125
+                },
+                "visible": true
+              },
+              {
+                "actualElementReached": true,
+                "center": {
+                  "x": 347.0703125,
+                  "y": 801.75
+                },
+                "centerInTopViewport": true,
+                "code": "KeyL",
+                "display": "block",
+                "hitPath": [
+                  {
+                    "className": "cqc-game-frame",
+                    "id": "",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "id": "moduleFrame",
+                    "tag": "IFRAME",
+                    "text": ""
+                  },
+                  {
+                    "className": "",
+                    "code": "KeyL",
+                    "id": "",
+                    "tag": "BUTTON",
+                    "text": "L"
+                  }
+                ],
+                "id": "",
+                "label": "L",
+                "local": {
+                  "bottom": 621,
+                  "height": 42.5,
+                  "left": 310.15625,
+                  "right": 365.984375,
+                  "top": 578.5,
+                  "width": 55.828125
+                },
+                "top": {
+                  "bottom": 823,
+                  "height": 42.5,
+                  "left": 319.15625,
+                  "right": 374.984375,
+                  "top": 780.5,
+                  "width": 55.828125
+                },
+                "visible": true
+              }
+            ],
+            "desktopHelpVisible": false,
+            "diagnostics": {
+              "finishScene": false,
+              "finishWindow": false,
+              "keys": [],
+              "paused": true,
+              "rejected": 0,
+              "results": 0,
+              "running": true,
+              "starts": 0,
+              "token": null
+            },
+            "frames": {
+              "inner": {
+                "bottom": 675,
+                "height": 627,
+                "left": 0,
+                "right": 372,
+                "top": 48,
+                "width": 372
+              },
+              "innerTransform": "none",
+              "outer": {
+                "bottom": 829,
+                "height": 675,
+                "left": 9,
+                "right": 381,
+                "top": 154,
+                "width": 372
+              },
+              "outerTransform": "none"
+            },
+            "main": {
+              "clientHeight": 828,
+              "rect": {
+                "bottom": 836,
+                "height": 828,
+                "left": 8,
+                "right": 382,
+                "top": 8,
+                "width": 374
+              },
+              "scrollHeight": 828,
+              "scrollTop": 0
+            },
+            "moduleViewport": {
+              "height": 627,
+              "width": 372
+            },
+            "pointerEvents": [],
+            "resume": {
+              "actualElementReached": true,
+              "center": {
+                "x": 194.984375,
+                "y": 567
+              },
+              "centerInTopViewport": true,
+              "display": "inline-block",
+              "hitPath": [
+                {
+                  "className": "cqc-game-frame",
+                  "id": "",
+                  "tag": "IFRAME",
+                  "text": ""
+                },
+                {
+                  "className": "",
+                  "id": "moduleFrame",
+                  "tag": "IFRAME",
+                  "text": ""
+                },
+                {
+                  "className": "",
+                  "id": "resume43",
+                  "tag": "BUTTON",
+                  "text": "REPRENDRE"
+                }
+              ],
+              "id": "resume43",
+              "label": "REPRENDRE",
+              "local": {
+                "bottom": 387,
+                "height": 44,
+                "left": 122.75,
+                "right": 249.21875,
+                "top": 343,
+                "width": 126.46875
+              },
+              "top": {
+                "bottom": 589,
+                "height": 44,
+                "left": 131.75,
+                "right": 258.21875,
+                "top": 545,
+                "width": 126.46875
+              },
+              "visible": true
+            },
+            "state": {
+              "a": {
+                "meter": 100,
+                "r": 10,
+                "resource": {
+                  "kind": "ammo",
+                  "label": "GRENADES — VERSUS",
+                  "max": 10,
+                  "regen": 0,
+                  "reload": 58
+                },
+                "uid": "core__redblaster_mg2",
+                "x": 380,
+                "y": 568
+              },
+              "b": {
+                "ai": false,
+                "x": 900
+              },
+              "frame": 10,
+              "phase": "fight",
+              "phaseT": 0,
+              "utility": {
+                "active": 1,
+                "cooldown": 0,
+                "cost": 0,
+                "counterplay": "Pause interrompable avant restauration de la réserve du versus ; aucun soin, armure ou pouvoir ajouté.",
+                "damage": 0,
+                "id": "core__redblaster_mg2::utility",
+                "kind": "recover",
+                "level": "mid",
+                "lore": "adaptation",
+                "meter": 0,
+                "name": "Reprendre la réserve de grenades — adaptation",
+                "reach": 0,
+                "recovery": 20,
+                "restore": 4,
+                "slot": "utility",
+                "startup": 54,
+                "tag": "recovery"
+              }
+            },
+            "touchVisible": true,
+            "wallTime": 1790948573389
+          }
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "set",
+        "offline",
+        "off"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "offline": false
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "errors"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "errors": [],
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          }
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "close"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "closed": true,
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": false,
+              "engine": "chrome",
+              "launchHash": null
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": false,
+            "saveStatus": "not_configured"
+          },
+          "restoreStatus": "not_configured",
+          "saveStatus": "not_configured"
+        },
+        "error": null
+      },
+      "stderr": ""
+    }
+  ],
+  "observations": [
+    {
+      "name": "390-preloaded-home-online",
+      "result": {
+        "banner": null,
+        "drawer": "false",
+        "online": true,
+        "realNetworkEvents": [],
+        "route": "home",
+        "viewport": {
+          "height": 844,
+          "width": 390
+        }
+      }
+    },
+    {
+      "name": "390-preloaded-settings-online",
+      "result": {
+        "banner": null,
+        "drawer": "false",
+        "online": true,
+        "realNetworkEvents": [],
+        "route": "settings",
+        "viewport": {
+          "height": 844,
+          "width": 390
+        }
+      }
+    },
+    {
+      "name": "390-real-browser-offline-cqc",
+      "result": {
+        "banner": {
+          "connected": true,
+          "display": "none",
+          "rect": {
+            "bottom": 0,
+            "height": 0,
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "width": 0
+          },
+          "sameElementAsFirstOffline": false,
+          "text": "OFFLINE MODEOffline mode active. Cached modules remain available.×",
+          "visible": false
+        },
+        "drawer": "false",
+        "online": false,
+        "realNetworkEvents": [
+          {
+            "online": false,
+            "time": 4901.29999999702,
+            "trusted": true,
+            "type": "offline"
+          }
+        ],
+        "route": "cqc",
+        "viewport": {
+          "height": 844,
+          "width": 390
+        }
+      }
+    },
+    {
+      "name": "390-real-module-layout-before-scroll",
+      "result": {
+        "buttons": [
+          {
+            "actualElementReached": false,
+            "center": {
+              "x": 42.9140625,
+              "y": 754.25
+            },
+            "centerInTopViewport": true,
+            "code": "ArrowLeft",
+            "display": "block",
+            "hitPath": [
+              {
+                "className": "cqc-game-frame",
+                "id": "",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "id": "moduleFrame",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "paused43",
+                "id": "pause43",
+                "tag": "DIV",
+                "text": "PAUSELe combat et son chronomètre sont suspendus.REPRENDRE"
+              }
+            ],
+            "id": "",
+            "label": "←",
+            "local": {
+              "bottom": 573.5,
+              "height": 42.5,
+              "left": 6,
+              "right": 61.828125,
+              "top": 531,
+              "width": 55.828125
+            },
+            "top": {
+              "bottom": 775.5,
+              "height": 42.5,
+              "left": 15,
+              "right": 70.828125,
+              "top": 733,
+              "width": 55.828125
+            },
+            "visible": true
+          },
+          {
+            "actualElementReached": false,
+            "center": {
+              "x": 103.7421875,
+              "y": 754.25
+            },
+            "centerInTopViewport": true,
+            "code": "ArrowRight",
+            "display": "block",
+            "hitPath": [
+              {
+                "className": "cqc-game-frame",
+                "id": "",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "id": "moduleFrame",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "paused43",
+                "id": "pause43",
+                "tag": "DIV",
+                "text": "PAUSELe combat et son chronomètre sont suspendus.REPRENDRE"
+              }
+            ],
+            "id": "",
+            "label": "→",
+            "local": {
+              "bottom": 573.5,
+              "height": 42.5,
+              "left": 66.828125,
+              "right": 122.65625,
+              "top": 531,
+              "width": 55.828125
+            },
+            "top": {
+              "bottom": 775.5,
+              "height": 42.5,
+              "left": 75.828125,
+              "right": 131.65625,
+              "top": 733,
+              "width": 55.828125
+            },
+            "visible": true
+          },
+          {
+            "actualElementReached": false,
+            "center": {
+              "x": 164.5703125,
+              "y": 754.25
+            },
+            "centerInTopViewport": true,
+            "code": "ArrowUp",
+            "display": "block",
+            "hitPath": [
+              {
+                "className": "cqc-game-frame",
+                "id": "",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "id": "moduleFrame",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "paused43",
+                "id": "pause43",
+                "tag": "DIV",
+                "text": "PAUSELe combat et son chronomètre sont suspendus.REPRENDRE"
+              }
+            ],
+            "id": "",
+            "label": "↑",
+            "local": {
+              "bottom": 573.5,
+              "height": 42.5,
+              "left": 127.65625,
+              "right": 183.484375,
+              "top": 531,
+              "width": 55.828125
+            },
+            "top": {
+              "bottom": 775.5,
+              "height": 42.5,
+              "left": 136.65625,
+              "right": 192.484375,
+              "top": 733,
+              "width": 55.828125
+            },
+            "visible": true
+          },
+          {
+            "actualElementReached": false,
+            "center": {
+              "x": 225.40625,
+              "y": 754.25
+            },
+            "centerInTopViewport": true,
+            "code": "ArrowDown",
+            "display": "block",
+            "hitPath": [
+              {
+                "className": "cqc-game-frame",
+                "id": "",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "id": "moduleFrame",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "paused43",
+                "id": "pause43",
+                "tag": "DIV",
+                "text": "PAUSELe combat et son chronomètre sont suspendus.REPRENDRE"
+              }
+            ],
+            "id": "",
+            "label": "↓",
+            "local": {
+              "bottom": 573.5,
+              "height": 42.5,
+              "left": 188.484375,
+              "right": 244.328125,
+              "top": 531,
+              "width": 55.84375
+            },
+            "top": {
+              "bottom": 775.5,
+              "height": 42.5,
+              "left": 197.484375,
+              "right": 253.328125,
+              "top": 733,
+              "width": 55.84375
+            },
+            "visible": true
+          },
+          {
+            "actualElementReached": false,
+            "center": {
+              "x": 286.2421875,
+              "y": 754.25
+            },
+            "centerInTopViewport": true,
+            "code": "Space",
+            "display": "block",
+            "hitPath": [
+              {
+                "className": "cqc-game-frame",
+                "id": "",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "id": "moduleFrame",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "paused43",
+                "id": "pause43",
+                "tag": "DIV",
+                "text": "PAUSELe combat et son chronomètre sont suspendus.REPRENDRE"
+              }
+            ],
+            "id": "",
+            "label": "GARDE",
+            "local": {
+              "bottom": 573.5,
+              "height": 42.5,
+              "left": 249.328125,
+              "right": 305.15625,
+              "top": 531,
+              "width": 55.828125
+            },
+            "top": {
+              "bottom": 775.5,
+              "height": 42.5,
+              "left": 258.328125,
+              "right": 314.15625,
+              "top": 733,
+              "width": 55.828125
+            },
+            "visible": true
+          },
+          {
+            "actualElementReached": false,
+            "center": {
+              "x": 347.0703125,
+              "y": 754.25
+            },
+            "centerInTopViewport": true,
+            "code": "ShiftRight",
+            "display": "block",
+            "hitPath": [
+              {
+                "className": "cqc-game-frame",
+                "id": "",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "id": "moduleFrame",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "paused43",
+                "id": "pause43",
+                "tag": "DIV",
+                "text": "PAUSELe combat et son chronomètre sont suspendus.REPRENDRE"
+              }
+            ],
+            "id": "",
+            "label": "DASH",
+            "local": {
+              "bottom": 573.5,
+              "height": 42.5,
+              "left": 310.15625,
+              "right": 365.984375,
+              "top": 531,
+              "width": 55.828125
+            },
+            "top": {
+              "bottom": 775.5,
+              "height": 42.5,
+              "left": 319.15625,
+              "right": 374.984375,
+              "top": 733,
+              "width": 55.828125
+            },
+            "visible": true
+          },
+          {
+            "actualElementReached": true,
+            "center": {
+              "x": 42.9140625,
+              "y": 801.75
+            },
+            "centerInTopViewport": true,
+            "code": "KeyJ",
+            "display": "block",
+            "hitPath": [
+              {
+                "className": "cqc-game-frame",
+                "id": "",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "id": "moduleFrame",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "code": "KeyJ",
+                "id": "",
+                "tag": "BUTTON",
+                "text": "J"
+              }
+            ],
+            "id": "",
+            "label": "J",
+            "local": {
+              "bottom": 621,
+              "height": 42.5,
+              "left": 6,
+              "right": 61.828125,
+              "top": 578.5,
+              "width": 55.828125
+            },
+            "top": {
+              "bottom": 823,
+              "height": 42.5,
+              "left": 15,
+              "right": 70.828125,
+              "top": 780.5,
+              "width": 55.828125
+            },
+            "visible": true
+          },
+          {
+            "actualElementReached": true,
+            "center": {
+              "x": 103.7421875,
+              "y": 801.75
+            },
+            "centerInTopViewport": true,
+            "code": "KeyK",
+            "display": "block",
+            "hitPath": [
+              {
+                "className": "cqc-game-frame",
+                "id": "",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "id": "moduleFrame",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "code": "KeyK",
+                "id": "",
+                "tag": "BUTTON",
+                "text": "K"
+              }
+            ],
+            "id": "",
+            "label": "K",
+            "local": {
+              "bottom": 621,
+              "height": 42.5,
+              "left": 66.828125,
+              "right": 122.65625,
+              "top": 578.5,
+              "width": 55.828125
+            },
+            "top": {
+              "bottom": 823,
+              "height": 42.5,
+              "left": 75.828125,
+              "right": 131.65625,
+              "top": 780.5,
+              "width": 55.828125
+            },
+            "visible": true
+          },
+          {
+            "actualElementReached": true,
+            "center": {
+              "x": 164.5703125,
+              "y": 801.75
+            },
+            "centerInTopViewport": true,
+            "code": "KeyI",
+            "display": "block",
+            "hitPath": [
+              {
+                "className": "cqc-game-frame",
+                "id": "",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "id": "moduleFrame",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "code": "KeyI",
+                "id": "",
+                "tag": "BUTTON",
+                "text": "I"
+              }
+            ],
+            "id": "",
+            "label": "I",
+            "local": {
+              "bottom": 621,
+              "height": 42.5,
+              "left": 127.65625,
+              "right": 183.484375,
+              "top": 578.5,
+              "width": 55.828125
+            },
+            "top": {
+              "bottom": 823,
+              "height": 42.5,
+              "left": 136.65625,
+              "right": 192.484375,
+              "top": 780.5,
+              "width": 55.828125
+            },
+            "visible": true
+          },
+          {
+            "actualElementReached": true,
+            "center": {
+              "x": 225.40625,
+              "y": 801.75
+            },
+            "centerInTopViewport": true,
+            "code": "KeyU",
+            "display": "block",
+            "hitPath": [
+              {
+                "className": "cqc-game-frame",
+                "id": "",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "id": "moduleFrame",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "code": "KeyU",
+                "id": "",
+                "tag": "BUTTON",
+                "text": "U"
+              }
+            ],
+            "id": "",
+            "label": "U",
+            "local": {
+              "bottom": 621,
+              "height": 42.5,
+              "left": 188.484375,
+              "right": 244.328125,
+              "top": 578.5,
+              "width": 55.84375
+            },
+            "top": {
+              "bottom": 823,
+              "height": 42.5,
+              "left": 197.484375,
+              "right": 253.328125,
+              "top": 780.5,
+              "width": 55.84375
+            },
+            "visible": true
+          },
+          {
+            "actualElementReached": true,
+            "center": {
+              "x": 286.2421875,
+              "y": 801.75
+            },
+            "centerInTopViewport": true,
+            "code": "KeyO",
+            "display": "block",
+            "hitPath": [
+              {
+                "className": "cqc-game-frame",
+                "id": "",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "id": "moduleFrame",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "code": "KeyO",
+                "id": "",
+                "tag": "BUTTON",
+                "text": "O"
+              }
+            ],
+            "id": "",
+            "label": "O",
+            "local": {
+              "bottom": 621,
+              "height": 42.5,
+              "left": 249.328125,
+              "right": 305.15625,
+              "top": 578.5,
+              "width": 55.828125
+            },
+            "top": {
+              "bottom": 823,
+              "height": 42.5,
+              "left": 258.328125,
+              "right": 314.15625,
+              "top": 780.5,
+              "width": 55.828125
+            },
+            "visible": true
+          },
+          {
+            "actualElementReached": true,
+            "center": {
+              "x": 347.0703125,
+              "y": 801.75
+            },
+            "centerInTopViewport": true,
+            "code": "KeyL",
+            "display": "block",
+            "hitPath": [
+              {
+                "className": "cqc-game-frame",
+                "id": "",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "id": "moduleFrame",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "code": "KeyL",
+                "id": "",
+                "tag": "BUTTON",
+                "text": "L"
+              }
+            ],
+            "id": "",
+            "label": "L",
+            "local": {
+              "bottom": 621,
+              "height": 42.5,
+              "left": 310.15625,
+              "right": 365.984375,
+              "top": 578.5,
+              "width": 55.828125
+            },
+            "top": {
+              "bottom": 823,
+              "height": 42.5,
+              "left": 319.15625,
+              "right": 374.984375,
+              "top": 780.5,
+              "width": 55.828125
+            },
+            "visible": true
+          }
+        ],
+        "desktopHelpVisible": false,
+        "diagnostics": {
+          "finishScene": false,
+          "finishWindow": false,
+          "keys": [],
+          "paused": true,
+          "rejected": 0,
+          "results": 0,
+          "running": true,
+          "starts": 0,
+          "token": null
+        },
+        "frames": {
+          "inner": {
+            "bottom": 675,
+            "height": 627,
+            "left": 0,
+            "right": 372,
+            "top": 48,
+            "width": 372
+          },
+          "innerTransform": "none",
+          "outer": {
+            "bottom": 829,
+            "height": 675,
+            "left": 9,
+            "right": 381,
+            "top": 154,
+            "width": 372
+          },
+          "outerTransform": "none"
+        },
+        "main": {
+          "clientHeight": 828,
+          "rect": {
+            "bottom": 836,
+            "height": 828,
+            "left": 8,
+            "right": 382,
+            "top": 8,
+            "width": 374
+          },
+          "scrollHeight": 828,
+          "scrollTop": 0
+        },
+        "moduleViewport": {
+          "height": 627,
+          "width": 372
+        },
+        "pointerEvents": [],
+        "resume": {
+          "actualElementReached": true,
+          "center": {
+            "x": 194.984375,
+            "y": 567
+          },
+          "centerInTopViewport": true,
+          "display": "inline-block",
+          "hitPath": [
+            {
+              "className": "cqc-game-frame",
+              "id": "",
+              "tag": "IFRAME",
+              "text": ""
+            },
+            {
+              "className": "",
+              "id": "moduleFrame",
+              "tag": "IFRAME",
+              "text": ""
+            },
+            {
+              "className": "",
+              "id": "resume43",
+              "tag": "BUTTON",
+              "text": "REPRENDRE"
+            }
+          ],
+          "id": "resume43",
+          "label": "REPRENDRE",
+          "local": {
+            "bottom": 387,
+            "height": 44,
+            "left": 122.75,
+            "right": 249.21875,
+            "top": 343,
+            "width": 126.46875
+          },
+          "top": {
+            "bottom": 589,
+            "height": 44,
+            "left": 131.75,
+            "right": 258.21875,
+            "top": 545,
+            "width": 126.46875
+          },
+          "visible": true
+        },
+        "state": {
+          "a": {
+            "meter": 100,
+            "r": 10,
+            "resource": {
+              "kind": "ammo",
+              "label": "GRENADES — VERSUS",
+              "max": 10,
+              "regen": 0,
+              "reload": 58
+            },
+            "uid": "core__redblaster_mg2",
+            "x": 380,
+            "y": 568
+          },
+          "b": {
+            "ai": false,
+            "x": 900
+          },
+          "frame": 10,
+          "phase": "fight",
+          "phaseT": 0,
+          "utility": {
+            "active": 1,
+            "cooldown": 0,
+            "cost": 0,
+            "counterplay": "Pause interrompable avant restauration de la réserve du versus ; aucun soin, armure ou pouvoir ajouté.",
+            "damage": 0,
+            "id": "core__redblaster_mg2::utility",
+            "kind": "recover",
+            "level": "mid",
+            "lore": "adaptation",
+            "meter": 0,
+            "name": "Reprendre la réserve de grenades — adaptation",
+            "reach": 0,
+            "recovery": 20,
+            "restore": 4,
+            "slot": "utility",
+            "startup": 54,
+            "tag": "recovery"
+          }
+        },
+        "touchVisible": true,
+        "wallTime": 1790948573371
+      }
+    },
+    {
+      "name": "390-real-all-twelve-touch-centres-after-normal-scroll",
+      "result": {
+        "buttons": [
+          {
+            "actualElementReached": false,
+            "center": {
+              "x": 42.9140625,
+              "y": 754.25
+            },
+            "centerInTopViewport": true,
+            "code": "ArrowLeft",
+            "display": "block",
+            "hitPath": [
+              {
+                "className": "cqc-game-frame",
+                "id": "",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "id": "moduleFrame",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "paused43",
+                "id": "pause43",
+                "tag": "DIV",
+                "text": "PAUSELe combat et son chronomètre sont suspendus.REPRENDRE"
+              }
+            ],
+            "id": "",
+            "label": "←",
+            "local": {
+              "bottom": 573.5,
+              "height": 42.5,
+              "left": 6,
+              "right": 61.828125,
+              "top": 531,
+              "width": 55.828125
+            },
+            "top": {
+              "bottom": 775.5,
+              "height": 42.5,
+              "left": 15,
+              "right": 70.828125,
+              "top": 733,
+              "width": 55.828125
+            },
+            "visible": true
+          },
+          {
+            "actualElementReached": false,
+            "center": {
+              "x": 103.7421875,
+              "y": 754.25
+            },
+            "centerInTopViewport": true,
+            "code": "ArrowRight",
+            "display": "block",
+            "hitPath": [
+              {
+                "className": "cqc-game-frame",
+                "id": "",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "id": "moduleFrame",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "paused43",
+                "id": "pause43",
+                "tag": "DIV",
+                "text": "PAUSELe combat et son chronomètre sont suspendus.REPRENDRE"
+              }
+            ],
+            "id": "",
+            "label": "→",
+            "local": {
+              "bottom": 573.5,
+              "height": 42.5,
+              "left": 66.828125,
+              "right": 122.65625,
+              "top": 531,
+              "width": 55.828125
+            },
+            "top": {
+              "bottom": 775.5,
+              "height": 42.5,
+              "left": 75.828125,
+              "right": 131.65625,
+              "top": 733,
+              "width": 55.828125
+            },
+            "visible": true
+          },
+          {
+            "actualElementReached": false,
+            "center": {
+              "x": 164.5703125,
+              "y": 754.25
+            },
+            "centerInTopViewport": true,
+            "code": "ArrowUp",
+            "display": "block",
+            "hitPath": [
+              {
+                "className": "cqc-game-frame",
+                "id": "",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "id": "moduleFrame",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "paused43",
+                "id": "pause43",
+                "tag": "DIV",
+                "text": "PAUSELe combat et son chronomètre sont suspendus.REPRENDRE"
+              }
+            ],
+            "id": "",
+            "label": "↑",
+            "local": {
+              "bottom": 573.5,
+              "height": 42.5,
+              "left": 127.65625,
+              "right": 183.484375,
+              "top": 531,
+              "width": 55.828125
+            },
+            "top": {
+              "bottom": 775.5,
+              "height": 42.5,
+              "left": 136.65625,
+              "right": 192.484375,
+              "top": 733,
+              "width": 55.828125
+            },
+            "visible": true
+          },
+          {
+            "actualElementReached": false,
+            "center": {
+              "x": 225.40625,
+              "y": 754.25
+            },
+            "centerInTopViewport": true,
+            "code": "ArrowDown",
+            "display": "block",
+            "hitPath": [
+              {
+                "className": "cqc-game-frame",
+                "id": "",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "id": "moduleFrame",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "paused43",
+                "id": "pause43",
+                "tag": "DIV",
+                "text": "PAUSELe combat et son chronomètre sont suspendus.REPRENDRE"
+              }
+            ],
+            "id": "",
+            "label": "↓",
+            "local": {
+              "bottom": 573.5,
+              "height": 42.5,
+              "left": 188.484375,
+              "right": 244.328125,
+              "top": 531,
+              "width": 55.84375
+            },
+            "top": {
+              "bottom": 775.5,
+              "height": 42.5,
+              "left": 197.484375,
+              "right": 253.328125,
+              "top": 733,
+              "width": 55.84375
+            },
+            "visible": true
+          },
+          {
+            "actualElementReached": false,
+            "center": {
+              "x": 286.2421875,
+              "y": 754.25
+            },
+            "centerInTopViewport": true,
+            "code": "Space",
+            "display": "block",
+            "hitPath": [
+              {
+                "className": "cqc-game-frame",
+                "id": "",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "id": "moduleFrame",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "paused43",
+                "id": "pause43",
+                "tag": "DIV",
+                "text": "PAUSELe combat et son chronomètre sont suspendus.REPRENDRE"
+              }
+            ],
+            "id": "",
+            "label": "GARDE",
+            "local": {
+              "bottom": 573.5,
+              "height": 42.5,
+              "left": 249.328125,
+              "right": 305.15625,
+              "top": 531,
+              "width": 55.828125
+            },
+            "top": {
+              "bottom": 775.5,
+              "height": 42.5,
+              "left": 258.328125,
+              "right": 314.15625,
+              "top": 733,
+              "width": 55.828125
+            },
+            "visible": true
+          },
+          {
+            "actualElementReached": false,
+            "center": {
+              "x": 347.0703125,
+              "y": 754.25
+            },
+            "centerInTopViewport": true,
+            "code": "ShiftRight",
+            "display": "block",
+            "hitPath": [
+              {
+                "className": "cqc-game-frame",
+                "id": "",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "id": "moduleFrame",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "paused43",
+                "id": "pause43",
+                "tag": "DIV",
+                "text": "PAUSELe combat et son chronomètre sont suspendus.REPRENDRE"
+              }
+            ],
+            "id": "",
+            "label": "DASH",
+            "local": {
+              "bottom": 573.5,
+              "height": 42.5,
+              "left": 310.15625,
+              "right": 365.984375,
+              "top": 531,
+              "width": 55.828125
+            },
+            "top": {
+              "bottom": 775.5,
+              "height": 42.5,
+              "left": 319.15625,
+              "right": 374.984375,
+              "top": 733,
+              "width": 55.828125
+            },
+            "visible": true
+          },
+          {
+            "actualElementReached": true,
+            "center": {
+              "x": 42.9140625,
+              "y": 801.75
+            },
+            "centerInTopViewport": true,
+            "code": "KeyJ",
+            "display": "block",
+            "hitPath": [
+              {
+                "className": "cqc-game-frame",
+                "id": "",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "id": "moduleFrame",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "code": "KeyJ",
+                "id": "",
+                "tag": "BUTTON",
+                "text": "J"
+              }
+            ],
+            "id": "",
+            "label": "J",
+            "local": {
+              "bottom": 621,
+              "height": 42.5,
+              "left": 6,
+              "right": 61.828125,
+              "top": 578.5,
+              "width": 55.828125
+            },
+            "top": {
+              "bottom": 823,
+              "height": 42.5,
+              "left": 15,
+              "right": 70.828125,
+              "top": 780.5,
+              "width": 55.828125
+            },
+            "visible": true
+          },
+          {
+            "actualElementReached": true,
+            "center": {
+              "x": 103.7421875,
+              "y": 801.75
+            },
+            "centerInTopViewport": true,
+            "code": "KeyK",
+            "display": "block",
+            "hitPath": [
+              {
+                "className": "cqc-game-frame",
+                "id": "",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "id": "moduleFrame",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "code": "KeyK",
+                "id": "",
+                "tag": "BUTTON",
+                "text": "K"
+              }
+            ],
+            "id": "",
+            "label": "K",
+            "local": {
+              "bottom": 621,
+              "height": 42.5,
+              "left": 66.828125,
+              "right": 122.65625,
+              "top": 578.5,
+              "width": 55.828125
+            },
+            "top": {
+              "bottom": 823,
+              "height": 42.5,
+              "left": 75.828125,
+              "right": 131.65625,
+              "top": 780.5,
+              "width": 55.828125
+            },
+            "visible": true
+          },
+          {
+            "actualElementReached": true,
+            "center": {
+              "x": 164.5703125,
+              "y": 801.75
+            },
+            "centerInTopViewport": true,
+            "code": "KeyI",
+            "display": "block",
+            "hitPath": [
+              {
+                "className": "cqc-game-frame",
+                "id": "",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "id": "moduleFrame",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "code": "KeyI",
+                "id": "",
+                "tag": "BUTTON",
+                "text": "I"
+              }
+            ],
+            "id": "",
+            "label": "I",
+            "local": {
+              "bottom": 621,
+              "height": 42.5,
+              "left": 127.65625,
+              "right": 183.484375,
+              "top": 578.5,
+              "width": 55.828125
+            },
+            "top": {
+              "bottom": 823,
+              "height": 42.5,
+              "left": 136.65625,
+              "right": 192.484375,
+              "top": 780.5,
+              "width": 55.828125
+            },
+            "visible": true
+          },
+          {
+            "actualElementReached": true,
+            "center": {
+              "x": 225.40625,
+              "y": 801.75
+            },
+            "centerInTopViewport": true,
+            "code": "KeyU",
+            "display": "block",
+            "hitPath": [
+              {
+                "className": "cqc-game-frame",
+                "id": "",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "id": "moduleFrame",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "code": "KeyU",
+                "id": "",
+                "tag": "BUTTON",
+                "text": "U"
+              }
+            ],
+            "id": "",
+            "label": "U",
+            "local": {
+              "bottom": 621,
+              "height": 42.5,
+              "left": 188.484375,
+              "right": 244.328125,
+              "top": 578.5,
+              "width": 55.84375
+            },
+            "top": {
+              "bottom": 823,
+              "height": 42.5,
+              "left": 197.484375,
+              "right": 253.328125,
+              "top": 780.5,
+              "width": 55.84375
+            },
+            "visible": true
+          },
+          {
+            "actualElementReached": true,
+            "center": {
+              "x": 286.2421875,
+              "y": 801.75
+            },
+            "centerInTopViewport": true,
+            "code": "KeyO",
+            "display": "block",
+            "hitPath": [
+              {
+                "className": "cqc-game-frame",
+                "id": "",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "id": "moduleFrame",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "code": "KeyO",
+                "id": "",
+                "tag": "BUTTON",
+                "text": "O"
+              }
+            ],
+            "id": "",
+            "label": "O",
+            "local": {
+              "bottom": 621,
+              "height": 42.5,
+              "left": 249.328125,
+              "right": 305.15625,
+              "top": 578.5,
+              "width": 55.828125
+            },
+            "top": {
+              "bottom": 823,
+              "height": 42.5,
+              "left": 258.328125,
+              "right": 314.15625,
+              "top": 780.5,
+              "width": 55.828125
+            },
+            "visible": true
+          },
+          {
+            "actualElementReached": true,
+            "center": {
+              "x": 347.0703125,
+              "y": 801.75
+            },
+            "centerInTopViewport": true,
+            "code": "KeyL",
+            "display": "block",
+            "hitPath": [
+              {
+                "className": "cqc-game-frame",
+                "id": "",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "id": "moduleFrame",
+                "tag": "IFRAME",
+                "text": ""
+              },
+              {
+                "className": "",
+                "code": "KeyL",
+                "id": "",
+                "tag": "BUTTON",
+                "text": "L"
+              }
+            ],
+            "id": "",
+            "label": "L",
+            "local": {
+              "bottom": 621,
+              "height": 42.5,
+              "left": 310.15625,
+              "right": 365.984375,
+              "top": 578.5,
+              "width": 55.828125
+            },
+            "top": {
+              "bottom": 823,
+              "height": 42.5,
+              "left": 319.15625,
+              "right": 374.984375,
+              "top": 780.5,
+              "width": 55.828125
+            },
+            "visible": true
+          }
+        ],
+        "desktopHelpVisible": false,
+        "diagnostics": {
+          "finishScene": false,
+          "finishWindow": false,
+          "keys": [],
+          "paused": true,
+          "rejected": 0,
+          "results": 0,
+          "running": true,
+          "starts": 0,
+          "token": null
+        },
+        "frames": {
+          "inner": {
+            "bottom": 675,
+            "height": 627,
+            "left": 0,
+            "right": 372,
+            "top": 48,
+            "width": 372
+          },
+          "innerTransform": "none",
+          "outer": {
+            "bottom": 829,
+            "height": 675,
+            "left": 9,
+            "right": 381,
+            "top": 154,
+            "width": 372
+          },
+          "outerTransform": "none"
+        },
+        "main": {
+          "clientHeight": 828,
+          "rect": {
+            "bottom": 836,
+            "height": 828,
+            "left": 8,
+            "right": 382,
+            "top": 8,
+            "width": 374
+          },
+          "scrollHeight": 828,
+          "scrollTop": 0
+        },
+        "moduleViewport": {
+          "height": 627,
+          "width": 372
+        },
+        "pointerEvents": [],
+        "resume": {
+          "actualElementReached": true,
+          "center": {
+            "x": 194.984375,
+            "y": 567
+          },
+          "centerInTopViewport": true,
+          "display": "inline-block",
+          "hitPath": [
+            {
+              "className": "cqc-game-frame",
+              "id": "",
+              "tag": "IFRAME",
+              "text": ""
+            },
+            {
+              "className": "",
+              "id": "moduleFrame",
+              "tag": "IFRAME",
+              "text": ""
+            },
+            {
+              "className": "",
+              "id": "resume43",
+              "tag": "BUTTON",
+              "text": "REPRENDRE"
+            }
+          ],
+          "id": "resume43",
+          "label": "REPRENDRE",
+          "local": {
+            "bottom": 387,
+            "height": 44,
+            "left": 122.75,
+            "right": 249.21875,
+            "top": 343,
+            "width": 126.46875
+          },
+          "top": {
+            "bottom": 589,
+            "height": 44,
+            "left": 131.75,
+            "right": 258.21875,
+            "top": 545,
+            "width": 126.46875
+          },
+          "visible": true
+        },
+        "state": {
+          "a": {
+            "meter": 100,
+            "r": 10,
+            "resource": {
+              "kind": "ammo",
+              "label": "GRENADES — VERSUS",
+              "max": 10,
+              "regen": 0,
+              "reload": 58
+            },
+            "uid": "core__redblaster_mg2",
+            "x": 380,
+            "y": 568
+          },
+          "b": {
+            "ai": false,
+            "x": 900
+          },
+          "frame": 10,
+          "phase": "fight",
+          "phaseT": 0,
+          "utility": {
+            "active": 1,
+            "cooldown": 0,
+            "cost": 0,
+            "counterplay": "Pause interrompable avant restauration de la réserve du versus ; aucun soin, armure ou pouvoir ajouté.",
+            "damage": 0,
+            "id": "core__redblaster_mg2::utility",
+            "kind": "recover",
+            "level": "mid",
+            "lore": "adaptation",
+            "meter": 0,
+            "name": "Reprendre la réserve de grenades — adaptation",
+            "reach": 0,
+            "recovery": 20,
+            "restore": 4,
+            "slot": "utility",
+            "startup": 54,
+            "tag": "recovery"
+          }
+        },
+        "touchVisible": true,
+        "wallTime": 1790948573389
+      }
+    }
+  ],
+  "screenshots": [],
+  "browserPageErrors": {
+    "errors": [],
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 7909188448582145663
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    }
+  },
+  "cleanup": "owned browser closed; actual network restored",
+  "limits": [
+    "Real browser offline/online settings produce trusted native browser network events; no synthetic install/offline window event was dispatched.",
+    "Routes use the existing application menu. The same offline banner DOM element is retained across CQC, HOME and SETTINGS; CSS alone determines its visibility.",
+    "Training match and pause use the public game API; Resume and control presses are genuine browser mouse pointer gestures at actual DOM centres, and real engine frames run normally.",
+    "No injected CSS, DOM hiding, mocked PWA state, fake engine frames or native pixel changes.",
+    "At 980/981 the actual nested module selects desktop controls; the 12 touch buttons are verified only when visible at 390.",
+    "Vite local has no service-worker offline guarantee. Offline iframe navigations may fail while parent route/UI checks remain meaningful, and the real module is loaded again online through the normal menu.",
+    "This UI follow-up does not rewrite the closed 273 native/physics checks or the 1018 production HTTP checks for commit26c5a845."
+  ]
+}

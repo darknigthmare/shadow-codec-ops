@@ -1,0 +1,430 @@
+{
+  "schema": "cqc-pass9-real-parent-toast-fix-browser/v1",
+  "checkedAt": "2026-10-02T13:40:32.148698+00:00",
+  "status": "failed",
+  "failure": {
+    "type": "RuntimeError",
+    "message": "{'success': False, 'data': None, 'error': 'Evaluation error: Error: Actual route not ready\\n    at <anonymous>:1:198'}"
+  },
+  "scope": "local",
+  "baseURL": "http://127.0.0.1:5179",
+  "expectedPublishedCommit40": null,
+  "localGitHEADAtStartAndEnd": "26c5a845dce307c2f2a593cb4859882b023600e7",
+  "sourcePinsBefore": [
+    {
+      "path": "/workspace/shadow-codec-recovered/src/app/App.tsx",
+      "bytes": 7749,
+      "sha256": "ea4d24ab423d3026718708f5f7501538832cc2de8108e0024e74780959267300"
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/src/styles/mobile.css",
+      "bytes": 7528,
+      "sha256": "e368860a9d1f7e27a60f9d1d8a703b31a8a7710d5d1b367919dbefc632c1aeb4"
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/src/components/common/PwaRuntimeBanner.tsx",
+      "bytes": 1226,
+      "sha256": "733542e9cf05c560ad543cc4b2b8b688192353c7438f167fe67bdbfabd8c6217"
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/src/systems/pwaEngine.ts",
+      "bytes": 3608,
+      "sha256": "aff802bd25640268498658e2ac0aedae479f1d038d80eb57445fedfa6c7eebcf"
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/src/components/cqc/CqcLauncher.tsx",
+      "bytes": 2096,
+      "sha256": "cfd90ed2b14dc3802799f5604029a498b082ea03844fd893a83821689a78a51d"
+    }
+  ],
+  "sourcePinsAfter": [
+    {
+      "path": "/workspace/shadow-codec-recovered/src/app/App.tsx",
+      "bytes": 7749,
+      "sha256": "ea4d24ab423d3026718708f5f7501538832cc2de8108e0024e74780959267300"
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/src/styles/mobile.css",
+      "bytes": 7528,
+      "sha256": "e368860a9d1f7e27a60f9d1d8a703b31a8a7710d5d1b367919dbefc632c1aeb4"
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/src/components/common/PwaRuntimeBanner.tsx",
+      "bytes": 1226,
+      "sha256": "733542e9cf05c560ad543cc4b2b8b688192353c7438f167fe67bdbfabd8c6217"
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/src/systems/pwaEngine.ts",
+      "bytes": 3608,
+      "sha256": "aff802bd25640268498658e2ac0aedae479f1d038d80eb57445fedfa6c7eebcf"
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/src/components/cqc/CqcLauncher.tsx",
+      "bytes": 2096,
+      "sha256": "cfd90ed2b14dc3802799f5604029a498b082ea03844fd893a83821689a78a51d"
+    }
+  ],
+  "native334SourcesUnchangedBeforeAndAfter": true,
+  "nativeSourceFreeze": {
+    "path": "/workspace/cqc-pass9-final-qa/actual43-source-freeze.json",
+    "bytes": 102955,
+    "sha256": "dea09b3b8870c5c7d3eb6f6fbe88c9540a0852422d7f255c30d6d51546687052"
+  },
+  "tool": {
+    "path": "/workspace/cqc-pass9-browser-preparation/verify-mobile-toast-fix.py",
+    "bytes": 15606,
+    "sha256": "17b0467d2789590ccafe24dd24058477b2f4257d770adc254a64d721ae4d4052"
+  },
+  "actualArgs": {
+    "base": "http://127.0.0.1:5179",
+    "scope": "local",
+    "label": "mobile-toast-local-01",
+    "commit": null,
+    "root_ready": null,
+    "root_ready_sha256": null
+  },
+  "actualBrowserPrefix": [
+    "/tmp/cqc-browser-npm-cache/_npx/6de2aa2fded2970c/node_modules/agent-browser/bin/agent-browser-linux-x64",
+    "--session",
+    "vc9-toast-fix-260677-a8934e3",
+    "--executable-path",
+    "/usr/bin/chromium",
+    "--args",
+    "--no-sandbox,--disk-cache-size=1,--media-cache-size=1",
+    "--json"
+  ],
+  "commands": [
+    {
+      "command": [
+        "set",
+        "offline",
+        "off"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "offline": false
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "set",
+        "viewport",
+        "390",
+        "844"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "deviceScaleFactor": 1.0,
+          "height": 844,
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "mobile": false,
+          "width": 390
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "open",
+        "http://127.0.0.1:5179/?module=cqc"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "targetId": "43A36180F1C259462E435414AA1C95F0",
+          "title": "Shadow Codec Ops",
+          "url": "http://127.0.0.1:5179/?module=cqc"
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "wait",
+        "--load",
+        "networkidle"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "state": "networkidle"
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "eval",
+        "(()=>{const h=document.querySelector(\".main-drawer-handle\");return h&&getComputedStyle(h).display!==\"none\"&&h.getAttribute(\"aria-expanded\")===\"false\"})()"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "origin": "http://127.0.0.1:5179/?module=cqc",
+          "result": true
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "click",
+        ".main-drawer-handle"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "clicked": ".main-drawer-handle",
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          }
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "click",
+        "button.nav-button[aria-label^=\"HOME:\"]"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "clicked": "button.nav-button[aria-label^=\"HOME:\"]",
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          }
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "eval",
+        "(async()=>{for(let i=0;i<150;i++){if(document.querySelector(\".app-shell\")?.dataset.route===\"home\"&&!document.querySelector(\".boot-screen\"))return true;await new Promise(r=>setTimeout(r,100))}throw Error(\"Actual route not ready\")})()"
+      ],
+      "exit": 1,
+      "result": {
+        "success": false,
+        "data": null,
+        "error": "Evaluation error: Error: Actual route not ready\n    at <anonymous>:1:198"
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "set",
+        "offline",
+        "off"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          },
+          "offline": false
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "errors"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "errors": [],
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": true,
+              "engine": "chrome",
+              "launchHash": 7909188448582145663
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": true,
+            "saveStatus": "not_attempted"
+          }
+        },
+        "error": null
+      },
+      "stderr": ""
+    },
+    {
+      "command": [
+        "close"
+      ],
+      "exit": 0,
+      "result": {
+        "success": true,
+        "data": {
+          "closed": true,
+          "lifecycle": {
+            "effectiveLaunch": {
+              "browserLaunched": false,
+              "engine": "chrome",
+              "launchHash": null
+            },
+            "launched": false,
+            "relaunchedBrowser": false,
+            "restartedBackground": false,
+            "restoreStatus": "not_configured",
+            "reused": false,
+            "saveStatus": "not_configured"
+          },
+          "restoreStatus": "not_configured",
+          "saveStatus": "not_configured"
+        },
+        "error": null
+      },
+      "stderr": ""
+    }
+  ],
+  "observations": [],
+  "screenshots": [],
+  "browserPageErrors": {
+    "errors": [],
+    "lifecycle": {
+      "effectiveLaunch": {
+        "browserLaunched": true,
+        "engine": "chrome",
+        "launchHash": 7909188448582145663
+      },
+      "launched": false,
+      "relaunchedBrowser": false,
+      "restartedBackground": false,
+      "restoreStatus": "not_configured",
+      "reused": true,
+      "saveStatus": "not_attempted"
+    }
+  },
+  "cleanup": "owned browser closed; actual network restored",
+  "limits": [
+    "Real browser offline/online settings produce trusted native browser network events; no synthetic install/offline window event was dispatched.",
+    "Routes use the existing application menu. The same offline banner DOM element is retained across CQC, HOME and SETTINGS; CSS alone determines its visibility.",
+    "Training match and pause use the public game API; Resume and control presses are genuine browser mouse pointer gestures at actual DOM centres, and real engine frames run normally.",
+    "No injected CSS, DOM hiding, mocked PWA state, fake engine frames or native pixel changes.",
+    "At 980/981 the actual nested module selects desktop controls; the 12 touch buttons are verified only when visible at 390.",
+    "Vite local has no service-worker offline guarantee. Offline iframe navigations may fail while parent route/UI checks remain meaningful, and the real module is loaded again online through the normal menu.",
+    "This UI follow-up does not rewrite the closed 273 native/physics checks or the 1018 production HTTP checks for commit26c5a845."
+  ]
+}

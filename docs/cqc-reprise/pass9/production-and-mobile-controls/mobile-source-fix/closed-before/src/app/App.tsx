@@ -129,7 +129,7 @@ export function App() {
   }
 
   return (
-    <div className={shellClassName} data-route={route}>
+    <div className={shellClassName}>
       <PwaRuntimeBanner />
       <AppLayout
         route={route}

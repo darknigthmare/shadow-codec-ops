@@ -1,0 +1,279 @@
+{
+  "schema": "cqc-pass9-closed-production-native-and-http-delivery/v1",
+  "closedAt": "2026-10-02T13:34:12.744941+00:00",
+  "status": "native-and-http-passed-with-separate-mobile-parent-UI-finding",
+  "production": {
+    "baseURL": "https://shadow-codec-ops.vercel.app",
+    "gitCommit40": "26c5a845dce307c2f2a593cb4859882b023600e7",
+    "gitTree40": "565497064ede3e125cf2759212a8d54772fc1dcf",
+    "deployment": {
+      "id": "dpl_5PLCNhDD5pvnEfdL3hrejZusUrJp",
+      "readyState": "READY",
+      "readySubstate": "PROMOTED",
+      "target": "production",
+      "gitSha": "26c5a845dce307c2f2a593cb4859882b023600e7"
+    },
+    "rootConfirmedREADY": {
+      "path": "/workspace/vercel-pass9-publication/ROOT_CONFIRMED_PRODUCTION_READY_26c5a845.json",
+      "bytes": 1789,
+      "sha256": "93c565ca90f974d3614b08810abddd5e8a4126c811cb707827edbfcc943582b3"
+    },
+    "actualDeploymentAPIProof": {
+      "path": "/workspace/vercel-pass9-publication/production-state-26c5a84-04.json",
+      "bytes": 11797,
+      "sha256": "2e2455eb3ab09d582f6cfd11ff25f6222ff7f324bb850c8eff5792e03c325c0f"
+    }
+  },
+  "browser": {
+    "report": {
+      "path": "/workspace/cqc-pass9-browser-preparation/actual-production-26c5a845-01/verification.json",
+      "bytes": 1076049,
+      "sha256": "15d24fc3ffe3290db47e7487eb520225e18ed1de28ef6191b9a5a459b8ebd2bb"
+    },
+    "checkCount": 273,
+    "commandCount": 333,
+    "scope": "production",
+    "routes": [
+      "/?module=cqc",
+      "/cqc/index.html"
+    ],
+    "viewports": [
+      [
+        1280,
+        800
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "observed": {
+      "actualNewNativeIdles": 32,
+      "actualTechniquePhases": 960,
+      "actualStates": 224,
+      "actualSourceLaunches": 56,
+      "actualNativeStarSpinCases": 8,
+      "actualNativeStarSourceDraws": 64,
+      "actualBootAndLayoutCases": 8,
+      "measuredSourceMarks": 8,
+      "activeTypedSourceMarks": 6,
+      "slotFacingFixturesPerContext": 14
+    },
+    "pageErrors": {
+      "errors": [],
+      "lifecycle": {
+        "effectiveLaunch": {
+          "browserLaunched": true,
+          "engine": "chrome",
+          "launchHash": 7909188448582145663
+        },
+        "launched": false,
+        "relaunchedBrowser": false,
+        "restartedBackground": false,
+        "restoreStatus": "not_configured",
+        "reused": true,
+        "saveStatus": "not_attempted"
+      }
+    },
+    "cleanup": "owned browser closed",
+    "sourceToolPins": [
+      {
+        "path": "/workspace/cqc-pass9-browser-preparation/verify-pass9-browser.py",
+        "sha256": "5f65941671ce119b2130caafd123fb2434e533d2e111e75f3bdb86674d435b05",
+        "bytes": 27516
+      },
+      {
+        "path": "/workspace/cqc-pass9-browser-preparation/browser-observers.js",
+        "sha256": "3569a96a8aa6d30802fcbd36bbda9f0f08508cbcbe5d5da04792eed1396b6003",
+        "bytes": 23141
+      },
+      {
+        "path": "/workspace/cqc-pass9-browser-preparation/layout-observer.js",
+        "sha256": "d8f31667cb1742e2d259bc3efb759259b06bc547dd95181fb16f1f78388572dd",
+        "bytes": 17777
+      }
+    ],
+    "launchProvenance": {
+      "path": "/workspace/cqc-pass9-browser-preparation/actual-production-26c5a845-01/ACTUAL_LAUNCH_PROVENANCE.json",
+      "bytes": 2273,
+      "sha256": "13db9bc36f6ec8321075844e8ae9bf8b2d8ad1df4ed50a1f1d751f7f92719352"
+    },
+    "cacheOnlyLauncher": {
+      "path": "/workspace/cqc-pass9-browser-preparation/production-preparation/run-production-low-cache.py",
+      "bytes": 3682,
+      "sha256": "9f142e41fe63a8c517c6636324bf34db44d1773abd1488e0dcfbbc8ceab66807"
+    },
+    "storageOnlyFlags": [
+      "--disk-cache-size=1",
+      "--media-cache-size=1"
+    ],
+    "pageAndObserverCodeChanged": false,
+    "ownedBrowserSession": "vc9d-258883-5d0dabb"
+  },
+  "HTTP": {
+    "report": {
+      "path": "/workspace/cqc-pass9-browser-preparation/http/actual-production-http-26c5a845-01.json",
+      "bytes": 306648,
+      "sha256": "c641a5f501327bc1d7f3098b75c81c166370741fbc25fff0da7fefa08d169a9b"
+    },
+    "checkCount": 1018,
+    "exactGetCount": 288,
+    "headCount": 730,
+    "combatSpritePNGGetCount": 258,
+    "nativeStarGetCount": 1,
+    "coreGetCount": 28,
+    "getBytesStreamed": 456922173,
+    "responseBodiesStored": false,
+    "headWithoutContentLengthCount": 0,
+    "failures": [],
+    "sourceDrift": [],
+    "HEADQualification": "The 730 remaining official-manifest responses were checked for success and exact Content-Length; their payload hashes were not asserted.",
+    "toolPins": {
+      "tool": {
+        "path": "/workspace/cqc-pass9-browser-preparation/http/verify-pass9-http.py",
+        "bytes": 17536,
+        "sha256": "c257cecdc054cddb1872c89d2c6a64b87a3f2cb0409b0fcf4d0ee5951ca3d79c"
+      },
+      "closedPASS8": [
+        {
+          "path": "/workspace/vercel-pass8-publication/verify-deployed-http.py",
+          "bytes": 3435,
+          "sha256": "ce9496e549d470cfff86fd43819a66cf58e10c4c473ae8d8f759cfd8437daf04"
+        },
+        {
+          "path": "/workspace/vercel-pass8-publication/expected-runtime-manifest.json",
+          "bytes": 372562,
+          "sha256": "7dd2b1b338459f88781897903d32449378aff38e55283099df1f8b0cdb68bd8a"
+        }
+      ]
+    }
+  },
+  "preservation": {
+    "actual43EntryCount": 43,
+    "frozenSourceFilesVerifiedBeforeAndAfter": 334,
+    "inputPins": {
+      "manifest": {
+        "path": "/workspace/shadow-codec-recovered/public/cqc/runtime-manifest.json",
+        "bytes": 386122,
+        "sha256": "7cd007af2691f7b9471e1d6ef66079e016ccad79934ae85cff4e793e066f1c21"
+      },
+      "corePins": {
+        "path": "/workspace/cqc-pass9-browser-preparation/local-root-ready-preparation/core-pins28.actual-local-freeze43.json",
+        "bytes": 5330,
+        "sha256": "7d9477d84df90f2737c4d01fce9f46cb1781cd5692625f7592d2eb3b96de5206"
+      },
+      "sourceFreeze": {
+        "path": "/workspace/cqc-pass9-final-qa/actual43-source-freeze.json",
+        "bytes": 102955,
+        "sha256": "dea09b3b8870c5c7d3eb6f6fbe88c9540a0852422d7f255c30d6d51546687052"
+      },
+      "rootREADY": {
+        "path": "/workspace/vercel-pass9-publication/ROOT_CONFIRMED_PRODUCTION_READY_26c5a845.json",
+        "bytes": 1789,
+        "sha256": "93c565ca90f974d3614b08810abddd5e8a4126c811cb707827edbfcc943582b3"
+      }
+    },
+    "runtimeCatalogJSSHA256": "dd6de917405653878d55bd4a0385dabdfc06f01d41a381036ac4e2d661dd5e22",
+    "actual43LocalCanonicalJSONSHA256": "3e86a705f212492542c5f95f50bddf53a0d0b832c24090a63c094479b91d78dd",
+    "previous39LocalCanonicalJSONSHA256": "3fe34bf2be1cc7c5365a82e57b747b269adf795c1940885a6ce6e8a4a793d747",
+    "previous39LiteralEntriesPreserved": true,
+    "canonical53MJSONPublishedOrRequired": false,
+    "allClosedPASS8AndPriorPASS9ReportsPreserved": true,
+    "ourRSEdits": false,
+    "ourPNGEdits": false,
+    "ourGitOrDeploymentMutations": false
+  },
+  "nativeAndPhysicalEvidence": {
+    "screenshots": [
+      {
+        "path": "/workspace/cqc-pass9-browser-preparation/actual-production-26c5a845-01/1280-Shadow-tab-Red-source-crouch9-without-wire.png",
+        "bytes": 881434,
+        "sha256": "5730b79f8ca3685a87ab54edf4cbd063a49ead61f08d169e7652b2bf7d7cc44b"
+      },
+      {
+        "path": "/workspace/cqc-pass9-browser-preparation/actual-production-26c5a845-01/1280-Shadow-tab-Red-real-grenade-explosion.png",
+        "bytes": 882280,
+        "sha256": "26248475b7a6930d86e74147117f885ffb06e5d421d55259365f50fd201b061f"
+      },
+      {
+        "path": "/workspace/cqc-pass9-browser-preparation/actual-production-26c5a845-01/1280-direct-CQC-Red-source-crouch9-without-wire.png",
+        "bytes": 1206633,
+        "sha256": "a3a53f9cffa7616621b2c3d03e3d454bbe7d3a8e37593cdb205464e8269c1b27"
+      },
+      {
+        "path": "/workspace/cqc-pass9-browser-preparation/actual-production-26c5a845-01/1280-direct-CQC-Red-real-grenade-explosion.png",
+        "bytes": 1209863,
+        "sha256": "f8b4a736f47c5ffe08eeaf8fda29a0c30d72fe6e40b324e66c7415a532733a84"
+      },
+      {
+        "path": "/workspace/cqc-pass9-browser-preparation/actual-production-26c5a845-01/390-Shadow-tab-Red-source-crouch9-without-wire.png",
+        "bytes": 224460,
+        "sha256": "2e5aba38cacfd19252a94cbbae504b53dc4e03891f16e6d28abff54fda1f3770"
+      },
+      {
+        "path": "/workspace/cqc-pass9-browser-preparation/actual-production-26c5a845-01/390-direct-CQC-Red-source-crouch9-without-wire.png",
+        "bytes": 200763,
+        "sha256": "ebbbd39f5b0927cb76301b273eed8a71ee8cc640190de02f34bf42b5c9e151fc"
+      }
+    ],
+    "screenshotBytes": 4605433,
+    "producerPhysicallyViewedAllSix": true,
+    "rootPhysicalReview": {
+      "path": "/workspace/cqc-pass9-browser-preparation/actual-production-26c5a845-01/ROOT_PHYSICAL_REVIEW.json",
+      "bytes": 2833,
+      "sha256": "800ded816a1dd16e0a5fd3ea6c5b3b8cd243afdb9630c056af35330d189cb5d0"
+    },
+    "rootReportedPhysicallyViewedAllSix": true,
+    "nativeStarDecodedAndActuallyDrawn": true,
+    "nativeStarDrawCount": 64,
+    "nativeStarEightSourcePosesBothFaces": true,
+    "nativeStarActualLinearCanvasMatrix": [
+      1,
+      0,
+      0,
+      1
+    ],
+    "nativeStarAdditionalParentOrLocalRotation": false,
+    "nativeStarSourcePNGUnchanged": true,
+    "documentarySourceMarks": 8,
+    "activeTypedSourceMarks": 6,
+    "typedSlotFacingFixturesAcrossFourContexts": 56,
+    "RedDeployTwoDocumentaryMarksActive": false,
+    "RedDown": "Actual source A crouch poses 8/9, active pose 9; stationary and without wire, trap, device, damage or projectile.",
+    "actualRedGrenadeCases": 24,
+    "maximumSimultaneousSuperBlasts": 3,
+    "blastBoundTicks": 26,
+    "blastVisualQualification": "Existing geometric Canvas Versus FX, not source-certified MSX particle art.",
+    "artFidelityQualification": "Closest-supported original-era MSX2 artwork and source-based categories. Authored native frames, timing, display size and numerical ballistics are Versus adaptations rather than extracted original animations or absolute 1:1 certification.",
+    "BlackAndJungleActualBodyAlpha": 1,
+    "RunningManGunOrDeviceEmission": false
+  },
+  "layoutQualification": {
+    "actualOldSnakeBodyAndBootCases": 8,
+    "bothFacingsAndBothMounts": true,
+    "completeNativeSilhouetteAndFeetFit": true,
+    "moduleHorizontalOverflowObserved": false,
+    "moduleAndIframeGeometryDoesNotProveParentOverlayAbsent": true,
+    "realProductionShadowMobileFinding": "The existing dismissible parent MOBILE LINK PWA banner is visible over the lower touch-control area in the 390 Shadow-tab screenshot. Its × action is visible. The direct CQC mobile capture has no such parent banner.",
+    "rootReviewPendingField": true,
+    "separateFollowup": "Root authorized a separate, targeted parent-UI audit and correction after these native and HTTP runs closed. Their closed reports and screenshots remain unchanged. Do not claim every touch control was unobscured in the initial embedded mobile capture.",
+    "screenshotsWereNotRetouchedOrHidden": true
+  },
+  "scopeLimits": [
+    "Actual browser at two viewports and both canonical mounts; engine frames and input/contact states are advanced rather than assigned.",
+    "Native artwork and numerical ballistics are closest_supported original-era MSX2 Versus adaptations, not extracted original animations or absolute1:1.",
+    "Star origin is a hand-release point; eight unchanged authored native spin poses are decoded/drawn without added parent or local rotation. Timing and display size are Versus adaptations. Red grenade-hand points are qualified; Jungle points are generic longgun muzzles.",
+    "Two Red deploy documentary marks remain inactive; Down is A8/9 stationary crouch without wire/device.",
+    "Grenade blast Canvas FX remain explicit versus effects rather than native original-game particle art.",
+    "Old reports, PASS8 runner, app sources and all original PNG bytes remain unmodified.",
+    "These reports validate the four new actors, native projectile artwork, actual combat semantics, preservation and selected body/boots layouts. The separate stage-game reviewer owns the three new stage-flow production checks.",
+    "The publication was performed and confirmed by root; this agent performed read-only verification."
+  ],
+  "storage": {
+    "newBrowserDirectoryBytesBeforeThisReceipt": 5758704,
+    "HTTPReportBytes": 306648,
+    "fullCatalogCopied": false,
+    "responseBodiesPersisted": false,
+    "allSixScreenshotsReusedWithoutCopy": true
+  }
+}
