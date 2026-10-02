@@ -1,0 +1,18 @@
+{
+  "status": "resolved_before_delivery",
+  "failures": [
+    {
+      "tool": "finalize_beauty.py",
+      "reason": "Initial Beauty A RIGHT native touches top edge, body completeness failed; source rejected and regenerated, final A RIGHT2 passes."
+    },
+    {
+      "tool": "inspect_mantis_complete.py",
+      "reason": "Initial manually estimated A LEFT jump pose10 support y=980 lay outside true complete source bbox ending at961. Reader correctly rejected it. Final support y is exact lower opaque main body=960, body x remains observed."
+    }
+  ],
+  "initialA_RIGHTLayoutPreservation": {
+    "path": "/workspace/cqc-pass8-generation/screaming-mantis/armor/layouts/a-right.initial-raw-body-pivot-draft.json",
+    "status": "deterministic reconstruction from unchanged native source, complete-layout metadata and exact initial raw pivot array recorded in first inspector script; original unpinned draft was superseded by source-measured support y. No historic file or pixel bytes altered."
+  },
+  "runtimeImportsDuringFailures": 0
+}

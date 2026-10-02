@@ -1,0 +1,521 @@
+{
+  "schema": "cqc.native-combat-delivery/1",
+  "uid": "core__eva_mgs3",
+  "name": "EVA",
+  "game": "Metal Gear Solid 3: Snake Eater (2004, PS2)",
+  "incarnation": "Original PS2 adult EVA, motorcycle clothing and right-thigh Mauser holster; no Delta, MPO or Big Mama blend",
+  "selectedCostume": "original-mgs3-ps2-eva-motorcycle",
+  "basis": "Apparence originale Konami PS2 et captures vérifiées ; mouvements versus adaptés. Mauser établi, type exact non certifié, aucune grenade inventée.",
+  "displayHeight": 226,
+  "coverage": "action-frames",
+  "facing": 1,
+  "mirror": false,
+  "sourceFiles": [
+    {
+      "key": "a-right",
+      "source": "/workspace/cqc-pass8-generation/paz-eva/eva-mgs3/sources/A_RIGHT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-23037a66-b555-4620-a81f-3d355ae77668.png",
+      "sha256": "6f4b899c2f0a6ad2c98d092e230c4945505d1806eabf173dcce151f0deaed8f4",
+      "bytes": 1930487,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": 1,
+      "mirror": false
+    },
+    {
+      "key": "a-left",
+      "source": "/workspace/cqc-pass8-generation/paz-eva/eva-mgs3/sources/A_LEFT_02.png",
+      "nativeOriginal": "/workspace/generated_images/exec-ea503093-13a1-4a9c-8d72-cc15711f7b6f.png",
+      "sha256": "bc87a222e6b4bbc85738c81f8402931c1a7905edbc0d8430cfcce11de77918d8",
+      "bytes": 1974439,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": -1,
+      "mirror": false
+    },
+    {
+      "key": "b-right",
+      "source": "/workspace/cqc-pass8-generation/paz-eva/eva-mgs3/sources/B_RIGHT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-4c2f5eb8-9efd-4106-8d9a-687de5c83179.png",
+      "sha256": "b28627dfce690bccec44cdba6bc5c7081c558bc520cdd1eb4e3040f67c828f1c",
+      "bytes": 2114707,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": 1,
+      "mirror": false
+    },
+    {
+      "key": "b-left",
+      "source": "/workspace/cqc-pass8-generation/paz-eva/eva-mgs3/sources/B_LEFT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-13aad7b2-e558-4167-8f65-b2f880789904.png",
+      "sha256": "0d2d2b670193782f2298aebe96815a0c67670466deed92c63573559657440f14",
+      "bytes": 2140764,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": -1,
+      "mirror": false
+    },
+    {
+      "key": "c-right",
+      "source": "/workspace/cqc-pass8-generation/paz-eva/eva-mgs3/sources/C_RIGHT_02.png",
+      "nativeOriginal": "/workspace/generated_images/exec-e3a995f4-62d5-46df-a612-01a087fdb0c2.png",
+      "sha256": "e748ca7a70d92221861ce0d0d64d16bd8f2cef597f6d24df8114cd4758f6e7fc",
+      "bytes": 2105711,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": 1,
+      "mirror": false
+    },
+    {
+      "key": "c-left",
+      "source": "/workspace/cqc-pass8-generation/paz-eva/eva-mgs3/sources/C_LEFT_04.png",
+      "nativeOriginal": "/workspace/generated_images/exec-6a247ccd-81cc-4858-ba12-0262976630fa.png",
+      "sha256": "6f899e51fd5cca6f2fcc83cb497b02e8681d0f9ecd71fbac6d8775a048ddabcf",
+      "bytes": 2094250,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": -1,
+      "mirror": false
+    }
+  ],
+  "actionLayout": {
+    "idle": {
+      "sheet": "a",
+      "indices": [
+        0,
+        1
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "walk": {
+      "sheet": "a",
+      "indices": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "fps": 9,
+      "loop": true
+    },
+    "guard": {
+      "sheet": "a",
+      "indices": [
+        6,
+        7
+      ],
+      "fps": 5,
+      "loop": true
+    },
+    "crouch": {
+      "sheet": "a",
+      "indices": [
+        8,
+        9
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "jump": {
+      "sheet": "a",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 6,
+      "loop": false
+    },
+    "punch": {
+      "sheet": "b",
+      "indices": [
+        0,
+        1,
+        2
+      ],
+      "fps": 12,
+      "loop": false
+    },
+    "heavy": {
+      "sheet": "b",
+      "indices": [
+        3,
+        4,
+        5
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "low": {
+      "sheet": "b",
+      "indices": [
+        6,
+        7,
+        8
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "hit": {
+      "sheet": "b",
+      "indices": [
+        9
+      ],
+      "fps": 0,
+      "loop": false
+    },
+    "ko": {
+      "sheet": "b",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 6,
+      "loop": false
+    },
+    "shoot": {
+      "sheet": "c",
+      "indices": [
+        0,
+        1,
+        2
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "deploy": {
+      "sheet": "c",
+      "indices": [
+        3,
+        4,
+        5
+      ],
+      "fps": 8,
+      "loop": false
+    },
+    "throw": {
+      "sheet": "c",
+      "indices": [
+        6,
+        7,
+        8
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "recover": {
+      "sheet": "c",
+      "indices": [
+        9,
+        10,
+        11
+      ],
+      "fps": 5,
+      "loop": false
+    }
+  },
+  "actionMap": {
+    "light": "punch",
+    "heavy": "heavy",
+    "low": "low",
+    "throw": "throw",
+    "special": "shoot",
+    "specialDown": "deploy",
+    "specialForward": "throw",
+    "specialBack": "walk",
+    "super": "shoot",
+    "utility": "recover"
+  },
+  "phaseMap": {
+    "punch": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "heavy": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "low": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "shoot": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "deploy": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "throw": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "recover": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "guard": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        0
+      ]
+    },
+    "jump": {
+      "startup": [
+        0
+      ],
+      "active": [
+        0
+      ],
+      "recovery": [
+        1
+      ]
+    }
+  },
+  "review": {
+    "status": "approved",
+    "reviewer": "paz_two_versions_eva producer, actual official/capture and six-source72-pose physical inspection",
+    "reviewedAt": "2026-10-02",
+    "sourceKind": "original-game-capture",
+    "checks": {
+      "identity": true,
+      "costume": true,
+      "equipment": true,
+      "anatomicalSides": true,
+      "singleFigure": true,
+      "transparentBackground": true
+    },
+    "fidelityStatus": "closest_supported",
+    "absolute1to1Certified": false,
+    "sources": [
+      {
+        "file": "/workspace/cqc-pass8-generation/paz-eva/eva-mgs3/references/konami-eva.gif",
+        "url": "https://www.konami.com/mg/archive/mgs3/english/pic/chara_eva_pic.gif",
+        "sourceKind": "official-original-model",
+        "scope": "Original Konami PS2 full-body model, costume/hair/boots/right holster/goggles. Official model physically viewed.",
+        "viewed": true,
+        "sha256": "273db9354079253f11c3193a86789294bdf04a953a7a1e10d79898be40c42207",
+        "bytes": 53800
+      },
+      {
+        "file": "/workspace/cqc-pass8-generation/paz-eva/eva-mgs3/references/konami-eva.html",
+        "url": "https://www.konami.com/mg/archive/mgs3/english/chara_eva.html",
+        "sourceKind": "official-story-page",
+        "scope": "Official text: Uses a Mauser. A motorbike fanatic. Exact handgun subtype not stated.",
+        "viewed": false,
+        "sha256": "c3a9116f8544bc3f1e8e1e8e45a66e3f154f7c60e04f2afdf81ec1cf11290f06",
+        "bytes": 4839
+      },
+      {
+        "file": "/workspace/cqc-pass8-generation/paz-eva/eva-mgs3/references/original-ps2-7600s.png",
+        "url": "https://archive.org/download/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater.mp4",
+        "sourceKind": "original-game-capture",
+        "scope": "Original PS2 EVA speaking, honey-blonde layered hair, face and motorcycle jacket under blue night lighting. Not color calibration.",
+        "viewed": true,
+        "sha256": "abb53a260e848bfab91ae1d796e384ee21bb1fceb456570608d53aed73b546a9",
+        "bytes": 272128
+      },
+      {
+        "file": "/workspace/cqc-pass8-generation/paz-eva/eva-mgs3/references/original-ps2-7800s.png",
+        "url": "https://archive.org/download/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater.mp4",
+        "sourceKind": "original-game-capture",
+        "scope": "Original PS2 full-body standing EVA beside Snake. Low resolution/overhead lighting occludes seams; not weapon model proof.",
+        "viewed": true,
+        "sha256": "e2903faab551b84ef91119906715fb99572195c39b7986b52b15a3bf209b50bc",
+        "bytes": 252534
+      }
+    ],
+    "limits": [
+      "The target is faithful original MGS3 PS2 source appearance, closest_supported; no absolute 1:1 model, animation, seam, palette or pixel certification.",
+      "Original Konami model proves adult EVA honey blonde medium layered hair, goggles at neck, ochre/brown open motorcycle clothing over black undergarment, dark gloves, black tall laced boots, belt and anatomical RIGHT thigh holster. Original official page says Uses a Mauser; precise C96/Chinese Type17 designation and exact loading mechanism are not primary-source certified.",
+      "All 72 authored versus poses, strikes, guard/jump/KO, two aimed firing groups, CQC and restrained occluded reload are authored 2D adaptations, not source-extracted animations. No grenade, SMG, long gun, psychic effect or separate motorcycle is invented. Six-shot super and ammunition are root-owned adapted gameplay, not canonical duel balance.",
+      "Independent facings are not reflected. A LEFT01 ignored facing and is rejected; C LEFT02 had an opaque dark background patch and cannot be used; C LEFT03 had a second anatomical-left holster and is rejected. C LEFT04 corrects to the single anatomical-right far-side holster. C RIGHT01/C LEFT01 are conserved pre-reload variations. Every original and prompt remains preserved. Imagegen edits can also alter untargeted body rendering; source bytes of earlier variations are untouched and no exact first9-cell preservation is claimed.",
+      "Closely spaced source bodies need recorded Canvas contours; their source alpha/PNG bytes remain unchanged. Strongly lowered poses retain upright source scale. Reviewer physically viewed every selected complete source sheet and every12 cells, not runtime renders. Root must independently view final Canvas crops, phases, origins/collisions and mobile/desktop.",
+      "Moonlit original PS2 cutscene lighting and tiny official GIF do not certify exact leather material response, braid/finger topology, reverse stitching or Mauser machining details. The small illustrated long-barrel/broomhandle form is source-supported approximation; no modern detachable magazine or exact Type17 promise."
+    ],
+    "approvalScope": "Original PS2 source-supported EVA appearance, native72 authored action poses and four measured firearm muzzle marks; runtime integration is separate."
+  },
+  "counts": {
+    "selectedNativePngSheets": 6,
+    "totalPoseCells": 72,
+    "poseCellsPerSheet": 12,
+    "facings": 2,
+    "nativeGenerationAttempts": 11,
+    "rejectedNativeAttempts": 3,
+    "preservedPreReloadVariations": 2,
+    "selectedWeaponPropAtlases": 0
+  },
+  "sourceGeometry": {
+    "a-right": {
+      "recommendStandingSourceHeight": 359.5,
+      "nativeUprightHeights": [
+        360,
+        359
+      ],
+      "observedUprightIndices": [
+        0,
+        1
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/paz-eva/eva-mgs3/layouts/a-right.json",
+      "basis": "Measured native upright human head-to-boot height. One positive sheet scale, no stretching crouch or KO to standing height."
+    },
+    "a-left": {
+      "recommendStandingSourceHeight": 360.5,
+      "nativeUprightHeights": [
+        360,
+        361
+      ],
+      "observedUprightIndices": [
+        0,
+        1
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/paz-eva/eva-mgs3/layouts/a-left.json",
+      "basis": "Measured native upright human head-to-boot height. One positive sheet scale, no stretching crouch or KO to standing height."
+    },
+    "b-right": {
+      "recommendStandingSourceHeight": 365.0,
+      "nativeUprightHeights": [
+        369,
+        361
+      ],
+      "observedUprightIndices": [
+        0,
+        2
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/paz-eva/eva-mgs3/layouts/b-right.json",
+      "basis": "Measured native upright human head-to-boot height. One positive sheet scale, no stretching crouch or KO to standing height."
+    },
+    "b-left": {
+      "recommendStandingSourceHeight": 372.5,
+      "nativeUprightHeights": [
+        372,
+        373
+      ],
+      "observedUprightIndices": [
+        0,
+        2
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/paz-eva/eva-mgs3/layouts/b-left.json",
+      "basis": "Measured native upright human head-to-boot height. One positive sheet scale, no stretching crouch or KO to standing height."
+    },
+    "c-right": {
+      "recommendStandingSourceHeight": 354.5,
+      "nativeUprightHeights": [
+        357,
+        352
+      ],
+      "observedUprightIndices": [
+        0,
+        2
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/paz-eva/eva-mgs3/layouts/c-right.json",
+      "basis": "Measured native upright human head-to-boot height. One positive sheet scale, no stretching crouch or KO to standing height."
+    },
+    "c-left": {
+      "recommendStandingSourceHeight": 355.5,
+      "nativeUprightHeights": [
+        356,
+        355
+      ],
+      "observedUprightIndices": [
+        0,
+        2
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/paz-eva/eva-mgs3/layouts/c-left.json",
+      "basis": "Measured native upright human head-to-boot height. One positive sheet scale, no stretching crouch or KO to standing height."
+    }
+  },
+  "layouts": {
+    "a-right": "/workspace/cqc-pass8-generation/paz-eva/eva-mgs3/layouts/a-right.json",
+    "a-left": "/workspace/cqc-pass8-generation/paz-eva/eva-mgs3/layouts/a-left.json",
+    "b-right": "/workspace/cqc-pass8-generation/paz-eva/eva-mgs3/layouts/b-right.json",
+    "b-left": "/workspace/cqc-pass8-generation/paz-eva/eva-mgs3/layouts/b-left.json",
+    "c-right": "/workspace/cqc-pass8-generation/paz-eva/eva-mgs3/layouts/c-right.json",
+    "c-left": "/workspace/cqc-pass8-generation/paz-eva/eva-mgs3/layouts/c-left.json"
+  },
+  "sourceCombatOrigins": "/workspace/cqc-pass8-generation/paz-eva/eva-mgs3/SOURCE_COMBAT_ORIGINS.json",
+  "sourceContract": "/workspace/cqc-pass8-generation/paz-eva/eva-mgs3/SOURCE_AND_ACTION_CONTRACT.json",
+  "nativeAlphaReview": "/workspace/cqc-pass8-generation/paz-eva/eva-mgs3/NATIVE_ALPHA_REVIEW.json",
+  "limits": [
+    "The target is faithful original MGS3 PS2 source appearance, closest_supported; no absolute 1:1 model, animation, seam, palette or pixel certification.",
+    "Original Konami model proves adult EVA honey blonde medium layered hair, goggles at neck, ochre/brown open motorcycle clothing over black undergarment, dark gloves, black tall laced boots, belt and anatomical RIGHT thigh holster. Original official page says Uses a Mauser; precise C96/Chinese Type17 designation and exact loading mechanism are not primary-source certified.",
+    "All 72 authored versus poses, strikes, guard/jump/KO, two aimed firing groups, CQC and restrained occluded reload are authored 2D adaptations, not source-extracted animations. No grenade, SMG, long gun, psychic effect or separate motorcycle is invented. Six-shot super and ammunition are root-owned adapted gameplay, not canonical duel balance.",
+    "Independent facings are not reflected. A LEFT01 ignored facing and is rejected; C LEFT02 had an opaque dark background patch and cannot be used; C LEFT03 had a second anatomical-left holster and is rejected. C LEFT04 corrects to the single anatomical-right far-side holster. C RIGHT01/C LEFT01 are conserved pre-reload variations. Every original and prompt remains preserved. Imagegen edits can also alter untargeted body rendering; source bytes of earlier variations are untouched and no exact first9-cell preservation is claimed.",
+    "Closely spaced source bodies need recorded Canvas contours; their source alpha/PNG bytes remain unchanged. Strongly lowered poses retain upright source scale. Reviewer physically viewed every selected complete source sheet and every12 cells, not runtime renders. Root must independently view final Canvas crops, phases, origins/collisions and mobile/desktop.",
+    "Moonlit original PS2 cutscene lighting and tiny official GIF do not certify exact leather material response, braid/finger topology, reverse stitching or Mauser machining details. The small illustrated long-barrel/broomhandle form is source-supported approximation; no modern detachable magazine or exact Type17 promise."
+  ],
+  "requiresGameplayContract": "Standing Mauser shoot, kneeling Mauser deploy, physical CQC throw, actual reload recover; no grenade or magic. Root validates ammunition, adapted6-shot super, phase/collision/finisher/mobile."
+}

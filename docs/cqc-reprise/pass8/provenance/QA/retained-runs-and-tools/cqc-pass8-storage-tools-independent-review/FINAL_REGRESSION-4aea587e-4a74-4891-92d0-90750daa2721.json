@@ -1,0 +1,216 @@
+{
+  "schema": "cqc.pass8.storage-tools-independent-regression/1",
+  "status": "passed",
+  "productionRepositoriesReadOnly": true,
+  "productionSyncRun": false,
+  "productionBuildRun": false,
+  "fixtureRoot": "/workspace/cqc-pass8-storage-tools-independent-review/final-fixtures-37fa9d92-6670-4ff7-b3c0-3ea6d1a4c2f5",
+  "toolSources": [
+    {
+      "file": "/workspace/cqc-pass8-storage-tools/common.mjs",
+      "sha256": "722b0deee364f213fd4f821ffcaa87119c3a9146ad93b95b78e05f4cc0d92e5a"
+    },
+    {
+      "file": "/workspace/cqc-pass8-storage-tools/sync-frozen-runtime.mjs",
+      "sha256": "a9e614ccd9bf06b4d047eb5a8c44c34787ae1277f5a0c2dc09896e0f82de3812"
+    },
+    {
+      "file": "/workspace/cqc-pass8-storage-tools/build-with-frozen-public.mjs",
+      "sha256": "35000b5658833028e7cb13f4412f722d77cfde150779883b6f0d26966fe1b30e"
+    }
+  ],
+  "checks": [
+    {
+      "name": "Build input code mutation invalidates reviewed plan",
+      "status": "passed",
+      "details": {
+        "reviewedSourceSnapshotChanges": true
+      }
+    },
+    {
+      "name": "Reject build destination project",
+      "status": "passed",
+      "details": {
+        "rejected": "Build output inside the project is limited to its dist directory; external output must be disjoint."
+      }
+    },
+    {
+      "name": "Reject build destination project/src",
+      "status": "passed",
+      "details": {
+        "rejected": "Build output inside the project is limited to its dist directory; external output must be disjoint."
+      }
+    },
+    {
+      "name": "Reject build destination project/public",
+      "status": "passed",
+      "details": {
+        "rejected": "Build output inside the project is limited to its dist directory; external output must be disjoint."
+      }
+    },
+    {
+      "name": "Reject build destination project/src/output",
+      "status": "passed",
+      "details": {
+        "rejected": "Build output inside the project is limited to its dist directory; external output must be disjoint."
+      }
+    },
+    {
+      "name": "Allow ordinary project dist and disjoint external output",
+      "status": "passed",
+      "details": {
+        "allowed": true
+      }
+    },
+    {
+      "name": "Inventory order canonical across directory/file prefix",
+      "status": "passed",
+      "details": {
+        "canonicalPaths": [
+          "a/x.txt",
+          "a-x.txt"
+        ]
+      }
+    },
+    {
+      "name": "Frozen PNG hardlinks while JS remains independent",
+      "status": "passed",
+      "details": [
+        {
+          "path": "frozen.png",
+          "mode": "immutable-png-hardlink"
+        },
+        {
+          "path": "mutable.js",
+          "mode": "independent-copy"
+        }
+      ]
+    },
+    {
+      "name": "Unpinned PNG remains independent",
+      "status": "passed",
+      "details": {
+        "independent": true
+      }
+    },
+    {
+      "name": "Existing stage collision refuses overwrite",
+      "status": "passed",
+      "details": {
+        "preserved": true
+      }
+    },
+    {
+      "name": "JavaScript and non-frozen pins rejected",
+      "status": "passed",
+      "details": {
+        "rejected": true
+      }
+    },
+    {
+      "name": "Tampered PNG bytes fail pin verification",
+      "status": "passed",
+      "details": {
+        "rejected": "Frozen PNG byte pin mismatch: frozen.png"
+      }
+    },
+    {
+      "name": "Unsafe relative paths rejected",
+      "status": "passed",
+      "details": {
+        "rejectedCases": 6
+      }
+    },
+    {
+      "name": "Backup and evidence cannot overlap active trees",
+      "status": "passed",
+      "details": {
+        "rejectedCases": 3
+      }
+    },
+    {
+      "name": "Symbolic-link operation ancestor rejected",
+      "status": "passed",
+      "details": {
+        "rejected": "Non-directory or symbolic-link operation ancestor: /workspace/cqc-pass8-storage-tools-independent-review/final-fixtures-37fa9d92-6670-4ff7-b3c0-3ea6d1a4c2f5/project-link"
+      }
+    },
+    {
+      "name": "Aliased mutable TypeScript emitted output rejected",
+      "status": "passed",
+      "details": {
+        "rejected": "TypeScript generated output aliases another path: vite.config.js"
+      }
+    },
+    {
+      "name": "Post-promotion validation rollback; original present",
+      "status": "passed",
+      "details": {
+        "originalRestored": true,
+        "originalAbsenceRestored": false,
+        "rejectedNewOutputPreserved": true
+      }
+    },
+    {
+      "name": "Post-promotion validation rollback; original absent",
+      "status": "passed",
+      "details": {
+        "originalRestored": false,
+        "originalAbsenceRestored": true,
+        "rejectedNewOutputPreserved": true
+      }
+    },
+    {
+      "name": "PWA parity: baseline manifest",
+      "status": "passed",
+      "details": {
+        "accepted": true,
+        "error": null
+      }
+    },
+    {
+      "name": "PWA parity: missing required manifest fields",
+      "status": "passed",
+      "details": {
+        "accepted": false,
+        "error": "PWA manifest missing name"
+      }
+    },
+    {
+      "name": "PWA parity: too few icons",
+      "status": "passed",
+      "details": {
+        "accepted": false,
+        "error": "PWA manifest contract failed."
+      }
+    },
+    {
+      "name": "PWA parity: too few shortcuts/no builder",
+      "status": "passed",
+      "details": {
+        "accepted": false,
+        "error": "PWA manifest contract failed."
+      }
+    },
+    {
+      "name": "PWA parity: four shortcuts without builder",
+      "status": "passed",
+      "details": {
+        "accepted": false,
+        "error": "PWA manifest contract failed."
+      }
+    },
+    {
+      "name": "PWA parity: only nested Workbox",
+      "status": "passed",
+      "details": {
+        "accepted": false,
+        "error": "Workbox runtime artifact missing."
+      }
+    },
+    {
+      "name": "Tools remained unchanged throughout independent run",
+      "status": "passed"
+    }
+  ]
+}

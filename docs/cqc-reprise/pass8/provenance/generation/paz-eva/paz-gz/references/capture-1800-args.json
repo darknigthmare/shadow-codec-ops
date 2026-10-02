@@ -1,0 +1,17 @@
+{
+  "args": [
+    "ffmpeg",
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-ss",
+    "1800",
+    "-i",
+    "https://archive.org/download/Xbox_One_Longplay_004_Metal_Gear_Solid_V_Ground_Zeroes/Xbox_One_Longplay_004_Metal_Gear_Solid_V_Ground_Zeroes.mp4",
+    "-frames:v",
+    "1",
+    "/workspace/cqc-pass8-generation/paz-eva/paz-gz/references/original-1800s.png"
+  ],
+  "exit": 183,
+  "stderr": "[mov,mp4,m4a,3gp,3g2,mj2 @ 0x562b661702c0] stream 0, offset 0x9fbc78: partial file\nCannot determine format of input 0:0 after EOF\n[vf#0:0 @ 0x562b669a9ac0] Task finished with error code: -1094995529 (Invalid data found when processing input)\n[vf#0:0 @ 0x562b669a9ac0] Terminating thread with return code -1094995529 (Invalid data found when processing input)\n[vost#0:0/png @ 0x562b665b7a80] Could not open encoder before EOF\n[vost#0:0/png @ 0x562b665b7a80] Task finished with error code: -22 (Invalid argument)\n[vost#0:0/png @ 0x562b665b7a80] Terminating thread with return code -22 (Invalid argument)\n[out#0/image2 @ 0x562b66557380] Nothing was written into output file, because at least one of its streams received no packets.\n"
+}

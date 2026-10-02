@@ -1,0 +1,910 @@
+{
+  "schema": "cqc.native-combat-delivery/1",
+  "uid": "archive__laughing_beauty",
+  "name": "LAUGHING BEAUTY",
+  "game": "Metal Gear Solid4: Guns of the Patriots (PS3,2008)",
+  "incarnation": "Original MGS4 PS32008 adult unarmored Beauty form",
+  "selectedCostume": "original-mgs4-ps3-opaque-unarmored-laughing-beauty",
+  "basis": "Original PS3 captured costume/equipment support; source-specific authored versus poses, closest_supported.",
+  "displayHeight": 230,
+  "coverage": "action-frames",
+  "facing": 1,
+  "mirror": false,
+  "sourceFiles": [
+    {
+      "key": "a-right",
+      "source": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/sources/A_RIGHT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-4a450ce8-9542-4d7c-9436-900fe394371d.png",
+      "sha256": "fb4229486063a8154ba5ea0632f2ea07e3d06a2ab2ee667e7c69a9229e989ca6",
+      "bytes": 1799505,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": 1,
+      "mirror": false
+    },
+    {
+      "key": "a-left",
+      "source": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/sources/A_LEFT_02.png",
+      "nativeOriginal": "/workspace/generated_images/exec-38c19d04-466c-4355-91aa-b8a1bfba31eb.png",
+      "sha256": "cd754ee74a8805b78a5280a383a5e182eb7d3c424e42d056a15c3355a7f7d235",
+      "bytes": 1883609,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": -1,
+      "mirror": false
+    },
+    {
+      "key": "b-right",
+      "source": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/sources/B_RIGHT_02.png",
+      "nativeOriginal": "/workspace/generated_images/exec-cae20c77-7148-41fd-b333-88d8282f04c5.png",
+      "sha256": "1bcafd401f05a7a5ab4c765b7b3a63ef42f0c871c1e5aede4528bf920e4f7cd0",
+      "bytes": 2067073,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": 1,
+      "mirror": false
+    },
+    {
+      "key": "b-left",
+      "source": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/sources/B_LEFT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-85c15a7d-e0a6-433d-93ba-6ef41dff5d99.png",
+      "sha256": "b8dc66b2cac88c672c6cf33863b203a382a8f3ecb6a86672a14b2e2e9c5f7c24",
+      "bytes": 2023939,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": -1,
+      "mirror": false
+    },
+    {
+      "key": "c-right",
+      "source": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/sources/C_RIGHT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-42069007-b1ab-4c94-b5ba-7bc9538b20c1.png",
+      "sha256": "15cbb314c0ef4db1459e7fe8af8fc08525c13ee8abfe45c4922ae02c3b393196",
+      "bytes": 2009383,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": 1,
+      "mirror": false
+    },
+    {
+      "key": "c-left",
+      "source": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/sources/C_LEFT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-dc70aece-7241-4b74-8528-b55982d7da21.png",
+      "sha256": "86418e73086eadf82b09e910fe08ac781ceb784fe10008c0cb7b27240d8591b0",
+      "bytes": 1979583,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": -1,
+      "mirror": false
+    }
+  ],
+  "actionLayout": {
+    "idle": {
+      "sheet": "a",
+      "indices": [
+        0,
+        1
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "walk": {
+      "sheet": "a",
+      "indices": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "fps": 9,
+      "loop": true
+    },
+    "guard": {
+      "sheet": "a",
+      "indices": [
+        6,
+        7
+      ],
+      "fps": 5,
+      "loop": true
+    },
+    "crouch": {
+      "sheet": "a",
+      "indices": [
+        8,
+        9
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "jump": {
+      "sheet": "a",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 6,
+      "loop": false
+    },
+    "punch": {
+      "sheet": "b",
+      "indices": [
+        0,
+        1,
+        2
+      ],
+      "fps": 12,
+      "loop": false
+    },
+    "heavy": {
+      "sheet": "b",
+      "indices": [
+        3,
+        4,
+        5
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "low": {
+      "sheet": "b",
+      "indices": [
+        6,
+        7,
+        8
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "hit": {
+      "sheet": "b",
+      "indices": [
+        9
+      ],
+      "fps": 0,
+      "loop": false
+    },
+    "ko": {
+      "sheet": "b",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 6,
+      "loop": false
+    },
+    "shoot": {
+      "sheet": "c",
+      "indices": [
+        0,
+        1,
+        2
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "deploy": {
+      "sheet": "c",
+      "indices": [
+        3,
+        4,
+        5
+      ],
+      "fps": 8,
+      "loop": false
+    },
+    "throw": {
+      "sheet": "c",
+      "indices": [
+        6,
+        7,
+        8
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "recover": {
+      "sheet": "c",
+      "indices": [
+        9,
+        10,
+        11
+      ],
+      "fps": 5,
+      "loop": false
+    }
+  },
+  "actionMap": {
+    "light": "punch",
+    "heavy": "heavy",
+    "low": "low",
+    "throw": "throw",
+    "special": "shoot",
+    "specialDown": "deploy",
+    "specialForward": "throw",
+    "specialBack": "walk",
+    "super": "shoot",
+    "utility": "recover"
+  },
+  "phaseMap": {
+    "punch": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "heavy": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "low": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "shoot": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "deploy": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "throw": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "recover": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "guard": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        0
+      ]
+    },
+    "jump": {
+      "startup": [
+        0
+      ],
+      "active": [
+        0
+      ],
+      "recovery": [
+        1
+      ]
+    },
+    "attack": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    }
+  },
+  "review": {
+    "status": "approved",
+    "reviewer": "bb_laughing_octopus producer, actual PS3 source inspection and all72 selected native poses",
+    "reviewedAt": "2026-10-02",
+    "sourceKind": "original-game-capture",
+    "checks": {
+      "identity": true,
+      "costume": true,
+      "equipment": true,
+      "anatomicalSides": true,
+      "singleFigure": true,
+      "transparentBackground": true
+    },
+    "fidelityStatus": "closest_supported",
+    "absolute1to1Certified": false,
+    "sources": [
+      {
+        "file": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/references/ps3-14240s.jpg",
+        "url": "https://archive.org/download/PS3_Longplay_081_Metal_Gear_Solid_4/PS3_Longplay_081_Metal_Gear_Solid_4.mkv#t=14240",
+        "sourceKind": "original-game-capture",
+        "sha256": "07241bd962c3cef22e56079414793bfbc9b11cb01ae6515429da9955f34e4f5e",
+        "bytes": 52953,
+        "width": 1280,
+        "height": 720,
+        "timeSeconds": 14240,
+        "viewed": true,
+        "scope": "Original adult Laughing Beauty face, pale grey-blue eyes, short asymmetrical pale blonde bob and dark high collar.",
+        "captureMethod": "Remote ffmpeg seek one native-resolution1280x720 decoded PS3 game frame to JPEG q2, no crop/resize/recolor/paint. Exact args/log retained. Complete movie downloads:0.",
+        "platformEvidence": "Archive uploader longplays@longplays.org labels original PS3 MGS4, deposited2014 by Spazbo4. Hardware/framebuffer and exact2008 patch state independently uncertified."
+      },
+      {
+        "file": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/references/ps3-14260s.jpg",
+        "url": "https://archive.org/download/PS3_Longplay_081_Metal_Gear_Solid_4/PS3_Longplay_081_Metal_Gear_Solid_4.mkv#t=14260",
+        "sourceKind": "original-game-capture",
+        "sha256": "24f41aef9c3cd1cd5a5d4c2a8f25e8d0a80768a65fae20cf696250055aa976aa",
+        "bytes": 101990,
+        "width": 1280,
+        "height": 720,
+        "timeSeconds": 14260,
+        "viewed": true,
+        "scope": "Original complete side body walking/pursuing: opaque metallic grey olive-bronze suit, darker torso/legs, paler fitted hip/thigh panels, integrated pale low-heel footwear and empty slender hands.",
+        "captureMethod": "Remote ffmpeg seek one native-resolution1280x720 decoded PS3 game frame to JPEG q2, no crop/resize/recolor/paint. Exact args/log retained. Complete movie downloads:0.",
+        "platformEvidence": "Archive uploader longplays@longplays.org labels original PS3 MGS4, deposited2014 by Spazbo4. Hardware/framebuffer and exact2008 patch state independently uncertified."
+      },
+      {
+        "file": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/references/ps3-14280s.jpg",
+        "url": "https://archive.org/download/PS3_Longplay_081_Metal_Gear_Solid_4/PS3_Longplay_081_Metal_Gear_Solid_4.mkv#t=14280",
+        "sourceKind": "original-game-capture",
+        "sha256": "cb76aa571e9c828a35c745e6b80d933a5460a632af73fb974d2f965f53d7e031",
+        "bytes": 91708,
+        "width": 1280,
+        "height": 720,
+        "timeSeconds": 14280,
+        "viewed": true,
+        "scope": "Original rear torso panel/seams, opaque suit and source hair length; lighting partly occludes fine finger material.",
+        "captureMethod": "Remote ffmpeg seek one native-resolution1280x720 decoded PS3 game frame to JPEG q2, no crop/resize/recolor/paint. Exact args/log retained. Complete movie downloads:0.",
+        "platformEvidence": "Archive uploader longplays@longplays.org labels original PS3 MGS4, deposited2014 by Spazbo4. Hardware/framebuffer and exact2008 patch state independently uncertified."
+      },
+      {
+        "file": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/references/ps3-14300s.jpg",
+        "url": "https://archive.org/download/PS3_Longplay_081_Metal_Gear_Solid_4/PS3_Longplay_081_Metal_Gear_Solid_4.mkv#t=14300",
+        "sourceKind": "original-game-capture",
+        "sha256": "ffa724ef8400e89d41a85e6f542bbad34b498822cd2df0ac72a9d00240bdcdda",
+        "bytes": 98503,
+        "width": 1280,
+        "height": 720,
+        "timeSeconds": 14300,
+        "viewed": true,
+        "scope": "Original fully clothed crouch/physical pursuit position, hands placed on floor, no equipment, firearm, tentacles or magic.",
+        "captureMethod": "Remote ffmpeg seek one native-resolution1280x720 decoded PS3 game frame to JPEG q2, no crop/resize/recolor/paint. Exact args/log retained. Complete movie downloads:0.",
+        "platformEvidence": "Archive uploader longplays@longplays.org labels original PS3 MGS4, deposited2014 by Spazbo4. Hardware/framebuffer and exact2008 patch state independently uncertified."
+      },
+      {
+        "file": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/references/ps3-14400s.jpg",
+        "url": "https://archive.org/download/PS3_Longplay_081_Metal_Gear_Solid_4/PS3_Longplay_081_Metal_Gear_Solid_4.mkv#t=14400",
+        "sourceKind": "original-game-capture",
+        "sha256": "cee76e88340a607a3dea620bad4254d383ef27d7790bab74728217d1185ec93d",
+        "bytes": 116894,
+        "width": 1280,
+        "height": 720,
+        "timeSeconds": 14400,
+        "viewed": true,
+        "scope": "Original full body in actual Beauty gameplay phase, same opaque suit and ordinary unarmed pursuit. Distant recording does not certify tiny seams.",
+        "captureMethod": "Remote ffmpeg seek one native-resolution1280x720 decoded PS3 game frame to JPEG q2, no crop/resize/recolor/paint. Exact args/log retained. Complete movie downloads:0.",
+        "platformEvidence": "Archive uploader longplays@longplays.org labels original PS3 MGS4, deposited2014 by Spazbo4. Hardware/framebuffer and exact2008 patch state independently uncertified."
+      }
+    ],
+    "limits": [
+      "Target is faithful original MGS4 PS3 appearance, closest_supported. Newly authored 2D painted sprites are not extracted PS3 animation, exact model/material/texture pixels or absolute1:1 certification.",
+      "Six native sheets and both facings independently generated, never mirrored or pixel-edited. All144 selected pair poses physically viewed. All failed attempts/prompts/hash inspections retained, no reject repurposed as OC.",
+      "Original PS3 scene lighting partly occludes rear seams, fingers and tiny suit surface detail. Exact badge lettering, material response, mask/hair relief and very fine seam count cannot be certified from bounded captures.",
+      "Authored versus attacks, jump/guard/KO/recovery timings are gameplay adaptations. The original PS3 pursuit/tentacle/roll scope is distinguished from invented choreography. Sprite/import QA does not establish actual gameplay/phase/camera correctness; integrator verifies those.",
+      "Adult unarmored original Laughing Beauty has pale short asymmetric blonde bob, opaque high-neck grey/olive/bronze technological suit, pale hip/thigh panels and integrated pale low-heel footwear. No pink costume, long hair, heavy tactical boots, pouches/holster, helmet or tentacles inherited from raw archive placeholder. Hand material is subdued by source lighting; no independent tactical gauntlets certified.",
+      "Only unarmed reaching/chase/grab and physical defense/composure gestures are source-associated. B palm shove/low sweep and versus super are clearly authored physical simulation, not canonical martial-arts mastery, magical marking, beam, psychic power or mechanical tentacle.",
+      "C shoot is unarmed reaching grab, deploy is low physical evade/defense, throw is sleeve/forearm grasp control, recover is composure. No ballistic/muzzle origins applicable."
+    ],
+    "approvalScope": "Source-specific original PS3 appearance and72 authored versus action poses; no absolute source animation or runtime integration certification."
+  },
+  "counts": {
+    "selectedNativePngSheets": 6,
+    "totalPoseCells": 72,
+    "poseCellsPerSheet": 12,
+    "facings": 2,
+    "nativeGenerationAttempts": 8,
+    "rejectedNativeAttempts": 2,
+    "selectedWeaponPropAtlases": 0
+  },
+  "sourceGeometry": {
+    "a-right": {
+      "recommendStandingSourceHeight": 346.5,
+      "nativeUprightHeights": [
+        352,
+        341
+      ],
+      "observedUprightIndices": [
+        0,
+        1
+      ],
+      "observedHumanCrownY": [
+        8,
+        18
+      ],
+      "observedHumanSoleY": [
+        360,
+        359
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/layouts/a-right.json",
+      "basis": "Observed human helmet/hair crown to boot sole, excluding higher/wider ribbons. Fixed positive per-sheet scale; crouch/roll/KO never normalized to standing bounds."
+    },
+    "a-left": {
+      "recommendStandingSourceHeight": 377.0,
+      "nativeUprightHeights": [
+        381,
+        373
+      ],
+      "observedUprightIndices": [
+        0,
+        1
+      ],
+      "observedHumanCrownY": [
+        13,
+        20
+      ],
+      "observedHumanSoleY": [
+        394,
+        393
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/layouts/a-left.json",
+      "basis": "Observed human helmet/hair crown to boot sole, excluding higher/wider ribbons. Fixed positive per-sheet scale; crouch/roll/KO never normalized to standing bounds."
+    },
+    "b-right": {
+      "recommendStandingSourceHeight": 401.0,
+      "nativeUprightHeights": [
+        405,
+        397
+      ],
+      "observedUprightIndices": [
+        0,
+        2
+      ],
+      "observedHumanCrownY": [
+        14,
+        21
+      ],
+      "observedHumanSoleY": [
+        419,
+        418
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/layouts/b-right.json",
+      "basis": "Observed human helmet/hair crown to boot sole, excluding higher/wider ribbons. Fixed positive per-sheet scale; crouch/roll/KO never normalized to standing bounds."
+    },
+    "b-left": {
+      "recommendStandingSourceHeight": 353.5,
+      "nativeUprightHeights": [
+        354,
+        353
+      ],
+      "observedUprightIndices": [
+        0,
+        2
+      ],
+      "observedHumanCrownY": [
+        16,
+        17
+      ],
+      "observedHumanSoleY": [
+        370,
+        370
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/layouts/b-left.json",
+      "basis": "Observed human helmet/hair crown to boot sole, excluding higher/wider ribbons. Fixed positive per-sheet scale; crouch/roll/KO never normalized to standing bounds."
+    },
+    "c-right": {
+      "recommendStandingSourceHeight": 324,
+      "nativeUprightHeights": [
+        324
+      ],
+      "observedUprightIndices": [
+        11
+      ],
+      "observedHumanCrownY": [
+        697
+      ],
+      "observedHumanSoleY": [
+        1021
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/layouts/c-right.json",
+      "basis": "Observed human helmet/hair crown to boot sole, excluding higher/wider ribbons. Fixed positive per-sheet scale; crouch/roll/KO never normalized to standing bounds."
+    },
+    "c-left": {
+      "recommendStandingSourceHeight": 345,
+      "nativeUprightHeights": [
+        345
+      ],
+      "observedUprightIndices": [
+        11
+      ],
+      "observedHumanCrownY": [
+        673
+      ],
+      "observedHumanSoleY": [
+        1018
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/layouts/c-left.json",
+      "basis": "Observed human helmet/hair crown to boot sole, excluding higher/wider ribbons. Fixed positive per-sheet scale; crouch/roll/KO never normalized to standing bounds."
+    }
+  },
+  "layouts": {
+    "a-right": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/layouts/a-right.json",
+    "a-left": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/layouts/a-left.json",
+    "b-right": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/layouts/b-right.json",
+    "b-left": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/layouts/b-left.json",
+    "c-right": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/layouts/c-right.json",
+    "c-left": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/layouts/c-left.json"
+  },
+  "observedBodyPivots": {
+    "a-right": {
+      "0": [
+        213,
+        360
+      ],
+      "1": [
+        562,
+        359
+      ],
+      "2": [
+        946,
+        354
+      ],
+      "3": [
+        1350,
+        355
+      ],
+      "4": [
+        196,
+        707
+      ],
+      "5": [
+        560,
+        707
+      ],
+      "6": [
+        964,
+        707
+      ],
+      "7": [
+        1350,
+        707
+      ],
+      "8": [
+        183,
+        1005
+      ],
+      "9": [
+        580,
+        1008
+      ],
+      "10": [
+        950,
+        1010
+      ],
+      "11": [
+        1360,
+        965
+      ]
+    },
+    "a-left": {
+      "0": [
+        198,
+        394
+      ],
+      "1": [
+        572,
+        393
+      ],
+      "2": [
+        965,
+        385
+      ],
+      "3": [
+        1364,
+        386
+      ],
+      "4": [
+        219,
+        759
+      ],
+      "5": [
+        590,
+        758
+      ],
+      "6": [
+        980,
+        765
+      ],
+      "7": [
+        1370,
+        762
+      ],
+      "8": [
+        208,
+        1010
+      ],
+      "9": [
+        603,
+        1009
+      ],
+      "10": [
+        976,
+        999
+      ],
+      "11": [
+        1360,
+        989
+      ]
+    },
+    "b-right": {
+      "0": [
+        200,
+        419
+      ],
+      "1": [
+        565,
+        419
+      ],
+      "2": [
+        980,
+        418
+      ],
+      "3": [
+        1350,
+        421
+      ],
+      "4": [
+        184,
+        769
+      ],
+      "5": [
+        582,
+        766
+      ],
+      "6": [
+        960,
+        755
+      ],
+      "7": [
+        1283,
+        763
+      ],
+      "8": [
+        155,
+        1006
+      ],
+      "9": [
+        624,
+        1010
+      ],
+      "10": [
+        926,
+        1007
+      ],
+      "11": [
+        1310,
+        996
+      ]
+    },
+    "b-left": {
+      "0": [
+        213,
+        370
+      ],
+      "1": [
+        565,
+        370
+      ],
+      "2": [
+        985,
+        370
+      ],
+      "3": [
+        1370,
+        372
+      ],
+      "4": [
+        233,
+        723
+      ],
+      "5": [
+        614,
+        720
+      ],
+      "6": [
+        988,
+        722
+      ],
+      "7": [
+        1430,
+        719
+      ],
+      "8": [
+        217,
+        1009
+      ],
+      "9": [
+        584,
+        1007
+      ],
+      "10": [
+        954,
+        1003
+      ],
+      "11": [
+        1350,
+        1003
+      ]
+    },
+    "c-right": {
+      "0": [
+        185,
+        368
+      ],
+      "1": [
+        560,
+        368
+      ],
+      "2": [
+        947,
+        366
+      ],
+      "3": [
+        1330,
+        368
+      ],
+      "4": [
+        194,
+        694
+      ],
+      "5": [
+        589,
+        698
+      ],
+      "6": [
+        965,
+        704
+      ],
+      "7": [
+        1348,
+        705
+      ],
+      "8": [
+        218,
+        1020
+      ],
+      "9": [
+        584,
+        1021
+      ],
+      "10": [
+        992,
+        1021
+      ],
+      "11": [
+        1355,
+        1021
+      ]
+    },
+    "c-left": {
+      "0": [
+        256,
+        372
+      ],
+      "1": [
+        647,
+        372
+      ],
+      "2": [
+        1004,
+        372
+      ],
+      "3": [
+        1423,
+        372
+      ],
+      "4": [
+        242,
+        683
+      ],
+      "5": [
+        612,
+        688
+      ],
+      "6": [
+        1000,
+        688
+      ],
+      "7": [
+        1370,
+        688
+      ],
+      "8": [
+        251,
+        1014
+      ],
+      "9": [
+        623,
+        1015
+      ],
+      "10": [
+        1024,
+        1016
+      ],
+      "11": [
+        1378,
+        1018
+      ]
+    }
+  },
+  "sourceCombatOrigins": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/SOURCE_COMBAT_ORIGINS.json",
+  "sourceContract": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/SOURCE_AND_ACTION_CONTRACT.json",
+  "nativeAlphaReview": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/NATIVE_ALPHA_REVIEW.json",
+  "producerVisualReview": "/workspace/cqc-pass8-generation/laughing-octopus/archive__laughing_beauty/PRODUCER_VISUAL_REVIEW.json",
+  "limits": [
+    "Target is faithful original MGS4 PS3 appearance, closest_supported. Newly authored 2D painted sprites are not extracted PS3 animation, exact model/material/texture pixels or absolute1:1 certification.",
+    "Six native sheets and both facings independently generated, never mirrored or pixel-edited. All144 selected pair poses physically viewed. All failed attempts/prompts/hash inspections retained, no reject repurposed as OC.",
+    "Original PS3 scene lighting partly occludes rear seams, fingers and tiny suit surface detail. Exact badge lettering, material response, mask/hair relief and very fine seam count cannot be certified from bounded captures.",
+    "Authored versus attacks, jump/guard/KO/recovery timings are gameplay adaptations. The original PS3 pursuit/tentacle/roll scope is distinguished from invented choreography. Sprite/import QA does not establish actual gameplay/phase/camera correctness; integrator verifies those.",
+    "Adult unarmored original Laughing Beauty has pale short asymmetric blonde bob, opaque high-neck grey/olive/bronze technological suit, pale hip/thigh panels and integrated pale low-heel footwear. No pink costume, long hair, heavy tactical boots, pouches/holster, helmet or tentacles inherited from raw archive placeholder. Hand material is subdued by source lighting; no independent tactical gauntlets certified.",
+    "Only unarmed reaching/chase/grab and physical defense/composure gestures are source-associated. B palm shove/low sweep and versus super are clearly authored physical simulation, not canonical martial-arts mastery, magical marking, beam, psychic power or mechanical tentacle.",
+    "C shoot is unarmed reaching grab, deploy is low physical evade/defense, throw is sleeve/forearm grasp control, recover is composure. No ballistic/muzzle origins applicable."
+  ],
+  "requiresGameplayContract": "Root-owned source guard must supersede generic projectile/decoy/magic behavior and keep original archives unchanged."
+}

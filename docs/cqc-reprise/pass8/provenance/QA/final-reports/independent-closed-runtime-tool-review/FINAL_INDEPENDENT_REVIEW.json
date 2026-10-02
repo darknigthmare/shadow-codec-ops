@@ -1,0 +1,110 @@
+{
+  "schema": "cqc.pass8.storage-tools-independent-review/2",
+  "status": "approved",
+  "reviewer": "bb_crying_wolf",
+  "reviewedAt": "2026-10-02",
+  "scope": "Exact frozen PNG/1 or explicitly typed PNG+WebP raster/2 runtime sync and local Vite/PWA build; no production sync/build/deploy executed by reviewer",
+  "productionRepositoriesModifiedByReviewer": false,
+  "productionSyncRunByReviewer": false,
+  "productionBuildRunByReviewer": false,
+  "independentExecutableChecksPassed": 51,
+  "producerFixtureCasesPassed": 10,
+  "producerRealVitePwaFixtureIndependentlyReadOnlyVerified": true,
+  "sources": [
+    {
+      "file": "/workspace/cqc-pass8-storage-tools/common.mjs",
+      "sha256": "1b7e594008cef5983af0e375acdce095f90bff8a261e2cc93038c5f89d5edc55",
+      "bytes": 13255,
+      "snapshot": "/workspace/cqc-pass8-storage-tools-independent-review/final-tool-snapshot/common-1b7e594008ce.mjs"
+    },
+    {
+      "file": "/workspace/cqc-pass8-storage-tools/sync-frozen-runtime.mjs",
+      "sha256": "922e3ea112c6f58dc05e651b3255b26d7368aec0f952dba81482429fb61ecaa6",
+      "bytes": 8019,
+      "snapshot": "/workspace/cqc-pass8-storage-tools-independent-review/final-tool-snapshot/sync-frozen-runtime-922e3ea112c6.mjs"
+    },
+    {
+      "file": "/workspace/cqc-pass8-storage-tools/build-with-frozen-public.mjs",
+      "sha256": "a73c1cc4cbae4d01ae085d77120929e37c393b28c839cfaffdfef4eeb7278065",
+      "bytes": 12760,
+      "snapshot": "/workspace/cqc-pass8-storage-tools-independent-review/final-tool-snapshot/build-with-frozen-public-a73c1cc4cbae.mjs"
+    },
+    {
+      "file": "/workspace/cqc-pass8-storage-tools/prepare-frozen-png-pins.mjs",
+      "sha256": "1dfa700fe95403428a20163e836b99c87629806e90da0f41e4044479fec80870",
+      "bytes": 3545,
+      "snapshot": "/workspace/cqc-pass8-storage-tools-independent-review/final-tool-snapshot/prepare-frozen-png-pins-1dfa700fe954.mjs"
+    },
+    {
+      "file": "/workspace/cqc-pass8-storage-tools/prepare-frozen-raster-pins.mjs",
+      "sha256": "3e697ad28379f2288ca82992199252912925fd28f9b29b910d809779e56f4499",
+      "bytes": 185,
+      "snapshot": "/workspace/cqc-pass8-storage-tools-independent-review/final-tool-snapshot/prepare-frozen-raster-pins-3e697ad28379.mjs"
+    },
+    {
+      "file": "/workspace/cqc-pass8-storage-tools/storage-tools.test.mjs",
+      "sha256": "216e4bcec8264b1216823a9c444255bb73e10ea609c95651f4ff5c676d55ae56",
+      "bytes": 24167,
+      "snapshot": "/workspace/cqc-pass8-storage-tools-independent-review/final-tool-snapshot/storage-tools.test-216e4bcec826.mjs"
+    },
+    {
+      "file": "/workspace/cqc-pass8-storage-tools/README.md",
+      "sha256": "8a5d44917d18517174a88e7f1dd10aa35231d590ec5016bef7b0bfe3ba0fea00",
+      "bytes": 9476,
+      "snapshot": "/workspace/cqc-pass8-storage-tools-independent-review/final-tool-snapshot/README-8a5d44917d18.md"
+    }
+  ],
+  "evidence": [
+    {
+      "file": "/workspace/cqc-pass8-storage-tools-independent-review/FINAL_REGRESSION-8480bafe-407d-4fc6-82a3-8c7cfb7cb4f0.json",
+      "sha256": "784c4aed3650dd7907df4983343c2df7abfcd7b83df35808ce357a6a9fabdb1b",
+      "checks": 25
+    },
+    {
+      "file": "/workspace/cqc-pass8-storage-tools-independent-review/WEBP_V2_REGRESSION-2bb7f7b7-bc1a-402d-a945-c8ef2e5cf150.json",
+      "sha256": "437ebde829e6ed105f3a248630b18fe13b4efee4706bb71949952157de01d01a",
+      "checks": 21
+    },
+    {
+      "file": "/workspace/cqc-pass8-storage-tools-independent-review/RASTER_PIN_HELPER_INDEPENDENT_REVIEW.json",
+      "sha256": "8b1c1a4d2d581bf06b0b406101d42874d21b895d4ee41a142b05389d27ac70b2",
+      "checks": 5
+    },
+    {
+      "file": "/workspace/cqc-pass8-storage-tools-independent-review/REAL_FIXTURE_WEBP_V2_READONLY_REVIEW.json",
+      "sha256": "3f93642c846d8b0bdc2d869f1ae14d614166767cc186cde4d201ff6c340208aa",
+      "checks": 0
+    },
+    {
+      "file": "/workspace/cqc-pass8-storage-tools/fixture-run-dZTvdM/TEST_EVIDENCE.json",
+      "sha256": "5fb087e2960281b92e83d72027c748778624357a58ce0a44f8c06f7a757f4d65",
+      "checks": 10
+    }
+  ],
+  "report": "/workspace/cqc-pass8-storage-tools-independent-review/FINAL_INDEPENDENT_REVIEW.md",
+  "reportSHA256": "75d5715daf24730b81b71b688e3805028323e50c9dec8759d09b32256db47093",
+  "fixedFindings": [
+    "Project build inputs now snapshotted",
+    "Source/output/backup/evidence overlaps rejected",
+    "Post-promotion validation rolls back preserving rejected output",
+    "PWA parity restored",
+    "Inventory canonicalized",
+    "TypeScript emitted inode aliases rejected",
+    "Explicit WebP/v2 signature/hash/format/freeze checks added, PNG/1 compatibility kept"
+  ],
+  "scopeConditions": [
+    "Root freezes selected raster bytes for full linked lifetime; no in-place writes/chmod on shared inodes",
+    "Freeze source/output writers during plan and execution",
+    "Installed dependencies/external imports remain frozen prerequisites",
+    "Use reviewed plan SHA and the reviewed tool source hashes",
+    "Backup and evidence outside active source/output trees",
+    "Review copied byte budgets before actual production operation"
+  ],
+  "materialLimits": [
+    "Two atomic renames with pathname gap; prepared journals support manual crash recovery",
+    "WebP structural signature validation is not a full decoder for every pinned asset",
+    "Independent files/generated bundles still consume disk; no universal disk-fit claim",
+    "Full production QA and deployment are pending root"
+  ],
+  "currentFreeMiB": 284
+}

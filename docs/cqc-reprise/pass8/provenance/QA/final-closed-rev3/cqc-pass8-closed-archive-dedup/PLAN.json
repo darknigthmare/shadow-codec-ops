@@ -1,0 +1,1112 @@
+{
+  "schema": "cqc.pass8.closed-independent-archive-hardlink-plan/1",
+  "createdUtc": "2026-10-02T10:47:38.123492+00:00",
+  "status": "prepared_only",
+  "confirmedByRoot": false,
+  "rootGoRequired": true,
+  "scopeRoots": [
+    "/workspace/cqc-pass8-storage-tools/root-runtime-backups/cqc-088abffa-7dad-4e93-9331-89bea636b7a8",
+    "/workspace/cqc-pass8-storage-tools/root-build-backups/dist-96ad7cb8-eeb4-4064-bbcb-e59fd5c6bbe6/cqc",
+    "/workspace/cqc-pass8-independent-gameplay-review",
+    "/workspace/cqc-pass8-final-qa-tools/runs"
+  ],
+  "minimumExclusiveBytes": 1048576,
+  "operation": "atomic_replace_identical_closed_target_with_hardlink_to_closed_keeper",
+  "preservation": {
+    "allPathsRetained": true,
+    "allBytesRetained": true,
+    "modeUidGidRetained": true,
+    "mutableRSMustRemainIndependent": true,
+    "allowedMetadataChanges": [
+      "target_inode",
+      "target_mtime_aligns_to_keeper",
+      "target_ctime",
+      "keeper_ctime",
+      "nlink"
+    ]
+  },
+  "groups": [
+    {
+      "sha256": "ea202ca27dcb61d3719e5be078ebb9dcd1f2de6f27f97ffce8bd6b831becc4c5",
+      "bytes": 9090059,
+      "keeper": {
+        "path": "/workspace/cqc-pass8-independent-gameplay-review/verified-run-01/source/scoped-catalog-at-review.json",
+        "scopeRoot": "/workspace/cqc-pass8-independent-gameplay-review",
+        "stat": {
+          "dev": 27,
+          "inode": 1863308,
+          "bytes": 9090059,
+          "mode": 384,
+          "uid": 1000,
+          "gid": 1000,
+          "nlink": 1,
+          "mtimeNs": 1790930573732241672,
+          "ctimeNs": 1790930573732241672,
+          "allocatedBytes": 9093120
+        },
+        "sha256": "ea202ca27dcb61d3719e5be078ebb9dcd1f2de6f27f97ffce8bd6b831becc4c5"
+      },
+      "targets": [
+        {
+          "path": "/workspace/cqc-pass8-independent-gameplay-review/verified-run-02/source/scoped-catalog-at-review.json",
+          "scopeRoot": "/workspace/cqc-pass8-independent-gameplay-review",
+          "stat": {
+            "dev": 27,
+            "inode": 1863326,
+            "bytes": 9090059,
+            "mode": 384,
+            "uid": 1000,
+            "gid": 1000,
+            "nlink": 1,
+            "mtimeNs": 1790930600856971638,
+            "ctimeNs": 1790930600856971638,
+            "allocatedBytes": 9093120
+          },
+          "sha256": "ea202ca27dcb61d3719e5be078ebb9dcd1f2de6f27f97ffce8bd6b831becc4c5"
+        },
+        {
+          "path": "/workspace/cqc-pass8-independent-gameplay-review/verified-run-03/source/scoped-catalog-at-review.json",
+          "scopeRoot": "/workspace/cqc-pass8-independent-gameplay-review",
+          "stat": {
+            "dev": 27,
+            "inode": 1863346,
+            "bytes": 9090059,
+            "mode": 384,
+            "uid": 1000,
+            "gid": 1000,
+            "nlink": 1,
+            "mtimeNs": 1790930643038106829,
+            "ctimeNs": 1790930643038106829,
+            "allocatedBytes": 9093120
+          },
+          "sha256": "ea202ca27dcb61d3719e5be078ebb9dcd1f2de6f27f97ffce8bd6b831becc4c5"
+        }
+      ],
+      "reclaimAllocatedBytes": 18186240
+    },
+    {
+      "sha256": "95db3d9264ffd6c14a1b9e5942cd0b7e00da76b1078601a0d5006cbb3c0f9c23",
+      "bytes": 3131374,
+      "keeper": {
+        "path": "/workspace/cqc-pass8-storage-tools/root-runtime-backups/cqc-088abffa-7dad-4e93-9331-89bea636b7a8/modules/arcade-chronicles-v055.html",
+        "scopeRoot": "/workspace/cqc-pass8-storage-tools/root-runtime-backups/cqc-088abffa-7dad-4e93-9331-89bea636b7a8",
+        "stat": {
+          "dev": 27,
+          "inode": 1050540,
+          "bytes": 3131374,
+          "mode": 384,
+          "uid": 1000,
+          "gid": 1000,
+          "nlink": 1,
+          "mtimeNs": 1790909147815801705,
+          "ctimeNs": 1790909147815801705,
+          "allocatedBytes": 3133440
+        },
+        "sha256": "95db3d9264ffd6c14a1b9e5942cd0b7e00da76b1078601a0d5006cbb3c0f9c23"
+      },
+      "targets": [
+        {
+          "path": "/workspace/cqc-pass8-storage-tools/root-build-backups/dist-96ad7cb8-eeb4-4064-bbcb-e59fd5c6bbe6/cqc/modules/arcade-chronicles-v055.html",
+          "scopeRoot": "/workspace/cqc-pass8-storage-tools/root-build-backups/dist-96ad7cb8-eeb4-4064-bbcb-e59fd5c6bbe6/cqc",
+          "stat": {
+            "dev": 27,
+            "inode": 4938,
+            "bytes": 3131374,
+            "mode": 384,
+            "uid": 1000,
+            "gid": 1000,
+            "nlink": 1,
+            "mtimeNs": 1790909291269891286,
+            "ctimeNs": 1790909291269891286,
+            "allocatedBytes": 3133440
+          },
+          "sha256": "95db3d9264ffd6c14a1b9e5942cd0b7e00da76b1078601a0d5006cbb3c0f9c23"
+        }
+      ],
+      "reclaimAllocatedBytes": 3133440
+    },
+    {
+      "sha256": "f477ff91124ffcffcc35dc6f1b7bd758f3e602f7eaba38d754744c4ade8c7f31",
+      "bytes": 2085387,
+      "keeper": {
+        "path": "/workspace/cqc-pass8-storage-tools/root-runtime-backups/cqc-088abffa-7dad-4e93-9331-89bea636b7a8/modules/battle-operations-v053.html",
+        "scopeRoot": "/workspace/cqc-pass8-storage-tools/root-runtime-backups/cqc-088abffa-7dad-4e93-9331-89bea636b7a8",
+        "stat": {
+          "dev": 27,
+          "inode": 1050546,
+          "bytes": 2085387,
+          "mode": 384,
+          "uid": 1000,
+          "gid": 1000,
+          "nlink": 1,
+          "mtimeNs": 1790909147827221233,
+          "ctimeNs": 1790909147827221233,
+          "allocatedBytes": 2088960
+        },
+        "sha256": "f477ff91124ffcffcc35dc6f1b7bd758f3e602f7eaba38d754744c4ade8c7f31"
+      },
+      "targets": [
+        {
+          "path": "/workspace/cqc-pass8-storage-tools/root-build-backups/dist-96ad7cb8-eeb4-4064-bbcb-e59fd5c6bbe6/cqc/modules/battle-operations-v053.html",
+          "scopeRoot": "/workspace/cqc-pass8-storage-tools/root-build-backups/dist-96ad7cb8-eeb4-4064-bbcb-e59fd5c6bbe6/cqc",
+          "stat": {
+            "dev": 27,
+            "inode": 4944,
+            "bytes": 2085387,
+            "mode": 384,
+            "uid": 1000,
+            "gid": 1000,
+            "nlink": 1,
+            "mtimeNs": 1790909291271495778,
+            "ctimeNs": 1790909291271495778,
+            "allocatedBytes": 2088960
+          },
+          "sha256": "f477ff91124ffcffcc35dc6f1b7bd758f3e602f7eaba38d754744c4ade8c7f31"
+        }
+      ],
+      "reclaimAllocatedBytes": 2088960
+    },
+    {
+      "sha256": "04906ca401389bc10d24ba846f0134b1ec33dbcf349b104ebff3bbd7971cf303",
+      "bytes": 3541138,
+      "keeper": {
+        "path": "/workspace/cqc-pass8-storage-tools/root-runtime-backups/cqc-088abffa-7dad-4e93-9331-89bea636b7a8/modules/combat-academy-v053.html",
+        "scopeRoot": "/workspace/cqc-pass8-storage-tools/root-runtime-backups/cqc-088abffa-7dad-4e93-9331-89bea636b7a8",
+        "stat": {
+          "dev": 27,
+          "inode": 1050548,
+          "bytes": 3541138,
+          "mode": 384,
+          "uid": 1000,
+          "gid": 1000,
+          "nlink": 1,
+          "mtimeNs": 1790909147830311297,
+          "ctimeNs": 1790909147830311297,
+          "allocatedBytes": 3543040
+        },
+        "sha256": "04906ca401389bc10d24ba846f0134b1ec33dbcf349b104ebff3bbd7971cf303"
+      },
+      "targets": [
+        {
+          "path": "/workspace/cqc-pass8-storage-tools/root-build-backups/dist-96ad7cb8-eeb4-4064-bbcb-e59fd5c6bbe6/cqc/modules/combat-academy-v053.html",
+          "scopeRoot": "/workspace/cqc-pass8-storage-tools/root-build-backups/dist-96ad7cb8-eeb4-4064-bbcb-e59fd5c6bbe6/cqc",
+          "stat": {
+            "dev": 27,
+            "inode": 4946,
+            "bytes": 3541138,
+            "mode": 384,
+            "uid": 1000,
+            "gid": 1000,
+            "nlink": 1,
+            "mtimeNs": 1790909291272108362,
+            "ctimeNs": 1790909291272108362,
+            "allocatedBytes": 3543040
+          },
+          "sha256": "04906ca401389bc10d24ba846f0134b1ec33dbcf349b104ebff3bbd7971cf303"
+        }
+      ],
+      "reclaimAllocatedBytes": 3543040
+    },
+    {
+      "sha256": "f915318304f3d644261ac866f1be9900660d53f4be07769a804914c40d96af1d",
+      "bytes": 1520803,
+      "keeper": {
+        "path": "/workspace/cqc-pass8-storage-tools/root-runtime-backups/cqc-088abffa-7dad-4e93-9331-89bea636b7a8/modules/core-v032.html",
+        "scopeRoot": "/workspace/cqc-pass8-storage-tools/root-runtime-backups/cqc-088abffa-7dad-4e93-9331-89bea636b7a8",
+        "stat": {
+          "dev": 27,
+          "inode": 1050549,
+          "bytes": 1520803,
+          "mode": 384,
+          "uid": 1000,
+          "gid": 1000,
+          "nlink": 1,
+          "mtimeNs": 1790909147833924704,
+          "ctimeNs": 1790909147833924704,
+          "allocatedBytes": 1523712
+        },
+        "sha256": "f915318304f3d644261ac866f1be9900660d53f4be07769a804914c40d96af1d"
+      },
+      "targets": [
+        {
+          "path": "/workspace/cqc-pass8-storage-tools/root-build-backups/dist-96ad7cb8-eeb4-4064-bbcb-e59fd5c6bbe6/cqc/modules/core-v032.html",
+          "scopeRoot": "/workspace/cqc-pass8-storage-tools/root-build-backups/dist-96ad7cb8-eeb4-4064-bbcb-e59fd5c6bbe6/cqc",
+          "stat": {
+            "dev": 27,
+            "inode": 4947,
+            "bytes": 1520803,
+            "mode": 384,
+            "uid": 1000,
+            "gid": 1000,
+            "nlink": 1,
+            "mtimeNs": 1790909291272997173,
+            "ctimeNs": 1790909291272997173,
+            "allocatedBytes": 1523712
+          },
+          "sha256": "f915318304f3d644261ac866f1be9900660d53f4be07769a804914c40d96af1d"
+        }
+      ],
+      "reclaimAllocatedBytes": 1523712
+    },
+    {
+      "sha256": "84715eea6cbcd39fb8cda5880a9e3e51f5253963ed7028136ddde75ae2bc5e70",
+      "bytes": 1269327,
+      "keeper": {
+        "path": "/workspace/cqc-pass8-storage-tools/root-runtime-backups/cqc-088abffa-7dad-4e93-9331-89bea636b7a8/modules/finisher-archive-v053.html",
+        "scopeRoot": "/workspace/cqc-pass8-storage-tools/root-runtime-backups/cqc-088abffa-7dad-4e93-9331-89bea636b7a8",
+        "stat": {
+          "dev": 27,
+          "inode": 1050553,
+          "bytes": 1269327,
+          "mode": 384,
+          "uid": 1000,
+          "gid": 1000,
+          "nlink": 1,
+          "mtimeNs": 1790909147839371339,
+          "ctimeNs": 1790909147839371339,
+          "allocatedBytes": 1269760
+        },
+        "sha256": "84715eea6cbcd39fb8cda5880a9e3e51f5253963ed7028136ddde75ae2bc5e70"
+      },
+      "targets": [
+        {
+          "path": "/workspace/cqc-pass8-storage-tools/root-build-backups/dist-96ad7cb8-eeb4-4064-bbcb-e59fd5c6bbe6/cqc/modules/finisher-archive-v053.html",
+          "scopeRoot": "/workspace/cqc-pass8-storage-tools/root-build-backups/dist-96ad7cb8-eeb4-4064-bbcb-e59fd5c6bbe6/cqc",
+          "stat": {
+            "dev": 27,
+            "inode": 4951,
+            "bytes": 1269327,
+            "mode": 384,
+            "uid": 1000,
+            "gid": 1000,
+            "nlink": 1,
+            "mtimeNs": 1790909291274004504,
+            "ctimeNs": 1790909291274004504,
+            "allocatedBytes": 1269760
+          },
+          "sha256": "84715eea6cbcd39fb8cda5880a9e3e51f5253963ed7028136ddde75ae2bc5e70"
+        }
+      ],
+      "reclaimAllocatedBytes": 1269760
+    },
+    {
+      "sha256": "1b5bbef66cb6d66954c72e5b15c945ebab8a434857a20606028fd13a6a3dab76",
+      "bytes": 2125468,
+      "keeper": {
+        "path": "/workspace/cqc-pass8-storage-tools/root-runtime-backups/cqc-088abffa-7dad-4e93-9331-89bea636b7a8/modules/roster-command-v053.html",
+        "scopeRoot": "/workspace/cqc-pass8-storage-tools/root-runtime-backups/cqc-088abffa-7dad-4e93-9331-89bea636b7a8",
+        "stat": {
+          "dev": 27,
+          "inode": 1050561,
+          "bytes": 2125468,
+          "mode": 384,
+          "uid": 1000,
+          "gid": 1000,
+          "nlink": 1,
+          "mtimeNs": 1790909147844213256,
+          "ctimeNs": 1790909147844213256,
+          "allocatedBytes": 2125824
+        },
+        "sha256": "1b5bbef66cb6d66954c72e5b15c945ebab8a434857a20606028fd13a6a3dab76"
+      },
+      "targets": [
+        {
+          "path": "/workspace/cqc-pass8-storage-tools/root-build-backups/dist-96ad7cb8-eeb4-4064-bbcb-e59fd5c6bbe6/cqc/modules/roster-command-v053.html",
+          "scopeRoot": "/workspace/cqc-pass8-storage-tools/root-build-backups/dist-96ad7cb8-eeb4-4064-bbcb-e59fd5c6bbe6/cqc",
+          "stat": {
+            "dev": 27,
+            "inode": 4959,
+            "bytes": 2125468,
+            "mode": 384,
+            "uid": 1000,
+            "gid": 1000,
+            "nlink": 1,
+            "mtimeNs": 1790909291275421692,
+            "ctimeNs": 1790909291275421692,
+            "allocatedBytes": 2125824
+          },
+          "sha256": "1b5bbef66cb6d66954c72e5b15c945ebab8a434857a20606028fd13a6a3dab76"
+        }
+      ],
+      "reclaimAllocatedBytes": 2125824
+    },
+    {
+      "sha256": "1698878221de8ef3210a8269f25c37e38be20a37ab8e076913af8df48c782ce7",
+      "bytes": 1904369,
+      "keeper": {
+        "path": "/workspace/cqc-pass8-storage-tools/root-runtime-backups/cqc-088abffa-7dad-4e93-9331-89bea636b7a8/modules/unified-versus-v046.html",
+        "scopeRoot": "/workspace/cqc-pass8-storage-tools/root-runtime-backups/cqc-088abffa-7dad-4e93-9331-89bea636b7a8",
+        "stat": {
+          "dev": 27,
+          "inode": 1050565,
+          "bytes": 1904369,
+          "mode": 384,
+          "uid": 1000,
+          "gid": 1000,
+          "nlink": 1,
+          "mtimeNs": 1790909147848811856,
+          "ctimeNs": 1790909147848811856,
+          "allocatedBytes": 1904640
+        },
+        "sha256": "1698878221de8ef3210a8269f25c37e38be20a37ab8e076913af8df48c782ce7"
+      },
+      "targets": [
+        {
+          "path": "/workspace/cqc-pass8-storage-tools/root-build-backups/dist-96ad7cb8-eeb4-4064-bbcb-e59fd5c6bbe6/cqc/modules/unified-versus-v046.html",
+          "scopeRoot": "/workspace/cqc-pass8-storage-tools/root-build-backups/dist-96ad7cb8-eeb4-4064-bbcb-e59fd5c6bbe6/cqc",
+          "stat": {
+            "dev": 27,
+            "inode": 4963,
+            "bytes": 1904369,
+            "mode": 384,
+            "uid": 1000,
+            "gid": 1000,
+            "nlink": 1,
+            "mtimeNs": 1790909291276352567,
+            "ctimeNs": 1790909291276352567,
+            "allocatedBytes": 1904640
+          },
+          "sha256": "1698878221de8ef3210a8269f25c37e38be20a37ab8e076913af8df48c782ce7"
+        }
+      ],
+      "reclaimAllocatedBytes": 1904640
+    },
+    {
+      "sha256": "d68c4ab3886fa0ad039b8df0a5beefd0144bb56c9f218fd5018aa892a1acfcb4",
+      "bytes": 3421126,
+      "keeper": {
+        "path": "/workspace/cqc-pass8-storage-tools/root-runtime-backups/cqc-088abffa-7dad-4e93-9331-89bea636b7a8/modules/unified-versus-v053.html",
+        "scopeRoot": "/workspace/cqc-pass8-storage-tools/root-runtime-backups/cqc-088abffa-7dad-4e93-9331-89bea636b7a8",
+        "stat": {
+          "dev": 27,
+          "inode": 1050566,
+          "bytes": 3421126,
+          "mode": 384,
+          "uid": 1000,
+          "gid": 1000,
+          "nlink": 1,
+          "mtimeNs": 1790909147851289970,
+          "ctimeNs": 1790909147851289970,
+          "allocatedBytes": 3424256
+        },
+        "sha256": "d68c4ab3886fa0ad039b8df0a5beefd0144bb56c9f218fd5018aa892a1acfcb4"
+      },
+      "targets": [
+        {
+          "path": "/workspace/cqc-pass8-storage-tools/root-build-backups/dist-96ad7cb8-eeb4-4064-bbcb-e59fd5c6bbe6/cqc/modules/unified-versus-v053.html",
+          "scopeRoot": "/workspace/cqc-pass8-storage-tools/root-build-backups/dist-96ad7cb8-eeb4-4064-bbcb-e59fd5c6bbe6/cqc",
+          "stat": {
+            "dev": 27,
+            "inode": 4964,
+            "bytes": 3421126,
+            "mode": 384,
+            "uid": 1000,
+            "gid": 1000,
+            "nlink": 1,
+            "mtimeNs": 1790909291276909248,
+            "ctimeNs": 1790909291276909248,
+            "allocatedBytes": 3424256
+          },
+          "sha256": "d68c4ab3886fa0ad039b8df0a5beefd0144bb56c9f218fd5018aa892a1acfcb4"
+        }
+      ],
+      "reclaimAllocatedBytes": 3424256
+    },
+    {
+      "sha256": "d6ff18a9d9780bd8acecb220b7fb9c29485cdc7fae06fde0bb68eca82cbb66b1",
+      "bytes": 3444437,
+      "keeper": {
+        "path": "/workspace/cqc-pass8-storage-tools/root-runtime-backups/cqc-088abffa-7dad-4e93-9331-89bea636b7a8/modules/unified-versus-v055.html",
+        "scopeRoot": "/workspace/cqc-pass8-storage-tools/root-runtime-backups/cqc-088abffa-7dad-4e93-9331-89bea636b7a8",
+        "stat": {
+          "dev": 27,
+          "inode": 1050567,
+          "bytes": 3444437,
+          "mode": 384,
+          "uid": 1000,
+          "gid": 1000,
+          "nlink": 1,
+          "mtimeNs": 1790909147855706976,
+          "ctimeNs": 1790909147855706976,
+          "allocatedBytes": 3444736
+        },
+        "sha256": "d6ff18a9d9780bd8acecb220b7fb9c29485cdc7fae06fde0bb68eca82cbb66b1"
+      },
+      "targets": [
+        {
+          "path": "/workspace/cqc-pass8-storage-tools/root-build-backups/dist-96ad7cb8-eeb4-4064-bbcb-e59fd5c6bbe6/cqc/modules/unified-versus-v055.html",
+          "scopeRoot": "/workspace/cqc-pass8-storage-tools/root-build-backups/dist-96ad7cb8-eeb4-4064-bbcb-e59fd5c6bbe6/cqc",
+          "stat": {
+            "dev": 27,
+            "inode": 4965,
+            "bytes": 3444437,
+            "mode": 384,
+            "uid": 1000,
+            "gid": 1000,
+            "nlink": 1,
+            "mtimeNs": 1790909291277676215,
+            "ctimeNs": 1790909291277676215,
+            "allocatedBytes": 3444736
+          },
+          "sha256": "d6ff18a9d9780bd8acecb220b7fb9c29485cdc7fae06fde0bb68eca82cbb66b1"
+        }
+      ],
+      "reclaimAllocatedBytes": 3444736
+    },
+    {
+      "sha256": "d9c1f4a90e7a94e75ac8542949cb1d89447bc1d743c73b2cf3dd15fed7de0a16",
+      "bytes": 3710258,
+      "keeper": {
+        "path": "/workspace/cqc-pass8-storage-tools/root-runtime-backups/cqc-088abffa-7dad-4e93-9331-89bea636b7a8/src/chronicles-data-v056.js",
+        "scopeRoot": "/workspace/cqc-pass8-storage-tools/root-runtime-backups/cqc-088abffa-7dad-4e93-9331-89bea636b7a8",
+        "stat": {
+          "dev": 27,
+          "inode": 1050586,
+          "bytes": 3710258,
+          "mode": 384,
+          "uid": 1000,
+          "gid": 1000,
+          "nlink": 1,
+          "mtimeNs": 1790909147878829656,
+          "ctimeNs": 1790909147878829656,
+          "allocatedBytes": 3710976
+        },
+        "sha256": "d9c1f4a90e7a94e75ac8542949cb1d89447bc1d743c73b2cf3dd15fed7de0a16"
+      },
+      "targets": [
+        {
+          "path": "/workspace/cqc-pass8-storage-tools/root-build-backups/dist-96ad7cb8-eeb4-4064-bbcb-e59fd5c6bbe6/cqc/src/chronicles-data-v056.js",
+          "scopeRoot": "/workspace/cqc-pass8-storage-tools/root-build-backups/dist-96ad7cb8-eeb4-4064-bbcb-e59fd5c6bbe6/cqc",
+          "stat": {
+            "dev": 27,
+            "inode": 4985,
+            "bytes": 3710258,
+            "mode": 384,
+            "uid": 1000,
+            "gid": 1000,
+            "nlink": 1,
+            "mtimeNs": 1790909291283560555,
+            "ctimeNs": 1790909291283560555,
+            "allocatedBytes": 3710976
+          },
+          "sha256": "d9c1f4a90e7a94e75ac8542949cb1d89447bc1d743c73b2cf3dd15fed7de0a16"
+        }
+      ],
+      "reclaimAllocatedBytes": 3710976
+    },
+    {
+      "sha256": "2ea6e93ed96a191504740068668440533da1e774f01e9f8b343bac4fc608ab17",
+      "bytes": 11922705,
+      "keeper": {
+        "path": "/workspace/cqc-pass8-storage-tools/root-runtime-backups/cqc-088abffa-7dad-4e93-9331-89bea636b7a8/src/cqc-sprite-catalog.js",
+        "scopeRoot": "/workspace/cqc-pass8-storage-tools/root-runtime-backups/cqc-088abffa-7dad-4e93-9331-89bea636b7a8",
+        "stat": {
+          "dev": 27,
+          "inode": 1050609,
+          "bytes": 11922705,
+          "mode": 384,
+          "uid": 1000,
+          "gid": 1000,
+          "nlink": 1,
+          "mtimeNs": 1790909147908691465,
+          "ctimeNs": 1790909147908691465,
+          "allocatedBytes": 11923456
+        },
+        "sha256": "2ea6e93ed96a191504740068668440533da1e774f01e9f8b343bac4fc608ab17"
+      },
+      "targets": [
+        {
+          "path": "/workspace/cqc-pass8-storage-tools/root-build-backups/dist-96ad7cb8-eeb4-4064-bbcb-e59fd5c6bbe6/cqc/src/cqc-sprite-catalog.js",
+          "scopeRoot": "/workspace/cqc-pass8-storage-tools/root-build-backups/dist-96ad7cb8-eeb4-4064-bbcb-e59fd5c6bbe6/cqc",
+          "stat": {
+            "dev": 27,
+            "inode": 5008,
+            "bytes": 11922705,
+            "mode": 384,
+            "uid": 1000,
+            "gid": 1000,
+            "nlink": 1,
+            "mtimeNs": 1790909291287398287,
+            "ctimeNs": 1790909291287398287,
+            "allocatedBytes": 11923456
+          },
+          "sha256": "2ea6e93ed96a191504740068668440533da1e774f01e9f8b343bac4fc608ab17"
+        }
+      ],
+      "reclaimAllocatedBytes": 11923456
+    }
+  ],
+  "mutableLivePins": [
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/data/combat-sprite-catalog-v1.json",
+      "sha256": "3fe34bf2be1cc7c5365a82e57b747b269adf795c1940885a6ce6e8a4a793d747",
+      "stat": {
+        "dev": 27,
+        "inode": 1970563,
+        "bytes": 53784490,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790932428154117615,
+        "ctimeNs": 1790932428154117615,
+        "allocatedBytes": 53784576
+      }
+    },
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/modules/arcade-chronicles-v055.html",
+      "sha256": "95db3d9264ffd6c14a1b9e5942cd0b7e00da76b1078601a0d5006cbb3c0f9c23",
+      "stat": {
+        "dev": 27,
+        "inode": 1969187,
+        "bytes": 3131374,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790824047896440384,
+        "ctimeNs": 1790824047896440384,
+        "allocatedBytes": 3133440
+      }
+    },
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/modules/battle-operations-v053.html",
+      "sha256": "f477ff91124ffcffcc35dc6f1b7bd758f3e602f7eaba38d754744c4ade8c7f31",
+      "stat": {
+        "dev": 27,
+        "inode": 1969199,
+        "bytes": 2085387,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790824047911617102,
+        "ctimeNs": 1790824047911617102,
+        "allocatedBytes": 2088960
+      }
+    },
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/modules/combat-academy-v053.html",
+      "sha256": "04906ca401389bc10d24ba846f0134b1ec33dbcf349b104ebff3bbd7971cf303",
+      "stat": {
+        "dev": 27,
+        "inode": 1969205,
+        "bytes": 3541138,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790824047924441133,
+        "ctimeNs": 1790824047924441133,
+        "allocatedBytes": 3543040
+      }
+    },
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/modules/core-v032.html",
+      "sha256": "f915318304f3d644261ac866f1be9900660d53f4be07769a804914c40d96af1d",
+      "stat": {
+        "dev": 27,
+        "inode": 1969206,
+        "bytes": 1520803,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790824047928441241,
+        "ctimeNs": 1790824047928441241,
+        "allocatedBytes": 1523712
+      }
+    },
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/modules/finisher-archive-v053.html",
+      "sha256": "84715eea6cbcd39fb8cda5880a9e3e51f5253963ed7028136ddde75ae2bc5e70",
+      "stat": {
+        "dev": 27,
+        "inode": 1969211,
+        "bytes": 1269327,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790824047940645380,
+        "ctimeNs": 1790824047940645380,
+        "allocatedBytes": 1269760
+      }
+    },
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/modules/roster-command-v053.html",
+      "sha256": "1b5bbef66cb6d66954c72e5b15c945ebab8a434857a20606028fd13a6a3dab76",
+      "stat": {
+        "dev": 27,
+        "inode": 1969232,
+        "bytes": 2125468,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790824047951216683,
+        "ctimeNs": 1790824047951216683,
+        "allocatedBytes": 2125824
+      }
+    },
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/modules/unified-versus-v046.html",
+      "sha256": "1698878221de8ef3210a8269f25c37e38be20a37ab8e076913af8df48c782ce7",
+      "stat": {
+        "dev": 27,
+        "inode": 1969238,
+        "bytes": 1904369,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790824047959605033,
+        "ctimeNs": 1790824047959605033,
+        "allocatedBytes": 1904640
+      }
+    },
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/modules/unified-versus-v053.html",
+      "sha256": "d68c4ab3886fa0ad039b8df0a5beefd0144bb56c9f218fd5018aa892a1acfcb4",
+      "stat": {
+        "dev": 27,
+        "inode": 1969244,
+        "bytes": 3421126,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790824047984442741,
+        "ctimeNs": 1790824047984442741,
+        "allocatedBytes": 3424256
+      }
+    },
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/modules/unified-versus-v055.html",
+      "sha256": "18d1ed1970fde73a6b5daa69c1ce8382eac628cb0eb5d080bb1e1b29493592ee",
+      "stat": {
+        "dev": 27,
+        "inode": 1969245,
+        "bytes": 3445031,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790929340755084984,
+        "ctimeNs": 1790929340755084984,
+        "allocatedBytes": 3448832
+      }
+    },
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/src/chronicles-data-v056.js",
+      "sha256": "d9c1f4a90e7a94e75ac8542949cb1d89447bc1d743c73b2cf3dd15fed7de0a16",
+      "stat": {
+        "dev": 27,
+        "inode": 1966324,
+        "bytes": 3710258,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790898950667020789,
+        "ctimeNs": 1790898950667020789,
+        "allocatedBytes": 3710976
+      }
+    },
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/src/cqc-sprite-catalog.js",
+      "sha256": "2e77835dafc4ac5698b62c86700f2c6751ee551692216bcab89381b07183cc79",
+      "stat": {
+        "dev": 27,
+        "inode": 1970564,
+        "bytes": 19512237,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790932428702132339,
+        "ctimeNs": 1790932428702132339,
+        "allocatedBytes": 19513344
+      }
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/dist/cqc/modules/arcade-chronicles-v055.html",
+      "sha256": "95db3d9264ffd6c14a1b9e5942cd0b7e00da76b1078601a0d5006cbb3c0f9c23",
+      "stat": {
+        "dev": 27,
+        "inode": 1829,
+        "bytes": 3131374,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790935994262818703,
+        "ctimeNs": 1790935994262818703,
+        "allocatedBytes": 3133440
+      }
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/dist/cqc/modules/battle-operations-v053.html",
+      "sha256": "f477ff91124ffcffcc35dc6f1b7bd758f3e602f7eaba38d754744c4ade8c7f31",
+      "stat": {
+        "dev": 27,
+        "inode": 1835,
+        "bytes": 2085387,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790935994351351934,
+        "ctimeNs": 1790935994351351934,
+        "allocatedBytes": 2088960
+      }
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/dist/cqc/modules/combat-academy-v053.html",
+      "sha256": "04906ca401389bc10d24ba846f0134b1ec33dbcf349b104ebff3bbd7971cf303",
+      "stat": {
+        "dev": 27,
+        "inode": 1837,
+        "bytes": 3541138,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790935994397763941,
+        "ctimeNs": 1790935994397763941,
+        "allocatedBytes": 3543040
+      }
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/dist/cqc/modules/core-v032.html",
+      "sha256": "f915318304f3d644261ac866f1be9900660d53f4be07769a804914c40d96af1d",
+      "stat": {
+        "dev": 27,
+        "inode": 1838,
+        "bytes": 1520803,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790935994409764262,
+        "ctimeNs": 1790935994409764262,
+        "allocatedBytes": 1523712
+      }
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/dist/cqc/modules/finisher-archive-v053.html",
+      "sha256": "84715eea6cbcd39fb8cda5880a9e3e51f5253963ed7028136ddde75ae2bc5e70",
+      "stat": {
+        "dev": 27,
+        "inode": 1842,
+        "bytes": 1269327,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790935994429764798,
+        "ctimeNs": 1790935994429764798,
+        "allocatedBytes": 1269760
+      }
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/dist/cqc/modules/roster-command-v053.html",
+      "sha256": "1b5bbef66cb6d66954c72e5b15c945ebab8a434857a20606028fd13a6a3dab76",
+      "stat": {
+        "dev": 27,
+        "inode": 1850,
+        "bytes": 2125468,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790935994449816567,
+        "ctimeNs": 1790935994449816567,
+        "allocatedBytes": 2125824
+      }
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/dist/cqc/modules/unified-versus-v046.html",
+      "sha256": "1698878221de8ef3210a8269f25c37e38be20a37ab8e076913af8df48c782ce7",
+      "stat": {
+        "dev": 27,
+        "inode": 1854,
+        "bytes": 1904369,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790935994463691763,
+        "ctimeNs": 1790935994463691763,
+        "allocatedBytes": 1904640
+      }
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/dist/cqc/modules/unified-versus-v053.html",
+      "sha256": "d68c4ab3886fa0ad039b8df0a5beefd0144bb56c9f218fd5018aa892a1acfcb4",
+      "stat": {
+        "dev": 27,
+        "inode": 1855,
+        "bytes": 3421126,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790935994474928701,
+        "ctimeNs": 1790935994474928701,
+        "allocatedBytes": 3424256
+      }
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/dist/cqc/modules/unified-versus-v055.html",
+      "sha256": "18d1ed1970fde73a6b5daa69c1ce8382eac628cb0eb5d080bb1e1b29493592ee",
+      "stat": {
+        "dev": 27,
+        "inode": 1856,
+        "bytes": 3445031,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790935994508553802,
+        "ctimeNs": 1790935994508553802,
+        "allocatedBytes": 3448832
+      }
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/dist/cqc/src/chronicles-data-v056.js",
+      "sha256": "d9c1f4a90e7a94e75ac8542949cb1d89447bc1d743c73b2cf3dd15fed7de0a16",
+      "stat": {
+        "dev": 27,
+        "inode": 1869,
+        "bytes": 3710258,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790935994684432186,
+        "ctimeNs": 1790935994684432186,
+        "allocatedBytes": 3710976
+      }
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/dist/cqc/src/cqc-sprite-catalog.js",
+      "sha256": "2e77835dafc4ac5698b62c86700f2c6751ee551692216bcab89381b07183cc79",
+      "stat": {
+        "dev": 27,
+        "inode": 1896,
+        "bytes": 19512237,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790935994863119989,
+        "ctimeNs": 1790935994863119989,
+        "allocatedBytes": 19513344
+      }
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/public/cqc/modules/arcade-chronicles-v055.html",
+      "sha256": "95db3d9264ffd6c14a1b9e5942cd0b7e00da76b1078601a0d5006cbb3c0f9c23",
+      "stat": {
+        "dev": 27,
+        "inode": 1048712,
+        "bytes": 3131374,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790935171944945734,
+        "ctimeNs": 1790935171944945734,
+        "allocatedBytes": 3133440
+      }
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/public/cqc/modules/battle-operations-v053.html",
+      "sha256": "f477ff91124ffcffcc35dc6f1b7bd758f3e602f7eaba38d754744c4ade8c7f31",
+      "stat": {
+        "dev": 27,
+        "inode": 1048718,
+        "bytes": 2085387,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790935171968323064,
+        "ctimeNs": 1790935171968323064,
+        "allocatedBytes": 2088960
+      }
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/public/cqc/modules/combat-academy-v053.html",
+      "sha256": "04906ca401389bc10d24ba846f0134b1ec33dbcf349b104ebff3bbd7971cf303",
+      "stat": {
+        "dev": 27,
+        "inode": 1048720,
+        "bytes": 3541138,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790935171980027217,
+        "ctimeNs": 1790935171980027217,
+        "allocatedBytes": 3543040
+      }
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/public/cqc/modules/core-v032.html",
+      "sha256": "f915318304f3d644261ac866f1be9900660d53f4be07769a804914c40d96af1d",
+      "stat": {
+        "dev": 27,
+        "inode": 1048721,
+        "bytes": 1520803,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790935171990480062,
+        "ctimeNs": 1790935171990480062,
+        "allocatedBytes": 1523712
+      }
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/public/cqc/modules/finisher-archive-v053.html",
+      "sha256": "84715eea6cbcd39fb8cda5880a9e3e51f5253963ed7028136ddde75ae2bc5e70",
+      "stat": {
+        "dev": 27,
+        "inode": 1048725,
+        "bytes": 1269327,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790935172008584535,
+        "ctimeNs": 1790935172008584535,
+        "allocatedBytes": 1269760
+      }
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/public/cqc/modules/roster-command-v053.html",
+      "sha256": "1b5bbef66cb6d66954c72e5b15c945ebab8a434857a20606028fd13a6a3dab76",
+      "stat": {
+        "dev": 27,
+        "inode": 1048733,
+        "bytes": 2125468,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790935172022619817,
+        "ctimeNs": 1790935172022619817,
+        "allocatedBytes": 2125824
+      }
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/public/cqc/modules/unified-versus-v046.html",
+      "sha256": "1698878221de8ef3210a8269f25c37e38be20a37ab8e076913af8df48c782ce7",
+      "stat": {
+        "dev": 27,
+        "inode": 1048737,
+        "bytes": 1904369,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790935172034227615,
+        "ctimeNs": 1790935172034227615,
+        "allocatedBytes": 1904640
+      }
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/public/cqc/modules/unified-versus-v053.html",
+      "sha256": "d68c4ab3886fa0ad039b8df0a5beefd0144bb56c9f218fd5018aa892a1acfcb4",
+      "stat": {
+        "dev": 27,
+        "inode": 1048738,
+        "bytes": 3421126,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790935172043399357,
+        "ctimeNs": 1790935172043399357,
+        "allocatedBytes": 3424256
+      }
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/public/cqc/modules/unified-versus-v055.html",
+      "sha256": "18d1ed1970fde73a6b5daa69c1ce8382eac628cb0eb5d080bb1e1b29493592ee",
+      "stat": {
+        "dev": 27,
+        "inode": 1048739,
+        "bytes": 3445031,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790935172054987255,
+        "ctimeNs": 1790935172054987255,
+        "allocatedBytes": 3448832
+      }
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/public/cqc/src/chronicles-data-v056.js",
+      "sha256": "d9c1f4a90e7a94e75ac8542949cb1d89447bc1d743c73b2cf3dd15fed7de0a16",
+      "stat": {
+        "dev": 27,
+        "inode": 1048751,
+        "bytes": 3710258,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790935172117002736,
+        "ctimeNs": 1790935172117002736,
+        "allocatedBytes": 3710976
+      }
+    },
+    {
+      "path": "/workspace/shadow-codec-recovered/public/cqc/src/cqc-sprite-catalog.js",
+      "sha256": "2e77835dafc4ac5698b62c86700f2c6751ee551692216bcab89381b07183cc79",
+      "stat": {
+        "dev": 27,
+        "inode": 1048778,
+        "bytes": 19512237,
+        "mode": 384,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1,
+        "mtimeNs": 1790935172189286033,
+        "ctimeNs": 1790935172189286033,
+        "allocatedBytes": 19513344
+      }
+    }
+  ],
+  "summary": {
+    "candidateNlink1FilesOver1MiB": 29,
+    "candidateStatRootCounts": {
+      "/workspace/cqc-pass8-storage-tools/root-runtime-backups/cqc-088abffa-7dad-4e93-9331-89bea636b7a8": 11,
+      "/workspace/cqc-pass8-storage-tools/root-build-backups/dist-96ad7cb8-eeb4-4064-bbcb-e59fd5c6bbe6/cqc": 11,
+      "/workspace/cqc-pass8-independent-gameplay-review": 7,
+      "/workspace/cqc-pass8-final-qa-tools/runs": 0
+    },
+    "fullSHAHashedCandidateFiles": 25,
+    "duplicateGroups": 12,
+    "targets": 13,
+    "keepers": 12,
+    "mutableLivePins": 34,
+    "reclaimAllocatedBytesEstimate": 56279040,
+    "reclaimContentBytes": 56256510,
+    "excludedCounts": {
+      "over1MiB_already_multilink": 570,
+      "symlink_private_or_non_allowlisted_extension": 1
+    },
+    "sameStatDifferentSHAFiles": 0
+  },
+  "scanLimits": "Stat-filtered only these four bounded roots; no ZIP, movie, PDF, mutable runtime target, private config, cache, dependency or current working-tool scan.",
+  "scanEvidence": {
+    "path": "/workspace/cqc-pass8-closed-archive-dedup/BOUNDED_SCAN.json",
+    "bytes": 18362,
+    "sha256": "3eb2a7e5653136382c6799efc2bd97e69e954ff0c7e2302ef2a5be232c2f57a1"
+  }
+}

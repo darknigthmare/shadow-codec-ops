@@ -1,0 +1,86 @@
+{
+  "schema": "cqc.pass8.storage-tools-delivery/1",
+  "status": "complete-scoped-reviewed",
+  "parentMustReviewAndInvokeProductionSeparately": true,
+  "productionSyncExecuted": false,
+  "productionBuildExecuted": false,
+  "repositoriesModifiedByThisTask": false,
+  "supportedPinSchemas": [
+    "cqc.pass8.immutable-png-pins/1",
+    "cqc.pass8.immutable-raster-pins/2"
+  ],
+  "formats": [
+    "png",
+    "webp"
+  ],
+  "mutableTextAlwaysIndependent": true,
+  "runtimeGraphAuthority": "/workspace/shadow-codec-recovered/scripts/sync-cqc-runtime.mjs buildRuntimeManifest + verifyRuntime, exact supplied buffers and graph preserved",
+  "officialViteBuildApi": true,
+  "copyPublicDir": false,
+  "publicStagingHook": "writeBundle order pre sequential true, before VitePWA closeBundle Workbox generation",
+  "historyDeleted": false,
+  "files": [
+    {
+      "path": "/workspace/cqc-pass8-storage-tools/common.mjs",
+      "bytes": 13255,
+      "sha256": "1b7e594008cef5983af0e375acdce095f90bff8a261e2cc93038c5f89d5edc55"
+    },
+    {
+      "path": "/workspace/cqc-pass8-storage-tools/sync-frozen-runtime.mjs",
+      "bytes": 8019,
+      "sha256": "922e3ea112c6f58dc05e651b3255b26d7368aec0f952dba81482429fb61ecaa6"
+    },
+    {
+      "path": "/workspace/cqc-pass8-storage-tools/build-with-frozen-public.mjs",
+      "bytes": 12760,
+      "sha256": "a73c1cc4cbae4d01ae085d77120929e37c393b28c839cfaffdfef4eeb7278065"
+    },
+    {
+      "path": "/workspace/cqc-pass8-storage-tools/prepare-frozen-png-pins.mjs",
+      "bytes": 3545,
+      "sha256": "1dfa700fe95403428a20163e836b99c87629806e90da0f41e4044479fec80870"
+    },
+    {
+      "path": "/workspace/cqc-pass8-storage-tools/prepare-frozen-raster-pins.mjs",
+      "bytes": 185,
+      "sha256": "3e697ad28379f2288ca82992199252912925fd28f9b29b910d809779e56f4499"
+    },
+    {
+      "path": "/workspace/cqc-pass8-storage-tools/storage-tools.test.mjs",
+      "bytes": 24167,
+      "sha256": "216e4bcec8264b1216823a9c444255bb73e10ea609c95651f4ff5c676d55ae56"
+    },
+    {
+      "path": "/workspace/cqc-pass8-storage-tools/README.md",
+      "bytes": 9476,
+      "sha256": "8a5d44917d18517174a88e7f1dd10aa35231d590ec5016bef7b0bfe3ba0fea00"
+    }
+  ],
+  "authorFixtures": {
+    "cases": 10,
+    "status": "passed",
+    "evidence": "/workspace/cqc-pass8-storage-tools/fixture-run-dZTvdM/TEST_EVIDENCE.json",
+    "sha256": "5fb087e2960281b92e83d72027c748778624357a58ce0a44f8c06f7a757f4d65",
+    "command": "node --test --test-isolation=none /workspace/cqc-pass8-storage-tools/storage-tools.test.mjs",
+    "realFixtureOnly": "19 public assets, 24 final output files, 5 PNG links, 1 WebP link, 13 independent public copies; unchanged original PWA checker passed"
+  },
+  "independentReview": {
+    "path": "/workspace/cqc-pass8-storage-tools-independent-review/FINAL_INDEPENDENT_REVIEW.json",
+    "sha256": "d89fed11cfc169e7a2c62bfcdbe618796d479691d1a945a79a4a7d584f738fe8",
+    "status": "approved-scoped",
+    "independentChecks": 51
+  },
+  "limits": [
+    "Frozen source PNG/WebP bytes must remain immutable throughout linked alias lifetime; future replacement uses new files plus rename, never in-place write or chmod.",
+    "Installed dependencies and external imports remain root-frozen prerequisites, not part of project source snapshot.",
+    "Directory renames are individually atomic with a brief pathname gap; caught errors restore and retain rejected output; process death requires reviewed journal recovery.",
+    "Only PNG/WebP payload storage is shared; generated bundles, independently copied text/other binary data and retained old directories still need room.",
+    "Several full SHA passes read multiple GiB for the production tree; production latency not yet measured."
+  ],
+  "logicalPublicSnapshotBytes": {
+    "png": 578524054,
+    "webp": 210152426,
+    "other": 43319229
+  },
+  "logicalDistSnapshotOtherBytes": 46924612
+}

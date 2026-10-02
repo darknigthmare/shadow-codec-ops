@@ -1,0 +1,73 @@
+{
+  "scope": "Git top-level, HEAD and complete porcelain status text; no config, remotes or credentials read and no index refresh requested.",
+  "repositories": [
+    {
+      "root": "/workspace/cqc-game-working/cqc-versus-v056",
+      "gitOptionalLocks": "0",
+      "commands": [
+        {
+          "args": [
+            "rev-parse",
+            "--show-toplevel"
+          ],
+          "exit": 128,
+          "stdout": "",
+          "stderr": "fatal: not a git repository (or any of the parent directories): .git\n"
+        },
+        {
+          "args": [
+            "rev-parse",
+            "HEAD"
+          ],
+          "exit": 128,
+          "stdout": "",
+          "stderr": "fatal: not a git repository (or any of the parent directories): .git\n"
+        },
+        {
+          "args": [
+            "status",
+            "--porcelain=v1",
+            "--untracked-files=all"
+          ],
+          "exit": 128,
+          "stdout": "",
+          "stderr": "fatal: not a git repository (or any of the parent directories): .git\n"
+        }
+      ]
+    },
+    {
+      "root": "/workspace/shadow-codec-recovered",
+      "gitOptionalLocks": "0",
+      "commands": [
+        {
+          "args": [
+            "rev-parse",
+            "--show-toplevel"
+          ],
+          "exit": 0,
+          "stdout": "/workspace/shadow-codec-recovered\n",
+          "stderr": ""
+        },
+        {
+          "args": [
+            "rev-parse",
+            "HEAD"
+          ],
+          "exit": 0,
+          "stdout": "37a0fa6682583cbfed4dfc8a55a5ecba4c6ed927\n",
+          "stderr": ""
+        },
+        {
+          "args": [
+            "status",
+            "--porcelain=v1",
+            "--untracked-files=all"
+          ],
+          "exit": 0,
+          "stdout": "",
+          "stderr": ""
+        }
+      ]
+    }
+  ]
+}

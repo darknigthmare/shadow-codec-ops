@@ -1,0 +1,19 @@
+{
+  "command": [
+    "ffmpeg",
+    "-hide_banner",
+    "-loglevel",
+    "warning",
+    "-ss",
+    "36625",
+    "-i",
+    "https://archive.org/download/PS3_Longplay_081_Metal_Gear_Solid_4/PS3_Longplay_081_Metal_Gear_Solid_4.mkv",
+    "-frames:v",
+    "1",
+    "-q:v",
+    "2",
+    "/workspace/cqc-pass8-generation/screaming-mantis/references/original-ps3-hd-36625s.jpg"
+  ],
+  "returncode": 0,
+  "stderr": "[image2 @ 0x564f54769000] The specified filename '/workspace/cqc-pass8-generation/screaming-mantis/references/original-ps3-hd-36625s.jpg' does not contain an image sequence pattern or a pattern is invalid.\n[image2 @ 0x564f54769000] Use a pattern such as %03d for an image sequence or use the -update option (with -frames:v 1 if needed) to write a single image.\n"
+}

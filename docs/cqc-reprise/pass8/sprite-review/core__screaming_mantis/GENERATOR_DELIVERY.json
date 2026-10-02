@@ -1,0 +1,602 @@
+{
+  "schema": "cqc.native-combat-delivery/1",
+  "uid": "core__screaming_mantis",
+  "name": "SCREAMING MANTIS",
+  "game": "Metal Gear Solid4: Guns of the Patriots (2008, PS3)",
+  "incarnation": "Original2008 MGS4 PS3 armored Beast, closed black dotted helmet, olive cylinders and rig, six extra mechanical arms, attached curved blades and distinct Mantis/Sorrow doll puppets",
+  "selectedCostume": "original-mgs4-ps3-screaming-mantis-full-beast-armor",
+  "basis": "Original PS3 physical references and all source bodies/dolls reviewed; bounded newly authored Versus gestures and attached machinery, no generic supernatural projectile certification.",
+  "displayHeight": 245,
+  "coverage": "action-frames",
+  "facing": 1,
+  "mirror": false,
+  "sourceFiles": [
+    {
+      "key": "a-right",
+      "source": "/workspace/cqc-pass8-generation/screaming-mantis/armor/sources/A_RIGHT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-c4733786-a3a4-4505-a7ef-6f013b85e166.png",
+      "sha256": "dd60a0d5a5cc3f680ff42b485dfabe43051a7d350af394542fe3932e370e5aa3",
+      "bytes": 2320886,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": 1,
+      "mirror": false
+    },
+    {
+      "key": "a-left",
+      "source": "/workspace/cqc-pass8-generation/screaming-mantis/armor/sources/A_LEFT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-07eca048-d6f9-4c7c-abb2-3cac8a16fe50.png",
+      "sha256": "d31fc7d18084a8656ec619d884e581110a46f544c776e0e74f655141848e2133",
+      "bytes": 2370035,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": -1,
+      "mirror": false
+    },
+    {
+      "key": "b-right",
+      "source": "/workspace/cqc-pass8-generation/screaming-mantis/armor/sources/B_RIGHT_03.png",
+      "nativeOriginal": "/workspace/generated_images/exec-1bb552b3-e038-44af-96ea-acf0c3f8479d.png",
+      "sha256": "793e9b89c208cdd854de5e4384c18ae27564ce811181c982ae7df65c4835340a",
+      "bytes": 2382758,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": 1,
+      "mirror": false
+    },
+    {
+      "key": "b-left",
+      "source": "/workspace/cqc-pass8-generation/screaming-mantis/armor/sources/B_LEFT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-18d19f96-a37f-47df-bd47-19e02cc529ff.png",
+      "sha256": "598441d1e71917e59f319d8565e5320dcd3ca065bc79543997d8699f03f04533",
+      "bytes": 2425844,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": -1,
+      "mirror": false
+    },
+    {
+      "key": "c-right",
+      "source": "/workspace/cqc-pass8-generation/screaming-mantis/armor/sources/C_RIGHT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-659d0e98-08b1-4a4b-a853-efcfb9486a72.png",
+      "sha256": "778483a937be1ad13d2f2c6d2c65aaaa9bb405b9f8ed7b78200b11df27245163",
+      "bytes": 2310453,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": 1,
+      "mirror": false
+    },
+    {
+      "key": "c-left",
+      "source": "/workspace/cqc-pass8-generation/screaming-mantis/armor/sources/C_LEFT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-6e544dd3-58b8-4c26-88ce-337d6af0e725.png",
+      "sha256": "2556ea95554e552588fa8e5e135d67ea9a4110a6fb3b067cc7e6101fded3cc1c",
+      "bytes": 2223484,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": -1,
+      "mirror": false
+    }
+  ],
+  "actionLayout": {
+    "idle": {
+      "sheet": "a",
+      "indices": [
+        0,
+        1
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "walk": {
+      "sheet": "a",
+      "indices": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "fps": 9,
+      "loop": true
+    },
+    "guard": {
+      "sheet": "a",
+      "indices": [
+        6,
+        7
+      ],
+      "fps": 5,
+      "loop": true
+    },
+    "crouch": {
+      "sheet": "a",
+      "indices": [
+        8,
+        9
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "jump": {
+      "sheet": "a",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 6,
+      "loop": false
+    },
+    "punch": {
+      "sheet": "b",
+      "indices": [
+        0,
+        1,
+        2
+      ],
+      "fps": 12,
+      "loop": false
+    },
+    "heavy": {
+      "sheet": "b",
+      "indices": [
+        3,
+        4,
+        5
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "low": {
+      "sheet": "b",
+      "indices": [
+        6,
+        7,
+        8
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "hit": {
+      "sheet": "b",
+      "indices": [
+        9
+      ],
+      "fps": 0,
+      "loop": false
+    },
+    "ko": {
+      "sheet": "b",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 6,
+      "loop": false
+    },
+    "shoot": {
+      "sheet": "c",
+      "indices": [
+        0,
+        1,
+        2
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "deploy": {
+      "sheet": "c",
+      "indices": [
+        3,
+        4,
+        5
+      ],
+      "fps": 8,
+      "loop": false
+    },
+    "throw": {
+      "sheet": "c",
+      "indices": [
+        6,
+        7,
+        8
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "recover": {
+      "sheet": "c",
+      "indices": [
+        9,
+        10,
+        11
+      ],
+      "fps": 5,
+      "loop": false
+    }
+  },
+  "actionMap": {
+    "light": "punch",
+    "heavy": "heavy",
+    "low": "low",
+    "throw": "throw",
+    "special": "shoot",
+    "specialDown": "deploy",
+    "specialForward": "throw",
+    "specialBack": "walk",
+    "super": "shoot",
+    "utility": "recover"
+  },
+  "phaseMap": {
+    "punch": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "heavy": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "low": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "shoot": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "deploy": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "throw": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "recover": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "guard": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        0
+      ]
+    },
+    "jump": {
+      "startup": [
+        0
+      ],
+      "active": [
+        0
+      ],
+      "recovery": [
+        1
+      ]
+    },
+    "attack": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    }
+  },
+  "review": {
+    "status": "approved",
+    "reviewer": "bb_screaming_mantis producer / physical review of six complete armor atlases and five original PS3 reference frames",
+    "reviewedAt": "2026-10-02",
+    "sourceKind": "original-game-capture",
+    "checks": {
+      "identity": true,
+      "costume": true,
+      "equipment": true,
+      "anatomicalSides": true,
+      "singleFigure": true,
+      "transparentBackground": true
+    },
+    "fidelityStatus": "closest_supported",
+    "absolute1to1Certified": false,
+    "sources": [
+      {
+        "file": "/workspace/cqc-pass8-generation/screaming-mantis/references/original-ps3-hd-36638s.jpg",
+        "url": "https://archive.org/download/PS3_Longplay_081_Metal_Gear_Solid_4/PS3_Longplay_081_Metal_Gear_Solid_4.mkv",
+        "sourceKind": "original-game-capture",
+        "sha256": "bd051208890550b10ea2333825cbae0c6c24de4a93140a8cc78dd6d091bd2936",
+        "bytes": 71534,
+        "width": 1280,
+        "height": 720,
+        "timeSeconds": 36638,
+        "viewed": true,
+        "scope": "Original PS3 close armor and Mantis doll: gas-mask doll with two large round pale-yellow eyepieces/filter, slender grey-blue suited body; dark oval main helmet with amber dots; olive cylindrical arm mounts and chest straps/pouches.",
+        "platformEvidence": "Archive WorldofLongplays original PS3 recording dated2014, creator Spazbo4. Original2008 game renderer, not a remake. Hardware/framebuffer not independently certified.",
+        "captureMethod": "ffmpeg single remote-seek decoded1280x720 frame encodedJPEG q2. Original reference pixels not recolored/resized/cropped; no full movie download."
+      },
+      {
+        "file": "/workspace/cqc-pass8-generation/screaming-mantis/references/original-ps3-hd-36636s.jpg",
+        "url": "https://archive.org/download/PS3_Longplay_081_Metal_Gear_Solid_4/PS3_Longplay_081_Metal_Gear_Solid_4.mkv",
+        "sourceKind": "original-game-capture",
+        "sha256": "90be994a897d30d4dabdbf925ac94271a08190a8cb7ec843d2eec0a5bf61d587",
+        "bytes": 75311,
+        "width": 1280,
+        "height": 720,
+        "timeSeconds": 36636,
+        "viewed": true,
+        "scope": "Original PS3 armor/bracers and Sorrow doll: smaller pale round lenses, dark grey hooded/military coat, pale hands and grey trousers. Distinct small doll, not a thrown grenade.",
+        "platformEvidence": "Archive WorldofLongplays original PS3 recording dated2014, creator Spazbo4. Original2008 game renderer, not a remake. Hardware/framebuffer not independently certified.",
+        "captureMethod": "ffmpeg single remote-seek decoded1280x720 frame encodedJPEG q2. Original reference pixels not recolored/resized/cropped; no full movie download."
+      },
+      {
+        "file": "/workspace/cqc-pass8-generation/screaming-mantis/references/original-ps3-hd-36802s.jpg",
+        "url": "https://archive.org/download/PS3_Longplay_081_Metal_Gear_Solid_4/PS3_Longplay_081_Metal_Gear_Solid_4.mkv",
+        "sourceKind": "original-game-capture",
+        "sha256": "6002e7687c597cf1eb72255144a183787c9c0813ace5078fb34ee1db87d0bc9d",
+        "bytes": 82392,
+        "width": 1280,
+        "height": 720,
+        "timeSeconds": 36802,
+        "viewed": true,
+        "scope": "Original PS3 main armor, SIX extra mechanical arms plus two human braced arms, attached curved mechanical blades and BOTH small suspended dolls: frontal Mantis doll on wearer right/image left, Sorrow doll on wearer left/image right.",
+        "platformEvidence": "Archive WorldofLongplays original PS3 recording dated2014, creator Spazbo4. Original2008 game renderer, not a remake. Hardware/framebuffer not independently certified.",
+        "captureMethod": "ffmpeg single remote-seek decoded1280x720 frame encodedJPEG q2. Original reference pixels not recolored/resized/cropped; no full movie download."
+      },
+      {
+        "file": "/workspace/cqc-pass8-generation/screaming-mantis/references/original-ps3-hd-36634s.jpg",
+        "url": "https://archive.org/download/PS3_Longplay_081_Metal_Gear_Solid_4/PS3_Longplay_081_Metal_Gear_Solid_4.mkv",
+        "sourceKind": "original-game-capture",
+        "sha256": "c1dee3c66df9dc801dba4e8d33274ff9012d3deab3b240a7fc386e14c8affe21",
+        "bytes": 65828,
+        "width": 1280,
+        "height": 720,
+        "timeSeconds": 36634,
+        "viewed": true,
+        "scope": "Original PS3 rear/side shoulder cylindrical machinery and attached extra arms; exact partly occluded reverse details qualified.",
+        "platformEvidence": "Archive WorldofLongplays original PS3 recording dated2014, creator Spazbo4. Original2008 game renderer, not a remake. Hardware/framebuffer not independently certified.",
+        "captureMethod": "ffmpeg single remote-seek decoded1280x720 frame encodedJPEG q2. Original reference pixels not recolored/resized/cropped; no full movie download."
+      },
+      {
+        "file": "/workspace/cqc-pass8-generation/screaming-mantis/references/original-ps3-hd-36960s.jpg",
+        "url": "https://archive.org/download/PS3_Longplay_081_Metal_Gear_Solid_4/PS3_Longplay_081_Metal_Gear_Solid_4.mkv",
+        "sourceKind": "original-game-capture",
+        "sha256": "129ead1df12ce6749d1478df232b44794b2e02c12c77a8c980dc4ef4f03b04af",
+        "bytes": 69751,
+        "width": 1280,
+        "height": 720,
+        "timeSeconds": 36960,
+        "viewed": true,
+        "scope": "Original PS3 complete hovering armored main wearer, source boot soles and physical broad mechanical claw/attached blade rig; captured motion partially blurs fingertips.",
+        "platformEvidence": "Archive WorldofLongplays original PS3 recording dated2014, creator Spazbo4. Original2008 game renderer, not a remake. Hardware/framebuffer not independently certified.",
+        "captureMethod": "ffmpeg single remote-seek decoded1280x720 frame encodedJPEG q2. Original reference pixels not recolored/resized/cropped; no full movie download."
+      }
+    ],
+    "limits": [
+      "Target 1:1 original MGS4 PS3, closest_supported newly authored 2D sprites from original3D source captures; no absolute pixel/model/material/animation identity certification.",
+      "Main human wearer is enclosed in original olive/charcoal armor, black oval closed helmet with amber dot sensors, olive chest rig and cylindrical mounts. SIX additional articulated black mechanical arms plus two actual human arms; attached source crescent blades and TWO distinct small Mantis/Sorrow dolls remain gear rather than extra fighters.",
+      "Original dolls are supported by close captures36636/36638/36802: gas-mask grey-blue Mantis and dark hooded/military-coat Sorrow. Exact miniature seams, lens hue, strings, fine mask/filter topology, and occluded reverse anatomy are interpreted at sprite scale; Sorrow lens highlights in B RIGHT remain warmer than neutral source. Number/orientation of visibly exposed blade edges varies with authored arm occlusion; source-original blade counts in all original animation frames are not certified.",
+      "Source supplies doll holding/suspension, machinery and SOP/nanomachine manipulation of relevant soldiers. Sprite C keys represent Mantis-doll activation, Sorrow-doll activation, physical machinery grasp and reset. All control doll landmarks are HELD-OBJECT positions, not firearm muzzles or projectile origins. No thrown explosive doll, autonomous trap, magic shield, railshot, telekinetic universal duel effect or generic psychic aura is supported by this delivery. Original story Psycho Mantis/Sorrow associations are not erased; bounded Versus mechanics need explicit adaptation labels.",
+      "Normal light/mechanical strikes, heavy attached blade sweep, low strike, guard, crouch, bounded hover, hit/KO and physical grasp are newly authored Versus adaptations. They are not extracted original animations or canonical duel evidence.",
+      "All six facings independently generated, no mirrored raster and no source pixel edit outside image_gen. B RIGHT1 rejected wrong heavy active empty claw; B RIGHT2 retained corrected heavy but cut canvas-right claw; B RIGHT3 final is complete without opaque borders. All eight native attempts, exact args and rejects preserved, no OC conversion.",
+      "Puppets and thin strings require reviewed COMPLETE alpha8-equipment layout. Original generic threshold80 inspector would crop separated dolls. Custom layout only supplies native rectangles/concave Canvas contours/pivots; every own opaque body/doll pixel retained and neighboring opaque fragments excluded in geometric checks. Integrator must inspect actual Canvas rendering and verify final ground/move phase alignment."
+    ],
+    "approvalScope": "Source-specific MGS4 PS3 armored main identity/rig and distinct dolls,72 authored action poses and complete source layout metadata. Runtime integration and actual Canvas source-scale validation root-owned."
+  },
+  "counts": {
+    "selectedNativePngSheets": 6,
+    "totalPoseCells": 72,
+    "poseCellsPerSheet": 12,
+    "facings": 2,
+    "nativeGenerationAttempts": 8,
+    "rejectedNativeAttempts": 2,
+    "selectedWeaponPropAtlases": 0
+  },
+  "sourceGeometry": {
+    "a-right": {
+      "recommendStandingSourceHeight": 305,
+      "observedUprightIndices": [
+        0,
+        1
+      ],
+      "observedHelmetUpperPointsFullSheet": [
+        [
+          223,
+          48
+        ],
+        [
+          607,
+          48
+        ]
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/screaming-mantis/armor/layouts/a-right.json",
+      "basis": "Physically observed main wearer helmet-to-boots anatomical source height, not overall high-reaching machinery/doll bbox. Body/support x observed manually; body support y uses actual lower opaque main wearer component, excluding detached-alpha dolls. Fixed positive per-sheet scale, no crouch/KO stretching."
+    },
+    "a-left": {
+      "recommendStandingSourceHeight": 322.5,
+      "observedUprightIndices": [
+        0,
+        1
+      ],
+      "observedHelmetUpperPointsFullSheet": [
+        [
+          172,
+          28
+        ],
+        [
+          546,
+          34
+        ]
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/screaming-mantis/armor/layouts/a-left.json",
+      "basis": "Physically observed main wearer helmet-to-boots anatomical source height, not overall high-reaching machinery/doll bbox. Body/support x observed manually; body support y uses actual lower opaque main wearer component, excluding detached-alpha dolls. Fixed positive per-sheet scale, no crouch/KO stretching."
+    },
+    "b-right": {
+      "recommendStandingSourceHeight": 282,
+      "observedUprightIndices": [
+        0,
+        2
+      ],
+      "observedHelmetUpperPointsFullSheet": [
+        [
+          194,
+          50
+        ],
+        [
+          993,
+          53
+        ]
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/screaming-mantis/armor/layouts/b-right.json",
+      "basis": "Physically observed main wearer helmet-to-boots anatomical source height, not overall high-reaching machinery/doll bbox. Body/support x observed manually; body support y uses actual lower opaque main wearer component, excluding detached-alpha dolls. Fixed positive per-sheet scale, no crouch/KO stretching."
+    },
+    "b-left": {
+      "recommendStandingSourceHeight": 285.5,
+      "observedUprightIndices": [
+        0,
+        2
+      ],
+      "observedHelmetUpperPointsFullSheet": [
+        [
+          153,
+          59
+        ],
+        [
+          936,
+          59
+        ]
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/screaming-mantis/armor/layouts/b-left.json",
+      "basis": "Physically observed main wearer helmet-to-boots anatomical source height, not overall high-reaching machinery/doll bbox. Body/support x observed manually; body support y uses actual lower opaque main wearer component, excluding detached-alpha dolls. Fixed positive per-sheet scale, no crouch/KO stretching."
+    },
+    "c-right": {
+      "recommendStandingSourceHeight": 276,
+      "observedUprightIndices": [
+        11
+      ],
+      "observedHelmetUpperPointsFullSheet": [
+        [
+          1332,
+          716
+        ]
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/screaming-mantis/armor/layouts/c-right.json",
+      "basis": "Physically observed main wearer helmet-to-boots anatomical source height, not overall high-reaching machinery/doll bbox. Body/support x observed manually; body support y uses actual lower opaque main wearer component, excluding detached-alpha dolls. Fixed positive per-sheet scale, no crouch/KO stretching."
+    },
+    "c-left": {
+      "recommendStandingSourceHeight": 303,
+      "observedUprightIndices": [
+        11
+      ],
+      "observedHelmetUpperPointsFullSheet": [
+        [
+          1336,
+          679
+        ]
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/screaming-mantis/armor/layouts/c-left.json",
+      "basis": "Physically observed main wearer helmet-to-boots anatomical source height, not overall high-reaching machinery/doll bbox. Body/support x observed manually; body support y uses actual lower opaque main wearer component, excluding detached-alpha dolls. Fixed positive per-sheet scale, no crouch/KO stretching."
+    }
+  },
+  "layouts": {
+    "a-right": "/workspace/cqc-pass8-generation/screaming-mantis/armor/layouts/a-right.json",
+    "a-left": "/workspace/cqc-pass8-generation/screaming-mantis/armor/layouts/a-left.json",
+    "b-right": "/workspace/cqc-pass8-generation/screaming-mantis/armor/layouts/b-right.json",
+    "b-left": "/workspace/cqc-pass8-generation/screaming-mantis/armor/layouts/b-left.json",
+    "c-right": "/workspace/cqc-pass8-generation/screaming-mantis/armor/layouts/c-right.json",
+    "c-left": "/workspace/cqc-pass8-generation/screaming-mantis/armor/layouts/c-left.json"
+  },
+  "completeSourceLayouts": {
+    "a-right": "/workspace/cqc-pass8-generation/screaming-mantis/armor/layouts/a-right.json",
+    "a-left": "/workspace/cqc-pass8-generation/screaming-mantis/armor/layouts/a-left.json",
+    "b-right": "/workspace/cqc-pass8-generation/screaming-mantis/armor/layouts/b-right.json",
+    "b-left": "/workspace/cqc-pass8-generation/screaming-mantis/armor/layouts/b-left.json",
+    "c-right": "/workspace/cqc-pass8-generation/screaming-mantis/armor/layouts/c-right.json",
+    "c-left": "/workspace/cqc-pass8-generation/screaming-mantis/armor/layouts/c-left.json"
+  },
+  "layoutOverrideRequired": true,
+  "sourceCombatOrigins": "/workspace/cqc-pass8-generation/screaming-mantis/armor/SOURCE_COMBAT_ORIGINS.json",
+  "sourceContract": "/workspace/cqc-pass8-generation/screaming-mantis/armor/SOURCE_AND_ACTION_CONTRACT.json",
+  "nativeAlphaReview": "/workspace/cqc-pass8-generation/screaming-mantis/armor/NATIVE_ALPHA_REVIEW.json",
+  "limits": [
+    "Target 1:1 original MGS4 PS3, closest_supported newly authored 2D sprites from original3D source captures; no absolute pixel/model/material/animation identity certification.",
+    "Main human wearer is enclosed in original olive/charcoal armor, black oval closed helmet with amber dot sensors, olive chest rig and cylindrical mounts. SIX additional articulated black mechanical arms plus two actual human arms; attached source crescent blades and TWO distinct small Mantis/Sorrow dolls remain gear rather than extra fighters.",
+    "Original dolls are supported by close captures36636/36638/36802: gas-mask grey-blue Mantis and dark hooded/military-coat Sorrow. Exact miniature seams, lens hue, strings, fine mask/filter topology, and occluded reverse anatomy are interpreted at sprite scale; Sorrow lens highlights in B RIGHT remain warmer than neutral source. Number/orientation of visibly exposed blade edges varies with authored arm occlusion; source-original blade counts in all original animation frames are not certified.",
+    "Source supplies doll holding/suspension, machinery and SOP/nanomachine manipulation of relevant soldiers. Sprite C keys represent Mantis-doll activation, Sorrow-doll activation, physical machinery grasp and reset. All control doll landmarks are HELD-OBJECT positions, not firearm muzzles or projectile origins. No thrown explosive doll, autonomous trap, magic shield, railshot, telekinetic universal duel effect or generic psychic aura is supported by this delivery. Original story Psycho Mantis/Sorrow associations are not erased; bounded Versus mechanics need explicit adaptation labels.",
+    "Normal light/mechanical strikes, heavy attached blade sweep, low strike, guard, crouch, bounded hover, hit/KO and physical grasp are newly authored Versus adaptations. They are not extracted original animations or canonical duel evidence.",
+    "All six facings independently generated, no mirrored raster and no source pixel edit outside image_gen. B RIGHT1 rejected wrong heavy active empty claw; B RIGHT2 retained corrected heavy but cut canvas-right claw; B RIGHT3 final is complete without opaque borders. All eight native attempts, exact args and rejects preserved, no OC conversion.",
+    "Puppets and thin strings require reviewed COMPLETE alpha8-equipment layout. Original generic threshold80 inspector would crop separated dolls. Custom layout only supplies native rectangles/concave Canvas contours/pivots; every own opaque body/doll pixel retained and neighboring opaque fragments excluded in geometric checks. Integrator must inspect actual Canvas rendering and verify final ground/move phase alignment."
+  ],
+  "requiresGameplayContract": "Do not use old invented thrown doll damage trap, Sorrow grenade, magic barrier or generalized psychic projectile. Preserve dolls held/attached. Mechanical blade/claw/grasp attacks and scoped SOP targeting cues must remain clearly Versus adaptations."
+}

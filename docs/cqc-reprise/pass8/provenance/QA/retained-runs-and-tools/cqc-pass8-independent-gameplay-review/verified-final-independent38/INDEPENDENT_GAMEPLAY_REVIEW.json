@@ -1,0 +1,538 @@
+{
+  "schema": "cqc.pass8.independent-source-gameplay-review/1",
+  "status": "passed",
+  "sourceFiles": [
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/src/cqc-pass8-combat-fidelity.js",
+      "snapshot": "/workspace/cqc-pass8-independent-gameplay-review/verified-final-independent38/source/helper.js",
+      "sha256": "af729ab492f0f54439a0cbdc9ec48e32847bfa45e0a2485e06d2cf9d17f1c913",
+      "bytes": 16335
+    },
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/src/cqc-pass8-combat-engine.js",
+      "snapshot": "/workspace/cqc-pass8-independent-gameplay-review/verified-final-independent38/source/engine.js",
+      "sha256": "fd6c8d85333887a60056f1ab11e92abb63250c07de1664a6d832c1c679f34a8f",
+      "bytes": 28142
+    },
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/preparation/reprise-pass8-provenance/source-drafts/cqc-pass8-combat-fidelity.before-support-trace-and-stationary-recovery-9e8201c3b24e.js",
+      "snapshot": "/workspace/cqc-pass8-independent-gameplay-review/verified-final-independent38/source/retained-before-fixes.js",
+      "sha256": "9e8201c3b24ef49e062dbf7144d594f882bfe112af85e03dad7895a75c140146",
+      "bytes": 16193
+    },
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/src/cqc-pass4-combat-fidelity.js",
+      "snapshot": "/workspace/cqc-pass8-independent-gameplay-review/verified-final-independent38/source/pass4.js",
+      "sha256": "a2fdce84d7a4893da761ba13b41c6acda2b65e3452fa4897b7a7f6bade1c85da",
+      "bytes": 3328
+    },
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/src/cqc-pass7-combat-fidelity.js",
+      "snapshot": "/workspace/cqc-pass8-independent-gameplay-review/verified-final-independent38/source/pass7.js",
+      "sha256": "48257633fc4c8054c2343f1da44334fe532d97222cfdd3b76b4827c3377b8bed",
+      "bytes": 23851
+    },
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/src/cqc-pass8-native-origins.js",
+      "snapshot": "/workspace/cqc-pass8-independent-gameplay-review/verified-final-independent38/source/native-origins-at-review.js",
+      "sha256": "f1f8364368d5f5362d7b7e351d3a314634e0147af9402c66361e631f08d96b96",
+      "bytes": 15007
+    },
+    {
+      "path": "/workspace/cqc-pass8-independent-gameplay-review/initial-snapshot/data/unified-roster-v053.json",
+      "sha256": "68fdbbd78c7abb88a737f0e62abf58e4c39847d3edd839e0ac64d4f5cdcc242d"
+    },
+    {
+      "path": "/workspace/cqc-pass8-independent-gameplay-review/initial-snapshot/data/finishers-v053.json",
+      "sha256": "fd0e0c7d0b68c983ae11359d18825b5172b63eddc1fa2fd3ba250f0b55639763"
+    },
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/data/combat-sprite-catalog-v1.json",
+      "scope": "Only thirteen reviewed entries captured; integration still ongoing",
+      "scopedSha256": "a3ea3297698b136a50f212f75b9060dfd9c8e9825243e7216a67a7d4f5cc2c11"
+    }
+  ],
+  "records": [
+    {
+      "name": "Preserved draft reproduces unavailable observations and travelling recovery",
+      "status": "passed",
+      "evidence": {
+        "fixedFindings": [
+          {
+            "uid": "roster50__sunny_mgs4",
+            "observation": "observeMiss despite visible opponent",
+            "superRecoveryTravelPixels": 21
+          },
+          {
+            "uid": "roster50__sunny_mgr",
+            "observation": "observeMiss despite visible opponent",
+            "superRecoveryTravelPixels": 21
+          },
+          {
+            "uid": "archive__paz",
+            "observation": "observeMiss despite visible opponent",
+            "superRecoveryTravelPixels": 21
+          },
+          {
+            "uid": "npc53__paz_gz",
+            "observation": "observeMiss despite visible opponent",
+            "superRecoveryTravelPixels": 21
+          }
+        ],
+        "retainedDraftSHA256": "9e8201c3b24ef49e062dbf7144d594f882bfe112af85e03dad7895a75c140146"
+      }
+    },
+    {
+      "name": "roster50__sunny_mgs4 observation visible",
+      "status": "passed",
+      "evidence": {
+        "observed": true,
+        "missed": false,
+        "sourceFrame": 29,
+        "activationFrame": 30,
+        "opponentLife": 10000
+      }
+    },
+    {
+      "name": "roster50__sunny_mgs4 observation cloaked",
+      "status": "passed",
+      "evidence": {
+        "observed": false,
+        "missed": true,
+        "opponentLife": 10000
+      }
+    },
+    {
+      "name": "roster50__sunny_mgs4 observation out-of-range",
+      "status": "passed",
+      "evidence": {
+        "observed": false,
+        "missed": true,
+        "opponentLife": 10000
+      }
+    },
+    {
+      "name": "roster50__sunny_mgs4 observation cloak-during-startup",
+      "status": "passed",
+      "evidence": {
+        "observed": false,
+        "missed": true,
+        "opponentLife": 10000
+      }
+    },
+    {
+      "name": "roster50__sunny_mgs4 stationary interruptible reserve recovery special",
+      "status": "passed",
+      "evidence": {
+        "travelPixels": 0,
+        "reserveAfterRecovery": 42,
+        "lifeUnchanged": 8700,
+        "restorationInterrupted": true
+      }
+    },
+    {
+      "name": "roster50__sunny_mgs4 stationary interruptible reserve recovery super",
+      "status": "passed",
+      "evidence": {
+        "travelPixels": 0,
+        "reserveAfterRecovery": 80,
+        "lifeUnchanged": 8700,
+        "restorationInterrupted": true
+      }
+    },
+    {
+      "name": "roster50__sunny_mgs4 stationary interruptible reserve recovery utility",
+      "status": "passed",
+      "evidence": {
+        "travelPixels": 0,
+        "reserveAfterRecovery": 58,
+        "lifeUnchanged": 8700,
+        "restorationInterrupted": true
+      }
+    },
+    {
+      "name": "roster50__sunny_mgr observation visible",
+      "status": "passed",
+      "evidence": {
+        "observed": true,
+        "missed": false,
+        "sourceFrame": 29,
+        "activationFrame": 30,
+        "opponentLife": 10000
+      }
+    },
+    {
+      "name": "roster50__sunny_mgr observation cloaked",
+      "status": "passed",
+      "evidence": {
+        "observed": false,
+        "missed": true,
+        "opponentLife": 10000
+      }
+    },
+    {
+      "name": "roster50__sunny_mgr observation out-of-range",
+      "status": "passed",
+      "evidence": {
+        "observed": false,
+        "missed": true,
+        "opponentLife": 10000
+      }
+    },
+    {
+      "name": "roster50__sunny_mgr observation cloak-during-startup",
+      "status": "passed",
+      "evidence": {
+        "observed": false,
+        "missed": true,
+        "opponentLife": 10000
+      }
+    },
+    {
+      "name": "roster50__sunny_mgr stationary interruptible reserve recovery special",
+      "status": "passed",
+      "evidence": {
+        "travelPixels": 0,
+        "reserveAfterRecovery": 42,
+        "lifeUnchanged": 8700,
+        "restorationInterrupted": true
+      }
+    },
+    {
+      "name": "roster50__sunny_mgr stationary interruptible reserve recovery super",
+      "status": "passed",
+      "evidence": {
+        "travelPixels": 0,
+        "reserveAfterRecovery": 80,
+        "lifeUnchanged": 8700,
+        "restorationInterrupted": true
+      }
+    },
+    {
+      "name": "roster50__sunny_mgr stationary interruptible reserve recovery utility",
+      "status": "passed",
+      "evidence": {
+        "travelPixels": 0,
+        "reserveAfterRecovery": 58,
+        "lifeUnchanged": 8700,
+        "restorationInterrupted": true
+      }
+    },
+    {
+      "name": "archive__paz observation visible",
+      "status": "passed",
+      "evidence": {
+        "observed": true,
+        "missed": false,
+        "sourceFrame": 29,
+        "activationFrame": 30,
+        "opponentLife": 10000
+      }
+    },
+    {
+      "name": "archive__paz observation cloaked",
+      "status": "passed",
+      "evidence": {
+        "observed": false,
+        "missed": true,
+        "opponentLife": 10000
+      }
+    },
+    {
+      "name": "archive__paz observation out-of-range",
+      "status": "passed",
+      "evidence": {
+        "observed": false,
+        "missed": true,
+        "opponentLife": 10000
+      }
+    },
+    {
+      "name": "archive__paz observation cloak-during-startup",
+      "status": "passed",
+      "evidence": {
+        "observed": false,
+        "missed": true,
+        "opponentLife": 10000
+      }
+    },
+    {
+      "name": "archive__paz stationary interruptible reserve recovery special",
+      "status": "passed",
+      "evidence": {
+        "travelPixels": 0,
+        "reserveAfterRecovery": 42,
+        "lifeUnchanged": 8700,
+        "restorationInterrupted": true
+      }
+    },
+    {
+      "name": "archive__paz stationary interruptible reserve recovery super",
+      "status": "passed",
+      "evidence": {
+        "travelPixels": 0,
+        "reserveAfterRecovery": 80,
+        "lifeUnchanged": 8700,
+        "restorationInterrupted": true
+      }
+    },
+    {
+      "name": "archive__paz stationary interruptible reserve recovery utility",
+      "status": "passed",
+      "evidence": {
+        "travelPixels": 0,
+        "reserveAfterRecovery": 58,
+        "lifeUnchanged": 8700,
+        "restorationInterrupted": true
+      }
+    },
+    {
+      "name": "npc53__paz_gz observation visible",
+      "status": "passed",
+      "evidence": {
+        "observed": true,
+        "missed": false,
+        "sourceFrame": 29,
+        "activationFrame": 30,
+        "opponentLife": 10000
+      }
+    },
+    {
+      "name": "npc53__paz_gz observation cloaked",
+      "status": "passed",
+      "evidence": {
+        "observed": false,
+        "missed": true,
+        "opponentLife": 10000
+      }
+    },
+    {
+      "name": "npc53__paz_gz observation out-of-range",
+      "status": "passed",
+      "evidence": {
+        "observed": false,
+        "missed": true,
+        "opponentLife": 10000
+      }
+    },
+    {
+      "name": "npc53__paz_gz observation cloak-during-startup",
+      "status": "passed",
+      "evidence": {
+        "observed": false,
+        "missed": true,
+        "opponentLife": 10000
+      }
+    },
+    {
+      "name": "npc53__paz_gz stationary interruptible reserve recovery special",
+      "status": "passed",
+      "evidence": {
+        "travelPixels": 0,
+        "reserveAfterRecovery": 42,
+        "lifeUnchanged": 8700,
+        "restorationInterrupted": true
+      }
+    },
+    {
+      "name": "npc53__paz_gz stationary interruptible reserve recovery super",
+      "status": "passed",
+      "evidence": {
+        "travelPixels": 0,
+        "reserveAfterRecovery": 80,
+        "lifeUnchanged": 8700,
+        "restorationInterrupted": true
+      }
+    },
+    {
+      "name": "npc53__paz_gz stationary interruptible reserve recovery utility",
+      "status": "passed",
+      "evidence": {
+        "travelPixels": 0,
+        "reserveAfterRecovery": 58,
+        "lifeUnchanged": 8700,
+        "restorationInterrupted": true
+      }
+    },
+    {
+      "name": "Thirteen corrections preserve the other 341 full profiles and raw roster",
+      "status": "passed",
+      "evidence": {
+        "reviewedUIDs": [
+          "core__laughing_octopus",
+          "core__raging_raven",
+          "core__crying_wolf",
+          "core__screaming_mantis",
+          "archive__laughing_beauty",
+          "archive__raging_beauty",
+          "archive__crying_beauty",
+          "archive__screaming_beauty",
+          "roster50__sunny_mgs4",
+          "roster50__sunny_mgr",
+          "archive__paz",
+          "npc53__paz_gz",
+          "core__eva_mgs3"
+        ],
+        "unrelatedProfilesPreserved": 341,
+        "rawRosterSHA256": "68fdbbd78c7abb88a737f0e62abf58e4c39847d3edd839e0ac64d4f5cdcc242d"
+      }
+    },
+    {
+      "name": "roster50__sunny_mgs4 actual swept-projectile and airborne-melee child collision",
+      "status": "passed",
+      "evidence": {
+        "height": 145,
+        "width": 52,
+        "crouchedHeight": 76.85000000000001,
+        "highProjectileMissesChild": true,
+        "sameProjectileHitsAdult": true,
+        "lowProjectileHitsStandingChild": true,
+        "crouchAvoidsAboveHeadProjectile": true,
+        "airborneHighMeleeMissesChild": true
+      }
+    },
+    {
+      "name": "roster50__sunny_mgr actual swept-projectile and airborne-melee child collision",
+      "status": "passed",
+      "evidence": {
+        "height": 170,
+        "width": 62,
+        "crouchedHeight": 90.10000000000001,
+        "highProjectileMissesChild": true,
+        "sameProjectileHitsAdult": true,
+        "lowProjectileHitsStandingChild": true,
+        "crouchAvoidsAboveHeadProjectile": true,
+        "airborneHighMeleeMissesChild": true
+      }
+    },
+    {
+      "name": "52 scoped finishers retain inputs and duration with explicit adaptation provenance",
+      "status": "passed",
+      "evidence": {
+        "scopedFinishers": 52,
+        "unrelatedProfilesPreserved": 341,
+        "idsInputsDurationsRetained": true,
+        "allCanonicalFalse": true,
+        "rawFinishersSHA256": "fd0e0c7d0b68c983ae11359d18825b5172b63eddc1fa2fd3ba250f0b55639763"
+      }
+    },
+    {
+      "name": "Historical engine and embedded raw catalogs preserved in both applications",
+      "status": "passed",
+      "evidence": {
+        "historicalInlineEngineSHA256": "197acd7da230bf479a68d37ff409801c0d4390d001a98b4c1451075be55d2d51",
+        "fullEmbeddedProfilesEqualAcrossApps": true,
+        "fullEmbeddedFinishersEqualAcrossApps": true,
+        "separateEngineOnlySunnyBoxHookAndExport": true
+      }
+    },
+    {
+      "name": "Raven shoot measured first-active muzzle and rejection guards",
+      "status": "passed",
+      "evidence": {
+        "sourceGroup": "shoot",
+        "validOrigins": {
+          "1": {
+            "forward": 207.90429447852762,
+            "height": 198.64539877300615
+          },
+          "-1": {
+            "forward": 198.4,
+            "height": 208
+          }
+        },
+        "rejectedMutations": 29,
+        "sourceSHA256": {
+          "right": "618b7955d001fd035047d9b6ddfd9c07cc1c922e1eb4fc8313e8169f8f2b9238",
+          "left": "cfe6cedf8dc9ca70dc02207edd9103985f5dc0be2ce367444a06864e28b9da40"
+        },
+        "pendingRuntimeImportNotCertified": true
+      }
+    },
+    {
+      "name": "Raven deploy measured first-active muzzle and rejection guards",
+      "status": "passed",
+      "evidence": {
+        "sourceGroup": "deploy",
+        "validOrigins": {
+          "1": {
+            "forward": 154.03435582822087,
+            "height": 123.73251533742332
+          },
+          "-1": {
+            "forward": 159.20000000000002,
+            "height": 119.2
+          }
+        },
+        "rejectedMutations": 29,
+        "sourceSHA256": {
+          "right": "618b7955d001fd035047d9b6ddfd9c07cc1c922e1eb4fc8313e8169f8f2b9238",
+          "left": "cfe6cedf8dc9ca70dc02207edd9103985f5dc0be2ce367444a06864e28b9da40"
+        },
+        "pendingRuntimeImportNotCertified": true
+      }
+    },
+    {
+      "name": "Raven charge measured first-active muzzle and rejection guards",
+      "status": "passed",
+      "evidence": {
+        "sourceGroup": "charge",
+        "validOrigins": {
+          "1": {
+            "forward": 168.3435582822086,
+            "height": 179.28588957055214
+          },
+          "-1": {
+            "forward": 200,
+            "height": 196.8
+          }
+        },
+        "rejectedMutations": 29,
+        "sourceSHA256": {
+          "right": "618b7955d001fd035047d9b6ddfd9c07cc1c922e1eb4fc8313e8169f8f2b9238",
+          "left": "cfe6cedf8dc9ca70dc02207edd9103985f5dc0be2ce367444a06864e28b9da40"
+        },
+        "pendingRuntimeImportNotCertified": true
+      }
+    },
+    {
+      "name": "Raven action-map integration recommendation is supported by actual source groups",
+      "status": "passed",
+      "evidence": {
+        "originalDeliverySpecialDown": "low",
+        "sourceLowGroup": "B leg sweep/kick",
+        "correctLauncherGroup": "C deploy 5/6/7",
+        "requiredRuntimeActionMap": {
+          "specialDown": "deploy",
+          "specialForward": "jump",
+          "specialBack": "walk"
+        },
+        "rootInformed": true,
+        "originalDeliveryPreserved": true
+      }
+    }
+  ],
+  "checks": 38,
+  "passed": 38,
+  "originGuardRejections": 87,
+  "fixedFindings": [
+    "Visible-trace observations had no sampler because passive.observeMovement was absent.",
+    "Inherited super travel displaced reserve recovery by 21 pixels."
+  ],
+  "remainingIntegration": [
+    "Raven runtime action-map override must bind kneeling launcher to specialDown and jet pose to specialForward.",
+    "Thirteen imported source origins and final catalogs still require root integration checks."
+  ],
+  "limitations": [
+    "No final native-art catalog count, deployment or publication asserted.",
+    "Source equipment categories are original-evidenced; attacks, command timing, damage, resources and finisher choreography are versus adaptations.",
+    "closest_supported target 1:1, absolute1to1Certified false."
+  ],
+  "sourceAfterRun": {
+    "helperSHA256": "af729ab492f0f54439a0cbdc9ec48e32847bfa45e0a2485e06d2cf9d17f1c913",
+    "engineSHA256": "fd6c8d85333887a60056f1ab11e92abb63250c07de1664a6d832c1c679f34a8f"
+  },
+  "writableScope": "/workspace/cqc-pass8-independent-gameplay-review",
+  "appMutatedByReviewer": false,
+  "nativePNGsMutatedByReviewer": false
+}

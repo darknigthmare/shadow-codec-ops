@@ -1,0 +1,528 @@
+{
+  "schema": "cqc.native-combat-delivery/1",
+  "uid": "archive__paz",
+  "name": "PAZ ORTEGA ANDRADE — PEACE WALKER",
+  "game": "Metal Gear Solid: Peace Walker (2010), original design viewed in Xbox360 HD port",
+  "incarnation": "Original PW adult Paz age21 student-cover appearance, short wavy blond hair, navy blazer/pleated skirt, white collar/red ribbon and high dark boots; HD-port source qualified",
+  "selectedCostume": "original-pw-paz-dark-school-cover",
+  "basis": "Apparence originale adulte vérifiée sur captures ; mouvements unarmés de soutien/défense et simulation versus explicite, sans arme, pouvoir ou bombes inventés.",
+  "displayHeight": 205,
+  "coverage": "action-frames",
+  "facing": 1,
+  "mirror": false,
+  "sourceFiles": [
+    {
+      "key": "a-right",
+      "source": "/workspace/cqc-pass8-generation/paz-eva/paz-pw/sources/A_RIGHT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-eaba0259-1f95-49cb-a0d0-62a25f6e6dac.png",
+      "sha256": "f174268dc5a727281cc1c9643186cf62f034a8856d72b6c1777200a00f7d2cf1",
+      "bytes": 1785204,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": 1,
+      "mirror": false
+    },
+    {
+      "key": "a-left",
+      "source": "/workspace/cqc-pass8-generation/paz-eva/paz-pw/sources/A_LEFT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-71c1802c-e7b3-4d85-bc9e-38fbddbd7e31.png",
+      "sha256": "1ceaf7abca10eff375774cb26be5679bd76667554c2782b0f9d58655b5a37747",
+      "bytes": 1781272,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": -1,
+      "mirror": false
+    },
+    {
+      "key": "b-right",
+      "source": "/workspace/cqc-pass8-generation/paz-eva/paz-pw/sources/B_RIGHT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-cab8b3aa-9aa6-4af4-a56c-b8f7422c4f3c.png",
+      "sha256": "e2138e117db786bc7f903c02a27d238203c573b9cf5bbf2c5e5f2e07d5c5fb82",
+      "bytes": 1899595,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": 1,
+      "mirror": false
+    },
+    {
+      "key": "b-left",
+      "source": "/workspace/cqc-pass8-generation/paz-eva/paz-pw/sources/B_LEFT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-0b8885fb-103b-421c-b1ce-6aba76da159e.png",
+      "sha256": "8ebeff7152d1bbb02d139c4afdf7c7b92a2358fadfd00a40f40e105c84bcef97",
+      "bytes": 1816994,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": -1,
+      "mirror": false
+    },
+    {
+      "key": "c-right",
+      "source": "/workspace/cqc-pass8-generation/paz-eva/paz-pw/sources/C_RIGHT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-1913c945-ce64-4e68-93f3-ba9952fa26db.png",
+      "sha256": "77b9542e2db06f88f0078325f8489bc615bf6580b5110b9c226fd0a43be8b1db",
+      "bytes": 1782062,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": 1,
+      "mirror": false
+    },
+    {
+      "key": "c-left",
+      "source": "/workspace/cqc-pass8-generation/paz-eva/paz-pw/sources/C_LEFT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-bd786927-a053-4051-993d-dbc044cdf2ae.png",
+      "sha256": "53159d1c6e9a3f0bd92e3f47c7fb90f07cde4fa4f91b86011ede6105bc697672",
+      "bytes": 1829468,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": -1,
+      "mirror": false
+    }
+  ],
+  "actionLayout": {
+    "idle": {
+      "sheet": "a",
+      "indices": [
+        0,
+        1
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "walk": {
+      "sheet": "a",
+      "indices": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "fps": 9,
+      "loop": true
+    },
+    "guard": {
+      "sheet": "a",
+      "indices": [
+        6,
+        7
+      ],
+      "fps": 5,
+      "loop": true
+    },
+    "crouch": {
+      "sheet": "a",
+      "indices": [
+        8,
+        9
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "jump": {
+      "sheet": "a",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 6,
+      "loop": false
+    },
+    "punch": {
+      "sheet": "b",
+      "indices": [
+        0,
+        1,
+        2
+      ],
+      "fps": 12,
+      "loop": false
+    },
+    "heavy": {
+      "sheet": "b",
+      "indices": [
+        3,
+        4,
+        5
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "low": {
+      "sheet": "b",
+      "indices": [
+        6,
+        7,
+        8
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "hit": {
+      "sheet": "b",
+      "indices": [
+        9
+      ],
+      "fps": 0,
+      "loop": false
+    },
+    "ko": {
+      "sheet": "b",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 6,
+      "loop": false
+    },
+    "shoot": {
+      "sheet": "c",
+      "indices": [
+        0,
+        1,
+        2
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "deploy": {
+      "sheet": "c",
+      "indices": [
+        3,
+        4,
+        5
+      ],
+      "fps": 8,
+      "loop": false
+    },
+    "throw": {
+      "sheet": "c",
+      "indices": [
+        6,
+        7,
+        8
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "recover": {
+      "sheet": "c",
+      "indices": [
+        9,
+        10,
+        11
+      ],
+      "fps": 5,
+      "loop": false
+    }
+  },
+  "actionMap": {
+    "light": "punch",
+    "heavy": "heavy",
+    "low": "low",
+    "throw": "throw",
+    "special": "shoot",
+    "specialDown": "deploy",
+    "specialForward": "throw",
+    "specialBack": "walk",
+    "super": "throw",
+    "utility": "recover"
+  },
+  "phaseMap": {
+    "punch": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "heavy": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "low": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "shoot": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "deploy": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "throw": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "recover": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "guard": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        0
+      ]
+    },
+    "jump": {
+      "startup": [
+        0
+      ],
+      "active": [
+        0
+      ],
+      "recovery": [
+        1
+      ]
+    }
+  },
+  "review": {
+    "status": "approved",
+    "reviewer": "paz_two_versions_eva producer original source and complete72-pose physical review",
+    "reviewedAt": "2026-10-02",
+    "sourceKind": "original-game-capture",
+    "checks": {
+      "identity": true,
+      "costume": true,
+      "equipment": true,
+      "anatomicalSides": true,
+      "singleFigure": true,
+      "transparentBackground": true
+    },
+    "fidelityStatus": "closest_supported",
+    "absolute1to1Certified": false,
+    "sources": [
+      {
+        "file": "/workspace/cqc-pass8-generation/paz-eva/paz-pw/references/mania-original-50s.png",
+        "url": "https://archive.org/download/youtube-lsOxdkVK7dQ/lsOxdkVK7dQ.mp4",
+        "sourceKind": "original-game-capture",
+        "scope": "Original Xbox360 PW HD source face/shoulders: short wavy blond hair, dark navy/grey-blue blazer lapels, white blouse collar, thin red ribbon tie. Actual source physically viewed.",
+        "viewed": true,
+        "sha256": "a5e77655b48f3832e23cae5eb2471ca7fb7a9eb7e7e7127f5a11a41f5165d00a",
+        "bytes": 619171,
+        "captureMethod": "ffmpeg remote-seek one native-resolution decoded frame, no complete movie download, crop, resize, recolor or pixel painting. Exact args and stderr preserved."
+      },
+      {
+        "file": "/workspace/cqc-pass8-generation/paz-eva/paz-pw/references/mania-original-90s.png",
+        "url": "https://archive.org/download/youtube-lsOxdkVK7dQ/lsOxdkVK7dQ.mp4",
+        "sourceKind": "original-game-capture",
+        "scope": "Original Xbox360 PW HD whole-body student-cover outfit: dark blazer/pleated skirt, dark high footwear. Low-resolution whole-body original gameplay does not certify sole/stitching/stocking vs boot material edges.",
+        "viewed": true,
+        "sha256": "ff01f77b0bacdaed95a0a5ed6d2747ee6fb35e68cf2717e738271561905b6ae9",
+        "bytes": 486066,
+        "captureMethod": "ffmpeg remote-seek one native-resolution decoded frame, no complete movie download, crop, resize, recolor or pixel painting. Exact args and stderr preserved."
+      },
+      {
+        "file": "/workspace/cqc-pass8-generation/paz-eva/paz-pw/references/mania-original-100s.png",
+        "url": "https://archive.org/download/youtube-lsOxdkVK7dQ/lsOxdkVK7dQ.mp4",
+        "sourceKind": "original-game-capture",
+        "scope": "Original Xbox360 PW HD original Paz whole-body gesture; confirms dark skirt, bare knees and dark high footwear silhouette, no weapon or military armor.",
+        "viewed": true,
+        "sha256": "a5b4d066037be1fbe8ee9daca860edf5603d8ff56ac093d641eb3763d2f96356",
+        "bytes": 530654,
+        "captureMethod": "ffmpeg remote-seek one native-resolution decoded frame, no complete movie download, crop, resize, recolor or pixel painting. Exact args and stderr preserved."
+      },
+      {
+        "file": "/workspace/cqc-pass8-generation/paz-eva/paz-pw/references/mania-original-160s.png",
+        "url": "https://archive.org/download/youtube-lsOxdkVK7dQ/lsOxdkVK7dQ.mp4",
+        "sourceKind": "original-game-capture",
+        "scope": "Original Xbox360 guide shows Xbox achievement interface and MGS PEACE WALKER HD title; hardware/platform evidence for original-design HD port, not PSP framebuffer/pixel certification.",
+        "viewed": true,
+        "sha256": "0cc27c00329bbfe36e08e69732b413cc62d6f9ac29da5b9861f885c2dc525275",
+        "bytes": 143035,
+        "captureMethod": "ffmpeg remote-seek one native-resolution decoded frame, no complete movie download, crop, resize, recolor or pixel painting. Exact args and stderr preserved."
+      }
+    ],
+    "limits": [
+      "Actual original PW HD captures prove dark navy/grey-blue blazer and pleated skirt, white collar and thin red ribbon, short wavy blond hair and dark high footwear. Earlier speculative white blouse/green skirt assumption is excluded; no ponytail or TPP double-braid blue gown is used.",
+      "References are the original2010 design in Xbox360 HD port as identified in source/achievement footage, not direct PSP hardware capture. Their original adult face proportions, clothing silhouette and palette guide these 2D authored poses; exact PSP mesh/framebuffer, material, seams, eye color, button/stitch topology, boot shaft/stocking distinction and pixel1:1 are not certified.",
+      "Introductory red Shinkawa coat is retained as an unused reference to another scene. Existing mislabeled archive portrait was actually TPP hallucination and is not used. Another Date with Paz video had already unlocked the underwear variant; its attempts/captures are conserved for research, excluded from these fully clothed sprites.",
+      "All72 poses remain neutral fully clothed adult school-cover appearance, ordinary authored human support/defense gestures, never sexualized/minor portrayal or an assertion of canon schoolgirl combat proficiency.",
+      "Target remains1:1 fidelity to selected original incarnation, closest_supported output only. Newly illustrated2D poses are not extracted original animation; absolute1:1 artistic or gameplay certification is false.",
+      "No firearm/grenade/projectile origin, bomb, ZEKE control, armor inheritance, psychic field or summoned machine is invented. Existing action keys shoot/deploy merely identify non-ballistic signal/protection pose groups; root must explicitly supersede historical generic weapon behavior.",
+      "Native source PNGs and all attempts unchanged. Both facings independently generated and SHA-distinct, no mirrored body raster. Every selected atlas and each12 complete bodies physically viewed by producer. Canvas crops/contours, source scale, mobile/desktop, phase/hitbox/finisher behavior remain independently root-owned.",
+      "Close native row spacing produces recorded foreign opaque pixels in some bounding rectangles. Metadata Canvas contour stencils exclude neighbors; no image pixels edited. Use the measured upright source height for each sheet, retaining actual lowered crouch/KO size."
+    ],
+    "approvalScope": "Source-qualified adult original-game clothing/identity and72 authored human unarmed bonus poses, no canon duel or runtime integration certification."
+  },
+  "counts": {
+    "selectedNativePngSheets": 6,
+    "totalPoseCells": 72,
+    "poseCellsPerSheet": 12,
+    "facings": 2,
+    "nativeGenerationAttempts": 6,
+    "rejectedNativeAttempts": 0,
+    "selectedWeaponPropAtlases": 0
+  },
+  "sourceGeometry": {
+    "a-right": {
+      "recommendStandingSourceHeight": 360.0,
+      "nativeUprightHeights": [
+        360,
+        360
+      ],
+      "observedUprightIndices": [
+        0,
+        1
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/paz-eva/paz-pw/layouts/a-right.json",
+      "basis": "Measured actual native upright head-to-foot source height; fixed positive per-sheet scale, lowered poses retain actual body height and are not stretched."
+    },
+    "a-left": {
+      "recommendStandingSourceHeight": 349.0,
+      "nativeUprightHeights": [
+        349,
+        349
+      ],
+      "observedUprightIndices": [
+        0,
+        1
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/paz-eva/paz-pw/layouts/a-left.json",
+      "basis": "Measured actual native upright head-to-foot source height; fixed positive per-sheet scale, lowered poses retain actual body height and are not stretched."
+    },
+    "b-right": {
+      "recommendStandingSourceHeight": 372.0,
+      "nativeUprightHeights": [
+        375,
+        369
+      ],
+      "observedUprightIndices": [
+        0,
+        2
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/paz-eva/paz-pw/layouts/b-right.json",
+      "basis": "Measured actual native upright head-to-foot source height; fixed positive per-sheet scale, lowered poses retain actual body height and are not stretched."
+    },
+    "b-left": {
+      "recommendStandingSourceHeight": 359.0,
+      "nativeUprightHeights": [
+        359,
+        359
+      ],
+      "observedUprightIndices": [
+        0,
+        2
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/paz-eva/paz-pw/layouts/b-left.json",
+      "basis": "Measured actual native upright head-to-foot source height; fixed positive per-sheet scale, lowered poses retain actual body height and are not stretched."
+    },
+    "c-right": {
+      "recommendStandingSourceHeight": 332.0,
+      "nativeUprightHeights": [
+        331,
+        333
+      ],
+      "observedUprightIndices": [
+        9,
+        11
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/paz-eva/paz-pw/layouts/c-right.json",
+      "basis": "Measured actual native upright head-to-foot source height; fixed positive per-sheet scale, lowered poses retain actual body height and are not stretched."
+    },
+    "c-left": {
+      "recommendStandingSourceHeight": 347.0,
+      "nativeUprightHeights": [
+        348,
+        346
+      ],
+      "observedUprightIndices": [
+        9,
+        11
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/paz-eva/paz-pw/layouts/c-left.json",
+      "basis": "Measured actual native upright head-to-foot source height; fixed positive per-sheet scale, lowered poses retain actual body height and are not stretched."
+    }
+  },
+  "layouts": {
+    "a-right": "/workspace/cqc-pass8-generation/paz-eva/paz-pw/layouts/a-right.json",
+    "a-left": "/workspace/cqc-pass8-generation/paz-eva/paz-pw/layouts/a-left.json",
+    "b-right": "/workspace/cqc-pass8-generation/paz-eva/paz-pw/layouts/b-right.json",
+    "b-left": "/workspace/cqc-pass8-generation/paz-eva/paz-pw/layouts/b-left.json",
+    "c-right": "/workspace/cqc-pass8-generation/paz-eva/paz-pw/layouts/c-right.json",
+    "c-left": "/workspace/cqc-pass8-generation/paz-eva/paz-pw/layouts/c-left.json"
+  },
+  "sourceCombatOrigins": "/workspace/cqc-pass8-generation/paz-eva/paz-pw/SOURCE_COMBAT_ORIGINS.json",
+  "sourceContract": "/workspace/cqc-pass8-generation/paz-eva/paz-pw/SOURCE_AND_ACTION_CONTRACT.json",
+  "nativeAlphaReview": "/workspace/cqc-pass8-generation/paz-eva/paz-pw/NATIVE_ALPHA_REVIEW.json",
+  "limits": [
+    "Actual original PW HD captures prove dark navy/grey-blue blazer and pleated skirt, white collar and thin red ribbon, short wavy blond hair and dark high footwear. Earlier speculative white blouse/green skirt assumption is excluded; no ponytail or TPP double-braid blue gown is used.",
+    "References are the original2010 design in Xbox360 HD port as identified in source/achievement footage, not direct PSP hardware capture. Their original adult face proportions, clothing silhouette and palette guide these 2D authored poses; exact PSP mesh/framebuffer, material, seams, eye color, button/stitch topology, boot shaft/stocking distinction and pixel1:1 are not certified.",
+    "Introductory red Shinkawa coat is retained as an unused reference to another scene. Existing mislabeled archive portrait was actually TPP hallucination and is not used. Another Date with Paz video had already unlocked the underwear variant; its attempts/captures are conserved for research, excluded from these fully clothed sprites.",
+    "All72 poses remain neutral fully clothed adult school-cover appearance, ordinary authored human support/defense gestures, never sexualized/minor portrayal or an assertion of canon schoolgirl combat proficiency.",
+    "Target remains1:1 fidelity to selected original incarnation, closest_supported output only. Newly illustrated2D poses are not extracted original animation; absolute1:1 artistic or gameplay certification is false.",
+    "No firearm/grenade/projectile origin, bomb, ZEKE control, armor inheritance, psychic field or summoned machine is invented. Existing action keys shoot/deploy merely identify non-ballistic signal/protection pose groups; root must explicitly supersede historical generic weapon behavior.",
+    "Native source PNGs and all attempts unchanged. Both facings independently generated and SHA-distinct, no mirrored body raster. Every selected atlas and each12 complete bodies physically viewed by producer. Canvas crops/contours, source scale, mobile/desktop, phase/hitbox/finisher behavior remain independently root-owned.",
+    "Close native row spacing produces recorded foreign opaque pixels in some bounding rectangles. Metadata Canvas contour stencils exclude neighbors; no image pixels edited. Use the measured upright source height for each sheet, retaining actual lowered crouch/KO size."
+  ],
+  "requiresGameplayContract": "Unarmed bonus simulation only: shoot=non-ballistic human signal, deploy=protective guard, throw=authored physical CQC, recover=composure. Remove historical firearm/grenade/ZEKE/psychic claims; runtime integration root-owned."
+}

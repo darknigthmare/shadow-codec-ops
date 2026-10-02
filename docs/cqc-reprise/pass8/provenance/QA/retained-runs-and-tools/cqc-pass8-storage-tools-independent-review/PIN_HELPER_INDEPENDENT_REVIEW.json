@@ -1,0 +1,94 @@
+{
+  "schema": "cqc.pass8.pin-helper-independent-review/1",
+  "status": "passed",
+  "helper": "/workspace/cqc-pass8-storage-tools/prepare-frozen-png-pins.mjs",
+  "helperSHA256": "be0faaf88143d2b687f1a04e6b776ccce88fc481102e61eacb88a23ec8d39515",
+  "productionSourcesOrDestinationsModified": false,
+  "sourceBytesUnchanged": true,
+  "onlyPNGSelected": true,
+  "frozenOwnerAssertionRequired": true,
+  "checks": [
+    {
+      "name": "Missing explicit root freeze assertion rejected",
+      "args": [
+        "node",
+        "/workspace/cqc-pass8-storage-tools/prepare-frozen-png-pins.mjs",
+        "--source",
+        "/workspace/cqc-pass8-storage-tools-independent-review/pins-helper-fixture-c802e703-41ff-465c-a96a-1b3f3fb0c0db/source",
+        "--scope",
+        "public",
+        "--source-state",
+        "frozen",
+        "--output",
+        "/workspace/cqc-pass8-storage-tools-independent-review/pins-helper-fixture-c802e703-41ff-465c-a96a-1b3f3fb0c0db/pins.json"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "file:///workspace/cqc-pass8-storage-tools/prepare-frozen-png-pins.mjs:11\n  throw new Error('Required: --source --output --scope runtime|public --source-state frozen --confirm-owner root; runtime also requires --sync-module. Freeze these PNG source bytes before invoking.');\n        ^\n\nError: Required: --source --output --scope runtime|public --source-state frozen --confirm-owner root; runtime also requires --sync-module. Freeze these PNG source bytes before invoking.\n    at file:///workspace/cqc-pass8-storage-tools/prepare-frozen-png-pins.mjs:11:9\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n\nNode.js v24.19.0\n",
+      "status": "passed"
+    },
+    {
+      "name": "Source-contained pin output rejected",
+      "args": [
+        "node",
+        "/workspace/cqc-pass8-storage-tools/prepare-frozen-png-pins.mjs",
+        "--source",
+        "/workspace/cqc-pass8-storage-tools-independent-review/pins-helper-fixture-c802e703-41ff-465c-a96a-1b3f3fb0c0db/source",
+        "--scope",
+        "public",
+        "--source-state",
+        "frozen",
+        "--confirm-owner",
+        "root",
+        "--output",
+        "/workspace/cqc-pass8-storage-tools-independent-review/pins-helper-fixture-c802e703-41ff-465c-a96a-1b3f3fb0c0db/source/pins.json"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "file:///workspace/cqc-pass8-storage-tools/prepare-frozen-png-pins.mjs:14\nif (overlaps(sourceRoot, output)) throw new Error('PNG pin output must be outside its source tree.');\n                                        ^\n\nError: PNG pin output must be outside its source tree.\n    at file:///workspace/cqc-pass8-storage-tools/prepare-frozen-png-pins.mjs:14:41\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n\nNode.js v24.19.0\n",
+      "status": "passed"
+    },
+    {
+      "name": "Public scope creates only independent external pin document",
+      "args": [
+        "node",
+        "/workspace/cqc-pass8-storage-tools/prepare-frozen-png-pins.mjs",
+        "--source",
+        "/workspace/cqc-pass8-storage-tools-independent-review/pins-helper-fixture-c802e703-41ff-465c-a96a-1b3f3fb0c0db/source",
+        "--scope",
+        "public",
+        "--source-state",
+        "frozen",
+        "--confirm-owner",
+        "root",
+        "--output",
+        "/workspace/cqc-pass8-storage-tools-independent-review/pins-helper-fixture-c802e703-41ff-465c-a96a-1b3f3fb0c0db/pins.json"
+      ],
+      "exit": 0,
+      "stdout": "{\"status\":\"pins-recorded-source-not-written\",\"output\":\"/workspace/cqc-pass8-storage-tools-independent-review/pins-helper-fixture-c802e703-41ff-465c-a96a-1b3f3fb0c0db/pins.json\",\"sha256\":\"ebf688def23f478e2c80cbaebae00093cef3c025e191bf6874adfabdad8eb915\",\"pngFiles\":1,\"linkedBytes\":68}\n",
+      "stderr": "",
+      "status": "passed"
+    },
+    {
+      "name": "Existing pin evidence cannot be overwritten",
+      "args": [
+        "node",
+        "/workspace/cqc-pass8-storage-tools/prepare-frozen-png-pins.mjs",
+        "--source",
+        "/workspace/cqc-pass8-storage-tools-independent-review/pins-helper-fixture-c802e703-41ff-465c-a96a-1b3f3fb0c0db/source",
+        "--scope",
+        "public",
+        "--source-state",
+        "frozen",
+        "--confirm-owner",
+        "root",
+        "--output",
+        "/workspace/cqc-pass8-storage-tools-independent-review/pins-helper-fixture-c802e703-41ff-465c-a96a-1b3f3fb0c0db/pins.json"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "node:internal/fs/promises:697\n  return new FileHandle(await PromisePrototypeThen(\n                        ^\n\nError: EEXIST: file already exists, open '/workspace/cqc-pass8-storage-tools-independent-review/pins-helper-fixture-c802e703-41ff-465c-a96a-1b3f3fb0c0db/pins.json'\n    at async open (node:internal/fs/promises:697:25)\n    at async writeFile (node:internal/fs/promises:1317:14)\n    at async writeExclusiveJson (file:///workspace/cqc-pass8-storage-tools/common.mjs:172:3)\n    at async file:///workspace/cqc-pass8-storage-tools/prepare-frozen-png-pins.mjs:35:1 {\n  errno: -17,\n  code: 'EEXIST',\n  syscall: 'open',\n  path: '/workspace/cqc-pass8-storage-tools-independent-review/pins-helper-fixture-c802e703-41ff-465c-a96a-1b3f3fb0c0db/pins.json'\n}\n\nNode.js v24.19.0\n",
+      "status": "passed"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "schema": "cqc.pass8.root-build-plan-readonly-review/1",
+  "status": "approved-plan-only-scoped",
+  "reviewer": "bb_screaming_mantis",
+  "productionBuildExecuted": false,
+  "sourceOrDestinationWritten": false,
+  "concretePins": {
+    "wrapper": {
+      "path": "/workspace/cqc-pass8-storage-tools/build-with-frozen-public.mjs",
+      "sha256": "a73c1cc4cbae4d01ae085d77120929e37c393b28c839cfaffdfef4eeb7278065"
+    },
+    "pins": {
+      "path": "/workspace/cqc-pass8-storage-tools/public-pins-root-rev3.json",
+      "sha256": "fe8da6f1f439c161a57f9d6f96ab888b7921de5eb45698356a3efbb85d898680"
+    },
+    "plan": {
+      "path": "/workspace/cqc-pass8-storage-tools/build-plan-root-rev3.json",
+      "sha256": "8879202be71f23ba9f3de8b698d363c22bb582eb681d312c763409101a713f19"
+    },
+    "runtimeReceipt": {
+      "path": "/workspace/cqc-pass8-storage-tools/root-runtime-evidence/receipt-56ab47df-96b8-488f-9b87-c68f7d375289.json",
+      "sha256": "550fd20e27e05d66b2bccd76aa729144636bf8b8d26da48dfc15f8361a0c4948"
+    },
+    "sourceFreeze": {
+      "path": "/workspace/cqc-pass8-source-freeze-39-rev3.json",
+      "sha256": "6929470adf81540681b190f92dcb0262863340177f7ed92b81f62ad9a76da14c"
+    }
+  },
+  "officialConfig": "/workspace/shadow-codec-recovered/vite.config.ts",
+  "officialConfigSHA256": "98569f03c26b2fd304092663a496064769376e67480932dcd513d66d0c218b42",
+  "projectSourceSnapshotFiles": 4154,
+  "fullPublicPaths": 2156,
+  "immutableRasters": 2006,
+  "immutablePngs": 986,
+  "immutableWebps": 1020,
+  "independentPublicCopies": 150,
+  "immutableLinkedBytes": 938789507,
+  "independentCopyBytes": 51005057,
+  "installedRuntimeFiles": 988,
+  "installedRuntimeManifestExactSuccessfulSync": true,
+  "preservedOldRuntimeBackup": "/workspace/cqc-pass8-storage-tools/root-runtime-backups/cqc-088abffa-7dad-4e93-9331-89bea636b7a8",
+  "previousDistInventoryFiles": 2160,
+  "existingTypecheckOutputsIndependent": true,
+  "guardedBackupRoot": "/workspace/cqc-pass8-storage-tools/root-build-backups",
+  "guardedEvidenceRoot": "/workspace/cqc-pass8-storage-tools/root-build-evidence",
+  "rootQAOwnsCompilerSteps": true,
+  "executeArgv": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+    "/workspace/cqc-pass8-storage-tools/build-with-frozen-public.mjs",
+    "--project",
+    "/workspace/shadow-codec-recovered",
+    "--destination",
+    "/workspace/shadow-codec-recovered/dist",
+    "--pins",
+    "/workspace/cqc-pass8-storage-tools/public-pins-root-rev3.json",
+    "--plan",
+    "/workspace/cqc-pass8-storage-tools/build-plan-root-rev3.json",
+    "--execute",
+    "--plan-sha256",
+    "8879202be71f23ba9f3de8b698d363c22bb582eb681d312c763409101a713f19",
+    "--skip-typecheck",
+    "--backup-root",
+    "/workspace/cqc-pass8-storage-tools/root-build-backups",
+    "--evidence-root",
+    "/workspace/cqc-pass8-storage-tools/root-build-evidence"
+  ],
+  "budget": {
+    "availableBytes": 472145920,
+    "localBudgetCeilingBytes": 83886080,
+    "independentCopyBytes": 51005057,
+    "reservedForGeneratedBundlesWorkboxAndMetadataBytes": 32881023,
+    "remainingBytesAfterCeiling": 388259840,
+    "note": "80 MiB is a conservative incremental stage allowance from root. Existing dist is preserved by rename; its payload is not recopied. Normal Vite chunks/Workbox must remain inside the reserved ~31 MiB."
+  },
+  "readOnlyReviewSeconds": 11.217595088999998,
+  "conditions": [
+    "Root/QA must invoke only this exact reviewed plan and exact wrapper hash.",
+    "Execute only after root GO and the recorded fresh compiler/test steps. --skip-typecheck delegates compiler evidence to root QA.",
+    "Source app/config/public bytes stay frozen through build. Allowed generated TypeScript outputs remain independent; node_modules Vite caches and Git are excluded from input snapshot.",
+    "All source raster aliases stay immutable; later image generation uses new files and atomic pathname replacement.",
+    "No docs/report writes under S before build finishes, because project input tree is pinned.",
+    "This review did not execute the production build or PWA publication."
+  ]
+}
