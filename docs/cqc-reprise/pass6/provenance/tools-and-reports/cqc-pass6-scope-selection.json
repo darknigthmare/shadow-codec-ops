@@ -1,0 +1,644 @@
+{
+  "schema": "cqc.pass6.scope-selection/1",
+  "userFacingDate": "2026-10-02 Europe/Paris",
+  "createdAtUtc": "2026-10-01T22:57:09.512587+00:00",
+  "purpose": "Read-only PASS6 scout while root publishes PASS5 GitHub sources. No image generation, production edits or old archive writes.",
+  "productionRoot": "/workspace/cqc-game-working/cqc-versus-v056",
+  "currentFacts": {
+    "canonicalRoster": 354,
+    "nativeCatalogueEntries": 18,
+    "canonicalNativeBodies": 17,
+    "originalNativeBodies": 1,
+    "nativeSheetCount": 108,
+    "authoredNativePoses": 1296,
+    "canonicalProceduralBodiesRemaining": 337,
+    "fullScenePaintings": 474,
+    "incompleteStories": 275,
+    "scenesStillToPaint": 1650
+  },
+  "sourceFiles": [
+    {
+      "file": "data/unified-roster-v053.json",
+      "present": true,
+      "physicallyViewedByScout": false,
+      "bytes": 3297682,
+      "sha256": "68fdbbd78c7abb88a737f0e62abf58e4c39847d3edd839e0ac64d4f5cdcc242d"
+    },
+    {
+      "file": "data/combat-sprite-catalog-v1.json",
+      "present": true,
+      "physicallyViewedByScout": false,
+      "bytes": 24724178,
+      "sha256": "69c8619ede993a5901cecbe1c02b85506eaa9f5e852ea08abfc6eb04419db370"
+    },
+    {
+      "file": "data/combat-profiles-v053.json",
+      "present": true,
+      "physicallyViewedByScout": false,
+      "bytes": 2747346,
+      "sha256": "de879152b4ba00273e65ddae971c7f60dcd58c978ee9a49eb14c6c00e5a7711b"
+    },
+    {
+      "file": "data/authored-stories-v056.json",
+      "present": true,
+      "physicallyViewedByScout": false,
+      "bytes": 2324702,
+      "sha256": "c9cb23c61833422741c4bcb42821fa8c651cca5e22032a7440dda2af205b8846"
+    },
+    {
+      "file": "data/illustration-backlog-v056.json",
+      "present": true,
+      "physicallyViewedByScout": false,
+      "bytes": 5967933,
+      "sha256": "fc265f2b6cbde9c30eb3a0a3539bb185746ce034c4b248dcff40cd3283014848"
+    },
+    {
+      "file": "data/stage-layer-catalog-reprise.json",
+      "present": true,
+      "physicallyViewedByScout": false,
+      "bytes": 206589,
+      "sha256": "036bf497e89a91541b363775d1bc37dc210fd51aca293edb6994201439bcfb7d"
+    },
+    {
+      "file": "preparation/reprise-pass3-provenance/generation/ocelot/references/artgallery.html",
+      "present": true,
+      "physicallyViewedByScout": false,
+      "bytes": 16042,
+      "sha256": "dab68daea29c348b6e31e122be90e30bb2b60a7e7b7d4ae5d86f6e41e06583c5"
+    },
+    {
+      "file": "preparation/reprise-pass3-provenance/generation/ocelot/references/konami.html",
+      "present": true,
+      "physicallyViewedByScout": false,
+      "bytes": 4894,
+      "sha256": "fc3f9187c457ad2768d8146fc4fbcb43e8e9b88dd24f546277ab06b025cfe826"
+    }
+  ],
+  "selectedNativeBodies": [
+    {
+      "uid": "core__pain",
+      "name": "THE PAIN",
+      "episode": "MGS3 / COBRA UNIT",
+      "originalIncarnation": "Metal Gear Solid 3: Snake Eater (2004), original PlayStation 2; Cobra Unit original boss fight costume",
+      "nativeBodyAlreadyIntegrated": false,
+      "currentRenderer": "procedural-canvas",
+      "currentCombatKey": "pain",
+      "canonicalArt": {
+        "file": "preparation/reprise-pass3-provenance/generation/ocelot/references/art-0006.jpg",
+        "present": true,
+        "physicallyViewedByScout": true,
+        "bytes": 248994,
+        "sha256": "aad1234054c409304c4f1f026ec82c5a9064e045126e024bdcf615f414aaad0b",
+        "dimensions": [
+          1024,
+          1430
+        ],
+        "note": "Corps massif, tête couverte, bras partiellement nus, harnais et essaim visibles dans l’art original. Couleur et costume exacts du combat cave à confirmer sur PS2.",
+        "sourceUrl": "https://www.metalgearsolid.be/images/mgs3_art_0006.jpg"
+      },
+      "canonicalAuthority": "Yo ji Shinkawa original MGS3 character art reproduced by external archive, identified visually; supplement with official Konami original-model color image and original PS2 gameplay. No remake accepted.",
+      "generationStatus": "research-ready; do not approve palette or weapon origin from monochrome art alone",
+      "requiredBeforeGeneration": [
+        "Essaims bornés et écran de frelons ; aucun pouvoir télékinétique.",
+        "Réviser la présentation générique visual.weapon=psychic afin que les natives et effets suivent des insectes attestés.",
+        "Première phase avec tête couverte ; visage mutilé/phase2 ne pas mélanger au set sans référence.",
+        "Physically inspect original PS2 front/back/both facing views, source side of weapon/equipment and original costume before native six-sheet generation.",
+        "Preserve current profile JSON and all old native 18 entry objects/108 PNGs byte-for-byte; annotate any necessary runtime fidelity correction explicitly."
+      ],
+      "nativeTarget": {
+        "atlases": 6,
+        "authoredPoses": 72,
+        "separateFacingAtlases": true,
+        "mirrorNativeSource": false,
+        "absolute1to1Certified": false
+      }
+    },
+    {
+      "uid": "core__fear",
+      "name": "THE FEAR",
+      "episode": "MGS3 / COBRA UNIT",
+      "originalIncarnation": "Metal Gear Solid 3: Snake Eater (2004), original PlayStation 2; Cobra Unit original boss fight costume",
+      "nativeBodyAlreadyIntegrated": false,
+      "currentRenderer": "procedural-canvas",
+      "currentCombatKey": "fear",
+      "canonicalArt": {
+        "file": "preparation/reprise-pass3-provenance/generation/ocelot/references/art-0011.jpg",
+        "present": true,
+        "physicallyViewedByScout": true,
+        "bytes": 82858,
+        "sha256": "cada2281cf77fd532dc7b531c7208284ef49a5f0900cf247d6e748d650950dfc",
+        "dimensions": [
+          610,
+          800
+        ],
+        "note": "Morphologie musclée, torse nu et harnais, équipement porté et armes dans l’art original. Palette, formes exactes Little Joe/William Tell et main de port à compléter sur PS2.",
+        "sourceUrl": "https://www.metalgearsolid.be/images/mgs3_art_0011.jpg"
+      },
+      "canonicalAuthority": "Yo ji Shinkawa original MGS3 character art reproduced by external archive, identified visually; supplement with official Konami original-model color image and original PS2 gameplay. No remake accepted.",
+      "generationStatus": "research-ready; do not approve palette or weapon origin from monochrome art alone",
+      "requiredBeforeGeneration": [
+        "Arbalètes originales ; les carreaux nécessitent une atlas native et une origine mesurée, aucune arme à feu moderne ajoutée.",
+        "Camouflage conserve collisions/limites Versus et représentation atteste original PS2.",
+        "Ne pas transférer les arbalètes/art de MGS Delta.",
+        "Physically inspect original PS2 front/back/both facing views, source side of weapon/equipment and original costume before native six-sheet generation.",
+        "Preserve current profile JSON and all old native 18 entry objects/108 PNGs byte-for-byte; annotate any necessary runtime fidelity correction explicitly."
+      ],
+      "nativeTarget": {
+        "atlases": 6,
+        "authoredPoses": 72,
+        "separateFacingAtlases": true,
+        "mirrorNativeSource": false,
+        "absolute1to1Certified": false
+      }
+    },
+    {
+      "uid": "core__end",
+      "name": "THE END",
+      "episode": "MGS3 / COBRA UNIT",
+      "originalIncarnation": "Metal Gear Solid 3: Snake Eater (2004), original PlayStation 2; Cobra Unit original boss fight costume",
+      "nativeBodyAlreadyIntegrated": false,
+      "currentRenderer": "procedural-canvas",
+      "currentCombatKey": "end",
+      "canonicalArt": {
+        "file": "preparation/reprise-pass3-provenance/generation/ocelot/references/art-0009.jpg",
+        "present": true,
+        "physicallyViewedByScout": true,
+        "bytes": 74415,
+        "sha256": "89bbe6c3084722b0e20c00a2fe8a1c599cb22e76bd6fb79158348f928f1998a3",
+        "dimensions": [
+          565,
+          800
+        ],
+        "note": "Vieil homme corpulent, vêtements/harnais, sac et longue arme lisibles dans l’art original. Captures Sokrovenno locales soutiennent le cadre et la palette végétale, mais ne suffisent pas à identifier précisément ses mains/arme.",
+        "sourceUrl": "https://www.metalgearsolid.be/images/mgs3_art_0009.jpg"
+      },
+      "canonicalAuthority": "Yo ji Shinkawa original MGS3 character art reproduced by external archive, identified visually; supplement with official Konami original-model color image and original PS2 gameplay. No remake accepted.",
+      "generationStatus": "research-ready; do not approve palette or weapon origin from monochrome art alone",
+      "requiredBeforeGeneration": [
+        "Mosin-Nagant tranquillisant original et équipement de tireur ; mesurer départ du projectile à la bouche du canon.",
+        "Ne pas représenter le super tag=rail par un railgun MGS2 ; vitesse/dégâts restent adaptation de jeu.",
+        "Repos/photosynthèse bornés et camouflage restent adaptations de Versus documentées.",
+        "Physically inspect original PS2 front/back/both facing views, source side of weapon/equipment and original costume before native six-sheet generation.",
+        "Preserve current profile JSON and all old native 18 entry objects/108 PNGs byte-for-byte; annotate any necessary runtime fidelity correction explicitly."
+      ],
+      "nativeTarget": {
+        "atlases": 6,
+        "authoredPoses": 72,
+        "separateFacingAtlases": true,
+        "mirrorNativeSource": false,
+        "absolute1to1Certified": false
+      }
+    },
+    {
+      "uid": "core__fury",
+      "name": "THE FURY",
+      "episode": "MGS3 / COBRA UNIT",
+      "originalIncarnation": "Metal Gear Solid 3: Snake Eater (2004), original PlayStation 2; Cobra Unit original boss fight costume",
+      "nativeBodyAlreadyIntegrated": false,
+      "currentRenderer": "procedural-canvas",
+      "currentCombatKey": "fury",
+      "canonicalArt": {
+        "file": "preparation/reprise-pass3-provenance/generation/ocelot/references/art-0008.jpg",
+        "present": true,
+        "physicallyViewedByScout": true,
+        "bytes": 76998,
+        "sha256": "a4ccbeec0b38cedf3d50b1a5bf21c4077687e092623825d1d2a71955583cc310",
+        "dimensions": [
+          648,
+          800
+        ],
+        "note": "Combinaison et casque fermés, inscription sur visière, tuyaux, lance-flammes et propulseurs horizontaux visibles dans l’art original. Couleurs/matériaux et emplacements des connexions à vérifier en combat PS2.",
+        "sourceUrl": "https://www.metalgearsolid.be/images/mgs3_art_0008.jpg"
+      },
+      "canonicalAuthority": "Yo ji Shinkawa original MGS3 character art reproduced by external archive, identified visually; supplement with official Konami original-model color image and original PS2 gameplay. No remake accepted.",
+      "generationStatus": "research-ready; do not approve palette or weapon origin from monochrome art alone",
+      "requiredBeforeGeneration": [
+        "Casque original fermé, combinaison et lance-flammes avec tuyau/propulseurs ; aucun uniforme tactique sans casque.",
+        "Départ des flammes mesuré au canon ; nappes/jetpack restent bornés par le profil existant.",
+        "Combinaison noire ou couleur exacte à fixer par source PS2 et Konami, non par gris de l’art monochrome.",
+        "Physically inspect original PS2 front/back/both facing views, source side of weapon/equipment and original costume before native six-sheet generation.",
+        "Preserve current profile JSON and all old native 18 entry objects/108 PNGs byte-for-byte; annotate any necessary runtime fidelity correction explicitly."
+      ],
+      "nativeTarget": {
+        "atlases": 6,
+        "authoredPoses": 72,
+        "separateFacingAtlases": true,
+        "mirrorNativeSource": false,
+        "absolute1to1Certified": false
+      }
+    }
+  ],
+  "selectedNarratives": [
+    {
+      "uid": "core__runner_mg2",
+      "name": "RUNNING MAN",
+      "game": "mg2",
+      "priority": 1,
+      "priorityOrder": 6,
+      "title": "Le tour qui ne compte pas",
+      "continuity": "Course de combat imaginaire liée à Running Man; les rencontres étrangères restent des exercices alternatifs.",
+      "anchor": "Running Man est un adversaire extrêmement mobile de MG2; son combat utilise un espace fermé et le danger du gaz.",
+      "fullPaintingsAlreadyIntegrated": 0,
+      "missingSceneCount": 6,
+      "storyCanonicalJsonSha256": "15b38a0710183da7f0a0e9c002aa12de0424a3cb256dfcf56e171df33ed6a28e",
+      "scenes": [
+        {
+          "key": "core__runner_mg2:intro:0",
+          "id": "running-man-mg2-intro-01",
+          "phase": "intro",
+          "index": 0,
+          "title": "La ligne usée",
+          "place": "Piste fermée de Zanzibar",
+          "camera": "close",
+          "prop": "glove",
+          "text": "Running Man passe le doigt sur la ligne de départ. La peinture est presque effacée au même endroit, là où son premier appui dépose toute la violence d’une accélération répétée.\n\nLe chronomètre sait encore distinguer ses centièmes. Il ne sait pas dire depuis combien de temps chaque victoire le ramène exactement à cette ligne, prêt à recommencer pour le même public."
+        },
+        {
+          "key": "core__runner_mg2:intro:1",
+          "id": "running-man-mg2-intro-02",
+          "phase": "intro",
+          "index": 1,
+          "title": "L’air du circuit",
+          "place": "Salle de course simulée",
+          "camera": "wide",
+          "prop": "helmet",
+          "text": "Les ventilations démarrent au-dessus de la piste. Dans cette version imaginaire, le danger du gaz est remplacé par un signal de limite; huit adversaires vont tenter d’interrompre son rythme sans que le récit prétende prolonger MG2.\n\nRunning Man veut un record. Il ne demande pas encore où mène la sortie, car toute sa méthode consiste à transformer l’espace fermé en une preuve renouvelée de supériorité."
+        },
+        {
+          "key": "core__runner_mg2:intro:2",
+          "id": "running-man-mg2-intro-03",
+          "phase": "intro",
+          "index": 2,
+          "title": "Le virage prévu",
+          "place": "Premier angle du circuit",
+          "camera": "overhead",
+          "prop": "map",
+          "text": "Le premier adversaire ne poursuit pas: il attend le passage suivant. Running Man comprend que son avance sert aussi de calendrier à celui qui reste assez calme pour calculer le prochain virage.\n\nIl ralentit une fraction, furieux d’avoir à le faire. Le parcours commence vraiment dans ce retard volontaire, à l’endroit où la vitesse cesse un instant d’être la seule réponse disponible."
+        },
+        {
+          "key": "core__runner_mg2:outro:0",
+          "id": "running-man-mg2-outro-01",
+          "phase": "outro",
+          "index": 0,
+          "title": "Le chronomètre intact",
+          "place": "Arrivée après les huit duels",
+          "camera": "close",
+          "prop": "medal",
+          "text": "La dernière victoire s’affiche avec un temps médiocre comparé à ses essais solitaires. Running Man attend qu’on corrige l’écran, puis reconnaît les pauses qu’il a lui-même choisies pour déjouer les adversaires.\n\nElles ont permis de gagner. Il déteste ce résultat presque autant qu’il l’admire, parce qu’il retire au chiffre l’autorité simple qu’il exerçait sur tous ses mouvements."
+        },
+        {
+          "key": "core__runner_mg2:outro:1",
+          "id": "running-man-mg2-outro-02",
+          "phase": "outro",
+          "index": 1,
+          "title": "La sortie latérale",
+          "place": "Couloir de service",
+          "camera": "profile",
+          "prop": "key",
+          "text": "Il ouvre enfin la petite porte latérale qu’il dépassait à chaque tour. Derrière, aucun public n’attend et le sol irrégulier rend absurde toute recherche de vitesse maximale.\n\nRunning Man marche quelques mètres pour reconnaître le trajet. Il ne renonce pas à courir ni à se croire supérieur; il vérifie simplement qu’il existe encore un chemin dont personne ne mesure l’arrivée."
+        },
+        {
+          "key": "core__runner_mg2:outro:2",
+          "id": "running-man-mg2-outro-03",
+          "phase": "outro",
+          "index": 2,
+          "title": "Le départ sans signal",
+          "place": "Extérieur du complexe",
+          "camera": "silhouette",
+          "prop": "glove",
+          "text": "Il repart en course sur la terre nue, sans attendre le déclic du chronomètre. Son allure accélère naturellement, freinée parfois par une pierre ou une courbe qu’il découvre au dernier moment.\n\nLe théâtre laisse la piste fermée derrière lui. Pour cette parenthèse, la plus grande distance gagnée ne se trouve pas sur le compteur mais entre son prochain pas et l’ancienne ligne de départ."
+        }
+      ],
+      "referenceReadiness": "appearance not yet approved; existing internal generated portrait is project reference only",
+      "requiredBeforeGeneration": [
+        "Recover and physically inspect original MSX2 boss sprite plus multiple original gameplay images.",
+        "Do not treat Subsistence/Pearson guide as proof of original MSX2 pixels; it may corroborate tactics only.",
+        "Preserve all current story paragraphs/routes literally; places, props and eight-opponent setup retain imaginary alternative labels.",
+        "Do not invent modern military equipment from internal portrait."
+      ],
+      "specificLimits": [
+        "The narrative replaces original poison gas by a simulation limit signal; do not paint real active poison gas over that text.",
+        "Eight adversaries, only when text depicts the eight, must not become nine.",
+        "A medal/helmet/glove prop token does not prove the boss wore corresponding gear in the MSX2 fight."
+      ]
+    },
+    {
+      "uid": "core__redblaster_mg2",
+      "name": "RED BLASTER",
+      "game": "mg2",
+      "priority": 1,
+      "priorityOrder": 7,
+      "title": "La zone qu’il faut encore traverser",
+      "continuity": "Épreuve imaginaire de Red Blaster à Zanzibar Land; son arsenal demeure conventionnel et lié aux grenades.",
+      "anchor": "Red Blaster est un expert en explosifs de MG2 dont les grenades contrôlent le terrain.",
+      "fullPaintingsAlreadyIntegrated": 0,
+      "missingSceneCount": 6,
+      "storyCanonicalJsonSha256": "12427e8ec38f0b993f8194291c5384d76f6d72901025b9819719d378a8360154",
+      "scenes": [
+        {
+          "key": "core__redblaster_mg2:intro:0",
+          "id": "red-blaster-mg2-intro-01",
+          "phase": "intro",
+          "index": 0,
+          "title": "Le cercle dessiné",
+          "place": "Salle à structures suspendues",
+          "camera": "overhead",
+          "prop": "map",
+          "text": "Red Blaster trace plusieurs cercles sur le plan de la salle. Chaque explosion théorique recouvre parfaitement la fuite proposée par le cercle précédent; l’ensemble ressemble à une réponse sans exception.\n\nUn soldat lui demande où passera l’équipe après le tir. Le spécialiste ajoute une flèche trop vite, puis remarque qu’elle traverse précisément la zone qu’il venait de condamner."
+        },
+        {
+          "key": "core__redblaster_mg2:intro:1",
+          "id": "red-blaster-mg2-intro-02",
+          "phase": "intro",
+          "index": 1,
+          "title": "La salle réelle",
+          "place": "Terrain de reconstitution",
+          "camera": "wide",
+          "prop": "rifle",
+          "text": "Sous les structures, la distance paraît différente de celle du plan. Une grenade qui roule d’un demi-mètre peut fermer un appui, déplacer un couvert ou rendre inutilisable une sortie encore nécessaire.\n\nLe théâtre convoque huit adversaires incompatibles pour éprouver ces espaces. Red Blaster ne veut pas devenir prudent par principe: il veut que son contrôle du terrain survive au moment où il faudra l’occuper."
+        },
+        {
+          "key": "core__redblaster_mg2:intro:2",
+          "id": "red-blaster-mg2-intro-03",
+          "phase": "intro",
+          "index": 2,
+          "title": "Le lancer retenu",
+          "place": "Angle du terrain",
+          "camera": "profile",
+          "prop": "glove",
+          "text": "La première ouverture appelle un lancer immédiat. Red Blaster attend, laisse son adversaire choisir un autre appui et conserve ainsi une bande de sol intacte près du mur.\n\nLe duel commence par cette zone épargnée. Son métier ne consiste plus seulement à rendre certaines places inhabitables, mais à décider lesquelles devront encore exister lorsque la fumée commencera à se lever."
+        },
+        {
+          "key": "core__redblaster_mg2:outro:0",
+          "id": "red-blaster-mg2-outro-01",
+          "phase": "outro",
+          "index": 0,
+          "title": "La bande intacte",
+          "place": "Salle après les explosions",
+          "camera": "overhead",
+          "prop": "map",
+          "text": "Après la huitième rencontre, une bande de sol relie encore les deux sorties. Les impacts l’encadrent de si près qu’elle semble avoir été oubliée par hasard au milieu de la violence.\n\nRed Blaster la traverse volontairement. Chaque appui confirme une décision prise avant le lancer, et la carte de contrôle devient enfin un itinéraire dont il peut lui-même supporter les conséquences."
+        },
+        {
+          "key": "core__redblaster_mg2:outro:1",
+          "id": "red-blaster-mg2-outro-02",
+          "phase": "outro",
+          "index": 1,
+          "title": "La correction du plan",
+          "place": "Table des explosifs",
+          "camera": "close",
+          "prop": "book",
+          "text": "Il remplace les cercles pleins par des contours accompagnés de directions. Un novice trouve le schéma moins impressionnant; il demande pourquoi tant d’espace n’est pas couvert.\n\nRed Blaster lui fait porter une caisse à travers la salle. Le garçon revient par la bande intacte, et la réponse existe soudain dans ses jambes plutôt que dans une formule brillante du spécialiste."
+        },
+        {
+          "key": "core__redblaster_mg2:outro:2",
+          "id": "red-blaster-mg2-outro-03",
+          "phase": "outro",
+          "index": 2,
+          "title": "La dernière grenade",
+          "place": "Sortie du complexe",
+          "camera": "silhouette",
+          "prop": "gear",
+          "text": "Une grenade reste accrochée à son équipement au retour. Il la remet dans le stockage sans chercher un dernier effet pour conclure la démonstration devant la caméra.\n\nLe théâtre conserve l’image d’une salle marquée et d’un passage utilisable. Ce qui n’a pas explosé possède désormais une forme nette, aussi délibérée que chacun des cercles qu’il savait si bien dessiner."
+        }
+      ],
+      "referenceReadiness": "appearance not yet approved; existing internal generated portrait is project reference only",
+      "requiredBeforeGeneration": [
+        "Recover and physically inspect original MSX2 boss sprite plus multiple original gameplay images.",
+        "Do not treat Subsistence/Pearson guide as proof of original MSX2 pixels; it may corroborate tactics only.",
+        "Preserve all current story paragraphs/routes literally; places, props and eight-opponent setup retain imaginary alternative labels.",
+        "Do not invent modern military equipment from internal portrait."
+      ],
+      "specificLimits": [
+        "Grenades and conventional demolition only; rollers/pistol are inherited profile labels, not canon.",
+        "Scene prop=rifle must not automatically place a rifle in Red Blaster’s hands; text describes grenades.",
+        "The suspended-structure training room is an authored alternative and is not claimed as a new canonical MG2 stage."
+      ]
+    }
+  ],
+  "expectedAfterOnlyTheseCompleteImports": {
+    "catalogueEntries": 22,
+    "canonicalNativeBodies": 21,
+    "originalNativeBodies": 1,
+    "nativeSheetCount": 132,
+    "authoredNativePoses": 1584,
+    "canonicalProceduralBodiesRemaining": 333,
+    "fullScenePaintings": 486,
+    "fullyPaintedStories": 81,
+    "scenesStillToPaint": 1638,
+    "incompleteStories": 273,
+    "status": "projection only, not delivered or approved"
+  },
+  "concreteGameplayFidelityFollowups": [
+    {
+      "uid": "core__dirtyduck",
+      "severity": "metadata contradiction only; no active hawk found in six moves",
+      "source": "data/combat-profiles-v053.json / profiles/core__dirtyduck",
+      "currentRole": "Boomerang aller-retour et faucon",
+      "currentBasis": "Boomerangs d’Outer Heaven ; le faucon de Slasher Hawk n’est pas transféré.",
+      "evidence": "Six moves use two boomerangs, retreat, melee and recovery; there is no active hawk. Original sprite and hostage-room images were physically inspected by scout.",
+      "proposal": "Correct only generic role string through explicitly reviewed runtime helper; do not alter timings/resources or invent a hawk."
+    },
+    {
+      "uid": "core__redblaster_mg2",
+      "severity": "inherited equipment metadata and behavior need original MSX2 audit before changing",
+      "source": "data/combat-profiles-v053.json / profiles/core__redblaster_mg2",
+      "currentRole": "Rollers, explosifs posés et pistolet",
+      "currentSpecial": {
+        "name": "Arme de Red Blaster",
+        "kind": "projectile",
+        "startup": 14,
+        "active": 1,
+        "recovery": 22,
+        "damage": 520,
+        "reach": 900,
+        "level": "high",
+        "cost": 1,
+        "meter": 0,
+        "cooldown": 0,
+        "tag": "ballistic",
+        "counterplay": "Accroupissement, garde haute, parade de projectile ou saut.",
+        "speed": 18,
+        "life": 64,
+        "height": 138,
+        "id": "core__redblaster_mg2::special",
+        "slot": "special",
+        "lore": "adaptation"
+      },
+      "currentSpecialDown": {
+        "name": "Charge retardée",
+        "kind": "trap",
+        "startup": 30,
+        "active": 1,
+        "recovery": 36,
+        "damage": 730,
+        "reach": 88,
+        "level": "mid",
+        "cost": 2,
+        "meter": 0,
+        "cooldown": 0,
+        "tag": "explosive",
+        "counterplay": "Pose et amorçage visibles ; sauter ou détruire la mine par une attaque. Deux maximum.",
+        "duration": 420,
+        "arm": 50,
+        "maxTraps": 2,
+        "hp": 160,
+        "id": "core__redblaster_mg2::specialDown",
+        "slot": "specialDown",
+        "lore": "adaptation"
+      },
+      "currentSpecialForward": {
+        "name": "Déclencher les charges",
+        "kind": "detonate",
+        "startup": 12,
+        "active": 1,
+        "recovery": 28,
+        "damage": 0,
+        "reach": 0,
+        "level": "mid",
+        "cost": 0,
+        "meter": 0,
+        "cooldown": 0,
+        "tag": "explosive",
+        "counterplay": "Détruire ou éviter les charges posées avant la commande.",
+        "id": "core__redblaster_mg2::specialForward",
+        "slot": "specialForward",
+        "lore": "adaptation"
+      },
+      "currentBasis": "Grenades et zones contrôlées, pas de télékinésie.",
+      "proposal": "Review grenade-only original fight, then correct unsupported rollers/pistol labels and visuals with explicitly declared Versus adaptations; no blind profile sharing from Fatman."
+    }
+  ],
+  "stageInspection": {
+    "stageCount": 30,
+    "nativePathsChecked": 123,
+    "nativeDistinctContents": 119,
+    "allNativePathsPresentShaMatch": true,
+    "sourceReferenceUsesChecked": 57,
+    "sourceReferenceFilesDistinct": 57,
+    "allSourceRefsPresentShaMatch": true,
+    "priorVerifiedReport": {
+      "file": "/workspace/cqc-pass5-stage-integrity.json",
+      "sha256": "ea99a1d9b9cd44e40cb05e6602eb905108ab5058a7ef943905b6da954b607f2f",
+      "status": "PASS",
+      "measures": {
+        "stageIDs": 30,
+        "planes": 123,
+        "uniqueNativePNGPaths": 123,
+        "uniqueNativePNGContents": 119,
+        "sourceReferenceUses": 57,
+        "uniqueSourceReferenceFiles": 57,
+        "timeAnimatedStages": 27,
+        "cameraOnlyStages": 3,
+        "historicalBrowserCaptures": 150,
+        "historicalBrowserFilesShaChecked": 153,
+        "unchangedStageModules": 9,
+        "unchangedStageHtmlSegments": 11
+      }
+    },
+    "cameraOnlyStages": [
+      "outer_heaven",
+      "zanzibar",
+      "arsenal_corridor"
+    ],
+    "sourceBackedAmbientStages": 27,
+    "noMissingStageFilesFound": true,
+    "cameraOnlyRationale": "Static MSX2 hangars and PS2 Arsenal corridor keep camera parallax. No source-backed autonomous moving machinery or weather is proved by existing references; do not invent it merely to reach30 ambient stages.",
+    "concreteDocumentedLimits": [
+      {
+        "stage": "lobito",
+        "type": "documented camera framing limit, not newly reproduced bug",
+        "evidenceFile": "data/stage-layer-catalog-reprise.json",
+        "finding": "The review documents additional dark ceiling strip at camera +/-220 and zoom0.78 because sky/architecture are at y=-70.",
+        "action": "If addressing stage work in PASS6, inspect a fresh extreme-camera capture and compare original PSP reference before any correction; preserve current PNG/native ratio and all canonical landmarks.",
+        "noAutomaticRegeneration": true
+      },
+      {
+        "stage": "saintlogic",
+        "type": "documented camera framing limit, not newly reproduced bug",
+        "evidenceFile": "data/stage-layer-catalog-reprise.json",
+        "finding": "The review documents additional dark ceiling strip at camera +/-220 and zoom0.78 because sky/architecture are at y=-70.",
+        "action": "If addressing stage work in PASS6, inspect a fresh extreme-camera capture and compare original PSP reference before any correction; preserve current PNG/native ratio and all canonical landmarks.",
+        "noAutomaticRegeneration": true
+      },
+      {
+        "stage": "saintlogic_security",
+        "type": "documented camera framing limit, not newly reproduced bug",
+        "evidenceFile": "data/stage-layer-catalog-reprise.json",
+        "finding": "The review documents additional dark ceiling strip at camera +/-220 and zoom0.78 because sky/architecture are at y=-70.",
+        "action": "If addressing stage work in PASS6, inspect a fresh extreme-camera capture and compare original PSP reference before any correction; preserve current PNG/native ratio and all canonical landmarks.",
+        "noAutomaticRegeneration": true
+      }
+    ],
+    "aliasLimit": [
+      "gindran_fort is a project alias of Galuade and deliberately shares four native contents; 30 paths do not mean30 unique canonical sites.",
+      "Dite Crystal Pit is a documented project variation, not certified canonical location."
+    ],
+    "stageRegenerationRecommended": false,
+    "freshBrowserReviewPerformedByScout": false
+  },
+  "physicallyInspectedReferenceSupplement": [
+    {
+      "file": "preparation/canonical-stage-references/sokrovenno/reference-01-83b47f49bf34.webp",
+      "present": true,
+      "physicallyViewedByScout": true,
+      "bytes": 12376,
+      "sha256": "83b47f49bf3468fba50f8b1613b02f4c838f1f3e5645451eb33840a7686ba63c",
+      "dimensions": [
+        768,
+        432
+      ]
+    },
+    {
+      "file": "preparation/canonical-stage-references/sokrovenno/reference-02-441248386b27.webp",
+      "present": true,
+      "physicallyViewedByScout": true,
+      "bytes": 18396,
+      "sha256": "441248386b27d8daad4205aedafa46a265745940a903141d926ca7081bdd716d",
+      "dimensions": [
+        768,
+        432
+      ]
+    },
+    {
+      "file": "preparation/reprise-pass4-provenance/narrative/references/mercenaries-official-mirror.webp",
+      "present": true,
+      "physicallyViewedByScout": true,
+      "bytes": 80058,
+      "sha256": "ca8976c81708c1e99cfa2a1c1535d19efda5f7b26b31884b40db0f8a2bdacffd",
+      "dimensions": [
+        675,
+        257
+      ]
+    },
+    {
+      "file": "preparation/reprise-pass4-provenance/narrative/references/dirtyduck-original-sprite.webp",
+      "present": true,
+      "physicallyViewedByScout": true,
+      "bytes": 160,
+      "sha256": "75d96a3618a485227cd0a2c246910b8e9c7428f44eb6388eef21b310eb726b3b",
+      "dimensions": [
+        56,
+        120
+      ]
+    },
+    {
+      "file": "preparation/reprise-pass4-provenance/narrative/references/grayfox-cell-0158.png",
+      "present": true,
+      "physicallyViewedByScout": true,
+      "bytes": 9742,
+      "sha256": "fc50d2ea9befe3573cdf79225724f68b516b783492f28282ed9479be205730bd",
+      "dimensions": [
+        544,
+        480
+      ]
+    }
+  ],
+  "honestLimits": [
+    "Monochrome original arts support shapes, not a final palette or precise in-engine side of equipment.",
+    "TheEnd local stage image is too distant to certify exact weapon-hand/face details.",
+    "No RunningMan/RedBlaster original MSX2 sprite has yet been physically inspected or accepted by scout.",
+    "All generated sources remain accepted_closest after comparative review; no absolute 1:1 certification.",
+    "No claim to have filled337 procedural bodies or1650 scenes in this read-only scope selection."
+  ]
+}

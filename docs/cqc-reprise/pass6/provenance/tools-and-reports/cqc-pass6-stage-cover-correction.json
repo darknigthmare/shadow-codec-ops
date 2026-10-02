@@ -1,0 +1,89 @@
+{
+  "schema": "cqc.pass6.stage-cover-correction/1",
+  "status": "rejected-after-physical-browser-review",
+  "preservedBefore": [
+    {
+      "file": "data/stage-layer-catalog-reprise.json",
+      "sha256": "036bf497e89a91541b363775d1bc37dc210fd51aca293edb6994201439bcfb7d"
+    },
+    {
+      "file": "src/cqc-stage-layer-data.js",
+      "sha256": "c3bc7299c1e4a2a77674cbcd447ec1f1cc00fbb45499ddb97bd3cef40524e86e"
+    }
+  ],
+  "changes": [
+    {
+      "uid": "lobito",
+      "layer": "sky",
+      "before": {
+        "x": -220.0,
+        "y": -70.0,
+        "width": 1720,
+        "height": 968.0143540669857
+      },
+      "after": {
+        "x": -448.0,
+        "y": -184.0,
+        "width": 2176,
+        "height": 1224.6507177033493
+      },
+      "minimumZoomCoverage": [
+        -208.64,
+        -18.56000000000006,
+        1488.6399999999999,
+        936.6675598086124
+      ],
+      "pngBytesUnchanged": true
+    },
+    {
+      "uid": "saintlogic",
+      "layer": "sky",
+      "before": {
+        "x": -220.0,
+        "y": -70.0,
+        "width": 1720,
+        "height": 968.0143540669857
+      },
+      "after": {
+        "x": -448.0,
+        "y": -184.0,
+        "width": 2176,
+        "height": 1224.6507177033493
+      },
+      "minimumZoomCoverage": [
+        -208.64,
+        -18.56000000000006,
+        1488.6399999999999,
+        936.6675598086124
+      ],
+      "pngBytesUnchanged": true
+    },
+    {
+      "uid": "saintlogic_security",
+      "layer": "sky",
+      "before": {
+        "x": -220.0,
+        "y": -70.0,
+        "width": 1720,
+        "height": 968.0143540669857
+      },
+      "after": {
+        "x": -448.0,
+        "y": -184.0,
+        "width": 2176,
+        "height": 1224.6507177033493
+      },
+      "minimumZoomCoverage": [
+        -208.64,
+        -18.56000000000006,
+        1488.6399999999999,
+        936.6675598086124
+      ],
+      "pngBytesUnchanged": true
+    }
+  ],
+  "originalStagePngsChanged": 0,
+  "unrelatedStagesChanged": 0,
+  "scope": "Expand the existing opaque backdrop by a uniform Canvas transform to cover the supported zoom. Ground, architecture, foreground, original PNG bytes, weather, parallax and gameplay remain untouched. Viewport composition is an authored versus adaptation, not proof of original PSP camera equivalence.",
+  "reason": "Uniform expansion fills the upper band but duplicates room lights and panels in the underlay. Original production catalog restored exactly; failed candidate and browser captures preserved."
+}

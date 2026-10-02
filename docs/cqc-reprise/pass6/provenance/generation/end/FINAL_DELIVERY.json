@@ -1,0 +1,607 @@
+{
+  "schema": "cqc.native-combat-delivery/1",
+  "uid": "core__end",
+  "name": "THE END",
+  "game": "Metal Gear Solid 3: Snake Eater (2004), original PlayStation 2",
+  "incarnation": "Original 2004 PS2 The End — Sokrovenno Cobra Unit leaf-ghillie sniper",
+  "selectedCostume": "original-sokrovenno-leaf-ghillie",
+  "basis": "Mosin-Nagant tranquillisant original, pistage et repos photosynthétique bornés ; poses adaptées au mode Versus.",
+  "displayHeight": 230,
+  "coverage": "action-frames",
+  "facing": 1,
+  "mirror": false,
+  "sourceFiles": [
+    {
+      "key": "a-right",
+      "source": "/workspace/cqc-pass6-generation/end/sources/A_RIGHT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-2ebe3e24-c9c1-4cb4-85b2-e925945fcf8b.png",
+      "sha256": "c3b2c9c6270c7e181d32c21b2e99251d4ac8641a0793c9be29bdd8281fb91a8f",
+      "bytes": 1598098,
+      "width": 1448,
+      "height": 1086,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": 1,
+      "mirror": false
+    },
+    {
+      "key": "a-left",
+      "source": "/workspace/cqc-pass6-generation/end/sources/A_LEFT_03_FRESH_LEFT.png",
+      "nativeOriginal": "/workspace/generated_images/exec-02deeadf-d227-4c54-9178-d3bbba4d8931.png",
+      "sha256": "3715649a2b612ee7677b650a5f520ebd407cc942b44b8a8f344b75eb96fe1954",
+      "bytes": 1626339,
+      "width": 1448,
+      "height": 1086,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": -1,
+      "mirror": false
+    },
+    {
+      "key": "b-right",
+      "source": "/workspace/cqc-pass6-generation/end/sources/B_RIGHT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-5e33ba02-ab98-4b69-8970-020f5c1c1d21.png",
+      "sha256": "1bb759fe978c2f5d7b17f3568afc87a3e2ad749cfb848ecaf88ea08d6b391f10",
+      "bytes": 1802522,
+      "width": 1448,
+      "height": 1086,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": 1,
+      "mirror": false
+    },
+    {
+      "key": "b-left",
+      "source": "/workspace/cqc-pass6-generation/end/sources/B_LEFT_02_FRESH_LEFT.png",
+      "nativeOriginal": "/workspace/generated_images/exec-2bb07b81-3184-4993-86a0-e88460ad43b3.png",
+      "sha256": "ff80dc2260af4706d47d457e069e97b56dfdd4b87d4c91fffe839d90218d8a2e",
+      "bytes": 1606325,
+      "width": 1448,
+      "height": 1086,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": -1,
+      "mirror": false
+    },
+    {
+      "key": "c-right",
+      "source": "/workspace/cqc-pass6-generation/end/sources/C_RIGHT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-b2ead57d-16b8-447a-9c17-7f272156c4b0.png",
+      "sha256": "ce042eb00c4cbd8ad34c00aefaf76d912b64995309255f0533461a425607685f",
+      "bytes": 1764836,
+      "width": 1448,
+      "height": 1086,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": 1,
+      "mirror": false
+    },
+    {
+      "key": "c-left",
+      "source": "/workspace/cqc-pass6-generation/end/sources/C_LEFT_02_FRESH_LEFT.png",
+      "nativeOriginal": "/workspace/generated_images/exec-11b4b21e-5436-4117-9430-f531337c1179.png",
+      "sha256": "c50da6fb3427b3cb19b9a46cc857420db422efce51c6d2d8d3077ec27630b506",
+      "bytes": 1666672,
+      "width": 1448,
+      "height": 1086,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": -1,
+      "mirror": false
+    }
+  ],
+  "actionLayout": {
+    "idle": {
+      "sheet": "a",
+      "indices": [
+        0,
+        1
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "walk": {
+      "sheet": "a",
+      "indices": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "fps": 9,
+      "loop": true
+    },
+    "guard": {
+      "sheet": "a",
+      "indices": [
+        6,
+        7
+      ],
+      "fps": 5,
+      "loop": true
+    },
+    "crouch": {
+      "sheet": "a",
+      "indices": [
+        8,
+        9
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "jump": {
+      "sheet": "a",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 6,
+      "loop": false
+    },
+    "punch": {
+      "sheet": "b",
+      "indices": [
+        0,
+        1,
+        2
+      ],
+      "fps": 12,
+      "loop": false
+    },
+    "heavy": {
+      "sheet": "b",
+      "indices": [
+        3,
+        4,
+        5
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "low": {
+      "sheet": "b",
+      "indices": [
+        6,
+        7,
+        8
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "hit": {
+      "sheet": "b",
+      "indices": [
+        9
+      ],
+      "fps": 0,
+      "loop": false
+    },
+    "ko": {
+      "sheet": "b",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 6,
+      "loop": false
+    },
+    "shoot": {
+      "sheet": "c",
+      "indices": [
+        0,
+        1,
+        2
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "charge": {
+      "sheet": "c",
+      "indices": [
+        3,
+        4,
+        5
+      ],
+      "fps": 8,
+      "loop": false
+    },
+    "optic": {
+      "sheet": "c",
+      "indices": [
+        6
+      ],
+      "fps": 0,
+      "loop": false
+    },
+    "recover": {
+      "sheet": "c",
+      "indices": [
+        7,
+        8
+      ],
+      "fps": 5,
+      "loop": false
+    },
+    "reload": {
+      "sheet": "c",
+      "indices": [
+        9,
+        10,
+        11
+      ],
+      "fps": 8,
+      "loop": false
+    }
+  },
+  "actionMap": {
+    "light": "punch",
+    "heavy": "heavy",
+    "low": "low",
+    "throw": "heavy",
+    "special": "shoot",
+    "specialDown": "optic",
+    "specialForward": "crouch",
+    "specialBack": "recover",
+    "super": "charge",
+    "utility": "reload"
+  },
+  "phaseMap": {
+    "punch": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "heavy": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "low": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "shoot": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "charge": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "reload": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "optic": {
+      "startup": [
+        0
+      ],
+      "active": [
+        0
+      ],
+      "recovery": [
+        0
+      ]
+    },
+    "recover": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        1
+      ]
+    },
+    "crouch": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        1
+      ]
+    },
+    "jump": {
+      "startup": [
+        0
+      ],
+      "active": [
+        0
+      ],
+      "recovery": [
+        1
+      ]
+    }
+  },
+  "review": {
+    "status": "approved",
+    "reviewer": "pass6_end_native",
+    "reviewedAt": "2026-10-02",
+    "fidelityStatus": "closest_supported",
+    "sourceKind": "original-game-capture",
+    "checks": {
+      "identity": true,
+      "costume": true,
+      "equipment": true,
+      "anatomicalSides": true,
+      "singleFigure": true,
+      "transparentBackground": true
+    },
+    "sources": [
+      {
+        "file": "/workspace/cqc-pass6-generation/end/references/konami-end.gif",
+        "url": "https://www.konami.com/mg/archive/mgs3/english/pic/chara_end_pic.gif",
+        "sha256": "89566b9dd37f0ecfec8cc90912cbf97c222d2c17221324ded1029ab0b45003e8",
+        "bytes": 65132,
+        "sourceKind": "official-game-model",
+        "dimensions": [
+          490,
+          379
+        ],
+        "viewed": true,
+        "scope": "Official original PS2 full-body model: broad elderly silhouette, bald painted scalp, dark blue headphones, white beard, olive/tan flat-leaf ghillie, bare hands, brown ankle boots, original wood-stock scoped Mosin and green parrot on anatomical LEFT shoulder."
+      },
+      {
+        "file": "/workspace/cqc-pass6-generation/end/references/art-0009.jpg",
+        "url": "https://www.metalgearsolid.be/images/mgs3_art_0009.jpg",
+        "sha256": "89bbe6c3084722b0e20c00a2fe8a1c599cb22e76bd6fb79158348f928f1998a3",
+        "bytes": 74415,
+        "sourceKind": "official-art-reference",
+        "dimensions": [
+          565,
+          800
+        ],
+        "viewed": true,
+        "scope": "Original Shinkawa monochrome concept art reproduced by external archive. Elderly face, beard, leaf camouflage, bag and long rifle; monochrome alone does not establish palette."
+      },
+      {
+        "file": "/workspace/cqc-pass6-generation/end/references/mosin-inventory.jpg",
+        "url": "https://www.metalgearsolid.be/images/mosin.jpg",
+        "sha256": "5a2b20f5939e43c83d6441f00faa87b6c2f874ee00336b0bf05c099a54f02448",
+        "bytes": 1876,
+        "sourceKind": "original-game-reference",
+        "dimensions": [
+          130,
+          88
+        ],
+        "viewed": true,
+        "scope": "Original MGS3 Mosin Nagant inventory silhouette reproduced by external archive and explicitly labelled in preserved mgs3-inventory.html. Conventional scoped wood-stock bolt rifle; no railgun/PSG1/bayonet."
+      },
+      {
+        "file": "/workspace/cqc-pass6-generation/end/references/ps2-longplay-16800s.png",
+        "url": "https://archive.org/download/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater.mp4",
+        "sha256": "ff7afd5f988ee7b8f690664da42bffad71f7790db1b5f9009730fea15528d753",
+        "bytes": 242519,
+        "sourceKind": "original-game-capture",
+        "dimensions": [
+          640,
+          480
+        ],
+        "viewed": true,
+        "scope": "Original Snake Eater PS2 cutscene close hand and brown rifle stock/trigger guard: bare aged firing hand, conventional wood-stock rifle.",
+        "timeSeconds": 16800,
+        "captureMethod": "ffmpeg remote seek, native decoded PNG at requested timestamp, no resize/recolor/edit and no full video downloaded",
+        "archiveItem": "PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater"
+      },
+      {
+        "file": "/workspace/cqc-pass6-generation/end/references/ps2-longplay-16815s.png",
+        "url": "https://archive.org/download/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater.mp4",
+        "sha256": "9e39d6b02ed49e379e1d37fe3dc59d164bf5577e8f3e612986b40dc0b1a96b38",
+        "bytes": 455452,
+        "sourceKind": "original-game-capture",
+        "dimensions": [
+          640,
+          480
+        ],
+        "viewed": true,
+        "scope": "Original PS2 frontal high angle confirms painted bald scalp under headphone band, stocky ghillie body and parrot on anatomical LEFT shoulder.",
+        "timeSeconds": 16815,
+        "captureMethod": "ffmpeg remote seek, native decoded PNG at requested timestamp, no resize/recolor/edit and no full video downloaded",
+        "archiveItem": "PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater"
+      },
+      {
+        "file": "/workspace/cqc-pass6-generation/end/references/ps2-longplay-16840s.png",
+        "url": "https://archive.org/download/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater.mp4",
+        "sha256": "45a9fdb9707be7c58419dc8be1a8cade40dae1ae0704ee538712d59a6074fd51",
+        "bytes": 391428,
+        "sourceKind": "original-game-capture",
+        "dimensions": [
+          640,
+          480
+        ],
+        "viewed": true,
+        "scope": "Original PS2 near firing view: right trigger hand and left support on original wood-stock scoped rifle. Original face/headphone/white beard/leaf suit. Warm optic highlight is scene sunlight, never an energy-weapon source.",
+        "timeSeconds": 16840,
+        "captureMethod": "ffmpeg remote seek, native decoded PNG at requested timestamp, no resize/recolor/edit and no full video downloaded",
+        "archiveItem": "PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater"
+      },
+      {
+        "file": "/workspace/cqc-pass6-generation/end/references/ps2-longplay-18835s.png",
+        "url": "https://archive.org/download/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater.mp4",
+        "sha256": "784a756cbf6fb982d4a6a873184afcd1352404f781cf05bf223391699ec61a89",
+        "bytes": 388446,
+        "sourceKind": "original-game-capture",
+        "dimensions": [
+          640,
+          480
+        ],
+        "viewed": true,
+        "scope": "Original PS2 death/rest scene: elderly face, beard, ghillie and physically perched green parrot. Bounded versus breathing/recovery pose is authored, not this original skeletal animation.",
+        "timeSeconds": 18835,
+        "captureMethod": "ffmpeg remote seek, native decoded PNG at requested timestamp, no resize/recolor/edit and no full video downloaded",
+        "archiveItem": "PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater"
+      }
+    ],
+    "limits": [
+      "Closest supported illustrated adaptation of The End from original Metal Gear Solid 3: Snake Eater (2004) PS2; no absolute pixel, model, material, skeleton or animation 1:1 certification. Original official color model and native original PS2 captures were physically viewed and are preserved unchanged.",
+      "Original flat leaf-flap ghillie, bald painted scalp, blue headset, white beard, bare hands, broad elderly shape, green parrot and original scoped Mosin only. No Delta, HD remake, modern sniper uniform, PSG1, railgun, magic aura or bayonet accepted.",
+      "Parrot stays on intended anatomical LEFT shoulder in both independently generated views, never becomes a second disconnected body component. Exact hidden vest/bag strap stitching, boot laces and the count of leaf flaps remain unresolved in low-resolution original evidence and are restrained authored interpretation.",
+      "Original PS2 firing image confirms right trigger / left supporting hands. Independent versus views intend the same rig. Finger anatomy, obscured far arms and headset-touch hand during tracking/reload rest cannot be certified 1:1 or exclusive canonical handedness.",
+      "All 72 body poses are authored bounded fighting-game adaptations, not ripped original animation. Normal rifle checks/shoves, low boot sweep, grapple alias, short jump, tracking, cloak, rest and reload remain Versus adaptations. No opponent or detached effect is baked into body sheets.",
+      "Both shoot and charge use the same original scoped wooden Mosin. Source muzzle is separately measured on C source global index 1 and 4 at first active action frame 1 for both independent facings. Root owns exact-UID gameplay correction from inherited rail tag to conventional finite-ammo shot; producer never changed profiles or engine.",
+      "Body scale stays fixed per native PNG at physically observed standing height, including seated reload/rest/crouch/KO. Rifles can shift alpha-centroid; independent integrator measures actual body/ground pivots and runtime crop scaling. No PNG raster resize, mirroring, recolor, alpha edit, cut-and-paste or external conditioning was performed.",
+      "Every selected native PNG has exactly twelve large alpha-connected complete figures and no alpha >= 48 outer boundary pixels. Tiny antialias particles and stored RGB under transparent pixels are left native; runtime Canvas metadata crops/contours only.",
+      "Rejected native attempts are preserved byte-for-byte: A LEFT 01 and 02 retained right-pointing rifles in some left-view cells; B LEFT 01 had mixed faces/directions; C LEFT 01 kept several right-facing or wrong-direction cells. Final A LEFT 03, B LEFT 02 and C LEFT 02 were regenerated independently from original model/captures, and all shooting faces/origins now point LEFT.",
+      "Producer approval covers selected source-specific art and native alpha evidence. It is not a replacement for independent importer, mobile, phase, muzzle-origin, projectile-resource or final Shadow integration verification."
+    ],
+    "absolute1to1Certified": false,
+    "approvalScope": "Six physically viewed native source PNGs, all 72 isolated body poses, source-specific original PS2 closest-supported design. Independent integrator/live-game QA still required."
+  },
+  "counts": {
+    "selectedNativePngSheets": 6,
+    "totalPoseCells": 72,
+    "poseCellsPerSheet": 12,
+    "facings": 2,
+    "nativeBodyGenerationAttempts": 10
+  },
+  "sourceGeometry": {
+    "a-right": {
+      "recommendStandingSourceHeight": 351.0,
+      "nativeUprightHeights": [
+        350,
+        352
+      ],
+      "observedUprightIndices": [
+        0,
+        1
+      ],
+      "measuredLayouts": "/workspace/cqc-pass6-generation/end/layouts/a-right.json",
+      "basis": "Actual physically viewed complete upright source bounds. Fixed per-PNG standing scale; seated/reload/crouch/KO keep physical short posture and are never stretched to the upright height. Whole rifle may shift alpha centroid; independent integrator observes body/ground pivots."
+    },
+    "a-left": {
+      "recommendStandingSourceHeight": 368.5,
+      "nativeUprightHeights": [
+        368,
+        369
+      ],
+      "observedUprightIndices": [
+        0,
+        1
+      ],
+      "measuredLayouts": "/workspace/cqc-pass6-generation/end/layouts/a-left.json",
+      "basis": "Actual physically viewed complete upright source bounds. Fixed per-PNG standing scale; seated/reload/crouch/KO keep physical short posture and are never stretched to the upright height. Whole rifle may shift alpha centroid; independent integrator observes body/ground pivots."
+    },
+    "b-right": {
+      "recommendStandingSourceHeight": 350.0,
+      "nativeUprightHeights": [
+        351,
+        349
+      ],
+      "observedUprightIndices": [
+        0,
+        2
+      ],
+      "measuredLayouts": "/workspace/cqc-pass6-generation/end/layouts/b-right.json",
+      "basis": "Actual physically viewed complete upright source bounds. Fixed per-PNG standing scale; seated/reload/crouch/KO keep physical short posture and are never stretched to the upright height. Whole rifle may shift alpha centroid; independent integrator observes body/ground pivots."
+    },
+    "b-left": {
+      "recommendStandingSourceHeight": 343.0,
+      "nativeUprightHeights": [
+        343,
+        343
+      ],
+      "observedUprightIndices": [
+        0,
+        2
+      ],
+      "measuredLayouts": "/workspace/cqc-pass6-generation/end/layouts/b-left.json",
+      "basis": "Actual physically viewed complete upright source bounds. Fixed per-PNG standing scale; seated/reload/crouch/KO keep physical short posture and are never stretched to the upright height. Whole rifle may shift alpha centroid; independent integrator observes body/ground pivots."
+    },
+    "c-right": {
+      "recommendStandingSourceHeight": 345.5,
+      "nativeUprightHeights": [
+        342,
+        347,
+        344,
+        359
+      ],
+      "observedUprightIndices": [
+        0,
+        1,
+        2,
+        6
+      ],
+      "measuredLayouts": "/workspace/cqc-pass6-generation/end/layouts/c-right.json",
+      "basis": "Actual physically viewed complete upright source bounds. Fixed per-PNG standing scale; seated/reload/crouch/KO keep physical short posture and are never stretched to the upright height. Whole rifle may shift alpha centroid; independent integrator observes body/ground pivots."
+    },
+    "c-left": {
+      "recommendStandingSourceHeight": 345.5,
+      "nativeUprightHeights": [
+        345,
+        343,
+        347,
+        346
+      ],
+      "observedUprightIndices": [
+        0,
+        1,
+        2,
+        6
+      ],
+      "measuredLayouts": "/workspace/cqc-pass6-generation/end/layouts/c-left.json",
+      "basis": "Actual physically viewed complete upright source bounds. Fixed per-PNG standing scale; seated/reload/crouch/KO keep physical short posture and are never stretched to the upright height. Whole rifle may shift alpha centroid; independent integrator observes body/ground pivots."
+    }
+  },
+  "layouts": {
+    "a-right": "/workspace/cqc-pass6-generation/end/layouts/a-right.json",
+    "a-left": "/workspace/cqc-pass6-generation/end/layouts/a-left.json",
+    "b-right": "/workspace/cqc-pass6-generation/end/layouts/b-right.json",
+    "b-left": "/workspace/cqc-pass6-generation/end/layouts/b-left.json",
+    "c-right": "/workspace/cqc-pass6-generation/end/layouts/c-right.json",
+    "c-left": "/workspace/cqc-pass6-generation/end/layouts/c-left.json"
+  },
+  "sourceCombatOrigins": "/workspace/cqc-pass6-generation/end/SOURCE_COMBAT_ORIGINS.json",
+  "sourceContract": "/workspace/cqc-pass6-generation/end/SOURCE_AND_ACTION_CONTRACT.json",
+  "nativeAlphaReview": "/workspace/cqc-pass6-generation/end/NATIVE_ALPHA_REVIEW.json",
+  "provenancePolicy": "All native generated sources, rejected attempts, original refs, prompts and tool args/results retained unchanged. Producer does not write production."
+}

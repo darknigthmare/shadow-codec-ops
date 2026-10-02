@@ -1,0 +1,105 @@
+{
+  "schema": "cqc.pass6.native-sprite-tool-qa/1",
+  "at": "2026-10-02T00:32:13.747540+00:00",
+  "success": true,
+  "tests": 39,
+  "runs": [
+    {
+      "label": "catalog-migration",
+      "command": [
+        "node",
+        "tests/test_combat_sprite_catalog_pass6.cjs"
+      ],
+      "exit": 0,
+      "reportedTests": 5,
+      "expectedTests": 5,
+      "success": true,
+      "log": "preparation/combat-sprites-pass6/tool-qa-20261002-individual-counts/catalog-migration.log",
+      "logSHA256": "3b49cd03d73a7b0bc36dfd16bf1db3a0cb6aab27648a55850a15101d73621951"
+    },
+    {
+      "label": "brad-validation",
+      "command": [
+        "node",
+        "tests/test_combat_sprite_pass4_validation.cjs"
+      ],
+      "exit": 0,
+      "reportedTests": 2,
+      "expectedTests": 2,
+      "success": true,
+      "log": "preparation/combat-sprites-pass6/tool-qa-20261002-individual-counts/brad-validation.log",
+      "logSHA256": "a45447cf63e6327e1f49df8bd969b84513615a346eab5fafdd4aa0351b5a7f2c"
+    },
+    {
+      "label": "renderer",
+      "command": [
+        "node",
+        "tests/test_combat_sprite_renderer.cjs"
+      ],
+      "exit": 0,
+      "reportedTests": 22,
+      "expectedTests": 22,
+      "success": true,
+      "log": "preparation/combat-sprites-pass6/tool-qa-20261002-individual-counts/renderer.log",
+      "logSHA256": "0629e7a49f0996cb5f20444eda2659361363638febefbb9b6a4665acf9485722"
+    },
+    {
+      "label": "importer",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_prepare_combat_sprite.py",
+        "-v"
+      ],
+      "exit": 0,
+      "reportedTests": 6,
+      "expectedTests": 6,
+      "success": true,
+      "log": "preparation/combat-sprites-pass6/tool-qa-20261002-individual-counts/importer.log",
+      "logSHA256": "802e6f1740f33d7528d453dd31b232430a0e1698bb924defdda33e7acbd82ce1"
+    },
+    {
+      "label": "brad-importer",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_prepare_combat_sprite_pass4.py",
+        "-v"
+      ],
+      "exit": 0,
+      "reportedTests": 2,
+      "expectedTests": 2,
+      "success": true,
+      "log": "preparation/combat-sprites-pass6/tool-qa-20261002-individual-counts/brad-importer.log",
+      "logSHA256": "2106ef55a7c15879b51faac5ad2e9daa00ef73c93aedf3a61c45411af9390605"
+    },
+    {
+      "label": "native-contours",
+      "command": [
+        "python",
+        "tests/test_combat_sprite_contours_pass6.py",
+        "-v"
+      ],
+      "exit": 0,
+      "reportedTests": 2,
+      "expectedTests": 2,
+      "success": true,
+      "log": "preparation/combat-sprites-pass6/tool-qa-20261002-individual-counts/native-contours.log",
+      "logSHA256": "af64087aa26e18c669aff2c8c3838fe39d2b407ccebe6c895fe70de32a4abe80"
+    }
+  ],
+  "earlierPartialRun": "preparation/combat-sprites-pass6/tool-qa-20261002-final/verification.json",
+  "notes": [
+    "Prior partial runner retained unchanged; Node --test counted three child files and the first Python invocation ran six importer tests. Final runner records each actual test file independently and includes two Bloody Brad importer tests."
+  ]
+}

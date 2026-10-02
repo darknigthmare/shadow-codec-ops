@@ -1,0 +1,294 @@
+<!doctype html>
+
+<!--[if lt IE 7]> <html lang="en-gb" class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html lang="en-gb" class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html lang="en-gb" class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en-gb"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Metal Gear 1 &amp; 2</title> 
+  
+  <meta name="keywords" content="archive,let's,play,Cool Ghost,Metal Gear 1 &amp; 2,screenshot,informative,humorous,subtitles" /> 
+  <meta name="description" content="Let's Play Metal Gear 1 &amp; 2 by Cool Ghost" /> 
+  <meta name="author" content="Cool Ghost" /> 
+  
+	<link rel="stylesheet" href="/style/2012/archive-2.0.6.css" media="screen" /> 
+    
+  <meta name="viewport" content="width=960" />
+
+  <script type="text/javascript">
+    (function(html){html.className = "live";})(document.documentElement||document.body);
+  </script>
+
+  <script src="/script/jquery-1.7.1.min.js"></script>
+  <script src="/script/jquery.ba-outside-events.min.js"></script>
+  
+  <script src="/script/2012/globals.js"></script>
+  <script src="/script/2012/readinghistory-1.0.1.js"></script>
+
+	<script type="text/javascript">
+	/* <![CDATA[ */
+		// remove ugly anchor from search results. Looks like users without JS will need to live with it.
+		var url = window.location.toString();
+		if(url.indexOf('#') != -1) { window.location = url.split('#')[0]; }
+
+    var preload = new Image();
+    preload.src = "/site_images/tag_add.png";
+    preload.src = "/site_images/tag_del.png";
+  
+    lpid = 21940;
+    historyTitle = "Metal Gear 1 &amp; 2 by Cool Ghost";
+
+    $(document).ready(displayUpdatedHistory);
+
+    current_tags = ["4","5","8"];
+
+    addtag_html='        Tag it!';
+    deltag_html='        Untag it!';
+
+		$(document).ready(function() {
+			$("div#popups").html("    <div class=\"message\" id=\"likeit\"><strong>Thanks! We like it too.</strong>Why not check out some similar LPs from our recommendations?</div> \
+    <div class=\"message\" id=\"tagit\"> \
+      <strong>What would you like to tag this LP as?</strong> \
+      <div class=\"tagrow\"> \
+        <span>Tag</span> \
+  			<select id=\"tagselect\">        <option value=\"9\">challenges</option> \
+        <option value=\"11\">co-op</option> \
+        <option value=\"14\">completionist</option> \
+        <option value=\"12\">dual-audio</option> \
+        <option value=\"6\">group</option> \
+        <option value=\"15\">high-definition</option> \
+        <option value=\"5\">humorous</option> \
+        <option value=\"4\">informative</option> \
+        <option value=\"10\">narrative</option> \
+        <option value=\"8\">subtitles</option> \
+        <option value=\"7\">voice</option> \
+        </select> \
+        <button class=\"addtag\" id=\"tagbutton\" onclick=\"return tagPopdown();\">        Tag it!        </button> \
+      </div> \
+		</div>");
+		});
+
+	/* ]]> */
+  </script>
+  <script src="/script/2012/archive.js"></script>
+</head> 
+<body>
+  <div class="header">
+    <a class="index-link" href="/">
+      &nbsp;<span class="logo"><i title="The Let's Play Archive">&nbsp;</i></span>
+    </a>
+  </div>
+  
+  <h1 class="indexhead">The Let's Play Archive</h1>  <h1><a href=".">Metal Gear 1 &amp; 2</a></h1>
+	<h2><span>by</span> <a href="/author/Cool%20Ghost">Cool Ghost</a></h2>  
+  <div id="details" class="info">
+    <ul id="statistics">
+      <li>Began on <strong>Apr 24, 2012</strong></li>
+      <li>Ended on <strong>Oct 22, 2012</strong></li>
+      <li>This LP has <strong>44</strong> parts.</li>
+      <li id="archival">Added to the archive on <strong>Nov 16, 2012</strong></li>
+    </ul>
+    
+    <ul id="tags">
+      <li id="controls">
+				<a href="#" class="like" title="Like this LP" onclick="return likePopup()"><span class="button"><i class="func-like">&nbsp;</i></span> Like</a>
+        <a href="#" class="tag" title="Tag this LP" onclick="return tagPopup()"><span class="button"><i class="func-tag">&nbsp;</i></span> Tag</a>
+				</li>
+      <li id="taglist">
+This LP is tagged with: <strong><a href="/?tags=screenshot">screenshot</a>, <a href="/?tags=informative">informative</a>, <a href="/?tags=humorous">humorous</a>, <a href="/?tags=subtitles">subtitles</a></strong>
+      </li>
+    </ul>
+    
+    <div id="popups">
+  	<!-- asd -->
+      <div class="message" id="likeit"><strong>Thanks! We like it too.</strong>Why not check out some similar LPs from our recommendations?</div>
+      <div class="message" id="tagit">
+        <strong>What would you like to tag this LP as?</strong>
+        <div class="tagrow">
+          <span>Tag</span>
+          <select id="tagselect">
+          <option value="9">challenges</option>
+        <option value="11">co-op</option>
+        <option value="14">completionist</option>
+        <option value="12">dual-audio</option>
+        <option value="6">group</option>
+        <option value="15">high-definition</option>
+        <option value="5">humorous</option>
+        <option value="4">informative</option>
+        <option value="10">narrative</option>
+        <option value="8">subtitles</option>
+        <option value="7">voice</option>
+          </select>
+          <button class="addtag" id="tagbutton" onclick="return tagPopdown();">
+          Tag it!  
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <p id="thread">Original Thread: <a id="threadlink" href="http://forums.somethingawful.com/showthread.php?threadid=3481148">The Grandfather of Sneaking Games: Let&#039;s Play Metal Gear [SSLP]</a></p>
+<p id="similar">&nbsp;</p>  
+  </div> 
+
+  
+
+
+  <div id="content" class="cblock">
+<h1>Introduction</h1>
+		Hello, I'm Cool Ghost. This thread will cover the original MSX version of Metal Gear, the unofficial NES sequel Snake's Revenge, and the original MSX version of Metal Gear 2: Solid Snake.<br />
+<br />
+First things first, some general LP information:<br />
+<br />
+<b>What will the format of the LP be?</b><br /><br />
+This will be a screenshot LP, as a lot of these games don't translate very well to video (my equipment is kind of shitty, too). Instead of having a screenshot for every line of text in the game, though, I will transcribe most of it. While reading, <i>text like this is text from the game itself</i> and standard text is my own commentary on the game.<br />
+<br />
+<b>FIRST GAME</b><br />
+<img src="1-yXj1e.png" alt="" class="img" border="0"><br />
+<br />
+<b>What is Metal Gear?</b><br />
+<br />
+Metal Gear is a game, released by Konami for the MSX home computer in 1987, and re-released on various platforms since (most recently as an add-on included in the Metal Gear Solid HD Collection on PS3 and 360). It is the first game in what would become the popular Metal Gear series of video games, though at the time, there was no intention of ever making a sequel, and nobody involved would have thought that it would spawn seven sequels and prequels, as well as various spin-off titles, over almost 25 years.<br />
+<br />
+Metal Gear is also thought of as the first stealth-based video game ever made and the progenitor of the whole genre. It was also the first game Hideo Kojima worked on.<br />
+<br />
+Before we get started, and because the game itself never provides us with this, here is the story as included in the game's manual (the only version of the MSX manual I could find was a fan translation, so this contains some Engrish):<br />
+<br />
+<div class="bbc-block"><h4>Metal Gear MSX Manual posted:</h4><blockquote>Deep in South Africa, 200 kilometers North of Galzburg, Outer Heaven born. An armed fortress nation established in late 80's by a mercenary who was at the same time a hero and a maniac.<br />
+Something is happening in this OUTER HEAVEN.<br />
+A massacring weapon that could change the world forever is reported to be under development.<br />
+<br />
+The Fox-Hound group sends an agent called "Grey Fox" to gather data about this ultimate weapon. However, several days later, after his final report "Metal Gear...", his contact was lost. The disappearance of Grey Fox perhaps supports the rumors of the ultimate weapon.<br />
+<br />
+Unit Fox-Hound is called to duty once again!<br />
+<br />
+The intruder of this time is a rookie soldier named Solid Snake who joined FOX HOUND quite recently. His mission is to locate the whereabouts of Grey Fox, find out the identity of Metal Gear and destroy it.<br />
+Solid Snake is sent to his first battlefield with nothing but a wireless radio at his hand.<br />
+Superlative mercenaries from all around the world are said to have gathered in Outer Heaven. Can Solid Snake accomplish his mission?<br />
+The voice of the commander-in-chief of Fox-Hound, Big Boss, came out from the wireless radio.<br />
+"Solid Snake! This is not a cadet, it's a real war. I'll wish you good luck..."<br />
+Solid Snake started hearing the sound of gunfire in his head.....</blockquote></div>
+
+<br />
+<b>SECOND GAME</b><br />
+<img src="2-3uqcC.jpg" alt="" class="img" border="0"><br />
+<br />
+<b>What is Snake's Revenge?</b><br />
+Snake's Revenge is another stealth action game, released for the NES in 1990 as a follow-up to Metal Gear. It is not, however, an official Metal Gear title, and Hideo Kojima was not involved in its production. Snake's Revenge was made by Konami specifically for the US and PAL markets, as a cash-in on the popularity of the NES version of Metal Gear. Kojima himself either does or doesn't like the game, depending on the day of the week and whether or not he's eaten yet. It's never been re-released, though, unlike the other two early Metal Gears.<br />
+<br />
+Unfortunately I couldn't find an html version of the manual for this game, so all I can do is dump the text.<br />
+<br />
+<div class="bbc-block"><h4>Snake's Revenge Manual posted:</h4><blockquote>
+Destination Ishkabibil<br />
+The radar invisible Stealth copter dips and weaves through the narrow passes  of a vast mountain range which stretches from the borders of Teristan to its capital city Ishkabibil.  Only minutes from the drop zone, you clutch your assault rifle and stare out the window.  Darkness is everywhere.<br />
+<br />
+Your fellow commandos from the FOX HOUND Battalion sit across from you. One sharpens his knife.  The other polishes his grenades.  No one speaks, but through the silence a message comes across loud and clead - this will be the most dangerous mission ever attempted, even more so that the infiltration of Colonel Vermon CaTaffy's stronghold.<br />
+<br />
+For now, you're challenging Higharolla Kockamamie and his army of raging lunatics.  And you must overcome untold hundreds of Uzi toting soldiers, a heavily armed battleship and a loaded locomotive to reach your objective, destroying Higharolla's Ultra-Sheik Nuclear Attack Tank.  Or else the world will be knocked to is knees by a fellow who has won the "Merciless Man of the Year Award" eight straight times.</blockquote></div>
+
+<br />
+<b>THIRD GAME</b><br />
+<img src="3-ysA6u.gif" alt="" class="img" border="0"><br />
+<br />
+<b>What is Metal Gear 2: Solid Snake?</b><br />
+Metal Gear 2: Solid Snake is the legitimate sequel to Metal Gear, to be short. After Kojima saw Snake's Revenge, he decided to go ahead and make an official follow-up to Metal Gear, and MG2:SS was released for the MSX in 1990. It takes a lot of the elements from Metal Gear and refines them. It also introduces the series to cutscenes and some really weird, mental shit. Stick around and see it for yourself.<br />
+<br />
+As always, the manual plot dump:<br />
+<br />
+<div class="bbc-block"><h4>Solid Snake Manual posted:</h4><blockquote><b>AGE OF STABLENESS</b><br />
+<br />
+With the frigid relationships between large nations like USA-RUSSIA and CHINA-RUSSIA thawing, they lead to the settling down of local conflicts, and the world is finally beginning to neutralize.<br />
+<br />
+It is 1999, the nuclear threat of this century is leaving us, and we are ready to welcome the new stable 21st century.<br />
+<br />
+However, a fraction of the populace does not like peace...<br />
+<br />
+In the Middle East, a breeze of unstableness is blowing. Zanzibar Land - a small republic just next to Russia, China and the Arab nations - founds a military government.<br />
+<br />
+It raids "Nuclear Arms for Disposal Storage" sites around the world and robs weapons still not disposed of, making it the sole nuclear-armed nation in the world, and begins non-discriminate invasions of nearby countries.<br />
+<br />
+In a world which disposes of nuclear employment, Zanzibar Land's nuclear power is becoming a real emergency. A nuclear threat is budding once again.<br />
+<br />
+<b>ENERGY CRISIS</b><br />
+<br />
+At the same time, oil resources are quickly growing scarce. Despite the foretelling that they would last more than 30 years, the world is facing a serious energy source crisis with no alternative supply to oil.<br />
+<br />
+Then, a Czech biologist named Kio Marv invents a micro specimen - "OILIX", which rectifies high-quality oil.<br />
+The world is once again in a tension regarding "OILIX". Dr. Marv is kidnapped by Zanzibarian radicals on his trip from Czechoslovakia to America. Zanzibar Land is trying to gain its military superiority through nuclear arms and "OILIX".<br />
+...A micro-organism the size of a few micrometers is going to decide the fate of the world.<br />
+<br />
+A top-secret order goes down to SOLID SNAKE, former FOXHOUNDER.<br />
+<br />
+Single-handedly sneak into Zanzibar Land, and rescue Dr. Kio Marv!<br />
+<br />
+Save the world from nuclear threat!!<br />
+</blockquote></div>
+
+<br />
+And now that that's all out of the way, let's get this show on the road!<br />
+<br />
+<h1>Table of Contents</h1>
+<!-- BEGIN_TOC -->
+<h2>Metal Gear</h2>
+<ul class="toc">
+<li><a href="Update%2001/">Metal Gear Part One: Initial Infiltration</a></li>
+<li><a href="Update%2002/">Metal Gear Part Two: Searching for Grey Fox</a></li>
+<li><a href="Update%2003/">Metal Gear Part Three: Finding Grey Fox</a></li>
+<li><a href="Update%2004/">Metal Gear Part Four: Captured</a></li>
+<li><a href="Update%2005/">Metal Gear Part Five: Mazes and Machineguns</a></li>
+<li><a href="Update%2006/">Metal Gear Part Six: Up on the Rooftop</a></li>
+<li><a href="Update%2007/">Metal Gear Part Seven: Parachuting to the Courtyard</a></li>
+<li><a href="Update%2008/">Metal Gear Part Eight: Another Rooftop</a></li>
+<li><a href="Update%2009/">Metal Gear Part Nine: Hostage Finding the Game</a></li>
+<li><a href="Update%2010/">Metal Gear Part Ten: Tunnels and Backtracking</a></li>
+<li><a href="Update%2011/">Metal Gear Part Eleven: Snakes and Ducks</a></li>
+<li><a href="Update%2012/">Metal Gear Part Twelve: End of the Line</a></li>
+</ul>
+<h2>Snake's Revenge</h2>
+<ul class="toc">
+<li><a href="Update%2013/">Snake's Revenge Part One: Run Through the Jungle</a></li>
+<li><a href="Update%2014/">Snake's Revenge Part Two: High Seas Revenge</a></li>
+<li><a href="Update%2015/">Snake's Revenge Part Three: Bad Game Design's Revenge</a></li>
+<li><a href="Update%2016/">Snake's Revenge Part Four: Shit's Revenge</a></li>
+<li><a href="Update%2017/">Snake's Revenge Part Five: Fuck it, Snake's Revenge</a></li>
+<li><a href="Update%2018/">Snake's Revenge Part Six: Some Stupid Crap</a></li>
+<li><a href="Update%2019/">Snake's Revenge Part Seven: End of Revenge</a></li>
+</ul>
+<h2>Metal Gear 2: Solid Snake</h2>
+<ul class="toc">
+<li><a href="Update%2020/">Metal Gear 2 Part One: Sneakin' In</a></li>
+<li><a href="Update%2021/">Metal Gear 2 Part Two: The Tip of the Iceberg</a></li>
+<li><a href="Update%2022/">Metal Gear 2 Part Three: In the Jungle</a></li>
+<li><a href="Update%2023/">Metal Gear 2 Part Four: Zanzibar Land's Bad Buying Decisions</a></li>
+<li><a href="Update%2024/">Metal Gear 2 Part Five: Events So Unremarkable That I Originally Forgot to Title Them</a></li>
+<li><a href="Update%2025/">Metal Gear 2 Part Six: Damsel in Distress</a></li>
+<li><a href="Update%2026/">Metal Gear 2 Part Seven: Bird Chasin'</a></li>
+<li><a href="Update%2027/">Metal Gear 2 Part Eight: Bird Puzzlin'</a></li>
+<li><a href="Update%2028/">Metal Gear 2 Part Nine: Solid Snake's Adventures in the Women's Room</a></li>
+<li><a href="Update%2029/">Metal Gear 2 Part Ten: Plot Sewer</a></li>
+<li><a href="Update%2030/">Metal Gear 2 Part Eleven: Plot Bridge</a></li>
+<li><a href="Update%2031/">Metal Gear 2 Part Twelve: "Tactical" Backtracking "Action"</a></li>
+<li><a href="Update%2032/">Metal Gear 2 Part Thirteen: Zanzibar Land Gift Shop</a></li>
+<li><a href="Update%2033/">Metal Gear 2 Part Fourteen: Tactical Elevator Action</a></li>
+<li><a href="Update%2034/">Metal Gear 2 Part Fifteen: Stairs</a></li>
+<li><a href="Update%2035/">Metal Gear 2 Part Sixteen: The Jump</a></li>
+<li><a href="Update%2036/">Metal Gear 2 Part Seventeen: Some Events</a></li>
+<li><a href="Update%2037/">Metal Gear 2 Part Eighteen: Cool Action Stuff, No Dumb Bullshit</a></li>
+<li><a href="Update%2038/">Metal Gear 2 Part Nineteen: Basement Party</a></li>
+<li><a href="Update%2039/">Metal Gear 2 Part Twenty: Whole Lotta Talkin'. Just So Much Talking.</a></li>
+<li><a href="Update%2040/">Metal Gear 2 Part Twenty-One: Incredibly Stupid Zanzibar Bullshit</a></li>
+<li><a href="Update%2041/">Metal Gear 2 Part Twenty-Two: FOX-HOUND Reunion Tour</a></li>
+<li><a href="Update%2042/">Metal Gear 2 Part Twenty-Three: Shut Up, Old Man</a></li>
+<li><a href="Update%2043/">Metal Gear 2 Part Twenty-Four: Senicide</a></li>
+<li><a href="Update%2044/">Metal Gear 2 Part Twenty-Five: End of the Mission</a></li>
+<!-- END_TOC -->
+</ul>
+  </div>
+
+  <a class="returnblock" href="/">Archive Index</a>
+
+  </body>
+</html>

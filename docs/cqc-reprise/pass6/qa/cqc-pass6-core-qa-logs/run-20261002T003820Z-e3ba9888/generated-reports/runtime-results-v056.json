@@ -1,0 +1,174 @@
+{
+  "environment": "Node vm with in-memory DOM, Canvas/Image observations and synthetic engine messages; no browser, no network, no real-combat claim",
+  "tests": 37,
+  "passed": 37,
+  "failed": 0,
+  "cases": [
+    {
+      "name": "Public API alias CQC55 remains the same live object as CQC56",
+      "ok": true
+    },
+    {
+      "name": "Start, next and previous display their own text, title and location",
+      "ok": true
+    },
+    {
+      "name": "Journal at the first introduction excludes all later scenes and battles",
+      "ok": true
+    },
+    {
+      "name": "Lore dialog exposes narrative framing without advancing progress",
+      "ok": true
+    },
+    {
+      "name": "Scene skip reaches briefing and never launches a duel behind the prose",
+      "ok": true
+    },
+    {
+      "name": "Backing to menu then resuming preserves the exact narrative page",
+      "ok": true
+    },
+    {
+      "name": "Old 0.55 save slots load through 0.56 with current progress preserved",
+      "ok": true
+    },
+    {
+      "name": "Corrupt newer save falls back to the other valid slot",
+      "ok": true
+    },
+    {
+      "name": "Storage denial still permits narrative play and exposes a temporary-save message",
+      "ok": true
+    },
+    {
+      "name": "Gallery exposes started introduction and keeps every unfinished ending disabled",
+      "ok": true
+    },
+    {
+      "name": "Replaying and rewinding the gallery never changes campaign progress",
+      "ok": true
+    },
+    {
+      "name": "The actual 0.55 handshake launches one duel with validated route and frozen rules",
+      "ok": true
+    },
+    {
+      "name": "Foreign windows and wrong protocol versions cannot trigger readiness",
+      "ok": true
+    },
+    {
+      "name": "Repeated ready and started messages do not restart the same duel",
+      "ok": true
+    },
+    {
+      "name": "A result from the wrong stage, token or opponent never advances the story",
+      "ok": true
+    },
+    {
+      "name": "Both fighters cannot simultaneously have the required winning rounds",
+      "ok": true
+    },
+    {
+      "name": "One valid result advances once and a duplicate cannot award another victory",
+      "ok": true
+    },
+    {
+      "name": "A defeat and explicit retry consume exactly one continue",
+      "ok": true
+    },
+    {
+      "name": "Interrupted fight resumes at briefing and discards old-session results",
+      "ok": true
+    },
+    {
+      "name": "A fresh runtime reload converts a saved active fight into an untouched briefing",
+      "ok": true
+    },
+    {
+      "name": "Keyboard and touch owners release independently and pause releases all held controls",
+      "ok": true
+    },
+    {
+      "name": "Missing ready response returns safely to briefing without consuming a continue",
+      "ok": true
+    },
+    {
+      "name": "Missing start acknowledgement returns safely to briefing after the handshake",
+      "ok": true
+    },
+    {
+      "name": "Standalone story passes decoded embedded engine HTML without a network src",
+      "ok": true
+    },
+    {
+      "name": "Malformed import cannot abort an ongoing valid duel or replace progress",
+      "ok": true
+    },
+    {
+      "name": "Successful import closes a stale pause dialog and returns to the imported menu",
+      "ok": true
+    },
+    {
+      "name": "Eight protocol wins unlock one ending, full outro and gallery without an extra clear",
+      "ok": true
+    },
+    {
+      "name": "Loaded introduction and ending paintings use different actual source cells without distortion",
+      "ok": true
+    },
+    {
+      "name": "Unloaded or failed paintings invoke a procedural fallback and report artReady false",
+      "ok": true
+    },
+    {
+      "name": "A late painting load replaces the fallback without changing the current story page",
+      "ok": true
+    },
+    {
+      "name": "Illustration viewer shows only the current scene and returns without changing progress or reading position",
+      "ok": true
+    },
+    {
+      "name": "Illustration viewer pauses automatic reading until it closes, then restarts the current page delay",
+      "ok": true
+    },
+    {
+      "name": "A viewer painting arriving after opening redraws without animation, navigation or progression changes",
+      "ok": true
+    },
+    {
+      "name": "A previous scene image finishing late cannot replace the current scene painting",
+      "ok": true
+    },
+    {
+      "name": "The gallery viewer preserves campaign state and cannot reveal an unfinished ending",
+      "ok": true
+    },
+    {
+      "name": "Illustration access is absent from battle briefings and cannot open a stale narrative panel",
+      "ok": true
+    },
+    {
+      "name": "Inputs remain unchanged during behavioral verification",
+      "ok": true
+    }
+  ],
+  "snapshotChangedDuringAudit": false,
+  "changedInputs": [],
+  "inputSha256": {
+    "tests/test_runtime_v056.cjs": "8254032a82a8c2fb60a6602d7b8d64e907e355f86f0c2db4e583b3150e759f8c",
+    "modules/chronicles-v056.html": "4a2ee067dfed14cf73c25f65f01ae98fe3b89aba39370a7b586a654c09c58bcc",
+    "src/chronicles-data-v056.js": "d9c1f4a90e7a94e75ac8542949cb1d89447bc1d743c73b2cf3dd15fed7de0a16",
+    "src/chronicles-core-v056.js": "57a6adbcdc488a6ab6ad0ee1678f65e64f82324a0d32abd070afbf97507a0a84",
+    "src/cqc-stage-layer-data.js": "897d25dc50c24702317571184f32b8b7abd5607770e7b179ee4603e2493594b4",
+    "src/cqc-stage-layers.js": "b265ad151b87a3e1c82f54919ae110250d2e6f4eced2dbcd85f9f50933ff62ad",
+    "src/cqc-sprite-catalog.js": "417c3c003752d2aa4b822cb65ceee5eba64c9aa2728c100e1233a44975a9cb48",
+    "src/cqc-sprite-renderer.js": "bf08ed6aa762f9eef16cb2de268005bbd57d1fc2d60f8d70556f145e2f4cec25",
+    "src/chronicles-art-v056.js": "0a1ad136fa711e3864bf58f6606ab69bc86bba05c8cc89ff6a774b13f876e288",
+    "src/chronicles-portrait-data-v056.js": "91f1648302ba6d43cdf3d1e0e213a1c33a1dfb24aa1a4ec9392aa727cdf14ad9",
+    "src/chronicles-portraits-v056.js": "33153cfdc0cee3694d59a7d083038fec74ac3538a2dffbbdbcb2bd4528db4278",
+    "src/chronicles-plate-data-v056.js": "7710ca4e06be12309a80e6ccdb6d12d672359fe381718856d3516dd6ffbb03e9",
+    "src/chronicles-cinema-v056.js": "58f1dd15d422ca842f9dd51a84eaa46db94a14dc20ec347d55a3a64db509a65d",
+    "src/chronicles-v056.js": "29298ff1d4af9b5f3ebcf243f579f823833a0c40089e89a79cd34d3cd899a804"
+  }
+}
