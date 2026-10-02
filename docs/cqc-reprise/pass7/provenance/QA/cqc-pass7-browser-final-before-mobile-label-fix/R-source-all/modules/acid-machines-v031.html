@@ -1,0 +1,154 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CQC Versus v0.31 — AC!D Machines</title>
+<style id="acid31-style">
+:root{--a31-ink:#07120f;--a31-panel:#0b211d;--a31-line:#92c8aa;--a31-lime:#d9f4a3;--a31-warn:#ffca68;--a31-danger:#ff6f6f;--a31-blue:#82d8e8}
+#acid31-launcher{position:fixed;right:18px;bottom:18px;z-index:2147483000;font-family:ui-monospace,Consolas,monospace}
+#acid31-launcher button{border:2px solid var(--a31-line);background:linear-gradient(180deg,#173d33,#081a17);color:var(--a31-lime);padding:12px 17px;box-shadow:0 0 0 2px #020b08,0 0 24px rgba(146,200,170,.35);font-weight:900;letter-spacing:.08em;cursor:pointer}
+#acid31-launcher button:hover,#acid31-launcher button:focus-visible{background:#285846;outline:2px solid #fff;outline-offset:2px}
+#acid31-root{position:fixed;inset:0;z-index:2147483200;background:#020805;color:#e7f2cd;font-family:ui-monospace,Consolas,monospace;overflow:auto}
+#acid31-root[hidden]{display:none!important}
+.acid31-shell{min-height:100%;background:radial-gradient(circle at 50% 20%,rgba(123,164,105,.22),transparent 35%),repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 4px),#06100d;padding:18px;box-sizing:border-box}
+.acid31-top{max-width:1320px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:16px;border:1px solid #406c58;background:#071713;padding:12px 16px;position:sticky;top:0;z-index:3}
+.acid31-brand small{display:block;color:#88b39e;letter-spacing:.2em}.acid31-brand strong{font-size:clamp(18px,2vw,30px);letter-spacing:.08em}.acid31-brand em{font-style:normal;color:var(--a31-warn)}
+.acid31-close,.acid31-btn{border:1px solid #79a990;background:#102a23;color:#eef7d4;padding:10px 14px;font:inherit;font-weight:800;cursor:pointer}.acid31-btn:hover,.acid31-close:hover{background:#275341}.acid31-btn.primary{background:#4e703e;color:#fff;border-color:#d9f4a3}.acid31-btn.danger{border-color:#d16d67;color:#ffb2aa}
+.acid31-main{max-width:1320px;margin:16px auto;display:grid;grid-template-columns:minmax(270px,380px) 1fr;gap:16px}.acid31-panel{border:1px solid #416858;background:rgba(7,23,19,.94);box-shadow:0 10px 40px rgba(0,0,0,.35);padding:14px}.acid31-panel h2,.acid31-panel h3{margin:.2em 0 .7em;color:var(--a31-lime);letter-spacing:.08em}
+.acid31-boss-card{display:grid;grid-template-columns:84px 1fr;gap:12px;width:100%;text-align:left;margin:8px 0;padding:10px;border:1px solid #345647;background:#091c17;color:#e9f1d0;font:inherit;cursor:pointer}.acid31-boss-card.active{border-color:#d9f4a3;background:#1a372d;box-shadow:inset 4px 0 #d9f4a3}.acid31-boss-icon{height:66px;border:1px solid #4d7661;background:linear-gradient(135deg,#253d32,#0a1713);display:grid;place-items:center;font-size:12px;color:#ffdc82}.acid31-boss-card strong{display:block;font-size:17px}.acid31-boss-card span{display:block;color:#99c0aa;font-size:12px;margin-top:4px;line-height:1.35}
+.acid31-field{display:grid;gap:8px;margin:12px 0}.acid31-field label{color:#a5c5b1;font-size:12px}.acid31-field select{width:100%;background:#081a15;color:#fff;border:1px solid #537861;padding:9px;font:inherit}.acid31-modes{display:grid;grid-template-columns:1fr 1fr;gap:8px}.acid31-mode{padding:9px;border:1px solid #3e6653;background:#0b211b;color:#c8decf;font:inherit;cursor:pointer}.acid31-mode.active{background:#496b3b;color:#fff;border-color:#d9f4a3}
+.acid31-controls{font-size:12px;line-height:1.55;color:#b8cdbf;border-top:1px solid #2c493d;margin-top:12px;padding-top:10px}.acid31-stat{display:flex;justify-content:space-between;border-bottom:1px dashed #29473a;padding:5px 0;font-size:12px}.acid31-stage{position:relative;min-width:0}.acid31-canvas-wrap{position:relative;background:#020503;border:1px solid #5f8d71;aspect-ratio:16/9;overflow:hidden}.acid31-canvas-wrap canvas{width:100%;height:100%;display:block;image-rendering:pixelated;background:#0b1812}.acid31-screen{position:absolute;inset:0;display:grid;place-items:center;background:rgba(2,8,5,.82);padding:20px;text-align:center}.acid31-screen[hidden]{display:none!important}.acid31-screen-card{max-width:720px;border:2px solid #89b89a;background:#071713;padding:22px;box-shadow:0 0 40px #000}.acid31-screen h2{font-size:clamp(24px,4vw,54px);margin:0 0 8px;color:var(--a31-lime);text-transform:uppercase}.acid31-screen p{color:#b7cabb;line-height:1.5}.acid31-screen-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:16px}
+.acid31-log{margin-top:12px;min-height:52px;border:1px solid #29483b;background:#06100d;padding:10px;color:#b7cfbe;font-size:12px;line-height:1.45}.acid31-badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.acid31-badge{border:1px solid #547663;padding:4px 7px;font-size:11px;color:#d8e7d8;background:#0a1d17}.acid31-registry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}.acid31-registry div{border:1px solid #355847;background:#091b16;padding:10px}.acid31-registry b{display:block;color:#d9f4a3}.acid31-registry small{color:#9bb4a5;line-height:1.35;display:block;margin-top:5px}
+@media(max-width:900px){.acid31-main{grid-template-columns:1fr}.acid31-top{position:relative}.acid31-registry{grid-template-columns:1fr}#acid31-launcher{right:8px;bottom:8px}.acid31-shell{padding:8px}}
+</style>
+<style>.acid31-registry,.mgr32-registry,#acid31-registry,#mgr32-registry{display:none!important}</style></head><body style="margin:0;background:#020805">
+<div id="acid31-launcher"><button id="acid31-open" type="button">AC!D MACHINES · v0.31</button></div>
+<section id="acid31-root" aria-label="CQC Versus Acid Machines v0.31">
+  <div class="acid31-shell">
+    <header class="acid31-top">
+      <div class="acid31-brand"><small>CQC VERSUS LEGACY · EXTENSION AUTONOME / ONGLET CODEC</small><strong>AC!D MACHINE ARCHIVE <em>v0.31</em></strong></div>
+      <button class="acid31-close" id="acid31-close" type="button">RETOUR AU JEU PRINCIPAL</button>
+    </header>
+    <main class="acid31-main">
+      <aside class="acid31-panel">
+        <h2>OPÉRATIONS AC!D</h2>
+        <button class="acid31-boss-card active" data-acid31-boss="kodoque" type="button"><span class="acid31-boss-icon">KODOQUE</span><span><strong>KODOQUE</strong><span>Briser deux émetteurs, puis atteindre le noyau sans se laisser enfermer par ses lignes de tir.</span></span></button>
+        <button class="acid31-boss-card" data-acid31-boss="chaioth" type="button"><span class="acid31-boss-icon">CHAIOTH</span><span><strong>CHAIOTH HA QADESH</strong><span>Neutraliser les articulations, survivre à la surcharge, puis exploiter le cœur exposé.</span></span></button>
+        <div class="acid31-field"><label for="acid31-difficulty">DIFFICULTÉ</label><select id="acid31-difficulty"><option value="story">DOSSIER</option><option value="normal" selected>NORMAL</option><option value="hard">EXTRÊME</option></select></div>
+        <div class="acid31-field"><label>MODE</label><div class="acid31-modes"><button class="acid31-mode active" data-acid31-mode="boss" type="button">GRAND BOSS</button><button class="acid31-mode" data-acid31-mode="chronicle" type="button">CHRONIQUE</button></div></div>
+        <button class="acid31-btn primary" id="acid31-start" type="button" style="width:100%;margin-top:10px">LANCER L’OPÉRATION</button>
+        <button class="acid31-btn" id="acid31-registry" type="button" style="width:100%;margin-top:8px">DONNÉES ADMIN</button>
+        <div class="acid31-controls"><b>COMMANDES CLAVIER</b><br>← → : déplacement · ↑ : saut · ↓ : accroupi<br><b>I</b> : carte offensive · <b>J</b> : contre-mesure<br><b>K</b> : changer de cible · <b>L</b> : ration<br><b>Maj</b> : dash · <b>Échap</b> : pause</div>
+        <div class="acid31-stat"><span>Victoire KODOQUE</span><b id="acid31-win-kodoque">0</b></div>
+        <div class="acid31-stat"><span>Victoire CHAIOTH</span><b id="acid31-win-chaioth">0</b></div>
+        <div class="acid31-stat"><span>Meilleur temps</span><b id="acid31-best">—</b></div>
+      </aside>
+      <section class="acid31-stage">
+        <div class="acid31-canvas-wrap"><canvas id="acid31-canvas" width="1280" height="720" aria-label="Arène Acid Machines"></canvas>
+          <div class="acid31-screen" id="acid31-intro"><div class="acid31-screen-card"><h2 id="acid31-intro-title">ARCHIVE AC!D</h2><p id="acid31-intro-text">Deux machines absentes du registre deviennent jouables dans des rencontres séparées.</p><div class="acid31-screen-actions"><button class="acid31-btn primary" id="acid31-intro-start" type="button">COMMENCER</button></div></div></div>
+          <div class="acid31-screen" id="acid31-result" hidden><div class="acid31-screen-card"><h2 id="acid31-result-title">OPÉRATION TERMINÉE</h2><p id="acid31-result-text"></p><div class="acid31-screen-actions"><button class="acid31-btn primary" id="acid31-retry" type="button">REJOUER</button><button class="acid31-btn" id="acid31-menu" type="button">SÉLECTION</button></div></div></div>
+          <div class="acid31-screen" id="acid31-pause" hidden><div class="acid31-screen-card"><h2>PAUSE</h2><p>La simulation, les projectiles et le chronomètre sont suspendus.</p><div class="acid31-screen-actions"><button class="acid31-btn primary" id="acid31-resume" type="button">REPRENDRE</button><button class="acid31-btn" id="acid31-pause-menu" type="button">SÉLECTION</button></div></div></div>
+        </div>
+        <div class="acid31-log" id="acid31-log">Sélectionnez une machine. Les règles de cette extension restent isolées des duels humains et des anciennes sauvegardes.</div>
+        <div class="acid31-badges"><span class="acid31-badge">2 RENCONTRES DÉDIÉES</span><span class="acid31-badge">2 CHRONIQUES</span><span class="acid31-badge">2 ARÈNES</span><span class="acid31-badge">PROFIL LOCAL SÉPARÉ</span></div>
+      </section>
+    </main>
+  </div>
+</section>
+
+<script id="acid31-script">
+(()=>{'use strict';
+const VERSION='0.31', STORAGE='cqc-versus-acid-machines-v031';
+const root=document.getElementById('acid31-root'), canvas=document.getElementById('acid31-canvas'), ctx=canvas.getContext('2d');
+ctx.imageSmoothingEnabled=false;
+const ui={intro:document.getElementById('acid31-intro'),introTitle:document.getElementById('acid31-intro-title'),introText:document.getElementById('acid31-intro-text'),result:document.getElementById('acid31-result'),resultTitle:document.getElementById('acid31-result-title'),resultText:document.getElementById('acid31-result-text'),pause:document.getElementById('acid31-pause'),log:document.getElementById('acid31-log'),difficulty:document.getElementById('acid31-difficulty')};
+const defs={
+ kodoque:{name:'KODOQUE',episode:'AC!D',time:210,body:12000,parts:[2600,2600],partNames:['ÉMETTEUR G','ÉMETTEUR D'],ammo:7,rations:2,sub:2,ground:'#38462f',sky:'#a8bb75'},
+ chaioth:{name:'CHAIOTH HA QADESH',episode:'AC!D 2',time:240,body:14400,parts:[2400,2400],partNames:['ARTICULATION G','ARTICULATION D'],ammo:7,rations:2,sub:2,ground:'#303244',sky:'#b16c60'}
+};
+let selectedBoss='kodoque', selectedMode='boss', running=false, paused=false, last=0, raf=0, keys=new Set(), state=null;
+function loadProfile(){try{return Object.assign({wins:{kodoque:0,chaioth:0},best:{}},JSON.parse(localStorage.getItem(STORAGE)||'{}'));}catch{return {wins:{kodoque:0,chaioth:0},best:{}}}}
+let profile=loadProfile();
+function saveProfile(){try{localStorage.setItem(STORAGE,JSON.stringify(profile));}catch{}}
+function refreshProfile(){document.getElementById('acid31-win-kodoque').textContent=profile.wins.kodoque||0;document.getElementById('acid31-win-chaioth').textContent=profile.wins.chaioth||0;const v=profile.best[selectedBoss];document.getElementById('acid31-best').textContent=v?formatTime(v):'—'}
+function formatTime(v){const s=Math.max(0,Math.floor(v));return `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`}
+function openModule(){root.hidden=false;document.documentElement.style.overflow='hidden';refreshProfile();drawPreview()}
+function closeModule(){stop();root.hidden=true;document.documentElement.style.overflow='';}
+function difficultyScale(){return ui.difficulty.value==='story'?.82:ui.difficulty.value==='hard'?1.22:1}
+function resetState(){const d=defs[selectedBoss], scale=difficultyScale();state={boss:selectedBoss,mode:selectedMode,phase:1,t:d.time,startedAt:d.time,player:{x:170,y:580,vx:0,vy:0,w:44,h:82,hp:10000,maxHp:10000,grounded:true,crouch:false,ammo:d.ammo,rations:d.rations,sub:d.sub,cost:0,inv:0,action:0,dash:0},body:d.body,bodyMax:d.body,parts:d.parts.slice(),partsMax:d.parts.slice(),target:0,projectiles:[],hazards:[],particles:[],attackClock:1.5,attackIndex:0,shots:0,hits:0,subUsed:0,damageTaken:0,interrupts:0,scale,overload:false,message:'',messageT:0,chronicleStep:selectedMode==='chronicle'?1:0};}
+function start(){resetState();running=true;paused=false;ui.intro.hidden=true;ui.result.hidden=true;ui.pause.hidden=true;last=performance.now();ui.log.textContent=`${defs[selectedBoss].episode} · ${defs[selectedBoss].name} — cible : ${targetName()}.`;cancelAnimationFrame(raf);raf=requestAnimationFrame(loop)}
+function stop(){running=false;paused=false;cancelAnimationFrame(raf);keys.clear()}
+function targetName(){if(!state)return '—';const d=defs[state.boss];if(state.phase===1){return d.partNames[state.target%d.parts.length]}return state.boss==='chaioth'&&state.target===1?'ÉMETTEUR RAILGUN':'NOYAU'}
+function cycleTarget(){if(!state)return;if(state.phase===1){state.target=(state.target+1)%state.parts.length}else if(state.boss==='chaioth'){state.target=(state.target+1)%2}else state.target=0;flash(`CIBLE · ${targetName()}`)}
+function flash(t){if(!state)return;state.message=t;state.messageT=1.25;ui.log.textContent=t}
+function playerRect(){const p=state.player,h=p.crouch?46:p.h;return{x:p.x-p.w/2,y:p.y-h,w:p.w,h}}
+function bossTarget(){const b=state.boss;if(b==='kodoque'){
+  if(state.phase===1){return state.target===0?{x:922,y:386}:{x:1112,y:386}}
+  return {x:1012,y:348};
+ }else{
+  if(state.phase===1){return state.target===0?{x:930,y:526}:{x:1092,y:526}}
+  if(state.target===1)return{x:1010,y:270};return{x:1010,y:378};
+ }}
+function fire(){if(!running||paused||state.player.action>0)return;const p=state.player;if(p.ammo<=0){flash('AUCUNE CARTE OFFENSIVE · Bas + I près du relais');return}if(p.cost>84){flash('COST TROP ÉLEVÉ');return}p.action=.42;p.ammo--;p.cost=Math.min(100,p.cost+16);state.shots++;const t=bossTarget(),dx=t.x-(p.x+26),dy=t.y-(p.y-52),len=Math.hypot(dx,dy)||1;state.projectiles.push({side:'player',type:state.boss==='kodoque'?'nikita':'stinger',x:p.x+26,y:p.y-52,vx:dx/len*520,vy:dy/len*520,r:7,damage:800,life:3.2,targetPhase:state.phase});flash(`${state.boss==='kodoque'?'NIKITA':'STINGER'} · ${targetName()}`)}
+function subAction(){if(!running||paused||state.player.action>0)return;const p=state.player;if(p.sub<=0){flash('CONTRE-MESURES ÉPUISÉES');return}p.sub--;p.action=.3;p.cost=Math.min(100,p.cost+12);state.subUsed++;if(state.boss==='kodoque'){state.projectiles=state.projectiles.filter(x=>x.side!=='boss');state.hazards=[];flash('CHAFF · GUIDAGES ROMPUS')}else{state.attackClock=Math.max(state.attackClock,1.5);state.projectiles=state.projectiles.filter(x=>x.side!=='boss'||x.type==='wave');state.interrupts++;flash('EMP · CHARGE RETARDÉE')}}
+function heal(){if(!running||paused||state.player.action>0)return;const p=state.player;if(p.rations<=0||p.hp>=p.maxHp){flash(p.rations?'VIE DÉJÀ PLEINE':'RATIONS ÉPUISÉES');return}p.action=.7;p.rations--;p.cost=Math.min(100,p.cost+22);p.hp=Math.min(p.maxHp,p.hp+1800);flash('RATION · +1800')}
+function reload(){const p=state.player,d=defs[state.boss];if(p.action>0||p.ammo>=d.ammo)return;p.action=1.05;p.ammo=d.ammo;p.cost=Math.max(0,p.cost-15);flash('REPLANIFICATION · MAIN RECOMPOSÉE')}
+function damagePlayer(amount){const p=state.player;if(p.inv>0)return;p.hp=Math.max(0,p.hp-amount*state.scale);p.inv=.65;state.damageTaken+=Math.round(amount*state.scale);flash(`IMPACT · -${Math.round(amount*state.scale)}`);if(p.hp<=0)finish(false,'OPÉRATION ÉCHOUÉE')}
+function hitBoss(pr){if(pr.targetPhase!==state.phase)return false;const d=defs[state.boss];if(state.phase===1){const idx=state.target%d.parts.length;if(state.parts[idx]<=0)return false;const dmg=Math.min(pr.damage,state.parts[idx]);state.parts[idx]-=dmg;state.hits++;if(state.parts[idx]<=0){flash(`${d.partNames[idx]} NEUTRALISÉ`)}if(state.parts.every(v=>v<=0)){state.phase=2;state.target=0;state.projectiles=state.projectiles.filter(x=>x.side!=='boss');state.hazards=[];state.attackClock=2.2;flash(state.boss==='kodoque'?'BARRIÈRE ROMPUE · NOYAU EXPOSÉ':'APPROCHE BRISÉE · CŒUR EXPOSÉ')}return true}
+ if(state.boss==='chaioth'&&state.target===1){if(state.attackKind==='rail'&&state.attackStage==='warn'){state.attackClock=1.8;state.attackKind='';state.attackStage='';state.interrupts++;state.hits++;flash('RAILGUN INTERROMPU');return true}return false}
+ const dmg=Math.min(pr.damage,state.body);state.body-=dmg;state.hits++;if(state.boss==='chaioth'&&!state.overload&&state.body<=state.bodyMax/2){state.overload=true;state.attackClock=.8;flash('SURCHARGE · CADENCE ACCÉLÉRÉE')}if(state.body<=0)finish(true,'MACHINE NEUTRALISÉE');return true}
+function spawnAttack(){if(!state||!running)return;const b=state.boss,idx=state.attackIndex++;state.attackStage='warn';if(b==='kodoque'){
+ const kinds=state.phase===1?['zones','laser','drones']:['laser','zones','drones','sweep'];state.attackKind=kinds[idx%kinds.length];
+ if(state.attackKind==='zones'){state.hazards=[250,520,790].map((x,i)=>({type:'zone',x:x+(idx%2)*45,y:590,w:105,h:20,t:.9,active:.55,damage:620}))}
+ else if(state.attackKind==='laser'){state.hazards=[{type:'line',x:90,y:438,w:1050,h:16,t:.75,active:.45,damage:760,high:true}]}
+ else if(state.attackKind==='sweep'){state.hazards=[{type:'line',x:120,y:552,w:980,h:22,t:.7,active:.5,damage:820,low:true}]}
+ else{for(let i=0;i<4;i++)state.projectiles.push({side:'boss',type:'drone',x:1030+i*12,y:320+i*30,vx:-250-i*25,vy:(i-1.5)*25,r:8,damage:430,life:4})}
+ }else{
+ const kinds=state.phase===1?['stomp','plasma','orbs']:['rail','plasma','orbs','wave'];state.attackKind=kinds[idx%kinds.length];
+ if(state.attackKind==='stomp'){state.hazards=[{type:'zone',x:885,y:555,w:190,h:55,t:.85,active:.5,damage:780},{type:'wave',x:880,y:570,w:40,h:18,t:1.25,active:.8,damage:650}]}
+ else if(state.attackKind==='plasma'){state.hazards=[220,460,720].map((x,i)=>({type:'zone',x:x+(idx%3)*32,y:525,w:82,h:85,t:.85,active:.55,damage:700}))}
+ else if(state.attackKind==='rail'){state.hazards=[{type:'line',x:80,y:405,w:1100,h:22,t:1.25,active:.35,damage:1300,rail:true}]}
+ else if(state.attackKind==='wave'){state.hazards=[{type:'line',x:120,y:552,w:970,h:20,t:.75,active:.65,damage:850,low:true}]}
+ else{for(let i=0;i<3;i++)state.projectiles.push({side:'boss',type:'orb',x:1010,y:285+i*55,vx:-210,vy:(i-1)*35,r:11,damage:520,life:5,homing:1.3})}
+ }
+ state.attackClock=(state.overload?1.45:2.15)/state.scale;
+}
+function update(dt){if(!state||paused)return;const p=state.player,d=defs[state.boss];state.t-=dt;if(state.t<=0){state.t=0;finish(false,'TEMPS ÉCOULÉ');return}p.inv=Math.max(0,p.inv-dt);p.action=Math.max(0,p.action-dt);p.cost=Math.max(0,p.cost-dt*7);state.messageT=Math.max(0,state.messageT-dt);
+ let move=0;if(keys.has('ArrowLeft'))move--;if(keys.has('ArrowRight'))move++;p.crouch=keys.has('ArrowDown')&&p.grounded;if(p.action<=0){const speed=keys.has('ShiftRight')||keys.has('ShiftLeft')?350:235;p.vx=move*speed;if(keys.has('ArrowUp')&&p.grounded){p.vy=-620;p.grounded=false}}
+ else p.vx*=.84;p.x+=p.vx*dt;p.vy+=1500*dt;p.y+=p.vy*dt;if(p.y>=590){p.y=590;p.vy=0;p.grounded=true}p.x=Math.max(70,Math.min(820,p.x));
+ if(keys.has('ArrowDown')&&keys.has('KeyI')&&p.grounded&&p.x<165){reload();keys.delete('KeyI')}
+ state.attackClock-=dt;if(state.attackClock<=0)spawnAttack();
+ const target=bossTarget();for(const pr of state.projectiles){if(pr.homing&&pr.homing>0&&pr.side==='boss'){const dx=p.x-pr.x,dy=(p.y-45)-pr.y,l=Math.hypot(dx,dy)||1;pr.vx=pr.vx*.96+dx/l*18;pr.vy=pr.vy*.96+dy/l*18;pr.homing-=dt}
+  if(pr.side==='player'&&pr.type==='stinger'){const dx=target.x-pr.x,dy=target.y-pr.y,l=Math.hypot(dx,dy)||1;pr.vx=pr.vx*.94+dx/l*35;pr.vy=pr.vy*.94+dy/l*35}
+  pr.x+=pr.vx*dt;pr.y+=pr.vy*dt;pr.life-=dt;
+  if(pr.side==='player'&&Math.hypot(pr.x-target.x,pr.y-target.y)<28){pr.life=0;hitBoss(pr)}
+  if(pr.side==='boss'){const r=playerRect();if(pr.x+pr.r>r.x&&pr.x-pr.r<r.x+r.w&&pr.y+pr.r>r.y&&pr.y-pr.r<r.y+r.h){pr.life=0;damagePlayer(pr.damage)}}
+ }
+ state.projectiles=state.projectiles.filter(pr=>pr.life>0&&pr.x>-80&&pr.x<1360&&pr.y>-100&&pr.y<800);
+ const r=playerRect();for(const h of state.hazards){h.t-=dt;if(h.t<=0&&h.active>0){h.active-=dt;const hit=r.x<h.x+h.w&&r.x+r.w>h.x&&r.y<h.y+h.h&&r.y+r.h>h.y;if(hit&&!h.hit){h.hit=true;damagePlayer(h.damage)}}}
+ state.hazards=state.hazards.filter(h=>h.t>0||h.active>0);
+}
+function finish(win,label){if(!running)return;running=false;cancelAnimationFrame(raf);const elapsed=state.startedAt-state.t;if(win){profile.wins[state.boss]=(profile.wins[state.boss]||0)+1;if(!profile.best[state.boss]||elapsed<profile.best[state.boss])profile.best[state.boss]=elapsed;saveProfile();refreshProfile();ui.resultTitle.textContent=state.mode==='chronicle'?'DOSSIER CLASSÉ':'MACHINE NEUTRALISÉE'}else ui.resultTitle.textContent=label;ui.resultText.textContent=`${defs[state.boss].name} · ${formatTime(elapsed)} · ${state.hits}/${state.shots} impacts · ${state.damageTaken} dégâts reçus · ${state.interrupts} interruption(s).`;ui.result.hidden=false;}
+function bar(x,y,w,h,val,max,col,label){ctx.fillStyle='#06100d';ctx.fillRect(x,y,w,h);ctx.strokeStyle='#9fc8ac';ctx.strokeRect(x,y,w,h);ctx.fillStyle=col;ctx.fillRect(x+2,y+2,(w-4)*Math.max(0,Math.min(1,val/max)),h-4);ctx.fillStyle='#edf4d3';ctx.font='bold 14px monospace';ctx.fillText(label,x,y-7)}
+function drawMachine(){const b=state?state.boss:selectedBoss, phase=state?state.phase:1;if(b==='kodoque'){
+ ctx.save();ctx.translate(1000,0);ctx.fillStyle='#26332a';ctx.strokeStyle='#d0dc8b';ctx.lineWidth=4;ctx.fillRect(-145,315,290,145);ctx.strokeRect(-145,315,290,145);ctx.fillStyle='#4d684a';ctx.fillRect(-100,270,200,60);ctx.fillStyle='#1a241e';ctx.fillRect(-165,430,70,125);ctx.fillRect(95,430,70,125);ctx.fillStyle=phase===1?'#ffc95c':'#ff6c6c';ctx.fillRect(-115,355,42,42);ctx.fillRect(73,355,42,42);ctx.fillStyle='#89e9d1';ctx.fillRect(-34,340,68,78);ctx.restore();
+ }else{ctx.save();ctx.translate(1010,0);ctx.strokeStyle='#e2b49d';ctx.lineWidth=5;ctx.fillStyle='#3a3442';ctx.beginPath();ctx.moveTo(-92,210);ctx.lineTo(92,210);ctx.lineTo(132,395);ctx.lineTo(70,470);ctx.lineTo(-70,470);ctx.lineTo(-132,395);ctx.closePath();ctx.fill();ctx.stroke();ctx.fillStyle='#24252e';ctx.fillRect(-112,448,72,126);ctx.fillRect(40,448,72,126);ctx.fillStyle=phase===1?'#ffcc72':'#ff6363';ctx.fillRect(-92,500,52,38);ctx.fillRect(40,500,52,38);ctx.fillStyle='#9ee9df';ctx.fillRect(-40,320,80,86);ctx.fillStyle='#d46d63';ctx.fillRect(-55,245,110,26);ctx.restore()}}
+function drawPlayer(){const p=state?state.player:{x:170,y:590,crouch:false,inv:0};ctx.save();if(p.inv>0&&Math.floor(p.inv*20)%2===0)ctx.globalAlpha=.35;ctx.translate(p.x,p.y);ctx.fillStyle='#61785a';ctx.fillRect(-18,p.crouch?-48:-76,36,p.crouch?48:76);ctx.fillStyle='#b98a64';ctx.fillRect(-13,p.crouch?-66:-98,26,24);ctx.fillStyle='#202b24';ctx.fillRect(-22,p.crouch?-28:-48,44,16);ctx.fillStyle='#d5c267';ctx.fillRect(17,p.crouch?-52:-64,30,9);ctx.restore()}
+function drawBackground(){const d=defs[state?state.boss:selectedBoss];const g=ctx.createLinearGradient(0,0,0,720);g.addColorStop(0,d.sky);g.addColorStop(.62,'#1a2923');g.addColorStop(1,d.ground);ctx.fillStyle=g;ctx.fillRect(0,0,1280,720);ctx.globalAlpha=.25;for(let i=0;i<12;i++){ctx.fillStyle=i%2?'#e6edb8':'#5d8069';ctx.fillRect(i*120-40,190+(i%3)*35,180,300)}ctx.globalAlpha=1;ctx.fillStyle='#101914';ctx.fillRect(0,590,1280,130);for(let y=0;y<720;y+=4){ctx.fillStyle='rgba(0,0,0,.08)';ctx.fillRect(0,y,1280,1)}}
+function draw(){drawBackground();if(!state){drawMachine();ctx.fillStyle='#eaf2d0';ctx.font='bold 24px monospace';ctx.fillText('SÉLECTIONNEZ UNE OPÉRATION',390,670);return}drawMachine();drawPlayer();
+ for(const h of state.hazards){const warn=h.t>0;ctx.fillStyle=warn?'rgba(255,207,91,.32)':'rgba(255,72,72,.52)';ctx.fillRect(h.x,h.y,h.w,h.h);ctx.strokeStyle=warn?'#ffd56a':'#ff6969';ctx.setLineDash(warn?[10,8]:[]);ctx.strokeRect(h.x,h.y,h.w,h.h);ctx.setLineDash([])}
+ for(const pr of state.projectiles){ctx.fillStyle=pr.side==='player'?'#fff0a0':'#ff7777';ctx.beginPath();ctx.arc(pr.x,pr.y,pr.r,0,Math.PI*2);ctx.fill();ctx.strokeStyle=pr.side==='player'?'#d6ffdd':'#ffd0d0';ctx.beginPath();ctx.moveTo(pr.x,pr.y);ctx.lineTo(pr.x-pr.vx*.08,pr.y-pr.vy*.08);ctx.stroke()}
+ const d=defs[state.boss];bar(42,42,430,24,state.player.hp,state.player.maxHp,'#85ca74','SNAKE');bar(808,42,430,24,state.body,state.bodyMax,'#d86462',d.name);bar(42,94,300,16,state.player.cost,100,'#e9bd64',`COST ${Math.round(state.player.cost)}`);
+ ctx.fillStyle='#eef4d7';ctx.font='bold 20px monospace';ctx.fillText(formatTime(state.t),610,58);ctx.font='bold 15px monospace';ctx.fillText(`MUNITIONS ${state.player.ammo} · CONTRE-MESURES ${state.player.sub} · RATIONS ${state.player.rations}`,42,132);ctx.fillText(`CIBLE ${targetName()} · PHASE ${state.phase}`,808,96);
+ if(state.phase===1){for(let i=0;i<state.parts.length;i++)bar(808,125+i*34,300,15,state.parts[i],state.partsMax[i],i===state.target?'#ffd66e':'#8ea487',d.partNames[i])}
+ if(state.messageT>0){ctx.fillStyle='rgba(2,8,5,.84)';ctx.fillRect(330,635,620,46);ctx.strokeStyle='#d9f4a3';ctx.strokeRect(330,635,620,46);ctx.fillStyle='#f5f8db';ctx.font='bold 18px monospace';ctx.textAlign='center';ctx.fillText(state.message,640,665);ctx.textAlign='left'}
+}
+function drawPreview(){resetState();state.t=state.startedAt;draw();state=null}
+function loop(now){if(!running)return;const dt=Math.min(.033,(now-last)/1000||.016);last=now;update(dt);draw();if(running)raf=requestAnimationFrame(loop)}
+function showRegistry(){ui.introTitle.textContent='REGISTRE AC!D · v0.31';ui.introText.innerHTML='<div class="acid31-registry"><div><b>KODOQUE · JOUABLE</b><small>Émetteurs, noyau, projectiles et résultat séparé.</small></div><div><b>CHAIOTH HA QADESH · JOUABLE</b><small>Articulations, cœur, surcharge et interruption du railgun.</small></div><div><b>RESTE À PRODUIRE</b><small>Campagnes tactiques complètes, grilles, collections de cartes et personnages secondaires non encore combattants.</small></div><div><b>AUTRES BRANCHES</b><small>Machines spécifiques MGS4/Revengeance, véhicules MSX/MGS1, formes Beauty et épisodes sans module propre.</small></div></div>';ui.intro.hidden=false;}
+function selectBoss(id){selectedBoss=id;document.querySelectorAll('[data-acid31-boss]').forEach(b=>b.classList.toggle('active',b.dataset.acid31Boss===id));refreshProfile();drawPreview();ui.log.textContent=`${defs[id].episode} · ${defs[id].name} sélectionné.`}
+document.getElementById('acid31-open').addEventListener('click',openModule);document.getElementById('acid31-close').addEventListener('click',closeModule);document.querySelectorAll('[data-acid31-boss]').forEach(b=>b.addEventListener('click',()=>selectBoss(b.dataset.acid31Boss)));document.querySelectorAll('[data-acid31-mode]').forEach(b=>b.addEventListener('click',()=>{selectedMode=b.dataset.acid31Mode;document.querySelectorAll('[data-acid31-mode]').forEach(x=>x.classList.toggle('active',x===b));ui.log.textContent=selectedMode==='chronicle'?'Le résultat est classé dans le dossier correspondant.':'Rencontre directe, sans modifier les anciennes Chroniques.'}));
+document.getElementById('acid31-start').addEventListener('click',()=>{ui.introTitle.textContent=selectedMode==='chronicle'?`${defs[selectedBoss].episode} · DOSSIER MACHINE`:defs[selectedBoss].name;ui.introText.textContent=selectedBoss==='kodoque'?'Brisez les deux émetteurs avant d’attaquer le noyau. Les lignes hautes demandent de s’accroupir, les balayages bas de sauter.':'Détruisez les deux articulations, puis le cœur. En surcharge, interrompez le railgun ou quittez son trajet.';ui.intro.hidden=false;});document.getElementById('acid31-intro-start').addEventListener('click',start);document.getElementById('acid31-registry').addEventListener('click',showRegistry);document.getElementById('acid31-retry').addEventListener('click',start);document.getElementById('acid31-menu').addEventListener('click',()=>{ui.result.hidden=true;drawPreview()});document.getElementById('acid31-resume').addEventListener('click',()=>{paused=false;ui.pause.hidden=true;last=performance.now();raf=requestAnimationFrame(loop)});document.getElementById('acid31-pause-menu').addEventListener('click',()=>{stop();ui.pause.hidden=true;drawPreview()});ui.difficulty.addEventListener('change',drawPreview);
+function keyHandler(e,down){if(root.hidden)return;const relevant=['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','KeyI','KeyJ','KeyK','KeyL','ShiftLeft','ShiftRight','Escape'];if(relevant.includes(e.code)){e.preventDefault();e.stopImmediatePropagation()}if(!down){keys.delete(e.code);return}keys.add(e.code);if(e.repeat)return;if(e.code==='KeyI'&&!keys.has('ArrowDown'))fire();if(e.code==='KeyJ')subAction();if(e.code==='KeyK')cycleTarget();if(e.code==='KeyL')heal();if(e.code==='Escape'&&running){paused=!paused;ui.pause.hidden=!paused;if(paused)cancelAnimationFrame(raf);else{last=performance.now();raf=requestAnimationFrame(loop)}}}
+window.addEventListener('keydown',e=>keyHandler(e,true),true);window.addEventListener('keyup',e=>keyHandler(e,false),true);document.addEventListener('visibilitychange',()=>{if(document.hidden&&running&&!paused){paused=true;ui.pause.hidden=false;cancelAnimationFrame(raf)}});
+window.CQC_ACID_MACHINES_V031={version:VERSION,open:openModule,startBoss:(id='kodoque')=>{openModule();selectBoss(defs[id]?id:'kodoque');start()},getProfile:()=>JSON.parse(JSON.stringify(profile))};
+refreshProfile();drawPreview();openModule();
+})();
+</script>
+</body></html>

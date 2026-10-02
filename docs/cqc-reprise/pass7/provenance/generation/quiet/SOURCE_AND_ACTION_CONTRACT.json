@@ -1,0 +1,340 @@
+{
+  "uid": "core__quiet",
+  "sourceContract": "/workspace/cqc-pass7-generation/quiet/references/source-contract.json",
+  "actionLayout": {
+    "idle": {
+      "sheet": "a",
+      "indices": [
+        0,
+        1
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "walk": {
+      "sheet": "a",
+      "indices": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "fps": 9,
+      "loop": true
+    },
+    "guard": {
+      "sheet": "a",
+      "indices": [
+        6,
+        7
+      ],
+      "fps": 5,
+      "loop": true
+    },
+    "crouch": {
+      "sheet": "a",
+      "indices": [
+        8,
+        9
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "jump": {
+      "sheet": "a",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 6,
+      "loop": false
+    },
+    "punch": {
+      "sheet": "b",
+      "indices": [
+        0,
+        1,
+        2
+      ],
+      "fps": 12,
+      "loop": false
+    },
+    "heavy": {
+      "sheet": "b",
+      "indices": [
+        3,
+        4,
+        5
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "low": {
+      "sheet": "b",
+      "indices": [
+        6,
+        7,
+        8
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "hit": {
+      "sheet": "b",
+      "indices": [
+        9
+      ],
+      "fps": 0,
+      "loop": false
+    },
+    "ko": {
+      "sheet": "b",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 6,
+      "loop": false
+    },
+    "throw": {
+      "sheet": "c",
+      "indices": [
+        0,
+        1
+      ],
+      "fps": 9,
+      "loop": false
+    },
+    "shoot": {
+      "sheet": "c",
+      "indices": [
+        2,
+        3,
+        4
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "deploy": {
+      "sheet": "c",
+      "indices": [
+        5,
+        6
+      ],
+      "fps": 8,
+      "loop": false
+    },
+    "optic": {
+      "sheet": "c",
+      "indices": [
+        7
+      ],
+      "fps": 0,
+      "loop": false
+    },
+    "recover": {
+      "sheet": "c",
+      "indices": [
+        8,
+        9
+      ],
+      "fps": 5,
+      "loop": false
+    },
+    "charge": {
+      "sheet": "c",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 9,
+      "loop": false
+    }
+  },
+  "actionMap": {
+    "light": "punch",
+    "heavy": "heavy",
+    "low": "low",
+    "throw": "throw",
+    "special": "shoot",
+    "specialDown": "deploy",
+    "specialForward": "jump",
+    "specialBack": "walk",
+    "super": "charge",
+    "utility": "recover"
+  },
+  "phaseMap": {
+    "punch": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "heavy": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "low": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "shoot": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "throw": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        0
+      ]
+    },
+    "deploy": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        0
+      ]
+    },
+    "charge": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        0
+      ]
+    },
+    "optic": {
+      "startup": [
+        0
+      ],
+      "active": [
+        0
+      ],
+      "recovery": [
+        0
+      ]
+    },
+    "recover": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        1
+      ]
+    },
+    "walk": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1,
+        2
+      ],
+      "recovery": [
+        3
+      ]
+    },
+    "jump": {
+      "startup": [
+        0
+      ],
+      "active": [
+        0
+      ],
+      "recovery": [
+        1
+      ]
+    }
+  },
+  "sourceReferences": [
+    {
+      "file": "/workspace/cqc-pass7-generation/quiet/references/quiet-steam-original-20-full.jpg",
+      "url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/287700/ss_558a2d12daf8e683b605d4a417aa3412c0a7792d.1920x1080.jpg?t=1778872866",
+      "sha256": "b55f73cbb079ed752044cbf4ab9d86d39a3a21b12499f9dad83924b2800afae6",
+      "bytes": 2353031,
+      "sourceKind": "original-game-capture",
+      "provenanceLevel": "primary_official_store_original_game_screenshot",
+      "scope": "primary_costume_and_sniper_action",
+      "viewed": true,
+      "limits": "Official original Steam game capture; Steam20 player AM MRS-4 HUD does NOT identify Quiet weapon. Steam21 rear actor blurred."
+    },
+    {
+      "file": "/workspace/cqc-pass7-generation/quiet/references/quiet-steam-original-21-full.jpg",
+      "url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/287700/ss_70d786ca18e4a78f6ba33f6d219584f825e0571c.1920x1080.jpg?t=1778872866",
+      "sha256": "387565bc6a9e2986c2b330c0d2bce1064a119e14d3acda43ba4552ff32327283",
+      "bytes": 861497,
+      "sourceKind": "original-game-capture",
+      "provenanceLevel": "primary_official_store_original_game_screenshot",
+      "scope": "primary_context_default_costume_background_only",
+      "viewed": true,
+      "limits": "Official original Steam game capture; Steam20 player AM MRS-4 HUD does NOT identify Quiet weapon. Steam21 rear actor blurred."
+    },
+    {
+      "file": "/workspace/cqc-pass7-generation/quiet/references/quiet-official-render-front.png",
+      "url": "https://www.game-art-hq.com/wp-content/uploads/2015/11/Quiet-MGSV-Render.png",
+      "sha256": "aa2028274d4bde7bcf897a6c4bbff26324a4c9689f40ea82ac6ae969d0118931",
+      "bytes": 286651,
+      "sourceKind": "original-game-model",
+      "provenanceLevel": "secondary_mirror_claimed_original_game_render_publisher_url_not_recovered",
+      "scope": "supplemental_anatomical_costume_detail",
+      "viewed": true,
+      "limits": "Secondary mirror claimed original-model render; original publisher URL not recovered. Supplementary anatomy/outfit evidence only, not primary-certified asset."
+    },
+    {
+      "file": "/workspace/cqc-pass7-generation/quiet/references/quiet-official-render-back.png",
+      "url": "https://www.game-art-hq.com/wp-content/uploads/2015/11/Quiet-MGSV-Render-Art-Back.png",
+      "sha256": "ba3d3c988a1ded3677db35e7a1056ab1d40ace701fdd453f1bb951f7d62cd6ad",
+      "bytes": 284837,
+      "sourceKind": "original-game-model",
+      "provenanceLevel": "secondary_mirror_claimed_original_game_render_publisher_url_not_recovered",
+      "scope": "supplemental_anatomical_costume_detail",
+      "viewed": true,
+      "limits": "Secondary mirror claimed original-model render; original publisher URL not recovered. Supplementary anatomy/outfit evidence only, not primary-certified asset."
+    }
+  ],
+  "weaponModelCertification": "pending_original_inventory_no_alias_1to1_claim",
+  "gameplayOwner": "Root/helper integration; producer did not edit runtime or catalog",
+  "supportedVisualActions": "Same ordinary scoped sniper shoot/deploy/charge; physical CQC norms, movement/bounds and rifle reload authored adaptations",
+  "excluded": "No psychic/railgun, no unproven Guilty tranquilizer loadout, no AM MRS-4 derived from playerHUD, no loosehair/closedcollar, no SniperWolf/XOF costumes"
+}

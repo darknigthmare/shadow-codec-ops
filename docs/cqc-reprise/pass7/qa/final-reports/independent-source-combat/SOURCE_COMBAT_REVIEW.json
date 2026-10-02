@@ -1,0 +1,1455 @@
+{
+  "schema": "cqc.pass7.independent-source-combat-review/1",
+  "status": "passed",
+  "reviewer": "pass7_source_combat_review",
+  "reviewedAt": "2026-10-02T02:46:54.304843+00:00",
+  "sourceHelperFrozen": {
+    "file": "/workspace/cqc-game-working/cqc-versus-v056/src/cqc-pass7-combat-fidelity.js",
+    "sha256": "48257633fc4c8054c2343f1da44334fe532d97222cfdd3b76b4827c3377b8bed",
+    "bytes": 23851
+  },
+  "sourceTestFrozen": {
+    "file": "/workspace/cqc-game-working/cqc-versus-v056/tests/test_pass7_combat_fidelity.cjs",
+    "sha256": "9430cdecaaf49ef8094a33e587b1e1df368759efccc19461b10ddbeead0ec102",
+    "bytes": 21165
+  },
+  "nativeOrigins": {
+    "file": "/workspace/cqc-game-working/cqc-versus-v056/src/cqc-pass7-native-origins.js",
+    "sha256": "042ae44b3af59a7f4c0318eac87dbbb1e3da3256287987059e44a9771c96b02b",
+    "bytes": 14657
+  },
+  "nativeOriginsJSON": {
+    "file": "/workspace/cqc-game-working/cqc-versus-v056/preparation/combat-sprites-pass7/SOURCE_COMBAT_ORIGINS.json",
+    "sha256": "12496c1ef272da9013967f9ef429d7c1a5e0275bb07d09089fcbb3c814782927",
+    "bytes": 22379
+  },
+  "nativeCatalog": {
+    "file": "/workspace/cqc-game-working/cqc-versus-v056/data/combat-sprite-catalog-v1.json",
+    "sha256": "709af3851a2d1769ae98b4d4a77e2c552296eebfd904a19c900058596ec3ee47",
+    "bytes": 32745805
+  },
+  "rawInlineJSONPins": {
+    "const FIGHTERS=": {
+      "sha256": "a8c35522b2a4b1677d14bc44ea81d19c748c31f9559aeba62ac9cc3879dd91f3",
+      "bytes": 2035050
+    },
+    "globalThis.CQC_FINISHERS_053 = ": {
+      "sha256": "63e9ea0729016ec5bde924dcb0f525b88cf3818fc1a40741e6db1f47116e93e8",
+      "bytes": 1244075
+    }
+  },
+  "historicalInlineEngineSHA256": "197acd7da230bf479a68d37ff409801c0d4390d001a98b4c1451075be55d2d51",
+  "assertions": 115,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "PASS6 immutable file data/unified-roster-v053.json",
+      "passed": true
+    },
+    {
+      "name": "PASS6 immutable file data/finishers-v053.json",
+      "passed": true
+    },
+    {
+      "name": "PASS6 immutable file src/cqc-pass4-combat-fidelity.js",
+      "passed": true
+    },
+    {
+      "name": "PASS6 immutable file src/cqc-sprite-renderer.js",
+      "passed": true
+    },
+    {
+      "name": "PASS6 immutable file tools/prepare_combat_sprite.py",
+      "passed": true
+    },
+    {
+      "name": "Unmodified inline original JSON const FIGHTERS=",
+      "passed": true
+    },
+    {
+      "name": "Unmodified inline original JSON globalThis.CQC_FINISHERS_053 = ",
+      "passed": true
+    },
+    {
+      "name": "Exactly one original inline engine",
+      "passed": true
+    },
+    {
+      "name": "Historical inline engine pinned exactly",
+      "passed": true
+    },
+    {
+      "name": "Exactly four launch-catalog entries",
+      "passed": true
+    },
+    {
+      "name": "No Skull Face ballistics",
+      "passed": true
+    },
+    {
+      "name": "Sixteen reviewed directional launch points",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake shoot right native sheet SHA",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake shoot right first active frame",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake shoot right current crop/pivot/fixed source height",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake shoot right actual untouched PNG visible alpha",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake shoot left native sheet SHA",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake shoot left first active frame",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake shoot left current crop/pivot/fixed source height",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake shoot left actual untouched PNG visible alpha",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake deploy right native sheet SHA",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake deploy right first active frame",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake deploy right current crop/pivot/fixed source height",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake deploy right actual untouched PNG visible alpha",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake deploy left native sheet SHA",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake deploy left first active frame",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake deploy left current crop/pivot/fixed source height",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake deploy left actual untouched PNG visible alpha",
+      "passed": true
+    },
+    {
+      "name": "core__quiet shoot right native sheet SHA",
+      "passed": true
+    },
+    {
+      "name": "core__quiet shoot right first active frame",
+      "passed": true
+    },
+    {
+      "name": "core__quiet shoot right current crop/pivot/fixed source height",
+      "passed": true
+    },
+    {
+      "name": "core__quiet shoot right actual untouched PNG visible alpha",
+      "passed": true
+    },
+    {
+      "name": "core__quiet shoot left native sheet SHA",
+      "passed": true
+    },
+    {
+      "name": "core__quiet shoot left first active frame",
+      "passed": true
+    },
+    {
+      "name": "core__quiet shoot left current crop/pivot/fixed source height",
+      "passed": true
+    },
+    {
+      "name": "core__quiet shoot left actual untouched PNG visible alpha",
+      "passed": true
+    },
+    {
+      "name": "core__quiet deploy right native sheet SHA",
+      "passed": true
+    },
+    {
+      "name": "core__quiet deploy right first active frame",
+      "passed": true
+    },
+    {
+      "name": "core__quiet deploy right current crop/pivot/fixed source height",
+      "passed": true
+    },
+    {
+      "name": "core__quiet deploy right actual untouched PNG visible alpha",
+      "passed": true
+    },
+    {
+      "name": "core__quiet deploy left native sheet SHA",
+      "passed": true
+    },
+    {
+      "name": "core__quiet deploy left first active frame",
+      "passed": true
+    },
+    {
+      "name": "core__quiet deploy left current crop/pivot/fixed source height",
+      "passed": true
+    },
+    {
+      "name": "core__quiet deploy left actual untouched PNG visible alpha",
+      "passed": true
+    },
+    {
+      "name": "core__quiet charge right native sheet SHA",
+      "passed": true
+    },
+    {
+      "name": "core__quiet charge right first active frame",
+      "passed": true
+    },
+    {
+      "name": "core__quiet charge right current crop/pivot/fixed source height",
+      "passed": true
+    },
+    {
+      "name": "core__quiet charge right actual untouched PNG visible alpha",
+      "passed": true
+    },
+    {
+      "name": "core__quiet charge left native sheet SHA",
+      "passed": true
+    },
+    {
+      "name": "core__quiet charge left first active frame",
+      "passed": true
+    },
+    {
+      "name": "core__quiet charge left current crop/pivot/fixed source height",
+      "passed": true
+    },
+    {
+      "name": "core__quiet charge left actual untouched PNG visible alpha",
+      "passed": true
+    },
+    {
+      "name": "core__raven shoot right native sheet SHA",
+      "passed": true
+    },
+    {
+      "name": "core__raven shoot right first active frame",
+      "passed": true
+    },
+    {
+      "name": "core__raven shoot right current crop/pivot/fixed source height",
+      "passed": true
+    },
+    {
+      "name": "core__raven shoot right actual untouched PNG visible alpha",
+      "passed": true
+    },
+    {
+      "name": "core__raven shoot left native sheet SHA",
+      "passed": true
+    },
+    {
+      "name": "core__raven shoot left first active frame",
+      "passed": true
+    },
+    {
+      "name": "core__raven shoot left current crop/pivot/fixed source height",
+      "passed": true
+    },
+    {
+      "name": "core__raven shoot left actual untouched PNG visible alpha",
+      "passed": true
+    },
+    {
+      "name": "core__raven lowShoot right native sheet SHA",
+      "passed": true
+    },
+    {
+      "name": "core__raven lowShoot right first active frame",
+      "passed": true
+    },
+    {
+      "name": "core__raven lowShoot right current crop/pivot/fixed source height",
+      "passed": true
+    },
+    {
+      "name": "core__raven lowShoot right actual untouched PNG visible alpha",
+      "passed": true
+    },
+    {
+      "name": "core__raven lowShoot left native sheet SHA",
+      "passed": true
+    },
+    {
+      "name": "core__raven lowShoot left first active frame",
+      "passed": true
+    },
+    {
+      "name": "core__raven lowShoot left current crop/pivot/fixed source height",
+      "passed": true
+    },
+    {
+      "name": "core__raven lowShoot left actual untouched PNG visible alpha",
+      "passed": true
+    },
+    {
+      "name": "core__raven charge right native sheet SHA",
+      "passed": true
+    },
+    {
+      "name": "core__raven charge right first active frame",
+      "passed": true
+    },
+    {
+      "name": "core__raven charge right current crop/pivot/fixed source height",
+      "passed": true
+    },
+    {
+      "name": "core__raven charge right actual untouched PNG visible alpha",
+      "passed": true
+    },
+    {
+      "name": "core__raven charge left native sheet SHA",
+      "passed": true
+    },
+    {
+      "name": "core__raven charge left first active frame",
+      "passed": true
+    },
+    {
+      "name": "core__raven charge left current crop/pivot/fixed source height",
+      "passed": true
+    },
+    {
+      "name": "core__raven charge left actual untouched PNG visible alpha",
+      "passed": true
+    },
+    {
+      "name": "core__raven source contract closest_supported",
+      "passed": true
+    },
+    {
+      "name": "core__raven independent directions",
+      "passed": true
+    },
+    {
+      "name": "core__raven original reference exact ch09_body.jpg",
+      "passed": true
+    },
+    {
+      "name": "core__raven original reference exact ch09_face.jpg",
+      "passed": true
+    },
+    {
+      "name": "core__raven original reference exact ps1-raven-16840.png",
+      "passed": true
+    },
+    {
+      "name": "core__raven original reference exact ps1-raven-16880.png",
+      "passed": true
+    },
+    {
+      "name": "core__raven original reference exact ps1-raven-17000.png",
+      "passed": true
+    },
+    {
+      "name": "core__raven original reference exact ps1-raven-17200.png",
+      "passed": true
+    },
+    {
+      "name": "core__raven original reference exact ps1-raven-17220.png",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake source contract closest_supported",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake independent directions",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake original reference exact konami-mgs4-ps3-screenshot-01.jpg",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake original reference exact konami-mgs4-ps3-screenshot-03.jpg",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake original reference exact konami-mgs4-ps3-screenshot-04.jpg",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake original reference exact konami-mgs4-archive-key-art.jpg",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake original reference exact original-ps3-frame-00900s.png",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake original reference exact original-ps3-frame-01880s.png",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake original reference exact original-ps3-frame-01975s.png",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake original reference exact original-ps3-frame-02000s.png",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake original reference exact original-ps3-frame-02100s.png",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake original reference exact original-ps3-frame-32000s.png",
+      "passed": true
+    },
+    {
+      "name": "core__old_snake original reference exact original-ps3-frame-32004s.png",
+      "passed": true
+    },
+    {
+      "name": "core__quiet source contract closest_supported",
+      "passed": true
+    },
+    {
+      "name": "core__quiet independent directions",
+      "passed": true
+    },
+    {
+      "name": "core__quiet original reference exact quiet-steam-original-20-full.jpg",
+      "passed": true
+    },
+    {
+      "name": "core__quiet original reference exact quiet-steam-original-21-full.jpg",
+      "passed": true
+    },
+    {
+      "name": "core__quiet original reference exact quiet-official-render-front.png",
+      "passed": true
+    },
+    {
+      "name": "core__quiet original reference exact quiet-official-render-back.png",
+      "passed": true
+    },
+    {
+      "name": "archive__skull_face source contract closest_supported",
+      "passed": true
+    },
+    {
+      "name": "archive__skull_face independent directions",
+      "passed": true
+    },
+    {
+      "name": "archive__skull_face original reference exact skull-face-psn.jpg",
+      "passed": true
+    },
+    {
+      "name": "archive__skull_face original reference exact ps4-tpp-part5-6900s.jpg",
+      "passed": true
+    },
+    {
+      "name": "archive__skull_face original reference exact ps4-tpp-part5-6920s.jpg",
+      "passed": true
+    },
+    {
+      "name": "archive__skull_face original reference exact ps4-tpp-part5-7000s.jpg",
+      "passed": true
+    },
+    {
+      "name": "archive__skull_face original reference exact ps4-tpp-part5-7050s.jpg",
+      "passed": true
+    },
+    {
+      "name": "archive__skull_face original reference exact ps4-tpp-part5-7090s.jpg",
+      "passed": true
+    },
+    {
+      "name": "archive__skull_face original reference exact ps4-tpp-part5-7110s.jpg",
+      "passed": true
+    },
+    {
+      "name": "archive__skull_face original reference exact ps4-tpp-part5-7350s.jpg",
+      "passed": true
+    },
+    {
+      "name": "archive__skull_face original reference exact ps4-tpp-part5-7700s.jpg",
+      "passed": true
+    }
+  ],
+  "actualSourcePoints": [
+    {
+      "uid": "core__old_snake",
+      "group": "shoot",
+      "side": "right",
+      "action": "shoot",
+      "frame": 1,
+      "sheet": {
+        "file": "/workspace/cqc-game-working/cqc-versus-v056/assets/combat-sprites/core__old_snake/c-right-v1.png",
+        "sha256": "d0d258d11244864bac49cd73c536e44c284bc2b90b0a74610723da17600920cf",
+        "bytes": 2343665
+      },
+      "nativePoint": [
+        1514,
+        73
+      ],
+      "actualRGBA": [
+        1,
+        0,
+        2,
+        250
+      ],
+      "adaptedWorldForward": 145.11310166724863,
+      "adaptedWorldHeight": 219.29795918367347
+    },
+    {
+      "uid": "core__old_snake",
+      "group": "shoot",
+      "side": "left",
+      "action": "shoot",
+      "frame": 1,
+      "sheet": {
+        "file": "/workspace/cqc-game-working/cqc-versus-v056/assets/combat-sprites/core__old_snake/c-left-v1.png",
+        "sha256": "64696a91063626b6df3a3cb21d5da403709799ef9bae2017efde5b7711a176dd",
+        "bytes": 2423980
+      },
+      "nativePoint": [
+        1167,
+        75
+      ],
+      "actualRGBA": [
+        1,
+        1,
+        2,
+        249
+      ],
+      "adaptedWorldForward": 160.85946491703314,
+      "adaptedWorldHeight": 192.28262108262112
+    },
+    {
+      "uid": "core__old_snake",
+      "group": "deploy",
+      "side": "right",
+      "action": "deploy",
+      "frame": 1,
+      "sheet": {
+        "file": "/workspace/cqc-game-working/cqc-versus-v056/assets/combat-sprites/core__old_snake/c-right-v1.png",
+        "sha256": "d0d258d11244864bac49cd73c536e44c284bc2b90b0a74610723da17600920cf",
+        "bytes": 2343665
+      },
+      "nativePoint": [
+        1148,
+        442
+      ],
+      "actualRGBA": [
+        28,
+        27,
+        28,
+        251
+      ],
+      "adaptedWorldForward": 146.34668454650853,
+      "adaptedWorldHeight": 198.26938775510203
+    },
+    {
+      "uid": "core__old_snake",
+      "group": "deploy",
+      "side": "left",
+      "action": "deploy",
+      "frame": 1,
+      "sheet": {
+        "file": "/workspace/cqc-game-working/cqc-versus-v056/assets/combat-sprites/core__old_snake/c-left-v1.png",
+        "sha256": "64696a91063626b6df3a3cb21d5da403709799ef9bae2017efde5b7711a176dd",
+        "bytes": 2423980
+      },
+      "nativePoint": [
+        795,
+        421
+      ],
+      "actualRGBA": [
+        41,
+        42,
+        43,
+        251
+      ],
+      "adaptedWorldForward": 147.68648327235016,
+      "adaptedWorldHeight": 204.7589743589744
+    },
+    {
+      "uid": "core__quiet",
+      "group": "shoot",
+      "side": "right",
+      "action": "shoot",
+      "frame": 1,
+      "sheet": {
+        "file": "/workspace/cqc-game-working/cqc-versus-v056/assets/combat-sprites/core__quiet/c-right-v1.png",
+        "sha256": "173d22db6a9e56607ef197f103b8eb76c80748c3830f237c47669390fd839598",
+        "bytes": 2095223
+      },
+      "nativePoint": [
+        1509,
+        74
+      ],
+      "actualRGBA": [
+        28,
+        28,
+        27,
+        245
+      ],
+      "adaptedWorldForward": 184.9284097497828,
+      "adaptedWorldHeight": 211.65380116959065
+    },
+    {
+      "uid": "core__quiet",
+      "group": "shoot",
+      "side": "left",
+      "action": "shoot",
+      "frame": 1,
+      "sheet": {
+        "file": "/workspace/cqc-game-working/cqc-versus-v056/assets/combat-sprites/core__quiet/c-left-v1.png",
+        "sha256": "bdcef215a03ac553dcce2b8a1bb0de68d9df11f5238cad9c5a712bfce7e2dba6",
+        "bytes": 2239636
+      },
+      "nativePoint": [
+        1142,
+        78
+      ],
+      "actualRGBA": [
+        14,
+        14,
+        13,
+        247
+      ],
+      "adaptedWorldForward": 186.0507858189323,
+      "adaptedWorldHeight": 212.18292011019284
+    },
+    {
+      "uid": "core__quiet",
+      "group": "deploy",
+      "side": "right",
+      "action": "deploy",
+      "frame": 1,
+      "sheet": {
+        "file": "/workspace/cqc-game-working/cqc-versus-v056/assets/combat-sprites/core__quiet/c-right-v1.png",
+        "sha256": "173d22db6a9e56607ef197f103b8eb76c80748c3830f237c47669390fd839598",
+        "bytes": 2095223
+      },
+      "nativePoint": [
+        1145,
+        509
+      ],
+      "actualRGBA": [
+        47,
+        46,
+        45,
+        242
+      ],
+      "adaptedWorldForward": 181.65904319487205,
+      "adaptedWorldHeight": 134.82573099415205
+    },
+    {
+      "uid": "core__quiet",
+      "group": "deploy",
+      "side": "left",
+      "action": "deploy",
+      "frame": 1,
+      "sheet": {
+        "file": "/workspace/cqc-game-working/cqc-versus-v056/assets/combat-sprites/core__quiet/c-left-v1.png",
+        "sha256": "bdcef215a03ac553dcce2b8a1bb0de68d9df11f5238cad9c5a712bfce7e2dba6",
+        "bytes": 2239636
+      },
+      "nativePoint": [
+        761,
+        525
+      ],
+      "actualRGBA": [
+        27,
+        28,
+        29,
+        246
+      ],
+      "adaptedWorldForward": 176.4764975070009,
+      "adaptedWorldHeight": 122.05840220385674
+    },
+    {
+      "uid": "core__quiet",
+      "group": "charge",
+      "side": "right",
+      "action": "charge",
+      "frame": 1,
+      "sheet": {
+        "file": "/workspace/cqc-game-working/cqc-versus-v056/assets/combat-sprites/core__quiet/c-right-v1.png",
+        "sha256": "173d22db6a9e56607ef197f103b8eb76c80748c3830f237c47669390fd839598",
+        "bytes": 2095223
+      },
+      "nativePoint": [
+        1503,
+        754
+      ],
+      "actualRGBA": [
+        53,
+        53,
+        52,
+        240
+      ],
+      "adaptedWorldForward": 170.3252238161493,
+      "adaptedWorldHeight": 193.57660818713452
+    },
+    {
+      "uid": "core__quiet",
+      "group": "charge",
+      "side": "left",
+      "action": "charge",
+      "frame": 1,
+      "sheet": {
+        "file": "/workspace/cqc-game-working/cqc-versus-v056/assets/combat-sprites/core__quiet/c-left-v1.png",
+        "sha256": "bdcef215a03ac553dcce2b8a1bb0de68d9df11f5238cad9c5a712bfce7e2dba6",
+        "bytes": 2239636
+      },
+      "nativePoint": [
+        1142,
+        764
+      ],
+      "actualRGBA": [
+        32,
+        32,
+        33,
+        243
+      ],
+      "adaptedWorldForward": 179.9536079040251,
+      "adaptedWorldHeight": 181.66831955922865
+    },
+    {
+      "uid": "core__raven",
+      "group": "shoot",
+      "side": "right",
+      "action": "shoot",
+      "frame": 1,
+      "sheet": {
+        "file": "/workspace/cqc-game-working/cqc-versus-v056/assets/combat-sprites/core__raven/c-right-v1.png",
+        "sha256": "232be64678b8ae7043cbe9452966794c856bbbe3c3006e5e73a64098dbb6fa0a",
+        "bytes": 1843248
+      },
+      "nativePoint": [
+        1439,
+        182
+      ],
+      "actualRGBA": [
+        40,
+        37,
+        37,
+        210
+      ],
+      "adaptedWorldForward": 160.45714285714288,
+      "adaptedWorldHeight": 153.665306122449
+    },
+    {
+      "uid": "core__raven",
+      "group": "shoot",
+      "side": "left",
+      "action": "shoot",
+      "frame": 1,
+      "sheet": {
+        "file": "/workspace/cqc-game-working/cqc-versus-v056/assets/combat-sprites/core__raven/c-left-v1.png",
+        "sha256": "cfb563cd171ec223d8759e776b71e79de94a1d40b728c5624bf0359fa8670942",
+        "bytes": 1725602
+      },
+      "nativePoint": [
+        1099,
+        168
+      ],
+      "actualRGBA": [
+        15,
+        17,
+        17,
+        177
+      ],
+      "adaptedWorldForward": 194.42658610271906,
+      "adaptedWorldHeight": 158.35649546827796
+    },
+    {
+      "uid": "core__raven",
+      "group": "lowShoot",
+      "side": "right",
+      "action": "deploy",
+      "frame": 1,
+      "sheet": {
+        "file": "/workspace/cqc-game-working/cqc-versus-v056/assets/combat-sprites/core__raven/c-right-v1.png",
+        "sha256": "232be64678b8ae7043cbe9452966794c856bbbe3c3006e5e73a64098dbb6fa0a",
+        "bytes": 1843248
+      },
+      "nativePoint": [
+        1089,
+        633
+      ],
+      "actualRGBA": [
+        25,
+        24,
+        21,
+        200
+      ],
+      "adaptedWorldForward": 160.45714285714288,
+      "adaptedWorldHeight": 69.61632653061226
+    },
+    {
+      "uid": "core__raven",
+      "group": "lowShoot",
+      "side": "left",
+      "action": "deploy",
+      "frame": 1,
+      "sheet": {
+        "file": "/workspace/cqc-game-working/cqc-versus-v056/assets/combat-sprites/core__raven/c-left-v1.png",
+        "sha256": "cfb563cd171ec223d8759e776b71e79de94a1d40b728c5624bf0359fa8670942",
+        "bytes": 1725602
+      },
+      "nativePoint": [
+        732,
+        626
+      ],
+      "actualRGBA": [
+        36,
+        36,
+        36,
+        105
+      ],
+      "adaptedWorldForward": 186.50876132930517,
+      "adaptedWorldHeight": 64.22235649546829
+    },
+    {
+      "uid": "core__raven",
+      "group": "charge",
+      "side": "right",
+      "action": "charge",
+      "frame": 1,
+      "sheet": {
+        "file": "/workspace/cqc-game-working/cqc-versus-v056/assets/combat-sprites/core__raven/c-right-v1.png",
+        "sha256": "232be64678b8ae7043cbe9452966794c856bbbe3c3006e5e73a64098dbb6fa0a",
+        "bytes": 1843248
+      },
+      "nativePoint": [
+        1438,
+        888
+      ],
+      "actualRGBA": [
+        22,
+        21,
+        21,
+        168
+      ],
+      "adaptedWorldForward": 151.1183673469388,
+      "adaptedWorldHeight": 152.8163265306123
+    },
+    {
+      "uid": "core__raven",
+      "group": "charge",
+      "side": "left",
+      "action": "charge",
+      "frame": 1,
+      "sheet": {
+        "file": "/workspace/cqc-game-working/cqc-versus-v056/assets/combat-sprites/core__raven/c-left-v1.png",
+        "sha256": "cfb563cd171ec223d8759e776b71e79de94a1d40b728c5624bf0359fa8670942",
+        "bytes": 1725602
+      },
+      "nativePoint": [
+        1096,
+        888
+      ],
+      "actualRGBA": [
+        21,
+        21,
+        23,
+        144
+      ],
+      "adaptedWorldForward": 197.06586102719035,
+      "adaptedWorldHeight": 141.64108761329305
+    }
+  ],
+  "producerSourceContracts": [
+    {
+      "uid": "core__raven",
+      "delivery": {
+        "file": "/workspace/cqc-pass7-generation/raven/FINAL_DELIVERY.json",
+        "sha256": "e8a28b765a222a803c3f20d3c88dea07ed55af11bdce079bb8a7aeb53efc9d9c",
+        "bytes": 30932
+      },
+      "referencePins": [
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/raven/references/ch09_body.jpg",
+            "sha256": "24d152ea360a9c3a1e97d796f8a6e06eb6a24ece8fd96235a51a5c96a8c144ea",
+            "bytes": 41153
+          },
+          "url": "https://www.konami.com/mg/archive/mgs/character/images/ch09_body.jpg",
+          "sourceKind": "official-art-reference",
+          "provenanceLevel": null,
+          "limits": null
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/raven/references/ch09_face.jpg",
+            "sha256": "053f5f86352889508e5bce022ec244c91f77481942271efef1938bfa310850bb",
+            "bytes": 30793
+          },
+          "url": "https://www.konami.com/mg/archive/mgs/character/images/ch09_face.jpg",
+          "sourceKind": "official-art-reference",
+          "provenanceLevel": null,
+          "limits": null
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/raven/references/ps1-raven-16840.png",
+            "sha256": "fa77afa5a4116f8436bb2e8639bb730103a52409f29bce005c5ba70ebd787cb8",
+            "bytes": 375478
+          },
+          "url": "https://archive.org/download/PSXLongplay001MetalGearSolid/PSX_Longplay_001_Metal_Gear_Solid.mp4#t=16840",
+          "sourceKind": "original-game-capture",
+          "provenanceLevel": null,
+          "limits": null
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/raven/references/ps1-raven-16880.png",
+            "sha256": "2eb316b0e533168559ef947d48628311789311a0f11b5cd42697c3baffc2c747",
+            "bytes": 452630
+          },
+          "url": "https://archive.org/download/PSXLongplay001MetalGearSolid/PSX_Longplay_001_Metal_Gear_Solid.mp4#t=16880",
+          "sourceKind": "original-game-capture",
+          "provenanceLevel": null,
+          "limits": null
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/raven/references/ps1-raven-17000.png",
+            "sha256": "15c45eefb65b03a7c30f53a7f17255e326a2b0feac12a4a34cca74e0a9e099e9",
+            "bytes": 510664
+          },
+          "url": "https://archive.org/download/PSXLongplay001MetalGearSolid/PSX_Longplay_001_Metal_Gear_Solid.mp4#t=17000",
+          "sourceKind": "original-game-capture",
+          "provenanceLevel": null,
+          "limits": null
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/raven/references/ps1-raven-17200.png",
+            "sha256": "51a78ac55bc247fbab84959efd99f260bf121617744e8ddc3de2bb2a621ac878",
+            "bytes": 499128
+          },
+          "url": "https://archive.org/download/PSXLongplay001MetalGearSolid/PSX_Longplay_001_Metal_Gear_Solid.mp4#t=17200",
+          "sourceKind": "original-game-capture",
+          "provenanceLevel": null,
+          "limits": null
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/raven/references/ps1-raven-17220.png",
+            "sha256": "869d073dec145b6c8e033da15ed3fd23a1c102ded3b3ff9e2a2a9765b904c706",
+            "bytes": 460798
+          },
+          "url": "https://archive.org/download/PSXLongplay001MetalGearSolid/PSX_Longplay_001_Metal_Gear_Solid.mp4#t=17220",
+          "sourceKind": "original-game-capture",
+          "provenanceLevel": null,
+          "limits": null
+        }
+      ],
+      "declaredLimits": [
+        "Target is 1:1 original MGS1 1998 PlayStation Raven where evidence supports it. Native detailed 2D poses are new authored fighting-game artwork, not extracted PS1 sprites or a certified exact original mesh. Fidelity closest_supported; absolute1to1Certified false.",
+        "Original bald muscular shirtless Raven with forehead raven tattoo, dark crossing military harness, olive cargo trousers, heavy boots, oversized rotary Vulcan cannon and huge rear ammunition pack/feed is supported by viewed original references. No Twin Snakes model, tactical jacket, ordinary assault rifle, pistol, Raging Raven armor or supernatural attack substituted.",
+        "Publisher identifies aircraft Vulcan cannon category. Exact real-world model, barrel count, original PS1 receiver proportions, tiny harness seams, tattoo coordinates, wrist/boot texture and precise hidden reverse feed/grip geometry cannot be certified from these low-resolution views. Left/right native artwork independently reconstructs the same category of apparatus without claiming exact source orthographics.",
+        "Cannon feed/cartridge palette, pack rib details and some outlines vary between independent A/B/C native sheets. Both-facing canonical identity/costume and gear category retained, but exact identical line/palette and every hardware fastener are not certified1:1. There are no runtime image mirrors or destructive image edits.",
+        "All punches, gun-housing strikes, kicks, grapples, jumps, hit/KO, guards, low firing posture, body pivots and animation timing are authored existing Versus adaptation. Original boss evidence establishes carried cannon and walking/firing, not these CQC moves. Shaman/raven lore is not proof of summoned attacking birds, spirit beam, levitation or invulnerability; no such native effects added.",
+        "Heat, cooling, resource costs, armor-brace and salvo counts are authored Versus balancing. FrameC5/6/7 is actual low kneeling horizontal cannon firing for specialForward; standing shoot is C2/3/4 and super is C10/11. Do not reuse standing shoot for low projectiles or claim low/cooling poses are source-extracted original mechanics.",
+        "displayHeight260 and per-sheet standingSourceHeight are authored Canvas readability geometry, not original certified centimetres. Native human feet/body points separate carrier anchoring from very long gun/feed alpha centroid. LOW muzzle suggested world heights approx64left/70right, ordinary muzzle approx154/158 and super approx142/153 using original renderer scale1.12, subject to actual runtime verification.",
+        "Every selected PNG has12 major isolated alpha>80 components and no opaque outer border. Low-alpha/hiddenRGB fringe pixels are retained intact. Some rectangular crops overlap neighboring body pixels; the unchanged historical component contour metadata must clip these at Canvas draw time, never rewrite the PNG.",
+        "The viewer displayed hidden brown RGB underalpha0 on B_LEFT attempts. Full native alpha/components analysis and browser Canvas contacts confirmed background transparent. B_LEFT02 was valid and selected; B_LEFT03 removal tool attempt was unnecessary and is preserved unselected, not falsely claimed an opaque-source fix.",
+        "First 1280-wide preview contacts clipped extended left hands/muzzles at diagnostic canvas border because body-centred cells were too narrow. These screenshots are preserved; later1600-wide complete contacts physically show all72 full poses, using same native PNG and historical contour crops. This was preview geometry only.",
+        "Cannon nose direction stays original facing except the final incapacitated prone silhouette has its own authored lie-down orientation; the firearm is no longer aimed at a target inKO. Do not useKO as a firing origin.",
+        "All reference seeks, failed requests, unselected scans, generation prompts/results and11native attempts are preserved. Scanned Snake, Liquid, codec and warehouse timeline frames are not canonical Raven proof. No complete movie downloaded."
+      ]
+    },
+    {
+      "uid": "core__old_snake",
+      "delivery": {
+        "file": "/workspace/cqc-pass7-generation/old-snake/FINAL_DELIVERY.json",
+        "sha256": "ded892d3839c3c47b32e0f88638d98d19aeb3e0c767aa3f82b37fa5262dcf86e",
+        "bytes": 29524
+      },
+      "referencePins": [
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/old-snake/references/konami-mgs4-ps3-screenshot-01.jpg",
+            "sha256": "c412fe53ea5af978dc9c576f410805f9d939640025d2b44579194cacb253a1e2",
+            "bytes": 25743
+          },
+          "url": "https://www.konami.com/mg/archive/mgs4/jp/images/mgs4-pic01b.jpg",
+          "sourceKind": "official-game-reference",
+          "provenanceLevel": null,
+          "limits": null
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/old-snake/references/konami-mgs4-ps3-screenshot-03.jpg",
+            "sha256": "c9e1e15eb88a787c511f0ffd6a3e0d2bf06cb5ba33c9637350fd67982c4566ce",
+            "bytes": 49409
+          },
+          "url": "https://www.konami.com/mg/archive/mgs4/jp/images/mgs4-pic03b.jpg",
+          "sourceKind": "official-game-reference",
+          "provenanceLevel": null,
+          "limits": null
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/old-snake/references/konami-mgs4-ps3-screenshot-04.jpg",
+            "sha256": "c8cad37a67b12504480035155fab81ef80ca54f45c25a4b1bab6c48434008d99",
+            "bytes": 40345
+          },
+          "url": "https://www.konami.com/mg/archive/mgs4/jp/images/mgs4-pic04b.jpg",
+          "sourceKind": "official-game-reference",
+          "provenanceLevel": null,
+          "limits": null
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/old-snake/references/konami-mgs4-archive-key-art.jpg",
+            "sha256": "3635f32b8831f6624afe29d49bfb035ad6d9982c47c3c1a9e376fd3145186133",
+            "bytes": 72473
+          },
+          "url": "https://www.konami.com/mg/archive/mgs4/jp/images/bg0602.jpg",
+          "sourceKind": "official-game-reference",
+          "provenanceLevel": null,
+          "limits": null
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/old-snake/references/original-ps3-frame-00900s.png",
+            "sha256": "72b57f07a08c2f10d3c400562264606f1783e1a23127f791ba314a5c1622a45e",
+            "bytes": 1127870
+          },
+          "url": "https://archive.org/download/PS3_Longplay_081_Metal_Gear_Solid_4/PS3_Longplay_081_Metal_Gear_Solid_4.mkv#t=900",
+          "sourceKind": "original-game-capture",
+          "provenanceLevel": null,
+          "limits": null
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/old-snake/references/original-ps3-frame-01880s.png",
+            "sha256": "59ecae4cbe1f45de254ffcc288818f79265f17d4cdbadf56c1576626b73aae1e",
+            "bytes": 902273
+          },
+          "url": "https://archive.org/download/PS3_Longplay_081_Metal_Gear_Solid_4/PS3_Longplay_081_Metal_Gear_Solid_4.mkv#t=1880",
+          "sourceKind": "original-game-capture",
+          "provenanceLevel": null,
+          "limits": null
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/old-snake/references/original-ps3-frame-01975s.png",
+            "sha256": "20f9eac1d85d275c4f4d7e078397a8e85a42e30b8973e093abd135ae5ed7ec94",
+            "bytes": 1110267
+          },
+          "url": "https://archive.org/download/PS3_Longplay_081_Metal_Gear_Solid_4/PS3_Longplay_081_Metal_Gear_Solid_4.mkv#t=1975",
+          "sourceKind": "original-game-capture",
+          "provenanceLevel": null,
+          "limits": null
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/old-snake/references/original-ps3-frame-02000s.png",
+            "sha256": "89ddece650cb0890a43534b0fa7757ed6ec91378137e3c3b92f977a7da0cf8cd",
+            "bytes": 957492
+          },
+          "url": "https://archive.org/download/PS3_Longplay_081_Metal_Gear_Solid_4/PS3_Longplay_081_Metal_Gear_Solid_4.mkv#t=2000",
+          "sourceKind": "original-game-capture",
+          "provenanceLevel": null,
+          "limits": null
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/old-snake/references/original-ps3-frame-02100s.png",
+            "sha256": "a036a7e4b75053bf4792923509ca1a34cd4d85cacacd816f36cb058c88068b22",
+            "bytes": 1720702
+          },
+          "url": "https://archive.org/download/PS3_Longplay_081_Metal_Gear_Solid_4/PS3_Longplay_081_Metal_Gear_Solid_4.mkv#t=2100",
+          "sourceKind": "original-game-capture",
+          "provenanceLevel": null,
+          "limits": null
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/old-snake/references/original-ps3-frame-32000s.png",
+            "sha256": "1c053bac2c1a1dfea9f11eea060558f697afdb74b64bffde1df0933eead2a906",
+            "bytes": 1097272
+          },
+          "url": "https://archive.org/download/PS3_Longplay_081_Metal_Gear_Solid_4/PS3_Longplay_081_Metal_Gear_Solid_4.mkv#t=32000",
+          "sourceKind": "original-game-capture",
+          "provenanceLevel": null,
+          "limits": null
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/old-snake/references/original-ps3-frame-32004s.png",
+            "sha256": "29a9a66e2cc38c1d9b34b4f12f9eee5fd7d68710022d04fd576be3d424f3c561",
+            "bytes": 1205494
+          },
+          "url": "https://archive.org/download/PS3_Longplay_081_Metal_Gear_Solid_4/PS3_Longplay_081_Metal_Gear_Solid_4.mkv#t=32004",
+          "sourceKind": "original-game-capture",
+          "provenanceLevel": null,
+          "limits": null
+        }
+      ],
+      "declaredLimits": [
+        "Target is original2008 PS3 MGS4 Old Snake with base gray OctoCamo, bandana and anatomicalLEFT Solid Eye. This is authored detailed 2D combat art and Versus animation, not original PS3 model extraction or absolute1:1 certification. fidelityStatus=closest_supported; original references outrank generated design consistency sheets.",
+        "Primary Konami screenshots establish fitted segmented gray suit, tan webbing, gloves and left-eye optic; original PS3 fullbody frame900 supplies lower legs and dark boots. Fine pouch counts, hidden harness joins, holster underside, exact seams, stitching and laces are partly interpreted. No numeric count or hidden-side model geometry is certified.",
+        "Both orientations are generated independently, mirror=false. ScreenRIGHT exposes bare near anatomicalRIGHT eye; Solid Eye stays on far anatomicalLEFT side and can be hidden. ScreenLEFT exposes the electronic left-eye lens. Rejected A_RIGHT_01 risked a near/right-eye optic and is retained, never approved or repurposed as an OC.",
+        "The gray moustache is retained but its fine hair density and width vary slightly among small generated poses; elderly face/moustache, no beard, original hair and nape remain. Illustration contour/material rendering cannot be pixel-identical to PS3 low-resolution rasterization.",
+        "Original Mk.2 Pistol loadout, long dark cylindrical suppressor shape and NON-LETHAL HUD are supported by original frames2000/2100. Tiny engraving, exact rear sight, magazine/bolt topology and finger contact are not certified. No manufacturer/model beyond original-game MK.2 PISTOL is asserted. Original weapon fired/held by right glove with left support, overlapping support fingers can be occluded.",
+        "CH​AFF G. existence, rectangular HUD silhouette and physical throw arc are source supported at32000/32004. Cyan HUD is NOT physical color evidence. Small dark rectangular canister with short top fitting in C5/C6 is closest-supported authored readability interpretation; precise physical color/fuze/details and source electronic effect remain unresolved by these images. No frag sphere, detonation, smoke or damage effect is drawn. Root owns electronic Versus behavior and any separate prop.",
+        "C7 is a self equipment-check gesture, never an offensive eye laser, hard target lock or psychic attack. On screenRIGHT the near eye stays bare, but occluded far-side exact fingertip-to-optic contact cannot be certified; this drawing establishes a self checking gesture only.",
+        "OctoCamo source changes opaque surface material/pattern in original gameplay; transparent cloak/invisibility is not supported. These native gray body sheets remain opaque body illustration; runtime camo tint/pattern and balanced duration are root-owned authored adaptations, not a source1:1 animation claim.",
+        "CQC jab/elbow/sweep/grab/charge, walk/guard/crouch/jump, hit/KO, reload and exact phase timing are authored Versus poses. CQC identity and pistol category are source supported; exact motion capture frames, numerical damage/stamina/timings and one-pose freeze are not source-extracted mechanics.",
+        "Sources are untouched native RGBA1536x1024 with12 complete major body components each. Low-alpha fringe/residual background remains natively preserved; Canvas contour metadata excludes neighboring poses in close rows. No pixel cleanup, resize, horizontal flip, crop export, repaint or alpha editing occurred. Some near source-edge gutters are narrow but complete alpha>80 body and gear stay on canvas.",
+        "Standing source-height recommendations measure non-low native pose extents for fixed per-sheet scale, not canonical centimetres. Opposite-facing small design/scale differences and final Canvas contours, contact geometry, live gameplay/mobile and phase origins require independent integrator/browser review. Producer delivery does not certify those later checks.",
+        "Fourteen remote single PS3 frames, including searches of unsuitable costume/gameplay views, are retained. Only the seven named original-frame references above are selected; alternate civilian costume1200 and Otacon1950 are research only. No video/movie file downloaded in full and no source image pixels modified."
+      ]
+    },
+    {
+      "uid": "core__quiet",
+      "delivery": {
+        "file": "/workspace/cqc-pass7-generation/quiet/FINAL_DELIVERY.json",
+        "sha256": "a63b81820027168983ed4cfe6a4a36c50140d0ffe226a85235c2247969683264",
+        "bytes": 22779
+      },
+      "referencePins": [
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/quiet/references/quiet-steam-original-20-full.jpg",
+            "sha256": "b55f73cbb079ed752044cbf4ab9d86d39a3a21b12499f9dad83924b2800afae6",
+            "bytes": 2353031
+          },
+          "url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/287700/ss_558a2d12daf8e683b605d4a417aa3412c0a7792d.1920x1080.jpg?t=1778872866",
+          "sourceKind": "original-game-capture",
+          "provenanceLevel": "primary_official_store_original_game_screenshot",
+          "limits": "Official original Steam game capture; Steam20 player AM MRS-4 HUD does NOT identify Quiet weapon. Steam21 rear actor blurred."
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/quiet/references/quiet-steam-original-21-full.jpg",
+            "sha256": "387565bc6a9e2986c2b330c0d2bce1064a119e14d3acda43ba4552ff32327283",
+            "bytes": 861497
+          },
+          "url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/287700/ss_70d786ca18e4a78f6ba33f6d219584f825e0571c.1920x1080.jpg?t=1778872866",
+          "sourceKind": "original-game-capture",
+          "provenanceLevel": "primary_official_store_original_game_screenshot",
+          "limits": "Official original Steam game capture; Steam20 player AM MRS-4 HUD does NOT identify Quiet weapon. Steam21 rear actor blurred."
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/quiet/references/quiet-official-render-front.png",
+            "sha256": "aa2028274d4bde7bcf897a6c4bbff26324a4c9689f40ea82ac6ae969d0118931",
+            "bytes": 286651
+          },
+          "url": "https://www.game-art-hq.com/wp-content/uploads/2015/11/Quiet-MGSV-Render.png",
+          "sourceKind": "original-game-model",
+          "provenanceLevel": "secondary_mirror_claimed_original_game_render_publisher_url_not_recovered",
+          "limits": "Secondary mirror claimed original-model render; original publisher URL not recovered. Supplementary anatomy/outfit evidence only, not primary-certified asset."
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/quiet/references/quiet-official-render-back.png",
+            "sha256": "ba3d3c988a1ded3677db35e7a1056ab1d40ace701fdd453f1bb951f7d62cd6ad",
+            "bytes": 284837
+          },
+          "url": "https://www.game-art-hq.com/wp-content/uploads/2015/11/Quiet-MGSV-Render-Art-Back.png",
+          "sourceKind": "original-game-model",
+          "provenanceLevel": "secondary_mirror_claimed_original_game_render_publisher_url_not_recovered",
+          "limits": "Secondary mirror claimed original-model render; original publisher URL not recovered. Supplementary anatomy/outfit evidence only, not primary-certified asset."
+        }
+      ],
+      "declaredLimits": [
+        "1:1 original 2015 MGSV TPP default adult Quiet is the target. New 2D detailed cel-shaded art and 72 authored Versus poses are closest_supported, not extracted Fox Engine sprites, original animation data or absolute1to1 certification.",
+        "Original official Steam20 confirms exposed neckline/torso, dark tied front top, olive harness, brown tied ponytail and long BLACK LEFT arm protection; original Steam21 is background context only. Secondary original-model mirrors supplement fullbody torn dark hosiery, shorts, dark laceup ankle boots, LEFT olive hip pouch and RIGHT thigh holster. Publisher source for mirrored renders not recovered; original primary all-side topology not certified.",
+        "All facings independently generated; no PNG reflection, runtime body mirroring, resizing, recoloring, alpha cleanup, raster editing or crop/export performed. Native hidden RGB red/yellow fringe is alpha1-7 except single faint A-right pixel; physically viewed browser Canvas green/black composition at230px is clean. Small opaque red hip equipment agrees supplied reference; no red waist band approved.",
+        "Rifle is ONE conventional long slender exposed-barrel bolt sniper with large black scope, silver bolt and skeletal black stock visually supported by official Steam20; exact selected weapon alias/upgrade/internal workings not established by original inventory/frame. Wicked/Guilty RENOV-ICKX aliases have only a preserved secondary2015Steam discussion, so no alias1:1 certification. Player HUD AM MRS-4 is excluded as identification. No new railgun, psychic energy, suppressor, anti-material or tranquilizer weapon depicted.",
+        "shoot, deploy and charge use the SAME visually supported conventional rifle. deploy is a crouched aimed shot adaptation, not certified Guilty Butterfly tranquilizer. charge precision/super is conventional rifle recoil, not rail/beam. Ammo, five-round capacity,50metercost, damage and exact timings are authored versus balancing to be independently checked by integrator; no unlimited/freemmo canon claim.",
+        "Anatomical asymmetries remain intended original LEFT long black sleeve, RIGHT bare forearm/short olive glove and RIGHT thigh holster/LEFT hip pouch. Forward supporting sleeve and bare trigger-arm overlap partly hides finger topology and exact shoulder/stock contact. Fine materials, eye color, holes/pouch counts, hidden buckles/seams and precise hand dominance in every pose are not certified at source resolution.",
+        "Normal CQC punches/palm/sweep, throws, jump/guard, reload/recovery, precision pose and recoil are authored readable fighting-game adaptations. Parasite-assisted cloak/movement belongs to gameplay helper; no psi aura, rail blast or source-extracted teleport duration. Optic action uses the rifle own scope, not invented binocular gear.",
+        "Standing source heights from physically observed upright head-to-boot silhouettes are fixed per sheet; crouch and KO retain naturally short native pose geometry. Crouched rifle muzzle origins are the actual visible pixels, not artificially lowered to claim guaranteed crouching contact; trajectory/collision must be independently tested.",
+        "Some close native row cells have adjacent body pixels inside wide crops. Existing generic read-only component/Canvas contour metadata excludes foreign bodies; no native pixels changed. Source-scale differences and asymmetrical light/shading remain illustration approximation and are explicitly closest_supported.",
+        "C_LEFT01 rejected mixed right aims;02 rejected sixth figure faced right;03 fixed direction but93 opaque bottom-edge boot pixels indicated clipping;04 complete directions/feet but noncanonical vivid red waist belt;05 repaired belt with image_gen and is selected. All four rejected native outputs/args/SHA retained, no OC created.",
+        "Producer approval is for six physically viewed PNG body sheets/72pose cells and supplied provenance. Independent runtime/mobile/phase/ammo/contact validation is pending root/integrator, not certified by generation."
+      ]
+    },
+    {
+      "uid": "archive__skull_face",
+      "delivery": {
+        "file": "/workspace/cqc-pass7-generation/skull-face/FINAL_DELIVERY.json",
+        "sha256": "97c44d4982d6d2b20ba075a88d03cba85ee13d54fe0d4f17338ab699f1272d6c",
+        "bytes": 27562
+      },
+      "referencePins": [
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/skull-face/references/skull-face-psn.jpg",
+            "sha256": "48e5ca936a460839a07f2f7c68069a8d4d8620c664324b7f7dd6970a617cb396",
+            "bytes": 67034
+          },
+          "url": "https://image.api.playstation.com/cdn/UP0101/CUSA01140_00/doKmjR2srvfPW1dnp4l1sGKKvF7ub9bP.png",
+          "sourceKind": "official-game-reference",
+          "provenanceLevel": null,
+          "limits": null
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/skull-face/references/ps4-tpp-part5-6900s.jpg",
+            "sha256": "87c9698b3e17111da62502aae5597bbf02fd5da7bdeed5cb2a38702861a4cb18",
+            "bytes": 98413
+          },
+          "url": "https://archive.org/download/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain_Part_5.mp4",
+          "sourceKind": "original-game-capture",
+          "provenanceLevel": null,
+          "limits": null
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/skull-face/references/ps4-tpp-part5-6920s.jpg",
+            "sha256": "9b884336cd55509b55567be4ada0ee518fe00fc205e690dc1628e8bf5f7ade75",
+            "bytes": 135359
+          },
+          "url": "https://archive.org/download/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain_Part_5.mp4",
+          "sourceKind": "original-game-capture",
+          "provenanceLevel": null,
+          "limits": null
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/skull-face/references/ps4-tpp-part5-7000s.jpg",
+            "sha256": "840dfe733b5d218f884b18262b2968e23faee4befba37b5af21e9422bb815b32",
+            "bytes": 303604
+          },
+          "url": "https://archive.org/download/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain_Part_5.mp4",
+          "sourceKind": "original-game-capture",
+          "provenanceLevel": null,
+          "limits": null
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/skull-face/references/ps4-tpp-part5-7050s.jpg",
+            "sha256": "4cbde17b0c3444de1b128660ec5a1f53b2007ec4a5ac42f2612a1735a2140871",
+            "bytes": 197451
+          },
+          "url": "https://archive.org/download/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain_Part_5.mp4",
+          "sourceKind": "original-game-capture",
+          "provenanceLevel": null,
+          "limits": null
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/skull-face/references/ps4-tpp-part5-7090s.jpg",
+            "sha256": "5196ced4a3882c998f3b777c95c4e925b536c8ace4f1b47a4902085580be8622",
+            "bytes": 191306
+          },
+          "url": "https://archive.org/download/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain_Part_5.mp4",
+          "sourceKind": "original-game-capture",
+          "provenanceLevel": null,
+          "limits": null
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/skull-face/references/ps4-tpp-part5-7110s.jpg",
+            "sha256": "8fc270aa91896902886d38fb0a8bd2bfc213ab42ffaff5da73973136bb0d469d",
+            "bytes": 184577
+          },
+          "url": "https://archive.org/download/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain_Part_5.mp4",
+          "sourceKind": "original-game-capture",
+          "provenanceLevel": null,
+          "limits": null
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/skull-face/references/ps4-tpp-part5-7350s.jpg",
+            "sha256": "acb036ddf160d67f5b6995b1f5e47630239132e797f83632bb46052f8d07c2ac",
+            "bytes": 95694
+          },
+          "url": "https://archive.org/download/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain_Part_5.mp4",
+          "sourceKind": "original-game-capture",
+          "provenanceLevel": null,
+          "limits": null
+        },
+        {
+          "pin": {
+            "file": "/workspace/cqc-pass7-generation/skull-face/references/ps4-tpp-part5-7700s.jpg",
+            "sha256": "6d935b475d39eb7bd7016fe07ad37e06758744a7ee2610055a1e8c05b6e06b6c",
+            "bytes": 95523
+          },
+          "url": "https://archive.org/download/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain_Part_5.mp4",
+          "sourceKind": "original-game-capture",
+          "provenanceLevel": null,
+          "limits": null
+        }
+      ],
+      "declaredLimits": [
+        "Target remains1:1 source-specific original2015 TPP. These newly painted2D poses are closest_supported adaptations of original3D references, never extracted source animation, absolute pixel/model/material identity or absolute1:1 certification.",
+        "Selected costume is original TPP scarred living HUMAN face, domino mask, fedora, thigh-length formal coat/waistcoat, beige-grey collar and dark tie, full black gloves, loose trousers tucked into tall black western boots. No literal skeleton, undead skull, parasite-soldier armor, flaming Volgin attributes or Diamond Dogs diamond.",
+        "Dark source cutscene lighting partly occludes seams, reverse details and precise boot leather/sole stitching. Source gold XOF chest crest and scar relief remain interpreted at sprite scale; exact crest lettering, badge pixel placement, scar topology, finger count in occlusion and material response are not certified1:1. C LEFT final preserves distinctive scar lines but fine relief is softer than high-resolution official portrait.",
+        "Original full body sources show a partly obscured item by anatomical right thigh; they do NOT establish its precise firearm model or personal shooting use. IMFDB TPP www/apex/http all returned403 and no full verified weapon capture was recovered. Neither absence of every weapon in canon nor a generic pistol, Mare’s Leg or personal volley is certified. Selected empty-handed dialogue-derived posture conservatively omits unresolved holstered detail. No firearm/grenade is invented in any native pose.",
+        "All normal strikes, bounded jump, guard, crouch, physical grab, hit/KO and stamina recovery are authored versus adaptations. Source dialogue supports grounded human gestures, not an actual canonical duel, magic marking power, ballistic finger muzzle or supernatural shield. Gameplay/profile consistency and explicit simulation wording remain independent integrator responsibilities.",
+        "C shoot is only the existing sprite action key for non-ballistic designation0..2; deploy3..5 is guarded posture without deployed ordnance; throw6..8 is authored physical CQC control; recover9..11 restores composure/effort and never loads a firearm. Super may use throw/heavy for explicitly authored melee. Hand marks are gesture landmarks, not ballistic origins.",
+        "Both facings independently generated; no mirrored raster or runtime body reflection. Twelve figures per selected sheet physically inspected. A LEFT1 rejected mixed directions; C LEFT1 rejected extra tiny lapel mark, C LEFT2 edit did not clearly remove it and softened scars; C LEFT3 fixed lapel policy but cell6 facedRIGHT; C LEFT4 final corrects that sole direction through image_gen. All ten generated native PNGs, exact prompts and rejected originals preserved, no extra OC.",
+        "Pillow/NumPy/SciPy inspect alpha/hash/components and describe Canvas rectangles/pivots only, no pixels edited. Native sub-alpha8 fringes and RGB remain untouched. Fixed source upright height prevents crouch/KO stretching; actual hitboxes/camera/mobile/phase validation belongs to integrator."
+      ]
+    }
+  ],
+  "independentPhysicalReview": {
+    "originalReferenceImagesViewed": [
+      {
+        "file": "/workspace/cqc-pass7-generation/old-snake/references/original-ps3-frame-02100s.png",
+        "sha256": "a036a7e4b75053bf4792923509ca1a34cd4d85cacacd816f36cb058c88068b22",
+        "bytes": 1720702
+      },
+      {
+        "file": "/workspace/cqc-pass7-generation/quiet/references/quiet-steam-original-20-full.jpg",
+        "sha256": "b55f73cbb079ed752044cbf4ab9d86d39a3a21b12499f9dad83924b2800afae6",
+        "bytes": 2353031
+      },
+      {
+        "file": "/workspace/cqc-pass7-generation/raven/references/ps1-raven-17000.png",
+        "sha256": "15c45eefb65b03a7c30f53a7f17255e326a2b0feac12a4a34cca74e0a9e099e9",
+        "bytes": 510664
+      },
+      {
+        "file": "/workspace/cqc-pass7-generation/skull-face/references/ps4-tpp-part5-7110s.jpg",
+        "sha256": "8fc270aa91896902886d38fb0a8bd2bfc213ab42ffaff5da73973136bb0d469d",
+        "bytes": 184577
+      }
+    ],
+    "nativeCActionSheetsViewed": [
+      {
+        "file": "/workspace/cqc-pass7-generation/old-snake/sources/C_RIGHT_01.png",
+        "sha256": "d0d258d11244864bac49cd73c536e44c284bc2b90b0a74610723da17600920cf",
+        "bytes": 2343665
+      },
+      {
+        "file": "/workspace/cqc-pass7-generation/old-snake/sources/C_LEFT_01.png",
+        "sha256": "64696a91063626b6df3a3cb21d5da403709799ef9bae2017efde5b7711a176dd",
+        "bytes": 2423980
+      },
+      {
+        "file": "/workspace/cqc-pass7-generation/quiet/native-attempts/C_RIGHT_01.png",
+        "sha256": "173d22db6a9e56607ef197f103b8eb76c80748c3830f237c47669390fd839598",
+        "bytes": 2095223
+      },
+      {
+        "file": "/workspace/cqc-pass7-generation/quiet/native-attempts/C_LEFT_05.png",
+        "sha256": "bdcef215a03ac553dcce2b8a1bb0de68d9df11f5238cad9c5a712bfce7e2dba6",
+        "bytes": 2239636
+      },
+      {
+        "file": "/workspace/cqc-pass7-generation/raven/native-attempts/C_RIGHT_02.png",
+        "sha256": "232be64678b8ae7043cbe9452966794c856bbbe3c3006e5e73a64098dbb6fa0a",
+        "bytes": 1843248
+      },
+      {
+        "file": "/workspace/cqc-pass7-generation/raven/native-attempts/C_LEFT_02.png",
+        "sha256": "cfb563cd171ec223d8759e776b71e79de94a1d40b728c5624bf0359fa8670942",
+        "bytes": 1725602
+      },
+      {
+        "file": "/workspace/cqc-pass7-generation/skull-face/sources/C_RIGHT_01.png",
+        "sha256": "a137f9adcc0f477fb9e1c30c47f46eb1e912275d7e45e9679e355dc1a778a948",
+        "bytes": 1922046
+      },
+      {
+        "file": "/workspace/cqc-pass7-generation/skull-face/sources/C_LEFT_04.png",
+        "sha256": "8277c36651fa5f12912cf92b5bc4c51f59b2b22964241582bfb27cacd0d88b24",
+        "bytes": 2090482
+      }
+    ],
+    "nativeCPosesViewed": 96,
+    "scope": "Independent review of all four source-action C sheets in both faces, visible weapons/hands and original-reference limits. All24A/B/C sheets and288poses are independently integrated/reviewed by root; this reviewer does not claim that broader physical review."
+  },
+  "verifiedCorrections": [
+    "Finisher native muzzle/hand mapping converts gameplay1.12 to actor1.23 with ratio1.23/1.12; six scenes both directions are regression tested.",
+    "Source origins are guarded against mismatched action, SHA, first active frame, rect, pivot, fixed upright source height, outside-crop points and unreviewed/transparent landmark metadata. Historical PASS4 helper untouched.",
+    "Skull Face leftover weapon-butt move label replaced with explicit empty-handed CQC simulation.",
+    "Sixteen real first activations from native-source pixels,28real standing/crouching ballistic contact matchups, and350otherprofiles retain scope."
+  ],
+  "knownLimits": [
+    {
+      "id": "quiet-low-facing-contact",
+      "status": "open-authored-pose-balance",
+      "observation": "Quiet specialDown RIGHT muzzle is134.82573099415205worldpx above floor; LEFT122.05840220385674. With the current121.9px crouching body and swept bullet half-height7, RIGHT misses crouch and LEFT touches it. Both hit standing. The source point was not moved and trajectory was not invented to force contact.",
+      "nextStep": "If balanced symmetric crouching coverage is desired, regenerate/review the authored low-shot pose against original conventional rifle references while preserving old attempts, then remeasure all phases and contacts. These are authored versus silhouettes, not extracted original Fox Engine rigs."
+    },
+    {
+      "id": "source-limited-quiet-model",
+      "status": "original-inventory-reference-missing",
+      "observation": "Steam20 proves conventional long scoped rifle shape; player HUD AM MRS-4 is not Quiet weapon identification. Supplemental renders remain qualified secondary mirrors. No Wicked/Guilty alias or tranquillizing rifle is certified."
+    },
+    {
+      "id": "old-snake-chaff-and-octocamo",
+      "status": "closest-supported-versus-adaptation",
+      "observation": "Original PS3 HUD proves Mk.2 NON-LETHAL and Chaff item/throw category. Canister physical colour/fuse/electronic effect duration remain source-limited. OctoCamo body is opaque, original dynamic surface-matching texture remains unfinished. Shared eight-unit resource with two units spent for a Chaff throw is an authored versus budget, not separate original inventory counts."
+    },
+    {
+      "id": "skull-face-personal-firearm",
+      "status": "source-proof-missing",
+      "observation": "TPP dialogue costume/hand gesture is supported. Personal firearm shape, shooting animations, and canonical duel are not established; command, defense and empty-handed CQC stay expressly bonus simulation."
+    },
+    {
+      "id": "dynamic-reapply-old-origins",
+      "status": "unused-api-limitation",
+      "observation": "PASS7 apply runs once against the immutable runtime catalog. Reapplying it to fighters already patched while substituting invalid anchors can retain their previously accepted origins; dynamic catalog reconfiguration is unsupported by the current flow. Fresh raw fighters reject invalid origins, as tested."
+    }
+  ],
+  "combatQA": {
+    "file": "/workspace/cqc-pass7-source-combat-review-final-ui/COMBAT_FIDELITY_QA.json",
+    "sha256": "a301d6ba078896156fe0cb778508ed2b5fa8e4cbebb8c3c564dd2eaf7a410192",
+    "bytes": 4156
+  },
+  "absolute1to1Certified": false,
+  "fidelityStatus": "closest_supported",
+  "generatedRasterEditing": false,
+  "mobileLabelOnlyQA": {
+    "file": "/workspace/cqc-pass7-source-combat-review-final-ui/MOBILE_HUD_LABEL_ONLY_QA.json",
+    "sha256": "afe444fcaeb2e0c3debd8c567f6e18ccae7a3b2206e194eabb5b7c37f8768a13",
+    "bytes": 617
+  },
+  "priorIndependentSourceReview": {
+    "file": "/workspace/cqc-pass7-source-combat-review/SOURCE_COMBAT_REVIEW.json",
+    "sha256": "515e12c614d62b3cbf92cd14cf6ac92121c8cf0af5cbc8870c4a2595d857ed0e",
+    "bytes": 63771
+  },
+  "physicalReviewReuse": "Original-reference and96nativeC-pose observations made for the prior review remain applicable: all12physically viewed images are byte-identical. This fresh115-assertion execution rechecks every source pixel/reference/hash/engine invariant against the new helper pin. Mobile final Canvas is reviewed separately by root.",
+  "singleUIChange": {
+    "oldLabel": "EFFORT DE COMMANDEMENT · SIMULATION",
+    "newLabel": "Effort XOF",
+    "maxHUDLabelCharacters": 12,
+    "actualHUDLabelCharacters": 10,
+    "mechanicsChanged": false,
+    "initialReviewAndReportsPreserved": true
+  }
+}

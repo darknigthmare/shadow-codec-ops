@@ -1,0 +1,135 @@
+'use strict';
+// Source/phase contracts only. Real browser pixels and artist fidelity are reviewed separately.
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),vm=require('node:vm');
+const R=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(R,p)),json=p=>JSON.parse(read(p)),hash=b=>crypto.createHash('sha256').update(b).digest('hex'),digest=p=>hash(read(p));
+const catalog=json('data/combat-sprite-catalog-v1.json'),old=json('recovery/pass7-before-source-integration/data/combat-sprite-catalog-v1.json'),backup=json('recovery/pass7-before-source-integration/MANIFEST.json');
+const raw=json('data/unified-roster-v053.json'),profiles=json('data/combat-profiles-v053.json'),finishers=json('data/finishers-v053.json');
+const api=require('../src/cqc-sprite-renderer.js'),pass4=require('../src/cqc-pass4-combat-fidelity.js'),pass7=require('../src/cqc-pass7-combat-fidelity.js');
+global.CQC_PASS4_COMBAT_FIDELITY=pass4;
+const UIDS=['core__raven','core__old_snake','core__quiet','archive__skull_face'];
+const folders={core__raven:'raven',core__old_snake:'old-snake',core__quiet:'quiet',archive__skull_face:'skull-face'};
+const sets=e=>[...Object.values(e.actions),...Object.values(e.oppositeActions||{})],frames=e=>sets(e).flatMap(a=>a.frames);
+const distinct=e=>new Map(frames(e).map(f=>[JSON.stringify([f.file,f.rect]),f])),files=e=>new Set(frames(e).map(f=>f.file));
+const review=uid=>json('preparation/combat-sprites-pass7/'+uid+'/FINAL_IMPORT_REVIEW.json');
+const sourcePath=p=>{
+  if(fs.existsSync(p))return p;
+  const prefix='/workspace/cqc-pass7-generation/';
+  if(p.startsWith(prefix)){const local=path.join(R,'preparation/reprise-pass7-provenance/generation',p.slice(prefix.length));if(fs.existsSync(local))return local;}
+  throw new Error('Selected producer source not preserved: '+p);
+};
+const png=file=>{const b=read(file);assert.equal(b.subarray(0,8).toString('hex'),'89504e470d0a1a0a');assert.equal(b.subarray(12,16).toString(),'IHDR');return {width:b.readUInt32BE(16),height:b.readUInt32BE(20),depth:b[24],type:b[25]};};
+
+test('the complete pinned PASS6 catalog backup retains its delivered bytes and all 22 existing entries',()=>{
+  const row=backup.files.find(f=>f.path==='data/combat-sprite-catalog-v1.json');assert(row);assert.equal(digest(row.backup),row.sha256);assert.equal(read(row.backup).length,row.bytes);
+  assert.equal(row.sha256,'4f1d5752af663b3229a01369245f7acacb76d82e714543e85978ec006940f770');
+  assert.equal(Object.keys(old.entries).length,22);for(const [uid,e]of Object.entries(old.entries))assert.deepEqual(catalog.entries[uid],e,uid);
+  const all=new Set(Object.values(old.entries).flatMap(e=>[...files(e)]));assert.equal(all.size,132);assert.equal(Object.values(old.entries).reduce((n,e)=>n+distinct(e).size,0),1584);
+  for(const e of Object.values(old.entries))for(const f of distinct(e).values())assert.equal(digest(f.file),f.sha256,f.file);
+});
+
+test('the shipped JSON and file:// JavaScript catalog expose the same 26 renderer-accepted entries',()=>{
+  assert.equal(Object.keys(catalog.entries).length,26);assert.deepEqual(api.configure(catalog),{accepted:26,rejected:[]});
+  const box={};vm.createContext(box);vm.runInContext(read('src/cqc-sprite-catalog.js').toString(),box);
+  assert.deepEqual(JSON.parse(JSON.stringify(box.CQC_COMBAT_SPRITE_CATALOG)),catalog);
+  assert.deepEqual(Object.keys(catalog.entries).filter(uid=>!(uid in old.entries)).sort(),UIDS.slice().sort());
+});
+
+test('all original 354 roster profiles and 1,416 finishers remain byte-exact source data',()=>{
+  assert.equal(digest('data/unified-roster-v053.json'),'68fdbbd78c7abb88a737f0e62abf58e4c39847d3edd839e0ac64d4f5cdcc242d');
+  assert.equal(digest('data/finishers-v053.json'),'fd0e0c7d0b68c983ae11359d18825b5172b63eddc1fa2fd3ba250f0b55639763');
+  assert.equal(raw.fighters.length,354);assert.equal(new Set(raw.fighters.map(f=>f.uid)).size,354);assert.equal(Object.keys(profiles.profiles).length,354);
+  assert.equal(Object.keys(finishers.profiles).length,354);assert.equal(Object.values(finishers.profiles).reduce((n,p)=>n+p.finishers.length,0),1416);
+  for(const f of raw.fighters)assert.deepEqual(profiles.profiles[f.uid],f.combat,f.uid);
+});
+
+test('the entire native catalog has 156 distinct native PNG paths and 1,872 independent source poses',()=>{
+  const all=new Set();let poses=0;for(const e of Object.values(catalog.entries)){poses+=distinct(e).size;for(const file of files(e))all.add(file);}
+  assert.equal(all.size,156);assert.equal(poses,1872);for(const file of all){const h=png(file);assert(h.width>0&&h.height>0);assert.equal(h.type,6);assert.equal(h.depth,8);}
+});
+
+for(const uid of UIDS){
+  test(uid+': six independent native sheets preserve 72 complete source-pose contracts without mirroring',()=>{
+    const e=catalog.entries[uid],r=review(uid),sources=new Map(r.sourceFiles.map(s=>[s.file,s.source]));
+    assert.equal(e.uid,uid);assert.equal(e.facing,1);assert.equal(e.mirror,false);assert.equal(e.coverage,'action-frames');assert.equal(distinct(e).size,72);assert.equal(files(e).size,6);assert.equal(sources.size,6);
+    assert.equal(new Set([...files(e)].map(digest)).size,6,'left/right must be independent native bytes');
+    for(const [file,source]of sources){assert(file.startsWith('assets/combat-sprites/'+uid+'/'));assert.equal(digest(file),hash(fs.readFileSync(sourcePath(source))),file);assert(e.sourceFrameHeights[file]>0);}
+    for(const face of [1,-1]){
+      const actions=face===1?e.actions:e.oppositeActions;assert.equal(new Set(Object.values(actions).flatMap(a=>a.frames.map(f=>JSON.stringify([f.file,f.rect])))).size,36);
+      for(const a of Object.values(actions))for(const f of a.frames){
+        assert(f.file.includes(face===1?'-right-':'-left-'),f.file);assert.equal(digest(f.file),f.sha256);const h=png(f.file),[x,y,w,height]=f.rect;
+        assert([x,y,w,height].every(Number.isInteger));assert(x>=0&&y>=0&&w>0&&height>0&&x+w<=h.width&&y+height<=h.height);
+        assert(f.pivot.length===2&&f.pivot.every(v=>Number.isFinite(v)&&v>=0&&v<=1));
+        if(f.clipPolygon){assert(f.clipPolygon.length>=3);for(const p of f.clipPolygon)assert(p.length===2&&p.every(v=>Number.isFinite(v)&&v>=0&&v<=1));}
+      }
+    }
+  });
+  test(uid+': all ten real move slots and seven states select reviewed frames in both facings',()=>{
+    const e=catalog.entries[uid];assert.deepEqual(Object.keys(e.actionMap).sort(),Object.keys(profiles.profiles[uid].moves).sort());assert.equal(Object.keys(e.actionMap).length,10);
+    for(const actions of [e.actions,e.oppositeActions]){
+      for(const state of ['idle','guard','walk','crouch','jump','hit','ko'])assert(actions[state]?.frames.length,uid+' '+state);
+      for(const [slot,action]of Object.entries(e.actionMap))for(const phase of ['startup','active','recovery'])for(const progress of [0,.5,.999,1]){
+        const mapped=e.phaseMap[action]?.[phase],actionTime=progress*actions[action].frames.length/actions[action].fps;
+        const chosen=api.selectFrame({...e,actions},{moveSlot:slot,animationActive:true,attackPhase:phase,phaseProgress:progress,actionTime});
+        assert.equal(chosen.action,action);if(mapped){assert(mapped.length);assert(mapped.includes(chosen.index));}else{assert.equal(action,'walk');assert.equal(actions[action].loop,true);assert(actions[action].fps>0);assert.equal(chosen.index,Math.floor(actionTime*actions[action].fps)%actions[action].frames.length);}
+        assert.equal(chosen.frame,actions[action].frames[chosen.index]);
+      }
+    }
+  });
+  test(uid+': the imported entry exactly matches its physical integration approval and native source geometry',()=>{
+    const e=catalog.entries[uid],r=review(uid);assert.deepEqual(e,r.entry);assert.equal(r.sourceFiles.length,6);assert.equal(r.technicalReview.length,6);
+    const physical=r.providedIntegratorVisualReview;assert.equal(physical.uid,uid);assert.equal(physical.status,'approved');assert.equal(physical.fidelityStatus,'closest_supported');assert.equal(physical.absolute1to1Certified,false);
+    assert.equal(Object.keys(physical.sources).length,6);assert(physical.originalReferencesPhysicallyViewed.length>0);
+    for(const row of r.technicalReview){const file=[...files(e)].find(f=>f.endsWith('/'+row.key+'-v1.png'));assert(file,row.key);const h=png(file);
+      assert.equal(digest(file),row.sha256);assert.deepEqual(row.nativeDimensions,[h.width,h.height]);assert.equal(row.completeObservedPoseBodies,12);assert.equal(row.unchangedSourceImage,true);assert.equal(row.standingSourceHeight,e.sourceFrameHeights[file]);
+      assert.equal(physical.sources[row.key].sha256,row.sha256);assert.equal(physical.sources[row.key].completeBodyAndWeaponViewed,true);
+    }
+  });
+  test(uid+': reviewed references retain exact provenance bytes and declare the limits of canonical fidelity',()=>{
+    const e=catalog.entries[uid],r=e.review;if(r.uid!==undefined)assert.equal(r.uid,uid);assert.equal(review(uid).providedIntegratorVisualReview.uid,uid);assert.equal(r.status,'approved');assert.equal(r.fidelityStatus,'closest_supported');assert.equal(r.absolute1to1Certified,false);assert(r.limits.length>0);
+    for(const key of ['identity','costume','equipment','anatomicalSides','singleFigure','transparentBackground'])assert.equal(r.checks[key],true);
+    assert(r.sources.length>0);assert(r.sources.some(s=>s.sourceKind==='original-game-capture'||s.sourceKind==='official-game-reference'));
+    for(const s of r.sources){assert.match(s.url,/^https:\/\//);assert.equal(digest(s.file),s.sha256,s.file);assert.equal(read(s.file).length,s.bytes);assert.equal(s.viewed,true);}
+    const text=e.game+' '+e.incarnation;
+    if(uid==='core__raven'){assert.match(text,/MGS1|Metal Gear Solid \(?1998/i);assert.match(text,/PS1|PlayStation/i);}
+    if(uid==='core__old_snake'){assert.match(text,/MGS4|Metal Gear Solid 4/i);assert.match(text,/PS3|PlayStation\s*3/i);}
+    if(uid==='core__quiet'||uid==='archive__skull_face')assert.match(text,/Phantom Pain|TPP/i);
+  });
+}
+
+test('exact incarnation routing rejects different Raven, Old Snake, Quiet and Skull Face aliases',()=>{
+  api.configure(catalog);
+  const aliases={core__raven:['roster51__raven_tts'],core__old_snake:['archive__old_snake_touch','npc53__old_snake_mpo_plus'],core__quiet:['npc53__quiet_mgo3'],archive__skull_face:['npc53__skull_face_gz']};
+  for(const [uid,list]of Object.entries(aliases))for(const alias of list){assert.equal(api.validateEntry(alias,catalog.entries[uid]),false);assert.equal(api.status(alias).renderer,'procedural-canvas');}
+});
+
+test('all sixteen ballistic and launch marks bind to the first active native frame and both exact source facings',()=>{
+  const origin=json('preparation/combat-sprites-pass7/SOURCE_COMBAT_ORIGINS.json'),box={};vm.createContext(box);vm.runInContext(read('src/cqc-pass7-native-origins.js').toString(),box);
+  assert.deepEqual(JSON.parse(JSON.stringify(box.CQC_PASS7_NATIVE_ORIGINS)),origin.entries);
+  assert.deepEqual(origin.pendingUIDs,[]);assert.deepEqual(origin.completeUIDs.slice().sort(),UIDS.slice().sort());
+  let n=0,groups=0;for(const uid of UIDS){const e=catalog.entries[uid],marks=origin.entries[uid]||{};assert.deepEqual(Object.keys(marks).sort(),Object.keys(pass7.slots[uid]).sort());
+    for(const [action,pair]of Object.entries(marks)){groups++;assert.deepEqual(Object.keys(pair).sort(),['left','right']);const measured=pass4.origins(e,pair);assert(measured);
+      for(const [side,face]of [['right',1],['left',-1]]){const m=pair[side],f=(face===1?e.actions:e.oppositeActions)[m.action].frames[m.frame],h=png(m.file);n++;
+        for(const slot of pass7.slots[uid][action])assert.equal(m.action,e.actionMap[slot]);assert.equal(m.frame,e.phaseMap[m.action].active[0]);assert.equal(m.file,f.file);assert.equal(m.sha256,f.sha256);assert.equal(digest(m.file),m.sha256);assert.deepEqual(m.rect,f.rect);assert.deepEqual(m.pivot,f.pivot);
+        assert.equal(m.physicallyViewed,true);assert(m.sourcePixelAlpha>0);assert(m.point.every(Number.isInteger));const [x,y,w,height]=f.rect;assert(m.point[0]>=x&&m.point[0]<x+w&&m.point[1]>=y&&m.point[1]<y+height);assert(m.point[0]<h.width&&m.point[1]<h.height);
+        assert.equal(m.sourceFrameHeight,e.sourceFrameHeights[m.file]);assert.equal(m.engineBodyScale,1.12);assert(Math.abs(measured[face].forward-m.adaptedWorldForward)<1e-8);assert(Math.abs(measured[face].height-m.adaptedWorldHeight)<1e-8);
+      }
+    }
+  }assert.equal(groups,8);assert.equal(n,16);assert.deepEqual(origin.entries.archive__skull_face||{},{});
+});
+
+test('a mismatched source SHA or frame cannot replace an authored fallback launch origin',()=>{
+  const anchors=json('preparation/combat-sprites-pass7/SOURCE_COMBAT_ORIGINS.json').entries;
+  for(const uid of UIDS)for(const [action,slots]of Object.entries(pass7.slots[uid])){
+    const wrong=structuredClone(anchors);wrong[uid][action].right.sha256='0'.repeat(64);assert.equal(pass4.origins(catalog.entries[uid],wrong[uid][action]),null);
+    const wrongFrame=structuredClone(anchors[uid][action]);wrongFrame.left.frame=999;assert.equal(pass4.origins(catalog.entries[uid],wrongFrame),null);
+    const fallback=structuredClone(raw.fighters),invalid=structuredClone(raw.fighters),correct=structuredClone(raw.fighters);pass7.apply(fallback,catalog,{});pass7.apply(invalid,catalog,wrong);pass7.apply(correct,catalog,anchors);
+    for(const slot of slots){const f=list=>list.find(f=>f.uid===uid).combat.moves[slot].projectileOrigin;assert.deepEqual(f(invalid),f(fallback));assert.deepEqual(f(correct),pass4.origins(catalog.entries[uid],anchors[uid][action]));}
+  }
+});
+
+test('all sixteen adapted or simulated finishers select real native phases while preserving source commands and durations',()=>{
+  const fs2=structuredClone(raw.fighters),fin=structuredClone(finishers);pass7.apply(fs2,catalog,json('preparation/combat-sprites-pass7/SOURCE_COMBAT_ORIGINS.json').entries);assert.deepEqual(pass7.applyFinishers(fin,fs2).slice().sort(),UIDS.slice().sort());
+  let n=0;for(const uid of UIDS){const e=catalog.entries[uid];for(let i=0;i<4;i++){const a=finishers.profiles[uid].finishers[i],b=fin.profiles[uid].finishers[i];n++;for(const key of ['id','slot','duration','commandP1','commandP2'])assert.deepEqual(b[key],a[key]);assert.equal(b.canonical,false);assert.equal(b.evidence,uid==='archive__skull_face'?'simulation':'adaptation');
+    for(const phase of b.phases){const p=pass7.finisherPose(uid,b,phase,{},.5);for(const actions of [e.actions,e.oppositeActions]){const selected=api.selectFrame({...e,actions},p);assert.equal(selected.action,e.actionMap[p.moveSlot]);const mapped=e.phaseMap[selected.action]?.[p.attackPhase];if(mapped)assert(mapped.includes(selected.index));else{assert.equal(selected.action,'walk');assert.equal(actions.walk.loop,true);assert(actions.walk.fps>0);assert(selected.index>=0&&selected.index<actions.walk.frames.length);}}}
+  }}assert.equal(n,16);
+});

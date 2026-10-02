@@ -1,0 +1,91 @@
+{
+  "schema": "cqc.pass7.final-source-review-facts/1",
+  "confirmedByRoot": true,
+  "sourceState": "frozen",
+  "status": "ready_for_independent_review",
+  "artistDeliverySHA256": {
+    "raven": "e8a28b765a222a803c3f20d3c88dea07ed55af11bdce079bb8a7aeb53efc9d9c",
+    "old-snake": "ded892d3839c3c47b32e0f88638d98d19aeb3e0c767aa3f82b37fa5262dcf86e",
+    "quiet": "a63b81820027168983ed4cfe6a4a36c50140d0ffe226a85235c2247969683264",
+    "skull-face": "97c44d4982d6d2b20ba075a88d03cba85ee13d54fe0d4f17338ab699f1272d6c"
+  },
+  "producerPhysicalReviews": {
+    "core__raven": {
+      "physicallyObservedPoseCount": 72,
+      "allSixSourceSheetsPhysicallyViewed": true,
+      "handsAndMuzzlesPhysicallyObserved": true
+    },
+    "core__old_snake": {
+      "physicallyObservedPoseCount": 72,
+      "allSixSourceSheetsPhysicallyViewed": true,
+      "handsAndMuzzlesPhysicallyObserved": true
+    },
+    "core__quiet": {
+      "physicallyObservedPoseCount": 72,
+      "allSixSourceSheetsPhysicallyViewed": true,
+      "handsAndMuzzlesPhysicallyObserved": true
+    },
+    "archive__skull_face": {
+      "physicallyObservedPoseCount": 72,
+      "allSixSourceSheetsPhysicallyViewed": true,
+      "unarmed": true,
+      "muzzleApplicable": false,
+      "handsPhysicallyObserved": true
+    }
+  },
+  "nativePhysicalReview": {
+    "path": "/workspace/cqc-pass7-native-browser-physical-review.json",
+    "sha256": "91fe30da90840427c691a311cd6d7e4bd5f26b63b0d5b4b53adcf07ca932cfec",
+    "physicallyViewedNativeCharts": 24,
+    "physicallyViewedCompleteSourcePoses": 288
+  },
+  "sourceCombatOrigins": {
+    "path": "preparation/combat-sprites-pass7/SOURCE_COMBAT_ORIGINS.json",
+    "sha256": "12496c1ef272da9013967f9ef429d7c1a5e0275bb07d09089fcbb3c814782927",
+    "bytes": 22379
+  },
+  "runtimeManifestSha256": "74f3609fc8e00b31b3ff98855f90a1cc54b2481b04adb3db93f2120c7334d3a5",
+  "qaPaths": {
+    "core": {
+      "path": "/workspace/cqc-pass7-core-qa-final-ui.json",
+      "sha256": "98f27fd6a20b00015a4b8c04fc6a076f24d8f6e8aedec2d87faf7b982b3f6059"
+    },
+    "sprites": {
+      "path": "/workspace/cqc-pass7-sprite-qa-final-ui.json",
+      "sha256": "265490c031725651f2fadccd667f31db4ec4cdeaf056dce5ba164919a2c3ff4c"
+    },
+    "combat": {
+      "path": "/workspace/cqc-pass7-source-combat-review-final-ui/SOURCE_COMBAT_REVIEW.json",
+      "sha256": "7713d6a347f793aa30fc2ccf8db3ab17b4acb40d71f462b8f0afc83286f2b2b4"
+    },
+    "standaloneBrowser": {
+      "path": "/workspace/cqc-pass7-gameplay-browser-final-c/verification.json",
+      "sha256": "a1c7c26595e3703742883a6b4a8f4eab622a9238c8f1ec43ec15d1820c7d23f0"
+    },
+    "shadowBrowser": {
+      "path": "/workspace/shadow-cqc-pass7-browser-final-b/browser-results-pass7.json",
+      "sha256": "9df6696d05306f6c23e02c5966fcbeda88068ecd4c5c43b50643966ce5ae1c7a"
+    },
+    "shadowNpm": {
+      "path": "/workspace/shadow-cqc-pass7-final-ui-npm-qa.json",
+      "sha256": "627cdb332630061388c9a80e12dfbffae183d840b6f7203eb071f653c2132b92"
+    },
+    "gameplayPhysical": {
+      "path": "/workspace/cqc-pass7-gameplay-physical-review.json",
+      "sha256": "faf15c3df0733d40cfb3c7e56f1390d41b76908a9ce0568aad13a8b921329d91"
+    }
+  },
+  "publicationParentCommit": "310bf32069fa0a42fe1815a6ffe8f831f6d3bede",
+  "additionalArtistDirectories": [],
+  "finalFreeze": {
+    "path": "/workspace/cqc-pass7-runtime-source-freeze-final-ui.json",
+    "sha256": "3cf64ffc7082bdace358ee7d6826505577bbf25a69530ec2f793c558f1c4e492"
+  },
+  "knownLimits": [
+    "closest_supported original-incarnation art; authored native Versus poses and hitbox/contact timing are adaptations.",
+    "All24PNGandcatalogue unchanged since24physicalCanvaschartreview; only finalHUDlabelchanged and independentlyphysicallyverified.",
+    "QuietlowRIGHT134.83maymisscrouchbody121.9whileLEFT122.06hits; source muzzle never artificially moved.",
+    "OldSnakeopaqueOctoCamo: dynamictexture matchingnotimplemented. Chaffeffect/duration balancedversusadaptation.",
+    "QuietexactoriginalriflealiasandSkullpersonalweaponnotcertified. Skull unarmedcommand/CQCbonussimulation explicit."
+  ]
+}

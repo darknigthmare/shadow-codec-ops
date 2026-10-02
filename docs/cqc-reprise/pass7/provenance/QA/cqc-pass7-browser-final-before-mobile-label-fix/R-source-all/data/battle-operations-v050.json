@@ -1,0 +1,317 @@
+{
+  "version": "0.50",
+  "fighterCount": 256,
+  "stageCount": 30,
+  "modes": [
+    "survival",
+    "relay",
+    "tournament",
+    "time",
+    "draft",
+    "league"
+  ],
+  "challengeCount": 24,
+  "challenges": [
+    {
+      "id": "surv5",
+      "name": "PREMIÈRE LIGNE",
+      "desc": "Atteindre cinq victoires en Survival.",
+      "metric": "survivalBest",
+      "target": 5
+    },
+    {
+      "id": "surv10",
+      "name": "DIX CONTACTS",
+      "desc": "Atteindre dix victoires en Survival.",
+      "metric": "survivalBest",
+      "target": 10
+    },
+    {
+      "id": "surv25",
+      "name": "AUCUN REPLI",
+      "desc": "Terminer le Survival 25.",
+      "metric": "survivalBest",
+      "target": 25
+    },
+    {
+      "id": "relay3",
+      "name": "CELLULE DE TROIS",
+      "desc": "Remporter un Relay 3v3.",
+      "metric": "relay3Wins",
+      "target": 1
+    },
+    {
+      "id": "relay5",
+      "name": "UNITÉ COMPLÈTE",
+      "desc": "Remporter un Relay 5v5.",
+      "metric": "relay5Wins",
+      "target": 1
+    },
+    {
+      "id": "relayPerfect",
+      "name": "RELAIS PARFAIT",
+      "desc": "Gagner sans perdre le premier membre.",
+      "metric": "relayPerfect",
+      "target": 1
+    },
+    {
+      "id": "tour8",
+      "name": "TABLEAU HUIT",
+      "desc": "Remporter un tournoi à huit.",
+      "metric": "tournament8",
+      "target": 1
+    },
+    {
+      "id": "tour16",
+      "name": "TABLEAU SEIZE",
+      "desc": "Remporter un tournoi à seize.",
+      "metric": "tournament16",
+      "target": 1
+    },
+    {
+      "id": "time8",
+      "name": "CHRONO HUIT",
+      "desc": "Terminer le Time Attack huit combats.",
+      "metric": "time8",
+      "target": 1
+    },
+    {
+      "id": "time12",
+      "name": "CHRONO DOUZE",
+      "desc": "Terminer le Time Attack douze combats.",
+      "metric": "time12",
+      "target": 1
+    },
+    {
+      "id": "timeFast",
+      "name": "SOUS CINQ MINUTES",
+      "desc": "Terminer huit combats en moins de cinq minutes cumulées.",
+      "metric": "timeBest",
+      "target": 300,
+      "lower": true
+    },
+    {
+      "id": "draft1",
+      "name": "PREMIER DRAFT",
+      "desc": "Remporter une Draft Cup.",
+      "metric": "draftWins",
+      "target": 1
+    },
+    {
+      "id": "draft3",
+      "name": "STRATÈGE",
+      "desc": "Remporter trois Draft Cups.",
+      "metric": "draftWins",
+      "target": 3
+    },
+    {
+      "id": "league1",
+      "name": "CHAMPION DE LIGUE",
+      "desc": "Terminer premier d’une ligue.",
+      "metric": "leagueTitles",
+      "target": 1
+    },
+    {
+      "id": "leagueTop3",
+      "name": "PODIUM",
+      "desc": "Finir trois fois sur le podium.",
+      "metric": "leaguePodiums",
+      "target": 3
+    },
+    {
+      "id": "fighters10",
+      "name": "DIX VISAGES",
+      "desc": "Utiliser dix combattants distincts.",
+      "metric": "uniqueFighters",
+      "target": 10
+    },
+    {
+      "id": "fighters25",
+      "name": "VINGT-CINQ VISAGES",
+      "desc": "Utiliser vingt-cinq combattants distincts.",
+      "metric": "uniqueFighters",
+      "target": 25
+    },
+    {
+      "id": "fighters50",
+      "name": "ARCHIVISTE DU ROSTER",
+      "desc": "Utiliser cinquante combattants distincts.",
+      "metric": "uniqueFighters",
+      "target": 50
+    },
+    {
+      "id": "replay1",
+      "name": "BOÎTE NOIRE",
+      "desc": "Conserver un replay vérifiable.",
+      "metric": "replayCount",
+      "target": 1
+    },
+    {
+      "id": "replay5",
+      "name": "VIDÉOTHÈQUE",
+      "desc": "Conserver cinq replays.",
+      "metric": "replayCount",
+      "target": 5
+    },
+    {
+      "id": "ghost1",
+      "name": "CONTRE TON OMBRE",
+      "desc": "Lancer un combat contre un ghost local.",
+      "metric": "ghosts",
+      "target": 1
+    },
+    {
+      "id": "stages10",
+      "name": "TOUR DU MONDE",
+      "desc": "Jouer sur dix scènes distinctes.",
+      "metric": "uniqueStages",
+      "target": 10
+    },
+    {
+      "id": "allModes",
+      "name": "POLYVALENT",
+      "desc": "Terminer au moins une tentative dans les six formats.",
+      "metric": "modesPlayed",
+      "target": 6
+    },
+    {
+      "id": "score50",
+      "name": "CINQUANTE MILLE",
+      "desc": "Accumuler 50 000 points Battle Operations.",
+      "metric": "totalScore",
+      "target": 50000
+    }
+  ],
+  "title": "Battle Operations 0.50",
+  "formatCount": 6,
+  "formats": [
+    {
+      "id": "survival",
+      "variants": [
+        "10",
+        "25",
+        "endless-local-100"
+      ],
+      "realPlayerMatches": true,
+      "carry": [
+        "life",
+        "meter"
+      ],
+      "cpuOnlySimulation": false
+    },
+    {
+      "id": "relay",
+      "variants": [
+        "3v3",
+        "5v5"
+      ],
+      "realPlayerMatches": true,
+      "carry": [
+        "winner-life-partial"
+      ],
+      "cpuOnlySimulation": false
+    },
+    {
+      "id": "tournament",
+      "variants": [
+        "8",
+        "16"
+      ],
+      "realPlayerMatches": true,
+      "cpuOnlySimulation": true,
+      "simulation": "deterministic-seeded-rating"
+    },
+    {
+      "id": "time",
+      "variants": [
+        "8",
+        "12"
+      ],
+      "realPlayerMatches": true,
+      "metric": "cumulative-combat-time",
+      "cpuOnlySimulation": false
+    },
+    {
+      "id": "draft",
+      "variants": [
+        "pool-12-team-5"
+      ],
+      "realPlayerMatches": true,
+      "selection": "unique-seeded-pool",
+      "cpuOnlySimulation": false
+    },
+    {
+      "id": "league",
+      "variants": [
+        "8-participants"
+      ],
+      "realPlayerMatches": true,
+      "cpuOnlySimulation": true,
+      "simulation": "deterministic-seeded-rating",
+      "points": {
+        "win": 3,
+        "loss": 0
+      }
+    }
+  ],
+  "replay": {
+    "version": "0.48",
+    "maxLocal": 30,
+    "compression": "run-length-input-frames",
+    "deterministicSeed": true,
+    "fields": [
+      "fighters",
+      "stage",
+      "rounds",
+      "seconds",
+      "seed",
+      "mode",
+      "difficulty",
+      "source",
+      "inputFrames",
+      "result",
+      "metrics"
+    ],
+    "ghost": "local-input-playback",
+    "networkAuthority": false
+  },
+  "bindings": {
+    "storageKey": "cqc-v048-bindings",
+    "players": [
+      "p1",
+      "p2"
+    ],
+    "actions": [
+      "left",
+      "right",
+      "jump",
+      "down",
+      "light",
+      "heavy",
+      "special",
+      "throw",
+      "super",
+      "utility",
+      "guard",
+      "dash"
+    ],
+    "presets": [
+      "standard",
+      "one-hand-left",
+      "one-hand-right",
+      "reset"
+    ],
+    "gamepad": "standard-gamepad-api-unverified-hardware"
+  },
+  "storageKeys": [
+    "cqc-v048-operations-profile",
+    "cqc-v048-replays",
+    "cqc-v048-bindings"
+  ],
+  "limits": [
+    "Endless local is capped at 100 encounters.",
+    "CPU-only tournament and league matches use deterministic rating simulation.",
+    "Ghosts and replays are local and unsigned.",
+    "Physical controllers and network play are not certified."
+  ]
+}

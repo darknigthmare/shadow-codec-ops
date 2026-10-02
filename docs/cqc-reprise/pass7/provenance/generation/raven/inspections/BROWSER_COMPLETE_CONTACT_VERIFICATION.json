@@ -1,0 +1,174 @@
+[
+  {
+    "cmd": [
+      "open",
+      "http://127.0.0.1:9327/preview.html"
+    ],
+    "exit": 0,
+    "stdout": "\u2713 Raven PASS7 native Canvas review\n  http://127.0.0.1:9327/preview.html\n",
+    "stderr": ""
+  },
+  {
+    "cmd": [
+      "set",
+      "viewport",
+      "1600",
+      "960"
+    ],
+    "exit": 0,
+    "stdout": "\u2713 Done\n",
+    "stderr": ""
+  },
+  {
+    "cmd": [
+      "wait",
+      "--load",
+      "networkidle"
+    ],
+    "exit": 0,
+    "stdout": "\u2713 Done\n",
+    "stderr": ""
+  },
+  {
+    "cmd": [
+      "snapshot",
+      "-i"
+    ],
+    "exit": 0,
+    "stdout": "- button \"a-right\" [ref=e1]\n- button \"a-left\" [ref=e2]\n- button \"b-right\" [ref=e3]\n- button \"b-left\" [ref=e4]\n- button \"c-right\" [ref=e5]\n- button \"c-left\" [ref=e6]\n",
+    "stderr": ""
+  },
+  {
+    "cmd": [
+      "errors"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "cmd": [
+      "eval",
+      "window.draw(\"a-right\");window.__current"
+    ],
+    "exit": 0,
+    "stdout": "\"a-right\"\n",
+    "stderr": ""
+  },
+  {
+    "cmd": [
+      "screenshot",
+      "/workspace/cqc-pass7-generation/raven/inspections/Canvas-complete-a-right.png"
+    ],
+    "exit": 0,
+    "stdout": "\u2713 Screenshot saved to /workspace/cqc-pass7-generation/raven/inspections/Canvas-complete-a-right.png\n",
+    "stderr": ""
+  },
+  {
+    "cmd": [
+      "eval",
+      "window.draw(\"a-left\");window.__current"
+    ],
+    "exit": 0,
+    "stdout": "\"a-left\"\n",
+    "stderr": ""
+  },
+  {
+    "cmd": [
+      "screenshot",
+      "/workspace/cqc-pass7-generation/raven/inspections/Canvas-complete-a-left.png"
+    ],
+    "exit": 0,
+    "stdout": "\u2713 Screenshot saved to /workspace/cqc-pass7-generation/raven/inspections/Canvas-complete-a-left.png\n",
+    "stderr": ""
+  },
+  {
+    "cmd": [
+      "eval",
+      "window.draw(\"b-right\");window.__current"
+    ],
+    "exit": 0,
+    "stdout": "\"b-right\"\n",
+    "stderr": ""
+  },
+  {
+    "cmd": [
+      "screenshot",
+      "/workspace/cqc-pass7-generation/raven/inspections/Canvas-complete-b-right.png"
+    ],
+    "exit": 0,
+    "stdout": "\u2713 Screenshot saved to /workspace/cqc-pass7-generation/raven/inspections/Canvas-complete-b-right.png\n",
+    "stderr": ""
+  },
+  {
+    "cmd": [
+      "eval",
+      "window.draw(\"b-left\");window.__current"
+    ],
+    "exit": 0,
+    "stdout": "\"b-left\"\n",
+    "stderr": ""
+  },
+  {
+    "cmd": [
+      "screenshot",
+      "/workspace/cqc-pass7-generation/raven/inspections/Canvas-complete-b-left.png"
+    ],
+    "exit": 0,
+    "stdout": "\u2713 Screenshot saved to /workspace/cqc-pass7-generation/raven/inspections/Canvas-complete-b-left.png\n",
+    "stderr": ""
+  },
+  {
+    "cmd": [
+      "eval",
+      "window.draw(\"c-right\");window.__current"
+    ],
+    "exit": 0,
+    "stdout": "\"c-right\"\n",
+    "stderr": ""
+  },
+  {
+    "cmd": [
+      "screenshot",
+      "/workspace/cqc-pass7-generation/raven/inspections/Canvas-complete-c-right.png"
+    ],
+    "exit": 0,
+    "stdout": "\u2713 Screenshot saved to /workspace/cqc-pass7-generation/raven/inspections/Canvas-complete-c-right.png\n",
+    "stderr": ""
+  },
+  {
+    "cmd": [
+      "eval",
+      "window.draw(\"c-left\");window.__current"
+    ],
+    "exit": 0,
+    "stdout": "\"c-left\"\n",
+    "stderr": ""
+  },
+  {
+    "cmd": [
+      "screenshot",
+      "/workspace/cqc-pass7-generation/raven/inspections/Canvas-complete-c-left.png"
+    ],
+    "exit": 0,
+    "stdout": "\u2713 Screenshot saved to /workspace/cqc-pass7-generation/raven/inspections/Canvas-complete-c-left.png\n",
+    "stderr": ""
+  },
+  {
+    "cmd": [
+      "eval",
+      "JSON.stringify({ready:window.__ready,errors:window.__consoleErrors,current:window.__current})"
+    ],
+    "exit": 0,
+    "stdout": "\"{\\\"ready\\\":true,\\\"errors\\\":[],\\\"current\\\":\\\"c-left\\\"}\"\n",
+    "stderr": ""
+  },
+  {
+    "cmd": [
+      "close"
+    ],
+    "exit": 0,
+    "stdout": "\u2713 Browser closed\n",
+    "stderr": ""
+  }
+]

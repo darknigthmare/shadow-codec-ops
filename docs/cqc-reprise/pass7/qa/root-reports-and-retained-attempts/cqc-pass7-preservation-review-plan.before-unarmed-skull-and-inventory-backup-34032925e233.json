@@ -1,0 +1,131 @@
+{
+  "status": "plan_only",
+  "requiresExplicitRootGO": true,
+  "facts": "/workspace/cqc-pass7-final-source-review-facts.json",
+  "output": "/workspace/cqc-pass7-preservation-review.json",
+  "productionMutations": false,
+  "GitMutations": false,
+  "historicalBaselines": [
+    {
+      "file": "cqc-original-v056-files.json",
+      "files": 1322,
+      "sha256": "c073d1c51a42f0508d4ab5291d0483019be5cd1eec07e6a4c513ba9ef0117512"
+    },
+    {
+      "file": "cqc-delivered-pass2-baseline-files.json",
+      "files": 4576,
+      "sha256": "12c4825ea85f1954e123459730084740fd9a5a402f46f6c272cf7e8a3bc90190"
+    },
+    {
+      "file": "cqc-pass2-baseline-files.json",
+      "files": 4617,
+      "sha256": "4f8d7df1a657edda7ef236a2cfd366534946008308182bad0cb48a27c72e96c8"
+    },
+    {
+      "file": "cqc-delivered-pass3-baseline-files.json",
+      "files": 5972,
+      "sha256": "9641befa9ffa0f37c2279487fa91562b3b1052cff4d33d711c835d3066076d46"
+    },
+    {
+      "file": "cqc-delivered-pass4-baseline-files.json",
+      "files": 7850,
+      "sha256": "88f294418baf46d7269c08324c433a615fdeadf924d35814221e64e4bbc67244"
+    },
+    {
+      "file": "cqc-delivered-pass5-baseline-files.json",
+      "files": 9079,
+      "sha256": "31251f4751b162334ca1d064025ac23876b4afffe9f55782410ff8128e2fbc67"
+    },
+    {
+      "file": "cqc-delivered-pass6-baseline-files.json",
+      "files": 10474,
+      "sha256": "999b0477f8898fa5f2fbc323bc073a1784ef26c96e7465d5057d58435ceb034d"
+    }
+  ],
+  "historicalArchivePins": 46,
+  "archiveCRCPolicy": "Full SHA256 check then reuse exact PASS6 CRC proof; no repeated decompression.",
+  "expectedNativeCounts": {
+    "sets": 26,
+    "PNG": 156,
+    "poses": 1872,
+    "oldObjects": 22,
+    "oldPNG": 132
+  },
+  "requiredFacts": {
+    "confirmedByRoot": true,
+    "sourceState": "frozen",
+    "artistDeliverySHA256": {
+      "raven": "<SHA256 FINAL_DELIVERY.json>",
+      "old-snake": "<SHA256 FINAL_DELIVERY.json>",
+      "quiet": "<SHA256 FINAL_DELIVERY.json>",
+      "skull-face": "<SHA256 FINAL_DELIVERY.json>"
+    },
+    "producerPhysicalReviews": {
+      "core__raven": {
+        "physicallyObservedPoseCount": 72,
+        "handsAndMuzzlesPhysicallyObserved": true,
+        "allSixSourceSheetsPhysicallyViewed": true
+      },
+      "core__old_snake": {
+        "physicallyObservedPoseCount": 72,
+        "handsAndMuzzlesPhysicallyObserved": true,
+        "allSixSourceSheetsPhysicallyViewed": true
+      },
+      "core__quiet": {
+        "physicallyObservedPoseCount": 72,
+        "handsAndMuzzlesPhysicallyObserved": true,
+        "allSixSourceSheetsPhysicallyViewed": true
+      },
+      "archive__skull_face": {
+        "physicallyObservedPoseCount": 72,
+        "handsAndMuzzlesPhysicallyObserved": true,
+        "allSixSourceSheetsPhysicallyViewed": true
+      }
+    },
+    "sourceCombatOrigins": {
+      "path": "preparation/combat-sprites-pass7/SOURCE_COMBAT_ORIGINS.json",
+      "sha256": "<SHA256>",
+      "bytes": "<actual bytes>"
+    },
+    "runtimeManifestSha256": "<SHA256 S/public/cqc/runtime-manifest.json>",
+    "qaPaths": {
+      "combat": {
+        "path": "<report>",
+        "sha256": "<SHA256>",
+        "expectedChecks": "<optional actual count>"
+      },
+      "core": {
+        "path": "<report>",
+        "sha256": "<SHA256>",
+        "expectedChecks": "<optional actual count>"
+      },
+      "gameplayPhysical": {
+        "path": "<report>",
+        "sha256": "<SHA256>",
+        "expectedChecks": "<optional actual count>"
+      },
+      "shadowBrowser": {
+        "path": "<report>",
+        "sha256": "<SHA256>",
+        "expectedChecks": "<optional actual count>"
+      },
+      "shadowNpm": {
+        "path": "<report>",
+        "sha256": "<SHA256>",
+        "expectedChecks": "<optional actual count>"
+      },
+      "sprites": {
+        "path": "<report>",
+        "sha256": "<SHA256>",
+        "expectedChecks": "<optional actual count>"
+      },
+      "standaloneBrowser": {
+        "path": "<report>",
+        "sha256": "<SHA256>",
+        "expectedChecks": "<optional actual count>"
+      }
+    },
+    "publicationParentCommit": "310bf32069fa0a42fe1815a6ffe8f831f6d3bede",
+    "additionalArtistDirectories": []
+  }
+}

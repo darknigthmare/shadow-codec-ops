@@ -1,0 +1,668 @@
+{
+  "version": "0.44",
+  "encounters": [
+    {
+      "id": "madnar",
+      "name": "DR. MADNAR — LAST BETRAYAL",
+      "ep": "METAL GEAR 2",
+      "hero": "SOLID SNAKE",
+      "stage": "ZANZIBAR RESEARCH BLOCK",
+      "family": "lab",
+      "color": "#9a8f77",
+      "hp": 7800,
+      "time": 135,
+      "type": "relay",
+      "summary": "Couper les deux relais de sécurité avant d’atteindre Madnar.",
+      "parts": [
+        {
+          "name": "RELAIS A",
+          "hp": 1800,
+          "x": 330,
+          "mode": "destroy"
+        },
+        {
+          "name": "RELAIS B",
+          "hp": 1800,
+          "x": 950,
+          "mode": "destroy"
+        },
+        {
+          "name": "MADNAR",
+          "hp": 7800,
+          "x": 980,
+          "mode": "core",
+          "requires": [
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fourhorsemen",
+      "name": "FOUR HORSEMEN",
+      "ep": "METAL GEAR 2",
+      "hero": "SOLID SNAKE",
+      "stage": "ZANZIBAR ELEVATOR SHAFT",
+      "family": "elevator",
+      "color": "#78828b",
+      "hp": 9200,
+      "time": 160,
+      "type": "wave",
+      "summary": "Neutraliser quatre commandos successifs dans l’ascenseur.",
+      "parts": [
+        {
+          "name": "HORSEMAN I",
+          "hp": 2300,
+          "x": 420,
+          "mode": "wave",
+          "requires": []
+        },
+        {
+          "name": "HORSEMAN II",
+          "hp": 2300,
+          "x": 600,
+          "mode": "wave",
+          "requires": [
+            0
+          ]
+        },
+        {
+          "name": "HORSEMAN III",
+          "hp": 2300,
+          "x": 780,
+          "mode": "wave",
+          "requires": [
+            0,
+            1
+          ]
+        },
+        {
+          "name": "HORSEMAN IV",
+          "hp": 2300,
+          "x": 960,
+          "mode": "wave",
+          "requires": [
+            0,
+            1,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "id": "coldman",
+      "name": "HOT COLDMAN — LAUNCH CONTROL",
+      "ep": "PEACE WALKER",
+      "hero": "SNAKE",
+      "stage": "NICARAGUA LAUNCH CONTROL",
+      "family": "bunker",
+      "color": "#8d7d69",
+      "hp": 8200,
+      "time": 150,
+      "type": "hack",
+      "summary": "Pirater trois consoles sous le compte à rebours nucléaire.",
+      "launch": 95,
+      "parts": [
+        {
+          "name": "CONSOLE A",
+          "hp": 60,
+          "x": 270,
+          "mode": "hack"
+        },
+        {
+          "name": "CONSOLE B",
+          "hp": 60,
+          "x": 640,
+          "mode": "hack"
+        },
+        {
+          "name": "CONSOLE C",
+          "hp": 60,
+          "x": 1010,
+          "mode": "hack"
+        },
+        {
+          "name": "COLDMAN",
+          "hp": 8200,
+          "x": 1000,
+          "mode": "core",
+          "requires": [
+            0,
+            1,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zadornov",
+      "name": "ZADORNOV — ROCKET HAND",
+      "ep": "PEACE WALKER",
+      "hero": "SNAKE",
+      "stage": "MOTHER BASE ESCAPE DECK",
+      "family": "ocean",
+      "color": "#856d5f",
+      "hp": 8400,
+      "time": 135,
+      "type": "parry",
+      "summary": "Retourner trois mains-roquettes avant l’ouverture finale.",
+      "parts": [
+        {
+          "name": "MAIN-ROQUETTE",
+          "hp": 3,
+          "x": 900,
+          "mode": "parry"
+        },
+        {
+          "name": "BLINDAGE",
+          "hp": 2200,
+          "x": 980,
+          "mode": "destroy",
+          "requires": [
+            0
+          ]
+        },
+        {
+          "name": "ZADORNOV",
+          "hp": 8400,
+          "x": 1000,
+          "mode": "core",
+          "requires": [
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skullface",
+      "name": "SKULL FACE — XOF COMMAND SIM",
+      "ep": "MGSV",
+      "hero": "VENOM SNAKE",
+      "stage": "OKB ZERO COMMAND TOWER",
+      "family": "tower",
+      "color": "#575e62",
+      "hp": 9000,
+      "time": 155,
+      "type": "hack",
+      "simulation": true,
+      "summary": "Simulation non canonique : neutraliser trois relais XOF.",
+      "parts": [
+        {
+          "name": "RELAIS XOF A",
+          "hp": 60,
+          "x": 260,
+          "mode": "hack"
+        },
+        {
+          "name": "RELAIS XOF B",
+          "hp": 60,
+          "x": 640,
+          "mode": "hack"
+        },
+        {
+          "name": "RELAIS XOF C",
+          "hp": 60,
+          "x": 1020,
+          "mode": "hack"
+        },
+        {
+          "name": "SKULL FACE",
+          "hp": 9000,
+          "x": 990,
+          "mode": "core",
+          "requires": [
+            0,
+            1,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seth",
+      "name": "SETH — WORMHOLE CONTROL",
+      "ep": "SURVIVE",
+      "hero": "CAPTAIN",
+      "stage": "DITE WORMHOLE FIELD",
+      "family": "dite",
+      "color": "#736278",
+      "hp": 9600,
+      "time": 155,
+      "type": "anchor",
+      "summary": "Détruire trois ancres avant de fermer la brèche.",
+      "parts": [
+        {
+          "name": "ANCRE A",
+          "hp": 2100,
+          "x": 260,
+          "mode": "destroy"
+        },
+        {
+          "name": "ANCRE B",
+          "hp": 2100,
+          "x": 640,
+          "mode": "destroy"
+        },
+        {
+          "name": "ANCRE C",
+          "hp": 2100,
+          "x": 1020,
+          "mode": "destroy"
+        },
+        {
+          "name": "SETH",
+          "hp": 9600,
+          "x": 990,
+          "mode": "core",
+          "requires": [
+            0,
+            1,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lordofdust",
+      "name": "LORD OF DUST",
+      "ep": "SURVIVE",
+      "hero": "CAPTAIN",
+      "stage": "DITE CRYSTAL CANYON",
+      "family": "crystal",
+      "color": "#86658d",
+      "hp": 14000,
+      "time": 190,
+      "type": "giant",
+      "summary": "Briser les cristaux des jambes, du torse puis le cœur.",
+      "parts": [
+        {
+          "name": "CRISTAL JAMBE G",
+          "hp": 2800,
+          "x": 790,
+          "mode": "destroy"
+        },
+        {
+          "name": "CRISTAL JAMBE D",
+          "hp": 2800,
+          "x": 1070,
+          "mode": "destroy"
+        },
+        {
+          "name": "CRISTAL TORSE",
+          "hp": 3600,
+          "x": 930,
+          "mode": "destroy",
+          "requires": [
+            0,
+            1
+          ]
+        },
+        {
+          "name": "CŒUR",
+          "hp": 14000,
+          "x": 930,
+          "mode": "core",
+          "requires": [
+            0,
+            1,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "id": "harab",
+      "name": "HARAB SERAP",
+      "ep": "AC!D 2",
+      "hero": "SNAKE",
+      "stage": "SAINTLOGIC BLADE ARENA",
+      "family": "acid",
+      "color": "#9d6d62",
+      "hp": 9000,
+      "time": 140,
+      "type": "parry",
+      "summary": "Parer les deux postures de lame avant la phase offensive.",
+      "parts": [
+        {
+          "name": "GARDE HAUTE",
+          "hp": 2,
+          "x": 880,
+          "mode": "parry"
+        },
+        {
+          "name": "GARDE BASSE",
+          "hp": 2,
+          "x": 1020,
+          "mode": "parry",
+          "requires": [
+            0
+          ]
+        },
+        {
+          "name": "HARAB SERAP",
+          "hp": 9000,
+          "x": 980,
+          "mode": "core",
+          "requires": [
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "golab",
+      "name": "GOLAB",
+      "ep": "AC!D 2",
+      "hero": "SNAKE",
+      "stage": "SAINTLOGIC HEAVY CELL",
+      "family": "acid",
+      "color": "#6f7178",
+      "hp": 10800,
+      "time": 155,
+      "type": "armor",
+      "summary": "Détruire les plaques gauche et droite avant le noyau.",
+      "parts": [
+        {
+          "name": "PLAQUE G",
+          "hp": 2600,
+          "x": 870,
+          "mode": "destroy"
+        },
+        {
+          "name": "PLAQUE D",
+          "hp": 2600,
+          "x": 1050,
+          "mode": "destroy"
+        },
+        {
+          "name": "NOYAU",
+          "hp": 10800,
+          "x": 960,
+          "mode": "core",
+          "requires": [
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chaigidiel",
+      "name": "CHAIGIDIEL",
+      "ep": "AC!D 2",
+      "hero": "SNAKE",
+      "stage": "SAINTLOGIC SPEAR HALL",
+      "family": "acid",
+      "color": "#697d8f",
+      "hp": 9800,
+      "time": 145,
+      "type": "parry",
+      "summary": "Désarmer les deux articulations de lance par contre.",
+      "parts": [
+        {
+          "name": "JOINT A",
+          "hp": 2,
+          "x": 860,
+          "mode": "parry"
+        },
+        {
+          "name": "JOINT B",
+          "hp": 2,
+          "x": 1040,
+          "mode": "parry",
+          "requires": [
+            0
+          ]
+        },
+        {
+          "name": "CHAIGIDIEL",
+          "hp": 9800,
+          "x": 980,
+          "mode": "core",
+          "requires": [
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "koppelthorn",
+      "name": "THOMAS KOPPELTHORN",
+      "ep": "AC!D 2",
+      "hero": "SNAKE",
+      "stage": "SAINTLOGIC EGO CORE",
+      "family": "ego",
+      "color": "#756586",
+      "hp": 9200,
+      "time": 150,
+      "type": "hack",
+      "summary": "Pirater les trois relais Ego qui protègent Koppelthorn.",
+      "parts": [
+        {
+          "name": "EGO A",
+          "hp": 60,
+          "x": 280,
+          "mode": "hack"
+        },
+        {
+          "name": "EGO B",
+          "hp": 60,
+          "x": 640,
+          "mode": "hack"
+        },
+        {
+          "name": "EGO C",
+          "hp": 60,
+          "x": 1000,
+          "mode": "hack"
+        },
+        {
+          "name": "KOPPELTHORN",
+          "hp": 9200,
+          "x": 980,
+          "mode": "core",
+          "requires": [
+            0,
+            1,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "id": "general",
+      "name": "THE GENERAL / EGUABON",
+      "ep": "GHOST BABEL",
+      "hero": "SOLID SNAKE",
+      "stage": "GALUADE COMMAND BUNKER",
+      "family": "fortress",
+      "color": "#7e765f",
+      "hp": 9000,
+      "time": 150,
+      "type": "relay",
+      "summary": "Éliminer les deux nœuds de commandement avant le général.",
+      "parts": [
+        {
+          "name": "COMMANDE A",
+          "hp": 2200,
+          "x": 300,
+          "mode": "destroy"
+        },
+        {
+          "name": "COMMANDE B",
+          "hp": 2200,
+          "x": 940,
+          "mode": "destroy"
+        },
+        {
+          "name": "THE GENERAL",
+          "hp": 9000,
+          "x": 990,
+          "mode": "core",
+          "requires": [
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bigboss_sr",
+      "name": "BIG BOSS — CYBORG",
+      "ep": "SNAKE'S REVENGE",
+      "hero": "SOLID SNAKE",
+      "stage": "FORTRESS 747 CORE",
+      "family": "retro",
+      "color": "#74695b",
+      "hp": 10500,
+      "time": 160,
+      "type": "parry",
+      "summary": "Briser deux plaques cybernétiques puis le noyau.",
+      "parts": [
+        {
+          "name": "PLAQUE G",
+          "hp": 2,
+          "x": 870,
+          "mode": "parry"
+        },
+        {
+          "name": "PLAQUE D",
+          "hp": 2,
+          "x": 1040,
+          "mode": "parry",
+          "requires": [
+            0
+          ]
+        },
+        {
+          "name": "CYBER CORE",
+          "hp": 10500,
+          "x": 970,
+          "mode": "core",
+          "requires": [
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "commander_mobile",
+      "name": "THE COMMANDER",
+      "ep": "MGS MOBILE",
+      "hero": "SOLID SNAKE",
+      "stage": "MOBILE SIGNAL TOWER",
+      "family": "mobile",
+      "color": "#5f6c7a",
+      "hp": 8800,
+      "time": 145,
+      "type": "hack",
+      "summary": "Couper trois brouilleurs avant le commandant.",
+      "parts": [
+        {
+          "name": "JAMMER A",
+          "hp": 60,
+          "x": 260,
+          "mode": "hack"
+        },
+        {
+          "name": "JAMMER B",
+          "hp": 60,
+          "x": 640,
+          "mode": "hack"
+        },
+        {
+          "name": "JAMMER C",
+          "hp": 60,
+          "x": 1020,
+          "mode": "hack"
+        },
+        {
+          "name": "COMMANDER",
+          "hp": 8800,
+          "x": 990,
+          "mode": "core",
+          "requires": [
+            0,
+            1,
+            2
+          ]
+        }
+      ]
+    }
+  ],
+  "campaigns": [
+    {
+      "id": "zanzibar_betrayal",
+      "name": "ZANZIBAR — BETRAYAL",
+      "route": [
+        "madnar",
+        "fourhorsemen"
+      ],
+      "desc": "Recherche compromise et quatre commandos."
+    },
+    {
+      "id": "peace_conspiracy",
+      "name": "PEACE WALKER — CONSPIRACY",
+      "route": [
+        "coldman",
+        "zadornov"
+      ],
+      "desc": "Lancement nucléaire et main-roquette."
+    },
+    {
+      "id": "phantom_command",
+      "name": "THE PHANTOM PAIN — COMMAND SIM",
+      "route": [
+        "skullface"
+      ],
+      "desc": "Simulation tactique d’OKB Zero."
+    },
+    {
+      "id": "dite_final",
+      "name": "SURVIVE — DITE FINAL",
+      "route": [
+        "seth",
+        "lordofdust"
+      ],
+      "desc": "Ancres de brèche puis créature cristalline."
+    },
+    {
+      "id": "acid_arena",
+      "name": "AC!D 2 — ARENA COMPLETE",
+      "route": [
+        "harab",
+        "golab",
+        "chaigidiel",
+        "koppelthorn"
+      ],
+      "desc": "Lames, blindage, lance et réseau Ego."
+    },
+    {
+      "id": "galuade_command",
+      "name": "GHOST BABEL — COMMAND",
+      "route": [
+        "general"
+      ],
+      "desc": "Le centre de commandement de Galuade."
+    },
+    {
+      "id": "revenge_archive",
+      "name": "ARCHIVES — REVENGE & MOBILE",
+      "route": [
+        "bigboss_sr",
+        "commander_mobile"
+      ],
+      "desc": "Deux fins parallèles adaptées en simulation."
+    }
+  ],
+  "counts": {
+    "encounters": 14,
+    "campaigns": 7,
+    "stages": 14
+  }
+}

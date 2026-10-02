@@ -1,0 +1,59 @@
+{
+  "schema": "cqc.source-contract.v1",
+  "uid": "core__raven",
+  "incarnation": "Vulcan Raven — Metal Gear Solid, original PlayStation release 1998",
+  "status": "closest_supported_reference_preparation",
+  "excludedIncarnations": ["roster51__raven_tts", "completion44__raven_sword_pmc_44", "MGS4 Raging Raven", "Twin Snakes redesign"],
+  "selectedSources": [
+    {
+      "file": "ch09_body.jpg",
+      "url": "https://www.konami.com/mg/archive/mgs/character/images/ch09_body.jpg",
+      "resolvedUrl": "https://img.konami.com/mg/archive/mgs/character/images/ch09_body.jpg",
+      "kind": "publisher_original_MGS1_character_concept_art",
+      "physicallyViewed": true,
+      "supports": ["enormous bare muscular upper body", "bald head", "cross-body harness", "olive trousers", "boots", "large cannon and bulky rear ammunition equipment"],
+      "limits": ["publisher-hosted Shinkawa artwork, not a PS1 framebuffer", "weapon and rear equipment partly cropped", "no orthographic rear view", "artwork palette is not an exact PS1 texture palette"]
+    },
+    {
+      "file": "ch09_face.jpg",
+      "url": "https://www.konami.com/mg/archive/mgs/character/images/ch09_face.jpg",
+      "resolvedUrl": "https://img.konami.com/mg/archive/mgs/character/images/ch09_face.jpg",
+      "kind": "publisher_original_MGS1_character_concept_art",
+      "physicallyViewed": true,
+      "supports": ["bald broad head", "black raven tattoo crossing forehead toward brow", "human face, broad jaw and stern expression"],
+      "limits": ["front concept art only", "small source resolution", "not exact polygon/texture coordinates"]
+    },
+    {
+      "file": "ch09.html",
+      "url": "https://www.konami.com/mg/archive/mgs/character/ch09.html",
+      "kind": "publisher_character_description",
+      "read": true,
+      "verbatimEvidence": ["FOXHOUND隊員。", "戦闘機用のバルカン砲をライフルのように扱う。", "シャーマンとして育てられ、超自然的な能力を秘めている。", "額にワタリガラス（レイブン）の入れ墨。アラスカ大学出身のエリート。"],
+      "interpretation": "Original MGS1 FOXHOUND member, aircraft Vulcan cannon handled like a rifle, raised as a shaman, raven tattoo on forehead. The supernatural lore sentence does not establish a combat spell or projectile ability."
+    }
+  ],
+  "costumeContract": {
+    "supported": ["shirtless enormous muscular torso and arms", "bald tattooed head", "cross-body military harness", "olive trousers and heavy boots", "large firearm and ammunition hardware dominate silhouette"],
+    "pending": ["precise PS1 colors and tattoo texture layout", "complete weapon muzzle/barrel geometry", "backpack/feed assembly from rear", "obscured accessories and bilateral hand positions"],
+    "generationBoundary": "Use the selected original MGS1 design. Do not turn the bare torso into a generic tactical jacket or substitute the Twin Snakes model. Conceal or simplify unverified rear details; describe reconstruction limits."
+  },
+  "anatomicalEquipmentContract": {
+    "supported": "A very large carried rotary cannon category with bulky rear ammunition apparatus and feed elements; preserve the original mass and carrying posture.",
+    "preciseWeaponModel": "aircraft Vulcan cannon category supported by publisher text; no exact real-world model, barrel count, measurements or 1998 model mesh certified from these cropped references",
+    "leftRightRule": "Equipment placement must be copied from verified views in anatomical coordinates. Missing reverse views are not an excuse to swap feed, pack or grip placement canonically.",
+    "prohibitedSubstitutions": ["ordinary assault rifle as the canonical signature weapon", "new sword", "unverified sidearm/holster", "psychic gun or railgun", "unverified heat gauge as an original mechanic"]
+  },
+  "silhouettePersonaLore": {
+    "supported": ["very tall and extremely broad human silhouette", "raven forehead tattoo", "FOXHOUND", "cold-resistant powerful body", "shaman background"],
+    "limits": ["scale relative to Snake is not metrically certified", "publisher supernatural lore does not attest fireballs, levitation, summoned attacking ravens or magical combat phases", "this preparation adds no dialogue, story event or canonical duel"]
+  },
+  "profileCombatContradictions": [
+    {"field": "visual.outfit/weapon/back/holster", "current": "tactical / rifle / null / true", "finding": "Generic jacket-like body, ordinary rifle silhouette and missing rear ammunition pack conflict with selected original artwork. Holstered sidearm is unverified."},
+    {"field": "combat.resource/passive/super", "current": "TEMPÉRATURE VULCAN / Refroidissement / Rafale Vulcan cost 0 plus meter 50", "finding": "Versus heat budget, cooling and numerical salvo costs are authored adaptations; retain explicit adaptation scope and do not describe them as original PS1 measured mechanics."},
+    {"field": "finishers", "current": "Vulcan Overheat, Raven’s Cannon, Frozen Warehouse, Spirit Returns", "finding": "All four are already canonical:false/evidence:adaptation. Preserve that classification; Spirit Returns is not proof of a supernatural combat power. Frozen Warehouse currently uses generic grapple phases despite firearm sourceMoves; review native pose coupling when sprites are authored."}
+  ],
+  "missingReferences": ["original PS1 in-game front/side cannon firing still", "original PS1 back ammunition feed still", "original PS1 color/texture close-up"],
+  "readyFor": ["source-supported original MGS1 face and gross costume/silhouette briefing"],
+  "notCertified": ["absolute 1:1", "72 native poses", "full weapon orthographic geometry", "original frame timing"],
+  "productionMutation": false
+}

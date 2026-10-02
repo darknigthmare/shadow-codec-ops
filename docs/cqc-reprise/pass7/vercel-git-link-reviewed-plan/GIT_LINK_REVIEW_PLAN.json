@@ -1,0 +1,67 @@
+{
+  "schema": "vercel-pass7-git-link-review-plan/v1",
+  "checkedAt": "2026-10-02T02:51:48.627662+00:00",
+  "mode": "read-only-preparation-no-api-mutation",
+  "projectId": "prj_CAulbIX6GAPNda82UbIEbe8e33MV",
+  "teamId": "team_VrIjq2UWV6VaHZr7DdQFwvfu",
+  "repo": "darknigthmare/shadow-codec-ops",
+  "repoId": 1295335886,
+  "projectCurrentGitLink": null,
+  "existingRepoAccessibleViaOfficialGitSearch": true,
+  "repositoryDefaultBranch": "main",
+  "desiredProductionBranch": "reprise/2026-10-02",
+  "githubMainMustRemainUnchanged": true,
+  "proposedConnection": {
+    "method": "POST",
+    "endpoint": "/v9/projects/prj_CAulbIX6GAPNda82UbIEbe8e33MV/link?teamId=team_VrIjq2UWV6VaHZr7DdQFwvfu",
+    "body": {
+      "type": "github",
+      "repo": "darknigthmare/shadow-codec-ops"
+    },
+    "source": "Vercel CLI50.18.0 src/util/git/connect-git-provider.ts bundled implementation; official vercel git connect command"
+  },
+  "productionBranchSetter": {
+    "status": "official-public-REST-setter-not-found",
+    "publicPatchProjectSchemaHasProductionBranch": false,
+    "officialProcedure": "Project Settings → Environments → Production → Branch Tracking → reprise/2026-10-02 → Save",
+    "sourceURL": "https://vercel.com/docs/git#production-branch"
+  },
+  "requiredBeforeActivation": [
+    "New PASS7 commit exists on GitHub and matches frozen QA inputs",
+    "Root reviews this exact connection plan",
+    "Existing GitHub application authorization is sufficient; if Vercel requests new app installation, record the concrete response and continue manual deployment without granting a new unknown integration",
+    "Before claiming continuous production deployments, link.productionBranch must read back reprise/2026-10-02; default main is not adequate"
+  ],
+  "verificationAfterActivation": [
+    "GET project link.type/github repoId1295335886 and expected productionBranch",
+    "GET deployments inspect exact remote commit state READY and production target",
+    "Production domain HTTP and browser source-SHA verification"
+  ],
+  "fallback": "Continue authorized manual official API production deployment from each verified GitHub SHA while production branch automation remains unset. No main mutation, no token export, no protection change.",
+  "evidence": {
+    "project-current-before-git-plan.json": {
+      "sha256": "02a61b7bc7e3cc8cfdfd21103cce3e05a8968aaac83c4425d05504967a766e2a"
+    },
+    "git-repositories-search.json": {
+      "sha256": "70ebdcf445819d108a3b6080d5fded914d3d70b8900fe9a755d07b2c03a4ce44"
+    },
+    "official-cli-git-connect-implementation.js": {
+      "sha256": "1370b2f8fe22b146a03bcef05ca0a7a4353c5dafc54ab23ee02d9b5451b86d8f"
+    },
+    "git-link-request-review-only.json": {
+      "sha256": "b7a997c675d605f58a9613e24ea5d77f569dd5478c009378b4b15791f0c84438"
+    },
+    "official-project-git-openapi.json": {
+      "sha256": "9f98509b2fad8d400520bc37d70a5f69a40e320e6f871244ce1f3ad74920fd2d"
+    },
+    "official-git-readonly-openapi.json": {
+      "sha256": "1ad040efeae605dcf4a7585dfe8f87ed198f1af9a097c635433955e357ed33e2"
+    },
+    "official-git-md.txt": {
+      "sha256": "99a7b5ad9eb3e51282f2ebf334091fa0c117a98ef493672d8261546e9531cb41"
+    },
+    "official-nondefault-production-branch.txt": {
+      "sha256": "f76c0cab34f7f007e9ad99bbeef7c7d75899769d58d78bbe9b1659f0ac1c3d1d"
+    }
+  }
+}

@@ -1,0 +1,620 @@
+{
+  "schema": "cqc.native-combat-delivery/1",
+  "uid": "archive__skull_face",
+  "name": "SKULL FACE",
+  "game": "Metal Gear Solid V: The Phantom Pain (2015)",
+  "incarnation": "Original2015 TPP Skull Face, living scarred human, formal dark coat/waistcoat/fedora/domino mask and western boots, empty-handed source posture",
+  "selectedCostume": "original-tpp-skull-face-dialogue-formal-costume",
+  "basis": "Apparence originale TPP vérifiée ; désignation/garde/CQC de simulation versus explicitement adaptés, aucun duel canonique, pouvoir surnaturel, pistolet ou grenade inventé. Arme portée partiellement masquée non certifiée.",
+  "displayHeight": 230,
+  "coverage": "action-frames",
+  "facing": 1,
+  "mirror": false,
+  "sourceFiles": [
+    {
+      "key": "a-right",
+      "source": "/workspace/cqc-pass7-generation/skull-face/sources/A_RIGHT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-0a9d069a-32ef-4318-9172-0302a190dd2a.png",
+      "sha256": "ff420793b0aeb8ce3ec69dcca27a86550113c553ea8d19c03933304623554809",
+      "bytes": 1837598,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": 1,
+      "mirror": false
+    },
+    {
+      "key": "a-left",
+      "source": "/workspace/cqc-pass7-generation/skull-face/sources/A_LEFT_02.png",
+      "nativeOriginal": "/workspace/generated_images/exec-fc6c9a99-240b-4aa9-9b10-194b6f7935e8.png",
+      "sha256": "8f1fb8640f1ba8c45b87f04d94f955460ff6e139ed4a16fe2023f8ca7ec31051",
+      "bytes": 1903471,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": -1,
+      "mirror": false
+    },
+    {
+      "key": "b-right",
+      "source": "/workspace/cqc-pass7-generation/skull-face/sources/B_RIGHT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-396159ae-6fd9-46e7-a470-afb64bfbc19a.png",
+      "sha256": "39af6128c4bb48b291b8a2b2e0fd7c7c00f876d8db21ab4398a68884b2e4dfd8",
+      "bytes": 2043992,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": 1,
+      "mirror": false
+    },
+    {
+      "key": "b-left",
+      "source": "/workspace/cqc-pass7-generation/skull-face/sources/B_LEFT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-7a4fc748-b1b2-475e-a9c1-44fff6ba2c00.png",
+      "sha256": "da85e08ffff49bd36005fd357ab105b28de5e0bab1a680d262ab9529353f052d",
+      "bytes": 2081836,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": -1,
+      "mirror": false
+    },
+    {
+      "key": "c-right",
+      "source": "/workspace/cqc-pass7-generation/skull-face/sources/C_RIGHT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-ebfc8751-3950-417e-99fc-980ce6e879a6.png",
+      "sha256": "a137f9adcc0f477fb9e1c30c47f46eb1e912275d7e45e9679e355dc1a778a948",
+      "bytes": 1922046,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": 1,
+      "mirror": false
+    },
+    {
+      "key": "c-left",
+      "source": "/workspace/cqc-pass7-generation/skull-face/sources/C_LEFT_04.png",
+      "nativeOriginal": "/workspace/generated_images/exec-b2155a75-12a1-4ecc-9dba-ff14c47eb681.png",
+      "sha256": "8277c36651fa5f12912cf92b5bc4c51f59b2b22964241582bfb27cacd0d88b24",
+      "bytes": 2090482,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": -1,
+      "mirror": false
+    }
+  ],
+  "actionLayout": {
+    "idle": {
+      "sheet": "a",
+      "indices": [
+        0,
+        1
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "walk": {
+      "sheet": "a",
+      "indices": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "fps": 9,
+      "loop": true
+    },
+    "guard": {
+      "sheet": "a",
+      "indices": [
+        6,
+        7
+      ],
+      "fps": 5,
+      "loop": true
+    },
+    "crouch": {
+      "sheet": "a",
+      "indices": [
+        8,
+        9
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "jump": {
+      "sheet": "a",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 6,
+      "loop": false
+    },
+    "punch": {
+      "sheet": "b",
+      "indices": [
+        0,
+        1,
+        2
+      ],
+      "fps": 12,
+      "loop": false
+    },
+    "heavy": {
+      "sheet": "b",
+      "indices": [
+        3,
+        4,
+        5
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "low": {
+      "sheet": "b",
+      "indices": [
+        6,
+        7,
+        8
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "hit": {
+      "sheet": "b",
+      "indices": [
+        9
+      ],
+      "fps": 0,
+      "loop": false
+    },
+    "ko": {
+      "sheet": "b",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 6,
+      "loop": false
+    },
+    "shoot": {
+      "sheet": "c",
+      "indices": [
+        0,
+        1,
+        2
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "deploy": {
+      "sheet": "c",
+      "indices": [
+        3,
+        4,
+        5
+      ],
+      "fps": 8,
+      "loop": false
+    },
+    "throw": {
+      "sheet": "c",
+      "indices": [
+        6,
+        7,
+        8
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "recover": {
+      "sheet": "c",
+      "indices": [
+        9,
+        10,
+        11
+      ],
+      "fps": 5,
+      "loop": false
+    }
+  },
+  "actionMap": {
+    "light": "punch",
+    "heavy": "heavy",
+    "low": "low",
+    "throw": "throw",
+    "special": "shoot",
+    "specialDown": "deploy",
+    "specialForward": "throw",
+    "specialBack": "walk",
+    "super": "throw",
+    "utility": "recover"
+  },
+  "phaseMap": {
+    "punch": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "heavy": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "low": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "shoot": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "deploy": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "throw": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "recover": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "guard": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        0
+      ]
+    },
+    "jump": {
+      "startup": [
+        0
+      ],
+      "active": [
+        0
+      ],
+      "recovery": [
+        1
+      ]
+    },
+    "attack": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    }
+  },
+  "review": {
+    "status": "approved",
+    "reviewer": "pass7_skull_face_native / producer source and complete72-pose physical review",
+    "reviewedAt": "2026-10-02",
+    "sourceKind": "original-game-capture",
+    "checks": {
+      "identity": true,
+      "costume": true,
+      "equipment": true,
+      "anatomicalSides": true,
+      "singleFigure": true,
+      "transparentBackground": true
+    },
+    "fidelityStatus": "closest_supported",
+    "absolute1to1Certified": false,
+    "sources": [
+      {
+        "file": "/workspace/cqc-pass7-generation/skull-face/references/skull-face-psn.jpg",
+        "url": "https://image.api.playstation.com/cdn/UP0101/CUSA01140_00/doKmjR2srvfPW1dnp4l1sGKKvF7ub9bP.png",
+        "sourceKind": "official-game-reference",
+        "sha256": "48e5ca936a460839a07f2f7c68069a8d4d8620c664324b7f7dd6970a617cb396",
+        "bytes": 67034,
+        "viewed": true,
+        "scope": "Official PlayStation original TPP head/shoulders portrait. Living heavily scarred human face/neck, separate black domino mask, black fedora, formal jacket/shirt/tie; no weapon or full lower body."
+      },
+      {
+        "file": "/workspace/cqc-pass7-generation/skull-face/references/ps4-tpp-part5-6900s.jpg",
+        "url": "https://archive.org/download/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain_Part_5.mp4",
+        "sourceKind": "original-game-capture",
+        "sha256": "87c9698b3e17111da62502aae5597bbf02fd5da7bdeed5cb2a38702861a4cb18",
+        "bytes": 98413,
+        "width": 1920,
+        "height": 1080,
+        "timeSeconds": 6900,
+        "viewed": true,
+        "scope": "Original TPP face under black fedora, domino mask, burn scars, formal collar/tie; dialogue only.",
+        "captureMethod": "ffmpeg remote seek, single native-resolution1920x1080 decoded frame encoded JPEG q2; no resize, recolor, crop, pixel paint or complete movie download. Exact tool arguments and stderr preserved.",
+        "platformEvidence": "Archive uploader WorldofLongplays labels the2017 recording PS4 TPP. Console hardware/framebuffer and fine material values are not independently certified."
+      },
+      {
+        "file": "/workspace/cqc-pass7-generation/skull-face/references/ps4-tpp-part5-6920s.jpg",
+        "url": "https://archive.org/download/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain_Part_5.mp4",
+        "sourceKind": "original-game-capture",
+        "sha256": "9b884336cd55509b55567be4ada0ee518fe00fc205e690dc1628e8bf5f7ade75",
+        "bytes": 135359,
+        "width": 1920,
+        "height": 1080,
+        "timeSeconds": 6920,
+        "viewed": true,
+        "scope": "Original bald severely scarred living human head while hat is briefly removed, domino mask, dark waistcoat/shirt/tie, black full gloves. Hatless phase excluded from selected sprites.",
+        "captureMethod": "ffmpeg remote seek, single native-resolution1920x1080 decoded frame encoded JPEG q2; no resize, recolor, crop, pixel paint or complete movie download. Exact tool arguments and stderr preserved.",
+        "platformEvidence": "Archive uploader WorldofLongplays labels the2017 recording PS4 TPP. Console hardware/framebuffer and fine material values are not independently certified."
+      },
+      {
+        "file": "/workspace/cqc-pass7-generation/skull-face/references/ps4-tpp-part5-7000s.jpg",
+        "url": "https://archive.org/download/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain_Part_5.mp4",
+        "sourceKind": "original-game-capture",
+        "sha256": "840dfe733b5d218f884b18262b2968e23faee4befba37b5af21e9422bb815b32",
+        "bytes": 303604,
+        "width": 1920,
+        "height": 1080,
+        "timeSeconds": 7000,
+        "viewed": true,
+        "scope": "Original reverse thigh-length coat split and attached hems, relaxed walking; no invented backpack.",
+        "captureMethod": "ffmpeg remote seek, single native-resolution1920x1080 decoded frame encoded JPEG q2; no resize, recolor, crop, pixel paint or complete movie download. Exact tool arguments and stderr preserved.",
+        "platformEvidence": "Archive uploader WorldofLongplays labels the2017 recording PS4 TPP. Console hardware/framebuffer and fine material values are not independently certified."
+      },
+      {
+        "file": "/workspace/cqc-pass7-generation/skull-face/references/ps4-tpp-part5-7050s.jpg",
+        "url": "https://archive.org/download/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain_Part_5.mp4",
+        "sourceKind": "original-game-capture",
+        "sha256": "4cbde17b0c3444de1b128660ec5a1f53b2007ec4a5ac42f2612a1735a2140871",
+        "bytes": 197451,
+        "width": 1920,
+        "height": 1080,
+        "timeSeconds": 7050,
+        "viewed": true,
+        "scope": "Original rear complete standing silhouette, full dark riding/western boots, trouser cut and coat length.",
+        "captureMethod": "ffmpeg remote seek, single native-resolution1920x1080 decoded frame encoded JPEG q2; no resize, recolor, crop, pixel paint or complete movie download. Exact tool arguments and stderr preserved.",
+        "platformEvidence": "Archive uploader WorldofLongplays labels the2017 recording PS4 TPP. Console hardware/framebuffer and fine material values are not independently certified."
+      },
+      {
+        "file": "/workspace/cqc-pass7-generation/skull-face/references/ps4-tpp-part5-7090s.jpg",
+        "url": "https://archive.org/download/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain_Part_5.mp4",
+        "sourceKind": "original-game-capture",
+        "sha256": "5196ced4a3882c998f3b777c95c4e925b536c8ace4f1b47a4902085580be8622",
+        "bytes": 191306,
+        "width": 1920,
+        "height": 1080,
+        "timeSeconds": 7090,
+        "viewed": true,
+        "scope": "Original full frontal body: source tailored coat/waistcoat, gold left-breast crest, grey-beige shirt/tie, black full gloves, loose trousers tucked into tall western boots with diagonal shaft detail. Small partly occluded item by right thigh does not establish weapon model.",
+        "captureMethod": "ffmpeg remote seek, single native-resolution1920x1080 decoded frame encoded JPEG q2; no resize, recolor, crop, pixel paint or complete movie download. Exact tool arguments and stderr preserved.",
+        "platformEvidence": "Archive uploader WorldofLongplays labels the2017 recording PS4 TPP. Console hardware/framebuffer and fine material values are not independently certified."
+      },
+      {
+        "file": "/workspace/cqc-pass7-generation/skull-face/references/ps4-tpp-part5-7110s.jpg",
+        "url": "https://archive.org/download/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain_Part_5.mp4",
+        "sourceKind": "original-game-capture",
+        "sha256": "8fc270aa91896902886d38fb0a8bd2bfc213ab42ffaff5da73973136bb0d469d",
+        "bytes": 184577,
+        "width": 1920,
+        "height": 1080,
+        "timeSeconds": 7110,
+        "viewed": true,
+        "scope": "Original full front body with raised open gloved hand while speaking; grounded restrained command gesture, original boot/toe/heel and source silhouette. No firearm firing.",
+        "captureMethod": "ffmpeg remote seek, single native-resolution1920x1080 decoded frame encoded JPEG q2; no resize, recolor, crop, pixel paint or complete movie download. Exact tool arguments and stderr preserved.",
+        "platformEvidence": "Archive uploader WorldofLongplays labels the2017 recording PS4 TPP. Console hardware/framebuffer and fine material values are not independently certified."
+      },
+      {
+        "file": "/workspace/cqc-pass7-generation/skull-face/references/ps4-tpp-part5-7350s.jpg",
+        "url": "https://archive.org/download/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain_Part_5.mp4",
+        "sourceKind": "original-game-capture",
+        "sha256": "acb036ddf160d67f5b6995b1f5e47630239132e797f83632bb46052f8d07c2ac",
+        "bytes": 95694,
+        "width": 1920,
+        "height": 1080,
+        "timeSeconds": 7350,
+        "viewed": true,
+        "scope": "Original seated source hand gesture and black gloves, coat/collar/mask/fedora; source for adapted designation motion, not a psychic or shooting power.",
+        "captureMethod": "ffmpeg remote seek, single native-resolution1920x1080 decoded frame encoded JPEG q2; no resize, recolor, crop, pixel paint or complete movie download. Exact tool arguments and stderr preserved.",
+        "platformEvidence": "Archive uploader WorldofLongplays labels the2017 recording PS4 TPP. Console hardware/framebuffer and fine material values are not independently certified."
+      },
+      {
+        "file": "/workspace/cqc-pass7-generation/skull-face/references/ps4-tpp-part5-7700s.jpg",
+        "url": "https://archive.org/download/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain/PS4_Longplay_051_Metal_Gear_Solid_V_The_Phantom_Pain_Part_5.mp4",
+        "sourceKind": "original-game-capture",
+        "sha256": "6d935b475d39eb7bd7016fe07ad37e06758744a7ee2610055a1e8c05b6e06b6c",
+        "bytes": 95523,
+        "width": 1920,
+        "height": 1080,
+        "timeSeconds": 7700,
+        "viewed": true,
+        "scope": "Original restrained gloved hand/forearm gesture and formal upper clothing, single subdued chest crest; no personal ballistic firing proof.",
+        "captureMethod": "ffmpeg remote seek, single native-resolution1920x1080 decoded frame encoded JPEG q2; no resize, recolor, crop, pixel paint or complete movie download. Exact tool arguments and stderr preserved.",
+        "platformEvidence": "Archive uploader WorldofLongplays labels the2017 recording PS4 TPP. Console hardware/framebuffer and fine material values are not independently certified."
+      }
+    ],
+    "limits": [
+      "Target remains1:1 source-specific original2015 TPP. These newly painted2D poses are closest_supported adaptations of original3D references, never extracted source animation, absolute pixel/model/material identity or absolute1:1 certification.",
+      "Selected costume is original TPP scarred living HUMAN face, domino mask, fedora, thigh-length formal coat/waistcoat, beige-grey collar and dark tie, full black gloves, loose trousers tucked into tall black western boots. No literal skeleton, undead skull, parasite-soldier armor, flaming Volgin attributes or Diamond Dogs diamond.",
+      "Dark source cutscene lighting partly occludes seams, reverse details and precise boot leather/sole stitching. Source gold XOF chest crest and scar relief remain interpreted at sprite scale; exact crest lettering, badge pixel placement, scar topology, finger count in occlusion and material response are not certified1:1. C LEFT final preserves distinctive scar lines but fine relief is softer than high-resolution official portrait.",
+      "Original full body sources show a partly obscured item by anatomical right thigh; they do NOT establish its precise firearm model or personal shooting use. IMFDB TPP www/apex/http all returned403 and no full verified weapon capture was recovered. Neither absence of every weapon in canon nor a generic pistol, Mare’s Leg or personal volley is certified. Selected empty-handed dialogue-derived posture conservatively omits unresolved holstered detail. No firearm/grenade is invented in any native pose.",
+      "All normal strikes, bounded jump, guard, crouch, physical grab, hit/KO and stamina recovery are authored versus adaptations. Source dialogue supports grounded human gestures, not an actual canonical duel, magic marking power, ballistic finger muzzle or supernatural shield. Gameplay/profile consistency and explicit simulation wording remain independent integrator responsibilities.",
+      "C shoot is only the existing sprite action key for non-ballistic designation0..2; deploy3..5 is guarded posture without deployed ordnance; throw6..8 is authored physical CQC control; recover9..11 restores composure/effort and never loads a firearm. Super may use throw/heavy for explicitly authored melee. Hand marks are gesture landmarks, not ballistic origins.",
+      "Both facings independently generated; no mirrored raster or runtime body reflection. Twelve figures per selected sheet physically inspected. A LEFT1 rejected mixed directions; C LEFT1 rejected extra tiny lapel mark, C LEFT2 edit did not clearly remove it and softened scars; C LEFT3 fixed lapel policy but cell6 facedRIGHT; C LEFT4 final corrects that sole direction through image_gen. All ten generated native PNGs, exact prompts and rejected originals preserved, no extra OC.",
+      "Pillow/NumPy/SciPy inspect alpha/hash/components and describe Canvas rectangles/pivots only, no pixels edited. Native sub-alpha8 fringes and RGB remain untouched. Fixed source upright height prevents crouch/KO stretching; actual hitboxes/camera/mobile/phase validation belongs to integrator."
+    ],
+    "approvalScope": "Source-specific unarmed TPP appearance and72 authored human action poses; approved costume/boots/gloves/fedora/domino face in selected source scope, not unresolved firearm or full runtime integration."
+  },
+  "counts": {
+    "selectedNativePngSheets": 6,
+    "totalPoseCells": 72,
+    "poseCellsPerSheet": 12,
+    "facings": 2,
+    "nativeGenerationAttempts": 10,
+    "rejectedNativeAttempts": 4,
+    "selectedWeaponPropAtlases": 0
+  },
+  "sourceGeometry": {
+    "a-right": {
+      "recommendStandingSourceHeight": 357.0,
+      "nativeUprightHeights": [
+        357,
+        357
+      ],
+      "observedUprightIndices": [
+        0,
+        1
+      ],
+      "measuredLayouts": "/workspace/cqc-pass7-generation/skull-face/layouts/a-right.json",
+      "basis": "Actual native hat-to-boot upright body height, excluding lowered poses. Crouch/jump/KO use same positive sheet scale and never stretch to standing height."
+    },
+    "a-left": {
+      "recommendStandingSourceHeight": 370.0,
+      "nativeUprightHeights": [
+        370,
+        370
+      ],
+      "observedUprightIndices": [
+        0,
+        1
+      ],
+      "measuredLayouts": "/workspace/cqc-pass7-generation/skull-face/layouts/a-left.json",
+      "basis": "Actual native hat-to-boot upright body height, excluding lowered poses. Crouch/jump/KO use same positive sheet scale and never stretch to standing height."
+    },
+    "b-right": {
+      "recommendStandingSourceHeight": 369.0,
+      "nativeUprightHeights": [
+        369,
+        369
+      ],
+      "observedUprightIndices": [
+        0,
+        2
+      ],
+      "measuredLayouts": "/workspace/cqc-pass7-generation/skull-face/layouts/b-right.json",
+      "basis": "Actual native hat-to-boot upright body height, excluding lowered poses. Crouch/jump/KO use same positive sheet scale and never stretch to standing height."
+    },
+    "b-left": {
+      "recommendStandingSourceHeight": 344.5,
+      "nativeUprightHeights": [
+        344,
+        345
+      ],
+      "observedUprightIndices": [
+        0,
+        2
+      ],
+      "measuredLayouts": "/workspace/cqc-pass7-generation/skull-face/layouts/b-left.json",
+      "basis": "Actual native hat-to-boot upright body height, excluding lowered poses. Crouch/jump/KO use same positive sheet scale and never stretch to standing height."
+    },
+    "c-right": {
+      "recommendStandingSourceHeight": 343.5,
+      "nativeUprightHeights": [
+        355,
+        332
+      ],
+      "observedUprightIndices": [
+        2,
+        11
+      ],
+      "measuredLayouts": "/workspace/cqc-pass7-generation/skull-face/layouts/c-right.json",
+      "basis": "Actual native hat-to-boot upright body height, excluding lowered poses. Crouch/jump/KO use same positive sheet scale and never stretch to standing height."
+    },
+    "c-left": {
+      "recommendStandingSourceHeight": 347.0,
+      "nativeUprightHeights": [
+        356,
+        338
+      ],
+      "observedUprightIndices": [
+        2,
+        11
+      ],
+      "measuredLayouts": "/workspace/cqc-pass7-generation/skull-face/layouts/c-left.json",
+      "basis": "Actual native hat-to-boot upright body height, excluding lowered poses. Crouch/jump/KO use same positive sheet scale and never stretch to standing height."
+    }
+  },
+  "layouts": {
+    "a-right": "/workspace/cqc-pass7-generation/skull-face/layouts/a-right.json",
+    "a-left": "/workspace/cqc-pass7-generation/skull-face/layouts/a-left.json",
+    "b-right": "/workspace/cqc-pass7-generation/skull-face/layouts/b-right.json",
+    "b-left": "/workspace/cqc-pass7-generation/skull-face/layouts/b-left.json",
+    "c-right": "/workspace/cqc-pass7-generation/skull-face/layouts/c-right.json",
+    "c-left": "/workspace/cqc-pass7-generation/skull-face/layouts/c-left.json"
+  },
+  "sourceCombatOrigins": "/workspace/cqc-pass7-generation/skull-face/SOURCE_COMBAT_ORIGINS.json",
+  "sourceContract": "/workspace/cqc-pass7-generation/skull-face/SOURCE_AND_ACTION_CONTRACT.json",
+  "nativeAlphaReview": "/workspace/cqc-pass7-generation/skull-face/NATIVE_ALPHA_REVIEW.json",
+  "limits": [
+    "Target remains1:1 source-specific original2015 TPP. These newly painted2D poses are closest_supported adaptations of original3D references, never extracted source animation, absolute pixel/model/material identity or absolute1:1 certification.",
+    "Selected costume is original TPP scarred living HUMAN face, domino mask, fedora, thigh-length formal coat/waistcoat, beige-grey collar and dark tie, full black gloves, loose trousers tucked into tall black western boots. No literal skeleton, undead skull, parasite-soldier armor, flaming Volgin attributes or Diamond Dogs diamond.",
+    "Dark source cutscene lighting partly occludes seams, reverse details and precise boot leather/sole stitching. Source gold XOF chest crest and scar relief remain interpreted at sprite scale; exact crest lettering, badge pixel placement, scar topology, finger count in occlusion and material response are not certified1:1. C LEFT final preserves distinctive scar lines but fine relief is softer than high-resolution official portrait.",
+    "Original full body sources show a partly obscured item by anatomical right thigh; they do NOT establish its precise firearm model or personal shooting use. IMFDB TPP www/apex/http all returned403 and no full verified weapon capture was recovered. Neither absence of every weapon in canon nor a generic pistol, Mare’s Leg or personal volley is certified. Selected empty-handed dialogue-derived posture conservatively omits unresolved holstered detail. No firearm/grenade is invented in any native pose.",
+    "All normal strikes, bounded jump, guard, crouch, physical grab, hit/KO and stamina recovery are authored versus adaptations. Source dialogue supports grounded human gestures, not an actual canonical duel, magic marking power, ballistic finger muzzle or supernatural shield. Gameplay/profile consistency and explicit simulation wording remain independent integrator responsibilities.",
+    "C shoot is only the existing sprite action key for non-ballistic designation0..2; deploy3..5 is guarded posture without deployed ordnance; throw6..8 is authored physical CQC control; recover9..11 restores composure/effort and never loads a firearm. Super may use throw/heavy for explicitly authored melee. Hand marks are gesture landmarks, not ballistic origins.",
+    "Both facings independently generated; no mirrored raster or runtime body reflection. Twelve figures per selected sheet physically inspected. A LEFT1 rejected mixed directions; C LEFT1 rejected extra tiny lapel mark, C LEFT2 edit did not clearly remove it and softened scars; C LEFT3 fixed lapel policy but cell6 facedRIGHT; C LEFT4 final corrects that sole direction through image_gen. All ten generated native PNGs, exact prompts and rejected originals preserved, no extra OC.",
+    "Pillow/NumPy/SciPy inspect alpha/hash/components and describe Canvas rectangles/pivots only, no pixels edited. Native sub-alpha8 fringes and RGB remain untouched. Fixed source upright height prevents crouch/KO stretching; actual hitboxes/camera/mobile/phase validation belongs to integrator."
+  ],
+  "requiresGameplayContract": "New pass7 command-designation mark/brief guard/CQC effort simulation must supersede old generic pistol/grenade profile; do not attach finger landmarks to old ballistic shots. Runtime/phase verification root-owned."
+}

@@ -1,0 +1,303 @@
+{
+  "schema": "cqc.pass7.native-sprite-tool-qa/1",
+  "date": "2026-10-02T02:46:46.297239+00:00",
+  "success": true,
+  "passedAllChecks": true,
+  "tests": 35,
+  "totals": {
+    "suites": 5,
+    "plannedSuites": 5,
+    "tests": 35,
+    "passed": 35,
+    "failed": 0,
+    "successfulSuites": 5
+  },
+  "runs": [
+    {
+      "label": "brad-validation",
+      "command": [
+        "node",
+        "tests/test_combat_sprite_pass4_validation.cjs"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 0.04504935898876283,
+      "expectedCaseCount": 2,
+      "stdoutLog": "/workspace/cqc-pass7-sprite-qa-final-ui-logs/run-20261002T024634Z-13e987a2/logs/brad-validation.stdout.log",
+      "stdoutSha256": "dc5bac110a2c17a69207c2888059d3bf7407557b3b7f2b5a9ebd191c9a761beb",
+      "stderrLog": "/workspace/cqc-pass7-sprite-qa-final-ui-logs/run-20261002T024634Z-13e987a2/logs/brad-validation.stderr.log",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tests": 2,
+      "passed": 2,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "countSource": "direct-node-TAP-or-spec-final-summary",
+      "suiteSucceeded": true
+    },
+    {
+      "label": "renderer",
+      "command": [
+        "node",
+        "tests/test_combat_sprite_renderer.cjs"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 1.018715420999797,
+      "expectedCaseCount": 22,
+      "stdoutLog": "/workspace/cqc-pass7-sprite-qa-final-ui-logs/run-20261002T024634Z-13e987a2/logs/renderer.stdout.log",
+      "stdoutSha256": "a2a631512737eac86af40c03c0822651fc523093450e43dcdc32c5dffeff48b0",
+      "stderrLog": "/workspace/cqc-pass7-sprite-qa-final-ui-logs/run-20261002T024634Z-13e987a2/logs/renderer.stderr.log",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tests": 22,
+      "passed": 22,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "countSource": "direct-node-TAP-or-spec-final-summary",
+      "suiteSucceeded": true
+    },
+    {
+      "label": "importer",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_prepare_combat_sprite.py",
+        "-v"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 0.08671787499042694,
+      "expectedCaseCount": 6,
+      "stdoutLog": "/workspace/cqc-pass7-sprite-qa-final-ui-logs/run-20261002T024634Z-13e987a2/logs/importer.stdout.log",
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrLog": "/workspace/cqc-pass7-sprite-qa-final-ui-logs/run-20261002T024634Z-13e987a2/logs/importer.stderr.log",
+      "stderrSha256": "f4531adc74c1673bbfd20ce1a76f1e84dadeeb74ac2f0c1cf0f942cef79ebf85",
+      "tests": 6,
+      "passed": 6,
+      "failed": 0,
+      "countSource": "fresh-python-unittest-final-summary",
+      "suiteSucceeded": true
+    },
+    {
+      "label": "brad-importer",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_prepare_combat_sprite_pass4.py",
+        "-v"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 0.1138869540009182,
+      "expectedCaseCount": 2,
+      "stdoutLog": "/workspace/cqc-pass7-sprite-qa-final-ui-logs/run-20261002T024634Z-13e987a2/logs/brad-importer.stdout.log",
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrLog": "/workspace/cqc-pass7-sprite-qa-final-ui-logs/run-20261002T024634Z-13e987a2/logs/brad-importer.stderr.log",
+      "stderrSha256": "7a584cd2f0be507e88f836b4bf813ba88ac642fddd1e527dfde6220bdb1a13b3",
+      "tests": 2,
+      "passed": 2,
+      "failed": 0,
+      "countSource": "fresh-python-unittest-final-summary",
+      "suiteSucceeded": true
+    },
+    {
+      "label": "native-contours",
+      "command": [
+        "python",
+        "tests/test_combat_sprite_contours_pass7.py",
+        "-v"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 10.152050963006332,
+      "expectedCaseCount": 3,
+      "stdoutLog": "/workspace/cqc-pass7-sprite-qa-final-ui-logs/run-20261002T024634Z-13e987a2/logs/native-contours.stdout.log",
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrLog": "/workspace/cqc-pass7-sprite-qa-final-ui-logs/run-20261002T024634Z-13e987a2/logs/native-contours.stderr.log",
+      "stderrSha256": "f03092b9fc4e4a4c19ca9b7e28d157d3ff26afb4d20be51e546adf0de21fb7c4",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0,
+      "countSource": "fresh-python-unittest-final-summary",
+      "suiteSucceeded": true
+    }
+  ],
+  "suites": [
+    {
+      "label": "brad-validation",
+      "command": [
+        "node",
+        "tests/test_combat_sprite_pass4_validation.cjs"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 0.04504935898876283,
+      "expectedCaseCount": 2,
+      "stdoutLog": "/workspace/cqc-pass7-sprite-qa-final-ui-logs/run-20261002T024634Z-13e987a2/logs/brad-validation.stdout.log",
+      "stdoutSha256": "dc5bac110a2c17a69207c2888059d3bf7407557b3b7f2b5a9ebd191c9a761beb",
+      "stderrLog": "/workspace/cqc-pass7-sprite-qa-final-ui-logs/run-20261002T024634Z-13e987a2/logs/brad-validation.stderr.log",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tests": 2,
+      "passed": 2,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "countSource": "direct-node-TAP-or-spec-final-summary",
+      "suiteSucceeded": true
+    },
+    {
+      "label": "renderer",
+      "command": [
+        "node",
+        "tests/test_combat_sprite_renderer.cjs"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 1.018715420999797,
+      "expectedCaseCount": 22,
+      "stdoutLog": "/workspace/cqc-pass7-sprite-qa-final-ui-logs/run-20261002T024634Z-13e987a2/logs/renderer.stdout.log",
+      "stdoutSha256": "a2a631512737eac86af40c03c0822651fc523093450e43dcdc32c5dffeff48b0",
+      "stderrLog": "/workspace/cqc-pass7-sprite-qa-final-ui-logs/run-20261002T024634Z-13e987a2/logs/renderer.stderr.log",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tests": 22,
+      "passed": 22,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "countSource": "direct-node-TAP-or-spec-final-summary",
+      "suiteSucceeded": true
+    },
+    {
+      "label": "importer",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_prepare_combat_sprite.py",
+        "-v"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 0.08671787499042694,
+      "expectedCaseCount": 6,
+      "stdoutLog": "/workspace/cqc-pass7-sprite-qa-final-ui-logs/run-20261002T024634Z-13e987a2/logs/importer.stdout.log",
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrLog": "/workspace/cqc-pass7-sprite-qa-final-ui-logs/run-20261002T024634Z-13e987a2/logs/importer.stderr.log",
+      "stderrSha256": "f4531adc74c1673bbfd20ce1a76f1e84dadeeb74ac2f0c1cf0f942cef79ebf85",
+      "tests": 6,
+      "passed": 6,
+      "failed": 0,
+      "countSource": "fresh-python-unittest-final-summary",
+      "suiteSucceeded": true
+    },
+    {
+      "label": "brad-importer",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_prepare_combat_sprite_pass4.py",
+        "-v"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 0.1138869540009182,
+      "expectedCaseCount": 2,
+      "stdoutLog": "/workspace/cqc-pass7-sprite-qa-final-ui-logs/run-20261002T024634Z-13e987a2/logs/brad-importer.stdout.log",
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrLog": "/workspace/cqc-pass7-sprite-qa-final-ui-logs/run-20261002T024634Z-13e987a2/logs/brad-importer.stderr.log",
+      "stderrSha256": "7a584cd2f0be507e88f836b4bf813ba88ac642fddd1e527dfde6220bdb1a13b3",
+      "tests": 2,
+      "passed": 2,
+      "failed": 0,
+      "countSource": "fresh-python-unittest-final-summary",
+      "suiteSucceeded": true
+    },
+    {
+      "label": "native-contours",
+      "command": [
+        "python",
+        "tests/test_combat_sprite_contours_pass7.py",
+        "-v"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "elapsedSeconds": 10.152050963006332,
+      "expectedCaseCount": 3,
+      "stdoutLog": "/workspace/cqc-pass7-sprite-qa-final-ui-logs/run-20261002T024634Z-13e987a2/logs/native-contours.stdout.log",
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrLog": "/workspace/cqc-pass7-sprite-qa-final-ui-logs/run-20261002T024634Z-13e987a2/logs/native-contours.stderr.log",
+      "stderrSha256": "f03092b9fc4e4a4c19ca9b7e28d157d3ff26afb4d20be51e546adf0de21fb7c4",
+      "tests": 3,
+      "passed": 3,
+      "failed": 0,
+      "countSource": "fresh-python-unittest-final-summary",
+      "suiteSucceeded": true
+    }
+  ],
+  "runDirectory": "/workspace/cqc-pass7-sprite-qa-final-ui-logs/run-20261002T024634Z-13e987a2",
+  "explicitFreezePins": [
+    {
+      "file": "data/combat-sprite-catalog-v1.json",
+      "sha256": "709af3851a2d1769ae98b4d4a77e2c552296eebfd904a19c900058596ec3ee47"
+    },
+    {
+      "file": "src/cqc-pass7-combat-fidelity.js",
+      "sha256": "48257633fc4c8054c2343f1da44334fe532d97222cfdd3b76b4827c3377b8bed"
+    },
+    {
+      "file": "src/cqc-pass7-native-origins.js",
+      "sha256": "042ae44b3af59a7f4c0318eac87dbbb1e3da3256287987059e44a9771c96b02b"
+    }
+  ],
+  "runnerError": null,
+  "inputsUnchangedDuringRun": true,
+  "changedInputs": [],
+  "historicalReportsUnchanged": true,
+  "historicalReportShaBefore": {
+    "original-gameplay-reprise-results.json": "92cda2ac561b211570bf1b5094d68b8932053ed04637c246b5976c3ff34cf5f7",
+    "viper-canonical-combat-reprise-results.json": "01d3826ea434589e90ae718bc7cf43409097d3bb74f924109035e2be97d8f161",
+    "combat-validation-v045.json": "f37ec349cbc988576b17f31038ab5f2fb1fffa536edec04b2cffa3ab327ebd5a",
+    "combat-results-v056.json": "f4927b158165ee808d28e695bf428e452b2e31c1695df0738bd916f9c4cc9f72",
+    "unit-results-v056.json": "1f1f1ab3970622e4338c681b6ac07a679b17d9e201b13c162372cc5e3cc77a07",
+    "runtime-results-v056.json": "bdd40643b834f8085ebef41b499cef4862870d5d06986ddf6871606dde61b615",
+    "album-results-v056.json": "4c82b4f32d3b3766b4c0e889ff1136b88ccf2819ea0cac35366f6a90682bc6b0"
+  },
+  "historicalReportShaAfter": {
+    "original-gameplay-reprise-results.json": "92cda2ac561b211570bf1b5094d68b8932053ed04637c246b5976c3ff34cf5f7",
+    "viper-canonical-combat-reprise-results.json": "01d3826ea434589e90ae718bc7cf43409097d3bb74f924109035e2be97d8f161",
+    "combat-validation-v045.json": "f37ec349cbc988576b17f31038ab5f2fb1fffa536edec04b2cffa3ab327ebd5a",
+    "combat-results-v056.json": "f4927b158165ee808d28e695bf428e452b2e31c1695df0738bd916f9c4cc9f72",
+    "unit-results-v056.json": "1f1f1ab3970622e4338c681b6ac07a679b17d9e201b13c162372cc5e3cc77a07",
+    "runtime-results-v056.json": "bdd40643b834f8085ebef41b499cef4862870d5d06986ddf6871606dde61b615",
+    "album-results-v056.json": "4c82b4f32d3b3766b4c0e889ff1136b88ccf2819ea0cac35366f6a90682bc6b0"
+  },
+  "scopeLimits": [
+    "Opaque components are connected original native alpha >80 bodies. Transparent fringes and artistic identity are separately physically reviewed in real browser captures.",
+    "Native PNGs are only read and measured. Renderer/importer unit tests use independent temporary fixtures, never mutate production artwork.",
+    "The fresh core catalog suite is intentionally not repeated or counted here."
+  ]
+}

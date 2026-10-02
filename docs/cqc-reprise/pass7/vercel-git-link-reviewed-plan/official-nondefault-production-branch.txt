@@ -1,0 +1,73 @@
+---
+title: How to use a non-default branch for production deployments on Vercel
+description: Learn how to set a non-default branch for production on Vercel. Open the Production environment, change branch tracking, and save to ship from it.
+url: "https://vercel.com/kb/guide/can-i-use-a-non-default-branch-for-production"
+published: 2025-11-03
+last_updated: 2026-10-02
+authors: Vercel
+install_vercel_plugin: npx plugins add vercel/vercel-plugin
+---
+
+Not every team ships from `main`. If your release process runs through a `release`, `stable`, or similarly named branch, you can point Vercel's production branch at it instead of restructuring your repository. It's a single-project setting, and this guide covers what it does and how to change it.
+
+Start with how Vercel decides which branch is production by default.
+
+## How Vercel chooses your production branch
+
+By default, Vercel deploys your [production branch](https://vercel.com/docs/git#production-branch) to your live site, and it picks that branch for you when you create a project. It looks for `main` first. If there's no `main`, it falls back to `master`, and then to your repository's default branch.
+
+This is a per-project setting, so each project can map production to the branch that best fits its workflow. When your team ships from a `release` or `stable` branch, you change this setting rather than renaming branches in Git. The control lives in your project settings.
+
+## How to set a non-default branch for production
+
+You change the production branch from your project's [settings](https://vercel.com/docs/project-configuration/project-settings), in the Environments area. The change takes a few clicks and applies right away.
+
+To set a non-default production branch:
+
+1. Open your project on the dashboard and select Settings.
+   
+2. Go to Environments, then select the Production environment.
+   
+3. Open its Branch Tracking section.
+   
+4. Enter the branch you want to use for production.
+   
+5. Select Save.
+   
+
+After you save, every push to that branch creates a [production deployment](https://vercel.com/docs/deployments/environments#production-environment). Nothing else in your project needs to change.
+
+## What happens to your non-production branches
+
+Changing the production branch doesn't stop Vercel from building your other branches. Every branch that isn't your production branch deploys as a [preview deployment](https://vercel.com/docs/deployments/environments#preview-environment-pre-production) instead.
+
+Each preview gets its own URL, so you can test and review changes in isolation before they reach production. Pushing to the production branch is the only action that updates your live site, which keeps a clear line between work in progress and what your visitors see.
+
+## Next steps
+
+With production wired to the branch your team ships from, every push to it goes straight to your live site. To apply the same setup to a new project, [start a new project](https://vercel.com/new) or [browse the templates](https://vercel.com/templates) for a preconfigured starting point.
+
+## Related resources
+
+- [Deploying Git repositories](https://vercel.com/docs/git#production-branch)
+  
+- [Preview deployments](https://vercel.com/docs/deployments/environments#preview-environment-pre-production)
+  
+- [Promote a preview deployment](https://vercel.com/docs/deployments/promote-preview-to-production)
+  
+- [Project settings](https://vercel.com/docs/project-configuration/project-settings)
+  
+
+## Frequently asked questions
+
+### When does changing the production branch take effect?
+
+The change applies as soon as you save it. From that point, every new push to the branch you selected creates a production deployment. Your existing live deployment stays in place until the next push or merge to that branch triggers a new one.
+
+### How do I deploy my current code to the new production branch?
+
+Push to or merge into the new production branch as you normally would, and Vercel builds it as a production deployment. If that code already exists as a preview, you can also [promote a preview deployment](https://vercel.com/docs/deployments/promote-preview-to-production) to production from the dashboard or CLI.
+
+### Can each Vercel project use a different production branch?
+
+Yes. The production branch is a per-project setting, so you can point each project at whichever branch suits its workflow. One project can deploy from `main` while another deploys from `release` or `stable`. Changing the branch on one project has no effect on any other project.

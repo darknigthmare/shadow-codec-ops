@@ -1,0 +1,293 @@
+{
+  "uid": "core__old_snake",
+  "actionLayout": {
+    "idle": {
+      "sheet": "a",
+      "indices": [
+        0,
+        1
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "walk": {
+      "sheet": "a",
+      "indices": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "fps": 8,
+      "loop": true
+    },
+    "guard": {
+      "sheet": "a",
+      "indices": [
+        6,
+        7
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "crouch": {
+      "sheet": "a",
+      "indices": [
+        8,
+        9
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "jump": {
+      "sheet": "a",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 5,
+      "loop": false
+    },
+    "punch": {
+      "sheet": "b",
+      "indices": [
+        0,
+        1,
+        2
+      ],
+      "fps": 12,
+      "loop": false
+    },
+    "heavy": {
+      "sheet": "b",
+      "indices": [
+        3,
+        4,
+        5
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "low": {
+      "sheet": "b",
+      "indices": [
+        6,
+        7,
+        8
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "hit": {
+      "sheet": "b",
+      "indices": [
+        9
+      ],
+      "fps": 0,
+      "loop": false
+    },
+    "ko": {
+      "sheet": "b",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 6,
+      "loop": false
+    },
+    "throw": {
+      "sheet": "c",
+      "indices": [
+        0,
+        1
+      ],
+      "fps": 9,
+      "loop": false
+    },
+    "shoot": {
+      "sheet": "c",
+      "indices": [
+        2,
+        3,
+        4
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "deploy": {
+      "sheet": "c",
+      "indices": [
+        5,
+        6
+      ],
+      "fps": 8,
+      "loop": false
+    },
+    "optic": {
+      "sheet": "c",
+      "indices": [
+        7
+      ],
+      "fps": 0,
+      "loop": false
+    },
+    "recover": {
+      "sheet": "c",
+      "indices": [
+        8,
+        9
+      ],
+      "fps": 5,
+      "loop": false
+    },
+    "charge": {
+      "sheet": "c",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 9,
+      "loop": false
+    }
+  },
+  "actionMap": {
+    "light": "punch",
+    "heavy": "heavy",
+    "low": "low",
+    "throw": "throw",
+    "special": "shoot",
+    "specialDown": "deploy",
+    "specialForward": "throw",
+    "specialBack": "crouch",
+    "super": "charge",
+    "utility": "recover"
+  },
+  "phaseMap": {
+    "punch": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "heavy": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "low": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "shoot": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "throw": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        0
+      ]
+    },
+    "deploy": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        0
+      ]
+    },
+    "charge": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        0
+      ]
+    },
+    "optic": {
+      "startup": [
+        0
+      ],
+      "active": [
+        0
+      ],
+      "recovery": [
+        0
+      ]
+    },
+    "recover": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        1
+      ]
+    },
+    "crouch": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        0
+      ]
+    }
+  },
+  "facingIndependent": true,
+  "mirror": false,
+  "poses": 72,
+  "noRuntimeEdits": true,
+  "weapons": {
+    "Mk.2": "Original PS3 name/NON-LETHAL HUD+long suppressor silhouette supported.",
+    "Chaff": "Name/HUD silhouette/aimed throw supported; detailed physical body and anti-electronic operation not certified by stills."
+  },
+  "phaseSemantics": {
+    "shoot": "right-held original-style pistol raise / level muzzle aim / lower recovery",
+    "deploy": "right-hand rectangular canister windup / extended release glove, no explosion",
+    "charge": "grounded CQC ready / physical reaching lunge",
+    "throw": "CQC open glove ready / physical active reach",
+    "optic": "self equipment-check gesture, no offensive lock",
+    "specialBack": "opaque low OctoCamo stance, no authored invisibility"
+  }
+}

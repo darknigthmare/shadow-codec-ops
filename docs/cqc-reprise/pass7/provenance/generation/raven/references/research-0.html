@@ -1,0 +1,203 @@
+<!doctype html>
+
+<!--[if lt IE 7]> <html lang="en-gb" class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html lang="en-gb" class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html lang="en-gb" class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en-gb"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Metal Gear Solid</title> 
+  
+  <meta name="keywords" content="archive,let's,play,Chip Cheezum, VoidBurger,Metal Gear Solid,video,humorous,voice" /> 
+  <meta name="description" content="Let's Play Metal Gear Solid by Chip Cheezum, VoidBurger" /> 
+  <meta name="author" content="Chip Cheezum, VoidBurger" /> 
+  
+	<link rel="stylesheet" href="/style/2012/archive-2.0.6.css" media="screen" /> 
+    
+  <meta name="viewport" content="width=960" />
+
+  <script type="text/javascript">
+    (function(html){html.className = "live";})(document.documentElement||document.body);
+  </script>
+
+  <script src="/script/jquery-1.7.1.min.js"></script>
+  <script src="/script/jquery.ba-outside-events.min.js"></script>
+  
+  <script src="/script/2012/globals.js"></script>
+  <script src="/script/2012/readinghistory-1.0.1.js"></script>
+
+	<script type="text/javascript">
+	/* <![CDATA[ */
+		// remove ugly anchor from search results. Looks like users without JS will need to live with it.
+		var url = window.location.toString();
+		if(url.indexOf('#') != -1) { window.location = url.split('#')[0]; }
+
+    var preload = new Image();
+    preload.src = "/site_images/tag_add.png";
+    preload.src = "/site_images/tag_del.png";
+  
+    lpid = 20932;
+    historyTitle = "Metal Gear Solid by Chip Cheezum, VoidBurger";
+
+    $(document).ready(displayUpdatedHistory);
+
+    current_tags = ["5","7"];
+
+    addtag_html='        Tag it!';
+    deltag_html='        Untag it!';
+
+		$(document).ready(function() {
+			$("div#popups").html("    <div class=\"message\" id=\"likeit\"><strong>Thanks! We like it too.</strong>Why not check out some similar LPs from our recommendations?</div> \
+    <div class=\"message\" id=\"tagit\"> \
+      <strong>What would you like to tag this LP as?</strong> \
+      <div class=\"tagrow\"> \
+        <span>Tag</span> \
+  			<select id=\"tagselect\">        <option value=\"9\">challenges</option> \
+        <option value=\"11\">co-op</option> \
+        <option value=\"14\">completionist</option> \
+        <option value=\"12\">dual-audio</option> \
+        <option value=\"6\">group</option> \
+        <option value=\"15\">high-definition</option> \
+        <option value=\"5\">humorous</option> \
+        <option value=\"4\">informative</option> \
+        <option value=\"10\">narrative</option> \
+        <option value=\"8\">subtitles</option> \
+        <option value=\"7\">voice</option> \
+        </select> \
+        <button class=\"addtag\" id=\"tagbutton\" onclick=\"return tagPopdown();\">        Tag it!        </button> \
+      </div> \
+		</div>");
+		});
+
+	/* ]]> */
+  </script>
+  <script src="/script/2012/archive.js"></script>
+</head> 
+<body>
+  <div class="header">
+    <a class="index-link" href="/">
+      &nbsp;<span class="logo"><i title="The Let's Play Archive">&nbsp;</i></span>
+    </a>
+  </div>
+  
+  <h1 class="indexhead">The Let's Play Archive</h1>  <h1><a href=".">Metal Gear Solid</a></h1>
+	<h2><span>by</span> <a href="/author/Chip%20Cheezum%2C%20VoidBurger">Chip Cheezum, VoidBurger</a></h2>  
+  <div id="details" class="info">
+    <ul id="statistics">
+      <li>Began on <strong>Sep 08, 2010</strong></li>
+      <li>Ended on <strong>Nov 28, 2010</strong></li>
+      <li>This LP has <strong>22</strong> parts.</li>
+      <li id="archival">Added to the archive on <strong>Dec 09, 2011</strong></li>
+    </ul>
+    
+    <ul id="tags">
+      <li id="controls">
+				<a href="#" class="like" title="Like this LP" onclick="return likePopup()"><span class="button"><i class="func-like">&nbsp;</i></span> Like</a>
+        <a href="#" class="tag" title="Tag this LP" onclick="return tagPopup()"><span class="button"><i class="func-tag">&nbsp;</i></span> Tag</a>
+				</li>
+      <li id="taglist">
+This LP is tagged with: <strong><a href="/?tags=video">video</a>, <a href="/?tags=humorous">humorous</a>, <a href="/?tags=voice">voice</a></strong>
+      </li>
+    </ul>
+    
+    <div id="popups">
+  	<!-- asd -->
+      <div class="message" id="likeit"><strong>Thanks! We like it too.</strong>Why not check out some similar LPs from our recommendations?</div>
+      <div class="message" id="tagit">
+        <strong>What would you like to tag this LP as?</strong>
+        <div class="tagrow">
+          <span>Tag</span>
+          <select id="tagselect">
+          <option value="9">challenges</option>
+        <option value="11">co-op</option>
+        <option value="14">completionist</option>
+        <option value="12">dual-audio</option>
+        <option value="6">group</option>
+        <option value="15">high-definition</option>
+        <option value="5">humorous</option>
+        <option value="4">informative</option>
+        <option value="10">narrative</option>
+        <option value="8">subtitles</option>
+        <option value="7">voice</option>
+          </select>
+          <button class="addtag" id="tagbutton" onclick="return tagPopdown();">
+          Tag it!  
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <p id="thread">Original Thread: <a id="threadlink" href="http://forums.somethingawful.com/showthread.php?threadid=3346783">Contractual Obligation: Let&#039;s Play MGS1 + MGS4 [VLP]</a></p>
+<p id="similar">&nbsp;</p>  
+  </div> 
+
+  
+
+
+  <div id="content" class="cblock">
+<h1>Introduction</h1>
+		<img src="Images/1-lp-mgs.png" alt="" class="img" border="0"><br />
+<br />
+Hello! Get ready for a really long ass back-to-back LP of both MGS1 and MGS4. We'll be playing the original MGS for most of the first LP, but there will be times where we compare it to its Gamecube remake, Twin Snakes.<br />
+<br />
+<b>Dual-Track Commentary</b><br />
+Most of these videos have dual-track commentary. The default track has cut commentary so you can watch the cutscenes in peace. The second track is uncut commentary where we talk over everything. To listen to the second track, the video and play it in either VLC or Media Player Classic. You can navigate through the menus and select Track 2. If you're using Media Player Classic, just press the A key to switch audio tracks.<br />
+<br />
+<h1>Videos</h1>
+<table>
+<col width="99%">
+<tr><td>Briefing Tapes</td><td><a href="http://www.youtube.com/view_play_list?p=81FF3036ED6652FF" target="_blank" rel="nofollow">YouTube</a></td>
+</tr>
+<tr><td>MGS1 #1 (Intro)</td><td><a href="http://chipandironicus.com/videos/mgs1/1.html" target="_blank" rel="nofollow">C&I</a></td>
+</tr>
+<tr><td>MGS1 #2 (Cutscene/Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs1/2.html" target="_blank" rel="nofollow">C&I</a></td>
+</tr>
+<tr><td>MGS1 #3 (Boss/Cutscene)</td><td><a href="http://chipandironicus.com/videos/mgs1/3.html" target="_blank" rel="nofollow">C&I</a></td>
+</tr>
+<tr><td>MGS1 #4 (Codec/Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs1/4.html" target="_blank" rel="nofollow">C&I</a></td>
+</tr>
+<tr><td>MGS1 #5 (Gameplay/Cutscene)</td><td><a href="http://chipandironicus.com/videos/mgs1/5.html" target="_blank" rel="nofollow">C&I</a></td>
+</tr>
+<tr><td>MGS1 #6 (Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs1/6.html" target="_blank" rel="nofollow">C&I</a></td>
+</tr>
+<tr><td>MGS1 #6-2 (Cutscene)</td><td><a href="http://chipandironicus.com/videos/mgs1/7.html" target="_blank" rel="nofollow">C&I</a></td>
+</tr>
+<tr><td>MGS1 #7 (Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs1/8.html" target="_blank" rel="nofollow">C&I</a></td>
+</tr>
+<tr><td>MGS1 #8-1 (TORTURE) </td><td><a href="http://chipandironicus.com/videos/mgs1/9.html" target="_blank" rel="nofollow">C&I</a></td>
+</tr>
+<tr><td>MGS1 #8-2 (TORTURE)</td><td><a href="http://chipandironicus.com/videos/mgs1/10.html" target="_blank" rel="nofollow">C&I</a></td>
+</tr>
+<tr><td>MGS1 #9 (Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs1/11.html" target="_blank" rel="nofollow">C&I</a></td>
+</tr>
+<tr><td>MGS1 #10 (Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs1/12.html" target="_blank" rel="nofollow">C&I</a></td>
+</tr>
+<tr><td>MGS1 #11 (Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs1/13.html" target="_blank" rel="nofollow">C&I</a></td>
+</tr>
+<tr><td>MGS1 #12 (Gameplay/Cutscene)</td><td><a href="http://chipandironicus.com/videos/mgs1/14.html" target="_blank" rel="nofollow">C&I</a></td>
+</tr>
+<tr><td>MGS1 #13 (Gameplay/Cutscene)</td><td><a href="http://chipandironicus.com/videos/mgs1/15.html" target="_blank" rel="nofollow">C&I</a></td>
+</tr>
+<tr><td>MGS1 #14-1 (Cutscene)</td><td><a href="http://chipandironicus.com/videos/mgs1/16.html" target="_blank" rel="nofollow">C&I</a></td>
+</tr>
+<tr><td>MGS1 #14-2 (Boss/Cutscene)</td><td><a href="http://chipandironicus.com/videos/mgs1/17.html" target="_blank" rel="nofollow">C&I</a></td>
+</tr>
+<tr><td>MGS1 #15-1 (Boss/Cutscene)</td><td><a href="http://chipandironicus.com/videos/mgs1/18.html" target="_blank" rel="nofollow">C&I</a></td>
+</tr>
+<tr><td>MGS1 #15-2 (Ending)</td><td><a href="http://chipandironicus.com/videos/mgs1/19.html" target="_blank" rel="nofollow">C&I</a></td>
+</tr>
+<tr><td>Otacon Ending Part 1</td><td><a href="http://chipandironicus.com/videos/mgs1/20.html" target="_blank" rel="nofollow">C&I</a></td>
+</tr>
+<tr><td>Otacon Ending Part 2</td><td><a href="http://chipandironicus.com/videos/mgs1/21.html" target="_blank" rel="nofollow">C&I</a></td>
+</tr>
+</table>
+
+  </div>
+
+  <a class="returnblock" href="/">Archive Index</a>
+
+  </body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "schema": "cqc.pass7.new-validator-contract-correction/1",
+  "source": "/workspace/cqc-game-working/cqc-versus-v056/tests/test_combat_sprite_catalog_pass7.cjs",
+  "beforeSha256": "aca3fda085c99dc4ff4d707cd0ccde61b3e8b55d460f1037050b699508bcb43e",
+  "initialExecutionReport": "/workspace/cqc-pass7-core-qa-logs/run-20261002T023159Z-a2f20e73/report.json",
+  "preservedBytesExact": true,
+  "productionCodeAndCatalogChanged": false,
+  "reasons": [
+    "The unchanged renderer permits a looping walk action to omit phaseMap; the first test wrongly demanded it for Skull Face specialBack.",
+    "Skull Face review uid is an optional field. Exact UID is required by catalog entry and supplied physical integration review, both present.",
+    "Raven lowShoot is a source-origin semantic group pointing to native action deploy, not an action named lowShoot.",
+    "The finisher validator repeated the same unsupported walk phaseMap requirement."
+  ]
+}

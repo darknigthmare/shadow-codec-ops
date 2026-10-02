@@ -1,0 +1,20 @@
+{
+  "scope": "Preserved environment setup failures before successful independent Canvas alpha review; no production/source-image changes.",
+  "attempts": [
+    {
+      "attempt": 1,
+      "reason": "agent-browser default socket directory read-only",
+      "fixed": "Task-owned writable AGENT_BROWSER_SOCKET_DIR=/tmp/quiet-p7-socket"
+    },
+    {
+      "attempt": 2,
+      "reason": "Container Chromium SUID sandbox helper unavailable",
+      "fixed": "Chromium --args --no-sandbox for browser automation container"
+    },
+    {
+      "attempt": 3,
+      "reason": "--args required on each CLI invocation; first open succeeded but follow-up lacked launch arguments",
+      "fixed": "Use full explicit executable+args on every command in Python runner; final 31 commands exit 0"
+    }
+  ]
+}
