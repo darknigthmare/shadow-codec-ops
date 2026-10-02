@@ -1,0 +1,21 @@
+{
+  "schema": "cqc-pass9-offline-prefetch-catch-only-closed/v1",
+  "status": "RETAINED_INTERMEDIATE_ATTEMPT",
+  "source": {
+    "path": "/workspace/shadow-codec-recovered/src/app/App.tsx",
+    "bytes": 7843,
+    "sha256": "511c37c200cb37b8fa3c6d75bab8eed9f40018264a0dbe001fbdeddcc0d8556f",
+    "gitBlob": "2b1eacf5626428823d9c3540f3d2aa48377bfe03"
+  },
+  "archive": {
+    "path": "/workspace/cqc-pass9-offline-prefetch-fix/closed-catch-only/src/app/App.tsx",
+    "bytePreserved": true,
+    "nlink": 1
+  },
+  "priorReceipt": {
+    "path": "/workspace/cqc-pass9-offline-prefetch-fix/APPLIED_SOURCE_RECEIPT.json",
+    "bytes": 2055,
+    "sha256": "a26269c99ae008da707148e0ec274223e5e2890a8db16a82a9908513e62a4e03"
+  },
+  "reasonForGuard": "Known offline prefetch can leave a failed CSS link in the Vite preload cache. Avoid starting optional prefetch while navigator.onLine is false; preserve catch for network interruption after launch."
+}

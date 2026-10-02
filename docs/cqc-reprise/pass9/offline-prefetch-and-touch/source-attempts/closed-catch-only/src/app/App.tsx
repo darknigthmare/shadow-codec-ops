@@ -72,7 +72,6 @@ const routeLabels: Record<AppRoute, string> = {
 };
 
 function prefetchRoute(route: AppRoute): void {
-  if (!navigator.onLine) return;
   // Prefetch is optional; navigation errors are handled by AppErrorBoundary.
   void routeLoaders[route]?.().catch(() => {});
 }
