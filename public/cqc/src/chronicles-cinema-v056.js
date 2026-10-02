@@ -24,7 +24,7 @@
     try { entry.img.src = ''; } catch {}
   }
   function finish(entry, ok) {
-    if (entry.cancelled) return;
+    if (entry.cancelled || entry.status !== 'loading') return;
     entry.status = ok && entry.img.naturalWidth && entry.img.naturalHeight ? 'loaded' : 'failed';
     if (entry.status === 'loaded') failed.delete(entry.set); else failed.add(entry.set);
     const redraws = [...entry.redraws.values()];
@@ -45,14 +45,22 @@
       forget(images.get(oldest)); images.delete(oldest);
     }
     img.decoding = 'async';
-    img.onload = () => finish(entry, true);
+    let decoding = false;
+    const loaded = () => {
+      if (decoding || entry.cancelled || entry.status !== 'loading') return;
+      decoding = true;
+      if (typeof img.decode !== 'function') { finish(entry, true); return; }
+      try { Promise.resolve(img.decode()).then(() => finish(entry, true), () => finish(entry, false)); }
+      catch (_) { finish(entry, false); }
+    };
+    img.onload = loaded;
     img.onerror = () => finish(entry, false);
     const file = info.definition.file || legacy[info.set]?.file || legacy.virtual.file;
     const source = /^(?:\.\.\/|\/|data:|blob:|https?:)/.test(file) ? file : '../' + file.replace(/^\.\//, '');
     const set = info.set;
     img.src = window.CQC56_IMAGE_DATA?.[set] || source;
     // Already-decoded images and native Canvas hosts may complete synchronously.
-    if (img.complete && img.naturalWidth && img.naturalHeight && entry.status === 'loading') finish(entry, true);
+    if (img.complete && img.naturalWidth && img.naturalHeight && entry.status === 'loading') loaded();
     return entry;
   }
   function preload(set) { return entryFor(visualInfo(set)).img; }
@@ -70,15 +78,21 @@
     window.CQC56_PORTRAITS?.cancel(canvas);
     const info = visualInfo(visual), entry = entryFor(info), img = entry.img;
     const c = canvas.getContext('2d'), width = options.width || canvas.width || 1280, height = options.height || canvas.height || 720;
-    const ready = !!(img.complete && img.naturalWidth && img.naturalHeight);
+    const ready = entry.status === 'loaded' && !!(img.complete && img.naturalWidth && img.naturalHeight);
     c.clearRect(0, 0, width, height);
     canvas.dataset.plate = info.set + ':' + info.tile;
     canvas.dataset.artReady = String(ready);
     canvas.dataset.fullScene = String(info.fullScene);
+    canvas.setAttribute?.('aria-busy', entry.status === 'loading' ? 'true' : 'false');
     canvas.dataset.composition = 'clean-art';
     canvas.dataset.portraitReady = 'not-required';
     redrawWhenReady(canvas, entry, options.onLoad || (() => drawPlate(canvas, visual, options)));
-    if (!ready) return false;
+    if (!ready) {
+      c.fillStyle = '#07110d'; c.fillRect(0, 0, width, height);
+      canvas.dataset.artState = entry.status === 'failed' ? 'failed' : 'loading';
+      return false;
+    }
+    canvas.dataset.artState = 'ready';
     const sw = img.naturalWidth / info.cols, sh = img.naturalHeight / info.rows;
     const time = options.motion ? performance.now() / 1000 : 0;
     const setting = Number.isFinite(visual?.inset) ? visual.inset : info.definition.inset;
@@ -189,7 +203,7 @@
     const stage = options.stages?.[card.stage], layerOptions = {motion:options.motion, layers:!info.fullScene};
     const layered = !options.cleanArt && !info.fullScene && !!A.drawStageLayers?.(c, stage, time, 0, true, layerOptions);
     canvas.dataset.stageLayers = String(layered);
-    if (!ready && !layered) {
+    if (!ready && !layered && !info.fullScene) {
       A.drawStage(c, stage, time, 0, true, layerOptions);
     }
     const camera = card.camera || 'wide';
@@ -211,17 +225,20 @@
       const portraitSize=hero?420:camera==='close'?(ending?360:420):(ending?300:340);
       const sprite = camera !== 'overhead' && !!A.drawSprite?.(c, actor, ending ? 370 : 285, camera === 'close' ? 825 : 628, ending ? 1 : -1, scale, pose);
       if (!sprite && camera !== 'overhead' && actor.visual?.weapon === f.visual?.weapon) waitForSprite(f.uid);
-      const illustrated=!sprite && window.CQC56_PORTRAITS?.draw(c,f.uid,portraitX,hero?175:camera==='close'?215:255,portraitSize,portraitSize,{ending});
-      if (!illustrated && !sprite) pendingPortraits.push(f.uid);
+      const atlasActor = !!window.CQC56_PORTRAIT_MAP?.[f.uid];
+      const nativeActor = camera !== 'overhead' && actor.visual?.weapon === f.visual?.weapon && !!window.CQC_COMBAT_SPRITES?.has?.(f.uid);
+      const illustrated=!sprite && !nativeActor && window.CQC56_PORTRAITS?.draw(c,f.uid,portraitX,hero?175:camera==='close'?215:255,portraitSize,portraitSize,{ending});
+      if (!illustrated && !sprite && !nativeActor) pendingPortraits.push(f.uid);
       canvas.dataset.portraitReady=String(!!illustrated || sprite);
-      canvas.dataset.actorRenderer=sprite?'approved-combat-png':illustrated?'portrait':'procedural-canvas';
-      if (!illustrated && !sprite && camera !== 'overhead') {
+      const nativeFailed = nativeActor && window.CQC_COMBAT_SPRITES.status(f.uid).states?.some(state => state === 'failed' || state === 'unavailable');
+      canvas.dataset.actorRenderer=sprite?'approved-combat-png':nativeActor?(nativeFailed?'failed-combat-png':'loading-combat-png'):illustrated?'portrait':atlasActor?(window.CQC56_PORTRAITS?.status?.(f.uid).state==='failed'?'failed-portrait':'loading-portrait'):'procedural-canvas';
+      if (!illustrated && !sprite && !nativeActor && !atlasActor && camera !== 'overhead') {
         c.save();
         if (camera === 'silhouette') c.filter = 'brightness(0.22) saturate(0.25)';
         A.drawFighter(c, actor, ending ? 370 : 285, camera === 'close' ? 825 : 628, ending ? 1 : -1, scale, pose);
         c.restore();
       }
-      if (!scene && options.fighters?.[card.opponent]) {const opponent=options.fighters[card.opponent],opponentPose={time,guard:phase==='pre',hit:phase==='post'};const sprite=A.drawSprite?.(c,opponent,640,628,-1,1.1,opponentPose);if(!sprite)waitForSprite(card.opponent);const drawn=sprite||window.CQC56_PORTRAITS?.draw(c,card.opponent,515,312,260,260,{ending:phase==='post'});if(!drawn){pendingPortraits.push(card.opponent);A.drawFighter(c,opponent,640,628,-1,1.1,opponentPose);}}
+      if (!scene && options.fighters?.[card.opponent]) {const opponent=options.fighters[card.opponent],opponentPose={time,guard:phase==='pre',hit:phase==='post'};const sprite=A.drawSprite?.(c,opponent,640,628,-1,1.1,opponentPose);if(!sprite)waitForSprite(card.opponent);const nativeOpponent=!!window.CQC_COMBAT_SPRITES?.has?.(card.opponent);const drawn=sprite||(!nativeOpponent&&window.CQC56_PORTRAITS?.draw(c,card.opponent,515,312,260,260,{ending:phase==='post'}));if(!drawn&&!nativeOpponent){pendingPortraits.push(card.opponent);if(!window.CQC56_PORTRAIT_MAP?.[card.opponent])A.drawFighter(c,opponent,640,628,-1,1.1,opponentPose);}}
       if (scene && card.prop && !hero) {
         const overhead = camera === 'overhead';
         object(c, card.prop, overhead ? 559 : 540, overhead ? 492 : 570, overhead ? 1.22 : .74, ending, f.color);
@@ -255,8 +272,9 @@
         Promise.all(uids.map(uid => window.CQC_COMBAT_SPRITES.whenReady(uid))).then(loaded => {
           if (spriteRequests.get(canvas) !== request) return;
           spriteRequests.delete(canvas);
-          const partlyReady = uids.some(uid => window.CQC_COMBAT_SPRITES.status(uid).states?.includes('ready'));
-          if ((loaded.some(Boolean) || partlyReady) && canvas.isConnected !== false && canvas.dataset.sceneKey === sceneKey)
+          // A terminal failure must redraw its waiting state once as well. Failed files
+          // are excluded by waitForSprite, so this never starts an automatic retry loop.
+          if (canvas.isConnected !== false && canvas.dataset.sceneKey === sceneKey)
             draw(canvas, story, phase, index, page, options);
         });
       }

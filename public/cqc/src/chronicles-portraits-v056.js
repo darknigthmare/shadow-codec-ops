@@ -4,6 +4,7 @@
   const mapping=window.CQC56_PORTRAIT_MAP||{}, cache=new Map(), failed=new Set(), requests=new WeakMap();
   const original=window.CQC55_ART.drawPortrait;
   function finish(entry,ok){
+    if(entry.status!=='loading')return;
     entry.status=ok&&entry.img.naturalWidth&&entry.img.naturalHeight?'loaded':'failed';
     if(entry.status==='loaded')failed.delete(entry.atlas);else failed.add(entry.atlas);
     const redraws=[...entry.redraws.values()];entry.redraws.clear();
@@ -16,10 +17,10 @@
       const img=new Image();entry={img,atlas:item.atlas,status:'loading',redraws:new Map()};cache.set(item.atlas,entry);
       // Keep decoded image memory bounded while paging through all 354 profiles.
       while(cache.size>8)cache.delete(cache.keys().next().value);
-      img.onload=()=>finish(entry,true);
+      let decoding=false;const loaded=()=>{if(decoding||entry.status!=='loading')return;decoding=true;if(typeof img.decode!=='function'){finish(entry,true);return;}try{Promise.resolve(img.decode()).then(()=>finish(entry,true),()=>finish(entry,false));}catch(_){finish(entry,false);}};img.decoding='async';img.onload=loaded;
       img.onerror=()=>finish(entry,false);
       img.src=window.CQC56_PORTRAIT_DATA?.[item.atlas]||'../assets/portraits-v056/'+item.atlas;
-      if(img.complete&&img.naturalWidth&&img.naturalHeight&&entry.status==='loading')finish(entry,true);
+      if(img.complete&&img.naturalWidth&&img.naturalHeight&&entry.status==='loading')loaded();
     } else {cache.delete(item.atlas);cache.set(item.atlas,entry);}
     return {item,entry};
   }
@@ -59,11 +60,13 @@
   }
   function portrait(canvas,f){
     cancel(canvas);
-    const c=canvas.getContext('2d');c.clearRect(0,0,canvas.width,canvas.height);
-    if(draw(c,f.uid,0,0,canvas.width,canvas.height,{small:true})){canvas.dataset.painted='true';return;}
-    original(canvas,f);
+    const c=canvas.getContext('2d');c.clearRect(0,0,canvas.width,canvas.height);canvas.setAttribute?.('aria-label',f.name);canvas.setAttribute?.('aria-busy',status(f.uid).state==='loading'?'true':'false');
+    if(draw(c,f.uid,0,0,canvas.width,canvas.height,{small:true})){canvas.dataset.painted='true';canvas.dataset.artState='ready';canvas.setAttribute?.('aria-busy','false');return;}
+    if(mapping[f.uid]){c.fillStyle='#07110d';c.fillRect(0,0,canvas.width,canvas.height);const unavailable=failed.has(mapping[f.uid].atlas);canvas.dataset.painted='false';canvas.dataset.artState=unavailable?'failed':'loading';canvas.setAttribute?.('aria-busy',unavailable?'false':'true');}
+    else original(canvas,f);
     whenReady(canvas,[f.uid],()=>portrait(canvas,f));
   }
   window.CQC55_ART.drawPortrait=portrait;
-  window.CQC56_PORTRAITS={draw,portrait,whenReady,cancel,diagnostics:()=>({mapped:Object.keys(mapping).length,loaded:[...cache].filter(([,e])=>e.status==='loaded').map(([k])=>k),failed:[...failed]})};
+  function status(uid){const item=mapping[uid];return {mapped:!!item,state:item?(cache.get(item.atlas)?.status||'not-requested'):'unmapped'};}
+  window.CQC56_PORTRAITS={draw,portrait,whenReady,cancel,status,diagnostics:()=>({mapped:Object.keys(mapping).length,loaded:[...cache].filter(([,e])=>e.status==='loaded').map(([k])=>k),failed:[...failed]})};
 })();

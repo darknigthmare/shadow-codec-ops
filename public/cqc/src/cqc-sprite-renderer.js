@@ -1,4 +1,4 @@
-/* Verified combat PNGs and animation frames. Procedural Canvas stays available while art loads. */
+/* Verified combat PNGs, decoded readiness and uniformly fitted native previews. */
 (function (root, factory) {
   'use strict';
   const api = factory(root);
@@ -7,7 +7,7 @@
   if (root.CQC_COMBAT_SPRITE_CATALOG) api.configure(root.CQC_COMBAT_SPRITE_CATALOG);
 })(globalThis, function (root) {
   'use strict';
-  const entries = new Map(), images = new Map(), clocks = new Map();
+  const entries = new Map(), images = new Map(), clocks = new Map(), entryFiles = new Map();
   // Capture while this script executes: later album/iframe configuration has no currentScript.
   const ownScriptURL = root.document?.currentScript?.src || null;
   const checks = ['identity', 'costume', 'equipment', 'anatomicalSides', 'singleFigure', 'transparentBackground'];
@@ -50,11 +50,17 @@
     return 'http://localhost/';
   }
   function configure(catalog, options = {}) {
-    entries.clear(); images.clear(); clocks.clear(); baseURL = resolveBase(options);
+    entries.clear(); images.clear(); clocks.clear(); entryFiles.clear(); baseURL = resolveBase(options);
     if (!catalog || catalog.schema !== 'cqc.combat-sprites/1' || !catalog.entries || typeof catalog.entries !== 'object') return { accepted: 0, rejected: [] };
     const rejected = [];
     for (const [uid, entry] of Object.entries(catalog.entries)) {
-      if (validateEntry(uid, entry)) entries.set(uid, entry); else rejected.push(uid);
+      if (validateEntry(uid, entry)) {
+        entries.set(uid, entry);
+        const files = new Map();
+        for (const action of [...Object.values(entry.actions), ...Object.values(entry.oppositeActions || {})])
+          for (const frame of action.frames) files.set(frame.file, frame);
+        entryFiles.set(uid, [...files.values()]);
+      } else rejected.push(uid);
     }
     return { accepted: entries.size, rejected };
   }
@@ -67,8 +73,20 @@
     images.set(key, record);
     if (typeof root.Image !== 'function') { record.state = 'unavailable'; settle(false); return record; }
     const image = new root.Image(); record.image = image;
-    image.onload = () => { record.state = image.naturalWidth > 0 && image.naturalHeight > 0 ? 'ready' : 'failed'; settle(record.state === 'ready'); };
-    image.onerror = () => { record.state = 'failed'; settle(false); };
+    let settled = false;
+    const finish = (ready) => {
+      if (settled) return;
+      settled = true; record.state = ready ? 'ready' : 'failed'; settle(ready);
+    };
+    image.decoding = 'async';
+    image.onload = () => {
+      if (!(image.naturalWidth > 0 && image.naturalHeight > 0)) { finish(false); return; }
+      // A loaded response is not enough: publish readiness only after pixel decoding.
+      if (typeof image.decode !== 'function') { finish(true); return; }
+      try { Promise.resolve(image.decode()).then(() => finish(true), () => finish(false)); }
+      catch (_) { finish(false); }
+    };
+    image.onerror = () => finish(false);
     image.src = new URL(frame.file, baseURL).href;
     return record;
   }
@@ -92,24 +110,60 @@
     const index = action.loop ? raw % action.frames.length : Math.min(raw, action.frames.length - 1);
     return { frame: action.frames[index], requested, action: entry.actions[requested] ? requested : 'idle', index };
   }
-  function preload(uid) {
-    const entry = entries.get(uid); if (!entry) return false;
-    for (const action of [...Object.values(entry.actions), ...Object.values(entry.oppositeActions || {})]) for (const frame of action.frames) getImage(frame);
-    return true;
+  function has(uid) { return entries.has(uid); }
+  function framesFor(entry, options = {}) {
+    if (!options.action) return entryFiles.get(entry.uid);
+    const face = options.face === -1 || options.face === 1 ? options.face : entry.facing;
+    const directional = face !== entry.facing && entry.oppositeActions ? entry.oppositeActions : entry.actions;
+    return directional[options.action]?.frames || [];
   }
-  function whenReady(uid) {
+  function recordsFor(entry, options = {}) {
+    const frames = framesFor(entry, options), records = new Set();
+    if (options.retry === true) {
+      for (const frame of frames) {
+        const state = images.get(frame.file)?.state;
+        if (state === 'failed' || state === 'unavailable') images.delete(frame.file);
+      }
+    }
+    for (const frame of frames) records.add(getImage(frame));
+    return [...records];
+  }
+  function preload(uid, options = {}) {
+    const entry = entries.get(uid); if (!entry) return false;
+    return recordsFor(entry, options).length > 0;
+  }
+  function whenReady(uid, options = {}) {
     const entry = entries.get(uid);
     if (!entry) return Promise.resolve(false);
-    const records = new Set();
-    for (const action of [...Object.values(entry.actions), ...Object.values(entry.oppositeActions || {})])
-      for (const frame of action.frames) records.add(getImage(frame));
-    return Promise.all([...records].map(record => record.promise)).then(results => results.every(Boolean));
+    const records = recordsFor(entry, options);
+    return Promise.all(records.map(record => record.promise)).then(results => results.length > 0 && results.every(Boolean));
   }
-  function status(uid) {
+  function status(uid, options = {}) {
     const entry = entries.get(uid);
     if (!entry) return { uid, renderer: 'procedural-canvas', coverage: 'pending-art-review', ready: false };
-    const states = [...new Set([...Object.values(entry.actions), ...Object.values(entry.oppositeActions || {})].flatMap(a => a.frames.map(f => images.get(f.file)?.state || 'not-requested')))];
+    const states = [...new Set(framesFor(entry, options).map(f => images.get(f.file)?.state || 'not-requested'))];
     return { uid, renderer: 'png', coverage: entry.coverage, actions: Object.keys(entry.actions), oppositeActions: Object.keys(entry.oppositeActions || {}), states, ready: states.length === 1 && states[0] === 'ready', limits: entry.review.limits };
+  }
+  function drawFitted(c, fighter, box, face = -1, pose = {}) {
+    const entry = entries.get(fighter?.uid);
+    if (!entry || !box || ![box.x, box.y, box.width, box.height].every(finite) || box.width <= 0 || box.height <= 0 || ![1, -1].includes(face)) return false;
+    const opposite = face !== entry.facing && entry.oppositeActions;
+    if (face !== entry.facing && !opposite && entry.mirror !== true) return false;
+    const directional = opposite ? { ...entry, actions: entry.oppositeActions } : entry;
+    const selected = selectFrame(directional, { ...pose, actionTime: finite(pose.actionTime) ? pose.actionTime : 0 });
+    const frame = selected.frame;
+    const padding = finite(box.padding) ? Math.max(0, box.padding) : 0;
+    const innerWidth = box.width - padding * 2, innerHeight = box.height - padding * 2;
+    if (innerWidth <= 0 || innerHeight <= 0) return false;
+    const factor = entry.displayHeight / (entry.sourceFrameHeights?.[frame.file] || entry.baseFrameHeight || frame.rect[3]);
+    const nativeWidth = frame.rect[2] * factor, nativeHeight = frame.rect[3] * factor;
+    const fit = Math.min(innerWidth / nativeWidth, innerHeight / nativeHeight);
+    const width = nativeWidth * fit, height = nativeHeight * fit;
+    const pivotX = face !== entry.facing && !opposite ? 1 - frame.pivot[0] : frame.pivot[0];
+    const x = box.x + padding + (innerWidth - width) / 2 + width * pivotX;
+    const y = box.y + padding + (innerHeight - height) / 2 + height * frame.pivot[1];
+    // Preview scale is separate from combat geometry; include the complete equipment rectangle.
+    return draw(c, fighter, x, y, face, fit, { ...pose, actionTime: finite(pose.actionTime) ? pose.actionTime : 0, entityKey: pose.entityKey || `portrait:${entry.uid}:${face}` });
   }
   function draw(c, fighter, x, y, face = 1, scale = 1, pose = {}) {
     const entry = entries.get(fighter && fighter.uid);
@@ -149,5 +203,5 @@
     } finally { c.restore(); }
     return true;
   }
-  return { configure, draw, preload, whenReady, status, validateEntry, actionName, selectFrame };
+  return { configure, draw, drawFitted, has, preload, whenReady, status, validateEntry, actionName, selectFrame };
 });

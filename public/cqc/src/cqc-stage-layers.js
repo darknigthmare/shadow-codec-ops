@@ -177,8 +177,12 @@
       if (marker) marker.record.pins = Math.max(0, marker.record.pins - 1);
       frame.delete(ctx); trimCache(protectedRecord);
     }
-    function load(record) {
+    function load(record, options = {}) {
       if (record) touch(record);
+      // Only an explicit retry resets a failed approved load. Invalid art stays rejected.
+      if (options.retry === true && record?.state === 'error' && record.stage.approved) {
+        releaseImages(record); record.errors = []; record.promise = null; record.state = 'unloaded';
+      }
       if (!record || record.state !== 'unloaded') {
         if (record?.state === 'ready') trimCache(record);
         return record?.promise || Promise.resolve(false);
@@ -188,12 +192,22 @@
       record.promise = Promise.all(record.stage.layers.map(layer => new Promise(resolve => {
         const image = new ImageClass();
         record.images.push({ layer, image });
+        let settled = false;
+        const finish = (ok, message) => {
+          if (settled) return;
+          settled = true; if (message) record.errors.push(message); resolve(ok);
+        };
+        image.decoding = 'async';
         image.onload = () => {
           if ((image.naturalWidth || image.width) !== layer.width || (image.naturalHeight || image.height) !== layer.height) {
-            record.errors.push('Unexpected dimensions: ' + layer.file); resolve(false);
-          } else resolve(true);
+            finish(false, 'Unexpected dimensions: ' + layer.file); return;
+          }
+          if (typeof image.decode !== 'function') { finish(true); return; }
+          const failed = () => finish(false, 'Undecodable image: ' + layer.file);
+          try { Promise.resolve(image.decode()).then(() => finish(true), failed); }
+          catch (_) { failed(); }
         };
-        image.onerror = () => { record.errors.push('Missing or unreadable image: ' + layer.file); resolve(false); };
+        image.onerror = () => finish(false, 'Missing or unreadable image: ' + layer.file);
         image.src = baseURL + layer.file;
       }))).then(results => {
         record.state = results.every(Boolean) ? 'ready' : 'error';
@@ -339,7 +353,7 @@
         weatherType: record.stage.approved ? record.stage.weather?.type || 'none' : null } :
         { state: 'unknown', approved: false, layers: 0, weatherType: null, errors: [] };
     }
-    return { drawBackground, drawForeground, preload: stage => load(recordFor(stage)), status,
+    return { drawBackground, drawForeground, preload: (stage, options = {}) => load(recordFor(stage), options), status,
       cacheInfo: () => {
         const readyRecords = [...records.values()].filter(record => record.state === 'ready');
         return {limit:cacheLimit, readyStages:readyRecords.map(record => record.stage.id),
