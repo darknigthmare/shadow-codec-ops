@@ -916,6 +916,1088 @@ window.CQC_MACHINE_PARTS_CATALOG = {
           "parent": "farShoulder"
         }
       ]
+    },
+    {
+      "id": "mgd_mg2_msx2",
+      "edition": "Metal Gear D — original Metal Gear 2: Solid Snake, MSX2 1990 manual 51–52; candidate articulated 2D adaptation",
+      "origin": [
+        1120,
+        0
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "sources": [
+        {
+          "id": "body",
+          "file": "assets/machine-parts/mgd-mg2-msx2/body.png",
+          "sha256": "dd0746cab5460107189043ebc10b42527eb803994745a9785426340768822cb9",
+          "bytes": 1701310,
+          "width": 1536,
+          "height": 1024
+        },
+        {
+          "id": "upper",
+          "file": "assets/machine-parts/mgd-mg2-msx2/upper.png",
+          "sha256": "d765a70cb38958e1d26d69c7fe70ed157473bc7f64e055e8cc24bd4ba1fbdaf8",
+          "bytes": 1112595,
+          "width": 1774,
+          "height": 887
+        },
+        {
+          "id": "lower",
+          "file": "assets/machine-parts/mgd-mg2-msx2/lower.png",
+          "sha256": "316c813f2cc6c3a2e63859bfcafbddc9f6eb28df5a1de9f28fd919d33ac44684",
+          "bytes": 2139773,
+          "width": 1536,
+          "height": 1024
+        },
+        {
+          "id": "segmentation",
+          "file": "assets/machine-parts/mgd-mg2-msx2/segmentation.png",
+          "sha256": "17335b42f92dc5fc9f650e9b4ec6f9bb5398a7be18379da4e8d5be2b45ea6d16",
+          "bytes": 915843,
+          "width": 1448,
+          "height": 1086
+        },
+        {
+          "id": "equipment",
+          "file": "assets/machine-parts/mgd-mg2-msx2/equipment.png",
+          "sha256": "3bbe39ff0e8ba5f139812379d1672c5f8750b87c245723111ee4c1087e9be8a7",
+          "bytes": 1788869,
+          "width": 1536,
+          "height": 1024
+        },
+        {
+          "id": "gun",
+          "file": "assets/machine-parts/mgd-mg2-msx2/gun.png",
+          "sha256": "a46adbe53c4ee0620e835ce28e1d8a7c62c39cccf4c01a81bd476645d911395d",
+          "bytes": 330749,
+          "width": 1881,
+          "height": 836
+        },
+        {
+          "id": "far_foot",
+          "file": "assets/machine-parts/mgd-mg2-msx2/far_foot.png",
+          "sha256": "e17daa0cf5b8b74231b382693c717232aa02a775719bd268799c1039f7a94cff",
+          "bytes": 525364,
+          "width": 1774,
+          "height": 887
+        }
+      ],
+      "parts": [
+        {
+          "id": "machine_anchor",
+          "source": "body",
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "pivot": [
+            0,
+            0
+          ],
+          "offset": [
+            0,
+            0
+          ],
+          "z": 0,
+          "imageScale": 1,
+          "rotation": 0,
+          "channels": {
+            "y": [
+              {
+                "channel": "mgdCollapseDrop",
+                "factor": -1
+              }
+            ],
+            "rotation": [
+              {
+                "channel": "mgdCollapseTilt",
+                "factor": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "body_hull",
+          "source": "body",
+          "rect": [
+            22,
+            155,
+            756,
+            467
+          ],
+          "pivot": [
+            508,
+            428
+          ],
+          "offset": [
+            0,
+            245
+          ],
+          "z": 30,
+          "imageScale": 0.48,
+          "rotation": 0,
+          "parent": "machine_anchor",
+          "channels": {
+            "y": [
+              {
+                "channel": "idleBreath",
+                "factor": 1.1,
+                "cosmetic": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "rear_power_housing",
+          "source": "body",
+          "rect": [
+            789,
+            223,
+            324,
+            341
+          ],
+          "pivot": [
+            90,
+            310
+          ],
+          "offset": [
+            50,
+            327
+          ],
+          "z": 12,
+          "imageScale": 0.34,
+          "rotation": 0,
+          "parent": "machine_anchor"
+        },
+        {
+          "id": "belly_actuator",
+          "source": "body",
+          "rect": [
+            1152,
+            322,
+            361,
+            276
+          ],
+          "pivot": [
+            180,
+            30
+          ],
+          "offset": [
+            9,
+            262
+          ],
+          "z": 25,
+          "imageScale": 0.24,
+          "rotation": 0,
+          "parent": "machine_anchor"
+        },
+        {
+          "id": "sensor_top",
+          "source": "body",
+          "rect": [
+            231,
+            758,
+            195,
+            173
+          ],
+          "pivot": [
+            94,
+            151
+          ],
+          "offset": [
+            -36,
+            423
+          ],
+          "z": 34,
+          "imageScale": 0.27,
+          "rotation": 0,
+          "parent": "machine_anchor"
+        },
+        {
+          "id": "aerial_pair",
+          "source": "body",
+          "rect": [
+            587,
+            649,
+            346,
+            310
+          ],
+          "pivot": [
+            155,
+            295
+          ],
+          "offset": [
+            0,
+            26
+          ],
+          "z": 35,
+          "imageScale": 0.32,
+          "rotation": 0,
+          "parent": "sensor_top"
+        },
+        {
+          "id": "six_port_missile_pod",
+          "source": "equipment",
+          "rect": [
+            235,
+            35,
+            422,
+            600
+          ],
+          "pivot": [
+            300,
+            540
+          ],
+          "offset": [
+            -98,
+            360
+          ],
+          "z": 15,
+          "imageScale": 0.31,
+          "rotation": 0,
+          "parent": "machine_anchor"
+        },
+        {
+          "id": "opposite_side_housing",
+          "source": "equipment",
+          "rect": [
+            916,
+            186,
+            321,
+            381
+          ],
+          "pivot": [
+            110,
+            170
+          ],
+          "offset": [
+            130,
+            292
+          ],
+          "z": 33,
+          "imageScale": 0.25,
+          "rotation": 0,
+          "parent": "machine_anchor"
+        },
+        {
+          "id": "rear_diagonal_tube",
+          "source": "segmentation",
+          "rect": [
+            988,
+            590,
+            434,
+            389
+          ],
+          "pivot": [
+            72,
+            328
+          ],
+          "offset": [
+            99,
+            334
+          ],
+          "z": 13,
+          "imageScale": 0.31,
+          "rotation": 0,
+          "parent": "machine_anchor"
+        },
+        {
+          "id": "three_tube_rotary_gun",
+          "source": "gun",
+          "rect": [
+            627,
+            258,
+            696,
+            304
+          ],
+          "pivot": [
+            556,
+            167
+          ],
+          "offset": [
+            -230,
+            251
+          ],
+          "z": 38,
+          "imageScale": 0.2,
+          "rotation": 0,
+          "parent": "machine_anchor",
+          "channels": {
+            "rotation": [
+              {
+                "channel": "mgdGunRecoil",
+                "factor": -0.5,
+                "cosmetic": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "far_hip_anchor",
+          "source": "body",
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "pivot": [
+            0,
+            0
+          ],
+          "offset": [
+            84,
+            231
+          ],
+          "z": 0,
+          "imageScale": 1,
+          "rotation": 0,
+          "parent": "machine_anchor",
+          "channels": {
+            "y": [
+              {
+                "channel": "strideLift",
+                "factor": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "far_proximal_composite",
+          "source": "upper",
+          "rect": [
+            1071,
+            160,
+            569,
+            594
+          ],
+          "pivot": [
+            419,
+            205
+          ],
+          "offset": [
+            0,
+            0
+          ],
+          "z": 10,
+          "imageScale": 0.235,
+          "rotation": 28,
+          "parent": "far_hip_anchor",
+          "channels": {
+            "rotation": [
+              {
+                "channel": "farLegDisabled",
+                "factor": -15
+              },
+              {
+                "channel": "mgdFarFoldUpper",
+                "factor": 1
+              }
+            ],
+            "opacity": [
+              {
+                "channel": "farLegDamage",
+                "factor": -0.12
+              }
+            ]
+          }
+        },
+        {
+          "id": "far_distal_anchor",
+          "source": "body",
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "pivot": [
+            0,
+            0
+          ],
+          "offset": [
+            -19.975,
+            -77.785
+          ],
+          "z": 0,
+          "imageScale": 1,
+          "rotation": 0,
+          "parent": "far_proximal_composite"
+        },
+        {
+          "id": "far_lower_leg",
+          "source": "lower",
+          "rect": [
+            790,
+            523,
+            281,
+            460
+          ],
+          "pivot": [
+            58,
+            43
+          ],
+          "offset": [
+            0,
+            0
+          ],
+          "z": 11,
+          "imageScale": 0.3,
+          "rotation": -46,
+          "parent": "far_distal_anchor",
+          "channels": {
+            "rotation": [
+              {
+                "channel": "farLegDisabled",
+                "factor": 24
+              },
+              {
+                "channel": "mgdFarFoldLower",
+                "factor": 1
+              }
+            ],
+            "x": [
+              {
+                "channel": "farLegDisabled",
+                "factor": 7
+              },
+              {
+                "channel": "mgdFarFoldX",
+                "factor": 1
+              }
+            ],
+            "y": [
+              {
+                "channel": "farLegDisabled",
+                "factor": -9
+              },
+              {
+                "channel": "mgdFarFoldY",
+                "factor": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "far_foot",
+          "source": "far_foot",
+          "rect": [
+            319,
+            246,
+            1230,
+            467
+          ],
+          "pivot": [
+            835,
+            139
+          ],
+          "offset": [
+            42.3,
+            -111.6
+          ],
+          "z": 12,
+          "imageScale": 0.104,
+          "rotation": 18,
+          "parent": "far_lower_leg",
+          "channels": {
+            "rotation": [
+              {
+                "channel": "farLegDisabled",
+                "factor": -8
+              },
+              {
+                "channel": "mgdFarFootLevel",
+                "factor": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "near_hip_anchor",
+          "source": "body",
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "pivot": [
+            0,
+            0
+          ],
+          "offset": [
+            -40,
+            235
+          ],
+          "z": 0,
+          "imageScale": 1,
+          "rotation": 0,
+          "parent": "machine_anchor",
+          "channels": {
+            "y": [
+              {
+                "channel": "strideLift",
+                "factor": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "near_proximal_composite",
+          "source": "upper",
+          "rect": [
+            191,
+            161,
+            617,
+            589
+          ],
+          "pivot": [
+            553,
+            199
+          ],
+          "offset": [
+            0,
+            0
+          ],
+          "z": 40,
+          "imageScale": 0.235,
+          "rotation": 0,
+          "parent": "near_hip_anchor",
+          "channels": {
+            "rotation": [
+              {
+                "channel": "nearLegDisabled",
+                "factor": 12
+              },
+              {
+                "channel": "mgdNearFoldUpper",
+                "factor": 1
+              }
+            ],
+            "opacity": [
+              {
+                "channel": "nearLegDamage",
+                "factor": -0.12
+              }
+            ]
+          }
+        },
+        {
+          "id": "near_distal_anchor",
+          "source": "body",
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "pivot": [
+            0,
+            0
+          ],
+          "offset": [
+            -24.44,
+            -81.545
+          ],
+          "z": 0,
+          "imageScale": 1,
+          "rotation": 0,
+          "parent": "near_proximal_composite"
+        },
+        {
+          "id": "near_lower_leg",
+          "source": "lower",
+          "rect": [
+            787,
+            58,
+            277,
+            453
+          ],
+          "pivot": [
+            56,
+            42
+          ],
+          "offset": [
+            0,
+            0
+          ],
+          "z": 41,
+          "imageScale": 0.31,
+          "rotation": -46,
+          "parent": "near_distal_anchor",
+          "channels": {
+            "rotation": [
+              {
+                "channel": "nearLegDisabled",
+                "factor": -22
+              },
+              {
+                "channel": "mgdNearFoldLower",
+                "factor": 1
+              }
+            ],
+            "x": [
+              {
+                "channel": "nearLegDisabled",
+                "factor": -7
+              },
+              {
+                "channel": "mgdNearFoldX",
+                "factor": 1
+              }
+            ],
+            "y": [
+              {
+                "channel": "nearLegDisabled",
+                "factor": -9
+              },
+              {
+                "channel": "mgdNearFoldY",
+                "factor": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "near_foot",
+          "source": "segmentation",
+          "rect": [
+            33,
+            805,
+            491,
+            205
+          ],
+          "pivot": [
+            347,
+            51
+          ],
+          "offset": [
+            45.57,
+            -110.98
+          ],
+          "z": 42,
+          "imageScale": 0.3,
+          "rotation": 46,
+          "parent": "near_lower_leg",
+          "channels": {
+            "rotation": [
+              {
+                "channel": "nearLegDisabled",
+                "factor": 12
+              },
+              {
+                "channel": "mgdNearFootLevel",
+                "factor": 1
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "tx55_mg1_msx1987",
+      "edition": "TX-55 — original Metal Gear MSX2 1987, Konami JP manual RC750 p17; stationary 2D presentation adaptation",
+      "origin": [
+        825,
+        0
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "sources": [
+        {
+          "id": "body",
+          "sha256": "3787517a1b8da2a90f083e98c7ea4299becee8e8fbe97571d5c450c1f8982fc4",
+          "bytes": 1670982,
+          "width": 1536,
+          "height": 1024,
+          "file": "assets/machine-parts/tx55-mg1-msx/body.png"
+        },
+        {
+          "id": "weapons",
+          "sha256": "ffa571a0be6dccfcab1fe69e8af8c9c3dac3e3058da39a9c1a5bd32afcd0a496",
+          "bytes": 703196,
+          "width": 1254,
+          "height": 1254,
+          "file": "assets/machine-parts/tx55-mg1-msx/weapons.png"
+        },
+        {
+          "id": "legs",
+          "sha256": "fa8249951b62e3cb8d5a9478b539836969f89cdb1b89e36d3e69508de270c1a3",
+          "bytes": 1559050,
+          "width": 1536,
+          "height": 1024,
+          "file": "assets/machine-parts/tx55-mg1-msx/legs.png"
+        }
+      ],
+      "parts": [
+        {
+          "id": "machine_anchor",
+          "source": "body",
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "pivot": [
+            0,
+            0
+          ],
+          "offset": [
+            0,
+            0
+          ],
+          "imageScale": 1,
+          "z": 0,
+          "hideWhen": [
+            "tx55Absent"
+          ]
+        },
+        {
+          "id": "chassis",
+          "source": "body",
+          "rect": [
+            80,
+            101,
+            467,
+            432
+          ],
+          "pivot": [
+            235,
+            326
+          ],
+          "offset": [
+            35,
+            292
+          ],
+          "imageScale": 0.46,
+          "z": 30,
+          "parent": "machine_anchor"
+        },
+        {
+          "id": "cockpit",
+          "source": "body",
+          "rect": [
+            600,
+            117,
+            517,
+            430
+          ],
+          "pivot": [
+            240,
+            355
+          ],
+          "offset": [
+            92,
+            340
+          ],
+          "imageScale": 0.43,
+          "z": 44,
+          "parent": "machine_anchor"
+        },
+        {
+          "id": "sight",
+          "source": "body",
+          "rect": [
+            1215,
+            266,
+            249,
+            253
+          ],
+          "pivot": [
+            120,
+            237
+          ],
+          "offset": [
+            -14,
+            465
+          ],
+          "imageScale": 0.3,
+          "z": 47,
+          "parent": "machine_anchor"
+        },
+        {
+          "id": "rear_stabilizer",
+          "source": "body",
+          "rect": [
+            104,
+            600,
+            336,
+            343
+          ],
+          "pivot": [
+            245,
+            109
+          ],
+          "offset": [
+            130,
+            303
+          ],
+          "imageScale": 0.28,
+          "z": 5,
+          "parent": "machine_anchor"
+        },
+        {
+          "id": "main_nozzle",
+          "source": "body",
+          "rect": [
+            644,
+            679,
+            303,
+            233
+          ],
+          "pivot": [
+            136,
+            192
+          ],
+          "offset": [
+            20,
+            255
+          ],
+          "imageScale": 0.24,
+          "z": 40,
+          "parent": "machine_anchor"
+        },
+        {
+          "id": "power_pipe",
+          "source": "body",
+          "rect": [
+            1134,
+            664,
+            346,
+            276
+          ],
+          "pivot": [
+            174,
+            140
+          ],
+          "offset": [
+            135,
+            315
+          ],
+          "imageScale": 0.22,
+          "z": 39,
+          "parent": "machine_anchor"
+        },
+        {
+          "id": "nuclear_launcher",
+          "source": "weapons",
+          "rect": [
+            129,
+            65,
+            433,
+            554
+          ],
+          "pivot": [
+            229,
+            529
+          ],
+          "offset": [
+            -78,
+            348
+          ],
+          "imageScale": 0.37,
+          "z": 46,
+          "parent": "machine_anchor"
+        },
+        {
+          "id": "gun_module",
+          "source": "weapons",
+          "rect": [
+            740,
+            238,
+            367,
+            366
+          ],
+          "pivot": [
+            193,
+            317
+          ],
+          "offset": [
+            -84,
+            302
+          ],
+          "imageScale": 0.29,
+          "z": 48,
+          "parent": "machine_anchor"
+        },
+        {
+          "id": "near_tasset",
+          "source": "weapons",
+          "rect": [
+            129,
+            700,
+            402,
+            459
+          ],
+          "pivot": [
+            301,
+            52
+          ],
+          "offset": [
+            -72,
+            303
+          ],
+          "imageScale": 0.29,
+          "z": 42,
+          "parent": "machine_anchor"
+        },
+        {
+          "id": "far_tasset",
+          "source": "weapons",
+          "rect": [
+            801,
+            693,
+            337,
+            471
+          ],
+          "pivot": [
+            66,
+            66
+          ],
+          "offset": [
+            100,
+            299
+          ],
+          "imageScale": 0.26,
+          "z": 18,
+          "parent": "machine_anchor"
+        },
+        {
+          "id": "near_thigh",
+          "source": "legs",
+          "rect": [
+            197,
+            68,
+            203,
+            413
+          ],
+          "pivot": [
+            92,
+            32
+          ],
+          "offset": [
+            -69,
+            284.69
+          ],
+          "imageScale": 0.29,
+          "z": 25,
+          "parent": "machine_anchor"
+        },
+        {
+          "id": "near_shin",
+          "source": "legs",
+          "rect": [
+            656,
+            63,
+            219,
+            437
+          ],
+          "pivot": [
+            90,
+            29
+          ],
+          "offset": [
+            -15.66,
+            -95.12
+          ],
+          "imageScale": 0.27,
+          "z": 26,
+          "parent": "near_thigh"
+        },
+        {
+          "id": "near_foot",
+          "source": "legs",
+          "rect": [
+            1070,
+            180,
+            396,
+            337
+          ],
+          "pivot": [
+            220,
+            33
+          ],
+          "offset": [
+            -8.1,
+            -100.17
+          ],
+          "imageScale": 0.3,
+          "z": 27,
+          "parent": "near_shin"
+        },
+        {
+          "id": "far_thigh",
+          "source": "legs",
+          "rect": [
+            192,
+            542,
+            208,
+            424
+          ],
+          "pivot": [
+            97,
+            31
+          ],
+          "offset": [
+            115,
+            279.7
+          ],
+          "imageScale": 0.29,
+          "z": 10,
+          "parent": "machine_anchor"
+        },
+        {
+          "id": "far_shin",
+          "source": "legs",
+          "rect": [
+            666,
+            536,
+            216,
+            433
+          ],
+          "pivot": [
+            84,
+            40
+          ],
+          "offset": [
+            -17.11,
+            -97.15
+          ],
+          "imageScale": 0.27,
+          "z": 11,
+          "parent": "far_thigh"
+        },
+        {
+          "id": "far_foot",
+          "source": "legs",
+          "rect": [
+            1077,
+            650,
+            383,
+            332
+          ],
+          "pivot": [
+            205,
+            37
+          ],
+          "offset": [
+            -9.99,
+            -95.85
+          ],
+          "imageScale": 0.3,
+          "z": 12,
+          "parent": "far_shin"
+        }
+      ]
     }
   ]
 };

@@ -54,6 +54,7 @@
           root.document?.documentElement?.classList.contains('cqc-reduced-motion') ||
           root.document?.body?.classList.contains('reduced-motion')) return true;
       try {
+        if (JSON.parse(root.localStorage?.getItem('cqc-versus.profile.v1') || '{}')?.presentation?.reducedMotion === true) return true;
         const profile = root.localStorage?.getItem('cqc-v044-profile');
         const settings = JSON.parse(profile || '{}')?.settings;
         return settings?.motion === false || settings?.reducedMotion === true;
@@ -118,15 +119,17 @@
       load(false);
       return true;
     }
-    function deferCoreLaunch(options, resume) {
+    function deferCoreLaunch(options, resume, presentation = {}) {
+      // Core resolves its authoritative boss stage before creating a match. Do not rewrite saved options.
+      const stageID = safeID(presentation.stageID) ? presentation.stageID : options?.stage;
       try {
         const imported = coreBank?.status?.();
-        if (Array.isArray(imported) && imported.some(stage => stage.id === options?.stage)) {
+        if (Array.isArray(imported) && imported.some(stage => stage.id === stageID)) {
           if (pendingLaunch) { pendingLaunch.cancelled = true; pendingLaunch = null; ui.hide(); }
           return false;
         }
       } catch (_) { /* A missing local override falls back to the reviewed native loader. */ }
-      return deferLaunch(options?.stage, 'core', () => resume(options), JSON.stringify(options));
+      return deferLaunch(stageID, 'core', () => resume(options), JSON.stringify([stageID, options]));
     }
     function deferEpisodeLaunch(id, stageID, resume) {
       return deferLaunch(stageID, 'episode', () => resume(id), id);
@@ -151,6 +154,11 @@
       // Reuse the exact background options; wall-clock changes cannot split a frame's registration.
       ctx.save();
       if (byID.get(frame.mapped)?.renderHints?.imageSmoothingEnabled === false) ctx.imageSmoothingEnabled = false;
+      // Clip reviewed REX foreground below the fight lane; native alpha residues remain byte-exact.
+      const clipY = byID.get(frame.mapped)?.renderHints?.foregroundClipY;
+      if (surface === 'core' && finite(clipY) && clipY >= 609 && clipY < 720) {
+        ctx.beginPath(); ctx.rect(0, clipY, 1280, 720 - clipY); ctx.clip();
+      }
       ctx.translate(0, frame.ground - 568);
       const drawn = renderer.drawForeground(ctx, frame.mapped, frame.options);
       ctx.restore();
@@ -162,14 +170,18 @@
       if (!bank || typeof bank.draw !== 'function' || decorated.has(bank)) return bank;
       coreBank = bank;
       const originalDraw = bank.draw;
-      bank.draw = function (ctx, id, camera, front = false) {
+      bank.draw = function (ctx, id, camera, front = false, presentation = {}) {
         // Existing explicitly imported local art remains the user's chosen override.
         if (originalDraw.apply(this, arguments)) { frames.delete(ctx); return true; }
         if (front) return foreground(ctx, id, 'core');
         const options = {
           camera: finite(camera?.x) ? clamp(camera.x - 800, -220, 220) : 0,
           zoom: finite(camera?.zoom) ? camera.zoom : 1,
-          time: clock(), motion: !reduced(), preview: false
+          // REX passes engine-frame time; pause cannot advance its light independently.
+          time: finite(presentation.time) ? presentation.time : clock(),
+          motion: presentation.reducedMotion !== true && presentation.motion !== false && !reduced(),
+          preview: presentation.preview === true,
+          allowAmbientLuminance: presentation.preview !== true && presentation.allowAmbientLuminance !== false
         };
         return background(ctx, id, 'core', 578, options);
       };

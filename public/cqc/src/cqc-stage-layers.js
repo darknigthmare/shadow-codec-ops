@@ -74,7 +74,7 @@
       if (layer.phase === 'background' && !layer.transparent) opaqueBackground = true;
       if (layer.localLuminance) {
         const glow = layer.localLuminance;
-        const cap = stage.id === 'outer_heaven' ? .02 : stage.id === 'arsenal_corridor' ? .03 : 0;
+        const cap = stage.id === 'outer_heaven' ? .02 : stage.id === 'arsenal_corridor' ? .03 : stage.id === 'mgs1_rex_hangar' ? .025 : 0;
         const color = stage.id === 'outer_heaven' ? 'red' : 'cyan';
         if (!cap || layer.id !== 'architecture' || layer.role !== 'architecture' || layer.ambient ||
             layer.motion || layer.phase !== 'background' || glow.enabled !== true ||

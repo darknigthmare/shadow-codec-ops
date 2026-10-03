@@ -141,13 +141,53 @@
   }
   function corePose(state, options = {}) {
     const r=state?.boss;
-    if (!r || !['rex','ray'].includes(r.id)) return null;
+    if (!r || !['rex','ray','mgd','tx55'].includes(r.id)) return null;
     const frame=finite(state.frame) ? state.frame : finite(state.tick) ? state.tick : 0, a=r.attack;
     if (r.id==='rex') {
       const duration=number(options.rexTransitionFrames,150,'REX transition'), phase=r.phase || 1;
       return {id:options.id || 'rex_mgs1_ps1',reducedMotion:options.reducedMotion === true,origin:options.origin,frame,
         flags:{radomeDestroyed:r.radome<=0,cockpitOpened:phase>=2,rexDefeated:phase>=3,stomping:a?.kind==='stomp',...(options.flags || {})},
         channels:{cockpitOpen:phase>=2 ? clamp(1-(r.transition || 0)/duration,0,1) : 0,stompLift:a?.kind==='stomp' && a.windup>0 ? Math.sin(clamp(a.t/a.windup,0,1)*Math.PI)*24 : 0,radomeDetachFrames:phase>=2 ? Math.max(0,duration-(r.transition || 0)) : 0,rexCollapse:phase>=3 ? 27 : 0,idleBreath:options.reducedMotion ? 0 : Math.sin(frame*.06),...(options.channels || {})}};
+    }
+    if (r.id==='tx55') {
+      // The original sabotage machine is stationary and its weapons remain inactive.
+      // Read the existing 125-frame destruction clock; do not invent detachable wreckage.
+      const defeated=r.defeated===true, remaining=finite(r.collapse) ? clamp(r.collapse,0,125) : 0;
+      return {id:options.id || 'tx55_mg1_msx1987',reducedMotion:options.reducedMotion === true,origin:options.origin,frame,
+        flags:{tx55Defeated:defeated,tx55Absent:defeated && remaining<=0,...(options.flags || {})},
+        channels:{tx55DestructionFrames:defeated ? 125-remaining : 0,tx55ValidatedSteps:clamp(finite(r.progress) ? r.progress : 0,0,16),...(options.channels || {})}};
+    }
+    if (r.id==='mgd') {
+      // Read the existing encounter clocks and HP only. No presentation state enters replays.
+      const destroyed=r.destroyed===true, collapseFrames=destroyed ? clamp(110-(finite(r.collapse) ? r.collapse : 0),0,110) : 0;
+      const stride=a?.kind==='stride' && a.t>=a.windup && a.t<a.windup+a.active && a.active>0;
+      const strideLift=stride ? Math.sin((a.t-a.windup)/a.active*Math.PI)*95 : 0;
+      const nearHP=finite(r.legs?.near) ? r.legs.near : 4800, farHP=finite(r.legs?.far) ? r.legs.far : 4800;
+      const drop=Math.min(95,collapseFrames*.86), tilt=collapseFrames/110*-8, fold={};
+      if (collapseFrames>0) {
+        // Presentation IK holds the measured intact ankle locations while the existing collapse clock lowers the hull.
+        // These vectors are catalogue metadata in world units, not combat targets or new state.
+        const rotate=(v,d) => {const q=d*DEG,c=Math.cos(q),s=Math.sin(q);return[c*v[0]-s*v[1],s*v[0]+c*v[1]];};
+        for (const leg of [
+          {key:'Near',hip:[-40,235],u:[-24.44,-81.545],l:[45.57,-110.98],ur:0,lr:-46,fr:46,du:12,dl:-22,df:12,dx:-7,dy:-9,disabled:nearHP<=0},
+          {key:'Far',hip:[84,231],u:[-19.975,-77.785],l:[42.3,-111.6],ur:28,lr:-46,fr:18,du:-15,dl:24,df:-8,dx:7,dy:-9,disabled:farHP<=0}
+        ]) {
+          const first=rotate(leg.u,leg.ur),second=rotate(leg.l,leg.ur+leg.lr),ankle=[leg.hip[0]+first[0]+second[0],leg.hip[1]+first[1]+second[1]];
+          const local=rotate([ankle[0],ankle[1]+drop],-tilt),target=[local[0]-leg.hip[0],local[1]-leg.hip[1]];
+          const aLen=Math.hypot(...leg.u),bLen=Math.hypot(...leg.l),distance=Math.max(.001,Math.hypot(...target));
+          const aAngle=Math.atan2(target[1],target[0])+Math.acos(clamp((aLen*aLen+distance*distance-bLen*bLen)/(2*aLen*distance),-1,1));
+          const bAngle=Math.atan2(target[1]-aLen*Math.sin(aAngle),target[0]-aLen*Math.cos(aAngle));
+          const upper=(aAngle-Math.atan2(leg.u[1],leg.u[0]))/DEG,lower=(bAngle-Math.atan2(leg.l[1],leg.l[0]))/DEG-upper;
+          const disabled=leg.disabled ? 1 : 0;
+          fold['mgd'+leg.key+'FoldUpper']=upper-leg.ur-disabled*leg.du;
+          fold['mgd'+leg.key+'FoldLower']=lower-leg.lr-disabled*leg.dl;
+          fold['mgd'+leg.key+'FootLevel']=-tilt-upper-lower-leg.fr-disabled*leg.df;
+          fold['mgd'+leg.key+'FoldX']=-disabled*leg.dx;fold['mgd'+leg.key+'FoldY']=-disabled*leg.dy;
+        }
+      }
+      return {id:options.id || 'mgd_mg2_msx2',reducedMotion:options.reducedMotion === true,origin:options.origin || [finite(r.x) ? r.x : 1120,0],frame,
+        flags:{nearLegDisabled:nearHP<=0,farLegDisabled:farHP<=0,mgdDestroyed:destroyed,mgdEscapeActive:!!r.escape,...(options.flags || {})},
+        channels:{strideLift,nearLegDamage:clamp(1-nearHP/4800,0,1),farLegDamage:clamp(1-farHP/4800,0,1),nearLegDisabled:nearHP<=0 ? 1 : 0,farLegDisabled:farHP<=0 ? 1 : 0,mgdCollapseFrames:collapseFrames,mgdCollapseProgress:collapseFrames/110,mgdCollapseDrop:drop,mgdCollapseTilt:tilt,...fold,mgdGunRecoil:a?.kind==='gun' && a.t>=a.windup && a.t<a.windup+a.active ? Math.sin(frame*.8) : 0,idleBreath:options.reducedMotion ? 0 : Math.sin(frame*.06),...(options.channels || {})}};
     }
     const jaw = typeof options.jawOpen === 'boolean' ? options.jawOpen : !r.defeated && !r.transition && (r.stagger>0 || !!(a?.kind==='water' && a.t>=a.windup-18 && a.t<a.windup+a.active+24));
     return {id:options.id || 'ray_mgs2_arsenal',reducedMotion:options.reducedMotion === true,origin:options.origin,frame,
