@@ -119,6 +119,10 @@ body{background:#030508!important;overflow:hidden}.toolbar,.footer{display:none!
 
 <dialog id="boss-guide-dialog" aria-labelledby="boss-guide-title"><button id="boss-guide-close" class="close">FERMER</button><h2 id="boss-guide-title"></h2><div id="boss-guide-body"></div><p class="disclaimer">Règles originales de l’adaptation 2D. Les dégâts et volumes restent ceux du moteur, pas ceux du jeu d’origine.</p></dialog>
 <dialog id="cards-dialog" aria-labelledby="cards-heading"><button id="close-cards" class="close">FERMER</button><p class="eyebrow">AC!D / ADAPTATION VERSUS TEMPS RÉEL</p><h2 id="cards-heading">MINI-DECKS</h2><label>COMBATTANT <select id="cards-fighter"></select></label><p class="cards-rules"><b>D</b> joue la carte sélectionnée. <b>Bas + D</b> choisit le prochain emplacement, sans jeter de carte. <b>Arrière + D</b> remplace la carte et retire jusqu’à 20 COST après 43 images exposées. Le coût et la carte jouée sont dépensés dès l’engagement, même si l’action est interrompue. À 100 COST, les cartes trop coûteuses sont refusées ; les frappes normales, la garde et les déplacements restent utilisables. La dette diminue de 10 par seconde hors attaque et étourdissement, jamais pendant la pause ou le hitstop. Deux rations réussies maximum par manche. Ces douze cartes et valeurs sont propres à cette adaptation, pas aux cartes du jeu PSP.</p><p id="cards-live" class="cards-live"></p><div id="cards-list" class="deck-grid"></div><p class="muted">Mini-decks fixes, référence en lecture seule. Pas encore de construction de deck, de carte à débloquer ou d’échange en ligne.</p></dialog>
+<script src="../src/cqc-stage-layer-data.js"></script>
+<script src="../src/cqc-pass12-stage-data.js"></script>
+<script src="../src/cqc-stage-layers.js"></script>
+<script src="../src/cqc-pass12-stage-bridge.js"></script>
 <script>
 (()=>{
 'use strict';
@@ -4846,6 +4850,7 @@ function createStageBank(){
  return {load,draw,clear(){generation++;entries.clear();},status(){return [...entries].map(([id,layers])=>({id,layers:layers.map(l=>({id:l.id,plane:l.plane,parallax:l.parallax,width:l.width,height:l.height}))}));}};
 }
 const stageBank=createStageBank();
+window.CQC_PASS12_STAGE_BRIDGE?.decorateCoreBank(stageBank);
 /** Explicit local persistence, independent from the small match profile. No cloud upload. */
 function createVisualVault(){
  const allowed=new Set(['fighters','stages']);let serial=Promise.resolve();
@@ -8170,7 +8175,7 @@ function pause(force=true){
  match.paused=force;audioBank.setPaused(force);$('pause-panel').hidden=!force;accumulator=0;clearInput();$('pause').textContent=force?'REPRENDRE':'PAUSE';
  if(force)$('resume').focus();else $('game').focus();
 }
-function launchMatch(options){
+function launchMatch(options){if(window.CQC_PASS12_STAGE_BRIDGE?.deferCoreLaunch(options,launchMatch))return;
  match=createMatch({...options,seed:options.seed??((Date.now()^1964)>>>0)});playing=true;clearInput();renderer.reset();accumulator=0;recording=options.mode==='training'||playback?null:recorder(match.options);
  for(const id of ['menu','pause-panel','end-panel','brief-panel'])$(id).hidden=true;
  $('pause').hidden=false;$('pause').textContent='PAUSE';$('pause-movebook').hidden=!!match.boss;$('boss-guide-pause').hidden=!match.boss;$('training-tools').hidden=match.options.mode!=='training';document.body.classList.add('playing');
