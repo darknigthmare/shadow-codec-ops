@@ -123,6 +123,9 @@ body{background:#030508!important;overflow:hidden}.toolbar,.footer{display:none!
 <script src="../src/cqc-pass12-stage-data.js"></script>
 <script src="../src/cqc-stage-layers.js"></script>
 <script src="../src/cqc-pass12-stage-bridge.js"></script>
+<script src="../src/cqc-machine-parts-renderer-v1.js"></script>
+<script src="../src/cqc-machine-parts-catalog-v1.js"></script>
+<script src="../src/cqc-machine-parts-bridge-v1.js"></script>
 <script>
 (()=>{
 'use strict';
@@ -4884,6 +4887,7 @@ function createRenderer(canvas) {
   const g=scene.getContext('2d');
   const cam={x:800,zoom:1.1};
   let renderMatch=null;
+  let nativeRenderOptions={reducedMotion:false,preview:true};
   let visualTime=0,lastEvent=-1,shake=0,flash=0,fx=[],marks=[];
   let seed=1947;
   const rand=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
@@ -6650,6 +6654,7 @@ function createRenderer(canvas) {
     rect(c,23,451,214,61,'#142f3cf0');label(c,'ARSENAL GEAR',36,477,18,'#bbd0c3');label(c,'DEFENSE PLATFORM / RAY',36,497,11,'#93b0b2');
   }
   function rayMachine(c,s,t=0){
+    if(renderMatch?.boss===s.boss&&window.CQC_MACHINE_PARTS_BRIDGE?.drawNative(c,renderMatch,{...nativeRenderOptions,expectedBoss:'ray',jawOpen:rayJawOpen(s)}))return;
     const r=s.boss,open=rayJawOpen(s),dead=r.defeated||r.transition>0;
     c.save();if(dead){c.translate(35,46);c.globalAlpha=.70;}
     // The rear leg and broad fin-like weapon arms identify the RAY silhouette.
@@ -7676,6 +7681,7 @@ function createRenderer(canvas) {
     for(let i=0;i<6;i++){const a=reducedMotion?.23:.18+Math.sin(t*.5+i)*.08;c.save();c.globalAlpha=a;poly(c,[[i*240,151],[i*240+37,151],[i*240+150,559],[i*240-145,559]],'#cad6b2');c.restore();}
   }
   function rexMachine(c,r,t){
+    if(renderMatch?.boss===r&&window.CQC_MACHINE_PARTS_BRIDGE?.drawNative(c,renderMatch,{...nativeRenderOptions,expectedBoss:'rex'}))return;
     const a=r.attack,stomp=a?.kind==='stomp'?Math.sin(Math.min(1,a.t/a.windup)*Math.PI)*24:0;
     const sinking=r.phase===3?27:0;c.save();c.translate(0,sinking);
     // Reinforced rear leg, reversed knee joint, front leg and broad feet.
@@ -7827,7 +7833,7 @@ function createRenderer(canvas) {
   }
 
   function draw(s,{time=visualTime,debug=false,reducedMotion=false,menu=false,cinematicCamera=true,subtitles=true,flashes=false}={}) {
-    renderMatch=s;
+    renderMatch=s;nativeRenderOptions={reducedMotion,preview:menu};
     if(PW_AI_IDS.includes(s.boss?.id)){drawPwAi(s,{time,debug,reducedMotion,menu,subtitles});return;}
     if(s.boss?.id==='sahelanthropus'){drawSahel(s,{time,debug,reducedMotion,menu,subtitles});return;}
     if(['raxa','icbmg'].includes(s.boss?.id)){drawPortableMachine(s,{time,debug,reducedMotion,menu,subtitles});return;}
@@ -8086,6 +8092,11 @@ function createRenderer(canvas) {
   }
   function portrait(target,id) {
     const c=target.getContext('2d');target.width=190;target.height=170;
+    window.CQC_MACHINE_PARTS_BRIDGE?.cancelPortrait(target);
+    if(id==='rex'||id==='ray'){
+      const nativePortraitMatch=id==='rex'?createBossMatch():createRayMatch();
+      if(window.CQC_MACHINE_PARTS_BRIDGE?.drawPortrait(target,nativePortraitMatch,()=>portrait(target,id)))return;
+    }
     c.clearRect(0,0,190,170);if(PW_AI_IDS.includes(id)){const s=createPwAiMatch({},id);s.boss.x=0;s.boss.y=0;c.save();c.translate(95,125);c.scale(.31,.31);pwAiArt(c,s,0);c.restore();return;}if(id==='sahelanthropus'){c.save();c.translate(-207,168);c.scale(.25,.25);sahelArt(c,createSahelMatch(),0);c.restore();return;}if(id==='raxa'){const s=createRaxaMatch();c.save();c.translate(-260,158);c.scale(.30,.30);raxaArt(c,s,0);c.restore();return;}if(id==='icbmg'){const s=createIcbmgMatch();c.save();c.translate(-176,169);c.scale(.24,.24);icbmgArt(c,s,0);c.restore();return;}if(id==='gander'){c.save();c.translate(-210,167);c.scale(.27,.27);ganderMachine(c,{boss:{phase:1,legs:{near:2400,far:2400},modules:{cannon:2400,missiles:2400,fire:2400},attack:null,defeated:false,transition:0}},0);c.restore();return;}if(id==='harrier'){c.save();c.translate(95,85);c.scale(.43,.43);harrierAircraft(c,{x:0,y:0,health:12000,defeated:false},0);c.restore();return;}if(id==='sorrow'){sorrowSilhouette(c,95,188,1.1,0,true);return;}if(id==='shagohod'){c.save();c.translate(-280,158);c.scale(.30,.30);shagohodMachine(c,{boss:{x:1190,phase:1,stall:0,engine:5600,signal:null}},0);c.restore();return;}if(id==='zeke'){c.save();c.translate(-332,166);c.scale(.34,.34);zekeMachine(c,{boss:{jet:1600,rail:2400,core:10000,attack:null,defeated:false}});c.restore();return;}if((ROSTER[id]?.expansion024||ROSTER[id]?.legacy021||ROSTER[id]?.expansion022||ROSTER[id]?.expansion023)){c.save();const kind=ROSTER[id].visual.kind;const quad=kind==='quadruped';c.translate(quad?80:86,quad?160:244);const sc=quad?.51:kind==='mech'?.7:.86;c.scale(sc,sc);fighter(c,{...actor(id,0),id,facing:1,x:0,y:0,input:{},invul:0,hitstun:0},0);c.restore();return;}if(id==='mgd'){c.save();c.translate(-245,165);c.scale(.30,.30);mgdMachine(c,{boss:{x:1120,legs:{near:4800,far:4800},attack:null,destroyed:false}},0);c.restore();return;}if(id==='tx55'){c.save();c.translate(-137,159);c.scale(.28,.28);tx55Machine(c,{defeated:false,progress:0},0);c.restore();return;}if(id==='ray'){c.save();c.translate(-302,164);c.scale(.28,.28);rayMachine(c,{boss:{id:'ray',unit:0,kneeLocks:{nearKnee:0,farKnee:0},stagger:0,transition:0,defeated:false,attack:null}},0);c.restore();return;}if(id==='rex'){c.save();c.translate(-251,162);c.scale(.29,.29);rexMachine(c,{phase:1,transition:0,attack:null},0);c.restore();return;}c.save();c.translate(id==='raven'?67:92,id==='volgin'?248:id==='raven'?246:240);const ps=id==='armstrong'?.76:id==='volgin'?.78:id==='raven'?.71:.88;c.scale(ps,ps);
     fighter(c,{...actor(id,0),id,facing:1,x:0,y:0,input:{},invul:0,hitstun:0},0);c.restore();
   }
@@ -8120,7 +8131,7 @@ function announce(text){$('announcer').textContent=text;}
 let toastTimeout=0;
 function toast(text){$('toast').textContent=text;$('toast').hidden=false;clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>$('toast').hidden=true,4000);announce(text);}
 function writeProfile(next){profile=normalizeProfile(next);try{localStorage.setItem(PROFILE_KEY,JSON.stringify(profile));$('save-indicator').textContent='PROFIL ENREGISTRÉ';return true;}catch{$('save-indicator').textContent='MÉMOIRE SEULE / EXPORT CONSEILLÉ';announce('Stockage indisponible. Exportez le profil avant de quitter.');return false;}}
-function rememberSelection(){const next=mergeProfiles(readProfile(),profile);next.settings={...selection};writeProfile(next);syncSelectionUI();}
+function rememberSelection(){window.CQC_MACHINE_PARTS_BRIDGE?.cancelPendingLaunch();const next=mergeProfiles(readProfile(),profile);next.settings={...selection};writeProfile(next);syncSelectionUI();}
 function clearInput(){keys.clear();pressed.forEach(s=>s.clear());touchHolds.clear();document.querySelectorAll('.touch button').forEach(b=>b.classList.remove('active'));}
 function setEra(options){const h=selectHud(options);document.documentElement.style.setProperty('--accent',h.accent);document.documentElement.dataset.era=h.id;}
 function syncSelectionUI(){
@@ -8165,6 +8176,7 @@ function syncSelectionUI(){
  syncCompetitionEntry();
 }
 function menu(){
+ window.CQC_MACHINE_PARTS_BRIDGE?.cancelPendingLaunch();
  syncControlBindings();
  audioBank.setMusic(null);audioBank.setPaused(true);playing=false;playback=null;recording=null;currentCompetition=null;currentRun=null;runOutcome=null;match.paused=false;clearInput();dummyRecording=false;dummyLoop=false;
  for(const id of ['pause-panel','end-panel','brief-panel','training-tools','pause','playback-badge'])$(id).hidden=true;
@@ -8175,7 +8187,7 @@ function pause(force=true){
  match.paused=force;audioBank.setPaused(force);$('pause-panel').hidden=!force;accumulator=0;clearInput();$('pause').textContent=force?'REPRENDRE':'PAUSE';
  if(force)$('resume').focus();else $('game').focus();
 }
-function launchMatch(options){if(window.CQC_PASS12_STAGE_BRIDGE?.deferCoreLaunch(options,launchMatch))return;
+function launchMatch(options){if(window.CQC_MACHINE_PARTS_BRIDGE?.deferCoreLaunch(options,launchMatch))return;if(window.CQC_PASS12_STAGE_BRIDGE?.deferCoreLaunch(options,launchMatch))return;
  match=createMatch({...options,seed:options.seed??((Date.now()^1964)>>>0)});playing=true;clearInput();renderer.reset();accumulator=0;recording=options.mode==='training'||playback?null:recorder(match.options);
  for(const id of ['menu','pause-panel','end-panel','brief-panel'])$(id).hidden=true;
  $('pause').hidden=false;$('pause').textContent='PAUSE';$('pause-movebook').hidden=!!match.boss;$('boss-guide-pause').hidden=!match.boss;$('training-tools').hidden=match.options.mode!=='training';document.body.classList.add('playing');
