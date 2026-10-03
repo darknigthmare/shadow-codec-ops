@@ -141,13 +141,69 @@
   }
   function corePose(state, options = {}) {
     const r=state?.boss;
-    if (!r || !['rex','ray','mgd','tx55'].includes(r.id)) return null;
+    if (!r || !['rex','ray','mgd','tx55','icbmg','raxa'].includes(r.id)) return null;
     const frame=finite(state.frame) ? state.frame : finite(state.tick) ? state.tick : 0, a=r.attack;
     if (r.id==='rex') {
       const duration=number(options.rexTransitionFrames,150,'REX transition'), phase=r.phase || 1;
       return {id:options.id || 'rex_mgs1_ps1',reducedMotion:options.reducedMotion === true,origin:options.origin,frame,
         flags:{radomeDestroyed:r.radome<=0,cockpitOpened:phase>=2,rexDefeated:phase>=3,stomping:a?.kind==='stomp',...(options.flags || {})},
         channels:{cockpitOpen:phase>=2 ? clamp(1-(r.transition || 0)/duration,0,1) : 0,stompLift:a?.kind==='stomp' && a.windup>0 ? Math.sin(clamp(a.t/a.windup,0,1)*Math.PI)*24 : 0,radomeDetachFrames:phase>=2 ? Math.max(0,duration-(r.transition || 0)) : 0,rexCollapse:phase>=3 ? 27 : 0,idleBreath:options.reducedMotion ? 0 : Math.sin(frame*.06),...(options.channels || {})}};
+    }
+    if (r.id==='icbmg') {
+      // Original ballistic launch: read the existing ascent and diversion clocks only.
+      // Gyroscope remains one logical engine target; there is no walking skeleton or extra HP.
+      const diverted=r.defeated===true, remaining=finite(r.collapse) ? clamp(r.collapse,0,125) : 0;
+      const elapsed=diverted ? 125-remaining : 0;
+      return {id:options.id || 'icbmg_mpo_psp2006',reducedMotion:options.reducedMotion === true,
+        origin:options.origin || [finite(r.x) ? r.x : 1210,finite(r.y) ? r.y : 300],frame,
+        flags:{icbmgDiverted:diverted,icbmgGuidanceDisabled:r.health<=0,...(options.flags || {})},
+        channels:{icbmgDivertedFrames:elapsed,icbmgDivertedDrift:elapsed*2.3,icbmgDivertedTilt:-elapsed*.003/DEG,...(options.channels || {})}};
+    }
+    if (r.id==='raxa') {
+      // Read the existing four-support / two-bay encounter. Presentation never mutates combat state.
+      const phase=finite(r.phase) ? r.phase : 1,transition=finite(r.transition) ? clamp(r.transition,0,140) : 0;
+      const defeated=r.defeated===true,collapse=finite(r.collapse) ? clamp(r.collapse,0,125) : 0;
+      const takeoff=phase>=2 ? clamp(1-transition/140,0,1) : 0,collapseFrames=defeated ? 125-collapse : 0;
+      const channels={raxaTransitionFrames:transition,raxaTakeoffProgress:takeoff,
+        raxaFlightFootRetraction:phase>=2 ? 157*takeoff : 0,
+        raxaCollapseFrames:collapseFrames,raxaCollapseProgress:collapseFrames/125,raxaCollapseDrop:-collapseFrames*.4};
+      const flags={raxaPhase2:phase>=2,raxaDefeated:defeated};
+      for (const key of ['p1','p2','p3','p4']) {
+        const label=key.toUpperCase(),hp=finite(r.legs?.[key]) ? r.legs[key] : 1600;
+        let lift=0;
+        if (phase===1 && a?.kind==='step' && a.leg===key) {
+          const age=a.t-a.windup;
+          if (age>=-32 && age<0) lift=(age+32)/32*96;
+          else if (age>=0 && age<12) lift=96*(1-age/12);
+        }
+        channels['raxa'+label+'Lift']=lift;
+        channels['raxa'+label+'Damage']=clamp(1-hp/1600,0,1);
+        flags['raxa'+label+'Disabled']=hp<=0;
+      }
+      for (const key of ['left','right']) {
+        const label=key==='left' ? 'Left' : 'Right',hp=finite(r.pods?.[key]) ? r.pods[key] : 3200;
+        const open=phase===2 && !transition && !collapse && hp>0 && a?.kind===key && a.t>=20 && a.t<a.windup+a.active+a.recovery-8;
+        flags['raxa'+label+'PodOpen']=open;flags['raxa'+label+'PodDisabled']=hp<=0;
+        channels['raxa'+label+'PodOpen']=open ? 1 : 0;channels['raxa'+label+'PodDamage']=clamp(1-hp/3200,0,1);
+      }
+      // Source-measured link vectors. This pure presentation IK retains four anchored skids.
+      // The engine owns all lift/HP/takeoff/collapse values; no walking clock or detached limb is added.
+      const legGeometry = [{"label":"P1","hip":[-140,180],"upper":[23.2,-62.8],"lower":[-30.24,-119.28],"foot":[-220,36]},{"label":"P2","hip":[-60,198],"upper":[28.2,-71.44],"lower":[-28.5,-86.7],"foot":[-78,36]},{"label":"P3","hip":[60,194],"upper":[-43.71,-66.27],"lower":[31.62,-81.53],"foot":[78,36]},{"label":"P4","hip":[140,180],"upper":[27.95,-51.6],"lower":[8.6,-113.95],"foot":[220,36]}];
+      for (const leg of legGeometry) {
+        const lift=channels['raxa'+leg.label+'Lift'];
+        const target=[leg.foot[0]-leg.hip[0],leg.foot[1]+channels.raxaFlightFootRetraction+lift-(phase>=2 ? 0 : channels.raxaCollapseDrop)-leg.hip[1]];
+        const upperLength=Math.hypot(...leg.upper),lowerLength=Math.hypot(...leg.lower),distance=Math.max(.001,Math.hypot(...target));
+        const upperAngle=Math.atan2(target[1],target[0])+Math.acos(clamp((upperLength*upperLength+distance*distance-lowerLength*lowerLength)/(2*upperLength*distance),-1,1));
+        const knee=[Math.cos(upperAngle)*upperLength,Math.sin(upperAngle)*upperLength];
+        const lowerAngle=Math.atan2(target[1]-knee[1],target[0]-knee[0]);
+        const upper=(upperAngle-Math.atan2(leg.upper[1],leg.upper[0]))/DEG;
+        const lower=(lowerAngle-Math.atan2(leg.lower[1],leg.lower[0]))/DEG-upper;
+        channels['raxa'+leg.label+'Upper']=upper;channels['raxa'+leg.label+'Lower']=lower;
+        channels['raxa'+leg.label+'FootLevel']=-upper-lower;
+      }
+      return {id:options.id || 'raxa_mpo_psp2006',reducedMotion:options.reducedMotion === true,
+        origin:options.origin || [finite(r.x) ? r.x : 1170,finite(r.y) ? r.y : 0],frame,
+        flags:{...flags,...(options.flags || {})},channels:{...channels,...(options.channels || {})}};
     }
     if (r.id==='tx55') {
       // The original sabotage machine is stationary and its weapons remain inactive.

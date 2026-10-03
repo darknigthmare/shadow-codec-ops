@@ -1,0 +1,233 @@
+{
+  "status": "closed_reference_preparation_only_no_generation_or_runtime_changes",
+  "title": "Gander — Metal Gear Ghost Babel — anatomie et salle finale",
+  "canonicalTarget": {
+    "machine": "Gander",
+    "game": "Metal Gear Ghost Babel / Metal Gear Solid, Game Boy Color",
+    "stageId": "ghost-galuade-cellule-gander",
+    "heroId": "snake_gb",
+    "projectionLimit": "Original top-down GBC and official three-quarter concept art cannot certify a new side/2.5D assembly1:1. Preserve anatomy and qualify projection."
+  },
+  "evidenceHierarchy": [
+    {
+      "role": "Primary official concept artwork",
+      "path": "references/konami-original-metalgear.gif",
+      "sourceURL": "https://www.konami.com/mg/archive/ghostbabel/japanese/character/pic/metalgear.gif",
+      "actuallyViewedDerivative": "references/konami-original-metalgear.png"
+    },
+    {
+      "role": "Primary published guide scan, mechanics and game captures",
+      "path": "references/guide-original-leaf0088.jp2",
+      "actuallyViewedDerivative": "references/guide-original-leaf0088.png"
+    },
+    {
+      "role": "Primary published guide interview scan, design intent",
+      "path": "references/guide-original-leaf0126.jp2",
+      "actuallyViewedDerivative": "references/guide-original-leaf0126.jpg",
+      "qualification": "Japanese interpretation paraphrased; no certified translation claimed."
+    },
+    {
+      "role": "Reproduction of original GBC gameplay images plus secondary commentary",
+      "path": "research/lp-original-gbc-update43.html",
+      "sourceURL": "https://lparchive.org/Metal-Gear-Ghost-Babel/Update%2043/",
+      "qualification": "Original game imagery is distinct from LP author interpretations. Hardware and regional ROM provenance unverified."
+    },
+    {
+      "role": "Current delivered runtime observed read only",
+      "pins": "research/ACTUAL_GANDER_RUNTIME_READONLY_PINS_V1.json",
+      "excerpt": "research/CURRENT_GANDER_RUNTIME_READONLY_EXCERPTS_V1.txt"
+    }
+  ],
+  "anatomy": {
+    "observed": [
+      "Two articulated legs with armored feet; not four supports.",
+      "Rounded grey-violet carapace in official artwork; purple armor in captured GBC palette.",
+      "Two long lateral oblique rail-like assemblies visible in final GBC view; official artwork shows elongated parallel structures. Exact functional naming of every prong is not confirmed from silhouette alone.",
+      "Two front turrets, two upper round opening pods, paired rectangular rear/backpack assembly. Separate visible structures do not establish separate HP pools.",
+      "Low central mouth/jaw-like opening integrated into body; original final sequence emits flame from the central low aperture.",
+      "No visible human pilot, glazed cockpit or removable pilot canopy established by inspected sources."
+    ],
+    "articulablePlausible": [
+      "Thigh/shin/ankle/feet rotate and translate using observed walking and body-lowering states.",
+      "Upper circular pods may have closed/open sprite state; do not invent a hinge direction beyond references.",
+      "Backpack has closed/open attack state; keep whole assembly anchored.",
+      "Central jaw/mouth has closed/open flame attack state."
+    ],
+    "destructionBound": [
+      "Leg mobility loss and lowered immobile body are original sequence changes. Whole limbs flying off are not evidenced.",
+      "Pods and later backpack/flame exposure are original vulnerability progression, not proof of additional detachable debris anatomy.",
+      "Use current engine HP and destruction flags only in a presentation-only adapter; original mechanic restoration is separate scoped work."
+    ]
+  },
+  "currentVsOriginal": [
+    {
+      "topic": "Body and palette",
+      "current": "Olive-green procedural faceted chassis with mirrored tall blocks.",
+      "original": "Rounded grey-violet official design, purple GBC sprite, long oblique flank assemblies.",
+      "classification": "Presentation missing; native art can address after projection review."
+    },
+    {
+      "topic": "Encounter structure",
+      "current": "Two phases: near/far legs then cannon/missiles/fire, five pools each2400HP.",
+      "original": "Primary guide describes3steps; LP describes walking feet phase followed by immobile machine with turret/pod/backpack/flame substeps.",
+      "classification": "Original substep mechanics absent; no new phase implemented or implicitly authorized in this preparation."
+    },
+    {
+      "topic": "Front weapons",
+      "current": "cannon995/255 damages its2400HP pool.",
+      "original": "LP identifies front turrets as invulnerable, used to trigger circular pod opening; guide corroborates turret/pod sequence.",
+      "classification": "Mechanic mismatch, not a new visual socket."
+    },
+    {
+      "topic": "Final flame outlet",
+      "current": "fire target1320/190 on right, radius43.",
+      "original": "Low central mouth/jaw integrated in body.",
+      "classification": "Blocking projection/target mismatch before truthful native1:1 claim; do not turn central jaw into a detached right-side pod."
+    },
+    {
+      "topic": "WISP",
+      "current": "No dedicated WISP drones seen in Gander excerpt. Existing chaff is not equivalent to original drone behavior.",
+      "original": "LP and guide describe two invulnerable flying drones temporarily disabled by chaff.",
+      "classification": "Missing original mechanic, not an additional HP or detachment proposal."
+    },
+    {
+      "topic": "Room",
+      "current": "Generic high service bays, fans, braces, green lighting, tiled floor and dust.",
+      "original": "Near-black/teal floor, green floor lines, black/yellow hazard rear band, green/purple low containers and grey-violet wreckage visible.",
+      "classification": "Presentation differs; source top-down to side2.5D adaptation remains qualified."
+    }
+  ],
+  "presentationOnlyImmutableContract": {
+    "existingPhases": [
+      1,
+      2
+    ],
+    "hpPools": {
+      "near": 2400,
+      "far": 2400,
+      "cannon": 2400,
+      "missiles": 2400,
+      "fire": 2400
+    },
+    "bodyOriginWorld": [
+      1160,
+      0
+    ],
+    "legTargets": [
+      {
+        "id": "near",
+        "x": 990,
+        "y": 0,
+        "radius": 57
+      },
+      {
+        "id": "far",
+        "x": 1330,
+        "y": 0,
+        "radius": 57
+      }
+    ],
+    "portTargets": [
+      {
+        "id": "cannon",
+        "x": 995,
+        "y": 255,
+        "radius": 43
+      },
+      {
+        "id": "missiles",
+        "x": 1150,
+        "y": 470,
+        "radius": 46
+      },
+      {
+        "id": "fire",
+        "x": 1320,
+        "y": 190,
+        "radius": 43
+      }
+    ],
+    "legLiftMax": 112,
+    "transitionFrames": 135,
+    "collapseFrames": 120,
+    "cameraX": 800,
+    "zoom": 0.72,
+    "groundY": 602,
+    "qualification": "These are current Core contracts, not original canon. No runtime change made. Core boss state has no x/y; renderer origin must remain explicit."
+  },
+  "futureBoundedPlan": {
+    "executionStatus": "PROPOSAL_ONLY_NOT_EXECUTED",
+    "decisionBeforeImageGen": "Resolve central jaw/current fire target and turret/pod vulnerability mismatch. Choose explicitly between qualified current-mechanics presentation or separately scoped canonical mechanic restoration. Do not silently relocate target geometry or invent anatomy.",
+    "machine": {
+      "master": "One faithful silhouette/projection master based on physically viewed official art and GBC anatomy; compare proportions before atlas production.",
+      "nativeAtlases": [
+        {
+          "id": "body",
+          "content": "Rounded central carapace/pelvis/base; no invented cockpit."
+        },
+        {
+          "id": "supports",
+          "content": "Two legs: proximal/thigh/shin/ankle/feet pieces only where source joints justify them."
+        },
+        {
+          "id": "flanks-pods",
+          "content": "Source flank rails, front turret structures, two upper round pods closed/open."
+        },
+        {
+          "id": "backpack-jaw",
+          "content": "Backpack closed/open, central jaw/mouth closed/open; source positions retained."
+        }
+      ],
+      "budget": {
+        "maxAtlases": 4,
+        "maxRuntimePNGBytes": 16777216,
+        "bitmapCountApprox": [
+          18,
+          24
+        ],
+        "maxMasterGenerations": 1,
+        "maxAtlasGenerations": 4,
+        "maxTargetedRevisionGenerations": 2
+      },
+      "assetRules": [
+        "ImageGen native PNG only for new game textures; preserve every master, rejection, prompt and source pins.",
+        "No conversion, painting, alpha processing, resizing or editing of generated PNG. Native originals remain intact.",
+        "Runtime sourceRects clip each part without neighboring cells; uniform scale; no mirrored bitmap substitutions.",
+        "Pure presentation adapter uses engine counters only; no invented HP, sockets, detachment, attack phases, invulnerable flags or vulnerability windows.",
+        "Do not label future cropped asset plan as already generated or integrated."
+      ]
+    },
+    "stage": {
+      "layerPlan": [
+        "Back wall/teal upper darkness and source-supported hazard band.",
+        "Source-supported architectural boundaries; no unobserved tall fan bays.",
+        "Near-black/green floor and restrained green line markers.",
+        "Low green/purple containers and grey-violet wreckage, placed to keep existing targets visible."
+      ],
+      "maxNativeBackgroundLayers": 4,
+      "noGeneratedStagesYet": true,
+      "projectionQualification": "An original top-down room translated to existing side2.5D projection is a qualified adaptation. Do not claim a pixel-identical canonical room.",
+      "animation": "Only source-confirmed animation; Core frame counters and pause/reduced-motion behavior; no invented continuous neon, fans, steam, camera sway or dust."
+    },
+    "validation": [
+      "Closed source/master/rejection pins, native PNG originals and sourceRect bounds/neighbor isolation.",
+      "Browser physical comparison of proportions, two feet, central mouth and each closed/open state against viewed originals.",
+      "Cold stage preload gate and warm cache without fallback flashes, isolated to exact Gander boss and stage ID.",
+      "Leg lift112, transition135, collapse120, source coordinate targets and all five2400HP pools unchanged for presentation-only scope.",
+      "Uniform scaling desktop/mobile, palette/source confidence qualification, pause and reduced motion.",
+      "Natural actual encounter through final defeat after Root integration; synthetic preview cannot prove gameplay."
+    ],
+    "notIncluded": [
+      "No extra canonical third phase implemented.",
+      "No WISP behavior, destructible cover, rail HP, detachable limbs or additional port pools added.",
+      "No hero sprite, ImageGen atlas, stage asset, renderer bridge, runtime patch, browser fight, Git commit or deployment executed in this preparation."
+    ]
+  },
+  "limits": [
+    "Source reproduction RGB is not a hardware-calibrated original palette.",
+    "Current engine target geometry is not canonical machine anatomy.",
+    "Original JP2/GIF bytes retained; PNG/JPEG documentary derivatives are not game textures.",
+    "Downloaded but individually unviewed sources remain evidence candidates, not physical review claims.",
+    "No fidelity1:1 certification provided."
+  ]
+}

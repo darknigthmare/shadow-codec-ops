@@ -1998,6 +1998,736 @@ window.CQC_MACHINE_PARTS_CATALOG = {
           "parent": "far_shin"
         }
       ]
+    },
+    {
+      "id": "icbmg_mpo_psp2006",
+      "edition": "ICBMG — Metal Gear Solid: Portable Ops original PSP 2006; distinct from RAXA; source-led 2D ballistic presentation",
+      "origin": [
+        1210,
+        300
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "sources": [
+        {
+          "id": "native_master",
+          "file": "assets/machine-parts/icbmg-mpo-psp/master.png",
+          "sha256": "a5157543dc7d2af0abdae16f208ed86a53fbf8000f15334821a446488a237aef",
+          "bytes": 491854,
+          "width": 1060,
+          "height": 1484
+        }
+      ],
+      "parts": [
+        {
+          "id": "machine_anchor",
+          "source": "native_master",
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "pivot": [
+            0,
+            0
+          ],
+          "offset": [
+            0,
+            0
+          ],
+          "z": 0,
+          "imageScale": 1,
+          "channels": {
+            "x": [
+              {
+                "channel": "icbmgDivertedDrift",
+                "factor": 1
+              }
+            ],
+            "rotation": [
+              {
+                "channel": "icbmgDivertedTilt",
+                "factor": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "guidance_crown_composite",
+          "source": "native_master",
+          "rect": [
+            419,
+            19,
+            230,
+            267
+          ],
+          "pivot": [
+            114,
+            136
+          ],
+          "offset": [
+            -120,
+            65
+          ],
+          "z": 20,
+          "imageScale": 0.38,
+          "parent": "machine_anchor"
+        },
+        {
+          "id": "axial_fuselage",
+          "source": "native_master",
+          "rect": [
+            448,
+            286,
+            172,
+            1042
+          ],
+          "pivot": [
+            85,
+            0
+          ],
+          "offset": [
+            0,
+            -49.78
+          ],
+          "z": 10,
+          "imageScale": 0.38,
+          "parent": "guidance_crown_composite"
+        },
+        {
+          "id": "exhaust_mount",
+          "source": "native_master",
+          "rect": [
+            430,
+            1328,
+            205,
+            57
+          ],
+          "pivot": [
+            103,
+            0
+          ],
+          "offset": [
+            0,
+            -395.96
+          ],
+          "z": 30,
+          "imageScale": 0.38,
+          "parent": "axial_fuselage"
+        },
+        {
+          "id": "left_exhaust_bell",
+          "source": "native_master",
+          "rect": [
+            447,
+            1385,
+            60,
+            75
+          ],
+          "pivot": [
+            31,
+            0
+          ],
+          "offset": [
+            -20.9,
+            -21.66
+          ],
+          "z": 40,
+          "imageScale": 0.38,
+          "parent": "exhaust_mount"
+        },
+        {
+          "id": "center_exhaust_bell",
+          "source": "native_master",
+          "rect": [
+            507,
+            1385,
+            54,
+            75
+          ],
+          "pivot": [
+            26,
+            0
+          ],
+          "offset": [
+            0,
+            -21.66
+          ],
+          "z": 41,
+          "imageScale": 0.38,
+          "parent": "exhaust_mount"
+        },
+        {
+          "id": "right_exhaust_bell",
+          "source": "native_master",
+          "rect": [
+            561,
+            1385,
+            63,
+            75
+          ],
+          "pivot": [
+            29,
+            0
+          ],
+          "offset": [
+            21.66,
+            -21.66
+          ],
+          "z": 42,
+          "imageScale": 0.38,
+          "parent": "exhaust_mount"
+        }
+      ],
+      "sourceQualification": {
+        "absolute1to1Certified": false,
+        "edition": "Original PSP 2006 visual design, region/ROM/emulator of reproduced stream not certified",
+        "confirmed": "Artbook0045: long vertical missile, broad open crown, long cylindrical fuselage, lower mount and three bell nozzles. PSP cinematic thumbnail24001 confirms upper crown, side apertures, external vertical braces and lower crown ring.",
+        "guidance": "Single existing engine target is a logical anchor inside the crown composite; exact canonical internal gyroscope location/appearance not independently authenticated. No fabricated exposed gyroscope bitmap.",
+        "nozzles": "Three source rectangles preserve the native adjacent bell silhouettes; their bottom antialias edges touch in the generated master. No relative hardware rotation, detachment or extra HP is introduced.",
+        "cropAlpha": "PNG bytes untouched. Source-native crop rectangles retain slight <=19-alpha edge residues. Runtime alpha clipping or image pixel editing is not used.",
+        "viewport": "Canonical tall missile partly extends below the launch floor at initial engine height. Crown tracks the existing guidance anchor. The rig does not squat, walk or distort the missile to fit the prior procedural silhouette."
+      }
+    },
+    {
+      "id": "raxa_mpo_psp2006",
+      "edition": "Metal Gear RAXA — Metal Gear Solid: Portable Ops 2006 original PSP, documented four-support prototype; articulated 2D adaptation, not absolute1:1 certification",
+      "origin": [
+        1170,
+        0
+      ],
+      "scale": [
+        1,
+        1
+      ],
+      "sources": [
+        {
+          "id": "body",
+          "file": "assets/machine-parts/raxa-mpo-psp/body.png",
+          "sha256": "9abfbcaf2254ea36619dd627d30be065726100cc5750bb4ff06d88bfcf594f88",
+          "width": 1536,
+          "height": 1024,
+          "bytes": 1946701
+        },
+        {
+          "id": "equipment",
+          "file": "assets/machine-parts/raxa-mpo-psp/equipment.png",
+          "sha256": "4145648ef07d74950cc92483ddbfc8909c75328fcd449d328bfa7ec1fac035b5",
+          "width": 1536,
+          "height": 1024,
+          "bytes": 2074433
+        },
+        {
+          "id": "legs",
+          "file": "assets/machine-parts/raxa-mpo-psp/legs.png",
+          "sha256": "cac75cce19bd350049d6181bed2d88c8522f92ceb603729388e7eeae83144e66",
+          "width": 1536,
+          "height": 1024,
+          "bytes": 1896598
+        },
+        {
+          "id": "bays",
+          "file": "assets/machine-parts/raxa-mpo-psp/bays.png",
+          "sha256": "4496c2c7ef5b28a6ee887b1bab4560168627ef25792ad42a75cdd157e5529d19",
+          "width": 1536,
+          "height": 1024,
+          "bytes": 2267401
+        }
+      ],
+      "parts": [
+        {
+          "id": "machine_anchor",
+          "source": "body",
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "pivot": [
+            0,
+            0
+          ],
+          "offset": [
+            0,
+            0
+          ],
+          "z": -99,
+          "channels": {
+            "y": [
+              {
+                "channel": "raxaCollapseDrop",
+                "factor": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "body",
+          "source": "body",
+          "rect": [
+            220,
+            70,
+            1255,
+            880
+          ],
+          "pivot": [
+            580,
+            680
+          ],
+          "offset": [
+            0,
+            260
+          ],
+          "imageScale": 0.24,
+          "z": 30,
+          "parent": "machine_anchor"
+        },
+        {
+          "id": "camera_gun",
+          "source": "equipment",
+          "rect": [
+            155,
+            615,
+            475,
+            375
+          ],
+          "pivot": [
+            230,
+            180
+          ],
+          "offset": [
+            -60,
+            240
+          ],
+          "imageScale": 0.2,
+          "z": 50,
+          "parent": "machine_anchor"
+        },
+        {
+          "id": "left_silo",
+          "source": "bays",
+          "rect": [
+            30,
+            70,
+            735,
+            350
+          ],
+          "pivot": [
+            690,
+            160
+          ],
+          "offset": [
+            -100,
+            335
+          ],
+          "imageScale": 0.75,
+          "z": 20,
+          "parent": "machine_anchor",
+          "variants": [
+            {
+              "when": "raxaLeftPodOpen",
+              "rect": [
+                25,
+                465,
+                742,
+                488
+              ],
+              "pivot": [
+                695,
+                247
+              ]
+            }
+          ]
+        },
+        {
+          "id": "right_silo",
+          "source": "bays",
+          "rect": [
+            780,
+            88,
+            737,
+            355
+          ],
+          "pivot": [
+            45,
+            140
+          ],
+          "offset": [
+            110,
+            260
+          ],
+          "imageScale": 0.64,
+          "z": 38,
+          "parent": "machine_anchor",
+          "variants": [
+            {
+              "when": "raxaRightPodOpen",
+              "rect": [
+                775,
+                462,
+                739,
+                509
+              ],
+              "pivot": [
+                45,
+                285
+              ]
+            }
+          ]
+        },
+        {
+          "id": "p1_upper",
+          "source": "legs",
+          "rect": [
+            80,
+            60,
+            255,
+            277
+          ],
+          "pivot": [
+            65,
+            93
+          ],
+          "offset": [
+            -140,
+            180
+          ],
+          "imageScale": 0.4,
+          "z": 9,
+          "parent": "machine_anchor",
+          "channels": {
+            "rotation": [
+              {
+                "channel": "raxaP1Upper",
+                "factor": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "p1_shin",
+          "source": "legs",
+          "rect": [
+            116,
+            361,
+            193,
+            371
+          ],
+          "pivot": [
+            133,
+            55
+          ],
+          "offset": [
+            23.2,
+            -62.8
+          ],
+          "imageScale": 0.42,
+          "z": 9.1,
+          "parent": "p1_upper",
+          "channels": {
+            "rotation": [
+              {
+                "channel": "raxaP1Lower",
+                "factor": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "p1_foot",
+          "source": "legs",
+          "rect": [
+            40,
+            755,
+            352,
+            178
+          ],
+          "pivot": [
+            226,
+            50
+          ],
+          "offset": [
+            -30.24,
+            -119.28
+          ],
+          "imageScale": 0.3,
+          "z": 9.2,
+          "parent": "p1_shin",
+          "channels": {
+            "rotation": [
+              {
+                "channel": "raxaP1FootLevel",
+                "factor": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "p2_upper",
+          "source": "legs",
+          "rect": [
+            440,
+            55,
+            300,
+            290
+          ],
+          "pivot": [
+            150,
+            105
+          ],
+          "offset": [
+            -60,
+            198
+          ],
+          "imageScale": 0.47,
+          "z": 44,
+          "parent": "machine_anchor",
+          "channels": {
+            "rotation": [
+              {
+                "channel": "raxaP2Upper",
+                "factor": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "p2_shin",
+          "source": "legs",
+          "rect": [
+            502,
+            365,
+            198,
+            372
+          ],
+          "pivot": [
+            163,
+            50
+          ],
+          "offset": [
+            28.2,
+            -71.44
+          ],
+          "imageScale": 0.3,
+          "z": 44.1,
+          "parent": "p2_upper",
+          "channels": {
+            "rotation": [
+              {
+                "channel": "raxaP2Lower",
+                "factor": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "p2_foot",
+          "source": "legs",
+          "rect": [
+            401,
+            775,
+            341,
+            169
+          ],
+          "pivot": [
+            209,
+            45
+          ],
+          "offset": [
+            -28.5,
+            -86.7
+          ],
+          "imageScale": 0.3,
+          "z": 44.2,
+          "parent": "p2_shin",
+          "channels": {
+            "rotation": [
+              {
+                "channel": "raxaP2FootLevel",
+                "factor": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "p3_upper",
+          "source": "legs",
+          "rect": [
+            830,
+            68,
+            278,
+            283
+          ],
+          "pivot": [
+            164,
+            101
+          ],
+          "offset": [
+            60,
+            194
+          ],
+          "imageScale": 0.47,
+          "z": 43,
+          "parent": "machine_anchor",
+          "channels": {
+            "rotation": [
+              {
+                "channel": "raxaP3Upper",
+                "factor": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "p3_shin",
+          "source": "legs",
+          "rect": [
+            874,
+            368,
+            209,
+            367
+          ],
+          "pivot": [
+            46,
+            65
+          ],
+          "offset": [
+            -43.71,
+            -66.27
+          ],
+          "imageScale": 0.31,
+          "z": 43.1,
+          "parent": "p3_upper",
+          "channels": {
+            "rotation": [
+              {
+                "channel": "raxaP3Lower",
+                "factor": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "p3_foot",
+          "source": "legs",
+          "rect": [
+            807,
+            765,
+            366,
+            185
+          ],
+          "pivot": [
+            186,
+            55
+          ],
+          "offset": [
+            31.62,
+            -81.53
+          ],
+          "imageScale": 0.3,
+          "z": 43.2,
+          "parent": "p3_shin",
+          "channels": {
+            "rotation": [
+              {
+                "channel": "raxaP3FootLevel",
+                "factor": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "p4_upper",
+          "source": "legs",
+          "rect": [
+            1215,
+            57,
+            276,
+            276
+          ],
+          "pivot": [
+            55,
+            108
+          ],
+          "offset": [
+            140,
+            180
+          ],
+          "imageScale": 0.43,
+          "z": 11,
+          "parent": "machine_anchor",
+          "channels": {
+            "rotation": [
+              {
+                "channel": "raxaP4Upper",
+                "factor": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "p4_shin",
+          "source": "legs",
+          "rect": [
+            1266,
+            373,
+            180,
+            373
+          ],
+          "pivot": [
+            84,
+            72
+          ],
+          "offset": [
+            27.95,
+            -51.6
+          ],
+          "imageScale": 0.43,
+          "z": 11.1,
+          "parent": "p4_upper",
+          "channels": {
+            "rotation": [
+              {
+                "channel": "raxaP4Lower",
+                "factor": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "p4_foot",
+          "source": "legs",
+          "rect": [
+            1215,
+            775,
+            289,
+            177
+          ],
+          "pivot": [
+            155,
+            50
+          ],
+          "offset": [
+            8.6,
+            -113.95
+          ],
+          "imageScale": 0.3,
+          "z": 11.2,
+          "parent": "p4_shin",
+          "channels": {
+            "rotation": [
+              {
+                "channel": "raxaP4FootLevel",
+                "factor": 1
+              }
+            ]
+          }
+        }
+      ]
     }
   ]
 };

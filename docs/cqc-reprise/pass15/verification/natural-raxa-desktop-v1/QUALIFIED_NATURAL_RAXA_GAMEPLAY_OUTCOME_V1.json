@@ -1,0 +1,49 @@
+{
+  "schema": "cqc.pass15.natural-gameplay-outcome-qualified/1",
+  "closed": true,
+  "status": "natural-RAXA-victory-observed-global-harness-QA-failed",
+  "synthetic": false,
+  "actualCombat": true,
+  "actualVictory": true,
+  "globalQAPassed": false,
+  "failureReason": "Stage observer attached to exported character artBank instead of private stageBank, so stage rows absent and harness assertion failed. No game/render/native-machine failure identified.",
+  "sourceBindings": [
+    {
+      "path": "/tmp/cqc-pass15-browser-proofs/natural-raxa-desktop-v1/ACTUAL_NATURAL_MACHINE_GAME_QA_V1.json",
+      "bytes": 166787,
+      "sha256": "49f319bc6d5c4486d61bb3ccb777d7e1ab8c386e62e57f04873490b12e6fc322"
+    },
+    {
+      "path": "/tmp/cqc-pass15-browser-proofs/natural-raxa-desktop-v1/TRANSPARENT_NATIVE_DRAW_TRUSTED_INPUT_OBSERVER.json",
+      "bytes": 93577,
+      "sha256": "d8fe114d7f65444511dcd2efeff8ab21662744ec336c3396195ad0705824199a"
+    },
+    {
+      "path": "/tmp/cqc-pass15-browser-proofs/natural-raxa-desktop-v1/raxa-natural-victory-finished.json",
+      "bytes": 6039,
+      "sha256": "00263674aec348482e3430b7ac153637ebff95c135a61f6c969e2f602af88550"
+    }
+  ],
+  "facts": {
+    "winner": 0,
+    "phase": "finished",
+    "shots": 16,
+    "hits": 16,
+    "legHits": 8,
+    "podHits": 8,
+    "misses": 0,
+    "armored": 0,
+    "reloads": 1,
+    "health": 8159,
+    "nativeMachineActualCounts": {
+      "raxa|intro": 270,
+      "raxa|fight": 2308,
+      "raxa|round-end": 155,
+      "raxa|finished": 13
+    },
+    "badNativeActualDraws": 0,
+    "trustedInputCount": 162,
+    "allInputsTrusted": true
+  },
+  "qualification": "Read-only qualification of retained actual game evidence. Does not relabel failed global harness result as passed. Source final UI-only delta must be checked separately; stage and reload checks remain pending corrected smoke."
+}

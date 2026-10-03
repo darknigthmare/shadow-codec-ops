@@ -96,6 +96,10 @@
       const stage = byID.get(mapped);
       return stage?.approved && stage.review?.status === 'accepted_closest' ? mapped : null;
     }
+    function coreGround(id) {
+      const hint = byID.get(resolve(id, 'core'))?.renderHints?.coreGroundY;
+      return finite(hint) && hint >= 568 && hint <= 620 ? hint : 578;
+    }
     function preload(id, surface = 'core', options = {}) {
       const mapped = resolve(id, surface);
       return mapped && renderer ? renderer.preload(mapped, options) : Promise.resolve(false);
@@ -183,7 +187,7 @@
           preview: presentation.preview === true,
           allowAmbientLuminance: presentation.preview !== true && presentation.allowAmbientLuminance !== false
         };
-        return background(ctx, id, 'core', 578, options);
+        return background(ctx, id, 'core', coreGround(id), options);
       };
       decorated.add(bank);
       if (root.document?.addEventListener) {
@@ -223,7 +227,7 @@
     }
     function status(id, surface = 'core') {
       const mapped = resolve(id, surface);
-      return {surface, sourceID: id, mapped, ground: surface === 'core' ? 578 : 596,
+      return {surface, sourceID: id, mapped, ground: surface === 'core' ? coreGround(id) : 596,
         native: mapped && renderer ? renderer.status(mapped) : null};
     }
     return {decorateCoreBank, episodeBackground, episodeForeground, appendVersusStages, deferCoreLaunch, deferEpisodeLaunch,

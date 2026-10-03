@@ -53,6 +53,80 @@ body{background:#030508!important;overflow:hidden}.toolbar,.footer{display:none!
 @media(max-width:980px){.roster{grid-template-columns:repeat(4,minmax(0,1fr))!important}.setup{grid-template-columns:1.4fr .8fr!important}.menu{overflow:auto!important}}
 @media(max-width:680px){body{overflow:auto}.stage{height:auto!important;min-height:100vh!important}.menu{position:relative!important;overflow:visible!important}.setup{grid-template-columns:1fr!important}.roster{grid-template-columns:repeat(3,minmax(0,1fr))!important}.mode-row{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
 </style>
+<style id="cqc-pass15-mobile-controls">
+/* PASS15: use the existing mobile controls beside the unscaled 16:9 game. */
+@media (max-width:980px) {
+  body.playing { overflow:auto!important; }
+  body.playing .toolbar {
+    display:flex!important;
+    min-height:52px;
+    padding:4px max(6px,env(safe-area-inset-right)) 4px max(6px,env(safe-area-inset-left));
+  }
+  body.playing .toolbar .brand { display:none; }
+  body.playing .toolbar-actions { width:100%; justify-content:center; gap:4px; }
+  body.playing .toolbar-actions>button:not(#pause):not(#open-settings):not(#touch-toggle):not(#fullscreen) { display:none; }
+  body.playing .toolbar-actions>button { min-height:44px; padding:8px; font-size:10px; }
+  body.playing .stage {
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    aspect-ratio:auto!important;
+  }
+  body.playing #game { width:100%!important; height:auto!important; aspect-ratio:16/9; object-fit:contain; }
+  body.playing .touch {
+    position:relative!important;
+    inset:auto!important;
+    width:100%;
+    margin:0;
+    padding:10px max(8px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));
+    gap:12px;
+    align-items:start;
+    background:#080f19;
+    border-top:1px solid #334256;
+  }
+  body.playing .touch-group { grid-template-columns:repeat(3,44px); gap:4px; }
+  body.playing .touch-group.actions { grid-template-columns:repeat(4,44px); }
+  body.playing .touch button { width:44px; min-height:44px; padding:6px 0; font-size:10px; }
+  body.playing .panel-actions button { min-height:44px; }
+  /* Dialogs cover the iframe viewport and remain above the combat control dock. */
+  body.playing .overlay {
+    position:fixed;
+    inset:0;
+    z-index:12;
+    padding:max(12px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));
+    overscroll-behavior:contain;
+  }
+  body.playing .overlay .panel {
+    max-height:calc(100svh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    overflow:auto;
+    overscroll-behavior:contain;
+  }
+}
+/* At the narrowest viewport, a full row of movement keys keeps every target 44px. */
+@media (max-width:359px) {
+  body.playing .touch { flex-direction:column; align-items:center; gap:8px; }
+  body.playing .touch-group:not(.actions) { grid-template-columns:repeat(6,44px); }
+}
+/* Fit both game and existing commands on a short landscape screen. */
+@media (max-width:980px) and (max-height:560px) and (orientation:landscape) {
+  body.playing .stage { width:min(100%,calc((100svh - 156px - env(safe-area-inset-bottom))*16/9))!important; }
+  body.playing:not(.touch-enabled) .stage { width:min(100%,calc((100svh - 56px)*16/9))!important; }
+}
+@media (min-width:680px) and (max-width:980px) and (max-height:560px) and (orientation:landscape) {
+  body.playing.touch-enabled .stage { width:min(100%,calc((100svh - 112px - env(safe-area-inset-bottom))*16/9))!important; }
+  body.playing .touch {
+    width:100vw;
+    left:50%!important;
+    transform:translateX(-50%);
+    padding:6px max(4px,env(safe-area-inset-right)) max(6px,env(safe-area-inset-bottom)) max(4px,env(safe-area-inset-left));
+    gap:8px;
+    justify-content:center;
+  }
+  body.playing .touch-group { grid-template-columns:repeat(6,44px); gap:2px; }
+  body.playing .touch-group.actions { grid-template-columns:repeat(8,44px); }
+}
+</style>
 </head><body>
 <header class="toolbar"><div class="brand">CQC VERSUS <span id="host-label">/ LEGACY 0.30</span></div><nav class="toolbar-actions" aria-label="Options rapides"><button id="pause" hidden>PAUSE</button><button id="open-competition-board" hidden>TABLEAU</button><button id="help">COMMANDES</button><button id="open-controls">RECONFIGURER</button><button id="open-settings">RÉGLAGES</button><button id="sound" aria-pressed="false">SON OFF</button><button id="motion" aria-pressed="false">MOUVEMENT</button><button id="touch-toggle" aria-pressed="false">TACTILE</button><button id="fullscreen">PLEIN ÉCRAN</button><button id="exit-host" hidden>QUITTER VERS CODEC</button></nav></header>
 <main class="stage" id="stage"><canvas id="game" width="1280" height="720" tabindex="0" aria-label="Arène de combat CQC Versus. Commandes disponibles dans le menu COMMANDES."></canvas>
@@ -122,6 +196,7 @@ body{background:#030508!important;overflow:hidden}.toolbar,.footer{display:none!
 <script src="../src/cqc-stage-layer-data.js"></script>
 <script src="../src/cqc-pass12-stage-data.js"></script>
 <script src="../src/cqc-pass14-rex-stage-data.js"></script>
+<script src="../src/cqc-pass15-mpo-stage-data.js"></script>
 <script src="../src/cqc-stage-layers.js"></script>
 <script src="../src/cqc-pass12-stage-bridge.js"></script>
 <script src="../src/cqc-machine-parts-renderer-v1.js"></script>
@@ -7179,6 +7254,7 @@ function createRenderer(canvas) {
   }
 
   function raxaArt(c,s,t=0){
+    if(renderMatch?.boss===s.boss&&window.CQC_MACHINE_PARTS_BRIDGE?.drawNative(c,renderMatch,{...nativeRenderOptions,expectedBoss:'raxa'}))return;
     const r=s.boss,phase=r.phase||1,fall=r.defeated?(125-r.collapse)*.4:0;
     // Rear and front legs share the actual four labelled hit targets.
     for(const key of ['p1','p4','p2','p3']){
@@ -7206,6 +7282,7 @@ function createRenderer(canvas) {
     if(r.defeated)for(let j=0;j<7;j++){const x=r.x-140+j*47,y=160+r.y+(j%3)*47;poly(c,[[x,-y],[x-13,-y-38],[x+7,-y-17],[x+19,-y-71],[x+31,-y+13]],'#dfbc78b8');}
   }
   function icbmgArt(c,s,t=0){
+    if(renderMatch?.boss===s.boss&&window.CQC_MACHINE_PARTS_BRIDGE?.drawNative(c,renderMatch,{...nativeRenderOptions,expectedBoss:'icbmg'}))return;
     const r=s.boss,drift=r.defeated?(125-r.collapse)*2.3:0;c.save();c.translate(r.x+drift,-r.y);c.rotate(r.defeated?(125-r.collapse)*.003:0);
     outline(c,[[-130,138],[-196,58],[-190,-172],[-142,-252],[-55,-316],[47,-323],[116,-267],[173,-169],[177,47],[130,140],[54,170],[-47,170]],'#85998b',5);
     poly(c,[[-140,-176],[-108,-246],[-43,-302],[35,-307],[94,-251],[132,-178],[125,12],[-133,12]],'#bac3a9');
@@ -7218,7 +7295,7 @@ function createRenderer(canvas) {
   }
   function drawPortableMachine(s,{time=0,reducedMotion=false,menu=false,debug=false,subtitles=true}={}){
     const c=g,r=s.boss,p=s.fighters[0],launch=r.id==='icbmg',rules=portableRules(s),t=reducedMotion?0:time;cam.x=800;cam.zoom=.72;
-    c.setTransform(.75,0,0,.75,0,0);c.imageSmoothingEnabled=false;portableMachineScene(c,t,false,launch);stageBank.draw(c,s.options.stage,cam,false);
+    c.setTransform(.75,0,0,.75,0,0);c.imageSmoothingEnabled=false;portableMachineScene(c,t,false,launch);stageBank.draw(c,s.options.stage,cam,false,{time:(s.frame||0)/FPS,reducedMotion,preview:menu});
     c.save();c.translate(34,600);c.scale(.72,.72);
     const sx=rules.crateX;rect(c,sx-43,-64,86,64,'#8d9b81');rect(c,sx-47,-70,94,12,'#bdc4a0');rect(c,sx-4,-58,8,58,'#2c4d50');rect(c,sx-25,-48,50,27,'#3a5c57');label(c,String(rules.magazine).padStart(2,'0'),sx,-27,20,'#e1d9aa','center');label(c,'CAISSE / BAS + D',sx,-91,15,'#d9dec0','center');
     if(launch){for(let k=0;k<3;k++){c.save();c.translate(190+k*78,0);c.scale(.64,.64);const f={...actor('campbell_mpo',0),animKey:r.assist?'medium':'idle',animFrame:s.frame,attack:r.assist?{name:'medium',t:5}:null,facing:1};drawActor(c,f,t,s);outline(c,[[10,-174],[106,-174],[108,-161],[10,-161]],'#739082',3);c.restore();}if(r.assist)label(c,r.assist.t<60?'LES SOLDATS PRÉPARENT LEUR SALVE':'COUVERTURE / TIRS RÉELS',325,-249,17,'#e7d4a2','center');}
@@ -7248,7 +7325,7 @@ function createRenderer(canvas) {
       if(a){const desc=(launch?ICBMG_ATTACKS:RAXA_ATTACKS)[a.kind],hot=a.t>=a.windup&&a.t<a.windup+a.active;rect(c,268,123,744,40,'#122e35e8');label(c,(hot?'ACTIF / ':'ANNONCE / ')+desc.name,640,139,15,hot?'#f0c18c':'#e5d9b3','center');if(subtitles)label(c,desc.hint,640,157,11,'#c6d6c0','center');}
       rect(c,22,622,1236,91,'#102b32ed');label(c,launch?'D : M72 • B : SIGNAL SOLDATS • A : CHAFF • C : RATION • BAS + D : RECHARGER À LA CAISSE':'D : RPG RECTILIGNE • B : CIBLE • A : CHAFF • C : RATION • BAS + D : CAISSE',640,645,15,'#ece0b9','center');
       label(c,(r.feedbackFrames?r.feedback:launch?'LES TIRS ALLIÉS NE PEUVENT PAS GAGNER SEULS / LE M72 DOIT ATTEINDRE LA CIBLE':'VISEZ LES SOUTES PENDANT LEUR OUVERTURE / LA POSITION EST TESTÉE À L’IMPACT').slice(0,112),640,670,13,'#ccdac3','center');
-      label(c,`${r.shots} ROQUETTES • ${r.hits} IMPACTS • ${r.reloads} RAVITAILLEMENTS • ${r.damageTaken} DÉGÂTS REÇUS • DESSINS PROVISOIRES`,640,695,11,'#9eb8ad','center');
+      label(c,`${r.shots} ROQUETTES • ${r.hits} IMPACTS • ${r.reloads} RAVITAILLEMENTS • ${r.damageTaken} DÉGÂTS REÇUS`,640,695,11,'#9eb8ad','center');
       if(r.transition||r.collapse||s.phase==='round-end'||s.phase==='finished'){
         rect(c,201,224,878,203,'#102b35ec');const lost=(s.phase==='round-end'||s.phase==='finished')&&s.roundWinner!==0;
         label(c,lost?'OPÉRATION INTERROMPUE':r.transition?'RAXA / DÉCOLLAGE':launch?'TRAJECTOIRE DE L’ICBMG DÉVIÉE':'RAXA NEUTRALISÉ',640,274,29,'#f1dfab','center');
@@ -8120,8 +8197,8 @@ function createRenderer(canvas) {
   function portrait(target,id) {
     const c=target.getContext('2d');target.width=190;target.height=170;
     window.CQC_MACHINE_PARTS_BRIDGE?.cancelPortrait(target);
-    if(id==='rex'||id==='ray'||id==='mgd'||id==='tx55'){
-      const nativePortraitMatch=id==='rex'?createBossMatch():id==='ray'?createRayMatch():id==='mgd'?createMgdMatch():createTx55Match();
+    if(id==='rex'||id==='ray'||id==='mgd'||id==='tx55'||id==='icbmg'||id==='raxa'){
+      const nativePortraitMatch=id==='rex'?createBossMatch():id==='ray'?createRayMatch():id==='mgd'?createMgdMatch():id==='icbmg'?createIcbmgMatch():id==='tx55'?createTx55Match():createRaxaMatch();
       if(window.CQC_MACHINE_PARTS_BRIDGE?.drawPortrait(target,nativePortraitMatch,()=>portrait(target,id)))return;
     }
     c.clearRect(0,0,190,170);if(PW_AI_IDS.includes(id)){const s=createPwAiMatch({},id);s.boss.x=0;s.boss.y=0;c.save();c.translate(95,125);c.scale(.31,.31);pwAiArt(c,s,0);c.restore();return;}if(id==='sahelanthropus'){c.save();c.translate(-207,168);c.scale(.25,.25);sahelArt(c,createSahelMatch(),0);c.restore();return;}if(id==='raxa'){const s=createRaxaMatch();c.save();c.translate(-260,158);c.scale(.30,.30);raxaArt(c,s,0);c.restore();return;}if(id==='icbmg'){const s=createIcbmgMatch();c.save();c.translate(-176,169);c.scale(.24,.24);icbmgArt(c,s,0);c.restore();return;}if(id==='gander'){c.save();c.translate(-210,167);c.scale(.27,.27);ganderMachine(c,{boss:{phase:1,legs:{near:2400,far:2400},modules:{cannon:2400,missiles:2400,fire:2400},attack:null,defeated:false,transition:0}},0);c.restore();return;}if(id==='harrier'){c.save();c.translate(95,85);c.scale(.43,.43);harrierAircraft(c,{x:0,y:0,health:12000,defeated:false},0);c.restore();return;}if(id==='sorrow'){sorrowSilhouette(c,95,188,1.1,0,true);return;}if(id==='shagohod'){c.save();c.translate(-280,158);c.scale(.30,.30);shagohodMachine(c,{boss:{x:1190,phase:1,stall:0,engine:5600,signal:null}},0);c.restore();return;}if(id==='zeke'){c.save();c.translate(-332,166);c.scale(.34,.34);zekeMachine(c,{boss:{jet:1600,rail:2400,core:10000,attack:null,defeated:false}});c.restore();return;}if((ROSTER[id]?.expansion024||ROSTER[id]?.legacy021||ROSTER[id]?.expansion022||ROSTER[id]?.expansion023)){c.save();const kind=ROSTER[id].visual.kind;const quad=kind==='quadruped';c.translate(quad?80:86,quad?160:244);const sc=quad?.51:kind==='mech'?.7:.86;c.scale(sc,sc);fighter(c,{...actor(id,0),id,facing:1,x:0,y:0,input:{},invul:0,hitstun:0},0);c.restore();return;}if(id==='mgd'){c.save();c.translate(-245,165);c.scale(.30,.30);mgdMachine(c,{boss:{x:1120,legs:{near:4800,far:4800},attack:null,destroyed:false}},0);c.restore();return;}if(id==='tx55'){c.save();c.translate(-137,159);c.scale(.28,.28);tx55Machine(c,{defeated:false,progress:0},0);c.restore();return;}if(id==='ray'){c.save();c.translate(-302,164);c.scale(.28,.28);rayMachine(c,{boss:{id:'ray',unit:0,kneeLocks:{nearKnee:0,farKnee:0},stagger:0,transition:0,defeated:false,attack:null}},0);c.restore();return;}if(id==='rex'){c.save();c.translate(-251,162);c.scale(.29,.29);rexMachine(c,{phase:1,transition:0,attack:null},0);c.restore();return;}c.save();c.translate(id==='raven'?67:92,id==='volgin'?248:id==='raven'?246:240);const ps=id==='armstrong'?.76:id==='volgin'?.78:id==='raven'?.71:.88;c.scale(ps,ps);
@@ -8140,7 +8217,11 @@ for(const id of Object.keys(BOSS_DEFS))if(![...$('boss-select').options].some(o=
 }
 const renderer=createRenderer($('game'));
 function createMenuPreview(value){return createMatch({...value,mode:value.mode==='boss'?'boss':'local'});}
-let profile=readProfile(),selection={...profile.settings},match=createMenuPreview(selection);
+let profile=readProfile(),selection={...profile.settings};
+const requestedMenuMode=new URLSearchParams(location.search).get('mode');
+if(['chronicle','training'].includes(requestedMenuMode))selection.mode=requestedMenuMode;
+if(requestedMenuMode==='chronicle'&&Object.hasOwn(CHRONICLES,selection.chapter))selection.player=CHRONICLES[selection.chapter].player;
+let match=createMenuPreview(selection);
 let playing=false,debug=false,reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 reducedMotion=profile.presentation.reducedMotion??reducedMotion;
 let soundOn=false,accumulator=0,last=0,clock=0;
