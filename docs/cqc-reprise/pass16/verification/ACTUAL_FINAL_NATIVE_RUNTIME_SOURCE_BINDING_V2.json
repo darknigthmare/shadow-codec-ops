@@ -1,0 +1,127 @@
+{
+  "passed": true,
+  "allSelected53PNGsSourceToolRSByteEqual": true,
+  "selectedNativeBytes": 78586380,
+  "sourcePlans": [
+    {
+      "path": "/tmp/cqc-pass16-characters-a/candidate/NATIVE_ASSET_COPY_PLAN_V1.json",
+      "sha256": "13c1b46628e6f6956456f959786dd7c0c853e210728fbd6dd7dda3653ad48c2b"
+    },
+    {
+      "path": "/tmp/cqc-pass16-characters-b/candidate/NATIVE_ASSET_COPY_PLAN_V3.json",
+      "sha256": "6b0e020ed8db044117524c37b7146e0a9f1ba2441e8fc9ce64adac236991543c"
+    },
+    {
+      "path": "/tmp/cqc-pass16-machines-a/candidates/NATIVE_ASSET_COPY_PLAN_A_V2.json",
+      "sha256": "6ca78c44324b6ee0cc2c669bde9f714ee6a07efdb62e2e6775c955a88e3b3a62"
+    },
+    {
+      "path": "/tmp/cqc-pass16-machines-b/plans/NATIVE_COPY_PLAN_B_V2.json",
+      "sha256": "3d42a8cb6dbc59c98b0425a78fc5a1b1928d7db2d2fd47ba51f8d6c14ddaf803"
+    }
+  ],
+  "sourceNativeBindingsDigest": "2e9f16b2d2be08ede3e6408ab3e6782c04cbfd01dd154828aca796f86cfc777d",
+  "bindingDigestRecipe": "SHA256 UTF8 JSON.stringify of sorted-by-file objects {file,bytes,sha256,source,tool} reconstructed from four pinned plans; every source/tool/R/S array compared directly.",
+  "integratedCharacterEntries": 20,
+  "characterMetadataAllowedChangesOnly": [
+    "review.status",
+    "review.reviewer",
+    "review.reviewedAt"
+  ],
+  "integratedMachineEntries": 10,
+  "machineMetadataEqualsFinalAuditedCandidatesWithExactThreeFieldDerivative": true,
+  "machineDerivative": {
+    "path": "/tmp/cqc-pass16-cocoon-joint-correction/COCOON_JOINT_CORRECTION_CANDIDATE_V1.json",
+    "sha256": "9815ac96a46266d4d3068c394dfc629fa5b7cbafd721c9f02c2b7e364b67f62f",
+    "changes": [
+      {
+        "path": "/machines/3/parts/7/offset",
+        "old": [
+          0,
+          110
+        ],
+        "new": [
+          0,
+          94
+        ]
+      },
+      {
+        "path": "/machines/3/visualAimPoints/pod",
+        "old": [
+          -210,
+          350
+        ],
+        "new": [
+          -210,
+          334
+        ]
+      },
+      {
+        "path": "/machines/3/sourceQualification",
+        "old": "Original native sheet generation retained: original PSP observations plus qualified secondary Rebus2077 full-layout study. Subsequent complete official model pages98/99 verify main layout; AIpod restored atop forward mast by metadata only. Core engine still aims at historical adapted logical pod point(+55,250); Root may draw a connector to canonical visual pod(-210,350), without changing attack/health/timer rules. Closest 2D adaptation; no absolute1:1 certificate. Native source PNG pixels untouched.",
+        "new": "Original native sheet generation retained: original PSP observations plus qualified secondary Rebus2077 full-layout study. Subsequent complete official model pages98/99 verify main layout; AIpod restored atop forward mast by metadata only. Core engine still aims at historical adapted logical pod point(+55,250); Root may draw a connector to canonical visual pod(-210,334), without changing attack/health/timer rules. Closest 2D adaptation; no absolute1:1 certificate. Native source PNG pixels untouched."
+      }
+    ]
+  },
+  "cataloguePins": [
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/src/cqc-pass16-sprite-catalog.js",
+      "sha256": "7c27131f7767019d7727bbec78280401a49545e81aa19cc5928ed126b51ff934"
+    },
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/src/cqc-pass16-machine-catalog.js",
+      "sha256": "2305a5fc041a40d3937081bc7921e5e121f3e9d9d3cef523e65beac94bd2d3ff"
+    },
+    {
+      "path": "/tmp/cqc-pass16-characters-a/candidate/COMPACT_NATIVE_CHARACTER_CATALOG_CANDIDATE_V1.json",
+      "sha256": "f919ce920924201e91ec7c55244ca2da7b048e061a30540ca945474e519f5215"
+    },
+    {
+      "path": "/tmp/cqc-pass16-characters-b/candidate/CHARACTERS_B_CATALOG_CANDIDATE_V3.json",
+      "sha256": "56197b71cac1b92e7385fd49f76a9bb8a57d42940d4c6e3743a230f0f38362d3"
+    },
+    {
+      "path": "/tmp/cqc-pass16-machines-a/candidates/NATIVE_MACHINE_CATALOG_A_V6.json",
+      "sha256": "fe490edea1cda1bd5b07aa8f6065b73bbdc75f0f77d9e90a6b84d02e6a0e2c85"
+    },
+    {
+      "path": "/tmp/cqc-pass16-machines-b/plans/NATIVE_MACHINE_CATALOG_B_CANDIDATE_V6.json",
+      "sha256": "d937e2519bb59c2a610765a7566094ade253d9a2435b9d5de8eb65a03e7da617"
+    }
+  ],
+  "actualImplementationPins": [
+    {
+      "runtime": "src/cqc-machine-parts-renderer-v1.js",
+      "candidate": "/workspace/cqc-pass16-integration/candidate/cqc-machine-parts-renderer-v1.js",
+      "sha256": "f9c554acd7e5b2b10ea89dfa0257c99e91c1a856d51efc1265fe3f07ca4f0a9a",
+      "independentLogicalProof": {
+        "path": "/tmp/cqc-pass16-independent-audit/ACTUAL_MACHINE_RENDERER_EXTENSION_CONTRACTS_V1.json",
+        "sha256": "30bd3802fa64e57673aa584647e85fd4790b1541bc0eee31651bf3bb2b669464"
+      }
+    },
+    {
+      "runtime": "src/cqc-pass16-acid-native.js",
+      "candidate": "/workspace/cqc-pass16-integration/candidate/cqc-pass16-acid-native.js",
+      "sha256": "7f08296ed68f736ca499c39a7d8be9f3ea058226620ceb9c292d9d612fd7b407",
+      "independentLogicalProof": {
+        "path": "/tmp/cqc-pass16-independent-audit/ACTUAL_ACID_DEFERRED_LOGIC_CONTRACTS_V1.json",
+        "sha256": "03d3980012a6f6b57ae36e1929320a16dd1176fcdb568e1e0e5fe79cc8a527d0"
+      }
+    },
+    {
+      "runtime": "src/cqc-pass16-core-sprites.js",
+      "candidate": "/tmp/cqc-pass16-core-sprite-candidate/candidate/cqc-pass16-core-sprites.js",
+      "sha256": "f6013e038a3834716b752b494b10efa3221817199ce9fa5a8ceb6652ec2d961c",
+      "independentLogicalProof": {
+        "path": "/tmp/cqc-pass16-independent-audit/ACTUAL_CORE_NATIVE_LOGIC_AND_HOOKS_V1.json",
+        "sha256": "faf31bd82ca7546501e4ce5d492edf662d5208265a210075d305f1772a4f27cb"
+      }
+    }
+  ],
+  "noNativePixelWritesByAudit": true,
+  "limits": [
+    "Read-only direct byte and actual metadata equality; no image decode/render/gameplay readiness certification.",
+    "Approved character review bookkeeping was changed by authorized Root, with all pose/action/sourceFrameHeight/clip/pivot/source bytes unchanged.",
+    "Three candidate implementations bound to actual final runtime; independent contracts remain logical/hypothetical and Root actual browser QA is separately required."
+  ]
+}

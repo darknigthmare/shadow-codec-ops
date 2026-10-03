@@ -85,6 +85,16 @@
           if (part.detachment.duration <= 0 || part.detachment.duration > 600 || part.detachment.gravity < 0 || part.detachment.fade <= 0 || part.detachment.fade > part.detachment.duration) fail(partID + ' invalid detachment limits');
           if (part.parent && !part.detachment.anchor) fail(partID + ' needs root anchor when detached from parent');
         }
+        if (raw.sourceClipPolygonNativeXY !== undefined) {
+          const polygon=raw.sourceClipPolygonNativeXY;
+          if (!part.rect || part.variants.length || !Array.isArray(polygon) || polygon.length<3 || polygon.length>64) fail(partID+' invalid native source clipping');
+          const [rx,ry,rw,rh]=part.rect;
+          part.sourceClipPolygonNativeXY=polygon.map(point=>{
+            const p=pair(point,partID+' native source clip');
+            if(p[0]<rx || p[1]<ry || p[0]>rx+rw || p[1]>ry+rh) fail(partID+' native source clipping leaves rectangle');
+            return p;
+          });
+        }
         parts.push(part); byID.set(partID, part);
       }
       const order = [], visited = new Set(), visiting = new Set();
@@ -141,6 +151,8 @@
   }
   function corePose(state, options = {}) {
     const r=state?.boss;
+    if(r && !['rex','ray','mgd','tx55','icbmg','raxa'].includes(r.id))
+      return globalThis.CQC_PASS16_MACHINE_POSE?.corePose(state,options) || null;
     if (!r || !['rex','ray','mgd','tx55','icbmg','raxa'].includes(r.id)) return null;
     const frame=finite(state.frame) ? state.frame : finite(state.tick) ? state.tick : 0, a=r.attack;
     if (r.id==='rex') {
@@ -317,7 +329,18 @@
         const p=transforms.get(part.id); if (!p.visible || p.opacity<=0) continue;
         const image=entry.images.get(p.source), r=p.rect || [0,0,image.width || image.naturalWidth,image.height || image.naturalHeight];
         context.save();
-        try { context.transform(...p.matrix); context.globalAlpha*=p.opacity; context.drawImage(image,...r,-p.pivot[0]*p.imageScale,-p.pivot[1]*p.imageScale,r[2]*p.imageScale,r[3]*p.imageScale); }
+        try {
+          context.transform(...p.matrix); context.globalAlpha*=p.opacity;
+          if(part.sourceClipPolygonNativeXY){
+            context.beginPath();
+            part.sourceClipPolygonNativeXY.forEach((point,index)=>{
+              const x=(point[0]-r[0]-p.pivot[0])*p.imageScale,y=(point[1]-r[1]-p.pivot[1])*p.imageScale;
+              if(index)context.lineTo(x,y);else context.moveTo(x,y);
+            });
+            context.closePath();context.clip();
+          }
+          context.drawImage(image,...r,-p.pivot[0]*p.imageScale,-p.pivot[1]*p.imageScale,r[2]*p.imageScale,r[3]*p.imageScale);
+        }
         finally { context.restore(); }
       }
       return true;

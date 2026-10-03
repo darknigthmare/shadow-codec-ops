@@ -6,8 +6,8 @@
   if(root?.document)root.CQC_MACHINE_PARTS_BRIDGE=api.createBridge();
 })(typeof globalThis!=='undefined'?globalThis:this,function(root){
   'use strict';
-  const IDS=Object.freeze({rex:'rex_mgs1_ps1',ray:'ray_mgs2_arsenal',mgd:'mgd_mg2_msx2',tx55:'tx55_mg1_msx1987',icbmg:'icbmg_mpo_psp2006',raxa:'raxa_mpo_psp2006'});
-  const HERO=Object.freeze({rex:'solid',ray:'raiden_mgs2',mgd:'snake_mg2',tx55:'snake_mg1',icbmg:'snake_mpo',raxa:'snake_mpo'});
+  const IDS=Object.freeze({rex:'rex_mgs1_ps1',ray:'ray_mgs2_arsenal',mgd:'mgd_mg2_msx2',tx55:'tx55_mg1_msx1987',icbmg:'icbmg_mpo_psp2006',raxa:'raxa_mpo_psp2006',gander:'gander_ghost_gbc2000',zeke:'zeke_pw_psp2010',shagohod:'shagohod_mgs3_ps2_2004',sahelanthropus:'sahelanthropus_mgsv2015',pupa:'pupa_pw_psp2010',chrysalis:'chrysalis_pw_psp2010',cocoon:'cocoon_pw_psp2010',peace_walker:'peacewalker_pw_psp2010'});
+  const HERO=Object.freeze({rex:'solid',ray:'raiden_mgs2',mgd:'snake_mg2',tx55:'snake_mg1',icbmg:'snake_mpo',raxa:'snake_mpo',gander:'snake_gb',zeke:'snake_pw',shagohod:'snake',sahelanthropus:'venom',pupa:'snake_pw',chrysalis:'snake_pw',cocoon:'snake_pw',peace_walker:'snake_pw'});
   const clone=(value)=>JSON.parse(JSON.stringify(value));
   function resolveEncounter(options){
     if(!options||!['boss','chronicle'].includes(options.mode)||options.objective||options.relay)return null;
@@ -108,7 +108,7 @@
         const x=portrait?0:970,y=portrait?0:-410,w=portrait?ctx.canvas.width:530,h=portrait?ctx.canvas.height:370;
         ctx.fillStyle='#0b202bd9';ctx.fillRect(x,y,w,h);ctx.strokeStyle='#6f8b80';ctx.lineWidth=portrait?1:2;ctx.strokeRect(x+2,y+2,w-4,h-4);
         ctx.fillStyle='#d1dfca';ctx.font=(portrait?'10':'16')+'px system-ui,sans-serif';ctx.textAlign='center';
-        const failed=status.state==='error'||status.attemptState==='error';ctx.fillText(failed?'PIÈCES NON CHARGÉES':'CHARGEMENT DES PIÈCES…',x+w/2,y+h/2);ctx.fillText(id==='rex'?'METAL GEAR REX':id==='ray'?'METAL GEAR RAY':id==='tx55'?'METAL GEAR TX-55':id==='icbmg'?'ICBMG':id==='raxa'?'METAL GEAR RAXA':'METAL GEAR D',x+w/2,y+h/2+(portrait?18:27));
+        const failed=status.state==='error'||status.attemptState==='error';ctx.fillText(failed?'PIÈCES NON CHARGÉES':'CHARGEMENT DES PIÈCES…',x+w/2,y+h/2);ctx.fillText(({rex:'METAL GEAR REX',ray:'METAL GEAR RAY',tx55:'METAL GEAR TX-55',icbmg:'ICBMG',raxa:'METAL GEAR RAXA',mgd:'METAL GEAR D',gander:'GANDER',zeke:'ZEKE',shagohod:'SHAGOHOD',sahelanthropus:'SAHELANTHROPUS',pupa:'PUPA',chrysalis:'CHRYSALIS',cocoon:'COCOON',peace_walker:'PEACE WALKER'})[id]||'DOSSIER MACHINE',x+w/2,y+h/2+(portrait?18:27));
       }finally{ctx.restore();}
     }
     function drawNative(ctx,state,options={}){

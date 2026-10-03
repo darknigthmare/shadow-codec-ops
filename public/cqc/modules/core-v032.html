@@ -133,7 +133,7 @@ body{background:#030508!important;overflow:hidden}.toolbar,.footer{display:none!
 <section id="menu" class="menu" aria-label="Menu principal et sélection">
 <div class="menu-head"><div><div class="eyebrow">TACTICAL FIGHTING / LEGACY PROJECT</div><h1>CQC <span>VERSUS</span></h1><p class="subline">UN JEU. TOUTES LES ÉPOQUES.</p></div><div class="meta-menu"><button id="open-library">ARCHIVES</button><button id="open-profile">PROFIL</button><button id="open-workshop">ATELIER ÉPOQUES</button><button id="open-media">SPRITES</button><button id="open-stage-packs">DÉCORS</button><button id="open-cards">CARTES / DECKS</button><button id="open-movebook">TECHNIQUES</button><button id="watch-replay" disabled>DERNIER REPLAY</button><button id="load-replay">IMPORT REPLAY</button><input type="file" id="replay-file" accept=".json,application/json" hidden></div></div>
 <div class="mode-row" role="group" aria-label="Mode de jeu"><button data-mode="cpu" aria-pressed="true">DUEL / IA</button><button data-mode="arcade" aria-pressed="false">ARCADE</button><button data-mode="chronicle" aria-pressed="false">CHRONIQUES</button><button data-mode="survival" aria-pressed="false">SURVIVAL</button><button data-mode="local" aria-pressed="false">VERSUS LOCAL</button><button data-mode="boss" aria-pressed="false">BOSS / ÉPREUVES</button><button data-mode="training" aria-pressed="false">ENTRAÎNEMENT</button><button id="open-relay">ÉQUIPES / RELAIS</button><button id="open-tournament">TOURNOI LOCAL</button></div>
-<div class="setup"><section><div class="roster-heading"><span>01 / COMBATTANT</span><span id="roster-count"></span></div><label class="roster-filter">FILTRER <select id="roster-filter"><option value="all">TOUTES LES ÉPOQUES</option><option value="expansion024">RAT PATROL 0.24 / 2</option><option value="expansion023">NOUVEAUX 0.23 / 4</option><option value="revenge">SNAKE’S REVENGE / NES</option><option value="expansion022">NOUVEAUX 0.22 / 8</option><option value="pw">PEACE WALKER</option><option value="acid2">AC!D 2</option><option value="legacy021">RENFORTS 0.21 / 26</option><option value="mgs1">MGS1</option><option value="mgs3">MGS3</option><option value="mgs2">MGS2</option><option value="mgs4">MGS4</option><option value="mgsv">MGSV</option><option value="mgr">REVENGEANCE</option><option value="msx">METAL GEAR / MSX</option><option value="mg2">METAL GEAR 2 / MSX</option><option value="mpo">PORTABLE OPS</option><option value="ghost">GHOST BABEL</option><option value="acid">METAL GEAR AC!D</option></select></label><div id="roster" class="roster" role="group" aria-label="Combattants jouables"></div></section><section class="detail"><div class="trait" id="fighter-era"></div><h2 id="fighter-name"></h2><div class="trait" id="fighter-trait"></div><p id="fighter-tip"></p><div class="settings-grid"><label id="boss-label" class="wide" hidden>RENCONTRE DÉDIÉE<select id="boss-select"><option value="gander">GHOST BABEL / GANDER — DÉMANTÈLEMENT</option><option value="harrier">MGS2 / HARRIER — DEUX PONTS</option><option value="sorrow">MGS3 / THE SORROW — ÉPREUVE</option><option value="tx55">MG1 / SABOTAGE TX-55</option><option value="rex">MGS1 / METAL GEAR REX</option><option value="ray">MGS2 / ESCADRON RAY</option><option value="mgd">MG2 / METAL GEAR D</option><option value="shagohod">MGS3 / SHAGOHOD</option><option value="zeke">PW / BANC D’ESSAI ZEKE</option></select></label><button id="boss-guide-menu" class="wide" hidden>GUIDE DE LA RENCONTRE</button><label id="opponent-label">02 / ADVERSAIRE<select id="opponent"></select></label><label id="difficulty-label">NIVEAU IA<select id="difficulty"><option value="easy">Accessible</option><option value="normal">Normal</option><option value="hard">Exigeant</option></select></label><label class="wide" id="chapter-label" hidden>DOSSIER<select id="chapter"></select></label><label class="wide" id="stage-label">ARÈNE<select id="stage-select"></select></label><label class="wide">PRÉSENTATION<select id="hud-select"><option value="auto">AUTO / ÉPOQUE DE L’ARÈNE</option><option value="hybrid">HYBRIDE / ÉPOQUE DE CHAQUE COMBATTANT</option></select></label></div></section></div>
+<div class="setup"><section><div class="roster-heading"><span>01 / COMBATTANT</span><span id="roster-count"></span></div><label class="roster-filter roster-filter-pass16">DOSSIER <select id="roster-filter"><option value="all">TOUS LES DOSSIERS</option><option value="mgs3">OPÉRATION SNAKE EATER</option><option value="mpo">SAN HIERONYMO</option><option value="pw">PEACE WALKER</option><option value="mgsv">THE PHANTOM PAIN</option><option value="msx">OUTER HEAVEN</option><option value="mg2">ZANZIBAR LAND</option><option value="mgs1">SHADOW MOSES</option><option value="mgs2">BIG SHELL</option><option value="mgs4">GUNS OF THE PATRIOTS</option><option value="mgr">REVENGEANCE</option><option value="ghost">GALUADE / GHOST BABEL</option><option value="acid">DOSSIER AC!D</option><option value="acid2">SAINTLOGIC / AC!D 2</option><option value="revenge">OPÉRATION 747</option><option hidden value="expansion024">DOSSIERS TRANSVERSAUX</option><option hidden value="expansion023">DOSSIERS TRANSVERSAUX</option><option hidden value="expansion022">DOSSIERS TRANSVERSAUX</option><option hidden value="legacy021">DOSSIERS TRANSVERSAUX</option></select></label><div id="roster" class="roster" role="group" aria-label="Combattants jouables"></div></section><section class="detail"><div class="trait" id="fighter-era"></div><h2 id="fighter-name"></h2><div class="trait" id="fighter-trait"></div><p id="fighter-tip"></p><div class="settings-grid"><label id="boss-label" class="wide" hidden>RENCONTRE DÉDIÉE<select id="boss-select"><option value="gander">GHOST BABEL / GANDER — DÉMANTÈLEMENT</option><option value="harrier">MGS2 / HARRIER — DEUX PONTS</option><option value="sorrow">MGS3 / THE SORROW — ÉPREUVE</option><option value="tx55">MG1 / SABOTAGE TX-55</option><option value="rex">MGS1 / METAL GEAR REX</option><option value="ray">MGS2 / ESCADRON RAY</option><option value="mgd">MG2 / METAL GEAR D</option><option value="shagohod">MGS3 / SHAGOHOD</option><option value="zeke">PW / BANC D’ESSAI ZEKE</option></select></label><button id="boss-guide-menu" class="wide" hidden>GUIDE DE LA RENCONTRE</button><label id="opponent-label">02 / ADVERSAIRE<select id="opponent"></select></label><label id="difficulty-label">NIVEAU IA<select id="difficulty"><option value="easy">Accessible</option><option value="normal">Normal</option><option value="hard">Exigeant</option></select></label><label class="wide" id="chapter-label" hidden>DOSSIER<select id="chapter"></select></label><label class="wide" id="stage-label">ARÈNE<select id="stage-select"></select></label><label class="wide">PRÉSENTATION<select id="hud-select"><option value="auto">AUTO / ÉPOQUE DE L’ARÈNE</option><option value="hybrid">HYBRIDE / ÉPOQUE DE CHAQUE COMBATTANT</option></select></label></div></section></div>
 <div class="launch"><div class="launch-info"><strong id="stage-title"></strong><span id="mode-detail"></span><br><span id="stage-episode"></span></div><button id="resume-run" hidden>REPRENDRE LE PARCOURS</button><button id="resume-competition" hidden>REPRENDRE LA COMPÉTITION</button><button class="primary" id="start">COMBATTRE →</button></div><div class="build-note">BUILD 0.32 / <span id="build-fighter-count"></span> COMBATTANTS + 15 RENCONTRES MÉCANIQUES + ÉPREUVE THE SORROW • DESSINS ET HUD PROVISOIRES • MATCHS CROISÉS = SIMULATIONS NON CANONIQUES</div>
 </section>
 <section id="brief-panel" class="overlay" hidden><div class="panel brief-panel"><div id="brief-tag">TRANSMISSION</div><h2 id="brief-title"></h2><div class="brief-vs"><canvas id="brief-left"></canvas><span>VS</span><canvas id="brief-right"></canvas></div><p id="brief-text"></p><p class="version-notice">Texte original de cette adaptation. Ce briefing n’est pas une citation des jeux.</p><div class="panel-actions"><button id="brief-back">MENU / CONSERVER LE PARCOURS</button><button id="brief-start" class="primary">ENTRER DANS L’ARÈNE</button></div></div></section>
@@ -201,7 +201,17 @@ body{background:#030508!important;overflow:hidden}.toolbar,.footer{display:none!
 <script src="../src/cqc-pass12-stage-bridge.js"></script>
 <script src="../src/cqc-machine-parts-renderer-v1.js"></script>
 <script src="../src/cqc-machine-parts-catalog-v1.js"></script>
+<script src="../src/cqc-pass16-machine-catalog.js"></script>
+<script src="../src/cqc-pass16-machine-pose-a.js"></script>
+<script src="../src/cqc-pass16-machine-pose-b.js"></script>
+<script src="../src/cqc-pass16-machine-pose.js"></script>
 <script src="../src/cqc-machine-parts-bridge-v1.js"></script>
+<script src="../src/cqc-pass16-acid-native.js"></script>
+<script src="../src/cqc-pass16-sprite-catalog.js"></script>
+<script src="../src/cqc-sprite-renderer.js"></script>
+<script src="../src/cqc-pass16-core-sprites.js"></script>
+<script src="../src/cqc-pass16-selection-dossiers.js"></script>
+<link rel="stylesheet" href="../src/cqc-pass16-selection-dossiers.css">
 <script>
 (()=>{
 'use strict';
@@ -6215,8 +6225,19 @@ function createRenderer(canvas) {
     rect(c,0,578,1280,142,jungle?'#617361':k==='legacyQuarry'?'#837967':'#4a585d');rect(c,0,578,1280,4,'#acb7ac');for(let y=603;y<720;y+=28)rect(c,0,y,1280,2,'#708080');for(let x=-160;x<1450;x+=171)poly(c,[[x-d,578],[x+62-d,720],[x+65-d,720],[x+3-d,578]],'#27383d');return true;
   }
 
+  function pass16CunninghamAccessory(c,f,t,layer){
+    if(f.id!=='cunningham')return;
+    const q=ROSTER[f.id];
+    const base=q.color,dark='#202c32',shade='#35424a',light='#c0c9c4';
+    c.save();c.scale(f.facing,1);if(f.health<=0||f.vigilance<=0){c.translate(0,-12);c.rotate(-1.42);}
+    if(layer==='under'){outline(c,[[-76,-6],[-55,-29],[64,-29],[85,-3],[55,16],[-52,16]],shade,4);rect(c,-62,-18,128,7,base);for(const x of [-47,47]){rect(c,x-14,6,29,12,light);poly(c,[[x-11,18],[x+10,18],[x,33+Math.sin(t*18)*7]],'#8bcfe1');}}
+    c.restore();
+  }
+  function pass16SpriteHooks(){return {getMove,manualImported:id=>artBank.status().some(row=>row.id===id),accessory:pass16CunninghamAccessory,portraitAccessory:(c,id,layer)=>pass16CunninghamAccessory(c,{...actor(id,0),id,facing:1},0,layer)};}
+
   function fighter(c,f,t) {
     if(artBank.draw(c,f,t))return;
+    if(window.CQC_PASS16_CORE_SPRITES?.drawFighter(c,f,t,{},pass16SpriteHooks()))return;
     if(ROSTER[f.id]?.expansion024||ROSTER[f.id]?.legacy021||ROSTER[f.id]?.expansion022||ROSTER[f.id]?.expansion023){legacyFighter(c,f,t);return;}
     if(ROSTER[f.id]?.cardDeck){acidFighter(c,f,t);return;}
     if(['snake_mg1','shotmaker','machinegun_kid','firetrooper','dirtyduck','bigboss_mg1'].includes(f.id)){outerFighter(c,f,t);return;}
@@ -6927,6 +6948,15 @@ function createRenderer(canvas) {
     rect(c,0,554,1280,44,k==='srTrain'?'#576a63':'#6f7b6a');rect(c,0,562,1280,3,'#c1bb93');for(let x=-d%98;x<1300;x+=98)rect(c,x,578,57,3,'#bdad79');rect(c,0,599,1280,121,'#203b3c');return true;
   }
   function shagohodMachine(c,s,t=0){
+    if(window.CQC_MACHINE_PARTS_BRIDGE?.drawNative(c,s,{...nativeRenderOptions,expectedBoss:'shagohod'})){
+      const r=s.boss;c.save();c.translate(r.x,0);if(r.defeated){c.translate(0,65);c.rotate(-.04);}
+      if(r.phase===2){outline(c,[[-50,-218],[-54,-265],[-26,-298],[14,-296],[34,-245],[25,-215]],'#755748',3);rect(c,-27,-322,29,27,'#d5ba87');rect(c,-26,-325,28,9,'#88795b');poly(c,[[-42,-273],[-96,-253],[-112,-280],[-95,-295],[-40,-292]],'#a78a59');
+        if(!shgExposed(s)&&!r.defeated){c.strokeStyle='#bfd7dc';c.lineWidth=3;for(let j=0;j<3;j++){c.beginPath();c.moveTo(-64+j*36,-335);c.lineTo(-77+j*35,-294);c.lineTo(-53+j*37,-269);c.lineTo(-81+j*44,-228);c.stroke();}}
+      }
+      if(r.stall){label(c,'FOREUSE BLOQUÉE',-140,-10,13,'#f6d69b','center');}
+      if(r.engine===0){for(let j=0;j<4;j++){poly(c,[[148+j*28,-193],[132+j*29,-240-(j%2)*34],[160+j*27,-219],[170+j*28,-192]],'#b7957188');}}
+      c.restore();return;
+    }
     const r=s.boss,x=r.x;c.save();c.translate(x,0);if(r.defeated){c.translate(0,65);c.rotate(-.04);}
     // Screw-propelled forebody + bulky rear vehicle: no copied biped silhouette.
     c.globalAlpha=r.phase===1?1:.42;outline(c,[[40,-200],[211,-214],[296,-144],[291,-53],[71,-55]],'#677563',5);poly(c,[[67,-193],[209,-200],[270,-145],[128,-127]],'#abb197');rect(c,123,-154,135,48,'#354d47');for(let j=0;j<7;j++)rect(c,130+j*17,-145,8,31,'#a5ab89');outline(c,[[105,-61],[291,-62],[315,-27],[312,-5],[105,-5]],'#344a44',4);c.globalAlpha=1;
@@ -7070,6 +7100,15 @@ function createRenderer(canvas) {
     c.save();c.globalAlpha=.1;for(let x=0;x<1280;x+=144)poly(c,[[x,0],[x+78,0],[x+285,594],[x+160,594]],'#f1eccb');c.restore();
   }
   function pwAiArt(c,s,t=0){const r=s.boss,air=r.id==='chrysalis',heavy=r.id==='cocoon',walker=r.id==='peace_walker',dead=r.defeated;
+    if(window.CQC_MACHINE_PARTS_BRIDGE?.drawNative(c,s,{...nativeRenderOptions,expectedBoss:r.id})){
+      c.save();c.translate(r.x,-r.y);if(dead)c.rotate(.025);
+      if(heavy&&r.radar<=0)poly(c,[[-245,-266],[-205,-235],[-171,-270],[-142,-240]],'#b07a5f');
+      if(walker&&r.radar<=0)for(const x of [-102,82])poly(c,[[x,-112],[x+28,-75],[x+5,-45],[x-18,-80]],'#b0795e');
+      if(!air&&!heavy&&!walker&&r.attack?.kind==='rush'&&r.attack.t>=r.attack.windup&&r.attack.t<r.attack.windup+r.attack.active)poly(c,[[201,-94],[290,-68],[270,-113],[370,-85],[251,-141]],'#e5b86d');
+      if(air&&r.radar<=0){c.save();c.translate(-204,-48);c.rotate(-.25);poly(c,[[-33,8],[-23,-7],[-9,3],[8,-14],[25,8]],'#b59370');c.restore();}
+      if(dead){for(let j=0;j<8;j++){const x=-150+j*43,y=-155-j%3*42;c.fillStyle='#53635177';c.beginPath();c.ellipse(x+Math.sin(t+j)*10,y-22,25,34,0,0,Math.PI*2);c.fill();}}
+      c.restore();return;
+    }
     c.save();c.translate(r.x,-r.y);if(dead)c.rotate(.025);
     const dark='#223c38',base=air?'#455f5b':heavy?'#4f574f':walker?'#57685b':'#566154',light=air?'#799289':heavy?'#777b68':walker?'#88977e':'#8c9476',edge='#b2b38b';
     if(heavy){
@@ -7123,6 +7162,7 @@ function createRenderer(canvas) {
       if(a.kind==='launch'){rect(c,390,-530,500,58,'#5a2222e8');label(c,'SÉQUENCE DE LANCEMENT / TOUCHEZ LE POD',640,-500,19,'#ffd8ad','center');}
     }
     pwAiArt(c,s,t);
+    if(r.id==='cocoon'&&r.phase==='battle'&&r.aimMode==='pod'&&!menu&&window.CQC_MACHINE_PARTS_BRIDGE?.ready?.('cocoon')===true){const aim=pwAiTarget(s);c.save();c.strokeStyle='#ffda9680';c.fillStyle='#ffda96';c.lineWidth=1;c.setLineDash([4,5]);c.beginPath();c.moveTo(r.x-210,-r.y-334);c.lineTo(aim.x,-aim.y);c.stroke();c.setLineDash([]);c.beginPath();c.arc(r.x-210,-r.y-334,4,0,Math.PI*2);c.fill();c.restore();}
     // Physical auxiliary threats use their exact simulation centers and activation clocks.
     for(const h of r.hazards){c.save();c.translate(h.x,-h.y);
       if(h.kind==='rod'){rect(c,-9,-15,18,90,'#6a7967');rect(c,-24,-21,48,13,'#d4c185');rect(c,-4,-56,8,38,'#ebd89e');const age=h.age-60,hot=age>=0&&age%90<18;c.strokeStyle=hot?'#f8f1ad':'#d0bb7b77';c.lineWidth=hot?5:2;c.setLineDash(hot?[]:[6,8]);c.strokeRect(-78,-70,156,145);c.setLineDash([]);if(hot){for(let dir of [-1,1]){c.beginPath();c.moveTo(0,10);for(let k=1;k<7;k++)c.lineTo(dir*k*12,Math.sin(k*4+t*30)*24);c.stroke();}}label(c,h.hp+' / '+(h.age<60?'ARMEMENT':'IMPULSIONS'),0,-80,13,'#f3e0a0','center');}
@@ -7141,7 +7181,7 @@ function createRenderer(canvas) {
     if(!menu){rect(c,18,18,1244,86,'#112b24f0');rect(c,567,14,146,92,'#203e2c');label(c,'SNAKE / MSF',38,44,18,'#ede6c8');label(c,r.id.toUpperCase()+' / ARME IA',1243,44,19,'#ede6c8','right');rect(c,36,58,498,22,'#3c5141');rect(c,36,58,498*p.health/10000,22,'#ced5a9');rect(c,744,58,499,22,'#3c5141');rect(c,744,58,499*r.health/PW_AI_RULES[r.id].health,22,'#d1bd82');
       label(c,String(Math.ceil((r.phase==='recovery'?r.recoveryLeft:s.timer)/60)).padStart(3,'0'),640,58,33,'#fff1bf','center');label(c,r.phase==='recovery'?'BONUS IA':'COMBAT',640,84,12,'#d2d9b2','center');label(c,`${p.resource}/6 ROQUETTES • RATIONS ${r.rations}/2`,37,126,16,'#1c3528');label(c,air?`RADOME ${r.radar}/1600 • ESQUIVES ${r.dodges}`:heavy?`CANON ${r.radar}/2400 • POD +1 000 / COQUE +500`:walker?`ACTIONNEURS ${r.radar}/2400 • LANCEMENTS STOPPÉS ${r.launchesStopped}`:'POD +1 000 / CARROSSERIE +500',1240,126,16,'#1c3528','right');
       if(a){rect(c,235,141,810,48,'#193d30ed');const active=a.t>=a.windup&&a.t<a.windup+a.active;label(c,(a.t<a.windup?'ANNONCE / ':active?'ACTIF / ':'RÉCUPÉRATION / ')+PW_AI_ATTACKS[a.kind].name,640,161,17,'#f1d8a1','center');if(subtitles)label(c,PW_AI_ATTACKS[a.kind].hint,640,179,12,'#e2e3bb','center');}
-      rect(c,18,627,1244,85,'#112a23f0');label(c,r.phase==='done'?'RAPPORT CONSERVÉ DANS LE PROFIL / AUCUN BONUS DE COMBAT CACHÉ':r.phase==='recovery'?'RÉCUPÉRATION FACULTATIVE / B : POD ET SÉLECTION • GARDE : EXTRAIRE • A : QUITTER':'D : ROQUETTE • B : CIBLE • A : FUSIL ANTI-MENACES • BAS + D : CAISSE • C : RATION',640,650,15,'#f0e3bf','center');label(c,(r.feedbackFrames&&r.phase!=='done'?r.feedback:`${r.hits} IMPACTS • ${r.intercepts} MENACES NEUTRALISÉES • ${r.reloads} RECHARGES`).slice(0,119),640,675,14,'#cfdab8','center');label(c,`${r.id.toUpperCase()} / ADAPTATION 2D • DESSINS PROVISOIRES • MÉMOIRE SANS BONUS CACHÉ`,640,699,11,'#9db599','center');
+      rect(c,18,627,1244,85,'#112a23f0');label(c,r.phase==='done'?'RAPPORT CONSERVÉ DANS LE PROFIL / AUCUN BONUS DE COMBAT CACHÉ':r.phase==='recovery'?'RÉCUPÉRATION FACULTATIVE / B : POD ET SÉLECTION • GARDE : EXTRAIRE • A : QUITTER':'D : ROQUETTE • B : CIBLE • A : FUSIL ANTI-MENACES • BAS + D : CAISSE • C : RATION',640,650,15,'#f0e3bf','center');label(c,(r.feedbackFrames&&r.phase!=='done'?r.feedback:`${r.hits} IMPACTS • ${r.intercepts} MENACES NEUTRALISÉES • ${r.reloads} RECHARGES`).slice(0,119),640,675,14,'#cfdab8','center');label(c,`${r.id.toUpperCase()} / ADAPTATION 2D • MÉMOIRE SANS BONUS CACHÉ`,640,699,11,'#9db599','center');
       if(r.inPod&&r.phase==='recovery'){rect(c,232,191,816,414,'#122e29f7');label(c,'STOCKAGE IA / EXTRACTION',640,222,22,'#f4db9a','center');label(c,`${r.boardsTaken} RÉCUPÉRÉES / ${r.boardsAvailable} DISPONIBLES / ${r.boardsDamaged} CORROMPUES`,640,248,13,'#bbd1b0','center');
         for(const b of r.boards){const x=266+b.id%4*191,y=273+Math.floor(b.id/4)*90,selected=b.id===r.boardIndex;c.strokeStyle=selected?'#f6d18b':'#627c6a';c.lineWidth=selected?4:1;c.strokeRect(x,y,171,75);rect(c,x+5,y+5,161,65,b.state==='damaged'?'#483a34':b.state==='taken'?'#294c39':'#476650');label(c,b.type,x+85,y+26,13,b.state==='damaged'?'#c19882':'#e2ddab','center');label(c,b.state==='available'?'DISPONIBLE':b.state==='taken'?'EXTRAITE':'CORROMPUE',x+85,y+52,12,'#ded8ae','center');if(selected&&r.extractFrames)rect(c,x+6,y+64,159*r.extractFrames/24,6,'#efc76f');}
         label(c,'Maintenez GARDE • B sélectionne • Relâcher interrompt la prise',640,571,14,'#d2d9b5','center');}
@@ -7166,6 +7206,16 @@ function createRenderer(canvas) {
     for(let j=0;j<10;j++){const x=((time*4+j*177)%1490)-100;rect(c,x,315+j*21,130+(j%3)*41,1,'#dfc4951c');}
   }
   function sahelArt(c,s,t=0){
+    if(window.CQC_MACHINE_PARTS_BRIDGE?.drawNative(c,s,{...nativeRenderOptions,expectedBoss:'sahelanthropus'})){
+      const r=s.boss,drop=r.defeated?(145-r.collapse)*.72:0,red=r.phase===2;
+      c.save();c.translate(r.x,-r.y+drop);if(r.defeated)c.rotate((145-r.collapse)*-.0014);
+      for(const [key,x,y]of[['left',-148,-450],['right',116,-476]])if(r.tanks[key]===0){poly(c,[[x-20,y],[x-8,y-63],[x+3,y-34],[x+16,y-88],[x+34,y+22]],'#da9b5d99');rect(c,x-23,y+38,52,22,'#1d2b26');}
+      const whip=r.attack?.kind==='whip',hot=whip&&r.attack.t>=r.attack.windup&&r.attack.t<r.attack.windup+r.attack.active;
+      if(hot){const pts=[[190,-260],[89,-295],[-112,-251],[-290,-136],[-410,-56],[-505,-14]];c.strokeStyle='#212e28';c.lineWidth=22;c.beginPath();pts.forEach((p,j)=>j?c.lineTo(...p):c.moveTo(...p));c.stroke();c.strokeStyle='#eeac64';c.lineWidth=7;c.stroke();for(const [x,y]of pts.slice(1))poly(c,[[x-13,y],[x+9,y-32],[x+24,y-1]],'#cbbb7e');}
+      if(red)for(let j=0;j<8;j++){const x=-65+(j%4)*38,y=-447+Math.floor(j/4)*105;rect(c,x,y,4,48,'#f0a15c8a');}
+      if(r.defeated){for(let j=0;j<8;j++){const x=-140+j*38,y=-240-(j%4)*69;poly(c,[[x,y],[x+5,y-55],[x+15,y-18],[x+29,y-100],[x+39,y+19]],'#eeb775a0');}}
+      c.restore();return;
+    }
     const r=s.boss,drop=r.defeated?(145-r.collapse)*.72:0,red=r.phase===2,metal=red?'#857553':'#798475',light=red?'#af946a':'#a8b29a',dark='#2e3d37';
     c.save();c.translate(r.x,-r.y+drop);if(r.defeated)c.rotate((145-r.collapse)*-.0014);
     // Distinct digitigrade legs with pistons and feet.
@@ -7241,7 +7291,7 @@ function createRenderer(canvas) {
       if(a){const def=SAHEL_ATTACKS[a.kind],hot=a.t>=a.windup&&a.t<a.windup+a.active;rect(c,229,125,822,44,'#182720ec');label(c,(hot?'ACTIF / ':'ANNONCE / ')+def.name,640,143,17,hot?'#f0b079':'#e7d3a3','center');if(subtitles)label(c,def.hint,640,161,11,'#d6ddba','center');}
       rect(c,22,622,1236,91,'#13221fee');label(c,'D : ROQUETTE • B : CIBLE • A : INTERCEPTION • C : SOINS • BAS + D : COLIS / BAS : COLLECTER',640,645,15,'#eee2bf','center');
       label(c,(r.feedbackFrames?r.feedback:`CARCASSE ${r.health}/18000 • ${r.intercepts} INTERCEPTIONS • ${r.interrupts} CHARGES ROMPUES • ${r.coverBlocks} TIRS ARRÊTÉS PAR ABRIS`).slice(0,120),640,672,13,'#d1dcc1','center');
-      label(c,`${r.shots} ROQUETTES / ${r.hits} IMPACTS • ${r.supplyCollections} COLIS • RADIO ${(r.supplyCooldown/60).toFixed(1)}s • ABRIS ${r.covers.map(q=>q.id+':'+q.hp).join(' / ')} • DESSINS PROVISOIRES`,640,697,11,'#a9b59d','center');
+      label(c,`${r.shots} ROQUETTES / ${r.hits} IMPACTS • ${r.supplyCollections} COLIS • RADIO ${(r.supplyCooldown/60).toFixed(1)}s • ABRIS ${r.covers.map(q=>q.id+':'+q.hp).join(' / ')}`,640,697,11,'#a9b59d','center');
       if(r.transition||r.collapse||s.phase==='round-end'||s.phase==='finished'){
         const lost=(s.phase==='round-end'||s.phase==='finished')&&s.roundWinner!==0;rect(c,214,229,852,193,'#142420ef');
         label(c,lost?'OPÉRATION INTERROMPUE':r.transition?'PHASE ROUGE / RAILGUN':'SAHELANTHROPUS NEUTRALISÉ',640,274,29,'#f1d59b','center');
@@ -7351,6 +7401,16 @@ function createRenderer(canvas) {
     for(let j=0;j<25;j++){const x=(j*61+t*(j%3+1)*4)%1280,y=190+(j*79)%375;rect(c,x,y,2,2,'#a5b79444');}
   }
   function ganderMachine(c,s,t=0){
+    if(window.CQC_MACHINE_PARTS_BRIDGE?.drawNative(c,s,{...nativeRenderOptions,expectedBoss:'gander'})){
+      const r=s.boss;
+      if(r.phase===2)for(const key of ['cannon','missiles','fire']){const q=ganderPort(s,key),open=ganderPortOpen(s,key),alive=r.modules[key]>0;
+        c.save();c.strokeStyle=alive?(open?'#ffe0a0':'#afc0a5'):'#947a64';c.lineWidth=open?3:1;c.setLineDash(alive&&!open?[5,5]:[]);c.strokeRect(q.x-q.r,-q.y-q.r,q.r*2,q.r*2);c.restore();
+        if(!alive){poly(c,[[q.x-31,-q.y-15],[q.x-12,-q.y-42],[q.x+4,-q.y-11],[q.x+24,-q.y-51],[q.x+28,-q.y+12],[q.x-27,-q.y+13]],'#aa8554');}
+        label(c,GANDER_LABELS[key],q.x,-q.y-63,13,'#dfe8c1','center');label(c,alive?(open?'OUVERT':'BLINDÉ'):'HORS SERVICE',q.x,-q.y+72,12,open?'#ffe0a0':'#afc0a5','center');
+      }
+      if(r.defeated){for(let n=0;n<9;n++){const x=965+n*47,y=260+(n%3)*70;poly(c,[[x,-y],[x-10,-y-56],[x+9,-y-31],[x+25,-y-90],[x+37,-y+4]],'#deba7488');}}
+      return;
+    }
     const r=s.boss,fold=r.phase===2?(r.transition?1-r.transition/135:1):0,drop=r.defeated?(120-r.collapse)*.18:0;
     c.save();c.translate(1160,drop);
     // Tall twin rail assemblies are visual structure; not additional targets in this adaptation.
@@ -7415,7 +7475,7 @@ function createRenderer(canvas) {
       if(a){rect(c,200,124,880,32,'#18352deA');label(c,GANDER_ATTACKS[a.kind].name+' / '+(a.t<a.windup?'PRÉPARATION '+((a.windup-a.t)/60).toFixed(1)+' S':a.t<a.windup+a.active?'ATTAQUE ACTIVE':'RÉCUPÉRATION'),640,146,16,'#eed59d','center');}
       rect(c,18,624,1244,84,'#122d2beF');
       label(c,ganderGuided(s)?'NIKITA : ← → ↓ FIXENT LE CAP • ↑ CAP HAUT • RELÂCHER = CAP CONSERVÉ • B ANNULER':r.phase===1?'D POSER PRÈS D’UN APPUI • B DÉTONER • A CHAFF • C RATION • BAS + D À LA CAISSE':'D LANCER NIKITA • FLÈCHES : GUIDER • A CHAFF • C RATION • BAS + D À LA CAISSE',640,648,14,'#e1e6bf','center');
-      const feedback=r.feedbackFrames?r.feedback:ganderGuided(s)?'SNAKE IMMOBILE / UN IMPACT ROMPT LE GUIDAGE':r.phase===1?'ÉCARTEZ-VOUS DE VOTRE SOUFFLE ; UN PIED LEVÉ ÉCHAPPE À LA CHARGE':'VISEZ LE PORT QUI S’OUVRE / LA VULNÉRABILITÉ EST VÉRIFIÉE À L’IMPACT';label(c,feedback.slice(0,112),640,675,13,'#c9d5ac','center');label(c,'APPUIS '+r.legHits+'/6 • PORTS '+r.moduleHits+'/9 • RAVITAILLEMENTS '+r.reloads+' • GUIDAGE '+(ganderGuided(s)?'ACTIF':'LIBRE')+' • VISUELS PROVISOIRES',640,698,11,'#a9c09f','center');
+      const feedback=r.feedbackFrames?r.feedback:ganderGuided(s)?'SNAKE IMMOBILE / UN IMPACT ROMPT LE GUIDAGE':r.phase===1?'ÉCARTEZ-VOUS DE VOTRE SOUFFLE ; UN PIED LEVÉ ÉCHAPPE À LA CHARGE':'VISEZ LE PORT QUI S’OUVRE / LA VULNÉRABILITÉ EST VÉRIFIÉE À L’IMPACT';label(c,feedback.slice(0,112),640,675,13,'#c9d5ac','center');label(c,'APPUIS '+r.legHits+'/6 • PORTS '+r.moduleHits+'/9 • RAVITAILLEMENTS '+r.reloads+' • GUIDAGE '+(ganderGuided(s)?'ACTIF':'LIBRE'),640,698,11,'#a9c09f','center');
       if(r.transition||r.collapse||s.phase==='finished'){rect(c,264,229,752,178,'#18352df4');const title=r.transition?'APPUIS ROMPUS':s.phase==='finished'&&s.winner!==0?'OPÉRATION INTERROMPUE':'GANDER NEUTRALISÉ';label(c,title,640,276,32,'#e5dbb0','center');label(c,r.transition?'LE NIKITA REMPLACE LES CHARGES / STOCK CONSERVÉ':r.defeated?'LES TROIS SYSTÈMES D’ARMES SONT HORS SERVICE':'REPRENDRE DEPUIS LE DÉBUT DE L’OPÉRATION',640,316,15,'#cdd6b4','center');label(c,r.transition?'SNAKE RESTE EXPOSÉ PENDANT LE GUIDAGE':r.legHits+' IMPACTS APPUIS • '+r.moduleHits+' IMPACTS PORTS • '+r.shots+' NIKITA',640,351,15,'#cdd6b4','center');label(c,r.transition||r.collapse?'ENTRÉE / START POUR ABRÉGER':((14400-s.timer)/60).toFixed(2)+' SECONDES DE COMBAT',640,383,14,'#dcd6a9','center');}
       if(s.phase==='intro')label(c,'OPÉRATION GANDER / '+(s.phaseFrames>60?'PRÉPAREZ-VOUS':'AGISSEZ'),640,278,32,'#f2e4b4','center');if(s.paused)label(c,'PAUSE',640,193,30,'#f0e8c3','center');
     }
@@ -7517,12 +7577,18 @@ function createRenderer(canvas) {
     c.save();c.translate(p.x,-p.y);drawActor(c,p,reducedMotion?0:time,s);if(p.attack?.name==='shgRpg'){rect(c,0,-185,110,15,'#879774');poly(c,[[83,-191],[123,-177],[83,-164]],'#c4c69e');}c.restore();if(debug){const b=hurtbox(p);c.strokeStyle='#9ed6b0';c.strokeRect(b.x,-b.y-b.h,b.w,b.h);}c.restore();stageBank.draw(c,s.options.stage,cam,true);
     if(!menu){rect(c,20,14,1240,110,'#203b38ee');label(c,'NAKED SNAKE / RPG-7',38,39,20,'#e5ddac');label(c,r.phase===1?'SHAGOHOD / MOTEUR':'VOLGIN / CONTRÔLE DIRECT',1240,39,20,'#e5ddac','right');rect(c,38,51,494,20,'#41564a');rect(c,38,51,494*p.health/10000,20,'#c1cb94');const hp=r.phase===1?r.engine/5600:r.volgin/4800;rect(c,747,51,494,20,'#41564a');rect(c,747+494*(1-hp),51,494*hp,20,'#cdb084');label(c,String(Math.ceil(s.timer/60)).padStart(3,'0'),640,68,35,'#e4cea0','center');label(c,'ROQUETTES '+p.resource+'/6  •  RATIONS '+r.rations,38,101,18,'#cbd5ad');label(c,'SÉQUENCE '+r.phase+' / 2  •  '+(r.phase===1?r.engine:r.volgin)+' VIE',1240,101,17,'#cbd5ad','right');
       if(a){rect(c,250,132,780,30,'#203b38ed');label(c,SHG_ATTACKS[a.kind].name+' / '+(a.t<a.windup?'PRÉPARATION '+((a.windup-a.t)/60).toFixed(1)+'s':'ACTION'),640,153,16,'#edd1a0','center');}
-      rect(c,19,624,1242,83,'#1c3837ee');label(c,'D : RPG  •  B : '+SHG_LABELS[r.target]+'  •  BAS + D : RECHARGER  •  A : SIGNAL EVA  •  C : RATION',640,649,15,'#eadab1','center');label(c,r.feedbackFrames>0?r.feedback:r.phase===1?'BLOQUEZ LA FOREUSE PUIS ATTEIGNEZ LE MOTEUR AVANT SA RÉCUPÉRATION':'VOLGIN PROTÉGÉ SAUF PENDANT LA DIVERSION SCRIPTÉE D’EVA',640,676,13,'#bbcfb8','center');label(c,'ARRÊT '+(r.stall/60).toFixed(1)+'s / EVA '+(r.phase===1?'EN PHASE 2':r.signalCooldown?Math.ceil(r.signalCooldown/60)+'s':'DISPONIBLE')+' • ROQUETTE NON GUIDÉE • PROTOTYPE VISUEL',640,699,11,'#96aca1','center');
+      rect(c,19,624,1242,83,'#1c3837ee');label(c,'D : RPG  •  B : '+SHG_LABELS[r.target]+'  •  BAS + D : RECHARGER  •  A : SIGNAL EVA  •  C : RATION',640,649,15,'#eadab1','center');label(c,r.feedbackFrames>0?r.feedback:r.phase===1?'BLOQUEZ LA FOREUSE PUIS ATTEIGNEZ LE MOTEUR AVANT SA RÉCUPÉRATION':'VOLGIN PROTÉGÉ SAUF PENDANT LA DIVERSION SCRIPTÉE D’EVA',640,676,13,'#bbcfb8','center');label(c,'ARRÊT '+(r.stall/60).toFixed(1)+'s / EVA '+(r.phase===1?'EN PHASE 2':r.signalCooldown?Math.ceil(r.signalCooldown/60)+'s':'DISPONIBLE')+' • ROQUETTE NON GUIDÉE',640,699,11,'#96aca1','center');
       if(r.transition){rect(c,230,222,820,188,'#1b3131f2');label(c,'MOTEUR NEUTRALISÉ',640,264,29,'#e5d3a4','center');label(c,'VOLGIN PREND LE CONTRÔLE',640,305,23,'#bbd3ba','center');label(c,'A : SIGNAL EVA / VISEZ VOLGIN PENDANT L’OUVERTURE',640,351,16,'#d1ccb0','center');label(c,'VIE • MUNITIONS • RATIONS CONSERVÉES / ENTRÉE POUR ABRÉGER',640,383,12,'#a5b9aa','center');}else presentationOverlay(c,s,{time,reducedMotion,subtitles});
     }ctx.imageSmoothingEnabled=false;ctx.drawImage(scene,0,0,1280,720);
   }
 
   function zekeMachine(c,s){const r=s.boss;
+    if(window.CQC_MACHINE_PARTS_BRIDGE?.drawNative(c,s,{...nativeRenderOptions,expectedBoss:'zeke'})){
+      c.save();c.translate(1240,-zekeLift(s));if(r.defeated){c.translate(0,85);c.rotate(.09);c.globalAlpha=.72;}
+      if(r.jet>0){if(zekeLift(s)>0)poly(c,[[150,-228],[176,-115],[202,-228]],'#edc77e');}else{rect(c,133,-298,43,29,'#253e3d');label(c,'HORS SERVICE',166,-338,11,'#d9a875','center');}
+      if(r.rail<=0){rect(c,47,-382,37,15,'#243d39');label(c,'RAIL NEUTRALISÉ',69,-431,12,'#d8bc90','center');}
+      c.restore();return;
+    }
     c.save();c.translate(1240,-zekeLift(s));if(r.defeated){c.translate(0,85);c.rotate(.09);c.globalAlpha=.72;}
     // Entire machine is a procedural study. Rail, jet and core are separate active targets.
     outline(c,[[48,-270],[118,-260],[143,-47],[81,-19],[44,-65]],'#55685b',5);outline(c,[[-112,-258],[-38,-258],[-17,-55],[-60,-12],[-140,-40]],'#839079',5);
@@ -7549,7 +7615,7 @@ function createRenderer(canvas) {
       rect(c,38,51,494,20,'#354b4e');rect(c,38,51,494*Math.max(0,p.health)/10000,20,'#bbc687');rect(c,747,51,494,20,'#354b4e');rect(c,747+494*(1-r.core/10000),51,494*r.core/10000,20,'#c8a877');
       label(c,String(Math.ceil(s.timer/60)).padStart(3,'0'),640,66,35,'#f0dcac','center');label(c,'ROQUETTES '+p.resource+'/6  •  RATIONS '+r.rations,38,101,18,'#cedcc2');label(c,'RAIL '+r.rail+'/2400   •   JET '+r.jet+'/1600',1240,101,17,'#cedcc2','right');
       if(a)label(c,ZEKE_ATTACKS[a.kind].name+'  /  '+(a.t<a.windup?'PRÉPARATION '+((a.windup-a.t)/60).toFixed(1)+'s':'ACTION'),640,151,17,'#f0d6a6','center');
-      rect(c,19,626,1242,80,'#142d33ef');label(c,'D : ROQUETTE  •  B : CIBLE '+ZEKE_LABELS[r.target]+'  •  BAS + D : COLIS  •  BAS PRÈS DU COLIS : RAMASSER',640,650,15,'#e8ddb7','center');label(c,r.feedbackFrames>0?r.feedback:'NOYAU BLINDÉ : 420 / SANS MODULES : 1 000 • DÉTRUIRE RAIL/JET SUPPRIME LEURS ATTAQUES',640,677,14,'#b7cbbc','center');label(c,'RADIO '+(r.supplyCooldown?Math.ceil(r.supplyCooldown/60)+'s':'DISPONIBLE')+'  /  PROTOTYPE VISUEL • BANC D’ESSAI ORIGINAL',640,700,12,'#96aaa3','center');
+      rect(c,19,626,1242,80,'#142d33ef');label(c,'D : ROQUETTE  •  B : CIBLE '+ZEKE_LABELS[r.target]+'  •  BAS + D : COLIS  •  BAS PRÈS DU COLIS : RAMASSER',640,650,15,'#e8ddb7','center');label(c,r.feedbackFrames>0?r.feedback:'NOYAU BLINDÉ : 420 / SANS MODULES : 1 000 • DÉTRUIRE RAIL/JET SUPPRIME LEURS ATTAQUES',640,677,14,'#b7cbbc','center');label(c,'RADIO '+(r.supplyCooldown?Math.ceil(r.supplyCooldown/60)+'s':'DISPONIBLE')+'  /  BANC D’ESSAI ORIGINAL',640,700,12,'#96aaa3','center');
       presentationOverlay(c,s,{time,reducedMotion,subtitles});
     }
     ctx.imageSmoothingEnabled=false;ctx.drawImage(scene,0,0,1280,720);
@@ -8092,6 +8158,7 @@ function createRenderer(canvas) {
    * two-actor trajectory but are explicitly not production sprite animations. */
   function drawActor(c,f,t,s){
     if(artBank.hasAnimation(f.id,f.animKey,f.stance)){c.save();if(f.cloak>0)c.globalAlpha*=.42;fighter(c,f,t);c.restore();return;}
+    if(window.CQC_PASS16_CORE_SPRITES?.drawActor(c,f,t,s,pass16SpriteHooks()))return;
     const key=f.animKey,visual={...f,health:Math.max(1,f.health)};
     c.save();if(f.cloak>0)c.globalAlpha*=.42;
     if(s.grapple){const grab=s.grapple;
@@ -8197,8 +8264,10 @@ function createRenderer(canvas) {
   function portrait(target,id) {
     const c=target.getContext('2d');target.width=190;target.height=170;
     window.CQC_MACHINE_PARTS_BRIDGE?.cancelPortrait(target);
-    if(id==='rex'||id==='ray'||id==='mgd'||id==='tx55'||id==='icbmg'||id==='raxa'){
-      const nativePortraitMatch=id==='rex'?createBossMatch():id==='ray'?createRayMatch():id==='mgd'?createMgdMatch():id==='icbmg'?createIcbmgMatch():id==='tx55'?createTx55Match():createRaxaMatch();
+    window.CQC_PASS16_CORE_SPRITES?.cancelPortrait(target);
+    if(window.CQC_PASS16_CORE_SPRITES?.drawPortrait(target,id,pass16SpriteHooks()))return;
+    if(id==='rex'||id==='ray'||id==='mgd'||id==='tx55'||id==='icbmg'||id==='raxa'||id==='gander'||id==='zeke'||id==='shagohod'||id==='sahelanthropus'||PW_AI_IDS.includes(id)){
+      const nativePortraitMatch=id==='rex'?createBossMatch():id==='ray'?createRayMatch():id==='mgd'?createMgdMatch():id==='icbmg'?createIcbmgMatch():id==='tx55'?createTx55Match():id==='raxa'?createRaxaMatch():id==='gander'?createGanderMatch():id==='zeke'?createZekeMatch():id==='shagohod'?createShagohodMatch():id==='sahelanthropus'?createSahelMatch():createPwAiMatch({},id);
       if(window.CQC_MACHINE_PARTS_BRIDGE?.drawPortrait(target,nativePortraitMatch,()=>portrait(target,id)))return;
     }
     c.clearRect(0,0,190,170);if(PW_AI_IDS.includes(id)){const s=createPwAiMatch({},id);s.boss.x=0;s.boss.y=0;c.save();c.translate(95,125);c.scale(.31,.31);pwAiArt(c,s,0);c.restore();return;}if(id==='sahelanthropus'){c.save();c.translate(-207,168);c.scale(.25,.25);sahelArt(c,createSahelMatch(),0);c.restore();return;}if(id==='raxa'){const s=createRaxaMatch();c.save();c.translate(-260,158);c.scale(.30,.30);raxaArt(c,s,0);c.restore();return;}if(id==='icbmg'){const s=createIcbmgMatch();c.save();c.translate(-176,169);c.scale(.24,.24);icbmgArt(c,s,0);c.restore();return;}if(id==='gander'){c.save();c.translate(-210,167);c.scale(.27,.27);ganderMachine(c,{boss:{phase:1,legs:{near:2400,far:2400},modules:{cannon:2400,missiles:2400,fire:2400},attack:null,defeated:false,transition:0}},0);c.restore();return;}if(id==='harrier'){c.save();c.translate(95,85);c.scale(.43,.43);harrierAircraft(c,{x:0,y:0,health:12000,defeated:false},0);c.restore();return;}if(id==='sorrow'){sorrowSilhouette(c,95,188,1.1,0,true);return;}if(id==='shagohod'){c.save();c.translate(-280,158);c.scale(.30,.30);shagohodMachine(c,{boss:{x:1190,phase:1,stall:0,engine:5600,signal:null}},0);c.restore();return;}if(id==='zeke'){c.save();c.translate(-332,166);c.scale(.34,.34);zekeMachine(c,{boss:{jet:1600,rail:2400,core:10000,attack:null,defeated:false}});c.restore();return;}if((ROSTER[id]?.expansion024||ROSTER[id]?.legacy021||ROSTER[id]?.expansion022||ROSTER[id]?.expansion023)){c.save();const kind=ROSTER[id].visual.kind;const quad=kind==='quadruped';c.translate(quad?80:86,quad?160:244);const sc=quad?.51:kind==='mech'?.7:.86;c.scale(sc,sc);fighter(c,{...actor(id,0),id,facing:1,x:0,y:0,input:{},invul:0,hitstun:0},0);c.restore();return;}if(id==='mgd'){c.save();c.translate(-245,165);c.scale(.30,.30);mgdMachine(c,{boss:{x:1120,legs:{near:4800,far:4800},attack:null,destroyed:false}},0);c.restore();return;}if(id==='tx55'){c.save();c.translate(-137,159);c.scale(.28,.28);tx55Machine(c,{defeated:false,progress:0},0);c.restore();return;}if(id==='ray'){c.save();c.translate(-302,164);c.scale(.28,.28);rayMachine(c,{boss:{id:'ray',unit:0,kneeLocks:{nearKnee:0,farKnee:0},stagger:0,transition:0,defeated:false,attack:null}},0);c.restore();return;}if(id==='rex'){c.save();c.translate(-251,162);c.scale(.29,.29);rexMachine(c,{phase:1,transition:0,attack:null},0);c.restore();return;}c.save();c.translate(id==='raven'?67:92,id==='volgin'?248:id==='raven'?246:240);const ps=id==='armstrong'?.76:id==='volgin'?.78:id==='raven'?.71:.88;c.scale(ps,ps);
@@ -8253,7 +8322,7 @@ function syncSelectionUI(){
  document.querySelectorAll('[data-player]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.player===selection.player)));
  document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===selection.mode)));
 
- const f=ROSTER[selection.player];$('fighter-name').textContent=f.name;$('fighter-era').textContent=f.subtitle;
+ const f=ROSTER[selection.player];$('fighter-name').textContent=f.name;$('fighter-era').textContent=window.CQC_SELECTION_DOSSIERS.label(f);
  const loadout=selection.mode==='boss'?{
  pupa:{trait:'PUPA / CONDUCTEURS ÉLECTRIQUES / MÉMOIRE IA',tip:'D : roquette droite. B : pod ou carrosserie. A détruit bornes et missiles. Bas D recharge à la caisse. Le pod accélère le combat mais abîme la mémoire. Après neutralisation, B entre et GARDE extrait. Aucun CQC.'},
  chrysalis:{trait:'CHRYSALIS / RADOME / DRONES / MÉMOIRE IA',tip:'D : roquette guidée. B : pod, carrosserie ou radome facultatif. A détruit drones et missiles. Un impact au pod pendant la charge du railgun l’interrompt. Mémoire récupérable après neutralisation, sans bonus de construction. Aucun CQC.'},
@@ -8270,7 +8339,7 @@ function syncSelectionUI(){
  ray:{trait:'ANTI-MACHINE / GENOU → MÂCHOIRE / TROIS UNITÉS',tip:'D verrouille le Stinger. B choisit la cible, Bas + D ravitaille six missiles, C utilise une ration. A intercepte les missiles au SOCOM. Déstabilisez un genou puis atteignez la mâchoire pendant son ouverture. Pas de lame ou de prise CQC.'},
  rex:{trait:'ANTI-MACHINE / RADOME → COCKPIT',tip:'D verrouille et tire le Stinger ; Bas + D ravitaille quatre missiles. B brouille les missiles avec une chaff ; C utilise la ration. A intercepte les projectiles bas au SOCOM. Détruisez le radome, puis le cockpit. Pas de prise CQC.'}
  }[selectedBoss.id]:null;
- $('fighter-trait').textContent=loadout?loadout.trait:f.archetype;$('fighter-tip').textContent=loadout?loadout.tip:f.tip;
+ $('fighter-trait').textContent=loadout?loadout.trait:f.drive;$('fighter-tip').textContent=loadout?loadout.tip:f.tip;
  const runMode=['arcade','survival','chronicle'].includes(selection.mode);
  $('opponent-label').hidden=runMode||selection.mode==='boss';$('stage-label').hidden=runMode||selection.mode==='boss';$('difficulty-label').hidden=['local','training'].includes(selection.mode);$('chapter-label').hidden=selection.mode!=='chronicle';
  const text={boss:PW_AI_IDS.includes(selectedBoss.id)?selectedBoss.name+' / ARME IA / CIBLES MULTIPLES / RÉCUPÉRATION MÉMOIRE':selectedBoss.id==='sahelanthropus'?'SAHELANTHROPUS / CARCASSE ET RÉSERVOIRS / ABRIS / 240 S':selectedBoss.id==='raxa'?'RAXA / SOL → VOL / 4 APPUIS + 2 SOUTES / RPG / 240 S':selectedBoss.id==='icbmg'?'ICBMG / INTERCEPTION DE LANCEMENT / APPUI SCRIPTÉ / 120 S':selectedBoss.id==='gander'?'GANDER / APPUIS C4 → PORTS NIKITA / 240 S':selectedBoss.id==='harrier'?'HARRIER / DEUX PONTS / STINGER / APPUI SCRIPTÉ / 210 S':selectedBoss.id==='sorrow'?'THE SORROW / TRAVERSÉE / TROIS GUÉS / 180 S / RÉVEIL PAR OBJET':selectedBoss.id==='shagohod'?'SHAGOHOD / 2 PHASES / RPG NON GUIDÉ / EVA / 210 S':selectedBoss.id==='zeke'?'ZEKE / NOYAU + MODULES OPTIONNELS / 210 S':selectedBoss.id==='mgd'?'METAL GEAR D / 2 APPUIS / GRENADES / 180 S + SORTIE':selectedBoss.id==='tx55'?'TX-55 / 16 CHARGES / PROTOCOLE G-D / 180 S':selectedBoss.id==='ray'?'RAY / 3 UNITÉS / GENOU → MÂCHOIRE / 240 S':'REX / 2 PHASES / STINGER • CHAFF • RATION / 180 S',cpu:'2 manches gagnantes / 99 secondes',local:'2 joueurs locaux / 2 manches gagnantes',training:'Laboratoire : commandes, collisions, défis et enregistrement',arcade:`${Object.keys(ROSTER).length-1} adversaires / rival final / checkpoint entre les duels`,survival:'1 manche / vie conservée / +1 200 vie après une victoire',chronicle:CHRONICLES[selection.chapter].description};
@@ -8284,6 +8353,7 @@ function syncSelectionUI(){
  syncCompetitionEntry();
 }
 function menu(){
+ window.CQC_PASS16_CORE_SPRITES?.cancelPendingLaunch();
  window.CQC_MACHINE_PARTS_BRIDGE?.cancelPendingLaunch();
  syncControlBindings();
  audioBank.setMusic(null);audioBank.setPaused(true);playing=false;playback=null;recording=null;currentCompetition=null;currentRun=null;runOutcome=null;match.paused=false;clearInput();dummyRecording=false;dummyLoop=false;
@@ -8296,10 +8366,15 @@ function pause(force=true){
  if(force)$('resume').focus();else $('game').focus();
 }
 function launchMatch(options){
+ window.CQC_PASS16_CORE_SPRITES?.cancelOnNewIntent(options);
  const encounter=options.encounter||(options.mode==='boss'?options.bossId:null);
  const stageID=options.mode==='boss'?bossDefinition(encounter).stage:options.mode==='chronicle'&&Object.hasOwn(BOSS_DEFS,encounter)?BOSS_DEFS[encounter].stage:options.stage;
  if(window.CQC_MACHINE_PARTS_BRIDGE?.deferCoreLaunch(options,launchMatch))return;
  if(window.CQC_PASS12_STAGE_BRIDGE?.deferCoreLaunch(options,launchMatch,{stageID}))return;
+ if(window.CQC_PASS16_CORE_SPRITES?.deferCoreLaunch(options,launchMatch,{manualImported:id=>artBank.status().some(row=>row.id===id),actorIDs:o=>{
+   const encounter=o.encounter||(o.mode==='boss'?o.bossId:null),def=o.mode==='boss'?bossDefinition(encounter):o.mode==='chronicle'?BOSS_DEFS[encounter]:null;
+   return def?[def.player,...(encounter==='icbmg'?['campbell_mpo']:[])]:[Object.hasOwn(ROSTER,o.player)?o.player:'boss',Object.hasOwn(ROSTER,o.opponent)?o.opponent:o.player==='boss'?'snake':'boss'];
+ }}))return;
  match=createMatch({...options,seed:options.seed??((Date.now()^1964)>>>0)});playing=true;clearInput();renderer.reset();accumulator=0;recording=options.mode==='training'||playback?null:recorder(match.options);
  for(const id of ['menu','pause-panel','end-panel','brief-panel'])$(id).hidden=true;
  $('pause').hidden=false;$('pause').textContent='PAUSE';$('pause-movebook').hidden=!!match.boss;$('boss-guide-pause').hidden=!match.boss;$('training-tools').hidden=match.options.mode!=='training';document.body.classList.add('playing');
@@ -8463,8 +8538,8 @@ function frame(now){
 }
 // Build accessible selection widgets from the SAME runtime roster as the engine.
 for(const f of Object.values(ROSTER)){
- const b=document.createElement('button');b.className='fighter-card';b.dataset.player=f.id;b.setAttribute('aria-pressed',String(f.id===selection.player));b.setAttribute('aria-label',`${f.name} — ${f.archetype}`);
- const canvas=document.createElement('canvas'),title=document.createElement('strong'),era=document.createElement('small');renderer.portrait(canvas,f.id);title.textContent=f.name;era.textContent=f.era.toUpperCase();b.append(canvas,title,era);
+ const b=document.createElement('button');b.className='fighter-card';b.dataset.player=f.id;b.setAttribute('aria-pressed',String(f.id===selection.player));b.setAttribute('aria-label',`${f.name} — ${window.CQC_SELECTION_DOSSIERS.label(f)}`);
+ const canvas=document.createElement('canvas'),title=document.createElement('strong'),era=document.createElement('small');renderer.portrait(canvas,f.id);title.textContent=f.name;era.textContent=window.CQC_SELECTION_DOSSIERS.dossier(f).short;b.append(canvas,title,era);
  b.onclick=()=>{if(selection.mode==='chronicle'||selection.mode==='boss'){toast('Le protagoniste est fixé par ce dossier ou cette rencontre.');return;}selection.player=f.id;rememberSelection();match=createMenuPreview(selection);};$('roster').append(b);$('opponent').add(new Option(f.name,f.id));
  const block=document.createElement('div');block.className='move-summary';const strong=document.createElement('strong');strong.textContent=f.name+' / '+f.drive;const p=document.createElement('p');p.textContent=f.tip;const frame=document.createElement('small'),a=getMove(f,f.special),d=getMove(f,f.secondary);frame.textContent=`D : ${a.startup}/${a.active}/${a.recovery}f · Bas + D : ${d.startup}/${d.active}/${d.recovery}f · Super : ${getMove(f,'super').projectile?.count||1} × ${getMove(f,'super').damage} dégâts bruts avant réduction combo`;block.append(strong,p,frame);$('move-list').append(block);
 }
@@ -9247,7 +9322,7 @@ function openModule(){root.hidden=false;document.documentElement.style.overflow=
 function closeModule(){stop();root.hidden=true;document.documentElement.style.overflow='';}
 function difficultyScale(){return ui.difficulty.value==='story'?.82:ui.difficulty.value==='hard'?1.22:1}
 function resetState(){const d=defs[selectedBoss], scale=difficultyScale();state={boss:selectedBoss,mode:selectedMode,phase:1,t:d.time,startedAt:d.time,player:{x:170,y:580,vx:0,vy:0,w:44,h:82,hp:10000,maxHp:10000,grounded:true,crouch:false,ammo:d.ammo,rations:d.rations,sub:d.sub,cost:0,inv:0,action:0,dash:0},body:d.body,bodyMax:d.body,parts:d.parts.slice(),partsMax:d.parts.slice(),target:0,projectiles:[],hazards:[],particles:[],attackClock:1.5,attackIndex:0,shots:0,hits:0,subUsed:0,damageTaken:0,interrupts:0,scale,overload:false,message:'',messageT:0,chronicleStep:selectedMode==='chronicle'?1:0};}
-function start(){resetState();running=true;paused=false;ui.intro.hidden=true;ui.result.hidden=true;ui.pause.hidden=true;last=performance.now();ui.log.textContent=`${defs[selectedBoss].episode} · ${defs[selectedBoss].name} — cible : ${targetName()}.`;cancelAnimationFrame(raf);raf=requestAnimationFrame(loop)}
+function start(){if(window.CQC_PASS16_ACID_ART?.deferStart(selectedBoss,start,{mode:selectedMode,difficulty:ui.difficulty.value}))return;resetState();running=true;paused=false;ui.intro.hidden=true;ui.result.hidden=true;ui.pause.hidden=true;last=performance.now();ui.log.textContent=`${defs[selectedBoss].episode} · ${defs[selectedBoss].name} — cible : ${targetName()}.`;cancelAnimationFrame(raf);raf=requestAnimationFrame(loop)}
 function stop(){running=false;paused=false;cancelAnimationFrame(raf);keys.clear()}
 function targetName(){if(!state)return '—';const d=defs[state.boss];if(state.phase===1){return d.partNames[state.target%d.parts.length]}return state.boss==='chaioth'&&state.target===1?'ÉMETTEUR RAILGUN':'NOYAU'}
 function cycleTarget(){if(!state)return;if(state.phase===1){state.target=(state.target+1)%state.parts.length}else if(state.boss==='chaioth'){state.target=(state.target+1)%2}else state.target=0;flash(`CIBLE · ${targetName()}`)}
@@ -9301,7 +9376,7 @@ function update(dt){if(!state||paused)return;const p=state.player,d=defs[state.b
 }
 function finish(win,label){if(!running)return;running=false;cancelAnimationFrame(raf);const elapsed=state.startedAt-state.t;if(win){profile.wins[state.boss]=(profile.wins[state.boss]||0)+1;if(!profile.best[state.boss]||elapsed<profile.best[state.boss])profile.best[state.boss]=elapsed;saveProfile();refreshProfile();ui.resultTitle.textContent=state.mode==='chronicle'?'DOSSIER CLASSÉ':'MACHINE NEUTRALISÉE'}else ui.resultTitle.textContent=label;ui.resultText.textContent=`${defs[state.boss].name} · ${formatTime(elapsed)} · ${state.hits}/${state.shots} impacts · ${state.damageTaken} dégâts reçus · ${state.interrupts} interruption(s).`;ui.result.hidden=false;}
 function bar(x,y,w,h,val,max,col,label){ctx.fillStyle='#06100d';ctx.fillRect(x,y,w,h);ctx.strokeStyle='#9fc8ac';ctx.strokeRect(x,y,w,h);ctx.fillStyle=col;ctx.fillRect(x+2,y+2,(w-4)*Math.max(0,Math.min(1,val/max)),h-4);ctx.fillStyle='#edf4d3';ctx.font='bold 14px monospace';ctx.fillText(label,x,y-7)}
-function drawMachine(){const b=state?state.boss:selectedBoss, phase=state?state.phase:1;if(b==='kodoque'){
+function drawMachine(){if(window.CQC_PASS16_ACID_ART?.draw(ctx,state,selectedBoss,()=>{if(!running)drawPreview()}))return;const b=state?state.boss:selectedBoss, phase=state?state.phase:1;if(b==='kodoque'){
  ctx.save();ctx.translate(1000,0);ctx.fillStyle='#26332a';ctx.strokeStyle='#d0dc8b';ctx.lineWidth=4;ctx.fillRect(-145,315,290,145);ctx.strokeRect(-145,315,290,145);ctx.fillStyle='#4d684a';ctx.fillRect(-100,270,200,60);ctx.fillStyle='#1a241e';ctx.fillRect(-165,430,70,125);ctx.fillRect(95,430,70,125);ctx.fillStyle=phase===1?'#ffc95c':'#ff6c6c';ctx.fillRect(-115,355,42,42);ctx.fillRect(73,355,42,42);ctx.fillStyle='#89e9d1';ctx.fillRect(-34,340,68,78);ctx.restore();
  }else{ctx.save();ctx.translate(1010,0);ctx.strokeStyle='#e2b49d';ctx.lineWidth=5;ctx.fillStyle='#3a3442';ctx.beginPath();ctx.moveTo(-92,210);ctx.lineTo(92,210);ctx.lineTo(132,395);ctx.lineTo(70,470);ctx.lineTo(-70,470);ctx.lineTo(-132,395);ctx.closePath();ctx.fill();ctx.stroke();ctx.fillStyle='#24252e';ctx.fillRect(-112,448,72,126);ctx.fillRect(40,448,72,126);ctx.fillStyle=phase===1?'#ffcc72':'#ff6363';ctx.fillRect(-92,500,52,38);ctx.fillRect(40,500,52,38);ctx.fillStyle='#9ee9df';ctx.fillRect(-40,320,80,86);ctx.fillStyle='#d46d63';ctx.fillRect(-55,245,110,26);ctx.restore()}}
 function drawPlayer(){const p=state?state.player:{x:170,y:590,crouch:false,inv:0};ctx.save();if(p.inv>0&&Math.floor(p.inv*20)%2===0)ctx.globalAlpha=.35;ctx.translate(p.x,p.y);ctx.fillStyle='#61785a';ctx.fillRect(-18,p.crouch?-48:-76,36,p.crouch?48:76);ctx.fillStyle='#b98a64';ctx.fillRect(-13,p.crouch?-66:-98,26,24);ctx.fillStyle='#202b24';ctx.fillRect(-22,p.crouch?-28:-48,44,16);ctx.fillStyle='#d5c267';ctx.fillRect(17,p.crouch?-52:-64,30,9);ctx.restore()}
@@ -9317,12 +9392,12 @@ function draw(){drawBackground();if(!state){drawMachine();ctx.fillStyle='#eaf2d0
 function drawPreview(){resetState();state.t=state.startedAt;draw();state=null}
 function loop(now){if(!running)return;const dt=Math.min(.033,(now-last)/1000||.016);last=now;update(dt);draw();if(running)raf=requestAnimationFrame(loop)}
 function showRegistry(){ui.introTitle.textContent='REGISTRE AC!D · v0.31';ui.introText.innerHTML='<div class="acid31-registry"><div><b>KODOQUE · JOUABLE</b><small>Émetteurs, noyau, projectiles et résultat séparé.</small></div><div><b>CHAIOTH HA QADESH · JOUABLE</b><small>Articulations, cœur, surcharge et interruption du railgun.</small></div><div><b>RESTE À PRODUIRE</b><small>Campagnes tactiques complètes, grilles, collections de cartes et personnages secondaires non encore combattants.</small></div><div><b>AUTRES BRANCHES</b><small>Machines spécifiques MGS4/Revengeance, véhicules MSX/MGS1, formes Beauty et épisodes sans module propre.</small></div></div>';ui.intro.hidden=false;}
-function selectBoss(id){selectedBoss=id;document.querySelectorAll('[data-acid31-boss]').forEach(b=>b.classList.toggle('active',b.dataset.acid31Boss===id));refreshProfile();drawPreview();ui.log.textContent=`${defs[id].episode} · ${defs[id].name} sélectionné.`}
+function selectBoss(id){stop();ui.result.hidden=true;ui.pause.hidden=true;ui.intro.hidden=false;ui.introTitle.textContent=defs[id].name;ui.introText.textContent='Choisissez le mode et lancez l’opération.';selectedBoss=id;document.querySelectorAll('[data-acid31-boss]').forEach(b=>b.classList.toggle('active',b.dataset.acid31Boss===id));refreshProfile();drawPreview();ui.log.textContent=`${defs[id].episode} · ${defs[id].name} sélectionné.`}
 document.getElementById('acid31-open').addEventListener('click',openModule);document.getElementById('acid31-close').addEventListener('click',closeModule);document.querySelectorAll('[data-acid31-boss]').forEach(b=>b.addEventListener('click',()=>selectBoss(b.dataset.acid31Boss)));document.querySelectorAll('[data-acid31-mode]').forEach(b=>b.addEventListener('click',()=>{selectedMode=b.dataset.acid31Mode;document.querySelectorAll('[data-acid31-mode]').forEach(x=>x.classList.toggle('active',x===b));ui.log.textContent=selectedMode==='chronicle'?'Le résultat est classé dans le dossier correspondant.':'Rencontre directe, sans modifier les anciennes Chroniques.'}));
-document.getElementById('acid31-start').addEventListener('click',()=>{ui.introTitle.textContent=selectedMode==='chronicle'?`${defs[selectedBoss].episode} · DOSSIER MACHINE`:defs[selectedBoss].name;ui.introText.textContent=selectedBoss==='kodoque'?'Brisez les deux émetteurs avant d’attaquer le noyau. Les lignes hautes demandent de s’accroupir, les balayages bas de sauter.':'Détruisez les deux articulations, puis le cœur. En surcharge, interrompez le railgun ou quittez son trajet.';ui.intro.hidden=false;});document.getElementById('acid31-intro-start').addEventListener('click',start);document.getElementById('acid31-registry').addEventListener('click',showRegistry);document.getElementById('acid31-retry').addEventListener('click',start);document.getElementById('acid31-menu').addEventListener('click',()=>{ui.result.hidden=true;drawPreview()});document.getElementById('acid31-resume').addEventListener('click',()=>{paused=false;ui.pause.hidden=true;last=performance.now();raf=requestAnimationFrame(loop)});document.getElementById('acid31-pause-menu').addEventListener('click',()=>{stop();ui.pause.hidden=true;drawPreview()});ui.difficulty.addEventListener('change',drawPreview);
-function keyHandler(e,down){if(root.hidden)return;const relevant=['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','KeyI','KeyJ','KeyK','KeyL','ShiftLeft','ShiftRight','Escape'];if(relevant.includes(e.code)){e.preventDefault();e.stopImmediatePropagation()}if(!down){keys.delete(e.code);return}keys.add(e.code);if(e.repeat)return;if(e.code==='KeyI'&&!keys.has('ArrowDown'))fire();if(e.code==='KeyJ')subAction();if(e.code==='KeyK')cycleTarget();if(e.code==='KeyL')heal();if(e.code==='Escape'&&running){paused=!paused;ui.pause.hidden=!paused;if(paused)cancelAnimationFrame(raf);else{last=performance.now();raf=requestAnimationFrame(loop)}}}
+document.getElementById('acid31-start').addEventListener('click',()=>{ui.introTitle.textContent=selectedMode==='chronicle'?`${defs[selectedBoss].episode} · DOSSIER MACHINE`:defs[selectedBoss].name;ui.introText.textContent=selectedBoss==='kodoque'?'Brisez les deux émetteurs avant d’attaquer le noyau. Les lignes hautes demandent de s’accroupir, les balayages bas de sauter.':'Détruisez les deux articulations, puis le cœur. En surcharge, interrompez le railgun ou quittez son trajet.';ui.intro.hidden=false;});document.getElementById('acid31-intro-start').addEventListener('click',start);document.getElementById('acid31-registry').addEventListener('click',showRegistry);document.getElementById('acid31-retry').addEventListener('click',start);document.getElementById('acid31-menu').addEventListener('click',()=>{ui.result.hidden=true;drawPreview()});document.getElementById('acid31-resume').addEventListener('click',()=>{paused=false;ui.pause.hidden=true;last=performance.now();raf=requestAnimationFrame(loop)});document.getElementById('acid31-pause-menu').addEventListener('click',()=>{stop();ui.pause.hidden=true;drawPreview()});ui.difficulty.addEventListener('change',()=>{stop();ui.result.hidden=true;ui.pause.hidden=true;ui.intro.hidden=false;drawPreview()});
+function keyHandler(e,down){if(root.hidden)return;const relevant=['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','KeyI','KeyJ','KeyK','KeyL','ShiftLeft','ShiftRight','Escape'];if(relevant.includes(e.code)){e.preventDefault();e.stopImmediatePropagation()}if(!down){keys.delete(e.code);return}keys.add(e.code);if(e.repeat)return;if(e.code==='Escape'&&running){paused=!paused;ui.pause.hidden=!paused;if(paused)cancelAnimationFrame(raf);else{last=performance.now();raf=requestAnimationFrame(loop)}return}if(!running||paused||!state)return;if(e.code==='KeyI'&&!keys.has('ArrowDown'))fire();if(e.code==='KeyJ')subAction();if(e.code==='KeyK')cycleTarget();if(e.code==='KeyL')heal();}
 window.addEventListener('keydown',e=>keyHandler(e,true),true);window.addEventListener('keyup',e=>keyHandler(e,false),true);document.addEventListener('visibilitychange',()=>{if(document.hidden&&running&&!paused){paused=true;ui.pause.hidden=false;cancelAnimationFrame(raf)}});
-window.CQC_ACID_MACHINES_V031={version:VERSION,open:openModule,startBoss:(id='kodoque')=>{openModule();selectBoss(defs[id]?id:'kodoque');start()},getProfile:()=>JSON.parse(JSON.stringify(profile))};
+window.CQC_ACID_MACHINES_V031={version:VERSION,open:openModule,startBoss:(id='kodoque')=>{openModule();selectBoss(defs[id]?id:'kodoque');start()},getProfile:()=>JSON.parse(JSON.stringify(profile)),getState:()=>state?JSON.parse(JSON.stringify(state)):null};
 refreshProfile();drawPreview();if(new URLSearchParams(location.search).get('module')==='acid-machines')openModule();
 })();
 </script>
