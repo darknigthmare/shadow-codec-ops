@@ -207,11 +207,22 @@ body{background:#030508!important;overflow:hidden}.toolbar,.footer{display:none!
 <script src="../src/cqc-pass16-machine-pose.js"></script>
 <script src="../src/cqc-machine-parts-bridge-v1.js"></script>
 <script src="../src/cqc-pass16-acid-native.js"></script>
+<script src="../src/cqc-pass17-original-sprite-catalog.js"></script>
 <script src="../src/cqc-pass16-sprite-catalog.js"></script>
 <script src="../src/cqc-sprite-renderer.js"></script>
+<script src="../src/cqc-pass17-costume-catalog.js"></script>
+<script src="../src/cqc-pass17-costumes.js"></script>
+<link rel="stylesheet" href="../src/cqc-pass17-costumes.css">
+<script src="../src/cqc-pass17-core-costumes.js"></script>
 <script src="../src/cqc-pass16-core-sprites.js"></script>
 <script src="../src/cqc-pass16-selection-dossiers.js"></script>
+<script src="../src/cqc-pass17-match-flow.js"></script>
+<link rel="stylesheet" href="../src/cqc-pass17-match-flow.css">
+<script src="../src/cqc-pass17-core-match-flow.js"></script>
+<link rel="stylesheet" href="../src/cqc-pass17-core-match-flow.css">
 <link rel="stylesheet" href="../src/cqc-pass16-selection-dossiers.css">
+<link rel="stylesheet" href="../src/cqc-pass17-core-pause.css">
+<script src="../src/cqc-pass17-core-pause.js"></script>
 <script>
 (()=>{
 'use strict';
@@ -599,6 +610,7 @@ function createDuelMatch(options = {}) {
     options: { ...options, mode, player, opponent, roundsToWin:options.roundsToWin===1?1:2, difficulty:['easy','normal','hard'].includes(options.difficulty)?options.difficulty:'normal', dummy: options.dummy ?? 'stand' },
     fighters: [actor(player, 0), actor(opponent, 1)],
     ai: { next: 0, input: emptyInput() }, paused: false, history: [] };
+  globalThis.CQC_PASS17_CORE_COSTUMES?.applyActors(s);
   if(mode==='chronicle'&&options.objective==='evade-fortune'&&['sonsOfLiberty','sonsArsenal','sonsHarrier'].includes(options.chapter)&&player==='raiden_mgs2'&&opponent==='fortune'){
  s.objective={id:'evade-fortune',duration:45*FPS};s.options.objective='evade-fortune';s.options.roundsToWin=1;s.timer=s.objective.duration;s.fighters[0].stance='gun';
  }else if(isQuietOptions(s.options)){
@@ -627,6 +639,7 @@ function resetTraining(s) {
 function nextRound(s) {
   const ids = s.fighters.map(f => f.id);
   s.fighters = ids.map((id,i) => actor(id,i));
+  globalThis.CQC_PASS17_CORE_COSTUMES?.applyActors(s);
   applyZanzibarLoadout(s);
   s.round++; initializeAcidHands(s); s.timer = FPS*99; s.phase = 'intro'; s.phaseFrames = 105;
   s.grapple=null;s.roundResult=null; s.projectiles=[]; s.hitstop = 0; s.ai = {next: 0, input: emptyInput()}; s.roundWinner = null;
@@ -4573,6 +4586,7 @@ function matchChecksum(s){
 function validateReplay(raw){
  if(!raw||raw.schema!==1||raw.build!==REPLAY_VERSION)throw new Error('Replay incompatible : version 0.30.0 requise. Conservez le moteur 0.9 pour les replays 0.9 (et chaque ancien moteur pour ses replays).');
  const o=raw.options;
+ if(o?.costumes!==undefined&&(!Array.isArray(o.costumes)||o.costumes.length!==2||o.costumes.some((costume,slot)=>!['original','nextgen'].includes(costume)||costume==='nextgen'&&!['snake','viper','runner_mg2','ninja_mg2','redblaster_mg2','jungle_evil'].includes(slot?o.opponent:o.player))))throw new Error('Costumes du replay invalides.');
  // Browser bridges may serialize inactive undefined fields as null. Only an actual river accepts a memory array.
  if(o?.encounter==='sorrow')normalizeSorrowMemory(o.sorrowMemory,true);
  else if(o?.sorrowMemory!=null)throw new Error('Échos sans rivière.');
@@ -4583,7 +4597,7 @@ function validateReplay(raw){
  if(!Array.isArray(raw.chunks)||raw.chunks.length>108000)throw new Error('Replay trop long ou invalide.');
  let frames=0;for(const c of raw.chunks){if(!Array.isArray(c)||c.length!==3||!c.every(Number.isInteger)||c[0]<1||c[0]>60000||c[1]<0||c[1]>32767||c[2]<0||c[2]>32767)throw new Error('Commandes invalides.');frames+=c[0];}
  if(frames>108000||frames<1||frames!==raw.frames||!/^([0-9a-f]{8})$/.test(raw.checksum))throw new Error('Durée ou empreinte invalide.');
- return {schema:1,build:REPLAY_VERSION,frames,chunks:raw.chunks.map(c=>[...c]),checksum:raw.checksum,options:{...(o.encounter==='sorrow'?{sorrowMemory:normalizeSorrowMemory(o.sorrowMemory,true)}:{}),...(relay?{relay}:{}),objective:isOuterRescueOptions(o)?'oh-rescue':isZanzibarOptions(o)?o.objective:isQuietOptions(o)?'quiet-nonlethal':isFinaleOptions(o)?FINALE_RULES.id:o.objective==='evade-fortune'?'evade-fortune':undefined,encounter:bossOptionValid(o)?o.encounter:undefined,mode:o.mode,player:o.player,opponent:o.opponent,difficulty:o.difficulty,seed:o.seed,stage:activeStage(o.stage).id,hud:['auto','hybrid',...CATALOG.hudProfiles.map(x=>x.id)].includes(o.hud)?o.hud:'auto',chapter:Object.hasOwn(CHRONICLES,o.chapter)?o.chapter:undefined,roundsToWin:o.roundsToWin===1?1:2,startHealth:Number.isFinite(o.startHealth)?clamp(o.startHealth,1,10000):10000}};
+ return {schema:1,build:REPLAY_VERSION,frames,chunks:raw.chunks.map(c=>[...c]),checksum:raw.checksum,options:{...(o.costumes!==undefined?{costumes:[...o.costumes]}:{}),...(o.encounter==='sorrow'?{sorrowMemory:normalizeSorrowMemory(o.sorrowMemory,true)}:{}),...(relay?{relay}:{}),objective:isOuterRescueOptions(o)?'oh-rescue':isZanzibarOptions(o)?o.objective:isQuietOptions(o)?'quiet-nonlethal':isFinaleOptions(o)?FINALE_RULES.id:o.objective==='evade-fortune'?'evade-fortune':undefined,encounter:bossOptionValid(o)?o.encounter:undefined,mode:o.mode,player:o.player,opponent:o.opponent,difficulty:o.difficulty,seed:o.seed,stage:activeStage(o.stage).id,hud:['auto','hybrid',...CATALOG.hudProfiles.map(x=>x.id)].includes(o.hud)?o.hud:'auto',chapter:Object.hasOwn(CHRONICLES,o.chapter)?o.chapter:undefined,roundsToWin:o.roundsToWin===1?1:2,startHealth:Number.isFinite(o.startHealth)?clamp(o.startHealth,1,10000):10000}};
 }
 function replayCursor(r){return {data:r,index:0,left:r.chunks[0]?.[0]??0,frame:0};}
 function nextReplayInput(c){if(c.frame>=c.data.frames)return null;const t=c.data.chunks[c.index];c.frame++;if(--c.left<=0){c.index++;c.left=c.data.chunks[c.index]?.[0]??0;}return [unpackInput(t[1]),unpackInput(t[2])];}
@@ -6236,6 +6250,7 @@ function createRenderer(canvas) {
   function pass16SpriteHooks(){return {getMove,manualImported:id=>artBank.status().some(row=>row.id===id),accessory:pass16CunninghamAccessory,portraitAccessory:(c,id,layer)=>pass16CunninghamAccessory(c,{...actor(id,0),id,facing:1},0,layer)};}
 
   function fighter(c,f,t) {
+    if(window.CQC_PASS17_CORE_COSTUMES?.drawFighter(c,f,t,{},pass16SpriteHooks()))return;
     if(artBank.draw(c,f,t))return;
     if(window.CQC_PASS16_CORE_SPRITES?.drawFighter(c,f,t,{},pass16SpriteHooks()))return;
     if(ROSTER[f.id]?.expansion024||ROSTER[f.id]?.legacy021||ROSTER[f.id]?.expansion022||ROSTER[f.id]?.expansion023){legacyFighter(c,f,t);return;}
@@ -8157,6 +8172,7 @@ function createRenderer(canvas) {
   /** Full-frame imported clips take priority. Temporary drawings use the same
    * two-actor trajectory but are explicitly not production sprite animations. */
   function drawActor(c,f,t,s){
+    if(window.CQC_PASS17_CORE_COSTUMES?.drawActor(c,f,t,s,pass16SpriteHooks()))return;
     if(artBank.hasAnimation(f.id,f.animKey,f.stance)){c.save();if(f.cloak>0)c.globalAlpha*=.42;fighter(c,f,t);c.restore();return;}
     if(window.CQC_PASS16_CORE_SPRITES?.drawActor(c,f,t,s,pass16SpriteHooks()))return;
     const key=f.animKey,visual={...f,health:Math.max(1,f.health)};
@@ -8265,6 +8281,8 @@ function createRenderer(canvas) {
     const c=target.getContext('2d');target.width=190;target.height=170;
     window.CQC_MACHINE_PARTS_BRIDGE?.cancelPortrait(target);
     window.CQC_PASS16_CORE_SPRITES?.cancelPortrait(target);
+    window.CQC_PASS17_CORE_COSTUMES?.cancelPortrait(target);
+    if(window.CQC_PASS17_CORE_COSTUMES?.drawPortrait(target,id,0,id===selection.player&&(target.closest('[data-player]')||!target.isConnected)?undefined:'original'))return;
     if(window.CQC_PASS16_CORE_SPRITES?.drawPortrait(target,id,pass16SpriteHooks()))return;
     if(id==='rex'||id==='ray'||id==='mgd'||id==='tx55'||id==='icbmg'||id==='raxa'||id==='gander'||id==='zeke'||id==='shagohod'||id==='sahelanthropus'||PW_AI_IDS.includes(id)){
       const nativePortraitMatch=id==='rex'?createBossMatch():id==='ray'?createRayMatch():id==='mgd'?createMgdMatch():id==='icbmg'?createIcbmgMatch():id==='tx55'?createTx55Match():id==='raxa'?createRaxaMatch():id==='gander'?createGanderMatch():id==='zeke'?createZekeMatch():id==='shagohod'?createShagohodMatch():id==='sahelanthropus'?createSahelMatch():createPwAiMatch({},id);
@@ -8285,8 +8303,13 @@ for(const id of Object.keys(BOSS_DEFS))if(![...$('boss-select').options].some(o=
  const option=document.createElement('option');option.value=id;option.textContent=(BOSS_DEFS[id].era==='mpo'?'PORTABLE OPS / ':'')+BOSS_DEFS[id].name;$('boss-select').append(option);
 }
 const renderer=createRenderer($('game'));
-function createMenuPreview(value){return createMatch({...value,mode:value.mode==='boss'?'boss':'local'});}
+function coreCostumeOptionsPass17(value){
+ const ids=[value.player,value.opponent],costumes=ids.map((id,slot)=>window.CQC_COSTUMES_PASS17?.chosen(slot,'core__'+id)||'original');
+ return costumes.some(costume=>costume!=='original')?{...value,costumes}:value;
+}
+function createMenuPreview(value){return createMatch({...coreCostumeOptionsPass17(value),mode:value.mode==='boss'?'boss':'local'});}
 let profile=readProfile(),selection={...profile.settings};
+let coreFlowPass17=null;
 const requestedMenuMode=new URLSearchParams(location.search).get('mode');
 if(['chronicle','training'].includes(requestedMenuMode))selection.mode=requestedMenuMode;
 if(requestedMenuMode==='chronicle'&&Object.hasOwn(CHRONICLES,selection.chapter))selection.player=CHRONICLES[selection.chapter].player;
@@ -8314,6 +8337,7 @@ function setEra(options){const h=selectHud(options);document.documentElement.sty
 function syncSelectionUI(){
  const selectedBoss=bossDefinition(selection.bossId);
  if(selection.mode==='boss')selection.player=selectedBoss.player;
+ window.CQC_COSTUMES_PASS17?.updateUI([{uid:'core__'+selection.player},{uid:'core__'+selection.opponent}]);
  $('boss-label').hidden=selection.mode!=='boss';$('boss-guide-menu').hidden=selection.mode!=='boss';
  $('roster-count').textContent=Object.keys(ROSTER).length+' COMBATTANTS';
  $('build-fighter-count').textContent=String(Object.keys(ROSTER).length);$('help-fighter-count').textContent=String(Object.keys(ROSTER).length);
@@ -8353,19 +8377,21 @@ function syncSelectionUI(){
  syncCompetitionEntry();
 }
 function menu(){
+ window.CQC_PASS17_CORE_COSTUMES?.cancelPendingLaunch();
  window.CQC_PASS16_CORE_SPRITES?.cancelPendingLaunch();
  window.CQC_MACHINE_PARTS_BRIDGE?.cancelPendingLaunch();
  syncControlBindings();
- audioBank.setMusic(null);audioBank.setPaused(true);playing=false;playback=null;recording=null;currentCompetition=null;currentRun=null;runOutcome=null;match.paused=false;clearInput();dummyRecording=false;dummyLoop=false;
+ audioBank.setMusic(null);audioBank.setPaused(true);playing=false;playback=null;recording=null;currentCompetition=null;currentRun=null;runOutcome=null;match.paused=false;clearInput();dummyRecording=false;dummyLoop=false;window.CQC_CORE_PAUSE_PASS17?.sync(false);
  for(const id of ['pause-panel','end-panel','brief-panel','training-tools','pause','playback-badge'])$(id).hidden=true;
  $('menu').hidden=false;document.body.classList.remove('playing');match=createMenuPreview(selection);renderer.reset();syncSelectionUI();$('start').focus();announce('Menu CQC Versus');
 }
 function pause(force=true){
  if(!playing||match.phase==='finished')return;
- match.paused=force;audioBank.setPaused(force);$('pause-panel').hidden=!force;accumulator=0;clearInput();$('pause').textContent=force?'REPRENDRE':'PAUSE';
+ match.paused=force;audioBank.setPaused(force);$('pause-panel').hidden=!force;accumulator=0;clearInput();$('pause').textContent=force?'REPRENDRE':'PAUSE';window.CQC_CORE_PAUSE_PASS17?.sync(force);
  if(force)$('resume').focus();else $('game').focus();
 }
 function launchMatch(options){
+ if(window.CQC_PASS17_CORE_COSTUMES?.deferCoreLaunch(options,launchMatch))return;
  window.CQC_PASS16_CORE_SPRITES?.cancelOnNewIntent(options);
  const encounter=options.encounter||(options.mode==='boss'?options.bossId:null);
  const stageID=options.mode==='boss'?bossDefinition(encounter).stage:options.mode==='chronicle'&&Object.hasOwn(BOSS_DEFS,encounter)?BOSS_DEFS[encounter].stage:options.stage;
@@ -8389,7 +8415,7 @@ function start(){
   if(profile.checkpoint&&!confirm('Commencer un nouveau parcours remplacera le checkpoint actuel. Continuer ?'))return;
   currentRun=makeRun(selection.mode,selection.player,selection.difficulty,selection.chapter,(Date.now()^1964)>>>0);saveCheckpoint();prepareEncounter();return;
  }
- currentRun=null;playback=null;trial=trialState($('trial-select').value);launchMatch({...selection,dummy:$('dummy').value,externalDummy:$('dummy').value==='external'});
+ currentRun=null;playback=null;trial=trialState($('trial-select').value);launchMatch({...coreCostumeOptionsPass17(selection),...coreFlowPass17?.getDuelRules(),dummy:$('dummy').value,externalDummy:$('dummy').value==='external'});
 }
 function saveCheckpoint(){const next=mergeProfiles(readProfile(),profile);next.checkpoint=currentRun&&!currentRun.done?currentRun:null;writeProfile(next);}
 function prepareEncounter(){
@@ -8549,7 +8575,7 @@ for(const h of CATALOG.hudProfiles)$('hud-select').add(new Option(h.label,h.id))
 for(const t of TRIALS)$('trial-select').add(new Option(t.name,t.id));
 for(const b of document.querySelectorAll('[data-mode]'))b.onclick=()=>{selection.mode=b.dataset.mode;if(selection.mode==='chronicle')selection.player=CHRONICLES[selection.chapter].player;if(selection.mode==='boss')selection.player=bossDefinition(selection.bossId).player;rememberSelection();match=createMenuPreview(selection);};
 for(const [id,key]of [['opponent','opponent'],['stage-select','stage'],['hud-select','hud'],['difficulty','difficulty'],['chapter','chapter'],['boss-select','bossId']])$(id).onchange=()=>{selection[key]=$(id).value;selection.hudPolicy='stage';if(id==='chapter')selection.player=CHRONICLES[selection.chapter].player;rememberSelection();match=createMenuPreview(selection);};
-$('start').onclick=start;$('resume-run').onclick=resumeRun;$('brief-start').onclick=()=>launchMatch(match.options);$('brief-back').onclick=menu;$('rematch').onclick=afterResult;$('back').onclick=menu;$('result-back').onclick=menu;
+$('start').onclick=()=>coreFlowPass17?.begin();$('resume-run').onclick=resumeRun;$('brief-start').onclick=()=>launchMatch(match.options);$('brief-back').onclick=menu;$('rematch').onclick=afterResult;$('back').onclick=menu;$('result-back').onclick=menu;
 $('pause').onclick=()=>pause(!match.paused);$('resume').onclick=()=>pause(false);$('help').onclick=help;$('pause-help').onclick=help;$('close-help').onclick=()=>closeDialog('help-dialog');
 $('debug').onclick=()=>{debug=!debug;$('debug').setAttribute('aria-pressed',String(debug));};$('reset-training').onclick=resetLab;
 $('dummy').onchange=()=>{match.options.dummy=$('dummy').value;match.options.externalDummy=$('dummy').value==='external';dummyLoop=false;dummyRecording=false;syncDummyButtons();$('game').focus();};
@@ -8594,6 +8620,19 @@ window.addEventListener('message',e=>{
 });
 if(embedded){document.body.classList.add('embedded');$('host-label').textContent='/ MODULE CODEC';$('exit-host').hidden=false;$('result-codec').hidden=false;}
 $('exit-host').onclick=()=>{if(playing)pause(true);hostEvent('exit');};$('result-codec').onclick=()=>hostEvent('open-codec');
+/* PASS17: standalone Core setup, without changing operation routes or checkpoints. */
+let coreStageRendererPass17=null,coreStagePreviewPass17=null,coreStagePreviewKeyPass17='';
+window.CQC_COSTUMES_PASS17.mountCore({document,getFighters:()=>[{uid:'core__'+selection.player},{uid:'core__'+selection.opponent}],onChange:()=>{window.CQC_PASS17_CORE_COSTUMES.cancelPendingLaunch();window.CQC_PASS16_CORE_SPRITES?.cancelPendingLaunch();syncSelectionUI();refreshPortraits();match=createMenuPreview(selection);}});
+coreFlowPass17=window.CQC_CORE_MATCH_FLOW_PASS17.mount({
+ document,
+ stages:playableStages().map(stage=>({...stage,ep:CATALOG.episodes.find(episode=>episode.id===stage.episodeId)?.title||CATALOG.episodes.find(episode=>episode.id===stage.episodeId)?.name||stage.episodeId})),
+ getSelection:()=>({...selection,p1Name:ROSTER[selection.player].name,p2Name:ROSTER[selection.opponent].name}),
+ setStage:id=>{if(!['cpu','local','training'].includes(selection.mode))return;selection.stage=id;selection.hudPolicy='stage';rememberSelection();match=createMenuPreview(selection);},
+ preloadStage:stage=>{window.CQC_PASS12_STAGE_BRIDGE?.preload(stage.id,'core').catch(()=>{});},
+ renderStage:(canvas,stage)=>{const imported=stageBank.status().some(row=>row.id===stage.id),nativeID=!imported&&window.CQC_PASS12_STAGE_BRIDGE?.resolve(stage.id,'core'),layers=window.CQC_STAGE_LAYERS;if(nativeID&&layers){const c=canvas.getContext('2d');c.save();try{c.setTransform(canvas.width/1280,0,0,canvas.height/720,0,0);c.clearRect(0,0,1280,720);c.fillStyle='#101820';c.fillRect(0,0,1280,720);const options={camera:0,zoom:1,time:performance.now()/1000,motion:!reducedMotion,preview:true,allowAmbientLuminance:false};if(layers.drawBackground(c,nativeID,options))layers.drawForeground(c,nativeID,options);}finally{c.restore();}return;}if(!coreStageRendererPass17)coreStageRendererPass17=createRenderer(canvas);const key=stage.id+'|'+selection.player+'|'+selection.opponent;if(coreStagePreviewKeyPass17!==key){coreStagePreviewPass17=createMenuPreview({...selection,stage:stage.id,mode:'local'});coreStagePreviewKeyPass17=key;coreStageRendererPass17.reset();}coreStageRendererPass17.draw(coreStagePreviewPass17,{time:performance.now()/1000,reducedMotion,menu:true,subtitles:false,flashes:false,cinematicCamera:false});},
+ start
+});
+window.CQC_CORE_MATCH_FLOW_PASS17_INSTANCE=coreFlowPass17;
 window.CQC={version:REPLAY_VERSION,catalogue:CATALOG,roster:ROSTER,get match(){return match;},get run(){return currentRun;},get playing(){return playing;},get replay(){return lastReplay;},get replayVerified(){return replayVerified;},getProfile:()=>JSON.parse(JSON.stringify(profile)),start,menu,pause,renderer,selectHud,activeStage,press:(slot,action)=>pressed[slot].add(action),watchReplay,artBank,audioBank,openWorkshop,getPresentation:()=>({...profile.presentation}),getFinale:()=>match.finale?JSON.parse(JSON.stringify({...match.finale,segment:FINALE_SEGMENTS[match.finale.index]})):null};
 // Test harness is absent unless explicitly enabled before the bundle loads.
 if(window.__CQC_TEST__===true)window.CQC.testing={
@@ -8937,6 +8976,26 @@ function showMoveBook(){
 for(const f of Object.values(ROSTER))$('movebook-fighter').add(new Option(f.name,f.id));
 $('open-movebook').onclick=()=>{if(playing&&!match.paused)pause(true);$('movebook-fighter').value=playing?match.fighters[0].id:selection.player;showMoveBook();$('movebook-dialog').showModal();};
 $('pause-movebook').onclick=$('open-movebook').onclick;
+
+// Pause dossiers read the active Core actors and the existing move-book rules.
+function corePauseCommandPass17(input,who){
+ const controls=profile.controls.players[who],legend=action=>controlLegend(controls[action],profile.controls.layout);
+ const [command,...suffix]=String(input).split(' / ');
+ return command.replace(/\b[A-D]\b/g,key=>legend(key.toLowerCase())).replace(/Projection/g,legend('throw')).replace(/Super/g,legend('super')).replace(/Saut/g,legend('jump')).replace(/Bas/g,legend('down'))+(suffix.length?' / '+suffix.join(' / '):'');
+}
+function corePauseProfilePass17(who,kind){
+ const actor=match.fighters[who],f=ROSTER[actor.id],episode=(actor.era||f?.era||'CQC').toUpperCase();
+ if(match.boss){
+  const detail=$('game').getAttribute('aria-label')||'',note=kind==='finishers'?'Cette rencontre utilise ses propres conditions de neutralisation. Consultez le guide de la rencontre.':'Les armes, cibles et actions de cette rencontre suivent son guide de combat.';
+  return{name:who?bossDefinition(match.boss.id).name:(actor.name||f?.name||actor.id),episode,note,rows:who?[]:[{name:'COMMANDES DE LA RENCONTRE',description:detail}]};
+ }
+ const list=moveBookData(actor.id),rows=(kind==='finishers'?list.filter(move=>move.input==='Super'):list).map(move=>({name:(kind==='finishers'?'SUPER · ':'')+move.label,command:corePauseCommandPass17(move.input,who),detail:move.startup+' / '+move.active+' / '+move.recovery+' IMAGES · '+(move.utility?'UTILITAIRE':move.vigilanceDamage?move.vigilanceDamage+' VIGILANCE / 0 VIE':move.shots>1?move.shots+' × '+move.damage+' DÉGÂTS':move.damage+' DÉGÂTS')+' · COÛT '+move.cost}));
+ let note=kind==='finishers'?'Aucun finisher dédié dans ce moteur. '+(rows.length?'Le Super ci-dessous reste un coup de combat et utilise les conditions et ressources affichées.':'Aucun Super disponible dans ce chargement.') :f?.tip||'';
+ if(kind==='finishers'&&match.finale){const segment=FINALE_SEGMENTS[match.finale.index];note+=' '+segment.title+' — '+segment.hint;}
+ return{name:actor.name||f?.name||actor.id,episode,note,rows};
+}
+window.CQC_CORE_PAUSE_PASS17?.mount({profile:corePauseProfilePass17,abandon:()=>{menu();if(embedded)hostEvent('exit');else if(parent!==window)parent.postMessage({type:'cqc-admin-close'},'*');else location.href='../index.html';}});
+
 $('movebook-fighter').onchange=showMoveBook;$('close-movebook').onclick=()=>closeDialog('movebook-dialog');
 $('roster-filter').onchange=()=>{const era=$('roster-filter').value;for(const b of document.querySelectorAll('[data-player]'))b.hidden=era==='expansion024'?!ROSTER[b.dataset.player].expansion024:era==='expansion023'?!ROSTER[b.dataset.player].expansion023:era==='expansion022'?!ROSTER[b.dataset.player].expansion022:era==='legacy021'?!ROSTER[b.dataset.player].legacy021:era!=='all'&&ROSTER[b.dataset.player].era!==era;};
 $('movebook-lab').onclick=()=>{if(playing&&!confirm('Ouvrir un nouvel entraînement ? Le duel actuel sera quitté, mais le checkpoint du parcours restera sauvegardé.'))return;const id=$('movebook-fighter').value;closeDialog('movebook-dialog');menu();selection.player=id;selection.mode='training';selection.opponent=ROSTER[id].rival||'solid';selection.stage=ROSTER[id].stage;rememberSelection();start();};

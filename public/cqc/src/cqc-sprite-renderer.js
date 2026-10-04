@@ -5,9 +5,11 @@
   if (typeof module === 'object' && module.exports) module.exports = api;
   root.CQC_COMBAT_SPRITES = api;
   if (root.CQC_COMBAT_SPRITE_CATALOG) api.configure(root.CQC_COMBAT_SPRITE_CATALOG);
+  if (root.CQC_COMBAT_COSTUME_CATALOG) api.configureCostumes(root.CQC_COMBAT_COSTUME_CATALOG);
 })(globalThis, function (root) {
   'use strict';
   const entries = new Map(), images = new Map(), clocks = new Map(), entryFiles = new Map();
+  const costumeEntries = new Map(), costumeFiles = new WeakMap();
   // Capture while this script executes: later album/iframe configuration has no currentScript.
   const ownScriptURL = root.document?.currentScript?.src || null;
   const checks = ['identity', 'costume', 'equipment', 'anatomicalSides', 'singleFigure', 'transparentBackground'];
@@ -64,6 +66,30 @@
     }
     return { accepted: entries.size, rejected };
   }
+  // Costumes stay private to the renderer. Original catalogue entries and UIDs never change.
+  function entryFor(uid, options = {}) {
+    const costume = typeof options.costume === 'string' ? options.costume : 'original';
+    return costume !== 'original' && costumeEntries.get(uid)?.get(costume) || entries.get(uid);
+  }
+  function configureCostumes(catalog) {
+    costumeEntries.clear();
+    if (!catalog || catalog.schema !== 'cqc.combat-costumes/1' || !catalog.entries) return { accepted: 0, rejected: [] };
+    let accepted = 0; const rejected = [];
+    for (const [uid, record] of Object.entries(catalog.entries)) {
+      if (!record || record.default !== 'original' || !Array.isArray(record.options)) { rejected.push(uid); continue; }
+      const variants = new Map();
+      for (const option of record.options) {
+        if (option?.id === 'original') continue;
+        if (!option || !/^[a-z0-9_-]+$/.test(option.id || '') || !validateEntry(uid, option.sprite) || !option.sprite.oppositeActions || option.sprite.mirror === true || variants.has(option.id)) { rejected.push(uid + ':' + (option?.id || '?')); continue; }
+        const entry = option.sprite, files = new Map();
+        for (const action of [...Object.values(entry.actions), ...Object.values(entry.oppositeActions)])
+          for (const frame of action.frames) files.set(frame.file, frame);
+        costumeFiles.set(entry, [...files.values()]); variants.set(option.id, entry); accepted++;
+      }
+      if (variants.size) costumeEntries.set(uid, variants);
+    }
+    return { accepted, rejected };
+  }
   function getImage(frame) {
     const key = frame.file;
     if (images.has(key)) return images.get(key);
@@ -110,9 +136,9 @@
     const index = action.loop ? raw % action.frames.length : Math.min(raw, action.frames.length - 1);
     return { frame: action.frames[index], requested, action: entry.actions[requested] ? requested : 'idle', index };
   }
-  function has(uid) { return entries.has(uid); }
+  function has(uid, options = {}) { return !!entryFor(uid, options); }
   function framesFor(entry, options = {}) {
-    if (!options.action) return entryFiles.get(entry.uid);
+    if (!options.action) return costumeFiles.get(entry) || entryFiles.get(entry.uid) || [];
     const face = options.face === -1 || options.face === 1 ? options.face : entry.facing;
     const directional = face !== entry.facing && entry.oppositeActions ? entry.oppositeActions : entry.actions;
     return directional[options.action]?.frames || [];
@@ -129,23 +155,23 @@
     return [...records];
   }
   function preload(uid, options = {}) {
-    const entry = entries.get(uid); if (!entry) return false;
+    const entry = entryFor(uid, options); if (!entry) return false;
     return recordsFor(entry, options).length > 0;
   }
   function whenReady(uid, options = {}) {
-    const entry = entries.get(uid);
+    const entry = entryFor(uid, options);
     if (!entry) return Promise.resolve(false);
     const records = recordsFor(entry, options);
     return Promise.all(records.map(record => record.promise)).then(results => results.length > 0 && results.every(Boolean));
   }
   function status(uid, options = {}) {
-    const entry = entries.get(uid);
+    const entry = entryFor(uid, options);
     if (!entry) return { uid, renderer: 'procedural-canvas', coverage: 'pending-art-review', ready: false };
     const states = [...new Set(framesFor(entry, options).map(f => images.get(f.file)?.state || 'not-requested'))];
     return { uid, renderer: 'png', coverage: entry.coverage, actions: Object.keys(entry.actions), oppositeActions: Object.keys(entry.oppositeActions || {}), states, ready: states.length === 1 && states[0] === 'ready', limits: entry.review.limits };
   }
   function drawFitted(c, fighter, box, face = -1, pose = {}) {
-    const entry = entries.get(fighter?.uid);
+    const entry = entryFor(fighter?.uid, fighter || {});
     if (!entry || !box || ![box.x, box.y, box.width, box.height].every(finite) || box.width <= 0 || box.height <= 0 || ![1, -1].includes(face)) return false;
     const opposite = face !== entry.facing && entry.oppositeActions;
     if (face !== entry.facing && !opposite && entry.mirror !== true) return false;
@@ -166,7 +192,7 @@
     return draw(c, fighter, x, y, face, fit, { ...pose, actionTime: finite(pose.actionTime) ? pose.actionTime : 0, entityKey: pose.entityKey || `portrait:${entry.uid}:${face}` });
   }
   function draw(c, fighter, x, y, face = 1, scale = 1, pose = {}) {
-    const entry = entries.get(fighter && fighter.uid);
+    const entry = entryFor(fighter && fighter.uid, fighter || {});
     if (!entry || !c || ![x, y, scale].every(finite) || scale <= 0 || ![1, -1].includes(face)) return false;
     const opposite = face !== entry.facing && entry.oppositeActions;
     if (face !== entry.facing && !opposite && entry.mirror !== true) return false;
@@ -190,7 +216,7 @@
     c.save();
     try {
       c.translate(x, y); c.scale(scale * (face === entry.facing || opposite ? 1 : -1), scale);
-      c.imageSmoothingEnabled = false;
+      c.imageSmoothingEnabled = entry.renderStyle === 'painted';
       if (frame.clipPolygon) {
         c.beginPath();
         frame.clipPolygon.forEach((p, i) => {
@@ -203,5 +229,5 @@
     } finally { c.restore(); }
     return true;
   }
-  return { configure, draw, drawFitted, has, preload, whenReady, status, validateEntry, actionName, selectFrame };
+  return { configure, configureCostumes, getEntry: entryFor, draw, drawFitted, has, preload, whenReady, status, validateEntry, actionName, selectFrame };
 });

@@ -15,6 +15,12 @@
     'mgs1-shadow-moses-heliport': 'shadow_heliport',
     'mgs2-tanker-pont-exterieur': 'tanker_deck',
     'mgs2-big-shell-heliport': 'big_shell',
+    // Generic Big Shell platform reuses the reviewed Strut E exterior; specific other struts/bridges stay distinct.
+    'mgs2-big-shell-plateforme-et-passerelles': 'big_shell',
+    // Same MSF Mother Base complex: approved ZEKE deck is a closest-supported generic platform adaptation.
+    'pw-mother-base-msf': 'mother_base',
+    // Ground Zeroes night perimeter shares the approved Camp Omega incarnation.
+    'gz-camp-omega-perimetre': 'camp_omega',
     'mgs2-arsenal-gear-interieur': 'arsenal_corridor',
     'mgs4-outer-haven-sommet': 'outer_haven',
     'mgs4-moyen-orient-rue': 'middle_east',

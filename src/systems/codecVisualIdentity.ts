@@ -43,7 +43,7 @@ const identities: Record<EraId, CodecVisualIdentity> = {
     dialogueLabel: 'RADIO TEXT',
     portraitMode: 'text',
     supportsClassicTuning: true,
-    visualFeatureLabels: ['8-BIT TERMINAL', 'TEXT PORTRAITS', 'HARD PIXELS']
+    visualFeatureLabels: ["MG1 HORIZONTAL / MG2 HANDSET","SOURCE FRAME PIXELS","RED / GREEN READOUTS"]
   },
   mgs1: {
     era: 'mgs1',
@@ -58,7 +58,7 @@ const identities: Record<EraId, CodecVisualIdentity> = {
     dialogueLabel: 'CODEC LINK',
     portraitMode: 'crt',
     supportsClassicTuning: true,
-    visualFeatureLabels: ['TWIN PORTRAITS', 'GREEN CRT', 'MEMORY CHANNELS']
+    visualFeatureLabels: ["CONTACT / PLAYER WINDOWS","PTT RECEIVER","MEMORY CHANNELS"]
   },
   mgs2: {
     era: 'mgs2',
@@ -73,7 +73,7 @@ const identities: Record<EraId, CodecVisualIdentity> = {
     dialogueLabel: 'DIGITAL TRANSMISSION',
     portraitMode: 'digital',
     supportsClassicTuning: true,
-    visualFeatureLabels: ['GREEN MONOCHROME', 'ILLUSTRATED PORTRAITS', 'CAMERA REACTION']
+    visualFeatureLabels: ["PTT DIGITAL RECEIVER","OFFICIAL FIXED FRAMES","MEMORY / TUNE"]
   },
   mgs3: {
     era: 'mgs3',
@@ -88,7 +88,7 @@ const identities: Record<EraId, CodecVisualIdentity> = {
     dialogueLabel: 'FIELD TRANSMISSION',
     portraitMode: 'radio_lcd',
     supportsClassicTuning: true,
-    visualFeatureLabels: ['MONOCHROME RADIO', 'MEM / SEND / TUNE', 'PERSONAL DATA']
+    visualFeatureLabels: ["SMALL CONTACT PHOTO","MEM / SEND / TUNE","FIELD DOSSIER"]
   },
   mgs4: {
     era: 'mgs4',
@@ -103,7 +103,7 @@ const identities: Record<EraId, CodecVisualIdentity> = {
     dialogueLabel: 'SECURE VIDEO FEED',
     portraitMode: 'video',
     supportsClassicTuning: false,
-    visualFeatureLabels: ['CINEMATIC FEEDS', 'SOP STATUS', 'AMBER WARNINGS']
+    visualFeatureLabels: ["CONTACT WINDOW LEFT","RECEIVER GRID RIGHT","SOURCE MANUAL FRAME"]
   },
   peace_walker: {
     era: 'peace_walker',
@@ -118,7 +118,7 @@ const identities: Record<EraId, CodecVisualIdentity> = {
     dialogueLabel: 'BRIEFING TRANSCRIPT',
     portraitMode: 'dossier',
     supportsClassicTuning: false,
-    visualFeatureLabels: ['MSF DOSSIER', 'BRIEFING CARDS', 'MISSION FILE INDEX']
+    visualFeatureLabels: ["BRIEFING TOPIC LIST","RED SELECTED ROW","CONTACT PHOTO CARD"]
   },
   mgsv: {
     era: 'mgsv',
@@ -133,7 +133,7 @@ const identities: Record<EraId, CodecVisualIdentity> = {
     dialogueLabel: 'INTEL TRANSCRIPT',
     portraitMode: 'hologram',
     supportsClassicTuning: false,
-    visualFeatureLabels: ['HOLOGRAPHIC DECK', 'WAVEFORM', 'INTEL CARDS']
+    visualFeatureLabels: ["BLUE CASSETTE OVERLAY","REAL TRANSPORT CONTROLS","MSF / DIAMOND DOGS"]
   },
   vr_simulation: {
     era: 'vr_simulation',

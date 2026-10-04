@@ -369,9 +369,10 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
   const portraitRoutingContext = selectedEra === 'mgs1'
     ? { contextId: currentContext.id, flags: currentContext.flags }
     : undefined;
-  const contactPortraitImage = (activeCall && settings.voicePackEnabled
+  const customContactPortraitImage = activeCall && settings.voicePackEnabled
     ? resolvePortraitAsset(activeCall.contact.id, portraitExpression, activeCall.contact.era, voicePackState)
-    : undefined) ?? (settings.builtInPortraitsEnabled
+    : undefined;
+  const contactPortraitImage = customContactPortraitImage ?? (settings.builtInPortraitsEnabled
       ? getCharacterPortrait(routedPortraitContactId, portraitExpression, portraitRoutingContext) ?? getBuiltInPortrait(selectedEra, 'contact')
       : undefined);
   const playerPortraitImage = settings.builtInPortraitsEnabled
@@ -1063,8 +1064,7 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
             {activeCall.subjectId && <span className="call-subject-label"> {activeCall.subjectId.replace('_', ' ')}</span>}
             {typeof currentLine.glitchLevel === 'number' && currentLine.glitchLevel > 0 && <span className="glitch-level"> GLITCH {currentLine.glitchLevel}</span>}
           </div>
-          <p>{localizedLineText}</p>
-          <span className="portrait-expression">EXPRESSION: {portraitExpression.toUpperCase()}</span>
+          {!settings.subtitlesEnabled && <p>{localizedLineText}</p>}
           <SubtitleTrack
             speaker={getSpeakerLabel(currentLine.speaker, activeCall.contact)}
             text={currentLine.localizedText ?? currentLine.text}
@@ -1081,7 +1081,7 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
         </>
       ) : (
         <p className="idle-copy">
-          {visualIdentity.dialogueLabel}: select a context and route a contact. Current state: <strong>{codecState.toUpperCase()}</strong>
+          {codecState === 'no_response' || codecState === 'signal_jammed' ? 'NO RESPONSE' : ''}
         </p>
       )}
     </div>
@@ -1102,6 +1102,8 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
       </button>
       {sidePanel && <button type="button" className="codec-drawer-backdrop" aria-label="Close Codec tools drawer" onClick={() => setSidePanel(null)} />}
       <Panel className="codec-main-panel">
+        <details className="codec-operation-setup">
+          <summary>Époque et opération · {currentEra.name}</summary>
         <div className="codec-topbar">
           <StatusBadge label={message} tone={getToneForState(codecState, scan.status)} />
           <StatusBadge label={scanLabel} tone={scan.status === 'stable' ? 'success' : scan.status === 'weak' ? 'warning' : scan.status === 'patriots_corrupt' ? 'warning' : 'neutral'} />
@@ -1130,12 +1132,16 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
           </div>
         </div>
 
+        </details>
+
         <CodecVisualStage
           era={selectedEra}
           identity={visualIdentity}
           contextName={currentContext.name}
           chapterLabel={currentContext.chapterId.replace(/_/g, ' ')}
           playerName={selectedPlayer?.name ?? 'Unknown'}
+          playerId={settings.builtInPortraitsEnabled ? selectedPlayer?.portraitId ?? selectedPlayer?.id : undefined}
+          contactId={settings.builtInPortraitsEnabled && !customContactPortraitImage ? displayContact?.id : undefined}
           contactName={visualContactName}
           contactRole={displayContact?.role}
           contactAccess={selectedAvailability?.access}
@@ -1145,11 +1151,19 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
           leftPortrait={leftPortrait}
           rightPortrait={rightPortrait}
           topicSelector={topicSelectorPanel}
+          briefingTopics={topics.map(({ id, label }) => ({ id, label }))}
+          selectedTopicId={selectedTopic?.id}
+          onTopicSelect={selectTopic}
           dialogue={dialoguePanel}
           utilityActions={utilityActions}
           onTune={tune}
           onFrequencyInput={setFrequencyFromInput}
           onCall={callFrequency}
+          onMemory={() => setSidePanel(sidePanel === 'memory' ? null : 'memory')}
+          onStop={() => endCall(false)}
+          onNext={nextLine}
+          onPrevious={() => { if (activeCall) setLineIndex((index) => Math.max(0, index - 1)); }}
+          callStartedAt={callStartedAtRef.current}
         />
       </Panel>
 
