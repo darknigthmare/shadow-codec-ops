@@ -68,6 +68,7 @@
   function deferCoreLaunch(options,resume){
     const ids=[options.player,options.opponent],jobs=[];
     ids.forEach((id,slot)=>{const uid=uidFor(id);if(uid)jobs.push({uid,slot,costume:choices()?.normalize(uid,options.costumes?.[slot])||'original'});});
+    loader()?.retainFighters(ids.map((id,slot)=>({uid:'core__'+id,costume:choices()?.normalize('core__'+id,options.costumes?.[slot])||'original'})));
     const key=JSON.stringify(options);if(pending&&pending.key!==key)cancelPendingLaunch();
     if(!jobs.length||jobs.every(job=>loader()?.status(job.uid,{costume:job.costume})?.ready))return false;
     if(pending)return true;previousFocus=root.document?.activeElement||null;

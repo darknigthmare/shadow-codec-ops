@@ -1,4 +1,4 @@
-/* Core uses the twenty PASS16 native fighters through the existing decoded sprite loader. */
+/* Core uses every reviewed native Core entry through the decoded sprite loader. */
 (function(root,factory){
   'use strict';
   const api=factory(root);
@@ -12,8 +12,8 @@
   const clamp=value=>Math.max(0,Math.min(1,value));
   const loader=()=>root.CQC_COMBAT_SPRITES;
   function uidFor(id){
-    const uid='core__'+id,list=root.CQC_PASS16_SPRITE_UIDS;
-    return Array.isArray(list)&&list.includes(uid)?uid:null;
+    const uid='core__'+id;
+    return loader()?.has(uid)===true?uid:null;
   }
   function metadata(uid){return root.CQC_COMBAT_SPRITE_CATALOG?.entries?.[uid]||null;}
   function imported(id,hooks){return hooks?.manualImported?.(id)===true;}
@@ -56,7 +56,11 @@
       }else if(f.slot===g.target){pose.ko=g.t>=g.impact;pose.hit=!pose.ko;}
       return pose;
     }
-    if(attack&&!pose.ko&&!pose.hit){
+    // A recovering native actor uses its reviewed roll/get-up image; legacy sheets keep their existing mapping.
+    if(key==='getup'&&!pose.ko&&entry?.actions?.roll&&entry.actions.idle.frames[0].file.startsWith('assets/combat-sprites-pass18/')){
+      pose.getup=true;pose.hit=false;pose.crouch=false;pose.walk=false;
+    }
+    if(attack&&!pose.ko&&!pose.hit&&!pose.getup){
       pose.attack=true;pose.animationActive=true;pose.moveSlot=slotFor(f,move);pose.actionTime=Math.max(0,finite(attack.t))/60;
       Object.assign(pose,attackPhase(Math.max(0,finite(attack.t)),move));
       // Card decks and reload commands resolve their actual existing move, rather than a guessed slot.
@@ -64,6 +68,7 @@
       if(move?.acidCard){action=move.projectile?(/grenade|mine|smoke/i.test(move.projectile.kind||'')?'deploy':'shoot'):move.level==='low'?'low':move.level==='throw'?'throw':move.blade?'blade':move.utility?'recover':'punch';}
       else if(/reload|cylinder/i.test(move?.utility||''))action='reload';
       else if(move?.utility==='legacyCharge')action='recover';
+      else if(/puppet/i.test(move?.projectile?.kind||''))action='deploy';
       else if(!pose.moveSlot&&move?.projectile)action=/grenade|mine/i.test(move.projectile.kind||'')?'deploy':'shoot';
       if(action)pose.moveSlot=matchingSlot(entry,action)||pose.moveSlot;
     }
@@ -75,10 +80,11 @@
     c.save();
     try{
       if(f.cloak>0)c.globalAlpha*=.42;
-      const hovering=f.id==='cunningham',floatY=hovering?-34+Math.sin(finite(t)*3)*3:0;
+      const hovering=f.id==='cunningham',floatY=hovering?-(root.CQC_PASS18_MACHINES?.accessoryHeight?.()||34)+Math.sin(finite(t)*3)*3:0;
       if(hovering){c.translate(f.hitstun?-8:0,floatY);hooks.accessory?.(c,f,t,'under');}
       const nativeHeight=finite(metadata(uid)?.displayHeight,265);
-      loader()?.draw(c,{uid},0,0,face,265/(nativeHeight>0?nativeHeight:265),pose);
+      const targetHeight=finite(metadata(uid)?.coreDisplayHeight,nativeHeight);
+      loader()?.draw(c,{uid},0,0,face,targetHeight/(nativeHeight>0?nativeHeight:265),pose);
       if(hovering)hooks.accessory?.(c,f,t,'over');
     }finally{c.restore();}
     // Decoded readiness is required before launch. A mapped native fighter never flashes a procedural fallback.
@@ -89,6 +95,8 @@
     const c=target.getContext('2d');c.clearRect(0,0,target.width,target.height);c.save();c.fillStyle='#101f22';c.fillRect(0,0,target.width,target.height);c.fillStyle='#d7cc95';c.font='11px Arial,sans-serif';c.textAlign='center';c.fillText(message,target.width/2,target.height/2);c.restore();
   }
   function drawPortrait(target,id,hooks={}){
+    cancelPortrait(target);root.CQC_PASS18_MACHINES?.cancelPortrait(target);
+    if(!imported(id,hooks)&&root.CQC_PASS18_MACHINES?.hasComposite('core__'+id))return root.CQC_PASS18_MACHINES.drawPortrait(target,'core__'+id,()=>drawPortrait(target,id,hooks));
     const uid=eligible(id,hooks);if(!uid)return false;
     cancelPortrait(target);
     const token={uid,cancelled:false,number:++serial};portraits.set(target,token);
@@ -133,30 +141,41 @@
   function showDialog(error=false){const d=ensureDialog();if(!d)return;d.node.hidden=false;d.node.style.display='grid';d.message.textContent=error?'Dossier inaccessible. Réessayez.':'Liaison tactique…';d.retry.hidden=!error;(error?d.retry:d.cancel).focus();}
   function hideDialog(restore=false){if(dialog){dialog.node.hidden=true;dialog.node.style.display='none';}if(restore&&focusBefore?.isConnected)focusBefore.focus?.();focusBefore=null;}
   function cancelPendingLaunch(){if(pending)pending.cancelled=true;pending=null;++serial;hideDialog(true);}
+  function machineJobs(options,hooks={}){const ids=hooks.actorIDs?.(options)||[options.player,options.opponent];return [...new Set(ids.filter(id=>!imported(id,hooks)).map(id=>'core__'+id).filter(uid=>root.CQC_PASS18_MACHINES?.hasComposite(uid)))];}
+  function machineReady(uid){const api=root.CQC_PASS18_MACHINES;if(uid==='core__cunningham')return api?.ready(uid);return api?.ready(api.physical(uid,1))&&api?.ready(api.physical(uid,-1));}
   function launchUIDs(options,hooks={}){
+    return [...new Set(launchJobs(options,hooks).map(job=>job.uid))];
+  }
+  function launchJobs(options,hooks={}){
     const ids=hooks.actorIDs?.(options)||[options.player,options.opponent];
-    return [...new Set(ids.map(id=>eligible(id,hooks)).filter(Boolean))];
+    const jobs=new Map();
+    ids.forEach((id,slot)=>{const uid=eligible(id,hooks);if(uid){
+      const costume=root.CQC_COSTUMES_PASS17?.normalize(uid,options.costumes?.[slot])||'original';
+      jobs.set(uid+':'+costume,{uid,costume});
+    }});
+    return [...jobs.values()];
   }
   async function beginReadiness(ticket,retry=false){
     if(ticket.cancelled||pending!==ticket)return;
     ticket.attempt++;const attempt=ticket.attempt;showDialog(false);
     let results;
-    try{results=await Promise.all(ticket.uids.map(uid=>loader()?.whenReady(uid,retry?{retry:true}: {})??Promise.resolve(false)));}
+    try{results=await Promise.all([...ticket.jobs.map(job=>loader()?.whenReady(job.uid,{costume:job.costume,...retry?{retry:true}: {}})??Promise.resolve(false)),...ticket.machineJobs.map(uid=>root.CQC_PASS18_MACHINES.whenReadyComposite(uid,{retry}))]);}
     catch{results=[];}
     if(ticket.cancelled||pending!==ticket||attempt!==ticket.attempt)return;
-    if(results.length===ticket.uids.length&&results.every(ok=>ok===true)&&ticket.uids.every(uid=>ready(uid))){
+    if(results.length===ticket.jobs.length+ticket.machineJobs.length&&results.every(ok=>ok===true)&&ticket.jobs.every(job=>ready(job.uid,{costume:job.costume}))&&ticket.machineJobs.every(machineReady)){
       const resume=ticket.resume,options=ticket.options;pending=null;hideDialog(false);resume(options);
     }else showDialog(true);
   }
   function deferCoreLaunch(options,resume,hooks={}){
-    const uids=launchUIDs(options,hooks),key=JSON.stringify(options);
+    const jobs=launchJobs(options,hooks),machineUIDs=machineJobs(options,hooks),uids=[...new Set([...jobs.map(job=>job.uid),...machineUIDs])],key=JSON.stringify(options);
+    loader()?.retainFighters(jobs);
     if(pending){if(pending.key===key)return true;cancelPendingLaunch();}
-    if(!uids.length||uids.every(uid=>ready(uid)))return false;
+    if(jobs.every(job=>ready(job.uid,{costume:job.costume}))&&machineUIDs.every(machineReady))return false;
     focusBefore=root.document?.activeElement||null;
-    const ticket={number:++serial,key,uids,options:{...options},resume,cancelled:false,attempt:0};pending=ticket;beginReadiness(ticket,false);return true;
+    const ticket={number:++serial,key,uids,jobs,machineJobs:machineUIDs,options:{...options},resume,cancelled:false,attempt:0};pending=ticket;beginReadiness(ticket,false);return true;
   }
   function cancelOnNewIntent(options){if(pending&&pending.key!==JSON.stringify(options))cancelPendingLaunch();}
   root.addEventListener?.('pagehide',cancelPendingLaunch);
   root.document?.addEventListener('change',event=>{if(pending&&['SELECT','INPUT'].includes(event.target?.tagName))cancelPendingLaunch();},true);
-  return {version:'pass16-core-sprites/1',uidFor,poseFor,drawActor,drawFighter:drawActor,cancelPortrait,drawPortrait,deferCoreLaunch,cancelPendingLaunch,cancelOnNewIntent,launchUIDs,pendingState:()=>pending?{uids:[...pending.uids],attempt:pending.attempt}:null};
+  return {version:'pass18-core-sprites/1',uidFor,poseFor,drawActor,drawFighter:drawActor,cancelPortrait,drawPortrait,deferCoreLaunch,cancelPendingLaunch,cancelOnNewIntent,launchUIDs,launchJobs,pendingState:()=>pending?{uids:[...pending.uids],jobs:pending.jobs.map(job=>({...job})),attempt:pending.attempt}:null};
 });

@@ -43,22 +43,41 @@
       errors.push('At least three separate image layers are required.');
       return errors;
     }
-    const ids = new Set(), paths = new Set(), hashes = new Set(), depths = new Set();
-    let hasGround = false, hasForeground = false, opaqueBackground = false;
+    const ids = new Set(), samples = [], paths = new Map(), hashes = new Map(), depths = new Set();
+    let hasGround = false, hasForeground = false;
+    // A reviewed solid canvas backing can complete semi-transparent native atlas planes.
+    // Record that backing explicitly instead of claiming the generated PNG is opaque.
+    let opaqueBackground = /^#[a-f0-9]{6}$/i.test(stage.opaqueBackingColor || '') &&
+      stage.opaqueBackingReviewed === true && stage.layers.some(layer => layer.sourceRect);
     for (const layer of stage.layers) {
       if (!layer || typeof layer !== 'object') { errors.push('Invalid image layer.'); continue; }
       if (!layer.id || ids.has(layer.id)) errors.push('Layer IDs must be unique.');
-      if (!localPath(layer.file) || !/\.png$/i.test(layer.file) || paths.has(layer.file))
-        errors.push('Layer files must be distinct local PNG paths.');
-      if (!HASH.test(layer.sha256 || '') || hashes.has(layer.sha256)) errors.push('Distinct SHA-256 values are required.');
+      if (!localPath(layer.file) || !/\.png$/i.test(layer.file))
+        errors.push('Layer files must be local PNG paths.');
+      if (!HASH.test(layer.sha256 || '')) errors.push('Valid SHA-256 values are required.');
       if (!PHASES.has(layer.phase) || !ROLES.has(layer.role)) errors.push('Invalid layer phase or role.');
       if (!finite(layer.parallax) || layer.parallax < 0 || layer.parallax > 1.5) errors.push('Invalid parallax depth.');
       if (!finite(layer.width) || !finite(layer.height) || layer.width < 1 || layer.height < 1)
         errors.push('Original image dimensions are required.');
+      const source = layer.sourceRect;
+      if (source && (!['x', 'y', 'width', 'height'].every(key => Number.isInteger(source[key])) ||
+          source.x < 0 || source.y < 0 || source.width < 1 || source.height < 1 ||
+          source.x + source.width > layer.width || source.y + source.height > layer.height))
+        errors.push('Atlas source rectangle must fit the original image in whole pixels.');
+      const previous = paths.get(layer.file);
+      if (previous && (!source || !previous.sourceRect || previous.sha256 !== layer.sha256 ||
+          previous.width !== layer.width || previous.height !== layer.height))
+        errors.push('Shared atlas layers require consistent dimensions, hash and bounded source rectangles.');
+      if (hashes.has(layer.sha256) && hashes.get(layer.sha256) !== layer.file)
+        errors.push('A repeated image hash must reference the same registered atlas.');
+      if (source && samples.some(item => item.file === layer.file && item.source &&
+          source.x < item.source.x + item.source.width && item.source.x < source.x + source.width &&
+          source.y < item.source.y + item.source.height && item.source.y < source.y + source.height))
+        errors.push('Atlas planes must not overlap.');
       const rect = layer.rect;
       if (!rect || ![rect.x, rect.y, rect.width, rect.height].every(finite) || rect.width <= 0 || rect.height <= 0)
         errors.push('A valid image placement is required.');
-      else if (Math.abs(rect.width / rect.height - layer.width / layer.height) > .015)
+      else if (Math.abs(rect.width / rect.height - (source?.width || layer.width) / (source?.height || layer.height)) > .015)
         errors.push('Layer placement must preserve the original aspect ratio.');
       if (layer.phase === 'foreground' && !layer.transparent) errors.push('Foreground PNG must contain transparency.');
       if (layer.role === 'ground') {
@@ -68,11 +87,18 @@
       if (layer.edgeRepeatPixels !== undefined &&
           (layer.role !== 'ground' || layer.phase !== 'background' || layer.parallax !== 1 ||
            !Number.isInteger(layer.edgeRepeatPixels) || layer.edgeRepeatPixels < 16 ||
-           layer.edgeRepeatPixels > Math.min(512, layer.width / 4) || layer.edgeRepeatReviewed !== true))
+           layer.edgeRepeatPixels > Math.min(512, (source?.width || layer.width) / 4) || layer.edgeRepeatReviewed !== true))
         errors.push('Ground edge extension requires a reviewed narrow outer strip; landmarks must not repeat.');
+      if (layer.edgeRepeatSourceX !== undefined) {
+        const starts=layer.edgeRepeatSourceX,width=source?.width||layer.width,strip=layer.edgeRepeatPixels;
+        if (!starts||layer.edgeRepeatSourceXReviewed!==true||!Number.isInteger(strip)||
+            !['left','right'].every(side=>Number.isInteger(starts[side])&&starts[side]>=0&&starts[side]+strip<=width))
+          errors.push('Explicit ground extension samples must be reviewed integer windows inside the native plane.');
+      }
       if (layer.phase === 'foreground') hasForeground = true;
       if (layer.phase === 'background' && !layer.transparent) opaqueBackground = true;
       if (layer.localLuminance) {
+        if (source) errors.push('Frozen local luminance anchors cannot be atlas planes.');
         const glow = layer.localLuminance;
         const cap = stage.id === 'outer_heaven' ? .02 : stage.id === 'arsenal_corridor' ? .03 : stage.id === 'mgs1_rex_hangar' ? .025 : 0;
         const color = stage.id === 'outer_heaven' ? 'red' : 'cyan';
@@ -107,7 +133,8 @@
       if (!Array.isArray(layer.referenceURLs) || !layer.referenceURLs.length ||
           layer.referenceURLs.some(url => !references.some(ref => ref.url === url)))
         errors.push('Each layer must identify its reviewed references.');
-      ids.add(layer.id); paths.add(layer.file); hashes.add(layer.sha256); depths.add(layer.parallax);
+      ids.add(layer.id); paths.set(layer.file, layer); hashes.set(layer.sha256, layer.file);
+      samples.push({file:layer.file, source}); depths.add(layer.parallax);
     }
     if (!hasGround || !hasForeground || !opaqueBackground || depths.size < 3)
       errors.push('Stage needs an opaque background, camera-aligned ground, transparent foreground and three depths.');
@@ -154,10 +181,13 @@
     function recordFor(stage) { return records.get(typeof stage === 'string' ? stage : stage?.id); }
     function touch(record) { if (record) record.lastUse = ++useClock; }
     function releaseImages(record) {
+      const released = new Set();
       for (const item of record.images) {
         const {image} = item;
         for (const mask of item.luminanceMasks || []) { mask.canvas.width = 0; mask.canvas.height = 0; }
         item.luminanceMasks = null; item.luminanceFailed = false;
+        if (released.has(image)) continue;
+        released.add(image);
         image.onload = image.onerror = null;
         try { image.src = ''; } catch (_) { /* Host image implementations may not allow cancellation. */ }
       }
@@ -189,9 +219,16 @@
       }
       if (!ImageClass) { record.state = 'error'; record.errors.push('Image loader unavailable.'); return Promise.resolve(false); }
       record.state = 'loading';
-      record.promise = Promise.all(record.stage.layers.map(layer => new Promise(resolve => {
+      const loading = new Map();
+      const loadImage = layer => {
+        if (loading.has(layer.file)) {
+          const item = loading.get(layer.file);
+          record.images.push({layer, image:item.image});
+          return item.promise;
+        }
         const image = new ImageClass();
         record.images.push({ layer, image });
+        const promise = new Promise(resolve => {
         let settled = false;
         const finish = (ok, message) => {
           if (settled) return;
@@ -209,7 +246,11 @@
         };
         image.onerror = () => finish(false, 'Missing or unreadable image: ' + layer.file);
         image.src = baseURL + layer.file;
-      }))).then(results => {
+        });
+        loading.set(layer.file, {image, promise});
+        return promise;
+      };
+      record.promise = Promise.all(record.stage.layers.map(loadImage)).then(results => {
         record.state = results.every(Boolean) ? 'ready' : 'error';
         if (record.state === 'ready') { touch(record); trimCache(record); }
         else releaseImages(record);
@@ -291,14 +332,19 @@
         if (layer.edgeRepeatPixels) {
           // Extend only the reviewed texture outside the image; central landmarks remain byte-exact.
           // These tiles use the same world transform as the ground and therefore the fighters.
-          const strip = layer.edgeRepeatPixels, tileWidth = strip * layer.rect.width / layer.width;
+          const source = layer.sourceRect || {x:0, y:0, width:layer.width, height:layer.height};
+          const strip = layer.edgeRepeatPixels, tileWidth = strip * layer.rect.width / source.width;
           const visibleLeft = -transform.x / transform.scale, visibleRight = (WIDTH - transform.x) / transform.scale;
           for (let x = layer.rect.x - tileWidth, n = 0; x + tileWidth > visibleLeft && n < 12; x -= tileWidth, n++)
-            ctx.drawImage(image, 0, 0, strip, layer.height, x, layer.rect.y, tileWidth, layer.rect.height);
+            ctx.drawImage(image, source.x + (layer.edgeRepeatSourceX?.left || 0), source.y, strip, source.height, x, layer.rect.y, tileWidth, layer.rect.height);
           for (let x = layer.rect.x + layer.rect.width, n = 0; x < visibleRight && n < 12; x += tileWidth, n++)
-            ctx.drawImage(image, layer.width - strip, 0, strip, layer.height, x, layer.rect.y, tileWidth, layer.rect.height);
+            ctx.drawImage(image, source.x + (layer.edgeRepeatSourceX?.right ?? source.width - strip), source.y, strip, source.height, x, layer.rect.y, tileWidth, layer.rect.height);
         }
-        ctx.drawImage(image, layer.rect.x + dx, layer.rect.y + dy, layer.rect.width, layer.rect.height);
+        if (layer.sourceRect) {
+          const source = layer.sourceRect;
+          ctx.drawImage(image, source.x, source.y, source.width, source.height,
+            layer.rect.x + dx, layer.rect.y + dy, layer.rect.width, layer.rect.height);
+        } else ctx.drawImage(image, layer.rect.x + dx, layer.rect.y + dy, layer.rect.width, layer.rect.height);
         paintLocalLuminance(ctx, record, item, options);
         ctx.restore();
       }
@@ -329,7 +375,7 @@
       if (!ready(record)) { releaseFrame(ctx, record); return false; }
       touch(record); releaseFrame(ctx, record);
       const options = optionsFor(value, reduced());
-      ctx.save(); ctx.fillStyle = record.stage.fillColor || '#101820'; ctx.fillRect(0, 0, WIDTH, HEIGHT); ctx.restore();
+      ctx.save(); ctx.fillStyle = record.stage.opaqueBackingColor || record.stage.fillColor || '#101820'; ctx.fillRect(0, 0, WIDTH, HEIGHT); ctx.restore();
       paint(ctx, record, 'background', options);
       record.pins++;
       frame.set(ctx, { record, options });
@@ -358,8 +404,8 @@
         const readyRecords = [...records.values()].filter(record => record.state === 'ready');
         return {limit:cacheLimit, readyStages:readyRecords.map(record => record.stage.id),
           pinnedStages:readyRecords.filter(record => record.pins).map(record => record.stage.id),
-          images:readyRecords.reduce((sum, record) => sum + record.images.length, 0),
-          decodedBytes:readyRecords.reduce((sum, record) => sum + record.images.reduce((size, item) =>
+          images:readyRecords.reduce((sum, record) => sum + new Set(record.images.map(item => item.image)).size, 0),
+          decodedBytes:readyRecords.reduce((sum, record) => sum + [...new Map(record.images.map(item => [item.image,item])).values()].reduce((size, item) =>
             size + item.layer.width * item.layer.height * 4, 0), 0),
           luminanceMaskCanvases: readyRecords.reduce((sum, record) => sum + record.images.reduce((n, item) => n + (item.luminanceMasks?.length || 0), 0), 0),
           luminanceMaskBytes: readyRecords.reduce((sum, record) => sum + record.images.reduce((n, item) => n + (item.luminanceMasks || []).reduce((size, mask) => size + mask.canvas.width * mask.canvas.height * 4, 0), 0), 0),

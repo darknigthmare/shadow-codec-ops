@@ -6,6 +6,8 @@
   const selected = { ...data.legacy, ...data.native, ...data.corrected };
   const images = new Map();
   const pending = new WeakMap();
+  const machineTickets = new WeakMap();
+  const machineMapped = uid => root.CQC_PASS18_MACHINES?.hasComposite(uid) === true;
   const pins = new WeakMap();
   const retainedLimit = 12;
   const assetBase = new URL('../', document.currentScript?.src || document.baseURI);
@@ -13,6 +15,8 @@
   let serial = 0;
 
   function release(canvas) {
+    machineTickets.delete(canvas);
+    root.CQC_PASS18_MACHINES?.cancelPortrait(canvas);
     const old = pending.get(canvas);
     if (old) {
       for (const entry of old.entries) entry.waiters.delete(canvas);
@@ -98,8 +102,9 @@
 
   function whenReady(canvas, uids, redraw) {
     release(canvas);
+    const machines=uids.filter(machineMapped);if(machines.length){const ticket={id:++serial};machineTickets.set(canvas,ticket);root.CQC_PASS18_MACHINES.whenReadyComposite(machines).then(ok=>{if(ok&&canvas.isConnected!==false&&machineTickets.get(canvas)===ticket)redraw();});}
     const entries = new Set();
-    for (const uid of uids) {
+    for (const uid of uids.filter(uid=>!machineMapped(uid))) {
       const resolved = resolve(uid);
       if (!resolved) continue;
       const { entry } = resolved;
@@ -120,6 +125,7 @@
   }
 
   function draw(context, uid, x, y, width, height, options = {}) {
+    if(machineMapped(uid)){const result=root.CQC_PASS18_MACHINES.drawFitted(context,uid,{x,y,width,height,padding:Math.min(width,height)*.045},-1,{action:'idle',time:0});if(result){context.canvas.dataset.codexSource='native-assembled';context.canvas.dataset.codexUid=uid;return true;}}
     const resolved = resolve(uid);
     if (!resolved || resolved.entry.state !== 'ready') return false;
     const { item, entry } = resolved;
@@ -164,6 +170,7 @@
   }
 
   function portrait(canvas, fighter) {
+    if(machineMapped(fighter?.uid)){release(canvas);if(root.CQC_PASS18_MACHINES.drawPortrait(canvas,fighter.uid,()=>{if(canvas.isConnected!==false&&canvas.dataset.codexUid===fighter.uid)portrait(canvas,fighter);})){canvas.dataset.codexUid=fighter.uid;canvas.dataset.codexSource='native-assembled';canvas.dataset.artState=root.CQC_PASS18_MACHINES.ready(fighter.uid)?'ready':'loading';canvas.dataset.painted=canvas.dataset.artState==='ready'?'true':'false';canvas.setAttribute('aria-label',fighter.name||fighter.uid);canvas.setAttribute('aria-busy',canvas.dataset.artState==='loading'?'true':'false');return true;}}
     const item = selected[fighter?.uid];
     if (!item) return false;
     release(canvas);
@@ -189,6 +196,7 @@
   }
 
   function status(uid) {
+    if(machineMapped(uid))return{mapped:true,source:'native-assembled',requestedSource:'native-assembled',state:root.CQC_PASS18_MACHINES.ready(uid)?'ready':'loading',fallbackAfterError:false};
     const primary = selected[uid];
     const primaryEntry = primary && images.get(primary.file);
     const fallback = primaryEntry?.state === 'failed' && primary.kind !== 'legacy' ? data.legacy[uid] : null;
@@ -210,16 +218,16 @@
       const original = root.CQC56_PORTRAITS;
       const previous = { draw: original.draw, whenReady: original.whenReady, cancel: original.cancel, status: original.status };
       original.draw = function (context, uid, x, y, width, height, options) {
-        return selected[uid] ? draw(context, uid, x, y, width, height, options) : previous.draw(context, uid, x, y, width, height, options);
+        return selected[uid]||machineMapped(uid) ? draw(context, uid, x, y, width, height, options) : previous.draw(context, uid, x, y, width, height, options);
       };
       original.whenReady = function (canvas, uids, redraw) {
-        const ours = uids.filter(uid => selected[uid]);
-        const other = uids.filter(uid => !selected[uid]);
+        const ours = uids.filter(uid => selected[uid]||machineMapped(uid));
+        const other = uids.filter(uid => !selected[uid]&&!machineMapped(uid));
         if (ours.length) whenReady(canvas, ours, redraw);
         if (other.length) previous.whenReady(canvas, other, redraw);
       };
       original.cancel = function (canvas) { release(canvas); previous.cancel(canvas); };
-      original.status = uid => selected[uid] ? status(uid) : previous.status(uid);
+      original.status = uid => selected[uid]||machineMapped(uid) ? status(uid) : previous.status(uid);
       original.portrait = portrait;
       original.pass17Codex = true;
     }
