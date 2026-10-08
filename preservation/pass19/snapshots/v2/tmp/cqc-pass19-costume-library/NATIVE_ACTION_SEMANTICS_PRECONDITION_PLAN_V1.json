@@ -1,0 +1,26 @@
+{
+  "schema": "cqc.source-preconditioned-plan/1",
+  "status": "reviewable-plan-no-APP-mutation",
+  "createdAt": "2026-10-08T00:16:38.818979+00:00",
+  "renderer": {
+    "path": "src/cqc-sprite-renderer.js",
+    "expectedSHA256": "a03cdaf084eb556eacba98cbb3a97bd43d32b02c2db5bc00b9dfb0e40fef3071",
+    "resultSHA256": "2f44704c4ad94519a0b04013387407c0358a6b9603d8e994ccbb87dc5949f133",
+    "candidate": "/tmp/cqc-pass19-costume-library/cqc-sprite-renderer-native-costume-semantics-v1.js",
+    "replacements": [
+      {
+        "id": "native-action-semantics-from-reviewed-ancestry",
+        "before": "  function actionName(pose = {}, entry = null) {",
+        "after": "  function hasNativeActionSemantics(entry) {\n    const nativeFile=value=>value?.actions?.idle?.frames?.[0]?.file?.startsWith('assets/combat-sprites-pass18/')===true;\n    if(nativeFile(entry))return true;\n    const concept=entry?.costumeConcept;\n    if(concept?.schema!=='cqc.costume-design/1'||concept.sourceUID!==entry.uid)return false;\n    const source=entries.get(concept.sourceUID);\n    if(!source||source===entry||!nativeFile(source))return false;\n    // The approved source body owns the semantics; an atlas folder never changes its moves.\n    return Object.entries(source.actionMap||{}).every(([key,value])=>entry.actionMap?.[key]===value)\n      &&Object.keys(source.actions||{}).every(action=>entry.actions?.[action]?.frames?.length>0);\n  }\n\n  function actionName(pose = {}, entry = null) {",
+        "count": 1
+      },
+      {
+        "id": "native-routes-use-source-semantics",
+        "before": "entry.actions.idle.frames[0].file.startsWith('assets/combat-sprites-pass18/')",
+        "after": "hasNativeActionSemantics(entry)",
+        "count": 2
+      }
+    ]
+  },
+  "scope": "Only native action resolution changed. New independent costume PNGs inherit getup/roll and actual moveKind/tag routes from the accepted sourceUID and unchanged actionMap/retained action groups. Unknown ancestry and remapped actionMap keep legacy mapping. No physics, image, geometry, phase map or palette mutation."
+}

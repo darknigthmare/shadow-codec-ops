@@ -1,0 +1,93 @@
+{
+  "schema": "cqc.source-preconditioned-plan/1",
+  "status": "reviewable-plan-no-APP-mutation",
+  "createdAt": "2026-10-08T00:16:47.096367+00:00",
+  "files": [
+    {
+      "path": "modules/unified-versus-v055.html",
+      "expectedSHA256": "720d52cf754560db86f81a9b71ff78f5f1beaa3b8ed2c78f9571eda02a6592f6",
+      "resultSHA256": "a454fd67233f916ca6be80e90218333adc1fb18d89fc7ebf219a139ccce3d61d",
+      "candidate": "/tmp/cqc-pass19-costume-library/unified-versus-native-wardrobe-candidate-v2.html",
+      "replacements": [
+        {
+          "id": "preserve-explicit-known-selection",
+          "before": "return window.CQC_COSTUMES_PASS17?.fighterFor(source,slot,costume)||source;",
+          "after": "return window.CQC_NATIVE_WARDROBE_LAUNCH?.fighterFor(source,slot,costume)||window.CQC_COSTUMES_PASS17?.fighterFor(source,slot,costume)||source;",
+          "count": 1
+        },
+        {
+          "id": "cancel-in-flight-native-metadata",
+          "before": "request.cancelled=true;clearTimeout(request.timer);hideMatchLoadingPass10();",
+          "after": "request.cancelled=true;window.CQC_NATIVE_WARDROBE?.cancelPreparation('versus-native-wardrobe-launch');clearTimeout(request.timer);hideMatchLoadingPass10();",
+          "count": 1
+        },
+        {
+          "id": "await-native-metadata-and-sheets-before-other-jobs",
+          "before": "function matchAssetsPass10(request,retry){\n const sprites=",
+          "after": "async function matchAssetsPass10(request,retry){\n const native=window.CQC_NATIVE_WARDROBE;\n if(native){const prepared=await native.prepareSlots(request.fighters,{owner:'versus-native-wardrobe-launch',retry});if(!prepared.ready||request.cancelled||matchRequestPass10!==request)return false;request.fighters=prepared.fighters;}\n const sprites=",
+          "count": 1
+        },
+        {
+          "id": "cancel-native-on-loading-timeout-or-error",
+          "before": "clearTimeout(request.timer);request.status='failed';",
+          "after": "clearTimeout(request.timer);window.CQC_NATIVE_WARDROBE?.cancelPreparation('versus-native-wardrobe-launch');request.status='failed';",
+          "count": 1
+        },
+        {
+          "id": "pin-actual-started-versus-actors",
+          "before": "state.stage=STAGES[stageIndex];state.options.eraHud55=",
+          "after": "window.CQC_NATIVE_WARDROBE?.setActiveFighters([state.a.f,state.b.f]);state.stage=STAGES[stageIndex];state.options.eraHud55=",
+          "count": 1
+        },
+        {
+          "id": "preserve-external-private-lazy-ids",
+          "before": "fighters:[window.CQC_COSTUMES_PASS17.fighterFor(FIGHTERS[a],0,cfg.costumes?.[0]),window.CQC_COSTUMES_PASS17.fighterFor(FIGHTERS[b],1,cfg.costumes?.[1])]",
+          "after": "fighters:[window.CQC_NATIVE_WARDROBE_LAUNCH?.fighterFor(FIGHTERS[a],0,cfg.costumes?.[0])||window.CQC_COSTUMES_PASS17.fighterFor(FIGHTERS[a],0,cfg.costumes?.[0]),window.CQC_NATIVE_WARDROBE_LAUNCH?.fighterFor(FIGHTERS[b],1,cfg.costumes?.[1])||window.CQC_COSTUMES_PASS17.fighterFor(FIGHTERS[b],1,cfg.costumes?.[1])]",
+          "count": 1
+        },
+        {
+          "id": "preserve-replay-private-lazy-ids",
+          "before": "fighters:[window.CQC_COSTUMES_PASS17.fighterFor(FIGHTERS[a],0,rep.meta.costumes?.[0]||'original'),window.CQC_COSTUMES_PASS17.fighterFor(FIGHTERS[b],1,rep.meta.costumes?.[1]||'original')]",
+          "after": "fighters:[window.CQC_NATIVE_WARDROBE_LAUNCH?.fighterFor(FIGHTERS[a],0,rep.meta.costumes?.[0]||'original')||window.CQC_COSTUMES_PASS17.fighterFor(FIGHTERS[a],0,rep.meta.costumes?.[0]||'original'),window.CQC_NATIVE_WARDROBE_LAUNCH?.fighterFor(FIGHTERS[b],1,rep.meta.costumes?.[1]||'original')||window.CQC_COSTUMES_PASS17.fighterFor(FIGHTERS[b],1,rep.meta.costumes?.[1]||'original')]",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "modules/core-v032.html",
+      "expectedSHA256": "d30197450abc1883e578301b4bd7e42f6d8b83aac41c50b80eb04186e97f0149",
+      "resultSHA256": "0662fb690ea2db3c66f4d1ab5cfcb3839be3ffb41d51f5bde3ed0050b71853a7",
+      "candidate": "/tmp/cqc-pass19-costume-library/core-native-wardrobe-candidate-v2.html",
+      "replacements": [
+        {
+          "id": "allow-only-produced-known-replay-native-id",
+          "before": "costume!=='original'&&!window.CQC_PASS19_COSTUMES?.selectable('core__'+(slot?o.opponent:o.player),costume)",
+          "after": "costume!=='original'&&!window.CQC_PASS19_COSTUMES?.selectable('core__'+(slot?o.opponent:o.player),costume)&&!window.CQC_NATIVE_WARDROBE?.known('core__'+(slot?o.opponent:o.player),costume)",
+          "count": 1
+        },
+        {
+          "id": "await-lazy-before-legacy-normalization",
+          "before": "function launchMatch(options){\n if(window.CQC_PASS17_CORE_COSTUMES?",
+          "after": "function launchMatch(options){\n if(window.CQC_NATIVE_WARDROBE_LAUNCH?.deferCoreLaunch(options,launchMatch))return;\n if(window.CQC_PASS17_CORE_COSTUMES?",
+          "count": 1
+        },
+        {
+          "id": "pin-actual-started-core-actors",
+          "before": "match=createMatch({...options,seed:options.seed??((Date.now()^1964)>>>0)});playing=true;",
+          "after": "match=createMatch({...options,seed:options.seed??((Date.now()^1964)>>>0)});window.CQC_NATIVE_WARDROBE?.setActiveFighters(match.fighters.map(actor=>({uid:'core__'+actor.id,costume:actor.costume||'original'})));playing=true;",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "externalLoadOrder": [
+    "existing costume catalogs and approved original/static variants",
+    "cqc-pass19-native-wardrobe-index.js",
+    "cqc-pass19-native-wardrobe-library.js",
+    "cqc-pass19-native-wardrobe-static-compat.js",
+    "cqc-pass19-native-wardrobe-ui.js",
+    "cqc-pass19-native-wardrobe-binding.js",
+    "cqc-pass19-native-wardrobe-launch.js"
+  ],
+  "scope": "Explicit known produced lazy IDs preserved through replay/external preparation. Slot preferences stay separate. Native metadata+all sheets awaited before legacy normalization or engine launch. Existing Core cancellation API wrapped by external module; unknown/unproduced IDs still rejected. HTML loading tags are Root integration work."
+}

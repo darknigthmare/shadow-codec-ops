@@ -1,0 +1,42 @@
+<!doctype html><meta charset="utf-8"><title>Frostbite native body review</title>
+<style>body{margin:10px;background:#081019;color:#d9e3ed;font-family:monospace}canvas{display:block;background:#111e2b;margin:0}#scene{display:none}</style>
+<canvas id="contact" width="1440" height="1060"></canvas><canvas id="scene" width="1440" height="760"></canvas>
+<script src="src/cqc-sprite-renderer.js"></script>
+<script>
+(async()=>{
+ const catalog=await fetch('../candidates/combat-sprite-catalog-pass19-survive-working.json').then(r=>r.json()),uid='pass19__frostbite_survive',api=CQC_COMBAT_SPRITES;
+ window.originalFrostbiteCatalog=catalog;window.configureResult=api.configure(catalog,{baseURL:new URL('../candidates/',location.href).href});
+ if(!await api.whenReady(uid))throw Error('Native images unavailable');
+ const entry=api.getEntry(uid),fighter={uid},contact=document.querySelector('#contact'),ctx=contact.getContext('2d',{willReadFrequently:true}),originalIdle=entry.actions.idle,originalLeftIdle=entry.oppositeActions.idle,rows=[];
+ const poseIndex=frame=>frame.file.includes('startup5-corrected')?5:Math.min(3,Math.floor((frame.rect[1]+frame.rect[3]/2)/256))*4+Math.min(3,Math.floor((frame.rect[0]+frame.rect[2]/2)/384));
+ const unique=side=>[...new Map(Object.values(side).flatMap(a=>a.frames).map(f=>[f.file+'|'+f.rect.join(','),f])).values()].sort((a,b)=>poseIndex(a)-poseIndex(b));
+ ctx.fillStyle='#d9e3ed';ctx.font='20px monospace';ctx.fillText('FROSTBITE — NATIVE RIGHT / LEFT — PHYSICAL BODY CONTOURS',20,30);
+ for(const [face,actions,offset]of[[1,entry.actions,0],[-1,entry.oppositeActions,4]]){
+  const frames=unique(actions);if(frames.length!==16)throw Error('Not16 unique physical poses');
+  const sourceCache=new Map();
+  const sourceInfo=async frame=>{if(sourceCache.has(frame.file))return sourceCache.get(frame.file);const image=new Image();image.src=new URL(frame.file,new URL('../candidates/',location.href));await image.decode();
+  const sourceCanvas=document.createElement('canvas');sourceCanvas.width=image.naturalWidth;sourceCanvas.height=image.naturalHeight;const sc=sourceCanvas.getContext('2d',{willReadFrequently:true});sc.drawImage(image,0,0);const sourceData=sc.getImageData(0,0,sourceCanvas.width,sourceCanvas.height).data,sourceWidth=sourceCanvas.width,sourceHeight=sourceCanvas.height,labels=new Uint32Array(sourceWidth*sourceHeight),poseLabels=new Map();let label=0;
+  for(let pixel=0;pixel<labels.length;pixel++){if(labels[pixel]||sourceData[pixel*4+3]<192)continue;label++;labels[pixel]=label;const stack=[pixel];let count=0,minX=sourceWidth,minY=sourceHeight,maxX=0,maxY=0;while(stack.length){const at=stack.pop(),x=at%sourceWidth,y=Math.floor(at/sourceWidth);count++;minX=Math.min(minX,x);maxX=Math.max(maxX,x);minY=Math.min(minY,y);maxY=Math.max(maxY,y);for(const next of[x>0?at-1:-1,x+1<sourceWidth?at+1:-1,y>0?at-sourceWidth:-1,y+1<sourceHeight?at+sourceWidth:-1])if(next>=0&&!labels[next]&&sourceData[next*4+3]>=192){labels[next]=label;stack.push(next);}}if(count>1000){const col=Math.min(3,Math.floor(((minX+maxX)/2)/(sourceWidth/4))),row=Math.min(3,Math.floor(((minY+maxY)/2)/(sourceHeight/4)));const poseID=frame.file.includes('startup5-corrected')?5:row*4+col;if(poseLabels.has(poseID))throw Error('Ambiguous source alpha16 component');poseLabels.set(poseID,label);}}
+  if(poseLabels.size!==(frame.file.includes('startup5-corrected')?1:16))throw Error('Independent source component count');const info={image,sourceWidth,sourceHeight,labels,poseLabels};sourceCache.set(frame.file,info);return info;};
+  for(let i=0;i<16;i++){
+   const frame=frames[i],{image,sourceWidth,sourceHeight,labels,poseLabels}=await sourceInfo(frame),col=i%4+offset,row=Math.floor(i/4),box={x:col*180+5,y:row*250+48,width:170,height:220,padding:10};
+   actions.idle={fps:0,loop:false,frames:[frame]};
+   if(!api.drawFitted(ctx,fighter,box,face,{time:0,actionTime:0,entityKey:'physical-review-'+face+'-'+i}))throw Error('Undrawn physical pose');
+   ctx.fillStyle='#8dbabf';ctx.font='13px monospace';ctx.fillText((face===1?'R':'L')+' '+String(i).padStart(2,'0'),box.x+8,box.y+217);
+   const [sx,sy,sw,sh]=frame.rect,padding=8,reference=document.createElement('canvas'),observed=document.createElement('canvas');reference.width=observed.width=sw+padding*2;reference.height=observed.height=sh+padding*2;
+   const rc=reference.getContext('2d',{willReadFrequently:true}),oc=observed.getContext('2d',{willReadFrequently:true});rc.drawImage(image,sx,sy,sw,sh,padding,padding,sw,sh);
+   const factor=entry.displayHeight/entry.sourceFrameHeights[frame.file];
+   if(!api.draw(oc,fighter,padding+sw*frame.pivot[0],padding+sh*frame.pivot[1],face,1/factor,{time:0,actionTime:0,entityKey:'body-preservation-'+face+'-'+i}))throw Error('Undrawn pixel preservation fixture');
+   const before=rc.getImageData(0,0,reference.width,reference.height).data,after=oc.getImageData(0,0,observed.width,observed.height).data;let core=0,lost=0,aura=0,remainingAura=0;
+   for(let k=3;k<before.length;k+=4){const dest=Math.floor(k/4),dx=dest%reference.width-padding,dy=Math.floor(dest/reference.width)-padding,nativeX=sx+dx,nativeY=sy+dy,own=dx>=0&&dy>=0&&dx<sw&&dy<sh&&labels[nativeY*sourceWidth+nativeX]===poseLabels.get(i);if(own&&before[k]>=224){core++;if(after[k]<before[k]-12)lost++;}if(own&&before[k]>0&&before[k]<192){aura++;if(after[k]>0)remainingAura++;}}
+   rows.push({face,physicalPoseIndex:i,file:frame.file,sha256:frame.sha256,rect:frame.rect,pivot:frame.pivot,clipVertices:frame.clipPolygon?.length||0,opaqueBodyPixels:core,lostOpaqueBodyPixels:lost,opaqueBodyRetained:core?1-lost/core:0,lowAlphaSourcePixels:aura,lowAlphaRetainedPixels:remainingAura});
+  }
+ }
+ entry.actions.idle=originalIdle;entry.oppositeActions.idle=originalLeftIdle;
+ window.reviewRows=rows;window.showScene=()=>{
+  contact.style.display='none';const canvas=document.querySelector('#scene');canvas.style.display='block';const c=canvas.getContext('2d');c.clearRect(0,0,canvas.width,canvas.height);c.fillStyle='#d9e3ed';c.font='22px monospace';c.fillText('FROSTBITE — ACTUAL FITTED IDLE AND ACTIVE ORGANIC SHOT',20,30);
+  const checks=[];for(const [face,offset]of[[1,0],[-1,720]])for(const[active,y]of[[false,55],[true,405]]){const box={x:offset+20,y,width:680,height:330,padding:24},pose=active?{moveSlot:'special',attack:true,attackPhase:'active',phaseProgress:.5,time:0,actionTime:.08,entityKey:'scene-shot-'+face}:{time:0,actionTime:0,entityKey:'scene-idle-'+face};if(!api.drawFitted(c,fighter,box,face,pose))throw Error('Scene draw failure');checks.push({face,active,selected:api.selectFrame({...entry,actions:face===-1?entry.oppositeActions:entry.actions},pose).frame});}return checks;
+ };
+ window.nativeReviewReady=true;
+})().catch(e=>{window.nativeReviewError=e.stack});
+</script>

@@ -1,0 +1,7 @@
+Quatre tenues de gala originales adaptées à Meryl MGS1, Otacon MGS1, Revolver Ocelot MGS1 et Liquid MGS1. Les références officielles renseignent les identités, les visages et les équipements ; aucune version tuxedo publiée de ces quatre personnages n’est attestée ici. Ce lot ne certifie pas une fidélité absolue1:1 ni la réalisation des tenues du reste du roster.
+
+16PNG natifs, deux directions peintes indépendamment,204poses. UID, actionMap, phaseMap, FPS et nombre de frames sont conservés. Les PNG imagegen restent intacts sous /workspace/generated_images ; les découpes du moteur suivent les silhouettes alpha16 et leurs trous pour exclure les poses voisines.
+
+Livraison : TUXEDO_FOUR_NATIVE_DELIVERY_MANIFEST_V1.json donne chaque fichier brut, son SHA et sa destination. TUXEDO_FOUR_PINNED_FINAL_HANDOFF_V1.json fige les preuves. Le module se charge après cqc-pass19-original-costumes.js ; registerBatch accepte4variantes tuxedo. La revue CanvasV4 passe604dessins et190routes de phase ; la vérification finale en navigateur avec renderer2f447… passe88dessins et les mêmes sélecteurs que les corps sources. Les vérifications de match restent à Root après intégration.
+
+Les candidates et toutes les preuves anciennes sont conservées. Les fichiers de preuve déplacés dans /workspace/cqc-pass19-tuxedo-history conservent leurs chemins originaux sous forme de liens symboliques lisibles. Les caches du navigateur appartenant à cet agent ont été supprimés après fermeture ; historique, réglages et données locales sont conservés.

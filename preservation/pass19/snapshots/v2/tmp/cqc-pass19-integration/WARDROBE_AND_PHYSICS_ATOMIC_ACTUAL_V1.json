@@ -1,0 +1,302 @@
+{
+  "schema": "cqc.pass19.wardrobe-physics-atomic-integration/1",
+  "status": "applied-awaiting-combined-browser-qa",
+  "files": [
+    {
+      "path": "src/cqc-pass19-gekko-poses.js",
+      "previousSHA256": "2899980b16cd892649a65bcd84bbffd578db330c8179f81ff41ff3a648f641a8",
+      "sha256": "aad2203738e8ddf3159e39f1541fab549a2edf7126474dd482df81d2837ffcc3",
+      "bytes": 3192
+    },
+    {
+      "path": "src/cqc-pass19-native-origins.js",
+      "previousSHA256": "28963a2acceeaeb5ba137376ff99131672c9ccb172ddd41c49946cdf9c0fa9e3",
+      "sha256": "551b7d990fd05053f250c22363460aab65de9f9afcb01b71644e70a95affb86b",
+      "bytes": 2508
+    },
+    {
+      "path": "src/cqc-pass19-versus-spatial.js",
+      "previousSHA256": "6a906005cd2a967c9918fa4d8c48aeb3d48d91de79adf3bf239b2c33fc4ce3ff",
+      "sha256": "b209f9b2250d19e69a8d8aad910d6807e77cb779760d772dfe4ace92824d2c6c",
+      "bytes": 8376
+    },
+    {
+      "path": "src/cqc-pass8-combat-engine.js",
+      "previousSHA256": "b68e4d66e2c99fbc1b26e557557c8e4a51e16de1c2b165c6e3cf33d79b96cd27",
+      "sha256": "5c964b1873d6418094c1fecd344aa1a6e28f461729716e9e7771fc35f556a8d1",
+      "bytes": 29464
+    },
+    {
+      "path": "modules/unified-versus-v055.html",
+      "previousSHA256": "720d52cf754560db86f81a9b71ff78f5f1beaa3b8ed2c78f9571eda02a6592f6",
+      "sha256": "d377b29b3e32f27b131d1de43b9341790d6c3615f01e72da9a6f63ecbeae9b71",
+      "bytes": 3478792
+    },
+    {
+      "path": "src/cqc-pass19-world-scale.js",
+      "previousSHA256": "b85be1ddc124eee1e0d70414822ac722e607ebc3c18ea5fe1ed2a5d58470727c",
+      "sha256": "e871dd8abaad5dc6b3015234d0322e6ea9a4f88f2593301380bc2d24a87c1c47",
+      "bytes": 17505
+    },
+    {
+      "path": "modules/core-v032.html",
+      "previousSHA256": "d30197450abc1883e578301b4bd7e42f6d8b83aac41c50b80eb04186e97f0149",
+      "sha256": "08684ab2d7b1f765e0e56c394587676bec69ea0c599957f946300d649cade6c5",
+      "bytes": 1551836
+    },
+    {
+      "path": "src/cqc-sprite-renderer.js",
+      "previousSHA256": "a03cdaf084eb556eacba98cbb3a97bd43d32b02c2db5bc00b9dfb0e40fef3071",
+      "sha256": "2f44704c4ad94519a0b04013387407c0358a6b9603d8e994ccbb87dc5949f133",
+      "bytes": 32152
+    },
+    {
+      "path": "src/cqc-pass19-native-wardrobe-index.js",
+      "previousSHA256": null,
+      "sha256": "9fed7ae32f181f5ca8310e9cea665d56b4c36df9fb003a718ce2144db3ad1b98",
+      "bytes": 5184
+    },
+    {
+      "path": "src/cqc-pass19-native-wardrobe-library.js",
+      "previousSHA256": null,
+      "sha256": "3d77379466fe29e51dac9aaf419ff1c1d0ada61760a29f1589ed583dcacc26a2",
+      "bytes": 32174
+    },
+    {
+      "path": "src/cqc-pass19-native-wardrobe-static-compat.js",
+      "previousSHA256": null,
+      "sha256": "99432425497987ee14faad975debc9ebb3e6f466eb8015c1ce118084ed670974",
+      "bytes": 1223
+    },
+    {
+      "path": "src/cqc-pass19-native-wardrobe-ui.js",
+      "previousSHA256": null,
+      "sha256": "77ee8847eee7bca3559b00a2dca1b9f4c670793defb8144e950886211b35cc73",
+      "bytes": 8399
+    },
+    {
+      "path": "src/cqc-pass19-native-wardrobe-binding.js",
+      "previousSHA256": null,
+      "sha256": "3afd8147bff6ee1e6eada9b7389daa510b4e3f806dab463409b6668cde518858",
+      "bytes": 2697
+    },
+    {
+      "path": "src/cqc-pass19-native-wardrobe-launch.js",
+      "previousSHA256": null,
+      "sha256": "54cae110fca9f509d04cb0d1b5fb218cd649d0b7910724eacecb8bccbf4aab32",
+      "bytes": 4679
+    }
+  ],
+  "guardedPlanSteps": [
+    {
+      "plan": "POSE_HIT_AND_SOCKET_FRAME_GUARDED_PLAN_V1.json",
+      "path": "src/cqc-pass19-gekko-poses.js",
+      "originalInputSHA256": "2899980b16cd892649a65bcd84bbffd578db330c8179f81ff41ff3a648f641a8",
+      "actualInputSHA256": "2899980b16cd892649a65bcd84bbffd578db330c8179f81ff41ff3a648f641a8",
+      "outputSHA256": "aad2203738e8ddf3159e39f1541fab549a2edf7126474dd482df81d2837ffcc3",
+      "explicitRebase": false,
+      "operations": [
+        {
+          "old": "pulse=Math.sin(phase*Math.PI)",
+          "new": "pulse=kind==='hurt'&&description.hit&&!description.action?Math.max(0,1-Math.max(0,finite(description.hitTime))/.3):Math.sin(phase*Math.PI)",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "plan": "POSE_HIT_AND_SOCKET_FRAME_GUARDED_PLAN_V1.json",
+      "path": "src/cqc-pass19-native-origins.js",
+      "originalInputSHA256": "28963a2acceeaeb5ba137376ff99131672c9ccb172ddd41c49946cdf9c0fa9e3",
+      "actualInputSHA256": "28963a2acceeaeb5ba137376ff99131672c9ccb172ddd41c49946cdf9c0fa9e3",
+      "outputSHA256": "551b7d990fd05053f250c22363460aab65de9f9afcb01b71644e70a95affb86b",
+      "explicitRebase": false,
+      "operations": [
+        {
+          "old": "function projectile(p,m){",
+          "new": "function projectile(p,m,options={}){",
+          "count": 1
+        },
+        {
+          "old": "root.CQC_PASS19_VERSUS_SPATIAL?.poseFor(p,0)||{}",
+          "new": "root.CQC_PASS19_VERSUS_SPATIAL?.poseFor(p,Number.isFinite(options.frame)?options.frame:0)||{}",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "plan": "POSE_HIT_AND_SOCKET_FRAME_GUARDED_PLAN_V1.json",
+      "path": "src/cqc-pass19-versus-spatial.js",
+      "originalInputSHA256": "6a906005cd2a967c9918fa4d8c48aeb3d48d91de79adf3bf239b2c33fc4ce3ff",
+      "actualInputSHA256": "6a906005cd2a967c9918fa4d8c48aeb3d48d91de79adf3bf239b2c33fc4ce3ff",
+      "outputSHA256": "b209f9b2250d19e69a8d8aad910d6807e77cb779760d772dfe4ace92824d2c6c",
+      "explicitRebase": false,
+      "operations": [
+        {
+          "old": "function projectileOrigin(p,m,baseBody){",
+          "new": "function projectileOrigin(p,m,baseBody,options={}){",
+          "count": 1
+        },
+        {
+          "old": "root.CQC_PASS19_NATIVE_ORIGINS?.projectile?.(p,m)",
+          "new": "root.CQC_PASS19_NATIVE_ORIGINS?.projectile?.(p,m,options)",
+          "count": 1
+        },
+        {
+          "old": "function projectilePoint(p,m,baseBody){const o=projectileOrigin(p,m,baseBody);",
+          "new": "function projectilePoint(p,m,baseBody,options={}){const o=projectileOrigin(p,m,baseBody,options);",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "plan": "POSE_HIT_AND_SOCKET_FRAME_GUARDED_PLAN_V1.json",
+      "path": "src/cqc-pass8-combat-engine.js",
+      "originalInputSHA256": "b68e4d66e2c99fbc1b26e557557c8e4a51e16de1c2b165c6e3cf33d79b96cd27",
+      "actualInputSHA256": "b68e4d66e2c99fbc1b26e557557c8e4a51e16de1c2b165c6e3cf33d79b96cd27",
+      "outputSHA256": "5c964b1873d6418094c1fecd344aa1a6e28f461729716e9e7771fc35f556a8d1",
+      "explicitRebase": false,
+      "operations": [
+        {
+          "old": "spatial()?.projectilePoint(p,m,baseBox(p))",
+          "new": "spatial()?.projectilePoint(p,m,baseBox(p),{frame:s.frame})",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "plan": "POSE_HIT_AND_SOCKET_FRAME_GUARDED_PLAN_V1.json",
+      "path": "modules/unified-versus-v055.html",
+      "originalInputSHA256": "720d52cf754560db86f81a9b71ff78f5f1beaa3b8ed2c78f9571eda02a6592f6",
+      "actualInputSHA256": "720d52cf754560db86f81a9b71ff78f5f1beaa3b8ed2c78f9571eda02a6592f6",
+      "outputSHA256": "2e11f71669c6e2d3c8e41ac2864bbf0bafd012e26a23616e113eccd95746fef0",
+      "explicitRebase": false,
+      "operations": [
+        {
+          "old": "projectileOrigin(p,m,{h:Combat.box(p).h/(window.CQC_PASS19_VERSUS_SPATIAL?.ratio(p)||1)})",
+          "new": "projectileOrigin(p,m,{h:Combat.box(p).h/(window.CQC_PASS19_VERSUS_SPATIAL?.ratio(p)||1)},{frame:s.frame})",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "plan": "BOX_SIMULATION_UNITS_GUARDED_PLAN_V2.json",
+      "path": "src/cqc-pass19-world-scale.js",
+      "originalInputSHA256": "b85be1ddc124eee1e0d70414822ac722e607ebc3c18ea5fe1ed2a5d58470727c",
+      "actualInputSHA256": "b85be1ddc124eee1e0d70414822ac722e607ebc3c18ea5fe1ed2a5d58470727c",
+      "outputSHA256": "e871dd8abaad5dc6b3015234d0322e6ea9a4f88f2593301380bc2d24a87c1c47",
+      "explicitRebase": false,
+      "operations": [
+        {
+          "old": "function simulationRatio(value){const d=descriptor(value),base=root.CQC_COMBAT_SPRITE_CATALOG?.entries?.[d.uid],physical=root.CQC_PASS18_MACHINE_DATA?.playable?.[d.uid]?.[0],oldPixels=base?.displayHeight||historicalMachineHeight(physical||d.uid);return height(value).pixels/oldPixels;}",
+          "new": "function simulationRatio(value){const d=descriptor(value),base=root.CQC_COMBAT_SPRITE_CATALOG?.entries?.[d.uid],physical=root.CQC_PASS18_MACHINE_DATA?.playable?.[d.uid]?.[0],boxed=typeof value==='object'&&value?.uid?.startsWith('pass19__')&&value?.visual?.boxedOperator&&value?.combat?.passive?.id==='boxed-cover'&&Number.isFinite(base?.displayHeight)&&base.displayHeight>0&&base.displayHeight<5,oldPixels=boxed?230:base?.displayHeight||historicalMachineHeight(physical||d.uid);return height(value).pixels/oldPixels;}",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "plan": "NATIVE_WARDROBE_LAUNCH_PRECONDITION_PLAN_V2.json",
+      "path": "modules/unified-versus-v055.html",
+      "originalInputSHA256": "720d52cf754560db86f81a9b71ff78f5f1beaa3b8ed2c78f9571eda02a6592f6",
+      "actualInputSHA256": "2e11f71669c6e2d3c8e41ac2864bbf0bafd012e26a23616e113eccd95746fef0",
+      "outputSHA256": "2f57a2faedae6234b4d958c24b85c33a6736563b9c99786ec4fc7b795a15c4ee",
+      "explicitRebase": true,
+      "operations": [
+        {
+          "id": "preserve-explicit-known-selection",
+          "before": "return window.CQC_COSTUMES_PASS17?.fighterFor(source,slot,costume)||source;",
+          "after": "return window.CQC_NATIVE_WARDROBE_LAUNCH?.fighterFor(source,slot,costume)||window.CQC_COSTUMES_PASS17?.fighterFor(source,slot,costume)||source;",
+          "count": 1
+        },
+        {
+          "id": "cancel-in-flight-native-metadata",
+          "before": "request.cancelled=true;clearTimeout(request.timer);hideMatchLoadingPass10();",
+          "after": "request.cancelled=true;window.CQC_NATIVE_WARDROBE?.cancelPreparation('versus-native-wardrobe-launch');clearTimeout(request.timer);hideMatchLoadingPass10();",
+          "count": 1
+        },
+        {
+          "id": "await-native-metadata-and-sheets-before-other-jobs",
+          "before": "function matchAssetsPass10(request,retry){\n const sprites=",
+          "after": "async function matchAssetsPass10(request,retry){\n const native=window.CQC_NATIVE_WARDROBE;\n if(native){const prepared=await native.prepareSlots(request.fighters,{owner:'versus-native-wardrobe-launch',retry});if(!prepared.ready||request.cancelled||matchRequestPass10!==request)return false;request.fighters=prepared.fighters;}\n const sprites=",
+          "count": 1
+        },
+        {
+          "id": "cancel-native-on-loading-timeout-or-error",
+          "before": "clearTimeout(request.timer);request.status='failed';",
+          "after": "clearTimeout(request.timer);window.CQC_NATIVE_WARDROBE?.cancelPreparation('versus-native-wardrobe-launch');request.status='failed';",
+          "count": 1
+        },
+        {
+          "id": "pin-actual-started-versus-actors",
+          "before": "state.stage=STAGES[stageIndex];state.options.eraHud55=",
+          "after": "window.CQC_NATIVE_WARDROBE?.setActiveFighters([state.a.f,state.b.f]);state.stage=STAGES[stageIndex];state.options.eraHud55=",
+          "count": 1
+        },
+        {
+          "id": "preserve-external-private-lazy-ids",
+          "before": "fighters:[window.CQC_COSTUMES_PASS17.fighterFor(FIGHTERS[a],0,cfg.costumes?.[0]),window.CQC_COSTUMES_PASS17.fighterFor(FIGHTERS[b],1,cfg.costumes?.[1])]",
+          "after": "fighters:[window.CQC_NATIVE_WARDROBE_LAUNCH?.fighterFor(FIGHTERS[a],0,cfg.costumes?.[0])||window.CQC_COSTUMES_PASS17.fighterFor(FIGHTERS[a],0,cfg.costumes?.[0]),window.CQC_NATIVE_WARDROBE_LAUNCH?.fighterFor(FIGHTERS[b],1,cfg.costumes?.[1])||window.CQC_COSTUMES_PASS17.fighterFor(FIGHTERS[b],1,cfg.costumes?.[1])]",
+          "count": 1
+        },
+        {
+          "id": "preserve-replay-private-lazy-ids",
+          "before": "fighters:[window.CQC_COSTUMES_PASS17.fighterFor(FIGHTERS[a],0,rep.meta.costumes?.[0]||'original'),window.CQC_COSTUMES_PASS17.fighterFor(FIGHTERS[b],1,rep.meta.costumes?.[1]||'original')]",
+          "after": "fighters:[window.CQC_NATIVE_WARDROBE_LAUNCH?.fighterFor(FIGHTERS[a],0,rep.meta.costumes?.[0]||'original')||window.CQC_COSTUMES_PASS17.fighterFor(FIGHTERS[a],0,rep.meta.costumes?.[0]||'original'),window.CQC_NATIVE_WARDROBE_LAUNCH?.fighterFor(FIGHTERS[b],1,rep.meta.costumes?.[1]||'original')||window.CQC_COSTUMES_PASS17.fighterFor(FIGHTERS[b],1,rep.meta.costumes?.[1]||'original')]",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "plan": "NATIVE_WARDROBE_LAUNCH_PRECONDITION_PLAN_V2.json",
+      "path": "modules/core-v032.html",
+      "originalInputSHA256": "d30197450abc1883e578301b4bd7e42f6d8b83aac41c50b80eb04186e97f0149",
+      "actualInputSHA256": "d30197450abc1883e578301b4bd7e42f6d8b83aac41c50b80eb04186e97f0149",
+      "outputSHA256": "0662fb690ea2db3c66f4d1ab5cfcb3839be3ffb41d51f5bde3ed0050b71853a7",
+      "explicitRebase": false,
+      "operations": [
+        {
+          "id": "allow-only-produced-known-replay-native-id",
+          "before": "costume!=='original'&&!window.CQC_PASS19_COSTUMES?.selectable('core__'+(slot?o.opponent:o.player),costume)",
+          "after": "costume!=='original'&&!window.CQC_PASS19_COSTUMES?.selectable('core__'+(slot?o.opponent:o.player),costume)&&!window.CQC_NATIVE_WARDROBE?.known('core__'+(slot?o.opponent:o.player),costume)",
+          "count": 1
+        },
+        {
+          "id": "await-lazy-before-legacy-normalization",
+          "before": "function launchMatch(options){\n if(window.CQC_PASS17_CORE_COSTUMES?",
+          "after": "function launchMatch(options){\n if(window.CQC_NATIVE_WARDROBE_LAUNCH?.deferCoreLaunch(options,launchMatch))return;\n if(window.CQC_PASS17_CORE_COSTUMES?",
+          "count": 1
+        },
+        {
+          "id": "pin-actual-started-core-actors",
+          "before": "match=createMatch({...options,seed:options.seed??((Date.now()^1964)>>>0)});playing=true;",
+          "after": "match=createMatch({...options,seed:options.seed??((Date.now()^1964)>>>0)});window.CQC_NATIVE_WARDROBE?.setActiveFighters(match.fighters.map(actor=>({uid:'core__'+actor.id,costume:actor.costume||'original'})));playing=true;",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "plan": "NATIVE_ACTION_SEMANTICS_PRECONDITION_PLAN_V1.json",
+      "path": "src/cqc-sprite-renderer.js",
+      "originalInputSHA256": "a03cdaf084eb556eacba98cbb3a97bd43d32b02c2db5bc00b9dfb0e40fef3071",
+      "actualInputSHA256": "a03cdaf084eb556eacba98cbb3a97bd43d32b02c2db5bc00b9dfb0e40fef3071",
+      "outputSHA256": "2f44704c4ad94519a0b04013387407c0358a6b9603d8e994ccbb87dc5949f133",
+      "explicitRebase": false,
+      "operations": [
+        {
+          "id": "native-action-semantics-from-reviewed-ancestry",
+          "before": "  function actionName(pose = {}, entry = null) {",
+          "after": "  function hasNativeActionSemantics(entry) {\n    const nativeFile=value=>value?.actions?.idle?.frames?.[0]?.file?.startsWith('assets/combat-sprites-pass18/')===true;\n    if(nativeFile(entry))return true;\n    const concept=entry?.costumeConcept;\n    if(concept?.schema!=='cqc.costume-design/1'||concept.sourceUID!==entry.uid)return false;\n    const source=entries.get(concept.sourceUID);\n    if(!source||source===entry||!nativeFile(source))return false;\n    // The approved source body owns the semantics; an atlas folder never changes its moves.\n    return Object.entries(source.actionMap||{}).every(([key,value])=>entry.actionMap?.[key]===value)\n      &&Object.keys(source.actions||{}).every(action=>entry.actions?.[action]?.frames?.length>0);\n  }\n\n  function actionName(pose = {}, entry = null) {",
+          "count": 1
+        },
+        {
+          "id": "native-routes-use-source-semantics",
+          "before": "entry.actions.idle.frames[0].file.startsWith('assets/combat-sprites-pass18/')",
+          "after": "hasNativeActionSemantics(entry)",
+          "count": 2
+        }
+      ]
+    }
+  ],
+  "assetCommit": "9e6ebfd2e8c1c2a3b38055d55cfa83d78f276e48",
+  "disjointPlansRebasedOnlyAfterByteExactCommutativityCheck": true,
+  "sourcePixelsChanged": false
+}

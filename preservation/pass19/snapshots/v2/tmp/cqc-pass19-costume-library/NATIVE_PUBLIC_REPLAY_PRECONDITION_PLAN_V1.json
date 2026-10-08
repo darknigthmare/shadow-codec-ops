@@ -1,0 +1,18 @@
+{
+  "schema": "cqc.source-preconditioned-plan/1",
+  "status": "reviewable-plan-no-APP-mutation",
+  "file": {
+    "path": "modules/unified-versus-v055.html",
+    "expectedSHA256": "cbb58004bad8f92e66af0ea0fd1f39b5ae304bf2fadb521990d187ab285a8610",
+    "resultSHA256": "1bef2404d08596eb510d5a4d88fbc59c89093dd0759bf2ca2cda02b028f9dabb",
+    "replacements": [
+      {
+        "id": "public-replay-and-ghost-await-native-assets",
+        "before": "startReplay:(rep)=>beginReplay48(rep,null),startGhost:(rep,ghostSlot=1)=>beginReplay48(rep,ghostSlot)",
+        "after": "startReplay:(rep)=>prepareReplayPass10(rep,null),startGhost:(rep,ghostSlot=1)=>prepareReplayPass10(rep,ghostSlot)",
+        "count": 1
+      }
+    ]
+  },
+  "scope": "Public debug/integration startReplay/startGhost used immediate beginReplay48 and bypassed the existing preparation overlay. Route both through the same validated two-slot preparation used by host messages, preventing dormant lazy costumes from launching unready."
+}

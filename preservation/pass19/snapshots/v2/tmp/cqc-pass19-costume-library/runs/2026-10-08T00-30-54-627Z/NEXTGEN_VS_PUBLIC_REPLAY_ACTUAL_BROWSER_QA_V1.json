@@ -1,0 +1,84 @@
+{
+  "schema": "cqc.native-NextGen-VS-public-replay-actual-browser/1",
+  "APPHTMLSHA256": "16cceee34ee628d5c8251f2c5545b86a6b3bc2f2c1fe464fb05375fd14ba8276",
+  "sourceCommit": "9e6ebfd2e8c1c2a3b38055d55cfa83d78f276e48",
+  "checks": [
+    "Public startReplay of dormant native options uses the preparation overlay; cancel resolvesfalse and stops the launch.",
+    "A prepared native public replay advances180 actual input frames without changing either saved costume slot or painting an unready body.",
+    "Public ghost routing on mobile retains one original and one native costume independently after awaited launch."
+  ],
+  "qualification": "Owned isolated proxy-CA SPKI browser; only this target RAF is disabled and actual replay simulation advanced through exposed advance(ms). No APP modifications.",
+  "bootstrap": {
+    "metadata": 0,
+    "RAW": 0,
+    "prefs": {
+      "schema": "cqc.slot-costumes/1",
+      "slots": [
+        {},
+        {}
+      ]
+    }
+  },
+  "cancelled": {
+    "before": {
+      "id": 1,
+      "status": "loading",
+      "attempt": 1,
+      "fighters": [
+        "core__campbell_mpo",
+        "core__cunningham"
+      ],
+      "stage": "flower_field"
+    },
+    "result": false,
+    "after": null,
+    "state": 0
+  },
+  "replay": {
+    "frame": 180,
+    "costumes": [
+      "nextgen",
+      "nextgen"
+    ],
+    "UIDs": [
+      "core__campbell_mpo",
+      "core__cunningham"
+    ],
+    "loading": null,
+    "prefs": {
+      "schema": "cqc.slot-costumes/1",
+      "slots": [
+        {},
+        {}
+      ]
+    },
+    "draws": {
+      "calls": 2,
+      "unready": 0,
+      "failed": 0
+    }
+  },
+  "ghost": {
+    "frame": 180,
+    "costumes": [
+      "original",
+      "nextgen"
+    ],
+    "loading": null,
+    "prefs": {
+      "schema": "cqc.slot-costumes/1",
+      "slots": [
+        {},
+        {}
+      ]
+    },
+    "draws": {
+      "calls": 5,
+      "unready": 0,
+      "failed": 0
+    }
+  },
+  "exceptions": [],
+  "status": "passed",
+  "helperSHA256": "dfc4af966fe69f366cae22731baffbd61bff99cc0f4943916e5e165494304a55"
+}

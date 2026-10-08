@@ -1,0 +1,115 @@
+{
+  "schema": "cqc.native-NextGen-Core-replay-actual-browser/1",
+  "APPHTMLSHA256": "3e9f2ccc44927b5eb60be2a4b895caaf3aefe292df650fb8661e4ced0464a1f2",
+  "sourceCommit": "9e6ebfd2e8c1c2a3b38055d55cfa83d78f276e48",
+  "checks": [
+    "Actual Core bootstrap keeps all produced remote wardrobe metadata dormant.",
+    "A valid known-but-dormant Core replay enters native preparation and menu cancellation prevents launching.",
+    "Core replay awaits both decoded directions, preserves costumes on private actors and leaves saved slot preferences untouched.",
+    "Two actual native-costumed Core replay runs advance600 frames with identical deterministic checksums."
+  ],
+  "qualification": "Owned isolated proxy-CA SPKI browser. Source testing harness explicitly enabled; RAF simulation disabled in this target only and actual engine advanced deterministically by its exposed harness. No APP code or pixels altered.",
+  "bootstrap": {
+    "metadata": 0,
+    "RAW": 0,
+    "chosen": {
+      "schema": "cqc.slot-costumes/1",
+      "slots": [
+        {},
+        {}
+      ]
+    }
+  },
+  "cancelled": {
+    "before": {
+      "pending": {
+        "number": 2,
+        "fighters": [
+          {
+            "uid": "core__snake_gb",
+            "costume": "nextgen"
+          },
+          {
+            "uid": "core__cunningham",
+            "costume": "nextgen"
+          }
+        ],
+        "attempt": 1
+      },
+      "playing": false
+    },
+    "after": {
+      "pending": null,
+      "playing": false
+    },
+    "toast": ""
+  },
+  "loaded": {
+    "actors": [
+      {
+        "id": "snake_gb",
+        "costume": "nextgen"
+      },
+      {
+        "id": "cunningham",
+        "costume": "nextgen"
+      }
+    ],
+    "costumes": [
+      "nextgen",
+      "nextgen"
+    ],
+    "prefs": {
+      "schema": "cqc.slot-costumes/1",
+      "slots": [
+        {},
+        {}
+      ]
+    },
+    "states": [
+      {
+        "known": true,
+        "state": "ready",
+        "ready": true,
+        "published": true,
+        "error": null
+      },
+      {
+        "known": true,
+        "state": "ready",
+        "ready": true,
+        "published": true,
+        "error": null
+      }
+    ],
+    "draws": {
+      "calls": 2,
+      "unready": 0,
+      "failed": 0
+    }
+  },
+  "firstAdvance": {
+    "phase": "fight",
+    "frame": 600,
+    "checksum": "c9d1d545"
+  },
+  "secondAdvance": {
+    "phase": "fight",
+    "frame": 600,
+    "checksum": "c9d1d545"
+  },
+  "desktopDraw": {
+    "draws": {
+      "calls": 4,
+      "unready": 0,
+      "failed": 0
+    },
+    "costumes": [
+      "nextgen",
+      "nextgen"
+    ]
+  },
+  "exceptions": [],
+  "status": "passed",
+  "helperSHA256": "f961668f924ccca010504ee39e3dba9c09318b519deaef9f8fb3e6bf26871cc8"
+}
