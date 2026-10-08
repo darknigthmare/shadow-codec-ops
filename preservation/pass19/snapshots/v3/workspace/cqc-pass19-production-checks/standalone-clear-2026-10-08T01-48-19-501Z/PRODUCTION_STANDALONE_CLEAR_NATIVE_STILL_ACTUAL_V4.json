@@ -1,0 +1,135 @@
+{
+  "schema": "cqc.pass19.production-v2-standalone-clear-native-stills/3",
+  "startedAt": "2026-10-08T01:48:19.544Z",
+  "deployment": "dpl_BzWcNXW1qRSwTS8hArYDjT79b7QM",
+  "origin": "https://shadow-codec-ops.vercel.app",
+  "headlessMode": "--headless=new --no-sandbox --disable-gpu",
+  "qualification": "Corrective standalone screenshot only. V3 retained a shell Options modal because the QA helper omitted its normal close action; that V3 standalone image is not accepted as unobscured. This V4 opens no fullscreen menu, uses real native selection/stage/match UI, waits for the normal round intro to finish, and proves the shell module iframe is not covered at its center. No application, actor, renderer or functional DOM edits.",
+  "checks": [
+    {
+      "flow": "standalone",
+      "manifest": {
+        "status": 200,
+        "sha256": "71f78c94af131f40f40dddf150a65e6cd80394c3c1e9a1c0473837f714a45560"
+      },
+      "native": {
+        "shellOptionsHidden": true,
+        "shellCenterHitModule": true,
+        "uids": [
+          "core__meryl_mgs1",
+          "core__liquid"
+        ],
+        "costumes": [
+          "cyborg",
+          "tuxedo"
+        ],
+        "frame": 102,
+        "phase": "fight",
+        "dojo": false,
+        "pauseOverlayHidden": true,
+        "bannerAbsent": true,
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "visible": true,
+          "bounds": {
+            "x": 640,
+            "y": 319,
+            "width": 1280,
+            "height": 720,
+            "top": 319,
+            "right": 1920,
+            "bottom": 1039,
+            "left": 640
+          }
+        },
+        "nativeReady": [
+          true,
+          true
+        ]
+      },
+      "screenshot": {
+        "path": "/workspace/cqc-pass19-production-checks/standalone-clear-2026-10-08T01-48-19-501Z/STANDALONE_NATIVE_COSTUMES_UNOBSCURED_FINAL_V4.png",
+        "bytes": 766385,
+        "sha256": "959cdd5a4881b43135f5026febfa3767405dd4e31bac21e172acaaa3edcbcf15"
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "/workspace/cqc-pass19-production-checks/standalone-clear-2026-10-08T01-48-19-501Z/STANDALONE_NATIVE_COSTUMES_UNOBSCURED_FINAL_V4.png",
+      "bytes": 766385,
+      "sha256": "959cdd5a4881b43135f5026febfa3767405dd4e31bac21e172acaaa3edcbcf15"
+    }
+  ],
+  "actions": [
+    {
+      "selector": "[data-mode=\"versus\"]",
+      "context": "cqcShell.document",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#launchFront",
+      "context": "cqcShell.document",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#slotP2",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#matchSettingsButtonPass17",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#launch",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "[data-stage-index=\"23\"]",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#stageConfirmPass17",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#pauseBtn",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#leaveFight",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    }
+  ],
+  "status": "passed",
+  "localStorageRestored": true,
+  "exceptions": [],
+  "networkFailures": [],
+  "httpErrors": [],
+  "ownedBrowserCloseRequested": true,
+  "finishedAt": "2026-10-08T01:48:27.083Z",
+  "helperSHA256": "f3f9f98bd19cd463e7ada864611a97e435f83c7a7eefdf987d3235ce7d223e86"
+}

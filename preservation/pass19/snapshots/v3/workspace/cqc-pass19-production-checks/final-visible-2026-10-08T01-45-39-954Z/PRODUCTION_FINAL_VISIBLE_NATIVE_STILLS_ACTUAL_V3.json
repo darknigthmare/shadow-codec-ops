@@ -1,0 +1,281 @@
+{
+  "schema": "cqc.pass19.production-v2-final-visible-native-stills/3",
+  "startedAt": "2026-10-08T01:45:39.993Z",
+  "deployment": "dpl_BzWcNXW1qRSwTS8hArYDjT79b7QM",
+  "origin": "https://shadow-codec-ops.vercel.app",
+  "headlessMode": "--headless=new --no-sandbox --disable-gpu",
+  "qualification": "Actual UI native matches, natural RAF without simulation steps; screenshots wait for the normal100frame round intro to finish and use local mode to avoid Dojo overlay. One Root-requested fullscreen action uses trusted CDP mouse pressed/released on visible shell options and fullscreen controls; DOM rejection/change events are observed without replacing the listener. Earlier V1 synthetic-click assertion failure is preserved. No source, actor-state, renderer or functional DOM edits.",
+  "checks": [
+    {
+      "flow": "standalone",
+      "manifest": {
+        "status": 200,
+        "sha256": "71f78c94af131f40f40dddf150a65e6cd80394c3c1e9a1c0473837f714a45560"
+      },
+      "native": {
+        "uids": [
+          "core__meryl_mgs1",
+          "core__liquid"
+        ],
+        "costumes": [
+          "cyborg",
+          "tuxedo"
+        ],
+        "frame": 105,
+        "phase": "fight",
+        "dojo": false,
+        "pauseOverlayHidden": true,
+        "bannerAbsent": true,
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "visible": true,
+          "bounds": {
+            "x": 640,
+            "y": 319,
+            "width": 1280,
+            "height": 720,
+            "top": 319,
+            "right": 1920,
+            "bottom": 1039,
+            "left": 640
+          }
+        },
+        "nativeReady": [
+          true,
+          true
+        ]
+      },
+      "screenshot": {
+        "path": "/workspace/cqc-pass19-production-checks/final-visible-2026-10-08T01-45-39-954Z/STANDALONE_NATIVE_COSTUMES_UNOBSCURED_FINAL_V3.png",
+        "bytes": 143185,
+        "sha256": "83ee614275b449436d2b2f2e05726db2a6eb6a1df6f0085bdcb9ba3a2ff279bb"
+      }
+    },
+    {
+      "flow": "shadow-integrated",
+      "manifest": {
+        "status": 200,
+        "sha256": "71f78c94af131f40f40dddf150a65e6cd80394c3c1e9a1c0473837f714a45560"
+      },
+      "native": {
+        "uids": [
+          "core__meryl_mgs1",
+          "core__liquid"
+        ],
+        "costumes": [
+          "cyborg",
+          "tuxedo"
+        ],
+        "frame": 103,
+        "phase": "fight",
+        "dojo": false,
+        "pauseOverlayHidden": true,
+        "bannerAbsent": true,
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "visible": true,
+          "bounds": {
+            "x": 619,
+            "y": 245.5,
+            "width": 1280,
+            "height": 720,
+            "top": 245.5,
+            "right": 1899,
+            "bottom": 965.5,
+            "left": 619
+          }
+        },
+        "nativeReady": [
+          true,
+          true
+        ]
+      },
+      "screenshot": {
+        "path": "/workspace/cqc-pass19-production-checks/final-visible-2026-10-08T01-45-39-954Z/INTEGRATED_NATIVE_COSTUMES_UNOBSCURED_FINAL_V3.png",
+        "bytes": 855207,
+        "sha256": "64925f44e7ee0e767ce83456cd062ab0fb749bfacae927e7f05de52f47367a44"
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "/workspace/cqc-pass19-production-checks/final-visible-2026-10-08T01-45-39-954Z/STANDALONE_NATIVE_COSTUMES_UNOBSCURED_FINAL_V3.png",
+      "bytes": 143185,
+      "sha256": "83ee614275b449436d2b2f2e05726db2a6eb6a1df6f0085bdcb9ba3a2ff279bb"
+    },
+    {
+      "path": "/workspace/cqc-pass19-production-checks/final-visible-2026-10-08T01-45-39-954Z/INTEGRATED_NATIVE_COSTUMES_UNOBSCURED_FINAL_V3.png",
+      "bytes": 855207,
+      "sha256": "64925f44e7ee0e767ce83456cd062ab0fb749bfacae927e7f05de52f47367a44"
+    }
+  ],
+  "actions": [
+    {
+      "selector": "[data-mode=\"options\"]",
+      "trigger": "trusted CDP mouse",
+      "coordinates": {
+        "x": 403.390625,
+        "y": 986.5,
+        "width": 682.78125,
+        "height": 72,
+        "visible": true
+      }
+    },
+    {
+      "selector": "#fullscreen",
+      "trigger": "trusted CDP mouse",
+      "coordinates": {
+        "x": 1584.8828125,
+        "y": 1001.6875,
+        "width": 96.234375,
+        "height": 36,
+        "visible": true
+      }
+    },
+    {
+      "selector": "[data-mode=\"versus\"]",
+      "context": "cqcShell.document",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#launchFront",
+      "context": "cqcShell.document",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#slotP2",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#matchSettingsButtonPass17",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#launch",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "[data-stage-index=\"23\"]",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#stageConfirmPass17",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#pauseBtn",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#leaveFight",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "[data-mode=\"versus\"]",
+      "context": "cqcShell.document",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#launchFront",
+      "context": "cqcShell.document",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#slotP2",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#matchSettingsButtonPass17",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#launch",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "[data-stage-index=\"23\"]",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#stageConfirmPass17",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#pauseBtn",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    },
+    {
+      "selector": "#leaveFight",
+      "context": "cqcDoc",
+      "trigger": "HTMLElement.click invokes normal UI handler"
+    }
+  ],
+  "fullscreen": {
+    "button": "shell command options #fullscreen",
+    "document": "top-level standaloneCQC shell, before game iframe launch",
+    "actual": false,
+    "enabled": true,
+    "viewport": {
+      "width": 2560,
+      "height": 1440
+    },
+    "events": [],
+    "nativeRosterVisible": {
+      "count": 18,
+      "visible": true
+    }
+  },
+  "status": "passed",
+  "localStorageRestored": true,
+  "exceptions": [],
+  "networkFailures": [],
+  "httpErrors": [],
+  "ownedBrowserCloseRequested": true,
+  "finishedAt": "2026-10-08T01:45:58.466Z",
+  "helperSHA256": "9d7d7e414f4121ee14f8d653659c92bad0a0bd2f6467282c6f7bef0eb0145428"
+}

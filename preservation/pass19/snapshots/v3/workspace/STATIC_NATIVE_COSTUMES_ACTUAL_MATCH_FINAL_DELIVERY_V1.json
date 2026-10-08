@@ -1,0 +1,399 @@
+{
+  "schema": "cqc.static-native-costumes-match-delivery/1",
+  "status": "passed",
+  "scope": "Actual production runtime checks for eleven reviewed static costumes, with explicit separation of one ancillary QA-origin favicon request. No application mutation, source art edit, or further browser run was made to requalify this receipt.",
+  "createdAt": "2026-10-08T01:01:38.926Z",
+  "sourceReceipt": {
+    "path": "/workspace/STATIC_NATIVE_COSTUMES_ACTUAL_MATCH_V2.json",
+    "sha256": "fac024ac7aead78197899d7d204ee12ba0beb453956211061e158b22ab9c1177",
+    "bytes": 62108,
+    "status": "failed",
+    "preservedUnaltered": true,
+    "collectorPolicy": "The raw V2 collector failed any HTTP >=400, including an implicit browser favicon request. All recorded gameplay assertions completed successfully before that broad policy failed."
+  },
+  "counts": {
+    "actualCostumeMatches": 11,
+    "physicsSteps": 2200,
+    "selectedCostumePoseSamples": 44,
+    "productionBodyDrawsIncludingOriginalOpponentsAndFeaturedPair": 90,
+    "independentDirectionsPerCostume": 2,
+    "coreRosterIdentities": 95,
+    "coreEligibleCostumes": 8,
+    "versusOnlyCostumes": 3
+  },
+  "runtimeAssertions": {
+    "allElevenActualStatesUsedIndependentSlotChoices": true,
+    "finitePhysics": true,
+    "leftAndRightMovement": true,
+    "jumpCrouchGuardAndAttackObserved": true,
+    "preparedAssetsBeforeLaunch": true,
+    "selectedNativeCanvasFilesMatchedFrameMetadata": true,
+    "selectedNativeDrawRefusals": 0,
+    "proceduralBodyFallbacksRequired": 0,
+    "gameHTTPFailures": 0,
+    "transportFailures": 0,
+    "runtimeExceptions": 0,
+    "coreEligibleOptionsSelectable": true,
+    "localStorageRestored": true,
+    "ownTargetClosed": true,
+    "ownBrowserClosed": true
+  },
+  "networkQualification": {
+    "gameResourceHTTPFailures": [],
+    "transportFailures": [],
+    "runtimeExceptions": [],
+    "ancillaryHTTP": [
+      {
+        "url": "http://127.0.0.1:8029/favicon.ico",
+        "status": 404
+      }
+    ],
+    "ancillaryScope": "One automatic /favicon.ico request on the read-only local QA HTTP origin. It is not a gameplay script, stage, character, PNG atlas, VFX, or costume manifest. The 404 is documented and retained in the raw receipt; no production favicon change was requested or applied.",
+    "measurementLimit": "The raw collector stores HTTP >=400 events, not a complete ledger of every2xx/3xx response. Zero gameplay HTTP failures is directly supported; an exhaustive every-response-HTTP200 certificate is not asserted."
+  },
+  "machineDimensions": [
+    {
+      "uid": "core__solid",
+      "id": "metalgear",
+      "metres": 3.4,
+      "pixels": 410.989010989011,
+      "simulationRatio": 1.8681318681318682,
+      "baselineSimulationRatio": 1,
+      "hurtbox": {
+        "x": 307.1428571428571,
+        "y": 138.3296703296703,
+        "w": 145.71428571428572,
+        "h": 429.6703296703297
+      },
+      "baselineHurtbox": {
+        "x": 341,
+        "y": 338,
+        "w": 78,
+        "h": 230
+      },
+      "absoluteHeightCertified": false,
+      "evidence": "Original designed machine form; deliberate estimate, not canonical stature",
+      "scope": "Châssis original créé pour ce costume ; aucune taille canonique revendiquée."
+    },
+    {
+      "uid": "core__ocelot_mgs1",
+      "id": "metalgear",
+      "metres": 3.2,
+      "pixels": 386.8131868131868,
+      "simulationRatio": 1.7582417582417582,
+      "baselineSimulationRatio": 1,
+      "hurtbox": {
+        "x": 311.42857142857144,
+        "y": 163.60439560439562,
+        "w": 137.14285714285714,
+        "h": 404.3956043956044
+      },
+      "baselineHurtbox": {
+        "x": 341,
+        "y": 338,
+        "w": 78,
+        "h": 230
+      },
+      "absoluteHeightCertified": false,
+      "evidence": "Original designed machine form; deliberate estimate, not canonical stature",
+      "scope": "Châssis original revolver créé pour ce costume ; aucune taille canonique revendiquée."
+    }
+  ],
+  "coreAvailability": {
+    "rosterCount": 95,
+    "eligible": [
+      {
+        "uid": "core__solid",
+        "id": "cyborg",
+        "selectable": true
+      },
+      {
+        "uid": "core__solid",
+        "id": "survive",
+        "selectable": true
+      },
+      {
+        "uid": "core__solid",
+        "id": "metalgear",
+        "selectable": true
+      },
+      {
+        "uid": "core__meryl_mgs1",
+        "id": "cyborg",
+        "selectable": true
+      },
+      {
+        "uid": "core__meryl_mgs1",
+        "id": "tuxedo",
+        "selectable": true
+      },
+      {
+        "uid": "core__ocelot_mgs1",
+        "id": "metalgear",
+        "selectable": true
+      },
+      {
+        "uid": "core__ocelot_mgs1",
+        "id": "tuxedo",
+        "selectable": true
+      },
+      {
+        "uid": "core__liquid",
+        "id": "tuxedo",
+        "selectable": true
+      }
+    ],
+    "outsideThisCoreRoster": [
+      {
+        "uid": "roster50__otacon_mgs1",
+        "id": "tuxedo",
+        "scope": "Verified in actual Versus; not part of this Core roster"
+      },
+      {
+        "uid": "roster50__otacon_mgs4",
+        "id": "survive",
+        "scope": "Verified in actual Versus; not part of this Core roster"
+      },
+      {
+        "uid": "roster51__mantis_tts",
+        "id": "cyborg",
+        "scope": "Verified in actual Versus; not part of this Core roster"
+      }
+    ],
+    "errors": []
+  },
+  "caseSummaries": [
+    {
+      "uid": "core__solid",
+      "id": "cyborg",
+      "family": "cyborg",
+      "physicsSteps": 200,
+      "nativePoseSamples": 4,
+      "metres": 1.82,
+      "independentOpponent": {
+        "uid": "core__solid",
+        "costume": "original"
+      },
+      "costumeScopedHurtbox": true
+    },
+    {
+      "uid": "core__solid",
+      "id": "survive",
+      "family": "survive",
+      "physicsSteps": 200,
+      "nativePoseSamples": 4,
+      "metres": 1.82,
+      "independentOpponent": {
+        "uid": "core__solid",
+        "costume": "original"
+      },
+      "costumeScopedHurtbox": true
+    },
+    {
+      "uid": "core__solid",
+      "id": "metalgear",
+      "family": "metalgear",
+      "physicsSteps": 200,
+      "nativePoseSamples": 4,
+      "metres": 3.4,
+      "independentOpponent": {
+        "uid": "core__solid",
+        "costume": "original"
+      },
+      "costumeScopedHurtbox": true
+    },
+    {
+      "uid": "core__meryl_mgs1",
+      "id": "cyborg",
+      "family": "cyborg",
+      "physicsSteps": 200,
+      "nativePoseSamples": 4,
+      "metres": 1.75,
+      "independentOpponent": {
+        "uid": "core__solid",
+        "costume": "original"
+      },
+      "costumeScopedHurtbox": true
+    },
+    {
+      "uid": "core__meryl_mgs1",
+      "id": "tuxedo",
+      "family": "tuxedo",
+      "physicsSteps": 200,
+      "nativePoseSamples": 4,
+      "metres": 1.75,
+      "independentOpponent": {
+        "uid": "core__solid",
+        "costume": "original"
+      },
+      "costumeScopedHurtbox": true
+    },
+    {
+      "uid": "core__ocelot_mgs1",
+      "id": "metalgear",
+      "family": "metalgear",
+      "physicsSteps": 200,
+      "nativePoseSamples": 4,
+      "metres": 3.2,
+      "independentOpponent": {
+        "uid": "core__solid",
+        "costume": "original"
+      },
+      "costumeScopedHurtbox": true
+    },
+    {
+      "uid": "core__ocelot_mgs1",
+      "id": "tuxedo",
+      "family": "tuxedo",
+      "physicsSteps": 200,
+      "nativePoseSamples": 4,
+      "metres": 1.82,
+      "independentOpponent": {
+        "uid": "core__solid",
+        "costume": "original"
+      },
+      "costumeScopedHurtbox": true
+    },
+    {
+      "uid": "core__liquid",
+      "id": "tuxedo",
+      "family": "tuxedo",
+      "physicsSteps": 200,
+      "nativePoseSamples": 4,
+      "metres": 1.83,
+      "independentOpponent": {
+        "uid": "core__solid",
+        "costume": "original"
+      },
+      "costumeScopedHurtbox": true
+    },
+    {
+      "uid": "roster50__otacon_mgs1",
+      "id": "tuxedo",
+      "family": "tuxedo",
+      "physicsSteps": 200,
+      "nativePoseSamples": 4,
+      "metres": 1.77,
+      "independentOpponent": {
+        "uid": "core__solid",
+        "costume": "original"
+      },
+      "costumeScopedHurtbox": true
+    },
+    {
+      "uid": "roster50__otacon_mgs4",
+      "id": "survive",
+      "family": "survive",
+      "physicsSteps": 200,
+      "nativePoseSamples": 4,
+      "metres": 1.82,
+      "independentOpponent": {
+        "uid": "core__solid",
+        "costume": "original"
+      },
+      "costumeScopedHurtbox": true
+    },
+    {
+      "uid": "roster51__mantis_tts",
+      "id": "cyborg",
+      "family": "cyborg",
+      "physicsSteps": 200,
+      "nativePoseSamples": 4,
+      "metres": 1.9,
+      "independentOpponent": {
+        "uid": "core__solid",
+        "costume": "original"
+      },
+      "costumeScopedHurtbox": true
+    }
+  ],
+  "featuredMatch": {
+    "a": {
+      "uid": "core__meryl_mgs1",
+      "costume": "cyborg",
+      "face": 1,
+      "nativeSuccess": true,
+      "height": {
+        "uid": "core__meryl_mgs1",
+        "metres": 1.75,
+        "evidence": "official-primary-directly-observed",
+        "sources": [
+          "https://www.konami.com/mg/archive/mgs/character/ch14.html",
+          "https://www.konami.com/mg/archive/mgs/character/images/ch14_status.gif"
+        ],
+        "scope": "Height directly read in the official Konami MGS1 profile GIF; matching Twin Snakes incarnation only. Uniform source figure includes equipment and posture.",
+        "absoluteHeightCertified": true,
+        "costume": "cyborg",
+        "sourceUID": "core__meryl_mgs1",
+        "pixels": 211.53846153846155,
+        "originalPixels": 215,
+        "ratio": 0.9838998211091234
+      }
+    },
+    "b": {
+      "uid": "core__liquid",
+      "costume": "tuxedo",
+      "face": -1,
+      "nativeSuccess": true,
+      "height": {
+        "uid": "core__liquid",
+        "metres": 1.83,
+        "evidence": "official-primary-directly-observed",
+        "sources": [
+          "https://www.konami.com/mg/archive/mgs/character/ch07.html",
+          "https://www.konami.com/mg/archive/mgs/character/images/ch07_status.gif"
+        ],
+        "scope": "Directly read official MGS1 status GIF. Applied only to that incarnation or its matching Twin Snakes remake; posture/equipment bounds are not a certified anatomical measurement.",
+        "absoluteHeightCertified": true,
+        "costume": "tuxedo",
+        "sourceUID": "core__liquid",
+        "pixels": 221.2087912087912,
+        "originalPixels": 230,
+        "ratio": 0.9617773530817009
+      }
+    },
+    "stage": "vr_grid",
+    "sourceCanvas": {
+      "width": 1280,
+      "height": 720
+    },
+    "canvasDisplay": {
+      "x": 0,
+      "y": 39.25,
+      "width": 1080,
+      "height": 607.5
+    },
+    "viewport": {
+      "width": 1080,
+      "height": 720
+    },
+    "errors": []
+  },
+  "screenshot": {
+    "path": "/workspace/STATIC_NATIVE_COSTUMES_ACTUAL_MATCH_V2.png",
+    "sha256": "71988b68adb8146f51a095301604a1ff53136dc053510a94fe8ae570bbbd4eb7",
+    "bytes": 543563,
+    "viewport": {
+      "width": 1080,
+      "height": 720
+    },
+    "review": {
+      "reviewer": "pass19-authored-wardrobe",
+      "method": "view_image physically inspected actual1080×720 game screenshot",
+      "status": "accepted",
+      "notes": "Meryl bespoke cyborg and Liquid original tuxedo are both visible in the actual VR arena, with a clear feet anchor and unobscured bodies. HUD and training status are normal game UI; no contact sheet or procedural body fallback."
+    }
+  },
+  "reproduction": {
+    "launcher": "/workspace/static-native-match-launch-v2.mjs",
+    "runner": "/workspace/static-native-match-final-v2.mjs",
+    "caseSource": "/workspace/static-native-match-case-v2.js",
+    "command": "node /workspace/static-native-match-final-v2.mjs",
+    "endpoint": "Owned isolated CDP9260, shortTMPDIR/workspace/cqa9260-tmp, operating-system shared memory, workspace profile,8MiB disk cache; one target; individually bounded90s CDP calls with45s start-failure polling."
+  },
+  "limits": [
+    "This report verifies the eleven static variants in the actual Versus runtime. Full all-pose authored source reviews are separate pinned earlier receipts.",
+    "Core check is actual95-identity roster intersection and option availability; this report does not claim new Core match coverage for the three identities outside that roster.",
+    "Original cyborg,Survive,MetalGear and formal variants are explicitly original designs. Authored3.4m/3.2m chassis dimensions are deliberate estimates, not canonical source-game stature certifications."
+  ]
+}

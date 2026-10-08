@@ -1,0 +1,54 @@
+{
+  "schema": "cqc.pass19.actual-application-build/1",
+  "status": "passed",
+  "executedCommandsExitZero": [
+    "tsc -b",
+    "vite programmatic original-config verified public hardlinks",
+    "npm run test",
+    "npm run pwa:check",
+    "npm run cqc:check"
+  ],
+  "testFilesPassed": 104,
+  "testsPassed": 705,
+  "compileSourceEdited": false,
+  "rasterSourceEdited": false,
+  "publicCopyStorageSharingOnly": true,
+  "reports": [
+    {
+      "path": "/tmp/cqc-pass19-integration/APPLICATION_BUILD_PUBLIC_HARDLINK_PROOF_ACTUAL_V1.json",
+      "bytes": 848346,
+      "sha256": "3a5347a541a4b00169b2450ae1597907f11f0ef282bfa0449ec684ef9492041e"
+    },
+    {
+      "path": "/tmp/cqc-pass19-integration/GENERAL_TESTS_ACTUAL_V5.log",
+      "bytes": 7275,
+      "sha256": "91f46cefd545179491d5abf78ac66572d34856493ee12928b42e3002f25b72a2"
+    },
+    {
+      "path": "/tmp/cqc-pass19-integration/TYPESCRIPT_BUILD_ACTUAL_V1.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/cqc-pass19-integration/VITE_BUILD_ACTUAL_V1.log",
+      "bytes": 8295,
+      "sha256": "04706c4a86f29a873f3d6a5c4d7a0b128e058854d7567e19912c8399b9fc29a8"
+    },
+    {
+      "path": "/tmp/cqc-pass19-integration/PWA_CHECK_ACTUAL_V1.log",
+      "bytes": 133,
+      "sha256": "c2082605bf7e914cbfa34422e1ff340a84e280d36c79a5de6e15baf9a4b11d55"
+    },
+    {
+      "path": "/tmp/cqc-pass19-integration/CQC_RUNTIME_CHECK_ACTUAL_V1.log",
+      "bytes": 340,
+      "sha256": "a90c9a2a6aad779e87ff1decc242acda29df883c3c4c17c70bec58106372e80c"
+    },
+    {
+      "path": "/tmp/cqc-pass19-integration/RUNTIME_MANIFEST_ACTUAL_V1.json",
+      "bytes": 403,
+      "sha256": "5d15de44a413ca99d1f90a7c8660b9f1ef06900885a1f3bcb8aef7c8fdc4fca0"
+    }
+  ],
+  "qualification": "Hardlinks preserve all exact public build bytes while avoiding a duplicate2.47GB local copy. Production uses the unmodified package build command."
+}

@@ -1,0 +1,28 @@
+{
+  "schema": "cqc.pass19.pwa-terminal-build/1",
+  "status": "passed",
+  "checkedAt": "2026-10-08T01:29:28.747402+00:00",
+  "parentRelease": "4cf0e71d9c7486ef63745e5f270c88da2847c18e",
+  "tsc": {
+    "command": "tsc -b",
+    "actualExit": 0
+  },
+  "vite": {
+    "command": "node /tmp/cqc-pass19-integration/build-with-verified-public-hardlinks-v3.mjs",
+    "actualExit": 0,
+    "log": "/workspace/cqc-pass19-pwa-diegetic/VITE_BUILD_ACTUAL_V1.log",
+    "logSHA256": "4ad2488624c9705ac462e8d3d4f89f8cce57901903e08ef52740e96365420ed1",
+    "publicProof": "/tmp/cqc-pass19-integration/APPLICATION_BUILD_PUBLIC_HARDLINK_PROOF_ACTUAL_V3.json"
+  },
+  "pwa": {
+    "command": "npm run pwa:check",
+    "actualExit": 0
+  },
+  "runtimeManifestSHA256": "71f78c94af131f40f40dddf150a65e6cd80394c3c1e9a1c0473837f714a45560",
+  "runtimeManifestUnchanged": true,
+  "publicFiles": 3252,
+  "publicBytes": 2473739803,
+  "priorGameplayTests": 705,
+  "newTestFiles": 0,
+  "qualification": "Textual terminal UI correction; gameplay tests are reused at unchanged CQC source, final targeted online check still required"
+}

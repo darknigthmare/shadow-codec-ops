@@ -1,0 +1,40 @@
+{
+  "schema": "cqc.pass19.production-fullscreen-unobscured-art-supplement/2",
+  "startedAt": "2026-10-08T01:27:38.350Z",
+  "origin": "https://shadow-codec-ops.vercel.app",
+  "previousPassedBrowserReport": "/workspace/cqc-pass19-production-checks/browser-2026-10-08T01-24-44-051Z/PRODUCTION_TWO_ROUTES_ACTUAL_BROWSER_QA_V1.json",
+  "qualification": "Supplement resolves the initial immediate fullscreen snapshot and removes the ordinary Dojo canvas overlay by choosing the real local two-player mode. Selection/start use actual UI; one normal pause overlay class is temporarily hidden solely for a frozen unobscured native-art screenshot, then restored before normal resume/return. No application source or match-state edits, no simulation stepping. Browser TLS uses only the independently verified proxy CA SPKI.",
+  "screenshots": [],
+  "checks": [],
+  "actions": [
+    {
+      "label": "[data-mode=\"options\"]",
+      "expression": "document.querySelector(\"[data-mode=\\\"options\\\"]\").click();true"
+    },
+    {
+      "label": "#fullscreen",
+      "expression": "document.querySelector(\"#fullscreen\").click();true"
+    }
+  ],
+  "manifest": {
+    "status": 200,
+    "sha256": "71f78c94af131f40f40dddf150a65e6cd80394c3c1e9a1c0473837f714a45560"
+  },
+  "fullscreen": {
+    "actual": false,
+    "enabled": true,
+    "viewport": {
+      "width": 2560,
+      "height": 1440
+    }
+  },
+  "status": "failed",
+  "error": "AssertionError [ERR_ASSERTION]: Fullscreen did not enter after an actual UI click plus500ms settlement\n    at file:///workspace/cqc-pass19-production-checks/browser-art-fullscreen-v2.mjs:15:309",
+  "localStorageRestored": true,
+  "exceptions": [],
+  "networkFailures": [],
+  "httpErrors": [],
+  "ownedBrowserCloseRequested": true,
+  "finishedAt": "2026-10-08T01:27:39.425Z",
+  "helperSHA256": "90812405cedd07d3e0b7d2adad0a09b4e696d5e27cb89d9b26621b9f7119ba30"
+}
