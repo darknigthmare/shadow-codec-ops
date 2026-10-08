@@ -23,7 +23,10 @@
    let left=previewSampleSize,top=previewSampleSize,right=-1,bottom=-1;
    for(let y=0;y<previewSampleSize;y++)for(let x=0;x<previewSampleSize;x++)if(data[(y*previewSampleSize+x)*4+3]>=16){left=Math.min(left,x);right=Math.max(right,x);top=Math.min(top,y);bottom=Math.max(bottom,y);}
    if(bottom<top)return null;
-   const result=Object.freeze({id,face,left,top,right:right+1,bottom:bottom+1,width:right+1-left,height:bottom+1-top,sampleSize:previewSampleSize,samplePadding:previewSamplePadding,measurement:'native-rig-alpha-idle'});
+   const centres=[],first=Math.round(top+(bottom+1-top)*.47),last=Math.round(top+(bottom+1-top)*.65);
+   for(let y=first;y<=last;y++){const occupied=[];for(let x=left;x<=right;x++)if(data[(y*previewSampleSize+x)*4+3]>=16)occupied.push(x+.5);if(occupied.length>=3)centres.push(occupied[Math.floor(occupied.length/2)]);}
+   centres.sort((a,b)=>a-b);const bodyDatumX=centres.length>=3?centres[Math.floor(centres.length/2)]:(left+right+1)/2;
+   const result=Object.freeze({id,face,left,top,right:right+1,bottom:bottom+1,width:right+1-left,height:bottom+1-top,bodyDatumX,bodyDatumBand:[first,last],bodyDatumMeasurement:'native-rig-alpha-body-band',sampleSize:previewSampleSize,samplePadding:previewSamplePadding,measurement:'native-rig-alpha-idle'});
    previewMeasures.set(key,result);return result;
   }catch(_){return null;}finally{canvas.width=canvas.height=1;}
  }
@@ -31,7 +34,7 @@
   const geometry=sharedPreview(value,box,face),measure=geometry&&previewMeasure(value,face);
   if(!geometry||!measure)return null;
   const ratio=geometry.standingHeight/measure.height;
-  const fitted={x:geometry.x-(measure.left+measure.right)/2*ratio,y:geometry.floor-measure.bottom*ratio,width:previewSampleSize*ratio,height:previewSampleSize*ratio,padding:previewSamplePadding*ratio};
+  const fitted={x:(geometry.bodyX??geometry.x)-measure.bodyDatumX*ratio,y:geometry.floor-measure.bottom*ratio,width:previewSampleSize*ratio,height:previewSampleSize*ratio,padding:previewSamplePadding*ratio};
   return rawFitted(context,fighter(value).uid,fitted,face,pose);
  }
  function install(){
@@ -45,5 +48,5 @@
   for(const name of ['whenReady','whenReadyComposite'])if(typeof bridge[name]==='function'){const original=bridge[name].bind(bridge);bridge[name]=function(value,options={}){const record=fighter(value,options);return native(record)?root.CQC_PASS19_COSTUMES.whenReady(record,options):original(typeof value==='object'?value.uid:value,options);};}
   return true;
  }
- return{version:'pass20-machine-costume-routing/1',install,native,previewMeasure};
+ return{version:'pass21-machine-costume-routing/1',install,native,previewMeasure};
 });

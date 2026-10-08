@@ -1,0 +1,49 @@
+{
+  "schema": "cqc.pass21.meryl-native-tuxedo-final-live-qa/1",
+  "status": "passed",
+  "physicalScreenshotsReviewed": true,
+  "reviewedAt": "2026-10-08T09:20:32.577521+00:00",
+  "reviewer": "pass20_box_anatomy",
+  "sourceReceipt": {
+    "path": "/workspace/cqc-pass21-tuxedo/browser-qa/MERYL_MGS4_TUXEDO_ACTUAL_UI_MATCH_V7.json",
+    "sha256": "f4e674c948df901a6c8f555977cc9563bc11a4216fd0d29da2407e21268a1a89"
+  },
+  "physicalReview": {
+    "modalRight": "Complete MGS4 Meryl formal clothing, full head and feet, same stature and body-centre as left.",
+    "modalLeft": "Independent native left-facing formal costume, full head and feet, same stature and ground.",
+    "liveMatch": "Both players visibly wear the new native Meryl MGS4 formal costume, independent facing and feet on the same stage floor; no original body fallback."
+  },
+  "qa": {
+    "realEquips": 2,
+    "nativeLiveDraws": 160,
+    "nativeLiveDrawsAllReturnedTrue": true,
+    "actualProjectileBirths": 2,
+    "maxMuzzleOriginErrorPixels": 1.0122147696092822e-06,
+    "maxProjectileBirthErrorPixels": 1.0122147696092822e-06,
+    "JSExceptions": 0,
+    "unexpectedNetworkFailures": 0,
+    "nativePreviewSmoothingAllTrue": true,
+    "nativeCombatSmoothingBothFacesTrue": true,
+    "previewGeometryBothFaces": [
+      {
+        "standingHeight": 410.4553971270248,
+        "ground": 453.84316904309463,
+        "bodyX": 192
+      },
+      {
+        "standingHeight": 410.4553971270248,
+        "ground": 453.84316904309463,
+        "bodyX": 192
+      }
+    ]
+  },
+  "qualifications": [
+    "The preview redraw cancels one obsolete native metadata fetch with the browser-confirmed canceled=true / net::ERR_ABORTED signal; retained in the raw receipt, separate from actual network failures.",
+    "The app has no favicon.ico at this local test origin (one 404). No application asset or metadata request failed.",
+    "Sixteen physically reviewed native keyposes per orientation, shared across action groups; no complete captured animation cycle claimed.",
+    "Renderer property corrected to painted, the renderer-recognized Canvas smoothing gate. All native source frames, clip polygons, stature bounds, pivots and socket coordinates unchanged from metadata-v2. Actual two modals, natural match and two shots repeated against metadata-v3; Canvas smoothing was recorded true inside the actual drawImage calls."
+  ],
+  "PNGBytesModified": false,
+  "metadataSHA256": "61a27c5b8f1cfd18268a6b111a84a9e6f8e7d1023565459537c9ab89a8b8ce0d",
+  "ownedBrowserCloseRequested": true
+}

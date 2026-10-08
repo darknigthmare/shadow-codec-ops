@@ -12,10 +12,17 @@
   const costumeEntries = new Map(), costumeFiles = new WeakMap();
   const retainedFiles = new Set();
   let previewMeasurements = new WeakMap();
+  let previewDatumMeasurements = new WeakMap();
   const previewEnvelopes = new Map();
   // Both native directions of all four immutable lazy presentations are measured
   // from their pinned metadata at build time, before any remote costume is loaded.
   const previewEnvelopeSeeds = {"core__campbell_mpo":{"metadataSHA256":"67fbd7ef9645ebed6d280462b883fae4ca2a338b003594b9adcc1be4d0bb30b9","radius":0.4034782608695653,"above":1.0538191399999999,"below":0.015,"idleFrameCount":2},"core__chris_jenner":{"metadataSHA256":"f859951ae3b29f9a68029dd88d2dcd6615057c70874532ed76b1b5d32344e3d9","radius":0.4,"above":1.05359548,"below":0.015,"idleFrameCount":2},"core__cunningham":{"metadataSHA256":"4a6c03ddfa486fd8ab4a8eafa296d828666930d86f7716596703686890a023a8","radius":0.4446568434626867,"above":1.0537279800000001,"below":0.015,"idleFrameCount":2},"core__snake_gb":{"metadataSHA256":"341aaad75b9ee2e235802f239c35af76b301b896d6d293d721c8398197b9b8b0","radius":0.4,"above":1.05353612,"below":0.015,"idleFrameCount":2}};
+  // Visually reviewed lower-chassis axes; source SHA and exact idle rect prevent
+  // accidental reuse if this separately authored mechanical costume changes.
+  const reviewedPreviewDatums = {
+    'ce7e7c09f4b1b06e4a13a85ab6e481556eff1fac7441f5b7dd45719e7799f77d:76,8,211,299': { x: 100, band: [202, 236] },
+    'c434a81adf145c0b6d8f6e43feff59b4db1993a98afd99628c271be1de6d3fec:72,5,200,313': { x: 100, band: [217, 241] }
+  };
   const decodedByteLimit = 256 * 1024 * 1024, readyImageLimit = 40, clockLimit = 512;
   let imageUse = 0, activeImageLoads = 0;
   const imageLoadLimit = 4, imageQueue = [];
@@ -68,6 +75,8 @@
       for (const frame of action.frames) {
         if (!safeFile(frame.file) || !/^[a-f0-9]{64}$/.test(frame.sha256 || '') || !Array.isArray(frame.rect) || frame.rect.length !== 4 || !frame.rect.every(finite) || frame.rect[0] < 0 || frame.rect[1] < 0 || frame.rect[2] <= 0 || frame.rect[3] <= 0) return false;
         if (!Array.isArray(frame.pivot) || frame.pivot.length !== 2 || !frame.pivot.every(v => finite(v) && v >= 0 && v <= 1)) return false;
+        // Preview-only body anchor in source pixels, independent of combat pivots.
+        if (frame.previewDatumX !== undefined && (!finite(frame.previewDatumX) || frame.previewDatumX < 0 || frame.previewDatumX > frame.rect[2])) return false;
         const body = frame.previewStatureBounds;
         if (body && (!['left','top','right','bottom'].every(key => finite(body[key])) || body.left < 0 || body.top < 0 || body.right > frame.rect[2] || body.bottom > frame.rect[3] || body.right <= body.left || body.bottom <= body.top)) return false;
         if (frame.clipPolygon && (!Array.isArray(frame.clipPolygon) || frame.clipPolygon.length < 3 || !frame.clipPolygon.every(p => Array.isArray(p) && p.length === 2 && p.every(v => finite(v) && v >= 0 && v <= 1)))) return false;
@@ -89,7 +98,7 @@
     return 'http://localhost/';
   }
   function configure(catalog, options = {}) {
-    entries.clear(); images.clear(); clocks.clear(); entryFiles.clear(); retainedFiles.clear(); previewMeasurements = new WeakMap(); previewEnvelopes.clear(); baseURL = resolveBase(options);
+    entries.clear(); images.clear(); clocks.clear(); entryFiles.clear(); retainedFiles.clear(); previewMeasurements = new WeakMap(); previewDatumMeasurements = new WeakMap(); previewEnvelopes.clear(); baseURL = resolveBase(options);
     if (!catalog || catalog.schema !== 'cqc.combat-sprites/1' || !catalog.entries || typeof catalog.entries !== 'object') return { accepted: 0, rejected: [] };
     const rejected = [];
     for (const [uid, entry] of Object.entries(catalog.entries)) {
@@ -109,7 +118,7 @@
     return costume !== 'original' ? costumeEntries.get(uid)?.get(costume) || null : entries.get(uid);
   }
   function configureCostumes(catalog) {
-    costumeEntries.clear(); previewMeasurements = new WeakMap();
+    costumeEntries.clear(); previewMeasurements = new WeakMap(); previewDatumMeasurements = new WeakMap();
     if (!catalog || catalog.schema !== 'cqc.combat-costumes/1' || !catalog.entries) return { accepted: 0, rejected: [] };
     let accepted = 0; const rejected = [];
     for (const [uid, record] of Object.entries(catalog.entries)) {
@@ -337,12 +346,74 @@
     }
     return measured;
   }
+  function previewEntry(fighter) {
+    const direct = entryFor(fighter?.uid, fighter || {});
+    return direct || (fighter?.uid === 'pass19__dwarf_gekko_humanoid_mgr'
+      && (!fighter.costume || fighter.costume === 'original')
+      ? costumeEntries.get(fighter.uid)?.get('trenchcoat') : null);
+  }
+  function previewDatum(fighter, face = -1) {
+    const entry = previewEntry(fighter);
+    if (!entry || ![1, -1].includes(face)) return null;
+    const body = previewBody(entry, face), frame = body?.frame;
+    if (!frame || (face !== entry.facing && !entry.oppositeActions && entry.mirror !== true)) return null;
+    const pivotX = frame.rect[2] * frame.pivot[0];
+    const result = (sourceX, measurement, band) => Object.freeze({ sourceX, pivotX,
+      measurement, ...(band ? { band } : {}), file: frame.file, sha256: frame.sha256,
+      rect: [...frame.rect], previewOnly: true });
+    // Art can supply a reviewed waist/chassis axis on each independently drawn face.
+    // This datum never replaces frame.pivot, collision geometry or world coordinates.
+    if (finite(frame.previewDatumX)) return result(frame.previewDatumX, 'reviewed-source-body-datum');
+    const reviewed = reviewedPreviewDatums[frame.sha256 + ':' + frame.rect.join(',')];
+    if (reviewed) return result(reviewed.x, 'reviewed-source-chassis-datum', reviewed.band);
+    const cached = previewDatumMeasurements.get(entry)?.get(face);
+    if (cached) return cached;
+    const loaded = images.get(frame.file), [sx, sy, sw, sh] = frame.rect;
+    if (loaded?.state !== 'ready' || !root.document?.createElement
+      || !Number.isInteger(sw) || !Number.isInteger(sh) || sw * sh > 2097152)
+      return result(pivotX, 'preserved-source-pivot');
+    const canvas = root.document.createElement('canvas'); canvas.width = sw; canvas.height = sh;
+    let measured = null;
+    try {
+      const context = canvas.getContext('2d', { willReadFrequently: true });
+      if (!context) return result(pivotX, 'preserved-source-pivot');
+      if (frame.clipPolygon) {
+        context.beginPath(); frame.clipPolygon.forEach((point, i) => {
+          if (i) context.lineTo(point[0] * sw, point[1] * sh);
+          else context.moveTo(point[0] * sw, point[1] * sh);
+        }); context.closePath(); context.clip();
+      }
+      context.drawImage(loaded.image, sx, sy, sw, sh, 0, 0, sw, sh);
+      const data = context.getImageData(0, 0, sw, sh).data;
+      // Median occupied pixels in the lower torso/pelvis band avoid the total
+      // silhouette centre, shoulder armour and most thin weapon protrusions.
+      // Unusual anatomy can override this silhouette estimate with previewDatumX.
+      const top = finite(body.top) ? body.top : body.bottom - body.height;
+      const first = Math.max(0, Math.round(top + body.height * .47));
+      const last = Math.min(sh - 1, Math.round(top + body.height * .65));
+      const centres = [];
+      for (let y = first; y <= last; y++) {
+        const occupied = [];
+        for (let x = 0; x < sw; x++) if (data[(y * sw + x) * 4 + 3] >= 16) occupied.push(x + .5);
+        if (occupied.length >= 3) centres.push(occupied[Math.floor(occupied.length / 2)]);
+      }
+      if (centres.length >= 3) {
+        centres.sort((a, b) => a - b);
+        measured = result(centres[Math.floor(centres.length / 2)], 'native-alpha-body-band', [first, last]);
+      }
+    } catch (_) { /* Restricted canvas readback preserves the authored pivot. */ }
+    finally { canvas.width = canvas.height = 1; }
+    if (!measured) return result(pivotX, 'preserved-source-pivot');
+    let directions = previewDatumMeasurements.get(entry);
+    if (!directions) { directions = new Map(); previewDatumMeasurements.set(entry, directions); }
+    directions.set(face, measured); return measured;
+  }
   function previewGeometry(fighter, box, face = -1) {
     const directEntry = entryFor(fighter?.uid, fighter || {});
     // Only this reviewed machine has a native cloth counterpart of the same stature.
     const machineDatum = !directEntry && fighter?.uid === 'pass19__dwarf_gekko_humanoid_mgr'
       && (!fighter.costume || fighter.costume === 'original');
-    const entry = directEntry || (machineDatum ? costumeEntries.get(fighter.uid)?.get('trenchcoat') : null);
+    const entry = directEntry || previewEntry(fighter);
     if (!entry || !box || ![box.x, box.y, box.width, box.height].every(finite) || box.width <= 0 || box.height <= 0 || ![1, -1].includes(face)) return null;
     const opposite = face !== entry.facing && entry.oppositeActions;
     if (face !== entry.facing && !opposite && entry.mirror !== true) return null;
@@ -366,7 +437,8 @@
         if (candidate.statureUID !== stature.statureUID || Math.abs(candidate.pixels / stature.pixels - 1) > .01) continue;
         for (const actions of [variant.actions, variant.oppositeActions]) for (const frame of actions?.idle?.frames?.slice(0, 1) || []) {
           const standing = sourceStandingHeight(variant, frame), [,, width, height] = frame.rect;
-          radius = Math.max(radius, width * Math.max(frame.pivot[0], 1 - frame.pivot[0]) / standing * 1.12);
+          const axis = finite(frame.previewDatumX) ? frame.previewDatumX : width * frame.pivot[0];
+          radius = Math.max(radius, Math.max(axis, width - axis) / standing * 1.12);
           above = Math.max(above, height * frame.pivot[1] / standing * 1.06);
           below = Math.max(below, height * (1 - frame.pivot[1]) / standing * 1.06);
         }
@@ -384,9 +456,12 @@
     const referenceFactor = entry.displayHeight / sourceStandingHeight(entry, body.frame);
     const scale = fit * stature.pixels / (body.height * referenceFactor);
     const floor = box.y + box.height - padding - below * stature.pixels * fit;
+    const datum = previewDatum(fighter, face), bodyX = box.x + box.width / 2;
+    const mirror = face !== entry.facing && !entry.oppositeActions && entry.mirror === true ? -1 : 1;
+    const datumOffset = datum ? (datum.sourceX - datum.pivotX) * referenceFactor * scale * mirror : 0;
     return { uid: entry.uid, costume: fighter?.costume || 'original', face, statureUID: stature.statureUID,
       staturePixels: stature.pixels, statureEvidence: stature.evidence, measurement: body.measurement,
-      x: box.x + box.width / 2, y: floor - (body.bottom - body.frame.rect[3] * body.frame.pivot[1]) * referenceFactor * scale,
+      x: bodyX - datumOffset, bodyX, datum, y: floor - (body.bottom - body.frame.rect[3] * body.frame.pivot[1]) * referenceFactor * scale,
       floor, scale, standingHeight: stature.pixels * fit,
       envelope, previewOnly: true, ...(machineDatum ? { renderer: 'machine-stature-datum', referenceCostume: 'trenchcoat' } : {}) };
   }
@@ -439,5 +514,5 @@
     } finally { c.restore(); }
     return true;
   }
-  return { configure, configureCostumes, getEntry: entryFor, draw, drawFitted, previewGeometry, has, preload, whenReady, status, validateEntry, validateCostumeEntry, actionName, selectFrame, retainFighters, cacheInfo };
+  return { configure, configureCostumes, getEntry: entryFor, draw, drawFitted, previewGeometry, previewDatum, has, preload, whenReady, status, validateEntry, validateCostumeEntry, actionName, selectFrame, retainFighters, cacheInfo };
 });

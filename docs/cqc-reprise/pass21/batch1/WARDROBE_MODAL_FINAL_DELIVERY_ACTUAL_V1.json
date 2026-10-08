@@ -1,0 +1,79 @@
+{
+  "schema": "cqc.pass21.native-wardrobe-modal-final-delivery/1",
+  "status": "passed",
+  "sourceFiles": {
+    "cqc-pass19-native-wardrobe-ui.js": {
+      "bytes": 8484,
+      "sha256": "46c309b1330bd71c9dbd9a9a7c711062bb79dd2b8b83ab3f19c9c7e51fb4f2f5"
+    },
+    "cqc-pass19-native-wardrobe-library.js": {
+      "bytes": 33260,
+      "sha256": "cc3ca723c7bf9f6871cc090cee2e17ecde9337c69454dfe6a94832368afbb078"
+    },
+    "cqc-sprite-renderer.js": {
+      "bytes": 44330,
+      "sha256": "53a7e9871bbeea7a876a2120bfa3c60be5f8993af3206aeb2d8013543499f53a"
+    },
+    "cqc-pass19-machine-costume-routing.js": {
+      "bytes": 5954,
+      "sha256": "a7e045566b436d6dcc943851312d2654bebfed1154c690659d8570c87ac0d309"
+    }
+  },
+  "checks": {
+    "activeDrawGuardsByteIdentical": true,
+    "rendererFrozen": true,
+    "machineRoutingFrozen": true
+  },
+  "actualModalPreviews": {
+    "fourImmutableLazyOptions": 8,
+    "newSolidMGS1ActualArtMemoryDescriptor": 2,
+    "bodyAxisTargetPx": 192,
+    "maximumBodyAxisErrorPx": 6e-06,
+    "heightAndFeetSpreadPx": "0–1",
+    "newSolidFeetSpreadPx": 0,
+    "previewRecordsRemainUnpublished": true,
+    "selectCalls": 0,
+    "preferencesChanged": false,
+    "catalogChanged": false
+  },
+  "raceCases": [
+    {
+      "case": "old success after new success",
+      "pass": true
+    },
+    {
+      "case": "cancel then late success",
+      "pass": true
+    },
+    {
+      "case": "old error after new success",
+      "pass": true
+    },
+    {
+      "case": "source failure clears preview",
+      "pass": true
+    },
+    {
+      "case": "retry recovers real native drawing",
+      "pass": true
+    },
+    {
+      "case": "renderer refuses preview with no fallback",
+      "pass": true
+    }
+  ],
+  "browserTrust": {
+    "globalCertificateIgnore": false,
+    "scopedProxySPKI": "n9jEr2dCP1tg9exQzr7xEpZ4TjG2QWO02LUFhmAzII4="
+  },
+  "proofs": [
+    "WARDROBE_MODAL_FOUR_LAZY_ACTUAL_V3.json",
+    "WARDROBE_MODAL_RACE_CANCEL_ACTUAL_V1.json",
+    "WARDROBE_MODAL_NEW_SOLID_DESCRIPTOR_ACTUAL_V1.json"
+  ],
+  "limitations": [
+    "Four original lazy entries use actual immutable GitHub data. The new Solid test packages its approved actual art as a memory-only descriptor alias to avoid static-compat filtering; no delivered costume is added by this QA.",
+    "A new PASS21 native MSX descriptor has not yet passed the art gate; smoothing is delegated unchanged to native renderer renderStyle, and UI does not independently configure it.",
+    "Controlled race tests delay real metadata completions without honoring abort in the test wrapper to exercise serial, dialog and cancellation guards."
+  ]
+}
