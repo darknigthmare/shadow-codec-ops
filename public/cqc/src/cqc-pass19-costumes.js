@@ -32,7 +32,7 @@
  function requestFor(uid,id){return requests.get(uid+':'+id)||data()?.entries?.[uid]?.requests?.find(request=>request.id===id)||null;}
  function catalog(){return root.CQC_COMBAT_COSTUME_CATALOG||{schema:'cqc.combat-costumes/1',entries:{}};}
  function optionFor(uid,id){return catalog().entries?.[uid]?.options?.find(option=>option.id===id)||null;}
- function selectable(uid,id){if(id==='original')return!!(data()?.entries?.[uid]||catalog().entries?.[uid]);const option=optionFor(uid,id);return appearanceAllowed(uid,option)&&!!option?.sprite;}
+ function selectable(uid,id){if(id==='original')return!!(data()?.entries?.[uid]||catalog().entries?.[uid]);const option=optionFor(uid,id);return appearanceAllowed(uid,option)&&(!!option?.sprite||!!option?.machineParts&&root.CQC_PASS21_MACHINE_COSTUME_RUNTIME?.ownsOption(uid,option)===true);}
  function validateOption(uid,option){
   if(!data()?.entries?.[uid]&&!catalog().entries?.[uid])throw Error('Identité non inscrite: '+uid);
   if(!safeID(option?.id)||!families.has(option.family)||!option.label?.trim())throw Error('Costume mal défini');
@@ -40,6 +40,7 @@
   if(optionFor(uid,option.id))throw Error('Costume déjà inscrit: '+uid+':'+option.id);
   if(requestFor(uid,option.family)?.status==='not-applicable')throw Error('Costume non applicable à cette incarnation');
   const provenance=option.provenance,review=option.assetReview,sprite=option.sprite;
+  if(option.machineParts){if(!root.CQC_PASS21_MACHINE_COSTUME_RUNTIME?.ownsOption(uid,option))throw Error('Pièces natives de machine non vérifiées');return true;}
   if(option.machinePresentation){if(provenance?.kind!=='style-reinterpretation'||provenance.sourceUID!==uid||provenance.originalDesign!==true||provenance.canonicalAppearanceAttested!==false||!Array.isArray(provenance.sources)||!provenance.sources.length||provenance.sources.some(source=>!/^https:\/\//.test(source.url||''))||review?.status!=='verified'||!review.reviewer||!review.reviewedAt||!root.CQC_PASS19_MACHINE_PIXEL_STYLE?.validate(uid,option))throw Error('Présentation native de machine non vérifiée');return true;}
   if(!kinds.has(provenance?.kind)||provenance.sourceUID!==uid||!Array.isArray(provenance.sources)||!provenance.sources.length||provenance.sources.some(source=>!/^https:\/\//.test(source.url||'')))throw Error('Provenance du costume absente');
   const presentation=option.presentation;
@@ -112,6 +113,7 @@
  function status(uid,id){const request=requestFor(uid,id),option=optionFor(uid,id);return{uid,id,request:request?copy(request):null,selectable:selectable(uid,id),art:option?.sprite?.coverage||'missing',provenance:option?.provenance?copy(option.provenance):null};}
  async function whenReady(fighter,options={}){
   fighter=fighterFor(fighter,0,fighter?.costume||'original');
+  if(optionFor(fighter.uid,fighter.costume)?.machineParts)return root.CQC_PASS21_MACHINE_COSTUME_RUNTIME?.whenReady(fighter,options)||false;
   const machine=root.CQC_PASS18_MACHINES,originalComposite=(!fighter?.costume||fighter.costume==='original')&&machine?.hasComposite(fighter?.uid)===true;
   if(originalComposite||root.CQC_PASS19_MACHINE_PIXEL_STYLE?.selected(fighter)){const result=await machine?.whenReadyComposite(fighter.uid,options);return result===true&&machine?.ready(fighter.uid)===true;}
   const entry=strictEntry(fighter?.uid,fighter);if(!entry)return false;

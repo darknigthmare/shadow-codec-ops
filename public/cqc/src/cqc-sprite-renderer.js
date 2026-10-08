@@ -126,6 +126,7 @@
       const variants = new Map();
       for (const option of record.options) {
         if (option?.id === 'original') continue;
+        if(option?.machineParts){if(!root.CQC_PASS21_MACHINE_COSTUME_RUNTIME?.ownsOption(uid,option))rejected.push(uid+':'+option.id);else accepted++;continue;}
         if(option?.machinePresentation){if(!root.CQC_PASS19_MACHINE_PIXEL_STYLE?.validate(uid,option))rejected.push(uid+':'+option.id);continue;}
         if (!option || !/^[a-z0-9_-]+$/.test(option.id || '') || !validateCostumeEntry(uid, option.sprite) || !option.sprite.oppositeActions || option.sprite.mirror === true || variants.has(option.id)) { rejected.push(uid + ':' + (option?.id || '?')); continue; }
         const entry = option.sprite, files = new Map();

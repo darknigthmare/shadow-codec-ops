@@ -8,7 +8,14 @@
  const requiredReview=['MGRDesignReviewed','fullCyberneticBodyReviewed','personalizedDesignReviewed'];
  const familyOf=o=>o?.family||o?.sprite?.costumeConcept?.family||(['retro','nextgen','tuxedo'].includes(o?.id)?o.id:null);
  function styleFor(uid){return known.has(uid)?(pixel.has(uid)?'retro':'nextgen'):null;}
- function nativeOption(uid,family){return catalog()?.entries?.[uid]?.options?.find(o=>o.id!=='original'&&familyOf(o)===family&&o.sprite&&o.sprite.uid===uid&&foundation()?.appearanceAllowed(uid,o)&&((o.assetReview?.status==='verified'&&o.assetReview?.independentArt===true)||o.sprite.review?.status==='approved'))||null;}
+ function nativeOption(uid,family){
+  if(!['retro','nextgen','tuxedo'].includes(family))return null;
+  return catalog()?.entries?.[uid]?.options?.find(o=>{
+   if(o.id==='original'||familyOf(o)!==family||!foundation()?.appearanceAllowed(uid,o))return false;
+   if(o.machineParts)return o.provenance?.sourceUID===uid&&o.assetReview?.independentArt===true&&(o.assetReview.status==='verified'||o.assetReview.verified===true)&&root.CQC_PASS21_MACHINE_COSTUME_RUNTIME?.ownsOption(uid,o)===true;
+   return!!o.sprite&&o.sprite.uid===uid&&((o.assetReview?.status==='verified'&&o.assetReview?.independentArt===true)||o.sprite.review?.status==='approved');
+  })||null;
+ }
  function coverage(uid,family){
   if(!known.has(uid)||!['retro','nextgen','tuxedo'].includes(family))return{uid,family,status:'outside-reviewed-scope',activate:false};
   if(family!=='tuxedo'&&styleFor(uid)===family)return{uid,family,status:'covered-original-style',costumeID:'original',activate:false,sourceCover:'approved-native-original',newArtRequired:false};

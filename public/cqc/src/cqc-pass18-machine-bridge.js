@@ -1,5 +1,5 @@
 /* PASS18 native machine presentation. Engines retain all combat and save state. */
-(function(root,factory){'use strict';const api=factory(root);if(typeof module==='object'&&module.exports)module.exports=api;if(root.document)root.CQC_PASS18_MACHINES=api.createBridge({rendererOptions:root.CQC_PASS18_MACHINE_RENDERER_OPTIONS||{}});})(typeof globalThis!=='undefined'?globalThis:this,function(root){
+(function(root,factory){'use strict';const api=factory(root);if(typeof module==='object'&&module.exports)module.exports=api;if(root.document)root.CQC_PASS18_MACHINE_BRIDGE_FACTORY=api;if(root.document)root.CQC_PASS18_MACHINES=api.createBridge({rendererOptions:root.CQC_PASS18_MACHINE_RENDERER_OPTIONS||{}});})(typeof globalThis!=='undefined'?globalThis:this,function(root){
  'use strict';
  const finite=(v,d=0)=>Number.isFinite(v)?v:d,clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
  const validBox=box=>!!box&&[box.x,box.y,box.width,box.height].every(Number.isFinite)&&box.width>0&&box.height>0;

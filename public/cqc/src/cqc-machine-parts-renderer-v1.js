@@ -67,14 +67,16 @@
         const partID = name(raw.id, id + ' part');
         if (byID.has(partID) || !sources.has(raw.source)) fail(id + ' duplicate part or missing source');
         const textureScale=pair(raw.scale || [1,1], partID + ' texture scale');
-        const part = {id:partID,source:raw.source,rect:rectangle(raw.rect, partID),pivot:pair(raw.pivot, partID + ' pivot'),offset:pair(raw.offset || [0,0], partID + ' offset'),parent:raw.parent === undefined ? null : name(raw.parent, partID + ' parent'),z:number(raw.z, parts.length, partID),rotation:number(raw.rotation, 0, partID),imageScale:number(raw.imageScale,textureScale[0],partID + ' imageScale'),opacity:number(raw.opacity, 1, partID),channels:bindings(raw.channels, partID),showWhen:flags(raw.showWhen, partID),hideWhen:flags(raw.hideWhen, partID),variants:[],detachment:null,index:parts.length};
+        const part = {id:partID,source:raw.source,rect:rectangle(raw.rect, partID),pivot:pair(raw.pivot, partID + ' pivot'),offset:pair(raw.offset || [0,0], partID + ' offset'),parent:raw.parent === undefined ? null : name(raw.parent, partID + ' parent'),z:number(raw.z, parts.length, partID),rotation:number(raw.rotation, 0, partID),imageScale:number(raw.imageScale,textureScale[0],partID + ' imageScale'),opacity:number(raw.opacity, 1, partID),textureRotation:number(raw.textureRotation,0,partID+' texture rotation'),channels:bindings(raw.channels, partID),showWhen:flags(raw.showWhen, partID),hideWhen:flags(raw.hideWhen, partID),variants:[],detachment:null,index:parts.length};
+        if(Math.abs(part.textureRotation)>180)fail(partID+' invalid texture rotation');
         if (textureScale.some((n) => n <= 0 || n > 32) || textureScale[0]!==textureScale[1] || part.imageScale<=0 || part.imageScale>32 || part.opacity < 0 || part.opacity > 1) fail(partID + ' distortion/mirroring/invalid opacity is not allowed');
         if (raw.scale!==undefined && raw.imageScale!==undefined && textureScale[0]!==part.imageScale) fail(partID + ' conflicting texture scales');
         if (raw.variants !== undefined) {
           if (!Array.isArray(raw.variants) || raw.variants.length > 16) fail(partID + ' invalid variants');
           part.variants = raw.variants.map((variant) => {
-            const result = {when:name(variant.when, partID + ' variant'),hide:variant.hide === true,source:variant.source || part.source,rect:variant.rect === undefined ? part.rect : rectangle(variant.rect, partID),pivot:variant.pivot === undefined ? part.pivot : pair(variant.pivot, partID + ' variant pivot'),imageScale:number(variant.imageScale,part.imageScale,partID + ' variant imageScale')};
+            const result = {when:name(variant.when, partID + ' variant'),hide:variant.hide === true,source:variant.source || part.source,rect:variant.rect === undefined ? part.rect : rectangle(variant.rect, partID),pivot:variant.pivot === undefined ? part.pivot : pair(variant.pivot, partID + ' variant pivot'),imageScale:number(variant.imageScale,part.imageScale,partID + ' variant imageScale'),textureRotation:number(variant.textureRotation,part.textureRotation,partID+' variant texture rotation')};
             if (!sources.has(result.source)) fail(partID + ' missing variant source');
+            if(Math.abs(result.textureRotation)>180)fail(partID+' invalid variant texture rotation');
             if (result.imageScale<=0 || result.imageScale>32) fail(partID + ' invalid variant imageScale');
             return result;
           });
@@ -145,7 +147,7 @@
       }
       const angle=-rotation*DEG, cos=Math.cos(angle), sin=Math.sin(angle);
       const local=[cos,sin,-sin,cos,x,-y];
-      transforms.set(part.id,{matrix:multiply(parent.matrix,local),visible,opacity:parent.opacity*clamp(opacity,0,1),source:variant?.source || part.source,rect:variant?.rect || part.rect,pivot:variant?.pivot || part.pivot,imageScale:variant?.imageScale || part.imageScale});
+      transforms.set(part.id,{matrix:multiply(parent.matrix,local),visible,opacity:parent.opacity*clamp(opacity,0,1),source:variant?.source || part.source,rect:variant?.rect || part.rect,pivot:variant?.pivot || part.pivot,imageScale:variant?.imageScale || part.imageScale,textureRotation:variant?.textureRotation ?? part.textureRotation});
     }
     return transforms;
   }
@@ -330,7 +332,7 @@
         const image=entry.images.get(p.source), r=p.rect || [0,0,image.width || image.naturalWidth,image.height || image.naturalHeight];
         context.save();
         try {
-          context.transform(...p.matrix); context.globalAlpha*=p.opacity;
+          context.transform(...p.matrix); if(p.textureRotation)context.rotate(p.textureRotation*DEG); context.globalAlpha*=p.opacity;
           if(part.sourceClipPolygonNativeXY){
             context.beginPath();
             part.sourceClipPolygonNativeXY.forEach((point,index)=>{
