@@ -26,7 +26,7 @@ export function CqcLauncher() {
     <section className="cqc-module" aria-labelledby="cqc-title">
       <header className="cqc-toolbar panel">
         <div>
-          <h2 id="cqc-title">CQC Versus Legacy</h2>
+          <h2 id="cqc-title">CQC Versus</h2>
           <p>Duels, chroniques et progression CQC. Retrouve la même sauvegarde en ouvrant le jeu séparément.</p>
         </div>
         <div className="cqc-actions">
@@ -44,7 +44,7 @@ export function CqcLauncher() {
           ref={frameRef}
           className="cqc-game-frame"
           src={CQC_GAME_URL}
-          title="CQC Versus Legacy — jeu de combat et chroniques"
+          title="CQC Versus — jeu de combat et chroniques"
           loading="lazy"
           allow="fullscreen; gamepad"
           allowFullScreen

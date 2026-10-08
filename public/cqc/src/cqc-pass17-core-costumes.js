@@ -2,6 +2,7 @@
 (function(root,factory){'use strict';const api=factory(root);if(typeof module==='object'&&module.exports)module.exports=api;root.CQC_PASS17_CORE_COSTUMES=api;})(globalThis,function(root){
   'use strict';
   const loader=()=>root.CQC_COMBAT_SPRITES, choices=()=>root.CQC_COSTUMES_PASS17;
+  const legacyOriginals=new Set(['core__snake','core__viper','core__runner_mg2','core__ninja_mg2','core__redblaster_mg2','core__jungle_evil','npc53__elsie_frances_acid']);
   const portraits=new WeakMap();let pending=null,dialog=null,serial=0,previousFocus=null;
   function uidFor(id){const uid='core__'+id;return root.CQC_COMBAT_COSTUME_CATALOG?.entries?.[uid]?uid:null;}
   function costumed(actor){const uid=uidFor(actor?.id);return uid?{uid,costume:choices()?.normalize(uid,actor.costume)||'original'}:null;}
@@ -11,24 +12,27 @@
       const actor=state.fighters[slot],uid=uidFor(actor.id);
       // This actor is already a private engine copy; global ROSTER records never change.
       const costume=uid?choices()?.normalize(uid,state.options?.costumes?.[slot]||'original'):'original';
-      if(costume==='nextgen')actor.costume=costume;else delete actor.costume;
+      if(costume&&costume!=='original')actor.costume=costume;else delete actor.costume;
     }
     return state;
   }
   function drawActor(c,actor,time,state={},hooks={}){
-    const fighter=costumed(actor);if(!fighter)return false;
+    const fighter=costumed(actor);if(!fighter||fighter.costume==='original'&&!legacyOriginals.has(fighter.uid))return false;
     const entry=loader()?.getEntry(fighter.uid,fighter);if(!entry)return false;
     const pose=root.CQC_PASS16_CORE_SPRITES?.poseFor(actor,time,state,hooks)||{time};
     const move=actor.attack?hooks.getMove?.(actor,actor.attack.name):null;
     if(move?.utility&&/reload|cylinder/i.test(move.utility))pose.moveSlot=Object.keys(entry.actionMap).find(key=>entry.actionMap[key]==='reload')||pose.moveSlot;
     if(!pose.entityKey)pose.entityKey='core-pass17-costume:'+actor.id+':'+actor.slot;
-    c.save();try{if(actor.cloak>0)c.globalAlpha*=.42;loader()?.draw(c,fighter,0,0,actor.facing===-1?-1:1,265/entry.displayHeight,pose);}finally{c.restore();}
+    const worldHeight=root.CQC_PASS19_WORLD_SCALE?.displayHeightFor?.(fighter.uid,fighter.costume,'core',entry);
+    const height=Number.isFinite(worldHeight)&&worldHeight>0?worldHeight:entry.coreDisplayHeight||root.CQC_COMBAT_SPRITE_CATALOG?.entries?.[fighter.uid]?.coreDisplayHeight||entry.displayHeight;
+    const drawPose=Number.isFinite(worldHeight)&&worldHeight>0?{...pose,worldScaleApplied:true}:pose;
+    c.save();try{if(actor.cloak>0)c.globalAlpha*=.42;loader()?.draw(c,fighter,0,0,actor.facing===-1?-1:1,height/entry.displayHeight,drawPose);}finally{c.restore();}
     // Launch waits for both decoded sheets. A mapped native costume never flashes procedural fallback.
     return true;
   }
   function cancelPortrait(target){const ticket=portraits.get(target);if(ticket)ticket.cancelled=true;portraits.delete(target);}
   function drawPortrait(target,id,slot=0,override){
-    const uid=uidFor(id),costume=uid&&(override===undefined?(choices()?.chosen(slot,uid)||'original'):(choices()?.normalize(uid,override)||'original'));if(!uid)return false;
+    const uid=uidFor(id),costume=uid&&(override===undefined?(choices()?.chosen(slot,uid)||'original'):(choices()?.normalize(uid,override)||'original'));if(!uid||costume==='original'&&!legacyOriginals.has(uid))return false;
     cancelPortrait(target);const ticket={number:++serial,cancelled:false};portraits.set(target,ticket);
     const options={costume,action:'idle',face:1};
     function paint(){if(ticket.cancelled||portraits.get(target)!==ticket)return;const c=target.getContext('2d');c.clearRect(0,0,target.width,target.height);loader()?.drawFitted(c,{uid,costume},{x:0,y:0,width:target.width,height:target.height,padding:5},1,{time:0,actionTime:0,entityKey:'core-pass17-costume-portrait:'+ticket.number});}
@@ -67,7 +71,7 @@
   }
   function deferCoreLaunch(options,resume){
     const ids=[options.player,options.opponent],jobs=[];
-    ids.forEach((id,slot)=>{const uid=uidFor(id);if(uid)jobs.push({uid,slot,costume:choices()?.normalize(uid,options.costumes?.[slot])||'original'});});
+    ids.forEach((id,slot)=>{const uid=uidFor(id),costume=choices()?.normalize(uid,options.costumes?.[slot])||'original';if(uid&&loader()?.has(uid,{costume}))jobs.push({uid,slot,costume});});
     loader()?.retainFighters(ids.map((id,slot)=>({uid:'core__'+id,costume:choices()?.normalize('core__'+id,options.costumes?.[slot])||'original'})));
     const key=JSON.stringify(options);if(pending&&pending.key!==key)cancelPendingLaunch();
     if(!jobs.length||jobs.every(job=>loader()?.status(job.uid,{costume:job.costume})?.ready))return false;

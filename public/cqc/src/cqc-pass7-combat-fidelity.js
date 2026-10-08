@@ -140,7 +140,7 @@
     const m=p.attack.def,origin=m.projectileOrigin?.[p.face],native=origin&&Number.isFinite(origin.forward)&&Number.isFinite(origin.height),state=store(s);
     // Maximum two live grenades per thrower; oldest is safely retired, never detonated as a blast.
     const owned=state.grenades.filter(q=>q.owner===p.slot);if(owned.length>=2)state.grenades=state.grenades.filter(q=>q!==owned[0]);
-    const q={id:s.nextId++,owner:p.slot,uid:p.f.uid,x:p.x+p.face*(native?origin.forward:52),y:p.y-(native?origin.height:m.height||135),vx:p.face*(m.speed||7),vy:m.vy||-9,face:p.face,
+    const point=root.CQC_PASS19_VERSUS_SPATIAL?.projectilePoint(p,m,{h:180})||{x:p.x+p.face*(native?origin.forward:52),y:p.y-(native?origin.height:m.height||135)};const q={id:s.nextId++,owner:p.slot,uid:p.f.uid,x:point.x,y:point.y,vx:p.face*(m.speed||7),vy:m.vy||-9,face:p.face,
       def:m,kind:'chaff',age:0,life:m.life||100,delay:0,dead:false,burstId:p.attack.id};
     state.grenades.push(q);addEvent(s,'chaffProjectile',p,{id:q.id,slot:'specialDown'});
   }
@@ -159,7 +159,7 @@
       if(hit&&E.overlap(hit,{x:q.x-16,y:q.y-12,w:32,h:24})){
         q.dead=true;addEvent(s,'chaffDestroyed',foe,{id:q.id});continue;
       }
-      if(q.x<30||q.x>1250||q.y>E.FLOOR+100||q.y<-140){q.dead=true;continue;}
+      if(q.x<30||q.x>1250||q.y>E.FLOOR+100||q.y<(root.CQC_PASS19_VERSUS_SPATIAL?.worldCeiling(s)??-140)){q.dead=true;continue;}
       if(q.age>=(q.def.fuse||62)||q.life<=0)disperse(s,q);
     }
     state.grenades=state.grenades.filter(q=>!q.dead);

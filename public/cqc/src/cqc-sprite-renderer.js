@@ -22,7 +22,7 @@
   const knownRosterUIDs = new Set(["archive__arcade_operator","archive__big_mama","archive__captain","archive__carter_survive","archive__chaigidiel","archive__chico_pw","archive__chris_survive","archive__coldman","archive__crying_beauty","archive__dan_survive","archive__dd_mgo3","archive__ddog","archive__decoy","archive__dhorse","archive__drebin","archive__dwalker","archive__eli","archive__elisa","archive__fox_plus","archive__genome_mgo1","archive__golab","archive__goodluck","archive__gray_fox_mg1","archive__gustava_heffner","archive__harab","archive__haven_trooper","archive__holly_white","archive__ishmael","archive__jennifer_sr","archive__johnny_mgs1","archive__koppelthorn","archive__laughing_beauty","archive__lucy_acid2","archive__man_on_fire","archive__miranda_survive","archive__naked_delta","archive__nicholas_survive","archive__old_snake_touch","archive__paz","archive__pmc_mgo2","archive__raging_beauty","archive__raiden_rising_proto","archive__raiden_vr","archive__reeve","archive__scott_dolph","archive__screaming_beauty","archive__sergei_gurlukovich","archive__seth","archive__skowronski_mpo","archive__skull_face","archive__snake_acid_mobile","archive__snake_mobile","archive__snake_nes","archive__snake_tts","archive__snake_vr","archive__social_agent","archive__tretij","archive__venus_acid2_mobile","archive__vince","archive__virgil_at9","archive__walker_gear","archive__weasel_gb","archive__zadornov","completion44__armored_wanderer_44","completion44__black_chamber_soldier_44","completion44__diamond_dogs_scout_44","completion44__fox_trooper_mpo_44","completion44__genome_soldier_44","completion44__gru_heavy_44","completion44__gurlukovich_merc_44","completion44__msf_soldier_44","completion44__navy_seal_44","completion44__ocelot_unit_soldier_44","completion44__parasite_camo_44","completion44__pieuvre_armement_pmc_44","completion44__praying_mantis_pmc_44","completion44__raven_sword_pmc_44","completion44__saintlogic_guard_44","completion44__tengu_soldier_44","completion44__wanderer_bomber_44","completion44__werewolf_pmc_44","completion44__xof_trooper_44","completion44__zanzibar_mercenary_44","completion__augustine_eguabon","completion__big_boss_epilogue","completion__dalton_acid2","completion__dwarf_gekko_mgs4","completion__eva_mpo","completion__flemming_acid","completion__gary_murray","completion__gekko_mgs4","completion__little_gray_mgs4","completion__mk2_mgs4","completion__mk3_mgs4","completion__ocelot_mpo","completion__raikov_mpo","completion__ronald_lensen","completion__sophie_ndram","completion__wiseman_acid2","core__amanda_pw","core__armstrong","core__bigboss_mg1","core__bigboss_mg2","core__bigboss_sr","core__blade_wolf","core__bloody_brad","core__boss","core__campbell_mpo","core__chris_jenner","core__clown","core__crying_wolf","core__cunningham","core__dirtyduck","core__ed_mgs4","core__end","core__eva_mgs3","core__fatman","core__fear","core__firetrooper","core__fortune","core__fox","core__fox_mg2","core__fury","core__gene","core__hawk","core__john_sr","core__johnny_mgs4","core__jonathan_mgs4","core__jonathan_mpo","core__jungle_evil","core__kaz_pw","core__khamsin","core__laughing_octopus","core__leone","core__liquid","core__liquid_ocelot","core__machinegun_kid","core__mantis","core__meryl_mgs1","core__meryl_mgs4","core__mistral","core__monsoon","core__nick_sr","core__night_fright","core__ninja_mg2","core__null_mpo","core__ocelot","core__ocelot_mgs1","core__ocelot_mgs2","core__ocelot_mgsv","core__old_snake","core__olga_mgs2","core__olga_ninja","core__owl","core__pain","core__pyro","core__python_mpo","core__quiet","core__raging_raven","core__raiden","core__raiden_mgs2","core__raiden_mgs4","core__raikov_mgs3","core__raven","core__redblaster_mg2","core__runner_mg2","core__sam","core__screaming_mantis","core__shotmaker","core__skull_armor","core__skull_mist","core__skull_sniper","core__snake","core__snake_acid","core__snake_acid2","core__snake_gb","core__snake_gz","core__snake_mg1","core__snake_mg2","core__snake_mgs2","core__snake_mpo","core__snake_pw","core__snake_sr","core__solid","core__solidus","core__sundowner","core__teliko","core__vamp","core__vamp_mgs4","core__venom","core__venus","core__viper","core__volgin","core__wolf","npc53__adam_mgs3","npc53__adam_prototype_mgs4","npc53__al_ai_mgs4","npc53__arthropod_pod_pw","npc53__avian_pod_pw","npc53__bb_acid2","npc53__boss_horse_mgs3","npc53__carlos_esmeralda_mgs1","npc53__chico_gz","npc53__chloe_dubois_survive","npc53__consuela_acid2","npc53__daniel_quinn_mgs2","npc53__dave_copeland_acid2","npc53__dead_cell_mystic_mgs2","npc53__delgado_acid2","npc53__doc_wilson_mgs2","npc53__dr_clark_mgs1","npc53__elsie_frances_acid","npc53__end_parrot_mgs3","npc53__enrique_survive","npc53__escobar_acid2","npc53__glaz_gz","npc53__gw_ai_mgs4","npc53__hans_davis_acid","npc53__jd_ai_mgs4","npc53__jeff_jones_acid","npc53__joseph_gruen_survive","npc53__kaz_gz","npc53__lena_arrow_acid","npc53__lucinda_acid2","npc53__malak_tpp","npc53__mammal_pod_pw","npc53__max_wark_mgs2","npc53__minette_acid","npc53__morpho_gz","npc53__mosquito_tpp","npc53__msf_medic_gz","npc53__old_boy_mgs2","npc53__old_snake_mpo_plus","npc53__palitz_gz","npc53__paramedic_mpo","npc53__paz_gz","npc53__paz_phantom_tpp","npc53__raiden_mpo_plus","npc53__reptile_pod_pw","npc53__roddy_louiz_acid2","npc53__rodzinski_acid2","npc53__schmeiser_acid","npc53__shabani_tpp","npc53__sigint_mpo","npc53__skull_face_gz","npc53__sokolov_mpo","npc53__tatyana_mgs3","npc53__teliko_mpo","npc53__tj_ai_mgs4","npc53__tr_ai_mgs4","npc53__venus_mpo","npc53__victoria_reed_mobile","npc53__viggo_hach_acid","npc53__viscount_tpp","npc53__vr_otacon_mobile","npc53__zero_2014_mgs4","npc53__zero_cipher_tpp","npc53__zero_mpo","oc__parallaxe","roster50__alice_acid","roster50__ames_mgs2","roster50__anderson_mgs1","roster50__baker_mgs1","roster50__boris_mgr","roster50__campbell_gb","roster50__campbell_mg2","roster50__campbell_mgs1","roster50__campbell_mgs4","roster50__cecile_pw","roster50__codetalker_mgsv","roster50__colonel_ai_mgs2","roster50__commander_mobile","roster50__courtney_mgr","roster50__diane_mg1","roster50__doktor_mgr","roster50__ellen_mg1","roster50__emma_mgs2","roster50__four_horsemen_mg2","roster50__george_mgr","roster50__granin_mgs3","roster50__harks_gb","roster50__houseman_mgs1","roster50__huey_mgsv","roster50__huey_pw","roster50__jacobsen_mg2","roster50__jennifer_mg1","roster50__johnny_sr_mgs3","roster50__johnson_mgs2","roster50__kasler_mg2","roster50__kaz_mgsv","roster50__kevin_mgr","roster50__madnar_mg1","roster50__madnar_mg2","roster50__marv_mg2","roster50__mcbride_gb","roster50__mccoy_acid","roster50__mei_mgs1","roster50__meiling_gb","roster50__meiling_mgs4","roster50__miller_mg2","roster50__naomi_mgs1","roster50__naomi_mgs4","roster50__nastasha_mgs1","roster50__nmani_mgr","roster50__otacon_mgs1","roster50__otacon_mgs2","roster50__otacon_mgs4","roster50__otacon_mobile","roster50__paramedic_mgs3","roster50__rose_mgs2","roster50__rose_mgs4","roster50__schneider_mg1","roster50__sigint_mgs3","roster50__sokolov_mgs3","roster50__steve_mg1","roster50__stillman_mgs2","roster50__strangelove_pw","roster50__sunny_mgr","roster50__sunny_mgs4","roster50__takiyama_acid2","roster50__zero_mgs3","roster51__boss_delta","roster51__decoy_tts","roster51__dolzaev_mgr","roster51__end_delta","roster51__eva_delta","roster51__fear_delta","roster51__fury_delta","roster51__galvez_pw","roster51__general_gb","roster51__ghost_mpo","roster51__granin_delta","roster51__grayfox_tts","roster51__guy_savage_delta","roster51__johnny_delta","roster51__johnny_tts","roster51__liquid_tts","roster51__mantis_tts","roster51__meryl_tts","roster51__miller_mgs1","roster51__ocelot_delta","roster51__ocelot_tts","roster51__otacon_tts","roster51__pain_delta","roster51__paramedic_delta","roster51__pliskin_mgs2","roster51__raikov_delta","roster51__raven_tts","roster51__sigint_delta","roster51__sokolov_delta","roster51__sorrow_delta","roster51__sorrow_mgs3","roster51__volgin_delta","roster51__wolf_tts","roster51__zero_delta"]);
   const finite = (v) => Number.isFinite(v);
   const safeFile = (f) => typeof f === 'string' && /^[a-zA-Z0-9_./-]+\.png$/.test(f) && !f.split('/').some(p => p === '..' || p === '.') && !f.startsWith('/');
-  function validateEntry(uid, entry) {
+  function validateEntry(uid, entry, options = {}) {
     // These two authored groups belong only to the original MG1 android incarnation.
     const allowedActions = uid === 'core__bloody_brad' ? actions.concat(['brace', 'stomp']) : actions;
     if (!entry || entry.uid !== uid || typeof entry.name !== 'string' || typeof entry.game !== 'string' || typeof entry.incarnation !== 'string' || !entry.incarnation.trim()) return false;
@@ -31,7 +31,11 @@
     if (!checks.every(k => review.checks && review.checks[k] === true)) return false;
     if (!['official-game-reference', 'original-game-capture', 'original-game-model', 'official-art-reference', 'original-character'].includes(review.sourceKind)) return false;
     if (review.sourceKind !== 'original-character' && (!Array.isArray(review.sources) || !review.sources.length || !review.sources.every(s => /^https:\/\//.test(s.url || '')))) return false;
-    if (review.sourceKind === 'original-character' && !uid.startsWith('oc__')) {
+    const concept=entry.costumeConcept;
+    const originalCostume=options.costume===true && concept?.schema==='cqc.costume-design/1'
+      && concept.sourceUID===uid && ['retro','nextgen','cyborg','survive','metalgear','tuxedo'].includes(concept.family)
+      && concept.originalDesign===true && concept.canonicalAppearanceAttested===false;
+    if (review.sourceKind === 'original-character' && !uid.startsWith('oc__') && !originalCostume) {
       const historicalOriginal=uid==='archive__carter_survive'
         && entry.referenceStatus==='historical-project-design-unattested-canon'
         && entry.historicalProjectSourceSHA256==='acaa14d4f52449727feef99bd14036fc2bb5da1306cae7d5410f2d3310b8f81d'
@@ -64,6 +68,13 @@
     }
     return true;
   }
+  // Original costume concepts are user-authorized adaptations, separate from canonical base bodies.
+  function validateCostumeEntry(uid,entry) {
+    if(!validateEntry(uid,entry,{costume:true}))return false;
+    if(entry.costumeParts && (!root.CQC_PASS19_COSTUME_PARTS?.validate || !root.CQC_PASS19_COSTUME_PARTS.validate(entry)))return false;
+    if(entry.pixelArt && (!root.CQC_PASS19_PIXEL_STYLE?.validate || !root.CQC_PASS19_PIXEL_STYLE.validate(entry)))return false;
+    return true;
+  }
   function resolveBase(options) {
     if (options.baseURL) return options.baseURL;
     if (ownScriptURL) return new URL('../', ownScriptURL).href;
@@ -88,7 +99,7 @@
   // Costumes stay private to the renderer. Original catalogue entries and UIDs never change.
   function entryFor(uid, options = {}) {
     const costume = typeof options.costume === 'string' ? options.costume : 'original';
-    return costume !== 'original' && costumeEntries.get(uid)?.get(costume) || entries.get(uid);
+    return costume !== 'original' ? costumeEntries.get(uid)?.get(costume) || null : entries.get(uid);
   }
   function configureCostumes(catalog) {
     costumeEntries.clear();
@@ -99,10 +110,12 @@
       const variants = new Map();
       for (const option of record.options) {
         if (option?.id === 'original') continue;
-        if (!option || !/^[a-z0-9_-]+$/.test(option.id || '') || !validateEntry(uid, option.sprite) || !option.sprite.oppositeActions || option.sprite.mirror === true || variants.has(option.id)) { rejected.push(uid + ':' + (option?.id || '?')); continue; }
+        if(option?.machinePresentation){if(!root.CQC_PASS19_MACHINE_PIXEL_STYLE?.validate(uid,option))rejected.push(uid+':'+option.id);continue;}
+        if (!option || !/^[a-z0-9_-]+$/.test(option.id || '') || !validateCostumeEntry(uid, option.sprite) || !option.sprite.oppositeActions || option.sprite.mirror === true || variants.has(option.id)) { rejected.push(uid + ':' + (option?.id || '?')); continue; }
         const entry = option.sprite, files = new Map();
         for (const action of [...Object.values(entry.actions), ...Object.values(entry.oppositeActions)])
           for (const frame of action.frames) files.set(frame.file, frame);
+        for(const source of root.CQC_PASS19_COSTUME_PARTS?.sources?.(entry)||[])files.set(source.file,source);
         costumeFiles.set(entry, [...files.values()]); variants.set(option.id, entry); accepted++;
       }
       if (variants.size) costumeEntries.set(uid, variants);
@@ -180,15 +193,27 @@
     pumpImageQueue();
     return record;
   }
+  function hasNativeActionSemantics(entry) {
+    const nativeFile=value=>value?.actions?.idle?.frames?.[0]?.file?.startsWith('assets/combat-sprites-pass18/')===true;
+    if(nativeFile(entry))return true;
+    const concept=entry?.costumeConcept;
+    if(concept?.schema!=='cqc.costume-design/1'||concept.sourceUID!==entry.uid)return false;
+    const source=entries.get(concept.sourceUID);
+    if(!source||source===entry||!nativeFile(source))return false;
+    // The approved source body owns the semantics; an atlas folder never changes its moves.
+    return Object.entries(source.actionMap||{}).every(([key,value])=>entry.actionMap?.[key]===value)
+      &&Object.keys(source.actions||{}).every(action=>entry.actions?.[action]?.frames?.length>0);
+  }
+
   function actionName(pose = {}, entry = null) {
     if (pose.ko) return 'ko';
     if (pose.hit) return 'hit';
-    if (pose.getup && entry?.actions?.roll && entry.actions.idle.frames[0].file.startsWith('assets/combat-sprites-pass18/')) return 'roll';
+    if (pose.getup && entry?.actions?.roll && hasNativeActionSemantics(entry)) return 'roll';
     if (pose.moveSlot && (pose.animationActive || pose.attack) && entry?.actionMap?.[pose.moveSlot]) {
       const mapped=entry.actionMap[pose.moveSlot];
       // New native sheets expose physical action groups. Match the actual VS
       // move type instead of treating every special as a firearm animation.
-      const native=entry.actions.idle.frames[0].file.startsWith('assets/combat-sprites-pass18/');
+      const native=hasNativeActionSemantics(entry);
       if(native && typeof pose.moveKind==='string') {
         const kind=pose.moveKind,tag=pose.moveTag||'',slot=pose.moveSlot;let action;
         if(kind==='projectile') action=['ballistic','precision','tranq','fire'].includes(tag)?'shoot':['blade','knife','boomerang'].includes(tag)?'blade':'deploy';
@@ -221,7 +246,7 @@
     if (!options.action) return costumeFiles.get(entry) || entryFiles.get(entry.uid) || [];
     const face = options.face === -1 || options.face === 1 ? options.face : entry.facing;
     const directional = face !== entry.facing && entry.oppositeActions ? entry.oppositeActions : entry.actions;
-    return directional[options.action]?.frames || [];
+    return [...(directional[options.action]?.frames || []),...(root.CQC_PASS19_COSTUME_PARTS?.sources?.(entry)||[])];
   }
   function recordsFor(entry, options = {}) {
     const frames = framesFor(entry, options), records = new Set();
@@ -290,6 +315,7 @@
     const relative = finite(pose.actionTime) ? pose.actionTime : requested === 'hit' && finite(pose.hitTime) ? pose.hitTime : requested !== 'ko' && pose.animationActive && finite(pose.attackTime) ? pose.attackTime : time - clock.start;
     const selected = selectFrame(directionalEntry, { ...pose, actionTime: relative }), frame = selected.frame, loaded = getImage(frame);
     if (loaded.state !== 'ready') return false;
+    if(entry.costumeParts && (root.CQC_PASS19_COSTUME_PARTS?.sources?.(entry)||[]).some(source=>{const loadedSource=getImage(source);return loadedSource.state!=='ready'||loadedSource.image.naturalWidth!==source.width||loadedSource.image.naturalHeight!==source.height;}))return false;
     const image = loaded.image, [sx, sy, sw, sh] = frame.rect;
     if (sx + sw > image.naturalWidth || sy + sh > image.naturalHeight) return false;
     // Independently authored sheets can use different native pixel scales. Keep every pose
@@ -307,9 +333,10 @@
         });
         c.closePath(); c.clip();
       }
-      if(!root.CQC_PASS18_ARTICULATED_IDLES?.drawSourceParts(c,{entry,frame,image,factor,pose,face,requested}))c.drawImage(image, sx, sy, sw, sh, -w * frame.pivot[0], -h * frame.pivot[1], w, h);
+      const sourceArgs={entry,frame,image,factor,pose,face,requested,resolveSource:getImage};
+      if(!root.CQC_PASS19_PIXEL_STYLE?.drawSource(c,sourceArgs) && !root.CQC_PASS19_COSTUME_PARTS?.drawSourceParts(c,sourceArgs) && !root.CQC_PASS18_ARTICULATED_IDLES?.drawSourceParts(c,sourceArgs))c.drawImage(image, sx, sy, sw, sh, -w * frame.pivot[0], -h * frame.pivot[1], w, h);
     } finally { c.restore(); }
     return true;
   }
-  return { configure, configureCostumes, getEntry: entryFor, draw, drawFitted, has, preload, whenReady, status, validateEntry, actionName, selectFrame, retainFighters, cacheInfo };
+  return { configure, configureCostumes, getEntry: entryFor, draw, drawFitted, has, preload, whenReady, status, validateEntry, validateCostumeEntry, actionName, selectFrame, retainFighters, cacheInfo };
 });

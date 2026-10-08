@@ -1,0 +1,5857 @@
+{
+  "schema": "cqc.pass19.legacy-projectile-actual-engine-comparison/2",
+  "status": "passed",
+  "createdAt": "2026-10-08T00:41:28.326Z",
+  "scope": "Actual pre-aim input engine and integrated post-aim engine, all baseline projectile profiles,120steps each. Isolated VM with historical external spatial/fidelity/VFX hooks absent in both contexts; does not replace full UI regression. New exact UID opt-in rejects every old profile.",
+  "count": 647,
+  "framesCompared": 77640,
+  "rayRows": [],
+  "pins": [
+    {
+      "path": "/workspace/cqc-pass19-canonical-runtime-qa/aim-implementation-v1/src__cqc-pass8-combat-engine.js.input-snapshot",
+      "sha256": "5c964b1873d6418094c1fecd344aa1a6e28f461729716e9e7771fc35f556a8d1",
+      "bytes": 29464
+    },
+    {
+      "path": "/tmp/cqc-pass19-application/public/cqc/src/cqc-pass8-combat-engine.js",
+      "sha256": "9068b050857d74be01c32acc0d3f8cc8dda38b5793a5ece6e0d1c3d3a58d5f50",
+      "bytes": 29621
+    },
+    {
+      "path": "/tmp/cqc-pass19-application/public/cqc/src/cqc-pass19-native-aim.js",
+      "sha256": "ae5c503873d651dbb83b8a5cf5b60839b019f9cc417942c178f7acd7a196c685",
+      "bytes": 8769
+    },
+    {
+      "path": "/tmp/cqc-pass19-integration/BASELINE_FULL_FIGHTERS_V1.json",
+      "sha256": "a8c35522b2a4b1677d14bc44ea81d19c748c31f9559aeba62ac9cc3879dd91f3",
+      "bytes": 2035050
+    }
+  ],
+  "rows": [
+    {
+      "uid": "core__meryl_mgs1",
+      "name": "MERYL \u2014 MGS1",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__meryl_mgs1",
+      "name": "MERYL \u2014 MGS1",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__meryl_mgs1",
+      "name": "MERYL \u2014 MGS1",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake_mgs2",
+      "name": "SOLID SNAKE \u2014 MGS2",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake_mgs2",
+      "name": "SOLID SNAKE \u2014 MGS2",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__olga_mgs2",
+      "name": "OLGA \u2014 TANKER",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__olga_mgs2",
+      "name": "OLGA \u2014 TANKER",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__olga_mgs2",
+      "name": "OLGA \u2014 TANKER",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__ocelot_mgs2",
+      "name": "OCELOT \u2014 MGS2",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__ocelot_mgs2",
+      "name": "OCELOT \u2014 MGS2",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__ocelot_mgs2",
+      "name": "OCELOT \u2014 MGS2",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__eva_mgs3",
+      "name": "EVA \u2014 MGS3",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__eva_mgs3",
+      "name": "EVA \u2014 MGS3",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__eva_mgs3",
+      "name": "EVA \u2014 MGS3",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__meryl_mgs4",
+      "name": "MERYL \u2014 RAT PATROL",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__meryl_mgs4",
+      "name": "MERYL \u2014 RAT PATROL",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__meryl_mgs4",
+      "name": "MERYL \u2014 RAT PATROL",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__johnny_mgs4",
+      "name": "JOHNNY / AKIBA",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__johnny_mgs4",
+      "name": "JOHNNY / AKIBA",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__johnny_mgs4",
+      "name": "JOHNNY / AKIBA",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__vamp_mgs4",
+      "name": "VAMP \u2014 MGS4",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__vamp_mgs4",
+      "name": "VAMP \u2014 MGS4",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__raging_raven",
+      "name": "RAGING RAVEN",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__raging_raven",
+      "name": "RAGING RAVEN",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 2,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__raging_raven",
+      "name": "RAGING RAVEN",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__crying_wolf",
+      "name": "CRYING WOLF",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__crying_wolf",
+      "name": "CRYING WOLF",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__screaming_mantis",
+      "name": "SCREAMING MANTIS",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__screaming_mantis",
+      "name": "SCREAMING MANTIS",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__chris_jenner",
+      "name": "CHRIS JENNER",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__chris_jenner",
+      "name": "CHRIS JENNER",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__chris_jenner",
+      "name": "CHRIS JENNER",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__campbell_mpo",
+      "name": "ROY CAMPBELL \u2014 JEUNE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__campbell_mpo",
+      "name": "ROY CAMPBELL \u2014 JEUNE",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__campbell_mpo",
+      "name": "ROY CAMPBELL \u2014 JEUNE",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__cunningham",
+      "name": "CUNNINGHAM",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__cunningham",
+      "name": "CUNNINGHAM",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__cunningham",
+      "name": "CUNNINGHAM",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__khamsin",
+      "name": "KHAMSIN",
+      "slot": "specialBack",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__jungle_evil",
+      "name": "JUNGLE EVIL",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__jungle_evil",
+      "name": "JUNGLE EVIL",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__jungle_evil",
+      "name": "JUNGLE EVIL",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__night_fright",
+      "name": "NIGHT FRIGHT",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__night_fright",
+      "name": "NIGHT FRIGHT",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__night_fright",
+      "name": "NIGHT FRIGHT",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__ocelot_mgsv",
+      "name": "OCELOT \u2014 MGSV",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__ocelot_mgsv",
+      "name": "OCELOT \u2014 MGSV",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__ocelot_mgsv",
+      "name": "OCELOT \u2014 MGSV",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__skull_mist",
+      "name": "SKULLS \u2014 MIST",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__skull_armor",
+      "name": "SKULLS \u2014 ARMOR",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__skull_sniper",
+      "name": "SKULLS \u2014 SNIPER",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__skull_sniper",
+      "name": "SKULLS \u2014 SNIPER",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake_acid",
+      "name": "SNAKE \u2014 AC!D",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake_acid",
+      "name": "SNAKE \u2014 AC!D",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake_acid",
+      "name": "SNAKE \u2014 AC!D",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__teliko",
+      "name": "TELIKO FRIEDMAN",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__teliko",
+      "name": "TELIKO FRIEDMAN",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__teliko",
+      "name": "TELIKO FRIEDMAN",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__leone",
+      "name": "LEONE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__leone",
+      "name": "LEONE",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__leone",
+      "name": "LEONE",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__clown",
+      "name": "CLOWN",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__clown",
+      "name": "CLOWN",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake_mg1",
+      "name": "SOLID SNAKE \u2014 MG1",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake_mg1",
+      "name": "SOLID SNAKE \u2014 MG1",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake_mg1",
+      "name": "SOLID SNAKE \u2014 MG1",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__shotmaker",
+      "name": "SHOTMAKER",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__shotmaker",
+      "name": "SHOTMAKER",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__shotmaker",
+      "name": "SHOTMAKER",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 2,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__machinegun_kid",
+      "name": "MACHINEGUN KID",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__machinegun_kid",
+      "name": "MACHINEGUN KID",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__machinegun_kid",
+      "name": "MACHINEGUN KID",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 7,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__firetrooper",
+      "name": "FIRE TROOPER",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__firetrooper",
+      "name": "FIRE TROOPER",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__dirtyduck",
+      "name": "DIRTY DUCK",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__dirtyduck",
+      "name": "DIRTY DUCK",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__dirtyduck",
+      "name": "DIRTY DUCK",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 2,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__bigboss_mg1",
+      "name": "BIG BOSS \u2014 MG1",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__bigboss_mg1",
+      "name": "BIG BOSS \u2014 MG1",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__bigboss_mg1",
+      "name": "BIG BOSS \u2014 MG1",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake_mg2",
+      "name": "SOLID SNAKE \u2014 MG2",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake_mg2",
+      "name": "SOLID SNAKE \u2014 MG2",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake_mg2",
+      "name": "SOLID SNAKE \u2014 MG2",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__ninja_mg2",
+      "name": "BLACK NINJA",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__redblaster_mg2",
+      "name": "RED BLASTER",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__redblaster_mg2",
+      "name": "RED BLASTER",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__bigboss_mg2",
+      "name": "BIG BOSS \u2014 MG2",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__bigboss_mg2",
+      "name": "BIG BOSS \u2014 MG2",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__bigboss_mg2",
+      "name": "BIG BOSS \u2014 MG2",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake_mpo",
+      "name": "NAKED SNAKE \u2014 PORTABLE OPS",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake_mpo",
+      "name": "NAKED SNAKE \u2014 PORTABLE OPS",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__python_mpo",
+      "name": "PYTHON",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__python_mpo",
+      "name": "PYTHON",
+      "slot": "specialForward",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__python_mpo",
+      "name": "PYTHON",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__gene",
+      "name": "GENE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__gene",
+      "name": "GENE",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__gene",
+      "name": "GENE",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake_gb",
+      "name": "SOLID SNAKE \u2014 GHOST BABEL",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake_gb",
+      "name": "SOLID SNAKE \u2014 GHOST BABEL",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake_gb",
+      "name": "SOLID SNAKE \u2014 GHOST BABEL",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__hawk",
+      "name": "SLASHER HAWK",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__hawk",
+      "name": "SLASHER HAWK",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__hawk",
+      "name": "SLASHER HAWK",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 2,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__owl",
+      "name": "MARIONETTE OWL",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__owl",
+      "name": "MARIONETTE OWL",
+      "slot": "specialForward",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__owl",
+      "name": "MARIONETTE OWL",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__pyro",
+      "name": "PYRO BISON",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__pyro",
+      "name": "PYRO BISON",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__viper",
+      "name": "BLACK ARTS VIPER",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__viper",
+      "name": "BLACK ARTS VIPER",
+      "slot": "specialForward",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__viper",
+      "name": "BLACK ARTS VIPER",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__venom",
+      "name": "VENOM SNAKE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__venom",
+      "name": "VENOM SNAKE",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__quiet",
+      "name": "QUIET",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__quiet",
+      "name": "QUIET",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__quiet",
+      "name": "QUIET",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__old_snake",
+      "name": "OLD SNAKE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__old_snake",
+      "name": "OLD SNAKE",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__monsoon",
+      "name": "MONSOON",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__monsoon",
+      "name": "MONSOON",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__pain",
+      "name": "THE PAIN",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__pain",
+      "name": "THE PAIN",
+      "slot": "specialForward",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__pain",
+      "name": "THE PAIN",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__fear",
+      "name": "THE FEAR",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__fear",
+      "name": "THE FEAR",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__end",
+      "name": "THE END",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__end",
+      "name": "THE END",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__fury",
+      "name": "THE FURY",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__fury",
+      "name": "THE FURY",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__raiden_mgs2",
+      "name": "RAIDEN \u2014 MGS2",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__raiden_mgs2",
+      "name": "RAIDEN \u2014 MGS2",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__vamp",
+      "name": "VAMP",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__vamp",
+      "name": "VAMP",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__fortune",
+      "name": "FORTUNE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__fortune",
+      "name": "FORTUNE",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__fatman",
+      "name": "FATMAN",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__fatman",
+      "name": "FATMAN",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__ocelot_mgs1",
+      "name": "REVOLVER OCELOT",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__ocelot_mgs1",
+      "name": "REVOLVER OCELOT",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__ocelot_mgs1",
+      "name": "REVOLVER OCELOT",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__boss",
+      "name": "THE BOSS",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake",
+      "name": "NAKED SNAKE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake",
+      "name": "NAKED SNAKE",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__ocelot",
+      "name": "OCELOT",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__ocelot",
+      "name": "OCELOT",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__ocelot",
+      "name": "OCELOT",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__volgin",
+      "name": "VOLGIN",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__volgin",
+      "name": "VOLGIN",
+      "slot": "specialForward",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__volgin",
+      "name": "VOLGIN",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__solid",
+      "name": "SOLID SNAKE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__solid",
+      "name": "SOLID SNAKE",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__solid",
+      "name": "SOLID SNAKE",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__mantis",
+      "name": "PSYCHO MANTIS",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__mantis",
+      "name": "PSYCHO MANTIS",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__mantis",
+      "name": "PSYCHO MANTIS",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__wolf",
+      "name": "SNIPER WOLF",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__wolf",
+      "name": "SNIPER WOLF",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__raven",
+      "name": "VULCAN RAVEN",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__raven",
+      "name": "VULCAN RAVEN",
+      "slot": "specialForward",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__raven",
+      "name": "VULCAN RAVEN",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 8,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake_pw",
+      "name": "BIG BOSS \u2014 PEACE WALKER",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake_pw",
+      "name": "BIG BOSS \u2014 PEACE WALKER",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__kaz_pw",
+      "name": "KAZUHIRA MILLER \u2014 MSF",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__kaz_pw",
+      "name": "KAZUHIRA MILLER \u2014 MSF",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__kaz_pw",
+      "name": "KAZUHIRA MILLER \u2014 MSF",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__amanda_pw",
+      "name": "AMANDA VALENCIANO LIBRE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__amanda_pw",
+      "name": "AMANDA VALENCIANO LIBRE",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__amanda_pw",
+      "name": "AMANDA VALENCIANO LIBRE",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake_gz",
+      "name": "BIG BOSS \u2014 GROUND ZEROES",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake_gz",
+      "name": "BIG BOSS \u2014 GROUND ZEROES",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__raikov_mgs3",
+      "name": "IVAN RAIDENOVITCH RAIKOV",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__raikov_mgs3",
+      "name": "IVAN RAIDENOVITCH RAIKOV",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__raikov_mgs3",
+      "name": "IVAN RAIDENOVITCH RAIKOV",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__jonathan_mpo",
+      "name": "JONATHAN \u2014 PORTABLE OPS",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__jonathan_mpo",
+      "name": "JONATHAN \u2014 PORTABLE OPS",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__jonathan_mpo",
+      "name": "JONATHAN \u2014 PORTABLE OPS",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake_acid2",
+      "name": "SNAKE \u2014 AC!D 2",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake_acid2",
+      "name": "SNAKE \u2014 AC!D 2",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake_acid2",
+      "name": "SNAKE \u2014 AC!D 2",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__venus",
+      "name": "VENUS",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__venus",
+      "name": "VENUS",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__venus",
+      "name": "VENUS",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake_sr",
+      "name": "SOLID SNAKE \u2014 SNAKE\u2019S REVENGE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake_sr",
+      "name": "SOLID SNAKE \u2014 SNAKE\u2019S REVENGE",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__snake_sr",
+      "name": "SOLID SNAKE \u2014 SNAKE\u2019S REVENGE",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__john_sr",
+      "name": "JOHN TURNER",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__john_sr",
+      "name": "JOHN TURNER",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__john_sr",
+      "name": "JOHN TURNER",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__nick_sr",
+      "name": "NICK MYER",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__nick_sr",
+      "name": "NICK MYER",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__ed_mgs4",
+      "name": "ED \u2014 RAT PATROL",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__ed_mgs4",
+      "name": "ED \u2014 RAT PATROL",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__jonathan_mgs4",
+      "name": "JONATHAN \u2014 RAT PATROL",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__jonathan_mgs4",
+      "name": "JONATHAN \u2014 RAT PATROL",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "core__jonathan_mgs4",
+      "name": "JONATHAN \u2014 RAT PATROL",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__drebin",
+      "name": "DREBIN 893",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__drebin",
+      "name": "DREBIN 893",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__drebin",
+      "name": "DREBIN 893",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__big_mama",
+      "name": "BIG MAMA",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__big_mama",
+      "name": "BIG MAMA",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__big_mama",
+      "name": "BIG MAMA",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__zadornov",
+      "name": "VLADIMIR ZADORNOV",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__zadornov",
+      "name": "VLADIMIR ZADORNOV",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__zadornov",
+      "name": "VLADIMIR ZADORNOV",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__skull_face",
+      "name": "SKULL FACE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__skull_face",
+      "name": "SKULL FACE",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__skull_face",
+      "name": "SKULL FACE",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__man_on_fire",
+      "name": "MAN ON FIRE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__man_on_fire",
+      "name": "MAN ON FIRE",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__tretij",
+      "name": "TRETij REBENOK",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__tretij",
+      "name": "TRETij REBENOK",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__tretij",
+      "name": "TRETij REBENOK",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__vince",
+      "name": "VINCE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__vince",
+      "name": "VINCE",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__harab",
+      "name": "HARAB SERAP",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__harab",
+      "name": "HARAB SERAP",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__golab",
+      "name": "GOLAB",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__golab",
+      "name": "GOLAB",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__chaigidiel",
+      "name": "CHAIGIDIEL",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__chaigidiel",
+      "name": "CHAIGIDIEL",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__decoy",
+      "name": "DECOY OCTOPUS",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__decoy",
+      "name": "DECOY OCTOPUS",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__elisa",
+      "name": "ELISA / URSULA",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__elisa",
+      "name": "ELISA / URSULA",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__elisa",
+      "name": "ELISA / URSULA",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__snake_nes",
+      "name": "SOLID SNAKE \u2014 NES",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__snake_nes",
+      "name": "SOLID SNAKE \u2014 NES",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__snake_nes",
+      "name": "SOLID SNAKE \u2014 NES",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__snake_tts",
+      "name": "SOLID SNAKE \u2014 TWIN SNAKES",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__snake_tts",
+      "name": "SOLID SNAKE \u2014 TWIN SNAKES",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__naked_delta",
+      "name": "NAKED SNAKE \u2014 DELTA",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__naked_delta",
+      "name": "NAKED SNAKE \u2014 DELTA",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__snake_vr",
+      "name": "SOLID SNAKE \u2014 VR",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__snake_vr",
+      "name": "SOLID SNAKE \u2014 VR",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__snake_vr",
+      "name": "SOLID SNAKE \u2014 VR",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__snake_mobile",
+      "name": "SOLID SNAKE \u2014 MOBILE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__snake_mobile",
+      "name": "SOLID SNAKE \u2014 MOBILE",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__snake_mobile",
+      "name": "SOLID SNAKE \u2014 MOBILE",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__old_snake_touch",
+      "name": "OLD SNAKE \u2014 TOUCH",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__old_snake_touch",
+      "name": "OLD SNAKE \u2014 TOUCH",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__fox_plus",
+      "name": "FOX SOLDIER \u2014 PLUS",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__fox_plus",
+      "name": "FOX SOLDIER \u2014 PLUS",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__fox_plus",
+      "name": "FOX SOLDIER \u2014 PLUS",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__genome_mgo1",
+      "name": "GENOME OPERATIVE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__genome_mgo1",
+      "name": "GENOME OPERATIVE",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__genome_mgo1",
+      "name": "GENOME OPERATIVE",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__pmc_mgo2",
+      "name": "PMC OPERATIVE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__pmc_mgo2",
+      "name": "PMC OPERATIVE",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__dd_mgo3",
+      "name": "DIAMOND DOGS OPERATIVE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__dd_mgo3",
+      "name": "DIAMOND DOGS OPERATIVE",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__dd_mgo3",
+      "name": "DIAMOND DOGS OPERATIVE",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__arcade_operator",
+      "name": "ARCADE OPERATIVE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__arcade_operator",
+      "name": "ARCADE OPERATIVE",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__arcade_operator",
+      "name": "ARCADE OPERATIVE",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__social_agent",
+      "name": "SOCIAL OPS AGENT",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__social_agent",
+      "name": "SOCIAL OPS AGENT",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__social_agent",
+      "name": "SOCIAL OPS AGENT",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__snake_acid_mobile",
+      "name": "SNAKE \u2014 AC!D MOBILE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__snake_acid_mobile",
+      "name": "SNAKE \u2014 AC!D MOBILE",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__snake_acid_mobile",
+      "name": "SNAKE \u2014 AC!D MOBILE",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__venus_acid2_mobile",
+      "name": "VENUS \u2014 AC!D2 MOBILE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__venus_acid2_mobile",
+      "name": "VENUS \u2014 AC!D2 MOBILE",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__venus_acid2_mobile",
+      "name": "VENUS \u2014 AC!D2 MOBILE",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__haven_trooper",
+      "name": "HAVEN TROOPER",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__haven_trooper",
+      "name": "HAVEN TROOPER",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__haven_trooper",
+      "name": "HAVEN TROOPER",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__dwalker",
+      "name": "D-WALKER",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__dwalker",
+      "name": "D-WALKER",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__dwalker",
+      "name": "D-WALKER",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 7,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__gray_fox_mg1",
+      "name": "GRAY FOX \u2014 OUTER HEAVEN",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__gray_fox_mg1",
+      "name": "GRAY FOX \u2014 OUTER HEAVEN",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__gray_fox_mg1",
+      "name": "GRAY FOX \u2014 OUTER HEAVEN",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__holly_white",
+      "name": "HOLLY WHITE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__holly_white",
+      "name": "HOLLY WHITE",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__holly_white",
+      "name": "HOLLY WHITE",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__gustava_heffner",
+      "name": "GUSTAVA HEFFNER",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__gustava_heffner",
+      "name": "GUSTAVA HEFFNER",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__gustava_heffner",
+      "name": "GUSTAVA HEFFNER",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__johnny_mgs1",
+      "name": "JOHNNY SASAKI \u2014 MGS1",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__johnny_mgs1",
+      "name": "JOHNNY SASAKI \u2014 MGS1",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__johnny_mgs1",
+      "name": "JOHNNY SASAKI \u2014 MGS1",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__sergei_gurlukovich",
+      "name": "SERGEI GURLUKOVICH",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__sergei_gurlukovich",
+      "name": "SERGEI GURLUKOVICH",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__sergei_gurlukovich",
+      "name": "SERGEI GURLUKOVICH",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__scott_dolph",
+      "name": "SCOTT DOLPH",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__scott_dolph",
+      "name": "SCOTT DOLPH",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__scott_dolph",
+      "name": "SCOTT DOLPH",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__ishmael",
+      "name": "ISHMAEL",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__ishmael",
+      "name": "ISHMAEL",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__walker_gear",
+      "name": "WALKER GEAR",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__walker_gear",
+      "name": "WALKER GEAR",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__walker_gear",
+      "name": "WALKER GEAR",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 7,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__weasel_gb",
+      "name": "WEASEL",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__weasel_gb",
+      "name": "WEASEL",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__weasel_gb",
+      "name": "WEASEL",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__skowronski_mpo",
+      "name": "COLONEL SKOWRONSKI",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__skowronski_mpo",
+      "name": "COLONEL SKOWRONSKI",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "archive__skowronski_mpo",
+      "name": "COLONEL SKOWRONSKI",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion__gekko_mgs4",
+      "name": "GEKKO \u2014 SIMULATION",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion__little_gray_mgs4",
+      "name": "LITTLE GRAY",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion__gary_murray",
+      "name": "GARY MURRAY",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion__gary_murray",
+      "name": "GARY MURRAY",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion__gary_murray",
+      "name": "GARY MURRAY",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion__dalton_acid2",
+      "name": "DALTON \u2014 AC!D 2",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion__dalton_acid2",
+      "name": "DALTON \u2014 AC!D 2",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion__dalton_acid2",
+      "name": "DALTON \u2014 AC!D 2",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion__ronald_lensen",
+      "name": "RONALD LENSEN",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion__ronald_lensen",
+      "name": "RONALD LENSEN",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion__ronald_lensen",
+      "name": "RONALD LENSEN",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion__sophie_ndram",
+      "name": "SOPHIE N\u2019DRAM",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion__sophie_ndram",
+      "name": "SOPHIE N\u2019DRAM",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion__sophie_ndram",
+      "name": "SOPHIE N\u2019DRAM",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion__eva_mpo",
+      "name": "EVA \u2014 PORTABLE OPS",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion__eva_mpo",
+      "name": "EVA \u2014 PORTABLE OPS",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion__eva_mpo",
+      "name": "EVA \u2014 PORTABLE OPS",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion__ocelot_mpo",
+      "name": "OCELOT \u2014 PORTABLE OPS",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion__ocelot_mpo",
+      "name": "OCELOT \u2014 PORTABLE OPS",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion__ocelot_mpo",
+      "name": "OCELOT \u2014 PORTABLE OPS",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion__raikov_mpo",
+      "name": "RAIKOV \u2014 PORTABLE OPS",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion__raikov_mpo",
+      "name": "RAIKOV \u2014 PORTABLE OPS",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion__raikov_mpo",
+      "name": "RAIKOV \u2014 PORTABLE OPS",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__genome_soldier_44",
+      "name": "GENOME SOLDIER",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__genome_soldier_44",
+      "name": "GENOME SOLDIER",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__genome_soldier_44",
+      "name": "GENOME SOLDIER",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__gurlukovich_merc_44",
+      "name": "GURLUKOVICH MERCENARY",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__gurlukovich_merc_44",
+      "name": "GURLUKOVICH MERCENARY",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__gurlukovich_merc_44",
+      "name": "GURLUKOVICH MERCENARY",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__navy_seal_44",
+      "name": "NAVY SEAL",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__navy_seal_44",
+      "name": "NAVY SEAL",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__navy_seal_44",
+      "name": "NAVY SEAL",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__tengu_soldier_44",
+      "name": "TENGU SOLDIER",
+      "slot": "specialForward",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__ocelot_unit_soldier_44",
+      "name": "OCELOT UNIT SOLDIER",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__ocelot_unit_soldier_44",
+      "name": "OCELOT UNIT SOLDIER",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__ocelot_unit_soldier_44",
+      "name": "OCELOT UNIT SOLDIER",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__gru_heavy_44",
+      "name": "GRU HEAVY GUNNER",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__gru_heavy_44",
+      "name": "GRU HEAVY GUNNER",
+      "slot": "specialForward",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__gru_heavy_44",
+      "name": "GRU HEAVY GUNNER",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 8,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__raven_sword_pmc_44",
+      "name": "RAVEN SWORD PMC",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__raven_sword_pmc_44",
+      "name": "RAVEN SWORD PMC",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__raven_sword_pmc_44",
+      "name": "RAVEN SWORD PMC",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__praying_mantis_pmc_44",
+      "name": "PRAYING MANTIS PMC",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__praying_mantis_pmc_44",
+      "name": "PRAYING MANTIS PMC",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__praying_mantis_pmc_44",
+      "name": "PRAYING MANTIS PMC",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__pieuvre_armement_pmc_44",
+      "name": "PIEUVRE ARMEMENT PMC",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__pieuvre_armement_pmc_44",
+      "name": "PIEUVRE ARMEMENT PMC",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__werewolf_pmc_44",
+      "name": "WEREWOLF PMC",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__werewolf_pmc_44",
+      "name": "WEREWOLF PMC",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__werewolf_pmc_44",
+      "name": "WEREWOLF PMC",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__xof_trooper_44",
+      "name": "XOF TROOPER",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__xof_trooper_44",
+      "name": "XOF TROOPER",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__xof_trooper_44",
+      "name": "XOF TROOPER",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__msf_soldier_44",
+      "name": "MSF SOLDIER",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__msf_soldier_44",
+      "name": "MSF SOLDIER",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__diamond_dogs_scout_44",
+      "name": "DIAMOND DOGS SCOUT",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__diamond_dogs_scout_44",
+      "name": "DIAMOND DOGS SCOUT",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__parasite_camo_44",
+      "name": "PARASITE UNIT \u2014 CAMO",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__zanzibar_mercenary_44",
+      "name": "ZANZIBAR MERCENARY",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__zanzibar_mercenary_44",
+      "name": "ZANZIBAR MERCENARY",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__zanzibar_mercenary_44",
+      "name": "ZANZIBAR MERCENARY",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__black_chamber_soldier_44",
+      "name": "BLACK CHAMBER SOLDIER",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__black_chamber_soldier_44",
+      "name": "BLACK CHAMBER SOLDIER",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__black_chamber_soldier_44",
+      "name": "BLACK CHAMBER SOLDIER",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__saintlogic_guard_44",
+      "name": "SAINTLOGIC GUARD",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__saintlogic_guard_44",
+      "name": "SAINTLOGIC GUARD",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__saintlogic_guard_44",
+      "name": "SAINTLOGIC GUARD",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__fox_trooper_mpo_44",
+      "name": "FOX TROOPER",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__fox_trooper_mpo_44",
+      "name": "FOX TROOPER",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "completion44__fox_trooper_mpo_44",
+      "name": "FOX TROOPER",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__diane_mg1",
+      "name": "DIANE \u2014 OUTER HEAVEN",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__diane_mg1",
+      "name": "DIANE \u2014 OUTER HEAVEN",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__diane_mg1",
+      "name": "DIANE \u2014 OUTER HEAVEN",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__schneider_mg1",
+      "name": "SCHNEIDER \u2014 OUTER HEAVEN",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__schneider_mg1",
+      "name": "SCHNEIDER \u2014 OUTER HEAVEN",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__schneider_mg1",
+      "name": "SCHNEIDER \u2014 OUTER HEAVEN",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__steve_mg1",
+      "name": "STEVE \u2014 R\u00c9SISTANCE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__steve_mg1",
+      "name": "STEVE \u2014 R\u00c9SISTANCE",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__steve_mg1",
+      "name": "STEVE \u2014 R\u00c9SISTANCE",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__jennifer_mg1",
+      "name": "JENNIFER \u2014 OUTER HEAVEN",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__jennifer_mg1",
+      "name": "JENNIFER \u2014 OUTER HEAVEN",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__jennifer_mg1",
+      "name": "JENNIFER \u2014 OUTER HEAVEN",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__campbell_mg2",
+      "name": "ROY CAMPBELL \u2014 MG2",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__campbell_mg2",
+      "name": "ROY CAMPBELL \u2014 MG2",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__campbell_mg2",
+      "name": "ROY CAMPBELL \u2014 MG2",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__miller_mg2",
+      "name": "MASTER MILLER \u2014 MG2",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__kasler_mg2",
+      "name": "GEORGE KASLER",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__kasler_mg2",
+      "name": "GEORGE KASLER",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__kasler_mg2",
+      "name": "GEORGE KASLER",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__four_horsemen_mg2",
+      "name": "FOUR HORSEMEN",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__four_horsemen_mg2",
+      "name": "FOUR HORSEMEN",
+      "slot": "specialForward",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__four_horsemen_mg2",
+      "name": "FOUR HORSEMEN",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 8,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__campbell_mgs1",
+      "name": "ROY CAMPBELL \u2014 MGS1",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__campbell_mgs1",
+      "name": "ROY CAMPBELL \u2014 MGS1",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__campbell_mgs1",
+      "name": "ROY CAMPBELL \u2014 MGS1",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__anderson_mgs1",
+      "name": "DONALD ANDERSON",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__anderson_mgs1",
+      "name": "DONALD ANDERSON",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__anderson_mgs1",
+      "name": "DONALD ANDERSON",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__baker_mgs1",
+      "name": "KENNETH BAKER",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__baker_mgs1",
+      "name": "KENNETH BAKER",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__baker_mgs1",
+      "name": "KENNETH BAKER",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__houseman_mgs1",
+      "name": "JIM HOUSEMAN",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__houseman_mgs1",
+      "name": "JIM HOUSEMAN",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__houseman_mgs1",
+      "name": "JIM HOUSEMAN",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__stillman_mgs2",
+      "name": "PETER STILLMAN",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__stillman_mgs2",
+      "name": "PETER STILLMAN",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__ames_mgs2",
+      "name": "RICHARD AMES",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__ames_mgs2",
+      "name": "RICHARD AMES",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__ames_mgs2",
+      "name": "RICHARD AMES",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__colonel_ai_mgs2",
+      "name": "COLONEL AI",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__colonel_ai_mgs2",
+      "name": "COLONEL AI",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__colonel_ai_mgs2",
+      "name": "COLONEL AI",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__zero_mgs3",
+      "name": "MAJOR ZERO",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__zero_mgs3",
+      "name": "MAJOR ZERO",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__zero_mgs3",
+      "name": "MAJOR ZERO",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__sigint_mgs3",
+      "name": "SIGINT",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__sigint_mgs3",
+      "name": "SIGINT",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__sigint_mgs3",
+      "name": "SIGINT",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__johnny_sr_mgs3",
+      "name": "JOHNNY SASAKI SR.",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__johnny_sr_mgs3",
+      "name": "JOHNNY SASAKI SR.",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__johnny_sr_mgs3",
+      "name": "JOHNNY SASAKI SR.",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__kaz_mgsv",
+      "name": "KAZUHIRA MILLER \u2014 MGSV",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__kaz_mgsv",
+      "name": "KAZUHIRA MILLER \u2014 MGSV",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__kaz_mgsv",
+      "name": "KAZUHIRA MILLER \u2014 MGSV",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__campbell_mgs4",
+      "name": "ROY CAMPBELL \u2014 MGS4",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__campbell_mgs4",
+      "name": "ROY CAMPBELL \u2014 MGS4",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__campbell_mgs4",
+      "name": "ROY CAMPBELL \u2014 MGS4",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__meiling_mgs4",
+      "name": "MEI LING \u2014 MGS4",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__meiling_mgs4",
+      "name": "MEI LING \u2014 MGS4",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__meiling_mgs4",
+      "name": "MEI LING \u2014 MGS4",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__boris_mgr",
+      "name": "BORIS POPOV",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__boris_mgr",
+      "name": "BORIS POPOV",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__boris_mgr",
+      "name": "BORIS POPOV",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__kevin_mgr",
+      "name": "KEVIN WASHINGTON",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__kevin_mgr",
+      "name": "KEVIN WASHINGTON",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__kevin_mgr",
+      "name": "KEVIN WASHINGTON",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__campbell_gb",
+      "name": "ROY CAMPBELL \u2014 GHOST BABEL",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__campbell_gb",
+      "name": "ROY CAMPBELL \u2014 GHOST BABEL",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__campbell_gb",
+      "name": "ROY CAMPBELL \u2014 GHOST BABEL",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__mcbride_gb",
+      "name": "BRIAN McBRIDE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__mcbride_gb",
+      "name": "BRIAN McBRIDE",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__mcbride_gb",
+      "name": "BRIAN McBRIDE",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__mccoy_acid",
+      "name": "ROGER McCOY",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__mccoy_acid",
+      "name": "ROGER McCOY",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__mccoy_acid",
+      "name": "ROGER McCOY",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__alice_acid",
+      "name": "ALICE HAZEL",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__alice_acid",
+      "name": "ALICE HAZEL",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__alice_acid",
+      "name": "ALICE HAZEL",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__takiyama_acid2",
+      "name": "MICHIKO TAKIYAMA",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__takiyama_acid2",
+      "name": "MICHIKO TAKIYAMA",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__takiyama_acid2",
+      "name": "MICHIKO TAKIYAMA",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__commander_mobile",
+      "name": "THE COMMANDER \u2014 MGS MOBILE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__commander_mobile",
+      "name": "THE COMMANDER \u2014 MGS MOBILE",
+      "slot": "specialForward",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster50__commander_mobile",
+      "name": "THE COMMANDER \u2014 MGS MOBILE",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 8,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__meryl_tts",
+      "name": "MERYL \u2014 TWIN SNAKES",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__meryl_tts",
+      "name": "MERYL \u2014 TWIN SNAKES",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__meryl_tts",
+      "name": "MERYL \u2014 TWIN SNAKES",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__ocelot_tts",
+      "name": "REVOLVER OCELOT \u2014 TWIN SNAKES",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__ocelot_tts",
+      "name": "REVOLVER OCELOT \u2014 TWIN SNAKES",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__ocelot_tts",
+      "name": "REVOLVER OCELOT \u2014 TWIN SNAKES",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__mantis_tts",
+      "name": "PSYCHO MANTIS \u2014 TWIN SNAKES",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__mantis_tts",
+      "name": "PSYCHO MANTIS \u2014 TWIN SNAKES",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__mantis_tts",
+      "name": "PSYCHO MANTIS \u2014 TWIN SNAKES",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__wolf_tts",
+      "name": "SNIPER WOLF \u2014 TWIN SNAKES",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__wolf_tts",
+      "name": "SNIPER WOLF \u2014 TWIN SNAKES",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__raven_tts",
+      "name": "VULCAN RAVEN \u2014 TWIN SNAKES",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__raven_tts",
+      "name": "VULCAN RAVEN \u2014 TWIN SNAKES",
+      "slot": "specialForward",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__raven_tts",
+      "name": "VULCAN RAVEN \u2014 TWIN SNAKES",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 8,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__decoy_tts",
+      "name": "DECOY OCTOPUS \u2014 TWIN SNAKES",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__decoy_tts",
+      "name": "DECOY OCTOPUS \u2014 TWIN SNAKES",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__johnny_tts",
+      "name": "JOHNNY SASAKI \u2014 TWIN SNAKES",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__johnny_tts",
+      "name": "JOHNNY SASAKI \u2014 TWIN SNAKES",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__johnny_tts",
+      "name": "JOHNNY SASAKI \u2014 TWIN SNAKES",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__sorrow_mgs3",
+      "name": "THE SORROW",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__sorrow_mgs3",
+      "name": "THE SORROW",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__sorrow_mgs3",
+      "name": "THE SORROW",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__boss_delta",
+      "name": "THE BOSS \u2014 DELTA",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__eva_delta",
+      "name": "EVA \u2014 DELTA",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__eva_delta",
+      "name": "EVA \u2014 DELTA",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__eva_delta",
+      "name": "EVA \u2014 DELTA",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__ocelot_delta",
+      "name": "OCELOT \u2014 DELTA",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__ocelot_delta",
+      "name": "OCELOT \u2014 DELTA",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__ocelot_delta",
+      "name": "OCELOT \u2014 DELTA",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__volgin_delta",
+      "name": "VOLGIN \u2014 DELTA",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__volgin_delta",
+      "name": "VOLGIN \u2014 DELTA",
+      "slot": "specialForward",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__volgin_delta",
+      "name": "VOLGIN \u2014 DELTA",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__pain_delta",
+      "name": "THE PAIN \u2014 DELTA",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__pain_delta",
+      "name": "THE PAIN \u2014 DELTA",
+      "slot": "specialForward",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__pain_delta",
+      "name": "THE PAIN \u2014 DELTA",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__fear_delta",
+      "name": "THE FEAR \u2014 DELTA",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__fear_delta",
+      "name": "THE FEAR \u2014 DELTA",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 4,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__end_delta",
+      "name": "THE END \u2014 DELTA",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__end_delta",
+      "name": "THE END \u2014 DELTA",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__fury_delta",
+      "name": "THE FURY \u2014 DELTA",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__fury_delta",
+      "name": "THE FURY \u2014 DELTA",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__sorrow_delta",
+      "name": "THE SORROW \u2014 DELTA",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__sorrow_delta",
+      "name": "THE SORROW \u2014 DELTA",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__sorrow_delta",
+      "name": "THE SORROW \u2014 DELTA",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__zero_delta",
+      "name": "MAJOR ZERO \u2014 DELTA",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__zero_delta",
+      "name": "MAJOR ZERO \u2014 DELTA",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__zero_delta",
+      "name": "MAJOR ZERO \u2014 DELTA",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__sigint_delta",
+      "name": "SIGINT \u2014 DELTA",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__sigint_delta",
+      "name": "SIGINT \u2014 DELTA",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__sigint_delta",
+      "name": "SIGINT \u2014 DELTA",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__raikov_delta",
+      "name": "IVAN RAIKOV \u2014 DELTA",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__raikov_delta",
+      "name": "IVAN RAIKOV \u2014 DELTA",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__raikov_delta",
+      "name": "IVAN RAIKOV \u2014 DELTA",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__johnny_delta",
+      "name": "JOHNNY SASAKI SR. \u2014 DELTA",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__johnny_delta",
+      "name": "JOHNNY SASAKI SR. \u2014 DELTA",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__johnny_delta",
+      "name": "JOHNNY SASAKI SR. \u2014 DELTA",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__guy_savage_delta",
+      "name": "GUY SAVAGE \u0394",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__guy_savage_delta",
+      "name": "GUY SAVAGE \u0394",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__pliskin_mgs2",
+      "name": "IROQUOIS PLISKIN",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__pliskin_mgs2",
+      "name": "IROQUOIS PLISKIN",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__galvez_pw",
+      "name": "RAM\u00d3N G\u00c1LVEZ MENA",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__galvez_pw",
+      "name": "RAM\u00d3N G\u00c1LVEZ MENA",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "roster51__galvez_pw",
+      "name": "RAM\u00d3N G\u00c1LVEZ MENA",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__dead_cell_mystic_mgs2",
+      "name": "DEAD CELL MYSTIC \u2014 PROTOTYPE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__dead_cell_mystic_mgs2",
+      "name": "DEAD CELL MYSTIC \u2014 PROTOTYPE",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__dead_cell_mystic_mgs2",
+      "name": "DEAD CELL MYSTIC \u2014 PROTOTYPE",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__old_boy_mgs2",
+      "name": "OLD BOY \u2014 PROTOTYPE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__old_boy_mgs2",
+      "name": "OLD BOY \u2014 PROTOTYPE",
+      "slot": "specialForward",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__old_boy_mgs2",
+      "name": "OLD BOY \u2014 PROTOTYPE",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 8,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__max_wark_mgs2",
+      "name": "MAX WARK \u2014 PROTOTYPE AI",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__max_wark_mgs2",
+      "name": "MAX WARK \u2014 PROTOTYPE AI",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__max_wark_mgs2",
+      "name": "MAX WARK \u2014 PROTOTYPE AI",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__doc_wilson_mgs2",
+      "name": "DOC WILSON \u2014 PROTOTYPE AI",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__doc_wilson_mgs2",
+      "name": "DOC WILSON \u2014 PROTOTYPE AI",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__doc_wilson_mgs2",
+      "name": "DOC WILSON \u2014 PROTOTYPE AI",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__daniel_quinn_mgs2",
+      "name": "DANIEL QUINN \u2014 PROTOTYPE AI",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__daniel_quinn_mgs2",
+      "name": "DANIEL QUINN \u2014 PROTOTYPE AI",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__daniel_quinn_mgs2",
+      "name": "DANIEL QUINN \u2014 PROTOTYPE AI",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__tatyana_mgs3",
+      "name": "TATYANA",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__tatyana_mgs3",
+      "name": "TATYANA",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__tatyana_mgs3",
+      "name": "TATYANA",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__adam_mgs3",
+      "name": "ADAM",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__adam_mgs3",
+      "name": "ADAM",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__adam_mgs3",
+      "name": "ADAM",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__skull_face_gz",
+      "name": "SKULL FACE \u2014 GROUND ZEROES",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__skull_face_gz",
+      "name": "SKULL FACE \u2014 GROUND ZEROES",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__skull_face_gz",
+      "name": "SKULL FACE \u2014 GROUND ZEROES",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__kaz_gz",
+      "name": "KAZUHIRA MILLER \u2014 GROUND ZEROES",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__kaz_gz",
+      "name": "KAZUHIRA MILLER \u2014 GROUND ZEROES",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__kaz_gz",
+      "name": "KAZUHIRA MILLER \u2014 GROUND ZEROES",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__glaz_gz",
+      "name": "GLAZ / THE EYE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__glaz_gz",
+      "name": "GLAZ / THE EYE",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__glaz_gz",
+      "name": "GLAZ / THE EYE",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__palitz_gz",
+      "name": "PALITZ / THE FINGER",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__palitz_gz",
+      "name": "PALITZ / THE FINGER",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__palitz_gz",
+      "name": "PALITZ / THE FINGER",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__morpho_gz",
+      "name": "MORPHO \u2014 PILOT",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__morpho_gz",
+      "name": "MORPHO \u2014 PILOT",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__morpho_gz",
+      "name": "MORPHO \u2014 PILOT",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__mosquito_tpp",
+      "name": "MOSQUITO",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__mosquito_tpp",
+      "name": "MOSQUITO",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__mosquito_tpp",
+      "name": "MOSQUITO",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__paz_phantom_tpp",
+      "name": "PAZ \u2014 MEDICAL PLATFORM",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__paz_phantom_tpp",
+      "name": "PAZ \u2014 MEDICAL PLATFORM",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__paz_phantom_tpp",
+      "name": "PAZ \u2014 MEDICAL PLATFORM",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__zero_cipher_tpp",
+      "name": "ZERO \u2014 CIPHER TAPES",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__zero_cipher_tpp",
+      "name": "ZERO \u2014 CIPHER TAPES",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__zero_cipher_tpp",
+      "name": "ZERO \u2014 CIPHER TAPES",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__zero_2014_mgs4",
+      "name": "MAJOR ZERO \u2014 2014",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__zero_2014_mgs4",
+      "name": "MAJOR ZERO \u2014 2014",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__zero_2014_mgs4",
+      "name": "MAJOR ZERO \u2014 2014",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__jd_ai_mgs4",
+      "name": "JD AI",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__jd_ai_mgs4",
+      "name": "JD AI",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__jd_ai_mgs4",
+      "name": "JD AI",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__gw_ai_mgs4",
+      "name": "GW AI \u2014 2014",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__gw_ai_mgs4",
+      "name": "GW AI \u2014 2014",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__gw_ai_mgs4",
+      "name": "GW AI \u2014 2014",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__tj_ai_mgs4",
+      "name": "TJ AI",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__tj_ai_mgs4",
+      "name": "TJ AI",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__tj_ai_mgs4",
+      "name": "TJ AI",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__tr_ai_mgs4",
+      "name": "TR AI",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__tr_ai_mgs4",
+      "name": "TR AI",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__tr_ai_mgs4",
+      "name": "TR AI",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__al_ai_mgs4",
+      "name": "AL AI",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__al_ai_mgs4",
+      "name": "AL AI",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__al_ai_mgs4",
+      "name": "AL AI",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__adam_prototype_mgs4",
+      "name": "ADAM \u2014 MGS4 PROTOTYPE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__adam_prototype_mgs4",
+      "name": "ADAM \u2014 MGS4 PROTOTYPE",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__adam_prototype_mgs4",
+      "name": "ADAM \u2014 MGS4 PROTOTYPE",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__reptile_pod_pw",
+      "name": "REPTILE POD AI",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__reptile_pod_pw",
+      "name": "REPTILE POD AI",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__reptile_pod_pw",
+      "name": "REPTILE POD AI",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__avian_pod_pw",
+      "name": "AVIAN POD AI",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__avian_pod_pw",
+      "name": "AVIAN POD AI",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__avian_pod_pw",
+      "name": "AVIAN POD AI",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__arthropod_pod_pw",
+      "name": "ARTHROPOD POD AI",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__arthropod_pod_pw",
+      "name": "ARTHROPOD POD AI",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__arthropod_pod_pw",
+      "name": "ARTHROPOD POD AI",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__mammal_pod_pw",
+      "name": "MAMMAL POD / THE BOSS AI",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__mammal_pod_pw",
+      "name": "MAMMAL POD / THE BOSS AI",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__mammal_pod_pw",
+      "name": "MAMMAL POD / THE BOSS AI",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__zero_mpo",
+      "name": "MAJOR ZERO \u2014 PORTABLE OPS",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__zero_mpo",
+      "name": "MAJOR ZERO \u2014 PORTABLE OPS",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__zero_mpo",
+      "name": "MAJOR ZERO \u2014 PORTABLE OPS",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__teliko_mpo",
+      "name": "TELIKO \u2014 PORTABLE OPS",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__teliko_mpo",
+      "name": "TELIKO \u2014 PORTABLE OPS",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__teliko_mpo",
+      "name": "TELIKO \u2014 PORTABLE OPS",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__venus_mpo",
+      "name": "VENUS \u2014 PORTABLE OPS",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__venus_mpo",
+      "name": "VENUS \u2014 PORTABLE OPS",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__venus_mpo",
+      "name": "VENUS \u2014 PORTABLE OPS",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__old_snake_mpo_plus",
+      "name": "OLD SNAKE \u2014 PORTABLE OPS+",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__old_snake_mpo_plus",
+      "name": "OLD SNAKE \u2014 PORTABLE OPS+",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__old_snake_mpo_plus",
+      "name": "OLD SNAKE \u2014 PORTABLE OPS+",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__raiden_mpo_plus",
+      "name": "RAIDEN \u2014 PORTABLE OPS+",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__raiden_mpo_plus",
+      "name": "RAIDEN \u2014 PORTABLE OPS+",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__raiden_mpo_plus",
+      "name": "RAIDEN \u2014 PORTABLE OPS+",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__viggo_hach_acid",
+      "name": "VIGGO HACH",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__viggo_hach_acid",
+      "name": "VIGGO HACH",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__viggo_hach_acid",
+      "name": "VIGGO HACH",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__lena_arrow_acid",
+      "name": "LENA ARROW",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__lena_arrow_acid",
+      "name": "LENA ARROW",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__lena_arrow_acid",
+      "name": "LENA ARROW",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__hans_davis_acid",
+      "name": "HANS DAVIS",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__hans_davis_acid",
+      "name": "HANS DAVIS",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__hans_davis_acid",
+      "name": "HANS DAVIS",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__jeff_jones_acid",
+      "name": "JEFF JONES / LEONE IDENTITY",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__jeff_jones_acid",
+      "name": "JEFF JONES / LEONE IDENTITY",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__jeff_jones_acid",
+      "name": "JEFF JONES / LEONE IDENTITY",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__rodzinski_acid2",
+      "name": "RODZINSKI",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__rodzinski_acid2",
+      "name": "RODZINSKI",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__rodzinski_acid2",
+      "name": "RODZINSKI",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__bb_acid2",
+      "name": "B.B.",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__bb_acid2",
+      "name": "B.B.",
+      "slot": "specialForward",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__bb_acid2",
+      "name": "B.B.",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 8,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__consuela_acid2",
+      "name": "CONSUELA ALVAREZ",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__consuela_acid2",
+      "name": "CONSUELA ALVAREZ",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__consuela_acid2",
+      "name": "CONSUELA ALVAREZ",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__dave_copeland_acid2",
+      "name": "DAVE COPELAND",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__dave_copeland_acid2",
+      "name": "DAVE COPELAND",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__dave_copeland_acid2",
+      "name": "DAVE COPELAND",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__roddy_louiz_acid2",
+      "name": "RODDY LOUIZ",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__roddy_louiz_acid2",
+      "name": "RODDY LOUIZ",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__roddy_louiz_acid2",
+      "name": "RODDY LOUIZ",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__delgado_acid2",
+      "name": "DELGADO",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__delgado_acid2",
+      "name": "DELGADO",
+      "slot": "specialForward",
+      "started": true,
+      "maxProjectiles": 3,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__delgado_acid2",
+      "name": "DELGADO",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 8,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__escobar_acid2",
+      "name": "ESCOBAR",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__escobar_acid2",
+      "name": "ESCOBAR",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__escobar_acid2",
+      "name": "ESCOBAR",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__vr_otacon_mobile",
+      "name": "VR OTACON \u2014 MOBILE",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__vr_otacon_mobile",
+      "name": "VR OTACON \u2014 MOBILE",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__vr_otacon_mobile",
+      "name": "VR OTACON \u2014 MOBILE",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 5,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__joseph_gruen_survive",
+      "name": "JOSEPH GRUEN",
+      "slot": "special",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__joseph_gruen_survive",
+      "name": "JOSEPH GRUEN",
+      "slot": "specialDown",
+      "started": true,
+      "maxProjectiles": 1,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    },
+    {
+      "uid": "npc53__joseph_gruen_survive",
+      "name": "JOSEPH GRUEN",
+      "slot": "super",
+      "started": true,
+      "maxProjectiles": 6,
+      "framesCompared": 120,
+      "byteEqualSerializedEngineState": true
+    }
+  ],
+  "rayQualification": "No baseline Versus RAY projectile profile was present; substring ray in Gray/Murray is not a RAY case. Boss RAY engine is outside this647-profile comparison; proposed patches target only Versus engine and leave boss engines/source bytes untouched."
+}

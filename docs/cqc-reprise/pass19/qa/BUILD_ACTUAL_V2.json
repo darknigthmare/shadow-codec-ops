@@ -1,0 +1,57 @@
+{
+  "schema": "cqc.pass19.actual-application-build/2",
+  "status": "passed",
+  "actualCommandsExitZero": [
+    "tsc -b",
+    "vite original-config with verified public hardlinks",
+    "npm run test",
+    "npm run pwa:check",
+    "npm run cqc:check"
+  ],
+  "testFilesPassed": 104,
+  "testsPassed": 705,
+  "runtimeManifestSHA256": "71f78c94af131f40f40dddf150a65e6cd80394c3c1e9a1c0473837f714a45560",
+  "runtimeFileCount": 2056,
+  "publicCopyStorageSharingOnly": true,
+  "sourcePixelsChangedByBuild": false,
+  "publicFiles": 3252,
+  "publicBytes": 2473739803,
+  "reports": [
+    {
+      "path": "/tmp/cqc-pass19-integration/APPLICATION_BUILD_PUBLIC_HARDLINK_PROOF_ACTUAL_V2.json",
+      "bytes": 848346,
+      "sha256": "c0f092333d04b2c3153fccd1e4932b54e7808aed80c0588a8dc451d580e1ace3"
+    },
+    {
+      "path": "/tmp/cqc-pass19-integration/GENERAL_TESTS_ACTUAL_V5.log",
+      "bytes": 7275,
+      "sha256": "91f46cefd545179491d5abf78ac66572d34856493ee12928b42e3002f25b72a2"
+    },
+    {
+      "path": "/tmp/cqc-pass19-integration/TYPESCRIPT_BUILD_ACTUAL_V1.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/cqc-pass19-integration/VITE_BUILD_ACTUAL_V2.log",
+      "bytes": 8295,
+      "sha256": "1bef94f8802982c287a567e2c7764f9bbf0885fb4a1db149f76e4484c0a063c9"
+    },
+    {
+      "path": "/tmp/cqc-pass19-integration/PWA_CHECK_ACTUAL_V2.log",
+      "bytes": 133,
+      "sha256": "c2082605bf7e914cbfa34422e1ff340a84e280d36c79a5de6e15baf9a4b11d55"
+    },
+    {
+      "path": "/tmp/cqc-pass19-integration/CQC_RUNTIME_CHECK_ACTUAL_V2.log",
+      "bytes": 340,
+      "sha256": "a90c9a2a6aad779e87ff1decc242acda29df883c3c4c17c70bec58106372e80c"
+    },
+    {
+      "path": "/tmp/cqc-pass19-integration/RUNTIME_MANIFEST_ACTUAL_V2.json",
+      "bytes": 403,
+      "sha256": "0679860857c647ba1f66f92d43fe4adb0824ad4a1b9c7e22f97918a02dee6524"
+    }
+  ],
+  "qualification": "After readiness correction, Vite/PWA/runtime checks rerun on final source. TypeScript and705application tests are unchanged; the new pure JS engine/readiness have their separate actual and guarded647-profile regression reports. Production retains package build command."
+}

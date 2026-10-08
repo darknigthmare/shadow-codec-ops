@@ -44,7 +44,7 @@ export default defineConfig({
           { name: 'Codec Simulator', short_name: 'Codec', url: '/?module=codec', icons: [{ src: 'pwa-192x192.png', sizes: '192x192' }] },
           { name: 'Codec Director', short_name: 'Director', url: '/?module=director', icons: [{ src: 'pwa-192x192.png', sizes: '192x192' }] },
           { name: 'Side Ops', short_name: 'Side Ops', url: '/?module=sideops', icons: [{ src: 'pwa-192x192.png', sizes: '192x192' }] },
-          { name: 'CQC Versus Legacy', short_name: 'CQC Versus', url: '/?module=cqc', icons: [{ src: 'pwa-192x192.png', sizes: '192x192' }] },
+          { name: 'CQC Versus', short_name: 'CQC Versus', url: '/?module=cqc', icons: [{ src: 'pwa-192x192.png', sizes: '192x192' }] },
           { name: 'VR Missions', short_name: 'VR', url: '/?module=vr', icons: [{ src: 'pwa-192x192.png', sizes: '192x192' }] },
           { name: 'Mission Builder', short_name: 'Builder', url: '/?module=builder', icons: [{ src: 'pwa-192x192.png', sizes: '192x192' }] }
         ]

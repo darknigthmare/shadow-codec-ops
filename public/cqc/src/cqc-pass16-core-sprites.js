@@ -141,7 +141,7 @@
   function showDialog(error=false){const d=ensureDialog();if(!d)return;d.node.hidden=false;d.node.style.display='grid';d.message.textContent=error?'Dossier inaccessible. Réessayez.':'Liaison tactique…';d.retry.hidden=!error;(error?d.retry:d.cancel).focus();}
   function hideDialog(restore=false){if(dialog){dialog.node.hidden=true;dialog.node.style.display='none';}if(restore&&focusBefore?.isConnected)focusBefore.focus?.();focusBefore=null;}
   function cancelPendingLaunch(){if(pending)pending.cancelled=true;pending=null;++serial;hideDialog(true);}
-  function machineJobs(options,hooks={}){const ids=hooks.actorIDs?.(options)||[options.player,options.opponent];return [...new Set(ids.filter(id=>!imported(id,hooks)).map(id=>'core__'+id).filter(uid=>root.CQC_PASS18_MACHINES?.hasComposite(uid)))];}
+  function machineJobs(options,hooks={}){const ids=hooks.actorIDs?.(options)||[options.player,options.opponent];return [...new Set(ids.map((id,slot)=>({id,uid:'core__'+id,costume:options.costumes?.[slot]||'original'})).filter(f=>!imported(f.id,hooks)&&root.CQC_PASS18_MACHINES?.hasComposite(f)).map(f=>f.uid))];}
   function machineReady(uid){const api=root.CQC_PASS18_MACHINES;if(uid==='core__cunningham')return api?.ready(uid);return api?.ready(api.physical(uid,1))&&api?.ready(api.physical(uid,-1));}
   function launchUIDs(options,hooks={}){
     return [...new Set(launchJobs(options,hooks).map(job=>job.uid))];

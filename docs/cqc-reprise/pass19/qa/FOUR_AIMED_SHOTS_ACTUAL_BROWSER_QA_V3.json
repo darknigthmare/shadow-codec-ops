@@ -1,0 +1,944 @@
+{
+  "schema": "cqc.pass19.four-aimed-shots-actual-browser/1",
+  "startedAt": "2026-10-08T00:57:55.900Z",
+  "qualification": "Actual APP engine/machine draw/source axis on independent left/right PNGs. Gameplay body aim is a CQC adaptation, not certified original-game ballistic behavior.",
+  "cases": [
+    {
+      "uid": "pass19__gekko_missile_mgs4",
+      "face": 1,
+      "first": {
+        "frame": 34,
+        "move": {
+          "startup": 30,
+          "active": 1,
+          "recovery": 38,
+          "damage": 970,
+          "cost": 28,
+          "meter": 0,
+          "reach": 100,
+          "travel": 0,
+          "level": "mid",
+          "counterplay": "Observe le départ et garde ou quitte sa portée.",
+          "name": "Missile du Gekko",
+          "kind": "projectile",
+          "aimAtBody": true,
+          "tag": "rocket",
+          "speed": 9,
+          "life": 95,
+          "height": 185,
+          "radius": 82,
+          "id": "pass19__gekko_missile_mgs4::special",
+          "slot": "special",
+          "lore": "adaptation"
+        },
+        "physicalRig": "pass19__gekko_missile_mgs4_right",
+        "description": {
+          "time": 0.5666666666666667,
+          "jump": false,
+          "walk": false,
+          "crouch": false,
+          "guard": false,
+          "attack": true,
+          "animationActive": true,
+          "attackPhase": "active",
+          "phaseProgress": 0,
+          "moveSlot": "special",
+          "moveKind": "projectile",
+          "moveTag": "rocket",
+          "attackTime": 0.5,
+          "ko": false,
+          "hit": false,
+          "hitTime": 17.216666666666665,
+          "weaponAim": 43.006065296640415
+        },
+        "aim": {
+          "valid": true,
+          "weaponAim": 43.006065296640415,
+          "mouth": {
+            "x": 516.8907153568903,
+            "y": 167.35482199421455
+          },
+          "tail": {
+            "x": 463.31862833586007,
+            "y": 132.02366394103
+          },
+          "target": {
+            "x": 950,
+            "y": 453
+          },
+          "errorDegrees": 0.000612186310929148,
+          "iterations": 2,
+          "qualification": "Bounded actual source-axis solve; never rotates180degrees to compensate a missing facing source.",
+          "velocity": {
+            "valid": true,
+            "vx": 7.513134681131268,
+            "vy": 4.9550789361202465,
+            "speed": 9,
+            "target": {
+              "x": 950,
+              "y": 453
+            },
+            "distance": 518.8225324347653,
+            "arrivalFrames": 57.64694804830726
+          },
+          "frame": 34,
+          "id": "pass19__gekko_missile_mgs4_right",
+          "sourcePin": {
+            "machine": "pass19__gekko_missile_mgs4_right",
+            "part": "paired_missile_pod",
+            "source": {
+              "id": "missile",
+              "file": "assets/machines-pass19/gekko-missile-mgs4-right-parts-v1.png",
+              "sha256": "6cc46f88245e134cde48b1c0186bc5c0e1d2718017af6dacd85bce4e04f0f2a8",
+              "bytes": 1786571,
+              "width": 1266,
+              "height": 1242
+            },
+            "rect": [
+              39,
+              1022,
+              393,
+              206
+            ],
+            "pivot": [
+              31.44,
+              103
+            ],
+            "imageScale": 0.28498727735368956
+          },
+          "sourceMouth": [
+            406,
+            1081
+          ],
+          "sourceTail": [
+            205,
+            1115
+          ],
+          "originalSpeedPreserved": true
+        },
+        "projectile": {
+          "x": 524.4038500380216,
+          "y": 172.30990093033475,
+          "vx": 7.513134681131268,
+          "vy": 4.9550789361202465,
+          "life": 94,
+          "delay": 0
+        },
+        "speed": 9,
+        "spawnPoint": {
+          "x": 516.8907153568903,
+          "y": 167.3548219942145
+        },
+        "spatialOrigin": {
+          "x": 516.8907153568903,
+          "y": 167.3548219942145,
+          "origin": {
+            "forward": 166.89071535689027,
+            "height": 400.6451780057855,
+            "sourceFile": "assets/machines-pass19/gekko-missile-mgs4-right-parts-v1.png",
+            "sourceSHA256": "6cc46f88245e134cde48b1c0186bc5c0e1d2718017af6dacd85bce4e04f0f2a8",
+            "reviewKind": "guarded-native-body-aim-source-axis",
+            "worldScaleApplied": false,
+            "facingQualification": "independent-native-facing-source",
+            "bodyAim": true,
+            "weaponAim": 43.006065296640415,
+            "evidence": "guarded-source-display-anchor",
+            "coordinateSpace": "world",
+            "sourceScaleAppliedOnce": true
+          }
+        },
+        "drawnMouth": {
+          "x": 516.890720114824,
+          "y": 167.35481688061827
+        },
+        "drawnTail": {
+          "x": 463.31863038075085,
+          "y": 132.023656733086
+        },
+        "originDrawError": 0.000006984754826748908,
+        "spawnDrawError": 0.000006984754826748908,
+        "sourceAxisVelocityAngleErrorDegrees": -0.000611958928234166,
+        "sourcePin": {
+          "machine": "pass19__gekko_missile_mgs4_right",
+          "part": "paired_missile_pod",
+          "source": {
+            "id": "missile",
+            "file": "assets/machines-pass19/gekko-missile-mgs4-right-parts-v1.png",
+            "sha256": "6cc46f88245e134cde48b1c0186bc5c0e1d2718017af6dacd85bce4e04f0f2a8",
+            "bytes": 1786571,
+            "width": 1266,
+            "height": 1242
+          },
+          "rect": [
+            39,
+            1022,
+            393,
+            206
+          ],
+          "pivot": [
+            31.44,
+            103
+          ],
+          "imageScale": 0.28498727735368956
+        },
+        "draw": {
+          "ok": true,
+          "alpha": 98383,
+          "partCalls": 12
+        },
+        "targetBox": {
+          "x": 911,
+          "y": 338,
+          "w": 78,
+          "h": 230
+        }
+      },
+      "photoFrame": 34,
+      "screenshot": "/workspace/cqc-pass19-canonical-runtime-qa/aim-implementation-v1/AIMED_pass19__gekko_missile_mgs4_1_2026-10-08T00-57-55-848Z.png",
+      "outcome": {
+        "damage": 970,
+        "maxProjectiles": 1,
+        "metrics": {
+          "start": 1,
+          "activate": 1,
+          "projectile": 1,
+          "damage": 1
+        },
+        "body": {
+          "x": 933.5405148110832,
+          "y": 338,
+          "w": 78,
+          "h": 230
+        },
+        "actorX": 350,
+        "targetX": 972.5405148110832
+      }
+    },
+    {
+      "uid": "pass19__gekko_missile_mgs4",
+      "face": -1,
+      "first": {
+        "frame": 33,
+        "move": {
+          "startup": 30,
+          "active": 1,
+          "recovery": 38,
+          "damage": 970,
+          "cost": 28,
+          "meter": 0,
+          "reach": 100,
+          "travel": 0,
+          "level": "mid",
+          "counterplay": "Observe le départ et garde ou quitte sa portée.",
+          "name": "Missile du Gekko",
+          "kind": "projectile",
+          "aimAtBody": true,
+          "tag": "rocket",
+          "speed": 9,
+          "life": 95,
+          "height": 185,
+          "radius": 82,
+          "id": "pass19__gekko_missile_mgs4::special",
+          "slot": "special",
+          "lore": "adaptation"
+        },
+        "physicalRig": "pass19__gekko_missile_mgs4",
+        "description": {
+          "time": 0.55,
+          "jump": false,
+          "walk": false,
+          "crouch": false,
+          "guard": false,
+          "attack": true,
+          "animationActive": true,
+          "attackPhase": "active",
+          "phaseProgress": 0,
+          "moveSlot": "special",
+          "moveKind": "projectile",
+          "moveTag": "rocket",
+          "attackTime": 0.5,
+          "ko": false,
+          "hit": false,
+          "hitTime": 17.2,
+          "weaponAim": 33.572905981412696
+        },
+        "aim": {
+          "valid": true,
+          "weaponAim": 33.572905981412696,
+          "mouth": {
+            "x": 1133.8687878481953,
+            "y": 148.73521697462087
+          },
+          "tail": {
+            "x": 1177.0010995667485,
+            "y": 129.54493757616484
+          },
+          "target": {
+            "x": 450,
+            "y": 453
+          },
+          "errorDegrees": -0.000016791487253300115,
+          "iterations": 2,
+          "qualification": "Bounded actual source-axis solve; never rotates180degrees to compensate a missing facing source.",
+          "velocity": {
+            "valid": true,
+            "vx": -8.222861457002498,
+            "vy": 3.65849005177583,
+            "speed": 9,
+            "target": {
+              "x": 450,
+              "y": 453
+            },
+            "distance": 748.5008865608919,
+            "arrivalFrames": 83.16676517343244
+          },
+          "frame": 33,
+          "id": "pass19__gekko_missile_mgs4",
+          "sourcePin": {
+            "machine": "pass19__gekko_missile_mgs4",
+            "part": "paired_missile_pod",
+            "source": {
+              "id": "atlas",
+              "file": "assets/machines-pass19/gekko-missile-mgs4-left-parts-v1.png",
+              "sha256": "4c079444be5a7957a55ed9126cd424f154cda65a66cefc707eea6fe0e961f7e2",
+              "bytes": 1733494,
+              "width": 1254,
+              "height": 1254
+            },
+            "rect": [
+              33,
+              995,
+              397,
+              242
+            ],
+            "pivot": [
+              365.24,
+              121
+            ],
+            "imageScale": 0.28211586901763225
+          },
+          "sourceMouth": [
+            72,
+            1068
+          ],
+          "sourceTail": [
+            220,
+            1093
+          ],
+          "originalSpeedPreserved": true
+        },
+        "projectile": {
+          "x": 1125.645926391193,
+          "y": 152.39370702639664,
+          "vx": -8.222861457002498,
+          "vy": 3.65849005177583,
+          "life": 94,
+          "delay": 0
+        },
+        "speed": 8.999999999999998,
+        "spawnPoint": {
+          "x": 1133.8687878481953,
+          "y": 148.7352169746208
+        },
+        "spatialOrigin": {
+          "x": 1133.8687878481953,
+          "y": 148.7352169746208,
+          "origin": {
+            "forward": -83.86878784819532,
+            "height": 419.2647830253792,
+            "sourceFile": "assets/machines-pass19/gekko-missile-mgs4-left-parts-v1.png",
+            "sourceSHA256": "4c079444be5a7957a55ed9126cd424f154cda65a66cefc707eea6fe0e961f7e2",
+            "reviewKind": "guarded-native-body-aim-source-axis",
+            "worldScaleApplied": false,
+            "facingQualification": "independent-native-facing-source",
+            "bodyAim": true,
+            "weaponAim": 33.572905981412696,
+            "evidence": "guarded-source-display-anchor",
+            "coordinateSpace": "world",
+            "sourceScaleAppliedOnce": true
+          }
+        },
+        "drawnMouth": {
+          "x": 1133.8687932753696,
+          "y": 148.73522468305333
+        },
+        "drawnTail": {
+          "x": 1177.0011041563046,
+          "y": 129.54494613055323
+        },
+        "originDrawError": 0.000009427308884687886,
+        "spawnDrawError": 0.000009427308884687886,
+        "sourceAxisVelocityAngleErrorDegrees": 0.000017316299945513554,
+        "sourcePin": {
+          "machine": "pass19__gekko_missile_mgs4",
+          "part": "paired_missile_pod",
+          "source": {
+            "id": "atlas",
+            "file": "assets/machines-pass19/gekko-missile-mgs4-left-parts-v1.png",
+            "sha256": "4c079444be5a7957a55ed9126cd424f154cda65a66cefc707eea6fe0e961f7e2",
+            "bytes": 1733494,
+            "width": 1254,
+            "height": 1254
+          },
+          "rect": [
+            33,
+            995,
+            397,
+            242
+          ],
+          "pivot": [
+            365.24,
+            121
+          ],
+          "imageScale": 0.28211586901763225
+        },
+        "draw": {
+          "ok": true,
+          "alpha": 97905,
+          "partCalls": 12
+        },
+        "targetBox": {
+          "x": 411,
+          "y": 338,
+          "w": 78,
+          "h": 230
+        }
+      },
+      "photoFrame": 33,
+      "screenshot": "/workspace/cqc-pass19-canonical-runtime-qa/aim-implementation-v1/AIMED_pass19__gekko_missile_mgs4_-1_2026-10-08T00-57-55-848Z.png",
+      "outcome": {
+        "damage": 970,
+        "maxProjectiles": 1,
+        "metrics": {
+          "start": 1,
+          "activate": 1,
+          "projectile": 1,
+          "damage": 1
+        },
+        "body": {
+          "x": 388.4594851889168,
+          "y": 338,
+          "w": 78,
+          "h": 230
+        },
+        "actorX": 1050,
+        "targetX": 427.4594851889168
+      }
+    },
+    {
+      "uid": "pass19__gekko_mgr",
+      "face": 1,
+      "first": {
+        "frame": 25,
+        "move": {
+          "startup": 24,
+          "active": 1,
+          "recovery": 33,
+          "damage": 210,
+          "cost": 18,
+          "meter": 0,
+          "reach": 100,
+          "travel": 0,
+          "level": "mid",
+          "counterplay": "Observe le départ et garde ou quitte sa portée.",
+          "name": "Rafale du Gekko",
+          "kind": "projectile",
+          "aimAtBody": true,
+          "tag": "ballistic",
+          "count": 3,
+          "interval": 5,
+          "speed": 19,
+          "life": 58,
+          "height": 315,
+          "id": "pass19__gekko_mgr::specialForward",
+          "slot": "specialForward",
+          "lore": "adaptation"
+        },
+        "physicalRig": "pass19__gekko_mgr_right",
+        "description": {
+          "time": 0.4166666666666667,
+          "jump": false,
+          "walk": false,
+          "crouch": false,
+          "guard": false,
+          "attack": true,
+          "animationActive": true,
+          "attackPhase": "active",
+          "phaseProgress": 0,
+          "moveSlot": "specialForward",
+          "moveKind": "projectile",
+          "moveTag": "ballistic",
+          "attackTime": 0.4,
+          "ko": false,
+          "hit": false,
+          "hitTime": 17.066666666666666,
+          "weaponAim": 50.01315896511496
+        },
+        "aim": {
+          "valid": true,
+          "weaponAim": 50.01315896511496,
+          "mouth": {
+            "x": 550.9138904433986,
+            "y": 125.87272609452538
+          },
+          "tail": {
+            "x": 508.28784575892655,
+            "y": 90.92331238791695
+          },
+          "target": {
+            "x": 950,
+            "y": 453
+          },
+          "errorDegrees": -0.007420219752475598,
+          "iterations": 2,
+          "qualification": "Bounded actual source-axis solve; never rotates180degrees to compensate a missing facing source.",
+          "velocity": {
+            "valid": true,
+            "vx": 14.69431438808894,
+            "vy": 12.044796580432662,
+            "speed": 19,
+            "target": {
+              "x": 950,
+              "y": 453
+            },
+            "distance": 516.0251700972067,
+            "arrivalFrames": 27.159219478800352
+          },
+          "frame": 25,
+          "id": "pass19__gekko_mgr_right",
+          "sourcePin": {
+            "machine": "pass19__gekko_mgr_right",
+            "part": "machinegun",
+            "source": {
+              "id": "mgr",
+              "file": "assets/machines-pass19/gekko-mgr-right-parts-v1.png",
+              "sha256": "b117ea2a650c380f54f906ec82b01046d16cc4179f1a00e6e9269f84783c8ba6",
+              "bytes": 1684767,
+              "width": 1405,
+              "height": 1119
+            },
+            "rect": [
+              1023,
+              70,
+              361,
+              195
+            ],
+            "pivot": [
+              64.98,
+              144.3
+            ],
+            "imageScale": 0.3185595567867036
+          },
+          "sourceMouth": [
+            1374,
+            84
+          ],
+          "sourceTail": [
+            1220,
+            113
+          ],
+          "originalSpeedPreserved": true
+        },
+        "projectile": {
+          "x": 565.6082048314876,
+          "y": 137.91752267495804,
+          "vx": 14.69431438808894,
+          "vy": 12.044796580432662,
+          "life": 57,
+          "delay": 0
+        },
+        "speed": 19,
+        "spawnPoint": {
+          "x": 550.9138904433986,
+          "y": 125.87272609452538
+        },
+        "spatialOrigin": {
+          "x": 550.9138904433986,
+          "y": 125.87272609452538,
+          "origin": {
+            "forward": 200.9138904433986,
+            "height": 442.1272739054746,
+            "sourceFile": "assets/machines-pass19/gekko-mgr-right-parts-v1.png",
+            "sourceSHA256": "b117ea2a650c380f54f906ec82b01046d16cc4179f1a00e6e9269f84783c8ba6",
+            "reviewKind": "guarded-native-body-aim-source-axis",
+            "worldScaleApplied": false,
+            "facingQualification": "independent-native-facing-source",
+            "bodyAim": true,
+            "weaponAim": 50.01315896511496,
+            "evidence": "guarded-source-display-anchor",
+            "coordinateSpace": "world",
+            "sourceScaleAppliedOnce": true
+          }
+        },
+        "drawnMouth": {
+          "x": 550.9138974800292,
+          "y": 125.8727243319762
+        },
+        "drawnTail": {
+          "x": 508.28785011059233,
+          "y": 90.9233084890646
+        },
+        "originDrawError": 0.0000072540160795615014,
+        "spawnDrawError": 0.0000072540160795615014,
+        "sourceAxisVelocityAngleErrorDegrees": 0.007420167409501982,
+        "sourcePin": {
+          "machine": "pass19__gekko_mgr_right",
+          "part": "machinegun",
+          "source": {
+            "id": "mgr",
+            "file": "assets/machines-pass19/gekko-mgr-right-parts-v1.png",
+            "sha256": "b117ea2a650c380f54f906ec82b01046d16cc4179f1a00e6e9269f84783c8ba6",
+            "bytes": 1684767,
+            "width": 1405,
+            "height": 1119
+          },
+          "rect": [
+            1023,
+            70,
+            361,
+            195
+          ],
+          "pivot": [
+            64.98,
+            144.3
+          ],
+          "imageScale": 0.3185595567867036
+        },
+        "draw": {
+          "ok": true,
+          "alpha": 92685,
+          "partCalls": 10
+        },
+        "targetBox": {
+          "x": 911,
+          "y": 338,
+          "w": 78,
+          "h": 230
+        }
+      },
+      "photoFrame": 25,
+      "screenshot": "/workspace/cqc-pass19-canonical-runtime-qa/aim-implementation-v1/AIMED_pass19__gekko_mgr_1_2026-10-08T00-57-55-848Z.png",
+      "outcome": {
+        "damage": 548,
+        "maxProjectiles": 3,
+        "metrics": {
+          "start": 1,
+          "activate": 1,
+          "projectile": 3,
+          "damage": 3
+        },
+        "body": {
+          "x": 965.5698701407389,
+          "y": 338,
+          "w": 78,
+          "h": 230
+        },
+        "actorX": 350,
+        "targetX": 1004.5698701407389
+      }
+    },
+    {
+      "uid": "pass19__gekko_mgr",
+      "face": -1,
+      "first": {
+        "frame": 26,
+        "move": {
+          "startup": 24,
+          "active": 1,
+          "recovery": 33,
+          "damage": 210,
+          "cost": 18,
+          "meter": 0,
+          "reach": 100,
+          "travel": 0,
+          "level": "mid",
+          "counterplay": "Observe le départ et garde ou quitte sa portée.",
+          "name": "Rafale du Gekko",
+          "kind": "projectile",
+          "aimAtBody": true,
+          "tag": "ballistic",
+          "count": 3,
+          "interval": 5,
+          "speed": 19,
+          "life": 58,
+          "height": 315,
+          "id": "pass19__gekko_mgr::specialForward",
+          "slot": "specialForward",
+          "lore": "adaptation"
+        },
+        "physicalRig": "pass19__gekko_mgr",
+        "description": {
+          "time": 0.43333333333333335,
+          "jump": false,
+          "walk": false,
+          "crouch": false,
+          "guard": false,
+          "attack": true,
+          "animationActive": true,
+          "attackPhase": "active",
+          "phaseProgress": 0,
+          "moveSlot": "specialForward",
+          "moveKind": "projectile",
+          "moveTag": "ballistic",
+          "attackTime": 0.4,
+          "ko": false,
+          "hit": false,
+          "hitTime": 17.083333333333332,
+          "weaponAim": 54.44969589149659
+        },
+        "aim": {
+          "valid": true,
+          "weaponAim": 54.44969589149659,
+          "mouth": {
+            "x": 849.6712362620224,
+            "y": 129.6876071214756
+          },
+          "tail": {
+            "x": 884.3071774194177,
+            "y": 101.66162054667791
+          },
+          "target": {
+            "x": 450,
+            "y": 453
+          },
+          "errorDegrees": 0.007383782923541471,
+          "iterations": 2,
+          "qualification": "Bounded actual source-axis solve; never rotates180degrees to compensate a missing facing source.",
+          "velocity": {
+            "valid": true,
+            "vx": -14.771826750683214,
+            "vy": 11.949608129465997,
+            "speed": 19,
+            "target": {
+              "x": 450,
+              "y": 453
+            },
+            "distance": 514.0700346101206,
+            "arrivalFrames": 27.05631761105898
+          },
+          "frame": 26,
+          "id": "pass19__gekko_mgr",
+          "sourcePin": {
+            "machine": "pass19__gekko_mgr",
+            "part": "machinegun",
+            "source": {
+              "id": "atlas",
+              "file": "assets/machines-pass19/gekko-mgr-left-parts-v1.png",
+              "sha256": "383c4f19b2d92cd11a2892fec3aa0617eb3efa7a3e4fceb2b9f9a70b8b4f89fa",
+              "bytes": 1816402,
+              "width": 1254,
+              "height": 1254
+            },
+            "rect": [
+              904,
+              73,
+              334,
+              198
+            ],
+            "pivot": [
+              273.88,
+              146.52
+            ],
+            "imageScale": 0.344311377245509
+          },
+          "sourceMouth": [
+            918,
+            90
+          ],
+          "sourceTail": [
+            1030,
+            121
+          ],
+          "originalSpeedPreserved": true
+        },
+        "projectile": {
+          "x": 834.8994095113392,
+          "y": 141.63721525094158,
+          "vx": -14.771826750683214,
+          "vy": 11.949608129465997,
+          "life": 57,
+          "delay": 0
+        },
+        "speed": 19,
+        "spawnPoint": {
+          "x": 849.6712362620224,
+          "y": 129.6876071214756
+        },
+        "spatialOrigin": {
+          "x": 849.6712362620224,
+          "y": 129.6876071214756,
+          "origin": {
+            "forward": 200.32876373797762,
+            "height": 438.3123928785244,
+            "sourceFile": "assets/machines-pass19/gekko-mgr-left-parts-v1.png",
+            "sourceSHA256": "383c4f19b2d92cd11a2892fec3aa0617eb3efa7a3e4fceb2b9f9a70b8b4f89fa",
+            "reviewKind": "guarded-native-body-aim-source-axis",
+            "worldScaleApplied": false,
+            "facingQualification": "independent-native-facing-source",
+            "bodyAim": true,
+            "weaponAim": 54.44969589149659,
+            "evidence": "guarded-source-display-anchor",
+            "coordinateSpace": "world",
+            "sourceScaleAppliedOnce": true
+          }
+        },
+        "drawnMouth": {
+          "x": 849.6712338973382,
+          "y": 129.68758769215606
+        },
+        "drawnTail": {
+          "x": 884.3071757282237,
+          "y": 101.6616003383254
+        },
+        "originDrawError": 0.00001957268987412604,
+        "spawnDrawError": 0.00001957268987412604,
+        "sourceAxisVelocityAngleErrorDegrees": -0.007384016923768496,
+        "sourcePin": {
+          "machine": "pass19__gekko_mgr",
+          "part": "machinegun",
+          "source": {
+            "id": "atlas",
+            "file": "assets/machines-pass19/gekko-mgr-left-parts-v1.png",
+            "sha256": "383c4f19b2d92cd11a2892fec3aa0617eb3efa7a3e4fceb2b9f9a70b8b4f89fa",
+            "bytes": 1816402,
+            "width": 1254,
+            "height": 1254
+          },
+          "rect": [
+            904,
+            73,
+            334,
+            198
+          ],
+          "pivot": [
+            273.88,
+            146.52
+          ],
+          "imageScale": 0.344311377245509
+        },
+        "draw": {
+          "ok": true,
+          "alpha": 95361,
+          "partCalls": 10
+        },
+        "targetBox": {
+          "x": 411,
+          "y": 338,
+          "w": 78,
+          "h": 230
+        }
+      },
+      "photoFrame": 26,
+      "screenshot": "/workspace/cqc-pass19-canonical-runtime-qa/aim-implementation-v1/AIMED_pass19__gekko_mgr_-1_2026-10-08T00-57-55-848Z.png",
+      "outcome": {
+        "damage": 548,
+        "maxProjectiles": 3,
+        "metrics": {
+          "start": 1,
+          "activate": 1,
+          "projectile": 3,
+          "damage": 3
+        },
+        "body": {
+          "x": 356.4301298592611,
+          "y": 338,
+          "w": 78,
+          "h": 230
+        },
+        "actorX": 1050,
+        "targetX": 395.4301298592611
+      }
+    }
+  ],
+  "registration": {
+    "fighters": 373,
+    "aim": "pass19-native-body-aim-v1",
+    "pairs": {
+      "pass19__gekko_suicide_mgs4": [
+        "pass19__gekko_suicide_mgs4",
+        "pass19__gekko_suicide_mgs4_right"
+      ],
+      "pass19__gekko_missile_mgs4": [
+        "pass19__gekko_missile_mgs4",
+        "pass19__gekko_missile_mgs4_right"
+      ],
+      "pass19__gekko_mgr": [
+        "pass19__gekko_mgr",
+        "pass19__gekko_mgr_right"
+      ],
+      "pass19__dwarf_gekko_trenchcoat_mgs4": [
+        "pass19__dwarf_gekko_trenchcoat_mgs4",
+        "pass19__dwarf_gekko_trenchcoat_mgs4_right"
+      ],
+      "pass19__dwarf_gekko_humanoid_mgr": [
+        "pass19__dwarf_gekko_humanoid_mgr",
+        "pass19__dwarf_gekko_humanoid_mgr_right"
+      ]
+    }
+  },
+  "executedSources": [
+    {
+      "url": "http://127.0.0.1:8029/cqc/src/cqc-pass19-gekko-poses.js",
+      "status": 200,
+      "bytes": 3192,
+      "sha256": "aad2203738e8ddf3159e39f1541fab549a2edf7126474dd482df81d2837ffcc3"
+    },
+    {
+      "url": "http://127.0.0.1:8029/cqc/src/cqc-pass19-gekko-catalog.js",
+      "status": 200,
+      "bytes": 125241,
+      "sha256": "09ef6e407a86bc29f78b523dab18e492a0a5022d3981e963ccc9e628c7bd55cd"
+    },
+    {
+      "url": "http://127.0.0.1:8029/cqc/src/cqc-pass19-machine-source-points.js",
+      "status": 200,
+      "bytes": 6362,
+      "sha256": "6d758917cf9cb998151318a613764526b5772440f97651b522e0c91923272deb"
+    },
+    {
+      "url": "http://127.0.0.1:8029/cqc/src/cqc-pass18-machine-bridge.js",
+      "status": 200,
+      "bytes": 25489,
+      "sha256": "855abdfd2e1d924bb0906a9f0045e814777a6f95a1f9429e015dc16c389f8bb8"
+    },
+    {
+      "url": "http://127.0.0.1:8029/cqc/src/cqc-pass19-native-aim.js",
+      "status": 200,
+      "bytes": 8769,
+      "sha256": "ae5c503873d651dbb83b8a5cf5b60839b019f9cc417942c178f7acd7a196c685"
+    },
+    {
+      "url": "http://127.0.0.1:8029/cqc/src/cqc-pass19-versus-spatial.js",
+      "status": 200,
+      "bytes": 8440,
+      "sha256": "8c8451f2451cfd9ab99cd752490f71bb473f025236d89036a8d9dac5a12f99f0"
+    },
+    {
+      "url": "http://127.0.0.1:8029/cqc/src/cqc-pass19-combat-additions.js",
+      "status": 200,
+      "bytes": 13327,
+      "sha256": "f99503e3c483786d3376dbdbfd45b16cea3bdeb4666b9e036269cf18631bf90e"
+    },
+    {
+      "url": "http://127.0.0.1:8029/cqc/src/cqc-pass19-native-origins.js",
+      "status": 200,
+      "bytes": 2602,
+      "sha256": "46f0addadd7c49c4939e299c6a85d684b1f7d73b1f1986bcca1ec9e4392923d9"
+    },
+    {
+      "url": "http://127.0.0.1:8029/cqc/src/cqc-pass8-combat-engine.js",
+      "status": 200,
+      "bytes": 29621,
+      "sha256": "9068b050857d74be01c32acc0d3f8cc8dda38b5793a5ece6e0d1c3d3a58d5f50"
+    }
+  ],
+  "exceptions": [],
+  "networkFailures": [],
+  "status": "passed",
+  "cleanup": {
+    "ownedPageClosed": true,
+    "ownedBrowserCloseRequested": true,
+    "port": 9261
+  },
+  "completedAt": "2026-10-08T00:58:01.791Z"
+}

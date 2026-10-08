@@ -11,7 +11,7 @@ const navItems: Array<{ route: AppRoute; label: string; description: string }> =
   { route: 'codec', label: 'CODEC', description: 'Codec simulator' },
   { route: 'director', label: 'DIRECTOR', description: 'Branching Codec sequence editor and runtime' },
   { route: 'sideops', label: 'SIDE OPS', description: 'Side-scrolling missions' },
-  { route: 'cqc', label: 'CQC VERSUS', description: 'CQC Versus Legacy, duels et chroniques' },
+  { route: 'cqc', label: 'CQC VERSUS', description: 'CQC Versus, duels et chroniques' },
   { route: 'vr', label: 'VR MISSIONS', description: 'Virtual training missions' },
   { route: 'tapes', label: 'TAPES', description: 'Tape and briefing archive' },
   { route: 'studio', label: 'STUDIO', description: 'Conversation editor' },
