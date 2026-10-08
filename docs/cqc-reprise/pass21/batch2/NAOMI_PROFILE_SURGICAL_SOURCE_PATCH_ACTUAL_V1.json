@@ -1,0 +1,26 @@
+{
+  "schema": "cqc.pass21.naomi-unarmed-resource-fix/1",
+  "status": "source-patched-awaiting-actual-live-qa",
+  "uid": "roster50__naomi_mgs1",
+  "before": {
+    "kind": "ammo",
+    "label": "MUNITIONS",
+    "max": 8,
+    "regen": 0,
+    "reload": 58
+  },
+  "after": {
+    "kind": "energy",
+    "label": "OUTIL DE TERRAIN",
+    "max": 100,
+    "regen": 0.16,
+    "reload": 58
+  },
+  "allOther353LiteralFightersUnchanged": true,
+  "allNaomiFieldsExceptResourceUnchanged": true,
+  "gameplayMovesDamageCostsIdentityWeaponAndLoreUnchanged": true,
+  "priorSourceSHA256": "14612aa19c9eea4738d75d306c67ea9040e218101b367fda7475ffec31157589",
+  "newSourceSHA256": "6cf6682ae42a4777258fb60f063dd49bb637d7a70acfdf53cdc70c88349f952f",
+  "priorWholeHTMLRetained": "/workspace/cqc-pass21/integration/naomi/prior-unified-versus-v055.html",
+  "reason": "Unarmed medical-support moves cost10,14,16, but the inherited ammo reserve was capped8 without regeneration. Match the existing unarmed analyst reserve, keeping moves and source incarnation intact."
+}

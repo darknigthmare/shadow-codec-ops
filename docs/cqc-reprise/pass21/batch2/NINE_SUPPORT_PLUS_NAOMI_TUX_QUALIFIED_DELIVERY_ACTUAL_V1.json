@@ -1,0 +1,84 @@
+{
+  "schema": "cqc.pass21.support-resources-qualified-live-delivery/1",
+  "status": "passed-ten-live-matches-100-real-activations-two-facings",
+  "reviewedAt": "2026-10-08T12:23:24.412010+00:00",
+  "runtimeProof": {
+    "path": "/workspace/cqc-pass21/integration/support-resources/NINE_SUPPORT_PLUS_NAOMI_TUX_ACTUAL_INPUTS_V2.json",
+    "sha256": "0554f5ec24a79dc3e2f16cdcebb615ec3d1defced51f3dd20f17c96769fd99fa"
+  },
+  "activeHTMLSHA256": "2c3d5bbc870f2a92ab15bbfeb812857bf3271a35f5afe94cef3add7a35a78d12",
+  "originalUIDs": [
+    "roster50__jacobsen_mg2",
+    "roster50__nastasha_mgs1",
+    "roster50__paramedic_mgs3",
+    "roster50__codetalker_mgsv",
+    "roster50__naomi_mgs4",
+    "roster51__paramedic_delta",
+    "npc53__msf_medic_gz",
+    "npc53__paramedic_mpo",
+    "npc53__chloe_dubois_survive"
+  ],
+  "originalScenarios": 9,
+  "unpublishedNaomiMGS4NativeTuxedoScenarios": 1,
+  "realActivations": 100,
+  "testedSlots": [
+    "special",
+    "specialDown",
+    "specialForward",
+    "specialBack",
+    "utility"
+  ],
+  "costs": [
+    16,
+    10,
+    14,
+    14,
+    0
+  ],
+  "naturalEnergyInitialization": 100,
+  "naturalEnergyRegenerationPerStep": 0.16,
+  "utilityRecovery": 28,
+  "nativeActiveDraws": 100,
+  "eachSlotNativeDrawnBothDirections": true,
+  "inRangeMarkStatusesObservedBothDirections": true,
+  "forwardAndBackActualMovementObserved": true,
+  "exactStartEventCostsChecked": true,
+  "utilityActualRecoverEventsAndAmountChecked": true,
+  "naturalTenStepRegenerationChecked": true,
+  "physicalScreenshotsActuallyViewed": [
+    {
+      "path": "/workspace/cqc-pass21/integration/support-resources/NAOMI_MGS4_ORIGINAL_SUPPORT_FIVE_SLOTS_ACTUAL_V2.png",
+      "sha256": "b0305e0e8fd6547a8aba98eeac36461c911ffc857c95d4925e31b6a4b0e6b13e"
+    },
+    {
+      "path": "/workspace/cqc-pass21/integration/support-resources/NAOMI_MGS4_TUXEDO_SUPPORT_FIVE_SLOTS_ACTUAL_V2.png",
+      "sha256": "ff69edba15da0d3c087b8cb8dc75146b5cb70400f9d8e467b6ed3a2656f9aa8a"
+    }
+  ],
+  "physicalScreenshotReview": "Original and independent native formal MGS4 Naomi bodies are complete on the actual large-viewport live VS canvas. Native both-facing draws and all five real input activations are recorded; UI uses OUTIL DE TERRAIN rather than ammunition. Tuxedo native drawing retains mature MGS4 bun, scarf/gloves and low shoes. No invented gun or ammunition.",
+  "noActorReserveOrCoordinatesForced": true,
+  "unchangedWholeProfilesOutsideAuthorizedResourcePatch": true,
+  "privateNativeTuxedoDescriptorNotActivatedInPublicIndex": true,
+  "preferencesRestored": true,
+  "rawRequests": [],
+  "exceptions": [],
+  "httpErrors": [
+    {
+      "url": "http://127.0.0.1:9293/favicon.ico",
+      "status": 404
+    }
+  ],
+  "qualifications": [
+    "Melee is intentionally spaced as a whiff; this verifies affordability, startup, activation and native drawing, not landed damage.",
+    "Only local ACTIVE VS engine tested; no production or Core engine claim.",
+    "Private Naomi native Tuxedo art remains pending Root counterreview/public integration.",
+    "Favicon404 has no gameplay or native asset impact.",
+    "Initial methodology V1 failure kept: draw instrumentation initially included unrelated portrait/preparation drawings; V2 scopes only actual game canvas and keeps all exact assertions."
+  ],
+  "cleanup": {
+    "privateContextsDisposed": true,
+    "sharedChromeLeftActive": true,
+    "otherTargetsUntouched": true,
+    "applicationAndFrozenFilesWritten": false
+  }
+}

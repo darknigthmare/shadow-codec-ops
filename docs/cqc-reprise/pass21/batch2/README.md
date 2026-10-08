@@ -1,0 +1,13 @@
+# CQC — PASS21, lot2
+
+Ce lot ajoute37 costumes Rétro redessinés et16 Tuxedo, toujours pour le même personnage à la même époque. Le vestiaire PASS21 comprend désormais40 Rétro et22 Tuxedo, plus Solid Snake MGS1 Next Gen et les3 cyborgs du premier lot.
+
+Les techniques de Naomi MGS1 utilisaient une réserve plafonnée8 alors qu’elles coûtaient10 à16. Elle utilise maintenant la réserve de soutien déjà présente chez les autres analystes :100, avec régénération. Les20 activations réelles original/Tuxedo, dans les deux directions, passent ; les dégâts, techniques, identité et les353 autres fiches de base restent inchangés. Sunny Revengeance conserve une étiquette de soutien, sans fausse arme HF.
+
+Les4 anciens Next Gen sont chargés localement avec des octets identiques aux sources déjà vérifiées. Le renderer garde les actions des nouveaux costumes sur les anciennes générations de sprites, avec contrôle du propriétaire, de l’époque et des mappings d’origine.
+
+Les preuves conservent leurs qualifications et leur statut littéral. Les créations Tuxedo sont des adaptations originales, sans affirmation qu’une tenue canonique officielle existait. La reconstruction du bas du corps de certains personnages peu documentés est explicitement qualifiée. Les contrôles de sockets isolés ne certifient pas la naissance de projectiles en match. Cunningham est fondé sur la page33 de l’artbook original face/dos, en conservant la contradiction avec la fiche secondaire.
+
+671 tâches initiales de vestiaire restent hors de ce lot. Les dessins en correction ou validés ensuite seront publiés séparément. Toutes les anciennes sources, les rejets, archives et époques distinctes sont conservés. Ce dossier apporte des preuves, pas de nouvelles instructions à l’utilisateur.
+
+Le lot final ajoute53 costumes (37 Rétro,16 Tuxedo), garde séparées toutes les incarnations et conserve les tentatives rejetées. Quatre prises gauche sont redessinées séparément. Dix profils de soutien reçoivent une réserve permettant réellement leurs techniques ; leur vérification utilise de vraies entrées dans le moteur. Le gabarit commun de Golab évite une coupure dans le vestiaire. Les quatre costumes Next Gen historiques sont localisés sans modifier leurs images. Les deux accès au jeu passent le parcours sélection/réglages/stage/combat. Les rapports partiels, erreurs initiales et limites de fidélité sont conservés littéralement ; les contours de sprites indépendants peuvent présenter des écarts de raster sans déplacer l’axe du corps ou changer la stature nominale.671 travaux du programme initial restent hors de cette livraison.

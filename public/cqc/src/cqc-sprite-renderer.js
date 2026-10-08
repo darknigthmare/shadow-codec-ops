@@ -16,7 +16,7 @@
   const previewEnvelopes = new Map();
   // Both native directions of all four immutable lazy presentations are measured
   // from their pinned metadata at build time, before any remote costume is loaded.
-  const previewEnvelopeSeeds = {"core__campbell_mpo":{"metadataSHA256":"67fbd7ef9645ebed6d280462b883fae4ca2a338b003594b9adcc1be4d0bb30b9","radius":0.4034782608695653,"above":1.0538191399999999,"below":0.015,"idleFrameCount":2},"core__chris_jenner":{"metadataSHA256":"f859951ae3b29f9a68029dd88d2dcd6615057c70874532ed76b1b5d32344e3d9","radius":0.4,"above":1.05359548,"below":0.015,"idleFrameCount":2},"core__cunningham":{"metadataSHA256":"4a6c03ddfa486fd8ab4a8eafa296d828666930d86f7716596703686890a023a8","radius":0.4446568434626867,"above":1.0537279800000001,"below":0.015,"idleFrameCount":2},"core__snake_gb":{"metadataSHA256":"341aaad75b9ee2e235802f239c35af76b301b896d6d293d721c8398197b9b8b0","radius":0.4,"above":1.05353612,"below":0.015,"idleFrameCount":2}};
+  const previewEnvelopeSeeds = {"core__campbell_mpo":{"metadataSHA256":"67fbd7ef9645ebed6d280462b883fae4ca2a338b003594b9adcc1be4d0bb30b9","radius":0.4034782608695653,"above":1.0538191399999999,"below":0.015,"idleFrameCount":2},"core__chris_jenner":{"metadataSHA256":"f859951ae3b29f9a68029dd88d2dcd6615057c70874532ed76b1b5d32344e3d9","radius":0.4,"above":1.05359548,"below":0.015,"idleFrameCount":2},"core__cunningham":{"metadataSHA256":"4a6c03ddfa486fd8ab4a8eafa296d828666930d86f7716596703686890a023a8","radius":0.4446568434626867,"above":1.0537279800000001,"below":0.015,"idleFrameCount":2},"core__snake_gb":{"metadataSHA256":"341aaad75b9ee2e235802f239c35af76b301b896d6d293d721c8398197b9b8b0","radius":0.4,"above":1.05353612,"below":0.015,"idleFrameCount":2},"archive__golab":{"metadataSHA256":"2483105eede87b040674ac6bf3f6726d96168bb951ee748dd8674eb977d54742","radius":0.6048945147679325,"above":1.2561233480176213,"below":0.015,"idleFrameCount":2}};
   // Visually reviewed lower-chassis axes; source SHA and exact idle rect prevent
   // accidental reuse if this separately authored mechanical costume changes.
   const reviewedPreviewDatums = {
@@ -215,8 +215,20 @@
     const concept=entry?.costumeConcept;
     if(concept?.schema!=='cqc.costume-design/1'||concept.sourceUID!==entry.uid)return false;
     const source=entries.get(concept.sourceUID);
-    if(!source||source===entry||!nativeFile(source))return false;
-    // The approved source body owns the semantics; an atlas folder never changes its moves.
+    if(!source||source===entry)return false;
+    if(!nativeFile(source)) {
+      // A reviewed native costume may have an older original atlas directory.
+      // Only an entry owned by configureCostumes can gain these physical semantics;
+      // directional copies retain its same concept, maps and actual action objects.
+      const owned=[...(costumeEntries.get(entry.uid)?.values()||[])].find(value=>
+        value.costumeConcept===concept && value.uid===entry.uid
+        && value.pass21Revision===entry.pass21Revision
+        && /^native-(retro|nextgen|tuxedo|cyborg(?:-mgr)?)-v[1-9]\d*$/.test(value.pass21Revision||'')
+        && value.actionMap===entry.actionMap
+        && (value.actions===entry.actions||value.oppositeActions===entry.actions));
+      if(!owned)return false;
+    }
+    // The original UID still owns every move mapping and complete physical actions.
     return Object.entries(source.actionMap||{}).every(([key,value])=>entry.actionMap?.[key]===value)
       &&Object.keys(source.actions||{}).every(action=>entry.actions?.[action]?.frames?.length>0);
   }

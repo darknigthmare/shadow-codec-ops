@@ -1,0 +1,177 @@
+{
+  "schema": "cqc.pass21.corrected-frozen-two-entrypoints/1",
+  "origin": "http://127.0.0.1:4175",
+  "viewport": [
+    2560,
+    1440
+  ],
+  "startedAt": "2026-10-08T12:46:29.529Z",
+  "flows": [
+    {
+      "route": "standalone CQC",
+      "boot": {
+        "fighters": 375,
+        "lazyIndex": 66,
+        "policy": true,
+        "staticNextgen": true
+      },
+      "equipment": [
+        {
+          "slot": 1,
+          "uid": "core__leone",
+          "costume": "tuxedo",
+          "ready": true
+        },
+        {
+          "slot": 2,
+          "uid": "core__leone",
+          "costume": "tuxedo",
+          "ready": true
+        }
+      ],
+      "match": {
+        "frame": 108,
+        "phase": "fight",
+        "actors": [
+          {
+            "uid": "core__leone",
+            "costume": "tuxedo",
+            "face": 1,
+            "ready": true
+          },
+          {
+            "uid": "core__leone",
+            "costume": "tuxedo",
+            "face": -1,
+            "ready": true
+          }
+        ],
+        "draws": [
+          {
+            "file": "http://127.0.0.1:4175/cqc/assets/combat-costumes-pass21/core__leone/tuxedo/right-v1.png",
+            "rect": [
+              75,
+              2,
+              173,
+              329
+            ],
+            "smoothing": true
+          },
+          {
+            "file": "http://127.0.0.1:4175/cqc/assets/combat-costumes-pass21/core__leone/tuxedo/left-v1.png",
+            "rect": [
+              78,
+              21,
+              177,
+              320
+            ],
+            "smoothing": true
+          }
+        ]
+      },
+      "screenshot": {
+        "path": "/workspace/cqc-pass21/batches/v2/integration/STANDALONE_CQC_NATIVE_TUXEDO_ACTUAL_MATCH_V3.png",
+        "sha256": "2aa1531a6fd6d2e2d70c3d56b0ace15c790d716f384fa17cb09bb4714290eb00"
+      },
+      "preferencesRestored": true
+    },
+    {
+      "route": "Shadow Codec Ops CQC tab",
+      "boot": {
+        "fighters": 375,
+        "lazyIndex": 66,
+        "policy": true,
+        "staticNextgen": true
+      },
+      "equipment": [
+        {
+          "slot": 1,
+          "uid": "core__leone",
+          "costume": "tuxedo",
+          "ready": true
+        },
+        {
+          "slot": 2,
+          "uid": "core__leone",
+          "costume": "tuxedo",
+          "ready": true
+        }
+      ],
+      "match": {
+        "frame": 103,
+        "phase": "fight",
+        "actors": [
+          {
+            "uid": "core__leone",
+            "costume": "tuxedo",
+            "face": 1,
+            "ready": true
+          },
+          {
+            "uid": "core__leone",
+            "costume": "tuxedo",
+            "face": -1,
+            "ready": true
+          }
+        ],
+        "draws": [
+          {
+            "file": "http://127.0.0.1:4175/cqc/assets/combat-costumes-pass21/core__leone/tuxedo/right-v1.png",
+            "rect": [
+              75,
+              2,
+              173,
+              329
+            ],
+            "smoothing": true
+          },
+          {
+            "file": "http://127.0.0.1:4175/cqc/assets/combat-costumes-pass21/core__leone/tuxedo/left-v1.png",
+            "rect": [
+              78,
+              21,
+              177,
+              320
+            ],
+            "smoothing": true
+          }
+        ]
+      },
+      "screenshot": {
+        "path": "/workspace/cqc-pass21/batches/v2/integration/SHADOW_OPS_CQC_NATIVE_TUXEDO_ACTUAL_MATCH_V3.png",
+        "sha256": "2466863526dd1241e5704bfb4e104a9e8e717744472624be8c78ee12cef07eb1"
+      },
+      "preferencesRestored": true
+    }
+  ],
+  "qualification": "Actual standalone shell and Shadow Codec Ops CQC iframe; normal selection, native wardrobe equip, settings, stage confirmation and a naturally running match. No source, actor coordinates or resources assigned. Other campaign flows and all unfinished wardrobes are outside this test.",
+  "status": "passed",
+  "exceptions": [],
+  "networkFailures": [
+    {
+      "url": "http://127.0.0.1:4175/cqc/assets/combat-costumes-pass21/core__leone/tuxedo/right-v1.png",
+      "errorText": "net::ERR_ABORTED",
+      "canceled": true
+    },
+    {
+      "url": "http://127.0.0.1:4175/cqc/assets/combat-costumes-pass21/core__leone/tuxedo/left-v1.png",
+      "errorText": "net::ERR_ABORTED",
+      "canceled": true
+    },
+    {
+      "url": "http://127.0.0.1:4175/cqc/assets/combat-costumes-pass21/core__leone/tuxedo/metadata-v1.json",
+      "errorText": "net::ERR_ABORTED",
+      "canceled": true
+    }
+  ],
+  "httpErrors": [
+    {
+      "url": "http://127.0.0.1:4175/favicon.ico",
+      "status": 404
+    }
+  ],
+  "unexpectedFailures": [],
+  "assetHTTPErrors": [],
+  "finishedAt": "2026-10-08T12:46:45.085Z",
+  "helperSHA256": "fd745ea31023075226682f85f6cdb8db2ea0e083923a7a394fe91afb1d10d2c5"
+}

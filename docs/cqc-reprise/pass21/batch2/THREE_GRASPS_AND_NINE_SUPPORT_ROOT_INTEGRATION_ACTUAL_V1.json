@@ -1,0 +1,117 @@
+{
+  "schema": "cqc.pass21.three-grasps-nine-support-root-integration/1",
+  "status": "passed",
+  "reviewer": "/root",
+  "rootPhysicallyViewedThreeNewNativeGraspPNGs": true,
+  "rootPhysicallyViewedClearNaomiMGS4TuxMatchCanvas": true,
+  "graspDelivery": {
+    "path": "/workspace/cqc-pass21-retro-b/THREE_ACTIVE_LEFT_GRASP_CORRECTIONS_FINAL_DELIVERY_ACTUAL_V2.json",
+    "bytes": 5439,
+    "sha256": "42aa9de1a0c91e0767d356d9daf661059b4e54c44e4b0648399d245528c02493"
+  },
+  "graspRows": [
+    {
+      "uid": "archive__big_mama",
+      "changedPhysicalMappings": [
+        [
+          "oppositeActions",
+          "throw",
+          1
+        ]
+      ],
+      "allOther39FramesUnchanged": true,
+      "originalSourceStatureMapsPivotsUnchanged": true,
+      "addedNativeSourceBodyCalibration": 784,
+      "unchangedOriginalAttachments": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "updatedGripAttachmentIndices": [],
+      "addedGripAttachments": 1,
+      "descriptor": {
+        "path": "/workspace/cqc-pass21-retro-b/BIG_MAMA_NATIVE_DESCRIPTOR_ACTUAL_V2.json",
+        "bytes": 1733,
+        "sha256": "876ed93a6e63d0c75f8d2e0c549f8ce16afb1c284e4f463654b7b86b7a6d613b"
+      }
+    },
+    {
+      "uid": "archive__eli",
+      "changedPhysicalMappings": [
+        [
+          "oppositeActions",
+          "throw",
+          1
+        ]
+      ],
+      "allOther39FramesUnchanged": true,
+      "originalSourceStatureMapsPivotsUnchanged": true,
+      "addedNativeSourceBodyCalibration": 766,
+      "unchangedOriginalAttachments": [
+        0,
+        1,
+        2
+      ],
+      "updatedGripAttachmentIndices": [
+        3
+      ],
+      "addedGripAttachments": 0,
+      "descriptor": {
+        "path": "/workspace/cqc-pass21-retro-b/ELI_NATIVE_DESCRIPTOR_ACTUAL_V2.json",
+        "bytes": 1706,
+        "sha256": "acb36e3ae0143d2564c5da667dcc71830b8d546925320dabb66d9f031d66ff83"
+      }
+    },
+    {
+      "uid": "core__quiet",
+      "changedPhysicalMappings": [
+        [
+          "oppositeActions",
+          "throw",
+          1
+        ]
+      ],
+      "allOther39FramesUnchanged": true,
+      "originalSourceStatureMapsPivotsUnchanged": true,
+      "addedNativeSourceBodyCalibration": 750,
+      "unchangedOriginalAttachments": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "updatedGripAttachmentIndices": [],
+      "addedGripAttachments": 1,
+      "descriptor": {
+        "path": "/workspace/cqc-pass21-retro-b/QUIET_NATIVE_DESCRIPTOR_ACTUAL_V3.json",
+        "bytes": 1700,
+        "sha256": "1e1c00ab3d61489218aa6bd3ac96e01a3e34a91fee6333a097d7b40493c7b5e8"
+      }
+    }
+  ],
+  "newPaths": [
+    "public/cqc/assets/combat-costumes-pass21/archive__big_mama/retro/costume-v2.json",
+    "public/cqc/assets/combat-costumes-pass21/archive__big_mama/retro/left-grasp-v2.png",
+    "public/cqc/assets/combat-costumes-pass21/archive__eli/retro/costume-v2.json",
+    "public/cqc/assets/combat-costumes-pass21/archive__eli/retro/left-grasp-v2.png",
+    "public/cqc/assets/combat-costumes-pass21/core__quiet/retro/costume-v3.json",
+    "public/cqc/assets/combat-costumes-pass21/core__quiet/retro/left-grasp-v2.png"
+  ],
+  "allReplacedNativeSourcesAndFailedReportsRetained": true,
+  "originalResourcePatchLiteralReport": {
+    "path": "/workspace/cqc-pass21/integration/support-resources/NINE_SUPPORT_RESOURCE_SURGICAL_SOURCE_PATCH_ACTUAL_V1.json",
+    "bytes": 4259,
+    "sha256": "d8a2a1822c71a62a0413a7bea595588dec4d7bc31ff35acaa9dca446c9c55cdd"
+  },
+  "actual100InputActivations": {
+    "path": "/workspace/cqc-pass21/integration/support-resources/NINE_SUPPORT_PLUS_NAOMI_TUX_QUALIFIED_DELIVERY_ACTUAL_V1.json",
+    "bytes": 3469,
+    "sha256": "172cb381c915cc566ec6935bdc0d96135c7495aff98636e0ba52427f63636103"
+  },
+  "nineSupportFrozenPredecessorExact": "6cf6682ae42a4777258fb60f063dd49bb637d7a70acfdf53cdc70c88349f952f",
+  "nineSupportTestedSuccessorExact": "2c3d5bbc870f2a92ab15bbfeb812857bf3271a35f5afe94cef3add7a35a78d12",
+  "onlyNineLiteralCombatResourceFieldsChanged": true,
+  "allOther345LiteralFightersUnchanged": true,
+  "qualification": "Exact native opposite-facing grasp retakes. Three new source-body calibrations are required for new PNGs; all previous calibrations/idle pivots/action phase maps/world stature remain unchanged. BigMama/Quiet add real grip attachments; Eli replaces a previously mislabelled grip socket with grapple-hand. Support resource patch is only nine literal combat.resource objects and has100 actual normal input activations; spaced melee whiffs are activation proofs, not landed-damage certification."
+}
