@@ -1,0 +1,9 @@
+# PASS19 source preservation snapshot
+
+This dedicated, parentless preservation history retains the source content captured in the reviewed PASS19 inventory: original image generation output pixels, selected and rejected attempts, prompts, canonical visual references, part geometry, and QA artifacts. The application and native wardrobe branches are independent and unchanged by this publication.
+
+The immutable source snapshot contains 1,000 distinct SHA256 contents and 1,209 original pathname mappings, totaling 335,772,531 distinct bytes. Identical contents reuse a Git blob while all captured pathnames remain represented. Git mode is 100644; original file modes, ownership and physical metadata are pinned in the original inventory. Shared local PNG inodes are immutable; this publication does not claim preservation of physical inode or access-time identity.
+
+Two displaced right-side layout JSON files were recovered from the creator's preserved rejected-original copies and match the inventory's exact historical SHA256. One 480-byte approved-identity JSON was reconstructed from recorded metadata and verified to the exact historical SHA256; it is qualified as verified metadata reconstruction, rather than a contemporaneously captured original copy. One active browser diagnostic log is intentionally outside the source publication. Browser preferences, history, authentication data, original Git internals, uploaded ZIP archives and the current application checkout are excluded.
+
+Every published blob is read back from GitHub and checked against immutable local bytes, SHA256 and Git blob SHA1. Every cumulative tree and commit parent is verified; only this branch advances, without force. All local sources, originals, rejected attempts and CAS snapshots remain present. This dated snapshot does not claim to include work generated after its inventory; later append snapshots retain the earlier commit history.
