@@ -1,0 +1,143 @@
+{
+  "schema": "cqc.pass20.preview-final-delivery/2",
+  "status": "implemented-and-verified; ready-for-root-integration-freeze",
+  "sourcePaths": [
+    "/tmp/cqc-pass19-application/public/cqc/src/cqc-sprite-renderer.js",
+    "/tmp/cqc-pass19-application/public/cqc/src/cqc-pass19-machine-costume-routing.js"
+  ],
+  "pins": {
+    "/tmp/cqc-pass19-application/public/cqc/src/cqc-sprite-renderer.js": {
+      "bytes": 39431,
+      "sha256": "52bf4af55267a7fed4c01a366a75337047fa843f9ac9e5351cc0f296349908f2"
+    },
+    "/tmp/cqc-pass19-application/public/cqc/src/cqc-pass19-machine-costume-routing.js": {
+      "bytes": 5422,
+      "sha256": "210438389c1643b13bb32dfe0b55b442552bd5972ce10e916d7a8a67c809d8c1"
+    },
+    "/workspace/cqc-pass20-preview/RETRO_NATIVE_PREVIEW_STATURE_ACTUAL_V3.json": {
+      "bytes": 48679,
+      "sha256": "62320e20488c71265566bcd976f34a7e78fd20f30671f1de8420536c5561c1e9"
+    },
+    "/workspace/cqc-pass20-preview/TRIPOD_COAT_SHARED_STATURE_ACTUAL_V2.json": {
+      "bytes": 14448,
+      "sha256": "8d0a874dd85c5411e3bfd30e0d55d9a9fd19a5c07cac625efc1dcc0dd99dce4a"
+    },
+    "/workspace/cqc-pass20-preview/TRIPOD_TWO_REAL_UI_SWITCHES_ACTUAL_V2.json": {
+      "bytes": 2925,
+      "sha256": "3636485aa4c88d6e00c079f6f27bed3f03a254d967e6d706388d346398b83e13"
+    },
+    "/workspace/cqc-pass20-preview/MACHINE_PREVIEW_ROUTING_REGRESSION_ACTUAL_V3.json": {
+      "bytes": 17771,
+      "sha256": "4f4aa3689a4df88576b96ee0cdd2160c201d4eabeffe3bdea2a95df352029494"
+    },
+    "/workspace/cqc-pass20-preview/PREVIEW_FOUR_LAZY_FRAMING_ACTUAL_V1.json": {
+      "bytes": 24633,
+      "sha256": "a4c9d7f66a2ed74d8e90bd266a9945ccd5c0cab997b565ce056927ce0646af1e"
+    },
+    "/workspace/cqc-pass20-preview/FROZEN_LAZY_ENVELOPE_SOURCE_PINS_V1.json": {
+      "bytes": 878,
+      "sha256": "8d3bbab669c63a74995e1686fd1adf347856cc2ba89dbdc7295640361907b2ea"
+    },
+    "/workspace/cqc-pass20-preview/TRIPOD_ORIGINAL_RIG_ALPHA_ACTUAL_V2.json": {
+      "bytes": 1751,
+      "sha256": "7af3cc02aee3669d549f5c8fdcf6ad23206ecd4b313f042df1151e207726d707"
+    },
+    "/workspace/cqc-pass20-preview/MERYL_FOUR_NATIVE_COSTUMES_SAME_STATURE_V3.png": {
+      "bytes": 116688,
+      "sha256": "60dc96f9a2fea0b616bd7b4c6d573e6ba9253da0130ef0562f4d975316fa5bc6"
+    },
+    "/workspace/cqc-pass20-preview/DOUBLE_TRIPOD_SHARED_BODY_WITH_FEDORA_V2.png": {
+      "bytes": 87388,
+      "sha256": "affd8352bff54b672a4e82767ba7468238932dd71a7a29b84ee8d74b5db92785"
+    },
+    "/workspace/cqc-pass20-preview/TRIPOD_REAL_UI_AFTER_TWO_SWITCHES_V2.png": {
+      "bytes": 461407,
+      "sha256": "79bec5b392508d6037d6d988bc360fe24499f5acd76bb20abff4165c0843898d"
+    },
+    "/workspace/cqc-pass20-preview/OWNED_BROWSER_CACHE_CLEANUP_ACTUAL_V1.json": {
+      "bytes": 3757,
+      "sha256": "db6f1fcd0f309a542bd596d0396b77574fee101f102dbe8093a6cccfb8ce0946"
+    }
+  },
+  "behavior": {
+    "samePeriodSameUID": "Cadrage commun par statureUID et taille physique, pas par canvas ni par rectangle de la tenue courante.",
+    "nativeMetric": "Premier idle de chaque direction, alpha16 lu sans modifier le PNG; une stature corporelle relue explicite peut exclure fedora/équipement.",
+    "frameFreeze": "Enveloppe de référence figée par UID/stature au premier aperçu. Quatre tenues lazy complètes ont des enveloppes de métadonnées SHA immuables compilées, sans requête au chargement.",
+    "physicalDivergence": "Metal Gear original forms remain separately sized bodies. Double Tripod original rig and same-period cloth use one 1.55m sphere-top-to-feet datum; fedora protrudes naturally.",
+    "machineScope": "Only pass19__dwarf_gekko_humanoid_mgr with reviewed trenchcoat counterpart receives original-rig preview alignment. Other UID calls preserve historical delegation."
+  },
+  "actualBrowserTests": {
+    "finalStartupNativeRetroAndHumanDraws": 48,
+    "humanNativeFamiliesCompared": [
+      "original",
+      "cyborg",
+      "tuxedo",
+      "survive",
+      "retro-msx"
+    ],
+    "humanUIDs": [
+      "core__meryl_mgs1",
+      "core__solid",
+      "core__raiden_mgs4",
+      "core__venom"
+    ],
+    "humanNominalHeightSpreadPixels": 0,
+    "humanRasterAlphaHeightSpreadMaxPixels": 1,
+    "humanRasterFeetSpreadMaxPixels": 1,
+    "originalRigAndCoatDraws": 8,
+    "rigCoatNominalStatureAndFloorSpreadPixels": 0,
+    "rigCoatActualFeetSpreadPixels": 0,
+    "rigObservedAlphaHeightMaxErrorPixels": 0.312,
+    "fedoraExtraPixelsSmallBox": [
+      20,
+      26
+    ],
+    "fedoraExtraPixelsLargeBox": [
+      38,
+      48
+    ],
+    "realUISwitches": 2,
+    "actualUIReadyStates": [
+      "ready",
+      "ready"
+    ],
+    "UIPrefsRestored": true,
+    "lazyDraws": 8,
+    "startupRawRequests": 0,
+    "immutableByteVerifiedCorsResponses": 12,
+    "baseGeometriesByteEqualAfterFourLazyRegistrations": 8,
+    "testedMarginClippingPixels": 0
+  },
+  "vmValidation": {
+    "historicalDelegationCases": 150,
+    "callsPerOriginalAndNewRuntime": 1200,
+    "historicalCallsByteEqual": true,
+    "invalidStatureBoundsRejected": 5,
+    "alternateOriginalConceptAccepted": true,
+    "falseCanonicalFamilyOrAttestationRejected": true
+  },
+  "sourcePreservation": {
+    "allBeforeSourcesRetained": true,
+    "sourcePNGReencodedOrEdited": false,
+    "combatDrawFunctionByteIdenticalToPASS19": true,
+    "worldScaleOrSimulationSourceEdited": false,
+    "noCommitDeploymentOrSourceDeletion": true
+  },
+  "qualifiedEvidence": [
+    "Four-lazy actual test predates final first-idle-only framing; each of those immutable lazy sprites has one idle frame per facing so its compiled envelope and resulting fit are unchanged. No new raw download is needed.",
+    "Raw coat comparison V2 conditionally loads approved source module if absent; final startup UI switch V2 separately verifies the installed module and genuine dropdown behavior.",
+    "Early coat comparison V1 rejected an arbitrary ≥10px hat protrusion assertion in an excessively conservative all-idle frame (9px); the first-reference-idle framing repair restores 20–26px protrusion and actual body height equality. Raw report preserved.",
+    "Early retro browser V1 checked an unbound identifier before scripts loaded; V2 misidentified the art as Raiden MGS2. Final V3 uses exact delivered MGS4 UID and passes. Raw failed reports preserved as harness failures.",
+    "Early UI V1 attempted an inaccessible private lexical WeakMap. Final V2 reads the actual UI identity plus public selected-costume API and passes. No product error inferred.",
+    "Atomic edit V1 and previous delivery/state receipts describe earlier source revisions and remain preserved; these final source SHA pins supersede them.",
+    "Future additional lazy art must supply a compiled native first-idle envelope before the first portrait; arbitrary post-start unindexed registration is outside verified framing contract.",
+    "Preview stature records retain source evidence qualifications; no anatomical or 1:1 canon height certification is added."
+  ],
+  "ownedBrowser": {
+    "port9392Closed": true,
+    "memoryProfileUsedForFinalChecks": true,
+    "workspaceOwnedCachesCleanedBytes": 1700792,
+    "workspaceHistoryAndStorageFilesPreserved": 16
+  },
+  "completedAt": "2026-10-08T06:47:50.291195+00:00"
+}

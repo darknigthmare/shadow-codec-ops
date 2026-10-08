@@ -1,0 +1,35 @@
+{
+  "schema": "cqc.pass20.production-http.preparation/1",
+  "status": "prepared-no-production-request-executed",
+  "at": "2026-10-08T07:01:14.905216+00:00",
+  "origin": "https://shadow-codec-ops.vercel.app",
+  "expectedRuntimeManifestSHA256": "e5ae0a59aa22dfd7c69a291b38fec441319ba0a29bb808fa96f975e2f6a8a98b",
+  "expectedSnapshot": {
+    "path": "/workspace/cqc-pass20-new-roster/production-http/EXPECTED_HTTP_SOURCE_PINS_V1.json",
+    "bytes": 10145,
+    "sha256": "5b9c996cc051489aa86a4d2e1cf3bf2e8d35c0eaa4d0ff2e195dc6a6c5ca12c7"
+  },
+  "sourceIntegration": {
+    "path": "/workspace/cqc-pass20/integration/SOURCE_ART_INTEGRATION_ACTUAL_V1.json",
+    "bytes": 13428,
+    "sha256": "3a48302c0a7ceb6164bf17160753ed3ec5696eb637158dcbd8919aec4fe400c9"
+  },
+  "scope": {
+    "publicRuntimeFiles": 46,
+    "nativePNGFiles": 26,
+    "textFilesIncludingManifest": 20,
+    "totalExpectedBytes": 57410692
+  },
+  "localFrozenSourcePinsVerified": 46,
+  "tls": "ssl.create_default_context; certificate chain and hostname validation required. No TLS bypass.",
+  "executionGate": "Execute only after Root sends READY for the new PASS20 deployment; --deployment-ready must identify that signal.",
+  "routePlan": [
+    "/",
+    "/?module=cqc",
+    "/cqc/index.html",
+    "/cqc/modules/unified-versus-v055.html",
+    "/cqc/modules/core-v032.html"
+  ],
+  "iframePlan": "Parse real canonical root HTML module script and its lazily imported CqcLauncher chunk; verify iframe marker and cqc/index.html URL. Verify actual CQC shell iframe and unified/core module mappings, and all eight PASS20 script links in fetched Versus HTML.",
+  "qualification": "This is a prepared local checker, not a production result. HTTP verifies served bytes and static route/import contracts; browser gameplay is checked separately."
+}

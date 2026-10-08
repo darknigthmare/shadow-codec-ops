@@ -1,0 +1,37 @@
+import assert from 'node:assert/strict';
+import {writeFile} from 'node:fs/promises';
+import {connect} from './cdp-9276.mjs';
+const browser=await connect(),report={schema:'cqc.pass20.native-mechanical-browser/1',startedAt:new Date().toISOString(),routes:[],matches:[],qualification:'Actual local game scripts, decoded PNGs and renderer. A source module can be loaded explicitly if final HTML integration has not yet landed; that is recorded and never claimed as deployed routing.'};
+let page;
+const wait=async expression=>{for(let i=0;i<240;i++){if(await page.evaluate(expression))return;await new Promise(r=>setTimeout(r,100));}throw Error('Timeout '+expression);};
+try{
+ for(const flow of ['versus','core']){
+  page=await browser.page('http://127.0.0.1:8029/cqc/modules/'+(flow==='versus'?'unified-versus-v055.html':'core-v032.html'));
+  await page.send('Emulation.setDeviceMetricsOverride',{width:1800,height:1100,deviceScaleFactor:1,mobile:false});
+  await wait(flow==='versus'?'!!window.__CQC055Versus':'!!window.CQC');
+  const saved=await page.evaluate(`Object.fromEntries(Object.keys(localStorage).map(k=>[k,localStorage.getItem(k)]))`);
+  const injected=await page.evaluate(`(async()=>{const loaded=[];for(const[global,file]of [['CQC_PASS20_MECHANICAL_COSTUMES','cqc-pass20-mechanical-costumes.js'],['CQC_PASS20_COSTUME_NATIVE_ORIGINS','cqc-pass20-costume-native-origins.js']])if(!window[global]){await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src='../src/'+file;s.onload=resolve;s.onerror=()=>reject(Error(file));document.head.append(s);});loaded.push(file);}CQC_PASS20_MECHANICAL_COSTUMES.install();CQC_PASS20_COSTUME_NATIVE_ORIGINS.install();return loaded;})()`);
+  const actual=await page.evaluate(`(async()=>{const cases=[{uid:'core__solid',costume:'metalgear'},{uid:'core__ocelot_mgs1',costume:'metalgear'},...(window.__CQC055Versus?[{uid:'pass19__dwarf_gekko_humanoid_mgr',costume:'trenchcoat'}]:[])],api=CQC_COMBAT_SPRITES,rows=[];for(const fighter of cases){if(!await api.whenReady(fighter.uid,fighter))throw Error('Native decode not ready '+fighter.uid);for(const face of [1,-1])for(const action of ['idle','shoot','ko']){const canvas=document.createElement('canvas');canvas.width=500;canvas.height=500;const c=canvas.getContext('2d',{willReadFrequently:true}),calls=[],draw=c.drawImage.bind(c);c.drawImage=(...a)=>{calls.push(a[0].src);return draw(...a)};const pose=action==='idle'?{time:0,actionTime:0}:action==='ko'?{ko:true,time:0,actionTime:0}:{moveSlot:'special',moveKind:'projectile',moveTag:'ballistic',attack:true,animationActive:true,attackPhase:'active',phaseProgress:0,actionTime:0,time:0};if(!api.draw(c,fighter,250,450,face,.5,pose))throw Error('Native draw failed '+fighter.uid+action);const d=c.getImageData(0,0,500,500).data;let alpha=0,maxAlpha=0;for(let i=3;i<d.length;i+=4){maxAlpha=Math.max(maxAlpha,d[i]);if(d[i]>12)alpha++;}const entry=api.getEntry(fighter.uid,fighter),source=api.selectFrame(face===entry.facing?entry:{...entry,actions:entry.oppositeActions},pose);rows.push({fighter,face,action,alpha,maxAlpha,calls,sourceFile:source.frame.file,sourceRect:source.frame.rect,selectedAction:source.action,actualStature:CQC_PASS19_WORLD_SCALE.height(fighter).metres});}}return{result:CQC_PASS20_MECHANICAL_COSTUMES.result,rows,coreOwnCount:window.CQC?.characters?.length||null};})()`);
+  assert.equal(actual.rows.length,flow==='versus'?18:12);
+  assert(actual.rows.every(r=>r.alpha>100&&r.calls.length===1&&r.calls[0].includes('/combat-costumes-pass20/')));
+  const shot='/workspace/cqc-pass20-mecha/NATIVE_MECHANICAL_CANVAS_'+flow.toUpperCase()+'_V1.png';
+  await page.evaluate(`(async()=>{const fighters=[{uid:'core__solid',costume:'metalgear'},{uid:'core__ocelot_mgs1',costume:'metalgear'},...(window.__CQC055Versus?[{uid:'pass19__dwarf_gekko_humanoid_mgr',costume:'trenchcoat'}]:[])];const canvas=document.createElement('canvas');canvas.id='native-inspection-pass20';canvas.width=1800;canvas.height=960;canvas.style.cssText='position:fixed;inset:0;width:1800px;height:960px;z-index:2147483647;background:#102021';const c=canvas.getContext('2d');c.fillStyle='#102021';c.fillRect(0,0,1800,960);let col=0;for(const f of fighters)for(const face of [1,-1]){const x=col*300;c.fillStyle='#d4eadf';c.font='15px system-ui';c.fillText(f.uid.replace(/.*__/,'')+' '+face,x+10,24);c.fillText(f.costume,x+10,48);for(let row=0;row<2;row++){const pose=row?{moveSlot:'special',moveKind:'projectile',moveTag:'ballistic',attack:true,animationActive:true,attackPhase:'active',phaseProgress:0,actionTime:0,time:0}:{time:0,actionTime:0};if(!CQC_COMBAT_SPRITES.drawFitted(c,f,{x:x+10,y:70+row*430,width:280,height:400,padding:18},face,pose))throw Error('Sheet draw failed');}col++;}document.body.append(canvas);return true;})()`);
+  await page.screenshot(shot);await page.evaluate(`document.getElementById('native-inspection-pass20').remove()`);
+  report.routes.push({flow,injectedSourceScripts:injected,actual,screenshot:shot});
+  if(flow==='versus'){
+   for(const [p1,p2,costumes]of [['core__solid','core__ocelot_mgs1',['metalgear','metalgear']],['pass19__dwarf_gekko_humanoid_mgr','core__solid',['trenchcoat','metalgear']]]){
+    await page.evaluate(`__CQC055Versus.startExternal(${JSON.stringify({p1,p2,costumes,mode:'local',rounds:1,seconds:99,finishers:'off'})})`);
+    await wait(`!!__CQC055Versus.getState()&&__CQC055Versus.getState().frame>110`);
+    const match=await page.evaluate(`(()=>{const s=__CQC055Versus.getState();return{frame:s.frame,phase:s.phase,dojo:__CQC055Versus.dojo.on,a:{uid:s.a.f.uid,costume:s.a.f.costume,ready:CQC_PASS19_COSTUMES.nativeVariant(s.a.f)&&CQC_COMBAT_SPRITES.status(s.a.f.uid,s.a.f).ready},b:{uid:s.b.f.uid,costume:s.b.f.costume,ready:CQC_PASS19_COSTUMES.nativeVariant(s.b.f)&&CQC_COMBAT_SPRITES.status(s.b.f.uid,s.b.f).ready},paused:__CQC055Versus.diagnostics().paused};})()`);
+    assert.equal(match.a.uid,p1);assert.equal(match.b.uid,p2);assert.deepEqual([match.a.costume,match.b.costume],costumes);assert.equal(match.a.ready,true);assert.equal(match.b.ready,true);assert.equal(match.dojo,false);assert.equal(match.phase,'fight');report.matches.push(match);
+    await page.evaluate(`__CQC055Versus.abort()`);
+   }
+  }
+  await page.evaluate(`(()=>{const saved=${JSON.stringify(saved)};for(const k of Object.keys(localStorage))if(!(k in saved))localStorage.removeItem(k);for(const[k,v]of Object.entries(saved))localStorage.setItem(k,v);return true;})()`);
+  await page.close();page=null;
+ }
+ report.exceptions=browser.events.filter(e=>e.method==='Runtime.exceptionThrown').map(e=>e.params.exceptionDetails);
+ report.failures=browser.events.filter(e=>e.method==='Network.loadingFailed').map(e=>e.params);
+ assert.equal(report.exceptions.length,0);assert.equal(report.failures.length,0);report.status='passed';
+}catch(error){report.status='failed';report.error=error.stack;report.exceptions=browser.events.filter(e=>e.method==='Runtime.exceptionThrown').map(e=>e.params.exceptionDetails);process.exitCode=1;}
+finally{if(page)await page.close();browser.close();report.finishedAt=new Date().toISOString();const path='/workspace/cqc-pass20-mecha/MECHANICAL_NATIVE_BROWSER_ACTUAL_V1.json';await writeFile(path,JSON.stringify(report,null,2),{flag:'wx'});console.log(JSON.stringify({status:report.status,path,error:report.error,routes:report.routes.length,matches:report.matches.length,exceptions:report.exceptions?.length}));}

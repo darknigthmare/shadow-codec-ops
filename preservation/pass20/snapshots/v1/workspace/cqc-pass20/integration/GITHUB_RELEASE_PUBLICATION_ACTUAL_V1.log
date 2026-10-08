@@ -1,0 +1,17 @@
+{"stage": "preflight-passed", "changes": 58, "uniqueBlobs": 58, "execute": true}
+{"stage": "verified-blob", "path": "docs/cqc-reprise/pass20/APPLICATION_CHECKS_ACTUAL_V1.json", "bytes": 1698}
+{"stage": "verified-blob", "path": "docs/cqc-reprise/pass20/FINAL_TWO_ROUTES_ACTUAL_UI_V2.json", "bytes": 58303}
+{"stage": "verified-blob", "path": "docs/cqc-reprise/pass20/Mechanical-qualified-evidence.json", "bytes": 4182}
+{"stage": "verified-blob", "path": "docs/cqc-reprise/pass20/NewUG-qualified-evidence.json", "bytes": 9086}
+Traceback (most recent call last):
+  File "/workspace/cqc-pass20/integration/publish-reviewed-release-v1.py", line 62, in <module>
+    response = t.api('POST','git/blobs',{'content':base64.b64encode(raw).decode(),'encoding':'base64'})
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/cqc-pass9-publication-preparation/publish_verified_shadow_cqc_pass9.py", line 87, in api
+    raise RuntimeError('GitHub API ' + method + ' ' + path + ': ' + error)
+RuntimeError: GitHub API POST git/blobs: gh: Bad credentials (HTTP 401)
+{
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}

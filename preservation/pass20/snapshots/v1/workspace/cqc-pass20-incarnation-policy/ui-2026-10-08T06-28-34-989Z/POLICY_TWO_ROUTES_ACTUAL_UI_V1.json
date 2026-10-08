@@ -1,0 +1,1827 @@
+{
+  "schema": "cqc.pass20.incarnation-policy-actual-ui/1",
+  "startedAt": "2026-10-08T06:28:35.024Z",
+  "origin": "http://127.0.0.1:8029",
+  "qualification": "Local source application only. Two routes: standalone CQC shell and direct versus module. Real UI handlers drive selections, costumes, match settings, stage selection and pause. Read-only diagnostics and a transparent offscreen draw measure native preview geometry. Public replay API intentionally tests an old invalid costume fixture; no engine/state manipulation or synthetic simulation stepping. Headless fullscreen API is outside this check.",
+  "checks": [
+    {
+      "flow": "direct-module",
+      "name": "1 Bootstrap native body catalog and zero dormant RAW requests",
+      "actual": {
+        "fighters": 375,
+        "bodies": 354,
+        "policy": "pass20-incarnation-costumes/1",
+        "raw": [],
+        "index": {
+          "indexEntries": 4,
+          "loadedMetadata": 0,
+          "ownedMetadata": 0,
+          "metadataBytes": 0,
+          "assetLoads": 0,
+          "verifiedAssets": 0,
+          "protected": [],
+          "pendingSlots": [
+            null,
+            null
+          ]
+        }
+      }
+    },
+    {
+      "flow": "direct-module",
+      "name": "2 Source mappings retained; 358 other incarnations hidden and 4 same-period costumes available",
+      "actual": {
+        "preserved": 362,
+        "excluded": 358,
+        "retained": [
+          {
+            "uid": "core__snake_mgs2",
+            "id": "appearance-roster51-pliskin-mgs2",
+            "selectable": true
+          },
+          {
+            "uid": "roster51__pliskin_mgs2",
+            "id": "appearance-core-snake-mgs2",
+            "selectable": true
+          },
+          {
+            "uid": "core__eva_mgs3",
+            "id": "appearance-npc53-tatyana-mgs3",
+            "selectable": true
+          },
+          {
+            "uid": "npc53__tatyana_mgs3",
+            "id": "appearance-core-eva-mgs3",
+            "selectable": true
+          }
+        ],
+        "forbiddenSelectable": [],
+        "missingDistinctBodies": []
+      }
+    },
+    {
+      "flow": "direct-module",
+      "name": "3 Old invalid preferences resolve to original; legitimate late-registered preference restored, store untouched",
+      "actual": {
+        "meryl": "original",
+        "snake": "original",
+        "samePeriod": "appearance-roster51-pliskin-mgs2",
+        "saved": "{\"schema\":\"cqc.slot-costumes/1\",\"slots\":[{\"core__meryl_mgs1\":\"appearance-core-meryl-mgs4\",\"core__solid\":\"retro\",\"core__snake_mgs2\":\"appearance-roster51-pliskin-mgs2\"},{}]}"
+      }
+    },
+    {
+      "flow": "direct-module",
+      "name": "4 Meryl MGS1 retains her own human/cyborg/formal/native MSX outfits; no MGS4 or remake costume",
+      "actual": {
+        "uid": "core__meryl_mgs1",
+        "options": [
+          {
+            "id": "original",
+            "label": "Tenue d’origine"
+          },
+          {
+            "id": "cyborg",
+            "label": "Corps cybernétique"
+          },
+          {
+            "id": "tuxedo",
+            "label": "Gala — Meryl"
+          },
+          {
+            "id": "retro-msx",
+            "label": "Archives · MSX"
+          }
+        ]
+      }
+    },
+    {
+      "flow": "direct-module",
+      "name": "5 Actual native preview has a common stature and foot baseline across same-sized Meryl costumes",
+      "heightRange": 1,
+      "floorRange": 1,
+      "actual": [
+        {
+          "uid": "core__meryl_mgs1",
+          "costume": "original",
+          "drawn": true,
+          "artState": "ready",
+          "previewGeometry": {
+            "uid": "core__meryl_mgs1",
+            "costume": "original",
+            "face": -1,
+            "statureUID": "core__meryl_mgs1",
+            "staturePixels": 211.53846153846155,
+            "statureEvidence": "official-primary-directly-observed",
+            "measurement": "native-alpha-idle",
+            "x": 134,
+            "y": 1075.6268839926997,
+            "floor": 1076.354217745808,
+            "scale": 1.2043293772399108,
+            "standingHeight": 260.38548361279754,
+            "envelope": {
+              "radius": 0.45801324384635766,
+              "above": 1.1151840865805893,
+              "below": 0.015
+            },
+            "previewOnly": true
+          },
+          "alpha": {
+            "count": 19487,
+            "minY": 816,
+            "maxY": 1075,
+            "minX": 49,
+            "maxX": 212,
+            "height": 260
+          },
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 268,
+            "height": 1095,
+            "padding": 14.74
+          }
+        },
+        {
+          "uid": "core__meryl_mgs1",
+          "costume": "cyborg",
+          "drawn": true,
+          "artState": "ready",
+          "previewGeometry": {
+            "uid": "core__meryl_mgs1",
+            "costume": "cyborg",
+            "face": -1,
+            "statureUID": "core__meryl_mgs1",
+            "staturePixels": 211.53846153846155,
+            "statureEvidence": "official-primary-directly-observed",
+            "measurement": "native-alpha-idle",
+            "x": 134,
+            "y": 1075.5906245249173,
+            "floor": 1076.354217745808,
+            "scale": 1.1798381698295055,
+            "standingHeight": 260.38548361279754,
+            "envelope": {
+              "radius": 0.45801324384635766,
+              "above": 1.1151840865805893,
+              "below": 0.015
+            },
+            "previewOnly": true
+          },
+          "alpha": {
+            "count": 23624,
+            "minY": 816,
+            "maxY": 1076,
+            "minX": 40,
+            "maxX": 220,
+            "height": 261
+          },
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 268,
+            "height": 1095,
+            "padding": 14.74
+          }
+        },
+        {
+          "uid": "core__meryl_mgs1",
+          "costume": "tuxedo",
+          "drawn": true,
+          "artState": "ready",
+          "previewGeometry": {
+            "uid": "core__meryl_mgs1",
+            "costume": "tuxedo",
+            "face": -1,
+            "statureUID": "core__meryl_mgs1",
+            "staturePixels": 211.53846153846155,
+            "statureEvidence": "official-primary-directly-observed",
+            "measurement": "native-alpha-idle",
+            "x": 134,
+            "y": 1075.644721402127,
+            "floor": 1076.354217745808,
+            "scale": 1.1747954143103216,
+            "standingHeight": 260.38548361279754,
+            "envelope": {
+              "radius": 0.45801324384635766,
+              "above": 1.1151840865805893,
+              "below": 0.015
+            },
+            "previewOnly": true
+          },
+          "alpha": {
+            "count": 20643,
+            "minY": 816,
+            "maxY": 1075,
+            "minX": 46,
+            "maxX": 214,
+            "height": 260
+          },
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 268,
+            "height": 1095,
+            "padding": 14.74
+          }
+        },
+        {
+          "uid": "core__meryl_mgs1",
+          "costume": "retro-msx",
+          "drawn": true,
+          "artState": "ready",
+          "previewGeometry": {
+            "uid": "core__meryl_mgs1",
+            "costume": "retro-msx",
+            "face": -1,
+            "statureUID": "core__meryl_mgs1",
+            "staturePixels": 211.53846153846155,
+            "statureEvidence": "official-primary-directly-observed",
+            "measurement": "native-alpha-idle",
+            "x": 134,
+            "y": 1076.354217745808,
+            "floor": 1076.354217745808,
+            "scale": 1.211095272617663,
+            "standingHeight": 260.38548361279754,
+            "envelope": {
+              "radius": 0.45801324384635766,
+              "above": 1.1151840865805893,
+              "below": 0.015
+            },
+            "previewOnly": true
+          },
+          "alpha": {
+            "count": 24203,
+            "minY": 816,
+            "maxY": 1075,
+            "minX": 38,
+            "maxX": 218,
+            "height": 260
+          },
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 268,
+            "height": 1095,
+            "padding": 14.74
+          }
+        }
+      ]
+    },
+    {
+      "flow": "direct-module",
+      "name": "6 Attested Pliskin and Tatyana disguises use the same-period selectors and native previews",
+      "actual": [
+        {
+          "uid": "core__snake_mgs2",
+          "options": [
+            "original",
+            "appearance-roster51-pliskin-mgs2"
+          ],
+          "selected": [
+            {
+              "id": "original",
+              "observed": {
+                "uid": "core__snake_mgs2",
+                "costume": "original",
+                "drawn": true,
+                "artState": "ready",
+                "previewGeometry": {
+                  "uid": "core__snake_mgs2",
+                  "costume": "original",
+                  "face": -1,
+                  "statureUID": "core__snake_mgs2",
+                  "staturePixels": 230,
+                  "statureEvidence": "estimated-from-preserved-display-framing",
+                  "measurement": "native-alpha-idle",
+                  "x": 134,
+                  "y": 1054.78775,
+                  "floor": 1054.78775,
+                  "scale": 1.3052443778110943,
+                  "standingHeight": 298.15,
+                  "envelope": {
+                    "radius": 0.4,
+                    "above": 1.0563698630136986,
+                    "below": 0.015
+                  },
+                  "previewOnly": true
+                },
+                "alpha": {
+                  "count": 26393,
+                  "minY": 757,
+                  "maxY": 1054,
+                  "minX": 60,
+                  "maxX": 207,
+                  "height": 298
+                },
+                "box": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 268,
+                  "height": 1074,
+                  "padding": 14.74
+                }
+              }
+            },
+            {
+              "id": "appearance-roster51-pliskin-mgs2",
+              "observed": {
+                "uid": "core__snake_mgs2",
+                "costume": "appearance-roster51-pliskin-mgs2",
+                "drawn": true,
+                "artState": "ready",
+                "previewGeometry": {
+                  "uid": "core__snake_mgs2",
+                  "costume": "appearance-roster51-pliskin-mgs2",
+                  "face": -1,
+                  "statureUID": "core__snake_mgs2",
+                  "staturePixels": 220,
+                  "statureEvidence": "estimated-from-preserved-display-framing",
+                  "measurement": "native-alpha-idle",
+                  "x": 134,
+                  "y": 1054.8473053851058,
+                  "floor": 1054.8474119099808,
+                  "scale": 1.3520464899780034,
+                  "standingHeight": 294.172539334608,
+                  "envelope": {
+                    "radius": 0.4054083371267606,
+                    "above": 1.0541594,
+                    "below": 0.015
+                  },
+                  "previewOnly": true
+                },
+                "alpha": {
+                  "count": 22738,
+                  "minY": 760,
+                  "maxY": 1054,
+                  "minX": 73,
+                  "maxX": 191,
+                  "height": 295
+                },
+                "box": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 268,
+                  "height": 1074,
+                  "padding": 14.74
+                }
+              }
+            }
+          ]
+        },
+        {
+          "uid": "core__eva_mgs3",
+          "options": [
+            "original",
+            "appearance-npc53-tatyana-mgs3"
+          ],
+          "selected": [
+            {
+              "id": "original",
+              "observed": {
+                "uid": "core__eva_mgs3",
+                "costume": "original",
+                "drawn": true,
+                "artState": "ready",
+                "previewGeometry": {
+                  "uid": "core__eva_mgs3",
+                  "costume": "original",
+                  "face": -1,
+                  "statureUID": "core__eva_mgs3",
+                  "staturePixels": 215.69065934065935,
+                  "statureEvidence": "community-reference-body-profile",
+                  "measurement": "native-alpha-idle",
+                  "x": 134,
+                  "y": 1075.78775,
+                  "floor": 1075.78775,
+                  "scale": 1.3174205746083885,
+                  "standingHeight": 298.15,
+                  "envelope": {
+                    "radius": 0.4,
+                    "above": 1.0762169680111264,
+                    "below": 0.015
+                  },
+                  "previewOnly": true
+                },
+                "alpha": {
+                  "count": 17398,
+                  "minY": 778,
+                  "maxY": 1075,
+                  "minX": 75,
+                  "maxX": 179,
+                  "height": 298
+                },
+                "box": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 268,
+                  "height": 1095,
+                  "padding": 14.74
+                }
+              }
+            },
+            {
+              "id": "appearance-npc53-tatyana-mgs3",
+              "observed": {
+                "uid": "core__eva_mgs3",
+                "costume": "appearance-npc53-tatyana-mgs3",
+                "drawn": true,
+                "artState": "ready",
+                "previewGeometry": {
+                  "uid": "core__eva_mgs3",
+                  "costume": "appearance-npc53-tatyana-mgs3",
+                  "face": -1,
+                  "statureUID": "core__eva_mgs3",
+                  "staturePixels": 215.69065934065935,
+                  "statureEvidence": "community-reference-body-profile",
+                  "measurement": "native-alpha-idle",
+                  "x": 134,
+                  "y": 1075.7878226371104,
+                  "floor": 1075.78775,
+                  "scale": 1.5152184434922487,
+                  "standingHeight": 298.15,
+                  "envelope": {
+                    "radius": 0.4,
+                    "above": 1.0762169680111264,
+                    "below": 0.015
+                  },
+                  "previewOnly": true
+                },
+                "alpha": {
+                  "count": 19828,
+                  "minY": 777,
+                  "maxY": 1075,
+                  "minX": 36,
+                  "maxX": 149,
+                  "height": 299
+                },
+                "box": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 268,
+                  "height": 1095,
+                  "padding": 14.74
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "flow": "direct-module",
+      "name": "7 Repeated normal costume changes and large viewport resize keep native images visible",
+      "actual": [
+        {
+          "id": "original",
+          "artState": "ready",
+          "alphaHeight": 260
+        },
+        {
+          "id": "cyborg",
+          "artState": "ready",
+          "alphaHeight": 261
+        },
+        {
+          "id": "tuxedo",
+          "artState": "ready",
+          "alphaHeight": 260
+        },
+        {
+          "id": "retro-msx",
+          "artState": "ready",
+          "alphaHeight": 260
+        },
+        {
+          "id": "original",
+          "artState": "ready",
+          "alphaHeight": 260
+        },
+        {
+          "id": "cyborg",
+          "artState": "ready",
+          "alphaHeight": 261
+        },
+        {
+          "id": "tuxedo",
+          "artState": "ready",
+          "alphaHeight": 260
+        },
+        {
+          "id": "retro-msx",
+          "artState": "ready",
+          "alphaHeight": 260
+        },
+        {
+          "id": "original",
+          "artState": "ready",
+          "alphaHeight": 260
+        }
+      ],
+      "afterResize": {
+        "uid": "core__meryl_mgs1",
+        "costume": "original",
+        "drawn": true,
+        "artState": "ready",
+        "previewGeometry": {
+          "uid": "core__meryl_mgs1",
+          "costume": "original",
+          "face": -1,
+          "statureUID": "core__meryl_mgs1",
+          "staturePixels": 211.53846153846155,
+          "statureEvidence": "official-primary-directly-observed",
+          "measurement": "native-alpha-idle",
+          "x": 134,
+          "y": 1075.6268839926997,
+          "floor": 1076.354217745808,
+          "scale": 1.2043293772399108,
+          "standingHeight": 260.38548361279754,
+          "envelope": {
+            "radius": 0.45801324384635766,
+            "above": 1.1151840865805893,
+            "below": 0.015
+          },
+          "previewOnly": true
+        },
+        "alpha": {
+          "count": 19487,
+          "minY": 816,
+          "maxY": 1075,
+          "minX": 49,
+          "maxX": 212,
+          "height": 260
+        },
+        "box": {
+          "x": 0,
+          "y": 0,
+          "width": 268,
+          "height": 1095,
+          "padding": 14.74
+        }
+      }
+    },
+    {
+      "flow": "direct-module",
+      "name": "8 Real UI and stage confirmation start a ready native retro match",
+      "actual": {
+        "frame": 101,
+        "uids": [
+          "core__meryl_mgs1",
+          "core__solid"
+        ],
+        "costumes": [
+          "retro-msx",
+          "cyborg"
+        ],
+        "statuses": [
+          {
+            "uid": "core__meryl_mgs1",
+            "renderer": "png",
+            "coverage": "action-frames",
+            "actions": [
+              "idle",
+              "walk",
+              "guard",
+              "crouch",
+              "punch",
+              "heavy",
+              "low",
+              "jump",
+              "shoot",
+              "reload",
+              "hit",
+              "recover",
+              "ko",
+              "throw",
+              "deploy",
+              "attack",
+              "blade",
+              "roll",
+              "charge",
+              "optic"
+            ],
+            "oppositeActions": [
+              "idle",
+              "walk",
+              "guard",
+              "crouch",
+              "punch",
+              "heavy",
+              "low",
+              "jump",
+              "shoot",
+              "reload",
+              "hit",
+              "recover",
+              "ko",
+              "throw",
+              "deploy",
+              "attack",
+              "blade",
+              "roll",
+              "charge",
+              "optic"
+            ],
+            "states": [
+              "ready"
+            ],
+            "ready": true,
+            "limits": [
+              "New native low-resolution sprite drawings in a MSX2-inspired style. No image downsampling, pixel-removal filter, procedural pixelArt shader or reuse of an original actor PNG is involved.",
+              "This style reinterpretation is original art, not a costume shipped by the publisher and not a 1:1 extraction of an original MSX game sprite. The character stays in the exact original listed incarnation.",
+              "Square pixel clusters and reduced material shading are visible in the actual drawings. Generator output retains antialias fringe and more than sixteen native RGB colors; actual MSX palette/hardware restrictions are not certified.",
+              "Sixteen physical poses per anatomical facing, all inspected. Native two-facing PNG bytes are immutable. Read-only alpha16 vector contours exclude neighboring figures without editing source pixels.",
+              "Limited combat keys share sixteen authored body poses; grenade, grappling and exceptional move equipment keyframes are not all separately drawn. Engine move timing, damage, projectiles, identity and scale are unchanged.",
+              "Source standing height is measured from the two native idle figures per direction and kept fixed across poses. Feet/pelvis pivots are measured per figure; this is not original animation motion capture.",
+              "Right cell10 contains an authored muzzle flash and is retained physically but deliberately unused in runtime; its shooting action repeats the clean aim cell9 to avoid doubling gameplay VFX."
+            ]
+          },
+          {
+            "uid": "core__solid",
+            "renderer": "png",
+            "coverage": "action-frames",
+            "actions": [
+              "idle",
+              "walk",
+              "guard",
+              "crouch",
+              "low",
+              "punch",
+              "hit",
+              "ko",
+              "throw",
+              "deploy",
+              "shoot",
+              "reload",
+              "attack"
+            ],
+            "oppositeActions": [
+              "idle",
+              "walk",
+              "guard",
+              "crouch",
+              "low",
+              "punch",
+              "hit",
+              "ko",
+              "throw",
+              "deploy",
+              "shoot",
+              "reload",
+              "attack"
+            ],
+            "states": [
+              "ready"
+            ],
+            "ready": true,
+            "limits": [
+              "Original designed costume, not an attested released Snake cyborg appearance.",
+              "Independent 2.5D redraw inherits authored gameplay pose adaptation; no motion-capture or exact original-game animation claim.",
+              "Small highlights, armour seam/cable placement and occluded parts vary between independently rendered poses.",
+              "Body source fitting and physical weapon-source geometry require the separately recorded actual Canvas proof."
+            ]
+          }
+        ],
+        "dojo": false
+      }
+    },
+    {
+      "flow": "direct-module",
+      "name": "9 Public replay fixture with retired costume IDs starts using original bodies and preserves both private selections",
+      "actual": {
+        "frame": 0,
+        "uids": [
+          "core__meryl_mgs1",
+          "core__solid"
+        ],
+        "costumes": [
+          "original",
+          "original"
+        ],
+        "privateChoices": "{\"schema\":\"cqc.slot-costumes/1\",\"slots\":[{\"core__meryl_mgs1\":\"retro-msx\",\"core__solid\":\"original\",\"core__snake_mgs2\":\"appearance-roster51-pliskin-mgs2\",\"core__eva_mgs3\":\"appearance-npc53-tatyana-mgs3\"},{\"core__solid\":\"cyborg\"}]}",
+        "loading": null
+      }
+    },
+    {
+      "flow": "standalone-shell",
+      "name": "1 Bootstrap native body catalog and zero dormant RAW requests",
+      "actual": {
+        "fighters": 375,
+        "bodies": 354,
+        "policy": "pass20-incarnation-costumes/1",
+        "raw": [],
+        "index": {
+          "indexEntries": 4,
+          "loadedMetadata": 0,
+          "ownedMetadata": 0,
+          "metadataBytes": 0,
+          "assetLoads": 0,
+          "verifiedAssets": 0,
+          "protected": [],
+          "pendingSlots": [
+            null,
+            null
+          ]
+        }
+      }
+    },
+    {
+      "flow": "standalone-shell",
+      "name": "2 Source mappings retained; 358 other incarnations hidden and 4 same-period costumes available",
+      "actual": {
+        "preserved": 362,
+        "excluded": 358,
+        "retained": [
+          {
+            "uid": "core__snake_mgs2",
+            "id": "appearance-roster51-pliskin-mgs2",
+            "selectable": true
+          },
+          {
+            "uid": "roster51__pliskin_mgs2",
+            "id": "appearance-core-snake-mgs2",
+            "selectable": true
+          },
+          {
+            "uid": "core__eva_mgs3",
+            "id": "appearance-npc53-tatyana-mgs3",
+            "selectable": true
+          },
+          {
+            "uid": "npc53__tatyana_mgs3",
+            "id": "appearance-core-eva-mgs3",
+            "selectable": true
+          }
+        ],
+        "forbiddenSelectable": [],
+        "missingDistinctBodies": []
+      }
+    },
+    {
+      "flow": "standalone-shell",
+      "name": "3 Old invalid preferences resolve to original; legitimate late-registered preference restored, store untouched",
+      "actual": {
+        "meryl": "original",
+        "snake": "original",
+        "samePeriod": "appearance-roster51-pliskin-mgs2",
+        "saved": "{\"schema\":\"cqc.slot-costumes/1\",\"slots\":[{\"core__meryl_mgs1\":\"appearance-core-meryl-mgs4\",\"core__solid\":\"retro\",\"core__snake_mgs2\":\"appearance-roster51-pliskin-mgs2\"},{}]}"
+      }
+    },
+    {
+      "flow": "standalone-shell",
+      "name": "4 Meryl MGS1 retains her own human/cyborg/formal/native MSX outfits; no MGS4 or remake costume",
+      "actual": {
+        "uid": "core__meryl_mgs1",
+        "options": [
+          {
+            "id": "original",
+            "label": "Tenue d’origine"
+          },
+          {
+            "id": "cyborg",
+            "label": "Corps cybernétique"
+          },
+          {
+            "id": "tuxedo",
+            "label": "Gala — Meryl"
+          },
+          {
+            "id": "retro-msx",
+            "label": "Archives · MSX"
+          }
+        ]
+      }
+    },
+    {
+      "flow": "standalone-shell",
+      "name": "5 Actual native preview has a common stature and foot baseline across same-sized Meryl costumes",
+      "heightRange": 1,
+      "floorRange": 1,
+      "actual": [
+        {
+          "uid": "core__meryl_mgs1",
+          "costume": "original",
+          "drawn": true,
+          "artState": "ready",
+          "previewGeometry": {
+            "uid": "core__meryl_mgs1",
+            "costume": "original",
+            "face": -1,
+            "statureUID": "core__meryl_mgs1",
+            "staturePixels": 211.53846153846155,
+            "statureEvidence": "official-primary-directly-observed",
+            "measurement": "native-alpha-idle",
+            "x": 134,
+            "y": 1027.6268839926997,
+            "floor": 1028.354217745808,
+            "scale": 1.2043293772399108,
+            "standingHeight": 260.38548361279754,
+            "envelope": {
+              "radius": 0.45801324384635766,
+              "above": 1.1151840865805893,
+              "below": 0.015
+            },
+            "previewOnly": true
+          },
+          "alpha": {
+            "count": 19487,
+            "minY": 768,
+            "maxY": 1027,
+            "minX": 49,
+            "maxX": 212,
+            "height": 260
+          },
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 268,
+            "height": 1047,
+            "padding": 14.74
+          }
+        },
+        {
+          "uid": "core__meryl_mgs1",
+          "costume": "cyborg",
+          "drawn": true,
+          "artState": "ready",
+          "previewGeometry": {
+            "uid": "core__meryl_mgs1",
+            "costume": "cyborg",
+            "face": -1,
+            "statureUID": "core__meryl_mgs1",
+            "staturePixels": 211.53846153846155,
+            "statureEvidence": "official-primary-directly-observed",
+            "measurement": "native-alpha-idle",
+            "x": 134,
+            "y": 1027.5906245249173,
+            "floor": 1028.354217745808,
+            "scale": 1.1798381698295055,
+            "standingHeight": 260.38548361279754,
+            "envelope": {
+              "radius": 0.45801324384635766,
+              "above": 1.1151840865805893,
+              "below": 0.015
+            },
+            "previewOnly": true
+          },
+          "alpha": {
+            "count": 23624,
+            "minY": 768,
+            "maxY": 1028,
+            "minX": 40,
+            "maxX": 220,
+            "height": 261
+          },
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 268,
+            "height": 1047,
+            "padding": 14.74
+          }
+        },
+        {
+          "uid": "core__meryl_mgs1",
+          "costume": "tuxedo",
+          "drawn": true,
+          "artState": "ready",
+          "previewGeometry": {
+            "uid": "core__meryl_mgs1",
+            "costume": "tuxedo",
+            "face": -1,
+            "statureUID": "core__meryl_mgs1",
+            "staturePixels": 211.53846153846155,
+            "statureEvidence": "official-primary-directly-observed",
+            "measurement": "native-alpha-idle",
+            "x": 134,
+            "y": 1027.644721402127,
+            "floor": 1028.354217745808,
+            "scale": 1.1747954143103216,
+            "standingHeight": 260.38548361279754,
+            "envelope": {
+              "radius": 0.45801324384635766,
+              "above": 1.1151840865805893,
+              "below": 0.015
+            },
+            "previewOnly": true
+          },
+          "alpha": {
+            "count": 20643,
+            "minY": 768,
+            "maxY": 1027,
+            "minX": 46,
+            "maxX": 214,
+            "height": 260
+          },
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 268,
+            "height": 1047,
+            "padding": 14.74
+          }
+        },
+        {
+          "uid": "core__meryl_mgs1",
+          "costume": "retro-msx",
+          "drawn": true,
+          "artState": "ready",
+          "previewGeometry": {
+            "uid": "core__meryl_mgs1",
+            "costume": "retro-msx",
+            "face": -1,
+            "statureUID": "core__meryl_mgs1",
+            "staturePixels": 211.53846153846155,
+            "statureEvidence": "official-primary-directly-observed",
+            "measurement": "native-alpha-idle",
+            "x": 134,
+            "y": 1028.354217745808,
+            "floor": 1028.354217745808,
+            "scale": 1.211095272617663,
+            "standingHeight": 260.38548361279754,
+            "envelope": {
+              "radius": 0.45801324384635766,
+              "above": 1.1151840865805893,
+              "below": 0.015
+            },
+            "previewOnly": true
+          },
+          "alpha": {
+            "count": 24203,
+            "minY": 768,
+            "maxY": 1027,
+            "minX": 38,
+            "maxX": 218,
+            "height": 260
+          },
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 268,
+            "height": 1047,
+            "padding": 14.74
+          }
+        }
+      ]
+    },
+    {
+      "flow": "standalone-shell",
+      "name": "6 Attested Pliskin and Tatyana disguises use the same-period selectors and native previews",
+      "actual": [
+        {
+          "uid": "core__snake_mgs2",
+          "options": [
+            "original",
+            "appearance-roster51-pliskin-mgs2"
+          ],
+          "selected": [
+            {
+              "id": "original",
+              "observed": {
+                "uid": "core__snake_mgs2",
+                "costume": "original",
+                "drawn": true,
+                "artState": "ready",
+                "previewGeometry": {
+                  "uid": "core__snake_mgs2",
+                  "costume": "original",
+                  "face": -1,
+                  "statureUID": "core__snake_mgs2",
+                  "staturePixels": 230,
+                  "statureEvidence": "estimated-from-preserved-display-framing",
+                  "measurement": "native-alpha-idle",
+                  "x": 134,
+                  "y": 1006.78775,
+                  "floor": 1006.78775,
+                  "scale": 1.3052443778110943,
+                  "standingHeight": 298.15,
+                  "envelope": {
+                    "radius": 0.4,
+                    "above": 1.0563698630136986,
+                    "below": 0.015
+                  },
+                  "previewOnly": true
+                },
+                "alpha": {
+                  "count": 26393,
+                  "minY": 709,
+                  "maxY": 1006,
+                  "minX": 60,
+                  "maxX": 207,
+                  "height": 298
+                },
+                "box": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 268,
+                  "height": 1026,
+                  "padding": 14.74
+                }
+              }
+            },
+            {
+              "id": "appearance-roster51-pliskin-mgs2",
+              "observed": {
+                "uid": "core__snake_mgs2",
+                "costume": "appearance-roster51-pliskin-mgs2",
+                "drawn": true,
+                "artState": "ready",
+                "previewGeometry": {
+                  "uid": "core__snake_mgs2",
+                  "costume": "appearance-roster51-pliskin-mgs2",
+                  "face": -1,
+                  "statureUID": "core__snake_mgs2",
+                  "staturePixels": 220,
+                  "statureEvidence": "estimated-from-preserved-display-framing",
+                  "measurement": "native-alpha-idle",
+                  "x": 134,
+                  "y": 1006.847305385106,
+                  "floor": 1006.8474119099809,
+                  "scale": 1.3520464899780034,
+                  "standingHeight": 294.172539334608,
+                  "envelope": {
+                    "radius": 0.4054083371267606,
+                    "above": 1.0541594,
+                    "below": 0.015
+                  },
+                  "previewOnly": true
+                },
+                "alpha": {
+                  "count": 22738,
+                  "minY": 712,
+                  "maxY": 1006,
+                  "minX": 73,
+                  "maxX": 191,
+                  "height": 295
+                },
+                "box": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 268,
+                  "height": 1026,
+                  "padding": 14.74
+                }
+              }
+            }
+          ]
+        },
+        {
+          "uid": "core__eva_mgs3",
+          "options": [
+            "original",
+            "appearance-npc53-tatyana-mgs3"
+          ],
+          "selected": [
+            {
+              "id": "original",
+              "observed": {
+                "uid": "core__eva_mgs3",
+                "costume": "original",
+                "drawn": true,
+                "artState": "ready",
+                "previewGeometry": {
+                  "uid": "core__eva_mgs3",
+                  "costume": "original",
+                  "face": -1,
+                  "statureUID": "core__eva_mgs3",
+                  "staturePixels": 215.69065934065935,
+                  "statureEvidence": "community-reference-body-profile",
+                  "measurement": "native-alpha-idle",
+                  "x": 134,
+                  "y": 1027.78775,
+                  "floor": 1027.78775,
+                  "scale": 1.3174205746083885,
+                  "standingHeight": 298.15,
+                  "envelope": {
+                    "radius": 0.4,
+                    "above": 1.0762169680111264,
+                    "below": 0.015
+                  },
+                  "previewOnly": true
+                },
+                "alpha": {
+                  "count": 17398,
+                  "minY": 730,
+                  "maxY": 1027,
+                  "minX": 75,
+                  "maxX": 179,
+                  "height": 298
+                },
+                "box": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 268,
+                  "height": 1047,
+                  "padding": 14.74
+                }
+              }
+            },
+            {
+              "id": "appearance-npc53-tatyana-mgs3",
+              "observed": {
+                "uid": "core__eva_mgs3",
+                "costume": "appearance-npc53-tatyana-mgs3",
+                "drawn": true,
+                "artState": "ready",
+                "previewGeometry": {
+                  "uid": "core__eva_mgs3",
+                  "costume": "appearance-npc53-tatyana-mgs3",
+                  "face": -1,
+                  "statureUID": "core__eva_mgs3",
+                  "staturePixels": 215.69065934065935,
+                  "statureEvidence": "community-reference-body-profile",
+                  "measurement": "native-alpha-idle",
+                  "x": 134,
+                  "y": 1027.7878226371104,
+                  "floor": 1027.78775,
+                  "scale": 1.5152184434922487,
+                  "standingHeight": 298.15,
+                  "envelope": {
+                    "radius": 0.4,
+                    "above": 1.0762169680111264,
+                    "below": 0.015
+                  },
+                  "previewOnly": true
+                },
+                "alpha": {
+                  "count": 19828,
+                  "minY": 729,
+                  "maxY": 1027,
+                  "minX": 36,
+                  "maxX": 149,
+                  "height": 299
+                },
+                "box": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 268,
+                  "height": 1047,
+                  "padding": 14.74
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "flow": "standalone-shell",
+      "name": "7 Repeated normal costume changes and large viewport resize keep native images visible",
+      "actual": [
+        {
+          "id": "original",
+          "artState": "ready",
+          "alphaHeight": 260
+        },
+        {
+          "id": "cyborg",
+          "artState": "ready",
+          "alphaHeight": 261
+        },
+        {
+          "id": "tuxedo",
+          "artState": "ready",
+          "alphaHeight": 260
+        },
+        {
+          "id": "retro-msx",
+          "artState": "ready",
+          "alphaHeight": 260
+        },
+        {
+          "id": "original",
+          "artState": "ready",
+          "alphaHeight": 260
+        },
+        {
+          "id": "cyborg",
+          "artState": "ready",
+          "alphaHeight": 261
+        },
+        {
+          "id": "tuxedo",
+          "artState": "ready",
+          "alphaHeight": 260
+        },
+        {
+          "id": "retro-msx",
+          "artState": "ready",
+          "alphaHeight": 260
+        },
+        {
+          "id": "original",
+          "artState": "ready",
+          "alphaHeight": 260
+        }
+      ],
+      "afterResize": {
+        "uid": "core__meryl_mgs1",
+        "costume": "original",
+        "drawn": true,
+        "artState": "ready",
+        "previewGeometry": {
+          "uid": "core__meryl_mgs1",
+          "costume": "original",
+          "face": -1,
+          "statureUID": "core__meryl_mgs1",
+          "staturePixels": 211.53846153846155,
+          "statureEvidence": "official-primary-directly-observed",
+          "measurement": "native-alpha-idle",
+          "x": 134,
+          "y": 1027.6268839926997,
+          "floor": 1028.354217745808,
+          "scale": 1.2043293772399108,
+          "standingHeight": 260.38548361279754,
+          "envelope": {
+            "radius": 0.45801324384635766,
+            "above": 1.1151840865805893,
+            "below": 0.015
+          },
+          "previewOnly": true
+        },
+        "alpha": {
+          "count": 19487,
+          "minY": 768,
+          "maxY": 1027,
+          "minX": 49,
+          "maxX": 212,
+          "height": 260
+        },
+        "box": {
+          "x": 0,
+          "y": 0,
+          "width": 268,
+          "height": 1047,
+          "padding": 14.74
+        }
+      }
+    },
+    {
+      "flow": "standalone-shell",
+      "name": "8 Real UI and stage confirmation start a ready native retro match",
+      "actual": {
+        "frame": 105,
+        "uids": [
+          "core__meryl_mgs1",
+          "core__solid"
+        ],
+        "costumes": [
+          "retro-msx",
+          "cyborg"
+        ],
+        "statuses": [
+          {
+            "uid": "core__meryl_mgs1",
+            "renderer": "png",
+            "coverage": "action-frames",
+            "actions": [
+              "idle",
+              "walk",
+              "guard",
+              "crouch",
+              "punch",
+              "heavy",
+              "low",
+              "jump",
+              "shoot",
+              "reload",
+              "hit",
+              "recover",
+              "ko",
+              "throw",
+              "deploy",
+              "attack",
+              "blade",
+              "roll",
+              "charge",
+              "optic"
+            ],
+            "oppositeActions": [
+              "idle",
+              "walk",
+              "guard",
+              "crouch",
+              "punch",
+              "heavy",
+              "low",
+              "jump",
+              "shoot",
+              "reload",
+              "hit",
+              "recover",
+              "ko",
+              "throw",
+              "deploy",
+              "attack",
+              "blade",
+              "roll",
+              "charge",
+              "optic"
+            ],
+            "states": [
+              "ready"
+            ],
+            "ready": true,
+            "limits": [
+              "New native low-resolution sprite drawings in a MSX2-inspired style. No image downsampling, pixel-removal filter, procedural pixelArt shader or reuse of an original actor PNG is involved.",
+              "This style reinterpretation is original art, not a costume shipped by the publisher and not a 1:1 extraction of an original MSX game sprite. The character stays in the exact original listed incarnation.",
+              "Square pixel clusters and reduced material shading are visible in the actual drawings. Generator output retains antialias fringe and more than sixteen native RGB colors; actual MSX palette/hardware restrictions are not certified.",
+              "Sixteen physical poses per anatomical facing, all inspected. Native two-facing PNG bytes are immutable. Read-only alpha16 vector contours exclude neighboring figures without editing source pixels.",
+              "Limited combat keys share sixteen authored body poses; grenade, grappling and exceptional move equipment keyframes are not all separately drawn. Engine move timing, damage, projectiles, identity and scale are unchanged.",
+              "Source standing height is measured from the two native idle figures per direction and kept fixed across poses. Feet/pelvis pivots are measured per figure; this is not original animation motion capture.",
+              "Right cell10 contains an authored muzzle flash and is retained physically but deliberately unused in runtime; its shooting action repeats the clean aim cell9 to avoid doubling gameplay VFX."
+            ]
+          },
+          {
+            "uid": "core__solid",
+            "renderer": "png",
+            "coverage": "action-frames",
+            "actions": [
+              "idle",
+              "walk",
+              "guard",
+              "crouch",
+              "low",
+              "punch",
+              "hit",
+              "ko",
+              "throw",
+              "deploy",
+              "shoot",
+              "reload",
+              "attack"
+            ],
+            "oppositeActions": [
+              "idle",
+              "walk",
+              "guard",
+              "crouch",
+              "low",
+              "punch",
+              "hit",
+              "ko",
+              "throw",
+              "deploy",
+              "shoot",
+              "reload",
+              "attack"
+            ],
+            "states": [
+              "ready"
+            ],
+            "ready": true,
+            "limits": [
+              "Original designed costume, not an attested released Snake cyborg appearance.",
+              "Independent 2.5D redraw inherits authored gameplay pose adaptation; no motion-capture or exact original-game animation claim.",
+              "Small highlights, armour seam/cable placement and occluded parts vary between independently rendered poses.",
+              "Body source fitting and physical weapon-source geometry require the separately recorded actual Canvas proof."
+            ]
+          }
+        ],
+        "dojo": false
+      }
+    },
+    {
+      "flow": "standalone-shell",
+      "name": "9 Public replay fixture with retired costume IDs starts using original bodies and preserves both private selections",
+      "actual": {
+        "frame": 2,
+        "uids": [
+          "core__meryl_mgs1",
+          "core__solid"
+        ],
+        "costumes": [
+          "original",
+          "original"
+        ],
+        "privateChoices": "{\"schema\":\"cqc.slot-costumes/1\",\"slots\":[{\"core__meryl_mgs1\":\"retro-msx\",\"core__solid\":\"original\",\"core__snake_mgs2\":\"appearance-roster51-pliskin-mgs2\",\"core__eva_mgs3\":\"appearance-npc53-tatyana-mgs3\"},{\"core__solid\":\"cyborg\"}]}",
+        "loading": null
+      }
+    }
+  ],
+  "actions": [
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#slotP2",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "original"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "cyborg"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "tuxedo"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "retro-msx"
+    },
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "original"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "appearance-roster51-pliskin-mgs2"
+    },
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "original"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "appearance-npc53-tatyana-mgs3"
+    },
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "original"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "cyborg"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "tuxedo"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "retro-msx"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "original"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "cyborg"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "tuxedo"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "retro-msx"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "original"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "retro-msx"
+    },
+    {
+      "selector": "#costume-p2-pass17",
+      "trigger": "normal select change",
+      "id": "cyborg"
+    },
+    {
+      "selector": "#matchSettingsButtonPass17",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#launch",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "[data-stage-index=\"23\"]",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#stageConfirmPass17",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#pauseBtn",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#leaveFight",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#pauseBtn",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#leaveFight",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "[data-mode=\"versus\"]",
+      "context": "document",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#launchFront",
+      "context": "document",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "[data-mode=\"versus\"]",
+      "context": "document",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#launchFront",
+      "context": "document",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#slotP2",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "original"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "cyborg"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "tuxedo"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "retro-msx"
+    },
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "original"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "appearance-roster51-pliskin-mgs2"
+    },
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "original"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "appearance-npc53-tatyana-mgs3"
+    },
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "original"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "cyborg"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "tuxedo"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "retro-msx"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "original"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "cyborg"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "tuxedo"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "retro-msx"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "original"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "retro-msx"
+    },
+    {
+      "selector": "#costume-p2-pass17",
+      "trigger": "normal select change",
+      "id": "cyborg"
+    },
+    {
+      "selector": "#matchSettingsButtonPass17",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#launch",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "[data-stage-index=\"23\"]",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#stageConfirmPass17",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#pauseBtn",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#leaveFight",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#pauseBtn",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#leaveFight",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "/workspace/cqc-pass20-incarnation-policy/ui-2026-10-08T06-28-34-989Z/direct-module-msx-cyborg-match.png",
+      "bytes": 756213,
+      "sha256": "e79bc3c0f4ec6a0416efbccc52fb103e890e578b7dd2e9627419830d379c8d93"
+    },
+    {
+      "file": "/workspace/cqc-pass20-incarnation-policy/ui-2026-10-08T06-28-34-989Z/standalone-shell-msx-cyborg-match.png",
+      "bytes": 759293,
+      "sha256": "38b4c57e81f742cf2bf39e1dbdb2463648cda156893c5ca262ea7f1f8851d030"
+    }
+  ],
+  "status": "passed",
+  "storageRestored": true,
+  "exceptions": [],
+  "networkFailures": [],
+  "httpErrors": [
+    {
+      "url": "http://127.0.0.1:8029/favicon.ico",
+      "status": 404
+    },
+    {
+      "url": "http://127.0.0.1:8029/favicon.ico",
+      "status": 404
+    },
+    {
+      "url": "http://127.0.0.1:8029/favicon.ico",
+      "status": 404
+    }
+  ],
+  "unexpectedNetworkFailures": [],
+  "gameHttpErrors": [],
+  "ownedBrowserCloseRequested": true,
+  "finishedAt": "2026-10-08T06:28:53.355Z",
+  "helperSHA256": "0301c8209f469fcea626d29ccb4025e647e6c190133c0dd0fc7ffc80130d4255"
+}

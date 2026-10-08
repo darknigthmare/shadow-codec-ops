@@ -1,0 +1,46 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import vm from 'node:vm';
+import crypto from 'node:crypto';
+const app='/tmp/cqc-pass19-application/public/cqc',out='/workspace/cqc-pass20-incarnation-policy';
+const report={schema:'cqc.pass20.incarnation-policy-runtime-tests/1',startedAt:new Date().toISOString(),checks:[]};
+const files=new Set(),checks=[];
+const ctx=vm.createContext({URL,AbortController,TextDecoder,TextEncoder,Uint8Array,Promise,console:{log(){},warn(){}},setTimeout,clearTimeout,Blob,crypto:crypto.webcrypto});ctx.window=ctx;
+const storage=new Map([['cqc-v056-costumes',JSON.stringify({schema:'cqc.slot-costumes/1',slots:[{core__meryl_mgs1:'appearance-core-meryl-mgs4',core__solid:'retro',core__snake_mgs2:'appearance-roster51-pliskin-mgs2'},{}]})]]);
+ctx.localStorage={getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)};
+function run(name){const file=path.join(app,'src',name);vm.runInContext(fs.readFileSync(file,'utf8'),ctx,{filename:file});files.add(file);}
+function check(name,fn){fn();checks.push({name,status:'passed'});}
+try{
+ const html=fs.readFileSync(path.join(app,'modules/unified-versus-v055.html'),'utf8');
+ const sourceNames=[...html.matchAll(/<script src="\.\.\/src\/([^"]+)"/g)].map(m=>m[1]);
+ for(const name of sourceNames.filter(name=>name==='cqc-sprite-catalog.js'||/-sprite-catalog/.test(name)))run(name);
+ for(const name of ['cqc-pass19-costume-parts.js','cqc-pass19-pixel-style.js','cqc-sprite-renderer.js','cqc-pass17-costume-catalog.js','cqc-pass18-acid-native-costumes.js','cqc-pass17-costumes.js','cqc-pass19-costume-request-data.js','cqc-pass19-costumes.js','cqc-pass19-retro-presentations.js','cqc-pass19-canonical-appearances.js','cqc-pass19-original-costumes.js','cqc-pass19-native-tuxedo-costumes.js'])run(name);
+ const wardrobe=ctx.CQC_PASS19_COSTUMES,choices=ctx.CQC_COSTUMES_PASS17,canonical=ctx.CQC_PASS19_CANONICAL_APPEARANCES;
+ check('362 historical source records preserved; exactly 4 same-period mappings retained',()=>{assert.equal(canonical.data.records.length,362);assert.equal(canonical.reviewedAdditions().length,4);assert.equal(canonical.excludedRecords().length,358);});
+ check('No other ages, body forms or remakes in costume selectors',()=>{for(const[uid,row]of Object.entries(ctx.CQC_COMBAT_COSTUME_CATALOG.entries))for(const option of row.options)assert(wardrobe.appearanceAllowed(uid,option));assert(!choices.optionsFor('core__meryl_mgs1').some(o=>/mgs4/.test(o.id)));assert(!choices.optionsFor('roster50__sunny_mgs4').some(o=>/mgr/.test(o.id)));});
+ check('Separate incarnation UID catalog bodies unchanged',()=>{assert(ctx.CQC_COMBAT_SPRITE_CATALOG.entries.core__meryl_mgs1);assert(ctx.CQC_COMBAT_SPRITE_CATALOG.entries.core__meryl_mgs4);assert.notEqual(ctx.CQC_COMBAT_SPRITE_CATALOG.entries.core__meryl_mgs1,ctx.CQC_COMBAT_SPRITE_CATALOG.entries.core__meryl_mgs4);});
+ check('Four source-reviewed same-period disguises remain selectable',()=>{for(const{uid,option}of canonical.reviewedAdditions())assert(wardrobe.selectable(uid,option.id));assert.equal(choices.chosen(0,'core__snake_mgs2'),'original');});
+ check('Old preference IDs fall back to original; no storage rewrite on startup',()=>{assert.equal(choices.chosen(0,'core__meryl_mgs1'),'original');assert.equal(choices.chosen(0,'core__solid'),'original');assert.equal(JSON.parse(storage.get('cqc-v056-costumes')).slots[0].core__meryl_mgs1,'appearance-core-meryl-mgs4');});
+ check('Legacy Archives options removed without deletion of their code/assets',()=>{assert.equal(ctx.CQC_PASS19_RETRO_PRESENTATIONS.status().accepted,0);assert.equal(ctx.CQC_PASS19_RETRO_PRESENTATIONS.status().archivedDerivedPresentationUIDs.length,Object.entries(ctx.CQC_COMBAT_SPRITE_CATALOG.entries).filter(([uid,body])=>body.renderStyle==='painted'&&ctx.CQC_PASS19_COSTUME_REQUEST_DATA.entries[uid]?.basePresentation==='nextgen').length);for(const row of Object.values(ctx.CQC_COMBAT_COSTUME_CATALOG.entries))assert(!row.options.some(option=>option.id==='retro'));assert(fs.existsSync(path.join(app,'src/cqc-pass19-pixel-style.js')));});
+ check('Invalid selection cannot mutate either player slot',()=>{const before=JSON.stringify(choices.snapshot());assert.equal(choices.select(0,'core__meryl_mgs1','appearance-core-meryl-mgs4'),false);assert.equal(choices.select(1,'core__solid','retro'),false);assert.equal(JSON.stringify(choices.snapshot()),before);});
+ check('Private replay overrides normalize illegal costumes to original without changing UID or slots',()=>{const before=JSON.stringify(choices.snapshot()),source={uid:'core__meryl_mgs1',name:'Meryl',costume:'appearance-core-meryl-mgs4'};const result=wardrobe.fighterFor(source,1,'appearance-core-meryl-mgs4');assert.equal(result.uid,source.uid);assert(!result.costume);assert.equal(source.costume,'appearance-core-meryl-mgs4');assert.equal(JSON.stringify(choices.snapshot()),before);});
+ check('Registration rejects old cross-incarnation and blur-derived retro options atomically',()=>{const before=ctx.CQC_COMBAT_COSTUME_CATALOG;assert.throws(()=>wardrobe.registerBatch(canonical.additions().filter(item=>item.uid==='core__meryl_mgs1'&&item.option.provenance.sourceSpriteUID==='core__meryl_mgs4')),/autre incarnation/);const body=ctx.CQC_COMBAT_SPRITE_CATALOG.entries.core__solid;assert.throws(()=>wardrobe.validateOption('core__solid',{id:'retro-filter',family:'retro',label:'Archives',sprite:{...body,pixelArt:{schema:'cqc.pixel-presentation/1'}},provenance:{kind:'style-reinterpretation',sourceUID:'core__solid'}}),/newly-drawn/);assert.equal(ctx.CQC_COMBAT_COSTUME_CATALOG,before);});
+ check('Fresh independently drawn retro has no policy barrier',()=>{assert(wardrobe.appearanceAllowed('core__solid',{id:'retro-msx',family:'retro',sprite:{uid:'core__solid'},provenance:{kind:'style-reinterpretation',sourceUID:'core__solid',originalDesign:true,canonicalAppearanceAttested:false}}));});
+ check('Late stale catalog injection is removed before UI/renderer use',()=>{const cross=canonical.additions().find(item=>item.uid==='core__meryl_mgs1'&&item.option.provenance.sourceSpriteUID==='core__meryl_mgs4');ctx.CQC_COMBAT_COSTUME_CATALOG.entries[cross.uid].options.push(cross.option);wardrobe.installChoices();assert.equal(wardrobe.selectable(cross.uid,cross.option.id),false);assert.equal(ctx.CQC_COMBAT_SPRITES.getEntry(cross.uid,{costume:cross.option.id}),null);assert(wardrobe.policyReport().retired.some(item=>item.uid===cross.uid&&item.id===cross.option.id));});
+ ctx.CQC_COMBAT_SPRITES.whenReady=async()=>true;
+ const prepared=await wardrobe.prepareSlots([{uid:'core__meryl_mgs1',costume:'appearance-core-meryl-mgs4'},{uid:'core__solid',costume:'retro'}]);
+ check('Direct launch/replay preparation resolves both retired options to original without error',()=>{assert.equal(prepared.ready,true);assert.equal(prepared.fighters.length,2);assert(prepared.fighters.every(fighter=>!fighter.costume));});
+ run('cqc-pass19-native-wardrobe-index.js');run('cqc-pass19-native-wardrobe-library.js');
+ const library=ctx.CQC_NATIVE_WARDROBE;
+ check('Four approved lazy NextGen costumes still index without network calls',()=>{assert.equal(library.statistics().indexEntries,4);assert.equal(library.statistics().assetLoads,0);assert.equal(library.availableFor('core__snake_gb').length,1);});
+ const index=JSON.parse(JSON.stringify(ctx.CQC_NATIVE_WARDROBE_INDEX)),bad={...index.entries[0],uid:'core__meryl_mgs1',id:'appearance-mgs4-lazy',provenance:{...index.entries[0].provenance,kind:'historical-incarnation',sourceUID:'core__meryl_mgs1',sourceSpriteUID:'core__meryl_mgs4'}};
+ index.entries.push(bad);const indexed=library.configureIndex(index);
+ check('Lazy historical descriptor rejected before any metadata or PNG request',()=>{assert.equal(indexed.entries,4);assert.equal(indexed.blocked.length,1);assert.equal(library.known(bad.uid,bad.id),false);assert.equal(library.statistics().assetLoads,0);});
+ const lazyPrepared=await library.prepareSlots([{uid:'core__meryl_mgs1',costume:bad.id},{uid:'core__solid',costume:'retro'}],{owner:'pass20-old-replay'});
+ check('Lazy public preparation resolves old replay costumes to original without slot mutation',()=>{assert.equal(lazyPrepared.ready,true);assert(lazyPrepared.fighters.every(fighter=>!fighter.costume));assert.equal(library.statistics().assetLoads,0);});
+ library.dispose();
+ report.status='passed';report.checks=checks;
+ report.summary={sourceRecords:362,retainedSamePeriod:4,excluded:358,baseSpriteEntries:Object.keys(ctx.CQC_COMBAT_SPRITE_CATALOG.entries).length,costumeOptions:Object.values(ctx.CQC_COMBAT_COSTUME_CATALOG.entries).flatMap(row=>row.options.filter(option=>option.id!=='original')).length};
+}catch(error){report.status='failed';report.error=error.stack;report.checks=checks;process.exitCode=1;}
+report.files=[...files].map(file=>({file,sha256:crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex')}));report.finishedAt=new Date().toISOString();fs.writeFileSync(path.join(out,'POLICY_RUNTIME_TESTS_ACTUAL_V4.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({status:report.status,checks:checks.length,error:report.error,summary:report.summary}));

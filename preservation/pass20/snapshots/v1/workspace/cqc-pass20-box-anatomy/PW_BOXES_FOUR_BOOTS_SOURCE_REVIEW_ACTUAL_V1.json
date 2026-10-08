@@ -1,0 +1,1852 @@
+{
+  "schema": "cqc.pass20.native-pw-box-anatomy-review/1",
+  "status": "source-approved-awaiting-root-integration-and-actual-match-QA",
+  "reviewedAt": "2026-10-08",
+  "scope": {
+    "baselineAtlasesInspected": 16,
+    "baselinePhysicalPosesInspected": 256,
+    "simpleBoxPhysicalPosesRetained": 160,
+    "tankMappedEquipmentPosesCorrected": 96,
+    "newAtlases": 8,
+    "newUniquePhysicalPoses": 32,
+    "runtimePNGBytes": 18129243,
+    "sharedExteriorEquipmentUIDs": [
+      "pass19__box_tank_pw",
+      "pass19__box_tank_stun_pw",
+      "pass19__box_tank_smoke_pw"
+    ],
+    "allSelectedPhysicalBootCounts": 4,
+    "allSelectedOperatorCounts": 2
+  },
+  "canonicalSource": {
+    "path": "/tmp/cqc-pass19-pw-box-generation/references/box-tank-pw-presscapture.jpg",
+    "bytes": 21658,
+    "sha256": "89d2b2bc58ba996b938bfc78b878a57b8c2798be89ff633890508e64a77ddebf",
+    "url": "https://cdn.mos.cms.futurecdn.net/57c1d74c5659a03dd7d7fb5dac7b06f3.jpg",
+    "classification": "original-game-press-capture",
+    "physicallyViewed": true,
+    "operatorCountTextSources": [
+      "https://metalgear.fandom.com/wiki/Peace_Walker_weapons_and_equipment",
+      "https://wikiwiki.jp/walker/%E8%A3%85%E5%82%99%E5%93%81"
+    ],
+    "qualification": "Reference shows canonical cardboard hull; two hidden operator/four-leg identity is also retained from documented equipment source. Human CQC actions remain original playable adaptation."
+  },
+  "baselineCatalog": {
+    "path": "/tmp/cqc-pass19-application/public/cqc/src/cqc-pass19-pw-box-sprite-catalog.js",
+    "bytes": 254500,
+    "sha256": "e511c1c304a709c0dcd6902ade88e20a1169301778bafd35fff0eb370f343bc7"
+  },
+  "baselineSources": [
+    {
+      "path": "/tmp/cqc-pass19-application/public/cqc/assets/combat-sprites-pass19-boxes/pass19__assassin_box_pw/left-v1.png",
+      "bytes": 2324506,
+      "sha256": "fb321202b6415675bbabf6b2ddb5e9763f2a5252f2916a0a91bf0f9d75c86a30",
+      "uid": "pass19__assassin_box_pw",
+      "side": "left",
+      "physicalPosesInspected": 16,
+      "selectedRuntimeOriginalPreserved": true,
+      "anatomyReview": "one-hidden-human-operator-two-legs; retained"
+    },
+    {
+      "path": "/tmp/cqc-pass19-application/public/cqc/assets/combat-sprites-pass19-boxes/pass19__assassin_box_pw/right-v1.png",
+      "bytes": 2300044,
+      "sha256": "e1d11c273ab0b2fa5fb7c803cdfc9da4ae01a3d251b0c64af4237b3a071d2b9d",
+      "uid": "pass19__assassin_box_pw",
+      "side": "right",
+      "physicalPosesInspected": 16,
+      "selectedRuntimeOriginalPreserved": true,
+      "anatomyReview": "one-hidden-human-operator-two-legs; retained"
+    },
+    {
+      "path": "/tmp/cqc-pass19-application/public/cqc/assets/combat-sprites-pass19-boxes/pass19__bomb_box_pw/left-v1.png",
+      "bytes": 2197132,
+      "sha256": "cd08e32a431f0e391e51ce384843c3e15571f751c93e92670a0e685238e4c34b",
+      "uid": "pass19__bomb_box_pw",
+      "side": "left",
+      "physicalPosesInspected": 16,
+      "selectedRuntimeOriginalPreserved": true,
+      "anatomyReview": "one-hidden-human-operator-two-legs; retained"
+    },
+    {
+      "path": "/tmp/cqc-pass19-application/public/cqc/assets/combat-sprites-pass19-boxes/pass19__bomb_box_pw/right-v1.png",
+      "bytes": 2209050,
+      "sha256": "cd53886817d1e0afce74201337527eb880481cc29b6a995122480863b30f52c1",
+      "uid": "pass19__bomb_box_pw",
+      "side": "right",
+      "physicalPosesInspected": 16,
+      "selectedRuntimeOriginalPreserved": true,
+      "anatomyReview": "one-hidden-human-operator-two-legs; retained"
+    },
+    {
+      "path": "/tmp/cqc-pass19-application/public/cqc/assets/combat-sprites-pass19-boxes/pass19__box_tank_pw/left-v1.png",
+      "bytes": 1971809,
+      "sha256": "4952401884dd4190b67c3b5db11b7cc4f38a593e66968b931f492a79ccb98f16",
+      "uid": "pass19__box_tank_pw",
+      "side": "left",
+      "physicalPosesInspected": 16,
+      "selectedRuntimeOriginalPreserved": true,
+      "anatomyReview": "superseded-three-visible-boot-silhouette; two-operator-count-not-readable"
+    },
+    {
+      "path": "/tmp/cqc-pass19-application/public/cqc/assets/combat-sprites-pass19-boxes/pass19__box_tank_pw/right-v1.png",
+      "bytes": 1905193,
+      "sha256": "3f67a8c11015f86c32986ca44b0015f8c7d1c2a37d2433742ac4e66bc3e57841",
+      "uid": "pass19__box_tank_pw",
+      "side": "right",
+      "physicalPosesInspected": 16,
+      "selectedRuntimeOriginalPreserved": true,
+      "anatomyReview": "superseded-three-visible-boot-silhouette; two-operator-count-not-readable"
+    },
+    {
+      "path": "/tmp/cqc-pass19-application/public/cqc/assets/combat-sprites-pass19-boxes/pass19__box_tank_smoke_pw/left-v1.png",
+      "bytes": 1941931,
+      "sha256": "d6bc8b6d677de7df0e225df825cc3aac799ccab1b83b65a79cc7cabb0cfd6042",
+      "uid": "pass19__box_tank_smoke_pw",
+      "side": "left",
+      "physicalPosesInspected": 16,
+      "selectedRuntimeOriginalPreserved": true,
+      "anatomyReview": "superseded-three-visible-boot-silhouette; two-operator-count-not-readable"
+    },
+    {
+      "path": "/tmp/cqc-pass19-application/public/cqc/assets/combat-sprites-pass19-boxes/pass19__box_tank_smoke_pw/right-v1.png",
+      "bytes": 1921589,
+      "sha256": "12a4e3c9012e2c029e6ab2dac1438378f87d25fb3eddc35977d9994ea5438d29",
+      "uid": "pass19__box_tank_smoke_pw",
+      "side": "right",
+      "physicalPosesInspected": 16,
+      "selectedRuntimeOriginalPreserved": true,
+      "anatomyReview": "superseded-three-visible-boot-silhouette; two-operator-count-not-readable"
+    },
+    {
+      "path": "/tmp/cqc-pass19-application/public/cqc/assets/combat-sprites-pass19-boxes/pass19__box_tank_stun_pw/left-v1.png",
+      "bytes": 1919953,
+      "sha256": "8bf5888e9718cfe18dbd63564cb7312986fa9f49071c09ca14e4dc8f198daf7e",
+      "uid": "pass19__box_tank_stun_pw",
+      "side": "left",
+      "physicalPosesInspected": 16,
+      "selectedRuntimeOriginalPreserved": true,
+      "anatomyReview": "superseded-three-visible-boot-silhouette; two-operator-count-not-readable"
+    },
+    {
+      "path": "/tmp/cqc-pass19-application/public/cqc/assets/combat-sprites-pass19-boxes/pass19__box_tank_stun_pw/right-v1.png",
+      "bytes": 1978422,
+      "sha256": "56af49e9bc3f87f59cf712226857b6c546deed941980ff7c311e0f32945588b1",
+      "uid": "pass19__box_tank_stun_pw",
+      "side": "right",
+      "physicalPosesInspected": 16,
+      "selectedRuntimeOriginalPreserved": true,
+      "anatomyReview": "superseded-three-visible-boot-silhouette; two-operator-count-not-readable"
+    },
+    {
+      "path": "/tmp/cqc-pass19-application/public/cqc/assets/combat-sprites-pass19-boxes/pass19__love_box_pw/left-v1.png",
+      "bytes": 2108102,
+      "sha256": "3fdc2ecba40ee43d11d4d2665a1f9ca5675ca0f8037360a8033d94c3ea5f7327",
+      "uid": "pass19__love_box_pw",
+      "side": "left",
+      "physicalPosesInspected": 16,
+      "selectedRuntimeOriginalPreserved": true,
+      "anatomyReview": "one-hidden-human-operator-two-legs; retained"
+    },
+    {
+      "path": "/tmp/cqc-pass19-application/public/cqc/assets/combat-sprites-pass19-boxes/pass19__love_box_pw/right-v1.png",
+      "bytes": 2132693,
+      "sha256": "acf2fa53fc2e906a2b5bd581754b249c9dcfd775a2d2235561d2b9763c6c1a19",
+      "uid": "pass19__love_box_pw",
+      "side": "right",
+      "physicalPosesInspected": 16,
+      "selectedRuntimeOriginalPreserved": true,
+      "anatomyReview": "one-hidden-human-operator-two-legs; retained"
+    },
+    {
+      "path": "/tmp/cqc-pass19-application/public/cqc/assets/combat-sprites-pass19-boxes/pass19__smoke_box_pw/left-v1.png",
+      "bytes": 2223304,
+      "sha256": "5b411139ba77dd974f2fb1d74618eec5c0655cc1fa7caec8c97b9cb30f4593d4",
+      "uid": "pass19__smoke_box_pw",
+      "side": "left",
+      "physicalPosesInspected": 16,
+      "selectedRuntimeOriginalPreserved": true,
+      "anatomyReview": "one-hidden-human-operator-two-legs; retained"
+    },
+    {
+      "path": "/tmp/cqc-pass19-application/public/cqc/assets/combat-sprites-pass19-boxes/pass19__smoke_box_pw/right-v1.png",
+      "bytes": 2156881,
+      "sha256": "088e6ead03789a866ea5185fdaf8a1179fbe44c1f40e3894151d2cd562681586",
+      "uid": "pass19__smoke_box_pw",
+      "side": "right",
+      "physicalPosesInspected": 16,
+      "selectedRuntimeOriginalPreserved": true,
+      "anatomyReview": "one-hidden-human-operator-two-legs; retained"
+    },
+    {
+      "path": "/tmp/cqc-pass19-application/public/cqc/assets/combat-sprites-pass19-boxes/pass19__stun_box_pw/left-v1.png",
+      "bytes": 2163804,
+      "sha256": "4b058db0a7297085f6e3a24585c6ef1e1abdf197ebd41350863c6a19db6a0150",
+      "uid": "pass19__stun_box_pw",
+      "side": "left",
+      "physicalPosesInspected": 16,
+      "selectedRuntimeOriginalPreserved": true,
+      "anatomyReview": "one-hidden-human-operator-two-legs; retained"
+    },
+    {
+      "path": "/tmp/cqc-pass19-application/public/cqc/assets/combat-sprites-pass19-boxes/pass19__stun_box_pw/right-v1.png",
+      "bytes": 2185248,
+      "sha256": "22de690a3e0563d53d28b6344b479ddf5b0711b20d8b04d824952df48496e0ad",
+      "uid": "pass19__stun_box_pw",
+      "side": "right",
+      "physicalPosesInspected": 16,
+      "selectedRuntimeOriginalPreserved": true,
+      "anatomyReview": "one-hidden-human-operator-two-legs; retained"
+    }
+  ],
+  "selectedPages": [
+    {
+      "side": "right",
+      "part": "movement",
+      "source": "/workspace/generated_images/exec-b0cd2ddb-8a7b-4c6a-8b07-3215a77f5856.png",
+      "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-movement-v1.png",
+      "sha256": "67061d51633989bd7fe09c5a273a8d1ab619cc027f892c4e2451f56487747e01",
+      "bytes": 2261909,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "referencePhysicalPoseIndex": 0,
+      "sourceFrameHeight": 460,
+      "poseCount": 4,
+      "poses": [
+        {
+          "physicalPoseIndex": 0,
+          "cellIndex": 0,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-movement-v1.png",
+            "sha256": "67061d51633989bd7fe09c5a273a8d1ab619cc027f892c4e2451f56487747e01",
+            "rect": [
+              77,
+              54,
+              626,
+              464
+            ],
+            "pivot": [
+              0.440096,
+              0.99569
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 624,
+              "bottom": 462
+            }
+          },
+          "nativeComponentBounds": [
+            79,
+            56,
+            700,
+            515
+          ],
+          "alphaPixelsAtLeast16": 204708,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        },
+        {
+          "physicalPoseIndex": 1,
+          "cellIndex": 1,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-movement-v1.png",
+            "sha256": "67061d51633989bd7fe09c5a273a8d1ab619cc027f892c4e2451f56487747e01",
+            "rect": [
+              847,
+              93,
+              618,
+              423
+            ],
+            "pivot": [
+              0.440129,
+              0.995272
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 616,
+              "bottom": 421
+            }
+          },
+          "nativeComponentBounds": [
+            849,
+            95,
+            1462,
+            513
+          ],
+          "alphaPixelsAtLeast16": 187819,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        },
+        {
+          "physicalPoseIndex": 2,
+          "cellIndex": 2,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-movement-v1.png",
+            "sha256": "67061d51633989bd7fe09c5a273a8d1ab619cc027f892c4e2451f56487747e01",
+            "rect": [
+              85,
+              558,
+              622,
+              443
+            ],
+            "pivot": [
+              0.447749,
+              0.995485
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 620,
+              "bottom": 441
+            }
+          },
+          "nativeComponentBounds": [
+            87,
+            560,
+            704,
+            998
+          ],
+          "alphaPixelsAtLeast16": 193645,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        },
+        {
+          "physicalPoseIndex": 3,
+          "cellIndex": 3,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-movement-v1.png",
+            "sha256": "67061d51633989bd7fe09c5a273a8d1ab619cc027f892c4e2451f56487747e01",
+            "rect": [
+              848,
+              557,
+              628,
+              445
+            ],
+            "pivot": [
+              0.443471,
+              0.995506
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 626,
+              "bottom": 443
+            }
+          },
+          "nativeComponentBounds": [
+            850,
+            559,
+            1473,
+            999
+          ],
+          "alphaPixelsAtLeast16": 195799,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        }
+      ],
+      "physicalPixelsTransformed": false
+    },
+    {
+      "side": "left",
+      "part": "movement",
+      "source": "/workspace/generated_images/exec-ac4e25cd-0754-44a2-b41b-191c02e4f522.png",
+      "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-movement-v1.png",
+      "sha256": "ed65805b0b52747257e7e7fb4795a1c873afa62bda0416f73a2ee29c0751055e",
+      "bytes": 2252812,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "referencePhysicalPoseIndex": 0,
+      "sourceFrameHeight": 435,
+      "poseCount": 4,
+      "poses": [
+        {
+          "physicalPoseIndex": 0,
+          "cellIndex": 0,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-movement-v1.png",
+            "sha256": "ed65805b0b52747257e7e7fb4795a1c873afa62bda0416f73a2ee29c0751055e",
+            "rect": [
+              54,
+              62,
+              620,
+              439
+            ],
+            "pivot": [
+              0.541129,
+              0.995444
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 618,
+              "bottom": 437
+            }
+          },
+          "nativeComponentBounds": [
+            56,
+            64,
+            671,
+            498
+          ],
+          "alphaPixelsAtLeast16": 201781,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        },
+        {
+          "physicalPoseIndex": 1,
+          "cellIndex": 1,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-movement-v1.png",
+            "sha256": "ed65805b0b52747257e7e7fb4795a1c873afa62bda0416f73a2ee29c0751055e",
+            "rect": [
+              839,
+              62,
+              636,
+              438
+            ],
+            "pivot": [
+              0.540881,
+              0.995434
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 634,
+              "bottom": 436
+            }
+          },
+          "nativeComponentBounds": [
+            841,
+            64,
+            1472,
+            497
+          ],
+          "alphaPixelsAtLeast16": 205858,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        },
+        {
+          "physicalPoseIndex": 2,
+          "cellIndex": 2,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-movement-v1.png",
+            "sha256": "ed65805b0b52747257e7e7fb4795a1c873afa62bda0416f73a2ee29c0751055e",
+            "rect": [
+              39,
+              549,
+              646,
+              440
+            ],
+            "pivot": [
+              0.571207,
+              0.995455
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 644,
+              "bottom": 438
+            }
+          },
+          "nativeComponentBounds": [
+            41,
+            551,
+            682,
+            986
+          ],
+          "alphaPixelsAtLeast16": 197114,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        },
+        {
+          "physicalPoseIndex": 3,
+          "cellIndex": 3,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-movement-v1.png",
+            "sha256": "ed65805b0b52747257e7e7fb4795a1c873afa62bda0416f73a2ee29c0751055e",
+            "rect": [
+              849,
+              549,
+              621,
+              439
+            ],
+            "pivot": [
+              0.537842,
+              0.995444
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 619,
+              "bottom": 437
+            }
+          },
+          "nativeComponentBounds": [
+            851,
+            551,
+            1467,
+            985
+          ],
+          "alphaPixelsAtLeast16": 200822,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        }
+      ],
+      "physicalPixelsTransformed": false
+    },
+    {
+      "side": "right",
+      "part": "combat",
+      "source": "/workspace/generated_images/exec-0940586a-8d6c-4048-a3fd-dc6f3c2a30ea.png",
+      "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-combat-v1.png",
+      "sha256": "7abdcb9812ca0340de378788f2eab8fce8e17b336a7c1afce654e815a849e99f",
+      "bytes": 2236065,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "referencePhysicalPoseIndex": 5,
+      "sourceFrameHeight": 428,
+      "poseCount": 4,
+      "poses": [
+        {
+          "physicalPoseIndex": 4,
+          "cellIndex": 0,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-combat-v1.png",
+            "sha256": "7abdcb9812ca0340de378788f2eab8fce8e17b336a7c1afce654e815a849e99f",
+            "rect": [
+              100,
+              122,
+              597,
+              387
+            ],
+            "pivot": [
+              0.449749,
+              0.994832
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 595,
+              "bottom": 385
+            }
+          },
+          "nativeComponentBounds": [
+            102,
+            124,
+            694,
+            506
+          ],
+          "alphaPixelsAtLeast16": 168603,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        },
+        {
+          "physicalPoseIndex": 5,
+          "cellIndex": 1,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-combat-v1.png",
+            "sha256": "7abdcb9812ca0340de378788f2eab8fce8e17b336a7c1afce654e815a849e99f",
+            "rect": [
+              833,
+              83,
+              621,
+              432
+            ],
+            "pivot": [
+              0.451691,
+              0.99537
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 619,
+              "bottom": 430
+            }
+          },
+          "nativeComponentBounds": [
+            835,
+            85,
+            1451,
+            512
+          ],
+          "alphaPixelsAtLeast16": 176884,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        },
+        {
+          "physicalPoseIndex": 6,
+          "cellIndex": 2,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-combat-v1.png",
+            "sha256": "7abdcb9812ca0340de378788f2eab8fce8e17b336a7c1afce654e815a849e99f",
+            "rect": [
+              80,
+              558,
+              697,
+              428
+            ],
+            "pivot": [
+              0.498565,
+              0.995327
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 695,
+              "bottom": 426
+            }
+          },
+          "nativeComponentBounds": [
+            82,
+            560,
+            774,
+            983
+          ],
+          "alphaPixelsAtLeast16": 190740,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        },
+        {
+          "physicalPoseIndex": 7,
+          "cellIndex": 3,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-combat-v1.png",
+            "sha256": "7abdcb9812ca0340de378788f2eab8fce8e17b336a7c1afce654e815a849e99f",
+            "rect": [
+              857,
+              556,
+              656,
+              431
+            ],
+            "pivot": [
+              0.500762,
+              0.99536
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 654,
+              "bottom": 429
+            }
+          },
+          "nativeComponentBounds": [
+            859,
+            558,
+            1510,
+            984
+          ],
+          "alphaPixelsAtLeast16": 181066,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        }
+      ],
+      "physicalPixelsTransformed": false
+    },
+    {
+      "side": "left",
+      "part": "combat",
+      "source": "/workspace/generated_images/exec-4d964a44-430a-42db-9b52-914fc11efc5d.png",
+      "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-combat-v1.png",
+      "sha256": "c9ca686e3aa5d9c3ddfd266ad042c6edf3c9b25377ac243cd54dd75b380ea2f6",
+      "bytes": 2262850,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "referencePhysicalPoseIndex": 5,
+      "sourceFrameHeight": 437,
+      "poseCount": 4,
+      "poses": [
+        {
+          "physicalPoseIndex": 4,
+          "cellIndex": 0,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-combat-v1.png",
+            "sha256": "c9ca686e3aa5d9c3ddfd266ad042c6edf3c9b25377ac243cd54dd75b380ea2f6",
+            "rect": [
+              81,
+              72,
+              601,
+              426
+            ],
+            "pivot": [
+              0.518303,
+              0.995305
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 599,
+              "bottom": 424
+            }
+          },
+          "nativeComponentBounds": [
+            83,
+            74,
+            679,
+            495
+          ],
+          "alphaPixelsAtLeast16": 190849,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        },
+        {
+          "physicalPoseIndex": 5,
+          "cellIndex": 1,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-combat-v1.png",
+            "sha256": "c9ca686e3aa5d9c3ddfd266ad042c6edf3c9b25377ac243cd54dd75b380ea2f6",
+            "rect": [
+              824,
+              65,
+              658,
+              441
+            ],
+            "pivot": [
+              0.518997,
+              0.995465
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 656,
+              "bottom": 439
+            }
+          },
+          "nativeComponentBounds": [
+            826,
+            67,
+            1479,
+            503
+          ],
+          "alphaPixelsAtLeast16": 205349,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        },
+        {
+          "physicalPoseIndex": 6,
+          "cellIndex": 2,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-combat-v1.png",
+            "sha256": "c9ca686e3aa5d9c3ddfd266ad042c6edf3c9b25377ac243cd54dd75b380ea2f6",
+            "rect": [
+              22,
+              550,
+              720,
+              434
+            ],
+            "pivot": [
+              0.522917,
+              0.995392
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 718,
+              "bottom": 432
+            }
+          },
+          "nativeComponentBounds": [
+            24,
+            552,
+            739,
+            981
+          ],
+          "alphaPixelsAtLeast16": 200901,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        },
+        {
+          "physicalPoseIndex": 7,
+          "cellIndex": 3,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-combat-v1.png",
+            "sha256": "c9ca686e3aa5d9c3ddfd266ad042c6edf3c9b25377ac243cd54dd75b380ea2f6",
+            "rect": [
+              808,
+              557,
+              666,
+              424
+            ],
+            "pivot": [
+              0.497748,
+              0.995283
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 664,
+              "bottom": 422
+            }
+          },
+          "nativeComponentBounds": [
+            810,
+            559,
+            1471,
+            978
+          ],
+          "alphaPixelsAtLeast16": 191712,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        }
+      ],
+      "physicalPixelsTransformed": false
+    },
+    {
+      "side": "right",
+      "part": "cannon",
+      "source": "/workspace/generated_images/exec-47571d14-54e6-41f8-b525-f365da71697f.png",
+      "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-cannon-v1.png",
+      "sha256": "a0c13c8bc1c99b83cbd3e1c0b36438fe202b8aaf8a5ee19b67a8313307f51436",
+      "bytes": 2271072,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "referencePhysicalPoseIndex": 11,
+      "sourceFrameHeight": 424,
+      "poseCount": 4,
+      "poses": [
+        {
+          "physicalPoseIndex": 8,
+          "cellIndex": 0,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-cannon-v1.png",
+            "sha256": "a0c13c8bc1c99b83cbd3e1c0b36438fe202b8aaf8a5ee19b67a8313307f51436",
+            "rect": [
+              74,
+              63,
+              648,
+              441
+            ],
+            "pivot": [
+              0.414352,
+              0.995465
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 646,
+              "bottom": 439
+            }
+          },
+          "nativeComponentBounds": [
+            76,
+            65,
+            719,
+            501
+          ],
+          "alphaPixelsAtLeast16": 194667,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        },
+        {
+          "physicalPoseIndex": 9,
+          "cellIndex": 1,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-cannon-v1.png",
+            "sha256": "a0c13c8bc1c99b83cbd3e1c0b36438fe202b8aaf8a5ee19b67a8313307f51436",
+            "rect": [
+              843,
+              65,
+              656,
+              439
+            ],
+            "pivot": [
+              0.397104,
+              0.995444
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 654,
+              "bottom": 437
+            }
+          },
+          "nativeComponentBounds": [
+            845,
+            67,
+            1496,
+            501
+          ],
+          "alphaPixelsAtLeast16": 191106,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        },
+        {
+          "physicalPoseIndex": 10,
+          "cellIndex": 2,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-cannon-v1.png",
+            "sha256": "a0c13c8bc1c99b83cbd3e1c0b36438fe202b8aaf8a5ee19b67a8313307f51436",
+            "rect": [
+              83,
+              586,
+              617,
+              396
+            ],
+            "pivot": [
+              0.452188,
+              0.994949
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 615,
+              "bottom": 394
+            }
+          },
+          "nativeComponentBounds": [
+            85,
+            588,
+            697,
+            979
+          ],
+          "alphaPixelsAtLeast16": 171230,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        },
+        {
+          "physicalPoseIndex": 11,
+          "cellIndex": 3,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-cannon-v1.png",
+            "sha256": "a0c13c8bc1c99b83cbd3e1c0b36438fe202b8aaf8a5ee19b67a8313307f51436",
+            "rect": [
+              808,
+              559,
+              653,
+              428
+            ],
+            "pivot": [
+              0.45559,
+              0.995327
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 651,
+              "bottom": 426
+            }
+          },
+          "nativeComponentBounds": [
+            810,
+            561,
+            1458,
+            984
+          ],
+          "alphaPixelsAtLeast16": 186697,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        }
+      ],
+      "physicalPixelsTransformed": false
+    },
+    {
+      "side": "left",
+      "part": "cannon",
+      "source": "/workspace/generated_images/exec-f4df2f7e-d73e-4566-9239-96a6e7235428.png",
+      "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-cannon-v1.png",
+      "sha256": "c5173777b67ca18644ef7e53de6ba2150774dbc28b4802933dc8a5da7450dba9",
+      "bytes": 2283160,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "referencePhysicalPoseIndex": 11,
+      "sourceFrameHeight": 422,
+      "poseCount": 4,
+      "poses": [
+        {
+          "physicalPoseIndex": 8,
+          "cellIndex": 0,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-cannon-v1.png",
+            "sha256": "c5173777b67ca18644ef7e53de6ba2150774dbc28b4802933dc8a5da7450dba9",
+            "rect": [
+              53,
+              65,
+              671,
+              437
+            ],
+            "pivot": [
+              0.599851,
+              0.995423
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 669,
+              "bottom": 435
+            }
+          },
+          "nativeComponentBounds": [
+            55,
+            67,
+            721,
+            499
+          ],
+          "alphaPixelsAtLeast16": 199636,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        },
+        {
+          "physicalPoseIndex": 9,
+          "cellIndex": 1,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-cannon-v1.png",
+            "sha256": "c5173777b67ca18644ef7e53de6ba2150774dbc28b4802933dc8a5da7450dba9",
+            "rect": [
+              778,
+              58,
+              725,
+              444
+            ],
+            "pivot": [
+              0.565517,
+              0.995495
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 723,
+              "bottom": 442
+            }
+          },
+          "nativeComponentBounds": [
+            780,
+            60,
+            1500,
+            499
+          ],
+          "alphaPixelsAtLeast16": 207188,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        },
+        {
+          "physicalPoseIndex": 10,
+          "cellIndex": 2,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-cannon-v1.png",
+            "sha256": "c5173777b67ca18644ef7e53de6ba2150774dbc28b4802933dc8a5da7450dba9",
+            "rect": [
+              86,
+              593,
+              621,
+              381
+            ],
+            "pivot": [
+              0.544283,
+              0.994751
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 619,
+              "bottom": 379
+            }
+          },
+          "nativeComponentBounds": [
+            88,
+            595,
+            704,
+            971
+          ],
+          "alphaPixelsAtLeast16": 177674,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        },
+        {
+          "physicalPoseIndex": 11,
+          "cellIndex": 3,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-cannon-v1.png",
+            "sha256": "c5173777b67ca18644ef7e53de6ba2150774dbc28b4802933dc8a5da7450dba9",
+            "rect": [
+              845,
+              550,
+              661,
+              426
+            ],
+            "pivot": [
+              0.525719,
+              0.995305
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 659,
+              "bottom": 424
+            }
+          },
+          "nativeComponentBounds": [
+            847,
+            552,
+            1503,
+            973
+          ],
+          "alphaPixelsAtLeast16": 187016,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        }
+      ],
+      "physicalPixelsTransformed": false
+    },
+    {
+      "side": "right",
+      "part": "recovery",
+      "source": "/workspace/generated_images/exec-c4940882-ca17-48a9-ad5a-3b6a8840f888.png",
+      "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-recovery-v1.png",
+      "sha256": "438ec76283d18e490f9178814d8d0ac5134b3ddc2ceaee4d607fd68160281219",
+      "bytes": 2248837,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "referencePhysicalPoseIndex": 12,
+      "sourceFrameHeight": 445,
+      "poseCount": 4,
+      "poses": [
+        {
+          "physicalPoseIndex": 12,
+          "cellIndex": 0,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-recovery-v1.png",
+            "sha256": "438ec76283d18e490f9178814d8d0ac5134b3ddc2ceaee4d607fd68160281219",
+            "rect": [
+              116,
+              78,
+              621,
+              449
+            ],
+            "pivot": [
+              0.44686,
+              0.995546
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 619,
+              "bottom": 447
+            }
+          },
+          "nativeComponentBounds": [
+            118,
+            80,
+            734,
+            524
+          ],
+          "alphaPixelsAtLeast16": 191652,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        },
+        {
+          "physicalPoseIndex": 13,
+          "cellIndex": 1,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-recovery-v1.png",
+            "sha256": "438ec76283d18e490f9178814d8d0ac5134b3ddc2ceaee4d607fd68160281219",
+            "rect": [
+              882,
+              38,
+              603,
+              489
+            ],
+            "pivot": [
+              0.451078,
+              0.99591
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 601,
+              "bottom": 487
+            }
+          },
+          "nativeComponentBounds": [
+            884,
+            40,
+            1482,
+            524
+          ],
+          "alphaPixelsAtLeast16": 181359,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        },
+        {
+          "physicalPoseIndex": 14,
+          "cellIndex": 2,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-recovery-v1.png",
+            "sha256": "438ec76283d18e490f9178814d8d0ac5134b3ddc2ceaee4d607fd68160281219",
+            "rect": [
+              54,
+              621,
+              706,
+              356
+            ],
+            "pivot": [
+              0.46034,
+              0.994382
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 704,
+              "bottom": 354
+            }
+          },
+          "nativeComponentBounds": [
+            56,
+            623,
+            757,
+            974
+          ],
+          "alphaPixelsAtLeast16": 178849,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        },
+        {
+          "physicalPoseIndex": 15,
+          "cellIndex": 3,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-recovery-v1.png",
+            "sha256": "438ec76283d18e490f9178814d8d0ac5134b3ddc2ceaee4d607fd68160281219",
+            "rect": [
+              867,
+              594,
+              625,
+              412
+            ],
+            "pivot": [
+              0.4728,
+              0.995146
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 623,
+              "bottom": 410
+            }
+          },
+          "nativeComponentBounds": [
+            869,
+            596,
+            1489,
+            1003
+          ],
+          "alphaPixelsAtLeast16": 175355,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        }
+      ],
+      "physicalPixelsTransformed": false
+    },
+    {
+      "side": "left",
+      "part": "recovery",
+      "source": "/workspace/generated_images/exec-2ab25419-072b-454d-ac78-6dea3307c8ae.png",
+      "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-recovery-v1.png",
+      "sha256": "0c96ff006a04cf8019d72872a3ea2f089fa4eb7ceefefa25c1ba864c88aff954",
+      "bytes": 2312538,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "referencePhysicalPoseIndex": 12,
+      "sourceFrameHeight": 442,
+      "poseCount": 4,
+      "poses": [
+        {
+          "physicalPoseIndex": 12,
+          "cellIndex": 0,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-recovery-v1.png",
+            "sha256": "0c96ff006a04cf8019d72872a3ea2f089fa4eb7ceefefa25c1ba864c88aff954",
+            "rect": [
+              63,
+              59,
+              655,
+              446
+            ],
+            "pivot": [
+              0.546565,
+              0.995516
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 653,
+              "bottom": 444
+            }
+          },
+          "nativeComponentBounds": [
+            65,
+            61,
+            715,
+            502
+          ],
+          "alphaPixelsAtLeast16": 210523,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        },
+        {
+          "physicalPoseIndex": 13,
+          "cellIndex": 1,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-recovery-v1.png",
+            "sha256": "0c96ff006a04cf8019d72872a3ea2f089fa4eb7ceefefa25c1ba864c88aff954",
+            "rect": [
+              826,
+              52,
+              659,
+              454
+            ],
+            "pivot": [
+              0.553111,
+              0.995595
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 657,
+              "bottom": 452
+            }
+          },
+          "nativeComponentBounds": [
+            828,
+            54,
+            1482,
+            503
+          ],
+          "alphaPixelsAtLeast16": 189391,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        },
+        {
+          "physicalPoseIndex": 14,
+          "cellIndex": 2,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-recovery-v1.png",
+            "sha256": "0c96ff006a04cf8019d72872a3ea2f089fa4eb7ceefefa25c1ba864c88aff954",
+            "rect": [
+              62,
+              599,
+              751,
+              355
+            ],
+            "pivot": [
+              0.525965,
+              0.994366
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 749,
+              "bottom": 353
+            }
+          },
+          "nativeComponentBounds": [
+            64,
+            601,
+            810,
+            951
+          ],
+          "alphaPixelsAtLeast16": 169854,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        },
+        {
+          "physicalPoseIndex": 15,
+          "cellIndex": 3,
+          "frame": {
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-recovery-v1.png",
+            "sha256": "0c96ff006a04cf8019d72872a3ea2f089fa4eb7ceefefa25c1ba864c88aff954",
+            "rect": [
+              845,
+              566,
+              644,
+              421
+            ],
+            "pivot": [
+              0.552795,
+              0.995249
+            ],
+            "previewStatureBounds": {
+              "left": 2,
+              "top": 2,
+              "right": 642,
+              "bottom": 419
+            }
+          },
+          "nativeComponentBounds": [
+            847,
+            568,
+            1486,
+            984
+          ],
+          "alphaPixelsAtLeast16": 196507,
+          "bootCountPhysicallyReviewed": 4,
+          "operatorCount": 2,
+          "reviewStatus": "approved-four-distinct-human-boots-two-pairs",
+          "sourcePixelsChanged": false
+        }
+      ],
+      "physicalPixelsTransformed": false
+    }
+  ],
+  "selectedFilesForRootInstallation": [
+    {
+      "source": "/workspace/generated_images/exec-b0cd2ddb-8a7b-4c6a-8b07-3215a77f5856.png",
+      "runtimePath": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-movement-v1.png",
+      "sha256": "67061d51633989bd7fe09c5a273a8d1ab619cc027f892c4e2451f56487747e01",
+      "bytes": 2261909
+    },
+    {
+      "source": "/workspace/generated_images/exec-ac4e25cd-0754-44a2-b41b-191c02e4f522.png",
+      "runtimePath": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-movement-v1.png",
+      "sha256": "ed65805b0b52747257e7e7fb4795a1c873afa62bda0416f73a2ee29c0751055e",
+      "bytes": 2252812
+    },
+    {
+      "source": "/workspace/generated_images/exec-0940586a-8d6c-4048-a3fd-dc6f3c2a30ea.png",
+      "runtimePath": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-combat-v1.png",
+      "sha256": "7abdcb9812ca0340de378788f2eab8fce8e17b336a7c1afce654e815a849e99f",
+      "bytes": 2236065
+    },
+    {
+      "source": "/workspace/generated_images/exec-4d964a44-430a-42db-9b52-914fc11efc5d.png",
+      "runtimePath": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-combat-v1.png",
+      "sha256": "c9ca686e3aa5d9c3ddfd266ad042c6edf3c9b25377ac243cd54dd75b380ea2f6",
+      "bytes": 2262850
+    },
+    {
+      "source": "/workspace/generated_images/exec-47571d14-54e6-41f8-b525-f365da71697f.png",
+      "runtimePath": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-cannon-v1.png",
+      "sha256": "a0c13c8bc1c99b83cbd3e1c0b36438fe202b8aaf8a5ee19b67a8313307f51436",
+      "bytes": 2271072
+    },
+    {
+      "source": "/workspace/generated_images/exec-f4df2f7e-d73e-4566-9239-96a6e7235428.png",
+      "runtimePath": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-cannon-v1.png",
+      "sha256": "c5173777b67ca18644ef7e53de6ba2150774dbc28b4802933dc8a5da7450dba9",
+      "bytes": 2283160
+    },
+    {
+      "source": "/workspace/generated_images/exec-c4940882-ca17-48a9-ad5a-3b6a8840f888.png",
+      "runtimePath": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-recovery-v1.png",
+      "sha256": "438ec76283d18e490f9178814d8d0ac5134b3ddc2ceaee4d607fd68160281219",
+      "bytes": 2248837
+    },
+    {
+      "source": "/workspace/generated_images/exec-2ab25419-072b-454d-ac78-6dea3307c8ae.png",
+      "runtimePath": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-recovery-v1.png",
+      "sha256": "0c96ff006a04cf8019d72872a3ea2f089fa4eb7ceefefa25c1ba864c88aff954",
+      "bytes": 2312538
+    }
+  ],
+  "modules": [
+    {
+      "path": "/workspace/cqc-pass20-box-anatomy/runtime/src/cqc-pass20-pw-box-corrections.js",
+      "bytes": 83326,
+      "sha256": "030182eab0599199c2a0c22294a7cf0a4c671db776159685ca0afa23a406374b"
+    },
+    {
+      "path": "/workspace/cqc-pass20-box-anatomy/runtime/src/cqc-pass20-box-cannon-anchors.js",
+      "bytes": 5965,
+      "sha256": "f51cd05eba95101e4841d77f94c4fa4ab1a140407d45d5f06c8dd0f1d587a09b"
+    }
+  ],
+  "cannonAnchors": {
+    "pass19__box_tank_pw": {
+      "sides": {
+        "right": {
+          "11": {
+            "uid": "pass19__box_tank_pw",
+            "side": "right",
+            "action": "shoot",
+            "actionFrameIndex": 1,
+            "physicalPoseIndex": 11,
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-cannon-v1.png",
+            "sha256": "a0c13c8bc1c99b83cbd3e1c0b36438fe202b8aaf8a5ee19b67a8313307f51436",
+            "sourceSHA256": "a0c13c8bc1c99b83cbd3e1c0b36438fe202b8aaf8a5ee19b67a8313307f51436",
+            "source": "/workspace/generated_images/exec-47571d14-54e6-41f8-b525-f365da71697f.png",
+            "rect": [
+              808,
+              559,
+              653,
+              428
+            ],
+            "pivot": [
+              0.45559,
+              0.995327
+            ],
+            "sourcePixel": [
+              1451.5,
+              607.0
+            ],
+            "frameFraction": [
+              0.98545176,
+              0.11214953
+            ],
+            "measurement": {
+              "threshold": 200,
+              "searchUpperFrameFraction": 0.32,
+              "endcapSliceColumns": 3,
+              "sourceLocalTipColumn": 643,
+              "tipCapAlphaSpanY": [
+                22,
+                73
+              ]
+            },
+            "physicallyReviewed": true,
+            "reviewer": "pass20-pw-box-cannon-native-source-endcap-review",
+            "scope": "Visible square cannon endpoint measured from selected native recoil pose; unchanged PNG bytes."
+          }
+        },
+        "left": {
+          "11": {
+            "uid": "pass19__box_tank_pw",
+            "side": "left",
+            "action": "shoot",
+            "actionFrameIndex": 1,
+            "physicalPoseIndex": 11,
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-cannon-v1.png",
+            "sha256": "c5173777b67ca18644ef7e53de6ba2150774dbc28b4802933dc8a5da7450dba9",
+            "sourceSHA256": "c5173777b67ca18644ef7e53de6ba2150774dbc28b4802933dc8a5da7450dba9",
+            "source": "/workspace/generated_images/exec-f4df2f7e-d73e-4566-9239-96a6e7235428.png",
+            "rect": [
+              845,
+              550,
+              661,
+              426
+            ],
+            "pivot": [
+              0.525719,
+              0.995305
+            ],
+            "sourcePixel": [
+              853.5,
+              642.5
+            ],
+            "frameFraction": [
+              0.0128593,
+              0.21713615
+            ],
+            "measurement": {
+              "threshold": 200,
+              "searchUpperFrameFraction": 0.32,
+              "endcapSliceColumns": 3,
+              "sourceLocalTipColumn": 8,
+              "tipCapAlphaSpanY": [
+                71,
+                113
+              ]
+            },
+            "physicallyReviewed": true,
+            "reviewer": "pass20-pw-box-cannon-native-source-endcap-review",
+            "scope": "Visible square cannon endpoint measured from selected native recoil pose; unchanged PNG bytes."
+          }
+        }
+      }
+    },
+    "pass19__box_tank_stun_pw": {
+      "sides": {
+        "right": {
+          "11": {
+            "uid": "pass19__box_tank_stun_pw",
+            "side": "right",
+            "action": "shoot",
+            "actionFrameIndex": 1,
+            "physicalPoseIndex": 11,
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-cannon-v1.png",
+            "sha256": "a0c13c8bc1c99b83cbd3e1c0b36438fe202b8aaf8a5ee19b67a8313307f51436",
+            "sourceSHA256": "a0c13c8bc1c99b83cbd3e1c0b36438fe202b8aaf8a5ee19b67a8313307f51436",
+            "source": "/workspace/generated_images/exec-47571d14-54e6-41f8-b525-f365da71697f.png",
+            "rect": [
+              808,
+              559,
+              653,
+              428
+            ],
+            "pivot": [
+              0.45559,
+              0.995327
+            ],
+            "sourcePixel": [
+              1451.5,
+              607.0
+            ],
+            "frameFraction": [
+              0.98545176,
+              0.11214953
+            ],
+            "measurement": {
+              "threshold": 200,
+              "searchUpperFrameFraction": 0.32,
+              "endcapSliceColumns": 3,
+              "sourceLocalTipColumn": 643,
+              "tipCapAlphaSpanY": [
+                22,
+                73
+              ]
+            },
+            "physicallyReviewed": true,
+            "reviewer": "pass20-pw-box-cannon-native-source-endcap-review",
+            "scope": "Visible square cannon endpoint measured from selected native recoil pose; unchanged PNG bytes."
+          }
+        },
+        "left": {
+          "11": {
+            "uid": "pass19__box_tank_stun_pw",
+            "side": "left",
+            "action": "shoot",
+            "actionFrameIndex": 1,
+            "physicalPoseIndex": 11,
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-cannon-v1.png",
+            "sha256": "c5173777b67ca18644ef7e53de6ba2150774dbc28b4802933dc8a5da7450dba9",
+            "sourceSHA256": "c5173777b67ca18644ef7e53de6ba2150774dbc28b4802933dc8a5da7450dba9",
+            "source": "/workspace/generated_images/exec-f4df2f7e-d73e-4566-9239-96a6e7235428.png",
+            "rect": [
+              845,
+              550,
+              661,
+              426
+            ],
+            "pivot": [
+              0.525719,
+              0.995305
+            ],
+            "sourcePixel": [
+              853.5,
+              642.5
+            ],
+            "frameFraction": [
+              0.0128593,
+              0.21713615
+            ],
+            "measurement": {
+              "threshold": 200,
+              "searchUpperFrameFraction": 0.32,
+              "endcapSliceColumns": 3,
+              "sourceLocalTipColumn": 8,
+              "tipCapAlphaSpanY": [
+                71,
+                113
+              ]
+            },
+            "physicallyReviewed": true,
+            "reviewer": "pass20-pw-box-cannon-native-source-endcap-review",
+            "scope": "Visible square cannon endpoint measured from selected native recoil pose; unchanged PNG bytes."
+          }
+        }
+      }
+    },
+    "pass19__box_tank_smoke_pw": {
+      "sides": {
+        "right": {
+          "11": {
+            "uid": "pass19__box_tank_smoke_pw",
+            "side": "right",
+            "action": "shoot",
+            "actionFrameIndex": 1,
+            "physicalPoseIndex": 11,
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/right-cannon-v1.png",
+            "sha256": "a0c13c8bc1c99b83cbd3e1c0b36438fe202b8aaf8a5ee19b67a8313307f51436",
+            "sourceSHA256": "a0c13c8bc1c99b83cbd3e1c0b36438fe202b8aaf8a5ee19b67a8313307f51436",
+            "source": "/workspace/generated_images/exec-47571d14-54e6-41f8-b525-f365da71697f.png",
+            "rect": [
+              808,
+              559,
+              653,
+              428
+            ],
+            "pivot": [
+              0.45559,
+              0.995327
+            ],
+            "sourcePixel": [
+              1451.5,
+              607.0
+            ],
+            "frameFraction": [
+              0.98545176,
+              0.11214953
+            ],
+            "measurement": {
+              "threshold": 200,
+              "searchUpperFrameFraction": 0.32,
+              "endcapSliceColumns": 3,
+              "sourceLocalTipColumn": 643,
+              "tipCapAlphaSpanY": [
+                22,
+                73
+              ]
+            },
+            "physicallyReviewed": true,
+            "reviewer": "pass20-pw-box-cannon-native-source-endcap-review",
+            "scope": "Visible square cannon endpoint measured from selected native recoil pose; unchanged PNG bytes."
+          }
+        },
+        "left": {
+          "11": {
+            "uid": "pass19__box_tank_smoke_pw",
+            "side": "left",
+            "action": "shoot",
+            "actionFrameIndex": 1,
+            "physicalPoseIndex": 11,
+            "file": "assets/combat-sprites-pass20-boxes/box-tank-pw/left-cannon-v1.png",
+            "sha256": "c5173777b67ca18644ef7e53de6ba2150774dbc28b4802933dc8a5da7450dba9",
+            "sourceSHA256": "c5173777b67ca18644ef7e53de6ba2150774dbc28b4802933dc8a5da7450dba9",
+            "source": "/workspace/generated_images/exec-f4df2f7e-d73e-4566-9239-96a6e7235428.png",
+            "rect": [
+              845,
+              550,
+              661,
+              426
+            ],
+            "pivot": [
+              0.525719,
+              0.995305
+            ],
+            "sourcePixel": [
+              853.5,
+              642.5
+            ],
+            "frameFraction": [
+              0.0128593,
+              0.21713615
+            ],
+            "measurement": {
+              "threshold": 200,
+              "searchUpperFrameFraction": 0.32,
+              "endcapSliceColumns": 3,
+              "sourceLocalTipColumn": 8,
+              "tipCapAlphaSpanY": [
+                71,
+                113
+              ]
+            },
+            "physicallyReviewed": true,
+            "reviewer": "pass20-pw-box-cannon-native-source-endcap-review",
+            "scope": "Visible square cannon endpoint measured from selected native recoil pose; unchanged PNG bytes."
+          }
+        }
+      }
+    }
+  },
+  "rejectedGeneratedSources": [
+    {
+      "reason": "initial-right-three-boots",
+      "path": "/workspace/generated_images/exec-38d83950-0635-4c4a-a7fa-d6ecb563e016.png",
+      "bytes": 2011111,
+      "sha256": "ef6c70ca5dc53fd9195a729ef81992b6534435699c328adf6127cc0c53e7ac6c",
+      "runtimeSelected": false,
+      "sourceRetained": true
+    },
+    {
+      "reason": "initial-left-three-boots",
+      "path": "/workspace/generated_images/exec-a78b5de5-49ac-42cb-8552-5956b412a47a.png",
+      "bytes": 2070827,
+      "sha256": "2a1ef841b4f114316480579656468d1fff7fc15ea4f2252313be143c8a216ee6",
+      "runtimeSelected": false,
+      "sourceRetained": true
+    },
+    {
+      "reason": "second-right-mixed-faces-three-boots",
+      "path": "/workspace/generated_images/exec-c23cc13a-48cb-4594-a2ee-6f013a60f844.png",
+      "bytes": 2477639,
+      "sha256": "6a63482b02988a3f1b48575660abf1859fc2afed51f5e1e19b6a0828e99ffd60",
+      "runtimeSelected": false,
+      "sourceRetained": true
+    },
+    {
+      "reason": "third-right-noncanonical-body-and-incomplete-four-boot-count",
+      "path": "/workspace/generated_images/exec-dd82cece-bbc5-4aef-8e57-25680ad77950.png",
+      "bytes": 1920976,
+      "sha256": "224fc09d8cd6617448673c798bb18a034c5123761423f427b252c6aeba30b515",
+      "runtimeSelected": false,
+      "sourceRetained": true
+    }
+  ],
+  "sourcePixelsChanged": false,
+  "originalSourceFilesDeleted": false,
+  "baseCatalogFileChanged": false,
+  "gameplayProfilesChanged": false,
+  "heightSettingsChanged": false,
+  "nativeFacingRasterMirrored": false,
+  "limitations": [
+    "Source review is limited to eight Peace Walker equipment bodies and their native keyposes, not every franchise sprite.",
+    "New sources are source-approved; final app loading, live match rendering and projectile socket alignment need root integration QA.",
+    "Ammunition loads share the same exterior family. No uninspected official STN/SMK-specific alternate texture or insignia is invented."
+  ]
+}

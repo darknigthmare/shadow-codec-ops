@@ -1,0 +1,38 @@
+{"stage": "preflight-passed", "changes": 58, "uniqueBlobs": 58, "execute": true}
+{"stage": "verified-blob", "path": "docs/cqc-reprise/pass20/PolicyVM-qualified-evidence.json", "bytes": 8039}
+{"stage": "verified-blob", "path": "docs/cqc-reprise/pass20/Preview-qualified-evidence.json", "bytes": 7215}
+{"stage": "verified-blob", "path": "docs/cqc-reprise/pass20/README.md", "bytes": 2462}
+{"stage": "verified-blob", "path": "docs/cqc-reprise/pass20/RetroArt-qualified-evidence.json", "bytes": 10134}
+{"stage": "verified-blob", "path": "docs/cqc-reprise/pass20/RetroMatch-qualified-evidence.json", "bytes": 43728}
+{"stage": "verified-blob", "path": "docs/cqc-reprise/pass20/SOURCE_ART_INTEGRATION_ACTUAL_V1.json", "bytes": 13428}
+{"stage": "verified-blob", "path": "docs/cqc-reprise/pass20/TankBoxMatch-qualified-evidence.json", "bytes": 4143}
+{"stage": "verified-blob", "path": "docs/cqc-reprise/pass20/WARDROBE_COVERAGE_BACKLOG_FINAL_ACTUAL_V1.json", "bytes": 12117}
+{"stage": "verified-blob", "path": "public/cqc/assets/combat-costumes-pass20/core__meryl_mgs1/retro-msx/left-v1.png", "bytes": 1103255}
+{"stage": "verified-blob", "path": "public/cqc/assets/combat-costumes-pass20/core__meryl_mgs1/retro-msx/right-v1.png", "bytes": 1002323}
+{"stage": "verified-blob", "path": "public/cqc/assets/combat-costumes-pass20/core__ocelot_mgs1/metalgear/left-mechanical-v1.png", "bytes": 2106134}
+{"stage": "verified-blob", "path": "public/cqc/assets/combat-costumes-pass20/core__ocelot_mgs1/metalgear/right-mechanical-v1.png", "bytes": 2140675}
+{"stage": "verified-blob", "path": "public/cqc/assets/combat-costumes-pass20/core__raiden_mgs4/retro-msx/left-v1.png", "bytes": 1283667}
+{"stage": "verified-blob", "path": "public/cqc/assets/combat-costumes-pass20/core__raiden_mgs4/retro-msx/right-v1.png", "bytes": 1323901}
+{"stage": "verified-blob", "path": "public/cqc/assets/combat-costumes-pass20/core__solid/metalgear/left-mechanical-v1.png", "bytes": 2478000}
+{"stage": "verified-blob", "path": "public/cqc/assets/combat-costumes-pass20/core__solid/metalgear/right-mechanical-v1.png", "bytes": 2361078}
+{"stage": "verified-blob", "path": "public/cqc/assets/combat-costumes-pass20/core__solid/retro-msx/left-v1.png", "bytes": 1134183}
+{"stage": "verified-blob", "path": "public/cqc/assets/combat-costumes-pass20/core__solid/retro-msx/right-v1.png", "bytes": 1117802}
+{"stage": "verified-blob", "path": "public/cqc/assets/combat-costumes-pass20/core__venom/retro-msx/left-v1.png", "bytes": 1440778}
+{"stage": "verified-blob", "path": "public/cqc/assets/combat-costumes-pass20/core__venom/retro-msx/right-v1.png", "bytes": 1354251}
+{"stage": "verified-blob", "path": "public/cqc/assets/combat-costumes-pass20/pass19__dwarf_gekko_humanoid_mgr/trenchcoat/left-mechanical-v1.png", "bytes": 2007901}
+{"stage": "verified-blob", "path": "public/cqc/assets/combat-costumes-pass20/pass19__dwarf_gekko_humanoid_mgr/trenchcoat/right-mechanical-v1.png", "bytes": 2058003}
+{"stage": "verified-blob", "path": "public/cqc/assets/combat-sprites-pass20-boxes/box-tank-pw/left-cannon-v1.png", "bytes": 2283160}
+{"stage": "verified-blob", "path": "public/cqc/assets/combat-sprites-pass20-boxes/box-tank-pw/left-combat-v1.png", "bytes": 2262850}
+{"stage": "verified-blob", "path": "public/cqc/assets/combat-sprites-pass20-boxes/box-tank-pw/left-movement-v1.png", "bytes": 2252812}
+Traceback (most recent call last):
+  File "/workspace/cqc-pass20/integration/publish-reviewed-release-v1.py", line 62, in <module>
+    response = t.api('POST','git/blobs',{'content':base64.b64encode(raw).decode(),'encoding':'base64'})
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/cqc-pass9-publication-preparation/publish_verified_shadow_cqc_pass9.py", line 87, in api
+    raise RuntimeError('GitHub API ' + method + ' ' + path + ': ' + error)
+RuntimeError: GitHub API POST git/blobs: gh: Bad credentials (HTTP 401)
+{
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}

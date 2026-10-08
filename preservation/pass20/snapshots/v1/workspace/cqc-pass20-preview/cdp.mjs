@@ -1,0 +1,10 @@
+import { writeFile } from 'node:fs/promises';
+export async function connect(){
+ const version=await fetch('http://127.0.0.1:9392/json/version').then(r=>r.json());
+ const ws=new WebSocket(version.webSocketDebuggerUrl), pending=new Map(),events=[];let sequence=0;
+ await new Promise((resolve,reject)=>{ws.addEventListener('open',resolve,{once:true});ws.addEventListener('error',reject,{once:true});});
+ ws.addEventListener('message',event=>{const message=JSON.parse(event.data);if(message.id){const request=pending.get(message.id);if(request){pending.delete(message.id);clearTimeout(request.timeout);message.error?request.reject(Error(JSON.stringify(message.error))):request.resolve(message.result);}}else events.push(message);});
+ function send(method,params={},sessionId){return new Promise((resolve,reject)=>{const id=++sequence,timeout=setTimeout(()=>{pending.delete(id);reject(Error('CDP timeout '+method));},30000);pending.set(id,{resolve,reject,timeout});ws.send(JSON.stringify({id,method,params,...sessionId?{sessionId}:{}}));});}
+ async function page(url){const {targetId}=await send('Target.createTarget',{url:'about:blank'});const {sessionId}=await send('Target.attachToTarget',{targetId,flatten:true});await send('Page.enable',{},sessionId);await send('Runtime.enable',{},sessionId);await send('Network.enable',{},sessionId);await send('Network.setCacheDisabled',{cacheDisabled:true},sessionId);await send('Page.navigate',{url},sessionId);return {targetId,sessionId,send:(m,p)=>send(m,p,sessionId),async evaluate(expression){const result=await send('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true},sessionId);if(result.exceptionDetails)throw Error(JSON.stringify(result.exceptionDetails));return result.result.value;},async screenshot(path){const result=await send('Page.captureScreenshot',{format:'png'},sessionId);await writeFile(path,Buffer.from(result.data,'base64'));return path;},close:()=>send('Target.closeTarget',{targetId})};}
+ return {send,page,events,close:()=>ws.close()};
+}

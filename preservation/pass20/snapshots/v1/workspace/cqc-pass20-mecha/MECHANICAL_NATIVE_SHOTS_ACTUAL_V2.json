@@ -1,0 +1,256 @@
+{
+  "schema": "cqc.pass20.native-mechanical-live-shots/1",
+  "startedAt": "2026-10-08T06:46:12.805Z",
+  "cases": [],
+  "qualification": "Natural game frames, supported public start API, real CDP keyboard events. A temporary per-match array-push observer copies actual projectile birth arguments and returns the original push result; actor positions, attacks, timers, damage and simulation are not assigned.",
+  "currentSetup": {
+    "frame": 111,
+    "dojo": false,
+    "mode": "local",
+    "bindings": {
+      "p1": {
+        "l": "ArrowLeft",
+        "r": "ArrowRight",
+        "u": "ArrowUp",
+        "d": "ArrowDown",
+        "light": "KeyJ",
+        "heavy": "KeyK",
+        "special": "KeyI",
+        "throw": "KeyU",
+        "super": "KeyO",
+        "utility": "KeyL",
+        "g": "Space",
+        "dash": "ShiftRight"
+      },
+      "p2": {
+        "l": "KeyA",
+        "r": "KeyD",
+        "u": "KeyW",
+        "d": "KeyS",
+        "light": "KeyF",
+        "heavy": "KeyG",
+        "special": "KeyT",
+        "throw": "KeyR",
+        "super": "KeyY",
+        "utility": "KeyH",
+        "g": "KeyQ",
+        "dash": "KeyE"
+      }
+    },
+    "actors": [
+      {
+        "uid": "core__solid",
+        "costume": "metalgear",
+        "face": 1
+      },
+      {
+        "uid": "core__ocelot_mgs1",
+        "costume": "metalgear",
+        "face": -1
+      }
+    ]
+  },
+  "status": "failed",
+  "error": "Error: Timeout __pass20Births.some(x=>x.owner===0)&&__pass20Births.some(x=>x.owner===1)\n    at wait (file:///workspace/cqc-pass20-mecha/browser-native-mechanical-shots-v2.mjs:6:143)\n    at async file:///workspace/cqc-pass20-mecha/browser-native-mechanical-shots-v2.mjs:20:3",
+  "failureState": {
+    "births": [],
+    "frame": 1436,
+    "phase": "fight",
+    "diagnostics": {
+      "token": null,
+      "starts": 0,
+      "results": 0,
+      "rejected": 0,
+      "paused": false,
+      "running": true,
+      "keys": [],
+      "finishWindow": false,
+      "finishScene": false
+    },
+    "focus": "<body><div id=\"arcadeWait47\" class=\"arcade-wait47 hidden\">ARCADE LINK // EN ATTENTE DU DOSSIER</div>\n<section id=\"selectScreen\" class=\"screen hidden\"><header class=\"topbar\"><div class=\"brand\"><small>RÉSEAU D’OPÉRATIONS</small>CQC VERSUS <sp",
+    "players": [
+      {
+        "uid": "core__solid",
+        "costume": "metalgear",
+        "feedback": "",
+        "life": 9422,
+        "stats": {
+          "attempts": 1,
+          "starts": 1,
+          "activations": 1,
+          "hits": 1,
+          "damage": 510,
+          "parries": 0,
+          "blocked": 0,
+          "healed": 0,
+          "denied": 0
+        },
+        "face": 1,
+        "moves": {
+          "light": {
+            "kind": "melee",
+            "tag": "strike",
+            "startup": 6,
+            "active": 3,
+            "slot": "light"
+          },
+          "heavy": {
+            "kind": "melee",
+            "tag": "strike",
+            "startup": 14,
+            "active": 5,
+            "slot": "heavy"
+          },
+          "low": {
+            "kind": "melee",
+            "tag": "strike",
+            "startup": 12,
+            "active": 4,
+            "slot": "low"
+          },
+          "throw": {
+            "kind": "melee",
+            "tag": "grapple",
+            "startup": 8,
+            "active": 2,
+            "slot": "throw"
+          },
+          "special": {
+            "kind": "projectile",
+            "tag": "ballistic",
+            "startup": 14,
+            "active": 1,
+            "slot": "special"
+          },
+          "specialDown": {
+            "kind": "projectile",
+            "tag": "explosive",
+            "startup": 24,
+            "active": 1,
+            "slot": "specialDown"
+          },
+          "specialForward": {
+            "kind": "melee",
+            "tag": "strike",
+            "startup": 18,
+            "active": 7,
+            "slot": "specialForward"
+          },
+          "specialBack": {
+            "kind": "mobility",
+            "tag": "movement",
+            "startup": 4,
+            "active": 18,
+            "slot": "specialBack"
+          },
+          "super": {
+            "kind": "projectile",
+            "tag": "ballistic",
+            "startup": 35,
+            "active": 1,
+            "slot": "super"
+          },
+          "utility": {
+            "kind": "reload",
+            "tag": "reload",
+            "startup": 54,
+            "active": 1,
+            "slot": "utility"
+          }
+        }
+      },
+      {
+        "uid": "core__ocelot_mgs1",
+        "costume": "metalgear",
+        "feedback": "",
+        "life": 9490,
+        "stats": {
+          "attempts": 1,
+          "starts": 1,
+          "activations": 1,
+          "hits": 1,
+          "damage": 578,
+          "parries": 0,
+          "blocked": 0,
+          "healed": 0,
+          "denied": 0
+        },
+        "face": -1,
+        "moves": {
+          "light": {
+            "kind": "melee",
+            "tag": "strike",
+            "startup": 6,
+            "active": 3,
+            "slot": "light"
+          },
+          "heavy": {
+            "kind": "melee",
+            "tag": "strike",
+            "startup": 14,
+            "active": 5,
+            "slot": "heavy"
+          },
+          "low": {
+            "kind": "melee",
+            "tag": "strike",
+            "startup": 12,
+            "active": 4,
+            "slot": "low"
+          },
+          "throw": {
+            "kind": "melee",
+            "tag": "grapple",
+            "startup": 8,
+            "active": 2,
+            "slot": "throw"
+          },
+          "special": {
+            "kind": "projectile",
+            "tag": "precision",
+            "startup": 15,
+            "active": 1,
+            "slot": "special"
+          },
+          "specialDown": {
+            "kind": "projectile",
+            "tag": "ballistic",
+            "startup": 23,
+            "active": 1,
+            "slot": "specialDown"
+          },
+          "specialForward": {
+            "kind": "mobility",
+            "tag": "movement",
+            "startup": 4,
+            "active": 18,
+            "slot": "specialForward"
+          },
+          "specialBack": {
+            "kind": "parry",
+            "tag": "counter",
+            "startup": 3,
+            "active": 10,
+            "slot": "specialBack"
+          },
+          "super": {
+            "kind": "projectile",
+            "tag": "ballistic",
+            "startup": 35,
+            "active": 1,
+            "slot": "super"
+          },
+          "utility": {
+            "kind": "reload",
+            "tag": "reload",
+            "startup": 54,
+            "active": 1,
+            "slot": "utility"
+          }
+        }
+      }
+    ],
+    "projectiles": []
+  },
+  "finishedAt": "2026-10-08T06:46:38.536Z"
+}
