@@ -1,0 +1,464 @@
+.campaign-builder-page {
+  display: grid;
+  gap: 18px;
+  min-width: 1180px;
+}
+
+.campaign-builder-command {
+  display: grid;
+  gap: 14px;
+}
+
+.campaign-builder-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.campaign-builder-heading > div:first-child > span:not(.status-badge) {
+  display: block;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+}
+
+.campaign-builder-heading h2 {
+  margin: 8px 0 4px;
+  color: var(--primary);
+  font-size: clamp(30px, 4vw, 54px);
+  text-transform: uppercase;
+}
+
+.campaign-builder-heading p {
+  margin: 0;
+  color: var(--primary-soft);
+}
+
+.campaign-builder-actions,
+.campaign-builder-transfer-actions,
+.campaign-builder-chapter-tabs,
+.campaign-builder-graph-toolbar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.campaign-builder-actions button,
+.campaign-builder-transfer-actions button,
+.campaign-builder-chapter-tabs button,
+.campaign-builder-graph-toolbar button,
+.campaign-builder-form button,
+.campaign-builder-chapter-meta button {
+  border: 1px solid var(--line);
+  background: rgba(2, 9, 4, 0.8);
+  color: var(--primary-soft);
+  border-radius: 8px;
+  padding: 9px 11px;
+}
+
+.campaign-builder-actions button:hover,
+.campaign-builder-transfer-actions button:hover,
+.campaign-builder-chapter-tabs button:hover,
+.campaign-builder-chapter-tabs button.active,
+.campaign-builder-graph-toolbar button:hover {
+  border-color: var(--line-strong);
+  background: rgba(39, 92, 47, 0.36);
+}
+
+.campaign-builder-status-strip {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.campaign-builder-status-strip span {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 10px;
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: .08em;
+}
+
+.campaign-builder-status-strip .valid { color: var(--primary); }
+.campaign-builder-status-strip .error { color: var(--danger); }
+
+.campaign-builder-grid {
+  display: grid;
+  grid-template-columns: 300px minmax(760px, 1fr) 380px;
+  gap: 18px;
+  align-items: start;
+}
+
+.campaign-builder-library-column,
+.campaign-builder-inspector-column,
+.campaign-builder-workspace {
+  display: grid;
+  gap: 18px;
+}
+
+.campaign-builder-library {
+  display: grid;
+  gap: 8px;
+  max-height: 280px;
+  overflow: auto;
+}
+
+.campaign-builder-library button {
+  display: grid;
+  text-align: left;
+  gap: 4px;
+  border: 1px solid var(--line);
+  background: rgba(1, 7, 3, .74);
+  color: var(--primary-soft);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.campaign-builder-library button.active {
+  border-color: var(--line-strong);
+  box-shadow: inset 3px 0 0 var(--primary);
+}
+
+.campaign-builder-library span {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.campaign-builder-form {
+  display: grid;
+  gap: 10px;
+}
+
+.campaign-builder-form.compact {
+  max-height: 520px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.campaign-builder-form label {
+  display: grid;
+  gap: 5px;
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.campaign-builder-form input,
+.campaign-builder-form textarea,
+.campaign-builder-form select,
+.campaign-builder-chapter-meta input,
+.campaign-builder-chapter-meta textarea,
+.campaign-builder-transfer {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: rgba(1, 7, 3, .85);
+  color: var(--primary-soft);
+  border-radius: 7px;
+  padding: 8px 9px;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.campaign-builder-form textarea,
+.campaign-builder-transfer,
+.campaign-builder-chapter-meta textarea {
+  min-height: 76px;
+  resize: vertical;
+}
+
+.campaign-builder-transfer {
+  margin-top: 10px;
+  min-height: 170px;
+  font-family: monospace;
+  font-size: 11px;
+}
+
+.campaign-builder-form fieldset {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.campaign-builder-form legend {
+  padding: 0 6px;
+  color: var(--primary);
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.campaign-builder-form .two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.campaign-builder-form .inline-check,
+.campaign-builder-prerequisites label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.campaign-builder-form .inline-check input,
+.campaign-builder-prerequisites input {
+  width: auto;
+}
+
+.campaign-builder-prerequisites {
+  display: grid;
+  gap: 6px;
+  max-height: 180px;
+  overflow: auto;
+}
+
+.campaign-builder-chapter-panel {
+  display: grid;
+  gap: 12px;
+}
+
+.campaign-builder-chapter-tabs {
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.campaign-builder-chapter-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 8px;
+}
+
+.campaign-builder-chapter-meta textarea {
+  grid-column: 1 / -1;
+}
+
+.campaign-builder-graph-panel {
+  overflow: hidden;
+}
+
+.campaign-builder-graph-toolbar {
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.campaign-builder-graph-toolbar > div {
+  display: grid;
+  gap: 3px;
+}
+
+.campaign-builder-graph-toolbar span {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.campaign-builder-canvas {
+  position: relative;
+  width: 100%;
+  min-width: 1000px;
+  height: 650px;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background:
+    linear-gradient(rgba(124, 255, 107, .035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 255, 107, .035) 1px, transparent 1px),
+    radial-gradient(circle at 30% 20%, rgba(70, 160, 90, .08), transparent 40%),
+    #020703;
+  background-size: 28px 28px, 28px 28px, auto, auto;
+  touch-action: none;
+}
+
+.campaign-builder-links {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.campaign-builder-links line {
+  stroke: rgba(124, 255, 107, .45);
+  stroke-width: 2;
+  stroke-dasharray: 7 5;
+}
+
+.campaign-builder-node {
+  position: absolute;
+  width: 205px;
+  min-height: 108px;
+  display: grid;
+  gap: 4px;
+  align-content: start;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(4, 18, 8, .96);
+  color: var(--primary-soft);
+  padding: 10px;
+  user-select: none;
+  cursor: grab;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .3);
+}
+
+.campaign-builder-node:active { cursor: grabbing; }
+.campaign-builder-node.selected { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(124, 255, 107, .2), var(--shadow-glow); }
+.campaign-builder-node.branch-node { border-left: 4px solid var(--warning); }
+.campaign-builder-node.ending-node { border-right: 4px solid #a0c4ff; }
+.campaign-builder-node.ending-node.heroic { border-right-color: #ffd166; }
+.campaign-builder-node.ending-node.dark { border-right-color: #ff6b6b; }
+.campaign-builder-node.ending-node.secret { border-right-color: #c77dff; }
+
+.campaign-builder-node > span,
+.campaign-builder-node > small {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.campaign-builder-node > strong {
+  color: var(--primary);
+}
+
+.campaign-builder-node > em {
+  color: var(--warning);
+  font-size: 11px;
+  font-style: normal;
+}
+
+.campaign-builder-node > b {
+  color: #c8b6ff;
+  font-size: 10px;
+}
+
+.campaign-builder-validation {
+  display: grid;
+  gap: 7px;
+  max-height: 260px;
+  overflow: auto;
+}
+
+.campaign-builder-validation button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(1, 7, 3, .7);
+  color: var(--primary-soft);
+  padding: 8px;
+}
+
+.danger-action {
+  color: var(--danger) !important;
+  border-color: rgba(255, 107, 107, .5) !important;
+}
+
+@media (max-width: 1500px) {
+  .campaign-builder-grid {
+    grid-template-columns: 270px minmax(720px, 1fr);
+  }
+  .campaign-builder-inspector-column {
+    grid-column: 1 / -1;
+  }
+}
+
+.campaign-builder-additional-conditions {
+  display: grid;
+  gap: 8px;
+}
+
+.campaign-builder-additional-condition {
+  display: grid;
+  grid-template-columns: minmax(120px, .8fr) minmax(140px, 1.2fr) minmax(90px, .6fr) auto;
+  gap: 6px;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(1, 7, 3, .55);
+}
+
+.campaign-builder-additional-condition input,
+.campaign-builder-additional-condition select {
+  min-width: 0;
+}
+
+/* Passe 20 — narrative authoring */
+.campaign-builder-narrative-events,
+.campaign-builder-variable-effects {
+  display: grid;
+  gap: 10px;
+}
+
+.campaign-builder-narrative-event {
+  display: grid;
+  gap: 8px;
+  border: 1px solid color-mix(in srgb, var(--primary) 28%, var(--line));
+  border-radius: 9px;
+  background: rgba(0, 0, 0, .22);
+  padding: 10px;
+}
+
+.campaign-builder-narrative-event::before {
+  content: 'NARRATIVE EVENT';
+  color: var(--primary);
+  font-size: 10px;
+  letter-spacing: .16em;
+}
+
+.campaign-builder-chapter-presentation {
+  display: grid;
+  gap: 7px;
+  grid-column: 1 / -1;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 9px;
+  background: rgba(0,0,0,.2);
+}
+
+.campaign-builder-chapter-presentation label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.campaign-builder-chapter-presentation input[type="checkbox"] {
+  width: auto;
+}
+
+.campaign-builder-variable-effect {
+  display: grid;
+  grid-template-columns: minmax(100px, 1.2fr) minmax(90px, .8fr) minmax(90px, 1fr) auto;
+  gap: 6px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 7px;
+  background: rgba(0,0,0,.24);
+}
+
+.campaign-builder-form small {
+  color: var(--muted);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+@media (max-width: 1380px) {
+  .campaign-builder-variable-effect {
+    grid-template-columns: 1fr 1fr;
+  }
+}
