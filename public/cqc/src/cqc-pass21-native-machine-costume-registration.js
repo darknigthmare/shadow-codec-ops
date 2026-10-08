@@ -14,6 +14,10 @@
     path: 'data/pass21-machine-costumes/dwarf-gekko-retro-parts-v1.json', bytes: 31392,
     sha256: '3ab9fcec37c3c10854bfa452cceb11ee7e6f2f394499eb1d0ecba6ce36c32707'
   };
+  const DESCRIPTORS = [
+    {uid: UID, ...DESCRIPTOR},
+    {uid: 'completion__mk2_mgs4', path: 'data/pass21-machine-costumes/mkii-retro-parts-v1.json', bytes: 28401, sha256: '60b2b1821d7860bb57d06aee6dd4151fa0d8db543b571c263371eef91ee05d74'}
+  ];
   const CONTRACT = {
     path: 'data/pass21-machine-costumes/source-contract-v1.json', bytes: 1771292,
     sha256: '24085b924bcf0b42b6c77897d81161a7f6540c52afbfa91e7c26d14677d73548'
@@ -38,7 +42,7 @@
     if (hash !== pin.sha256) throw Error('Empreinte du dossier machine différente');
     return bytes;
   }
-  function owned(uid, id) { return !!runtime && uid === UID && id === ID && runtime.has({uid, costume: id}); }
+  function owned(uid, id) { return !!runtime && id === ID && runtime.has({uid, costume: id}); }
   function replace(target, name, wrapper) {
     const previous = target[name]; target[name] = wrapper;
     undo.push(() => { if (target[name] === wrapper) target[name] = previous; });
@@ -129,9 +133,14 @@
       if (!root.CQC_COSTUMES_PASS17?.select || ['availableFor', 'known', 'state', 'ensure', 'select', 'drawPreview', 'cancel', 'on', 'bindSlots'].some(name => typeof root.CQC_NATIVE_WARDROBE[name] !== 'function') || ['drawPlayable', 'drawFitted', 'drawPortrait', 'ready', 'whenReady', 'whenReadyComposite'].some(name => typeof bridge[name] !== 'function')) throw Error('Interfaces du vestiaire de machine incomplètes');
       // Install the empty facade synchronously, before UI bindings subscribe.
       installLibrary(root.CQC_NATIVE_WARDROBE, root.CQC_COSTUMES_PASS17);
-      const [descriptorBytes, sourceContractBytes] = await Promise.all([readPinned(DESCRIPTOR, config), readPinned(CONTRACT, config)]);
-      const candidate = JSON.parse(new TextDecoder().decode(descriptorBytes));
-      if (candidate.uid !== UID || candidate.option?.id !== ID || candidate.option?.family !== 'retro') throw Error('Incarnation du costume différente');
+      const [candidates, sourceContractBytes] = await Promise.all([
+        Promise.all(DESCRIPTORS.map(async pin => {
+          const candidate = JSON.parse(new TextDecoder().decode(await readPinned(pin, config)));
+          if (candidate.uid !== pin.uid || candidate.option?.id !== ID || candidate.option?.family !== 'retro') throw Error('Incarnation du costume différente');
+          return candidate;
+        })), readPinned(CONTRACT, config)
+      ]);
+      const additions = candidates.map(candidate => ({uid: candidate.uid, option: candidate.option}));
       const selectedBase = config.baseURL || baseURL;
       const rendererOptions = {...(root.CQC_PASS18_MACHINE_RENDERER_OPTIONS || {}), ...(config.rendererOptions || {}), resolveURL: file => new URL(file, selectedBase).href};
       const next = await factory.create({parts: root.CQC_MACHINE_PARTS, catalog: root.CQC_MACHINE_PARTS_CATALOG,
@@ -139,15 +148,15 @@
         ...(config.sha256 ? {sha256: config.sha256} : {})});
       const prior = root.CQC_PASS21_MACHINE_COSTUME_RUNTIME;
       try {
-        const native = await next.registerBatch([{uid: UID, option: candidate.option}]);
+        const native = await next.registerBatch(additions);
         // No choice is exposed until both native cameras and original source are decoded.
         runtime = next; root.CQC_PASS21_MACHINE_COSTUME_RUNTIME = next;
-        const registration = foundation.registerBatch([{uid: UID, option: candidate.option}]);
+        const registration = foundation.registerBatch(additions);
         installBridge(bridge);
-        receipt = {uid: UID, id: ID, native, registration, metadataSHA256: DESCRIPTOR.sha256, sourceContractSHA256: CONTRACT.sha256};
-        phase = 'ready'; emit({type: 'index-ready', source: 'native-machine-parts', entries: 1});
+        receipt = {uid: UID, id: ID, native, registration, metadataSHA256: DESCRIPTOR.sha256, metadataPins: clone(DESCRIPTORS), uids: candidates.map(candidate => candidate.uid), sourceContractSHA256: CONTRACT.sha256};
+        phase = 'ready'; emit({type: 'index-ready', source: 'native-machine-parts', entries: candidates.length});
         const fighters = hooks.getFighters?.() || [];
-        for (let slot = 0; slot < 2; slot++) if (fighters[slot]?.uid === UID && root.CQC_COSTUMES_PASS17.chosen(slot, UID) === ID) notify('onCommit', {slot, uid: UID, id: ID, fighter: {...fighters[slot], costume: ID}});
+        for (let slot = 0; slot < 2; slot++) if (owned(fighters[slot]?.uid, ID) && root.CQC_COSTUMES_PASS17.chosen(slot, fighters[slot].uid) === ID) notify('onCommit', {slot, uid: fighters[slot].uid, id: ID, fighter: {...fighters[slot], costume: ID}});
         return clone(receipt);
       } catch (caught) {
         next.dispose(); runtime = null; if (prior === undefined) delete root.CQC_PASS21_MACHINE_COSTUME_RUNTIME; else root.CQC_PASS21_MACHINE_COSTUME_RUNTIME = prior;
@@ -156,7 +165,7 @@
     })().catch(caught => { phase = 'failed'; error = caught.message; installing = null; throw caught; });
     return installing;
   }
-  return {version: 'pass21-native-machine-registration/1', install, get ready() { return installing; },
+  return {version: 'pass21-native-machine-registration/2', install, get ready() { return installing; },
     status: () => ({phase, error, ready: phase === 'ready', publiclySelectable: phase === 'ready', receipt: receipt && clone(receipt), native: runtime?.status() || null}),
-    sourcePins: {descriptor: clone(DESCRIPTOR), contract: clone(CONTRACT)}};
+    sourcePins: {descriptor: clone(DESCRIPTOR), descriptors: clone(DESCRIPTORS), contract: clone(CONTRACT)}};
 });

@@ -1,0 +1,81 @@
+{
+  "schema": "cqc.frozen4.final-build-and-pwa/2",
+  "status": "passed",
+  "at": "2026-10-08T16:12:52.829774+00:00",
+  "snapshot": "/workspace/cqc-pass21/batches/v4/application",
+  "sourceReviewV2": {
+    "path": "/workspace/cqc-pass21/batches/v4/integration/SOURCE_REVIEW_FOR_ISOLATED_QA_ACTUAL_V2.json",
+    "bytes": 484346,
+    "sha256": "69d804af4b8f9d0c90a66c194f1e16dc8f00998c9b72422f3655cef7106936bf"
+  },
+  "471SourcePins": {
+    "path": "/workspace/cqc-pass21/batches/v4/integration/FROZEN4_FINAL471_SOURCE_PINS_READONLY_QA_ACTUAL_V1.json",
+    "bytes": 931,
+    "sha256": "bfd421a5d3621e13de9f9e09afcb68ee1d94f596a882df9464401a85810fdee9"
+  },
+  "typescript": {
+    "command": "./node_modules/.bin/tsc -b",
+    "cwd": "/workspace/cqc-pass21/batches/v4/application",
+    "exitCode": 0
+  },
+  "build": {
+    "command": "node /workspace/cqc-pass21/batches/v4/integration/build-with-verified-public-hardlinks-frozen4-final-v2.mjs",
+    "cwd": "/workspace/cqc-pass21/batches/v4/application",
+    "exitCode": 0,
+    "helper": {
+      "path": "/workspace/cqc-pass21/batches/v4/integration/build-with-verified-public-hardlinks-frozen4-final-v2.mjs",
+      "bytes": 2883,
+      "sha256": "6369286ee025b688d638860705c3c818e22142224a091202cd9982bb67817882"
+    },
+    "originalViteConfiguration": {
+      "path": "/workspace/cqc-pass21/batches/v4/application/vite.config.ts",
+      "bytes": 4043,
+      "sha256": "788564b63d823ab605220f3986d8da84dcc099fa7bd89ad49ef6e0c3632c6074"
+    },
+    "publicProof": {
+      "path": "/workspace/cqc-pass21/batches/v4/integration/APPLICATION_BUILD_PUBLIC_HARDLINK_PROOF_ACTUAL_V4.json",
+      "bytes": 998319,
+      "sha256": "31ef20364ce4be2d805f128535299c0c348e614030466fe81364741b4022d370"
+    },
+    "publicFileCount": 3765,
+    "publicLogicalBytes": 3093944576,
+    "regularVerifiedHardlinks": true,
+    "rasterBytesModified": false,
+    "sourceFilesDeleted": false,
+    "publicCopyMethodOnlyChanged": true
+  },
+  "pwa": {
+    "command": "npm run pwa:check",
+    "cwd": "/workspace/cqc-pass21/batches/v4/application",
+    "exitCode": 0,
+    "actualResult": "PWA CHECK PASS — Shadow Codec Ops / 3 icons / 1 Workbox runtime",
+    "generatedPrecacheEntries": 1284,
+    "generatedPrecacheKiB": 55564.37
+  },
+  "finalRuntimeManifest": {
+    "path": "/workspace/cqc-pass21/batches/v4/application/public/cqc/runtime-manifest.json",
+    "bytes": 1102970,
+    "sha256": "c14cf23c57f807b694834f7034ee9b0a3df184654425198e5ca7657e6a10d42f"
+  },
+  "finalRuntimeReceipt": {
+    "path": "/workspace/cqc-pass21/batches/v4/integration/RUNTIME_MANIFEST_ACTUAL_V4.json",
+    "bytes": 403,
+    "sha256": "4c22b15b850bc2f081d51042282099ae1f82b6f01f38874e8eb0a6225b806b17"
+  },
+  "literalOldRuntimeManifestV3Preserved": {
+    "path": "/workspace/cqc-pass21/batches/v4/integration/INITIAL_BUILD_RUNTIME_MANIFEST_SOURCE_LITERAL_ACTUAL_V3.json",
+    "bytes": 1100158,
+    "sha256": "65911470dc594fbe7d55a73928d2dc7081081d7b3fba350cf16a98b535652f67"
+  },
+  "builtIndex": {
+    "path": "/workspace/cqc-pass21/batches/v4/application/dist/index.html",
+    "bytes": 708,
+    "sha256": "f2f7f36f91ecdc9ddfb2f0d39f775012f64d9192cc42d99d7263b2b4a16c1589"
+  },
+  "builtCqcManifest": {
+    "path": "/workspace/cqc-pass21/batches/v4/application/dist/cqc/runtime-manifest.json",
+    "bytes": 1102970,
+    "sha256": "c14cf23c57f807b694834f7034ee9b0a3df184654425198e5ca7657e6a10d42f"
+  },
+  "qualification": "Isolated Frozen4 final build reuses original Vite configuration and verifies every public source/output byte while hardlinking regular files to avoid duplicating3GB. Build and TypeScript pass; no full test suite rerun was claimed. Root separately validates prior705tests reuse through unchanged701 nonpublic source hashes. Actual two-route browser QA follows after owned stale4177preview restart. Older initial build receipts/runtimeV3 remain literal; no Git, deployment or ACTIVE modification."
+}
