@@ -150,6 +150,8 @@ body.original-reprise .roster{grid-auto-rows:minmax(130px,1fr);align-content:str
 <script src="../src/cqc-pass21-native-nextgen-costumes.js"></script>
 <script src="../src/cqc-pass21-native-cyborg-costumes.js"></script>
 <script src="../src/cqc-pass21-native-cyborg-refinements.js"></script>
+<script src="../src/cqc-pass22-native-cyborg-refinements.js"></script>
+<script src="../src/cqc-pass22-native-projectile-presentation.js"></script>
 <script src="../src/cqc-pass19-native-wardrobe-index.js"></script>
 <script src="../src/cqc-pass21-native-tuxedo-costumes.js"></script>
 <script src="../src/cqc-pass21-native-tuxedo-costumes-b.js"></script>
@@ -818,7 +820,7 @@ function drawGame(){const s=state;if(!s)return;const c=$('#game').getContext('2d
    rendered={...p.f,visual:{...p.f.visual,weapon:w}};
   }
   window.CQC_PASS19_NATIVE_AIM?.prepare(p,m,Combat.box(p.slot?s.a:s.b),{frame:s.frame});const attackPose=active||windup&&a.t>m.startup*.6;
-  drawFighter(c,rendered,px,py,p.face,1.12*zoom,{time,jump:p.y<568-1,walk:Math.abs(p.vx)>.5||m?.kind==='mobility',crouch:p.crouch||m?.lowProfile,guard:p.block||m?.kind==='parry',attack:attackPose,animationActive:!!a,attackPhase:a?(a.t<m.startup?'startup':a.t<m.startup+m.active?'active':'recovery'):null,phaseProgress:a?clamp(a.t<m.startup?a.t/m.startup:a.t<m.startup+m.active?(a.t-m.startup)/m.active:(a.t-m.startup-m.active)/m.recovery,0,1):0,moveSlot:a?.name,moveKind:m?.kind,moveTag:m?.tag,attackTime:a?a.t/60:0,ko:p.life<=0,hit:p.hit>0,hitTime:(s.frame-p.lastHit)/60,optic:!!p.buffs.optic,weaponAim:window.CQC_PASS19_NATIVE_AIM?.weaponAim(p,m,{frame:s.frame})??0,entityKey:'player-'+p.slot});c.restore();
+  const nativePosePass22={time,jump:p.y<568-1,walk:Math.abs(p.vx)>.5||m?.kind==='mobility',crouch:p.crouch||m?.lowProfile,guard:p.block||m?.kind==='parry',attack:attackPose,animationActive:!!a,attackPhase:a?(a.t<m.startup?'startup':a.t<m.startup+m.active?'active':'recovery'):null,phaseProgress:a?clamp(a.t<m.startup?a.t/m.startup:a.t<m.startup+m.active?(a.t-m.startup)/m.active:(a.t-m.startup-m.active)/m.recovery,0,1):0,moveSlot:a?.name,moveKind:m?.kind,moveTag:m?.tag,attackTime:a?a.t/60:0,ko:p.life<=0,hit:p.hit>0,hitTime:(s.frame-p.lastHit)/60,optic:!!p.buffs.optic,weaponAim:window.CQC_PASS19_NATIVE_AIM?.weaponAim(p,m,{frame:s.frame})??0,entityKey:'player-'+p.slot};if(!window.CQC_PASS22_NATIVE_PROJECTILE_PRESENTATION?.drawNative(c,p,rendered,px,py,p.face,1.12*zoom,nativePosePass22))drawFighter(c,rendered,px,py,p.face,1.12*zoom,nativePosePass22);c.restore();
   if(p.buffs.armor||p.buffs.reactive||p.buffs.barrier){c.save();c.translate(px,py);const nativeBarrier=window.CQC_PASS6_PROP_ART?.drawBarrier(c,p,bodyZoom);c.restore();if(!nativeBarrier){c.save();c.strokeStyle=p.buffs.reactive?'#e9b16f':p.buffs.armor?'#b7bccb':'#86dfd2';c.lineWidth=3;c.globalAlpha=.65;c.beginPath();c.ellipse(px,py-125*bodyZoom,70*bodyZoom,129*bodyZoom,0,0,Math.PI*2);c.stroke();c.restore();}}
   if(p.buffs.power){c.strokeStyle='#ec8c76';c.lineWidth=2;for(let i=0;i<4;i++){c.beginPath();c.moveTo(px+(-55+i*35)*bodyZoom,py);c.lineTo(px+(-45+i*32)*bodyZoom,py-220*bodyZoom);c.stroke();}}
   if(p.statuses.marked){c.strokeStyle='#e4c873';c.lineWidth=2;c.strokeRect(px-47*bodyZoom,py-220*bodyZoom,94*bodyZoom,145*bodyZoom);}
