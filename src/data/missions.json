@@ -1,0 +1,452 @@
+[
+  {
+    "id": "shadow_dock_001",
+    "title": "Shadow Moses Operation",
+    "era": "mgs1",
+    "mode": "side_scroller",
+    "location": "Shadow Moses Island",
+    "mainCharacter": "solid_snake",
+    "difficulty": 5,
+    "mapKey": "sideops_shadow_moses_condensed_v1",
+    "briefingConversation": "mgs1_campbell_mission_start",
+    "debriefingConversation": "mgs1_campbell_mission_complete",
+    "objectives": [
+      {
+        "id": "infiltrate_shadow_moses",
+        "label": "Infiltrate Shadow Moses through the docks",
+        "completedByDefault": true
+      },
+      {
+        "id": "defeat_revolver_ocelot",
+        "label": "Defeat Revolver Ocelot",
+        "completedByDefault": false
+      },
+      {
+        "id": "neutralize_m1_tank",
+        "label": "Neutralize the M1 Tank",
+        "completedByDefault": false
+      },
+      {
+        "id": "reveal_decoy_octopus",
+        "label": "Uncover Decoy Octopus in the DARPA Chief disguise",
+        "completedByDefault": false
+      },
+      {
+        "id": "defeat_cyborg_ninja",
+        "label": "Defeat the Cyborg Ninja",
+        "completedByDefault": false
+      },
+      {
+        "id": "defeat_psycho_mantis",
+        "label": "Break Psycho Mantis's control",
+        "completedByDefault": false
+      },
+      {
+        "id": "defeat_sniper_wolf",
+        "label": "Defeat Sniper Wolf",
+        "completedByDefault": false
+      },
+      {
+        "id": "destroy_hind_d",
+        "label": "Destroy Liquid's Hind D",
+        "completedByDefault": false
+      },
+      {
+        "id": "defeat_vulcan_raven",
+        "label": "Defeat Vulcan Raven",
+        "completedByDefault": false
+      },
+      {
+        "id": "destroy_metal_gear_rex",
+        "label": "Destroy Metal Gear REX",
+        "completedByDefault": false
+      },
+      {
+        "id": "defeat_liquid_snake",
+        "label": "Defeat Liquid Snake",
+        "completedByDefault": false
+      },
+      {
+        "id": "secure_escape_vehicles",
+        "label": "Secure the jeep and snowmobile escape route",
+        "completedByDefault": false
+      },
+      {
+        "id": "escape_shadow_moses",
+        "label": "Escape by jeep and reach the snowmobile rendezvous",
+        "completedByDefault": false
+      }
+    ],
+    "availableItems": [
+      "socom_suppressor",
+      "ration",
+      "chaff_grenade",
+      "cardboard_box",
+      "keycard_lv1",
+      "ammo_box",
+      "hidden_archive_fragment"
+    ],
+    "enemies": [
+      "genome_light_infantry_mgs1",
+      "genome_arctic_trooper_mgs1",
+      "genome_nbc_trooper_mgs1",
+      "genome_heavy_trooper_mgs1",
+      "wolf_dog_mgs1",
+      "gun_camera_mgs1",
+      "searchlight_sweep",
+      "revolver_ocelot",
+      "m1_tank",
+      "cyborg_ninja",
+      "psycho_mantis",
+      "sniper_wolf",
+      "hind_d",
+      "vulcan_raven",
+      "metal_gear_rex",
+      "liquid_snake"
+    ],
+    "boss": "liquid_snake",
+    "codecTriggers": [
+      {
+        "trigger": "mission_start",
+        "contactId": "campbell_mgs1",
+        "conversationId": "mgs1_campbell_mission_start",
+        "priority": "normal",
+        "pauseGame": true
+      },
+      {
+        "trigger": "first_alert",
+        "contactId": "campbell_mgs1",
+        "conversationId": "mgs1_campbell_first_alert",
+        "priority": "urgent",
+        "pauseGame": true
+      },
+      {
+        "trigger": "keycard_found",
+        "contactId": "campbell_mgs1",
+        "conversationId": "mgs1_campbell_keycard_found",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "mission_complete",
+        "contactId": "campbell_mgs1",
+        "conversationId": "mgs1_campbell_mission_complete",
+        "priority": "normal",
+        "pauseGame": true
+      },
+      {
+        "trigger": "low_health",
+        "contactId": "naomi_mgs1",
+        "conversationId": "mgs1_naomi_medical",
+        "priority": "urgent",
+        "pauseGame": true
+      },
+      {
+        "trigger": "manual_call",
+        "contactId": "otacon_mgs1",
+        "conversationId": "mgs1_otacon_chaff_hint",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "suspicion",
+        "contactId": "campbell_mgs1",
+        "conversationId": "mgs1_campbell_suspicion",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "evasion",
+        "contactId": "campbell_mgs1",
+        "conversationId": "mgs1_campbell_evasion",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "caution",
+        "contactId": "miller_mgs1",
+        "conversationId": "mgs1_miller_caution",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "reinforcement",
+        "contactId": "campbell_mgs1",
+        "conversationId": "mgs1_campbell_reinforcement",
+        "priority": "urgent",
+        "pauseGame": false
+      },
+      {
+        "trigger": "searchlight_detected",
+        "contactId": "otacon_mgs1",
+        "conversationId": "mgs1_otacon_searchlight_hint",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "boss_intro",
+        "contactId": "campbell_mgs1",
+        "conversationId": "mgs1_campbell_boss_intro",
+        "priority": "urgent",
+        "pauseGame": true
+      },
+      {
+        "trigger": "boss_midfight",
+        "contactId": "naomi_mgs1",
+        "conversationId": "mgs1_naomi_boss_midfight",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "boss_defeated",
+        "contactId": "campbell_mgs1",
+        "conversationId": "mgs1_campbell_boss_defeated",
+        "priority": "normal",
+        "pauseGame": true
+      },
+      {
+        "trigger": "secret_frequency",
+        "contactId": "otacon_mgs1",
+        "conversationId": "mgs1_otacon_secret_found",
+        "priority": "secret",
+        "pauseGame": false
+      }
+    ]
+  },
+  {
+    "id": "tanker_hold_002",
+    "title": "Tanker Hold Sabotage",
+    "era": "mgs2",
+    "mode": "side_scroller",
+    "location": "Rain Deck / Cargo Hold",
+    "mainCharacter": "solid_snake",
+    "difficulty": 3,
+    "mapKey": "sideops_tanker_hold_v1",
+    "briefingConversation": "mgs2_otacon_tanker_mission_start",
+    "debriefingConversation": "mgs2_otacon_tanker_mission_complete",
+    "objectives": [
+      {
+        "id": "enter_deck",
+        "label": "Enter the tanker deck",
+        "completedByDefault": true
+      },
+      {
+        "id": "recover_keycard",
+        "label": "Recover the bulkhead keycard",
+        "completedByDefault": false
+      },
+      {
+        "id": "open_security_door",
+        "label": "Open the bulkhead access lock",
+        "completedByDefault": false
+      },
+      {
+        "id": "cross_security_yard",
+        "label": "Cross the rain deck search zone",
+        "completedByDefault": false
+      },
+      {
+        "id": "defeat_captain",
+        "label": "Defeat Olga Gurlukovich",
+        "completedByDefault": false
+      },
+      {
+        "id": "extract",
+        "label": "Reach the cargo hold exit",
+        "completedByDefault": false
+      }
+    ],
+    "availableItems": [
+      "socom_suppressor",
+      "ration",
+      "chaff_grenade",
+      "keycard_lv1",
+      "ammo_box",
+      "hidden_archive_fragment"
+    ],
+    "enemies": [
+      "tanker_deck_guard",
+      "tanker_deck_reinforcement",
+      "security_camera",
+      "searchlight_sweep",
+      "olga_gurlukovich_tanker"
+    ],
+    "boss": "olga_gurlukovich_tanker",
+    "codecTriggers": [
+      {
+        "trigger": "mission_start",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_mission_start",
+        "priority": "normal",
+        "pauseGame": true
+      },
+      {
+        "trigger": "first_alert",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_first_alert",
+        "priority": "urgent",
+        "pauseGame": true
+      },
+      {
+        "trigger": "keycard_found",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_keycard_found",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "mission_complete",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_mission_complete",
+        "priority": "normal",
+        "pauseGame": true
+      },
+      {
+        "trigger": "low_health",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_low_health",
+        "priority": "urgent",
+        "pauseGame": true
+      },
+      {
+        "trigger": "suspicion",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_suspicion",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "evasion",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_evasion",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "caution",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_caution",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "reinforcement",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_reinforcement",
+        "priority": "urgent",
+        "pauseGame": false
+      },
+      {
+        "trigger": "camera_detected",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_camera_detected",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "searchlight_detected",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_searchlight_hint",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "boss_intro",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_boss_intro",
+        "priority": "urgent",
+        "pauseGame": true
+      },
+      {
+        "trigger": "boss_midfight",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_boss_midfight",
+        "priority": "normal",
+        "pauseGame": false
+      },
+      {
+        "trigger": "boss_defeated",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_boss_defeated",
+        "priority": "normal",
+        "pauseGame": true
+      },
+      {
+        "trigger": "secret_frequency",
+        "contactId": "otacon_mgs2",
+        "conversationId": "mgs2_otacon_tanker_secret_found",
+        "priority": "secret",
+        "pauseGame": false
+      }
+    ]
+  },
+  {
+    "id": "outer_heaven_intrude_n313",
+    "title": "Operation Intrude N313",
+    "era": "msx",
+    "mode": "side_scroller",
+    "location": "Outer Heaven",
+    "mainCharacter": "solid_snake_msx",
+    "difficulty": 5,
+    "mapKey": "sideops_outer_heaven_intrude_n313_v1",
+    "briefingConversation": "mg1_big_boss_orders",
+    "debriefingConversation": "mg1_schneider_facility",
+    "objectives": [
+      { "id": "infiltrate_outer_heaven", "label": "Infiltrate Outer Heaven", "completedByDefault": true },
+      { "id": "establish_resistance_contact", "label": "Find Gray Fox and establish resistance contact", "completedByDefault": false },
+      { "id": "defeat_shotmaker", "label": "Defeat Shotmaker", "completedByDefault": false },
+      { "id": "defeat_machinegun_kid", "label": "Defeat Machinegun Kid", "completedByDefault": false },
+      { "id": "defeat_hind_d", "label": "Destroy the Hind D", "completedByDefault": false },
+      { "id": "defeat_outer_heaven_tank", "label": "Neutralize the Outer Heaven Tank with landmines", "completedByDefault": false },
+      { "id": "defeat_bulldozer", "label": "Stop the advancing Bulldozer", "completedByDefault": false },
+      { "id": "defeat_fire_trooper", "label": "Defeat Fire Trooper", "completedByDefault": false },
+      { "id": "defeat_bloody_brad_pair", "label": "Destroy both Bloody Brad TX-11 units", "completedByDefault": false },
+      { "id": "defeat_dirty_duck", "label": "Defeat Dirty Duck without harming the hostages", "completedByDefault": false },
+      { "id": "defeat_tx55_metal_gear", "label": "Sabotage TX-55 with the ordered sixteen-charge leg sequence", "completedByDefault": false },
+      { "id": "defeat_big_boss", "label": "Defeat Big Boss", "completedByDefault": false },
+      { "id": "escape_outer_heaven", "label": "Escape the self-destructing fortress", "completedByDefault": false }
+    ],
+    "availableItems": [
+      "handgun_mg1",
+      "landmine_mg1",
+      "plastic_explosive_mg1",
+      "remote_missile_mg1",
+      "grenade_launcher_mg1",
+      "rocket_launcher_mg1",
+      "outer_heaven_access_card",
+      "ration",
+      "ammo_box"
+    ],
+    "enemies": [
+      "outer_heaven_soldier_mg1",
+      "air_trooper_mg1",
+      "attack_dog_mg1",
+      "scorpion_mg1",
+      "gun_camera_mg1",
+      "shotmaker_mg1",
+      "machinegun_kid_mg1",
+      "hind_d_mg1",
+      "outer_heaven_tank_mg1",
+      "bulldozer_mg1",
+      "fire_trooper_mg1",
+      "bloody_brad_mg1",
+      "dirty_duck_mg1",
+      "tx55_metal_gear_mg1",
+      "big_boss_mg1"
+    ],
+    "boss": "big_boss_mg1",
+    "codecTriggers": [
+      { "trigger": "mission_start", "contactId": "big_boss_mg1", "conversationId": "mg1_big_boss_orders", "priority": "urgent", "pauseGame": true },
+      { "trigger": "first_alert", "contactId": "big_boss_mg1", "conversationId": "mg1_big_boss_equipment", "priority": "urgent", "pauseGame": false },
+      { "trigger": "keycard_found", "contactId": "schneider_mg1", "conversationId": "mg1_schneider_facility", "priority": "normal", "pauseGame": false },
+      { "trigger": "mission_complete", "contactId": "schneider_mg1", "conversationId": "mg1_schneider_facility", "priority": "urgent", "pauseGame": true },
+      { "trigger": "low_health", "contactId": "jennifer_mg1", "conversationId": "mg1_jennifer_inside", "priority": "urgent", "pauseGame": false },
+      { "trigger": "manual_call", "contactId": "schneider_mg1", "conversationId": "mg1_schneider_facility", "priority": "normal", "pauseGame": false },
+      { "trigger": "camera_detected", "contactId": "jennifer_mg1", "conversationId": "mg1_jennifer_inside", "priority": "normal", "pauseGame": false },
+      { "trigger": "boss_intro", "contactId": "diane_mg1", "conversationId": "mg1_diane_mercenaries", "priority": "urgent", "pauseGame": false },
+      { "trigger": "boss_midfight", "contactId": "diane_mg1", "conversationId": "mg1_diane_mercenaries", "priority": "normal", "pauseGame": false },
+      { "trigger": "boss_defeated", "contactId": "diane_mg1", "conversationId": "mg1_diane_mercenaries", "priority": "normal", "pauseGame": false },
+      { "trigger": "secret_frequency", "contactId": "jennifer_mg1", "conversationId": "mg1_jennifer_inside", "priority": "secret", "pauseGame": false }
+    ]
+  }
+]

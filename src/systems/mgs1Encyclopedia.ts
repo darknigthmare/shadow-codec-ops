@@ -1,0 +1,17 @@
+import zonesJson from '../data/mgs1Zones.json';
+import itemsJson from '../data/mgs1Items.json';
+import timelineJson from '../data/mgs1Timeline.json';
+import portraitsJson from '../data/mgs1PortraitSets.json';
+import type { Mgs1ItemEntry, Mgs1PortraitSet, Mgs1TimelineEntry, Mgs1ZoneEntry } from '../types/mgs1Profile.types';
+const zones = zonesJson as Mgs1ZoneEntry[];
+const items = itemsJson as Mgs1ItemEntry[];
+const timeline = timelineJson as Mgs1TimelineEntry[];
+const portraits = portraitsJson as Mgs1PortraitSet[];
+export const getMgs1Zones = () => zones;
+export const getMgs1Items = () => items;
+export const getMgs1Timeline = () => timeline;
+export const getMgs1PortraitSets = () => portraits;
+export const getMgs1ZoneForContext = (contextId: string) => zones.filter((entry) => entry.contextId === contextId);
+export const getMgs1ItemsForContact = (contactId: string) => items.filter((entry) => entry.expertContactIds.includes(contactId));
+export const getMgs1TimelineState = (contextId: string, flags: string[]) => timeline.map((entry) => ({ ...entry, active: entry.contextId === contextId, complete: entry.requiredFlags.every((flag) => flags.includes(flag)) }));
+export const getMgs1PortraitSet = (contactId: string) => portraits.find((entry) => entry.contactId === contactId);
