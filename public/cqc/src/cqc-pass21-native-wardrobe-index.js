@@ -2,7 +2,7 @@
 (function(root){'use strict';
  const clone=value=>JSON.parse(JSON.stringify(value));
  const localBase=new URL('../',root.document?.currentScript?.src||root.document?.baseURI||'http://localhost/cqc/src/').href;
- const sources=['CQC_PASS21_NATIVE_RETRO_INDEX','CQC_PASS21_NATIVE_RETRO_B_INDEX','CQC_PASS21_NATIVE_RETRO_C_INDEX','CQC_PASS21_NATIVE_TUXEDO_INDEX','CQC_PASS21_NATIVE_TUXEDO_B_INDEX','CQC_PASS21_NATIVE_TUXEDO_C_INDEX'];
+ const sources=['CQC_PASS21_NATIVE_RETRO_INDEX','CQC_PASS21_NATIVE_RETRO_B_INDEX','CQC_PASS21_NATIVE_RETRO_C_INDEX','CQC_PASS21_NATIVE_TUXEDO_INDEX','CQC_PASS21_NATIVE_TUXEDO_B_INDEX','CQC_PASS21_NATIVE_TUXEDO_C_INDEX','CQC_PASS21_NATIVE_CYBORG_REFINEMENTS_INDEX'];
  function localizeLegacy(previous,local,baseURL=localBase){
   if(!local)return clone(previous);
   if(local.schema!==previous.schema||!Array.isArray(local.entries)||local.entries.length!==4)throw Error('Copies locales historiques incorrectes');
@@ -24,7 +24,8 @@
    if(addition.schema!=='cqc.native-wardrobe-index/1'||!Array.isArray(addition.entries))throw Error('Lot de tenues incorrect');
    for(const source of addition.entries){
     if(source?.status==='pending'||source?.sprite||source?.option||source?.review?.status!=='approved'||!Array.isArray(source?.assets)||source.assets.length<2||!source.metadata?.path)throw Error('Tenue native non produite');
-    if(!['retro','tuxedo'].includes(source.family)||source.provenance?.sourceUID!==source.uid)throw Error('Incarnation de tenue incorrecte');
+    const reviewedRefinement=source.family==='cyborg'&&root.CQC_PASS21_NATIVE_CYBORG_REFINEMENTS?.matchesDescriptor(source.uid,source.id,root.CQC_PASS19_COSTUMES?.optionFor(source.uid,source.id),source)===true;
+    if((!['retro','tuxedo'].includes(source.family)&&!reviewedRefinement)||source.provenance?.sourceUID!==source.uid)throw Error('Incarnation de tenue incorrecte');
     if(!/^(?:assets|data)\/[A-Za-z0-9_./-]+\.json$/.test(source.metadata.path)||source.metadata.path.split('/').some(part=>part==='..'||part===''))throw Error('Métadonnées locales incorrectes');
     const key=source.uid+':'+source.id;if(keys.has(key))throw Error('Tenue déjà inscrite');keys.add(key);
     const entry=clone(source);entry.assetBaseURL=baseURL;
