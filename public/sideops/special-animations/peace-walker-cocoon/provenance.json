@@ -1,0 +1,482 @@
+{
+  "schemaVersion": 1,
+  "actorId": "peace-walker-cocoon",
+  "sourceTextureKey": "peaceWalkerCocoon",
+  "provenance": "openai-authored-poses",
+  "sourceFacing": "right",
+  "sourceGrid": {
+    "columns": 4,
+    "rows": 4
+  },
+  "runtimeGrid": {
+    "columns": 4,
+    "rows": 4,
+    "frameWidth": 256,
+    "frameHeight": 256,
+    "padding": 16
+  },
+  "processing": "crop, explicit background extraction, optional recorded whole-board anchor calibration, common core/special canvas, uniform per-actor nearest-neighbor scale, grounded padding; no pose synthesis",
+  "sources": {
+    "core": {
+      "file": "peace-walker-cocoon-core-openai.png",
+      "sha256": "1fe4108bcc0301e5f53b9cf2e364482550172dbbf77412f4aa10b0ef26aaa971",
+      "grid": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "detected-cyan-guides",
+        "xGuides": [
+          [
+            0,
+            3
+          ],
+          [
+            313,
+            315
+          ],
+          [
+            625,
+            628
+          ],
+          [
+            938,
+            940
+          ],
+          [
+            1250,
+            1253
+          ]
+        ],
+        "yGuides": [
+          [
+            0,
+            3
+          ],
+          [
+            312,
+            314
+          ],
+          [
+            625,
+            628
+          ],
+          [
+            938,
+            940
+          ],
+          [
+            1250,
+            1253
+          ]
+        ],
+        "cellRects": [
+          [
+            5,
+            5,
+            311,
+            310
+          ],
+          [
+            317,
+            5,
+            623,
+            310
+          ],
+          [
+            629,
+            5,
+            936,
+            310
+          ],
+          [
+            942,
+            5,
+            1249,
+            310
+          ],
+          [
+            5,
+            316,
+            311,
+            623
+          ],
+          [
+            317,
+            316,
+            623,
+            623
+          ],
+          [
+            629,
+            316,
+            936,
+            623
+          ],
+          [
+            942,
+            316,
+            1249,
+            623
+          ],
+          [
+            5,
+            629,
+            311,
+            936
+          ],
+          [
+            317,
+            629,
+            623,
+            936
+          ],
+          [
+            629,
+            629,
+            936,
+            936
+          ],
+          [
+            942,
+            629,
+            1249,
+            936
+          ],
+          [
+            5,
+            942,
+            311,
+            1249
+          ],
+          [
+            317,
+            942,
+            623,
+            1249
+          ],
+          [
+            629,
+            942,
+            936,
+            1249
+          ],
+          [
+            942,
+            942,
+            1249,
+            1249
+          ]
+        ],
+        "inset": 3,
+        "commonCellSize": [
+          307,
+          307
+        ],
+        "alignment": "cell-bottom-center; no per-pose scaling",
+        "guideFringeKey": "blue/cyan within 3 source edge pixels only"
+      }
+    },
+    "special": {
+      "file": "peace-walker-cocoon-special-openai.png",
+      "sha256": "e888489221c4fdb07243813189de0b096a8f0bbc32a850a7feeea0dbc2be1e20",
+      "grid": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "detected-cyan-guides",
+        "xGuides": [
+          [
+            0,
+            2
+          ],
+          [
+            313,
+            314
+          ],
+          [
+            626,
+            627
+          ],
+          [
+            939,
+            940
+          ],
+          [
+            1251,
+            1253
+          ]
+        ],
+        "yGuides": [
+          [
+            0,
+            2
+          ],
+          [
+            313,
+            314
+          ],
+          [
+            626,
+            627
+          ],
+          [
+            939,
+            940
+          ],
+          [
+            1251,
+            1253
+          ]
+        ],
+        "cellRects": [
+          [
+            4,
+            4,
+            311,
+            311
+          ],
+          [
+            317,
+            4,
+            623,
+            311
+          ],
+          [
+            629,
+            4,
+            937,
+            311
+          ],
+          [
+            943,
+            4,
+            1249,
+            311
+          ],
+          [
+            4,
+            317,
+            311,
+            623
+          ],
+          [
+            317,
+            317,
+            623,
+            623
+          ],
+          [
+            629,
+            317,
+            937,
+            623
+          ],
+          [
+            943,
+            317,
+            1249,
+            623
+          ],
+          [
+            4,
+            629,
+            311,
+            937
+          ],
+          [
+            317,
+            629,
+            623,
+            937
+          ],
+          [
+            629,
+            629,
+            937,
+            937
+          ],
+          [
+            943,
+            629,
+            1249,
+            937
+          ],
+          [
+            4,
+            943,
+            311,
+            1249
+          ],
+          [
+            317,
+            943,
+            623,
+            1249
+          ],
+          [
+            629,
+            943,
+            937,
+            1249
+          ],
+          [
+            943,
+            943,
+            1249,
+            1249
+          ]
+        ],
+        "inset": 3,
+        "commonCellSize": [
+          308,
+          308
+        ],
+        "alignment": "cell-bottom-center; no per-pose scaling",
+        "guideFringeKey": "blue/cyan within 3 source edge pixels only"
+      }
+    }
+  },
+  "boardCalibration": {
+    "mode": "explicit-uniform-special-board-scale-with-upright-anchor-baseline",
+    "specialScale": 1.02,
+    "coreAnchor": 0,
+    "specialAnchor": 12,
+    "originalAnchorBounds": {
+      "core": [
+        22,
+        55,
+        287,
+        269
+      ],
+      "special": [
+        12,
+        84,
+        296,
+        275
+      ]
+    },
+    "scaledAnchorBounds": {
+      "core": [
+        22,
+        55,
+        287,
+        269
+      ],
+      "special": [
+        12,
+        86,
+        302,
+        280
+      ]
+    },
+    "alignedBaseline": 280,
+    "canvas": [
+      314,
+      318
+    ],
+    "perPoseScaling": false
+  },
+  "commonSourceCanvas": [
+    314,
+    318
+  ],
+  "commonActorBounds": [
+    12,
+    64,
+    303,
+    284
+  ],
+  "uniformScale": 0.7697594501718213,
+  "sheets": {
+    "core": {
+      "states": [
+        "idle",
+        "move",
+        "charge",
+        "attack"
+      ],
+      "frameHashes": [
+        "7c0433b5a6df105160d73cb8e1fae9d3ccdc91cf32ab44b30df637c687243842",
+        "311b2d53ccb23c56b5bbee608ac38b1241bdc0832e7acce843059205f6e41ae2",
+        "b794657810e6555c24434207d26971eb46498de360dda9cd9d0e2af47144e13e",
+        "7ceb59aaecbed05caacc8d8ef7839b8bb0b403d91c8d3aa6ff46409f9f4a3d21",
+        "28802f93d8b7da3eafb26529b81ced98c06c9f319f03a4c2985feabf5d845a40",
+        "656bd21671c95140c7590e717b702b90af9322cfa97e7cd43ba4bbb6f8987fdc",
+        "cab8b53080c3d9e8f02ad905706ab553a88b108650f799c9334abe2bf3494d5c",
+        "abcc7173fd3fd7ab4581f334d5ffc4f049c1f816021ee39fb37ca48f2ea38dca",
+        "92fca82e4722c66ece00ca91c177ab6f87ecac5f0be6cd668bc8405b50bf764d",
+        "8162e66b598301c85f7ed6c4acf63722c534000b34666086f405293e724570d5",
+        "4b237ca481b2c65e55308db0b4dc6e01c430ba503805d26f7aa615ba2e02c242",
+        "32eb30a9374390b695e2015b59551dbec233564b9bfa022ebdf40c4c26c1b848",
+        "ddc73bc837a373177d686487e73cfeb654bb5ec342b856f4bf6487bd7f0736a6",
+        "17362e42ddc2df533557b56e4638dabda4f49df302f63efbce92cdf1a996345a",
+        "9e1c7158ea6bb823de609c42fdb8a731f8bfbbf144675b8f6aba6b4b12e1be72",
+        "24611ecf12fdbe9000c3fda53815c05a506df068fd7de1a85aee1c4fc3aff53d"
+      ],
+      "croppedPoseHashes": [
+        "680bdcfdac56da2854ff23a718b62e56f47c8c86b944c0a148168ba171d874c3",
+        "3cc72d25d67d85eea363ea6260950d9143276a0d59f0130568f04ee4938dffdd",
+        "fba046e511dad59f2d450346fe2f97bb41fc8dc4deb80a950758b1ee23f2251f",
+        "da8c981390154ad08381ef232aedf5a4db43550df6ef8d20a56de01186f2e3bc",
+        "afb3336cd41b40315457fa799fbaeaaa3d02fc57e3fdddfe073d77e3c11ed745",
+        "def3381cae5e46c42ba239596ec1e1e880300b6e68abef56fe58b0da077a189f",
+        "b0e09a0b09d57f047c0ab3dad8591b14a3c8c210e0765c0a213a52d1519ae454",
+        "8c53182927eb13ee31eb3b4889775675da2e4038f8c6c62a08c01ff4c167312c",
+        "552a881b59cdbe307a5c267d112eefbe8d14bdb274152798cedfdb6689ed9384",
+        "499a89fc0aa35d09e8d8802609c43417ac9d14a832dac114cee98230abb56900",
+        "38b053038ff9a0ed2e0e14409afc9209ccbaf36d522f509f90141d3a217e568c",
+        "9c67cd75a82ef06b68b5e7be935b9b2a7f40ed4ae44cb442a022ab720502f840",
+        "15ab2ab3560b9bb42eec8e1c62504d783a658e8cb66aad6c227ffdcb3e87baf3",
+        "03c44ce359c585fa54e4e9c95974a7484f49ded91bc05e762753e2087f3dc48f",
+        "a1f6e671dab6f3911be226a5dc43aa39e2d2e8bb6ea27aeb5f86f678343aa488",
+        "fb6e31abd2cde4a06d6c65dcb18293bae5994851ae13a227e9bf11aff8afbcec"
+      ],
+      "file": "core.png",
+      "sha256": "61d976bd77fc696851f82501c7b03790694b3241f31834e36581704548f20c27"
+    },
+    "special": {
+      "states": [
+        "recover",
+        "hit",
+        "death",
+        "scan"
+      ],
+      "frameHashes": [
+        "c863110fb213ba9bdffc8a86b78d89aeb8387efa62435fa27655fe17dfbae446",
+        "21c4ae663d4e699e04df4dd651a567c7b864f429004c751ff3db377bbe6983b2",
+        "268c1f41ccbf7b254693fe551b50a5da6dbf4bd2d060ca6dc07f947a5061b048",
+        "84419399ed61faba7cbe1f8f6e35bea411859c5aa377f6925dcfce312329e1ae",
+        "e3e6cee9d9f186432d2ecd227d3851cf4d39bd5f6570c88d27dd2ae51dfb1398",
+        "df050652fbc27b1e16f68971a12dc7a33d87298fd91eb475c0b2458daeb072fc",
+        "f9bbbceae6de10f35222cb622bb8d45a830120ef8e7bda88fffb44625a62891f",
+        "a2276dfe0d0f3537b672f02302359a0f9083818d551093aab1bcbe8cac07be1e",
+        "e24bcfd8773742f07a0d195587f7b51a3f1de15b4911b6adfb69fad3be7f4e3f",
+        "dbb0e4b86e4962ed3924e53f82b93963bc4beb6c6c0cce86a5508e3338922603",
+        "81b8d5895419b0269ed272a936fed993f5bb1020bc57e5ee5d4ba1fa69b5a221",
+        "f1b791984d559f2c07317cf02d443e31a9316a460bcd860386594d25acc09f26",
+        "50d25768b1b11bbacde652deca102fb71b501e74d04d2a9e828c934b912a3c82",
+        "3a4fea32a44c60cd30799671bab3b21c9bf62e04d88d0e86df38181551b2a017",
+        "f8f2b07398046d30d7d30686c4f6cb123d1ddf21b98ae2b0b38fa0d003b1387d",
+        "0734c1c2140d18e084a985b9bd516fee3b8bbb7c0dd62adffb91448f04933a69"
+      ],
+      "croppedPoseHashes": [
+        "744a1133a7bdf0bacad0e60434712cacca1fa62ba584e9b05df5ceba0e41470b",
+        "65d3c3d3058f4a4f1bf9642e3cec53fbd009dcd875ba828118b6861a47d28653",
+        "c2c6dfb5fba08e02a1b9f9338b4de5e3b3562310aad4d69d176796e2ee3d66c0",
+        "aa6519622ac26141f30e021d2f9625d899170d4de63eb74fab6e796822b88964",
+        "d4417c17d19b3bfc9b219660bc94add61eb7d572c7a047a84a0f998d5af88290",
+        "2cfcc28ba00238b10c65a977d80397edc941a7681f3789635b2fabd7551638e0",
+        "a3aa49048fc1713f241032df2fb1ccf952f93790e118830d9edd142cada2379a",
+        "ee70cf6c645045c27ac468f16c818c9fb6ac84842f23d465c1b393a45c781057",
+        "7d4c85c6c1fae7f337a1286a6429f9cdbb13e8c5bd06b88dfd3903b87248ed68",
+        "c044cf97f83394ff96dda4a5d2e34163f24f1763f79b2155086146d559dbc7d6",
+        "8ffb12d1c52dd7ffe169655d4f1b9a84acb4e56f084b1e4f9e0d33a34d7db82f",
+        "062e847453d181c7ef35c6ba78c01cc7c80be54fd164ef504879e0b3df715e59",
+        "5cdf193d3b7b80405476f7494fc8c33db80ef46b2dc81a92af13120772633bd6",
+        "67f82ad86e7ad8141152c2284fe1218222b541320b9828a59c9ff7edb303b7bc",
+        "fb13c4f1187f6462dac680ca283771238bded7a2ad378601f912534e7dbc3133",
+        "e818cffc450cb67927b832729945d9ce902ed098372f371942efeaca59540ffd"
+      ],
+      "file": "special.png",
+      "sha256": "6cf461f57e4b644a97d95e3a1b1d139ff7ce42f5db6a028913c64895aa01a1b2"
+    }
+  }
+}
