@@ -34,7 +34,7 @@ let state: PwaRuntimeState = {
   online: navigator.onLine,
   standalone: window.matchMedia('(display-mode: standalone)').matches,
   isTauri,
-  message: isTauri ? 'PWA runtime disabled inside Tauri.' : 'PWA runtime standby.'
+  message: isTauri ? 'Terminal local prêt.' : 'Terminal en veille.'
 };
 const listeners = new Set<Listener>();
 
@@ -59,7 +59,7 @@ export function initializePwaRuntime(): void {
 
   const updateOnlineState = () => emit({
     online: navigator.onLine,
-    message: navigator.onLine ? 'Network link restored.' : 'Offline mode active. Cached modules remain available.'
+    message: navigator.onLine ? 'Liaison rétablie.' : 'Liaison coupée. Les données déjà téléchargées restent accessibles.'
   });
   window.addEventListener('online', updateOnlineState);
   window.addEventListener('offline', updateOnlineState);
@@ -67,22 +67,25 @@ export function initializePwaRuntime(): void {
   window.addEventListener('beforeinstallprompt', (event) => {
     event.preventDefault();
     installPrompt = event as InstallPromptEvent;
-    emit({ installAvailable: true, message: 'Install package ready.' });
+    emit({ installAvailable: true, message: 'Le terminal peut être installé sur cet appareil.' });
   });
 
   window.addEventListener('appinstalled', () => {
     installPrompt = null;
-    emit({ installAvailable: false, installed: true, standalone: true, message: 'Shadow Codec Ops installed.' });
+    emit({ installAvailable: false, installed: true, standalone: true, message: 'Terminal installé.' });
   });
 
   if (isTauri || !('serviceWorker' in navigator)) return;
 
   updateServiceWorker = registerSW({
     immediate: true,
-    onRegisteredSW: () => emit({ serviceWorkerReady: true, message: 'Offline service worker linked.' }),
-    onOfflineReady: () => emit({ offlineReady: true, serviceWorkerReady: true, message: 'Offline cache ready.' }),
-    onNeedRefresh: () => emit({ updateAvailable: true, message: 'A new tactical build is ready.' }),
-    onRegisterError: (error) => emit({ message: `Service worker registration failed: ${String(error)}` })
+    onRegisteredSW: () => emit({ serviceWorkerReady: true, message: 'Liaison du terminal établie.' }),
+    onOfflineReady: () => emit({ offlineReady: true, serviceWorkerReady: true, message: 'Les données du terminal sont disponibles hors ligne.' }),
+    onNeedRefresh: () => emit({ updateAvailable: true, message: 'Mise à jour du terminal disponible.' }),
+    onRegisterError: (error) => {
+      console.warn('PWA registration failed', error);
+      emit({ message: 'Accès hors ligne indisponible. Recharge le terminal pour réessayer.' });
+    }
   });
 }
 
@@ -93,7 +96,7 @@ export async function requestPwaInstall(): Promise<'accepted' | 'dismissed' | 'u
   if (choice.outcome === 'accepted') installPrompt = null;
   emit({
     installAvailable: choice.outcome !== 'accepted',
-    message: choice.outcome === 'accepted' ? 'Installation accepted.' : 'Installation dismissed.'
+    message: choice.outcome === 'accepted' ? 'Installation confirmée.' : 'Installation reportée.'
   });
   return choice.outcome;
 }
