@@ -2,20 +2,41 @@
 (function(root,factory){'use strict';const api=factory(root);if(typeof module==='object'&&module.exports)module.exports=api;root.CQC_PASS19_COSTUMES=api;api.installChoices();})(globalThis,function(root){
  'use strict';
  const kinds=new Set(['canonical-game-costume','original-character-costume','style-reinterpretation','historical-incarnation','body-transformation','official-remake-appearance']);
- const families=new Set(['retro','nextgen','cyborg','survive','metalgear','tuxedo','canonical']);
+ const families=new Set(['retro','nextgen','cyborg','survive','metalgear','tuxedo','canonical','alternate']);
  const data=()=>root.CQC_PASS19_COSTUME_REQUEST_DATA;
  const renderer=()=>root.CQC_COMBAT_SPRITES;
  const requests=new Map(),generation=new Map();
  const copy=value=>JSON.parse(JSON.stringify(value));
  const safeID=id=>typeof id==='string'&&/^[a-z0-9_-]+$/.test(id)&&id!=='original';
+ const samePeriodSources=new Map([
+  ['core__snake_mgs2',new Set(['roster51__pliskin_mgs2'])],
+  ['roster51__pliskin_mgs2',new Set(['core__snake_mgs2'])],
+  ['core__eva_mgs3',new Set(['npc53__tatyana_mgs3'])],
+  ['npc53__tatyana_mgs3',new Set(['core__eva_mgs3'])]
+ ]);
+ const retired=new Map();
+ function appearanceReason(uid,option){
+  if(!option||option.id==='original')return null;
+  const provenance=option.provenance;
+  if(provenance&&provenance.sourceUID!==uid)return 'different-fighter-identity';
+  if(option.sprite&&option.sprite.uid!==uid)return 'different-fighter-identity';
+  if(['historical-incarnation','body-transformation'].includes(provenance?.kind))return 'separate-incarnation';
+  if(provenance?.kind==='official-remake-appearance')return 'remake-requires-separate-incarnation-review';
+  if(provenance?.sourceSpriteUID&&provenance.sourceSpriteUID!==uid&&!(provenance.kind==='canonical-game-costume'&&samePeriodSources.get(uid)?.has(provenance.sourceSpriteUID)))return 'other-incarnation-atlas';
+  if(option.machinePresentation||option.sprite?.pixelArt||option.presentation?.kind==='authored-pixel-presentation')return 'newly-drawn-retro-atlas-required';
+  return null;
+ }
+ function appearanceAllowed(uid,option){return appearanceReason(uid,option)===null;}
+ function policyReport(){return{schema:'cqc.incarnation-costume-policy/1',samePeriodAtlasPairs:[...samePeriodSources].flatMap(([uid,sources])=>[...sources].map(sourceSpriteUID=>({uid,sourceSpriteUID}))),retired:[...retired.values()],historicalSourceFilesPreserved:true,derivedRetroSelectable:false};}
  const files=sprite=>new Map([...Object.values(sprite?.actions||{}),...Object.values(sprite?.oppositeActions||{})].flatMap(action=>action.frames||[]).map(frame=>[frame.file,frame.sha256]));
  function requestFor(uid,id){return requests.get(uid+':'+id)||data()?.entries?.[uid]?.requests?.find(request=>request.id===id)||null;}
  function catalog(){return root.CQC_COMBAT_COSTUME_CATALOG||{schema:'cqc.combat-costumes/1',entries:{}};}
  function optionFor(uid,id){return catalog().entries?.[uid]?.options?.find(option=>option.id===id)||null;}
- function selectable(uid,id){if(id==='original')return!!(data()?.entries?.[uid]||catalog().entries?.[uid]);const option=optionFor(uid,id);return!!option?.sprite||root.CQC_PASS19_MACHINE_PIXEL_STYLE?.validate(uid,option)===true;}
+ function selectable(uid,id){if(id==='original')return!!(data()?.entries?.[uid]||catalog().entries?.[uid]);const option=optionFor(uid,id);return appearanceAllowed(uid,option)&&!!option?.sprite;}
  function validateOption(uid,option){
   if(!data()?.entries?.[uid]&&!catalog().entries?.[uid])throw Error('Identité non inscrite: '+uid);
   if(!safeID(option?.id)||!families.has(option.family)||!option.label?.trim())throw Error('Costume mal défini');
+  const policyReason=appearanceReason(uid,option);if(policyReason)throw Error('Costume d’une autre incarnation ou illustration dérivée refusé: '+policyReason);
   if(optionFor(uid,option.id))throw Error('Costume déjà inscrit: '+uid+':'+option.id);
   if(requestFor(uid,option.family)?.status==='not-applicable')throw Error('Costume non applicable à cette incarnation');
   const provenance=option.provenance,review=option.assetReview,sprite=option.sprite;
@@ -24,7 +45,7 @@
   const presentation=option.presentation;
   const pixelOnly=provenance?.kind==='style-reinterpretation'&&presentation?.kind==='authored-pixel-presentation'&&presentation.originalPresentation===true&&sprite?.pixelArt?.schema==='cqc.pixel-presentation/1';
   const composed=!!sprite?.costumeParts;
-  if(review?.status!=='verified'||(!pixelOnly&&review.independentArt!==true)||!review.reviewer||!review.reviewedAt)throw Error('Illustrations distinctes non vérifiées');
+  if(review?.status!=='verified'||review.independentArt!==true||!review.reviewer||!review.reviewedAt)throw Error('Illustrations distinctes non vérifiées');
   if(!sprite||sprite.uid!==uid||sprite.mirror===true||!sprite.oppositeActions?.idle)throw Error('Deux directions natives requises');
   if(['canonical-game-costume','historical-incarnation','body-transformation','official-remake-appearance'].includes(provenance.kind)){
    if(provenance.kind!=='canonical-game-costume'&&(!provenance.sourceSpriteUID||!root.CQC_COMBAT_SPRITE_CATALOG?.entries?.[provenance.sourceSpriteUID]))throw Error('Corps source attesté absent');
@@ -75,15 +96,22 @@
  function installChoices(){
   if(!data())return false;const old=catalog(),entries={...old.entries};
   for(const uid of Object.keys(data().entries))if(!entries[uid])entries[uid]={default:'original',options:[{id:'original',label:'Tenue d’origine'}]};
+  let removed=0;
+  for(const[uid,record]of Object.entries(entries)){
+   const options=record.options.filter(option=>{const reason=appearanceReason(uid,option);if(!reason)return true;removed++;retired.set(uid+':'+option.id,{uid,id:option.id,reason,sourceSpriteUID:option.provenance?.sourceSpriteUID||null});return false;});
+   entries[uid]={...record,default:options.some(option=>option.id===record.default)?record.default:'original',options};
+  }
   root.CQC_COMBAT_COSTUME_CATALOG={...old,schema:'cqc.combat-costumes/1',entries};
+  if(removed)renderer()?.configureCostumes(root.CQC_COMBAT_COSTUME_CATALOG);
   const choices=root.CQC_COSTUMES_PASS17;if(choices){choices.fighterFor=fighterFor;choices.spriteOptions=(fighter,options={})=>({...options,costume:normalize(fighter?.uid,fighter?.costume)});}
   return true;
  }
  function nativeVariant(fighter){return!!fighter&&fighter.costume!=='original'&&!!fighter.costume&&!!optionFor(fighter.uid,fighter.costume)?.sprite;}
- function strictEntry(uid,options={}){const costume=options.costume||'original';return costume!=='original'&&!selectable(uid,costume)?null:renderer()?.getEntry(uid,options)||null;}
+ function strictEntry(uid,options={}){return renderer()?.getEntry(uid,{...options,costume:normalize(uid,options.costume||'original')})||null;}
  function displayHeight(fighter){return strictEntry(fighter?.uid,fighter)?.displayHeight||null;}
- function status(uid,id){const request=requestFor(uid,id),option=optionFor(uid,id);return{uid,id,request:request?copy(request):null,selectable:!!option?.sprite,art:option?.sprite?.coverage||'missing',provenance:option?.provenance?copy(option.provenance):null};}
+ function status(uid,id){const request=requestFor(uid,id),option=optionFor(uid,id);return{uid,id,request:request?copy(request):null,selectable:selectable(uid,id),art:option?.sprite?.coverage||'missing',provenance:option?.provenance?copy(option.provenance):null};}
  async function whenReady(fighter,options={}){
+  fighter=fighterFor(fighter,0,fighter?.costume||'original');
   const machine=root.CQC_PASS18_MACHINES,originalComposite=(!fighter?.costume||fighter.costume==='original')&&machine?.hasComposite(fighter?.uid)===true;
   if(originalComposite||root.CQC_PASS19_MACHINE_PIXEL_STYLE?.selected(fighter)){const result=await machine?.whenReadyComposite(fighter.uid,options);return result===true&&machine?.ready(fighter.uid)===true;}
   const entry=strictEntry(fighter?.uid,fighter);if(!entry)return false;
@@ -91,7 +119,6 @@
  }
  async function prepareSlots(fighters,options={}){
   if(!Array.isArray(fighters)||fighters.length!==2)throw Error('Deux emplacements de combat requis');
-  if(fighters.some(fighter=>fighter?.costume&&fighter.costume!=='original'&&!selectable(fighter.uid,fighter.costume)))return{ready:false,reason:'unavailable-costume',fighters:[]};
   const resolved=fighters.map((fighter,slot)=>fighterFor(fighter,slot,fighter.costume||'original'));
   // Persist no new choice here. Superseded requests may finish decoding but cannot launch.
   const key=options.owner||'match',serial=(generation.get(key)||0)+1;generation.set(key,serial);
@@ -101,5 +128,5 @@
  }
  function cancel(owner='match'){generation.set(owner,(generation.get(owner)||0)+1);}
  function report(){const entries=Object.values(data()?.entries||{});return{schema:'cqc.costume-status/1',identities:entries.length,readyNativeVariants:Object.values(catalog().entries).reduce((n,record)=>n+record.options.filter(option=>option.id!=='original'&&(option.sprite||option.machinePresentation)).length,0),requests:entries.flatMap(entry=>entry.requests.map(request=>({uid:entry.uid,...(requestFor(entry.uid,request.id)||request)}))),absolute1to1Certified:false};}
- return{version:'pass19-costumes/1',registerBatch,addRoster,createRosterRecord,validateOption,requestFor,optionFor,selectable,normalize,fighterFor,installChoices,nativeVariant,strictEntry,displayHeight,status,whenReady,prepareSlots,cancel,report};
+ return{version:'pass20-incarnation-costumes/1',appearanceAllowed,appearanceReason,policyReport,registerBatch,addRoster,createRosterRecord,validateOption,requestFor,optionFor,selectable,normalize,fighterFor,installChoices,nativeVariant,strictEntry,displayHeight,status,whenReady,prepareSlots,cancel,report};
 });

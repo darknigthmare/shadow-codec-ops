@@ -99,6 +99,8 @@ body.original-reprise .roster{grid-auto-rows:minmax(130px,1fr);align-content:str
 <script src="../src/cqc-pass19-survive-sprite-catalog-v6.js"></script>
 <script src="../src/cqc-pass19-creature-bindings.js"></script>
 <script src="../src/cqc-pass19-pw-box-sprite-catalog.js"></script>
+<script src="../src/cqc-pass20-pw-box-corrections.js"></script>
+<script src="../src/cqc-pass20-roster-sprite-catalog.js"></script>
 <script src="../src/cqc-machine-parts-renderer-v1.js"></script>
 <script src="../src/cqc-machine-parts-catalog-v1.js"></script>
 <script src="../src/cqc-pass16-machine-catalog.js"></script>
@@ -130,12 +132,18 @@ body.original-reprise .roster{grid-auto-rows:minmax(130px,1fr);align-content:str
 <script src="../src/cqc-pass19-canonical-appearances.js"></script>
 <script src="../src/cqc-pass19-original-costumes.js"></script>
 <script src="../src/cqc-pass19-native-tuxedo-costumes.js"></script>
+<script src="../src/cqc-pass20-native-retro-costumes.js"></script>
+<script src="../src/cqc-pass20-mechanical-costumes.js"></script>
 <script src="../src/cqc-pass19-roster-additions-v2.js"></script>
 <script src="../src/cqc-pass19-combat-additions.js"></script>
 <script src="../src/cqc-pass19-roster-native.js"></script>
+<script src="../src/cqc-pass20-roster-native.js"></script>
 <script src="../src/cqc-pass19-survive-organ-anchors-v2.js"></script>
 <script src="../src/cqc-pass19-box-cannon-anchors.js"></script>
+<script src="../src/cqc-pass20-box-cannon-anchors.js"></script>
+<script src="../src/cqc-pass20-roster-anchors.js"></script>
 <script src="../src/cqc-pass19-native-origins.js"></script>
+<script src="../src/cqc-pass20-costume-native-origins.js"></script>
 <script src="../src/cqc-pass19-native-wardrobe-index.js"></script>
 <script src="../src/cqc-pass19-native-wardrobe-library.js"></script>
 <script src="../src/cqc-pass19-native-wardrobe-static-compat.js"></script>
@@ -429,6 +437,8 @@ window.CQC_PASS8_COMBAT_FIDELITY?.apply(FIGHTERS);
 window.CQC_PASS9_COMBAT_FIDELITY?.apply(FIGHTERS);
 window.CQC_PASS10_COMBAT_FIDELITY.apply(FIGHTERS);
 window.CQC_PASS19_ROSTER_NATIVE.install(FIGHTERS);
+ window.CQC_PASS20_ROSTER_NATIVE.install(FIGHTERS);
+ window.CQC_PASS20_MECHANICAL_COSTUMES.install();
 window.CQC_PASS19_NEW_EFFECTS.registerFighters(FIGHTERS);
 window.CQC_PASS18_ROSTER_PRESENTATION?.apply(FIGHTERS);
 const filters=window.CQC_SELECTION_DOSSIERS.dossiers.filter(d=>d.id!=='ORIGINAL').map(d=>d.id);

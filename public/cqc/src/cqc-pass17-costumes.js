@@ -8,17 +8,18 @@
   const KEY='cqc-v056-costumes',slots=[Object.create(null),Object.create(null)];
   let ui=null;
   const record=uid=>root.CQC_COMBAT_COSTUME_CATALOG?.entries?.[uid];
-  function optionsFor(uid){return (record(uid)?.options||[{id:'original',label:'Original'}]).map(({id,label})=>({id,label}));}
+  function optionsFor(uid){return (record(uid)?.options||[{id:'original',label:'Original'}]).filter(option=>root.CQC_PASS19_COSTUMES?.appearanceAllowed(uid,option)!==false).map(({id,label})=>({id,label}));}
   function normalize(uid,id){return optionsFor(uid).some(option=>option.id===id)?id:'original';}
   function chosen(slot,uid){return normalize(uid,slots[slot===1?1:0][uid]);}
   try{
     const saved=JSON.parse(root.localStorage?.getItem(KEY)||'null');
     if(saved?.schema==='cqc.slot-costumes/1'&&Array.isArray(saved.slots))for(let slot=0;slot<2;slot++){
       const values=saved.slots[slot];if(!values||typeof values!=='object'||Array.isArray(values))continue;
-      for(const [uid,id] of Object.entries(values))if(record(uid)&&normalize(uid,id)===id)slots[slot][uid]=id;
+      // Registrars load after this controller; retain private IDs and normalize only when read.
+      for(const [uid,id] of Object.entries(values))if(/^[a-z0-9]+__[a-z0-9_]+$/.test(uid)&&typeof id==='string'&&/^[a-z0-9_-]+$/.test(id))slots[slot][uid]=id;
     }
   }catch{}
-  function snapshot(){return {schema:'cqc.slot-costumes/1',slots:slots.map(slot=>({...slot}))};}
+  function snapshot(){return {schema:'cqc.slot-costumes/1',slots:slots.map(slot=>Object.fromEntries(Object.entries(slot).map(([uid,id])=>[uid,normalize(uid,id)])))};}
   function select(slot,uid,id){
     if(![0,1].includes(slot)||!record(uid)||normalize(uid,id)!==id)return false;
     slots[slot][uid]=id;

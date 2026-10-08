@@ -4,7 +4,7 @@
  function projectile(p,m,options={}){
   if(!p?.f||!m)return null;const bodyAim=root.CQC_PASS19_NATIVE_AIM?.nativeOrigin(p,m,options);if(bodyAim)return bodyAim;
   const entry=root.CQC_COMBAT_SPRITES?.getEntry(p.f.uid,p.f);
-  const evidence=root.CQC_PASS19_CREATURE_ATTACHMENTS?.entries?.[p.f.uid]||root.CQC_PASS19_BOX_ATTACHMENTS?.entries?.[p.f.uid];
+  const evidence=root.CQC_PASS20_ATTACHMENTS?.entries?.[p.f.uid]||root.CQC_PASS19_CREATURE_ATTACHMENTS?.entries?.[p.f.uid]||root.CQC_PASS19_BOX_ATTACHMENTS?.entries?.[p.f.uid];
   if(!entry){const slot=m.tag==='rocket'?'missile':m.tag==='ballistic'?'ballistic':null;if(!slot||p.f.costume&&p.f.costume!=='original'&&!root.CQC_PASS19_MACHINE_PIXEL_STYLE?.selected(p.f))return null;const pose=root.CQC_PASS19_VERSUS_SPATIAL?.poseFor(p,Number.isFinite(options.frame)?options.frame:0)||{};const point=root.CQC_PASS18_MACHINES?.playableSourcePoint?.(p.f.uid,slot,0,0,p.face,1,pose);if(!point||!point.visible||!Number.isFinite(point.x)||!Number.isFinite(point.y))return null;return{forward:point.x*p.face,height:-point.y,sourceSHA256:point.sourceSHA256,reviewKind:'guarded-native-rig-source-point',worldScaleApplied:false,facingQualification:point.facingQualification};}
   if(!evidence)return null;
   const side=p.face===-1?'left':'right',actions=p.face===entry.facing?entry.actions:entry.oppositeActions;

@@ -1,0 +1,1835 @@
+{
+  "schema": "cqc.pass20.final-integration-two-routes-ui/2",
+  "startedAt": "2026-10-08T07:01:57.085Z",
+  "origin": "http://127.0.0.1:8029",
+  "qualification": "Final local source integration only, two routes: CQC shell and direct versus module. Six targeted scenarios per route follow the earlier18 initial functional UI cases; no repeat of broad gameplay, projectiles or anatomical atlas review. Real UI handlers select fighters/costumes and start one native machine match through stage confirmation. Read-only source/geometry diagnostics verify frozen bytes and native routes. Preview alpha diagnostics do not edit source images. Entire wardrobe completeness and absolute fidelity are not certified; fullscreen API remains outside scope.",
+  "checks": [
+    {
+      "flow": "direct-module",
+      "name": "1 Frozen source HTTP bytes, 375 distinct fighters and pass20 modules",
+      "pins": [
+        {
+          "file": "/cqc/runtime-manifest.json",
+          "status": 200,
+          "bytes": 874851,
+          "sha256": "e5ae0a59aa22dfd7c69a291b38fec441319ba0a29bb808fa96f975e2f6a8a98b",
+          "count": 2090,
+          "totalBytes": 2467436824
+        },
+        {
+          "file": "/cqc/src/cqc-sprite-renderer.js",
+          "status": 200,
+          "bytes": 39431,
+          "sha256": "52bf4af55267a7fed4c01a366a75337047fa843f9ac9e5351cc0f296349908f2"
+        },
+        {
+          "file": "/cqc/src/cqc-pass19-machine-costume-routing.js",
+          "status": 200,
+          "bytes": 5422,
+          "sha256": "210438389c1643b13bb32dfe0b55b442552bd5972ce10e916d7a8a67c809d8c1"
+        }
+      ],
+      "actual": {
+        "fighters": 375,
+        "bodies": 354,
+        "ugs": [
+          "pass19__mastiff_mgr",
+          "pass19__slider_mgr"
+        ],
+        "mechanical": {
+          "accepted": 3,
+          "rejected": [],
+          "pendingUIDs": [],
+          "preservedOriginalUIDs": [
+            "core__solid",
+            "core__ocelot_mgs1",
+            "pass19__dwarf_gekko_humanoid_mgr"
+          ],
+          "physicalFigures": 96,
+          "mappedPhysicalFigures": 95
+        },
+        "modules": {
+          "roster": true,
+          "attachments": true,
+          "mechanical": true,
+          "muzzle": true
+        },
+        "raw": [],
+        "index": {
+          "indexEntries": 4,
+          "loadedMetadata": 0,
+          "ownedMetadata": 0,
+          "metadataBytes": 0,
+          "assetLoads": 0,
+          "verifiedAssets": 0,
+          "protected": [],
+          "pendingSlots": [
+            null,
+            null
+          ]
+        }
+      }
+    },
+    {
+      "flow": "direct-module",
+      "name": "2 Incarnations separated, only4 same-period crossmaps and4 independent native MSX outfits",
+      "actual": {
+        "preserved": 362,
+        "retained": [
+          {
+            "uid": "core__snake_mgs2",
+            "id": "appearance-roster51-pliskin-mgs2",
+            "selected": true
+          },
+          {
+            "uid": "roster51__pliskin_mgs2",
+            "id": "appearance-core-snake-mgs2",
+            "selected": true
+          },
+          {
+            "uid": "core__eva_mgs3",
+            "id": "appearance-npc53-tatyana-mgs3",
+            "selected": true
+          },
+          {
+            "uid": "npc53__tatyana_mgs3",
+            "id": "appearance-core-eva-mgs3",
+            "selected": true
+          }
+        ],
+        "forbidden": [],
+        "derivedOptions": [],
+        "retro": [
+          {
+            "uid": "core__meryl_mgs1",
+            "selected": true,
+            "sourceUID": "core__meryl_mgs1",
+            "kind": "style-reinterpretation",
+            "family": "retro",
+            "independent": true,
+            "files": [
+              "assets/combat-costumes-pass20/core__meryl_mgs1/retro-msx/right-v1.png",
+              "assets/combat-costumes-pass20/core__meryl_mgs1/retro-msx/left-v1.png"
+            ]
+          },
+          {
+            "uid": "core__solid",
+            "selected": true,
+            "sourceUID": "core__solid",
+            "kind": "style-reinterpretation",
+            "family": "retro",
+            "independent": true,
+            "files": [
+              "assets/combat-costumes-pass20/core__solid/retro-msx/right-v1.png",
+              "assets/combat-costumes-pass20/core__solid/retro-msx/left-v1.png"
+            ]
+          },
+          {
+            "uid": "core__raiden_mgs4",
+            "selected": true,
+            "sourceUID": "core__raiden_mgs4",
+            "kind": "style-reinterpretation",
+            "family": "retro",
+            "independent": true,
+            "files": [
+              "assets/combat-costumes-pass20/core__raiden_mgs4/retro-msx/right-v1.png",
+              "assets/combat-costumes-pass20/core__raiden_mgs4/retro-msx/left-v1.png"
+            ]
+          },
+          {
+            "uid": "core__venom",
+            "selected": true,
+            "sourceUID": "core__venom",
+            "kind": "style-reinterpretation",
+            "family": "retro",
+            "independent": true,
+            "files": [
+              "assets/combat-costumes-pass20/core__venom/retro-msx/right-v1.png",
+              "assets/combat-costumes-pass20/core__venom/retro-msx/left-v1.png"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "flow": "direct-module",
+      "name": "3 Final first-idle preview keeps private same-sized costumes at a common stature",
+      "maxHeightVariation": 0,
+      "maxFootVariation": 0,
+      "actual": [
+        {
+          "uid": "core__meryl_mgs1",
+          "costume": "original",
+          "drawn": true,
+          "artState": "ready",
+          "previewGeometry": {
+            "uid": "core__meryl_mgs1",
+            "costume": "original",
+            "face": -1,
+            "statureUID": "core__meryl_mgs1",
+            "staturePixels": 211.53846153846155,
+            "statureEvidence": "official-primary-directly-observed",
+            "measurement": "native-alpha-idle",
+            "x": 134,
+            "y": 715.224114005187,
+            "floor": 716.014676955707,
+            "scale": 1.3090251645821236,
+            "standingHeight": 283.02153628619675,
+            "envelope": {
+              "radius": 0.42138136046085917,
+              "above": 1.1151840865805893,
+              "below": 0.015
+            },
+            "previewOnly": true
+          },
+          "alpha": {
+            "count": 23039,
+            "minY": 433,
+            "maxY": 715,
+            "minX": 42,
+            "maxX": 219,
+            "height": 283
+          },
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 268,
+            "height": 735,
+            "padding": 14.74
+          }
+        },
+        {
+          "uid": "core__meryl_mgs1",
+          "costume": "cyborg",
+          "drawn": true,
+          "artState": "ready",
+          "previewGeometry": {
+            "uid": "core__meryl_mgs1",
+            "costume": "cyborg",
+            "face": -1,
+            "statureUID": "core__meryl_mgs1",
+            "staturePixels": 211.53846153846155,
+            "statureEvidence": "official-primary-directly-observed",
+            "measurement": "native-alpha-idle",
+            "x": 134,
+            "y": 715.1847023984635,
+            "floor": 716.014676955707,
+            "scale": 1.2824048666660377,
+            "standingHeight": 283.02153628619675,
+            "envelope": {
+              "radius": 0.42138136046085917,
+              "above": 1.1151840865805893,
+              "below": 0.015
+            },
+            "previewOnly": true
+          },
+          "alpha": {
+            "count": 27889,
+            "minY": 433,
+            "maxY": 715,
+            "minX": 32,
+            "maxX": 228,
+            "height": 283
+          },
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 268,
+            "height": 735,
+            "padding": 14.74
+          }
+        },
+        {
+          "uid": "core__meryl_mgs1",
+          "costume": "tuxedo",
+          "drawn": true,
+          "artState": "ready",
+          "previewGeometry": {
+            "uid": "core__meryl_mgs1",
+            "costume": "tuxedo",
+            "face": -1,
+            "statureUID": "core__meryl_mgs1",
+            "staturePixels": 211.53846153846155,
+            "statureEvidence": "official-primary-directly-observed",
+            "measurement": "native-alpha-idle",
+            "x": 134,
+            "y": 715.2435020714856,
+            "floor": 716.014676955707,
+            "scale": 1.2769237300283385,
+            "standingHeight": 283.02153628619675,
+            "envelope": {
+              "radius": 0.42138136046085917,
+              "above": 1.1151840865805893,
+              "below": 0.015
+            },
+            "previewOnly": true
+          },
+          "alpha": {
+            "count": 24399,
+            "minY": 433,
+            "maxY": 715,
+            "minX": 39,
+            "maxX": 221,
+            "height": 283
+          },
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 268,
+            "height": 735,
+            "padding": 14.74
+          }
+        },
+        {
+          "uid": "core__meryl_mgs1",
+          "costume": "retro-msx",
+          "drawn": true,
+          "artState": "ready",
+          "previewGeometry": {
+            "uid": "core__meryl_mgs1",
+            "costume": "retro-msx",
+            "face": -1,
+            "statureUID": "core__meryl_mgs1",
+            "staturePixels": 211.53846153846155,
+            "statureEvidence": "official-primary-directly-observed",
+            "measurement": "native-alpha-idle",
+            "x": 134,
+            "y": 716.014676955707,
+            "floor": 716.014676955707,
+            "scale": 1.31637923854045,
+            "standingHeight": 283.02153628619675,
+            "envelope": {
+              "radius": 0.42138136046085917,
+              "above": 1.1151840865805893,
+              "below": 0.015
+            },
+            "previewOnly": true
+          },
+          "alpha": {
+            "count": 28615,
+            "minY": 433,
+            "maxY": 715,
+            "minX": 30,
+            "maxX": 225,
+            "height": 283
+          },
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 268,
+            "height": 735,
+            "padding": 14.74
+          }
+        }
+      ]
+    },
+    {
+      "flow": "direct-module",
+      "name": "4 Snake/Ocelot use the corrected unmanned native chassis, without old human-body atlas routing",
+      "actual": [
+        {
+          "route": {
+            "uid": "core__solid",
+            "costume": "metalgear",
+            "native": true,
+            "composite": false,
+            "revision": "native-mechanical-v1",
+            "anatomy": "nonhuman-unmanned-biped-vehicle-chassis",
+            "files": [
+              "assets/combat-costumes-pass20/core__solid/metalgear/right-mechanical-v1.png",
+              "assets/combat-costumes-pass20/core__solid/metalgear/left-mechanical-v1.png"
+            ]
+          },
+          "preview": {
+            "uid": "core__solid",
+            "costume": "metalgear",
+            "drawn": true,
+            "artState": "ready",
+            "previewGeometry": {
+              "uid": "core__solid",
+              "costume": "metalgear",
+              "face": -1,
+              "statureUID": "core__solid:metalgear",
+              "staturePixels": 410.989010989011,
+              "statureEvidence": "Original designed machine form; deliberate estimate, not canonical stature",
+              "measurement": "reviewed-native-stature-bounds",
+              "x": 134,
+              "y": 718.5348430896078,
+              "floor": 718.5348430896078,
+              "scale": 0.5227748213309945,
+              "standingHeight": 115.01046069281878,
+              "envelope": {
+                "radius": 1.0369491547254237,
+                "above": 1.06,
+                "below": 0.015
+              },
+              "previewOnly": true
+            },
+            "alpha": {
+              "count": 7622,
+              "minY": 604,
+              "maxY": 718,
+              "minX": 43,
+              "maxX": 193,
+              "height": 115
+            },
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 268,
+              "height": 735,
+              "padding": 14.74
+            }
+          }
+        },
+        {
+          "route": {
+            "uid": "core__ocelot_mgs1",
+            "costume": "metalgear",
+            "native": true,
+            "composite": false,
+            "revision": "native-mechanical-v1",
+            "anatomy": "nonhuman-unmanned-biped-vehicle-chassis",
+            "files": [
+              "assets/combat-costumes-pass20/core__ocelot_mgs1/metalgear/right-mechanical-v1.png",
+              "assets/combat-costumes-pass20/core__ocelot_mgs1/metalgear/left-mechanical-v1.png"
+            ]
+          },
+          "preview": {
+            "uid": "core__ocelot_mgs1",
+            "costume": "metalgear",
+            "drawn": true,
+            "artState": "ready",
+            "previewGeometry": {
+              "uid": "core__ocelot_mgs1",
+              "costume": "metalgear",
+              "face": -1,
+              "statureUID": "core__ocelot_mgs1:metalgear",
+              "staturePixels": 386.8131868131868,
+              "statureEvidence": "Original designed machine form; deliberate estimate, not canonical stature",
+              "measurement": "reviewed-native-stature-bounds",
+              "x": 134,
+              "y": 718.23242551866,
+              "floor": 718.23242551866,
+              "scale": 0.6144165094969717,
+              "standingHeight": 135.17163208933377,
+              "envelope": {
+                "radius": 0.8822857145142857,
+                "above": 1.06,
+                "below": 0.015
+              },
+              "previewOnly": true
+            },
+            "alpha": {
+              "count": 11167,
+              "minY": 583,
+              "maxY": 717,
+              "minX": 52,
+              "maxX": 205,
+              "height": 135
+            },
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 268,
+              "height": 735,
+              "padding": 14.74
+            }
+          }
+        }
+      ]
+    },
+    {
+      "flow": "direct-module",
+      "name": "5 DoubleTripod trench coat stays on the same UID as an original alternate; canonical work stays pending",
+      "actual": [
+        {
+          "uid": "pass19__dwarf_gekko_humanoid_mgr",
+          "costume": "original",
+          "selected": "original",
+          "artState": "ready",
+          "composite": true,
+          "native": false
+        },
+        {
+          "uid": "pass19__dwarf_gekko_humanoid_mgr",
+          "costume": "trenchcoat",
+          "selected": "trenchcoat",
+          "artState": "ready",
+          "composite": false,
+          "native": true,
+          "family": "alternate",
+          "originalDesign": true,
+          "canonicalAttested": false
+        },
+        {
+          "uid": "pass19__dwarf_gekko_humanoid_mgr",
+          "costume": "original",
+          "selected": "original",
+          "artState": "ready",
+          "composite": true,
+          "native": false
+        }
+      ],
+      "canonicalBefore": {
+        "id": "canonical",
+        "status": "pending-reference-review"
+      },
+      "canonicalAfter": {
+        "id": "canonical",
+        "status": "pending-reference-review"
+      }
+    },
+    {
+      "flow": "direct-module",
+      "name": "6 Three corrected four-boot TankBoxes preview natively; real UI launches both corrected machine costumes",
+      "boxes": [
+        {
+          "source": {
+            "uid": "pass19__box_tank_pw",
+            "correction": {
+              "twoHiddenBiologicalOperators": true,
+              "distinctHumanBootCount": 4,
+              "nativeFacingsIndependentlyAuthored": true,
+              "sharedCanonicalFamilyExteriorAcrossAmmunition": true,
+              "newPhysicalPoseCount": 32,
+              "mappedFamilyPoseCount": 96,
+              "sourcePNGsNeverRewritten": true
+            },
+            "files": [
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/right-movement-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/right-combat-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/right-cannon-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/right-recovery-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/left-movement-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/left-combat-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/left-cannon-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/left-recovery-v1.png"
+            ]
+          },
+          "preview": {
+            "uid": "pass19__box_tank_pw",
+            "costume": "original",
+            "drawn": true,
+            "artState": "ready",
+            "previewGeometry": {
+              "uid": "pass19__box_tank_pw",
+              "costume": "original",
+              "face": -1,
+              "statureUID": "pass19__box_tank_pw",
+              "staturePixels": 123.2967032967033,
+              "statureEvidence": "estimated-source-incarnation-display",
+              "measurement": "reviewed-native-stature-bounds",
+              "x": 134,
+              "y": 763.1890462948974,
+              "floor": 763.1890729551076,
+              "scale": 135.3547088164963,
+              "standingHeight": 138.06180299282622,
+              "envelope": {
+                "radius": 0.8638160404597702,
+                "above": 1.0648733585287358,
+                "below": 0.015
+              },
+              "previewOnly": true
+            },
+            "alpha": {
+              "count": 20586,
+              "minY": 625,
+              "maxY": 762,
+              "minX": 28,
+              "maxX": 223,
+              "height": 138
+            },
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 268,
+              "height": 780,
+              "padding": 14.74
+            }
+          }
+        },
+        {
+          "source": {
+            "uid": "pass19__box_tank_stun_pw",
+            "correction": {
+              "twoHiddenBiologicalOperators": true,
+              "distinctHumanBootCount": 4,
+              "nativeFacingsIndependentlyAuthored": true,
+              "sharedCanonicalFamilyExteriorAcrossAmmunition": true,
+              "newPhysicalPoseCount": 32,
+              "mappedFamilyPoseCount": 96,
+              "sourcePNGsNeverRewritten": true
+            },
+            "files": [
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/right-movement-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/right-combat-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/right-cannon-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/right-recovery-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/left-movement-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/left-combat-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/left-cannon-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/left-recovery-v1.png"
+            ]
+          },
+          "preview": {
+            "uid": "pass19__box_tank_stun_pw",
+            "costume": "original",
+            "drawn": true,
+            "artState": "ready",
+            "previewGeometry": {
+              "uid": "pass19__box_tank_stun_pw",
+              "costume": "original",
+              "face": -1,
+              "statureUID": "pass19__box_tank_stun_pw",
+              "staturePixels": 123.2967032967033,
+              "statureEvidence": "estimated-source-incarnation-display",
+              "measurement": "reviewed-native-stature-bounds",
+              "x": 134,
+              "y": 763.1890462948974,
+              "floor": 763.1890729551076,
+              "scale": 135.3547088164963,
+              "standingHeight": 138.06180299282622,
+              "envelope": {
+                "radius": 0.8638160404597702,
+                "above": 1.0648733585287358,
+                "below": 0.015
+              },
+              "previewOnly": true
+            },
+            "alpha": {
+              "count": 20586,
+              "minY": 625,
+              "maxY": 762,
+              "minX": 28,
+              "maxX": 223,
+              "height": 138
+            },
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 268,
+              "height": 780,
+              "padding": 14.74
+            }
+          }
+        },
+        {
+          "source": {
+            "uid": "pass19__box_tank_smoke_pw",
+            "correction": {
+              "twoHiddenBiologicalOperators": true,
+              "distinctHumanBootCount": 4,
+              "nativeFacingsIndependentlyAuthored": true,
+              "sharedCanonicalFamilyExteriorAcrossAmmunition": true,
+              "newPhysicalPoseCount": 32,
+              "mappedFamilyPoseCount": 96,
+              "sourcePNGsNeverRewritten": true
+            },
+            "files": [
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/right-movement-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/right-combat-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/right-cannon-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/right-recovery-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/left-movement-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/left-combat-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/left-cannon-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/left-recovery-v1.png"
+            ]
+          },
+          "preview": {
+            "uid": "pass19__box_tank_smoke_pw",
+            "costume": "original",
+            "drawn": true,
+            "artState": "ready",
+            "previewGeometry": {
+              "uid": "pass19__box_tank_smoke_pw",
+              "costume": "original",
+              "face": -1,
+              "statureUID": "pass19__box_tank_smoke_pw",
+              "staturePixels": 123.2967032967033,
+              "statureEvidence": "estimated-source-incarnation-display",
+              "measurement": "reviewed-native-stature-bounds",
+              "x": 134,
+              "y": 763.1890462948974,
+              "floor": 763.1890729551076,
+              "scale": 135.3547088164963,
+              "standingHeight": 138.06180299282622,
+              "envelope": {
+                "radius": 0.8638160404597702,
+                "above": 1.0648733585287358,
+                "below": 0.015
+              },
+              "previewOnly": true
+            },
+            "alpha": {
+              "count": 20586,
+              "minY": 625,
+              "maxY": 762,
+              "minX": 28,
+              "maxX": 223,
+              "height": 138
+            },
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 268,
+              "height": 780,
+              "padding": 14.74
+            }
+          }
+        }
+      ],
+      "match": {
+        "frame": 102,
+        "uids": [
+          "core__solid",
+          "core__ocelot_mgs1"
+        ],
+        "costumes": [
+          "metalgear",
+          "metalgear"
+        ],
+        "native": [
+          {
+            "revision": "native-mechanical-v1",
+            "ready": true,
+            "composite": false
+          },
+          {
+            "revision": "native-mechanical-v1",
+            "ready": true,
+            "composite": false
+          }
+        ],
+        "dojo": false
+      }
+    },
+    {
+      "flow": "standalone-shell",
+      "name": "1 Frozen source HTTP bytes, 375 distinct fighters and pass20 modules",
+      "pins": [
+        {
+          "file": "/cqc/runtime-manifest.json",
+          "status": 200,
+          "bytes": 874851,
+          "sha256": "e5ae0a59aa22dfd7c69a291b38fec441319ba0a29bb808fa96f975e2f6a8a98b",
+          "count": 2090,
+          "totalBytes": 2467436824
+        },
+        {
+          "file": "/cqc/src/cqc-sprite-renderer.js",
+          "status": 200,
+          "bytes": 39431,
+          "sha256": "52bf4af55267a7fed4c01a366a75337047fa843f9ac9e5351cc0f296349908f2"
+        },
+        {
+          "file": "/cqc/src/cqc-pass19-machine-costume-routing.js",
+          "status": 200,
+          "bytes": 5422,
+          "sha256": "210438389c1643b13bb32dfe0b55b442552bd5972ce10e916d7a8a67c809d8c1"
+        }
+      ],
+      "actual": {
+        "fighters": 375,
+        "bodies": 354,
+        "ugs": [
+          "pass19__mastiff_mgr",
+          "pass19__slider_mgr"
+        ],
+        "mechanical": {
+          "accepted": 3,
+          "rejected": [],
+          "pendingUIDs": [],
+          "preservedOriginalUIDs": [
+            "core__solid",
+            "core__ocelot_mgs1",
+            "pass19__dwarf_gekko_humanoid_mgr"
+          ],
+          "physicalFigures": 96,
+          "mappedPhysicalFigures": 95
+        },
+        "modules": {
+          "roster": true,
+          "attachments": true,
+          "mechanical": true,
+          "muzzle": true
+        },
+        "raw": [],
+        "index": {
+          "indexEntries": 4,
+          "loadedMetadata": 0,
+          "ownedMetadata": 0,
+          "metadataBytes": 0,
+          "assetLoads": 0,
+          "verifiedAssets": 0,
+          "protected": [],
+          "pendingSlots": [
+            null,
+            null
+          ]
+        }
+      }
+    },
+    {
+      "flow": "standalone-shell",
+      "name": "2 Incarnations separated, only4 same-period crossmaps and4 independent native MSX outfits",
+      "actual": {
+        "preserved": 362,
+        "retained": [
+          {
+            "uid": "core__snake_mgs2",
+            "id": "appearance-roster51-pliskin-mgs2",
+            "selected": true
+          },
+          {
+            "uid": "roster51__pliskin_mgs2",
+            "id": "appearance-core-snake-mgs2",
+            "selected": true
+          },
+          {
+            "uid": "core__eva_mgs3",
+            "id": "appearance-npc53-tatyana-mgs3",
+            "selected": true
+          },
+          {
+            "uid": "npc53__tatyana_mgs3",
+            "id": "appearance-core-eva-mgs3",
+            "selected": true
+          }
+        ],
+        "forbidden": [],
+        "derivedOptions": [],
+        "retro": [
+          {
+            "uid": "core__meryl_mgs1",
+            "selected": true,
+            "sourceUID": "core__meryl_mgs1",
+            "kind": "style-reinterpretation",
+            "family": "retro",
+            "independent": true,
+            "files": [
+              "assets/combat-costumes-pass20/core__meryl_mgs1/retro-msx/right-v1.png",
+              "assets/combat-costumes-pass20/core__meryl_mgs1/retro-msx/left-v1.png"
+            ]
+          },
+          {
+            "uid": "core__solid",
+            "selected": true,
+            "sourceUID": "core__solid",
+            "kind": "style-reinterpretation",
+            "family": "retro",
+            "independent": true,
+            "files": [
+              "assets/combat-costumes-pass20/core__solid/retro-msx/right-v1.png",
+              "assets/combat-costumes-pass20/core__solid/retro-msx/left-v1.png"
+            ]
+          },
+          {
+            "uid": "core__raiden_mgs4",
+            "selected": true,
+            "sourceUID": "core__raiden_mgs4",
+            "kind": "style-reinterpretation",
+            "family": "retro",
+            "independent": true,
+            "files": [
+              "assets/combat-costumes-pass20/core__raiden_mgs4/retro-msx/right-v1.png",
+              "assets/combat-costumes-pass20/core__raiden_mgs4/retro-msx/left-v1.png"
+            ]
+          },
+          {
+            "uid": "core__venom",
+            "selected": true,
+            "sourceUID": "core__venom",
+            "kind": "style-reinterpretation",
+            "family": "retro",
+            "independent": true,
+            "files": [
+              "assets/combat-costumes-pass20/core__venom/retro-msx/right-v1.png",
+              "assets/combat-costumes-pass20/core__venom/retro-msx/left-v1.png"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "flow": "standalone-shell",
+      "name": "3 Final first-idle preview keeps private same-sized costumes at a common stature",
+      "maxHeightVariation": 0,
+      "maxFootVariation": 0,
+      "actual": [
+        {
+          "uid": "core__meryl_mgs1",
+          "costume": "original",
+          "drawn": true,
+          "artState": "ready",
+          "previewGeometry": {
+            "uid": "core__meryl_mgs1",
+            "costume": "original",
+            "face": -1,
+            "statureUID": "core__meryl_mgs1",
+            "staturePixels": 211.53846153846155,
+            "statureEvidence": "official-primary-directly-observed",
+            "measurement": "native-alpha-idle",
+            "x": 134,
+            "y": 667.224114005187,
+            "floor": 668.014676955707,
+            "scale": 1.3090251645821236,
+            "standingHeight": 283.02153628619675,
+            "envelope": {
+              "radius": 0.42138136046085917,
+              "above": 1.1151840865805893,
+              "below": 0.015
+            },
+            "previewOnly": true
+          },
+          "alpha": {
+            "count": 23039,
+            "minY": 385,
+            "maxY": 667,
+            "minX": 42,
+            "maxX": 219,
+            "height": 283
+          },
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 268,
+            "height": 687,
+            "padding": 14.74
+          }
+        },
+        {
+          "uid": "core__meryl_mgs1",
+          "costume": "cyborg",
+          "drawn": true,
+          "artState": "ready",
+          "previewGeometry": {
+            "uid": "core__meryl_mgs1",
+            "costume": "cyborg",
+            "face": -1,
+            "statureUID": "core__meryl_mgs1",
+            "staturePixels": 211.53846153846155,
+            "statureEvidence": "official-primary-directly-observed",
+            "measurement": "native-alpha-idle",
+            "x": 134,
+            "y": 667.1847023984635,
+            "floor": 668.014676955707,
+            "scale": 1.2824048666660377,
+            "standingHeight": 283.02153628619675,
+            "envelope": {
+              "radius": 0.42138136046085917,
+              "above": 1.1151840865805893,
+              "below": 0.015
+            },
+            "previewOnly": true
+          },
+          "alpha": {
+            "count": 27889,
+            "minY": 385,
+            "maxY": 667,
+            "minX": 32,
+            "maxX": 228,
+            "height": 283
+          },
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 268,
+            "height": 687,
+            "padding": 14.74
+          }
+        },
+        {
+          "uid": "core__meryl_mgs1",
+          "costume": "tuxedo",
+          "drawn": true,
+          "artState": "ready",
+          "previewGeometry": {
+            "uid": "core__meryl_mgs1",
+            "costume": "tuxedo",
+            "face": -1,
+            "statureUID": "core__meryl_mgs1",
+            "staturePixels": 211.53846153846155,
+            "statureEvidence": "official-primary-directly-observed",
+            "measurement": "native-alpha-idle",
+            "x": 134,
+            "y": 667.2435020714856,
+            "floor": 668.014676955707,
+            "scale": 1.2769237300283385,
+            "standingHeight": 283.02153628619675,
+            "envelope": {
+              "radius": 0.42138136046085917,
+              "above": 1.1151840865805893,
+              "below": 0.015
+            },
+            "previewOnly": true
+          },
+          "alpha": {
+            "count": 24399,
+            "minY": 385,
+            "maxY": 667,
+            "minX": 39,
+            "maxX": 221,
+            "height": 283
+          },
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 268,
+            "height": 687,
+            "padding": 14.74
+          }
+        },
+        {
+          "uid": "core__meryl_mgs1",
+          "costume": "retro-msx",
+          "drawn": true,
+          "artState": "ready",
+          "previewGeometry": {
+            "uid": "core__meryl_mgs1",
+            "costume": "retro-msx",
+            "face": -1,
+            "statureUID": "core__meryl_mgs1",
+            "staturePixels": 211.53846153846155,
+            "statureEvidence": "official-primary-directly-observed",
+            "measurement": "native-alpha-idle",
+            "x": 134,
+            "y": 668.014676955707,
+            "floor": 668.014676955707,
+            "scale": 1.31637923854045,
+            "standingHeight": 283.02153628619675,
+            "envelope": {
+              "radius": 0.42138136046085917,
+              "above": 1.1151840865805893,
+              "below": 0.015
+            },
+            "previewOnly": true
+          },
+          "alpha": {
+            "count": 28615,
+            "minY": 385,
+            "maxY": 667,
+            "minX": 30,
+            "maxX": 225,
+            "height": 283
+          },
+          "box": {
+            "x": 0,
+            "y": 0,
+            "width": 268,
+            "height": 687,
+            "padding": 14.74
+          }
+        }
+      ]
+    },
+    {
+      "flow": "standalone-shell",
+      "name": "4 Snake/Ocelot use the corrected unmanned native chassis, without old human-body atlas routing",
+      "actual": [
+        {
+          "route": {
+            "uid": "core__solid",
+            "costume": "metalgear",
+            "native": true,
+            "composite": false,
+            "revision": "native-mechanical-v1",
+            "anatomy": "nonhuman-unmanned-biped-vehicle-chassis",
+            "files": [
+              "assets/combat-costumes-pass20/core__solid/metalgear/right-mechanical-v1.png",
+              "assets/combat-costumes-pass20/core__solid/metalgear/left-mechanical-v1.png"
+            ]
+          },
+          "preview": {
+            "uid": "core__solid",
+            "costume": "metalgear",
+            "drawn": true,
+            "artState": "ready",
+            "previewGeometry": {
+              "uid": "core__solid",
+              "costume": "metalgear",
+              "face": -1,
+              "statureUID": "core__solid:metalgear",
+              "staturePixels": 410.989010989011,
+              "statureEvidence": "Original designed machine form; deliberate estimate, not canonical stature",
+              "measurement": "reviewed-native-stature-bounds",
+              "x": 134,
+              "y": 670.5348430896078,
+              "floor": 670.5348430896078,
+              "scale": 0.5227748213309945,
+              "standingHeight": 115.01046069281878,
+              "envelope": {
+                "radius": 1.0369491547254237,
+                "above": 1.06,
+                "below": 0.015
+              },
+              "previewOnly": true
+            },
+            "alpha": {
+              "count": 7622,
+              "minY": 556,
+              "maxY": 670,
+              "minX": 43,
+              "maxX": 193,
+              "height": 115
+            },
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 268,
+              "height": 687,
+              "padding": 14.74
+            }
+          }
+        },
+        {
+          "route": {
+            "uid": "core__ocelot_mgs1",
+            "costume": "metalgear",
+            "native": true,
+            "composite": false,
+            "revision": "native-mechanical-v1",
+            "anatomy": "nonhuman-unmanned-biped-vehicle-chassis",
+            "files": [
+              "assets/combat-costumes-pass20/core__ocelot_mgs1/metalgear/right-mechanical-v1.png",
+              "assets/combat-costumes-pass20/core__ocelot_mgs1/metalgear/left-mechanical-v1.png"
+            ]
+          },
+          "preview": {
+            "uid": "core__ocelot_mgs1",
+            "costume": "metalgear",
+            "drawn": true,
+            "artState": "ready",
+            "previewGeometry": {
+              "uid": "core__ocelot_mgs1",
+              "costume": "metalgear",
+              "face": -1,
+              "statureUID": "core__ocelot_mgs1:metalgear",
+              "staturePixels": 386.8131868131868,
+              "statureEvidence": "Original designed machine form; deliberate estimate, not canonical stature",
+              "measurement": "reviewed-native-stature-bounds",
+              "x": 134,
+              "y": 670.23242551866,
+              "floor": 670.23242551866,
+              "scale": 0.6144165094969717,
+              "standingHeight": 135.17163208933377,
+              "envelope": {
+                "radius": 0.8822857145142857,
+                "above": 1.06,
+                "below": 0.015
+              },
+              "previewOnly": true
+            },
+            "alpha": {
+              "count": 11167,
+              "minY": 535,
+              "maxY": 669,
+              "minX": 52,
+              "maxX": 205,
+              "height": 135
+            },
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 268,
+              "height": 687,
+              "padding": 14.74
+            }
+          }
+        }
+      ]
+    },
+    {
+      "flow": "standalone-shell",
+      "name": "5 DoubleTripod trench coat stays on the same UID as an original alternate; canonical work stays pending",
+      "actual": [
+        {
+          "uid": "pass19__dwarf_gekko_humanoid_mgr",
+          "costume": "original",
+          "selected": "original",
+          "artState": "ready",
+          "composite": true,
+          "native": false
+        },
+        {
+          "uid": "pass19__dwarf_gekko_humanoid_mgr",
+          "costume": "trenchcoat",
+          "selected": "trenchcoat",
+          "artState": "ready",
+          "composite": false,
+          "native": true,
+          "family": "alternate",
+          "originalDesign": true,
+          "canonicalAttested": false
+        },
+        {
+          "uid": "pass19__dwarf_gekko_humanoid_mgr",
+          "costume": "original",
+          "selected": "original",
+          "artState": "ready",
+          "composite": true,
+          "native": false
+        }
+      ],
+      "canonicalBefore": {
+        "id": "canonical",
+        "status": "pending-reference-review"
+      },
+      "canonicalAfter": {
+        "id": "canonical",
+        "status": "pending-reference-review"
+      }
+    },
+    {
+      "flow": "standalone-shell",
+      "name": "6 Three corrected four-boot TankBoxes preview natively; real UI launches both corrected machine costumes",
+      "boxes": [
+        {
+          "source": {
+            "uid": "pass19__box_tank_pw",
+            "correction": {
+              "twoHiddenBiologicalOperators": true,
+              "distinctHumanBootCount": 4,
+              "nativeFacingsIndependentlyAuthored": true,
+              "sharedCanonicalFamilyExteriorAcrossAmmunition": true,
+              "newPhysicalPoseCount": 32,
+              "mappedFamilyPoseCount": 96,
+              "sourcePNGsNeverRewritten": true
+            },
+            "files": [
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/right-movement-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/right-combat-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/right-cannon-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/right-recovery-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/left-movement-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/left-combat-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/left-cannon-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/left-recovery-v1.png"
+            ]
+          },
+          "preview": {
+            "uid": "pass19__box_tank_pw",
+            "costume": "original",
+            "drawn": true,
+            "artState": "ready",
+            "previewGeometry": {
+              "uid": "pass19__box_tank_pw",
+              "costume": "original",
+              "face": -1,
+              "statureUID": "pass19__box_tank_pw",
+              "staturePixels": 123.2967032967033,
+              "statureEvidence": "estimated-source-incarnation-display",
+              "measurement": "reviewed-native-stature-bounds",
+              "x": 134,
+              "y": 715.1890462948974,
+              "floor": 715.1890729551076,
+              "scale": 135.3547088164963,
+              "standingHeight": 138.06180299282622,
+              "envelope": {
+                "radius": 0.8638160404597702,
+                "above": 1.0648733585287358,
+                "below": 0.015
+              },
+              "previewOnly": true
+            },
+            "alpha": {
+              "count": 20586,
+              "minY": 577,
+              "maxY": 714,
+              "minX": 28,
+              "maxX": 223,
+              "height": 138
+            },
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 268,
+              "height": 732,
+              "padding": 14.74
+            }
+          }
+        },
+        {
+          "source": {
+            "uid": "pass19__box_tank_stun_pw",
+            "correction": {
+              "twoHiddenBiologicalOperators": true,
+              "distinctHumanBootCount": 4,
+              "nativeFacingsIndependentlyAuthored": true,
+              "sharedCanonicalFamilyExteriorAcrossAmmunition": true,
+              "newPhysicalPoseCount": 32,
+              "mappedFamilyPoseCount": 96,
+              "sourcePNGsNeverRewritten": true
+            },
+            "files": [
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/right-movement-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/right-combat-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/right-cannon-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/right-recovery-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/left-movement-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/left-combat-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/left-cannon-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/left-recovery-v1.png"
+            ]
+          },
+          "preview": {
+            "uid": "pass19__box_tank_stun_pw",
+            "costume": "original",
+            "drawn": true,
+            "artState": "ready",
+            "previewGeometry": {
+              "uid": "pass19__box_tank_stun_pw",
+              "costume": "original",
+              "face": -1,
+              "statureUID": "pass19__box_tank_stun_pw",
+              "staturePixels": 123.2967032967033,
+              "statureEvidence": "estimated-source-incarnation-display",
+              "measurement": "reviewed-native-stature-bounds",
+              "x": 134,
+              "y": 715.1890462948974,
+              "floor": 715.1890729551076,
+              "scale": 135.3547088164963,
+              "standingHeight": 138.06180299282622,
+              "envelope": {
+                "radius": 0.8638160404597702,
+                "above": 1.0648733585287358,
+                "below": 0.015
+              },
+              "previewOnly": true
+            },
+            "alpha": {
+              "count": 20586,
+              "minY": 577,
+              "maxY": 714,
+              "minX": 28,
+              "maxX": 223,
+              "height": 138
+            },
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 268,
+              "height": 732,
+              "padding": 14.74
+            }
+          }
+        },
+        {
+          "source": {
+            "uid": "pass19__box_tank_smoke_pw",
+            "correction": {
+              "twoHiddenBiologicalOperators": true,
+              "distinctHumanBootCount": 4,
+              "nativeFacingsIndependentlyAuthored": true,
+              "sharedCanonicalFamilyExteriorAcrossAmmunition": true,
+              "newPhysicalPoseCount": 32,
+              "mappedFamilyPoseCount": 96,
+              "sourcePNGsNeverRewritten": true
+            },
+            "files": [
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/right-movement-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/right-combat-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/right-cannon-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/right-recovery-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/left-movement-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/left-combat-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/left-cannon-v1.png",
+              "assets/combat-sprites-pass20-boxes/box-tank-pw/left-recovery-v1.png"
+            ]
+          },
+          "preview": {
+            "uid": "pass19__box_tank_smoke_pw",
+            "costume": "original",
+            "drawn": true,
+            "artState": "ready",
+            "previewGeometry": {
+              "uid": "pass19__box_tank_smoke_pw",
+              "costume": "original",
+              "face": -1,
+              "statureUID": "pass19__box_tank_smoke_pw",
+              "staturePixels": 123.2967032967033,
+              "statureEvidence": "estimated-source-incarnation-display",
+              "measurement": "reviewed-native-stature-bounds",
+              "x": 134,
+              "y": 715.1890462948974,
+              "floor": 715.1890729551076,
+              "scale": 135.3547088164963,
+              "standingHeight": 138.06180299282622,
+              "envelope": {
+                "radius": 0.8638160404597702,
+                "above": 1.0648733585287358,
+                "below": 0.015
+              },
+              "previewOnly": true
+            },
+            "alpha": {
+              "count": 20586,
+              "minY": 577,
+              "maxY": 714,
+              "minX": 28,
+              "maxX": 223,
+              "height": 138
+            },
+            "box": {
+              "x": 0,
+              "y": 0,
+              "width": 268,
+              "height": 732,
+              "padding": 14.74
+            }
+          }
+        }
+      ],
+      "match": {
+        "frame": 107,
+        "uids": [
+          "core__solid",
+          "core__ocelot_mgs1"
+        ],
+        "costumes": [
+          "metalgear",
+          "metalgear"
+        ],
+        "native": [
+          {
+            "revision": "native-mechanical-v1",
+            "ready": true,
+            "composite": false
+          },
+          {
+            "revision": "native-mechanical-v1",
+            "ready": true,
+            "composite": false
+          }
+        ],
+        "dojo": false
+      }
+    }
+  ],
+  "actions": [
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "original"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "cyborg"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "tuxedo"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "retro-msx"
+    },
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "metalgear"
+    },
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "metalgear"
+    },
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "original"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "trenchcoat"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "original"
+    },
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "original"
+    },
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "original"
+    },
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "original"
+    },
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "metalgear"
+    },
+    {
+      "selector": "#slotP2",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#costume-p2-pass17",
+      "trigger": "normal select change",
+      "id": "metalgear"
+    },
+    {
+      "selector": "#matchSettingsButtonPass17",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#launch",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "[data-stage-index=\"23\"]",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#stageConfirmPass17",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#pauseBtn",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#leaveFight",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "[data-mode=\"versus\"]",
+      "context": "document",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#launchFront",
+      "context": "document",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "original"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "cyborg"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "tuxedo"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "retro-msx"
+    },
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "metalgear"
+    },
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "metalgear"
+    },
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "original"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "trenchcoat"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "original"
+    },
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "original"
+    },
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "original"
+    },
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "original"
+    },
+    {
+      "selector": "#slotP1",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#costume-p1-pass17",
+      "trigger": "normal select change",
+      "id": "metalgear"
+    },
+    {
+      "selector": "#slotP2",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#roster .fighter-card",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#costume-p2-pass17",
+      "trigger": "normal select change",
+      "id": "metalgear"
+    },
+    {
+      "selector": "#matchSettingsButtonPass17",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#launch",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "[data-stage-index=\"23\"]",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#stageConfirmPass17",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#pauseBtn",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    },
+    {
+      "selector": "#leaveFight",
+      "context": "cqcDoc",
+      "trigger": "normal HTMLElement.click UI handler"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "/workspace/cqc-pass20-incarnation-policy/final-ui-2026-10-08T07-01-57-047Z/direct-module-final-unmanned-mecha.png",
+      "bytes": 932330,
+      "sha256": "2771313a7b0f93e8d3376a200b52317e31ed41be6183ffa7e8d2cba85d932e7a"
+    },
+    {
+      "file": "/workspace/cqc-pass20-incarnation-policy/final-ui-2026-10-08T07-01-57-047Z/standalone-shell-final-unmanned-mecha.png",
+      "bytes": 943190,
+      "sha256": "ddb7c78b835e991c136dcd5c54936cbc465a110a7d2e7b0ec2d6f98bbd9acf1c"
+    }
+  ],
+  "expected": {
+    "manifest": "e5ae0a59aa22dfd7c69a291b38fec441319ba0a29bb808fa96f975e2f6a8a98b",
+    "renderer": "52bf4af55267a7fed4c01a366a75337047fa843f9ac9e5351cc0f296349908f2",
+    "routing": "210438389c1643b13bb32dfe0b55b442552bd5972ce10e916d7a8a67c809d8c1"
+  },
+  "initialProof": "/workspace/cqc-pass20-incarnation-policy/ui-2026-10-08T06-28-34-989Z/POLICY_TWO_ROUTES_ACTUAL_UI_V1.json",
+  "status": "passed",
+  "storageRestored": true,
+  "exceptions": [],
+  "networkFailures": [],
+  "httpErrors": [
+    {
+      "url": "http://127.0.0.1:8029/favicon.ico",
+      "status": 404
+    }
+  ],
+  "unexpectedNetworkFailures": [],
+  "gameHttpErrors": [],
+  "ownedBrowserCloseRequested": true,
+  "finishedAt": "2026-10-08T07:02:09.679Z",
+  "helperSHA256": "9647f22411322ac6650b2a142044a6dbb23cde3f5e4e3bb8bcff5b0c5927f29d"
+}

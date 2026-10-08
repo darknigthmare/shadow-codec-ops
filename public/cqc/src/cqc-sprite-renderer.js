@@ -11,6 +11,11 @@
   const entries = new Map(), images = new Map(), clocks = new Map(), entryFiles = new Map();
   const costumeEntries = new Map(), costumeFiles = new WeakMap();
   const retainedFiles = new Set();
+  let previewMeasurements = new WeakMap();
+  const previewEnvelopes = new Map();
+  // Both native directions of all four immutable lazy presentations are measured
+  // from their pinned metadata at build time, before any remote costume is loaded.
+  const previewEnvelopeSeeds = {"core__campbell_mpo":{"metadataSHA256":"67fbd7ef9645ebed6d280462b883fae4ca2a338b003594b9adcc1be4d0bb30b9","radius":0.4034782608695653,"above":1.0538191399999999,"below":0.015,"idleFrameCount":2},"core__chris_jenner":{"metadataSHA256":"f859951ae3b29f9a68029dd88d2dcd6615057c70874532ed76b1b5d32344e3d9","radius":0.4,"above":1.05359548,"below":0.015,"idleFrameCount":2},"core__cunningham":{"metadataSHA256":"4a6c03ddfa486fd8ab4a8eafa296d828666930d86f7716596703686890a023a8","radius":0.4446568434626867,"above":1.0537279800000001,"below":0.015,"idleFrameCount":2},"core__snake_gb":{"metadataSHA256":"341aaad75b9ee2e235802f239c35af76b301b896d6d293d721c8398197b9b8b0","radius":0.4,"above":1.05353612,"below":0.015,"idleFrameCount":2}};
   const decodedByteLimit = 256 * 1024 * 1024, readyImageLimit = 40, clockLimit = 512;
   let imageUse = 0, activeImageLoads = 0;
   const imageLoadLimit = 4, imageQueue = [];
@@ -33,7 +38,7 @@
     if (review.sourceKind !== 'original-character' && (!Array.isArray(review.sources) || !review.sources.length || !review.sources.every(s => /^https:\/\//.test(s.url || '')))) return false;
     const concept=entry.costumeConcept;
     const originalCostume=options.costume===true && concept?.schema==='cqc.costume-design/1'
-      && concept.sourceUID===uid && ['retro','nextgen','cyborg','survive','metalgear','tuxedo'].includes(concept.family)
+      && concept.sourceUID===uid && ['retro','nextgen','cyborg','survive','metalgear','tuxedo','alternate'].includes(concept.family)
       && concept.originalDesign===true && concept.canonicalAppearanceAttested===false;
     if (review.sourceKind === 'original-character' && !uid.startsWith('oc__') && !originalCostume) {
       const historicalOriginal=uid==='archive__carter_survive'
@@ -63,6 +68,8 @@
       for (const frame of action.frames) {
         if (!safeFile(frame.file) || !/^[a-f0-9]{64}$/.test(frame.sha256 || '') || !Array.isArray(frame.rect) || frame.rect.length !== 4 || !frame.rect.every(finite) || frame.rect[0] < 0 || frame.rect[1] < 0 || frame.rect[2] <= 0 || frame.rect[3] <= 0) return false;
         if (!Array.isArray(frame.pivot) || frame.pivot.length !== 2 || !frame.pivot.every(v => finite(v) && v >= 0 && v <= 1)) return false;
+        const body = frame.previewStatureBounds;
+        if (body && (!['left','top','right','bottom'].every(key => finite(body[key])) || body.left < 0 || body.top < 0 || body.right > frame.rect[2] || body.bottom > frame.rect[3] || body.right <= body.left || body.bottom <= body.top)) return false;
         if (frame.clipPolygon && (!Array.isArray(frame.clipPolygon) || frame.clipPolygon.length < 3 || !frame.clipPolygon.every(p => Array.isArray(p) && p.length === 2 && p.every(v => finite(v) && v >= 0 && v <= 1)))) return false;
       }
     }
@@ -82,7 +89,7 @@
     return 'http://localhost/';
   }
   function configure(catalog, options = {}) {
-    entries.clear(); images.clear(); clocks.clear(); entryFiles.clear(); retainedFiles.clear(); baseURL = resolveBase(options);
+    entries.clear(); images.clear(); clocks.clear(); entryFiles.clear(); retainedFiles.clear(); previewMeasurements = new WeakMap(); previewEnvelopes.clear(); baseURL = resolveBase(options);
     if (!catalog || catalog.schema !== 'cqc.combat-sprites/1' || !catalog.entries || typeof catalog.entries !== 'object') return { accepted: 0, rejected: [] };
     const rejected = [];
     for (const [uid, entry] of Object.entries(catalog.entries)) {
@@ -102,7 +109,7 @@
     return costume !== 'original' ? costumeEntries.get(uid)?.get(costume) || null : entries.get(uid);
   }
   function configureCostumes(catalog) {
-    costumeEntries.clear();
+    costumeEntries.clear(); previewMeasurements = new WeakMap();
     if (!catalog || catalog.schema !== 'cqc.combat-costumes/1' || !catalog.entries) return { accepted: 0, rejected: [] };
     let accepted = 0; const rejected = [];
     for (const [uid, record] of Object.entries(catalog.entries)) {
@@ -275,26 +282,120 @@
     const states = [...new Set(framesFor(entry, options).map(f => images.get(f.file)?.state || 'not-requested'))];
     return { uid, renderer: 'png', coverage: entry.coverage, actions: Object.keys(entry.actions), oppositeActions: Object.keys(entry.oppositeActions || {}), states, ready: states.length === 1 && states[0] === 'ready', limits: entry.review.limits };
   }
-  function drawFitted(c, fighter, box, face = -1, pose = {}) {
-    const entry = entryFor(fighter?.uid, fighter || {});
-    if (!entry || !box || ![box.x, box.y, box.width, box.height].every(finite) || box.width <= 0 || box.height <= 0 || ![1, -1].includes(face)) return false;
+  function sourceStandingHeight(entry, frame) {
+    return entry.sourceFrameHeights?.[frame.file] || entry.baseFrameHeight || frame.rect[3];
+  }
+  function previewStature(fighter, entry) {
+    const physical = root.CQC_PASS19_WORLD_SCALE?.height?.(fighter);
+    const pixels = finite(physical?.pixels) && physical.pixels > 0 ? physical.pixels : entry.displayHeight;
+    // A mechanical reinterpretation is a separately sized body, not an enlarged coat.
+    const transformed = entry.costumeConcept?.family === 'metalgear';
+    return { pixels, statureUID: transformed ? `${entry.uid}:${fighter?.costume || 'metalgear'}` : entry.uid,
+      evidence: physical?.evidence || 'preserved-display-height' };
+  }
+  function previewBody(entry, face) {
+    const directional = face !== entry.facing && entry.oppositeActions ? entry.oppositeActions : entry.actions;
+    const frame = directional?.idle?.frames?.[0];
+    if (!frame) return null;
+    const reviewed = frame.previewStatureBounds;
+    if (reviewed) return { frame, height: reviewed.bottom - reviewed.top, bottom: reviewed.bottom, top: reviewed.top, measurement: 'reviewed-native-stature-bounds' };
+    const stored = previewMeasurements.get(entry)?.get(face);
+    if (stored) return stored;
+    const fallback = { frame, height: sourceStandingHeight(entry, frame),
+      bottom: frame.rect[3] * frame.pivot[1], measurement: 'source-standing-height' };
+    const loaded = images.get(frame.file);
+    if (loaded?.state !== 'ready' || !root.document?.createElement) return fallback;
+    const [sx, sy, sw, sh] = frame.rect;
+    if (!Number.isInteger(sw) || !Number.isInteger(sh) || sw * sh > 2097152) return fallback;
+    // Read the approved idle silhouette only. No atlas is cropped, edited or re-encoded.
+    const canvas = root.document.createElement('canvas'); canvas.width = sw; canvas.height = sh;
+    let measured = fallback;
+    try {
+      const context = canvas.getContext('2d', { willReadFrequently: true });
+      if (!context) return fallback;
+      if (frame.clipPolygon) {
+        context.beginPath(); frame.clipPolygon.forEach((point, i) => {
+          if (i) context.lineTo(point[0] * sw, point[1] * sh);
+          else context.moveTo(point[0] * sw, point[1] * sh);
+        }); context.closePath(); context.clip();
+      }
+      context.drawImage(loaded.image, sx, sy, sw, sh, 0, 0, sw, sh);
+      const data = context.getImageData(0, 0, sw, sh).data;
+      let top = sh, bottom = -1;
+      for (let y = 0; y < sh; y++) for (let x = 0; x < sw; x++) {
+        if (data[(y * sw + x) * 4 + 3] < 16) continue;
+        top = Math.min(top, y); bottom = Math.max(bottom, y);
+      }
+      if (bottom >= top) measured = { frame, height: bottom + 1 - top, bottom: bottom + 1,
+        top, measurement: 'native-alpha-idle' };
+    } catch (_) { /* Restricted canvas readback retains explicit standing-height metadata. */ }
+    finally { canvas.width = canvas.height = 1; }
+    if (measured.measurement === 'native-alpha-idle') {
+      let directions = previewMeasurements.get(entry);
+      if (!directions) { directions = new Map(); previewMeasurements.set(entry, directions); }
+      directions.set(face, measured);
+    }
+    return measured;
+  }
+  function previewGeometry(fighter, box, face = -1) {
+    const directEntry = entryFor(fighter?.uid, fighter || {});
+    // Only this reviewed machine has a native cloth counterpart of the same stature.
+    const machineDatum = !directEntry && fighter?.uid === 'pass19__dwarf_gekko_humanoid_mgr'
+      && (!fighter.costume || fighter.costume === 'original');
+    const entry = directEntry || (machineDatum ? costumeEntries.get(fighter.uid)?.get('trenchcoat') : null);
+    if (!entry || !box || ![box.x, box.y, box.width, box.height].every(finite) || box.width <= 0 || box.height <= 0 || ![1, -1].includes(face)) return null;
     const opposite = face !== entry.facing && entry.oppositeActions;
-    if (face !== entry.facing && !opposite && entry.mirror !== true) return false;
-    const directional = opposite ? { ...entry, actions: entry.oppositeActions } : entry;
-    const selected = selectFrame(directional, { ...pose, actionTime: finite(pose.actionTime) ? pose.actionTime : 0 });
-    const frame = selected.frame;
+    if (face !== entry.facing && !opposite && entry.mirror !== true) return null;
     const padding = finite(box.padding) ? Math.max(0, box.padding) : 0;
     const innerWidth = box.width - padding * 2, innerHeight = box.height - padding * 2;
-    if (innerWidth <= 0 || innerHeight <= 0) return false;
-    const factor = entry.displayHeight / (entry.sourceFrameHeights?.[frame.file] || entry.baseFrameHeight || frame.rect[3]);
-    const nativeWidth = frame.rect[2] * factor, nativeHeight = frame.rect[3] * factor;
-    const fit = Math.min(innerWidth / nativeWidth, innerHeight / nativeHeight);
-    const width = nativeWidth * fit, height = nativeHeight * fit;
-    const pivotX = face !== entry.facing && !opposite ? 1 - frame.pivot[0] : frame.pivot[0];
-    const x = box.x + padding + (innerWidth - width) / 2 + width * pivotX;
-    const y = box.y + padding + (innerHeight - height) / 2 + height * frame.pivot[1];
-    // Preview scale is separate from combat geometry; include the complete equipment rectangle.
-    return draw(c, fighter, x, y, face, fit, { ...pose, actionTime: finite(pose.actionTime) ? pose.actionTime : 0, entityKey: pose.entityKey || `portrait:${entry.uid}:${face}` });
+    if (innerWidth <= 0 || innerHeight <= 0) return null;
+    const stature = previewStature(fighter, entry), body = previewBody(entry, face);
+    if (!body) return null;
+    const envelopeKey = stature.statureUID + ":" + stature.pixels;
+    let envelope = previewEnvelopes.get(envelopeKey);
+    if (!envelope) {
+      const variants = [['original', entries.get(entry.uid)],
+        ...(costumeEntries.get(entry.uid)?.entries() || [])].filter(([, value]) => value);
+      // The selection screen displays the first native idle, not later leaning poses.
+      // Static variants load before the first portrait; lazy variants contribute their
+      // compiled metadata above. Later registration never changes this shared frame.
+      const seed = stature.statureUID === entry.uid ? previewEnvelopeSeeds[entry.uid] : null;
+      let radius = seed?.radius || .4, above = seed?.above || 1.04, below = seed?.below || .015;
+      for (const [costume, variant] of variants) {
+        const candidate = previewStature({ uid: entry.uid, costume }, variant);
+        if (candidate.statureUID !== stature.statureUID || Math.abs(candidate.pixels / stature.pixels - 1) > .01) continue;
+        for (const actions of [variant.actions, variant.oppositeActions]) for (const frame of actions?.idle?.frames?.slice(0, 1) || []) {
+          const standing = sourceStandingHeight(variant, frame), [,, width, height] = frame.rect;
+          radius = Math.max(radius, width * Math.max(frame.pivot[0], 1 - frame.pivot[0]) / standing * 1.12);
+          above = Math.max(above, height * frame.pivot[1] / standing * 1.06);
+          below = Math.max(below, height * (1 - frame.pivot[1]) / standing * 1.06);
+        }
+      }
+      if (entry.uid === 'pass19__dwarf_gekko_humanoid_mgr') for (const side of [1, -1]) {
+        const id = root.CQC_PASS18_MACHINES?.physical?.(entry.uid, side);
+        const bounds = id && root.CQC_PASS19_WORLD_SCALE?.neutralBounds?.(id);
+        if (bounds?.height > 0) radius = Math.max(radius, bounds.width / bounds.height * .56);
+      }
+      envelope = Object.freeze({ radius, above, below });
+      previewEnvelopes.set(envelopeKey, envelope);
+    }
+    const { radius, above, below } = envelope;
+    const fit = Math.min(innerWidth / (radius * 2 * stature.pixels), innerHeight / ((above + below) * stature.pixels));
+    const referenceFactor = entry.displayHeight / sourceStandingHeight(entry, body.frame);
+    const scale = fit * stature.pixels / (body.height * referenceFactor);
+    const floor = box.y + box.height - padding - below * stature.pixels * fit;
+    return { uid: entry.uid, costume: fighter?.costume || 'original', face, statureUID: stature.statureUID,
+      staturePixels: stature.pixels, statureEvidence: stature.evidence, measurement: body.measurement,
+      x: box.x + box.width / 2, y: floor - (body.bottom - body.frame.rect[3] * body.frame.pivot[1]) * referenceFactor * scale,
+      floor, scale, standingHeight: stature.pixels * fit,
+      envelope, previewOnly: true, ...(machineDatum ? { renderer: 'machine-stature-datum', referenceCostume: 'trenchcoat' } : {}) };
+  }
+  function drawFitted(c, fighter, box, face = -1, pose = {}) {
+    const geometry = previewGeometry(fighter, box, face);
+    if (!geometry) return false;
+    return draw(c, fighter, geometry.x, geometry.y, face, geometry.scale,
+      { ...pose, actionTime: finite(pose.actionTime) ? pose.actionTime : 0,
+        entityKey: pose.entityKey || `portrait:${fighter.uid}:${face}` });
   }
   function draw(c, fighter, x, y, face = 1, scale = 1, pose = {}) {
     const entry = entryFor(fighter && fighter.uid, fighter || {});
@@ -338,5 +439,5 @@
     } finally { c.restore(); }
     return true;
   }
-  return { configure, configureCostumes, getEntry: entryFor, draw, drawFitted, has, preload, whenReady, status, validateEntry, validateCostumeEntry, actionName, selectFrame, retainFighters, cacheInfo };
+  return { configure, configureCostumes, getEntry: entryFor, draw, drawFitted, previewGeometry, has, preload, whenReady, status, validateEntry, validateCostumeEntry, actionName, selectFrame, retainFighters, cacheInfo };
 });

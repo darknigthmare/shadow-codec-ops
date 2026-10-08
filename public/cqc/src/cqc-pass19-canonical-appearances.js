@@ -15,7 +15,9 @@ function additions(){
  });
 }
 let installed=false;
-function install(){if(installed)return{accepted:0,alreadyInstalled:true};const api=root.CQC_PASS19_COSTUMES;if(!api?.registerBatch)throw Error('Enregistrement des costumes absent');const result=api.registerBatch(additions());if(result.accepted!==data.counts.readyNativeOptions||result.rejected?.length)throw Error('Options historiques non enregistrées');installed=true;return{...result,counts:{...data.counts}};}
-root.CQC_PASS19_CANONICAL_APPEARANCES=Object.freeze({version:'pass19-canonical-appearances/2',data,additions,install});
+function reviewedAdditions(){return additions().filter(({uid,option})=>root.CQC_PASS19_COSTUMES.appearanceAllowed(uid,option));}
+function excludedRecords(){return data.records.filter(record=>!root.CQC_PASS19_COSTUMES.appearanceAllowed(record.uid,{id:record.id,provenance:{kind:record.kind,sourceUID:record.uid,sourceSpriteUID:record.sourceSpriteUID}})).map(record=>({...record,reason:root.CQC_PASS19_COSTUMES.appearanceReason(record.uid,{id:record.id,provenance:{kind:record.kind,sourceUID:record.uid,sourceSpriteUID:record.sourceSpriteUID}})}));}
+function install(){if(installed)return{accepted:0,alreadyInstalled:true};const api=root.CQC_PASS19_COSTUMES;if(!api?.registerBatch)throw Error('Enregistrement des costumes absent');const reviewed=reviewedAdditions(),result=api.registerBatch(reviewed);if(result.accepted!==reviewed.length||result.rejected?.length)throw Error('Costumes de la même période non enregistrés');installed=true;return{...result,counts:{preservedHistoricalRecords:data.records.length,retainedSamePeriodOptions:reviewed.length,excludedSeparateIncarnations:excludedRecords().length}};}
+root.CQC_PASS19_CANONICAL_APPEARANCES=Object.freeze({version:'pass19-canonical-appearances/2',data,additions,reviewedAdditions,excludedRecords,install});
 install();
 })(globalThis);
