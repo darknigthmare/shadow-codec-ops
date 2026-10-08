@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script>
+    var websiteName = "Port Forward";
+    var privacyPolicyUrl = "https://portforward.com/privacy/";
+    var googleTagManager = "GTM-PM5NC9H";
+</script>
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied',
+        'functionality_storage': 'denied'
+    });
+</script>
+
+<script>(function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', googleTagManager);</script>
+
+
+<script type="text/javascript" src="https://www.termsfeed.com/public/cookie-consent/4.1.0/cookie-consent.js" charset="UTF-8"></script>
+<script type="text/javascript" charset="UTF-8">
+    document.addEventListener('DOMContentLoaded', function () {
+        cookieconsent.run({
+            "notice_banner_type": "simple",
+            "consent_type": "express",
+            "palette": "light",
+            "language": "en",
+            "page_load_consent_levels": ["strictly-necessary"],
+            "notice_banner_reject_button_hide": false,
+            "preferences_center_close_button_hide": false,
+            "page_refresh_confirmation_buttons": false,
+            "website_name": websiteName,
+            "website_privacy_policy_url": privacyPolicyUrl,
+
+            "callbacks": {
+                "scripts_specific_loaded": (level) => {
+                    console.log("Level: " + level);
+                    switch (level) {
+
+                        // functionality is personal site level
+                        case 'functionality':
+                            gtag('consent', 'update', {
+                                'functionality_storage': 'granted',
+                            });
+                            break;
+
+                        // analytics_storage is the default level
+                        case 'tracking':
+                            gtag('consent', 'update', {
+                                'analytics_storage': 'granted'
+                            });
+                            break;
+
+                        // targeting is advertising
+                        case 'targeting':
+                            gtag('consent', 'update', {
+                                'ad_storage': 'granted',
+                                'ad_user_data': 'granted',
+                                'ad_personalization': 'granted'
+                            });
+                            break;
+
+                        // strictly necessary cannot be turned off
+                        case 'strictly-necessary':
+                            gtag('consent', 'update', {
+                                'ad_storage': 'denied',
+                                'ad_user_data': 'denied',
+                                'ad_personalization': 'denied',
+                                'analytics_storage': 'denied',
+                                'functionality_storage': 'denied'
+                            });
+                            break;
+                    }
+                }
+            },
+            "callbacks_force": true
+        });
+    });
+</script>
+
+    <title>Metal Gear Solid: Rising Revengeance Walkthrough R-02: Research Facility</title>
+    <meta name="Description" content="Metal Gear Solid: Rising Revengeance Walkthrough R-02: Research Facility">
+    <link rel="canonical" href="https://portforward.com/games/walkthroughs/Metal-Gear-Solid-Rising-Revengeance/R-02-Research-Facility.htm">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <meta name="keywords" content="game walkthrough Metal Gear Solid: Rising Revengeance Walkthrough R-02: Research Facility">
+    <link rel="stylesheet" href="/build/css/2/portforward.css">
+    <link rel="stylesheet" type="text/css" href="/build/css/2/custom.css" id="stylesheet">
+
+    <!-- Json LD-->
+<meta property="og:site_name" content="Port Forward" />
+<meta property="og:title" content="Metal Gear Solid: Rising Revengeance Walkthrough R-02: Research Facility" />
+<meta property="og:description" content="Metal Gear Solid: Rising Revengeance Walkthrough R-02: Research Facility" />
+<meta property="og:url" content="https://portforward.com/games/walkthroughs/Metal-Gear-Solid-Rising-Revengeance/R-02-Research-Facility.htm" />
+<meta property="og:type" content="article" />
+<meta property="article:publisher" content="https://portforward.com" />
+<meta property="article:section" content="networking help" />
+<meta property="article:tag" content="networking help" />
+<meta property="og:image" content="https://portforward.com/games/walkthroughs/Metal-Gear-Solid-Rising-Revengeance/default.webp" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://portforward.com/games/walkthroughs/Metal-Gear-Solid-Rising-Revengeance/default.webp" />
+<meta property="twitter:site" content="@portforward" />
+
+<script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Metal Gear Solid: Rising Revengeance Walkthrough R-02: Research Facility",
+    "proficiencyLevel": "Beginner",
+    "image": "https://portforward.com/games/walkthroughs/Metal-Gear-Solid-Rising-Revengeance/default.webp",
+    "author": "No one",
+    "genre": "networking help",
+    "keywords": "game walkthrough Metal Gear Solid: Rising Revengeance Walkthrough R-02: Research Facility",
+    "abstract": ".",
+    "wordcount": "1148",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Port Forward",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.portforward.com/build/images/logo/pf-logo-250.png"
+        }
+    },
+    "url": "https://portforward.com/games/walkthroughs/Metal-Gear-Solid-Rising-Revengeance/R-02-Research-Facility.htm",
+    "datePublished": "September 12, 2016",
+    "dateCreated": "September 12, 2016",
+    "dateModified": "September 15, 2021",
+    "description": "Metal Gear Solid: Rising Revengeance Walkthrough R-02: Research Facility"
+}</script>
+
+    <script>
+        // -----------------------------------------------
+        // getAppData
+        // If the user has visited a page with an app then they should have a cookie with that app's data
+        // -----------------------------------------------
+        function getAppData() {
+            let cookies = document.cookie.split(';').reduce((cookies, cookie) => {
+                const [name, value] = cookie.split('=').map(c => c.trim());
+                cookies[name] = value;
+                return cookies;
+            }, {});
+
+            // Default to Xbox Live 3074
+            const lastApp = cookies['lastApp'] ? unescape(cookies['lastApp']) : "Xbox Live";
+            const tcpPorts = cookies['tcpPorts'] ? unescape(cookies['tcpPorts']) : "3074";
+            const udpPorts = cookies['udpPorts'] ? unescape(cookies['udpPorts']) : "3074";
+
+            setInnerHtml('tcpports', tcpPorts);
+            setInnerHtml('toptcpports', tcpPorts);
+
+            setInnerHtml('udpports', udpPorts);
+            setInnerHtml('topudpports', udpPorts);
+
+            setInnerHtml('lastapp', lastApp);
+            setInnerHtml('toplastapp', lastApp);
+        }
+
+        // -----------------------------------------------
+        // Set the innerHTML of a control only if that control exists
+        // -----------------------------------------------
+        function setInnerHtml(controlName, data) {
+            let control = document.getElementById(controlName);
+            if (control != null) {
+                control.innerHTML = data;
+            }
+        }
+    </script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8353609944550551" crossorigin="anonymous"></script>
+</head>
+
+
+<body onload="setArticleId(30685);">
+    <div class="container-fluid sticky-top bg-dark text-white py-2 d-none d-lg-block">
+    <div class="row align-items-center">
+        <div class="col-auto me-auto">
+            <a href="https://portforward.com/" aria-label="Port forward name and logo">
+                <img src="/build/images/bootstrap/portforward-light.svg" alt="Port forward name logo in white" width="150" height="38" class="d-inline-block align-middle">
+
+                <img src="/build/images/bootstrap/pf-logo-white.svg" alt="Port forward chevron logo in white" width="25" height="25" class="d-inline-block align-middle">
+            </a>
+        </div>
+
+        <div class="col">
+            <ul id="fadeawayNavbar">
+                <li class="ps-0"><a href="https://portforward.com/router.htm" class="link-light">Routers</a></li>
+                <li class="ps-3"><a href="https://portforward.com/ports/a/" class="link-light">Port Lists</a></li>
+                <li class="ps-3"><a href="https://portforward.com/store/pfconfig.cgi" class="link-light">Software</a></li>
+                <li class="ps-3"><a href="https://portforward.com/guides.htm" class="link-light">Help Center</a></li>
+                <li class="ps-3"><a href="https://portforward.com/sitemap/" class="link-light">Sitemap</a></li>
+                <li class="ps-3"><a href="https://portforward.com/search/" aria-label="search"><img src="/build/images/icons/magnify.svg" alt="Search our site" width="21" height="21" class="text-light"></a></li>
+            </ul>
+        </div>
+
+        <div class="col-auto">
+            <a class="btn btn-secondary btn-md" href="https://secure.portforward.com/shopping-cart/" role="button">Add to cart <img src="/build/images/shopping-cart/shopping-cart-50x50.png" class="img-fluid" height="20px" width="20px" alt="port forward shopping cart"></a>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid sticky-top bg-dark text-white py-2 d-block d-lg-none">
+    <div class="row align-items-center">
+        <div class="col-auto me-auto">
+            <a href="https://portforward.com/" aria-label="Port forward name and logo">
+                <img src="/build/images/bootstrap/portforward-light.svg" alt="Port forward name logo in white" width="150" height="38" class="d-inline-block align-middle">
+
+                <img src="/build/images/bootstrap/pf-logo-white.svg" alt="Port forward chevron logo in white" width="25" height="25" class="d-inline-block align-middle">
+            </a>
+        </div>
+
+        
+
+
+        <div class="col-auto">
+            <a class="btn btn-secondary btn-md" href="https://secure.portforward.com/shopping-cart/" role="button">Add to cart <img src="/build/images/shopping-cart/shopping-cart-50x50.png" class="img-fluid" height="20px" width="20px" alt="port forward shopping cart"></a>
+        </div>
+    </div>
+</div>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="https://portforward.com/" aria-label="Port forward name and logo in dark">
+            <img src="/build/images/bootstrap/portforward-dark.svg" alt="port forward logo in dark" width="200" height="50"
+                alt="Port forward name logo in gray" class="d-inline-block align-text-top">
+            <img src="/build/images/bootstrap/pf-logo.svg" alt="port forward logo" width="40" height="50"
+                alt="Port forward chevron logo in orange" class="d-inline-block align-text-top">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse"
+            aria-controls="dropdownList" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="ms-auto d-none d-md-block">
+            <form class="d-flex" action="/search/" method="POST" enctype="multipart/form-data" accept-charset="UTF-8">
+                <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-light border" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+    <br>
+</nav>
+
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container">
+        <div class="collapse navbar-collapse multi-collapse">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a href="https://portforward.com/router.htm" class="nav-link dropdown-toggle" id="routersDropdown"
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Routers
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="routersDropdown">
+                        <li><a class="dropdown-item fw-bold" href="https://portforward.com/router.htm">List of Routers</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="https://portforward.com/how-to-port-forward/">How To Port Forward</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/networking/routers_ip_address.htm">How To Find Router IP Address</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/router-login/">How To Login to Your Router</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/router-password/">Router Passwords</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/router.htm">Router Screenshots</a>
+                        </li>
+                        <li><a class="dropdown-item" href="https://portforward.com/help/doublerouterportforwarding.htm">Double Router Forwarding</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/how-to-port-forward/">How to Open a Port</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/open-port/">How to Check for Open Ports</a></li>
+                    </ul>
+
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="https://portforward.com/ports/a/" class="nav-link dropdown-toggle" id="portListsDropdown"
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Port Lists
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="portListsDropdown">
+                        <li><a class="dropdown-item fw-bold" href="https://portforward.com/ports/a/">List of Ports</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="https://portforward.com/games/">Port Forward - Games</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/apps/">Port Forward - Apps (VNC, Remote Desktop)</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/iot/">Port Forward - Internet of Things (SmartHome, MQTT)</a></li>
+
+                        <li><a class="dropdown-item" href="https://portforward.com/media-servers/">Port Forward - Media Servers (Plex, Emby, Jellyfin)</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/file-sharing/">Port Forward - File Sharing (Torrent, DC++)</a></li>
+                        
+                        <li><a class="dropdown-item" href="https://portforward.com/camera/">Port Forward - Security Cameras</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/platform/">Port Forward - Gaming Platforms</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/game-servers/">Port Forward - Game Servers (Minecraft, Rust)</a></li>
+                        
+                        <li><a class="dropdown-item" href="https://portforward.com/dvr/">Port Forward - DVR</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/nas/">Port Forward - NAS</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/voip/">Port Forward - VOIP</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="https://portforward.com/genres/">Port Forward Games</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/portforward-two-xboxes/">Port Forward Two Xboxes</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/networking/staticip.htm">Setup a Static IP Address</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/games/walkthroughs/games.htm">Game Walkthroughs</a></li>
+                    </ul>
+
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="https://portforward.com/store/pfconfig.cgi" class="nav-link dropdown-toggle"
+                        id="softwareDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Software
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="softwareDropdown">
+                        <li><a class="dropdown-item fw-bold" href="https://portforward.com/store/pfconfig.cgi">Network Utilities</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="https://portforward.com/software/why-choose-port-forward/">Why Choose Port Forward</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/store/videos.htm">Product Tour</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/store/pfconfig.cgi#steps">How Network Utilities Works</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/store/pfconfig.cgi#features">Software Features</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/software/screenshots/">Software Screenshots</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/software/testimonials/">Customer Testimonials</a></li>
+                    </ul>
+
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="/how-to-port-forward/" class="nav-link dropdown-toggle" id="networkingDropdown"
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Help Center
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="networkingDropdown">
+                        <li><a class="dropdown-item fw-bold" href="https://portforward.com/guides.htm">Help Center - More links</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="https://portforward.com/how-to-port-forward/">How To Port Forward</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/dhcp-reservation/">DHCP Reservation</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/networking/staticip.htm">Configuring a Static IP Address</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/router-login/">How To Login to Your Router</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/find-router-ip-address-windows-11/">Find your router's IP Address in Windows 11</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/find-router-ip-address-windows-10/">Find your router's IP Address in Windows 10</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/find-windows-11-ip-address/">Find your computer's IP Address in Windows 11</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/router-password/">Default router usernames and passwords</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/ipaddress/">What's my External IP Address</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/open-port/">How to check for open ports</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="https://setuprouter.com/">How to set up your router</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/games/">How to port forward games</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/nat-types/">NAT Types Defined</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/portforward-two-xboxes/">How to port forward two Xboxes</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/softwareguides/minecraft/portforward-minecraft.htm">How to port forward Minecraft Server</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/softwareguides/utorrent/utorrent.htm">How to use uTorrent</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/networking/dhcp.htm">Understanding DHCP</a></li>
+                    </ul>
+                </li>
+
+
+                <li class="nav-item dropdown">
+                    <a href="/sitemap/" class="nav-link dropdown-toggle" id="moreDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Sitemap
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="moreDropdown">
+                        <li><a class="dropdown-item fw-bold" href="https://portforward.com/search/">Search</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="https://portforward.com/games/">Games</a></li>
+                        <!-- <li><a class="dropdown-item" href="https://portforward.com/software.htm">Applications</a></li> -->
+                        <li><a class="dropdown-item" href="https://portforward.com/ports/a/">All Ports</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/games/walkthroughs/games.htm">Game Walkthroughs</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/about/">About Us</a></li>
+                        <li><a class="dropdown-item" href="https://portforward.com/sitemap/">Sitemap</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</nav>
+
+    
+
+        <div class="container">
+            <nav aria-label="breadcrumb" class="mt-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="https://portforward.com/">Home</a></li>
+        <li class="breadcrumb-item"><a href="https://portforward.com/guides.htm">Guides</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Metal Gear Solid: Rising Revengeance Walkthrough R-02: Research Facility</li>
+    </ol>
+</nav>
+
+            <h1>Metal Gear Solid: Rising Revengeance Walkthrough R-02: Research Facility</h1>
+
+<div class="d-flex align-items-center mb-3" data-nosnippet="data-nosnippet">
+    <div class="flex-grow-1 small">
+        <div style="display: inline-block;">
+            September 12, 2016 (Last Updated: <time datetime="2021-09-15T22:25:44Z">September 15, 2021</time>) | Reading Time: 5 minutes
+        </div>
+    </div>
+</div>
+
+            <article>
+                <p>This <strong>Metal Gear Solid: Rising Revengeance</strong> walkthrough is divided into 20 total pages.</p><div class='row row-cols-1 row-cols-sm-2 row-cols-lg-4 bg-light m-3'><div class='col'><div class='m-2'>3 - <a href='Boss-Battle-IF-Prototype-LQ-84i.htm'> Boss Battle: IF Prototype LQ-84i</a></div></div><div class='col'><div class='m-2'>4 - <a href='The-Old-City.htm'> The Old City</a></div></div><div class='col'><div class='m-2'>5 - <a href='The-Refinery.htm'> The Refinery</a></div></div><div class='col'><div class='m-2'>6 - <a href='Boss-Battle-Mistral.htm'> Boss Battle: Mistral</a></div></div><div class='col'><div class='bg-light m-2'>7 -  R-02: Research Facility</div></div><div class='col'><div class='m-2'>8 - <a href='Research-Facility.htm'> Research Facility</a></div></div><div class='col'><div class='m-2'>9 - <a href='R-03-Mile-High.htm'> R-03: Mile High</a></div></div><div class='col'><div class='m-2'>10 - <a href='Commercial-District.htm'> Commercial District</a></div></div></div><p>You can jump to nearby pages of the game using the links above.</p><h2> R-02: Research Facility</h2><figure class="figure">
+  <picture>
+    <source media="(min-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-118-medium.webp">
+    <source media="(max-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-118-small.webp">
+    <img src="metal-gear-solid-rising-revengeance-118-small.webp" class="img-fluid" alt="Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 118" height="575" width="1024">
+  </picture>
+  <figcaption class="figure-caption text-end">Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 118</figcaption>
+</figure>
+<p>After a briefing with Kevin, head for the end of the sewer tunnel and turn right. Then turn left at the first corner and you'll be ambushed by a Mastiff.</p>
+<figure class="figure">
+  <picture>
+    <source media="(min-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-119-medium.webp">
+    <source media="(max-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-119-small.webp">
+    <img src="metal-gear-solid-rising-revengeance-119-small.webp" class="img-fluid" alt="Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 119" height="575" width="1024">
+  </picture>
+  <figcaption class="figure-caption text-end">Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 119</figcaption>
+</figure>
+<p>&quot;Mastiffs are probably one of the hardest UGs to deal with. It has massive power and is quick, not to mention it has guns too and is hard to parry.</p>
+<figure class="figure">
+  <picture>
+    <source media="(min-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-120-medium.webp">
+    <source media="(max-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-120-small.webp">
+    <img src="metal-gear-solid-rising-revengeance-120-small.webp" class="img-fluid" alt="Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 120" height="575" width="1024">
+  </picture>
+  <figcaption class="figure-caption text-end">Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 120</figcaption>
+</figure>
+<p>But what really makes this guy hard is that it moves around a lot and is hard to learn parrying times. Deflecting it once also doesn't do the job. That's why you need to upgrade the polearm cause it's gonna be your bestest best friend when taking care of these stronger UGs.</p>
+<figure class="figure">
+  <picture>
+    <source media="(min-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-121-medium.webp">
+    <source media="(max-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-121-small.webp">
+    <img src="metal-gear-solid-rising-revengeance-121-small.webp" class="img-fluid" alt="Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 121" height="575" width="1024">
+  </picture>
+  <figcaption class="figure-caption text-end">Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 121</figcaption>
+</figure>
+<p>Keep parrying its attacks, then beat it up with the polearm until its limbs start glowing. When it does, parry it at the right time and chop off the limb until the Mastiff dies.</p>
+<figure class="figure">
+  <picture>
+    <source media="(min-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-122-medium.webp">
+    <source media="(max-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-122-small.webp">
+    <img src="metal-gear-solid-rising-revengeance-122-small.webp" class="img-fluid" alt="Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 122" height="575" width="1024">
+  </picture>
+  <figcaption class="figure-caption text-end">Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 122</figcaption>
+</figure>
+<p>After defeating the first Mastiff you should realize how hard it is to deal with them, let alone two of these. Head through the sewer gates and climb up the stairs on the far end of the tunnel. You'll see two Mastiffs immediately. Get near the side of the platform and wait for the action button to appear, then press it and drop assasinate the Mastiff.</p>
+<figure class="figure">
+  <picture>
+    <source media="(min-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-123-medium.webp">
+    <source media="(max-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-123-small.webp">
+    <img src="metal-gear-solid-rising-revengeance-123-small.webp" class="img-fluid" alt="Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 123" height="575" width="1024">
+  </picture>
+  <figcaption class="figure-caption text-end">Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 123</figcaption>
+</figure>
+<p>Quickly turn around and head for the stack of boxes on the right side. Climb up and head for the second Mastiff.</p>
+<figure class="figure">
+  <picture>
+    <source media="(min-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-124-medium.webp">
+    <source media="(max-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-124-small.webp">
+    <img src="metal-gear-solid-rising-revengeance-124-small.webp" class="img-fluid" alt="Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 124" height="575" width="1024">
+  </picture>
+  <figcaption class="figure-caption text-end">Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 124</figcaption>
+</figure>
+<p>Once it's in view, you can either drop assassinate it or jump down and approach it from behind. Both work just fine, but dropping down will require you to be precise with your distance to the Mastiff or you could alert it.</p>
+<figure class="figure">
+  <picture>
+    <source media="(min-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-125-medium.webp">
+    <source media="(max-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-125-small.webp">
+    <img src="metal-gear-solid-rising-revengeance-125-small.webp" class="img-fluid" alt="Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 125" height="575" width="1024">
+  </picture>
+  <figcaption class="figure-caption text-end">Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 125</figcaption>
+</figure>
+<p>After killing the Mastiffs, head for the right side wall and you'll find a large hole just beyond the mesh gate. Slice up the mesh gate and drop down on the hole.</p>
+<figure class="figure">
+  <picture>
+    <source media="(min-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-126-medium.webp">
+    <source media="(max-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-126-small.webp">
+    <img src="metal-gear-solid-rising-revengeance-126-small.webp" class="img-fluid" alt="Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 126" height="575" width="1024">
+  </picture>
+  <figcaption class="figure-caption text-end">Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 126</figcaption>
+</figure>
+<p>Once you drop down the blade wolf will inform you that there's a boy in the sewers. Follow the sewer tunnel and destroy any Dwarf Gekko that comes to attack you. They'll spot you no matter what you do.</p>
+<figure class="figure">
+  <picture>
+    <source media="(min-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-127-medium.webp">
+    <source media="(max-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-127-small.webp">
+    <img src="metal-gear-solid-rising-revengeance-127-small.webp" class="img-fluid" alt="Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 127" height="575" width="1024">
+  </picture>
+  <figcaption class="figure-caption text-end">Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 127</figcaption>
+</figure>
+<p>At the end of the tunnel, turn left and you'll find a metal gate. Slash it and it will get cut, allowing you to pass through it. Drop down on the hole at the end of the passage.</p>
+<figure class="figure">
+  <picture>
+    <source media="(min-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-128-medium.webp">
+    <source media="(max-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-128-small.webp">
+    <img src="metal-gear-solid-rising-revengeance-128-small.webp" class="img-fluid" alt="Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 128" height="575" width="1024">
+  </picture>
+  <figcaption class="figure-caption text-end">Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 128</figcaption>
+</figure>
+<p>Raiden will have to save George from the Raptors that have come after him. This guys, much like the Mastiff require a bit of effort to take down. Most of its attacks can be parried, except for when it shoots out the purple balls.</p>
+<figure class="figure">
+  <picture>
+    <source media="(min-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-129-medium.webp">
+    <source media="(max-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-129-small.webp">
+    <img src="metal-gear-solid-rising-revengeance-129-small.webp" class="img-fluid" alt="Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 129" height="575" width="1024">
+  </picture>
+  <figcaption class="figure-caption text-end">Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 129</figcaption>
+</figure>
+<p>Another problem with these is that even when you do a perfect parry, it will jump back and avoid Raidens second hit. Meaning you can't go into blade mode so quickly. Just take out the pole arm and start smashing them with it.</p>
+<figure class="figure">
+  <picture>
+    <source media="(min-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-130-medium.webp">
+    <source media="(max-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-130-small.webp">
+    <img src="metal-gear-solid-rising-revengeance-130-small.webp" class="img-fluid" alt="Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 130" height="575" width="1024">
+  </picture>
+  <figcaption class="figure-caption text-end">Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 130</figcaption>
+</figure>
+<p>Once dazed QTE will take place and you'll be able to take it down quickly. Make sure to focus on one Raptor at a time to avoid lengthening the battle.</p>
+<figure class="figure">
+  <picture>
+    <source media="(min-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-131-medium.webp">
+    <source media="(max-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-131-small.webp">
+    <img src="metal-gear-solid-rising-revengeance-131-small.webp" class="img-fluid" alt="Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 131" height="575" width="1024">
+  </picture>
+  <figcaption class="figure-caption text-end">Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 131</figcaption>
+</figure>
+<p>George will tell you where the entrance to the lab is. Head for the metal door at the end of the tunnel and slice it open then head inside.</p>
+<figure class="figure">
+  <picture>
+    <source media="(min-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-132-medium.webp">
+    <source media="(max-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-132-small.webp">
+    <img src="metal-gear-solid-rising-revengeance-132-small.webp" class="img-fluid" alt="Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 132" height="575" width="1024">
+  </picture>
+  <figcaption class="figure-caption text-end">Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 132</figcaption>
+</figure>
+<p>As you head through the door, the blade wolf will inform you that there is a lot of UGs patrolling the next area. Go towards the steel gate on the right side corner of the room and take the box. Equip it in your secondary weapon slot, like where you place grenades. You need to hold the LB button to hide under it.</p>
+<figure class="figure">
+  <picture>
+    <source media="(min-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-133-medium.webp">
+    <source media="(max-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-133-small.webp">
+    <img src="metal-gear-solid-rising-revengeance-133-small.webp" class="img-fluid" alt="Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 133" height="575" width="1024">
+  </picture>
+  <figcaption class="figure-caption text-end">Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 133</figcaption>
+</figure>
+<p>Slice up the gate and head down to the next area. Hide inside the box and head for the bridge that connects the catwalks. Wait for the Mastiff to turn its back on you then assassinate it.</p>
+<figure class="figure">
+  <picture>
+    <source media="(min-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-134-medium.webp">
+    <source media="(max-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-134-small.webp">
+    <img src="metal-gear-solid-rising-revengeance-134-small.webp" class="img-fluid" alt="Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 134" height="575" width="1024">
+  </picture>
+  <figcaption class="figure-caption text-end">Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 134</figcaption>
+</figure>
+<p>Go back under the box and wait for the Mastiff that's patrolling the flooded path below to pass you. Then run towards the Mastiff at the end of the catwalk and assassinate it.</p>
+<figure class="figure">
+  <picture>
+    <source media="(min-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-135-medium.webp">
+    <source media="(max-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-135-small.webp">
+    <img src="metal-gear-solid-rising-revengeance-135-small.webp" class="img-fluid" alt="Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 135" height="575" width="1024">
+  </picture>
+  <figcaption class="figure-caption text-end">Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 135</figcaption>
+</figure>
+<p>Hide inside the box again and wait for the Mastiff that's on the water to turn around, then leave the box and assassinate the last one.</p>
+<figure class="figure">
+  <picture>
+    <source media="(min-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-136-medium.webp">
+    <source media="(max-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-136-small.webp">
+    <img src="metal-gear-solid-rising-revengeance-136-small.webp" class="img-fluid" alt="Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 136" height="575" width="1024">
+  </picture>
+  <figcaption class="figure-caption text-end">Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 136</figcaption>
+</figure>
+<p>Head for the end of the sewer tunnel and you'll find another gate that you can slice up. Destroy the gate and jump down to the lower level.</p>
+<figure class="figure">
+  <picture>
+    <source media="(min-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-137-medium.webp">
+    <source media="(max-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-137-small.webp">
+    <img src="metal-gear-solid-rising-revengeance-137-small.webp" class="img-fluid" alt="Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 137" height="575" width="1024">
+  </picture>
+  <figcaption class="figure-caption text-end">Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 137</figcaption>
+</figure>
+<p>As soon as you climb down, you'll notice that there's a red dot on your map that's moving around the area in a counter clockwise manner. This is a huge UG, one that you can completely avoid fighting.</p>
+<figure class="figure">
+  <picture>
+    <source media="(min-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-138-medium.webp">
+    <source media="(max-width: 1024px)" srcset="metal-gear-solid-rising-revengeance-138-small.webp">
+    <img src="metal-gear-solid-rising-revengeance-138-small.webp" class="img-fluid" alt="Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 138" height="575" width="1024">
+  </picture>
+  <figcaption class="figure-caption text-end">Metal Gear Solid: Rising Revengeance Walkthrough - Metal Gear-Solid-Rising-Revengeance 138</figcaption>
+</figure>
+<p>Head up the stairs and hide inside the box. Wait for it to pass, then follow behind it until you get to the northern corridor. You'll find a wall near the power lines that has some odd circular metal thing near the middle section. Approach the wall and slice it to reveal the lab entrance.</p>
+<h2>More Metal Gear Solid: Rising Revengeance Walkthroughs</h2><p>This <strong>Metal Gear Solid: Rising Revengeance</strong> walkthrough is divided into 20 total pages.</p><div class='row row-cols-1 row-cols-sm-2 row-cols-lg-4 bg-light m-3'><div class='col'><div class='m-2'>3 - <a href='Boss-Battle-IF-Prototype-LQ-84i.htm'> Boss Battle: IF Prototype LQ-84i</a></div></div><div class='col'><div class='m-2'>4 - <a href='The-Old-City.htm'> The Old City</a></div></div><div class='col'><div class='m-2'>5 - <a href='The-Refinery.htm'> The Refinery</a></div></div><div class='col'><div class='m-2'>6 - <a href='Boss-Battle-Mistral.htm'> Boss Battle: Mistral</a></div></div><div class='col'><div class='bg-light m-2'>7 -  R-02: Research Facility</div></div><div class='col'><div class='m-2'>8 - <a href='Research-Facility.htm'> Research Facility</a></div></div><div class='col'><div class='m-2'>9 - <a href='R-03-Mile-High.htm'> R-03: Mile High</a></div></div><div class='col'><div class='m-2'>10 - <a href='Commercial-District.htm'> Commercial District</a></div></div></div>
+
+                
+
+            </article>
+        </div>
+<div class="container mt-4 mb-4">
+<h3>More From Portforward</h3>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4 mt-4 mb-5">
+<div class="col">
+    <a class="text-dark" href="https://portforward.com/old-school-runescape/">
+        <div class="card rounded-3 text-center hoverbutton">
+            <img src="https://portforward.com/old-school-runescape/thumbnail.webp" loading="lazy" class="card-img-top img-fluid" alt="Old School RuneScape game artwork" width="300" height="168">
+            <div class="card-body d-flex flex-column">
+                <p class="card-title fs-5 fw-bold">How to Port Forward Old School RuneScape in Your Router</p>
+                <p class="card-text mb-4">You can forward some ports in your router for Old School RuneScape to help improve your online connections.</p>
+            </div>
+            <div class="card-footer">More Info</div>
+        </div>
+    </a>
+</div>
+<div class="col">
+    <a class="text-dark" href="https://portforward.com/paladins-champions-of-the-realm/">
+        <div class="card rounded-3 text-center hoverbutton">
+            <img src="https://portforward.com/paladins-champions-of-the-realm/thumbnail.webp" loading="lazy" class="card-img-top img-fluid" alt="Paladins game artwork featuring the champion VII" width="300" height="168">
+            <div class="card-body d-flex flex-column">
+                <p class="card-title fs-5 fw-bold">How to Open a Port in Your Router for Paladins: Champions of the Realm</p>
+                <p class="card-text mb-4">You can help improve your online connections in Paladins by forwarding some ports for it in your router.</p>
+            </div>
+            <div class="card-footer">More Info</div>
+        </div>
+    </a>
+</div>
+<div class="col">
+    <a class="text-dark" href="https://portforward.com/back-4-blood/">
+        <div class="card rounded-3 text-center hoverbutton">
+            <img src="https://portforward.com/back-4-blood/thumbnail.webp" loading="lazy" class="card-img-top img-fluid" alt="Back 4 Blood game cover artwork" width="300" height="168">
+            <div class="card-body d-flex flex-column">
+                <p class="card-title fs-5 fw-bold">How to Port Forward Back 4 Blood in Your Router</p>
+                <p class="card-text mb-4">You can help improve online connections and connect with more players in Back 4 Blood by forwarding some ports.</p>
+            </div>
+            <div class="card-footer">More Info</div>
+        </div>
+    </a>
+</div>
+<div class="col">
+    <a class="text-dark" href="https://portforward.com/tekken-7/">
+        <div class="card rounded-3 text-center hoverbutton">
+            <img src="https://portforward.com/tekken-7/thumbnail.webp" loading="lazy" class="card-img-top img-fluid" alt="Tekken 7 artwork featuring the fighters Heihachi and Akuma" width="300" height="168">
+            <div class="card-body d-flex flex-column">
+                <p class="card-title fs-5 fw-bold">Port Forward Tekken 7</p>
+                <p class="card-text mb-4">Forward some ports in your router for Tekken 7 to connect with more players and help improve your connections with them.</p>
+            </div>
+            <div class="card-footer">More Info</div>
+        </div>
+    </a>
+</div>
+<div class="col">
+    <a class="text-dark" href="https://portforward.com/yu-gi-oh-master-duel/">
+        <div class="card rounded-3 text-center hoverbutton">
+            <img src="https://portforward.com/yu-gi-oh-master-duel/thumbnail.webp" loading="lazy" class="card-img-top img-fluid" alt="Yu-Gi-Oh! Master Duel artwork featuring a white dragon in golden armor" width="300" height="168">
+            <div class="card-body d-flex flex-column">
+                <p class="card-title fs-5 fw-bold">Open Ports on Your Router for Yu-Gi-Oh! Master Duel</p>
+                <p class="card-text mb-4">You can help improve your online connections for Yu-Gi-Oh! Master Duel by forwarding some ports in your router.</p>
+            </div>
+            <div class="card-footer">More Info</div>
+        </div>
+    </a>
+</div>
+<div class="col">
+    <a class="text-dark" href="https://portforward.com/tekken-8/">
+        <div class="card rounded-3 text-center hoverbutton">
+            <img src="https://portforward.com/tekken-8/thumbnail.webp" loading="lazy" class="card-img-top img-fluid" alt="Tekken 8 cover artwork featuring Jin Kazama and Kazuya Mishima" width="300" height="168">
+            <div class="card-body d-flex flex-column">
+                <p class="card-title fs-5 fw-bold">How to Port Forward in Your Router for Tekken 8</p>
+                <p class="card-text mb-4">Forwarding ports in your router can make it easier for you to connect and play Tekken 8 with others online.</p>
+            </div>
+            <div class="card-footer">More Info</div>
+        </div>
+    </a>
+</div>
+<div class="col">
+    <a class="text-dark" href="https://portforward.com/dragon-ball-fighterz/">
+        <div class="card rounded-3 text-center hoverbutton">
+            <img src="https://portforward.com/dragon-ball-fighterz/thumbnail.webp" loading="lazy" class="card-img-top img-fluid" alt="Dragon Ball FighterZ game artwork featuring Goku" width="300" height="168">
+            <div class="card-body d-flex flex-column">
+                <p class="card-title fs-5 fw-bold">Forwarding Ports in Your Router for Dragon Ball FighterZ</p>
+                <p class="card-text mb-4">Forwarding ports for Dragon Ball FighterZ can help with improving your online multiplayer connections.</p>
+            </div>
+            <div class="card-footer">More Info</div>
+        </div>
+    </a>
+</div>
+<div class="col">
+    <a class="text-dark" href="https://portforward.com/company-of-heroes-3/">
+        <div class="card rounded-3 text-center hoverbutton">
+            <img src="https://portforward.com/company-of-heroes-3/thumbnail.webp" loading="lazy" class="card-img-top img-fluid" alt="Company of Heroes 3 game artwork" width="300" height="168">
+            <div class="card-body d-flex flex-column">
+                <p class="card-title fs-5 fw-bold">How To Open Ports in Your Router for Company of Heroes 3</p>
+                <p class="card-text mb-4">Forwarding some ports for Company of Heroes 3 can help improve your online connections and let you connect with more players.</p>
+            </div>
+            <div class="card-footer">More Info</div>
+        </div>
+    </a>
+</div>
+</div>
+</div>
+
+        <footer>
+    <div class="py-2 bg-dark text-light">
+        <div class="mb-2 ms-2">
+            <a href="/" aria-label="Port forward name and logo"><img src="/build/images/bootstrap/portforward-light.svg" width="200px" height="25px" alt="Port forward name logo in white"> <img src="/build/images/bootstrap/pf-logo.svg" width="40px" height="40px" alt="Port forward chevron logo in orange"></a>
+        </div>
+        <div class="container">
+
+            <div class="row">
+                <div class="col col-2 d-sm-none d-md-block"></div>
+                <div class="col col-12 col-md-3">
+                    <p class="text-info-light">Support</p>
+                    <ul class="contact-info list-unstyled">
+
+                        <li><a class="text-light" href="https://secure.portforward.com/websupport/">Network Utilities Support</a></li>
+                        <li><a class="text-light" href="https://portforward.com/support.htm">Our Support Model</a></li>
+                        <li><a class="text-light" href="https://portforward.com/guides.htm">Networking Guides</a></li>
+
+
+                    </ul>
+                </div>
+                <div class="col col-12 col-md-3">
+                    <p><a href="/sitemap/" class="text-info-light">Sitemap</a></p>
+                    <ul class="links list-unstyled">
+
+                        <li><a class="text-light" href="https://portforward.com">Home</a></li>
+                        <li><a class="text-light" href="https://portforward.com/store/pfconfig.cgi">Network Software</a></li>
+                        <li><a class="text-light" href="https://portforward.com/router.htm">All Routers</a></li>
+                        <li><a class="text-light" href="https://portforward.com/ports/a/">All Ports</a></li>
+                        <li><a class="text-light" href="https://portforward.com/games/">Games</a></li>
+
+                    </ul>
+                </div>
+                <div class="col col-12 col-md-3">
+                    <p class="text-info-light">About</p>
+                    <ul class="links list-unstyled">
+                        <li><a class="text-light" href="https://portforward.com/about/">About Us</a></li>
+                        <li><a class="text-light" href="https://portforward.com/privacy/">Privacy Policy</a></li>
+                        <li><a class="text-light" href="#" id="open_preferences_center">Cookie Preferences</a></li>
+                        <li><a class="text-light" href="https://portforward.com/store/pfconfig.cgi"><button class="btn btn-small btn-primary-light bg-gradient" type="submit">Network Utilities</button></a></li>
+                    </ul>
+                </div>
+
+                <div class="col col-1"></div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    getAppData();
+</script>
+
+<script src="/build/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script> -->
+<script type="text/javascript" src="/build/js/portforward.js"></script>
+        <!-- id:30685 -->
+</body>
+
+</html>

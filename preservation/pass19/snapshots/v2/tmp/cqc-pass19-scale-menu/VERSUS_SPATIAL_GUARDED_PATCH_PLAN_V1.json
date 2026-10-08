@@ -1,0 +1,342 @@
+{
+  "schema": "cqc.guarded-spatial-patch/1",
+  "baseline": "/tmp/cqc-pass19-application",
+  "scope": "Active Versus engine, attached Chaff and all combat/finisher world render coordinates; no Core boss activation.",
+  "newFiles": [
+    {
+      "source": "/tmp/cqc-pass19-scale-menu/cqc-pass19-versus-spatial.js",
+      "path": "public/cqc/src/cqc-pass19-versus-spatial.js",
+      "sha256": "6a906005cd2a967c9918fa4d8c48aeb3d48d91de79adf3bf239b2c33fc4ce3ff"
+    }
+  ],
+  "files": [
+    {
+      "path": "public/cqc/src/cqc-pass8-combat-engine.js",
+      "sourceSha256": "fd6c8d85333887a60056f1ab11e92abb63250c07de1664a6d832c1c679f34a8f",
+      "outputSha256": "b3076a7f69eeda7af72dfb4c3d7e1548302952ae399897212d7110837a7a23d5",
+      "operations": [
+        {
+          "label": "spatial helpers",
+          "old": "const copy=x=>JSON.parse(JSON.stringify(x));",
+          "new": "const copy=x=>JSON.parse(JSON.stringify(x));\nconst spatial=()=>root.CQC_PASS19_VERSUS_SPATIAL,bodyY=(p,h)=>spatial()?.bodyY(p,h)??p.y-h,bodyPoint=(p,x,y)=>spatial()?.bodyPoint(p,x,y)||{x:p.x+p.face*x,y:p.y-y};",
+          "count": 1
+        },
+        {
+          "label": "preserve historical base hurtbox",
+          "old": "function box(p){const reviewed=",
+          "new": "function baseBox(p){const reviewed=",
+          "count": 1
+        },
+        {
+          "label": "explicit new identity body extent without altering legacy profiles",
+          "old": "if(reviewed)return reviewed;\n const k=p.f.visual?.kind",
+          "new": "if(reviewed)return reviewed;\n const authored=p.f.combat.simulationBody;if(authored&&[authored.width,authored.height].every(n=>Number.isFinite(n)&&n>0)){const low=p.crouch||p.attack?.def.lowProfile,h=low?(Number.isFinite(authored.crouchHeight)&&authored.crouchHeight>0?authored.crouchHeight:authored.height*.53):authored.height;return{x:p.x-authored.width/2,y:p.y-h,w:authored.width,h};}\n const k=p.f.visual?.kind",
+          "count": 1
+        },
+        {
+          "label": "scale all hurtboxes including reviewed Sunny bodies",
+          "old": "function overlap(a,b){",
+          "new": "function box(p){const b=baseBox(p);return spatial()?.transformBox(p,b)||b;}\nfunction overlap(a,b){",
+          "count": 1
+        },
+        {
+          "label": "scale melee and throw boxes around feet",
+          "old": "function hitbox(p){const a=p.attack;if(!inActive(a)||a.def.kind!=='melee')return null;const d=a.def,r=d.reach*clamp(p.f.reach||1,.85,1.25),lo=d.level==='low',h=lo?62:Math.min(155,d.height?d.height:155),top=d.height|| (lo?62:190);return{x:p.face>0?p.x:p.x-r,y:p.y-top,w:r,h};}",
+          "new": "function hitbox(p){const a=p.attack;if(!inActive(a)||a.def.kind!=='melee')return null;const d=a.def,r=d.reach*clamp(p.f.reach||1,.85,1.25),lo=d.level==='low',h=lo?62:Math.min(155,d.height?d.height:155),top=d.height|| (lo?62:190);const b={x:p.face>0?p.x:p.x-r,y:p.y-top,w:r,h};return spatial()?.transformBox(p,b)||b;}",
+          "count": 1
+        },
+        {
+          "label": "feet anchored projectile origin with unchanged projectile motion",
+          "old": "const q={id:s.nextId++,owner:p.slot,\n x:p.x+p.face*(nativeOrigin?origin.forward:52),y:p.y-(nativeOrigin?origin.height:m.height||Math.min(145,box(p).h*.75)),vx:p.face*(m.speed||15),vy:m.vy||0,",
+          "new": "const point=spatial()?.projectilePoint(p,m,baseBox(p))||{x:p.x+p.face*(nativeOrigin?origin.forward:52),y:p.y-(nativeOrigin?origin.height:m.height||Math.min(145,baseBox(p).h*.75))};const q={id:s.nextId++,owner:p.slot,\n x:point.x,y:point.y,vx:p.face*(m.speed||15),vy:m.vy||0,",
+          "count": 1
+        },
+        {
+          "label": "body attached FX d height 245",
+          "old": "d.x,d.y-245",
+          "new": "d.x,bodyY(d,245)",
+          "count": 2
+        },
+        {
+          "label": "body attached FX d height 130",
+          "old": "d.x,d.y-130",
+          "new": "d.x,bodyY(d,130)",
+          "count": 2
+        },
+        {
+          "label": "body attached FX d height 140",
+          "old": "d.x,d.y-140",
+          "new": "d.x,bodyY(d,140)",
+          "count": 1
+        },
+        {
+          "label": "body attached FX d height 100",
+          "old": "d.x,d.y-100",
+          "new": "d.x,bodyY(d,100)",
+          "count": 1
+        },
+        {
+          "label": "body attached FX a height 220",
+          "old": "a.x,a.y-220",
+          "new": "a.x,bodyY(a,220)",
+          "count": 1
+        },
+        {
+          "label": "body attached FX o height 245",
+          "old": "o.x,o.y-245",
+          "new": "o.x,bodyY(o,245)",
+          "count": 1
+        },
+        {
+          "label": "body attached FX target height 120",
+          "old": "target.x,target.y-120",
+          "new": "target.x,bodyY(target,120)",
+          "count": 1
+        },
+        {
+          "label": "body attached FX p height 245",
+          "old": "p.x,p.y-245",
+          "new": "p.x,bodyY(p,245)",
+          "count": 2
+        },
+        {
+          "label": "body attached FX o height 250",
+          "old": "o.x,o.y-250",
+          "new": "o.x,bodyY(o,250)",
+          "count": 1
+        },
+        {
+          "label": "body attached FX p height 70",
+          "old": "p.x,p.y-70",
+          "new": "p.x,bodyY(p,70)",
+          "count": 1
+        },
+        {
+          "label": "reflected shot starts outside scaled guard",
+          "old": "projectile.x=d.x+d.face*62;",
+          "new": "projectile.x=bodyPoint(d,62,0).x;",
+          "count": 1
+        },
+        {
+          "label": "throw tech cue between scaled bodies",
+          "old": "fx(s,(a.x+d.x)/2,FLOOR-160,'ring'",
+          "new": "fx(s,(a.x+d.x)/2,(bodyY(a,160)+bodyY(d,160))/2,'ring'",
+          "count": 1
+        },
+        {
+          "label": "homing targets same relative torso fraction",
+          "old": "d.y-Math.min(box(d).h*.55,140)",
+          "new": "d.y-Math.min(baseBox(d).h*.55,140)*(spatial()?.ratio(d)||1)",
+          "count": 1
+        },
+        {
+          "label": "giant shots survive above historical screen ceiling",
+          "old": "q.y<-140)",
+          "new": "q.y<(spatial()?.worldCeiling(s)??-140))",
+          "count": 1
+        },
+        {
+          "label": "scaled body separation vertical range",
+          "old": "Math.abs(s.a.y-s.b.y)<110)",
+          "new": "Math.abs(s.a.y-s.b.y)<110*Math.max(spatial()?.ratio(s.a)||1,spatial()?.ratio(s.b)||1))",
+          "count": 1
+        },
+        {
+          "label": "CPU chooses authored moves at scaled relative range",
+          "old": "const i=empty(),d=Math.abs(o.x-p.x),dir=",
+          "new": "const i=empty(),d=Math.abs(o.x-p.x)/(spatial()?.ratio(p)||1),dir=",
+          "count": 1
+        },
+        {
+          "label": "active engine contract marker",
+          "old": "const api={version:'0.48'",
+          "new": "const api={spatialContract:'pass19-feet-spatial-v1',version:'0.48'",
+          "count": 1
+        },
+        {
+          "label": "register coherent engine",
+          "old": "root.CQCCombat048Pass8=api;if(typeof module",
+          "new": "root.CQCCombat048Pass8=api;spatial()?.registerEngine(api);if(typeof module",
+          "count": 1
+        }
+      ],
+      "staged": "/tmp/cqc-pass19-scale-menu/spatial-staged-cqc-pass8-combat-engine.js"
+    },
+    {
+      "path": "public/cqc/src/cqc-pass7-combat-fidelity.js",
+      "sourceSha256": "48257633fc4c8054c2343f1da44334fe532d97222cfdd3b76b4827c3377b8bed",
+      "outputSha256": "4b02955ee526fb2deeac49f45335c1650b75df04b9bf4f0dae6d9c77077d0ba7",
+      "operations": [
+        {
+          "label": "Chaff same body origin transform",
+          "old": "const q={id:s.nextId++,owner:p.slot,uid:p.f.uid,x:p.x+p.face*(native?origin.forward:52),y:p.y-(native?origin.height:m.height||135),vx:p.face*(m.speed||7),vy:m.vy||-9,face:p.face,",
+          "new": "const point=root.CQC_PASS19_VERSUS_SPATIAL?.projectilePoint(p,m,{h:180})||{x:p.x+p.face*(native?origin.forward:52),y:p.y-(native?origin.height:m.height||135)};const q={id:s.nextId++,owner:p.slot,uid:p.f.uid,x:point.x,y:point.y,vx:p.face*(m.speed||7),vy:m.vy||-9,face:p.face,",
+          "count": 1
+        },
+        {
+          "label": "Chaff same world ceiling",
+          "old": "q.y<-140)",
+          "new": "q.y<(root.CQC_PASS19_VERSUS_SPATIAL?.worldCeiling(s)??-140))",
+          "count": 1
+        }
+      ],
+      "staged": "/tmp/cqc-pass19-scale-menu/spatial-staged-cqc-pass7-combat-fidelity.js"
+    },
+    {
+      "path": "public/cqc/modules/unified-versus-v055.html",
+      "sourceSha256": "378ae49a9569492380834f4f3d936ae1d63d304c9f39794668974ebe5e33249a",
+      "outputSha256": "4804018a67582a935dbb72b9ab9315255e220688de7e3dcf219b4aeb4884d501",
+      "operations": [
+        {
+          "label": "load isolated spatial contract",
+          "old": "<script src=\"../src/cqc-pass19-world-scale.js\"></script>",
+          "new": "<script src=\"../src/cqc-pass19-world-scale.js\"></script>\n<script src=\"../src/cqc-pass19-versus-spatial.js\"></script>",
+          "count": 1
+        },
+        {
+          "label": "shared combat camera",
+          "old": "function stageCam(g){if(!g)return 0;const a=g.a?.x||410,b=g.b?.x||870;return clamp((a+b)/2-640,-220,220)}",
+          "new": "function stageCam(g){if(!g)return 0;const a=g.a?.x||410,b=g.b?.x||870;return clamp((a+b)/2-640,-220,220)}\nfunction combatCameraPass19(s){const cam=stageCam(s),requested=clamp(1040/(Math.abs(s.a.x-s.b.x)+300),.78,1.08);return window.CQC_PASS19_VERSUS_SPATIAL?.camera(s,requested,cam)||{cam,zoom:requested,toX:x=>640+(x-640-cam)*requested,toY:y=>568+(y-568)*requested};}",
+          "count": 1
+        },
+        {
+          "label": "profile CPU range uses body coordinates",
+          "old": "let i=Combat.cpu(s,p,o),d=Math.abs(o.x-p.x),dir=",
+          "new": "let i=Combat.cpu(s,p,o),d=Math.abs(o.x-p.x)/(window.CQC_PASS19_VERSUS_SPATIAL?.ratio(p)||1),dir=",
+          "count": 1
+        },
+        {
+          "label": "activate only matching engine and renderer contracts",
+          "old": "window.CQC_PASS7_COMBAT_FIDELITY?.attachEngine(Combat);let lastMatchNotified=",
+          "new": "window.CQC_PASS7_COMBAT_FIDELITY?.attachEngine(Combat);window.CQC_PASS19_VERSUS_SPATIAL?.registerRenderer('pass19-world-camera-v1');let lastMatchNotified=",
+          "count": 1
+        },
+        {
+          "label": "render world with shared non-clipping camera",
+          "old": "function drawGame(){const s=state;if(!s)return;const c=$('#game').getContext('2d'),time=s.frame/60,cam=stageCam(s),zoom=clamp(1040/(Math.abs(s.a.x-s.b.x)+300),.78,1.08);drawStage(c,s.stage,time,cam,false,{zoom});\n const toX=x=>640+(x-640-cam)*zoom,toY=y=>568+(y-568)*zoom;",
+          "new": "function drawGame(){const s=state;if(!s)return;const c=$('#game').getContext('2d'),time=s.frame/60,{cam,zoom,toX,toY}=combatCameraPass19(s);drawStage(c,s.stage,time,cam,false,{zoom});",
+          "count": 1
+        },
+        {
+          "label": "actor relative effect scale",
+          "old": "const px=toX(p.x),py=toY(p.y),a=p.attack,m=a?.def,",
+          "new": "const px=toX(p.x),py=toY(p.y),bodyZoom=zoom*(window.CQC_PASS19_VERSUS_SPATIAL?.ratio(p)||1),a=p.attack,m=a?.def,",
+          "count": 1
+        },
+        {
+          "label": "native body barrier scales with actor",
+          "old": "drawBarrier(c,p,zoom);",
+          "new": "drawBarrier(c,p,bodyZoom);",
+          "count": 1
+        },
+        {
+          "label": "fallback body barrier scales with actor",
+          "old": "c.ellipse(px,py-125*zoom,70*zoom,129*zoom,",
+          "new": "c.ellipse(px,py-125*bodyZoom,70*bodyZoom,129*bodyZoom,",
+          "count": 1
+        },
+        {
+          "label": "power body lines share spatial scale",
+          "old": "c.moveTo(px-55+i*35,py);c.lineTo(px-45+i*32,py-220*zoom);",
+          "new": "c.moveTo(px+(-55+i*35)*bodyZoom,py);c.lineTo(px+(-45+i*32)*bodyZoom,py-220*bodyZoom);",
+          "count": 1
+        },
+        {
+          "label": "mark outline share body scale",
+          "old": "c.strokeRect(px-47*zoom,py-220*zoom,94*zoom,145*zoom);",
+          "new": "c.strokeRect(px-47*bodyZoom,py-220*bodyZoom,94*bodyZoom,145*bodyZoom);",
+          "count": 1
+        },
+        {
+          "label": "feedback attaches above scaled body",
+          "old": "px,py-280*zoom);",
+          "new": "px,py-280*bodyZoom);",
+          "count": 1
+        },
+        {
+          "label": "telegraph starts at simulation shot origin",
+          "old": "if(windup&&m.telegraph){c.strokeStyle=(tagColors45[m.tag]||'#d9bd71')+'90';c.lineWidth=1.5;c.setLineDash([10,8]);c.beginPath();c.moveTo(px,py-(m.projectileOrigin?.[p.face]?.height||m.height||140)*zoom);c.lineTo(px+p.face*1050,py-(m.projectileOrigin?.[p.face]?.height||m.height||140)*zoom);c.stroke();c.setLineDash([]);}",
+          "new": "if(windup&&m.telegraph){const origin=window.CQC_PASS19_VERSUS_SPATIAL?.projectileOrigin(p,m,{h:Combat.box(p).h/(window.CQC_PASS19_VERSUS_SPATIAL?.ratio(p)||1)}),height=origin?.height||(m.projectileOrigin?.[p.face]?.height||m.height||140),forward=origin?.forward||0;c.strokeStyle=(tagColors45[m.tag]||'#d9bd71')+'90';c.lineWidth=1.5;c.setLineDash([10,8]);c.beginPath();c.moveTo(px+p.face*forward*zoom,py-height*zoom);c.lineTo(px+p.face*1050*zoom,py-height*zoom);c.stroke();c.setLineDash([]);}",
+          "count": 1
+        },
+        {
+          "label": "fallback muzzle uses same world origin; selected physical source remains guarded",
+          "old": "position:{x:px,y:py},spriteScale:1.12});",
+          "new": "position:{x:px,y:py},spriteScale:1.12,visualOrigin:window.CQC_PASS19_VERSUS_SPATIAL?.projectileOrigin(p,m,{h:Combat.box(p).h/(window.CQC_PASS19_VERSUS_SPATIAL?.ratio(p)||1)})});",
+          "count": 1
+        },
+        {
+          "label": "melee effect centered on actual attack geometry",
+          "old": "c.save();c.translate(px,py-(m.height||130)*zoom);c.scale(p.face,1);",
+          "new": "const meleeBox=Combat.hitbox(p),meleeY=meleeBox?toY(meleeBox.y+meleeBox.h/2):py-(m.height||130)*bodyZoom,meleeReach=clamp(p.f.reach||1,.85,1.25);c.save();c.translate(px,meleeY);c.scale(p.face,1);",
+          "count": 1
+        },
+        {
+          "label": "native melee effect shares attack reach scale",
+          "old": "drawMelee(c,p,m,clamp((a.t-m.startup)/m.active,0,1),zoom,vfxOptionsPass18)",
+          "new": "drawMelee(c,p,{...m,reach:m.reach*meleeReach},clamp((a.t-m.startup)/m.active,0,1),bodyZoom,vfxOptionsPass18)",
+          "count": 1
+        },
+        {
+          "label": "fallback melee effect shares attack reach scale",
+          "old": "c.ellipse(m.reach*.45*zoom,0,m.reach*.64*zoom,35*zoom,",
+          "new": "c.ellipse(m.reach*meleeReach*.45*bodyZoom,0,m.reach*meleeReach*.64*bodyZoom,35*bodyZoom,",
+          "count": 1
+        },
+        {
+          "label": "parry arc shares body scale",
+          "old": "c.arc(px+p.face*35*zoom,py-125*zoom,65*zoom,",
+          "new": "c.arc(px+p.face*35*bodyZoom,py-125*bodyZoom,65*bodyZoom,",
+          "count": 1
+        },
+        {
+          "label": "fallback projectile shape follows world camera",
+          "old": "if(q.def.fuse){c.fillRect(-8,-9,16,18);",
+          "new": "c.scale(zoom,zoom);if(q.def.fuse){c.fillRect(-8,-9,16,18);",
+          "count": 1
+        },
+        {
+          "label": "fallback FX spokes follow world camera",
+          "old": "x+Math.cos(an)*r,y+Math.sin(an)*r);c.lineTo(x+Math.cos(an)*(r+11),y+Math.sin(an)*(r+11));",
+          "new": "x+Math.cos(an)*r*zoom,y+Math.sin(an)*r*zoom);c.lineTo(x+Math.cos(an)*(r+11)*zoom,y+Math.sin(an)*(r+11)*zoom);",
+          "count": 1
+        },
+        {
+          "label": "debug geometry uses identical render camera",
+          "old": "if(dojo.boxes){const zoom=clamp(1040/(Math.abs(state.a.x-state.b.x)+300),.78,1.08),cam=stageCam(state);",
+          "new": "if(dojo.boxes){const {zoom,cam}=combatCameraPass19(state);",
+          "count": 2
+        },
+        {
+          "label": "defer cinematic background until camera fit",
+          "old": "col=familyColor46(sc.fin.family);drawStage(c,s.stage,s.frame/60,0,false);c.fillStyle='rgba(0,0,0,.18)';c.fillRect(0,0,1280,720);",
+          "new": "col=familyColor46(sc.fin.family);",
+          "count": 1
+        },
+        {
+          "label": "fit both cinematic bodies and complete world effects",
+          "old": "drawFighter(c,winner.f,ax,568,dir,1.23,{...aPose});",
+          "new": "const sceneState={frame:s.frame,a:{...winner,x:ax,y:568,face:dir},b:{...loser,x:vx,y:vy,face:-dir}},sceneCamera=window.CQC_PASS19_VERSUS_SPATIAL?.camera(sceneState,1,0,{top:132,spriteMultiplier:1.23})||{zoom:1};drawStage(c,s.stage,s.frame/60,0,false,{zoom:sceneCamera.zoom});c.fillStyle='rgba(0,0,0,.18)';c.fillRect(0,0,1280,720);c.save();c.translate(640,568);c.scale(sceneCamera.zoom,sceneCamera.zoom);c.translate(-640,-568);drawFighter(c,winner.f,ax,568,dir,1.23,{...aPose});",
+          "count": 1
+        },
+        {
+          "label": "fixed cinematic screen overlay and HUD outside world zoom",
+          "old": "if(finishSettings46.mode==='cinematic'){",
+          "new": "c.restore();if(finishSettings46.mode==='cinematic'){",
+          "count": 1
+        },
+        {
+          "label": "cinematic foreground shares camera",
+          "old": "{time:s.frame/60,camera:0,motion:stageMotionReprise(),preview:false}",
+          "new": "{time:s.frame/60,camera:0,zoom:sceneCamera.zoom,motion:stageMotionReprise(),preview:false}",
+          "count": 1
+        }
+      ],
+      "staged": "/tmp/cqc-pass19-scale-menu/spatial-staged-unified-versus-v055.html"
+    }
+  ],
+  "damageAndTimingsChanged": false,
+  "moveDefinitionsChanged": false,
+  "sourcePixelsChanged": false,
+  "hurtboxQualification": "Historical gameplay insets are scaled coherently; no claim of anatomical pixel hulls."
+}

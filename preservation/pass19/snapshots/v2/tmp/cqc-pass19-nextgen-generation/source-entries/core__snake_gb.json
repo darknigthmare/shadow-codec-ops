@@ -1,0 +1,1805 @@
+{
+  "uid": "core__snake_gb",
+  "name": "Solid Snake — Ghost Babel",
+  "game": "Metal Gear: Ghost Babel (Game Boy Color)",
+  "incarnation": "Galuade infiltration, original GBC purple/navy palette",
+  "coverage": "action-frames",
+  "displayHeight": 230,
+  "baseFrameHeight": 281,
+  "sourceFrameHeights": {
+    "assets/combat-sprites-pass16/core__snake_gb/right-v1.png": 281,
+    "assets/combat-sprites-pass16/core__snake_gb/left-v1.png": 277
+  },
+  "facing": 1,
+  "mirror": false,
+  "fallbackMissingActions": true,
+  "actionMap": {
+    "light": "punch",
+    "heavy": "punch",
+    "low": "low",
+    "throw": "throw",
+    "special": "shoot",
+    "specialDown": "deploy",
+    "specialForward": "punch",
+    "specialBack": "walk",
+    "super": "shoot",
+    "utility": "reload"
+  },
+  "actions": {
+    "idle": {
+      "fps": 0,
+      "loop": true,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/right-v1.png",
+          "sha256": "2afccc5b0196eec1fa449b7d43543687372f01d0f87edaa3eac260fc9ae32582",
+          "rect": [
+            70,
+            46,
+            166,
+            281
+          ],
+          "pivot": [
+            0.5,
+            0.99644128113879
+          ]
+        }
+      ]
+    },
+    "guard": {
+      "fps": 0,
+      "loop": true,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/right-v1.png",
+          "sha256": "2afccc5b0196eec1fa449b7d43543687372f01d0f87edaa3eac260fc9ae32582",
+          "rect": [
+            392,
+            63,
+            170,
+            264
+          ],
+          "pivot": [
+            0.5,
+            0.9962121212121212
+          ]
+        }
+      ]
+    },
+    "walk": {
+      "fps": 7,
+      "loop": true,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/right-v1.png",
+          "sha256": "2afccc5b0196eec1fa449b7d43543687372f01d0f87edaa3eac260fc9ae32582",
+          "rect": [
+            706,
+            56,
+            177,
+            274
+          ],
+          "pivot": [
+            0.5,
+            0.9963503649635036
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/right-v1.png",
+          "sha256": "2afccc5b0196eec1fa449b7d43543687372f01d0f87edaa3eac260fc9ae32582",
+          "rect": [
+            1027,
+            48,
+            166,
+            279
+          ],
+          "pivot": [
+            0.5,
+            0.996415770609319
+          ]
+        }
+      ]
+    },
+    "crouch": {
+      "fps": 0,
+      "loop": true,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/right-v1.png",
+          "sha256": "2afccc5b0196eec1fa449b7d43543687372f01d0f87edaa3eac260fc9ae32582",
+          "rect": [
+            90,
+            452,
+            169,
+            177
+          ],
+          "pivot": [
+            0.5,
+            0.9943502824858758
+          ]
+        }
+      ]
+    },
+    "attack": {
+      "fps": 10,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/right-v1.png",
+          "sha256": "2afccc5b0196eec1fa449b7d43543687372f01d0f87edaa3eac260fc9ae32582",
+          "rect": [
+            392,
+            369,
+            172,
+            260
+          ],
+          "pivot": [
+            0.5,
+            0.9961538461538462
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/right-v1.png",
+          "sha256": "2afccc5b0196eec1fa449b7d43543687372f01d0f87edaa3eac260fc9ae32582",
+          "rect": [
+            676,
+            373,
+            255,
+            255
+          ],
+          "pivot": [
+            0.5,
+            0.996078431372549
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/right-v1.png",
+          "sha256": "2afccc5b0196eec1fa449b7d43543687372f01d0f87edaa3eac260fc9ae32582",
+          "rect": [
+            1016,
+            1032,
+            181,
+            185
+          ],
+          "pivot": [
+            0.5,
+            0.9945945945945946
+          ]
+        }
+      ]
+    },
+    "hit": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/right-v1.png",
+          "sha256": "2afccc5b0196eec1fa449b7d43543687372f01d0f87edaa3eac260fc9ae32582",
+          "rect": [
+            324,
+            947,
+            220,
+            271
+          ],
+          "pivot": [
+            0.5,
+            0.996309963099631
+          ]
+        }
+      ]
+    },
+    "ko": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/right-v1.png",
+          "sha256": "2afccc5b0196eec1fa449b7d43543687372f01d0f87edaa3eac260fc9ae32582",
+          "rect": [
+            605,
+            1142,
+            357,
+            71
+          ],
+          "pivot": [
+            0.5,
+            0.9859154929577465
+          ]
+        }
+      ]
+    },
+    "punch": {
+      "fps": 10,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/right-v1.png",
+          "sha256": "2afccc5b0196eec1fa449b7d43543687372f01d0f87edaa3eac260fc9ae32582",
+          "rect": [
+            392,
+            369,
+            172,
+            260
+          ],
+          "pivot": [
+            0.5,
+            0.9961538461538462
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/right-v1.png",
+          "sha256": "2afccc5b0196eec1fa449b7d43543687372f01d0f87edaa3eac260fc9ae32582",
+          "rect": [
+            676,
+            373,
+            255,
+            255
+          ],
+          "pivot": [
+            0.5,
+            0.996078431372549
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/right-v1.png",
+          "sha256": "2afccc5b0196eec1fa449b7d43543687372f01d0f87edaa3eac260fc9ae32582",
+          "rect": [
+            1016,
+            1032,
+            181,
+            185
+          ],
+          "pivot": [
+            0.5,
+            0.9945945945945946
+          ]
+        }
+      ]
+    },
+    "low": {
+      "fps": 10,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/right-v1.png",
+          "sha256": "2afccc5b0196eec1fa449b7d43543687372f01d0f87edaa3eac260fc9ae32582",
+          "rect": [
+            90,
+            452,
+            169,
+            177
+          ],
+          "pivot": [
+            0.5,
+            0.9943502824858758
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/right-v1.png",
+          "sha256": "2afccc5b0196eec1fa449b7d43543687372f01d0f87edaa3eac260fc9ae32582",
+          "rect": [
+            964,
+            457,
+            280,
+            170
+          ],
+          "pivot": [
+            0.5,
+            0.9941176470588236
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/right-v1.png",
+          "sha256": "2afccc5b0196eec1fa449b7d43543687372f01d0f87edaa3eac260fc9ae32582",
+          "rect": [
+            1016,
+            1032,
+            181,
+            185
+          ],
+          "pivot": [
+            0.5,
+            0.9945945945945946
+          ]
+        }
+      ]
+    },
+    "throw": {
+      "fps": 9,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/right-v1.png",
+          "sha256": "2afccc5b0196eec1fa449b7d43543687372f01d0f87edaa3eac260fc9ae32582",
+          "rect": [
+            58,
+            673,
+            220,
+            248
+          ],
+          "pivot": [
+            0.5,
+            0.9959677419354839
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/right-v1.png",
+          "sha256": "2afccc5b0196eec1fa449b7d43543687372f01d0f87edaa3eac260fc9ae32582",
+          "rect": [
+            377,
+            677,
+            219,
+            240
+          ],
+          "pivot": [
+            0.5,
+            0.9958333333333333
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/right-v1.png",
+          "sha256": "2afccc5b0196eec1fa449b7d43543687372f01d0f87edaa3eac260fc9ae32582",
+          "rect": [
+            1016,
+            1032,
+            181,
+            185
+          ],
+          "pivot": [
+            0.5,
+            0.9945945945945946
+          ]
+        }
+      ]
+    },
+    "deploy": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/right-v1.png",
+          "sha256": "2afccc5b0196eec1fa449b7d43543687372f01d0f87edaa3eac260fc9ae32582",
+          "rect": [
+            713,
+            668,
+            159,
+            256
+          ],
+          "pivot": [
+            0.5,
+            0.99609375
+          ]
+        }
+      ]
+    },
+    "shoot": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/right-v1.png",
+          "sha256": "2afccc5b0196eec1fa449b7d43543687372f01d0f87edaa3eac260fc9ae32582",
+          "rect": [
+            983,
+            675,
+            242,
+            249
+          ],
+          "pivot": [
+            0.5,
+            0.9959839357429718
+          ]
+        }
+      ]
+    },
+    "reload": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/right-v1.png",
+          "sha256": "2afccc5b0196eec1fa449b7d43543687372f01d0f87edaa3eac260fc9ae32582",
+          "rect": [
+            55,
+            944,
+            190,
+            274
+          ],
+          "pivot": [
+            0.5,
+            0.9963503649635036
+          ]
+        }
+      ]
+    },
+    "recover": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/right-v1.png",
+          "sha256": "2afccc5b0196eec1fa449b7d43543687372f01d0f87edaa3eac260fc9ae32582",
+          "rect": [
+            1016,
+            1032,
+            181,
+            185
+          ],
+          "pivot": [
+            0.5,
+            0.9945945945945946
+          ]
+        }
+      ]
+    },
+    "parry": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/right-v1.png",
+          "sha256": "2afccc5b0196eec1fa449b7d43543687372f01d0f87edaa3eac260fc9ae32582",
+          "rect": [
+            392,
+            63,
+            170,
+            264
+          ],
+          "pivot": [
+            0.5,
+            0.9962121212121212
+          ]
+        }
+      ]
+    }
+  },
+  "oppositeActions": {
+    "idle": {
+      "fps": 0,
+      "loop": true,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/left-v1.png",
+          "sha256": "2bb00687c998f6720d58e6f6f4a2033c91760e96a00d783e843a4d4f8484c364",
+          "rect": [
+            60,
+            50,
+            172,
+            277
+          ],
+          "pivot": [
+            0.5,
+            0.9963898916967509
+          ]
+        }
+      ]
+    },
+    "guard": {
+      "fps": 0,
+      "loop": true,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/left-v1.png",
+          "sha256": "2bb00687c998f6720d58e6f6f4a2033c91760e96a00d783e843a4d4f8484c364",
+          "rect": [
+            380,
+            61,
+            196,
+            266
+          ],
+          "pivot": [
+            0.5,
+            0.9962406015037594
+          ]
+        }
+      ]
+    },
+    "walk": {
+      "fps": 7,
+      "loop": true,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/left-v1.png",
+          "sha256": "2bb00687c998f6720d58e6f6f4a2033c91760e96a00d783e843a4d4f8484c364",
+          "rect": [
+            682,
+            54,
+            190,
+            278
+          ],
+          "pivot": [
+            0.5,
+            0.9964028776978417
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/left-v1.png",
+          "sha256": "2bb00687c998f6720d58e6f6f4a2033c91760e96a00d783e843a4d4f8484c364",
+          "rect": [
+            1003,
+            51,
+            182,
+            278
+          ],
+          "pivot": [
+            0.5,
+            0.9964028776978417
+          ]
+        }
+      ]
+    },
+    "crouch": {
+      "fps": 0,
+      "loop": true,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/left-v1.png",
+          "sha256": "2bb00687c998f6720d58e6f6f4a2033c91760e96a00d783e843a4d4f8484c364",
+          "rect": [
+            64,
+            448,
+            183,
+            181
+          ],
+          "pivot": [
+            0.5,
+            0.994475138121547
+          ]
+        }
+      ]
+    },
+    "attack": {
+      "fps": 10,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/left-v1.png",
+          "sha256": "2bb00687c998f6720d58e6f6f4a2033c91760e96a00d783e843a4d4f8484c364",
+          "rect": [
+            379,
+            372,
+            193,
+            257
+          ],
+          "pivot": [
+            0.5,
+            0.9961089494163424
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/left-v1.png",
+          "sha256": "2bb00687c998f6720d58e6f6f4a2033c91760e96a00d783e843a4d4f8484c364",
+          "rect": [
+            630,
+            373,
+            253,
+            256
+          ],
+          "pivot": [
+            0.5,
+            0.99609375
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/left-v1.png",
+          "sha256": "2bb00687c998f6720d58e6f6f4a2033c91760e96a00d783e843a4d4f8484c364",
+          "rect": [
+            1006,
+            1026,
+            200,
+            191
+          ],
+          "pivot": [
+            0.5,
+            0.9947643979057592
+          ]
+        }
+      ]
+    },
+    "hit": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/left-v1.png",
+          "sha256": "2bb00687c998f6720d58e6f6f4a2033c91760e96a00d783e843a4d4f8484c364",
+          "rect": [
+            365,
+            948,
+            223,
+            267
+          ],
+          "pivot": [
+            0.5,
+            0.9962546816479401
+          ],
+          "clipPolygon": [
+            [
+              0.53139,
+              0
+            ],
+            [
+              0.558296,
+              0
+            ],
+            [
+              0.567265,
+              0.007491
+            ],
+            [
+              0.580717,
+              0.007491
+            ],
+            [
+              0.603139,
+              0.022472
+            ],
+            [
+              0.612108,
+              0.018727
+            ],
+            [
+              0.630045,
+              0.033708
+            ],
+            [
+              0.647982,
+              0.033708
+            ],
+            [
+              0.67713,
+              0.054307
+            ],
+            [
+              0.695067,
+              0.073034
+            ],
+            [
+              0.704036,
+              0.09176
+            ],
+            [
+              0.70852,
+              0.151685
+            ],
+            [
+              0.715247,
+              0.161049
+            ],
+            [
+              0.751121,
+              0.161049
+            ],
+            [
+              0.76009,
+              0.153558
+            ],
+            [
+              0.786996,
+              0.153558
+            ],
+            [
+              0.800448,
+              0.142322
+            ],
+            [
+              0.858744,
+              0.142322
+            ],
+            [
+              0.872197,
+              0.153558
+            ],
+            [
+              0.91704,
+              0.161049
+            ],
+            [
+              0.926009,
+              0.172285
+            ],
+            [
+              0.943946,
+              0.17603
+            ],
+            [
+              0.957399,
+              0.187266
+            ],
+            [
+              0.966368,
+              0.187266
+            ],
+            [
+              0.975336,
+              0.194757
+            ],
+            [
+              0.993274,
+              0.194757
+            ],
+            [
+              1,
+              0.200375
+            ],
+            [
+              1,
+              0.226592
+            ],
+            [
+              0.970852,
+              0.250936
+            ],
+            [
+              0.934978,
+              0.250936
+            ],
+            [
+              0.91704,
+              0.235955
+            ],
+            [
+              0.899103,
+              0.23221
+            ],
+            [
+              0.867713,
+              0.209738
+            ],
+            [
+              0.849776,
+              0.209738
+            ],
+            [
+              0.840807,
+              0.202247
+            ],
+            [
+              0.804933,
+              0.202247
+            ],
+            [
+              0.798206,
+              0.207865
+            ],
+            [
+              0.813901,
+              0.224719
+            ],
+            [
+              0.869955,
+              0.264045
+            ],
+            [
+              0.883408,
+              0.282772
+            ],
+            [
+              0.883408,
+              0.338951
+            ],
+            [
+              0.849776,
+              0.363296
+            ],
+            [
+              0.809417,
+              0.363296
+            ],
+            [
+              0.802691,
+              0.357678
+            ],
+            [
+              0.802691,
+              0.312734
+            ],
+            [
+              0.793722,
+              0.305243
+            ],
+            [
+              0.789238,
+              0.286517
+            ],
+            [
+              0.755605,
+              0.262172
+            ],
+            [
+              0.751121,
+              0.265918
+            ],
+            [
+              0.737668,
+              0.254682
+            ],
+            [
+              0.7287,
+              0.258427
+            ],
+            [
+              0.701794,
+              0.235955
+            ],
+            [
+              0.683857,
+              0.228464
+            ],
+            [
+              0.67713,
+              0.234082
+            ],
+            [
+              0.686099,
+              0.241573
+            ],
+            [
+              0.686099,
+              0.297753
+            ],
+            [
+              0.663677,
+              0.335206
+            ],
+            [
+              0.621076,
+              0.359551
+            ],
+            [
+              0.612108,
+              0.359551
+            ],
+            [
+              0.585202,
+              0.374532
+            ],
+            [
+              0.553812,
+              0.382022
+            ],
+            [
+              0.538117,
+              0.391386
+            ],
+            [
+              0.542601,
+              0.398876
+            ],
+            [
+              0.538117,
+              0.402622
+            ],
+            [
+              0.55157,
+              0.413858
+            ],
+            [
+              0.547085,
+              0.417603
+            ],
+            [
+              0.556054,
+              0.455056
+            ],
+            [
+              0.55157,
+              0.458801
+            ],
+            [
+              0.55157,
+              0.496255
+            ],
+            [
+              0.524664,
+              0.522472
+            ],
+            [
+              0.520179,
+              0.533708
+            ],
+            [
+              0.524664,
+              0.61236
+            ],
+            [
+              0.544843,
+              0.629213
+            ],
+            [
+              0.553812,
+              0.632959
+            ],
+            [
+              0.56278,
+              0.629213
+            ],
+            [
+              0.591928,
+              0.653558
+            ],
+            [
+              0.623318,
+              0.691011
+            ],
+            [
+              0.623318,
+              0.717228
+            ],
+            [
+              0.64574,
+              0.728464
+            ],
+            [
+              0.641256,
+              0.73221
+            ],
+            [
+              0.654709,
+              0.7397
+            ],
+            [
+              0.672646,
+              0.777154
+            ],
+            [
+              0.701794,
+              0.797753
+            ],
+            [
+              0.7287,
+              0.808989
+            ],
+            [
+              0.757848,
+              0.840824
+            ],
+            [
+              0.757848,
+              0.882022
+            ],
+            [
+              0.730942,
+              0.919476
+            ],
+            [
+              0.730942,
+              0.930712
+            ],
+            [
+              0.717489,
+              0.938202
+            ],
+            [
+              0.713004,
+              0.956929
+            ],
+            [
+              0.661435,
+              1
+            ],
+            [
+              0.553812,
+              1
+            ],
+            [
+              0.529148,
+              0.983146
+            ],
+            [
+              0.524664,
+              0.949438
+            ],
+            [
+              0.560538,
+              0.919476
+            ],
+            [
+              0.560538,
+              0.911985
+            ],
+            [
+              0.578475,
+              0.893258
+            ],
+            [
+              0.578475,
+              0.874532
+            ],
+            [
+              0.560538,
+              0.859551
+            ],
+            [
+              0.565022,
+              0.85206
+            ],
+            [
+              0.538117,
+              0.837079
+            ],
+            [
+              0.513453,
+              0.801498
+            ],
+            [
+              0.464126,
+              0.775281
+            ],
+            [
+              0.414798,
+              0.730337
+            ],
+            [
+              0.396861,
+              0.722846
+            ],
+            [
+              0.358744,
+              0.694757
+            ],
+            [
+              0.363229,
+              0.691011
+            ],
+            [
+              0.340807,
+              0.664794
+            ],
+            [
+              0.336323,
+              0.649813
+            ],
+            [
+              0.32287,
+              0.642322
+            ],
+            [
+              0.313901,
+              0.604869
+            ],
+            [
+              0.293722,
+              0.59176
+            ],
+            [
+              0.275785,
+              0.59176
+            ],
+            [
+              0.244395,
+              0.606742
+            ],
+            [
+              0.233184,
+              0.616105
+            ],
+            [
+              0.233184,
+              0.627341
+            ],
+            [
+              0.255605,
+              0.664794
+            ],
+            [
+              0.255605,
+              0.709738
+            ],
+            [
+              0.278027,
+              0.743446
+            ],
+            [
+              0.313901,
+              0.769663
+            ],
+            [
+              0.349776,
+              0.807116
+            ],
+            [
+              0.349776,
+              0.840824
+            ],
+            [
+              0.311659,
+              0.872659
+            ],
+            [
+              0.253363,
+              0.906367
+            ],
+            [
+              0.235426,
+              0.925094
+            ],
+            [
+              0.221973,
+              0.928839
+            ],
+            [
+              0.217489,
+              0.925094
+            ],
+            [
+              0.20852,
+              0.932584
+            ],
+            [
+              0.109865,
+              0.932584
+            ],
+            [
+              0.100897,
+              0.928839
+            ],
+            [
+              0.085202,
+              0.911985
+            ],
+            [
+              0.085202,
+              0.889513
+            ],
+            [
+              0.105381,
+              0.865169
+            ],
+            [
+              0.127803,
+              0.857678
+            ],
+            [
+              0.156951,
+              0.833333
+            ],
+            [
+              0.161435,
+              0.799625
+            ],
+            [
+              0.134529,
+              0.765918
+            ],
+            [
+              0.107623,
+              0.747191
+            ],
+            [
+              0.103139,
+              0.735955
+            ],
+            [
+              0.06278,
+              0.694757
+            ],
+            [
+              0.06278,
+              0.687266
+            ],
+            [
+              0.026906,
+              0.657303
+            ],
+            [
+              0.022422,
+              0.642322
+            ],
+            [
+              0.013453,
+              0.634831
+            ],
+            [
+              0.013453,
+              0.586142
+            ],
+            [
+              0.022422,
+              0.578652
+            ],
+            [
+              0.03139,
+              0.55618
+            ],
+            [
+              0.056054,
+              0.543071
+            ],
+            [
+              0.09417,
+              0.507491
+            ],
+            [
+              0.098655,
+              0.496255
+            ],
+            [
+              0.195067,
+              0.426966
+            ],
+            [
+              0.210762,
+              0.410112
+            ],
+            [
+              0.204036,
+              0.397004
+            ],
+            [
+              0.199552,
+              0.400749
+            ],
+            [
+              0.195067,
+              0.397004
+            ],
+            [
+              0.172646,
+              0.400749
+            ],
+            [
+              0.168161,
+              0.397004
+            ],
+            [
+              0.163677,
+              0.400749
+            ],
+            [
+              0.127803,
+              0.400749
+            ],
+            [
+              0.096413,
+              0.419476
+            ],
+            [
+              0.069507,
+              0.419476
+            ],
+            [
+              0.047085,
+              0.397004
+            ],
+            [
+              0.033632,
+              0.397004
+            ],
+            [
+              0.017937,
+              0.383895
+            ],
+            [
+              0.013453,
+              0.368914
+            ],
+            [
+              0,
+              0.361423
+            ],
+            [
+              0,
+              0.327715
+            ],
+            [
+              0.038117,
+              0.292135
+            ],
+            [
+              0.047085,
+              0.292135
+            ],
+            [
+              0.056054,
+              0.284644
+            ],
+            [
+              0.078475,
+              0.284644
+            ],
+            [
+              0.08296,
+              0.280899
+            ],
+            [
+              0.087444,
+              0.284644
+            ],
+            [
+              0.11435,
+              0.284644
+            ],
+            [
+              0.123318,
+              0.292135
+            ],
+            [
+              0.141256,
+              0.292135
+            ],
+            [
+              0.159193,
+              0.299625
+            ],
+            [
+              0.163677,
+              0.29588
+            ],
+            [
+              0.190583,
+              0.29588
+            ],
+            [
+              0.199552,
+              0.28839
+            ],
+            [
+              0.224215,
+              0.286517
+            ],
+            [
+              0.219731,
+              0.275281
+            ],
+            [
+              0.20852,
+              0.273408
+            ],
+            [
+              0.181614,
+              0.247191
+            ],
+            [
+              0.168161,
+              0.254682
+            ],
+            [
+              0.141256,
+              0.254682
+            ],
+            [
+              0.125561,
+              0.237828
+            ],
+            [
+              0.116592,
+              0.215356
+            ],
+            [
+              0.103139,
+              0.20412
+            ],
+            [
+              0.103139,
+              0.189139
+            ],
+            [
+              0.121076,
+              0.170412
+            ],
+            [
+              0.121076,
+              0.136704
+            ],
+            [
+              0.154709,
+              0.11236
+            ],
+            [
+              0.199552,
+              0.11236
+            ],
+            [
+              0.293722,
+              0.191011
+            ],
+            [
+              0.298206,
+              0.187266
+            ],
+            [
+              0.302691,
+              0.191011
+            ],
+            [
+              0.352018,
+              0.161049
+            ],
+            [
+              0.369955,
+              0.161049
+            ],
+            [
+              0.40583,
+              0.138577
+            ],
+            [
+              0.41704,
+              0.121723
+            ],
+            [
+              0.430493,
+              0.114232
+            ],
+            [
+              0.439462,
+              0.065543
+            ],
+            [
+              0.457399,
+              0.046816
+            ],
+            [
+              0.466368,
+              0.02809
+            ],
+            [
+              0.482063,
+              0.022472
+            ],
+            [
+              0.491031,
+              0.011236
+            ],
+            [
+              0.508969,
+              0.011236
+            ]
+          ]
+        }
+      ]
+    },
+    "ko": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/left-v1.png",
+          "sha256": "2bb00687c998f6720d58e6f6f4a2033c91760e96a00d783e843a4d4f8484c364",
+          "rect": [
+            585,
+            1140,
+            357,
+            71
+          ],
+          "pivot": [
+            0.5,
+            0.9859154929577465
+          ]
+        }
+      ]
+    },
+    "punch": {
+      "fps": 10,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/left-v1.png",
+          "sha256": "2bb00687c998f6720d58e6f6f4a2033c91760e96a00d783e843a4d4f8484c364",
+          "rect": [
+            379,
+            372,
+            193,
+            257
+          ],
+          "pivot": [
+            0.5,
+            0.9961089494163424
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/left-v1.png",
+          "sha256": "2bb00687c998f6720d58e6f6f4a2033c91760e96a00d783e843a4d4f8484c364",
+          "rect": [
+            630,
+            373,
+            253,
+            256
+          ],
+          "pivot": [
+            0.5,
+            0.99609375
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/left-v1.png",
+          "sha256": "2bb00687c998f6720d58e6f6f4a2033c91760e96a00d783e843a4d4f8484c364",
+          "rect": [
+            1006,
+            1026,
+            200,
+            191
+          ],
+          "pivot": [
+            0.5,
+            0.9947643979057592
+          ]
+        }
+      ]
+    },
+    "low": {
+      "fps": 10,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/left-v1.png",
+          "sha256": "2bb00687c998f6720d58e6f6f4a2033c91760e96a00d783e843a4d4f8484c364",
+          "rect": [
+            64,
+            448,
+            183,
+            181
+          ],
+          "pivot": [
+            0.5,
+            0.994475138121547
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/left-v1.png",
+          "sha256": "2bb00687c998f6720d58e6f6f4a2033c91760e96a00d783e843a4d4f8484c364",
+          "rect": [
+            914,
+            453,
+            283,
+            174
+          ],
+          "pivot": [
+            0.5,
+            0.9942528735632183
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/left-v1.png",
+          "sha256": "2bb00687c998f6720d58e6f6f4a2033c91760e96a00d783e843a4d4f8484c364",
+          "rect": [
+            1006,
+            1026,
+            200,
+            191
+          ],
+          "pivot": [
+            0.5,
+            0.9947643979057592
+          ]
+        }
+      ]
+    },
+    "throw": {
+      "fps": 9,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/left-v1.png",
+          "sha256": "2bb00687c998f6720d58e6f6f4a2033c91760e96a00d783e843a4d4f8484c364",
+          "rect": [
+            39,
+            671,
+            233,
+            252
+          ],
+          "pivot": [
+            0.5,
+            0.996031746031746
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/left-v1.png",
+          "sha256": "2bb00687c998f6720d58e6f6f4a2033c91760e96a00d783e843a4d4f8484c364",
+          "rect": [
+            355,
+            675,
+            231,
+            243
+          ],
+          "pivot": [
+            0.5,
+            0.9958847736625515
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/left-v1.png",
+          "sha256": "2bb00687c998f6720d58e6f6f4a2033c91760e96a00d783e843a4d4f8484c364",
+          "rect": [
+            1006,
+            1026,
+            200,
+            191
+          ],
+          "pivot": [
+            0.5,
+            0.9947643979057592
+          ]
+        }
+      ]
+    },
+    "deploy": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/left-v1.png",
+          "sha256": "2bb00687c998f6720d58e6f6f4a2033c91760e96a00d783e843a4d4f8484c364",
+          "rect": [
+            691,
+            668,
+            181,
+            255
+          ],
+          "pivot": [
+            0.5,
+            0.996078431372549
+          ]
+        }
+      ]
+    },
+    "shoot": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/left-v1.png",
+          "sha256": "2bb00687c998f6720d58e6f6f4a2033c91760e96a00d783e843a4d4f8484c364",
+          "rect": [
+            953,
+            671,
+            267,
+            252
+          ],
+          "pivot": [
+            0.5,
+            0.996031746031746
+          ]
+        }
+      ]
+    },
+    "reload": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/left-v1.png",
+          "sha256": "2bb00687c998f6720d58e6f6f4a2033c91760e96a00d783e843a4d4f8484c364",
+          "rect": [
+            75,
+            945,
+            215,
+            270
+          ],
+          "pivot": [
+            0.5,
+            0.9962962962962963
+          ]
+        }
+      ]
+    },
+    "recover": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/left-v1.png",
+          "sha256": "2bb00687c998f6720d58e6f6f4a2033c91760e96a00d783e843a4d4f8484c364",
+          "rect": [
+            1006,
+            1026,
+            200,
+            191
+          ],
+          "pivot": [
+            0.5,
+            0.9947643979057592
+          ]
+        }
+      ]
+    },
+    "parry": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__snake_gb/left-v1.png",
+          "sha256": "2bb00687c998f6720d58e6f6f4a2033c91760e96a00d783e843a4d4f8484c364",
+          "rect": [
+            380,
+            61,
+            196,
+            266
+          ],
+          "pivot": [
+            0.5,
+            0.9962406015037594
+          ]
+        }
+      ]
+    }
+  },
+  "phaseMap": {
+    "punch": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "attack": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "low": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "throw": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    }
+  },
+  "review": {
+    "status": "approved",
+    "reviewer": "PASS16 source author and independent native/source audit; Root bounded art integration review",
+    "reviewedAt": "2026-10-03",
+    "sourceKind": "original-game-capture",
+    "sources": [
+      {
+        "url": "https://metalgear.konami.net/manual/mc2/mggb/ps5/en/img/02_02.png",
+        "sha256": "a3be1e3e76359f393dac35893fca391257c0de5b2939233e01d585670593fdf4",
+        "scope": "Original-game capture / original publisher character art physically viewed before generation; canonical incarnation reference."
+      },
+      {
+        "url": "https://lparchive.org/Metal-Gear-Ghost-Babel/Update%2012/18-jennerjerk24.png",
+        "sha256": "529936793b1c548b603e1d82d92e31c57cffa76b3cf162cbbb52c062bf2ca74f",
+        "scope": "Original-game capture / original publisher character art physically viewed before generation; canonical incarnation reference."
+      },
+      {
+        "url": "https://lparchive.org/Metal-Gear-Ghost-Babel/Update%2008/5-solidsnake.png",
+        "sha256": "e4a240aa4554b3963f42bed78fb1e2ade5f1881b6eb659e3d236d939382dc8e6",
+        "scope": "Original-game capture / original publisher character art physically viewed before generation; canonical incarnation reference."
+      }
+    ],
+    "checks": {
+      "identity": true,
+      "costume": true,
+      "equipment": true,
+      "anatomicalSides": true,
+      "singleFigure": true,
+      "transparentBackground": true
+    },
+    "limits": [
+      "Sixteen physically reviewed independent key poses per facing, 32 total. Walk has two key poses; no full captured motion cycle claim.",
+      "Independent left/right generation preserves canonical anatomical sides; source PNGs stay byte-identical, no mirroring or pixel processing.",
+      "Runtime rects derive from the actual native alpha components. Some rects overlap a neighbor; authored alpha boundary Canvas clip polygons exclude that neighbor while preserving all principal-body pixels above alpha 8.",
+      "One pose may serve several engine move slots. Timings/phase maps are CQC adaptations; original battle geometry, damage, resources and AI are unchanged.",
+      "Weapon small details, fabric folds and face likeness remain stylized. Closest accepted interpretation, no certified pixel-perfect 1:1 fidelity.",
+      "No complete campaign, music or voice work supplied in this sprite candidate.",
+      "No muzzle flash or particles are painted into the shoot poses; most shoot groups contain one aimed-pose keyframe held across phases. Projectile/effect timing remains the engine responsibility.",
+      "GBC reference bodies are small top-down sprites; expanded side view and fine clothing/equipment details are game adaptations, not authenticated full-body concept art."
+    ]
+  }
+}

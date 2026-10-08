@@ -1,0 +1,28 @@
+<!doctype html><meta charset="utf-8"><title>Snake Metal Gear Native QA</title><style>body{margin:0;background:#071015;color:#d7eee8;font:14px monospace}header{padding:18px}#poses{display:grid;grid-template-columns:repeat(12,112px);gap:4px;padding:12px}figure{margin:0;background:#112229;border:1px solid #29454e}canvas{display:block;width:108px;height:148px}figcaption{font:9px monospace;padding:4px;color:#9bbbc3}</style><header>Snake — original metalgear costume · native source geometry review</header><div id="poses"></div><script src="/cqc-pass19-costume-system/cqc-sprite-renderer.js"></script><script>
+window.qaReady=(async()=>{
+ const [base,option]=await Promise.all([fetch('reviews/solid-original-entry-v1.json').then(r=>r.json()),fetch('SOLID_METALGEAR_NATIVE_OPTION_V2.json').then(r=>r.json())]);
+ const api=CQC_COMBAT_SPRITES, originalBaseJSON=JSON.stringify(base), originalOptionJSON=JSON.stringify(option);
+ const configured=api.configure({schema:'cqc.combat-sprites/1',entries:{core__solid:base}},{baseURL:new URL('./',location.href).href});
+ const variants=api.configureCostumes({schema:'cqc.combat-costumes/1',entries:{core__solid:{default:'original',options:[{id:'original',label:'Original'},option]}}});
+ if(configured.accepted!==1||variants.accepted!==1||configured.rejected.length||variants.rejected.length)throw Error('Native costume rejection '+JSON.stringify({configured,variants}));
+ const ready=await api.whenReady('core__solid',{costume:'metalgear'});if(!ready)throw Error('Native PNG decode failure');
+ const fighter={uid:'core__solid',costume:'metalgear'}, checks=[], seen=new Set(), boxes=[{x:12,y:16,width:140,height:196,padding:5},{x:23,y:18,width:113,height:180,padding:3}], routed={idle:{},walk:{walk:true},guard:{guard:true},crouch:{crouch:true},punch:{moveSlot:'light',attack:true,animationActive:true},low:{moveSlot:'low',attack:true,animationActive:true},throw:{moveSlot:'throw',attack:true,animationActive:true},deploy:{moveSlot:'specialDown',attack:true,animationActive:true},shoot:{moveSlot:'special',attack:true,animationActive:true},reload:{moveSlot:'utility',attack:true,animationActive:true},hit:{hit:true},ko:{ko:true},attack:{attack:true}};
+ for(const face of [1,-1]){const entry=api.getEntry('core__solid',fighter),directional=face===1?entry:{...entry,actions:entry.oppositeActions};
+ for(const [action,definition]of Object.entries(directional.actions))for(let i=0;i<definition.frames.length;i++){
+ const pose={...routed[action],time:1,actionTime:definition.fps?(i+.125)/definition.fps:0,entityKey:'wardrobe-qa:'+face+':'+action+':'+i};
+ const selected=api.selectFrame(directional,pose),expected=definition.frames[i];
+ if(selected.action!==action||selected.index!==i||selected.frame.file!==expected.file||JSON.stringify(selected.frame.rect)!==JSON.stringify(expected.rect))throw Error('Action/physical pose mismatch '+face+':'+action+':'+i);
+ const physical=expected.file+':'+expected.rect.join(',');const unique=!seen.has(physical);seen.add(physical);
+ for(let b=0;b<boxes.length;b++){
+ const canvas=document.createElement('canvas');canvas.width=164;canvas.height=224;const ctx=canvas.getContext('2d',{willReadFrequently:true});const ok=api.drawFitted(ctx,fighter,boxes[b],face,pose);if(!ok)throw Error('False native draw');
+ const pixels=ctx.getImageData(0,0,164,224).data;let count=0,overflow=0,minX=164,minY=224,maxX=-1,maxY=-1;
+ for(let y=0;y<224;y++)for(let x=0;x<164;x++)if(pixels[(y*164+x)*4+3]>=16){count++;minX=Math.min(minX,x);minY=Math.min(minY,y);maxX=Math.max(maxX,x);maxY=Math.max(maxY,y);if(x<boxes[b].x||y<boxes[b].y||x>=boxes[b].x+boxes[b].width||y>=boxes[b].y+boxes[b].height)overflow++;}
+ if(count<20||overflow)throw Error('Empty or out-of-box draw '+face+':'+action+':'+i+':'+b+':'+overflow);
+ checks.push({face,action,index:i,physical,box:boxes[b],drawn:true,alpha16Pixels:count,overflow,visibleBounds:[minX,minY,maxX-minX+1,maxY-minY+1]});
+ if(b===0&&unique){const fig=document.createElement('figure'),cap=document.createElement('figcaption');cap.textContent=(face===1?'R':'L')+' '+action+' '+i;fig.append(canvas,cap);document.getElementById('poses').append(fig);}
+ }}
+ }
+ if(JSON.stringify(base)!==originalBaseJSON||JSON.stringify(option)!==originalOptionJSON)throw Error('Source data mutated');
+ const report={schema:'cqc.pass19.solid-metalgear-native-actual-browser-qa/1',status:'passed',origin:location.href,configured,variants,ready,uniquePhysicalFrames:seen.size,nativeDraws:checks.length,checks,baseAndOptionDataUnchanged:true,canvasPhysicalFigures:document.querySelectorAll('figure').length,rendererSHA256:'ROOT_HELPER_PIN_AT_EXECUTION',qualification:'Actual runtime renderer and action selectors draw every native physical frame in two fitted boxes. This standalone geometry/routing proof is not a match-scene or combat-physics proof.'};window.qaReport=report;return report;
+})();window.qaReady.catch(e=>{window.qaError=String(e.stack||e);document.body.dataset.failed='true'});
+</script>

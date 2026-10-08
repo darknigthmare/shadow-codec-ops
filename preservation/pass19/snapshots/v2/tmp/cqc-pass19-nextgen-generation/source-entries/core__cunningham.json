@@ -1,0 +1,1146 @@
+{
+  "uid": "core__cunningham",
+  "name": "CUNNINGHAM",
+  "game": "Metal Gear Solid: Portable Ops",
+  "incarnation": "Original game incarnation, reference-based hand-painted native combat keyframes",
+  "coverage": "action-frames",
+  "displayHeight": 230,
+  "facing": 1,
+  "mirror": false,
+  "fallbackMissingActions": true,
+  "sourceFrameHeights": {
+    "assets/combat-sprites-pass16/core__cunningham/right-v1.png": 292,
+    "assets/combat-sprites-pass16/core__cunningham/left-v1.png": 299
+  },
+  "review": {
+    "status": "approved",
+    "reviewer": "PASS16 source author and independent native/source audit; Root bounded art integration review",
+    "reviewedAt": "2026-10-03",
+    "sourceKind": "official-art-reference",
+    "checks": {
+      "identity": true,
+      "costume": true,
+      "equipment": true,
+      "anatomicalSides": true,
+      "singleFigure": true,
+      "transparentBackground": true
+    },
+    "sources": [
+      {
+        "url": "https://archive.org/download/the-mgs-po-artbook/The%20MGS%20PO%20Artbook_jp2.zip",
+        "scope": "Published official Portable Ops artbook original JP2 reference pages, locally preserved source, documentary conversion actually viewed."
+      }
+    ],
+    "limits": [
+      "Generated native pixels remain intact, not a certified pixel-perfect 1:1 copy. Canonical identity/costume checked against supplied original or official references.",
+      "Sixteen visually reviewed physical keyframes per direction, thirty-two distinct poses per identity. Action groups share keyframes explicitly; no full motion-capture cycle claim.",
+      "Thirteen required action groups plus optional groups reuse actual poses. Standing source-height scale preserves shorter crouch/KO poses; timing and interpolation are duel adaptations.",
+      "Each direction independently authored; no raster mirroring. Tiny facial, insignia and weapon detail remains approximate at combat scale.",
+      "Source crops follow observed alpha components; wider KO or weapon rectangles may cross the advertised invisible grid. Canvas clip polygons exclude nearby figures where necessary, native PNG bytes unchanged.",
+      "No engine, collision, HP, lore, readiness or gameplay mutation; actual gameplay QA remains Root integration work.",
+      "Native atlas contains the human body only, with anatomical right lower-leg prosthesis. Existing mounted hover-platform and its laser/rocket mechanics must remain in Core; empty command poses do not certify a full canonical platform encounter. V1 invented pistol poses rejected and retained.",
+      "Some shooting cells include authored muzzle flash. The actual firing cell is restricted to active attack phase; startup/recovery explicitly reuse the authored recovery or weapon-manipulation pose without flash. Snake AC!D LEFT recovery has empty hands. Flash differences between independently authored directions remain qualified."
+    ]
+  },
+  "actions": {
+    "idle": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            105,
+            1,
+            145,
+            308
+          ],
+          "pivot": [
+            0.5,
+            0.987013
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        }
+      ]
+    },
+    "guard": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            392,
+            16,
+            191,
+            293
+          ],
+          "pivot": [
+            0.5,
+            0.986348
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        }
+      ]
+    },
+    "walk": {
+      "fps": 7,
+      "loop": true,
+      "frames": [
+        {
+          "rect": [
+            693,
+            10,
+            197,
+            297
+          ],
+          "pivot": [
+            0.540609,
+            0.986532
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        },
+        {
+          "rect": [
+            1004,
+            5,
+            202,
+            303
+          ],
+          "pivot": [
+            0.539604,
+            0.986799
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        }
+      ]
+    },
+    "crouch": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            82,
+            388,
+            185,
+            210
+          ],
+          "pivot": [
+            0.5,
+            0.980952
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        }
+      ]
+    },
+    "attack": {
+      "fps": 9,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            367,
+            329,
+            216,
+            269
+          ],
+          "pivot": [
+            0.5,
+            0.98513
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        },
+        {
+          "rect": [
+            667,
+            336,
+            276,
+            262
+          ],
+          "pivot": [
+            0.403986,
+            0.984733
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        },
+        {
+          "rect": [
+            392,
+            16,
+            191,
+            293
+          ],
+          "pivot": [
+            0.5,
+            0.986348
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        }
+      ]
+    },
+    "punch": {
+      "fps": 9,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            367,
+            329,
+            216,
+            269
+          ],
+          "pivot": [
+            0.5,
+            0.98513
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        },
+        {
+          "rect": [
+            667,
+            336,
+            276,
+            262
+          ],
+          "pivot": [
+            0.403986,
+            0.984733
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        },
+        {
+          "rect": [
+            392,
+            16,
+            191,
+            293
+          ],
+          "pivot": [
+            0.5,
+            0.986348
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        }
+      ]
+    },
+    "low": {
+      "fps": 9,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            82,
+            388,
+            185,
+            210
+          ],
+          "pivot": [
+            0.5,
+            0.980952
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        },
+        {
+          "rect": [
+            975,
+            406,
+            278,
+            191
+          ],
+          "pivot": [
+            0.246403,
+            0.979058
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        },
+        {
+          "rect": [
+            392,
+            16,
+            191,
+            293
+          ],
+          "pivot": [
+            0.5,
+            0.986348
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        }
+      ]
+    },
+    "throw": {
+      "fps": 9,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            392,
+            16,
+            191,
+            293
+          ],
+          "pivot": [
+            0.5,
+            0.986348
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        },
+        {
+          "rect": [
+            50,
+            630,
+            266,
+            282
+          ],
+          "pivot": [
+            0.407895,
+            0.985816
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        },
+        {
+          "rect": [
+            392,
+            16,
+            191,
+            293
+          ],
+          "pivot": [
+            0.5,
+            0.986348
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        }
+      ]
+    },
+    "deploy": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            396,
+            621,
+            200,
+            298
+          ],
+          "pivot": [
+            0.5,
+            0.986577
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        }
+      ]
+    },
+    "shoot": {
+      "fps": 9,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            1018,
+            623,
+            189,
+            298
+          ],
+          "pivot": [
+            0.5,
+            0.986577
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        },
+        {
+          "rect": [
+            689,
+            623,
+            223,
+            294
+          ],
+          "pivot": [
+            0.475336,
+            0.986395
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        },
+        {
+          "rect": [
+            1018,
+            623,
+            189,
+            298
+          ],
+          "pivot": [
+            0.5,
+            0.986577
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        }
+      ]
+    },
+    "reload": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            1018,
+            623,
+            189,
+            298
+          ],
+          "pivot": [
+            0.5,
+            0.986577
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        }
+      ]
+    },
+    "hit": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            61,
+            930,
+            208,
+            288
+          ],
+          "pivot": [
+            0.574519,
+            0.986111
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        }
+      ]
+    },
+    "ko": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            339,
+            1116,
+            343,
+            99
+          ],
+          "pivot": [
+            0.5,
+            0.959596
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        }
+      ]
+    },
+    "roll": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            707,
+            1066,
+            219,
+            147
+          ],
+          "pivot": [
+            0.5,
+            0.972789
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        }
+      ]
+    },
+    "jump": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            1011,
+            937,
+            201,
+            224
+          ],
+          "pivot": [
+            0.475124,
+            0.982143
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        }
+      ]
+    },
+    "optic": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            396,
+            621,
+            200,
+            298
+          ],
+          "pivot": [
+            0.5,
+            0.986577
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        }
+      ]
+    },
+    "recover": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            1018,
+            623,
+            189,
+            298
+          ],
+          "pivot": [
+            0.5,
+            0.986577
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        }
+      ]
+    },
+    "parry": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            392,
+            16,
+            191,
+            293
+          ],
+          "pivot": [
+            0.5,
+            0.986348
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/right-v1.png",
+          "sha256": "a24d2df0cc58dc83d948221a7d98be7782fa59e1846206f6c0afcb246ef1d980"
+        }
+      ]
+    }
+  },
+  "oppositeActions": {
+    "idle": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            87,
+            7,
+            140,
+            314
+          ],
+          "pivot": [
+            0.535714,
+            0.987261
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        }
+      ]
+    },
+    "guard": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            388,
+            19,
+            210,
+            302
+          ],
+          "pivot": [
+            0.5,
+            0.986755
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        }
+      ]
+    },
+    "walk": {
+      "fps": 7,
+      "loop": true,
+      "frames": [
+        {
+          "rect": [
+            688,
+            9,
+            197,
+            308
+          ],
+          "pivot": [
+            0.543147,
+            0.987013
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        },
+        {
+          "rect": [
+            1019,
+            14,
+            211,
+            306
+          ],
+          "pivot": [
+            0.462085,
+            0.986928
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        }
+      ]
+    },
+    "crouch": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            73,
+            393,
+            186,
+            219
+          ],
+          "pivot": [
+            0.486559,
+            0.981735
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        }
+      ]
+    },
+    "attack": {
+      "fps": 9,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            348,
+            331,
+            268,
+            282
+          ],
+          "pivot": [
+            0.5,
+            0.985816
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        },
+        {
+          "rect": [
+            643,
+            333,
+            306,
+            281
+          ],
+          "pivot": [
+            0.604575,
+            0.985765
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        },
+        {
+          "rect": [
+            388,
+            19,
+            210,
+            302
+          ],
+          "pivot": [
+            0.5,
+            0.986755
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        }
+      ]
+    },
+    "punch": {
+      "fps": 9,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            348,
+            331,
+            268,
+            282
+          ],
+          "pivot": [
+            0.5,
+            0.985816
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        },
+        {
+          "rect": [
+            643,
+            333,
+            306,
+            281
+          ],
+          "pivot": [
+            0.604575,
+            0.985765
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        },
+        {
+          "rect": [
+            388,
+            19,
+            210,
+            302
+          ],
+          "pivot": [
+            0.5,
+            0.986755
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        }
+      ]
+    },
+    "low": {
+      "fps": 9,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            73,
+            393,
+            186,
+            219
+          ],
+          "pivot": [
+            0.486559,
+            0.981735
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        },
+        {
+          "rect": [
+            952,
+            422,
+            302,
+            193
+          ],
+          "pivot": [
+            0.774834,
+            0.979275
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        },
+        {
+          "rect": [
+            388,
+            19,
+            210,
+            302
+          ],
+          "pivot": [
+            0.5,
+            0.986755
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        }
+      ]
+    },
+    "throw": {
+      "fps": 9,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            388,
+            19,
+            210,
+            302
+          ],
+          "pivot": [
+            0.5,
+            0.986755
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        },
+        {
+          "rect": [
+            23,
+            638,
+            298,
+            288
+          ],
+          "pivot": [
+            0.604027,
+            0.986111
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        },
+        {
+          "rect": [
+            388,
+            19,
+            210,
+            302
+          ],
+          "pivot": [
+            0.5,
+            0.986755
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        }
+      ]
+    },
+    "deploy": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            387,
+            623,
+            215,
+            303
+          ],
+          "pivot": [
+            0.518605,
+            0.986799
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        }
+      ]
+    },
+    "shoot": {
+      "fps": 9,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            1030,
+            623,
+            200,
+            303
+          ],
+          "pivot": [
+            0.515,
+            0.986799
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        },
+        {
+          "rect": [
+            663,
+            638,
+            285,
+            288
+          ],
+          "pivot": [
+            0.570175,
+            0.986111
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        },
+        {
+          "rect": [
+            1030,
+            623,
+            200,
+            303
+          ],
+          "pivot": [
+            0.515,
+            0.986799
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        }
+      ]
+    },
+    "reload": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            1030,
+            623,
+            200,
+            303
+          ],
+          "pivot": [
+            0.515,
+            0.986799
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        }
+      ]
+    },
+    "hit": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            52,
+            924,
+            203,
+            289
+          ],
+          "pivot": [
+            0.568966,
+            0.986159
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        }
+      ]
+    },
+    "ko": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            308,
+            1101,
+            375,
+            98
+          ],
+          "pivot": [
+            0.5,
+            0.959184
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        }
+      ]
+    },
+    "roll": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            699,
+            1055,
+            240,
+            160
+          ],
+          "pivot": [
+            0.5,
+            0.975
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        }
+      ]
+    },
+    "jump": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            997,
+            928,
+            239,
+            236
+          ],
+          "pivot": [
+            0.57113,
+            0.983051
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        }
+      ]
+    },
+    "optic": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            387,
+            623,
+            215,
+            303
+          ],
+          "pivot": [
+            0.518605,
+            0.986799
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        }
+      ]
+    },
+    "recover": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            1030,
+            623,
+            200,
+            303
+          ],
+          "pivot": [
+            0.515,
+            0.986799
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        }
+      ]
+    },
+    "parry": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "rect": [
+            388,
+            19,
+            210,
+            302
+          ],
+          "pivot": [
+            0.5,
+            0.986755
+          ],
+          "file": "assets/combat-sprites-pass16/core__cunningham/left-v1.png",
+          "sha256": "8ac03c3436d04b6c15a5fc54f3575d220a08e231d03564f757c9828e5e0146b7"
+        }
+      ]
+    }
+  },
+  "actionMap": {
+    "light": "punch",
+    "heavy": "attack",
+    "low": "low",
+    "throw": "throw",
+    "special": "deploy",
+    "specialDown": "deploy",
+    "specialForward": "walk",
+    "specialBack": "guard",
+    "super": "deploy",
+    "utility": "recover"
+  },
+  "phaseMap": {
+    "attack": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "punch": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "low": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "throw": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "shoot": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    }
+  }
+}

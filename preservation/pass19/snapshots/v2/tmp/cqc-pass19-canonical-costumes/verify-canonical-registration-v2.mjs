@@ -1,0 +1,42 @@
+import fs from 'node:fs';import vm from 'node:vm';import path from 'node:path';import crypto from 'node:crypto';import assert from 'node:assert/strict';
+const root='/tmp/cqc-pass19-canonical-costumes',src='/tmp/cqc-pass18-application/public/cqc/src';
+const hash=value=>crypto.createHash('sha256').update(typeof value==='string'||Buffer.isBuffer(value)?value:JSON.stringify(value)).digest('hex');
+const coverage=JSON.parse(fs.readFileSync('/tmp/cqc-pass18-integration/ACTUAL_COMBAT_COVERAGE_LATEST_V1.json'));
+const context=vm.createContext({console,localStorage:{getItem:()=>null,setItem(){}},performance:{now:()=>0},setTimeout,clearTimeout});
+const pins=[];const run=(absolute)=>{let b=fs.readFileSync(absolute);pins.push({path:absolute,bytes:b.length,sha256:hash(b)});vm.runInContext(b.toString(),context,{filename:absolute});};
+for(const name of coverage.catalogs)run(path.join(src,name));
+run(path.join(src,'cqc-pass17-costume-catalog.js'));run(path.join(src,'cqc-pass18-acid-native-costumes.js'));run(path.join(src,'cqc-pass17-costumes.js'));
+const baselineSpriteSHA=hash(context.CQC_COMBAT_SPRITE_CATALOG),oldCostumeSHA=hash(context.CQC_COMBAT_COSTUME_CATALOG);
+const oldCostumes=JSON.parse(JSON.stringify(context.CQC_COMBAT_COSTUME_CATALOG));
+run('/tmp/cqc-pass19-costume-system/cqc-sprite-renderer.js');
+run('/tmp/cqc-pass19-costume-system/cqc-pass19-costume-request-data.js');run('/tmp/cqc-pass19-costume-system/cqc-pass19-costumes.js');
+const candidates=JSON.parse(fs.readFileSync(path.join(root,'CANONICAL_APPEARANCE_CROSSMAP_V2.json')));
+const t0=performance.now();run(path.join(root,'cqc-pass19-canonical-appearances.js'));const elapsed=performance.now()-t0;
+assert.equal(context.CQC_PASS19_CANONICAL_APPEARANCES.data.records.length,362);
+assert.equal(context.CQC_PASS19_CANONICAL_APPEARANCES.install().alreadyInstalled,true);
+const examples=[];
+for(const mapping of candidates.options){
+ const {uid,id,sourceSpriteUID}=mapping;
+ const option=context.CQC_COMBAT_COSTUME_CATALOG.entries[uid].options.find(o=>o.id===id);
+ assert(option?.sprite);assert.equal(option.sprite.uid,uid);assert.equal(option.provenance.kind,mapping.provenance.kind);
+ const source=context.CQC_COMBAT_SPRITE_CATALOG.entries[sourceSpriteUID];
+ const got=context.CQC_COMBAT_SPRITES.getEntry(uid,{costume:id});assert.equal(got.uid,uid);
+ assert.deepEqual(JSON.parse(JSON.stringify(got.actions)),JSON.parse(JSON.stringify(source.actions)));
+ assert.deepEqual(JSON.parse(JSON.stringify(got.oppositeActions)),JSON.parse(JSON.stringify(source.oppositeActions)));
+ assert.equal(got.displayHeight,source.displayHeight);assert.equal(got.baseFrameHeight,source.baseFrameHeight);
+ assert.equal(hash(got.review),hash(source.review));
+ assert(context.CQC_PASS19_COSTUMES.selectable(uid,id));assert(context.CQC_COSTUMES_PASS17.select(0,uid,id));
+ const actor=context.CQC_COSTUMES_PASS17.fighterFor({uid,name:'original identity',power:.98,speed:1.0,reach:1.35},0);
+ assert.equal(actor.costume,id);assert.equal(actor.power,.98);assert.equal(actor.name,'original identity');
+ assert.equal(context.CQC_COSTUMES_PASS17.chosen(1,uid),'original');
+ if(['core__snake_mgs2','core__eva_mgs3','core__raiden_mgs2','core__crying_wolf'].includes(uid))examples.push({uid,id,sourceSpriteUID,kind:option.provenance.kind,displayHeight:got.displayHeight,bothNativeDirections:true});
+}
+let oldCount=0;for(const [uid,old] of Object.entries(oldCostumes.entries))for(const variant of old.options){const actual=context.CQC_COMBAT_COSTUME_CATALOG.entries[uid].options.find(o=>o.id===variant.id);assert.equal(hash(actual),hash(variant));if(variant.id!=='original')oldCount++;}
+assert.equal(oldCount,7);assert.equal(hash(context.CQC_COMBAT_SPRITE_CATALOG),baselineSpriteSHA);
+const current=context.CQC_COMBAT_SPRITES.configureCostumes(context.CQC_COMBAT_COSTUME_CATALOG);assert.equal(current.accepted,369);assert.equal(current.rejected.length,0);
+const census=JSON.parse(fs.readFileSync(path.join(root,'COMPLETE_BASELINE_APPEARANCE_CENSUS_V2.json')));assert.equal(census.rows.length,355);assert.equal(new Set(census.rows.map(e=>e.uid)).size,355);
+assert.equal(candidates.options.some(e=>e.sourceSpriteUID==='archive__johnny_mgs1'),false);
+assert.equal(candidates.options.some(e=>(e.uid==='core__venom'&&e.sourceSpriteUID.startsWith('core__snake'))||(e.sourceSpriteUID==='core__venom'&&e.uid.startsWith('core__snake'))),false);
+assert.equal(candidates.options.some(e=>e.uid==='core__clown'&&e.sourceSpriteUID==='core__teliko'),false);
+const report={schema:'cqc.pass19.actual-canonical-registration-code-qa/1',status:'passed',createdAt:new Date().toISOString(),testedSourceFiles:pins,baselineSpriteSHA256:baselineSpriteSHA,priorCostumeCatalogSHA256:oldCostumeSHA,counts:{newNativeOptions:362,preservedOldVariants:7,totalNativeCostumeOptions:369,rejected:0,canonicalGameCostumes:4,remakeAppearances:53,historicalIncarnations:275,bodyTransformations:30,completeBaselineCensusUIDs:355},registrationElapsedMs:Math.round(elapsed),checks:{actualRendererValidation:true,actualCostumeRegistration:true,sourceActionsAndOppositeActionsUnchanged:true,sourceReviewAndPhysicalGeometryUnchanged:true,baselineSpriteCatalogUnchanged:true,oldVariantsPreservedByteEquivalent:true,slot0SelectionAndIndependentSlot1:true,chosenCostumePropagatesToPrivateActor:true,gameplayStatsUnchanged:true,unattestedSourceOmitted:true,explicitIdentityNonMerges:true},examples,qualification:'Executed actual registration and native renderer catalogue code in a Node VM. No browser image decode/draw or visual canon fidelity certification is claimed; physical PNGs and existing all-frame review remain unchanged.'};
+const runDir=path.join(root,'runs',report.createdAt.replaceAll(':','-').replaceAll('.','-'));fs.mkdirSync(runDir,{recursive:false});const out=path.join(runDir,'CANONICAL_REGISTRATION_ACTUAL_CODE_QA_V2.json');fs.writeFileSync(out,JSON.stringify({...report,schema:'cqc.pass19.actual-canonical-registration-code-qa/2'},null,2)+'\n',{flag:'wx',mode:0o400});console.log(JSON.stringify({path:out,sha256:hash(fs.readFileSync(out)),counts:report.counts,registrationElapsedMs:report.registrationElapsedMs}));

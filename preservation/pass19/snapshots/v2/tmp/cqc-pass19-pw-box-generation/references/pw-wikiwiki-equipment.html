@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: https://ogp.me/ns# fb: https://ogp.me/ns/fb# article: https://ogp.me/ns/article#">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <script>
+    (function () {
+        var m = /(Android|iPhone|iPad)/.exec(navigator.userAgent)
+        if (m && m[1] !== 'iPhone') return
+        var meta = document.querySelector('meta[name="viewport"]')
+        if (!meta) return
+        meta.setAttribute('content', m
+            ? 'width=device-width,minimum-scale=1,initial-scale=1,user-scalable=no'
+            : 'width=980')
+    })()
+</script>
+
+    <meta name="description" content="METAL GEAR SOLID PEACE WALKER(ピースウォーカー) Wiki*">
+        <meta property="og:url" content="https://wikiwiki.jp/walker/%E8%A3%85%E5%82%99%E5%93%81" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="装備品 - METAL GEAR SOLID PEACE WALKER(ピースウォーカー) Wiki*" />
+    <meta property="og:description" content="METAL GEAR SOLID PEACE WALKER(ピースウォーカー) Wiki*" />
+    <meta property="og:site_name" content="METAL GEAR SOLID PEACE WALKER(ピースウォーカー) Wiki*" />
+    <meta property="og:image" content="https://cdn.wikiwiki.jp/to/w/common/image/wikiwiki_ogp.png?v=4" />
+    <title>装備品 - METAL GEAR SOLID PEACE WALKER(ピースウォーカー) Wiki*</title>
+
+    <link rel="alternate" href="/walker/::cmd/mixirss" type="application/rss+xml" title="RSS" />
+    <link rel="icon" href="https://cdn.wikiwiki.jp/to/w/common/user-favicon.ico?v=4"/>
+    <link rel="stylesheet" href="https://cdn.wikiwiki.jp/to/w/common/assets/dist/wikiwiki-dbc3538ca778dc7fcfbe.min.css" type="text/css">
+<link rel="stylesheet" href="https://cdn.wikiwiki.jp/to/w/common/assets/dist/skin-default_black03-d73054a5825060ed4e57.min.css" type="text/css">
+    
+    <script type="text/javascript" src="https://cdn.wikiwiki.jp/to/w/common/assets/dist/ad-1bf004520fc167abbea6.min.js"></script>
+    <script>
+    var wi_stay = (function () {
+        var wi_data_raw = localStorage.getItem('browsingStatistics');
+        var wi_data = wi_data_raw ? (JSON.parse(wi_data_raw) || {}) : {};
+        var stay = Number(wi_data.stay);
+        if (isNaN(stay)) {
+            stay = 0;
+        }
+        return stay;
+    })();
+    var wi_data_raw = localStorage.getItem('usageStatistics');
+    var wi_data =     wi_data_raw ? (JSON.parse(wi_data_raw) || {}) : {};
+    var wi_edit =     String(wi_data.edit || 0);
+    var wi_freeze =   String(wi_data.freeze || 0);
+    var wi_comment =  String(wi_data.comment || 0);
+    var wi_group = String(wi_data.group || "N");
+    var wi_smsAuth = wi_data.smsAuth || false;
+    var wi_hasPosted = wi_data.hasPosted || false;
+    var wi_agreement = String(wi_data.agreementStatus || "false");
+    if (document.referrer.length !== 0) {
+        var wi_uri = new URL(document.referrer);
+        var wi_referer = wi_uri.hostname;
+    } else {
+        var wi_referer = "unknown";
+    }
+
+    // Chromium系判定
+    function isChromium() {
+        var ua = navigator.userAgent;
+        // Edge, Opera, Chrome, Chromium, Brave など
+        return /\b(Chrome|Chromium|Edg|OPR|Brave)\b/.test(ua) && !/Silk|UCBrowser|SamsungBrowser|CriOS|FxiOS|OPiOS|EdgiOS/.test(ua);
+    }
+
+    var wi_ismobile;
+    var wi_device;
+    if (isChromium() && navigator.userAgentData) {
+        wi_ismobile = navigator.userAgentData.mobile;
+        if (wi_ismobile) {
+            if (navigator.userAgentData.platform === "Android") {
+                wi_device = "and";
+            } else {
+                wi_device = "ios";
+            }
+        } else {
+            wi_device = "pc";
+        }
+    } else {
+        wi_ismobile = !!navigator.userAgent.match(/iPhone|Android.+Mobile/);
+        if (navigator.userAgent.match(/Android.+Mobile/)) {
+            wi_device = "and";
+        } else if (navigator.userAgent.match(/iPhone/)) {
+            wi_device = "ios";
+        } else {
+            wi_device = "pc";
+        }
+    }
+
+    var wi_isportrait = window.matchMedia("(orientation: portrait)").matches;
+    var wi_isinbound = wi_referer.includes(window.location.hostname) ? false : true;
+    var wi_random100 = Math.floor(Math.random() * (100 - 1) + 1);
+    var wi_random110 = Math.floor(Math.random() * 10) + 1;
+    var wi_isread_yet = true;
+    var wi_location_hash = location.hash || false;
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Y8FN9EFS7"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3Y8FN9EFS7', {
+        'content_group': 'walker',
+        'user_properties': {
+            'user_group':     wi_group,
+            'user_agreement': wi_agreement,
+            'edit_count':     wi_edit,
+            'comment_count':  wi_comment,
+            'sms_auth':       String(wi_smsAuth)
+        }
+    });
+    
+</script>
+
+<script>
+    window.wikiFq = createWikiFq();
+</script>
+<script>
+    var wi_recref = recordReferrerDomain();
+</script>
+
+<script>
+const visitData_20241117 = (() => {
+const RESET_INTERVAL_MINUTES = 30;
+const now = Date.now();
+const resetIntervalMs = RESET_INTERVAL_MINUTES * 60 * 1000;
+const storageKey = "internalVisitData";
+let data = JSON.parse(localStorage.getItem(storageKey)) || { count: 0, lastVisit: now };
+if (now - data.lastVisit > resetIntervalMs) data = { count: 0, lastVisit: now };
+if (document.referrer && new URL(document.referrer).hostname === window.location.hostname) {
+data = { count: data.count + 1, lastVisit: now };
+localStorage.setItem(storageKey, JSON.stringify(data));
+}
+return data;
+})();
+
+const int_conditions = [
+wi_ismobile,
+wi_group === 'N',
+wi_agreement === 'false',
+!wi_isinbound,
+visitData_20241117.count === 1,
+];
+
+const int_conditions_pc = [
+    !wi_ismobile,
+    wi_group === 'N',
+    wi_agreement === 'false',
+    !wi_isinbound,
+    visitData_20241117.count === 1,
+];
+</script>
+<script>
+(function(){
+  const FLAG="fluxinst_pc";
+  const url=new URL(location.href);
+
+  if(url.searchParams.get(FLAG)==="1"){
+    url.searchParams.delete(FLAG);
+    history.replaceState(null,"",url.toString());
+    return;
+  }
+
+  if(
+    Array.isArray(int_conditions_pc) &&
+    int_conditions_pc.every(Boolean)
+  ){
+    url.searchParams.set(FLAG,"1");
+    location.href=url.toString();
+  }
+})();
+</script>
+
+
+<script>
+(function(){
+  const FLAG="fluxinst_sp";
+  const url=new URL(location.href);
+
+  if(url.searchParams.get(FLAG)==="1"){
+    url.searchParams.delete(FLAG);
+    history.replaceState(null,"",url.toString());
+    return;
+  }
+
+  if(
+    Array.isArray(int_conditions) &&
+    int_conditions.every(Boolean) &&
+    (wi_device==="ios" || wi_device==="and")
+  ){
+    url.searchParams.set(FLAG,"1");
+    location.href=url.toString();
+  }
+})();
+</script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KQ52VZ3');</script>
+<!-- End Google Tag Manager -->
+
+
+<script type="text/javascript">
+    window.pbjs = window.pbjs || {};
+    window.pbjs.que = window.pbjs.que || [];
+</script>
+<script async="async" src="https://flux-cdn.com/client/ukiuki/flux_wikiwiki_AS_TM_AT.min.js"></script>
+<script>
+window.googletag = window.googletag || {};
+window.googletag.cmd = window.googletag.cmd || [];
+</script>
+<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+<script>
+
+var wi_adslot_rectangle = [[300,250],[1,1]];
+var wi_adslot = [[300,250],[1,1]];
+if (document.documentElement.clientWidth > 406) {
+  wi_adslot_rectangle = [[300,250],[336,280],[1,1]];
+  wi_adslot = [[468,60],[300,250],[1,1]];
+}
+
+window.defineSlotFlux = [];
+if (wi_ismobile && wi_isportrait) {
+  defineSlotFlux.push({"slotID": "div-gpt-ad-1563441919648-0", "sizes": [[320, 100], [320, 50]], "slotName":"WIKIWIKI_SP_OVERLAY"});
+}
+    if (wi_isinbound && wi_ismobile && wi_group == "N" && wi_agreement === "false") {
+      defineSlotFlux.push({"slotID": "div-gpt-ad-1563430750445-0", "sizes": [[300,250]], "slotName":"WIKIWIKI_SP_INBOUND"});
+    } else if (wi_isinbound && wi_group == "N" && wi_agreement === "false") {
+      defineSlotFlux.push({"slotID": "div-gpt-ad-1567409776345-0", "sizes": [[300,250]], "slotName":"WIKIWIKI_PC_INBOUND"});
+      defineSlotFlux.push({"slotID": "div-gpt-ad-1658802281376-0", "sizes": [[300,250]], "slotName":"WIKIWIKI_PC_INBOUND_RIGHT"});
+    }
+  if (wi_ismobile && !wi_isinbound) {
+    defineSlotFlux.push({"slotID": "div-gpt-ad-1562925510696-0", "sizes": [[300,250]], "slotName":"WIKIWIKI_SP_CAPTION"});
+  } else if (wi_group === 'N' && wi_agreement === 'false' && !wi_isinbound) {
+    defineSlotFlux.push({"slotID": "div-gpt-ad-1565253136679-0", "sizes": [[300,250]], "slotName":"WIKIWIKI_PC_CAPTION"});
+  }
+if (wi_ismobile && wi_group == "N" && wi_agreement === "false") {
+      defineSlotFlux.push({"slotID": "div-gpt-ad-1731135777754-0", "sizes": [[300,600]], "slotName":"WIKIWIKI_SP_CAPTION_300x600"});
+}
+      defineSlotFlux.push({"slotID": "div-gpt-ad-1566473930452-0", "sizes": [[300,250]], "slotName":"WIKIWIKI_PC_CAPTION_20TH"});
+      defineSlotFlux.push({"slotID": "div-gpt-ad-other", "sizes": [[300,250]], "slotName":"WIKIWIKI_CAPTION_B"});
+  if (wi_ismobile) {
+    defineSlotFlux.push({"slotID": "div-gpt-ad-1567408559923-0", "sizes": [[300,250]], "slotName":"WIKIWIKI_SP_SECOND"});
+  } else {
+    defineSlotFlux.push({"slotID": "div-gpt-ad-1567408559923-0", "sizes": [[300,250]], "slotName":"WIKIWIKI_PC_BOTTOM_LEFT"});
+    defineSlotFlux.push({"slotID": "div-gpt-ad-1658912377789-0", "sizes": [[300,250]], "slotName":"WIKIWIKI_PC_BOTTOM_RIGHT"});
+  }
+</script>
+<script type="text/javascript">
+if (defineSlotFlux.length) {
+    window.fluxtag = {
+        readyBids: { prebid: false, google: false },
+        failSafeTimeout: 3e3, // 3秒でフェイルセーフ発動
+        isFn: function isFn(object) {
+            var _t = 'Function';
+            var toString = Object.prototype.toString;
+            return toString.call(object) === '[object ' + _t + ']';
+        },
+        launchAdServer: function () {
+            if (!fluxtag.readyBids.prebid) {
+                return;
+            }
+            fluxtag.requestAdServer();
+        },
+        requestAdServer: function () {
+            if (!fluxtag.readyBids.google) {
+                fluxtag.readyBids.google = true;
+                googletag.cmd.push(function () {
+                    var pbjsLoaded = !!(window.pbjs && pbjs.que &&
+                        fluxtag.isFn(pbjs.que.push) &&
+                        (pbjs.libLoaded || (pbjs.setTargetingForGPTAsync &&
+                            fluxtag.isFn(pbjs.setTargetingForGPTAsync))));
+                    if (pbjsLoaded) {
+                        pbjs.que.push(function () {
+                            if (pbjs.setTargetingForGPTAsync && fluxtag.isFn(pbjs.setTargetingForGPTAsync)) {
+                                try {
+                                    Promise.resolve(pbjs.setTargetingForGPTAsync())
+                                        .catch(function () {})
+                                        .then(function () {
+                                            googletag.pubads().refresh();
+                                        });
+                                } catch (e) {
+                                    googletag.pubads().refresh();
+                                }
+                            } else {
+                                googletag.pubads().refresh();
+                            }
+                        });
+                    } else {
+                        googletag.pubads().refresh();
+                    }
+                });
+            }
+        }
+    };
+
+    setTimeout(function () {
+        fluxtag.requestAdServer();
+    }, fluxtag.failSafeTimeout);
+}
+</script>
+<script>
+googletag.cmd.push(function() {
+    if (wi_ismobile && wi_isportrait) {
+        var overlaySlot = googletag.defineSlot('/19033742/WIKIWIKI_SP_OVERLAY',[[320,100],[320,50],[1,1]],'div-gpt-ad-1563441919648-0');
+        if (overlaySlot) {
+            overlaySlot.addService(googletag.pubads());
+            // 分母はこの枠だけで数え、空の初回描画にも次回用の印を付ける。
+            var overlayRenderHandler = function(event) {
+                if (event.slot !== overlaySlot) return;
+                overlaySlot.setConfig({ targeting: { wi_refresh: '1' } });
+                googletag.pubads().removeEventListener('slotRenderEnded', overlayRenderHandler);
+            };
+            googletag.pubads().addEventListener('slotRenderEnded', overlayRenderHandler);
+        }
+    }
+    if (wi_isinbound && wi_ismobile && wi_group == "N" && wi_agreement === "false") {
+      googletag.defineSlot('/19033742/WIKIWIKI_SP_INBOUND',[[300,250]],
+        'div-gpt-ad-1563430750445-0').addService(googletag.pubads());
+    } else if (wi_isinbound && wi_group == "N" && wi_agreement === "false") {
+      googletag.defineSlot('/19033742/WIKIWIKI_PC_INBOUND',[[336,280],[300,250]],
+        'div-gpt-ad-1567409776345-0').addService(googletag.pubads());
+      googletag.defineSlot('/19033742/WIKIWIKI_PC_INBOUND_RIGHT',[[336,280],[300,250]],
+        'div-gpt-ad-1658802281376-0').addService(googletag.pubads());
+    }
+  if (wi_ismobile && !wi_isinbound) {
+    googletag.defineSlot('/19033742/WIKIWIKI_SP_CAPTION',[[300,250],[1,1]],'div-gpt-ad-1562925510696-0').addService(googletag.pubads());
+  } else if (wi_group === 'N' && wi_agreement === 'false' && !wi_isinbound) {
+    googletag.defineSlot('/19033742/WIKIWIKI_PC_CAPTION',[[300,250],[1,1]],'div-gpt-ad-1565253136679-0').addService(googletag.pubads());
+  }
+if (wi_ismobile && wi_group == "N" && wi_agreement === "false") {
+    googletag.defineSlot('/19033742/WIKIWIKI_SP_CAPTION_300x600',[[300,600],[1,1]],
+        'div-gpt-ad-1731135777754-0').addService(googletag.pubads());
+}
+    googletag.defineSlot('/19033742/WIKIWIKI_PC_CAPTION_20TH',[[300,250],[1,1]],
+        'div-gpt-ad-1566473930452-0').addService(googletag.pubads());
+    googletag.defineSlot('/19033742/WIKIWIKI_CAPTION_B',[[300,250],[1,1]],
+        'div-gpt-ad-other').addService(googletag.pubads());
+    if (wi_ismobile) {
+        googletag.defineSlot('/19033742/WIKIWIKI_SP_SECOND',[[300,250]],
+        'div-gpt-ad-1567408559923-0').addService(googletag.pubads());
+    } else {
+        googletag.defineSlot('/19033742/WIKIWIKI_PC_BOTTOM_LEFT',[[336,280],[300,250]],
+        'div-gpt-ad-1567408559923-0').addService(googletag.pubads());
+        googletag.defineSlot('/19033742/WIKIWIKI_PC_BOTTOM_RIGHT',[[336,280],[300,250]],
+        'div-gpt-ad-1658912377789-0').addService(googletag.pubads());
+    }
+    googletag.setConfig({ targeting: {
+        "gpolicy": "sunny",
+        "site": "walker"
+    } });
+    googletag.setConfig({ collapseDiv: 'ON_NO_FILL' });
+    googletag.setConfig({ singleRequest: true });
+    googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+        var slot = event.slot;
+        if (document.getElementById(slot.getSlotElementId()) != null){
+            var slotElm = document.getElementById(slot.getSlotElementId());
+            if (slotElm && slotElm.className === 'overlay-ad-wrapper') {
+                var overlayRenderedEvent = document.createEvent('Event');
+                overlayRenderedEvent.initEvent('overlay-ad-rendered', true, true);
+                slotElm.dispatchEvent(overlayRenderedEvent);
+            }
+        }
+    });
+    googletag.setConfig({
+        lazyLoad: {
+            fetchMarginPercent: 50,   // 0.5画面分まできたらリクエスト
+            renderMarginPercent: 50,  // 0.5画面分まできたら描画
+            mobileScaling: 2.0        // モバイルはスクロールが早いため2倍（1.0画面分）にする
+        }
+    });
+    if (defineSlotFlux.length) {googletag.setConfig({ disableInitialLoad: true });};
+    googletag.enableServices();
+    if (defineSlotFlux.length) {
+        pbjs.que.push(function () {
+            window.pbFlux.prebidBidder();
+        });
+    }
+});
+</script>
+
+<script>
+googletag.cmd.push(function() {
+  googletag.setConfig({ targeting: {
+    "wi_agreement": String(wi_data.agreementStatus || "false"),
+    "wi_group": String(wi_data.group || "N"),
+    "wi_comment": wi_comment.length.toString(),
+    "wi_edit": wi_edit.length.toString(),
+    "wi_freeze": wi_freeze.length.toString(),
+    "wi_smsAuth": String(wi_data.smsAuth || false),
+    "wi_hasPosted": String(wi_data.hasPosted || false),
+    "wi_referer": String(wi_referer || "unknown"),
+    "wi_random110": String(wi_random110 || "0"),
+    "wi_hour": ('0' + new Date().getHours()).slice(-2)
+  } });
+});
+</script>
+
+<style>
+.pc-caption-ad-default {
+    margin-top:20px;
+    display:flex;
+    justify-content:flex-start;
+    gap: 10px 5px;
+    min-height:280px;
+    position: sticky;
+    z-index: 3;
+    top: 45px;
+}
+
+.pc-caption-ad-center{
+    margin-top:20px;
+    display:flex;
+    justify-content:center;
+    gap: 10px 5px;
+    min-height:280px;
+    position: sticky;
+    z-index: 3;
+    top: 45px;
+}
+.pc-caption-ad-mobile{
+    margin-top:20px;
+    margin-bottom:20px;
+    display:flex;
+    justify-content:center;
+    min-height:331px;
+    position: sticky;
+    z-index: 3;
+    top: 45px;
+}
+.pc-caption-ad-mobile-300x600{
+    margin-top:20px;
+    margin-bottom:20px;
+    display:flex;
+    justify-content:center;
+    min-height:331px;
+}
+.default-advertisement {
+    background-color: transparent;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512'%3E%3C!--!Font Awesome Pro 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2024 Fonticons, Inc.--%3E%3Cpath d='M16 48l0 416 544 0 0-416L16 48zM0 32l16 0 544 0 16 0 0 16 0 416 0 16-16 0L16 480 0 480l0-16L0 48 0 32zM320 280a56 56 0 1 0 112 0 56 56 0 1 0 -112 0zm56-72c22.6 0 42.8 10.4 56 26.7l0-66.7 0-8 16 0 0 8 0 112 0 64 0 8-16 0 0-8 0-18.7c-13.2 16.3-33.4 26.7-56 26.7c-39.8 0-72-32.2-72-72s32.2-72 72-72zM183.1 160l5.2 0 7.3 0 5.2 0 2.1 4.8L284.2 352l-17.4 0-20.8-48-107.8 0-20.8 48-17.4 0L181 164.8l2.1-4.8zM145 288l94 0L192 179.7 145 288z' fill='%23BBB'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25px 25px;
+}
+
+@media (max-width: 500px) {
+  .caption-flybox:has(iframe[id^="google_ads_iframe_"]) {
+    position: relative;
+    min-height: 450px;
+  }
+}
+</style>
+
+
+<script>
+googletag.cmd.push(function() {
+    const pcCaptionPaths = [
+        '/19033742/WIKIWIKI_PC_CAPTION',
+        '/19033742/WIKIWIKI_PC_CAPTION_SIDE_BY',
+        '/19033742/WIKIWIKI_PC_CAPTION_20TH',
+        '/19033742/WIKIWIKI_CAPTION_B'
+    ];
+
+    const spCaptionPaths = [
+        '/19033742/WIKIWIKI_SP_CAPTION',
+        '/19033742/WIKIWIKI_SP_CAPTION_300x600'
+    ];
+
+    googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+        const slotElement = document.getElementById(event.slot.getSlotElementId());
+        const parent = slotElement?.parentNode;
+
+        if (parent && !event.isEmpty) {
+            if (pcCaptionPaths.includes(event.slot.getAdUnitPath())) {
+                parent.classList.add(parent.clientWidth < 769 ? "pc-caption-ad-center" : "pc-caption-ad-default");
+            } else if (spCaptionPaths.includes(event.slot.getAdUnitPath())) {
+                if (event.slot.getAdUnitPath() === '/19033742/WIKIWIKI_SP_CAPTION_300x600') {
+                    parent.classList.add("pc-caption-ad-mobile-300x600");
+                } else {
+                    parent.classList.add("pc-caption-ad-mobile");
+                }
+            }
+        }
+    });
+
+    googletag.pubads().addEventListener('slotOnload', function(event) {
+        const slotElement = document.getElementById(event.slot.getSlotElementId());
+        slotElement?.parentNode?.classList.remove("default-advertisement");
+    });
+});
+</script>
+
+<link rel="preload" as="script" href="https://pdn.adingo.jp/p.js">
+<link rel="preconnect" href="https://sh.adingo.jp" crossorigin="use-credentials">
+    <link rel="canonical" href="https://wikiwiki.jp/walker/%E8%A3%85%E5%82%99%E5%93%81">
+    <style>
+@media screen and (min-width: 820px) {
+  .container-wrapper {
+    min-width: 930px;
+    max-width: 930px;
+  }
+}
+</style>
+<style>
+  body {
+      font-family: Verdana, Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+      font-size: 13px;
+  }
+</style>
+        <script>
+        window.globalParamsContainer = {"smsAuthParams":{"actionTrollingDefenceCheck":"\/walker\/::cmd\/trolling_defence_pass","actionSubmitNumber":"\/p\/sms-auth\/code\/request","actionSubmitCode":"\/p\/sms-auth\/code\/activate","cookieName":"authkey"},"editAssistantImgSrc":{"face_smile":"https:\/\/cdn.wikiwiki.jp\/to\/w\/common\/image\/face\/smile.png?v=4","face_bigsmile":"https:\/\/cdn.wikiwiki.jp\/to\/w\/common\/image\/face\/bigsmile.png?v=4","face_huh":"https:\/\/cdn.wikiwiki.jp\/to\/w\/common\/image\/face\/huh.png?v=4","face_oh":"https:\/\/cdn.wikiwiki.jp\/to\/w\/common\/image\/face\/oh.png?v=4","face_wink":"https:\/\/cdn.wikiwiki.jp\/to\/w\/common\/image\/face\/wink.png?v=4","face_sad":"https:\/\/cdn.wikiwiki.jp\/to\/w\/common\/image\/face\/sad.png?v=4","face_worried":"https:\/\/cdn.wikiwiki.jp\/to\/w\/common\/image\/face\/worried.png?v=4","face_tear":"https:\/\/cdn.wikiwiki.jp\/to\/w\/common\/image\/face\/tear.png?v=4","face_tere":"https:\/\/cdn.wikiwiki.jp\/to\/w\/common\/image\/face\/tere.png?v=4","face_shock":"https:\/\/cdn.wikiwiki.jp\/to\/w\/common\/image\/face\/shock.png?v=4","face_heart":"https:\/\/cdn.wikiwiki.jp\/to\/w\/common\/image\/face\/heart.png?v=4","face_star":"https:\/\/cdn.wikiwiki.jp\/to\/w\/common\/image\/face\/star.gif?v=4","face_hatena":"https:\/\/cdn.wikiwiki.jp\/to\/w\/common\/image\/face\/hatena.gif?v=4","face_tip":"https:\/\/cdn.wikiwiki.jp\/to\/w\/common\/image\/face\/tip.gif?v=4"},"experimentalFeature":false};
+    </script>
+</head>
+<body class="">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQ52VZ3"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<style>
+/* 1 */
+@media (max-width: 500px) {
+    body {
+        margin-bottom: 129px !important;
+        transition: margin-bottom 0.4s ease-in-out;
+    }
+    body:has(#div-gpt-ad-1563441919648-0 iframe[height="50"]) {
+        margin-bottom: 79px !important;
+    }
+}
+
+/* 2 */
+#overlay-anchor-wrapper {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    width: 100%;
+    z-index: 99998;
+    pointer-events: none;
+    transform: translateY(100%);
+    transition: transform 0.4s ease-in-out 10s;
+}
+
+body:has(#div-gpt-ad-1563441919648-0 iframe) #overlay-anchor-wrapper {
+    transform: translateY(0);
+    transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.6s;
+}
+
+/* 3 */
+#pc-overlay-ad-parent-container {
+    contain: layout style;
+    content-visibility: auto;
+
+    width: 100%;
+    background-color: var(--h2-background-color, #ffffff) !important;
+    padding-top: 5px;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.1);
+    pointer-events: auto;
+
+    max-height: 105px;
+    height: auto;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: visible !important;
+}
+
+#pc-overlay-ad-parent-container:has(iframe[height="50"]) {
+    max-height: 60px;
+}
+
+/* 4 */
+#pc-overlay-ad-close-button {
+    position: absolute;
+    top: -24px;
+    right: 12px;
+    width: 38px; height: 24px;
+    background-color: var(--h2-background-color, #ffffff) !important;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    cursor: pointer;
+    pointer-events: auto;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: opacity 0.6s ease-out 10s, transform 0.6s ease-out 10s;
+}
+
+body:has(#div-gpt-ad-1563441919648-0 iframe) #pc-overlay-ad-close-button {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease-out 1.8s, transform 0.6s ease-out 1.8s;
+}
+
+#pc-overlay-ad-close-button svg {
+    width: 14px; height: 14px;
+    fill: var(--h2-text-color, #666666) !important;
+}
+
+/* 5 */
+#ad-close-trigger { display: none; }
+
+#ad-close-trigger:checked ~ #overlay-anchor-wrapper {
+    transform: translateY(100%) !important;
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 1, 1), opacity 0.4s cubic-bezier(0.4, 0, 1, 1) !important;
+    pointer-events: none;
+}
+
+body:has(#ad-close-trigger:checked) {
+    margin-bottom: 0 !important;
+}
+
+/* 6 */
+.overlay-ad-container { 
+    display: flex; justify-content: center; align-items: center; 
+    min-height: 50px; position: relative; 
+}
+.overlay-ad-container::before { 
+    content: ""; position: absolute; width: 320px; height: 100%; 
+    border-radius: 4px; z-index: 0;
+    animation: quietPulse 3s infinite; 
+}
+@keyframes quietPulse { 0%, 100% { background-color: transparent; } 50% { background-color: rgba(0, 0, 0, 0.04); } }
+
+#div-gpt-ad-1563441919648-0 { position: relative; z-index: 1; display: flex; justify-content: center; width: 100%; }
+#div-gpt-ad-1563441919648-0 iframe {
+    animation: fadeInQuick 0.5s ease-in-out 0.2s both !important;
+    background: var(--h2-background-color, #ffffff);
+}
+@keyframes fadeInQuick { from { opacity: 0; } to { opacity: 1; } }
+</style>
+
+<input type="checkbox" id="ad-close-trigger">
+<div id="overlay-anchor-wrapper" class="hidden-switch-class">
+    <label for="ad-close-trigger" id="pc-overlay-ad-close-button">
+        <svg viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+    </label>
+<div id="pc-overlay-ad-parent-container" class="hidden-switch-class">
+    <div id="pc-overlay-ad-container-hidden" class="overlay-ad-container">
+        <div id="pc-overlay-ad-container">
+            <div id='div-gpt-ad-1563441919648-0' class="overlay-ad-wrapper"></div>
+        </div>
+    </div>
+</div>
+</div>
+<noscript>
+    <div class="noscript-alert">
+        <i class="fa-solid fa-exclamation-triangle"></i>
+        ブラウザの JavaScript がオフ（ブロックまたは許可しない）に設定されているため、このページは正常に機能しません。
+    </div>
+</noscript>
+<div class="container-wrapper">
+
+    <div class="container clearfix">
+                                <div id="header" class="user-header">
+                <div><span class="plugin-randommes" data-page="トップ画像(2)" data-mode="always" data-stack-json="[&quot;\u30c8\u30c3\u30d7\u753b\u50cf(2)&quot;]" data-count="7" data-hash="8208d4e5ad7992fca16f25e9bea30376">&nbsp;</span></div>            </div>
+                <div class="toolbox-container system-ui clearfix" id="naviframe">
+            <div class="toolbox toolbox-desktop navibar-container">
+                <div id="navigator">[ <a href="/walker/">ホーム</a> | <a href="/walker/::cmd/newpage?refer=%E8%A3%85%E5%82%99%E5%93%81" rel="nofollow">新規</a> | <a href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81" rel="nofollow">編集</a> | <a href="/walker/::cmd/attach?page=%E8%A3%85%E5%82%99%E5%93%81" rel="nofollow">添付</a> ]</div>            </div>
+            <div class="toolbox toolbox-desktop toolbar-container">
+                <div class="toolbar"><a href="/walker/::cmd/list" title="一覧" rel="nofollow"><span class="system-icon toolbar list"></span></a>
+<a href="/walker/RecentChanges" title="最終更新" rel="nofollow"><span class="system-icon toolbar recent"></span></a>
+<a href="/walker/::cmd/diff?page=%E8%A3%85%E5%82%99%E5%93%81" title="差分" rel="nofollow"><span class="system-icon toolbar diff"></span></a>
+<a href="/walker/::cmd/backup?page=%E8%A3%85%E5%82%99%E5%93%81" title="バックアップ" rel="nofollow"><span class="system-icon toolbar backup"></span></a>
+<a href="/walker/::cmd/freeze?page=%E8%A3%85%E5%82%99%E5%93%81" title="凍結" rel="nofollow"><span class="system-icon toolbar freeze"></span></a>
+<a href="/walker/::cmd/template?refer=%E8%A3%85%E5%82%99%E5%93%81" title="複製" rel="nofollow"><span class="system-icon toolbar copy"></span></a>
+<a href="/walker/::cmd/rename?refer=%E8%A3%85%E5%82%99%E5%93%81" title="名前変更" rel="nofollow"><span class="system-icon toolbar rename"></span></a>
+<a href="/walker/::cmd/help" title="ヘルプ" rel="nofollow"><span class="system-icon toolbar help"></span></a></div>            </div>
+            <div class="toolbox toolbox-mobile toolbar-container">
+                <div class="toolbar"><a href="/walker/" title="ホーム"><span class="system-icon toolbar top"></span></a>
+<a href="/walker/RecentChanges" title="最終更新" rel="nofollow"><span class="system-icon toolbar recent"></span></a>
+<a id="menu-in-nav" href="#menubar" class="menu-in-nav">Menu<i class="fa-solid fa-arrow-alt-down"></i></a></div>            </div>
+            <div class="toolbox toolbox-searchbar">
+                <form action="/walker/::cmd/search" method="get">
+                    <input type="search" name="word" value="" size="16" aria-label="サイト内検索" placeholder="サイト内検索">
+                    <input type="hidden" name="type" value="AND">
+                    <input type="submit" value="検索">
+                </form>
+            </div>
+        </div>
+            <div id="responsive-navigation"></div>
+    <div style="display: none;">
+        <div id="edit-menu" class="system-ui">
+            <div id="edit-menu-items">
+                <ul><li><a href="/walker/::cmd/newpage?refer=%E8%A3%85%E5%82%99%E5%93%81" rel="nofollow"><span class='system-icon toolbar new'></span> 新規</a></li><li><a href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81" rel="nofollow"><span class='system-icon toolbar edit'></span> 編集</a></li><li><a href="/walker/::cmd/attach?page=%E8%A3%85%E5%82%99%E5%93%81" rel="nofollow"><span class='system-icon toolbar upload'></span> 添付</a></li></ul>
+<ul><li><a href="/walker/::cmd/list" rel="nofollow"><span class='system-icon toolbar list'></span> 一覧</a></li><li><a href="/walker/RecentChanges" rel="nofollow"><span class='system-icon toolbar recent'></span> 最終更新</a></li><li><a href="/walker/::cmd/diff?page=%E8%A3%85%E5%82%99%E5%93%81" rel="nofollow"><span class='system-icon toolbar diff'></span> 差分</a></li><li><a href="/walker/::cmd/backup?page=%E8%A3%85%E5%82%99%E5%93%81" rel="nofollow"><span class='system-icon toolbar backup'></span> バックアップ</a></li></ul>
+<ul><li><a href="/walker/::cmd/freeze?page=%E8%A3%85%E5%82%99%E5%93%81" rel="nofollow"><span class='system-icon toolbar freeze'></span> 凍結</a></li><li><a href="/walker/::cmd/template?refer=%E8%A3%85%E5%82%99%E5%93%81" rel="nofollow"><span class='system-icon toolbar copy'></span> 複製</a></li><li><a href="/walker/::cmd/rename?refer=%E8%A3%85%E5%82%99%E5%93%81" rel="nofollow"><span class='system-icon toolbar rename'></span> 名前変更</a></li></ul>
+<ul><li><a href="/walker/::cmd/help" rel="nofollow"><span class='system-icon toolbar help'></span> ヘルプ</a></li></ul>
+
+            </div>
+        </div>
+    </div>    </div>
+
+    <div class="container">
+        <div class="clearfix">
+            <div id="breadcrumbs" class="system-ui">
+                <div id="topicpath"><a href="/walker/" title="FrontPage"><i class="fa-solid fa-home" style="margin-left: 6px; display: inline-block; min-width: 1.2em;"></i></a> &gt; 装備品</div>            </div>
+            <div id="system-icon-container" class="system-ui">
+                                <span id="share-button-root"></span>                <span id="admin-contact-root" class="single-system-icon"></span>
+                <div id="load-panel-root"></div>
+                <span id="admin-login" class="single-system-icon">
+                    
+<a class="admin-login-status" href="/walker/::cmd/admin_login?return_to=%2Fwalker%2F%E8%A3%85%E5%82%99%E5%93%81" title="未ログイン">
+    <i class="fa-solid fa-cog"></i>
+</a>
+                </span>
+            </div>
+        </div>
+        <hr />
+    </div>
+
+    <div id="contents" class="columns-container three-columns-container container clearfix has-left-column">
+
+        <div class="column-center clearfix">
+            <div id="body">
+                                                <div id="title">
+                                            <h1 class="title">装備品</h1>
+                                                                <div id="lastmodified">
+                            Last-modified: 2010-05-30 (日) 19:17:20                                                    </div>
+                                    </div>
+
+                
+<div id="inbound-ad-container">
+  <!-- /19033742/WIKIWIKI_PC_INBOUND -->
+  <div id='div-gpt-ad-1567409776345-0'></div>
+  <!-- /19033742/WIKIWIKI_PC_INBOUND_RIGHT -->
+  <div id='div-gpt-ad-1658802281376-0'></div>
+  <!-- /19033742/WIKIWIKI_SP_INBOUND -->
+  <div id='div-gpt-ad-1563430750445-0' class="hidden-switch-class"></div>
+</div>
+
+<style>
+.pc-inbound-ad-default {
+    margin-top:40px;
+    margin-bottom:40px;
+    display:flex;
+    justify-content:flex-start;
+    gap: 10px 5px;
+    min-height:280px;
+}
+.pc-inbound-ad-center{
+    margin-top:40px;
+    margin-bottom:40px;
+    display:flex;
+    justify-content:center;
+    gap: 10px 5px;
+    min-height:280px;
+    position: relative;
+}
+.pc-inbound-ad-mobile{
+    margin-top:20px;
+    margin-bottom:20px;
+    display:flex;
+    justify-content:center;
+    min-height:280px;
+}
+.pc-inbound-ad-close-button {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"%3E%3C!--! Font Awesome Pro 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2024 Fonticons, Inc. --%3E%3Cpath class="fa-secondary" opacity=".4" d="M281.4 390.6L304 413.3 349.3 368l-22.6-22.6L237.3 256l89.4-89.4L349.3 144 304 98.7l-22.6 22.6L192 210.7l-89.4-89.4L80 98.7 34.7 144l22.6 22.6L146.7 256 57.4 345.4 34.7 368 80 413.3l22.6-22.6L192 301.3l89.4 89.4z" fill="%23888"/%3E%3C/svg%3E') no-repeat center;
+    background-size: contain;
+    cursor: pointer;
+}
+</style>
+
+<script>
+(function () {
+    const co = document.getElementById('inbound-ad-container');
+    const inboundPaths = [
+        '/19033742/WIKIWIKI_PC_INBOUND',
+        '/19033742/WIKIWIKI_PC_INBOUND_RIGHT'
+    ];
+
+    if (wi_isinbound && wi_group === "N" && wi_agreement === "false") {
+        if (wi_ismobile) {
+            co.classList.add("pc-inbound-ad-mobile","default-advertisement");
+        } else {
+            const width = co.clientWidth;
+            const adClass = width < 683 || (width >= 683 && width < 900) ? ["pc-inbound-ad-center","default-advertisement"] : ["pc-inbound-ad-default"];
+            co.classList.add(...adClass);
+
+            if (adClass.includes("pc-inbound-ad-center")) {
+                googletag.cmd.push(function() {
+                    googletag.pubads().addEventListener('slotOnload', function(event) {
+                        if (inboundPaths.includes(event.slot.getAdUnitPath())) {
+                            let closeButton = co.querySelector(".pc-inbound-ad-close-button");
+                            if (!closeButton) {
+                                closeButton = document.createElement("div");
+                                closeButton.classList.add("pc-inbound-ad-close-button");
+                                closeButton.onclick = () => co.style.display = "none";
+                                co.appendChild(closeButton);
+                            }
+                        }
+                    });
+                });
+            }
+        }
+    }
+})();
+</script>
+
+                <div class="search-words small" style="display: none;">
+    <div class="small">これらのキーワードがハイライトされています：<ul class="search-words-words"></ul></div>
+    <hr class="full_hr">
+</div>
+                <div id="content">
+                                        <div class="contents">
+<a id="contents-index"></a>
+<ul class="list2"><li><a href="#od49a4c2">テンプレート </a></li></ul>
+<ul class="list1"><li><a href="#l16827d9">医療品・食料 </a>
+<ul class="list2"><li><a href="#o5562fba">RATION </a></li>
+<li><a href="#d3fde58e">R.RATION </a></li>
+<li><a href="#yff2d83f">WD.RATION </a></li>
+<li><a href="#o9b5a52a">BT.RATION </a></li>
+<li><a href="#fed49bdf">MATE </a></li>
+<li><a href="#i0f6d080">DOLTOS </a></li></ul></li>
+<li><a href="#pbc37f89">レーダー </a>
+<ul class="list2"><li><a href="#w6119b41">SOLITON R. </a></li>
+<li><a href="#ke16f9d4">SRND.IND. </a></li>
+<li><a href="#l648606f">SONIC.EYE </a></li></ul></li>
+<li><a href="#nad0f4f3">双眼鏡・ゴーグル </a>
+<ul class="list2"><li><a href="#sa943211">BINOS </a></li>
+<li><a href="#e94a947a">NVG </a></li>
+<li><a href="#k9d0a85d">ANALYZER new </a></li></ul></li>
+<li><a href="#m2a99dbd">ダンボール </a>
+<ul class="list2"><li><a href="#y1dd6d6e">BOX </a></li>
+<li><a href="#ka722644">BOX-TANK </a></li>
+<li><a href="#j9cdd962">BOX BOMB </a></li>
+<li><a href="#sf0ab77e">RESCUE BOX </a></li></ul></li>
+<li><a href="#acae1e21">その他 </a>
+<ul class="list2"><li><a href="#iec92641">FULTON SYS </a></li>
+<li><a href="#jdf5abea">SHIELD </a></li>
+<li><a href="#c159ce4a">STLTH MAT </a></li></ul></li></ul>
+</div>
+<p>※表の見方</p>
+<div class="h-scrollable"><table><tbody><tr><td colspan="2">説明欄表示名</td></tr><tr><td>補足</td><td>最大所持数</td></tr><tr><td colspan="2">説明</td></tr><tr><td colspan="2">入手方法</td></tr><tr><td colspan="2">ランクアップによる変化</td></tr><tr><td>RANK.1</td><td>開発に必要なレベル・スキル</td></tr><tr><td>RANK.2</td><td>〃</td></tr><tr><td>RANK.3</td><td>〃</td></tr><tr><td>RANK.4</td><td>〃</td></tr><tr><td>RANK.5</td><td>〃</td></tr></tbody></table></div>
+<h3 id="h3_content_1_0" >テンプレート  <a class="anchor_super" name ="od49a4c2"></a> <a class="anchor_super" href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81&id=od49a4c2" rel='nofollow'><span class="system-icon paraedit" title="Edit"></span></a></h3>
+<p>ランクについては最初のランクからその装備の最高ランクまで欄を作ってください</p>
+<blockquote>
+<pre>|&gt;|説明欄表示名|
+|補足|(最大所持数)|
+|&gt;|説明|
+|&gt;|入手方法|
+|&gt;|ランクアップによる変化|
+|RANK.1|開発に必要なレベル・スキル|
+|RANK.2|必要な分だけ増やしてください|
+|RANK.3|〃|
+|RANK.4|〃|
+|RANK.5|〃|</pre></blockquote>
+<h2 id="h2_content_1_1" class="heading-after-first"><span style="font-size:13px">医療品・食料</span>  <a class="anchor_super" name ="l16827d9"></a> <a class="anchor_super" href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81&id=l16827d9" rel='nofollow'><span class="system-icon paraedit" title="Edit"></span></a></h2>
+<div class="caption-flybox" >
+  <div id="pc-caption-ad-container">
+    <!-- /19033742/WIKIWIKI_PC_CAPTION -->
+    <div id='div-gpt-ad-1565253136679-0'></div>
+    <!-- /19033742/WIKIWIKI_PC_CAPTION_SIDE_BY -->
+    <div id='div-gpt-ad-1719748039754-0' style='max-width: 300px;'></div>
+    <!-- /19033742/WIKIWIKI_SP_CAPTION -->
+    <div id='div-gpt-ad-1562925510696-0' class="hidden-switch-class"></div>
+  </div>
+</div>
+
+<script>
+if (wi_ismobile && !wi_isinbound) {
+    document.getElementById("pc-caption-ad-container").classList.add("default-advertisement","pc-caption-ad-mobile");
+    googletag.cmd.push(function() {googletag.display('div-gpt-ad-1562925510696-0');});
+    if (window.wikiFq.checkWikifqDisplay('wi_fqgroup1',1,60,0.5) && wi_isread_yet ||wi_location_hash === '##gliaplayer') {
+        googletag.cmd.push(function() {googletag.setConfig({ targeting: { wi_fqgroup1: 'true' } });});
+        sessionStorage.setItem('wi_pip', false);
+        wi_isread_yet = false;
+    } else if (sessionStorage.getItem('wi_pip') === 'false') {
+        if (window.wikiFq.checkWikifqDisplay('wi_pip',10,60,1.0) && wi_isread_yet) {
+            googletag.cmd.push(function() {googletag.setConfig({ targeting: { wi_fqgroup1: 'true' } });});
+            wi_isread_yet = false;
+        }
+    }
+} else if (!wi_ismobile && wi_group === 'N' && wi_agreement === 'false' && !wi_isinbound) {
+    (function () {
+        var gi = document.getElementById("pc-caption-ad-container");
+        gi.classList.add("default-advertisement");
+        if (gi.clientWidth > 610) {
+            if (gi.clientWidth < 769) {
+                gi.classList.add("pc-caption-ad-center");
+            } else {
+                gi.classList.add("pc-caption-ad-default");
+            }
+            if (window.wikiFq.checkWikifqDisplay('wi_fqgroup1',1,60,1.0) && wi_recref && (wi_recref.includes("google") || wi_recref.includes("yahoo")) || window.wikiFq.checkWikifqDisplay('wi_fqgroup2',1,60,0.2)) {
+                googletag.cmd.push(function() {googletag.setConfig({ targeting: { wi_fqgroup1: 'true' } });});
+                sessionStorage.setItem('wi_pip', false);
+            } else if (sessionStorage.getItem('wi_pip') === 'false') {
+                if (window.wikiFq.checkWikifqDisplay('wi_pip',10,60,1.0)) {
+                    googletag.cmd.push(function() {googletag.setConfig({ targeting: { wi_fqgroup1: 'true' } });});
+                }
+            }
+            defineSlotFlux.push({"slotID": "div-gpt-ad-1719748039754-0", "sizes": [[300,250]], "slotName":"WIKIWIKI_PC_CAPTION_SIDE_BY"});
+            googletag.cmd.push(function() {googletag.display('div-gpt-ad-1565253136679-0');});
+            googletag.cmd.push(function() {
+                googletag.defineSlot('/19033742/WIKIWIKI_PC_CAPTION_SIDE_BY',[[300,250],[1,1]],'div-gpt-ad-1719748039754-0').addService(googletag.pubads());
+                googletag.display('div-gpt-ad-1719748039754-0');});
+        }
+    })();
+}
+</script>
+<h3 id="h3_content_1_2" class="heading-after-first">RATION  <a class="anchor_super" name ="o5562fba"></a> <a class="anchor_super" href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81&id=o5562fba" rel='nofollow'><span class="system-icon paraedit" title="Edit"></span></a></h3>
+<div class="h-scrollable"><table><tbody><tr><td colspan="2">レーション</td></tr><tr><td>補足</td><td>4</td></tr><tr><td colspan="2">携帯軍用食料。LIFEを回復する。<br class="spacer">アイテムウインドウを開き、選択してRボタンを押すと使用。<br class="spacer">装備しているとLIFEが0になった時、自動的に使用する。</td></tr><tr><td colspan="2">最初から所持</td></tr><tr><td colspan="2">回復量がアップ</td></tr></tbody></table></div>
+<h3 id="h3_content_1_3" class="heading-after-first">R.RATION  <a class="anchor_super" name ="d3fde58e"></a> <a class="anchor_super" href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81&id=d3fde58e" rel='nofollow'><span class="system-icon paraedit" title="Edit"></span></a></h3>
+<div class="h-scrollable"><table><tbody><tr><td colspan="2">生焼けレーション</td></tr><tr><td>補足</td><td>1</td></tr><tr><td colspan="2">生焼けの携帯軍用食料。味はそもそもイマイチだが、適当な火の通り具合のためさらにイマイチに。<br class="spacer">少しだけLIFEを回復する。</td></tr><tr><td colspan="2">モンハンコラボミッションでレーションを軽く焼く</td></tr><tr><td colspan="2">ランクアップなし</td></tr></tbody></table></div>
+<h3 id="h3_content_1_4" class="heading-after-first">WD.RATION  <a class="anchor_super" name ="yff2d83f"></a> <a class="anchor_super" href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81&id=yff2d83f" rel='nofollow'><span class="system-icon paraedit" title="Edit"></span></a></h3>
+<div class="h-scrollable"><table><tbody><tr><td colspan="2">こんがりレーション</td></tr><tr><td>補足</td><td>4</td></tr><tr><td colspan="2">こんがり焼けた携帯軍用食料。あのレーションが、驚くほどおいしい食べ物に。<br class="spacer">通常より大きくLIFEを回復し、気力も回復する。</td></tr><tr><td colspan="2">モンハンコラボミッションでレーションをいい感じに焼く</td></tr><tr><td colspan="2">ランクアップなし</td></tr></tbody></table></div>
+
+<div id="pc-caption-300x600-ad-container">
+<!-- /19033742/WIKIWIKI_SP_CAPTION_300x600 -->
+<div id='div-gpt-ad-1731135777754-0' class="hidden-switch-class"></div>
+</div><h3 id="h3_content_1_5" class="heading-after-first">BT.RATION  <a class="anchor_super" name ="o9b5a52a"></a> <a class="anchor_super" href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81&id=o9b5a52a" rel='nofollow'><span class="system-icon paraedit" title="Edit"></span></a></h3>
+<div class="h-scrollable"><table><tbody><tr><td colspan="2">コゲレーション</td></tr><tr><td>補足</td><td>1</td></tr><tr><td colspan="2">焼きすぎて焦げてしまった携帯軍用食料。元々イマイチの味が、ますますヒドイことに…。<br class="spacer">食べてもほとんどLIFEは回復しない。</td></tr><tr><td colspan="2">モンハンコラボミッションでレーションを焼く(放置する)</td></tr><tr><td colspan="2">ランクアップなし</td></tr></tbody></table></div>
+<h3 id="h3_content_1_6" class="heading-after-first">MATE  <a class="anchor_super" name ="fed49bdf"></a> <a class="anchor_super" href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81&id=fed49bdf" rel='nofollow'><span class="system-icon paraedit" title="Edit"></span></a></h3>
+<div class="h-scrollable"><table><tbody><tr><td colspan="2">マテ茶</td></tr><tr><td>補足</td><td>9</td></tr><tr><td colspan="2">気力を回復してくれるお茶。<br class="spacer">装備ウインドウを開き、選択した状態でRを押すと使用。</td></tr><tr><td colspan="2">回復量がアップ</td></tr></tbody></table></div>
+<h3 id="h3_content_1_7" class="heading-after-first">DOLTOS  <a class="anchor_super" name ="i0f6d080"></a> <a class="anchor_super" href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81&id=i0f6d080" rel='nofollow'><span class="system-icon paraedit" title="Edit"></span></a></h3>
+<div class="h-scrollable"><table><tbody><tr><td colspan="2">ドリトス</td></tr><tr><td>補足</td><td>8</td></tr><tr><td colspan="2">LIFEを回復する。<br class="spacer">アイテムウインドウを開き、選択してRボタンを押すと使用。<br class="spacer">装備しているとLIFEが0になった時、自動的に使用する。</td></tr><tr><td colspan="2">敵兵から入手、</td></tr><tr><td colspan="2">ランクアップなし</td></tr></tbody></table></div>
+<h2 id="h2_content_1_8" class="heading-after-first"><span style="font-size:13px">レーダー</span>  <a class="anchor_super" name ="pbc37f89"></a> <a class="anchor_super" href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81&id=pbc37f89" rel='nofollow'><span class="system-icon paraedit" title="Edit"></span></a></h2>
+<div class="caption-flybox">
+<div id="pc-caption-20th-ad-container">
+<!-- /19033742/WIKIWIKI_PC_CAPTION_20TH -->
+<div id='div-gpt-ad-1566473930452-0' class="hidden-switch-class">
+<script>
+    googletag.cmd.push(function() {googletag.display('div-gpt-ad-1566473930452-0'); });
+</script>
+</div>
+</div>
+</div>
+<h3 id="h3_content_1_9" class="heading-after-first">SOLITON R.  <a class="anchor_super" name ="w6119b41"></a> <a class="anchor_super" href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81&id=w6119b41" rel='nofollow'><span class="system-icon paraedit" title="Edit"></span></a></h3>
+<div class="h-scrollable"><table><tbody><tr><td>ソリトンレーダー</td></tr><tr><td>バッテリーゲージ(Bゲージ)表示</td></tr><tr><td>周囲の地形、敵の位置をグラフィカルに<br class="spacer">表示する高性能センサー。<br class="spacer">潜入フェイズ以外では機能が妨害される。<br class="spacer">&quot;N&quot;アイコンが北の方角を示す。<br class="spacer">MGS、MGS2でのソリトンレーダーとほぼ同じもの。<br class="spacer">使用にはバッテリーを消費し、不使用時はバッテリーが自動回復する。<br class="spacer">バッテリーが0になると赤く変色し、一定量回復するまで使用できない。<br class="spacer">レーダー内の敵兵は赤いマークで表示され、その視界は青く表示される。<br class="spacer">改良によってバッテリー消費量を抑えることができる。</td></tr><tr><td>不明</td></tr><tr><td>バッテリー持続時間上昇</td></tr></tbody></table></div>
+<h3 id="h3_content_1_10" class="heading-after-first">SRND.IND.  <a class="anchor_super" name ="ke16f9d4"></a> <a class="anchor_super" href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81&id=ke16f9d4" rel='nofollow'><span class="system-icon paraedit" title="Edit"></span></a></h3>
+<div class="h-scrollable"><table><tbody><tr><td>サラウンドインジケーター</td></tr><tr><td>-</td></tr><tr><td>周囲の音を波形で視覚化する全方位センサー。<br class="spacer">&quot;N&quot;アイコンが北の方角を示す。<br class="spacer">MPO、MPO+でのサラウンドインジケーターと同じもの。<br class="spacer">近くにいる敵兵は赤いマークで表示される。</td></tr><tr><td>同じ高さにいる敵が<span class="wikicolor" style="color:Red">■</span>で表示される</td></tr><tr><td>最初から所持</td></tr><tr><td>同じ高さの敵が<span class="wikicolor" style="color:Red">■</span>で表示されるようになる</td></tr></tbody></table></div>
+<h3 id="h3_content_1_11" class="heading-after-first">SONIC.EYE  <a class="anchor_super" name ="l648606f"></a> <a class="anchor_super" href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81&id=l648606f" rel='nofollow'><span class="system-icon paraedit" title="Edit"></span></a></h3>
+<div class="h-scrollable"><table><tbody><tr><td>ソニック・アイ</td></tr><tr><td>バッテリーゲージ(Bゲージ)表示</td></tr><tr><td>周囲の音源位置をアニメーションシンボルで表示するセンサー。<br class="spacer">改良を重ねると、バッテリー消費量を抑えることができる。<br class="spacer">装備すると、音がたつ場所から白いリングが表示される。<br class="spacer">音を検知するものなので、物音を立てていない敵の位置は検索できない。</td></tr><tr><td>不明</td></tr><tr><td>バッテリー持続時間上昇</td></tr></tbody></table></div>
+<h2 id="h2_content_1_12" class="heading-after-first"><span style="font-size:13px">双眼鏡・ゴーグル</span>  <a class="anchor_super" name ="nad0f4f3"></a> <a class="anchor_super" href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81&id=nad0f4f3" rel='nofollow'><span class="system-icon paraedit" title="Edit"></span></a></h2>
+<div class="caption-flybox">
+<div id="div-gpt-ad-other-ad-container">
+<div id="div-gpt-ad-other" class="hidden-switch-class">
+<script>
+    googletag.cmd.push(function() {googletag.display('div-gpt-ad-other'); });
+</script>
+</div>
+</div>
+</div>
+<h3 id="h3_content_1_13" class="heading-after-first">BINOS  <a class="anchor_super" name ="sa943211"></a> <a class="anchor_super" href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81&id=sa943211" rel='nofollow'><span class="system-icon paraedit" title="Edit"></span></a></h3>
+<div class="h-scrollable"><table><tbody><tr><td>双眼鏡</td></tr><tr><td>装備中は武器使用不可能</td></tr><tr><td>遠距離からの監視・偵察活動に最適な<br class="spacer">軍用双眼鏡。装備して構えボタンで使用。<br class="spacer">主観倍率は１～５倍に無段階変更可能。<br class="spacer">装備中に移動が可能になり、主観時も移動可。</td></tr><tr><td>最初から所持</td></tr><tr><td>ランクアップ無し</td></tr></tbody></table></div>
+<h3 id="h3_content_1_14" class="heading-after-first">NVG  <a class="anchor_super" name ="e94a947a"></a> <a class="anchor_super" href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81&id=e94a947a" rel='nofollow'><span class="system-icon paraedit" title="Edit"></span></a></h3>
+<div class="h-scrollable"><table><tbody><tr><td>暗視ゴーグル</td></tr><tr><td>バッテリーゲージ(Bゲージ)表示</td></tr><tr><td>熱源を探知し、暗所での視界を確保する電子工学機器。<br class="spacer">改良により性能が向上し、バッテリー消費量も低減する。<br class="spacer">装備すると画面が緑色がかり、人の姿が白っぽく浮き出て表示される。</td></tr><tr><td>不明</td></tr><tr><td>バッテリー持続時間上昇</td></tr></tbody></table></div>
+<h3 id="h3_content_1_15" class="heading-after-first">ANALYZER <span class="wikicolor" style="color:yellow">new</span>  <a class="anchor_super" name ="k9d0a85d"></a> <a class="anchor_super" href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81&id=k9d0a85d" rel='nofollow'><span class="system-icon paraedit" title="Edit"></span></a></h3>
+<div class="h-scrollable"><table><tbody><tr><td>アナライザー</td></tr><tr><td>-</td></tr><tr><td>敵情報解析装置。改良によって、解析精度、サーチ速度、サーチ距離を向上させることができる。<br class="spacer">双眼鏡のように敵を見ると解析が始まり、その兵士のレベルや体力などのステータスを<br class="spacer">閲覧することができる。MPO+でのキャリア「人事部長」と似た効果。</td></tr><tr><td>不明</td></tr><tr><td>サーチ速度、距離の上昇</td></tr></tbody></table></div>
+<h2 id="h2_content_1_16" class="heading-after-first"><span style="font-size:13px">ダンボール</span>  <a class="anchor_super" name ="m2a99dbd"></a> <a class="anchor_super" href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81&id=m2a99dbd" rel='nofollow'><span class="system-icon paraedit" title="Edit"></span></a></h2>
+<h3 id="h3_content_1_17" class="heading-after-first">BOX  <a class="anchor_super" name ="y1dd6d6e"></a> <a class="anchor_super" href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81&id=y1dd6d6e" rel='nofollow'><span class="system-icon paraedit" title="Edit"></span></a></h3>
+<div class="h-scrollable"><table><tbody><tr><td>ラブダンボール</td></tr><tr><td>耐久限界あり</td></tr><tr><td>サイズの大きなダンボール箱。<br class="spacer">2人くらいは入れそう。<br class="spacer">箱の上に登ることが可能。<br class="spacer">ダメージを受けすぎると脆くも全壊する。</td></tr><tr><td>不明</td></tr><tr><td>耐久度上昇</td></tr></tbody></table></div>
+<h3 id="h3_content_1_18" class="heading-after-first">BOX-TANK  <a class="anchor_super" name ="ka722644"></a> <a class="anchor_super" href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81&id=ka722644" rel='nofollow'><span class="system-icon paraedit" title="Edit"></span></a></h3>
+<div class="h-scrollable"><table><tbody><tr><td>ダンボール戦車</td></tr><tr><td>-</td></tr><tr><td>強力な砲台を備えた2名用ダンボール。後ろの人は構えボタンで砲台を操作でき、<br class="spacer">攻撃ボタンで砲弾を発射する。<br class="spacer">ミラーはこれをホントに使うとは思っていなかったようだ。</td></tr><tr><td>不明</td></tr><tr><td>耐久度上昇</td></tr></tbody></table></div>
+<h3 id="h3_content_1_19" class="heading-after-first">BOX BOMB  <a class="anchor_super" name ="j9cdd962"></a> <a class="anchor_super" href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81&id=j9cdd962" rel='nofollow'><span class="system-icon paraedit" title="Edit"></span></a></h3>
+<div class="h-scrollable"><table><tbody><tr><td>ダンボール爆弾</td></tr><tr><td>-</td></tr><tr><td>壊れたり、中身を確認しようとすると爆発するダンボール箱。<br class="spacer">中にいると巻き添えを食う。&quot;DROP&quot;で設置できる。<br class="spacer">見た目はただのダンボールだが、その威力は決して侮れない。</td></tr><tr><td>不明</td></tr><tr><td>耐久度上昇</td></tr></tbody></table></div>
+<h3 id="h3_content_1_20" class="heading-after-first">RESCUE BOX  <a class="anchor_super" name ="sf0ab77e"></a> <a class="anchor_super" href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81&id=sf0ab77e" rel='nofollow'><span class="system-icon paraedit" title="Edit"></span></a></h3>
+<div class="h-scrollable"><table><tbody><tr><td>救命ダンボール</td></tr><tr><td>-</td></tr><tr><td>被ると負傷時には自分、仲間を心臓マッサージすれば仲間のLIFE回復が早まる<br class="spacer">特殊なダンボール。&quot;DROP&quot;で設置できる。開発によって回復量が増加する。<br class="spacer">紅白の塗装、赤いサイレン、その機能はまさしく救急車を沸騰とさせる。<br class="spacer">特に心臓マッサージは信じられないほど速い。</td></tr><tr><td>不明</td></tr><tr><td>耐久度上昇</td></tr></tbody></table></div>
+<ul class="list1"><li>ASSN.BOX <span class="wikicolor" style="color:yellow">new</span>
+<div class="h-scrollable"><table><tbody><tr><td>アサシン・ストロー・ボックス</td></tr><tr><td>-</td></tr><tr><td>枯れ草で作られた箱。<br class="spacer">敵を引きずり込み気絶させたり、フルトン回収する事が出来る。</td></tr><tr><td><span class="noexists">採掘場偽装基地へ<a href="/walker/::cmd/edit?page=%E6%8E%A1%E6%8E%98%E5%A0%B4%E5%81%BD%E8%A3%85%E5%9F%BA%E5%9C%B0%E3%81%B8&refer=%E8%A3%85%E5%82%99%E5%93%81" rel="nofollow">?</a></span>で麦わらの上の屋根からダイブで入手可能</td></tr><tr><td>ランクアップ無し</td></tr></tbody></table></div></li></ul>
+<h2 id="h2_content_1_21" class="heading-after-first"><span style="font-size:13px">その他</span>  <a class="anchor_super" name ="acae1e21"></a> <a class="anchor_super" href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81&id=acae1e21" rel='nofollow'><span class="system-icon paraedit" title="Edit"></span></a></h2>
+<h3 id="h3_content_1_22" class="heading-after-first">FULTON SYS  <a class="anchor_super" name ="iec92641"></a> <a class="anchor_super" href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81&id=iec92641" rel='nofollow'><span class="system-icon paraedit" title="Edit"></span></a></h3>
+<div class="h-scrollable"><table><tbody><tr><td>フルトン回収システム</td></tr><tr><td>最大所持数999<br class="spacer">ドロップ弾数5個</td></tr><tr><td>人員回収・後送システム。装備して回収したい者の近くにしゃがみ、<br class="spacer">アクションボタンで回収する。屋内でも使用が可能。装備中は追剥ができない。<br class="spacer">1人回収すると1つ消費する。改良によって、携行できる個数を増やすことができる。</td></tr><tr><td>不明</td></tr><tr><td>携行可能数の増加、回収時にアイテムを落とすようになる</td></tr></tbody></table></div>
+<h3 id="h3_content_1_23" class="heading-after-first">SHIELD  <a class="anchor_super" name ="jdf5abea"></a> <a class="anchor_super" href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81&id=jdf5abea" rel='nofollow'><span class="system-icon paraedit" title="Edit"></span></a></h3>
+<div class="h-scrollable"><table><tbody><tr><td>盾</td></tr><tr><td>耐久限界あり</td></tr><tr><td>防弾素材で作られた盾。<br class="spacer">前方からの銃弾を防ぐ。<br class="spacer">構えボタンで使用。<br class="spacer">ハンドガン・SMGとの併用が可能で、CQCも使用可。<br class="spacer">盾装備時、併用できない武器を装備するかCQCを使うと背中に背負う。<br class="spacer">その場合後方からの銃弾を防ぐことができる。<br class="spacer">ダメージを受けすぎると壊れて使用できなくなる。<br class="spacer">赤や黄色などの豊富なカラーバリエーションが用意されている。</td></tr><tr><td>不明</td></tr><tr><td>耐久度上昇</td></tr></tbody></table></div>
+<h3 id="h3_content_1_24" class="heading-after-first">STLTH MAT  <a class="anchor_super" name ="c159ce4a"></a> <a class="anchor_super" href="/walker/::cmd/edit?page=%E8%A3%85%E5%82%99%E5%93%81&id=c159ce4a" rel='nofollow'><span class="system-icon paraedit" title="Edit"></span></a></h3>
+<div class="h-scrollable"><table><tbody><tr><td>ステルスマット</td></tr><tr><td>最大所持数10</td></tr><tr><td>壁や地面に密着すると自分が、仲間のそばでアイコン表示中に十字キー↑を押すと相手が、<br class="spacer">それぞれ透明化する特殊欺瞞装置。使用するたびに1つ消費する。<br class="spacer">使用中はカモフラージュ率が100%になる。ただし、対戦車戦などでは、95%となる。</td></tr><tr><td>METAl GEAR ZEKE戦クリアで設計図入手。</td></tr><tr><td>ランクアップ無し</td></tr></tbody></table></div>
+<ul class="list1"><li>BANDANA <span class="wikicolor" style="color:yellow">new</span>
+<div class="h-scrollable"><table><tbody><tr><td>無限バンダナ</td></tr><tr><td>最大所持数1</td></tr><tr><td>装備している間、武器の弾薬が無限に補充される特殊なバンダナ。</td></tr><tr><td><a href="/walker/EXTRA%20OPS" title="EXTRA OPS" class="rel-wiki-page">EXTRA OPS</a>のピースウォーカー改Sクリアで入手</td></tr><tr><td>ランクアップ無し</td></tr></tbody></table></div>
+STLTH MAT
+<div class="h-scrollable"><table><tbody><tr><td>ステルスマット</td></tr><tr><td>最大所持数10</td></tr><tr><td>壁や地面に密着すると自分が、仲間のそばでアイコン表示中に十字キー↑を押すと相手が、<br class="spacer">それぞれ透明化する特殊欺瞞装置。使用するたびに1つ消費する。<br class="spacer">使用中はカモフラージュ率が100%になる。ただし、対戦車戦などでは、95%となる。</td></tr><tr><td>METAl GEAR ZEKE戦クリアで設計図入手。</td></tr><tr><td>ランクアップ無し</td></tr></tbody></table></div></li>
+<li>BANDANA <span class="wikicolor" style="color:yellow">new</span>
+<div class="h-scrollable"><table><tbody><tr><td>無限バンダナ</td></tr><tr><td>最大所持数1</td></tr><tr><td>装備している間、武器の弾薬が無限に補充される特殊なバンダナ。</td></tr><tr><td><a href="/walker/EXTRA%20OPS" title="EXTRA OPS" class="rel-wiki-page">EXTRA OPS</a>のピースウォーカー改Sクリアで入手</td></tr><tr><td>ランクアップ無し</td></tr></tbody></table></div></li></ul>
+                </div>
+                <div id="main-contents-bottom">
+                    <div class="caption-flybox" >
+<div id="pc-bottom-parent-ad-container" style="min-height:250px;">
+<div id="pc-bottom-left-ad-container">
+    <!-- /19033742/WIKIWIKI_PC_BOTTOM_LEFT or /19033742/WIKIWIKI_SP_SECOND -->
+    <div id='div-gpt-ad-1567408559923-0' class="hidden-switch-class"></div>
+</div>
+<div id="pc-bottom-right-ad-container">
+    <!-- /19033742/WIKIWIKI_PC_BOTTOM_RIGHT -->
+    <div id='div-gpt-ad-1658912377789-0'></div>
+</div>
+</div>
+</div>
+
+<style>
+.pc-bottom-ad-default {
+    margin-top:120px;
+    margin-bottom:20px;
+    display:flex;
+    justify-content:flex-start;
+    gap: 10px 5px;
+}
+.pc-bottom-ad-center{
+    margin-top:120px;
+    margin-bottom:20px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap: 10px 5px;
+}
+.pc-bottom-ad-mobile{
+    margin-top:20px;
+    margin-bottom:20px;
+    display:flex;
+    align-items: center;
+    flex-direction:column;
+    position:sticky;
+    z-index: 3;
+    top:45px;
+}
+</style>
+
+<script>
+(function() {
+    var body = document.getElementById('body');
+    var co = document.getElementById("pc-bottom-parent-ad-container");
+    var fh = 50;
+    if (!wi_ismobile && body.clientHeight < 620) {
+        co.style.marginTop = '200px';
+    }
+    if (wi_ismobile && body.clientWidth < 400){
+        co.classList.add("pc-bottom-ad-mobile");
+    } else if (co.clientWidth < 769) {
+        co.classList.add("pc-bottom-ad-center");
+    } else {
+        co.classList.add("pc-bottom-ad-default");
+    }
+}());
+</script>
+                </div>
+
+            </div>
+        </div>
+
+        
+                    <div class="column-left">
+                <div id="menubar">
+                                        <div style="text-align:center">現在の閲覧人数:<span class="wikicolor" style="color:Red"><span class="wikiwiki-online">?</span></span>人<br />
+<a href="/walker/%E3%82%B2%E3%83%BC%E3%83%A0%E6%A6%82%E8%A6%81" title="ゲーム概要" class="rel-wiki-page">ゲーム概要</a></div>
+<h2 id="h2_content_2_0" ><span class="wikicolor" style="color:Red">攻略</span></h2>
+<div class="fold-container  clearfix">
+    <button class="fold-toggle-button hidden-on-open"><i class="fal fa-plus-square"></i></button>
+    <button class="fold-toggle-button visible-on-open"><i class="fal fa-minus-square"></i></button>
+    <div class="fold-summary hidden-on-open"><a href="/walker/MAIN%20OPS" title="MAIN OPS" class="rel-wiki-page">MAIN OPS</a></div>
+    <div class="fold-content visible-on-open"><div class="fold-container  clearfix">
+    <button class="fold-toggle-button hidden-on-open"><i class="fal fa-plus-square"></i></button>
+    <button class="fold-toggle-button visible-on-open"><i class="fal fa-minus-square"></i></button>
+    <div class="fold-summary hidden-on-open">第一章 国境なき軍隊</div>
+    <div class="fold-content visible-on-open"><ul class="list1"><li><a href="/walker/%E7%99%BA%E7%AB%AF/%E8%B3%87%E6%9D%90%E6%90%AC%E5%85%A5%E6%96%BD%E8%A8%AD%E8%AA%BF%E6%9F%BB" title="発端/資材搬入施設調査" class="rel-wiki-page">発端/資材搬入施設調査</a></li>
+<li><span class="noexists">サンディニスタ司令官接触<a href="/walker/::cmd/edit?page=%E3%82%B5%E3%83%B3%E3%83%87%E3%82%A3%E3%83%8B%E3%82%B9%E3%82%BF%E5%8F%B8%E4%BB%A4%E5%AE%98%E6%8E%A5%E8%A7%A6&refer=%E3%82%BC%E3%83%AD%E5%B0%91%E4%BD%90" rel="nofollow">?</a></span></li>
+<li><span class="noexists">アマンダ追跡<a href="/walker/::cmd/edit?page=%E3%82%A2%E3%83%9E%E3%83%B3%E3%83%80%E8%BF%BD%E8%B7%A1&refer=%E3%82%BC%E3%83%AD%E5%B0%91%E4%BD%90" rel="nofollow">?</a></span></li>
+<li><span class="noexists">対装甲車戦;LAV-typeG<a href="/walker/::cmd/edit?page=%E5%AF%BE%E8%A3%85%E7%94%B2%E8%BB%8A%E6%88%A6%3BLAV-typeG&refer=%E3%82%BC%E3%83%AD%E5%B0%91%E4%BD%90" rel="nofollow">?</a></span></li>
+<li><span class="noexists">チコ救出<a href="/walker/::cmd/edit?page=%E3%83%81%E3%82%B3%E6%95%91%E5%87%BA&refer=%E3%82%BC%E3%83%AD%E5%B0%91%E4%BD%90" rel="nofollow">?</a></span></li>
+<li><span class="noexists">ジャングルトレイン追跡<a href="/walker/::cmd/edit?page=%E3%82%B8%E3%83%A3%E3%83%B3%E3%82%B0%E3%83%AB%E3%83%88%E3%83%AC%E3%82%A4%E3%83%B3%E8%BF%BD%E8%B7%A1&refer=%E3%82%BC%E3%83%AD%E5%B0%91%E4%BD%90" rel="nofollow">?</a></span></li>
+<li><span class="noexists">対戦車戦;T-72U<a href="/walker/::cmd/edit?page=%E5%AF%BE%E6%88%A6%E8%BB%8A%E6%88%A6%3BT-72U&refer=%E3%82%BC%E3%83%AD%E5%B0%91%E4%BD%90" rel="nofollow">?</a></span></li>
+<li><span class="noexists">バリケード破壊<a href="/walker/::cmd/edit?page=%E3%83%90%E3%83%AA%E3%82%B1%E3%83%BC%E3%83%89%E7%A0%B4%E5%A3%8A&refer=%E3%82%BC%E3%83%AD%E5%B0%91%E4%BD%90" rel="nofollow">?</a></span></li>
+<li><span class="noexists">火口内基地潜入<a href="/walker/::cmd/edit?page=%E7%81%AB%E5%8F%A3%E5%86%85%E5%9F%BA%E5%9C%B0%E6%BD%9C%E5%85%A5&refer=%E3%82%BC%E3%83%AD%E5%B0%91%E4%BD%90" rel="nofollow">?</a></span></li>
+<li><span class="noexists">対ピューパ戦<a href="/walker/::cmd/edit?page=%E5%AF%BE%E3%83%94%E3%83%A5%E3%83%BC%E3%83%91%E6%88%A6&refer=%E3%82%BC%E3%83%AD%E5%B0%91%E4%BD%90" rel="nofollow">?</a></span></li></ul>
+</div>
+</div>
+</div>
+</div>
+<div class="fold-container  clearfix">
+    <button class="fold-toggle-button hidden-on-open"><i class="fal fa-plus-square"></i></button>
+    <button class="fold-toggle-button visible-on-open"><i class="fal fa-minus-square"></i></button>
+    <div class="fold-summary hidden-on-open"><a href="/walker/EXTRA%20OPS" title="EXTRA OPS" class="rel-wiki-page">EXTRA OPS</a></div>
+    <div class="fold-content visible-on-open">
+</div>
+</div>
+<div class="fold-container  clearfix">
+    <button class="fold-toggle-button hidden-on-open"><i class="fal fa-plus-square"></i></button>
+    <button class="fold-toggle-button visible-on-open"><i class="fal fa-minus-square"></i></button>
+    <div class="fold-summary hidden-on-open"><a href="/walker/OUTER%20OPS" title="OUTER OPS" class="rel-wiki-page">OUTER OPS</a></div>
+    <div class="fold-content visible-on-open">
+</div>
+</div>
+<h3 id="h3_content_2_1" class="heading-after-first">ボス攻略</h3>
+<p><span class="noexists">ピューパ攻略<a href="/walker/::cmd/edit?page=%E3%83%94%E3%83%A5%E3%83%BC%E3%83%91%E6%94%BB%E7%95%A5&refer=%E3%82%BC%E3%83%AD%E5%B0%91%E4%BD%90" rel="nofollow">?</a></span><br />
+<a href="/walker/%E3%82%AF%E3%83%AA%E3%82%B5%E3%83%AA%E3%82%B9%E6%94%BB%E7%95%A5" title="クリサリス攻略" class="rel-wiki-page">クリサリス攻略</a><br />
+<a href="/walker/%E3%82%B3%E3%82%AF%E3%83%BC%E3%83%B3%E6%94%BB%E7%95%A5" title="コクーン攻略" class="rel-wiki-page">コクーン攻略</a><br />
+<span class="noexists">ピースウォーカー1攻略<a href="/walker/::cmd/edit?page=%E3%83%94%E3%83%BC%E3%82%B9%E3%82%A6%E3%82%A9%E3%83%BC%E3%82%AB%E3%83%BC1%E6%94%BB%E7%95%A5&refer=%E3%82%BC%E3%83%AD%E5%B0%91%E4%BD%90" rel="nofollow">?</a></span><br />
+<a href="/walker/%E3%83%94%E3%83%BC%E3%82%B9%E3%82%A6%E3%82%A9%E3%83%BC%E3%82%AB%E3%83%BC2%E6%94%BB%E7%95%A5" title="ピースウォーカー2攻略" class="rel-wiki-page">ピースウォーカー2攻略</a><br />
+<a href="/walker/%E6%88%A6%E8%BB%8A%E7%B3%BB%E6%94%BB%E7%95%A5" title="戦車系攻略" class="rel-wiki-page">戦車系攻略</a><br />
+<a href="/walker/%E8%A3%85%E7%94%B2%E8%BB%8A%E7%B3%BB%E6%94%BB%E7%95%A5" title="装甲車系攻略" class="rel-wiki-page">装甲車系攻略</a><br />
+<a href="/walker/%E3%83%98%E3%83%AA%E7%B3%BB%E6%94%BB%E7%95%A5" title="ヘリ系攻略" class="rel-wiki-page">ヘリ系攻略</a></p>
+<h2 id="h2_content_2_2" class="heading-after-first"><span class="wikicolor" style="color:Blue">データ</span></h2>
+<p><a href="/walker/%E6%AD%A6%E5%99%A8" title="武器" class="rel-wiki-page">武器</a><br />
+<a href="/walker/%E8%A3%85%E5%82%99%E5%93%81" title="装備品" class="rel-wiki-page">装備品</a><br />
+<a href="/walker/%E7%A7%B0%E5%8F%B7" title="称号" class="rel-wiki-page">称号</a><br />
+<a href="/walker/%E5%8B%B2%E7%AB%A0" title="勲章" class="rel-wiki-page">勲章</a><br />
+<a href="/walker/%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89" title="パスワード" class="rel-wiki-page">パスワード</a><br />
+<a href="/walker/%E8%A3%8F%E6%8A%80%E3%83%BB%E5%B0%8F%E3%83%8D%E3%82%BF%E3%83%BB%E3%83%90%E3%82%B0%28%E5%AE%8C%E5%85%A8%E7%89%88%29" title="裏技・小ネタ・バグ(完全版)" class="rel-wiki-page">裏技・小ネタ・バグ(完全版)</a><br />
+<a href="/walker/%E3%83%A6%E3%83%8B%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0" title="ユニフォーム" class="rel-wiki-page">ユニフォーム</a><br />
+<a href="/walker/%E5%A4%A7%E5%9E%8B%E5%85%B5%E5%99%A8" title="大型兵器" class="rel-wiki-page">大型兵器</a><br />
+<a href="/walker/METAR%20GEAR%20ZEKE" title="METAR GEAR ZEKE" class="rel-wiki-page">METAR GEAR ZEKE</a><br />
+<a href="/walker/VOCALOID" title="VOCALOID" class="rel-wiki-page">VOCALOID</a></p>
+<h2 id="h2_content_2_3" class="heading-after-first"><span class="wikicolor" style="color:Lime">質問,交流</span></h2>
+<p><a href="http://wikiwiki.jp/walker/?%BC%C1%CC%E4%C8%A2" rel="nofollow">質問箱</a><br />
+<a href="http://wikiwiki.jp/walker/?%CE%A2%B5%BB%A1%A6%BE%AE%B5%BB%A1%A6%BE%F0%CA%F3%C5%EA%B9%C6%BD%EA" rel="nofollow">裏技・情報・小ネタ</a><br />
+<span class="noexists">VOCALOID投稿所<a href="/walker/::cmd/edit?page=VOCALOID%E6%8A%95%E7%A8%BF%E6%89%80&refer=%E3%82%BC%E3%83%AD%E5%B0%91%E4%BD%90" rel="nofollow">?</a></span><br />
+<a href="http://wikiwiki.jp/walker/?%A5%EA%A5%F3%A5%AF%A1%A6%A4%B4%B0%D5%B8%AB%A1%A6%A4%B4%B4%F5%CB%BE%C8%C4" rel="nofollow">リンク・ご意見・ご希望板</a><br />
+<a href="http://totf.bbs.fc2.com/" rel="nofollow">画像掲示板</a><br />
+<a href="http://walkerwiki.chat.kanichat.com/chat?roomid=walker_wiki" rel="nofollow">専用チャット</a><br />
+<a href="http://chat.kanichat.com/mobile.jsp?roomid=walker_wiki" rel="nofollow">↑携帯用</a></p>
+<h2 id="h2_content_2_4" class="heading-after-first">その他</h2>
+<p><a href="/walker/%E3%83%97%E3%83%AC%E3%82%A4%E5%8B%95%E7%94%BB%E9%9B%86" title="プレイ動画集" class="rel-wiki-page">プレイ動画集</a><br />
+<a href="/walker/%E3%83%A1%E3%82%BF%E3%83%AB%E3%82%AE%E3%82%A2%E7%94%A8%E8%AA%9E%E9%9B%86" title="メタルギア用語集" class="rel-wiki-page">メタルギア用語集</a><br />
+<a href="http://wikiwiki.jp/walker/?cmd=read&amp;page=PEACE%20WALKER%20%C5%D0%BE%EC%BF%CD%CA%AA%BE%D2%B2%F0&amp;word=%C5%D0%BE%EC" rel="nofollow">登場人物紹介</a><br />
+<a href="/walker/%E2%80%9CPIECE%E2%80%9CWALKER" title="“PIECE“WALKER" class="rel-wiki-page">“PIECE“WALKER</a><br />
+<a href="http://wikiwiki.jp/walker/?%A5%AD%A5%E3%A5%E9%BE%D2%B2%F0" rel="nofollow">過去のキャラ紹介</a><br />
+<a href="/walker/%E9%81%8E%E5%8E%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AA%E3%83%BC" title="過去ストーリー" class="rel-wiki-page">過去ストーリー</a></p>
+<h3 id="h3_content_2_5" class="heading-after-first">リンク</h3>
+<p><span class="wikicolor" style="color:Red"><span style="font-size:10px">(リンク募集中です)</span></span><br />
+<a href="http://wikiwiki.jp/walker/?%A5%EA%A5%F3%A5%AF%A1%A6%A4%B4%B0%D5%B8%AB%A1%A6%A4%B4%B4%F5%CB%BE%C8%C4" rel="nofollow">リンク希望はここまで</a></p>
+<hr class="full_hr" />
+<p><a href="http://www.konami.jp/mgs_pw/jp/index.html" rel="nofollow">公式サイト</a><br />
+<a href="http://www.konami-piecewalker.jp/ja/share/Oz8PldZabP" rel="nofollow">“PIECE“WALKER</a><br />
+<a href="http://www.konami.jp/kojima_pro/event_2009/jp/" rel="nofollow">コジプロスペシャルサイト</a><br />
+<a href="http://www.konami.jp/kojima_pro/e3_2009/jp/" rel="nofollow">コジプロE3,2009スペシャルサイト</a><br />
+<a href="http://www.konami.jp/kojima_pro/japanese/index.html" rel="nofollow">小島プロダクション</a><br />
+<a href="http://ameblo.jp/kp-blogcast/" rel="nofollow">コジブロ</a><br />
+<a href="http://www15.atwiki.jp/gamekoryaku/" rel="nofollow">ゲーム攻略まとめwiki</a><br />
+<a href="http://wikiwiki.jp/mgspwmatome/" rel="nofollow">METAL GEAR SOLID PEACE WALKERまとめ Wiki</a><br />
+<a href="http://wikiwiki.jp/mgspw/?FrontPage" rel="nofollow">MGSPW Special Site</a><br />
+<a href="http://blog.livedoor.jp/kekekekko/" rel="nofollow">だんぼらのピースウォーカー攻略日記</a><br />
+<a href="http://hidekan.blog130.fc2.com/" rel="nofollow">HIDEO ANTENNA</a><br />
+<a href="http://www.tokogm.info/mgspw/" rel="nofollow">メタルギアソリッドピースウォーカー とことん攻略wiki</a><br />
+<a href="http://mgspw.x0.com/" rel="nofollow"><img src="https://cdn.wikiwiki.jp/to/w/walker/MenuBar/::ref/logo1.png.webp?rev=6dd160dfba4513fb991947fcfeb6d7d8&amp;t=20100421190744" alt="METAL GEAR SOLID Peace Walker.net" title="METAL GEAR SOLID Peace Walker.net" width="200" height="40"  loading="lazy"></a><br />
+<a href="http://mgs.beko.jp/" rel="nofollow">METAL GEAR SOLID PEACE WALKER 攻略本舗</a><br />
+<a href="http://metalgearsouls.hp.infoseek.co.jp/index.html" rel="nofollow">メタルギア魂</a><br />
+<a href="http://ameblo.jp/exile888/" rel="nofollow">MGSPWちーと日記</a><br />
+<a href="http://obtainingblessing.blog92.fc2.com/" rel="nofollow">夢見し遥かなる</a><br />
+<a href="http://mgs_pw.wikiwiki.jp/" rel="nofollow">MGS PW 攻略・交流wiki</a><br />
+<a href="http://www.geocities.jp/jing_storm/psp/adhoc/index.html" rel="nofollow">アドホック・パーティー簡易説明</a></p>
+<div class="recent-container" data-recent-hash="3e353d861af80c1ff5ecfe34919f1af2"></div>
+<div style="text-align:center">〔<a href="/walker/%E4%BA%BA%E6%B0%97100" title="人気100" class="rel-wiki-page"><strong>人気</strong></a>/<a href="/walker/%E4%BB%8A%E6%97%A5100" title="今日100" class="rel-wiki-page"><strong>今日人気</strong></a>〕〔<a href="/walker/RecentChanges" title="RecentChanges" class="rel-wiki-page"><strong>最新</strong></a>〕</div>
+<hr class="full_hr" />
+<p><span style="font-size:10px"><span class="wikicolor" style="color:Black"><a href="http://wikiwiki.jp/walker/?MenuBar" rel="nofollow">MenuBar</a></span></span></p>                </div>
+                <div class="admenu-sticky">
+<!-- /19033742/WIKIWIKI_PC_MENU_STICKY -->
+<div id='div-gpt-ad-1567834179057-0'></div>
+</div>
+<script>
+if (document.documentElement.clientWidth > 805 && !wi_ismobile && wi_group === 'N' && wi_agreement === 'false' && !wi_isinbound &&
+    document.getElementById('body').clientHeight - document.getElementById('menubar').clientHeight > 1000) {
+    googletag.cmd.push(() => {
+        googletag.display(
+            googletag.defineSlot('/19033742/WIKIWIKI_PC_MENU_STICKY', [[120,600],[160,600],[1,1]], 'div-gpt-ad-1567834179057-0').addService(googletag.pubads())
+        );
+    });
+    defineSlotFlux.push({"slotID": "div-gpt-ad-1567834179057-0", "sizes": [[160,600]], "slotName":"WIKIWIKI_PC_MENU_STICKY"});
+}
+</script>
+<style>
+.admenu-sticky {
+    display: flex;
+    justify-content: center;
+    position: -webkit-sticky;
+    position: sticky;
+    margin-top: 50px;
+    top: 50px;
+    max-width: 160px;
+    margin-left: auto;
+    margin-right: auto;
+}
+</style>
+
+            </div>
+            </div>
+
+    
+    <div id="footer">
+                                <div class="container">
+                <hr />
+                <p><span style="font-size:10px"><span class="wikicolor" style="color:Red">ここに記載されている文章、画像は転載禁止です。</span></span></p>            </div>
+                <div class="container">
+            <hr />
+            <div class="footer-block clearfix">
+                <div class="footer-block-item-left" id="signature">
+                    <!-- google_ad_section_start(weight=ignore) -->
+                    レンタルWIKI by <a href="https://wikiwiki.jp/" title="無料レンタルWIKIサービス">WIKIWIKI.jp*</a>&nbsp;/&nbsp;
+                    Designed by <a href="https://wikiwiki.jp/pp/skin-design-policy" title="スキンデザインのご利用についてのお願い">Olivia</a>&nbsp;/&nbsp;
+                    <a href="https://wikiwiki.jp/pp/aboutad" title="広告について">広告について</a>&nbsp;/&nbsp;
+                    無料レンタル掲示板 <a href="https://z.wikiwiki.jp/" title="zawazawa">zawazawa</a>
+                    <!-- google_ad_section_end -->
+                </div>
+                <div class="footer-block-item-right">
+                    <div class="footer-mixirss">
+                        <div class="toolbar"><a href="/walker/::cmd/mixirss" title="最終更新のRSS" rel="nofollow"><span class="system-icon rss"></span></a></div>                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="pageload" style="display: none" data-pageload="{&quot;time&quot;:{&quot;all&quot;:{&quot;real&quot;:0.03264594078063965,&quot;cost&quot;:0.04479718208312988},&quot;body&quot;:{&quot;real&quot;:0.024973154067993164,&quot;cost&quot;:0.024973154067993164},&quot;main&quot;:{&quot;real&quot;:0.021342039108276367,&quot;cost&quot;:0.021342039108276367},&quot;menu&quot;:{&quot;real&quot;:0.009620904922485352,&quot;cost&quot;:0.009620904922485352},&quot;head&quot;:{&quot;real&quot;:0.0015041828155517578,&quot;cost&quot;:0.0015041828155517578},&quot;foot&quot;:{&quot;real&quot;:0.001026153564453125,&quot;cost&quot;:0.001026153564453125}},&quot;include&quot;:0,&quot;memory&quot;:1645152,&quot;io&quot;:{&quot;read&quot;:{&quot;files&quot;:4,&quot;bytes&quot;:7259,&quot;locks&quot;:2},&quot;write&quot;:{&quot;files&quot;:0,&quot;bytes&quot;:0,&quot;locks&quot;:0},&quot;directory&quot;:{&quot;traversals&quot;:0,&quot;files&quot;:0},&quot;misc&quot;:42},&quot;contentSize&quot;:{&quot;all&quot;:37617,&quot;body&quot;:24516},&quot;timestamp&quot;:&quot;2026-10-06 12:56:43&quot;}"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/jquery.mark.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/js/fontawesome.min.js" data-auto-replace-svg="false"></script>
+<script type="text/javascript" src="https://cdn.wikiwiki.jp/to/w/common/assets/dist/wikiwiki-4cc87a2d5292824cfcec.min.js"></script>
+    <script>
+        if (window.FontAwesome) {
+            window.FontAwesome.dom.watch();
+        } else {
+            console.warn('FontAwesome is not loaded.');
+        }
+    </script>
+<div id="wikiwiki-pageview-counter" data-endpoint="https://counter.wikiwiki.jp/c/walker/pv/%E8%A3%85%E5%82%99%E5%93%81" style="display: none;"></div>
+<script>
+    $('#wikiwiki-pageview-counter').pageview();
+</script>
+<script type="text/javascript">
+    bootLazy.addJqPluginInit('.fold-container', function() {
+        this.fold({
+            buttonSelector: '.fold-toggle-button',
+            openClassName: 'fold-open'
+        });
+    });
+</script>
+    <script type="text/javascript">
+        bootLazy.addJqPluginInit('.recent-container[data-recent-hash="3e353d861af80c1ff5ecfe34919f1af2"]', function() {
+            this.recent({"timestamp":1638737397,"list":[{"time":1638737397,"page":"ピースウォーカー2攻略","link":"/walker/%E3%83%94%E3%83%BC%E3%82%B9%E3%82%A6%E3%82%A9%E3%83%BC%E3%82%AB%E3%83%BC2%E6%94%BB%E7%95%A5"},{"time":1565390144,"page":"コメント/FrontPage","link":"/walker/%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88/FrontPage"},{"time":1450916735,"page":"パスワード","link":"/walker/%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89"},{"time":1407456005,"page":"質問箱/371","link":"/walker/%E8%B3%AA%E5%95%8F%E7%AE%B1/371"},{"time":1397202443,"page":"リンク・ご意見・ご希望板","link":"/walker/%E3%83%AA%E3%83%B3%E3%82%AF%E3%83%BB%E3%81%94%E6%84%8F%E8%A6%8B%E3%83%BB%E3%81%94%E5%B8%8C%E6%9C%9B%E6%9D%BF"},{"time":1377419108,"page":"質問箱/95","link":"/walker/%E8%B3%AA%E5%95%8F%E7%AE%B1/95"},{"time":1376702968,"page":"質問箱/224","link":"/walker/%E8%B3%AA%E5%95%8F%E7%AE%B1/224"},{"time":1375611488,"page":"裏技・小技・情報投稿所/120","link":"/walker/%E8%A3%8F%E6%8A%80%E3%83%BB%E5%B0%8F%E6%8A%80%E3%83%BB%E6%83%85%E5%A0%B1%E6%8A%95%E7%A8%BF%E6%89%80/120"},{"time":1373556303,"page":"裏技・小技・情報投稿所/14","link":"/walker/%E8%A3%8F%E6%8A%80%E3%83%BB%E5%B0%8F%E6%8A%80%E3%83%BB%E6%83%85%E5%A0%B1%E6%8A%95%E7%A8%BF%E6%89%80/14"},{"time":1358464370,"page":"EXTRA OPS","link":"/walker/EXTRA%20OPS"}]});
+        });
+    </script>
+<script>
+bootLazy.addJqPluginInit('.plugin-randommes', function() {
+    this.randommes({
+        url: '/walker/::partial_content/randommes',
+        stackName: 'lazy_fetch_stack'
+    });
+});
+</script>
+    <script>
+        bootLazy.addJqPluginInit('#responsive-navigation', function() {
+            this.responsiveNavigation({
+                menuBarSelector: '#menubar',
+                editMenuSelector: '#edit-menu',
+
+                mainContentsBottomElement: '#main-contents-bottom',
+                sidebarBottomElement: '#sidebar-bottom',
+                menuBarContainerElement: '#contents .column-left',
+                footerElement: '#footer',
+
+                overlayAdRenderedEventName: 'overlay-ad-rendered',
+                overlayAdMarginTop: 25
+            });
+        });
+    </script>
+    <script>
+        $('#share-button-root').sharePanel({
+            title: "装備品 - METAL GEAR SOLID PEACE WALKER(ピースウォーカー) Wiki*",
+            controlPanelUrl: "https:\/\/c.wikiwiki.jp\/wiki\/walker\/design",
+            imageUrl: "https:\/\/cdn.wikiwiki.jp\/to\/w\/common\/image\/wikiwiki_ogp.png?v=4",
+            description: "",
+            shareUrl: "https:\/\/wikiwiki.jp\/walker\/%E8%A3%85%E5%82%99%E5%93%81",
+            shortUrlRequestUrl: "\/walker\/::cmd\/short_url?mode=json&page=%E8%A3%85%E5%82%99%E5%93%81",
+            hasOgSettings: false,
+        })
+    </script>
+<script>
+    $('#admin-contact-root').adminContact({
+        logoImgUrl: "https:\/\/cdn.wikiwiki.jp\/to\/w\/common\/image\/pukiwiki.svg?v=4",
+        pageTitle: "METAL GEAR SOLID PEACE WALKER(ピースウォーカー) Wiki*",
+        controlPanelUrl: "https:\/\/c.wikiwiki.jp\/wiki\/walker\/settings",
+        contact: "",
+        helpLink: 'https://wikiwiki.jp/pp/admin_contact',
+    });
+</script>
+<script>
+$("#load-panel-root").loadpanel({
+    dataSelector: "#pageload",
+    helpLink: 'https://wikiwiki.jp/pp/page_load_panel'
+});
+</script>
+<script>
+    $('.admin-login-status').adminLoginStatus({
+        cookieName: 'login_session',
+    });
+</script>
+<script>
+    $(function() {
+        $('.search-words').searchWordHighlight({
+            paramName: 'word',
+            selector: "#content,#note",
+            limit: 10,
+            markedClassResolver: function (i) { return "word" + i; }
+        });
+    });
+</script>
+<script>$(".realtime-date").realtimeDate();</script>
+<script>
+    $("body").notificationBar();
+</script>
+<script>
+$("#contents").anchorLink({
+    url: '/walker/%E8%A3%85%E5%82%99%E5%93%81',
+});
+</script>
+    <script>
+        bootLazy.addJqPluginInit('.tooltip', function() {
+            this.tooltip();
+        });
+    </script>
+    <script>
+        bootLazy.addPlainScript(function() {
+            lightbox.option({
+                resizeDuration: 0
+            });
+        });
+    </script>
+<script>
+    $(function() {
+        window.bootLazy.bootOn(document);
+    });
+</script>
+<script>
+    $(document).pukiwiki();
+</script>
+<script>
+jQuery(function() {
+    $('form').usageStatistics({
+        keyName: 'usageStatistics',
+        smsAuthCookieName: 'authkey',
+        hasPostedCookieName: '__posted2',
+    });
+    $(document).browsingStatistics({
+        keyName: 'browsingStatistics'
+    });
+});
+</script>
+</body>
+</html>

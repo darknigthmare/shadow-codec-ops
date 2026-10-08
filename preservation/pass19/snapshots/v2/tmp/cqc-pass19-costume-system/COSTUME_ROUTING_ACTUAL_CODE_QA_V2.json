@@ -1,0 +1,31 @@
+{
+  "schema": "cqc.pass19.costume-routing-qa/1",
+  "status": "passed",
+  "checks": [
+    "Pending art is not selectable or ready, and does not resolve to the original atlas.",
+    "Applicability distinguishes biological incarnations, existing cyborgs, robots and Survive natives.",
+    "Two slots use distinct arbitrary costume IDs with shared immutable combat data and independent saved choices.",
+    "Decoded readiness covers both directions; superseded or cancelled launch cannot resume.",
+    "Actual sprite renderer draws separate costume sources in both anatomical directions.",
+    "Rejected provenance and non-applicable variants leave the live catalog unchanged.",
+    "An unavailable authored part prevents readiness and costume rendering; it cannot flash an original body.",
+    "A decoded authored part is actually drawn with its reviewed anatomical binding over the native body.",
+    "Core private actors retain arbitrary variant IDs and use the world-scale hook.",
+    "Mechanical original and native costume route independently by full fighter object, including same-UID match slots.",
+    "Original sprite catalog remains byte-identical in memory and seven historical variants remain accepted."
+  ],
+  "baselineSprites": 338,
+  "baselineCostumeVariants": 7,
+  "sourceArtVerified": false,
+  "testScope": "Production catalog and renderer code exercised with decoded-image doubles. Validates routing, slot isolation, cancellation, provenance boundaries and missing asset handling; no physical PNG/canon fidelity certification.",
+  "helperSHA256": "34f9d79983cdb81e3c3246e41c5512b3c1621ecc4d56a28dc6ba75e2421233ab",
+  "moduleHashes": {
+    "cqc-sprite-renderer.js": "a03cdaf084eb556eacba98cbb3a97bd43d32b02c2db5bc00b9dfb0e40fef3071",
+    "cqc-pass19-costumes.js": "6ecf89088ef0b63e2668993de9c47cc39c4a326b164ff33972e4cb397e4aba95",
+    "cqc-pass19-costume-parts.js": "37e37124b4e8905d78df17982ae82a9784de8e559a8af0d827acda9415a6fa59",
+    "cqc-pass19-pixel-style.js": "9f33d06ba5d9177c1fa00d3c07515fd4d9e15e9bf109878cdf1cff7214458e2f",
+    "cqc-pass17-core-costumes.js": "ebc7748bdbd5e028892273985c398128595bc61bc0da0e5041878a77cbcb9512",
+    "cqc-pass19-machine-costume-routing.js": "f1d157e8622a68774854c7be29d36e65ccd2b0d2d3397f27cad180af75a886d0",
+    "cqc-pass19-costume-request-data.js": "46732b6f7cba482994320e5e3be6c8343c256706a0160962dd9b6bf386417de3"
+  }
+}

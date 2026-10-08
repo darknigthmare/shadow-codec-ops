@@ -1,0 +1,10 @@
+import fs from 'node:fs';import vm from 'node:vm';import path from 'node:path';
+const src='/tmp/cqc-pass18-application/public/cqc/src';
+const coverage=JSON.parse(fs.readFileSync('/tmp/cqc-pass18-integration/ACTUAL_COMBAT_COVERAGE_LATEST_V1.json'));
+const context=vm.createContext({console});
+for(const f of coverage.catalogs)vm.runInContext(fs.readFileSync(path.join(src,f),'utf8'),context,{filename:f});
+const all=context.CQC_COMBAT_SPRITE_CATALOG.entries;
+const metadata=Object.values(all).map(e=>({uid:e.uid,name:e.name,game:e.game,incarnation:e.incarnation,renderStyle:e.renderStyle,displayHeight:e.displayHeight,coverage:e.coverage,review:e.review,defaultFiles:[...new Set(Object.values(e.actions).flatMap(a=>a.frames).map(f=>f.file))],sourceFrameHeights:e.sourceFrameHeights}));
+fs.writeFileSync('/tmp/cqc-pass19-canonical-costumes/BASELINE_NATIVE_SPRITE_METADATA_V1.json',JSON.stringify({schema:'cqc.pass19.baseline-sprite-metadata/1',count:metadata.length,entries:metadata},null,2)+'\n');
+fs.writeFileSync('/tmp/cqc-pass19-canonical-costumes/baseline-roster-readable.txt',metadata.map(e=>`${e.uid}\t${e.name}\t${e.game}\t${e.incarnation}`).join('\n')+'\n');
+console.log(metadata.length,Object.keys(all).length);

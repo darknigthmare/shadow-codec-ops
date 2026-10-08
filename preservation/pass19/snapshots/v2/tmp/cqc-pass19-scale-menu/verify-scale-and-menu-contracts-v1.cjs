@@ -1,0 +1,31 @@
+'use strict';
+const fs=require('fs'),vm=require('vm'),crypto=require('crypto'),assert=require('assert/strict');
+const base='/tmp/cqc-pass18-application',out='/tmp/cqc-pass19-scale-menu';
+const sha=v=>crypto.createHash('sha256').update(v).digest('hex'),ctx={console};ctx.globalThis=ctx;ctx.window=ctx;vm.createContext(ctx);
+const html=fs.readFileSync(base+'/public/cqc/modules/unified-versus-v055.html','utf8');
+const paths=[...html.matchAll(/<script[^>]+src="([^"]+)"/g)].map(m=>m[1]).filter(p=>p.includes('sprite-catalog')||p.includes('incarnation-scale')||p.includes('machine-parts-renderer')||p.includes('machine-catalog')||p.includes('machine-parts-catalog'));
+const pins=paths.map(p=>({file:p,sha256:sha(fs.readFileSync(base+'/public/cqc/modules/'+p))}));
+for(const p of paths)vm.runInContext(fs.readFileSync(base+'/public/cqc/modules/'+p,'utf8'),ctx,{filename:p});
+const catalogBefore=sha(JSON.stringify(ctx.CQC_COMBAT_SPRITE_CATALOG)),machinesBefore=sha(JSON.stringify(ctx.CQC_MACHINE_PARTS_CATALOG));
+vm.runInContext(fs.readFileSync(out+'/cqc-pass19-world-scale.js','utf8'),ctx);
+const api=ctx.CQC_PASS19_WORLD_SCALE,audit=api.audit();assert.equal(audit.sprites.length,338);assert.equal(audit.machines.length,50);
+for(const row of [...audit.sprites,...audit.machines])assert.ok(row.evidence&&Number.isFinite(row.metres)&&row.metres>0&&Number.isFinite(row.pixels)&&row.pixels>0);
+const testRows=[];
+for(const [uid,height]of[['core__solid',1.82],['roster50__sunny_mgr',1.48],['archive__gustava_heffner',1.65],['roster50__kasler_mg2',1.88],['completion__gekko_mgs4',4.2]]){const h=api.height(uid);assert.ok(Math.abs(h.pixels/h.metres-api.pixelsPerMetre)<1e-10);assert.equal(h.metres,height);testRows.push(h);}
+assert.ok(api.height('roster50__sunny_mgs4').evidence.startsWith('estimated'));assert.ok(api.height('core__raiden_mgs2').evidence.startsWith('estimated'));
+assert.ok(api.height('core__solid').pixels>api.height('roster50__sunny_mgr').pixels);assert.ok(api.height('roster50__kasler_mg2').pixels>api.height('core__solid').pixels);assert.ok(api.height('completion__gekko_mgs4').pixels>2*api.height('core__solid').pixels);
+const contractRows=[];
+for(const ratio of [.65,1,2.5,9]){const t=api.transform({x:890,y:568},ratio);for(const point of[{x:891,y:480},{x:400,y:-170},{x:890,y:568}]){const r=t.toSimulation(t.toWorld(point));assert.ok(Math.hypot(r.x-point.x,r.y-point.y)<1e-10);}const box={x:800,y:300,w:160,h:220},r=t.boxToSimulation(t.boxToWorld(box));for(const k of['x','y','w','h'])assert.ok(Math.abs(r[k]-box[k])<1e-10);contractRows.push({ratio,points:3,boxes:1,roundTripPassed:true});}
+const cameraRows=[];
+for(const uid of ['core__solid','roster50__sunny_mgr','completion__gekko_mgs4']){const s={a:{f:{uid:'core__solid'},x:400,y:568,face:1},b:{f:{uid},x:840,y:568,face:-1}},z=api.sceneZoom(s,1.08),b=api.worldBounds(uid,{x:840,y:568},-1);assert.ok(568-b.height*1.12*z>=112-1e-6);assert.ok(640+(b.right-640)*z<=1258+1e-6);assert.ok(z>0&&z<=1.08);cameraRows.push({uid,zoom:z,topAtRender:568-b.height*1.12*z,clipped:false});}
+// Stress fixture, explicitly not a sourced or published claim of REX's canonical dimensions.
+api.configure({rex:{metres:13,evidence:'estimated-test-fixture-only',sources:[],scope:'Independent stress test, not shipped height record.'}});
+const rexState={a:{f:{uid:'core__solid'},x:380,y:568,face:1},b:{uid:'rex',x:910,y:568,face:-1}},rexZoom=api.sceneZoom(rexState,1.08),rexBounds=api.worldBounds('rex',{x:910,y:568},-1);assert.ok(rexBounds.width>0&&rexBounds.height>1000);assert.ok(568-rexBounds.height*1.12*rexZoom>=112-1e-6);cameraRows.push({uid:'rex',heightSource:'13m stress fixture only, not canonical claim',zoom:rexZoom,topAtRender:568-rexBounds.height*1.12*rexZoom,clipped:false});
+assert.equal(sha(JSON.stringify(ctx.CQC_COMBAT_SPRITE_CATALOG)),catalogBefore);assert.equal(sha(JSON.stringify(ctx.CQC_MACHINE_PARTS_CATALOG)),machinesBefore);
+const patchPlan=JSON.parse(fs.readFileSync(out+'/DIEGETIC_MENU_GUARDED_PATCH_PLAN_V1.json','utf8')),menuRows=[];
+for(const file of patchPlan.files){const original=fs.readFileSync(base+'/'+file.path,'utf8');assert.equal(sha(original),file.sourceSHA256);let text=original;for(const op of file.operations){assert.equal(text.split(op.old).length-1,op.expectedCount);text=text.split(op.old).join(op.new);}assert.equal(sha(text),file.outputSHA256);if(file.path==='public/cqc/index.html'){assert.equal([...original.matchAll(/data-(?:mode|extra)="([^"]+)"/g)].map(m=>m[0]).join(),[...text.matchAll(/data-(?:mode|extra)="([^"]+)"/g)].map(m=>m[0]).join());assert.ok(!text.includes('CHRONIQUES · 354 HISTOIRES'));assert.ok(!text.includes('31 OPUS · 354 PROFILS'));const scripts=[...text.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(m=>m[1]);for(const script of scripts)new vm.Script(script);}
+ menuRows.push({path:file.path,operations:file.operations.length,sourceHashMatched:true,outputHashMatched:true});}
+for(const pin of pins)assert.equal(sha(fs.readFileSync(base+'/public/cqc/modules/'+pin.file)),pin.sha256);
+const report={schema:'cqc.pass19-scale-menu-qa/1',status:'passed',sourceCataloguesUnchanged:true,baselineFilesUnchanged:true,sourcePixelsChanged:false,physicsChanged:false,primaryHeightRecordCount:audit.sprites.filter(r=>r.absoluteHeightCertified).length,sourcePins:pins,audit,testRows,contractRows,cameraRows,menuRows,qualifications:['Mathematical/source metadata QA; not live production browser proof.','Every existing sprite/rig has a classification; unestablished heights preserve presentation estimates.','Core boss combat framing remains unchanged until render and physics target transforms share a validated spatial adapter.','Machine combat scale wrapper is disabled unless CQC_PASS19_SPATIAL_SCALE_READY is true.','REX 13m used only as an isolated stress-test fixture, not shipped source data.']};
+fs.writeFileSync(out+'/SCALE_MENU_ACTUAL_CONTRACT_QA_V1.json',JSON.stringify(report,null,2));
+console.log(JSON.stringify({status:report.status,sprites:audit.sprites.length,machines:audit.machines.length,primaryHeightRecords:report.primaryHeightRecordCount,menuFiles:menuRows.length,operations:menuRows.reduce((s,r)=>s+r.operations,0),cameraRows,sourceUnchanged:true}));

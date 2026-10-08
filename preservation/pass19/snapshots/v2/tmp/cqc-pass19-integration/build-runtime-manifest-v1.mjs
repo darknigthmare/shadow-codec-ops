@@ -1,0 +1,6 @@
+import fs from 'node:fs/promises';import crypto from 'node:crypto';import {buildRuntimeManifest,verifyRuntime} from '/tmp/cqc-pass19-application/scripts/sync-cqc-runtime.mjs';
+const dest='/tmp/cqc-pass19-application/public/cqc',out='/tmp/cqc-pass19-integration',sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const {manifest,files}=await buildRuntimeManifest(dest);
+for(const r of manifest.files){const b=await fs.readFile(dest+'/'+r.path);if(b.length!==r.bytes||sha(b)!==r.sha256)throw Error('Generated runtime source differs '+r.path);}
+const prior=await fs.readFile(dest+'/runtime-manifest.json'),raw=JSON.stringify(manifest,null,2)+'\n',tmp=dest+'/runtime-manifest.pass19-new.json';await fs.writeFile(tmp,raw,{flag:'wx'});await fs.rename(tmp,dest+'/runtime-manifest.json');await verifyRuntime(dest);
+const receipt={schema:'cqc.pass19.runtime-manifest-actual/1',status:'passed',manifestSHA256:sha(Buffer.from(raw)),previousManifestSHA256:sha(prior),files:manifest.files.length,bytes:manifest.totalBytes,sourceFileCopies:0,unresolvedRuntimeReferences:0,allRuntimeSourceBytesValidated:true};await fs.writeFile(out+'/RUNTIME_MANIFEST_ACTUAL_V1.json',JSON.stringify(receipt,null,2),{flag:'wx'});console.log(JSON.stringify(receipt));
