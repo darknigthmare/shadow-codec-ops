@@ -1,0 +1,39 @@
+/* A dossier rail stays separate from portraits and combat controls. */
+#selectScreen .filters { display:flex; flex-direction:column; flex-wrap:nowrap; align-items:stretch; gap:8px; padding:10px; min-width:0; }
+.dossier-heading-pass16 { display:flex; align-items:center; justify-content:space-between; gap:12px; min-width:0; }
+.dossier-heading-pass16 strong { font:800 9px/1.4 ui-monospace,monospace; letter-spacing:.14em; color:var(--gold); }
+#selectScreen .filters input { margin:0; width:min(270px,48%); min-width:0; min-height:36px; }
+.dossier-rail-pass16 { display:grid; width:100%; min-width:0; max-width:100%; grid-auto-flow:column; grid-template-rows:repeat(2,minmax(40px,auto)); grid-auto-columns:minmax(155px,1fr); gap:5px; overflow-x:auto; padding:1px 1px 6px; scrollbar-width:thin; scrollbar-color:#71846b #091810; }
+#selectScreen .dossier-rail-pass16 button { min-height:40px; padding:7px 10px; text-align:left; font-size:9px; letter-spacing:.025em; white-space:normal; }
+.dossier-rail-pass16 button strong,.dossier-rail-pass16 button small { display:block; }
+.dossier-rail-pass16 button small { margin-top:3px; font-size:7px; font-weight:600; color:var(--muted); }
+#selectScreen .dossier-rail-pass16 button.active { background:#27372a; box-shadow:inset 3px 0 var(--gold); }
+#selectScreen .dossier-rail-pass16 button:focus-visible { outline:2px solid var(--gold); outline-offset:1px; }
+#selectScreen .roster { grid-template-columns:repeat(auto-fill,minmax(min(128px,100%),1fr)); grid-auto-rows:166px; align-content:start; overflow-y:auto; }
+#selectScreen .fighter-card { min-height:166px; }
+#selectScreen .fighter-card .fighter-portrait-pass10 { min-height:102px; }
+#selectScreen .fighter-card .copy { min-height:44px; }
+#selectScreen .fighter-card .copy b { font-size:10px; }
+#selectScreen .fighter-card .copy small { font-size:8px; line-height:1.35; }
+#selectScreen .fighter-card .source { display:none; }
+#selectScreen .pager { min-height:36px; flex-shrink:0; }
+@media(max-width:900px) { #selectScreen .roster { grid-template-columns:repeat(auto-fill,minmax(min(132px,100%),1fr)); } }
+@media(max-width:540px) {
+  .dossier-heading-pass16 { gap:7px; }
+  .dossier-heading-pass16 strong { font-size:8px; letter-spacing:.08em; }
+  #selectScreen .filters input { width:52%; font-size:9px; }
+  .dossier-rail-pass16 { grid-auto-columns:145px; }
+  #selectScreen .roster { grid-template-columns:repeat(2,minmax(0,1fr)); grid-auto-rows:158px; }
+  #selectScreen .fighter-card { min-height:158px; }
+  #selectScreen .fighter-card .fighter-portrait-pass10 { min-height:98px; }
+}
+.roster-filter-pass16 { justify-content:space-between; gap:10px; padding:8px 0; }
+.roster-filter-pass16 select { flex:1; max-width:360px; min-height:40px; font-size:11px; }
+@media(max-width:540px) { .roster-filter-pass16 { font-size:9px; } .roster-filter-pass16 select { max-width:72%; } }
+
+/* Embedded command screens keep a whole portrait row when the frame is short. */
+@media(max-width:900px) and (max-height:620px) {
+  #selectScreen .select-body { overflow-y:auto; align-content:start; }
+  #selectScreen .center { min-height:560px; grid-template-rows:auto minmax(206px,1fr) auto; }
+  #selectScreen .roster-wrap { min-height:206px; }
+}
