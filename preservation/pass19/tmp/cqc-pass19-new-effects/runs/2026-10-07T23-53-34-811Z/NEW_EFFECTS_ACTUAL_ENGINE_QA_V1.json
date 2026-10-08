@@ -1,0 +1,29 @@
+{
+  "schema": "cqc.pass19.new-effects-engine-qa/1",
+  "status": "passed",
+  "checks": [
+    "All prepared source-game projectile profiles receive actual native routes; repeated registration is idempotent. Prepared art availability is separate, pending fighters remain uninstalled.",
+    "pass19__box_tank_smoke_pw: direct smoke damage path cannot chip guard, hitstun, sleep, gain meter or emit a damage event.",
+    "pass19__smoke_box_pw: direct smoke damage path cannot chip guard, hitstun, sleep, gain meter or emit a damage event.",
+    "Actual Smoke Box special arms/triggers a bounded cloud; owner cover exists only inside, breaks on action, and expires without damage/drowsy/blast.",
+    "Actual SMK Box Tank shell flies/fuses into smoke and cannot create generic explosion damage, drowsy or collateral trap destruction.",
+    "Leaving/airborne removes only smoke-owned cover; independent authored cloak is preserved.",
+    "pass19__box_tank_stun_pw: STN uses the existing organic drowsy/status/threshold rules, not smoke cover.",
+    "pass19__stun_box_pw: STN uses the existing organic drowsy/status/threshold rules, not smoke cover.",
+    "The actual smoke-enabled engine reproduces byte-identical seeded state/events for the same frame inputs."
+  ],
+  "smokeUIDs": [
+    "pass19__box_tank_smoke_pw",
+    "pass19__smoke_box_pw"
+  ],
+  "stunUIDs": [
+    "pass19__box_tank_stun_pw",
+    "pass19__stun_box_pw"
+  ],
+  "preparedReferenceProfiles": 32,
+  "nativeProjectileRoutes": 13,
+  "qualification": "Actual current production combat profiles and smoke-hooked engine. Offline source-prepared profiles are not a visual/native readiness claim. Physical native Canvas QA is separate.",
+  "engineSHA256": "b68e4d66e2c99fbc1b26e557557c8e4a51e16de1c2b165c6e3cf33d79b96cd27",
+  "smokeSHA256": "1831d3f0fabc291cf67603dc175a4300037816e772df569da2ce25e81eeafa04",
+  "helperSHA256": "0fb0fbe9d9e1e78c259b728ed0c0ed86535b334ade4097bc737c54c2a36a1755"
+}

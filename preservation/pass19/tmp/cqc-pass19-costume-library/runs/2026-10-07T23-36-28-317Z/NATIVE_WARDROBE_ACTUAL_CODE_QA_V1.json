@@ -1,0 +1,26 @@
+{
+  "schema": "cqc.native-wardrobe-actual-code-qa/1",
+  "status": "passed",
+  "checks": [
+    "Cancelled metadata load never changes private slot, exposes an atlas, paints CSS/Core/base body, or commits later.",
+    "A superseded same-identity costume cannot overwrite the newer committed selection.",
+    "Two lazy costumes of the same UID stay isolated in both private slots and anatomical directions; decoded body art actually paints.",
+    "Shared concurrent loads fetch/register once; cancelling one consumer preserves the other live consumer.",
+    "Metadata SHA mismatch rejects before registration, asset fetch, or private slot mutation.",
+    "Cryptographically pinned JSON with a substituted identity still fails provenance validation.",
+    "PNG byte mismatch leaves staged metadata unpublished and forbids a costume/base flash.",
+    "Physical decode failure blocks commit despite correct SHA; an explicit retry can decode and then equip.",
+    "Metadata LRU drops only dormant lazy options and preserves both active identities plus every legacy native variant.",
+    "Mutable remote branch URLs and pending/unreviewed art cannot enter the library index."
+  ],
+  "actualModules": [
+    "cqc-sprite-renderer.js",
+    "cqc-pass19-costumes.js",
+    "cqc-pass17-costumes.js",
+    "cqc-pass19-native-wardrobe-library.js"
+  ],
+  "physicalArtVerified": false,
+  "scope": "Production catalogs, registerBatch, renderer and library executed with synthetic pinned transport and decoded-image doubles. Cancellation/readiness/routing evidence; no physical PNG or canon visual attestation.",
+  "helperSHA256": "e7bbe7efc833677cd6193ff21b45b17737172d60fff5a24721a2f76e162981af",
+  "librarySHA256": "7a2bcfbe74d81c7f3f3b99dd1e02d37fc39407fa7193d29d2a043546cc8f0547"
+}

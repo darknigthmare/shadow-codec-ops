@@ -1,0 +1,20 @@
+{
+  "uid": "pass19__frostbite_survive",
+  "side": "right",
+  "label": "right-v4",
+  "request": {
+    "prompt": "Edit the attached FROSTBITE sixteen-pose native sprite sheet with exactly ONE narrowly targeted canonical colour correction. In the second row and second column (physical pose5, the coiled attack windup) the generator accidentally made FOUR red crystalline tentacle tips, although canonical Frostbite has only THREE red and FIVE cyan tips. Change ONLY the UPPER-LEFT red crystalline tip in that one cell into the same icy turquoise cyan material as the other cyan tips. On the1536×1024 supplied original it is the tip around native x578,y357, hanging diagonally above the coiled grey ribbon. Keep the two forward upper-right red tips and the middle lower red tip in that cell red, so there are exactly3 visible red organs there. Do not colour the dark central iris-shell plates. Preserve the entire sixteen-pose4×4 atlas, all eight attached ribbon roots per creature, all other poses, all original directional aim, composition and native RGBA transparent background. No anatomy changes, no mirror, no added glow, no cropping or deleted poses. This is a specific one-tip correction inside the existing sprite, not a redesigned creature.",
+    "referenced_image_paths": [
+      "/tmp/cqc-pass19-survive-generation/generation/pass19__frostbite_survive/right-v1.png"
+    ],
+    "transparent_background": true
+  },
+  "output_hint": "Generated images are saved to /workspace/generated_images as /workspace/generated_images/exec-49999906-c433-4162-b875-fde8a8b570cb.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "canonicalCorrection": "Fourth red tip in source pose5 changed to cyan by native imagegen edit; other phases retain referenced morphology.",
+  "originalToolFile": "/workspace/generated_images/exec-49999906-c433-4162-b875-fde8a8b570cb.png",
+  "preservedNativeFile": "/tmp/cqc-pass19-survive-generation/generation/pass19__frostbite_survive/right-v4.png",
+  "sha256": "b7c1ffd00685acaf8dabd2d61ce24c113c7bfc9cf8a718763136eae523cec82e",
+  "bytes": 2870337,
+  "reviewStatus": "rejected",
+  "rejectionReason": "Background haze alpha>=192 connects all16 poses into one component; native transparent separation not valid."
+}

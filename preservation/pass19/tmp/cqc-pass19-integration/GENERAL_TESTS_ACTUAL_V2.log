@@ -1,0 +1,448 @@
+
+> shadow-codec-ops@3.10.0 test
+> vitest run --no-isolate --pool=threads --maxWorkers=1 --no-file-parallelism --reporter=default
+
+
+ RUN  v4.1.10 /tmp/cqc-pass19-application
+
+ ❯ src/systems/eraCharacterArchiveAssets.test.ts (2 tests | 1 failed) 73ms
+     ✓ ships every expression and every animation board for all 40 agreed identities 66ms
+     × verifies the 30 new authored core sheets, source SHA and row order against provenance 6ms
+ ❯ src/game/core/sideOpsSpecialActorAnimationRegistry.test.ts (5 tests | 1 failed) 11ms
+     ✓ declares two sheets and eight clips per independently identified actor 5ms
+     ✓ keeps semantic canon boundaries and never invents a fallback action 0ms
+     ✓ preserves explicit world collision dimensions and centered ground baseline at different scales 2ms
+     ✓ fits upright and wide idle anchors without changing world bodies or per-pose scale 1ms
+     × ships genuine sheets with matching source provenance and distinct visible phases 2ms
+ ❯ src/game/scenes/dedicatedSceneArtwork.test.ts (10 tests | 1 failed) 18ms
+     ✓ covers the exact route with visual sectors and keeps enclosed arenas indoors 1ms
+     ✓ loads each scene-local panorama only when its key is absent 2ms
+     ✓ keeps every MG1 static collider coordinate, scale, count and enabled state 4ms
+     ✓ keeps legacy MGS1 geometry and adds only the three authorized pickup approaches 5ms
+     ✓ coats body bounds exactly and never uses snow on an indoor floor 1ms
+     ✓ leaves original physical art visible when a generated material is missing 1ms
+     ✓ switches only the artwork at a sector transition and hides it when that asset is unavailable 1ms
+     ✓ clips only terrain artwork at an indoor boundary, keeping snow outside 1ms
+     ✓ uses the authored earth/wood floor in cave and study without laying steel over it 1ms
+     × ships twelve separate generated panoramas matching their source manifests 2ms
+ ❯ src/game/core/sideOpsActorAnimationRegistry.test.ts (2 tests | 1 failed) 12ms
+     ✓ covers every visual pack with three actors and two independent boards 9ms
+     × ships visible, separated, distinct phases and validates their recorded provenance 2ms
+ ❯ src/game/core/sideOpsBossProjectileRegistry.test.ts (11 tests | 3 failed) 8ms
+     ✓ separates eight source machines and their weapon signatures without replacing Pupa 1ms
+     ✓ exposes four authored flight phases per machine without fabricating beam or water physics 2ms
+     ✓ keeps the original sheet implicit and gives the two new visuals their own row mapping 1ms
+     ✓ anchors each muzzle to the live world body center and mirrors only its horizontal offset 1ms
+     ✓ declines invalid bodies and unrelated actors instead of inventing a muzzle 1ms
+     ✓ aims the central shot at its locked target from the visible muzzle 0ms
+     ✓ preserves both signs of spread and speed, including left-facing angle wraparound 0ms
+     ✓ returns the original shot unchanged for invalid or degenerate aim geometry 0ms
+     × ships exact RGBA geometry and independently hashed mecha provenance 1ms
+     × ships exact RGBA geometry and independently hashed peace-walker provenance 0ms
+     × ships exact RGBA geometry and independently hashed peace-walker-support provenance 0ms
+ ❯ src/game/core/sideOpsTerrainRegistry.test.ts (3 tests | 1 failed) 7ms
+     ✓ gives all twelve packs a ground and a separate structural material 1ms
+     × ships every material at native tile dimensions with matching source provenance 5ms
+     ✓ reuses only registered supplied artwork for all replacement cover props 0ms
+ ❯ src/game/core/mgs2TankerSideOpsAssetRegistry.test.ts (8 tests | 1 failed) 4ms
+     ✓ covers all six requested Tanker asset families 1ms
+     ✓ keeps every id, texture key and runtime path unique 0ms
+     ✓ locks the physical roster and runtime dimensions 0ms
+     ✓ uses only local MGS2 Tanker paths and valid fallback colors 1ms
+     ✓ describes the rain-metal impact as four exact horizontal frames 0ms
+     ✓ ships every runtime asset as an exact-size 8-bit RGBA PNG 1ms
+     × keeps the six original OpenAI source PNGs in the art-source folder 1ms
+     ✓ exposes stable MGS2 Tanker defaults for future Side Ops wiring 0ms
+ ❯ src/game/core/patriotsAiSideOpsAssetRegistry.test.ts (8 tests | 1 failed) 3ms
+     ✓ covers all six requested Arsenal simulation asset families 0ms
+     ✓ keeps every id, texture key and runtime path unique 0ms
+     ✓ locks the physical roster and runtime dimensions 0ms
+     ✓ uses only local Patriots AI paths and valid fallback colors 1ms
+     ✓ describes the glitch impact as four exact horizontal frames 0ms
+     ✓ ships unique exact-size 8-bit RGBA runtime PNGs 1ms
+     × keeps six unique original OpenAI source PNGs 1ms
+     ✓ exposes the complete stable texture-key contract without shared wiring 0ms
+ ❯ src/game/core/mgsvGroundZeroesSideOpsAssetRegistry.test.ts (8 tests | 1 failed) 3ms
+     ✓ covers all six requested Camp Omega asset families 1ms
+     ✓ keeps every id, texture key and runtime path unique 0ms
+     ✓ locks the physical roster and runtime dimensions 0ms
+     ✓ uses only local Ground Zeroes asset paths and valid fallback colors 0ms
+     ✓ describes the wet metal impact as four exact horizontal frames 0ms
+     ✓ ships every runtime asset as an exact-size 8-bit RGBA PNG 1ms
+     × keeps all six original OpenAI source PNGs in the art-source folder 1ms
+     ✓ exposes a complete stable texture-key contract without shared wiring 0ms
+ ❯ src/game/core/mgsvPhantomPainSideOpsAssetRegistry.test.ts (8 tests | 1 failed) 4ms
+     ✓ covers all six requested MGSV The Phantom Pain asset families 0ms
+     ✓ keeps every id, texture key and runtime path unique 0ms
+     ✓ locks the physical roster and runtime dimensions 0ms
+     ✓ uses only local Phantom Pain paths and valid fallback colors 1ms
+     ✓ describes the Afghanistan dust impact as four exact horizontal frames 0ms
+     ✓ ships every runtime asset as an exact-size 8-bit RGBA PNG 1ms
+     × keeps the six original OpenAI source PNGs in the art-source folder 1ms
+     ✓ exposes stable Phantom Pain defaults for future Side Ops wiring 0ms
+ ❯ src/game/core/peaceWalkerSideOpsAssetRegistry.test.ts (8 tests | 1 failed) 4ms
+     ✓ covers the 1974 roster including five distinct heavy machines 1ms
+     ✓ keeps every id, texture key and runtime path unique 0ms
+     ✓ locks the physical roster and runtime dimensions 0ms
+     ✓ uses only local Peace Walker paths and valid fallback colors 1ms
+     ✓ describes the metal impact as four exact horizontal frames 0ms
+     ✓ ships every runtime asset as an exact-size 8-bit RGBA PNG 1ms
+     × keeps the six original OpenAI source PNGs in the art-source folder 1ms
+     ✓ exposes stable defaults for future Peace Walker resolver wiring 0ms
+ ❯ src/game/core/mgs2PlantSideOpsAssetRegistry.test.ts (8 tests | 1 failed) 5ms
+     ✓ covers all six requested Big Shell asset families 1ms
+     ✓ keeps every id, texture key and runtime path unique 0ms
+     ✓ locks the physical roster and runtime dimensions 0ms
+     ✓ uses only local MGS2 Plant paths and valid fallback colors 1ms
+     ✓ describes the metal impact as four exact horizontal frames 0ms
+     ✓ ships every runtime asset as an exact-size 8-bit RGBA PNG 1ms
+     × keeps the six original OpenAI source PNGs in the art-source folder 1ms
+     ✓ exposes stable MGS2 Plant defaults for the future Side Ops wiring 0ms
+ ❯ src/game/core/mgs3SideOpsAssetRegistry.test.ts (8 tests | 1 failed) 5ms
+     ✓ covers all six requested MGS3 asset families 1ms
+     ✓ keeps every id, texture key and runtime path unique 0ms
+     ✓ locks the physical roster and runtime dimensions 0ms
+     ✓ uses only local MGS3 paths and valid fallback colors 1ms
+     ✓ describes the fortress impact as four exact horizontal frames 0ms
+     ✓ ships every runtime asset as an exact-size 8-bit RGBA PNG 1ms
+     × keeps the six original OpenAI source PNGs in the art-source folder 1ms
+     ✓ exposes stable MGS3 defaults for the future Side Ops wiring 0ms
+ ❯ src/game/core/mg2SideOpsAssetRegistry.test.ts (8 tests | 1 failed) 5ms
+     ✓ covers all six requested Zanzibar Land asset families 1ms
+     ✓ keeps every id, texture key and runtime path unique 0ms
+     ✓ locks the physical roster and runtime dimensions 0ms
+     ✓ uses only local MG2 paths and valid fallback colors 1ms
+     ✓ describes the metal impact as four exact horizontal frames 0ms
+     ✓ ships every runtime asset as an exact-size 8-bit RGBA PNG 1ms
+     × keeps the six original OpenAI source PNGs in the art-source folder 1ms
+     ✓ exposes stable MG2 defaults for the future Side Ops resolver wiring 0ms
+ ❯ src/systems/deliveredArchivePortraitAssets.test.ts (0 test)
+ ❯ src/game/core/sideOpsCommonPropRegistry.test.ts (0 test)
+ ✓ src/game/core/mgs1ActorAnimationRegistry.test.ts (6 tests) 217ms
+ ✓ src/game/core/mg1ActorAnimationRegistry.test.ts (6 tests) 152ms
+ ✓ src/game/core/mgs1VrEnvironmentRegistry.test.ts (9 tests) 54ms
+ ✓ src/game/core/sideOpsCampaign.test.ts (10 tests) 49ms
+ ✓ src/components/common/TouchControlOverlay.test.tsx (7 tests) 58ms
+ ✓ src/game/scenes/sideOpsProjectileCallbacks.test.ts (16 tests) 52ms
+ ✓ src/game/core/sideOpsEnemyBossTactics.test.ts (28 tests) 56ms
+ ✓ src/data/dataIntegrity.test.ts (11 tests) 25ms
+ ✓ src/systems/mgsvGroundZeroesCodec.test.ts (12 tests) 21ms
+ ✓ src/systems/eraCharacterArchive.test.ts (10 tests) 20ms
+ ✓ src/systems/campaignStorage.test.ts (9 tests) 12ms
+ ✓ src/game/core/mgs1SideOpsAssetRegistry.test.ts (9 tests) 14ms
+ ✓ src/components/sideops/EraCharacterArchive.test.tsx (3 tests) 13ms
+ ✓ src/game/core/mgs1VrGameplayAssetRegistry.test.ts (8 tests) 13ms
+ ✓ src/systems/sideOpsCharacterResolver.test.ts (44 tests) 11ms
+ ✓ src/systems/codecAssetEngine.test.ts (18 tests) 13ms
+ ✓ src/game/core/peaceWalkerHeavyOperations.test.ts (9 tests) 10ms
+ ✓ src/game/core/mg1SideOpsAssetRegistry.test.ts (10 tests) 10ms
+ ✓ src/systems/missionBuilderStorage.test.ts (15 tests) 9ms
+ ✓ src/systems/saveMigrations.test.ts (6 tests) 5ms
+ ✓ src/systems/allEraPortraitCoverage.test.ts (1 test) 7ms
+ ✓ src/game/scenes/SideOpsScene.test.ts (11 tests) 11ms
+ ✓ src/game/scenes/sideOpsBossProjectileSpawn.test.ts (17 tests) 8ms
+ ✓ src/game/core/mg1OuterHeavenMission.test.ts (13 tests) 8ms
+ ✓ src/systems/vrStorage.test.ts (10 tests) 6ms
+ ✓ src/game/scenes/sideOpsPickupPhysics.test.ts (7 tests) 7ms
+ ✓ src/systems/mgsvPortraitAssets.test.ts (2 tests) 4ms
+ ✓ src/game/scenes/sideOpsBossSpawn.test.ts (10 tests) 6ms
+ ✓ src/systems/mgs1PortraitAssets.test.ts (2 tests) 5ms
+ ✓ src/game/core/sideOpsEnemyTactics.test.ts (15 tests) 6ms
+ ✓ src/game/core/sideOpsVisualPackRuntime.test.ts (6 tests) 6ms
+ ✓ src/systems/campaignBuilderStorage.test.ts (5 tests) 6ms
+ ✓ src/game/core/mg1ProjectileVfxAssets.test.ts (3 tests) 3ms
+ ✓ src/systems/mgs1VrPhotoshootStorage.test.ts (5 tests) 8ms
+ ✓ src/game/core/mgs1VrSpecialModeRegistry.test.ts (6 tests) 3ms
+ ✓ src/game/core/sideOpsSpecialActorAnimationRuntime.test.ts (6 tests) 4ms
+ ✓ src/game/scenes/sideOpsBossHover.test.ts (9 tests) 5ms
+ ✓ src/game/core/mgs1ShadowMosesMission.test.ts (7 tests) 7ms
+ ✓ src/systems/campaignNarrative.test.ts (7 tests) 5ms
+ ✓ src/game/core/sideOpsMechaCombatAnimation.test.ts (13 tests) 5ms
+ ✓ src/systems/peaceWalkerPortraitAssets.test.ts (2 tests) 5ms
+ ✓ src/components/common/AnimatedCodecPortrait.test.tsx (8 tests) 5ms
+ ✓ src/game/scenes/MissionCompleteScene.test.ts (2 tests) 4ms
+ ✓ src/data/mg1LoreAlignment.test.ts (3 tests) 4ms
+ ✓ src/systems/mgs1ContentEngine.test.ts (7 tests) 5ms
+ ✓ src/data/codecFinalQa.test.ts (4 tests) 4ms
+ ✓ src/systems/directorStorage.test.ts (4 tests) 4ms
+ ✓ src/game/core/sideOpsArchiveInspection.test.ts (4 tests) 4ms
+ ✓ src/game/core/sideOpsBossLocomotion.test.ts (16 tests) 4ms
+ ✓ src/game/core/sideOpsBackdropRegistry.test.ts (4 tests) 3ms
+ ✓ src/game/core/mgs1VrMissionProfileRegistry.test.ts (5 tests) 3ms
+ ✓ src/systems/mgs4PortraitAssets.test.ts (2 tests) 3ms
+ ✓ src/game/core/mgs1VrVs12BattleRegistry.test.ts (5 tests) 3ms
+ ✓ src/systems/mg2PortraitAssets.test.ts (2 tests) 3ms
+ ✓ src/systems/directorEngine.test.ts (5 tests) 4ms
+ ✓ src/game/core/mgs1VrMinuteBattleRegistry.test.ts (4 tests) 3ms
+ ✓ src/game/core/mgs4SideOpsAssetRegistry.test.ts (7 tests) 4ms
+ ✓ src/systems/radioSignalEngine.test.ts (6 tests) 3ms
+ ✓ src/systems/inputSettings.test.ts (4 tests) 2ms
+ ✓ src/game/core/vrSimulationSideOpsRuntime.test.ts (3 tests) 2ms
+ ✓ src/systems/mg1PortraitAssets.test.ts (1 test) 3ms
+ ✓ src/systems/radioIntelStorage.test.ts (4 tests) 2ms
+ ✓ src/systems/mgs1IncomingSchedule.test.ts (3 tests) 2ms
+ ✓ src/systems/syntheticPortraitAssets.test.ts (3 tests) 3ms
+ ✓ src/systems/mgs2ContentEngine.test.ts (5 tests) 3ms
+ ✓ src/systems/mgs3ContentEngine.test.ts (5 tests) 3ms
+ ✓ src/systems/mgs1Encyclopedia.test.ts (6 tests) 2ms
+ ✓ src/systems/codecVisualIdentity.test.ts (4 tests) 2ms
+ ✓ src/game/core/mgs1VrVs12Inventory.test.ts (5 tests) 4ms
+ ✓ src/systems/frequencyEngine.test.ts (5 tests) 3ms
+ ✓ src/systems/contactAvailabilityEngine.test.ts (4 tests) 2ms
+ ✓ src/systems/codecCallBus.test.ts (2 tests) 2ms
+ ✓ src/game/systems/rankSystem.test.ts (3 tests) 2ms
+ ✓ src/game/core/sideOpsActorIdentity.test.ts (4 tests) 2ms
+ ✓ src/systems/voicePackStorage.test.ts (2 tests) 2ms
+ ✓ src/systems/narrativePipeline.test.ts (4 tests) 2ms
+ ✓ src/game/core/mgs1VrPhotoshootRules.test.ts (3 tests) 2ms
+ ✓ src/systems/codecReplayStorage.test.ts (3 tests) 2ms
+ ✓ src/game/core/sideOpsNpcPresentation.test.ts (3 tests) 1ms
+ ✓ src/systems/codecCanonRegistry.test.ts (3 tests) 1ms
+ ✓ src/systems/studioStorage.test.ts (2 tests) 1ms
+ ✓ src/systems/codecSaveStorage.test.ts (1 test) 1ms
+ ✓ src/systems/touchInput.test.ts (3 tests) 1ms
+ ✓ src/systems/conversationEngine.test.ts (2 tests) 1ms
+ ✓ src/systems/codecFidelity.test.ts (2 tests) 1ms
+ ✓ src/systems/mgs1FinalAudit.test.ts (2 tests) 1ms
+ ✓ src/systems/userSettings.test.ts (2 tests) 1ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/systems/deliveredArchivePortraitAssets.test.ts [ src/systems/deliveredArchivePortraitAssets.test.ts ]
+Error: ENOENT: no such file or directory, open '/tmp/cqc-pass19-application/scripts/art_sources/pw-tpp-roster/portraits/all-archive-portraits.provenance.json'
+ ❯ readProof src/systems/deliveredArchivePortraitAssets.test.ts:21:68
+     19| // These production-source proofs are needed by tests, not by the brow…
+     20| // Read them at test runtime so Vercel can omit the heavy art_sources …
+     21| const readProof = (name: string): PortraitProvenance => JSON.parse(rea…
+       |                                                                    ^
+     22|   resolve('scripts/art_sources/pw-tpp-roster/portraits', name), 'utf8'
+     23| ));
+ ❯ src/systems/deliveredArchivePortraitAssets.test.ts:24:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/18]⎯
+
+ FAIL  src/game/core/sideOpsCommonPropRegistry.test.ts [ src/game/core/sideOpsCommonPropRegistry.test.ts ]
+Error: ENOENT: no such file or directory, open '/tmp/cqc-pass19-application/scripts/art_sources/common-props/provenance.json'
+ ❯ src/game/core/sideOpsCommonPropRegistry.test.ts:8:31
+      6|
+      7| const hash = (data: Buffer) => createHash('sha256').update(data).diges…
+      8| const provenance = JSON.parse(readFileSync(resolve('scripts/art_source…
+       |                               ^
+      9|
+     10| describe('authored common SideOps props', () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/18]⎯
+
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 16 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/systems/eraCharacterArchiveAssets.test.ts > PW / TPP release asset gate (physical files, not planned coverage) > verifies the 30 new authored core sheets, source SHA and row order against provenance
+AssertionError: miller_pw source: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/systems/eraCharacterArchiveAssets.test.ts:48:56
+     46|       expect(report.outputs.idle.sha256, entry.id).toBe(digest(readFil…
+     47|       const source = resolve(report.source.file);
+     48|       expect(existsSync(source), `${entry.id} source`).toBe(true);
+       |                                                        ^
+     49|       expect(report.source.sha256, entry.id).toBe(digest(readFileSync(…
+     50|       for (let row = 0; row < 4; row += 1) {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/18]⎯
+
+ FAIL  src/game/scenes/dedicatedSceneArtwork.test.ts > Dedicated MG1/MGS1 environment artwork > ships twelve separate generated panoramas matching their source manifests
+Error: ENOENT: no such file or directory, open '/tmp/cqc-pass19-application/scripts/art_sources/dedicated-interiors/mg1-manifest.json'
+ ❯ src/game/scenes/dedicatedSceneArtwork.test.ts:188:35
+    186|     expect(new Set(assets.map((a) => a.textureKey)).size).toBe(12);
+    187|     for (const pack of ['mg1', 'mgs1', 'mgs1-extra']) {
+    188|       const manifest = JSON.parse(readFileSync(resolve('scripts/art_so…
+       |                                   ^
+    189|       expect(manifest.grid).toEqual([2, 2]);
+    190|       expect(manifest.panels).toHaveLength(4);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/18]⎯
+
+ FAIL  src/game/core/mg2SideOpsAssetRegistry.test.ts > MG2 Side Ops asset registry > keeps the six original OpenAI source PNGs in the art-source folder
+Error: ENOENT: no such file or directory, open '/tmp/cqc-pass19-application/scripts/art_sources/mg2-sideops/mg2-zanzibar-soldier-openai.png'
+ ❯ src/game/core/mg2SideOpsAssetRegistry.test.ts:93:14
+     91|     for (const filename of expectedSourceFiles) {
+     92|       const absolutePath = resolve(process.cwd(), 'scripts', 'art_sour…
+     93|       expect(readFileSync(absolutePath).subarray(0, 8), absolutePath).…
+       |              ^
+     94|     }
+     95|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/18]⎯
+
+ FAIL  src/game/core/mgs2PlantSideOpsAssetRegistry.test.ts > MGS2 Plant Side Ops asset registry > keeps the six original OpenAI source PNGs in the art-source folder
+Error: ENOENT: no such file or directory, open '/tmp/cqc-pass19-application/scripts/art_sources/mgs2-plant-sideops/mgs2-plant-gurlukovich-guard-openai.png'
+ ❯ src/game/core/mgs2PlantSideOpsAssetRegistry.test.ts:93:14
+     91|     for (const filename of expectedSourceFiles) {
+     92|       const absolutePath = resolve(process.cwd(), 'scripts', 'art_sour…
+     93|       expect(readFileSync(absolutePath).subarray(0, 8), absolutePath).…
+       |              ^
+     94|     }
+     95|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/18]⎯
+
+ FAIL  src/game/core/mgs2TankerSideOpsAssetRegistry.test.ts > MGS2 Tanker Side Ops asset registry > keeps the six original OpenAI source PNGs in the art-source folder
+Error: ENOENT: no such file or directory, open '/tmp/cqc-pass19-application/scripts/art_sources/mgs2-tanker-sideops/mgs2-tanker-gurlukovich-guard-openai.png'
+ ❯ src/game/core/mgs2TankerSideOpsAssetRegistry.test.ts:111:14
+    109|         filename
+    110|       );
+    111|       expect(readFileSync(absolutePath).subarray(0, 8), absolutePath).…
+       |              ^
+    112|     }
+    113|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/18]⎯
+
+ FAIL  src/game/core/mgs3SideOpsAssetRegistry.test.ts > MGS3 Side Ops asset registry > keeps the six original OpenAI source PNGs in the art-source folder
+Error: ENOENT: no such file or directory, open '/tmp/cqc-pass19-application/scripts/art_sources/mgs3-sideops/mgs3-ocelot-unit-soldier-openai.png'
+ ❯ src/game/core/mgs3SideOpsAssetRegistry.test.ts:93:14
+     91|     for (const filename of expectedSourceFiles) {
+     92|       const absolutePath = resolve(process.cwd(), 'scripts', 'art_sour…
+     93|       expect(readFileSync(absolutePath).subarray(0, 8), absolutePath).…
+       |              ^
+     94|     }
+     95|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/18]⎯
+
+ FAIL  src/game/core/mgsvGroundZeroesSideOpsAssetRegistry.test.ts > MGSV Ground Zeroes Side Ops asset registry > keeps all six original OpenAI source PNGs in the art-source folder
+Error: ENOENT: no such file or directory, open '/tmp/cqc-pass19-application/scripts/art_sources/mgsv-gz-sideops/mgsv-gz-xof-guard-openai.png'
+ ❯ src/game/core/mgsvGroundZeroesSideOpsAssetRegistry.test.ts:109:14
+    107|         filename
+    108|       );
+    109|       expect(readFileSync(absolutePath).subarray(0, 8), absolutePath).…
+       |              ^
+    110|     }
+    111|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/18]⎯
+
+ FAIL  src/game/core/mgsvPhantomPainSideOpsAssetRegistry.test.ts > MGSV The Phantom Pain Side Ops asset registry > keeps the six original OpenAI source PNGs in the art-source folder
+Error: ENOENT: no such file or directory, open '/tmp/cqc-pass19-application/scripts/art_sources/mgsv-tpp-sideops/mgsv-soviet-afghanistan-soldier-openai.png'
+ ❯ src/game/core/mgsvPhantomPainSideOpsAssetRegistry.test.ts:111:14
+    109|         filename
+    110|       );
+    111|       expect(readFileSync(absolutePath).subarray(0, 8), absolutePath).…
+       |              ^
+    112|     }
+    113|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/18]⎯
+
+ FAIL  src/game/core/patriotsAiSideOpsAssetRegistry.test.ts > Patriots AI Side Ops asset registry > keeps six unique original OpenAI source PNGs
+Error: ENOENT: no such file or directory, open '/tmp/cqc-pass19-application/scripts/art_sources/patriots-ai-sideops/patriots-ai-corrupted-arsenal-guard-openai.png'
+ ❯ src/game/core/patriotsAiSideOpsAssetRegistry.test.ts:110:19
+    108|         filename
+    109|       );
+    110|       const png = readFileSync(absolutePath);
+       |                   ^
+    111|       expect(png.subarray(0, 8), absolutePath).toEqual(pngSignature);
+    112|       hashes.add(createHash('sha256').update(png).digest('hex'));
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/18]⎯
+
+ FAIL  src/game/core/peaceWalkerSideOpsAssetRegistry.test.ts > Peace Walker Side Ops asset registry > keeps the six original OpenAI source PNGs in the art-source folder
+Error: ENOENT: no such file or directory, open '/tmp/cqc-pass19-application/scripts/art_sources/peace-walker-sideops/pw-peace-sentinel-soldier-openai.png'
+ ❯ src/game/core/peaceWalkerSideOpsAssetRegistry.test.ts:107:14
+    105|         filename
+    106|       );
+    107|       expect(readFileSync(absolutePath).subarray(0, 8), absolutePath).…
+       |              ^
+    108|     }
+    109|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/18]⎯
+
+ FAIL  src/game/core/sideOpsActorAnimationRegistry.test.ts > authored Side Ops actor animation boards > ships visible, separated, distinct phases and validates their recorded provenance
+Error: ENOENT: no such file or directory, open '/tmp/cqc-pass19-application/scripts/art_sources/actor-animations/mg1-mobility-openai.png'
+ ❯ src/game/core/sideOpsActorAnimationRegistry.test.ts:85:23
+     83|       expect(provenance.sources.mobility.sha256).not.toBe(provenance.s…
+     84|       for (const source of Object.values(provenance.sources) as Array<…
+     85|         const bytes = readFileSync(resolve('scripts/art_sources/actor-…
+       |                       ^
+     86|         expect(createHash('sha256').update(bytes).digest('hex')).toBe(…
+     87|       }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/18]⎯
+
+ FAIL  src/game/core/sideOpsBossProjectileRegistry.test.ts > authored mecha projectile visuals > ships exact RGBA geometry and independently hashed mecha provenance
+Error: ENOENT: no such file or directory, open '/tmp/cqc-pass19-application/scripts/art_sources/mecha-projectiles/manifest.json'
+ ❯ src/game/core/sideOpsBossProjectileRegistry.test.ts:117:33
+    115|     const filename = sheetId === 'mecha' ? 'manifest.json' : `${sheetI…
+    116|     const manifestPath = resolve(process.cwd(), 'scripts/art_sources/m…
+    117|     const manifest = JSON.parse(readFileSync(manifestPath, 'utf8')) as…
+       |                                 ^
+    118|       sheetId?: string; source: string; sourceSha256: string; authored…
+    119|       outputs: Array<{ id: string; sha256: string; frameRgbaSha256: st…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/18]⎯
+
+ FAIL  src/game/core/sideOpsBossProjectileRegistry.test.ts > authored mecha projectile visuals > ships exact RGBA geometry and independently hashed peace-walker provenance
+Error: ENOENT: no such file or directory, open '/tmp/cqc-pass19-application/scripts/art_sources/mecha-projectiles/peace-walker-manifest.json'
+ ❯ src/game/core/sideOpsBossProjectileRegistry.test.ts:117:33
+    115|     const filename = sheetId === 'mecha' ? 'manifest.json' : `${sheetI…
+    116|     const manifestPath = resolve(process.cwd(), 'scripts/art_sources/m…
+    117|     const manifest = JSON.parse(readFileSync(manifestPath, 'utf8')) as…
+       |                                 ^
+    118|       sheetId?: string; source: string; sourceSha256: string; authored…
+    119|       outputs: Array<{ id: string; sha256: string; frameRgbaSha256: st…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/18]⎯
+
+ FAIL  src/game/core/sideOpsBossProjectileRegistry.test.ts > authored mecha projectile visuals > ships exact RGBA geometry and independently hashed peace-walker-support provenance
+Error: ENOENT: no such file or directory, open '/tmp/cqc-pass19-application/scripts/art_sources/mecha-projectiles/peace-walker-support-manifest.json'
+ ❯ src/game/core/sideOpsBossProjectileRegistry.test.ts:117:33
+    115|     const filename = sheetId === 'mecha' ? 'manifest.json' : `${sheetI…
+    116|     const manifestPath = resolve(process.cwd(), 'scripts/art_sources/m…
+    117|     const manifest = JSON.parse(readFileSync(manifestPath, 'utf8')) as…
+       |                                 ^
+    118|       sheetId?: string; source: string; sourceSha256: string; authored…
+    119|       outputs: Array<{ id: string; sha256: string; frameRgbaSha256: st…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/18]⎯
+
+ FAIL  src/game/core/sideOpsSpecialActorAnimationRegistry.test.ts > special authored Side Ops actors > ships genuine sheets with matching source provenance and distinct visible phases
+Error: ENOENT: no such file or directory, open '/tmp/cqc-pass19-application/scripts/art_sources/special-animations/mgs1-revolver-ocelot-core-openai.png'
+ ❯ src/game/core/sideOpsSpecialActorAnimationRegistry.test.ts:126:23
+    124|       expect(provenance.sources.core.sha256).not.toBe(provenance.sourc…
+    125|       for (const source of Object.values(provenance.sources) as Array<…
+    126|         const bytes = readFileSync(resolve('scripts/art_sources/specia…
+       |                       ^
+    127|         expect(createHash('sha256').update(bytes).digest('hex')).toBe(…
+    128|       }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/18]⎯
+
+ FAIL  src/game/core/sideOpsTerrainRegistry.test.ts > Side Ops original terrain material assets > ships every material at native tile dimensions with matching source provenance
+Error: ENOENT: no such file or directory, open '/tmp/cqc-pass19-application/scripts/art_sources/all-eras-terrain/ground-atlas-openai.png'
+ ❯ src/game/core/sideOpsTerrainRegistry.test.ts:48:27
+     46|     expect(hashes.size).toBe(24);
+     47|     for (const source of Object.values(provenance.sources) as Array<{ …
+     48|       const sourceBytes = readFileSync(resolve(source.path));
+       |                           ^
+     49|       expect(createHash('sha256').update(sourceBytes).digest('hex')).t…
+     50|     }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/18]⎯
+
+
+ Test Files  16 failed | 87 passed (103)
+      Tests  16 failed | 665 passed (681)
+   Start at  23:37:16
+   Duration  4.24s (transform 1.40s, setup 0ms, import 2.15s, tests 1.22s, environment 516ms)
+
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice

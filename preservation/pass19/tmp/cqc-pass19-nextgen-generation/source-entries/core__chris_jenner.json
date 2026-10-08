@@ -1,0 +1,1045 @@
+{
+  "uid": "core__chris_jenner",
+  "name": "Chris Jenner",
+  "game": "Metal Gear: Ghost Babel (Game Boy Color)",
+  "incarnation": "Delta Force Galuade infiltration, original GBC green uniform",
+  "coverage": "action-frames",
+  "displayHeight": 230,
+  "baseFrameHeight": 284,
+  "sourceFrameHeights": {
+    "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png": 284,
+    "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png": 297
+  },
+  "facing": 1,
+  "mirror": false,
+  "fallbackMissingActions": true,
+  "actionMap": {
+    "light": "punch",
+    "heavy": "punch",
+    "low": "low",
+    "throw": "throw",
+    "special": "shoot",
+    "specialDown": "deploy",
+    "specialForward": "punch",
+    "specialBack": "walk",
+    "super": "shoot",
+    "utility": "reload"
+  },
+  "actions": {
+    "idle": {
+      "fps": 0,
+      "loop": true,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png",
+          "sha256": "34a8e81701e54884fcdb17636ef485e23aa4c7c66fa994efa1ee6fa0bf2af706",
+          "rect": [
+            104,
+            37,
+            127,
+            284
+          ],
+          "pivot": [
+            0.5,
+            0.9964788732394366
+          ]
+        }
+      ]
+    },
+    "guard": {
+      "fps": 0,
+      "loop": true,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png",
+          "sha256": "34a8e81701e54884fcdb17636ef485e23aa4c7c66fa994efa1ee6fa0bf2af706",
+          "rect": [
+            406,
+            58,
+            153,
+            263
+          ],
+          "pivot": [
+            0.5,
+            0.9961977186311787
+          ]
+        }
+      ]
+    },
+    "walk": {
+      "fps": 7,
+      "loop": true,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png",
+          "sha256": "34a8e81701e54884fcdb17636ef485e23aa4c7c66fa994efa1ee6fa0bf2af706",
+          "rect": [
+            697,
+            42,
+            163,
+            279
+          ],
+          "pivot": [
+            0.5,
+            0.996415770609319
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png",
+          "sha256": "34a8e81701e54884fcdb17636ef485e23aa4c7c66fa994efa1ee6fa0bf2af706",
+          "rect": [
+            1020,
+            37,
+            164,
+            284
+          ],
+          "pivot": [
+            0.5,
+            0.9964788732394366
+          ]
+        }
+      ]
+    },
+    "crouch": {
+      "fps": 0,
+      "loop": true,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png",
+          "sha256": "34a8e81701e54884fcdb17636ef485e23aa4c7c66fa994efa1ee6fa0bf2af706",
+          "rect": [
+            87,
+            439,
+            144,
+            181
+          ],
+          "pivot": [
+            0.5,
+            0.994475138121547
+          ]
+        }
+      ]
+    },
+    "attack": {
+      "fps": 10,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png",
+          "sha256": "34a8e81701e54884fcdb17636ef485e23aa4c7c66fa994efa1ee6fa0bf2af706",
+          "rect": [
+            387,
+            356,
+            176,
+            262
+          ],
+          "pivot": [
+            0.5,
+            0.9961832061068703
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png",
+          "sha256": "34a8e81701e54884fcdb17636ef485e23aa4c7c66fa994efa1ee6fa0bf2af706",
+          "rect": [
+            689,
+            357,
+            241,
+            261
+          ],
+          "pivot": [
+            0.5,
+            0.9961685823754789
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png",
+          "sha256": "34a8e81701e54884fcdb17636ef485e23aa4c7c66fa994efa1ee6fa0bf2af706",
+          "rect": [
+            995,
+            1026,
+            221,
+            179
+          ],
+          "pivot": [
+            0.5,
+            0.994413407821229
+          ]
+        }
+      ]
+    },
+    "hit": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png",
+          "sha256": "34a8e81701e54884fcdb17636ef485e23aa4c7c66fa994efa1ee6fa0bf2af706",
+          "rect": [
+            395,
+            971,
+            165,
+            244
+          ],
+          "pivot": [
+            0.5,
+            0.9959016393442623
+          ]
+        }
+      ]
+    },
+    "ko": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png",
+          "sha256": "34a8e81701e54884fcdb17636ef485e23aa4c7c66fa994efa1ee6fa0bf2af706",
+          "rect": [
+            627,
+            1140,
+            322,
+            71
+          ],
+          "pivot": [
+            0.5,
+            0.9859154929577465
+          ]
+        }
+      ]
+    },
+    "punch": {
+      "fps": 10,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png",
+          "sha256": "34a8e81701e54884fcdb17636ef485e23aa4c7c66fa994efa1ee6fa0bf2af706",
+          "rect": [
+            387,
+            356,
+            176,
+            262
+          ],
+          "pivot": [
+            0.5,
+            0.9961832061068703
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png",
+          "sha256": "34a8e81701e54884fcdb17636ef485e23aa4c7c66fa994efa1ee6fa0bf2af706",
+          "rect": [
+            689,
+            357,
+            241,
+            261
+          ],
+          "pivot": [
+            0.5,
+            0.9961685823754789
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png",
+          "sha256": "34a8e81701e54884fcdb17636ef485e23aa4c7c66fa994efa1ee6fa0bf2af706",
+          "rect": [
+            995,
+            1026,
+            221,
+            179
+          ],
+          "pivot": [
+            0.5,
+            0.994413407821229
+          ]
+        }
+      ]
+    },
+    "low": {
+      "fps": 10,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png",
+          "sha256": "34a8e81701e54884fcdb17636ef485e23aa4c7c66fa994efa1ee6fa0bf2af706",
+          "rect": [
+            87,
+            439,
+            144,
+            181
+          ],
+          "pivot": [
+            0.5,
+            0.994475138121547
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png",
+          "sha256": "34a8e81701e54884fcdb17636ef485e23aa4c7c66fa994efa1ee6fa0bf2af706",
+          "rect": [
+            991,
+            408,
+            251,
+            203
+          ],
+          "pivot": [
+            0.5,
+            0.9950738916256158
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png",
+          "sha256": "34a8e81701e54884fcdb17636ef485e23aa4c7c66fa994efa1ee6fa0bf2af706",
+          "rect": [
+            995,
+            1026,
+            221,
+            179
+          ],
+          "pivot": [
+            0.5,
+            0.994413407821229
+          ]
+        }
+      ]
+    },
+    "throw": {
+      "fps": 9,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png",
+          "sha256": "34a8e81701e54884fcdb17636ef485e23aa4c7c66fa994efa1ee6fa0bf2af706",
+          "rect": [
+            61,
+            661,
+            227,
+            254
+          ],
+          "pivot": [
+            0.5,
+            0.9960629921259843
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png",
+          "sha256": "34a8e81701e54884fcdb17636ef485e23aa4c7c66fa994efa1ee6fa0bf2af706",
+          "rect": [
+            689,
+            357,
+            241,
+            261
+          ],
+          "pivot": [
+            0.5,
+            0.9961685823754789
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png",
+          "sha256": "34a8e81701e54884fcdb17636ef485e23aa4c7c66fa994efa1ee6fa0bf2af706",
+          "rect": [
+            995,
+            1026,
+            221,
+            179
+          ],
+          "pivot": [
+            0.5,
+            0.994413407821229
+          ]
+        }
+      ]
+    },
+    "deploy": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png",
+          "sha256": "34a8e81701e54884fcdb17636ef485e23aa4c7c66fa994efa1ee6fa0bf2af706",
+          "rect": [
+            386,
+            671,
+            224,
+            245
+          ],
+          "pivot": [
+            0.5,
+            0.9959183673469387
+          ]
+        }
+      ]
+    },
+    "shoot": {
+      "fps": 9,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png",
+          "sha256": "34a8e81701e54884fcdb17636ef485e23aa4c7c66fa994efa1ee6fa0bf2af706",
+          "rect": [
+            714,
+            645,
+            186,
+            271
+          ],
+          "pivot": [
+            0.5,
+            0.996309963099631
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png",
+          "sha256": "34a8e81701e54884fcdb17636ef485e23aa4c7c66fa994efa1ee6fa0bf2af706",
+          "rect": [
+            1004,
+            646,
+            223,
+            270
+          ],
+          "pivot": [
+            0.5,
+            0.9962962962962963
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png",
+          "sha256": "34a8e81701e54884fcdb17636ef485e23aa4c7c66fa994efa1ee6fa0bf2af706",
+          "rect": [
+            85,
+            947,
+            213,
+            270
+          ],
+          "pivot": [
+            0.5,
+            0.9962962962962963
+          ]
+        }
+      ]
+    },
+    "reload": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png",
+          "sha256": "34a8e81701e54884fcdb17636ef485e23aa4c7c66fa994efa1ee6fa0bf2af706",
+          "rect": [
+            85,
+            947,
+            213,
+            270
+          ],
+          "pivot": [
+            0.5,
+            0.9962962962962963
+          ]
+        }
+      ]
+    },
+    "recover": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png",
+          "sha256": "34a8e81701e54884fcdb17636ef485e23aa4c7c66fa994efa1ee6fa0bf2af706",
+          "rect": [
+            995,
+            1026,
+            221,
+            179
+          ],
+          "pivot": [
+            0.5,
+            0.994413407821229
+          ]
+        }
+      ]
+    },
+    "parry": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/right-v1.png",
+          "sha256": "34a8e81701e54884fcdb17636ef485e23aa4c7c66fa994efa1ee6fa0bf2af706",
+          "rect": [
+            406,
+            58,
+            153,
+            263
+          ],
+          "pivot": [
+            0.5,
+            0.9961977186311787
+          ]
+        }
+      ]
+    }
+  },
+  "oppositeActions": {
+    "idle": {
+      "fps": 0,
+      "loop": true,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png",
+          "sha256": "b0bde317db81043d0038b244f9b2a8ac97cfee9075f02842c3374f369811be14",
+          "rect": [
+            96,
+            31,
+            143,
+            297
+          ],
+          "pivot": [
+            0.5,
+            0.9966329966329966
+          ]
+        }
+      ]
+    },
+    "guard": {
+      "fps": 0,
+      "loop": true,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png",
+          "sha256": "b0bde317db81043d0038b244f9b2a8ac97cfee9075f02842c3374f369811be14",
+          "rect": [
+            381,
+            49,
+            184,
+            277
+          ],
+          "pivot": [
+            0.5,
+            0.9963898916967509
+          ]
+        }
+      ]
+    },
+    "walk": {
+      "fps": 7,
+      "loop": true,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png",
+          "sha256": "b0bde317db81043d0038b244f9b2a8ac97cfee9075f02842c3374f369811be14",
+          "rect": [
+            667,
+            40,
+            186,
+            291
+          ],
+          "pivot": [
+            0.5,
+            0.9965635738831615
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png",
+          "sha256": "b0bde317db81043d0038b244f9b2a8ac97cfee9075f02842c3374f369811be14",
+          "rect": [
+            972,
+            38,
+            195,
+            293
+          ],
+          "pivot": [
+            0.5,
+            0.9965870307167235
+          ]
+        }
+      ]
+    },
+    "crouch": {
+      "fps": 0,
+      "loop": true,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png",
+          "sha256": "b0bde317db81043d0038b244f9b2a8ac97cfee9075f02842c3374f369811be14",
+          "rect": [
+            104,
+            435,
+            155,
+            190
+          ],
+          "pivot": [
+            0.5,
+            0.9947368421052631
+          ]
+        }
+      ]
+    },
+    "attack": {
+      "fps": 10,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png",
+          "sha256": "b0bde317db81043d0038b244f9b2a8ac97cfee9075f02842c3374f369811be14",
+          "rect": [
+            361,
+            358,
+            215,
+            269
+          ],
+          "pivot": [
+            0.5,
+            0.9962825278810409
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png",
+          "sha256": "b0bde317db81043d0038b244f9b2a8ac97cfee9075f02842c3374f369811be14",
+          "rect": [
+            624,
+            358,
+            265,
+            270
+          ],
+          "pivot": [
+            0.5,
+            0.9962962962962963
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png",
+          "sha256": "b0bde317db81043d0038b244f9b2a8ac97cfee9075f02842c3374f369811be14",
+          "rect": [
+            998,
+            1004,
+            229,
+            218
+          ],
+          "pivot": [
+            0.5,
+            0.9954128440366973
+          ]
+        }
+      ]
+    },
+    "hit": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png",
+          "sha256": "b0bde317db81043d0038b244f9b2a8ac97cfee9075f02842c3374f369811be14",
+          "rect": [
+            380,
+            965,
+            182,
+            257
+          ],
+          "pivot": [
+            0.5,
+            0.9961089494163424
+          ]
+        }
+      ]
+    },
+    "ko": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png",
+          "sha256": "b0bde317db81043d0038b244f9b2a8ac97cfee9075f02842c3374f369811be14",
+          "rect": [
+            624,
+            1140,
+            343,
+            80
+          ],
+          "pivot": [
+            0.5,
+            0.9875
+          ]
+        }
+      ]
+    },
+    "punch": {
+      "fps": 10,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png",
+          "sha256": "b0bde317db81043d0038b244f9b2a8ac97cfee9075f02842c3374f369811be14",
+          "rect": [
+            361,
+            358,
+            215,
+            269
+          ],
+          "pivot": [
+            0.5,
+            0.9962825278810409
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png",
+          "sha256": "b0bde317db81043d0038b244f9b2a8ac97cfee9075f02842c3374f369811be14",
+          "rect": [
+            624,
+            358,
+            265,
+            270
+          ],
+          "pivot": [
+            0.5,
+            0.9962962962962963
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png",
+          "sha256": "b0bde317db81043d0038b244f9b2a8ac97cfee9075f02842c3374f369811be14",
+          "rect": [
+            998,
+            1004,
+            229,
+            218
+          ],
+          "pivot": [
+            0.5,
+            0.9954128440366973
+          ]
+        }
+      ]
+    },
+    "low": {
+      "fps": 10,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png",
+          "sha256": "b0bde317db81043d0038b244f9b2a8ac97cfee9075f02842c3374f369811be14",
+          "rect": [
+            104,
+            435,
+            155,
+            190
+          ],
+          "pivot": [
+            0.5,
+            0.9947368421052631
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png",
+          "sha256": "b0bde317db81043d0038b244f9b2a8ac97cfee9075f02842c3374f369811be14",
+          "rect": [
+            915,
+            421,
+            298,
+            200
+          ],
+          "pivot": [
+            0.5,
+            0.995
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png",
+          "sha256": "b0bde317db81043d0038b244f9b2a8ac97cfee9075f02842c3374f369811be14",
+          "rect": [
+            998,
+            1004,
+            229,
+            218
+          ],
+          "pivot": [
+            0.5,
+            0.9954128440366973
+          ]
+        }
+      ]
+    },
+    "throw": {
+      "fps": 9,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png",
+          "sha256": "b0bde317db81043d0038b244f9b2a8ac97cfee9075f02842c3374f369811be14",
+          "rect": [
+            54,
+            661,
+            235,
+            259
+          ],
+          "pivot": [
+            0.5,
+            0.9961389961389961
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png",
+          "sha256": "b0bde317db81043d0038b244f9b2a8ac97cfee9075f02842c3374f369811be14",
+          "rect": [
+            624,
+            358,
+            265,
+            270
+          ],
+          "pivot": [
+            0.5,
+            0.9962962962962963
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png",
+          "sha256": "b0bde317db81043d0038b244f9b2a8ac97cfee9075f02842c3374f369811be14",
+          "rect": [
+            998,
+            1004,
+            229,
+            218
+          ],
+          "pivot": [
+            0.5,
+            0.9954128440366973
+          ]
+        }
+      ]
+    },
+    "deploy": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png",
+          "sha256": "b0bde317db81043d0038b244f9b2a8ac97cfee9075f02842c3374f369811be14",
+          "rect": [
+            683,
+            648,
+            183,
+            276
+          ],
+          "pivot": [
+            0.5,
+            0.9963768115942029
+          ]
+        }
+      ]
+    },
+    "shoot": {
+      "fps": 9,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png",
+          "sha256": "b0bde317db81043d0038b244f9b2a8ac97cfee9075f02842c3374f369811be14",
+          "rect": [
+            96,
+            31,
+            143,
+            297
+          ],
+          "pivot": [
+            0.5,
+            0.9966329966329966
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png",
+          "sha256": "b0bde317db81043d0038b244f9b2a8ac97cfee9075f02842c3374f369811be14",
+          "rect": [
+            934,
+            646,
+            269,
+            279
+          ],
+          "pivot": [
+            0.5,
+            0.996415770609319
+          ]
+        },
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png",
+          "sha256": "b0bde317db81043d0038b244f9b2a8ac97cfee9075f02842c3374f369811be14",
+          "rect": [
+            61,
+            948,
+            234,
+            274
+          ],
+          "pivot": [
+            0.5,
+            0.9963503649635036
+          ]
+        }
+      ]
+    },
+    "reload": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png",
+          "sha256": "b0bde317db81043d0038b244f9b2a8ac97cfee9075f02842c3374f369811be14",
+          "rect": [
+            61,
+            948,
+            234,
+            274
+          ],
+          "pivot": [
+            0.5,
+            0.9963503649635036
+          ]
+        }
+      ]
+    },
+    "recover": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png",
+          "sha256": "b0bde317db81043d0038b244f9b2a8ac97cfee9075f02842c3374f369811be14",
+          "rect": [
+            998,
+            1004,
+            229,
+            218
+          ],
+          "pivot": [
+            0.5,
+            0.9954128440366973
+          ]
+        }
+      ]
+    },
+    "parry": {
+      "fps": 0,
+      "loop": false,
+      "frames": [
+        {
+          "file": "assets/combat-sprites-pass16/core__chris_jenner/left-v1.png",
+          "sha256": "b0bde317db81043d0038b244f9b2a8ac97cfee9075f02842c3374f369811be14",
+          "rect": [
+            381,
+            49,
+            184,
+            277
+          ],
+          "pivot": [
+            0.5,
+            0.9963898916967509
+          ]
+        }
+      ]
+    }
+  },
+  "phaseMap": {
+    "punch": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "attack": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "low": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "throw": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "shoot": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    }
+  },
+  "review": {
+    "status": "approved",
+    "reviewer": "PASS16 source author and independent native/source audit; Root bounded art integration review",
+    "reviewedAt": "2026-10-03",
+    "sourceKind": "original-game-capture",
+    "sources": [
+      {
+        "url": "https://lparchive.org/Metal-Gear-Ghost-Babel/Update%2012/2-jennerjerk11.png",
+        "sha256": "1c54f60e69799172c7f1817675dfb9e3f20e9cafa151f5ff1b593f16e40feb27",
+        "scope": "Original-game capture / original publisher character art physically viewed before generation; canonical incarnation reference."
+      },
+      {
+        "url": "https://lparchive.org/Metal-Gear-Ghost-Babel/Update%2012/18-jennerjerk24.png",
+        "sha256": "529936793b1c548b603e1d82d92e31c57cffa76b3cf162cbbb52c062bf2ca74f",
+        "scope": "Original-game capture / original publisher character art physically viewed before generation; canonical incarnation reference."
+      },
+      {
+        "url": "https://lparchive.org/Metal-Gear-Ghost-Babel/Update%2008/4-chris.png",
+        "sha256": "ccbcd2164f43cf70cfb72870c717e3df352c3932c44eaf0cdf817025ffef74f8",
+        "scope": "Original-game capture / original publisher character art physically viewed before generation; canonical incarnation reference."
+      },
+      {
+        "url": "https://lparchive.org/Metal-Gear-Ghost-Babel/Update%2006/7-wqmZq.jpg",
+        "sha256": "635bc8eb9784a28ed3baf306e92dcc145b53ea3192d84ef1cbb2d67615fb484a",
+        "scope": "Original-game capture / original publisher character art physically viewed before generation; canonical incarnation reference."
+      }
+    ],
+    "checks": {
+      "identity": true,
+      "costume": true,
+      "equipment": true,
+      "anatomicalSides": true,
+      "singleFigure": true,
+      "transparentBackground": true
+    },
+    "limits": [
+      "Sixteen physically reviewed independent key poses per facing, 32 total. Walk has two key poses; no full captured motion cycle claim.",
+      "Independent left/right generation preserves canonical anatomical sides; source PNGs stay byte-identical, no mirroring or pixel processing.",
+      "Runtime rects derive from the actual native alpha components. Some rects overlap a neighbor; authored alpha boundary Canvas clip polygons exclude that neighbor while preserving all principal-body pixels above alpha 8.",
+      "One pose may serve several engine move slots. Timings/phase maps are CQC adaptations; original battle geometry, damage, resources and AI are unchanged.",
+      "Weapon small details, fabric folds and face likeness remain stylized. Closest accepted interpretation, no certified pixel-perfect 1:1 fidelity.",
+      "No complete campaign, music or voice work supplied in this sprite candidate.",
+      "No muzzle flash or particles are painted into the shoot poses; most shoot groups contain one aimed-pose keyframe held across phases. Projectile/effect timing remains the engine responsibility.",
+      "GBC reference bodies are small top-down sprites; expanded side view and fine clothing/equipment details are game adaptations, not authenticated full-body concept art.",
+      "Existing CQC Carabine de Chris is drawn as the R5 available in original Ghost Babel. Her possession/firearm firing is a CQC adaptation, not an authenticated original GBC cutscene assignment.",
+      "Actual corrected RIGHT cell10 is grenade readiness and cell11 is R5 readiness; LEFT cell11 is grenade. Metadata follows actual body/gear poses. Grapple followthrough reuses punch/guard key poses to avoid showing a grenade during a throw."
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+<!doctype html><html lang="fr"><meta charset="utf-8"><title>Vestiaire · Preuve native isolée</title><style>body{font:16px monospace;background:#08100e;color:#ddeadd;padding:30px}canvas{border:1px solid #46644f;background:#132119}button{font:inherit}</style><h1>Vestiaire</h1><p>Solid Snake</p><div id="actions"></div><canvas id="render" width="620" height="520"></canvas><pre id="status">Liaison prête.</pre><script src="baseline/modules/../src/cqc-pass18-roster-presentation.js"></script>
+<script src="baseline/modules/../src/cqc-sprite-catalog.js"></script>
+<script src="baseline/modules/../src/cqc-pass16-sprite-catalog.js"></script>
+<script src="baseline/modules/../src/cqc-pass18-sprite-catalog.js"></script>
+<script src="baseline/modules/../src/cqc-pass18-prototypes-sprite-catalog.js"></script>
+<script src="baseline/modules/../src/cqc-pass18-online-sprite-catalog.js"></script>
+<script src="baseline/modules/../src/cqc-pass18-classic-sprite-catalog.js"></script>
+<script src="baseline/modules/../src/cqc-pass18-units-sprite-catalog.js"></script>
+<script src="baseline/modules/../src/cqc-pass18-supports-sprite-catalog.js"></script>
+<script src="baseline/modules/../src/cqc-pass18-delta-sprite-catalog.js"></script>
+<script src="baseline/modules/../src/cqc-pass18-retro-sprite-catalog.js"></script>
+<script src="baseline/modules/../src/cqc-pass18-acid-sprite-catalog.js"></script>
+<script src="baseline/modules/../src/cqc-pass18-modern-sprite-catalog.js"></script>
+<script src="baseline/modules/../src/cqc-pass18-npc2-sprite-catalog.js"></script>
+<script src="baseline/modules/../src/cqc-pass18-npc1-sprite-catalog.js"></script>
+<script src="baseline/modules/../src/cqc-machine-parts-catalog-v1.js"></script>
+<script src="baseline/modules/../src/cqc-pass16-machine-catalog.js"></script>
+<script src="baseline/modules/../src/cqc-pass18-machine-catalog.js"></script>
+<script src="baseline/modules/../src/cqc-pass18-incarnation-scale.js"></script>
+<script src="baseline/modules/../src/cqc-pass17-costume-catalog.js"></script>
+<script src="baseline/modules/../src/cqc-pass18-acid-native-costumes.js"></script>
+<script src="adapter/cqc-pass19-costume-parts.js"></script><script src="adapter/cqc-pass19-pixel-style.js"></script><script src="adapter/cqc-sprite-renderer.js"></script>
+<script>CQC_COMBAT_SPRITES.configure(CQC_COMBAT_SPRITE_CATALOG,{baseURL:new URL('./',location.href).href});CQC_COMBAT_SPRITES.configureCostumes(CQC_COMBAT_COSTUME_CATALOG);</script>
+<script src="baseline/src/cqc-pass17-costumes.js"></script><script src="adapter/cqc-pass19-costume-request-data.js"></script><script src="adapter/cqc-pass19-costumes.js"></script><script src="index.js"></script><script src="src/cqc-pass19-native-wardrobe-library.js"></script><script src="src/cqc-pass19-native-wardrobe-ui.js"></script>
+<script>
+window.qaErrors=[];addEventListener('error',e=>qaErrors.push({message:e.message,source:e.filename}));addEventListener('unhandledrejection',e=>qaErrors.push({message:String(e.reason)}));
+window.qaFighters=[{uid:'core__solid',name:'Solid Snake'},{uid:'core__solid',name:'Solid Snake'}];window.qaEvents=[];CQC_NATIVE_WARDROBE.on(event=>qaEvents.push(event));CQC_NATIVE_WARDROBE.bindSlots({getFighters:()=>qaFighters,onCommit:e=>qaFighters[e.slot]=e.fighter});window.qaWardrobeUI=CQC_NATIVE_WARDROBE_UI.create();qaWardrobeUI.mountSlot(document.getElementById('actions'),0,()=>qaFighters[0]);
+window.runActualLazyQA=async()=>{
+ const before={choice:CQC_COSTUMES_PASS17.chosen(0,'core__solid'),option:CQC_PASS19_COSTUMES.optionFor('core__solid','cyborg'),entry:CQC_COMBAT_SPRITES.getEntry('core__solid',{costume:'cyborg'})};
+ const pending=CQC_NATIVE_WARDROBE.select(0,'core__solid','cyborg');const during={choice:CQC_COSTUMES_PASS17.chosen(0,'core__solid'),entry:CQC_COMBAT_SPRITES.getEntry('core__solid',{costume:'cyborg'}),coreOption:CQC_PASS19_COSTUMES.optionFor('core__solid','cyborg')};const committed=await pending,ctx=document.getElementById('render').getContext('2d'),draws=[];
+ for(const face of[1,-1])for(const action of['idle','shoot']){const f=qaFighters[0],entry=CQC_COMBAT_SPRITES.getEntry(f.uid,f),box={x:face===1?10:320,y:action==='idle'?10:265,width:285,height:245,padding:8};draws.push({face,action,result:CQC_COMBAT_SPRITES.drawFitted(ctx,f,box,face,{action:action,attack:action==='shoot',moveSlot:action==='shoot'?'projectile':undefined,moveKind:action==='shoot'?'projectile':undefined,moveTag:'ballistic',time:0,actionTime:0})});}
+ const entry=CQC_COMBAT_SPRITES.getEntry('core__solid',{costume:'cyborg'});const frames=entry?[...Object.values(entry.actions),...Object.values(entry.oppositeActions)].flatMap(a=>a.frames):[];
+ const report={schema:'cqc.native-wardrobe-real-remote-browser-qa/1',status:committed.committed&&before.choice==='original'&&before.option===null&&before.entry===null&&during.choice==='original'&&during.entry===null&&draws.every(d=>d.result)&&qaEvents.filter(e=>e.type==='asset-verified').length===6&&qaErrors.length===0?'passed':'failed',before,during,committed,draws,physicalFrameCount:new Set(frames.map(f=>f.file+JSON.stringify(f.rect))).size,assetPins:qaEvents.filter(e=>e.type==='asset-verified'),privateChoices:CQC_COSTUMES_PASS17.snapshot(),library:CQC_NATIVE_WARDROBE.statistics(),errors:qaErrors,sourceArtScope:'Six native remote atlas bytes/dimensions decoded by actual production renderer; source audit remains visual geometry evidence and original costume is explicitly noncanonical.',sourceCommit:'20a832c8e4c15f11cae1de408c59cbc5931e7477'};window.qaReport=report;document.getElementById('status').textContent=report.status;return report;
+};
+</script></html>

@@ -1,0 +1,108 @@
+{
+  "schema": "cqc.guarded-text-patch/2",
+  "baselineRoot": "/tmp/cqc-pass19-application",
+  "parentRootActualReceipt": "/tmp/cqc-pass19-integration/DIEGETIC_MENU_ACTUAL_GUARDED_PATCH_V1.json",
+  "parentRootAppliedPlanSHA256": "88d5dfc7ca049a50eeefab81af2d914741efd208041dcfddce0796619748ce1f",
+  "baselineSourceModified": false,
+  "routingKeysAndUIDsChanged": false,
+  "qualification": "17 additional text operations plus one correction to avoid a duplicated VERSUS logo label.",
+  "files": [
+    {
+      "path": "public/cqc/index.html",
+      "sourceSHA256": "f8701fa8713a3dc8ef81c87a1abd571b670cc374f90438837e0e5145cf9b4c84",
+      "outputSHA256": "c666793e4fcabe2dc2c7664f4175f0021824855867c0dd23b65d4f790a72f23a",
+      "operations": [
+        {
+          "old": "PARALLAXE · COMBAT OC",
+          "new": "PARALLAXE · DUEL",
+          "expectedCount": 1
+        },
+        {
+          "old": "PARALLAXE · OC",
+          "new": "PARALLAXE · DOSSIER PERSONNEL",
+          "expectedCount": 1
+        },
+        {
+          "old": "DUEL IA · LOCAL · DOJO · CONTRÔLE DE ZONE",
+          "new": "DUELS · EXERCICES · CONTRÔLE DE ZONE",
+          "expectedCount": 1
+        },
+        {
+          "old": "REPLAY THEATER · GHOSTS",
+          "new": "THÉÂTRE DES REPLAYS",
+          "expectedCount": 1
+        },
+        {
+          "old": "REPLAY THEATER",
+          "new": "THÉÂTRE DES REPLAYS",
+          "expectedCount": 1
+        },
+        {
+          "old": "WATCH · GHOST · EXPORT",
+          "new": "ARCHIVES · REPLAYS · TRANSFERT",
+          "expectedCount": 1
+        },
+        {
+          "old": "INPUT LAB · REMAPPAGE",
+          "new": "COMMANDES",
+          "expectedCount": 1
+        },
+        {
+          "old": "INPUT LAB",
+          "new": "COMMANDES",
+          "expectedCount": 1
+        },
+        {
+          "old": "REMAPPAGE · GAMEPAD MONITOR",
+          "new": "CLAVIER · MANETTE",
+          "expectedCount": 1
+        },
+        {
+          "old": "FINISHER ARCHIVE",
+          "new": "ARCHIVES DES TECHNIQUES",
+          "expectedCount": 1
+        },
+        {
+          "old": "ARCHIVE FRONT",
+          "new": "ARCHIVES HISTORIQUES",
+          "expectedCount": 1
+        },
+        {
+          "old": "RECOVERY FILES",
+          "new": "DOSSIERS DE RÉCUPÉRATION",
+          "expectedCount": 2
+        },
+        {
+          "old": "MISSION FILES",
+          "new": "DOSSIERS DE MISSION",
+          "expectedCount": 3
+        },
+        {
+          "old": "ADMINISTRATION",
+          "new": "ATELIER",
+          "expectedCount": 1
+        },
+        {
+          "old": "choices:['ACCESSIBILITÉ','PLEIN ÉCRAN','ADMIN']",
+          "new": "choices:['ACCESSIBILITÉ','PLEIN ÉCRAN','ATELIER']",
+          "expectedCount": 1
+        },
+        {
+          "old": "COMMAND FRONT",
+          "new": "COMMANDEMENT",
+          "expectedCount": 1
+        },
+        {
+          "old": "SCANLINES",
+          "new": "LIGNES D’ÉCRAN",
+          "expectedCount": 1
+        },
+        {
+          "old": "<strong>CQC VERSUS <em>VERSUS</em></strong>",
+          "new": "<strong>CQC VERSUS <em>COMMANDEMENT</em></strong>",
+          "expectedCount": 1
+        }
+      ]
+    }
+  ]
+}

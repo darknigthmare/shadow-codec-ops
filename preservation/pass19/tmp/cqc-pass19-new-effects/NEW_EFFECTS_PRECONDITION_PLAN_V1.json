@@ -1,0 +1,89 @@
+{
+  "schema": "cqc.source-preconditioned-plan/1",
+  "status": "reviewable-plan-no-APP-mutation",
+  "createdAt": "2026-10-07T23:50:34.991648+00:00",
+  "engine": {
+    "path": "src/cqc-pass8-combat-engine.js",
+    "expectedSHA256": "b3076a7f69eeda7af72dfb4c3d7e1548302952ae399897212d7110837a7a23d5",
+    "resultSHA256": "b68e4d66e2c99fbc1b26e557557c8e4a51e16de1c2b165c6e3cf33d79b96cd27",
+    "replacements": [
+      {
+        "id": "damage-smoke-non-damaging",
+        "before": "function damage(s,a,d,m,{projectile=null,forced=false,scale=1}={}){if(d.life",
+        "after": "function damage(s,a,d,m,{projectile=null,forced=false,scale=1}={}){if(root.CQC_PASS19_SMOKE?.isMove(m))return{hit:false,nonDamaging:true};if(d.life",
+        "count": 1
+      },
+      {
+        "id": "explode-smoke-cloud",
+        "before": "function explode(s,q){if(q.dead)return;",
+        "after": "function explode(s,q){if(root.CQC_PASS19_SMOKE?.explode(s,q,{event}))return;if(q.dead)return;",
+        "count": 1
+      },
+      {
+        "id": "trap-smoke-cloud",
+        "before": "if(tr.life<=0){tr.dead=true;continue;}if(tr.age<tr.arm)continue;",
+        "after": "if(tr.life<=0){tr.dead=true;continue;}if(tr.age<tr.arm)continue;\n if(root.CQC_PASS19_SMOKE?.trap(s,tr,a,d,{event}))continue;",
+        "count": 1
+      },
+      {
+        "id": "smoke-conditional-cover",
+        "before": "projectileStep(s);objectsStep(s);for(const p of ps)",
+        "after": "projectileStep(s);objectsStep(s);root.CQC_PASS19_SMOKE?.step(s,{event,box});for(const p of ps)",
+        "count": 1
+      },
+      {
+        "id": "smoke-contract-visible",
+        "before": "const api={spatialContract:'pass19-feet-spatial-v1',",
+        "after": "const api={smokeContract:'pass19-non-damaging-smoke-v1',spatialContract:'pass19-feet-spatial-v1',",
+        "count": 1
+      }
+    ]
+  },
+  "referenceVSHTML": {
+    "path": "modules/unified-versus-v055.html",
+    "SHA256": "e8b3b7c5b918fa193dd2fc221ba6402ca0e56c9069a26a1282be84d480d0b215",
+    "physicsOrDrawingReplacements": []
+  },
+  "sourceDependencies": [
+    {
+      "path": "src/cqc-pass19-combat-additions.js",
+      "sha256": "b6eb2b8d293fe1c0200d7b45cffed658fdec6439b5a4f338a0c1ebe0bbdb3220"
+    },
+    {
+      "path": "src/cqc-pass18-vfx-catalog.js",
+      "sha256": "998cf3c0af05e9b0c36e1fea8f575158e1df48216bddc34ce441790b315cee85"
+    },
+    {
+      "path": "src/cqc-pass18-vfx-bridge.js",
+      "sha256": "0ca54fae4f67b8e09bf536339a4e3d8b9063e3ea485208cdc5907490d179fe90"
+    },
+    {
+      "path": "src/cqc-pass19-versus-spatial.js",
+      "sha256": "6a906005cd2a967c9918fa4d8c48aeb3d48d91de79adf3bf239b2c33fc4ce3ff"
+    }
+  ],
+  "additionalModules": [
+    {
+      "name": "cqc-pass19-new-vfx-catalog.js",
+      "placement": "after cqc-pass18-vfx-catalog.js before cqc-pass18-vfx-bridge.js; aliases retain actual native source PNG SHA and geometry"
+    },
+    {
+      "name": "cqc-pass19-smoke-mechanics.js",
+      "placement": "before cqc-pass8-combat-engine.js; existing actor cloud/cloak state only"
+    },
+    {
+      "name": "cqc-pass19-new-vfx-routes.js",
+      "placement": "after VFX bridge; call registerFighters only after reviewed new fighters installed, then draw adapter handles smoke cloud natively"
+    }
+  ],
+  "boundedBehavior": {
+    "cloudFrames": 240,
+    "maxCloudFrames": 360,
+    "maxClouds": 8,
+    "nonDamaging": true,
+    "noChipOrHitstunOrStatusOrBlastTrapDestruction": true,
+    "conditionalCover": "Owned cloud radius and height, living grounded operator, no attack/hit/marked state and 24 quiet frames. Only the smoke-owned cloak is removed outside/expiration/action; unrelated authored cloak preserved.",
+    "replayClock": "Existing 60fps engine FX ticks; no random or wall time."
+  },
+  "scope": "Actual current standalone/tab CQC Versus engine; new source-game profiles retain original references and CQC adaptation qualifiers. No changed spatial math, body scale, muzzle points, old attacks, new image source or APP mutation by subagent."
+}
