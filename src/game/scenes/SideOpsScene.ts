@@ -1,0 +1,2189 @@
+import Phaser from 'phaser';
+import type { EraId } from '../../types/codec.types';
+import type { SideOpsVisualPackId } from '../../types/missionBuilder.types';
+import { getStorageKey } from '../../systems/saveEngine';
+import {
+  emitGameEvent,
+  onGameEvent,
+  GAME_EVENT,
+  type AlertEventPayload,
+  type CodecRequestPayload,
+  type DirectorDirectivePayload,
+  type MissionCompletePayload,
+  type MissionHudPayload
+} from '../core/GameEvents';
+import { calculateSideOpsRank } from '../systems/rankSystem';
+import { RuntimeInputController } from '../core/RuntimeInput';
+import { resolveBuilderSideOpsProfile } from '../../systems/missionBuilderStorage';
+import { getCampaignLoadoutBonuses } from '../../systems/campaignStorage';
+import {
+  getMg1ActorAnimationAssetBySourceTexture,
+  getMg1ActorAnimationKey,
+  MG1_ACTOR_ANIMATION_ASSETS,
+  type Mg1ActorAnimationAsset,
+  type Mg1ActorAnimationState
+} from '../core/mg1ActorAnimationRegistry';
+import { MGS1_SIDEOPS_RUNTIME_TEXTURES } from '../core/mgs1SideOpsAssetRegistry';
+import { MGS2_TANKER_SIDEOPS_RUNTIME_TEXTURES } from '../core/mgs2TankerSideOpsAssetRegistry';
+import {
+  SIDEOPS_SUPPLEMENTAL_RUNTIME_TEXTURES,
+  type SideOpsSupplementalRuntimeTextures
+} from '../core/sideOpsVisualPackRuntime';
+import { resolveSideOpsBackdropTexture } from '../core/sideOpsBackdropRegistry';
+import {
+  evaluateSideOpsCampaignChallenges,
+  getSideOpsCampaignExtractionBlocker,
+  getSideOpsCampaignMission,
+  getSideOpsCampaignSector,
+  resolveSideOpsCampaignProfile,
+  type SideOpsCampaignMission
+} from '../core/sideOpsCampaign';
+import {
+  configureAuthoredSideOpsActor,
+  getAuthoredSideOpsActorClip,
+  registerAuthoredSideOpsActorAnimations
+} from '../core/sideOpsActorAnimationRuntime';
+import type { SideOpsActorAnimationState, SideOpsActorRole } from '../core/sideOpsActorAnimationRegistry';
+import { configureAuthoredSideOpsSpecialActor, getAuthoredSideOpsSpecialActorClip, registerAuthoredSideOpsSpecialActorAnimations } from '../core/sideOpsSpecialActorAnimationRuntime';
+import { getSideOpsSpecialActorDefinition, type SideOpsSpecialActorState } from '../core/sideOpsSpecialActorAnimationRegistry';
+import { getSideOpsAuthoredBossCombatContract, resolveSideOpsMechaCombatAnimation, resolveSideOpsMechaCombatPlayback } from '../core/sideOpsMechaCombatAnimation';
+import { resolveSideOpsBossProjectileVisual, resolveSideOpsBossProjectileMuzzle, resolveSideOpsBossProjectileVelocity } from '../core/sideOpsBossProjectileRegistry';
+import { getSideOpsTerrainAsset, SIDEOPS_TERRAIN_COVER_TEXTURES } from '../core/sideOpsTerrainRegistry';
+import { resolveSideOpsAuthoredIdentityPack } from '../core/sideOpsActorIdentity';
+import { resolveSideOpsBossHoverContract } from '../core/sideOpsBossLocomotion';
+import { createSideOpsArchiveInspection, type SideOpsArchiveInspection } from '../core/sideOpsArchiveInspectionRuntime';
+import {
+  createSideOpsEnemyState,
+  sideOpsEnemyHasLineOfSight,
+  sideOpsEnemySightHit,
+  updateSideOpsEnemy,
+  type SideOpsEnemyDecision,
+  type SideOpsEnemyObstacle,
+  type SideOpsEnemyState,
+  type SideOpsEnemyStimulus
+} from '../core/sideOpsEnemyTactics';
+import {
+  createSideOpsBossState,
+  updateSideOpsBoss,
+  type SideOpsBossDecision,
+  type SideOpsBossProjectile,
+  type SideOpsBossState
+} from '../core/sideOpsEnemyBossTactics';
+
+type AlertState = 'NORMAL' | 'SUSPICION' | 'ALERT' | 'EVASION' | 'CAUTION' | 'MISSION FAILED';
+type GuardRole = 'patrol' | 'reinforcement';
+type ObjectiveStage = 'recover_keycard' | 'open_security_door' | 'cross_security_yard' | 'defeat_captain' | 'extract';
+
+interface GuardUnit {
+  id: string;
+  sprite: Phaser.Physics.Arcade.Sprite;
+  patrolMin: number;
+  patrolMax: number;
+  direction: number;
+  disabled: boolean;
+  hp: number;
+  role: GuardRole;
+  brain: SideOpsEnemyState;
+  decision: SideOpsEnemyDecision | null;
+  indicator: Phaser.GameObjects.Text;
+}
+
+interface BossUnit {
+  sprite: Phaser.Physics.Arcade.Sprite;
+  baseFacingRight: boolean;
+  hp: number;
+  maxHp: number;
+  active: boolean;
+  defeated: boolean;
+  phase: 1 | 2 | 3;
+  direction: number;
+  brain: SideOpsBossState;
+  decision: SideOpsBossDecision | null;
+}
+
+type PickupKind = 'ration' | 'chaff' | 'ammo';
+
+interface CodecProfileCall {
+  trigger: CodecRequestPayload['trigger'];
+  contactId: string;
+  conversationId: string;
+  message: string;
+  pauseGame: boolean;
+}
+
+interface MissionProfile {
+  id: string;
+  era: EraId;
+  visualPackId: SideOpsVisualPackId;
+  environment: 'dock' | 'tanker' | 'jungle' | 'facility' | 'vr';
+  title: string;
+  location: string;
+  header: string;
+  worldWidth: number;
+  groundColor: number;
+  backdropColor: number;
+  structureColor: number;
+  start: { x: number; y: number };
+  playerTexture: string;
+  startAmmo: number;
+  startRations: number;
+  startChaff: number;
+  initialObjectives: string[];
+  totalObjectives: number;
+  door: { x: number; y: number; label: string };
+  camera: { x: number; y: number };
+  searchlight: { x: number; y: number; sweep: number };
+  elevator: { x: number; y: number; label: string };
+  keycard: { x: number; y: number; label: string };
+  boss: { name: string; x: number; y: number; hp: number; texture: string; baseFacingRight: boolean; tintPhaseOne: number; tintPhaseTwo: number };
+  guardTexture: string;
+  reinforcementTexture: string;
+  platforms: Array<{ x: number; y: number; scaleX: number }>;
+  crates: Array<{ x: number; y: number }>;
+  guards: Array<{ x: number; y: number; patrolMin: number; patrolMax: number; role: GuardRole; hp?: number }>;
+  pickups: Array<{ x: number; y: number; kind: PickupKind }>;
+  secrets: Array<{ x: number; y: number; id: string; label: string }>;
+  stageLabels: Record<ObjectiveStage, string>;
+  completionX: { openDoor: number; crossYard: number; bossArena: number };
+  codec: {
+    missionStart: CodecProfileCall;
+    keycardFound: CodecProfileCall;
+    lowHealth: CodecProfileCall;
+    missionFailed: CodecProfileCall;
+    missionComplete: CodecProfileCall;
+    manual: CodecProfileCall;
+    chaff: CodecProfileCall;
+    cameraDown: CodecProfileCall;
+    cqc: CodecProfileCall;
+    firstAlert: CodecProfileCall;
+    suspicion: CodecProfileCall;
+    evasion: CodecProfileCall;
+    caution: CodecProfileCall;
+    reinforcement: CodecProfileCall;
+    cameraDetected: CodecProfileCall;
+    searchlight: CodecProfileCall;
+    bossIntro: CodecProfileCall;
+    bossMidfight: CodecProfileCall;
+    bossDefeated: CodecProfileCall;
+    secret: CodecProfileCall;
+  };
+}
+
+const MISSION_STORAGE_KEY = 'sideops-active-mission-id';
+
+const SHADOW_DOCK_PROFILE: MissionProfile = {
+  id: 'shadow_dock_001',
+  era: 'mgs1',
+  visualPackId: 'mgs1',
+  environment: 'dock',
+  title: 'Dock Infiltration',
+  location: 'Snowfield Docks',
+  header: 'MISSION 001 // DOCK INFILTRATION // SHADOW MOSES SIMULATION',
+  worldWidth: 3800,
+  groundColor: 0x06120a,
+  backdropColor: 0x041007,
+  structureColor: 0x0d2a14,
+  start: { x: 90, y: 454 },
+  playerTexture: MGS1_SIDEOPS_RUNTIME_TEXTURES.playerTexture,
+  startAmmo: 26,
+  startRations: 1,
+  startChaff: 1,
+  initialObjectives: ['enter_dock'],
+  totalObjectives: 6,
+  door: { x: 1510, y: 462, label: 'Lv.1 security door' },
+  camera: { x: 1210, y: 235 },
+  searchlight: { x: 1990, y: 118, sweep: 360 },
+  elevator: { x: 3630, y: 470, label: 'cargo elevator' },
+  keycard: { x: 1000, y: 290, label: 'Keycard Lv.1' },
+  boss: { name: 'Revolver Ocelot', x: 2990, y: 456, hp: 10, texture: MGS1_SIDEOPS_RUNTIME_TEXTURES.bossTexture, baseFacingRight: true, tintPhaseOne: 0xffdf85, tintPhaseTwo: 0xff6b6b },
+  guardTexture: MGS1_SIDEOPS_RUNTIME_TEXTURES.guardTexture,
+  reinforcementTexture: MGS1_SIDEOPS_RUNTIME_TEXTURES.reinforcementTexture,
+  platforms: [
+    { x: 480, y: 520, scaleX: 16 }, { x: 1120, y: 520, scaleX: 16 }, { x: 1760, y: 520, scaleX: 16 },
+    { x: 2410, y: 520, scaleX: 16 }, { x: 3150, y: 520, scaleX: 22 }, { x: 520, y: 410, scaleX: 3 },
+    { x: 960, y: 330, scaleX: 4 }, { x: 1320, y: 430, scaleX: 3 }, { x: 1940, y: 360, scaleX: 4 },
+    { x: 2320, y: 315, scaleX: 3 }, { x: 3050, y: 385, scaleX: 4 }, { x: 3390, y: 305, scaleX: 3 }
+  ],
+  crates: [
+    { x: 360, y: 480 }, { x: 1380, y: 390 }, { x: 1810, y: 480 }, { x: 2055, y: 320 },
+    { x: 2550, y: 480 }, { x: 2750, y: 480 }, { x: 3220, y: 480 }
+  ],
+  guards: [
+    { x: 700, y: 454, patrolMin: 540, patrolMax: 805, role: 'patrol' },
+    { x: 1690, y: 454, patrolMin: 1580, patrolMax: 1880, role: 'patrol' },
+    { x: 2200, y: 454, patrolMin: 2080, patrolMax: 2400, role: 'patrol' }
+  ],
+  pickups: [
+    { x: 430, y: 380, kind: 'ration' }, { x: 1320, y: 390, kind: 'chaff' }, { x: 2050, y: 320, kind: 'ammo' }
+  ],
+  secrets: [
+    { x: 560, y: 374, id: 'dog_tag_secret', label: 'DOG TAG CACHE' },
+    { x: 2320, y: 275, id: 'mo_disc_secret', label: 'OPTICAL DISC' },
+    { x: 3405, y: 265, id: 'cassette_secret', label: 'CODEC TAPE' }
+  ],
+  stageLabels: {
+    recover_keycard: 'Recover Keycard Lv.1',
+    open_security_door: 'Open Lv.1 security door',
+    cross_security_yard: 'Cross searchlight yard',
+    defeat_captain: 'Defeat Revolver Ocelot',
+    extract: 'Reach cargo elevator'
+  },
+  completionX: { openDoor: 1545, crossYard: 2140, bossArena: 2580 },
+  codec: {
+    missionStart: { trigger: 'mission_start', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_mission_start', message: 'Mission briefing ready.', pauseGame: true },
+    keycardFound: { trigger: 'keycard_found', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_keycard_found', message: 'Keycard Lv.1 recovered. Codec hint available.', pauseGame: false },
+    lowHealth: { trigger: 'low_health', contactId: 'naomi_mgs1', conversationId: 'mgs1_naomi_medical', message: 'Health critical. Medical support available.', pauseGame: true },
+    missionFailed: { trigger: 'low_health', contactId: 'naomi_mgs1', conversationId: 'mgs1_naomi_mission_failed', message: 'Snake is down. Mission failed.', pauseGame: false },
+    missionComplete: { trigger: 'mission_complete', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_mission_complete', message: 'Mission complete.', pauseGame: true },
+    manual: { trigger: 'manual_call', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_default', message: 'Manual Codec request from Side Ops.', pauseGame: false },
+    chaff: { trigger: 'manual_call', contactId: 'otacon_mgs1', conversationId: 'mgs1_otacon_chaff_hint', message: 'Chaff deployed. Camera and searchlight signals disrupted.', pauseGame: false },
+    cameraDown: { trigger: 'camera_detected', contactId: 'otacon_mgs1', conversationId: 'mgs1_otacon_camera_down', message: 'Security camera disabled.', pauseGame: false },
+    cqc: { trigger: 'manual_call', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_cqc_hint', message: 'Guard neutralized quietly.', pauseGame: false },
+    firstAlert: { trigger: 'first_alert', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_first_alert', message: 'ALERT triggered. Codec support available.', pauseGame: true },
+    suspicion: { trigger: 'suspicion', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_suspicion', message: 'Suspicion detected. Codec support available.', pauseGame: false },
+    evasion: { trigger: 'evasion', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_evasion', message: 'Evasion phase active.', pauseGame: false },
+    caution: { trigger: 'caution', contactId: 'miller_mgs1', conversationId: 'mgs1_miller_caution', message: 'Caution phase active.', pauseGame: false },
+    reinforcement: { trigger: 'reinforcement', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_reinforcement', message: 'Reinforcements deployed.', pauseGame: false },
+    cameraDetected: { trigger: 'camera_detected', contactId: 'otacon_mgs1', conversationId: 'mgs1_otacon_tech', message: 'Camera sightline detected. Technical support available.', pauseGame: false },
+    searchlight: { trigger: 'searchlight_detected', contactId: 'otacon_mgs1', conversationId: 'mgs1_otacon_searchlight_hint', message: 'Searchlight sweep detected. Technical support available.', pauseGame: false },
+    bossIntro: { trigger: 'boss_intro', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_boss_intro', message: 'Revolver Ocelot has sealed the dock route.', pauseGame: true },
+    bossMidfight: { trigger: 'boss_midfight', contactId: 'naomi_mgs1', conversationId: 'mgs1_naomi_boss_midfight', message: 'Ocelot is accelerating his ricochet pattern.', pauseGame: false },
+    bossDefeated: { trigger: 'boss_defeated', contactId: 'campbell_mgs1', conversationId: 'mgs1_campbell_boss_defeated', message: 'Ocelot is down. Extraction route open.', pauseGame: true },
+    secret: { trigger: 'secret_frequency', contactId: 'otacon_mgs1', conversationId: 'mgs1_otacon_secret_found', message: 'Hidden signal archive recovered.', pauseGame: false }
+  }
+};
+
+const TANKER_HOLD_PROFILE: MissionProfile = {
+  id: 'tanker_hold_002',
+  era: 'mgs2',
+  visualPackId: 'mgs2_tanker',
+  environment: 'tanker',
+  title: 'Tanker Hold Sabotage',
+  location: 'Rain Deck / Cargo Hold',
+  header: 'MISSION 002 // TANKER HOLD SABOTAGE // MGS2 SIMULATION',
+  worldWidth: 4300,
+  groundColor: 0x08131c,
+  backdropColor: 0x030a12,
+  structureColor: 0x10283a,
+  start: { x: 90, y: 454 },
+  playerTexture: 'playerTanker',
+  startAmmo: 32,
+  startRations: 1,
+  startChaff: 2,
+  initialObjectives: ['enter_deck'],
+  totalObjectives: 6,
+  door: { x: 1720, y: 462, label: 'bulkhead access lock' },
+  camera: { x: 1450, y: 228 },
+  searchlight: { x: 2360, y: 105, sweep: 430 },
+  elevator: { x: 4110, y: 470, label: 'cargo hold exit' },
+  keycard: { x: 1195, y: 285, label: 'Bulkhead Keycard' },
+  boss: { name: 'Olga Gurlukovich', x: 3470, y: 456, hp: 12, texture: MGS2_TANKER_SIDEOPS_RUNTIME_TEXTURES.bossTexture, baseFacingRight: false, tintPhaseOne: 0x9fd4ff, tintPhaseTwo: 0xffdf85 },
+  guardTexture: MGS2_TANKER_SIDEOPS_RUNTIME_TEXTURES.guardTexture,
+  reinforcementTexture: MGS2_TANKER_SIDEOPS_RUNTIME_TEXTURES.reinforcementTexture,
+  platforms: [
+    { x: 490, y: 520, scaleX: 16 }, { x: 1150, y: 520, scaleX: 17 }, { x: 1820, y: 520, scaleX: 17 },
+    { x: 2500, y: 520, scaleX: 18 }, { x: 3200, y: 520, scaleX: 18 }, { x: 3900, y: 520, scaleX: 16 },
+    { x: 520, y: 395, scaleX: 4 }, { x: 1120, y: 325, scaleX: 4 }, { x: 1500, y: 418, scaleX: 3 },
+    { x: 2150, y: 340, scaleX: 5 }, { x: 2620, y: 395, scaleX: 3 }, { x: 3030, y: 315, scaleX: 4 },
+    { x: 3650, y: 370, scaleX: 5 }, { x: 3970, y: 295, scaleX: 3 }
+  ],
+  crates: [
+    { x: 340, y: 480 }, { x: 760, y: 480 }, { x: 1510, y: 378 }, { x: 1980, y: 480 },
+    { x: 2420, y: 480 }, { x: 2760, y: 480 }, { x: 3230, y: 480 }, { x: 3820, y: 480 }
+  ],
+  guards: [
+    { x: 640, y: 454, patrolMin: 500, patrolMax: 835, role: 'patrol' },
+    { x: 1880, y: 454, patrolMin: 1760, patrolMax: 2060, role: 'patrol' },
+    { x: 2520, y: 454, patrolMin: 2370, patrolMax: 2740, role: 'patrol' },
+    { x: 3080, y: 454, patrolMin: 2960, patrolMax: 3265, role: 'patrol' }
+  ],
+  pickups: [
+    { x: 515, y: 365, kind: 'ration' }, { x: 1540, y: 380, kind: 'ammo' }, { x: 2170, y: 305, kind: 'chaff' }, { x: 3680, y: 335, kind: 'ammo' }
+  ],
+  secrets: [
+    { x: 1120, y: 288, id: 'rain_deck_photo', label: 'RAIN DECK PHOTO' },
+    { x: 3030, y: 278, id: 'hold_projector_reel', label: 'HOLD PROJECTOR REEL' },
+    { x: 3985, y: 258, id: 'tanker_tape_secret', label: 'TANKER AUDIO LOG' }
+  ],
+  stageLabels: {
+    recover_keycard: 'Recover Bulkhead Keycard',
+    open_security_door: 'Open bulkhead access lock',
+    cross_security_yard: 'Cross rain deck search zone',
+    defeat_captain: 'Defeat Olga Gurlukovich',
+    extract: 'Reach cargo hold exit'
+  },
+  completionX: { openDoor: 1760, crossYard: 2820, bossArena: 3180 },
+  codec: {
+    missionStart: { trigger: 'mission_start', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_mission_start', message: 'Tanker sabotage briefing ready.', pauseGame: true },
+    keycardFound: { trigger: 'keycard_found', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_keycard_found', message: 'Bulkhead keycard recovered.', pauseGame: false },
+    lowHealth: { trigger: 'low_health', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_low_health', message: 'Health critical. Support channel open.', pauseGame: true },
+    missionFailed: { trigger: 'low_health', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_mission_failed', message: 'Tanker op failed.', pauseGame: false },
+    missionComplete: { trigger: 'mission_complete', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_mission_complete', message: 'Tanker route clear.', pauseGame: true },
+    manual: { trigger: 'manual_call', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_support', message: 'Manual Codec request from Side Ops.', pauseGame: false },
+    chaff: { trigger: 'manual_call', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_chaff_hint', message: 'Chaff deployed on tanker deck.', pauseGame: false },
+    cameraDown: { trigger: 'camera_detected', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_camera_down', message: 'Tanker camera disabled.', pauseGame: false },
+    cqc: { trigger: 'manual_call', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_cqc_hint', message: 'Deck guard neutralized.', pauseGame: false },
+    firstAlert: { trigger: 'first_alert', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_first_alert', message: 'Deck alert triggered. Codec support available.', pauseGame: true },
+    suspicion: { trigger: 'suspicion', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_suspicion', message: 'Tanker guard suspicion rising.', pauseGame: false },
+    evasion: { trigger: 'evasion', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_evasion', message: 'Evasion phase active.', pauseGame: false },
+    caution: { trigger: 'caution', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_caution', message: 'Caution phase active.', pauseGame: false },
+    reinforcement: { trigger: 'reinforcement', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_reinforcement', message: 'Deck reinforcements deployed.', pauseGame: false },
+    cameraDetected: { trigger: 'camera_detected', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_camera_detected', message: 'Tanker camera sightline detected.', pauseGame: false },
+    searchlight: { trigger: 'searchlight_detected', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_searchlight_hint', message: 'Searchlight sweep detected on deck.', pauseGame: false },
+    bossIntro: { trigger: 'boss_intro', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_boss_intro', message: 'Olga Gurlukovich encountered on the rain deck.', pauseGame: true },
+    bossMidfight: { trigger: 'boss_midfight', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_boss_midfight', message: 'Olga changed her firing pattern.', pauseGame: false },
+    bossDefeated: { trigger: 'boss_defeated', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_boss_defeated', message: 'Olga neutralized.', pauseGame: true },
+    secret: { trigger: 'secret_frequency', contactId: 'otacon_mgs2', conversationId: 'mgs2_otacon_tanker_secret_found', message: 'Tanker hidden archive recovered.', pauseGame: false }
+  }
+};
+
+const MISSION_PROFILES: Record<string, MissionProfile> = {
+  [SHADOW_DOCK_PROFILE.id]: SHADOW_DOCK_PROFILE,
+  [TANKER_HOLD_PROFILE.id]: TANKER_HOLD_PROFILE
+};
+
+function getActiveMissionProfile(): MissionProfile {
+  if (typeof window === 'undefined') return SHADOW_DOCK_PROFILE;
+  const rawMissionId = window.localStorage.getItem(getStorageKey(MISSION_STORAGE_KEY));
+  let requestedMissionId = SHADOW_DOCK_PROFILE.id;
+
+  if (rawMissionId) {
+    try {
+      const parsed = JSON.parse(rawMissionId) as unknown;
+      requestedMissionId = typeof parsed === 'string' ? parsed : rawMissionId;
+    } catch {
+      requestedMissionId = rawMissionId;
+    }
+  }
+
+  const campaignProfile = resolveSideOpsCampaignProfile(requestedMissionId);
+  if (campaignProfile) return campaignProfile;
+  const builderProfile = resolveBuilderSideOpsProfile(requestedMissionId);
+  if (builderProfile) {
+    return {
+      ...builderProfile,
+      boss: { ...builderProfile.boss, baseFacingRight: true }
+    };
+  }
+  return MISSION_PROFILES[requestedMissionId] ?? SHADOW_DOCK_PROFILE;
+}
+
+export class SideOpsScene extends Phaser.Scene {
+  private archiveInspection: SideOpsArchiveInspection | undefined;
+  private profile: MissionProfile = SHADOW_DOCK_PROFILE;
+  private campaignMission: SideOpsCampaignMission | undefined;
+  private player!: Phaser.Physics.Arcade.Sprite;
+  private cameraNode!: Phaser.Physics.Arcade.Sprite;
+  private lockedDoor!: Phaser.Physics.Arcade.Sprite;
+  private elevator!: Phaser.Physics.Arcade.Sprite;
+  private platforms!: Phaser.Physics.Arcade.StaticGroup;
+  private bullets!: Phaser.Physics.Arcade.Group;
+  private enemyBullets!: Phaser.Physics.Arcade.Group;
+  private inputController!: RuntimeInputController;
+  private statusText!: Phaser.GameObjects.Text;
+  private objectiveText!: Phaser.GameObjects.Text;
+  private hudText!: Phaser.GameObjects.Text;
+  private alertText!: Phaser.GameObjects.Text;
+  private bossText!: Phaser.GameObjects.Text;
+  private sectorText!: Phaser.GameObjects.Text;
+  private cameraScanGraphics!: Phaser.GameObjects.Graphics;
+  private searchlightGraphics!: Phaser.GameObjects.Graphics;
+  private bossBarrierGraphics!: Phaser.GameObjects.Graphics;
+  private bossTelegraphGraphics!: Phaser.GameObjects.Graphics;
+  private tacticalObstacles: SideOpsEnemyObstacle[] = [];
+  private latestNoise: SideOpsEnemyStimulus | null = null;
+  private noiseSequence = 0;
+  private offCodecResume?: () => void;
+  private offMissionRestart?: () => void;
+  private offDirectorDirective?: () => void;
+
+  private guards: GuardUnit[] = [];
+  private guardSequence = 0;
+  private boss: BossUnit | null = null;
+
+  private maxHealth = 100;
+  private health = 100;
+  private maxAmmo = 30;
+  private ammo = 26;
+  private rations = 1;
+  private chaff = 1;
+  private chaffActiveUntil = 0;
+  private hasKeycard = false;
+  private cameraDisabled = false;
+  private missionCompleted = false;
+
+  private objectiveStage: ObjectiveStage = 'recover_keycard';
+  private completedObjectives = new Set<string>();
+  private secretsFound = new Set<string>();
+  private totalSecrets = 3;
+
+  private alertState: AlertState = 'NORMAL';
+  private suspicionMeter = 0;
+  private suspicionPeak = 0;
+  private alertCount = 0;
+  private nextAlertAllowedAt = 0;
+  private alertPhaseEndsAt = 0;
+  private suspicionDecayBlockedUntil = 0;
+  private lastAlertSource = 'none';
+  private firstAlertEmitted = false;
+  private firstSuspicionEmitted = false;
+  private firstEvasionEmitted = false;
+  private firstCautionEmitted = false;
+  private lowHealthEmitted = false;
+  private firstCameraDetectionEmitted = false;
+  private firstSearchlightDetectionEmitted = false;
+  private bossIntroEmitted = false;
+  private bossMidfightEmitted = false;
+  private bossDefeatedEmitted = false;
+  private secretCodecEmitted = false;
+
+  private missionElapsedMs = 0;
+  private nextPlayerShotAt = 0;
+  private lastDamageTime = 0;
+  private nextReinforcementAt = 0;
+  private reinforcementCount = 0;
+  private reinforcementCodecEmitted = false;
+
+  private shotsFired = 0;
+  private kills = 0;
+  private neutralizations = 0;
+  private rationsUsed = 0;
+  private damageTaken = 0;
+  private camerasDisabled = 0;
+
+  constructor() {
+    super('SideOpsScene');
+  }
+
+  create(): void {
+    this.profile = getActiveMissionProfile();
+    this.campaignMission = getSideOpsCampaignMission(this.profile.id);
+    this.resetMissionState();
+    this.missionElapsedMs = 0;
+    this.physics.world.setBounds(0, 0, this.profile.worldWidth, 540);
+    this.cameras.main.setBounds(0, 0, this.profile.worldWidth, 540);
+    this.createMg1ActorAnimations();
+    this.createVisualPackAnimations();
+    registerAuthoredSideOpsActorAnimations(this);
+    registerAuthoredSideOpsSpecialActorAnimations(this);
+
+    this.addSkyAndBackdrops();
+
+    this.platforms = this.physics.add.staticGroup();
+    this.profile.platforms.forEach((platform) => this.createPlatform(this.platforms, platform.x, platform.y, platform.scaleX));
+    this.profile.crates.forEach((crate, index, crates) => {
+      this.addCrate(crate.x, crate.y, this.platforms, index === Math.floor(crates.length / 2));
+    });
+
+    this.player = this.physics.add.sprite(
+      this.profile.start.x,
+      this.profile.start.y,
+      this.resolveMg1ActorTexture(this.profile.playerTexture)
+    );
+    this.configureMg1ActorSprite(this.player, this.profile.playerTexture, 'player');
+    this.player.setCollideWorldBounds(true);
+    this.player.setDragX(1250);
+    this.player.setMaxVelocity(270, 540);
+    this.physics.add.collider(this.player, this.platforms);
+
+    this.lockedDoor = this.physics.add.staticSprite(this.profile.door.x, this.profile.door.y, 'door');
+    this.physics.add.collider(
+      this.player,
+      this.lockedDoor,
+      undefined,
+      () => !this.hasKeycard,
+      this
+    );
+
+    this.cameraNode = this.physics.add.staticSprite(this.profile.camera.x, this.profile.camera.y, 'cameraNode');
+
+    this.bullets = this.physics.add.group({ defaultKey: this.getPlayerProjectileTexture(), maxSize: 34 });
+    this.enemyBullets = this.physics.add.group({ defaultKey: this.getEnemyProjectileTexture(), maxSize: 42 });
+    this.physics.add.collider(this.bullets, this.platforms, (bullet) => {
+      const projectile = bullet as Phaser.Physics.Arcade.Sprite;
+      this.spawnPlayerImpactVfx(projectile.x, projectile.y);
+      this.destroyPhysicsObject(bullet);
+    });
+    this.physics.add.collider(this.enemyBullets, this.platforms, (bullet) => {
+      const projectile = bullet as Phaser.Physics.Arcade.Sprite;
+      this.spawnEnemyImpactVfx(projectile.x, projectile.y);
+      this.destroyPhysicsObject(bullet);
+    });
+    // Arcade always reports the single sprite before the group member.
+    this.physics.add.overlap(this.cameraNode, this.bullets, (_camera, bullet) => {
+      const projectile = bullet as Phaser.Physics.Arcade.Sprite;
+      this.spawnPlayerImpactVfx(projectile.x, projectile.y);
+      this.destroyPhysicsObject(bullet);
+      this.hitCamera();
+    }, undefined, this);
+    this.physics.add.collider(this.lockedDoor, this.bullets, (_door, bullet) => {
+      const projectile = bullet as Phaser.Physics.Arcade.Sprite;
+      this.spawnPlayerImpactVfx(projectile.x, projectile.y);
+      this.destroyPhysicsObject(bullet);
+    }, () => !this.hasKeycard, this);
+    this.physics.add.collider(this.lockedDoor, this.enemyBullets, (_door, bullet) => {
+      const projectile = bullet as Phaser.Physics.Arcade.Sprite;
+      this.spawnEnemyImpactVfx(projectile.x, projectile.y);
+      this.destroyPhysicsObject(bullet);
+    }, () => !this.hasKeycard, this);
+    this.physics.add.overlap(this.player, this.enemyBullets, (_player, bullet) => {
+      const projectile = bullet as Phaser.Physics.Arcade.Sprite;
+      const damage = Number(projectile.getData('damage') ?? 14);
+      const source = String(projectile.getData('source') ?? 'rifle');
+      this.spawnEnemyImpactVfx(projectile.x, projectile.y);
+      this.destroyPhysicsObject(bullet);
+      this.damagePlayer(damage, source);
+    });
+
+    this.profile.guards.forEach((guard) => this.spawnGuard(guard));
+
+    this.createPickups(this.platforms);
+    if (this.campaignMission?.rules.bossRequired !== false) this.createBoss();
+
+    this.elevator = this.physics.add.staticSprite(this.profile.elevator.x, this.profile.elevator.y, 'elevator');
+    this.physics.add.overlap(this.player, this.elevator, () => this.completeMission());
+
+    this.inputController = new RuntimeInputController(this);
+    const cameraLerp = this.inputController.profile.reducedMotion ? 1 : 0.08;
+    this.cameras.main.startFollow(this.player, true, cameraLerp, cameraLerp);
+
+    this.cameraScanGraphics = this.add.graphics();
+    this.searchlightGraphics = this.add.graphics();
+    this.bossBarrierGraphics = this.add.graphics();
+    this.bossTelegraphGraphics = this.add.graphics().setDepth(25);
+
+    this.addFixedHud();
+    this.archiveInspection = createSideOpsArchiveInspection(this, this.profile.visualPackId, this.profile.start.x);
+    this.offCodecResume = onGameEvent(GAME_EVENT.CODEC_RESUME, () => this.scene.resume());
+    this.offMissionRestart = onGameEvent(GAME_EVENT.MISSION_RESTART, () => this.scene.restart());
+    this.offDirectorDirective = onGameEvent<DirectorDirectivePayload>(GAME_EVENT.DIRECTOR_DIRECTIVE, (directive) => {
+      if (directive.support === 'silent') {
+        this.chaff += 1;
+        this.rations += 1;
+      } else if (directive.support === 'aggressive') {
+        this.maxAmmo += 8;
+        this.ammo = Math.min(this.maxAmmo, this.ammo + 8);
+      }
+      this.emitHudUpdate();
+    });
+    const removeExternalListeners = () => {
+      this.offCodecResume?.();
+      this.offMissionRestart?.();
+      this.offDirectorDirective?.();
+      this.offCodecResume = undefined;
+      this.offMissionRestart = undefined;
+      this.offDirectorDirective = undefined;
+    };
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, removeExternalListeners);
+    this.events.once(Phaser.Scenes.Events.DESTROY, removeExternalListeners);
+
+    this.emitProfileCodec(this.profile.codec.missionStart);
+    this.emitHudUpdate();
+  }
+
+  update(_time = 0, delta = 0): void {
+    if (this.missionCompleted) return;
+    // Count active gameplay only; initial Clock.now and paused wall time must not affect ranks.
+    this.missionElapsedMs += Math.max(0, delta);
+    this.inputController.update();
+    this.handlePlayerInput();
+    this.archiveInspection?.update(delta, this.player.x, this.alertState === 'ALERT');
+    this.refreshTacticalObstacles();
+    this.handleGuardPatrol();
+    this.handleBoss();
+    this.handleCameraSweep();
+    this.handleSearchlightSweep();
+    this.handleDetection();
+    this.handleGuardCombat();
+    this.handleReinforcements();
+    this.updateAlertState();
+    this.updateDoorState();
+    this.updateObjectiveState();
+    this.updateHudText();
+    this.emitHudUpdate();
+  }
+
+  private resetMissionState(): void {
+    this.guards = [];
+    this.guardSequence = 0;
+    this.boss = null;
+    this.tacticalObstacles = [];
+    this.latestNoise = null;
+    this.noiseSequence = 0;
+    this.maxHealth = 100;
+    this.health = 100;
+    const campaignBonuses = getCampaignLoadoutBonuses();
+    this.maxAmmo = Math.max(30, this.profile.startAmmo + campaignBonuses.ammo);
+    this.ammo = this.profile.startAmmo + campaignBonuses.ammo;
+    this.rations = this.profile.startRations + campaignBonuses.rations;
+    this.chaff = this.profile.startChaff + campaignBonuses.chaff;
+    this.chaffActiveUntil = 0;
+    this.hasKeycard = false;
+    this.cameraDisabled = false;
+    this.missionCompleted = false;
+    this.objectiveStage = 'recover_keycard';
+    this.completedObjectives = new Set(this.profile.initialObjectives);
+    this.secretsFound = new Set();
+    this.totalSecrets = this.profile.secrets.length;
+    this.alertState = 'NORMAL';
+    this.suspicionMeter = 0;
+    this.suspicionPeak = 0;
+    this.alertCount = 0;
+    this.nextAlertAllowedAt = 0;
+    this.alertPhaseEndsAt = 0;
+    this.suspicionDecayBlockedUntil = 0;
+    this.lastAlertSource = 'none';
+    this.firstAlertEmitted = false;
+    this.firstSuspicionEmitted = false;
+    this.firstEvasionEmitted = false;
+    this.firstCautionEmitted = false;
+    this.lowHealthEmitted = false;
+    this.firstCameraDetectionEmitted = false;
+    this.firstSearchlightDetectionEmitted = false;
+    this.bossIntroEmitted = false;
+    this.bossMidfightEmitted = false;
+    this.bossDefeatedEmitted = false;
+    this.secretCodecEmitted = false;
+    this.nextPlayerShotAt = 0;
+    this.lastDamageTime = 0;
+    this.nextReinforcementAt = 0;
+    this.reinforcementCount = 0;
+    this.reinforcementCodecEmitted = false;
+    this.shotsFired = 0;
+    this.kills = 0;
+    this.neutralizations = 0;
+    this.rationsUsed = 0;
+    this.damageTaken = 0;
+    this.camerasDisabled = 0;
+  }
+
+  /** Makes MG1 Builder missions use the same animated pack as Operation N313. */
+  private createMg1ActorAnimations(): void {
+    MG1_ACTOR_ANIMATION_ASSETS.forEach((asset) => {
+      if (!this.textures.exists(asset.textureKey)) return;
+      (Object.entries(asset.clips) as [Mg1ActorAnimationState, NonNullable<Mg1ActorAnimationAsset['clips'][Mg1ActorAnimationState]>][])
+        .forEach(([state, clip]) => {
+          const key = getMg1ActorAnimationKey(asset.textureKey, state);
+          if (this.anims.exists(key)) return;
+          this.anims.create({
+            key,
+            frames: this.anims.generateFrameNumbers(asset.textureKey, { start: clip.start, end: clip.end }),
+            frameRate: clip.frameRate,
+            repeat: clip.repeat
+          });
+        });
+    });
+  }
+
+  private resolveMg1ActorTexture(sourceTextureKey: string): string {
+    const asset = getMg1ActorAnimationAssetBySourceTexture(sourceTextureKey);
+    return asset && this.textures.exists(asset.textureKey) ? asset.textureKey : sourceTextureKey;
+  }
+
+  private configureMg1ActorSprite(sprite: Phaser.GameObjects.Sprite, sourceTextureKey: string, role?: SideOpsActorRole): void {
+    sprite.setData('mg1SourceTextureKey', sourceTextureKey);
+    sprite.setData('mg1AnimationLock', '');
+    sprite.setData('mg1AnimationPriority', 0);
+    const identityPack = role ? resolveSideOpsAuthoredIdentityPack(this.profile.visualPackId, role, sourceTextureKey) : undefined;
+    if (role && identityPack && configureAuthoredSideOpsActor(this, sprite, identityPack, role)) {
+      (sprite as Phaser.Physics.Arcade.Sprite).body?.updateFromGameObject();
+      this.playMg1ActorLoop(sprite, 'idle');
+      return;
+    }
+    if (configureAuthoredSideOpsSpecialActor(this, sprite, sourceTextureKey)) {
+      this.playMg1ActorLoop(sprite, 'idle');
+      return;
+    }
+    const asset = getMg1ActorAnimationAssetBySourceTexture(sourceTextureKey);
+    if (!asset || !this.textures.exists(asset.textureKey)) return;
+    sprite.setTexture(asset.textureKey, asset.clips.idle?.start ?? 0);
+    const body = (sprite as unknown as Phaser.Physics.Arcade.Sprite).body as Phaser.Physics.Arcade.Body | null;
+    if (body) {
+      body.setSize(asset.sourceWidth, asset.sourceHeight, false);
+      body.setOffset(Math.floor((asset.frameWidth - asset.sourceWidth) / 2), 0);
+    }
+    this.playMg1ActorLoop(sprite, 'idle');
+  }
+
+  private getMg1ActorAsset(sprite: Phaser.GameObjects.Sprite): Mg1ActorAnimationAsset | undefined {
+    return getMg1ActorAnimationAssetBySourceTexture(String(sprite.getData('mg1SourceTextureKey') ?? ''));
+  }
+
+  private getAuthoredBossCombat(sprite: Phaser.GameObjects.Sprite) {
+    const source = sprite.getData('sideopsSpecialSourceTexture');
+    return typeof source === 'string' ? getSideOpsAuthoredBossCombatContract(getSideOpsSpecialActorDefinition(source)) : undefined;
+  }
+
+  private playMg1ActorLoop(sprite: Phaser.GameObjects.Sprite, state: Mg1ActorAnimationState | SideOpsActorAnimationState | SideOpsSpecialActorState): void {
+    const authored = getAuthoredSideOpsSpecialActorClip(sprite, state) ?? getAuthoredSideOpsActorClip(sprite, state);
+    if (sprite.getData('sideopsSpecialSourceTexture') && !authored) return;
+    if (authored) {
+      if (Number(sprite.getData('mg1AnimationPriority') ?? 0) > 0 || !this.anims.exists(authored.key)) return;
+      if (sprite.anims.currentAnim?.key !== authored.key || (!sprite.anims.isPlaying && authored.repeat === -1)) sprite.play(authored.key);
+      return;
+    }
+    const asset = this.getMg1ActorAsset(sprite);
+    if (!asset || !this.textures.exists(asset.textureKey) || Number(sprite.getData('mg1AnimationPriority') ?? 0) > 0) return;
+    const resolved = state in asset.clips ? state as Mg1ActorAnimationState : 'idle';
+    const key = getMg1ActorAnimationKey(asset.textureKey, resolved);
+    if (this.anims.exists(key) && (sprite.anims.currentAnim?.key !== key || !sprite.anims.isPlaying)) sprite.play(key);
+  }
+
+  private playMg1ActorAction(sprite: Phaser.GameObjects.Sprite, state: Mg1ActorAnimationState | SideOpsActorAnimationState | SideOpsSpecialActorState, interruptSamePriority = false): void {
+    const authored = getAuthoredSideOpsSpecialActorClip(sprite, state) ?? getAuthoredSideOpsActorClip(sprite, state);
+    if (sprite.getData('sideopsSpecialSourceTexture') && !authored) return;
+    if (authored) {
+      const priority = state === 'death' ? 4 : state === 'hit' ? 3 : state === 'jump' ? 1 : 2;
+      const currentPriority = Number(sprite.getData('mg1AnimationPriority') ?? 0);
+      if (currentPriority > priority || (currentPriority === priority && !interruptSamePriority) || !this.anims.exists(authored.key)) return;
+      const lock = `${state}-${this.time.now}`;
+      sprite.setData('mg1AnimationLock', lock).setData('mg1AnimationPriority', priority);
+      sprite.play(authored.key);
+      if (state === 'death') return;
+      const durationMs = Math.ceil((authored.end - authored.start + 1) / authored.frameRate * 1000) + 34;
+      this.time.delayedCall(durationMs, () => {
+        if (!sprite.active || sprite.getData('mg1AnimationLock') !== lock) return;
+        sprite.setData('mg1AnimationLock', '').setData('mg1AnimationPriority', 0);
+      });
+      return;
+    }
+    const asset = this.getMg1ActorAsset(sprite);
+    const legacyState: Mg1ActorAnimationState = state === 'melee' ? 'attack' : state as Mg1ActorAnimationState;
+    const clip = asset?.clips[legacyState];
+    if (!asset || !clip || !this.textures.exists(asset.textureKey)) return;
+    const priority = state === 'death' ? 4 : state === 'hit' ? 3 : 2;
+    const currentPriority = Number(sprite.getData('mg1AnimationPriority') ?? 0);
+    if (currentPriority === 4 || currentPriority >= priority) return;
+    const key = getMg1ActorAnimationKey(asset.textureKey, legacyState);
+    if (!this.anims.exists(key)) return;
+    const lock = `${state}-${this.time.now}-${Phaser.Math.Between(0, 99999)}`;
+    sprite.setData('mg1AnimationLock', lock);
+    sprite.setData('mg1AnimationPriority', priority);
+    sprite.play(key);
+    if (state === 'death') return;
+    const durationMs = Math.ceil(((clip.end - clip.start + 1) / clip.frameRate) * 1000) + 34;
+    this.time.delayedCall(durationMs, () => {
+      if (!sprite.active || sprite.getData('mg1AnimationLock') !== lock) return;
+      sprite.setData('mg1AnimationLock', '');
+      sprite.setData('mg1AnimationPriority', 0);
+    });
+  }
+
+  private addSkyAndBackdrops(): void {
+    const width = this.profile.worldWidth;
+    this.add.rectangle(width / 2, 270, width, 540, this.profile.backdropColor).setDepth(-20);
+    const backdropTexture = resolveSideOpsBackdropTexture(this.profile.visualPackId, this.profile.environment);
+    if (this.textures.exists(backdropTexture)) {
+      if (this.profile.visualPackId === 'vr_simulation') {
+        this.add.tileSprite(480, 270, 960, 540, backdropTexture)
+          .setScrollFactor(0)
+          .setDepth(-19)
+          .setAlpha(0.68);
+      } else {
+        this.add.image(0, 0, backdropTexture)
+          .setOrigin(0)
+          .setScrollFactor(0)
+          .setDepth(-19)
+          .setAlpha(0.88);
+      }
+    }
+    this.add.rectangle(width / 2, 515, width, 52, this.profile.groundColor).setDepth(-12);
+
+    // The authored panorama replaces legacy placeholder architecture, not physics.
+    if (!this.textures.exists(backdropTexture)) {
+    for (let x = 120; x < width; x += this.profile.environment === 'tanker' ? 155 : 190) {
+      this.add.rectangle(x, 486, this.profile.environment === 'tanker' ? 120 : 80, 44, this.profile.structureColor).setDepth(-5);
+    }
+
+    for (let x = 250; x < width - 60; x += this.profile.environment === 'tanker' ? 360 : 420) {
+      this.add.rectangle(x, 300, this.profile.environment === 'tanker' ? 46 : 34, 380, this.profile.structureColor).setDepth(-10);
+      this.add.rectangle(x, 110, this.profile.environment === 'tanker' ? 160 : 120, 14, 0x1c526f).setDepth(-9);
+    }
+
+    if (this.profile.environment === 'tanker') {
+      for (let x = 90; x < width; x += 130) {
+        this.add.line(x, 0, 0, 0, -60, 540, 0x72b7ff, 0.14).setDepth(-2);
+      }
+      for (let x = 1680; x < width - 200; x += 300) {
+        this.add.rectangle(x, 455, 160, 68, 0x0d2433).setDepth(-4);
+        this.add.rectangle(x, 416, 174, 10, 0x2b6c91).setDepth(-3);
+      }
+    } else {
+      for (let x = 1680; x < width - 300; x += 320) {
+        this.add.rectangle(x, 455, 120, 68, 0x0b2011).setDepth(-4);
+        this.add.rectangle(x, 418, 132, 10, 0x174820).setDepth(-3);
+      }
+    }
+
+    }
+    this.add.rectangle(0, 0, Math.max(960, this.scale.width), 132, 0x010603, 0.68)
+      .setOrigin(0, 0)
+      .setScrollFactor(0)
+      .setDepth(49);
+    this.add.text(20, 16, this.profile.header, {
+      fontFamily: 'monospace',
+      fontSize: '14px',
+      color: '#7cff6b'
+    }).setScrollFactor(0).setDepth(50);
+  }
+
+  private addFixedHud(): void {
+    this.statusText = this.add.text(20, 84, '', {
+      fontFamily: 'monospace',
+      fontSize: '14px',
+      color: '#caffbd'
+    }).setScrollFactor(0).setDepth(50).setVisible(false);
+
+    this.objectiveText = this.add.text(20, 62, `OBJECTIVE: ${this.getObjectiveLabel()}`,  {
+      fontFamily: 'monospace',
+      fontSize: '14px',
+      color: '#f8f49a'
+    }).setScrollFactor(0).setDepth(50);
+
+    this.alertText = this.add.text(20, 84, '', {
+      fontFamily: 'monospace',
+      fontSize: '13px',
+      color: '#ffdf85'
+    }).setScrollFactor(0).setDepth(50);
+
+    this.hudText = this.add.text(20, 39, '', {
+      fontFamily: 'monospace',
+      fontSize: '13px',
+      color: '#8ac985'
+    }).setScrollFactor(0).setDepth(50);
+
+    this.bossText = this.add.text(20, 106, '', {
+      fontFamily: 'monospace',
+      fontSize: '13px',
+      color: '#ff9f6b'
+    }).setScrollFactor(0).setDepth(50);
+    if (this.campaignMission) {
+      this.add.rectangle(0, this.scale.height - 30, this.scale.width, 30, 0x010603, 0.88)
+        .setOrigin(0).setScrollFactor(0).setDepth(49);
+    }
+    this.sectorText = this.add.text(20, this.scale.height - 24, '', {
+      fontFamily: 'monospace', fontSize: '12px', color: '#caffbd'
+    }).setScrollFactor(0).setDepth(50).setVisible(Boolean(this.campaignMission));
+  }
+
+  private createPlatform(group: Phaser.Physics.Arcade.StaticGroup, x: number, y: number, scaleX: number): void {
+    const platform = group.create(x, y, 'platform') as Phaser.Physics.Arcade.Sprite;
+    platform.setScale(scaleX, 1).setTint(this.profile.environment === 'tanker' ? 0x5fb8d6 : 0x7cff6b).refreshBody();
+    const kind = y >= 500 ? 'ground' : 'structure';
+    const terrain = getSideOpsTerrainAsset(this.profile.visualPackId, kind);
+    if (!this.textures.exists(terrain.textureKey)) return;
+    const body = platform.body as Phaser.Physics.Arcade.StaticBody;
+    // Keep the original 64x16 scaled collider. Only the decorative underside grows.
+    platform.setVisible(false);
+    const visual = this.add.tileSprite(body.left, body.top, body.width, terrain.height, terrain.textureKey)
+      .setOrigin(0).setDepth(-1);
+    visual.tilePositionX = body.left;
+    visual.setData('sideopsTerrainKind', kind).setData('sideopsTerrainPack', this.profile.visualPackId);
+  }
+
+  private createVisualPackAnimations(): void {
+    const runtimeTextures = this.getSupplementalRuntimeTextures();
+    new Set([runtimeTextures.playerImpactVfxTexture, runtimeTextures.impactVfxTexture])
+      .forEach((textureKey) => this.createImpactAnimation(textureKey));
+  }
+
+  private createImpactAnimation(textureKey: string): void {
+    if (!this.textures.exists(textureKey)) return;
+    const animationKey = this.getImpactAnimationKey(textureKey);
+    if (this.anims.exists(animationKey)) return;
+    this.anims.create({
+      key: animationKey,
+      frames: this.anims.generateFrameNumbers(textureKey, { start: 0, end: 3 }),
+      frameRate: 18,
+      repeat: 0
+    });
+  }
+
+  private getSupplementalRuntimeTextures(): SideOpsSupplementalRuntimeTextures {
+    return SIDEOPS_SUPPLEMENTAL_RUNTIME_TEXTURES[this.profile.visualPackId];
+  }
+
+  private getImpactAnimationKey(textureKey: string): string {
+    return `sideOpsImpact-${textureKey}`;
+  }
+
+  private getPlayerProjectileTexture(): string {
+    return this.getSupplementalRuntimeTextures().playerProjectileTexture;
+  }
+
+  private getEnemyProjectileTexture(): string {
+    return this.getSupplementalRuntimeTextures().enemyProjectileTexture;
+  }
+
+  private spawnPlayerImpactVfx(x: number, y: number): void {
+    this.spawnImpactVfx(this.getSupplementalRuntimeTextures().playerImpactVfxTexture, x, y);
+  }
+
+  private spawnEnemyImpactVfx(x: number, y: number): void {
+    this.spawnImpactVfx(this.getSupplementalRuntimeTextures().impactVfxTexture, x, y);
+  }
+
+  private spawnImpactVfx(textureKey: string, x: number, y: number): void {
+    const animationKey = this.getImpactAnimationKey(textureKey);
+    const effect = this.add.sprite(x, y, textureKey).setDepth(24);
+    if (this.anims.exists(animationKey)) {
+      effect.play(animationKey);
+      effect.once(Phaser.Animations.Events.ANIMATION_COMPLETE, () => effect.destroy());
+      return;
+    }
+    this.time.delayedCall(120, () => effect.destroy());
+  }
+
+  private addCrate(
+    x: number,
+    y: number,
+    platforms: Phaser.Physics.Arcade.StaticGroup,
+    useVisualPackProp = false
+  ): void {
+    const texture = useVisualPackProp
+      ? this.getSupplementalRuntimeTextures().battlefieldPropTexture
+      : 'crate';
+    const crate = platforms.create(x, y, texture) as Phaser.Physics.Arcade.Sprite;
+    crate.refreshBody();
+    if (useVisualPackProp) return;
+    const coverTexture = SIDEOPS_TERRAIN_COVER_TEXTURES[this.profile.visualPackId];
+    if (!this.textures.exists(coverTexture)) return;
+    const body = crate.body as Phaser.Physics.Arcade.StaticBody;
+    const image = this.add.image(body.center.x, body.bottom, coverTexture).setOrigin(0.5, 1).setDepth(1);
+    // Preserve the prop's aspect ratio and the existing 28x40 cover collider.
+    image.setScale(body.height / image.height);
+    image.setData('sideopsCoverPack', this.profile.visualPackId);
+    crate.setVisible(false);
+  }
+
+  private spawnGuard(config: { x: number; y: number; patrolMin: number; patrolMax: number; role: GuardRole; hp?: number }): GuardUnit {
+    const key = config.role === 'reinforcement' ? this.profile.reinforcementTexture : this.profile.guardTexture;
+    const sprite = this.physics.add.sprite(config.x, config.y, this.resolveMg1ActorTexture(key));
+    this.configureMg1ActorSprite(sprite, key, config.role === 'patrol' ? 'guard' : 'reinforcement');
+    sprite.setCollideWorldBounds(true);
+    sprite.setDragX(900);
+    this.physics.add.collider(sprite, this.platforms);
+    this.physics.add.collider(sprite, this.lockedDoor, undefined, () => !this.hasKeycard, this);
+
+    const guard: GuardUnit = {
+      id: `${config.role}_${++this.guardSequence}`,
+      sprite,
+      patrolMin: config.patrolMin,
+      patrolMax: config.patrolMax,
+      direction: -1,
+      disabled: false,
+      hp: config.hp ?? (config.role === 'reinforcement' ? 2 : 1),
+      role: config.role,
+      brain: createSideOpsEnemyState(config.role, -1),
+      decision: null,
+      indicator: this.add.text(sprite.x, sprite.y - 42, '', {
+        fontFamily: 'monospace', fontSize: '18px', color: '#ffdf85',
+        backgroundColor: '#041007', padding: { x: 4, y: 2 }
+      }).setOrigin(0.5).setDepth(26).setVisible(false)
+    };
+
+    this.physics.add.overlap(this.player, sprite, () => {
+      if (guard.disabled) return;
+      this.increaseSuspicion(100, 'guard physical contact');
+      this.damagePlayer(8, 'contact');
+    }, undefined, this);
+
+    this.physics.add.overlap(sprite, this.bullets, (_guard, bullet) => {
+      const projectile = bullet as Phaser.Physics.Arcade.Sprite;
+      this.spawnPlayerImpactVfx(projectile.x, projectile.y);
+      this.destroyPhysicsObject(bullet);
+      this.hitGuard(guard);
+    }, () => !guard.disabled, this);
+
+    this.guards.push(guard);
+    return guard;
+  }
+
+  private createBoss(): void {
+    const sprite = this.physics.add.sprite(
+      this.profile.boss.x,
+      this.profile.boss.y,
+      this.resolveMg1ActorTexture(this.profile.boss.texture)
+    );
+    this.configureMg1ActorSprite(sprite, this.profile.boss.texture);
+    // Large authored bodies can start across the floor's top. Arcade separation
+    // cannot recover a body already underneath it, so lift only an intersecting
+    // support below the body's center; airborne spawns keep their original Y.
+    const body = sprite.body as Phaser.Physics.Arcade.Body;
+    const supportTops = this.platforms.getChildren().flatMap((object) => {
+      const surface = (object as Phaser.Physics.Arcade.Sprite).body;
+      return surface?.enable && body.right > surface.left && body.left < surface.right
+        && body.center.y <= surface.top && surface.top < body.bottom ? [surface.top] : [];
+    });
+    if (supportTops.length > 0) {
+      sprite.setY(sprite.y + Math.min(...supportTops) - body.bottom);
+      body.updateFromGameObject();
+    }
+    this.maintainBossHover(sprite);
+    sprite.setDragX(850);
+    sprite.setMaxVelocity(330, 500);
+    sprite.setCollideWorldBounds(true);
+    sprite.clearTint();
+    this.physics.add.collider(sprite, this.platforms);
+    this.physics.add.overlap(this.player, sprite, () => {
+      const contactDamage = this.boss?.decision?.contactDamage ?? 0;
+      if (this.boss?.active && !this.boss.defeated && contactDamage > 0) {
+        this.damagePlayer(contactDamage, `${this.profile.boss.name} charge`);
+      }
+    }, undefined, this);
+    this.physics.add.overlap(sprite, this.bullets, (_boss, bullet) => {
+      const projectile = bullet as Phaser.Physics.Arcade.Sprite;
+      this.spawnPlayerImpactVfx(projectile.x, projectile.y);
+      this.destroyPhysicsObject(bullet);
+      this.hitBoss('SOCOM');
+    }, () => !this.boss?.defeated, this);
+
+    this.boss = {
+      sprite,
+      baseFacingRight: typeof sprite.getData('sideopsSpecialSourceFacingRight') === 'boolean'
+        ? sprite.getData('sideopsSpecialSourceFacingRight') as boolean : this.profile.boss.baseFacingRight,
+      hp: this.profile.boss.hp,
+      maxHp: this.profile.boss.hp,
+      active: false,
+      defeated: false,
+      phase: 1,
+      direction: -1,
+      brain: createSideOpsBossState(),
+      decision: null
+    };
+  }
+
+  private createPickups(platforms: Phaser.Physics.Arcade.StaticGroup): void {
+    const keycard = this.physics.add.sprite(this.profile.keycard.x, this.profile.keycard.y, 'keycard');
+    // A falling collectible must remain separable from static platforms.
+    // Two immovable Arcade bodies are not separated, so the card fell through.
+    keycard.setImmovable(false);
+    this.physics.add.collider(keycard, platforms);
+    this.physics.add.overlap(this.player, keycard, () => {
+      if (this.hasKeycard) return;
+      this.hasKeycard = true;
+      this.completedObjectives.add('recover_keycard');
+      keycard.destroy();
+      this.objectiveText.setText(`OBJECTIVE: ${this.profile.stageLabels.open_security_door}`);
+      this.emitProfileCodec(this.profile.codec.keycardFound);
+    });
+
+    this.profile.pickups.forEach((pickup) => {
+      if (pickup.kind === 'ration') {
+        this.createPickup(pickup.x, pickup.y, 'ration', () => {
+          this.rations += 1;
+          this.flashStatus('RATION ACQUIRED');
+        }, platforms);
+      }
+      if (pickup.kind === 'chaff') {
+        this.createPickup(pickup.x, pickup.y, 'chaffPickup', () => {
+          this.chaff += 1;
+          this.flashStatus('CHAFF GRENADE ACQUIRED');
+        }, platforms);
+      }
+      if (pickup.kind === 'ammo') {
+        this.createPickup(pickup.x, pickup.y, 'ammoBox', () => {
+          this.ammo = Math.min(this.maxAmmo, this.ammo + 10);
+          this.flashStatus('SOCOM AMMO ACQUIRED');
+        }, platforms);
+      }
+    });
+
+    this.profile.secrets.forEach((secret) => this.createSecret(secret.x, secret.y, secret.id, secret.label));
+  }
+
+  private createPickup(
+    x: number,
+    y: number,
+    texture: string,
+    onCollect: () => void,
+    platforms: Phaser.Physics.Arcade.StaticGroup
+  ): void {
+    const pickup = this.physics.add.sprite(x, y, texture);
+    this.physics.add.collider(pickup, platforms);
+    this.physics.add.overlap(this.player, pickup, () => {
+      if (!pickup.active) return;
+      pickup.destroy();
+      onCollect();
+    });
+  }
+
+  private createSecret(x: number, y: number, id: string, label: string): void {
+    const secret = this.physics.add.sprite(x, y, 'secretItem');
+    secret.setData('secretId', id);
+    secret.setData('label', label);
+    this.physics.add.collider(secret, this.platforms);
+    this.physics.add.overlap(this.player, secret, () => {
+      if (!secret.active || this.secretsFound.has(id)) return;
+      this.secretsFound.add(id);
+      secret.destroy();
+      this.flashStatus(`SECRET FOUND: ${label}`);
+      if (!this.secretCodecEmitted) {
+        this.secretCodecEmitted = true;
+        this.emitProfileCodec(this.profile.codec.secret);
+      }
+    });
+  }
+
+  private handlePlayerInput(): void {
+    if (this.health <= 0) {
+      this.player.setVelocityX(0);
+      return;
+    }
+
+    const left = this.inputController.isDown('moveLeft');
+    const right = this.inputController.isDown('moveRight');
+    const down = this.inputController.isDown('crouch');
+    const slowWalk = this.inputController.isDown('sprint');
+    const jump = this.inputController.justDown('jump');
+    const body = this.player.body as Phaser.Physics.Arcade.Body;
+    const speed = down ? 80 : slowWalk ? 120 : 210;
+
+    if (left) {
+      this.player.setVelocityX(-speed);
+      this.player.setFlipX(true);
+    } else if (right) {
+      this.player.setVelocityX(speed);
+      this.player.setFlipX(false);
+    } else {
+      this.player.setVelocityX(0);
+    }
+    this.playMg1ActorLoop(this.player, !body.blocked.down ? 'jump' : down ? 'crouch' : left || right ? 'move' : 'idle');
+
+    if (jump && body.blocked.down && !down) {
+      this.player.setVelocityY(-430);
+      this.registerNoise(14, 'jump landing prep');
+    }
+
+    // Preserve each era's costume; only damage briefly changes its colors.
+    if (this.lastDamageTime > 0 && this.time.now < this.lastDamageTime + 160) this.player.setTint(0xff6b6b);
+    else this.player.clearTint();
+
+    if (this.inputController.justDown('fire')) this.shootSocom();
+    if (this.inputController.justDown('cqc')) this.tryCqc();
+    if (this.inputController.justDown('chaff')) this.useChaff();
+    if (this.inputController.justDown('ration')) this.useRation();
+    if (this.inputController.justDown('codec')) {
+      this.emitProfileCodec(this.objectiveStage === 'defeat_captain' ? this.profile.codec.bossIntro : this.profile.codec.manual);
+    }
+  }
+
+  private shootSocom(): void {
+    if (this.time.now < this.nextPlayerShotAt) return;
+    if (this.ammo <= 0) {
+      this.flashStatus('SOCOM EMPTY');
+      return;
+    }
+
+    this.nextPlayerShotAt = this.time.now + 220;
+    this.ammo -= 1;
+    this.shotsFired += 1;
+    this.inputController.vibrate(35, 0.12, 0.18);
+    this.registerNoise(10, 'suppressed SOCOM shot');
+
+    const direction = this.player.flipX ? -1 : 1;
+    const bullet = this.bullets.get(
+      this.player.x + direction * 22,
+      this.player.y - 6,
+      this.getPlayerProjectileTexture()
+    ) as Phaser.Physics.Arcade.Sprite | null;
+    if (!bullet) return;
+
+    bullet.setActive(true).setVisible(true);
+    bullet.body?.reset(this.player.x + direction * 22, this.player.y - 6);
+    (bullet.body as Phaser.Physics.Arcade.Body).setAllowGravity(false);
+    bullet.setVelocityX(direction * 680);
+    bullet.setVelocityY(0);
+    bullet.setFlipX(direction < 0);
+    this.playMg1ActorAction(this.player, 'attack');
+    this.time.delayedCall(900, () => bullet.active && bullet.destroy());
+  }
+
+  private useChaff(): void {
+    if (this.chaff <= 0) {
+      this.flashStatus('NO CHAFF GRENADE');
+      return;
+    }
+    this.chaff -= 1;
+    this.chaffActiveUntil = this.time.now + 6500;
+    this.inputController.vibrate(80, 0.18, 0.28);
+    this.flashStatus('CHAFF ACTIVE: ELECTRONICS DISRUPTED');
+    this.emitProfileCodec(this.profile.codec.chaff);
+  }
+
+  private useRation(): void {
+    if (this.rations <= 0) {
+      this.flashStatus('NO RATION');
+      return;
+    }
+    if (this.health >= this.maxHealth) {
+      this.flashStatus('HEALTH FULL');
+      return;
+    }
+    this.rations -= 1;
+    this.rationsUsed += 1;
+    this.health = Math.min(this.maxHealth, this.health + 55);
+    this.inputController.vibrate(70, 0.1, 0.2);
+    this.flashStatus('RATION USED');
+  }
+
+  private handleGuardPatrol(): void {
+    this.guards.forEach((guard) => {
+      const body = guard.sprite.body as Phaser.Physics.Arcade.Body;
+      const decision = updateSideOpsEnemy(guard.brain, {
+        now: this.time.now, x: guard.sprite.x, y: guard.sprite.y, role: guard.role,
+        player: { x: this.player.x, y: this.player.y, crouched: this.isPlayerCrouched(), slowWalking: this.isPlayerSlowWalking() },
+        patrolMin: guard.patrolMin, patrolMax: guard.patrolMax,
+        worldMin: body.halfWidth, worldMax: this.profile.worldWidth - body.halfWidth,
+        alert: this.alertState, disabled: guard.disabled,
+        obstacles: this.tacticalObstacles, noise: this.latestNoise,
+        blockedLeft: body.blocked.left, blockedRight: body.blocked.right,
+        ledgeAhead: body.blocked.down && !this.hasGroundAhead(guard.sprite, guard.direction)
+      });
+      guard.brain = decision.state;
+      guard.decision = decision;
+      guard.direction = decision.direction;
+      guard.sprite.setVelocityX(decision.velocityX);
+      guard.sprite.setFlipX(guard.direction < 0);
+      guard.indicator.setPosition(guard.sprite.x, body.top - 16)
+        .setText(decision.indicator)
+        .setColor(decision.indicator === '!' ? '#ff6b6b' : '#ffdf85')
+        .setVisible(!guard.disabled && decision.indicator.length > 0);
+      if (!guard.disabled) this.playMg1ActorLoop(guard.sprite, decision.animation === 'move' ? 'move' : 'idle');
+    });
+  }
+
+  /** Physical geometry is shared by vision, cameras and ballistic collision. */
+  private refreshTacticalObstacles(): void {
+    this.tacticalObstacles = this.platforms.getChildren().flatMap((object) => {
+      const body = (object as Phaser.Physics.Arcade.Sprite).body;
+      return body?.enable ? [{ left: body.left, right: body.right, top: body.top, bottom: body.bottom }] : [];
+    });
+    const door = this.lockedDoor.body;
+    if (!this.hasKeycard && door?.enable) {
+      this.tacticalObstacles.push({ left: door.left, right: door.right, top: door.top, bottom: door.bottom });
+    }
+  }
+
+  private hasGroundAhead(sprite: Phaser.Physics.Arcade.Sprite, direction: number): boolean {
+    const body = sprite.body as Phaser.Physics.Arcade.Body;
+    const probeX = body.center.x + direction * (body.halfWidth + 14);
+    return this.platforms.getChildren().some((object) => {
+      const surface = (object as Phaser.Physics.Arcade.Sprite).body;
+      return surface?.enable && probeX >= surface.left && probeX <= surface.right
+        && surface.top >= body.bottom - 8 && surface.top <= body.bottom + 30;
+    });
+  }
+
+  private hasTacticalLineOfSight(fromX: number, fromY: number, toX = this.player.x, toY = this.player.y - 10): boolean {
+    return sideOpsEnemyHasLineOfSight({ x: fromX, y: fromY }, { x: toX, y: toY }, this.tacticalObstacles);
+  }
+
+  /** The visible cone follows the same cover geometry as detection. */
+  private drawOccludedCone(
+    graphics: Phaser.GameObjects.Graphics,
+    origin: { x: number; y: number },
+    edgeA: { x: number; y: number },
+    edgeB: { x: number; y: number },
+    color: number,
+    alpha: number
+  ): void {
+    graphics.fillStyle(color, alpha);
+    graphics.beginPath();
+    graphics.moveTo(origin.x, origin.y);
+    for (let index = 0; index <= 16; index += 1) {
+      const fraction = index / 16;
+      const target = { x: edgeA.x + (edgeB.x - edgeA.x) * fraction, y: edgeA.y + (edgeB.y - edgeA.y) * fraction };
+      const near = sideOpsEnemySightHit(origin, target, this.tacticalObstacles) ?? 1;
+      graphics.lineTo(origin.x + (target.x - origin.x) * near, origin.y + (target.y - origin.y) * near);
+    }
+    graphics.closePath();
+    graphics.fillPath();
+  }
+
+  private maintainBossHover(sprite: Phaser.Physics.Arcade.Sprite): void {
+    const hover = resolveSideOpsBossHoverContract(this.profile.boss.texture, this.profile.boss.y);
+    if (!hover) return;
+    const body = sprite.body as Phaser.Physics.Arcade.Body;
+    body.setAllowGravity(hover.allowGravity);
+    sprite.setVelocityY(hover.velocityY);
+    // Chrysalis alone holds its side-view flight corridor, including before
+    // activation. Synchronize Arcade history after correcting a collision drift.
+    if (sprite.y !== hover.altitude) {
+      sprite.setY(hover.altitude);
+      body.updateFromGameObject();
+      body.prev.copy(body.position);
+      body.prevFrame.copy(body.position);
+    }
+  }
+
+  private handleBoss(): void {
+    this.bossTelegraphGraphics.clear();
+    if (!this.boss || this.boss.defeated || this.health <= 0) return;
+    this.maintainBossHover(this.boss.sprite);
+
+    if (!this.boss.active && this.player.x > this.profile.completionX.bossArena) {
+      this.activateBoss();
+    }
+
+    if (!this.boss.active) {
+      const contract = this.getAuthoredBossCombat(this.boss.sprite);
+      if (contract) this.playMg1ActorLoop(this.boss.sprite, contract.dormant);
+      return;
+    }
+
+    const boss = this.boss;
+    const body = boss.sprite.body as Phaser.Physics.Arcade.Body;
+    const previousPhase = boss.phase;
+    const decision = updateSideOpsBoss(boss.brain, {
+      now: this.time.now, packId: this.profile.visualPackId, bossTextureKey: this.profile.boss.texture, active: boss.active,
+      hp: boss.hp, maxHp: boss.maxHp, x: boss.sprite.x, y: boss.sprite.y,
+      playerX: this.player.x, playerY: this.player.y,
+      hasLineOfSight: this.hasTacticalLineOfSight(boss.sprite.x, boss.sprite.y - 12),
+      arenaMin: this.profile.completionX.bossArena + body.halfWidth,
+      arenaMax: this.profile.worldWidth - 100 - body.halfWidth,
+      blockedLeft: body.blocked.left, blockedRight: body.blocked.right
+    });
+    boss.brain = decision.state;
+    boss.decision = decision;
+    boss.phase = decision.state.phase;
+    boss.direction = decision.direction;
+    boss.sprite.setFlipX(boss.baseFacingRight ? boss.direction < 0 : boss.direction > 0);
+    boss.sprite.setVelocityX(decision.velocityX);
+    const contract = this.getAuthoredBossCombat(boss.sprite);
+    if (contract) {
+      const presentation = resolveSideOpsMechaCombatAnimation(decision, contract);
+      const actionClip = presentation.action ? getAuthoredSideOpsSpecialActorClip(boss.sprite, presentation.action) : undefined;
+      const playback = resolveSideOpsMechaCombatPlayback(presentation, {
+        priority: Number(boss.sprite.getData('mg1AnimationPriority') ?? 0),
+        lastEventKey: boss.sprite.getData('authoredBossAnimationEvent'),
+        currentActionMatches: Boolean(actionClip && boss.sprite.anims.currentAnim?.key === actionClip.key)
+      });
+      if (playback === 'loop') this.playMg1ActorLoop(boss.sprite, presentation.loop);
+      else if (playback === 'hold-final' && actionClip && this.anims.exists(actionClip.key)) {
+        // A hit may replace the windup clip. Restore its final pose only once
+        // the hit lock expires, without extending aim time or hiding an impact.
+        boss.sprite.play({ key: actionClip.key, startFrame: actionClip.end - actionClip.start });
+        boss.sprite.anims.stop();
+      }
+      // Real salvos may interrupt windup/recoil, never a higher-priority hit/death.
+      // Recovery waits for the final recoil and is only acknowledged after playback.
+      if (presentation.action && playback === 'play-action') {
+        this.playMg1ActorAction(boss.sprite, presentation.action, presentation.action === 'attack');
+        if (boss.sprite.anims.currentAnim?.key === getAuthoredSideOpsSpecialActorClip(boss.sprite, presentation.action)?.key) {
+          boss.sprite.setData('authoredBossAnimationEvent', presentation.eventKey);
+        }
+      }
+    } else {
+      this.playMg1ActorLoop(boss.sprite, decision.animation === 'move' ? 'move' : 'idle');
+      if (decision.animation === 'attack') this.playMg1ActorAction(boss.sprite, 'attack');
+      // Ocelot retains his authored reload, not a machine recovery alias.
+      if (decision.state.mode === 'recover' && Number(boss.sprite.getData('mg1AnimationPriority') ?? 0) === 0
+        && boss.sprite.getData('reloadWindow') !== decision.state.stateUntil) {
+        this.playMg1ActorAction(boss.sprite, 'reload');
+        boss.sprite.setData('reloadWindow', decision.state.stateUntil);
+      }
+    }
+    decision.projectiles.forEach((projectile) => this.fireBossShot(boss, projectile));
+    if (decision.telegraph) {
+      const target = decision.telegraph;
+      const color = target.kind === 'charge' ? 0xffa24c : 0xff5c65;
+      this.bossTelegraphGraphics.lineStyle(2, color, 0.35 + target.progress * 0.5);
+      this.bossTelegraphGraphics.lineBetween(boss.sprite.x, boss.sprite.y - 12, target.x, target.y);
+      this.bossTelegraphGraphics.strokeCircle(target.x, target.y, 12 + (1 - target.progress) * 22);
+      this.bossTelegraphGraphics.lineBetween(target.x - 19, target.y, target.x + 19, target.y);
+      this.bossTelegraphGraphics.lineBetween(target.x, target.y - 19, target.x, target.y + 19);
+    } else if (decision.vulnerable) {
+      this.bossTelegraphGraphics.lineStyle(2, 0x7cff6b, 0.8);
+      this.bossTelegraphGraphics.strokeRect(body.left - 4, body.top - 4, body.width + 8, body.height + 8);
+    }
+    if (boss.phase > previousPhase) {
+      this.flashStatus(`${this.profile.boss.name.toUpperCase()} PHASE ${boss.phase}: WATCH THE TARGET LOCK`);
+      if (!this.bossMidfightEmitted) {
+        this.bossMidfightEmitted = true;
+        this.emitProfileCodec(this.profile.codec.bossMidfight);
+      }
+    }
+  }
+
+  private activateBoss(): void {
+    if (!this.boss || this.boss.active) return;
+    this.boss.active = true;
+    this.applyBossPhaseTint(this.boss.sprite, 1);
+    this.objectiveStage = 'defeat_captain';
+    this.triggerAlert(`${this.profile.boss.name.toLowerCase()} encounter`);
+    if (!this.bossIntroEmitted) {
+      this.bossIntroEmitted = true;
+      this.emitProfileCodec(this.profile.codec.bossIntro);
+    }
+  }
+
+  private fireBossShot(boss: BossUnit, shot: SideOpsBossProjectile): void {
+    // handleBoss owns one authored action per salvo, not one per spread projectile.
+    const direction = shot.velocityX < 0 ? -1 : 1;
+    const source = String(boss.sprite.getData('sideopsSpecialSourceTexture') ?? '');
+    const candidate = resolveSideOpsBossProjectileVisual(source);
+    const visual = candidate && this.textures.exists(candidate.textureKey) && this.anims.exists(candidate.clip.key) ? candidate : undefined;
+    const muzzle = visual && boss.sprite.body ? resolveSideOpsBossProjectileMuzzle(source, boss.sprite.body, direction) : undefined;
+    const origin = muzzle ?? { x: boss.sprite.x + direction * 28, y: boss.sprite.y - 12 };
+    const textureKey = visual?.textureKey ?? this.getEnemyProjectileTexture();
+    const bullet = this.enemyBullets.get(origin.x, origin.y, textureKey) as Phaser.Physics.Arcade.Sprite | null;
+    if (!bullet) return;
+    const body = this.resetEnemyProjectile(bullet, textureKey, origin.x, origin.y);
+    const velocity = muzzle ? resolveSideOpsBossProjectileVelocity(shot,
+      { x: boss.sprite.x, y: boss.sprite.y - 12 }, muzzle,
+      { x: boss.brain.targetX, y: boss.brain.targetY }) : shot;
+    if (visual) {
+      bullet.setDisplaySize(visual.width, visual.height);
+      body.updateFromGameObject();
+      body.setSize(visual.hitbox.width / Math.abs(bullet.scaleX), visual.hitbox.height / Math.abs(bullet.scaleY), true);
+      bullet.setRotation(Math.atan2(velocity.velocityY, velocity.velocityX));
+      bullet.play(visual.clip.key).setData('sideopsBossProjectileVisual', visual.id);
+    } else {
+      bullet.setFlipX(direction < 0);
+    }
+    // Changing the padded sheet's scale/offset is not physical travel. Align the
+    // previous positions too, or Arcade postUpdate adds that delta to the muzzle.
+    body.updateFromGameObject();
+    body.prev.copy(body.position);
+    body.prevFrame.copy(body.position);
+    bullet.setVelocity(velocity.velocityX, velocity.velocityY);
+    bullet.setData('damage', shot.damage).setData('source', this.profile.boss.name);
+    this.expireEnemyProjectileAfter(bullet, 1800);
+  }
+
+  /** A pooled guard round must never inherit a boss sheet, scale, rotation or hitbox. */
+  private resetEnemyProjectile(bullet: Phaser.Physics.Arcade.Sprite, textureKey: string, x: number, y: number): Phaser.Physics.Arcade.Body {
+    bullet.anims.stop();
+    bullet.setTexture(textureKey, 0).setOrigin(0.5).setScale(1).setRotation(0).setFlip(false, false).clearTint();
+    bullet.enableBody(true, x, y, true, true);
+    const body = bullet.body as Phaser.Physics.Arcade.Body;
+    body.updateFromGameObject();
+    body.setSize(bullet.width, bullet.height, true).setAllowGravity(false);
+    body.updateFromGameObject();
+    body.prev.copy(body.position);
+    body.prevFrame.copy(body.position);
+    bullet.setData('sideopsBossProjectileVisual', null);
+    return body;
+  }
+
+  /** Old timers cannot destroy the next flight if a projectile is recycled. */
+  private expireEnemyProjectileAfter(bullet: Phaser.Physics.Arcade.Sprite, lifetimeMs: number): void {
+    const flight = Number(bullet.getData('enemyProjectileFlight') ?? 0) + 1;
+    bullet.setData('enemyProjectileFlight', flight);
+    this.time.delayedCall(lifetimeMs, () => {
+      if (bullet.active && bullet.getData('enemyProjectileFlight') === flight) bullet.destroy();
+    });
+  }
+
+  private hitBoss(source: 'SOCOM' | 'CQC'): void {
+    const boss = this.boss;
+    if (!boss || boss.defeated) return;
+    if (!boss.active) this.activateBoss();
+
+    const damage = source === 'SOCOM' && boss.decision?.vulnerable ? 2 : 1;
+    boss.hp = Math.max(0, boss.hp - damage);
+    this.playMg1ActorAction(boss.sprite, 'hit');
+    boss.sprite.setTint(0xff9f6b);
+    this.time.delayedCall(120, () => {
+      if (boss.sprite.active && !boss.defeated) this.applyBossPhaseTint(boss.sprite, boss.phase);
+    });
+    this.flashStatus(`${this.profile.boss.name.toUpperCase()} ${damage > 1 ? 'WEAK POINT' : 'ARMOR'} HIT: ${boss.hp}/${boss.maxHp}`);
+
+    if (boss.hp <= 0) this.defeatBoss();
+  }
+
+  private applyBossPhaseTint(sprite: Phaser.Physics.Arcade.Sprite, phase: 1 | 2 | 3): void {
+    void phase;
+    sprite.clearTint();
+  }
+
+  private defeatBoss(): void {
+    const boss = this.boss;
+    if (!boss || boss.defeated) return;
+    boss.defeated = true;
+    boss.active = false;
+    boss.decision = null;
+    this.bossTelegraphGraphics.clear();
+    boss.sprite.setVelocity(0, 0);
+    boss.sprite.setTint(0x456b49);
+    this.playMg1ActorAction(boss.sprite, 'death');
+    this.completedObjectives.add('defeat_captain');
+    this.objectiveStage = 'extract';
+    this.suspicionMeter = Math.min(this.suspicionMeter, 45);
+    this.flashStatus(`${this.profile.boss.name.toUpperCase()} DEFEATED`);
+    if (!this.bossDefeatedEmitted) {
+      this.bossDefeatedEmitted = true;
+      this.emitProfileCodec(this.profile.codec.bossDefeated);
+    }
+  }
+
+  private handleCameraSweep(): void {
+    this.cameraScanGraphics.clear();
+    if (this.cameraDisabled) return;
+
+    const chaffActive = this.isChaffActive();
+    const direction = Math.sin(this.time.now / 760) >= 0 ? 1 : -1;
+    const coneColor = chaffActive ? 0x88a8ff : 0xff6b6b;
+    const alpha = chaffActive ? 0.08 : 0.18;
+    const x = this.cameraNode.x;
+    const y = this.cameraNode.y + 10;
+
+    this.drawOccludedCone(this.cameraScanGraphics, { x, y },
+      { x: x + direction * 285, y: y + 220 }, { x: x + direction * 45, y: y + 220 }, coneColor, alpha);
+
+    if (chaffActive) this.cameraNode.setTint(0x88a8ff);
+    else this.cameraNode.clearTint();
+  }
+
+  private handleSearchlightSweep(): void {
+    this.searchlightGraphics.clear();
+    const chaffActive = this.isChaffActive();
+    const originX = this.profile.searchlight.x;
+    const originY = this.profile.searchlight.y;
+    const sweep = Math.sin(this.time.now / 980);
+    const targetX = originX + sweep * this.profile.searchlight.sweep;
+    const targetY = 505;
+
+    this.drawOccludedCone(this.searchlightGraphics, { x: originX, y: originY },
+      { x: targetX - 90, y: targetY }, { x: targetX + 90, y: targetY },
+      chaffActive ? 0x88a8ff : 0xf8f49a, chaffActive ? 0.05 : 0.13);
+    this.searchlightGraphics.fillStyle(chaffActive ? 0x88a8ff : 0xf8f49a, 0.85);
+    this.searchlightGraphics.fillCircle(originX, originY, 8);
+
+    this.bossBarrierGraphics.clear();
+    if (this.boss?.active && !this.boss.defeated) {
+      this.bossBarrierGraphics.fillStyle(0xff6b6b, 0.1);
+      this.bossBarrierGraphics.fillRect(this.profile.completionX.bossArena, 110, 580, 410);
+      this.bossBarrierGraphics.lineStyle(2, 0xff6b6b, 0.45);
+      this.bossBarrierGraphics.strokeRect(this.profile.completionX.bossArena, 110, 580, 410);
+    }
+  }
+
+  private handleDetection(): void {
+    if (this.health <= 0) return;
+
+    let detectionAmount = 0;
+    let source = '';
+
+    this.guards.forEach((guard) => {
+      const result = this.getGuardDetection(guard);
+      if (result.amount > detectionAmount) {
+        detectionAmount = result.amount;
+        source = result.source;
+      }
+    });
+
+    if (!this.cameraDisabled && !this.isChaffActive() && this.isPlayerInCameraCone()) {
+      const amount = this.isPlayerCrouched() ? 1.05 : 2.35;
+      if (amount > detectionAmount) {
+        detectionAmount = amount;
+        source = 'security camera';
+      }
+    }
+
+    if (!this.isChaffActive() && this.isPlayerInSearchlightCone()) {
+      const amount = this.isPlayerCrouched() ? 0.7 : 1.45;
+      if (amount > detectionAmount) {
+        detectionAmount = amount;
+        source = 'searchlight sweep';
+      }
+    }
+
+    if (this.boss?.active && !this.boss.defeated && Math.abs(this.player.x - this.boss.sprite.x) < 620
+      && this.hasTacticalLineOfSight(this.boss.sprite.x, this.boss.sprite.y - 12)) {
+      detectionAmount = Math.max(detectionAmount, 2.2);
+      source = `${this.profile.boss.name.toLowerCase()} line of fire`;
+    }
+
+    if (detectionAmount > 0) {
+      this.increaseSuspicion(detectionAmount * this.getFrameFactor(), source);
+      if (this.alertState === 'ALERT') this.alertPhaseEndsAt = Math.max(this.alertPhaseEndsAt, this.time.now + 2600);
+      return;
+    }
+
+    this.decaySuspicion();
+  }
+
+  private getGuardDetection(guard: GuardUnit): { amount: number; source: string } {
+    if (guard.disabled) return { amount: 0, source: '' };
+    return { amount: (guard.decision?.detectionPerSecond ?? 0) / 60, source: `${guard.role} guard sightline` };
+  }
+
+  private isPlayerInCameraCone(): boolean {
+    const direction = Math.sin(this.time.now / 760) >= 0 ? 1 : -1;
+    const dx = this.player.x - this.cameraNode.x;
+    const dy = this.player.y - this.cameraNode.y;
+    const playerInFront = direction > 0 ? dx > 0 : dx < 0;
+    return playerInFront && Math.abs(dx) < 300 && dy > 20 && dy < 235 && Math.abs(dx) < 65 + dy * 1.35
+      && this.hasTacticalLineOfSight(this.cameraNode.x, this.cameraNode.y + 10);
+  }
+
+  private isPlayerInSearchlightCone(): boolean {
+    const originX = this.profile.searchlight.x;
+    const sweep = Math.sin(this.time.now / 980);
+    const targetX = originX + sweep * this.profile.searchlight.sweep;
+    const dx = Math.abs(this.player.x - targetX);
+    return this.player.y > 330 && dx < 108
+      && this.hasTacticalLineOfSight(originX, this.profile.searchlight.y);
+  }
+
+  private increaseSuspicion(amount: number, source: string): void {
+    this.lastAlertSource = source;
+    if (source === 'security camera' && !this.firstCameraDetectionEmitted) {
+      this.firstCameraDetectionEmitted = true;
+      this.emitProfileCodec(this.profile.codec.cameraDetected);
+    }
+    if (source === 'searchlight sweep' && !this.firstSearchlightDetectionEmitted) {
+      this.firstSearchlightDetectionEmitted = true;
+      this.emitProfileCodec(this.profile.codec.searchlight);
+    }
+    this.suspicionDecayBlockedUntil = this.time.now + 450;
+
+    if (this.alertState === 'ALERT') {
+      this.suspicionMeter = 100;
+      this.suspicionPeak = 100;
+      return;
+    }
+
+    const cautionMultiplier = this.alertState === 'CAUTION' || this.alertState === 'EVASION' ? 1.35 : 1;
+    this.suspicionMeter = Phaser.Math.Clamp(this.suspicionMeter + amount * cautionMultiplier, 0, 100);
+    this.suspicionPeak = Math.max(this.suspicionPeak, this.suspicionMeter);
+
+    if (this.suspicionMeter >= 12 && this.alertState === 'NORMAL') {
+      this.setAlertState('SUSPICION', source, 'Suspicion rising');
+      if (!this.firstSuspicionEmitted) {
+        this.firstSuspicionEmitted = true;
+        this.emitProfileCodec(this.profile.codec.suspicion);
+      }
+    }
+
+    if (this.suspicionMeter >= 100) this.triggerAlert(source);
+  }
+
+  private decaySuspicion(): void {
+    if (this.time.now < this.suspicionDecayBlockedUntil) return;
+    if (this.alertState === 'ALERT') return;
+
+    const decayBase = this.alertState === 'CAUTION' ? 0.42 : this.alertState === 'EVASION' ? 0.26 : 1.05;
+    this.suspicionMeter = Phaser.Math.Clamp(this.suspicionMeter - decayBase * this.getFrameFactor(), 0, 100);
+
+    if (this.suspicionMeter <= 0 && this.alertState === 'SUSPICION') {
+      this.setAlertState('NORMAL', 'line of sight lost', 'Suspicion cleared');
+    }
+  }
+
+  private triggerAlert(source: string): void {
+    const wasAlert = this.alertState === 'ALERT';
+    this.alertState = 'ALERT';
+    this.lastAlertSource = source;
+    this.suspicionMeter = 100;
+    this.suspicionPeak = 100;
+    this.alertPhaseEndsAt = this.time.now + (this.boss?.active ? 5000 : 4300);
+
+    if (!wasAlert || this.time.now >= this.nextAlertAllowedAt) {
+      this.alertCount += 1;
+      this.nextAlertAllowedAt = this.time.now + 5200;
+      this.emitAlertEvent('ALERT', source, 'Combat alert triggered');
+      this.scheduleReinforcement();
+    }
+
+    if (!this.firstAlertEmitted) {
+      this.firstAlertEmitted = true;
+      this.emitProfileCodec(this.profile.codec.firstAlert);
+    }
+  }
+
+  private updateAlertState(): void {
+    if (this.health <= 0) {
+      this.alertState = 'MISSION FAILED';
+      return;
+    }
+
+    if (this.boss?.active && !this.boss.defeated) {
+      this.alertState = 'ALERT';
+      this.suspicionMeter = 100;
+      return;
+    }
+
+    if (this.alertState === 'ALERT' && this.time.now > this.alertPhaseEndsAt) {
+      this.suspicionMeter = 70;
+      this.setAlertState('EVASION', this.lastAlertSource, 'Enemy lost direct contact');
+      this.alertPhaseEndsAt = this.time.now + 2600;
+      if (!this.firstEvasionEmitted) {
+        this.firstEvasionEmitted = true;
+        this.emitProfileCodec(this.profile.codec.evasion);
+      }
+    } else if (this.alertState === 'EVASION' && this.time.now > this.alertPhaseEndsAt) {
+      this.suspicionMeter = 45;
+      this.setAlertState('CAUTION', this.lastAlertSource, 'Caution phase started');
+      this.alertPhaseEndsAt = this.time.now + 3600;
+      if (!this.firstCautionEmitted) {
+        this.firstCautionEmitted = true;
+        this.emitProfileCodec(this.profile.codec.caution);
+      }
+    } else if (this.alertState === 'CAUTION' && (this.time.now > this.alertPhaseEndsAt || this.suspicionMeter <= 3)) {
+      this.suspicionMeter = 0;
+      this.setAlertState('NORMAL', 'area quiet', 'Security status normalized');
+    }
+  }
+
+  private setAlertState(state: AlertState, source: string, message: string): void {
+    if (this.alertState === state) return;
+    this.alertState = state;
+    this.lastAlertSource = source;
+    this.emitAlertEvent(state, source, message);
+  }
+
+  private emitAlertEvent(level: string, source: string, message: string): void {
+    const payload: AlertEventPayload = {
+      missionId: this.profile.id,
+      missionTitle: this.profile.title,
+      level,
+      alerts: this.alertCount,
+      source,
+      message,
+      timeSeconds: Math.round(this.missionElapsedMs / 1000),
+      suspicion: Math.round(this.suspicionMeter),
+      stealthScore: this.getStealthScore()
+    };
+    emitGameEvent<AlertEventPayload>(GAME_EVENT.ALERT, payload);
+  }
+
+  private scheduleReinforcement(): void {
+    if (this.reinforcementCount >= 3) return;
+    if (this.nextReinforcementAt > this.time.now) return;
+    this.nextReinforcementAt = this.time.now + (this.reinforcementCount === 0 ? 1500 : 5200);
+  }
+
+  private handleReinforcements(): void {
+    if (this.alertState !== 'ALERT') return;
+    if (this.reinforcementCount >= 3) return;
+    if (this.nextReinforcementAt === 0 || this.time.now < this.nextReinforcementAt) return;
+
+    const spawnX = this.player.x < this.profile.worldWidth / 2 ? this.profile.worldWidth - 340 : 260;
+    const patrolMin = Phaser.Math.Clamp(spawnX - 260, 80, this.profile.worldWidth - 140);
+    const patrolMax = Phaser.Math.Clamp(spawnX + 260, 160, this.profile.worldWidth - 80);
+    const guard = this.spawnGuard({ x: spawnX, y: 454, patrolMin, patrolMax, role: 'reinforcement' });
+    guard.direction = spawnX > this.player.x ? -1 : 1;
+    guard.brain.direction = guard.direction < 0 ? -1 : 1;
+    // Radio reports a fixed last-contact location; reinforcements must reacquire visually.
+    const contact = this.guards.find((unit) => unit.decision?.seesPlayer && !unit.disabled)?.brain;
+    if (contact?.lastKnownX !== null && contact?.lastKnownX !== undefined) {
+      guard.brain.lastKnownX = contact.lastKnownX;
+      guard.brain.lastKnownY = contact.lastKnownY;
+      guard.brain.lastContactAt = this.time.now;
+      guard.brain.mode = 'investigate';
+    }
+    guard.sprite.clearTint();
+    this.reinforcementCount += 1;
+    this.nextReinforcementAt = 0;
+    this.emitAlertEvent('REINFORCEMENT', 'base security response', 'Reinforcement unit deployed');
+
+    if (!this.reinforcementCodecEmitted) {
+      this.reinforcementCodecEmitted = true;
+      this.emitProfileCodec(this.profile.codec.reinforcement);
+    }
+
+    if (this.reinforcementCount < 3 && !this.boss?.active) this.scheduleReinforcement();
+  }
+
+  private handleGuardCombat(): void {
+    if (this.health <= 0 || this.alertState !== 'ALERT') return;
+
+    this.guards.forEach((guard) => {
+      if (guard.disabled || !guard.decision?.fire) return;
+      const direction = guard.direction;
+      const bullet = this.enemyBullets.get(
+        guard.sprite.x + direction * 18,
+        guard.sprite.y - 6,
+        this.getEnemyProjectileTexture()
+      ) as Phaser.Physics.Arcade.Sprite | null;
+      if (!bullet) return;
+
+      this.resetEnemyProjectile(bullet, this.getEnemyProjectileTexture(), guard.sprite.x + direction * 18, guard.sprite.y - 6);
+      bullet.setVelocityX(direction * guard.decision.projectileSpeed);
+      bullet.setVelocityY(0);
+      bullet.setData('damage', guard.role === 'reinforcement' ? 14 : 11).setData('source', `${guard.role} rifle`);
+      bullet.setFlipX(direction < 0);
+      this.playMg1ActorAction(guard.sprite, 'attack');
+      this.expireEnemyProjectileAfter(bullet, 1200);
+    });
+  }
+
+  private registerNoise(amount: number, source: string): void {
+    const radius = Math.min(500, 130 + amount * 8);
+    this.latestNoise = {
+      id: `noise-${++this.noiseSequence}`, x: this.player.x, y: this.player.y,
+      radius, occurredAt: this.time.now
+    };
+    const nearestAwakeGuard = this.guards.some(
+      (guard) => !guard.disabled && Math.hypot(guard.sprite.x - this.player.x, guard.sprite.y - this.player.y) < radius
+        && Math.abs(guard.sprite.y - this.player.y) < 180
+    );
+    if (!nearestAwakeGuard || this.alertState === 'ALERT') return;
+    this.increaseSuspicion(amount, source);
+  }
+
+  private destroyPhysicsObject(object: unknown): void {
+    const candidate = object as Phaser.GameObjects.GameObject | undefined;
+    candidate?.destroy?.();
+  }
+
+  private tryCqc(): void {
+    if (this.health <= 0) return;
+
+    if (this.boss?.active && !this.boss.defeated) {
+      const distanceToBoss = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.boss.sprite.x, this.boss.sprite.y);
+      if (distanceToBoss < 92 && this.hasTacticalLineOfSight(this.player.x, this.player.y - 10, this.boss.sprite.x, this.boss.sprite.y - 10)) {
+        if (!['mg1', 'mgs1', 'mgs2_tanker', 'vr_simulation'].includes(this.profile.visualPackId)) {
+          this.flashStatus('HEAVY ARMOR — USE WEAPONS DURING THE RECOVERY OPENING');
+          return;
+        }
+        this.playMg1ActorAction(this.player, 'melee');
+        this.hitBoss('CQC');
+        if (!this.boss.decision?.vulnerable) this.damagePlayer(6 + this.boss.phase * 2, 'counter impact');
+        return;
+      }
+    }
+
+    const candidates = this.guards
+      .filter((guard) => !guard.disabled)
+      .map((guard) => ({ guard, distance: Phaser.Math.Distance.Between(this.player.x, this.player.y, guard.sprite.x, guard.sprite.y) }))
+      .filter((entry) => entry.distance < 100)
+      .filter((entry) => this.hasTacticalLineOfSight(this.player.x, this.player.y - 10, entry.guard.sprite.x, entry.guard.sprite.y - 10))
+      .sort((a, b) => a.distance - b.distance);
+
+    const target = candidates[0]?.guard;
+    if (!target) {
+      this.flashStatus('NO TARGET IN CQC RANGE');
+      return;
+    }
+
+    const behindGuard = target.direction < 0 ? this.player.x > target.sprite.x : this.player.x < target.sprite.x;
+    target.disabled = true;
+    target.indicator.setVisible(false);
+    this.playMg1ActorAction(this.player, 'melee');
+    target.sprite.setVelocity(0, 0);
+    target.sprite.setTint(0x456b49);
+    this.playMg1ActorAction(target.sprite, 'death');
+    this.neutralizations += 1;
+    this.flashStatus(behindGuard ? 'CQC NON-LETHAL TAKEDOWN' : 'CQC TAKEDOWN');
+    this.emitProfileCodec(this.profile.codec.cqc);
+
+    if (!behindGuard && this.alertState !== 'ALERT') this.increaseSuspicion(22, 'visible CQC takedown');
+  }
+
+  private hitGuard(guard: GuardUnit): void {
+    if (guard.disabled) return;
+    guard.hp -= 1;
+    guard.sprite.setTint(0xff9f6b);
+
+    if (guard.hp > 0) {
+      this.playMg1ActorAction(guard.sprite, 'hit');
+      this.flashStatus('ARMORED TARGET HIT');
+      this.triggerAlert('weapon impact');
+      return;
+    }
+
+    guard.disabled = true;
+    guard.indicator.setVisible(false);
+    this.kills += 1;
+    guard.sprite.setTint(0xff6b6b);
+    guard.sprite.setVelocity(0, 0);
+    this.playMg1ActorAction(guard.sprite, 'death');
+    this.triggerAlert('lethal shot');
+    this.flashStatus(guard.role === 'reinforcement' ? 'REINFORCEMENT DOWN' : 'GUARD DOWN - LETHAL SHOT');
+  }
+
+  private hitCamera(): void {
+    if (this.cameraDisabled) return;
+    this.cameraDisabled = true;
+    this.camerasDisabled += 1;
+    this.cameraNode.setTint(0x456b49);
+    this.flashStatus('CAMERA DESTROYED');
+    this.emitProfileCodec(this.profile.codec.cameraDown);
+    this.registerNoise(20, 'camera destroyed');
+  }
+
+  private damagePlayer(amount: number, source: string): void {
+    if (this.health <= 0 || this.time.now < this.lastDamageTime + 650) return;
+    this.lastDamageTime = this.time.now;
+    this.health = Math.max(0, this.health - amount);
+    this.inputController.vibrate(130, 0.62, 0.45);
+    this.damageTaken += amount;
+    this.player.setTint(0xff6b6b);
+    if (this.health > 0) this.playMg1ActorAction(this.player, 'hit');
+    this.flashStatus(`DAMAGE: ${source.toUpperCase()}`);
+
+    if (this.health <= 35 && !this.lowHealthEmitted) {
+      this.lowHealthEmitted = true;
+      this.emitProfileCodec(this.profile.codec.lowHealth);
+    }
+
+    if (this.health <= 0) this.failMission(source);
+  }
+
+  private failMission(source = 'unknown'): void {
+    if (this.missionCompleted) return;
+    this.missionCompleted = true;
+    this.alertState = 'MISSION FAILED';
+    this.player.setTint(0x333333);
+    this.player.setVelocity(0, 0);
+    this.playMg1ActorAction(this.player, 'death');
+    this.objectiveText.setText('MISSION FAILED: press ENTER in result screen to retry');
+    this.emitProfileCodec(this.profile.codec.missionFailed);
+    this.emitHudUpdate();
+
+    const result = this.buildMissionResult(false, `Mission failed: ${source}`);
+    emitGameEvent<MissionCompletePayload>(GAME_EVENT.MISSION_COMPLETE, result);
+    const authoredDeath = getAuthoredSideOpsActorClip(this.player, 'death');
+    const deathDelayMs = authoredDeath
+      ? Math.ceil((authoredDeath.end - authoredDeath.start + 1) / authoredDeath.frameRate * 1000) + 100
+      : this.getMg1ActorAsset(this.player) ? 900 : 350;
+    this.time.delayedCall(deathDelayMs, () => this.scene.start('MissionCompleteScene', result));
+  }
+
+  private updateDoorState(): void {
+    if (this.hasKeycard) this.lockedDoor.setTint(0x7cff6b);
+    else this.lockedDoor.clearTint();
+  }
+
+  private updateObjectiveState(): void {
+    if (!this.hasKeycard) {
+      this.objectiveStage = 'recover_keycard';
+      return;
+    }
+
+    if (this.player.x > this.profile.completionX.openDoor) this.completedObjectives.add('open_security_door');
+    const enoughIntel = !this.campaignMission || this.secretsFound.size >= this.campaignMission.rules.minimumSecrets;
+    if (this.player.x > this.profile.completionX.crossYard && enoughIntel) this.completedObjectives.add('cross_security_yard');
+
+    if (this.boss?.active && !this.boss.defeated) this.objectiveStage = 'defeat_captain';
+    else if ((this.boss?.defeated || this.campaignMission?.rules.bossRequired === false)
+      && enoughIntel && this.completedObjectives.has('cross_security_yard')) this.objectiveStage = 'extract';
+    else if (this.player.x < this.profile.completionX.openDoor && !this.completedObjectives.has('open_security_door')) this.objectiveStage = 'open_security_door';
+    else this.objectiveStage = 'cross_security_yard';
+  }
+
+  private getObjectiveLabel(): string {
+    const label = this.profile.stageLabels[this.objectiveStage] ?? 'Advance mission';
+    if (!this.campaignMission) return label;
+    return `${label} | INTEL ${this.secretsFound.size}/${this.campaignMission.rules.minimumSecrets}`;
+  }
+
+  private updateHudText(): void {
+    const chaffLabel = this.isChaffActive() ? 'ACTIVE' : 'READY';
+    this.statusText.setText(
+      `STATUS: ${this.alertState} | CARD: ${this.hasKeycard ? 'LV.1' : 'NONE'} | OBJ ${this.completedObjectives.size}/${this.profile.totalObjectives} | SECRETS ${this.secretsFound.size}/${this.totalSecrets} | STEALTH ${this.getStealthScore()}`
+    );
+    this.objectiveText.setText(`OBJECTIVE: ${this.getObjectiveLabel()}`);
+    this.alertText.setText(
+      `SUSPICION: ${Math.round(this.suspicionMeter).toString().padStart(3, '0')}% | SOURCE: ${this.lastAlertSource.toUpperCase()} | REINF: ${this.reinforcementCount}/3`
+    );
+    this.hudText.setText(
+      `HP ${this.health}/${this.maxHealth} | AMMO ${this.ammo}/${this.maxAmmo} | RATION ${this.rations} | CHAFF ${this.chaff} ${chaffLabel} | CARD ${this.hasKeycard ? 'YES' : '--'} | SCORE ${this.getStealthScore()}`
+    );
+    if (this.boss?.active && !this.boss.defeated) {
+      this.bossText.setText(`BOSS: ${this.profile.boss.name.toUpperCase()} | PHASE ${this.boss.phase} | HP ${this.boss.hp}/${this.boss.maxHp} | ${this.boss.decision?.status ?? 'ENGAGING'}`);
+    } else if (this.boss?.defeated) {
+      this.bossText.setText('BOSS: NEUTRALIZED | EXTRACTION ROUTE OPEN');
+    } else {
+      this.bossText.setText(this.campaignMission?.rules.bossRequired === false ? 'RECON: RECOVER INTELLIGENCE AND EXTRACT' : '');
+    }
+    if (this.campaignMission) {
+      const sector = getSideOpsCampaignSector(this.profile.id, this.player.x);
+      const timeSeconds = Math.floor(this.missionElapsedMs / 1000);
+      const speedChallenge = this.campaignMission.challenges.find((challenge) => challenge.kind === 'speed');
+      const intelRemaining = Math.max(0, this.campaignMission.rules.minimumSecrets - this.secretsFound.size);
+      const mastery = evaluateSideOpsCampaignChallenges(this.profile.id, this.getCampaignRunSnapshot(timeSeconds));
+      this.sectorText.setText(`SECTOR: ${sector?.label.toUpperCase() ?? 'APPROACH'} | INTEL LEFT ${intelRemaining} | TIME ${timeSeconds}/${speedChallenge?.target ?? '--'}s | MASTERY ${mastery.filter((challenge) => challenge.completed).length}/${mastery.length} (OPTIONAL)`);
+    }
+  }
+
+  private emitHudUpdate(): void {
+    const bossActive = Boolean(this.boss?.active && !this.boss?.defeated);
+    const bossDefeated = Boolean(this.boss?.defeated);
+    const payload: MissionHudPayload = {
+      missionId: this.profile.id,
+      missionTitle: this.profile.title,
+      bossName: this.boss ? this.profile.boss.name : '',
+      health: this.health,
+      maxHealth: this.maxHealth,
+      ammo: this.ammo,
+      maxAmmo: this.maxAmmo,
+      rations: this.rations,
+      chaff: this.chaff,
+      hasKeycard: this.hasKeycard,
+      alertState: this.alertState,
+      suspicion: Math.round(this.suspicionMeter),
+      stealthScore: this.getStealthScore(),
+      reinforcementCount: this.reinforcementCount,
+      activeEnemies: this.guards.filter((guard) => !guard.disabled).length + (bossActive ? 1 : 0),
+      lastAlertSource: this.lastAlertSource,
+      alerts: this.alertCount,
+      shotsFired: this.shotsFired,
+      kills: this.kills,
+      neutralizations: this.neutralizations,
+      camerasDisabled: this.camerasDisabled,
+      objective: this.getObjectiveLabel(),
+      objectiveStage: this.objectiveStage,
+      objectivesCompleted: this.completedObjectives.size,
+      totalObjectives: this.profile.totalObjectives,
+      secretsFound: this.secretsFound.size,
+      totalSecrets: this.totalSecrets,
+      bossActive,
+      bossDefeated,
+      bossHealth: this.boss?.hp ?? 0,
+      bossMaxHealth: this.boss?.maxHp ?? 0,
+      chaffActive: this.isChaffActive()
+    };
+    emitGameEvent<MissionHudPayload>(GAME_EVENT.HUD_UPDATE, payload);
+  }
+
+  private flashStatus(message: string): void {
+    this.objectiveText.setText(`INFO: ${message}`);
+    this.time.delayedCall(1450, () => {
+      if (!this.objectiveText.active || this.missionCompleted) return;
+      this.objectiveText.setText(`OBJECTIVE: ${this.getObjectiveLabel()}`);
+    });
+  }
+
+  private isPlayerCrouched(): boolean {
+    return this.inputController.isDown('crouch');
+  }
+
+  private isPlayerSlowWalking(): boolean {
+    return this.inputController.isDown('sprint');
+  }
+
+  private isChaffActive(): boolean {
+    return this.time.now < this.chaffActiveUntil;
+  }
+
+  private getFrameFactor(): number {
+    return Math.max(0.5, Math.min(2.2, this.game.loop.delta / 16.67));
+  }
+
+  private getStealthScore(): number {
+    let score = 1000;
+    score -= this.alertCount * 170;
+    score -= this.kills * 95;
+    score -= this.damageTaken * 2;
+    score -= this.rationsUsed * 75;
+    score -= Math.max(0, this.shotsFired - 14) * 8;
+    score -= this.camerasDisabled * 20;
+    score -= this.reinforcementCount * 65;
+    score -= Math.floor(this.suspicionPeak * 1.2);
+    score += this.secretsFound.size * 45;
+    score += this.boss?.defeated ? 80 : 0;
+    return Math.max(0, Math.round(score));
+  }
+
+  private emitCodec(
+    trigger: CodecRequestPayload['trigger'],
+    contactId: string,
+    conversationId: string,
+    message: string,
+    pauseGame: boolean
+  ): void {
+    emitGameEvent<CodecRequestPayload>(GAME_EVENT.REQUEST_CODEC_CALL, {
+      trigger,
+      contactId,
+      conversationId,
+      message,
+      pauseGame
+    });
+
+    if (pauseGame && !this.missionCompleted) {
+      this.scene.pause();
+    }
+  }
+
+  private emitProfileCodec(call: CodecProfileCall): void {
+    this.emitCodec(call.trigger, call.contactId, call.conversationId, call.message, call.pauseGame);
+  }
+
+  private completeMission(): void {
+    if (this.missionCompleted) return;
+    if (this.campaignMission) {
+      const blocker = getSideOpsCampaignExtractionBlocker(this.profile.id, this.getCampaignRunSnapshot());
+      if (blocker) {
+        this.objectiveText.setText(`OBJECTIVE: ${blocker}`);
+        if (this.campaignMission.rules.bossRequired && this.boss && !this.boss.active && !this.boss.defeated) this.activateBoss();
+        return;
+      }
+    }
+    if (!this.hasKeycard) {
+      this.objectiveText.setText(`OBJECTIVE: Need ${this.profile.keycard.label} before extraction`);
+      return;
+    }
+    if (this.campaignMission?.rules.bossRequired !== false && !this.boss?.defeated) {
+      this.objectiveText.setText(`OBJECTIVE: ${this.profile.boss.name} still controls extraction route`);
+      if (!this.boss?.active) this.activateBoss();
+      return;
+    }
+
+    this.missionCompleted = true;
+    this.completedObjectives.add('extract');
+    const result = this.buildMissionResult(true, `Mission clear: ${this.profile.elevator.label} reached`);
+    emitGameEvent<MissionCompletePayload>(GAME_EVENT.MISSION_COMPLETE, result);
+    this.emitProfileCodec({ ...this.profile.codec.missionComplete, message: `Mission complete. Rank preview: ${result.rankPreview}` });
+    this.scene.start('MissionCompleteScene', result);
+  }
+
+  private getCampaignRunSnapshot(timeSeconds = Math.floor(this.missionElapsedMs / 1000)) {
+    return {
+      hasKeycard: this.hasKeycard, bossDefeated: Boolean(this.boss?.defeated), secretsFound: this.secretsFound.size,
+      alerts: this.alertCount, kills: this.kills, damageTaken: this.damageTaken, timeSeconds
+    };
+  }
+
+  private buildMissionResult(success: boolean, outcome: string): MissionCompletePayload & {
+    bossRequired: boolean;
+    campaignChallenges: ReturnType<typeof evaluateSideOpsCampaignChallenges>;
+  } {
+    const timeSeconds = Math.round(this.missionElapsedMs / 1000);
+    const campaignChallenges = evaluateSideOpsCampaignChallenges(this.profile.id, this.getCampaignRunSnapshot(timeSeconds));
+    const rankPreview = success
+      ? calculateSideOpsRank({
+        alerts: this.alertCount,
+        kills: this.kills,
+        damageTaken: this.damageTaken,
+        rationsUsed: this.rationsUsed,
+        timeSeconds,
+        shotsFired: this.shotsFired,
+        stealthScore: this.getStealthScore(),
+        reinforcementCount: this.reinforcementCount
+      })
+      : 'MISSION FAILED';
+
+    return {
+      missionId: this.profile.id,
+      missionTitle: this.profile.title,
+      bossName: this.boss ? this.profile.boss.name : '',
+      success,
+      outcome: success && this.campaignMission ? `Extraction confirmed | Mastery ${campaignChallenges.filter((challenge) => challenge.completed).length}/${campaignChallenges.length}` : outcome,
+      bossRequired: this.campaignMission?.rules.bossRequired !== false,
+      campaignChallenges,
+      rankPreview,
+      alerts: this.alertCount,
+      timeSeconds,
+      shotsFired: this.shotsFired,
+      kills: this.kills,
+      neutralizations: this.neutralizations,
+      rationsUsed: this.rationsUsed,
+      damageTaken: this.damageTaken,
+      camerasDisabled: this.camerasDisabled,
+      objectivesCompleted: this.completedObjectives.size,
+      totalObjectives: this.profile.totalObjectives,
+      secretsFound: this.secretsFound.size,
+      totalSecrets: this.totalSecrets,
+      bossDefeated: Boolean(this.boss?.defeated),
+      noAlert: this.alertCount === 0,
+      noKill: this.kills === 0,
+      stealthScore: this.getStealthScore(),
+      reinforcementCount: this.reinforcementCount
+    };
+  }
+}
