@@ -208,9 +208,22 @@ body{background:#030508!important;overflow:hidden}.toolbar,.footer{display:none!
 <script src="../src/cqc-machine-parts-renderer-v1.js"></script>
 <script src="../src/cqc-machine-parts-catalog-v1.js"></script>
 <script src="../src/cqc-pass16-machine-catalog.js"></script>
+<script src="../src/cqc-pass28-heavy-rig-fixes.js"></script>
+<script src="../src/cqc-pass28-pw-rig-fixes.js"></script>
+<script src="../src/cqc-pass28-vehicle-rig-fixes.js"></script>
+<script src="../src/cqc-pass28-missing-machine.js"></script>
+<script src="../src/cqc-pass27-machine-completion.js"></script>
+<script src="../src/cqc-pass28-machine-ink.js"></script>
+<script src="../src/cqc-pass28-machine-geometry.js"></script>
+<script src="../src/cqc-pass28-edition-fixes.js"></script>
+<script src="../src/cqc-pass28-shagohod-native-rear.js"></script>
+<script src="../src/cqc-pass28-rig-setup.js"></script>
+<script src="../src/cqc-pass28-rig-install.js"></script>
+
 <script src="../src/cqc-pass16-machine-pose-a.js"></script>
 <script src="../src/cqc-pass16-machine-pose-b.js"></script>
 <script src="../src/cqc-pass16-machine-pose.js"></script>
+<script src="../src/cqc-pass28-core-presentation.js"></script>
 <script src="../src/cqc-machine-parts-bridge-v1.js"></script>
 <script src="../src/cqc-pass16-acid-native.js"></script>
 <script src="../src/cqc-sprite-catalog.js"></script>
@@ -236,6 +249,7 @@ body{background:#030508!important;overflow:hidden}.toolbar,.footer{display:none!
 <script src="../src/cqc-pass19-gekko-poses.js"></script>
 <script src="../src/cqc-pass19-machine-source-points.js"></script>
 <script src="../src/cqc-pass19-gekko-install.js"></script>
+<script src="../src/cqc-pass28-rig-install.js"></script>
 <script src="../src/cqc-pass18-machine-bridge.js"></script>
 <script src="../src/cqc-pass18-incarnation-scale.js"></script>
 <script src="../src/cqc-pass19-costume-parts.js"></script>
@@ -279,7 +293,8 @@ body{background:#030508!important;overflow:hidden}.toolbar,.footer{display:none!
 <script src="../src/cqc-pass21-native-retro-costumes.js"></script>
 <script src="../src/cqc-pass21-native-retro-costumes-c.js"></script>
 <script src="../src/cqc-pass21-local-legacy-nextgen-index.js"></script>
-<script src="../src/cqc-pass27-mantis-gala.js"></script><script src="../src/cqc-pass27-sunny-retro.js"></script><script src="../src/cqc-pass27-teliko-retro.js"></script><script src="../src/cqc-pass21-native-wardrobe-index.js"></script>
+<script src="../src/cqc-pass27-mantis-gala.js"></script><script src="../src/cqc-pass27-sunny-retro.js"></script><script src="../src/cqc-pass27-teliko-retro.js"></script><script src="../src/cqc-pass28-ocelot-gala.js"></script>
+<script src="../src/cqc-pass21-native-wardrobe-index.js"></script>
 <script>CQC_PASS21_WARDROBE_POLICY.install()</script>
 <script src="../src/cqc-pass19-native-wardrobe-library.js"></script>
 <script src="../src/cqc-pass19-native-wardrobe-static-compat.js"></script>
@@ -2498,6 +2513,8 @@ function createMgdMatch(options={}){
  return s;
 }
 function mgdLeg(s,key){
+ const native=globalThis.CQC_MACHINE_PARTS_BRIDGE?.coreTarget?.(s,key);
+ if(native)return {...native,health:s.boss.legs[key],key};
  const r=s.boss,a=r.attack;let lift=0;
  if(a?.kind==='stride'&&a.t>=a.windup&&a.t<a.windup+a.active){const age=a.t-a.windup;lift=Math.sin(age/a.active*Math.PI)*95;}
  return{x:r.x+(key==='near'?-118:110),y:22+lift,health:r.legs[key],key};
@@ -2614,7 +2631,7 @@ function mgdAttackTick(s){
  const a=r.attack;a.t++;const age=a.t-a.windup;
  if(age>=0&&age<a.active){
   if(a.kind==='volley'&&age%12===0&&age/12<3)r.hazards.push({id:++r.serial,kind:'missile',x:a.targets[age/12],y:640,ttl:100});
-  if(a.kind==='gun'&&age%7===0){r.hazards.push({id:++r.serial,kind:'bullet',x:r.x-198,y:174,ttl:90});event(s,'shot',{slot:1,x:r.x-198,y:174});}
+  if(a.kind==='gun'&&age%7===0){const native=globalThis.CQC_MACHINE_PARTS_BRIDGE?.coreWeapon?.(s,'gun');if(native){const from=native,to={x:p.x,y:174},dx=to.x-from.x,dy=to.y-from.y,distance=Math.hypot(dx,dy)||1,travelScale=globalThis.CQC_PASS28_CORE_PRESENTATION?.travelScale?.(from,to,{x:r.x-198,y:174})||1;r.hazards.push({id:++r.serial,kind:'bullet',x:from.x,y:from.y,vx:dx/distance*23*travelScale,vy:dy/distance*23*travelScale,ttl:90});event(s,'shot',{slot:1,x:from.x,y:from.y});}else{r.hazards.push({id:++r.serial,kind:'bullet',x:r.x-198,y:174,ttl:90});event(s,'shot',{slot:1,x:r.x-198,y:174});}}
   if(a.kind==='stride'){
    r.x=a.start+(a.end-a.start)*Math.min(1,age/(a.active-1));s.fighters[1].x=r.x;
    if(p.x>mgdPlayerLimit(s)){mgdDamage(s,900,'foot');p.x=mgdPlayerLimit(s);}
@@ -2631,7 +2648,7 @@ function mgdHazardsTick(s){
    if(h.y<=0){h.ttl=0;event(s,'explosion',{slot:1,x:h.x,y:0});if(overlaps({x:h.x-66,y:0,w:132,h:98},hurtbox(p)))mgdDamage(s,800,'missile');}
    else if(overlaps({x:h.x-10,y:h.y-10,w:20,h:oldY-h.y+20},hurtbox(p))){h.ttl=0;mgdDamage(s,800,'missile');}
   }else if(h.kind==='bullet'){
-   h.x-=23;if(overlaps({x:h.x-6,y:h.y-4,w:oldX-h.x+12,h:8},hurtbox(p))){h.ttl=0;mgdDamage(s,210,'gun',true);}
+   if(h.vx!==undefined){h.x+=h.vx;h.y+=h.vy??0;if(rayLineBox(oldX,oldY,h.x,h.y,hurtbox(p),4)){h.ttl=0;mgdDamage(s,210,'gun',true);}}else{h.x-=23;if(overlaps({x:h.x-6,y:h.y-4,w:oldX-h.x+12,h:8},hurtbox(p))){h.ttl=0;mgdDamage(s,210,'gun',true);}}
   }else{h.x-=11;if(overlaps({x:h.x-22,y:0,w:oldX-h.x+44,h:45},hurtbox(p))){h.ttl=0;mgdDamage(s,650,'shock');}}
  }
  r.hazards=r.hazards.filter(h=>h.ttl>0&&h.x>40);
@@ -3841,7 +3858,7 @@ function createPwAiMatch(options={},id='pupa'){
  feedback:'D : LANCEUR / B : CIBLE / A : INTERCEPTION / BAS + D : CAISSE',feedbackFrames:240};
  return s;
 }
-function pwAiTarget(s,key=s.boss.aimMode){const r=s.boss;
+function pwAiTarget(s,key=s.boss.aimMode){const native=globalThis.CQC_MACHINE_PARTS_BRIDGE?.coreTarget?.(s,key);if(native)return native;const r=s.boss;
  const slots=r.id==='pupa'?{pod:{x:r.x-10,y:272,r:35},hull:{x:r.x,y:122,r:115}}:
  r.id==='chrysalis'?{pod:{x:r.x-36,y:r.y+113,r:34},hull:{x:r.x+8,y:r.y,r:100},radar:{x:r.x-204,y:r.y+48,r:36}}:
  r.id==='cocoon'?{pod:{x:r.x+55,y:250,r:38},hull:{x:r.x-20,y:120,r:150},radar:{x:r.x-210,y:270,r:42}}:
@@ -3894,7 +3911,7 @@ function beginPwAiAttack(s,kind=null){const r=s.boss,p=s.fighters[0];if(r.phase!
  if(r.id==='peace_walker'){if(r.radar<=0)pool=pool.filter(k=>k!=='stomp');if(r.health<=8000&&r.launchCooldown<=0)pool.push('launch');}
  if(!kind){const choices=pool.filter(k=>k!==r.lastAttack);kind=choices[Math.floor(rng(s)*choices.length)];}if(!pool.includes(kind))return false;
  const def=PW_AI_ATTACKS[kind],factor={easy:1.22,normal:1,hard:.88}[s.options.difficulty]||1;
- const sourceKey=kind==='cannon'?'radar':'pod',from=pwAiTarget(s,sourceKey)||pwAiTarget(s,'pod'),to={x:80,y:0};const aim={x:p.x,y:p.y+(p.crouch?65:150)};
+ const sourceKey=kind==='cannon'?'radar':'pod',from=(kind==='cannon'?globalThis.CQC_MACHINE_PARTS_BRIDGE?.coreWeapon?.(s,'cannon'):null)||pwAiTarget(s,sourceKey)||pwAiTarget(s,'pod'),to={x:80,y:0};const aim={x:p.x,y:p.y+(p.crouch?65:150)};
  const t=(80-from.x)/(aim.x-from.x||-1);to.y=from.y+(aim.y-from.y)*t;
  r.attack={kind,t:0,windup:Math.max(48,Math.round(def.windup*factor)),active:def.active,recovery:def.recovery,targets:[-190,0,190].map(v=>clamp(p.x+v,110,950)),from:{x:from.x,y:from.y},to,hit:false,emitted:0,rushStart:r.x,rushEnd:900};r.lastAttack=kind;r.cycle++;
  if(kind==='launch')r.launchCooldown=900;
@@ -3912,11 +3929,11 @@ function pwAiMotion(s){const r=s.boss;
 }
 function pwAiAttackTick(s){const r=s.boss,p=s.fighters[0],a=r.attack;if(!a){if(--r.idle<=0)beginPwAiAttack(s);return;}a.t++;const t=a.t-a.windup;
  if(t>=0&&t<a.active){
-  if(a.kind==='guns'&&t%12===0){const from=pwAiTarget(s,'hull');r.hazards.push({id:++r.serial,kind:'bullet',x:from.x-100,y:160,px:from.x-100,py:160,vx:-13,vy:0,ttl:130,age:0,hp:1,trail:[]});}
+  if(a.kind==='guns'&&t%12===0){const from=pwAiTarget(s,'hull');if(from.nativeGeometry===true){const to={x:p.x,y:160},legacyX=r.id==='chrysalis'?r.x+8:r.id==='cocoon'?r.x-20:r.x,dx=to.x-from.x,dy=to.y-from.y,dist=Math.hypot(dx,dy)||1,travelScale=globalThis.CQC_PASS28_CORE_PRESENTATION?.travelScale?.(from,to,{x:legacyX-100,y:160})||1;r.hazards.push({id:++r.serial,kind:'bullet',x:from.x,y:from.y,px:from.x,py:from.y,vx:dx/dist*13*travelScale,vy:dy/dist*13*travelScale,ttl:130,age:0,hp:1,trail:[],emitterQualification:'authored native hull centre; independent muzzle not substantiated'});}else r.hazards.push({id:++r.serial,kind:'bullet',x:from.x-100,y:160,px:from.x-100,py:160,vx:-13,vy:0,ttl:130,age:0,hp:1,trail:[]});}
   if(a.kind==='rods'&&t===0){r.hazards=r.hazards.filter(h=>h.kind!=='rod');for(const x of a.targets)r.hazards.push({id:++r.serial,kind:'rod',x,y:75,px:x,py:75,vx:0,vy:0,ttl:450,age:0,hp:2,hitPulse:-1,trail:[]});event(s,'pwRods',{slot:1});}
   if(a.kind==='rush'){r.x=a.rushStart+(a.rushEnd-a.rushStart)*Math.sin(t/a.active*Math.PI);const box={x:r.x-250,y:0,w:485,h:170};if(!a.hit&&overlaps(pwAiHurt(s),box)&&pwAiDamage(s,1300,'rush'))a.hit=true;}
   if(a.kind==='rail'&&!a.hit&&rayLineBox(a.from.x,a.from.y,a.to.x,a.to.y,pwAiHurt(s),9)&&pwAiDamage(s,1700,'rail'))a.hit=true;
-  if(a.kind==='missiles'&&t%16===0){const index=Math.floor(t/16),from=pwAiTarget(s,'hull'),tx=a.targets[index];if(tx!==undefined){const dx=tx-from.x,dy=-from.y,dist=Math.hypot(dx,dy)||1;r.hazards.push({id:++r.serial,kind:'missile',x:from.x,y:from.y,px:from.x,py:from.y,vx:dx/dist*8,vy:dy/dist*8,ttl:200,age:0,hp:1,trail:[]});}}
+  if(a.kind==='missiles'&&t%16===0){const index=Math.floor(t/16),from=pwAiTarget(s,'hull'),tx=a.targets[index];if(tx!==undefined){const dx=tx-from.x,dy=-from.y,dist=Math.hypot(dx,dy)||1,legacyFrom=r.id==='chrysalis'?{x:r.x+8,y:r.y}:r.id==='cocoon'?{x:r.x-20,y:120}:r.id==='peace_walker'?{x:r.x,y:145}:{x:r.x,y:122},travelScale=globalThis.CQC_PASS28_CORE_PRESENTATION?.travelScale?.(from,{x:tx,y:0},legacyFrom)||1;r.hazards.push({id:++r.serial,kind:'missile',x:from.x,y:from.y,px:from.x,py:from.y,vx:dx/dist*8*travelScale,vy:dy/dist*8*travelScale,ttl:200,age:0,hp:1,trail:[]});}}
   if(a.kind==='drones'&&t%24===0&&r.hazards.filter(h=>h.kind==='drone').length<2){const x=r.x-100,y=r.y+40;r.hazards.push({id:++r.serial,kind:'drone',x,y,px:x,py:y,vx:-4.5,vy:0,ttl:330,age:0,hp:2,trail:[]});event(s,'pwDrone',{slot:1});}
   if(a.kind==='cannon'&&!a.hit&&rayLineBox(a.from.x,a.from.y,a.to.x,a.to.y,pwAiHurt(s),12)&&pwAiDamage(s,2100,'cannon'))a.hit=true;
   if(a.kind==='mortars'&&t%16===0){const index=Math.floor(t/16),tx=a.targets[index];if(tx!==undefined)r.hazards.push({id:++r.serial,kind:'mortar',x:tx,y:690,px:tx,py:690,vx:0,vy:-12,ttl:90,age:0,hp:1,targetX:tx,trail:[]});}
@@ -3933,7 +3950,7 @@ function pwAiHazardsTick(s){const r=s.boss,p=s.fighters[0];for(const h of r.haza
   h.x+=h.vx;h.y+=h.vy;
   if(rayLineBox(h.px,h.py,h.x,h.y,pwAiHurt(s),h.kind==='bullet'?4:16)){h.ttl=0;pwAiDamage(s,h.kind==='bullet'?400:h.kind==='drone'?700:950,h.kind,h.kind==='bullet');}
   if(h.y<=0){h.ttl=0;if(h.kind==='missile'&&overlaps(pwAiHurt(s),{x:h.x-64,y:0,w:128,h:155}))pwAiDamage(s,950,'blast');}
- }r.hazards=r.hazards.filter(h=>h.ttl>0&&h.x>-90&&h.x<1620&&h.y<820);
+ }const nativeFlight=globalThis.CQC_MACHINE_PARTS_BRIDGE?.coreFlightBounds?.(s)||{left:-90,right:1620,top:820};r.hazards=r.hazards.filter(h=>h.ttl>0&&h.x>nativeFlight.left&&h.x<nativeFlight.right&&h.y<nativeFlight.top);
 }
 function pwAiHit(s,key,q){const r=s.boss;if(r.phase!=='battle'||r.health<=0)return false;let amount=0;
  if(key==='radar'){if(!['chrysalis','cocoon','peace_walker'].includes(r.id)||r.radar<=0){r.armored++;return false;}amount=Math.min(r.radar,800);r.radar-=amount;r.radarHits++;if(r.radar===0){r.dodge=0;if(r.id==='cocoon'){r.cannonDisabled=true;if(r.attack?.kind==='cannon'){r.attack=null;r.idle=105;r.interrupts++;}}if(r.id==='peace_walker'){r.legsDisabled=true;if(r.attack?.kind==='stomp'){r.attack=null;r.idle=105;r.interrupts++;}}event(s,'pwRadarDown',{slot:1});bossFeedback(s,pwAiTargetLabel(r,'radar')+' NEUTRALISÉ');}}
@@ -3945,7 +3962,7 @@ function pwAiProjectilesTick(s){const r=s.boss;for(const q of s.projectiles){if(
   if(rayLineBox(old.x,old.y,q.x,q.y,{x:target.x-target.r,y:target.y-target.r,w:target.r*2,h:target.r*2},5)){q.ttl=0;q.resolved=true;pwAiHit(s,q.target,q);}
  }else{q.x+=q.vx;q.y+=q.vy;const hits=r.hazards.filter(h=>h.ttl>0&&['rod','drone','missile','mortar'].includes(h.kind)).map(h=>({h,t:sahelRayBox({x:old.x-h.px,y:old.y-h.py},{x:q.x-h.x,y:q.y-h.y},{x:-20,y:-20,w:40,h:40})})).filter(v=>v.t!==null).sort((a,b)=>a.t-b.t);
   if(hits.length){q.ttl=0;const h=hits[0].h;h.hp--;if(h.hp<=0){h.ttl=0;r.intercepts++;if(h.kind==='rod')r.rodsDestroyed++;if(h.kind==='drone')r.dronesDestroyed++;event(s,'pwIntercept',{slot:0,kind:h.kind,x:h.x,y:h.y});}}}
- if(q.x<-70||q.x>1650||q.y<0||q.y>830)q.ttl=0;if(q.kind==='pwRocket'&&q.ttl<=0&&!q.resolved)r.misses++;
+ const nativeFlight=globalThis.CQC_MACHINE_PARTS_BRIDGE?.coreFlightBounds?.(s)||{left:-70,right:1650,top:830,bottom:0};if(q.x<nativeFlight.left||q.x>nativeFlight.right||q.y<nativeFlight.bottom||q.y>nativeFlight.top)q.ttl=0;if(q.kind==='pwRocket'&&q.ttl<=0&&!q.resolved)r.misses++;
  }s.projectiles=s.projectiles.filter(q=>q.ttl>0);r.hazards=r.hazards.filter(h=>h.ttl>0);
 }
 function pwAiClear(s){const r=s.boss,p=s.fighters[0];r.misses+=s.projectiles.filter(q=>q.kind==='pwRocket'&&q.ttl>0).length;s.projectiles=[];r.hazards=[];r.attack=null;Object.assign(p,{attack:null,command:null,dash:0,vx:0,hitstun:0,blockstun:0,blocking:false,crouch:false});}
@@ -7194,15 +7211,8 @@ function createRenderer(canvas) {
     c.save();c.globalAlpha=.1;for(let x=0;x<1280;x+=144)poly(c,[[x,0],[x+78,0],[x+285,594],[x+160,594]],'#f1eccb');c.restore();
   }
   function pwAiArt(c,s,t=0){const r=s.boss,air=r.id==='chrysalis',heavy=r.id==='cocoon',walker=r.id==='peace_walker',dead=r.defeated;
-    if(window.CQC_MACHINE_PARTS_BRIDGE?.drawNative(c,s,{...nativeRenderOptions,expectedBoss:r.id})){
-      c.save();c.translate(r.x,-r.y);if(dead)c.rotate(.025);
-      if(heavy&&r.radar<=0)poly(c,[[-245,-266],[-205,-235],[-171,-270],[-142,-240]],'#b07a5f');
-      if(walker&&r.radar<=0)for(const x of [-102,82])poly(c,[[x,-112],[x+28,-75],[x+5,-45],[x-18,-80]],'#b0795e');
-      if(!air&&!heavy&&!walker&&r.attack?.kind==='rush'&&r.attack.t>=r.attack.windup&&r.attack.t<r.attack.windup+r.attack.active)poly(c,[[201,-94],[290,-68],[270,-113],[370,-85],[251,-141]],'#e5b86d');
-      if(air&&r.radar<=0){c.save();c.translate(-204,-48);c.rotate(-.25);poly(c,[[-33,8],[-23,-7],[-9,3],[8,-14],[25,8]],'#b59370');c.restore();}
-      if(dead){for(let j=0;j<8;j++){const x=-150+j*43,y=-155-j%3*42;c.fillStyle='#53635177';c.beginPath();c.ellipse(x+Math.sin(t+j)*10,y-22,25,34,0,0,Math.PI*2);c.fill();}}
-      c.restore();return;
-    }
+    if(window.CQC_MACHINE_PARTS_BRIDGE?.drawNative(c,s,{...nativeRenderOptions,expectedBoss:r.id}))return;
+
     c.save();c.translate(r.x,-r.y);if(dead)c.rotate(.025);
     const dark='#223c38',base=air?'#455f5b':heavy?'#4f574f':walker?'#57685b':'#566154',light=air?'#799289':heavy?'#777b68':walker?'#88977e':'#8c9476',edge='#b2b38b';
     if(heavy){
@@ -7244,9 +7254,9 @@ function createRenderer(canvas) {
     c.restore();
   }
   function drawPwAi(s,{time=0,reducedMotion=false,menu=false,debug=false,subtitles=true}={}){
-    const c=g,r=s.boss,p=s.fighters[0],air=r.id==='chrysalis',heavy=r.id==='cocoon',walker=r.id==='peace_walker',t=reducedMotion?0:time,a=r.attack;cam.x=800;cam.zoom=.74;
+    const c=g,r=s.boss,p=s.fighters[0],air=r.id==='chrysalis',heavy=r.id==='cocoon',walker=r.id==='peace_walker',t=reducedMotion?0:time,a=r.attack;const worldCamera=window.CQC_MACHINE_PARTS_BRIDGE?.coreCamera?.(s,{groundY:598,topY:195});cam.x=worldCamera?.x??800;cam.zoom=worldCamera?.zoom??.74;
     c.setTransform(.75,0,0,.75,0,0);pwAiScene(c,r.id,t);stageBank.draw(c,s.options.stage,cam,false);
-    c.save();c.translate(35,598);c.scale(.74,.74);
+    c.save();if(worldCamera){c.translate(worldCamera.screenX,worldCamera.groundY);c.scale(cam.zoom,cam.zoom);c.translate(-cam.x,0);}else{c.translate(35,598);c.scale(.74,.74);}
     if(a){const active=a.t>=a.windup&&a.t<a.windup+a.active;
       if(a.kind==='rush'){c.strokeStyle='#efd68c';c.lineWidth=3;c.setLineDash([10,10]);c.strokeRect(650,-173,735,173);c.setLineDash([]);label(c,'PROPULSION / RECULER',716,-202,17,'#f9dba0');}
       if(a.kind==='rods'||a.kind==='missiles')for(const x of a.targets){c.strokeStyle='#dba974';c.setLineDash([8,8]);c.strokeRect(x-60,-157,120,157);c.setLineDash([]);label(c,a.kind==='rods'?'CONDUCTEUR':'IMPACT',x,-176,14,'#f5d2a0','center');}
@@ -7256,7 +7266,7 @@ function createRenderer(canvas) {
       if(a.kind==='launch'){rect(c,390,-530,500,58,'#5a2222e8');label(c,'SÉQUENCE DE LANCEMENT / TOUCHEZ LE POD',640,-500,19,'#ffd8ad','center');}
     }
     pwAiArt(c,s,t);
-    if(r.id==='cocoon'&&r.phase==='battle'&&r.aimMode==='pod'&&!menu&&window.CQC_MACHINE_PARTS_BRIDGE?.ready?.('cocoon')===true){const aim=pwAiTarget(s);c.save();c.strokeStyle='#ffda9680';c.fillStyle='#ffda96';c.lineWidth=1;c.setLineDash([4,5]);c.beginPath();c.moveTo(r.x-210,-r.y-334);c.lineTo(aim.x,-aim.y);c.stroke();c.setLineDash([]);c.beginPath();c.arc(r.x-210,-r.y-334,4,0,Math.PI*2);c.fill();c.restore();}
+
     // Physical auxiliary threats use their exact simulation centers and activation clocks.
     for(const h of r.hazards){c.save();c.translate(h.x,-h.y);
       if(h.kind==='rod'){rect(c,-9,-15,18,90,'#6a7967');rect(c,-24,-21,48,13,'#d4c185');rect(c,-4,-56,8,38,'#ebd89e');const age=h.age-60,hot=age>=0&&age%90<18;c.strokeStyle=hot?'#f8f1ad':'#d0bb7b77';c.lineWidth=hot?5:2;c.setLineDash(hot?[]:[6,8]);c.strokeRect(-78,-70,156,145);c.setLineDash([]);if(hot){for(let dir of [-1,1]){c.beginPath();c.moveTo(0,10);for(let k=1;k<7;k++)c.lineTo(dir*k*12,Math.sin(k*4+t*30)*24);c.stroke();}}label(c,h.hp+' / '+(h.age<60?'ARMEMENT':'IMPULSIONS'),0,-80,13,'#f3e0a0','center');}
@@ -7716,7 +7726,7 @@ function createRenderer(canvas) {
   }
 
   function drawMgd(s,{time=0,reducedMotion=false,menu=false,subtitles=true,debug=false}={}){
-    const c=g,r=s.boss,p=s.fighters[0];cam.x=800;cam.zoom=.77;
+    const c=g,r=s.boss,p=s.fighters[0];const worldCamera=window.CQC_MACHINE_PARTS_BRIDGE?.coreCamera?.(s,{groundY:578,topY:185});cam.x=worldCamera?.x??800;cam.zoom=worldCamera?.zoom??.77;
     c.setTransform(.75,0,0,.75,0,0);c.imageSmoothingEnabled=false;mgdHangar(c,reducedMotion?0:time);stageBank.draw(c,s.options.stage,cam,false);
     c.save();c.translate(640,578);c.scale(cam.zoom,cam.zoom);c.translate(-cam.x,0);mgdMachine(c,s,reducedMotion?0:time);
     outline(c,[[130,-52],[232,-52],[248,-27],[244,-3],[124,-3]],'#788d89',3);rect(c,142,-38,91,26,'#354e52');label(c,'GRENADES',188,-18,11,'#dae0b2','center');label(c,mgdNearStation(p)?'BAS + D / RAVITAILLER':'MATÉRIEL',190,-77,14,'#d4d8b5','center');
@@ -8255,6 +8265,7 @@ function createRenderer(canvas) {
   /** Full-frame imported clips take priority. Temporary drawings use the same
    * two-actor trajectory but are explicitly not production sprite animations. */
   function drawActor(c,f,t,s){
+    if(window.CQC_PASS28_CORE_PRESENTATION?.drawHuman?.(c,f,t,s,pass16SpriteHooks()))return;
     if(window.CQC_PASS17_CORE_COSTUMES?.drawActor(c,f,t,s,pass16SpriteHooks()))return;
     if(artBank.hasAnimation(f.id,f.animKey,f.stance)){c.save();if(f.cloak>0)c.globalAlpha*=.42;fighter(c,f,t);c.restore();return;}
     if(window.CQC_PASS16_CORE_SPRITES?.drawActor(c,f,t,s,pass16SpriteHooks()))return;

@@ -68,7 +68,7 @@
   let installed = false, installationError = null, registration = null;
   const counts = {machineDraws: 0, correctedBeamDraws: 0, volleyMuzzles: 0};
 
-  function buildCatalog(catalog, parts) {
+  function buildCatalog(catalog, parts, options = {}) {
     if (!catalog || !parts?.normalizeCatalog || !parts?.pose) throw Error('Native machine sources unavailable');
     const before = parts.normalizeCatalog(catalog), adapted = clone(catalog), changed = [];
     for (const machine of adapted.machines) {
@@ -86,7 +86,11 @@
       }
       for (const [partID, target] of Object.entries(spec.append || {})) {
         const part = machine.parts.find(value => value.id === partID), pose = poses.get(partID);
-        if (!part || !pose || part.detachment) throw Error('Invalid independent native part: ' + machine.id + '/' + partID);
+        if (!part || !pose) throw Error('Invalid independent native part: ' + machine.id + '/' + partID);
+        if (part.detachment) {
+          if (part.detachment.when !== 'part' + target + 'Destroyed' || part.detachment.clock !== 'destroy' + target + 'Frames') throw Error('Existing native detachment target differs');
+          edits.push({part: partID, target, kind: 'retained-reviewed-detachment'}); continue;
+        }
         const direction = pose.matrix[4] < 0 ? -1 : 1;
         const flag = 'part' + target + 'Destroyed';
         // Renderer matrices use Canvas y-down; native detachment anchors use y-up.
@@ -104,7 +108,7 @@
       if (spec.keepJets) {
         for (const partID of ['jet_casing', 'jet_nozzles']) {
           const part = machine.parts.find(value => value.id === partID);
-          if (!part?.hideWhen?.includes('zekeJetDisabled')) throw Error('ZEKE native jet source contract differs');
+          if (!part || !Array.isArray(part.hideWhen)) throw Error('ZEKE native jet source contract differs');
           part.hideWhen = part.hideWhen.filter(flag => flag !== 'zekeJetDisabled');
           edits.push({part: partID, kind: 'retained-unrelated-equipment'});
         }
@@ -112,7 +116,7 @@
       changed.push({id: machine.id, sourceParts: machine.parts.length, edits,
         sourcePNGFiles: machine.sources.map(source => source.file)});
     }
-    if (changed.length !== Object.keys(corrections).length) throw Error('A reviewed machine rig is absent');
+    if (!options.allowPartial && changed.length !== Object.keys(corrections).length) throw Error('A reviewed machine rig is absent');
     parts.normalizeCatalog(adapted);
     return {catalog: adapted, changed};
   }
@@ -126,7 +130,7 @@
   }
 
   function presentationPose(id, pose) {
-    if (!pose || id !== 'peacewalker_pw_psp2010') return pose;
+    if (root.CQC_PASS28_RIG_SETUP || !pose || id !== 'peacewalker_pw_psp2010') return pose;
     const channels = {...pose.channels};
     // The bridge supplies a 0..30 lift in pixels; the native joint expects a 0..1 phase.
     if (Number.isFinite(channels.pwStomp)) channels.pwStomp = Math.max(0, Math.min(1, channels.pwStomp / 30));

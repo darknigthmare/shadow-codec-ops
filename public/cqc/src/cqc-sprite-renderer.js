@@ -245,7 +245,9 @@
       const native=hasNativeActionSemantics(entry);
       if(native && typeof pose.moveKind==='string') {
         const kind=pose.moveKind,tag=pose.moveTag||'',slot=pose.moveSlot;let action;
-        if(kind==='projectile') action=['ballistic','precision','tranq','fire'].includes(tag)?'shoot':['blade','knife','boomerang'].includes(tag)?'blade':'deploy';
+        // Ocelot MGS3's exact original low ricochet is a crouched SAA deploy, not the standing shoot group.
+        if(kind==='projectile' && entry.uid==='core__ocelot' && slot==='specialDown' && tag==='ballistic' && mapped==='deploy' && entry.actions.deploy) action='deploy';
+        else if(kind==='projectile') action=['ballistic','precision','tranq','fire'].includes(tag)?'shoot':['blade','knife','boomerang'].includes(tag)?'blade':'deploy';
         else if(kind==='melee' && entry.uid==='core__liquid' && slot==='specialDown' && tag==='strike' && mapped==='low' && entry.actions.low) action='low';
         else if(kind==='melee') action=tag==='grapple'||slot==='throw'?'throw':['blade','knife','machete','spear','tentacle'].includes(tag)?'blade':slot==='low'?'low':slot==='heavy'?'heavy':'punch';
         else if(kind==='reload') action='reload';

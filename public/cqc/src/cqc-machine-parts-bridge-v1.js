@@ -115,16 +115,43 @@
       const encounter=state?.boss?.id;
       if(!Object.hasOwn(IDS,encounter)||options.expectedBoss&&options.expectedBoss!==encounter)return false;
       const mapped=IDS[encounter],motion=options.reducedMotion===true||reduced();
-      if(ready(mapped))return registry.drawCore(ctx,state,{...options,id:mapped,reducedMotion:motion});
+      if(ready(mapped)){
+        const prepared=options.presentationScale===false?null:coreGeometry(state);
+        if(prepared?.dimension&&Object.hasOwn(root.CQC_PASS28_CORE_PRESENTATION?.targets||{},encounter)){
+          ctx.save();
+          try{ctx.transform(...prepared.basis);return registry.drawCore(ctx,state,{...options,id:mapped,
+            origin:[0,0],detachmentBasis:prepared.basis,reducedMotion:motion});}
+          finally{ctx.restore();}
+        }
+        return registry.drawCore(ctx,state,{...options,id:mapped,reducedMotion:motion});
+      }
       const status=nativeStatus(mapped);
       if(status.state!=='error'&&status.attemptState!=='error')ensure(mapped).catch(()=>{});
       placeholder(ctx,state,options.portrait===true);return true;
     }
     function cancelPortrait(canvas){portraits.set(canvas,(portraits.get(canvas)||0)+1);}
+    function coreGeometry(state){
+      const mapped=IDS[state?.boss?.id],machine=machines?.get(mapped);
+      return root.CQC_PASS28_CORE_PRESENTATION?.geometry(state,machine,factory)||null;
+    }
+    function coreTarget(state,key){
+      const mapped=IDS[state?.boss?.id],machine=machines?.get(mapped);
+      return root.CQC_PASS28_CORE_PRESENTATION?.target(state,machine,factory,key)||null;
+    }
+    function coreWeapon(state,key){
+      const mapped=IDS[state?.boss?.id],machine=machines?.get(mapped);
+      return root.CQC_PASS28_CORE_PRESENTATION?.weapon(state,machine,factory,key)||null;
+    }
+    function coreCamera(state,options={}){
+      return root.CQC_PASS28_CORE_PRESENTATION?.camera(state,coreGeometry(state),options)||null;
+    }
+    function coreFlightBounds(state){
+      return root.CQC_PASS28_CORE_PRESENTATION?.flightBounds(state,coreGeometry(state))||null;
+    }
     function bounds(state,options={}){
       const encounter=state?.boss?.id,mapped=IDS[encounter],machine=machines?.get(mapped);
       if(!machine||!factory?.corePose||!factory?.pose)return{left:940,top:-480,width:650,height:490};
-      const adapter=factory.corePose(state,{...options,id:mapped,reducedMotion:true}),poses=factory.pose(machine,adapter);
+      const raw=factory.corePose(state,{...options,id:mapped,reducedMotion:true}),adapter=root.CQC_PASS28_RIG_SETUP?.presentationPose(mapped,raw,state)||raw;if(root.CQC_PASS28_MACHINE_GEOMETRY){const measured=root.CQC_PASS28_MACHINE_GEOMETRY.bounds(machine,factory,adapter);if(measured)return measured;}const poses=factory.pose(machine,adapter);
       let left=Infinity,top=Infinity,right=-Infinity,bottom=-Infinity;
       for(const p of poses.values()){
         if(!p.visible||p.opacity<=0)continue;
@@ -139,7 +166,7 @@
       const mapped=IDS[encounter],ctx=target.getContext('2d'),ticket=(portraits.get(target)||0)+1;portraits.set(target,ticket);
       if(ready(mapped)){
         const b=bounds(state),scale=Math.min((target.width-12)/b.width,(target.height-12)/b.height);
-        ctx.save();try{ctx.translate((target.width-b.width*scale)/2,(target.height-b.height*scale)/2);ctx.scale(scale,scale);ctx.translate(-b.left,-b.top);drawNative(ctx,state,{reducedMotion:true,preview:true,expectedBoss:encounter});}finally{ctx.restore();}
+        ctx.save();try{ctx.translate((target.width-b.width*scale)/2,(target.height-b.height*scale)/2);ctx.scale(scale,scale);ctx.translate(-b.left,-b.top);drawNative(ctx,state,{reducedMotion:true,preview:true,presentationScale:false,expectedBoss:encounter});}finally{ctx.restore();}
       }else{
         placeholder(ctx,state,true);
         const status=nativeStatus(mapped);
@@ -155,7 +182,8 @@
       root.addEventListener?.('storage',event=>{if(event.key==='cqc-versus.profile.v1')cancelPendingLaunch();});
       root.addEventListener?.('pagehide',cancelPendingLaunch);
     }
-    return{deferCoreLaunch,cancelPendingLaunch,drawNative,drawPortrait,cancelPortrait,resolveEncounter,status,ready:encounter=>ready(IDS[encounter]||encounter)};
+    return{deferCoreLaunch,cancelPendingLaunch,drawNative,drawPortrait,cancelPortrait,resolveEncounter,status,
+      coreGeometry,coreTarget,coreWeapon,coreCamera,coreFlightBounds,ready:encounter=>ready(IDS[encounter]||encounter)};
   }
   return{createBridge,resolveEncounter,ids:IDS};
 });

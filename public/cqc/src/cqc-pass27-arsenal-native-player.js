@@ -34,10 +34,17 @@
     kodoque:'AC!D|SNAKE',chaioth:'AC!D 2|SNAKE',arsenal_gear:'MGS2|RAIDEN',outer_haven:'MGS4|OLD SNAKE',
     battle_gear:'MGSV|VENOM SNAKE',dwalker:'MGSV|VENOM SNAKE',walker_column:'MGSV|VENOM SNAKE',
     mk2:'MGS4|OLD SNAKE',mk3:'MGS4|OLD SNAKE',gekko:'MGS4|OLD SNAKE',dwarf_swarm:'MGS4|OLD SNAKE',
-    hind_d:'MGS1|SOLID SNAKE',m1tank:'MGS1|SOLID SNAKE',bulldozer:'MGS1|SOLID SNAKE'
+    hind_d:'MGS1|SOLID SNAKE',m1tank:'MGS1|SOLID SNAKE',bulldozer:'METAL GEAR|SOLID SNAKE'
+  });
+  // Physical records are edition-scoped; unsupported incarnations retain the 1.8 m comparison reference.
+  const statureHeightRecords=Object.freeze({
+    core__snake_mg2:Object.freeze({metres:1.78,evidence:'official-primary-directly-observed',sources:Object.freeze(['https://www.konami.com/mg/archive/mg2/chara.html']),scope:'Solid Snake MG2 only; Konami profile178cm, source pose and boots remain visual approximations.'}),
+    core__solid:Object.freeze({metres:1.82,evidence:'official-primary-directly-observed',sources:Object.freeze(['https://www.konami.com/mg/archive/mgs/character/ch01.html','https://www.konami.com/mg/archive/mgs/character/images/ch01_status.gif']),scope:'Solid Snake MGS1 only; original Konami status GIF182cm.'}),
+    core__snake_pw:Object.freeze({metres:1.88,evidence:'secondary-community-transcription-of-official-profile',sources:Object.freeze(['https://mgcvt.com/character/c74']),scope:'Big Boss Peace Walker only; existing secondary188cm citation, current fetch403. Never applied to other Big Boss eras.'}),
+    core__old_snake:Object.freeze({metres:1.80,evidence:'secondary-community-transcription-of-in-game-profile',sources:Object.freeze(['https://mgcvt.com/character/c55']),scope:'Old Snake MGS4 only; secondary transcription of ACT1 MkII DATA PROFILE180cm.'})
   });
   const poseActions=['idle','walk','guard','hit','ko','shoot','reload','jump','blade','parry'];
-  const clocks=new WeakMap(),metrics={drawn:0,pendingDraws:0,unsupportedDraws:0,gateRequests:0,gateFailures:0,byUID:{},byAction:{}};
+  const clocks=new WeakMap(),metrics={drawn:0,pendingDraws:0,unsupportedDraws:0,gateRequests:0,gateFailures:0,byUID:{},byAction:{},calibratedDraws:0,fallbackDraws:0,calibrationByUID:{}};
   let installed=false,rejected=[],pending=null,dialog=null,serial=0,focusBefore=null;
   const finite=(value,fallback=0)=>Number.isFinite(value)?value:fallback;
   const loader=()=>root.CQC_COMBAT_SPRITES;
@@ -105,14 +112,31 @@
     }
     return{uid,entry,pose,action,desired,face:p.face===-1?-1:1};
   }
+  function statureCalibration(uid,entry,face){
+    // Measure decoded native idle once in the renderer; apply its uniform factor to every pose.
+    const record=statureHeightRecords[uid]||null,uprightArenaUnits=200*(record?.metres||1.8)/1.8;
+    const evidence={uprightArenaUnits,referenceMetres:1.8,referenceArenaUnits:200,
+      heightMetres:record?.metres??null,heightEvidence:record?.evidence||'historical-unattested-incarnation-comparison-reference',
+      heightSources:record?[...record.sources]:[],heightScope:record?.scope||'No incarnation-specific height source; retain200 arena units for the1.8m comparison reference.',
+      canonicalHeightRecordCertified:record?.evidence==='official-primary-directly-observed',canonicalBodyHeightCertified:false};
+    let geometry=null;
+    try{geometry=loader()?.previewGeometry?.({uid,costume:'original'},{x:0,y:0,width:500,height:500,padding:0},face);}catch(_){/* Geometry unavailable: explicit qualified framing fallback below. */}
+    if(geometry&&['scale','standingHeight','x','bodyX','y','floor'].every(key=>Number.isFinite(geometry[key]))&&geometry.scale>0&&geometry.standingHeight>0){
+      const scale=uprightArenaUnits*geometry.scale/geometry.standingHeight,relative=scale/geometry.scale;
+      return{scale,xOffset:(geometry.x-geometry.bodyX)*relative,yOffset:(geometry.y-geometry.floor)*relative,
+        ...evidence,calibrated:true,measurement:geometry.measurement||'decoded-native-preview-geometry'};
+    }
+    return{scale:uprightArenaUnits/entry.displayHeight,xOffset:0,yOffset:0,...evidence,
+      calibrated:false,measurement:'qualified-displayHeight-fallback-no-native-preview-geometry'};
+  }
   function draw(c,s){
     const selected=poseFor(s),p=s?.player;
     if(!installed||!selected||!c){metrics.unsupportedDraws++;return false;}
     const {uid,entry,pose,face,action}=selected;
-    // Preserve the authored Arsenal arena framing (approximately 200 px upright).
-    // This is a presentation scale, not an unsupported claim of a canonical body height.
-    const scale=200/entry.displayHeight;
-    const painted=loader().draw(c,{uid,costume:'original'},finite(p.x),finite(p.y),face,scale,pose);
+    const calibration=statureCalibration(uid,entry,face),scale=calibration.scale;
+    metrics.calibrationByUID[uid]||={};metrics.calibrationByUID[uid][face===1?'right':'left']={...calibration};
+    if(calibration.calibrated)metrics.calibratedDraws++;else metrics.fallbackDraws++;
+    const painted=loader().draw(c,{uid,costume:'original'},finite(p.x)+calibration.xOffset,finite(p.y)+calibration.yOffset,face,scale,pose);
     if(painted){metrics.drawn++;metrics.byUID[uid]=(metrics.byUID[uid]||0)+1;metrics.byAction[action]=(metrics.byAction[action]||0)+1;}
     else metrics.pendingDraws++;
     // The caller never paints a procedural actor while the same native image decodes.
@@ -170,12 +194,13 @@
       return{id:def.id,ep:def.ep,hero:def.hero,uid,admitted:!!entry,ready:ready(def),sources:sources(def),
         missingPoses:poseActions.filter(action=>!entry?.actions?.[action]&&
           (action!=='blade'||def.weapon==='blade')&&(action!=='shoot'||def.weapon!=='blade')),
-        uprightPresentationPixels:200,canonicalBodyHeightCertified:false};
+        uprightPresentationPixels:200*(statureHeightRecords[uid]?.metres||1.8)/1.8,
+        heightEvidence:statureHeightRecords[uid]?.evidence||'historical-unattested-incarnation-comparison-reference',canonicalBodyHeightCertified:false};
     });
   }
   function status(){return{installed,rejected:[...rejected],pending:pending?{key:pending.key,cancelled:pending.cancelled,error:pending.error||null}:null,
-    metrics:JSON.parse(JSON.stringify(metrics)),catalogUIDs:Object.keys(root.CQC_PASS27_ARSENAL_PLAYER_CATALOG?.entries||{}),
+    metrics:JSON.parse(JSON.stringify(metrics)),statureHeightRecords:JSON.parse(JSON.stringify(statureHeightRecords)),humanComparisonReference:{metres:1.8,arenaUnits:200},catalogUIDs:Object.keys(root.CQC_PASS27_ARSENAL_PLAYER_CATALOG?.entries||{}),
     physicalActorChanged:false,sourcePixelsChanged:false,rawCatalogueChanged:false};}
   root.addEventListener?.('pagehide',cancelPendingLaunch);
-  return{install,resolve,requirements,sources,ready,poseFor,draw,deferLaunch,cancelPendingLaunch,coverage,status,editionUIDs:editions,machineContracts:contracts};
+  return{install,resolve,requirements,sources,ready,poseFor,statureCalibration,draw,deferLaunch,cancelPendingLaunch,coverage,status,editionUIDs:editions,machineContracts:contracts};
 });

@@ -1,0 +1,346 @@
+{
+  "schema": "cqc.pass28.shagohod-hover-native/1",
+  "incarnation": "MGS3 original PS2 2004",
+  "source": {
+    "id": "rear_hover_native",
+    "file": "assets/machines-pass28/shagohod-hover-rear/shagohod-hover-skirt-parts-v2.png",
+    "sha256": "d2bfe6b8d311005f467732fcca69d45e40a2ec6c4176b6e9fc03647e37f684a4",
+    "bytes": 1515187,
+    "width": 2172,
+    "height": 724
+  },
+  "parts": [
+    {
+      "id": "near_rear_track",
+      "source": "rear_hover_native",
+      "rect": [
+        16,
+        88,
+        1277,
+        298
+      ],
+      "pivot": [
+        638,
+        88
+      ],
+      "offset": [
+        0,
+        -30
+      ],
+      "z": 20,
+      "imageScale": 0.205,
+      "parent": "rear_anchor",
+      "variants": [
+        {
+          "when": "shagohodRearSkirtScorched",
+          "rect": [
+            15,
+            402,
+            1276,
+            290
+          ],
+          "pivot": [
+            638,
+            88
+          ],
+          "imageScale": 0.205
+        }
+      ]
+    },
+    {
+      "id": "far_rear_track",
+      "source": "rear_hover_native",
+      "rect": [
+        1337,
+        164,
+        805,
+        229
+      ],
+      "pivot": [
+        403,
+        73
+      ],
+      "offset": [
+        12,
+        -22
+      ],
+      "z": 5,
+      "imageScale": 0.285,
+      "parent": "rear_anchor",
+      "variants": [
+        {
+          "when": "shagohodRearSkirtScorched",
+          "rect": [
+            1336,
+            468,
+            805,
+            232
+          ],
+          "pivot": [
+            403,
+            73
+          ],
+          "imageScale": 0.285
+        }
+      ]
+    }
+  ],
+  "hold": [
+    {
+      "path": "/workspace/generated_images/exec-dcb47c10-7f42-4550-bdcd-221dd126eb16.png",
+      "reason": "Camouflaged upper armor wall too thick for a sealing skirt; never admitted."
+    }
+  ],
+  "references": [
+    {
+      "url": "https://static.wikia.nocookie.net/metalgear/images/f/f5/The_Shagohod2.jpg/revision/latest?cb=20080528213154",
+      "local": "/tmp/cqc-pass28-shagohod-rear/primary-side.jpg",
+      "sha256": "aee8f737ddf2e0f998f239383f182181e93c9e7d1d39eb57c167d692f2afbbf7",
+      "qualification": "Historical original model render hosted by wiki; source attribution outside publisher independently unverified."
+    },
+    {
+      "url": "https://static.wikia.nocookie.net/metalgear/images/1/13/The_Shagohod1.jpg/revision/latest?cb=20080528213055",
+      "local": "/tmp/cqc-pass28-shagohod-rear/primary-front.jpg",
+      "sha256": "a31fdc750c15facd017e95b66f9419ab32a985b72c89ef190b066e1d716019a1"
+    },
+    {
+      "url": "https://www.ebay.com/itm/365146132247",
+      "qualification": "Seller photographs of Konami original MGS3 Premium Package Shagohod kit and publisher-branded box physically viewed; secondary photographs of licensed physical object, not authoritative dimension proof."
+    },
+    {
+      "url": "https://static.wikia.nocookie.net/metalgear/images/6/6a/MGS3_Shagohod_profile.png/revision/latest?cb=20200114163607",
+      "local": "/tmp/cqc-pass28-shagohod-rear/primary-profile.png",
+      "sha256": "ac1ac55f8ba7697b8fe2df5af9019fc1278a78572fdc801b10ffba091cec8cc7",
+      "qualification": "Original-looking profile with 8200mm/22800mm/6400mm; publication/page not established, dimensions remain secondary candidates."
+    }
+  ],
+  "limits": [
+    "Authored source-led 2D sealing skirt projection, not extracted original model or animation. Absolute1:1 not certified.",
+    "Near and far underside modules independently painted in one left-facing camera, not opposing facing sprites.",
+    "Legacy part IDs retained to avoid new HP pools, while their native textures now depict air-cushion underside rather than wheels.",
+    "Native damage states authored for existing defeat/phase flags; no new destruction event or combat rule.",
+    "Only the existing left-facing camera is admitted. Independent near/far skirt projections are not opposing whole-machine facings."
+  ],
+  "primaryPublisherReference": {
+    "edition": "Metal Gear Solid 3: Snake Eater original PS2 2004",
+    "page": "https://www.konami.com/mg/archive/mgs3/english/mechanical_main.html",
+    "images": [
+      {
+        "url": "https://www.konami.com/mg/archive/mgs3/english/pic/mecha_pic01.gif",
+        "local": "/tmp/cqc-pass28-shagohod-rear/konami-mecha_pic01.gif",
+        "sha256": "739ade0f33f59be9c1e7728e4c6137ce34dd9e64b494c49d121b185b025c22cb",
+        "bytes": 28602
+      },
+      {
+        "url": "https://www.konami.com/mg/archive/mgs3/english/pic/mecha_pic02.gif",
+        "local": "/tmp/cqc-pass28-shagohod-rear/konami-mecha_pic02.gif",
+        "sha256": "88df9236db057435cbd7b571a28f351a3d86017ffe2a01aebf6072de72473a93",
+        "bytes": 28477
+      },
+      {
+        "url": "https://www.konami.com/mg/archive/mgs3/english/pic/mecha_word02.gif",
+        "local": "/tmp/cqc-pass28-shagohod-rear/konami-mecha_word02.gif",
+        "sha256": "1e18ec9384f075e8ed3b9086c0c21a5a5df8653a22bef7fe6b1371b5eb33d2eb",
+        "bytes": 8510
+      }
+    ],
+    "dimensionTextPhysicallyRead": {
+      "heightM": 8.2,
+      "lengthM": 22.8,
+      "widthM": 6.4
+    },
+    "publisherPageSHA256": "85bdc8c88e75931c8857f47dcf95f5bfc0bd38f4ca7c4d7a67b83a986db1a824"
+  },
+  "dimensions": {
+    "heightM": 8.2,
+    "lengthM": 22.8,
+    "widthM": 6.4,
+    "source": "https://www.konami.com/mg/archive/mgs3/english/pic/mecha_word02.gif",
+    "sha256": "1e18ec9384f075e8ed3b9086c0c21a5a5df8653a22bef7fe6b1371b5eb33d2eb",
+    "evidence": "Original publisher archived MGS3 mechanical profile, physical primary image read."
+  },
+  "rearAssemblyOffset": {
+    "part": "rear_anchor",
+    "before": [
+      150,
+      155
+    ],
+    "after": [
+      150,
+      95
+    ],
+    "qualification": "Source-led camera support alignment, authoring pixels not metric simulation change."
+  },
+  "nativeGeometryAudit": {
+    "schema": "cqc.pass28.shagohod-native-alpha/1",
+    "sourceSHA256": "d2bfe6b8d311005f467732fcca69d45e40a2ec6c4176b6e9fc03647e37f684a4",
+    "nativeDimensions": [
+      2172,
+      724
+    ],
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "fullyTransparentFraction": 0.5524849160078549,
+    "records": [
+      {
+        "key": "d2bfe6b8d311005f467732fcca69d45e40a2ec6c4176b6e9fc03647e37f684a4|16,88,1277,298|null",
+        "state": "intact",
+        "part": "near_rear_track",
+        "rect": [
+          16,
+          88,
+          1277,
+          298
+        ],
+        "bounds": [
+          16,
+          88,
+          1293,
+          386
+        ],
+        "center": [
+          674.987111,
+          238.620867
+        ],
+        "alphaPixels": 226554,
+        "empty": false,
+        "pivotNativeXY": [
+          654,
+          176
+        ],
+        "pivotAlpha": 253
+      },
+      {
+        "key": "d2bfe6b8d311005f467732fcca69d45e40a2ec6c4176b6e9fc03647e37f684a4|15,402,1276,290|null",
+        "state": "scorched",
+        "part": "near_rear_track",
+        "rect": [
+          15,
+          402,
+          1276,
+          290
+        ],
+        "bounds": [
+          15,
+          402,
+          1291,
+          692
+        ],
+        "center": [
+          669.587433,
+          550.42091
+        ],
+        "alphaPixels": 224606,
+        "empty": false,
+        "pivotNativeXY": [
+          653,
+          490
+        ],
+        "pivotAlpha": 253
+      },
+      {
+        "key": "d2bfe6b8d311005f467732fcca69d45e40a2ec6c4176b6e9fc03647e37f684a4|1337,164,805,229|null",
+        "state": "intact",
+        "part": "far_rear_track",
+        "rect": [
+          1337,
+          164,
+          805,
+          229
+        ],
+        "bounds": [
+          1337,
+          164,
+          2142,
+          393
+        ],
+        "center": [
+          1746.883836,
+          282.164956
+        ],
+        "alphaPixels": 115552,
+        "empty": false,
+        "pivotNativeXY": [
+          1740,
+          237
+        ],
+        "pivotAlpha": 253
+      },
+      {
+        "key": "d2bfe6b8d311005f467732fcca69d45e40a2ec6c4176b6e9fc03647e37f684a4|1336,468,805,232|null",
+        "state": "scorched",
+        "part": "far_rear_track",
+        "rect": [
+          1336,
+          468,
+          805,
+          232
+        ],
+        "bounds": [
+          1336,
+          468,
+          2141,
+          700
+        ],
+        "center": [
+          1744.54269,
+          588.970465
+        ],
+        "alphaPixels": 116234,
+        "empty": false,
+        "pivotNativeXY": [
+          1739,
+          541
+        ],
+        "pivotAlpha": 253
+      }
+    ],
+    "sockets": [
+      {
+        "part": "near_rear_track",
+        "parent": "rear_hull",
+        "parentSourceNativeXY": [
+          207.0,
+          590.1176470588235
+        ],
+        "parentAlpha": 253
+      },
+      {
+        "part": "far_rear_track",
+        "parent": "rear_hull",
+        "parentSourceNativeXY": [
+          224.64705882352942,
+          578.3529411764706
+        ],
+        "parentAlpha": 253
+      }
+    ],
+    "projectionQualification": "Common rear_anchor [150,95] brings both genuine skirt projections within16 world pixels of their near/far auger supports. Existing perspective depth preserved; no invented metric physics or exact1:1 claim.",
+    "oldAtlasSHA256": "16a5a7794c0a4c2a0427212870c7f4b94eb1ae710727e7c74b4e8298bc5ab7b0",
+    "supportProjection": [
+      {
+        "projection": "near",
+        "frontAugerMinWorldY": 7.32,
+        "rearHoverMinWorldY": 21.95,
+        "projectedDepthOffset": 14.63,
+        "qualifiedGroundPlane": "One shallow3D camera retains near/far depth offset, not two opposing facing rigs. Both hover edges sit within16 world pixels of corresponding auger support line."
+      },
+      {
+        "projection": "far",
+        "frontAugerMinWorldY": 19.62,
+        "rearHoverMinWorldY": 28.54,
+        "projectedDepthOffset": 8.92,
+        "qualifiedGroundPlane": "One shallow3D camera retains near/far depth offset, not two opposing facing rigs. Both hover edges sit within16 world pixels of corresponding auger support line."
+      }
+    ],
+    "connectionAlphaProof": "FRONT_REAR_CONNECTION_ALPHA_ACTUAL.json"
+  },
+  "checks": {
+    "contractTests": 12,
+    "alphaPivots": 4,
+    "opaqueHullSockets": 2,
+    "frontRearOpaqueOverlapArea": 243.25,
+    "sourceEditing": false,
+    "nativePartPixelsPreserved": true
+  }
+}

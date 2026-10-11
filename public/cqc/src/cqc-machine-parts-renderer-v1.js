@@ -122,6 +122,15 @@
     return [a[0]*b[0]+a[2]*b[1],a[1]*b[0]+a[3]*b[1],a[0]*b[2]+a[2]*b[3],a[1]*b[2]+a[3]*b[3],a[0]*b[4]+a[2]*b[5]+a[4],a[1]*b[4]+a[3]*b[5]+a[5]];
   }
   function channelValue(channels, key) { return finite(channels[key]) ? channels[key] : 0; }
+  function basisMatrix(value) {
+    if (!Array.isArray(value) || value.length!==6 || !value.every(finite)) return null;
+    return Math.abs(value[0]*value[3]-value[1]*value[2])>1e-12 ? value : null;
+  }
+  function inverse(a) {
+    const d=a[0]*a[3]-a[1]*a[2];
+    return [a[3]/d,-a[1]/d,-a[2]/d,a[0]/d,(a[2]*a[5]-a[3]*a[4])/d,(a[1]*a[4]-a[0]*a[5])/d];
+  }
+  const samePair=(a,b) => a===b || !!a && !!b && a.length===b.length && a.every((n,i)=>n===b[i]);
   function pose(machine, state = {}) {
     const channels = state.channels || {}, active = state.flags || {}, transforms = new Map();
     const origin = state.origin ? pair(state.origin, 'draw origin') : machine.origin;
@@ -135,11 +144,35 @@
         if (property==='x') x+=v; else if (property==='y') y+=v; else if (property==='rotation') rotation+=v; else opacity+=v;
       }
       let visible = parent.visible && !variant?.hide && part.showWhen.every((key) => active[key] === true) && !part.hideWhen.some((key) => active[key] === true);
-      const d=part.detachment;
+      const d=part.detachment, snapshot=state.detachmentSnapshots?.get?.(part.id);
+      if (d && active[d.when] === true && snapshot) {
+        // Preserve the drawn native joint at the event; child transforms and image
+        // orientation already include their parents. The engine owns the age.
+        const t=Math.max(0, channelValue(channels,d.clock)), angle=-d.spin*t*DEG, c=Math.cos(angle), s=Math.sin(angle);
+        let local=snapshot.matrix.slice();
+        local[4]+=d.vx*t;
+        local[5]-=d.vy*t-.5*d.gravity*t*t;
+        let spun=multiply(local,[c,s,-s,c,0,0]);
+        const basis=basisMatrix(state.detachmentBasis);
+        if (snapshot.basis && basis) {
+          // fit supplies rig-to-world coordinates before camera and resolution.
+          // A boss movement or resize cannot drag or rescale existing debris.
+          const scale=[machine.scale[0],0,0,machine.scale[1],0,0];
+          const world=multiply(snapshot.basis,multiply(scale,spun));
+          spun=multiply(inverse(scale),multiply(inverse(basis),world));
+        }
+        const compensationOnly=variant && !variant.hide && variant.source===part.source && samePair(variant.rect,part.rect)
+          && samePair(variant.pivot,part.pivot) && variant.imageScale===part.imageScale && variant.when===d.when;
+        const appearance=variant && !compensationOnly ? {source:variant.source,rect:variant.rect,pivot:variant.pivot,imageScale:variant.imageScale,textureRotation:variant.textureRotation} : snapshot;
+        const ownVisible=!variant?.hide && part.showWhen.every(key=>active[key]===true) && !part.hideWhen.some(key=>active[key]===true);
+        transforms.set(part.id,{...snapshot,...appearance,matrix:multiply(base,spun),visible:snapshot.visible && ownVisible && t<d.duration,opacity:snapshot.opacity*clamp((d.duration-t)/d.fade,0,1)});
+        continue;
+      }
       if (d && active[d.when] === true) {
         const t=Math.max(0, channelValue(channels,d.clock));
+        const linkedVisible=parent.visible;
         parent={matrix:base,visible:true,opacity:1};
-        visible=!variant?.hide && part.showWhen.every((key) => active[key]===true) && !part.hideWhen.some((key) => active[key]===true);
+        visible=(linkedVisible || part.showWhen.includes(d.when)) && !variant?.hide && part.showWhen.every((key) => active[key]===true) && !part.hideWhen.some((key) => active[key]===true);
         x=(d.anchor || part.offset)[0]; y=(d.anchor || part.offset)[1]; rotation=part.rotation;
         x+=d.vx*t; y+=d.vy*t-.5*d.gravity*t*t; rotation+=d.spin*t;
         opacity*=clamp((d.duration-t)/d.fade,0,1);
@@ -278,6 +311,9 @@
   const release = (image) => { try { image?.close?.(); } catch (_) {} };
   function create(catalog, options = {}) {
     const machines=normalizeCatalog(catalog), entries=new Map(), attempts=new Map(), versions=new Map();
+    // This visual cache is separate from HP, saves and engine state. A supplied
+    // stable owner distinguishes units sharing the same canvas and rig.
+    let detachmentOwners=new WeakMap();
     if (options.requirePins!==false) for (const machine of machines.values()) for (const source of machine.sources.values()) if (!source.sha256 || source.bytes===undefined || source.width===undefined || source.height===undefined) fail(machine.id + ' native sources require SHA256, bytes and dimensions');
     const fetcher=options.fetch || globalThis.fetch?.bind(globalThis), decoder=options.decode || defaultDecode, hasher=options.sha256 || digest;
     if (!fetcher) fail('fetch unavailable');
@@ -326,7 +362,59 @@
     }
     function draw(context, id, state = {}) {
       const entry=entries.get(id); if (!entry) return false;
-      const transforms=pose(entry.machine,state);
+      const machine=entry.machine, suppliedOwner=state.detachmentOwner;
+      if (!machine.parts.some(part=>part.detachment)) return paint(context,entry,pose(machine,state));
+      const owner=suppliedOwner && (typeof suppliedOwner==='object' || typeof suppliedOwner==='function') ? suppliedOwner : context;
+      let owned=detachmentOwners.get(owner);
+      if (!owned) {owned=new Map();detachmentOwners.set(owner,owned);}
+      let history=owned.get(id);
+      const frame=finite(state.frame) ? state.frame : finite(state.tick) ? state.tick : null;
+      if (!history || history.entry!==entry || frame!==null && history.frame!==null && frame<history.frame) {
+        history={entry,frame,attached:new Map(),snapshots:new Map(),clocks:new Map()};owned.set(id,history);
+      }
+      const flags=state.flags || {}, channels=state.channels || {};
+      for (const part of machine.parts) if (part.detachment) {
+        const d=part.detachment, t=Math.max(0,channelValue(channels,d.clock));
+        if (flags[d.when]!==true || history.clocks.has(part.id) && t<history.clocks.get(part.id)) {
+          history.snapshots.delete(part.id);history.clocks.delete(part.id);
+          if (flags[d.when]===true) history.attached.delete(part.id);
+        }
+      }
+      // Compute first-event positions without activating their break flags. Other
+      // destroyed groups retain their own frozen presentation.
+      const activeGroups=new Set(machine.parts.filter(part=>part.detachment && flags[part.detachment.when]===true && !history.snapshots.has(part.id)).map(part=>part.detachment.when));
+      let linked=null;
+      if (activeGroups.size) {
+        const linkedFlags={...flags};activeGroups.forEach(flag=>linkedFlags[flag]=false);
+        linked=pose(machine,{...state,origin:[0,0],flags:linkedFlags,detachmentSnapshots:history.snapshots});
+      }
+      for (const part of machine.parts) if (part.detachment && flags[part.detachment.when]===true) {
+        const d=part.detachment, t=Math.max(0,channelValue(channels,d.clock));
+        if (!history.snapshots.has(part.id)) {
+          const previous=history.attached.get(part.id), current=linked?.get(part.id);
+          const anchor=previous?.visible ? previous : current?.visible ? current : null;
+          // Authored hidden debris, including REX's three radome fragments, keeps
+          // its explicit source anchor rather than borrowing an invisible joint.
+          if (anchor) {
+            const snapshot={...anchor,matrix:anchor.matrix.slice(),pivot:anchor.pivot.slice(),rect:anchor.rect?.slice() || null,basis:anchor.basis?.slice() || basisMatrix(state.detachmentBasis)?.slice() || null};
+            // Root-local matrices include uniform scale. Remove it once; the
+            // current base transform adds it back when the frozen piece is drawn.
+            snapshot.matrix=snapshot.matrix.map((v,index)=>index<4 ? v/machine.scale[0] : v/machine.scale[index===4 ? 0 : 1]);
+            history.snapshots.set(part.id,snapshot);
+          }
+        }
+        history.clocks.set(part.id,t);
+      }
+      const transforms=pose(machine,{...state,detachmentSnapshots:history.snapshots});
+      const effectiveOrigin=state.origin || machine.origin;
+      const rootLocal=effectiveOrigin[0]===0 && effectiveOrigin[1]===0 ? transforms : pose(machine,{...state,origin:[0,0],detachmentSnapshots:history.snapshots});
+      for (const part of machine.parts) if (!part.detachment || flags[part.detachment.when]!==true) {
+        const p=rootLocal.get(part.id);history.attached.set(part.id,{...p,matrix:p.matrix.slice(),pivot:p.pivot.slice(),rect:p.rect?.slice() || null,basis:basisMatrix(state.detachmentBasis)?.slice() || null});
+      }
+      history.frame=frame;
+      return paint(context,entry,transforms);
+    }
+    function paint(context,entry,transforms) {
       for (const part of entry.machine.paintOrder) {
         const p=transforms.get(part.id); if (!p.visible || p.opacity<=0) continue;
         const image=entry.images.get(p.source), r=p.rect || [0,0,image.width || image.naturalWidth,image.height || image.naturalHeight];
@@ -348,13 +436,18 @@
       return true;
     }
     function drawCore(context, state, drawOptions = {}) {
-      const adapter=corePose(state,drawOptions); return adapter ? draw(context,adapter.id,adapter) : false;
+      const adapter=corePose(state,drawOptions);
+      if (!adapter) return false;
+      const corrected=globalThis.CQC_PASS28_RIG_SETUP?.presentationPose?.(adapter.id,adapter,state) || adapter;
+      const origin=corrected.origin || machines.get(corrected.id)?.origin || [0,0];
+      return draw(context,corrected.id,{...corrected,detachmentOwner:state?.boss || state,detachmentBasis:drawOptions.detachmentBasis || [1,0,0,1,origin[0],-origin[1]]});
     }
     function dispose(id) {
       const ids=id===undefined ? [...machines.keys()] : [id];
       for (const key of ids) { versions.set(key,(versions.get(key) || 0)+1); entries.get(key)?.images.forEach(release); entries.delete(key); attempts.delete(key); }
+      if (id===undefined) detachmentOwners=new WeakMap();
     }
     return {load,ready,status,draw,drawCore,dispose,ids:() => [...machines.keys()]};
   }
-  return {schema:SCHEMA,version:'1.0.0',create,normalizeCatalog,pose,corePose};
+  return {schema:SCHEMA,version:'1.1.0',create,normalizeCatalog,pose,corePose};
 });

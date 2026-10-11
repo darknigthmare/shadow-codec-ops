@@ -17,7 +17,7 @@
   arsenal_gear:['mgs2','arsenal_corridor'],outer_haven:['mgs4','outer_haven'],battle_gear:['tpp','mother_base_platform'],
   dwalker:['tpp','mother_base_platform'],walker_column:['tpp','afghan_ruins'],mk2:['mgs4','outer_haven'],mk3:['mgs4','outer_haven'],
   gekko:['mgs4','middle_east'],dwarf_swarm:['mgs4','outer_haven'],hind_d:['mgs1','shadow_heliport'],
-  m1tank:['mgs1','shadow_heliport'],bulldozer:['mgs1','shadow_heliport']
+  m1tank:['mgs1','shadow_heliport'],bulldozer:['mg_msx','outer_heaven']
  });
  function createBridge(dependencies={}){
   const registry=dependencies.registry||root.CQC_STAGE_REGISTRY,renderer=dependencies.renderer||root.CQC_STAGE_LAYERS;
