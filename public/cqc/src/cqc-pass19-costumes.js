@@ -33,6 +33,24 @@
  function catalog(){return root.CQC_COMBAT_COSTUME_CATALOG||{schema:'cqc.combat-costumes/1',entries:{}};}
  function optionFor(uid,id){return catalog().entries?.[uid]?.options?.find(option=>option.id===id)||null;}
  function selectable(uid,id){if(id==='original')return!!(data()?.entries?.[uid]||catalog().entries?.[uid]);const option=optionFor(uid,id);return appearanceAllowed(uid,option)&&(!!option?.sprite||!!option?.machineParts&&root.CQC_PASS21_MACHINE_COSTUME_RUNTIME?.ownsOption(uid,option)===true);}
+ // Shared native PNGs are allowed only with explicit, disjoint authored directions.
+ // Historical options without shared files retain their existing validation path.
+ function nativeDirectionsDisjoint(sprite){
+  const proof=sprite?.nativeDirectionRegions,regions=proof?.regions;
+  if(proof?.schema!=='cqc.native-direction-regions/1'||proof.uid!==sprite.uid||!Array.isArray(regions)||regions.length<2||regions.length>4096)return false;
+  const signatures=new Set();
+  for(const region of regions){
+   if(typeof region?.file!=='string'||!/^assets\/[A-Za-z0-9_./-]+\.png$/.test(region.file)||region.file.split('/').some(part=>part==='..'||part==='.')||!/[a-f0-9]{64}/.test(region.sha256||'')||region.sha256.length!==64||![1,-1].includes(region.face)||!Array.isArray(region.rect)||region.rect.length!==4||!region.rect.every(Number.isFinite)||region.rect[0]<0||region.rect[1]<0||region.rect[2]<=0||region.rect[3]<=0)return false;
+   const signature=region.file+':'+region.face+':'+region.rect.join(',');if(signatures.has(signature))return false;signatures.add(signature);
+  }
+  const exact=(region,frame,face)=>region.face===face&&region.file===frame.file&&region.sha256===frame.sha256&&region.rect.every((value,index)=>value===frame.rect[index]);
+  for(const[face,actions]of[[sprite.facing,sprite.actions],[-sprite.facing,sprite.oppositeActions]])for(const action of Object.values(actions||{}))for(const frame of action.frames||[])if(!regions.some(region=>exact(region,frame,face)))return false;
+  for(let a=0;a<regions.length;a++)for(let b=a+1;b<regions.length;b++){
+   const first=regions[a],second=regions[b];if(first.file!==second.file)continue;if(first.sha256!==second.sha256)return false;if(first.face===second.face)continue;
+   const[x,y,w,h]=first.rect,[u,v,p,q]=second.rect;if(x<u+p&&u<x+w&&y<v+q&&v<y+h)return false;
+  }
+  return true;
+ }
  function validateOption(uid,option){
   if(!data()?.entries?.[uid]&&!catalog().entries?.[uid])throw Error('Identité non inscrite: '+uid);
   if(!safeID(option?.id)||!families.has(option.family)||!option.label?.trim())throw Error('Costume mal défini');
@@ -62,7 +80,7 @@
   if(!nativeFiles.size||(!pixelOnly&&!composed&&[...nativeFiles].some(([file,sha])=>sourceFiles.has(file)||[...sourceFiles.values()].includes(sha))))throw Error('Une alternative ne peut réutiliser les images du corps original');
   if(composed&&!root.CQC_PASS19_COSTUME_PARTS?.validate(sprite))throw Error('Pièces natives ou ancrages anatomiques non vérifiés');
   const forward=new Set(Object.values(sprite.actions).flatMap(action=>action.frames).map(frame=>frame.file)),backward=new Set(Object.values(sprite.oppositeActions).flatMap(action=>action.frames).map(frame=>frame.file));
-  if([...forward].some(file=>backward.has(file)))throw Error('Les deux directions doivent être des sources indépendantes');
+  if([...forward].some(file=>backward.has(file))&&!nativeDirectionsDisjoint(sprite))throw Error('Les deux directions doivent être des sources indépendantes ou des régions natives disjointes');
   return true;
  }
  function registerBatch(additions){

@@ -2,7 +2,7 @@
 (function(root){'use strict';
  const clone=value=>JSON.parse(JSON.stringify(value));
  const localBase=new URL('../',root.document?.currentScript?.src||root.document?.baseURI||'http://localhost/cqc/src/').href;
- const sources=['CQC_PASS21_NATIVE_RETRO_INDEX','CQC_PASS21_NATIVE_RETRO_B_INDEX','CQC_PASS21_NATIVE_RETRO_C_INDEX','CQC_PASS21_NATIVE_TUXEDO_INDEX','CQC_PASS21_NATIVE_TUXEDO_B_INDEX','CQC_PASS21_NATIVE_TUXEDO_C_INDEX','CQC_PASS21_NATIVE_CYBORG_REFINEMENTS_INDEX','CQC_PASS22_NATIVE_CYBORG_REFINEMENTS_INDEX'];
+ const sources=['CQC_PASS21_NATIVE_RETRO_INDEX','CQC_PASS21_NATIVE_RETRO_B_INDEX','CQC_PASS21_NATIVE_RETRO_C_INDEX','CQC_PASS21_NATIVE_TUXEDO_INDEX','CQC_PASS21_NATIVE_TUXEDO_B_INDEX','CQC_PASS21_NATIVE_TUXEDO_C_INDEX','CQC_PASS21_NATIVE_CYBORG_REFINEMENTS_INDEX','CQC_PASS22_NATIVE_CYBORG_REFINEMENTS_INDEX','CQC_PASS27_MANTIS_GALA_INDEX','CQC_PASS27_SUNNY_RETRO_INDEX','CQC_PASS27_TELIKO_RETRO_INDEX'];
  function localizeLegacy(previous,local,baseURL=localBase){
   if(!local)return clone(previous);
   if(local.schema!==previous.schema||!Array.isArray(local.entries)||local.entries.length!==4)throw Error('Copies locales historiques incorrectes');

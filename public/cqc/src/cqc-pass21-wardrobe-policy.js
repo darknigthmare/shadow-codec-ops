@@ -20,7 +20,7 @@
   if(!known.has(uid)||!['retro','nextgen','tuxedo'].includes(family))return{uid,family,status:'outside-reviewed-scope',activate:false};
   if(family!=='tuxedo'&&styleFor(uid)===family)return{uid,family,status:'covered-original-style',costumeID:'original',activate:false,sourceCover:'approved-native-original',newArtRequired:false};
   const o=nativeOption(uid,family);if(o)return{uid,family,status:'ready-native',costumeID:o.id,activate:false,sourceCover:'registered-reviewed-native',newArtRequired:false};
-  const lazy=root.CQC_NATIVE_WARDROBE_INDEX?.entries?.find(e=>e.uid===uid&&e.family===family&&e.review?.status==='approved'&&e.metadata?.sha256&&e.assets?.length===2&&e.assets.every(a=>a.sha256));
+  const lazy=root.CQC_NATIVE_WARDROBE_INDEX?.entries?.find(e=>e.uid===uid&&e.family===family&&e.review?.status==='approved'&&e.metadata?.sha256&&Array.isArray(e.assets)&&e.assets.length>=1&&e.assets.length<=48&&e.assets.every(a=>a.sha256));
   if(lazy)return{uid,family,status:'produced-reviewed-lazy',costumeID:lazy.id,activate:false,sourceCover:'immutable-reviewed-lazy-native',newArtRequired:false};
   return{uid,family,status:'pending-art',costumeID:family==='retro'?'retro-msx':family,activate:false,sourceCover:null,newArtRequired:true};
  }

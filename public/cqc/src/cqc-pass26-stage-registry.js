@@ -12,11 +12,11 @@
   snakes_revenge:['REVENGE'],mgs1:['MGS1'],vr_missions:['VR MISSIONS'],mgs2:['MGS2'],
   mgs3:['MGS3'],mpo:['PORTABLE OPS','MPO'],pw:['PEACE WALKER','PW'],gz:['GROUND ZEROES','GZ'],
   tpp:['MGSV','TPP'],mgs4:['MGS4'],mgr:['REVENGEANCE','MGR'],survive:['SURVIVE'],
-  ghost_babel:['GHOST BABEL','GHOST'],acid:['AC!D','ACID'],acid2:['AC!D 2','ACID2'],mgo3:['MGO3']
+  ghost_babel:['GHOST BABEL','GHOST'],acid:['AC!D','ACID'],acid2:['AC!D 2','ACID2'],mgo3:['MGO3'],mobile:['MOBILE'],mpo_plus:['PORTABLE OPS PLUS','MPO+']
  });
  // These aliases already identify specific reviewed original scenes in the native catalogue.
  // A remake, mobile edition or earlier/later incarnation never inherits its parent title's scenes.
- const TITLE_PREFERENCES=Object.freeze({mg_nes:'nes_jungle',snakes_revenge:'revenge-jungle-base',mgo3:'mgo3_jade'});
+ const TITLE_PREFERENCES=Object.freeze({mg_nes:'nes_jungle',snakes_revenge:'revenge-jungle-base',mgo3:'mgo3_jade',mobile:'p27_mobile_warehouse',mpo_plus:'p27_mpo_plus_industrial'});
  const COMBAT_SCENES=Object.freeze({
   mg_msx:{core__shotmaker:'mg1-outer-heaven-poste-de-tir',core__firetrooper:'mg1-outer-heaven-galerie-thermique',
    core__dirtyduck:'mg1-outer-heaven-bloc-des-captifs',core__bloody_brad:'mg1-outer-heaven-salle-brad'},

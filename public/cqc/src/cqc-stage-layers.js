@@ -388,7 +388,12 @@
       if (options.time !== marker.options.time || options.camera !== marker.options.camera || options.zoom !== marker.options.zoom ||
           options.animate !== marker.options.animate || options.allowAmbientLuminance !== marker.options.allowAmbientLuminance)
         return false;
-      paint(ctx, record, 'foreground', options); weather(ctx, record.stage, options);
+      const clipY=record.stage.renderHints?.foregroundClipY;
+      if(finite(clipY)&&clipY>=0&&clipY<HEIGHT){
+        ctx.save();ctx.beginPath();ctx.rect(0,clipY,WIDTH,HEIGHT-clipY);ctx.clip();
+        paint(ctx, record, 'foreground', options);ctx.restore();
+      }else paint(ctx, record, 'foreground', options);
+      weather(ctx, record.stage, options);
       releaseFrame(ctx, record); // Never paint the same foreground twice or leak it into a different scene.
       return true;
     }

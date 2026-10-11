@@ -20,9 +20,9 @@
   san_hieronymo:{titleID:'mpo',stageID:'san_hieronymo'},
   acid_lobito:{titleID:'acid',stageID:'lobito'},
   acid2_ego:{titleID:'acid2',stageID:'saintlogic'},
-  mobile_gaudi:{titleID:'mobile',stageID:'vr_grid',simulation:true},
+  mobile_gaudi:{titleID:'mobile',stageID:'p27_mobile_warehouse'},
   dite_survivors:{titleID:'survive',stageID:'dite'},
-  portable_guests:{titleID:'mpo_plus',stageID:'vr_grid',simulation:true},
+  portable_guests:{titleID:'mpo_plus',stageID:'p27_mpo_plus_industrial'},
   prototype_archive:{titleID:'mgs2',stageID:'arsenal_corridor'}
  });
  function createBridge(dependencies={}){
