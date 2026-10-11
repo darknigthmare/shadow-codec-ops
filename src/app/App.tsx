@@ -115,7 +115,7 @@ export function App() {
       case 'vr':
         return <VRMissionsScreen settings={settings} />;
       case 'tapes':
-        return <TapeArchive />;
+        return <TapeArchive onRouteChange={setRoute} />;
       case 'studio':
         return <ConversationStudio />;
       case 'builder':

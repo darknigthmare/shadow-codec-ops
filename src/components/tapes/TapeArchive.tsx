@@ -19,6 +19,8 @@ import { loadVrTapeUnlocks } from '../../systems/vrStorage';
 import { consumeCampaignLaunchDirective, getCampaignTapeUnlocks, recordCampaignTapeListened } from '../../systems/campaignStorage';
 import { Panel } from '../common/Panel';
 import { StatusBadge } from '../common/StatusBadge';
+import type { AppRoute } from '../../app/AppLayout';
+import { loadContentLinkCatalog, prepareContentLinkTarget, resolveContentLink } from '../../systems/contentLinks';
 
 const builtInTapes = tapesJson as TapeDefinition[];
 const categories: Array<{ id: TapeCategory | 'all' | 'favorites' | 'history'; label: string }> = [
@@ -73,8 +75,9 @@ function isTapeUnlocked(tape: TapeDefinition, vrUnlockedTapeIds: string[], campa
   return tape.unlockState === 'unlocked' || tape.id.startsWith('custom_') || vrUnlockedTapeIds.includes(tape.id) || campaignUnlockedTapeIds.includes(tape.id);
 }
 
-export function TapeArchive() {
+export function TapeArchive({ onRouteChange }: { onRouteChange?: (route: AppRoute) => void }) {
   const [campaignDirective] = useState(() => consumeCampaignLaunchDirective('tapes'));
+  const [contentLinkCatalog] = useState(loadContentLinkCatalog);
   const [customTapes, setCustomTapes] = useState<TapeDefinition[]>(() => loadCustomTapes());
   const allTapes = useMemo(() => [...builtInTapes, ...customTapes], [customTapes]);
   const [archiveState, setArchiveState] = useState<TapeArchiveState>(() => loadTapeArchiveState());
@@ -90,6 +93,8 @@ export function TapeArchive() {
 
   const selectedTape = allTapes.find((tape) => tape.id === selectedTapeId) ?? allTapes[0];
   const selectedTapeUnlocked = selectedTape ? isTapeUnlocked(selectedTape, vrUnlockedTapeIds, campaignUnlockedTapeIds) : false;
+  const missionLink = selectedTape?.relatedMission ? resolveContentLink({ type: 'mission', id: selectedTape.relatedMission }, contentLinkCatalog) : undefined;
+  const conversationLink = selectedTape?.relatedConversation ? resolveContentLink({ type: 'conversation', id: selectedTape.relatedConversation }, contentLinkCatalog) : undefined;
   const selectedProgress = selectedTape ? getTapeProgress(archiveState, selectedTape.id) : undefined;
   const waveform = useMemo(() => (selectedTape ? getTapeWaveform(selectedTape.id) : []), [selectedTape]);
   const activeLine = selectedTape && selectedProgress
@@ -446,6 +451,12 @@ export function TapeArchive() {
             <li><span>Codec link</span><strong>{selectedTape.relatedConversation ?? '—'}</strong></li>
             <li><span>Unlock</span><strong>{selectedTapeUnlocked ? 'UNLOCKED' : selectedTape.unlockState.toUpperCase()}</strong></li>
           </ul>
+          {onRouteChange && (missionLink || conversationLink) ? (
+            <div className="hero-actions">
+              {missionLink ? <button className="primary-action secondary" type="button" disabled={!selectedTapeUnlocked} onClick={() => onRouteChange(prepareContentLinkTarget(missionLink))}>{missionLink.route === 'vr' ? 'Ouvrir l’entraînement VR' : 'Ouvrir la mission'}</button> : null}
+              {conversationLink ? <button className="primary-action secondary" type="button" disabled={!selectedTapeUnlocked} onClick={() => onRouteChange(prepareContentLinkTarget(conversationLink))}>Préparer l’appel Codec</button> : null}
+            </div>
+          ) : null}
         </Panel>
 
         <Panel title="Field Note">

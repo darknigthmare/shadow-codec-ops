@@ -140,11 +140,18 @@ function getDispositionLabel(entry: CallHistoryEntry): string {
 }
 
 export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
+  const [customConversations] = useState(() => loadCustomConversations());
   const [campaignDirective] = useState(() => consumeCampaignLaunchDirective('codec'));
   const campaignContact = contacts.find((contact) => contact.id === campaignDirective?.targetId);
+  const [campaignConversation] = useState(() => campaignDirective?.conversationId
+    ? mergeStudioConversations(builtInConversations, customConversations).find(conversation => conversation.id === campaignDirective.conversationId && conversation.contactId === campaignDirective.targetId)
+    : undefined);
   const storedContext = loadJson<StoredCodecContextState | null>('codec-context-state', null);
   const initialEra = (campaignContact?.era ?? settings.selectedEra) as EraId;
-  const campaignContext = campaignContact ? contexts.find((context) => context.era === campaignContact.era && context.unlockedContactIds.includes(campaignContact.id)) : undefined;
+  const campaignContext = campaignContact
+    ? contexts.find(context => context.era === campaignContact.era && context.unlockedContactIds.includes(campaignContact.id) && campaignConversation?.contextIds?.includes(context.id))
+      ?? contexts.find(context => context.era === campaignContact.era && context.unlockedContactIds.includes(campaignContact.id))
+    : undefined;
   const initialContext = campaignContext ?? contexts.find((context) => context.id === storedContext?.contextId && context.era === initialEra) ?? getFirstContextForEra(initialEra);
 
   const [selectedEra, setSelectedEra] = useState<EraId>(initialEra);
@@ -168,7 +175,9 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
   const currentTheme = themePacks.find((theme) => theme.id === settings.selectedTheme)
     ?? themePacks.find((theme) => theme.id === currentEra.visualStyle)
     ?? themePacks[0];
-  const [frequency, setFrequency] = useState<number>(() => campaignContact?.frequency ?? loadJson('last-frequency', currentEra.defaultFrequency));
+  const [frequency, setFrequency] = useState<number>(() => campaignContact && campaignConversation
+    ? getPreferredContactFrequency(campaignContact, initialContext.id, campaignConversation.subjectId).frequency
+    : campaignContact?.frequency ?? loadJson('last-frequency', currentEra.defaultFrequency));
   const [codecState, setCodecState] = useState<CodecState>('idle');
   const [activeCall, setActiveCall] = useState<ActiveCall | null>(null);
   const [lineIndex, setLineIndex] = useState(0);
@@ -184,10 +193,9 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
   const [mgs1ScheduledCallIds, setMgs1ScheduledCallIds] = useState<string[]>(() => loadJson('mgs1-scheduled-call-ids', []));
   const [mgs2ScheduledCallIds, setMgs2ScheduledCallIds] = useState<string[]>(() => loadJson('mgs2-scheduled-call-ids', []));
   const [mgs3ScheduledCallIds, setMgs3ScheduledCallIds] = useState<string[]>(() => loadJson('mgs3-scheduled-call-ids', []));
-  const [customConversations] = useState(() => loadCustomConversations());
   const [voicePackState, setVoicePackState] = useState(() => loadVoicePackState());
   const [preferredContactId, setPreferredContactId] = useState<string | null>(campaignContact?.id ?? null);
-  const [selectedSubjectId, setSelectedSubjectId] = useState('');
+  const [selectedSubjectId, setSelectedSubjectId] = useState(campaignConversation?.subjectId ?? '');
   const [pendingIncoming, setPendingIncoming] = useState<IncomingCallRequest | null>(null);
   const [incomingQueue, setIncomingQueue] = useState<IncomingCallRequest[]>([]);
   const [incomingSecondsRemaining, setIncomingSecondsRemaining] = useState(0);
@@ -344,6 +352,9 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
     [selectedContact, conversations, currentContext.id]
   );
   const selectedTopic = topics.find((topic) => topic.id === selectedSubjectId) ?? topics[0];
+  const requestedConversationVisible = campaignConversation && selectedContact?.id === campaignConversation.contactId && selectedEra === campaignConversation.era;
+  const preparedConversation = requestedConversationVisible && selectedContact
+    ? resolveConversationContactRoute(campaignConversation, selectedContact, currentContext.id) : undefined;
 
   useEffect(() => {
     if (!topics.some((topic) => topic.id === selectedSubjectId)) setSelectedSubjectId(topics[0]?.id ?? '');
@@ -589,6 +600,12 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
     setCodecState(availability.access === 'jammed' ? 'signal_jammed' : 'no_response');
     setMessage(availability.reason.toUpperCase());
     if (settings.eraUiAudioEnabled) playCodecUiCue(selectedEra, 'no_response', settings.uiBeepVolume);
+  }
+
+  function callPreparedConversation() {
+    if (!selectedContact || !preparedConversation || !selectedAvailability?.manualCallable || !preparedConversation.canReplay) return;
+    setSidePanel(null);
+    startCall(selectedContact, preparedConversation.trigger, preparedConversation.id, preparedConversation.subjectId);
   }
 
   function simulateIncomingCall() {
@@ -1027,6 +1044,13 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
           {selectedTopic?.frequencyLabel && <small className="topic-frequency-label">{selectedTopic.frequencyLabel} · {formatFrequency(selectedTopic.frequencyOverride ?? selectedContact.frequency)}</small>}
         </>
       )}
+      {requestedConversationVisible ? (
+        <div className="codec-linked-conversation" data-linked-conversation-id={campaignConversation.id}>
+          <strong>{campaignConversation.title}</strong>
+          <button type="button" disabled={!preparedConversation?.canReplay || !selectedAvailability?.manualCallable} onClick={callPreparedConversation}>Lancer cet appel</button>
+          {!preparedConversation ? <p>Cet appel appartient à un autre contexte radio.</p> : !preparedConversation.canReplay ? <p>Cet appel ne peut pas être rejoué.</p> : !selectedAvailability?.manualCallable ? <p>{selectedAvailability?.reason}</p> : null}
+        </div>
+      ) : null}
     </div>
   ) : undefined;
 

@@ -3,7 +3,6 @@ import { useEffect, useMemo, useState } from 'react';
 import loreEntriesJson from '../../data/loreEntries.json';
 import contactsJson from '../../data/contacts.json';
 import erasJson from '../../data/eras.json';
-import missionsJson from '../../data/missions.json';
 import itemsJson from '../../data/items.json';
 import enemiesJson from '../../data/enemies.json';
 import bossesJson from '../../data/bosses.json';
@@ -30,6 +29,7 @@ import {
 import { Panel } from '../common/Panel';
 import { StatusBadge } from '../common/StatusBadge';
 import { consumeCampaignLaunchDirective, recordCampaignLoreViewed } from '../../systems/campaignStorage';
+import { BUILT_IN_SIDE_OPS_MISSIONS, getSideOpsLinksForRecord, loadContentLinkCatalog, prepareContentLinkTarget, resolveContentLink } from '../../systems/contentLinks';
 
 interface LoreDatabaseProps {
   onRouteChange?: (route: AppRoute) => void;
@@ -71,14 +71,24 @@ export interface BossRecord {
   aliases?: string[];
   projectiles?: string[];
   canonStatus?: LoreCanonStatus;
-  runtimeStatus?: 'asset_registry_only' | 'dedicated_mission_003';
+  runtimeStatus?: 'asset_registry_only' | 'dedicated_mission_003' | 'dedicated_shadow_moses_route' | 'dedicated_shadow_moses_route_finale' | 'narrative_checkpoint_only' | 'sideops_tanker_hold_002';
   assetTextureKey?: string;
 }
 
-const baseLoreEntries = loreEntriesJson as LoreEntry[];
+const baseLoreEntries: LoreEntry[] = loreEntriesJson.map(value => {
+  // Keep the authored system dossier from the older layer/relations schema reachable.
+  const entry = value as Partial<LoreEntry> & { layer?: LoreCanonStatus; relations?: LoreLink[] };
+  return {
+    ...entry,
+    subtitle: entry.subtitle ?? '',
+    canonStatus: entry.canonStatus ?? entry.layer ?? 'gameplay',
+    importance: entry.importance ?? 'medium',
+    related: entry.related ?? entry.relations ?? []
+  } as LoreEntry;
+});
 const contacts = contactsJson as ContactDefinition[];
 const eras = erasJson as EraDefinition[];
-const missions = missionsJson as MissionDefinition[];
+const missions = BUILT_IN_SIDE_OPS_MISSIONS;
 const items = itemsJson as ItemRecord[];
 const enemies = enemiesJson as EnemyRecord[];
 const bosses = bossesJson as BossRecord[];
@@ -143,19 +153,6 @@ const categoryOrder: Array<LoreCategory | 'all' | 'favorites' | 'history' | 'not
   'history',
   'notes'
 ];
-
-const routeByLinkType: Partial<Record<LoreLink['type'], AppRoute>> = {
-  contact: 'codec',
-  conversation: 'codec',
-  frequency: 'codec',
-  mission: 'sideops',
-  item: 'sideops',
-  enemy: 'sideops',
-  boss: 'sideops',
-  tape: 'tapes',
-  vr: 'vr',
-  system: 'settings'
-};
 
 function formatFrequency(value?: number): string {
   return typeof value === 'number' ? value.toFixed(2) : '—';
@@ -226,6 +223,7 @@ function contactFrequencyToLoreEntry(contact: ContactDefinition): LoreEntry {
 }
 
 function missionToLoreEntry(mission: MissionDefinition): LoreEntry {
+  const missionBoss = bosses.find(boss => boss.era === mission.era && (boss.id === mission.boss || boss.name === mission.boss));
   return {
     id: `mission_${mission.id}`,
     title: mission.title,
@@ -247,7 +245,7 @@ function missionToLoreEntry(mission: MissionDefinition): LoreEntry {
       { type: 'mission', id: mission.id, label: mission.title },
       { type: 'conversation', id: mission.briefingConversation, label: 'Briefing call' },
       { type: 'conversation', id: mission.debriefingConversation, label: 'Debriefing call' },
-      ...(mission.boss ? [{ type: 'boss' as const, id: mission.boss, label: 'Mission boss' }] : [])
+      ...(mission.boss ? [{ type: 'boss' as const, id: missionBoss?.id ?? mission.boss, label: 'Mission boss' }] : [])
     ]
   };
 }
@@ -268,7 +266,7 @@ function itemToLoreEntry(item: ItemRecord): LoreEntry {
       'Tracked in Side Ops and available for future VR Mission requirement rules.'
     ],
     tags: unique([item.category, item.era, item.name.toLowerCase(), 'side ops']),
-    related: [{ type: 'item', id: item.id, label: item.name }]
+    related: [{ type: 'item', id: item.id, label: item.name }, ...getSideOpsLinksForRecord('item', item.id)]
   };
 }
 
@@ -293,7 +291,7 @@ function enemyToLoreEntry(enemy: EnemyRecord): LoreEntry {
     ],
     tags: unique(['enemy', enemy.era, enemy.alertBehavior, enemy.weakness ?? '', enemy.canCallBackup ? 'backup' : 'no backup']),
     aliases: enemy.aliases,
-    related: [{ type: 'enemy', id: enemy.id, label: enemy.name }]
+    related: [{ type: 'enemy', id: enemy.id, label: enemy.name }, ...getSideOpsLinksForRecord('enemy', enemy.id)]
   };
 }
 
@@ -319,21 +317,17 @@ export function bossToLoreEntry(boss: BossRecord): LoreEntry {
         ? 'Canonical asset metadata is ready; dedicated encounter behavior is not wired yet.'
         : dedicatedMission003
           ? 'Playable in the dedicated Operation Intrude N313 Mission 003 runtime.'
-          : 'Designed as a local boss systems test before adding era-specific major bosses.'
+          : boss.runtimeStatus === 'sideops_tanker_hold_002'
+            ? 'Encounter available in Tanker Hold Sabotage.'
+            : boss.runtimeStatus === 'narrative_checkpoint_only'
+              ? 'Narrative checkpoint in the Shadow Moses route; not a boss fight.'
+              : boss.runtimeStatus?.startsWith('dedicated_shadow_moses_route')
+                ? 'Encounter available in the dedicated Shadow Moses route.'
+                : 'Designed as a local boss systems test before adding era-specific major bosses.'
     ],
     tags: unique(['boss', boss.era, boss.weakness, 'side ops']),
     aliases: boss.aliases,
-    related: registryOnly
-      ? [{ type: 'boss', id: boss.id, label: boss.name }]
-      : dedicatedMission003
-        ? [
-            { type: 'boss', id: boss.id, label: boss.name },
-            { type: 'mission', id: 'outer_heaven_intrude_n313', label: 'Operation Intrude N313' }
-          ]
-        : [
-            { type: 'boss', id: boss.id, label: boss.name },
-            { type: 'mission', id: 'shadow_dock_001', label: 'Dock Infiltration' }
-          ]
+    related: [{ type: 'boss', id: boss.id, label: boss.name }, ...getSideOpsLinksForRecord('boss', boss.id)]
   };
 }
 
@@ -408,10 +402,6 @@ function getEraName(eraId: LoreEntry['era']): string {
   return eras.find((era) => era.id === eraId)?.name ?? eraId.toUpperCase();
 }
 
-function getLinkRoute(link: LoreLink): AppRoute | undefined {
-  return routeByLinkType[link.type];
-}
-
 function entrySearchBlob(entry: LoreEntry): string {
   return [
     entry.title,
@@ -436,6 +426,7 @@ function makeEntryJson(entry: LoreEntry): string {
 
 export function LoreDatabase({ onRouteChange }: LoreDatabaseProps) {
   const [campaignDirective] = useState(() => consumeCampaignLaunchDirective('lore'));
+  const [contentLinkCatalog] = useState(loadContentLinkCatalog);
   const [customEntries, setCustomEntries] = useState<LoreEntry[]>(() => loadCustomLoreEntries());
   const [state, setState] = useState(() => loadLoreState());
   const [selectedCategory, setSelectedCategory] = useState<LoreCategory | 'all' | 'favorites' | 'history' | 'notes'>('all');
@@ -588,8 +579,12 @@ export function LoreDatabase({ onRouteChange }: LoreDatabaseProps) {
   }
 
   function navigateToLink(link: LoreLink) {
-    const route = getLinkRoute(link);
-    if (route && onRouteChange) onRouteChange(route);
+    const target = resolveContentLink(link, contentLinkCatalog);
+    if (target?.route === 'lore' && target.targetId && allEntries.some(entry => entry.id === target.targetId)) {
+      setSelectedEntryId(target.targetId);
+      return;
+    }
+    if (target && onRouteChange) onRouteChange(prepareContentLinkTarget(target));
     else setSystemMessage(`LINK TARGET: ${link.type.toUpperCase()} / ${link.id}`);
   }
 
@@ -714,7 +709,7 @@ export function LoreDatabase({ onRouteChange }: LoreDatabaseProps) {
               <div className="lore-link-grid">
                 {selectedEntryConnections.length === 0 && <span className="lore-empty">No explicit links yet.</span>}
                 {selectedEntryConnections.map((link) => {
-                  const route = getLinkRoute(link);
+                  const route = resolveContentLink(link, contentLinkCatalog)?.route;
                   return (
                     <button key={`${link.type}-${link.id}-${link.label ?? ''}`} type="button" onClick={() => navigateToLink(link)}>
                       <strong>{link.label ?? link.id}</strong>
