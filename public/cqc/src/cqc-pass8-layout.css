@@ -1,0 +1,13 @@
+/* Explicit grid tracks let the full canvas fit above the desktop controls. */
+@media (min-width: 701px) {
+  body:not(.story55) .canvas-wrap {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+    min-width: 0;
+    min-height: 0;
+  }
+  body:not(.story55) .canvas-wrap canvas {
+    min-width: 0;
+    min-height: 0;
+  }
+}
