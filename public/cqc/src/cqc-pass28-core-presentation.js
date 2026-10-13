@@ -14,12 +14,12 @@
     peace_walker: {pod: {part: 'mammal_head'}, hull: {part: 'hull'}, radar: {part: 'front_near_shin'}}
   });
   const WEAPONS = Object.freeze({
-    mgd: {gun: {part: 'three_tube_rotary_gun', sourceNativeXY: [640,454]}},
-    cocoon: {cannon: {part: 'main_cannon_barrel', sourceNativeXY: [1215,396]}}
+    mgd: {gun: {part: 'three_tube_barrels_native', sourceNativeXY: [649,453]}},
+    cocoon: {cannon: {part: 'main_cannon_barrel', sourceNativeXY: [1216,397]}}
   });
   const neutralCache = new WeakMap();
   const finite = value => typeof value === 'number' && Number.isFinite(value);
-  function geometry(state, machine, parts) {
+  function geometry(state, machine, parts, options={}) {
     if (!state?.boss || !machine || !parts?.corePose || !root.CQC_PASS28_MACHINE_GEOMETRY) return null;
     let neutral = neutralCache.get(machine);
     if (!neutral) {
@@ -38,9 +38,13 @@
     const x = finite(boss.x) ? boss.x : 1120, y = finite(boss.y) ? boss.y : 0;
     const tx = frontAligned ? x - 228 - neutral.left * scale : x;
     const ty = -y - neutral.bottom * scale;
-    const raw = parts.corePose(state, {id: machine.id, origin: [0,0], reducedMotion: false});
+    const raw = parts.corePose(state, {id: machine.id, origin: [0,0], reducedMotion: options.reducedMotion===true});
     if (!raw) return null;
-    const pose = root.CQC_PASS28_RIG_SETUP?.presentationPose(machine.id, raw, state) || raw;
+    const attack=boss.attack,hero=state.fighters?.[0],gun=boss.id==='mgd'&&attack?.kind==='gun',cannon=boss.id==='cocoon'&&attack?.kind==='cannon';
+    const aimEvent=hero&&(gun||cannon)?{kind:gun?'gun':'beam',sources:[],age:attack.t,warn:attack.windup,active:attack.active,recovery:attack.recovery,aimTarget:cannon&&attack.aim?[attack.aim.x,-attack.aim.y]:[hero.x,-(gun?174:hero.y+(hero.crouch?65:150))]}:null;
+    const pose=aimEvent&&root.CQC_PASS18_MACHINES?.mechanicalAimPose
+      ? root.CQC_PASS18_MACHINES.mechanicalAimPose(machine.id,raw,state,[scale,0,0,scale,tx,ty],aimEvent)
+      : root.CQC_PASS28_RIG_SETUP?.presentationPose(machine.id,raw,state)||raw;
     const left = tx + neutral.left * scale, right = tx + neutral.right * scale;
     const top = ty + neutral.top * scale, bottom = ty + neutral.bottom * scale;
     return {schema: 'cqc.pass28.core-world-geometry/1', id: machine.id, encounter: boss.id,
@@ -64,9 +68,11 @@
       part: native.part, sourceNativeXY: native.nativeXY.slice(),
       alphaMeasured: native.alphaMeasured, nativeGeometry: true};
   }
-  function weapon(state, machine, parts, key) {
-    const descriptor = WEAPONS[state?.boss?.id]?.[key], value = geometry(state,machine,parts);
+  function weapon(state, machine, parts, key, prepared=null) {
+    const descriptor = WEAPONS[state?.boss?.id]?.[key], value = prepared||geometry(state,machine,parts);
     if (!descriptor || !value) return null;
+    const vector=root.CQC_PASS18_MACHINES?.mechanicalWeaponVector?.(machine.id,value.nativePose,value.basis,{kind:key==='gun'?'gun':'beam'});
+    if(vector)return {...vector,y:-vector.y,base:{x:vector.base.x,y:-vector.base.y},tip:{x:vector.tip.x,y:-vector.tip.y},angle:-vector.angle,sourceNativeXY:vector.axisNative.tipNativeXY.slice(),nativeGeometry:true,qualification:'Admitted native weapon axis shared with rendered mechanical pose'};
     const native = root.CQC_PASS28_MACHINE_GEOMETRY.sourcePoint(machine,parts,value.nativePose,descriptor);
     return native ? {x: value.tx+native.x*value.scale, y: -(value.ty+native.y*value.scale),
       part: native.part, sourceNativeXY: native.nativeXY.slice(),

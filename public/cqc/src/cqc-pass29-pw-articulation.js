@@ -4,7 +4,7 @@
  */
 (function (root) {
   'use strict';
-  const VERSION = 1, DEG = Math.PI / 180;
+  const VERSION = 3, DEG = Math.PI / 180;
   const clone = value => JSON.parse(JSON.stringify(value));
   const finite = value => typeof value === 'number' && Number.isFinite(value);
   const clamp = (value, lo, hi) => Math.max(lo, Math.min(hi, value));
@@ -68,6 +68,9 @@
         source:body.source,rect:body.rect.slice(),cut:[xCut,yCut],newDamageGroup:false});
     }
     if (machine.id === 'pupa_pw_psp2010') {
+      binding(get('shoulder_frame'),'y','pw32PupaBodyCompression');
+      binding(get('rear_chassis'),'y','pw32PupaRearCompression');
+      for (const side of ['near','far'])binding(get(side+'_shoulder_hinge'),'y','pw32PupaSupportCompensation');
       for (const id of ['near_rear_exhaust_pair','far_rear_exhaust_pair','deck_sensor']) parent(id,'rear_chassis');
       parent('front_hood','shoulder_frame'); parent('ai_mount','shoulder_frame');
       for (const side of ['near','far']) {
@@ -77,6 +80,8 @@
         binding(get(side+'_electrical_gun'),'x','pw29PupaGunRecoil',1);
       }
     } else if (machine.id === 'chrysalis_pw_psp2010') {
+      binding(get('hull'),'x','pw32ChrysalisSurge');binding(get('hull'),'y','pw32ChrysalisLift');
+      binding(get('railgun_cradle'),'rotation','pw32ChrysalisRailAim');
       for (const id of ['upper_bracket','left_fan_pylon','right_fan_pylon','tail_arm','radar_mount','railgun_cradle']) parent(id,'hull');
       parent('ai_pod','upper_bracket');parent('radar_dish','radar_mount');parent('railgun','railgun_cradle');
       for (const side of ['left','right']) {
@@ -88,6 +93,7 @@
       binding(get('tail_arm'),'rotation','pw29ChrysalisTailHinge',1,true);
       binding(get('railgun'),'x','pw29RailRecoil',1);
     } else if (machine.id === 'cocoon_pw_psp2010') {
+      binding(get('main_hull'),'y','pw32CocoonCompression');
       for (const id of ['upper_tower','ai_coupler','main_cannon_turret','near_deck_turret1',
         'near_deck_turret2','far_deck_turret','near_armor_panel','far_armor_panel','upper_deck_hatch','deck_vent_box']) parent(id,'main_hull');
       parent('main_cannon_barrel','main_cannon_turret');
@@ -102,6 +108,7 @@
       splitBarrel('near_deck_turret2',1406,700,[1404,688]);
       splitBarrel('far_deck_turret',165,916,[162,892]);
     } else if (machine.id === 'peacewalker_pw_psp2010') {
+      binding(get('hull'),'x','pw32PWBodyShift');binding(get('hull'),'y','pw32PWBodyCompression');
       parent('neck_mount','hull');parent('mammal_head','neck_mount');parent('launcher_backpack','hull');
       // Native cylindrical hip/ankle centres, not the centre of an armor rectangle or sole.
       const native = {
@@ -140,12 +147,35 @@
       sourcePixelsChanged:false,neutralSourceProjectionPreserved:true};
     return {changes,original};
   }
+  function upgradeMotionBindings(machine) {
+    const get=id=>machine.parts.find(part=>part.id===id);
+    if(machine.id==='pupa_pw_psp2010') {
+      binding(get('shoulder_frame'),'y','pw32PupaBodyCompression');
+      binding(get('rear_chassis'),'y','pw32PupaRearCompression');
+      for(const side of ['near','far'])binding(get(side+'_shoulder_hinge'),'y','pw32PupaSupportCompensation');
+    } else if(machine.id==='chrysalis_pw_psp2010') {
+      binding(get('hull'),'x','pw32ChrysalisSurge');binding(get('hull'),'y','pw32ChrysalisLift');
+      binding(get('railgun_cradle'),'rotation','pw32ChrysalisRailAim');
+      binding(get('railgun'),'y','pw32ChrysalisRailRecoilY');
+    } else if(machine.id==='cocoon_pw_psp2010') {
+      binding(get('main_hull'),'y','pw32CocoonCompression');
+      const barrel=get('main_cannon_barrel');
+      barrel.channels.x=(barrel.channels.x||[]).filter(row=>row.channel!=='pwCannonRecoil');
+      binding(barrel,'x','pw32CocoonRecoilX');binding(barrel,'y','pw32CocoonRecoilY');
+      binding(barrel,'rotation','pw32CocoonBarrelElevation');
+    }
+    else if(machine.id==='peacewalker_pw_psp2010') {
+      binding(get('hull'),'x','pw32PWBodyShift');binding(get('hull'),'y','pw32PWBodyCompression');
+    }
+    machine.pass29PWArticulation.version=VERSION;
+  }
   let preparedLegs=null;
   function apply(catalog) {
     if(catalog?.schema!=='cqc.machine-parts/1'||!Array.isArray(catalog.machines)||!root.CQC_MACHINE_PARTS?.pose) throw Error('PW native catalogue/renderer unavailable');
     const next=clone(catalog),changes=[];
     for(const machine of next.machines) if(ids.includes(machine.id)) {
-      if(machine.pass29PWArticulation?.version!==VERSION) prepareMachine(machine,root.CQC_MACHINE_PARTS);
+      if(!machine.pass29PWArticulation)prepareMachine(machine,root.CQC_MACHINE_PARTS);
+      upgradeMotionBindings(machine);
       if(machine.id==='peacewalker_pw_psp2010')preparedLegs=clone(machine.pass29PWArticulation.legs);
       changes.push({id:machine.id,parts:machine.parts.length,edits:clone(machine.pass29PWArticulation.changes)});
     }
@@ -167,48 +197,108 @@
     const lower=(second-Math.atan2(l[1],l[0]))/DEG-upper;
     return {upper,lower,level:-upper-lower,target};
   }
+  const smooth=q=>{q=clamp(q,0,1);return q*q*(3-2*q);};
+  function eventEnvelope(event) {
+    const age=Math.max(0,event.age||0),warn=Math.max(1,event.warn||1),active=Math.max(1,event.active||1),recovery=Math.max(1,event.recovery||18);
+    const firing=age>=warn&&age<warn+active;
+    const load=age<warn?smooth(age/warn):firing?1:1-smooth((age-warn-active)/recovery);
+    const kick=age>=warn?Math.sin(Math.min(1,(age-warn)/2)*Math.PI/2)*Math.exp(-(age-warn)/7):0;
+    return {load,kick,firing};
+  }
+  // Slow wave gait: one raised foot, three support feet. This is an authored
+  // mechanical adaptation, not the faster diagonal sinusoid used previously.
+  function quadrupedGait(frame,limb) {
+    const order={front_near:0,rear_far:.25,front_far:.5,rear_near:.75};
+    const q=((frame/176+order[limb])%1+1)%1,support=.78;
+    if(q<support)return {stride:4-8*q/support,lift:0,support:true};
+    const swing=(q-support)/(1-support);
+    return {stride:-4+8*smooth(swing),lift:Math.sin(Math.PI*swing)**2*11,support:false};
+  }
+  const chrysalisAxis=Object.freeze({part:'railgun',jointPart:'railgun_cradle',baseNativeXY:[1158,829],tipNativeXY:[531,937],minDegrees:-18,maxDegrees:55,channel:'pw32ChrysalisRailAim'});
+  const cocoonAxis=Object.freeze({part:'main_cannon_barrel',fixedPivot:true,baseNativeXY:[1436,478],tipNativeXY:[1216,397],minDegrees:-20,maxDegrees:68,channel:'pw32CocoonBarrelElevation'});
+  const aimAxes=Object.freeze({chrysalis_pw_psp2010:{byAttackKind:{beam:chrysalisAxis}},cocoon_pw_psp2010:{byAttackKind:{beam:cocoonAxis}}});
+  const weaponPoints=Object.freeze({chrysalis:{byAttackKind:{beam:{part:'railgun',point:[531,937]}}},cocoon:{byAttackKind:{beam:{part:'main_cannon_barrel',point:[1216,397]}}}});
+  function servoAim(pose,axis,event,collapseTilt) {
+    if(pose.machineAim?.kind!=='beam'||!finite(pose.machineAim.angle))return null;
+    const sourceAngle=Math.atan2(axis.tipNativeXY[1]-axis.baseNativeXY[1],axis.tipNativeXY[0]-axis.baseNativeXY[0])-collapseTilt*DEG;
+    const delta=Math.atan2(Math.sin(pose.machineAim.angle-sourceAngle),Math.cos(pose.machineAim.angle-sourceAngle))/DEG;
+    const aim=clamp(-delta,axis.minDegrees,axis.maxDegrees);
+    const envelope=event?eventEnvelope(event):null;
+    return aim*(event?(event.age<event.warn?smooth(event.age/Math.max(1,event.warn)*1.6):envelope.load):1);
+  }
   function presentationPose(id,pose,state=null) {
     if(!ids.includes(id)||!pose||typeof pose!=='object')return pose;
     const channels={...(pose.channels||{})},flags=pose.flags||{};
     const value=key=>finite(channels[key])?channels[key]:0;
     const defeated=pose.defeated===true||flags.pwDefeated===true;
     const move=/walk|dash|run/.test(pose.action||'')||Math.abs(value('nearSwing'))+Math.abs(value('farSwing'))>0;
-    const phase=(finite(pose.frame)?pose.frame:0)*.12, wave=Math.sin(phase);
-    const recoil=finite(channels.weaponRecoil)?clamp(-channels.weaponRecoil/7,0,1):clamp(value('pwCannonRecoil'),0,1);
-    const weaponAim=clamp(value('weaponAim'),-12,12);
+    const frame=finite(pose.frame)?pose.frame:0,phase=frame*.045,wave=Math.sin(phase);
+    const events=(state?.events||[]).filter(e=>e.age<e.warn+e.active+(e.recovery||18)&&(!e.sources||e.sources.every(i=>flags['part'+i+'Destroyed']!==true)));
+    const event=events.find(e=>['beam','shot','volley','sweep'].includes(e.kind));
+    const envelope=event?eventEnvelope(event):null;
+    const load=envelope?.load||clamp(value('weaponBrace'),0,1);
+    const recoil=envelope?.kick||clamp(value('weaponRecoilImpulse'),0,1)||clamp(-value('weaponRecoil')/7,0,1);
+    const weaponAim=clamp(value('weaponAim'),-14,14);
     if(id==='pupa_pw_psp2010') {
-      channels.pw29PupanearSuspension=!defeated&&move?wave*1.75:0;
-      channels.pw29PupafarSuspension=!defeated&&move?-wave*1.5:0;
+      const compression=defeated?0:-load*1.8-recoil*.9;
+      channels.pw32PupaBodyCompression=compression;
+      channels.pw32PupaSupportCompensation=-compression;
+      channels.pw32PupaRearCompression=defeated?0:-load*.45-recoil*.3;
+      channels.pw29PupanearSuspension=!defeated&&move?wave*1.4:0;
+      channels.pw29PupafarSuspension=!defeated&&move?-wave*1.15:0;
       channels.pw29PupaGunAim=weaponAim;
-      channels.pw29PupaGunRecoil=recoil*2;
+      channels.pw29PupaGunRecoil=defeated?0:recoil*1.2;
     } else if(id==='chrysalis_pw_psp2010') {
-      const tilt=pose.reducedMotion||defeated?0:clamp(value('airTilt'),-4,4);
-      channels.pw29ChrysalisleftHinge=tilt*.35;
-      channels.pw29ChrysalisrightHinge=-tilt*.3;
-      channels.pw29ChrysalisTailHinge=tilt*.2;
-      channels.pw29RailRecoil=recoil*3;
+      const tilt=pose.reducedMotion||defeated?0:clamp(value('airTilt')+(move?wave*1.2:0),-4,4);
+      channels.pw32ChrysalisSurge=defeated?0:load*1.5+recoil*1.6;
+      channels.pw32ChrysalisLift=defeated?0:-load*.9-recoil*.75;
+      channels.pw29ChrysalisleftHinge=tilt*.35+load*.8;
+      channels.pw29ChrysalisrightHinge=-tilt*.3-load*.65;
+      channels.pw29ChrysalisTailHinge=tilt*.2-load*.45;
+      channels.pw32ChrysalisRailAim=servoAim(pose,chrysalisAxis,event,value('pwCollapseTilt'))??weaponAim;
+      const railAngle=Math.atan2(108,-627);
+      channels.pw29RailRecoil=defeated?0:-Math.cos(railAngle)*recoil*2.2;
+      channels.pw32ChrysalisRailRecoilY=defeated?0:Math.sin(railAngle)*recoil*2.2;
     } else if(id==='cocoon_pw_psp2010') {
-      channels.pw29CannonElevation=weaponAim*.35;
+      channels.pw32CocoonCompression=defeated?0:-load*.7-recoil*1.6;
+      channels.pw29CannonElevation=0;
+      channels.pw32CocoonBarrelElevation=servoAim(pose,cocoonAxis,event,value('pwCollapseTilt'))??weaponAim*.35;
+      const cannonAngle=Math.atan2(-81,-220)-channels.pw32CocoonBarrelElevation*DEG;
+      channels.pw32CocoonRecoilX=defeated?0:-Math.cos(cannonAngle)*recoil*3.6;
+      channels.pw32CocoonRecoilY=defeated?0:Math.sin(cannonAngle)*recoil*3.6;
       channels.pw29GantryUpper=weaponAim*.4;
       channels.pw29GantryFore=weaponAim*.25;
       channels.pw29GantryLevel=-weaponAim*.65;
-      channels.pw29GantryRecoil=recoil*2.5;
-      channels.pw29DeckRecoil=recoil*2;
+      channels.pw29GantryRecoil=recoil*1.5;
+      channels.pw29DeckRecoil=recoil*.8;
+      // This legacy multiplier is 8. Feed a positive bounded piston impulse;
+      // passing the bridge's negative seven previously extended it by 56 px.
+      channels.pwCannonRecoil=recoil*.45;
     } else if(id==='peacewalker_pw_psp2010'&&preparedLegs) {
+      const stomp=events.find(e=>e.kind==='stomp');
+      const stompEnvelope=stomp?eventEnvelope(stomp):null;
+      const broken=flags.part0Destroyed===true||flags.part1Destroyed===true;
+      const damageTimed=finite(channels.destroy0Frames)||finite(channels.destroy1Frames),damageAge=Math.max(value('destroy0Frames'),value('destroy1Frames'));
+      const damageProgress=damageTimed?smooth(damageAge/20):1;
+      const bodyCompression=defeated?0:(broken?-4*damageProgress:0)-(stompEnvelope?.load||0)*1.7-(stompEnvelope?.kick||0)*1.8;
+      const bodyShift=stomp&&!defeated?(stomp.sources.includes(0)?1.8:-1.8)*stompEnvelope.load:0;
+      channels.pw32PWBodyCompression=bodyCompression;channels.pw32PWBodyShift=bodyShift;
       for(const [limb,leg]of Object.entries(preparedLegs)) {
-        const far=limb.endsWith('far'),diagonal=(limb==='front_near'||limb==='rear_far')?1:-1;
-        const disabled=flags['part'+(far?1:0)+'Destroyed']===true||defeated;
-        const gait=move&&!pose.reducedMotion&&!disabled?wave*diagonal:0;
-        const bridgeLift=value(far?'farLift':'nearLift');
-        const stomp=limb.startsWith('front_')&&!disabled?(finite(channels[far?'farLift':'nearLift'])?clamp(bridgeLift,0,30):!far?clamp(value('pwStomp'),0,1)*30:0):0;
-        const lift=move?Math.max(0,gait)*9:stomp;
-        const solved=solveLeg(leg,gait*5,lift);
-        channels['pw29_'+limb+'Upper']=disabled?0:solved.upper;
-        channels['pw29_'+limb+'Lower']=disabled?0:solved.lower;
-        channels['pw29_'+limb+'Level']=disabled?0:solved.level;
+        const far=limb.endsWith('far'),index=far?1:0;
+        const disabled=flags['part'+index+'Destroyed']===true||defeated;
+        const gait=move&&!pose.reducedMotion&&!disabled&&!stomp?quadrupedGait(frame,limb):{stride:0,lift:0,support:true};
+        let lift=gait.lift;
+        if(stomp&&limb.startsWith('front_')&&!disabled&&stomp.sources.includes(index)&&stomp.age<stomp.warn){
+          const q=clamp(stomp.age/Math.max(1,stomp.warn),0,1);
+          lift=13*smooth(q/.68)*(1-smooth((q-.72)/.28));
+        } else if(!stomp&&!move&&limb.startsWith('front_')&&!disabled)lift=clamp(value(far?'farLift':'nearLift'),0,30);
+        const solved=solveLeg(leg,gait.stride-bodyShift,lift-bodyCompression);
+        channels['pw29_'+limb+'Upper']=solved.upper;
+        channels['pw29_'+limb+'Lower']=solved.lower;
+        channels['pw29_'+limb+'Level']=solved.level;
       }
     }
     return {...pose,channels};
   }
-  root.CQC_PASS29_PW_ARTICULATION=Object.freeze({version:VERSION,ids,apply,presentationPose,solveLeg,limits});
+  root.CQC_PASS29_PW_ARTICULATION=Object.freeze({version:VERSION,ids,apply,presentationPose,solveLeg,quadrupedGait,eventEnvelope,aimAxes,weaponPoints,limits});
 })(globalThis);

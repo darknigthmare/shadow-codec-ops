@@ -1,0 +1,108 @@
+{
+  "schema": "cqc.pass32.native-mechanical-completion/1",
+  "status": "passed-native-mechanical-build-and-independent-combats",
+  "dateParis": "2026-10-14",
+  "parent": "40cad07cffc393d765da6c727230b5f1b4a8a517",
+  "catalog": {
+    "rigs": 64,
+    "parts": 823,
+    "originalPartIDsRetained": 821,
+    "originalNativePNGPinSetsUnchanged": 64,
+    "INKRecords": 861,
+    "originalINKRecordsRetained": 858
+  },
+  "changedRigDefinitions": [
+    "rex_mgs1_ps1",
+    "ray_mgs2_arsenal",
+    "mgd_mg2_msx2",
+    "gander_ghost_gbc2000",
+    "zeke_pw_psp2010",
+    "shagohod_mgs3_ps2_2004",
+    "sahelanthropus_mgsv2015",
+    "kodoque_acid_psp2004",
+    "pupa_pw_psp2010",
+    "peacewalker_pw_psp2010",
+    "chrysalis_pw_psp2010",
+    "cocoon_pw_psp2010",
+    "chaioth_acid2_psp2005",
+    "ray_unmanned_mgr2013",
+    "grad_mgr2013",
+    "excelsus_mgr2013",
+    "arsenal_gear_mgs2_ps2_2001",
+    "outer_haven_mgs4_ps3_2008",
+    "rex_mgs4_ps3_2008",
+    "peacewalker_biped_pw_psp2010"
+  ],
+  "runtime": {
+    "schema": "cqc.pass32.normal-runtime-mirror/1",
+    "status": "passed",
+    "files": 2656,
+    "totalBytes": 3110911262,
+    "manifestSHA256": "4e97fd69abfe114e4779f429c683f027c33e4bac3dac27c09345e76657b8d3d6",
+    "manifestBytes": 1202698,
+    "allNormalGraphMirrorsByteEqual": true,
+    "transformedFiles": [],
+    "unresolvedRuntimeReferences": [],
+    "bulkCopyUsed": false
+  },
+  "changes": [
+    "Actual engine warning/active/recovery clocks drive articulation and aiming; getters do not advance or mutate combat.",
+    "REX MGS4 engine-owned planted contacts, weight, acceleration/braking/boost, laser jaw axis, upward missile clearance and steering.",
+    "GRAD heavy cannon admitted from existing original atlas; old machinegun pixels retained separately; shield damage does not detach legs.",
+    "MG D fixed receiver and triple-barrel child are a lossless partition of original opaque pixel centers.",
+    "World target is locked; servo aims from the fixed physical support pivot, including offset of visible bore and axial recoil.",
+    "Gander, Cocoon, Chrysalis, Shagohod launch geometry places fighting lane in front of native camera weapons without flipping sprites or altering heights.",
+    "Arsenal emitted bullets/beam/flame and MGR heavy cannon/plasma dangerous path share the drawn source-axis getter.",
+    "Core MG D gun and Cocoon cannon use shared mechanical aim and actual muzzle.",
+    "MGR GRAD cannon receives a 0.32s preparation; mechanical event clock freezes with gameplay world, including blade-mode.",
+    "MGR machines align their native measured bottoms with the actual floor, using the same transform for draw and weapon vectors.",
+    "Arsenal beams and flames remain visible at distant camera scales; their physical source and dangerous path are unchanged."
+  ],
+  "validation": {
+    "navigationTests": 8,
+    "familyGeometry": "passed; source handoffs retained",
+    "CorePhysicalGeometry": "passed:704 fixtures,56 actual MG D shots,128 shared Cocoon ray cases",
+    "nineConsumersAndCombatGeometry": "passed: 9 actual import graphs; 29,700 sampled ticks; 29,524 unstretched matrices; 328 weapon axes",
+    "realBrowserCombats": "passed: 7 actual Shadow Ops menu/control stories; source pins intact; no JS or HTTP failures",
+    "exactMinimalBuild": {
+      "status": "passed-build-pwa-and-all-runtime-bytes",
+      "minimalTree": "9a7055da1d546c8b2d6c4f93036bd914e11c3a06",
+      "stagedFiles": 4231,
+      "allPhysicalCQCFilesVerified": 2682,
+      "manifestGraphFiles": 2656,
+      "PWA": "passed"
+    },
+    "runtimeMirrors": "passed: complete 2656-file normal graph byte-equal",
+    "proofs": {
+      "independentQA": {
+        "path": "/tmp/cqc-pass32-qa/FINAL_MERGED_HANDOFF_ACTUAL.json",
+        "bytes": 71262,
+        "sha256": "9baffd3c74b5e753cb08b0c46d59857aba805b29dde89ef3643c87662ce28771"
+      },
+      "exactBuild": {
+        "path": "/tmp/cqc-pass32-build/EXACT_BUILD_AND_PWA_ACTUAL_V4.json",
+        "bytes": 344745,
+        "sha256": "962f998436dc07c6bf0fa6e6ae872fd6137d6a15ba86de7a82f610ae734d4e50"
+      },
+      "runtimeCheck": {
+        "path": "/tmp/cqc-pass32-root/FINAL_V4_CQC_VERIFY_ACTUAL.log",
+        "bytes": 340,
+        "sha256": "6d5818541850e45c65d79f3be0d8348594f896b0638c6c5ec7b3a858aa2bf33f"
+      }
+    }
+  },
+  "simulationChanges": [
+    "Correct native beam/projectile paths intentionally differ from old receiver-based paths; historical replays/snapshots retained.",
+    "Arsenal forward placement affects only four named encounters; existing saved raw states are not migrated.",
+    "MGR heavy cannon delay and mouth-ray collision are explicit CQC mechanical gameplay adaptations."
+  ],
+  "limits": [
+    "Source-led 2D articulated adaptation, absolute 3D motion/camera/weapon fidelity not certified.",
+    "REX MGS4 Archive rival RAY and stage still use historical vector presentation and require dedicated faithful sources.",
+    "Canonical missile caps/ports, hidden surfaces, opposite cameras and other historical backlog are retained in NEXT_LOT.",
+    "Foreground physical energy is a 2D combat-readability adaptation, not certified original 3D occlusion.",
+    "Consumer graphs retain their historical subsets and load budgets; a 64-rig catalog does not mean every module exposes all rigs."
+  ],
+  "absolute1to1Certified": false,
+  "originalRasterFilesModified": false
+}

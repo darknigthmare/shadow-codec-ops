@@ -116,11 +116,11 @@
       if(!Object.hasOwn(IDS,encounter)||options.expectedBoss&&options.expectedBoss!==encounter)return false;
       const mapped=IDS[encounter],motion=options.reducedMotion===true||reduced();
       if(ready(mapped)){
-        const prepared=options.presentationScale===false?null:coreGeometry(state);
-        if(prepared?.dimension&&Object.hasOwn(root.CQC_PASS28_CORE_PRESENTATION?.targets||{},encounter)){
+        const prepared=options.presentationScale===false?null:coreGeometry(state,{reducedMotion:motion});
+        if(prepared&&Object.hasOwn(root.CQC_PASS28_CORE_PRESENTATION?.targets||{},encounter)){
           ctx.save();
-          try{ctx.transform(...prepared.basis);return registry.drawCore(ctx,state,{...options,id:mapped,
-            origin:[0,0],detachmentBasis:prepared.basis,reducedMotion:motion});}
+          try{ctx.transform(...prepared.basis);return registry.draw(ctx,mapped,{...prepared.nativePose,
+            origin:[0,0],detachmentOwner:state.boss||state,detachmentBasis:prepared.basis,reducedMotion:motion});}
           finally{ctx.restore();}
         }
         return registry.drawCore(ctx,state,{...options,id:mapped,reducedMotion:motion});
@@ -130,17 +130,17 @@
       placeholder(ctx,state,options.portrait===true);return true;
     }
     function cancelPortrait(canvas){portraits.set(canvas,(portraits.get(canvas)||0)+1);}
-    function coreGeometry(state){
+    function coreGeometry(state,options={}){
       const mapped=IDS[state?.boss?.id],machine=machines?.get(mapped);
-      return root.CQC_PASS28_CORE_PRESENTATION?.geometry(state,machine,factory)||null;
+      return root.CQC_PASS28_CORE_PRESENTATION?.geometry(state,machine,factory,{...options,reducedMotion:options.reducedMotion===true||reduced()})||null;
     }
     function coreTarget(state,key){
       const mapped=IDS[state?.boss?.id],machine=machines?.get(mapped);
-      return root.CQC_PASS28_CORE_PRESENTATION?.target(state,machine,factory,key)||null;
+      return root.CQC_PASS28_CORE_PRESENTATION?.target(state,machine,factory,key,coreGeometry(state))||null;
     }
     function coreWeapon(state,key){
       const mapped=IDS[state?.boss?.id],machine=machines?.get(mapped);
-      return root.CQC_PASS28_CORE_PRESENTATION?.weapon(state,machine,factory,key)||null;
+      return root.CQC_PASS28_CORE_PRESENTATION?.weapon(state,machine,factory,key,coreGeometry(state))||null;
     }
     function coreCamera(state,options={}){
       return root.CQC_PASS28_CORE_PRESENTATION?.camera(state,coreGeometry(state),options)||null;

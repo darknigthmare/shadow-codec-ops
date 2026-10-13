@@ -2642,7 +2642,7 @@ function mgdAttackTick(s){
  const a=r.attack;a.t++;const age=a.t-a.windup;
  if(age>=0&&age<a.active){
   if(a.kind==='volley'&&age%12===0&&age/12<3)r.hazards.push({id:++r.serial,kind:'missile',x:a.targets[age/12],y:640,ttl:100});
-  if(a.kind==='gun'&&age%7===0){const native=globalThis.CQC_MACHINE_PARTS_BRIDGE?.coreWeapon?.(s,'gun');if(native){const from=native,to={x:p.x,y:174},dx=to.x-from.x,dy=to.y-from.y,distance=Math.hypot(dx,dy)||1,travelScale=globalThis.CQC_PASS28_CORE_PRESENTATION?.travelScale?.(from,to,{x:r.x-198,y:174})||1;r.hazards.push({id:++r.serial,kind:'bullet',x:from.x,y:from.y,vx:dx/distance*23*travelScale,vy:dy/distance*23*travelScale,ttl:90});event(s,'shot',{slot:1,x:from.x,y:from.y});}else{r.hazards.push({id:++r.serial,kind:'bullet',x:r.x-198,y:174,ttl:90});event(s,'shot',{slot:1,x:r.x-198,y:174});}}
+  if(a.kind==='gun'&&age%7===0){const native=globalThis.CQC_MACHINE_PARTS_BRIDGE?.coreWeapon?.(s,'gun');if(native){const from=native,to={x:p.x,y:174},dx=to.x-from.x,dy=to.y-from.y,distance=Math.hypot(dx,dy)||1,travelScale=globalThis.CQC_PASS28_CORE_PRESENTATION?.travelScale?.(from,to,{x:r.x-198,y:174})||1;r.hazards.push({id:++r.serial,kind:'bullet',x:from.x,y:from.y,vx:(Number.isFinite(native.angle)?Math.cos(native.angle):dx/distance)*23*travelScale,vy:(Number.isFinite(native.angle)?Math.sin(native.angle):dy/distance)*23*travelScale,ttl:90,nativeEmissionAngle:native.angle,nativeOrigin:{x:from.x,y:from.y},nativeSourcePart:native.part});event(s,'shot',{slot:1,x:from.x,y:from.y});}else{r.hazards.push({id:++r.serial,kind:'bullet',x:r.x-198,y:174,ttl:90});event(s,'shot',{slot:1,x:r.x-198,y:174});}}
   if(a.kind==='stride'){
    r.x=a.start+(a.end-a.start)*Math.min(1,age/(a.active-1));s.fighters[1].x=r.x;
    if(p.x>mgdPlayerLimit(s)){mgdDamage(s,900,'foot');p.x=mgdPlayerLimit(s);}
@@ -3924,7 +3924,7 @@ function beginPwAiAttack(s,kind=null){const r=s.boss,p=s.fighters[0];if(r.phase!
  const def=PW_AI_ATTACKS[kind],factor={easy:1.22,normal:1,hard:.88}[s.options.difficulty]||1;
  const sourceKey=kind==='cannon'?'radar':'pod',from=(kind==='cannon'?globalThis.CQC_MACHINE_PARTS_BRIDGE?.coreWeapon?.(s,'cannon'):null)||pwAiTarget(s,sourceKey)||pwAiTarget(s,'pod'),to={x:80,y:0};const aim={x:p.x,y:p.y+(p.crouch?65:150)};
  const t=(80-from.x)/(aim.x-from.x||-1);to.y=from.y+(aim.y-from.y)*t;
- r.attack={kind,t:0,windup:Math.max(48,Math.round(def.windup*factor)),active:def.active,recovery:def.recovery,targets:[-190,0,190].map(v=>clamp(p.x+v,110,950)),from:{x:from.x,y:from.y},to,hit:false,emitted:0,rushStart:r.x,rushEnd:900};r.lastAttack=kind;r.cycle++;
+ r.attack={kind,t:0,windup:Math.max(48,Math.round(def.windup*factor)),active:def.active,recovery:def.recovery,targets:[-190,0,190].map(v=>clamp(p.x+v,110,950)),from:{x:from.x,y:from.y},to,...(kind==='cannon'?{aim:{...aim}}:{}),hit:false,emitted:0,rushStart:r.x,rushEnd:900};r.lastAttack=kind;r.cycle++;
  if(kind==='launch')r.launchCooldown=900;
  event(s,'bossWarning',{slot:1,boss:r.id,kind,frames:r.attack.windup});return true;
 }
@@ -3938,6 +3938,12 @@ function pwAiMotion(s){const r=s.boss;
  }else if(r.id==='cocoon'){r.x=1140+Math.sin(r.activeFrames*.005)*18;}else if(r.id==='peace_walker'){r.x=1140+Math.sin(r.activeFrames*.009)*28;r.y=Math.sin(r.activeFrames*.018)*3;}else if(r.attack?.kind!=='rush')r.x+=(1150-r.x)*.04;
  if(r.launchCooldown>0)r.launchCooldown--;s.fighters[1].x=r.x;s.fighters[1].y=r.y;
 }
+function pwAiCannonLine(s){
+ const a=s.boss?.attack;if(a?.kind!=='cannon')return a?{from:a.from,to:a.to}:null;
+ const native=globalThis.CQC_MACHINE_PARTS_BRIDGE?.coreWeapon?.(s,'cannon');if(!native||!Number.isFinite(native.angle))return {from:a.from,to:a.to};
+ const dx=Math.cos(native.angle),dy=Math.sin(native.angle),distance=Math.abs(dx)>.01?Math.max(0,(80-native.x)/dx):3000;
+ return {from:{x:native.x,y:native.y},to:{x:native.x+dx*distance,y:native.y+dy*distance},native:true,angle:native.angle};
+}
 function pwAiAttackTick(s){const r=s.boss,p=s.fighters[0],a=r.attack;if(!a){if(--r.idle<=0)beginPwAiAttack(s);return;}a.t++;const t=a.t-a.windup;
  if(t>=0&&t<a.active){
   if(a.kind==='guns'&&t%12===0){const from=pwAiTarget(s,'hull');if(from.nativeGeometry===true){const to={x:p.x,y:160},legacyX=r.id==='chrysalis'?r.x+8:r.id==='cocoon'?r.x-20:r.x,dx=to.x-from.x,dy=to.y-from.y,dist=Math.hypot(dx,dy)||1,travelScale=globalThis.CQC_PASS28_CORE_PRESENTATION?.travelScale?.(from,to,{x:legacyX-100,y:160})||1;r.hazards.push({id:++r.serial,kind:'bullet',x:from.x,y:from.y,px:from.x,py:from.y,vx:dx/dist*13*travelScale,vy:dy/dist*13*travelScale,ttl:130,age:0,hp:1,trail:[],emitterQualification:'authored native hull centre; independent muzzle not substantiated'});}else r.hazards.push({id:++r.serial,kind:'bullet',x:from.x-100,y:160,px:from.x-100,py:160,vx:-13,vy:0,ttl:130,age:0,hp:1,trail:[]});}
@@ -3946,7 +3952,7 @@ function pwAiAttackTick(s){const r=s.boss,p=s.fighters[0],a=r.attack;if(!a){if(-
   if(a.kind==='rail'&&!a.hit&&rayLineBox(a.from.x,a.from.y,a.to.x,a.to.y,pwAiHurt(s),9)&&pwAiDamage(s,1700,'rail'))a.hit=true;
   if(a.kind==='missiles'&&t%16===0){const index=Math.floor(t/16),from=pwAiTarget(s,'hull'),tx=a.targets[index];if(tx!==undefined){const dx=tx-from.x,dy=-from.y,dist=Math.hypot(dx,dy)||1,legacyFrom=r.id==='chrysalis'?{x:r.x+8,y:r.y}:r.id==='cocoon'?{x:r.x-20,y:120}:r.id==='peace_walker'?{x:r.x,y:145}:{x:r.x,y:122},travelScale=globalThis.CQC_PASS28_CORE_PRESENTATION?.travelScale?.(from,{x:tx,y:0},legacyFrom)||1;r.hazards.push({id:++r.serial,kind:'missile',x:from.x,y:from.y,px:from.x,py:from.y,vx:dx/dist*8*travelScale,vy:dy/dist*8*travelScale,ttl:200,age:0,hp:1,trail:[]});}}
   if(a.kind==='drones'&&t%24===0&&r.hazards.filter(h=>h.kind==='drone').length<2){const x=r.x-100,y=r.y+40;r.hazards.push({id:++r.serial,kind:'drone',x,y,px:x,py:y,vx:-4.5,vy:0,ttl:330,age:0,hp:2,trail:[]});event(s,'pwDrone',{slot:1});}
-  if(a.kind==='cannon'&&!a.hit&&rayLineBox(a.from.x,a.from.y,a.to.x,a.to.y,pwAiHurt(s),12)&&pwAiDamage(s,2100,'cannon'))a.hit=true;
+  if(a.kind==='cannon'&&!a.hit){const line=pwAiCannonLine(s);if(rayLineBox(line.from.x,line.from.y,line.to.x,line.to.y,pwAiHurt(s),12)&&pwAiDamage(s,2100,'cannon'))a.hit=true;}
   if(a.kind==='mortars'&&t%16===0){const index=Math.floor(t/16),tx=a.targets[index];if(tx!==undefined)r.hazards.push({id:++r.serial,kind:'mortar',x:tx,y:690,px:tx,py:690,vx:0,vy:-12,ttl:90,age:0,hp:1,targetX:tx,trail:[]});}
   if(a.kind==='stomp'&&t===0){if(p.x>820)pwAiDamage(s,1250,'stomp');r.hazards.push({id:++r.serial,kind:'shock',x:980,y:0,px:980,py:0,vx:-12,vy:0,ttl:90,age:0,hp:1,trail:[]});}
   if(a.kind==='launch'&&t===0&&!a.hit){a.hit=true;pwAiDamage(s,10000,'launch');event(s,'pwLaunch',{slot:1});}
@@ -7271,7 +7277,7 @@ function createRenderer(canvas) {
     if(a){const active=a.t>=a.windup&&a.t<a.windup+a.active;
       if(a.kind==='rush'){c.strokeStyle='#efd68c';c.lineWidth=3;c.setLineDash([10,10]);c.strokeRect(650,-173,735,173);c.setLineDash([]);label(c,'PROPULSION / RECULER',716,-202,17,'#f9dba0');}
       if(a.kind==='rods'||a.kind==='missiles')for(const x of a.targets){c.strokeStyle='#dba974';c.setLineDash([8,8]);c.strokeRect(x-60,-157,120,157);c.setLineDash([]);label(c,a.kind==='rods'?'CONDUCTEUR':'IMPACT',x,-176,14,'#f5d2a0','center');}
-      if(a.kind==='rail'||a.kind==='cannon'){c.strokeStyle=active?'#fff0b4':'#e6a777';c.lineWidth=active?12:2;c.setLineDash(active?[]:[12,9]);c.beginPath();c.moveTo(a.from.x,-a.from.y);c.lineTo(a.to.x,-a.to.y);c.stroke();c.setLineDash([]);}
+      if(a.kind==='rail'||a.kind==='cannon'){const line=a.kind==='cannon'?pwAiCannonLine(s):{from:a.from,to:a.to};c.strokeStyle=active?'#fff0b4':'#e6a777';c.lineWidth=active?12:2;c.setLineDash(active?[]:[12,9]);c.beginPath();c.moveTo(line.from.x,-line.from.y);c.lineTo(line.to.x,-line.to.y);c.stroke();c.setLineDash([]);}
       if(a.kind==='mortars')for(const x of a.targets){c.strokeStyle='#dba974';c.setLineDash([8,8]);c.strokeRect(x-72,-160,144,160);c.setLineDash([]);label(c,'MORTIER',x,-178,14,'#f5d2a0','center');}
       if(a.kind==='stomp'){c.strokeStyle='#e2c07d';c.setLineDash([8,8]);c.strokeRect(825,-165,350,165);c.setLineDash([]);label(c,'PIED + ONDE',1000,-185,14,'#f4d79b','center');}
       if(a.kind==='launch'){rect(c,390,-530,500,58,'#5a2222e8');label(c,'SÉQUENCE DE LANCEMENT / TOUCHEZ LE POD',640,-500,19,'#ffd8ad','center');}

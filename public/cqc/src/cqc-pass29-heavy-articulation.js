@@ -19,6 +19,7 @@
     'Arsenal Gear and Outer Haven rigid pressure hulls remain rigid. Existing incomplete Arsenal exterior geometry is not filled with invented sections.',
     'Shagohod screws retain their real long axial projection. True rotating helical phases require independently authored native source images and are not simulated as spinning flat wheels.',
     'Chaioth gripper finger separation follows the visible admitted source rails; concealed knuckle interiors are not manufactured.',
+    'Weapon aiming is limited to the admitted 2D mount projection; rotations and weight transfers are authored, not extracted original animations.',
     'Opposite cameras absent from an admitted rig remain absent; no source is mirrored into another incarnation.'
   ]);
   function part(machine, id) {
@@ -119,30 +120,45 @@
       if (!ids.includes(machine.id) || machine.pass29HeavyArticulation===true) continue;
       const sources=JSON.stringify(machine.sources), oldIDs=machine.parts.map(item=>item.id), edits=[];
       if (machine.id==='excelsus_mgr2013') {
+        bind(part(machine,'hull'),'y','pass32ExcelsusSeat',-1);
         const joints=[['front_near',510,[1090,538]],['front_far',798,[406,831]],
           ['middle_near',798,[1079,837]],['middle_far',1105,[386,1151]],
           ['rear_near',1097,[1012,1142]],['rear_far',1097,[1167,1144]]];
         for (const [prefix,cut,pivot] of joints) {
           splitHorizontal(machine,prefix+'_shin_claw_module',prefix+'_foot_native',cut,pivot,
-            {rotation:[{channel:'pass29_'+prefix+'FootLevel',factor:1,cosmetic:true}]},edits);
+            {rotation:[{channel:'pass29_'+prefix+'FootLevel',factor:1}]},edits);
+          // A stomp remains mechanically visible when decorative motion is reduced.
+          for (const piece of [prefix+'_upper',prefix+'_shin_claw_module'])
+            for (const row of part(machine,piece).channels?.rotation || []) row.cosmetic=false;
         }
       } else if (machine.id==='shagohod_mgs3_ps2_2004') {
         // Native long gun barrel and the fixed receiver no longer recoil as one plate.
         const gun=part(machine,'gun_turret');
         const receiver=splitVertical(machine,'gun_turret','gun_receiver_native',1349,[1415,739],
-          {x:[{channel:'pass29BarrelRecoil',factor:.28}],rotation:[{channel:'pass29GunAim',factor:-1}]},edits);
-        bind(gun,'x','pass29BarrelRecoil',-.28); bind(gun,'rotation','pass29GunAim');
+          {},edits);
+        // The receiver is the fixed support; the long tube moves about its real socket.
+        // Counterrotating a child receiver translated that support sideways during aim.
+        receiver.parent=gun.parent;receiver.offset=gun.offset.slice();
+        gun.parent=receiver.id;gun.offset=[0,0];
+        gun.channels={x:[{channel:'pass32ShagohodRecoilX',factor:1}],
+          y:[{channel:'pass32ShagohodRecoilY',factor:1}],
+          rotation:[{channel:'pass29GunAim',factor:1}]};
         receiver.z=gun.z-.001;
         for (const id of ['cockpit_roof','near_screw_axle','far_screw_axle',
           'near_screw_strut','far_screw_strut','near_exhaust','far_exhaust']) attach(machine,id,'front_hull',edits);
-        attach(machine,'gun_turret','cockpit_roof',edits);
+        attach(machine,'gun_receiver_native','cockpit_roof',edits);
         attach(machine,'roof_sensor','cockpit_roof',edits);
       } else if (machine.id==='kodoque_acid_psp2004') {
         for (const [side,cut,pivot] of [['near',784,[1367,780]],['far',936,[236,931]]]) {
           const gun=part(machine,side+'_cannon');
           const mount=splitHorizontal(machine,gun.id,side+'_cannon_mount_native',cut,pivot,
-            {x:[{channel:'pass29BarrelRecoil',factor:.3}]},edits);
-          bind(gun,'x','pass29BarrelRecoil',-.3); mount.z=gun.z-.001;
+            {},edits);
+          mount.parent=gun.parent;mount.offset=gun.offset.slice();gun.parent=mount.id;gun.offset=[0,0];
+          const label=side[0].toUpperCase()+side.slice(1);
+          gun.channels={x:[{channel:'pass32Kodoque'+label+'RecoilX',factor:1}],
+            y:[{channel:'pass32Kodoque'+label+'RecoilY',factor:1}],
+            rotation:[{channel:'pass32Kodoque'+label+'Aim',factor:1}]};
+          mount.z=gun.z-.001;
         }
         for (const id of ['near_shoulder_hinge','far_shoulder_hinge']) attach(machine,id,'upper_torso',edits);
       } else if (machine.id==='chaioth_acid2_psp2005') {
@@ -192,58 +208,109 @@
     if (Math.abs(stride)+Math.abs(lift)<1e-10) return {upper:0,lower:0,foot:0};
     const a=Math.hypot(...first),b=Math.hypot(...second),na=Math.atan2(first[1],first[0]),
       nb=Math.atan2(second[1],second[0]),target=[first[0]+second[0]+stride,first[1]+second[1]+lift];
-    const distance=clamp(Math.hypot(...target),Math.abs(a-b)+1e-6,a+b-1e-6),
+    const maxX=Math.sqrt(Math.max(0,(a+b-1e-8)**2-target[1]**2));target[0]=clamp(target[0],-maxX,maxX);
+    const distance=clamp(Math.hypot(...target),Math.abs(a-b)+1e-8,a+b-1e-8),
       sign=Math.sin(nb-na)>=0?1:-1,relative=sign*Math.acos(clamp((distance*distance-a*a-b*b)/(2*a*b),-1,1)),
       upper=(Math.atan2(target[1],target[0])-Math.atan2(b*Math.sin(relative),a+b*Math.cos(relative))-na)/DEG,
       lower=(relative-(nb-na))/DEG;
     return {upper,lower,foot:-upper-lower};
   }
-  function eventWave(state,kinds) {
-    let result=0;
-    for (const event of state?.events || []) {
-      if (!kinds.includes(event.kind) || !finite(event.age) || !finite(event.warn) || !finite(event.active) || event.active<=0) continue;
-      if (event.age>=event.warn && event.age<event.warn+event.active) result=Math.max(result,Math.sin((event.age-event.warn)/event.active*Math.PI));
-    }
+  const smooth = t => { t=clamp(t,0,1);return t*t*(3-2*t); };
+  function clocks(state,kinds) {
+    const events=(state?.events || []).filter(e=>kinds.includes(e.kind));
     const a=state?.boss?.attack;
-    if (a && kinds.includes(a.kind) && finite(a.t) && finite(a.windup) && finite(a.active) && a.active>0 && a.t>=a.windup && a.t<a.windup+a.active) result=Math.max(result,Math.sin((a.t-a.windup)/a.active*Math.PI));
-    return result;
+    if(a && kinds.includes(a.kind)) events.push({...a,age:a.t,warn:a.windup});
+    return events.filter(e=>finite(e.age) && finite(e.warn) && e.warn>=0);
+  }
+  function weaponPhase(state) {
+    let impulse=0,brace=0,opening=0;
+    for(const e of clocks(state,['gatling','shot','volley','beam','rail','laser','missiles'])){
+      const age=e.age-e.warn;
+      if(age<0){brace=Math.max(brace,smooth(e.age/Math.max(1,e.warn)));opening=Math.max(opening,brace);}
+      else {impulse=Math.max(impulse,Math.exp(-age/2.8));opening=Math.max(opening,1);}
+    }
+    return {impulse,brace,opening};
+  }
+  // Rig rotation is counterclockwise; source/target aim deltas are clockwise canvas degrees.
+  function aim(channels,key,fallback,limit=24){
+    return finite(channels[key]) ? -clamp(channels[key],-limit,limit)
+      : clamp(value(channels[fallback]),-8,8);
+  }
+  function axialRecoil(channels,name,axis,rotation,recoil){
+    const length=Math.hypot(...axis),a=-rotation*DEG,c=Math.cos(a),s=Math.sin(a);
+    const x=axis[0]/length,y=axis[1]/length;
+    // Negative recoil moves against the visible native forward axis, in the fixed mount basis.
+    channels[name+'X']=recoil*(x*c-y*s);channels[name+'Y']=-recoil*(x*s+y*c);
   }
   function presentationPose(id,p,state=null) {
     if (!ids.includes(id) || !p || p.pass29HeavyArticulationID===id) return p;
     const channels={...(p.channels || {})}, flags={...(p.flags || {})},
       dead=p.defeated===true || /^(dead|ko)$/.test(p.action || '') || state?.boss?.defeated===true,
-      recoil=dead?0:clamp(value(channels.weaponRecoil) || -eventWave(state,['gatling','shot','beam'])*7,-7,0),
-      shot=dead?0:Math.max(-recoil/7,eventWave(state,['missiles','shot','beam','rail']));
+      phase=weaponPhase(state),
+      firing=!p.motionEvent || ['gatling','shot','volley','beam','rail','laser','missiles','gun','cannon','fire'].includes(p.motionEvent.kind),
+      impulse=dead||!firing?0:clamp(finite(channels.weaponRecoilImpulse)?channels.weaponRecoilImpulse:phase.impulse,0,1),
+      recoil=dead||!firing?0:finite(channels.weaponRecoilImpulse)||clocks(state,['gatling','shot','volley','beam','rail','laser']).length
+        ? -7*impulse : clamp(value(channels.weaponRecoil),-7,0),
+      brace=dead?0:clamp(finite(channels.weaponBrace)?channels.weaponBrace:phase.brace,0,1);
     channels.pass29BarrelRecoil=recoil;
-    channels.pass29GunAim=dead?0:clamp(value(channels.weaponAim),-8,8);
+    channels.pass29GunAim=dead?0:aim(channels,'weaponAimDegrees','weaponAim',24);
+    if(id==='shagohod_mgs3_ps2_2004') axialRecoil(channels,'pass32ShagohodRecoil',[-253,-37],channels.pass29GunAim,recoil*.3);
+    if(id==='kodoque_acid_psp2004') for(const side of ['near','far']){
+      const label=side[0].toUpperCase()+side.slice(1),key='weaponAimDegrees'+label;
+      channels['pass32Kodoque'+label+'Aim']=dead?0:aim(channels,finite(channels[key])?key:'weaponAimDegrees','weaponAim',25);
+      axialRecoil(channels,'pass32Kodoque'+label+'Recoil',side==='near'?[-98,-27]:[-91,-27],channels['pass32Kodoque'+label+'Aim'],recoil*.3);
+    }
     if (id==='excelsus_mgr2013') {
+      for(const event of clocks(state,['sweep'])){
+        const progress=event.warn>0?event.age/event.warn:1,activeAge=event.age-event.warn,
+          duration=Math.max(1,value(event.active)),q=clamp(activeAge/duration,0,1);
+        const swing=progress<1?-16*smooth(progress):q<.35?-16+54*smooth(q/.35):38*(1-smooth((q-.35)/.65));
+        if((event.sources||[]).includes(4)||(event.id==='blade-sweep'&&event.side!==1))channels.nearBladeSwing=dead?0:swing;
+        if((event.sources||[]).includes(5)||(event.id==='blade-sweep'&&event.side===1))channels.farBladeSwing=dead?0:-swing;
+      }
       const geometry={"front_near":[[-47.87096774193548,-102.09216589861751],[-31.328,-68.352]],"front_far":[[-50.15,-87.125],[-38.04114285714286,-78.676]],"middle_near":[[-58.42926829268293,-100.31219512195122],[-39.882075471698116,-78.50471698113208]],"middle_far":[[-46.55885167464115,-87.94449760765549],[-35.41063829787234,-74.04042553191489]],"rear_near":[[-53,-119.25],[-33.13138686131387,-110.43795620437956]],"rear_far":[[40.57483443708609,-114.56423841059602],[18.179457364341083,-100.28023255813953]]};
+      const moving=!dead && /^(walk|dash|run)$/.test(p.action || ''),
+        frame=value(p.frame ?? state?.tick),cycle=finite(channels.machineStridePhase)?channels.machineStridePhase:frame/112,
+        stanceSeat=moving?Math.pow(Math.sin(cycle*Math.PI*2),2)*1.2:0;
+      let impactSeat=0;
+      for(const event of clocks(state,['stomp'])){
+        const age=event.age-event.warn;
+        if(age>=0 && age<10) impactSeat=Math.max(impactSeat,Math.sin(age/10*Math.PI)*2.5);
+      }
+      const seat=dead?0:stanceSeat+brace*.8+impactSeat;channels.pass32ExcelsusSeat=seat;
       for (const [prefix,[first,second]] of Object.entries(geometry)) {
-        let stride=value(channels[prefix+'Swing'])*.7,lift=Math.max(0,value(channels[prefix+'Lift']));
-        // Alternate the centre chain within the six-legged tripod, rather than
-        // swinging all three supports on one side together like a two-legged rig.
-        if (/^(walk|dash|run)$/.test(p.action || '') && prefix.startsWith('middle')) {
-          stride=-stride;lift=Math.max(0,-value(channels[prefix+'Swing'])/12)*9;
-        }
+        // Alternating tripod, 35% transfer and 65% loaded stance: at least three supports stay planted.
+        const alternate=['front_far','middle_near','rear_far'].includes(prefix)? .5:0,
+          step=((cycle+alternate)%1+1)%1,flight=step<.35;
+        let stride=moving?(flight?-6+12*smooth(step/.35):6-12*smooth((step-.35)/.65)):0,
+          lift=moving&&flight?Math.sin(step/.35*Math.PI)*14:0;
         const pool={front_near:0,front_far:1,middle_near:2,rear_near:2,middle_far:3,rear_far:3}[prefix];
-        for (const event of state?.events || []) {
-          if (event.kind==='stomp' && (event.sources || []).includes(pool) && finite(event.age)
-            && finite(event.warn) && finite(event.active) && event.active>0
-            && event.age>=event.warn && event.age<event.warn+event.active) {
-            stride=0;lift=Math.max(lift,Math.sin((event.age-event.warn)/event.active*Math.PI)*30);
-          }
+        for (const event of clocks(state,['stomp'])) {
+          if (!(event.sources || []).includes(pool)) continue;
+          const progress=event.warn>0?event.age/event.warn:1;
+          // Lift visibly before impact, then plant at the exact first dangerous frame.
+          if(progress<1){const raised=progress<.68?smooth(progress/.68):1-smooth((progress-.68)/.32);lift=Math.max(lift,raised*30);stride=0;}
+          else if(event.age<event.warn+Math.max(1,value(event.active))) {stride=0;lift=0;}
         }
-        const joint=plantedJoint(first,second,dead?0:stride,dead?0:lift);
+        const joint=plantedJoint(first,second,dead?0:stride,dead?0:lift+seat);
         channels[prefix+'Swing']=joint.upper;channels[prefix+'Knee']=joint.lower;
         channels['pass29_'+prefix+'FootLevel']=joint.foot;
       }
     }
-    channels.pass29GripOpen=dead?0:clamp(Math.max(value(channels.shieldOpen),shot),0,1);
-    channels.pass29RailAperture=dead?0:clamp(Math.max(flags.chaiothRailWarning?1:0,shot),0,1);
+    channels.pass29GripOpen=dead?0:clamp(Math.max(value(channels.shieldOpen),brace),0,1);
+    channels.pass29RailAperture=dead?0:clamp(Math.max(flags.chaiothRailWarning?1:0,phase.opening),0,1);
     channels.pass29HydroplanePitch=dead?0:clamp(value(channels.bodyRoll)+value(channels.weaponAim)*.25,-6,6);
-    channels.pass29ArsenalHatch=dead?0:shot*7;
+    channels.pass29ArsenalHatch=dead?0:phase.opening*7;
     return {...p,channels,flags,pass29HeavyArticulationID:id};
   }
+  const axis=(part,baseNativeXY,tipNativeXY,channel='weaponAimDegrees',limit=24,jointPart=part)=>Object.freeze({part,jointPart,
+    baseNativeXY:Object.freeze(baseNativeXY),tipNativeXY:Object.freeze(tipNativeXY),channel,minDegrees:-limit,maxDegrees:limit});
+  const shagohodAxis=axis('gun_turret',[1415,739],[1162,702],'weaponAimDegrees',24,'gun_receiver_native'),
+    kodoqueNear=axis('near_cannon',[1367,780],[1269,753],'weaponAimDegreesNear',25,'near_cannon_mount_native'),
+    kodoqueFar=axis('far_cannon',[236,931],[145,904],'weaponAimDegreesFar',25,'far_cannon_mount_native');
+  const aimAxes=Object.freeze({shagohod_mgs3_ps2_2004:Object.freeze({byAttackKind:Object.freeze({shot:shagohodAxis,volley:shagohodAxis,gatling:shagohodAxis,beam:shagohodAxis})}),
+    kodoque_acid_psp2004:Object.freeze({byAttackKind:Object.freeze({beam:kodoqueNear,shot:kodoqueNear,volley:kodoqueNear}),
+      bySourceIndex:Object.freeze({0:kodoqueNear,1:kodoqueFar,2:kodoqueNear})})});
   const weaponPoints=Object.freeze({shagohod:{part:'gun_turret',sourceNativeXY:[1162,702]},
     kodoque:{part:'near_cannon',sourceNativeXY:[1269,753]}});
   const sourcePoints=Object.freeze({
@@ -251,7 +318,7 @@
     kodoque_acid_psp2004:{ballistic:{part:'near_cannon',nativeXY:[1269,753],kind:'native near cannon mouth'},
       ballisticFar:{part:'far_cannon',nativeXY:[145,904],kind:'native far cannon mouth'}}
   });
-  root.CQC_PASS29_HEAVY_ARTICULATION=Object.freeze({apply,presentationPose,ids,limits,weaponPoints,sourcePoints,
+  root.CQC_PASS29_HEAVY_ARTICULATION=Object.freeze({apply,presentationPose,ids,limits,weaponPoints,sourcePoints,aimAxes,
     audit:Object.freeze({schema:'cqc.pass29.native-heavy-articulation/1',ids,
       sourcePixelsChanged:false,simulationMutation:false,absolute1to1Certified:false})});
 })(globalThis);

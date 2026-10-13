@@ -178,8 +178,21 @@
             damageRotationAndEngineFlagsRetained:true,qualification:'A limb with no declared fracture stays connected at its knee instead of sliding away'});
         }
         attach(machine, 'three_tube_rotary_gun', 'body_hull', edits);
-        bind(part(machine,'three_tube_rotary_gun'),'x','classicGunRecoil',-.3,true);
-        bind(part(machine,'three_tube_rotary_gun'),'rotation','classicGunAim',.5);
+        const gun=part(machine,'three_tube_rotary_gun'),before=clone(gun),outline=gun.sourceClipPolygonNativeXY || rectanglePolygon(gun.rect),socket=[1000,431];
+        gun.sourceClipPolygonNativeXY=clipX(outline,1000,false);
+        // The receiver holds the aim bearing; only the three tubes telescope under recoil.
+        gun.channels={rotation:[{channel:'classicGunAim',factor:1}]};
+        const barrel={...clone(before),id:'three_tube_barrels_native',parent:gun.id,
+          pivot:[socket[0]-before.rect[0],socket[1]-before.rect[1]],
+          offset:[(socket[0]-before.rect[0]-before.pivot[0])*before.imageScale,
+            -(socket[1]-before.rect[1]-before.pivot[1])*before.imageScale],
+          sourceClipPolygonNativeXY:clipX(outline,1000,true),z:(before.z || 0)+.001,
+          channels:{x:[{channel:'classicMgdRecoilX',factor:1}],y:[{channel:'classicMgdRecoilY',factor:1}]}};
+        delete barrel.detachment;machine.parts.push(barrel);
+        edits.push({kind:'fixed-aim-receiver-and-recoiling-native-triple-tubes',part:gun.id,
+          added:[barrel.id],seamNativeX:1000,sourcePixelsChanged:false});
+        partitions.push({machine:machine.id,part:gun.id,newPart:barrel.id,source:before.source,
+          rect:clone(before.rect),fixed:clone(gun.sourceClipPolygonNativeXY),moving:clone(barrel.sourceClipPolygonNativeXY)});
       }
       if (machine.id === 'tx55_mg1_msx1987' || machine.id === 'zeke_pw_psp2010') {
         for (const side of ['near','far']) for (const [piece,suffix] of [['thigh','Upper'],['shin','Lower'],['foot','Foot']]) {
@@ -191,8 +204,9 @@
       if (machine.id === 'zeke_pw_psp2010') {
         attach(machine,'railgun_receiver','railgun_cradle',edits);
         attach(machine,'radome','radar_stem',edits);
-        bind(part(machine,'railgun_cradle'),'rotation','classicGunAim',.5);
-        bind(part(machine,'railgun_barrel'),'x','classicGunRecoil',-.4,true);
+        bind(part(machine,'railgun_cradle'),'rotation','classicGunAim',1);
+        bind(part(machine,'railgun_barrel'),'x','classicZekeRecoilX');
+        bind(part(machine,'railgun_barrel'),'y','classicZekeRecoilY');
       }
       if (machine.id === 'raxa_mpo_psp2006') edits.push({kind:'existing-native-four-support-chain-retained',
         missingPresentationInputsSuppliedOnly:true, originalCoreIKRetained:true});
@@ -211,6 +225,9 @@
   function solve(first, second, dx, lift) {
     if (Math.abs(dx)+Math.abs(lift) < .00000001) return {upper:0,lower:0,foot:0};
     const a = Math.hypot(...first), b = Math.hypot(...second), target = [first[0]+second[0]+dx,first[1]+second[1]+lift];
+    // At extension keep the sole height; bound stride rather than stretching either link.
+    const maxX=Math.sqrt(Math.max(0,(a+b-1e-8)**2-target[1]**2));
+    target[0]=clamp(target[0],-maxX,maxX);
     const distance = Math.max(.000001,Math.hypot(...target)), direction = Math.atan2(target[1],target[0]);
     const spread = Math.acos(clamp((a*a+distance*distance-b*b)/(2*a*distance),-1,1));
     const normalize = value => ((value+180)%360+360)%360-180;
@@ -231,12 +248,31 @@
     tx55_mg1_msx1987: {near:[[-15.66,-95.12],[-8.1,-100.17]],far:[[-17.11,-97.15],[-9.99,-95.85]]},
     zeke_pw_psp2010: {near:[[-51.75,-93.84],[-71.92,-91.14]],far:[[-35.7,-85.4],[-117.585,-130.845]]}
   });
-  function presentationPose(id, pose) {
+  function phase(state) {
+    const events=(state?.events || []).filter(e=>['beam','rail','gun','volley','shot','gatling','cannon','fire'].includes(e.kind));
+    const attack=state?.boss?.attack;
+    if(attack && ['beam','rail','gun','volley','shot','gatling','cannon','fire'].includes(attack.kind))events.push({...attack,age:attack.t,warn:attack.windup});
+    let impulse=0;
+    for(const e of events){if(!finite(e.age)||!finite(e.warn)||e.age<e.warn)continue;
+      const age=e.age-e.warn,cadence=e.kind==='gun'?7:0;
+      impulse=Math.max(impulse,Math.exp(-(cadence?age%cadence:age)/2.8));}
+    return {impulse,hasClock:events.length>0};
+  }
+  function presentationPose(id, pose, state=null) {
     if (!pose || !ids.includes(id)) return pose;
     const result = {...pose, channels:{...(pose.channels || {})}, flags:{...(pose.flags || {})}}, c = result.channels;
-    const moving = /walk|run|dash/.test(pose.action || ''), defeated = pose.defeated === true;
-    c.classicGunRecoil = clamp(finite(c.weaponRecoil)?c.weaponRecoil:finite(c.mgdGunRecoil)?c.mgdGunRecoil:0,-7,1);
-    c.classicGunAim = clamp(finite(c.weaponAim)?c.weaponAim:0,-8,8);
+    const moving = /walk|run|dash/.test(pose.action || ''), defeated = pose.defeated === true || state?.boss?.defeated===true;
+    const attackPhase=phase(state),explicit=finite(c.weaponRecoilImpulse),
+      firing=!pose.motionEvent || ['beam','rail','gun','volley','shot','gatling','cannon','fire'].includes(pose.motionEvent.kind);
+    c.classicGunRecoil = defeated||!firing?0:explicit || attackPhase.hasClock ? -7*clamp(explicit?c.weaponRecoilImpulse:attackPhase.impulse,0,1)
+      : clamp(finite(c.weaponRecoil)?c.weaponRecoil:finite(c.mgdGunRecoil)?-Math.abs(c.mgdGunRecoil):0,-7,0);
+    // The root gives clockwise source-axis deltas; mechanical rig rotation uses the opposite sign.
+    c.classicGunAim = defeated?0:finite(c.weaponAimDegrees)?-clamp(c.weaponAimDegrees,-28,28):clamp(finite(c.weaponAim)?c.weaponAim:0,-8,8);
+    const localRecoil=(prefix,axis,factor)=>{const length=Math.hypot(...axis),recoil=c.classicGunRecoil*factor;
+      c[prefix+'X']=recoil*axis[0]/length;c[prefix+'Y']=-recoil*axis[1]/length;};
+    localRecoil('classicMgdRecoil',[-351,22],.3);localRecoil('classicZekeRecoil',[-484,-2],.4);
+    // Pass30 Gander reconstructs this rig afterwards; preserve the real shot impulse for that helper.
+    if(id==='gander_ghost_gbc2000' && (explicit || attackPhase.hasClock)) c.weaponRecoil=c.classicGunRecoil;
     if (id === 'mgd_mg2_msx2' && !finite(c.strideLift)) {
       // Keep Core's existing stride clock; other modes supply the generic leg lift.
       for (const [side,first,second,upper,lower] of [
@@ -286,10 +322,14 @@
     }
     return result;
   }
-  const weaponPoints = Object.freeze({gander: {part:'near_rail_barrel',sourceNativeXY:[1131,614]}});
-  const sourcePoints = Object.freeze({gander_ghost_gbc2000: {ballistic: {
+  const axis=(part,baseNativeXY,tipNativeXY,kinds,jointPart=part)=>Object.freeze({byAttackKind:Object.freeze(Object.fromEntries(kinds.map(kind=>[kind,Object.freeze({part,jointPart,
+    baseNativeXY:Object.freeze(baseNativeXY.slice()),tipNativeXY:Object.freeze(tipNativeXY.slice()),channel:'weaponAimDegrees',minDegrees:-28,maxDegrees:28})])))});
+  const aimAxes=Object.freeze({mgd_mg2_msx2:axis('three_tube_barrels_native',[1000,431],[649,453],['gun','shot','volley','gatling'],'three_tube_rotary_gun'),
+    zeke_pw_psp2010:axis('railgun_barrel',[1149,537],[665,535],['rail','beam'],'railgun_cradle')});
+  const weaponPoints = Object.freeze({mgd:{part:'three_tube_barrels_native',sourceNativeXY:[649,453]},gander: {part:'near_rail_barrel',sourceNativeXY:[1131,614]}});
+  const sourcePoints = Object.freeze({mgd_mg2_msx2:{ballistic:{part:'three_tube_barrels_native',nativeXY:[649,453],kind:'native triple-tube near muzzle'}},gander_ghost_gbc2000: {ballistic: {
     part:'near_rail_barrel',nativeXY:[1131,614],kind:'native rail barrel mouth'}}});
-  root.CQC_PASS29_CLASSIC_ARTICULATION = Object.freeze({apply,presentationPose,ids,limits,weaponPoints,sourcePoints,
+  root.CQC_PASS29_CLASSIC_ARTICULATION = Object.freeze({apply,presentationPose,ids,limits,weaponPoints,sourcePoints,aimAxes,
     audit: Object.freeze({schema:'cqc.pass29.classic-native-articulation/1',sourcePixelsChanged:false,
       simulationMutation:false,absolute1to1Certified:false, ids})});
 })(globalThis);

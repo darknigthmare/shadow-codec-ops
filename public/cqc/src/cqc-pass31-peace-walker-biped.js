@@ -36,7 +36,7 @@
    parts.push(part);
   }
   const part=id=>parts.find(p=>p.id===id);
-  part('hull_anchor').channels={y:binding('pw31BodyLift')};
+  part('hull_anchor').channels={x:binding('pw31BodyShift'),y:binding('pw31BodyLift')};
   part('near_thigh').channels={rotation:binding('pw31NearUpper')};
   part('near_shin').channels={rotation:binding('pw31NearLower')};
   part('near_foot').channels={rotation:binding('pw31NearFootLevel')};
@@ -48,7 +48,7 @@
   part('aft_flame_barrel').channels={rotation:binding('pw31AftFlameAim')};
   return {id:ID,edition:'Peace Walker — first battle upright biped, original PSP2010 / authored2D',origin:[0,0],scale:[1,1],
    sources:[clone(SOURCE)],parts,presentationKind:'heavy_biped',sourceQualification:limits[1],
-   documentaryQualifications:limits.slice(),pass31PeaceWalkerBiped:{version:1,encounter:ENCOUNTER,sourceCamera:'native three-quarter view, orange forebody right and sphere/pod aft left',
+   documentaryQualifications:limits.slice(),pass31PeaceWalkerBiped:{version:2,encounter:ENCOUNTER,sourceCamera:'native three-quarter view, orange forebody right and sphere/pod aft left',
     sourcePixelCenters:480537,nativeCoverageLoss:0,nativeCoverageDuplication:0,visibleRegions:Object.keys(REGIONS).length,compatibilityAnchors:Object.keys(ANCHORS).length,
     reusedQuadrupedalSource:false,authoredTransition:false,absolute1to1Certified:false}};
  }
@@ -57,6 +57,7 @@
   const next=clone(catalog),present=next.machines.find(m=>m.id===ID);
   if(present&&!present.pass31PeaceWalkerBiped)throw Error('PW biped ID belongs to unreviewed source');
   if(!present)next.machines.push(makeMachine());
+  else if(present.pass31PeaceWalkerBiped.version<2)next.machines[next.machines.indexOf(present)]=makeMachine();
   root.CQC_MACHINE_PARTS?.normalizeCatalog(next);
   return {catalog:next,changes:present?[]:[{id:ID,kind:'separate-first-battle-biped',parts:makeMachine().parts.length,originalRigIDsRetained:true,
    sourcePixelsChanged:false,newSourceArt:true,newEncounter:true,simulationMutation:false,absolute1to1Certified:false}],limits:limits.slice()};
@@ -73,28 +74,64 @@
   rows.sort((l,r)=>Math.abs(l.upper)+Math.abs(l.lower)-Math.abs(r.upper)-Math.abs(r.lower));return rows[0];
  }
  const LEGS=Object.freeze({Near:[[-16,-87.2],[-12,-117.6]],Far:[[46,-97.2],[45.2,-45.2]]});
+ const smooth=q=>{q=clamp(q,0,1);return q*q*(3-2*q);};
+ function eventPhase(event){
+  const age=Math.max(0,event.age||0),warn=Math.max(1,event.warn||1),active=Math.max(1,event.active||1),recovery=Math.max(1,event.recovery||18);
+  const firing=age>=warn&&age<warn+active,after=clamp((age-warn-active)/recovery,0,1);
+  return {charge:age<warn?smooth(age/warn):firing?1:1-smooth(after),
+   impulse:age>=warn?Math.sin(Math.min(1,(age-warn)/2)*Math.PI/2)*Math.exp(-(age-warn)/7):0,
+   release:age<warn?1:1-smooth(clamp((age-warn)/Math.min(18,active),0,1)),firing};
+ }
+ // 66% support leaves both soles on the floor during a third of the cycle.
+ // Feet slide backwards relative to a moving chassis, then lift only on swing.
+ function gait(frame,side){
+  const q=((frame/128+(side==='Far'?.5:0))%1+1)%1,support=.66;
+  if(q<support)return {dx:3.5-7*q/support,lift:0,support:true};
+  const swing=(q-support)/(1-support);
+  return {dx:-3.5+7*smooth(swing),lift:Math.sin(swing*Math.PI)**2*10,support:false};
+ }
  function presentationPose(id,pose,state=null){
   if(id!==ID||!pose||typeof pose!=='object')return pose;
   const result={...pose,channels:{...(pose.channels||{})},flags:{...(pose.flags||{})}},c=result.channels,t=finite(pose.frame)?pose.frame:0;
-  const flags=result.flags,defeated=pose.defeated===true||pose.ko===true,broken=flags.part0Destroyed||flags.part1Destroyed||defeated;
-  const bodyLift=broken?-12:0;c.pw31BodyLift=bodyLift;
+  const flags=result.flags,defeated=pose.defeated===true||pose.ko===true;
+  const events=(state?.events||[]).filter(e=>e.age<e.warn+e.active+(e.recovery||18)&&(!e.sources||e.sources.every(index=>flags['part'+index+'Destroyed']!==true)));
+  const stomp=events.find(e=>e.kind==='stomp'&&e.sources?.some(index=>flags['part'+index+'Destroyed']!==true));
+  const flame=events.find(e=>e.kind==='flame'),stompPhase=stomp?eventPhase(stomp):null,flamePhase=flame?eventPhase(flame):null;
+  const disabled=flags.part0Destroyed||flags.part1Destroyed||defeated;
+  const damageAge=Math.max(finite(c.destroy0Frames)?c.destroy0Frames:0,finite(c.destroy1Frames)?c.destroy1Frames:0);
+  const damageTimed=finite(c.destroy0Frames)||finite(c.destroy1Frames),damageProgress=defeated?1:damageTimed?smooth(damageAge/20):1;
+  const damagedDrop=disabled?-12*damageProgress:0;
+  const walk=!defeated&&!disabled&&(/walk|run|dash/.test(pose.action||'')||pose.walk===true)&&!pose.reducedMotion&&!stomp&&!flame;
+  const weightShift=stomp&&!disabled?(stomp.sources.includes(0)?2.4:-2.4)*stompPhase.charge:0;
+  // Body compression is solved back through both support chains. It never lifts
+  // the stationary sole or changes the far-foot depth of the native camera.
+  const bodyLift=damagedDrop+(stompPhase?-1.8*stompPhase.charge-2.2*stompPhase.impulse:0)
+   +(flamePhase?-1.15*flamePhase.charge-.65*flamePhase.impulse:0)+(walk?-.9*Math.sin(t*Math.PI/64)**2:0);
+  const damageShift=((flags.part0Destroyed?1.6:0)-(flags.part1Destroyed?1.6:0))*damageProgress;
+  const bodyShift=weightShift+(flamePhase?.impulse||0)*.75+damageShift;
+  c.pw31BodyLift=bodyLift;c.pw31BodyShift=bodyShift;
   for(const [side,leg]of Object.entries(LEGS)){
-   const index=side==='Near'?0:1,disabled=flags['part'+index+'Destroyed']===true||defeated;
-   const liveStomp=(state?.events||[]).find(e=>e.kind==='stomp'&&e.sources?.includes(index)&&e.age<e.warn&&!disabled);
-   let lift=liveStomp?Math.sin(clamp(liveStomp.age/Math.max(1,liveStomp.warn),0,1)*Math.PI)*6:0,dx=0;
-   if(!state&&!disabled&&(/walk|run|dash/.test(pose.action||'')||pose.walk===true)&&!pose.reducedMotion){
-    const wave=Math.sin(t*.085)*(side==='Near'?1:-1);dx=wave*2.25;lift=Math.max(0,wave)*3;
+   const index=side==='Near'?0:1,legDisabled=flags['part'+index+'Destroyed']===true||defeated;
+   const moving=walk?gait(t,side):{dx:0,lift:0,support:true};
+   let lift=moving.lift;
+   if(stomp&&!legDisabled&&stomp.sources.includes(index)&&stomp.age<stomp.warn){
+    const q=clamp(stomp.age/Math.max(1,stomp.warn),0,1);
+    // Load the other sole, raise, then accelerate the foot into the actual
+    // danger-frame contact. No sinusoidal second lift during active damage.
+    lift=12*smooth(q/.68)*(1-smooth((q-.72)/.28));
    }
-   // Torso lowers by 12 while both feet stay at their original source ground contacts.
-   const solved=solve(leg[0],leg[1],dx,lift-bodyLift);
+   const solved=solve(leg[0],leg[1],moving.dx-bodyShift,lift-bodyLift);
    c['pw31'+side+'Upper']=solved.upper;c['pw31'+side+'Lower']=solved.lower;c['pw31'+side+'FootLevel']=solved.foot;
   }
-  const flame=(state?.events||[]).find(e=>e.kind==='flame'&&e.age<e.warn+e.active);
   const nativeAngle=Math.atan2(615-601,671-706);
-  const desired=flame?(finite(flame.aimAngle)?flame.aimAngle:Math.atan2(flame.y-flame.from.y,flame.x-flame.from.x)):nativeAngle;
-  c.pw31AftFlameAim=flame?clamp(-(desired-nativeAngle)/DEG,-8,65):0;
+  const desired=flame?(finite(pose.machineAim?.angle)?pose.machineAim.angle:finite(flame.aimAngle)?flame.aimAngle:flame.from?Math.atan2(flame.y-flame.from.y,flame.x-flame.from.x):nativeAngle):nativeAngle;
+  const aim=clamp(-(desired-nativeAngle)/DEG,-8,65);
+  // The lock is a world direction. During windup only the servo approaches it;
+  // active fire holds it exactly; recovery returns smoothly to the source pose.
+  c.pw31AftFlameAim=flame?aim*(flame.age<flame.warn?smooth(flame.age/Math.max(1,flame.warn)*1.6):flamePhase.charge):0;
   return result;
  }
+ const aimAxes=Object.freeze({[ID]:{flame:{part:'aft_flame_barrel',baseNativeXY:[706,601],tipNativeXY:[671,615],minDegrees:-8,maxDegrees:65,channel:'pw31AftFlameAim'}}});
  const targetParts=Object.freeze({[ENCOUNTER]:[{part:'near_knee_bearing',point:[465,668]},{part:'far_knee_bearing',point:[927,798]},{part:'ai_pod',point:[405,464]}]});
  const weaponPoints=Object.freeze({[ENCOUNTER]:{part:'aft_flame_barrel',point:[671,615],byAttackKind:{
   flame:{part:'aft_flame_barrel',point:[671,615]},stomp:{part:'near_foot',point:[451,1006]}}}});
@@ -102,6 +139,6 @@
   aiPodContact:{part:'ai_pod',nativeXY:[405,464]},nearKnee:{part:'near_knee_bearing',nativeXY:[465,668]},farKnee:{part:'far_knee_bearing',nativeXY:[927,798]}}});
  const arsenalMappings=Object.freeze({[ENCOUNTER]:ID}),stateMappings=Object.freeze({[ID]:{kind:'heavy_biped',displayHeight:555,nativeSourceCameraFacing:'right',damageTargets:{0:'near_knee_bearing',1:'far_knee_bearing',2:'ai_pod'}}});
  const dimensions=Object.freeze({[ID]:{heightM:25,configuration:'bipedal',evidence:'secondary citation; exact original metric projection not independently measured',url:'https://metalgear.fandom.com/wiki/Peace_Walker_(Basilisk)',absolute1to1Certified:false}});
- root.CQC_PASS31_PW_BIPED=Object.freeze({version:1,id:ID,encounter:ENCOUNTER,apply,presentationPose,solve,sourcePoints,targetParts,weaponPoints,
+ root.CQC_PASS31_PW_BIPED=Object.freeze({version:2,id:ID,encounter:ENCOUNTER,apply,presentationPose,solve,gait,eventPhase,aimAxes,sourcePoints,targetParts,weaponPoints,
   arsenalMappings,stateMappings,dimensions,limits,source:clone(SOURCE),nativeSockets:clone(ALL),nativeParents:clone(PARENT)});
 })(globalThis);

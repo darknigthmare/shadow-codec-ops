@@ -23,7 +23,8 @@
   'The nuclear railgun is absent and the radome is already broken in this incarnation. There is no railgun descriptor, intact-dish variant or staged MGS1 boss damage transition.',
   'The cockpit is already open with Old Snake visible. No unsupported opening/closing variant, camera-side interior or unsupported articulated hatch is invented.',
   'Native regions follow visible hardware boundaries. Gait/foot/claw movements and socket-fitted internal volumes are authored 2D presentation adaptations. Large extreme poses and the full original 3D hidden skeleton remain unadmitted.',
-  'Canon-guided internal hydraulic/axle volumes are uniformly fitted between the source armor joints. Their hidden surfaces and 2D projection remain interpreted. Walk/defeat compressions are bounded; full 3D stepping and extreme knee folds remain unadmitted. No new destructible part flags, engine targets, health pools, combat timing or save migration are added. The REX vs RAY existing encounter can consume the new pilot without creating a fighter UID.',
+  'Canon-guided internal hydraulic/axle volumes are uniformly fitted between the source armor joints. Their hidden surfaces and 2D projection remain interpreted. Walk/defeat compressions are bounded; full 3D stepping and extreme knee folds remain unadmitted. No new destructible part flags, engine targets, health pools or save migration are added by this presentation helper. Its pilot controller owns the motion and firing phases. The REX vs RAY existing encounter can consume the new pilot without creating a fighter UID.',
+  'Pass32 pilot motion uses engine-owned planted-foot contacts, bounded pelvis load transfer and fixed-length inverse kinematics. The jaw tracks its reachable beam axis, the fixed gun bank fires forward, and dorsal missiles clear upward before steering. These are authored mechanical interpretations of this 2D camera; original extracted motion is not certified.',
   'Missile launch surfaces on the dorsal machinery and the visible machinegun/laser surfaces are source anchors. Original missile cap-opening/ejection frames are not included.',
   'Complete native pixel-center coverage is measured separately. Canvas clipping antialiases seams; exact assembled RGBA equivalence is not assumed.',
   'The original nominal REX dimension can remain a reference but this damaged posed incarnation has no newly measured canonical metric height.'
@@ -42,7 +43,8 @@
    machine.parts.push(part);
   }
   const part=id=>machine.parts.find(value=>value.id===id);
-  part('body_anchor').channels={y:binding('pass31RexBodyDrop')};
+  part('body_anchor').channels={x:binding('pass32RexBodyShift'),y:binding('pass31RexBodyDrop'),rotation:binding('pass32RexBodyLean')};
+  part('open_cockpit_jaw').channels={rotation:binding('pass32RexLaserPitch')};
   for(const side of ['near','far']){
    const title=side[0].toUpperCase()+side.slice(1);
    part(side+'_upper_leg').channels={rotation:binding('pass31Rex'+title+'Upper')};
@@ -83,17 +85,24 @@
  const LEGS=Object.freeze(Object.fromEntries(['near','far'].map(side=>{const a=SOCKETS[side+'_upper_leg'],b=SOCKETS[side+'_lower_leg'],c=SOCKETS[side+'_heel'];return[side,[[K*(b[0]-a[0]),K*(a[1]-b[1])],[K*(c[0]-b[0]),K*(b[1]-c[1])]]];})));
  function presentationPose(id,pose){
   if(id!==ID||!pose)return pose;
-  const result={...pose,flags:{...(pose.flags||{})},channels:{...(pose.channels||{})}},c=result.channels;
+  const result={...pose,flags:{...(pose.flags||{})},channels:{...(pose.channels||{})}},c=result.channels,m=pose.rexMotion;
   const dead=pose.defeated===true||pose.ko===true||/^(dead|ko)$/.test(pose.action||'');
   const movement=!dead&&(pose.walk===true||/walk|run|dash/.test(pose.action||''));
-  const drop=dead?clamp(finite(pose.defeatFrames)?pose.defeatFrames/90:finite(c.rexCollapse)?c.rexCollapse/27:1,0,1)*3:pose.crouch===true||pose.guard===true?1:0;
-  c.pass31RexBodyDrop=-drop;
+  const collapse=clamp(finite(pose.defeatFrames)?pose.defeatFrames/90:finite(c.rexCollapse)?c.rexCollapse/27:1,0,1)*3;
+  const drop=dead?collapse:finite(m?.bodyDrop)?clamp(m.bodyDrop,0,6):pose.crouch===true||pose.guard===true?1:0;
+  const lean=dead?0:finite(m?.bodyLean)?clamp(m.bodyLean,-2,2):0,shift=dead?0:finite(m?.bodyShift)?clamp(m.bodyShift,-2,2):0,angle=lean*DEG,cos=Math.cos(angle),sin=Math.sin(angle);
+  c.pass31RexBodyDrop=-drop;c.pass32RexBodyShift=shift;c.pass32RexBodyLean=lean;
+  c.pass32RexLaserPitch=dead?0:finite(m?.laserPitch)?clamp(m.laserPitch,-8,8):0;
   for(const side of ['near','far']){
-   const title=side[0].toUpperCase()+side.slice(1),explicitLift=c[side+'Lift'],explicitSwing=c[side+'Swing'];
-   const lift=dead?0:clamp(finite(explicitLift)?explicitLift*(side==='near'?.25:.085):0,0,side==='near'?6:2),dx=movement?clamp(finite(explicitSwing)?explicitSwing*(side==='near'?.16:.03):0,side==='near'?-2:-.5,side==='near'?2:.5):0;
-   const joint=solve(LEGS[side][0],LEGS[side][1],dx,lift+drop);
-   c['pass31Rex'+title+'Upper']=joint.upper;c['pass31Rex'+title+'Lower']=joint.lower;c['pass31Rex'+title+'FootLevel']=joint.foot;
-   c['pass31Rex'+title+'Claw']=!dead&&!pose.reducedMotion&&lift>0?Math.min(1.2,lift*.25):0;
+   const title=side[0].toUpperCase()+side.slice(1),foot=m?.feet?.[side],explicitLift=c[side+'Lift'],explicitSwing=c[side+'Swing'];
+   const lift=dead?0:finite(foot?.lift)?clamp(foot.lift,0,side==='near'?10:7):clamp(finite(explicitLift)?explicitLift*(side==='near'?.25:.085):0,0,side==='near'?6:2);
+   const dx=dead?0:finite(foot?.dx)?clamp(foot.dx,-34,16):movement?clamp(finite(explicitSwing)?explicitSwing*(side==='near'?.16:.03):0,side==='near'?-2:-.5,side==='near'?2:.5):0;
+   // Feet are expressed in the unrotated ground frame. Inverse-transform their
+   // goals through the pelvis before the two fixed-length links are solved.
+   const hip=SOCKETS[side+'_upper_leg'],base=SOCKETS.body_anchor,h=[K*(hip[0]-base[0]),K*(base[1]-hip[1])],v=LEGS[side],goal=[h[0]+v[0][0]+v[1][0]+dx-shift,h[1]+v[0][1]+v[1][1]+lift+drop];
+   const local=[cos*goal[0]+sin*goal[1]-h[0],-sin*goal[0]+cos*goal[1]-h[1]],joint=solve(v[0],v[1],local[0]-v[0][0]-v[1][0],local[1]-v[0][1]-v[1][1]);
+   c['pass31Rex'+title+'Upper']=joint.upper;c['pass31Rex'+title+'Lower']=joint.lower;c['pass31Rex'+title+'FootLevel']=joint.foot-lean;
+   c['pass31Rex'+title+'Claw']=!dead&&!pose.reducedMotion&&lift>0?Math.min(2.5,lift*.3):0;
   }
   result.flags.pass31RexDamaged=true;result.flags.pass31RexCockpitOpen=true;
   return result;

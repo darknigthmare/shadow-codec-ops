@@ -52,15 +52,15 @@
    if(!REGIONS[part.id])part.opacity=1;
   }
   const find=id=>machine.parts.find(p=>p.id===id);
-  find('anchor').channels={y:binding('ganderCollapseDrop')};find('body_anchor').channels={y:binding('ganderFold',-85)};
+  find('anchor').channels={y:binding('ganderCollapseDrop')};find('body_anchor').channels={y:[...binding('ganderFold',-85),...binding('pass32GanderBraceSeat',-1)]};
   for(const side of ['near','far']){
    const title=side[0].toUpperCase()+side.slice(1);
    find(side+'_thigh').channels={rotation:binding('gander'+title+'Upper')};
    find(side+'_shin').channels={rotation:binding('gander'+title+'Lower')};
    find(side+'_foot').channels={rotation:binding('gander'+title+'FootLevel')};
    find(side+'_knee_bearing').channels={rotation:binding('gander'+title+'Lower',.5)};
-   find(side+'_rail').channels={rotation:binding('pass30GanderRailAim',.3)};
-   find(side+'_rail_barrel').channels={x:binding('pass30GanderRailRecoil',.45,true)};
+   find(side+'_rail').channels={rotation:binding('pass32Gander'+title+'RailAim')};
+   find(side+'_rail_barrel').channels={x:binding('pass32Gander'+title+'RailRecoilX'),y:binding('pass32Gander'+title+'RailRecoilY')};
    find(side+'_front_turret').channels={rotation:binding('pass30GanderTurretAim')};
   }
   const lower=find('jaw_lower_plate');lower.channels={rotation:binding('pass30GanderFaceplateHinge')};
@@ -100,23 +100,40 @@
    ||/shoot|attack|heavy|light|special|super|slash|shock/.test(action);
   const fold=clamp(finite(c.ganderFold)?c.ganderFold:0,0,1),moving=!defeated&&!activeAttack&&(pose.walk===true||/walk|run|dash/.test(action));
   if(defeated)result.defeated=true;
+  const firing=!pose.motionEvent || ['beam','rail','gun','volley','shot','gatling','cannon','fire'].includes(pose.motionEvent.kind);
+  const impulse=defeated||!firing?0:clamp(finite(c.weaponRecoilImpulse)?c.weaponRecoilImpulse:-(finite(c.weaponRecoil)?c.weaponRecoil:finite(c.classicGanderRailRecoil)?c.classicGanderRailRecoil:0)/7,0,1);
+  const seat=defeated?0:clamp(finite(c.weaponBrace)?c.weaponBrace:0,0,1)*1.2+impulse*.75;
+  c.pass32GanderBraceSeat=seat;
   for(const side of ['near','far']){
    const title=side[0].toUpperCase()+side.slice(1),explicit=c['gander'+title+'Lift'];
-   const lift=(defeated?0:clamp(finite(explicit)?explicit:finite(c[side+'Lift'])?c[side+'Lift']:0,0,75))+85*fold;
+   const lift=(defeated?0:clamp(finite(explicit)?explicit:finite(c[side+'Lift'])?c[side+'Lift']:0,0,75))+85*fold+seat;
    const dx=moving?clamp(finite(c[side+'Swing'])?c[side+'Swing']*.3:0,-4,4):0;
    const joint=solve(LEGS[side][0],LEGS[side][1],dx,lift);
    c['gander'+title+'Upper']=joint.upper;c['gander'+title+'Lower']=joint.lower;c['gander'+title+'FootLevel']=joint.foot;
   }
-  c.pass30GanderRailRecoil=clamp(finite(c.weaponRecoil)?c.weaponRecoil:finite(c.classicGanderRailRecoil)?c.classicGanderRailRecoil:0,-7,1);
-  c.pass30GanderRailAim=clamp(finite(c.weaponAim)?c.weaponAim:0,-6,6);
+  c.pass30GanderRailRecoil=defeated?0:-7*impulse;
+  c.pass30GanderRailAim=defeated?0:finite(c.weaponAimDegrees)?-clamp(c.weaponAimDegrees,-22,22):clamp(finite(c.weaponAim)?c.weaponAim:0,-6,6);
+  for(const side of ['near','far']){
+   const title=side[0].toUpperCase()+side.slice(1),key='weaponAimDegrees'+title;
+   c['pass32Gander'+title+'RailAim']=defeated?0:finite(c[key])?-clamp(c[key],-22,22):c.pass30GanderRailAim;
+   const axis=side==='near'?[510,-7]:[510,-1],length=Math.hypot(...axis),recoil=c.pass30GanderRailRecoil*.45;
+   c['pass32Gander'+title+'RailRecoilX']=recoil*axis[0]/length;
+   c['pass32Gander'+title+'RailRecoilY']=-recoil*axis[1]/length;
+  }
   c.pass30GanderTurretAim=clamp(finite(c.weaponAim)?c.weaponAim:0,-3,3);
   c.pass30GanderFaceplateHinge=result.flags.ganderMouthOpen===true?0:-clamp(finite(c.jawOpen)?c.jawOpen:0,0,1)*2;
   return result;
  }
+ const nearAxis=Object.freeze({part:'near_rail_barrel',jointPart:'near_rail',baseNativeXY:Object.freeze([975,181]),tipNativeXY:Object.freeze([1485,174]),
+   channel:'weaponAimDegreesNear',minDegrees:-22,maxDegrees:22}),
+  farAxis=Object.freeze({part:'far_rail_barrel',jointPart:'far_rail',baseNativeXY:Object.freeze([975,136]),tipNativeXY:Object.freeze([1485,135]),
+   channel:'weaponAimDegreesFar',minDegrees:-22,maxDegrees:22});
+ const aimAxes=Object.freeze({[ID]:Object.freeze({byAttackKind:Object.freeze({beam:nearAxis,rail:nearAxis,cannon:nearAxis,volley:nearAxis,shot:nearAxis}),
+   bySourceIndex:Object.freeze({2:nearAxis,3:farAxis})})});
  const sourcePoints=Object.freeze({gander_ghost_gbc2000:{ballistic:{part:'near_rail_barrel',nativeXY:[1485,174],kind:'native near rail tip'},
   ballisticFar:{part:'far_rail_barrel',nativeXY:[1485,135],kind:'native far rail tip'}}});
  const weaponPoints=Object.freeze({gander:{part:'near_rail_barrel',sourceNativeXY:[1485,174]}});
- root.CQC_PASS30_GANDER_FIDELITY=Object.freeze({apply,presentationPose,sourcePoints,weaponPoints,ids:Object.freeze([ID]),limits:LIMITS,
+ root.CQC_PASS30_GANDER_FIDELITY=Object.freeze({apply,presentationPose,sourcePoints,weaponPoints,aimAxes,ids:Object.freeze([ID]),limits:LIMITS,
   audit:Object.freeze({schema:'cqc.pass30.gander-source-fidelity/1',newSourceArt:true,originalSourcePixelsChanged:false,simulationMutation:false,absolute1to1Certified:false}),
   geometry:Object.freeze({sockets:SOCKETS,legVectors:LEGS,sourceUniformScale:K,visibleRegions:REGIONS})});
 })(globalThis);
