@@ -1,6 +1,6 @@
 /* One feet-anchored spatial contract for the active Versus engine and camera.
  * Source artwork, move definitions, damage, velocities and frame timings are retained.
- * Hammerhead and Khamsin use native projected body envelopes; other hurtboxes retain
+ * Reviewed Hammerhead, Khamsin and Gekko incarnations use native projected body envelopes; others retain
  * their historical gameplay inset. These are not certified anatomical hulls.
  */
 (function(root){'use strict';
@@ -27,10 +27,11 @@
  // Native silhouettes place launch/camera; damage uses the selected body contract.
  function machineEnvelope(p){const left=machineBounds({...p,x:0,face:-1}),right=machineBounds({...p,x:0,face:1});return left&&right?{width:Math.max(left.right-left.left,right.right-right.left),height:Math.max(left.bottom-left.top,right.bottom-right.top)}:null;}
 
- // These two authored silhouettes visibly exceeded their inherited human-sized
- // damage/body boxes. The native rigid body and equipment supply a projected AABB;
- // rotors, wings and the extended Khamsin axe do not become solid whole textures.
- const bodyParts={pass19__hammerhead_mgr:['fuselage','near_engine','far_engine','gun','near_wheel','far_wheel','rear_wheel'],pass19__hammerhead_mgr_right:['fuselage','near_engine','far_engine','gun','near_wheel','far_wheel','rear_wheel'],khamsin_mgr2013_left:['hull','pelvis','near_upper','near_lower','near_foot','far_upper','far_lower','far_foot'],khamsin_mgr2013_right:['hull','pelvis','near_upper','near_lower','near_foot','far_upper','far_lower','far_foot']},bodyCache=new Map();
+ // Reviewed authored silhouettes/contact attacks disagree with their inherited
+ // gameplay boxes. Native hull, pelvis, legs and feet supply projected body AABBs;
+ // Gekko guns, optics and missile pods stay out, as do rotors, wings and axes.
+ // The prior Hammerhead contract retains its short mounted gun assembly.
+ const bodyParts={pass19__hammerhead_mgr:['fuselage','near_engine','far_engine','gun','near_wheel','far_wheel','rear_wheel'],pass19__hammerhead_mgr_right:['fuselage','near_engine','far_engine','gun','near_wheel','far_wheel','rear_wheel'],khamsin_mgr2013_left:['hull','pelvis','near_upper','near_lower','near_foot','far_upper','far_lower','far_foot'],khamsin_mgr2013_right:['hull','pelvis','near_upper','near_lower','near_foot','far_upper','far_lower','far_foot'],gekko_mgs4_ps3_2008:['hull','pelvis','near_upper','near_lower','near_foot','far_upper','far_lower','far_foot'],gekko_mgs4_right:['hull','pelvis','near_upper','near_lower','near_foot_other','far_upper','far_lower','far_foot'],pass19__gekko_missile_mgs4:['hull','pelvis','near_upper','near_lower','near_foot','far_upper','far_lower','far_foot'],pass19__gekko_missile_mgs4_right:['hull','pelvis','near_upper','near_lower','near_foot','far_upper','far_lower','far_foot'],pass19__gekko_mgr:['hull','pelvis','near_upper','near_lower','near_foot','far_upper','far_lower','far_foot'],pass19__gekko_mgr_right:['hull','pelvis','near_upper','near_lower','near_foot','far_upper','far_lower','far_foot']},bodyCache=new Map();
  function mechanicalBody(p){if(root.CQC_PASS19_MACHINE_COSTUME_ROUTING?.native?.(p.f)===true)return null;const id=root.CQC_PASS18_MACHINES?.physical?.(p.f,p.face||1),names=bodyParts[id],parts=root.CQC_MACHINE_PARTS,geometry=root.CQC_PASS28_MACHINE_GEOMETRY;if(!names||!parts||!geometry)return null;let local=bodyCache.get(id);if(!local){const machine=parts.normalizeCatalog(root.CQC_MACHINE_PARTS_CATALOG).get(id);if(!machine)return null;const selected={...machine,paintOrder:machine.paintOrder.filter(part=>names.includes(part.id))};local=geometry.bounds(selected,parts);if(!local)return null;bodyCache.set(id,local);}const base=root.CQC_PASS18_MACHINES.bounds(id),scale=root.CQC_PASS19_WORLD_SCALE.height(p.f).pixels*1.12/base.height,x=p.x-scale*(base.left+base.width/2),y=p.y-scale*base.bottom;return{x:x+local.left*scale,y:y+local.top*scale,w:local.width*scale,h:local.height*scale,source:'native-rigid-body-envelope',machine:id};}
  function contactBox(p,b){const native=mechanicalBody(p);return native?{x:native.x,y:native.y,w:native.w,h:native.h}:b;}
  function contactAttack(p,b){const native=mechanicalBody(p);if(!native||p.attack?.def.kind!=='melee')return b;const edge=(p.face||1)>0?native.x+native.w:native.x;return{...b,x:edge+((p.face||1)>0?0:-b.w)};}
@@ -58,7 +59,7 @@
  function activate(){if(engine?.spatialContract!==engineContract||!rendererReady||!root.CQC_PASS19_WORLD_SCALE)return false;root.CQC_PASS19_SPATIAL_SCALE_READY=true;root.CQC_PASS19_WORLD_SCALE.install();return true;}
  function registerEngine(value){engine=value;activate();return value;}
  function registerRenderer(contract){rendererReady=contract===rendererContract;return activate();}
- function status(){return{engineContract:engine?.spatialContract||null,rendererContract:rendererReady?rendererContract:null,ready:root.CQC_PASS19_SPATIAL_SCALE_READY===true,hurtboxes:'Hammerhead/Khamsin rigid native body envelopes; other historical gameplay insets scaled around the feet. Not an anatomical pixel hull.',versusArena:'Stable facing envelopes for large machines; sizes and move values preserved.',bossCore:'Historical boss framing retained until bespoke weak-point paths are transformed.'};}
+ function status(){return{engineContract:engine?.spatialContract||null,rendererContract:rendererReady?rendererContract:null,ready:root.CQC_PASS19_SPATIAL_SCALE_READY===true,hurtboxes:'Reviewed Hammerhead/Khamsin/Gekko rigid native body envelopes; other historical gameplay insets scaled around the feet. Not an anatomical pixel hull.',versusArena:'Stable facing envelopes for large machines; sizes and move values preserved.',bossCore:'Historical boss framing retained until bespoke weak-point paths are transformed.'};}
  root.CQC_PASS19_VERSUS_SPATIAL={engineContract,rendererContract,ratio,transformBox,bodyY,bodyPoint,poseFor,selectedSource,reviewedOrigin,machineOrigin,projectileOrigin,projectilePoint,mechanicalBody,contactBox,contactAttack,bodyDistance,machineBounds,frameBounds,machineEnvelope,arena,actorLimits,clampActor,placeRound,pushActors,worldCeiling,camera,registerEngine,registerRenderer,status};
  if(typeof module==='object'&&module.exports)module.exports=root.CQC_PASS19_VERSUS_SPATIAL;
 })(globalThis);

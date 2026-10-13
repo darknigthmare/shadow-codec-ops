@@ -27,9 +27,9 @@
     <main class="mgr32-main">
       <aside class="mgr32-panel">
         <h2>OPÉRATIONS REVENGEANCE</h2>
-        <button class="mgr32-boss-card active" data-mgr32-boss="ray" type="button"><span class="mgr32-boss-icon">RAY<br>R-00</span><span><strong>METAL GEAR RAY · UG</strong><span>Détruire les appuis, provoquer deux ouvertures de tête, puis terminer au Mode Lame.</span></span></button>
-        <button class="mgr32-boss-card" data-mgr32-boss="grad" type="button"><span class="mgr32-boss-icon">GRAD<br>R-02</span><span><strong>GRAD</strong><span>Briser le bouclier, parer la charge ou utiliser l’EMP, puis atteindre la batterie arrière.</span></span></button>
-        <button class="mgr32-boss-card" data-mgr32-boss="excelsus" type="button"><span class="mgr32-boss-icon">EXCELSUS<br>R-07</span><span><strong>METAL GEAR EXCELSUS</strong><span>Sectionner quatre appuis, retourner ses deux lames et ouvrir le cœur central.</span></span></button>
+        <button class="mgr32-boss-card active" data-mgr32-boss="ray" type="button"><span class="mgr32-boss-icon">RAY<br>R-00</span><span><strong>METAL GEAR RAY · UG</strong><span>Raiden · Corps standard</span><span>Détruire les appuis, provoquer deux ouvertures de tête, puis terminer au Mode Lame.</span></span></button>
+        <button class="mgr32-boss-card" data-mgr32-boss="grad" type="button"><span class="mgr32-boss-icon">GRAD<br>R-02</span><span><strong>GRAD</strong><span>Raiden · Corps custom</span><span>Briser le bouclier, parer la charge ou utiliser l’EMP, puis atteindre la batterie arrière.</span></span></button>
+        <button class="mgr32-boss-card" data-mgr32-boss="excelsus" type="button"><span class="mgr32-boss-icon">EXCELSUS<br>R-07</span><span><strong>METAL GEAR EXCELSUS</strong><span>Raiden · Corps custom</span><span>Sectionner quatre appuis, retourner ses deux lames et ouvrir le cœur central.</span></span></button>
         <div class="mgr32-field"><label for="mgr32-difficulty">DIFFICULTÉ</label><select id="mgr32-difficulty"><option value="story">DOSSIER</option><option value="normal" selected>NORMAL</option><option value="hard">REVENGEANCE</option></select></div>
         <div class="mgr32-field"><label>MODE</label><div class="mgr32-modes"><button class="mgr32-mode active" data-mgr32-mode="boss" type="button">GRAND BOSS</button><button class="mgr32-mode" data-mgr32-mode="chronicle" type="button">ARCHIVE MACHINES</button></div></div>
         <button class="mgr32-btn primary" id="mgr32-start" type="button" style="width:100%;margin-top:10px">LANCER L’OPÉRATION</button>
@@ -76,11 +76,14 @@
 <script src="../src/cqc-pass30-mk-completion.js"></script>
 <script src="../src/cqc-pass30-zeke-completion.js"></script>
 <script src="../src/cqc-pass30-gander-fidelity.js"></script>
+<script src="../src/cqc-pass31-rex-mgs4.js"></script>
+<script src="../src/cqc-pass31-peace-walker-biped.js"></script>
 <script src="../src/cqc-pass28-rig-setup.js"></script>
 <script src="../src/cqc-pass28-rig-install.js"></script>
 <script src="../src/cqc-pass18-machine-bridge.js"></script>
 <script src="../src/cqc-pass27-arsenal-player-catalog.js"></script>
 <script src="../src/cqc-sprite-renderer.js"></script>
+<script src="../src/cqc-pass31-raiden-r00.js"></script>
 <script src="../src/cqc-pass27-arsenal-native-player.js"></script>
 <script>
 (()=>{
@@ -100,22 +103,24 @@ const defs={
 const diff={story:{damage:.72,tell:1.25,hp:.86},normal:{damage:1,tell:1,hp:1},hard:{damage:1.28,tell:.78,hp:1.18}};
 let selectedBoss='ray', selectedMode='boss', difficulty='normal', state=null, running=false, paused=false, raf=0,last=0, keys=new Set(), chainIndex=0, chainElapsed=0;
 let profile=loadProfile();
-// The dedicated MGR encounter uses the same admitted black-body Revengeance
-// operator as Arsenal. Directions and keyposes are real PNG crops, not a
-// procedural stand-in. Rendering never alters the encounter actor or hitbox.
-const nativePilotUID='core__raiden',nativePilotFighter=Object.freeze({uid:nativePilotUID,costume:'original'});
+// Edition-scoped native MGR bodies: Standard R-00 for RAY, Custom Body thereafter.
+// Authored keyposes and measured source feet never alter the physical actor or hitbox.
+window.CQC_PASS31_RAIDEN_R00?.install();
+const nativePilotUID='core__raiden';
+function nativePilotFighter(){return{uid:nativePilotUID,costume:selectedBoss==='ray'?'mgr_r00_standard':'original'}}
 const nativePilotClock=new WeakMap(),nativePilotCalibration=new Map();
 const nativePilotMetrics={drawn:0,pendingDraws:0,byAction:{},last:null};
 let nativePilotPromise=null,nativePilotPending=null,nativePilotSerial=0;
-function pilotReady(){return window.CQC_COMBAT_SPRITES?.status(nativePilotUID,{costume:'original'}).ready===true}
-function retainNativePilot(){window.CQC_COMBAT_SPRITES?.retainFighters([nativePilotFighter])}
+function pilotReady(fighter=nativePilotFighter()){return window.CQC_COMBAT_SPRITES?.status(nativePilotUID,fighter).ready===true}
+function retainNativePilot(fighter=nativePilotFighter()){window.CQC_COMBAT_SPRITES?.retainFighters([fighter])}
 function loadNativePilot(retry=false){
- retainNativePilot();
- if(pilotReady())return Promise.resolve(true);
- if(nativePilotPromise&&!retry)return nativePilotPromise;
+ const fighter=nativePilotFighter();retainNativePilot(fighter);
+ if(pilotReady(fighter))return Promise.resolve(true);
+ if(nativePilotPromise?.costume===fighter.costume&&!retry)return nativePilotPromise.promise;
  const renderer=window.CQC_COMBAT_SPRITES;
- nativePilotPromise=renderer?.whenReady(nativePilotUID,{costume:'original',retry}).catch(()=>false)||Promise.resolve(false);
- return nativePilotPromise;
+ const promise=renderer?.whenReady(nativePilotUID,{...fighter,retry}).catch(()=>false)||Promise.resolve(false);
+ nativePilotPromise={costume:fighter.costume,promise};
+ return promise;
 }
 function cancelNativePilotLaunch(){nativePilotPending=null;document.getElementById('mgr32-intro-start').disabled=false}
 function deferNativePilotLaunch(resume){
@@ -146,21 +151,27 @@ function nativePilotPose(){
  return{p,action,pose,face};
 }
 function pilotCalibration(face){
- if(nativePilotCalibration.has(face))return nativePilotCalibration.get(face);
- const entry=window.CQC_COMBAT_SPRITES?.getEntry(nativePilotUID);
- const calibrated=entry&&window.CQC_PASS27_ARSENAL_NATIVE_PLAYER?.statureCalibration(nativePilotUID,entry,face);
- if(!calibrated)return null;
- // Existing MGR operator:102 arena units upright. Both directions and every
- // keypose share that one datum; crouched and fallen poses stay naturally low.
- const ratio=102/calibrated.uprightArenaUnits;
- const result={scale:calibrated.scale*ratio,xOffset:calibrated.xOffset*ratio,yOffset:calibrated.yOffset*ratio,calibrated:calibrated.calibrated,uprightArenaUnits:102,measurement:calibrated.measurement};
- if(pilotReady()&&calibrated.calibrated)nativePilotCalibration.set(face,result);
+ const fighter=nativePilotFighter(),key=fighter.costume+':'+face;
+ if(nativePilotCalibration.has(key))return nativePilotCalibration.get(key);
+ const entry=window.CQC_COMBAT_SPRITES?.getEntry(nativePilotUID,fighter);
+ let result;
+ if(fighter.costume==='mgr_r00_standard')result=window.CQC_PASS31_RAIDEN_R00?.calibration(fighter,face,102);
+ else{
+  const calibrated=entry&&window.CQC_PASS27_ARSENAL_NATIVE_PLAYER?.statureCalibration(nativePilotUID,entry,face);
+  if(!calibrated)return null;
+  // Preserve the Pass30 black-body calibration byte-for-byte arithmetic.
+  const ratio=102/calibrated.uprightArenaUnits;
+  result={scale:calibrated.scale*ratio,xOffset:calibrated.xOffset*ratio,yOffset:calibrated.yOffset*ratio,calibrated:calibrated.calibrated,uprightArenaUnits:102,measurement:calibrated.measurement};
+ }
+ if(!result)return null;
+ result={...result,face,costume:fighter.costume};
+ if(pilotReady(fighter)&&result.calibrated)nativePilotCalibration.set(key,result);
  return result;
 }
 function nativePilotStatus(){
- const entry=window.CQC_COMBAT_SPRITES?.getEntry(nativePilotUID),sources=new Map();
+ const fighter=nativePilotFighter(),entry=window.CQC_COMBAT_SPRITES?.getEntry(nativePilotUID,fighter),sources=new Map();
  for(const groups of [entry?.actions,entry?.oppositeActions])for(const group of Object.values(groups||{}))for(const frame of group.frames||[])sources.set(frame.file,{file:frame.file,sha256:frame.sha256});
- return{uid:nativePilotUID,incarnation:entry?.incarnation||null,ready:pilotReady(),pendingLaunch:!!nativePilotPending,sourceFiles:[...sources.values()],calibration:[...nativePilotCalibration].map(([face,data])=>({face,...data})),metrics:JSON.parse(JSON.stringify(nativePilotMetrics)),physicalActorChanged:false,sourcePixelsChanged:false};
+ return{uid:nativePilotUID,costume:fighter.costume,incarnation:entry?.incarnation||null,ready:pilotReady(fighter),pendingLaunch:!!nativePilotPending,sourceFiles:[...sources.values()],calibration:[...nativePilotCalibration].map(([key,data])=>({key,...data})),metrics:JSON.parse(JSON.stringify(nativePilotMetrics)),physicalActorChanged:false,sourcePixelsChanged:false};
 }
 
 function loadProfile(){try{const p=JSON.parse(localStorage.getItem(STORAGE)||'null');if(p&&p.schema===1)return p}catch(_){}return{schema:1,version:VERSION,wins:{ray:0,grad:0,excelsus:0},best:{},archiveWins:0,archiveBest:null,lastRuns:[]}}
@@ -265,9 +276,9 @@ function drawPlayer(){
  const {p,action,pose,face}=selected;
  ctx.save();
  if(p.inv>0&&Math.floor(p.inv*20)%2===0)ctx.globalAlpha=.35;
- const drawn=window.CQC_COMBAT_SPRITES.draw(ctx,nativePilotFighter,p.x+calibration.xOffset,p.y+calibration.yOffset,face,calibration.scale,pose);
+ const drawn=window.CQC_COMBAT_SPRITES.draw(ctx,nativePilotFighter(),p.x+calibration.xOffset,p.y+calibration.yOffset,face,calibration.scale,pose);
  ctx.restore();
- if(drawn){nativePilotMetrics.drawn++;nativePilotMetrics.byAction[action]=(nativePilotMetrics.byAction[action]||0)+1;nativePilotMetrics.last={action,face,x:p.x,y:p.y,scale:calibration.scale,actionTime:pose.actionTime}}
+ if(drawn){nativePilotMetrics.drawn++;nativePilotMetrics.byAction[action]=(nativePilotMetrics.byAction[action]||0)+1;nativePilotMetrics.last={action,face,costume:nativePilotFighter().costume,x:p.x,y:p.y,scale:calibration.scale,actionTime:pose.actionTime}}
  else nativePilotMetrics.pendingDraws++;
 }
 function draw(){drawBackground();drawMachine();drawPlayer();if(!state){ctx.fillStyle='#f1e7ea';ctx.font='bold 24px monospace';ctx.fillText('SÉLECTIONNEZ UNE OPÉRATION REVENGEANCE',300,672);return}

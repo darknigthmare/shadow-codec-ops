@@ -105,6 +105,33 @@
 <section id="fight" class="screen off"><div class="game-top"><button id="leaveFight">COMMAND</button><div id="gameLabel" class="game-label">COMBAT</div></div><div class="game-wrap"><canvas id="game" width="1280" height="720"></canvas></div><div id="fightHelp" class="fight-help"><b>← →</b> MOUVEMENT · <b>↑</b> SAUT · <b>J</b> LÉGER · <b>K</b> LOURD · <b>I</b> SPÉCIAL · <b>U</b> SOUTIEN · <b>L</b> GARDE</div><div id="result" class="result hidden"><div class="result-card"><small id="resultTag">RÉSULTAT</small><h2 id="resultTitle">VICTOIRE</h2><p id="resultText"></p><div class="result-actions"><button id="retryBtn">REJOUER</button><button id="resultMenu" class="primary">COMMAND</button></div></div></div></section>
 <div id="toast" class="toast hidden"></div>
 </div>
+<script src="../src/cqc-machine-parts-renderer-v1.js"></script>
+<script src="../src/cqc-machine-parts-catalog-v1.js"></script>
+<script src="../src/cqc-pass16-machine-catalog.js"></script>
+<script src="../src/cqc-pass18-machine-catalog.js"></script>
+<script src="../src/cqc-pass28-heavy-rig-fixes.js"></script>
+<script src="../src/cqc-pass28-pw-rig-fixes.js"></script>
+<script src="../src/cqc-pass28-vehicle-rig-fixes.js"></script>
+<script src="../src/cqc-pass28-missing-machine.js"></script>
+<script src="../src/cqc-pass27-machine-completion.js"></script>
+<script src="../src/cqc-pass28-machine-ink.js"></script>
+<script src="../src/cqc-pass28-machine-geometry.js"></script>
+<script src="../src/cqc-pass28-edition-fixes.js"></script>
+<script src="../src/cqc-pass28-shagohod-native-rear.js"></script>
+<script src="../src/cqc-pass29-modern-articulation.js"></script>
+<script src="../src/cqc-pass29-classic-articulation.js"></script>
+<script src="../src/cqc-pass29-pw-articulation.js"></script>
+<script src="../src/cqc-pass29-heavy-articulation.js"></script>
+<script src="../src/cqc-pass30-bic-completion.js"></script>
+<script src="../src/cqc-pass30-mk-completion.js"></script>
+<script src="../src/cqc-pass30-zeke-completion.js"></script>
+<script src="../src/cqc-pass30-gander-fidelity.js"></script>
+<script src="../src/cqc-pass31-rex-mgs4.js"></script>
+<script src="../src/cqc-pass31-peace-walker-biped.js"></script>
+<script src="../src/cqc-pass28-rig-setup.js"></script>
+<script src="../src/cqc-pass28-rig-install.js"></script>
+<script src="../src/cqc-pass18-machine-bridge.js"></script>
+<script src="../src/cqc-pass31-rex-ray-duel.js"></script>
 <script>
 (()=>{
 'use strict';
@@ -536,6 +563,15 @@ function legacyMachineV4(c,f,pose={}){const v=f.visual||{},p=v.primary||f.color,
 function legacyCharacterV4(c,f,pose={}){const kind=f.visual?.kind||'human';if(kind==='quadruped')legacyQuadrupedV4(c,f,pose);else if(kind==='machine')legacyMachineV4(c,f,pose);else legacyHumanV4(c,f,pose)}
 function legacyStageV4(c,g){const key=g.kind==='boss'?'boss':g.stage,w=1280,h=720,t=performance.now()*.001,mid=((g.a?.x||g.player?.x||330)+(g.b?.x||g.boss?.x||950))/2,cam=clamp(mid-640,-210,210),pal={jungle:['#b7c99c','#4d6b50','#102019'],mgs4:['#9fa8ad','#4d555e','#11171d'],mgsv:['#dfbd83','#8b6242','#24160d'],acid:['#78b9c0','#28525c','#08151b'],dite:['#9177a2','#46364f','#160f1b'],vr:['#146a6e','#083237','#020d10'],online:['#7f9fb5','#344c5e','#101822'],mobile:['#557988','#233c47','#071217'],retro:['#a6b586','#4c5f47','#101712'],boss:['#788e9f','#314452','#071018']}[key]||['#a8ba93','#4d6750','#101d17'];let sky=c.createLinearGradient(0,0,0,h);sky.addColorStop(0,pal[0]);sky.addColorStop(.55,pal[1]);sky.addColorStop(1,pal[2]);c.fillStyle=sky;c.fillRect(0,0,w,h);const far=-cam*.08,midp=-cam*.2,near=-cam*.38,front=-cam*.6;c.save();c.translate(far,0);c.globalAlpha=.55;for(let i=0;i<7;i++)polyV(c,[[i*220-120,400],[i*220+80,150+(i%3)*60],[i*220+260,400]],tone(pal[1],-.16),null);c.restore();c.save();c.translate(midp,0);if(['jungle','retro'].includes(key)){for(let i=0;i<17;i++){let x=i*92-80;c.fillStyle=i%2?'#294737':'#385640';c.beginPath();c.arc(x,345+(i%3)*16,82+(i%4)*9,0,Math.PI*2);c.fill();c.fillRect(x-12,342,24,235)}}else{for(let i=0;i<11;i++){let x=i*130-60,y=230+(i%4)*45;c.fillStyle=i%2?tone(pal[1],-.4):tone(pal[2],.12);c.fillRect(x,y,96,370);for(let wy=y+25;wy<560;wy+=33){c.fillStyle='#d4e0d433';c.fillRect(x+17,wy,12,5);c.fillRect(x+54,wy,12,5)}}}c.restore();c.save();c.translate(near,0);c.strokeStyle=tone(pal[2],.2);c.lineWidth=10;for(let i=0;i<5;i++){let x=80+i*300;c.beginPath();c.moveTo(x,570);c.lineTo(x,250+(i%2)*70);c.lineTo(x+130,250+(i%2)*70);c.stroke()}c.restore();c.fillStyle=key==='mgsv'?'#9f744a':key==='vr'?'#0c4c4e':'#354a39';c.fillRect(0,568,w,152);c.fillStyle=key==='mgsv'?'#c39b64':key==='vr'?'#178d8f':'#718166';c.fillRect(0,568,w,18);c.save();c.translate(front,0);for(let i=0;i<35;i++){let x=i*48-80;c.fillStyle=i%2?'#17261d':'#26362a';c.beginPath();c.ellipse(x,676,48,85,-.2,0,Math.PI*2);c.fill()}c.restore();for(let i=0;i<40;i++){let x=(i*89+t*70)%1340-30,y=(i*59+t*45)%760;c.globalAlpha=.35+(i%4)*.1;c.fillStyle=key==='dite'?'#cf9ce7':key==='vr'?'#64fff4':'#eee3c4';c.fillRect(x,y,2+i%3,2+i%2)}c.globalAlpha=1}
 characterV=legacyCharacterV4;drawStage=legacyStageV4;
+
+// Exclusive native pilot adapters leave every retained legacy function intact.
+const legacyStartBossPass31=startBoss,legacyCreateBossMatchPass31=createBossMatch,legacyUpdateBossMatchPass31=updateBossMatch,legacyDrawBossGamePass31=drawBossGame,legacyBeginGamePass31=beginGame,legacyStartFighterPass31=startFighter,legacyFightHelpPass31=$('#fightHelp').innerHTML,legacyGameFitPass31=$('#game').style.objectFit;
+startBoss=function(id,fromChron=false){const native=window.CQC_PASS31_REX_RAY_DUEL;if(id==='mgs4_rex_ray'&&!native){showToast('PILOTAGE REX INDISPONIBLE');return}if(native?.defer(id,()=>startBoss(id,fromChron)))return;return legacyStartBossPass31(id,fromChron)};
+createBossMatch=function(b,fromChron){const match=legacyCreateBossMatchPass31(b,fromChron);return window.CQC_PASS31_REX_RAY_DUEL?.configure(match)||match};
+updateBossMatch=function(g){const native=window.CQC_PASS31_REX_RAY_DUEL;if(!native?.owns(g))return legacyUpdateBossMatchPass31(g);return native.update(g,{inputDown,pressed,showToast,spawn,endGame,updateParticles,bossLife,bossPattern,useSupport})};
+drawBossGame=function(c,g){if(window.CQC_PASS31_REX_RAY_DUEL?.draw(c,g,{drawBossHUD,drawSupportHud,drawBossEntity}))return;return legacyDrawBossGamePass31(c,g)};
+beginGame=function(label){$('#game').style.objectFit=window.CQC_PASS31_REX_RAY_DUEL?.owns(gameState)?'contain':legacyGameFitPass31;$('#fightHelp').innerHTML=window.CQC_PASS31_REX_RAY_DUEL?.owns(gameState)?'<b>← →</b> MANŒUVRE · <b>↑</b> PROPULSION · <b>J</b> MITRAILLEUSE · <b>K</b> MISSILE · <b>I</b> LASER · <b>↓ + I</b> RECHARGE · <b>U</b> SOUTIEN · <b>L</b> GARDE':legacyFightHelpPass31;return legacyBeginGamePass31(label)};
+startFighter=function(...args){window.CQC_PASS31_REX_RAY_DUEL?.cancel();return legacyStartFighterPass31(...args)};
 
 window.__CQC037={fighters,bosses,chronicles,supports,showScreen,startFighter,startBoss,buildRoster,buildBosses,setRosterFilter:(x)=>{rosterFilter=x;rosterPage=0;buildRoster()},setBossFilter:(x)=>{bossFilter=x;bossPage=0;buildBosses()},selectFighter:(id)=>{const i=fighters.findIndex(f=>f.id===id);if(i>=0){selectedFighter=i;buildRoster();updateFighterPanel()}},selectBoss:(id)=>{const i=bosses.findIndex(b=>b.id===id);if(i>=0){selectedBoss=i;buildBosses()}},getState:()=>gameState,visualVersion:'LEGACY_ART_V4'};
 

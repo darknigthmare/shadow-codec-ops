@@ -225,6 +225,8 @@ body{background:#030508!important;overflow:hidden}.toolbar,.footer{display:none!
 <script src="../src/cqc-pass30-mk-completion.js"></script>
 <script src="../src/cqc-pass30-zeke-completion.js"></script>
 <script src="../src/cqc-pass30-gander-fidelity.js"></script>
+<script src="../src/cqc-pass31-rex-mgs4.js"></script>
+<script src="../src/cqc-pass31-peace-walker-biped.js"></script>
 <script src="../src/cqc-pass28-rig-setup.js"></script>
 <script src="../src/cqc-pass28-rig-install.js"></script>
 
@@ -233,6 +235,7 @@ body{background:#030508!important;overflow:hidden}.toolbar,.footer{display:none!
 <script src="../src/cqc-pass16-machine-pose.js"></script>
 <script src="../src/cqc-pass28-core-presentation.js"></script>
 <script src="../src/cqc-machine-parts-bridge-v1.js"></script>
+<script src="../src/cqc-pass31-zeke-core.js"></script>
 <script src="../src/cqc-pass16-acid-native.js"></script>
 <script src="../src/cqc-sprite-catalog.js"></script>
 <script src="../src/cqc-pass16-sprite-catalog.js"></script>
@@ -2789,7 +2792,7 @@ function beginZekeAttack(s,kind=null){
  r.attack={kind,t:0,windup:Math.max(45,Math.round(d.windup*fac)),active:d.active,recovery:d.recovery,targets:[-170,0,170].map(v=>clamp(p.x+v,125,935)),aim:{x:p.x,y:p.y+115},hit:false};r.lastAttack=kind;r.cycle++;
  event(s,'bossWarning',{slot:1,boss:'zeke',kind,frames:r.attack.windup});return true;
 }
-function zekeRailLine(s){const t=zekeTarget(s,'rail'),a=s.boss.attack;return a?.kind==='rail'?{x1:t.x-40,y1:t.y,x2:a.aim.x,y2:a.aim.y}:null;}
+function zekeRailLine(s){const t=zekeTarget(s,'rail'),a=s.boss.attack,legacy=a?.kind==='rail'?{x1:t.x-40,y1:t.y,x2:a.aim.x,y2:a.aim.y}:null;return window.CQC_PASS31_ZEKE_CORE?.railLine(s,legacy)||legacy;}
 function zekeAttackTick(s){
  const r=s.boss,p=s.fighters[0];if(!r.attack){if(--r.idle<=0)beginZekeAttack(s);return;}
  const a=r.attack;a.t++;const age=a.t-a.windup;
@@ -7716,9 +7719,10 @@ function createRenderer(canvas) {
     x22Scene(c,{template:'x22Zeke'},reducedMotion?0:time);stageBank.draw(c,s.options.stage,cam,false);
     c.save();c.translate(640,578);c.scale(cam.zoom,cam.zoom);c.translate(-cam.x,0);
     zekeMachine(c,s);
+    window.CQC_PASS31_ZEKE_CORE?.drawEmissions(c,s,{time,reducedMotion,noFlash:true});
     const a=r.attack;if(a){const active=a.t>=a.windup&&a.t<a.windup+a.active;if(a.kind==='rail'){const l=zekeRailLine(s);c.strokeStyle=active?'#ffdab1':'#ebc89388';c.lineWidth=active?10:3;c.setLineDash(active?[]:[10,9]);c.beginPath();c.moveTo(l.x1,-l.y1);c.lineTo(l.x2,-l.y2);c.stroke();c.setLineDash([]);}if(a.kind==='missiles'&&a.t<a.windup)for(const x of a.targets){rect(c,x-65,-120,130,120,'#db9d6133');c.strokeStyle='#efcaa3';c.setLineDash([7,8]);c.strokeRect(x-65,-120,130,120);c.setLineDash([]);}if(a.kind==='leap'&&a.t<a.windup){rect(c,920,-76,175,76,'#db9d6133');label(c,'PIED / ONDE',1000,-99,14,'#e9c58a','center');}}
     for(const key of ZEKE_TARGETS){const t=zekeTarget(s,key),sel=r.target===key;const col=r[key]>0?(sel?'#ffe8ac':'#a9d4c2'):'#9e8076';c.strokeStyle=col;c.lineWidth=sel?3:1;c.setLineDash(r[key]>0?[]:[5,5]);c.strokeRect(t.x-t.r,-t.y-t.r,2*t.r,2*t.r);c.setLineDash([]);label(c,ZEKE_LABELS[key]+' '+r[key],t.x,-t.y-t.r-13,sel?16:12,col,'center');}
-    for(const h of r.hazards){if(h.kind==='missile'){outline(c,[[h.x-8,-h.y-18],[h.x+8,-h.y-18],[h.x+8,-h.y+10],[h.x,-h.y+23],[h.x-8,-h.y+10]],'#e7d0a2',2);}else if(h.kind==='bullet')rect(c,h.x-18,-h.y-3,34,6,'#ffe4a1');else poly(c,[[h.x-30,0],[h.x-10,-38],[h.x+8,-18],[h.x+21,-42],[h.x+30,0]],'#d9cf9e');}
+    for(const h of r.hazards){if(window.CQC_PASS31_ZEKE_CORE?.drawHazard(c,h,{time,reducedMotion,noFlash:true}))continue;if(h.kind==='missile'){outline(c,[[h.x-8,-h.y-18],[h.x+8,-h.y-18],[h.x+8,-h.y+10],[h.x,-h.y+23],[h.x-8,-h.y+10]],'#e7d0a2',2);}else if(h.kind==='bullet')rect(c,h.x-18,-h.y-3,34,6,'#ffe4a1');else poly(c,[[h.x-30,0],[h.x-10,-38],[h.x+8,-18],[h.x+21,-42],[h.x+30,0]],'#d9cf9e');}
     for(const q of s.projectiles){if(window.CQC_PASS18_VFX?.drawBossProjectile(c,q,{time,reducedMotion,noFlash:true,kind:'stinger'}))continue;if(q.kind==='zkRocket'){rect(c,q.x-17,-q.y-5,35,10,'#e5e3c2');poly(c,[[q.x-18,-q.y-4],[q.x-35,-q.y],[q.x-18,-q.y+4]],'#e8ad6a');}else rect(c,q.x-10,-q.y-2,22,4,'#f6d98d');}
     const supply=r.supply;if(supply){const y=supply.delay?Math.max(30,supply.delay*3.5):30;outline(c,[[supply.x-33,-y-22],[supply.x+33,-y-22],[supply.x+33,-y+22],[supply.x-33,-y+22]],'#ada981',3);rect(c,supply.x-18,-y-9,36,16,'#38534e');label(c,supply.delay?'ARRIVÉE '+(supply.delay/60).toFixed(1)+'s':'MAINTENIR BAS '+supply.collect+'/30',supply.x,-y-38,16,'#f0d99f','center');if(supply.delay){c.strokeStyle='#dddec366';c.setLineDash([6,7]);c.beginPath();c.moveTo(supply.x,-y);c.lineTo(supply.x,0);c.stroke();c.setLineDash([]);}}
     c.save();c.translate(p.x,-p.y);drawActor(c,p,reducedMotion?0:time,s);if(p.attack?.name==='zkRocket'){outline(c,[[12,-181],[102,-181],[102,-155],[12,-155]],'#a0ad87',3);rect(c,47,-187,31,5,'#e4d0a1');}c.restore();if(debug){const b=hurtbox(p);c.strokeStyle='#bde6a2';c.strokeRect(b.x,-b.y-b.h,b.w,b.h);}c.restore();stageBank.draw(c,s.options.stage,cam,true);

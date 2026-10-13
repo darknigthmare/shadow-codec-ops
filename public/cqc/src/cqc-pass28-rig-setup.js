@@ -2,7 +2,7 @@
 (function(root){'use strict';
  const clone=value=>JSON.parse(JSON.stringify(value)), originals=new Map();
  const names=['CQC_PASS28_HEAVY_RIG_FIXES','CQC_PASS28_PW_RIG_FIXES','CQC_PASS28_VEHICLE_RIG_FIXES'];
- const articulations=['CQC_PASS29_MODERN_ARTICULATION','CQC_PASS29_CLASSIC_ARTICULATION','CQC_PASS29_PW_ARTICULATION','CQC_PASS29_HEAVY_ARTICULATION','CQC_PASS30_BIC_COMPLETION','CQC_PASS30_MK_COMPLETION','CQC_PASS30_ZEKE_COMPLETION','CQC_PASS30_GANDER_FIDELITY'];
+ const articulations=['CQC_PASS29_MODERN_ARTICULATION','CQC_PASS29_CLASSIC_ARTICULATION','CQC_PASS29_PW_ARTICULATION','CQC_PASS29_HEAVY_ARTICULATION','CQC_PASS30_BIC_COMPLETION','CQC_PASS30_MK_COMPLETION','CQC_PASS30_ZEKE_COMPLETION','CQC_PASS30_GANDER_FIDELITY','CQC_PASS31_REX_MGS4','CQC_PASS31_PW_BIPED'];
  const nativeDescriptors=new Map();
  let reviewed=[];
  function prepare(){
@@ -36,7 +36,15 @@
   }
   root.CQC_MACHINE_PARTS_CATALOG=catalog;
   const data=root.CQC_PASS18_MACHINE_DATA;
-  if(data&&addition){root.CQC_PASS18_MACHINE_DATA={...data,playable:{...data.playable,...addition.playableMappings},states:{...data.states,...addition.stateMappings}};}
+  if(data){
+   const mappingHelpers=[addition,...articulations.map(name=>root[name])].filter(Boolean);
+   // Only explicit incarnation mappings are admitted. A native pilot rig does
+   // not create a fighter UID or borrow another edition's metric dimensions.
+   root.CQC_PASS18_MACHINE_DATA={...data,
+    arsenal:Object.assign({},data.arsenal,...mappingHelpers.map(helper=>helper.arsenalMappings||{})),
+    playable:Object.assign({},data.playable,...mappingHelpers.map(helper=>helper.playableMappings||{})),
+    states:Object.assign({},data.states,...mappingHelpers.map(helper=>helper.stateMappings||{}))};
+  }
   return catalog;
  }
  function presentationPose(id,pose,state=null){
@@ -52,8 +60,12 @@
  function dimension(id){
   const primary=root.CQC_PASS28_HEAVY_RIG_FIXES?.audit?.canonicalDimensions?.[id]||root.CQC_PASS28_SHAGOHOD_NATIVE_REAR?.canonicalDimensions?.[id]||root.CQC_PASS28_EDITION_FIXES?.canonicalDimensions?.[id];
   if(primary)return {...primary,evidence:primary.evidence||'primary printed canonical dimensions'};
+  if(id==='peacewalker_biped_pw_psp2010'){
+   const biped=root.CQC_PASS31_PW_BIPED?.dimensions?.[id];
+   if(biped?.heightM>0)return {...biped,evidence:biped.evidence||biped.heightEvidence||'secondary height citation; bipedal configuration, metric source projection not independently verified',absolute1to1Certified:false};
+  }
   const secondary=root.CQC_PASS28_PW_RIG_FIXES?.dimensions?.[id];
   return secondary?{...secondary,evidence:secondary.heightEvidence||secondary.evidence||'secondary citation; primary page not independently read'}:null;
  }
- root.CQC_PASS28_RIG_SETUP=Object.freeze({prepare,presentationPose,targetParts,weaponPoints,dimension,descriptor:(id,slot)=>nativeDescriptors.has(id+':'+slot)?clone(nativeDescriptors.get(id+':'+slot)):null,status:()=>({schema:'cqc.pass30.shared-native-completion/1',machines:root.CQC_MACHINE_PARTS_CATALOG?.machines?.length||0,reviewed:clone(reviewed),absolute1to1Certified:false})});
+ root.CQC_PASS28_RIG_SETUP=Object.freeze({prepare,presentationPose,targetParts,weaponPoints,dimension,descriptor:(id,slot)=>nativeDescriptors.has(id+':'+slot)?clone(nativeDescriptors.get(id+':'+slot)):null,status:()=>({schema:'cqc.pass31.shared-native-incarnations/1',machines:root.CQC_MACHINE_PARTS_CATALOG?.machines?.length||0,reviewed:clone(reviewed),absolute1to1Certified:false})});
 })(globalThis);

@@ -10,7 +10,7 @@
   tx55:['mg_msx','outer_heaven'],metalgeard:['mg2','p18_mg2_zanzibar_land_forteresse'],
   rex:['mgs1','mgs1_rex_hangar'],harrier:['mgs2','p18_mgs2_passerelle_harrier'],raymass:['mgs2','p18_mgs2_arsenal_gear_plateforme_ray'],
   shagohod:['mgs3','p18_mgs3_pont_shagohod'],raxa:['mpo','mpo_raxa_test_hangar'],bic:['mpo','p18_mpo_silo_lancement_icbmg'],
-  pupa:['pw','p18_pw_pupa_operation'],chrysalis:['pw','p18_pw_chrysalis_operation'],cocoon:['pw','p18_pw_cocoon_operation'],
+  pupa:['pw','p18_pw_pupa_operation'],chrysalis:['pw','p18_pw_chrysalis_operation'],cocoon:['pw','p18_pw_cocoon_operation'],peacewalker_biped:['pw','p18_pw_cocoon_operation'],
   peacewalker:['pw','p18_pw_peace_walker_operation'],zeke:['pw','mother_base'],gander:['ghost_babel','p18_ghost_galuade_cellule_gander'],
   sahel:['tpp','p18_tpp_afghanistan_sahelanthropus_canyon'],ray_mgR:['mgr','p18_mgr_abkhazie_cour_desperado'],
   grad:['mgr','p18_mgr_world_marshal_esplanade'],excelsus:['mgr','pakistan_wreck'],kodoque:['acid','lobito'],chaioth:['acid2','saintlogic'],
@@ -23,7 +23,7 @@
   const registry=dependencies.registry||root.CQC_STAGE_REGISTRY,renderer=dependencies.renderer||root.CQC_STAGE_LAYERS;
   const document=dependencies.document||root.document,frames=new WeakMap(),bindings=new Map();
   for(const[id,[titleID,stageID]]of Object.entries(SCENES)){
-   const stage=registry?.resolve(stageID,{titleID});if(stage)bindings.set(id,{id,titleID,stageID:stage.id,name:stage.name,simulation:true});
+   const stage=registry?.resolve(stageID,{titleID});if(stage)bindings.set(id,{id,titleID,stageID:stage.id,name:id==='peacewalker_biped'?'Site minier — Peace Walker':stage.name,simulation:true});
   }
   let pending=null,statusNode;
   const diagnostics={backgrounds:0,foregrounds:0,loading:0,last:null};
