@@ -1,0 +1,30 @@
+# Pièces natives, Gander et grands duels — Pass30
+
+Ce lot corrige Hammerhead et Khamsin qui se chevauchaient en Versus et complète leurs sources natives. Gander reçoit une véritable nouvelle silhouette ; ZEKE utilise sa banque dorsale conventionnelle ; les outils déjà dessinés des Mk.II/Mk.III sont raccordés. Raiden dans le module Revengeance utilise maintenant ses sprites MGR.
+
+## Comportement obtenu
+
+- **Grands duels** : spawn, limites d'arène et caméra suivent les silhouettes dirigées, sans diminuer la taille des machines. Hammerhead et Khamsin utilisent un corps mécanique lié à leur coque/châssis ; les rotors, ailes et la hache ne deviennent pas une boîte de collision massive. Les tirs et les attaques de contact restent atteignables. Dégâts, portée et durée des techniques sont conservés.
+- **Gander** : le dessin primaire [Konami](https://www.konami.com/mg/archive/ghostbabel/japanese/character/metalgear.html) guide le capot aplati, les longues jambes et la caméra trois-quarts. Deux nouvelles sources, fermée et plaque ouverte, remplacent le rendu actif antérieur. Les anciens fichiers et les 25 identités de pièces restent conservés ; deux paliers de genou sont ajoutés. Les pivots, longueurs de membres, pieds et pliage de 85 unités sont recalibrés.
+- **ZEKE** : le caisson conventionnel du Power Unit comporte six ports selon la [planche originale](https://metalgear.cl/art/p103-zeke-poses.jpg). Il suit le torse. Arsenal distingue le rayon émis par le railgun et les missiles émis par la banque. La cible MISSILES suit le caisson ; un tir réel lui retire 520 points sans modifier la santé du railgun ou de l'IA.
+- **Mk.II/Mk.III** : 18 composants issus des quatre atlas existants raccordent les pinces, les deux poses natives de câble et les coques ouvertes de service. Les doigts suivent leur poignet. Les champs réels d'animation de Versus déclenchent la pince et le câble ; la coque de service reste une pose de catalogue/banc, sans commande de jeu supplémentaire inventée. Les deux incarnations et leurs caméras restent distinctes.
+- **BIC** : deux anneaux sont réellement séparés de la cage de la couronne de lancement. Les anciens mouvements balistiques et sept identités sont conservés. Aucune ouverture de pince n'est inventée.
+- **Pilote Revengeance** : le corps noir de Raiden MGR utilise les sprites natifs existants dans les deux directions. Pied et centre restent calibrés à 102 unités visuelles ; attaques et parades visent le boss. Le combat attend le décodage, et le chargement peut être relancé après un échec. Les 55 fonctions de combat/profil d'origine sont inchangées.
+
+Le catalogue conserve 62 rigs et passe de 752 à 775 parties : 23 nœuds supplémentaires. Les quatre helpers sont chargés dans les huit consommateurs. Les descripteurs de sortie d'arme sont fusionnés avant validation contre la source finale : une coordonnée de l'ancien atlas ne peut pas être validée comme si elle appartenait au nouveau dessin.
+
+## Vérification et publication
+
+Les preuves comprennent des décodages physiques de PNG, des partitions de pixels natifs, les matrices de pivots, des poses Canvas dans Chromium et des rencontres lancées depuis les vrais menus. Les contrôles des familles conservent les anciens identifiants, sauvegardes, HP et horloges. Le pont natif reconnaît maintenant les vrais champs de marche, attaque et KO envoyés par Versus. Douze cas natifs concordent avec les actions explicites correspondantes ; 90 appels explicites anciens restent identiques. Les 16 fonctions et 19 paramètres du cache natif Pass29 sont inchangés. Le choix de sortie d'arme Arsenal est raccordé séparément à la technique en cours.
+
+La régression humaine du moteur Versus couvre 3 600 ticks avec état, volumes d'attaque et réinitialisation identiques. Les grands duels couvrent contact, tirs, CPU et coin d'arène. Les rencontres MGR couvrent RAY, GRAD et Excelsus depuis CQC autonome et Shadow Ops, avec deux scénarios de chargement lent/échec/réessai. ZEKE a été vérifié dans Arsenal autonome avec rayon, missiles naturels, tir sur le caisson, pause et retour. La vérification indépendante finale de ZEKE et Gander passe aussi depuis les menus de Shadow Ops, avec tir sur le sous-système visé, pause et retour. Le refus de chargement observé pendant la QA provenait de la pression mémoire du conteneur ; le même runtime passe après libération de la seule copie de build générée.
+
+Le Mk.II a également été lancé en second joueur dans le vrai Versus Shadow Ops : la pince et le câble natifs sont prêts durant les techniques correspondantes. Les commandes de test suivent les bindings réels du jeu. La build et les 2 645 fichiers construits concordent avec le manifeste final. Les arbres Git et la publication HTTPS seront attestés par les reçus effectifs de livraison Pass30 après vérification. Ce document décrit les changements ; il ne remplace pas ces reçus de publication effective.
+
+## Limites de fidélité
+
+La cible reste le plus proche possible des incarnations d'origine. Les nouveaux dessins de Gander et du Power Unit sont des reconstructions 2D guidées par les références, pas des modèles ou animations extraits des jeux. Les surfaces cachées et les joints révélés restent interprétés. Les frontières de découpe ont des différences d'anticrénelage mesurées ; la conservation des centres de pixels opaques ne certifie pas un assemblage RGBA identique ni une fidélité absolue 1:1.
+
+Le dessin de lanceur nucléaire de ZEKE est une configuration de concept différente ; il n'est pas ajouté simultanément au railgun du boss PSP standard. Les « trois pinces » du BIC ne sont pas attestées par les références MPO consultées : les cibles CQC restent une adaptation de gameplay. Le Mk possède un manipulateur polyvalent, pas quatre armes canoniques distinctes.
+
+Les anciennes trajectoires du boss ZEKE dans Core restent conservées ; la différenciation des sorties d'arme de ce lot concerne Arsenal. Le corps blanc du prologue R-00 de Raiden, les câbles/coques de service vus depuis l'autre caméra et la déformation continue du câble restent absents. Les autres besoins sont suivis dans [NEXT_LOT.md](NEXT_LOT.md).

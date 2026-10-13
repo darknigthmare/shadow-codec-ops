@@ -72,9 +72,16 @@
 <script src="../src/cqc-pass29-classic-articulation.js"></script>
 <script src="../src/cqc-pass29-pw-articulation.js"></script>
 <script src="../src/cqc-pass29-heavy-articulation.js"></script>
+<script src="../src/cqc-pass30-bic-completion.js"></script>
+<script src="../src/cqc-pass30-mk-completion.js"></script>
+<script src="../src/cqc-pass30-zeke-completion.js"></script>
+<script src="../src/cqc-pass30-gander-fidelity.js"></script>
 <script src="../src/cqc-pass28-rig-setup.js"></script>
 <script src="../src/cqc-pass28-rig-install.js"></script>
 <script src="../src/cqc-pass18-machine-bridge.js"></script>
+<script src="../src/cqc-pass27-arsenal-player-catalog.js"></script>
+<script src="../src/cqc-sprite-renderer.js"></script>
+<script src="../src/cqc-pass27-arsenal-native-player.js"></script>
 <script>
 (()=>{
 'use strict';
@@ -93,6 +100,69 @@ const defs={
 const diff={story:{damage:.72,tell:1.25,hp:.86},normal:{damage:1,tell:1,hp:1},hard:{damage:1.28,tell:.78,hp:1.18}};
 let selectedBoss='ray', selectedMode='boss', difficulty='normal', state=null, running=false, paused=false, raf=0,last=0, keys=new Set(), chainIndex=0, chainElapsed=0;
 let profile=loadProfile();
+// The dedicated MGR encounter uses the same admitted black-body Revengeance
+// operator as Arsenal. Directions and keyposes are real PNG crops, not a
+// procedural stand-in. Rendering never alters the encounter actor or hitbox.
+const nativePilotUID='core__raiden',nativePilotFighter=Object.freeze({uid:nativePilotUID,costume:'original'});
+const nativePilotClock=new WeakMap(),nativePilotCalibration=new Map();
+const nativePilotMetrics={drawn:0,pendingDraws:0,byAction:{},last:null};
+let nativePilotPromise=null,nativePilotPending=null,nativePilotSerial=0;
+function pilotReady(){return window.CQC_COMBAT_SPRITES?.status(nativePilotUID,{costume:'original'}).ready===true}
+function retainNativePilot(){window.CQC_COMBAT_SPRITES?.retainFighters([nativePilotFighter])}
+function loadNativePilot(retry=false){
+ retainNativePilot();
+ if(pilotReady())return Promise.resolve(true);
+ if(nativePilotPromise&&!retry)return nativePilotPromise;
+ const renderer=window.CQC_COMBAT_SPRITES;
+ nativePilotPromise=renderer?.whenReady(nativePilotUID,{costume:'original',retry}).catch(()=>false)||Promise.resolve(false);
+ return nativePilotPromise;
+}
+function cancelNativePilotLaunch(){nativePilotPending=null;document.getElementById('mgr32-intro-start').disabled=false}
+function deferNativePilotLaunch(resume){
+ if(pilotReady()){retainNativePilot();return false}
+ if(nativePilotPending)return true;
+ const token={resume};nativePilotPending=token;
+ const button=document.getElementById('mgr32-intro-start');button.disabled=true;
+ ui.introTitle.textContent='LIAISON AVEC RAIDEN';ui.introText.textContent='Préparation de l’opérateur.';ui.intro.hidden=false;
+ loadNativePilot(true).then(ok=>{
+  if(nativePilotPending!==token)return;
+  nativePilotPending=null;button.disabled=false;
+  if(ok){ui.introTitle.textContent=defs[selectedBoss].name;ui.introText.textContent=defs[selectedBoss].intro;token.resume()}
+  else{ui.introTitle.textContent='LIAISON INTERROMPUE';ui.introText.textContent='Réessayez de lancer l’opération ou choisissez une autre cible.'}
+ });
+ return true;
+}
+function nativePilotPose(){
+ const p=state?.player||{x:190,y:590,onGround:true,crouch:false,hp:1,inv:0,attackT:0,parryT:0,healT:0,bladeModeT:0};
+ const time=state?Math.max(0,state.startedAt-state.t):0;
+ let clock=state&&nativePilotClock.get(state);
+ if(!clock||time<clock.time){clock={time,x:p.x,hp:p.hp,hitAt:-Infinity,walk:false,face:1,action:'idle',actionAt:time,key:'mgr-native-pilot:'+ ++nativePilotSerial};if(state)nativePilotClock.set(state,clock)}
+ if(time>clock.time){const dx=p.x-clock.x;clock.walk=Math.abs(dx)>.05;if(clock.walk)clock.face=dx<0?-1:1;clock.x=p.x;clock.time=time;if(p.hp<clock.hp)clock.hitAt=time;clock.hp=p.hp}
+ const action=p.hp<=0?'ko':p.parryT>0?'parry':p.attackT>0||p.bladeModeT>0?'blade':p.healT>0?'recover':time-clock.hitAt<.15?'hit':!p.onGround?'jump':p.crouch?'crouch':clock.walk?'walk':'idle';
+ if(action!==clock.action){clock.action=action;clock.actionAt=time}
+ const pose={time,actionTime:Math.max(0,time-clock.actionAt),entityKey:clock.key,ko:action==='ko',hit:action==='hit',jump:action==='jump',crouch:action==='crouch',walk:action==='walk'};
+ if(action==='blade'||action==='parry'||action==='recover')Object.assign(pose,{attack:true,animationActive:true,moveSlot:action==='recover'?'utility':'arsenal_'+action});
+ const face=state&&(action==='blade'||action==='parry')?(bossPoint().x<p.x?-1:1):clock.face;
+ return{p,action,pose,face};
+}
+function pilotCalibration(face){
+ if(nativePilotCalibration.has(face))return nativePilotCalibration.get(face);
+ const entry=window.CQC_COMBAT_SPRITES?.getEntry(nativePilotUID);
+ const calibrated=entry&&window.CQC_PASS27_ARSENAL_NATIVE_PLAYER?.statureCalibration(nativePilotUID,entry,face);
+ if(!calibrated)return null;
+ // Existing MGR operator:102 arena units upright. Both directions and every
+ // keypose share that one datum; crouched and fallen poses stay naturally low.
+ const ratio=102/calibrated.uprightArenaUnits;
+ const result={scale:calibrated.scale*ratio,xOffset:calibrated.xOffset*ratio,yOffset:calibrated.yOffset*ratio,calibrated:calibrated.calibrated,uprightArenaUnits:102,measurement:calibrated.measurement};
+ if(pilotReady()&&calibrated.calibrated)nativePilotCalibration.set(face,result);
+ return result;
+}
+function nativePilotStatus(){
+ const entry=window.CQC_COMBAT_SPRITES?.getEntry(nativePilotUID),sources=new Map();
+ for(const groups of [entry?.actions,entry?.oppositeActions])for(const group of Object.values(groups||{}))for(const frame of group.frames||[])sources.set(frame.file,{file:frame.file,sha256:frame.sha256});
+ return{uid:nativePilotUID,incarnation:entry?.incarnation||null,ready:pilotReady(),pendingLaunch:!!nativePilotPending,sourceFiles:[...sources.values()],calibration:[...nativePilotCalibration].map(([face,data])=>({face,...data})),metrics:JSON.parse(JSON.stringify(nativePilotMetrics)),physicalActorChanged:false,sourcePixelsChanged:false};
+}
+
 function loadProfile(){try{const p=JSON.parse(localStorage.getItem(STORAGE)||'null');if(p&&p.schema===1)return p}catch(_){}return{schema:1,version:VERSION,wins:{ray:0,grad:0,excelsus:0},best:{},archiveWins:0,archiveBest:null,lastRuns:[]}}
 function saveProfile(){try{localStorage.setItem(STORAGE,JSON.stringify(profile))}catch(_){} }
 function formatTime(v){v=Math.max(0,Math.ceil(v));return `${String(Math.floor(v/60)).padStart(2,'0')}:${String(v%60).padStart(2,'0')}`}
@@ -112,8 +182,8 @@ function newState(id){const d=defs[id],m=diff[difficulty];const s={boss:id,mode:
  if(id==='excelsus')Object.assign(s,{legs:[0,1,2,3].map(()=>Math.round(1800*m.hp)),legsMax:[0,1,2,3].map(()=>Math.round(1800*m.hp)),blades:[Math.round(3000*m.hp),Math.round(3000*m.hp)],bladesMax:[Math.round(3000*m.hp),Math.round(3000*m.hp)],bladeOpen:-1,bladeOpenT:0,core:Math.round(7000*m.hp),coreMax:Math.round(7000*m.hp),target:0});
  return s}
 function resetState(id=selectedBoss){state=newState(id)}
-function start(id=selectedBoss){if(window.CQC_PASS18_MACHINES?.deferLaunch({engine:'mgr',id},o=>start(o.id)))return;if(window.CQC_PASS18_VFX?.deferCoreLaunch({mode:'boss',player:'raiden',opponent:id,source:'mgr32',difficulty},()=>start(id)))return;stop();selectedBoss=id;resetState(id);running=true;paused=false;ui.intro.hidden=true;ui.result.hidden=true;ui.pause.hidden=true;last=performance.now();ui.log.textContent=`${defs[id].episode} · opération active.`;raf=requestAnimationFrame(loop)}
-function stop(){window.CQC_PASS18_MACHINES?.cancelPendingLaunch();running=false;paused=false;cancelAnimationFrame(raf);keys.clear()}
+function start(id=selectedBoss){if(deferNativePilotLaunch(()=>start(id)))return;if(window.CQC_PASS18_MACHINES?.deferLaunch({engine:'mgr',id},o=>start(o.id)))return;if(window.CQC_PASS18_VFX?.deferCoreLaunch({mode:'boss',player:'raiden',opponent:id,source:'mgr32',difficulty},()=>start(id)))return;stop();selectedBoss=id;resetState(id);running=true;paused=false;ui.intro.hidden=true;ui.result.hidden=true;ui.pause.hidden=true;last=performance.now();ui.log.textContent=`${defs[id].episode} · opération active.`;raf=requestAnimationFrame(loop)}
+function stop(){cancelNativePilotLaunch();window.CQC_PASS18_MACHINES?.cancelPendingLaunch();running=false;paused=false;cancelAnimationFrame(raf);keys.clear()}
 function showMessage(t,d=1.5){if(!state)return;state.message=t;state.messageT=d;ui.log.textContent=t}
 function playerRect(){const p=state.player,h=p.crouch?52:90;return{x:p.x-22,y:p.y-h,w:44,h}}
 function bossPoint(){if(!state)return{x:1000,y:390};if(state.boss==='ray'){if(state.target===0)return{x:875,y:505};if(state.target===1)return{x:1060,y:505};return{x:990,y:300}}
@@ -189,7 +259,17 @@ function drawRay(){ctx.save();ctx.translate(990,0);ctx.strokeStyle='#ff7587';ctx
 function drawGrad(){ctx.save();ctx.translate(990,0);ctx.strokeStyle='#6be7ff';ctx.lineWidth=5;ctx.fillStyle='#2e3941';ctx.fillRect(-145,330,290,155);ctx.strokeRect(-145,330,290,155);ctx.fillStyle='#182026';ctx.fillRect(-115,475,75,100);ctx.fillRect(40,475,75,100);ctx.fillStyle=state&&state.batteryOpen>0?'#ffd767':'#e85b65';ctx.fillRect(92,365,58,72);ctx.fillStyle='#5aa7b8';ctx.fillRect(-168,347,45,116);ctx.fillStyle='#11161c';ctx.fillRect(-35,285,70,55);ctx.restore()}
 function drawExcelsus(){ctx.save();ctx.translate(1000,0);ctx.strokeStyle='#ffc766';ctx.lineWidth=5;ctx.fillStyle='#40372f';ctx.beginPath();ctx.moveTo(-150,250);ctx.lineTo(120,250);ctx.lineTo(175,385);ctx.lineTo(95,450);ctx.lineTo(-115,450);ctx.lineTo(-180,365);ctx.closePath();ctx.fill();ctx.stroke();const xs=[-190,-95,55,150];for(let i=0;i<4;i++){ctx.fillStyle=state&&state.phase===1&&state.legs[i]<=0?'#261b18':'#2b2726';ctx.fillRect(xs[i],430,58,155);ctx.fillStyle='#8e5b3f';ctx.fillRect(xs[i]+8,500,42,50)}ctx.fillStyle='#262325';ctx.fillRect(-250,270,105,36);ctx.fillRect(145,270,105,36);ctx.fillStyle=state&&state.phase===3?'#ff6a58':'#71dae5';ctx.fillRect(-45,318,90,78);ctx.restore()}
 function drawMachine(){if(window.CQC_PASS18_MACHINES?.drawMGR(ctx,state,selectedBoss))return;const id=state?state.boss:selectedBoss;if(id==='ray')drawRay();else if(id==='grad')drawGrad();else drawExcelsus()}
-function drawPlayer(){const p=state?state.player:{x:190,y:590,crouch:false,inv:0,attackT:0,parryT:0,bladeModeT:0};ctx.save();if(p.inv>0&&Math.floor(p.inv*20)%2===0)ctx.globalAlpha=.35;ctx.translate(p.x,p.y);ctx.fillStyle='#cfd6da';ctx.fillRect(-15,p.crouch?-48:-80,30,p.crouch?48:80);ctx.fillStyle='#20242a';ctx.fillRect(-21,p.crouch?-33:-54,42,20);ctx.fillStyle='#d2a47d';ctx.fillRect(-12,p.crouch?-66:-102,24,23);ctx.fillStyle='#8fdfff';ctx.fillRect(-24,p.crouch?-21:-38,48,8);if(p.attackT>0||p.bladeModeT>0){ctx.strokeStyle='#eafcff';ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(15,-65);ctx.lineTo(78,-105+(p.attackT*100));ctx.stroke()}if(p.parryT>0){ctx.strokeStyle='#ffdf73';ctx.lineWidth=4;ctx.beginPath();ctx.arc(0,-55,48,-1.3,1.3);ctx.stroke()}ctx.restore()}
+function drawPlayer(){
+ const selected=nativePilotPose(),calibration=pilotCalibration(selected.face);
+ if(!pilotReady()||!calibration){nativePilotMetrics.pendingDraws++;return}
+ const {p,action,pose,face}=selected;
+ ctx.save();
+ if(p.inv>0&&Math.floor(p.inv*20)%2===0)ctx.globalAlpha=.35;
+ const drawn=window.CQC_COMBAT_SPRITES.draw(ctx,nativePilotFighter,p.x+calibration.xOffset,p.y+calibration.yOffset,face,calibration.scale,pose);
+ ctx.restore();
+ if(drawn){nativePilotMetrics.drawn++;nativePilotMetrics.byAction[action]=(nativePilotMetrics.byAction[action]||0)+1;nativePilotMetrics.last={action,face,x:p.x,y:p.y,scale:calibration.scale,actionTime:pose.actionTime}}
+ else nativePilotMetrics.pendingDraws++;
+}
 function draw(){drawBackground();drawMachine();drawPlayer();if(!state){ctx.fillStyle='#f1e7ea';ctx.font='bold 24px monospace';ctx.fillText('SÉLECTIONNEZ UNE OPÉRATION REVENGEANCE',300,672);return}
  for(const h of state.hazards){const warn=h.warn>0;ctx.fillStyle=warn?'rgba(255,208,91,.28)':'rgba(255,67,82,.52)';if(warn||!window.CQC_PASS18_VFX?.drawBoxHazard(ctx,h,{episode:'mgr',attackKind:state.attackKind,time:state.startedAt-state.t,noFlash:true,reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches}))ctx.fillRect(h.x,h.y,h.w,h.h);ctx.strokeStyle=warn?'#ffd369':'#ff6374';ctx.setLineDash(warn?[12,8]:[]);ctx.strokeRect(h.x,h.y,h.w,h.h);ctx.setLineDash([])}
  for(const pr of state.projectiles){if(window.CQC_PASS18_VFX?.drawBossProjectile(ctx,pr,{coordinateY:'down',time:state.startedAt-state.t,noFlash:true,reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches}))continue;ctx.fillStyle=pr.side==='player'?'#9ff5ff':'#ff6b78';ctx.beginPath();ctx.arc(pr.x,pr.y,pr.r,0,Math.PI*2);ctx.fill();ctx.strokeStyle=pr.side==='player'?'#e6ffff':'#ffd0d5';ctx.beginPath();ctx.moveTo(pr.x,pr.y);ctx.lineTo(pr.x-pr.vx*.07,pr.y-pr.vy*.07);ctx.stroke()}
@@ -206,8 +286,8 @@ function draw(){drawBackground();drawMachine();drawPlayer();if(!state){ctx.fillS
 function drawPreview(){resetState(selectedBoss);state.t=state.startedAt;draw();state=null}
 function loop(now){if(!running)return;const dt=Math.min(.033,(now-last)/1000||.016);last=now;update(dt);draw();if(running)raf=requestAnimationFrame(loop)}
 function showRegistry(){ui.introTitle.textContent='REGISTRE REVENGEANCE · v0.32';ui.introText.innerHTML='<div class="mgr32-registry"><div><b>RAY · RENCONTRE DÉDIÉE</b><small>Deux ouvertures de tête, parades et Mode Lame.</small></div><div><b>GRAD · RENCONTRE DÉDIÉE</b><small>Bouclier frontal, EMP, charge retournable et batterie.</small></div><div><b>EXCELSUS · RENCONTRE DÉDIÉE</b><small>Appuis, lames géantes et cœur final.</small></div><div><b>RESTE À PRODUIRE</b><small>Campagne complète, séquences de découpe libre, variantes VR, géométrie et illustrations finales.</small></div><div><b>MGS4 RESTE SÉPARÉ</b><small>REX/RAY de MGS4, Gekkos et formes Beauty ne sont pas validés par ces rencontres.</small></div><div><b>ÉPISODES SANS MODULE</b><small>Survive, Mobile, Touch, Online, Arcade et plusieurs éditions restent ouverts.</small></div></div>';ui.intro.hidden=false}
-function selectBoss(id){if(!defs[id])return;window.CQC_PASS18_VFX?.cancelPendingLaunch();selectedBoss=id;document.querySelectorAll('[data-mgr32-boss]').forEach(b=>b.classList.toggle('active',b.dataset.mgr32Boss===id));refreshProfile();drawPreview();ui.log.textContent=`${defs[id].episode} · ${defs[id].name} sélectionné.`}
-function prepareStart(){chainIndex=0;chainElapsed=0;if(selectedMode==='chronicle')selectedBoss='ray';ui.introTitle.textContent=selectedMode==='chronicle'?'REVENGEANCE · ARCHIVE MACHINES':defs[selectedBoss].name;ui.introText.textContent=selectedMode==='chronicle'?'Affrontez RAY, GRAD puis EXCELSUS. Chaque opération redémarre avec ses ressources propres.':defs[selectedBoss].intro;ui.intro.hidden=false}
+function selectBoss(id){if(!defs[id])return;cancelNativePilotLaunch();window.CQC_PASS18_VFX?.cancelPendingLaunch();selectedBoss=id;document.querySelectorAll('[data-mgr32-boss]').forEach(b=>b.classList.toggle('active',b.dataset.mgr32Boss===id));refreshProfile();drawPreview();ui.log.textContent=`${defs[id].episode} · ${defs[id].name} sélectionné.`}
+function prepareStart(){cancelNativePilotLaunch();chainIndex=0;chainElapsed=0;if(selectedMode==='chronicle')selectedBoss='ray';ui.introTitle.textContent=selectedMode==='chronicle'?'REVENGEANCE · ARCHIVE MACHINES':defs[selectedBoss].name;ui.introText.textContent=selectedMode==='chronicle'?'Affrontez RAY, GRAD puis EXCELSUS. Chaque opération redémarre avec ses ressources propres.':defs[selectedBoss].intro;ui.intro.hidden=false}
 function continueChain(){chainIndex++;selectedBoss=['ray','grad','excelsus'][chainIndex];ui.result.hidden=true;start(selectedBoss)}
 document.getElementById('mgr32-open').addEventListener('click',openModule);document.getElementById('mgr32-close').addEventListener('click',closeModule);document.querySelectorAll('[data-mgr32-boss]').forEach(b=>b.addEventListener('click',()=>selectBoss(b.dataset.mgr32Boss)));document.querySelectorAll('[data-mgr32-mode]').forEach(b=>b.addEventListener('click',()=>{window.CQC_PASS18_VFX?.cancelPendingLaunch();selectedMode=b.dataset.mgr32Mode;document.querySelectorAll('[data-mgr32-mode]').forEach(x=>x.classList.toggle('active',x===b));ui.log.textContent=selectedMode==='chronicle'?'Archive complète : RAY → GRAD → EXCELSUS.':'Rencontre directe avec la machine sélectionnée.'}));
 document.getElementById('mgr32-start').addEventListener('click',prepareStart);document.getElementById('mgr32-intro-start').addEventListener('click',()=>start(selectedBoss));document.getElementById('mgr32-registry').addEventListener('click',showRegistry);document.getElementById('mgr32-continue').addEventListener('click',continueChain);document.getElementById('mgr32-retry').addEventListener('click',()=>{chainIndex=0;chainElapsed=0;start(selectedMode==='chronicle'?'ray':selectedBoss)});document.getElementById('mgr32-menu').addEventListener('click',()=>{ui.result.hidden=true;drawPreview()});document.getElementById('mgr32-resume').addEventListener('click',()=>{paused=false;ui.pause.hidden=true;last=performance.now();raf=requestAnimationFrame(loop)});document.getElementById('mgr32-pause-menu').addEventListener('click',()=>{stop();ui.pause.hidden=true;drawPreview()});ui.difficulty.addEventListener('change',()=>{difficulty=ui.difficulty.value;drawPreview()});
@@ -225,7 +305,7 @@ function debugScene(name){openModule();ui.intro.hidden=true;ui.result.hidden=tru
 function debugPlay(){if(!state)return false;if(!running){running=true;paused=false;last=performance.now();raf=requestAnimationFrame(loop)}return true}
 function debugFreeze(){if(running){running=false;cancelAnimationFrame(raf)}paused=false;return true}
 function debugWin(){if(!state)return false;if(!running){running=true;paused=false}finish(true,'DEBUG');return true}
-window.CQC_MGR_MACHINES_V032={version:VERSION,open:openModule,startBoss:(id='ray')=>{openModule();selectBoss(defs[id]?id:'ray');start(selectedBoss)},getProfile:()=>JSON.parse(JSON.stringify(profile)),getState:()=>state?JSON.parse(JSON.stringify(state)):null,debug:{scene:debugScene,play:debugPlay,freeze:debugFreeze,win:debugWin}};
-refreshProfile();drawPreview();if(new URLSearchParams(location.search).get('module')==='mgr-machines')openModule();
+window.CQC_MGR_MACHINES_V032={version:VERSION,open:openModule,startBoss:(id='ray')=>{openModule();selectBoss(defs[id]?id:'ray');start(selectedBoss)},getProfile:()=>JSON.parse(JSON.stringify(profile)),getPilotStatus:nativePilotStatus,getState:()=>state?JSON.parse(JSON.stringify(state)):null,debug:{scene:debugScene,play:debugPlay,freeze:debugFreeze,win:debugWin}};
+window.addEventListener('load',()=>setTimeout(()=>loadNativePilot().then(ok=>{if(ok&&!running)drawPreview()}),0),{once:true});refreshProfile();drawPreview();if(new URLSearchParams(location.search).get('module')==='mgr-machines')openModule();
 })();
 </script><script>document.getElementById('mgr32-root').hidden=false;document.documentElement.style.overflow='';</script></body></html>

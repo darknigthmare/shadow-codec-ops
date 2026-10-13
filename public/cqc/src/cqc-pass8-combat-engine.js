@@ -5,6 +5,7 @@ const FLOOR=568,LEFT=65,RIGHT=1215,SLOTS=['light','heavy','low','throw','special
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const copy=x=>JSON.parse(JSON.stringify(x));
 const spatial=()=>root.CQC_PASS19_VERSUS_SPATIAL,bodyY=(p,h)=>spatial()?.bodyY(p,h)??p.y-h,bodyPoint=(p,x,y)=>spatial()?.bodyPoint(p,x,y)||{x:p.x+p.face*x,y:p.y-y};
+const actorX=(s,p,x)=>spatial()?.clampActor(s,p,x)??clamp(x,LEFT,RIGHT),arena=(s)=>spatial()?.arena(s)||{left:LEFT,right:RIGHT};
 const empty=()=>({left:false,right:false,down:false,guard:false,jump:false,dash:false,tech:false,slot:null});
 const slotName={special:'I',specialDown:'↓ + I',specialForward:'AVANT + I',specialBack:'ARRIÈRE + I',super:'O',utility:'L',light:'J',heavy:'K',low:'↓ + J',throw:'U'};
 function rand(s){let x=s.seed>>>0;x^=x<<13;x^=x>>>17;x^=x<<5;s.seed=x>>>0;return(s.seed>>>0)/4294967296;}
@@ -23,22 +24,22 @@ function create(a,b,options={}){const s={version:'0.45',a:makeActor(a,0),b:makeA
  rounds:options.rounds??2,round:1,phase:options.training||options.skipIntro?'fight':'intro',phaseT:options.training||options.skipIntro?0:100,
  finished:false,roundWinner:null,winner:null,projectiles:[],traps:[],fx:[],events:[],metrics:{},nextId:1,
  options:{training:false,dummy:'idle',autoheal:false,freeMeter:false,freeResource:false,...options},idleTraining:0};
- s.b.ai=options.mode==='cpu';return s;}
+ s.b.ai=options.mode==='cpu';spatial()?.placeRound(s);return s;}
 function actors(s){return[s.a,s.b];}
 function other(s,p){return p.slot===0?s.b:s.a;}
 function reset(s,{keepWins=true}={}){const oldA=s.a,oldB=s.b;s.a=makeActor(oldA.f,0);s.b=makeActor(oldB.f,1);s.a.ai=oldA.ai;s.b.ai=oldB.ai;
  if(keepWins){s.a.wins=oldA.wins;s.b.wins=oldB.wins;}s.timer=s.timerStart;s.phase=s.options.training?'fight':'intro';s.phaseT=s.options.training?0:90;
- s.projectiles=[];s.traps=[];s.fx=[];s.roundWinner=null;s.idleTraining=0;event(s,'roundReset',null);return s;}
+ s.projectiles=[];s.traps=[];s.fx=[];s.roundWinner=null;s.idleTraining=0;spatial()?.placeRound(s);event(s,'roundReset',null);return s;}
 function baseBox(p){const reviewed=root.CQC_PASS8_COMBAT_FIDELITY?.hurtbox(p);if(reviewed)return reviewed;
  const authored=p.f.combat.simulationBody;if(authored&&[authored.width,authored.height].every(n=>Number.isFinite(n)&&n>0)){const low=p.crouch||p.attack?.def.lowProfile,h=low?(Number.isFinite(authored.crouchHeight)&&authored.crouchHeight>0?authored.crouchHeight:authored.height*.53):authored.height;return{x:p.x-authored.width/2,y:p.y-h,w:authored.width,h};}
  const k=p.f.visual?.kind,species=p.f.visual?.species,small=p.f.combat.key==='small_drone'||species==='monkey';
  const low=k==='quadruped'||p.f.combat.key==='wolf_robot'||p.f.combat.key==='crying';
  const w=small?60:low?140:k==='machine'?125:78;let h=small?90:low?134:k==='machine'?210:230;
  if(species==='horse')h=185;if(p.crouch||p.attack?.def.lowProfile)h*=.53;return{x:p.x-w/2,y:p.y-h,w,h};}
-function box(p){const b=baseBox(p);return spatial()?.transformBox(p,b)||b;}
+function box(p){const b=baseBox(p),world=spatial()?.transformBox(p,b)||b;return spatial()?.contactBox(p,world)||world;}
 function overlap(a,b){return a&&b&&a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;}
 function inActive(a){return a&&a.t>=a.def.startup&&a.t<a.def.startup+a.def.active;}
-function hitbox(p){const a=p.attack;if(!inActive(a)||a.def.kind!=='melee')return null;const d=a.def,r=d.reach*clamp(p.f.reach||1,.85,1.25),lo=d.level==='low',h=lo?62:Math.min(155,d.height?d.height:155),top=d.height|| (lo?62:190);const b={x:p.face>0?p.x:p.x-r,y:p.y-top,w:r,h};return spatial()?.transformBox(p,b)||b;}
+function hitbox(p){const a=p.attack;if(!inActive(a)||a.def.kind!=='melee')return null;const d=a.def,r=d.reach*clamp(p.f.reach||1,.85,1.25),lo=d.level==='low',h=lo?62:Math.min(155,d.height?d.height:155),top=d.height|| (lo?62:190);const b={x:p.face>0?p.x:p.x-r,y:p.y-top,w:r,h},world=spatial()?.transformBox(p,b)||b;return spatial()?.contactAttack(p,world)||world;}
 function isGun(m){return m.kind==='projectile'&&['ballistic','precision','tranq','rail','rocket'].includes(m.tag);}
 function costAllowed(p,d){const r=p.f.combat.resource,c=d.cost||0;return ['heat','cost'].includes(r.kind)?p.r+c<=r.max+.001:p.r>=c;}
 function denied(s,p,why){p.stats.denied++;p.feedback=why;p.feedbackT=48;event(s,'denied',p,{why});return false;}
@@ -98,7 +99,7 @@ function damage(s,a,d,m,{projectile=null,forced=false,scale=1}={}){if(root.CQC_P
  if(!blocking&&!armor&&!reactive){
   d.comboHits++;d.comboQuiet=0;const stun=Math.min(35,throwing?32:14+Math.round(amount/100));d.hit=Math.max(d.hit,stun);d.comboStun+=stun;d.block=false;d.attack=null;d.cool=0;
   d.vx=(projectile?Math.sign(projectile.vx):a.face)*(throwing?8:5);if(m.launch&&d.comboHits<4){d.vy=m.launch;d.onGround=false;}
-  if(throwing){d.throwProtect=110;a.throwProtect=Math.max(a.throwProtect,30);d.x=clamp(d.x+a.face*48,LEFT,RIGHT);}
+  if(throwing){d.throwProtect=110;a.throwProtect=Math.max(a.throwProtect,30);d.x=actorX(s,d,d.x+a.face*48);}
   if(d.comboStun>=105){d.hit=12;d.vx=a.face*14;d.throwProtect=150;d.comboStun=0;event(s,'comboEscape',d);}
   applyStatus(s,a,d,m);
   a.meter=clamp(a.meter+6,0,100);d.meter=clamp(d.meter+4,0,100);
@@ -124,7 +125,7 @@ function activate(s,p,a){if(a.activated)return;a.activated=true;p.stats.activati
  if(d.kind==='projectile'){for(let i=0;i<(d.count||1);i++)spawn(s,p,d,a,i);}
  if(d.kind==='trap'||d.kind==='stationaryMine'){if(d.kind==='stationaryMine'&&((o.still||0)<(d.requiresStillFrames||60)||!o.onGround||o.buffs.cloak)){p.feedback='AUCUN ARRÊT VISIBLE ASSEZ LONG';p.feedbackT=70;event(s,'mineMiss',p);return;}
   const owned=s.traps.filter(t=>t.owner===p.slot&&!t.dead);while(owned.length>=(d.maxTraps||2)){owned.shift().dead=true;}
-  s.traps.push({id:s.nextId++,owner:p.slot,x:clamp(d.kind==='stationaryMine'?o.x:p.x+p.face*(Math.min(d.reach||70,150)),LEFT,RIGHT),y:FLOOR,age:0,life:d.duration||360,arm:d.arm||40,hp:d.hp||160,def:d,dead:false});
+  s.traps.push({id:s.nextId++,owner:p.slot,x:clamp(d.kind==='stationaryMine'?o.x:p.x+p.face*(Math.min(d.reach||70,150)),arena(s).left,arena(s).right),y:FLOOR,age:0,life:d.duration||360,arm:d.arm||40,hp:d.hp||160,def:d,dead:false});
   event(s,'trapPlaced',p,{slot:a.name,targetPosition:d.kind==='stationaryMine'?o.x:null,arm:d.arm||40});
  }
  if(d.kind==='recallTrap'){let recalled=0;for(const tr of s.traps)if(tr.owner===p.slot&&!tr.dead&&Math.abs(tr.x-p.x)<=(d.reach||240)){tr.dead=true;recalled++;}p.feedback=recalled?'LEURRE RAPPELÉ':'AUCUN LEURRE À PORTÉE';p.feedbackT=65;event(s,'trapRecall',p,{recalled,reach:d.reach||240});}
@@ -136,7 +137,7 @@ function activate(s,p,a){if(a.activated)return;a.activated=true;p.stats.activati
  if(d.kind==='reload'){p.r=p.f.combat.resource.max;fx(s,p.x,bodyY(p,245),'text','reload','RECHARGÉ');event(s,'reload',p);}
  if(d.kind==='recover'){const r=p.f.combat.resource;p.r=clamp(p.r+(['heat','cost'].includes(r.kind)?-1:1)*(d.restore||28),0,r.max);event(s,'recover',p);}
  if(d.kind==='mobility'){
-  if(d.blink){p.x=clamp(p.x+p.face*d.blink,LEFT,RIGHT);event(s,'reposition',p);fx(s,p.x,bodyY(p,70),'ring','psychic');}
+  if(d.blink){p.x=actorX(s,p,p.x+p.face*d.blink);event(s,'reposition',p);fx(s,p.x,bodyY(p,70),'ring','psychic');}
  }
  if(d.launchSelf&&p.onGround){p.vy=d.launchSelf;p.onGround=false;}
  if(d.selfDamage){p.life=Math.max(1,p.life-d.selfDamage);p.gray=Math.min(p.gray,10000-p.life);event(s,'selfDamage',p,{amount:d.selfDamage});}
@@ -173,7 +174,7 @@ function upkeep(s,p){for(const k of ['hit','blockstun','cool','flash','throwProt
 function action(s,p){const a=p.attack;if(!a)return;const d=a.def;a.t++;
  if(a.t===d.startup)activate(s,p,a);
  if(inActive(a)){
-  if(d.travel&&!p.hit)p.x=clamp(p.x+p.face*d.travel,LEFT,RIGHT);
+  if(d.travel&&!p.hit)p.x=actorX(s,p,p.x+p.face*d.travel);
   if(d.kind==='mobility')p.state='walk';
  }
  if(a.t>=d.startup+d.active+d.recovery){p.attack=null;p.state='idle';}
@@ -193,7 +194,7 @@ function projectileStep(s){for(const q of s.projectiles){if(q.dead)continue;if(q
    if(!ret.parried){q.hitTargets[d.slot]=q.returned?'return':'out';if(!m.returnAt||q.returned)q.dead=true;}
   }else if(m.returnAt&&q.returned&&q.hitTargets[d.slot]==='out'&&Math.abs(q.x-d.x)>90){delete q.hitTargets[d.slot];}
  }
- if(q.x<LEFT-35||q.x>RIGHT+35){if(q.bounces>0){q.vx=-q.vx;q.bounces--;q.x=clamp(q.x,LEFT-35,RIGHT+35);event(s,'ricochet',a,{id:q.id});}else if(!m.returnAt||q.returned)q.dead=true;}
+ if(q.x<arena(s).left-35||q.x>arena(s).right+35){if(q.bounces>0){q.vx=-q.vx;q.bounces--;q.x=clamp(q.x,arena(s).left-35,arena(s).right+35);event(s,'ricochet',a,{id:q.id});}else if(!m.returnAt||q.returned)q.dead=true;}
  if(q.life<=0){if(m.fuse)explode(s,q);else q.dead=true;}if(q.y>FLOOR+100||q.y<(spatial()?.worldCeiling(s)??-140))q.dead=true;
  }
  s.projectiles=s.projectiles.filter(q=>!q.dead);
@@ -214,8 +215,8 @@ function step(s,inputs=[empty(),empty()]){if(s.finished)return s;
  if(s.phase!=='fight')return s;
  if(!s.options.training&&s.timerStart>0)s.timer=Math.max(0,s.timer-1);
  const ps=actors(s);ps.forEach(p=>upkeep(s,p));for(const p of ps)if(p.f.combat.passive.observeMovement){const o=other(s,p),old=p.visibleTrace;if(!o.buffs.cloak&&Math.abs(o.x-p.x)<=380)p.visibleTrace={frame:s.frame-1,x:o.x,y:o.y,dx:old?o.x-old.x:0,dy:old?o.y-old.y:0};else p.visibleTrace=null;}ps.forEach((p,i)=>prepare(s,p,inputs[i]||empty()));ps.forEach(p=>action(s,p));
- for(const p of ps){if(p.hit||p.blockstun||p.cool)p.vx*=.82;p.x=clamp(p.x+p.vx,LEFT,RIGHT);if(!p.onGround)p.vy+=.72;p.y+=p.vy;if(p.y>=FLOOR){p.y=FLOOR;p.vy=0;p.onGround=true;}else p.onGround=false;}
- const minGap=(box(s.a).w+box(s.b).w)*.30,gap=Math.abs(s.a.x-s.b.x);if(gap<minGap&&Math.abs(s.a.y-s.b.y)<110*Math.max(spatial()?.ratio(s.a)||1,spatial()?.ratio(s.b)||1)){const dir=s.a.x<=s.b.x?-1:1;const shift=(minGap-gap)/2;s.a.x=clamp(s.a.x+dir*shift,LEFT,RIGHT);s.b.x=clamp(s.b.x-dir*shift,LEFT,RIGHT);}
+ for(const p of ps){if(p.hit||p.blockstun||p.cool)p.vx*=.82;p.x=actorX(s,p,p.x+p.vx);if(!p.onGround)p.vy+=.72;p.y+=p.vy;if(p.y>=FLOOR){p.y=FLOOR;p.vy=0;p.onGround=true;}else p.onGround=false;}
+ if(spatial()?.pushActors)spatial().pushActors(s,box);else{const minGap=(box(s.a).w+box(s.b).w)*.30,gap=Math.abs(s.a.x-s.b.x);if(gap<minGap&&Math.abs(s.a.y-s.b.y)<110){const dir=s.a.x<=s.b.x?-1:1,shift=(minGap-gap)/2;s.a.x=clamp(s.a.x+dir*shift,LEFT,RIGHT);s.b.x=clamp(s.b.x-dir*shift,LEFT,RIGHT);}}
  // Collect before applying damage, allowing genuinely simultaneous active frames.
  const pending=[];for(const p of ps){const hb=hitbox(p),a=p.attack;if(!hb||!a||a.hit)continue;destroyObjects(s,p,hb,a.def);const o=other(s,p);if(overlap(hb,box(o))){pending.push({p,o,a});}}
  for(const {p,o,a} of pending){const hit=damage(s,p,o,a.def);if(hit.hit){a.hit=true;a.confirmed=!hit.blocked&&!hit.parried;}}
@@ -225,7 +226,7 @@ function step(s,inputs=[empty(),empty()]){if(s.finished)return s;
  else if(s.timerStart>0&&s.timer<=0)roundEnd(s,s.a.life===s.b.life?-1:s.a.life>s.b.life?0:1);
  return s;
 }
-function cpu(s,p,o){const i=empty(),d=Math.abs(o.x-p.x)/(spatial()?.ratio(p)||1),dir=o.x>p.x?1:-1;if(p.hit||p.blockstun)return i;
+function cpu(s,p,o){const i=empty(),d=spatial()?.bodyDistance?.(p,o)??Math.abs(o.x-p.x)/(spatial()?.ratio(p)||1),dir=o.x>p.x?1:-1;if(p.hit||p.blockstun)return i;
  if(p.cpuGuard>0){p.cpuGuard--;i.guard=true;i.down=!!p.cpuLow;return i;}
  if(p.attack)return i;
  // Only reacts to visible committed startup, never future player inputs.

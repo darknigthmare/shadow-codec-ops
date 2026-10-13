@@ -122,6 +122,10 @@ body.original-reprise .roster{grid-auto-rows:minmax(130px,1fr);align-content:str
 <script src="../src/cqc-pass29-classic-articulation.js"></script>
 <script src="../src/cqc-pass29-pw-articulation.js"></script>
 <script src="../src/cqc-pass29-heavy-articulation.js"></script>
+<script src="../src/cqc-pass30-bic-completion.js"></script>
+<script src="../src/cqc-pass30-mk-completion.js"></script>
+<script src="../src/cqc-pass30-zeke-completion.js"></script>
+<script src="../src/cqc-pass30-gander-fidelity.js"></script>
 <script src="../src/cqc-pass28-rig-setup.js"></script>
 <script src="../src/cqc-pass28-rig-install.js"></script>
 <script src="../src/cqc-pass18-machine-bridge.js"></script>
@@ -494,7 +498,7 @@ function hasMutator49(s,id){return listMutators49(s).includes(id);}
 function mutateInput49(s,input){const out={...input};if(hasMutator49(s,'no_throws')&&out.slot==='throw')out.slot=null;if(hasMutator49(s,'no_super')&&out.slot==='super')out.slot=null;return out;}
 function cpu49(s,p,o,slot){
  const profile=(s.options.aiProfile49?.[slot]||s.options.aiProfile49||'balanced'),level=AI_LEVELS49[s.options.aiLevel49||'normal']||AI_LEVELS49.normal;
- let i=Combat.cpu(s,p,o),d=Math.abs(o.x-p.x)/(window.CQC_PASS19_VERSUS_SPATIAL?.ratio(p)||1),dir=o.x>p.x?1:-1,react=level.reaction;
+ let i=Combat.cpu(s,p,o),d=window.CQC_PASS19_VERSUS_SPATIAL?.bodyDistance?.(p,o)??Math.abs(o.x-p.x)/(window.CQC_PASS19_VERSUS_SPATIAL?.ratio(p)||1),dir=o.x>p.x?1:-1,react=level.reaction;
  p.cpuWait=Math.min(p.cpuWait||react,react);
  const toward=()=>{i.left=dir<0;i.right=dir>0},away=()=>{i.left=dir>0;i.right=dir<0};
  const pulse=(n,off=0)=>((s.frame+off+p.slot*7)%Math.max(4,Math.round(n/level.aggression))===0);

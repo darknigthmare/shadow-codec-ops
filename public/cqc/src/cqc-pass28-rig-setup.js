@@ -2,7 +2,7 @@
 (function(root){'use strict';
  const clone=value=>JSON.parse(JSON.stringify(value)), originals=new Map();
  const names=['CQC_PASS28_HEAVY_RIG_FIXES','CQC_PASS28_PW_RIG_FIXES','CQC_PASS28_VEHICLE_RIG_FIXES'];
- const articulations=['CQC_PASS29_MODERN_ARTICULATION','CQC_PASS29_CLASSIC_ARTICULATION','CQC_PASS29_PW_ARTICULATION','CQC_PASS29_HEAVY_ARTICULATION'];
+ const articulations=['CQC_PASS29_MODERN_ARTICULATION','CQC_PASS29_CLASSIC_ARTICULATION','CQC_PASS29_PW_ARTICULATION','CQC_PASS29_HEAVY_ARTICULATION','CQC_PASS30_BIC_COMPLETION','CQC_PASS30_MK_COMPLETION','CQC_PASS30_ZEKE_COMPLETION','CQC_PASS30_GANDER_FIDELITY'];
  const nativeDescriptors=new Map();
  let reviewed=[];
  function prepare(){
@@ -21,7 +21,12 @@
   for(const name of articulations){const helper=root[name];if(!helper?.apply)throw Error('Native articulation unavailable: '+name);const result=helper.apply(catalog);catalog=result.catalog;reviewed.push({name,changes:result.changes,limits:result.limits||helper.limits||[]});}
   const normalized=root.CQC_MACHINE_PARTS.normalizeCatalog(catalog);
   nativeDescriptors.clear();
-  for(const name of articulations)for(const[id,slots]of Object.entries(root[name]?.sourcePoints||{})){
+  // Resolve later source replacements before validating any descriptor against the final rig.
+  // A predecessor's mouth coordinate belongs to its old atlas, not the replacement art.
+  const finalSourcePoints=new Map();
+  for(const name of articulations)for(const[id,slots]of Object.entries(root[name]?.sourcePoints||{}))
+   finalSourcePoints.set(id,{...(finalSourcePoints.get(id)||{}),...slots});
+  for(const[id,slots]of finalSourcePoints){
    const machine=normalized.get(id);if(!machine)continue;
    for(const[slot,descriptor]of Object.entries(slots)){
     const part=machine.parts.find(part=>part.id===descriptor.part),source=part&&machine.sources.get(part.source),point=descriptor.nativeXY;
@@ -50,5 +55,5 @@
   const secondary=root.CQC_PASS28_PW_RIG_FIXES?.dimensions?.[id];
   return secondary?{...secondary,evidence:secondary.heightEvidence||secondary.evidence||'secondary citation; primary page not independently read'}:null;
  }
- root.CQC_PASS28_RIG_SETUP=Object.freeze({prepare,presentationPose,targetParts,weaponPoints,dimension,descriptor:(id,slot)=>nativeDescriptors.has(id+':'+slot)?clone(nativeDescriptors.get(id+':'+slot)):null,status:()=>({schema:'cqc.pass29.shared-articulation-review/1',machines:root.CQC_MACHINE_PARTS_CATALOG?.machines?.length||0,reviewed:clone(reviewed),absolute1to1Certified:false})});
+ root.CQC_PASS28_RIG_SETUP=Object.freeze({prepare,presentationPose,targetParts,weaponPoints,dimension,descriptor:(id,slot)=>nativeDescriptors.has(id+':'+slot)?clone(nativeDescriptors.get(id+':'+slot)):null,status:()=>({schema:'cqc.pass30.shared-native-completion/1',machines:root.CQC_MACHINE_PARTS_CATALOG?.machines?.length||0,reviewed:clone(reviewed),absolute1to1Certified:false})});
 })(globalThis);
