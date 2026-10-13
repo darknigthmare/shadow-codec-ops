@@ -1,0 +1,482 @@
+{
+  "schemaVersion": 1,
+  "actorId": "mgs4-gekko",
+  "sourceTextureKey": "mgs4Gekko",
+  "provenance": "openai-authored-poses",
+  "sourceFacing": "right",
+  "sourceGrid": {
+    "columns": 4,
+    "rows": 4
+  },
+  "runtimeGrid": {
+    "columns": 4,
+    "rows": 4,
+    "frameWidth": 256,
+    "frameHeight": 256,
+    "padding": 16
+  },
+  "processing": "crop, explicit background extraction, optional recorded whole-board anchor calibration, common core/special canvas, uniform per-actor nearest-neighbor scale, grounded padding; no pose synthesis",
+  "sources": {
+    "core": {
+      "file": "mgs4-gekko-core-openai.png",
+      "sha256": "dcb1963fb80ca745d0f3211c4ea8078f41f3cd838a0c5384a94d6ded307fee24",
+      "grid": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "detected-cyan-guides",
+        "xGuides": [
+          [
+            0,
+            2
+          ],
+          [
+            314,
+            315
+          ],
+          [
+            626,
+            627
+          ],
+          [
+            938,
+            939
+          ],
+          [
+            1251,
+            1253
+          ]
+        ],
+        "yGuides": [
+          [
+            0,
+            2
+          ],
+          [
+            313,
+            314
+          ],
+          [
+            626,
+            627
+          ],
+          [
+            938,
+            939
+          ],
+          [
+            1252,
+            1253
+          ]
+        ],
+        "cellRects": [
+          [
+            4,
+            4,
+            311,
+            311
+          ],
+          [
+            317,
+            4,
+            623,
+            311
+          ],
+          [
+            629,
+            4,
+            935,
+            311
+          ],
+          [
+            941,
+            4,
+            1249,
+            311
+          ],
+          [
+            4,
+            317,
+            311,
+            623
+          ],
+          [
+            317,
+            317,
+            623,
+            623
+          ],
+          [
+            629,
+            317,
+            935,
+            623
+          ],
+          [
+            941,
+            317,
+            1249,
+            623
+          ],
+          [
+            4,
+            629,
+            311,
+            935
+          ],
+          [
+            317,
+            629,
+            623,
+            935
+          ],
+          [
+            629,
+            629,
+            935,
+            935
+          ],
+          [
+            941,
+            629,
+            1249,
+            935
+          ],
+          [
+            4,
+            941,
+            311,
+            1249
+          ],
+          [
+            317,
+            941,
+            623,
+            1249
+          ],
+          [
+            629,
+            941,
+            935,
+            1249
+          ],
+          [
+            941,
+            941,
+            1249,
+            1249
+          ]
+        ],
+        "inset": 3,
+        "commonCellSize": [
+          308,
+          308
+        ],
+        "alignment": "cell-bottom-center; no per-pose scaling",
+        "guideFringeKey": "blue/cyan within 3 source edge pixels only"
+      }
+    },
+    "special": {
+      "file": "mgs4-gekko-special-openai.png",
+      "sha256": "b888d1ee05a5e7e3c9eb97b4eee5a200c22199ab0abc1b4e3462c7e6c749088b",
+      "grid": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "detected-cyan-guides",
+        "xGuides": [
+          [
+            0,
+            2
+          ],
+          [
+            314,
+            315
+          ],
+          [
+            626,
+            627
+          ],
+          [
+            937,
+            938
+          ],
+          [
+            1251,
+            1253
+          ]
+        ],
+        "yGuides": [
+          [
+            0,
+            2
+          ],
+          [
+            313,
+            314
+          ],
+          [
+            625,
+            627
+          ],
+          [
+            938,
+            939
+          ],
+          [
+            1251,
+            1253
+          ]
+        ],
+        "cellRects": [
+          [
+            4,
+            4,
+            311,
+            311
+          ],
+          [
+            317,
+            4,
+            623,
+            311
+          ],
+          [
+            629,
+            4,
+            935,
+            311
+          ],
+          [
+            941,
+            4,
+            1249,
+            311
+          ],
+          [
+            4,
+            317,
+            311,
+            623
+          ],
+          [
+            317,
+            317,
+            623,
+            623
+          ],
+          [
+            629,
+            317,
+            935,
+            623
+          ],
+          [
+            941,
+            317,
+            1249,
+            623
+          ],
+          [
+            4,
+            629,
+            311,
+            935
+          ],
+          [
+            317,
+            629,
+            623,
+            935
+          ],
+          [
+            629,
+            629,
+            935,
+            935
+          ],
+          [
+            941,
+            629,
+            1249,
+            935
+          ],
+          [
+            4,
+            941,
+            311,
+            1249
+          ],
+          [
+            317,
+            941,
+            623,
+            1249
+          ],
+          [
+            629,
+            941,
+            935,
+            1249
+          ],
+          [
+            941,
+            941,
+            1249,
+            1249
+          ]
+        ],
+        "inset": 3,
+        "commonCellSize": [
+          308,
+          308
+        ],
+        "alignment": "cell-bottom-center; no per-pose scaling",
+        "guideFringeKey": "blue/cyan within 3 source edge pixels only"
+      }
+    }
+  },
+  "boardCalibration": {
+    "mode": "explicit-uniform-special-board-scale-with-upright-anchor-baseline",
+    "specialScale": 1.1968911917098446,
+    "coreAnchor": 0,
+    "specialAnchor": 12,
+    "originalAnchorBounds": {
+      "core": [
+        56,
+        40,
+        280,
+        271
+      ],
+      "special": [
+        48,
+        92,
+        250,
+        285
+      ]
+    },
+    "scaledAnchorBounds": {
+      "core": [
+        56,
+        40,
+        280,
+        271
+      ],
+      "special": [
+        58,
+        110,
+        300,
+        341
+      ]
+    },
+    "alignedBaseline": 341,
+    "canvas": [
+      369,
+      378
+    ],
+    "perPoseScaling": false
+  },
+  "commonSourceCanvas": [
+    369,
+    378
+  ],
+  "commonActorBounds": [
+    47,
+    91,
+    325,
+    346
+  ],
+  "uniformScale": 0.8057553956834532,
+  "sheets": {
+    "core": {
+      "states": [
+        "idle",
+        "move",
+        "charge",
+        "attack"
+      ],
+      "frameHashes": [
+        "3f269625497b6b0c8b7d9c65c3c94f0e52cb91bd84738aa4062cc994cdb853cf",
+        "0e07510560183e9d5da03f036de9fce7dab9f3108e6fcf93793c9e86b9bb5fbd",
+        "6ef4b9bbcfaf2b5aeb94ea498d6dac20fd59557ef3776c47df083c670d60eb75",
+        "e5775194423a009fc3534e641e33273440c65b036fac575734a6e6428a5f5a96",
+        "42beefdfe38829d255a1dd20e913bc9dbfd000256263f20bdcd5ffa73bb9a001",
+        "be8a375ff7c3ed4c1352de7c54ed6309419e3bf3328ee3f8625c4819fe5bf806",
+        "794f9f0777fce1b7f3b1d99da22a97f8f3d57d4bf683bdd46079ef5fda2f19d2",
+        "3d0aeb65e8f52cb3300bef8c74a407ff61f32130be20930414914e185609d4e0",
+        "7d7e008216479cbce57be62060f9d990ed5301cbe7edb738cfab3eced11c1adb",
+        "907fc513df41d0eadf75387388aa06435eaa9dab0b9f083b7a62320762ba2b12",
+        "14f4e0e6ce036aa9d7a34cb4309f6d98112205bdc991ddc35c6120ca592ff03a",
+        "1212498c6c57bd13c348c6575a29b9cfaf14c1e3a440795b1d59bb6182364c09",
+        "9b1687c6353ccaf9552efac2034e111a1849146eee5ec83f6b2627f1b798d613",
+        "6899e1b92bbe78aff83db1ac640e2a93433c1c66464c4aa49fd4b5df3777b463",
+        "be4bcf52af177a9ebe6671b9e3bd503cb1467248082d7d8e79825115a783519b",
+        "505d462bf636637db9606af16fdf4d001594edc374f7e744974d90a5fa0003aa"
+      ],
+      "croppedPoseHashes": [
+        "f5f8c66b53cf2eb7cba6fd72151b15e3e590df5da0c74abb52fa5154c4dab8f7",
+        "f622716115fff33e479722dfbe99e74013d326b4a68d79129e6d91a2b9d38048",
+        "5aad20a4119a65f5f148e9abf4cbe7330b565a1f6e3c5d875b6d23602eebab0b",
+        "fdca5dd1a3464138156c3c2297f7c753dc490315fba4660c326639379326c65e",
+        "820f2d3034b32163c984d92de296d8f541fe7d5904eafb126a5817f7d7a165b8",
+        "f2aa9f77bb2518a2bb2f9feb4eb585710432ca43ac0498d5715cda67d8d964bc",
+        "10343566858fd51f1ebf347d88ba895f720e5cb28d2dcc64c20c84fb85f05776",
+        "0417aa7e027982b140090f08a310708624e81354b8e8a77d6c4d96b7eff01d0e",
+        "cdbfd4a67997f0cba33ed42ebbecacadb048124d633b9628c61a420a730746f8",
+        "ce205b400116298661b2f5829918b3f85c6c08c5972859b3d7cebeada5028836",
+        "6c802f237c14972fcd5c479116e211d80683e6f42e90050ad050f1aee6cd9c4b",
+        "14b49746af0536c92fa71b827f5e1976b7e23d9e1eeb197d97b572495cd6b8a5",
+        "7f13e91a6fed967d412c6b618d2bd70dc5d5d5b9eff1572dd15bb482162b2316",
+        "682c475a77c83bf3d8d469bad498259495bd4b7da1db2541992c17aa827c987c",
+        "5e9bc65b0fc06f657dfb8a8cf47763d31981a5dba52e7b08634a8af6de0ba02d",
+        "1584177cc92e5dee72750a3eddaece0474065f8425b28cbc18cf3393c877d60a"
+      ],
+      "file": "core.png",
+      "sha256": "33142caeecd422929cb15b6efec8e36c76297a109d7cd651ec72bf3fafe30288"
+    },
+    "special": {
+      "states": [
+        "recover",
+        "hit",
+        "death",
+        "scan"
+      ],
+      "frameHashes": [
+        "163f5c53d97e215dcaa90cd49ba64c760400c801a8cc809a20af15a8efb3e42f",
+        "0b915881eaa9e4f819d9d9466b46244a3a8dc49bb32aec47df4c7e73e521b1b1",
+        "818117ef4c4ae4bef7db967d3e4abd20a76cc694025e6b95e432341751c07679",
+        "7a0f74e1be7d049c6bb7627dea24598e48855edd45efed2d8aff015cab453516",
+        "3d69fd215a0fef2406066f28ebd076226470fed380b65b912ab1ab9fd0bb13eb",
+        "cbf029a4292ec67d440785ce6d04fadbe31a014c2154b0900e71881dee5adfef",
+        "5ee0eb428560320b796e5f5ae5bd6d2f00d6ab5f25f090e2bd655c86141b646b",
+        "ea69e7ba355f91a04b1ee79a2c8ce1449561faa5bc5aa51658bf15efddbd6a72",
+        "73655167f3f744e0079ac05dfdeeb926e9236986d0d38ba375792d895dafe02a",
+        "af33da8309ed2acadf1ec09fa0a6caa30e80def49936bfdcf59ae863c7ba73a4",
+        "1281476b6794a0a312f90041bf1cad20559bb637c25ece7fc48faed564bcd367",
+        "aca83e432acce1dcd304a356b4f974656f0dfde3f7c20367360c333187b15a85",
+        "8818ca45bf2b1417cbbf35195ef73e53dc532e8b0d7a3109d7a046d96a3a3f3f",
+        "3aadb5706ba028920ea40c0cf50bb9a88e34e75a5822dc3f988e3777baf17c59",
+        "d9195e1bd10f115c1cff67643f3fc083522b6fc38cf42ed9c37cf1dae7de89da",
+        "1fbe5a9db171f51f62a4b91b49bb171d0dcde93782fb711a49ec46c67142ad54"
+      ],
+      "croppedPoseHashes": [
+        "6fb21a37921654ed6d2a6e0c3c99c6f65eb1cbe1582b9b8094d9bbd253a889c9",
+        "0aee2e72185cbc0fe6183564bb08461767bd835a993e534f623941f0133fd816",
+        "5c7b54f448abc9237716ad13eab53655da36ede1c90e2dbe29533be8df6e4576",
+        "6751c174399146c52f0d1895a267ce297c4b7476c2a71b7e26459f2cbb3d475b",
+        "f592042b7bf5ee6ca70a3bbf2631122bcb38b9b9eac6bcf23c96041c224207d0",
+        "7a81518f064066851411db14631d00cc7bc77d03b2268ada50ed0e5b6da318d5",
+        "52ee6df37a4a73fa7478a0b4014721cd129fd304fe84674b85a28dfb980ca990",
+        "752aa339a8e0f6099ad0c9445e01c4fc3bdca5f6912dc3fd8677a21ca3d61a22",
+        "42f1facc06ae5eead80fd780c4dd0e0a80cdf841c87fd2b858bf8ec2ff9f201e",
+        "80e2487545c33feaea65a5c62df6b4ed3914e53918446b439bbfd9c1ef1fcb87",
+        "7b67752a950bdd5d70380ecb3c6a1061c8afe7f292eaef1fa85c652ca746f257",
+        "3af5a1f5c0fc971bd0f02478f846c269ff7b3e71c44e47e48b299bbe0f4620ad",
+        "9db7d765ec9bf83d698ca904e1c512b772a271e033694bd9fe75bad5de133b3b",
+        "bd4d94f00cf00bb740ec31e50454907a1ec07da399e8d734ec93e7bf1e1baa85",
+        "4723a25fc6e29bcf29cedd3e48ae242d6646c36fa58e91bf7a7e7f8c765d6745",
+        "2aecd2c40a534cc69c71de35c17e8b56024306ed5a6431ce4407c55f11fa9784"
+      ],
+      "file": "special.png",
+      "sha256": "791ebce0916644f40f32a5616dd8dcc904d64ee23bb72b6399c4ec30ad7010cb"
+    }
+  }
+}
