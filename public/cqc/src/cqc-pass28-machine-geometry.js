@@ -2,7 +2,7 @@
 (function(root){'use strict';
  const DEG=Math.PI/180;
  function key(source,rect,polygon){return source.sha256+'|'+rect.join(',')+'|'+JSON.stringify(polygon||null);}
- function ink(machine,part,pose){const source=machine.sources.get(pose.source),rect=pose.rect||[0,0,source.width,source.height];return root.CQC_PASS28_MACHINE_INK?.records[key(source,rect,part.sourceClipPolygonNativeXY)]||null;}
+ function ink(machine,part,pose){const source=machine.sources.get(pose.source),rect=pose.rect||[0,0,source.width,source.height];return root.CQC_PASS28_MACHINE_INK?.records[key(source,rect,Object.hasOwn(pose,'sourceClipPolygonNativeXY')?pose.sourceClipPolygonNativeXY:part.sourceClipPolygonNativeXY)]||null;}
  function point(pose,rect,native){
   const x=(native[0]-rect[0]-pose.pivot[0])*pose.imageScale,y=(native[1]-rect[1]-pose.pivot[1])*pose.imageScale,angle=(pose.textureRotation||0)*DEG,c=Math.cos(angle),s=Math.sin(angle),a=x*c-y*s,b=x*s+y*c,m=pose.matrix;
   return {x:m[0]*a+m[2]*b+m[4],y:m[1]*a+m[3]*b+m[5]};

@@ -13,7 +13,7 @@
   const pin=point.pin,part=machine.parts.find(p=>p.id===point.part),source=machine.sources.get(pin.source.id);if(!geometryMatches(part,pin)||!sourceMatches(source,pin.source))return null;
   const pose=parts.pose(machine,description).get(part.id),r=pose?.rect,xy=point.nativeXY;
   if(!pose||!r||pose.source!==pin.source.id||!equal(r,pin.rect)||!equal(pose.pivot,pin.pivot)||pose.imageScale!==pin.imageScale||!Array.isArray(xy)||xy.length!==2||!xy.every(Number.isFinite)||xy[0]<r[0]||xy[1]<r[1]||xy[0]>=r[0]+r[2]||xy[1]>=r[1]+r[3])return null;
-  const x=(xy[0]-r[0]-pose.pivot[0])*pose.imageScale,y=(xy[1]-r[1]-pose.pivot[1])*pose.imageScale,m=pose.matrix;
+  const a=(xy[0]-r[0]-pose.pivot[0])*pose.imageScale,b=(xy[1]-r[1]-pose.pivot[1])*pose.imageScale,angle=(pose.textureRotation||0)*Math.PI/180,c=Math.cos(angle),s=Math.sin(angle),x=a*c-b*s,y=a*s+b*c,m=pose.matrix;
   return{part:part.id,source:pose.source,nativeXY:[...xy],x:m[0]*x+m[2]*y+m[4],y:m[1]*x+m[3]*y+m[5],visible:pose.visible&&pose.opacity>0,opacity:pose.opacity,sourceSHA256:source.sha256,sourceFile:source.file,pinsVerified:true,kind:point.kind};
  }
  root.CQC_PASS19_MACHINE_SOURCE_POINTS=Object.freeze({schema:'cqc.pass19.native-source-points/2',points,descriptor,resolve,validateCatalog});

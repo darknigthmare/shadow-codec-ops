@@ -33,6 +33,16 @@
     if (!Array.isArray(value) || value.length !== 4 || !value.every(Number.isInteger) || value[0] < 0 || value[1] < 0 || value[2] < 1 || value[3] < 1) fail(context + ' invalid native rect');
     return value.slice();
   };
+  function nativeSourceClip(value, rect, context) {
+    if (value === undefined || value === null) return null;
+    if (!rect || !Array.isArray(value) || value.length<3 || value.length>64) fail(context+' invalid native source clipping');
+    const [rx,ry,rw,rh]=rect;
+    return value.map(point=>{
+      const p=pair(point,context+' native source clip');
+      if(p[0]<rx || p[1]<ry || p[0]>rx+rw || p[1]>ry+rh) fail(context+' native source clipping leaves rectangle');
+      return p;
+    });
+  }
   function bindings(value, context) {
     if (value === undefined) return {};
     if (!value || typeof value !== 'object' || Array.isArray(value)) fail(context + ' invalid channels');
@@ -78,6 +88,10 @@
             if (!sources.has(result.source)) fail(partID + ' missing variant source');
             if(Math.abs(result.textureRotation)>180)fail(partID+' invalid variant texture rotation');
             if (result.imageScale<=0 || result.imageScale>32) fail(partID + ' invalid variant imageScale');
+            // Each source appearance owns its native cut. Explicit null removes
+            // a base cut; an omitted cut inherits it only inside this rect.
+            const clip=Object.hasOwn(variant,'sourceClipPolygonNativeXY') ? variant.sourceClipPolygonNativeXY : raw.sourceClipPolygonNativeXY;
+            result.sourceClipPolygonNativeXY=nativeSourceClip(clip,result.rect,partID+' variant');
             return result;
           });
         }
@@ -87,16 +101,8 @@
           if (part.detachment.duration <= 0 || part.detachment.duration > 600 || part.detachment.gravity < 0 || part.detachment.fade <= 0 || part.detachment.fade > part.detachment.duration) fail(partID + ' invalid detachment limits');
           if (part.parent && !part.detachment.anchor) fail(partID + ' needs root anchor when detached from parent');
         }
-        if (raw.sourceClipPolygonNativeXY !== undefined) {
-          const polygon=raw.sourceClipPolygonNativeXY;
-          if (!part.rect || part.variants.length || !Array.isArray(polygon) || polygon.length<3 || polygon.length>64) fail(partID+' invalid native source clipping');
-          const [rx,ry,rw,rh]=part.rect;
-          part.sourceClipPolygonNativeXY=polygon.map(point=>{
-            const p=pair(point,partID+' native source clip');
-            if(p[0]<rx || p[1]<ry || p[0]>rx+rw || p[1]>ry+rh) fail(partID+' native source clipping leaves rectangle');
-            return p;
-          });
-        }
+        if (raw.sourceClipPolygonNativeXY !== undefined)
+          part.sourceClipPolygonNativeXY=nativeSourceClip(raw.sourceClipPolygonNativeXY,part.rect,partID);
         parts.push(part); byID.set(partID, part);
       }
       const order = [], visited = new Set(), visiting = new Set();
@@ -131,12 +137,14 @@
     return [a[3]/d,-a[1]/d,-a[2]/d,a[0]/d,(a[2]*a[5]-a[3]*a[4])/d,(a[1]*a[4]-a[0]*a[5])/d];
   }
   const samePair=(a,b) => a===b || !!a && !!b && a.length===b.length && a.every((n,i)=>n===b[i]);
+  const samePolygon=(a,b) => a===b || !!a && !!b && a.length===b.length && a.every((point,index)=>samePair(point,b[index]));
   function pose(machine, state = {}) {
     const channels = state.channels || {}, active = state.flags || {}, transforms = new Map();
     const origin = state.origin ? pair(state.origin, 'draw origin') : machine.origin;
     const base = [machine.scale[0],0,0,machine.scale[1],origin[0],-origin[1]];
     for (const part of machine.order) {
       const variant = part.variants.find((v) => active[v.when] === true);
+      const sourceClipPolygonNativeXY=variant ? variant.sourceClipPolygonNativeXY : part.sourceClipPolygonNativeXY || null;
       let parent = part.parent ? transforms.get(part.parent) : {matrix:base,visible:true,opacity:1};
       let x=part.offset[0], y=part.offset[1], rotation=part.rotation, opacity=part.opacity;
       for (const [property, rows] of Object.entries(part.channels)) {
@@ -162,8 +170,8 @@
           spun=multiply(inverse(scale),multiply(inverse(basis),world));
         }
         const compensationOnly=variant && !variant.hide && variant.source===part.source && samePair(variant.rect,part.rect)
-          && samePair(variant.pivot,part.pivot) && variant.imageScale===part.imageScale && variant.when===d.when;
-        const appearance=variant && !compensationOnly ? {source:variant.source,rect:variant.rect,pivot:variant.pivot,imageScale:variant.imageScale,textureRotation:variant.textureRotation} : snapshot;
+          && samePair(variant.pivot,part.pivot) && variant.imageScale===part.imageScale && samePolygon(sourceClipPolygonNativeXY,part.sourceClipPolygonNativeXY || null) && variant.when===d.when;
+        const appearance=variant && !compensationOnly ? {source:variant.source,rect:variant.rect,pivot:variant.pivot,imageScale:variant.imageScale,textureRotation:variant.textureRotation,sourceClipPolygonNativeXY} : snapshot;
         const ownVisible=!variant?.hide && part.showWhen.every(key=>active[key]===true) && !part.hideWhen.some(key=>active[key]===true);
         transforms.set(part.id,{...snapshot,...appearance,matrix:multiply(base,spun),visible:snapshot.visible && ownVisible && t<d.duration,opacity:snapshot.opacity*clamp((d.duration-t)/d.fade,0,1)});
         continue;
@@ -180,7 +188,7 @@
       }
       const angle=-rotation*DEG, cos=Math.cos(angle), sin=Math.sin(angle);
       const local=[cos,sin,-sin,cos,x,-y];
-      transforms.set(part.id,{matrix:multiply(parent.matrix,local),visible,opacity:parent.opacity*clamp(opacity,0,1),source:variant?.source || part.source,rect:variant?.rect || part.rect,pivot:variant?.pivot || part.pivot,imageScale:variant?.imageScale || part.imageScale,textureRotation:variant?.textureRotation ?? part.textureRotation});
+      transforms.set(part.id,{matrix:multiply(parent.matrix,local),visible,opacity:parent.opacity*clamp(opacity,0,1),source:variant?.source || part.source,rect:variant?.rect || part.rect,pivot:variant?.pivot || part.pivot,imageScale:variant?.imageScale || part.imageScale,textureRotation:variant?.textureRotation ?? part.textureRotation,sourceClipPolygonNativeXY});
     }
     return transforms;
   }
@@ -421,9 +429,9 @@
         context.save();
         try {
           context.transform(...p.matrix); if(p.textureRotation)context.rotate(p.textureRotation*DEG); context.globalAlpha*=p.opacity;
-          if(part.sourceClipPolygonNativeXY){
+          if(p.sourceClipPolygonNativeXY){
             context.beginPath();
-            part.sourceClipPolygonNativeXY.forEach((point,index)=>{
+            p.sourceClipPolygonNativeXY.forEach((point,index)=>{
               const x=(point[0]-r[0]-p.pivot[0])*p.imageScale,y=(point[1]-r[1]-p.pivot[1])*p.imageScale;
               if(index)context.lineTo(x,y);else context.moveTo(x,y);
             });
