@@ -8,10 +8,8 @@
 })(typeof globalThis!=='undefined'?globalThis:this,function(root){
  'use strict';const FLOOR=598,VIEW_WIDTH=1280;
  const encounterCameras=new WeakMap();
- // Some large authored studies still use small historical presentation bounds.
- // Classify those dedicated encounters explicitly instead of mistaking a tank
- // or an entire Metal Gear for a small support robot.
- const GIANT_ENCOUNTERS=new Set(['tx55','metalgeard','rex','harrier','raymass','shagohod','raxa','bic','pupa','chrysalis','cocoon','peacewalker','zeke','gander','sahel','ray_mgR','grad','excelsus','kodoque','chaioth','arsenal_gear','outer_haven','battle_gear','dwalker','walker_column','gekko','hind_d','m1tank','bulldozer']);
+ // Every native encounter shares one stable world view, including the small
+ // support robots. Player proximity and facing never refit the encounter.
  const finite=Number.isFinite;
  function validBounds(value){
   if(!value||![value.left,value.top,value.right,value.bottom].every(finite)||value.right<=value.left||value.bottom<=value.top)return null;
@@ -27,7 +25,7 @@
   const bounds=value.framingBounds||value.bounds;
   const width=finite(options.width)&&options.width>0?options.width:VIEW_WIDTH,height=finite(options.height)&&options.height>0?options.height:720;
   const screenFloor=FLOOR*height/720,screenScaleX=width/VIEW_WIDTH,screenScaleY=height/720;
-  if(GIANT_ENCOUNTERS.has(state?.def?.id)||bounds.width>450||bounds.height>400){
+  {
    // The simulation keeps x in [58,1220], with a 56px human half-envelope.
    // vy=-13/gravity=.72 gives a maximum 124px jump above the 212px silhouette.
    // Fit that complete lane plus the initial neutral boss, then keep the view.
@@ -46,12 +44,7 @@
    }
    return {...view,worldFrame:{...view.worldFrame},geometry:value};
   }
-  const left=Math.min(bounds.left,p.x-56),right=Math.max(bounds.right,p.x+56);
-  const top=Math.min(bounds.top,p.y-212),topPadding=(options.preview?28:options.hudVisible===false?36:144)*screenScaleY;
-  const viewLeft=(!options.preview&&options.hudVisible!==false?332:56)*screenScaleX,viewRight=(!options.preview&&options.hudVisible!==false?1240:VIEW_WIDTH-56)*screenScaleX;
-  const spanY=Math.max(1,FLOOR-top),zoom=Math.min(1,(viewRight-viewLeft)/Math.max(1,right-left),(screenFloor-topPadding)/spanY);
-  const centerX=(left+right)/2;
-  return {zoom,centerX,tx:(viewLeft+viewRight)/2-centerX*zoom,ty:screenFloor-FLOOR*zoom,floorY:screenFloor,geometry:value};
+
  }
  function project(point,view){return {x:point.x*view.zoom+view.tx,y:point.y*view.zoom+view.ty};}
  function targetPoint(state,index){
@@ -69,5 +62,5 @@
    right:Math.max(1450,bounds.right,finite(p.x)?p.x:300)+256,
    bottom:Math.max(900,bounds.bottom,finite(p.y)?p.y:FLOOR)+256};
  }
- return Object.freeze({version:'cqc-pass28-arsenal-presentation/1',FLOOR,geometry,camera,project,targetPoint,travelFrames,projectileBounds});
+ return Object.freeze({version:'cqc-pass37-arsenal-presentation/1',FLOOR,geometry,camera,project,targetPoint,travelFrames,projectileBounds});
 });

@@ -32,7 +32,9 @@
   g.paused=false;g.enemy.y=homeY;g.enemy.archiveNative35={frame:0,homeX:g.enemy.x,attack:null,rush:null,camera,scene};return g;
  }
  function tick(g){if(!owns(g)||g.ended||g.paused)return;const e=g.enemy,n=e.archiveNative35,p=profile(g.boss);n.frame++;
-  if(p.contact&&!p.units&&n.carrierSpeed){const active=e.projectiles.some(q=>q.native35?.contact&&q.life>0),goal=active?Math.max(180,g.player.x+105):n.homeX,dx=goal-e.x;e.x+=clamp(dx*.12,-n.carrierSpeed,n.carrierSpeed);n.rush=Math.abs(dx)>.05?{active}:null;if(!active&&Math.abs(dx)<.05){e.x=n.homeX;n.carrierSpeed=0;n.rush=null;}}
+  // A contact carrier follows the oldest live charge's captured destination.
+  // Later patterns and a player crossing its body cannot retarget that charge.
+  if(p.contact&&!p.units&&n.carrierSpeed){const carrier=e.projectiles.find(q=>q.native35?.contact&&q.life>0),active=!!carrier,goal=active?finite(carrier.native35.carrierTargetX,n.homeX):n.homeX,dx=goal-e.x;e.x+=clamp(dx*.12,-n.carrierSpeed,n.carrierSpeed);n.rush=Math.abs(dx)>.05?{active}:null;if(!active&&Math.abs(dx)<.05){e.x=n.homeX;n.carrierSpeed=0;n.rush=null;}}
   if(p.air)e.y=(n.scene?.airHomeY??310)+Math.sin(n.frame*.017)*12;
  }
  function event(g){const n=g.enemy.archiveNative35,a=n.attack;if(!a)return null;const age=n.frame-a.startedAt;if(age>=a.warn+a.active+a.recovery)return null;return{...a,age};}
@@ -97,7 +99,7 @@
   if(p.contact&&!p.units)n.carrierSpeed=Math.max(8,...added.map(q=>Math.hypot(q.vx,q.vy)));
   const available=contexts(g);
   added.forEach((q,index)=>{const original={kind:q.kind,life:q.life,vx:q.vx,vy:q.vy,armed:q.armed},wait=q.kind==='zone'?q.life-q.armed:0;
-   q.native35={original,contact:!!p.contact,emitted:false,fireAt:n.frame+wait,unit:available[index%Math.max(1,available.length)]?.unit??0,speed:Math.hypot(q.vx,q.vy)||(p.air?5.2:8),sourceIndex:p.air?index%2:0,sourceKind:p.contact?'native-contact':p.air?'fixed-admitted-rocket-pod':p.kind};
+   q.native35={original,contact:!!p.contact,...(p.contact&&!p.units?{carrierTargetX:Math.max(180,n.attack.aimTarget[0]+105)}:{}),emitted:false,fireAt:n.frame+wait,unit:available[index%Math.max(1,available.length)]?.unit??0,speed:Math.hypot(q.vx,q.vy)||(p.air?5.2:8),sourceIndex:p.air?index%2:0,sourceKind:p.contact?'native-contact':p.air?'fixed-admitted-rocket-pod':p.kind};
    q.kind=p.contact?'native-contact':p.air?'missile':'native-shot';q.vx=0;q.vy=0;
    const v=available[q.native35.unit]||available[0];q.x=v?.root.x??e.x;q.y=v?.root.y??e.y;
   });

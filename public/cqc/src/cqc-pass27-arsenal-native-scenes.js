@@ -56,7 +56,9 @@
     if((ctx.canvas?.width||0)>=640&&r)preload(state.def).catch(()=>{});
     return true;
    }
-   const value={camera:Math.max(-220,Math.min(220,((state.player?.x||400)-400)*.2)),zoom:1,time:(state.tick||0)/60,motion:!reduced()};
+   // The encounter view is fixed; ground and architecture must retain the same
+   // world anchor while the player crosses it. Weather keeps its owner time.
+   const value={camera:0,zoom:1,time:(state.tick||0)/60,motion:!reduced()};
    ctx.save();ctx.translate(0,OFFSET);const drawn=renderer.drawBackground(ctx,r.stageID,value);ctx.restore();
    if(!drawn)return true;
    const snapshot={machineID:r.id,stageID:r.stageID,titleID:r.titleID,groundY:GROUND,translationY:OFFSET,...value};
@@ -70,7 +72,7 @@
    if(drawn)diagnostics.foregrounds++;return drawn;
   }
   function caption(def){const r=record(def);return r?'SIMULATION — '+r.name:def?.stage||'';}
-  return{version:'cqc-pass27-arsenal-native-scenes/1',ready,preload,deferLaunch,cancelPending,drawBackground,drawForeground,caption,
+  return{version:'cqc-pass37-arsenal-native-scenes/1',ready,preload,deferLaunch,cancelPending,drawBackground,drawForeground,caption,
    bindings:()=>[...bindings.values()].map(r=>({...r})),diagnostics:()=>({...diagnostics,last:diagnostics.last?{...diagnostics.last}:null})};
  }
  return{createBridge,SCENES,GROUND,OFFSET};

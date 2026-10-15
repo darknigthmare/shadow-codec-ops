@@ -112,7 +112,7 @@
       parent('neck_mount','hull');parent('mammal_head','neck_mount');parent('launcher_backpack','hull');
       // Native cylindrical hip/ankle centres, not the centre of an armor rectangle or sole.
       const native = {
-        front_near_upper:[175,368],front_far_upper:[501,370],rear_near_upper:[858,379],rear_far_upper:[1234,369],
+        front_near_upper:[408,476],front_far_upper:[501,370],rear_near_upper:[858,379],rear_far_upper:[1234,369],
         front_near_foot:[156,898],front_far_foot:[565,898],rear_near_foot:[929,900],rear_far_foot:[1321,907]
       };
       for (const [id,point] of Object.entries(native)) pivot(id,point);
@@ -169,6 +169,59 @@
     }
     machine.pass29PWArticulation.version=VERSION;
   }
+  // The near front source faces left: its right cylinder seats against the hull,
+  // while the lower-left terminal block carries the shin's round knee bearing.
+  // These are native source contacts, not the previous empty-space pivots.
+  function seatFrontNearSourceChain(machine, renderer) {
+    if (machine.id !== 'peacewalker_pw_psp2010' || machine.pass37FrontNearSourceSockets) return;
+    const get = id => machine.parts.find(part => part.id === id);
+    const upper = get('front_near_upper'), lower = get('front_near_shin'), foot = get('front_near_foot');
+    const sockets = {hip: [408,476], upperKnee: [215,495], lowerKnee: [211,568], lowerAnkle: [144,790], footAnkle: [156,898]};
+    const normalized = renderer.normalizeCatalog({schema:'cqc.machine-parts/1', machines:[machine]}).get(machine.id);
+    const neutral = renderer.pose(normalized, {origin:[0,0], channels:{}, flags:{}, reducedMotion:true});
+    const sourcePoint = (pose, xy) => {
+      const x = (xy[0] - pose.rect[0] - pose.pivot[0]) * pose.imageScale;
+      const y = (xy[1] - pose.rect[1] - pose.pivot[1]) * pose.imageScale;
+      const local = rotate([x,y], (pose.textureRotation || 0) * DEG), m = pose.matrix;
+      return [m[0]*local[0] + m[2]*local[1] + m[4], m[1]*local[0] + m[3]*local[1] + m[5]];
+    };
+    const hipWorld = sourcePoint(neutral.get(upper.id), sockets.hip);
+    const previousAnkle = sourcePoint(neutral.get(foot.id), sockets.footAnkle);
+    const parentInverse = inverse(neutral.get(upper.parent).matrix);
+    const toParent = xy => [parentInverse[0]*xy[0] + parentInverse[2]*xy[1] + parentInverse[4],
+      parentInverse[1]*xy[0] + parentInverse[3]*xy[1] + parentInverse[5]];
+    const hip = toParent(hipWorld), previousFoot = toParent(previousAnkle);
+    upper.pivot = [sockets.hip[0]-upper.rect[0], sockets.hip[1]-upper.rect[1]];
+    upper.offset = [hip[0], -hip[1]];
+    lower.pivot = [sockets.lowerKnee[0]-lower.rect[0], sockets.lowerKnee[1]-lower.rect[1]];
+    lower.offset = [(sockets.upperKnee[0]-sockets.hip[0])*upper.imageScale,
+      -(sockets.upperKnee[1]-sockets.hip[1])*upper.imageScale];
+    foot.pivot = [sockets.footAnkle[0]-foot.rect[0], sockets.footAnkle[1]-foot.rect[1]];
+    foot.offset = [(sockets.lowerAnkle[0]-sockets.lowerKnee[0])*lower.imageScale,
+      -(sockets.lowerAnkle[1]-sockets.lowerKnee[1])*lower.imageScale];
+    const native = {upperVector:lower.offset.slice(), lowerVector:foot.offset.slice(),
+      upperRotation:0, lowerRotation:0, footRotation:0};
+    // Preserve the existing sole height without stretching either native module.
+    // The corrected source chain determines its own horizontal stance position.
+    const lift = -(previousFoot[1]-hip[1]) - native.upperVector[1] - native.lowerVector[1];
+    const solved = solveLeg(native, 0, lift);
+    upper.rotation = solved.upper; lower.rotation = solved.lower; foot.rotation = solved.level;
+    machine.pass29PWArticulation.legs.front_near = {...native,
+      upperRotation:upper.rotation, lowerRotation:lower.rotation, footRotation:foot.rotation};
+    const prepared = renderer.normalizeCatalog({schema:'cqc.machine-parts/1', machines:[machine]}).get(machine.id);
+    const posed = renderer.pose(prepared, {origin:[0,0], channels:{}, flags:{}, reducedMotion:true});
+    for (const part of [upper,lower,foot]) if (part.detachment) {
+      const matrix = posed.get(part.id).matrix;
+      part.detachment.anchor = [matrix[4]/(machine.scale?.[0] || 1), -matrix[5]/(machine.scale?.[1] || 1)];
+    }
+    const ankle = sourcePoint(posed.get(foot.id), sockets.footAnkle);
+    const correction = {kind:'source-seated-front-near-chain', nativeSockets:clone(sockets),
+      previousAnkle, ankle, soleHeightError:Math.abs(ankle[1]-previousAnkle[1]),
+      sourcePixelsChanged:false, sourceScaleChanged:false, sourceClipChanged:false,
+      qualification:'Visible native contacts with source-length2D support IK; concealed joint surfaces and original-game1:1 geometry are not certified.'};
+    machine.pass37FrontNearSourceSockets = {version:1, ...clone(correction)};
+    machine.pass29PWArticulation.changes.push(correction);
+  }
   let preparedLegs=null;
   function apply(catalog) {
     if(catalog?.schema!=='cqc.machine-parts/1'||!Array.isArray(catalog.machines)||!root.CQC_MACHINE_PARTS?.pose) throw Error('PW native catalogue/renderer unavailable');
@@ -176,6 +229,7 @@
     for(const machine of next.machines) if(ids.includes(machine.id)) {
       if(!machine.pass29PWArticulation)prepareMachine(machine,root.CQC_MACHINE_PARTS);
       upgradeMotionBindings(machine);
+      seatFrontNearSourceChain(machine,root.CQC_MACHINE_PARTS);
       if(machine.id==='peacewalker_pw_psp2010')preparedLegs=clone(machine.pass29PWArticulation.legs);
       changes.push({id:machine.id,parts:machine.parts.length,edits:clone(machine.pass29PWArticulation.changes)});
     }

@@ -70,9 +70,26 @@
   const a=frameBounds({...s.a,x:0},0),b=frameBounds({...s.b,x:0},0),distance=Math.max(520,a.right-b.left+clearance),centerOffset=(a.left+distance+b.right)/2;
   s.a.x=clampActor(s,s.a,640-centerOffset);s.b.x=clampActor(s,s.b,640+distance-centerOffset);return s;
  }
- function pushActors(s,box){
+ // Contact with a machine cancels the actor's own incoming travel. It never
+ // transfers the other actor's movement into a stationary machine root.
+ function machineActor(p){return !!root.CQC_PASS18_MACHINES?.physical?.(p?.f,p?.face||1)||p?.f?.visual?.kind==='machine'||p?.f?.combat?.passive?.machine===true;}
+ function blockMachineContact(s,left,right,needed,previous){
+  const leftBefore=previous?.get(left),rightBefore=previous?.get(right),
+   closingLeft=Number.isFinite(leftBefore)?Math.max(0,left.x-leftBefore):Math.max(0,finite(left.vx)),
+   closingRight=Number.isFinite(rightBefore)?Math.max(0,rightBefore-right.x):Math.max(0,-finite(right.vx)),
+   closing=closingLeft+closingRight,cancel=Math.min(needed,closing);
+  if(closing>0){left.x-=cancel*closingLeft/closing;right.x+=cancel*closingRight/closing;needed-=cancel;}
+  // A facing or stance change can create an existing overlap. Seat the human
+  // outside the machine; two idle machines keep their authored world origins.
+  if(needed>1e-8&&machineActor(left)!==machineActor(right)){
+   const human=machineActor(left)?right:left,sign=human===left?-1:1;
+   human.x=clampActor(s,human,human.x+sign*needed);
+  }
+ }
+ function pushActors(s,box,previous=null){
   const a=s.a,b=s.b,vertical=110*Math.max(ratio(a),ratio(b));if(Math.abs(a.y-b.y)>=vertical)return;
   const nativeA=mechanicalBody(a),nativeB=mechanicalBody(b),ordered=a.x<=b.x?[a,b]:[b,a],leftBox=box(ordered[0]),rightBox=box(ordered[1]),overlapWidth=leftBox.x+leftBox.w-rightBox.x,minGap=(box(a).w+box(b).w)*(extended(s)?.5:.30),gap=Math.abs(a.x-b.x);if(nativeA||nativeB){if(overlapWidth<=0)return;}else if(gap>=minGap)return;
+  if(machineActor(a)||machineActor(b)){blockMachineContact(s,ordered[0],ordered[1],nativeA||nativeB?overlapWidth:minGap-gap,previous);return;}
   if(!extended(s)){const dir=a.x<=b.x?-1:1,shift=(minGap-gap)/2;a.x=clamp(a.x+dir*shift,65,1215);b.x=clamp(b.x-dir*shift,65,1215);return;}
   const left=a.x<=b.x?a:b,right=left===a?b:a,needed=nativeA||nativeB?overlapWidth:minGap-gap,limitsLeft=actorLimits(s,left),limitsRight=actorLimits(s,right),moveLeft=Math.min(needed/2,left.x-limitsLeft.left),moveRight=Math.min(needed-moveLeft,limitsRight.right-right.x),extraLeft=Math.min(needed-moveLeft-moveRight,left.x-moveLeft-limitsLeft.left);
   left.x-=moveLeft+extraLeft;right.x+=moveRight;
