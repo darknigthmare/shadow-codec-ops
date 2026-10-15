@@ -131,7 +131,10 @@
 <script src="../src/cqc-pass28-rig-setup.js"></script>
 <script src="../src/cqc-pass28-rig-install.js"></script>
 <script src="../src/cqc-pass18-machine-bridge.js"></script>
-<script src="../src/cqc-pass31-rex-ray-duel.js"></script>
+<script src="../src/cqc-pass33-duel-preferences.js"></script>
+<script src="../src/cqc-pass33-ray-mgs4.js"></script>
+<script src="../src/cqc-pass33-shadow-moses-duel-stage.js"></script>
+<script src="../src/cqc-pass33-rex-ray-duel.js"></script>
 <script>
 (()=>{
 'use strict';
@@ -570,8 +573,13 @@ startBoss=function(id,fromChron=false){const native=window.CQC_PASS31_REX_RAY_DU
 createBossMatch=function(b,fromChron){const match=legacyCreateBossMatchPass31(b,fromChron);return window.CQC_PASS31_REX_RAY_DUEL?.configure(match)||match};
 updateBossMatch=function(g){const native=window.CQC_PASS31_REX_RAY_DUEL;if(!native?.owns(g))return legacyUpdateBossMatchPass31(g);return native.update(g,{inputDown,pressed,showToast,spawn,endGame,updateParticles,bossLife,bossPattern,useSupport})};
 drawBossGame=function(c,g){if(window.CQC_PASS31_REX_RAY_DUEL?.draw(c,g,{drawBossHUD,drawSupportHud,drawBossEntity}))return;return legacyDrawBossGamePass31(c,g)};
-beginGame=function(label){$('#game').style.objectFit=window.CQC_PASS31_REX_RAY_DUEL?.owns(gameState)?'contain':legacyGameFitPass31;$('#fightHelp').innerHTML=window.CQC_PASS31_REX_RAY_DUEL?.owns(gameState)?'<b>← →</b> MANŒUVRE · <b>↑</b> PROPULSION · <b>J</b> MITRAILLEUSE · <b>K</b> MISSILE · <b>I</b> LASER · <b>↓ + I</b> RECHARGE · <b>U</b> SOUTIEN · <b>L</b> GARDE':legacyFightHelpPass31;return legacyBeginGamePass31(label)};
+beginGame=function(label){$('#game').style.objectFit=window.CQC_PASS31_REX_RAY_DUEL?.owns(gameState)?'contain':legacyGameFitPass31;$('#fightHelp').innerHTML=window.CQC_PASS31_REX_RAY_DUEL?.owns(gameState)?'<b>← →</b> MANŒUVRE · <b>↑</b> PROPULSION · <b>J</b> MITRAILLEUSE · <b>K</b> MISSILE · <b>I</b> LASER · <b>↓ + I</b> RECHARGE · <b>U</b> SOUTIEN · <b>L</b> GARDE · <button id="duelPauseButtonPass33" style="padding:6px 12px;background:#26333a;color:#f3e6ad;border:1px solid #849174;cursor:pointer">PAUSE · P</button>':legacyFightHelpPass31;return legacyBeginGamePass31(label)};
 startFighter=function(...args){window.CQC_PASS31_REX_RAY_DUEL?.cancel();return legacyStartFighterPass31(...args)};
+
+const legacyUpdateGamePass33=updateGame;updateGame=function(){if(window.CQC_PASS33_REX_RAY_DUEL?.owns(gameState)&&gameState.paused)return;return legacyUpdateGamePass33()};
+const legacyDrawGamePass33=drawGame;drawGame=function(){const native=window.CQC_PASS33_REX_RAY_DUEL;if(!native?.owns(gameState))return legacyDrawGamePass33();const c=$('#game').getContext('2d');native.draw(c,gameState,{drawBossHUD,drawSupportHud});native.drawParticles(c,gameState)};
+document.addEventListener('click',ev=>{if(ev.target?.closest?.('#duelPauseButtonPass33'))window.CQC_PASS33_REX_RAY_DUEL?.setPaused(true)});
+
 
 window.__CQC037={fighters,bosses,chronicles,supports,showScreen,startFighter,startBoss,buildRoster,buildBosses,setRosterFilter:(x)=>{rosterFilter=x;rosterPage=0;buildRoster()},setBossFilter:(x)=>{bossFilter=x;bossPage=0;buildBosses()},selectFighter:(id)=>{const i=fighters.findIndex(f=>f.id===id);if(i>=0){selectedFighter=i;buildRoster();updateFighterPanel()}},selectBoss:(id)=>{const i=bosses.findIndex(b=>b.id===id);if(i>=0){selectedBoss=i;buildBosses()}},getState:()=>gameState,visualVersion:'LEGACY_ART_V4'};
 
