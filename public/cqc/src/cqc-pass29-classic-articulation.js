@@ -16,7 +16,8 @@
     'The Gander lower plate is a mechanical armor plate, not an organic jaw. Its source open/closed variants remain independent; the small hinge/recoil is an interpreted mechanism.',
     'The TX-55 sabotage encounter remains stationary. Walking articulation only reads an explicit existing walk/run/dash action or lift channels outside that encounter.',
     'RAXA keeps its four-support takeoff and destruction clocks. Existing Core IK is retained; this helper only supplies missing presentation joint inputs.',
-    'BIC has no independently admitted launch clamps and ZEKE has no independent missile pod. No new pixels, targets or health pools are manufactured.',
+    'BIC has no independently admitted launch clamps. The later Pass30 standard ZEKE dorsal bank is retained; no launch-cap interior, new pixels, targets or health pools are manufactured.',
+    'Pass34 binds classic recoil to the last emitted shot of the existing active window; recovery only damps that impulse. Rigid MG D equipment has no independent organic breathing displacement.',
     'Partitioned clips cover the original native source region at rest. Canvas clip antialiasing can affect the shared seam by a subpixel; identical RGBA is not asserted.'
   ]);
   const partitions = [];
@@ -177,6 +178,15 @@
           edits.push({part:lower.id,kind:'retain-knee-socket-during-damage-and-collapse',removedTranslationBindings:removed,
             damageRotationAndEngineFlagsRetained:true,qualification:'A limb with no declared fracture stays connected at its knee instead of sliding away'});
         }
+        // The rigid hull and its bolted equipment share the machine anchor. A
+        // cosmetic breath on only the hull opens the mechanical seams at idle.
+        const hull=part(machine,'body_hull'),breath=(hull.channels?.y || []).filter(row=>row.channel==='idleBreath');
+        if (hull.channels?.y) {
+          hull.channels.y=hull.channels.y.filter(row=>row.channel!=='idleBreath');
+          if (!hull.channels.y.length) delete hull.channels.y;
+        }
+        edits.push({part:hull.id,kind:'rigid-chassis-retains-mounted-equipment-seams',
+          removedCosmeticTranslationBindings:clone(breath),neutralGeometryUnchanged:true});
         attach(machine, 'three_tube_rotary_gun', 'body_hull', edits);
         const gun=part(machine,'three_tube_rotary_gun'),before=clone(gun),outline=gun.sourceClipPolygonNativeXY || rectanglePolygon(gun.rect),socket=[1000,431];
         gun.sourceClipPolygonNativeXY=clipX(outline,1000,false);
@@ -254,16 +264,30 @@
     if(attack && ['beam','rail','gun','volley','shot','gatling','cannon','fire'].includes(attack.kind))events.push({...attack,age:attack.t,warn:attack.windup});
     let impulse=0;
     for(const e of events){if(!finite(e.age)||!finite(e.warn)||e.age<e.warn)continue;
+      if(finite(e.active)&&e.active<=0)continue;
       const age=e.age-e.warn,cadence=e.kind==='gun'?7:0;
-      impulse=Math.max(impulse,Math.exp(-(cadence?age%cadence:age)/2.8));}
+      // A gun emits only during the engine's active interval. Its final shot
+      // may settle through recovery, but the cadence must not restart there.
+      const lastActive=finite(e.active)?Math.max(0,Math.ceil(e.active)-1):age;
+      const lastShot=cadence?Math.floor(Math.min(age,lastActive)/cadence)*cadence:0;
+      impulse=Math.max(impulse,Math.exp(-(age-lastShot)/2.8));}
     return {impulse,hasClock:events.length>0};
   }
   function presentationPose(id, pose, state=null) {
     if (!pose || !ids.includes(id)) return pose;
     const result = {...pose, channels:{...(pose.channels || {})}, flags:{...(pose.flags || {})}}, c = result.channels;
-    const moving = /walk|run|dash/.test(pose.action || ''), defeated = pose.defeated === true || state?.boss?.defeated===true;
-    const attackPhase=phase(state),explicit=finite(c.weaponRecoilImpulse),
-      firing=!pose.motionEvent || ['beam','rail','gun','volley','shot','gatling','cannon','fire'].includes(pose.motionEvent.kind);
+    const moving = /walk|run|dash/.test(pose.action || ''), defeated = pose.defeated === true || pose.ko === true
+      || /^(dead|ko|defeated|destroyed)$/.test(pose.action || '') || state?.boss?.defeated===true || state?.boss?.destroyed===true
+      || result.flags.mgdDestroyed===true || result.flags.tx55Defeated===true || result.flags.tx55Absent===true
+      || result.flags.ganderDefeated===true || result.flags.zekeDefeated===true || result.flags.raxaDefeated===true;
+    // Later source-completion helpers use this common presentation flag too.
+    if (defeated) result.defeated = true;
+    const attackPhase=phase(state),explicit=finite(c.weaponRecoilImpulse),kind=pose.motionEvent?.kind || state?.boss?.attack?.kind,
+      nativeGun=!(id==='zeke_pw_psp2010' && kind && !['rail','beam'].includes(kind))
+        && !(id==='mgd_mg2_msx2' && state?.boss?.id==='mgd' && kind && kind!=='gun'),
+      firing=nativeGun && (!pose.motionEvent || ['beam','rail','gun','volley','shot','gatling','cannon','fire'].includes(pose.motionEvent.kind));
+    // ZEKE's dorsal missiles and MG D's Core missile salvo do not kick the
+    // mechanically independent railgun / triple-barrel receiver.
     c.classicGunRecoil = defeated||!firing?0:explicit || attackPhase.hasClock ? -7*clamp(explicit?c.weaponRecoilImpulse:attackPhase.impulse,0,1)
       : clamp(finite(c.weaponRecoil)?c.weaponRecoil:finite(c.mgdGunRecoil)?-Math.abs(c.mgdGunRecoil):0,-7,0);
     // The root gives clockwise source-axis deltas; mechanical rig rotation uses the opposite sign.
@@ -295,9 +319,9 @@
     }
     if (geometry[id]) for (const side of ['near','far']) {
       const label = side[0].toUpperCase()+side.slice(1), vector = geometry[id][side];
-      const stationarySabotage = id==='tx55_mg1_msx1987' && !moving;
+      const stationarySabotage = id==='tx55_mg1_msx1987' && (state?.boss?.id==='tx55' || !moving);
       const lift = defeated || stationarySabotage ? 0 : clamp(finite(c[side+'Lift'])?c[side+'Lift']:0,0,24);
-      const dx = defeated || !moving ? 0 : clamp(finite(c[side+'Swing'])?c[side+'Swing']*.5:0,-6,6);
+      const dx = defeated || stationarySabotage || !moving ? 0 : clamp(finite(c[side+'Swing'])?c[side+'Swing']*.5:0,-6,6);
       const joint = solve(vector[0],vector[1],dx,lift);
       c['classic'+label+'Upper'] = joint.upper; c['classic'+label+'Lower'] = joint.lower; c['classic'+label+'Foot'] = joint.foot;
     }

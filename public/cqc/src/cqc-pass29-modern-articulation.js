@@ -1,6 +1,7 @@
 /* Source-preserving articulated modern Metal Gear limbs.
  * Native source clips isolate the RAY MGR ankles; movement is an authored 2D
- * presentation using existing pose channels, never a second combat clock.
+ * presentation using the existing frame or an explicit native root distance.
+ * Distance-driven contacts are analytic: getters never retain a second clock.
  */
 (function (root) {
   'use strict';
@@ -17,11 +18,11 @@
   });
   const geometry = new Map(), definitions = new Map();
   const profiles = Object.freeze({
-    rex_mgs1_ps1: {root: 'pelvis_anchor', stride: 8, lift: 9, compression: 3.5},
-    ray_mgs2_arsenal: {root: 'torso', stride: 11, lift: 11, compression: 3},
-    ray_unmanned_mgr2013: {root: 'hull', stride: 12, lift: 11, compression: 3},
-    sahelanthropus_mgsv2015: {root: 'anchor', stride: 14, lift: 14, compression: 4},
-    grad_mgr2013: {root: 'hull', stride: 8, lift: 8, compression: 2.5}
+    rex_mgs1_ps1: {root: 'pelvis_anchor', stride: 8, lift: 9, compression: 3.5, period: 92},
+    ray_mgs2_arsenal: {root: 'torso', stride: 11, lift: 11, compression: 3, period: 82},
+    ray_unmanned_mgr2013: {root: 'hull', stride: 12, lift: 11, compression: 3, period: 76},
+    sahelanthropus_mgsv2015: {root: 'anchor', stride: 14, lift: 14, compression: 4, period: 104},
+    grad_mgr2013: {root: 'hull', stride: 8, lift: 8, compression: 2.5, period: 90}
   });
   // These axes are measured on admitted native sprites. They describe the
   // visible 2D bore/emitter, not an extracted original game's 3D weapon socket.
@@ -43,7 +44,10 @@
     'REX MGS1 remains its own incarnation; this helper does not create or relabel an MGS4 REX.',
     'Source support depth, uniform scale, target/HP pools and destruction clocks are retained; the main GRAD cannon now uses its actual drawn heavy barrel, while its former machine-gun region remains separately attached.',
     'New aiming is limited to admitted source-native weapon axes. Mechanical angular limits are source-led presentation limits, not extracted canonical joint specifications.',
-    'Aim and attack-phase motion remain active with reduced motion enabled because they communicate attacks; idle scanning and decorative gait are suppressed.',
+    'Aim, attack phases and explicit distance-driven locomotion remain active with reduced motion enabled; idle scanning and frame-only decorative gait are suppressed.',
+    'Planted horizontal contacts require an explicit machineMotion.travelX in native rig units. Without that owner-supplied distance the gait is a nominal local presentation; no world-contact guarantee is made.',
+    'Both gait legs spend 64% of each cycle on their measured support plane, with a smooth raised return and double support. Phase uses the existing frame or supplied distance, never a new timer.',
+    'A stomp or a real destroyed leg braces the remaining supports before locomotion is applied; GRAD shield flags do not disable its intact support legs.',
     'Hidden surfaces behind moving RAY MGR ankle seams are absent from the source. Neutral Canvas edge antialias can differ along the split; source-space pixels are unchanged.',
     'Stride shortens horizontally at a fully extended native knee to preserve the source support plane; joint lengths are never stretched.'
   ]);
@@ -105,6 +109,7 @@
       const upper = part(machine, upperID), lower = part(machine, lowerID), foot = part(machine, footID);
       legs[side] = {first: lower.offset.slice(), second: foot.offset.slice(),
         upperRotation: upper.rotation || 0, lowerRotation: lower.rotation || 0,
+        kneeBranch:Math.sign(lower.offset[0]*rotate(foot.offset,lower.rotation||0)[1]-lower.offset[1]*rotate(foot.offset,lower.rotation||0)[0])||-1,
         upperChannels: clone(upper.channels?.rotation || []).filter(row => !row.channel.startsWith('pass29Modern')),
         lowerChannels: clone(lower.channels?.rotation || []).filter(row => !row.channel.startsWith('pass29Modern'))};
     }
@@ -199,7 +204,33 @@
     return [vector[0] * c - vector[1] * s, vector[0] * s + vector[1] * c];
   }
   const normalizeAngle = value => ((value + 180) % 360 + 360) % 360 - 180;
-  function solve(first, second, upper, lower, shift, lift) {
+  const SUPPORT_DUTY = .64;
+  const smooth = t => t*t*t*(10+t*(-15+6*t));
+  function gait(id, frame, side, motion = null) {
+    const profile=profiles[id];
+    if (!profile || !['near','far'].includes(side)) return null;
+    const distanceDriven=finite(motion?.travelX), direction=motion?.direction===-1?-1:1,
+      distance=profile.stride*2,
+      phaseValue=(distanceDriven ? direction*motion.travelX/distance : value(frame)/profile.period)+(side==='far'?.5:0),
+      phase=((phaseValue%1)+1)%1, support=phase<SUPPORT_DUTY,
+      progress=support?phase/SUPPORT_DUTY:(phase-SUPPORT_DUTY)/(1-SUPPORT_DUTY),
+      half=distance*SUPPORT_DUTY*.5;
+    // The support target recedes by exactly the admitted root travel. In the
+    // raised return, a quintic blend plus the shared endpoint tangent keeps
+    // foot speed continuous when taking off and settling on the support plane.
+    const blend=smooth(progress), tangent=-distance*(1-SUPPORT_DUTY),
+      shift=support ? half-phase*distance : -half+2*half*blend+tangent*progress*(1-progress)*(1-2*progress),
+      lift=support?0:Math.sin(progress*Math.PI)**2*profile.lift;
+    return {phase,support,progress,shift:shift*direction,lift,period:profile.period,
+      cycleDistance:distance,duty:SUPPORT_DUTY,distanceDriven,direction};
+  }
+  function requiredCompression(first, second, upper, lower, shift, lift) {
+    const a=rotate(first,upper),b=rotate(second,upper+lower),
+      x=a[0]+b[0]+shift,y=a[1]+b[1]+lift,
+      reach=Math.hypot(...first)+Math.hypot(...second)-.000001;
+    return Math.max(0,-Math.sqrt(Math.max(0,reach*reach-x*x))-y);
+  }
+  function solve(first, second, upper, lower, shift, lift, kneeBranch) {
     const a = rotate(first, upper), b = rotate(second, upper + lower);
     const target = [a[0] + b[0] + shift, a[1] + b[1] + lift];
     const la = Math.hypot(...first), lb = Math.hypot(...second);
@@ -220,10 +251,14 @@
       const secondAngle = Math.atan2(reached[1] - la * Math.sin(angle), reached[0] - la * Math.cos(angle));
       const upperDelta = normalizeAngle(angle / DEG - Math.atan2(first[1], first[0]) / DEG - upper);
       const lowerDelta = normalizeAngle(secondAngle / DEG - Math.atan2(second[1], second[0]) / DEG - upper - upperDelta - lower);
-      return {upper: upperDelta, lower: lowerDelta, foot: -upperDelta - lowerDelta};
+      return {upper: upperDelta, lower: lowerDelta, foot: -upperDelta - lowerDelta,
+        branch:Math.sign(Math.sin(secondAngle-angle))};
     });
-    candidates.sort((a, b) => Math.abs(a.upper) + Math.abs(a.lower) - Math.abs(b.upper) - Math.abs(b.lower));
-    return candidates[0];
+    // Preserve the native knee's bend side. Re-selecting the least angular
+    // solution every frame can flip the elbow of the chain at full extension.
+    const bend=kneeBranch||Math.sign(a[0]*b[1]-a[1]*b[0])||-1, matching=candidates.filter(row=>row.branch===bend);
+    matching.sort((a,b)=>Math.abs(a.upper)+Math.abs(a.lower)-Math.abs(b.upper)-Math.abs(b.lower));
+    return matching[0]||candidates[0];
   }
   function contribution(rows, channels, reduced) {
     return rows.reduce((sum, row) => sum + (reduced && row.cosmetic ? 0 : (finite(channels[row.channel]) ? channels[row.channel] : 0) * row.factor), 0);
@@ -273,15 +308,36 @@
     const legs = geometry.get(id);
     if (!pose || !legs) return pose;
     const result = {...pose, flags: {...pose.flags}, channels: {...pose.channels}};
+    delete result.motionSupport; delete result.machineAimSolution;
     const channels = result.channels, profile=profiles[id], event=eventPhase(state),
       dead=result.defeated===true || result.action==='dead', walking=/walk|dash|run/.test(result.action||''),
       attacking=/shoot|attack|heavy|light|special|super|slash/.test(result.action||'') || result.attacking===true,
       attackProgress=clamp(value(result.phaseProgress),0,1),
       windup=event?.windup || (attacking ? Math.sin(Math.min(1,attackProgress*3)*Math.PI*.5)*(attackProgress<.35?1:0) : 0),
-      impact=event?.impact || (attacking ? Math.sin(clamp((attackProgress-.35)/.65,0,1)*Math.PI) : 0),
-      strideWave=clamp(value(channels.nearSwing)/12,-1,1);
-    const compression=dead?0:profile.compression*windup+profile.compression*.35*impact+
-      (!result.reducedMotion&&walking ? Math.abs(strideWave)*1.5 : 0);
+      impact=event?.impact || (attacking ? Math.sin(clamp((attackProgress-.35)/.65,0,1)*Math.PI) : 0);
+    const distanceDriven=finite(result.machineMotion?.travelX),
+      braced=(!!event&&/stomp|leg-stomp/.test(event.event.kind||event.event.id||''))||
+        (id!=='grad_mgr2013'&&(result.flags.part0Destroyed===true||result.flags.part1Destroyed===true)),
+      walkingGait=walking&&!dead&&!braced&&(!result.reducedMotion||distanceDriven), gaitRows={}, targets={};
+    let compression=dead?0:profile.compression*windup+profile.compression*.35*impact;
+    for (const side of ['near','far']) {
+      const leg=legs[side], disabled=dead||(id!=='grad_mgr2013'&&result.flags['part'+(side==='near'?0:1)+'Destroyed']===true),
+        step=walkingGait&&!disabled?gait(id,result.frame,side,result.machineMotion):null,
+        attackLift=event&&/stomp|leg-stomp/.test(event.event.kind||event.event.id||'')&&
+          (event.event.sources||[event.event.side||0]).some(index=>(index%2===0?'near':'far')===side),
+        stompLift=attackLift&&event.phase==='windup'?Math.sin(event.progress*Math.PI)*18:0,
+        fallbackLift=Math.min(Math.max(0,value(channels[side+'Lift'])),profile.lift),
+        lift=disabled?0:attackLift?stompLift:braced?0:step?step.lift:result.reducedMotion?0:fallbackLift,
+        shift=disabled||braced?0:step?step.shift:result.reducedMotion?0:clamp(value(channels[side+'Swing'])/12,-1,1)*profile.stride;
+      if(id==='rex_mgs1_ps1'&&side==='near'&&attackLift){
+        channels.rexNearStompUpper=0;channels.rexNearStompLower=0;channels.rexNearStompFoot=0;channels.stompLift=0;
+      }
+      const upper=leg.upperRotation+contribution(leg.upperChannels,channels,result.reducedMotion),
+        lower=leg.lowerRotation+contribution(leg.lowerChannels,channels,result.reducedMotion);
+      targets[side]={disabled,step,attackLift,lift,shift,upper,lower};
+      if(step)gaitRows[side]={...step,support:!attackLift&&step.support};
+      if(!disabled&&step)compression=Math.max(compression,requiredCompression(leg.first,leg.second,upper,lower,shift,lift));
+    }
     channels.pass32ModernCompression=compression;
     channels.pass32ModernSensorScan=dead||result.reducedMotion||event||attacking?0:Math.sin(value(result.frame)*.019)*1.5;
     // Existing source-independent idle root breathing is replaced by subtle
@@ -290,30 +346,12 @@
     channels.pass32ModernAim=0; channels.pass32ModernRecoilX=0; channels.pass32ModernRecoilY=0;
     for (const side of ['near', 'far']) {
       const title = side === 'near' ? 'Near' : 'Far', leg = legs[side];
-      const wave = clamp(value(channels[side + 'Swing']) / 12, -1, 1);
-      const disabled = dead || (id!=='grad_mgr2013' && result.flags['part' + (side === 'near' ? 0 : 1) + 'Destroyed'] === true);
-      const originalLift=Math.max(0,value(channels[side+'Lift']));
-      const attackLift=event && /stomp|leg-stomp/.test(event.event.kind||event.event.id||'') &&
-        (event.event.sources||[event.event.side||0]).some(index=>(index%2===0?'near':'far')===side);
-      // The foot returns to its support plane at the first dangerous frame.
-      // It rises during the tell and descends before warn expires, rather than
-      // levitating while the simulation already applies stomp damage.
-      const stompLift=attackLift&&event.phase==='windup'?Math.sin(event.progress*Math.PI)*18:0;
-      if (id==='rex_mgs1_ps1'&&side==='near'&&attackLift) {
-        channels.rexNearStompUpper=0; channels.rexNearStompLower=0; channels.rexNearStompFoot=0;
-        channels.stompLift=0;
-      }
-      const lift = disabled ? 0 : (result.reducedMotion && !attackLift ? 0 : (attackLift ? stompLift : Math.min(originalLift,profile.lift)));
-      const shift = disabled || result.reducedMotion ? 0 : wave * profile.stride;
-      // REX's established source-length stomp already raises its near ankle.
-      // Retain that native chain; suspension correction is additional, never
-      // a duplicate full-leg translation or another stomp clock.
-      const effectiveLift = id === 'rex_mgs1_ps1' && side === 'near' && !finite(channels.stompLift) ? 0 : lift;
-      const upper = leg.upperRotation + contribution(leg.upperChannels, channels, result.reducedMotion);
-      const lower = leg.lowerRotation + contribution(leg.lowerChannels, channels, result.reducedMotion);
+      const {disabled,step,attackLift,lift,shift,upper,lower}=targets[side],
+        wave=step?step.shift/profile.stride:clamp(value(channels[side+'Swing'])/12,-1,1),
+        effectiveLift=lift;
       const compensate=disabled?0:compression;
       const joint = shift === 0 && effectiveLift+compensate === 0 ? {upper: 0, lower: 0, foot: 0}
-        : solve(leg.first, leg.second, upper, lower, shift, effectiveLift+compensate);
+        : solve(leg.first, leg.second, upper, lower, shift, effectiveLift+compensate,leg.kneeBranch);
       for (const segment of ['Upper', 'Lower', 'Foot']) channels['pass29Modern' + title + segment] = joint[segment.toLowerCase()];
       if (id === 'sahelanthropus_mgsv2015') {
         const shoulder = disabled ? 0 : (!result.reducedMotion ? -wave * 4 : 0) - windup*6;
@@ -323,6 +361,12 @@
         channels['pass29Modern' + title + 'Wrist'] = -shoulder - elbow;
       }
     }
+    if (Object.keys(gaitRows).length) result.motionSupport={
+      schema:'cqc.pass34.modern-support/1',mode:distanceDriven?'explicit-native-root-distance':'nominal-frame-presentation',
+      rootTravelX:distanceDriven?result.machineMotion.travelX:null,
+      contacts:gaitRows,compression,
+      worldContactQualified:distanceDriven,
+      qualification:distanceDriven?'Analytic native contact requires travelX to match the owner root translation; scaling and fit remain owned by the caller.':'No native root distance supplied; horizontal world support is not certified.'};
     if (!dead) aimAtSource(id,result,state);
     // Recoil retracts into the mount along the actual aimed native bore; an
     // always-negative X channel would push these left-pointing guns forward.
@@ -342,7 +386,13 @@
     channels.pass32ModernMGRecoil=id==='grad_mgr2013'?recoil*.5:0;
     return result;
   }
-  root.CQC_PASS29_MODERN_ARTICULATION = Object.freeze({apply, presentationPose, limits, aimAxes,
-    audit: Object.freeze({schema: 'cqc.pass32.modern-native-motion/1', ids: Object.keys(specifications),
+  root.CQC_PASS29_MODERN_ARTICULATION = Object.freeze({apply, presentationPose, gait, limits, aimAxes,
+    motionContract:Object.freeze({schema:'cqc.pass34.native-root-distance/1',
+      input:'pose.machineMotion.travelX: finite signed root displacement in native rig units before fit/scale',
+      direction:'optional stable +1/-1 travel convention; defaults +1 and may stay fixed when reversing',
+      phase:'travelX/cycleDistance when supplied; existing pose.frame/profile.period otherwise',
+      contact:'64% support duty, opposite phase by half a cycle; caller root translation must match travelX',
+      stateful:false,newClock:false,worldContactWithoutDistance:false}),
+    audit: Object.freeze({schema: 'cqc.pass34.modern-native-motion/1', ids: Object.keys(specifications),
       sourcePixelsChanged: false, simulationMutation: false, absolute1to1Certified: false})});
 })(typeof globalThis !== 'undefined' ? globalThis : this);

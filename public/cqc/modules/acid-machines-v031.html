@@ -21,6 +21,35 @@
 <script src="../src/cqc-machine-parts-renderer-v1.js"></script>
 <script src="../src/cqc-machine-parts-catalog-v1.js"></script>
 <script src="../src/cqc-pass16-machine-catalog.js"></script>
+<script src="../src/cqc-pass18-machine-catalog.js"></script>
+<script src="../src/cqc-pass19-gekko-catalog.js"></script>
+<script src="../src/cqc-pass19-gekko-poses.js"></script>
+<script src="../src/cqc-pass19-machine-source-points.js"></script>
+<script src="../src/cqc-pass19-gekko-install.js"></script>
+<script src="../src/cqc-pass28-heavy-rig-fixes.js"></script>
+<script src="../src/cqc-pass28-pw-rig-fixes.js"></script>
+<script src="../src/cqc-pass28-vehicle-rig-fixes.js"></script>
+<script src="../src/cqc-pass28-missing-machine.js"></script>
+<script src="../src/cqc-pass27-machine-completion.js"></script>
+<script src="../src/cqc-pass28-machine-ink.js"></script>
+<script src="../src/cqc-pass28-machine-geometry.js"></script>
+<script src="../src/cqc-pass28-edition-fixes.js"></script>
+<script src="../src/cqc-pass28-shagohod-native-rear.js"></script>
+<script src="../src/cqc-pass29-modern-articulation.js"></script>
+<script src="../src/cqc-pass29-classic-articulation.js"></script>
+<script src="../src/cqc-pass29-pw-articulation.js"></script>
+<script src="../src/cqc-pass29-heavy-articulation.js"></script>
+<script src="../src/cqc-pass30-bic-completion.js"></script>
+<script src="../src/cqc-pass30-mk-completion.js"></script>
+<script src="../src/cqc-pass30-zeke-completion.js"></script>
+<script src="../src/cqc-pass30-gander-fidelity.js"></script>
+<script src="../src/cqc-pass31-rex-mgs4.js"></script>
+<script src="../src/cqc-pass31-peace-walker-biped.js"></script>
+<script src="../src/cqc-pass34-light-articulation.js"></script>
+<script src="../src/cqc-pass34-vehicle-articulation.js"></script>
+<script src="../src/cqc-pass28-rig-setup.js"></script>
+<script src="../src/cqc-pass28-rig-install.js"></script>
+<script src="../src/cqc-pass18-machine-bridge.js"></script>
 <script src="../src/cqc-pass16-machine-pose-a.js"></script>
 <script src="../src/cqc-pass16-machine-pose-b.js"></script>
 <script src="../src/cqc-pass16-machine-pose.js"></script>
@@ -81,58 +110,61 @@ function formatTime(v){const s=Math.max(0,Math.floor(v));return `${Math.floor(s/
 function openModule(){root.hidden=false;document.documentElement.style.overflow='hidden';refreshProfile();drawPreview()}
 function closeModule(){window.CQC_PASS18_VFX?.cancelPendingLaunch();stop();root.hidden=true;document.documentElement.style.overflow='';}
 function difficultyScale(){return ui.difficulty.value==='story'?.82:ui.difficulty.value==='hard'?1.22:1}
-function resetState(){const d=defs[selectedBoss], scale=difficultyScale();state={boss:selectedBoss,mode:selectedMode,phase:1,t:d.time,startedAt:d.time,player:{x:170,y:580,vx:0,vy:0,w:44,h:82,hp:10000,maxHp:10000,grounded:true,crouch:false,ammo:d.ammo,rations:d.rations,sub:d.sub,cost:0,inv:0,action:0,dash:0},body:d.body,bodyMax:d.body,parts:d.parts.slice(),partsMax:d.parts.slice(),target:0,projectiles:[],hazards:[],particles:[],attackClock:1.5,attackIndex:0,shots:0,hits:0,subUsed:0,damageTaken:0,interrupts:0,scale,overload:false,message:'',messageT:0,chronicleStep:selectedMode==='chronicle'?1:0};}
+function resetState(){const d=defs[selectedBoss], scale=difficultyScale();state={boss:selectedBoss,mode:selectedMode,phase:1,t:d.time,startedAt:d.time,player:{x:170,y:580,vx:0,vy:0,w:44,h:82,hp:10000,maxHp:10000,grounded:true,crouch:false,ammo:d.ammo,rations:d.rations,sub:d.sub,cost:0,inv:0,action:0,dash:0},body:d.body,bodyMax:d.body,parts:d.parts.slice(),partsMax:d.parts.slice(),target:0,projectiles:[],hazards:[],particles:[],attackClock:1.5,attackIndex:0,machineEvents:[],shots:0,hits:0,subUsed:0,damageTaken:0,interrupts:0,scale,overload:false,message:'',messageT:0,chronicleStep:selectedMode==='chronicle'?1:0};}
 function start(){if(window.CQC_PASS18_VFX?.deferCoreLaunch({mode:'boss',player:'snake_acid',opponent:selectedBoss,source:'acid31',difficulty:ui.difficulty.value},()=>start()))return;if(window.CQC_PASS16_ACID_ART?.deferStart(selectedBoss,start,{mode:selectedMode,difficulty:ui.difficulty.value}))return;resetState();running=true;paused=false;ui.intro.hidden=true;ui.result.hidden=true;ui.pause.hidden=true;last=performance.now();ui.log.textContent=`${defs[selectedBoss].episode} · ${defs[selectedBoss].name} — cible : ${targetName()}.`;cancelAnimationFrame(raf);raf=requestAnimationFrame(loop)}
 function stop(){running=false;paused=false;cancelAnimationFrame(raf);keys.clear()}
 function targetName(){if(!state)return '—';const d=defs[state.boss];if(state.phase===1){return d.partNames[state.target%d.parts.length]}return state.boss==='chaioth'&&state.target===1?'ÉMETTEUR RAILGUN':'NOYAU'}
 function cycleTarget(){if(!state)return;if(state.phase===1){state.target=(state.target+1)%state.parts.length}else if(state.boss==='chaioth'){state.target=(state.target+1)%2}else state.target=0;flash(`CIBLE · ${targetName()}`)}
 function flash(t){if(!state)return;state.message=t;state.messageT=1.25;ui.log.textContent=t}
 function playerRect(){const p=state.player,h=p.crouch?46:p.h;return{x:p.x-p.w/2,y:p.y-h,w:p.w,h}}
-function bossTarget(){const b=state.boss;if(b==='kodoque'){
-  if(state.phase===1){return state.target===0?{x:922,y:386}:{x:1112,y:386}}
-  return {x:1012,y:348};
- }else{
-  if(state.phase===1){return state.target===0?{x:930,y:526}:{x:1092,y:526}}
-  if(state.target===1)return{x:1010,y:270};return{x:1010,y:378};
- }}
-function fire(){if(!running||paused||state.player.action>0)return;const p=state.player;if(p.ammo<=0){flash('AUCUNE CARTE OFFENSIVE · Bas + I près du relais');return}if(p.cost>84){flash('COST TROP ÉLEVÉ');return}p.action=.42;p.ammo--;p.cost=Math.min(100,p.cost+16);state.shots++;const t=bossTarget(),dx=t.x-(p.x+26),dy=t.y-(p.y-52),len=Math.hypot(dx,dy)||1;state.projectiles.push({side:'player',type:state.boss==='kodoque'?'nikita':'stinger',x:p.x+26,y:p.y-52,vx:dx/len*520,vy:dy/len*520,r:7,damage:800,life:3.2,targetPhase:state.phase});flash(`${state.boss==='kodoque'?'NIKITA':'STINGER'} · ${targetName()}`)}
-function subAction(){if(!running||paused||state.player.action>0)return;const p=state.player;if(p.sub<=0){flash('CONTRE-MESURES ÉPUISÉES');return}p.sub--;p.action=.3;p.cost=Math.min(100,p.cost+12);state.subUsed++;if(state.boss==='kodoque'){state.projectiles=state.projectiles.filter(x=>x.side!=='boss');state.hazards=[];flash('CHAFF · GUIDAGES ROMPUS')}else{state.attackClock=Math.max(state.attackClock,1.5);state.projectiles=state.projectiles.filter(x=>x.side!=='boss'||x.type==='wave');state.interrupts++;flash('EMP · CHARGE RETARDÉE')}}
+function bossTarget(index=state.target,phase=state.phase){
+ return window.CQC_PASS16_ACID_ART?.target(state,state.boss,index,phase)||null;
+}
+function machineVector(spec={}){return window.CQC_PASS16_ACID_ART?.weaponVector(state,state.boss,spec)||null}
+function machineRayFor(h){return h.nativeWeapon?window.CQC_PASS16_ACID_ART?.beam(state,state.boss,h):null}
+function rayHitsRect(ray,rect){return window.CQC_PASS16_ACID_ART?.rayHitsRect(ray,rect)===true}
+function recordMachineAttack(kind,warn,active,source=0){
+ const now=(state.startedAt-state.t)*60,event={kind,sources:[source],startedFrame:now,age:0,warn:warn*60,active:active*60,recovery:18,aimTarget:[state.player.x,state.player.y-45]};
+ state.machineEvents.push(event);return event;
+}
+function fire(){if(!running||paused||state.player.action>0)return;const p=state.player;if(p.ammo<=0){flash('AUCUNE CARTE OFFENSIVE · Bas + I près du relais');return}if(p.cost>84){flash('COST TROP ÉLEVÉ');return}p.action=.42;p.ammo--;p.cost=Math.min(100,p.cost+16);state.shots++;const t=bossTarget();if(!t){p.action=0;p.ammo++;p.cost=Math.max(0,p.cost-16);state.shots--;return}const dx=t.x-(p.x+26),dy=t.y-(p.y-52),len=Math.hypot(dx,dy)||1;state.projectiles.push({side:'player',type:state.boss==='kodoque'?'nikita':'stinger',x:p.x+26,y:p.y-52,vx:dx/len*520,vy:dy/len*520,r:7,damage:800,life:3.2,targetPhase:state.phase,targetIndex:state.target});flash(`${state.boss==='kodoque'?'NIKITA':'STINGER'} · ${targetName()}`)}
+function subAction(){if(!running||paused||state.player.action>0)return;const p=state.player;if(p.sub<=0){flash('CONTRE-MESURES ÉPUISÉES');return}p.sub--;p.action=.3;p.cost=Math.min(100,p.cost+12);state.subUsed++;if(state.boss==='kodoque'){state.projectiles=state.projectiles.filter(x=>x.side!=='boss');state.hazards=[];state.machineEvents=[];flash('CHAFF · GUIDAGES ROMPUS')}else{state.attackClock=Math.max(state.attackClock,1.5);state.machineEvents=state.machineEvents.filter(e=>e.kind!=='rail');state.hazards=state.hazards.filter(h=>!h.rail);state.projectiles=state.projectiles.filter(x=>x.side!=='boss'||x.type==='wave');state.interrupts++;flash('EMP · CHARGE RETARDÉE')}}
 function heal(){if(!running||paused||state.player.action>0)return;const p=state.player;if(p.rations<=0||p.hp>=p.maxHp){flash(p.rations?'VIE DÉJÀ PLEINE':'RATIONS ÉPUISÉES');return}p.action=.7;p.rations--;p.cost=Math.min(100,p.cost+22);p.hp=Math.min(p.maxHp,p.hp+1800);flash('RATION · +1800')}
 function reload(){const p=state.player,d=defs[state.boss];if(p.action>0||p.ammo>=d.ammo)return;p.action=1.05;p.ammo=d.ammo;p.cost=Math.max(0,p.cost-15);flash('REPLANIFICATION · MAIN RECOMPOSÉE')}
 function damagePlayer(amount){const p=state.player;if(p.inv>0)return;p.hp=Math.max(0,p.hp-amount*state.scale);p.inv=.65;state.damageTaken+=Math.round(amount*state.scale);flash(`IMPACT · -${Math.round(amount*state.scale)}`);if(p.hp<=0)finish(false,'OPÉRATION ÉCHOUÉE')}
-function hitBoss(pr){if(pr.targetPhase!==state.phase)return false;const d=defs[state.boss];if(state.phase===1){const idx=state.target%d.parts.length;if(state.parts[idx]<=0)return false;const dmg=Math.min(pr.damage,state.parts[idx]);state.parts[idx]-=dmg;state.hits++;if(state.parts[idx]<=0){flash(`${d.partNames[idx]} NEUTRALISÉ`)}if(state.parts.every(v=>v<=0)){state.phase=2;state.target=0;state.projectiles=state.projectiles.filter(x=>x.side!=='boss');state.hazards=[];state.attackClock=2.2;flash(state.boss==='kodoque'?'BARRIÈRE ROMPUE · NOYAU EXPOSÉ':'APPROCHE BRISÉE · CŒUR EXPOSÉ')}return true}
- if(state.boss==='chaioth'&&state.target===1){if(state.attackKind==='rail'&&state.attackStage==='warn'){state.attackClock=1.8;state.attackKind='';state.attackStage='';state.interrupts++;state.hits++;flash('RAILGUN INTERROMPU');return true}return false}
+function hitBoss(pr){if(pr.targetPhase!==state.phase)return false;const d=defs[state.boss];if(state.phase===1){const idx=pr.targetIndex%d.parts.length;if(state.parts[idx]<=0)return false;const dmg=Math.min(pr.damage,state.parts[idx]);state.parts[idx]-=dmg;state.hits++;if(state.parts[idx]<=0){flash(`${d.partNames[idx]} NEUTRALISÉ`)}if(state.parts.every(v=>v<=0)){state.phase=2;state.target=0;state.projectiles=state.projectiles.filter(x=>x.side!=='boss');state.hazards=[];state.machineEvents=[];state.attackClock=2.2;flash(state.boss==='kodoque'?'BARRIÈRE ROMPUE · NOYAU EXPOSÉ':'APPROCHE BRISÉE · CŒUR EXPOSÉ')}return true}
+ if(state.boss==='chaioth'&&pr.targetIndex===1){if(state.attackKind==='rail'&&state.attackStage==='warn'){state.attackClock=1.8;state.attackKind='';state.attackStage='';state.hazards=state.hazards.filter(h=>!h.rail);state.machineEvents=state.machineEvents.filter(e=>e.kind!=='rail');state.interrupts++;state.hits++;flash('RAILGUN INTERROMPU');return true}return false}
  const dmg=Math.min(pr.damage,state.body);state.body-=dmg;state.hits++;if(state.boss==='chaioth'&&!state.overload&&state.body<=state.bodyMax/2){state.overload=true;state.attackClock=.8;flash('SURCHARGE · CADENCE ACCÉLÉRÉE')}if(state.body<=0)finish(true,'MACHINE NEUTRALISÉE');return true}
 function spawnAttack(){if(!state||!running)return;const b=state.boss,idx=state.attackIndex++;state.attackStage='warn';if(b==='kodoque'){
  const kinds=state.phase===1?['zones','laser','drones']:['laser','zones','drones','sweep'];state.attackKind=kinds[idx%kinds.length];
  if(state.attackKind==='zones'){state.hazards=[250,520,790].map((x,i)=>({type:'zone',x:x+(idx%2)*45,y:590,w:105,h:20,t:.9,active:.55,damage:620}))}
- else if(state.attackKind==='laser'){state.hazards=[{type:'line',x:90,y:438,w:1050,h:16,t:.75,active:.45,damage:760,high:true}]}
+ else if(state.attackKind==='laser'){const e=recordMachineAttack('beam',.75,.45,idx%2);state.hazards=[{type:'line',t:.75,initialWarn:.75,active:.45,initialActive:.45,damage:760,high:true,nativeWeapon:{kind:'beam',sources:e.sources},machineEventFrame:e.startedFrame,radius:8}]}
  else if(state.attackKind==='sweep'){state.hazards=[{type:'line',x:120,y:552,w:980,h:22,t:.7,active:.5,damage:820,low:true}]}
- else{for(let i=0;i<4;i++)state.projectiles.push({side:'boss',type:'drone',x:1030+i*12,y:320+i*30,vx:-250-i*25,vy:(i-1.5)*25,r:8,damage:430,life:4})}
+ else{recordMachineAttack('shot',0,.1,idx%2);for(let i=0;i<4;i++){const v=machineVector({kind:'shot',sources:[i%2]});if(v?.axisVisible)state.projectiles.push({side:'boss',type:'drone',x:v.x,y:v.y,vx:Math.cos(v.angle)*(250+i*25),vy:Math.sin(v.angle)*(250+i*25),r:8,damage:430,life:4,nativeSourcePart:v.part,nativeEmissionAngle:v.angle,nativeOrigin:{x:v.x,y:v.y}})}}
  }else{
  const kinds=state.phase===1?['stomp','plasma','orbs']:['rail','plasma','orbs','wave'];state.attackKind=kinds[idx%kinds.length];
- if(state.attackKind==='stomp'){state.hazards=[{type:'zone',x:885,y:555,w:190,h:55,t:.85,active:.5,damage:780},{type:'wave',x:880,y:570,w:40,h:18,t:1.25,active:.8,damage:650}]}
+ if(state.attackKind==='stomp'){const support=state.parts[idx%2]>0?idx%2:1-idx%2,foot=window.CQC_PASS16_ACID_ART?.sourcePoint(state,state.boss,{part:support?'far_foot':'near_foot'});recordMachineAttack('stomp',.85,.5,support);if(foot)state.hazards=[{type:'zone',x:foot.x-95,y:555,w:190,h:55,t:.85,active:.5,damage:780,nativeSupport:foot.part},{type:'wave',x:foot.x-20,y:570,w:40,h:18,t:1.25,active:.8,damage:650,nativeSupport:foot.part}]}
  else if(state.attackKind==='plasma'){state.hazards=[220,460,720].map((x,i)=>({type:'zone',x:x+(idx%3)*32,y:525,w:82,h:85,t:.85,active:.55,damage:700}))}
- else if(state.attackKind==='rail'){state.hazards=[{type:'line',x:80,y:405,w:1100,h:22,t:1.25,active:.35,damage:1300,rail:true}]}
+ else if(state.attackKind==='rail'){const e=recordMachineAttack('rail',1.25,.35,0);state.hazards=[{type:'line',t:1.25,initialWarn:1.25,active:.35,initialActive:.35,damage:1300,rail:true,nativeWeapon:{kind:'rail',sources:e.sources},machineEventFrame:e.startedFrame,radius:11}]}
  else if(state.attackKind==='wave'){state.hazards=[{type:'line',x:120,y:552,w:970,h:20,t:.75,active:.65,damage:850,low:true}]}
- else{for(let i=0;i<3;i++)state.projectiles.push({side:'boss',type:'orb',x:1010,y:285+i*55,vx:-210,vy:(i-1)*35,r:11,damage:520,life:5,homing:1.3})}
+ else{recordMachineAttack('shot',0,.1,0);for(let i=0;i<3;i++){const v=machineVector({kind:'shot'});if(v?.axisVisible)state.projectiles.push({side:'boss',type:'orb',x:v.x,y:v.y,vx:Math.cos(v.angle)*210,vy:Math.sin(v.angle)*210,r:11,damage:520,life:5,homing:1.3,nativeSourcePart:v.part,nativeEmissionAngle:v.angle,nativeOrigin:{x:v.x,y:v.y}})}}
  }
  state.attackClock=(state.overload?1.45:2.15)/state.scale;
 }
-function update(dt){if(!state||paused)return;const p=state.player,d=defs[state.boss];state.t-=dt;if(state.t<=0){state.t=0;finish(false,'TEMPS ÉCOULÉ');return}p.inv=Math.max(0,p.inv-dt);p.action=Math.max(0,p.action-dt);p.cost=Math.max(0,p.cost-dt*7);state.messageT=Math.max(0,state.messageT-dt);
+function update(dt){if(!state||paused)return;const p=state.player,d=defs[state.boss];state.t-=dt;const machineFrame=(state.startedAt-state.t)*60;state.machineEvents=(state.machineEvents||[]).filter(e=>{e.age=Math.max(0,machineFrame-e.startedFrame);return e.age<e.warn+e.active+e.recovery});if(state.t<=0){state.t=0;finish(false,'TEMPS ÉCOULÉ');return}p.inv=Math.max(0,p.inv-dt);p.action=Math.max(0,p.action-dt);p.cost=Math.max(0,p.cost-dt*7);state.messageT=Math.max(0,state.messageT-dt);
  let move=0;if(keys.has('ArrowLeft'))move--;if(keys.has('ArrowRight'))move++;p.crouch=keys.has('ArrowDown')&&p.grounded;if(p.action<=0){const speed=keys.has('ShiftRight')||keys.has('ShiftLeft')?350:235;p.vx=move*speed;if(keys.has('ArrowUp')&&p.grounded){p.vy=-620;p.grounded=false}}
  else p.vx*=.84;p.x+=p.vx*dt;p.vy+=1500*dt;p.y+=p.vy*dt;if(p.y>=590){p.y=590;p.vy=0;p.grounded=true}p.x=Math.max(70,Math.min(820,p.x));
  if(keys.has('ArrowDown')&&keys.has('KeyI')&&p.grounded&&p.x<165){reload();keys.delete('KeyI')}
  state.attackClock-=dt;if(state.attackClock<=0)spawnAttack();
- const target=bossTarget();for(const pr of state.projectiles){if(pr.homing&&pr.homing>0&&pr.side==='boss'){const dx=p.x-pr.x,dy=(p.y-45)-pr.y,l=Math.hypot(dx,dy)||1;pr.vx=pr.vx*.96+dx/l*18;pr.vy=pr.vy*.96+dy/l*18;pr.homing-=dt}
-  if(pr.side==='player'&&pr.type==='stinger'){const dx=target.x-pr.x,dy=target.y-pr.y,l=Math.hypot(dx,dy)||1;pr.vx=pr.vx*.94+dx/l*35;pr.vy=pr.vy*.94+dy/l*35}
+ for(const pr of state.projectiles){const target=pr.side==='player'?bossTarget(pr.targetIndex,pr.targetPhase):null;if(pr.homing&&pr.homing>0&&pr.side==='boss'){const dx=p.x-pr.x,dy=(p.y-45)-pr.y,l=Math.hypot(dx,dy)||1;pr.vx=pr.vx*.96+dx/l*18;pr.vy=pr.vy*.96+dy/l*18;pr.homing-=dt}
+  if(target&&pr.side==='player'&&pr.type==='stinger'){const dx=target.x-pr.x,dy=target.y-pr.y,l=Math.hypot(dx,dy)||1;pr.vx=pr.vx*.94+dx/l*35;pr.vy=pr.vy*.94+dy/l*35}
   pr.x+=pr.vx*dt;pr.y+=pr.vy*dt;pr.life-=dt;
-  if(pr.side==='player'&&Math.hypot(pr.x-target.x,pr.y-target.y)<28){pr.life=0;hitBoss(pr)}
+  if(target&&pr.side==='player'&&Math.hypot(pr.x-target.x,pr.y-target.y)<28){pr.life=0;hitBoss(pr)}
   if(pr.side==='boss'){const r=playerRect();if(pr.x+pr.r>r.x&&pr.x-pr.r<r.x+r.w&&pr.y+pr.r>r.y&&pr.y-pr.r<r.y+r.h){pr.life=0;damagePlayer(pr.damage)}}
  }
  state.projectiles=state.projectiles.filter(pr=>pr.life>0&&pr.x>-80&&pr.x<1360&&pr.y>-100&&pr.y<800);
- const r=playerRect();for(const h of state.hazards){h.t-=dt;if(h.t<=0&&h.active>0){h.active-=dt;const hit=r.x<h.x+h.w&&r.x+r.w>h.x&&r.y<h.y+h.h&&r.y+r.h>h.y;if(hit&&!h.hit){h.hit=true;damagePlayer(h.damage)}}}
- state.hazards=state.hazards.filter(h=>h.t>0||h.active>0);
+ const r=playerRect();for(const h of state.hazards){h.t-=dt;if(h.t<=0&&h.active>0){h.active-=dt;const ray=machineRayFor(h),hit=h.nativeWeapon?!!ray&&rayHitsRect(ray,r):r.x<h.x+h.w&&r.x+r.w>h.x&&r.y<h.y+h.h&&r.y+r.h>h.y;if(hit&&!h.hit){h.hit=true;damagePlayer(h.damage)}}}
+ state.hazards=state.hazards.filter(h=>h.t>0||h.active>0);state.attackStage=state.hazards.some(h=>h.t>0)?'warn':state.hazards.some(h=>h.active>0)?'active':'';
 }
 function finish(win,label){if(!running)return;running=false;cancelAnimationFrame(raf);const elapsed=state.startedAt-state.t;if(win){profile.wins[state.boss]=(profile.wins[state.boss]||0)+1;if(!profile.best[state.boss]||elapsed<profile.best[state.boss])profile.best[state.boss]=elapsed;saveProfile();refreshProfile();ui.resultTitle.textContent=state.mode==='chronicle'?'DOSSIER CLASSÉ':'MACHINE NEUTRALISÉE'}else ui.resultTitle.textContent=label;ui.resultText.textContent=`${defs[state.boss].name} · ${formatTime(elapsed)} · ${state.hits}/${state.shots} impacts · ${state.damageTaken} dégâts reçus · ${state.interrupts} interruption(s).`;ui.result.hidden=false;}
 function bar(x,y,w,h,val,max,col,label){ctx.fillStyle='#06100d';ctx.fillRect(x,y,w,h);ctx.strokeStyle='#9fc8ac';ctx.strokeRect(x,y,w,h);ctx.fillStyle=col;ctx.fillRect(x+2,y+2,(w-4)*Math.max(0,Math.min(1,val/max)),h-4);ctx.fillStyle='#edf4d3';ctx.font='bold 14px monospace';ctx.fillText(label,x,y-7)}
@@ -142,7 +174,7 @@ function drawMachine(){if(window.CQC_PASS16_ACID_ART?.draw(ctx,state,selectedBos
 function drawPlayer(){const p=state?state.player:{x:170,y:590,crouch:false,inv:0};ctx.save();if(p.inv>0&&Math.floor(p.inv*20)%2===0)ctx.globalAlpha=.35;ctx.translate(p.x,p.y);ctx.fillStyle='#61785a';ctx.fillRect(-18,p.crouch?-48:-76,36,p.crouch?48:76);ctx.fillStyle='#b98a64';ctx.fillRect(-13,p.crouch?-66:-98,26,24);ctx.fillStyle='#202b24';ctx.fillRect(-22,p.crouch?-28:-48,44,16);ctx.fillStyle='#d5c267';ctx.fillRect(17,p.crouch?-52:-64,30,9);ctx.restore()}
 function drawBackground(){const d=defs[state?state.boss:selectedBoss];const g=ctx.createLinearGradient(0,0,0,720);g.addColorStop(0,d.sky);g.addColorStop(.62,'#1a2923');g.addColorStop(1,d.ground);ctx.fillStyle=g;ctx.fillRect(0,0,1280,720);ctx.globalAlpha=.25;for(let i=0;i<12;i++){ctx.fillStyle=i%2?'#e6edb8':'#5d8069';ctx.fillRect(i*120-40,190+(i%3)*35,180,300)}ctx.globalAlpha=1;ctx.fillStyle='#101914';ctx.fillRect(0,590,1280,130);for(let y=0;y<720;y+=4){ctx.fillStyle='rgba(0,0,0,.08)';ctx.fillRect(0,y,1280,1)}}
 function draw(){drawBackground();if(!state){drawMachine();ctx.fillStyle='#eaf2d0';ctx.font='bold 24px monospace';ctx.fillText('SÉLECTIONNEZ UNE OPÉRATION',390,670);return}drawMachine();drawPlayer();
- for(const h of state.hazards){const warn=h.t>0;ctx.fillStyle=warn?'rgba(255,207,91,.32)':'rgba(255,72,72,.52)';if(warn||!window.CQC_PASS18_VFX?.drawBoxHazard(ctx,h,{episode:'acid',attackKind:state.attackKind,time:state.startedAt-state.t,noFlash:true,reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches}))ctx.fillRect(h.x,h.y,h.w,h.h);ctx.strokeStyle=warn?'#ffd56a':'#ff6969';ctx.setLineDash(warn?[10,8]:[]);ctx.strokeRect(h.x,h.y,h.w,h.h);ctx.setLineDash([])}
+ for(const h of state.hazards){const warn=h.t>0,ray=machineRayFor(h);if(h.nativeWeapon){if(!ray)continue;ctx.save();ctx.strokeStyle=warn?'#ffcf5ba0':'#ff9595';ctx.lineWidth=warn?2:ray.radius*2;ctx.setLineDash(warn?[10,8]:[]);if(warn||!window.CQC_PASS18_VFX?.drawBeam(ctx,ray.from,ray.to,'fire-projectile',(h.initialActive-h.active)*60,{width:ray.radius*2,noFlash:true,reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches})){ctx.beginPath();ctx.moveTo(ray.from.x,ray.from.y);ctx.lineTo(ray.to.x,ray.to.y);ctx.stroke()}ctx.restore();continue}ctx.fillStyle=warn?'rgba(255,207,91,.32)':'rgba(255,72,72,.52)';if(warn||!window.CQC_PASS18_VFX?.drawBoxHazard(ctx,h,{episode:'acid',attackKind:state.attackKind,time:state.startedAt-state.t,noFlash:true,reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches}))ctx.fillRect(h.x,h.y,h.w,h.h);ctx.strokeStyle=warn?'#ffd56a':'#ff6969';ctx.setLineDash(warn?[10,8]:[]);ctx.strokeRect(h.x,h.y,h.w,h.h);ctx.setLineDash([])}
  for(const pr of state.projectiles){if(window.CQC_PASS18_VFX?.drawBossProjectile(ctx,pr,{coordinateY:'down',time:state.startedAt-state.t,noFlash:true,reducedMotion:matchMedia('(prefers-reduced-motion: reduce)').matches}))continue;ctx.fillStyle=pr.side==='player'?'#fff0a0':'#ff7777';ctx.beginPath();ctx.arc(pr.x,pr.y,pr.r,0,Math.PI*2);ctx.fill();ctx.strokeStyle=pr.side==='player'?'#d6ffdd':'#ffd0d0';ctx.beginPath();ctx.moveTo(pr.x,pr.y);ctx.lineTo(pr.x-pr.vx*.08,pr.y-pr.vy*.08);ctx.stroke()}
  const d=defs[state.boss];bar(42,42,430,24,state.player.hp,state.player.maxHp,'#85ca74','SNAKE');bar(808,42,430,24,state.body,state.bodyMax,'#d86462',d.name);bar(42,94,300,16,state.player.cost,100,'#e9bd64',`COST ${Math.round(state.player.cost)}`);
  ctx.fillStyle='#eef4d7';ctx.font='bold 20px monospace';ctx.fillText(formatTime(state.t),610,58);ctx.font='bold 15px monospace';ctx.fillText(`MUNITIONS ${state.player.ammo} · CONTRE-MESURES ${state.player.sub} · RATIONS ${state.player.rations}`,42,132);ctx.fillText(`CIBLE ${targetName()} · PHASE ${state.phase}`,808,96);
@@ -157,7 +189,7 @@ document.getElementById('acid31-open').addEventListener('click',openModule);docu
 document.getElementById('acid31-start').addEventListener('click',()=>{ui.introTitle.textContent=selectedMode==='chronicle'?`${defs[selectedBoss].episode} · DOSSIER MACHINE`:defs[selectedBoss].name;ui.introText.textContent=selectedBoss==='kodoque'?'Brisez les deux émetteurs avant d’attaquer le noyau. Les lignes hautes demandent de s’accroupir, les balayages bas de sauter.':'Détruisez les deux articulations, puis le cœur. En surcharge, interrompez le railgun ou quittez son trajet.';ui.intro.hidden=false;});document.getElementById('acid31-intro-start').addEventListener('click',start);document.getElementById('acid31-registry').addEventListener('click',showRegistry);document.getElementById('acid31-retry').addEventListener('click',start);document.getElementById('acid31-menu').addEventListener('click',()=>{ui.result.hidden=true;drawPreview()});document.getElementById('acid31-resume').addEventListener('click',()=>{paused=false;ui.pause.hidden=true;last=performance.now();raf=requestAnimationFrame(loop)});document.getElementById('acid31-pause-menu').addEventListener('click',()=>{stop();ui.pause.hidden=true;drawPreview()});ui.difficulty.addEventListener('change',()=>{stop();ui.result.hidden=true;ui.pause.hidden=true;ui.intro.hidden=false;drawPreview()});
 function keyHandler(e,down){if(root.hidden)return;const relevant=['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','KeyI','KeyJ','KeyK','KeyL','ShiftLeft','ShiftRight','Escape'];if(relevant.includes(e.code)){e.preventDefault();e.stopImmediatePropagation()}if(!down){keys.delete(e.code);return}keys.add(e.code);if(e.repeat)return;if(e.code==='Escape'&&running){paused=!paused;ui.pause.hidden=!paused;if(paused)cancelAnimationFrame(raf);else{last=performance.now();raf=requestAnimationFrame(loop)}return}if(!running||paused||!state)return;if(e.code==='KeyI'&&!keys.has('ArrowDown'))fire();if(e.code==='KeyJ')subAction();if(e.code==='KeyK')cycleTarget();if(e.code==='KeyL')heal();}
 window.addEventListener('keydown',e=>keyHandler(e,true),true);window.addEventListener('keyup',e=>keyHandler(e,false),true);document.addEventListener('visibilitychange',()=>{if(document.hidden&&running&&!paused){paused=true;ui.pause.hidden=false;cancelAnimationFrame(raf)}});
-window.CQC_ACID_MACHINES_V031={version:VERSION,open:openModule,startBoss:(id='kodoque')=>{openModule();selectBoss(defs[id]?id:'kodoque');start()},getProfile:()=>JSON.parse(JSON.stringify(profile)),getState:()=>state?JSON.parse(JSON.stringify(state)):null};
+window.CQC_ACID_MACHINES_V031={version:VERSION,open:openModule,startBoss:(id='kodoque')=>{openModule();selectBoss(defs[id]?id:'kodoque');start()},getProfile:()=>JSON.parse(JSON.stringify(profile)),getMachineGeometry:()=>state?window.CQC_PASS16_ACID_ART?.geometry(state,state.boss):null,getState:()=>state?JSON.parse(JSON.stringify(state)):null};
 refreshProfile();drawPreview();openModule();
 })();
 </script>

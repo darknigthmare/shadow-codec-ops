@@ -245,7 +245,7 @@
   function presentationPose(id,p,state=null) {
     if (!ids.includes(id) || !p || p.pass29HeavyArticulationID===id) return p;
     const channels={...(p.channels || {})}, flags={...(p.flags || {})},
-      dead=p.defeated===true || /^(dead|ko)$/.test(p.action || '') || state?.boss?.defeated===true,
+      dead=p.defeated===true || p.ko===true || /^(dead|ko)$/.test(p.action || '') || state?.boss?.defeated===true,
       phase=weaponPhase(state),
       firing=!p.motionEvent || ['gatling','shot','volley','beam','rail','laser','missiles','gun','cannon','fire'].includes(p.motionEvent.kind),
       impulse=dead||!firing?0:clamp(finite(channels.weaponRecoilImpulse)?channels.weaponRecoilImpulse:phase.impulse,0,1),
@@ -307,16 +307,24 @@
     baseNativeXY:Object.freeze(baseNativeXY),tipNativeXY:Object.freeze(tipNativeXY),channel,minDegrees:-limit,maxDegrees:limit});
   const shagohodAxis=axis('gun_turret',[1415,739],[1162,702],'weaponAimDegrees',24,'gun_receiver_native'),
     kodoqueNear=axis('near_cannon',[1367,780],[1269,753],'weaponAimDegreesNear',25,'near_cannon_mount_native'),
-    kodoqueFar=axis('far_cannon',[236,931],[145,904],'weaponAimDegreesFar',25,'far_cannon_mount_native');
+    kodoqueFar=axis('far_cannon',[236,931],[145,904],'weaponAimDegreesFar',25,'far_cannon_mount_native'),
+    // The source shows these bores, but not an independently reviewed aiming bearing.
+    // Keep their admitted projection fixed; emitters and collision share this exact axis.
+    chaiothRail=axis('railgun_receiver',[136,928],[107,995],'pass34ChaiothFixedRail',0),
+    chaiothGun=axis('near_forearm_gun',[995,660],[915,707],'pass34ChaiothFixedGun',0);
   const aimAxes=Object.freeze({shagohod_mgs3_ps2_2004:Object.freeze({byAttackKind:Object.freeze({shot:shagohodAxis,volley:shagohodAxis,gatling:shagohodAxis,beam:shagohodAxis})}),
     kodoque_acid_psp2004:Object.freeze({byAttackKind:Object.freeze({beam:kodoqueNear,shot:kodoqueNear,volley:kodoqueNear}),
-      bySourceIndex:Object.freeze({0:kodoqueNear,1:kodoqueFar,2:kodoqueNear})})});
+      bySourceIndex:Object.freeze({0:kodoqueNear,1:kodoqueFar,2:kodoqueNear})}),
+    chaioth_acid2_psp2005:Object.freeze({byAttackKind:Object.freeze({rail:chaiothRail,beam:chaiothRail,shot:chaiothGun,volley:chaiothGun})})});
   const weaponPoints=Object.freeze({shagohod:{part:'gun_turret',sourceNativeXY:[1162,702]},
-    kodoque:{part:'near_cannon',sourceNativeXY:[1269,753]}});
+    kodoque:{part:'near_cannon',sourceNativeXY:[1269,753]},
+    chaioth:{byAttackKind:{rail:{part:'railgun_receiver',sourceNativeXY:[107,995]},beam:{part:'railgun_receiver',sourceNativeXY:[107,995]},shot:{part:'near_forearm_gun',sourceNativeXY:[915,707]}}}});
   const sourcePoints=Object.freeze({
     shagohod_mgs3_ps2_2004:{ballistic:{part:'gun_turret',nativeXY:[1162,702],kind:'native barrel mouth'}},
     kodoque_acid_psp2004:{ballistic:{part:'near_cannon',nativeXY:[1269,753],kind:'native near cannon mouth'},
-      ballisticFar:{part:'far_cannon',nativeXY:[145,904],kind:'native far cannon mouth'}}
+      ballisticFar:{part:'far_cannon',nativeXY:[145,904],kind:'native far cannon mouth'}},
+    chaioth_acid2_psp2005:{rail:{part:'railgun_receiver',nativeXY:[107,995],kind:'fixed source-native rail barrel mouth; independent aiming bearing unreviewed'},
+      ballistic:{part:'near_forearm_gun',nativeXY:[915,707],kind:'fixed source-native gun mouth; independent aiming bearing unreviewed'}}
   });
   root.CQC_PASS29_HEAVY_ARTICULATION=Object.freeze({apply,presentationPose,ids,limits,weaponPoints,sourcePoints,aimAxes,
     audit:Object.freeze({schema:'cqc.pass29.native-heavy-articulation/1',ids,

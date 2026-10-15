@@ -230,14 +230,18 @@
     if(!ids.includes(id)||!pose||typeof pose!=='object')return pose;
     const channels={...(pose.channels||{})},flags=pose.flags||{};
     const value=key=>finite(channels[key])?channels[key]:0;
-    const defeated=pose.defeated===true||flags.pwDefeated===true;
+    const defeated=pose.defeated===true||pose.ko===true||/^(dead|ko|defeated|destroyed)$/.test(pose.action||'')
+      ||flags.pwDefeated===true||state?.boss?.defeated===true;
     const move=/walk|dash|run/.test(pose.action||'')||Math.abs(value('nearSwing'))+Math.abs(value('farSwing'))>0;
     const frame=finite(pose.frame)?pose.frame:0,phase=frame*.045,wave=Math.sin(phase);
     const events=(state?.events||[]).filter(e=>e.age<e.warn+e.active+(e.recovery||18)&&(!e.sources||e.sources.every(i=>flags['part'+i+'Destroyed']!==true)));
     const event=events.find(e=>['beam','shot','volley','sweep'].includes(e.kind));
     const envelope=event?eventEnvelope(event):null;
-    const load=envelope?.load||clamp(value('weaponBrace'),0,1);
-    const recoil=envelope?.kick||clamp(value('weaponRecoilImpulse'),0,1)||clamp(-value('weaponRecoil')/7,0,1);
+    // All secondary pistons and cosmetic mounts consume the same defeat gate;
+    // stopping only the main barrel leaves Cocoon's other guns firing after KO.
+    const load=defeated?0:envelope?.load||clamp(value('weaponBrace'),0,1);
+    const recoil=defeated?0:envelope?.kick||clamp(value('weaponRecoilImpulse'),0,1)||clamp(-value('weaponRecoil')/7,0,1);
+    const weaponKind=pose.motionEvent?.kind||event?.kind||state?.boss?.attack?.kind;
     const weaponAim=clamp(value('weaponAim'),-14,14);
     if(id==='pupa_pw_psp2010') {
       const compression=defeated?0:-load*1.8-recoil*.9;
@@ -257,8 +261,11 @@
       channels.pw29ChrysalisTailHinge=tilt*.2-load*.45;
       channels.pw32ChrysalisRailAim=servoAim(pose,chrysalisAxis,event,value('pwCollapseTilt'))??weaponAim;
       const railAngle=Math.atan2(108,-627);
-      channels.pw29RailRecoil=defeated?0:-Math.cos(railAngle)*recoil*2.2;
-      channels.pw32ChrysalisRailRecoilY=defeated?0:Math.sin(railAngle)*recoil*2.2;
+      // The railgun does not telescope when an independent missile/gun event
+      // fires. Unknown legacy direct recoil keeps its existing interpretation.
+      const railRecoil=weaponKind&&!['beam','rail'].includes(weaponKind)?0:recoil;
+      channels.pw29RailRecoil=-Math.cos(railAngle)*railRecoil*2.2;
+      channels.pw32ChrysalisRailRecoilY=Math.sin(railAngle)*railRecoil*2.2;
     } else if(id==='cocoon_pw_psp2010') {
       channels.pw32CocoonCompression=defeated?0:-load*.7-recoil*1.6;
       channels.pw29CannonElevation=0;
@@ -298,7 +305,7 @@
         channels['pw29_'+limb+'Level']=solved.level;
       }
     }
-    return {...pose,channels};
+    return {...pose,...(defeated?{defeated:true}:{}),channels};
   }
   root.CQC_PASS29_PW_ARTICULATION=Object.freeze({version:VERSION,ids,apply,presentationPose,solveLeg,quadrupedGait,eventEnvelope,aimAxes,weaponPoints,limits});
 })(globalThis);

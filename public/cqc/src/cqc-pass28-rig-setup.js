@@ -2,7 +2,7 @@
 (function(root){'use strict';
  const clone=value=>JSON.parse(JSON.stringify(value)), originals=new Map();
  const names=['CQC_PASS28_HEAVY_RIG_FIXES','CQC_PASS28_PW_RIG_FIXES','CQC_PASS28_VEHICLE_RIG_FIXES'];
- const articulations=['CQC_PASS29_MODERN_ARTICULATION','CQC_PASS29_CLASSIC_ARTICULATION','CQC_PASS29_PW_ARTICULATION','CQC_PASS29_HEAVY_ARTICULATION','CQC_PASS30_BIC_COMPLETION','CQC_PASS30_MK_COMPLETION','CQC_PASS30_ZEKE_COMPLETION','CQC_PASS30_GANDER_FIDELITY','CQC_PASS31_REX_MGS4','CQC_PASS31_PW_BIPED'];
+ const articulations=['CQC_PASS29_MODERN_ARTICULATION','CQC_PASS29_CLASSIC_ARTICULATION','CQC_PASS29_PW_ARTICULATION','CQC_PASS29_HEAVY_ARTICULATION','CQC_PASS30_BIC_COMPLETION','CQC_PASS30_MK_COMPLETION','CQC_PASS30_ZEKE_COMPLETION','CQC_PASS30_GANDER_FIDELITY','CQC_PASS31_REX_MGS4','CQC_PASS31_PW_BIPED','CQC_PASS34_LIGHT_ARTICULATION','CQC_PASS34_VEHICLE_ARTICULATION'];
  const nativeDescriptors=new Map();
  let reviewed=[];
  function prepare(){
@@ -67,5 +67,5 @@
   const secondary=root.CQC_PASS28_PW_RIG_FIXES?.dimensions?.[id];
   return secondary?{...secondary,evidence:secondary.heightEvidence||secondary.evidence||'secondary citation; primary page not independently read'}:null;
  }
- root.CQC_PASS28_RIG_SETUP=Object.freeze({prepare,presentationPose,targetParts,weaponPoints,dimension,descriptor:(id,slot)=>nativeDescriptors.has(id+':'+slot)?clone(nativeDescriptors.get(id+':'+slot)):null,status:()=>({schema:'cqc.pass31.shared-native-incarnations/1',machines:root.CQC_MACHINE_PARTS_CATALOG?.machines?.length||0,reviewed:clone(reviewed),absolute1to1Certified:false})});
+ root.CQC_PASS28_RIG_SETUP=Object.freeze({prepare,presentationPose,targetParts,weaponPoints,dimension,descriptor:(id,slot)=>nativeDescriptors.has(id+':'+slot)?clone(nativeDescriptors.get(id+':'+slot)):null,status:()=>({schema:'cqc.pass34.shared-native-incarnations/1',machines:root.CQC_MACHINE_PARTS_CATALOG?.machines?.length||0,reviewed:clone(reviewed),absolute1to1Certified:false})});
 })(globalThis);

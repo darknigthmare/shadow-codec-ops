@@ -2,9 +2,9 @@
 (function(root){
   'use strict';
   const IDS=Object.freeze({kodoque:'kodoque_acid_psp2004',chaioth:'chaioth_acid2_psp2005'});
-  let registry=null,error=null,pending=null,serial=0,panel=null,returnFocus=null;
+  let registry=null,definitions=null,error=null,pending=null,serial=0,panel=null,returnFocus=null;
   const loads=new Map();
-  try{registry=root.CQC_MACHINE_PARTS.create(root.CQC_MACHINE_PARTS_CATALOG);}catch(e){error=String(e?.message||e);}
+  try{definitions=root.CQC_MACHINE_PARTS.normalizeCatalog(root.CQC_MACHINE_PARTS_CATALOG);if(definitions.size!==64)throw Error('Le registre partagé des machines est incomplet');registry=root.CQC_MACHINE_PARTS.create(root.CQC_MACHINE_PARTS_CATALOG,root.CQC_PASS18_MACHINE_RENDERER_OPTIONS||{});}catch(e){error=String(e?.message||e);}
   const ready=key=>!!registry?.ready(IDS[key]);
   function ensure(key,retry=false){
     if(!IDS[key])return Promise.reject(Error('Machine inconnue'));
@@ -53,10 +53,82 @@
     if(pending)return true;
     pending={key,resume,selectionKey,cancelled:false,ticket:++serial};attempt(pending);return true;
   }
+  const identity=Object.freeze([1,0,0,1,0,0]);
+  // Pure reads: simulation time belongs to AC!D. Render, lock-on and collision
+  // consume the same source-part transforms; getters never advance the servo.
+  function eventFor(state,spec={}){
+    const events=state?.machineEvents||[],specific=Number.isFinite(spec.machineEventFrame)?events.find(e=>e.startedFrame===spec.machineEventFrame):null;
+    return specific||events.find(e=>e.age>=e.warn&&e.age<e.warn+e.active)||events.filter(e=>e.age<e.warn).at(-1)||events.at(-1)||null;
+  }
+  function supportPose(state,key,base,event){
+    if(key!=='chaioth'||event?.kind!=='stomp'||event.warn<=0)return base;
+    const progress=Math.max(0,Math.min(1,event.age/event.warn)),ease=t=>t*t*(3-2*t),
+      lift=progress<.65?ease(progress/.65)*26:26*(1-ease((progress-.65)/.35));
+    if(lift<1e-8)return base;
+    const side=event.sources?.[0]===1?'far':'near',machine=definitions.get(IDS[key]),
+      shin=machine.parts.find(p=>p.id===side+'_shin'),foot=machine.parts.find(p=>p.id===side+'_foot');
+    const u=shin.offset,v=foot.offset,a=Math.hypot(...u),b=Math.hypot(...v),target=[u[0]+v[0],u[1]+v[1]+lift],
+      distance=Math.hypot(...target),clamp=n=>Math.max(-1,Math.min(1,n)),
+      bend=Math.acos(clamp((distance*distance-a*a-b*b)/(2*a*b))),
+      upper=(Math.atan2(target[1],target[0])-Math.atan2(b*Math.sin(bend),a+b*Math.cos(bend))-Math.atan2(u[1],u[0]))*180/Math.PI,
+      lower=(bend-(Math.atan2(v[1],v[0])-Math.atan2(u[1],u[0])))*180/Math.PI;
+    // Fixed source lengths, one support stays planted. Decorative channels are
+    // absent from this AC!D pose; this mechanical telegraph survives reduced motion.
+    return {...base,reducedMotion:false,channels:{...base.channels,[side+'Swing']:upper,[side+'Knee']:lower,[side+'Foot']:-upper-lower},acidMechanicalStomp:{side,lift}};
+  }
+  function pose(state,key,spec={}){
+    key=state?.boss||key;const id=IDS[key],adapter=root.CQC_PASS16_MACHINE_POSE?.acidPose(state,key);if(!id||!adapter)return null;
+    const event=eventFor(state,spec),base=supportPose(state,key,adapter,event),bridge=root.CQC_PASS18_MACHINES,presentationState=state?{...state,events:state.machineEvents||[]}:state;
+    if(!event||!bridge?.mechanicalAimPose)return root.CQC_PASS28_RIG_SETUP?.presentationPose(id,base,presentationState)||base;
+    const selected={...event,...spec,kind:spec.kind||event.kind,sources:spec.sources||event.sources};
+    const current=bridge.mechanicalAimPose(id,base,presentationState,identity,selected);
+    if(key==='kodoque'){
+      // Two separate source sockets solve their own angle to the locked target.
+      const near=bridge.mechanicalAimPose(id,base,presentationState,identity,{...selected,sources:[0]}),far=bridge.mechanicalAimPose(id,base,presentationState,identity,{...selected,sources:[1]});
+      const channels={...current.channels};for(const [label,value] of [['Near',near],['Far',far]])for(const name of ['Aim','RecoilX','RecoilY'])channels['pass32Kodoque'+label+name]=value.channels['pass32Kodoque'+label+name];
+      return {...current,channels};
+    }
+    return current;
+  }
+  function sourcePoint(state,key,descriptor,spec={}){
+    key=state?.boss||key;const machine=definitions?.get(IDS[key]),current=pose(state,key,spec);if(!machine||!current||!descriptor)return null;
+    return root.CQC_PASS28_MACHINE_GEOMETRY?.sourcePoint(machine,root.CQC_MACHINE_PARTS,current,descriptor)||null;
+  }
+  function target(state,key,index=state?.target||0,phase=state?.phase||1){
+    key=state?.boss||key;const descriptors=root.CQC_PASS28_RIG_SETUP?.targetParts?.()?.[key];
+    const slot=phase===1?index%2:key==='kodoque'?2:index===1?2:3;
+    return sourcePoint(state,key,descriptors?.[slot]);
+  }
+  function weaponVector(state,key,spec={}){
+    key=state?.boss||key;const id=IDS[key],current=pose(state,key,spec);if(!id||!current)return null;
+    const kind=spec.kind||eventFor(state,spec)?.kind||'shot';
+    return root.CQC_PASS18_MACHINES?.mechanicalWeaponVector(id,current,identity,{...spec,kind})||null;
+  }
+  function beam(state,key,hazard){
+    const v=weaponVector(state,key,{...hazard.nativeWeapon,machineEventFrame:hazard.machineEventFrame});
+    if(!v?.axisVisible||!Number.isFinite(v.angle))return null;
+    return {from:{x:v.x,y:v.y},to:{x:v.x+Math.cos(v.angle)*1400,y:v.y+Math.sin(v.angle)*1400},radius:hazard.radius||8,part:v.part,angle:v.angle};
+  }
+  function rayHitsRect(ray,rect){
+    if(!ray||![rect.x,rect.y,rect.w,rect.h].every(Number.isFinite))return false;
+    const dx=ray.to.x-ray.from.x,dy=ray.to.y-ray.from.y,pad=Math.max(0,ray.radius||0);let low=0,high=1;
+    for(const [start,delta,min,max] of [[ray.from.x,dx,rect.x-pad,rect.x+rect.w+pad],[ray.from.y,dy,rect.y-pad,rect.y+rect.h+pad]]){
+      if(Math.abs(delta)<1e-10){if(start<min||start>max)return false;continue}
+      let a=(min-start)/delta,b=(max-start)/delta;if(a>b)[a,b]=[b,a];low=Math.max(low,a);high=Math.min(high,b);if(low>high)return false;
+    }return high>=0&&low<=1;
+  }
+  function geometry(state,key){
+    key=state?.boss||key;const current=pose(state,key),machine=definitions?.get(IDS[key]);if(!current||!machine)return null;
+    return {schema:'cqc.pass34.acid-native-geometry/1',machineID:IDS[key],catalogCount:definitions.size,frame:current.frame,
+      targets:[0,1].map(index=>target(state,key,index,state?.phase||1)),
+      weapon:weaponVector(state,key,{kind:state?.attackKind==='rail'?'rail':state?.attackKind==='laser'?'beam':'shot'}),
+      parts:[...root.CQC_MACHINE_PARTS.pose(machine,current)].map(([part,p])=>({part,matrix:p.matrix.slice(),visible:p.visible,opacity:p.opacity})),
+      absolute1to1Certified:false};
+  }
   function draw(context,state,key,repaint){
     key=state?.boss||key;if(!IDS[key])return false;
     if(ready(key)){
-      const adapter=root.CQC_PASS16_MACHINE_POSE?.acidPose(state,key);
+      const adapter=pose(state,key);
       return adapter?registry.draw(context,IDS[key],adapter):false;
     }
     context.save();
@@ -73,6 +145,6 @@
   root.document?.addEventListener('click',event=>{if(event.target?.closest?.('[data-acid31-boss],[data-acid31-mode],#acid31-close,#acid31-menu,#acid31-pause-menu'))cancel();},true);
   root.document?.addEventListener('change',event=>{if(event.target?.id==='acid31-difficulty')cancel();},true);
   root.addEventListener?.('pagehide',cancel);
-  root.CQC_PASS16_ACID_ART=Object.freeze({deferStart,cancel,draw,ready,
-    status:()=>({error,pending:pending?{key:pending.key,ticket:pending.ticket}:null,machines:Object.entries(IDS).map(([key,id])=>({key,...(registry?.status(id)||{id,state:'error',error})}))})});
+  root.CQC_PASS16_ACID_ART=Object.freeze({deferStart,cancel,draw,ready,pose,sourcePoint,target,weaponVector,beam,rayHitsRect,geometry,
+    status:()=>({error,catalogCount:definitions?.size||0,pending:pending?{key:pending.key,ticket:pending.ticket}:null,machines:Object.entries(IDS).map(([key,id])=>({key,...(registry?.status(id)||{id,state:'error',error})}))})});
 })(globalThis);
