@@ -1,0 +1,71 @@
+[
+  {
+    "id": "otacon_mgs2", "personId": "hal_emmerich", "displayName": "Hal Emmerich", "codename": "Otacon",
+    "affiliations": ["Philanthropy"], "role": "Tanker mission support and save contact", "canonStatus": "canon",
+    "summary": {"en": "Snake's remote technical partner during the Tanker Incident.", "fr": "Partenaire technique a distance de Snake pendant l'incident du tanker."},
+    "biography": {"en": "Otacon coordinates infiltration, records mission data and analyzes the new Metal Gear threat from outside the tanker.", "fr": "Otacon coordonne l'infiltration, enregistre les donnees et analyse la nouvelle menace Metal Gear depuis l'exterieur du tanker."},
+    "relations": [{"personId":"solid_snake","label":"Partner","detail":"Co-founder of Philanthropy and Snake's primary remote support."},{"personId":"emma_emmerich","label":"Half-sister","detail":"A strained family bond central to the Plant chapter."}],
+    "chapterAvailability": ["mgs2_tanker"], "topics": ["mission","save","technology","weapons","metal_gear","personal"],
+    "incomingTriggers": ["mission_start","camera_seen","metal_gear_seen"], "loreNotes": ["Uses separate support and save channels during the Tanker chapter."]
+  },
+  {
+    "id": "colonel_mgs2", "personId": "gw_colonel_construct", "displayName": "Command Node", "codename": "Colonel",
+    "affiliations": ["FOXHOUND simulation", "GW"], "role": "Plant mission commander", "canonStatus": "canon",
+    "summary": {"en": "Raiden's commanding voice, later exposed as an artificial construct.", "fr": "Voix de commandement de Raiden, revelee ensuite comme une construction artificielle."},
+    "biography": {"en": "The Colonel interface guides Raiden through the Big Shell exercise while filtering information through the Patriots' simulation.", "fr": "L'interface du Colonel guide Raiden dans Big Shell tout en filtrant les informations par la simulation des Patriots."},
+    "relations": [{"personId":"raiden","label":"Command subject","detail":"Directs Raiden and shapes his perception of the mission."},{"personId":"rose_mgs2","label":"Paired construct","detail":"Shares the support channel and later the GW breakdown."}],
+    "chapterAvailability": ["mgs2_big_shell","mgs2_bomb_disposal","mgs2_shell1_core","mgs2_arsenal"], "topics": ["mission","objective","security","hostages","patriots","ai"],
+    "incomingTriggers": ["mission_start","first_alert","objective_complete","gw_corruption"],
+    "identityVariants": [{"id":"command","label":"Colonel","requiredFlags":[]},{"id":"gw","label":"GW Colonel AI","requiredFlags":["gw_corruption"]}],
+    "loreNotes": ["The late-game channel must visibly degrade after GW corruption begins."]
+  },
+  {
+    "id": "rose_mgs2", "personId": "rosemary", "displayName": "Rosemary", "codename": "Rose",
+    "affiliations": ["US Army", "Patriots operation"], "role": "Save, psychological and personal support", "canonStatus": "canon",
+    "summary": {"en": "Raiden's save contact and emotional link outside the operation.", "fr": "Contact de sauvegarde de Raiden et lien emotionnel avec l'exterieur de l'operation."},
+    "biography": {"en": "Rose records mission data while personal conversations expose Raiden's memory, identity and relationship conflicts.", "fr": "Rose enregistre la mission tandis que les conversations personnelles revelent les conflits de memoire, d'identite et de couple de Raiden."},
+    "relations": [{"personId":"raiden","label":"Partner","detail":"Personal relationship and operational monitoring."}],
+    "chapterAvailability": ["mgs2_big_shell","mgs2_bomb_disposal","mgs2_shell1_core","mgs2_arsenal"], "topics": ["save","personal","memory","condition"],
+    "incomingTriggers": ["save_reminder","stress","gw_corruption"], "loreNotes": ["Personal calls should evolve as Raiden's constructed mission unravels."]
+  },
+  {
+    "id": "pliskin_mgs2", "personId": "solid_snake", "displayName": "Solid Snake", "codename": "Iroquois Pliskin",
+    "affiliations": ["Philanthropy", "Navy SEAL disguise"], "role": "Field contact and infiltration mentor", "canonStatus": "canon",
+    "summary": {"en": "A field operative whose borrowed identity conceals Solid Snake.", "fr": "Operateur de terrain dont l'identite d'emprunt dissimule Solid Snake."},
+    "biography": {"en": "Pliskin advises Raiden from inside Big Shell before revealing his role in the wider Metal Gear crisis.", "fr": "Pliskin conseille Raiden depuis Big Shell avant de reveler son role dans la crise Metal Gear."},
+    "relations": [{"personId":"raiden","label":"Field ally","detail":"Offers practical advice and challenges the official narrative."},{"personId":"otacon","label":"Partner","detail":"Coordinates through Philanthropy."}],
+    "chapterAvailability": ["mgs2_big_shell","mgs2_bomb_disposal","mgs2_shell1_core"], "topics": ["field","weapons","local_intel","stealth","metal_gear"],
+    "incomingTriggers": ["first_meeting","bomb_disposal","identity_reveal"],
+    "identityVariants": [{"id":"pliskin","label":"Iroquois Pliskin","requiredFlags":[]},{"id":"snake","label":"Solid Snake","requiredFlags":["pliskin_identity_revealed"]}],
+    "loreNotes": ["Identity presentation changes after the Harrier sequence."]
+  },
+  {
+    "id": "stillman_mgs2", "personId": "peter_stillman", "displayName": "Peter Stillman", "codename": "Stillman",
+    "affiliations": ["NYPD Bomb Squad"], "role": "Bomb disposal specialist", "canonStatus": "canon",
+    "summary": {"en": "Explosives expert guiding the search for Fatman's C4 charges.", "fr": "Expert en explosifs guidant la recherche des charges C4 de Fatman."},
+    "biography": {"en": "Stillman teaches Raiden how to identify and freeze C4 while confronting the consequences of his former student.", "fr": "Stillman apprend a Raiden a identifier et geler le C4 tout en affrontant les consequences de son ancien eleve."},
+    "relations": [{"personId":"fatman","label":"Former student","detail":"A destructive legacy that shapes the bomb-disposal operation."}],
+    "chapterAvailability": ["mgs2_bomb_disposal"], "topics": ["bombs","objective","sensor","fatman"],
+    "incomingTriggers": ["bomb_found","bombs_cleared"], "loreNotes": ["Available only during the bomb-disposal phase."]
+  },
+  {
+    "id": "mr_x_mgs2", "personId": "olga_gurlukovich", "displayName": "Olga Gurlukovich", "codename": "Mr. X",
+    "affiliations": ["Gurlukovich Mercenaries", "Patriots coerced asset"], "role": "Incoming-only secret contact", "canonStatus": "canon",
+    "summary": {"en": "A masked informant sending classified warnings to Raiden.", "fr": "Informateur masque envoyant des avertissements classifies a Raiden."},
+    "biography": {"en": "Olga uses the Mr. X identity to steer Raiden while protecting her child under Patriots coercion.", "fr": "Olga utilise l'identite Mr. X pour orienter Raiden tout en protegeant son enfant sous la contrainte des Patriots."},
+    "relations": [{"personId":"raiden","label":"Protected subject","detail":"Secretly keeps Raiden alive for the Patriots' plan."}],
+    "chapterAvailability": ["mgs2_shell1_core","mgs2_arsenal"], "topics": ["warning","patriots","arsenal","identity"],
+    "incomingTriggers": ["hostage_operation","arsenal_escape"],
+    "identityVariants": [{"id":"masked","label":"Mr. X","requiredFlags":[]},{"id":"olga","label":"Olga Gurlukovich","requiredFlags":["mr_x_revealed"]}],
+    "loreNotes": ["Primarily incoming-only and revealed late in the Plant chapter."]
+  },
+  {
+    "id": "emma_mgs2", "personId": "emma_emmerich", "displayName": "Emma Emmerich", "codename": "E.E.",
+    "affiliations": ["Arsenal Gear development"], "role": "GW and virus specialist", "canonStatus": "canon",
+    "summary": {"en": "Programmer capable of attacking GW with a specialized virus.", "fr": "Programmeuse capable d'attaquer GW avec un virus specialise."},
+    "biography": {"en": "Emma explains Arsenal's information-control architecture and prepares the virus upload while confronting her history with Otacon.", "fr": "Emma explique l'architecture de controle de l'information d'Arsenal et prepare le virus tout en affrontant son histoire avec Otacon."},
+    "relations": [{"personId":"otacon","label":"Half-brother","detail":"A painful family relationship revisited during the escort."}],
+    "chapterAvailability": ["mgs2_arsenal"], "topics": ["technology","gw","virus","arsenal","personal"],
+    "incomingTriggers": ["emma_rescued","virus_ready"], "loreNotes": ["Available during the late Shell 2 and Arsenal operation."]
+  }
+]
