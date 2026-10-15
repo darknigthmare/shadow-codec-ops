@@ -1,0 +1,2 @@
+/* Lob and horizontal shots bind to their independently reviewed native keyposes. */
+(function(root){const entry=root.CQC_COMBAT_SPRITE_CATALOG.entries.pass19__mortar_survive;if(entry?.actions.charge&&entry.oppositeActions?.charge){root.CQC_COMBAT_SPRITE_CATALOG.entries.pass19__mortar_survive={...entry,actionMap:{...entry.actionMap,special:"charge",super:"charge",specialDown:"walk"}};}})(globalThis);
