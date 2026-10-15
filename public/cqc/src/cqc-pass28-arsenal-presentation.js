@@ -19,37 +19,39 @@
  }
  function geometry(state){
   const value=root.CQC_PASS18_MACHINES?.arsenalGeometry?.(state);
-  const bounds=validBounds(value?.bounds);return bounds?{...value,bounds}:null;
+  const bounds=validBounds(value?.bounds),framingBounds=validBounds(value?.framingBounds);return bounds?{...value,bounds,framingBounds:framingBounds||bounds}:null;
  }
  function camera(state,options={}){
   const value=geometry(state),p=state?.player;
   if(!value||!p||![p.x,p.y].every(finite))return {zoom:1,centerX:640,tx:0,ty:0,floorY:FLOOR,geometry:null};
-  const bounds=value.bounds;
+  const bounds=value.framingBounds||value.bounds;
+  const width=finite(options.width)&&options.width>0?options.width:VIEW_WIDTH,height=finite(options.height)&&options.height>0?options.height:720;
+  const screenFloor=FLOOR*height/720,screenScaleX=width/VIEW_WIDTH,screenScaleY=height/720;
   if(GIANT_ENCOUNTERS.has(state?.def?.id)||bounds.width>450||bounds.height>400){
    // The simulation keeps x in [58,1220], with a 56px human half-envelope.
    // vy=-13/gravity=.72 gives a maximum 124px jump above the 212px silhouette.
    // Fit that complete lane plus the initial neutral boss, then keep the view.
-   const key=[options.preview===true,options.hudVisible!==false].join('/');
+   const key=[options.preview===true,options.hudVisible!==false,width,height].join('/');
    let owner=encounterCameras.get(state);
-   if(!owner||owner.boss!==state.boss||owner.machine!==value.machineId){owner={boss:state.boss,machine:value.machineId,views:new Map()};encounterCameras.set(state,owner);}
+   if(!owner||owner.boss!==state.boss||owner.machine!==value.machineId||owner.scale!==value.scale){owner={boss:state.boss,machine:value.machineId,scale:value.scale,views:new Map()};encounterCameras.set(state,owner);}
    let view=owner.views.get(key);
    if(!view){
-    const left=Math.min(bounds.left,2),right=Math.max(bounds.right,1276),top=Math.min(bounds.top,FLOOR-212-124);
-    const topPadding=options.preview?28:options.hudVisible===false?36:144;
-    const viewLeft=!options.preview&&options.hudVisible!==false?332:56,viewRight=!options.preview&&options.hudVisible!==false?1240:VIEW_WIDTH-56;
-    const zoom=Math.min(1,(viewRight-viewLeft)/Math.max(1,right-left),(FLOOR-topPadding)/Math.max(1,FLOOR-top));
+    const left=Math.min(bounds.left,2),right=Math.max(bounds.right,1276),top=Math.min(bounds.top,FLOOR-212-124),bottom=Math.max(FLOOR,bounds.bottom);
+    const topPadding=(options.preview?28:options.hudVisible===false?36:144)*screenScaleY;
+    const viewLeft=(!options.preview&&options.hudVisible!==false?332:56)*screenScaleX,viewRight=(!options.preview&&options.hudVisible!==false?1240:VIEW_WIDTH-56)*screenScaleX;
+    const zoom=Math.min(1,(viewRight-viewLeft)/Math.max(1,right-left),(screenFloor-topPadding)/Math.max(1,bottom-top));
     const centerX=(left+right)/2;
-    view=Object.freeze({zoom,centerX,tx:(viewLeft+viewRight)/2-centerX*zoom,ty:FLOOR*(1-zoom),floorY:FLOOR,
-     cameraPolicy:'fixed-encounter-world',worldFrame:Object.freeze({left,right,top,bottom:FLOOR})});owner.views.set(key,view);
+    view=Object.freeze({zoom,centerX,tx:(viewLeft+viewRight)/2-centerX*zoom,ty:screenFloor-bottom*zoom,floorY:screenFloor-(bottom-FLOOR)*zoom,
+     cameraPolicy:'fixed-encounter-world',worldFrame:Object.freeze({left,right,top,bottom})});owner.views.set(key,view);
    }
    return {...view,worldFrame:{...view.worldFrame},geometry:value};
   }
   const left=Math.min(bounds.left,p.x-56),right=Math.max(bounds.right,p.x+56);
-  const top=Math.min(bounds.top,p.y-212),topPadding=options.preview?28:options.hudVisible===false?36:144;
-  const viewLeft=!options.preview&&options.hudVisible!==false?332:56,viewRight=!options.preview&&options.hudVisible!==false?1240:VIEW_WIDTH-56;
-  const spanY=Math.max(1,FLOOR-top),zoom=Math.min(1,(viewRight-viewLeft)/Math.max(1,right-left),(FLOOR-topPadding)/spanY);
+  const top=Math.min(bounds.top,p.y-212),topPadding=(options.preview?28:options.hudVisible===false?36:144)*screenScaleY;
+  const viewLeft=(!options.preview&&options.hudVisible!==false?332:56)*screenScaleX,viewRight=(!options.preview&&options.hudVisible!==false?1240:VIEW_WIDTH-56)*screenScaleX;
+  const spanY=Math.max(1,FLOOR-top),zoom=Math.min(1,(viewRight-viewLeft)/Math.max(1,right-left),(screenFloor-topPadding)/spanY);
   const centerX=(left+right)/2;
-  return {zoom,centerX,tx:(viewLeft+viewRight)/2-centerX*zoom,ty:FLOOR*(1-zoom),floorY:FLOOR,geometry:value};
+  return {zoom,centerX,tx:(viewLeft+viewRight)/2-centerX*zoom,ty:screenFloor-FLOOR*zoom,floorY:screenFloor,geometry:value};
  }
  function project(point,view){return {x:point.x*view.zoom+view.tx,y:point.y*view.zoom+view.ty};}
  function targetPoint(state,index){

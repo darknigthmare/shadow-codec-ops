@@ -159,7 +159,33 @@
    const b=g.bounds,sc=g.scale;return {...point,rigLocalXY:[point.x,point.y],x:x+sc*(point.x-(b.left+b.width/2)),y:y+sc*(point.y-(b.top+b.height)),renderScale:sc,displayHeight:g.height,spatialMutation:false,simulationMutation:false};
   }
   function arsenalBox(state){const id=state.def.id,p=state.def.parts,maxY=Math.max(...p.map(v=>-v.y));if(['harrier','hind_d','chrysalis'].includes(id)){const height=id==='harrier'?190:280;return{x:state.boss.x-305,y:state.boss.y-maxY-height*.42,width:610,height,padding:0};}const h=Math.min(425,Math.max(205,maxY+75));return{x:state.boss.x-315,y:state.boss.y-h,width:630,height:h,padding:0};}
-  function arsenalGeometry(state){const id=bossId(state?.def?.id),b=bounds(id);if(!b||![state?.boss?.x,state?.boss?.y].every(Number.isFinite))return null;const metric=root.CQC_PASS28_RIG_SETUP?.dimension(id),height=metric?.heightM>0?metric.heightM*200/1.8:null,air=['harrier','hind_d','chrysalis'].includes(state.def.id);let basis;if(height){const sc=height/b.height;basis=[sc,0,0,sc,state.boss.x-sc*(b.left+b.width/2),state.boss.y-(air?100:0)-sc*b.bottom];}else{const box={...arsenalBox(state),alignBottom:!air};basis=fittedBasis(id,box);}if(!basis)return null;const [sc,,,,x,y]=basis;const world={left:x+b.left*sc,top:y+b.top*sc,right:x+b.right*sc,bottom:y+b.bottom*sc,width:b.width*sc,height:b.height*sc};return{basis,bounds:world,machineId:id,scale:sc,heightM:metric?.heightM||null,heightStatus:metric?.evidence||'authored framing; canonical dimensions unverified',humanReferenceM:1.8,humanReferencePixels:200,absolute1to1Certified:false};}
+  // Fixed encounter framing includes the actual four rotor phases and the
+  // admitted +/-2 degree hover tilt. This does not advance any owner clock.
+  const arsenalAirFrames=new Map();
+  function arsenalFramingBounds(id,neutral){
+   if(id!=='hind_d_mgs1_ps1_1998')return neutral;
+   if(arsenalAirFrames.has(id))return arsenalAirFrames.get(id);
+   const machine=definitions.get(id),geo=root.CQC_PASS28_MACHINE_GEOMETRY;let left=neutral.left,top=neutral.top,right=neutral.right,bottom=neutral.bottom;
+   if(machine&&geo)for(let phase=0;phase<4;phase++)for(const tilt of [-2,0,2])for(const hover of [-1.5,1.5]){
+    const p=animation({frame:phase*3,action:'idle'},[],id);p.channels={...p.channels,airTilt:tilt,pass34HindHover:hover};
+    // The tail rotor is a real projected vertical-plane rotation; a box enlarged
+    // to its diagonal conservatively covers every angle without inventing frames.
+    const rig=parts.pose(machine,p),tail=rig.get('tail_rotor');let tailRadius=0;
+    if(tail){const source=machine.sources.get(tail.source),r=tail.rect||[0,0,source.width,source.height];tailRadius=Math.hypot(Math.max(tail.pivot[0],r[2]-tail.pivot[0]),Math.max(tail.pivot[1],r[3]-tail.pivot[1]))*tail.imageScale*Math.max(Math.hypot(tail.matrix[0],tail.matrix[1]),Math.hypot(tail.matrix[2],tail.matrix[3]));}
+    const b=geo.bounds(machine,parts,p);if(b){left=Math.min(left,b.left);top=Math.min(top,b.top);right=Math.max(right,b.right);bottom=Math.max(bottom,b.bottom);}
+    if(tail&&tailRadius){left=Math.min(left,tail.matrix[4]-tailRadius);right=Math.max(right,tail.matrix[4]+tailRadius);top=Math.min(top,tail.matrix[5]-tailRadius);bottom=Math.max(bottom,tail.matrix[5]+tailRadius);}
+   }
+   const value=Object.freeze({left,top,right,bottom,width:right-left,height:bottom-top});arsenalAirFrames.set(id,value);return value;
+  }
+  function arsenalGeometry(state){
+   const id=bossId(state?.def?.id),b=bounds(id);if(!b||![state?.boss?.x,state?.boss?.y].every(Number.isFinite))return null;
+   const shared=root.CQC_PASS36_MACHINE_SCALE,calibration=shared?.calibration?.(id,b),metric=calibration?.metric||root.CQC_PASS28_RIG_SETUP?.dimension(id),height=calibration?.height||(metric?.heightM>0?metric.heightM*200/1.8:null),air=['harrier','hind_d','chrysalis'].includes(state.def.id);
+   let basis;if(height){const sc=calibration?.scale||height/b.height;basis=[sc,0,0,sc,state.boss.x-sc*(b.left+b.width/2),state.boss.y-(air?100:0)-sc*b.bottom];}else{const box={...arsenalBox(state),alignBottom:!air};basis=fittedBasis(id,box);}if(!basis)return null;
+   const [sc,,,,x,y]=basis,world=r=>({left:x+r.left*sc,top:y+r.top*sc,right:x+r.right*sc,bottom:y+r.bottom*sc,width:r.width*sc,height:r.height*sc});
+   return{basis,bounds:world(b),framingBounds:world(arsenalFramingBounds(id,b)),machineId:id,scale:sc,heightM:metric?.heightM||null,heightStatus:calibration?.heightStatus||metric?.evidence||'authored framing; canonical dimensions unverified',
+    humanReferenceM:calibration?.referenceMetres||1.8,humanReferencePixels:calibration?.referencePixels||200,metricUse:calibration?.metricUse||(height?'existing-incarnation-height-record':'unknown-dimension-authored-framing'),metric:metric?{...metric}:null,dimensionSource:calibration?.dimensionSource||null,
+    nativeProjection:calibration?.nativeProjection||'Preserved native source perspective; no absolute game-model metric certification.',sourceUniform:true,absolute1to1Certified:false};
+  }
   function arsenalTargetPoint(state,index){const geometry=arsenalGeometry(state),descriptor=root.CQC_PASS28_RIG_SETUP?.targetParts()?.[state?.def?.id]?.[index];if(!geometry||!descriptor)return null;const machine=definitions.get(geometry.machineId),p=root.CQC_PASS28_MACHINE_GEOMETRY.sourcePoint(machine,parts,arsenalPose(state,geometry.machineId),descriptor);if(!p)return null;const m=geometry.basis;return{x:m[0]*p.x+m[2]*p.y+m[4],y:m[1]*p.x+m[3]*p.y+m[5],r:Math.max(20,Math.min(150,p.localRadius*geometry.scale)),part:p.part,sourceNativeXY:p.nativeXY,alphaMeasured:p.alphaMeasured,canonicalSizeStatus:geometry.heightStatus};}
   function arsenalWeaponPoint(state,spec=null){
    const geometry=arsenalGeometry(state);if(!geometry)return null;const pose=arsenalPose(state,geometry.machineId),axis=axisDescriptor(geometry.machineId,spec||pose.motionEvent||{}),vector=axis&&localAxis(geometry.machineId,pose,axis),base=root.CQC_PASS28_RIG_SETUP?.weaponPoints()?.[state?.def?.id],descriptor=axis?{part:axis.part,point:axis.tipNativeXY}:base?.byAttackKind?.[spec?.kind]||base;

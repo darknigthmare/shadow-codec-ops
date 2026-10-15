@@ -32,6 +32,8 @@
 <script src="../src/cqc-pass34-vehicle-articulation.js"></script>
 <script src="../src/cqc-pass28-rig-setup.js"></script>
 <script src="../src/cqc-pass28-rig-install.js"></script>
+<script src="../src/cqc-pass36-vehicle-weapons.js"></script>
+<script src="../src/cqc-pass36-machine-scale.js"></script>
 <script src="../src/cqc-pass18-machine-bridge.js"></script>
 <script src="../src/cqc-pass28-arsenal-presentation.js"></script>
 <script src="../src/cqc-pass18-vfx-catalog.js"></script>
@@ -125,7 +127,7 @@ function action(s,hold=false){const b=s.boss,p=s.player,id=s.def.id;
  if(p.parryCd===0){p.parry=15;p.parryCd=32;}
 }
 function parried(s){const p=s.player;p.parry=0;s.stats.parries++;s.boss.exposure=Math.max(180,s.boss.exposure);p.inv=24;notice(s,'RIPOSTE · OUVERTURE');log(s,{event:'parry'});s.fx.push({x:p.x,y:p.y-80,t:30,kind:'parry'});}
-function patterns(s){const n=s.hp.length,last=n-1,id=s.def.id;
+function patterns(s){const vehicle=globalThis.CQC_PASS36_VEHICLE_WEAPONS?.patterns(s);if(vehicle)return vehicle;const n=s.hp.length,last=n-1,id=s.def.id;
  const beam=(sources)=>({kind:'beam',sources}),shot=(sources)=>({kind:'volley',sources}),stomp=(sources)=>({kind:'stomp',sources}),sweep=(sources)=>({kind:'sweep',sources});
  if(id==='peacewalker_biped')return [{kind:'flame',sources:[2]},stomp([0])];
  if(id==='zeke')return[beam([0]),shot([1])];
@@ -160,6 +162,7 @@ function schedule(s,override){const ps=patterns(s).filter(a=>a.sources.every(i=>
  if(s.def.id==='peacewalker_biped'&&spec.kind==='stomp'){e.x=src.x;e.y=FLOOR;e.w=210;e.warn=72;e.active=18;}
  if(s.def.id==='peacewalker_biped'&&spec.kind==='flame'){e.warn=72;e.active=45;e.y=p.y-78;e.range=1450;e.halfWidth=92;}
  if(['beam','shot','volley','flame'].includes(e.kind)){if(e.kind==='volley')e.y=p.y-80;e.aimTarget=[e.x,e.y];e.aimAngle=Math.atan2(e.y-src.y,e.x-src.x);e.aimDistance=Math.hypot(e.x-src.x,e.y-src.y);e.recovery=18;}
+ globalThis.CQC_PASS36_VEHICLE_WEAPONS?.prepareEvent(s,e);
  s.events.push(e);log(s,{event:'telegraph',kind:e.kind,sources:e.sources});
 }
 function segmentDistance(x,y,ax,ay,bx,by){const dx=bx-ax,dy=by-ay,l=dx*dx+dy*dy;const t=l?clamp(((x-ax)*dx+(y-ay)*dy)/l,0,1):0;return Math.hypot(x-ax-t*dx,y-ay-t*dy);}
@@ -175,6 +178,7 @@ function updateBullets(s){for(const b of s.bullets){b.px=b.x;b.py=b.y;b.x+=b.vx;
 function updateEvents(s){for(const e of s.events){
  if(!e.sources.every(i=>s.hp[i]>0)||e.revision!==s.revision){e.hit=true;e.age=e.warn+e.active+(e.recovery||0);continue;}
  e.age++;
+ if(globalThis.CQC_PASS36_VEHICLE_WEAPONS?.stepEvent(s,e,globalThis.CQC_PASS28_ARSENAL_PRESENTATION?.travelFrames))continue;
  if(['beam','shot','volley','flame'].includes(e.kind)){const source=globalThis.CQC_PASS18_MACHINES?.arsenalWeaponVector?.(s,e);if(source&&[source.x,source.y].every(Number.isFinite)){e.from={x:source.x,y:source.y};e.nativeSourcePart=source.part;e.nativeWeaponAxis=!!source.axisNative;const angle=Number.isFinite(source.angle)?source.angle:e.aimAngle;if(Number.isFinite(angle)){const d=e.aimDistance||Math.hypot(e.x-e.from.x,e.y-e.from.y);e.x=e.from.x+Math.cos(angle)*d;e.y=e.from.y+Math.sin(angle)*d;}}}
  if(e.age<e.warn||e.age>=e.warn+e.active)continue;
  if(e.kind==='volley'&&e.age===e.warn){for(let i=-1;i<=1;i++){const d=Math.hypot(e.x-e.from.x,e.y-e.from.y)||1,angle=Math.atan2(e.y-e.from.y,e.x-e.from.x)+i*.06;s.bullets.push({owner:'enemy',x:e.from.x,y:e.from.y,px:e.from.x,py:e.from.y,vx:Math.cos(angle)*9,vy:Math.sin(angle)*9,t:globalThis.CQC_PASS28_ARSENAL_PRESENTATION?.travelFrames(d,9,160) || 160,damage:520,kind:e.nativeWeaponAxis?'bullet':'missile',sources:e.sources,nativeSourcePart:e.nativeSourcePart});}}
@@ -425,7 +429,7 @@ function draw(c,s,{preview=false,hudVisible=true}={}){c.save();c.setTransform(c.
  if(s.def.id==='peacewalker'){box(c,586,498,48,100,'#294951','#9cb7a5');box(c,594,516,31,22,s.nuke?'#dda272':'#7ac5a5');if(s.terminal>0)box(c,586,491,48*s.terminal/45,5,'#edc68a');}
  machine(c,s,preview,camera.zoom);human(c,s);
  // Combat energy occupies a readable foreground layer; HUD remains separate.
- for(const e of s.events){if(e.age>=e.warn+e.active)continue;const hot=e.age>=e.warn,col=hot?'#ed956aaa':'#e9cf8eaa';
+ for(const e of s.events){if(window.CQC_PASS36_VEHICLE_WEAPONS?.drawEvent(c,e,s,camera))continue;if(e.age>=e.warn+e.active)continue;const hot=e.age>=e.warn,col=hot?'#ed956aaa':'#e9cf8eaa';
   if(s.def.id==='peacewalker_biped'&&e.kind==='flame'){
    const dx=e.x-e.from.x,dy=e.y-e.from.y,d=Math.hypot(dx,dy)||1,range=Math.min(d,e.range),ux=dx/d,uy=dy/d,nx=-uy,ny=ux;
    c.save();c.strokeStyle=hot?'#ffb661':'#daba87';c.lineWidth=Math.max(hot?4:2,2/camera.zoom);c.setLineDash(hot?[]:[14,10]);
