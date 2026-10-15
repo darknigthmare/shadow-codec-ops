@@ -227,7 +227,14 @@
     for(const e of clocks(state,['gatling','shot','volley','beam','rail','laser','missiles'])){
       const age=e.age-e.warn;
       if(age<0){brace=Math.max(brace,smooth(e.age/Math.max(1,e.warn)));opening=Math.max(opening,brace);}
-      else {impulse=Math.max(impulse,Math.exp(-age/2.8));opening=Math.max(opening,1);}
+      else {
+        // Only the existing owner event defines an active/recovery boundary.
+        // Keep legacy unknown-duration events unchanged instead of making up a clock.
+        const active=finite(e.active)?Math.max(1,e.active):Infinity,
+          recovery=finite(e.recovery)?Math.max(0,e.recovery):18;
+        if(age<active){impulse=Math.max(impulse,Math.exp(-age/2.8));opening=Math.max(opening,1);}
+        else if(recovery>0&&age<active+recovery)opening=Math.max(opening,1-smooth((age-active)/recovery));
+      }
     }
     return {impulse,brace,opening};
   }
@@ -245,7 +252,7 @@
   function presentationPose(id,p,state=null) {
     if (!ids.includes(id) || !p || p.pass29HeavyArticulationID===id) return p;
     const channels={...(p.channels || {})}, flags={...(p.flags || {})},
-      dead=p.defeated===true || p.ko===true || /^(dead|ko)$/.test(p.action || '') || state?.boss?.defeated===true,
+      dead=p.defeated===true || p.ko===true || /^(dead|ko|collapse|defeated|destroyed)$/.test(p.action || '') || value(channels.collapse)>0 || state?.boss?.defeated===true,
       phase=weaponPhase(state),
       firing=!p.motionEvent || ['gatling','shot','volley','beam','rail','laser','missiles','gun','cannon','fire'].includes(p.motionEvent.kind),
       impulse=dead||!firing?0:clamp(finite(channels.weaponRecoilImpulse)?channels.weaponRecoilImpulse:phase.impulse,0,1),
@@ -269,21 +276,24 @@
         if((event.sources||[]).includes(5)||(event.id==='blade-sweep'&&event.side===1))channels.farBladeSwing=dead?0:-swing;
       }
       const geometry={"front_near":[[-47.87096774193548,-102.09216589861751],[-31.328,-68.352]],"front_far":[[-50.15,-87.125],[-38.04114285714286,-78.676]],"middle_near":[[-58.42926829268293,-100.31219512195122],[-39.882075471698116,-78.50471698113208]],"middle_far":[[-46.55885167464115,-87.94449760765549],[-35.41063829787234,-74.04042553191489]],"rear_near":[[-53,-119.25],[-33.13138686131387,-110.43795620437956]],"rear_far":[[40.57483443708609,-114.56423841059602],[18.179457364341083,-100.28023255813953]]};
-      const moving=!dead && /^(walk|dash|run)$/.test(p.action || ''),
-        frame=value(p.frame ?? state?.tick),cycle=finite(channels.machineStridePhase)?channels.machineStridePhase:frame/112,
+      const motion=p.machineMotion||state?.machineMotion,realTravel=finite(motion?.travelX),direction=motion?.direction===-1?-1:1,cycleDistance=12/.65,
+        moving=!dead&&(p.walk===true||/^(walk|dash|run)$/.test(p.action||''))&&(!p.reducedMotion||realTravel),
+        frame=value(p.frame ?? state?.tick),cycle=realTravel?direction*motion.travelX/cycleDistance:finite(channels.machineStridePhase)?channels.machineStridePhase:frame/112,
         stanceSeat=moving?Math.pow(Math.sin(cycle*Math.PI*2),2)*1.2:0;
       let impactSeat=0;
       for(const event of clocks(state,['stomp'])){
         const age=event.age-event.warn;
         if(age>=0 && age<10) impactSeat=Math.max(impactSeat,Math.sin(age/10*Math.PI)*2.5);
       }
-      const seat=dead?0:stanceSeat+brace*.8+impactSeat;channels.pass32ExcelsusSeat=seat;
+      let seat=dead?0:stanceSeat+brace*.8+impactSeat;
+      const contacts=[],targets=[];
       for (const [prefix,[first,second]] of Object.entries(geometry)) {
         // Alternating tripod, 35% transfer and 65% loaded stance: at least three supports stay planted.
         const alternate=['front_far','middle_near','rear_far'].includes(prefix)? .5:0,
           step=((cycle+alternate)%1+1)%1,flight=step<.35;
-        let stride=moving?(flight?-6+12*smooth(step/.35):6-12*smooth((step-.35)/.65)):0,
-          lift=moving&&flight?Math.sin(step/.35*Math.PI)*14:0;
+        const t=step/.35,blend=t**3*(10+t*(-15+6*t)),tangent=-cycleDistance*.35;
+        let stride=moving?direction*(flight?-6+12*blend+tangent*t*(1-t)*(1-2*t):6-12*(step-.35)/.65):0,
+          lift=moving&&flight?Math.sin(step/.35*Math.PI)**2*14:0;
         const pool={front_near:0,front_far:1,middle_near:2,rear_near:2,middle_far:3,rear_far:3}[prefix];
         for (const event of clocks(state,['stomp'])) {
           if (!(event.sources || []).includes(pool)) continue;
@@ -292,10 +302,21 @@
           if(progress<1){const raised=progress<.68?smooth(progress/.68):1-smooth((progress-.68)/.32);lift=Math.max(lift,raised*30);stride=0;}
           else if(event.age<event.warn+Math.max(1,value(event.active))) {stride=0;lift=0;}
         }
+        contacts.push({limb:prefix,support:lift===0&&flags['part'+pool+'Destroyed']!==true,phase:step,pool,destroyed:flags['part'+pool+'Destroyed']===true,stride,lift});
+        targets.push({prefix,first,second,stride,lift});
+        if(!dead){const x=first[0]+second[0]+stride,y=first[1]+second[1]+lift,
+          reach=Math.hypot(...first)+Math.hypot(...second)-1e-8;
+          // Decide the hull load before IK. Clamping a fully extended stance
+          // ankle in X would slide it despite an otherwise correct distance phase.
+          seat=Math.max(seat,-Math.sqrt(Math.max(0,reach*reach-x*x))-y);}
+      }
+      channels.pass32ExcelsusSeat=seat;
+      for(const {prefix,first,second,stride,lift}of targets){
         const joint=plantedJoint(first,second,dead?0:stride,dead?0:lift+seat);
         channels[prefix+'Swing']=joint.upper;channels[prefix+'Knee']=joint.lower;
         channels['pass29_'+prefix+'FootLevel']=joint.foot;
       }
+      p={...p,excelsus35MotionSupport:{mode:realTravel?'explicit-native-root-distance':'nominal-frame-presentation',realTravel,worldContactQualified:realTravel&&moving&&contacts.every(row=>!row.destroyed),travelX:realTravel?motion.travelX:null,walking:moving,cycleDistance,legs:contacts}};
     }
     channels.pass29GripOpen=dead?0:clamp(Math.max(value(channels.shieldOpen),brace),0,1);
     channels.pass29RailAperture=dead?0:clamp(Math.max(flags.chaiothRailWarning?1:0,phase.opening),0,1);

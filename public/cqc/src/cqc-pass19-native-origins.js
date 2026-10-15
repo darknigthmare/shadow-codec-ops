@@ -2,7 +2,28 @@
 (function(root){'use strict';
  const equal=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
  function projectile(p,m,options={}){
-  if(!p?.f||!m)return null;const bodyAim=root.CQC_PASS19_NATIVE_AIM?.nativeOrigin(p,m,options);if(bodyAim)return bodyAim;
+  if(!p?.f||!m)return null;
+  // Box Tank salvos select the exact current native frame, including recovery.
+  // The local tube transform is shared with the source-part renderer; world scale
+  // remains the spatial adapter's responsibility exactly once.
+  const pwBoxes=root.CQC_PASS35_PW_BOX_ARTICULATION;
+  if(pwBoxes?.ownsProjectile?.(p,m)){
+   if(p.life<=0||p.hit>0||!p.attack||p.attack.def!==m)return null;
+   const sprites=root.CQC_COMBAT_SPRITES,entry=sprites?.getEntry(p.f.uid,p.f);
+   if(!entry)return null;
+   const actions=p.face===entry.facing?entry.actions:entry.oppositeActions;
+   if(!actions)return null;
+   const current=options.pose||root.CQC_PASS19_VERSUS_SPATIAL?.poseFor(p,Number.isFinite(options.frame)?options.frame:0);
+   if(!current)return null;
+   const pose={...current,boxFireAge:pwBoxes.fireAge(p)},selected=sprites.selectFrame({...entry,actions},pose),frame=selected?.frame;
+   if(!frame||!pwBoxes.owns(entry,frame))return null;
+   const factor=entry.displayHeight/(entry.sourceFrameHeights?.[frame.file]||entry.baseFrameHeight||frame.rect[3]),point=pwBoxes.weaponPoint(p.f.uid,frame,pose,factor);
+   if(!point||!Number.isFinite(point.x)||!Number.isFinite(point.y))return null;
+   const forward=point.x*p.face,height=-point.y;
+   if(forward<0||height<=0||forward>1000||height>1000)return null;
+   return{forward,height,sourceFile:point.sourceFile,sourceSHA256:point.sourceSHA256,sourceRect:point.sourceRect,sourcePointNativeXY:point.nativeXY,sourceTranslation:point.sourceTranslation,recoil:point.recoil,angle:point.angle,emissionQualification:point.emissionQualification,reviewKind:point.reviewKind,worldScaleApplied:false};
+  }
+  const bodyAim=root.CQC_PASS19_NATIVE_AIM?.nativeOrigin(p,m,options);if(bodyAim)return bodyAim;
   const entry=root.CQC_COMBAT_SPRITES?.getEntry(p.f.uid,p.f);
   const evidence=root.CQC_PASS20_ATTACHMENTS?.entries?.[p.f.uid]||root.CQC_PASS19_CREATURE_ATTACHMENTS?.entries?.[p.f.uid]||root.CQC_PASS19_BOX_ATTACHMENTS?.entries?.[p.f.uid];
   if(!entry){const slot=m.tag==='rocket'?'missile':m.tag==='ballistic'?'ballistic':null;if(!slot||p.f.costume&&p.f.costume!=='original'&&!root.CQC_PASS19_MACHINE_PIXEL_STYLE?.selected(p.f))return null;const pose=root.CQC_PASS19_VERSUS_SPATIAL?.poseFor(p,Number.isFinite(options.frame)?options.frame:0)||{};const point=root.CQC_PASS18_MACHINES?.playableSourcePoint?.(p.f.uid,slot,0,0,p.face,1,pose);if(!point||!point.visible||!Number.isFinite(point.x)||!Number.isFinite(point.y))return null;return{forward:point.x*p.face,height:-point.y,sourceSHA256:point.sourceSHA256,reviewKind:'guarded-native-rig-source-point',worldScaleApplied:false,facingQualification:point.facingQualification};}
@@ -21,5 +42,5 @@
   if(forward<0||height<=0||forward>1000||height>1000)return null;
   return{forward,height,sourceFile:frame.file,sourceSHA256:frame.sha256,sourceRect:[...frame.rect],reviewKind:'reviewed-native-2d-attachment',worldScaleApplied:false};
  }
- root.CQC_PASS19_NATIVE_ORIGINS={version:'pass19-native-2d-origins/1',projectile};
+ root.CQC_PASS19_NATIVE_ORIGINS={version:'pass19-native-2d-origins/2',projectile};
 })(globalThis);

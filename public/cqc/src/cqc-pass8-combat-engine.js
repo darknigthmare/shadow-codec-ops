@@ -120,6 +120,7 @@ function spawn(s,p,m,atk,i){const heavy=['rocket','rail','explosive','fire'].inc
  def:m,damageScale:1,life:m.life||80,delay:i*(m.interval||0),age:0,kind:m.fuse?'grenade':m.tag==='psychic'?'orb':m.tag,
  face:p.face,reflections:0,bounces:m.bounces||0,returned:false,dead:false,hitTargets:{},steady:atk.steady,
  burstId:atk.id,hitMax:m.returnAt?2:1};
+ if(root.CQC_PASS35_PW_BOX_ARTICULATION?.ownsProjectile?.(p,m))q.pass35BoxEmissionOwner={uid:p.f.uid,costume:p.f.costume||'original',attackId:atk.id};
  if(bodyAim?.valid){q.vx=bodyAim.velocity.vx;q.vy=bodyAim.velocity.vy;}s.projectiles.push(q);event(s,'projectile',p,{id:q.id,slot:m.slot,index:i});if(s.projectiles.length>60)s.projectiles.shift();return q;}
 function activate(s,p,a){if(a.activated)return;a.activated=true;p.stats.activations++;p.lastActivation=a.name;const d=a.def,o=other(s,p);event(s,'activate',p,{slot:a.name,kind:d.kind,name:d.name});
  if(d.kind==='projectile'){for(let i=0;i<(d.count||1);i++)spawn(s,p,d,a,i);}
@@ -179,7 +180,22 @@ function action(s,p){const a=p.attack;if(!a)return;const d=a.def;a.t++;
  }
  if(a.t>=d.startup+d.active+d.recovery){p.attack=null;p.state='idle';}
 }
-function projectileStep(s){for(const q of s.projectiles){if(q.dead)continue;if(q.delay>0){q.delay--;continue;}q.age++;q.life--;
+function projectileStep(s){for(const q of s.projectiles){if(q.dead)continue;if(q.delay>0){q.delay--;continue;}
+ // Delayed Box Tank rounds retain cadence, scalar launch speed and gravity. At their
+ // actual first simulation tick only, use the still-owning original box's visible
+ // native tube. Interrupted/KO/costume-changed owners retain historical behavior.
+ if(q.age===0&&q.pass35BoxEmissionOwner){
+  const owner=actors(s)[q.owner],binding=q.pass35BoxEmissionOwner;
+  if(owner?.f?.uid===binding.uid&&(owner.f.costume||'original')===binding.costume&&owner.face===q.face&&owner.attack?.id===binding.attackId&&owner.attack.def===q.def&&root.CQC_PASS35_PW_BOX_ARTICULATION?.ownsProjectile?.(owner,q.def)){
+   const point=spatial()?.projectilePoint(owner,q.def,baseBox(owner),{frame:s.frame});
+   if(point?.origin?.reviewKind==='source-native-pw-cardboard-tube-shared-render-emission'&&Number.isFinite(point.x)&&Number.isFinite(point.y)&&Number.isFinite(point.origin.angle)){
+    const scalarLaunchSpeed=Math.hypot(q.vx,q.vy);
+    q.x=point.x;q.y=point.y;q.vx=Math.cos(point.origin.angle)*scalarLaunchSpeed;q.vy=Math.sin(point.origin.angle)*scalarLaunchSpeed;
+    q.pass35BoxEmission={frame:s.frame,sourceAngle:point.origin.angle,scalarLaunchSpeed,launchVelocity:[q.vx,q.vy],sourceFile:point.origin.sourceFile,sourceSHA256:point.origin.sourceSHA256,sourceRect:point.origin.sourceRect,sourceTranslation:point.origin.sourceTranslation,recoil:point.origin.recoil,coordinateSpace:point.origin.coordinateSpace,sourceScaleAppliedOnce:point.origin.sourceScaleAppliedOnce,emissionQualification:point.origin.emissionQualification};
+   }
+  }
+ }
+ q.age++;q.life--;
  const m=q.def,a=actors(s)[q.owner],d=other(s,a);q.x+=q.vx;q.y+=q.vy;
  if(m.gravity)q.vy+=m.gravity;
  if(m.homing&&!d.buffs.cloak){const targetY=d.y-Math.min(baseBox(d).h*.55,140)*(spatial()?.ratio(d)||1),max=m.homing;q.vy=clamp(q.vy+clamp((targetY-q.y)*.001,-max,max),-3.6,3.6);}

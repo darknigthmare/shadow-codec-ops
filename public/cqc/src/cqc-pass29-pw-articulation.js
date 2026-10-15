@@ -207,12 +207,16 @@
   }
   // Slow wave gait: one raised foot, three support feet. This is an authored
   // mechanical adaptation, not the faster diagonal sinusoid used previously.
-  function quadrupedGait(frame,limb) {
-    const order={front_near:0,rear_far:.25,front_far:.5,rear_near:.75};
-    const q=((frame/176+order[limb])%1+1)%1,support=.78;
-    if(q<support)return {stride:4-8*q/support,lift:0,support:true};
-    const swing=(q-support)/(1-support);
-    return {stride:-4+8*smooth(swing),lift:Math.sin(Math.PI*swing)**2*11,support:false};
+  function quadrupedGait(frame,limb,motion=null) {
+    const order={front_near:0,rear_far:.25,front_far:.5,rear_near:.75},support=.78,
+      distanceDriven=finite(motion?.travelX),direction=motion?.direction===-1?-1:1,
+      cycleDistance=8/support,cycle=distanceDriven?direction*motion.travelX/cycleDistance:frame/176,
+      q=((cycle+order[limb])%1+1)%1;
+    if(q<support)return {stride:direction*(4-cycleDistance*q),lift:0,support:true,phase:q,cycleDistance,distanceDriven};
+    const swing=(q-support)/(1-support),blend=swing**3*(10+swing*(-15+6*swing)),
+      tangent=-cycleDistance*(1-support);
+    return {stride:direction*(-4+8*blend+tangent*swing*(1-swing)*(1-2*swing)),
+      lift:Math.sin(Math.PI*swing)**2*11,support:false,phase:q,cycleDistance,distanceDriven};
   }
   const chrysalisAxis=Object.freeze({part:'railgun',jointPart:'railgun_cradle',baseNativeXY:[1158,829],tipNativeXY:[531,937],minDegrees:-18,maxDegrees:55,channel:'pw32ChrysalisRailAim'});
   const cocoonAxis=Object.freeze({part:'main_cannon_barrel',fixedPivot:true,baseNativeXY:[1436,478],tipNativeXY:[1216,397],minDegrees:-20,maxDegrees:68,channel:'pw32CocoonBarrelElevation'});
@@ -228,11 +232,11 @@
   }
   function presentationPose(id,pose,state=null) {
     if(!ids.includes(id)||!pose||typeof pose!=='object')return pose;
-    const channels={...(pose.channels||{})},flags=pose.flags||{};
+    const channels={...(pose.channels||{})},flags=pose.flags||{},motion=pose.machineMotion||state?.machineMotion,realTravel=finite(motion?.travelX),supportRows=[];
     const value=key=>finite(channels[key])?channels[key]:0;
     const defeated=pose.defeated===true||pose.ko===true||/^(dead|ko|defeated|destroyed)$/.test(pose.action||'')
       ||flags.pwDefeated===true||state?.boss?.defeated===true;
-    const move=/walk|dash|run/.test(pose.action||'')||Math.abs(value('nearSwing'))+Math.abs(value('farSwing'))>0;
+    const move=pose.walk===true||/walk|dash|run/.test(pose.action||'')||(!pose.action&&Math.abs(value('nearSwing'))+Math.abs(value('farSwing'))>0);
     const frame=finite(pose.frame)?pose.frame:0,phase=frame*.045,wave=Math.sin(phase);
     const events=(state?.events||[]).filter(e=>e.age<e.warn+e.active+(e.recovery||18)&&(!e.sources||e.sources.every(i=>flags['part'+i+'Destroyed']!==true)));
     const event=events.find(e=>['beam','shot','volley','sweep'].includes(e.kind));
@@ -242,7 +246,8 @@
     const load=defeated?0:envelope?.load||clamp(value('weaponBrace'),0,1);
     const recoil=defeated?0:envelope?.kick||clamp(value('weaponRecoilImpulse'),0,1)||clamp(-value('weaponRecoil')/7,0,1);
     const weaponKind=pose.motionEvent?.kind||event?.kind||state?.boss?.attack?.kind;
-    const weaponAim=clamp(value('weaponAim'),-14,14);
+    const weaponAim=defeated?0:clamp(value('weaponAim'),-14,14);
+    if(defeated)for(const key of ['weaponAim','weaponAimDegrees','weaponAimDegreesNear','weaponAimDegreesFar'])channels[key]=0;
     if(id==='pupa_pw_psp2010') {
       const compression=defeated?0:-load*1.8-recoil*.9;
       channels.pw32PupaBodyCompression=compression;
@@ -259,7 +264,7 @@
       channels.pw29ChrysalisleftHinge=tilt*.35+load*.8;
       channels.pw29ChrysalisrightHinge=-tilt*.3-load*.65;
       channels.pw29ChrysalisTailHinge=tilt*.2-load*.45;
-      channels.pw32ChrysalisRailAim=servoAim(pose,chrysalisAxis,event,value('pwCollapseTilt'))??weaponAim;
+      channels.pw32ChrysalisRailAim=defeated?0:servoAim(pose,chrysalisAxis,event,value('pwCollapseTilt'))??weaponAim;
       const railAngle=Math.atan2(108,-627);
       // The railgun does not telescope when an independent missile/gun event
       // fires. Unknown legacy direct recoil keeps its existing interpretation.
@@ -269,7 +274,7 @@
     } else if(id==='cocoon_pw_psp2010') {
       channels.pw32CocoonCompression=defeated?0:-load*.7-recoil*1.6;
       channels.pw29CannonElevation=0;
-      channels.pw32CocoonBarrelElevation=servoAim(pose,cocoonAxis,event,value('pwCollapseTilt'))??weaponAim*.35;
+      channels.pw32CocoonBarrelElevation=defeated?0:servoAim(pose,cocoonAxis,event,value('pwCollapseTilt'))??weaponAim*.35;
       const cannonAngle=Math.atan2(-81,-220)-channels.pw32CocoonBarrelElevation*DEG;
       channels.pw32CocoonRecoilX=defeated?0:-Math.cos(cannonAngle)*recoil*3.6;
       channels.pw32CocoonRecoilY=defeated?0:Math.sin(cannonAngle)*recoil*3.6;
@@ -293,19 +298,20 @@
       for(const [limb,leg]of Object.entries(preparedLegs)) {
         const far=limb.endsWith('far'),index=far?1:0;
         const disabled=flags['part'+index+'Destroyed']===true||defeated;
-        const gait=move&&!pose.reducedMotion&&!disabled&&!stomp?quadrupedGait(frame,limb):{stride:0,lift:0,support:true};
+        const gait=move&&(!pose.reducedMotion||realTravel)&&!disabled&&!stomp?quadrupedGait(frame,limb,motion):{stride:0,lift:0,support:true};
         let lift=gait.lift;
         if(stomp&&limb.startsWith('front_')&&!disabled&&stomp.sources.includes(index)&&stomp.age<stomp.warn){
           const q=clamp(stomp.age/Math.max(1,stomp.warn),0,1);
           lift=13*smooth(q/.68)*(1-smooth((q-.72)/.28));
         } else if(!stomp&&!move&&limb.startsWith('front_')&&!disabled)lift=clamp(value(far?'farLift':'nearLift'),0,30);
         const solved=solveLeg(leg,gait.stride-bodyShift,lift-bodyCompression);
+        supportRows.push({limb,...gait,lift,support:!disabled&&lift===0,disabled});
         channels['pw29_'+limb+'Upper']=solved.upper;
         channels['pw29_'+limb+'Lower']=solved.lower;
         channels['pw29_'+limb+'Level']=solved.level;
       }
     }
-    return {...pose,...(defeated?{defeated:true}:{}),channels};
+    return {...pose,...(defeated?{defeated:true}:{}),channels,...(id==='peacewalker_pw_psp2010'?{pw35MotionSupport:{mode:realTravel?'explicit-native-root-distance':'nominal-frame-presentation',realTravel,worldContactQualified:realTravel&&move&&!defeated&&supportRows.every(row=>!row.disabled),travelX:realTravel?motion.travelX:null,walking:move&&!defeated&&(!pose.reducedMotion||realTravel),legs:supportRows}}:{})};
   }
   root.CQC_PASS29_PW_ARTICULATION=Object.freeze({version:VERSION,ids,apply,presentationPose,solveLeg,quadrupedGait,eventEnvelope,aimAxes,weaponPoints,limits});
 })(globalThis);

@@ -77,6 +77,11 @@
   function drawActor(c,f,t,state={},hooks={}){
     const uid=eligible(f.id,hooks);if(!uid)return false;
     const pose=poseFor(f,t,state,hooks),face=f.facing===-1?-1:1;
+    const nativeMetadata=metadata(uid),nativePixels=finite(nativeMetadata?.displayHeight,265),
+      corePixels=finite(nativeMetadata?.coreDisplayHeight,nativePixels),
+      worldRatio=root.CQC_PASS19_WORLD_SCALE?.height?.({uid,costume:f.costume||'original'})?.ratio||1;
+    if(Number.isFinite(f.x)&&Number.isFinite(f.vx))pose.nativeSpriteMotion={worldX:f.x,velocityX:f.vx,
+      nativeWorldScale:corePixels/nativePixels*worldRatio,source:'engine-core-owner'};
     c.save();
     try{
       if(f.cloak>0)c.globalAlpha*=.42;

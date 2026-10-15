@@ -488,6 +488,19 @@
       { ...pose, actionTime: finite(pose.actionTime) ? pose.actionTime : 0,
         entityKey: pose.entityKey || `portrait:${fighter.uid}:${face}` });
   }
+  // Convert only engine-owned displacement; camera zoom is deliberately absent.
+  // A helper which draws a different admitted source may request its own factor.
+  function nativeFramePose(pose = {}, factor = 1) {
+    const motion = pose.nativeSpriteMotion;
+    if (!motion || ![motion.worldX, motion.velocityX, motion.nativeWorldScale, factor].every(finite)
+      || motion.nativeWorldScale <= 0 || factor <= 0) return pose;
+    const nativeWorldScale = motion.nativeWorldScale * factor;
+    const actual = {travelX: motion.worldX / nativeWorldScale,
+      velocityX: motion.velocityX / nativeWorldScale, direction: 1,
+      worldX: motion.worldX, nativeWorldScale, source: 'engine-native-sprite-world-x'};
+    return {...pose, machineMotion: actual,
+      boxMotion: {...motion, worldTravelX: actual.travelX, source: actual.source}};
+  }
   function draw(c, fighter, x, y, face = 1, scale = 1, pose = {}) {
     const entry = entryFor(fighter && fighter.uid, fighter || {});
     if (!entry || !c || ![x, y, scale].every(finite) || scale <= 0 || ![1, -1].includes(face)) return false;
@@ -517,6 +530,10 @@
     try {
       c.translate(x, y); c.scale(scale * (face === entry.facing || opposite ? 1 : -1), scale);
       c.imageSmoothingEnabled = entry.renderStyle === 'painted';
+      const sourceArgs={entry,frame,image,factor,pose:nativeFramePose(pose,factor),face,requested,
+        resolveSource:getImage,poseForNativeFactor:sourceFactor=>nativeFramePose(pose,sourceFactor)};
+      if(root.CQC_PASS35_BLADEWOLF_ARTICULATION?.drawSourceParts(c,sourceArgs)
+        ||root.CQC_PASS35_PW_BOX_ARTICULATION?.drawSourceParts(c,sourceArgs))return true;
       if (frame.clipPolygon) {
         c.beginPath();
         frame.clipPolygon.forEach((p, i) => {
@@ -525,10 +542,9 @@
         });
         c.closePath(); c.clip();
       }
-      const sourceArgs={entry,frame,image,factor,pose,face,requested,resolveSource:getImage};
       if(!root.CQC_PASS19_PIXEL_STYLE?.drawSource(c,sourceArgs) && !root.CQC_PASS19_COSTUME_PARTS?.drawSourceParts(c,sourceArgs) && !root.CQC_PASS18_ARTICULATED_IDLES?.drawSourceParts(c,sourceArgs))c.drawImage(image, sx, sy, sw, sh, -w * frame.pivot[0], -h * frame.pivot[1], w, h);
     } finally { c.restore(); }
     return true;
   }
-  return { configure, configureCostumes, getEntry: entryFor, draw, drawFitted, previewGeometry, previewDatum, has, preload, whenReady, status, validateEntry, validateCostumeEntry, actionName, selectFrame, retainFighters, cacheInfo };
+  return { nativeFramePose, configure, configureCostumes, getEntry: entryFor, draw, drawFitted, previewGeometry, previewDatum, has, preload, whenReady, status, validateEntry, validateCostumeEntry, actionName, selectFrame, retainFighters, cacheInfo };
 });

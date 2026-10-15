@@ -181,6 +181,28 @@
    const surrogate={tick:frame,hp,max:hp,def:{id:boss==='ray'?'ray_mgR':boss},boss:{exposure:(state?.headOpen||state?.batteryOpen||state?.bladeOpenT||0)>0?1:0},events,status:state?.won?'result':'fight',won:state?.won,revision:finite(state?.phase),destroyOwner:state||null,motionState:state,_machineBasis:basis};
    return {id,box,basis,surrogate,pose:arsenalPose(surrogate,id)};
   }
+  // MGR selectors and collisions use exactly the pose and fitted basis painted above.
+  function mgrTargetPoint(state,index=state?.target){
+   if(!state||!Number.isInteger(index)||index<0)return null;
+   const value=mgrPresentation(state);if(!value)return null;
+   const boss=state.boss,logical=boss==='ray'?'ray_mgR':boss;
+   let target=index;
+   if(boss==='grad'){if(index>1)return null;target=index===0?0:2;}
+   else if(boss==='excelsus'){if(state.phase===1){if(index>3)return null;}else if(state.phase===2){if(index>1)return null;target=4+index;}else target=6;}
+   const descriptor=root.CQC_PASS28_RIG_SETUP?.targetParts?.()?.[logical]?.[target],machine=definitions.get(value.id);
+   if(!descriptor||!machine)return null;
+   const native=root.CQC_PASS28_MACHINE_GEOMETRY?.sourcePoint(machine,parts,value.pose,descriptor);if(!native)return null;
+   const m=value.basis;
+   return{x:m[0]*native.x+m[2]*native.y+m[4],y:m[1]*native.x+m[3]*native.y+m[5],part:native.part,sourceNativeXY:native.nativeXY.slice(),alphaMeasured:native.alphaMeasured,nativeGeometry:true,rigId:value.id,targetIndex:index,sourcePartIndex:target,qualification:boss==='grad'&&index===1?'Exposed hull target bound to its native art; an independently drawn battery interior is still unavailable.':'Source part follows the identical final native MGR render pose.'};
+  }
+  function mechanicalPose(id,rawPose={},hp=[]){
+   if(!definitions.has(id)||!rawPose||typeof rawPose!=='object'||!Array.isArray(hp))return null;
+   return animation(rawPose,hp,id,false);
+  }
+  function drawMechanical(ctx,id,finalPose,basis,owner=null){
+   if(!ctx||!definitions.has(id)||!ready(id)||!finalPose||!Array.isArray(basis)||basis.length!==6||!basis.every(Number.isFinite)||basis[0]<=0||basis[3]<=0)return false;
+   ctx.save();try{ctx.transform(...basis);const result=registry.draw(ctx,id,{...finalPose,detachmentOwner:owner||ctx.canvas,detachmentBasis:basis});touch(id,1200);return result;}finally{ctx.restore();}
+  }
   function mgrWeaponVector(state,spec={kind:'volley'}){
    const value=mgrPresentation(state);if(!value)return null;const axis=axisDescriptor(value.id,spec),vector=axis&&localAxis(value.id,value.pose,axis);if(!vector)return null;
    const m=value.basis,world=p=>({x:m[0]*p.x+m[2]*p.y+m[4],y:m[1]*p.x+m[3]*p.y+m[5]}),tip=world(vector.tip);
@@ -202,7 +224,7 @@
   function status(){const ids=definitions?Array.from(definitions.keys()):[];return{schema:'cqc.pass18-machine-status/1',initializationError,arsenalIds:Object.keys(data?.arsenal||{}),playableUIDs:Object.keys(data?.playable||{}),pending:launch?{id:launch.id,ticket:launch.ticket}:null,activeLoads,queued:queue.filter(j=>loads.get(j.id)===j).length,cache:{maxRigs,maxDecodedBytes:maxBytes,readyRigs:ids.filter(ready).length,estimatedDecodedBytes:ids.filter(ready).reduce((n,id)=>n+estimated(id),0),protected:ids.filter(id=>(protectUntil.get(id)||0)>now())},machines:ids.map(nativeStatus)};}
   function dispose(){pumpEpoch++;if(pumpTimer!==null){cancelTimer?.(pumpTimer);pumpTimer=null;}cancelPendingLaunch();for(const job of loads.values()){job.controller.abort();const error=Error('Machine request cancelled');error.name='AbortError';job.reject(error);}loads.clear();queue.length=0;registry?.dispose();lru.clear();protectUntil.clear();errors.clear();}
   if(!deps.disableLifecycleListeners){root.addEventListener?.('pagehide',dispose);root.document?.addEventListener('change',()=>cancelPendingLaunch());}
-  return{mechanicalWeaponVector,mechanicalAimPose,arsenalGeometry,arsenalTargetPoint,arsenalWeaponPoint,arsenalWeaponVector:arsenalWeaponPoint,mgrWeaponVector,rigSourcePoint,playableSourcePoint,inspectPlayablePose,motionContext,has,hasComposite,physical,whenReady,whenReadyComposite:whenReady,whenReadyBoss,whenReadyAccessory,drawPlayable,drawCoreMachine,drawFitted,drawPortrait,cancelPortrait,drawArsenal,drawMGR,drawAccessory,accessoryHeight,deferLaunch,cancelPendingLaunch,status,bounds,ready:uid=>uid==='core__cunningham'?ready('cunningham_hover_platform_mpo2006')&&root.CQC_COMBAT_SPRITES?.status?.(uid,{face:-1})?.ready===true:ready(physical(uid)||uid),dispose};
+  return{mechanicalWeaponVector,mechanicalAimPose,mechanicalPose,drawMechanical,mgrPresentation,mgrTargetPoint,arsenalGeometry,arsenalTargetPoint,arsenalWeaponPoint,arsenalWeaponVector:arsenalWeaponPoint,mgrWeaponVector,rigSourcePoint,playableSourcePoint,inspectPlayablePose,motionContext,has,hasComposite,physical,whenReady,whenReadyComposite:whenReady,whenReadyBoss,whenReadyAccessory,drawPlayable,drawCoreMachine,drawFitted,drawPortrait,cancelPortrait,drawArsenal,drawMGR,drawAccessory,accessoryHeight,deferLaunch,cancelPendingLaunch,status,bounds,ready:uid=>uid==='core__cunningham'?ready('cunningham_hover_platform_mpo2006')&&root.CQC_COMBAT_SPRITES?.status?.(uid,{face:-1})?.ready===true:ready(physical(uid)||uid),dispose};
  }
  return{createBridge};
 });

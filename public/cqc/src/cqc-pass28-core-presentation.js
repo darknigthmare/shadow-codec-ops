@@ -18,6 +18,7 @@
     cocoon: {cannon: {part: 'main_cannon_barrel', sourceNativeXY: [1216,397]}}
   });
   const neutralCache = new WeakMap();
+  const encounterCameras = new WeakMap();
   const finite = value => typeof value === 'number' && Number.isFinite(value);
   function geometry(state, machine, parts, options={}) {
     if (!state?.boss || !machine || !parts?.corePose || !root.CQC_PASS28_MACHINE_GEOMETRY) return null;
@@ -38,8 +39,16 @@
     const x = finite(boss.x) ? boss.x : 1120, y = finite(boss.y) ? boss.y : 0;
     const tx = frontAligned ? x - 228 - neutral.left * scale : x;
     const ty = -y - neutral.bottom * scale;
-    const raw = parts.corePose(state, {id: machine.id, origin: [0,0], reducedMotion: options.reducedMotion===true});
+    let raw = parts.corePose(state, {id: machine.id, origin: [0,0], reducedMotion: options.reducedMotion===true});
     if (!raw) return null;
+    const motion=boss.nativeMotion,dead=boss.defeated===true||boss.health<=0;
+    if(motion&&motion.frame===state.frame&&[motion.worldX,motion.worldY,motion.deltaX,motion.deltaY].every(finite)
+      &&Math.abs(motion.worldX-x)<1e-8&&Math.abs(motion.worldY-y)<1e-8){
+      const moving=!dead&&Math.abs(motion.deltaX)>1e-8;
+      raw={...raw,action:dead?'dead':moving?'walk':boss.attack?'attack':'idle',walk:moving,defeated:dead,
+        machineMotion:{travelX:tx/scale,direction:1,velocityX:motion.deltaX/scale,
+          worldX:tx,nativeWorldScale:scale,source:'engine-core-pw-world-basis'}};
+    }
     const attack=boss.attack,hero=state.fighters?.[0],gun=boss.id==='mgd'&&attack?.kind==='gun',cannon=boss.id==='cocoon'&&attack?.kind==='cannon';
     const aimEvent=hero&&(gun||cannon)?{kind:gun?'gun':'beam',sources:[],age:attack.t,warn:attack.windup,active:attack.active,recovery:attack.recovery,aimTarget:cannon&&attack.aim?[attack.aim.x,-attack.aim.y]:[hero.x,-(gun?174:hero.y+(hero.crouch?65:150))]}:null;
     const pose=aimEvent&&root.CQC_PASS18_MACHINES?.mechanicalAimPose
@@ -80,18 +89,30 @@
   }
   function camera(state, prepared, options = {}) {
     if (!prepared) return null;
-    const b = prepared.worldBounds, hero = state.fighters?.[0];
-    // Neutral frame is stable during recoil, damage and flying fragments.
-    // Every world object uses this single camera; HUD lives outside its save/restore.
-    const left = Math.min(70, b.left - 55, (hero?.x || 365) - 90);
-    const right = Math.max(1510, b.right + 55, (hero?.x || 365) + 90);
-    const high = Math.max(-b.top + 45, (hero?.y || 0) + 260, 700);
     const groundY = finite(options.groundY) ? options.groundY : 598;
     const topY = finite(options.topY) ? options.topY : 195;
     const width = finite(options.width) ? options.width : 1280;
-    const zoom = Math.min(1, (width - 90) / (right-left), (groundY-topY) / high);
-    return {x: (left+right)/2, zoom, screenX: width/2, groundY,
-      worldFrame: {left, right, high}, qualification: prepared.qualification};
+    // Capture the full playable lane and neutral machine once per encounter.
+    // Player travel/jumps, recoil and real machine motion never pan or zoom it.
+    // ARENA min/max are 90/1510; the retained human envelope adds 90 per side.
+    const key = [groundY, topY, width].join('/');
+    let owner = encounterCameras.get(state);
+    if (!owner || owner.boss !== state.boss || owner.encounter !== prepared.encounter) {
+      owner = {boss: state.boss, encounter: prepared.encounter, views: new Map()};
+      encounterCameras.set(state, owner);
+    }
+    let view = owner.views.get(key);
+    if (!view) {
+      const b = prepared.worldBounds;
+      const left = Math.min(0, b.left - 55), right = Math.max(1600, b.right + 55);
+      const high = Math.max(-b.top + 45, 700);
+      const zoom = Math.min(1, (width - 90) / (right-left), (groundY-topY) / high);
+      view = Object.freeze({x: (left+right)/2, zoom, screenX: width/2, groundY,
+        worldFrame: Object.freeze({left, right, high}), cameraPolicy: 'fixed-encounter-world',
+        qualification: prepared.qualification});
+      owner.views.set(key, view);
+    }
+    return {...view, worldFrame: {...view.worldFrame}};
   }
   function flightBounds(state, prepared) {
     if (!prepared) return {left: -70, right: 1650, top: 830, bottom: 0};

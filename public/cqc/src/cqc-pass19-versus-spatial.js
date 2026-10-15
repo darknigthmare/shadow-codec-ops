@@ -78,7 +78,22 @@
   left.x-=moveLeft+extraLeft;right.x+=moveRight;
  }
  function worldCeiling(s){let y=-140;for(const p of [s.a,s.b])y=Math.min(y,frameBounds(p,s.frame).top-160,bodyY(p,330)-160);return y;}
- function camera(s,requested=1,cam=0,options={}){const floor=568,top=finite(options.top,112),bottom=finite(options.bottom,696),padding=22,multiplier=finite(options.spriteMultiplier,1.12),bounds=[s.a,s.b].map(p=>frameBounds(p,s.frame,multiplier)),center=extended(s)?(Math.min(...bounds.map(b=>b.left))+Math.max(...bounds.map(b=>b.right)))/2:640+cam;cam=center-640;let zoom=finite(requested,1);for(const b of bounds){if(b.top<floor)zoom=Math.min(zoom,(floor-top)/Math.max(1,floor-b.top));if(b.bottom>floor)zoom=Math.min(zoom,(bottom-floor)/Math.max(1,b.bottom-floor));const span=Math.max(Math.abs(b.left-center),Math.abs(b.right-center));zoom=Math.min(zoom,(640-padding)/Math.max(1,span));}zoom=clamp(zoom,.001,requested);return{cam,zoom,toX:x=>640+(x-center)*zoom,toY:y=>floor+(y-floor)*zoom,worldCenter:center,worldFloor:floor};}
+ const giantArenaCameras=new WeakMap();
+ function camera(s,requested=1,cam=0,options={}){
+  if(extended(s)){
+   const floor=568,top=finite(options.top,112),bottom=finite(options.bottom,696),padding=22,multiplier=finite(options.spriteMultiplier,1.12),area=s.spatialArena;
+   const key=[top,bottom,multiplier].join('/');let views=giantArenaCameras.get(area);if(!views){views=new Map();giantArenaCameras.set(area,views);}
+   let view=views.get(key);
+   if(!view){
+    const center=(area.left+area.right)/2,bounds=[s.a,s.b].map(p=>frameBounds({...p,y:floor},0,multiplier));
+    let zoom=Math.min(1,(1280-padding*2)/Math.max(1,area.right-area.left));
+    for(const b of bounds){if(b.top<floor)zoom=Math.min(zoom,(floor-top)/Math.max(1,floor-b.top));if(b.bottom>floor)zoom=Math.min(zoom,(bottom-floor)/Math.max(1,b.bottom-floor));}
+    view=Object.freeze({cam:center-640,zoom:clamp(zoom,.001,1),worldCenter:center,worldFloor:floor,
+     cameraPolicy:'fixed-giant-arena',worldFrame:Object.freeze({left:area.left,right:area.right,top:Math.min(...bounds.map(b=>b.top)),bottom:Math.max(...bounds.map(b=>b.bottom))})});views.set(key,view);
+   }
+   const center=view.worldCenter,zoom=view.zoom;return{...view,worldFrame:{...view.worldFrame},toX:x=>640+(x-center)*zoom,toY:y=>floor+(y-floor)*zoom};
+  }
+const floor=568,top=finite(options.top,112),bottom=finite(options.bottom,696),padding=22,multiplier=finite(options.spriteMultiplier,1.12),bounds=[s.a,s.b].map(p=>frameBounds(p,s.frame,multiplier)),center=extended(s)?(Math.min(...bounds.map(b=>b.left))+Math.max(...bounds.map(b=>b.right)))/2:640+cam;cam=center-640;let zoom=finite(requested,1);for(const b of bounds){if(b.top<floor)zoom=Math.min(zoom,(floor-top)/Math.max(1,floor-b.top));if(b.bottom>floor)zoom=Math.min(zoom,(bottom-floor)/Math.max(1,b.bottom-floor));const span=Math.max(Math.abs(b.left-center),Math.abs(b.right-center));zoom=Math.min(zoom,(640-padding)/Math.max(1,span));}zoom=clamp(zoom,.001,requested);return{cam,zoom,toX:x=>640+(x-center)*zoom,toY:y=>floor+(y-floor)*zoom,worldCenter:center,worldFloor:floor};}
  function activate(){if(engine?.spatialContract!==engineContract||!rendererReady||!root.CQC_PASS19_WORLD_SCALE)return false;root.CQC_PASS19_SPATIAL_SCALE_READY=true;root.CQC_PASS19_WORLD_SCALE.install();return true;}
  function registerEngine(value){engine=value;activate();return value;}
  function registerRenderer(contract){rendererReady=contract===rendererContract;return activate();}
