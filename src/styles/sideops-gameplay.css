@@ -1,0 +1,41 @@
+.sideops-page.sideops-play-focus { display:flex; flex-direction:column; align-items:stretch; gap:12px; width:100%; }
+.sideops-command-bar { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 16px; border:1px solid #345447; background:#06110e; }
+.sideops-command-bar > div { display:grid; gap:4px; }
+.sideops-command-bar span { font-size:10px; letter-spacing:0.18em; color:#81b99b; }
+.sideops-command-bar strong { color:#e5ecdf; font-size:17px; }
+.sideops-command-bar nav { display:flex; flex-wrap:wrap; gap:6px; }
+.sideops-command-bar button { min-height:36px; padding:7px 12px; border:1px solid #416253; color:#d7e8de; background:#12251d; cursor:pointer; }
+.sideops-command-bar button:focus-visible { outline:2px solid #bcf5a1; outline-offset:2px; }
+.sideops-command-bar button:disabled { opacity:0.4; cursor:default; }
+.sideops-play-focus .sideops-info-panel { display:none; }
+.sideops-play-focus.operations-open .sideops-info-panel { display:block; max-height:65vh; overflow:auto; }
+.sideops-play-focus .mission-select-grid { grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
+.sideops-play-focus .sideops-game-shell { padding:0; width:100%; min-height:0; overflow:hidden; }
+.sideops-play-focus .sideops-react-hud,
+.sideops-play-focus .sideops-stats-strip,
+.sideops-play-focus .alert-log-panel,
+.sideops-play-focus .suspicion-meter,
+.sideops-play-focus .boss-meter { display:none; }
+.sideops-play-focus.tactical-details-open .sideops-react-hud { display:grid; }
+.sideops-play-focus.tactical-details-open .sideops-stats-strip,
+.sideops-play-focus.tactical-details-open .alert-log-panel,
+.sideops-play-focus.tactical-details-open .suspicion-meter,
+.sideops-play-focus.tactical-details-open .boss-meter { display:flex; }
+.sideops-play-focus .game-stage-shell { position:relative; margin:0; background:#020605; }
+.sideops-play-focus #sideops-phaser-root { width:100%; aspect-ratio:16/9; max-height:calc(100dvh - 190px); min-height:270px; display:block; }
+.sideops-play-focus #sideops-phaser-root canvas { max-width:100%; max-height:100%; }
+.sideops-pause-overlay { position:absolute; inset:0; z-index:20; background:#030b08db; backdrop-filter:blur(3px); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; color:#d9f2cf; }
+.sideops-pause-overlay strong { font-size:26px; letter-spacing:0.2em; }
+.sideops-play-focus .sideops-codec-toast,
+.sideops-play-focus .mission-result-toast { z-index:25; right:18px; bottom:18px; max-height:85%; overflow:auto; }
+/* The debrief Codec must remain dismissible above the interactive result card.
+   Keep result buttons enabled; they become reachable after acknowledgement. */
+.sideops-play-focus .sideops-codec-toast { z-index:26; }
+.sideops-play-focus:fullscreen { background:#010504; padding:10px; overflow:auto; }
+.sideops-play-focus:fullscreen #sideops-phaser-root { max-height:calc(100dvh - 100px); }
+@media (max-width:760px) {
+  .sideops-command-bar { align-items:flex-start; flex-direction:column; gap:10px; }
+  .sideops-command-bar nav { width:100%; }
+  .sideops-command-bar button { flex:1 0 auto; }
+  .sideops-play-focus #sideops-phaser-root { min-height:190px; max-height:none; }
+}

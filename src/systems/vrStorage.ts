@@ -1,0 +1,257 @@
+import { loadJson, saveJson } from './saveEngine';
+import type {
+  VrMissionDefinition,
+  VrMissionProgress,
+  VrMissionRecord,
+  VrRank,
+  VrRunEvaluation,
+  VrRunStats
+} from '../types/vr.types';
+
+const DEFAULT_VR_PROGRESS: VrMissionProgress = {
+  records: [],
+  unlockedTapeIds: [],
+  unlockedBadges: []
+};
+
+/** Four retained attempts per one of the 300 canonical MGS1 VR stages. */
+export const MAX_VR_RECORDS = 1200;
+
+const rankOrder: Record<VrRank, number> = {
+  ROOKIE: 0,
+  RAT: 1,
+  HOUND: 2,
+  FOX: 3,
+  FOXHOUND: 4,
+  'BIG BOSS': 5
+};
+
+function isForcedCombatMission(mission: VrMissionDefinition): boolean {
+  return mission.category === 'special_minute_battle'
+    || mission.category === 'special_vs12_battle';
+}
+
+export function loadVrProgress(): VrMissionProgress {
+  const state = loadJson<VrMissionProgress>('vr-mission-progress', DEFAULT_VR_PROGRESS);
+  return {
+    records: Array.isArray(state.records) ? state.records : [],
+    unlockedTapeIds: Array.isArray(state.unlockedTapeIds) ? state.unlockedTapeIds : [],
+    unlockedBadges: Array.isArray(state.unlockedBadges) ? state.unlockedBadges : [],
+    activeMissionId: typeof state.activeMissionId === 'string' ? state.activeMissionId : undefined
+  };
+}
+
+export function saveVrProgress(progress: VrMissionProgress): void {
+  saveJson('vr-mission-progress', progress);
+  saveJson('vr-unlocked-tapes', progress.unlockedTapeIds);
+}
+
+export function loadVrTapeUnlocks(): string[] {
+  const progress = loadVrProgress();
+  const legacy = loadJson<string[]>('vr-unlocked-tapes', []);
+  return Array.from(new Set([...progress.unlockedTapeIds, ...(Array.isArray(legacy) ? legacy : [])]));
+}
+
+export function createEmptyVrStats(): VrRunStats {
+  return {
+    timeSeconds: 0,
+    alerts: 0,
+    shotsFired: 0,
+    hits: 0,
+    kills: 0,
+    neutralizations: 0,
+    damageTaken: 0,
+    rationsUsed: 0,
+    camerasDisabled: 0,
+    objectivesCompleted: 0,
+    secretsFound: 0,
+    bossDefeated: false
+  };
+}
+
+export function isRankAtLeast(rank: VrRank, target: VrRank): boolean {
+  return rankOrder[rank] >= rankOrder[target];
+}
+
+export function getBestVrRecord(progress: VrMissionProgress, missionId: string): VrMissionRecord | undefined {
+  return progress.records
+    .filter((record) => record.missionId === missionId && record.success)
+    .sort((a, b) => b.score - a.score || a.timeSeconds - b.timeSeconds)[0];
+}
+
+export function getVrCompletionStats(progress: VrMissionProgress, missions: VrMissionDefinition[]): {
+  completed: number;
+  total: number;
+  bigBossCount: number;
+  foxOrBetter: number;
+  unlockedTapes: number;
+  badges: number;
+} {
+  const completed = missions.filter((mission) => getBestVrRecord(progress, mission.id)).length;
+  const bestRecords = missions
+    .map((mission) => getBestVrRecord(progress, mission.id))
+    .filter((record): record is VrMissionRecord => Boolean(record));
+  return {
+    completed,
+    total: missions.length,
+    bigBossCount: bestRecords.filter((record) => record.rank === 'BIG BOSS').length,
+    foxOrBetter: bestRecords.filter((record) => isRankAtLeast(record.rank, 'FOX')).length,
+    unlockedTapes: progress.unlockedTapeIds.length,
+    badges: progress.unlockedBadges.length
+  };
+}
+
+export function evaluateVrRun(
+  mission: VrMissionDefinition,
+  stats: VrRunStats,
+  alreadyUnlockedTapeIds: string[] = [],
+  alreadyUnlockedBadges: string[] = []
+): VrRunEvaluation {
+  const failures = getVrFailures(mission, stats);
+  const success = failures.length === 0;
+  const accuracy = stats.shotsFired > 0
+    ? Math.min(100, Math.round((stats.hits / stats.shotsFired) * 100))
+    : 100;
+  const score = calculateVrScore(mission, stats, success, accuracy);
+  const rank = calculateVrRank(score, stats, mission, success);
+  const unlockedTapeIds = success
+    ? mission.rewards
+      .filter((reward) => reward.tapeId && isRankAtLeast(rank, reward.unlockRank) && !alreadyUnlockedTapeIds.includes(reward.tapeId))
+      .map((reward) => reward.tapeId as string)
+    : [];
+  const unlockedBadges = success
+    ? mission.rewards
+      .filter((reward) => isRankAtLeast(rank, reward.unlockRank) && !alreadyUnlockedBadges.includes(reward.badge))
+      .map((reward) => reward.badge)
+    : [];
+
+  return { success, score, rank, accuracy, failures, unlockedTapeIds, unlockedBadges };
+}
+
+/**
+ * A live Phaser scene can fail for reasons that are not expressible as a
+ * numeric mission requirement (death, abort, wrong target, detection, etc.).
+ * Preserve the real run stats while preventing a failed runtime outcome from
+ * being reclassified as a clear by the shared evaluator.
+ */
+export function applyVrRuntimeOutcome(
+  evaluation: VrRunEvaluation,
+  runtimeStatus: 'standby' | 'running' | 'clear' | 'failed' | 'aborted',
+  message: string
+): VrRunEvaluation {
+  if (runtimeStatus === 'clear') return evaluation;
+  const score = Math.min(650, evaluation.score);
+  return {
+    ...evaluation,
+    success: false,
+    score,
+    rank: score >= 620 ? 'RAT' : 'ROOKIE',
+    failures: [message || `Runtime ended with status ${runtimeStatus}`, ...evaluation.failures],
+    unlockedTapeIds: [],
+    unlockedBadges: []
+  };
+}
+
+export function createVrRecord(
+  mission: VrMissionDefinition,
+  stats: VrRunStats,
+  evaluation: VrRunEvaluation
+): VrMissionRecord {
+  return {
+    ...stats,
+    missionId: mission.id,
+    completedAt: new Date().toISOString(),
+    success: evaluation.success,
+    score: evaluation.score,
+    rank: evaluation.rank,
+    accuracy: evaluation.accuracy,
+    unlockedTapeIds: evaluation.unlockedTapeIds
+  };
+}
+
+export function recordVrRun(
+  progress: VrMissionProgress,
+  mission: VrMissionDefinition,
+  record: VrMissionRecord,
+  evaluation: VrRunEvaluation
+): VrMissionProgress {
+  const records = [record, ...progress.records].slice(0, MAX_VR_RECORDS);
+  const unlockedTapeIds = Array.from(new Set([...progress.unlockedTapeIds, ...evaluation.unlockedTapeIds]));
+  const unlockedBadges = Array.from(new Set([...progress.unlockedBadges, ...evaluation.unlockedBadges]));
+  return {
+    ...progress,
+    activeMissionId: mission.id,
+    records,
+    unlockedTapeIds,
+    unlockedBadges
+  };
+}
+
+function getVrFailures(mission: VrMissionDefinition, stats: VrRunStats): string[] {
+  const req = mission.requirements;
+  const failures: string[] = [];
+  if (req.targetTimeSeconds !== undefined && stats.timeSeconds > req.targetTimeSeconds) failures.push(`Time exceeded: ${stats.timeSeconds}s / ${req.targetTimeSeconds}s`);
+  if (req.maxAlerts !== undefined && stats.alerts > req.maxAlerts) failures.push(`Too many alerts: ${stats.alerts} / ${req.maxAlerts}`);
+  if (req.minKills !== undefined && stats.kills < req.minKills) failures.push(`Required eliminations missing: ${stats.kills} / ${req.minKills}`);
+  if (req.maxKills !== undefined && stats.kills > req.maxKills) failures.push(`Kill limit exceeded: ${stats.kills} / ${req.maxKills}`);
+  if (req.maxDamage !== undefined && stats.damageTaken > req.maxDamage) failures.push(`Damage limit exceeded: ${stats.damageTaken} / ${req.maxDamage}`);
+  if (req.maxRations !== undefined && stats.rationsUsed > req.maxRations) failures.push(`Ration limit exceeded: ${stats.rationsUsed} / ${req.maxRations}`);
+  if (req.minNeutralizations !== undefined && stats.neutralizations < req.minNeutralizations) failures.push(`Neutralizations missing: ${stats.neutralizations} / ${req.minNeutralizations}`);
+  if (req.minShotsFired !== undefined && stats.shotsFired < req.minShotsFired) failures.push(`Not enough confirmed weapon actions: ${stats.shotsFired} / ${req.minShotsFired}`);
+  if (req.maxShotsFired !== undefined && stats.shotsFired > req.maxShotsFired) failures.push(`Shot limit exceeded: ${stats.shotsFired} / ${req.maxShotsFired}`);
+  if (req.minCamerasDisabled !== undefined && stats.camerasDisabled < req.minCamerasDisabled) failures.push(`Surveillance disables missing: ${stats.camerasDisabled} / ${req.minCamerasDisabled}`);
+  if (req.minObjectivesCompleted !== undefined && stats.objectivesCompleted < req.minObjectivesCompleted) failures.push(`Objectives missing: ${stats.objectivesCompleted} / ${req.minObjectivesCompleted}`);
+  if (req.bossDefeated && !stats.bossDefeated) failures.push('Boss defeat required');
+  return failures;
+}
+
+function calculateVrScore(mission: VrMissionDefinition, stats: VrRunStats, success: boolean, accuracy: number): number {
+  const req = mission.requirements;
+  const forcedCombat = isForcedCombatMission(mission);
+  let score = success ? 1000 : 650;
+  const targetTime = req.targetTimeSeconds ?? 180;
+  if (stats.timeSeconds > targetTime) score -= (stats.timeSeconds - targetTime) * 3;
+  else score += Math.min(90, (targetTime - stats.timeSeconds) * 0.8);
+  if (!forcedCombat) score -= stats.alerts * 160;
+  // Ordinary stealth missions penalize unnecessary lethal force. The Special
+  // combat formats require an alerted battle and explicit elimination quotas.
+  if (!forcedCombat) {
+    score -= Math.max(0, stats.kills - (req.minKills ?? 0)) * 120;
+  }
+  score -= stats.damageTaken * 2;
+  score -= stats.rationsUsed * 65;
+  // Mixed-arsenal battles routinely need more than the generic 18 actions.
+  // Accuracy remains the discriminator unless the mission sets a real limit.
+  if (!forcedCombat || req.maxShotsFired !== undefined) {
+    score -= Math.max(0, stats.shotsFired - (req.maxShotsFired ?? 18)) * 10;
+  }
+  score -= Math.max(0, (req.minShotsFired ?? 0) - stats.shotsFired) * 20;
+  score += stats.neutralizations * 18;
+  score += stats.camerasDisabled * 24;
+  // Required combat quota progress is the clear condition, not bonus score.
+  // Eliminations above the quota still reward 1 MIN. BATTLE score chasing.
+  const bonusObjectives = forcedCombat
+    ? Math.max(0, stats.objectivesCompleted - (req.minObjectivesCompleted ?? 0))
+    : stats.objectivesCompleted;
+  score += bonusObjectives * 32;
+  score += stats.secretsFound * 45;
+  score += stats.bossDefeated ? 85 : 0;
+  score += Math.max(-80, Math.min(80, accuracy - 65));
+  score -= Math.max(0, mission.difficulty - 1) * 8;
+  return Math.max(0, Math.min(1100, Math.round(score)));
+}
+
+function calculateVrRank(score: number, stats: VrRunStats, mission: VrMissionDefinition, success: boolean): VrRank {
+  if (!success) return score >= 620 ? 'RAT' : 'ROOKIE';
+  const target = mission.requirements.targetTimeSeconds ?? 180;
+  const forcedCombat = isForcedCombatMission(mission);
+  if (score >= 1000
+    && (forcedCombat || (stats.alerts === 0 && stats.kills === 0))
+    && stats.damageTaken === 0
+    && stats.timeSeconds <= target) return 'BIG BOSS';
+  if (score >= 930 && (forcedCombat || stats.alerts === 0)) return 'FOXHOUND';
+  if (score >= 820) return 'FOX';
+  if (score >= 650) return 'HOUND';
+  if (score >= 450) return 'RAT';
+  return 'ROOKIE';
+}

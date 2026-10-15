@@ -1,0 +1,854 @@
+{
+  "schema": "cqc.native-machine-costume-candidate/1",
+  "uid": "completion__dwarf_gekko_mgs4",
+  "option": {
+    "id": "retro-msx",
+    "family": "retro",
+    "label": "Rétro",
+    "provenance": {
+      "kind": "style-reinterpretation",
+      "sourceUID": "completion__dwarf_gekko_mgs4",
+      "originalDesign": true,
+      "canonicalAppearanceAttested": false,
+      "sources": [
+        {
+          "url": "https://www.creativeuncut.com/gallery-06/art/mgs4-dwarf-gecko.jpg",
+          "sha256": "3815bcc63fbcd1c7d857b55e0638635ff823553698ba4e13f9e57107536d8a18",
+          "scope": "Original Konami/Shinkawa MGS4 scarab design rehost; three arm chains, round dark chassis and mechanical hands attested. Costumed spy excluded."
+        }
+      ],
+      "qualification": "New MSX-inspired hand-drawn pixel art, not extracted publisher animation or hardware palette certification. Source gameplay movement/detachment remains an authored simulation adaptation."
+    },
+    "assetReview": {
+      "verified": true,
+      "independentArt": true,
+      "machineAnatomyReviewed": true,
+      "sourceJointGeometryReviewed": true,
+      "reviewer": "pass20_mecha_tripod native mechanical anatomy and bearing source review",
+      "reviewedAt": "2026-10-08T12:34:42.890405+00:00"
+    },
+    "machineParts": {
+      "schema": "cqc.native-machine-costume/1",
+      "sourceUID": "completion__dwarf_gekko_mgs4",
+      "sourceContractSHA256": "24085b924bcf0b42b6c77897d81161a7f6540c52afbfa91e7c26d14677d73548",
+      "pass21Revision": "native-retro-parts-v1",
+      "displayHeight": 133,
+      "anatomy": {
+        "kind": "source-articulated-machine",
+        "limbCount": 3,
+        "pilotCount": 0,
+        "humanBody": false,
+        "identicalSourceSkeleton": true
+      },
+      "cameras": [
+        {
+          "face": 1,
+          "sourceRigID": "dwarf_gekko_mgs4_ps3_2008",
+          "sourceRigDefinitionSHA256": "eb600709f73e03dcb930a74e58d1bf7daeea6d87e66971e9000147ba7f657341",
+          "sources": [
+            {
+              "id": "native",
+              "file": "assets/combat-costumes-pass21/completion__dwarf_gekko_mgs4/retro-parts/right-v1.png",
+              "sha256": "d540e77866f8209fdc1cae88ee11faa8b2a56b83ce819e2c16ffac23cd671d24",
+              "width": 1440,
+              "height": 1092,
+              "bytes": 629981
+            }
+          ],
+          "bindings": [
+            {
+              "partID": "sphere",
+              "source": "native",
+              "rect": [
+                173,
+                25,
+                281,
+                267
+              ],
+              "pivot": [
+                140.5,
+                133.5
+              ],
+              "imageScale": 0.3807829181494662,
+              "textureRotation": 0,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-inspected-round-bearing-centres-in-original-native-PNG",
+                "nativeProximalXY": [
+                  313.5,
+                  158.5
+                ],
+                "nativeDistalOrPalmXY": null,
+                "targetChildSocketLocalCanvasXY": null,
+                "sourceNativeSHA256": "d540e77866f8209fdc1cae88ee11faa8b2a56b83ce819e2c16ffac23cd671d24",
+                "partPNGPixelEdits": false,
+                "rigJointOffsetsChanged": false,
+                "qualification": "Mechanical bearing centre may lie in transparent socket hole; no opaque-projectile-pixel claim. Hand endpoint is a reviewed palm direction, not a new bone."
+              }
+            },
+            {
+              "partID": "lens",
+              "source": "native",
+              "rect": [
+                686,
+                126,
+                94,
+                92
+              ],
+              "pivot": [
+                47,
+                46
+              ],
+              "imageScale": 0.30851063829787234,
+              "textureRotation": 0,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-inspected-round-bearing-centres-in-original-native-PNG",
+                "nativeProximalXY": [
+                  733,
+                  172
+                ],
+                "nativeDistalOrPalmXY": null,
+                "targetChildSocketLocalCanvasXY": null,
+                "sourceNativeSHA256": "d540e77866f8209fdc1cae88ee11faa8b2a56b83ce819e2c16ffac23cd671d24",
+                "partPNGPixelEdits": false,
+                "rigJointOffsetsChanged": false,
+                "qualification": "Mechanical bearing centre may lie in transparent socket hole; no opaque-projectile-pixel claim. Hand endpoint is a reviewed palm direction, not a new bone."
+              }
+            },
+            {
+              "partID": "arm0_upper",
+              "source": "native",
+              "rect": [
+                998,
+                30,
+                300,
+                263
+              ],
+              "pivot": [
+                31,
+                53
+              ],
+              "imageScale": 0.2500428586146683,
+              "textureRotation": -11.827688057469228,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-inspected-round-bearing-centres-in-original-native-PNG",
+                "nativeProximalXY": [
+                  1029,
+                  83
+                ],
+                "nativeDistalOrPalmXY": [
+                  1260,
+                  256
+                ],
+                "targetChildSocketLocalCanvasXY": [
+                  65.4,
+                  30.5
+                ],
+                "sourceNativeSHA256": "d540e77866f8209fdc1cae88ee11faa8b2a56b83ce819e2c16ffac23cd671d24",
+                "partPNGPixelEdits": false,
+                "rigJointOffsetsChanged": false,
+                "qualification": "Mechanical bearing centre may lie in transparent socket hole; no opaque-projectile-pixel claim. Hand endpoint is a reviewed palm direction, not a new bone."
+              }
+            },
+            {
+              "partID": "arm0_forearm",
+              "source": "native",
+              "rect": [
+                144,
+                328,
+                293,
+                213
+              ],
+              "pivot": [
+                26,
+                44
+              ],
+              "imageScale": 0.26450025924082265,
+              "textureRotation": 1.985871355677588,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-inspected-round-bearing-centres-in-original-native-PNG",
+                "nativeProximalXY": [
+                  170,
+                  372
+                ],
+                "nativeDistalOrPalmXY": [
+                  403,
+                  502
+                ],
+                "targetChildSocketLocalCanvasXY": [
+                  60.4,
+                  36.5
+                ],
+                "sourceNativeSHA256": "d540e77866f8209fdc1cae88ee11faa8b2a56b83ce819e2c16ffac23cd671d24",
+                "partPNGPixelEdits": false,
+                "rigJointOffsetsChanged": false,
+                "qualification": "Mechanical bearing centre may lie in transparent socket hole; no opaque-projectile-pixel claim. Hand endpoint is a reviewed palm direction, not a new bone."
+              }
+            },
+            {
+              "partID": "arm0_hand",
+              "source": "native",
+              "rect": [
+                568,
+                308,
+                268,
+                228
+              ],
+              "pivot": [
+                236,
+                191
+              ],
+              "imageScale": 0.22388059701492538,
+              "textureRotation": -11.789210579250467,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-inspected-round-bearing-centres-in-original-native-PNG",
+                "nativeProximalXY": [
+                  804,
+                  499
+                ],
+                "nativeDistalOrPalmXY": [
+                  725,
+                  446
+                ],
+                "targetChildSocketLocalCanvasXY": [
+                  -24.04332129963899,
+                  -9.747292418772563
+                ],
+                "sourceNativeSHA256": "d540e77866f8209fdc1cae88ee11faa8b2a56b83ce819e2c16ffac23cd671d24",
+                "partPNGPixelEdits": false,
+                "rigJointOffsetsChanged": false,
+                "qualification": "Mechanical bearing centre may lie in transparent socket hole; no opaque-projectile-pixel claim. Hand endpoint is a reviewed palm direction, not a new bone."
+              }
+            },
+            {
+              "partID": "arm1_upper",
+              "source": "native",
+              "rect": [
+                1007,
+                307,
+                312,
+                239
+              ],
+              "pivot": [
+                27,
+                56
+              ],
+              "imageScale": 0.2687639229762495,
+              "textureRotation": 4.89622614595584,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-inspected-round-bearing-centres-in-original-native-PNG",
+                "nativeProximalXY": [
+                  1034,
+                  363
+                ],
+                "nativeDistalOrPalmXY": [
+                  1287,
+                  509
+                ],
+                "targetChildSocketLocalCanvasXY": [
+                  64.4,
+                  44.9
+                ],
+                "sourceNativeSHA256": "d540e77866f8209fdc1cae88ee11faa8b2a56b83ce819e2c16ffac23cd671d24",
+                "partPNGPixelEdits": false,
+                "rigJointOffsetsChanged": false,
+                "qualification": "Mechanical bearing centre may lie in transparent socket hole; no opaque-projectile-pixel claim. Hand endpoint is a reviewed palm direction, not a new bone."
+              }
+            },
+            {
+              "partID": "arm1_forearm",
+              "source": "native",
+              "rect": [
+                150,
+                574,
+                287,
+                227
+              ],
+              "pivot": [
+                27,
+                49
+              ],
+              "imageScale": 0.2738495753552358,
+              "textureRotation": 5.597074943863242,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-inspected-round-bearing-centres-in-original-native-PNG",
+                "nativeProximalXY": [
+                  177,
+                  623
+                ],
+                "nativeDistalOrPalmXY": [
+                  406,
+                  762
+                ],
+                "targetChildSocketLocalCanvasXY": [
+                  58.7,
+                  44
+                ],
+                "sourceNativeSHA256": "d540e77866f8209fdc1cae88ee11faa8b2a56b83ce819e2c16ffac23cd671d24",
+                "partPNGPixelEdits": false,
+                "rigJointOffsetsChanged": false,
+                "qualification": "Mechanical bearing centre may lie in transparent socket hole; no opaque-projectile-pixel claim. Hand endpoint is a reviewed palm direction, not a new bone."
+              }
+            },
+            {
+              "partID": "arm1_hand",
+              "source": "native",
+              "rect": [
+                576,
+                569,
+                254,
+                226
+              ],
+              "pivot": [
+                223,
+                191
+              ],
+              "imageScale": 0.23622047244094488,
+              "textureRotation": -18.056567180672765,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-inspected-round-bearing-centres-in-original-native-PNG",
+                "nativeProximalXY": [
+                  799,
+                  760
+                ],
+                "nativeDistalOrPalmXY": [
+                  724,
+                  700
+                ],
+                "targetChildSocketLocalCanvasXY": [
+                  -27.804878048780488,
+                  -10.452961672473867
+                ],
+                "sourceNativeSHA256": "d540e77866f8209fdc1cae88ee11faa8b2a56b83ce819e2c16ffac23cd671d24",
+                "partPNGPixelEdits": false,
+                "rigJointOffsetsChanged": false,
+                "qualification": "Mechanical bearing centre may lie in transparent socket hole; no opaque-projectile-pixel claim. Hand endpoint is a reviewed palm direction, not a new bone."
+              }
+            },
+            {
+              "partID": "arm2_upper",
+              "source": "native",
+              "rect": [
+                1032,
+                564,
+                247,
+                246
+              ],
+              "pivot": [
+                31,
+                57
+              ],
+              "imageScale": 0.3388013104132869,
+              "textureRotation": -7.614751603126006,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-inspected-round-bearing-centres-in-original-native-PNG",
+                "nativeProximalXY": [
+                  1063,
+                  621
+                ],
+                "nativeDistalOrPalmXY": [
+                  1242,
+                  770
+                ],
+                "targetChildSocketLocalCanvasXY": [
+                  66.8,
+                  42
+                ],
+                "sourceNativeSHA256": "d540e77866f8209fdc1cae88ee11faa8b2a56b83ce819e2c16ffac23cd671d24",
+                "partPNGPixelEdits": false,
+                "rigJointOffsetsChanged": false,
+                "qualification": "Mechanical bearing centre may lie in transparent socket hole; no opaque-projectile-pixel claim. Hand endpoint is a reviewed palm direction, not a new bone."
+              }
+            },
+            {
+              "partID": "arm2_forearm",
+              "source": "native",
+              "rect": [
+                173,
+                816,
+                251,
+                244
+              ],
+              "pivot": [
+                21,
+                38
+              ],
+              "imageScale": 0.27640195683974544,
+              "textureRotation": -6.6703596981502375,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-inspected-round-bearing-centres-in-original-native-PNG",
+                "nativeProximalXY": [
+                  194,
+                  854
+                ],
+                "nativeDistalOrPalmXY": [
+                  394,
+                  1022
+                ],
+                "targetChildSocketLocalCanvasXY": [
+                  60.3,
+                  39.7
+                ],
+                "sourceNativeSHA256": "d540e77866f8209fdc1cae88ee11faa8b2a56b83ce819e2c16ffac23cd671d24",
+                "partPNGPixelEdits": false,
+                "rigJointOffsetsChanged": false,
+                "qualification": "Mechanical bearing centre may lie in transparent socket hole; no opaque-projectile-pixel claim. Hand endpoint is a reviewed palm direction, not a new bone."
+              }
+            },
+            {
+              "partID": "arm2_hand",
+              "source": "native",
+              "rect": [
+                576,
+                833,
+                266,
+                218
+              ],
+              "pivot": [
+                231,
+                176
+              ],
+              "imageScale": 0.22556390977443608,
+              "textureRotation": -10.482180377699981,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-inspected-round-bearing-centres-in-original-native-PNG",
+                "nativeProximalXY": [
+                  807,
+                  1009
+                ],
+                "nativeDistalOrPalmXY": [
+                  725,
+                  959
+                ],
+                "targetChildSocketLocalCanvasXY": [
+                  -27.482517482517483,
+                  -10.48951048951049
+                ],
+                "sourceNativeSHA256": "d540e77866f8209fdc1cae88ee11faa8b2a56b83ce819e2c16ffac23cd671d24",
+                "partPNGPixelEdits": false,
+                "rigJointOffsetsChanged": false,
+                "qualification": "Mechanical bearing centre may lie in transparent socket hole; no opaque-projectile-pixel claim. Hand endpoint is a reviewed palm direction, not a new bone."
+              }
+            }
+          ]
+        },
+        {
+          "face": -1,
+          "sourceRigID": "dwarf_gekko_mgs4_ps3_2008",
+          "sourceRigDefinitionSHA256": "eb600709f73e03dcb930a74e58d1bf7daeea6d87e66971e9000147ba7f657341",
+          "sources": [
+            {
+              "id": "native",
+              "file": "assets/combat-costumes-pass21/completion__dwarf_gekko_mgs4/retro-parts/left-v1.png",
+              "sha256": "babd69ce8a83a2606cbe698840be32c33b24efd126f34c9be37dedfd860930c6",
+              "width": 1086,
+              "height": 1448,
+              "bytes": 694671
+            }
+          ],
+          "bindings": [
+            {
+              "partID": "sphere",
+              "source": "native",
+              "rect": [
+                57,
+                73,
+                298,
+                263
+              ],
+              "pivot": [
+                149,
+                131.5
+              ],
+              "imageScale": 0.35906040268456374,
+              "textureRotation": 0,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-inspected-round-bearing-centres-in-original-native-PNG",
+                "nativeProximalXY": [
+                  206,
+                  204.5
+                ],
+                "nativeDistalOrPalmXY": null,
+                "targetChildSocketLocalCanvasXY": null,
+                "sourceNativeSHA256": "babd69ce8a83a2606cbe698840be32c33b24efd126f34c9be37dedfd860930c6",
+                "partPNGPixelEdits": false,
+                "rigJointOffsetsChanged": false,
+                "qualification": "Mechanical bearing centre may lie in transparent socket hole; no opaque-projectile-pixel claim. Hand endpoint is a reviewed palm direction, not a new bone."
+              }
+            },
+            {
+              "partID": "lens",
+              "source": "native",
+              "rect": [
+                489,
+                173,
+                91,
+                98
+              ],
+              "pivot": [
+                45.5,
+                49
+              ],
+              "imageScale": 0.31868131868131866,
+              "textureRotation": 0,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-inspected-round-bearing-centres-in-original-native-PNG",
+                "nativeProximalXY": [
+                  534.5,
+                  222
+                ],
+                "nativeDistalOrPalmXY": null,
+                "targetChildSocketLocalCanvasXY": null,
+                "sourceNativeSHA256": "babd69ce8a83a2606cbe698840be32c33b24efd126f34c9be37dedfd860930c6",
+                "partPNGPixelEdits": false,
+                "rigJointOffsetsChanged": false,
+                "qualification": "Mechanical bearing centre may lie in transparent socket hole; no opaque-projectile-pixel claim. Hand endpoint is a reviewed palm direction, not a new bone."
+              }
+            },
+            {
+              "partID": "arm0_upper",
+              "source": "native",
+              "rect": [
+                760,
+                68,
+                271,
+                282
+              ],
+              "pivot": [
+                27,
+                61
+              ],
+              "imageScale": 0.2596777501583,
+              "textureRotation": -15.911879640202645,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-inspected-round-bearing-centres-in-original-native-PNG",
+                "nativeProximalXY": [
+                  787,
+                  129
+                ],
+                "nativeDistalOrPalmXY": [
+                  997,
+                  311
+                ],
+                "targetChildSocketLocalCanvasXY": [
+                  65.4,
+                  30.5
+                ],
+                "sourceNativeSHA256": "babd69ce8a83a2606cbe698840be32c33b24efd126f34c9be37dedfd860930c6",
+                "partPNGPixelEdits": false,
+                "rigJointOffsetsChanged": false,
+                "qualification": "Mechanical bearing centre may lie in transparent socket hole; no opaque-projectile-pixel claim. Hand endpoint is a reviewed palm direction, not a new bone."
+              }
+            },
+            {
+              "partID": "arm0_forearm",
+              "source": "native",
+              "rect": [
+                74,
+                417,
+                263,
+                271
+              ],
+              "pivot": [
+                26,
+                58
+              ],
+              "imageScale": 0.2623422657178073,
+              "textureRotation": -8.878972532905175,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-inspected-round-bearing-centres-in-original-native-PNG",
+                "nativeProximalXY": [
+                  100,
+                  475
+                ],
+                "nativeDistalOrPalmXY": [
+                  306,
+                  648
+                ],
+                "targetChildSocketLocalCanvasXY": [
+                  60.4,
+                  36.5
+                ],
+                "sourceNativeSHA256": "babd69ce8a83a2606cbe698840be32c33b24efd126f34c9be37dedfd860930c6",
+                "partPNGPixelEdits": false,
+                "rigJointOffsetsChanged": false,
+                "qualification": "Mechanical bearing centre may lie in transparent socket hole; no opaque-projectile-pixel claim. Hand endpoint is a reviewed palm direction, not a new bone."
+              }
+            },
+            {
+              "partID": "arm0_hand",
+              "source": "native",
+              "rect": [
+                399,
+                433,
+                255,
+                252
+              ],
+              "pivot": [
+                221,
+                212
+              ],
+              "imageScale": 0.23529411764705882,
+              "textureRotation": -21.060355472301016,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-inspected-round-bearing-centres-in-original-native-PNG",
+                "nativeProximalXY": [
+                  620,
+                  645
+                ],
+                "nativeDistalOrPalmXY": [
+                  541,
+                  571
+                ],
+                "targetChildSocketLocalCanvasXY": [
+                  -24.04332129963899,
+                  -9.747292418772563
+                ],
+                "sourceNativeSHA256": "babd69ce8a83a2606cbe698840be32c33b24efd126f34c9be37dedfd860930c6",
+                "partPNGPixelEdits": false,
+                "rigJointOffsetsChanged": false,
+                "qualification": "Mechanical bearing centre may lie in transparent socket hole; no opaque-projectile-pixel claim. Hand endpoint is a reviewed palm direction, not a new bone."
+              }
+            },
+            {
+              "partID": "arm1_upper",
+              "source": "native",
+              "rect": [
+                738,
+                412,
+                288,
+                280
+              ],
+              "pivot": [
+                27,
+                65
+              ],
+              "imageScale": 0.2768233917903715,
+              "textureRotation": -1.9450914409471747,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-inspected-round-bearing-centres-in-original-native-PNG",
+                "nativeProximalXY": [
+                  765,
+                  477
+                ],
+                "nativeDistalOrPalmXY": [
+                  992,
+                  647
+                ],
+                "targetChildSocketLocalCanvasXY": [
+                  64.4,
+                  44.9
+                ],
+                "sourceNativeSHA256": "babd69ce8a83a2606cbe698840be32c33b24efd126f34c9be37dedfd860930c6",
+                "partPNGPixelEdits": false,
+                "rigJointOffsetsChanged": false,
+                "qualification": "Mechanical bearing centre may lie in transparent socket hole; no opaque-projectile-pixel claim. Hand endpoint is a reviewed palm direction, not a new bone."
+              }
+            },
+            {
+              "partID": "arm1_forearm",
+              "source": "native",
+              "rect": [
+                77,
+                761,
+                259,
+                290
+              ],
+              "pivot": [
+                26,
+                56
+              ],
+              "imageScale": 0.26650299725263865,
+              "textureRotation": -5.937468025834552,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-inspected-round-bearing-centres-in-original-native-PNG",
+                "nativeProximalXY": [
+                  103,
+                  817
+                ],
+                "nativeDistalOrPalmXY": [
+                  305,
+                  1004
+                ],
+                "targetChildSocketLocalCanvasXY": [
+                  58.7,
+                  44
+                ],
+                "sourceNativeSHA256": "babd69ce8a83a2606cbe698840be32c33b24efd126f34c9be37dedfd860930c6",
+                "partPNGPixelEdits": false,
+                "rigJointOffsetsChanged": false,
+                "qualification": "Mechanical bearing centre may lie in transparent socket hole; no opaque-projectile-pixel claim. Hand endpoint is a reviewed palm direction, not a new bone."
+              }
+            },
+            {
+              "partID": "arm1_hand",
+              "source": "native",
+              "rect": [
+                401,
+                788,
+                255,
+                265
+              ],
+              "pivot": [
+                222,
+                220
+              ],
+              "imageScale": 0.23529411764705882,
+              "textureRotation": -16.04240809120299,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-inspected-round-bearing-centres-in-original-native-PNG",
+                "nativeProximalXY": [
+                  623,
+                  1008
+                ],
+                "nativeDistalOrPalmXY": [
+                  541,
+                  947
+                ],
+                "targetChildSocketLocalCanvasXY": [
+                  -27.804878048780488,
+                  -10.452961672473867
+                ],
+                "sourceNativeSHA256": "babd69ce8a83a2606cbe698840be32c33b24efd126f34c9be37dedfd860930c6",
+                "partPNGPixelEdits": false,
+                "rigJointOffsetsChanged": false,
+                "qualification": "Mechanical bearing centre may lie in transparent socket hole; no opaque-projectile-pixel claim. Hand endpoint is a reviewed palm direction, not a new bone."
+              }
+            },
+            {
+              "partID": "arm2_upper",
+              "source": "native",
+              "rect": [
+                747,
+                744,
+                289,
+                311
+              ],
+              "pivot": [
+                28,
+                66
+              ],
+              "imageScale": 0.25967758009596587,
+              "textureRotation": -9.505536071432607,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-inspected-round-bearing-centres-in-original-native-PNG",
+                "nativeProximalXY": [
+                  775,
+                  810
+                ],
+                "nativeDistalOrPalmXY": [
+                  1002,
+                  1012
+                ],
+                "targetChildSocketLocalCanvasXY": [
+                  66.8,
+                  42
+                ],
+                "sourceNativeSHA256": "babd69ce8a83a2606cbe698840be32c33b24efd126f34c9be37dedfd860930c6",
+                "partPNGPixelEdits": false,
+                "rigJointOffsetsChanged": false,
+                "qualification": "Mechanical bearing centre may lie in transparent socket hole; no opaque-projectile-pixel claim. Hand endpoint is a reviewed palm direction, not a new bone."
+              }
+            },
+            {
+              "partID": "arm2_forearm",
+              "source": "native",
+              "rect": [
+                75,
+                1093,
+                245,
+                287
+              ],
+              "pivot": [
+                23,
+                56
+              ],
+              "imageScale": 0.2617804754539203,
+              "textureRotation": -12.227728842500508,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-inspected-round-bearing-centres-in-original-native-PNG",
+                "nativeProximalXY": [
+                  98,
+                  1149
+                ],
+                "nativeDistalOrPalmXY": [
+                  291,
+                  1346
+                ],
+                "targetChildSocketLocalCanvasXY": [
+                  60.3,
+                  39.7
+                ],
+                "sourceNativeSHA256": "babd69ce8a83a2606cbe698840be32c33b24efd126f34c9be37dedfd860930c6",
+                "partPNGPixelEdits": false,
+                "rigJointOffsetsChanged": false,
+                "qualification": "Mechanical bearing centre may lie in transparent socket hole; no opaque-projectile-pixel claim. Hand endpoint is a reviewed palm direction, not a new bone."
+              }
+            },
+            {
+              "partID": "arm2_hand",
+              "source": "native",
+              "rect": [
+                400,
+                1124,
+                250,
+                248
+              ],
+              "pivot": [
+                214,
+                205
+              ],
+              "imageScale": 0.24,
+              "textureRotation": -25.441395091461164,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-inspected-round-bearing-centres-in-original-native-PNG",
+                "nativeProximalXY": [
+                  614,
+                  1329
+                ],
+                "nativeDistalOrPalmXY": [
+                  530,
+                  1241
+                ],
+                "targetChildSocketLocalCanvasXY": [
+                  -27.482517482517483,
+                  -10.48951048951049
+                ],
+                "sourceNativeSHA256": "babd69ce8a83a2606cbe698840be32c33b24efd126f34c9be37dedfd860930c6",
+                "partPNGPixelEdits": false,
+                "rigJointOffsetsChanged": false,
+                "qualification": "Mechanical bearing centre may lie in transparent socket hole; no opaque-projectile-pixel claim. Hand endpoint is a reviewed palm direction, not a new bone."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "publicWardrobeRegistered": false,
+  "actualRigRuntimeQA": false,
+  "physicalPartCount": 22,
+  "physicalBodyPoseCount": 0,
+  "PNGPixelEdits": false
+}
