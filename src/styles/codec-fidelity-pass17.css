@@ -1,0 +1,262 @@
+/* Source geometry: Konami MC1 MG2/MGS1/MGS2/MGS3 manuals; original PS3 MGS4 manual;
+   final MGSV PC cassette capture. Source editions and remaining limits in PASS17 audit. */
+.codec-operation-setup { margin-bottom: 12px; border-bottom: 1px solid var(--line); }
+.codec-operation-setup > summary,
+.codec-extension-tools > summary { cursor: pointer; padding: 11px 12px; font-size: 13px; }
+.codec-operation-setup > .codec-topbar { margin: 12px 0; }
+.codec-fidelity-stage { border-radius: 0; padding: 0; background: #000; overflow: hidden; }
+.codec-fidelity-stage button,
+.codec-fidelity-stage input { border-radius: 0; }
+.codec-fidelity-stage .codec-portrait { width: 100%; height: 100%; min-height: 0; border-radius: 0; border: 0; background: transparent; box-shadow: none; overflow: hidden; }
+.codec-fidelity-stage .codec-portrait::before,
+.codec-fidelity-stage .codec-portrait::after { display: none; }
+.codec-fidelity-stage .codec-portrait-avatar { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; border: 0; border-radius: 0; background: transparent; animation: none; box-shadow: none; }
+.codec-fidelity-stage .codec-portrait-avatar img { width: 100%; height: 100%; border-radius: 0; object-fit: cover; image-rendering: auto; }
+.codec-fidelity-stage .codec-portrait > .portrait-label,
+.codec-fidelity-stage .codec-portrait > strong,
+.codec-fidelity-stage .codec-portrait > .portrait-runtime-state { display: none; }
+.codec-fidelity-stage .portrait-scan { opacity: .13; }
+.codec-fidelity-stage .codec-portrait.is-speaking { box-shadow: none; }
+.codec-fidelity-stage .visual-dialogue-box { min-height: 0; padding: 0; margin: 0; border: 0; border-radius: 0; color: #e1e1de; background: transparent; font-size: inherit; line-height: 1.38; text-shadow: none; }
+.codec-fidelity-stage .visual-dialogue-box p { margin: 0 0 12px; }
+.codec-fidelity-stage .visual-dialogue-box .dialogue-speaker,
+.codec-fidelity-stage .visual-dialogue-box .subtitle-meta { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.codec-fidelity-stage .subtitle-track { margin: 0; padding: 0; border: 0; box-shadow: none; background: transparent; }
+.codec-fidelity-stage .subtitle-track p { font-size: inherit; line-height: inherit; }
+.codec-fidelity-stage .dialogue-actions { justify-content: flex-end; gap: 8px; margin-top: 12px; }
+.codec-fidelity-stage .dialogue-actions button { min-height: 36px; padding: 5px 10px; font-size: 11px; color: #c5cebf; background: transparent; border-color: currentColor; }
+.codec-extension-tools { padding: 0 12px 8px; border-top: 1px solid #334238; color: #bacbb9; background: #0b100d; }
+.codec-extension-tools[open] { padding-bottom: 14px; }
+.codec-extension-tools .visual-topic-selector { text-align: left; }
+.codec-extension-tools .visual-utility-actions { justify-content: flex-start; gap: 8px; }
+.codec-extension-tools .codec-personnel-files { display: grid; grid-template-columns: repeat(2, minmax(0, 150px)); gap: 12px; padding: 12px 0; }
+.codec-extension-tools .codec-personnel-files .codec-portrait { height: 185px; border: 1px solid #4e5e52; }
+.codec-extension-tools .codec-personnel-files .codec-portrait > strong { display: block; z-index: 1; align-self: end; width: 100%; padding: 6px; font-size: 11px; color: #eee; background: #000a; }
+
+/* PS1: isolated phosphor windows, central PTT and unboxed white dialogue. */
+.codec-fidelity-stage.layout-mgs1 { --primary: #95d4aa; --primary-soft: #aadbbb; --line: #173428; --line-strong: #548e72; --shadow-glow: none; background: #000; }
+.original-classic-screen { container-type: inline-size; width: 100%; min-height: 420px; padding: 8% 8% 5%; background: #000; }
+.original-classic-row { display: grid; grid-template-columns: 22% 48% 22%; gap: 4%; align-items: center; aspect-ratio: 3.1; }
+.original-classic-portrait { height: 100%; min-width: 0; border: 1px solid #315949; box-shadow: 0 0 5px #5ba57670; background: #001609; }
+.codec-fidelity-stage.layout-mgs1 .original-classic-portrait img { filter: grayscale(1) sepia(.55) hue-rotate(84deg) saturate(1.7) contrast(1.15); }
+.original-classic-receiver { container-type: inline-size; position: relative; height: 87%; min-width: 0; border-top: 1px solid #15372a; border-bottom: 1px solid #15372a; color: #83bda0; }
+.codec-fidelity-stage .original-ptt-button { position: absolute; top: 0; left: 20%; width: 60%; min-height: 0; padding: 0; border: 0; background: #153729; color: #629476; font-size: clamp(13px, 8cqw, 25px); line-height: 1.08; letter-spacing: .22em; font-weight: 900; }
+.original-receiver-display { position: absolute; inset: 19% 11% 20%; border: 2px solid #1d4834; border-bottom: 3px solid #1d4834; }
+.original-ptt-meter { width: 100%; height: 100%; fill: #c5eed2; }
+.original-ptt-meter text { font: 9px ui-monospace, monospace; }
+.codec-fidelity-stage .original-receiver-display .visual-frequency-display { position: absolute; inset: auto 0 11% auto; width: 79%; height: 35%; padding: 0; border: 0; color: #b8e7c7 !important; background: transparent; font: 900 clamp(19px, 12cqw, 47px)/1 ui-monospace, monospace; letter-spacing: -.075em; text-align: right; text-shadow: 0 0 3px #9dd2b890; }
+.codec-fidelity-stage .original-tune-left,
+.codec-fidelity-stage .original-tune-right { position: absolute; top: 42%; width: 12%; min-height: 32px; padding: 0; border: 0; color: #668e76; background: #13281e; }
+.original-tune-left { left: -4%; }
+.original-tune-right { right: -4%; }
+.original-receiver-bottom { position: absolute; bottom: 0; left: 0; right: 0; display: flex; justify-content: space-between; gap: 4px; border-top: 1px solid #254e3c; font: 900 clamp(10px, 5.5cqw, 19px)/1 ui-monospace, monospace; }
+.codec-fidelity-stage .original-receiver-bottom button { min-height: 30px; margin: auto; padding: 2px 5px; border: 0; color: #729f85; background: transparent; font: inherit; }
+.original-receiver-bottom > span { align-self: center; color: #47715e; white-space: nowrap; }
+.original-classic-transcript { min-height: 150px; margin: 7% 4% 0; padding: 0 13%; font-size: clamp(18px, 3cqw, 27px); }
+
+/* MGS2: the same known contact/player ordering, wider digital receiver outline. */
+.codec-fidelity-stage.layout-mgs2 { --primary: #7ebfa9; --primary-soft: #a2cdbd; --line: #204c43; --line-strong: #588d7c; --shadow-glow: none; background: #061719; }
+.layout-mgs2 .original-classic-screen { min-height: 390px; padding: 6% 7% 5%; background: radial-gradient(ellipse at 50% 50%, #0c2827, #061517 80%); }
+.layout-mgs2 .original-classic-row { grid-template-columns: 22% 48% 22%; aspect-ratio: 3.65; border-top: 1px solid #528c7b; border-bottom: 1px solid #528c7b; }
+.layout-mgs2 .original-classic-portrait { height: 122%; border: 1px solid #1a4239; box-shadow: none; }
+.codec-fidelity-stage.layout-mgs2 .original-classic-portrait img { filter: grayscale(1) sepia(.48) hue-rotate(92deg) saturate(.9) contrast(1.05); }
+.layout-mgs2 .original-classic-receiver { height: 100%; border: 1px solid #477465; }
+.layout-mgs2 .original-ptt-button { top: 1%; left: 4%; width: auto; color: #60917f; background: transparent; }
+.layout-mgs2 .original-receiver-display { inset: 14% 4% 16%; border: 0; }
+.layout-mgs2 .original-ptt-meter { fill: #74afa0; }
+.codec-fidelity-stage.layout-mgs2 .visual-frequency-display { font-weight: 500; color: #7cbcaf !important; letter-spacing: .015em; text-shadow: none; }
+.layout-mgs2 .original-tune-left,
+.layout-mgs2 .original-tune-right { top: auto; bottom: 0; width: 12%; min-height: 30px; background: transparent; z-index: 2; }
+.layout-mgs2 .original-tune-left { left: 45%; }
+.layout-mgs2 .original-tune-right { right: 0; }
+.layout-mgs2 .original-receiver-bottom { padding-right: 8%; }
+.layout-mgs2 .original-receiver-bottom button { margin-left: 2%; }
+.layout-mgs2 .original-classic-transcript { margin: 9% 0 0; padding: 4% 16%; min-height: 155px; border: 1px solid #31584d; background: #0005; }
+
+/* Official MC1 MG1 radio has one small player face to its right, no contact face.
+   MG2 has two faces surrounding a vertical handset; these are separate compositions. */
+.codec-fidelity-stage.layout-msx { --primary: #5acf83; --primary-soft: #c5e6ca; --line: #27543b; --line-strong: #3ea468; --shadow-glow: none; border: 0; background: #000; }
+.original-msx-screen { container-type: inline-size; padding: 5%; min-height: 410px; background: #000; font-family: ui-monospace, monospace; }
+.original-msx-radio-row { display: flex; justify-content: center; align-items: center; gap: 7%; min-height: 210px; padding-top: 18px; }
+.original-msx-transceiver { position: relative; width: 31%; max-width: 260px; min-width: 128px; padding: 9px; border: 4px ridge #858585; background: linear-gradient(90deg, #252a24, #8e9188 10%, #41463f 90%, #121512); }
+.original-msx-antenna { position: absolute; top: -45px; left: 13%; width: 12px; height: 45px; border: 3px ridge #a6aba3; background: #535952; }
+.original-msx-speaker { height: 14px; margin-bottom: 7px; border: 2px solid #31392c; background: repeating-linear-gradient(0deg, #0a100a 0 2px, #697260 2px 4px); }
+.original-msx-lcd { padding: 3px; border: 3px inset #343e2e; color: #002512; background: #268c49; }
+.original-msx-lcd > span { display: block; text-align: right; font-size: clamp(10px, 2cqw, 17px); }
+.codec-fidelity-stage .original-msx-lcd .visual-frequency-display { height: auto; width: 100%; padding: 0; border: 0; color: #042811 !important; background: transparent; font: 900 clamp(22px, 5.7cqw, 54px)/1.2 ui-monospace, monospace; letter-spacing: -.08em; text-shadow: none; }
+.original-msx-tuning { display: flex; gap: 3px; margin-top: 6px; }
+.codec-fidelity-stage .original-msx-tuning button { flex: 1; min-height: 32px; padding: 2px; border: 2px outset #7f827a; color: #d7dfd2; background: #20241e; font-size: 10px; }
+.codec-fidelity-stage .msx-mg2-keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; width: 100%; padding: 5px 0 0; }
+.codec-fidelity-stage .msx-mg2-keypad span { min-width: 0; padding: 1px; border: 2px ridge #aaa; text-align: center; color: #deded7; background: #5b5b58; font-size: 13px; }
+.original-msx-portrait { width: 19%; aspect-ratio: 2/3; max-height: 185px; border: 2px solid #145b36; image-rendering: pixelated; }
+.codec-fidelity-stage.layout-msx .original-msx-portrait img { image-rendering: pixelated; filter: none; }
+.original-msx-transcript { min-height: 155px; margin-top: 4%; padding: 12px; border: 2px solid #759986; font-size: clamp(17px, 3.5cqw, 25px); }
+.msx-variant-mg1 .original-msx-screen { padding: 5% 4%; border: 3px solid #175798; }
+.msx-mg1-heading { text-align: center; color: #ddd; font: 900 clamp(16px, 3cqw, 23px)/1.2 ui-monospace, monospace; }
+.msx-variant-mg1 .original-msx-radio-row { min-height: 170px; gap: 3%; padding-top: 15px; }
+.msx-variant-mg1 .original-msx-transceiver { width: 52%; max-width: 350px; min-width: 200px; padding: 0; aspect-ratio: 2.15; border: 5px ridge #606b65; border-bottom: 9px ridge #606b65; background: #183a04; }
+.msx-mg1-level { position: absolute; top: 8%; left: 9%; width: 36%; height: 21%; display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: repeat(2, 1fr); gap: 3px; padding: 2px; border: 1px solid #aaa; background: #180600; }
+.msx-mg1-level > span { border-right: 1px solid #d1d1d1; background: #df0a03; }
+.msx-variant-mg1 .original-msx-lcd { position: absolute; top: 7%; right: 12%; width: 40%; height: 34%; padding: 0 2px; border: 2px solid #98ab8f; background: #090909; }
+.msx-variant-mg1 .original-msx-lcd > .original-frequency-input { height: 100%; color: #ff0e00; }
+.codec-fidelity-stage.msx-variant-mg1 .original-msx-lcd .original-frequency-input input:focus { color: #ff0e00 !important; }
+.codec-fidelity-stage .msx-mg1-recv { position: absolute; bottom: 21%; left: 4%; min-height: 27px; padding: 0 4px; border: 0; color: #dedede; background: #070d06; font: 900 clamp(14px, 3cqw, 22px)/1 ui-monospace, monospace; }
+.msx-variant-mg1 .original-msx-tuning { position: absolute; bottom: 2%; left: 28%; right: 4%; align-items: flex-end; gap: 8%; margin: 0; }
+.codec-fidelity-stage.msx-variant-mg1 .original-msx-tuning > button { padding: 0; min-height: 28px; flex: 1; border: 2px ridge #999; color: #db0b05; background: #202818; }
+.codec-fidelity-stage.msx-variant-mg1 .original-msx-tuning > button:nth-child(2) { flex: 0 0 28%; aspect-ratio: 1; min-height: 0; border: 3px solid #4c565f; border-radius: 50%; background: #36384c; color: #dbddd0; font-size: 9px; }
+.msx-mg1-player { width: 11%; aspect-ratio: 54/57; max-height: 78px; }
+.msx-variant-mg1 .original-msx-transcript { width: 78%; margin: 4% auto 0; padding: 12px; border: 2px solid #b9bfb8; color: #ddd; background: #000; font-family: ui-sans-serif, sans-serif; }
+.codec-fidelity-stage.msx-variant-mg2 { background: #000; }
+.msx-variant-mg2 .original-msx-transcript { background: #06349e; border-color: #d6dfdb; }
+
+/* Snake Eater's flat overlay: one small photograph, full-width receiver line. */
+.codec-fidelity-stage.layout-mgs3 { --primary: #c8cab7; --primary-soft: #dfded0; --line: #535648; --line-strong: #8b9173; --shadow-glow: none; padding: 0; background: #181b14; box-shadow: none; }
+.original-mgs3-overlay { container-type: inline-size; position: relative; padding: 6% 0 7%; min-height: 390px; background: repeating-linear-gradient(90deg, #35392716 0 5%, transparent 5% 15%), linear-gradient(#242719bd, #181c16); }
+.original-mgs3-contact { width: 12%; min-width: 68px; margin: 0 0 0 12%; aspect-ratio: 3/4; position: relative; border: 1px solid #8a8d74; }
+.codec-fidelity-stage.layout-mgs3 .codec-portrait-avatar img { filter: grayscale(1) sepia(.15) contrast(.95); }
+.original-photo-page { display: block; position: absolute; bottom: -20px; width: 100%; text-align: center; color: #b6b6a0; font: 700 clamp(9px, 1.6cqw, 14px)/1 ui-monospace, monospace; white-space: nowrap; }
+.original-mgs3-band { position: relative; height: 27px; margin-top: 27px; border-top: 1px solid #656a52; border-bottom: 1px solid #656a52; background: #080b08c7; }
+.original-mgs3-meter { position: absolute; inset: 5px 12%; background: repeating-linear-gradient(0deg, #686e4c 0 2px, transparent 2px 5px); clip-path: polygon(0 65%, 35% 35%, 48% 35%, 48% 0, 100% 0, 100% 100%, 0 100%); }
+.codec-fidelity-stage .original-mgs3-band .visual-frequency-display { position: absolute; inset: 0 39%; width: 22%; height: 100%; padding: 0; border: 0; color: #d8d9c6 !important; background: #15190e; text-shadow: none; font: 900 clamp(18px, 3.3cqw, 27px)/1 ui-monospace, monospace; letter-spacing: -.05em; }
+.original-mgs3-controls { display: grid; grid-template-columns: repeat(3, 1fr); align-items: center; padding: 0 15%; background: #080b088c; color: #777d61; font: 900 clamp(10px, 1.9cqw, 16px)/1 ui-monospace, monospace; }
+.codec-fidelity-stage .original-mgs3-controls button { min-height: 32px; padding: 2px; border: 0; color: #939981; background: transparent; font: inherit; }
+.original-mgs3-controls > span { display: flex; align-items: center; justify-content: center; }
+.original-mgs3-transcript { padding: 3% 23% 0; min-height: 140px; font-size: clamp(18px, 2.9cqw, 27px); }
+
+/* MGS4: final PS3 manual codec overlay, contact window LEFT and transparent receiver to its right.
+   The source validates the idle frame; this still feed does not reproduce the original 3D video. */
+.codec-fidelity-stage.layout-mgs4 { padding: 0; background: #15190f; --primary: #cfd5ac; --primary-soft: #d9ddc0; --line: #6b7050; --shadow-glow: none; }
+.original-mgs4-link { container-type: inline-size; display: block; min-height: 390px; padding: 4% 5% 6%; color: #cfd5ac; background: repeating-linear-gradient(90deg, #9eab6010 0 1px, transparent 1px 18%), linear-gradient(120deg, #313b2866, #12180ed9); }
+.original-mgs4-link > header { padding-bottom: 10px; font: 700 clamp(16px, 2.5cqw, 25px)/1.1 ui-sans-serif, sans-serif; letter-spacing: -.03em; }
+.original-mgs4-receiver-frame { display: grid; grid-template-columns: 24% minmax(0, 1fr); gap: 3%; min-height: 215px; padding: 8px 10px; border: 1px solid #7b835b99; border-bottom: 2px solid #838d6199; }
+.original-mgs4-contact-feed { display: grid; grid-template-rows: 1fr auto auto; align-self: start; gap: 4px; min-width: 0; font-size: 11px; }
+.original-mgs4-contact-feed > strong { margin-top: 7px; color: #d6dabb; font-weight: 500; text-transform: uppercase; }
+.original-mgs4-contact-feed > span { color: #d6dabb; font-family: ui-monospace, monospace; }
+.original-mgs4-video { width: 100%; aspect-ratio: 4/5; min-height: 0; border: 1px solid #7c85565c; background: #16211433; }
+.codec-fidelity-stage.layout-mgs4 .original-mgs4-video img { filter: none; object-fit: contain; }
+.original-mgs4-reception { position: relative; min-height: 200px; border-right: 3px double #9d9d5e77; border-left: 1px solid #84955a55; background: repeating-linear-gradient(0deg, #8c9a4822 0 1px, transparent 1px 20%); }
+.original-mgs4-channel-lines { position: absolute; inset: 0 5%; border-left: 1px solid #9ca35355; border-right: 1px solid #9ca35355; }
+.original-mgs4-reception .codec-waveform { height: 45px; position: absolute; inset: 42% 6% auto; opacity: .55; }
+.codec-fidelity-stage .original-mgs4-reception .codec-waveform span { background: #cfd5ac; box-shadow: none; }
+.original-mgs4-controls { display: flex; justify-content: flex-end; gap: 18px; padding-top: 8px; }
+.codec-fidelity-stage .original-mgs4-controls > button { min-height: 32px; padding: 4px 8px; border: 0; color: #d6dabb; background: transparent; font-size: 11px; }
+.original-mgs4-transcript { min-height: 100px; padding: 5% 12% 0; font-size: clamp(18px, 2.6cqw, 24px); }
+.original-modern-transport { display: grid; gap: 8px; }
+.codec-fidelity-stage .original-modern-transport > button { min-height: 36px; padding: 8px 12px; color: inherit; background: #ffffff12; border: 1px solid #8b8f7a; }
+.original-modern-transport .codec-waveform { height: 45px; }
+.codec-fidelity-stage .original-modern-transport .codec-waveform span { box-shadow: none; background: currentColor; }
+/* Official Peace Walker guide, page28: real BRIEFING FILES list and photo card, not WALKMAN. */
+.codec-fidelity-stage.layout-peace-walker { padding: 0; --primary: #e9e9de; --line: #78796e; --primary-soft: #fff; --shadow-glow: none; background: #464f43; color: #f1f1e6; }
+.original-pw-files { container-type: inline-size; min-height: 390px; padding: 4% 3%; background: repeating-linear-gradient(168deg, transparent 0 18%, #d6dbb72c 18.1% 18.5%, transparent 18.6% 23%), repeating-linear-gradient(12deg, transparent 0 29%, #d6dbb725 29.1% 29.4%, transparent 29.5% 36%), linear-gradient(115deg, #697362bd, #394c39); }
+.original-pw-heading { display: block; padding: 0 0 5%; color: #f0f0e8; background: transparent; font: 900 clamp(16px, 2.4cqw, 24px)/1.1 ui-sans-serif, sans-serif; letter-spacing: -.04em; text-shadow: 1px 1px #3b4538; }
+.original-pw-file-grid { display: grid; grid-template-columns: 70% 27%; gap: 3%; min-height: 210px; align-items: start; }
+.original-pw-index { display: grid; align-content: start; min-width: 0; }
+.original-pw-mission { padding: 4px 6px; color: #344031; background: #daddcf; font-size: clamp(11px, 1.7cqw, 17px); }
+.codec-fidelity-stage .original-pw-index button { display: flex; align-items: center; gap: 7px; min-height: 30px; padding: 5px 6px; border: 0; border-bottom: 1px solid #a5b49c42; text-align: left; color: #edf0df; background: #33492b4d; font-size: clamp(12px, 1.6cqw, 16px); }
+.original-pw-index button > span { min-width: 18px; font-family: ui-monospace, monospace; font-size: 10px; }
+.codec-fidelity-stage .original-pw-index button.selected-briefing { background: #c41917; color: #fff; }
+.original-pw-photo { width: 100%; aspect-ratio: 3/5; border: 8px solid #bfc9c1; border-radius: 7px; background: #b1c5dc; box-shadow: 1px 2px 4px #17271877; transform: rotate(-1deg); overflow: hidden; }
+.original-pw-photo .codec-portrait-avatar { position: absolute; inset: 0; }
+.original-pw-controls { display: flex; justify-content: flex-end; gap: 12px; padding-top: 9px; }
+.codec-fidelity-stage .original-pw-controls > button { min-height: 32px; padding: 4px 8px; border: 0; color: #eee; background: transparent; font-size: 11px; }
+.original-pw-transcript { min-height: 120px; padding: 5% 8% 0; font-size: clamp(17px, 2.7cqw, 24px); }
+@media (max-width: 700px) {
+  .original-classic-screen { min-height: 285px; padding: 12% 6% 5%; }
+  .original-classic-row { aspect-ratio: 2.8; }
+  .original-classic-transcript { margin-top: 12%; padding: 0 8%; min-height: 130px; }
+  .layout-mgs2 .original-classic-screen { min-height: 285px; padding: 12% 6% 5%; }
+  .layout-mgs2 .original-classic-transcript { padding: 4% 8%; }
+  .original-receiver-bottom > span { display: none; }
+  .original-msx-screen { min-height: 340px; padding: 6%; }
+  .original-msx-radio-row { gap: 5%; padding-top: 30px; }
+  .original-msx-transceiver { width: 38%; min-width: 108px; padding: 5px; }
+  .original-msx-portrait { width: 22%; }
+  .original-mgs3-overlay { min-height: 300px; padding-top: 7%; }
+  .original-mgs3-contact { margin-left: 9%; }
+  .original-mgs3-transcript { padding: 6% 13% 0; }
+  .original-mgs3-controls { padding: 0 9%; }
+  .original-mgs4-link { min-height: 330px; }
+  .original-mgs4-receiver-frame { grid-template-columns: 28% minmax(0, 1fr); min-height: 170px; }
+  .original-mgs4-reception { min-height: 160px; }
+  .original-mgs4-transcript { padding: 6% 5% 0; }
+  .original-pw-files,
+  .original-idroid-display { min-height: 340px; }
+  .original-pw-file-grid { grid-template-columns: 70% 27%; gap: 3%; }
+  .original-pw-photo { border-width: 4px; }
+  .original-idroid-library { padding-left: 0; }
+  .original-idroid-subtitles { padding: 5% 8% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .codec-fidelity-stage,
+  .codec-fidelity-stage * { animation: none !important; transition: none !important; }
+}
+
+.codec-stream-overlay .codec-operation-setup,
+.codec-stream-overlay .codec-extension-tools { display: none !important; }
+
+.codec-fidelity-stage .codec-portrait.is-speaking { box-shadow: none !important; }
+.layout-mgs1 .original-classic-portrait { width: 86%; justify-self: center; }
+
+.canonical-codec-portrait { position: relative; width: 100%; height: 100%; overflow: hidden; }
+.codec-fidelity-stage .canonical-codec-portrait img { position: absolute; max-width: none; max-height: none; object-fit: fill; filter: none !important; image-rendering: pixelated; }
+.layout-mgs1 .original-classic-portrait.player-feed { width: 80%; }
+.layout-mgs2 .original-classic-portrait { height: 119%; }
+.original-mgs3-contact { aspect-ratio: 67/97; }
+
+/* Editable frequencies retain native keyboard input beneath a seven-segment readout. */
+.original-frequency-input { position: relative; display: block; width: 100%; height: 100%; }
+.original-frequency-digits { position: absolute; inset: 0; width: 100%; height: 100%; fill: currentColor; pointer-events: none; }
+.codec-fidelity-stage .original-frequency-input .visual-frequency-display { position: absolute; inset: 0; width: 100%; height: 100%; color: transparent !important; caret-color: #d9e8d9; text-shadow: none; }
+.original-frequency-input:focus-within .original-frequency-digits { visibility: hidden; }
+.codec-fidelity-stage .original-frequency-input .visual-frequency-display:focus { color: #d9e8d9 !important; outline: 1px solid currentColor; }
+.original-receiver-display > .original-frequency-input { position: absolute; right: 0; bottom: 10%; width: 79%; height: 35%; color: #b8e7c7; }
+.layout-mgs2 .original-receiver-display > .original-frequency-input { color: #7cbcaf; }
+.original-msx-lcd > .original-frequency-input { height: 50px; color: #042811; }
+.codec-fidelity-stage .original-msx-lcd .original-frequency-input input:focus { color: #042811 !important; }
+.original-mgs3-band > .original-frequency-input { position: absolute; inset: 0 39%; width: 22%; height: 100%; color: #d8d9c6; background: #15190e; }
+
+/* Final-game PC cassette overlay: raw Steam capture, guide 2697520982, inspected. */
+.codec-fidelity-stage.layout-mgsv { padding: 0; background: #0b3440; --shadow-glow: none; color: #b8d4df; --primary: #b8d4df; --primary-soft: #d1e8ef; --line: #346573; }
+.original-idroid-display { container-type: inline-size; min-height: 440px; padding: 4% 5%; color: #b8d4df; background: radial-gradient(circle at 34% 34%, transparent 0 12%, #67a7b316 12.1% 12.4%, transparent 12.5% 17%, #67a7b318 17.1% 17.4%, transparent 17.5%), radial-gradient(circle at 85% 73%, transparent 0 14%, #67a7b314 14.1% 14.4%, transparent 14.5% 22%, #67a7b318 22.1% 22.4%, transparent 22.5%), radial-gradient(#75b5bc25 .8px, transparent 1px), linear-gradient(#0d3d4ddb, #0b3440e8); background-size: auto, auto, 8px 8px, auto; }
+.original-idroid-cassettes { display: grid; grid-template-columns: 48% 52%; min-height: 350px; gap: 7%; width: 93%; }
+.original-idroid-library { display: flex; flex-direction: column; min-width: 0; padding: 12% 0 0; border: 0; gap: 0; }
+.original-idroid-library > header { display: grid; gap: 4px; padding: 0 7px 12%; }
+.original-idroid-library > header strong { font-size: clamp(18px, 3cqw, 28px); font-weight: 400; }
+.original-idroid-library > header span { font-size: 13px; text-transform: none; letter-spacing: 0; }
+.original-idroid-cassettes h2 { margin: 8px 0 3px; padding: 0; color: #c0d8df; font-size: clamp(15px, 2.2cqw, 23px); line-height: 1.2; font-weight: 400; }
+.codec-fidelity-stage .original-idroid-library > button { margin: 0; min-height: 34px; padding: 5px 7px; border: 0; border-bottom: 1px solid #56849145; background: transparent; color: #bfdae5; }
+.codec-fidelity-stage .original-idroid-library > .original-tape-folder { background: #c2e9f32b; }
+.original-idroid-library > small { margin-top: auto; padding-top: 20px; color: #94bcc4; font-size: 11px; }
+.original-idroid-selected { min-width: 0; }
+.original-selected-tape-heading { display: flex; justify-content: space-between; gap: 12px; align-items: center; font-size: 11px; color: #b8d4df; }
+.original-selected-tape-heading > span:last-child { font-size: 10px; }
+.original-selected-tape-name { min-height: 24px; padding: 3px 8px; margin-top: 4px; color: #083a45; background: #b5eeff; }
+.original-cassette-level { display: flex; gap: 8px; align-items: center; margin-top: 25px; color: #c8e9f3; }
+.original-cassette-level > div { flex: 1; height: 8px; border-radius: 0; background: #b7e5f12b; }
+.original-tape-counter { font-family: ui-monospace, monospace; font-size: 12px; white-space: nowrap; }
+.original-cassette-buttons { display: flex; justify-content: flex-end; gap: 5%; padding: 14px 0 16px; }
+.codec-fidelity-stage .original-cassette-buttons > button { min-width: 26px; min-height: 32px; padding: 0; border: 0; background: transparent; color: #b9dcea; font-size: 20px; }
+.codec-fidelity-stage .original-cassette-buttons > button:disabled { opacity: .4; }
+.codec-fidelity-stage .original-idroid-current-track { display: block; width: 100%; padding: 8px 9px; margin-top: 4px; border: 0; color: #d3e8ef; background: #bee9f333; text-align: left; }
+.original-idroid-subtitles { min-height: 130px; padding: 18px 2px 0; }
+.original-idroid-subtitles .visual-dialogue-box { font-size: clamp(16px, 2.2cqw, 22px); }
+@media (max-width: 700px) {
+  .original-idroid-display { min-height: 400px; padding: 5% 4%; }
+  .original-idroid-cassettes { grid-template-columns: 40% 60%; gap: 4%; width: 96%; }
+  .original-idroid-library > header { padding-bottom: 30px; }
+  .original-idroid-library > header strong { font-size: 15px; }
+  .original-idroid-library > header span { font-size: 10px; }
+  .original-selected-tape-heading { font-size: 9px; }
+  .original-selected-tape-heading > span:last-child { display: none; }
+  .original-cassette-level { gap: 3px; }
+  .original-tape-counter { font-size: 9px; }
+  .original-cassette-buttons { gap: 4%; }
+  .codec-fidelity-stage .original-cassette-buttons > button { min-width: 24px; font-size: 16px; }
+}
+
+@media (max-width: 700px) {
+  .msx-variant-mg1 .original-msx-transceiver { min-width: 170px; width: 60%; }
+  .msx-mg1-player { width: 13%; }
+  .msx-variant-mg1 .original-msx-transcript { width: 90%; }
+}
