@@ -1,0 +1,68 @@
+{
+  "schema": "cqc.pass39.left-low-repair-candidate/1",
+  "costume": "white-armor",
+  "uid": "core__raiden",
+  "incarnation": "MGR post-prologue Custom Cyborg Body, story year 2018; original release 2013",
+  "source_path": "/tmp/cqc-pass39-art/white-armor/left-low-repair-v1.png",
+  "automatic_output_path": "/workspace/generated_images/exec-5230ac12-ca28-436e-b54f-d2f062c45a52.png",
+  "sha256": "2e81c8a2976c3bfc6af2e4ad26d2f1dd099f58d832ebebbe78dbd85879c70d32",
+  "bytes": 513559,
+  "size": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "imagegen_output_copied_without_raster_processing": true,
+  "reference": "/tmp/cqc-pass39-canonical/refs/white-armor-konami.jpg",
+  "reference_manifest": "/tmp/cqc-pass39-canonical/refs/OFFICIAL_REFERENCES.json",
+  "measurement_threshold": "alpha > 16; 4-connected major components >=1000px",
+  "major_components": [
+    {
+      "label": 1,
+      "pixels": 82021,
+      "bbox_xyxy_exclusive": [
+        16,
+        149,
+        487,
+        623
+      ],
+      "role": "left-neutral-standing-calibration",
+      "standing_body_height_px": 474
+    },
+    {
+      "label": 3,
+      "pixels": 74083,
+      "bbox_xyxy_exclusive": [
+        621,
+        398,
+        1226,
+        649
+      ],
+      "role": "left-low-melee-active",
+      "low_silhouette_height_px": 251,
+      "height_fraction_of_neutral": 0.5295358649789029
+    }
+  ],
+  "bbox_horizontal_clearance_px": 134,
+  "minimum_outer_major_padding_px": 16,
+  "edge_pixels_alpha_gt16": {
+    "left": 0,
+    "right": 0,
+    "top": 0,
+    "bottom": 0
+  },
+  "visually_reviewed": true,
+  "visual_result": [
+    "Two complete figures: neutral left, real feet-first low slide toward screen left on right.",
+    "Extended attacking boot and HF blade point left, head remains on right looking left; supporting arm braces beside low hips.",
+    "No high kick, no utility can, no added body appendage or extra weapon.",
+    "Outfit colors and plate distribution follow the native candidate and supplied small official reference."
+  ],
+  "limitations": [
+    "64px requested outer padding was not achieved, but no alpha >16 touches canvas edges and both figures are distinct.",
+    "The layout is a two-figure support page with empty lower space, not an extraction grid; use measured individual rectangles.",
+    "The low pose is a new CQC authored gameplay keypose for the existing low-melee action, not an original MGR animation frame or a newly canonical move.",
+    "Small official reference does not establish absolute 1:1 microdetails or hidden rear geometry."
+  ],
+  "integration": "Use the neutral standing height as this page sourceFrameHeight for BOTH neutral and low rectangles, with the existing common displayHeight; never normalize the low pose to standing by its own crop height. Existing low melee command and all combat values remain unchanged."
+}
