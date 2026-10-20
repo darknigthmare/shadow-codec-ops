@@ -69,6 +69,22 @@
  function contains(box,x,y,margin=0){return box&&x>=box.left-margin&&x<=box.right+margin&&y>=box.top-margin&&y<=box.bottom+margin;}
  function overlaps(a,b){return a&&b&&a.left<=b.right&&a.right>=b.left&&a.top<=b.bottom&&a.bottom>=b.top;}
  function segmentBox(box,ax,ay,bx,by,margin=0){if(!box)return false;let lo=0,hi=1;for(const [a,d,min,max]of[[ax,bx-ax,box.left-margin,box.right+margin],[ay,by-ay,box.top-margin,box.bottom+margin]]){if(Math.abs(d)<1e-9){if(a<min||a>max)return false;}else{const t0=(min-a)/d,t1=(max-a)/d;lo=Math.max(lo,Math.min(t0,t1));hi=Math.min(hi,Math.max(t0,t1));if(lo>hi)return false;}}return true;}
+ // Retain the owner's minimum flight; only a forward bore ray intersecting
+ // the box captured at emission can extend it. No later target following.
+ function retainFlightToBox(q,box,margin=0,decrementedBeforeEmission=false){
+  if(!box||![q.x,q.y,q.vx,q.vy,q.life,box.left,box.right,box.top,box.bottom,margin].every(Number.isFinite)||q.life<0||box.left>box.right||box.top>box.bottom||Math.hypot(q.vx,q.vy)<1e-9)return null;
+  let enter=0,exit=Infinity;
+  for(const [origin,speed,min,max]of[[q.x,q.vx,box.left-margin,box.right+margin],[q.y,q.vy,box.top-margin,box.bottom+margin]]){
+   if(Math.abs(speed)<1e-9){if(origin<min||origin>max)return null;}
+   else{const a=(min-origin)/speed,b=(max-origin)/speed;enter=Math.max(enter,Math.min(a,b));exit=Math.min(exit,Math.max(a,b));if(enter>exit)return null;}
+  }
+  const entrySteps=Math.max(1,Math.ceil(enter));if(!Number.isSafeInteger(entrySteps))return null;
+  const remainingBefore=q.life;
+  // Enemy life was decremented before emission: its current movement is still
+  // tested for collision at life zero. Player life is decremented afterwards.
+  q.life=Math.max(remainingBefore,entrySteps-(decrementedBeforeEmission?1:0));
+  return{targetBox:{left:box.left,right:box.right,top:box.top,bottom:box.bottom},margin,entrySteps,remainingBefore,remainingAtEmission:q.life,decrementedBeforeEmission};
+ }
  function playerBox(p){return{left:p.x-35,right:p.x+35,top:p.y+humanCalibration.top,bottom:p.y-4};}
  // This is the retained procedural Snake TTS pistol, not extracted canonical art.
  // Its visible V1 receiver is [0,-9,48,18], with grip [7,8,15,24].
@@ -91,7 +107,9 @@
   c.save();c.translate(aim.origin.x,aim.origin.y);c.rotate(aim.angle);c.rotate(.14);c.translate(-35,118);hooks.weaponV(c,v,{attack:false});c.restore();
   for(const [hand,radius]of[[aim.supportGrip,8],[aim.grip,8]]){c.fillStyle=hooks.tone(color,-.52);c.strokeStyle='#07100c';c.lineWidth=2;c.beginPath();c.arc(hand.x,hand.y,radius,0,Math.PI*2);c.fill();c.stroke();}return true;
  }
- function launchPlayerShot(g,q){const meta=q.playerNative35;if(!meta||meta.emitted)return;meta.emittedAt=g.enemy.archiveNative35.frame;const aim=playerAim(g,{shot:meta,lock:false});if(!aim)return;meta.angle=aim.angle;meta.emitted=true;meta.emission={frame:aim.frame,x:aim.muzzle.x,y:aim.muzzle.y,base:{...aim.base},tip:{...aim.muzzle},axis:{...aim.axis},target:aim.target,aligned:aim.targetAligned,reason:aim.reason,source:aim.source};q.x=aim.muzzle.x;q.y=aim.muzzle.y;q.vx=aim.axis.x*playerFirearm.speed;q.vy=aim.axis.y*playerFirearm.speed;
+ function launchPlayerShot(g,q,boxes){const meta=q.playerNative35;if(!meta||meta.emitted)return;meta.emittedAt=g.enemy.archiveNative35.frame;const aim=playerAim(g,{shot:meta,lock:false});if(!aim)return;meta.angle=aim.angle;meta.emitted=true;meta.emission={frame:aim.frame,x:aim.muzzle.x,y:aim.muzzle.y,base:{...aim.base},tip:{...aim.muzzle},axis:{...aim.axis},target:aim.target,aligned:aim.targetAligned,reason:aim.reason,source:aim.source};q.x=aim.muzzle.x;q.y=aim.muzzle.y;q.vx=aim.axis.x*playerFirearm.speed;q.vy=aim.axis.y*playerFirearm.speed;
+  const target=aim.targetAligned&&boxes.find(t=>t.alphaMeasured&&t.rigID===aim.target.rigID&&t.unit===aim.target.unit&&t.part===aim.target.part&&contains(t.box,aim.target.x,aim.target.y));
+  if(target)meta.flightBudget=retainFlightToBox(q,target.box,4);
  }
  function pattern(g,legacy){if(!owns(g))return legacy(g);if(g.paused||g.ended)return;const e=g.enemy,n=e.archiveNative35,p=profile(g.boss),start=e.projectiles.length;legacy(g);const added=e.projectiles.slice(start);if(!added.length)return;
   const first=added[0],warn=first.kind==='zone'?first.life-first.armed:0;
@@ -109,7 +127,7 @@
   const muzzle=weapon(v,q.native35.sourceIndex);if(!muzzle||muzzle.tip.x>=muzzle.base.x)return false;
   const dx=muzzle.tip.x-muzzle.base.x,dy=muzzle.tip.y-muzzle.base.y,len=Math.hypot(dx,dy);if(len<1e-6)return false;
   q.x=muzzle.x;q.y=muzzle.y;q.vx=dx/len*q.native35.speed;q.vy=dy/len*q.native35.speed;q.native35.emitted=true;
-  q.native35.emission={frame:g.enemy.archiveNative35.frame,x:q.x,y:q.y,base:{...muzzle.base},tip:{...muzzle.tip},part:muzzle.part,basis:v.basis.slice(),axisAligned:true};return true;
+  q.native35.emission={frame:g.enemy.archiveNative35.frame,x:q.x,y:q.y,base:{...muzzle.base},tip:{...muzzle.tip},part:muzzle.part,basis:v.basis.slice(),axisAligned:true};q.native35.flightBudget=retainFlightToBox(q,playerBox(g.player),0,true);return true;
  }
  function playerAttack(g,special,hooks){if(g.paused||g.ended)return;const p=g.player,e=g.enemy;if(p.attack>0||p.reloadT>0)return;if(special&&p.ammo<=0){hooks.showToast('MUNITIONS VIDES · BAS + I POUR RECHARGER');return;}
   p.attack=special?28:18;const damage=(special?850:380)*(p.supportPower>0?1.25:1);if(special)p.ammo--;
@@ -118,7 +136,7 @@
   if(hit){e.life-=damage;g.score+=damage;hooks.spawn(g,hit.x,hit.y,'#ffd17b',12);}
  }
  function updateProjectiles(g,hooks){if(g.paused||g.ended)return;const p=g.player,e=g.enemy,n=e.archiveNative35,boxes=hitBoxes(g);
-  for(let i=g.particles.length-1;i>=0;i--){const q=g.particles[i];if(!q.shot)continue;if(q.delay>0){q.delay--;if(q.playerNative35){const aim=playerAim(g,{shot:q.playerNative35});q.x=aim.muzzle.x;q.y=aim.muzzle.y;}continue;}if(q.playerNative35&&!q.playerNative35.emitted)launchPlayerShot(g,q);const oldX=q.x,oldY=q.y;q.x+=q.vx;q.y+=q.vy;q.life--;
+  for(let i=g.particles.length-1;i>=0;i--){const q=g.particles[i];if(!q.shot)continue;if(q.delay>0){q.delay--;if(q.playerNative35){const aim=playerAim(g,{shot:q.playerNative35});q.x=aim.muzzle.x;q.y=aim.muzzle.y;}continue;}if(q.playerNative35&&!q.playerNative35.emitted)launchPlayerShot(g,q,boxes);const oldX=q.x,oldY=q.y;q.x+=q.vx;q.y+=q.vy;q.life--;
    const hit=boxes.find(t=>segmentBox(t.box,oldX,oldY,q.x,q.y,4));if(hit){e.life-=q.damage;g.score+=q.damage;hooks.spawn(g,q.x,q.y,'#ffd17b',14);g.particles.splice(i,1);}else if(q.life<=0||q.x>(n.scene?.right??1300)+20||q.x<(n.scene?.left??0)-20)g.particles.splice(i,1);
   }
   const pbox=playerBox(p);
@@ -140,7 +158,8 @@
  function update(g,hooks){if(!owns(g)||g.ended||g.paused)return;tick(g);g.timer=Math.max(0,g.timer-1);
   const p=g.player,e=g.enemy,b=g.boss,scene=e.archiveNative35.scene;p.flash=Math.max(0,p.flash-1);
   // Retain the owner movement norms, gravity, jump, attack/reload timings and
-  // projectile lifetime budgets in world units. Camera zoom never changes them.
+  // minimum projectile lifetimes in world units. Only a captured box on the
+  // emitted bore ray can extend flight. Camera zoom never changes these norms.
   const dir=(hooks.inputDown('ArrowLeft')?-1:0)+(hooks.inputDown('ArrowRight')?1:0);p.vx=dir*5;
   if(hooks.pressed('ArrowUp')&&p.onGround){p.vy=-14;p.onGround=false;}p.guard=hooks.inputDown('KeyL');
   if(p.reloadT>0){p.reloadT--;if(p.reloadT===0){p.ammo=12;hooks.showToast('MUNITIONS PRÊTES');}}
