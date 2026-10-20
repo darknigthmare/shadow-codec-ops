@@ -1,0 +1,227 @@
+{
+  "schema": "cqc.pass39.missing-machine-plan/1",
+  "status": "readonly-audit-complete-no-admission",
+  "checkedUTC": "2026-10-20T09:23:36.843566+00:00",
+  "baselineCommit": "c1e70b9293a0c6b0d65a9d93bdbac5212a16f66d",
+  "catalogEvidence": "CATALOG_READONLY_ACTUAL.json",
+  "current": {
+    "globalRigs": 64,
+    "globalParts": 841,
+    "arsenalMappings": 33,
+    "playableUIDMappings": 23,
+    "archiveBossEntries": 38,
+    "archiveGenericNativeEncounters": 7,
+    "archivePrivateREXRayDuel": 1,
+    "otherArchiveLegacyOrNonNativeEncounters": 30,
+    "qualification": "The30 remaining Archive consumers include creatures, structures, VR and authored mission adaptations; not30 missing canonical Metal Gear machines."
+  },
+  "nextConcreteFour": [
+    {
+      "uid": "tts_rex",
+      "name": "Metal Gear REX — The Twin Snakes",
+      "incarnation": "GameCube 2004",
+      "priority": "main-machine; existing Archive encounter",
+      "source": "No dedicated rig or native sprite registration found in src. Archive encounter and TTS campaign route already exist.",
+      "art": "Need original TTS screenshots and independently drawn native views; no PS1/MGS4 substitution.",
+      "rig": "Absent; add own hull, open/closed cockpit, radome, weapon mounts and fixed-length leg chains from confirmed visible joints.",
+      "actions": "Reference-led idle/step/railgun/missile and radome-to-cockpit original phases; existing CQC timings remain qualified adaptations.",
+      "modes": "Archive tts_rex first, then explicitly registered Arsenal/Versus if intended.",
+      "measures": "Official TTS model dimensions not established here. Do not inherit PS1 13m without an incarnation-specific record.",
+      "sourcePaths": [
+        "modules/archive-front-v040.html",
+        "src/cqc-machine-parts-catalog-v1.js"
+      ],
+      "readiness": "source acquisition + new art + new rig required"
+    },
+    {
+      "uid": "delta_shagohod",
+      "name": "Shagohod — Metal Gear Solid Delta",
+      "incarnation": "Delta 2025",
+      "priority": "main-machine; existing Archive encounter",
+      "source": "Encounter/campaign exists; no dedicated Delta rig or native sprite registration found in src.",
+      "art": "Acquire Delta released-game views; original MGS3 atlases and generated hover skirt cannot be renamed as Delta.",
+      "rig": "Absent; separate front augers, rear hover module, turret and measured socket/occlusion chains.",
+      "actions": "Compare original Delta support/charge/weapon phases before authored 2.5D projection. No imaginary tread/leg articulation.",
+      "modes": "Archive delta_shagohod first; original MGS3 Arsenal remains separate.",
+      "measures": "Unknown official Delta dimensions in current evidence. Preserve current display estimate as qualified until measured.",
+      "sourcePaths": [
+        "modules/archive-front-v040.html",
+        "src/cqc-pass16-machine-catalog.js",
+        "src/cqc-pass28-shagohod-native-rear.js"
+      ],
+      "readiness": "source acquisition + new art + new rig required"
+    },
+    {
+      "uid": "pass19__fenrir_mgr",
+      "name": "LQ-84 Fenrir",
+      "incarnation": "MGR released 2013 mass-produced LQ-84; distinct from LQ-84i Blade Wolf",
+      "priority": "reserved secondary machine identity",
+      "source": "awaiting-original-reference-and-native-art-review",
+      "art": "No named native asset found. Earlier mod-swap references were rejected; need unambiguous exposed released-game body and opposite camera.",
+      "rig": "Absent; four separate leg chains, torso and actual head/tail/loadout joints. Do not reuse Blade Wolf source as Fenrir.",
+      "actions": "Require own observed run/attack/impact/recovery poses before registration; CQC values are adaptations.",
+      "modes": "Reserved Versus UID only; inactive until native renderer ready.",
+      "measures": {
+        "currentDisplayEstimateMetres": 1.25,
+        "officialHeight": "not established"
+      },
+      "sourcePaths": [
+        "src/cqc-pass19-roster-additions-v2.js",
+        "src/cqc-pass27-machine-completion.js",
+        "docs/cqc-reprise/pass20/NewUG-qualified-evidence.json"
+      ],
+      "referencePointers": [
+        {
+          "url": "https://metalgear.fandom.com/wiki/Fenrir",
+          "kind": "community-gameplay-reference",
+          "access": "search-index-extract; full page blocked",
+          "scope": "LQ-84 Fenrir is a mass-produced quadrupedal UG, distinct from LQ-84i Blade Wolf."
+        }
+      ],
+      "readiness": "primary source review still required before generation/admission"
+    },
+    {
+      "uid": "pass19__raptor_mgr",
+      "name": "Raptor",
+      "incarnation": "MGR released 2013",
+      "priority": "reserved secondary machine identity",
+      "source": "awaiting-original-reference-and-native-art-review",
+      "art": "No named native asset found; use released-game bipedal UG model with organic legs, claws/blades. Do not turn generic Gekko into Raptor.",
+      "rig": "Absent; own hull/head/limb chains, claws/blades, armed attack surfaces and opposite camera.",
+      "actions": "Observe walk/jump/claw/blade phases and actual equipment; require native source frames or reviewed articulated views.",
+      "modes": "Reserved Versus UID only; inactive until native renderer ready.",
+      "measures": {
+        "currentDisplayEstimateMetres": 3.2,
+        "officialHeight": "not established"
+      },
+      "sourcePaths": [
+        "src/cqc-pass19-roster-additions-v2.js",
+        "src/cqc-pass27-machine-completion.js"
+      ],
+      "referencePointers": [
+        {
+          "url": "https://metalgear.fandom.com/wiki/Raptor",
+          "kind": "community-gameplay-reference",
+          "access": "search-index-extract; full page blocked",
+          "scope": "Medium bipedal UG with claws and blades."
+        }
+      ],
+      "readiness": "primary source review + native art/rig required"
+    }
+  ],
+  "otherConfirmedOpenGroups": [
+    {
+      "id": "pass19__vodomjerka_mgr",
+      "state": "inactive; no rig/native art found",
+      "blocker": "Registry still requires exact original limb count and released-game reference. Current1.5m is an estimate; do not draw guessed anatomy."
+    },
+    {
+      "id": "pass19__gekko_grenade_mgs4",
+      "state": "inactive; no dedicated grenade-mount art/rig found",
+      "blocker": "Exact mount needs released-game physical reference; do not substitute existing missile pod."
+    },
+    {
+      "id": "pass19__gekko_carrier_mgs4",
+      "state": "inactive; cutscene-only configuration pointer",
+      "blocker": "Carrier config with Dwarf Gekko must be observed in original cutscene. Do not present an unattested combat weapon/loadout."
+    },
+    {
+      "id": "PW armored-vehicle/tank/helicopter families",
+      "state": "not represented by the 33 current Arsenal mappings",
+      "blocker": "Research exact original vehicle models/configurations and separate references. MGS1 M1/Hind are not PW source art."
+    },
+    {
+      "id": "MGSV large wheeled/tracked vehicles and gunship families",
+      "state": "no dedicated entries in current33 Arsenal mappings",
+      "blocker": "Research released-game model/incarnation names, dimensions and weapons before reserving exact IDs."
+    },
+    {
+      "id": "sr_mg2; mg1_hind; mg1_tank; mg2_hind; NES supercomputer",
+      "state": "Archive encounters exist without native per-incarnation rigs",
+      "blocker": "Do not borrow MGS1 Hind/M1 or invent a NES Metal Gear body where the adaptation represents a supercomputer."
+    }
+  ],
+  "alreadyPresentDoNotDuplicate": [
+    {
+      "name": "Hammerhead MGR",
+      "state": "Present;2native articulated camera rigs pass28; admitted by shared setup",
+      "source": "src/cqc-pass28-missing-machine.js",
+      "remaining": "Opposite-source original references and hidden/rupture surfaces still qualified; historical missingCandidates list is stale."
+    },
+    {
+      "name": "Mastiff MGR",
+      "state": "Present; playable full-body action sheets, independent left/right,16poses each, not articulated or separately destructible",
+      "source": "src/cqc-pass20-roster-sprite-catalog.js + cqc-pass20-roster-native.js",
+      "remaining": "Native multipart articulation/destruction and additional costumes are separate work."
+    },
+    {
+      "name": "Slider MGR",
+      "state": "Present; playable full-body action sheets, independent left/right,16poses each, not articulated or separately destructible",
+      "source": "src/cqc-pass20-roster-sprite-catalog.js + cqc-pass20-roster-native.js",
+      "remaining": "Separate UG without fused rider; occluded airframe reconstruction and estimate1.5m qualified."
+    },
+    {
+      "name": "REX PS1/MGS4; RAY MGS2/MGR/MGS4",
+      "state": "Present as distinct incarnations; MGS4RAY uses private duel rig",
+      "remaining": "Opposite cameras, hidden joint interiors and full original move phases remain open; do not label them missing whole machines."
+    },
+    {
+      "name": "Peace Walker biped/quadruped",
+      "state": "Present as distinct current rigs; global Arsenal mapping peacewalker_biped exists",
+      "remaining": "Canonical transition between configurations and launch ports/phases still missing; do not morph nuclear quadruped into biped."
+    },
+    {
+      "name": "Trenchcoat Tripods MGS4 / Double Tripod MGR",
+      "state": "Present as distinct playable identities, each has independent two-face source rigs",
+      "remaining": "MGR trenchcoat alternative must not blindly reuse MGS4 canonical identity/geometry."
+    }
+  ],
+  "requiredCapacityWork": {
+    "catalogGuard": "src/cqc-machine-parts-renderer-v1.js normalizeCatalog line60 rejects >64",
+    "keepRuntimeBudgets": {
+      "residentRigs": 8,
+      "decodedBytes": 100663296,
+      "concurrency": 2
+    },
+    "keepPerRigContracts": {
+      "sourcesMax": 96,
+      "partsMax": 128,
+      "sourceBytesMax": 33554432,
+      "sourceDimensionMax": 16384,
+      "pinnedHashesBytesDimensions": "required",
+      "mirroringOrNonUniformScale": "rejected"
+    },
+    "decision": "Extend catalogue capacity only as a separate controlled admission with all existing64 preserved, boundary/duplicate/geometry rejection checks and unchanged texture/loading budgets. Do not weaken costume geometry/source contracts."
+  },
+  "fidelityRules": [
+    "docs/cqc-reprise/pass34/FIDELITY_RULES.md",
+    "docs/cqc-reprise/pass35/FIDELITY_RULES.md"
+  ],
+  "sourceTargetMotionRules": [
+    "Same final owner pose for draw, weapons, contacts, collision and camera",
+    "Owner tick only; pause freezes mechanisms/projectiles",
+    "Native bores and actual pivots/sockets; no axis invented for immobile source",
+    "New opposite camera drawn separately; no PNG mirroring",
+    "Independent hidden joint interiors and canonical destruction sources required",
+    "Official metric measurements unknown unless original incarnation/configuration evidence is actually established"
+  ],
+  "standaloneParityChecked": [
+    "src/cqc-machine-parts-catalog-v1.js",
+    "src/cqc-pass16-machine-catalog.js",
+    "src/cqc-pass18-machine-catalog.js",
+    "src/cqc-pass19-gekko-catalog.js",
+    "src/cqc-pass28-missing-machine.js",
+    "src/cqc-pass35-archive-native.js",
+    "src/cqc-pass20-roster-native.js"
+  ],
+  "referenceQualification": "Existing registry URLs are pointers/community extracts, not freshly verified primary references. No network/source-image fetch was performed during this audit. No absolute1to1art or motion certification.",
+  "mutations": {
+    "applicationFiles": false,
+    "standaloneFiles": false,
+    "git": false,
+    "images": false,
+    "browser": false,
+    "network": false
+  },
+  "notExhaustive": "This is the actionable current-catalog gap matrix; the franchise-wide list still needs primary-reference research per vehicle and release."
+}
