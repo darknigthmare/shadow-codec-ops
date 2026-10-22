@@ -1,0 +1,849 @@
+{
+  "schema": "cqc.pass40.batch30/1",
+  "batchId": "P40-30-REPRISE-2026-10-22",
+  "baselineProductCommit": "bdcc11a5136e944b1eaa0b1adb357ddd3f3fa1ef",
+  "baselineDelivery": "/workspace/cqc-pass39-delivery/FINAL_DELIVERY_ACTUAL.json",
+  "scope": {
+    "canonicalCostumes": 14,
+    "originalCostumes": 9,
+    "rosterUnits": 4,
+    "articulatedMachines": 3,
+    "total": 30
+  },
+  "preserveSeparateIncarnations": true,
+  "inheritedApprovalsAccepted": false,
+  "recoveryIncident": {
+    "path": "recovery/INCIDENT_ACTUAL_V1.json",
+    "bytes": 4211,
+    "sha256": "ff31db09a59036b55a7468beb8d7759c3c628b81ca177a67761f98efb9af39c7"
+  },
+  "sevenUnitRecoveryAudit": {
+    "path": "recovery/SEVEN_SOURCE_RECOVERY_ACTUAL.json",
+    "bytes": 4944,
+    "sha256": "5c1ab79186282c6de9af1329d870596bffaae7c5016333ab95130d52b12b082f"
+  },
+  "entries": [
+    {
+      "id": "costume:core__snake:mgs3-camo-soviet-woodland",
+      "kind": "costume",
+      "uid": "core__snake",
+      "optionId": "mgs3-camo-soviet-woodland",
+      "incarnation": "MGS3-PS2-2004-NAKED-SNAKE-PRE-INJURY",
+      "origin": "canonical",
+      "newFamilyCoverage": false,
+      "label": "Soviet Woodland",
+      "status": "hold",
+      "hold": true,
+      "inheritedApprovalUsed": false,
+      "sources": [
+        {
+          "id": "main-right-v1",
+          "facing": "right",
+          "path": "art/core__snake/mgs3-camo-soviet-woodland/right-v1.png",
+          "bytes": 1420902,
+          "sha256": "381a436da58bbefe60a26e3bb162cc073cd9bf59f9a0ee1386fa34feeae5cc29",
+          "width": 1254,
+          "height": 1254
+        },
+        {
+          "id": "main-left-v1",
+          "facing": "left",
+          "path": "art/core__snake/mgs3-camo-soviet-woodland/left-v1.png",
+          "bytes": 1131959,
+          "sha256": "3451da7acef0751c3d986be3e6e57a8939c674a584e325d294a60b20116147b7",
+          "width": 1254,
+          "height": 1254
+        },
+        {
+          "id": "native-walk-alternation-v1",
+          "facing": "mixed",
+          "path": "art/core__snake/mgs3-camo-soviet-woodland/native-walk-alternation-v1.png",
+          "bytes": 1934271,
+          "sha256": "3abf3e56ab9093785eedf587dedf4e8529d8f1d1808dfd78f0d8bd308c173f6a",
+          "width": 1536,
+          "height": 1024,
+          "nativeFacingRegions": [
+            {
+              "facing": "right",
+              "rect": [
+                194,
+                9,
+                166,
+                488
+              ],
+              "pose": "right-walk-page-neutral"
+            },
+            {
+              "facing": "right",
+              "rect": [
+                589,
+                12,
+                346,
+                481
+              ],
+              "pose": "right-walk-page-a"
+            },
+            {
+              "facing": "right",
+              "rect": [
+                1109,
+                14,
+                354,
+                480
+              ],
+              "pose": "right-walk-page-b"
+            },
+            {
+              "facing": "left",
+              "rect": [
+                160,
+                518,
+                180,
+                477
+              ],
+              "pose": "left-walk-page-neutral"
+            },
+            {
+              "facing": "left",
+              "rect": [
+                574,
+                520,
+                346,
+                467
+              ],
+              "pose": "left-walk-page-a"
+            },
+            {
+              "facing": "left",
+              "rect": [
+                1096,
+                522,
+                364,
+                465
+              ],
+              "pose": "left-walk-page-b"
+            }
+          ]
+        }
+      ],
+      "implementation": [],
+      "references": [
+        {
+          "url": "https://www.konami.com/mg/archive/mgs3/uk/pic/camo_unifo_soviet_wood.gif",
+          "scope": "Entire original 510×190 publisher GIF: palette swatch, front portrait, rear full figure; only visible surfaces attested. Original PS2 uniform appearance reference; not generated game art or exact retail animation certification.",
+          "artifact": {
+            "path": "references/canonical/camo_unifo_soviet_wood.gif",
+            "bytes": 31456,
+            "sha256": "f8296e7a949e1569ca3efc1a87d7688ed6ea61151b59739b668a6e557e16b619"
+          }
+        },
+        {
+          "url": "https://metalgear.konami.net/manual/mc1/mgs3/ps5/en/img/21_icon03.png",
+          "scope": "Official Konami Mk22 equipment icon; weapon-shape reference only. Does not turn the regenerated reload drawings into approved Mk22 actions.",
+          "artifact": {
+            "path": "art/core__snake/mgs3-camo-soviet-woodland/refs/mk22-21_icon03.png",
+            "bytes": 3504,
+            "sha256": "4f6b70b57ea39f1485555d8bdb65cda9cab83823016a3241c8b83db7be2e0dbe"
+          }
+        }
+      ],
+      "qa": null,
+      "publication": null,
+      "holdReason": "Right pose12 has incomplete lower legs/boots and ambiguous firearm identity; left pose12 does not clearly show the required Mk22 manual cycling. Both poses remain unmapped. The attempted right reload correction was rejected by image-tool input moderation; do not retry, rephrase or delegate that blocked edit to bypass the refusal.",
+      "heldPoses": [
+        {
+          "sourceId": "main-right-v1",
+          "semanticPoseIndex": 12,
+          "runtimeAdmitted": false
+        },
+        {
+          "sourceId": "main-left-v1",
+          "semanticPoseIndex": 12,
+          "runtimeAdmitted": false
+        }
+      ],
+      "blockedEdit": {
+        "retryAllowed": false,
+        "requestID": "7b73ef1a-4556-479c-9974-081807683538",
+        "rejectionReceipt": {
+          "path": "art/core__snake/mgs3-camo-soviet-woodland/generation/right-complete-reload-v1-rejection.json",
+          "bytes": 434,
+          "sha256": "0048fca8305d416192fb431772885d7296ca81d4d8f0b57a51d5a500014d4b6b"
+        }
+      },
+      "artQualification": "Three newly generated source candidates are preserved byte-exactly. Independently drawn walk figures on a shared supplemental PNG are not mirrored and do not replace separate main facings. No costume QA approval, runtime integration or completion is claimed."
+    },
+    {
+      "id": "costume:core__snake:mgs3-camo-urban-tiger",
+      "kind": "costume",
+      "uid": "core__snake",
+      "optionId": "mgs3-camo-urban-tiger",
+      "incarnation": "MGS3-PS2-2004-NAKED-SNAKE-PRE-INJURY",
+      "origin": "canonical",
+      "newFamilyCoverage": false,
+      "label": "Urban Tiger",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [
+        {
+          "url": "https://www.konami.com/mg/archive/mgs3/uk/pic/camo_unifo_urban_tiger.gif",
+          "scope": "Entire original 510×190 publisher GIF: palette swatch, front portrait, rear full figure; only visible surfaces attested. Original PS2 uniform appearance reference; not generated game art or exact retail animation certification.",
+          "artifact": {
+            "path": "references/canonical/camo_unifo_urban_tiger.gif",
+            "bytes": 29075,
+            "sha256": "0bea7dd45fe8e5b358af3657ae162f6bdedd6c953847f7ff472bdaa96c2efb94"
+          }
+        }
+      ],
+      "qa": null,
+      "publication": null
+    },
+    {
+      "id": "costume:core__snake:mgs3-camo-klmk",
+      "kind": "costume",
+      "uid": "core__snake",
+      "optionId": "mgs3-camo-klmk",
+      "incarnation": "MGS3-PS2-2004-NAKED-SNAKE-PRE-INJURY",
+      "origin": "canonical",
+      "newFamilyCoverage": false,
+      "label": "KLMK",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [
+        {
+          "url": "https://www.konami.com/mg/archive/mgs3/uk/pic/camo_unifo_klmk.gif",
+          "scope": "Entire original 510×190 publisher GIF: palette swatch, front portrait, rear full figure; only visible surfaces attested. Original PS2 uniform appearance reference; not generated game art or exact retail animation certification.",
+          "artifact": {
+            "path": "references/canonical/camo_unifo_klmk.gif",
+            "bytes": 29167,
+            "sha256": "d6670ce7493a451cda896e60e6a23afbdc3dbc272ad3ae75c6c9e58730ada2f1"
+          }
+        }
+      ],
+      "qa": null,
+      "publication": null
+    },
+    {
+      "id": "costume:core__snake:mgs3-camo-former-east-germany",
+      "kind": "costume",
+      "uid": "core__snake",
+      "optionId": "mgs3-camo-former-east-germany",
+      "incarnation": "MGS3-PS2-2004-NAKED-SNAKE-PRE-INJURY",
+      "origin": "canonical",
+      "newFamilyCoverage": false,
+      "label": "Former East Germany",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [
+        {
+          "url": "https://www.konami.com/mg/archive/mgs3/uk/pic/camo_unifo_e_germany.gif",
+          "scope": "Entire original 510×190 publisher GIF: palette swatch, front portrait, rear full figure; only visible surfaces attested. Original PS2 uniform appearance reference; not generated game art or exact retail animation certification.",
+          "artifact": {
+            "path": "references/canonical/camo_unifo_e_germany.gif",
+            "bytes": 30040,
+            "sha256": "cc21b40c5d901caed04d853e52b3bc712eca80c93f6e577dabdb4d049da96e1b"
+          }
+        }
+      ],
+      "qa": null,
+      "publication": null
+    },
+    {
+      "id": "costume:core__snake:mgs3-camo-former-west-germany",
+      "kind": "costume",
+      "uid": "core__snake",
+      "optionId": "mgs3-camo-former-west-germany",
+      "incarnation": "MGS3-PS2-2004-NAKED-SNAKE-PRE-INJURY",
+      "origin": "canonical",
+      "newFamilyCoverage": false,
+      "label": "Former West Germany",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [
+        {
+          "url": "https://www.konami.com/mg/archive/mgs3/uk/pic/camo_unifo_w_germany.gif",
+          "scope": "Entire original 510×190 publisher GIF: palette swatch, front portrait, rear full figure; only visible surfaces attested. Original PS2 uniform appearance reference; not generated game art or exact retail animation certification.",
+          "artifact": {
+            "path": "references/canonical/camo_unifo_w_germany.gif",
+            "bytes": 21079,
+            "sha256": "dfee932b40a34fe22736d2996cd8a6001183d3c1d66d5de1fdf82ca8c02d0f65"
+          }
+        }
+      ],
+      "qa": null,
+      "publication": null
+    },
+    {
+      "id": "costume:core__snake:mgs3-camo-night-desert",
+      "kind": "costume",
+      "uid": "core__snake",
+      "optionId": "mgs3-camo-night-desert",
+      "incarnation": "MGS3-PS2-2004-NAKED-SNAKE-PRE-INJURY",
+      "origin": "canonical",
+      "newFamilyCoverage": false,
+      "label": "Night Desert",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [
+        {
+          "url": "https://www.konami.com/mg/archive/mgs3/uk/pic/camo_unifo_nightdesert.gif",
+          "scope": "Entire original 510×190 publisher GIF: palette swatch, front portrait, rear full figure; only visible surfaces attested. Original PS2 uniform appearance reference; not generated game art or exact retail animation certification.",
+          "artifact": {
+            "path": "references/canonical/camo_unifo_nightdesert.gif",
+            "bytes": 41128,
+            "sha256": "11b4c23c17e0e37cc0f4c555534d7b8496c54fbe8e8ee665d697269af7ba6da5"
+          }
+        }
+      ],
+      "qa": null,
+      "publication": null
+    },
+    {
+      "id": "costume:core__snake:mgs3-camo-chameleon",
+      "kind": "costume",
+      "uid": "core__snake",
+      "optionId": "mgs3-camo-chameleon",
+      "incarnation": "MGS3-PS2-2004-NAKED-SNAKE-PRE-INJURY",
+      "origin": "canonical",
+      "newFamilyCoverage": false,
+      "label": "Chameleon",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [
+        {
+          "url": "https://www.konami.com/mg/archive/mgs3/uk/pic/camo_unifo_chameleon.gif",
+          "scope": "Entire original 510×190 publisher GIF: palette swatch, front portrait, rear full figure; only visible surfaces attested. Original PS2 uniform appearance reference; not generated game art or exact retail animation certification.",
+          "artifact": {
+            "path": "references/canonical/camo_unifo_chameleon.gif",
+            "bytes": 40145,
+            "sha256": "2bae46cb75484bf033b310bceec8c34708223788a83ae5629371f6db0d9a6cc3"
+          }
+        }
+      ],
+      "qa": null,
+      "publication": null
+    },
+    {
+      "id": "costume:core__snake:mgs3-camo-watersnake",
+      "kind": "costume",
+      "uid": "core__snake",
+      "optionId": "mgs3-camo-watersnake",
+      "incarnation": "MGS3-PS2-2004-NAKED-SNAKE-PRE-INJURY",
+      "origin": "canonical",
+      "newFamilyCoverage": false,
+      "label": "Watersnake",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [
+        {
+          "url": "https://www.konami.com/mg/archive/mgs3/uk/pic/camo_unifo_watersnake.gif",
+          "scope": "Entire original 510×190 publisher GIF: palette swatch, front portrait, rear full figure; only visible surfaces attested. Original PS2 uniform appearance reference; not generated game art or exact retail animation certification.",
+          "artifact": {
+            "path": "references/canonical/camo_unifo_watersnake.gif",
+            "bytes": 39103,
+            "sha256": "e2117200a0ce7ed311637d219e4ba7485c1c3b818a507a7ef3112fd53cb78c68"
+          }
+        }
+      ],
+      "qa": null,
+      "publication": null
+    },
+    {
+      "id": "costume:core__snake:mgs3-camo-flower",
+      "kind": "costume",
+      "uid": "core__snake",
+      "optionId": "mgs3-camo-flower",
+      "incarnation": "MGS3-PS2-2004-NAKED-SNAKE-PRE-INJURY",
+      "origin": "canonical",
+      "newFamilyCoverage": false,
+      "label": "Flower",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [
+        {
+          "url": "https://www.konami.com/mg/archive/mgs3/uk/pic/camo_unifo_flower.gif",
+          "scope": "Entire original 510×190 publisher GIF: palette swatch, front portrait, rear full figure; only visible surfaces attested. Original PS2 uniform appearance reference; not generated game art or exact retail animation certification.",
+          "artifact": {
+            "path": "references/canonical/camo_unifo_flower.gif",
+            "bytes": 34782,
+            "sha256": "a95d7a1f1514c9a4b7de733b5309744a8c23ec7da6d64d95dacce2499dddd3a5"
+          }
+        }
+      ],
+      "qa": null,
+      "publication": null
+    },
+    {
+      "id": "costume:core__snake:mgs3-camo-santa-claus",
+      "kind": "costume",
+      "uid": "core__snake",
+      "optionId": "mgs3-camo-santa-claus",
+      "incarnation": "MGS3-PS2-2004-NAKED-SNAKE-PRE-INJURY",
+      "origin": "canonical",
+      "newFamilyCoverage": false,
+      "label": "Santa Claus",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [
+        {
+          "url": "https://www.konami.com/mg/archive/mgs3/uk/pic/camo_unifo_santa.gif",
+          "scope": "Entire original 510×190 publisher GIF: palette swatch, front portrait, rear full figure; only visible surfaces attested. Original PS2 uniform appearance reference; not generated game art or exact retail animation certification.",
+          "artifact": {
+            "path": "references/canonical/camo_unifo_santa.gif",
+            "bytes": 30438,
+            "sha256": "aec0bf79fa7109bbdccf41b299b095e42d570116cee9f2ea8b35fc109e622975"
+          }
+        }
+      ],
+      "qa": null,
+      "publication": null
+    },
+    {
+      "id": "costume:core__snake:mgs3-camo-mummy",
+      "kind": "costume",
+      "uid": "core__snake",
+      "optionId": "mgs3-camo-mummy",
+      "incarnation": "MGS3-PS2-2004-NAKED-SNAKE-PRE-INJURY",
+      "origin": "canonical",
+      "newFamilyCoverage": false,
+      "label": "Mummy",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [
+        {
+          "url": "https://www.konami.com/mg/archive/mgs3/uk/pic/camo_unifo_mummy.gif",
+          "scope": "Entire original 510×190 publisher GIF: palette swatch, front portrait, rear full figure; only visible surfaces attested. Original PS2 uniform appearance reference; not generated game art or exact retail animation certification.",
+          "artifact": {
+            "path": "references/canonical/camo_unifo_mummy.gif",
+            "bytes": 27862,
+            "sha256": "19dac70f69edf267fdb0ac265bec64ffa76fd8671a3a3a3b5f0f1bdbcbd404df"
+          }
+        }
+      ],
+      "qa": null,
+      "publication": null
+    },
+    {
+      "id": "costume:core__snake:mgs3-camo-grenade",
+      "kind": "costume",
+      "uid": "core__snake",
+      "optionId": "mgs3-camo-grenade",
+      "incarnation": "MGS3-PS2-2004-NAKED-SNAKE-PRE-INJURY",
+      "origin": "canonical",
+      "newFamilyCoverage": false,
+      "label": "Grenade",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [
+        {
+          "url": "https://www.konami.com/mg/archive/mgs3/uk/pic/camo_unifo_grenade.gif",
+          "scope": "Entire original 510×190 publisher GIF: palette swatch, front portrait, rear full figure; only visible surfaces attested. Original PS2 uniform appearance reference; not generated game art or exact retail animation certification.",
+          "artifact": {
+            "path": "references/canonical/camo_unifo_grenade.gif",
+            "bytes": 29744,
+            "sha256": "43f32d1047ecf43beba0a22711b367c8ec3eebc8424980891e60a095c04d4d20"
+          }
+        }
+      ],
+      "qa": null,
+      "publication": null
+    },
+    {
+      "id": "costume:core__snake:mgs3-camo-rock",
+      "kind": "costume",
+      "uid": "core__snake",
+      "optionId": "mgs3-camo-rock",
+      "incarnation": "MGS3-PS2-2004-NAKED-SNAKE-PRE-INJURY",
+      "origin": "canonical",
+      "newFamilyCoverage": false,
+      "label": "Rock",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [
+        {
+          "url": "https://www.konami.com/mg/archive/mgs3/uk/pic/camo_unifo_rock.gif",
+          "scope": "Entire original 510×190 publisher GIF: palette swatch, front portrait, rear full figure; only visible surfaces attested. Original PS2 uniform appearance reference; not generated game art or exact retail animation certification.",
+          "artifact": {
+            "path": "references/canonical/camo_unifo_rock.gif",
+            "bytes": 38518,
+            "sha256": "85b9db3ecedae6eeec711e0e40e73ecbcd9b70c19b84ca820407ae4bf1d0e21e"
+          }
+        }
+      ],
+      "qa": null,
+      "publication": null
+    },
+    {
+      "id": "costume:core__snake:mgs3-camo-barracuda",
+      "kind": "costume",
+      "uid": "core__snake",
+      "optionId": "mgs3-camo-barracuda",
+      "incarnation": "MGS3-PS2-2004-NAKED-SNAKE-PRE-INJURY",
+      "origin": "canonical",
+      "newFamilyCoverage": false,
+      "label": "Barracuda",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [
+        {
+          "url": "https://www.konami.com/mg/archive/mgs3/uk/pic/camo_unifo_barracuda.gif",
+          "scope": "Entire original 510×190 publisher GIF: palette swatch, front portrait, rear full figure; only visible surfaces attested. Original PS2 uniform appearance reference; not generated game art or exact retail animation certification.",
+          "artifact": {
+            "path": "references/canonical/camo_unifo_barracuda.gif",
+            "bytes": 33492,
+            "sha256": "c50e274f75f5ffad76b3d3a0dc9d53341e9a6025bbfc1e0e1334b9ab05029e86"
+          }
+        }
+      ],
+      "qa": null,
+      "publication": null
+    },
+    {
+      "id": "costume:core__eva_mgs3:cyborg",
+      "kind": "costume",
+      "uid": "core__eva_mgs3",
+      "optionId": "cyborg",
+      "incarnation": "MGS3-PS2-2004-EVA",
+      "origin": "original",
+      "newFamilyCoverage": false,
+      "label": "EVA — Châssis doré",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [],
+      "qa": null,
+      "publication": null
+    },
+    {
+      "id": "costume:core__liquid:nextgen",
+      "kind": "costume",
+      "uid": "core__liquid",
+      "optionId": "nextgen",
+      "incarnation": "MGS1-PS1-1998-LIQUID",
+      "origin": "original",
+      "newFamilyCoverage": false,
+      "label": "Liquid — Nouvelle génération",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [],
+      "qa": null,
+      "publication": null,
+      "coverageQualification": "New artistic upgrade of an already covered family; does not fill a previously missing franchise character family."
+    },
+    {
+      "id": "costume:core__venus:retro-msx",
+      "kind": "costume",
+      "uid": "core__venus",
+      "optionId": "retro-msx",
+      "incarnation": "METAL-GEAR-ACID-2-VENUS",
+      "origin": "original",
+      "newFamilyCoverage": false,
+      "label": "Venus — Rétro",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [],
+      "qa": null,
+      "publication": null
+    },
+    {
+      "id": "costume:core__skull_armor:retro-msx",
+      "kind": "costume",
+      "uid": "core__skull_armor",
+      "optionId": "retro-msx",
+      "incarnation": "MGSV-ARMORED-SKULL",
+      "origin": "original",
+      "newFamilyCoverage": false,
+      "label": "Skull Armure — Rétro",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [],
+      "qa": null,
+      "publication": null
+    },
+    {
+      "id": "costume:core__meryl_mgs1:survive",
+      "kind": "costume",
+      "uid": "core__meryl_mgs1",
+      "optionId": "survive",
+      "incarnation": "MGS1-PS1-1998-MERYL",
+      "origin": "original",
+      "newFamilyCoverage": false,
+      "label": "Meryl MGS1 — Expédition Dité",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [],
+      "qa": null,
+      "publication": null
+    },
+    {
+      "id": "costume:core__boss:metalgear",
+      "kind": "costume",
+      "uid": "core__boss",
+      "optionId": "metalgear",
+      "incarnation": "MGS3-PS2-2004-THE-BOSS",
+      "origin": "original",
+      "newFamilyCoverage": false,
+      "label": "The Boss — Unité blindée",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [],
+      "qa": null,
+      "publication": null
+    },
+    {
+      "id": "costume:core__quiet:cyborg",
+      "kind": "costume",
+      "uid": "core__quiet",
+      "optionId": "cyborg",
+      "incarnation": "MGSV-QUIET",
+      "origin": "original",
+      "newFamilyCoverage": false,
+      "label": "Quiet — Châssis de précision",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [],
+      "qa": null,
+      "publication": null
+    },
+    {
+      "id": "costume:core__amanda_pw:tuxedo",
+      "kind": "costume",
+      "uid": "core__amanda_pw",
+      "optionId": "tuxedo",
+      "incarnation": "PEACE-WALKER-AMANDA",
+      "origin": "original",
+      "newFamilyCoverage": false,
+      "label": "Amanda — Gala",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [],
+      "qa": null,
+      "publication": null
+    },
+    {
+      "id": "costume:core__mistral:tuxedo",
+      "kind": "costume",
+      "uid": "core__mistral",
+      "optionId": "tuxedo",
+      "incarnation": "MGR-MISTRAL",
+      "origin": "original",
+      "newFamilyCoverage": false,
+      "label": "Mistral — Gala",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [],
+      "qa": null,
+      "publication": null
+    },
+    {
+      "id": "roster:pass40__raiden_r00",
+      "kind": "roster",
+      "uid": "pass40__raiden_r00",
+      "optionId": null,
+      "incarnation": "MGR-R00-STANDARD-BODY",
+      "origin": "canonical",
+      "newFamilyCoverage": false,
+      "label": "Raiden R-00",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [],
+      "qa": null,
+      "publication": null,
+      "coverageQualification": "Distinct R-00 standard body; no MGS4, White Armor DLC, post-prologue custom body, Ripper or Zandatsu transplant."
+    },
+    {
+      "id": "roster:pass19__detonator_survive",
+      "kind": "roster",
+      "uid": "pass19__detonator_survive",
+      "optionId": null,
+      "incarnation": "SURVIVE-DETONATOR",
+      "origin": "canonical",
+      "newFamilyCoverage": false,
+      "label": "Detonator",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [],
+      "qa": null,
+      "publication": null
+    },
+    {
+      "id": "roster:pass19__watcher_survive",
+      "kind": "roster",
+      "uid": "pass19__watcher_survive",
+      "optionId": null,
+      "incarnation": "SURVIVE-WATCHER",
+      "origin": "canonical",
+      "newFamilyCoverage": false,
+      "label": "Watcher",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [],
+      "qa": null,
+      "publication": null
+    },
+    {
+      "id": "roster:pass19__grabber_survive",
+      "kind": "roster",
+      "uid": "pass19__grabber_survive",
+      "optionId": null,
+      "incarnation": "SURVIVE-GRABBER",
+      "origin": "canonical",
+      "newFamilyCoverage": false,
+      "label": "Grabber",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [],
+      "qa": null,
+      "publication": null
+    },
+    {
+      "id": "machine:pass40__powered_suit_mgs4",
+      "kind": "machine",
+      "uid": "pass40__powered_suit_mgs4",
+      "optionId": null,
+      "incarnation": "MGS4-POWERED-SUIT",
+      "origin": "canonical",
+      "newFamilyCoverage": false,
+      "label": "Powered Suit MGS4",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [],
+      "qa": null,
+      "publication": null
+    },
+    {
+      "id": "machine:pass19__fenrir_mgr",
+      "kind": "machine",
+      "uid": "pass19__fenrir_mgr",
+      "optionId": null,
+      "incarnation": "MGR-LQ84-FENRIR-RAILGUN",
+      "origin": "canonical",
+      "newFamilyCoverage": false,
+      "label": "LQ-84 Fenrir",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [],
+      "qa": null,
+      "publication": null,
+      "coverageQualification": "Stock LQ-84 Fenrir with railgun; distinct from LQ-84i Blade Wolf and its chainsaw."
+    },
+    {
+      "id": "machine:pass19__vodomjerka_mgr",
+      "kind": "machine",
+      "uid": "pass19__vodomjerka_mgr",
+      "optionId": null,
+      "incarnation": "MGR-VODOMJERKA-TRIPOD",
+      "origin": "canonical",
+      "newFamilyCoverage": false,
+      "label": "Vodomjerka",
+      "status": "needs-source-regeneration",
+      "hold": false,
+      "inheritedApprovalUsed": false,
+      "sources": [],
+      "implementation": [],
+      "references": [],
+      "qa": null,
+      "publication": null,
+      "coverageQualification": "Tripod body and twin jets; any authored CQC ventral weapon must be identified as an adaptation, not certified retail anatomy."
+    }
+  ],
+  "excludedHolds": [
+    {
+      "uid": "core__fatman",
+      "optionId": "tuxedo",
+      "status": "hold",
+      "retryAllowed": false,
+      "reason": "Previous image-generation moderation rejection; excluded from the30. Preserve existing source history and do not retry or rephrase the blocked edit."
+    }
+  ],
+  "qualification": "A valid draft manifest is not30 completed or published entries. Every regenerated entry requires new physically present durable source art, implementation and QA bound to those exact inputs.",
+  "identifierPolicy": "Descriptive camouflage IDs are established by this resumption contract. Unavailable prior temporary P40 identifiers are not claimed as recovered or byte-identical.",
+  "canonicalReferenceLedger": {
+    "path": "references/canonical/CANONICAL_14_REFERENCE_LEDGER_V1.json",
+    "bytes": 16183,
+    "sha256": "dbdc5b48ca96f0562077651fe37a52b1cbb0f1569ffab4db08ac2192c4ab17e4"
+  }
+}

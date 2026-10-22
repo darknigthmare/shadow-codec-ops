@@ -1,0 +1,159 @@
+{
+  "schema": "cqc.pass40.p39-runtime-api-recovery-notes/1",
+  "scope": "Observed current local P39 source APIs. No new P40 code, artwork, review approval or live behavior is established by these notes.",
+  "runtimePins": [
+    {
+      "path": "/workspace/cqc-pass21-application/public/cqc/src/cqc-pass19-native-wardrobe-library.js",
+      "bytes": 33260,
+      "sha256": "cc3ca723c7bf9f6871cc090cee2e17ecde9337c69454dfe6a94832368afbb078"
+    },
+    {
+      "path": "/workspace/cqc-pass21-application/public/cqc/src/cqc-pass19-costumes.js",
+      "bytes": 17243,
+      "sha256": "184ba7346da13067f3fe977326cb6c6004eb711bd7b67cdbd3e77d9afd7db1e3"
+    },
+    {
+      "path": "/workspace/cqc-pass21-application/public/cqc/src/cqc-sprite-renderer.js",
+      "bytes": 46974,
+      "sha256": "1e27fc2a45db71e71e02aab4f30e779ca9556c289e2a57b8f6ed5e6f34fdd732"
+    },
+    {
+      "path": "/workspace/cqc-pass21-application/public/cqc/src/cqc-pass21-native-costume-origins.js",
+      "bytes": 3129,
+      "sha256": "bd391577ae4a92963901bc22ce3660cd6ac96306bd9dcdc77446c7e30f19504e"
+    },
+    {
+      "path": "/workspace/cqc-pass21-application/public/cqc/src/cqc-sprite-catalog.js",
+      "bytes": 27887235,
+      "sha256": "bbdcfe672d007d03aafd9374c6203986c8bf0a0a91a88c24b2475fcf8d259a07"
+    }
+  ],
+  "restoredToolsRoot": "/tmp/cqc-p40-resume-20261022/tool-recovery",
+  "restoredToolsReceipt": "/workspace/cqc-pass40-resume-20261022/recovery/P39_TOOL_RESTORE_ACTUAL.json",
+  "indexContract": {
+    "schema": "cqc.native-wardrobe-index/1",
+    "entryFields": [
+      "uid",
+      "id",
+      "label",
+      "family",
+      "provenance",
+      "review",
+      "metadata",
+      "assets",
+      "preview"
+    ],
+    "noInline": [
+      "sprite",
+      "option"
+    ],
+    "review": {
+      "status": "approved",
+      "required": [
+        "reviewer",
+        "reviewedAt",
+        "artAuditSHA256"
+      ]
+    },
+    "metadata": {
+      "required": [
+        "sha256",
+        "bytes",
+        "path or url"
+      ],
+      "maxBytes": 4194304
+    },
+    "assets": {
+      "maxCount": 48,
+      "maxEachBytes": 33554432,
+      "maxDimension": 8192,
+      "required": [
+        "file",
+        "sha256",
+        "bytes",
+        "width",
+        "height"
+      ],
+      "optionalURL": "Allows deduplicated raw SHA path while preserving logical assets/frame paths."
+    },
+    "sourceURLPolicy": "same-origin or HTTPS raw.githubusercontent.com/owner/repository/40hexcommit/path; no credentials,query,fragment,redirect. No mutable remote branch or tag URL.",
+    "composition": "Clone prior index, preserve all prior entries; append exact reviewed entry only once, call CQC_NATIVE_WARDROBE.configureIndex(next).",
+    "pixelPipeline": "Pinned CORS fetch -> exact byte count and SHA256 -> PNG signature/IHDR dimensions -> Blob -> native Image decode -> guarded selection commit."
+  },
+  "metadataContract": {
+    "schema": "cqc.native-wardrobe-option/1",
+    "required": [
+      "uid",
+      "id",
+      "artAuditSHA256",
+      "option"
+    ],
+    "optionRequired": [
+      "id",
+      "label",
+      "family",
+      "provenance",
+      "sprite",
+      "assetReview"
+    ],
+    "nativeDirections": "Both actions/oppositeActions, mirror false; different PNG sources or disjoint measured native regions. No original-body source reuse.",
+    "canonicalProvenance": {
+      "kind": "canonical-game-costume",
+      "sourceUID": "core__snake",
+      "sourceSpriteUID": "core__snake",
+      "originalDesign": false,
+      "canonicalAppearanceAttested": true,
+      "otherRequired": [
+        "incarnation",
+        "costumeName",
+        "nonempty HTTPS references"
+      ]
+    },
+    "runtimeReviewFields": {
+      "option.assetReview.status": "verified",
+      "option.assetReview.independentArt": true,
+      "option.sprite.review.status": "approved"
+    },
+    "frame": {
+      "required": [
+        "file",
+        "sha256",
+        "rect",
+        "pivot"
+      ],
+      "optionalMeasured": [
+        "clipPolygon",
+        "physicalPoseIndex",
+        "nativePoseKey",
+        "previewStatureBounds",
+        "previewDatumX"
+      ]
+    },
+    "scaling": "sprite.displayHeight / sourceFrameHeights[frame.file], else baseFrameHeight, else frame.rect height. source heights must be positive finite; raw renderer imposes no canvas-height cap. Preview stature and body datum are independent measured fields."
+  },
+  "selectedNativeSocketContract": {
+    "existingFile": "cqc-pass21-native-costume-origins.js",
+    "existingEligibility": "pass21Revision /^native-(?:retro|nextgen|tuxedo|cyborg-mgr)-v1$/ only; canonical outfits are not eligible under this guard.",
+    "exactBinding": [
+      "side",
+      "file",
+      "sourceSHA256",
+      "rect",
+      "pivot",
+      "selected.action if attachment.action supplied",
+      "move.kind if attachment.moveKinds supplied"
+    ],
+    "points": "frameFraction must equal nativeXY within .05px; active source frame must have matching attachment.",
+    "worldScaleApplied": false,
+    "formula": "k=displayHeight/sourceStandingHeight; forward=(fractionX-pivotX)*rectW*k*face; height=(pivotY-fractionY)*rectH*k",
+    "warning": "Existing installer delegates prior projectile origin when new helper returns null. Therefore missing actual-profile ports can fall back to historical origins. Native PNG strictness does not prove no origin fallback. A canonical P40 wrapper must remain scoped to admitted UID/costume, match selected source frames, and be separately tested for all emitted move kinds and both facings."
+  },
+  "restoredCompilerApplicability": {
+    "integration/compile-reviewed-dlc.mjs": "Hardcoded Raiden MGR four DLC entries and private source paths. Reference only; cannot compile Soviet Woodland unchanged.",
+    "integration/prepare-metadata.py": "Hardcoded Raiden refs, geometry and mappings and writes its own historical audit; do not run or reuse historical approval.",
+    "solid-gala/validate-and-compile.mjs": "Shows actual validator execution, unchanged engine/timing comparisons, SHA audit binding and native selected-source emission checks, but hardcoded Solid Gala.",
+    "solid-gala/index.template.js": "Small compose/strict-preview example; hardcoded UID/assets and old path literals.",
+    "integration/native_geometry.py": "Read-only source mask -> exact native contour with pixel-center containment proof; never writes PNGs."
+  },
+  "bootQualification": "core__snake base-catalog entry alone is not authoritative final runtime profile: later fidelity/gameplay modules can overwrite kits or phase mapping. Recover actual complete host boot order and inspect final runtime before binding projectile tags/active phases."
+}
