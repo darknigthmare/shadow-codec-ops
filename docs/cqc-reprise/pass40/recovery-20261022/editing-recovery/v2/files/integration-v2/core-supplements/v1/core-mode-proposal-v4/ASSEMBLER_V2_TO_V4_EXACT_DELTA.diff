@@ -1,0 +1,11 @@
+--- assemblerV2
++++ assemblerV4
+@@ -24,7 +24,7 @@
+    if(!same(row.frame.rect,pose.rect)||!same(row.frame.clipPolygon,pose.clipPolygon)||row.frame.physicalPoseIndex!==11||row.frame.nativePoseKey!==side+':'+pose.name)throw Error('Supplement geometry changed');
+    const pivot=[(row.bodyAxis.nativeX-pose.rect[0])/pose.rect[2],(pose.candidateGroundY-pose.rect[1])/pose.rect[3]];assert.deepEqual(row.frame.pivot,pivot,'Body/ground pivot changed');
+    const frame=clone(row.frame);frame.file=frame.fileProposal;delete frame.fileProposal;
+-   if(!new RegExp('^assets/combat-costumes-pass40-core/core__skull_armor/retro-msx/debris-'+side+'-v1\\.png$').test(frame.file))throw Error('Core supplement logical path escaped');
++   if(!new RegExp('^assets/combat-costumes-pass40/core__skull_armor/retro-msx/core-debris-'+side+'-v1\\.png$').test(frame.file))throw Error('Core supplement logical path escaped');
+    frames[side].push(frame);sources.push({file:frame.file,path:row.source.path,bytes:source.bytes,sha256:source.sha256,width:source.dimensions[0],height:source.dimensions[1],side,standingHeight:height});
+   }
+   for(const action of Object.values(sprite[group]))action.frames=action.frames.map(frame=>frame.physicalPoseIndex===11?clone(frames[side][11]):frame);
