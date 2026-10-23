@@ -1,0 +1,412 @@
+{
+  "uid": "roster50__campbell_mg2",
+  "id": "retro-msx",
+  "label": "Rétro",
+  "family": "retro",
+  "geometryPath": "@PROJECT_ROOT@/retro-five/roster50__campbell_mg2/GEOMETRY_CANDIDATE_V1.json.gz",
+  "ownershipBookPath": "@PROJECT_ROOT@/retro-five/roster50__campbell_mg2/OWNERSHIP_BOOK_CANDIDATE_V1.json",
+  "output": "@PROJECT_ROOT@/integration/retro-five/roster50__campbell_mg2/job-proposal-v1",
+  "provenance": {
+    "kind": "style-reinterpretation",
+    "sourceUID": "roster50__campbell_mg2",
+    "sourceSpriteUID": "roster50__campbell_mg2",
+    "originalDesign": true,
+    "canonicalAppearanceAttested": false,
+    "incarnation": "Roy Campbell — revised official MG2 Zanzibar support incarnation; original MG2 identity, not MGS1/MGS4/MPO.",
+    "sources": [
+      {
+        "url": "https://www.konami.com/mg/archive/mg2/pic/roy.gif",
+        "sha256": "69e3bba2f29123ef73484847d26fdf651766fea47b5856effb729679a9510b40",
+        "scope": "Exact publisher MG2 portrait, head identity only; unseen full-body olive command fatigues are CQC adaptation."
+      },
+      {
+        "url": "https://www.imfdb.org/images/4/40/Metal_Gear_2_92F.jpg",
+        "sha256": "b5d7b91451fe25d0fe9f6b288db57135fe00dac4d3e9a43b455ac6efcf81e857",
+        "scope": "Actual MG2 original opening Beretta92F; same-universe CQC gameplay equipment, not a canonical Campbell ownership claim."
+      }
+    ]
+  },
+  "calibrationPoses": {
+    "@PROJECT_ROOT@/art/roster50__campbell_mg2/retro-msx/right-main-v1.png": {
+      "right": "right-role-00"
+    },
+    "@PROJECT_ROOT@/art/roster50__campbell_mg2/retro-msx/left-main-v1.png": {
+      "left": "left-role-00"
+    },
+    "@PROJECT_ROOT@/art/roster50__campbell_mg2/retro-msx/right-weapon-v1.png": {
+      "right": "right-neutral-calibration"
+    },
+    "@PROJECT_ROOT@/art/roster50__campbell_mg2/retro-msx/left-weapon-v1.png": {
+      "left": "left-neutral-calibration"
+    }
+  },
+  "anchors": [
+    {
+      "side": "right",
+      "slot": "special",
+      "roleIndex": 11,
+      "action": "shoot",
+      "nativeXY": [
+        1340.5,
+        132.5
+      ],
+      "rearNativeXY": [
+        1232.5,
+        132.5
+      ],
+      "socket": "beretta92f-muzzle"
+    },
+    {
+      "side": "right",
+      "slot": "super",
+      "roleIndex": 11,
+      "action": "shoot",
+      "nativeXY": [
+        1340.5,
+        132.5
+      ],
+      "rearNativeXY": [
+        1232.5,
+        132.5
+      ],
+      "socket": "beretta92f-muzzle"
+    },
+    {
+      "side": "right",
+      "slot": "specialDown",
+      "roleIndex": 9,
+      "action": "deploy",
+      "nativeXY": [
+        257.5,
+        83.5
+      ],
+      "socket": "grenade-release-hand"
+    },
+    {
+      "side": "left",
+      "slot": "special",
+      "roleIndex": 11,
+      "action": "shoot",
+      "nativeXY": [
+        787.5,
+        151.5
+      ],
+      "rearNativeXY": [
+        873.5,
+        151.5
+      ],
+      "socket": "beretta92f-muzzle"
+    },
+    {
+      "side": "left",
+      "slot": "super",
+      "roleIndex": 11,
+      "action": "shoot",
+      "nativeXY": [
+        787.5,
+        151.5
+      ],
+      "rearNativeXY": [
+        873.5,
+        151.5
+      ],
+      "socket": "beretta92f-muzzle"
+    },
+    {
+      "side": "left",
+      "slot": "specialDown",
+      "roleIndex": 9,
+      "action": "deploy",
+      "nativeXY": [
+        500.5,
+        68.5
+      ],
+      "socket": "grenade-release-hand"
+    }
+  ],
+  "plan": {
+    "actions": {
+      "idle": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          0
+        ]
+      },
+      "guard": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          1
+        ]
+      },
+      "walk": {
+        "fps": 7,
+        "loop": true,
+        "roles": [
+          2,
+          3
+        ]
+      },
+      "crouch": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          4
+        ]
+      },
+      "jump": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          5
+        ]
+      },
+      "attack": {
+        "fps": 9,
+        "loop": false,
+        "roles": [
+          1,
+          6,
+          1
+        ]
+      },
+      "punch": {
+        "fps": 9,
+        "loop": false,
+        "roles": [
+          1,
+          6,
+          1
+        ]
+      },
+      "heavy": {
+        "fps": 9,
+        "loop": false,
+        "roles": [
+          1,
+          10,
+          1
+        ]
+      },
+      "low": {
+        "fps": 9,
+        "loop": false,
+        "roles": [
+          4,
+          7,
+          4
+        ]
+      },
+      "throw": {
+        "fps": 9,
+        "loop": false,
+        "roles": [
+          1,
+          8,
+          1
+        ]
+      },
+      "deploy": {
+        "fps": 6,
+        "loop": false,
+        "roles": [
+          1,
+          8,
+          9,
+          1
+        ]
+      },
+      "shoot": {
+        "fps": 10,
+        "loop": false,
+        "roles": [
+          1,
+          11,
+          1
+        ]
+      },
+      "reload": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          12
+        ]
+      },
+      "optic": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          1
+        ]
+      },
+      "recover": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          12
+        ]
+      },
+      "blade": {
+        "fps": 9,
+        "loop": false,
+        "roles": [
+          1,
+          10,
+          1
+        ]
+      },
+      "roll": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          15
+        ]
+      },
+      "charge": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          6
+        ]
+      },
+      "parry": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          1
+        ]
+      },
+      "hit": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          13
+        ]
+      },
+      "ko": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          14
+        ]
+      }
+    },
+    "actionMap": {
+      "light": "punch",
+      "heavy": "heavy",
+      "low": "low",
+      "throw": "throw",
+      "special": "punch",
+      "specialDown": "deploy",
+      "specialForward": "punch",
+      "specialBack": "guard",
+      "super": "heavy",
+      "utility": "recover"
+    },
+    "phaseMap": {
+      "attack": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "punch": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "heavy": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "low": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "throw": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "shoot": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "blade": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "deploy": {
+        "startup": [
+          0,
+          1
+        ],
+        "active": [
+          2
+        ],
+        "recovery": [
+          3
+        ]
+      }
+    },
+    "scope": "Unreviewed explicit native selection: original actionMap gate and combat stats/timings preserved, projectile slots select shoot/deploy, utility reload, heavy independently drawn kick10, low-profile repli independently drawn roll15. Root action-semantic review and actual renderer QA required.",
+    "selectedActionBySlot": {
+      "light": "punch",
+      "heavy": "heavy",
+      "low": "low",
+      "throw": "throw",
+      "special": "shoot",
+      "specialDown": "deploy",
+      "specialForward": "punch",
+      "specialBack": "roll",
+      "super": "shoot",
+      "utility": "reload"
+    }
+  }
+}
