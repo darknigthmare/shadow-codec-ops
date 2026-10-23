@@ -66,7 +66,7 @@ export function discoverReferences(text, owner, availableFiles) {
 // reviewed owner bytes and every logical name; never ignore a missing prefix.
 export function validateExternalReferences(policy, availableFiles, ownerSources) {
   if (policy === undefined) {
-    if (['src/cqc-pass40-core-metadata-variants-v1.js', 'src/cqc-pass40-core-three-metadata-variants-v1.js', 'src/cqc-pass40-support-skull-mode-v1.js', 'src/cqc-pass40-liquid-support-v1.js'].some((owner) => availableFiles.has(owner))) {
+    if (['src/cqc-pass40-core-metadata-variants-v1.js', 'src/cqc-pass40-core-three-metadata-variants-v1.js', 'src/cqc-pass40-support-skull-mode-v1.js', 'src/cqc-pass40-liquid-support-v1.js', 'src/cqc-pass41-support-native-cqc-v1.js'].some((owner) => availableFiles.has(owner))) {
       throw new Error('Immutable-route owners require their explicit external-reference ledger.');
     }
     return new Map();
@@ -78,15 +78,26 @@ export function validateExternalReferences(policy, availableFiles, ownerSources)
   }
   // This release admits only this reviewed finite ledger. A later route or
   // immutable URL change requires a separately reviewed ledger and this pin.
-  if (sha256(Buffer.from(JSON.stringify(policy))) !== 'a0fedd997c21559b4813f0c71183dee69a00b86732bace7fbce2a291ad92de2d') {
+  const policyDigest = sha256(Buffer.from(JSON.stringify(policy)));
+  const previousPolicyDigest = 'a0fedd997c21559b4813f0c71183dee69a00b86732bace7fbce2a291ad92de2d';
+  // Preparation template only: a final policy pin and actual owner bytes require fresh Root review.
+  const reviewedP41PolicyDigest = '091eefcb5c840d26bfa3618091258230c88ad7b186a10c4e7c3185b8028da579';
+  if (policyDigest !== previousPolicyDigest && policyDigest !== reviewedP41PolicyDigest) {
     throw new Error('External-reference ledger differs from the reviewed release.');
   }
-  const allowedOwners = new Set(['src/cqc-pass40-core-metadata-variants-v1.js', 'src/cqc-pass40-core-three-metadata-variants-v1.js', 'src/cqc-pass40-support-skull-mode-v1.js', 'src/cqc-pass40-liquid-support-v1.js']);
+  if (availableFiles.has('src/cqc-pass41-support-native-cqc-v1.js') && policyDigest === previousPolicyDigest) {
+    throw new Error('P41 CQC requires its separately reviewed explicit external-reference ledger.');
+  }
+  if (policyDigest === reviewedP41PolicyDigest
+      && sha256(Buffer.from(JSON.stringify({schema: policy.schema, entries: policy.entries.slice(0, 82)}))) !== previousPolicyDigest) {
+    throw new Error('The ordered eighty-two P40 immutable routes changed.');
+  }
+  const allowedOwners = new Set(['src/cqc-pass40-core-metadata-variants-v1.js', 'src/cqc-pass40-core-three-metadata-variants-v1.js', 'src/cqc-pass40-support-skull-mode-v1.js', 'src/cqc-pass40-liquid-support-v1.js', 'src/cqc-pass41-support-native-cqc-v1.js']);
   const resolved = new Map(), owners = new Set();
   for (const row of policy.entries) {
     if (!row || Object.keys(row).sort().join(',') !== 'bytes,from,ownerSHA256,sha256,to,url'
         || !allowedOwners.has(row.from) || !availableFiles.has(row.from) || availableFiles.has(row.to)
-        || !/^assets\/combat-costumes-pass40\/[a-z0-9_]+\/[a-z0-9-]+\/[a-z0-9-]+\.(?:png|json)$/.test(row.to)
+        || !/^assets\/combat-costumes-pass(?:40|41)\/[a-z0-9_]+\/[a-z0-9-]+\/[a-z0-9-]+\.(?:png|json)$/.test(row.to)
         || !Number.isSafeInteger(row.bytes) || row.bytes < 1 || row.bytes > 8 * 1024 * 1024
         || !/^[a-f0-9]{64}$/.test(row.sha256) || !/^[a-f0-9]{64}$/.test(row.ownerSHA256)) {
       throw new Error('Invalid explicit external-reference entry.');
@@ -123,7 +134,7 @@ async function externalOwners(sourceRoot, policy) {
   const result = new Map();
   if (policy === undefined) return result;
   // Do not read an unvalidated owner path from the policy.
-  for (const owner of ['src/cqc-pass40-core-metadata-variants-v1.js', 'src/cqc-pass40-core-three-metadata-variants-v1.js', 'src/cqc-pass40-support-skull-mode-v1.js', 'src/cqc-pass40-liquid-support-v1.js']) {
+  for (const owner of ['src/cqc-pass40-core-metadata-variants-v1.js', 'src/cqc-pass40-core-three-metadata-variants-v1.js', 'src/cqc-pass40-support-skull-mode-v1.js', 'src/cqc-pass40-liquid-support-v1.js', 'src/cqc-pass41-support-native-cqc-v1.js']) {
     if (policy?.entries?.some((row) => row?.from === owner)) result.set(owner, await readFile(path.join(sourceRoot, owner)));
   }
   return result;
