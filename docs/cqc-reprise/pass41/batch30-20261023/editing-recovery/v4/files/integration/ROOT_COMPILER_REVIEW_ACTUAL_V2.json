@@ -1,0 +1,35 @@
+{
+  "schema": "cqc.pass41.root-compiler-review/2",
+  "createdAt": "2026-10-23T02:15:56.145263+00:00",
+  "reviewer": "Root",
+  "status": "GO-isolated-P41-compiler-v2",
+  "pins": [
+    {
+      "path": "@PROJECT_ROOT@/integration/compile-native-batch-p41.candidate-v2.mjs",
+      "bytes": 41932,
+      "sha256": "a5fc607b43e6505c2d5671fb9e39f28049c3fcbfde27820d9a8fb30b2356e4bd"
+    },
+    {
+      "path": "@PROJECT_ROOT@/integration/COMPILER_V1_TO_V2_EXPLICIT_UNMAPPED_COUNT_CANDIDATE.diff",
+      "bytes": 5791,
+      "sha256": "1d7d7e308a17e074c5861ffb3eec10fe31fe56f57975fa76a3ceb92383c6c9d5"
+    },
+    {
+      "path": "@PROJECT_ROOT@/integration/ROOT_COMPILER_BOUNDARY_FIXTURES_ACTUAL_V2.json",
+      "bytes": 2354,
+      "sha256": "56dac233749aca216c6e0b6bc598008f5f19eca35567e02d09dcfd46d6fc7e51"
+    },
+    {
+      "path": "@PROJECT_ROOT@/integration/ROOT_UNMAPPED_PHYSICAL_FIGURE_COUNT_FIXTURES_ACTUAL_V2.json",
+      "bytes": 1285,
+      "sha256": "cf5d2497e45a08ce453eb4970603da73f3ce8d9d8762f233ad31fe227fe1a24b"
+    }
+  ],
+  "findings": [
+    "Read exact3-change diff: count excludes only explicit held-unmapped artifacts; original source ownership unchanged.",
+    "Mapped held-unmapped source explicitly rejected; all16roles per facing, source/framing/Root review guards remain mandatory.",
+    "Independently reran20boundary and8targeted fixtures; no failure. Existing Festival/Swamp counter values remain32."
+  ],
+  "artApprovalInherited": false,
+  "productInstallApproved": false
+}
