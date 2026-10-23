@@ -1,0 +1,31 @@
+{
+  "schema": "cqc.p40.support-skull-bounded-host-edits/1",
+  "base": "Apply after the independently reviewed17-gun collision hook; no17-gun/R00/Fenrir source file changes.",
+  "collisionUniqueNeedle": "!q.hit&&(window.CQC_PASS40_SUPPORT_NATIVE_GUNS?.hitTest?.(q,e,state.o)??(q.x>e.x-35&&q.x<e.x+35&&Math.abs(q.y-(e.y-80))<80))",
+  "collisionReplacement": "!q.hit&&(window.CQC_PASS40_SUPPORT_SKULL_DEBRIS?.hitTest?.(q,e,state.o)??window.CQC_PASS40_SUPPORT_NATIVE_GUNS?.hitTest?.(q,e,state.o)??(q.x>e.x-35&&q.x<e.x+35&&Math.abs(q.y-(e.y-80))<80))",
+  "scriptOrder": [
+    {
+      "source": "cqc-pass40-support-skull-mode-v1.js",
+      "position": "Immediately after the19nativeindex, before native wardrobe creation."
+    },
+    {
+      "source": "cqc-pass40-support-skull-debris-v1.js",
+      "position": "After17guns/R00/Fenrir Support adapters; before the host inline game."
+    }
+  ],
+  "bridge": {
+    "base": {
+      "path": "@PROJECT_ROOT@/support-p40-candidate-v1/cqc-pass27-support-native-actors.proposed.js",
+      "bytes": 16190,
+      "sha256": "7ba6c725c3ac241dc57b18921d218d7e542f79ac63baa1e545f8bc441635afb3"
+    },
+    "candidate": {
+      "path": "@PROJECT_ROOT@/support-skull-debris-v1/cqc-pass27-support-native-actors.skull-journal-proposed-v1.js",
+      "bytes": 16282,
+      "sha256": "111160a5e13453100fd085dd743954e3945cef0acde0edd85fd296debf10b2c8"
+    },
+    "onlyOneJournalPredicateAdded": true
+  },
+  "productMutations": false,
+  "actualFinalHostPinStillRequired": true
+}
