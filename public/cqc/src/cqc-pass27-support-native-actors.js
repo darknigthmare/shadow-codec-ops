@@ -50,7 +50,7 @@
     const saved=JSON.parse(storage?.getItem('cqc-native-wardrobe-journal-v1')||'null');
     const preference=saved?.schema==='cqc.native-wardrobe-journal/1'?saved.slots?.[0]?.[fighter.uid]:null;
     const descriptor=root.CQC_NATIVE_WARDROBE_INDEX?.entries?.find(value=>value.uid===fighter.uid&&value.id===preference?.id);
-    if(preference&&wardrobe?.known?.(fighter.uid,preference.id)&&(!preference.metadataSHA256||preference.metadataSHA256===descriptor?.metadata?.sha256))costume=preference.id;
+    if(preference&&wardrobe?.known?.(fighter.uid,preference.id)&&(!preference.metadataSHA256||preference.metadataSHA256===descriptor?.metadata?.sha256||root.CQC_PASS40_SUPPORT_SKULL_MODE?.acceptsJournal?.(fighter,preference,descriptor)===true))costume=preference.id;
    }catch{ /* An unreadable journal remains untouched. */ }
    const selected={...fighter};if(costume==='original')delete selected.costume;else selected.costume=costume;
    leadCache.set(fighter,selected);return selected;

@@ -66,8 +66,8 @@ export function discoverReferences(text, owner, availableFiles) {
 // reviewed owner bytes and every logical name; never ignore a missing prefix.
 export function validateExternalReferences(policy, availableFiles, ownerSources) {
   if (policy === undefined) {
-    if (['src/cqc-pass40-core-metadata-variants-v1.js', 'src/cqc-pass40-core-three-metadata-variants-v1.js'].some((owner) => availableFiles.has(owner))) {
-      throw new Error('Core immutable-route owners require their explicit external-reference ledger.');
+    if (['src/cqc-pass40-core-metadata-variants-v1.js', 'src/cqc-pass40-core-three-metadata-variants-v1.js', 'src/cqc-pass40-support-skull-mode-v1.js', 'src/cqc-pass40-liquid-support-v1.js'].some((owner) => availableFiles.has(owner))) {
+      throw new Error('Immutable-route owners require their explicit external-reference ledger.');
     }
     return new Map();
   }
@@ -78,10 +78,10 @@ export function validateExternalReferences(policy, availableFiles, ownerSources)
   }
   // This release admits only this reviewed finite ledger. A later route or
   // immutable URL change requires a separately reviewed ledger and this pin.
-  if (sha256(Buffer.from(JSON.stringify(policy))) !== '3c0a127922ffba84ed7ee6ec671797b1d0cf2feb5d99c6b279fcad0fc07a2453') {
+  if (sha256(Buffer.from(JSON.stringify(policy))) !== 'a0fedd997c21559b4813f0c71183dee69a00b86732bace7fbce2a291ad92de2d') {
     throw new Error('External-reference ledger differs from the reviewed release.');
   }
-  const allowedOwners = new Set(['src/cqc-pass40-core-metadata-variants-v1.js', 'src/cqc-pass40-core-three-metadata-variants-v1.js']);
+  const allowedOwners = new Set(['src/cqc-pass40-core-metadata-variants-v1.js', 'src/cqc-pass40-core-three-metadata-variants-v1.js', 'src/cqc-pass40-support-skull-mode-v1.js', 'src/cqc-pass40-liquid-support-v1.js']);
   const resolved = new Map(), owners = new Set();
   for (const row of policy.entries) {
     if (!row || Object.keys(row).sort().join(',') !== 'bytes,from,ownerSHA256,sha256,to,url'
@@ -123,7 +123,7 @@ async function externalOwners(sourceRoot, policy) {
   const result = new Map();
   if (policy === undefined) return result;
   // Do not read an unvalidated owner path from the policy.
-  for (const owner of ['src/cqc-pass40-core-metadata-variants-v1.js', 'src/cqc-pass40-core-three-metadata-variants-v1.js']) {
+  for (const owner of ['src/cqc-pass40-core-metadata-variants-v1.js', 'src/cqc-pass40-core-three-metadata-variants-v1.js', 'src/cqc-pass40-support-skull-mode-v1.js', 'src/cqc-pass40-liquid-support-v1.js']) {
     if (policy?.entries?.some((row) => row?.from === owner)) result.set(owner, await readFile(path.join(sourceRoot, owner)));
   }
   return result;
