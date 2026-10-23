@@ -316,6 +316,9 @@ body{background:#030508!important;overflow:hidden}.toolbar,.footer{display:none!
 <script src="../src/cqc-pass39-raiden-dlc-index.js"></script>
 <script src="../src/cqc-pass39-solid-gala-index.js"></script>
 <script src="../src/cqc-pass40-native-batch-index-v2.js"></script>
+<script src="../src/cqc-pass40-core-native-origins-v1.js"></script>
+<script src="../src/cqc-pass40-core-three-metadata-variants-v1.js"></script>
+<script src="../src/cqc-pass40-core-metadata-variants-v1.js"></script>
 <script src="../src/cqc-pass19-native-wardrobe-library.js"></script>
 <script src="../src/cqc-pass19-native-wardrobe-static-compat.js"></script>
 <script src="../src/cqc-pass21-native-machine-costume-adapter.js"></script>
@@ -1302,11 +1305,15 @@ function spawnProjectile(s,f,m) {
  if(p.returnResource&&f.resource<(m.resourceCost||1))return;
  if(m.payOnShot){if(f.resource<1)return;f.resource--;}
  if(p.returnResource)f.resource=Math.max(0,f.resource-(m.resourceCost||1));
- s.projectiles.push({id:++s.projectileSerial,age:0,homingFrames:p.homingFrames||0,owner:f.slot,returnResource:!!p.returnResource,resourceOwner:f.slot,x:clamp(f.x+f.facing*60,ARENA.min,ARENA.max),y:f.y+(p.height??154),breakable:!!p.breakable,deflectable:p.deflectable!==false,vx:p.speed*f.facing,vy:p.vy??0,kind:p.kind,ttl:p.speed>0?Math.ceil(p.range/p.speed)+70:(p.fuse||150)+40,travel:0,range:p.range,size:p.size,bounces:p.bounces??0,fuse:p.fuse??0,exploding:0,hit:false,m:{...m,projectile:undefined,rank:4},move:f.attack.name});
+ const nativeOrigins=window.CQC_PASS40_CORE_NATIVE_ORIGINS;
+ const nativePose=nativeOrigins?.owns?.(f)?window.CQC_PASS16_CORE_SPRITES?.poseFor?.(f,s.frame/60,s,{getMove}):null;
+ const nativePoint=nativePose?nativeOrigins.projectilePoint(f,m,nativePose):null;
+ s.projectiles.push({id:++s.projectileSerial,age:0,homingFrames:p.homingFrames||0,owner:f.slot,returnResource:!!p.returnResource,resourceOwner:f.slot,x:nativePoint?nativePoint.x:clamp(f.x+f.facing*60,ARENA.min,ARENA.max),y:nativePoint?nativePoint.y:f.y+(p.height??154),breakable:!!p.breakable,deflectable:p.deflectable!==false,vx:p.speed*f.facing,vy:p.vy??0,kind:p.kind,ttl:p.speed>0?Math.ceil(p.range/p.speed)+70:(p.fuse||150)+40,travel:0,range:p.range,size:p.size,bounces:p.bounces??0,fuse:p.fuse??0,exploding:0,hit:false,m:{...m,projectile:undefined,rank:4},move:f.attack.name});
+ if(nativePoint)s.projectiles.at(-1).pass40NativeOrigin={...nativePoint};
  initializeGhostProjectile(s,s.projectiles.at(-1),f,m);
  initializeZanzibarProjectile(s,s.projectiles.at(-1),f,m);
  initializeOuterProjectile(s,s.projectiles.at(-1),f,m);
- event(s,'shot',{slot:f.slot,x:f.x+f.facing*75,y:f.y+154});
+ event(s,'shot',{slot:f.slot,x:nativePoint?nativePoint.x:f.x+f.facing*75,y:nativePoint?nativePoint.y:f.y+154});
 }
 function updateProjectiles(s) {
  for(const p of s.projectiles){

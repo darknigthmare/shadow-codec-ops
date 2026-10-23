@@ -186,7 +186,7 @@
   }
   function caption(operation){return resolveEnemy(operation).label;}
   function operationBindings(){return Object.keys(OPERATIONS).map(id=>resolveEnemy({id,titleId:OPERATIONS[id].titleID}));}
-  return {version:'cqc-support-existing-native-actors/1',resolveEnemy,selectedLead,resetLead,requests,preload,isReady,deferLaunch,cancelPending,drawEnemy,drawLead,drawLeadPreview,drawContact,caption,operationBindings,
+  return {version:'cqc-support-existing-native-actors/1',resolveEnemy,selectedLead,resetLead,requests,preload,isReady,deferLaunch,cancelPending,drawEnemy,leadScale,drawLead,drawLeadPreview,drawContact,caption,operationBindings,
    diagnostics:()=>({...diagnostics,lastEnemy:diagnostics.lastEnemy?{...diagnostics.lastEnemy}:null,lastLead:diagnostics.lastLead?{...diagnostics.lastLead}:null})};
  }
  return {createBridge,OPERATIONS,GROUND,SCALE};
