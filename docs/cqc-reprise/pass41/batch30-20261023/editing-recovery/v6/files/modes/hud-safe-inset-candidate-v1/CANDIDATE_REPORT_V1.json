@@ -1,0 +1,19 @@
+{
+  "schema": "cqc.p41.support-hud-inset-candidate/1",
+  "status": "candidate-unapproved",
+  "productMutations": false,
+  "input": {
+    "path": "@PROJECT_ROOT@/modes/fifteen-candidate-v1/support-network-v053.overlay-cqc-v1.html",
+    "bytes": 306192,
+    "sha256": "4e992c7d5c59f7d8f98aa8d6f9737742b441b0fdeb149e202a710c8bbc734442"
+  },
+  "output": {
+    "path": "@PROJECT_ROOT@/modes/hud-safe-inset-candidate-v1/support-network-v053.hud-inset-candidate-v1.html",
+    "bytes": 306584,
+    "sha256": "135eef729392b03b43fdbb1507a9991d7297d1ffa7f075ee50d955ababf6b579"
+  },
+  "change": "Translate only HUD canvas drawing below measured visible navigation by 12 CSS pixels; save/restore around HUD. Canvas element dimensions, world drawing, update, camera, physics, controls and FX positions remain unchanged.",
+  "sourceInversePatchIdentical": true,
+  "hudInsetCSSPixels": 12,
+  "source49PNGAndNineJobsModified": false
+}

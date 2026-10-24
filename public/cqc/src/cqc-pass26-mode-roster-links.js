@@ -24,7 +24,7 @@ function append(fighters){
   if(known.has(f.uid))continue;
   const sprite=root.CQC_COMBAT_SPRITE_CATALOG?.entries?.[f.uid];
   const rig=root.CQC_PASS19_GEKKO_DATA?.playable?.[f.uid];
-  if(!sprite&&!rig)continue;
+  if(!sprite&&!rig&&!root.CQC_PASS18_MACHINES?.has(f.uid))continue;
   if(root.CQC_PASS20_ROSTER_NATIVE?.uids.includes(f.uid))f=root.CQC_PASS20_ROSTER_NATIVE.tailor(f);
   fighters.push(f);known.add(f.uid);added.push(f);
  }

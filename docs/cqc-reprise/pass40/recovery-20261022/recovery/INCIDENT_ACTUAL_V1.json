@@ -1,0 +1,79 @@
+{
+  "schema": "cqc.pass40.reprise-local-recovery-incident/1",
+  "observedUTC": "2026-10-22T19:31:40.066393+00:00",
+  "status": "P40 local source bytes and temporary implementation unavailable; no recovery or publication claimed",
+  "scope": "Read-only inspection of /workspace and direct existence checks of inherited /tmp P40 paths; durable output limited to this new recovery directory.",
+  "observed": {
+    "oldTemporaryDirectoriesExist": {
+      "/tmp/cqc-pass40-root": false,
+      "/tmp/cqc-pass40-integration": false,
+      "/tmp/cqc-pass40-canonical": false,
+      "/tmp/cqc-pass40-original": false,
+      "/tmp/cqc-pass40-publication": false,
+      "/tmp/cqc-pass40-build": false,
+      "/tmp/cqc-pass40-machines": false,
+      "/tmp/cqc-pass40-roster": false
+    },
+    "generatedP40Symlinks": 184,
+    "readableTargets": 0,
+    "aliasTargetDirectoryCounts": {
+      "cqc-pass40-original": 84,
+      "cqc-pass40-canonical": 81,
+      "cqc-pass40-machines": 10,
+      "cqc-pass40-roster": 9
+    },
+    "exactAliasInventory": {
+      "file": "P40_GENERATED_ALIASES_EXACT.json.gz",
+      "bytes": 5730,
+      "sha256": "31ae9424bf80ae174f88f5003cee88635392619a34a73e5c78c4af052aa5a6af",
+      "gzipUncompressedBytes": 34887,
+      "gzipUncompressedSha256": "e4efeb2d97d5745f7f5c591b12e9397400985d95ab875e6c68bd63e2c9c940d5",
+      "verification": "Gzip decompressed and all184 exact alias-target strings re-read successfully; all targets remain unavailable."
+    },
+    "newRegularFilesWorkspaceScan": {
+      "cutoffUTC": "2026-10-20T12:00:00+00:00",
+      "count": 203,
+      "allUnder": "/workspace/cqc-pass40-storage-recovery",
+      "excludedDirectories": [
+        ".git",
+        "node_modules"
+      ],
+      "followSymlinks": false,
+      "interpretation": "No newly dated regular P40 art, implementation or metadata found by this scan; timestamps alone do not establish deletion time or cause."
+    },
+    "persistentPriorRecoveryDirectory": {
+      "path": "/workspace/cqc-pass40-storage-recovery/closed-proofs-strict-v1",
+      "manifest": "manifest.json",
+      "manifestDescribes": "76 historical independent raw QA/browser/API/storage execution journals; explicitly excludes source, PNG, Git, app/standalone, archives, delivery, CAS or index."
+    },
+    "priorDeliveryDirectoryExists": "/workspace/cqc-pass39-delivery"
+  },
+  "limitations": [
+    "The inherited summary reports22approved costumes plus pending Grenade, but its audit JSON, source PNGs and compiled outputs were in missing /tmp. They cannot be treated as present or newly verified.",
+    "184 symlink names are recoverable metadata, not184 recoverable images. Exact image bytes cannot be reconstructed from filenames or remembered hashes.",
+    "No remote GitHub, Drive or Vercel archive verification was performed by this agent; external recoverability remains a separate check.",
+    "No assertion is made about the exact cause or time of temporary storage disappearance.",
+    "The requested batch30 is not marked complete by this incident report."
+  ],
+  "imageRecoveryCapabilityInspection": {
+    "mechanism": "Inspected currently exposed tool metadata for image generation and retrieval capabilities; no image-generation call made.",
+    "nativeImageTool": "image_gen__imagegen",
+    "nativeCapability": "Generate a new image or edit referenced images; accepts prompt and image references.",
+    "historyRetrieveByExecFilenameCapabilityFound": false,
+    "otherServices": "Tools that browse Canva, Higgsfield, pets or Page assets do not establish that these image_gen exec outputs were uploaded to those services. No service lookup by invented asset IDs was attempted."
+  },
+  "actions": {
+    "aliasChanged": false,
+    "sourceBytesChanged": false,
+    "priorDeliveryChanged": false,
+    "deletionExecuted": false,
+    "generationExecuted": false,
+    "publicationExecuted": false,
+    "createdFiles": [
+      "P40_GENERATED_ALIASES_EXACT.json.gz",
+      "INCIDENT_ACTUAL_V1.json",
+      "SHA256SUMS"
+    ]
+  },
+  "recommendedNextStep": "Check for an independently published immutable external P40 archive; otherwise rebuild missing lot from verified P39 baseline and treat new source images/audits as new work."
+}

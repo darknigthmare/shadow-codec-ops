@@ -1,0 +1,120 @@
+{
+  "schema": "cqc.p40.resume.canonical-artist-delivery/1",
+  "createdUTC": "2026-10-22T19:41:03.177732+00:00",
+  "uid": "core__snake",
+  "costumeId": "mgs3-camo-soviet-woodland",
+  "incarnation": "Young original MGS3 PS2 Naked Snake, pre-eye-injury; no merge with other Big Boss ages or remakes.",
+  "status": "ART CANDIDATES, NOT PLAYABLE OR APPROVED; right reload unresolved HOLD.",
+  "files": [
+    {
+      "file": "right-v1.png",
+      "bytes": 1420902,
+      "sha256": "381a436da58bbefe60a26e3bb162cc073cd9bf59f9a0ee1386fa34feeae5cc29",
+      "regularFile": true,
+      "nativePngBytesUntouched": true
+    },
+    {
+      "file": "left-v1.png",
+      "bytes": 1131959,
+      "sha256": "3451da7acef0751c3d986be3e6e57a8939c674a584e325d294a60b20116147b7",
+      "regularFile": true,
+      "nativePngBytesUntouched": true
+    },
+    {
+      "file": "native-walk-alternation-v1.png",
+      "bytes": 1934271,
+      "sha256": "3abf3e56ab9093785eedf587dedf4e8529d8f1d1808dfd78f0d8bd308c173f6a",
+      "regularFile": true,
+      "nativePngBytesUntouched": true
+    }
+  ],
+  "references": "refs/REFERENCE_PROVENANCE_V1.json",
+  "physicalReview": {
+    "officialUniformViewed": true,
+    "officialMk22IconViewed": true,
+    "allThreeNativePngsViewed": true,
+    "observedCostume": "Brown/tan/near-black official Soviet Woodland design, olive fitted undersleeves, crossed harness, olive pouches, soft camouflage cloth knees; no hard black kneepads apparent.",
+    "visibleEye": "No eyepatch; side profile occludes far eye naturally.",
+    "bounds": "All pages have zero alpha>16 boundary pixels. This does not prove anatomy: right reload has truncated lower legs/boots within the canvas.",
+    "transparency": "Native-walk sheet contains brown RGB under alpha0; measured gaps between figures are transparent, not an opaque composited brown background. No chromakey or raster editing performed.",
+    "reproductionLimits": "Authored 2D interpretation of official visual references, not a claim of exact retail animation, mesh proportions or perfectly matched motif UV placement."
+  },
+  "fullSheetOrder": [
+    "idle",
+    "guard",
+    "walkA",
+    "walkB",
+    "crouch",
+    "jump",
+    "punch",
+    "low",
+    "grab",
+    "empty-hand grenade release",
+    "knife",
+    "suppressed Mk22 shoot",
+    "manual Mk22 reload",
+    "hit",
+    "KO",
+    "roll"
+  ],
+  "mandatoryHolds": [
+    {
+      "source": "right-v1.png",
+      "poseIndex": 12,
+      "reason": "Kneeling figure legs/boots visibly cut off anatomically; gun silhouette resembles a revolver rather than attested Mk22. Do not map as valid complete Mk22 reload."
+    },
+    {
+      "source": "right-v1.png and left-v1.png",
+      "poseIndices": [
+        2,
+        3
+      ],
+      "reason": "Initial walk phases do not exchange contralateral limbs clearly enough; replace only after Root review of separately drawn six-figure gait candidate."
+    }
+  ],
+  "additionalUncertainties": [
+    {
+      "source": "left-v1.png",
+      "poseIndex": 12,
+      "reason": "Complete legs and boots, but manual cycling action and precise gun identity require independent Root inspection; not certified by artist."
+    },
+    {
+      "source": "right-v1.png",
+      "poseIndex": 15,
+      "reason": "Tucked kneeling/roll-entry silhouette can represent a roll phase; one image does not establish complete roll animation."
+    },
+    {
+      "source": "native-walk-alternation-v1.png",
+      "reason": "Six independently drawn figures show opposite forearm/limb depth order. Promised10percent outer margins were not achieved (11px top); all six complete and no edge opaque pixels. Calibrate each facing from its own neutral reference before any runtime use."
+    }
+  ],
+  "walkSupplementOrder": [
+    "R neutral",
+    "R walkA",
+    "R walkB",
+    "L neutral",
+    "L walkA",
+    "L walkB"
+  ],
+  "repairAttempt": {
+    "prompt": "generation/right-complete-reload-v1-prompt.txt",
+    "receipt": "generation/right-complete-reload-v1-rejection.json",
+    "status": "Blocked at input moderation violence; no generated output and no retry/rephrasing to bypass.",
+    "requestID": "7b73ef1a-4556-479c-9974-081807683538"
+  },
+  "nativeAlphaAnalysis": {
+    "file": "NATIVE_ALPHA_COMPONENT_READONLY_V1.json",
+    "sha256": "3b9e3ac77e085277bd3ddf953d0e9c233b4c88a5ea8f1affeaf8201c44c38dbe",
+    "scope": "Read-only Pillow alpha and8-connected component measurements, zero original pixel modifications."
+  },
+  "preservation": {
+    "allNewPngCopiesRegularWorkspaceFiles": true,
+    "eachCopiedAndFsyncedBeforeNextGeneration": true,
+    "generatedOriginalsRetained": true,
+    "sourceSymlinksUsed": false,
+    "temporaryBackingsUsed": false,
+    "imageEditingOutsideImagegen": false,
+    "priorP39OrLostP40AliasesModified": false
+  },
+  "next": "Independent Root review, exact component ownership, anatomical calibration and native weapon-port inspection; right reload remains unresolved and prevents claiming a fully reviewed16-action-per-facing costume."
+}

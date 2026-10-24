@@ -20,7 +20,14 @@
     const fighter=costumed(actor);if(!fighter||fighter.costume==='original'&&!legacyOriginals.has(fighter.uid))return false;
     const entry=loader()?.getEntry(fighter.uid,fighter);if(!entry)return false;
     const pose=root.CQC_PASS16_CORE_SPRITES?.poseFor(actor,time,state,hooks)||{time};
+    if(actor.animKey==='getup'&&!pose.ko&&!state.grapple
+      && entry.pass40Revision==='native-batch40-v2'
+      && loader()?.actionName({getup:true},entry)==='roll'){
+      pose.getup=true;pose.hit=false;pose.crouch=false;pose.walk=false;
+    }
     const move=actor.attack?hooks.getMove?.(actor,actor.attack.name):null;
+    const coreVisual=root.CQC_PASS40_CORE_NATIVE_ORIGINS?.poseFor?.(actor,move,pose);
+    if(coreVisual)Object.assign(pose,coreVisual);
     if(move?.utility&&/reload|cylinder/i.test(move.utility))pose.moveSlot=Object.keys(entry.actionMap).find(key=>entry.actionMap[key]==='reload')||pose.moveSlot;
     if(!pose.entityKey)pose.entityKey='core-pass17-costume:'+actor.id+':'+actor.slot;
     const worldHeight=root.CQC_PASS19_WORLD_SCALE?.displayHeightFor?.(fighter.uid,fighter.costume,'core',entry);

@@ -121,6 +121,7 @@ function spawn(s,p,m,atk,i){const heavy=['rocket','rail','explosive','fire'].inc
  face:p.face,reflections:0,bounces:m.bounces||0,returned:false,dead:false,hitTargets:{},steady:atk.steady,
  burstId:atk.id,hitMax:m.returnAt?2:1};
  if(root.CQC_PASS35_PW_BOX_ARTICULATION?.ownsProjectile?.(p,m))q.pass35BoxEmissionOwner={uid:p.f.uid,costume:p.f.costume||'original',attackId:atk.id};
+ root.CQC_PASS40_VS_DELAYED_BURSTS?.register?.(s,p,m,atk,q);
  if(bodyAim?.valid){q.vx=bodyAim.velocity.vx;q.vy=bodyAim.velocity.vy;}s.projectiles.push(q);event(s,'projectile',p,{id:q.id,slot:m.slot,index:i});if(s.projectiles.length>60)s.projectiles.shift();return q;}
 function activate(s,p,a){if(a.activated)return;a.activated=true;p.stats.activations++;p.lastActivation=a.name;const d=a.def,o=other(s,p);event(s,'activate',p,{slot:a.name,kind:d.kind,name:d.name});
  if(d.kind==='projectile'){for(let i=0;i<(d.count||1);i++)spawn(s,p,d,a,i);}
@@ -195,6 +196,7 @@ function projectileStep(s){for(const q of s.projectiles){if(q.dead)continue;if(q
    }
   }
  }
+ const nativeBurstPoint=root.CQC_PASS40_VS_DELAYED_BURSTS?.emission?.(s,q);if(nativeBurstPoint){q.x=nativeBurstPoint.x;q.y=nativeBurstPoint.y;}
  q.age++;q.life--;
  const m=q.def,a=actors(s)[q.owner],d=other(s,a);q.x+=q.vx;q.y+=q.vy;
  if(m.gravity)q.vy+=m.gravity;

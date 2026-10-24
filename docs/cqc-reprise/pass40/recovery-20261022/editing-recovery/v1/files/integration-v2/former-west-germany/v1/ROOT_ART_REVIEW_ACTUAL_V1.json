@@ -1,0 +1,122 @@
+{
+  "schema": "cqc.p40.root-art-review/2",
+  "status": "approved",
+  "reviewer": "Root /root",
+  "reviewedAt": "2026-10-22T22:18:53.831705+00:00",
+  "inputSHA256": "016cd11d15bcc9410be36b75cb4dee7491301b360b77c08853be5207017bd84c",
+  "checks": {
+    "identity": true,
+    "incarnation": true,
+    "nativeArt": true,
+    "semanticPoses": true,
+    "equipment": true,
+    "ownership": true,
+    "framing": true,
+    "selectedWeaponPoints": true
+  },
+  "limits": [
+    "Approval covers the exact32selected native2D drawings, complete Canvas source contact, four native weapon-point ROIs, explicit opaque-pixel ownership and proposed fixed densities. Original PNG byte pins were independently checked. Full original source pages were inspected by the artist, not all re-opened by Root.",
+    "Reference-led interpretation of original KONAMI PS2 costume plate. Exact retail UVs, hidden surfaces, original animation cycles, absolute metrics and literal1:1 identity remain unverified.",
+    "Two separately drawn gait half-steps per native direction; gait is an authored CQC adaptation. No mirrored bitmap, recolour or downsample is admitted as new source art.",
+    "Original game-profile contracts must remain exact. Actual mode, menus, pause, sizing and projectile-origin QA are required before installation.",
+    "Root physically inspected native-coordinate projected-head/cuff comparisons. Right-B density376 is accepted as a visual common drawing scale; unmapped second neutral309 is excluded. Head projection near0.942 relative to first neutral supports this choice; cuff projection is not bone length or an automatic anthropometric certificate."
+  ],
+  "requiredProjectilesFromFinalProfile": [
+    {
+      "slot": "special",
+      "kind": "projectile",
+      "tag": "tranq",
+      "startup": 19,
+      "requiredNativeFacings": [
+        "right",
+        "left"
+      ]
+    },
+    {
+      "slot": "specialDown",
+      "kind": "projectile",
+      "tag": "explosive",
+      "startup": 24,
+      "requiredNativeFacings": [
+        "right",
+        "left"
+      ]
+    }
+  ],
+  "observations": [
+    "Root physically reviewed original publisher PS2 costume reference, full32selected-role constant-density Canvas contact and all4native muzzle/release point zooms.",
+    "Naked Snake before eye injury remains distinct, two natural eyes, bandana, original harness/pouches and tall boots. Complete two-legged drawings, owned limbs and equipment were examined in both directions.",
+    "Pelvis-relative horizontal anchors and foot-floor placement were examined across locomotion, low/hit/KO/roll. Selected suppressed Mk22 muzzle follows barrel direction; grenade hand is open at the selected source release point.",
+    "West German left-sleeve flag is retained only on anatomicalLEFT; four old double-flag figures stay unmapped and are replaced by the independent corrective source. Right-facing outside sleeve has no extra flag."
+  ],
+  "heldRoles": [],
+  "evidencePins": {
+    "full32SourceContact": {
+      "path": "@PROJECT_ROOT@/integration-v2/former-west-germany/v1/qa-contact-v1/PHYSICAL_ROLES_CONTACT_CANDIDATE_V1.png",
+      "bytes": 905003,
+      "sha256": "f23107bf7c0c2ceabe298e80f9d228a0573ba9e335d04750f26fcb981e0bfcec"
+    },
+    "all4NativePortROIs": {
+      "path": "@PROJECT_ROOT@/integration-v2/former-west-germany/v1/qa-contact-v1/NATIVE_WEAPON_POINTS_CANDIDATE_V1.png",
+      "bytes": 152373,
+      "sha256": "7cc1fd5f092b3d54ce6039c6c6d70263c7d55815724a9c59b3753bdc7594e901"
+    },
+    "geometry": {
+      "path": "@PROJECT_ROOT@/integration-v2/former-west-germany/v1/SOURCE_GEOMETRY_CANDIDATE_V1.json.gz",
+      "bytes": 194894,
+      "sha256": "a5779c3c350e5aa8f75ee1902c647c29898dc0f3edb7c202fd0edb91d62226bd"
+    },
+    "ownershipBook": {
+      "path": "@PROJECT_ROOT@/art/core__snake/mgs3-camo-former-west-germany/ROLEBOOK_EXPLICIT_CANDIDATE_V1.json",
+      "bytes": 14225,
+      "sha256": "7b457708726445dd0aa83734234d0f4b30db3ca3dd3c3893f2af80f009c2f882"
+    },
+    "bodyAxes": {
+      "path": "@PROJECT_ROOT@/integration-v2/former-west-germany/v1/BODY_AXIS_PROPOSALS_CANDIDATE_V1.json",
+      "bytes": 17561,
+      "sha256": "39cd290986d52f3ad760c4bdb98834055d39f8184dc9e213a02b5dc469ffc5e4"
+    }
+  },
+  "nativeSourceCalibrations": [
+    {
+      "file": "right-a-v2.png",
+      "sourceSHA256": "920369899347e283ae2597cb78bae40f8920fb435dea1e514500c2fa873c89d0",
+      "proposedSourceFrameHeight": 413,
+      "kind": "same-page-neutral",
+      "neutralPose": "right-right-a-v2-idle",
+      "RootApproved": false
+    },
+    {
+      "file": "right-b-v2.png",
+      "sourceSHA256": "d798c3a62e22c09cc1daab1d6ee635daab4bc60baade1bfd2b1fd19054956a02",
+      "proposedSourceFrameHeight": 376,
+      "kind": "same-page-neutral",
+      "neutralPose": "right-right-b-v2-neutral16",
+      "RootApproved": false
+    },
+    {
+      "file": "left-a-v2.png",
+      "sourceSHA256": "553465d6b1c2b82efbf41308b4938022326a5194ac3c12f5c077d695c4738022",
+      "proposedSourceFrameHeight": 418,
+      "kind": "same-page-neutral",
+      "neutralPose": "left-left-a-v2-idle",
+      "RootApproved": false
+    },
+    {
+      "file": "left-b-v2.png",
+      "sourceSHA256": "cd5126bc91ea8a458b93e4b638e0300b3bb91a667f7da7c46c4702d2927ed7c1",
+      "proposedSourceFrameHeight": 334,
+      "kind": "same-page-neutral",
+      "neutralPose": "left-left-b-v2-neutral16",
+      "RootApproved": false
+    },
+    {
+      "file": "left-single-flag-corrective-v1.png",
+      "sourceSHA256": "76bf1ea5077982995578c261b5806bd74de5840870091f078478cad74d0ac33f",
+      "proposedSourceFrameHeight": 492,
+      "kind": "same-page-neutral",
+      "neutralPose": "left-left-single-flag-corrective-v1-neutral",
+      "RootApproved": false
+    }
+  ]
+}

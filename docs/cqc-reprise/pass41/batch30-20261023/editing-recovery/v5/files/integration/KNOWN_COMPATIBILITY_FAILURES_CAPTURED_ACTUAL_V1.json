@@ -1,0 +1,128 @@
+{
+  "schema": "cqc.p41.read-only-candidate-compatibility-sectors/1",
+  "status": "analysis-only-no-art-approval-or-runtime-admission",
+  "productMutations": false,
+  "sourcePNGMutations": false,
+  "fabricatedRootReviews": false,
+  "actualValidatorsRelaxed": false,
+  "actualValidatorCoverageClaimed": false,
+  "limits": [
+    "Structural sectors mirror current pinned runtime requirements without creating approved/verified review records.",
+    "Pixel ownership is read from pinned existing geometry; final compiler recomputes it independently.",
+    "Source-point rectangle/owned contour/PNG alpha are read without pixel modification. Anatomical landmarks, fidelity and physical pose selection still need actual inspection and final compiler checks.",
+    "This report cannot admit a costume or replace exact Root approval and the real unchanged renderer/wardrobe validators."
+  ],
+  "runtimeSourcePins": [
+    {
+      "path": "@APP_ROOT@/public/cqc/src/cqc-sprite-renderer.js",
+      "bytes": 50667,
+      "sha256": "ca1b36c81606d2fa29bc2d9ebc631db3c33a25257023068f03a728bba930f756"
+    },
+    {
+      "path": "@APP_ROOT@/public/cqc/src/cqc-pass19-costumes.js",
+      "bytes": 17243,
+      "sha256": "184ba7346da13067f3fe977326cb6c6004eb711bd7b67cdbd3e77d9afd7db1e3"
+    }
+  ],
+  "entries": [
+    {
+      "input": {
+        "path": "@PROJECT_ROOT@/integration/gala-pure-roster50__nastasha_mgs1-provenance-v3/JOB_FOR_ROOT_REVIEW.json",
+        "bytes": 41137,
+        "sha256": "44583e871a282242ff24ead984416db72f0799b48a02b848f9d82f454d01d7fc"
+      },
+      "uid": "roster50__nastasha_mgs1",
+      "id": "tuxedo",
+      "errors": [
+        {
+          "sector": "provenance",
+          "detail": "sources[1] must have a real HTTPS URL; local/generated source records belong in a separate qualified field"
+        },
+        {
+          "sector": "provenance",
+          "detail": "sources[2] must have a real HTTPS URL; local/generated source records belong in a separate qualified field"
+        }
+      ],
+      "pendingApprovalOrCalibration": [],
+      "expectedReviewSelectedWeaponPoints": "not-applicable-no-projectiles",
+      "expectedSelectedActionBySlot": {
+        "light": "punch",
+        "heavy": "heavy",
+        "low": "low",
+        "throw": "throw",
+        "special": "punch",
+        "specialDown": "deploy",
+        "specialForward": "punch",
+        "specialBack": "guard",
+        "super": "punch",
+        "utility": "recover"
+      },
+      "physicalRoles": 32,
+      "candidateOnly": true,
+      "notAdmitted": true,
+      "realValidatorGateBypassed": false,
+      "actualCompilerStillRequired": true
+    },
+    {
+      "input": {
+        "path": "@PROJECT_ROOT@/integration/gala-pure-roster50__mei_mgs1-manual-axes-v1/JOB_FOR_ROOT_REVIEW.json",
+        "bytes": 41110,
+        "sha256": "a1952f4187be1777a546714ccc74ed568f01659a96684582a0eedaaf4e773d65"
+      },
+      "uid": "roster50__mei_mgs1",
+      "id": "tuxedo",
+      "errors": [
+        {
+          "sector": "provenance",
+          "detail": "sources[1] must have a real HTTPS URL; local/generated source records belong in a separate qualified field"
+        },
+        {
+          "sector": "provenance",
+          "detail": "sources[2] must have a real HTTPS URL; local/generated source records belong in a separate qualified field"
+        },
+        {
+          "sector": "dispatch",
+          "detail": "special: actual native dispatcher expects punch"
+        },
+        {
+          "sector": "dispatch",
+          "detail": "specialForward: actual native dispatcher expects punch"
+        },
+        {
+          "sector": "dispatch",
+          "detail": "specialBack: actual native dispatcher expects guard"
+        },
+        {
+          "sector": "dispatch",
+          "detail": "super: actual native dispatcher expects punch"
+        }
+      ],
+      "pendingApprovalOrCalibration": [
+        {
+          "sector": "calibration-unresolved",
+          "asset": "page0-right",
+          "method": "unapproved-clipped-neutral-placeholder",
+          "detail": "not an admitted source calibration; compiler must continue to hold it"
+        }
+      ],
+      "expectedReviewSelectedWeaponPoints": "not-applicable-no-projectiles",
+      "expectedSelectedActionBySlot": {
+        "light": "punch",
+        "heavy": "heavy",
+        "low": "low",
+        "throw": "throw",
+        "special": "punch",
+        "specialDown": "deploy",
+        "specialForward": "punch",
+        "specialBack": "guard",
+        "super": "punch",
+        "utility": "recover"
+      },
+      "physicalRoles": 32,
+      "candidateOnly": true,
+      "notAdmitted": true,
+      "realValidatorGateBypassed": false,
+      "actualCompilerStillRequired": true
+    }
+  ]
+}
