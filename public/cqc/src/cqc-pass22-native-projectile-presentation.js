@@ -29,6 +29,7 @@
   return valid?entry:null;
  }
  function drawNative(context,actor,fighter,x,y,face,scale,pose){
+  if(root.CQC_PASS40_VS_DELAYED_BURSTS?.drawNative?.(context,actor,fighter,x,y,face,scale,pose))return true;
   const entry=reviewedEntry(actor,fighter),S=root.CQC_COMBAT_SPRITES;
   if(!entry)return false;
   const attack=actor.attack,move=attack?.def;

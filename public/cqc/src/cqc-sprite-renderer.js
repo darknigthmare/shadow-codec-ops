@@ -210,6 +210,28 @@
     pumpImageQueue();
     return record;
   }
+  // A Root-reviewed P40 costume can own its roll without a matching historical base atlas.
+  // This guard admits only role15; combat move dispatch retains its existing source-map checks.
+  function hasReviewedPass40Roll(entry) {
+    const concept=entry?.costumeConcept;
+    if(concept?.schema!=='cqc.costume-design/1'||concept.sourceUID!==entry.uid
+      || !['canonical','retro','nextgen','tuxedo','cyborg','survive','metalgear'].includes(concept.family))return false;
+    const owned=[...(costumeEntries.get(entry.uid)?.values()||[])].find(value=>
+      value.costumeConcept===concept && value.uid===entry.uid && value.pass21Revision===entry.pass21Revision
+      && value.pass40Revision==='native-batch40-v2' && value.pass40Revision===entry.pass40Revision
+      && (concept.family==='canonical'?value.pass21Revision===undefined:value.pass21Revision==='native-'+(concept.family==='cyborg'?'cyborg-mgr':concept.family)+'-v1')
+      && value.mirror===false && value.fallbackMissingActions===false && entry.mirror===false && entry.fallbackMissingActions===false
+      && value.review===entry.review && value.review?.status==='approved'
+      && typeof value.review.reviewer==='string' && value.review.reviewer.startsWith('Root')
+      && /^[a-f0-9]{64}$/.test(value.review.artAuditSHA256||'')
+      && value.actionMap===entry.actionMap && (value.actions===entry.actions||value.oppositeActions===entry.actions)
+      && value.nativeDirectionRegions===entry.nativeDirectionRegions && value.nativeDirectionRegions?.schema==='cqc.native-direction-regions/1'
+      && value.nativeDirectionRegions.uid===value.uid && value.nativeDirectionRegions.regions?.length===32
+      && new Set(value.nativeDirectionRegions.regions.map(region=>JSON.stringify([region.face,region.file,region.sha256,region.rect]))).size===32
+      && [1,-1].every(face=>value.nativeDirectionRegions.regions?.filter(region=>region.face===face&&/^[a-f0-9]{64}$/.test(region.sha256||'')&&region.file?.startsWith('assets/combat-costumes-pass40/'+value.uid+'/')&&Array.isArray(region.rect)&&region.rect.length===4&&region.rect.every(Number.isFinite)&&region.rect[2]>0&&region.rect[3]>0).length===16)
+      && [value.actions,value.oppositeActions].every(actions=>actions?.roll?.frames?.length>0&&actions.roll.frames.every(frame=>frame.physicalPoseIndex===15)));
+    return !!owned;
+  }
   function hasNativeActionSemantics(entry) {
     const nativeFile=value=>value?.actions?.idle?.frames?.[0]?.file?.startsWith('assets/combat-sprites-pass18/')===true;
     if(nativeFile(entry))return true;
@@ -221,10 +243,17 @@
       // A reviewed native costume may have an older original atlas directory.
       // Only an entry owned by configureCostumes can gain these physical semantics;
       // directional copies retain its same concept, maps and actual action objects.
+      const reviewedPass40Family=value=>value.pass40Revision==='native-batch40-v2' && value.pass40Revision===entry.pass40Revision
+        && /^native-(survive|metalgear)-v1$/.test(value.pass21Revision||'')
+        && value.costumeConcept?.family===value.pass21Revision.slice(7,-3)
+        && value.mirror===false && value.fallbackMissingActions===false
+        && entry.mirror===false && entry.fallbackMissingActions===false && value.review===entry.review
+        && value.review?.status==='approved' && typeof value.review.reviewer==='string' && value.review.reviewer.startsWith('Root')
+        && /^[a-f0-9]{64}$/.test(value.review.artAuditSHA256||'');
       const owned=[...(costumeEntries.get(entry.uid)?.values()||[])].find(value=>
         value.costumeConcept===concept && value.uid===entry.uid
         && value.pass21Revision===entry.pass21Revision
-        && /^native-(retro|nextgen|tuxedo|cyborg(?:-mgr)?)-v[1-9]\d*$/.test(value.pass21Revision||'')
+        && (/^native-(retro|nextgen|tuxedo|cyborg(?:-mgr)?)-v[1-9]\d*$/.test(value.pass21Revision||'') || reviewedPass40Family(value))
         && value.actionMap===entry.actionMap
         && (value.actions===entry.actions||value.oppositeActions===entry.actions));
       if(!owned)return false;
@@ -237,7 +266,7 @@
   function actionName(pose = {}, entry = null) {
     if (pose.ko) return 'ko';
     if (pose.hit) return 'hit';
-    if (pose.getup && entry?.actions?.roll && hasNativeActionSemantics(entry)) return 'roll';
+    if (pose.getup && entry?.actions?.roll && (hasNativeActionSemantics(entry) || hasReviewedPass40Roll(entry))) return 'roll';
     if (pose.moveSlot && (pose.animationActive || pose.attack) && entry?.actionMap?.[pose.moveSlot]) {
       const mapped=entry.actionMap[pose.moveSlot];
       // New native sheets expose physical action groups. Match the actual VS
@@ -249,6 +278,10 @@
         if(kind==='projectile' && entry.uid==='core__ocelot' && slot==='specialDown' && tag==='ballistic' && mapped==='deploy' && entry.actions.deploy) action='deploy';
         else if(kind==='projectile') action=['ballistic','precision','tranq','fire'].includes(tag)?'shoot':['blade','knife','boomerang'].includes(tag)?'blade':'deploy';
         else if(kind==='melee' && entry.uid==='core__liquid' && slot==='specialDown' && tag==='strike' && mapped==='low' && entry.actions.low) action='low';
+        // Only Root-owned, complete P40 Liquid nextgen art may use its authored unarmed charge.
+        else if(kind==='melee' && entry.uid==='core__liquid' && ['special','super'].includes(slot) && tag==='strike' && mapped==='charge'
+          && entry.costumeConcept?.family==='nextgen' && hasReviewedPass40Roll(entry)
+          && entry.phaseMap?.charge?.active?.length>0 && entry.phaseMap.charge.active.every(index=>entry.actions?.charge?.frames?.[index]?.physicalPoseIndex===11)) action='charge';
         else if(kind==='melee') action=tag==='grapple'||slot==='throw'?'throw':['blade','knife','machete','spear','tentacle'].includes(tag)?'blade':slot==='low'?'low':slot==='heavy'?'heavy':'punch';
         else if(kind==='reload') action='reload';
         else if(kind==='recover') action='recover';
@@ -261,6 +294,7 @@
     return pose.attack ? 'attack' : pose.crouch ? 'crouch' : pose.walk ? 'walk' : pose.guard ? 'guard' : 'idle';
   }
   function selectFrame(entry, pose = {}) {
+    const reviewedBurst=root.CQC_PASS40_VS_DELAYED_BURSTS?.selectFrame?.(entry,pose);if(reviewedBurst)return reviewedBurst;
     const requested = actionName(pose, entry), action = entry.actions[requested] || entry.actions.idle;
     const mapped = entry.phaseMap?.[requested]?.[pose.attackPhase];
     if (mapped) {

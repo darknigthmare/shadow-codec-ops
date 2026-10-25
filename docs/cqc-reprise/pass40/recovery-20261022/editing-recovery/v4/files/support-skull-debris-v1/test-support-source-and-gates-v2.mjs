@@ -1,0 +1,58 @@
+// Source-only and fail-closed fixtures. No synthetic Root Support approval is made.
+// Positive router/emission/browser tests intentionally await the fresh real Root mode review.
+import fs from 'node:fs/promises';
+import vm from 'node:vm';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {gunzipSync} from 'node:zlib';
+import {extractCompiledPayload} from '../integration-v2/compile-native-batch.mjs';
+import {reviewSupportSelection,makeSupportModeRuntime} from './make-support-mode-runtime-v1.mjs';
+const R='@PROJECT_ROOT@',D=R+'/support-skull-debris-v1',sha=b=>createHash('sha256').update(b).digest('hex'),clone=x=>JSON.parse(JSON.stringify(x));
+const read=p=>fs.readFile(p,'utf8'),artifact=JSON.parse(await read(D+'/SOURCE_SELECTION_CANDIDATE_ARTIFACT_V1.json'));
+const core=JSON.parse(await read(artifact.sourceCoreMetadata.path)),metadata=JSON.parse(await read(artifact.metadata.path)),sourceAudit=JSON.parse(await read(artifact.sourceArtReview.path));
+const cases=[],ok=(name,fn)=>{fn();cases.push({name,pass:true});};
+for(const pin of [artifact.job,artifact.metadata,artifact.sourceCoreMetadata,artifact.sourceArtReview,artifact.baseNineteenIndex,artifact.pureSourceTemplate]){const raw=await fs.readFile(pin.path);assert.equal(raw.length,pin.bytes);assert.equal(sha(raw),pin.sha256);}
+ok('support marker replaces Core marker only, with exact original data undo',()=>{const undo=clone(metadata);delete undo.option.sprite.supportModeVariant;undo.option.sprite.coreModeVariant=clone(core.option.sprite.coreModeVariant);assert.deepEqual(undo,core);assert.equal(metadata.option.sprite.supportModeVariant.engine,'support');assert.equal(metadata.option.sprite.coreModeVariant,undefined);});
+const oldVS=JSON.parse(await read(R+'/publication/progressive/snapshot-03/skull-retro-metadata-v2.json'));
+let inheritedRoles=0;
+for(const side of ['actions','oppositeActions']){
+ const byRole=sprite=>{const out=new Map();for(const group of Object.values(sprite[side]))for(const f of group.frames)if(!out.has(f.physicalPoseIndex))out.set(f.physicalPoseIndex,f);return out;};
+ const before=byRole(oldVS.option.sprite),after=byRole(metadata.option.sprite);assert.equal(after.size,16);
+ for(let role=0;role<16;role++)if(role!==11){assert.deepEqual(after.get(role),before.get(role));inheritedRoles++;}
+ assert.equal(after.get(11).sha256,'ec3a473f7cc48166467e8870e5cf25f1a126959f0369fa2f6926ecf55d9d3a9b');
+}
+ok('thirty existing physical source roles exact; two independent hand-release roles11',()=>assert.equal(inheritedRoles,30));
+const contracts=JSON.parse(gunzipSync(await fs.readFile(R+'/integration-v2/runtime/ACTUAL_FIGHTER_CONTRACTS_AFTER_CANONICAL_EIGHT_V1.json.gz')));
+const root=vm.createContext({URL,console,CQC_COMBAT_SPRITE_CATALOG:{schema:'cqc.combat-sprites/1',entries:{core__skull_armor:contracts.entries.core__skull_armor.sprite}}});
+const renderer=await read(R+'/integration-v2/proposals/liquid-native-charge-v1/cqc-sprite-renderer.liquid-charge-proposed-v1.js');assert.equal(sha(renderer),'0725ee82095bdcad55587c2b60e73e0f637d594bc2d77b4c9d2a312e2a4c8813');vm.runInContext(renderer,root);
+const accepted=root.CQC_COMBAT_SPRITES.configureCostumes({schema:'cqc.combat-costumes/1',entries:{core__skull_armor:{default:'original',options:[metadata.option]}}});assert.equal(accepted.accepted,1);assert.equal(accepted.rejected.length,0);
+const payload=extractCompiledPayload(await read(artifact.baseNineteenIndex.path)),bindings=payload.bindings.map(b=>b.uid==='core__skull_armor'&&b.id==='retro-msx'?clone(artifact.sourceBinding):clone(b));
+ok('nineteen private bindings, other eighteen remain byte-equivalent JSON data',()=>{assert.equal(bindings.length,19);for(const b of payload.bindings)if(b.uid!=='core__skull_armor'||b.id!=='retro-msx')assert.deepEqual(bindings.find(n=>n.uid===b.uid&&n.id===b.id),b);});
+const template=await read(artifact.pureSourceTemplate.path);vm.runInContext(template.replace('/* REVIEWED_BINDINGS */null',JSON.stringify(bindings)),root);
+let nativePointChecks=0;
+for(const side of ['right','left']){
+ const point=root.CQC_PASS40_NATIVE_ORIGINS.sourcePoint('core__skull_armor','retro-msx',side,'special','debris'),anchor=artifact.sourceBinding.anchors.find(a=>a.side===side);assert.deepEqual(Array.from(point.sourceNativeXY),anchor.nativeXY);assert.equal(point.sourceSocket,'hand-release');
+ const entry=root.CQC_COMBAT_SPRITES.getEntry('core__skull_armor',{costume:'retro-msx'}),actions=side==='right'?entry.actions:entry.oppositeActions,selected=root.CQC_COMBAT_SPRITES.selectFrame({...entry,actions},{moveSlot:'special',moveKind:'projectile',moveTag:'debris',attack:true,animationActive:true,attackPhase:'active',phaseProgress:0});
+ assert.equal(selected.action,'deploy');assert.equal(selected.frame.physicalPoseIndex,11);assert.equal(selected.frame.file,point.sourceFile);assert.equal(selected.frame.sha256,point.sourceSHA256);assert.deepEqual(Array.from(selected.frame.rect),Array.from(point.sourceRect));nativePointChecks++;
+ point.sourceNativeXY[0]=-999;assert.deepEqual(Array.from(root.CQC_PASS40_NATIVE_ORIGINS.sourcePoint('core__skull_armor','retro-msx',side,'special','debris').sourceNativeXY),anchor.nativeXY);
+}
+ok('two real Root-source hand sockets select actual deploy11, returned coordinates copied',()=>assert.equal(nativePointChecks,2));
+for(const [name,args]of [['ballistic tag',['core__skull_armor','retro-msx','right','special','ballistic']],['wrong costume',['core__skull_armor','original','right','special','debris']],['wrong side',['core__skull_armor','retro-msx','rear','special','debris']]])ok('pure point rejects '+name,()=>assert.equal(root.CQC_PASS40_NATIVE_ORIGINS.sourcePoint(...args),null));
+for(const [name,review]of [['absent',undefined],['old Core source art review',sourceAudit],['pending Support review',{schema:'cqc.p40.root-support-mode-selection-review/1',approved:false}]]){
+ ok('mode gate rejects '+name,()=>assert.throws(()=>reviewSupportSelection(artifact,review,undefined)));
+ ok('runtime builder rejects '+name,()=>assert.throws(()=>makeSupportModeRuntime({artifact,review,reviewSHA256:undefined,template,baseBindings:payload.bindings,supportMetadata:metadata})));
+}
+const adapter=await read(D+'/cqc-pass40-support-skull-debris.proposed-v2.js');
+for(const path of ['/cqc/modules/core-v032.html','/cqc/modules/unified-versus-v055.html','/cqc/index.html'])ok('adapter is strict noop outside Support '+path,()=>{const prior={identity:'prior'};const context=vm.createContext({location:{pathname:path},CQC_PASS39_RAPTOR_SUPPORT:prior});vm.runInContext(adapter,context);assert.equal(context.CQC_PASS39_RAPTOR_SUPPORT,prior);assert.equal(context.CQC_PASS40_SUPPORT_SKULL_DEBRIS,undefined);});
+ok('Support adapter rejects absent fresh mode before installing or mutating routing',()=>{const prior={identity:'prior'},context=vm.createContext({location:{pathname:'/cqc/modules/support-network-v053.html'},CQC_PASS39_RAPTOR_SUPPORT:prior});assert.throws(()=>vm.runInContext(adapter,context));assert.equal(context.CQC_PASS39_RAPTOR_SUPPORT,prior);assert.equal(context.CQC_PASS40_SUPPORT_SKULL_DEBRIS,undefined);});
+ok('invalid mode-ownership interface cannot delegate Skull J to a legacy firearm',()=>{let calls=0,sourceCalls=0;const prior={requestShot(){calls++;return false;},update(){calls++;return false;},drawShot(){return false;}},bridge={selectedLead:f=>f,drawLead(){return false;},leadScale:()=>.9},context=vm.createContext({location:{pathname:'/cqc/modules/support-network-v053.html'},CQC_PASS40_SUPPORT_SKULL_MODE:{owns:()=>false,modeReviewSHA256:'f'.repeat(64)},CQC_PASS40_NATIVE_ORIGINS:{sourcePoint(){sourceCalls++;throw Error('Invalid authority must never read a socket');}},CQC_SUPPORT_NATIVE_ACTORS:bridge,CQC_PASS39_RAPTOR_SUPPORT:prior,document:{getElementById:()=>({id:'gameCanvas'})},CQC_SUPPORT_NATIVE_ACTOR_FACTORY:{SCALE:.9}});vm.runInContext(adapter,context);const state={frame:1,lead:{uid:'core__skull_armor',costume:'retro-msx'},hero:{x:300,y:590,ammo:12,cool:0,power:0},shots:[]};assert.equal(context.CQC_PASS39_RAPTOR_SUPPORT.requestShot(state,new Set()),true);assert.equal(context.CQC_PASS39_RAPTOR_SUPPORT.update(state),true);assert.equal(calls,0);assert.equal(sourceCalls,0);assert.equal(state.hero.ammo,12);assert.equal(state.hero.cool,0);assert.equal(state.shots.length,0);});
+const bridgeSource=await read(D+'/cqc-pass27-support-native-actors.skull-journal-proposed-v1.js');
+function bridgeJournal(metadataSHA256,known=true){let writes=0;const descriptor={uid:'core__skull_armor',id:'retro-msx',metadata:{sha256:artifact.metadata.sha256}},saved={schema:'cqc.native-wardrobe-journal/1',slots:[{core__skull_armor:{id:'retro-msx',metadataSHA256}}]};const context=vm.createContext({CQC_NATIVE_WARDROBE_INDEX:{entries:[descriptor]}});vm.runInContext(bridgeSource,context);const storage={getItem:()=>JSON.stringify(saved),setItem:()=>{writes++;}},bridge=context.CQC_SUPPORT_NATIVE_ACTOR_FACTORY.createBridge({storage,wardrobe:{known:()=>known},choices:{chosen:()=>'original'}}),fighter={uid:'core__skull_armor'};return{selected:bridge.selectedLead(fighter),writes,original:fighter};}
+ok('old VS journal hash is rejected until the real approved mode predicate exists',()=>{const r=bridgeJournal('dcd22f4ce566206a4652b1cb0116aa26f50ed3601611e2e029e0a1c19d011a77');assert.equal(r.selected.costume,undefined);assert.equal(r.writes,0);assert.equal(r.original.costume,undefined);});
+ok('exact-current journal hash retains existing accepted behaviour with no storage write',()=>{const r=bridgeJournal(artifact.metadata.sha256);assert.equal(r.selected.costume,'retro-msx');assert.equal(r.writes,0);assert.equal(r.original.costume,undefined);});
+ok('unknown wardrobe identity remains rejected',()=>assert.equal(bridgeJournal(artifact.metadata.sha256,false).selected.costume,undefined));
+const coreHTML=await read(R+'/../cqc-pass21-application/public/cqc/modules/core-v032.html');
+for(const polygon of ['[[-22,-18],[10,-27],[27,-8],[14,23],[-20,20]]','[[-22,-18],[10,-27],[7,6],[-20,20]]'])ok('debris polygon matches existing Core Canvas primitive '+polygon,()=>{assert(coreHTML.includes(polygon));assert(adapter.includes(polygon));});
+const protectedPins=[{path:R+'/support-p40-scope17-candidate-v1/native-target-bounds-v1/cqc-pass40-support-native-guns-v3.proposed.js',sha256:'0d2b5db3635836b3bd0db95f2af050f3642bb0d843a68c312a9eaebbfbf2e845'},{path:R+'/integration-r00-v5/approved-runtime/cqc-pass40-r00-support.js',sha256:'3c9a72206d51fc9214a93eb04be021795dee1233f438da2065f781003830b854'},{path:R+'/machines-v2/fenrir/proposed-runtime-v2/src/cqc-pass40-fenrir-support-v1.js',sha256:'8ad5655193f403a32b57d94d4833242d42f0ddcaa159287fce729595e643efb3'}];
+for(const pin of protectedPins)assert.equal(sha(await fs.readFile(pin.path)),pin.sha256);
+const report={schema:'cqc.p40.support-skull-source-and-pending-gates-fixtures/1',passed:cases.length,cases,inheritedPhysicalRolesExact:30,handReleasePointChecks:2,privateBindingsPreserved:18,freshRootSupportReviewAvailable:false,positiveRouterAndEmissionQA:'Not run. Requires actual fresh Root Support selection and code reviews. No synthetic Root Support review was authored.',sourceArtAuthority:'Existing actual cfa402 only; no new art approval',coreSourceGeometryUnchanged:true,protectedSourcePins:protectedPins,productMutations:false,PNGMutations:false,ChromeStarted:false};await fs.writeFile(D+'/SOURCE_AND_PENDING_GATES_FIXTURES_ACTUAL_V3.json',JSON.stringify(report,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify({passed:report.passed,inheritedPhysicalRolesExact:30,handReleasePointChecks:2,privateBindingsPreserved:18,freshModeStillPending:true}));

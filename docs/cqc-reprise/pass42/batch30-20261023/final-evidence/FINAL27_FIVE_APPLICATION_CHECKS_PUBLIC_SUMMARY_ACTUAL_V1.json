@@ -1,0 +1,61 @@
+{
+  "schema": "cqc.p42.five-application-checks-public-summary/1",
+  "status": "PASS",
+  "observedAtUTC": "2026-10-24T00:02:03.698475+00:00",
+  "runtimeCommit": "d516eab4057e21f54efc22c211b9dac1cefac548",
+  "artifactCommit": "424fbb8beeec4fdc38d3f5e9f6b1ecad88a0498f",
+  "sourceEvidence": {
+    "bytes": 3878,
+    "sha256": "52aee84cfb0ff2a0f0b3d1f0352246d2a1d5a1308b38106602c7dc0dead6ebd3",
+    "publiclyArchived": false
+  },
+  "checks": [
+    {
+      "name": "cqc",
+      "command": "npm run cqc:check",
+      "exitCode": 0,
+      "logSHA256": "622f4f046f22c67249ba78e912c53f7667bdebf95e99875b9fe3469da6f31719",
+      "logBytes": 340
+    },
+    {
+      "name": "lint",
+      "command": "npm run lint",
+      "exitCode": 0,
+      "logSHA256": "83a5602f60e78e8850408b92b57646e4c75bde52e5c5b4b68be0edb19151b2ad",
+      "logBytes": 256
+    },
+    {
+      "name": "test",
+      "command": "npm run test",
+      "exitCode": 0,
+      "logSHA256": "fbffe7bcc73c4ced1974b6c1931c77d542b3e6bef89f01aea69dc6fdfbeac767",
+      "logBytes": 7506
+    },
+    {
+      "name": "build",
+      "command": "npm run build -- --emptyOutDir=false",
+      "exitCode": 0,
+      "logSHA256": "a23f7965861b0595ce6d6438c70a371231978b8511b8f552a5269be7f9b29786",
+      "logBytes": 8528
+    },
+    {
+      "name": "pwa",
+      "command": "npm run pwa:check",
+      "exitCode": 0,
+      "logSHA256": "c2082605bf7e914cbfa34422e1ff340a84e280d36c79a5de6e15baf9a4b11d55",
+      "logBytes": 133
+    }
+  ],
+  "unitTestFiles": 106,
+  "unitTestsPassed": 723,
+  "inputFilesUnchanged": 4637,
+  "allInputSHA256Unchanged": true,
+  "protected67FullMetadataAndSHAUnchanged": true,
+  "packageLockUnchanged": true,
+  "distFiles": 4020,
+  "distManifestSHA256": "c53e300510a1d93d57b6563e7c2b4f2c13981a23018752314421cc1ca5793506",
+  "sourceOrDistLinkedToOriginalProduct": false,
+  "oldBuildOrCacheUsed": false,
+  "productionBrowserClaimed": false,
+  "qualification": "Checks ran on an isolated exact source snapshot. Vite used --emptyOutDir=false in its new owned build destination. This summary preserves the observed exit codes, hashes and counts; production HTTPS and browser observations have separate evidence."
+}

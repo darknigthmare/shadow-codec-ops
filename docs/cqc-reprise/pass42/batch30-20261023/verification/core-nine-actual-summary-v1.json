@@ -1,0 +1,117 @@
+{
+  "schema": "cqc.p42.actual-core-nine-canonical-public-summary/1",
+  "status": "PASS_WITH_RECORDED_LOADING_LIMITATIONS",
+  "scope": "Local owned-browser Core training GUI and keyboard; nine P42 canonical Snake costumes, actual Core rush and grenade secondary, both natural facings. No production HTTPS or full combat coverage claimed.",
+  "proof": {
+    "artifact": "ACTUAL_CORE_UI_QA_V1.json",
+    "visibility": "private-detailed-observations",
+    "bytes": 9296819,
+    "sha256": "dca02d4cd0a366dd31dec5139b33d27821dbcb779ae4ac826f475b25118bd813"
+  },
+  "buildPins": {
+    "indexSHA256": "1f18fb3aed4e2b41428abbac0ec98791a6ee32e9cb62f7b7c1e69f6f984c1403",
+    "coreAdapterSHA256": "7bd75a4837d66ebd06df3789563f2f93367cafd7958d47352cf9e724a32af181",
+    "archiveSHA256": "8af2fdc0440e8f9e68ca4d23371311d60b0b97e104e08bddb5f9bf85454bd887",
+    "originalRuntimeManifestSHA256": "b0e448d4279b7a2dcc51fef90f040a1eda0a17703e898eb9f7ea9407a8c8230a"
+  },
+  "costumes": [
+    "mgs3-camo-tree-bark",
+    "mgs3-camo-leaf",
+    "mgs3-camo-splitter",
+    "mgs3-camo-black",
+    "mgs3-camo-chocolate-chip",
+    "mgs3-camo-desert-tiger",
+    "mgs3-camo-raindrop",
+    "mgs3-camo-squares",
+    "mgs3-camo-water"
+  ],
+  "actualCoverage": {
+    "costumes": 9,
+    "cases": 36,
+    "rushCases": 18,
+    "grenadeCases": 18,
+    "naturalFacingsPerCostume": 2,
+    "grenadePhysicalSourcePoseIndex": 8,
+    "grenadeActiveSourceDrawsActuallyObserved": 18,
+    "grenadeMaxActualOriginErrorWorldUnits": 1.4210854715202004e-14,
+    "grenadeResourceBefore": 2,
+    "grenadeResourceAfter": 1,
+    "rushActualPhysicalPoseIndex": 6,
+    "rushProjectilesEmitted": 0,
+    "exactPauseStateFreezes": 9,
+    "screenshots": 18
+  },
+  "conservation": {
+    "fightersStrictlyPreserved": 95,
+    "originalCoreNativeDescriptorsStrictlyPreserved": 190,
+    "finalCoreNativeDescriptors": 217,
+    "historicalCoreSpecificVariantsPreserved": 5,
+    "historicalVenusRetroCoreHoldRetained": true,
+    "unchangedVersusNativeCountSeparateEvidence": 191,
+    "originalSpriteMetadataStrictlyPreserved": true,
+    "originalPreviewBothFacesNativeAlphaReadyBeforeBaseline": true,
+    "originalPreviewStableSamplesPerCheck": 2,
+    "originalPreviewFullDeepEqualityRetained": true,
+    "costumePelvisFloorHeightStatureKeysCompared": true
+  },
+  "execution": {
+    "productFilesMutated": false,
+    "combatStateInjected": false,
+    "storageInjected": false,
+    "testAPIUsed": false,
+    "TLSBypassUsed": false,
+    "privatePassThroughObserversOnly": true,
+    "ownedBrowserClosed": true,
+    "ownedHTTPServerClosed": true
+  },
+  "errors": {
+    "runtimeExceptions": 0,
+    "consoleErrors": 0,
+    "targetCrashes": 0,
+    "localPositiveHTTPServerErrors": 0,
+    "recordedLoadingFailuresTotal": 49,
+    "recordedLoadingFailureBreakdown": {
+      "net::ERR_CERT_AUTHORITY_INVALID": 27,
+      "net::ERR_ABORTED": 22
+    }
+  },
+  "loadingLimitations": [
+    "27 certificate authority failures remain recorded on one historical P40 Watersnake metadata URL. That historical remote load was not repaired, bypassed or silently treated as successful.",
+    "22 local fetch cancellations (ERR_ABORTED, canceled=true) remain in the detailed trace. The tested active native sources were separately loaded and drawn; this is not a claim of zero network failures."
+  ],
+  "visualInspection": {
+    "reviewer": "Retro-B",
+    "reviewedActualMatchCaptures": [
+      "mgs3-camo-tree-bark",
+      "mgs3-camo-leaf",
+      "mgs3-camo-splitter",
+      "mgs3-camo-black",
+      "mgs3-camo-chocolate-chip",
+      "mgs3-camo-desert-tiger",
+      "mgs3-camo-raindrop",
+      "mgs3-camo-squares",
+      "mgs3-camo-water"
+    ],
+    "reviewedActualMenuCaptures": [
+      "mgs3-camo-tree-bark"
+    ],
+    "finding": "Native actors present in each reviewed match capture; natural facings and floor placement coherent with the displayed active or hurt poses; no visible procedural actor fallback or background halo in these captures. This is a visual qualification, not a certified anatomical or pixel-exact fidelity audit."
+  },
+  "untested": [
+    "Other Core moves, complete animation repertoire, hitboxes and damage balance are outside these 36 cases.",
+    "The local browser run does not establish production HTTPS availability.",
+    "These checks do not certify 1:1 source-game artwork fidelity."
+  ],
+  "preservedEarlierRuns": [
+    {
+      "version": "V2",
+      "proofSHA256": "7bd6950c9ec4455933583eb49921435246ed4ea58f301c0b28db94ec0d0eebda",
+      "qualification": "Failed before any cases because the assumed Core baseline191 was incorrect. Read-only boot and historical source confirmed the intentional190 baseline and retained Venus hold."
+    },
+    {
+      "version": "V3",
+      "proofSHA256": "2bf1716c4621870c287a6db6abb15095666abda863500fe3107e11055d511295",
+      "qualification": "Eight actual cases passed before the test compared a cold metadata preview fallback to its later decoded native alpha measurement. V4 waits passively for ready original alpha and stable geometry; it preserves the full equality assertions."
+    }
+  ]
+}

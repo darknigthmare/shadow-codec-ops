@@ -1,0 +1,1995 @@
+[
+  {
+    "id": "tx55",
+    "nom": "TX-55 METAL GEAR",
+    "opus": "METAL GEAR",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "tx55_mg1_msx1987",
+    "scene_native_actuelle": "outer_heaven",
+    "label_scene_data_historique": "OUTER HEAVEN — LAUNCH BAY",
+    "resume_code_actuel": "Neutraliser les deux jambes avec les tirs ciblés avant d’atteindre le contrôle nucléaire.",
+    "regle_code_actuelle": "Détruire les protections avant la pièce centrale",
+    "cibles_code_actuelles": [
+      {
+        "nom": "JAMBE G",
+        "hp_cqc": 2400,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "JAMBE D",
+        "hp_cqc": 2400,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "CONTRÔLE",
+        "hp_cqc": 5200,
+        "rayon_cqc": 31,
+        "prerequis_cqc": [
+          0,
+          1
+        ]
+      }
+    ],
+    "hp_cqc": 10000,
+    "temps_cqc": 180,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "Châssis MSX2 stationnaire, deux jambes lourdes, bassin et module supérieur ; garder silhouette et implantation de la salle, sans armement imaginé.",
+    "locomotion_et_appuis": "Le combat source ne nécessite pas une marche de géant. Repos mécanique fixe ; vibrations de mise sous tension et destruction uniquement si attestées.",
+    "attaques_a_animer": "Animer les caméras et leurs projectiles séparément du TX-55 ; pose, clignotement et explosion des charges aux pieds. La petite animation du joueur doit respecter le contact au pied visé.",
+    "phases_et_destruction": "Séquence d’explosifs et ordre des pieds, échec d’une mauvaise séquence, explosion puis évacuation. Éviter une transformation humanoïde ou un cockpit final inventé.",
+    "ecart_specifique": "Le dossier actuel demande tirs aux deux jambes puis CONTRÔLE. Cela constitue une règle CQC adaptée ; la fidélité au combat original demande un mode explosifs/caméras distinct.",
+    "source_ids": [
+      "W-TX55",
+      "K-MANUELS"
+    ],
+    "classification": "BOSS_OFFICIEL_ADAPTE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P1",
+    "nombre_pieces_rig": 17,
+    "qualifications_rig_existantes": []
+  },
+  {
+    "id": "metalgeard",
+    "nom": "METAL GEAR D",
+    "opus": "METAL GEAR 2",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "mgd_mg2_msx2",
+    "scene_native_actuelle": "p18_mg2_zanzibar_land_forteresse",
+    "label_scene_data_historique": "ZANZIBAR LAND — HANGAR D",
+    "resume_code_actuel": "Neutraliser les trains de roulement puis ouvrir le cockpit blindé.",
+    "regle_code_actuelle": "Détruire les protections avant la pièce centrale",
+    "cibles_code_actuelles": [
+      {
+        "nom": "ARTICULATION G",
+        "hp_cqc": 2600,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "ARTICULATION D",
+        "hp_cqc": 2600,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "COCKPIT",
+        "hp_cqc": 5200,
+        "rayon_cqc": 31,
+        "prerequis_cqc": [
+          0,
+          1
+        ]
+      }
+    ],
+    "hp_cqc": 10400,
+    "temps_cqc": 180,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "Bipède MG2 MSX2 : corps blindé compact, cockpit/face et jambes articulées. Les membres sont des jambes, pas des trains de roulement.",
+    "locomotion_et_appuis": "Lever un pied après transfert de poids au pied porteur ; cuisse, genou et cheville gardent leur longueur. Conserver une trajectoire et un rythme issus de captures MG2.",
+    "attaques_a_animer": "Fenêtre de vulnérabilité des jambes aux grenades, recul léger du châssis lors des armes réellement visibles. Dessiner chaque projectile depuis la pièce émettrice, puis impact distinct.",
+    "phases_et_destruction": "Affaissement, fumée et état détruit qui prépare la scène Gray Fox ; ne pas remplacer la destruction de D par un duel cockpit si non sourcé.",
+    "ecart_specifique": "Résumé du dossier « trains de roulement » et cockpit comme verrou final ne décrivent pas exactement la rencontre MSX2. Le stage zanzibar montre déjà un hangar après destruction, tandis que le pont Arsenal emploie une forteresse générique.",
+    "source_ids": [
+      "W-D",
+      "K-MANUELS"
+    ],
+    "classification": "BOSS_OFFICIEL_ADAPTE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P2",
+    "nombre_pieces_rig": 23,
+    "qualifications_rig_existantes": []
+  },
+  {
+    "id": "rex",
+    "nom": "METAL GEAR REX",
+    "opus": "MGS1",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "rex_mgs1_ps1",
+    "scene_native_actuelle": "mgs1_rex_hangar",
+    "label_scene_data_historique": "SHADOW MOSES — REX HANGAR",
+    "resume_code_actuel": "Détruire le radôme, survivre au réveil de REX, puis viser le cockpit.",
+    "regle_code_actuelle": "Radôme → cockpit cyclique",
+    "cibles_code_actuelles": [
+      {
+        "nom": "RADÔME",
+        "hp_cqc": 4600,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "COCKPIT",
+        "hp_cqc": 6600,
+        "rayon_cqc": 31,
+        "prerequis_cqc": [
+          0
+        ]
+      }
+    ],
+    "hp_cqc": 11200,
+    "temps_cqc": 185,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "REX MGS1 intact : radôme latéral et railgun asymétriques, tête/cockpit, bassin, cuisses, jambes et pieds mécaniques. Ne jamais inverser les équipements par simple miroir.",
+    "locomotion_et_appuis": "Repos lourd par corrections de vérins ; marche avec au moins un pied planté, transfert du bassin et pose du talon/semelle. Rotation de tête bornée par la mécanique visible.",
+    "attaques_a_animer": "Distinguer canon, missiles et laser de leur télégraphe au recul ; les points de sortie suivent la pièce. Radôme reçoit impact, fissure puis casse ; cockpit reste protégé avant sa vraie ouverture.",
+    "phases_et_destruction": "Phase radôme, intervention Gray Fox, changement de visibilité/cockpit, phase Liquid puis destruction. L’épave et la scène de combat humain au sommet nécessitent états séparés.",
+    "ecart_specifique": "Rig et hangar dédiés existent. Les minutages, silhouettes extrêmes, scènes Gray Fox et la transition vers le duel humain doivent être comparés à une capture PS1 ; les pools HP CQC ne certifient pas l’ordre narratif.",
+    "source_ids": [
+      "W-MGS1",
+      "K-MANUELS"
+    ],
+    "classification": "BOSS_OFFICIEL_ADAPTE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P2",
+    "nombre_pieces_rig": 16,
+    "qualifications_rig_existantes": []
+  },
+  {
+    "id": "harrier",
+    "nom": "HARRIER II",
+    "opus": "MGS2",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "harrier_mgs2_ps2_2001",
+    "scene_native_actuelle": "p18_mgs2_passerelle_harrier",
+    "label_scene_data_historique": "BIG SHELL — CONNECTING BRIDGE",
+    "resume_code_actuel": "Maintenir le verrou de visée et frapper entre les passes aériennes.",
+    "regle_code_actuelle": "Maintenir K : acquisition de cible",
+    "cibles_code_actuelles": [
+      {
+        "nom": "CELLULE",
+        "hp_cqc": 8200,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      }
+    ],
+    "hp_cqc": 8200,
+    "temps_cqc": 180,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "AV-8B Harrier II de MGS2 : fuselage, ailes, cockpit, dérive, empennage, buses et armements distincts selon visibilité native.",
+    "locomotion_et_appuis": "Passage rapide puis vol stationnaire : roulis/tangage limités à la caméra admise ; poussée et panache alignés avec les buses. Ne pas faire onduler la cellule comme un être vivant.",
+    "attaques_a_animer": "Séparer passe de mitraillage, lancement de missiles et évènements de bombardement attestés ; télégraphier l’entrée hors champ et suivre la trajectoire. Jets et tirs ne changent pas de côté avec une rotation arbitraire du sprite.",
+    "phases_et_destruction": "Impacts localisés, fumée persistante puis chute/cinématique et reprise de contrôle ; combat assisté par Snake et ravitaillement distincts du décor.",
+    "ecart_specifique": "Stage passerelle propre présent et raccordé. Les buses/empennages ont un traitement dédié, mais les pièces cachées et profils opposés doivent être référencés ; un verrou de visée CQC reste une règle adaptée.",
+    "source_ids": [
+      "W-MGS2",
+      "K-MANUELS"
+    ],
+    "classification": "BOSS_OFFICIEL_ADAPTE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P2",
+    "nombre_pieces_rig": 12,
+    "qualifications_rig_existantes": [
+      "Source-led projected 2D articulation; original game animations and 3D models are not extracted. Absolute 1:1 is not certified.",
+      "Hind and M1 historical source rectangles selected armor/engine panels as rocket pods or machine gun; corrected regions now use the actual visible equipment from the same untouched atlases.",
+      "Hind and Hammerhead horizontal rotors use their admitted native perspective phases. No horizontal rotor is rotated in the screen plane; the Hind tail rotor alone rotates in its visible vertical plane.",
+      "M1 cannon and Hammerhead barrels recoil along their actual projected source axes beneath fixed/aiming receivers. Turret azimuth and hidden breech volumes are not fabricated from flat textures.",
+      "Harrier native nozzles and complete movable tailplanes use visible sockets. No unseparated wing flap or hidden fan is manufactured.",
+      "M1 and bulldozer complete track silhouettes remain rigid. Independently authored tread/wheel phases are still required for authentic track circulation.",
+      "Bulldozer blade modules remain rigid projected hydraulic assemblies; hidden linkage is not certified. Its historical roof ID selected a misplaced actuator; the ID now owns the complementary visible upper casing pixels of the original hull. This rigid source partition is not a newly invented independent canonical moving roof; the original actuator remains in the untouched atlas and historical catalogs.",
+      "Virgil casing, pedestal and lamp remain a rigid terminal; an unsupported flat swing of its cylindrical doors is not used.",
+      "Cunningham remains the admitted frontal platform. Its opposite/rear projection and unverified propulsion are not invented.",
+      "New separation pieces retain existing damage groups through attached snapshots; no additional HP pool, attack clock or projectile is introduced."
+    ]
+  },
+  {
+    "id": "raymass",
+    "nom": "MASS-PRODUCED METAL GEAR RAY",
+    "opus": "MGS2",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "ray_mgs2_arsenal",
+    "scene_native_actuelle": "p18_mgs2_arsenal_gear_plateforme_ray",
+    "label_scene_data_historique": "ARSENAL GEAR — RAY CHAMBER",
+    "resume_code_actuel": "Repousser trois RAY successifs en brisant genou et masque.",
+    "regle_code_actuelle": "Genou → masque, trois vagues",
+    "cibles_code_actuelles": [
+      {
+        "nom": "GENOU",
+        "hp_cqc": 2200,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "MASQUE",
+        "hp_cqc": 3300,
+        "rayon_cqc": 31,
+        "prerequis_cqc": [
+          0
+        ]
+      }
+    ],
+    "hp_cqc": 5500,
+    "temps_cqc": 210,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "RAY de série MGS2 sans fusion avec le prototype piloté ou RAY Rising : ailes-bras, tête à masque ouvrant, jambes et emplacements de missiles propres à la série.",
+    "locomotion_et_appuis": "Bassin abaissé avant saut, poussée, arc aérien, réception avec amorti ; marche et rotation de groupe gardent l’appui visible. Chaque RAY a sa position et son ordre.",
+    "attaques_a_animer": "Réaction d’un genou touché, ouverture de bouche/masque puis tir hydraulique ; missiles et mitraillage restent attachés aux bons ports. Avertissement avant passage hors champ.",
+    "phases_et_destruction": "Cycle genou→tête et remplacement d’une unité. Relever le nombre d’adversaires selon difficulté ; trois vagues du dossier CQC ne sont pas la preuve du nombre source dans toutes versions.",
+    "ecart_specifique": "Le combat Arsenal est disponible ; différencier les unités simultanées et les difficultés, et ne pas utiliser le squelette MGS2 pour le RAY MGS4 privé ou le RAY Rising.",
+    "source_ids": [
+      "W-RAY2",
+      "W-MGS2"
+    ],
+    "classification": "BOSS_OFFICIEL_ADAPTE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P2",
+    "nombre_pieces_rig": 14,
+    "qualifications_rig_existantes": []
+  },
+  {
+    "id": "shagohod",
+    "nom": "SHAGOHOD",
+    "opus": "MGS3",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "shagohod_mgs3_ps2_2004",
+    "scene_native_actuelle": "p18_mgs3_pont_shagohod",
+    "label_scene_data_historique": "GROZNYJ GRAD — RUNWAY",
+    "resume_code_actuel": "Détruire les deux chenilles, puis la propulsion et le poste de Volgin.",
+    "regle_code_actuelle": "Détruire les protections avant la pièce centrale",
+    "cibles_code_actuelles": [
+      {
+        "nom": "VIS G",
+        "hp_cqc": 2600,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "VIS D",
+        "hp_cqc": 2600,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "PROPULSION",
+        "hp_cqc": 3000,
+        "rayon_cqc": 31,
+        "prerequis_cqc": [
+          0,
+          1
+        ]
+      },
+      {
+        "nom": "CABINE",
+        "hp_cqc": 4900,
+        "rayon_cqc": 31,
+        "prerequis_cqc": [
+          0,
+          1,
+          2
+        ]
+      }
+    ],
+    "hp_cqc": 13100,
+    "temps_cqc": 190,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "Shagohod MGS3 : module avant, deux vis de propulsion, assemblage arrière chenillé, cabine et Volgin. Les vis ne sont pas des chenilles.",
+    "locomotion_et_appuis": "Rotation hélicoïdale des vis liée à la translation ; arrière maintenu rigide tant qu’attaché. Décrire poursuite, arrêt et patinage séparément avec poussée et fumée.",
+    "attaques_a_animer": "Acquisition, armement, tir puis recul ; impulsion d’arrêt par impact sur vis, reprise de motricité. En phase Volgin, décharge et éclairage suivent son contact avec la machine.",
+    "phases_et_destruction": "Poursuite piste, pont, séparation de module puis Volgin exposé : événements distincts. L’arrière translucide actuel est une présentation CQC, pas une destruction démontrée à l’identique.",
+    "ecart_specifique": "La fiche dit encore « deux chenilles » bien que les cibles soient VIS G/D. Les pièces sont articulées mais les séquences piste→pont et la destruction réelle nécessitent une spécification continue.",
+    "source_ids": [
+      "W-MGS3",
+      "K-MANUELS"
+    ],
+    "classification": "BOSS_OFFICIEL_ADAPTE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P2",
+    "nombre_pieces_rig": 23,
+    "qualifications_rig_existantes": [
+      "Right-facing master V1 is retained as a documentary orientation reject; only newly generated left-facing component atlas is used.",
+      "Phase2 Volgin, existing electric protection, blocked-screw message and damage effects must remain drawn by the original encounter overlay code.",
+      "Rear opacity exactly follows the existing .42 presentation in phase2; no engine vulnerability, rocket behavior or vehicle speed changes.",
+      "Authored source-led 2D sealing skirt projection, not extracted original model or animation. Absolute1:1 not certified.",
+      "Near and far underside modules independently painted in one left-facing camera, not opposing facing sprites.",
+      "Legacy part IDs retained to avoid new HP pools, while their native textures now depict air-cushion underside rather than wheels.",
+      "Native damage states authored for existing defeat/phase flags; no new destruction event or combat rule.",
+      "Source-led projected 2D joint motion; original 3D animations are not extracted and absolute 1:1 is not certified.",
+      "Excelsus six independently drawn feet retain the four existing support HP groups; a foot follows its detached tibia and has no additional HP pool.",
+      "Orthogonal native crop cuts preserve the admitted neutral source geometry. Complementary Chaioth finger masks can have a subpixel antialiasing seam; measured raster tolerance is documented by QA.",
+      "Arsenal Gear and Outer Haven rigid pressure hulls remain rigid. Existing incomplete Arsenal exterior geometry is not filled with invented sections.",
+      "Shagohod screws retain their real long axial projection. True rotating helical phases require independently authored native source images and are not simulated as spinning flat wheels.",
+      "Chaioth gripper finger separation follows the visible admitted source rails; concealed knuckle interiors are not manufactured.",
+      "Weapon aiming is limited to the admitted 2D mount projection; rotations and weight transfers are authored, not extracted original animations.",
+      "Opposite cameras absent from an admitted rig remain absent; no source is mirrored into another incarnation."
+    ]
+  },
+  {
+    "id": "raxa",
+    "nom": "METAL GEAR RAXA",
+    "opus": "PORTABLE OPS",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "raxa_mpo_psp2006",
+    "scene_native_actuelle": "mpo_raxa_test_hangar",
+    "label_scene_data_historique": "SAN HIERONYMO — TEST RANGE",
+    "resume_code_actuel": "Briser quatre jambes de test avant de toucher le noyau RAXA.",
+    "regle_code_actuelle": "Détruire les protections avant la pièce centrale",
+    "cibles_code_actuelles": [
+      {
+        "nom": "APPUI 1",
+        "hp_cqc": 1500,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "APPUI 2",
+        "hp_cqc": 1500,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "APPUI 3",
+        "hp_cqc": 1500,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "APPUI 4",
+        "hp_cqc": 1500,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "NOYAU",
+        "hp_cqc": 4800,
+        "rayon_cqc": 31,
+        "prerequis_cqc": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    ],
+    "hp_cqc": 10800,
+    "temps_cqc": 180,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "Prototype RAXA de Portable Ops : centre compact, quatre appuis articulés, panneaux/ports d’armes et propulsion. Conserver orientation des jambes vues de la caméra choisie.",
+    "locomotion_et_appuis": "Appui quadrupède, flexion coordonnée puis sustentation ; durant le vol, ombre au sol séparée et jambes repliées selon référence, pas téléportation au-dessus du sol.",
+    "attaques_a_animer": "Ouverture des compartiments missile, éjection et fermeture forment une séquence ; protéger les surfaces fermées et rendre lisible la fenêtre ouverte. Tirs/propulseurs à leurs ancrages.",
+    "phases_et_destruction": "Dommages aux jambes puis séquence aérienne et attaques par ouvertures ; chute/atterrissage final doit réutiliser les vrais points d’appui.",
+    "ecart_specifique": "Le dossier actuel simplifie quatre appuis puis noyau ; il ne clôture pas les phases aériennes et les ports de missiles. Le hangar spécifique existe et doit être gardé.",
+    "source_ids": [
+      "W-RAXA",
+      "W-MPO"
+    ],
+    "classification": "BOSS_OFFICIEL_ADAPTE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P1",
+    "nombre_pieces_rig": 17,
+    "qualifications_rig_existantes": []
+  },
+  {
+    "id": "bic",
+    "nom": "ICBMG / METAL GEAR BIC",
+    "opus": "PORTABLE OPS",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "icbmg_mpo_psp2006",
+    "scene_native_actuelle": "p18_mpo_silo_lancement_icbmg",
+    "label_scene_data_historique": "SAN HIERONYMO — LAUNCH SILO",
+    "resume_code_actuel": "Couper trois pinces de lancement avant la fin du compte à rebours.",
+    "regle_code_actuelle": "Compte à rebours indépendant",
+    "cibles_code_actuelles": [
+      {
+        "nom": "PINCE G",
+        "hp_cqc": 1900,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "PINCE C",
+        "hp_cqc": 1900,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "PINCE D",
+        "hp_cqc": 1900,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "GUIDAGE",
+        "hp_cqc": 5300,
+        "rayon_cqc": 31,
+        "prerequis_cqc": [
+          0,
+          1,
+          2
+        ]
+      }
+    ],
+    "hp_cqc": 11000,
+    "temps_cqc": 180,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "ICBMG de Portable Ops : véhicule de lancement et structure déployée de fin, silhouette distincte de RAXA malgré la parenté du projet.",
+    "locomotion_et_appuis": "Rester attaché à la mise en scène du silo : déplacement sur rails/élévation et ouverture de dispositifs uniquement s’ils sont visibles dans la séquence source.",
+    "attaques_a_animer": "Compte à rebours, armement du lancement, tirs extérieurs et réaction structurelle selon la cinématique. Toute cible « pince » proposée au joueur est explicitement une mécanique originale.",
+    "phases_et_destruction": "Activation, lancement contrarié et résolution de Gene/FOX : séquences cinématiques à distinguer d’un duel jouable imaginaire contre l’ICBMG.",
+    "ecart_specifique": "Les quatre cibles et le compte à rebours Arsenal forment une simulation CQC. Ne pas la présenter comme le combat de boss original de Portable Ops.",
+    "source_ids": [
+      "W-MPO",
+      "W-WEAPONS"
+    ],
+    "classification": "MACHINE_OFFICIELLE_RENCONTRE_CQC_INVENTEE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P2",
+    "nombre_pieces_rig": 9,
+    "qualifications_rig_existantes": []
+  },
+  {
+    "id": "pupa",
+    "nom": "PUPA",
+    "opus": "PEACE WALKER",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "pupa_pw_psp2010",
+    "scene_native_actuelle": "p18_pw_pupa_operation",
+    "label_scene_data_historique": "COSTA RICA — AI TEST ROAD",
+    "resume_code_actuel": "Détruire les deux bras électriques puis l’unité mémoire.",
+    "regle_code_actuelle": "Détruire les protections avant la pièce centrale",
+    "cibles_code_actuelles": [
+      {
+        "nom": "ÉLECTRODE G",
+        "hp_cqc": 2800,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "ÉLECTRODE D",
+        "hp_cqc": 2800,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "MÉMOIRE",
+        "hp_cqc": 4800,
+        "rayon_cqc": 31,
+        "prerequis_cqc": [
+          0,
+          1
+        ]
+      }
+    ],
+    "hp_cqc": 10400,
+    "temps_cqc": 180,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "Pupa : coque basse blindée sur chenilles, équipements électriques, tourelle/armes et pod IA identifiable.",
+    "locomotion_et_appuis": "Déplacement sur bandes de roulement, pivot différentiel puis charge ; suspendre le châssis avec une amplitude sobre et animer les chenilles selon la distance parcourue.",
+    "attaques_a_animer": "Charge électrique, déploiement des éléments et propagation du courant : préparer des sprites de charge, émission, maintien et extinction. Les trajectoires suivent les points au sol du vrai combat.",
+    "phases_et_destruction": "Endommager mobilité/équipements, ouvrir accès au pod, destruction puis extraction des cartes IA ; normal, Type II et Custom sont des variantes séparées.",
+    "ecart_specifique": "Deux électrodes puis mémoire est un contrat de cibles CQC. Comparer aux différents états de Pupa, y compris charge et phase de récupération IA, avant de valider la fidélité.",
+    "source_ids": [
+      "K-PW",
+      "W-PW"
+    ],
+    "classification": "BOSS_OFFICIEL_ADAPTE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P2",
+    "nombre_pieces_rig": 19,
+    "qualifications_rig_existantes": []
+  },
+  {
+    "id": "chrysalis",
+    "nom": "CHRYSALIS",
+    "opus": "PEACE WALKER",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "chrysalis_pw_psp2010",
+    "scene_native_actuelle": "p18_pw_chrysalis_operation",
+    "label_scene_data_historique": "COSTA RICA — CLOUD FOREST",
+    "resume_code_actuel": "Utiliser le radar pour révéler puis abattre les trois rotors et le radar.",
+    "regle_code_actuelle": "I : impulsion radar pendant quatre secondes",
+    "cibles_code_actuelles": [
+      {
+        "nom": "ROTOR 1",
+        "hp_cqc": 1800,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "ROTOR 2",
+        "hp_cqc": 1800,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "ROTOR 3",
+        "hp_cqc": 1800,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "RADAR",
+        "hp_cqc": 1800,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "POD AI",
+        "hp_cqc": 4100,
+        "rayon_cqc": 31,
+        "prerequis_cqc": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    ],
+    "hp_cqc": 11300,
+    "temps_cqc": 180,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "Chrysalis : appareil volant à trois rotors carénés, corps central, radar, armement et pod IA ; drones Kidnapper comme unités séparées.",
+    "locomotion_et_appuis": "Rotor dans son plan de perspective, maintien d’altitude avec petites corrections, déplacement latéral puis inclinaison avant accélération. Ombre et distance au sol cohérentes.",
+    "attaques_a_animer": "Visée, railgun/missiles et lancement/récupération des drones selon mission ; suivre le radar réel plutôt qu’inventer une invisibilité totale. Pales ne pivotent pas à plat dans le plan écran.",
+    "phases_et_destruction": "Changer d’état offensif/défensif selon la variante, gérer rotor endommagé et chute sans glissement ; pod et collecte IA après défaite.",
+    "ecart_specifique": "Le bouton radar de quatre secondes appartient au CQC actuel. Rester explicite sur cette adaptation et vérifier les points faibles réels ainsi que les drones.",
+    "source_ids": [
+      "K-PW",
+      "W-PW"
+    ],
+    "classification": "BOSS_OFFICIEL_ADAPTE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P2",
+    "nombre_pieces_rig": 14,
+    "qualifications_rig_existantes": []
+  },
+  {
+    "id": "cocoon",
+    "nom": "COCOON",
+    "opus": "PEACE WALKER",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "cocoon_pw_psp2010",
+    "scene_native_actuelle": "p18_pw_cocoon_operation",
+    "label_scene_data_historique": "COSTA RICA — QUARRY FORTRESS",
+    "resume_code_actuel": "Démonter quatre plaques de blindage avant de toucher le pod AI.",
+    "regle_code_actuelle": "Détruire les protections avant la pièce centrale",
+    "cibles_code_actuelles": [
+      {
+        "nom": "PLAQUE 1",
+        "hp_cqc": 2100,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "PLAQUE 2",
+        "hp_cqc": 2100,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "PLAQUE 3",
+        "hp_cqc": 2100,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "PLAQUE 4",
+        "hp_cqc": 2100,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "POD AI",
+        "hp_cqc": 6000,
+        "rayon_cqc": 31,
+        "prerequis_cqc": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    ],
+    "hp_cqc": 14400,
+    "temps_cqc": 225,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "Cocoon : forteresse terrestre, volumineuse coque blindée, trains chenillés, niveaux accessibles, armements et pod supérieur.",
+    "locomotion_et_appuis": "Translation très lourde avec bandes de chenilles animées ; coque demeure rigide, vibrations d’armes isolées. Échelle suffisamment grande pour différencier pied de joueur, accès et plateforme.",
+    "attaques_a_animer": "Artillerie, mitraillage et attaques de proximité à relever séparément ; ouvrir/fermer équipements seulement d’après référence. L’escalade du joueur et ses contacts ne doivent pas se fondre dans un tir abstrait sur quatre plaques.",
+    "phases_et_destruction": "Dommages aux systèmes, accès à la structure, phase de pod et collecte IA. Distinguer normal, Type II, Custom et les phases de fumée/incapacitation.",
+    "ecart_specifique": "La vue de mine à ciel ouvert existe ; le combat actuel à quatre plaques ne représente pas à lui seul la circulation/verticalité du boss.",
+    "source_ids": [
+      "K-PW",
+      "W-PW"
+    ],
+    "classification": "BOSS_OFFICIEL_ADAPTE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P2",
+    "nombre_pieces_rig": 24,
+    "qualifications_rig_existantes": []
+  },
+  {
+    "id": "peacewalker",
+    "nom": "PEACE WALKER / BASILISK",
+    "opus": "PEACE WALKER",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "peacewalker_pw_psp2010",
+    "scene_native_actuelle": "p18_pw_peace_walker_operation",
+    "label_scene_data_historique": "NICARAGUA — LAKE BASE",
+    "resume_code_actuel": "Briser les jambes, interrompre le lancement nucléaire et atteindre le pod mammal.",
+    "regle_code_actuelle": "I maintenu au terminal : arrêt du lancement",
+    "cibles_code_actuelles": [
+      {
+        "nom": "JAMBE G",
+        "hp_cqc": 3800,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "JAMBE D",
+        "hp_cqc": 3800,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "POD MAMMAL",
+        "hp_cqc": 7200,
+        "rayon_cqc": 31,
+        "prerequis_cqc": [
+          0,
+          1
+        ]
+      }
+    ],
+    "hp_cqc": 14800,
+    "temps_cqc": 240,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "Peace Walker/Basilisk final : quadrupède, pod/capteurs et groupe d’armes de cette phase ; ne pas renommer le premier bipède.",
+    "locomotion_et_appuis": "Marche quadrupède avec séquence d’appui lisible, changement d’axe et pose de lancement ; les quatre pieds gardent leur rôle même si CQC n’expose que deux pools de jambes.",
+    "attaques_a_animer": "Préparation des armes, attaques et interruption du lancement nucléaire ; charge sonore/visuelle avant mouvement, projectile à son tube. Enregistrer séparément coups sur pod et jambes.",
+    "phases_et_destruction": "Combat final, compte à rebours, interruption, fausse transmission puis résolution finale du récit ; l’immersion finale n’est pas une animation idle.",
+    "ecart_specifique": "L’action I au terminal est une règle CQC adaptée. Le nombre de membres visuels, les groupes HP et la chronologie doivent être documentés indépendamment.",
+    "source_ids": [
+      "K-PW",
+      "W-PW"
+    ],
+    "classification": "BOSS_OFFICIEL_ADAPTE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P2",
+    "nombre_pieces_rig": 17,
+    "qualifications_rig_existantes": []
+  },
+  {
+    "id": "zeke",
+    "nom": "METAL GEAR ZEKE",
+    "opus": "PEACE WALKER",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "zeke_pw_psp2010",
+    "scene_native_actuelle": "mother_base",
+    "label_scene_data_historique": "MOTHER BASE — ZEKE HANGAR",
+    "resume_code_actuel": "Neutraliser le railgun et les missiles dans l’ordre choisi, puis attaquer le cœur AI.",
+    "regle_code_actuelle": "Chaque arme détruite retire ses attaques",
+    "cibles_code_actuelles": [
+      {
+        "nom": "RAILGUN",
+        "hp_cqc": 3800,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "MISSILES",
+        "hp_cqc": 3200,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "CŒUR AI",
+        "hp_cqc": 6400,
+        "rayon_cqc": 31,
+        "prerequis_cqc": [
+          0,
+          1
+        ]
+      }
+    ],
+    "hp_cqc": 13400,
+    "temps_cqc": 200,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "ZEKE standard : bipède personnalisable, tête/pod, railgun dorsal, banque de missiles, équipements récupérés. Le duel de Paz utilise son propre assemblage.",
+    "locomotion_et_appuis": "Appuis articulés, pas latéral, impulsion propulsée et réception sur le pont ; tenir compte de la hauteur des obstacles et du bord réel de Mother Base.",
+    "attaques_a_animer": "Charge railgun, alignement du tube, tir/recul ; ouverture des trappes missile puis salve et fermeture. Chaque module retiré modifie ce que l’on dessine et les attaques autorisées.",
+    "phases_et_destruction": "Duel piloté par Paz, dommages et chute/épilogue ; essais de machine personnalisée séparés. Ne pas décrire le boss de Paz comme une IA autonome générique.",
+    "ecart_specifique": "Le pont mother_base existe et représente déjà le duel ZEKE. Railgun et missiles ont des travaux de pièces dédiés ; valider la séquence complète et toutes configurations revendiquées, sans déclarer ce stage absent.",
+    "source_ids": [
+      "K-PW",
+      "W-PW"
+    ],
+    "classification": "BOSS_OFFICIEL_ADAPTE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P2",
+    "nombre_pieces_rig": 22,
+    "qualifications_rig_existantes": [
+      "Railgun barrel/receiver share one native connected component; runtime rectangles segment the natural joint without pixel editing.",
+      "Source-generated geometry was not perfectly grid aligned; measured native bounds replace assumed cells.",
+      "Disable visibility reads actual existing module HP; there are no invented detached fragments.",
+      "New source-led 2D reconstruction of the standard dorsal power-unit missile bank; original extracted geometry or absolute 1:1 is not certified.",
+      "Six launch caps follow the visible original pose-sheet count. Closed-source art has no separately admitted open-cap interior, hinge, missile-ejection phase or axial reversed camera.",
+      "The bank is rigidly attached to the existing torso support. No independent cap opening, weapon recoil, new HP pool, detached wreckage or nuclear launcher is invented.",
+      "The two-tube nuclear launcher of the separate design study is an alternate configuration replacing the railgun bay; it is not installed on the PSP standard boss.",
+      "The sprite palette follows the standard machine. Hidden underside mounting projection is interpreted; launch-point descriptors identify admitted surface pixels, not an extracted missile animation."
+    ]
+  },
+  {
+    "id": "gander",
+    "nom": "METAL GEAR GANDER",
+    "opus": "GHOST BABEL",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "gander_ghost_gbc2000",
+    "scene_native_actuelle": "p18_ghost_galuade_cellule_gander",
+    "label_scene_data_historique": "GALUADE — GANDER SILO",
+    "resume_code_actuel": "Neutraliser les jambes, le canon rail puis le compartiment nucléaire.",
+    "regle_code_actuelle": "Détruire les protections avant la pièce centrale",
+    "cibles_code_actuelles": [
+      {
+        "nom": "JAMBE G",
+        "hp_cqc": 2700,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "JAMBE D",
+        "hp_cqc": 2700,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "RAILGUN",
+        "hp_cqc": 3300,
+        "rayon_cqc": 31,
+        "prerequis_cqc": [
+          0,
+          1
+        ]
+      },
+      {
+        "nom": "NUCLÉAIRE",
+        "hp_cqc": 5800,
+        "rayon_cqc": 31,
+        "prerequis_cqc": [
+          0,
+          1,
+          2
+        ]
+      }
+    ],
+    "hp_cqc": 14500,
+    "temps_cqc": 195,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "GANDER Ghost Babel : jambes, centre, canons jumeaux et modules latéraux. Identifier l’émetteur de flammes sur le corps ; ne pas déplacer ce jet dans la bouche.",
+    "locomotion_et_appuis": "Masse stable dans la salle, déplacement et retrait des appuis conformes au combat GBC ; lors d’une posture basse, ne pas allonger artificiellement les segments.",
+    "attaques_a_animer": "Ouverture/fermeture des modules, railguns et projectiles suivent leur rythme source ; flammes et déplacements des drones sont des sprites autonomes. Préparer angles visibles des tourelles.",
+    "phases_et_destruction": "Les trois phases originales sont à décomposer avec leurs changements de silhouette et cibles. Maintenir débris/dégâts d’une phase à la suivante.",
+    "ecart_specifique": "Qualification interne explicite : la présentation ne met pas en œuvre les trois phases canoniques ; deux phases et les pools HP existants demeurent. Le marqueur latéral de feu actuel est une adaptation, pas un placement GBC certifié.",
+    "source_ids": [
+      "K-GHOST",
+      "W-GANDER"
+    ],
+    "classification": "BOSS_OFFICIEL_ADAPTE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P1",
+    "nombre_pieces_rig": 27,
+    "qualifications_rig_existantes": [
+      "Original canonical three phases are not implemented by this presentation patch. Existing two phases and HP pools remain unchanged.",
+      "Central mouth remains central; the existing right-hand fire target marker is an adaptation, not original GBC target placement.",
+      "Front turrets are original visual structure, not newly destructible HP targets.",
+      "Stomp and adapted fold use presentation-only two-link articulation from native source vectors. Hip lowers by the existing procedural77px fold, foot retracts toward existing28px phase-two support, and actual engine stompLift raises only the existing support target. No independent animation/combat clock or detachable limb is added.",
+      "New art is a faithful best-effort redraw of the official Konami three-quarter concept. It is not an original extracted frame; absolute 1:1 is not certified.",
+      "One admitted source camera is available. Opposite-camera art is not manufactured by mirroring or by renaming another edition.",
+      "Visible native regions are cut along mechanical boundaries. Hidden joint surfaces and movements remain authored 2D adaptations; no 3D volumetric certification is claimed.",
+      "The open faceplate uses an independently generated local appearance. Its small source variation is not an extracted original animation.",
+      "The visible cylindrical leg pods retain encounter flags, but no unsupported new open-door pixels or original third battle phase are invented.",
+      "All original atlases, part IDs, engine HP pools, phase rules, saves and clocks are retained. Canonical metric dimensions for Gander remain unknown.",
+      "Canvas clips can antialias shared seams. Native pixel-center coverage is exact; exact assembled RGBA is measured separately rather than asserted."
+    ]
+  },
+  {
+    "id": "sahel",
+    "nom": "METAL GEAR SAHELANTHROPUS",
+    "opus": "MGSV",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "sahelanthropus_mgsv2015",
+    "scene_native_actuelle": "p18_tpp_afghanistan_sahelanthropus_canyon",
+    "label_scene_data_historique": "AFGHANISTAN — OKB ZERO VALLEY",
+    "resume_code_actuel": "Briser les appuis, survivre aux Metallic Archaea et atteindre la tête.",
+    "regle_code_actuelle": "Détruire les protections avant la pièce centrale",
+    "cibles_code_actuelles": [
+      {
+        "nom": "JAMBE G",
+        "hp_cqc": 3600,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "JAMBE D",
+        "hp_cqc": 3600,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "BOUCLIER",
+        "hp_cqc": 2900,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "TÊTE",
+        "hp_cqc": 6200,
+        "rayon_cqc": 31,
+        "prerequis_cqc": [
+          0,
+          1,
+          2
+        ]
+      }
+    ],
+    "hp_cqc": 16300,
+    "temps_cqc": 250,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "Sahelanthropus TPP : grand bipède, tête/capteurs, bras, jambes, coque, armements et dispositif de fouet/lame propre à l’incarnation.",
+    "locomotion_et_appuis": "Marche lourde, course/ruée et saut selon séquence ; pied planté sert d’origine de poids, bassin et bras compensent sans tordre les panneaux. Caméra et ombre adaptées à sa taille réelle relative au joueur.",
+    "attaques_a_animer": "Chaque famille d’attaque réclame télégraphe propre : missiles/recherche, railgun et attaque par arme flexible, archaea. Séparer effets de particules, géométrie de collision et sprite de la machine.",
+    "phases_et_destruction": "Traque et final doivent rester distincts ; vulnérabilités et effets de destruction persistent. Apparition du Third Child dans la fenêtre narrative n’est pas un point faible permanent inventé.",
+    "ecart_specifique": "Le rig et canyon existent ; les quatre cibles Arsenal et les animations procédurales ne prouvent ni chaque arme ni la chronologie mission31/50. Mesurer chaque difficulté revendiquée.",
+    "source_ids": [
+      "K-TPP",
+      "W-TPP"
+    ],
+    "classification": "BOSS_OFFICIEL_ADAPTE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P2",
+    "nombre_pieces_rig": 21,
+    "qualifications_rig_existantes": [
+      "Torso source includes an adjacent head contour; runtime torso rect omits that face to avoid a doubled head.",
+      "Original top-mounted railgun is preserved. The existing adapted logical emitter target at low forearm height remains marked by encounter UI; no original placement is claimed.",
+      "Existing whip damaging-volume artwork/telegraphs, phase-red effects and defeat flames must remain separately painted by encounter overlays.",
+      "Unseen joint sockets, damaged module details and 2.5D projection are reconstructions."
+    ]
+  },
+  {
+    "id": "ray_mgR",
+    "nom": "RAY — UNMANNED",
+    "opus": "REVENGEANCE",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "ray_unmanned_mgr2013",
+    "scene_native_actuelle": "p18_mgr_abkhazie_cour_desperado",
+    "label_scene_data_historique": "ABKHAZIA — RAIN DOCK",
+    "resume_code_actuel": "Deux lames à sectionner, puis une ouverture obtenue par la riposte.",
+    "regle_code_actuelle": "I au dernier instant : ouvrir la tête",
+    "cibles_code_actuelles": [
+      {
+        "nom": "JAMBE G",
+        "hp_cqc": 2400,
+        "rayon_cqc": 30,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "JAMBE D",
+        "hp_cqc": 2400,
+        "rayon_cqc": 30,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "TÊTE",
+        "hp_cqc": 6200,
+        "rayon_cqc": 30,
+        "prerequis_cqc": [
+          0,
+          1
+        ]
+      }
+    ],
+    "hp_cqc": 11000,
+    "temps_cqc": 250,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "RAY non piloté Rising : silhouette et armes finales 2013, équipement de plasma/lames propre à Rising ; aucun jet hydraulique MGS2 substitué.",
+    "locomotion_et_appuis": "Pose, déplacement par jambes et bond du prologue, interaction avec route/train. Animation sur plusieurs plans et destruction des appuis doivent garder des arcs lisibles.",
+    "attaques_a_animer": "Lames aux bras, plasma, piétinement et missiles selon séquence ; distinguer attaque libre, parade et séquence de découpe où caméra/collisions changent.",
+    "phases_et_destruction": "Démembrement et franchissement du train en plusieurs événements, pas un seul écran genoux→tête. Le prompt de riposte CQC est une adaptation contrôlée.",
+    "ecart_specifique": "Le modèle existe ; le stage Arsenal branché est Abkhazie R01, alors que la rencontre iconique R00 se déroule en Afrique. Créer ce site et ses phases avant déclaration 1:1.",
+    "source_ids": [
+      "K-MGR",
+      "W-MGR"
+    ],
+    "classification": "BOSS_OFFICIEL_ADAPTE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P1",
+    "nombre_pieces_rig": 12,
+    "qualifications_rig_existantes": []
+  },
+  {
+    "id": "grad",
+    "nom": "GRAD",
+    "opus": "REVENGEANCE",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "grad_mgr2013",
+    "scene_native_actuelle": "p18_mgr_world_marshal_esplanade",
+    "label_scene_data_historique": "WORLD MARSHAL — SERVICE YARD",
+    "resume_code_actuel": "EMP, plaques de défense et salves de contre-attaque.",
+    "regle_code_actuelle": "I : impulsion EMP ; disponible à nouveau après 6,5 secondes",
+    "cibles_code_actuelles": [
+      {
+        "nom": "BOUCLIER G",
+        "hp_cqc": 2000,
+        "rayon_cqc": 30,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "BOUCLIER D",
+        "hp_cqc": 2000,
+        "rayon_cqc": 30,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "CENTRE",
+        "hp_cqc": 5400,
+        "rayon_cqc": 30,
+        "prerequis_cqc": [
+          0,
+          1
+        ]
+      }
+    ],
+    "hp_cqc": 9400,
+    "temps_cqc": 250,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "GRAD : configuration repliée/tourelle puis robot blindé mobile, plaques/boucliers latéraux, canon et articulations.",
+    "locomotion_et_appuis": "Déploiement des membres depuis la configuration défensive ; pas pesants, ancrage des pieds et protection frontale. Conserver variante et nombre d’unités selon la rencontre.",
+    "attaques_a_animer": "Canon et missiles depuis les armes, plaques en défense, charge/coup de proximité ; électrocution EMP et durée d’étourdissement doivent être séparées du moteur de sprites.",
+    "phases_et_destruction": "Bouclier endommagé, centre exposé puis effondrement et découpe. Séparer rencontre de Guadalajara et réemplois ultérieurs.",
+    "ecart_specifique": "Rig présent. La scène Arsenal World Marshal est une simulation réutilisée ; manque un rattachement exact Guadalajara pour la rencontre d’origine. Le délai EMP6,5s est une valeur CQC.",
+    "source_ids": [
+      "K-MGR",
+      "W-MGR"
+    ],
+    "classification": "BOSS_OFFICIEL_ADAPTE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P2",
+    "nombre_pieces_rig": 12,
+    "qualifications_rig_existantes": []
+  },
+  {
+    "id": "excelsus",
+    "nom": "METAL GEAR EXCELSUS",
+    "opus": "REVENGEANCE",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "excelsus_mgr2013",
+    "scene_native_actuelle": "pakistan_wreck",
+    "label_scene_data_historique": "PAKISTAN — EXCELSUS CRATER",
+    "resume_code_actuel": "Démontage des appuis, deux lames géantes et cœur protégé.",
+    "regle_code_actuelle": "Appuis et lames neutralisent les attaques associées",
+    "cibles_code_actuelles": [
+      {
+        "nom": "APPUI 1",
+        "hp_cqc": 1700,
+        "rayon_cqc": 30,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "APPUI 2",
+        "hp_cqc": 1700,
+        "rayon_cqc": 30,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "APPUI 3",
+        "hp_cqc": 1700,
+        "rayon_cqc": 30,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "APPUI 4",
+        "hp_cqc": 1700,
+        "rayon_cqc": 30,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "LAME G",
+        "hp_cqc": 2100,
+        "rayon_cqc": 30,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "LAME D",
+        "hp_cqc": 2100,
+        "rayon_cqc": 30,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "CŒUR",
+        "hp_cqc": 7800,
+        "rayon_cqc": 30,
+        "prerequis_cqc": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    ],
+    "hp_cqc": 18800,
+    "temps_cqc": 250,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "EXCELSUS : plateforme à six membres de support visibles, coque gigantesque et deux lames. Ne pas réduire l’anatomie à quatre jambes car le jeu CQC possède quatre groupes HP.",
+    "locomotion_et_appuis": "Déplacement par transfert sur plusieurs appuis ; pied solidaire du tibia, coque lourde et course des lames indépendante. Définir emprise hors écran sans changer l’échelle pendant le contact.",
+    "attaques_a_animer": "Lame préparée en hauteur, descente, balayage/contact puis retrait ; jambes frappant au sol et vagues de Gekkos séparées. Découpe contrôlée en séquences distinctes.",
+    "phases_et_destruction": "État complet, appuis/lames neutralisés, coque détruite puis épave servant au duel Armstrong. L’épave existante n’est pas le décor initial de toutes les phases.",
+    "ecart_specifique": "Le code documente six pieds dessinés pour quatre pools de support : c’est une simplification de gameplay connue, pas une absence de deux sprites. Vérifier transition base intacte→cratère→épave.",
+    "source_ids": [
+      "K-MGR",
+      "W-MGR"
+    ],
+    "classification": "BOSS_OFFICIEL_ADAPTE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P2",
+    "nombre_pieces_rig": 24,
+    "qualifications_rig_existantes": [
+      "Source-led projected 2D joint motion; original 3D animations are not extracted and absolute 1:1 is not certified.",
+      "Excelsus six independently drawn feet retain the four existing support HP groups; a foot follows its detached tibia and has no additional HP pool.",
+      "Orthogonal native crop cuts preserve the admitted neutral source geometry. Complementary Chaioth finger masks can have a subpixel antialiasing seam; measured raster tolerance is documented by QA.",
+      "Arsenal Gear and Outer Haven rigid pressure hulls remain rigid. Existing incomplete Arsenal exterior geometry is not filled with invented sections.",
+      "Shagohod screws retain their real long axial projection. True rotating helical phases require independently authored native source images and are not simulated as spinning flat wheels.",
+      "Chaioth gripper finger separation follows the visible admitted source rails; concealed knuckle interiors are not manufactured.",
+      "Weapon aiming is limited to the admitted 2D mount projection; rotations and weight transfers are authored, not extracted original animations.",
+      "Opposite cameras absent from an admitted rig remain absent; no source is mirrored into another incarnation."
+    ]
+  },
+  {
+    "id": "kodoque",
+    "nom": "KODOQUE",
+    "opus": "AC!D",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "kodoque_acid_psp2004",
+    "scene_native_actuelle": "lobito",
+    "label_scene_data_historique": "LOBITO — EMITTER HALL",
+    "resume_code_actuel": "Gérer le COST et couper les deux émetteurs avant le noyau.",
+    "regle_code_actuelle": "COST maximal : attendre sa dissipation",
+    "cibles_code_actuelles": [
+      {
+        "nom": "ÉMETTEUR G",
+        "hp_cqc": 2300,
+        "rayon_cqc": 30,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "ÉMETTEUR D",
+        "hp_cqc": 2300,
+        "rayon_cqc": 30,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "NOYAU",
+        "hp_cqc": 5600,
+        "rayon_cqc": 30,
+        "prerequis_cqc": [
+          0,
+          1
+        ]
+      }
+    ],
+    "hp_cqc": 10200,
+    "temps_cqc": 250,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "KODOQUE AC!D : coque, bras/plastrons protecteurs et émetteurs ; l’intérieur jouable avec Teliko constitue un espace distinct de la silhouette externe.",
+    "locomotion_et_appuis": "Pivot et déplacement issus des cases source à traduire en poses ; ce passage en temps réel est une adaptation explicite. Les éléments rigides gardent leurs proportions.",
+    "attaques_a_animer": "Ouverture de protections, charge des émetteurs et tir ; animation de coût/énergie séparée de l’armement. Aucun tir à travers une plaque fermée sans règle annoncée.",
+    "phases_et_destruction": "Alterner actions extérieur/intérieur et états endommagés. Version prototype récupérée d’AC!D2 fait une autre fiche, pas une recoloration arbitraire.",
+    "ecart_specifique": "Deux émetteurs+noyau et COST présents ; le lieu lobito général ne clôture pas la salle FAR ni le rôle intérieur de Teliko. Compléter la vraie structure du combat à deux protagonistes.",
+    "source_ids": [
+      "W-KODOQUE",
+      "W-ACID"
+    ],
+    "classification": "BOSS_OFFICIEL_ADAPTE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P2",
+    "nombre_pieces_rig": 23,
+    "qualifications_rig_existantes": [
+      "Native original dark armor/orange exposed framework replaces current green box study, without changing action-simulation HP or COST mechanics.",
+      "The source upper torso includes a shoulder cap; independent caps overlap matching sockets, not duplicated full shields.",
+      "Original PSP tactical/card encounter is not certified reproduced by the current action simulation.",
+      "Source-led projected 2D joint motion; original 3D animations are not extracted and absolute 1:1 is not certified.",
+      "Excelsus six independently drawn feet retain the four existing support HP groups; a foot follows its detached tibia and has no additional HP pool.",
+      "Orthogonal native crop cuts preserve the admitted neutral source geometry. Complementary Chaioth finger masks can have a subpixel antialiasing seam; measured raster tolerance is documented by QA.",
+      "Arsenal Gear and Outer Haven rigid pressure hulls remain rigid. Existing incomplete Arsenal exterior geometry is not filled with invented sections.",
+      "Shagohod screws retain their real long axial projection. True rotating helical phases require independently authored native source images and are not simulated as spinning flat wheels.",
+      "Chaioth gripper finger separation follows the visible admitted source rails; concealed knuckle interiors are not manufactured.",
+      "Weapon aiming is limited to the admitted 2D mount projection; rotations and weight transfers are authored, not extracted original animations.",
+      "Opposite cameras absent from an admitted rig remain absent; no source is mirrored into another incarnation."
+    ]
+  },
+  {
+    "id": "chaioth",
+    "nom": "CHAIOTH HA QADESH",
+    "opus": "AC!D 2",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "chaioth_acid2_psp2005",
+    "scene_native_actuelle": "saintlogic",
+    "label_scene_data_historique": "SAINTLOGIC — RAIL CORE",
+    "resume_code_actuel": "Articulations, railgun et noyau. Le COST ralentit la cadence.",
+    "regle_code_actuelle": "Articulations, canon, COST",
+    "cibles_code_actuelles": [
+      {
+        "nom": "JOINT G",
+        "hp_cqc": 2200,
+        "rayon_cqc": 30,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "JOINT D",
+        "hp_cqc": 2200,
+        "rayon_cqc": 30,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "RAILGUN",
+        "hp_cqc": 2600,
+        "rayon_cqc": 30,
+        "prerequis_cqc": [
+          0,
+          1
+        ]
+      },
+      {
+        "nom": "NOYAU",
+        "hp_cqc": 6500,
+        "rayon_cqc": 30,
+        "prerequis_cqc": [
+          0,
+          1,
+          2
+        ]
+      }
+    ],
+    "hp_cqc": 13500,
+    "temps_cqc": 250,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "Chaioth Ha Qadesh AC!D2 : corps, bras/mains et appendices/articulations, arme centrale ; préserver la silhouette singulière, pas un simple REX remaquillé.",
+    "locomotion_et_appuis": "Positions et déplacements à référencer par phase ; ouvrir/fermer les doigts avec leur véritable pivot et gérer masques sans trou visible dans les poses extrêmes.",
+    "attaques_a_animer": "Préparation des articulations/armes, charge, tir et retour, effets de cartes hors squelette. Projeter les attaques de la grille avec une convention CQC documentée.",
+    "phases_et_destruction": "Découper destruction des parties puis affrontement du corps complet, avec transition de scène si la source en comporte. Les couleurs/énergie suivent le même état entre phases.",
+    "ecart_specifique": "Le rig possède déjà des articulations et masques de doigts ; le résumé joints/railgun/noyau reste un abrégé. Faire relever les phases d’AC!D2 et le nom réel de chaque organe.",
+    "source_ids": [
+      "W-CHAIOTH",
+      "W-ACID2"
+    ],
+    "classification": "BOSS_OFFICIEL_ADAPTE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P2",
+    "nombre_pieces_rig": 23,
+    "qualifications_rig_existantes": [
+      "Source-led projected 2D joint motion; original 3D animations are not extracted and absolute 1:1 is not certified.",
+      "Excelsus six independently drawn feet retain the four existing support HP groups; a foot follows its detached tibia and has no additional HP pool.",
+      "Orthogonal native crop cuts preserve the admitted neutral source geometry. Complementary Chaioth finger masks can have a subpixel antialiasing seam; measured raster tolerance is documented by QA.",
+      "Arsenal Gear and Outer Haven rigid pressure hulls remain rigid. Existing incomplete Arsenal exterior geometry is not filled with invented sections.",
+      "Shagohod screws retain their real long axial projection. True rotating helical phases require independently authored native source images and are not simulated as spinning flat wheels.",
+      "Chaioth gripper finger separation follows the visible admitted source rails; concealed knuckle interiors are not manufactured.",
+      "Weapon aiming is limited to the admitted 2D mount projection; rotations and weight transfers are authored, not extracted original animations.",
+      "Opposite cameras absent from an admitted rig remain absent; no source is mirrored into another incarnation."
+    ]
+  },
+  {
+    "id": "arsenal_gear",
+    "nom": "ARSENAL GEAR — GW CORE",
+    "opus": "MGS2",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "arsenal_gear_mgs2_ps2_2001",
+    "scene_native_actuelle": "arsenal_corridor",
+    "label_scene_data_historique": "ARSENAL GEAR — GW CHAMBER",
+    "resume_code_actuel": "Détruire les trois relais GW avant le noyau Patriot.",
+    "regle_code_actuelle": "Couper les trois relais avant le cœur de GW",
+    "cibles_code_actuelles": [
+      {
+        "nom": "RELAIS GW A",
+        "hp_cqc": 3000,
+        "rayon_cqc": 34,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "RELAIS GW B",
+        "hp_cqc": 3000,
+        "rayon_cqc": 34,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "RELAIS GW C",
+        "hp_cqc": 3000,
+        "rayon_cqc": 34,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "GW CORE",
+        "hp_cqc": 6000,
+        "rayon_cqc": 40,
+        "prerequis_cqc": [
+          0,
+          1,
+          2
+        ]
+      }
+    ],
+    "hp_cqc": 15000,
+    "temps_cqc": 190,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "Arsenal Gear : coque immense de forteresse sous-marine ; sections et superstructure rigides. GW est un système informatique, pas un organe de monstre humanoïde.",
+    "locomotion_et_appuis": "Déplacement du navire et roulis de l’ensemble uniquement à l’échelle du plan ; aucune flexion de coque. Intérieur jouable dans un autre référentiel.",
+    "attaques_a_animer": "Événements externes, collisions et déplacements de navire documentés séparément ; trois relais à détruire et noyau ne sont pas un boss original à reproduire.",
+    "phases_et_destruction": "Intérieurs, rencontre RAY, progression narrative et apparition à Manhattan ont des géographies différentes ; la destruction de relais ne doit pas remplacer le récit source.",
+    "ecart_specifique": "La machine existe mais le dossier « GW CORE » est une rencontre de simulation créée pour CQC, affichée dans le corridor. Le labelliser et compléter lieux réels si objectif canonique.",
+    "source_ids": [
+      "W-MGS2",
+      "K-MANUELS"
+    ],
+    "classification": "MACHINE_OFFICIELLE_RENCONTRE_CQC_INVENTEE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P2",
+    "nombre_pieces_rig": 10,
+    "qualifications_rig_existantes": [
+      "Source-led projected 2D joint motion; original 3D animations are not extracted and absolute 1:1 is not certified.",
+      "Excelsus six independently drawn feet retain the four existing support HP groups; a foot follows its detached tibia and has no additional HP pool.",
+      "Orthogonal native crop cuts preserve the admitted neutral source geometry. Complementary Chaioth finger masks can have a subpixel antialiasing seam; measured raster tolerance is documented by QA.",
+      "Arsenal Gear and Outer Haven rigid pressure hulls remain rigid. Existing incomplete Arsenal exterior geometry is not filled with invented sections.",
+      "Shagohod screws retain their real long axial projection. True rotating helical phases require independently authored native source images and are not simulated as spinning flat wheels.",
+      "Chaioth gripper finger separation follows the visible admitted source rails; concealed knuckle interiors are not manufactured.",
+      "Weapon aiming is limited to the admitted 2D mount projection; rotations and weight transfers are authored, not extracted original animations.",
+      "Opposite cameras absent from an admitted rig remain absent; no source is mirrored into another incarnation."
+    ]
+  },
+  {
+    "id": "outer_haven",
+    "nom": "OUTER HAVEN — SOP CORE",
+    "opus": "MGS4",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "outer_haven_mgs4_ps3_2008",
+    "scene_native_actuelle": "outer_haven",
+    "label_scene_data_historique": "OUTER HAVEN — SERVER SPINE",
+    "resume_code_actuel": "Rompre les relais SOP avant le cœur du système.",
+    "regle_code_actuelle": "Désactiver le réseau SOP avant le cœur",
+    "cibles_code_actuelles": [
+      {
+        "nom": "SOP RELAY A",
+        "hp_cqc": 3200,
+        "rayon_cqc": 34,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "SOP RELAY B",
+        "hp_cqc": 3200,
+        "rayon_cqc": 34,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "SOP RELAY C",
+        "hp_cqc": 3200,
+        "rayon_cqc": 34,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "SYSTEM CORE",
+        "hp_cqc": 5900,
+        "rayon_cqc": 42,
+        "prerequis_cqc": [
+          0,
+          1,
+          2
+        ]
+      }
+    ],
+    "hp_cqc": 15500,
+    "temps_cqc": 195,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "Outer Haven : sous-marin/forteresse MGS4, coque et structures rigides. Le système SOP/GW n’est pas un robot à articulations.",
+    "locomotion_et_appuis": "Mouvement d’ensemble limité et parallaxe cohérente ; relier ombre/eau à la coque sans déformation. Les scènes intérieures n’utilisent pas la même échelle.",
+    "attaques_a_animer": "Pour une simulation, annoncer clairement relais et cœur comme règles originales. Pour une reproduction, animer événements attestés, systèmes d’accès et séquence narrative du navire.",
+    "phases_et_destruction": "Débarquement, couloir micro-ondes, serveurs et duel au sommet sont quatre étapes distinctes. Des relais détruits dans une vue externe ne prouvent aucune de ces scènes.",
+    "ecart_specifique": "Le dossier « SOP CORE » est inventé et raccordé au sommet Liquid. Conserver son statut simulation ; produire micro-ondes/serveurs avec leur vrai contexte.",
+    "source_ids": [
+      "W-MGS4"
+    ],
+    "classification": "MACHINE_OFFICIELLE_RENCONTRE_CQC_INVENTEE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P2",
+    "nombre_pieces_rig": 11,
+    "qualifications_rig_existantes": [
+      "Source-led projected 2D joint motion; original 3D animations are not extracted and absolute 1:1 is not certified.",
+      "Excelsus six independently drawn feet retain the four existing support HP groups; a foot follows its detached tibia and has no additional HP pool.",
+      "Orthogonal native crop cuts preserve the admitted neutral source geometry. Complementary Chaioth finger masks can have a subpixel antialiasing seam; measured raster tolerance is documented by QA.",
+      "Arsenal Gear and Outer Haven rigid pressure hulls remain rigid. Existing incomplete Arsenal exterior geometry is not filled with invented sections.",
+      "Shagohod screws retain their real long axial projection. True rotating helical phases require independently authored native source images and are not simulated as spinning flat wheels.",
+      "Chaioth gripper finger separation follows the visible admitted source rails; concealed knuckle interiors are not manufactured.",
+      "Weapon aiming is limited to the admitted 2D mount projection; rotations and weight transfers are authored, not extracted original animations.",
+      "Opposite cameras absent from an admitted rig remain absent; no source is mirrored into another incarnation."
+    ]
+  },
+  {
+    "id": "battle_gear",
+    "nom": "BATTLE GEAR — FIELD TRIAL",
+    "opus": "MGSV",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "battle_gear_mgsv2015",
+    "scene_native_actuelle": "mother_base_platform",
+    "label_scene_data_historique": "MOTHER BASE — BATTLE GEAR BAY",
+    "resume_code_actuel": "Simulation du prototype lourd de Diamond Dogs.",
+    "regle_code_actuelle": "Neutraliser la mobilité et le railgun avant le cockpit",
+    "cibles_code_actuelles": [
+      {
+        "nom": "JAMBE G",
+        "hp_cqc": 2600,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "JAMBE D",
+        "hp_cqc": 2600,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "RAILGUN",
+        "hp_cqc": 3000,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "COCKPIT",
+        "hp_cqc": 5000,
+        "rayon_cqc": 39,
+        "prerequis_cqc": [
+          0,
+          1
+        ]
+      }
+    ],
+    "hp_cqc": 13200,
+    "temps_cqc": 175,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "Battle Gear TPP : prototype lourd développé par Diamond Dogs, châssis et canon distincts des Metal Gear bipèdes.",
+    "locomotion_et_appuis": "Animations d’atelier documentées puis démonstrations de terrain marquées originales. Ne pas affirmer une locomotion jouable canonique absente du produit final.",
+    "attaques_a_animer": "Le tir de railgun et les cibles techniques peuvent servir de concept CQC ; chaque cycle préparation→tir→recul doit porter son statut de proposition.",
+    "phases_et_destruction": "Inspection atelier, mise en service narrative/dispatch et simulation d’essai séparées ; destruction du cockpit n’est pas un combat officiel livré.",
+    "ecart_specifique": "Le nom FIELD TRIAL est déjà honnête. Compléter sources d’atelier et silhouette, conserver cette rencontre dans les créations CQC et pas la liste de boss originaux.",
+    "source_ids": [
+      "K-TPP",
+      "W-WEAPONS"
+    ],
+    "classification": "MACHINE_OFFICIELLE_RENCONTRE_CQC_INVENTEE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P2",
+    "nombre_pieces_rig": 16,
+    "qualifications_rig_existantes": []
+  },
+  {
+    "id": "dwalker",
+    "nom": "D-WALKER — COMBAT TEST",
+    "opus": "MGSV",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "dwalker_mgsv2015",
+    "scene_native_actuelle": "mother_base_platform",
+    "label_scene_data_historique": "MOTHER BASE — D-WALKER RANGE",
+    "resume_code_actuel": "Désactiver ses jambes, son arme puis l’unité AI.",
+    "regle_code_actuelle": "Démanteler le châssis avant le noyau",
+    "cibles_code_actuelles": [
+      {
+        "nom": "JAMBE G",
+        "hp_cqc": 2200,
+        "rayon_cqc": 28,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "JAMBE D",
+        "hp_cqc": 2200,
+        "rayon_cqc": 28,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "ARME",
+        "hp_cqc": 2200,
+        "rayon_cqc": 27,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "AI CORE",
+        "hp_cqc": 3200,
+        "rayon_cqc": 34,
+        "prerequis_cqc": [
+          0,
+          1
+        ]
+      }
+    ],
+    "hp_cqc": 9800,
+    "temps_cqc": 145,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "D-Walker TPP : petit walker pilotable, selle/poste de pilotage, jambes, roues/roulettes et modules sélectionnables.",
+    "locomotion_et_appuis": "Marche, passage rapide sur roues, arrêt, montée/descente du pilote ; ancrer mains/pieds du pilote sur le même rig. Pas d’échelle de Metal Gear géant.",
+    "attaques_a_animer": "Chaque équipement possède posture et origine de tir propres ; bras de mêlée/manipulation selon configuration. Déploiement des éléments sans étirement de sprite.",
+    "phases_et_destruction": "Équipement et pilote déterminent la silhouette ; destruction/immobilisation et sortie du pilote séparées. Essai technique CQC à garder identifié.",
+    "ecart_specifique": "Deux directions admises et dossier d’essai présents. Les modules complets, transitions de mobilité et pilote nécessitent une matrice d’animations ; le noyau IA n’est pas un boss canonique.",
+    "source_ids": [
+      "K-TPP"
+    ],
+    "classification": "MACHINE_OFFICIELLE_RENCONTRE_CQC_INVENTEE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P2",
+    "nombre_pieces_rig": 12,
+    "qualifications_rig_existantes": []
+  },
+  {
+    "id": "walker_column",
+    "nom": "WALKER GEAR COLUMN",
+    "opus": "MGSV",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "walker_gear_mgsv2015",
+    "scene_native_actuelle": "afghan_ruins",
+    "label_scene_data_historique": "AFGHANISTAN — WALKER CHECKPOINT",
+    "resume_code_actuel": "Trois Walker Gears arrivent successivement.",
+    "regle_code_actuelle": "Neutraliser trois unités successives",
+    "cibles_code_actuelles": [
+      {
+        "nom": "JAMBE G",
+        "hp_cqc": 1800,
+        "rayon_cqc": 27,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "JAMBE D",
+        "hp_cqc": 1800,
+        "rayon_cqc": 27,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "CORE",
+        "hp_cqc": 5400,
+        "rayon_cqc": 34,
+        "prerequis_cqc": [
+          0,
+          1
+        ]
+      }
+    ],
+    "hp_cqc": 9000,
+    "temps_cqc": 175,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "Walker Gear TPP : unité bipède légère à poste ouvert, pilote visible et armement frontal. Trois unités d’une colonne ne sont pas trois espèces de boss.",
+    "locomotion_et_appuis": "Pas courts, bassin suspendu, pivot et arrêt ; les pieds prennent le sol avant transfert. Le pilote garde ses prises et réagit aux impacts.",
+    "attaques_a_animer": "Mitraillage de l’armement monté, tir de variante et réaction à l’éjection/extraction du pilote ; laisser la machine vide si le pilote est sorti.",
+    "phases_et_destruction": "Unités successives en mode CQC, châssis intact/endommagé/vide puis détruit. Vérifier variantes XOF, armements et patrouilles séparément.",
+    "ecart_specifique": "Rigs deux faces présents ; trois vagues constituent une composition CQC. Fidélité à vérifier sur pilote, extraction, changement d’arme et posture d’une unité.",
+    "source_ids": [
+      "K-TPP"
+    ],
+    "classification": "ENNEMI_OFFICIEL_VAGUES_CQC_ADAPTEES",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P2",
+    "nombre_pieces_rig": 13,
+    "qualifications_rig_existantes": []
+  },
+  {
+    "id": "mk2",
+    "nom": "METAL GEAR Mk.II",
+    "opus": "MGS4",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "mk2_mgs4_ps3_2008",
+    "scene_native_actuelle": "outer_haven",
+    "label_scene_data_historique": "NOMAD — ROBOTICS DECK",
+    "resume_code_actuel": "Simulation d’entraînement du petit éclaireur.",
+    "regle_code_actuelle": "Test technique des modules Mk.II",
+    "cibles_code_actuelles": [
+      {
+        "nom": "SHOCK CABLE",
+        "hp_cqc": 1800,
+        "rayon_cqc": 25,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "MANIPULATEUR",
+        "hp_cqc": 1800,
+        "rayon_cqc": 25,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "CORE",
+        "hp_cqc": 3600,
+        "rayon_cqc": 30,
+        "prerequis_cqc": [
+          0,
+          1
+        ]
+      }
+    ],
+    "hp_cqc": 7200,
+    "temps_cqc": 125,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "Metal Gear Mk.II MGS4 : petit robot d’Otacon, écran/optique, deux jambes/roues, manipulateur et câble électrique.",
+    "locomotion_et_appuis": "Marche/roulage, transition d’appuis et arrêt ; échelle près de la cheville d’un humain à mesurer sur image source, pas géant de duel.",
+    "attaques_a_animer": "Déployer câble, contact, arc d’étourdissement puis rétraction ; caméra et manipulateur orientés vers cible. Camouflage comme couche dédiée sans effacer collision.",
+    "phases_et_destruction": "Reconnaissance, objet ramassé, contrôle distant interrompu et panne ; aucune phase de boss hostile officielle à inventer sous label canonique.",
+    "ecart_specifique": "Essai technique disponible, deux faces chargées. Le stage réel Nomad n’est pas fourni par le sommet Outer Haven choisi dans le pont actuel.",
+    "source_ids": [
+      "W-MGS4"
+    ],
+    "classification": "ALLIE_OFFICIEL_ESSAI_CQC_INVENTE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P2",
+    "nombre_pieces_rig": 15,
+    "qualifications_rig_existantes": [
+      "Mk.II/Mk.III have one documented multifunction manipulator, not four new weapons. These are native cable poses, gripper components and a service-hull appearance already present in the admitted art.",
+      "The arm endpoints, finger hinges and body sockets are authored on opaque native source pixels. Concealed 3D mount interiors and exact extracted MGS4 animation are unavailable; absolute 1:1 is not certified.",
+      "Native cable appearances switch between two authored projections; their flexible geometry is not falsely represented as extracted continuous deformation.",
+      "The admitted opposite-camera atlases contain the gripper but no cable or open-hull art. Missing opposite-camera service poses remain absent, without mirroring another camera.",
+      "Mk.III retains its separately authored red atlas and the pre-existing colour qualification. No Mk.II source is recoloured into Mk.III.",
+      "Complementary source polygons conserve opaque pixel centres; native Canvas edges can have a measured antialias seam.",
+      "The service hull is available only through an explicit service/repair/inspect pose; this presentation addition does not add an undocumented gameplay action."
+    ]
+  },
+  {
+    "id": "mk3",
+    "nom": "METAL GEAR Mk.III",
+    "opus": "MGS4",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "mk3_mgs4_ps3_2008",
+    "scene_native_actuelle": "outer_haven",
+    "label_scene_data_historique": "OUTER HAVEN — MK.III ROUTE",
+    "resume_code_actuel": "Simulation de traversée et de défense système.",
+    "regle_code_actuelle": "Désactiver le Mk.III module par module",
+    "cibles_code_actuelles": [
+      {
+        "nom": "JAMMER",
+        "hp_cqc": 1900,
+        "rayon_cqc": 25,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "MANIPULATEUR",
+        "hp_cqc": 1900,
+        "rayon_cqc": 25,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "CORE",
+        "hp_cqc": 3800,
+        "rayon_cqc": 30,
+        "prerequis_cqc": [
+          0,
+          1
+        ]
+      }
+    ],
+    "hp_cqc": 7600,
+    "temps_cqc": 130,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "Metal Gear Mk.III MGS4 : modèle distinct du Mk.II, couleur/équipement/antennes selon source ; conserver tailles et pièces qui diffèrent.",
+    "locomotion_et_appuis": "Déplacement et bras comme un robot léger, avec les proportions exactes du Mk.III. Les animations partagées peuvent être une base seulement si les ancrages correspondent.",
+    "attaques_a_animer": "Interactions techniques, caméra et équipement attesté ; toute fonction « jammer » du dossier exige confirmation par la source, pas assimilation automatique à une arme de boss.",
+    "phases_et_destruction": "Reconnaissance et vulnérabilité narrative propres à Mk.III ; simuler défaite technique sans inventer un affrontement canonique Snake contre Otacon.",
+    "ecart_specifique": "Deux faces et dossier existants. Contrôler les labels JAMMER/AI ainsi que le contexte de scène choisi ; statut d’exercice à garder visible.",
+    "source_ids": [
+      "W-MGS4"
+    ],
+    "classification": "ALLIE_OFFICIEL_ESSAI_CQC_INVENTE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P2",
+    "nombre_pieces_rig": 15,
+    "qualifications_rig_existantes": [
+      "Mk.II/Mk.III have one documented multifunction manipulator, not four new weapons. These are native cable poses, gripper components and a service-hull appearance already present in the admitted art.",
+      "The arm endpoints, finger hinges and body sockets are authored on opaque native source pixels. Concealed 3D mount interiors and exact extracted MGS4 animation are unavailable; absolute 1:1 is not certified.",
+      "Native cable appearances switch between two authored projections; their flexible geometry is not falsely represented as extracted continuous deformation.",
+      "The admitted opposite-camera atlases contain the gripper but no cable or open-hull art. Missing opposite-camera service poses remain absent, without mirroring another camera.",
+      "Mk.III retains its separately authored red atlas and the pre-existing colour qualification. No Mk.II source is recoloured into Mk.III.",
+      "Complementary source polygons conserve opaque pixel centres; native Canvas edges can have a measured antialias seam.",
+      "The service hull is available only through an explicit service/repair/inspect pose; this presentation addition does not add an undocumented gameplay action."
+    ]
+  },
+  {
+    "id": "gekko",
+    "nom": "GEKKO ASSAULT",
+    "opus": "MGS4",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "gekko_mgs4_ps3_2008",
+    "scene_native_actuelle": "middle_east",
+    "label_scene_data_historique": "MIDDLE EAST — GEKKO STREET",
+    "resume_code_actuel": "Briser les jambes organiques avant la tête.",
+    "regle_code_actuelle": "Couper la mobilité avant le module de tête",
+    "cibles_code_actuelles": [
+      {
+        "nom": "JAMBE G",
+        "hp_cqc": 2600,
+        "rayon_cqc": 30,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "JAMBE D",
+        "hp_cqc": 2600,
+        "rayon_cqc": 30,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "TÊTE",
+        "hp_cqc": 5300,
+        "rayon_cqc": 38,
+        "prerequis_cqc": [
+          0,
+          1
+        ]
+      }
+    ],
+    "hp_cqc": 10500,
+    "temps_cqc": 150,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "Gekko MGS4 : tête/coque mécanique et longues jambes organiques à musculature visible ; ne pas recouvrir les membres de charnières métalliques inventées.",
+    "locomotion_et_appuis": "Charge du poids sur jambe, flexion biologique, balancement de coque puis pose ; saut et atterrissage avec amorti. Les cris sont des événements audio associés à poses.",
+    "attaques_a_animer": "Coup de pied, mitraillage et arme de variante selon source. Traînée de jambe/sang organique séparée des étincelles de coque ; préparer attaques de suicide uniquement pour ce modèle.",
+    "phases_et_destruction": "Dommage organique, chute, redressement éventuel, neutralisation/découpe. Versions suicide, missile et MGR demeurent trois identités propres.",
+    "ecart_specifique": "Gekko de base et variantes deux faces existent ; certaines vieilles notes left-only sont périmées. Vérifier plutôt la séparation organique/mécanique et les armes de chaque variante.",
+    "source_ids": [
+      "W-MGS4",
+      "K-MGR"
+    ],
+    "classification": "ENNEMI_OFFICIEL_VAGUES_CQC_ADAPTEES",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P2",
+    "nombre_pieces_rig": 10,
+    "qualifications_rig_existantes": []
+  },
+  {
+    "id": "dwarf_swarm",
+    "nom": "DWARF GEKKO SWARM",
+    "opus": "MGS4",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "dwarf_gekko_mgs4_ps3_2008",
+    "scene_native_actuelle": "outer_haven",
+    "label_scene_data_historique": "OUTER HAVEN — SERVICE SHAFT",
+    "resume_code_actuel": "Quatre groupes de Dwarf Gekkos verrouillent le conduit.",
+    "regle_code_actuelle": "Nettoyer quatre vagues de petites unités",
+    "cibles_code_actuelles": [
+      {
+        "nom": "NŒUD G",
+        "hp_cqc": 1200,
+        "rayon_cqc": 23,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "NŒUD D",
+        "hp_cqc": 1200,
+        "rayon_cqc": 23,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "CONTROL UNIT",
+        "hp_cqc": 4000,
+        "rayon_cqc": 30,
+        "prerequis_cqc": [
+          0,
+          1
+        ]
+      }
+    ],
+    "hp_cqc": 6400,
+    "temps_cqc": 145,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "Dwarf Gekko : sphère centrale et trois bras préhensiles par unité ; groupe distinct des assemblages trenchcoat et humanoïde.",
+    "locomotion_et_appuis": "Roulement puis pose sur mains, grimpe et saut ; rotation de la sphère ne doit pas détacher arbitrairement les bras. Garder le nombre d’unités réel de chaque composition.",
+    "attaques_a_animer": "Saisie, tir/impulsion et rassemblement selon source ; les bras se plient autour de leurs pivots, pas comme jambes humaines. Chaque robot a sa collision.",
+    "phases_et_destruction": "Destruction unitaire puis renouvellement de vague. Trenchcoat = trois robots et humanoïde MGR = deux ; ces ensembles ne possèdent pas un corps humain caché.",
+    "ecart_specifique": "Le dossier à quatre groupes est CQC ; formes composites et faces sont déjà dans les64rigs. Compléter le déplacement autonome par unité et leur désassemblage.",
+    "source_ids": [
+      "W-MGS4",
+      "K-MGR"
+    ],
+    "classification": "ENNEMI_OFFICIEL_VAGUES_CQC_ADAPTEES",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P2",
+    "nombre_pieces_rig": 11,
+    "qualifications_rig_existantes": []
+  },
+  {
+    "id": "hind_d",
+    "nom": "HIND D",
+    "opus": "MGS1",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "hind_d_mgs1_ps1_1998",
+    "scene_native_actuelle": "shadow_heliport",
+    "label_scene_data_historique": "SHADOW MOSES — COMMUNICATION TOWER",
+    "resume_code_actuel": "Abattre le rotor, le moteur puis le cockpit.",
+    "regle_code_actuelle": "Détruire la propulsion avant le cockpit",
+    "cibles_code_actuelles": [
+      {
+        "nom": "ROTOR",
+        "hp_cqc": 3000,
+        "rayon_cqc": 36,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "MOTEUR",
+        "hp_cqc": 3500,
+        "rayon_cqc": 34,
+        "prerequis_cqc": [
+          0
+        ]
+      },
+      {
+        "nom": "COCKPIT",
+        "hp_cqc": 5300,
+        "rayon_cqc": 38,
+        "prerequis_cqc": [
+          0,
+          1
+        ]
+      }
+    ],
+    "hp_cqc": 11800,
+    "temps_cqc": 165,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "Hind D de Liquid MGS1 : cockpit double, fuselage, ailes courtes, pods, rotor principal et rotor anticouple.",
+    "locomotion_et_appuis": "Stationnaire, translation et passe latérale avec pivot de la cellule limité par les vues disponibles. Rotor principal en perspective, rotor arrière dans son plan vertical ; air/snowwash distinct.",
+    "attaques_a_animer": "Passes, mitraillage et roquettes depuis les vrais équipements ; annonce de l’arrivée par position/son. Feux de bouche, fumée et réactions d’impact ne masquent pas la cible au mauvais moment.",
+    "phases_et_destruction": "Baisse d’altitude, fumée, retrait temporaire et chute finale ; phase de destruction doit conserver rotor/cellule et sens de gravité.",
+    "ecart_specifique": "Rig présent, mais pont scénique actuel sur héliport au lieu du toit Communications Tower. Les phases de rotor admises sont limitées et la visée doit être vérifiée sur cette perspective.",
+    "source_ids": [
+      "W-MGS1",
+      "K-MANUELS"
+    ],
+    "classification": "BOSS_OFFICIEL_ADAPTE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P1",
+    "nombre_pieces_rig": 11,
+    "qualifications_rig_existantes": [
+      "Source-led projected 2D articulation; original game animations and 3D models are not extracted. Absolute 1:1 is not certified.",
+      "Hind and M1 historical source rectangles selected armor/engine panels as rocket pods or machine gun; corrected regions now use the actual visible equipment from the same untouched atlases.",
+      "Hind and Hammerhead horizontal rotors use their admitted native perspective phases. No horizontal rotor is rotated in the screen plane; the Hind tail rotor alone rotates in its visible vertical plane.",
+      "M1 cannon and Hammerhead barrels recoil along their actual projected source axes beneath fixed/aiming receivers. Turret azimuth and hidden breech volumes are not fabricated from flat textures.",
+      "Harrier native nozzles and complete movable tailplanes use visible sockets. No unseparated wing flap or hidden fan is manufactured.",
+      "M1 and bulldozer complete track silhouettes remain rigid. Independently authored tread/wheel phases are still required for authentic track circulation.",
+      "Bulldozer blade modules remain rigid projected hydraulic assemblies; hidden linkage is not certified. Its historical roof ID selected a misplaced actuator; the ID now owns the complementary visible upper casing pixels of the original hull. This rigid source partition is not a newly invented independent canonical moving roof; the original actuator remains in the untouched atlas and historical catalogs.",
+      "Virgil casing, pedestal and lamp remain a rigid terminal; an unsupported flat swing of its cylindrical doors is not used.",
+      "Cunningham remains the admitted frontal platform. Its opposite/rear projection and unverified propulsion are not invented.",
+      "New separation pieces retain existing damage groups through attached snapshots; no additional HP pool, attack clock or projectile is introduced."
+    ]
+  },
+  {
+    "id": "m1tank",
+    "nom": "M1 TANK",
+    "opus": "MGS1",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "m1_mgs1_ps1_1998",
+    "scene_native_actuelle": "shadow_heliport",
+    "label_scene_data_historique": "SHADOW MOSES — CANYON",
+    "resume_code_actuel": "Immobiliser les chenilles puis détruire la tourelle.",
+    "regle_code_actuelle": "Immobiliser le char avant la tourelle",
+    "cibles_code_actuelles": [
+      {
+        "nom": "CHENILLE G",
+        "hp_cqc": 2400,
+        "rayon_cqc": 30,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "CHENILLE D",
+        "hp_cqc": 2400,
+        "rayon_cqc": 30,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "TOURELLE",
+        "hp_cqc": 5400,
+        "rayon_cqc": 37,
+        "prerequis_cqc": [
+          0,
+          1
+        ]
+      }
+    ],
+    "hp_cqc": 10200,
+    "temps_cqc": 145,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "M1 de Vulcan Raven MGS1 : coque, deux chenilles, tourelle, canon et trappe avec opérateur ; distinguer blindé de MG1 et chars PW.",
+    "locomotion_et_appuis": "Rotation des bandes et roues liée à vitesse, braquage différentiel, suspension de caisse et rotation de tourelle autour de son axe vertical réel.",
+    "attaques_a_animer": "Alignement canon, recul axial, retour et fumée ; mitrailleur/trappe, grenade introduite et réaction équipage sont des animations propres.",
+    "phases_et_destruction": "La rencontre source cible l’équipage/grenades et ses dispositifs ; la destruction chenilles→tourelle est une simplification CQC. Gérer trappe ouverte/fermée et fumée persistante.",
+    "ecart_specifique": "Les chenilles du rig sont actuellement rigides selon qualification. Stage actuel héliport à remplacer par canyon pour le mode fidèle ; ne pas annoncer que le char entier est absent.",
+    "source_ids": [
+      "W-MGS1",
+      "K-MANUELS"
+    ],
+    "classification": "BOSS_OFFICIEL_ADAPTE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P1",
+    "nombre_pieces_rig": 8,
+    "qualifications_rig_existantes": [
+      "Source-led projected 2D articulation; original game animations and 3D models are not extracted. Absolute 1:1 is not certified.",
+      "Hind and M1 historical source rectangles selected armor/engine panels as rocket pods or machine gun; corrected regions now use the actual visible equipment from the same untouched atlases.",
+      "Hind and Hammerhead horizontal rotors use their admitted native perspective phases. No horizontal rotor is rotated in the screen plane; the Hind tail rotor alone rotates in its visible vertical plane.",
+      "M1 cannon and Hammerhead barrels recoil along their actual projected source axes beneath fixed/aiming receivers. Turret azimuth and hidden breech volumes are not fabricated from flat textures.",
+      "Harrier native nozzles and complete movable tailplanes use visible sockets. No unseparated wing flap or hidden fan is manufactured.",
+      "M1 and bulldozer complete track silhouettes remain rigid. Independently authored tread/wheel phases are still required for authentic track circulation.",
+      "Bulldozer blade modules remain rigid projected hydraulic assemblies; hidden linkage is not certified. Its historical roof ID selected a misplaced actuator; the ID now owns the complementary visible upper casing pixels of the original hull. This rigid source partition is not a newly invented independent canonical moving roof; the original actuator remains in the untouched atlas and historical catalogs.",
+      "Virgil casing, pedestal and lamp remain a rigid terminal; an unsupported flat swing of its cylindrical doors is not used.",
+      "Cunningham remains the admitted frontal platform. Its opposite/rear projection and unverified propulsion are not invented.",
+      "New separation pieces retain existing damage groups through attached snapshots; no additional HP pool, attack clock or projectile is introduced."
+    ]
+  },
+  {
+    "id": "bulldozer",
+    "nom": "ARMORED BULLDOZER",
+    "opus": "METAL GEAR",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "bulldozer_mg1_msx1987",
+    "scene_native_actuelle": "outer_heaven",
+    "label_scene_data_historique": "SHADOW MOSES — BLAST FURNACE",
+    "resume_code_actuel": "Détruire les vérins, la lame puis le moteur.",
+    "regle_code_actuelle": "Neutraliser l’hydraulique avant le moteur",
+    "cibles_code_actuelles": [
+      {
+        "nom": "CHENILLE PROCHE",
+        "hp_cqc": 1900,
+        "rayon_cqc": 27,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "CHENILLE LOINTAINE",
+        "hp_cqc": 1900,
+        "rayon_cqc": 27,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "LAME",
+        "hp_cqc": 2200,
+        "rayon_cqc": 31,
+        "prerequis_cqc": [
+          0,
+          1
+        ]
+      },
+      {
+        "nom": "CHÂSSIS",
+        "hp_cqc": 3400,
+        "rayon_cqc": 34,
+        "prerequis_cqc": [
+          0,
+          1,
+          2
+        ]
+      }
+    ],
+    "hp_cqc": 9400,
+    "temps_cqc": 135,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "Bulldozer blindé MSX : caisse, bandes chenillées et lame frontale avec vérins. Pas de pilote/fonction d’arme non visible inventés.",
+    "locomotion_et_appuis": "Avance dans le couloir et pression de la lame, chenilles cyclées avec vitesse. Si la lame se lève, vérins et charnières gardent longueur et axe.",
+    "attaques_a_animer": "Attaque par progression/écrasement, réaction aux armes source et blocage ; impact au contact de lame, pas explosion de bouche de canon.",
+    "phases_et_destruction": "Arrêt, destruction et dégagement du passage ; préserver largeur/longueur de salle dans l’adaptation 2D.",
+    "ecart_specifique": "Chenilles encore rigides. Ancien texte SHADOW MOSES—BLAST FURNACE du DATA est obsolète ; pont runtime le remplace déjà par SIMULATION—OUTER HEAVEN. Nettoyage de métadonnée, pas nouveau bug visuel prouvé.",
+    "source_ids": [
+      "W-TX55",
+      "K-MANUELS"
+    ],
+    "classification": "BOSS_OFFICIEL_ADAPTE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P2",
+    "nombre_pieces_rig": 7,
+    "qualifications_rig_existantes": [
+      "Source-led projected 2D articulation; original game animations and 3D models are not extracted. Absolute 1:1 is not certified.",
+      "Hind and M1 historical source rectangles selected armor/engine panels as rocket pods or machine gun; corrected regions now use the actual visible equipment from the same untouched atlases.",
+      "Hind and Hammerhead horizontal rotors use their admitted native perspective phases. No horizontal rotor is rotated in the screen plane; the Hind tail rotor alone rotates in its visible vertical plane.",
+      "M1 cannon and Hammerhead barrels recoil along their actual projected source axes beneath fixed/aiming receivers. Turret azimuth and hidden breech volumes are not fabricated from flat textures.",
+      "Harrier native nozzles and complete movable tailplanes use visible sockets. No unseparated wing flap or hidden fan is manufactured.",
+      "M1 and bulldozer complete track silhouettes remain rigid. Independently authored tread/wheel phases are still required for authentic track circulation.",
+      "Bulldozer blade modules remain rigid projected hydraulic assemblies; hidden linkage is not certified. Its historical roof ID selected a misplaced actuator; the ID now owns the complementary visible upper casing pixels of the original hull. This rigid source partition is not a newly invented independent canonical moving roof; the original actuator remains in the untouched atlas and historical catalogs.",
+      "Virgil casing, pedestal and lamp remain a rigid terminal; an unsupported flat swing of its cylindrical doors is not used.",
+      "Cunningham remains the admitted frontal platform. Its opposite/rear projection and unverified propulsion are not invented.",
+      "New separation pieces retain existing damage groups through attached snapshots; no additional HP pool, attack clock or projectile is introduced."
+    ]
+  },
+  {
+    "id": "peacewalker_biped",
+    "nom": "PEACE WALKER — PREMIÈRE BATAILLE",
+    "opus": "PEACE WALKER",
+    "statut": "PRESENT_DOSSIER_ARSENAL",
+    "rig_id": "peacewalker_biped_pw_psp2010",
+    "scene_native_actuelle": "p18_pw_cocoon_operation",
+    "label_scene_data_historique": "COSTA RICA — MINING PIT",
+    "resume_code_actuel": "Faire plier les appuis du Basilisk et atteindre le module IA. Éviter le pied annoncé et sortir du jet du lance-flammes arrière.",
+    "regle_code_actuelle": "Piétinement annoncé · lance-flammes arrière",
+    "cibles_code_actuelles": [
+      {
+        "nom": "GENOU PROCHE",
+        "hp_cqc": 3200,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "GENOU LOINTAIN",
+        "hp_cqc": 3200,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      },
+      {
+        "nom": "POD IA",
+        "hp_cqc": 6400,
+        "rayon_cqc": 31,
+        "prerequis_cqc": []
+      }
+    ],
+    "hp_cqc": 12800,
+    "temps_cqc": 210,
+    "preuve_code": "public/cqc/modules/arsenal-files-v044.html ; public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+    "silhouette_et_decoupe": "Premier Peace Walker bipède : deux appuis porteurs, membres avant repliés, capteur sphérique et pod cylindrique. Ne pas attribuer arbitrairement un nom Mammal/Reptile au cylindre visible.",
+    "locomotion_et_appuis": "Transfert de poids entre deux jambes, pied levé annoncé, pose lourde et amorti ; appui planté conservé lors de l’orientation du châssis.",
+    "attaques_a_animer": "Lance-flammes arrière : préparation, ignition à la buse, jet continu, extinction ; stomp : compression, levée, descente, impact et récupération. Mines S, missiles et hurlement à relever avant ajout.",
+    "phases_et_destruction": "Première bataille autonome puis fuite/transition et présence de l’hélicoptère de Coldman à documenter. Ne pas la convertir en transformation de la bataille finale.",
+    "ecart_specifique": "Le rig25 pièces et deux attaques existent. Qualification du code : caméra inverse, mines S, missiles, hurlement, poursuite, hélicoptère et géographie complète restent non admis. Pont de scène réutilise la mine Cocoon.",
+    "source_ids": [
+      "K-PW",
+      "W-PW"
+    ],
+    "classification": "BOSS_OFFICIEL_ADAPTE",
+    "collision_echelle": "Mesurer taille relative machine/joueur/sol dans une capture de cette édition. Les HP, rayons, secondes et groupes de pièces ci-dessus sont des paramètres CQC, pas des mesures canoniques. Donner une hurtbox par cible visible, une collision de corps distincte, et désactiver la hitbox d’une arme détruite uniquement si sa règle l’exige.",
+    "animations_communes_a_valider": "Intro et activation ; attente ; début/maintien/fin de déplacement ; annonce d’attaque ; attaque active ; récupération ; impact faible/lourd ; composant détérioré ; transition de phase ; défaite ; état d’épave ; sortie. Chaque clip comporte source/version/timecodes, contacts, armes, FX, son, collisions et conditions d’interruption.",
+    "priorite": "P1",
+    "nombre_pieces_rig": 25,
+    "qualifications_rig_existantes": [
+      "The upright biped is a separate first-battle dossier, not a transformation during the final quadrupedal nuclear launch.",
+      "Reference-led generated RGBA reconstruction from original concept/CG and licensed model views; no extracted model or absolute1:1 certification.",
+      "Visible sphere is labelled CAPTEUR and visible cylinder POD IA. Exact Reptile/Mammal allocation of the visible cylinder is not asserted from this camera.",
+      "One coherent three-quarter source camera; rear placement and hidden joint seams are interpreted. Independent reverse camera remains absent.",
+      "The 25m bipedal height is a secondary citation. Source perspective, tiny details and human-scale projection remain best-effort adaptations.",
+      "Native source pixel centers are partitioned without loss/duplication. Canvas anti-aliasing on animated clipping boundaries is measured independently.",
+      "Only native aft flamethrower and planted support stomp are admitted to this encounter. Precise S-mine/missile launch ports and howl remain to implement with source references.",
+      "First-battle pursuit into quadrupedal form, Coldman helicopter and the full original mission geography/cinematic remain pending. No fabricated transition is triggered.",
+      "Folded front limbs remain rigid source-visible assemblies; their concealed linkage surfaces are not separately reconstructed.",
+      "Near white knee actuator belongs to the mobile thigh; its former static hull fragment is reassigned with complementary native clips. Hidden joint surfaces remain interpreted.",
+      "Knee disable and supported crouch are authored CQC presentation responses. No unsupported limb dismemberment or new biological AI claim is introduced."
+    ]
+  }
+]

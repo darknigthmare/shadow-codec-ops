@@ -1,0 +1,127 @@
+{
+  "schema": "cqc.p41.manual-projected-calibration-transfer-proposals/1",
+  "uid": "roster50__mei_mgs1",
+  "approved": false,
+  "sourcePNGMutations": false,
+  "sourceJobSHA256": "cd9fe73a71b2697e15c204d95f8f9200b18f1618c2ce13ecf15640dfa21d6118",
+  "entries": [
+    {
+      "uid": "roster50__mei_mgs1",
+      "side": "right",
+      "targetRole": 2,
+      "reference": {
+        "sourcePath": "@PROJECT_ROOT@/art/roster50__mei_mgs1/tuxedo/right-body-supplement-v1.png",
+        "sourceSHA256": "0eafac5175116dbf6fccb9730f87b84aea05657148656175498b761047d7ef75",
+        "pose": "right-right-body-supplement-v1-idle",
+        "crown": [
+          359.5,
+          64.5
+        ],
+        "chin": [
+          392.5,
+          176.5
+        ],
+        "sole": [
+          249.5,
+          670.5
+        ],
+        "neutralNativeHeight": 607,
+        "chinAlpha": 247,
+        "soleCaneExclusionXRanges": [],
+        "crownIdentityQualification": "The physically viewed upright figure has its unique uppermost contour on its head/hat, not an effect or neighbouring actor. This is a drawing-contour point, not an inferred skull landmark.",
+        "soleIdentityQualification": "The lowest retained body contour was physically viewed as a shoe sole; explicit cane-x exclusion, where supplied, prevents a cane tip from replacing the shoe. Projected posture remains a limitation."
+      },
+      "referenceSourceFrameHeight": 607,
+      "target": {
+        "sourcePath": "@PROJECT_ROOT@/art/roster50__mei_mgs1/tuxedo/right-v1.png",
+        "sourceSHA256": "c8c1166a9c325123ed7075c7c9a6888ebd9cb9f9c29cde3ea908b91d55ab4cd9",
+        "pose": "right-right-v1-walkA",
+        "crown": [
+          866.5,
+          9.5
+        ],
+        "chin": [
+          887.5,
+          78.5
+        ],
+        "sole": [
+          927.5,
+          348.5
+        ],
+        "neutralNativeHeight": 340,
+        "chinAlpha": 247,
+        "soleCaneExclusionXRanges": [],
+        "crownIdentityQualification": "The physically viewed upright figure has its unique uppermost contour on its head/hat, not an effect or neighbouring actor. This is a drawing-contour point, not an inferred skull landmark.",
+        "soleIdentityQualification": "The lowest retained body contour was physically viewed as a shoe sole; explicit cane-x exclusion, where supplied, prevents a cane tip from replacing the shoe. Projected posture remains a limitation."
+      },
+      "landmarkPairs": [
+        {
+          "name": "projected-head-crown-to-chin",
+          "reference": [
+            [
+              359.5,
+              64.5
+            ],
+            [
+              392.5,
+              176.5
+            ]
+          ],
+          "action": [
+            [
+              866.5,
+              9.5
+            ],
+            [
+              887.5,
+              78.5
+            ]
+          ],
+          "referenceNativePixels": 116.76043850551436,
+          "actionNativePixels": 72.12489168102785,
+          "ratio": 0.6177168620141962,
+          "measurementScope": "Actual visible source-native contour/chin/shoe points. Two projected visual segments; crown-to-sole depends on stance and head-to-chin on head/hat tilt. Manual chin uncertainty is approximately4nativepixels, so the proposal is not anatomical certification."
+        },
+        {
+          "name": "projected-crown-to-visible-shoe-sole",
+          "reference": [
+            [
+              359.5,
+              64.5
+            ],
+            [
+              249.5,
+              670.5
+            ]
+          ],
+          "action": [
+            [
+              866.5,
+              9.5
+            ],
+            [
+              927.5,
+              348.5
+            ]
+          ],
+          "referenceNativePixels": 615.9025897006766,
+          "actionNativePixels": 344.4444802867365,
+          "ratio": 0.5592515538116727,
+          "measurementScope": "Actual visible source-native contour/chin/shoe points. Two projected visual segments; crown-to-sole depends on stance and head-to-chin on head/hat tilt. Manual chin uncertainty is approximately4nativepixels, so the proposal is not anatomical certification."
+        }
+      ],
+      "headDerivedSourceHeight": 374.9541352426171,
+      "projectedBodyDerivedSourceHeight": 339.46569316368533,
+      "proposedSourceFrameHeight": 357,
+      "choiceMethod": "Arithmetic midpoint of the two explicitly observed projected-segment estimates, rounded to native pixels; a transparent visual compromise proposal, not a true anatomical stature. Root may reject/refine the choice.",
+      "diagnosticRatioSpread": 0.05846530820252349,
+      "approved": false,
+      "rootReviewPending": true
+    }
+  ],
+  "limits": [
+    "Manual coordinate proposals are read from actual unmodified source magnifications and remain counterreviewable.",
+    "The midpoint recipe is a display choice, not an assertion that both projected lengths measure anatomical stature.",
+    "Original PNGs, old jobs and old held calibrations remain preserved."
+  ]
+}

@@ -1,8 +1,19 @@
 import { createHash } from 'node:crypto';
-import { access, copyFile, mkdir, readFile, readdir, rename, rm, writeFile } from 'node:fs/promises';
+import { access, open, mkdir, readdir, writeFile } from 'node:fs/promises';
+import { constants } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+// All runtime verification reads preserve protected atime; no silent fallback.
+async function readFile(file, options) {
+  if (!Number.isInteger(constants.O_NOATIME) || !Number.isInteger(constants.O_NOFOLLOW)) throw Error('Required Linux no-atime flags unavailable');
+  const handle = await open(file, constants.O_RDONLY | constants.O_NOATIME | constants.O_NOFOLLOW);
+  try { if (!(await handle.stat()).isFile()) throw Error('Regular runtime file required'); return await handle.readFile(options); }
+  finally { await handle.close(); }
+}
+const p42Owners = new Set(["src/cqc-pass42-support-native-cqc-v1.js"]);
+const p42RuntimeModules = new Set(["src/cqc-pass42-core-native-origins-v1.js","src/cqc-pass42-miller-gala-projectile-vfx-v1.js","src/cqc-pass42-native-batch-index-v1.js","src/cqc-pass42-support-native-cqc-v1.js","src/cqc-pass42-support-native-guns-v1.js","src/cqc-pass42-vs-delayed-bursts-v1.js"]);
+const p42ArtifactCommit = '424fbb8beeec4fdc38d3f5e9f6b1ecad88a0498f';
 const textExtensions = new Set(['.html', '.js', '.css', '.json']);
 const runtimeExtensions = new Set([...textExtensions, '.png', '.webp', '.jpg', '.jpeg', '.gif', '.svg', '.ogg', '.mp3', '.wav', '.woff', '.woff2']);
 const excludedRoots = new Set(['docs', 'tests', 'tools', 'preparation', 'recovery', 'references', 'history']);
@@ -62,6 +73,88 @@ export function discoverReferences(text, owner, availableFiles) {
   return { references: [...found].sort(), omittedReferences: [...omissions].sort() };
 }
 
+// Explicit immutable routes are separate from local files. Validate the exact
+// reviewed owner bytes and every logical name; never ignore a missing prefix.
+export function validateExternalReferences(policy, availableFiles, ownerSources) {
+  if (policy === undefined) {
+    if (['src/cqc-pass40-core-metadata-variants-v1.js', 'src/cqc-pass40-core-three-metadata-variants-v1.js', 'src/cqc-pass40-support-skull-mode-v1.js', 'src/cqc-pass40-liquid-support-v1.js', 'src/cqc-pass41-support-native-cqc-v1.js', ...p42RuntimeModules].some((owner) => availableFiles.has(owner))) {
+      throw new Error('Immutable-route owners require their explicit external-reference ledger.');
+    }
+    return new Map();
+  }
+  if (!policy || policy.schema !== 'shadow-codec-ops.cqc-external-references/1'
+      || Object.keys(policy).sort().join(',') !== 'entries,schema'
+      || !Array.isArray(policy.entries) || policy.entries.length < 1 || policy.entries.length > 512) {
+    throw new Error('Invalid explicit external-reference policy.');
+  }
+  // This release admits only this reviewed finite ledger. A later route or
+  // immutable URL change requires a separately reviewed ledger and this pin.
+  const policyDigest = sha256(Buffer.from(JSON.stringify(policy)));
+  const previousPolicyDigest = 'a0fedd997c21559b4813f0c71183dee69a00b86732bace7fbce2a291ad92de2d';
+  // Preparation template only: a final policy pin and actual owner bytes require fresh Root review.
+  const reviewedP41PolicyDigest = '091eefcb5c840d26bfa3618091258230c88ad7b186a10c4e7c3185b8028da579';
+  const reviewedP42PolicyDigest = '681f187f2425cc3c138cb3b4b4d727ad08fbdc0cbf32ac7c8f0d71ce4ce91b2b';
+  if (policyDigest !== previousPolicyDigest && policyDigest !== reviewedP41PolicyDigest && policyDigest !== reviewedP42PolicyDigest) {
+    throw new Error('External-reference ledger differs from the reviewed release.');
+  }
+  if (availableFiles.has('src/cqc-pass41-support-native-cqc-v1.js') && policyDigest === previousPolicyDigest) {
+    throw new Error('P41 CQC requires its separately reviewed explicit external-reference ledger.');
+  }
+  if (policyDigest === reviewedP41PolicyDigest
+      && sha256(Buffer.from(JSON.stringify({schema: policy.schema, entries: policy.entries.slice(0, 82)}))) !== previousPolicyDigest) {
+    throw new Error('The ordered eighty-two P40 immutable routes changed.');
+  }
+  if ([...p42RuntimeModules].some(owner => availableFiles.has(owner)) && policyDigest !== reviewedP42PolicyDigest) throw Error('P42 requires the exact current Root-reviewed external policy');
+  if (policyDigest === reviewedP42PolicyDigest && sha256(Buffer.from(JSON.stringify({schema:policy.schema,entries:policy.entries.slice(0,96)}))) !== reviewedP41PolicyDigest) throw Error('The ordered96 historical P40/P41 routes changed');
+  const allowedOwners = new Set(['src/cqc-pass40-core-metadata-variants-v1.js', 'src/cqc-pass40-core-three-metadata-variants-v1.js', 'src/cqc-pass40-support-skull-mode-v1.js', 'src/cqc-pass40-liquid-support-v1.js', 'src/cqc-pass41-support-native-cqc-v1.js', ...p42Owners]);
+  const resolved = new Map(), owners = new Set();
+  for (const row of policy.entries) {
+    if (!row || Object.keys(row).sort().join(',') !== 'bytes,from,ownerSHA256,sha256,to,url'
+        || !allowedOwners.has(row.from) || !availableFiles.has(row.from) || availableFiles.has(row.to)
+        || !/^assets\/combat-costumes-pass(?:40|41|42)\/[a-z0-9_]+\/[a-z0-9-]+\/[a-z0-9-]+\.(?:png|json)$/.test(row.to)
+        || !Number.isSafeInteger(row.bytes) || row.bytes < 1 || row.bytes > 8 * 1024 * 1024
+        || !/^[a-f0-9]{64}$/.test(row.sha256) || !/^[a-f0-9]{64}$/.test(row.ownerSHA256)) {
+      throw new Error('Invalid explicit external-reference entry.');
+    }
+    const source = ownerSources.get(row.from);
+    if (!Buffer.isBuffer(source) || sha256(source) !== row.ownerSHA256) throw new Error('External-reference owner changed: ' + row.from);
+    const prefix = /^https:\/\/raw\.githubusercontent\.com\/darknigthmare\/shadow-codec-ops\/[a-f0-9]{40}\//;
+    if (!prefix.test(row.url)) throw new Error('External-reference URL is not immutable.');
+    if (p42Owners.has(row.from) && !row.url.startsWith('https://raw.githubusercontent.com/darknigthmare/shadow-codec-ops/'+p42ArtifactCommit+'/')) throw Error('P42 route differs from the reviewed artifact commit');
+    const remotePath = row.url.replace(prefix, '');
+    const expectedPath = row.to.endsWith('.png') ? 'raw/' + row.sha256 + '.png' : 'rootassets/' + row.to;
+    if (remotePath !== expectedPath) throw new Error('External-reference URL/path/SHA mismatch.');
+    const key = row.from + '\0' + row.to;
+    if (resolved.has(key)) throw new Error('Duplicate explicit external reference.');
+    resolved.set(key, row); owners.add(row.from);
+  }
+  for (const owner of owners) {
+    const missing = discoverReferences(ownerSources.get(owner).toString('utf8'), owner, availableFiles).omittedReferences.filter(isRuntimePath);
+    for (const to of missing) if (!resolved.has(owner + '\0' + to)) throw new Error('Unregistered external reference: ' + owner + ':' + to);
+    for (const row of resolved.values()) if (row.from === owner && !missing.includes(row.to)) throw new Error('Unused external reference: ' + owner + ':' + row.to);
+  }
+  return resolved;
+}
+
+async function readExternalPolicy(sourceRoot) {
+  try {
+    return JSON.parse(await readFile(path.join(sourceRoot, 'runtime-manifest.json'), 'utf8')).externalReferences;
+  } catch (error) {
+    if (error.code === 'ENOENT') return undefined;
+    throw error;
+  }
+}
+
+async function externalOwners(sourceRoot, policy) {
+  const result = new Map();
+  if (policy === undefined) return result;
+  // Do not read an unvalidated owner path from the policy.
+  for (const owner of ['src/cqc-pass40-core-metadata-variants-v1.js', 'src/cqc-pass40-core-three-metadata-variants-v1.js', 'src/cqc-pass40-support-skull-mode-v1.js', 'src/cqc-pass40-liquid-support-v1.js', 'src/cqc-pass41-support-native-cqc-v1.js', ...p42Owners]) {
+    if (policy?.entries?.some((row) => row?.from === owner)) result.set(owner, await readFile(path.join(sourceRoot, owner)));
+  }
+  return result;
+}
+
 function runtimeBytes(relativePath, original) {
   if (relativePath === 'modules/atelier-v056.html') return Buffer.from(webWorkshop);
   if (relativePath === 'index.html') {
@@ -76,6 +169,9 @@ function runtimeBytes(relativePath, original) {
 export async function buildRuntimeManifest(sourceRoot) {
   const availableFiles = new Set(await fileInventory(sourceRoot));
   if (!availableFiles.has('index.html')) throw new Error('CQC source must contain index.html.');
+  const externalPolicy = await readExternalPolicy(sourceRoot);
+  const external = validateExternalReferences(externalPolicy, availableFiles, await externalOwners(sourceRoot, externalPolicy));
+  const usedExternal = new Set();
   const queue = ['index.html'];
   const files = new Map();
   const references = [];
@@ -92,7 +188,11 @@ export async function buildRuntimeManifest(sourceRoot) {
       references.push({ from: relativePath, to: dependency });
       if (!files.has(dependency)) queue.push(dependency);
     }
-    for (const dependency of discovered.omittedReferences) omitted.push({ from: relativePath, to: dependency });
+    for (const dependency of discovered.omittedReferences) {
+      const key = relativePath + '\0' + dependency;
+      if (external.has(key)) usedExternal.add(key);
+      else omitted.push({ from: relativePath, to: dependency });
+    }
   }
   const entries = [...files].sort(([a], [b]) => a.localeCompare(b, 'en')).map(([relativePath, file]) => ({
     path: relativePath, bytes: file.bytes.length, sha256: file.sha256,
@@ -108,6 +208,10 @@ export async function buildRuntimeManifest(sourceRoot) {
     omittedReferences: omitted.sort((a, b) => `${a.from}:${a.to}`.localeCompare(`${b.from}:${b.to}`, 'en')),
     exclusions: 'Production references, historical documents, tests, tools, recovery records and unused source images. Gameplay archive modes are retained when reachable.'
   };
+  if (externalPolicy !== undefined) {
+    if (usedExternal.size !== external.size) throw new Error('External-reference owner is not reachable from CQC entry.');
+    manifest.externalReferences = externalPolicy;
+  }
   const unresolvedRuntime = manifest.omittedReferences.filter(({ to }) => isRuntimePath(to));
   if (unresolvedRuntime.length) throw new Error(`Unresolved runtime references: ${JSON.stringify(unresolvedRuntime.slice(0, 12))}`);
   return { manifest, files };
@@ -116,30 +220,73 @@ export async function buildRuntimeManifest(sourceRoot) {
 export async function syncRuntime(sourceRoot, destinationRoot) {
   const source = path.resolve(sourceRoot);
   const destination = path.resolve(destinationRoot);
-  if (source === destination || destination.startsWith(source + path.sep)) throw new Error('CQC destination must be outside its source directory.');
-  const { manifest, files } = await buildRuntimeManifest(source);
-  const temporary = `${destination}.sync-tmp`;
-  await rm(temporary, { recursive: true, force: true });
-  await mkdir(temporary, { recursive: true });
-  for (const entry of manifest.files) {
-    const target = path.join(temporary, entry.path);
-    await mkdir(path.dirname(target), { recursive: true });
-    if (entry.transformation) await writeFile(target, files.get(entry.path).bytes);
-    else await copyFile(path.join(source, entry.path), target);
-    if (sha256(await readFile(target)) !== entry.sha256) throw new Error(`CQC copy integrity failure: ${entry.path}`);
+  if (source === destination || destination.startsWith(source + path.sep)
+      || source.startsWith(destination + path.sep)) {
+    throw new Error('CQC source and destination must be disjoint.');
   }
-  await writeFile(path.join(temporary, 'runtime-manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
-  await rm(destination, { recursive: true, force: true });
-  await rename(temporary, destination);
+  const { manifest, files } = await buildRuntimeManifest(source);
+  await mkdir(path.dirname(destination), { recursive: true });
+  await mkdir(destination);
+  for (const entry of manifest.files) {
+    const target = path.join(destination, entry.path);
+    const bytes = files.get(entry.path).bytes;
+    if (bytes.length !== entry.bytes || sha256(bytes) !== entry.sha256) {
+      throw new Error(`CQC prepared bytes changed: ${entry.path}`);
+    }
+    await mkdir(path.dirname(target), { recursive: true });
+    await writeFile(target, bytes, { flag: 'wx' });
+    const written = await readFile(target);
+    if (written.length !== entry.bytes || sha256(written) !== entry.sha256) {
+      throw new Error(`CQC copy integrity failure: ${entry.path}`);
+    }
+  }
+  const manifestBytes = Buffer.from(JSON.stringify(manifest, null, 2) + '\n');
+  const manifestPath = path.join(destination, 'runtime-manifest.json');
+  await writeFile(manifestPath, manifestBytes, { flag: 'wx' });
+  if (sha256(await readFile(manifestPath)) !== sha256(manifestBytes)) {
+    throw new Error('CQC written manifest changed.');
+  }
   return manifest;
 }
 
 export async function verifyRuntime(destinationRoot) {
   const manifest = JSON.parse(await readFile(path.join(destinationRoot, 'runtime-manifest.json'), 'utf8'));
+  if (!Array.isArray(manifest.files) || !Array.isArray(manifest.references)) throw new Error('Invalid CQC runtime file/reference table.');
+  const declaredFiles = new Set(), declaredReferences = new Set();
+  let totalBytes = 0;
+  for (const entry of manifest.files) {
+    if (!entry || typeof entry.path !== 'string' || declaredFiles.has(entry.path)
+        || !Number.isSafeInteger(entry.bytes) || entry.bytes < 0) throw new Error('Invalid or duplicate CQC runtime file row.');
+    declaredFiles.add(entry.path); totalBytes += entry.bytes;
+  }
+  if (manifest.entry !== 'index.html' || !declaredFiles.has(manifest.entry)) throw new Error('CQC runtime entry lacks a checksummed file row.');
+  if (!Number.isSafeInteger(totalBytes) || manifest.totalBytes !== totalBytes) throw new Error('CQC runtime byte total differs from its declared file rows.');
+  for (const reference of manifest.references) {
+    if (!reference || !declaredFiles.has(reference.from) || !declaredFiles.has(reference.to)) throw new Error('CQC runtime reference lacks a checksummed file row.');
+    const key = reference.from + '\0' + reference.to;
+    if (declaredReferences.has(key)) throw new Error('Duplicate CQC runtime reference row.');
+    declaredReferences.add(key);
+  }
+  const external = validateExternalReferences(manifest.externalReferences, declaredFiles, await externalOwners(destinationRoot, manifest.externalReferences));
+  const actualReferences = new Set(), usedExternal = new Set();
   for (const entry of manifest.files) {
     const file = await readFile(path.join(destinationRoot, entry.path));
     if (file.length !== entry.bytes || sha256(file) !== entry.sha256) throw new Error(`CQC runtime changed: ${entry.path}`);
+    if (!textExtensions.has(path.posix.extname(entry.path))) continue;
+    const discovered = discoverReferences(file.toString('utf8'), entry.path, declaredFiles);
+    for (const to of discovered.references) {
+      const key = entry.path + '\0' + to;
+      if (!declaredReferences.has(key)) throw new Error('Actual CQC source reference omitted from manifest: ' + entry.path + ':' + to);
+      actualReferences.add(key);
+    }
+    for (const to of discovered.omittedReferences.filter(isRuntimePath)) {
+      const key = entry.path + '\0' + to;
+      if (!external.has(key)) throw new Error('Actual CQC source reference lacks a declared local file or exact external route: ' + entry.path + ':' + to);
+      usedExternal.add(key);
+    }
   }
+  if (actualReferences.size !== declaredReferences.size) throw new Error('CQC runtime declares an unused source reference.');
+  if (usedExternal.size !== external.size) throw new Error('CQC runtime declares an unused external reference.');
   for (const reference of manifest.references) await access(path.join(destinationRoot, reference.to));
   return manifest;
 }

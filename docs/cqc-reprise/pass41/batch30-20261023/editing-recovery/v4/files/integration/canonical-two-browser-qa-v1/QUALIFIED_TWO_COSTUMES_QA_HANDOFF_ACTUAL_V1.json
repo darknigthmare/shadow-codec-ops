@@ -1,0 +1,93 @@
+{
+  "schema": "cqc.pass41.actual-two-mirror-qa-qualified/1",
+  "status": "PASS_FOR_GAMEPLAY_AND_INDEPENDENT_LOCAL_BYTE_READBACK_WITH_OBSERVER_LIMIT",
+  "productModified": false,
+  "runtimeInstalled": false,
+  "rootArtReviewsPresent": true,
+  "gameplay": {
+    "actualTrustedGUI": true,
+    "combatOrStorageInjected": false,
+    "nativeMirrorMatches": 2,
+    "repeatedOriginalNativePreviewCycles": 2,
+    "stageSelectionCases": 2,
+    "exactPauseCases": 2,
+    "realProjectileEmissions": 8,
+    "projectileSourceWorldMaxError": 5.684341886080802e-14,
+    "actualHeavyAndLowMoves": 8,
+    "originalIncarnationsUnchangedBeforeAndAfter": 12,
+    "jsErrors": 0,
+    "consoleErrors": 0,
+    "fixtureErrors": 0,
+    "localHTTPErrors": 0,
+    "crashes": 0
+  },
+  "localRuntimeBodies": {
+    "actualGameplayBrowserBodiesPinned": 4,
+    "separateActualHTTPBodiesPinned": 8,
+    "separateActualHTTPBytes": 13659249,
+    "allCompiledCandidateRoutesMatch": true
+  },
+  "qualification": {
+    "rawObserverReportStatus": "failed-or-incomplete",
+    "rawObserverAssertion": "AssertionError [ERR_ASSERTION]: MissingactualruntimeHTTPpin assets/combat-costumes-pass41/core__snake/mgs3-camo-festival/metadata-v2.json",
+    "canceledFetches": [
+      {
+        "requestId": "108353.435",
+        "timestamp": 73276.758128,
+        "type": "Fetch",
+        "errorText": "net::ERR_ABORTED",
+        "canceled": true,
+        "url": "http://127.0.0.1:8843/assets/combat-costumes-pass41/core__snake/mgs3-camo-festival/metadata-v2.json"
+      },
+      {
+        "requestId": "108353.436",
+        "timestamp": 73276.837999,
+        "type": "Fetch",
+        "errorText": "net::ERR_ABORTED",
+        "canceled": true,
+        "url": "http://127.0.0.1:8843/assets/combat-costumes-pass41/core__snake/mgs3-camo-festival/page0-right-v1.png"
+      },
+      {
+        "requestId": "108353.437",
+        "timestamp": 73276.842685,
+        "type": "Fetch",
+        "errorText": "net::ERR_ABORTED",
+        "canceled": true,
+        "url": "http://127.0.0.1:8843/assets/combat-costumes-pass41/core__snake/mgs3-camo-festival/page1-left-v1.png"
+      },
+      {
+        "requestId": "108353.446",
+        "timestamp": 73296.697604,
+        "type": "Fetch",
+        "errorText": "net::ERR_ABORTED",
+        "canceled": true,
+        "url": "http://127.0.0.1:8843/assets/combat-costumes-pass41/core__snake/mgs3-camo-swamp/metadata-v2.json"
+      }
+    ],
+    "meaning": "Rawbrowsergameplay and source selection checks allcompleted. Final loadingFinished-based body observer missed4candidate bodies and raisedits final assertion. Thisfailure is preserved; separate independentHTTPreadbacks cover all8same localruntime routes. We do not represent those8 as bodies observed by the gameplay browser.",
+    "productionHTTPSBrowserValidationClaimed": false,
+    "certificateChanges": false,
+    "SSLBypassFlags": false
+  },
+  "evidence": [
+    {
+      "path": "@PROJECT_ROOT@/integration/canonical-two-browser-qa-v1/attempt-v1/ACTUAL_NATIVE_SUBSET_QA_V1.json",
+      "bytes": 1947751,
+      "sha256": "669ab9fc1139985b444af7fae0aba067484b34a459ff22d38afbb1daa6bf5916"
+    },
+    {
+      "path": "@PROJECT_ROOT@/integration/canonical-two-browser-qa-v1/ACTUAL_INDEPENDENT_EIGHT_HTTP_READBACKS_V1.json",
+      "bytes": 3239,
+      "sha256": "e98279652a83c9cbc89b80df051d0d250159084a7f5f113d7596ec31465f61c2"
+    },
+    {
+      "path": "@PROJECT_ROOT@/integration/canonical-two-browser-qa-v1/OWNED_PROCESSES_CLOSED_ACTUAL_V1.json",
+      "bytes": 719,
+      "sha256": "b5d685488653ae1e5161317ec417bfb80121e703df909f58cc840bb641140e46"
+    }
+  ],
+  "limits": [
+    "The two costumes are locally tested candidates, not installed or published here.",
+    "CQCdrawings and animations are adaptations, not retailanimation1:1certification."
+  ]
+}

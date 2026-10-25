@@ -50,7 +50,7 @@
     const saved=JSON.parse(storage?.getItem('cqc-native-wardrobe-journal-v1')||'null');
     const preference=saved?.schema==='cqc.native-wardrobe-journal/1'?saved.slots?.[0]?.[fighter.uid]:null;
     const descriptor=root.CQC_NATIVE_WARDROBE_INDEX?.entries?.find(value=>value.uid===fighter.uid&&value.id===preference?.id);
-    if(preference&&wardrobe?.known?.(fighter.uid,preference.id)&&(!preference.metadataSHA256||preference.metadataSHA256===descriptor?.metadata?.sha256))costume=preference.id;
+    if(preference&&wardrobe?.known?.(fighter.uid,preference.id)&&(!preference.metadataSHA256||preference.metadataSHA256===descriptor?.metadata?.sha256||root.CQC_PASS40_SUPPORT_SKULL_MODE?.acceptsJournal?.(fighter,preference,descriptor)===true))costume=preference.id;
    }catch{ /* An unreadable journal remains untouched. */ }
    const selected={...fighter};if(costume==='original')delete selected.costume;else selected.costume=costume;
    leadCache.set(fighter,selected);return selected;
@@ -186,7 +186,7 @@
   }
   function caption(operation){return resolveEnemy(operation).label;}
   function operationBindings(){return Object.keys(OPERATIONS).map(id=>resolveEnemy({id,titleId:OPERATIONS[id].titleID}));}
-  return {version:'cqc-support-existing-native-actors/1',resolveEnemy,selectedLead,resetLead,requests,preload,isReady,deferLaunch,cancelPending,drawEnemy,drawLead,drawLeadPreview,drawContact,caption,operationBindings,
+  return {version:'cqc-support-existing-native-actors/1',resolveEnemy,selectedLead,resetLead,requests,preload,isReady,deferLaunch,cancelPending,drawEnemy,leadScale,drawLead,drawLeadPreview,drawContact,caption,operationBindings,
    diagnostics:()=>({...diagnostics,lastEnemy:diagnostics.lastEnemy?{...diagnostics.lastEnemy}:null,lastLead:diagnostics.lastLead?{...diagnostics.lastLead}:null})};
  }
  return {createBridge,OPERATIONS,GROUND,SCALE};

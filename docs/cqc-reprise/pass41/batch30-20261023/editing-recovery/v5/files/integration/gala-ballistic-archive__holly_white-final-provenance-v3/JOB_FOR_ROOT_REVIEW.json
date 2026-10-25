@@ -1,0 +1,1638 @@
+{
+  "schema": "cqc.p41.native-costume-job/2",
+  "uid": "archive__holly_white",
+  "id": "tuxedo",
+  "label": "Gala",
+  "family": "tuxedo",
+  "provenance": {
+    "kind": "original-character-costume",
+    "sourceUID": "archive__holly_white",
+    "sourceSpriteUID": "archive__holly_white",
+    "originalDesign": true,
+    "canonicalAppearanceAttested": false,
+    "incarnation": "Holly White \u2014 Metal Gear2: Solid Snake-era adult American journalist, warm brown/auburn bob, plain green headband and compact athletic build. Gala is an original CQC formal outfit. Optional period-universe Beretta-like equipment preserves the inherited CQC simulation; it is not a historical weapon-ownership claim.",
+    "costumeName": "Gala \u2014 original CQC formal costume",
+    "sources": [
+      {
+        "url": "https://www.imfdb.org/images/4/40/Metal_Gear_2_92F.jpg",
+        "scope": "Physically viewed real-game period-universe weapon reference for optional CQC equipment preserving inherited simulation. Not a claim of canonical weapon ownership, a historical scene, or attested retail fighting actions."
+      },
+      {
+        "url": "https://www.imfdb.org/images/0/09/MGS4-M67.jpg",
+        "scope": "Actual PS3 weapon-menu grenade reference for the existing optional CQC explosive move."
+      }
+    ],
+    "nativeSourceReferences": [
+      {
+        "path": "assets/combat-sprites-pass18/archive__holly_white/right-v1.png",
+        "scope": "Physically viewed existing generated CQC source for this UID; not retail identity certification."
+      },
+      {
+        "path": "assets/combat-sprites-pass18/archive__holly_white/left-v1.png",
+        "scope": "Physically viewed native LEFT source; new left art independently drawn."
+      }
+    ]
+  },
+  "geometry": {
+    "path": "@PROJECT_ROOT@/art/archive__holly_white/tuxedo/geometry-frozen-v1.json.gz",
+    "bytes": 172245,
+    "sha256": "1876569cf1a1e769884aea70c22c7c2c8f5d433068c20e07073ae396ddfc0cbc"
+  },
+  "ownershipBook": {
+    "path": "@PROJECT_ROOT@/art/archive__holly_white/tuxedo/ownership-frozen-v1.json",
+    "bytes": 22241,
+    "sha256": "e1bb4b752dfc191811f98470a51c75181ec1caf45e151719b1e35799f42481d5"
+  },
+  "assets": [
+    {
+      "key": "page0-right",
+      "file": "assets/combat-costumes-pass41/archive__holly_white/tuxedo/page0-right-v1.png",
+      "path": "@PROJECT_ROOT@/art/archive__holly_white/tuxedo/right-v1.png",
+      "bytes": 1354447,
+      "sha256": "d38bf66e54de3d434529b9ee175fcc7e4a6ef8614265ffc3379366aff917a91f",
+      "width": 1254,
+      "height": 1254,
+      "standingHeight": 359,
+      "calibration": {
+        "method": "same-page-neutral",
+        "pose": "right-right-v1-idle",
+        "qualification": "Complete neutral standing figure physically visible on this exact page. Unapproved H proposal is its vertical native crown-to-lowest-shoe alpha extent, not padded crop height or inferred anatomy. Airborne/folded/KO and other projecting poses still need actual-scale visual review.",
+        "approved": false
+      }
+    },
+    {
+      "key": "page1-left",
+      "file": "assets/combat-costumes-pass41/archive__holly_white/tuxedo/page1-left-v1.png",
+      "path": "@PROJECT_ROOT@/art/archive__holly_white/tuxedo/left-v2.png",
+      "bytes": 1160779,
+      "sha256": "fa8f1c92c39b7f10544a9eab8acd47441113a3f71ad0ac0448c5fe3cf0d3b375",
+      "width": 1254,
+      "height": 1254,
+      "standingHeight": 317,
+      "calibration": {
+        "method": "same-page-neutral",
+        "pose": "left-left-v2-idle",
+        "qualification": "Complete neutral standing figure physically visible on this exact page. Unapproved H proposal is its vertical native crown-to-lowest-shoe alpha extent, not padded crop height or inferred anatomy. Airborne/folded/KO and other projecting poses still need actual-scale visual review.",
+        "approved": false
+      }
+    },
+    {
+      "key": "page2-right-transfer-role3",
+      "file": "assets/combat-costumes-pass41/archive__holly_white/tuxedo/page2-right-transfer-role3-v1.png",
+      "path": "@PROJECT_ROOT@/art/archive__holly_white/tuxedo/right-weapon-supplement-v1.png",
+      "bytes": 857581,
+      "sha256": "e3dcaa6a1f1e2f4b53ac0690dd6d281c31ea9475251b70c8d9a442290607bfbd",
+      "width": 1402,
+      "height": 1122,
+      "standingHeight": 535,
+      "calibration": {
+        "method": "reviewed-anatomical-transfer",
+        "approved": false,
+        "referenceSourcePath": "@PROJECT_ROOT@/art/archive__holly_white/tuxedo/right-v1.png",
+        "referenceSourceSHA256": "d38bf66e54de3d434529b9ee175fcc7e4a6ef8614265ffc3379366aff917a91f",
+        "referencePose": "right-right-v1-idle",
+        "referenceStandingHeight": 359,
+        "targetPose": "right-right-weapon-supplement-v1-walkB",
+        "landmarkPairs": [
+          {
+            "name": "vertical-projected-head-crown-to-chin",
+            "projection": "native-vertical-component-abs-dy",
+            "reference": [
+              [
+                147.5,
+                16.5
+              ],
+              [
+                158.5,
+                81.5
+              ]
+            ],
+            "action": [
+              [
+                377.5,
+                9.5
+              ],
+              [
+                387.5,
+                105.5
+              ]
+            ],
+            "referenceNativePixels": 65.0,
+            "actionNativePixels": 96.0,
+            "ratio": 1.476923076923077,
+            "measurementScope": "Actual visible source-native contour/chin/shoe points. Their native VERTICAL abs(dy) components are used for sourceFrameHeight; horizontal shoe spread is not treated as extra vertical height. Two projected visual segments; crown-to-sole depends on stance and head-to-chin on head/hat tilt. Manual chin uncertainty is approximately4nativepixels, so the proposal is not anatomical certification."
+          },
+          {
+            "name": "vertical-projected-crown-to-visible-shoe-sole",
+            "projection": "native-vertical-component-abs-dy",
+            "reference": [
+              [
+                147.5,
+                16.5
+              ],
+              [
+                73.5,
+                374.5
+              ]
+            ],
+            "action": [
+              [
+                377.5,
+                9.5
+              ],
+              [
+                455.5,
+                547.5
+              ]
+            ],
+            "referenceNativePixels": 358.0,
+            "actionNativePixels": 538.0,
+            "ratio": 1.5027932960893855,
+            "measurementScope": "Actual visible source-native contour/chin/shoe points. Their native VERTICAL abs(dy) components are used for sourceFrameHeight; horizontal shoe spread is not treated as extra vertical height. Two projected visual segments; crown-to-sole depends on stance and head-to-chin on head/hat tilt. Manual chin uncertainty is approximately4nativepixels, so the proposal is not anatomical certification."
+          }
+        ],
+        "tolerance": 0.2,
+        "scope": "UNAPPROVED qualified projected-source-framing transfer candidate. Visible head and shoe points support a bounded visual compromise; posture and head/hat projection cause different ratios. This is not a medical/anatomical certificate or inherited Root approval. Exact final job must receive independent Root review."
+      }
+    },
+    {
+      "key": "page2-right-transfer-role11",
+      "file": "assets/combat-costumes-pass41/archive__holly_white/tuxedo/page2-right-transfer-role11-v1.png",
+      "path": "@PROJECT_ROOT@/art/archive__holly_white/tuxedo/right-weapon-supplement-v1.png",
+      "bytes": 857581,
+      "sha256": "e3dcaa6a1f1e2f4b53ac0690dd6d281c31ea9475251b70c8d9a442290607bfbd",
+      "width": 1402,
+      "height": 1122,
+      "standingHeight": 545,
+      "calibration": {
+        "method": "reviewed-anatomical-transfer",
+        "approved": false,
+        "referenceSourcePath": "@PROJECT_ROOT@/art/archive__holly_white/tuxedo/right-v1.png",
+        "referenceSourceSHA256": "d38bf66e54de3d434529b9ee175fcc7e4a6ef8614265ffc3379366aff917a91f",
+        "referencePose": "right-right-v1-idle",
+        "referenceStandingHeight": 359,
+        "targetPose": "right-right-weapon-supplement-v1-special",
+        "landmarkPairs": [
+          {
+            "name": "vertical-projected-head-crown-to-chin",
+            "projection": "native-vertical-component-abs-dy",
+            "reference": [
+              [
+                147.5,
+                16.5
+              ],
+              [
+                158.5,
+                81.5
+              ]
+            ],
+            "action": [
+              [
+                1015.5,
+                18.5
+              ],
+              [
+                1013.5,
+                118.5
+              ]
+            ],
+            "referenceNativePixels": 65.0,
+            "actionNativePixels": 100.0,
+            "ratio": 1.5384615384615385,
+            "measurementScope": "Actual visible source-native contour/chin/shoe points. Their native VERTICAL abs(dy) components are used for sourceFrameHeight; horizontal shoe spread is not treated as extra vertical height. Two projected visual segments; crown-to-sole depends on stance and head-to-chin on head/hat tilt. Manual chin uncertainty is approximately4nativepixels, so the proposal is not anatomical certification."
+          },
+          {
+            "name": "vertical-projected-crown-to-visible-shoe-sole",
+            "projection": "native-vertical-component-abs-dy",
+            "reference": [
+              [
+                147.5,
+                16.5
+              ],
+              [
+                73.5,
+                374.5
+              ]
+            ],
+            "action": [
+              [
+                1015.5,
+                18.5
+              ],
+              [
+                810.5,
+                555.5
+              ]
+            ],
+            "referenceNativePixels": 358.0,
+            "actionNativePixels": 537.0,
+            "ratio": 1.5,
+            "measurementScope": "Actual visible source-native contour/chin/shoe points. Their native VERTICAL abs(dy) components are used for sourceFrameHeight; horizontal shoe spread is not treated as extra vertical height. Two projected visual segments; crown-to-sole depends on stance and head-to-chin on head/hat tilt. Manual chin uncertainty is approximately4nativepixels, so the proposal is not anatomical certification."
+          }
+        ],
+        "tolerance": 0.2,
+        "scope": "UNAPPROVED qualified projected-source-framing transfer candidate. Visible head and shoe points support a bounded visual compromise; posture and head/hat projection cause different ratios. This is not a medical/anatomical certificate or inherited Root approval. Exact final job must receive independent Root review."
+      }
+    },
+    {
+      "key": "page2-right-transfer-role12",
+      "file": "assets/combat-costumes-pass41/archive__holly_white/tuxedo/page2-right-transfer-role12-v1.png",
+      "path": "@PROJECT_ROOT@/art/archive__holly_white/tuxedo/right-weapon-supplement-v1.png",
+      "bytes": 857581,
+      "sha256": "e3dcaa6a1f1e2f4b53ac0690dd6d281c31ea9475251b70c8d9a442290607bfbd",
+      "width": 1402,
+      "height": 1122,
+      "standingHeight": 551,
+      "calibration": {
+        "method": "reviewed-anatomical-transfer",
+        "approved": false,
+        "referenceSourcePath": "@PROJECT_ROOT@/art/archive__holly_white/tuxedo/right-v1.png",
+        "referenceSourceSHA256": "d38bf66e54de3d434529b9ee175fcc7e4a6ef8614265ffc3379366aff917a91f",
+        "referencePose": "right-right-v1-idle",
+        "referenceStandingHeight": 359,
+        "targetPose": "right-right-weapon-supplement-v1-recover",
+        "landmarkPairs": [
+          {
+            "name": "vertical-projected-head-crown-to-chin",
+            "projection": "native-vertical-component-abs-dy",
+            "reference": [
+              [
+                147.5,
+                16.5
+              ],
+              [
+                158.5,
+                81.5
+              ]
+            ],
+            "action": [
+              [
+                362.5,
+                557.5
+              ],
+              [
+                376.5,
+                657.5
+              ]
+            ],
+            "referenceNativePixels": 65.0,
+            "actionNativePixels": 100.0,
+            "ratio": 1.5384615384615385,
+            "measurementScope": "Actual visible source-native contour/chin/shoe points. Their native VERTICAL abs(dy) components are used for sourceFrameHeight; horizontal shoe spread is not treated as extra vertical height. Two projected visual segments; crown-to-sole depends on stance and head-to-chin on head/hat tilt. Manual chin uncertainty is approximately4nativepixels, so the proposal is not anatomical certification."
+          },
+          {
+            "name": "vertical-projected-crown-to-visible-shoe-sole",
+            "projection": "native-vertical-component-abs-dy",
+            "reference": [
+              [
+                147.5,
+                16.5
+              ],
+              [
+                73.5,
+                374.5
+              ]
+            ],
+            "action": [
+              [
+                362.5,
+                557.5
+              ],
+              [
+                171.5,
+                1105.5
+              ]
+            ],
+            "referenceNativePixels": 358.0,
+            "actionNativePixels": 548.0,
+            "ratio": 1.5307262569832403,
+            "measurementScope": "Actual visible source-native contour/chin/shoe points. Their native VERTICAL abs(dy) components are used for sourceFrameHeight; horizontal shoe spread is not treated as extra vertical height. Two projected visual segments; crown-to-sole depends on stance and head-to-chin on head/hat tilt. Manual chin uncertainty is approximately4nativepixels, so the proposal is not anatomical certification."
+          }
+        ],
+        "tolerance": 0.2,
+        "scope": "UNAPPROVED qualified projected-source-framing transfer candidate. Visible head and shoe points support a bounded visual compromise; posture and head/hat projection cause different ratios. This is not a medical/anatomical certificate or inherited Root approval. Exact final job must receive independent Root review."
+      }
+    },
+    {
+      "key": "page3-left-transfer-role3",
+      "file": "assets/combat-costumes-pass41/archive__holly_white/tuxedo/page3-left-transfer-role3-v1.png",
+      "path": "@PROJECT_ROOT@/art/archive__holly_white/tuxedo/left-weapon-supplement-v1.png",
+      "bytes": 809519,
+      "sha256": "e4d9fd1acea86529b7e9a7757193ebc83b4ceeba7b632e3d6e238a51c140f9a4",
+      "width": 1374,
+      "height": 1145,
+      "standingHeight": 533,
+      "calibration": {
+        "method": "reviewed-anatomical-transfer",
+        "approved": false,
+        "referenceSourcePath": "@PROJECT_ROOT@/art/archive__holly_white/tuxedo/left-v2.png",
+        "referenceSourceSHA256": "fa8f1c92c39b7f10544a9eab8acd47441113a3f71ad0ac0448c5fe3cf0d3b375",
+        "referencePose": "left-left-v2-idle",
+        "referenceStandingHeight": 317,
+        "targetPose": "left-left-weapon-supplement-v1-walkB",
+        "landmarkPairs": [
+          {
+            "name": "vertical-projected-head-crown-to-chin",
+            "projection": "native-vertical-component-abs-dy",
+            "reference": [
+              [
+                148.5,
+                54.5
+              ],
+              [
+                123.5,
+                114.5
+              ]
+            ],
+            "action": [
+              [
+                325.5,
+                18.5
+              ],
+              [
+                309.5,
+                118.5
+              ]
+            ],
+            "referenceNativePixels": 60.0,
+            "actionNativePixels": 100.0,
+            "ratio": 1.6666666666666667,
+            "measurementScope": "Actual visible source-native contour/chin/shoe points. Their native VERTICAL abs(dy) components are used for sourceFrameHeight; horizontal shoe spread is not treated as extra vertical height. Two projected visual segments; crown-to-sole depends on stance and head-to-chin on head/hat tilt. Manual chin uncertainty is approximately4nativepixels, so the proposal is not anatomical certification."
+          },
+          {
+            "name": "vertical-projected-crown-to-visible-shoe-sole",
+            "projection": "native-vertical-component-abs-dy",
+            "reference": [
+              [
+                148.5,
+                54.5
+              ],
+              [
+                204.5,
+                370.5
+              ]
+            ],
+            "action": [
+              [
+                325.5,
+                18.5
+              ],
+              [
+                267.5,
+                553.5
+              ]
+            ],
+            "referenceNativePixels": 316.0,
+            "actionNativePixels": 535.0,
+            "ratio": 1.6930379746835442,
+            "measurementScope": "Actual visible source-native contour/chin/shoe points. Their native VERTICAL abs(dy) components are used for sourceFrameHeight; horizontal shoe spread is not treated as extra vertical height. Two projected visual segments; crown-to-sole depends on stance and head-to-chin on head/hat tilt. Manual chin uncertainty is approximately4nativepixels, so the proposal is not anatomical certification."
+          }
+        ],
+        "tolerance": 0.2,
+        "scope": "UNAPPROVED qualified projected-source-framing transfer candidate. Visible head and shoe points support a bounded visual compromise; posture and head/hat projection cause different ratios. This is not a medical/anatomical certificate or inherited Root approval. Exact final job must receive independent Root review."
+      }
+    },
+    {
+      "key": "page3-left-transfer-role11",
+      "file": "assets/combat-costumes-pass41/archive__holly_white/tuxedo/page3-left-transfer-role11-v1.png",
+      "path": "@PROJECT_ROOT@/art/archive__holly_white/tuxedo/left-weapon-supplement-v1.png",
+      "bytes": 809519,
+      "sha256": "e4d9fd1acea86529b7e9a7757193ebc83b4ceeba7b632e3d6e238a51c140f9a4",
+      "width": 1374,
+      "height": 1145,
+      "standingHeight": 526,
+      "calibration": {
+        "method": "reviewed-anatomical-transfer",
+        "approved": false,
+        "referenceSourcePath": "@PROJECT_ROOT@/art/archive__holly_white/tuxedo/left-v2.png",
+        "referenceSourceSHA256": "fa8f1c92c39b7f10544a9eab8acd47441113a3f71ad0ac0448c5fe3cf0d3b375",
+        "referencePose": "left-left-v2-idle",
+        "referenceStandingHeight": 317,
+        "targetPose": "left-left-weapon-supplement-v1-special",
+        "landmarkPairs": [
+          {
+            "name": "vertical-projected-head-crown-to-chin",
+            "projection": "native-vertical-component-abs-dy",
+            "reference": [
+              [
+                148.5,
+                54.5
+              ],
+              [
+                123.5,
+                114.5
+              ]
+            ],
+            "action": [
+              [
+                1028.5,
+                39.5
+              ],
+              [
+                1007.5,
+                140.5
+              ]
+            ],
+            "referenceNativePixels": 60.0,
+            "actionNativePixels": 101.0,
+            "ratio": 1.6833333333333333,
+            "measurementScope": "Actual visible source-native contour/chin/shoe points. Their native VERTICAL abs(dy) components are used for sourceFrameHeight; horizontal shoe spread is not treated as extra vertical height. Two projected visual segments; crown-to-sole depends on stance and head-to-chin on head/hat tilt. Manual chin uncertainty is approximately4nativepixels, so the proposal is not anatomical certification."
+          },
+          {
+            "name": "vertical-projected-crown-to-visible-shoe-sole",
+            "projection": "native-vertical-component-abs-dy",
+            "reference": [
+              [
+                148.5,
+                54.5
+              ],
+              [
+                204.5,
+                370.5
+              ]
+            ],
+            "action": [
+              [
+                1028.5,
+                39.5
+              ],
+              [
+                1290.5,
+                555.5
+              ]
+            ],
+            "referenceNativePixels": 316.0,
+            "actionNativePixels": 516.0,
+            "ratio": 1.6329113924050633,
+            "measurementScope": "Actual visible source-native contour/chin/shoe points. Their native VERTICAL abs(dy) components are used for sourceFrameHeight; horizontal shoe spread is not treated as extra vertical height. Two projected visual segments; crown-to-sole depends on stance and head-to-chin on head/hat tilt. Manual chin uncertainty is approximately4nativepixels, so the proposal is not anatomical certification."
+          }
+        ],
+        "tolerance": 0.2,
+        "scope": "UNAPPROVED qualified projected-source-framing transfer candidate. Visible head and shoe points support a bounded visual compromise; posture and head/hat projection cause different ratios. This is not a medical/anatomical certificate or inherited Root approval. Exact final job must receive independent Root review."
+      }
+    },
+    {
+      "key": "page3-left-transfer-role12",
+      "file": "assets/combat-costumes-pass41/archive__holly_white/tuxedo/page3-left-transfer-role12-v1.png",
+      "path": "@PROJECT_ROOT@/art/archive__holly_white/tuxedo/left-weapon-supplement-v1.png",
+      "bytes": 809519,
+      "sha256": "e4d9fd1acea86529b7e9a7757193ebc83b4ceeba7b632e3d6e238a51c140f9a4",
+      "width": 1374,
+      "height": 1145,
+      "standingHeight": 514,
+      "calibration": {
+        "method": "reviewed-anatomical-transfer",
+        "approved": false,
+        "referenceSourcePath": "@PROJECT_ROOT@/art/archive__holly_white/tuxedo/left-v2.png",
+        "referenceSourceSHA256": "fa8f1c92c39b7f10544a9eab8acd47441113a3f71ad0ac0448c5fe3cf0d3b375",
+        "referencePose": "left-left-v2-idle",
+        "referenceStandingHeight": 317,
+        "targetPose": "left-left-weapon-supplement-v1-recover",
+        "landmarkPairs": [
+          {
+            "name": "vertical-projected-head-crown-to-chin",
+            "projection": "native-vertical-component-abs-dy",
+            "reference": [
+              [
+                148.5,
+                54.5
+              ],
+              [
+                123.5,
+                114.5
+              ]
+            ],
+            "action": [
+              [
+                353.5,
+                581.5
+              ],
+              [
+                327.5,
+                674.5
+              ]
+            ],
+            "referenceNativePixels": 60.0,
+            "actionNativePixels": 93.0,
+            "ratio": 1.55,
+            "measurementScope": "Actual visible source-native contour/chin/shoe points. Their native VERTICAL abs(dy) components are used for sourceFrameHeight; horizontal shoe spread is not treated as extra vertical height. Two projected visual segments; crown-to-sole depends on stance and head-to-chin on head/hat tilt. Manual chin uncertainty is approximately4nativepixels, so the proposal is not anatomical certification."
+          },
+          {
+            "name": "vertical-projected-crown-to-visible-shoe-sole",
+            "projection": "native-vertical-component-abs-dy",
+            "reference": [
+              [
+                148.5,
+                54.5
+              ],
+              [
+                204.5,
+                370.5
+              ]
+            ],
+            "action": [
+              [
+                353.5,
+                581.5
+              ],
+              [
+                571.5,
+                1115.5
+              ]
+            ],
+            "referenceNativePixels": 316.0,
+            "actionNativePixels": 534.0,
+            "ratio": 1.6898734177215189,
+            "measurementScope": "Actual visible source-native contour/chin/shoe points. Their native VERTICAL abs(dy) components are used for sourceFrameHeight; horizontal shoe spread is not treated as extra vertical height. Two projected visual segments; crown-to-sole depends on stance and head-to-chin on head/hat tilt. Manual chin uncertainty is approximately4nativepixels, so the proposal is not anatomical certification."
+          }
+        ],
+        "tolerance": 0.2,
+        "scope": "UNAPPROVED qualified projected-source-framing transfer candidate. Visible head and shoe points support a bounded visual compromise; posture and head/hat projection cause different ratios. This is not a medical/anatomical certificate or inherited Root approval. Exact final job must receive independent Root review."
+      }
+    }
+  ],
+  "roles": {
+    "right": [
+      {
+        "asset": "page0-right",
+        "pose": "right-right-v1-idle",
+        "pivot": [
+          0.5333333333333333,
+          0.9944903581267218
+        ],
+        "preview": {
+          "datumX": 88,
+          "bodyBounds": [
+            2,
+            2,
+            161,
+            359
+          ]
+        },
+        "bodyAxisProposal": {
+          "nativeX": 145,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            57,
+            14,
+            165,
+            363
+          ],
+          "sourceSHA256": "d38bf66e54de3d434529b9ee175fcc7e4a6ef8614265ffc3379366aff917a91f",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page0-right",
+        "pose": "right-right-v1-guard",
+        "pivot": [
+          0.4798206278026906,
+          0.9941176470588236
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 450,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            343,
+            31,
+            223,
+            340
+          ],
+          "sourceSHA256": "d38bf66e54de3d434529b9ee175fcc7e4a6ef8614265ffc3379366aff917a91f",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page0-right",
+        "pose": "right-right-v1-walkA",
+        "pivot": [
+          0.47580645161290325,
+          0.9943342776203966
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 795,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            677,
+            21,
+            248,
+            353
+          ],
+          "sourceSHA256": "d38bf66e54de3d434529b9ee175fcc7e4a6ef8614265ffc3379366aff917a91f",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page2-right-transfer-role3",
+        "pose": "right-right-weapon-supplement-v1-walkB",
+        "pivot": [
+          0.5228426395939086,
+          0.996316758747698
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 365,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            159,
+            7,
+            394,
+            543
+          ],
+          "sourceSHA256": "e3dcaa6a1f1e2f4b53ac0690dd6d281c31ea9475251b70c8d9a442290607bfbd",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page0-right",
+        "pose": "right-right-v1-crouch",
+        "pivot": [
+          0.5325443786982249,
+          0.9911894273127754
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 145,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            55,
+            482,
+            169,
+            227
+          ],
+          "sourceSHA256": "d38bf66e54de3d434529b9ee175fcc7e4a6ef8614265ffc3379366aff917a91f",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page0-right",
+        "pose": "right-right-v1-jump",
+        "pivot": [
+          0.4891304347826087,
+          0.9927536231884058
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 480,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            390,
+            366,
+            184,
+            276
+          ],
+          "sourceSHA256": "d38bf66e54de3d434529b9ee175fcc7e4a6ef8614265ffc3379366aff917a91f",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page0-right",
+        "pose": "right-right-v1-punch",
+        "pivot": [
+          0.45592705167173253,
+          0.9936507936507937
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 780,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            630,
+            391,
+            329,
+            315
+          ],
+          "sourceSHA256": "d38bf66e54de3d434529b9ee175fcc7e4a6ef8614265ffc3379366aff917a91f",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page0-right",
+        "pose": "right-right-v1-low",
+        "pivot": [
+          0.4658119658119658,
+          0.9905660377358491
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 1120,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            1011,
+            492,
+            234,
+            212
+          ],
+          "sourceSHA256": "d38bf66e54de3d434529b9ee175fcc7e4a6ef8614265ffc3379366aff917a91f",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page0-right",
+        "pose": "right-right-v1-throw",
+        "pivot": [
+          0.43812709030100333,
+          0.9930795847750865
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 145,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            14,
+            714,
+            299,
+            289
+          ],
+          "sourceSHA256": "d38bf66e54de3d434529b9ee175fcc7e4a6ef8614265ffc3379366aff917a91f",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page2-right-transfer-role3",
+        "pose": "right-right-weapon-supplement-v1-deploy",
+        "pivot": [
+          0.4907692307692308,
+          0.9957716701902748
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 1050,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            731,
+            632,
+            650,
+            473
+          ],
+          "sourceSHA256": "e3dcaa6a1f1e2f4b53ac0690dd6d281c31ea9475251b70c8d9a442290607bfbd",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page0-right",
+        "pose": "right-right-v1-heavy",
+        "pivot": [
+          0.3724832214765101,
+          0.9935064935064936
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 775,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            664,
+            712,
+            298,
+            308
+          ],
+          "sourceSHA256": "d38bf66e54de3d434529b9ee175fcc7e4a6ef8614265ffc3379366aff917a91f",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page2-right-transfer-role11",
+        "pose": "right-right-weapon-supplement-v1-special",
+        "pivot": [
+          0.45494505494505494,
+          0.996309963099631
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 1000,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            793,
+            16,
+            455,
+            542
+          ],
+          "sourceSHA256": "e3dcaa6a1f1e2f4b53ac0690dd6d281c31ea9475251b70c8d9a442290607bfbd",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page2-right-transfer-role12",
+        "pose": "right-right-weapon-supplement-v1-recover",
+        "pivot": [
+          0.4637002341920375,
+          0.9963833634719711
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 350,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            152,
+            555,
+            427,
+            553
+          ],
+          "sourceSHA256": "e3dcaa6a1f1e2f4b53ac0690dd6d281c31ea9475251b70c8d9a442290607bfbd",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page0-right",
+        "pose": "right-right-v1-hit",
+        "pivot": [
+          0.601593625498008,
+          0.9920948616600791
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 470,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            319,
+            998,
+            251,
+            253
+          ],
+          "sourceSHA256": "d38bf66e54de3d434529b9ee175fcc7e4a6ef8614265ffc3379366aff917a91f",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page0-right",
+        "pose": "right-right-v1-KO",
+        "pivot": [
+          0.5153061224489796,
+          0.9753086419753086
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 805,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            603,
+            1166,
+            392,
+            81
+          ],
+          "sourceSHA256": "d38bf66e54de3d434529b9ee175fcc7e4a6ef8614265ffc3379366aff917a91f",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page0-right",
+        "pose": "right-right-v1-roll",
+        "pivot": [
+          0.49230769230769234,
+          0.9904306220095693
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 1125,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            1029,
+            1037,
+            195,
+            209
+          ],
+          "sourceSHA256": "d38bf66e54de3d434529b9ee175fcc7e4a6ef8614265ffc3379366aff917a91f",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      }
+    ],
+    "left": [
+      {
+        "asset": "page1-left",
+        "pose": "left-left-v2-idle",
+        "pivot": [
+          0.524390243902439,
+          0.9937694704049844
+        ],
+        "preview": {
+          "datumX": 86,
+          "bodyBounds": [
+            2,
+            2,
+            160,
+            317
+          ]
+        },
+        "bodyAxisProposal": {
+          "nativeX": 150,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            64,
+            52,
+            164,
+            321
+          ],
+          "sourceSHA256": "fa8f1c92c39b7f10544a9eab8acd47441113a3f71ad0ac0448c5fe3cf0d3b375",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page1-left",
+        "pose": "left-left-v2-guard",
+        "pivot": [
+          0.46798029556650245,
+          0.9935064935064936
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 480,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            385,
+            61,
+            203,
+            308
+          ],
+          "sourceSHA256": "fa8f1c92c39b7f10544a9eab8acd47441113a3f71ad0ac0448c5fe3cf0d3b375",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page1-left",
+        "pose": "left-left-v2-walkA",
+        "pivot": [
+          0.5142857142857142,
+          0.9935275080906149
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 780,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            672,
+            62,
+            210,
+            309
+          ],
+          "sourceSHA256": "fa8f1c92c39b7f10544a9eab8acd47441113a3f71ad0ac0448c5fe3cf0d3b375",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page3-left-transfer-role3",
+        "pose": "left-left-weapon-supplement-v1-walkB",
+        "pivot": [
+          0.4810810810810811,
+          0.9962962962962963
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 355,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            177,
+            16,
+            370,
+            540
+          ],
+          "sourceSHA256": "e4d9fd1acea86529b7e9a7757193ebc83b4ceeba7b632e3d6e238a51c140f9a4",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page1-left",
+        "pose": "left-left-v2-crouch",
+        "pivot": [
+          0.5029585798816568,
+          0.9906542056074766
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 160,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            75,
+            451,
+            169,
+            214
+          ],
+          "sourceSHA256": "fa8f1c92c39b7f10544a9eab8acd47441113a3f71ad0ac0448c5fe3cf0d3b375",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page1-left",
+        "pose": "left-left-v2-jump",
+        "pivot": [
+          0.5060975609756098,
+          0.9918032786885246
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 470,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            387,
+            389,
+            164,
+            244
+          ],
+          "sourceSHA256": "fa8f1c92c39b7f10544a9eab8acd47441113a3f71ad0ac0448c5fe3cf0d3b375",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page1-left",
+        "pose": "left-left-v2-punch",
+        "pivot": [
+          0.5241157556270096,
+          0.992831541218638
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 790,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            627,
+            414,
+            311,
+            279
+          ],
+          "sourceSHA256": "fa8f1c92c39b7f10544a9eab8acd47441113a3f71ad0ac0448c5fe3cf0d3b375",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page1-left",
+        "pose": "left-left-v2-low",
+        "pivot": [
+          0.691358024691358,
+          0.9902912621359223
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 1140,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            972,
+            454,
+            243,
+            206
+          ],
+          "sourceSHA256": "fa8f1c92c39b7f10544a9eab8acd47441113a3f71ad0ac0448c5fe3cf0d3b375",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page1-left",
+        "pose": "left-left-v2-throw",
+        "pivot": [
+          0.6223776223776224,
+          0.9919678714859438
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 210,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            32,
+            713,
+            286,
+            249
+          ],
+          "sourceSHA256": "fa8f1c92c39b7f10544a9eab8acd47441113a3f71ad0ac0448c5fe3cf0d3b375",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page3-left-transfer-role3",
+        "pose": "left-left-weapon-supplement-v1-deploy",
+        "pivot": [
+          0.5860979462875198,
+          0.9953596287703016
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 1100,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            729,
+            652,
+            633,
+            431
+          ],
+          "sourceSHA256": "e4d9fd1acea86529b7e9a7757193ebc83b4ceeba7b632e3d6e238a51c140f9a4",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page1-left",
+        "pose": "left-left-v2-heavy",
+        "pivot": [
+          0.7431906614785992,
+          0.993103448275862
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 825,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            634,
+            685,
+            257,
+            290
+          ],
+          "sourceSHA256": "fa8f1c92c39b7f10544a9eab8acd47441113a3f71ad0ac0448c5fe3cf0d3b375",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page3-left-transfer-role11",
+        "pose": "left-left-weapon-supplement-v1-special",
+        "pivot": [
+          0.48518518518518516,
+          0.9961612284069098
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 1050,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            788,
+            37,
+            540,
+            521
+          ],
+          "sourceSHA256": "e4d9fd1acea86529b7e9a7757193ebc83b4ceeba7b632e3d6e238a51c140f9a4",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page3-left-transfer-role12",
+        "pose": "left-left-weapon-supplement-v1-recover",
+        "pivot": [
+          0.37343358395989973,
+          0.9962894248608535
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 360,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            211,
+            579,
+            399,
+            539
+          ],
+          "sourceSHA256": "e4d9fd1acea86529b7e9a7757193ebc83b4ceeba7b632e3d6e238a51c140f9a4",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page1-left",
+        "pose": "left-left-v2-hit",
+        "pivot": [
+          0.4272300469483568,
+          0.992
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 455,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            364,
+            991,
+            213,
+            250
+          ],
+          "sourceSHA256": "fa8f1c92c39b7f10544a9eab8acd47441113a3f71ad0ac0448c5fe3cf0d3b375",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page1-left",
+        "pose": "left-left-v2-KO",
+        "pivot": [
+          0.49859943977591037,
+          0.975609756097561
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 810,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            632,
+            1152,
+            357,
+            82
+          ],
+          "sourceSHA256": "fa8f1c92c39b7f10544a9eab8acd47441113a3f71ad0ac0448c5fe3cf0d3b375",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      },
+      {
+        "asset": "page1-left",
+        "pose": "left-left-v2-roll",
+        "pivot": [
+          0.5051020408163265,
+          0.9893048128342246
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 1130,
+          "method": "explicit-manual-visual-framing-coordinate-proposal",
+          "approved": false,
+          "nativeRect": [
+            1031,
+            1057,
+            196,
+            187
+          ],
+          "sourceSHA256": "fa8f1c92c39b7f10544a9eab8acd47441113a3f71ad0ac0448c5fe3cf0d3b375",
+          "qualification": "32 explicit approximate manual visual body-framing coordinates; native sheets physically viewed, no foot-contact inference. \u00b120 source px review tolerance, not measurement precision. Root must review exact final job. Weapon origins, period kit adaptation, walk anatomical phase and source body density remain separate checks."
+        }
+      }
+    ]
+  },
+  "plan": {
+    "actions": {
+      "idle": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          0
+        ]
+      },
+      "guard": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          1
+        ]
+      },
+      "walk": {
+        "fps": 7,
+        "loop": true,
+        "roles": [
+          2,
+          3
+        ]
+      },
+      "crouch": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          4
+        ]
+      },
+      "jump": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          5
+        ]
+      },
+      "attack": {
+        "fps": 9,
+        "loop": false,
+        "roles": [
+          1,
+          6,
+          1
+        ]
+      },
+      "punch": {
+        "fps": 9,
+        "loop": false,
+        "roles": [
+          1,
+          6,
+          1
+        ]
+      },
+      "heavy": {
+        "fps": 9,
+        "loop": false,
+        "roles": [
+          1,
+          10,
+          1
+        ]
+      },
+      "low": {
+        "fps": 9,
+        "loop": false,
+        "roles": [
+          4,
+          7,
+          4
+        ]
+      },
+      "throw": {
+        "fps": 9,
+        "loop": false,
+        "roles": [
+          1,
+          8,
+          1
+        ]
+      },
+      "deploy": {
+        "fps": 6,
+        "loop": false,
+        "roles": [
+          1,
+          8,
+          9,
+          1
+        ]
+      },
+      "shoot": {
+        "fps": 10,
+        "loop": false,
+        "roles": [
+          1,
+          11,
+          1
+        ]
+      },
+      "reload": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          12
+        ]
+      },
+      "optic": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          1
+        ]
+      },
+      "recover": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          12
+        ]
+      },
+      "blade": {
+        "fps": 9,
+        "loop": false,
+        "roles": [
+          1,
+          10,
+          1
+        ]
+      },
+      "roll": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          15
+        ]
+      },
+      "charge": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          6
+        ]
+      },
+      "parry": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          1
+        ]
+      },
+      "hit": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          13
+        ]
+      },
+      "ko": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          14
+        ]
+      }
+    },
+    "actionMap": {
+      "light": "punch",
+      "heavy": "heavy",
+      "low": "low",
+      "throw": "throw",
+      "special": "punch",
+      "specialDown": "deploy",
+      "specialForward": "punch",
+      "specialBack": "guard",
+      "super": "heavy",
+      "utility": "recover"
+    },
+    "phaseMap": {
+      "attack": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "punch": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "heavy": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "low": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "throw": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "shoot": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "blade": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "deploy": {
+        "startup": [
+          0,
+          1
+        ],
+        "active": [
+          2
+        ],
+        "recovery": [
+          3
+        ]
+      }
+    },
+    "scope": "Unreviewed V2 visual plan aligned to the actual captured fighter profile and current native-renderer dispatch proposal. Original actionMap and every combat profile remain unchanged. Pure melee/mobility/super dispatch uses punch6; all back mobility dispatches guard1. Retained palm11 and tuck15 drawings are preserved and are not substituted into unsupported action slots.",
+    "selectedActionBySlot": {
+      "light": "punch",
+      "heavy": "heavy",
+      "low": "low",
+      "throw": "throw",
+      "special": "shoot",
+      "specialDown": "deploy",
+      "specialForward": "throw",
+      "specialBack": "guard",
+      "super": "shoot",
+      "utility": "reload"
+    }
+  },
+  "anchors": [
+    {
+      "side": "right",
+      "slot": "special",
+      "roleIndex": 11,
+      "action": "shoot",
+      "nativeXY": [
+        1244.5,
+        98.5
+      ],
+      "rearNativeXY": [
+        1194.5,
+        98.5
+      ],
+      "socket": "cqc-period-kit-visible-pistol-muzzle"
+    },
+    {
+      "side": "right",
+      "slot": "super",
+      "roleIndex": 11,
+      "action": "shoot",
+      "nativeXY": [
+        1244.5,
+        98.5
+      ],
+      "rearNativeXY": [
+        1194.5,
+        98.5
+      ],
+      "socket": "cqc-period-kit-visible-pistol-muzzle"
+    },
+    {
+      "side": "right",
+      "slot": "specialDown",
+      "roleIndex": 9,
+      "action": "deploy",
+      "nativeXY": [
+        1312.5,
+        741.5
+      ],
+      "socket": "cqc-period-kit-visible-grenade-release-fingertip"
+    },
+    {
+      "side": "left",
+      "slot": "special",
+      "roleIndex": 11,
+      "action": "shoot",
+      "nativeXY": [
+        791.5,
+        119.5
+      ],
+      "rearNativeXY": [
+        841.5,
+        119.5
+      ],
+      "socket": "cqc-period-kit-visible-pistol-muzzle"
+    },
+    {
+      "side": "left",
+      "slot": "super",
+      "roleIndex": 11,
+      "action": "shoot",
+      "nativeXY": [
+        791.5,
+        119.5
+      ],
+      "rearNativeXY": [
+        841.5,
+        119.5
+      ],
+      "socket": "cqc-period-kit-visible-pistol-muzzle"
+    },
+    {
+      "side": "left",
+      "slot": "specialDown",
+      "roleIndex": 9,
+      "action": "deploy",
+      "nativeXY": [
+        788.5,
+        748.5
+      ],
+      "socket": "cqc-period-kit-visible-grenade-release-fingertip"
+    }
+  ],
+  "concept": {
+    "equipmentAdaptation": true,
+    "canonicalEquipmentOwnershipAttested": false,
+    "equipmentScope": "Optional period-universe CQC kit only, preserving inherited gameplay; original gala clothing and choreography.",
+    "gaitCertification": false,
+    "gaitScope": "Independent native drawings, no certified full anatomical opposite-phase cycle."
+  },
+  "proposalLimits": [
+    "Candidate pixel heights and pivots require physical review. A neutral pose on the same image can use a different drawn density; do not approve that value automatically.",
+    "Preview datum is proposed from contact pixels. Replace it with a reviewed pelvis/body axis where appropriate.",
+    "No source point is inferred from a gun bounding box. Native muzzle or release points must be supplied explicitly.",
+    "HELD WEAPON DENSITY: weapon assets deliberately use unapproved-walk-density-placeholder. Live compiler must reject until actual reviewed calibration replaces each source-height placeholder.",
+    "Visible alpha>=200 muzzle/rear and launch-fingertip pixel centres are proposed in source coordinates; actual hand identity, barrel direction and transformed emitter binding need Root review. Detached object centres are excluded from runtime release sockets.",
+    "All original source PNGs, old wrong-facing pages and failed framing attempts remain preserved.",
+    "All32 x pivots and idlepreviewdatums use explicitly supplied visual framing proposals. Vertical pivots, PNGbytes, ownership, action plans, nativepoints, sourceheights and originalcombatprofiles stay unchanged. FreshRootartreviewmustbindcurrentexactrawjobSHA; coordinatesare2Dframingchoices, not anatomicalmeasurements.",
+    "V2 replaces the V1 guessed palm/roll selectedActionBySlot with the explicit actual-dispatch table; compiler real-renderer selected-frame fixtures still must confirm it. Earlier job and all native images are preserved.",
+    "All32 x pivots and idlepreviewdatums use explicitly supplied visual framing proposals. Vertical pivots, PNGbytes, ownership, action plans, nativepoints, sourceheights and originalcombatprofiles stay unchanged. FreshRootartreviewmustbindcurrentexactrawjobSHA; coordinatesare2Dframingchoices, not anatomicalmeasurements.",
+    "Calibration transfer V1 supplies two explicitly located projected segments per new alias. Numerical midpoint is a qualified visual proposal, not anatomical truth; original sources, ownership, roles, axes, anchors and dispatch plan are preserved. Root review must bind the exact new raw job SHA, decide proportional uncertainty, and reject/refine unsuitable transfers."
+  ]
+}
