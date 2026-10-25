@@ -1,0 +1,150 @@
+{
+  "schema": "cqc.p43.public-installed-runtime-and-five-checks/1",
+  "qualification": "Installation locale effective et cinq contrôles réels. Le parcours du build frais, Git et la production possèdent leurs preuves séparées.",
+  "sourceDocuments": [
+    {
+      "document": "FINAL_LOCAL_RUNTIME_INSTALL_COMPACT_ACTUAL_V1.json",
+      "bytes": 3202,
+      "sha256": "391d02c3c03c774223d489c9f7587dfc791dca745a25a5aab931632aa6058cad"
+    },
+    {
+      "document": "FINAL_FIVE_CHECKS_NATIVE002_V4_COMPACT_ACTUAL_V2.json",
+      "bytes": 3850,
+      "sha256": "0fe2f69571fb18fb8a25afa59f99c646087ae186036a6b0cf17f4e6e1d5100ea"
+    }
+  ],
+  "nativeArchive": {
+    "tag": "cqc-pass43-native-002",
+    "commit": "d810ab3387f76211b4b0d67146e7a2ca166ac80e"
+  },
+  "scope": {
+    "gitRepository": "darknigthmare/shadow-codec-ops",
+    "runtimeDirectory": "public/cqc",
+    "standaloneAndShadowOpsTabShareSameRuntime": true,
+    "standaloneLocalMirrorIsSeparateGitTree": false
+  },
+  "installation": {
+    "status": "PASS_INSTALLED_NOT_PRODUCTION",
+    "installedSourceFiles": 23,
+    "installedManifestFiles": 2,
+    "academyPreserved": true,
+    "sourceRasterCopies": 0,
+    "protectedBaselineExact": true,
+    "cqcSyncInvoked": false,
+    "runtimeBundleSHA256": "b3263de32051dcd7bb5396de75b03a4ad23f6819206604217bc7aec4d00562d1",
+    "manifests": [
+      {
+        "mirror": "application",
+        "bytes": 1385245,
+        "sha256": "91b153a922d9823742669e1c43cfb1aa33057cf02a1eadf6a46617da9a8d2736",
+        "files": 2761,
+        "references": 4627,
+        "externalReferences": 212,
+        "historicalDeclared": 12,
+        "omittedRuntime": 0
+      },
+      {
+        "mirror": "standalone",
+        "bytes": 1380176,
+        "sha256": "ca1d848d35181e65ddf9625c0f800af56fec6b223a2a9336830b0f2a07ac6f79",
+        "files": 2750,
+        "references": 4612,
+        "externalReferences": 212,
+        "historicalDeclared": 1,
+        "omittedRuntime": 0
+      }
+    ]
+  },
+  "fiveChecks": {
+    "status": "PASS_ALL_FIVE_ACTUAL_INSTALLED_CHECKS",
+    "startedAtUTC": "2026-10-25T09:47:33.927Z",
+    "finishedAtUTC": "2026-10-25T09:48:16.367Z",
+    "oldPreservedBuildUsed": false,
+    "checks": [
+      {
+        "name": "cqc-check",
+        "command": [
+          "npm",
+          "run",
+          "cqc:check"
+        ],
+        "status": "PASS",
+        "code": 0,
+        "startedAtUTC": "2026-10-25T09:47:33.927Z",
+        "finishedAtUTC": "2026-10-25T09:47:38.551Z",
+        "logBytes": 340,
+        "logSHA256": "fdcefe403971f7e68f4e253bb66ebe5201b37756098936596449539798393966",
+        "originalCommandJSONSHA256": "773b8eec2553f66b46997df7f121e036fb3af7180e2814bfacdd39bae6db313c"
+      },
+      {
+        "name": "lint",
+        "command": [
+          "npm",
+          "run",
+          "lint"
+        ],
+        "status": "PASS",
+        "code": 0,
+        "startedAtUTC": "2026-10-25T09:47:38.552Z",
+        "finishedAtUTC": "2026-10-25T09:47:46.057Z",
+        "logBytes": 256,
+        "logSHA256": "83a5602f60e78e8850408b92b57646e4c75bde52e5c5b4b68be0edb19151b2ad",
+        "originalCommandJSONSHA256": "edad09f9dbb99f2e409938c2533159fd4e989323316882ac20ce829d5d85e62f"
+      },
+      {
+        "name": "test",
+        "command": [
+          "npm",
+          "run",
+          "test"
+        ],
+        "status": "PASS",
+        "code": 0,
+        "startedAtUTC": "2026-10-25T09:47:46.058Z",
+        "finishedAtUTC": "2026-10-25T09:47:56.021Z",
+        "logBytes": 7498,
+        "logSHA256": "fcd9921844a4b2f6f9261ac3658cf965d2b51da777ee1f9e64d68a34d1555197",
+        "originalCommandJSONSHA256": "7586947f694b0536a359c8db8dd76d5233e45c5cab46456f67c8204d7555069f"
+      },
+      {
+        "name": "build",
+        "command": [
+          "npm",
+          "run",
+          "build",
+          "--",
+          "--outDir",
+          "<fresh-output-directory>"
+        ],
+        "status": "PASS",
+        "code": 0,
+        "startedAtUTC": "2026-10-25T09:47:56.022Z",
+        "finishedAtUTC": "2026-10-25T09:48:16.332Z",
+        "logBytes": 13420,
+        "logSHA256": "16d65ab105b0ae8cd5f51e57e15975ac0494910a31ae3c51ef917daebef3836f",
+        "originalCommandJSONSHA256": "00addc4186abe37f8e05bc9a57848d6e22b60d43060fcf29d75e28300bd73fba"
+      },
+      {
+        "name": "pwa-check",
+        "command": [
+          "node",
+          "scripts/check-pwa.mjs"
+        ],
+        "status": "PASS",
+        "code": 0,
+        "startedAtUTC": "2026-10-25T09:48:16.333Z",
+        "finishedAtUTC": "2026-10-25T09:48:16.367Z",
+        "logBytes": 66,
+        "logSHA256": "4d5fb9f53e0be9fdea078e00604a8c100669daf7c69bb6221fe76d8ab57d412d",
+        "originalCommandJSONSHA256": "c074fc10f37131e7b18c6cd05762d421dc1d24269541f109e454556dc653e64b"
+      }
+    ]
+  },
+  "atThisEvidenceStage": {
+    "freshBuiltApplicationFlow": "separate pending receipt",
+    "gitRuntimePublication": false,
+    "productionVerified": false
+  },
+  "historicalAssets": "Le scanner conservateur a déclaré douze fichiers historiques inchangés. Onze chemins manquants dans Git seront ajoutés avec leurs bytes exacts ; cela ne constitue pas six nouveaux costumes jouables.",
+  "publicCommandPresentation": "Les commandes publiques utilisent un nom logique pour le répertoire neuf et le chemin relatif du script PWA ; les commandes exactes restent liées au reçu source par son SHA et par le digest de chaque tableau JSON compact."
+}
