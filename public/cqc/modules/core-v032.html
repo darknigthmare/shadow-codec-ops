@@ -8422,7 +8422,7 @@ function createRenderer(canvas) {
     window.CQC_PASS17_CORE_COSTUMES?.cancelPortrait(target);
     const portraitCostume=id===selection.player&&(target.closest('[data-player]')||!target.isConnected)?window.CQC_COSTUMES_PASS17?.chosen(0,'core__'+id)||'original':'original';
     const portraitFighter={uid:'core__'+id,costume:portraitCostume};
-    if(!artBank.status().some(row=>row.id===id)&&window.CQC_PASS18_MACHINES?.hasComposite(portraitFighter)&&window.CQC_PASS18_MACHINES.drawPortrait(target,portraitFighter,()=>portrait(target,id)))return;
+    if(!artBank.status().some(row=>row.id===id)&&window.CQC_PASS18_MACHINES?.hasComposite(portraitFighter)&&window.CQC_PASS18_MACHINES.drawPortrait(target,portraitFighter,()=>portrait(target,id),{face:1}))return;
     if(window.CQC_PASS17_CORE_COSTUMES?.drawPortrait(target,id,0,portraitCostume))return;
     if(window.CQC_PASS16_CORE_SPRITES?.drawPortrait(target,id,pass16SpriteHooks()))return;
     if(id==='rex'||id==='ray'||id==='mgd'||id==='tx55'||id==='icbmg'||id==='raxa'||id==='gander'||id==='zeke'||id==='shagohod'||id==='sahelanthropus'||PW_AI_IDS.includes(id)){

@@ -626,7 +626,9 @@ function drawSmallDrone45(c,f,pose={}){const v=f.visual,p=v.primary||f.color,a=v
 function drawFighter(c,f,x,y,face,scale,pose={}){if(window.CQC_PASS18_MACHINES?.drawPlayable(c,f,x,y,face,scale,pose))return;if(window.CQC_COMBAT_SPRITES?.draw(c,f,x,y,face,scale,pose))return;if(hasNativePortraitPass10(f.uid,f.costume))return;c.save();c.translate(x,y);c.scale(face*scale,scale);let kind=f.visual?.kind||'human';if(f.id==='dhorse')drawHorse45(c,f,pose);else if(f.visual?.species==='monkey')drawMonkey45(c,f,pose);else if(kind==='quadruped')drawQuadruped(c,f,pose);else if(kind==='machine')drawMachine(c,f,pose);else drawHuman(c,f,pose);c.restore()}
 // PASS10 changes presentation and preparation, never actor balance or combat coordinates.
 const portraitRefreshRequestsReprise=new WeakMap(),portraitTargetsPass10=new WeakMap(),portraitCanvasesPass10=new Set(),stageRefreshRequestsPass10=new WeakMap();
-const portraitOptionsPass10={action:'idle',face:-1};
+// Opposing selection panels request independently authored native facings.
+const portraitFacePass44=canvas=>canvas?.id==='p1Portrait'?1:-1;
+const portraitOptionsPass10=canvas=>({action:'idle',face:portraitFacePass44(canvas)});
 let portraitResizeFramePass10=0,galleryFramePass10=0,matchRequestPass10=null,matchRequestSequencePass10=0;
 const portraitResizeObserverPass10=typeof ResizeObserver==='function'?new ResizeObserver(entries=>{
  for(const {target} of entries){if(!target.isConnected){releasePortraitPass10(target);continue;}const f=portraitTargetsPass10.get(target);if(f)drawPortrait(target,f);}
@@ -651,29 +653,29 @@ function portraitStatusPass10(canvas,f,state){
 }
 function refreshPortraitWhenReadyReprise(canvas,f){
  const token={uid:f.uid};portraitRefreshRequestsReprise.set(canvas,token);
- const sprites=window.CQC_COMBAT_SPRITES,status=sprites?.status(f.uid,{...portraitOptionsPass10,costume:f.costume});
+ const sprites=window.CQC_COMBAT_SPRITES,status=sprites?.status(f.uid,{...portraitOptionsPass10(canvas),costume:f.costume});
  if(!sprites?.whenReady||status?.renderer!=='png'||status.ready||!status.states?.some(s=>s==='loading'||s==='not-requested'))return;
- sprites.whenReady(f.uid,{...portraitOptionsPass10,costume:f.costume}).then(()=>{if(canvas.isConnected&&portraitRefreshRequestsReprise.get(canvas)===token)drawPortrait(canvas,f);}).catch(()=>{if(canvas.isConnected&&portraitRefreshRequestsReprise.get(canvas)===token)portraitStatusPass10(canvas,f,'failed');});
+ sprites.whenReady(f.uid,{...portraitOptionsPass10(canvas),costume:f.costume}).then(()=>{if(canvas.isConnected&&portraitRefreshRequestsReprise.get(canvas)===token)drawPortrait(canvas,f);}).catch(()=>{if(canvas.isConnected&&portraitRefreshRequestsReprise.get(canvas)===token)portraitStatusPass10(canvas,f,'failed');});
 }
 function drawPortrait(canvas,f){
- registerPortraitPass10(canvas,f);portraitRefreshRequestsReprise.delete(canvas);if(window.CQC_PASS18_MACHINES?.hasComposite(f)){if(window.CQC_PASS18_MACHINES.drawPortrait(canvas,f,()=>{if(canvas.isConnected&&portraitTargetsPass10.get(canvas)?.uid===f.uid)drawPortrait(canvas,f);})){portraitStatusPass10(canvas,f,window.CQC_PASS18_MACHINES.ready(f)?'ready':'loading');return;}}window.CQC_PASS18_MACHINES?.cancelPortrait(canvas);refreshPortraitWhenReadyReprise(canvas,f);
+ registerPortraitPass10(canvas,f);portraitRefreshRequestsReprise.delete(canvas);if(window.CQC_PASS18_MACHINES?.hasComposite(f)){if(window.CQC_PASS18_MACHINES.drawPortrait(canvas,f,()=>{if(canvas.isConnected&&portraitTargetsPass10.get(canvas)?.uid===f.uid)drawPortrait(canvas,f);},{face:portraitFacePass44(canvas)})){portraitStatusPass10(canvas,f,window.CQC_PASS18_MACHINES.ready(f,{face:portraitFacePass44(canvas)})?'ready':'loading');return;}}window.CQC_PASS18_MACHINES?.cancelPortrait(canvas);refreshPortraitWhenReadyReprise(canvas,f);
  const c=canvas.getContext('2d'),w=canvas.width,h=canvas.height,sprites=window.CQC_COMBAT_SPRITES;
  c.clearRect(0,0,w,h);const g=c.createRadialGradient(w*.5,h*.35,0,w*.5,h*.35,Math.max(w,h)*.8);g.addColorStop(0,tone(f.color,.15));g.addColorStop(1,'#07110d');c.fillStyle=g;c.fillRect(0,0,w,h);
  if(hasNativePortraitPass10(f.uid,f.costume)){
-  const drawn=!!sprites?.drawFitted?.(c,f,{x:0,y:0,width:w,height:h,padding:Math.min(w,h)*.055},-1,{time:0,actionTime:0});
-  const status=sprites?.status(f.uid,{...portraitOptionsPass10,costume:f.costume}),failed=status?.ready&&!drawn||status?.states?.some(s=>s==='failed'||s==='unavailable');
+  const drawn=!!sprites?.drawFitted?.(c,f,{x:0,y:0,width:w,height:h,padding:Math.min(w,h)*.055},portraitFacePass44(canvas),{time:0,actionTime:0});
+  const status=sprites?.status(f.uid,{...portraitOptionsPass10(canvas),costume:f.costume}),failed=status?.ready&&!drawn||status?.states?.some(s=>s==='failed'||s==='unavailable');
   portraitStatusPass10(canvas,f,drawn?'ready':failed?'failed':'loading');return;
  }
  portraitStatusPass10(canvas,f,'legacy');
  if(window.CQC_ORIGINAL_FIGHTERS?.drawPortrait(canvas,f))return;
  c.strokeStyle=f.accent+'55';for(let x=-h;x<w;x+=42){c.beginPath();c.moveTo(x,0);c.lineTo(x+h,h);c.stroke();}
- const sc=Math.min(w/260,h/300)*.95;drawFighter(c,f,w*.5,h*.96,-1,sc,{time:0});
+ const sc=Math.min(w/260,h/300)*.95;drawFighter(c,f,w*.5,h*.96,portraitFacePass44(canvas),sc,{time:0});
 }
-function retryPortraitPass10(canvas,f){if(window.CQC_PASS18_MACHINES?.hasComposite(f)){window.CQC_PASS18_MACHINES.whenReadyComposite(f,{retry:true}).then(()=>{if(canvas.isConnected&&portraitTargetsPass10.get(canvas)?.uid===f.uid)drawPortrait(canvas,f);});return;}
- const sprites=window.CQC_COMBAT_SPRITES,status=sprites?.status(f.uid,{...portraitOptionsPass10,costume:f.costume});
+function retryPortraitPass10(canvas,f){if(window.CQC_PASS18_MACHINES?.hasComposite(f)){window.CQC_PASS18_MACHINES.whenReadyComposite(f,{retry:true,face:portraitFacePass44(canvas)}).then(()=>{if(canvas.isConnected&&portraitTargetsPass10.get(canvas)?.uid===f.uid)drawPortrait(canvas,f);});return;}
+ const sprites=window.CQC_COMBAT_SPRITES,status=sprites?.status(f.uid,{...portraitOptionsPass10(canvas),costume:f.costume});
  if(!hasNativePortraitPass10(f.uid,f.costume)||!status?.states?.some(s=>s==='failed'||s==='unavailable'))return;
  const token={uid:f.uid};portraitRefreshRequestsReprise.set(canvas,token);
- sprites.whenReady(f.uid,{...portraitOptionsPass10,retry:true,costume:f.costume}).then(()=>{if(canvas.isConnected&&portraitRefreshRequestsReprise.get(canvas)===token)drawPortrait(canvas,f);}).catch(()=>{});
+ sprites.whenReady(f.uid,{...portraitOptionsPass10(canvas),retry:true,costume:f.costume}).then(()=>{if(canvas.isConnected&&portraitRefreshRequestsReprise.get(canvas)===token)drawPortrait(canvas,f);}).catch(()=>{});
 }
 function stagePreviewCaptionPass10(stage){
  const status=window.CQC_STAGE_LAYERS?.status(stage);
