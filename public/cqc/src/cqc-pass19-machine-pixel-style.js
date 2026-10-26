@@ -24,11 +24,12 @@
    const h=option.machinePresentation.maxBodyHeight,w=Math.max(1,Math.round(h*box.width/box.height)),canvas=createCanvas(value.uid+':portrait:'+face,w,h);if(!canvas)return false;const pixel=canvas.getContext('2d');pixel.clearRect(0,0,w,h);const result=drawFitted(pixel,value.uid,{x:0,y:0,width:w,height:h,padding:2},face,pose);if(!result)return false;
    context.save();try{context.imageSmoothingEnabled=false;context.drawImage(canvas,box.x,box.y,box.width,box.height);}finally{context.restore();}return true;
   };
-  if(drawPortrait)bridge.drawPortrait=function(canvas,value,onRepaint){
-   const option=selected(value);if(!option)return drawPortrait(canvas,typeof value==='object'?value.uid:value,onRepaint);
+  if(drawPortrait)bridge.drawPortrait=function(canvas,value,onRepaint,options={}){
+   const option=selected(value);if(!option)return drawPortrait(canvas,typeof value==='object'?value.uid:value,onRepaint,options);
+   const face=options.face===1?1:-1;
    const ticket={uid:value.uid,costume:value.costume};portraits.set(canvas,ticket);
-   const context=canvas.getContext('2d'),box={x:0,y:0,width:canvas.width,height:canvas.height,padding:7};context.clearRect(0,0,canvas.width,canvas.height);bridge.drawFitted(context,value,box,-1,{action:'idle',frame:0});
-   if(!ready?.(value.uid))Promise.resolve(whenReady?.(value.uid)||false).then(result=>{if(result===false||canvas.isConnected===false||portraits.get(canvas)!==ticket)return;if(typeof onRepaint==='function')onRepaint();else bridge.drawFitted(context,value,box,-1,{action:'idle',frame:0});}).catch(()=>{});
+   const context=canvas.getContext('2d'),box={x:0,y:0,width:canvas.width,height:canvas.height,padding:7};context.clearRect(0,0,canvas.width,canvas.height);bridge.drawFitted(context,value,box,face,{action:'idle',frame:0});
+   if(!ready?.(value.uid,{face}))Promise.resolve(whenReady?.(value.uid,{face})||false).then(result=>{if(result===false||canvas.isConnected===false||portraits.get(canvas)!==ticket)return;if(typeof onRepaint==='function')onRepaint();else bridge.drawFitted(context,value,box,face,{action:'idle',frame:0});}).catch(()=>{});
    return true;
   };
   if(drawCore)bridge.drawCoreMachine=function(context,actor,time,state={},hooks={}){

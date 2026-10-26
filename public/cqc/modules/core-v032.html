@@ -319,6 +319,7 @@ body{background:#030508!important;overflow:hidden}.toolbar,.footer{display:none!
 <script src="../src/cqc-pass41-native-batch-index-v1.js"></script>
 <script src="../src/cqc-pass42-native-batch-index-v1.js"></script>
 <script src="../src/cqc-pass43-native-batch-index-v1.js"></script>
+<script src="../src/cqc-pass44-native-batch-index-v1.js"></script>
 <script src="../src/cqc-pass40-core-native-origins-v1.js"></script>
 <script src="../src/cqc-pass40-core-three-metadata-variants-v1.js"></script>
 <script src="../src/cqc-pass40-core-metadata-variants-v1.js"></script>
@@ -326,6 +327,8 @@ body{background:#030508!important;overflow:hidden}.toolbar,.footer{display:none!
 <script src="../src/cqc-pass42-core-native-origins-v1.js"></script>
 <script src="../src/cqc-pass43-core-native-origins-v1.js"></script>
 <script src="../src/cqc-pass43-venom-native-contact-v1.js"></script>
+<script src="../src/cqc-pass44-venom-native-contact-v1.js"></script>
+<script src="../src/cqc-pass44-core-native-origins-v1.js"></script>
 <script src="../src/cqc-pass19-native-wardrobe-library.js"></script>
 <script src="../src/cqc-pass19-native-wardrobe-static-compat.js"></script>
 <script src="../src/cqc-pass21-native-machine-costume-adapter.js"></script>
@@ -8422,7 +8425,7 @@ function createRenderer(canvas) {
     window.CQC_PASS17_CORE_COSTUMES?.cancelPortrait(target);
     const portraitCostume=id===selection.player&&(target.closest('[data-player]')||!target.isConnected)?window.CQC_COSTUMES_PASS17?.chosen(0,'core__'+id)||'original':'original';
     const portraitFighter={uid:'core__'+id,costume:portraitCostume};
-    if(!artBank.status().some(row=>row.id===id)&&window.CQC_PASS18_MACHINES?.hasComposite(portraitFighter)&&window.CQC_PASS18_MACHINES.drawPortrait(target,portraitFighter,()=>portrait(target,id)))return;
+    if(!artBank.status().some(row=>row.id===id)&&window.CQC_PASS18_MACHINES?.hasComposite(portraitFighter)&&window.CQC_PASS18_MACHINES.drawPortrait(target,portraitFighter,()=>portrait(target,id),{face:1}))return;
     if(window.CQC_PASS17_CORE_COSTUMES?.drawPortrait(target,id,0,portraitCostume))return;
     if(window.CQC_PASS16_CORE_SPRITES?.drawPortrait(target,id,pass16SpriteHooks()))return;
     if(id==='rex'||id==='ray'||id==='mgd'||id==='tx55'||id==='icbmg'||id==='raxa'||id==='gander'||id==='zeke'||id==='shagohod'||id==='sahelanthropus'||PW_AI_IDS.includes(id)){

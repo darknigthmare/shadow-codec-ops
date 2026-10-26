@@ -108,13 +108,13 @@
       replace(bridge, name, (context, actor, ...args) => runtime.has(actor) ? runtime[name](context, actor, ...args) : raw(context, actor, ...args));
     }
     const portrait = bridge.drawPortrait.bind(bridge);
-    replace(bridge, 'drawPortrait', function (canvas, actor, ...args) {
-      if (!runtime.has(actor)) return portrait(canvas, actor, ...args);
+    replace(bridge, 'drawPortrait', function (canvas, actor, onRepaint, options = {}) {
+      if (!runtime.has(actor)) return portrait(canvas, actor, onRepaint, options);
       if (!canvas?.getContext || canvas.width <= 0 || canvas.height <= 0) return false;
       bridge.cancelPortrait?.(canvas);
       const context = canvas.getContext('2d'); if (!context) return false;
       context.clearRect(0, 0, canvas.width, canvas.height);
-      return runtime.drawFitted(context, actor, {x: 0, y: 0, width: canvas.width, height: canvas.height, padding: Math.min(canvas.width, canvas.height) * .055}, -1, {action: 'idle', frame: 0});
+      return runtime.drawFitted(context, actor, {x: 0, y: 0, width: canvas.width, height: canvas.height, padding: Math.min(canvas.width, canvas.height) * .055}, options.face === 1 ? 1 : -1, {action: 'idle', frame: 0});
     });
     const ready = bridge.ready.bind(bridge);
     replace(bridge, 'ready', (actor, ...args) => runtime.has(actor) ? runtime.ready(actor, args[0]?.face || -1) : ready(actor, ...args));

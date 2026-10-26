@@ -1,0 +1,11 @@
+Fox MG2 reçoit une version rétro et Null de Portable Ops un corps cyborg personnalisé dans le Versus. Ces deux ajouts portent à quatre les nouveaux costumes natifs P44 disponibles dans ce mode, avec Venom Snake cyborg et Johnny MGS4 en tenue de gala.
+
+Les incarnations restent distinctes. Chaque nouveau costume utilise ses deux faces dessinées et sa géométrie native. Fox et Null sont admis uniquement dans le Versus ; leurs mouvements dans Core et le Soutien restent à terminer. Venom conserve son admission dans ces deux modes, Johnny dans le Soutien. Johnny Core reste en attente de la pose couchée nécessaire. La sélection garde P1 tourné vers la droite, face à P2.
+
+Les contrôles automatisés après installation ont réussi : vérification CQC, TypeScript, 723 tests dans106 fichiers, compilation fraîche et vérification PWA. Les deux manifestes locaux ont été reproduits à partir des fichiers effectivement installés. Les trois fichiers runtime de ce lot sont l’index natif, le manifeste de l’application et le vérificateur des références externes.
+
+La vérification indépendante du candidat Fox/Null a utilisé seize actions réelles et observé douze contacts, avec les corps chargés depuis les métadonnées immuables. Une seconde vérification, sur les versions installées de l’application et du jeu séparé, a contrôlé deux profils propres, huit équipements et huit faces. Les preuves du candidat et de l’installation ont des portées distinctes. Elles ne certifient pas tous les coups, tous les modes ni toutes les interactions du roster.
+
+Le parent4955 a été publié en production avec Venom et Johnny, puis ses neuf fichiers runtime publics ont été contrôlés par SHA, taille et empreinte Git sur l’adresse canonique. Ce reçu de production concerne le parent ; il ne prétend pas déployer Fox ou Null. Un nouveau déploiement de ce lot demande sa propre vérification du SHA effectif.
+
+Les archives sources conservent aussi les révisions et les essais non admis. Les corps dessinés, métadonnées et revues sources ne valent pas disponibilité dans le jeu. Le classeur daté du pilote précédent est conservé comme état historique ; sa prochaine édition intégrera séparément les faits de ce lot. Les limites techniques et les poses encore manquantes restent explicites.
