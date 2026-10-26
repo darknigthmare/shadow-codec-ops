@@ -7,6 +7,16 @@
  const clone=value=>JSON.parse(JSON.stringify(value)),key=(uid,id)=>uid+':'+id;
  function canonical(value){return JSON.stringify(value,(_key,item)=>item&&typeof item==='object'&&!Array.isArray(item)?Object.fromEntries(Object.keys(item).sort().map(name=>[name,item[name]])):item);}
  function abortError(){return Object.assign(new Error('Liaison annulée'),{name:'AbortError'});}
+ const p43LargeMetadataReviews=new Map([{"uid":"core__raiden","id":"mgr-custom-body-yellow","artAuditSHA256":"5f8938005e004a707d001cde1f7f6489698f944a3542af9efdb8de368644d230"},{"uid":"core__raiden","id":"mgr-combat-visor-closed","artAuditSHA256":"847c56e0040362f2982e0034c3c663f77f2a1201d1380313c94889cb8102cfc9"},{"uid":"core__sam","id":"mgr-breathing-mask-closed","artAuditSHA256":"24b10a486d2d52d8f7ee8d1215d93348a8932950ce578561a213239bcd3b4cdf"},{"uid":"core__sundowner","id":"mgr-six-reactive-shields","artAuditSHA256":"4d06dde1a2a2aabbcec537cf577d306f2178fea207e51abc3164122e6d7fa2ea"},{"uid":"core__sundowner","id":"mgr-phase2-closed-visor","artAuditSHA256":"eee097cd55865b8d935d53f945457c90b0a98e42042161443f980adc54ccd059"},{"uid":"core__venom","id":"mgsv-raiden","artAuditSHA256":"a4b13cd2d96d66bf84080f0eb2eb4c3afc7d2323dff8bc63dd6a36186c361a79"}].map(r=>[r.uid+':'+r.id,r.artAuditSHA256]));
+ function p43MetadataByteLimit(item){
+  const fallback=4*1024*1024,review=item?.review,expected=p43LargeMetadataReviews.get(item?.uid+':'+item?.id),metadata=item?.metadata;
+  if(!expected||review?.status!=='approved'||typeof review.reviewer!=='string'||!review.reviewer.startsWith('Root')||review.artAuditSHA256!==expected||!/^[a-f0-9]{64}$/.test(metadata?.sha256||''))return fallback;
+  const prefix='assets/combat-costumes-pass43/'+item.uid+'/'+item.id+'/';
+  if(metadata.path===prefix+'metadata-v2.json')return 8*1024*1024;
+  if(item.uid==='core__venom'&&item.id==='mgsv-raiden'&&metadata.path===prefix+'metadata-core-v1.json'&&item.coreModeVariant?.schema==='cqc.p43.core-mode-descriptor/1'&&/^[a-f0-9]{64}$/.test(item.coreModeVariant.baseVSMetadataSHA256||''))return 8*1024*1024;
+  return fallback;
+ }
+ 
  function create(config={}){
   const root=config.root||defaultRoot,wardrobe=config.wardrobe||root.CQC_PASS19_COSTUMES,choices=config.choices||root.CQC_COSTUMES_PASS17,renderer=config.renderer||root.CQC_COMBAT_SPRITES;
   if(!wardrobe||!choices||!renderer)throw Error('Vestiaire natif indisponible');
@@ -42,7 +52,7 @@
     if(!kinds.has(provenance?.kind)||provenance.sourceUID!==item.uid||typeof provenance.originalDesign!=='boolean'||typeof provenance.canonicalAppearanceAttested!=='boolean'||review?.status!=='approved'||!review.reviewer||!review.reviewedAt||!shaPattern.test(review.artAuditSHA256))throw Error('Revue physique ou provenance manquante');
     if(wardrobe.appearanceAllowed?.(item.uid,item)===false){blocked.push({uid:item.uid,id:item.id,reason:wardrobe.appearanceReason?.(item.uid,item)||'separate-incarnation'});continue;}
     if(!wardrobe.selectable(item.uid,'original'))throw Error('Incarnation native absente');
-    const metadata=item.metadata;if(!metadata||!shaPattern.test(metadata.sha256)||!Number.isInteger(metadata.bytes)||metadata.bytes<2||metadata.bytes>4*1024*1024)throw Error('Métadonnées non épinglées');
+    const metadata=item.metadata;if(!metadata||!shaPattern.test(metadata.sha256)||!Number.isInteger(metadata.bytes)||metadata.bytes<2||metadata.bytes>p43MetadataByteLimit(item))throw Error('Métadonnées non épinglées');
     if(!Array.isArray(item.assets)||!item.assets.length||item.assets.length>48)throw Error('PNG produits absents');
     const assetBase=new URL(item.assetBaseURL||defaultAssetBase.href,baseURL),pins=item.assets.map(asset=>validateAsset(asset,assetBase)),seen=new Set();for(const pin of pins){if(seen.has(pin.file))throw Error('PNG répété');seen.add(pin.file);}
     const preview=item.preview;if(!preview||!seen.has(preview.file)||!Array.isArray(preview.rect)||preview.rect.length!==4||!preview.rect.every(Number.isFinite)||preview.rect[0]<0||preview.rect[1]<0||preview.rect[2]<=0||preview.rect[3]<=0||!Array.isArray(preview.pivot)||preview.pivot.length!==2||!preview.pivot.every(number=>Number.isFinite(number)&&number>=0&&number<=1))throw Error('Aperçu non épinglé');
@@ -164,5 +174,5 @@
   if(config.index)configureIndex(config.index);
   return{version:'native-wardrobe-library/1',configureIndex,availableFor,known:(uid,id)=>descriptors.has(key(uid,id)),state,ensure,select,cancel,prepareSlots,cancelPreparation,preview,drawPreview,setActiveFighters,restoreSlots,bindSlots:value=>(hooks=value||{}),on:listener=>(listeners.add(listener),()=>listeners.delete(listener)),statistics:()=>({indexEntries:descriptors.size,loadedMetadata:records.size,ownedMetadata:[...records.values()].filter(record=>record.owned).length,metadataBytes:[...records.values()].filter(record=>record.option).reduce((sum,record)=>sum+record.descriptor.metadata.bytes,0),assetLoads,verifiedAssets:[...assets.values()].filter(asset=>asset.blob).length,protected:[...protectedKeys()],pendingSlots:pendingSlots.map(request=>request?{uid:request.uid,id:request.id}:null)}),dispose(){disposed=true;cancel(0);cancel(1);for(const owner of [...preparations.keys()])cancelPreparation(owner);for(const record of records.values())if(!record.settled)record.controller.abort();for(const job of assets.values())if(!job.settled)job.controller.abort();listeners.clear();for(const restore of undo.reverse())restore();if(root.Image===RoutedImage)root.Image=OriginalImage;}};
  }
- return{create,version:'native-wardrobe-library-factory/1'};
+ return{create,p43MetadataByteLimit,version:'native-wardrobe-library-factory/1'};
 });

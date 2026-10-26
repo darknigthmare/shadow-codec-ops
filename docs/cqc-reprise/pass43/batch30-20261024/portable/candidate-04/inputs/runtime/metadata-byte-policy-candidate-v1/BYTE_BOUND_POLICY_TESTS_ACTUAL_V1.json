@@ -1,0 +1,58 @@
+{
+  "schema": "cqc.p43.byte-bound-policy-tests/1",
+  "status": "PASS",
+  "productMutations": false,
+  "acceptedActualMetadata": [
+    {
+      "uid": "core__raiden",
+      "id": "mgr-custom-body-yellow",
+      "bytes": 5922790,
+      "sha256": "2437431490bb350e5e30faad91bbc1dc4f91450e5dcb57a104cfa0480b44f79b"
+    },
+    {
+      "uid": "core__raiden",
+      "id": "mgr-combat-visor-closed",
+      "bytes": 6176803,
+      "sha256": "aa639a5267b19460a91d4162a65e369b70e7a642ac8cbe9e78b41c126b463c04"
+    },
+    {
+      "uid": "core__sam",
+      "id": "mgr-breathing-mask-closed",
+      "bytes": 5938716,
+      "sha256": "b0c1f9897b5a5f58d494c83aa0cf879a5bb3cb7d8e940c745b95810ebe4eed31"
+    },
+    {
+      "uid": "core__sundowner",
+      "id": "mgr-six-reactive-shields",
+      "bytes": 6471521,
+      "sha256": "c80a2d15e52d15660390a98adc94f46332826ed0ec3ff3b6996561b9293cced6"
+    },
+    {
+      "uid": "core__sundowner",
+      "id": "mgr-phase2-closed-visor",
+      "bytes": 5361907,
+      "sha256": "a59774c503c3e673811bd5e80f6e78ef0630293c38c7b7c4ed17c32c7151787d"
+    },
+    {
+      "uid": "core__venom",
+      "id": "mgsv-raiden",
+      "bytes": 4224646,
+      "sha256": "96f1e32b7101c93ad9eeff28aff3df5de432faeca425965576fb1b40222f4902"
+    }
+  ],
+  "coreAliasAccepted": "core__venom:mgsv-raiden",
+  "rejected": [
+    "allowed8MiBplus1",
+    "offAllowlist4MiBplus1",
+    "wrongP42Path",
+    "wrongRootAudit",
+    "unapprovedReview",
+    "nonRootReview",
+    "malformedMetadataSHA",
+    "MGRCoreAliasNotAllowed"
+  ],
+  "legacyEntriesRetaining4MiB": 218,
+  "actualLoaderConfigureIndex": true,
+  "compilerLoaderLimitsMatch": true,
+  "qualification": "Isolated actual loader/configuration and pure compiler policy tests; no real fetch/browser match PASS. Existing SHA/bytes fetch validation code remains byte-equivalent."
+}

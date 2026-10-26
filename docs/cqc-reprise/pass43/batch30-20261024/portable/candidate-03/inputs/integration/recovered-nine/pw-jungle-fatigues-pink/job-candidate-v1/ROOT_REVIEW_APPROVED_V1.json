@@ -1,0 +1,102 @@
+{
+  "schema": "cqc.p42.root-art-review/2",
+  "status": "approved",
+  "reviewer": "Root — explicit source review, delegated visual evidence and exact current-job verification",
+  "reviewedAt": "2026-10-25T07:14:37.920780+00:00",
+  "inputSHA256": "fc7834d0acf6492a623983c463fe2ce35fee533977f8aa8339c193c13c670093",
+  "checks": {
+    "identity": true,
+    "incarnation": true,
+    "nativeArt": true,
+    "semanticPoses": true,
+    "equipment": true,
+    "ownership": true,
+    "framing": true,
+    "selectedWeaponPoints": true
+  },
+  "limits": [
+    "White UT microprint/back logo, precise M16 mesh and low-definition Battle Dress-H menu reference are not fully reproducible at sprite scale; closest available original reference is used.",
+    "Source and pose-plan approval for compilation only. Actual game, installed routes and production are separate checks.",
+    "Closest reference-based 2D drawing adaptation; pixel-identical retail assets, hidden details, model dimensions and animation timing are not certified.",
+    "Original PNGs and the unchanged historical alpha>16 ownership threshold are preserved; faint-alpha diagnostics remain separate."
+  ],
+  "observations": [
+    "PW1974 Big Boss remains organic, with original eye patch/bandana or Battle Dress helmet as applicable, no Venom horn or prosthetic arm. Pink Jungle Fatigues and official white UT N425G stay PW cosmetic slots.",
+    "The independent review identifies32 full native roles per costume, horizontal KO14 and separate standing reload12. No body join or facing error was found.",
+    "Core Mk22 is the actual secondary10 with reload9; VS M16 uses11 with reload12. These different active slots require a separately pinned Core metadata variant; do not reuse VS rifle sockets for the Core pistol.",
+    "Source ownership and selected points are checked again by Root against exact unchanged PNG bytes and alpha>16 owned clips."
+  ],
+  "heldRoles": [],
+  "requiredProjectilesFromActualCurrentProfile": [
+    {
+      "slot": "special",
+      "tag": "ballistic",
+      "name": "M16 MSF — tir adapté",
+      "count": 1,
+      "bothNativeFacingsRequired": true
+    }
+  ],
+  "independentNativePointChecks": [
+    {
+      "kind": "nativeXY",
+      "nativeXY": [
+        991.5,
+        528.5
+      ],
+      "alpha": 251,
+      "ownedPolygon": true,
+      "sourceSHA256": "dadb6dfb6e522948e0a758c3b8607385a56c3016e77f3192493deb175220c1db",
+      "side": "right",
+      "slot": "special"
+    },
+    {
+      "kind": "rearNativeXY",
+      "nativeXY": [
+        921.5,
+        528.5
+      ],
+      "alpha": 244,
+      "ownedPolygon": true,
+      "sourceSHA256": "dadb6dfb6e522948e0a758c3b8607385a56c3016e77f3192493deb175220c1db",
+      "side": "right",
+      "slot": "special"
+    },
+    {
+      "kind": "nativeXY",
+      "nativeXY": [
+        553.5,
+        531.5
+      ],
+      "alpha": 196,
+      "ownedPolygon": true,
+      "sourceSHA256": "ee47c05f7cf80a4290d141bf88951e93dd2c19425ef6068e7463c2905219ea8d",
+      "side": "left",
+      "slot": "special"
+    },
+    {
+      "kind": "rearNativeXY",
+      "nativeXY": [
+        623.5,
+        531.5
+      ],
+      "alpha": 251,
+      "ownedPolygon": true,
+      "sourceSHA256": "ee47c05f7cf80a4290d141bf88951e93dd2c19425ef6068e7463c2905219ea8d",
+      "side": "left",
+      "slot": "special"
+    }
+  ],
+  "independentBodyPointChecks": [],
+  "sourceReviewScope": {
+    "rootPhysicalInspection": "All12 current original PW pages and7 current original references were physically inspected by an independent agent. Root reads that exact evidence and verifies all geometry and native points, without claiming personal visual inspection of these12 pages.",
+    "delegatedEvidence": [
+      {
+        "path": "/workspace/cqc-p43-resume-20261025/art-jobs/TWO_VENOM_THREE_PW_CROSS_AGENT_SOURCE_REVIEW_ACTUAL_V1.json",
+        "bytes": 91630,
+        "sha256": "f812971d61424b86abc166725a07af6382d744414069bcbf737a7c270184b69e"
+      }
+    ],
+    "sourcePNGBytesModified": false,
+    "runtimeQAClaimed": false
+  }
+}
