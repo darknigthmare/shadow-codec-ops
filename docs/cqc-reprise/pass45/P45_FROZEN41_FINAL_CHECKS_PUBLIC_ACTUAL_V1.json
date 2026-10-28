@@ -1,0 +1,115 @@
+{
+  "schema": "cqc.p45.frozen41-final-checks/1",
+  "status": "PASS_SOURCE_AND_FRESH_PRODUCTION_BUILD",
+  "observedAtUTC": "2026-10-28T09:52:27.637806+00:00",
+  "runtimeCount": 41,
+  "physicalDrawings": 1346,
+  "checks": [
+    {
+      "command": [
+        "npm",
+        "run",
+        "cqc:check"
+      ],
+      "exitCode": 0,
+      "observedAtUTC": "2026-10-28T09:51:30.196905+00:00",
+      "log": {
+        "path": "cqc-check.log",
+        "bytes": 340,
+        "sha256": "257e0931254d4a0b9b6ad8a1ef95381f76408c8e7b91888e25bcc589cd240cc2"
+      }
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "exitCode": 0,
+      "observedAtUTC": "2026-10-28T09:51:38.567534+00:00",
+      "log": {
+        "path": "lint.log",
+        "bytes": 256,
+        "sha256": "83a5602f60e78e8850408b92b57646e4c75bde52e5c5b4b68be0edb19151b2ad"
+      }
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test"
+      ],
+      "exitCode": 0,
+      "observedAtUTC": "2026-10-28T09:51:50.634800+00:00",
+      "log": {
+        "path": "test.log",
+        "bytes": 7505,
+        "sha256": "386cf2524ad023487850364aa7ccab5976b7f518f93b4a2b491dfd2752acf17c"
+      }
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "build",
+        "--",
+        "--outDir",
+        "<isolated-build-output>"
+      ],
+      "exitCode": 0,
+      "observedAtUTC": "2026-10-28T09:52:09.219710+00:00",
+      "log": {
+        "path": "build.log",
+        "bytes": 13330,
+        "sha256": "97d31ad6dd95288b08a5bdae3283872e3c1934cffd0c80b4e1397ab29505dc28"
+      }
+    },
+    {
+      "command": [
+        "node",
+        "scripts/check-pwa.mjs"
+      ],
+      "exitCode": 0,
+      "observedAtUTC": "2026-10-28T09:52:09.250406+00:00",
+      "log": {
+        "path": "pwa-check.log",
+        "bytes": 66,
+        "sha256": "4d5fb9f53e0be9fdea078e00604a8c100669daf7c69bb6221fe76d8ab57d412d"
+      }
+    }
+  ],
+  "testsPassed": 723,
+  "testFilesPassed": 106,
+  "productionBuildFresh": true,
+  "buildOutputLocation": "isolated temporary output; no workspace dist replacement",
+  "builtSelectedRuntimeBytesExact": true,
+  "protected67StrictStatAndSHAExact": true,
+  "selectedSourceFiles": [
+    {
+      "path": "public/cqc/src/cqc-pass44-native-batch-index-v1.js",
+      "bytes": 270447,
+      "sha256": "1f37ee3b48fd7e3614d65c2b3a1ec1488bb48ce44152f7d2324fcc00c1302ad1"
+    },
+    {
+      "path": "public/cqc/src/cqc-pass44-vs-delayed-bursts-v1.js",
+      "bytes": 23012,
+      "sha256": "289831ce06a7834db8787eeedef7f6de180daf208d665d912a5305802069256c"
+    },
+    {
+      "path": "scripts/sync-cqc-runtime.mjs",
+      "bytes": 69454,
+      "sha256": "4af1038dcfc1aaa999e624431f2236c26af94dbce98851f680c5a3ee70a67dcc"
+    },
+    {
+      "path": "public/cqc/runtime-manifest.json",
+      "bytes": 1500732,
+      "sha256": "c41f5a17c46d7930acdc0c8d5034b56b79483b5ebf937f00fd3cd49134eb6299"
+    }
+  ],
+  "CoreAndSupportAdmissionsUnchanged": true,
+  "privateHelpersInstalled": false,
+  "newSourcePNGEdited": false,
+  "publicSourcePathScanPassed": true,
+  "gitOrVercelMutation": false,
+  "qualification": "Five product commands executed on installed41. Fresh build emitted outside the workspace because its filesystem is full; the original PWA checker ran unchanged from that build parent directory. Independent real-input browser QA was performed on the exact byte-identical prepared delta and is reported separately. This receipt does not claim the Vercel deployment of delta2."
+}
