@@ -13,6 +13,22 @@
   try{if(!data||!parts||!catalog)throw Error('Sources machine indisponibles');definitions=parts.normalizeCatalog(catalog);if(!registry)registry=parts.create(catalog,deps.rendererOptions||{});}catch(e){initializationError=String(e.message||e);}
   function reduced(){if(deps.reducedMotion)return deps.reducedMotion();return!!root.matchMedia?.('(prefers-reduced-motion: reduce)').matches||root.document?.documentElement?.classList.contains('cqc-reduced-motion')||root.document?.body?.classList.contains('reduced-motion');}
   function physical(uid,face=-1){const pair=data?.playable?.[typeof uid==='object'?uid.uid:uid];return pair?pair[face===1?1:0]:definitions?.has(uid)?uid:null;}
+  // Inspect the exact source rigs held by this bridge without changing them.
+  // New native bodies can bind this evidence without inventing an Original atlas.
+  function originalRigSnapshot(value){
+   const uid=typeof value==='object'?value?.uid:value;if(typeof uid!=='string'||!has(uid)||!definitions)return null;
+   const cameras=[];
+   for(const face of [-1,1]){
+    const id=physical(uid,face),machine=id&&definitions.get(id),geometry=id&&displayGeometry(id,1);
+    if(!machine||!geometry)return null;
+    cameras.push({face,sourceRigID:id,displayHeight:geometry.height,
+     definition:{id:machine.id,edition:machine.edition,origin:machine.origin,scale:machine.scale,
+      sources:Array.from(machine.sources.values()),parts:machine.parts,
+      order:machine.order.map(part=>part.id),paintOrder:machine.paintOrder.map(part=>part.id)},
+     state:data.states?.[id]||{}});
+   }
+   return JSON.parse(JSON.stringify({schema:'cqc.p46.original-rig-snapshot/1',uid,cameras}));
+  }
   function has(uid){return Object.hasOwn(data?.playable||{},typeof uid==='object'?uid.uid:uid);}
   function hasComposite(uid){return has(uid)||(typeof uid==='object'?uid.uid:uid)==='core__cunningham';}
   function estimated(id){return Array.from(definitions?.get(id)?.sources.values()||[]).reduce((n,s)=>n+s.width*s.height*4,0);}
@@ -250,7 +266,7 @@
   function status(){const ids=definitions?Array.from(definitions.keys()):[];return{schema:'cqc.pass18-machine-status/1',initializationError,arsenalIds:Object.keys(data?.arsenal||{}),playableUIDs:Object.keys(data?.playable||{}),pending:launch?{id:launch.id,ticket:launch.ticket}:null,activeLoads,queued:queue.filter(j=>loads.get(j.id)===j).length,cache:{maxRigs,maxDecodedBytes:maxBytes,readyRigs:ids.filter(ready).length,estimatedDecodedBytes:ids.filter(ready).reduce((n,id)=>n+estimated(id),0),protected:ids.filter(id=>(protectUntil.get(id)||0)>now())},machines:ids.map(nativeStatus)};}
   function dispose(){pumpEpoch++;if(pumpTimer!==null){cancelTimer?.(pumpTimer);pumpTimer=null;}cancelPendingLaunch();for(const job of loads.values()){job.controller.abort();const error=Error('Machine request cancelled');error.name='AbortError';job.reject(error);}loads.clear();queue.length=0;registry?.dispose();lru.clear();protectUntil.clear();errors.clear();}
   if(!deps.disableLifecycleListeners){root.addEventListener?.('pagehide',dispose);root.document?.addEventListener('change',()=>cancelPendingLaunch());}
-  return{mechanicalWeaponVector,mechanicalAimPose,mechanicalPose,drawMechanical,mgrPresentation,mgrTargetPoint,arsenalGeometry,arsenalTargetPoint,arsenalWeaponPoint,arsenalWeaponVector:arsenalWeaponPoint,mgrWeaponVector,rigSourcePoint,playableSourcePoint,inspectPlayablePose,motionContext,has,hasComposite,physical,whenReady,whenReadyComposite:whenReady,whenReadyBoss,whenReadyAccessory,drawPlayable,drawCoreMachine,drawFitted,drawPortrait,cancelPortrait,drawArsenal,drawMGR,drawAccessory,accessoryHeight,deferLaunch,cancelPendingLaunch,status,bounds,ready:(uid,options={})=>{const face=options.face===1?1:-1,value=typeof uid==='object'?uid.uid:uid;return value==='core__cunningham'?ready('cunningham_hover_platform_mpo2006')&&root.CQC_COMBAT_SPRITES?.status?.(value,{face})?.ready===true:ready(physical(value,face)||value);},dispose};
+  return{mechanicalWeaponVector,mechanicalAimPose,mechanicalPose,drawMechanical,mgrPresentation,mgrTargetPoint,arsenalGeometry,arsenalTargetPoint,arsenalWeaponPoint,arsenalWeaponVector:arsenalWeaponPoint,mgrWeaponVector,rigSourcePoint,playableSourcePoint,inspectPlayablePose,originalRigSnapshot,motionContext,has,hasComposite,physical,whenReady,whenReadyComposite:whenReady,whenReadyBoss,whenReadyAccessory,drawPlayable,drawCoreMachine,drawFitted,drawPortrait,cancelPortrait,drawArsenal,drawMGR,drawAccessory,accessoryHeight,deferLaunch,cancelPendingLaunch,status,bounds,ready:(uid,options={})=>{const face=options.face===1?1:-1,value=typeof uid==='object'?uid.uid:uid;return value==='core__cunningham'?ready('cunningham_hover_platform_mpo2006')&&root.CQC_COMBAT_SPRITES?.status?.(value,{face})?.ready===true:ready(physical(value,face)||value);},dispose};
  }
  return{createBridge};
 });

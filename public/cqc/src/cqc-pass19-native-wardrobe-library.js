@@ -3,7 +3,7 @@
  'use strict';
  const idPattern=/^[a-z0-9_-]+$/,uidPattern=/^[a-z0-9]+__[a-z0-9_]+$/,shaPattern=/^[a-f0-9]{64}$/;
  const kinds=new Set(['canonical-game-costume','original-character-costume','style-reinterpretation','historical-incarnation','body-transformation','official-remake-appearance']);
- const families=new Set(['canonical','retro','nextgen','cyborg','survive','metalgear','tuxedo']);
+ const families=new Set(['canonical','retro','nextgen','cyborg','survive','metalgear','tuxedo','zombie','furry']);
  const clone=value=>JSON.parse(JSON.stringify(value)),key=(uid,id)=>uid+':'+id;
  function canonical(value){return JSON.stringify(value,(_key,item)=>item&&typeof item==='object'&&!Array.isArray(item)?Object.fromEntries(Object.keys(item).sort().map(name=>[name,item[name]])):item);}
  function abortError(){return Object.assign(new Error('Liaison annulée'),{name:'AbortError'});}
@@ -53,6 +53,7 @@
     if(wardrobe.appearanceAllowed?.(item.uid,item)===false){blocked.push({uid:item.uid,id:item.id,reason:wardrobe.appearanceReason?.(item.uid,item)||'separate-incarnation'});continue;}
     if(!wardrobe.selectable(item.uid,'original'))throw Error('Incarnation native absente');
     const metadata=item.metadata;if(!metadata||!shaPattern.test(metadata.sha256)||!Number.isInteger(metadata.bytes)||metadata.bytes<2||metadata.bytes>p43MetadataByteLimit(item))throw Error('Métadonnées non épinglées');
+    if(item.originalRigProofSHA256!==undefined&&!shaPattern.test(item.originalRigProofSHA256))throw Error('Contrat du corps Original non épinglé');
     if(!Array.isArray(item.assets)||!item.assets.length||item.assets.length>48)throw Error('PNG produits absents');
     const assetBase=new URL(item.assetBaseURL||defaultAssetBase.href,baseURL),pins=item.assets.map(asset=>validateAsset(asset,assetBase)),seen=new Set();for(const pin of pins){if(seen.has(pin.file))throw Error('PNG répété');seen.add(pin.file);}
     const preview=item.preview;if(!preview||!seen.has(preview.file)||!Array.isArray(preview.rect)||preview.rect.length!==4||!preview.rect.every(Number.isFinite)||preview.rect[0]<0||preview.rect[1]<0||preview.rect[2]<=0||preview.rect[3]<=0||!Array.isArray(preview.pivot)||preview.pivot.length!==2||!preview.pivot.every(number=>Number.isFinite(number)&&number>=0&&number<=1))throw Error('Aperçu non épinglé');
@@ -116,6 +117,13 @@
   async function load(record,{retry=false}={}){
    const desc=record.descriptor;record.state='fetching';emit({type:'loading',uid:record.uid,id:record.id});
    try{const bytes=await pinnedFetch(desc.metadata,{signal:record.controller.signal,type:'json'}),text=new root.TextDecoder('utf-8',{fatal:true}).decode(bytes),option=checkMetadata(desc,JSON.parse(text));if(record.controller.signal.aborted)throw abortError();
+    if(desc.originalRigProofSHA256!==undefined||option.sprite.pass46OriginalRig){
+     if(!shaPattern.test(desc.originalRigProofSHA256||'')||!option.sprite.pass46OriginalRig)throw Error('Contrat natif du corps Original absent');
+     const proofBytes=new root.TextEncoder().encode(canonical(option.sprite.pass46OriginalRig));
+     const proofSHA=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',proofBytes)),value=>value.toString(16).padStart(2,'0')).join('');
+     if(proofSHA!==desc.originalRigProofSHA256)throw Error('Contrat natif du corps Original modifié');
+     if(record.controller.signal.aborted)throw abortError();
+    }
     const existing=wardrobe.optionFor(record.uid,record.id);if(existing){if(canonical(existing)!==canonical(option))throw Error('Identifiant de tenue différent du contenu épinglé');record.option=existing;record.owned=false;record.published=true;}
     else{const published=root.CQC_COMBAT_COSTUME_CATALOG;try{wardrobe.registerBatch([{uid:record.uid,option}]);record.option=wardrobe.optionFor(record.uid,record.id);record.owned=true;}finally{root.CQC_COMBAT_COSTUME_CATALOG=published;}}
     for(const pin of desc.assets){const old=routes.get(pin.virtualURL);if(old&&old.sha256!==pin.sha256)throw Error('Chemin PNG déjà utilisé pour une autre version');routes.set(pin.virtualURL,pin);}installImageRouting();

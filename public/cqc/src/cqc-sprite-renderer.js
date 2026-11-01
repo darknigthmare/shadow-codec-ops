@@ -45,7 +45,7 @@
     if (review.sourceKind !== 'original-character' && (!Array.isArray(review.sources) || !review.sources.length || !review.sources.every(s => /^https:\/\//.test(s.url || '')))) return false;
     const concept=entry.costumeConcept;
     const originalCostume=options.costume===true && concept?.schema==='cqc.costume-design/1'
-      && concept.sourceUID===uid && ['retro','nextgen','cyborg','survive','metalgear','tuxedo','alternate'].includes(concept.family)
+      && concept.sourceUID===uid && ['retro','nextgen','cyborg','survive','metalgear','tuxedo','zombie','furry','alternate'].includes(concept.family)
       && concept.originalDesign===true && concept.canonicalAppearanceAttested===false;
     if (review.sourceKind === 'original-character' && !uid.startsWith('oc__') && !originalCostume) {
       const historicalOriginal=uid==='archive__carter_survive'
@@ -87,6 +87,9 @@
   // Original costume concepts are user-authorized adaptations, separate from canonical base bodies.
   function validateCostumeEntry(uid,entry) {
     if(!validateEntry(uid,entry,{costume:true}))return false;
+    const rigWithoutAtlas=!entries.has(uid)&&root.CQC_PASS18_MACHINES?.has?.(uid)===true
+      &&['cyborg','metalgear','survive','zombie','furry'].includes(entry.costumeConcept?.family);
+    if((entry.pass46OriginalRig||rigWithoutAtlas)&&!reviewedRigNativeActions(entry))return false;
     if(entry.costumeParts && (!root.CQC_PASS19_COSTUME_PARTS?.validate || !root.CQC_PASS19_COSTUME_PARTS.validate(entry)))return false;
     if(entry.pixelArt && (!root.CQC_PASS19_PIXEL_STYLE?.validate || !root.CQC_PASS19_PIXEL_STYLE.validate(entry)))return false;
     return true;
@@ -215,7 +218,7 @@
   function hasReviewedPass40Roll(entry) {
     const concept=entry?.costumeConcept;
     if(concept?.schema!=='cqc.costume-design/1'||concept.sourceUID!==entry.uid
-      || !['canonical','retro','nextgen','tuxedo','cyborg','survive','metalgear'].includes(concept.family))return false;
+      || !['canonical','retro','nextgen','tuxedo','cyborg','survive','metalgear','zombie','furry'].includes(concept.family))return false;
     const owned=[...(costumeEntries.get(entry.uid)?.values()||[])].find(value=>
       value.costumeConcept===concept && value.uid===entry.uid && value.pass21Revision===entry.pass21Revision
       && value.pass40Revision==='native-batch40-v2' && value.pass40Revision===entry.pass40Revision
@@ -232,19 +235,51 @@
       && [value.actions,value.oppositeActions].every(actions=>actions?.roll?.frames?.length>0&&actions.roll.frames.every(frame=>frame.physicalPoseIndex===15)));
     return !!owned;
   }
+  // A complete, separately drawn native body can belong to a real rig-backed
+  // roster UID. The Original stays a rig; no synthetic Original atlas is added.
+  function reviewedRigNativeActions(entry) {
+    const proof=entry?.pass46OriginalRig,concept=entry?.costumeConcept,review=entry?.review;
+    if(!proof||proof.schema!=='cqc.p46.rig-derived-native-actions/1'||proof.uid!==entry.uid
+      ||proof.originalSpriteAbsent!==true||proof.mode!=='versus'||entries.has(entry.uid)
+      ||concept?.sourceUID!==entry.uid||!['cyborg','metalgear','survive','zombie','furry'].includes(concept.family)
+      ||entry.pass40Revision!=='native-batch40-v2'||entry.pass21Revision!=='native-'+(concept.family==='cyborg'?'cyborg-mgr':concept.family)+'-v1'
+      ||entry.mirror!==false||entry.fallbackMissingActions!==false||review?.status!=='approved'
+      ||typeof review.reviewer!=='string'||!review.reviewer.startsWith('Root')||!/^[a-f0-9]{64}$/.test(review.artAuditSHA256||''))return false;
+    let pathname=root.location?.pathname;
+    try{pathname||=new URL(root.document?.baseURI||'http://invalid/').pathname;}catch{}
+    if(!/(^|\/)modules\/unified-versus-v055\.html$/.test(pathname||''))return false;
+    const fighters=root.__CQC055Versus?.fighters||root.__CQC053Versus?.fighters;
+    const fighter=Array.isArray(fighters)&&fighters.find(value=>value.uid===entry.uid);
+    const snapshot=root.CQC_PASS18_MACHINES?.originalRigSnapshot?.(entry.uid);
+    const originalHeight=root.CQC_PASS19_WORLD_SCALE?.height?.({uid:entry.uid,costume:'original'})?.originalPixels;
+    const canonical=value=>JSON.stringify(value,(_key,item)=>item&&typeof item==='object'&&!Array.isArray(item)?Object.fromEntries(Object.keys(item).sort().map(key=>[key,item[key]])):item);
+    if(!fighter?.combat||proof.sourceCombat?.uid!==entry.uid||canonical(fighter.combat)!==canonical(proof.sourceCombat)
+      ||snapshot?.schema!=='cqc.p46.original-rig-snapshot/1'||snapshot.uid!==entry.uid
+      ||canonical(snapshot)!==canonical(proof.sourceSnapshot)
+      ||!finite(originalHeight)||originalHeight<=0||proof.sourceDisplayHeight!==originalHeight||entry.displayHeight!==originalHeight
+      ||canonical(proof.authoredActionMap)!==canonical(entry.actionMap)
+      ||canonical(Object.keys(entry.actionMap||{}).sort())!==canonical(Object.keys(fighter.combat.moves||{}).sort()))return false;
+    if(!Array.isArray(snapshot.cameras)||snapshot.cameras.length!==2||new Set(snapshot.cameras.map(value=>value.face)).size!==2)return false;
+    return snapshot.cameras.every(camera=>[1,-1].includes(camera.face)&&typeof camera.sourceRigID==='string'
+      &&Array.isArray(camera.definition?.parts)&&camera.definition.parts.length>0
+      &&Array.isArray(camera.definition?.sources)&&camera.definition.sources.length>0
+      &&camera.definition.sources.every(source=>/^[a-f0-9]{64}$/.test(source.sha256||'')&&source.bytes>0&&source.width>0&&source.height>0))
+      &&Object.values(entry.actionMap).every(action=>entry.actions?.[action]?.frames?.length>0&&entry.oppositeActions?.[action]?.frames?.length>0);
+  }
   function hasNativeActionSemantics(entry) {
     const nativeFile=value=>value?.actions?.idle?.frames?.[0]?.file?.startsWith('assets/combat-sprites-pass18/')===true;
     if(nativeFile(entry))return true;
     const concept=entry?.costumeConcept;
     if(concept?.schema!=='cqc.costume-design/1'||concept.sourceUID!==entry.uid)return false;
     const source=entries.get(concept.sourceUID);
-    if(!source||source===entry)return false;
+    if(!source)return reviewedRigNativeActions(entry);
+    if(source===entry)return false;
     if(!nativeFile(source)) {
       // A reviewed native costume may have an older original atlas directory.
       // Only an entry owned by configureCostumes can gain these physical semantics;
       // directional copies retain its same concept, maps and actual action objects.
       const reviewedPass40Family=value=>value.pass40Revision==='native-batch40-v2' && value.pass40Revision===entry.pass40Revision
-        && /^native-(survive|metalgear)-v1$/.test(value.pass21Revision||'')
+        && /^native-(survive|metalgear|zombie|furry)-v1$/.test(value.pass21Revision||'')
         && value.costumeConcept?.family===value.pass21Revision.slice(7,-3)
         && value.mirror===false && value.fallbackMissingActions===false
         && entry.mirror===false && entry.fallbackMissingActions===false && value.review===entry.review
