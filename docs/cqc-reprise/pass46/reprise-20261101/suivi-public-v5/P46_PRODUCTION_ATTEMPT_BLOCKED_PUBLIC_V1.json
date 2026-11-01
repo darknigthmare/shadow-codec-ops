@@ -1,0 +1,33 @@
+{
+  "schema": "cqc.p46.production-attempt-blocked/1",
+  "observedAtUTC": "2026-11-01T01:12:09.897040+00:00",
+  "status": "BLOCKED_VERCEL_DAILY_DEPLOYMENT_QUOTA",
+  "runtimeGitCommit": "dfc5b8f52b2aaac12448bfd7448c98f9cfdb0422",
+  "branch": "codex/cqc-p46-zombies-and-wardrobe",
+  "pullRequest": "https://github.com/darknigthmare/shadow-codec-ops/pull/8",
+  "intendedTarget": {
+    "projectId": "prj_CAulbIX6GAPNda82UbIEbe8e33MV",
+    "teamId": "team_VrIjq2UWV6VaHZr7DdQFwvfu",
+    "target": "production",
+    "withLatestCommit": false
+  },
+  "vercelResponse": {
+    "status": 402,
+    "code": "payment_required",
+    "resource": "api-deployments-free-per-day",
+    "message": "Resource is limited - try again in24hours (more than100)",
+    "retryAfterSeconds": 86400
+  },
+  "matchingDeploymentForRuntimeCommitFound": false,
+  "cliFallback": {
+    "version": "65.9.0",
+    "projectInspection": "NO_EXISTING_CREDENTIALS",
+    "isolatedConfigOnly": true,
+    "loginFlowStoppedWithoutUserInteraction": true,
+    "postDeploymentNotAttemptedWithoutIdentity": true
+  },
+  "billingPlanSecurityAndProductionAliasesChanged": false,
+  "productionStillAtCommit": "77c830974fa672fc1746a875954af3e9bf39014e",
+  "sourceAndGitWorkContinues": true,
+  "qualification": "No deployment was created for this runtime commit. The existing production remains unchanged; user action on the plan/quota or the reported daily reset is required before a release retry."
+}
