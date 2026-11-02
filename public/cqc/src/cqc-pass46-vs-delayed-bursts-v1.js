@@ -209,3 +209,5 @@
   selectFrame(...args){return api.selectFrame(...args)||visualAndLegacy.selectFrame(...args);}
  });
 })(globalThis);
+/* Restore the exact non-projectile MGR2 visual slots after the actual final burst hooks. */
+(function(root){'use strict';const visual=root.CQC_PASS47_MGR2_NATIVE_VISUAL_ACTIONS;if(typeof visual?.install!=='function')throw Error('Reviewed MGR2 visual dispatcher absent after final hooks');visual.install();})(globalThis);
