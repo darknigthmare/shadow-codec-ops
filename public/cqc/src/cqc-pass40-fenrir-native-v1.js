@@ -6,7 +6,8 @@
  if((root.CQC_PASS40_FENRIR_QA_CANDIDATE!==true&&!approvedAdmission)||!data||!parts||!bridge||!controller)throw Error('Reviewed Fenrir admission required');
  const catalog=data.catalog,model=controller.create(data.map),registry=parts.create(catalog,{baseURL:new URL('../',document.baseURI).href}),rigs=parts.normalizeCatalog(catalog),sessions=new Map(),loads=new Map(),portraits=new WeakMap();
  const ids=['pass19__fenrir_mgr:left','pass19__fenrir_mgr:right'],old={},counters={draws:0,origins:0,profileRegistrations:0,loadingDraws:0},samples=new Map();
- const own=value=>(typeof value==='object'?value?.uid:value)===UID||ids.includes(value),faceOf=value=>typeof value==='string'&&value.endsWith(':left')?-1:1,id=face=>UID+':'+(face===-1?'left':'right'),finite=(v,d=0)=>Number.isFinite(v)?v:d;
+ const privateNative=value=>value&&typeof value==='object'&&value.costume&&value.costume!=='original'&&root.CQC_NATIVE_WARDROBE?.known(value.uid,value.costume)===true;
+ const own=value=>!privateNative(value)&&((typeof value==='object'?value?.uid:value)===UID||ids.includes(value)),faceOf=value=>typeof value==='string'&&value.endsWith(':left')?-1:1,id=face=>UID+':'+(face===-1?'left':'right'),finite=(v,d=0)=>Number.isFinite(v)?v:d;
  const calibrationHeight=data.nativeCalibrationHeight;if(!Number.isFinite(calibrationHeight)||calibrationHeight<=0)throw Error('Native calibration height required');
  const height=()=>root.CQC_PASS19_WORLD_SCALE?.height({uid:UID}).pixels||1.25*220/1.82;
  const neutral=new Map();for(const face of[-1,1]){const p=model.sample({facing:face===1?'right':'left',time:0,position:[0,0]}),rig=rigs.get(id(face)),poses=parts.pose(rig,{origin:[0,0],channels:model.channels(p)});let left=Infinity,top=Infinity,right=-Infinity,bottom=-Infinity;for(const q of poses.values()){const r=q.rect,m=q.matrix;for(const [u,v]of[[0,0],[r[2],0],[r[2],r[3]],[0,r[3]]]){const x=(u-q.pivot[0])*q.imageScale,y=(v-q.pivot[1])*q.imageScale,px=m[0]*x+m[2]*y+m[4],py=m[1]*x+m[3]*y+m[5];left=Math.min(left,px);right=Math.max(right,px);top=Math.min(top,py);bottom=Math.max(bottom,py);}}neutral.set(face,{left,top,right,bottom,width:right-left,height:bottom-top});}
@@ -24,7 +25,19 @@
  function drawFitted(ctx,value,box,face=-1,pose={}){if(!own(value))return old.drawFitted(ctx,value,box,face,pose);const b=neutral.get(face),pad=finite(box.padding,7),sc=Math.min((box.width-pad*2)/b.width,(box.height-pad*2)/b.height),x=box.x+box.width/2-sc*(b.left+b.width/2),y=box.y+box.height-pad-sc*b.bottom;return draw(ctx,{uid:UID},x,y,face,sc*calibrationHeight/height(),{...pose,entityKey:'preview-'+face});}
  function drawPortrait(canvas,value,repaint,options={}){if(!own(value))return old.drawPortrait(canvas,value,repaint,options);const face=options.face===1?1:-1,ticket={};portraits.set(canvas,ticket);const paint=notify=>{if(portraits.get(canvas)!==ticket)return;const c=canvas.getContext('2d');c.clearRect(0,0,canvas.width,canvas.height);drawFitted(c,UID,{x:0,y:0,width:canvas.width,height:canvas.height,padding:7},face,{time:0});if(notify)repaint?.();};if(ready(UID))paint(false);else ensure(UID).then(()=>paint(true),()=>{});return true;}
  function sourcePoint(actor,face,pose={}){const p=sample(pose.entityKey||'player-'+actor.slot,face,pose,actor),b=neutral.get(face),sc=height()/calibrationHeight;if(!p.muzzle||!p.canFire)return null;const source=rigs.get(id(face)).sources.get(face===1?'right':'left');return{x:(p.muzzle[0]-p.root[0])*sc,y:(p.muzzle[1]-p.root[1])*sc,visible:true,sourceSHA256:source.sha256,sourceFile:source.file,sourcePart:'railgun',sourceNativeXY:data.map.facings[face===1?'right':'left'].find(p=>p.id==='railgun').nativeEnd,angle:p.gunAim,facingQualification:'independent native '+(face===1?'right':'left')+' drawing; lateral details interpreted',pinsVerified:true,canFire:p.canFire};}
- for(const name of['physical','has','hasComposite','ready','whenReady','whenReadyComposite','drawPlayable','drawFitted','drawPortrait','cancelPortrait','bounds','status','motionContext','inspectPlayablePose','playableSourcePoint'])if(typeof bridge[name]==='function')old[name]=bridge[name].bind(bridge);
+ for(const name of['physical','has','hasComposite','ready','whenReady','whenReadyComposite','drawPlayable','drawFitted','drawPortrait','cancelPortrait','bounds','status','motionContext','inspectPlayablePose','playableSourcePoint','originalRigSnapshot'])if(typeof bridge[name]==='function')old[name]=bridge[name].bind(bridge);
+ bridge.originalRigSnapshot=value=>{
+  if((typeof value==='object'?value?.uid:value)!==UID)return old.originalRigSnapshot?.(value)||null;
+  return JSON.parse(JSON.stringify({schema:'cqc.p46.original-rig-snapshot/1',uid:UID,cameras:[-1,1].map(face=>{
+   const machine=rigs.get(id(face));return{face,sourceRigID:machine.id,
+    displayHeight:root.CQC_PASS19_WORLD_SCALE?.height({uid:UID,costume:'original'}).originalPixels||288,
+    definition:{id:machine.id,edition:machine.edition,origin:machine.origin,scale:machine.scale,
+     sources:Array.from(machine.sources.values()),parts:machine.parts,
+     order:machine.order.map(part=>part.id),paintOrder:machine.paintOrder.map(part=>part.id)},
+    state:{kind:'fenrir-authoritative-quadruped',nativeCalibrationHeight:calibrationHeight,motionMap:data.map,
+     sourceAdmissionSHA256:approval.rootReviewSHA256,renderHeightPixels:height()}};
+  })}));
+ };
  bridge.physical=physical;for(const name of['has','hasComposite'])bridge[name]=(value,...args)=>own(value)?true:old[name](value,...args);
  bridge.ready=ready;for(const name of['whenReady','whenReadyComposite'])bridge[name]=(value,...args)=>Array.isArray(value)&&value.some(own)?Promise.all(value.map(v=>own(v)?ensure(v):old[name](v,...args))).then(v=>v.every(Boolean)):own(value)?ensure(value):old[name](value,...args);
  bridge.drawPlayable=draw;bridge.drawFitted=drawFitted;bridge.drawPortrait=drawPortrait;bridge.cancelPortrait=canvas=>{portraits.delete(canvas);old.cancelPortrait(canvas);};

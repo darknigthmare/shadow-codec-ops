@@ -2,7 +2,7 @@
 (function(root,factory){'use strict';const api=factory(root);if(typeof module==='object'&&module.exports)module.exports=api;root.CQC_PASS19_COSTUMES=api;api.installChoices();})(globalThis,function(root){
  'use strict';
  const kinds=new Set(['canonical-game-costume','original-character-costume','style-reinterpretation','historical-incarnation','body-transformation','official-remake-appearance']);
- const families=new Set(['retro','nextgen','cyborg','survive','metalgear','tuxedo','canonical','alternate']);
+ const families=new Set(['retro','nextgen','cyborg','survive','metalgear','tuxedo','zombie','furry','canonical','alternate']);
  const data=()=>root.CQC_PASS19_COSTUME_REQUEST_DATA;
  const renderer=()=>root.CQC_COMBAT_SPRITES;
  const requests=new Map(),generation=new Map();
@@ -103,7 +103,7 @@
  }
  function createRosterRecord({uid,name,game,basePresentation,nativeBody='sprite',cyborgIncarnation=false,alreadyMechanical=false,surviveIncarnation=false,referenceStatus='source-reviewed'}){
   if(!uid||!name||!game||!['retro','nextgen'].includes(basePresentation)||!['sprite','rig'].includes(nativeBody))throw Error('Métadonnées d’incarnation approuvée requises');
-  const specifications=[basePresentation==='retro'?'nextgen':'retro','cyborg','survive','metalgear','tuxedo','canonical'];
+  const specifications=[basePresentation==='retro'?'nextgen':'retro','cyborg','survive','metalgear','tuxedo','zombie','furry','canonical'];
   const requests=specifications.map(id=>{const reason=id==='cyborg'?(cyborgIncarnation?'already-cyborg-incarnation':alreadyMechanical?'already-mechanical-body':null):id==='survive'&&surviveIncarnation?'already-survive-incarnation':null;return{id,status:reason?'not-applicable':id==='canonical'?'pending-reference-review':'pending-art',...(reason?{reason}:{})};});
   return{uid,name,game,basePresentation,nativeBody,cyborgIncarnation,alreadyMechanical,surviveIncarnation,referenceStatus,requests,existingVariants:[]};
  }
@@ -112,8 +112,31 @@
   if(!fighter)return fighter;const chosen=override===undefined?root.CQC_COSTUMES_PASS17?.chosen?.(slot,fighter.uid):override;
   const costume=normalize(fighter.uid,chosen),result={...fighter};if(costume==='original')delete result.costume;else result.costume=costume;return result;
  }
+ // Requests describe work still needed; only reviewed native options reach choices.
+ // Apply to late roster additions as well, without replacing another incarnation.
+ function installExtendedRequests(){
+  const registry=data();if(!registry)return;
+  const additions={zombie:{label:'Mort-vivant',provenance:'original-character-costume'},furry:{label:'Totem animal',provenance:'original-character-costume'}};
+  const infectedOriginals=new Set(['pass19__wanderer_survive','pass19__tracker_survive','pass19__mortar_survive','pass19__crawler_survive','pass19__big_mouth_survive','pass19__frostbite_survive','completion44__armored_wanderer_44','completion44__wanderer_bomber_44']);
+  let changed=false;const definitions={...(registry.families||{})},entries={...registry.entries};
+  for(const[id,definition]of Object.entries(additions))if(!Object.hasOwn(definitions,id)){definitions[id]=definition;changed=true;}
+  for(const[uid,entry]of Object.entries(entries)){
+   let amended=false;const requests=[...(entry.requests||[])];
+   for(const id of Object.keys(additions)){
+    const index=requests.findIndex(request=>request.id===id);
+    const existing=index>=0?requests[index]:null;
+    if(id==='zombie'&&infectedOriginals.has(uid)&&(!existing||existing.status==='pending-art')){
+     const covered={id,status:'covered-original-style',costumeID:'original',sourceCover:'existing-native-original',newArtRequired:false,variantGenerated:false,
+      qualification:'Incarnation déjà contaminée dans son corps Original existant ; aucune nouvelle variante ni certification canonique déduite.'};
+     if(index<0)requests.push(covered);else requests[index]=covered;amended=true;
+    }else if(index<0){requests.push({id,status:'pending-art'});amended=true;}
+   }
+   if(amended){entries[uid]={...entry,requests};changed=true;}
+  }
+  if(changed)root.CQC_PASS19_COSTUME_REQUEST_DATA={...registry,families:definitions,entries};
+ }
  function installChoices(){
-  if(!data())return false;const old=catalog(),entries={...old.entries};
+  if(!data())return false;installExtendedRequests();const old=catalog(),entries={...old.entries};
   for(const uid of Object.keys(data().entries))if(!entries[uid])entries[uid]={default:'original',options:[{id:'original',label:'Tenue d’origine'}]};
   let removed=0;
   for(const[uid,record]of Object.entries(entries)){
