@@ -1,0 +1,425 @@
+{
+  "schema": "cqc.nov9.independent-final-v8-v3-audit/2",
+  "atUTC": "2026-11-09T07:36:55.595099+00:00",
+  "status": "PASS_INDEPENDENT_FINAL_V8_V3_EXACT_BYTES_QUALIFIED",
+  "auditorIndependentOfGeneratorAuthor": true,
+  "preparationAndAuthorChecksReusedAsCertification": false,
+  "auditedSnapshot": "final-v8-production29-public-v3",
+  "auditedFiles": [
+    {
+      "file": "P47_NOV9_DELIVERY_MANIFEST_PUBLIC_V2.json",
+      "bytes": 3522,
+      "sha256": "f86de24d6d5d4f3cf8eecd0f950e3be4b12ed612fd6e285bd8c7adae5e50e4b2"
+    },
+    {
+      "file": "P47_NOV9_INPUT_PROVENANCE_PUBLIC_V2.json",
+      "bytes": 27002,
+      "sha256": "10a682f85463000c22b7fd4e5b7b80e9eddfcc67d976549de99f5bafd4ce2f67"
+    },
+    {
+      "file": "P47_NOV9_WORKBOOK_PRESERVATION_PUBLIC_V2.json",
+      "bytes": 18851,
+      "sha256": "f248eda155212584525fca388d090b828138366c85737f19acf55588881388dc"
+    },
+    {
+      "file": "P47_LOT20_MATRICE_ETAPES_NOV9_PUBLIC_V8.csv",
+      "bytes": 122500,
+      "sha256": "1891d649ab12f25313b90362d64eabf0db11e13bc75f6e3bd6d7ae034b642b19"
+    },
+    {
+      "file": "P47_LOT20_ETAPES_NOV9_PUBLIC_V8.csv",
+      "bytes": 44813,
+      "sha256": "b705d43da56641a4686211354d6910a7192207180353ea6c1fae723f9125d1ba"
+    },
+    {
+      "file": "P47_HUIT_FAMILLES_ETAPES_NOV9_PUBLIC_V8.csv",
+      "bytes": 979815,
+      "sha256": "14d31929be000a5f3a4a45f6b03d7120ced91d9a2c3d53f0e86cdd9f112c5d0f"
+    },
+    {
+      "file": "P47_CINQ_FAMILLES_ETAPES_NOV9_PUBLIC_V8.csv",
+      "bytes": 1011221,
+      "sha256": "6b219b4d53ba9be576c1ba19f716210f600f8516bf5042a4cf795c17ce75aa44"
+    },
+    {
+      "file": "P47_CINQ_FAMILLES_ETAT_REEL_NOV9_PUBLIC_V8.json",
+      "bytes": 6940564,
+      "sha256": "c624c595ee2d407a1fb3ff7cdf850d8b29daea8c9355d30c98827d30f82315c1"
+    },
+    {
+      "file": "P47_NOV9_STAGE_FACTS_PUBLIC_V2.json",
+      "bytes": 338659,
+      "sha256": "850969fd2335dc34dee38cdc871685048333d94028432758f5b8db5a729ee518"
+    },
+    {
+      "file": "CQC_SUIVI_P47_NOV9_ETAPES_PUBLIC_V8.xlsx",
+      "bytes": 1787316,
+      "sha256": "8fcbdd810cbdadbeabc96f618035b7f3f6e0a62a9029e74f44f363790060e9b3"
+    }
+  ],
+  "passed": 50,
+  "failed": 0,
+  "checks": [
+    {
+      "check": "Exact final V3 workbook pin",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "Exact final V3 manifest pin",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "Exactly10 final public files and nine non-circular manifest entries",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "All final manifest output byte counts and hashes exact",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "V3 label is separate audit, not an author auto-PASS",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "All actual final input pins verified afresh",
+      "PASS": true,
+      "evidence": {
+        "count": 142
+      }
+    },
+    {
+      "check": "All76 finite source input relocations preserve exact bytes",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "Public provenance matches exact executed input pin set",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "Builder/foundation/ZIP helper provenance hashes match actual versioned code",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "All50 V6 sheets and relationships exact in final53-sheet workbook",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "Exactly109 of112 original compressed local records preserved",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "Only three declared structural payloads changed",
+      "PASS": true,
+      "evidence": [
+        "[Content_Types].xml",
+        "xl/_rels/workbook.xml.rels",
+        "xl/workbook.xml"
+      ]
+    },
+    {
+      "check": "Every historical style/table/drawing/formula/validation payload exact",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "Only three new worksheet parts added",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "New Lot20 sheet equals final CSV and exact facts entries",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "New120-row stage matrix sheet equals CSV",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "Workbook summary numbers equal final JSON/manifest",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "Historical1905 JSON records and all381 identities unchanged",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "All original five-family field values remain exact",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "Entire1905-row five-family CSV matches final JSON",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "All3048 eight-family historical fields unchanged",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "Nineteen exact Source-only art approvals and646 independent-facing regions",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "Raw98 and three old P46 pages over two costumes stay separate",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "UI19 is exact union of seven historical and twelve fresh Root approvals",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "Actual Root installation19 proof is independent and VS-only",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "Root723 tests and successful build/PWA/integrity steps retained with qualifications",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "All19 installed APP/SAVE metadata bytes independently equal approved Source",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "Exact complete runtime Git commit/tree and nineteen metadata blobs",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "Actual production READY29 and exact published runtime identity",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "Provider READY production/alias/commit/deployment/one creation match",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "All57 canonical resources have strict HTTP200/TLS/no redirect",
+      "PASS": true,
+      "evidence": {
+        "runtime": 3,
+        "metadata": 19,
+        "PNG": 31,
+        "entry": 3,
+        "host-entry": 1
+      }
+    },
+    {
+      "check": "All19 canonical metadata whole-body SHA/bytes match approved Source",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "Exact93-write installation plan independently pinned for target-specific manifest contract",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "APP and SAVE generated manifests each equal their own exact planned source/after pin; eleven APP-only integration files pre-exist",
+      "PASS": true,
+      "evidence": {
+        "plan": {
+          "file": "DIRECT17_TO29_FINITE_WRITE_PLAN_PRIVATE_V1.json",
+          "bytes": 149751,
+          "sha256": "c6d3ccbc4bfa5b53162c690df80a2821e1f9d4928e7542625aea51d1e3319f36"
+        },
+        "targetManifestPins": {
+          "A": {
+            "file": "runtime-manifest.json",
+            "bytes": 1579990,
+            "sha256": "a7c6599a5ed32bb993c43d6335c0f20603f8f9c5360e22c84f5503fcce38be88",
+            "plannedSourceAndAfterExact": true
+          },
+          "S": {
+            "file": "runtime-manifest.json",
+            "bytes": 1574921,
+            "sha256": "c702f6fcfc80644faaaafb401e44a30f9ab552b9939b8d603dd451354acd8815",
+            "plannedSourceAndAfterExact": true
+          }
+        },
+        "APPFiles": 2818,
+        "SAVEFiles": 2807,
+        "APPReferences": 4690,
+        "SAVEReferences": 4675,
+        "preExistingAPPOnlyFiles": 11
+      }
+    },
+    {
+      "check": "All56 production code/metadata/PNG/CQC entry hashes join exact APP and Git source bytes",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "All55 shared resources match SAVE; sole generated manifest difference matches its separate exact SAVE target pin",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "Source/UI/install/Git/production objects remain distinct exact receipts",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "All final counters independently recomputed including1773open/1771creatable",
+      "PASS": true,
+      "evidence": {
+        "identities": 381,
+        "fiveFamilyRows": 1905,
+        "eightFamilyRows": 3048,
+        "lot20": 20,
+        "sourceApprovedP47": 19,
+        "compiledSourceP47": 19,
+        "mappedP47SourceBodies": 646,
+        "localUIQualifiedHistoricalP47": 7,
+        "localUIQualifiedFreshP47": 12,
+        "localUIQualifiedTotalP47": 19,
+        "installedP47": 19,
+        "gitRuntimeP47": 19,
+        "newP47ProductionOptions": 19,
+        "totalRuntimeCohort": 29,
+        "verifiedRuntimeGitCohort": 29,
+        "canonicalProductionCohort": 29,
+        "nativeSourceAvailableTargeted": 65,
+        "nativeInstalledTargeted": 65,
+        "nativeProductionTargeted": 65,
+        "coveredProductionTargeted": 132,
+        "openAtPublicationCriterion": 1773,
+        "currentCreatableAtPublicationCriterion": 1771,
+        "currentFiveFamilyHolds": 2,
+        "newDeploymentAttemptsThisResume": 1
+      }
+    },
+    {
+      "check": "All19 entries carry matching Source/UI/install/Git/production memberships",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "All12 fresh UI qualifications and photographic limits preserved exactly",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "Fresh UI limits are present exactly in CSV and Excel stage matrix",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "Publication criterion closes only nineteen actual published pairs",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "Five-family2 and eight-family6 holds preserve EVA/Boss history and Fear exclusion",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "Explicit Fear D12 refusal remains zero PNG/zero retry/rephrase/delegation",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "VS-only scope, no Full64/full-roster/new Bible or production browser replay claim",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "Production and build limitations retained verbatim",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "All final public XML/CSV/JSON free of private path/token markers",
+      "PASS": true,
+      "evidence": []
+    },
+    {
+      "check": "Historical V6 remains pinned and no prior workbook is rewritten",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "Earlier V7 delivery workbook remains exact",
+      "PASS": true,
+      "evidence": null
+    },
+    {
+      "check": "All ten final V3 files unchanged throughout independent audit",
+      "PASS": true,
+      "evidence": null
+    }
+  ],
+  "actualCounts": {
+    "identities": 381,
+    "fiveFamilyRows": 1905,
+    "eightFamilyRows": 3048,
+    "lot20": 20,
+    "sourceApprovedP47": 19,
+    "compiledSourceP47": 19,
+    "mappedP47SourceBodies": 646,
+    "localUIQualifiedHistoricalP47": 7,
+    "localUIQualifiedFreshP47": 12,
+    "localUIQualifiedTotalP47": 19,
+    "installedP47": 19,
+    "gitRuntimeP47": 19,
+    "newP47ProductionOptions": 19,
+    "totalRuntimeCohort": 29,
+    "verifiedRuntimeGitCohort": 29,
+    "canonicalProductionCohort": 29,
+    "nativeSourceAvailableTargeted": 65,
+    "nativeInstalledTargeted": 65,
+    "nativeProductionTargeted": 65,
+    "coveredProductionTargeted": 132,
+    "openAtPublicationCriterion": 1773,
+    "currentCreatableAtPublicationCriterion": 1771,
+    "currentFiveFamilyHolds": 2,
+    "newDeploymentAttemptsThisResume": 1
+  },
+  "runtimeIdentity": {
+    "commit": "d7ed6f62aa356ecdfcd8e2632784c86c522b251a",
+    "tree": "14517a73f460a13bf8e30a8d7fdf4cda25dc113b",
+    "deploymentID": "dpl_FVrtR8PrMBPm7gmsJCT3bXeu4W64",
+    "canonicalURL": "https://shadow-codec-ops.vercel.app",
+    "providerReady": "READY",
+    "deployCreations": 1,
+    "verifiedStrictHTTPSResources": 57
+  },
+  "qualification": "Independent audit of the exact final workbook/CSV/JSON/provenance/manifest and exact actual Root receipts. This is a separate audit envelope; it does not edit or auto-certify the workbook itself.",
+  "limits": [
+    "Source-art review scope and exact UI/photo qualifications remain unchanged. No Full64, all-frames, native-fullscreen or Core/Support admission is inferred.",
+    "Production is provider READY plus strict canonical HTTP/TLS whole-body hashes, not a production browser replay of every combat.",
+    "The build receipt retains its earlier bundled-config-loader limitation and successful native-config resume; this audit did not rerun build or deployment.",
+    "APP and SAVE runtime manifests are target-specific and separately pinned. V1 diagnostic failure from assuming identical manifests is retained; V2 checks the exact93-write contract and all55 shared resource bytes without that incorrect assumption."
+  ],
+  "mutations": {
+    "finalV3Files": false,
+    "SourceASGit": false,
+    "browser": false,
+    "network": false,
+    "deployment": false
+  }
+}
