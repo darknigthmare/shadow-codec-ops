@@ -1,0 +1,62 @@
+{
+  "schema": "cqc.p48.vercel-publication-status/1",
+  "runtimeCommit": "37ac8168a63b807f43d68e62ef6a2800157d0fa1",
+  "teamId": "team_VrIjq2UWV6VaHZr7DdQFwvfu",
+  "projectId": "prj_CAulbIX6GAPNda82UbIEbe8e33MV",
+  "requestedTarget": "production",
+  "createDeployment": {
+    "status": 402,
+    "code": "payment_required",
+    "resource": "api-deployments-free-per-day",
+    "message": "Resource is limited - try again in 24 hours (more than 100)",
+    "retryAfterSeconds": 86400,
+    "requestId": "iad1:fra1:iad1:sfo1::qns7z-1794224676074-f11e12bbf47e"
+  },
+  "cliFallback": {
+    "available": false,
+    "checked": "command -v vercel and existing A/R dependency bin locations",
+    "attempted": false,
+    "reason": "No mapped installed Vercel CLI was found. The provider quota is unchanged."
+  },
+  "automaticGitPreview": {
+    "id": "dpl_HsnJn4jTMeUppcadMYcYgttn6G8A",
+    "state": "READY",
+    "target": null,
+    "commit": "37ac8168a63b807f43d68e62ef6a2800157d0fa1",
+    "ready": true,
+    "fullBuildVerified": true,
+    "PWAEntries": 1285
+  },
+  "canonicalProduction": {
+    "url": "https://shadow-codec-ops.vercel.app",
+    "id": "dpl_FVrtR8PrMBPm7gmsJCT3bXeu4W64",
+    "state": "READY",
+    "commit": "d7ed6f62aa356ecdfcd8e2632784c86c522b251a",
+    "containsP48Five": false
+  },
+  "newProductionVariants": 0,
+  "newHTTPSVariantsVerified": 0,
+  "billingOrPlanChanged": false,
+  "quotaWorkaroundAttempted": false,
+  "nextStep": "After quota reset, deploy exact runtime commit as production on same team/project, await READY and verify canonical PNG/gzip/manifest/runtime hashes. No temporary preview-sharing link is needed for this path.",
+  "snapshotAt": "2026-11-09T11:58:38.018954+00:00",
+  "existingBuildPromotion": {
+    "status": 422,
+    "code": "unprocessable_entity",
+    "operation": "POST /v10/projects/{projectId}/promote/{deploymentId}",
+    "requestId": "iad1:fra1:iad1:sfo1::x5ppk-1794225419933-b5df782c6bf8",
+    "productionChanged": false
+  },
+  "protectedPreviewAccess": {
+    "temporaryPublicShareAutoReviewRejected": true,
+    "reason": "No explicit authorization to make this protected preview accessible to anyone holding a temporary link.",
+    "linkCreated": false,
+    "actionAbandoned": true,
+    "existingCLIAuthAvailable": false,
+    "existingDevelopmentOIDCTokenAvailable": false,
+    "HTTPSVerified": false
+  },
+  "previewFullBuildReady": true,
+  "fullBuildVerified": true,
+  "productionBuildVerified": false
+}

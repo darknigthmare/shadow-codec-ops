@@ -65,6 +65,7 @@
    for(const record of [...records.values()])if(!next.has(record.key)){if(record.owned)remove(record);else records.delete(record.key);}descriptors.clear();for(const[entryKey,desc]of next)descriptors.set(entryKey,desc);index=clone(value);refreshRenderer();emit({type:'index-ready'});return{entries:descriptors.size,blocked};
   }
   async function pinnedFetch(pin,{signal,type}={}){
+   if(type==='json'&&root.CQC_PASS48_GZIP_METADATA_READER?.handles(pin))return root.CQC_PASS48_GZIP_METADATA_READER.read(pin,{signal,fetcher,crypto});
    if(!fetcher||!crypto?.subtle)throw Error('Vérification cryptographique indisponible');if(signal?.aborted)throw abortError();
    const response=await fetcher(pin.url,{signal,mode:'cors',credentials:'omit',redirect:'error',cache:'force-cache'});if(!response.ok||response.redirected)throw Error('Source native indisponible');
    if(response.url&&allowedURL(response.url,type)!==pin.url)throw Error('Adresse source modifiée');
