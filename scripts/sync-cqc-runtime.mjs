@@ -53,7 +53,7 @@ export function isRuntimePath(relativePath) {
   return normalized !== '..' && !normalized.startsWith('../') && !path.posix.isAbsolute(normalized)
     && !excludedRoots.has(normalized.split('/')[0])
     && !normalized.split('/').some((part) => /^(?:\.git|archives?|historical|provenance)$/i.test(part))
-    && runtimeExtensions.has(path.posix.extname(normalized).toLowerCase());
+    && (runtimeExtensions.has(path.posix.extname(normalized).toLowerCase()) || (p48LocalRuntimePins.has(normalized) && normalized.endsWith('.json.gz')));
 }
 
 async function fileInventory(sourceRoot, prefix = '') {
@@ -272,6 +272,13 @@ function runtimeBytes(relativePath, original) {
   return original;
 }
 
+
+// Independent P48 local Source owners; old external499/limit512 untouched.
+const p48LocalRuntimePins=new Map([["src/cqc-pass48-reviewed-vs-runtime-v1.js",{"bytes":329254,"sha256":"2691acada5a6e3f9c6c76dc5f3efad7745d12bb837a9d811f6c81a2947163db8"}],["assets/combat-costumes-pass48/core__end/cyborg/core__end-cyborg-right-raw-v1-6758fac3142a.png",{"bytes":2525730,"sha256":"6758fac3142adf3f47a666e5f89311568c13e1007f91657d7ba91c093b44b356"}],["assets/combat-costumes-pass48/core__end/cyborg/core__end-cyborg-left-raw-v2-6538992628e8.png",{"bytes":2614993,"sha256":"6538992628e83567db44b3365c405e76e152688a9e6204d185d12a3308b7d6ae"}],["assets/combat-costumes-pass48/core__end/cyborg/metadata-v1.json.gz",{"bytes":253012,"sha256":"672390ac30b9ffa9d6456199869abfad05f7fbcd7381d9ee39892dce250e3ec2"}],["assets/combat-costumes-pass48/core__volgin/cyborg/core__volgin-cyborg-right-raw-v1-a88917d7925e.png",{"bytes":2718632,"sha256":"a88917d7925e7bed5d77078d042375808f7863978cec23b7410d895cc97bc46e"}],["assets/combat-costumes-pass48/core__volgin/cyborg/core__volgin-cyborg-left-raw-v2-44bfdf1c7346.png",{"bytes":2597169,"sha256":"44bfdf1c7346187e3025427bd3fb3c3f30c07bd0675614ea87d7203874f2fceb"}],["assets/combat-costumes-pass48/core__volgin/cyborg/metadata-v1.json.gz",{"bytes":218677,"sha256":"dc915e5b05e7a6a1b6d81ddfde7bebba45b78e3534dc2512d9a11da6ca40c631"}],["assets/combat-costumes-pass48/core__volgin/zombie/core__volgin-zombie-right-raw-v1-189e9abb4107.png",{"bytes":2435552,"sha256":"189e9abb4107346e4bd85856c5ec3ba6732ce7e01e9b278d7422bd1c01f66788"}],["assets/combat-costumes-pass48/core__volgin/zombie/core__volgin-zombie-left-raw-v2-796cdf99b5ff.png",{"bytes":2660205,"sha256":"796cdf99b5ff91656a5316c3407d34c056a3dfeab33e7a8cea5e9fdf697b5a00"}],["assets/combat-costumes-pass48/core__volgin/zombie/metadata-v1.json.gz",{"bytes":217700,"sha256":"d01c6ab4103494894142c4ccb27124b3888ee6e693bf128c79a513df44f2f659"}],["assets/combat-costumes-pass48/core__end/zombie/core__end-zombie-right-raw-v2-772f16c9d6ba.png",{"bytes":2524489,"sha256":"772f16c9d6bab4d7fc0b8c8ceed25f3aa7069cc9d54f750904e505a295a43d16"}],["assets/combat-costumes-pass48/core__end/zombie/core__end-zombie-left-raw-v2-50c85ae2d729.png",{"bytes":2563072,"sha256":"50c85ae2d7292b679aab19fb1f2d52ffb8eabf04d6fb67bfd414c185877c1bb0"}],["assets/combat-costumes-pass48/core__end/zombie/metadata-v1.json.gz",{"bytes":237797,"sha256":"4c1bc64780105bda4af2bf7000e18acb4f434af8d4b793b56be418d2382ed665"}],["assets/combat-costumes-pass48/core__snake/cyborg/core__snake-cyborg-right-raw-v1-fa986e45bf7b.png",{"bytes":2451054,"sha256":"fa986e45bf7beee9350f3264f188b5ed4a7a135d0db9e7e4f7c8adbf575765ca"}],["assets/combat-costumes-pass48/core__snake/cyborg/core__snake-cyborg-left-raw-v2-0234800ca4d8.png",{"bytes":2479751,"sha256":"0234800ca4d8dcd07460db1df2e76fce7f7f1c25f59be6997b98986e895913a6"}],["assets/combat-costumes-pass48/core__snake/cyborg/metadata-v1.json.gz",{"bytes":231932,"sha256":"4dba17c525b484a98f713d90900677721c4f0899db17da912406dafc6b3d3e09"}]]);
+const p48SourceOwner="src/cqc-pass48-reviewed-vs-runtime-v1.js";
+export function validateP48LocalResource(name,bytes){const pin=p48LocalRuntimePins.get(name);if(!pin){if(name.startsWith('assets/combat-costumes-pass48/'))throw Error('Unreviewed P48 local resource');return false;}if(bytes.length!==pin.bytes||sha256(bytes)!==pin.sha256)throw Error('Exact P48 local owner/resource changed');return true;}
+export function p48Dependencies(owner,available){if(owner!==p48SourceOwner)return[];const names=[...p48LocalRuntimePins.keys()].filter(name=>name!==p48SourceOwner);for(const name of names)if(!available.has(name))throw Error('Missing exact P48 Source resource: '+name);return names;}
+
 export async function buildRuntimeManifest(sourceRoot, { externalReferences } = {}) {
   const availableFiles = new Set(await fileInventory(sourceRoot));
   if (!availableFiles.has('index.html')) throw new Error('CQC source must contain index.html.');
@@ -289,10 +296,12 @@ export async function buildRuntimeManifest(sourceRoot, { externalReferences } = 
     if (files.has(relativePath)) continue;
     const sourceBytes = await readFile(path.join(sourceRoot, relativePath));
     assertP47N9LocalBuffer(relativePath,sourceBytes);
+    validateP48LocalResource(relativePath,sourceBytes);
     const bytes = runtimeBytes(relativePath, sourceBytes);
     files.set(relativePath, { bytes, sourceSha256: sha256(sourceBytes), sha256: sha256(bytes) });
     if (!textExtensions.has(path.posix.extname(relativePath))) continue;
     const discovered = discoverReferences(bytes.toString('utf8'), relativePath, availableFiles);
+    discovered.references=[...new Set([...discovered.references,...p48Dependencies(relativePath,availableFiles)])].sort();
     for (const dependency of discovered.references) {
       references.push({ from: relativePath, to: dependency });
       if (!files.has(dependency)) queue.push(dependency);
@@ -381,9 +390,11 @@ export async function verifyRuntime(destinationRoot) {
   for (const entry of manifest.files) {
     const file = await readFile(path.join(destinationRoot, entry.path));
     assertP47N9LocalBuffer(entry.path,file);
+    validateP48LocalResource(entry.path,file);
     if (file.length !== entry.bytes || sha256(file) !== entry.sha256) throw new Error(`CQC runtime changed: ${entry.path}`);
     if (!textExtensions.has(path.posix.extname(entry.path))) continue;
     const discovered = discoverReferences(file.toString('utf8'), entry.path, declaredFiles);
+    discovered.references=[...new Set([...discovered.references,...p48Dependencies(entry.path,declaredFiles)])].sort();
     for (const to of discovered.references) {
       const key = entry.path + '\0' + to;
       if (!declaredReferences.has(key)) throw new Error('Actual CQC source reference omitted from manifest: ' + entry.path + ':' + to);
