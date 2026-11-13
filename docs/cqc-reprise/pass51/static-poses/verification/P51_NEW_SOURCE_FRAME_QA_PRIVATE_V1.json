@@ -1,0 +1,599 @@
+{
+  "schema": "cqc.p51.additional-frame-review/1",
+  "atUTC": "2026-11-13T16:42:18.225760+00:00",
+  "reviewer": "/root/static_catalog",
+  "scope": "Only six newly active P51 source SHAs versus frozen P50 baseline. Geometry and static display review; no new art, source pixel modification, importer/index/build edit or game runtime admission.",
+  "corrections": [
+    {
+      "uid": "archive__naked_delta",
+      "costumeId": "official--prisoner-bandaged",
+      "sourceSHA256": "3472f6ae8d1fa902bb7460c103312d33c97a7b9e669f738c5aaaa760639dad66",
+      "rect": [
+        222,
+        32,
+        576,
+        1476
+      ],
+      "pivot": [
+        0.47265625,
+        1.0
+      ],
+      "footprint": {
+        "x": 494.25,
+        "y": 1508
+      },
+      "reason": "Whole silhouette/frame/alpha pass. Recenter the ground anchor between physically viewed full projected bootsole envelopes (centers323.5and665.0), retaining the original lowest-foot floor1508 and the higher far-foot projection. No source pixels, standing size, clothing or geometry are altered.",
+      "reviewer": "/root/static_catalog",
+      "supportMethod": "Opaque full projected sole bands50sourcepixels high; avoid forward-toe-only slice bias.",
+      "supportContactGroups": [
+        {
+          "contactRect": [
+            271,
+            1458,
+            105,
+            49
+          ],
+          "centerX": 323.5,
+          "bottomY": 1507
+        },
+        {
+          "contactRect": [
+            568,
+            1448,
+            194,
+            50
+          ],
+          "centerX": 665.0,
+          "bottomY": 1498
+        }
+      ],
+      "sourcePath": "/tmp/cqc-static-20261113/artists/c/p51/delta_prisoner/archive__naked_delta-prisoner-bandaged-raw-v1.png",
+      "proposalPath": "/tmp/cqc-static-20261113/artists/c/p51/delta_prisoner/ARTIFACT_PROPOSAL_PRIVATE_V1.json",
+      "requiresSourceSHAMatch": true,
+      "sourcePixelsModified": false
+    },
+    {
+      "uid": "archive__naked_delta",
+      "costumeId": "official--one-eyed-crocodile-cap",
+      "sourceSHA256": "2b32b467628749905ade00626f9777eef31f8ed4ab82607350871613272bf508",
+      "rect": [
+        129,
+        48,
+        748,
+        1463
+      ],
+      "pivot": [
+        0.461898396,
+        1.0
+      ],
+      "footprint": {
+        "x": 474.5,
+        "y": 1511
+      },
+      "reason": "Center the display ground anchor between the physically viewed full projected bootsole envelopes, preserving the original lowest-foot floor and higher far-foot projection. Do not align the body from the sword, bandana, cap or other accessory. No source pixels or game/rig size are modified. Keep estimated human-body height separate from the tall croc accessory using bodyBounds; never trim the full cap frame.",
+      "reviewer": "/root/static_catalog",
+      "supportMethod": "Opaque full projected sole bands50sourcepixels high; avoid forward-toe-only slice bias.",
+      "supportContactGroups": [
+        {
+          "contactRect": [
+            130,
+            1461,
+            129,
+            49
+          ],
+          "centerX": 194.5,
+          "bottomY": 1510
+        },
+        {
+          "contactRect": [
+            633,
+            1437,
+            243,
+            50
+          ],
+          "centerX": 754.5,
+          "bottomY": 1487
+        }
+      ],
+      "sourcePath": "/tmp/cqc-static-20261113/artists/c/p51/delta_oneeye_cap/archive__naked_delta-one-eyed-crocodile-cap-raw-v1.png",
+      "proposalPath": "/tmp/cqc-static-20261113/artists/c/p51/delta_oneeye_cap/ARTIFACT_PROPOSAL_PRIVATE_V1.json",
+      "requiresSourceSHAMatch": true,
+      "sourcePixelsModified": false,
+      "bodyBounds": [
+        130,
+        160,
+        747,
+        1351
+      ],
+      "bodyBoundsQualification": "Preview human-body datum in absoluteSourcepixels, excluding the croc cap crown/snout from bodyheight. y160 is an explicit estimate of scalp top under the cap from visible face/bandana proportions; cap measured top48. It is not an exact visible-flesh bbox or certified world/standing height. Full Sourceframe retained; whole cap must remain visible. Renderer uses bodyBounds[3] to match humanbodyheight across Delta outfits."
+    },
+    {
+      "uid": "archive__snake_tts",
+      "costumeId": "official--smoking",
+      "sourceSHA256": "24561c18a16aaf293d9d595af960719c40ac75681b4654698625acc7f56f5bb7",
+      "rect": [
+        294,
+        25,
+        540,
+        1316
+      ],
+      "pivot": [
+        0.478240741,
+        0.990121581
+      ],
+      "footprint": {
+        "x": 552.25,
+        "y": 1328
+      },
+      "reason": "Center the display ground anchor between the physically viewed full projected bootsole envelopes, preserving the original lowest-foot floor and higher far-foot projection. Do not align the body from the sword, bandana, cap or other accessory. No source pixels or game/rig size are modified.",
+      "reviewer": "/root/static_catalog",
+      "supportMethod": "Opaque full projected sole bands50sourcepixels high; avoid forward-toe-only slice bias.",
+      "supportContactGroups": [
+        {
+          "contactRect": [
+            332,
+            1278,
+            101,
+            50
+          ],
+          "centerX": 382.5,
+          "bottomY": 1328
+        },
+        {
+          "contactRect": [
+            628,
+            1264,
+            188,
+            49
+          ],
+          "centerX": 722.0,
+          "bottomY": 1313
+        }
+      ],
+      "sourcePath": "/tmp/cqc-static-20261113/artists/e/p51/archive__snake_tts-smoking-raw-v1.png",
+      "proposalPath": "/tmp/cqc-static-20261113/artists/e/p51/archive__snake_tts-smoking-ARTIFACT_PROPOSAL_PRIVATE_V1.json",
+      "requiresSourceSHAMatch": true,
+      "sourcePixelsModified": false
+    },
+    {
+      "uid": "core__raiden_mgs2",
+      "costumeId": "official--ninja-substance",
+      "sourceSHA256": "3d8e512422df2f067c1bb131eef8cc81d75ba3a2ad1fb2958dd42bb1930c5bb6",
+      "rect": [
+        260,
+        45,
+        776,
+        1208
+      ],
+      "pivot": [
+        0.351804124,
+        0.989238411
+      ],
+      "footprint": {
+        "x": 533.0,
+        "y": 1240
+      },
+      "reason": "Center the display ground anchor between the physically viewed full projected bootsole envelopes, preserving the original lowest-foot floor and higher far-foot projection. Do not align the body from the sword, bandana, cap or other accessory. No source pixels or game/rig size are modified.",
+      "reviewer": "/root/static_catalog",
+      "supportMethod": "Opaque full projected sole bands50sourcepixels high; avoid forward-toe-only slice bias.",
+      "supportContactGroups": [
+        {
+          "contactRect": [
+            278,
+            1191,
+            101,
+            49
+          ],
+          "centerX": 328.5,
+          "bottomY": 1240
+        },
+        {
+          "contactRect": [
+            642,
+            1179,
+            191,
+            49
+          ],
+          "centerX": 737.5,
+          "bottomY": 1228
+        }
+      ],
+      "sourcePath": "/tmp/cqc-static-20261113/artists/e/p51/core__raiden_mgs2-ninja-substance-raw-v1.png",
+      "proposalPath": "/tmp/cqc-static-20261113/artists/e/p51/core__raiden_mgs2-ninja-substance-ARTIFACT_PROPOSAL_PRIVATE_V1.json",
+      "requiresSourceSHAMatch": true,
+      "sourcePixelsModified": false
+    },
+    {
+      "uid": "npc53__mosquito_tpp",
+      "costumeId": "original",
+      "sourceSHA256": "646656e9a082ee24054aa1860aca93d1b9550eeee25574b399f54f433678cb00",
+      "rect": [
+        242,
+        17,
+        531,
+        1507
+      ],
+      "pivot": [
+        0.468926554,
+        0.99933643
+      ],
+      "footprint": {
+        "x": 491.0,
+        "y": 1523
+      },
+      "reason": "Center the display ground anchor between the physically viewed full projected bootsole envelopes, preserving the original lowest-foot floor and higher far-foot projection. Do not align the body from the sword, bandana, cap or other accessory. No source pixels or game/rig size are modified.",
+      "reviewer": "/root/static_catalog",
+      "supportMethod": "Opaque full projected sole bands50sourcepixels high; avoid forward-toe-only slice bias.",
+      "supportContactGroups": [
+        {
+          "contactRect": [
+            274,
+            1474,
+            144,
+            49
+          ],
+          "centerX": 346.0,
+          "bottomY": 1523
+        },
+        {
+          "contactRect": [
+            522,
+            1463,
+            228,
+            49
+          ],
+          "centerX": 636.0,
+          "bottomY": 1512
+        }
+      ],
+      "sourcePath": "/tmp/cqc-static-20261113/artists/f/p51/npc53-mosquito-tpp-official-msf-mutineer-retail-vest-raw-v1.png",
+      "proposalPath": "/tmp/cqc-static-20261113/artists/f/p51/NPC53_MOSQUITO_TPP_OFFICIAL_MSF_MUTINEER_RETAIL_VEST_ARTIFACT_PROPOSAL_PRIVATE_V1.json",
+      "requiresSourceSHAMatch": true,
+      "sourcePixelsModified": false
+    }
+  ],
+  "reviewedSources": [
+    {
+      "uid": "archive__naked_delta",
+      "costumeId": "official--one-eyed-crocodile-cap",
+      "sourceSHA256": "2b32b467628749905ade00626f9777eef31f8ed4ab82607350871613272bf508",
+      "sourcePath": "/tmp/cqc-static-20261113/artists/c/p51/delta_oneeye_cap/archive__naked_delta-one-eyed-crocodile-cap-raw-v1.png",
+      "proposalPath": "/tmp/cqc-static-20261113/artists/c/p51/delta_oneeye_cap/ARTIFACT_PROPOSAL_PRIVATE_V1.json",
+      "proposalSHA256": "f0d63c3775e4b573097be7478bb7426bc73da59cb19daee8c8801d67b4161092",
+      "width": 1024,
+      "height": 1536,
+      "wholePNGPhysicallyViewed": true,
+      "actualReaderPhysicallyViewed": true,
+      "sourceRectStrongPixelsCut": 0,
+      "neighborIntersections": 0,
+      "strongSourceEdgePixels": 0,
+      "alphaZeroFraction": 0.6489950815836588,
+      "qualification": "Both full projected bootsole bands physically viewed; preserve higher far-foot projection and all Sourcepixels. Full crocodile cap retained; estimated human scalp datum y160 gives bodyBounds height1351 and human preview height304px, while whole frame top remains10.798px. This display estimate does not certify in-game dimensions or internal scalp anatomy.",
+      "status": "PASS_SOURCE_FRAME_AND_VALIDATED_SUPPORT_PREVIEW_CORRECTION",
+      "previewCorrectionPhysicallyViewed": true,
+      "correctionRequired": true
+    },
+    {
+      "uid": "archive__naked_delta",
+      "costumeId": "official--prisoner-bandaged",
+      "sourceSHA256": "3472f6ae8d1fa902bb7460c103312d33c97a7b9e669f738c5aaaa760639dad66",
+      "sourcePath": "/tmp/cqc-static-20261113/artists/c/p51/delta_prisoner/archive__naked_delta-prisoner-bandaged-raw-v1.png",
+      "proposalPath": "/tmp/cqc-static-20261113/artists/c/p51/delta_prisoner/ARTIFACT_PROPOSAL_PRIVATE_V1.json",
+      "proposalSHA256": "f0ea6b41726d9ff863585acc34a2de1bb4d5f34fa1d9137d18f1420376d2d846",
+      "width": 1024,
+      "height": 1536,
+      "wholePNGPhysicallyViewed": true,
+      "actualReaderPhysicallyViewed": true,
+      "sourceRectStrongPixelsCut": 0,
+      "neighborIntersections": 0,
+      "strongSourceEdgePixels": 0,
+      "alphaZeroFraction": 0.6780064900716146,
+      "qualification": "Both full projected bootsole bands physically viewed; preserve higher far-foot projection and all Sourcepixels.",
+      "status": "PASS_SOURCE_FRAME_AND_VALIDATED_SUPPORT_PREVIEW_CORRECTION",
+      "previewCorrectionPhysicallyViewed": true,
+      "correctionRequired": true
+    },
+    {
+      "uid": "archive__snake_tts",
+      "costumeId": "official--smoking",
+      "sourceSHA256": "24561c18a16aaf293d9d595af960719c40ac75681b4654698625acc7f56f5bb7",
+      "sourcePath": "/tmp/cqc-static-20261113/artists/e/p51/archive__snake_tts-smoking-raw-v1.png",
+      "proposalPath": "/tmp/cqc-static-20261113/artists/e/p51/archive__snake_tts-smoking-ARTIFACT_PROPOSAL_PRIVATE_V1.json",
+      "proposalSHA256": "309c12992bf2c4d8adf222e3feb1b703e29a450da2ac57fea0395f480c8227a0",
+      "width": 1149,
+      "height": 1369,
+      "wholePNGPhysicallyViewed": true,
+      "actualReaderPhysicallyViewed": true,
+      "sourceRectStrongPixelsCut": 0,
+      "neighborIntersections": 0,
+      "strongSourceEdgePixels": 0,
+      "alphaZeroFraction": 0.7527617943255513,
+      "qualification": "Both full projected bootsole bands physically viewed; preserve higher far-foot projection and all Sourcepixels.",
+      "status": "PASS_SOURCE_FRAME_AND_VALIDATED_SUPPORT_PREVIEW_CORRECTION",
+      "previewCorrectionPhysicallyViewed": true,
+      "correctionRequired": true
+    },
+    {
+      "uid": "core__raiden_mgs2",
+      "costumeId": "official--ninja-substance",
+      "sourceSHA256": "3d8e512422df2f067c1bb131eef8cc81d75ba3a2ad1fb2958dd42bb1930c5bb6",
+      "sourcePath": "/tmp/cqc-static-20261113/artists/e/p51/core__raiden_mgs2-ninja-substance-raw-v1.png",
+      "proposalPath": "/tmp/cqc-static-20261113/artists/e/p51/core__raiden_mgs2-ninja-substance-ARTIFACT_PROPOSAL_PRIVATE_V1.json",
+      "proposalSHA256": "6529bfac41386f887716ec0b69b8dc48d316a7f954225e69fa2e0e1eaab9f735",
+      "width": 1199,
+      "height": 1312,
+      "wholePNGPhysicallyViewed": true,
+      "actualReaderPhysicallyViewed": true,
+      "sourceRectStrongPixelsCut": 0,
+      "neighborIntersections": 0,
+      "strongSourceEdgePixels": 0,
+      "alphaZeroFraction": 0.7854417553245591,
+      "qualification": "Both full projected bootsole bands physically viewed; preserve higher far-foot projection and all Sourcepixels.",
+      "status": "PASS_SOURCE_FRAME_AND_VALIDATED_SUPPORT_PREVIEW_CORRECTION",
+      "previewCorrectionPhysicallyViewed": true,
+      "correctionRequired": true
+    },
+    {
+      "uid": "npc53__malak_tpp",
+      "costumeId": "official--captive",
+      "sourceSHA256": "9d3428e81a556069ab5fb33af6d259408cde2418c42cf23f114470da0a47c9d2",
+      "sourcePath": "/tmp/cqc-static-20261113/artists/f/p51/npc53-malak-tpp-official-captive-long-dark-pants-qualified-raw-v1.png",
+      "proposalPath": "/tmp/cqc-static-20261113/artists/f/p51/NPC53_MALAK_TPP_OFFICIAL_CAPTIVE_LONG_DARK_PANTS_QUALIFIED_ARTIFACT_PROPOSAL_PRIVATE_V1.json",
+      "proposalSHA256": "d48c0d287dba9a166a90d59adcbe04e788ca1039b2cfa47f40093eae00af42c2",
+      "width": 1254,
+      "height": 1254,
+      "wholePNGPhysicallyViewed": true,
+      "actualReaderPhysicallyViewed": true,
+      "sourceRectStrongPixelsCut": 0,
+      "neighborIntersections": 0,
+      "strongSourceEdgePixels": 0,
+      "alphaZeroFraction": 0.6406453098092484,
+      "qualification": "Whole low captive pose physically viewed, with the rear foot, folded shin/knee and forward sole on the floor. Keep provided pelvis620/floor1221. The lower left silhouette component merges a foot and folded shin/knee; its bbox midpoint is not a second standing foot. No standing height, fullbody rig or independent footwear details are inferred/certified.",
+      "status": "PASS_COMPLETE_KNEELING_NONCOMBAT_SUPPORT",
+      "previewCorrectionPhysicallyViewed": false,
+      "correctionRequired": false,
+      "poseConstraint": "KNEELING_NONCOMBAT_ONLY; no standing-height inference. Keep source pelvis620/ground1221."
+    },
+    {
+      "uid": "npc53__mosquito_tpp",
+      "costumeId": "original",
+      "sourceSHA256": "646656e9a082ee24054aa1860aca93d1b9550eeee25574b399f54f433678cb00",
+      "sourcePath": "/tmp/cqc-static-20261113/artists/f/p51/npc53-mosquito-tpp-official-msf-mutineer-retail-vest-raw-v1.png",
+      "proposalPath": "/tmp/cqc-static-20261113/artists/f/p51/NPC53_MOSQUITO_TPP_OFFICIAL_MSF_MUTINEER_RETAIL_VEST_ARTIFACT_PROPOSAL_PRIVATE_V1.json",
+      "proposalSHA256": "8129c3cd07294bfc62f218494ddb607dc234980886f8bfdc437954446ddf3adb",
+      "width": 1024,
+      "height": 1536,
+      "wholePNGPhysicallyViewed": true,
+      "actualReaderPhysicallyViewed": true,
+      "sourceRectStrongPixelsCut": 0,
+      "neighborIntersections": 0,
+      "strongSourceEdgePixels": 0,
+      "alphaZeroFraction": 0.6746807098388672,
+      "qualification": "Both full projected bootsole bands physically viewed; preserve higher far-foot projection and all Sourcepixels. Root-authorized corrected Original only; preserve Native atlas and old animations; do not count as an additional costume.",
+      "status": "PASS_SOURCE_FRAME_AND_VALIDATED_SUPPORT_PREVIEW_CORRECTION",
+      "previewCorrectionPhysicallyViewed": true,
+      "correctionRequired": true
+    }
+  ],
+  "drawingIssues": [],
+  "sourcePixelsModified": false,
+  "P49P50Changed": false,
+  "globalIndexBuildTouched": false,
+  "GitChanged": false,
+  "status": "FROZEN_ALL6_VIEWED_CORRECTIONS_VALIDATED_IN_PREVIEW_READY_FOR_ROOT",
+  "physicalEvidenceDirectory": "/tmp/cqc-static-20261113/artists/d/p51/qa",
+  "counts": {
+    "newSourcePNGsReviewed": 6,
+    "activePosesReviewed": 6,
+    "sourceSHALockedMetadataCorrections": 5,
+    "noChangeCaptivePose": 1,
+    "bodyBoundsEstimates": 1,
+    "sourceDrawingDefectsFound": 0,
+    "newPNGCreated": 0,
+    "newCostumeCountClaimedByQA": 0
+  },
+  "reader": {
+    "actualModule": "/tmp/cqc-static-20261113/p51/catalog/manifest-model.mjs",
+    "canvas": [
+      320,
+      360
+    ],
+    "sourceFrameNoCropEditing": true,
+    "bodyBoundsUnit": "absolute source pixels [x,y,width,height], consumed as bodyBounds[3] by placement()",
+    "correctedSourcesPhysicallyViewed": 5,
+    "unchangedMalakPhysicallyViewedInBase": true,
+    "previewRenderingOnly": true
+  },
+  "evidence": {
+    "sourceByteVerification": {
+      "path": "/tmp/cqc-static-20261113/artists/d/p51/qa/FINAL_SOURCE_BYTE_VERIFICATION_PRIVATE_V1.json",
+      "sha256": "467f75bd8100e63598bd7c816c1f4306b6b6a7439d681a31cc2185de10db8f6d",
+      "bytes": 5529
+    },
+    "sourceSnapshot": {
+      "path": "/tmp/cqc-static-20261113/artists/d/p51/qa/PROPOSAL_SNAPSHOT_PRIVATE_V1.json",
+      "sha256": "044e59f8e7834f26a663ef1b5d7d6327f88c727c1c8cbc8fd4714ecc02173f4c",
+      "bytes": 5814
+    },
+    "sourceCopyReceipt": {
+      "path": "/tmp/cqc-static-20261113/artists/d/p51/qa/SOURCE_COPY_RECEIPTS_PRIVATE_V1.json",
+      "sha256": "6207c98197fa0eccc47d3cd431d63c6fb7fdd2ca3304afb264d72052f76b0a63",
+      "bytes": 2711
+    },
+    "sourceAlphaAndRectAnalysis": {
+      "path": "/tmp/cqc-static-20261113/artists/d/p51/qa/QUANTITATIVE_FRAME_AUDIT_PRIVATE_V1.json",
+      "sha256": "780a4dbd2115ea579e15a7822724e93fda47b7996173d1c65a138fdc91cc1373",
+      "bytes": 31065
+    },
+    "groundSupportMeasurements": {
+      "path": "/tmp/cqc-static-20261113/artists/d/p51/qa/P51_SUPPORT_MEASUREMENTS_PRIVATE_V1.json",
+      "sha256": "6770c55bc5a65c450ef43c5b1fe353b744a57a62ed490afaee22484cd9137c2b",
+      "bytes": 4093
+    },
+    "baseActualPlacement": {
+      "path": "/tmp/cqc-static-20261113/artists/d/p51/qa/BROWSER_PLACEMENT_ACTUAL_PRIVATE_V1.json",
+      "sha256": "eaf54eb2fa3baaa59297cd0305bed904dea59c5024ed557c3f5897e56029c57e",
+      "bytes": 5074
+    },
+    "baseReaderScreenshot": {
+      "path": "/tmp/cqc-static-20261113/artists/d/p51/qa/render-000.png",
+      "sha256": "1507c423f773edd8c893174f50a8d8a1951a112c8b77281391c10905b59238b0",
+      "bytes": 337015
+    },
+    "correctedActualPlacement": {
+      "path": "/tmp/cqc-static-20261113/artists/d/p51/qa/BROWSER_CORRECTED_PLACEMENT_ACTUAL_PRIVATE_V1.json",
+      "sha256": "3fe60f18be1254e4ee42e15ad900a26eb3d08c092070f1f21cea3c64d4faf513",
+      "bytes": 4434
+    },
+    "correctedReaderScreenshot": {
+      "path": "/tmp/cqc-static-20261113/artists/d/p51/qa/corrected-render-000.png",
+      "sha256": "da70c72cfc43dd9395deab8aab457be0b1418b548958ef461cfaee73388a3794",
+      "bytes": 270150
+    },
+    "actualReaderModule": {
+      "path": "/tmp/cqc-static-20261113/p51/catalog/manifest-model.mjs",
+      "sha256": "fc02ec99fc9d8ccfb1789b7eb17314fd9666d813f668cabf0af4697499d6c1f3",
+      "bytes": 6453
+    }
+  },
+  "sourceByteVerification": {
+    "pass": true,
+    "readMode": "O_RDONLY|O_NOATIME",
+    "checks": [
+      {
+        "uid": "archive__naked_delta",
+        "source": "/tmp/cqc-static-20261113/artists/c/p51/delta_oneeye_cap/archive__naked_delta-one-eyed-crocodile-cap-raw-v1.png",
+        "sourceExpectedSHA256": "2b32b467628749905ade00626f9777eef31f8ed4ab82607350871613272bf508",
+        "proposal": "/tmp/cqc-static-20261113/artists/c/p51/delta_oneeye_cap/ARTIFACT_PROPOSAL_PRIVATE_V1.json",
+        "proposalExpectedSHA256": "f0d63c3775e4b573097be7478bb7426bc73da59cb19daee8c8801d67b4161092",
+        "sourceSHA256": "2b32b467628749905ade00626f9777eef31f8ed4ab82607350871613272bf508",
+        "sourceBytes": 1974453,
+        "sourceStatsUnchanged": true,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "proposalSHA256": "f0d63c3775e4b573097be7478bb7426bc73da59cb19daee8c8801d67b4161092",
+        "proposalBytes": 5240,
+        "proposalStatsUnchanged": true
+      },
+      {
+        "uid": "archive__naked_delta",
+        "source": "/tmp/cqc-static-20261113/artists/c/p51/delta_prisoner/archive__naked_delta-prisoner-bandaged-raw-v1.png",
+        "sourceExpectedSHA256": "3472f6ae8d1fa902bb7460c103312d33c97a7b9e669f738c5aaaa760639dad66",
+        "proposal": "/tmp/cqc-static-20261113/artists/c/p51/delta_prisoner/ARTIFACT_PROPOSAL_PRIVATE_V1.json",
+        "proposalExpectedSHA256": "f0ea6b41726d9ff863585acc34a2de1bb4d5f34fa1d9137d18f1420376d2d846",
+        "sourceSHA256": "3472f6ae8d1fa902bb7460c103312d33c97a7b9e669f738c5aaaa760639dad66",
+        "sourceBytes": 1913537,
+        "sourceStatsUnchanged": true,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "proposalSHA256": "f0ea6b41726d9ff863585acc34a2de1bb4d5f34fa1d9137d18f1420376d2d846",
+        "proposalBytes": 4176,
+        "proposalStatsUnchanged": true
+      },
+      {
+        "uid": "archive__snake_tts",
+        "source": "/tmp/cqc-static-20261113/artists/e/p51/archive__snake_tts-smoking-raw-v1.png",
+        "sourceExpectedSHA256": "24561c18a16aaf293d9d595af960719c40ac75681b4654698625acc7f56f5bb7",
+        "proposal": "/tmp/cqc-static-20261113/artists/e/p51/archive__snake_tts-smoking-ARTIFACT_PROPOSAL_PRIVATE_V1.json",
+        "proposalExpectedSHA256": "309c12992bf2c4d8adf222e3feb1b703e29a450da2ac57fea0395f480c8227a0",
+        "sourceSHA256": "24561c18a16aaf293d9d595af960719c40ac75681b4654698625acc7f56f5bb7",
+        "sourceBytes": 645605,
+        "sourceStatsUnchanged": true,
+        "dimensions": [
+          1149,
+          1369
+        ],
+        "proposalSHA256": "309c12992bf2c4d8adf222e3feb1b703e29a450da2ac57fea0395f480c8227a0",
+        "proposalBytes": 3667,
+        "proposalStatsUnchanged": true
+      },
+      {
+        "uid": "core__raiden_mgs2",
+        "source": "/tmp/cqc-static-20261113/artists/e/p51/core__raiden_mgs2-ninja-substance-raw-v1.png",
+        "sourceExpectedSHA256": "3d8e512422df2f067c1bb131eef8cc81d75ba3a2ad1fb2958dd42bb1930c5bb6",
+        "proposal": "/tmp/cqc-static-20261113/artists/e/p51/core__raiden_mgs2-ninja-substance-ARTIFACT_PROPOSAL_PRIVATE_V1.json",
+        "proposalExpectedSHA256": "6529bfac41386f887716ec0b69b8dc48d316a7f954225e69fa2e0e1eaab9f735",
+        "sourceSHA256": "3d8e512422df2f067c1bb131eef8cc81d75ba3a2ad1fb2958dd42bb1930c5bb6",
+        "sourceBytes": 800570,
+        "sourceStatsUnchanged": true,
+        "dimensions": [
+          1199,
+          1312
+        ],
+        "proposalSHA256": "6529bfac41386f887716ec0b69b8dc48d316a7f954225e69fa2e0e1eaab9f735",
+        "proposalBytes": 3954,
+        "proposalStatsUnchanged": true
+      },
+      {
+        "uid": "npc53__malak_tpp",
+        "source": "/tmp/cqc-static-20261113/artists/f/p51/npc53-malak-tpp-official-captive-long-dark-pants-qualified-raw-v1.png",
+        "sourceExpectedSHA256": "9d3428e81a556069ab5fb33af6d259408cde2418c42cf23f114470da0a47c9d2",
+        "proposal": "/tmp/cqc-static-20261113/artists/f/p51/NPC53_MALAK_TPP_OFFICIAL_CAPTIVE_LONG_DARK_PANTS_QUALIFIED_ARTIFACT_PROPOSAL_PRIVATE_V1.json",
+        "proposalExpectedSHA256": "d48c0d287dba9a166a90d59adcbe04e788ca1039b2cfa47f40093eae00af42c2",
+        "sourceSHA256": "9d3428e81a556069ab5fb33af6d259408cde2418c42cf23f114470da0a47c9d2",
+        "sourceBytes": 1161736,
+        "sourceStatsUnchanged": true,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "proposalSHA256": "d48c0d287dba9a166a90d59adcbe04e788ca1039b2cfa47f40093eae00af42c2",
+        "proposalBytes": 6242,
+        "proposalStatsUnchanged": true
+      },
+      {
+        "uid": "npc53__mosquito_tpp",
+        "source": "/tmp/cqc-static-20261113/artists/f/p51/npc53-mosquito-tpp-official-msf-mutineer-retail-vest-raw-v1.png",
+        "sourceExpectedSHA256": "646656e9a082ee24054aa1860aca93d1b9550eeee25574b399f54f433678cb00",
+        "proposal": "/tmp/cqc-static-20261113/artists/f/p51/NPC53_MOSQUITO_TPP_OFFICIAL_MSF_MUTINEER_RETAIL_VEST_ARTIFACT_PROPOSAL_PRIVATE_V1.json",
+        "proposalExpectedSHA256": "8129c3cd07294bfc62f218494ddb607dc234980886f8bfdc437954446ddf3adb",
+        "sourceSHA256": "646656e9a082ee24054aa1860aca93d1b9550eeee25574b399f54f433678cb00",
+        "sourceBytes": 1738380,
+        "sourceStatsUnchanged": true,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "proposalSHA256": "8129c3cd07294bfc62f218494ddb607dc234980886f8bfdc437954446ddf3adb",
+        "proposalBytes": 7010,
+        "proposalStatsUnchanged": true
+      }
+    ],
+    "correctedPlacementAssertions": {
+      "canvas": [
+        320,
+        360
+      ],
+      "leftRightMarginMinimum": 14,
+      "groundY": 340,
+      "renderedCorrectionCount": 5,
+      "allSourceFramesInsideCanvas": true,
+      "crocHumanBodyHeight": 304
+    },
+    "sourcePixelsWritten": false
+  },
+  "limits": [
+    "This QA checks source completeness, alpha, framing and static placement; it does not claim pixel-perfect retail fidelity.",
+    "CrocCap bodyBounds is an explicitly qualified hidden-scalp estimate for preview size only; preserve the entire cap and frame.",
+    "Malak is a low captive pose, with mixed knee/shin/foot ground support; no standing body height or independent footwear certification.",
+    "Apply each correction only when uid, costumeId and sourceSHA256 all match. Source PNGs and proposal documents remain byte-identical.",
+    "No new costume or image is delivered by this QA. Mosquito is a Root-authorized corrected Original; Native atlas and animations remain preserved."
+  ],
+  "centralWriteAuthorizedByRoot": true,
+  "frozenP50QA_SHA256_Unchanged": "d7c99926aee4168b280625ea9551b8032f2c9ad68c836157fab5510a455464d3",
+  "postReviewQualificationNotes": [
+    {
+      "uid": "archive__snake_tts",
+      "costumeId": "official--smoking",
+      "sourceSHA256": "24561c18a16aaf293d9d595af960719c40ac75681b4654698625acc7f56f5bb7",
+      "currentProposalSHA256": "de75702fec8a1b9894ee6768b657ff861029c055ab3ec129494d54004f66916b",
+      "reason": "After the geometry review, artistE and Root clarified that the white gloves are an unverified interpretation: reference hands are cropped. Source PNG, rect, pivot and all reviewed geometry are unchanged. Earlier exact proposal metadata preserved under artists/e/p51/review-checkpoints/.",
+      "SourceOrFrameChanged": false,
+      "reviewer": "Root, direct original reference and PNG comparison"
+    }
+  ]
+}
