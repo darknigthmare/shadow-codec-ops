@@ -1,0 +1,620 @@
+{
+  "targetId": "B8233400D405EC93484B17E05EA5034E",
+  "sourcePixelsWritten": false,
+  "sourceFunction": "p50/catalog/manifest-model.mjs placement",
+  "actualPlacementFunctionSource": "function placement(frame, canvasWidth, canvasHeight) {\n  const [x, y, w, h] = frame.rect, [px, py] = frame.pivot || [0.5, 1];\n  const bodyHeight = frame.bodyBounds?.[3] || h;\n  const halfWidth = Math.max(0, canvasWidth / 2 - 14);\n  const leftExtent = px * w, rightExtent = (1 - px) * w;\n  const scale = Math.min((canvasHeight - 56) / bodyHeight, leftExtent > 0 ? halfWidth / leftExtent : Infinity, rightExtent > 0 ? halfWidth / rightExtent : Infinity);\n  return { x: canvasWidth / 2 - px * w * scale, y: canvasHeight - 20 - py * h * scale, width: w * scale, height: h * scale, scale, source: [x, y, w, h], groundY: canvasHeight - 20 };\n}",
+  "canvas": [
+    320,
+    360
+  ],
+  "rendered": [
+    {
+      "index": 0,
+      "uid": "archive__naked_delta",
+      "costumeId": "official--virtuous-mission-medical",
+      "sourceSHA256": "a52ff5574fd8b0615d874514ead17acddf3a93726637b6b8b9a85883f1bffc64",
+      "frame": {
+        "rect": [
+          227,
+          11,
+          536,
+          1512
+        ],
+        "pivot": [
+          0.463152985,
+          1
+        ]
+      },
+      "placement": {
+        "x": 110.08730159534392,
+        "y": 36,
+        "width": 107.76719576719576,
+        "height": 304,
+        "scale": 0.20105820105820105,
+        "source": [
+          227,
+          11,
+          536,
+          1512
+        ],
+        "groundY": 340
+      }
+    },
+    {
+      "index": 1,
+      "uid": "archive__walker_gear",
+      "costumeId": "official--pf-slate-rocket",
+      "sourceSHA256": "2bd40726eb622dab5274489969d02078a1313d21f5300e56696a2532c9b39a4d",
+      "frame": {
+        "rect": [
+          49,
+          32,
+          677,
+          962
+        ],
+        "pivot": [
+          0.501846381,
+          0.998960499
+        ]
+      },
+      "placement": {
+        "x": 52.636174656083156,
+        "y": 36.31600830399998,
+        "width": 213.93762993762994,
+        "height": 304,
+        "scale": 0.316008316008316,
+        "source": [
+          49,
+          32,
+          677,
+          962
+        ],
+        "groundY": 340
+      }
+    },
+    {
+      "index": 2,
+      "uid": "archive__walker_gear",
+      "costumeId": "official--pf-tan-rocket",
+      "sourceSHA256": "2bd40726eb622dab5274489969d02078a1313d21f5300e56696a2532c9b39a4d",
+      "frame": {
+        "rect": [
+          809,
+          32,
+          683,
+          962
+        ],
+        "pivot": [
+          0.504758419,
+          0.998960499
+        ]
+      },
+      "placement": {
+        "x": 51.056133000199594,
+        "y": 36.31600830399998,
+        "width": 215.83367983367984,
+        "height": 304,
+        "scale": 0.316008316008316,
+        "source": [
+          809,
+          32,
+          683,
+          962
+        ],
+        "groundY": 340
+      }
+    },
+    {
+      "index": 3,
+      "uid": "completion44__saintlogic_guard_44",
+      "costumeId": "official--security-division-unmasked",
+      "sourceSHA256": "ca818acea57ba9d8f8b11f89b74c412999b64e2e7dd4e0668fee8564fd613931",
+      "frame": {
+        "rect": [
+          205,
+          14,
+          585,
+          1516
+        ],
+        "pivot": [
+          0.517094017,
+          0.991424802
+        ]
+      },
+      "placement": {
+        "x": 99.34036940416885,
+        "y": 38.60686019199994,
+        "width": 117.30870712401055,
+        "height": 304,
+        "scale": 0.20052770448548812,
+        "source": [
+          205,
+          14,
+          585,
+          1516
+        ],
+        "groundY": 340
+      }
+    },
+    {
+      "index": 4,
+      "uid": "core__armstrong",
+      "costumeId": "official--senator-suit",
+      "sourceSHA256": "b13135bd5d7f8df5daa4613571db291c018b876945bd8762d4e8eb4432810293",
+      "frame": {
+        "rect": [
+          177,
+          20,
+          654,
+          1511
+        ],
+        "pivot": [
+          0.483562691,
+          0.99404368
+        ]
+      },
+      "placement": {
+        "x": 96.3732627572098,
+        "y": 37.81072128000005,
+        "width": 131.57908669755128,
+        "height": 304,
+        "scale": 0.20119126406353408,
+        "source": [
+          177,
+          20,
+          654,
+          1511
+        ],
+        "groundY": 340
+      }
+    },
+    {
+      "index": 5,
+      "uid": "core__fox",
+      "costumeId": "official--palette-rouge-bleu",
+      "sourceSHA256": "b564668b886de7ca7fa8f9e06fe94b3d721926d9b02e1ec83de77ec485b7bc8e",
+      "frame": {
+        "rect": [
+          204,
+          48,
+          686,
+          1224
+        ],
+        "pivot": [
+          0.523323615,
+          0.990196078
+        ]
+      },
+      "placement": {
+        "x": 70.8366013345098,
+        "y": 38.98039228800002,
+        "width": 170.37908496732027,
+        "height": 304,
+        "scale": 0.24836601307189543,
+        "source": [
+          204,
+          48,
+          686,
+          1224
+        ],
+        "groundY": 340
+      }
+    },
+    {
+      "index": 6,
+      "uid": "core__old_snake",
+      "costumeId": "official--octocamo-three-color-desert",
+      "sourceSHA256": "70c0ecb8d9ee22ccea5b6b301582644f530edf266bff5dc1547ee637419e25da",
+      "frame": {
+        "rect": [
+          280,
+          0,
+          283,
+          723
+        ],
+        "pivot": [
+          0.493816254,
+          0.987551867
+        ]
+      },
+      "placement": {
+        "x": 101.23928082416597,
+        "y": 39.78423243200001,
+        "width": 118.99308437067774,
+        "height": 304,
+        "scale": 0.42047026279391425,
+        "source": [
+          280,
+          0,
+          283,
+          723
+        ],
+        "groundY": 340
+      }
+    },
+    {
+      "index": 7,
+      "uid": "core__old_snake",
+      "costumeId": "official--octocamo-gear",
+      "sourceSHA256": "70c0ecb8d9ee22ccea5b6b301582644f530edf266bff5dc1547ee637419e25da",
+      "frame": {
+        "rect": [
+          944,
+          0,
+          284,
+          723
+        ],
+        "pivot": [
+          0.49471831,
+          0.987551867
+        ]
+      },
+      "placement": {
+        "x": 100.92392806063623,
+        "y": 39.78423243200001,
+        "width": 119.41355463347165,
+        "height": 304,
+        "scale": 0.42047026279391425,
+        "source": [
+          944,
+          0,
+          284,
+          723
+        ],
+        "groundY": 340
+      }
+    },
+    {
+      "index": 8,
+      "uid": "core__old_snake",
+      "costumeId": "official--octocamo-haven",
+      "sourceSHA256": "70c0ecb8d9ee22ccea5b6b301582644f530edf266bff5dc1547ee637419e25da",
+      "frame": {
+        "rect": [
+          1609,
+          0,
+          284,
+          723
+        ],
+        "pivot": [
+          0.492957746,
+          0.987551867
+        ]
+      },
+      "placement": {
+        "x": 101.13416326603596,
+        "y": 39.78423243200001,
+        "width": 119.41355463347165,
+        "height": 304,
+        "scale": 0.42047026279391425,
+        "source": [
+          1609,
+          0,
+          284,
+          723
+        ],
+        "groundY": 340
+      }
+    },
+    {
+      "index": 9,
+      "uid": "core__quiet",
+      "costumeId": "official--hospital-assassin",
+      "sourceSHA256": "693d6c347900f5aff2e618301b24c257b6b3022c8933f1b6aae01658bd2f1b03",
+      "frame": {
+        "rect": [
+          252,
+          11,
+          519,
+          1515
+        ],
+        "pivot": [
+          0.536127168,
+          0.999339934
+        ]
+      },
+      "placement": {
+        "x": 104.16633659513663,
+        "y": 36.20066006400003,
+        "width": 104.14257425742575,
+        "height": 304,
+        "scale": 0.20066006600660066,
+        "source": [
+          252,
+          11,
+          519,
+          1515
+        ],
+        "groundY": 340
+      }
+    },
+    {
+      "index": 10,
+      "uid": "core__snake_pw",
+      "costumeId": "official--jungle-fatigues-navy-blue",
+      "sourceSHA256": "86c096377b4375168ce910a3515d6d5ab6f5c308243e39851e131a035b287b96",
+      "frame": {
+        "rect": [
+          359,
+          6,
+          257,
+          497
+        ],
+        "pivot": [
+          0.375486381,
+          0.997987928
+        ]
+      },
+      "placement": {
+        "x": 100.97384310911872,
+        "y": 36.611669887999994,
+        "width": 157.19919517102616,
+        "height": 304,
+        "scale": 0.6116700201207244,
+        "source": [
+          359,
+          6,
+          257,
+          497
+        ],
+        "groundY": 340
+      }
+    },
+    {
+      "index": 11,
+      "uid": "core__snake_pw",
+      "costumeId": "official--jungle-fatigues-red",
+      "sourceSHA256": "86c096377b4375168ce910a3515d6d5ab6f5c308243e39851e131a035b287b96",
+      "frame": {
+        "rect": [
+          968,
+          6,
+          256,
+          497
+        ],
+        "pivot": [
+          0.376953125,
+          0.997987928
+        ]
+      },
+      "placement": {
+        "x": 100.9738430583501,
+        "y": 36.611669887999994,
+        "width": 156.58752515090544,
+        "height": 304,
+        "scale": 0.6116700201207244,
+        "source": [
+          968,
+          6,
+          256,
+          497
+        ],
+        "groundY": 340
+      }
+    },
+    {
+      "index": 12,
+      "uid": "core__snake_pw",
+      "costumeId": "official--jungle-fatigues-green",
+      "sourceSHA256": "86c096377b4375168ce910a3515d6d5ab6f5c308243e39851e131a035b287b96",
+      "frame": {
+        "rect": [
+          359,
+          518,
+          257,
+          496
+        ],
+        "pivot": [
+          0.377431907,
+          0.997983871
+        ]
+      },
+      "placement": {
+        "x": 100.54838703609677,
+        "y": 36.61290321600001,
+        "width": 157.51612903225808,
+        "height": 304,
+        "scale": 0.6129032258064516,
+        "source": [
+          359,
+          518,
+          257,
+          496
+        ],
+        "groundY": 340
+      }
+    },
+    {
+      "index": 13,
+      "uid": "core__snake_pw",
+      "costumeId": "official--jungle-fatigues-water",
+      "sourceSHA256": "86c096377b4375168ce910a3515d6d5ab6f5c308243e39851e131a035b287b96",
+      "frame": {
+        "rect": [
+          968,
+          519,
+          256,
+          495
+        ],
+        "pivot": [
+          0.375976562,
+          0.997979798
+        ]
+      },
+      "placement": {
+        "x": 100.88888896749899,
+        "y": 36.61414140800002,
+        "width": 157.220202020202,
+        "height": 304,
+        "scale": 0.6141414141414141,
+        "source": [
+          968,
+          519,
+          256,
+          495
+        ],
+        "groundY": 340
+      }
+    },
+    {
+      "index": 14,
+      "uid": "core__snake_pw",
+      "costumeId": "official--jungle-fatigues-tree-bark",
+      "sourceSHA256": "defed9dae3ddca3d22d75cf5fa63ad913bb02460307955191ca43518d7e20e61",
+      "frame": {
+        "rect": [
+          345,
+          7,
+          262,
+          503
+        ],
+        "pivot": [
+          0.381679389,
+          0.998011928
+        ]
+      },
+      "placement": {
+        "x": 99.56262430403181,
+        "y": 36.604373888,
+        "width": 158.3459244532803,
+        "height": 304,
+        "scale": 0.6043737574552683,
+        "source": [
+          345,
+          7,
+          262,
+          503
+        ],
+        "groundY": 340
+      }
+    },
+    {
+      "index": 15,
+      "uid": "core__snake_pw",
+      "costumeId": "official--jungle-fatigues-dpm",
+      "sourceSHA256": "defed9dae3ddca3d22d75cf5fa63ad913bb02460307955191ca43518d7e20e61",
+      "frame": {
+        "rect": [
+          972,
+          6,
+          260,
+          503
+        ],
+        "pivot": [
+          0.379807692,
+          0.998011928
+        ]
+      },
+      "placement": {
+        "x": 100.31809149964215,
+        "y": 36.604373888,
+        "width": 157.13717693836978,
+        "height": 304,
+        "scale": 0.6043737574552683,
+        "source": [
+          972,
+          6,
+          260,
+          503
+        ],
+        "groundY": 340
+      }
+    },
+    {
+      "index": 16,
+      "uid": "core__snake_pw",
+      "costumeId": "official--jungle-fatigues-comrade",
+      "sourceSHA256": "defed9dae3ddca3d22d75cf5fa63ad913bb02460307955191ca43518d7e20e61",
+      "frame": {
+        "rect": [
+          346,
+          518,
+          260,
+          502
+        ],
+        "pivot": [
+          0.386538462,
+          0.998007968
+        ]
+      },
+      "placement": {
+        "x": 99.13944215840637,
+        "y": 36.605577728000014,
+        "width": 157.45019920318725,
+        "height": 304,
+        "scale": 0.6055776892430279,
+        "source": [
+          346,
+          518,
+          260,
+          502
+        ],
+        "groundY": 340
+      }
+    },
+    {
+      "index": 17,
+      "uid": "core__snake_pw",
+      "costumeId": "official--jungle-fatigues-g-and-j",
+      "sourceSHA256": "defed9dae3ddca3d22d75cf5fa63ad913bb02460307955191ca43518d7e20e61",
+      "frame": {
+        "rect": [
+          973,
+          518,
+          259,
+          502
+        ],
+        "pivot": [
+          0.381274131,
+          0.998007968
+        ]
+      },
+      "placement": {
+        "x": 100.19920323024701,
+        "y": 36.605577728000014,
+        "width": 156.84462151394422,
+        "height": 304,
+        "scale": 0.6055776892430279,
+        "source": [
+          973,
+          518,
+          259,
+          502
+        ],
+        "groundY": 340
+      }
+    },
+    {
+      "index": 18,
+      "uid": "core__teliko",
+      "costumeId": "original",
+      "sourceSHA256": "520297b6db03960e562d551189ec68abea9c9e469261c72c144558c83a717082",
+      "frame": {
+        "rect": [
+          253,
+          6,
+          561,
+          1519
+        ],
+        "pivot": [
+          0.475044563,
+          0.992100066
+        ]
+      },
+      "placement": {
+        "x": 106.6649111571613,
+        "y": 38.40157993600002,
+        "width": 112.27386438446347,
+        "height": 304,
+        "scale": 0.20013166556945358,
+        "source": [
+          253,
+          6,
+          561,
+          1519
+        ],
+        "groundY": 340
+      }
+    }
+  ]
+}
