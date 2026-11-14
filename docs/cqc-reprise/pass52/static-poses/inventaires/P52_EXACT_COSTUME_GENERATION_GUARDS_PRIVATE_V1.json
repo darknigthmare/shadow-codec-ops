@@ -1,0 +1,60 @@
+{
+  "schema": "cqc.p50.exact-costume-generation-guards/1",
+  "atUTC": "2026-11-13T15:30:27.375131+00:00",
+  "entries": [
+    {
+      "uid": "archive__paz",
+      "costumeId": "official--swimsuit",
+      "historicalID": "archive__paz__alt__swimsuit",
+      "kind": "content-guard-no-generation",
+      "reason": "Sexualized lingerie depiction of a character with very young appearance; no image generation requested, no substitution or retry. Ordinary nonsexual appearances remain separately scoped.",
+      "reviewer": "Root and artist A reference-screening decision",
+      "generationPermitted": false
+    },
+    {
+      "uid": "core__mistral",
+      "costumeId": "official--two-arm-configuration",
+      "historicalID": "core__mistral__alt__two_arm_configuration",
+      "kind": "image-generation-output-refusal",
+      "requestID": "bc6ef892-2fcb-4786-8be7-a79f4bb731ab",
+      "reason": "Image generation declined at output moderation; no Source PNG produced. No retry, alias or alternate-agent attempt for the same goal.",
+      "reviewer": "Root received exact refusal report from artist B",
+      "generationPermitted": false
+    },
+    {
+      "uid": "archive__paz",
+      "costumeId": "official--zeke-pilot",
+      "historicalID": "archive__paz__alt__zeke_pilot",
+      "kind": "content-guard-no-generation",
+      "reason": "Same sexualized lingerie and very young appearance confirmed in actual ZEKE scene. No generation, substitution, alternate-agent attempt or retry. Evidence locators/timecodes/hashes only in export.",
+      "reviewer": "Root and artist A reference-screening decision",
+      "generationPermitted": false
+    },
+    {
+      "uid": "archive__raiden_vr",
+      "costumeId": "official--x-raiden-substance",
+      "historicalID": "archive__raiden_vr__alt__x_raiden_substance",
+      "kind": "image-generation-input-refusal",
+      "requestID": "6a59ccff-555f-96fe-8483-3f7a37dcdc06",
+      "sameGoalAlias": false,
+      "reason": "Nude Raiden MGS2/X-form generation declined at input moderation; no Source PNG. Same nude-form goal is not retried under another UID, story label, prompt or agent. Clothed variants are separately scoped.",
+      "reviewer": "Root propagated exact artistE refusal and its identical-goal alias",
+      "generationPermitted": false
+    },
+    {
+      "historicalID": "core__kaz_pw__alt__swimsuit",
+      "uid": "core__kaz_pw",
+      "costumeId": "official--swimsuit",
+      "kind": "image-generation-input-refusal",
+      "serviceRequestID": "405d4fa6-026e-4b5e-8576-df1a168af4fd",
+      "newPNGCount": 0,
+      "reason": "P51 actual service input refusal HTTP400 moderation_blocked (sexual+violence). Correctly qualified adult retail swimsuit reference, but no PNG produced. Exact same-incarnation goal and aliases held without retry or prompt rewrite.",
+      "noRetryOrAliasWorkaround": true,
+      "reviewer": "Root records actual artistA service response",
+      "atUTC": "2026-11-13T16:23:44.799769+00:00"
+    }
+  ],
+  "oldSevenGuardsFile": "/tmp/cqc-static-20261113/dispatch/HOLD_GUARDS_CURRENT_PUBLIC_V1.json",
+  "noOldGuardRelaxed": true,
+  "p51AdditionalGuards": 1
+}
