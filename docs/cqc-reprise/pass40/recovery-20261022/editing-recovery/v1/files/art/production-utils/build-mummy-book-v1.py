@@ -1,0 +1,28 @@
+from pathlib import Path
+import json,hashlib
+r=Path('@PROJECT_ROOT@');p=r/'art/core__snake/mgs3-camo-mummy'
+names=['idle','guard','walkA','walkB','crouch','jump','punch','low','grab','empty-release','knife','shoot-mk22','reload-mk22','hit','ko','roll']
+maps={'right-16-v1':[[1,11],[4,10],[2,6,13],[3,5,7,8,9,12],[17],[14,16,20],[15,18],[19],[23,28],[21,25,26],[24,27],[22],[29],[30,31,32],[34,35],[33]],'left-16-v1':[[1,6,7,8],[4],[2],[3,5],[11,13],[9],[10],[12],[16,18],[15],[17],[14],[19],[20],[24],[21,22,23,25]]}
+sources=[]
+def pose(name,side,role,ids,hold=None,usage=None):
+ return dict(name=name,side=side,semanticPoseIndex=None if hold else role,candidateUsage=usage or ('held-unmapped' if hold else 'calibration-only' if role is None else 'physical-review-pending'),componentIDs=ids,holdReasons=hold or [],**({'originalSemanticPoseIndex':role} if hold and role is not None else {}))
+def source(stem,height,poses,calibration,**extra):
+ f=p/(stem+'.png');b=f.read_bytes();cc=json.loads((p/(stem+'-cc.json')).read_text());assert sorted(sum([v['componentIDs'] for v in poses],[]))==sorted(c['id'] for c in cc['components'])
+ return dict(path=str(f),bytes=len(b),sha256=hashlib.sha256(b).hexdigest(),dimensions=[cc['width'],cc['height']],sourceFrameHeight=height,calibration=calibration,poses=poses,**extra)
+for stem,groups in maps.items():
+ side='left' if stem.startswith('left') else 'right';h=330 if side=='left' else 313;poses=[]
+ for i,ids in enumerate(groups):
+  hold=['Original walk pair replaced by independently drawn same-page gait.'] if i in [2,3] else ['Original LEFT reload is cropped below the knees, missing both complete boots; held unmapped and replaced by native fivefigure supplement.'] if side=='left' and i==12 else []
+  poses.append(pose(names[i],side,i,ids,hold))
+ sources.append(source(stem,h,poses,dict(method='same-page-neutral-standing',poseName='idle',measuredHeadToSolePixels=h,status='Candidate source extent; Root anatomy/calibration review required.')))
+poses=[pose('wrong-row-neutral-left','left',None,[1],['The intendedRIGHT-row neutral actually facesLEFT; preserved unmapped, never used to calibrateRIGHT actions.']),pose('old-walkA-right','right',2,[3],['TopRIGHT walk pair fails opposite lead-leg exchange and lacks correctRIGHT neutral. Replaced by native fivefigure supplement.']),pose('old-walkB-right','right',3,[2],['TopRIGHT walk pair fails opposite lead-leg exchange and lacks correctRIGHT neutral. Replaced by native fivefigure supplement.']),pose('gait-neutral-left','left',None,[4]),pose('walkA','left',2,[6]),pose('walkB','left',3,[5])]
+sources.append(source('native-gait-six-v1',492,poses,dict(method='same-page-left-neutral-standing',poseName='gait-neutral-left',measuredHeadToSolePixels=492,status='Only actualLEFT bottom-row actions selected. Wrongface/intendedRIGHT top-row all preserved held. Root reviews physical far/near leg and arm opposition.')))
+poses=[pose('gait-neutral-right','right',None,[1]),pose('walkA','right',2,[2]),pose('walkB','right',3,[3]),pose('reload-neutral-left','left',None,[4]),pose('reload-mk22','left',12,[5])]
+sources.append(source('right-gait-left-reload-five-v1',480,poses,dict(method='same-page-two-facing-separate-neutral-calibrations',measuredHeadToSolePixels={'right':480,'left':491},status='Do NOT use common480 forLEFTreload. Use two disjoint logical source aliases with RIGHT480 / LEFT491. Root exact anatomy review pending.'),proposedLogicalAliases=[dict(alias='right-gait-reload-five-native-right.png',side='right',sourceFrameHeight=480,physicalRoles=[2,3]),dict(alias='right-gait-reload-five-native-left.png',side='left',sourceFrameHeight=491,physicalRoles=[12])]))
+ref=r/'references/canonical/camo_unifo_mummy.gif'
+j=dict(schema='cqc.p40.explicit-source-ownership-candidate/1',approved=False,uid='core__snake',id='mgs3-camo-mummy',sourceAlphaThreshold=16,sourceConnectivity=8,sources=sources,nativePhysicalBodyCount=32,additionalCalibrationBodyCount=3,heldOriginalPhysicalBodies=8,gaitCertification=False,reference=dict(path=str(ref),bytes=ref.stat().st_size,sha256=hashlib.sha256(ref.read_bytes()).hexdigest()),limitations=['All4sourcePNG physically viewed and every alpha>16 component explicitly assigned once, including tiny fragments. All original bytes preserved.','Original pale khaki tactical cloth with crossing thin bandage-strip motif follows official MGS3PS2 Mummy uniform. Natural face/hair/bandana remain uncovered.','Four old atlaswalks, croppedLEFTreload and three bad intendedRIGHTgait drawings are retained unmapped. New full-bodyLEFTreload and genuinely exchanged newRIGHTgait selected as candidates only.','New fivefigure source needs disjointR/Llogical aliases and separate480/491neutral heights; no shared-height or prompt-based gait certification. Pelvis/sole anchors, source weapon points and per-action density still need Root review.','Exact tiny texture placement, knee-pad side/straps and unseen equipment surfaces remain qualified reference-led2D interpretations; no absolute1:1 or full retail cycle certification.'])
+(p/'ROLEBOOK_NATIVE_CANDIDATE_V1.json').write_text(json.dumps(j,indent=2)+'\n')
+l=r/'art/MGS3_LAST_SIX_PRODUCTION_LEDGER_V1.json';j=json.loads(l.read_text());total=0
+for e in j['entries']:
+ receipts=list((r/'art/core__snake'/e['optionId']).glob('*-receipt.json'));e['candidatePNGCount']=len(receipts);e['sourceArtGenerated']=bool(receipts);e['completed']=False;total+=sum(json.loads(f.read_text())['bytes'] for f in receipts)
+j['newNativePNGUsedBytes']=total;assert total<=35000000;l.write_text(json.dumps(j,indent=2)+'\n');print({'allSixUsed':total,'remaining':35000000-total})

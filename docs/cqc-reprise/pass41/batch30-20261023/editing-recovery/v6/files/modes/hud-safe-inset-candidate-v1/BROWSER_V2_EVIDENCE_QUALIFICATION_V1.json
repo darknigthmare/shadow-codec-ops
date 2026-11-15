@@ -1,0 +1,9 @@
+{
+  "schema": "cqc.p41.browser-evidence-qualification/1",
+  "reportPath": "@PROJECT_ROOT@/modes/hud-safe-inset-browser-qa-v2/ACTUAL_HUD_INSET_READONLY_QA_V1.json",
+  "validEvidence": "Four actual visible HUD before/after captures and actual measured translation/cleared top navigation, identity world transforms, unchanged source/code/art pins.",
+  "invalidClaim": "The V2 movement points were stationary because paused debugger inputs were ignored. V2 is NOT proof of nonzero motion, despite its overly broad PASS label.",
+  "sourceReportPreserved": true,
+  "replacementHarness": "browser-hud-inset-readonly-qa-v3.mjs",
+  "newGuard": "Require actual accepted ArrowRight x215 then x315 after20frames and actual negative jump velocity, positive x50 and negative y displacement over10frames before PASS."
+}

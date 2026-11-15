@@ -1,0 +1,88 @@
+{
+  "schema": "cqc.pass33.native-duel-completion/1",
+  "status": "passed-native-duel-independent-browser-build-and-mirrors",
+  "parent": "113d0f69f59ddc8ef3d579877463024b06ed22c1",
+  "dateUTC": "2026-10-15",
+  "normalRuntime": {
+    "schema": "cqc.pass33.normal-runtime-mirror/1",
+    "status": "passed",
+    "files": 2663,
+    "totalBytes": 3119163532,
+    "manifestSHA256": "6efcd53ec66c3fa24e71ed96195f8068cdda98fc42ddf001bccf54c8f6e223af",
+    "manifestBytes": 1204841,
+    "allNormalGraphMirrorsByteEqual": true,
+    "transformedFiles": [],
+    "unresolvedRuntimeReferences": [],
+    "newPrivateRayPNGReferenced": true,
+    "newPortAreaPNGsReferenced": [
+      "assets/stages-pass33/mgs4-port-area/architecture-v1.png",
+      "assets/stages-pass33/mgs4-port-area/far-v1.png"
+    ],
+    "oldPass31ControllerPhysicallyRetained": true,
+    "bulkCopyUsed": false
+  },
+  "catalog": {
+    "historicalGlobalRigs": 64,
+    "historicalGlobalParts": 823,
+    "historicalNativeSourcePNGsUnchanged": true,
+    "newDedicatedPrivateArchiveRig": "ray_mgs4_ps3_2008",
+    "newDedicatedRigParts": 14,
+    "newRigVisibleSourcePixelsAlpha16": 585928,
+    "sourcePartitionLoss": 0,
+    "sourcePartitionDuplication": 0,
+    "normalizationAppliedToNewPrivateRig": true,
+    "newDedicatedRigSources": 2,
+    "sourcePartitionScope": "Primary RAY source only; the separate interpreted neck volume has its own source and bounded native clip."
+  },
+  "changes": [
+    "Dedicated left-facing native Liquid Ocelot RAY MGS4, without reusing MGS2/MGR or mirroring the REX camera.",
+    "Fixed-length planted-foot motion, bounded mechanical root travel, head and jaw pivots on visible hardware.",
+    "RAY water cutter uses the drawn native nozzle, locked aim target, mechanical angle limits, warning/active/recovery clocks and the same ray for visual and collision.",
+    "RAY body charge advances actual articulated mass instead of emitting a detached generic charge ball; existing ARMURE/NOYAU health pools and progression stay intact.",
+    "Port Area generated from actual PS3 reference frames, with two source PNGs and three independently moving depth planes.",
+    "OPTIONS saved reduced-motion preference reaches Archive and disables decorative parallax.",
+    "Native duel pause via button, P and Escape freezes the actual gameplay, particles, support and scene clocks, with accessible resume/Command dialog.",
+    "Original Pass31 controller and old source art remain physically present.",
+    "A dedicated generated internal neck yoke fills the physically observed exposed joint during aiming, fitted uniformly beneath the original armor without changing its source pixels.",
+    "Wing/hip ownership boundaries follow actual transparent gaps, so the leg armor follows the leg instead of remaining attached to a wing."
+  ],
+  "validation": {
+    "nativeGeometry": "passed: original native source partition, two fixed-length leg chains, planted contacts, pure weapon getters and underlay texture rotation",
+    "actualBrowserFlows": "passed: two actual Shadow Ops menu/control stories; normal and saved reduced preference; REX walk/three weapons, RAY water/charge, pause and return",
+    "exactMinimalBuild": {
+      "status": "passed-build-pwa-and-all-runtime-bytes",
+      "minimalTree": "b815b4fedb876392d5f66f54df67a11cba79dec4",
+      "stagedFiles": 4239,
+      "allPhysicalCQCFilesVerified": 2690,
+      "manifestGraphFiles": 2663,
+      "PWA": "passed"
+    },
+    "proofs": {
+      "independentQA": {
+        "path": "/tmp/cqc-pass33-qa/FINAL_MERGED_HANDOFF_ACTUAL.json",
+        "bytes": 837097,
+        "sha256": "c56141e6af4e2d5451db75e4da33d5c539934b14d5c8b08236d209ae940d2f71"
+      },
+      "exactBuild": {
+        "path": "/tmp/cqc-pass33-build/EXACT_BUILD_AND_PWA_ACTUAL.json",
+        "bytes": 344993,
+        "sha256": "20dbf3dc7276bf2da84f2a1fd90e3bfc043af61ab544b6589e6b77a85248008c"
+      },
+      "runtimeMirrors": {
+        "path": "/tmp/cqc-pass33-root/CQC_VERIFY_ACTUAL_V2.log",
+        "bytes": 340,
+        "sha256": "1babccccfaedb48ca51329ad19a8df8c1e260ae9a64844b248768a15f5b3c368"
+      }
+    }
+  },
+  "limits": [
+    "Reference-led generated painted 2D reconstruction; extracted original 3D animation, texels and absolute1:1 fidelity are not certified.",
+    "Only REX right-facing damaged and RAY left-facing native cameras are admitted; hidden views are not mirrored.",
+    "Only the visible RAY water emitter is newly admitted. Missile caps and other weapon-port animations remain unadmitted.",
+    "No new per-wing destructible HP pools, canonical final dismemberment or alternate source frame is invented.",
+    "Port Area parallax, floor projection, RAY charge and attack timings are authored CQC adaptations. Falling snow is disabled because the selected still frames do not establish its timing.",
+    "The internal neck volume is an interpreted reference-led generated subassembly, not a hidden original surface extracted from the game."
+  ],
+  "originalRastersEdited": false,
+  "absolute1to1Certified": false
+}

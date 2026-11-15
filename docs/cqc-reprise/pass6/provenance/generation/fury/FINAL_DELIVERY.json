@@ -1,0 +1,609 @@
+{
+  "schema": "cqc.native-combat-delivery/1",
+  "uid": "core__fury",
+  "name": "THE FURY",
+  "game": "Metal Gear Solid 3: Snake Eater (2004), original PlayStation 2",
+  "incarnation": "Original 2004 PS2 Fury Cobra Unit boss, black Soviet cosmonaut suit and closed bronze helmet",
+  "selectedCostume": "original-ps2-fury-cosmonaut-suit",
+  "basis": "Combinaison soviétique ignifuge, casque fermé, lance-flammes et double réservoir à propulseurs ; envol borné sans vol continu.",
+  "displayHeight": 230,
+  "coverage": "action-frames",
+  "facing": 1,
+  "mirror": false,
+  "sourceFiles": [
+    {
+      "key": "a-right",
+      "source": "/workspace/cqc-pass6-generation/fury/sources/A_RIGHT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-0b92b2ca-de8b-4d86-8a24-35f005147b58.png",
+      "sha256": "b69ed5b9ca8b00527c7ebd9c692d10972b70d26bd5cb13babe4c59431213ffaa",
+      "bytes": 2154476,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": 1,
+      "mirror": false
+    },
+    {
+      "key": "a-left",
+      "source": "/workspace/cqc-pass6-generation/fury/sources/A_LEFT_02.png",
+      "nativeOriginal": "/workspace/generated_images/exec-86198a13-6154-46fe-b2be-823707b9174c.png",
+      "sha256": "2abd705d59bfd5b37805a624d3b94568cd11d84da7c795ce0de7f2e580e785dc",
+      "bytes": 2200059,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": -1,
+      "mirror": false
+    },
+    {
+      "key": "b-right",
+      "source": "/workspace/cqc-pass6-generation/fury/sources/B_RIGHT_02.png",
+      "nativeOriginal": "/workspace/generated_images/exec-ae5a62be-2094-4bcb-a8c5-0542236d364c.png",
+      "sha256": "1198b3c909c828570f200c8ed925effb5704f3e647a6b36c97d54c718523e524",
+      "bytes": 2304541,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": 1,
+      "mirror": false
+    },
+    {
+      "key": "b-left",
+      "source": "/workspace/cqc-pass6-generation/fury/sources/B_LEFT_03.png",
+      "nativeOriginal": "/workspace/generated_images/exec-7b39882d-ea22-4922-821b-ba5a5be0f3c1.png",
+      "sha256": "0d8dd2949aac3ae4200dcfe0ecf71ddb26e705fca3ed569f0f8228a131b30435",
+      "bytes": 2312743,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": -1,
+      "mirror": false
+    },
+    {
+      "key": "c-right",
+      "source": "/workspace/cqc-pass6-generation/fury/sources/C_RIGHT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-80d5dae0-1f10-4fe8-9027-01cc69bec667.png",
+      "sha256": "b6382609710e71d57b07a1baa300b6d811056b5199ffce4154d75d5839e89b8b",
+      "bytes": 2379392,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": 1,
+      "mirror": false
+    },
+    {
+      "key": "c-left",
+      "source": "/workspace/cqc-pass6-generation/fury/sources/C_LEFT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-12f5b211-c502-46f1-b39e-889a27aea335.png",
+      "sha256": "97f7755239dd2b60ea0959c6c90829fe8ba01afc019ff8a93abdb50f7d0d2b73",
+      "bytes": 2405558,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": -1,
+      "mirror": false
+    }
+  ],
+  "actionLayout": {
+    "idle": {
+      "sheet": "a",
+      "indices": [
+        0,
+        1
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "walk": {
+      "sheet": "a",
+      "indices": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "fps": 9,
+      "loop": true
+    },
+    "guard": {
+      "sheet": "a",
+      "indices": [
+        6,
+        7
+      ],
+      "fps": 5,
+      "loop": true
+    },
+    "crouch": {
+      "sheet": "a",
+      "indices": [
+        8,
+        9
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "jump": {
+      "sheet": "a",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 6,
+      "loop": false
+    },
+    "punch": {
+      "sheet": "b",
+      "indices": [
+        0,
+        1,
+        2
+      ],
+      "fps": 12,
+      "loop": false
+    },
+    "heavy": {
+      "sheet": "b",
+      "indices": [
+        3,
+        4,
+        5
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "low": {
+      "sheet": "b",
+      "indices": [
+        6,
+        7,
+        8
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "hit": {
+      "sheet": "b",
+      "indices": [
+        9
+      ],
+      "fps": 0,
+      "loop": false
+    },
+    "ko": {
+      "sheet": "b",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 6,
+      "loop": false
+    },
+    "shoot": {
+      "sheet": "c",
+      "indices": [
+        0,
+        1,
+        2
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "deploy": {
+      "sheet": "c",
+      "indices": [
+        3,
+        4,
+        5
+      ],
+      "fps": 8,
+      "loop": false
+    },
+    "throw": {
+      "sheet": "c",
+      "indices": [
+        6,
+        7,
+        8
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "recover": {
+      "sheet": "c",
+      "indices": [
+        9,
+        10,
+        11
+      ],
+      "fps": 5,
+      "loop": false
+    }
+  },
+  "actionMap": {
+    "light": "punch",
+    "heavy": "heavy",
+    "low": "low",
+    "throw": "throw",
+    "special": "shoot",
+    "specialDown": "deploy",
+    "specialForward": "jump",
+    "specialBack": "guard",
+    "super": "shoot",
+    "utility": "recover"
+  },
+  "phaseMap": {
+    "punch": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "heavy": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "low": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "shoot": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "deploy": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "throw": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "recover": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "jump": {
+      "startup": [
+        0
+      ],
+      "active": [
+        0
+      ],
+      "recovery": [
+        1
+      ]
+    },
+    "guard": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        0
+      ]
+    }
+  },
+  "review": {
+    "status": "approved",
+    "reviewer": "pass6_fury_native",
+    "reviewedAt": "2026-10-02",
+    "sourceKind": "original-game-capture",
+    "checks": {
+      "identity": true,
+      "costume": true,
+      "equipment": true,
+      "anatomicalSides": true,
+      "singleFigure": true,
+      "transparentBackground": true
+    },
+    "sources": [
+      {
+        "file": "/workspace/cqc-pass6-generation/fury/references/art-0008-original-shinkawa.jpg",
+        "url": "https://www.metalgearsolid.be/images/mgs3_art_0008.jpg",
+        "sourceKind": "original-art-reference",
+        "sha256": "a4ccbeec0b38cedf3d50b1a5bf21c4077687e092623825d1d2a71955583cc310",
+        "bytes": 76998,
+        "scope": "Original Yoji Shinkawa MGS3 monochrome costume/equipment silhouette; not sole color or original-model weapon proof.",
+        "viewed": true
+      },
+      {
+        "file": "/workspace/cqc-pass6-generation/fury/references/konami-fury.gif",
+        "url": "https://www.konami.com/mg/archive/mgs3/english/pic/chara_fury_pic.gif",
+        "sourceKind": "official-original-model",
+        "sha256": "0657feb827b0048f2eee717e7817f7c99e5dfdaa721395191d83342f6313f09c",
+        "bytes": 70087,
+        "scope": "Official original-model full body, black Soviet space suit, closed bronze visor and БЕЙ inscription, right-hand flamethrower and propulsion boom shape, no remake.",
+        "viewed": true
+      },
+      {
+        "file": "/workspace/cqc-pass6-generation/fury/references/konami-fury.html",
+        "url": "https://www.konami.com/mg/archive/mgs3/english/chara_fury.html",
+        "sourceKind": "official-story-page",
+        "sha256": "d18d5e70f7f8cb3968a6b967d6021a785a40c243c80b86a38f4f8464c6e2e532",
+        "bytes": 4983,
+        "scope": "Official story establishes Soviet spacesuit, flamethrower and accident; native model GIF same page.",
+        "viewed": false
+      },
+      {
+        "file": "/workspace/cqc-pass6-generation/fury/references/snake-eater-ps2-21840s.png",
+        "url": "https://archive.org/download/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater.mp4",
+        "sourceKind": "original-game-capture",
+        "sha256": "e646dceb7833c713f5a0f7fbb625b75d06d46697256d01eabfe9cf75f7a162a1",
+        "bytes": 207758,
+        "scope": "Original Fury lower legs/boots under fire; compressed motionblur supplementary only.",
+        "viewed": true,
+        "timeSeconds": 21840,
+        "captureMethod": "ffmpeg remote seek, first decoded native 640×480 PNG at requested timestamp; no resize/recolor/pixel edits; no full movie downloaded"
+      },
+      {
+        "file": "/workspace/cqc-pass6-generation/fury/references/snake-eater-ps2-21845s.png",
+        "url": "https://archive.org/download/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater.mp4",
+        "sourceKind": "original-game-capture",
+        "sha256": "b66e9e1f98ecd5f4eba73c824ceaca843d5fd841ca31f1c637d8cf34737976a0",
+        "bytes": 284438,
+        "scope": "Original Fury close rear tubes, transverse bracing and pale tanks; hidden lower tank connectors partly occluded.",
+        "viewed": true,
+        "timeSeconds": 21845,
+        "captureMethod": "ffmpeg remote seek, first decoded native 640×480 PNG at requested timestamp; no resize/recolor/pixel edits; no full movie downloaded"
+      },
+      {
+        "file": "/workspace/cqc-pass6-generation/fury/references/snake-eater-ps2-21850s.png",
+        "url": "https://archive.org/download/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater.mp4",
+        "sourceKind": "original-game-capture",
+        "sha256": "fb564427abeea829fab031ab841008965ffe25f1863ce8fbb44926d17c18208c",
+        "bytes": 370896,
+        "scope": "Original Fury closed bronze helmet, БЕЙ visor inscription, ribbed black suit, flamethrower muzzle/tube.",
+        "viewed": true,
+        "timeSeconds": 21850,
+        "captureMethod": "ffmpeg remote seek, first decoded native 640×480 PNG at requested timestamp; no resize/recolor/pixel edits; no full movie downloaded"
+      },
+      {
+        "file": "/workspace/cqc-pass6-generation/fury/references/snake-eater-ps2-21860s.png",
+        "url": "https://archive.org/download/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater.mp4",
+        "sourceKind": "original-game-capture",
+        "sha256": "8aafb3f4219a7eb9fbbd8c71eb2a79f27d0fd17faa4c592cbfb030b798011caf",
+        "bytes": 416771,
+        "scope": "Original Fury full front silhouette with expanded propulsion bars, heavy suit and boots; fire lighting not native neutral palette.",
+        "viewed": true,
+        "timeSeconds": 21860,
+        "captureMethod": "ffmpeg remote seek, first decoded native 640×480 PNG at requested timestamp; no resize/recolor/pixel edits; no full movie downloaded"
+      },
+      {
+        "file": "/workspace/cqc-pass6-generation/fury/references/snake-eater-ps2-21875s.png",
+        "url": "https://archive.org/download/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater.mp4",
+        "sourceKind": "original-game-capture",
+        "sha256": "741f6f1608bd3c99868d3103078a920eeb517861961b6486d65cf517d54d8994",
+        "bytes": 367579,
+        "scope": "Original Fury visor closeup reflecting flames with partly visible burned face behind glass; closed helmet retained, no Delta head.",
+        "viewed": true,
+        "timeSeconds": 21875,
+        "captureMethod": "ffmpeg remote seek, first decoded native 640×480 PNG at requested timestamp; no resize/recolor/pixel edits; no full movie downloaded"
+      },
+      {
+        "file": "/workspace/cqc-pass6-generation/fury/references/snake-eater-ps2-21885s.png",
+        "url": "https://archive.org/download/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater.mp4",
+        "sourceKind": "original-game-capture",
+        "sha256": "95458c9f36559e80cad0fbeef21a83dd6b65044a010ed38f720874e584c1bae8",
+        "bytes": 387871,
+        "scope": "Original Fury reverse full torso, pale beige twin vertical fuel/propulsion tanks, crossed transverse booms and right-hand weapon.",
+        "viewed": true,
+        "timeSeconds": 21885,
+        "captureMethod": "ffmpeg remote seek, first decoded native 640×480 PNG at requested timestamp; no resize/recolor/pixel edits; no full movie downloaded"
+      },
+      {
+        "file": "/workspace/cqc-pass6-generation/fury/references/snake-eater-ps2-21900s.png",
+        "url": "https://archive.org/download/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater.mp4",
+        "sourceKind": "original-game-capture",
+        "sha256": "6a0ffb5ca5cc4b8a767ce8e298604525f97ce8f7dee69534cb112c282eeaa272",
+        "bytes": 209453,
+        "scope": "Original Fury flying/jet motion with flame; gameplay animation adaptation bounded by unchanged versus profile.",
+        "viewed": true,
+        "timeSeconds": 21900,
+        "captureMethod": "ffmpeg remote seek, first decoded native 640×480 PNG at requested timestamp; no resize/recolor/pixel edits; no full movie downloaded"
+      },
+      {
+        "file": "/workspace/cqc-pass6-generation/fury/references/snake-eater-ps2-22100s.png",
+        "url": "https://archive.org/download/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater/PS2_Longplay-001-Metal_Gear_Solid_3-Snake_Eater.mp4",
+        "sourceKind": "original-game-capture",
+        "sha256": "dbdb4968c0e997f97f346787db2efd3354768401fa469a616daacb00e15fdb58",
+        "bytes": 445031,
+        "scope": "Original Fury combat floor flame region; prop flame color white-yellow/orange, no magic orb.",
+        "viewed": true,
+        "timeSeconds": 22100,
+        "captureMethod": "ffmpeg remote seek, first decoded native 640×480 PNG at requested timestamp; no resize/recolor/pixel edits; no full movie downloaded"
+      }
+    ],
+    "fidelityStatus": "closest_supported",
+    "absolute1to1Certified": false,
+    "approvalScope": "Six physically viewed native transparent body sheets, 72 authored action poses with original PS2 costume/equipment evidence; final runtime/mobile/collision/phase verification belongs to independent integrator, not certified here.",
+    "limits": [
+      "Closest supported source-specific original 2004 PS2 Fury illustration, no absolute pixel/material/model or 1:1 certification. Original model is low resolution and cutscene heavily flame-lit; hidden seams, hose undersides, exact tank plumbing and glove details partly interpreted.",
+      "Original reflective closed visor partly reveals a burned face in source21875; generated small sprite keeps it closed with dark bronze reflections, no exposed invented face. Visor inscription is intended original БЕЙ, not a claim of character-perfect font/letter curvature reproduction in every tiny pose.",
+      "Right-hand flamethrower held consistently by intended anatomical right hand in each independent facing; original source frontal pose supports this. Some hand overlap while supporting the tube hides finger topology; exact handedness and number of fingers are not certified in low-resolution occlusion.",
+      "Twin pale rear cylinders and thin transverse jet booms supported by original rear capture21885 and close equipment21845. Near-side cylinder/boom may occlude far-side parts; no added mechanical wing or new weapon.",
+      "72 authored versus animations are not extracted original PS2 animation data. Original versus profile and engine timing/damage/heat costs/bounded movement remain root-owned and unchanged by this producer. Normals are physical jab/tube strike/boot sweep and grapple adaptations, not new canon abilities.",
+      "Standing source scale measured from upright helmet-to-boot silhouettes; crouch/low/fall/KO never resized to standing height. Near-crop neighbour pixels on B LEFT heavy/KO excluded only through existing Canvas contours, native PNG bytes unchanged.",
+      "Shoot and super use same gun muzzle. Deploy aims real nozzle downward, separate flame region; trap collision remains original engine position unless root documents a specific correction. No flame/aura/jet exhaust baked into body.",
+      "B LEFT1 rejected for mixed directions; B LEFT2 rejected for grey semi-transparent veil joining all12 alpha components; B LEFT3 accepted after native image_gen alpha edit,12 components and zero opaque edge pixels. All native attempts and prompt metadata remain preserved; no OC derived from rejects.",
+      "Six source PNGs are distinct independently authored facings, not mirrored, recolored, alpha-processed or resized by scripts. PIL/NumPy/SciPy only read pixels/SHA/components; Canvas crop/contour metadata only."
+    ]
+  },
+  "counts": {
+    "selectedNativePngSheets": 6,
+    "totalPoseCells": 72,
+    "poseCellsPerSheet": 12,
+    "facings": 2,
+    "nativeBodyGenerationAttempts": 8,
+    "rejectedNativeBodyAttempts": 2,
+    "toolArgumentFailuresBeforeNativeCreation": 2,
+    "selectedWeaponPropAtlases": 1
+  },
+  "sourceGeometry": {
+    "a-right": {
+      "recommendStandingSourceHeight": 334.0,
+      "nativeUprightHeights": [
+        334,
+        334
+      ],
+      "observedUprightIndices": [
+        0,
+        1
+      ],
+      "measuredLayouts": "/workspace/cqc-pass6-generation/fury/layouts/a-right.json",
+      "basis": "Measured upright helmet-to-boot native alpha component height (no overhead weapon and no crouch). Same body scale for all poses within a sheet. Canvas crop/contour metadata only; PNG pixels unchanged."
+    },
+    "a-left": {
+      "recommendStandingSourceHeight": 334.0,
+      "nativeUprightHeights": [
+        334,
+        334
+      ],
+      "observedUprightIndices": [
+        0,
+        1
+      ],
+      "measuredLayouts": "/workspace/cqc-pass6-generation/fury/layouts/a-left.json",
+      "basis": "Measured upright helmet-to-boot native alpha component height (no overhead weapon and no crouch). Same body scale for all poses within a sheet. Canvas crop/contour metadata only; PNG pixels unchanged."
+    },
+    "b-right": {
+      "recommendStandingSourceHeight": 320.0,
+      "nativeUprightHeights": [
+        321,
+        319
+      ],
+      "observedUprightIndices": [
+        0,
+        2
+      ],
+      "measuredLayouts": "/workspace/cqc-pass6-generation/fury/layouts/b-right.json",
+      "basis": "Measured upright helmet-to-boot native alpha component height (no overhead weapon and no crouch). Same body scale for all poses within a sheet. Canvas crop/contour metadata only; PNG pixels unchanged."
+    },
+    "b-left": {
+      "recommendStandingSourceHeight": 344.0,
+      "nativeUprightHeights": [
+        343,
+        345
+      ],
+      "observedUprightIndices": [
+        0,
+        2
+      ],
+      "measuredLayouts": "/workspace/cqc-pass6-generation/fury/layouts/b-left.json",
+      "basis": "Measured upright helmet-to-boot native alpha component height (no overhead weapon and no crouch). Same body scale for all poses within a sheet. Canvas crop/contour metadata only; PNG pixels unchanged."
+    },
+    "c-right": {
+      "recommendStandingSourceHeight": 331.0,
+      "nativeUprightHeights": [
+        337,
+        325
+      ],
+      "observedUprightIndices": [
+        0,
+        2
+      ],
+      "measuredLayouts": "/workspace/cqc-pass6-generation/fury/layouts/c-right.json",
+      "basis": "Measured upright helmet-to-boot native alpha component height (no overhead weapon and no crouch). Same body scale for all poses within a sheet. Canvas crop/contour metadata only; PNG pixels unchanged."
+    },
+    "c-left": {
+      "recommendStandingSourceHeight": 323.0,
+      "nativeUprightHeights": [
+        324,
+        322
+      ],
+      "observedUprightIndices": [
+        0,
+        2
+      ],
+      "measuredLayouts": "/workspace/cqc-pass6-generation/fury/layouts/c-left.json",
+      "basis": "Measured upright helmet-to-boot native alpha component height (no overhead weapon and no crouch). Same body scale for all poses within a sheet. Canvas crop/contour metadata only; PNG pixels unchanged."
+    }
+  },
+  "layouts": {
+    "a-right": "/workspace/cqc-pass6-generation/fury/layouts/a-right.json",
+    "a-left": "/workspace/cqc-pass6-generation/fury/layouts/a-left.json",
+    "b-right": "/workspace/cqc-pass6-generation/fury/layouts/b-right.json",
+    "b-left": "/workspace/cqc-pass6-generation/fury/layouts/b-left.json",
+    "c-right": "/workspace/cqc-pass6-generation/fury/layouts/c-right.json",
+    "c-left": "/workspace/cqc-pass6-generation/fury/layouts/c-left.json"
+  },
+  "sourceCombatOrigins": "/workspace/cqc-pass6-generation/fury/SOURCE_COMBAT_ORIGINS.json",
+  "sourceContract": "/workspace/cqc-pass6-generation/fury/SOURCE_CONTRACT.json",
+  "nativeAlphaReview": "/workspace/cqc-pass6-generation/fury/NATIVE_ALPHA_REVIEW.json",
+  "projectileProps": {
+    "geometry": "/workspace/cqc-pass6-generation/fury/FIRE_JETS_NATIVE_GEOMETRY.json",
+    "delivery": "/workspace/cqc-pass6-generation/fury/FIRE_JETS_DELIVERY.json",
+    "source": "/workspace/cqc-pass6-generation/fury/sources/FIRE_JETS_01.png",
+    "nativeOriginal": "/workspace/generated_images/exec-7c38c710-2ede-47bb-9296-c2635f413180.png",
+    "sha256": "43cacfaa191d615362ad8f0a3db809722a64135cd4036d233fcb176b693670ef",
+    "displayWidthRecommendation": 96,
+    "fidelityStatus": "closest_supported",
+    "review": "Three native alpha-separated elongated white-yellow/orange-red physical flame plumes, emission start LEFT and forward tongue RIGHT. Original PS2 fire source physically viewed; no orb, person or gun on prop atlas. Native source PNG unmodified.",
+    "limits": [
+      "Physical flame color and fire use supported by original PS2 combat capture; three painted animation plumes are authored approximations, not original particle texture extraction.",
+      "White-yellow narrow rear emission throat at LEFT and broad yellow-orange/red tongues at RIGHT. Root may Canvas-crop/rotate according to projectile heading; no pixels edited.",
+      "No detached embers, magic orb, skull face, weapon or character on this atlas. No body flame, no changes to bounded original versus combat life/damage/timing."
+    ]
+  }
+}

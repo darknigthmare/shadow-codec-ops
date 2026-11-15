@@ -1,0 +1,79 @@
+{
+  "mode": "plan_only_no_tests_executed",
+  "root": "/workspace/cqc-game-working/cqc-versus-v056",
+  "distinctSuites": 5,
+  "plannedCasesForComparisonOnly": 35,
+  "suites": [
+    {
+      "label": "brad-validation",
+      "command": [
+        "node",
+        "tests/test_combat_sprite_pass4_validation.cjs"
+      ],
+      "testSource": "/workspace/cqc-game-working/cqc-versus-v056/tests/test_combat_sprite_pass4_validation.cjs",
+      "testSourceSha256": "4a08961bd15d7cbbece50347a3b21e39579b05bb22832b99db229f48ab0913e5",
+      "expectedCaseCount": 2,
+      "exists": true
+    },
+    {
+      "label": "renderer",
+      "command": [
+        "node",
+        "tests/test_combat_sprite_renderer.cjs"
+      ],
+      "testSource": "/workspace/cqc-game-working/cqc-versus-v056/tests/test_combat_sprite_renderer.cjs",
+      "testSourceSha256": "4a36b5916ed7f8a5007d4856de5fc990b1da56f4eb69f91c66d628f65109fd3b",
+      "expectedCaseCount": 22,
+      "exists": true
+    },
+    {
+      "label": "importer",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_prepare_combat_sprite.py",
+        "-v"
+      ],
+      "testSource": "/workspace/cqc-game-working/cqc-versus-v056/tests/test_prepare_combat_sprite.py",
+      "testSourceSha256": "76f0d5ea5220e2df4f9dc1f53e4a63b57ef41b9b4c0035a91a7e65fe2e075aeb",
+      "expectedCaseCount": 6,
+      "exists": true
+    },
+    {
+      "label": "brad-importer",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_prepare_combat_sprite_pass4.py",
+        "-v"
+      ],
+      "testSource": "/workspace/cqc-game-working/cqc-versus-v056/tests/test_prepare_combat_sprite_pass4.py",
+      "testSourceSha256": "48649e270d58921d105c2f5465c547856acc3d905bcf9e547e22173dd2dd50a4",
+      "expectedCaseCount": 2,
+      "exists": true
+    },
+    {
+      "label": "native-contours",
+      "command": [
+        "python",
+        "tests/test_combat_sprite_contours_pass7.py",
+        "-v"
+      ],
+      "testSource": "/workspace/cqc-game-working/cqc-versus-v056/tests/test_combat_sprite_contours_pass7.py",
+      "testSourceSha256": "60eef99112cd3ea0a258efb60410e597505327b36139c8aa6e067defe9b1f4f6",
+      "expectedCaseCount": 3,
+      "exists": true
+    }
+  ],
+  "excludedCatalogSuite": "tests/test_combat_sprite_catalog_pass7.cjs is freshly executed once in the core report; no duplicate case count here."
+}

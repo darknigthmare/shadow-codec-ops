@@ -1,0 +1,263 @@
+{
+  "schema": "cqc.native-machine-active-delivery/1",
+  "createdAt": "2026-10-08T13:37:26.029409+00:00",
+  "status": "passed",
+  "uid": "completion__dwarf_gekko_mgs4",
+  "costumeID": "retro-msx",
+  "family": "retro",
+  "scope": "Actual Root-integrated ACTIVE application source; unchanged frozen and published batch2.",
+  "application": {
+    "versusURL": "http://127.0.0.1:8029/cqc/modules/unified-versus-v055.html",
+    "coreURL": "http://127.0.0.1:8029/cqc/modules/core-v032.html",
+    "privateOverlay": false,
+    "runtimeInjection": false,
+    "functionReplacement": false,
+    "forcedClock": false,
+    "publicSourceMutationByThisReview": false
+  },
+  "rootIntegration": {
+    "path": "/workspace/cqc-pass21/integration/dwarf-active-v1/DWARF_ROOT_ACTIVE_SOURCE_INTEGRATION_ACTUAL_V1.json",
+    "bytes": 6244,
+    "sha256": "4c56d2d23a4cbc4a0d948d639bc3c9333c6c84701ccaa6b830fe743e87685e42"
+  },
+  "independent13FilePins": {
+    "path": "/workspace/cqc-pass21-retro-c/machine-active-qa/ROOT_ACTIVE_13_FILE_PINS_INDEPENDENT_ACTUAL_V1.json",
+    "bytes": 3660,
+    "sha256": "06fdaf95c2758129f43ad4cf8cbc8cfe594c2637dd90827d56aabd8e5125e990"
+  },
+  "actualBrowserQA": {
+    "path": "/workspace/cqc-pass21-retro-c/machine-active-qa/DWARF_PRODUCTION_BOOTSTRAP_REAL_BROWSER_PRIVATE_QA_ACTIVE_ACTUAL_V2.json",
+    "bytes": 18622,
+    "sha256": "2b1705d1ca9775e1b0d7909aad3e485aa3d7ae322c1e6f31e26c7aeaf96da1e3"
+  },
+  "script": {
+    "path": "/workspace/cqc-pass21-retro-c/machine-active-qa/browser-machine-production-active-qa-v2.mjs",
+    "bytes": 13104,
+    "sha256": "e994def2e82a03d994cf40a73442319294177532a10fc390aa216f6f880f7188"
+  },
+  "sourceOwnedCoverage": {
+    "coverage": {
+      "uid": "completion__dwarf_gekko_mgs4",
+      "family": "retro",
+      "status": "ready-native",
+      "costumeID": "retro-msx",
+      "activate": false,
+      "sourceCover": "registered-reviewed-native",
+      "newArtRequired": false
+    },
+    "versusRoster": 375,
+    "uidInstances": 1
+  },
+  "bootstrap": {
+    "phase": "ready",
+    "originalPreviewReady": true,
+    "availableChoices": [
+      {
+        "id": "original",
+        "label": "Tenue d’origine"
+      },
+      {
+        "id": "retro-msx",
+        "label": "Rétro"
+      }
+    ],
+    "humanSpriteFallback": false,
+    "equippedID": "retro-msx",
+    "portraitReady": true
+  },
+  "uiFlow": [
+    "select existing fighter",
+    "Vestiaire",
+    "Rétro",
+    "Équiper",
+    "settings gear",
+    "LOCAL mode through actual select/change",
+    "apply settings",
+    "Commencer",
+    "stage selection",
+    "enter arena"
+  ],
+  "settings": {
+    "open": true,
+    "selectedCostume": "retro-msx",
+    "inputs": [
+      {
+        "id": "mode",
+        "value": "local"
+      },
+      {
+        "id": "rounds",
+        "value": "2"
+      },
+      {
+        "id": "timer",
+        "value": "99"
+      },
+      {
+        "id": "finishMode46",
+        "value": "stylized"
+      },
+      {
+        "id": "matchDifficultyPass17",
+        "value": "normal"
+      },
+      {
+        "id": "matchAIProfilePass17",
+        "value": "balanced"
+      }
+    ]
+  },
+  "rightMatch": {
+    "frame": 126,
+    "phase": "fight",
+    "uid": "completion__dwarf_gekko_mgs4",
+    "costume": "retro-msx",
+    "face": 1
+  },
+  "rightKeyboardWalk": {
+    "beforeX": 380,
+    "afterX": 476.7999999999995,
+    "activeArmChannels": 22
+  },
+  "leftMatch": {
+    "frame": 122,
+    "phase": "fight",
+    "uid": "completion__dwarf_gekko_mgs4",
+    "costume": "retro-msx",
+    "face": -1,
+    "humanOpponent": {
+      "uid": "core__solid",
+      "costume": "nextgen"
+    },
+    "traces": 32
+  },
+  "leftKeyboardWalk": {
+    "beforeX": 900,
+    "afterX": 812.0000000000005,
+    "activeLeftArmChannels": 19
+  },
+  "humanNativeNextGenRegression": {
+    "chosen": "nextgen",
+    "nativeSprite": true,
+    "machineOwns": false,
+    "status": {
+      "uid": "core__solid",
+      "renderer": "png",
+      "coverage": "action-frames",
+      "actions": [
+        "idle",
+        "walk",
+        "guard",
+        "crouch",
+        "jump",
+        "roll",
+        "punch",
+        "heavy",
+        "low",
+        "throw",
+        "shoot",
+        "deploy",
+        "reload",
+        "recover",
+        "optic",
+        "parry",
+        "attack",
+        "charge",
+        "hit",
+        "ko"
+      ],
+      "oppositeActions": [
+        "idle",
+        "walk",
+        "guard",
+        "crouch",
+        "jump",
+        "roll",
+        "punch",
+        "heavy",
+        "low",
+        "throw",
+        "shoot",
+        "deploy",
+        "reload",
+        "recover",
+        "optic",
+        "parry",
+        "attack",
+        "charge",
+        "hit",
+        "ko"
+      ],
+      "states": [
+        "ready"
+      ],
+      "ready": true,
+      "limits": [
+        "Freshly painted native body of original 1998 MGS1 Solid Snake. No body substitution, age change, TTS, MGS2 or MGS4 appearance is used.",
+        "This Next Gen drawing is a fan style reinterpretation, not a publisher-authored costume and not a certified 1:1 extracted model.",
+        "Independent anatomical facings; 16 selected main action poses per face plus one selected SOCOM utility reload per face, 34 selected physical figures total.",
+        "The two supplementary complete PNG sheets are preserved, but only their interior reload cell 8 is used. Their unrelated edge-touching figures remain unused.",
+        "All native PNG bytes are immutable. Rects, source standing heights, foot pivots and isolation polygons are derived by read-only alpha16 analysis.",
+        "SOCOM muzzle and held-grenade release points are physically reviewed against exact source SHA/rect/pivot. They describe these illustrations, not exact original game rig data.",
+        "Original move timing, damage, ammunition, collider, human world height and incarnation UID stay unchanged; animation keyframes are an adaptation, not motion capture."
+      ]
+    }
+  },
+  "originalRestored": {
+    "choice": "original",
+    "portraitReady": "ready",
+    "ownsOriginal": false
+  },
+  "coreBoot": {
+    "ready": true,
+    "registered": true,
+    "originalSnakeAvailable": true
+  },
+  "captures": [
+    {
+      "path": "/workspace/cqc-pass21-retro-c/machine-active-qa/DWARF_PRODUCTION_LEFT_UI_MATCH_REAL_PRIVATE_ACTIVE_ACTUAL_V2.png",
+      "bytes": 1651173,
+      "sha256": "22fb52db320b091450f68ba2c6ec6e3a2a9cf6d6991b5440990d6c6054ed7330",
+      "physicallyInspected": true
+    },
+    {
+      "path": "/workspace/cqc-pass21-retro-c/machine-active-qa/DWARF_PRODUCTION_LEFT_WARDROBE_REAL_PRIVATE_ACTIVE_ACTUAL_V2.png",
+      "bytes": 577829,
+      "sha256": "7a4f08e1a18bcb12d69a074d493540c585abae49e63f6947ab3cdedb69726802",
+      "physicallyInspected": true
+    },
+    {
+      "path": "/workspace/cqc-pass21-retro-c/machine-active-qa/DWARF_PRODUCTION_SELECTION_REAL_PRIVATE_ACTIVE_ACTUAL_V2.png",
+      "bytes": 872098,
+      "sha256": "62021d577988dab5913f1028445a6e84d3df1c9f53ac233f87a328a1cb06d3e3",
+      "physicallyInspected": true
+    },
+    {
+      "path": "/workspace/cqc-pass21-retro-c/machine-active-qa/DWARF_PRODUCTION_UI_MATCH_REAL_PRIVATE_ACTIVE_ACTUAL_V2.png",
+      "bytes": 1645877,
+      "sha256": "73a923d0ee8f585216e36bace68183937616128f5666f5ea0ba0cd4d90e6d2dc",
+      "physicallyInspected": true
+    },
+    {
+      "path": "/workspace/cqc-pass21-retro-c/machine-active-qa/DWARF_PRODUCTION_WARDROBE_REAL_PRIVATE_ACTIVE_ACTUAL_V2.png",
+      "bytes": 558459,
+      "sha256": "99972e306dcb207f479b9acf55d86d5e7488ca579e1017a9773ea57165268535",
+      "physicallyInspected": true
+    }
+  ],
+  "rigQualifications": {
+    "independentCameras": 2,
+    "nativeSourceParts": 22,
+    "sourceRigID": "dwarf_gekko_mgs4_ps3_2008",
+    "sourceDisplayHeight": 133,
+    "sourceSkeletonAndStateUnchanged": true,
+    "simulationMutation": false,
+    "humanBodySubstitution": false,
+    "MSXHardwarePaletteAttested": false,
+    "newLimbDamageGameplay": false,
+    "destructionProofScope": "Separate accepted renderer fixtures preserve original source flags and visibility; actual per-limb gameplay damage was not added.",
+    "coreRosterQualification": "Bootstrap registration succeeds in Core; no new fighter roster record or forced machine presence is added to Core.",
+    "projectileQualification": "Source Dwarf profile has no projectile move; no fictitious gun muzzle is claimed.",
+    "v1Qualification": "Earlier ACTIVE V1 default CPU mode was not proof of LEFT keyboard control; V2 explicitly uses LOCAL for both real keys."
+  }
+}

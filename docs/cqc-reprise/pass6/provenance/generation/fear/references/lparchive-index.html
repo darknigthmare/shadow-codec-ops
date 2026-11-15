@@ -1,0 +1,256 @@
+<!doctype html>
+
+<!--[if lt IE 7]> <html lang="en-gb" class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html lang="en-gb" class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html lang="en-gb" class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en-gb"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Metal Gear Solid 3: Snake Eater</title> 
+  
+  <meta name="keywords" content="archive,let's,play,Chip Cheezum, General Ironicus,Metal Gear Solid 3: Snake Eater,video,informative,humorous,group,completionist" /> 
+  <meta name="description" content="Let's Play Metal Gear Solid 3: Snake Eater by Chip Cheezum, General Ironicus" /> 
+  <meta name="author" content="Chip Cheezum, General Ironicus" /> 
+  
+	<link rel="stylesheet" href="/style/2012/archive-2.0.6.css" media="screen" /> 
+    
+  <meta name="viewport" content="width=960" />
+
+  <script type="text/javascript">
+    (function(html){html.className = "live";})(document.documentElement||document.body);
+  </script>
+
+  <script src="/script/jquery-1.7.1.min.js"></script>
+  <script src="/script/jquery.ba-outside-events.min.js"></script>
+  
+  <script src="/script/2012/globals.js"></script>
+  <script src="/script/2012/readinghistory-1.0.1.js"></script>
+
+	<script type="text/javascript">
+	/* <![CDATA[ */
+		// remove ugly anchor from search results. Looks like users without JS will need to live with it.
+		var url = window.location.toString();
+		if(url.indexOf('#') != -1) { window.location = url.split('#')[0]; }
+
+    var preload = new Image();
+    preload.src = "/site_images/tag_add.png";
+    preload.src = "/site_images/tag_del.png";
+  
+    lpid = 20128;
+    historyTitle = "Metal Gear Solid 3: Snake Eater by Chip Cheezum, General Ironicus";
+
+    $(document).ready(displayUpdatedHistory);
+
+    current_tags = ["4","5","6","14"];
+
+    addtag_html='        Tag it!';
+    deltag_html='        Untag it!';
+
+		$(document).ready(function() {
+			$("div#popups").html("    <div class=\"message\" id=\"likeit\"><strong>Thanks! We like it too.</strong>Why not check out some similar LPs from our recommendations?</div> \
+    <div class=\"message\" id=\"tagit\"> \
+      <strong>What would you like to tag this LP as?</strong> \
+      <div class=\"tagrow\"> \
+        <span>Tag</span> \
+  			<select id=\"tagselect\">        <option value=\"9\">challenges</option> \
+        <option value=\"11\">co-op</option> \
+        <option value=\"14\">completionist</option> \
+        <option value=\"12\">dual-audio</option> \
+        <option value=\"6\">group</option> \
+        <option value=\"15\">high-definition</option> \
+        <option value=\"5\">humorous</option> \
+        <option value=\"4\">informative</option> \
+        <option value=\"10\">narrative</option> \
+        <option value=\"8\">subtitles</option> \
+        <option value=\"7\">voice</option> \
+        </select> \
+        <button class=\"addtag\" id=\"tagbutton\" onclick=\"return tagPopdown();\">        Tag it!        </button> \
+      </div> \
+		</div>");
+		});
+
+	/* ]]> */
+  </script>
+  <script src="/script/2012/archive.js"></script>
+</head> 
+<body>
+  <div class="header">
+    <a class="index-link" href="/">
+      &nbsp;<span class="logo"><i title="The Let's Play Archive">&nbsp;</i></span>
+    </a>
+  </div>
+  
+  <h1 class="indexhead">The Let's Play Archive</h1>  <h1><a href=".">Metal Gear Solid 3: Snake Eater</a></h1>
+	<h2><span>by</span> <a href="/author/Chip%20Cheezum%2C%20General%20Ironicus">Chip Cheezum, General Ironicus</a></h2>  
+  <div id="details" class="info">
+    <ul id="statistics">
+      <li>Began on <strong>Jun 13, 2009</strong></li>
+      <li>Ended on <strong>Sep 06, 2009</strong></li>
+      <li>This LP has <strong>75</strong> parts.</li>
+      <li id="archival">Added to the archive on <strong>Nov 14, 2009</strong></li>
+    </ul>
+    
+    <ul id="tags">
+      <li id="controls">
+				<a href="#" class="like" title="Like this LP" onclick="return likePopup()"><span class="button"><i class="func-like">&nbsp;</i></span> Like</a>
+        <a href="#" class="tag" title="Tag this LP" onclick="return tagPopup()"><span class="button"><i class="func-tag">&nbsp;</i></span> Tag</a>
+				</li>
+      <li id="taglist">
+This LP is tagged with: <strong><a href="/?tags=video">video</a>, <a href="/?tags=informative">informative</a>, <a href="/?tags=humorous">humorous</a>, <a href="/?tags=group">group</a>, <a href="/?tags=completionist">completionist</a></strong>
+      </li>
+    </ul>
+    
+    <div id="popups">
+  	<!-- asd -->
+      <div class="message" id="likeit"><strong>Thanks! We like it too.</strong>Why not check out some similar LPs from our recommendations?</div>
+      <div class="message" id="tagit">
+        <strong>What would you like to tag this LP as?</strong>
+        <div class="tagrow">
+          <span>Tag</span>
+          <select id="tagselect">
+          <option value="9">challenges</option>
+        <option value="11">co-op</option>
+        <option value="14">completionist</option>
+        <option value="12">dual-audio</option>
+        <option value="6">group</option>
+        <option value="15">high-definition</option>
+        <option value="5">humorous</option>
+        <option value="4">informative</option>
+        <option value="10">narrative</option>
+        <option value="8">subtitles</option>
+        <option value="7">voice</option>
+          </select>
+          <button class="addtag" id="tagbutton" onclick="return tagPopdown();">
+          Tag it!  
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <p id="thread">Original Thread: <a id="threadlink" href="http://forums.somethingawful.com/showthread.php?threadid=3154130">MGS3: Cruelty to animals is a sign of serious behavioral problems [VLP]</a></p>
+<p id="similar">&nbsp;</p>  
+  </div> 
+
+  
+
+  <a href="http://www.archive.org/details/LP_Metal_Gear_Solid_3" class="highlight" id="iarchive"><span><strong>This LP is also available on the Internet Archive!</strong> Some video LPs are kindly hosted by the folks on archive.org. This means the original source videos will always be available for download or watching, even if the original video hosts are no longer available!</span></a>
+
+  <div id="content" class="cblock">
+<h1>Introduction</h1>
+		<img src="Images/1-953c00mgs3logo.jpg" alt="" class="img" border="0"><br />
+<br />
+Metal Gear Solid 3 was released on November 17th, 2004. It's pretty much the best game ever because you can throw snakes at the faces of guys and they wrassle with 'em. We're playing the re-release of MGS3 that uses a much better camera system and has extra crap. We'll be playing that crap too. <br />
+<br />
+The MGS games have a lot of cutscenes, although this game is a little bit better with the spacing of them, except at the beginning. Videos will be labeled as being either cutscene or gameplay videos, so that those who want to skip the cutscenes will know which videos to watch. Make note that the gameplay videos will still have cutscenes, they're just not incredibly long like the cutscene videos. There are also a lot of radio conversations that are kind of amusing, so those will normally be their own videos.<br />
+<br />
+Since stealth can sometimes be boring and/or there are a lot of options in MGS3, certain maps will be played several times in different ways.<br />
+<br />
+MGS3 is the first game in the MGS series, chronologically. Even if you know nothing about MGS, the story stands very well on its own.<br />
+<br />
+<b><br />
+<img src="Images/2-3ca800videos.png" alt="" class="img" border="0"><br /><br />
+<table>
+<col width="100%">
+<tr><td>[1-1] Virtuous Mission (Cutscene)</td><td><a href="http://chipandironicus.com/videos/mgs3/1.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[1-2] Virtuous Mission (Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs3/2.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[1-3] Food Chat with Para-medic (Radio)</td><td><a href="http://chipandironicus.com/videos/mgs3/3.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[2-1] Virtuous Misison (Cutscene)</td><td><a href="http://chipandironicus.com/videos/mgs3/4.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[2-2] Operation Ape Snake (Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs3/5.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[2-3] Ocelot's Mistake (Radio)</td><td><a href="http://chipandironicus.com/videos/mgs3/6.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[3-1] Operation Snake Eater (Cutscene)</td><td><a href="http://chipandironicus.com/videos/mgs3/7.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[3-2] Operation Snake Eater (Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs3/8.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[3-3] Boss Rush - The Ocelots</td><td><a href="http://chipandironicus.com/videos/mgs3/9.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[4-1] Operation Snake Eater (Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs3/10.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[4-2] Food Chat with Para-medic (Radio)</td><td><a href="http://chipandironicus.com/videos/mgs3/11.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[5-1] Operation Snake Eater (Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs3/12.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[5-2] Talkin' with Mr. Sigint (Radio)</td><td><a href="http://chipandironicus.com/videos/mgs3/13.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[6-1] Operation Snake Eater (Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs3/14.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[6-2] EVA blabs, Ocelot's Past (Radio)</td><td><a href="http://chipandironicus.com/videos/mgs3/15.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[7-1] Operation Snake Eater (Game/Scene)</td><td><a href="http://chipandironicus.com/videos/mgs3/16.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[7-2] Food Chat with Para-medic (Radio)</td><td><a href="http://chipandironicus.com/videos/mgs3/17.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[8-1] Operation Snake Eater (Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs3/18.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[8-2] Weapon Chat with Sigint (Radio)</td><td><a href="http://chipandironicus.com/videos/mgs3/19.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[9-1] Operation Snake Eater (Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs3/20.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[9-2] Russiatalk with Sigint (Radio)</td><td><a href="http://chipandironicus.com/videos/mgs3/21.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[10-1] Operation Snake Eater (Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs3/22.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[10-2] Food Chat with Para-medic (Radio)</td><td><a href="http://chipandironicus.com/videos/mgs3/23.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[10-3] Boss Rush - Ocelot/Pain/Fear (Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs3/24.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[10-4] Cave Snake Ponders (Commentary)</td><td><a href="http://chipandironicus.com/videos/mgs3/25.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[11-1] Operation Snake Eater (Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs3/26.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[11-2] Talkin' to Everybody (Radio)</td><td><a href="http://chipandironicus.com/videos/mgs3/27.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[12-1] Operation Snake Eater (Game/Scene)</td><td><a href="http://chipandironicus.com/videos/mgs3/28.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[12-2] Feelings (Commentary)</td><td><a href="http://chipandironicus.com/videos/mgs3/29.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[13-1] Operation Snake Eater (Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs3/30.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[13-2] Operation Intrude N313 (Metal Gear 1)</td><td><a href="http://chipandironicus.com/videos/mgs3/31.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[14-1] Operation Snake Eater (Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs3/32.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[14-2] Operation Snake Eater (Cutscene)</td><td><a href="http://chipandironicus.com/videos/mgs3/33.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[15-1] Operation Snake Eater (Cutscene)</td><td><a href="http://chipandironicus.com/videos/mgs3/34.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[15-2] Operation Blow Shit Up (Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs3/35.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[16-1] Operation Snake Eater (Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs3/36.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[16-2] More Talkin' with People (Radio)</td><td><a href="http://chipandironicus.com/videos/mgs3/37.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[17-1] Operation Snake Eater (Game/Scene)</td><td><a href="http://chipandironicus.com/videos/mgs3/38.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[17-2] More Ghosts (The Sorrow)</td><td><a href="http://chipandironicus.com/videos/mgs3/39.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[17-3] Let's Talk, Snake (Radio)</td><td><a href="http://chipandironicus.com/videos/mgs3/40.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[18-1] Operation Snake Eater (Scene/Boss)</td><td><a href="http://chipandironicus.com/videos/mgs3/41.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[18-2] Operation Intrude FO14 (Metal Gear 2)</td><td><a href="http://chipandironicus.com/videos/mgs3/42.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[19-1] Operation Snake Eater (Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs3/43.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[19-2] Operation Intrude FO14 (Metal Gear 2)</td><td><a href="http://chipandironicus.com/videos/mgs3/44.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[20-1] Operation Snake Eater (Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs3/45.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[20-2] Operation Intrude FO14 (Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs3/46.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[20-3] Operation Intrude FO14 (Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs3/47.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[21-1] Operation Snake Eater (Gameplay)</td><td><a href="http://chipandironicus.com/videos/mgs3/48.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[21-2] Final Boss</td><td><a href="http://chipandironicus.com/videos/mgs3/49.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[21-3] The End</td><td><a href="http://chipandironicus.com/videos/mgs3/50.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[22-1] Unlockables</td><td><a href="http://chipandironicus.com/videos/mgs3/51.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[22-2] The Rest of Para-Medic</td><td><a href="http://chipandironicus.com/videos/mgs3/52.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+<tr><td>[22-3] Ocelot Duel & Commentary</td><td><a href="http://chipandironicus.com/videos/mgs3/53.html" target="_blank" rel="nofollow">C&I</a></td></tr>
+</table>
+
+<br /><img src="Images/3-9fbc00secrettheatersmall.png" alt="" class="img" border="0"><br />
+<img src="Images/5-734e00fanstuff.png" alt="" class="img" border="0"><br />
+<br /><table>
+<col width="100%">
+<tr><td>[01] The Beginning is the End</td><td><a href="http://www.youtube.com/watch?v=CV68-KdGw_M&list=PLBC29A5FBB6EB9D04&index=1" target="_blank" rel="nofollow">Youtube</a></td></tr>
+<tr><td>[02] The Ultimate Weapon</td><td><a href="http://www.youtube.com/watch?v=x4EPeWvL7WU&list=PLBC29A5FBB6EB9D04&index=2" target="_blank" rel="nofollow">Youtube</a></td></tr>
+<tr><td>[03] I Read Them for the Articles</td><td><a href="http://www.youtube.com/watch?v=rWSkfGKO6gY&list=PLBC29A5FBB6EB9D04&index=3" target="_blank" rel="nofollow">Youtube</a></td></tr>
+<tr><td>[04] Basashi</td><td><a href="http://www.youtube.com/watch?v=eLIZIEiEKeE&list=PLBC29A5FBB6EB9D04&index=4" target="_blank" rel="nofollow">Youtube</a></td></tr>
+<tr><td>[05] Made in China</td><td><a href="http://www.youtube.com/watch?v=T-WkCNfdM7o&list=PLBC29A5FBB6EB9D04&index=5" target="_blank" rel="nofollow">Youtube</a></td></tr>
+<tr><td>[06] Cat-like Behavior</td><td><a href="http://www.youtube.com/watch?v=04yEkhsvw4Y&list=PLBC29A5FBB6EB9D04&index=6" target="_blank" rel="nofollow">Youtube</a></td></tr>
+<tr><td>[07] Get Down!</td><td><a href="http://www.youtube.com/watch?v=4O2eU2_0WVY&list=PLBC29A5FBB6EB9D04&index=7" target="_blank" rel="nofollow">Youtube</a></td></tr>
+<tr><td>[08] The Joy</td><td><a href="http://www.youtube.com/watch?v=C-hjsx7pDgI&list=PLBC29A5FBB6EB9D04&index=8" target="_blank" rel="nofollow">Youtube</a></td></tr>
+<tr><td>[09] MGS4 Debut</td><td><a href="http://www.youtube.com/watch?v=HL_PlV6OdLM&list=PLBC29A5FBB6EB9D04&index=9" target="_blank" rel="nofollow">Youtube</a></td></tr>
+<tr><td>[10] Gotcha This Time!</td><td><a href="http://www.youtube.com/watch?v=pNRO_8yxDoQ&list=PLBC29A5FBB6EB9D04&index=10" target="_blank" rel="nofollow">Youtube</a></td></tr>
+<tr><td>[11] Diehard</td><td><a href="http://www.youtube.com/watch?v=PLi6JuGSbfw&list=PLBC29A5FBB6EB9D04&index=11" target="_blank" rel="nofollow">Youtube</a></td></tr>
+<tr><td>[12] Close Call</td><td><a href="http://www.youtube.com/watch?v=g91Z4DPGD4Y&list=PLBC29A5FBB6EB9D04&index=12" target="_blank" rel="nofollow">Youtube</a></td></tr>
+<tr><td>[13] The Quick Version</td><td><a href="http://www.youtube.com/watch?v=Jli4Zsp-pYU&list=PLBC29A5FBB6EB9D04&index=13" target="_blank" rel="nofollow">Youtube</a></td></tr>
+<tr><td>[14] Payback Viddler</td><td><a href="http://www.youtube.com/watch?v=JHeZOyKR31c&list=PLBC29A5FBB6EB9D04&index=14" target="_blank" rel="nofollow">Youtube</a></td></tr>
+<tr><td>[15] Metal Gear Sigint</td><td><a href="http://www.youtube.com/watch?v=pI-p-K6BQTI&list=PLBC29A5FBB6EB9D04&index=15" target="_blank" rel="nofollow">Youtube</a></td></tr>
+<tr><td>[16] He's Still Got It</td><td><a href="http://www.youtube.com/watch?v=khlHiEZL41M&list=PLBC29A5FBB6EB9D04&index=16" target="_blank" rel="nofollow">Youtube</a></td></tr>
+<tr><td>[17] Metal Gear Raiden: Snake Eraser</td><td><a href="http://www.youtube.com/watch?v=0BS87I58bCY&list=PLBC29A5FBB6EB9D04&index=17" target="_blank" rel="nofollow">Youtube</a></td></tr>
+</table>
+
+<br /><img src="Images/4-64cc00retsupurae.png" alt="" class="img" border="0"><br />
+<br /><table>
+<col width="100%">
+<tr><td>[01]Retsupurae Bubsy 3D</td><td><a href="http://www.youtube.com/watch?v=zjJC8YT5DRg" target="_blank" rel="nofollow">YouTube</a></td></tr>
+<tr><td>[02]Pong? Pong.</td><td><a href="http://www.youtube.com/watch?v=FAACa4yb8Do" target="_blank" rel="nofollow">YouTube</a></td></tr>
+<tr><td>[03]How to Be a Super-Hero</td><td><a href="http://www.youtube.com/watch?v=LRbSMlzFmm4" target="_blank" rel="nofollow">YouTube</a></td></tr>
+</table>
+
+<br /><img src="Images/5-734e00fanstuff.png" alt="" class="img" border="0"><br />
+<br /><table>
+<col width="100%">
+<tr><td>Better bag it and take it with you. by Arooga<td><a href="http://www.youtube.com/watch?v=WX_hJzkRWZI&amp;feature=related" target="_blank" rel="nofollow">YouTube</a>
+<tr><td>David "Snake Eater" Attenborough on Wild Life also by Arooga<td><a href="http://www.youtube.com/watch?v=LoUIegsfvR4" target="_blank" rel="nofollow">YouTube</a></table>
+<br />
+This is Science Frog, drawn by VoidBurger:<br />
+<img src="Images/6-723200sciencefrog.png" alt="" class="img" border="0"><br />
+<br />  </div>
+
+  <a class="returnblock" href="/">Archive Index</a>
+
+  </body>
+</html>

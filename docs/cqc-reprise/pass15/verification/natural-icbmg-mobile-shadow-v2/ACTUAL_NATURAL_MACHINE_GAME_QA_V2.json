@@ -1,0 +1,4132 @@
+{
+  "schema": "cqc.pass15.actual-natural-machine-game/1",
+  "closed": true,
+  "actualRun": true,
+  "actualCombat": true,
+  "smokeOnly": false,
+  "synthetic": false,
+  "status": "passed",
+  "failure": null,
+  "boss": "icbmg",
+  "mobileShadow": true,
+  "sourceBindings": {
+    "index.html": {
+      "bytes": 32805,
+      "sha256": "1cde08a124f5626efdf98a32bdee6bee1baf092eb5718ffb768b9ccae8c88819"
+    },
+    "modules/core-v032.html": {
+      "bytes": 1528007,
+      "sha256": "61a01d070b32c78b665a2e8427a631dda07f7fb37458f4bae4cc98b8016381a5"
+    },
+    "src/cqc-machine-parts-catalog-v1.js": {
+      "bytes": 58841,
+      "sha256": "2d6052daf8d28f5e404de0ae3f4c3ee0338a6990f1fceefa78b9d644350c3cd3"
+    },
+    "src/cqc-machine-parts-renderer-v1.js": {
+      "bytes": 26645,
+      "sha256": "a4b346b2f825925adba9aa01611d847b9a5cf2353649440cfe5270bca1b15693"
+    },
+    "src/cqc-machine-parts-bridge-v1.js": {
+      "bytes": 11892,
+      "sha256": "cf28178ff341d08a388053959e1c0a759fc2019a903bd1b5e9b6c259bbce120f"
+    },
+    "src/cqc-stage-layers.js": {
+      "bytes": 23680,
+      "sha256": "d3d648f4259133bc0ad00c3d452d7986b0422450c22304f0bf7dc52a47357c37"
+    },
+    "src/cqc-pass12-stage-bridge.js": {
+      "bytes": 13208,
+      "sha256": "21fff1ef1e49148ea48814ec83f7bbd33c9ad87aed71e75d3b09cdde5da2c25b"
+    },
+    "src/cqc-stage-layer-data.js": {
+      "bytes": 160513,
+      "sha256": "6099ce04ab9f908600469ba28ab2c9ec352a95e4d0f510c14ee884a27732afe2"
+    },
+    "src/cqc-pass12-stage-data.js": {
+      "bytes": 65750,
+      "sha256": "eb747aa6d8ddd8b05d4ba902a6981ec8a8152c2a0106534330001d94417375f7"
+    },
+    "src/cqc-pass14-rex-stage-data.js": {
+      "bytes": 16269,
+      "sha256": "83c61ec364e668c5ef754a6e626d69c22cf91f0435ab1221d29b9ce29e27d1c6"
+    },
+    "src/cqc-pass15-mpo-stage-data.js": {
+      "bytes": 20089,
+      "sha256": "a38f1afd9635a209238704d146c6c4bef8df22a572f392d7107e0f40dea9d0ed"
+    },
+    "assets/machine-parts/icbmg-mpo-psp/master.png": {
+      "bytes": 491854,
+      "sha256": "a5157543dc7d2af0abdae16f208ed86a53fbf8000f15334821a446488a237aef"
+    }
+  },
+  "runner": {
+    "path": "/tmp/cqc-pass15-browser-preparation/run-natural-machines-v2.py",
+    "sha256": "d97968bf24e9c5cdb9e3dfec0ebce39b5af09fdd68246e9874cf0c42997b7463",
+    "observerPath": "/tmp/cqc-pass15-browser-preparation/pass15-passive-observer-v2.js",
+    "observerSHA256": "64ef028a326f5d39b9f029ef231188d26a5ba3594dd91403fc830d46a9b067cd"
+  },
+  "checks": [
+    {
+      "name": "initial-Core-menu",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": false,
+        "phase": "intro",
+        "frame": 0,
+        "timer": 5940,
+        "paused": false,
+        "boss": null,
+        "player": {
+          "id": "boss",
+          "x": 560,
+          "y": 0,
+          "health": 10000,
+          "resource": 0,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": null
+        },
+        "projectiles": [],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mgs3-rokovoj-bereg-champ-de-fleurs",
+          "mapped": "flower_field",
+          "ground": 578,
+          "native": {
+            "id": "flower_field",
+            "state": "loading",
+            "errors": [],
+            "approved": true,
+            "layers": 4,
+            "weatherType": "petals"
+          }
+        },
+        "stageDiagnostics": {
+          "coreBackground": 0,
+          "coreForeground": 0,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": false,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 372,
+          "height": 627
+        },
+        "topViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 0,
+          "displayWidth": 372,
+          "displayHeight": 1371.578125
+        }
+      }
+    },
+    {
+      "name": "icbmg-before-start",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": false,
+        "phase": "intro",
+        "frame": 0,
+        "timer": 7200,
+        "paused": false,
+        "boss": {
+          "id": "icbmg",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": false,
+          "attack": null,
+          "idle": 110,
+          "lastAttack": null,
+          "cycle": 0,
+          "serial": 0,
+          "activeFrames": 0,
+          "hazards": [],
+          "rations": 1,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 0,
+          "hits": 0,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 0,
+          "damageTaken": 0,
+          "guards": 0,
+          "feedback": "120 SECONDES / D M72 / B APPUI DES SOLDATS (3 APPELS)",
+          "feedbackFrames": 200,
+          "health": 7200,
+          "x": 1210,
+          "y": 300,
+          "calls": 0,
+          "assistCooldown": 0,
+          "assist": null,
+          "allyShots": 0,
+          "allyHits": 0,
+          "allyDamage": 0,
+          "playerDamage": 0
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 340,
+          "y": 0,
+          "health": 10000,
+          "resource": 3,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": null
+        },
+        "projectiles": [],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "loading",
+              "attemptState": "loading",
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "loading",
+              "attemptState": "loading",
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-silo-lancement-icbmg",
+          "mapped": null,
+          "ground": 578,
+          "native": null
+        },
+        "stageDiagnostics": {
+          "coreBackground": 25,
+          "coreForeground": 25,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": false,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 372,
+          "height": 627
+        },
+        "topViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": -563,
+          "displayWidth": 372,
+          "displayHeight": 1465.453125
+        }
+      }
+    },
+    {
+      "name": "icbmg-cold-native-ready-fight",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": true,
+        "phase": "fight",
+        "frame": 273,
+        "timer": 7197,
+        "paused": false,
+        "boss": {
+          "id": "icbmg",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": false,
+          "attack": null,
+          "idle": 107,
+          "lastAttack": null,
+          "cycle": 0,
+          "serial": 0,
+          "activeFrames": 3,
+          "hazards": [],
+          "rations": 1,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 0,
+          "hits": 0,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 0,
+          "damageTaken": 0,
+          "guards": 0,
+          "feedback": "120 SECONDES / D M72 / B APPUI DES SOLDATS (3 APPELS)",
+          "feedbackFrames": 197,
+          "health": 7200,
+          "x": 1210.0959976960166,
+          "y": 300.125,
+          "calls": 0,
+          "assistCooldown": 0,
+          "assist": null,
+          "allyShots": 0,
+          "allyHits": 0,
+          "allyDamage": 0,
+          "playerDamage": 0
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 340,
+          "y": 0,
+          "health": 10000,
+          "resource": 3,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": null
+        },
+        "projectiles": [],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/rex-mgs1/body.png",
+                  "bytes": 2004429,
+                  "sha256": "b9c49febc4e7bda8897c0d2b1269cee4830265421a300370503f1de9d1a870fe",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "head",
+                  "file": "assets/machine-parts/rex-mgs1/head.png",
+                  "bytes": 2041360,
+                  "sha256": "706dcbc4c5ed1558d97075f6c5262d81d99d0ddbe9affc128ce80ef399bc066c",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "body_components",
+                  "file": "assets/machine-parts/rex-mgs1/body_components.png",
+                  "bytes": 1437350,
+                  "sha256": "5384ced4c9df00585d6500bb658b6d948db116044df2078a4f3aa82117e86156",
+                  "width": 1448,
+                  "height": 1086
+                },
+                {
+                  "id": "near_legs",
+                  "file": "assets/machine-parts/rex-mgs1/near_legs.png",
+                  "bytes": 2251232,
+                  "sha256": "6df07e6b1f05eb5392dc3c30d8c3b297259ee41fef52ab102539e7bb1db12403",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "far_legs",
+                  "file": "assets/machine-parts/rex-mgs1/far_legs.png",
+                  "bytes": 1365627,
+                  "sha256": "05d6dc576712ce5310430a9c1aa635d66ba507908a5f1fc5dd3864002c6913de",
+                  "width": 2172,
+                  "height": 724
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/rex-mgs1/equipment.png",
+                  "bytes": 1964138,
+                  "sha256": "cf6be6b13959b055a6cdcbf380ac84346467d4ef71d8af59cfd2e4821d49d413",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "native_master",
+                  "file": "assets/machine-parts/icbmg-mpo-psp/master.png",
+                  "bytes": 491854,
+                  "sha256": "a5157543dc7d2af0abdae16f208ed86a53fbf8000f15334821a446488a237aef",
+                  "width": 1060,
+                  "height": 1484
+                }
+              ]
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-silo-lancement-icbmg",
+          "mapped": null,
+          "ground": 578,
+          "native": null
+        },
+        "stageDiagnostics": {
+          "coreBackground": 25,
+          "coreForeground": 25,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": false,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 372,
+          "height": 627
+        },
+        "topViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 53,
+          "displayWidth": 372,
+          "displayHeight": 209.25
+        }
+      }
+    },
+    {
+      "name": "icbmg-pause-before",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": true,
+        "phase": "fight",
+        "frame": 284,
+        "timer": 7186,
+        "paused": true,
+        "boss": {
+          "id": "icbmg",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": false,
+          "attack": null,
+          "idle": 96,
+          "lastAttack": null,
+          "cycle": 0,
+          "serial": 0,
+          "activeFrames": 14,
+          "hazards": [],
+          "rations": 1,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 0,
+          "hits": 0,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 0,
+          "damageTaken": 0,
+          "guards": 0,
+          "feedback": "120 SECONDES / D M72 / B APPUI DES SOLDATS (3 APPELS)",
+          "feedbackFrames": 186,
+          "health": 7200,
+          "x": 1210.447765882046,
+          "y": 300.5833333333333,
+          "calls": 0,
+          "assistCooldown": 0,
+          "assist": null,
+          "allyShots": 0,
+          "allyHits": 0,
+          "allyDamage": 0,
+          "playerDamage": 0
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 340,
+          "y": 0,
+          "health": 10000,
+          "resource": 3,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": null
+        },
+        "projectiles": [],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/rex-mgs1/body.png",
+                  "bytes": 2004429,
+                  "sha256": "b9c49febc4e7bda8897c0d2b1269cee4830265421a300370503f1de9d1a870fe",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "head",
+                  "file": "assets/machine-parts/rex-mgs1/head.png",
+                  "bytes": 2041360,
+                  "sha256": "706dcbc4c5ed1558d97075f6c5262d81d99d0ddbe9affc128ce80ef399bc066c",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "body_components",
+                  "file": "assets/machine-parts/rex-mgs1/body_components.png",
+                  "bytes": 1437350,
+                  "sha256": "5384ced4c9df00585d6500bb658b6d948db116044df2078a4f3aa82117e86156",
+                  "width": 1448,
+                  "height": 1086
+                },
+                {
+                  "id": "near_legs",
+                  "file": "assets/machine-parts/rex-mgs1/near_legs.png",
+                  "bytes": 2251232,
+                  "sha256": "6df07e6b1f05eb5392dc3c30d8c3b297259ee41fef52ab102539e7bb1db12403",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "far_legs",
+                  "file": "assets/machine-parts/rex-mgs1/far_legs.png",
+                  "bytes": 1365627,
+                  "sha256": "05d6dc576712ce5310430a9c1aa635d66ba507908a5f1fc5dd3864002c6913de",
+                  "width": 2172,
+                  "height": 724
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/rex-mgs1/equipment.png",
+                  "bytes": 1964138,
+                  "sha256": "cf6be6b13959b055a6cdcbf380ac84346467d4ef71d8af59cfd2e4821d49d413",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "native_master",
+                  "file": "assets/machine-parts/icbmg-mpo-psp/master.png",
+                  "bytes": 491854,
+                  "sha256": "a5157543dc7d2af0abdae16f208ed86a53fbf8000f15334821a446488a237aef",
+                  "width": 1060,
+                  "height": 1484
+                }
+              ]
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-silo-lancement-icbmg",
+          "mapped": null,
+          "ground": 578,
+          "native": null
+        },
+        "stageDiagnostics": {
+          "coreBackground": 25,
+          "coreForeground": 25,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": true,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 372,
+          "height": 627
+        },
+        "topViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 53,
+          "displayWidth": 372,
+          "displayHeight": 209.25
+        }
+      }
+    },
+    {
+      "name": "icbmg-pause-after",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": true,
+        "phase": "fight",
+        "frame": 284,
+        "timer": 7186,
+        "paused": true,
+        "boss": {
+          "id": "icbmg",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": false,
+          "attack": null,
+          "idle": 96,
+          "lastAttack": null,
+          "cycle": 0,
+          "serial": 0,
+          "activeFrames": 14,
+          "hazards": [],
+          "rations": 1,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 0,
+          "hits": 0,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 0,
+          "damageTaken": 0,
+          "guards": 0,
+          "feedback": "120 SECONDES / D M72 / B APPUI DES SOLDATS (3 APPELS)",
+          "feedbackFrames": 186,
+          "health": 7200,
+          "x": 1210.447765882046,
+          "y": 300.5833333333333,
+          "calls": 0,
+          "assistCooldown": 0,
+          "assist": null,
+          "allyShots": 0,
+          "allyHits": 0,
+          "allyDamage": 0,
+          "playerDamage": 0
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 340,
+          "y": 0,
+          "health": 10000,
+          "resource": 3,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": null
+        },
+        "projectiles": [],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/rex-mgs1/body.png",
+                  "bytes": 2004429,
+                  "sha256": "b9c49febc4e7bda8897c0d2b1269cee4830265421a300370503f1de9d1a870fe",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "head",
+                  "file": "assets/machine-parts/rex-mgs1/head.png",
+                  "bytes": 2041360,
+                  "sha256": "706dcbc4c5ed1558d97075f6c5262d81d99d0ddbe9affc128ce80ef399bc066c",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "body_components",
+                  "file": "assets/machine-parts/rex-mgs1/body_components.png",
+                  "bytes": 1437350,
+                  "sha256": "5384ced4c9df00585d6500bb658b6d948db116044df2078a4f3aa82117e86156",
+                  "width": 1448,
+                  "height": 1086
+                },
+                {
+                  "id": "near_legs",
+                  "file": "assets/machine-parts/rex-mgs1/near_legs.png",
+                  "bytes": 2251232,
+                  "sha256": "6df07e6b1f05eb5392dc3c30d8c3b297259ee41fef52ab102539e7bb1db12403",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "far_legs",
+                  "file": "assets/machine-parts/rex-mgs1/far_legs.png",
+                  "bytes": 1365627,
+                  "sha256": "05d6dc576712ce5310430a9c1aa635d66ba507908a5f1fc5dd3864002c6913de",
+                  "width": 2172,
+                  "height": 724
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/rex-mgs1/equipment.png",
+                  "bytes": 1964138,
+                  "sha256": "cf6be6b13959b055a6cdcbf380ac84346467d4ef71d8af59cfd2e4821d49d413",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "native_master",
+                  "file": "assets/machine-parts/icbmg-mpo-psp/master.png",
+                  "bytes": 491854,
+                  "sha256": "a5157543dc7d2af0abdae16f208ed86a53fbf8000f15334821a446488a237aef",
+                  "width": 1060,
+                  "height": 1484
+                }
+              ]
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-silo-lancement-icbmg",
+          "mapped": null,
+          "ground": 578,
+          "native": null
+        },
+        "stageDiagnostics": {
+          "coreBackground": 25,
+          "coreForeground": 25,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": true,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 372,
+          "height": 627
+        },
+        "topViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 53,
+          "displayWidth": 372,
+          "displayHeight": 209.25
+        }
+      }
+    },
+    {
+      "name": "icbmg-real-pause-freezes-simulation",
+      "frame": 284,
+      "timer": 7186,
+      "canvasPixelFreezeClaimed": false
+    },
+    {
+      "name": "icbmg-real-touch-B-allied-signal",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": true,
+        "phase": "fight",
+        "frame": 318,
+        "timer": 7152,
+        "paused": false,
+        "boss": {
+          "id": "icbmg",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": false,
+          "attack": null,
+          "idle": 62,
+          "lastAttack": null,
+          "cycle": 0,
+          "serial": 0,
+          "activeFrames": 48,
+          "hazards": [],
+          "rations": 1,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 0,
+          "hits": 0,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 0,
+          "damageTaken": 0,
+          "guards": 0,
+          "feedback": "SOLDATS EN POSITION / APPUI DANS UNE SECONDE",
+          "feedbackFrames": 107,
+          "health": 7200,
+          "x": 1211.5265801953578,
+          "y": 302,
+          "calls": 1,
+          "assistCooldown": 717,
+          "assist": {
+            "t": 3,
+            "fired": 0
+          },
+          "allyShots": 0,
+          "allyHits": 0,
+          "allyDamage": 0,
+          "playerDamage": 0
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 340,
+          "y": 0,
+          "health": 10000,
+          "resource": 3,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": {
+            "name": "icbmgAssist",
+            "t": 27,
+            "target": null,
+            "direction": 1,
+            "connected": false,
+            "touched": false
+          }
+        },
+        "projectiles": [],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/rex-mgs1/body.png",
+                  "bytes": 2004429,
+                  "sha256": "b9c49febc4e7bda8897c0d2b1269cee4830265421a300370503f1de9d1a870fe",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "head",
+                  "file": "assets/machine-parts/rex-mgs1/head.png",
+                  "bytes": 2041360,
+                  "sha256": "706dcbc4c5ed1558d97075f6c5262d81d99d0ddbe9affc128ce80ef399bc066c",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "body_components",
+                  "file": "assets/machine-parts/rex-mgs1/body_components.png",
+                  "bytes": 1437350,
+                  "sha256": "5384ced4c9df00585d6500bb658b6d948db116044df2078a4f3aa82117e86156",
+                  "width": 1448,
+                  "height": 1086
+                },
+                {
+                  "id": "near_legs",
+                  "file": "assets/machine-parts/rex-mgs1/near_legs.png",
+                  "bytes": 2251232,
+                  "sha256": "6df07e6b1f05eb5392dc3c30d8c3b297259ee41fef52ab102539e7bb1db12403",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "far_legs",
+                  "file": "assets/machine-parts/rex-mgs1/far_legs.png",
+                  "bytes": 1365627,
+                  "sha256": "05d6dc576712ce5310430a9c1aa635d66ba507908a5f1fc5dd3864002c6913de",
+                  "width": 2172,
+                  "height": 724
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/rex-mgs1/equipment.png",
+                  "bytes": 1964138,
+                  "sha256": "cf6be6b13959b055a6cdcbf380ac84346467d4ef71d8af59cfd2e4821d49d413",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "native_master",
+                  "file": "assets/machine-parts/icbmg-mpo-psp/master.png",
+                  "bytes": 491854,
+                  "sha256": "a5157543dc7d2af0abdae16f208ed86a53fbf8000f15334821a446488a237aef",
+                  "width": 1060,
+                  "height": 1484
+                }
+              ]
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-silo-lancement-icbmg",
+          "mapped": null,
+          "ground": 578,
+          "native": null
+        },
+        "stageDiagnostics": {
+          "coreBackground": 25,
+          "coreForeground": 25,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": false,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 372,
+          "height": 627
+        },
+        "topViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 53,
+          "displayWidth": 372,
+          "displayHeight": 209.25
+        }
+      }
+    },
+    {
+      "name": "icbmg-real-allied-projectile",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": true,
+        "phase": "fight",
+        "frame": 375,
+        "timer": 7095,
+        "paused": false,
+        "boss": {
+          "id": "icbmg",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": false,
+          "attack": null,
+          "idle": 5,
+          "lastAttack": null,
+          "cycle": 0,
+          "serial": 0,
+          "activeFrames": 105,
+          "hazards": [],
+          "rations": 1,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 0,
+          "hits": 0,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 0,
+          "damageTaken": 0,
+          "guards": 0,
+          "feedback": "SOLDATS EN POSITION / APPUI DANS UNE SECONDE",
+          "feedbackFrames": 50,
+          "health": 7200,
+          "x": 1213.2620836244766,
+          "y": 304.375,
+          "calls": 1,
+          "assistCooldown": 660,
+          "assist": {
+            "t": 60,
+            "fired": 1
+          },
+          "allyShots": 1,
+          "allyHits": 0,
+          "allyDamage": 0,
+          "playerDamage": 0
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 340,
+          "y": 0,
+          "health": 10000,
+          "resource": 3,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": null
+        },
+        "projectiles": [
+          {
+            "id": 1,
+            "owner": 2,
+            "kind": "icbmgSupport",
+            "x": 214.42370542698387,
+            "y": 177.33691045605218,
+            "vx": 24.42370542698386,
+            "vy": 5.336910456052171,
+            "target": "guidance",
+            "ttl": 149,
+            "trail": [
+              {
+                "x": 190,
+                "y": 172
+              }
+            ],
+            "resolved": false
+          }
+        ],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/rex-mgs1/body.png",
+                  "bytes": 2004429,
+                  "sha256": "b9c49febc4e7bda8897c0d2b1269cee4830265421a300370503f1de9d1a870fe",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "head",
+                  "file": "assets/machine-parts/rex-mgs1/head.png",
+                  "bytes": 2041360,
+                  "sha256": "706dcbc4c5ed1558d97075f6c5262d81d99d0ddbe9affc128ce80ef399bc066c",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "body_components",
+                  "file": "assets/machine-parts/rex-mgs1/body_components.png",
+                  "bytes": 1437350,
+                  "sha256": "5384ced4c9df00585d6500bb658b6d948db116044df2078a4f3aa82117e86156",
+                  "width": 1448,
+                  "height": 1086
+                },
+                {
+                  "id": "near_legs",
+                  "file": "assets/machine-parts/rex-mgs1/near_legs.png",
+                  "bytes": 2251232,
+                  "sha256": "6df07e6b1f05eb5392dc3c30d8c3b297259ee41fef52ab102539e7bb1db12403",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "far_legs",
+                  "file": "assets/machine-parts/rex-mgs1/far_legs.png",
+                  "bytes": 1365627,
+                  "sha256": "05d6dc576712ce5310430a9c1aa635d66ba507908a5f1fc5dd3864002c6913de",
+                  "width": 2172,
+                  "height": 724
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/rex-mgs1/equipment.png",
+                  "bytes": 1964138,
+                  "sha256": "cf6be6b13959b055a6cdcbf380ac84346467d4ef71d8af59cfd2e4821d49d413",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "native_master",
+                  "file": "assets/machine-parts/icbmg-mpo-psp/master.png",
+                  "bytes": 491854,
+                  "sha256": "a5157543dc7d2af0abdae16f208ed86a53fbf8000f15334821a446488a237aef",
+                  "width": 1060,
+                  "height": 1484
+                }
+              ]
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-silo-lancement-icbmg",
+          "mapped": null,
+          "ground": 578,
+          "native": null
+        },
+        "stageDiagnostics": {
+          "coreBackground": 25,
+          "coreForeground": 25,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": false,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 372,
+          "height": 627
+        },
+        "topViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 53,
+          "displayWidth": 372,
+          "displayHeight": 209.25
+        }
+      }
+    },
+    {
+      "name": "icbmg-real-touch-D-M72-fired",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": true,
+        "phase": "fight",
+        "frame": 410,
+        "timer": 7060,
+        "paused": false,
+        "boss": {
+          "id": "icbmg",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": false,
+          "attack": {
+            "kind": "plume",
+            "t": 30,
+            "windup": 132,
+            "active": 45,
+            "recovery": 102,
+            "targets": [
+              205,
+              475
+            ],
+            "hit": false,
+            "diveX": 680,
+            "leg": null
+          },
+          "idle": 0,
+          "lastAttack": "plume",
+          "cycle": 1,
+          "serial": 0,
+          "activeFrames": 140,
+          "hazards": [],
+          "rations": 1,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 1,
+          "hits": 0,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 0,
+          "damageTaken": 0,
+          "guards": 0,
+          "feedback": "APPUI DES SOLDATS / −200",
+          "feedbackFrames": 44,
+          "health": 7000,
+          "x": 1214.249489583367,
+          "y": 305.8333333333333,
+          "calls": 1,
+          "assistCooldown": 625,
+          "assist": {
+            "t": 95,
+            "fired": 3
+          },
+          "allyShots": 3,
+          "allyHits": 1,
+          "allyDamage": 200,
+          "playerDamage": 0
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 340,
+          "y": 0,
+          "health": 10000,
+          "resource": 2,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": {
+            "name": "icbmgRocket",
+            "t": 31,
+            "target": {
+              "key": "guidance",
+              "x": 1093.407515720528,
+              "y": 369.5833333333333,
+              "r": 68
+            },
+            "direction": 1,
+            "connected": false,
+            "touched": false
+          }
+        },
+        "projectiles": [
+          {
+            "id": 2,
+            "owner": 2,
+            "kind": "icbmgSupport",
+            "x": 851.4758335061952,
+            "y": 311.8425962082028,
+            "vx": 24.311493062758142,
+            "vy": 5.826774842008454,
+            "target": "guidance",
+            "ttl": 126,
+            "trail": [
+              {
+                "x": 462.49194450206505,
+                "y": 218.6141987360677
+              },
+              {
+                "x": 486.8034375648232,
+                "y": 224.44097357807615
+              },
+              {
+                "x": 511.1149306275813,
+                "y": 230.26774842008462
+              },
+              {
+                "x": 535.4264236903394,
+                "y": 236.09452326209308
+              },
+              {
+                "x": 559.7379167530976,
+                "y": 241.92129810410154
+              },
+              {
+                "x": 584.0494098158557,
+                "y": 247.74807294611
+              },
+              {
+                "x": 608.3609028786138,
+                "y": 253.57484778811846
+              },
+              {
+                "x": 632.672395941372,
+                "y": 259.4016226301269
+              },
+              {
+                "x": 656.9838890041301,
+                "y": 265.2283974721353
+              },
+              {
+                "x": 681.2953820668882,
+                "y": 271.05517231414376
+              },
+              {
+                "x": 705.6068751296464,
+                "y": 276.8819471561522
+              },
+              {
+                "x": 729.9183681924045,
+                "y": 282.7087219981606
+              },
+              {
+                "x": 754.2298612551626,
+                "y": 288.53549684016906
+              },
+              {
+                "x": 778.5413543179208,
+                "y": 294.3622716821775
+              },
+              {
+                "x": 802.8528473806789,
+                "y": 300.1890465241859
+              },
+              {
+                "x": 827.164340443437,
+                "y": 306.01582136619436
+              }
+            ],
+            "resolved": false
+          },
+          {
+            "id": 3,
+            "owner": 2,
+            "kind": "icbmgSupport",
+            "x": 635.9742304173573,
+            "y": 248.90868412514453,
+            "vx": 24.164519201446456,
+            "vy": 6.409057010428719,
+            "target": "guidance",
+            "ttl": 138,
+            "trail": [
+              {
+                "x": 346,
+                "y": 172
+              },
+              {
+                "x": 370.16451920144647,
+                "y": 178.4090570104287
+              },
+              {
+                "x": 394.32903840289293,
+                "y": 184.81811402085742
+              },
+              {
+                "x": 418.4935576043394,
+                "y": 191.22717103128613
+              },
+              {
+                "x": 442.65807680578587,
+                "y": 197.63622804171484
+              },
+              {
+                "x": 466.82259600723233,
+                "y": 204.04528505214356
+              },
+              {
+                "x": 490.9871152086788,
+                "y": 210.45434206257227
+              },
+              {
+                "x": 515.1516344101252,
+                "y": 216.86339907300098
+              },
+              {
+                "x": 539.3161536115716,
+                "y": 223.2724560834297
+              },
+              {
+                "x": 563.480672813018,
+                "y": 229.6815130938584
+              },
+              {
+                "x": 587.6451920144644,
+                "y": 236.0905701042871
+              },
+              {
+                "x": 611.8097112159109,
+                "y": 242.49962711471582
+              }
+            ],
+            "resolved": false
+          },
+          {
+            "id": 4,
+            "owner": 0,
+            "kind": "portableRocket",
+            "x": 480.37384930188387,
+            "y": 196.13564548950058,
+            "vx": 23.093462325470966,
+            "vy": 6.533911372375131,
+            "target": "guidance",
+            "ttl": 146,
+            "trail": [
+              {
+                "x": 388,
+                "y": 170
+              },
+              {
+                "x": 411.09346232547097,
+                "y": 176.53391137237514
+              },
+              {
+                "x": 434.18692465094193,
+                "y": 183.0678227447503
+              },
+              {
+                "x": 457.2803869764129,
+                "y": 189.60173411712543
+              }
+            ],
+            "resolved": false
+          }
+        ],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/rex-mgs1/body.png",
+                  "bytes": 2004429,
+                  "sha256": "b9c49febc4e7bda8897c0d2b1269cee4830265421a300370503f1de9d1a870fe",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "head",
+                  "file": "assets/machine-parts/rex-mgs1/head.png",
+                  "bytes": 2041360,
+                  "sha256": "706dcbc4c5ed1558d97075f6c5262d81d99d0ddbe9affc128ce80ef399bc066c",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "body_components",
+                  "file": "assets/machine-parts/rex-mgs1/body_components.png",
+                  "bytes": 1437350,
+                  "sha256": "5384ced4c9df00585d6500bb658b6d948db116044df2078a4f3aa82117e86156",
+                  "width": 1448,
+                  "height": 1086
+                },
+                {
+                  "id": "near_legs",
+                  "file": "assets/machine-parts/rex-mgs1/near_legs.png",
+                  "bytes": 2251232,
+                  "sha256": "6df07e6b1f05eb5392dc3c30d8c3b297259ee41fef52ab102539e7bb1db12403",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "far_legs",
+                  "file": "assets/machine-parts/rex-mgs1/far_legs.png",
+                  "bytes": 1365627,
+                  "sha256": "05d6dc576712ce5310430a9c1aa635d66ba507908a5f1fc5dd3864002c6913de",
+                  "width": 2172,
+                  "height": 724
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/rex-mgs1/equipment.png",
+                  "bytes": 1964138,
+                  "sha256": "cf6be6b13959b055a6cdcbf380ac84346467d4ef71d8af59cfd2e4821d49d413",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "native_master",
+                  "file": "assets/machine-parts/icbmg-mpo-psp/master.png",
+                  "bytes": 491854,
+                  "sha256": "a5157543dc7d2af0abdae16f208ed86a53fbf8000f15334821a446488a237aef",
+                  "width": 1060,
+                  "height": 1484
+                }
+              ]
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-silo-lancement-icbmg",
+          "mapped": null,
+          "ground": 578,
+          "native": null
+        },
+        "stageDiagnostics": {
+          "coreBackground": 25,
+          "coreForeground": 25,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": false,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 372,
+          "height": 627
+        },
+        "topViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 53,
+          "displayWidth": 372,
+          "displayHeight": 209.25
+        }
+      }
+    },
+    {
+      "name": "icbmg-natural-real-allied-hit",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": true,
+        "phase": "fight",
+        "frame": 410,
+        "timer": 7060,
+        "paused": false,
+        "boss": {
+          "id": "icbmg",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": false,
+          "attack": {
+            "kind": "plume",
+            "t": 30,
+            "windup": 132,
+            "active": 45,
+            "recovery": 102,
+            "targets": [
+              205,
+              475
+            ],
+            "hit": false,
+            "diveX": 680,
+            "leg": null
+          },
+          "idle": 0,
+          "lastAttack": "plume",
+          "cycle": 1,
+          "serial": 0,
+          "activeFrames": 140,
+          "hazards": [],
+          "rations": 1,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 1,
+          "hits": 0,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 0,
+          "damageTaken": 0,
+          "guards": 0,
+          "feedback": "APPUI DES SOLDATS / −200",
+          "feedbackFrames": 44,
+          "health": 7000,
+          "x": 1214.249489583367,
+          "y": 305.8333333333333,
+          "calls": 1,
+          "assistCooldown": 625,
+          "assist": {
+            "t": 95,
+            "fired": 3
+          },
+          "allyShots": 3,
+          "allyHits": 1,
+          "allyDamage": 200,
+          "playerDamage": 0
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 340,
+          "y": 0,
+          "health": 10000,
+          "resource": 2,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": {
+            "name": "icbmgRocket",
+            "t": 31,
+            "target": {
+              "key": "guidance",
+              "x": 1093.407515720528,
+              "y": 369.5833333333333,
+              "r": 68
+            },
+            "direction": 1,
+            "connected": false,
+            "touched": false
+          }
+        },
+        "projectiles": [
+          {
+            "id": 2,
+            "owner": 2,
+            "kind": "icbmgSupport",
+            "x": 851.4758335061952,
+            "y": 311.8425962082028,
+            "vx": 24.311493062758142,
+            "vy": 5.826774842008454,
+            "target": "guidance",
+            "ttl": 126,
+            "trail": [
+              {
+                "x": 462.49194450206505,
+                "y": 218.6141987360677
+              },
+              {
+                "x": 486.8034375648232,
+                "y": 224.44097357807615
+              },
+              {
+                "x": 511.1149306275813,
+                "y": 230.26774842008462
+              },
+              {
+                "x": 535.4264236903394,
+                "y": 236.09452326209308
+              },
+              {
+                "x": 559.7379167530976,
+                "y": 241.92129810410154
+              },
+              {
+                "x": 584.0494098158557,
+                "y": 247.74807294611
+              },
+              {
+                "x": 608.3609028786138,
+                "y": 253.57484778811846
+              },
+              {
+                "x": 632.672395941372,
+                "y": 259.4016226301269
+              },
+              {
+                "x": 656.9838890041301,
+                "y": 265.2283974721353
+              },
+              {
+                "x": 681.2953820668882,
+                "y": 271.05517231414376
+              },
+              {
+                "x": 705.6068751296464,
+                "y": 276.8819471561522
+              },
+              {
+                "x": 729.9183681924045,
+                "y": 282.7087219981606
+              },
+              {
+                "x": 754.2298612551626,
+                "y": 288.53549684016906
+              },
+              {
+                "x": 778.5413543179208,
+                "y": 294.3622716821775
+              },
+              {
+                "x": 802.8528473806789,
+                "y": 300.1890465241859
+              },
+              {
+                "x": 827.164340443437,
+                "y": 306.01582136619436
+              }
+            ],
+            "resolved": false
+          },
+          {
+            "id": 3,
+            "owner": 2,
+            "kind": "icbmgSupport",
+            "x": 635.9742304173573,
+            "y": 248.90868412514453,
+            "vx": 24.164519201446456,
+            "vy": 6.409057010428719,
+            "target": "guidance",
+            "ttl": 138,
+            "trail": [
+              {
+                "x": 346,
+                "y": 172
+              },
+              {
+                "x": 370.16451920144647,
+                "y": 178.4090570104287
+              },
+              {
+                "x": 394.32903840289293,
+                "y": 184.81811402085742
+              },
+              {
+                "x": 418.4935576043394,
+                "y": 191.22717103128613
+              },
+              {
+                "x": 442.65807680578587,
+                "y": 197.63622804171484
+              },
+              {
+                "x": 466.82259600723233,
+                "y": 204.04528505214356
+              },
+              {
+                "x": 490.9871152086788,
+                "y": 210.45434206257227
+              },
+              {
+                "x": 515.1516344101252,
+                "y": 216.86339907300098
+              },
+              {
+                "x": 539.3161536115716,
+                "y": 223.2724560834297
+              },
+              {
+                "x": 563.480672813018,
+                "y": 229.6815130938584
+              },
+              {
+                "x": 587.6451920144644,
+                "y": 236.0905701042871
+              },
+              {
+                "x": 611.8097112159109,
+                "y": 242.49962711471582
+              }
+            ],
+            "resolved": false
+          },
+          {
+            "id": 4,
+            "owner": 0,
+            "kind": "portableRocket",
+            "x": 480.37384930188387,
+            "y": 196.13564548950058,
+            "vx": 23.093462325470966,
+            "vy": 6.533911372375131,
+            "target": "guidance",
+            "ttl": 146,
+            "trail": [
+              {
+                "x": 388,
+                "y": 170
+              },
+              {
+                "x": 411.09346232547097,
+                "y": 176.53391137237514
+              },
+              {
+                "x": 434.18692465094193,
+                "y": 183.0678227447503
+              },
+              {
+                "x": 457.2803869764129,
+                "y": 189.60173411712543
+              }
+            ],
+            "resolved": false
+          }
+        ],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/rex-mgs1/body.png",
+                  "bytes": 2004429,
+                  "sha256": "b9c49febc4e7bda8897c0d2b1269cee4830265421a300370503f1de9d1a870fe",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "head",
+                  "file": "assets/machine-parts/rex-mgs1/head.png",
+                  "bytes": 2041360,
+                  "sha256": "706dcbc4c5ed1558d97075f6c5262d81d99d0ddbe9affc128ce80ef399bc066c",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "body_components",
+                  "file": "assets/machine-parts/rex-mgs1/body_components.png",
+                  "bytes": 1437350,
+                  "sha256": "5384ced4c9df00585d6500bb658b6d948db116044df2078a4f3aa82117e86156",
+                  "width": 1448,
+                  "height": 1086
+                },
+                {
+                  "id": "near_legs",
+                  "file": "assets/machine-parts/rex-mgs1/near_legs.png",
+                  "bytes": 2251232,
+                  "sha256": "6df07e6b1f05eb5392dc3c30d8c3b297259ee41fef52ab102539e7bb1db12403",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "far_legs",
+                  "file": "assets/machine-parts/rex-mgs1/far_legs.png",
+                  "bytes": 1365627,
+                  "sha256": "05d6dc576712ce5310430a9c1aa635d66ba507908a5f1fc5dd3864002c6913de",
+                  "width": 2172,
+                  "height": 724
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/rex-mgs1/equipment.png",
+                  "bytes": 1964138,
+                  "sha256": "cf6be6b13959b055a6cdcbf380ac84346467d4ef71d8af59cfd2e4821d49d413",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "native_master",
+                  "file": "assets/machine-parts/icbmg-mpo-psp/master.png",
+                  "bytes": 491854,
+                  "sha256": "a5157543dc7d2af0abdae16f208ed86a53fbf8000f15334821a446488a237aef",
+                  "width": 1060,
+                  "height": 1484
+                }
+              ]
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-silo-lancement-icbmg",
+          "mapped": null,
+          "ground": 578,
+          "native": null
+        },
+        "stageDiagnostics": {
+          "coreBackground": 25,
+          "coreForeground": 25,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": false,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 372,
+          "height": 627
+        },
+        "topViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 53,
+          "displayWidth": 372,
+          "displayHeight": 209.25
+        }
+      }
+    },
+    {
+      "name": "icbmg-natural-real-M72-hit",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": true,
+        "phase": "fight",
+        "frame": 436,
+        "timer": 7034,
+        "paused": false,
+        "boss": {
+          "id": "icbmg",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": false,
+          "attack": {
+            "kind": "plume",
+            "t": 56,
+            "windup": 132,
+            "active": 45,
+            "recovery": 102,
+            "targets": [
+              205,
+              475
+            ],
+            "hit": false,
+            "diveX": 680,
+            "leg": null
+          },
+          "idle": 0,
+          "lastAttack": "plume",
+          "cycle": 1,
+          "serial": 0,
+          "activeFrames": 166,
+          "hazards": [],
+          "rations": 1,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 1,
+          "hits": 1,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 0,
+          "damageTaken": 0,
+          "guards": 0,
+          "feedback": "GYROSCOPE TOUCHÉ / −800",
+          "feedbackFrames": 43,
+          "health": 5800,
+          "x": 1214.9301752603565,
+          "y": 306.9166666666667,
+          "calls": 1,
+          "assistCooldown": 599,
+          "assist": null,
+          "allyShots": 3,
+          "allyHits": 3,
+          "allyDamage": 600,
+          "playerDamage": 800
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 322.30000000000007,
+          "y": 0,
+          "health": 10000,
+          "resource": 2,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": null
+        },
+        "projectiles": [],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/rex-mgs1/body.png",
+                  "bytes": 2004429,
+                  "sha256": "b9c49febc4e7bda8897c0d2b1269cee4830265421a300370503f1de9d1a870fe",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "head",
+                  "file": "assets/machine-parts/rex-mgs1/head.png",
+                  "bytes": 2041360,
+                  "sha256": "706dcbc4c5ed1558d97075f6c5262d81d99d0ddbe9affc128ce80ef399bc066c",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "body_components",
+                  "file": "assets/machine-parts/rex-mgs1/body_components.png",
+                  "bytes": 1437350,
+                  "sha256": "5384ced4c9df00585d6500bb658b6d948db116044df2078a4f3aa82117e86156",
+                  "width": 1448,
+                  "height": 1086
+                },
+                {
+                  "id": "near_legs",
+                  "file": "assets/machine-parts/rex-mgs1/near_legs.png",
+                  "bytes": 2251232,
+                  "sha256": "6df07e6b1f05eb5392dc3c30d8c3b297259ee41fef52ab102539e7bb1db12403",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "far_legs",
+                  "file": "assets/machine-parts/rex-mgs1/far_legs.png",
+                  "bytes": 1365627,
+                  "sha256": "05d6dc576712ce5310430a9c1aa635d66ba507908a5f1fc5dd3864002c6913de",
+                  "width": 2172,
+                  "height": 724
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/rex-mgs1/equipment.png",
+                  "bytes": 1964138,
+                  "sha256": "cf6be6b13959b055a6cdcbf380ac84346467d4ef71d8af59cfd2e4821d49d413",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "native_master",
+                  "file": "assets/machine-parts/icbmg-mpo-psp/master.png",
+                  "bytes": 491854,
+                  "sha256": "a5157543dc7d2af0abdae16f208ed86a53fbf8000f15334821a446488a237aef",
+                  "width": 1060,
+                  "height": 1484
+                }
+              ]
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-silo-lancement-icbmg",
+          "mapped": null,
+          "ground": 578,
+          "native": null
+        },
+        "stageDiagnostics": {
+          "coreBackground": 25,
+          "coreForeground": 25,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": false,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 372,
+          "height": 627
+        },
+        "topViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 53,
+          "displayWidth": 372,
+          "displayHeight": 209.25
+        }
+      }
+    },
+    {
+      "name": "icbmg-natural-real-crate-reload",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": true,
+        "phase": "fight",
+        "frame": 681,
+        "timer": 6789,
+        "paused": false,
+        "boss": {
+          "id": "icbmg",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": false,
+          "attack": null,
+          "idle": 8,
+          "lastAttack": "plume",
+          "cycle": 1,
+          "serial": 0,
+          "activeFrames": 411,
+          "hazards": [],
+          "rations": 1,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 3,
+          "hits": 3,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 1,
+          "damageTaken": 0,
+          "guards": 0,
+          "feedback": "RÉSERVE RÉTABLIE / 3 ROQUETTES",
+          "feedbackFrames": 110,
+          "health": 4200,
+          "x": 1217.978574459374,
+          "y": 317.125,
+          "calls": 1,
+          "assistCooldown": 354,
+          "assist": null,
+          "allyShots": 3,
+          "allyHits": 3,
+          "allyDamage": 600,
+          "playerDamage": 2400
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 188.8000000000004,
+          "y": 0,
+          "health": 10000,
+          "resource": 3,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": {
+            "name": "icbmgReload",
+            "t": 66,
+            "target": null,
+            "direction": 1,
+            "connected": false,
+            "touched": false
+          }
+        },
+        "projectiles": [],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/rex-mgs1/body.png",
+                  "bytes": 2004429,
+                  "sha256": "b9c49febc4e7bda8897c0d2b1269cee4830265421a300370503f1de9d1a870fe",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "head",
+                  "file": "assets/machine-parts/rex-mgs1/head.png",
+                  "bytes": 2041360,
+                  "sha256": "706dcbc4c5ed1558d97075f6c5262d81d99d0ddbe9affc128ce80ef399bc066c",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "body_components",
+                  "file": "assets/machine-parts/rex-mgs1/body_components.png",
+                  "bytes": 1437350,
+                  "sha256": "5384ced4c9df00585d6500bb658b6d948db116044df2078a4f3aa82117e86156",
+                  "width": 1448,
+                  "height": 1086
+                },
+                {
+                  "id": "near_legs",
+                  "file": "assets/machine-parts/rex-mgs1/near_legs.png",
+                  "bytes": 2251232,
+                  "sha256": "6df07e6b1f05eb5392dc3c30d8c3b297259ee41fef52ab102539e7bb1db12403",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "far_legs",
+                  "file": "assets/machine-parts/rex-mgs1/far_legs.png",
+                  "bytes": 1365627,
+                  "sha256": "05d6dc576712ce5310430a9c1aa635d66ba507908a5f1fc5dd3864002c6913de",
+                  "width": 2172,
+                  "height": 724
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/rex-mgs1/equipment.png",
+                  "bytes": 1964138,
+                  "sha256": "cf6be6b13959b055a6cdcbf380ac84346467d4ef71d8af59cfd2e4821d49d413",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "native_master",
+                  "file": "assets/machine-parts/icbmg-mpo-psp/master.png",
+                  "bytes": 491854,
+                  "sha256": "a5157543dc7d2af0abdae16f208ed86a53fbf8000f15334821a446488a237aef",
+                  "width": 1060,
+                  "height": 1484
+                }
+              ]
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-silo-lancement-icbmg",
+          "mapped": null,
+          "ground": 578,
+          "native": null
+        },
+        "stageDiagnostics": {
+          "coreBackground": 25,
+          "coreForeground": 25,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": false,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 372,
+          "height": 627
+        },
+        "topViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 53,
+          "displayWidth": 372,
+          "displayHeight": 209.25
+        }
+      }
+    },
+    {
+      "name": "icbmg-natural-real-ascent-above320",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": true,
+        "phase": "fight",
+        "frame": 751,
+        "timer": 6719,
+        "paused": false,
+        "boss": {
+          "id": "icbmg",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": false,
+          "attack": {
+            "kind": "missiles",
+            "t": 62,
+            "windup": 113,
+            "active": 19,
+            "recovery": 80,
+            "targets": [
+              100,
+              323.8000000000004
+            ],
+            "hit": false,
+            "diveX": 680,
+            "leg": null
+          },
+          "idle": 0,
+          "lastAttack": "missiles",
+          "cycle": 2,
+          "serial": 0,
+          "activeFrames": 481,
+          "hazards": [],
+          "rations": 1,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 3,
+          "hits": 3,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 1,
+          "damageTaken": 0,
+          "guards": 0,
+          "feedback": "RÉSERVE RÉTABLIE / 3 ROQUETTES",
+          "feedbackFrames": 40,
+          "health": 4200,
+          "x": 1217.5061548926124,
+          "y": 320.0416666666667,
+          "calls": 1,
+          "assistCooldown": 284,
+          "assist": null,
+          "allyShots": 3,
+          "allyHits": 3,
+          "allyDamage": 600,
+          "playerDamage": 2400
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 448.39999999999975,
+          "y": 0,
+          "health": 10000,
+          "resource": 3,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": {
+            "name": "icbmgRocket",
+            "t": 5,
+            "target": {
+              "key": "guidance",
+              "x": 1097.549468138388,
+              "y": 384.875,
+              "r": 68
+            },
+            "direction": 1,
+            "connected": false,
+            "touched": false
+          }
+        },
+        "projectiles": [],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/rex-mgs1/body.png",
+                  "bytes": 2004429,
+                  "sha256": "b9c49febc4e7bda8897c0d2b1269cee4830265421a300370503f1de9d1a870fe",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "head",
+                  "file": "assets/machine-parts/rex-mgs1/head.png",
+                  "bytes": 2041360,
+                  "sha256": "706dcbc4c5ed1558d97075f6c5262d81d99d0ddbe9affc128ce80ef399bc066c",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "body_components",
+                  "file": "assets/machine-parts/rex-mgs1/body_components.png",
+                  "bytes": 1437350,
+                  "sha256": "5384ced4c9df00585d6500bb658b6d948db116044df2078a4f3aa82117e86156",
+                  "width": 1448,
+                  "height": 1086
+                },
+                {
+                  "id": "near_legs",
+                  "file": "assets/machine-parts/rex-mgs1/near_legs.png",
+                  "bytes": 2251232,
+                  "sha256": "6df07e6b1f05eb5392dc3c30d8c3b297259ee41fef52ab102539e7bb1db12403",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "far_legs",
+                  "file": "assets/machine-parts/rex-mgs1/far_legs.png",
+                  "bytes": 1365627,
+                  "sha256": "05d6dc576712ce5310430a9c1aa635d66ba507908a5f1fc5dd3864002c6913de",
+                  "width": 2172,
+                  "height": 724
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/rex-mgs1/equipment.png",
+                  "bytes": 1964138,
+                  "sha256": "cf6be6b13959b055a6cdcbf380ac84346467d4ef71d8af59cfd2e4821d49d413",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "native_master",
+                  "file": "assets/machine-parts/icbmg-mpo-psp/master.png",
+                  "bytes": 491854,
+                  "sha256": "a5157543dc7d2af0abdae16f208ed86a53fbf8000f15334821a446488a237aef",
+                  "width": 1060,
+                  "height": 1484
+                }
+              ]
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-silo-lancement-icbmg",
+          "mapped": null,
+          "ground": 578,
+          "native": null
+        },
+        "stageDiagnostics": {
+          "coreBackground": 25,
+          "coreForeground": 25,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": false,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 372,
+          "height": 627
+        },
+        "topViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 53,
+          "displayWidth": 372,
+          "displayHeight": 209.25
+        }
+      }
+    },
+    {
+      "name": "icbmg-natural-defeated-collapse",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": true,
+        "phase": "fight",
+        "frame": 1338,
+        "timer": 6135,
+        "paused": false,
+        "boss": {
+          "id": "icbmg",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 122,
+          "defeated": true,
+          "attack": null,
+          "idle": 0,
+          "lastAttack": "plume",
+          "cycle": 4,
+          "serial": 8,
+          "activeFrames": 1065,
+          "hazards": [],
+          "rations": 1,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 9,
+          "hits": 9,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 2,
+          "damageTaken": 196,
+          "guards": 0,
+          "feedback": "GYROSCOPE TOUCHÉ / −200",
+          "feedbackFrames": 45,
+          "health": 0,
+          "x": 1202.8047567225185,
+          "y": 344.375,
+          "calls": 1,
+          "assistCooldown": 0,
+          "assist": null,
+          "allyShots": 3,
+          "allyHits": 3,
+          "allyDamage": 600,
+          "playerDamage": 6600
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 193.20000000000076,
+          "y": 0,
+          "health": 9804,
+          "resource": 0,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": null
+        },
+        "projectiles": [],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/rex-mgs1/body.png",
+                  "bytes": 2004429,
+                  "sha256": "b9c49febc4e7bda8897c0d2b1269cee4830265421a300370503f1de9d1a870fe",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "head",
+                  "file": "assets/machine-parts/rex-mgs1/head.png",
+                  "bytes": 2041360,
+                  "sha256": "706dcbc4c5ed1558d97075f6c5262d81d99d0ddbe9affc128ce80ef399bc066c",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "body_components",
+                  "file": "assets/machine-parts/rex-mgs1/body_components.png",
+                  "bytes": 1437350,
+                  "sha256": "5384ced4c9df00585d6500bb658b6d948db116044df2078a4f3aa82117e86156",
+                  "width": 1448,
+                  "height": 1086
+                },
+                {
+                  "id": "near_legs",
+                  "file": "assets/machine-parts/rex-mgs1/near_legs.png",
+                  "bytes": 2251232,
+                  "sha256": "6df07e6b1f05eb5392dc3c30d8c3b297259ee41fef52ab102539e7bb1db12403",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "far_legs",
+                  "file": "assets/machine-parts/rex-mgs1/far_legs.png",
+                  "bytes": 1365627,
+                  "sha256": "05d6dc576712ce5310430a9c1aa635d66ba507908a5f1fc5dd3864002c6913de",
+                  "width": 2172,
+                  "height": 724
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/rex-mgs1/equipment.png",
+                  "bytes": 1964138,
+                  "sha256": "cf6be6b13959b055a6cdcbf380ac84346467d4ef71d8af59cfd2e4821d49d413",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "native_master",
+                  "file": "assets/machine-parts/icbmg-mpo-psp/master.png",
+                  "bytes": 491854,
+                  "sha256": "a5157543dc7d2af0abdae16f208ed86a53fbf8000f15334821a446488a237aef",
+                  "width": 1060,
+                  "height": 1484
+                }
+              ]
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-silo-lancement-icbmg",
+          "mapped": null,
+          "ground": 578,
+          "native": null
+        },
+        "stageDiagnostics": {
+          "coreBackground": 25,
+          "coreForeground": 25,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": false,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 372,
+          "height": 627
+        },
+        "topViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 53,
+          "displayWidth": 372,
+          "displayHeight": 209.25
+        }
+      }
+    },
+    {
+      "name": "icbmg-natural-victory-finished",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": true,
+        "phase": "finished",
+        "frame": 1615,
+        "timer": 6135,
+        "paused": false,
+        "boss": {
+          "id": "icbmg",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": true,
+          "attack": null,
+          "idle": 0,
+          "lastAttack": "plume",
+          "cycle": 4,
+          "serial": 8,
+          "activeFrames": 1065,
+          "hazards": [],
+          "rations": 1,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 9,
+          "hits": 9,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 2,
+          "damageTaken": 196,
+          "guards": 0,
+          "feedback": "GYROSCOPE TOUCHÉ / −200",
+          "feedbackFrames": 45,
+          "health": 0,
+          "x": 1202.8047567225185,
+          "y": 344.375,
+          "calls": 1,
+          "assistCooldown": 0,
+          "assist": null,
+          "allyShots": 3,
+          "allyHits": 3,
+          "allyDamage": 600,
+          "playerDamage": 6600
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 193.20000000000076,
+          "y": 0,
+          "health": 9804,
+          "resource": 0,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": null
+        },
+        "projectiles": [],
+        "roundWinner": 0,
+        "winner": 0,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/rex-mgs1/body.png",
+                  "bytes": 2004429,
+                  "sha256": "b9c49febc4e7bda8897c0d2b1269cee4830265421a300370503f1de9d1a870fe",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "head",
+                  "file": "assets/machine-parts/rex-mgs1/head.png",
+                  "bytes": 2041360,
+                  "sha256": "706dcbc4c5ed1558d97075f6c5262d81d99d0ddbe9affc128ce80ef399bc066c",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "body_components",
+                  "file": "assets/machine-parts/rex-mgs1/body_components.png",
+                  "bytes": 1437350,
+                  "sha256": "5384ced4c9df00585d6500bb658b6d948db116044df2078a4f3aa82117e86156",
+                  "width": 1448,
+                  "height": 1086
+                },
+                {
+                  "id": "near_legs",
+                  "file": "assets/machine-parts/rex-mgs1/near_legs.png",
+                  "bytes": 2251232,
+                  "sha256": "6df07e6b1f05eb5392dc3c30d8c3b297259ee41fef52ab102539e7bb1db12403",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "far_legs",
+                  "file": "assets/machine-parts/rex-mgs1/far_legs.png",
+                  "bytes": 1365627,
+                  "sha256": "05d6dc576712ce5310430a9c1aa635d66ba507908a5f1fc5dd3864002c6913de",
+                  "width": 2172,
+                  "height": 724
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/rex-mgs1/equipment.png",
+                  "bytes": 1964138,
+                  "sha256": "cf6be6b13959b055a6cdcbf380ac84346467d4ef71d8af59cfd2e4821d49d413",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "native_master",
+                  "file": "assets/machine-parts/icbmg-mpo-psp/master.png",
+                  "bytes": 491854,
+                  "sha256": "a5157543dc7d2af0abdae16f208ed86a53fbf8000f15334821a446488a237aef",
+                  "width": 1060,
+                  "height": 1484
+                }
+              ]
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-silo-lancement-icbmg",
+          "mapped": null,
+          "ground": 578,
+          "native": null
+        },
+        "stageDiagnostics": {
+          "coreBackground": 25,
+          "coreForeground": 25,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": false,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": true,
+        "winnerText": "NAKED SNAKE — PORTABLE OPS",
+        "viewport": {
+          "width": 372,
+          "height": 627
+        },
+        "topViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 53,
+          "displayWidth": 372,
+          "displayHeight": 209.25
+        }
+      }
+    },
+    {
+      "name": "icbmg-natural-final",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": true,
+        "phase": "finished",
+        "frame": 1615,
+        "timer": 6135,
+        "paused": false,
+        "boss": {
+          "id": "icbmg",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": true,
+          "attack": null,
+          "idle": 0,
+          "lastAttack": "plume",
+          "cycle": 4,
+          "serial": 8,
+          "activeFrames": 1065,
+          "hazards": [],
+          "rations": 1,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 9,
+          "hits": 9,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 2,
+          "damageTaken": 196,
+          "guards": 0,
+          "feedback": "GYROSCOPE TOUCHÉ / −200",
+          "feedbackFrames": 45,
+          "health": 0,
+          "x": 1202.8047567225185,
+          "y": 344.375,
+          "calls": 1,
+          "assistCooldown": 0,
+          "assist": null,
+          "allyShots": 3,
+          "allyHits": 3,
+          "allyDamage": 600,
+          "playerDamage": 6600
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 193.20000000000076,
+          "y": 0,
+          "health": 9804,
+          "resource": 0,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": null
+        },
+        "projectiles": [],
+        "roundWinner": 0,
+        "winner": 0,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/rex-mgs1/body.png",
+                  "bytes": 2004429,
+                  "sha256": "b9c49febc4e7bda8897c0d2b1269cee4830265421a300370503f1de9d1a870fe",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "head",
+                  "file": "assets/machine-parts/rex-mgs1/head.png",
+                  "bytes": 2041360,
+                  "sha256": "706dcbc4c5ed1558d97075f6c5262d81d99d0ddbe9affc128ce80ef399bc066c",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "body_components",
+                  "file": "assets/machine-parts/rex-mgs1/body_components.png",
+                  "bytes": 1437350,
+                  "sha256": "5384ced4c9df00585d6500bb658b6d948db116044df2078a4f3aa82117e86156",
+                  "width": 1448,
+                  "height": 1086
+                },
+                {
+                  "id": "near_legs",
+                  "file": "assets/machine-parts/rex-mgs1/near_legs.png",
+                  "bytes": 2251232,
+                  "sha256": "6df07e6b1f05eb5392dc3c30d8c3b297259ee41fef52ab102539e7bb1db12403",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "far_legs",
+                  "file": "assets/machine-parts/rex-mgs1/far_legs.png",
+                  "bytes": 1365627,
+                  "sha256": "05d6dc576712ce5310430a9c1aa635d66ba507908a5f1fc5dd3864002c6913de",
+                  "width": 2172,
+                  "height": 724
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/rex-mgs1/equipment.png",
+                  "bytes": 1964138,
+                  "sha256": "cf6be6b13959b055a6cdcbf380ac84346467d4ef71d8af59cfd2e4821d49d413",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "native_master",
+                  "file": "assets/machine-parts/icbmg-mpo-psp/master.png",
+                  "bytes": 491854,
+                  "sha256": "a5157543dc7d2af0abdae16f208ed86a53fbf8000f15334821a446488a237aef",
+                  "width": 1060,
+                  "height": 1484
+                }
+              ]
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-silo-lancement-icbmg",
+          "mapped": null,
+          "ground": 578,
+          "native": null
+        },
+        "stageDiagnostics": {
+          "coreBackground": 25,
+          "coreForeground": 25,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": false,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": true,
+        "winnerText": "NAKED SNAKE — PORTABLE OPS",
+        "viewport": {
+          "width": 372,
+          "height": 627
+        },
+        "topViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 53,
+          "displayWidth": 372,
+          "displayHeight": 209.25
+        }
+      }
+    },
+    {
+      "name": "natural-phase-coverage",
+      "boss": "icbmg",
+      "observed": [
+        "defeated-collapse125",
+        "natural-victory",
+        "real-M72-hit",
+        "real-allied-hit",
+        "real-ascent-above320",
+        "real-crate-reload"
+      ],
+      "fullClearClaimed": true,
+      "combatDeadlineSeconds": 95
+    },
+    {
+      "name": "all-observed-actual-playing-native-machine-draws-ready",
+      "counted": {
+        "icbmg|intro": 270,
+        "icbmg|fight": 1238,
+        "icbmg|round-end": 155,
+        "icbmg|finished": 15
+      },
+      "badActualDraws": 0,
+      "everyInvalidDrawRetainedBeyondSampleLimit": true
+    },
+    {
+      "name": "reload-icbmg-before-start",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": false,
+        "phase": "intro",
+        "frame": 0,
+        "timer": 7200,
+        "paused": false,
+        "boss": {
+          "id": "icbmg",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": false,
+          "attack": null,
+          "idle": 110,
+          "lastAttack": null,
+          "cycle": 0,
+          "serial": 0,
+          "activeFrames": 0,
+          "hazards": [],
+          "rations": 1,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 0,
+          "hits": 0,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 0,
+          "damageTaken": 0,
+          "guards": 0,
+          "feedback": "120 SECONDES / D M72 / B APPUI DES SOLDATS (3 APPELS)",
+          "feedbackFrames": 200,
+          "health": 7200,
+          "x": 1210,
+          "y": 300,
+          "calls": 0,
+          "assistCooldown": 0,
+          "assist": null,
+          "allyShots": 0,
+          "allyHits": 0,
+          "allyDamage": 0,
+          "playerDamage": 0
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 340,
+          "y": 0,
+          "health": 10000,
+          "resource": 3,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": null
+        },
+        "projectiles": [],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "native_master",
+                  "file": "assets/machine-parts/icbmg-mpo-psp/master.png",
+                  "bytes": 491854,
+                  "sha256": "a5157543dc7d2af0abdae16f208ed86a53fbf8000f15334821a446488a237aef",
+                  "width": 1060,
+                  "height": 1484
+                }
+              ]
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-silo-lancement-icbmg",
+          "mapped": null,
+          "ground": 578,
+          "native": null
+        },
+        "stageDiagnostics": {
+          "coreBackground": 0,
+          "coreForeground": 0,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": false,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 372,
+          "height": 627
+        },
+        "topViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": -606,
+          "displayWidth": 372,
+          "displayHeight": 1465.453125
+        }
+      }
+    },
+    {
+      "name": "reload-icbmg-cold-native-ready-fight",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": true,
+        "phase": "fight",
+        "frame": 270,
+        "timer": 7200,
+        "paused": false,
+        "boss": {
+          "id": "icbmg",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": false,
+          "attack": null,
+          "idle": 110,
+          "lastAttack": null,
+          "cycle": 0,
+          "serial": 0,
+          "activeFrames": 0,
+          "hazards": [],
+          "rations": 1,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 0,
+          "hits": 0,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 0,
+          "damageTaken": 0,
+          "guards": 0,
+          "feedback": "120 SECONDES / D M72 / B APPUI DES SOLDATS (3 APPELS)",
+          "feedbackFrames": 200,
+          "health": 7200,
+          "x": 1210,
+          "y": 300,
+          "calls": 0,
+          "assistCooldown": 0,
+          "assist": null,
+          "allyShots": 0,
+          "allyHits": 0,
+          "allyDamage": 0,
+          "playerDamage": 0
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 340,
+          "y": 0,
+          "health": 10000,
+          "resource": 3,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": null
+        },
+        "projectiles": [],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "native_master",
+                  "file": "assets/machine-parts/icbmg-mpo-psp/master.png",
+                  "bytes": 491854,
+                  "sha256": "a5157543dc7d2af0abdae16f208ed86a53fbf8000f15334821a446488a237aef",
+                  "width": 1060,
+                  "height": 1484
+                }
+              ]
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-silo-lancement-icbmg",
+          "mapped": null,
+          "ground": 578,
+          "native": null
+        },
+        "stageDiagnostics": {
+          "coreBackground": 0,
+          "coreForeground": 0,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": false,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 372,
+          "height": 627
+        },
+        "topViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 53,
+          "displayWidth": 372,
+          "displayHeight": 209.25
+        }
+      }
+    },
+    {
+      "name": "reload-icbmg-pause-before",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": true,
+        "phase": "fight",
+        "frame": 281,
+        "timer": 7189,
+        "paused": true,
+        "boss": {
+          "id": "icbmg",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": false,
+          "attack": null,
+          "idle": 99,
+          "lastAttack": null,
+          "cycle": 0,
+          "serial": 0,
+          "activeFrames": 11,
+          "hazards": [],
+          "rations": 1,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 0,
+          "hits": 0,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 0,
+          "damageTaken": 0,
+          "guards": 0,
+          "feedback": "120 SECONDES / D M72 / B APPUI DES SOLDATS (3 APPELS)",
+          "feedbackFrames": 189,
+          "health": 7200,
+          "x": 1210.3518864323273,
+          "y": 300.4583333333333,
+          "calls": 0,
+          "assistCooldown": 0,
+          "assist": null,
+          "allyShots": 0,
+          "allyHits": 0,
+          "allyDamage": 0,
+          "playerDamage": 0
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 340,
+          "y": 0,
+          "health": 10000,
+          "resource": 3,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": null
+        },
+        "projectiles": [],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "native_master",
+                  "file": "assets/machine-parts/icbmg-mpo-psp/master.png",
+                  "bytes": 491854,
+                  "sha256": "a5157543dc7d2af0abdae16f208ed86a53fbf8000f15334821a446488a237aef",
+                  "width": 1060,
+                  "height": 1484
+                }
+              ]
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-silo-lancement-icbmg",
+          "mapped": null,
+          "ground": 578,
+          "native": null
+        },
+        "stageDiagnostics": {
+          "coreBackground": 0,
+          "coreForeground": 0,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": true,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 372,
+          "height": 627
+        },
+        "topViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 53,
+          "displayWidth": 372,
+          "displayHeight": 209.25
+        }
+      }
+    },
+    {
+      "name": "reload-icbmg-pause-after",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": true,
+        "phase": "fight",
+        "frame": 281,
+        "timer": 7189,
+        "paused": true,
+        "boss": {
+          "id": "icbmg",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": false,
+          "attack": null,
+          "idle": 99,
+          "lastAttack": null,
+          "cycle": 0,
+          "serial": 0,
+          "activeFrames": 11,
+          "hazards": [],
+          "rations": 1,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 0,
+          "hits": 0,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 0,
+          "damageTaken": 0,
+          "guards": 0,
+          "feedback": "120 SECONDES / D M72 / B APPUI DES SOLDATS (3 APPELS)",
+          "feedbackFrames": 189,
+          "health": 7200,
+          "x": 1210.3518864323273,
+          "y": 300.4583333333333,
+          "calls": 0,
+          "assistCooldown": 0,
+          "assist": null,
+          "allyShots": 0,
+          "allyHits": 0,
+          "allyDamage": 0,
+          "playerDamage": 0
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 340,
+          "y": 0,
+          "health": 10000,
+          "resource": 3,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": null
+        },
+        "projectiles": [],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "native_master",
+                  "file": "assets/machine-parts/icbmg-mpo-psp/master.png",
+                  "bytes": 491854,
+                  "sha256": "a5157543dc7d2af0abdae16f208ed86a53fbf8000f15334821a446488a237aef",
+                  "width": 1060,
+                  "height": 1484
+                }
+              ]
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-silo-lancement-icbmg",
+          "mapped": null,
+          "ground": 578,
+          "native": null
+        },
+        "stageDiagnostics": {
+          "coreBackground": 0,
+          "coreForeground": 0,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": true,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 372,
+          "height": 627
+        },
+        "topViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 53,
+          "displayWidth": 372,
+          "displayHeight": 209.25
+        }
+      }
+    },
+    {
+      "name": "reload-icbmg-real-pause-freezes-simulation",
+      "frame": 281,
+      "timer": 7189,
+      "canvasPixelFreezeClaimed": false
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "/tmp/cqc-pass15-browser-proofs/natural-icbmg-mobile-shadow-v2/icbmg-intact-actual-fight.jpg",
+      "bytes": 33588,
+      "sha256": "e6170b8379279b7aa45b396c30737833c9cdba4aab0eea13acac9b927057590b",
+      "kind": "native-Chromium-JPEG60-screenshot-of-actual-natural-game"
+    },
+    {
+      "path": "/tmp/cqc-pass15-browser-proofs/natural-icbmg-mobile-shadow-v2/icbmg-actual-pause.jpg",
+      "bytes": 28117,
+      "sha256": "128ea6b0f4e6e092def4af84f22f4111705e0f1bda2b2a2bfcbd8ef3d1f517da",
+      "kind": "native-Chromium-JPEG60-screenshot-of-actual-natural-game"
+    },
+    {
+      "path": "/tmp/cqc-pass15-browser-proofs/natural-icbmg-mobile-shadow-v2/icbmg-natural-defeated-collapse.jpg",
+      "bytes": 34035,
+      "sha256": "409b9dccdd10a272a327f198563d4cd01ecca3b6488f2b65136c2b678882ba8e",
+      "kind": "native-Chromium-JPEG60-screenshot-of-actual-natural-game"
+    },
+    {
+      "path": "/tmp/cqc-pass15-browser-proofs/natural-icbmg-mobile-shadow-v2/icbmg-natural-victory-finished.jpg",
+      "bytes": 37932,
+      "sha256": "ea226a1cfe104572172cb6041e9bdddf2ebe54f971f15ca858d3fc4ea6607971",
+      "kind": "native-Chromium-JPEG60-screenshot-of-actual-natural-game"
+    },
+    {
+      "path": "/tmp/cqc-pass15-browser-proofs/natural-icbmg-mobile-shadow-v2/reload-icbmg-intact-actual-fight.jpg",
+      "bytes": 33584,
+      "sha256": "d190e7044c63ee4832d3f0588ea99db952b3bf28cc755089da4056ac30c6f328",
+      "kind": "native-Chromium-JPEG60-screenshot-of-actual-natural-game"
+    },
+    {
+      "path": "/tmp/cqc-pass15-browser-proofs/natural-icbmg-mobile-shadow-v2/reload-icbmg-actual-pause.jpg",
+      "bytes": 28110,
+      "sha256": "9052e321214343b0bc691d29cd20f1742ecafcb5861a6bc083236bf952ddc1f8",
+      "kind": "native-Chromium-JPEG60-screenshot-of-actual-natural-game"
+    }
+  ],
+  "publication": {
+    "gitSHA": null,
+    "deploymentID": null,
+    "base": "http://localhost:5177"
+  },
+  "tls": {
+    "privateCertificateException": false,
+    "globalTrustMutation": false,
+    "independentStrictHTTPSProof": null
+  },
+  "checkedAt": "2026-10-03T16:53:56.018335+00:00",
+  "ownedBrowserClosed": true,
+  "proofBytes": 12226180,
+  "qualification": "Actual real menu/selection/start, trusted browser keyboard/touch actions, read-only snapshots and transparent draw pass-through preserving arguments/results. No engine/HP/phase/frame/timer/readiness forcing, Date override, source PNG edit or fake game. Natural phase coverage explicitly listed; fullClear only for actual winner0/finished observed. Closest art reconstruction, no absolute1:1 certificate."
+}

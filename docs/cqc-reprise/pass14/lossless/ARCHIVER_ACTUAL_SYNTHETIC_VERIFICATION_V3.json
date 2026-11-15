@@ -1,0 +1,77 @@
+{
+  "schema": "cqc.pass14.archive-tool-synthetic-verification/1",
+  "actualRun": true,
+  "productionProducerOrQAFoldersReadOrFrozen": false,
+  "nativeImageEditing": false,
+  "createdUTC": "2026-10-03T13:21:00.371467+00:00",
+  "toolSHA256": "9313b87b96271f94177c3cec074aba69984f2cb5c4290d26d4145118baac0a5a",
+  "testScriptSHA256": "86e5eabc62a95639060419b617eab33a1021ed871a8b4e32a303f20287c89a5e",
+  "passedCases": 9,
+  "cases": [
+    {
+      "case": "Root GO is mandatory",
+      "passed": true,
+      "actualRejection": "Root GO missing, unapproved or not bound to exact closed source spec"
+    },
+    {
+      "case": "predicted exact ZIP_STORED sizes match real volumes",
+      "passed": true,
+      "volumeBytes": [
+        5243390,
+        4194570
+      ]
+    },
+    {
+      "case": "actual bytes equality, SHA dedupe, old member reuse and <=8MiB volumes",
+      "passed": true,
+      "logicalFiles": 3,
+      "uniqueObjects": 2,
+      "reusedObjects": 1,
+      "archives": [
+        {
+          "file": "pass14-lossless-001.zip",
+          "bytes": 5243390,
+          "sha256": "c112c35fddb40905fc22205dd3e2b85688c1dfeafb30895d29b6dc391d25bb15"
+        },
+        {
+          "file": "pass14-lossless-002.zip",
+          "bytes": 4194570,
+          "sha256": "dc16454d5565b127985f094c0419a94e711a01e2f7be84600260b91020253c17"
+        }
+      ],
+      "oldArchiveSHAUnchanged": true
+    },
+    {
+      "case": "future index reuses own chunked objects without new ZIP or whole-archive copy",
+      "passed": true,
+      "reusedObjects": 2,
+      "newZIPCount": 0
+    },
+    {
+      "case": "existing output immutable",
+      "passed": true,
+      "actualRejection": "output must be new; existing archives are immutable"
+    },
+    {
+      "case": "changed source fails pinned closure",
+      "passed": true,
+      "actualRejection": "source differs from closed pinned spec: /tmp/pass14-archive-fixture-ryni4x9z/closed-fixture/original.png"
+    },
+    {
+      "case": "corrupted reused bytes fail",
+      "passed": true,
+      "actualRejection": "member SHA/bytes verification failed: {'sha256': 'fc59e702a3304df06e81d02ef091b916a8b442c9a79599a62ab53129f90ac2a0', 'bytes': 35, 'archivePath': '/tmp/pass14-archive-fixture-ryni4x9z/prior-closed/old.zip', 'archiveMember': 'original-native-fixture'}"
+    },
+    {
+      "case": "actual ZIP payload corruption fails CRC",
+      "passed": true,
+      "actualRejection": "Bad CRC-32 for file 'original-native-fixture'"
+    },
+    {
+      "case": "credential/build/dependency filters",
+      "passed": true,
+      "actualRejection": "dependency/build/credential path rejected: /tmp/pass14-archive-fixture-ryni4x9z/closed-fixture/.env.local"
+    }
+  ],
+  "fixtureZIPsRemovedAfterVerification": true
+}

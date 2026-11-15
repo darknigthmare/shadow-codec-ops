@@ -1,0 +1,46 @@
+{
+  "schema": "cqc.p43.root-byte-bound-code-review/1",
+  "approved": true,
+  "reviewedAt": "2026-10-25T07:41:07.538762+00:00",
+  "handoffSHA256": "c8db820c28b2c3a3ac1f093f25cd114568a451b5b261dd9075bcfec5434558c5",
+  "codePins": {
+    "policy": {
+      "path": "/workspace/cqc-p43-resume-20261025/runtime/metadata-byte-policy-candidate-v1/P43_EXACT_SIX_METADATA_BYTE_POLICY_CANDIDATE_V1.json",
+      "bytes": 1691,
+      "sha256": "743857b478116d9b251e78dc2f8b44569f05adc8541d68e364642079e2d6b384"
+    },
+    "compiler": {
+      "path": "/workspace/cqc-p43-resume-20261025/runtime/compiler-p43-candidate-v6/compile-native-batch-p43.portable-candidate-v1.mjs",
+      "bytes": 51558,
+      "sha256": "07e5ba7ec67657b8d5ad582c1c1edffa7b4980d6ffb5b949f0050335d02e960a"
+    },
+    "compilerPolicy": {
+      "path": "/workspace/cqc-p43-resume-20261025/runtime/compiler-p43-candidate-v6/p43-metadata-byte-policy-candidate-v1.mjs",
+      "bytes": 1735,
+      "sha256": "6749b0ed52f39e464248358d8a0866021e0fe6398cd7503445118bb825b54e9d"
+    },
+    "loader": {
+      "logicalPath": "src/cqc-pass19-native-wardrobe-library.js",
+      "path": "/workspace/cqc-p43-resume-20261025/runtime/metadata-byte-policy-candidate-v1/cqc-pass19-native-wardrobe-library.js",
+      "bytes": 35010,
+      "sha256": "63a7b3bd269344619fce16eaf299b095a0650742776d155915e89c77a9c4ff8e"
+    },
+    "originalLoader": {
+      "path": "/workspace/cqc-pass21-application/public/cqc/src/cqc-pass19-native-wardrobe-library.js",
+      "bytes": 33260,
+      "sha256": "cc3ca723c7bf9f6871cc090cee2e17ecde9337c69454dfe6a94832368afbb078"
+    },
+    "coreWriter": {
+      "path": "/workspace/cqc-p43-resume-20261025/runtime/mode-tools-candidate-v7/compile-p43-core-metadata-variants-candidate-v2.py",
+      "bytes": 12931,
+      "sha256": "2e1cf82b9b08ba5e1fc5968058b1fcd2bfa3f3c20e7c48363e4c0a2b93042231"
+    }
+  },
+  "scope": "Root read all three exact diffs and the complete shared policy. Allow8MiB only for the6 explicit newP43 UID/id and exact Root art-audit hashes, correctP43 metadata-v2 paths; Core metadata-core limited to reviewed MGSV-Raiden. Retain normal4MiB for all other descriptors and strict actual size/SHA/provenance checks. No pixel, contour, frame, phase or FPS changes.",
+  "authorizedNextSteps": [
+    "Run adversarial actual-factory byte-bound tests and existing218 baseline preservation.",
+    "After those pass, compile final30 once with pinnedV6 and registry158, then Core10variants withV7."
+  ],
+  "runtimeInstallationApproved": false,
+  "productionApproved": false
+}

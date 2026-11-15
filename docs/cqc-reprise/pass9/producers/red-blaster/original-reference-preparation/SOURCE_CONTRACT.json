@@ -1,0 +1,191 @@
+{
+  "schema": "cqc.next-native-reference-contract/1",
+  "preparedDate": "2026-10-02",
+  "status": "reference_selection_only_not_generated_not_imported",
+  "targetFidelity": "1:1 original1990 MSX2 incarnation, closest_supported when source pixels cannot resolve detail",
+  "absolute1to1Certified": false,
+  "sourceIncarnation": {
+    "game": "Metal Gear 2: Solid Snake",
+    "releaseYear": 1990,
+    "platform": "MSX2",
+    "excluded": [
+      "Metal Gear Solid3 Subsistence 2005 graphical/portrait edits",
+      "mobile2004 revised portraits",
+      "Master Collection altered presentation",
+      "fan art",
+      "later cyborg versions"
+    ]
+  },
+  "nativeSpriteContract": {
+    "nativeImageToolRequired": true,
+    "sheetCount": 6,
+    "sourcePngUnmodified": true,
+    "transparentBackground": true,
+    "faces": [
+      "right",
+      "left"
+    ],
+    "independentFaces": true,
+    "horizontalMirroringAllowed": false,
+    "layout": {
+      "columns": 4,
+      "rows": 3,
+      "posesPerSheet": 12,
+      "totalPoses": 72
+    },
+    "bodyCompleteness": "Every frame includes the complete anatomical body, boots and held equipment without edge clipping or neighbouring pose pixels; renderer contours may select native pixels but never alter the PNG.",
+    "sheetA": [
+      "idle:3",
+      "walk:3",
+      "guard:3",
+      "crouch:3"
+    ],
+    "sheetB": [
+      "punch:3",
+      "heavy:3",
+      "low:3",
+      "jump:3"
+    ],
+    "reviewRequirements": [
+      "Inspect all six unmodified native sheets and original references physically.",
+      "Check left/right anatomy and costume against supported source asymmetry; invent no hidden asymmetry.",
+      "Check every crop in actual browser Canvas, both orientations and 1280/390 viewports.",
+      "Check first active source frame and source SHA before measuring launch coordinates.",
+      "Preserve every attempt, rejection, source PNG, prompt, metadata, reference and failure log.",
+      "Do not repurpose a rejected canonical design as an OC. PARALLAXE remains the sole user-authorized Viper reject OC."
+    ],
+    "sheetC": [
+      "grenadeLaunch:3",
+      "wireDeploy:3",
+      "cqcThrow:3",
+      "recover:3"
+    ],
+    "sourceFamily": "new independent transparent native atlas, original tiny sprite palette/silhouette guide; not an upscaled/resized original PNG"
+  },
+  "mechanicPolicy": "Original costume, silhouette, palette and supported abilities guide art. Versus normals, finishers, costs, damage, phase timing, collision, bounded concealment and balance are explicitly adaptations. Recovered raw profiles remain untouched; corrections belong to scoped new helpers after root approval.",
+  "sourceEvidenceLimits": [
+    "Original Japanese1990 manual scan establishes names and documented lore.",
+    "LP screenshots preserve original MSX2 visual era and English dialogue, but the translation patch/emulator/ROM version was not independently verified. They are not claimed unmodified Japanese1990 game executions.",
+    "English LP codec transcription is secondary evidence, not a certified verbatim original-language script.",
+    "Tiny sprite mirrors establish limited pixel palette/silhouette by comparison; extracted-native provenance and any prior nearest-neighbour enlargement are not certified."
+  ],
+  "rawSnapshots": "Parsed object snapshots preserve all values from pinned original raw JSON; serialization whitespace is new and these files are not claimed byte slices of the original files.",
+  "futureIntegrationAuthorization": "This subtask is limited to preparation under /workspace/cqc-pass8-reference-selection. No generation, catalog change, R/S mutation, Git write or deployment was performed.",
+  "uid": "core__redblaster_mg2",
+  "originalName": "RED BLASTER",
+  "runtimeName": "RED BLASTER",
+  "identity": "Original MSX2 grenadier in elevated gallery; not MGS2 Fatman and not MG1 Shoot Gunner.",
+  "visualSupported": [
+    "Original RED-B captures and tiny game-sprite mirror show a green compact human body with dark/ochre extremities. The name Red Blaster is not evidence of a red uniform.",
+    "Original costume details are very low resolution. Avoid adding Fatman rollers, bomber suit, C4 vest or a modern red commando redesign."
+  ],
+  "weaponSupported": [
+    "Original manual page42 supports grenades/explosive sabotage; RED-B introduction capture says he will cook Snake with grenades.",
+    "Saved original codec transcription names grenade launcher. Exact launcher model/shape is unresolved and not visibly certified by the saved tiny body.",
+    "White crossed immobilizing wires are visible in original gallery captures. Player HUD pistol/grenade/ration are Snake equipment, not proof of Red Blaster carrying those models."
+  ],
+  "mechanicsSupported": [
+    "Original encounter involves grenades from elevated covered gallery and crossed wires that immobilize.",
+    "PASS6 already corrects his runtime to grenade arcs and nonexplosive slowing tripwires. The new native pass must extend these source corrections, not reintroduce generic pistol/C4/rollers."
+  ],
+  "correctionsNeeded": [
+    "Keep raw data snapshots unmodified; do not take legacy raw pistol/explosive template as costume/weapon proof.",
+    "Native poses must follow current scoped PASS6 grenades/tripwire helper.",
+    "Because exact gun model is unknown, prefer clearly qualified small hand/underbarrel launch interpretation and preserve a reject if the generated hardware is asserted as exact. Final decision requires independent visual review.",
+    "Measure grenade release and trap deployment origins from actual first active native hand/weapon frame; do not reuse generic shooter origin."
+  ],
+  "unknowns": [
+    "Exact grenade-launcher model, whether the tiny source actually depicts the weapon and its detail.",
+    "Exact grenade/canister geometry, fuze and grip.",
+    "Real face, hair, full costume seams, boot and glove model."
+  ],
+  "sheetC": [
+    "grenadeLaunch:3",
+    "wireDeploy:3",
+    "cqcThrow:3",
+    "recover:3"
+  ],
+  "actionMappingProposal": {
+    "light": "punch",
+    "heavy": "heavy",
+    "low": "low",
+    "throw": "cqcThrow",
+    "special": "grenadeLaunch",
+    "specialDown": "wireDeploy",
+    "specialForward": "grenadeLaunch",
+    "specialBack": "walk",
+    "super": "grenadeLaunch",
+    "utility": "recover"
+  },
+  "originPlan": "Measure two independent directional launch/hand points for grenadeLaunch and low hand/wireDeploy from first active native source crops. Do not certify a firearm model. Runtime bounds and source pose reuse are explicit versus adaptations.",
+  "excludedFiles": [],
+  "references": [
+    {
+      "file": "original1990-msx2-japanese-manual-text.pdf",
+      "url": "https://archive.org/download/metal-gear-2-solid-snake-manual-original/MetalGear%202%20-%20SolidSnake%20Manual%20%28Original%29_text.pdf",
+      "bytes": 4111315,
+      "sha256": "0da1dc1ca4d84612cec127a774e7c7290c556e5cb4b66acb9941729ce86c4b0f",
+      "authority": "original1990 Japanese manual scan hosted mirror",
+      "physicallyViewed": false,
+      "inspectionNote": "manual page42 inspected directly"
+    },
+    {
+      "file": "manual-original1990-page42.png",
+      "url": "https://archive.org/download/metal-gear-2-solid-snake-manual-original/MetalGear%202%20-%20SolidSnake%20Manual%20%28Original%29_text.pdf#page=42",
+      "bytes": 680293,
+      "sha256": "878fa8490a695d6e98bba9abbce4bf685e72faba264533a5136fcfc8ad2a13d9",
+      "authority": "reference-only rendering from saved manual scan",
+      "physicallyViewed": true,
+      "inspectionNote": "original saved pixels physically viewed without modification"
+    },
+    {
+      "file": "red-blaster-msx2-original-sprite.webp",
+      "url": "https://thecodex.wiki/images/d/d0/Red_Blaster.webp",
+      "bytes": 222,
+      "sha256": "ad84d7a261960bd242d9cc2e26b59eb1f0643963208d436e321a1716332079f8",
+      "authority": "tiny sprite mirror; source game pixels/palette physically compared; hosting fan power statistics excluded",
+      "physicallyViewed": true,
+      "inspectionNote": "original saved pixels physically viewed without modification"
+    },
+    {
+      "file": "lp26-30-Metal_Gear_2_0470.png",
+      "url": "https://lparchive.org/Metal-Gear-1-2/Update%2026/30-Metal_Gear_2_0470.png",
+      "bytes": 9473,
+      "sha256": "ae4d3cf3bd62fe13c543bdfd45e3b0afabb4daa4c03633a744b419fbb9ed3c3d",
+      "authority": "original-era MSX2 graphical capture with English translated text hosted in a secondary LP; ROM/patch unverified; tiny visual evidence, not unmodified-Japanese-ROM or LP-commentary authority",
+      "physicallyViewed": true,
+      "inspectionNote": "original saved pixels physically viewed without modification"
+    },
+    {
+      "file": "lp26-33-Metal_Gear_2_0471.png",
+      "url": "https://lparchive.org/Metal-Gear-1-2/Update%2026/33-Metal_Gear_2_0471.png",
+      "bytes": 9536,
+      "sha256": "e558ea4bc43aa34fa6f8fa106838608fee8aa97a28ad91e78f7b549895d5c0f8",
+      "authority": "original-era MSX2 graphical capture with English translated text hosted in a secondary LP; ROM/patch unverified; tiny visual evidence, not unmodified-Japanese-ROM or LP-commentary authority",
+      "physicallyViewed": true,
+      "inspectionNote": "original saved pixels physically viewed without modification"
+    },
+    {
+      "file": "lp26-34-Metal_Gear_2_0479.png",
+      "url": "https://lparchive.org/Metal-Gear-1-2/Update%2026/34-Metal_Gear_2_0479.png",
+      "bytes": 9553,
+      "sha256": "9e0d22c2f2d341f7669d07c065a4c0c48e2531a32026566c9b6085ee2ac35806",
+      "authority": "original-era MSX2 graphical capture with English translated text hosted in a secondary LP; ROM/patch unverified; tiny visual evidence, not unmodified-Japanese-ROM or LP-commentary authority",
+      "physicallyViewed": true,
+      "inspectionNote": "original saved pixels physically viewed without modification"
+    },
+    {
+      "file": "lp26-31-Metal_Gear_2_0472.png",
+      "url": "https://lparchive.org/Metal-Gear-1-2/Update%2026/31-Metal_Gear_2_0472.png",
+      "bytes": 10243,
+      "sha256": "9f215e4b9852dc80025e9e4ec92c1ec11f1bfc3d55b4ecc4396d7318bdac09da",
+      "authority": "original-era MSX2 graphical capture with English translated text hosted in a secondary LP; ROM/patch unverified; tiny visual evidence, not unmodified-Japanese-ROM or LP-commentary authority",
+      "physicallyViewed": true,
+      "inspectionNote": "original saved pixels physically viewed without modification"
+    }
+  ],
+  "byteLimit": 15728640,
+  "nativePngsProduced": 0,
+  "runtimeImported": false,
+  "referenceBytes": 4830635
+}

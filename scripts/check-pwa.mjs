@@ -28,9 +28,14 @@ if (!Array.isArray(manifest.icons) || manifest.icons.length < 3) throw new Error
 if (!manifest.icons.some((icon) => String(icon.purpose ?? '').includes('maskable'))) throw new Error('PWA manifest missing maskable icon.');
 if (!Array.isArray(manifest.shortcuts) || manifest.shortcuts.length < 4) throw new Error('PWA manifest requires Codec, Side Ops, VR and Builder shortcuts.');
 if (!manifest.shortcuts.some((shortcut) => String(shortcut.url ?? '').includes('module=builder'))) throw new Error('PWA manifest missing Mission Builder shortcut.');
+if (!manifest.shortcuts.some((shortcut) => String(shortcut.url ?? '').includes('module=cqc'))) throw new Error('PWA manifest missing CQC shortcut.');
+await access(path.join(dist, 'cqc/index.html'), constants.R_OK);
+await access(path.join(dist, 'cqc/runtime-manifest.json'), constants.R_OK);
 
 const sw = await readFile(path.join(dist, 'sw.js'), 'utf8');
 if (!sw.includes('precacheAndRoute')) throw new Error('Generated service worker does not include the Workbox precache route.');
+if (/url:\s*["']cqc\//.test(sw)) throw new Error('CQC must not be downloaded in the global PWA precache.');
+if (!sw.includes('cqc-runtime')) throw new Error('CQC runtime cache is missing.');
 
 const workboxFiles = (await readdir(dist)).filter((file) => file.startsWith('workbox-') && file.endsWith('.js'));
 if (workboxFiles.length === 0) throw new Error('Workbox runtime file not generated.');

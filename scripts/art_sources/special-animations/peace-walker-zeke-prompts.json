@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "actorId": "peace-walker-zeke",
+  "generatedWith": "OpenAI built-in imagegen",
+  "generatedAt": "2026-09-05",
+  "sourceFacing": "right",
+  "variant": "Metal Gear Solid: Peace Walker standard 1974 ZEKE with normal head and legs, railgun and radome; no alternate AI-weapon head or leg set",
+  "references": [
+    {
+      "url": "https://www.konami.com/mg/archive/ssg/advice_pw/advice_mgspw_07.html",
+      "role": "Official Konami support guide confirming ZEKE as the bipedal weapon assembled from AI-weapon material parts"
+    },
+    {
+      "url": "https://www.konami.com/mg/history/jp/ja/mgspw",
+      "role": "Official Konami Peace Walker history and 1974 setting"
+    },
+    {
+      "url": "https://www.1999.co.jp/eng/10123169",
+      "role": "Multi-angle product photographs of the Square Enix Play Arts Kai ZEKE licensed under copyright Konami; visually inspected for armor, leg, railgun and radome silhouette"
+    },
+    {
+      "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000011125152",
+      "role": "National Diet Library bibliographic record for the 2011 Square Enix Metal Gear Solid Peace Walker Official Art Works"
+    }
+  ],
+  "prompts": {
+    "core": "Use case: stylized-concept. Create one original fan-made production pixel-art sprite board of Metal Gear ZEKE in its recognizable standard 1974 Peace Walker form. It is a lean forward-pitched bipedal nuclear walking tank: angular off-white/light-gray armor over graphite mechanisms, mustard-yellow joints, small red optic, exactly two long reverse-articulated piston legs and broad yellow three-pronged claw feet. Keep the normal ZEKE head and legs, one very long slim railgun projecting to screen right and one large flat circular radome on the opposite back shoulder. Do not add alternate Pupa, Chrysalis, Cocoon or Peace Walker heads/legs, Pupa boosters, humanoid arms, wings, sword, REX head, RAY fins or Sahelanthropus parts. Exactly four columns by four rows, fixed orthographic side view facing right, common scale and baseline, at least 28 source pixels of clear background around every actor/effect. Row 1 idle; row 2 a true four-phase biped walk; row 3 railgun aim/charge; row 4 compact railgun fire/recoil with no long gameplay projectile. Crisp detailed military 16/32-bit pixel art. Flat #FF00FF background and exactly five continuous #00FFFF guides on each axis including the outside borders. Sixteen independently authored poses. No scenery, floor, shadow, text, number, logo, UI, watermark or official-art extraction.",
+    "special": "Use case: identity-preserve. Use the approved ZEKE core board as the exact identity, anatomy, palette, scale and pixel-art reference. Preserve the same standard 1974 ZEKE with normal head/legs, right-facing railgun and opposite circular radome. Exactly four columns by four rows: row 1 recover from railgun recoil; row 2 restrained localized hit reactions; row 3 progressive physical collapse ending in a recognizable inert wreck with railgun and radome attached; row 4 independent standing radome/optic scan phases. Same scale/baseline as core and at least 28 source pixels of safe background. Flat #FF00FF and exactly five continuous #00FFFF guides per axis including outer borders. No alternate parts, disappearance, giant explosion, long beam, other actor, scenery, text, logo, UI or watermark.",
+    "technicalGuideCorrection": "Extended only the right outer cyan guide of the special source by one pixel so it reaches the importer border threshold. The correction did not intersect or alter any ZEKE or effect pixel."
+  },
+  "review": {
+    "identity": "Standard forward-leaning ZEKE with pale angular armor, dark mechanisms, yellow claw feet, railgun and planar radome; no cross-era or alternate-parts drift",
+    "actions": "Core idle/move/charge/attack; special recover/hit/death/scan; four authored phases per state",
+    "sourceDimensions": "1254x1254 PNG per board",
+    "runtimeDimensions": "1024x1024 RGBA PNG per board",
+    "validation": "Strict importer passed 2 sheets, 32 authored poses and 8 actions; calibrated runtime visually inspected",
+    "sourceCoreSha256": "46283F440A0DF3E3CC817A5BA11B0007C3561D0396AEEC6ACC5BEE12AF00E233",
+    "sourceSpecialSha256": "907043971E83BB6F69B7D04FE41ECF345E13B17349C36818367A21940A3A695B"
+  },
+  "calibration": {
+    "method": "One uniform scale for the entire special board using upright core idle and special scan anchors; no per-pose scaling",
+    "specialScale": 0.946969696969697,
+    "coreAnchor": 0,
+    "specialAnchor": 12,
+    "uniformRuntimeScale": 0.764505119453925,
+    "coreFrame0AlphaBounds": {
+      "x": 53,
+      "y": 48,
+      "width": 184,
+      "height": 191
+    }
+  }
+}

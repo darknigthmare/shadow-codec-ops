@@ -1,0 +1,311 @@
+{
+  "schema": "cqc.pass37.fixed-contacts-and-peacewalker-joints/1",
+  "status": "passed-final-proofs-pending-remote-publication-and-live-verification",
+  "recordedUTC": "2026-10-15T21:18:03.558409+00:00",
+  "parentFull": "20ee9f7a40236f607e654fdc4015bd7ba4d504f6",
+  "parentMinimal": "1b3cf46564512aa2ad8434579466e1691b567e10",
+  "checks": {
+    "quadrupedFinalOwner": {
+      "status": "passed-owner-only",
+      "proof": {
+        "path": "/tmp/cqc-pass37-peacewalker/FINAL_QUAD_JUNCTION_GROUND_PAUSE_V2_ACTUAL.json",
+        "bytes": 6535,
+        "sha256": "994c16d94983ea020587036ee4fb2d4262e292bfca3d7329fdd421ecce7df9af"
+      }
+    },
+    "runtimeManifest": {
+      "status": "passed",
+      "proof": {
+        "path": "/tmp/cqc-pass37-root/RUNTIME_GRAPH_AND_MIRRORS_ACTUAL.json",
+        "bytes": 8409,
+        "sha256": "814ca9e9c4fb884a22ec12fb4cecd1add9dd7b7c98a6aac23f2e74ee8ad88c8b"
+      }
+    },
+    "rootRuntimeFreeze": {
+      "status": "passed",
+      "proof": {
+        "path": "/tmp/cqc-pass37-root/ROOT_RUNTIME_FREEZE_ACTUAL.json",
+        "bytes": 203689,
+        "sha256": "f3bc2e6157314a7641b6db41efc710f3bd854a574bc7fe04620ffaba8fd902ea"
+      },
+      "sourcePins": 796
+    },
+    "independentBrowserQA": {
+      "status": "passed",
+      "proof": {
+        "path": "/tmp/cqc-pass37-browser-qa/FINAL_LOCAL_INDEPENDENT_CLOSED_ACTUAL.json",
+        "bytes": 14316,
+        "sha256": "a1d60183f4139a220529c811d570a6e46ce800f1b9165761620d107e7d62a310"
+      }
+    },
+    "exactBuildAndPWA": {
+      "status": "passed",
+      "proof": {
+        "path": "/tmp/cqc-pass37-build/EXACT_BUILD_AND_PWA_ACTUAL.json",
+        "bytes": 344919,
+        "sha256": "cc777eb8056ab1d2ff3f28e16e416b17c1743e1d7f82c1624b063af341287af7"
+      },
+      "stagedFiles": 4250,
+      "allStoredCQCFiles": 2701,
+      "minimalTree": "fe0c67d3ca84ebd7c98dfc2458cdb081d21d6006",
+      "commands": [
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "exitCode": 0
+        },
+        {
+          "command": [
+            "node",
+            "/workspace/cqc-pass21-application/scripts/check-pwa.mjs"
+          ],
+          "exitCode": 0
+        }
+      ]
+    },
+    "remotePublication": {
+      "status": "pending",
+      "proof": null
+    },
+    "liveDeployment": {
+      "status": "pending",
+      "proof": null
+    }
+  },
+  "availableOwnerEvidence": {
+    "versus": {
+      "status": "passed-owner-only",
+      "beforeMachinesMoved": 39,
+      "afterMachinesMoved": 0,
+      "humanHuman200FrameStateIdentical": true,
+      "coreBossesIndependentFromPlayerApproach": 14,
+      "proof": {
+        "path": "/tmp/cqc-pass37-anchoring/HANDOFF_ACTUAL.json",
+        "bytes": 1043,
+        "sha256": "f0ea4512c9f7ba431b6c67894e6ff756b0e3c3d1feab4f9ddf7bc66474727b46"
+      },
+      "edgeReview": {
+        "status": "passed-owner-only",
+        "scenarios": 50,
+        "proof": {
+          "path": "/tmp/cqc-pass37-anchoring/FINAL_EDGE_REVIEW_ACTUAL.json",
+          "bytes": 8323,
+          "sha256": "f5f001046f5122701e92b4f0c150152fbfc4d0b62a466bdee8ed6aeade106df8"
+        }
+      }
+    },
+    "arsenalArchive": {
+      "status": "passed-owner-only",
+      "arsenalEncounters": 33,
+      "archiveEncounters": 7,
+      "arsenalPlayerBodyDrift": 0,
+      "arsenalMaxCameraDelta": 0,
+      "arsenalGroundCameraDelta": 0,
+      "archiveBodyPlayerDrift": 0,
+      "bulldozerRootPlayerResponse": 0,
+      "proof": {
+        "path": "/tmp/cqc-pass37-arsenal/AFTER_ACTUAL.json",
+        "bytes": 234900,
+        "sha256": "3ed804ab006545412d04ba69b29e03cfefec8992754412d48d64cafa0e33499f"
+      },
+      "archiveAllPhases": {
+        "path": "/tmp/cqc-pass37-arsenal/ARCHIVE_PHASES_AND_SUPPORT_ACTUAL.json",
+        "bytes": 166546,
+        "sha256": "d4748f29b769f9c101436ccfe80aa133e580a603bf0ef0fc41a7dd3fd98b1701"
+      },
+      "bulldozerCapturedCharge": {
+        "path": "/tmp/cqc-pass37-arsenal/CHARGE_AND_OWNER_INVARIANTS_ACTUAL.json",
+        "bytes": 12410,
+        "sha256": "8049981313cc303bfa196509ef935f4fbbd92eee93e7482e39c6b4f9a5df9610"
+      },
+      "smallSceneCameraCorrections": [
+        {
+          "id": "mk2",
+          "before": 611.634208388245,
+          "after": 0
+        },
+        {
+          "id": "mk3",
+          "before": 612.5597726576852,
+          "after": 0
+        },
+        {
+          "id": "dwarf_swarm",
+          "before": 578.0772422657433,
+          "after": 0
+        }
+      ],
+      "beforeMaxCameraDelta": 612.5597726576852,
+      "beforeGroundCameraDelta": 232.4,
+      "beforeBulldozerRootPlayerResponse": 16
+    },
+    "rexRay": {
+      "status": "passed-owner-only",
+      "wantedZeroPlayerRootDrift": 0,
+      "wantedZeroAnimationRootDrift": 0,
+      "ownerNoIntentRootDrift": 0,
+      "maxLocomotionSupportDrift": 2.5421149729252077e-13,
+      "unrequestedReverseSteps": 0,
+      "proof": {
+        "path": "/tmp/cqc-pass37-arsenal/DUEL_AFTER_ACTUAL.json",
+        "bytes": 36128,
+        "sha256": "54abac8960db9478020a3fe80768010b80656f0d571ed8390aa6ba3ea3370cc8"
+      },
+      "actualAIAndBudgets": {
+        "path": "/tmp/cqc-pass37-arsenal/DUEL_AI_AND_BUDGET_INVARIANTS_ACTUAL.json",
+        "bytes": 14578,
+        "sha256": "995993f66d039cc59646cd4f7dda06c67fa3f6bbd3085c0aac97ca4d24f7898d"
+      }
+    },
+    "peaceWalkerBiped": {
+      "status": "passed-owner-only",
+      "changedOwners": [
+        "near_shin",
+        "near_thigh",
+        "hull_panel_00"
+      ],
+      "sourceNontransparentPixelCenters": 499924,
+      "lostPixels": 0,
+      "doubleOwnedPixels": 0,
+      "sourcePNGBytesChanged": false,
+      "proof": {
+        "path": "/tmp/cqc-pass37-peacewalker/NATIVE_ALPHA_OWNERSHIP_ACTUAL.json",
+        "bytes": 1351,
+        "sha256": "f5b272ac96892b60a6259c948848805dc0f4f252a17c2d947575fae690e6559c"
+      },
+      "finalOwnerProof": {
+        "path": "/tmp/cqc-pass37-peacewalker/BIPED_JUNCTION_GROUND_PAUSE_ACTUAL.json",
+        "bytes": 6582,
+        "sha256": "e78a997944cc4e710beeaaa3fbb87fb5b800fc2f6ae4e6b8f53865ce6a421645"
+      },
+      "correctedFarShinTextureParents": [
+        "far_shin_0",
+        "far_shin_1"
+      ],
+      "walkingFrames": 256,
+      "chains": 512,
+      "maxJointDistance": 0,
+      "maxSoleYError": 1.4210854715202004e-13,
+      "pauseFixedFrameRenderHashes": [
+        "4d77e70035723d3d8244b8723924d70d5d0221d68e695ed88bf240fe99577530",
+        "4d77e70035723d3d8244b8723924d70d5d0221d68e695ed88bf240fe99577530",
+        "4d77e70035723d3d8244b8723924d70d5d0221d68e695ed88bf240fe99577530",
+        "4d77e70035723d3d8244b8723924d70d5d0221d68e695ed88bf240fe99577530"
+      ],
+      "productionGraphRigsChecked": 54,
+      "graphIdempotent": true
+    },
+    "ink": {
+      "status": "passed",
+      "previousRecords": 872,
+      "records": 875,
+      "allOldRecordValuesAndLexicalBytesPreserved": true,
+      "proof": {
+        "path": "/tmp/cqc-pass37-root/PW_NATIVE_INK_ADMISSION_ACTUAL.json",
+        "bytes": 3911,
+        "sha256": "ada5a0eee196223f5e7cc8b2c470965cd38d56c3d9a5db069463c7ecdba4e60a"
+      }
+    },
+    "htmlFallback": {
+      "status": "implemented-browser-QA-pending",
+      "proof": {
+        "path": "/tmp/cqc-pass37-root/ARSENAL_FALLBACK_ANCHOR_ACTUAL.json",
+        "bytes": 358,
+        "sha256": "61f0f75143879a53eb418d01290cc16f86decace6d26e3e72484f0dda87b80bc"
+      }
+    },
+    "peaceWalkerQuadruped": {
+      "status": "passed-owner-only",
+      "proof": {
+        "path": "/tmp/cqc-pass37-peacewalker/FINAL_QUAD_JUNCTION_GROUND_PAUSE_V2_ACTUAL.json",
+        "bytes": 6535,
+        "sha256": "994c16d94983ea020587036ee4fb2d4262e292bfca3d7329fdd421ecce7df9af"
+      },
+      "nativeSockets": {
+        "hip": [
+          408,
+          476
+        ],
+        "upperKnee": [
+          215,
+          495
+        ],
+        "lowerKnee": [
+          211,
+          568
+        ],
+        "lowerAnkle": [
+          144,
+          790
+        ],
+        "footAnkle": [
+          156,
+          898
+        ]
+      },
+      "walkingTicks": 353,
+      "cycles": 2,
+      "maxJointDistance": 0,
+      "maxSoleYError": 7.105427357601002e-14,
+      "maxHipError": 0,
+      "minReachMargin": 12.081661951809679,
+      "sourceScalesClipsExact": true,
+      "oldAnkleHeightPreserved": true,
+      "detachmentAnchorsExact": true,
+      "qualification": "Read-only source alpha and production 2D rig/registry. Authored source-length support correction; original-game3D and hidden surfaces not certified. Frozen-clock repeat is a controlled renderer pause contract, actual browser pause checked by owner QA."
+    },
+    "peaceWalkerFinalIntegrity": {
+      "status": "passed-owner-only",
+      "proof": {
+        "path": "/tmp/cqc-pass37-peacewalker/FINAL_INTEGRITY_HANDOFF_ACTUAL.json",
+        "bytes": 4587,
+        "sha256": "8fddd5cb2dae0fdef5a704e985d954383bd10f538d3d8ac258fe3cd8ef9ad3f9"
+      }
+    }
+  },
+  "runtime": {
+    "status": "passed",
+    "files": 2674,
+    "totalBytes": 3126013728,
+    "manifestSHA256": "408a4c8c0ef031201939bc4f2c081262f01e75268ddc6a0a70e206aa1c35e1f7",
+    "oldNormalPathsRetained": 2674,
+    "oldRasterFilesUnchanged": 2277,
+    "oldRasterBytes": 2892435433,
+    "dropped": [],
+    "proof": {
+      "path": "/tmp/cqc-pass37-root/RUNTIME_GRAPH_AND_MIRRORS_ACTUAL.json",
+      "bytes": 8409,
+      "sha256": "814ca9e9c4fb884a22ec12fb4cecd1add9dd7b7c98a6aac23f2e74ee8ad88c8b"
+    }
+  },
+  "historicalBacklog": {
+    "source": {
+      "path": "/workspace/cqc-pass21-application/docs/cqc-reprise/pass36/NEXT_LOT.md",
+      "bytes": 11892,
+      "sha256": "28b7f77f05a5f5cb21c6c9cc512d507d9192774b12caf42be088ff2b2562a944"
+    },
+    "preservedFullTailBytes": 11892,
+    "tailOffsetBytes": 1511,
+    "tailSHA256": "28b7f77f05a5f5cb21c6c9cc512d507d9192774b12caf42be088ff2b2562a944",
+    "completeTailByteExact": true
+  },
+  "limits": [
+    "Aucune certification absolue1:1.",
+    "Les preuves propriétaires VM et de pixels ne constituent pas la QA navigateur indépendante.",
+    "Vues opposées, intérieurs masqués, phases originales et dimensions non documentées restent ouverts.",
+    "Tous les chantiers historiques du backlog P36 restent conservés.",
+    "Les raccords quadrupèdes conservent les échelles, clips et sol existants ; les surfaces articulaires masquées et la géométrie3D originale ne sont pas certifiées."
+  ],
+  "absolute1to1Certified": false,
+  "historicalSourcesRemoved": false,
+  "ownerVerificationCompletedUTC": "2026-10-15T21:21:10.136187+00:00",
+  "rootVisualReview": {
+    "path": "/tmp/cqc-pass37-root/ROOT_PHYSICAL_VISUAL_REVIEW_V3_ACTUAL.json",
+    "bytes": 3355,
+    "sha256": "93bb2ba660874a2c1840c91543cacff4cbd76ac67952ba037528b6894c2f71d4"
+  },
+  "documentationUpdatedUTC": "2026-10-15T21:33:12.334850+00:00"
+}

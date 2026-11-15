@@ -1,0 +1,2260 @@
+{
+  "schema": "cqc.pass13.closed-source-inventory/2",
+  "actualRun": true,
+  "closedSourceInputs": true,
+  "createdUTC": "2026-10-03T06:54:42.303277+00:00",
+  "priorArchivePlan": {
+    "path": "/tmp/cqc-pass13-lossless-preparation/actual-base-01/CLOSED_ARCHIVE_PLAN.json",
+    "bytes": 5067,
+    "sha256": "be1f20bc165de50ef0c739acc80a2c578276d0b01c878803570bb66fc6b99540"
+  },
+  "newScope": {
+    "path": "/tmp/cqc-pass13-lossless-preparation/ROOT_CLOSED_EXTENSION_SCOPE_V2.json",
+    "bytes": 906,
+    "sha256": "b87fef8b43b8f8a366c466356fafdb7e901f47ca7a39aed0e1f543d2d7b37884"
+  },
+  "roots": [
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites",
+      "regularFilePaths": [
+        "/tmp/cqc-pass13-ray-sprites/assets/ray-mgs2-arms-01.png",
+        "/tmp/cqc-pass13-ray-sprites/assets/ray-mgs2-head-jaw-02.png",
+        "/tmp/cqc-pass13-ray-sprites/assets/ray-mgs2-legs-01.png",
+        "/tmp/cqc-pass13-ray-sprites/assets/ray-mgs2-master-01.png",
+        "/tmp/cqc-pass13-ray-sprites/assets/ray-mgs2-torso-head-01.png",
+        "/tmp/cqc-pass13-ray-sprites/preparation/ACTUAL_RENDERER_SCHEMA_ACCEPTANCE_V1.json",
+        "/tmp/cqc-pass13-ray-sprites/preparation/ARMS_PROMPT.txt",
+        "/tmp/cqc-pass13-ray-sprites/preparation/CLOSED_PRODUCER_MEMBERSHIP_V1.json",
+        "/tmp/cqc-pass13-ray-sprites/preparation/HEAD_JAW_CORRECTION_PROMPT.txt",
+        "/tmp/cqc-pass13-ray-sprites/preparation/LEGS_PROMPT.txt",
+        "/tmp/cqc-pass13-ray-sprites/preparation/MASTER_PROMPT.txt",
+        "/tmp/cqc-pass13-ray-sprites/preparation/MASTER_REFERENCE_PATHS.json",
+        "/tmp/cqc-pass13-ray-sprites/preparation/NATIVE_IMAGEGEN_PROVENANCE_V1.json",
+        "/tmp/cqc-pass13-ray-sprites/preparation/PRODUCER_NATIVE_REVIEW.md",
+        "/tmp/cqc-pass13-ray-sprites/preparation/RAY_MACHINE_PARTS_CANDIDATE_V1.json",
+        "/tmp/cqc-pass13-ray-sprites/preparation/RAY_MACHINE_PARTS_CANDIDATE_V2.json",
+        "/tmp/cqc-pass13-ray-sprites/preparation/RAY_MACHINE_PARTS_CANDIDATE_V3.json",
+        "/tmp/cqc-pass13-ray-sprites/preparation/RAY_MACHINE_PARTS_CANDIDATE_V4.json",
+        "/tmp/cqc-pass13-ray-sprites/preparation/RAY_NATIVE_DELIVERY_V1.json",
+        "/tmp/cqc-pass13-ray-sprites/preparation/READ_ONLY_NATIVE_ALPHA_RECTANGLE_ANALYSIS_V1.json",
+        "/tmp/cqc-pass13-ray-sprites/preparation/READ_ONLY_NATIVE_ALPHA_RECTANGLE_ANALYSIS_V2.json",
+        "/tmp/cqc-pass13-ray-sprites/preparation/TORSO_HEAD_PROMPT.txt",
+        "/tmp/cqc-pass13-ray-sprites/preparation/build_ray_candidate_metadata.py",
+        "/tmp/cqc-pass13-ray-sprites/references/mgs2-ray-arena-front.jpg",
+        "/tmp/cqc-pass13-ray-sprites/references/mgs2-ray-body-front.jpg",
+        "/tmp/cqc-pass13-ray-sprites/references/mgs2-ray-body-mouth.jpg",
+        "/tmp/cqc-pass13-ray-sprites/references/mgs2-ray-knee.jpg"
+      ],
+      "closure": "Root explicit closure authorization; producer closures archived when present"
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references",
+      "regularFilePaths": [
+        "/tmp/cqc-pass13-ray-references/FETCH_01.json",
+        "/tmp/cqc-pass13-ray-references/FETCH_02.json",
+        "/tmp/cqc-pass13-ray-references/FETCH_03.json",
+        "/tmp/cqc-pass13-ray-references/FETCH_04.json",
+        "/tmp/cqc-pass13-ray-references/RAY_REFERENCE_DELIVERY_V1.json",
+        "/tmp/cqc-pass13-ray-references/RAY_REFERENCE_PLAN_FR.md",
+        "/tmp/cqc-pass13-ray-references/RAY_REFERENCE_PLAN_V1.json",
+        "/tmp/cqc-pass13-ray-references/archive-mgr-search.json",
+        "/tmp/cqc-pass13-ray-references/archive-ray-search.json",
+        "/tmp/cqc-pass13-ray-references/konami-mgr-character.html",
+        "/tmp/cqc-pass13-ray-references/konami-mgr-machine.html",
+        "/tmp/cqc-pass13-ray-references/konami-mgr-ray.html",
+        "/tmp/cqc-pass13-ray-references/konami-ray-direct.html",
+        "/tmp/cqc-pass13-ray-references/konami-ray-en.html",
+        "/tmp/cqc-pass13-ray-references/konami-ray-jp.html",
+        "/tmp/cqc-pass13-ray-references/konami-ray.html",
+        "/tmp/cqc-pass13-ray-references/konami-raydirect-jp.html",
+        "/tmp/cqc-pass13-ray-references/lets-play-metal-gear-rising-cut.metadata.json",
+        "/tmp/cqc-pass13-ray-references/lets-play-metal-gear-rising-uncut.metadata.json",
+        "/tmp/cqc-pass13-ray-references/lp-mgr-index.html",
+        "/tmp/cqc-pass13-ray-references/lp-mgs2-index.html",
+        "/tmp/cqc-pass13-ray-references/mgr-bing-search.html",
+        "/tmp/cqc-pass13-ray-references/mgr-bing.html",
+        "/tmp/cqc-pass13-ray-references/mgr-cut-search.json",
+        "/tmp/cqc-pass13-ray-references/mgr-duckduckgo.html",
+        "/tmp/cqc-pass13-ray-references/mgr-image-3.jpg",
+        "/tmp/cqc-pass13-ray-references/mgr-image-6.png",
+        "/tmp/cqc-pass13-ray-references/mgr-r00-search.json",
+        "/tmp/cqc-pass13-ray-references/mgr-ray-achievement-_0zpEuwt3R8.jpg",
+        "/tmp/cqc-pass13-ray-references/mgr-ray-achievement-_0zpEuwt3R8_000058.jpg",
+        "/tmp/cqc-pass13-ray-references/mgr-ray-achievement-_0zpEuwt3R8_000089.jpg",
+        "/tmp/cqc-pass13-ray-references/mgr-ray-achievement-_0zpEuwt3R8_000120.jpg",
+        "/tmp/cqc-pass13-ray-references/mgr-ray-bonus-000001.jpg",
+        "/tmp/cqc-pass13-ray-references/mgr-ray-bonus-000061.jpg",
+        "/tmp/cqc-pass13-ray-references/mgr-ray-bonus-000092.jpg",
+        "/tmp/cqc-pass13-ray-references/mgr-ray-bonus-000124.jpg",
+        "/tmp/cqc-pass13-ray-references/mgr-ray-cut-000957.jpg",
+        "/tmp/cqc-pass13-ray-references/mgr-ray-detail-search.json",
+        "/tmp/cqc-pass13-ray-references/mgr-ray-later-001444.jpg",
+        "/tmp/cqc-pass13-ray-references/mgr-ray-later-001577.jpg",
+        "/tmp/cqc-pass13-ray-references/mgr-ray-later-001700.jpg",
+        "/tmp/cqc-pass13-ray-references/mgr-ray-later-001832.jpg",
+        "/tmp/cqc-pass13-ray-references/mgr-ray-later-001972.jpg",
+        "/tmp/cqc-pass13-ray-references/mgr-ray-probe-000654.jpg",
+        "/tmp/cqc-pass13-ray-references/mgr-ray-probe-000782.jpg",
+        "/tmp/cqc-pass13-ray-references/mgr-ray-probe-000918.jpg",
+        "/tmp/cqc-pass13-ray-references/mgr-ray-probe-001047.jpg",
+        "/tmp/cqc-pass13-ray-references/mgr-ray-probe-001173.jpg",
+        "/tmp/cqc-pass13-ray-references/mgr-ray-probe-001306.jpg",
+        "/tmp/cqc-pass13-ray-references/mgr-ray-steel-tail-cover.jpg",
+        "/tmp/cqc-pass13-ray-references/mgs2-ray-arena-front.jpg",
+        "/tmp/cqc-pass13-ray-references/mgs2-ray-body-front.jpg",
+        "/tmp/cqc-pass13-ray-references/mgs2-ray-body-mouth.jpg",
+        "/tmp/cqc-pass13-ray-references/mgs2-ray-knee.jpg",
+        "/tmp/cqc-pass13-ray-references/mgs2-ray-side.jpg",
+        "/tmp/cqc-pass13-ray-references/mgs2-ray-unseen112.html",
+        "/tmp/cqc-pass13-ray-references/mgs2-screenshot-index.html",
+        "/tmp/cqc-pass13-ray-references/mgs2-update30.html",
+        "/tmp/cqc-pass13-ray-references/mgs2-update31.html",
+        "/tmp/cqc-pass13-ray-references/roosterteeth-13541.metadata.json",
+        "/tmp/cqc-pass13-ray-references/youtube-28EJuhJnP64.metadata.json",
+        "/tmp/cqc-pass13-ray-references/youtube-_0zpEuwt3R8.metadata.json"
+      ],
+      "closure": "Root explicit closure authorization; producer closures archived when present"
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references",
+      "regularFilePaths": [
+        "/tmp/cqc-pass13-rex-references/ADDITIONAL_IA_DOWNLOADS_V1.json",
+        "/tmp/cqc-pass13-rex-references/ADDITIONAL_IA_DOWNLOADS_V2.json",
+        "/tmp/cqc-pass13-rex-references/CREATIVE_GALLERY_C_RETRIEVAL.json",
+        "/tmp/cqc-pass13-rex-references/CREATIVE_OTHER_GALLERY_RETRIEVAL.json",
+        "/tmp/cqc-pass13-rex-references/ORIGINAL_CONCEPT_RETRIEVAL_V1.json",
+        "/tmp/cqc-pass13-rex-references/PUBLIC_PAGE_RETRIEVAL_V1.json",
+        "/tmp/cqc-pass13-rex-references/REX_ANATOMY_PLAN_FR.md",
+        "/tmp/cqc-pass13-rex-references/REX_ORIGINAL_ANATOMY_AND_REFERENCE_PLAN_V1.json",
+        "/tmp/cqc-pass13-rex-references/REX_REFERENCE_DELIVERY_V1.json",
+        "/tmp/cqc-pass13-rex-references/SEARCH_RETRIEVAL_V1.json",
+        "/tmp/cqc-pass13-rex-references/SEARCH_RETRIEVAL_V2.json",
+        "/tmp/cqc-pass13-rex-references/VISUAL_RESOURCE_RETRIEVAL_V1.json",
+        "/tmp/cqc-pass13-rex-references/VISUAL_RESOURCE_RETRIEVAL_V2.json",
+        "/tmp/cqc-pass13-rex-references/creative-rex-nonwww.gif",
+        "/tmp/cqc-pass13-rex-references/creative-rex-ref.gif",
+        "/tmp/cqc-pass13-rex-references/creativeuncut-mgs1-gallery-a.html",
+        "/tmp/cqc-pass13-rex-references/creativeuncut-mgs1-gallery-b.html",
+        "/tmp/cqc-pass13-rex-references/creativeuncut-mgs1-gallery-c.html",
+        "/tmp/cqc-pass13-rex-references/creativeuncut-mgs1-gallery-d.html",
+        "/tmp/cqc-pass13-rex-references/creativeuncut-rex.html",
+        "/tmp/cqc-pass13-rex-references/ia-ep14-1-1051s.jpg",
+        "/tmp/cqc-pass13-rex-references/ia-ep14-1-1147s.jpg",
+        "/tmp/cqc-pass13-rex-references/ia-ep14-1-955s.jpg",
+        "/tmp/cqc-pass13-rex-references/ia-ep14-2-1s.jpg",
+        "/tmp/cqc-pass13-rex-references/mgs1-rex-concept-22.gif",
+        "/tmp/cqc-pass13-rex-references/mgs1-rex-concept-23.gif",
+        "/tmp/cqc-pass13-rex-references/mgs1-rex-concept-24.gif",
+        "/tmp/cqc-pass13-rex-references/mgs1-rex-concept-25.gif",
+        "/tmp/cqc-pass13-rex-references/mgs1-rex-concept-27.gif",
+        "/tmp/cqc-pass13-rex-references/ps1-ia-ep14-1-1243s.jpg",
+        "/tmp/cqc-pass13-rex-references/ps1-ia-ep14-2-133s.jpg",
+        "/tmp/cqc-pass13-rex-references/ps1-ia-ep14-2-200s.jpg",
+        "/tmp/cqc-pass13-rex-references/ps1-ia-ep14-2-272s.jpg",
+        "/tmp/cqc-pass13-rex-references/ps1-ia-ep14-2-338s.jpg",
+        "/tmp/cqc-pass13-rex-references/ps1-ia-ep14-2-683s.jpg",
+        "/tmp/cqc-pass13-rex-references/search-1.html",
+        "/tmp/cqc-pass13-rex-references/search-2.html",
+        "/tmp/cqc-pass13-rex-references/search-3.html",
+        "/tmp/cqc-pass13-rex-references/search-4.html",
+        "/tmp/cqc-pass13-rex-references/search-5.html",
+        "/tmp/cqc-pass13-rex-references/search-6.html",
+        "/tmp/cqc-pass13-rex-references/search-7.html"
+      ],
+      "closure": "Root explicit closure authorization; producer closures archived when present"
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-sprites",
+      "regularFilePaths": [
+        "/tmp/cqc-pass13-rex-sprites/GENERATION_INPUT_REJECTION_02.json",
+        "/tmp/cqc-pass13-rex-sprites/PRE_GENERATION_REQUEST_REJECTED_01.json",
+        "/tmp/cqc-pass13-rex-sprites/body-01.request.json",
+        "/tmp/cqc-pass13-rex-sprites/equipment-01.request.json",
+        "/tmp/cqc-pass13-rex-sprites/legs-01.request.json",
+        "/tmp/cqc-pass13-rex-sprites/master-01.request-v2.json",
+        "/tmp/cqc-pass13-rex-sprites/master-01.request.json",
+        "/tmp/cqc-pass13-rex-sprites/master-02-game-illustration.request.json"
+      ],
+      "closure": "Root explicit closure authorization; producer closures archived when present"
+    },
+    {
+      "path": "/tmp/cqc-pass13-machine-renderer-preparation",
+      "regularFilePaths": [
+        "/tmp/cqc-pass13-machine-renderer-preparation/ACTUAL_RENDERER_PREPARATION_DELIVERY_V1.json",
+        "/tmp/cqc-pass13-machine-renderer-preparation/MACHINE_PARTS_SCHEMA_METADATA.json",
+        "/tmp/cqc-pass13-machine-renderer-preparation/RENDERER_CONTRACT.md",
+        "/tmp/cqc-pass13-machine-renderer-preparation/cqc-machine-parts-renderer-v1.js",
+        "/tmp/cqc-pass13-machine-renderer-preparation/node-contracts.log",
+        "/tmp/cqc-pass13-machine-renderer-preparation/renderer-contracts.test.cjs",
+        "/tmp/cqc-pass13-machine-renderer-preparation/syntax-check.log"
+      ],
+      "closure": "Root explicit closure authorization; producer closures archived when present"
+    },
+    {
+      "path": "/tmp/cqc-pass13-machine-audit",
+      "regularFilePaths": [
+        "/tmp/cqc-pass13-machine-audit/MACHINE_READONLY_AUDIT.json",
+        "/tmp/cqc-pass13-machine-audit/MACHINE_READONLY_AUDIT.md"
+      ],
+      "closure": "Root explicit closure authorization; producer closures archived when present"
+    },
+    {
+      "path": "/tmp/cqc-pass13-storage-audit",
+      "regularFilePaths": [
+        "/tmp/cqc-pass13-storage-audit/NODE_MODULES_PRE_MIGRATION_INVENTORY_V1.json",
+        "/tmp/cqc-pass13-storage-audit/READ_ONLY_STORAGE_AUDIT_V1.json"
+      ],
+      "closure": "Root explicit closure authorization; producer closures archived when present"
+    },
+    {
+      "path": "/workspace/cqc-pass13-storage-migration",
+      "regularFilePaths": [
+        "/workspace/cqc-pass13-storage-migration/ACTUAL_DEPENDENCY_RELOCATION_V2.json",
+        "/workspace/cqc-pass13-storage-migration/COPY_VERIFIED_BEFORE_REPLACEMENT_V2.json",
+        "/workspace/cqc-pass13-storage-migration/PREPARATION_ASSERTION_CORRECTION_V1.json",
+        "/workspace/cqc-pass13-storage-migration/PRE_COPY_CHECK_V2.json"
+      ],
+      "closure": "Root explicit closure authorization; producer closures archived when present"
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-rig",
+      "regularFilePaths": [
+        "/tmp/cqc-pass13-rex-rig/REX_MACHINE_PARTS_CANDIDATE_V1.json",
+        "/tmp/cqc-pass13-rex-rig/REX_RIG_DELIVERY_V1.json",
+        "/tmp/cqc-pass13-rex-rig/REX_RIG_README_FR.md",
+        "/tmp/cqc-pass13-rex-rig/assets/machine-parts/rex-mgs1/body.png",
+        "/tmp/cqc-pass13-rex-rig/assets/machine-parts/rex-mgs1/body_components.png",
+        "/tmp/cqc-pass13-rex-rig/assets/machine-parts/rex-mgs1/equipment.png",
+        "/tmp/cqc-pass13-rex-rig/assets/machine-parts/rex-mgs1/far_legs.png",
+        "/tmp/cqc-pass13-rex-rig/assets/machine-parts/rex-mgs1/head.png",
+        "/tmp/cqc-pass13-rex-rig/assets/machine-parts/rex-mgs1/near_legs.png",
+        "/tmp/cqc-pass13-rex-rig/preparation/ACTUAL_IMAGEGEN_CORRECTION_PROMPTS_V1.json",
+        "/tmp/cqc-pass13-rex-rig/preparation/ACTUAL_NATIVE_ALPHA_AND_SOURCE_PIN_REVIEW_V1.json",
+        "/tmp/cqc-pass13-rex-rig/preparation/ACTUAL_RENDERER_CONTRACT_AND_PIN_CHECK_V1.json",
+        "/tmp/cqc-pass13-rex-rig/preparation/REX_RIG_PHYSICAL_PREPARATION_V1.json",
+        "/tmp/cqc-pass13-rex-rig/preparation/approved_reference_master.png",
+        "/tmp/cqc-pass13-rex-rig/preparation/prepare_rex_rig_v1.py"
+      ],
+      "closure": "Root confirmed both full roots stable and closed on 2026-10-03; byte preservation only."
+    },
+    {
+      "path": "/tmp/cqc-pass13-machine-integration-preparation",
+      "regularFilePaths": [
+        "/tmp/cqc-pass13-machine-integration-preparation/ACTUAL_CORE_CANDIDATE_PREPARATION_V1.json",
+        "/tmp/cqc-pass13-machine-integration-preparation/ACTUAL_INTEGRATION_PREPARATION_DELIVERY_V1.json",
+        "/tmp/cqc-pass13-machine-integration-preparation/CORE_CANDIDATE_FRONTEND_ONLY_DIFF.patch",
+        "/tmp/cqc-pass13-machine-integration-preparation/INTEGRATION_NOTES.md",
+        "/tmp/cqc-pass13-machine-integration-preparation/bridge-contracts.log",
+        "/tmp/cqc-pass13-machine-integration-preparation/bridge-contracts.test.cjs",
+        "/tmp/cqc-pass13-machine-integration-preparation/bridge-syntax.log",
+        "/tmp/cqc-pass13-machine-integration-preparation/core-v032.native-machines-candidate-v1.html",
+        "/tmp/cqc-pass13-machine-integration-preparation/cqc-machine-parts-bridge-v1.js",
+        "/tmp/cqc-pass13-machine-integration-preparation/prepare_core_candidate_v1.py"
+      ],
+      "closure": "Root confirmed both full roots stable and closed on 2026-10-03; byte preservation only."
+    }
+  ],
+  "logicalSources": [
+    {
+      "path": "/tmp/cqc-next-mgs1-rex-hangar/preparation/references/ia-ep14-2-338s.jpg",
+      "bytes": 29074,
+      "sha256": "5f66826471ffee138c4d0297678a130a9483ad47a12187e53febfb618dcea3a9",
+      "role": "original REX request source-capture identity; same immutable capture bytes also present under reference root",
+      "mode": 384,
+      "mtimeNS": 1791006357750504436,
+      "device": 33,
+      "inode": 421295
+    },
+    {
+      "path": "/tmp/cqc-next-mgs1-rex-hangar/preparation/references/ia-ep14-2-683s.jpg",
+      "bytes": 63158,
+      "sha256": "1a680c1ddcd557fbe9424affa7acf60bc83b05c0cdd17991b581ef002c9a3749",
+      "role": "original REX request source-capture identity; same immutable capture bytes also present under reference root",
+      "mode": 384,
+      "mtimeNS": 1791006316820128725,
+      "device": 33,
+      "inode": 421260
+    },
+    {
+      "path": "/tmp/cqc-pass13-lossless-preparation/LOSSLESS_RECONSTRUCTION_README.md",
+      "bytes": 1643,
+      "sha256": "b981079886071298742774d5738274c818bad2a66b63d3834d9091d925ecbc93",
+      "role": "closed archive preparation source",
+      "mode": 384,
+      "mtimeNS": 1791010132693954981,
+      "device": 33,
+      "inode": 446132
+    },
+    {
+      "path": "/tmp/cqc-pass13-lossless-preparation/ROOT_CLOSED_EXTENSION_SCOPE_V2.json",
+      "bytes": 906,
+      "sha256": "b87fef8b43b8f8a366c466356fafdb7e901f47ca7a39aed0e1f543d2d7b37884",
+      "role": "closed preservation extension source/proof",
+      "mode": 384,
+      "mtimeNS": 1791010482176871820,
+      "device": 33,
+      "inode": 447070
+    },
+    {
+      "path": "/tmp/cqc-pass13-lossless-preparation/SOURCE_SCOPE_AND_ROOT_CLOSURE_V1.json",
+      "bytes": 2347,
+      "sha256": "628bc0b6d5461375ac6c213a6ab0d959ad7daa4519470dedc210cebb00c9bb7d",
+      "role": "closed archive preparation source",
+      "mode": 384,
+      "mtimeNS": 1791010132693087202,
+      "device": 33,
+      "inode": 446131
+    },
+    {
+      "path": "/tmp/cqc-pass13-lossless-preparation/actual-base-01/CLOSED_ARCHIVE_PLAN.json",
+      "bytes": 5067,
+      "sha256": "be1f20bc165de50ef0c739acc80a2c578276d0b01c878803570bb66fc6b99540",
+      "role": "closed preservation extension source/proof",
+      "mode": 384,
+      "mtimeNS": 1791010233837372618,
+      "device": 33,
+      "inode": 446574
+    },
+    {
+      "path": "/tmp/cqc-pass13-lossless-preparation/extend_closed_lossless_v1.py",
+      "bytes": 10533,
+      "sha256": "0938b14f39397dfced81799e18e6d7a281cd9057fc7fafd4fbaa378301b93a5d",
+      "role": "closed preservation extension source/proof",
+      "mode": 384,
+      "mtimeNS": 1791010482179169236,
+      "device": 33,
+      "inode": 447071
+    },
+    {
+      "path": "/tmp/cqc-pass13-lossless-preparation/prepare_closed_base_lossless_v1.py",
+      "bytes": 9833,
+      "sha256": "e03e1bc5c2eb4419d27e5d33ea16664297c3e392e2b405f6a6c9a92587ab65de",
+      "role": "closed archive preparation source",
+      "mode": 384,
+      "mtimeNS": 1791010233545972308,
+      "device": 33,
+      "inode": 446565
+    },
+    {
+      "path": "/tmp/cqc-pass13-machine-audit/MACHINE_READONLY_AUDIT.json",
+      "bytes": 29121,
+      "sha256": "8f45029db06dc498cf008d062e719d4b1c14fb2e06fad9b2c317660843d6f5c5",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008224146634307,
+      "device": 33,
+      "inode": 425511
+    },
+    {
+      "path": "/tmp/cqc-pass13-machine-audit/MACHINE_READONLY_AUDIT.md",
+      "bytes": 6253,
+      "sha256": "f9b36f5d7c1dfe48b993d2918506e0d31740648e486cbc0c7016519ad5c434e9",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008224146681078,
+      "device": 33,
+      "inode": 425512
+    },
+    {
+      "path": "/tmp/cqc-pass13-machine-integration-preparation/ACTUAL_CORE_CANDIDATE_PREPARATION_V1.json",
+      "bytes": 2103,
+      "sha256": "e0168dae600c61008a1bb8cdc8ccc5a9946a58b71bc9ea4c38b5fed1904fb0b5",
+      "role": "Root newly closed source root",
+      "mode": 384,
+      "mtimeNS": 1791009988039291176,
+      "device": 33,
+      "inode": 445184
+    },
+    {
+      "path": "/tmp/cqc-pass13-machine-integration-preparation/ACTUAL_INTEGRATION_PREPARATION_DELIVERY_V1.json",
+      "bytes": 5241,
+      "sha256": "536143c4db27baf6c88005fb719dbb79d1445cfc23dfdf8ce8aa8306f69ebfae",
+      "role": "Root newly closed source root",
+      "mode": 384,
+      "mtimeNS": 1791010111556995433,
+      "device": 33,
+      "inode": 446086
+    },
+    {
+      "path": "/tmp/cqc-pass13-machine-integration-preparation/CORE_CANDIDATE_FRONTEND_ONLY_DIFF.patch",
+      "bytes": 7126,
+      "sha256": "2950eb8d13046af286cd24bbe13a0e100fecb034d9a19fe4cc9decea6328875b",
+      "role": "Root newly closed source root",
+      "mode": 384,
+      "mtimeNS": 1791009988036693135,
+      "device": 33,
+      "inode": 445183
+    },
+    {
+      "path": "/tmp/cqc-pass13-machine-integration-preparation/INTEGRATION_NOTES.md",
+      "bytes": 3814,
+      "sha256": "79ee89e74557635ecd2fdb3ad3c8dbb4a751d8a03c1214de19d33b2cb7faf245",
+      "role": "Root newly closed source root",
+      "mode": 384,
+      "mtimeNS": 1791010111020495056,
+      "device": 33,
+      "inode": 446075
+    },
+    {
+      "path": "/tmp/cqc-pass13-machine-integration-preparation/bridge-contracts.log",
+      "bytes": 978,
+      "sha256": "99bbc2b9ab56a50d7a2de53dda24df83a9b1b42f4b8dbb65e6b33000016bee88",
+      "role": "Root newly closed source root",
+      "mode": 384,
+      "mtimeNS": 1791010111385955056,
+      "device": 33,
+      "inode": 446085
+    },
+    {
+      "path": "/tmp/cqc-pass13-machine-integration-preparation/bridge-contracts.test.cjs",
+      "bytes": 6592,
+      "sha256": "b79dc0c9e9e33b9b12813bfbbdc9f91a7278f9e334cd025202d2bb9a538fd797",
+      "role": "Root newly closed source root",
+      "mode": 384,
+      "mtimeNS": 1791009863825879155,
+      "device": 33,
+      "inode": 444916
+    },
+    {
+      "path": "/tmp/cqc-pass13-machine-integration-preparation/bridge-syntax.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "Root newly closed source root",
+      "mode": 384,
+      "mtimeNS": 1791010111288502231,
+      "device": 33,
+      "inode": 446084
+    },
+    {
+      "path": "/tmp/cqc-pass13-machine-integration-preparation/core-v032.native-machines-candidate-v1.html",
+      "bytes": 1522257,
+      "sha256": "679add4b93a55a5b5644775de4ffac61ce684dadd3eebc3d66a8ba89688e2df5",
+      "role": "Root newly closed source root",
+      "mode": 384,
+      "mtimeNS": 1791009988020362481,
+      "device": 33,
+      "inode": 445182
+    },
+    {
+      "path": "/tmp/cqc-pass13-machine-integration-preparation/cqc-machine-parts-bridge-v1.js",
+      "bytes": 11623,
+      "sha256": "e502fe65b19b8c85e40397f272ab9fe81a26845f8f0f323ed8fe6de61462e985",
+      "role": "Root newly closed source root",
+      "mode": 384,
+      "mtimeNS": 1791009863253863824,
+      "device": 33,
+      "inode": 444774
+    },
+    {
+      "path": "/tmp/cqc-pass13-machine-integration-preparation/prepare_core_candidate_v1.py",
+      "bytes": 5222,
+      "sha256": "9bb0d417feb50951647b895976c36936624e59359255e0e582831429a1ead16a",
+      "role": "Root newly closed source root",
+      "mode": 384,
+      "mtimeNS": 1791009987757194853,
+      "device": 33,
+      "inode": 445173
+    },
+    {
+      "path": "/tmp/cqc-pass13-machine-renderer-preparation/ACTUAL_RENDERER_PREPARATION_DELIVERY_V1.json",
+      "bytes": 3296,
+      "sha256": "ac1dfa17b09ce3d8ae19b56243e40fb3e0acfa27555423891a33c36d29416cde",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791009056274959885,
+      "device": 33,
+      "inode": 444132
+    },
+    {
+      "path": "/tmp/cqc-pass13-machine-renderer-preparation/MACHINE_PARTS_SCHEMA_METADATA.json",
+      "bytes": 2186,
+      "sha256": "de0a2170b17da19ba99a4eeb174837743d781a63e40baa31cddca2b64a658bbd",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791009055864223649,
+      "device": 33,
+      "inode": 444113
+    },
+    {
+      "path": "/tmp/cqc-pass13-machine-renderer-preparation/RENDERER_CONTRACT.md",
+      "bytes": 6500,
+      "sha256": "8ecd09709be0a3e451aa68eb0271a94ce22beb4abf74cd3dda4cacf0bc01ad0c",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791009055308208724,
+      "device": 33,
+      "inode": 444096
+    },
+    {
+      "path": "/tmp/cqc-pass13-machine-renderer-preparation/cqc-machine-parts-renderer-v1.js",
+      "bytes": 18210,
+      "sha256": "3e642f8ae04c224267579558d8b36884f643d1ab8f4187573b266ce45466a8aa",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008912276377750,
+      "device": 33,
+      "inode": 426303
+    },
+    {
+      "path": "/tmp/cqc-pass13-machine-renderer-preparation/node-contracts.log",
+      "bytes": 1479,
+      "sha256": "ac8821a96b09d3f1bdc6093e71fee089bb01db1d5b9f6a23ed7948c0e10ab722",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791009056274602585,
+      "device": 33,
+      "inode": 444131
+    },
+    {
+      "path": "/tmp/cqc-pass13-machine-renderer-preparation/renderer-contracts.test.cjs",
+      "bytes": 11185,
+      "sha256": "ff360a06547609b7b6a9d01a7e3b5b30b992435da6bea4fc087debb8648008cc",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008912840392854,
+      "device": 33,
+      "inode": 443818
+    },
+    {
+      "path": "/tmp/cqc-pass13-machine-renderer-preparation/syntax-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791009056124230630,
+      "device": 33,
+      "inode": 444130
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/FETCH_01.json",
+      "bytes": 3480,
+      "sha256": "b1afcfdcb2953aeb543b5a6380fb30e2d403282dec6ae9cc9d2868a4bf900759",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008143645407304,
+      "device": 33,
+      "inode": 425262
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/FETCH_02.json",
+      "bytes": 5396,
+      "sha256": "8028da7b6b18eea0b3c93c7ec6ed1dafc0f00beb8cbe2b20362a7c1f8690a17b",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008234103632764,
+      "device": 33,
+      "inode": 425551
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/FETCH_03.json",
+      "bytes": 7981,
+      "sha256": "ae4e85bb0cdb62b113b10e54431b29ff3ec2ee9208df5385d4a4b9c931085f45",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008277332119191,
+      "device": 33,
+      "inode": 425647
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/FETCH_04.json",
+      "bytes": 4780,
+      "sha256": "748883e1ba775c16b8db89daf99630048599fe96df1ef0a840a1861f20936d77",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008458690150220,
+      "device": 33,
+      "inode": 426049
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/RAY_REFERENCE_DELIVERY_V1.json",
+      "bytes": 12119,
+      "sha256": "a6f7b91a00ec9ec4ad1789a409bbfbfa1e98ad580650d23596a7930a81405257",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008672620054521,
+      "device": 33,
+      "inode": 443637
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/RAY_REFERENCE_PLAN_FR.md",
+      "bytes": 3508,
+      "sha256": "af3a6945c1842d13da9ebe90811608b15cce57ec94b2823b9a6356496707e425",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008672616212563,
+      "device": 33,
+      "inode": 443636
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/RAY_REFERENCE_PLAN_V1.json",
+      "bytes": 27979,
+      "sha256": "ca3e6f7e5444cad7e700f1d43822f243fbbd68d33477564296bda00eebbfadef",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008630521592554,
+      "device": 33,
+      "inode": 426404
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/archive-mgr-search.json",
+      "bytes": 14939,
+      "sha256": "f0e5fb065f1d6eefb8d214177750ba9e8bdab5a609147549b936c0a2516e8a8c",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008171186538007,
+      "device": 33,
+      "inode": 425367
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/archive-ray-search.json",
+      "bytes": 281,
+      "sha256": "b5c5d9773d19062b0ae7108bc8017137187949eeedf903e325045c069bae604a",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008349724868000,
+      "device": 33,
+      "inode": 425815
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/konami-mgr-character.html",
+      "bytes": 16005,
+      "sha256": "97d87bf77f07f45e2cd25a678e7a50f3b4df3a4620e5b01d99df16f8b3fa33dc",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008217248317079,
+      "device": 33,
+      "inode": 425493
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/konami-mgr-machine.html",
+      "bytes": 16005,
+      "sha256": "97d87bf77f07f45e2cd25a678e7a50f3b4df3a4620e5b01d99df16f8b3fa33dc",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008350732627403,
+      "device": 33,
+      "inode": 425833
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/konami-mgr-ray.html",
+      "bytes": 3088,
+      "sha256": "71e39b430f0e740d134dd37c2f1a36343ae67ed5ad5d903940ad75d263460751",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008309414780181,
+      "device": 33,
+      "inode": 425748
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/konami-ray-direct.html",
+      "bytes": 16005,
+      "sha256": "97d87bf77f07f45e2cd25a678e7a50f3b4df3a4620e5b01d99df16f8b3fa33dc",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008309710356624,
+      "device": 33,
+      "inode": 425749
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/konami-ray-en.html",
+      "bytes": 16005,
+      "sha256": "97d87bf77f07f45e2cd25a678e7a50f3b4df3a4620e5b01d99df16f8b3fa33dc",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008171197746526,
+      "device": 33,
+      "inode": 425368
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/konami-ray-jp.html",
+      "bytes": 16005,
+      "sha256": "97d87bf77f07f45e2cd25a678e7a50f3b4df3a4620e5b01d99df16f8b3fa33dc",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008171242505738,
+      "device": 33,
+      "inode": 425369
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/konami-ray.html",
+      "bytes": 16005,
+      "sha256": "97d87bf77f07f45e2cd25a678e7a50f3b4df3a4620e5b01d99df16f8b3fa33dc",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008109416631567,
+      "device": 33,
+      "inode": 425117
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/konami-raydirect-jp.html",
+      "bytes": 16005,
+      "sha256": "97d87bf77f07f45e2cd25a678e7a50f3b4df3a4620e5b01d99df16f8b3fa33dc",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008309726660576,
+      "device": 33,
+      "inode": 425750
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/lets-play-metal-gear-rising-cut.metadata.json",
+      "bytes": 124092,
+      "sha256": "a845db48f06a3d59b935fc75530938d9e42b7dcc35811ce2cf8c0ea725f68ff0",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008435956517304,
+      "device": 33,
+      "inode": 426025
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/lets-play-metal-gear-rising-uncut.metadata.json",
+      "bytes": 323386,
+      "sha256": "9561a22ddd66fc94a6901e5b683975c0a80638bcaebf83f35fbd50e67e2b620d",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008202165711037,
+      "device": 33,
+      "inode": 425475
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/lp-mgr-index.html",
+      "bytes": 19359,
+      "sha256": "79142bb3b5e6e24d05b108566e6b3986a8972b996319192b16c413bc5a45f87a",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008082166121650,
+      "device": 33,
+      "inode": 424999
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/lp-mgs2-index.html",
+      "bytes": 15300,
+      "sha256": "6d3b11a5df82896db47a38e4c8608f0e4c0ec7300793fcf5c334e52395709d07",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008081623977206,
+      "device": 33,
+      "inode": 424998
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-bing-search.html",
+      "bytes": 92646,
+      "sha256": "e1ed31eaef26c6eee23b1057c615b499b85a5663eb948ec40ca5c5122f450907",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008350283557936,
+      "device": 33,
+      "inode": 425832
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-bing.html",
+      "bytes": 121249,
+      "sha256": "1fef2d57ed35fd2dc4548eb55dcde046ffa3e2871a553ccf35ab06864b381b15",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008380999769360,
+      "device": 33,
+      "inode": 425867
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-cut-search.json",
+      "bytes": 4205,
+      "sha256": "627dcf7dd59945f6e85743a86cb95bc244142f92f5f5bfcddca9cfb943c4ed85",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008419171133599,
+      "device": 33,
+      "inode": 425952
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-duckduckgo.html",
+      "bytes": 14268,
+      "sha256": "7852aee29d88a39da3abf18dd6b5b76fb88e168736356f16801b5390da5d869b",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008380980155175,
+      "device": 33,
+      "inode": 425866
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-image-3.jpg",
+      "bytes": 212760,
+      "sha256": "434aa6f076d19150609912c36cd06a7a16c5310f9e13fc7286331d1a43b8ee99",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008143626233247,
+      "device": 33,
+      "inode": 425260
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-image-6.png",
+      "bytes": 177240,
+      "sha256": "f7fa10e0b6c164496b9caf246e9fa7bd90343c53b2adc2e5483e175d916036fc",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008143644850294,
+      "device": 33,
+      "inode": 425261
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-r00-search.json",
+      "bytes": 37389,
+      "sha256": "a5473ffa97534ce710acb264a544cf64a68f5e9c3400f4a6abc66ee86b828a18",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008419128282061,
+      "device": 33,
+      "inode": 425951
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-ray-achievement-_0zpEuwt3R8.jpg",
+      "bytes": 70547,
+      "sha256": "251fccd1561f1a734dc4519bd1cd7868f4c1f6162d8d0c5515b498d41af2b4d7",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008458689603034,
+      "device": 33,
+      "inode": 426048
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-ray-achievement-_0zpEuwt3R8_000058.jpg",
+      "bytes": 49269,
+      "sha256": "46b51e2d9fa03987e1b29fd1ed07caec8dda14c4cb0d236db5d3c2a8235b2842",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008458163319889,
+      "device": 33,
+      "inode": 426046
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-ray-achievement-_0zpEuwt3R8_000089.jpg",
+      "bytes": 36891,
+      "sha256": "849befad0311317fd1d4175e0bc1b5e805c417186247ee8701caa199db35bfba",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008458160216046,
+      "device": 33,
+      "inode": 426045
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-ray-achievement-_0zpEuwt3R8_000120.jpg",
+      "bytes": 38036,
+      "sha256": "b004ed86dd6a8e3f525fda77da68158a043b8dd2c34fb80e93d992aef4aeded0",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008457987964724,
+      "device": 33,
+      "inode": 426044
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-ray-bonus-000001.jpg",
+      "bytes": 38170,
+      "sha256": "56d7b6d520c05917523044b491b62012264c6c22ca11652c21aa388230788699",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008276967674360,
+      "device": 33,
+      "inode": 425638
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-ray-bonus-000061.jpg",
+      "bytes": 64479,
+      "sha256": "6c3af805dec4d3ed2356c7e3001ce4689d606eb107bce95aabd92e146cce739e",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008277140079221,
+      "device": 33,
+      "inode": 425642
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-ray-bonus-000092.jpg",
+      "bytes": 69355,
+      "sha256": "7d7e946d4222d8a6efe0d22580537f4e71294b7d38fd05e73dd43dd5dff3b2eb",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008277312508276,
+      "device": 33,
+      "inode": 425645
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-ray-bonus-000124.jpg",
+      "bytes": 43391,
+      "sha256": "296e4114b2611dd66107e2ec5c77432dab13c1ac7bf79d15054338308295b598",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008277331759443,
+      "device": 33,
+      "inode": 425646
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-ray-cut-000957.jpg",
+      "bytes": 52314,
+      "sha256": "566e53b6ddadf05c74805155d0dfaf19ca4f0cdc6928097597bf2b747e755097",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008457925033812,
+      "device": 33,
+      "inode": 426043
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-ray-detail-search.json",
+      "bytes": 93872,
+      "sha256": "6c8e1c2f4702edfdb3767c90a1962c8116ade37c565c0bb057f2cba01f18f53c",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008419514603949,
+      "device": 33,
+      "inode": 425953
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-ray-later-001444.jpg",
+      "bytes": 48690,
+      "sha256": "2cb4bd0cc8a5e2d2bdfb2d8ae56145da977affd1e091aa44a0dcfe2de0902ba2",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008277183671679,
+      "device": 33,
+      "inode": 425643
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-ray-later-001577.jpg",
+      "bytes": 57867,
+      "sha256": "dfa6afc9d96c5041448dda0fe15dd344bbca35a6e606653c7a9ca4ce714c6c6a",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008277131373784,
+      "device": 33,
+      "inode": 425641
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-ray-later-001700.jpg",
+      "bytes": 61027,
+      "sha256": "195fc25de54bda5ee106bf78073d05ac6c91465acc4549227a193335e63a0b13",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008277281323211,
+      "device": 33,
+      "inode": 425644
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-ray-later-001832.jpg",
+      "bytes": 30346,
+      "sha256": "42b5d67d63c30f6141c5b09a9b085af8b0483f289e66232e076957e4a4d6acfe",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008277124096482,
+      "device": 33,
+      "inode": 425639
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-ray-later-001972.jpg",
+      "bytes": 47904,
+      "sha256": "a6b1af72f8ad1ab0ca8cc0c5ca556532844ed83f119e2d6014693258036f7ffc",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008277124982268,
+      "device": 33,
+      "inode": 425640
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-ray-probe-000654.jpg",
+      "bytes": 67134,
+      "sha256": "0e91a8f9bd13f070838b674af5fa79d05c570cf10ed2f9893ffecceb522e24ce",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008233996371999,
+      "device": 33,
+      "inode": 425549
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-ray-probe-000782.jpg",
+      "bytes": 60826,
+      "sha256": "ff623a573c6e25c9d0e92587c6edb5add23d147fdcbe137d6bfd63f2feb0bd76",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008233993810453,
+      "device": 33,
+      "inode": 425548
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-ray-probe-000918.jpg",
+      "bytes": 46826,
+      "sha256": "84454722fe33bd3d56155ae1ba45b0883fe37d582f3d3610cfdd68921e6ecad2",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008234103045868,
+      "device": 33,
+      "inode": 425550
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-ray-probe-001047.jpg",
+      "bytes": 47332,
+      "sha256": "21175eca023f557d077fdfb5ab5e546a4cf8b736996764b6b0acea9b55c6ff8c",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008233983899010,
+      "device": 33,
+      "inode": 425546
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-ray-probe-001173.jpg",
+      "bytes": 39588,
+      "sha256": "03d1c3b69cd7b8b7121de6824ea19d2805429beccd9a9c989b50448c28add729",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008233963640428,
+      "device": 33,
+      "inode": 425545
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-ray-probe-001306.jpg",
+      "bytes": 73547,
+      "sha256": "a750e722a77db02b419285acb5473135226c6a0a1f3ac39660d793c0f5648188",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008233993409859,
+      "device": 33,
+      "inode": 425547
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgr-ray-steel-tail-cover.jpg",
+      "bytes": 162307,
+      "sha256": "7634fbb2cb3916b613f3eb4f3b0d6dc52750896a5ca678cc6dd8d6504fa29f57",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008458664520445,
+      "device": 33,
+      "inode": 426047
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgs2-ray-arena-front.jpg",
+      "bytes": 135057,
+      "sha256": "3710db4224b49c8ebb7cadbe102fd41df9cdf16dacf663bdc7a844f83ca754e6",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008143528911908,
+      "device": 33,
+      "inode": 425259
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgs2-ray-body-front.jpg",
+      "bytes": 70641,
+      "sha256": "a6b202d1f7ba4dd32e27f890c2b39460c5c616b68d68146c09cdf469386a3970",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008143515357367,
+      "device": 33,
+      "inode": 425258
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgs2-ray-body-mouth.jpg",
+      "bytes": 94047,
+      "sha256": "a231cea3513060250b27fd6c7a93aa9a89e63265b4b5774c5d562cd120eeaeb9",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008143467867351,
+      "device": 33,
+      "inode": 425255
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgs2-ray-knee.jpg",
+      "bytes": 137587,
+      "sha256": "89e7ad92b6c96e7eafaa2624221f9e387d90290031185764725e05b074161559",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008143515357367,
+      "device": 33,
+      "inode": 425257
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgs2-ray-side.jpg",
+      "bytes": 100402,
+      "sha256": "f7bf139e091367003887b4e5c10ac854367a1a6f92643a56d2b7557b13dc47ea",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008143515357367,
+      "device": 33,
+      "inode": 425256
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgs2-ray-unseen112.html",
+      "bytes": 16005,
+      "sha256": "97d87bf77f07f45e2cd25a678e7a50f3b4df3a4620e5b01d99df16f8b3fa33dc",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008172482599955,
+      "device": 33,
+      "inode": 425370
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgs2-screenshot-index.html",
+      "bytes": 7305,
+      "sha256": "6c809a831d5c4d11e3e4c2149b35c3af1debc809ecf52014965b4ab7363d1f90",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008108868786589,
+      "device": 33,
+      "inode": 425115
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgs2-update30.html",
+      "bytes": 8348,
+      "sha256": "9d5cb8ca1aaaab31a70290b6b1d07f384649c95b3ed6c84352f8e37a7ee03072",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008108856110609,
+      "device": 33,
+      "inode": 425114
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/mgs2-update31.html",
+      "bytes": 11310,
+      "sha256": "820c2bca25c834e9536d8701dc17ac9162d94350290042ac8e0ee64048528f0e",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008108891749803,
+      "device": 33,
+      "inode": 425116
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/roosterteeth-13541.metadata.json",
+      "bytes": 3902,
+      "sha256": "ea3fe0d1a0f3886689cbfcf1b2629e39526dd848907c331a9f9b95123d4beda8",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008435864060754,
+      "device": 33,
+      "inode": 426024
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/youtube-28EJuhJnP64.metadata.json",
+      "bytes": 9216,
+      "sha256": "dd6fe8ba29bd5f0e2f2439a34ee16749b600486c33e1281f94ce10f8b9feaec8",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008202690730875,
+      "device": 33,
+      "inode": 425476
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-references/youtube-_0zpEuwt3R8.metadata.json",
+      "bytes": 5634,
+      "sha256": "1d7a479a072c5573d8b635cb54bb4028471a8ff23dea9cedd2467bf0d1d4a336",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008436269775765,
+      "device": 33,
+      "inode": 426026
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/assets/ray-mgs2-arms-01.png",
+      "bytes": 1962491,
+      "sha256": "92aa6054049d76dc1a696a7e7d62d3288ea47bf211b4b8572635c415ece6c223",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008767576502641,
+      "device": 33,
+      "inode": 443801
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/assets/ray-mgs2-head-jaw-02.png",
+      "bytes": 1527117,
+      "sha256": "3c58e7da84896bf2bdfbf5f89e453800606654871e2af486ebe9a873d6b22196",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008909836312404,
+      "device": 33,
+      "inode": 443967
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/assets/ray-mgs2-legs-01.png",
+      "bytes": 1998393,
+      "sha256": "a112e537f58420a72a0faa9769427b89466b7f009f973531c3723acc450de3fd",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008717627164679,
+      "device": 33,
+      "inode": 443800
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/assets/ray-mgs2-master-01.png",
+      "bytes": 1878426,
+      "sha256": "8fbc80acb396b57f26f7ab9039a165541b3c7d0ad9da4ae1b006139e266180a2",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008514489721652,
+      "device": 33,
+      "inode": 426253
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/assets/ray-mgs2-torso-head-01.png",
+      "bytes": 2143459,
+      "sha256": "3eb3227cb9df2b03578e693d30aa2253f78b6f09832ff4c3b78bcb8813d28657",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008639721075770,
+      "device": 33,
+      "inode": 443799
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/preparation/ACTUAL_RENDERER_SCHEMA_ACCEPTANCE_V1.json",
+      "bytes": 820,
+      "sha256": "179614d003b9c8a3cb3a0ef2806cce1eb09180e4b504e20bfe3458279cd195b9",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791009437586455368,
+      "device": 33,
+      "inode": 444560
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/preparation/ARMS_PROMPT.txt",
+      "bytes": 2484,
+      "sha256": "51ca8f6c705003c927e87a07ad9cfcafe78b932b738f6c0e3db11eb3ff006508",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008670797908509,
+      "device": 33,
+      "inode": 443603
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/preparation/CLOSED_PRODUCER_MEMBERSHIP_V1.json",
+      "bytes": 5463,
+      "sha256": "d35cb9a748d9e31c4ed8025742f9c4e24d45a9aa73951a0b970d969b6a890310",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791009530031957616,
+      "device": 33,
+      "inode": 444643
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/preparation/HEAD_JAW_CORRECTION_PROMPT.txt",
+      "bytes": 2668,
+      "sha256": "1c8e6b64400d6065644d2c67d020ca6c0ac8e82ad0946e961b23ed292d120f70",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008865511125484,
+      "device": 33,
+      "inode": 443851
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/preparation/LEGS_PROMPT.txt",
+      "bytes": 2842,
+      "sha256": "b0c219c1b9e6388897816dd8b4a7aaf48d9fd35ddfadf750fe207add110e9dec",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008670237893508,
+      "device": 33,
+      "inode": 443586
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/preparation/MASTER_PROMPT.txt",
+      "bytes": 2093,
+      "sha256": "78d3b7dbec647de2616e38921713e4666eee2492415aef169208a2e15a9478c4",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008528670099804,
+      "device": 33,
+      "inode": 426236
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/preparation/MASTER_REFERENCE_PATHS.json",
+      "bytes": 433,
+      "sha256": "7d66df64b6ddf027c1142c76cb1fd386c36f76eaa45830cbbf9a3aabd1f2f0c4",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008465840909504,
+      "device": 33,
+      "inode": 426084
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/preparation/NATIVE_IMAGEGEN_PROVENANCE_V1.json",
+      "bytes": 3811,
+      "sha256": "e7867065908bc591c613c75aeea1818a28d1c6749c525068970ae4a577fc3477",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791009530023421313,
+      "device": 33,
+      "inode": 444642
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/preparation/PRODUCER_NATIVE_REVIEW.md",
+      "bytes": 3011,
+      "sha256": "7dcc4df491b830d70decf3bddbaff2e6eac3a2217f96140491b837da28951034",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791009529984057467,
+      "device": 33,
+      "inode": 444641
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/preparation/RAY_MACHINE_PARTS_CANDIDATE_V1.json",
+      "bytes": 18615,
+      "sha256": "12fe7533a8c045f347fa1392bc067f4e9fe1f402fb4a673ac59179b382c7cbec",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791009177560634020,
+      "device": 33,
+      "inode": 444186
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/preparation/RAY_MACHINE_PARTS_CANDIDATE_V2.json",
+      "bytes": 18615,
+      "sha256": "79303d69e53a7b881ccdaecdea4f9dd5ce6bfaf22d554ed4d81e6116d563cea8",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791009229017955760,
+      "device": 33,
+      "inode": 444252
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/preparation/RAY_MACHINE_PARTS_CANDIDATE_V3.json",
+      "bytes": 20231,
+      "sha256": "e4c5073b2882fe021b531c8a42c03748b57c4b103dc933b802d80c57b8872f1d",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791009408466412306,
+      "device": 33,
+      "inode": 444510
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/preparation/RAY_MACHINE_PARTS_CANDIDATE_V4.json",
+      "bytes": 20219,
+      "sha256": "41e2012f9647f6461edc028b9d31eec55aa88201fc0dbdb6c0575822964321ff",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791009437550375745,
+      "device": 33,
+      "inode": 444559
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/preparation/RAY_NATIVE_DELIVERY_V1.json",
+      "bytes": 6186,
+      "sha256": "6498d18ca1e2f5229bb659c608c0b3291baed01c0e701af9f72e4402a4f835e3",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791009530032312983,
+      "device": 33,
+      "inode": 444644
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/preparation/READ_ONLY_NATIVE_ALPHA_RECTANGLE_ANALYSIS_V1.json",
+      "bytes": 11626,
+      "sha256": "bfd5dc23aca6b09c4ba72344dce59f83a4846079e303c07fee2b6dc9838af860",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791009177560951619,
+      "device": 33,
+      "inode": 444187
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/preparation/READ_ONLY_NATIVE_ALPHA_RECTANGLE_ANALYSIS_V2.json",
+      "bytes": 11832,
+      "sha256": "458eacdb85685a6a6acc2b240182815ba9de69053e7d56aeaeec9778a0935e9d",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791009229018318608,
+      "device": 33,
+      "inode": 444253
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/preparation/TORSO_HEAD_PROMPT.txt",
+      "bytes": 2354,
+      "sha256": "70d90fe406ba8f0c91db1af3c443cf7ca492cb5f482b51196bae5f61cc7c645f",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008587111666158,
+      "device": 33,
+      "inode": 426354
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/preparation/build_ray_candidate_metadata.py",
+      "bytes": 8735,
+      "sha256": "e5348cc355c430918eba0ba2918639c39b44493b035a04f5e1395962760fddb8",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791009228016838725,
+      "device": 33,
+      "inode": 444181
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/references/mgs2-ray-arena-front.jpg",
+      "bytes": 135057,
+      "sha256": "3710db4224b49c8ebb7cadbe102fd41df9cdf16dacf663bdc7a844f83ca754e6",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008143528911908,
+      "device": 33,
+      "inode": 444184
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/references/mgs2-ray-body-front.jpg",
+      "bytes": 70641,
+      "sha256": "a6b202d1f7ba4dd32e27f890c2b39460c5c616b68d68146c09cdf469386a3970",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008143515357367,
+      "device": 33,
+      "inode": 444182
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/references/mgs2-ray-body-mouth.jpg",
+      "bytes": 94047,
+      "sha256": "a231cea3513060250b27fd6c7a93aa9a89e63265b4b5774c5d562cd120eeaeb9",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008143467867351,
+      "device": 33,
+      "inode": 444183
+    },
+    {
+      "path": "/tmp/cqc-pass13-ray-sprites/references/mgs2-ray-knee.jpg",
+      "bytes": 137587,
+      "sha256": "89e7ad92b6c96e7eafaa2624221f9e387d90290031185764725e05b074161559",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008143515357367,
+      "device": 33,
+      "inode": 444185
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/ADDITIONAL_IA_DOWNLOADS_V1.json",
+      "bytes": 2459,
+      "sha256": "146fce54c15392ec27b2e7234716872e4bdf62e51644fee072f07190585587fe",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008244692941868,
+      "device": 33,
+      "inode": 425571
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/ADDITIONAL_IA_DOWNLOADS_V2.json",
+      "bytes": 359,
+      "sha256": "f4962fb267719d8c976eca3d0ef4a17ef739294f0d04285100dcff8fdb739173",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008265233407859,
+      "device": 33,
+      "inode": 425621
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/CREATIVE_GALLERY_C_RETRIEVAL.json",
+      "bytes": 265,
+      "sha256": "7b8110596ec00ee4f27ea99b3107c4f012a50f52a748ad2d0246187e15ff8cf4",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008185224895367,
+      "device": 33,
+      "inode": 425388
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/CREATIVE_OTHER_GALLERY_RETRIEVAL.json",
+      "bytes": 953,
+      "sha256": "0e56c246fad1cc25bee12e9f213ad3414f07d2e0536beb81859349086b348770",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008284483137783,
+      "device": 33,
+      "inode": 425667
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/ORIGINAL_CONCEPT_RETRIEVAL_V1.json",
+      "bytes": 2097,
+      "sha256": "6e025bc3ba4ab1350d28cf39abc39de2dcec0b87b94a4c087ddec4b4700c52c7",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008200132853849,
+      "device": 33,
+      "inode": 425458
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/PUBLIC_PAGE_RETRIEVAL_V1.json",
+      "bytes": 1378,
+      "sha256": "de2382c43feccd66149b2209d6995f6951d14a162a604b7e20269367bfc57e5f",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008083429256580,
+      "device": 33,
+      "inode": 425017
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/REX_ANATOMY_PLAN_FR.md",
+      "bytes": 4439,
+      "sha256": "07452bae6f5a7e8da43259c3acb16e3a7d2b865afea45cf7c7adc1381510ba73",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008561046246607,
+      "device": 33,
+      "inode": 426320
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/REX_ORIGINAL_ANATOMY_AND_REFERENCE_PLAN_V1.json",
+      "bytes": 31026,
+      "sha256": "953781631c323a332fd7b221441af3889338443cf1c1e19fed6a1954fd0c301a",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008561046146045,
+      "device": 33,
+      "inode": 426123
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/REX_REFERENCE_DELIVERY_V1.json",
+      "bytes": 8353,
+      "sha256": "326aad8456ed776969a7459b51247dd691e1f7f354816968bd423edd00e4c8c9",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008561048477594,
+      "device": 33,
+      "inode": 426321
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/SEARCH_RETRIEVAL_V1.json",
+      "bytes": 3274,
+      "sha256": "b21a60a3f9a15181fc99eb5233d2bd9cb7ac3bd4b6f8c394269188a6b0652e20",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008068796937278,
+      "device": 33,
+      "inode": 424948
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/SEARCH_RETRIEVAL_V2.json",
+      "bytes": 3814,
+      "sha256": "ff30a8dbf8792063a79d9b28f640b894088b6c69d97d08de2a3bb9aa50fa785d",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008147788853273,
+      "device": 33,
+      "inode": 425283
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/VISUAL_RESOURCE_RETRIEVAL_V1.json",
+      "bytes": 499,
+      "sha256": "f168910318929bd54b720d42b8888d076ffac94d24ee5c765f6e8a320099f1d3",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008119033026687,
+      "device": 33,
+      "inode": 425198
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/VISUAL_RESOURCE_RETRIEVAL_V2.json",
+      "bytes": 1395,
+      "sha256": "42f8879c4804e8e4602aecb36c3bbf8fc33ee7718a89919e7e74ac3c20cc6601",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008169238621256,
+      "device": 33,
+      "inode": 425350
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/creative-rex-nonwww.gif",
+      "bytes": 121249,
+      "sha256": "5e6014083d6cc3a73b5e439bf7fda4eb5a3abad2932fbb70048913b4beddb8ca",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008168887116354,
+      "device": 33,
+      "inode": 425348
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/creative-rex-ref.gif",
+      "bytes": 121249,
+      "sha256": "5e6014083d6cc3a73b5e439bf7fda4eb5a3abad2932fbb70048913b4beddb8ca",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008169237722881,
+      "device": 33,
+      "inode": 425349
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/creativeuncut-mgs1-gallery-a.html",
+      "bytes": 33950,
+      "sha256": "02627d4251dd59a1f79327de9dcdb1a961fac32e92c9bbc28a201199632ddbb3",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008284481419565,
+      "device": 33,
+      "inode": 425665
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/creativeuncut-mgs1-gallery-b.html",
+      "bytes": 33886,
+      "sha256": "fed675ac5de16ff8ebb7e54dfd2950c2d91be656e9044e8d3af589026e98b7cf",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008284434735834,
+      "device": 33,
+      "inode": 425664
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/creativeuncut-mgs1-gallery-c.html",
+      "bytes": 33683,
+      "sha256": "47bc70c1b8b6039bbfb5a2e0305d7ab7c566a969a24086887bd733c776b1d7ee",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008185224259147,
+      "device": 33,
+      "inode": 425387
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/creativeuncut-mgs1-gallery-d.html",
+      "bytes": 32867,
+      "sha256": "f8d5a0b1dd24a77c026e18cf5d9f1f8a5ceeee2efa6796aea1fa565b03ae95a9",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008284482799843,
+      "device": 33,
+      "inode": 425666
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/creativeuncut-rex.html",
+      "bytes": 8467,
+      "sha256": "0229461840ac9cb921810ecbac4f454506c70a179e685087be9a2ff9705d2e15",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008083428561606,
+      "device": 33,
+      "inode": 425016
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/ia-ep14-1-1051s.jpg",
+      "bytes": 35251,
+      "sha256": "f0fad8d10db5f9425134b5f392558fee31b4553701001ed804ada31f565f9f11",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008244577864993,
+      "device": 33,
+      "inode": 425568
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/ia-ep14-1-1147s.jpg",
+      "bytes": 21784,
+      "sha256": "06e581cd9d62d278b47464ae2d859dd7760ea96bc361986b60dc8ea11197b8a0",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008244692547037,
+      "device": 33,
+      "inode": 425570
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/ia-ep14-1-955s.jpg",
+      "bytes": 3909,
+      "sha256": "ccc05e9436daa55071d573e36fb559dcdf706b1a0362a3cb1d08ce6d3021abce",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008244649004620,
+      "device": 33,
+      "inode": 425569
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/ia-ep14-2-1s.jpg",
+      "bytes": 8499,
+      "sha256": "54565abf54f0bbb23619945727f46437c8aaef87676ba1dffe3002509437edc5",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008265233263621,
+      "device": 33,
+      "inode": 425620
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/mgs1-rex-concept-22.gif",
+      "bytes": 132169,
+      "sha256": "deb20d3ef9cf8cb85d9b48ecec811f65d43801385cc73180de24409d9161f031",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008198638930906,
+      "device": 33,
+      "inode": 425454
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/mgs1-rex-concept-23.gif",
+      "bytes": 121800,
+      "sha256": "1c3a370159ad0390f49cdb8f8d4b040d7727ffdebd4165d8759f58ae80dc24df",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008198681547149,
+      "device": 33,
+      "inode": 425456
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/mgs1-rex-concept-24.gif",
+      "bytes": 112479,
+      "sha256": "4429fa617fbd9beb7293447195830ca2f3466f6ef3bfd9cde396031f492f23f5",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008200132388462,
+      "device": 33,
+      "inode": 425457
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/mgs1-rex-concept-25.gif",
+      "bytes": 117739,
+      "sha256": "97659831d92e5d443e1a37873a4a8835e2ca488febd2bfed413a255339160123",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008198681319730,
+      "device": 33,
+      "inode": 425455
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/mgs1-rex-concept-27.gif",
+      "bytes": 114485,
+      "sha256": "0c1bd76a231dab1cc9747a0bafbb945785304aef3657a8325bcf3d67a4c9b323",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008198551662267,
+      "device": 33,
+      "inode": 425453
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/ps1-ia-ep14-1-1243s.jpg",
+      "bytes": 34226,
+      "sha256": "6aa8cef4a703f8df73e97eefd2f931e49158ca2e42c03c397908cf67d49e112e",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008492683824347,
+      "device": 33,
+      "inode": 426122
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/ps1-ia-ep14-2-133s.jpg",
+      "bytes": 28747,
+      "sha256": "a70578fcfd3d07927af1cfad408b0cf050997594ecd198e767fe749b3a16a039",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008492679162181,
+      "device": 33,
+      "inode": 426117
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/ps1-ia-ep14-2-200s.jpg",
+      "bytes": 42165,
+      "sha256": "448669804f1d1fc8d2c3330fb5c39a5e621955b457d9df387f4afb5a54fad7e0",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008492682693901,
+      "device": 33,
+      "inode": 426118
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/ps1-ia-ep14-2-272s.jpg",
+      "bytes": 46573,
+      "sha256": "057627f51e0c854342058d8bf02599f4fc1c8d51c48cba29a497e54b946e3809",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008492683067595,
+      "device": 33,
+      "inode": 426119
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/ps1-ia-ep14-2-338s.jpg",
+      "bytes": 29074,
+      "sha256": "5f66826471ffee138c4d0297678a130a9483ad47a12187e53febfb618dcea3a9",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008492683403942,
+      "device": 33,
+      "inode": 426120
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/ps1-ia-ep14-2-683s.jpg",
+      "bytes": 63158,
+      "sha256": "1a680c1ddcd557fbe9424affa7acf60bc83b05c0cdd17991b581ef002c9a3749",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008492683582692,
+      "device": 33,
+      "inode": 426121
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/search-1.html",
+      "bytes": 33590,
+      "sha256": "4a957f44870bfd79e19dd22c2b24aa1e6bdd140b7f55ac22199d06cdd91de5e9",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008067372483646,
+      "device": 33,
+      "inode": 424945
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/search-2.html",
+      "bytes": 34614,
+      "sha256": "cdffc69aedea773df84c98007ddcdce82d57173254f9c50db32aa1819c315de4",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008068154560562,
+      "device": 33,
+      "inode": 424946
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/search-3.html",
+      "bytes": 32695,
+      "sha256": "ef9280d0a12d7448233c376414077e8c0a4c5f27093ce70701a103b412684afc",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008068796370542,
+      "device": 33,
+      "inode": 424947
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/search-4.html",
+      "bytes": 33525,
+      "sha256": "59d93caeef1ef9b70f456f4e4a540c0323d811cd331cc10d72cffd029924b91d",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008147788096956,
+      "device": 33,
+      "inode": 425282
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/search-5.html",
+      "bytes": 34396,
+      "sha256": "db169607a6a0c02bd9faa7aded2c7a67cbe911e4255354a87530142c3347b8fd",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008147763346224,
+      "device": 33,
+      "inode": 425281
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/search-6.html",
+      "bytes": 14259,
+      "sha256": "3efa86a70bedd3ec7c5b04dca7f53b217d106ace1e75beef03dcd2080f363f9f",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008147179645723,
+      "device": 33,
+      "inode": 425279
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-references/search-7.html",
+      "bytes": 33777,
+      "sha256": "00628f04f5d430825033d99e68c340f005a0c3e36fb74c1d15086f964d97095c",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008147712675256,
+      "device": 33,
+      "inode": 425280
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-rig/REX_MACHINE_PARTS_CANDIDATE_V1.json",
+      "bytes": 11394,
+      "sha256": "01fb6608d53859fe4be773f8d4a80f76770398c8a0036dc1b03763588a5937af",
+      "role": "Root newly closed source root",
+      "mode": 384,
+      "mtimeNS": 1791010029445452778,
+      "device": 33,
+      "inode": 445488
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-rig/REX_RIG_DELIVERY_V1.json",
+      "bytes": 3660,
+      "sha256": "4c6df00b1dab6f7ebcb467e2e54e71450a41c6cad1c5443f80b774a8d6456450",
+      "role": "Root newly closed source root",
+      "mode": 384,
+      "mtimeNS": 1791010189248497497,
+      "device": 33,
+      "inode": 446241
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-rig/REX_RIG_README_FR.md",
+      "bytes": 2746,
+      "sha256": "31d321bc46dcb7cfe55a5c9ff418d4d581a0ad1b1bc3b74ce4b5e2a862289c56",
+      "role": "Root newly closed source root",
+      "mode": 384,
+      "mtimeNS": 1791010189237255040,
+      "device": 33,
+      "inode": 446240
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-rig/assets/machine-parts/rex-mgs1/body.png",
+      "bytes": 2004429,
+      "sha256": "b9c49febc4e7bda8897c0d2b1269cee4830265421a300370503f1de9d1a870fe",
+      "role": "Root newly closed source root",
+      "mode": 384,
+      "mtimeNS": 1791010029169123423,
+      "device": 33,
+      "inode": 445481
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-rig/assets/machine-parts/rex-mgs1/body_components.png",
+      "bytes": 1437350,
+      "sha256": "5384ced4c9df00585d6500bb658b6d948db116044df2078a4f3aa82117e86156",
+      "role": "Root newly closed source root",
+      "mode": 384,
+      "mtimeNS": 1791010029275834737,
+      "device": 33,
+      "inode": 445483
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-rig/assets/machine-parts/rex-mgs1/equipment.png",
+      "bytes": 1964138,
+      "sha256": "cf6be6b13959b055a6cdcbf380ac84346467d4ef71d8af59cfd2e4821d49d413",
+      "role": "Root newly closed source root",
+      "mode": 384,
+      "mtimeNS": 1791010029399672368,
+      "device": 33,
+      "inode": 445486
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-rig/assets/machine-parts/rex-mgs1/far_legs.png",
+      "bytes": 1365627,
+      "sha256": "05d6dc576712ce5310430a9c1aa635d66ba507908a5f1fc5dd3864002c6913de",
+      "role": "Root newly closed source root",
+      "mode": 384,
+      "mtimeNS": 1791010029361932773,
+      "device": 33,
+      "inode": 445485
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-rig/assets/machine-parts/rex-mgs1/head.png",
+      "bytes": 2041360,
+      "sha256": "706dcbc4c5ed1558d97075f6c5262d81d99d0ddbe9affc128ce80ef399bc066c",
+      "role": "Root newly closed source root",
+      "mode": 384,
+      "mtimeNS": 1791010029224249497,
+      "device": 33,
+      "inode": 445482
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-rig/assets/machine-parts/rex-mgs1/near_legs.png",
+      "bytes": 2251232,
+      "sha256": "6df07e6b1f05eb5392dc3c30d8c3b297259ee41fef52ab102539e7bb1db12403",
+      "role": "Root newly closed source root",
+      "mode": 384,
+      "mtimeNS": 1791010029313513360,
+      "device": 33,
+      "inode": 445484
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-rig/preparation/ACTUAL_IMAGEGEN_CORRECTION_PROMPTS_V1.json",
+      "bytes": 8987,
+      "sha256": "e5cce19f894897d4158fb18ca022736c10481a0de995ac34620aa59d01a89a2f",
+      "role": "Root newly closed source root",
+      "mode": 384,
+      "mtimeNS": 1791010189237202871,
+      "device": 33,
+      "inode": 446239
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-rig/preparation/ACTUAL_NATIVE_ALPHA_AND_SOURCE_PIN_REVIEW_V1.json",
+      "bytes": 4816,
+      "sha256": "18e346dd94c22b86454dd3b1b30a9d17f842473a3a123f6c64f6790d37e3dba9",
+      "role": "Root newly closed source root",
+      "mode": 384,
+      "mtimeNS": 1791010029490373601,
+      "device": 33,
+      "inode": 445489
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-rig/preparation/ACTUAL_RENDERER_CONTRACT_AND_PIN_CHECK_V1.json",
+      "bytes": 6114,
+      "sha256": "3c1c682b8996cb9b411791c4487602e6d27ef54873ca542f266c10d6af9ce011",
+      "role": "Root newly closed source root",
+      "mode": 384,
+      "mtimeNS": 1791010094980065754,
+      "device": 33,
+      "inode": 446058
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-rig/preparation/REX_RIG_PHYSICAL_PREPARATION_V1.json",
+      "bytes": 4758,
+      "sha256": "1109527e7185a456a815a3925beee926dcf325ca557e0b9f8b18bc4a57556bfa",
+      "role": "Root newly closed source root",
+      "mode": 384,
+      "mtimeNS": 1791010029490702588,
+      "device": 33,
+      "inode": 445490
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-rig/preparation/approved_reference_master.png",
+      "bytes": 1522132,
+      "sha256": "6335238f244c7a7372eab8473154d9cc175875f0e58e37c6afedd2e52b524dfc",
+      "role": "Root newly closed source root",
+      "mode": 384,
+      "mtimeNS": 1791010029444488924,
+      "device": 33,
+      "inode": 445487
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-rig/preparation/prepare_rex_rig_v1.py",
+      "bytes": 10848,
+      "sha256": "75ec99d4a2f77bf2572cc8bb8ef800f2da92b7c5affd9db5ab3cb081e40ea0e4",
+      "role": "Root newly closed source root",
+      "mode": 384,
+      "mtimeNS": 1791010029131793350,
+      "device": 33,
+      "inode": 445477
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-sprites/GENERATION_INPUT_REJECTION_02.json",
+      "bytes": 279,
+      "sha256": "3177f2c9b791d58536cdbea9d05b4796326a68b23d7c2fd4280ba3a2b2d07326",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008603909476272,
+      "device": 33,
+      "inode": 426387
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-sprites/PRE_GENERATION_REQUEST_REJECTED_01.json",
+      "bytes": 149,
+      "sha256": "447154911677ea4f541df82a7d750c2d6ffda6878cb963de7643db02bbe5a58d",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008462686992965,
+      "device": 33,
+      "inode": 426066
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-sprites/body-01.request.json",
+      "bytes": 1764,
+      "sha256": "1b190c1e83dfb6a1890d82fb7ce9fb083258e27153ffbe734c6d54544dbc8311",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008903729232299,
+      "device": 33,
+      "inode": 443868
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-sprites/equipment-01.request.json",
+      "bytes": 1698,
+      "sha256": "3230c4bdab24175dc3d92b37affc82416b89ee91b1e144cbf2de1e4dd9fabfcf",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008903729334243,
+      "device": 33,
+      "inode": 443870
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-sprites/legs-01.request.json",
+      "bytes": 1667,
+      "sha256": "8622c4c2330e961afd9b55fd84e205f934ecc5b61f0c03b48d39be286c58260e",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008903729295023,
+      "device": 33,
+      "inode": 443869
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-sprites/master-01.request-v2.json",
+      "bytes": 3476,
+      "sha256": "22851fcea456d0aac97a18d100cbd5e59e62e3c34dc99605a91c187e1d76635b",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008462687070372,
+      "device": 33,
+      "inode": 426067
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-sprites/master-01.request.json",
+      "bytes": 3762,
+      "sha256": "68e5838f5fc53682801150cab18a513917496aa3ac711a132b2dbb5ce3e3aa63",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008424464579346,
+      "device": 33,
+      "inode": 425991
+    },
+    {
+      "path": "/tmp/cqc-pass13-rex-sprites/master-02-game-illustration.request.json",
+      "bytes": 1250,
+      "sha256": "d9bff4a524d5d7409aa3181387a5785bda763196de74fd4bf276f8f5960703cd",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008713504714710,
+      "device": 33,
+      "inode": 443670
+    },
+    {
+      "path": "/tmp/cqc-pass13-storage-audit/NODE_MODULES_PRE_MIGRATION_INVENTORY_V1.json",
+      "bytes": 5598448,
+      "sha256": "e13bed718db7542df838d97708791d8f3def35037e82bbab2c1f02996ae6613e",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008409737736493,
+      "device": 33,
+      "inode": 425933
+    },
+    {
+      "path": "/tmp/cqc-pass13-storage-audit/READ_ONLY_STORAGE_AUDIT_V1.json",
+      "bytes": 5730,
+      "sha256": "717676c63db1b81fb93d20ca57fda9997cb7396a366140fa4e61d14df484313c",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008409788206938,
+      "device": 33,
+      "inode": 425934
+    },
+    {
+      "path": "/workspace/cqc-pass13-storage-migration/ACTUAL_DEPENDENCY_RELOCATION_V2.json",
+      "bytes": 977,
+      "sha256": "ed3df182df7185b8c473fd04bf3acd6539604c46f5e4410bc46ada3421d00747",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008665110312590,
+      "device": 27,
+      "inode": 1973054
+    },
+    {
+      "path": "/workspace/cqc-pass13-storage-migration/COPY_VERIFIED_BEFORE_REPLACEMENT_V2.json",
+      "bytes": 811,
+      "sha256": "5e278fdd08fc72fe3160ccf43224ef53206bb167e353446b93469eb495e0ec8b",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008664032812613,
+      "device": 27,
+      "inode": 1973053
+    },
+    {
+      "path": "/workspace/cqc-pass13-storage-migration/PREPARATION_ASSERTION_CORRECTION_V1.json",
+      "bytes": 417,
+      "sha256": "8ab054c482d11469382ea4a70205be7d52e7ca0c1178a21ec5e30da4a40bc48c",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008660550225461,
+      "device": 27,
+      "inode": 1973051
+    },
+    {
+      "path": "/workspace/cqc-pass13-storage-migration/PRE_COPY_CHECK_V2.json",
+      "bytes": 700,
+      "sha256": "763097ecac7c20b9d37c07de5a09a9d5eec68dfc35ca1bc8beddc25628db38b2",
+      "role": "closed-source-root",
+      "mode": 384,
+      "mtimeNS": 1791008661600637748,
+      "device": 27,
+      "inode": 1973052
+    },
+    {
+      "path": "/workspace/generated_images/exec-0cb94b34-328b-4696-922e-4b47f0628ba3.png",
+      "bytes": 1365627,
+      "sha256": "05d6dc576712ce5310430a9c1aa635d66ba507908a5f1fc5dd3864002c6913de",
+      "role": "native ImageGen original referenced by newly closed producer",
+      "mode": 384,
+      "mtimeNS": 1791009344587965010,
+      "device": 27,
+      "inode": 133699
+    },
+    {
+      "path": "/workspace/generated_images/exec-0e3391ae-ff65-41cd-9375-bf192906c5fd.png",
+      "bytes": 2143459,
+      "sha256": "3eb3227cb9df2b03578e693d30aa2253f78b6f09832ff4c3b78bcb8813d28657",
+      "role": "native ImageGen original referenced by closed producer JSON",
+      "mode": 384,
+      "mtimeNS": 1791008639721075770,
+      "device": 27,
+      "inode": 133680
+    },
+    {
+      "path": "/workspace/generated_images/exec-19349ea4-4b23-4c88-bfea-f0f2b3b5cf4b.png",
+      "bytes": 1527117,
+      "sha256": "3c58e7da84896bf2bdfbf5f89e453800606654871e2af486ebe9a873d6b22196",
+      "role": "native ImageGen original referenced by closed producer JSON",
+      "mode": 384,
+      "mtimeNS": 1791008909836312404,
+      "device": 27,
+      "inode": 133693
+    },
+    {
+      "path": "/workspace/generated_images/exec-43635cff-6c50-4c6b-ad15-50a05a79827f.png",
+      "bytes": 1962491,
+      "sha256": "92aa6054049d76dc1a696a7e7d62d3288ea47bf211b4b8572635c415ece6c223",
+      "role": "native ImageGen original referenced by closed producer JSON",
+      "mode": 384,
+      "mtimeNS": 1791008767576502641,
+      "device": 27,
+      "inode": 133691
+    },
+    {
+      "path": "/workspace/generated_images/exec-5896fc75-abea-4582-8bf3-cfa08522c3e7.png",
+      "bytes": 1878426,
+      "sha256": "8fbc80acb396b57f26f7ab9039a165541b3c7d0ad9da4ae1b006139e266180a2",
+      "role": "native ImageGen original referenced by closed producer JSON",
+      "mode": 384,
+      "mtimeNS": 1791008514489721652,
+      "device": 27,
+      "inode": 133679
+    },
+    {
+      "path": "/workspace/generated_images/exec-615a25b5-e27e-4a1b-a1f1-94615f9be5c2.png",
+      "bytes": 1522132,
+      "sha256": "6335238f244c7a7372eab8473154d9cc175875f0e58e37c6afedd2e52b524dfc",
+      "role": "native ImageGen original referenced by closed producer JSON",
+      "mode": 384,
+      "mtimeNS": 1791008766824482499,
+      "device": 27,
+      "inode": 133690
+    },
+    {
+      "path": "/workspace/generated_images/exec-6ef7a6dc-b620-46ed-8c0f-defc1445d0c9.png",
+      "bytes": 1964138,
+      "sha256": "cf6be6b13959b055a6cdcbf380ac84346467d4ef71d8af59cfd2e4821d49d413",
+      "role": "Root REX equipment atlas01",
+      "mode": 384,
+      "mtimeNS": 1791009054928198522,
+      "device": 27,
+      "inode": 133697
+    },
+    {
+      "path": "/workspace/generated_images/exec-7f4f71d4-1c78-46b7-b47d-ddae65ee9528.png",
+      "bytes": 2251232,
+      "sha256": "6df07e6b1f05eb5392dc3c30d8c3b297259ee41fef52ab102539e7bb1db12403",
+      "role": "Root REX legs atlas01",
+      "mode": 384,
+      "mtimeNS": 1791009022147319287,
+      "device": 27,
+      "inode": 133695
+    },
+    {
+      "path": "/workspace/generated_images/exec-86004d43-6e95-4321-b9b8-e8181dc7733a.png",
+      "bytes": 2041360,
+      "sha256": "706dcbc4c5ed1558d97075f6c5262d81d99d0ddbe9affc128ce80ef399bc066c",
+      "role": "native ImageGen original referenced by newly closed producer",
+      "mode": 384,
+      "mtimeNS": 1791009535057068110,
+      "device": 27,
+      "inode": 133700
+    },
+    {
+      "path": "/workspace/generated_images/exec-afcad415-2800-4ccf-b7e0-96f1f6b0c932.png",
+      "bytes": 1998393,
+      "sha256": "a112e537f58420a72a0faa9769427b89466b7f009f973531c3723acc450de3fd",
+      "role": "native ImageGen original referenced by closed producer JSON",
+      "mode": 384,
+      "mtimeNS": 1791008717627164679,
+      "device": 27,
+      "inode": 133682
+    },
+    {
+      "path": "/workspace/generated_images/exec-d80de2b8-92f8-4969-8be9-ec6104a3c27a.png",
+      "bytes": 1437350,
+      "sha256": "5384ced4c9df00585d6500bb658b6d948db116044df2078a4f3aa82117e86156",
+      "role": "Root REX body atlas01",
+      "mode": 384,
+      "mtimeNS": 1791008973610019332,
+      "device": 27,
+      "inode": 133694
+    },
+    {
+      "path": "/workspace/generated_images/exec-f0b75187-2c33-4d7d-8a34-73a6b36d2107.png",
+      "bytes": 2004429,
+      "sha256": "b9c49febc4e7bda8897c0d2b1269cee4830265421a300370503f1de9d1a870fe",
+      "role": "native ImageGen original referenced by newly closed producer",
+      "mode": 384,
+      "mtimeNS": 1791009304422888466,
+      "device": 27,
+      "inode": 133698
+    }
+  ],
+  "logicalFileCount": 199,
+  "logicalBytes": 57023104,
+  "uniqueObjectCount": 172,
+  "uniqueBytes": 34164102,
+  "deduplicationSavedBytes": 22859002,
+  "excludedOpenRootsAndMaterials": [
+    "Root integration calibration",
+    "actual browser QA"
+  ],
+  "runtimeGameQAClaim": false,
+  "absolute1To1Claim": false
+}

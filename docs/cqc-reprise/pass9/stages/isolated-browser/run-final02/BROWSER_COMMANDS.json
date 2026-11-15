@@ -1,0 +1,315 @@
+[
+  {
+    "command": [
+      "set",
+      "viewport",
+      "1280",
+      "1000"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "deviceScaleFactor": 1.0,
+        "height": 1000,
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "mobile": false,
+        "width": 1280
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "open",
+      "http://127.0.0.1:8642/cqc-pass9-stage-preparation/preview.html"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "targetId": "8445B420547FEAA3C50B8032044C6AB9",
+        "title": "CQC PASS9 — préparation isolée des stages",
+        "url": "http://127.0.0.1:8642/cqc-pass9-stage-preparation/preview.html"
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "wait",
+      "--load",
+      "networkidle"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "state": "networkidle"
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "screenshot",
+      "/workspace/cqc-pass9-stage-browser-proof/run-final02/initial-page.png"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "path": "/workspace/cqc-pass9-stage-browser-proof/run-final02/initial-page.png"
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "snapshot",
+      "-i"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "origin": "http://127.0.0.1:8642/cqc-pass9-stage-preparation/preview.html",
+        "refs": {
+          "e1": {
+            "name": "CQC — revue isolée des trois stages",
+            "role": "heading"
+          },
+          "e2": {
+            "name": "Afficher à caméra centrale, zoom 0,78, temps 4 s",
+            "role": "button"
+          },
+          "e3": {
+            "name": "Stage ",
+            "role": "combobox"
+          },
+          "e4": {
+            "name": "outer_heaven",
+            "role": "option"
+          },
+          "e5": {
+            "name": "arsenal_corridor",
+            "role": "option"
+          },
+          "e6": {
+            "name": "zanzibar",
+            "role": "option"
+          }
+        },
+        "removedRefs": [],
+        "snapshot": "- heading \"CQC — revue isolée des trois stages\" [level=1, ref=e1]\n- combobox \"Stage \" [expanded=false, ref=e3]: outer_heaven\n  - option \"outer_heaven\" [selected, ref=e4]\n  - option \"arsenal_corridor\" [ref=e5]\n  - option \"zanzibar\" [ref=e6]\n- button \"Afficher à caméra centrale, zoom 0,78, temps 4 s\" [ref=e2]"
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "errors"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "errors": [],
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        }
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "eval",
+      "(()=>{const t=document.body.innerText.trim();if(t.length<100||document.querySelector('vite-error-overlay,.vite-error-overlay,[data-nextjs-dialog]'))throw Error('Blank/error overlay');return{title:document.title,bodyCharacters:t.length,viewport:{width:innerWidth,height:innerHeight}}})()"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "origin": "http://127.0.0.1:8642/cqc-pass9-stage-preparation/preview.html",
+        "result": {
+          "bodyCharacters": 640,
+          "title": "CQC PASS9 — préparation isolée des stages",
+          "viewport": {
+            "height": 1000,
+            "width": 1280
+          }
+        }
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "eval",
+      "(async()=>{for(let i=0;i<100&&!window.__stageReviewReady;i++)await new Promise(r=>setTimeout(r,100));if(!window.__stageReviewReady)throw Error(JSON.stringify(window.__consoleErrors));return{ready:true,consoleErrors:window.__consoleErrors}})()"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": true,
+            "engine": "chrome",
+            "launchHash": 1563421709701168219
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": true,
+          "saveStatus": "not_attempted"
+        },
+        "origin": "http://127.0.0.1:8642/cqc-pass9-stage-preparation/preview.html",
+        "result": {
+          "consoleErrors": [],
+          "ready": true
+        }
+      },
+      "error": null
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "eval",
+      "window.PASS9_STAGE_REVIEW.rasterChecks()"
+    ],
+    "exit": 1,
+    "result": {
+      "success": false,
+      "data": null,
+      "error": "Evaluation error: Error: Dimming cap exceeded quantization tolerance {\"id\":\"arsenal_corridor\",\"options\":{\"time\":4,\"camera\":-220,\"zoom\":0.78},\"x\":1101,\"y\":140,\"c\":2,\"cap\":0.03,\"before\":98,\"after\":94,\"calls\":[{\"kind\":\"mask\",\"source\":null,\"args\":[45.406698564593285,15.58373205741626,32.91866028708134,19.545454545454547],\"alpha\":0.022500000000000006,\"smoothing\":false},{\"kind\":\"mask\",\"source\":null,\"args\":[273.7799043062201,47.47368421052631,21.60287081339713,10.287081339712918],\"alpha\":0.03,\"smoothing\":false},{\"kind\":\"mask\",\"source\":null,\"args\":[983.5885167464114,47.47368421052631,22.63157894736842,10.287081339712918],\"alpha\":0.028514533018536285,\"smoothing\":false},{\"kind\":\"mask\",\"source\":null,\"args\":[1199.6172248803828,19.698564593301427,33.94736842105263,14.401913875598085],\"alpha\":0.03,\"smoothing\":false}]}\n    at compare (http://127.0.0.1:8642/cqc-pass9-stage-preparation/browser-observers.js:47:121)\n    at Object.rasterChecks (http://127.0.0.1:8642/cqc-pass9-stage-preparation/browser-observers.js:58:22)\n    at <anonymous>:1:27"
+    },
+    "stderr": ""
+  },
+  {
+    "command": [
+      "close"
+    ],
+    "exit": 0,
+    "result": {
+      "success": true,
+      "data": {
+        "closed": true,
+        "lifecycle": {
+          "effectiveLaunch": {
+            "browserLaunched": false,
+            "engine": "chrome",
+            "launchHash": null
+          },
+          "launched": false,
+          "relaunchedBrowser": false,
+          "restartedBackground": false,
+          "restoreStatus": "not_configured",
+          "reused": false,
+          "saveStatus": "not_configured"
+        },
+        "restoreStatus": "not_configured",
+        "saveStatus": "not_configured"
+      },
+      "error": null
+    },
+    "stderr": ""
+  }
+]

@@ -402,6 +402,15 @@ export function reconcileCampaignProgress(input: CampaignProgress, definitions: 
     }
   }
 
+  // Content updates may extend follow-ups of an already rewarded node.
+  // Reconcile unlocks only: never regrant XP, currency, badges or events.
+  progress.unlockedMissionIds = unique([
+    ...progress.unlockedMissionIds,
+    ...allNodes(activeDefinitions)
+      .filter((node) => progress.completedNodeIds.includes(node.id) && branchSelectionAllowsNode(node, progress))
+      .flatMap((node) => node.reward.unlockMissionIds ?? [])
+  ]);
+
   return { ...progress, level: calculateCampaignLevel(progress.xp), lastUpdatedAt: now() };
 }
 

@@ -1,0 +1,2010 @@
+{
+  "version": "0.44",
+  "machines": [
+    {
+      "id": "tx55",
+      "name": "TX-55 METAL GEAR",
+      "ep": "METAL GEAR",
+      "hero": "SOLID SNAKE",
+      "family": "outerheaven",
+      "type": "tx55",
+      "color": "#7d8864",
+      "accent": "#d8cb7f",
+      "hp": 10000,
+      "time": 180,
+      "stage": "OUTER HEAVEN — LAUNCH BAY",
+      "summary": "Neutraliser les deux jambes avec les tirs ciblés avant d’atteindre le contrôle nucléaire.",
+      "rules": [
+        "J / tactile : attaque maintenue. R recharge sans consommer les soins.",
+        "K change la pièce. Le curseur vise sa position réelle sur la machine.",
+        "I : parade ou action contextuelle indiquée pendant le combat."
+      ],
+      "scene": "hangar",
+      "origin": "arsenal42",
+      "sourceRef": "modules/arsenal-files-v042.html",
+      "weapon": "gun",
+      "parts": [
+        {
+          "name": "JAMBE G",
+          "x": -110,
+          "y": -60,
+          "hp": 2400,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "JAMBE D",
+          "x": 95,
+          "y": -60,
+          "hp": 2400,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "CONTRÔLE",
+          "x": -15,
+          "y": -200,
+          "hp": 5200,
+          "r": 31,
+          "requires": [
+            0,
+            1
+          ]
+        }
+      ],
+      "gimmick": "Détruire les protections avant la pièce centrale"
+    },
+    {
+      "id": "metalgeard",
+      "name": "METAL GEAR D",
+      "ep": "METAL GEAR 2",
+      "hero": "SOLID SNAKE",
+      "family": "zanzibar",
+      "type": "d",
+      "color": "#727a61",
+      "accent": "#e1ce7b",
+      "hp": 10400,
+      "time": 180,
+      "stage": "ZANZIBAR LAND — HANGAR D",
+      "summary": "Neutraliser les trains de roulement puis ouvrir le cockpit blindé.",
+      "rules": [
+        "J / tactile : attaque maintenue. R recharge sans consommer les soins.",
+        "K change la pièce. Le curseur vise sa position réelle sur la machine.",
+        "I : parade ou action contextuelle indiquée pendant le combat."
+      ],
+      "scene": "hangar",
+      "origin": "arsenal42",
+      "sourceRef": "modules/arsenal-files-v042.html",
+      "weapon": "gun",
+      "parts": [
+        {
+          "name": "ARTICULATION G",
+          "x": -112,
+          "y": -110,
+          "hp": 2600,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "ARTICULATION D",
+          "x": 95,
+          "y": -110,
+          "hp": 2600,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "COCKPIT",
+          "x": 10,
+          "y": -240,
+          "hp": 5200,
+          "r": 31,
+          "requires": [
+            0,
+            1
+          ]
+        }
+      ],
+      "gimmick": "Détruire les protections avant la pièce centrale"
+    },
+    {
+      "id": "rex",
+      "name": "METAL GEAR REX",
+      "ep": "MGS1",
+      "hero": "SOLID SNAKE",
+      "family": "shadowmoses",
+      "type": "rex",
+      "color": "#778489",
+      "accent": "#c9d5d8",
+      "hp": 11200,
+      "time": 185,
+      "stage": "SHADOW MOSES — REX HANGAR",
+      "summary": "Détruire le radôme, survivre au réveil de REX, puis viser le cockpit.",
+      "rules": [
+        "J / tactile : attaque maintenue. R recharge sans consommer les soins.",
+        "K change la pièce. Le curseur vise sa position réelle sur la machine.",
+        "I : parade ou action contextuelle indiquée pendant le combat."
+      ],
+      "scene": "rexhangar",
+      "origin": "arsenal42",
+      "sourceRef": "modules/arsenal-files-v042.html",
+      "weapon": "gun",
+      "parts": [
+        {
+          "name": "RADÔME",
+          "x": 105,
+          "y": -265,
+          "hp": 4600,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "COCKPIT",
+          "x": -72,
+          "y": -228,
+          "hp": 6600,
+          "r": 31,
+          "requires": [
+            0
+          ]
+        }
+      ],
+      "gimmick": "Radôme → cockpit cyclique"
+    },
+    {
+      "id": "harrier",
+      "name": "HARRIER II",
+      "ep": "MGS2",
+      "hero": "RAIDEN",
+      "family": "bigshell",
+      "type": "harrier",
+      "color": "#647787",
+      "accent": "#9ed0e6",
+      "hp": 8200,
+      "time": 180,
+      "stage": "BIG SHELL — CONNECTING BRIDGE",
+      "summary": "Maintenir le verrou de visée et frapper entre les passes aériennes.",
+      "rules": [
+        "J / tactile : attaque maintenue. R recharge sans consommer les soins.",
+        "K change la pièce. Le curseur vise sa position réelle sur la machine.",
+        "I : parade ou action contextuelle indiquée pendant le combat."
+      ],
+      "scene": "ocean",
+      "origin": "arsenal42",
+      "sourceRef": "modules/arsenal-files-v042.html",
+      "weapon": "gun",
+      "parts": [
+        {
+          "name": "CELLULE",
+          "x": -30,
+          "y": -242,
+          "hp": 8200,
+          "r": 31,
+          "requires": []
+        }
+      ],
+      "gimmick": "Maintenir K : acquisition de cible"
+    },
+    {
+      "id": "raymass",
+      "name": "MASS-PRODUCED METAL GEAR RAY",
+      "ep": "MGS2",
+      "hero": "RAIDEN",
+      "family": "arsenal",
+      "type": "raymass",
+      "color": "#82919c",
+      "accent": "#c5e3ee",
+      "hp": 5500,
+      "time": 210,
+      "stage": "ARSENAL GEAR — RAY CHAMBER",
+      "summary": "Repousser trois RAY successifs en brisant genou et masque.",
+      "rules": [
+        "J / tactile : attaque maintenue. R recharge sans consommer les soins.",
+        "K change la pièce. Le curseur vise sa position réelle sur la machine.",
+        "I : parade ou action contextuelle indiquée pendant le combat."
+      ],
+      "scene": "arsenal",
+      "origin": "arsenal42",
+      "sourceRef": "modules/arsenal-files-v042.html",
+      "weapon": "gun",
+      "parts": [
+        {
+          "name": "GENOU",
+          "x": -104,
+          "y": -105,
+          "hp": 2200,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "MASQUE",
+          "x": -24,
+          "y": -273,
+          "hp": 3300,
+          "r": 31,
+          "requires": [
+            0
+          ]
+        }
+      ],
+      "gimmick": "Genou → masque, trois vagues"
+    },
+    {
+      "id": "shagohod",
+      "name": "SHAGOHOD",
+      "ep": "MGS3",
+      "hero": "NAKED SNAKE",
+      "family": "groznyj",
+      "type": "shagohod",
+      "color": "#7b8067",
+      "accent": "#e0c36f",
+      "hp": 13100,
+      "time": 190,
+      "stage": "GROZNYJ GRAD — RUNWAY",
+      "summary": "Détruire les deux chenilles, puis la propulsion et le poste de Volgin.",
+      "rules": [
+        "J / tactile : attaque maintenue. R recharge sans consommer les soins.",
+        "K change la pièce. Le curseur vise sa position réelle sur la machine.",
+        "I : parade ou action contextuelle indiquée pendant le combat."
+      ],
+      "scene": "runway",
+      "origin": "arsenal42",
+      "sourceRef": "modules/arsenal-files-v042.html",
+      "weapon": "gun",
+      "parts": [
+        {
+          "name": "VIS G",
+          "x": -155,
+          "y": -35,
+          "hp": 2600,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "VIS D",
+          "x": 90,
+          "y": -35,
+          "hp": 2600,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "PROPULSION",
+          "x": 133,
+          "y": -173,
+          "hp": 3000,
+          "r": 31,
+          "requires": [
+            0,
+            1
+          ]
+        },
+        {
+          "name": "CABINE",
+          "x": -58,
+          "y": -173,
+          "hp": 4900,
+          "r": 31,
+          "requires": [
+            0,
+            1,
+            2
+          ]
+        }
+      ],
+      "gimmick": "Détruire les protections avant la pièce centrale"
+    },
+    {
+      "id": "raxa",
+      "name": "METAL GEAR RAXA",
+      "ep": "PORTABLE OPS",
+      "hero": "NAKED SNAKE",
+      "family": "sanhieronymo",
+      "type": "raxa",
+      "color": "#76838c",
+      "accent": "#a9dae1",
+      "hp": 10800,
+      "time": 180,
+      "stage": "SAN HIERONYMO — TEST RANGE",
+      "summary": "Briser quatre jambes de test avant de toucher le noyau RAXA.",
+      "rules": [
+        "J / tactile : attaque maintenue. R recharge sans consommer les soins.",
+        "K change la pièce. Le curseur vise sa position réelle sur la machine.",
+        "I : parade ou action contextuelle indiquée pendant le combat."
+      ],
+      "scene": "silo",
+      "origin": "arsenal42",
+      "sourceRef": "modules/arsenal-files-v042.html",
+      "weapon": "gun",
+      "parts": [
+        {
+          "name": "APPUI 1",
+          "x": -160,
+          "y": -80,
+          "hp": 1500,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "APPUI 2",
+          "x": -85,
+          "y": -118,
+          "hp": 1500,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "APPUI 3",
+          "x": 90,
+          "y": -118,
+          "hp": 1500,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "APPUI 4",
+          "x": 165,
+          "y": -80,
+          "hp": 1500,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "NOYAU",
+          "x": 0,
+          "y": -223,
+          "hp": 4800,
+          "r": 31,
+          "requires": [
+            0,
+            1,
+            2,
+            3
+          ]
+        }
+      ],
+      "gimmick": "Détruire les protections avant la pièce centrale"
+    },
+    {
+      "id": "bic",
+      "name": "ICBMG / METAL GEAR BIC",
+      "ep": "PORTABLE OPS",
+      "hero": "NAKED SNAKE",
+      "family": "sanhieronymo",
+      "type": "bic",
+      "color": "#6f7883",
+      "accent": "#d3bf73",
+      "hp": 11000,
+      "time": 180,
+      "stage": "SAN HIERONYMO — LAUNCH SILO",
+      "summary": "Couper trois pinces de lancement avant la fin du compte à rebours.",
+      "rules": [
+        "J / tactile : attaque maintenue. R recharge sans consommer les soins.",
+        "K change la pièce. Le curseur vise sa position réelle sur la machine.",
+        "I : parade ou action contextuelle indiquée pendant le combat."
+      ],
+      "scene": "silo",
+      "origin": "arsenal42",
+      "sourceRef": "modules/arsenal-files-v042.html",
+      "weapon": "gun",
+      "parts": [
+        {
+          "name": "PINCE G",
+          "x": -118,
+          "y": -132,
+          "hp": 1900,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "PINCE C",
+          "x": 0,
+          "y": -53,
+          "hp": 1900,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "PINCE D",
+          "x": 118,
+          "y": -132,
+          "hp": 1900,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "GUIDAGE",
+          "x": 0,
+          "y": -296,
+          "hp": 5300,
+          "r": 31,
+          "requires": [
+            0,
+            1,
+            2
+          ]
+        }
+      ],
+      "gimmick": "Compte à rebours indépendant"
+    },
+    {
+      "id": "pupa",
+      "name": "PUPA",
+      "ep": "PEACE WALKER",
+      "hero": "BIG BOSS",
+      "family": "costarica",
+      "type": "pupa",
+      "color": "#6d7656",
+      "accent": "#d7c76e",
+      "hp": 10400,
+      "time": 180,
+      "stage": "COSTA RICA — AI TEST ROAD",
+      "summary": "Détruire les deux bras électriques puis l’unité mémoire.",
+      "rules": [
+        "J / tactile : attaque maintenue. R recharge sans consommer les soins.",
+        "K change la pièce. Le curseur vise sa position réelle sur la machine.",
+        "I : parade ou action contextuelle indiquée pendant le combat."
+      ],
+      "scene": "forest",
+      "origin": "arsenal42",
+      "sourceRef": "modules/arsenal-files-v042.html",
+      "weapon": "gun",
+      "parts": [
+        {
+          "name": "ÉLECTRODE G",
+          "x": -155,
+          "y": -160,
+          "hp": 2800,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "ÉLECTRODE D",
+          "x": 120,
+          "y": -160,
+          "hp": 2800,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "MÉMOIRE",
+          "x": 0,
+          "y": -190,
+          "hp": 4800,
+          "r": 31,
+          "requires": [
+            0,
+            1
+          ]
+        }
+      ],
+      "gimmick": "Détruire les protections avant la pièce centrale"
+    },
+    {
+      "id": "chrysalis",
+      "name": "CHRYSALIS",
+      "ep": "PEACE WALKER",
+      "hero": "BIG BOSS",
+      "family": "costarica",
+      "type": "chrysalis",
+      "color": "#64796e",
+      "accent": "#9fd2b0",
+      "hp": 11300,
+      "time": 180,
+      "stage": "COSTA RICA — CLOUD FOREST",
+      "summary": "Utiliser le radar pour révéler puis abattre les quatre rotors.",
+      "rules": [
+        "J / tactile : attaque maintenue. R recharge sans consommer les soins.",
+        "K change la pièce. Le curseur vise sa position réelle sur la machine.",
+        "I : parade ou action contextuelle indiquée pendant le combat."
+      ],
+      "scene": "forest",
+      "origin": "arsenal42",
+      "sourceRef": "modules/arsenal-files-v042.html",
+      "weapon": "gun",
+      "parts": [
+        {
+          "name": "ROTOR 1",
+          "x": -175,
+          "y": -245,
+          "hp": 1800,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "ROTOR 2",
+          "x": -85,
+          "y": -205,
+          "hp": 1800,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "ROTOR 3",
+          "x": 80,
+          "y": -205,
+          "hp": 1800,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "ROTOR 4",
+          "x": 173,
+          "y": -245,
+          "hp": 1800,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "POD AI",
+          "x": 0,
+          "y": -257,
+          "hp": 4100,
+          "r": 31,
+          "requires": [
+            0,
+            1,
+            2,
+            3
+          ]
+        }
+      ],
+      "gimmick": "I : impulsion radar pendant quatre secondes"
+    },
+    {
+      "id": "cocoon",
+      "name": "COCOON",
+      "ep": "PEACE WALKER",
+      "hero": "BIG BOSS",
+      "family": "costarica",
+      "type": "cocoon",
+      "color": "#7b725a",
+      "accent": "#e0b96d",
+      "hp": 14400,
+      "time": 225,
+      "stage": "COSTA RICA — QUARRY FORTRESS",
+      "summary": "Démonter quatre plaques de blindage avant de toucher le pod AI.",
+      "rules": [
+        "J / tactile : attaque maintenue. R recharge sans consommer les soins.",
+        "K change la pièce. Le curseur vise sa position réelle sur la machine.",
+        "I : parade ou action contextuelle indiquée pendant le combat."
+      ],
+      "scene": "quarry",
+      "origin": "arsenal42",
+      "sourceRef": "modules/arsenal-files-v042.html",
+      "weapon": "gun",
+      "parts": [
+        {
+          "name": "PLAQUE 1",
+          "x": -174,
+          "y": -180,
+          "hp": 2100,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "PLAQUE 2",
+          "x": -64,
+          "y": -220,
+          "hp": 2100,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "PLAQUE 3",
+          "x": 63,
+          "y": -220,
+          "hp": 2100,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "PLAQUE 4",
+          "x": 170,
+          "y": -180,
+          "hp": 2100,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "POD AI",
+          "x": 0,
+          "y": -290,
+          "hp": 6000,
+          "r": 31,
+          "requires": [
+            0,
+            1,
+            2,
+            3
+          ]
+        }
+      ],
+      "gimmick": "Détruire les protections avant la pièce centrale"
+    },
+    {
+      "id": "peacewalker",
+      "name": "PEACE WALKER / BASILISK",
+      "ep": "PEACE WALKER",
+      "hero": "BIG BOSS",
+      "family": "nicaragua",
+      "type": "peacewalker",
+      "color": "#757d6c",
+      "accent": "#e1d27a",
+      "hp": 14800,
+      "time": 240,
+      "stage": "NICARAGUA — LAKE BASE",
+      "summary": "Briser les jambes, interrompre le lancement nucléaire et atteindre le pod mammal.",
+      "rules": [
+        "J / tactile : attaque maintenue. R recharge sans consommer les soins.",
+        "K change la pièce. Le curseur vise sa position réelle sur la machine.",
+        "I : parade ou action contextuelle indiquée pendant le combat."
+      ],
+      "scene": "lake",
+      "origin": "arsenal42",
+      "sourceRef": "modules/arsenal-files-v042.html",
+      "weapon": "gun",
+      "parts": [
+        {
+          "name": "JAMBE G",
+          "x": -125,
+          "y": -82,
+          "hp": 3800,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "JAMBE D",
+          "x": 112,
+          "y": -82,
+          "hp": 3800,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "POD MAMMAL",
+          "x": 0,
+          "y": -276,
+          "hp": 7200,
+          "r": 31,
+          "requires": [
+            0,
+            1
+          ]
+        }
+      ],
+      "gimmick": "I maintenu au terminal : arrêt du lancement"
+    },
+    {
+      "id": "zeke",
+      "name": "METAL GEAR ZEKE",
+      "ep": "PEACE WALKER",
+      "hero": "BIG BOSS",
+      "family": "motherbase",
+      "type": "zeke",
+      "color": "#5d6e74",
+      "accent": "#d8c871",
+      "hp": 13400,
+      "time": 200,
+      "stage": "MOTHER BASE — ZEKE HANGAR",
+      "summary": "Neutraliser le railgun et les missiles dans l’ordre choisi, puis attaquer le cœur AI.",
+      "rules": [
+        "J / tactile : attaque maintenue. R recharge sans consommer les soins.",
+        "K change la pièce. Le curseur vise sa position réelle sur la machine.",
+        "I : parade ou action contextuelle indiquée pendant le combat."
+      ],
+      "scene": "motherbase",
+      "origin": "arsenal42",
+      "sourceRef": "modules/arsenal-files-v042.html",
+      "weapon": "gun",
+      "parts": [
+        {
+          "name": "RAILGUN",
+          "x": -120,
+          "y": -247,
+          "hp": 3800,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "MISSILES",
+          "x": 134,
+          "y": -258,
+          "hp": 3200,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "CŒUR AI",
+          "x": 0,
+          "y": -218,
+          "hp": 6400,
+          "r": 31,
+          "requires": [
+            0,
+            1
+          ]
+        }
+      ],
+      "gimmick": "Chaque arme détruite retire ses attaques"
+    },
+    {
+      "id": "gander",
+      "name": "METAL GEAR GANDER",
+      "ep": "GHOST BABEL",
+      "hero": "SOLID SNAKE",
+      "family": "galuade",
+      "type": "gander",
+      "color": "#657c76",
+      "accent": "#b6d492",
+      "hp": 14500,
+      "time": 195,
+      "stage": "GALUADE — GANDER SILO",
+      "summary": "Neutraliser les jambes, le canon rail puis le compartiment nucléaire.",
+      "rules": [
+        "J / tactile : attaque maintenue. R recharge sans consommer les soins.",
+        "K change la pièce. Le curseur vise sa position réelle sur la machine.",
+        "I : parade ou action contextuelle indiquée pendant le combat."
+      ],
+      "scene": "silo",
+      "origin": "arsenal42",
+      "sourceRef": "modules/arsenal-files-v042.html",
+      "weapon": "gun",
+      "parts": [
+        {
+          "name": "JAMBE G",
+          "x": -128,
+          "y": -62,
+          "hp": 2700,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "JAMBE D",
+          "x": 110,
+          "y": -62,
+          "hp": 2700,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "RAILGUN",
+          "x": -145,
+          "y": -285,
+          "hp": 3300,
+          "r": 31,
+          "requires": [
+            0,
+            1
+          ]
+        },
+        {
+          "name": "NUCLÉAIRE",
+          "x": -6,
+          "y": -234,
+          "hp": 5800,
+          "r": 31,
+          "requires": [
+            0,
+            1,
+            2
+          ]
+        }
+      ],
+      "gimmick": "Détruire les protections avant la pièce centrale"
+    },
+    {
+      "id": "sahel",
+      "name": "METAL GEAR SAHELANTHROPUS",
+      "ep": "MGSV",
+      "hero": "VENOM SNAKE",
+      "family": "afghanistan",
+      "type": "sahel",
+      "color": "#636f75",
+      "accent": "#e0b761",
+      "hp": 16300,
+      "time": 250,
+      "stage": "AFGHANISTAN — OKB ZERO VALLEY",
+      "summary": "Briser les appuis, survivre aux Metallic Archaea et atteindre la tête.",
+      "rules": [
+        "J / tactile : attaque maintenue. R recharge sans consommer les soins.",
+        "K change la pièce. Le curseur vise sa position réelle sur la machine.",
+        "I : parade ou action contextuelle indiquée pendant le combat."
+      ],
+      "scene": "desert",
+      "origin": "arsenal42",
+      "sourceRef": "modules/arsenal-files-v042.html",
+      "weapon": "gun",
+      "parts": [
+        {
+          "name": "JAMBE G",
+          "x": -89,
+          "y": -88,
+          "hp": 3600,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "JAMBE D",
+          "x": 91,
+          "y": -88,
+          "hp": 3600,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "BOUCLIER",
+          "x": 124,
+          "y": -205,
+          "hp": 2900,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "TÊTE",
+          "x": -9,
+          "y": -345,
+          "hp": 6200,
+          "r": 31,
+          "requires": [
+            0,
+            1,
+            2
+          ]
+        }
+      ],
+      "gimmick": "Détruire les protections avant la pièce centrale"
+    },
+    {
+      "id": "ray_mgR",
+      "name": "RAY — UNMANNED",
+      "ep": "REVENGEANCE",
+      "hero": "RAIDEN",
+      "type": "rayunmanned",
+      "color": "#899697",
+      "accent": "#77e5eb",
+      "scene": "rain",
+      "family": "rain",
+      "stage": "ABKHAZIA — RAIN DOCK",
+      "origin": "adapted",
+      "sourceRef": "modules/revengeance-machines-v032.html",
+      "hp": 11000,
+      "time": 250,
+      "parts": [
+        {
+          "name": "LAME G",
+          "x": -192,
+          "y": -240,
+          "hp": 2400,
+          "r": 30,
+          "requires": []
+        },
+        {
+          "name": "LAME D",
+          "x": 178,
+          "y": -230,
+          "hp": 2400,
+          "r": 30,
+          "requires": []
+        },
+        {
+          "name": "TÊTE",
+          "x": -18,
+          "y": -255,
+          "hp": 6200,
+          "r": 30,
+          "requires": [
+            0,
+            1
+          ]
+        }
+      ],
+      "weapon": "blade",
+      "summary": "Deux lames à sectionner, puis une ouverture obtenue par la riposte.",
+      "rules": [
+        "J / tactile : attaque maintenue. R recharge sans consommer les soins.",
+        "K change la pièce. Le curseur vise sa position réelle sur la machine.",
+        "I : parade ou action contextuelle indiquée pendant le combat."
+      ],
+      "gimmick": "I au dernier instant : ouvrir la tête"
+    },
+    {
+      "id": "grad",
+      "name": "GRAD",
+      "ep": "REVENGEANCE",
+      "hero": "RAIDEN",
+      "type": "grad",
+      "color": "#617180",
+      "accent": "#85d6dd",
+      "scene": "city",
+      "family": "city",
+      "stage": "WORLD MARSHAL — SERVICE YARD",
+      "origin": "adapted",
+      "sourceRef": "modules/revengeance-machines-v032.html",
+      "hp": 9400,
+      "time": 250,
+      "parts": [
+        {
+          "name": "BOUCLIER G",
+          "x": -120,
+          "y": -148,
+          "hp": 2000,
+          "r": 30,
+          "requires": []
+        },
+        {
+          "name": "BOUCLIER D",
+          "x": 107,
+          "y": -148,
+          "hp": 2000,
+          "r": 30,
+          "requires": []
+        },
+        {
+          "name": "CENTRE",
+          "x": 0,
+          "y": -213,
+          "hp": 5400,
+          "r": 30,
+          "requires": [
+            0,
+            1
+          ]
+        }
+      ],
+      "weapon": "blade",
+      "summary": "EMP, plaques de défense et salves de contre-attaque.",
+      "rules": [
+        "J / tactile : attaque maintenue. R recharge sans consommer les soins.",
+        "K change la pièce. Le curseur vise sa position réelle sur la machine.",
+        "I : parade ou action contextuelle indiquée pendant le combat."
+      ],
+      "gimmick": "I : impulsion EMP ; disponible à nouveau après 6,5 secondes"
+    },
+    {
+      "id": "excelsus",
+      "name": "METAL GEAR EXCELSUS",
+      "ep": "REVENGEANCE",
+      "hero": "RAIDEN",
+      "type": "excelsus",
+      "color": "#a98558",
+      "accent": "#ffbb66",
+      "scene": "wreck",
+      "family": "wreck",
+      "stage": "PAKISTAN — EXCELSUS CRATER",
+      "origin": "adapted",
+      "sourceRef": "modules/revengeance-machines-v032.html",
+      "hp": 18800,
+      "time": 250,
+      "parts": [
+        {
+          "name": "APPUI 1",
+          "x": -219,
+          "y": -89,
+          "hp": 1700,
+          "r": 30,
+          "requires": []
+        },
+        {
+          "name": "APPUI 2",
+          "x": -109,
+          "y": -153,
+          "hp": 1700,
+          "r": 30,
+          "requires": []
+        },
+        {
+          "name": "APPUI 3",
+          "x": 113,
+          "y": -153,
+          "hp": 1700,
+          "r": 30,
+          "requires": []
+        },
+        {
+          "name": "APPUI 4",
+          "x": 218,
+          "y": -89,
+          "hp": 1700,
+          "r": 30,
+          "requires": []
+        },
+        {
+          "name": "LAME G",
+          "x": -210,
+          "y": -278,
+          "hp": 2100,
+          "r": 30,
+          "requires": []
+        },
+        {
+          "name": "LAME D",
+          "x": 208,
+          "y": -280,
+          "hp": 2100,
+          "r": 30,
+          "requires": []
+        },
+        {
+          "name": "CŒUR",
+          "x": 0,
+          "y": -213,
+          "hp": 7800,
+          "r": 30,
+          "requires": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "weapon": "blade",
+      "summary": "Démontage des appuis, deux lames géantes et cœur protégé.",
+      "rules": [
+        "J / tactile : attaque maintenue. R recharge sans consommer les soins.",
+        "K change la pièce. Le curseur vise sa position réelle sur la machine.",
+        "I : parade ou action contextuelle indiquée pendant le combat."
+      ],
+      "gimmick": "Appuis et lames neutralisent les attaques associées"
+    },
+    {
+      "id": "kodoque",
+      "name": "KODOQUE",
+      "ep": "AC!D",
+      "hero": "SNAKE",
+      "type": "kodoque",
+      "color": "#758666",
+      "accent": "#c6e591",
+      "scene": "lab",
+      "family": "lab",
+      "stage": "LOBITO — EMITTER HALL",
+      "origin": "adapted",
+      "sourceRef": "modules/acid-machines-v031.html",
+      "hp": 10200,
+      "time": 250,
+      "parts": [
+        {
+          "name": "ÉMETTEUR G",
+          "x": -122,
+          "y": -168,
+          "hp": 2300,
+          "r": 30,
+          "requires": []
+        },
+        {
+          "name": "ÉMETTEUR D",
+          "x": 127,
+          "y": -168,
+          "hp": 2300,
+          "r": 30,
+          "requires": []
+        },
+        {
+          "name": "NOYAU",
+          "x": 0,
+          "y": -225,
+          "hp": 5600,
+          "r": 30,
+          "requires": [
+            0,
+            1
+          ]
+        }
+      ],
+      "weapon": "cards",
+      "summary": "Gérer le COST et couper les deux émetteurs avant le noyau.",
+      "rules": [
+        "J / tactile : attaque maintenue. R recharge sans consommer les soins.",
+        "K change la pièce. Le curseur vise sa position réelle sur la machine.",
+        "I : parade ou action contextuelle indiquée pendant le combat."
+      ],
+      "gimmick": "COST maximal : attendre sa dissipation"
+    },
+    {
+      "id": "chaioth",
+      "name": "CHAIOTH HA QADESH",
+      "ep": "AC!D 2",
+      "hero": "SNAKE",
+      "type": "chaioth",
+      "color": "#90698f",
+      "accent": "#efb8e2",
+      "scene": "lab2",
+      "family": "lab2",
+      "stage": "SAINTLOGIC — RAIL CORE",
+      "origin": "adapted",
+      "sourceRef": "modules/acid-machines-v031.html",
+      "hp": 13500,
+      "time": 250,
+      "parts": [
+        {
+          "name": "JOINT G",
+          "x": -148,
+          "y": -115,
+          "hp": 2200,
+          "r": 30,
+          "requires": []
+        },
+        {
+          "name": "JOINT D",
+          "x": 142,
+          "y": -115,
+          "hp": 2200,
+          "r": 30,
+          "requires": []
+        },
+        {
+          "name": "RAILGUN",
+          "x": 32,
+          "y": -285,
+          "hp": 2600,
+          "r": 30,
+          "requires": [
+            0,
+            1
+          ]
+        },
+        {
+          "name": "NOYAU",
+          "x": 0,
+          "y": -190,
+          "hp": 6500,
+          "r": 30,
+          "requires": [
+            0,
+            1,
+            2
+          ]
+        }
+      ],
+      "weapon": "cards",
+      "summary": "Articulations, railgun et noyau. Le COST ralentit la cadence.",
+      "rules": [
+        "J / tactile : attaque maintenue. R recharge sans consommer les soins.",
+        "K change la pièce. Le curseur vise sa position réelle sur la machine.",
+        "I : parade ou action contextuelle indiquée pendant le combat."
+      ],
+      "gimmick": "Articulations, canon, COST"
+    },
+    {
+      "id": "arsenal_gear",
+      "name": "ARSENAL GEAR — GW CORE",
+      "ep": "MGS2",
+      "hero": "RAIDEN",
+      "family": "patriot",
+      "type": "arsenalgear",
+      "color": "#657987",
+      "accent": "#a9d5e1",
+      "hp": 15000,
+      "time": 190,
+      "stage": "ARSENAL GEAR — GW CHAMBER",
+      "summary": "Détruire les trois relais GW avant le noyau Patriot.",
+      "rules": [
+        "J : tir ciblé. K : changer de relais.",
+        "Les faisceaux liés à un relais cessent après sa destruction.",
+        "Le noyau est protégé par les trois relais."
+      ],
+      "scene": "arsenal",
+      "origin": "completion44",
+      "sourceRef": "modules/arsenal-files-v044.html",
+      "weapon": "gun",
+      "parts": [
+        {
+          "name": "RELAIS GW A",
+          "x": -145,
+          "y": -235,
+          "hp": 3000,
+          "r": 34,
+          "requires": []
+        },
+        {
+          "name": "RELAIS GW B",
+          "x": 0,
+          "y": -285,
+          "hp": 3000,
+          "r": 34,
+          "requires": []
+        },
+        {
+          "name": "RELAIS GW C",
+          "x": 145,
+          "y": -235,
+          "hp": 3000,
+          "r": 34,
+          "requires": []
+        },
+        {
+          "name": "GW CORE",
+          "x": 0,
+          "y": -160,
+          "hp": 6000,
+          "r": 40,
+          "requires": [
+            0,
+            1,
+            2
+          ]
+        }
+      ],
+      "gimmick": "Couper les trois relais avant le cœur de GW"
+    },
+    {
+      "id": "outer_haven",
+      "name": "OUTER HAVEN — SOP CORE",
+      "ep": "MGS4",
+      "hero": "OLD SNAKE",
+      "family": "patriot",
+      "type": "outerhaven",
+      "color": "#59636e",
+      "accent": "#c1c8cb",
+      "hp": 15500,
+      "time": 195,
+      "stage": "OUTER HAVEN — SERVER SPINE",
+      "summary": "Rompre les relais SOP avant le cœur du système.",
+      "rules": [
+        "Trois relais contrôlent les attaques de couloir.",
+        "Les attaques déjà annoncées sont annulées avec leur relais.",
+        "Le cœur reste protégé jusqu’à la coupure complète."
+      ],
+      "scene": "system",
+      "origin": "completion44",
+      "sourceRef": "modules/arsenal-files-v044.html",
+      "weapon": "gun",
+      "parts": [
+        {
+          "name": "SOP RELAY A",
+          "x": -150,
+          "y": -220,
+          "hp": 3200,
+          "r": 34,
+          "requires": []
+        },
+        {
+          "name": "SOP RELAY B",
+          "x": 0,
+          "y": -275,
+          "hp": 3200,
+          "r": 34,
+          "requires": []
+        },
+        {
+          "name": "SOP RELAY C",
+          "x": 150,
+          "y": -220,
+          "hp": 3200,
+          "r": 34,
+          "requires": []
+        },
+        {
+          "name": "SYSTEM CORE",
+          "x": 0,
+          "y": -145,
+          "hp": 5900,
+          "r": 42,
+          "requires": [
+            0,
+            1,
+            2
+          ]
+        }
+      ],
+      "gimmick": "Désactiver le réseau SOP avant le cœur"
+    },
+    {
+      "id": "battle_gear",
+      "name": "BATTLE GEAR — FIELD TRIAL",
+      "ep": "MGSV",
+      "hero": "VENOM SNAKE",
+      "family": "diamond",
+      "type": "battlegear",
+      "color": "#6c745d",
+      "accent": "#d0bd72",
+      "hp": 13200,
+      "time": 175,
+      "stage": "MOTHER BASE — BATTLE GEAR BAY",
+      "summary": "Simulation du prototype lourd de Diamond Dogs.",
+      "rules": [
+        "Les jambes ouvrent le compartiment central.",
+        "Le railgun est une cible séparée.",
+        "Simulation clairement distincte d’une mission canonique."
+      ],
+      "scene": "motherbase",
+      "origin": "completion44",
+      "sourceRef": "modules/arsenal-files-v044.html",
+      "weapon": "gun",
+      "parts": [
+        {
+          "name": "JAMBE G",
+          "x": -90,
+          "y": -65,
+          "hp": 2600,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "JAMBE D",
+          "x": 90,
+          "y": -65,
+          "hp": 2600,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "RAILGUN",
+          "x": -135,
+          "y": -260,
+          "hp": 3000,
+          "r": 31,
+          "requires": []
+        },
+        {
+          "name": "COCKPIT",
+          "x": 0,
+          "y": -200,
+          "hp": 5000,
+          "r": 39,
+          "requires": [
+            0,
+            1
+          ]
+        }
+      ],
+      "gimmick": "Neutraliser la mobilité et le railgun avant le cockpit"
+    },
+    {
+      "id": "dwalker",
+      "name": "D-WALKER — COMBAT TEST",
+      "ep": "MGSV",
+      "hero": "VENOM SNAKE",
+      "family": "diamond",
+      "type": "dwalker",
+      "color": "#6b756c",
+      "accent": "#b9d0bd",
+      "hp": 9800,
+      "time": 145,
+      "stage": "MOTHER BASE — D-WALKER RANGE",
+      "summary": "Désactiver ses jambes, son arme puis l’unité AI.",
+      "rules": [
+        "Les jambes réduisent les charges.",
+        "L’arme est indépendante du noyau.",
+        "Le noyau est exposé après les deux jambes."
+      ],
+      "scene": "motherbase",
+      "origin": "completion44",
+      "sourceRef": "modules/arsenal-files-v044.html",
+      "weapon": "gun",
+      "parts": [
+        {
+          "name": "JAMBE G",
+          "x": -55,
+          "y": -55,
+          "hp": 2200,
+          "r": 28,
+          "requires": []
+        },
+        {
+          "name": "JAMBE D",
+          "x": 55,
+          "y": -55,
+          "hp": 2200,
+          "r": 28,
+          "requires": []
+        },
+        {
+          "name": "ARME",
+          "x": 100,
+          "y": -185,
+          "hp": 2200,
+          "r": 27,
+          "requires": []
+        },
+        {
+          "name": "AI CORE",
+          "x": 0,
+          "y": -150,
+          "hp": 3200,
+          "r": 34,
+          "requires": [
+            0,
+            1
+          ]
+        }
+      ],
+      "gimmick": "Démanteler le châssis avant le noyau"
+    },
+    {
+      "id": "walker_column",
+      "name": "WALKER GEAR COLUMN",
+      "ep": "MGSV",
+      "hero": "VENOM SNAKE",
+      "family": "diamond",
+      "type": "walkercolumn",
+      "color": "#6d7564",
+      "accent": "#d3c477",
+      "hp": 9000,
+      "time": 175,
+      "stage": "AFGHANISTAN — WALKER CHECKPOINT",
+      "summary": "Trois Walker Gears arrivent successivement.",
+      "rules": [
+        "Chaque unité possède deux jambes et un cœur.",
+        "Une unité suivante remet les systèmes à zéro.",
+        "Le dossier se termine après la troisième."
+      ],
+      "scene": "desert",
+      "origin": "completion44",
+      "sourceRef": "modules/arsenal-files-v044.html",
+      "weapon": "gun",
+      "units": 3,
+      "parts": [
+        {
+          "name": "JAMBE G",
+          "x": -50,
+          "y": -55,
+          "hp": 1800,
+          "r": 27,
+          "requires": []
+        },
+        {
+          "name": "JAMBE D",
+          "x": 50,
+          "y": -55,
+          "hp": 1800,
+          "r": 27,
+          "requires": []
+        },
+        {
+          "name": "CORE",
+          "x": 0,
+          "y": -155,
+          "hp": 5400,
+          "r": 34,
+          "requires": [
+            0,
+            1
+          ]
+        }
+      ],
+      "gimmick": "Neutraliser trois unités successives"
+    },
+    {
+      "id": "mk2",
+      "name": "METAL GEAR Mk.II",
+      "ep": "MGS4",
+      "hero": "OLD SNAKE",
+      "family": "otacon",
+      "type": "mk2",
+      "color": "#809099",
+      "accent": "#d4e1e4",
+      "hp": 7200,
+      "time": 125,
+      "stage": "NOMAD — ROBOTICS DECK",
+      "summary": "Simulation d’entraînement du petit éclaireur.",
+      "rules": [
+        "Le câble de choc et le manipulateur sont séparés.",
+        "Le core est protégé par les deux modules.",
+        "Cette simulation n’est pas une confrontation canonique."
+      ],
+      "scene": "lab",
+      "origin": "completion44",
+      "sourceRef": "modules/arsenal-files-v044.html",
+      "weapon": "gun",
+      "parts": [
+        {
+          "name": "SHOCK CABLE",
+          "x": -55,
+          "y": -120,
+          "hp": 1800,
+          "r": 25,
+          "requires": []
+        },
+        {
+          "name": "MANIPULATEUR",
+          "x": 55,
+          "y": -115,
+          "hp": 1800,
+          "r": 25,
+          "requires": []
+        },
+        {
+          "name": "CORE",
+          "x": 0,
+          "y": -145,
+          "hp": 3600,
+          "r": 30,
+          "requires": [
+            0,
+            1
+          ]
+        }
+      ],
+      "gimmick": "Test technique des modules Mk.II"
+    },
+    {
+      "id": "mk3",
+      "name": "METAL GEAR Mk.III",
+      "ep": "MGS4",
+      "hero": "OLD SNAKE",
+      "family": "otacon",
+      "type": "mk3",
+      "color": "#66747f",
+      "accent": "#c4d2da",
+      "hp": 7600,
+      "time": 130,
+      "stage": "OUTER HAVEN — MK.III ROUTE",
+      "summary": "Simulation de traversée et de défense système.",
+      "rules": [
+        "Le brouilleur et le manipulateur ont leurs propres attaques.",
+        "Le core devient accessible après les modules.",
+        "Simulation de laboratoire, pas duel canonique."
+      ],
+      "scene": "system",
+      "origin": "completion44",
+      "sourceRef": "modules/arsenal-files-v044.html",
+      "weapon": "gun",
+      "parts": [
+        {
+          "name": "JAMMER",
+          "x": -58,
+          "y": -122,
+          "hp": 1900,
+          "r": 25,
+          "requires": []
+        },
+        {
+          "name": "MANIPULATEUR",
+          "x": 58,
+          "y": -116,
+          "hp": 1900,
+          "r": 25,
+          "requires": []
+        },
+        {
+          "name": "CORE",
+          "x": 0,
+          "y": -150,
+          "hp": 3800,
+          "r": 30,
+          "requires": [
+            0,
+            1
+          ]
+        }
+      ],
+      "gimmick": "Désactiver le Mk.III module par module"
+    },
+    {
+      "id": "gekko",
+      "name": "GEKKO ASSAULT",
+      "ep": "MGS4",
+      "hero": "OLD SNAKE",
+      "family": "patriot",
+      "type": "gekko",
+      "color": "#78848a",
+      "accent": "#d3dbd7",
+      "hp": 10500,
+      "time": 150,
+      "stage": "MIDDLE EAST — GEKKO STREET",
+      "summary": "Briser les jambes organiques avant la tête.",
+      "rules": [
+        "Les jambes contrôlent les charges et les coups de pied.",
+        "La tête reste protégée tant que les deux appuis fonctionnent.",
+        "Les attaques de la jambe détruite sont annulées."
+      ],
+      "scene": "city",
+      "origin": "completion44",
+      "sourceRef": "modules/arsenal-files-v044.html",
+      "weapon": "gun",
+      "parts": [
+        {
+          "name": "JAMBE G",
+          "x": -80,
+          "y": -60,
+          "hp": 2600,
+          "r": 30,
+          "requires": []
+        },
+        {
+          "name": "JAMBE D",
+          "x": 80,
+          "y": -60,
+          "hp": 2600,
+          "r": 30,
+          "requires": []
+        },
+        {
+          "name": "TÊTE",
+          "x": 0,
+          "y": -205,
+          "hp": 5300,
+          "r": 38,
+          "requires": [
+            0,
+            1
+          ]
+        }
+      ],
+      "gimmick": "Couper la mobilité avant le module de tête"
+    },
+    {
+      "id": "dwarf_swarm",
+      "name": "DWARF GEKKO SWARM",
+      "ep": "MGS4",
+      "hero": "OLD SNAKE",
+      "family": "patriot",
+      "type": "dwarfswarm",
+      "color": "#6f7d82",
+      "accent": "#c4d8d9",
+      "hp": 6400,
+      "time": 145,
+      "stage": "OUTER HAVEN — SERVICE SHAFT",
+      "summary": "Quatre groupes de Dwarf Gekkos verrouillent le conduit.",
+      "rules": [
+        "Chaque groupe possède deux nœuds et une unité de contrôle.",
+        "Quatre vagues successives doivent être neutralisées.",
+        "Les vagues réinitialisent les cibles, pas la vie du joueur."
+      ],
+      "scene": "system",
+      "origin": "completion44",
+      "sourceRef": "modules/arsenal-files-v044.html",
+      "weapon": "gun",
+      "units": 4,
+      "parts": [
+        {
+          "name": "NŒUD G",
+          "x": -65,
+          "y": -85,
+          "hp": 1200,
+          "r": 23,
+          "requires": []
+        },
+        {
+          "name": "NŒUD D",
+          "x": 65,
+          "y": -85,
+          "hp": 1200,
+          "r": 23,
+          "requires": []
+        },
+        {
+          "name": "CONTROL UNIT",
+          "x": 0,
+          "y": -145,
+          "hp": 4000,
+          "r": 30,
+          "requires": [
+            0,
+            1
+          ]
+        }
+      ],
+      "gimmick": "Nettoyer quatre vagues de petites unités"
+    },
+    {
+      "id": "hind_d",
+      "name": "HIND D",
+      "ep": "MGS1",
+      "hero": "SOLID SNAKE",
+      "family": "shadowmoses",
+      "type": "hind",
+      "color": "#66736d",
+      "accent": "#d4c87c",
+      "hp": 11800,
+      "time": 165,
+      "stage": "SHADOW MOSES — COMMUNICATION TOWER",
+      "summary": "Abattre le rotor, le moteur puis le cockpit.",
+      "rules": [
+        "La cible se déplace verticalement et horizontalement.",
+        "Le moteur est protégé par le rotor.",
+        "Le cockpit s’ouvre après la perte de propulsion."
+      ],
+      "scene": "snow",
+      "origin": "completion44",
+      "sourceRef": "modules/arsenal-files-v044.html",
+      "weapon": "gun",
+      "parts": [
+        {
+          "name": "ROTOR",
+          "x": 0,
+          "y": -285,
+          "hp": 3000,
+          "r": 36,
+          "requires": []
+        },
+        {
+          "name": "MOTEUR",
+          "x": -20,
+          "y": -190,
+          "hp": 3500,
+          "r": 34,
+          "requires": [
+            0
+          ]
+        },
+        {
+          "name": "COCKPIT",
+          "x": 110,
+          "y": -175,
+          "hp": 5300,
+          "r": 38,
+          "requires": [
+            0,
+            1
+          ]
+        }
+      ],
+      "gimmick": "Détruire la propulsion avant le cockpit"
+    },
+    {
+      "id": "m1tank",
+      "name": "M1 TANK",
+      "ep": "MGS1",
+      "hero": "SOLID SNAKE",
+      "family": "shadowmoses",
+      "type": "m1tank",
+      "color": "#6f755c",
+      "accent": "#d6c16f",
+      "hp": 10200,
+      "time": 145,
+      "stage": "SHADOW MOSES — CANYON",
+      "summary": "Immobiliser les chenilles puis détruire la tourelle.",
+      "rules": [
+        "Les chenilles contrôlent les charges.",
+        "La tourelle est protégée tant que le char se déplace.",
+        "Les obus déjà tirés restent dangereux."
+      ],
+      "scene": "snow",
+      "origin": "completion44",
+      "sourceRef": "modules/arsenal-files-v044.html",
+      "weapon": "gun",
+      "parts": [
+        {
+          "name": "CHENILLE G",
+          "x": -90,
+          "y": -45,
+          "hp": 2400,
+          "r": 30,
+          "requires": []
+        },
+        {
+          "name": "CHENILLE D",
+          "x": 90,
+          "y": -45,
+          "hp": 2400,
+          "r": 30,
+          "requires": []
+        },
+        {
+          "name": "TOURELLE",
+          "x": 30,
+          "y": -150,
+          "hp": 5400,
+          "r": 37,
+          "requires": [
+            0,
+            1
+          ]
+        }
+      ],
+      "gimmick": "Immobiliser le char avant la tourelle"
+    },
+    {
+      "id": "bulldozer",
+      "name": "ARMORED BULLDOZER",
+      "ep": "MGS1",
+      "hero": "SOLID SNAKE",
+      "family": "shadowmoses",
+      "type": "bulldozer",
+      "color": "#7d7359",
+      "accent": "#e0b96e",
+      "hp": 9400,
+      "time": 135,
+      "stage": "SHADOW MOSES — BLAST FURNACE",
+      "summary": "Détruire les vérins, la lame puis le moteur.",
+      "rules": [
+        "Les vérins alimentent la charge frontale.",
+        "La lame reste protégée tant qu’un vérin fonctionne.",
+        "Le moteur est le dernier système."
+      ],
+      "scene": "facility",
+      "origin": "completion44",
+      "sourceRef": "modules/arsenal-files-v044.html",
+      "weapon": "gun",
+      "parts": [
+        {
+          "name": "VÉRIN G",
+          "x": -80,
+          "y": -100,
+          "hp": 1900,
+          "r": 27,
+          "requires": []
+        },
+        {
+          "name": "VÉRIN D",
+          "x": 80,
+          "y": -100,
+          "hp": 1900,
+          "r": 27,
+          "requires": []
+        },
+        {
+          "name": "LAME",
+          "x": -130,
+          "y": -40,
+          "hp": 2200,
+          "r": 31,
+          "requires": [
+            0,
+            1
+          ]
+        },
+        {
+          "name": "MOTEUR",
+          "x": 55,
+          "y": -150,
+          "hp": 3400,
+          "r": 34,
+          "requires": [
+            0,
+            1,
+            2
+          ]
+        }
+      ],
+      "gimmick": "Neutraliser l’hydraulique avant le moteur"
+    }
+  ],
+  "campaigns": [
+    {
+      "id": "origins",
+      "name": "OUTER HEAVEN — NUCLEAR ORIGINS",
+      "route": [
+        "tx55",
+        "metalgeard"
+      ],
+      "desc": "Deux prototypes nucléaires dans leurs rencontres de travail."
+    },
+    {
+      "id": "solidarsenal",
+      "name": "SOLID ERA — ARSENAL",
+      "route": [
+        "rex",
+        "harrier",
+        "raymass"
+      ],
+      "desc": "REX, Harrier et unités RAY de l’ère Solid."
+    },
+    {
+      "id": "snakeeatermachine",
+      "name": "SNAKE EATER — SHAGOHOD",
+      "route": [
+        "shagohod"
+      ],
+      "desc": "La plateforme à vis sans fin et Volgin."
+    },
+    {
+      "id": "foxprototype",
+      "name": "PORTABLE OPS — PROTOTYPES",
+      "route": [
+        "raxa",
+        "bic"
+      ],
+      "desc": "RAXA puis le système balistique intercontinental."
+    },
+    {
+      "id": "aicycle",
+      "name": "PEACE WALKER — AI CYCLE",
+      "route": [
+        "pupa",
+        "chrysalis",
+        "cocoon",
+        "peacewalker",
+        "zeke"
+      ],
+      "desc": "Toutes les AI Weapons et le Metal Gear de MSF."
+    },
+    {
+      "id": "galuadeframe",
+      "name": "GHOST BABEL — GANDER",
+      "route": [
+        "gander"
+      ],
+      "desc": "Le châssis nucléaire de Galuade."
+    },
+    {
+      "id": "phantomtitan",
+      "name": "THE PHANTOM PAIN — TITAN",
+      "route": [
+        "sahel"
+      ],
+      "desc": "Sahelanthropus et le contrôle du Third Child."
+    },
+    {
+      "id": "steel",
+      "name": "REVENGEANCE — MACHINES",
+      "route": [
+        "ray_mgR",
+        "grad",
+        "excelsus"
+      ],
+      "desc": "Lames, impulsion EMP et démantèlement."
+    },
+    {
+      "id": "cardcores",
+      "name": "AC!D — CŒURS MÉCANIQUES",
+      "route": [
+        "kodoque",
+        "chaioth"
+      ],
+      "desc": "Deux systèmes tactiques, une jauge COST."
+    },
+    {
+      "id": "crossarsenal",
+      "name": "ARSENAL — TRAVERSÉE",
+      "route": [
+        "rex",
+        "zeke",
+        "gander",
+        "grad",
+        "excelsus"
+      ],
+      "desc": "Cinq combats avec checkpoint après chaque victoire."
+    },
+    {
+      "id": "patriot_systems",
+      "name": "PATRIOTS — SYSTEM CORES",
+      "route": [
+        "arsenal_gear",
+        "outer_haven"
+      ],
+      "desc": "GW puis le réseau SOP d’Outer Haven."
+    },
+    {
+      "id": "diamond_frames",
+      "name": "DIAMOND DOGS — FRAMES",
+      "route": [
+        "battle_gear",
+        "dwalker",
+        "walker_column"
+      ],
+      "desc": "Prototype lourd, compagnon mécanique et colonne Walker."
+    },
+    {
+      "id": "otacon_robots",
+      "name": "OTACON — ROBOTICS",
+      "route": [
+        "mk2",
+        "mk3"
+      ],
+      "desc": "Deux robots de soutien adaptés en simulation."
+    },
+    {
+      "id": "gekko_network",
+      "name": "PATRIOT — GEKKO NETWORK",
+      "route": [
+        "gekko",
+        "dwarf_swarm"
+      ],
+      "desc": "Un Gekko lourd puis quatre vagues de Dwarf Gekkos."
+    },
+    {
+      "id": "shadow_vehicles",
+      "name": "SHADOW MOSES — VEHICLES",
+      "route": [
+        "hind_d",
+        "m1tank",
+        "bulldozer"
+      ],
+      "desc": "Hélicoptère, char et bulldozer blindé."
+    }
+  ],
+  "counts": {
+    "machines": 32,
+    "campaigns": 15,
+    "legacy": 15,
+    "adapted": 5,
+    "completion44": 12
+  },
+  "note": "Arsenal v0.44 conserve les vingt rencontres v0.43 et ajoute douze systèmes, véhicules et unités mécaniques."
+}

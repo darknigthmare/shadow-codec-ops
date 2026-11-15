@@ -1,0 +1,60 @@
+{
+  "schema": "cqc.p43.historical-contact-replay-dependencies/1",
+  "currentRuntimeNativeTag": "cqc-pass43-native-002",
+  "currentRuntimeNativeCommit": "d810ab3387f76211b4b0d67146e7a2ca166ac80e",
+  "historicalContactConfiguration": "runtime/COMPILE_FINAL_FIVE_VENOM_CONTACTS_CONFIG_V1.json",
+  "historicalCoreReport": {
+    "restorationProjectPath": "integration/core-mode-final-variants-v2/CORE_MODE_VARIANTS_CANDIDATE_REPORT_V1.json",
+    "bytes": 18260,
+    "sha256": "5f19ba651d672f0997cdeff604a042ed6e8f8e25d7390ebff82d10c38ec7ef25",
+    "scope": "Historical contact compiler input only; contains old Mantis Core record and is not the current final Core report."
+  },
+  "currentCoreReport": {
+    "restorationProjectPath": "integration/core-mode-final-variants-v3/CORE_MODE_VARIANTS_CANDIDATE_REPORT_V1.json",
+    "bytes": 18260,
+    "sha256": "766754fac3456b49ab1957ca83ce0a18200922e6b765896d8034ea2442560ad6"
+  },
+  "allFiveVenomVariantRecordsByteEquivalentAcrossReports": true,
+  "verifiedVenomOptions": [
+    {
+      "uid": "core__venom",
+      "id": "mgsv-naked-fatigues",
+      "metadataBytes": 3597133,
+      "metadataSHA256": "0333ded6e91266724f3a3678cc963a83a5886e8b7c8275b6e77e26a8f51738f6"
+    },
+    {
+      "uid": "core__venom",
+      "id": "mgsv-cyborg-ninja",
+      "metadataBytes": 3412494,
+      "metadataSHA256": "4cd54637d7438aa4925d93697c28058a0358ce1f5c8a53f528b02e58e44a8f70"
+    },
+    {
+      "uid": "core__venom",
+      "id": "mgsv-raiden",
+      "metadataBytes": 4496325,
+      "metadataSHA256": "d535c436c60c5a622d51a3dc5656ea3a889e8c321826bedda224d2e1659431eb"
+    },
+    {
+      "uid": "core__venom",
+      "id": "mgsv-solid-snake-1998",
+      "metadataBytes": 3923695,
+      "metadataSHA256": "f957f0d53b6fd3b984a3e9e2b74438ae57b45c6f08cb28e0f32d113b0c4ae091"
+    },
+    {
+      "uid": "core__venom",
+      "id": "mgsv-naked-gold-arm",
+      "metadataBytes": 3314281,
+      "metadataSHA256": "5d6797c9fa33b31f927c29536545517c1b8fdaa5436f9a2c592e190d099d8284"
+    }
+  ],
+  "optionalHistoricalMantisForWholeNamespaceReplay": {
+    "tag": "cqc-pass43-native-001",
+    "commit": "bf3cdd4f7da71262bb7f99b395caee819c294fc7",
+    "restorationProjectPath": "integration/core-mode-final-variants-v1/assets/combat-costumes-pass43/core__mantis/mgs1-unmasked/metadata-core-v1.json",
+    "bytes": 2762022,
+    "sha256": "fa7c3fc55ffd1db586e040e2a256e12cfef98dc5f45049186775393f0f55746e",
+    "url": "https://raw.githubusercontent.com/darknigthmare/shadow-codec-ops/bf3cdd4f7da71262bb7f99b395caee819c294fc7/rootassets/assets/combat-costumes-pass43/core__mantis/mgs1-unmasked/metadata-core-v1.json",
+    "scope": "Historical replay input only. Must never be selected by the current runtime index or current Core routes."
+  },
+  "qualification": "Preserves an exact earlier configuration instead of silently rewriting its approved pins. Its selected five Venom records are unchanged, while every active runtime URL uses Native002. No old files are erased and no live approval follows from this replay map."
+}

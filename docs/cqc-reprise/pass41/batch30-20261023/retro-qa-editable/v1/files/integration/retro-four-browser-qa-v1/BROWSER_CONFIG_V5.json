@@ -1,0 +1,108 @@
+{
+  "output": "@PROJECT_ROOT@/integration/retro-four-browser-qa-v1/attempt-v5-campbell-mg2-approved-native-six-shot",
+  "debugPort": 9573,
+  "baseURL": "http://127.0.0.1:8861/",
+  "renderStyle": "pixel",
+  "contracts": {
+    "path": "@PROJECT_ROOT@/integration/ACTUAL_FIGHTER_CONTRACTS_P41_V1.json.gz",
+    "bytes": 213470,
+    "sha256": "c76bdcb4220eb1389744a58a0a5c9e0731f50723d5f4be68c26ecb427182f635"
+  },
+  "legacyFixturePlan": {
+    "path": "@WORKSPACE_ROOT@/cqc-pass40-resume-20261022/integration-v2/cumulative-nineteen-qa/v1/EXACT_LOCAL_TRANSPORT_PLAN_ACTUAL_V1.json",
+    "bytes": 77205,
+    "sha256": "51b3bdf91ca01ad89aa5149ae2e6058ff1784ed3ce11bfb7b7d9b81a8e5d167d"
+  },
+  "runtimePins": [
+    {
+      "logicalPath": "modules/unified-versus-v055.html",
+      "path": "@PROJECT_ROOT@/integration/drebin-browser-qa-v1/unified-versus.drebin-burst-ordered-v2.html",
+      "bytes": 3485394,
+      "sha256": "a2b1271714844861f11be8949a72f50a221fef2c0bb9655c4f75d21f6d0fb5af"
+    },
+    {
+      "logicalPath": "src/cqc-pass41-native-batch-index-v1.js",
+      "path": "@PROJECT_ROOT@/integration/eighteen-compiled-local-v4/cqc-pass41-native-batch-index-v1.js",
+      "bytes": 474995,
+      "sha256": "b7381efc33645293f93b9980f083c59f34ac59783f5bc1f8ba3f14b77f87b10a"
+    },
+    {
+      "logicalPath": "assets/combat-costumes-pass41/roster50__campbell_mg2/retro-msx/metadata-v2.json",
+      "path": "@PROJECT_ROOT@/integration/eighteen-compiled-local-v4/roster50__campbell_mg2--retro-msx--metadata-v2.json",
+      "bytes": 1254161,
+      "sha256": "c6d570c017ede6bd22c4c591eb9b244adbf185917405f8649f418fa1c1833072"
+    },
+    {
+      "logicalPath": "assets/combat-costumes-pass41/roster50__campbell_mg2/retro-msx/page0-right-v1.png",
+      "path": "@PROJECT_ROOT@/art/roster50__campbell_mg2/retro-msx/right-main-v1.png",
+      "bytes": 1057013,
+      "sha256": "554df8d25db003b28b338891281761caf9b458b9555b504a4a36150894e04211"
+    },
+    {
+      "logicalPath": "assets/combat-costumes-pass41/roster50__campbell_mg2/retro-msx/page1-left-v1.png",
+      "path": "@PROJECT_ROOT@/art/roster50__campbell_mg2/retro-msx/left-main-v1.png",
+      "bytes": 1029631,
+      "sha256": "71d00f8df74904bf0423e3ecd6e9ad6bb6fdddc24f70931a98d745923d2c4fe9"
+    },
+    {
+      "logicalPath": "assets/combat-costumes-pass41/roster50__campbell_mg2/retro-msx/page2-right-v1.png",
+      "path": "@PROJECT_ROOT@/art/roster50__campbell_mg2/retro-msx/right-weapon-v1.png",
+      "bytes": 1308771,
+      "sha256": "6ba81e701c3e4070af61172dd1f73fcb4e571be691ee313500390a1c9216ae03"
+    },
+    {
+      "logicalPath": "assets/combat-costumes-pass41/roster50__campbell_mg2/retro-msx/page3-left-v1.png",
+      "path": "@PROJECT_ROOT@/art/roster50__campbell_mg2/retro-msx/left-weapon-v1.png",
+      "bytes": 648915,
+      "sha256": "7aee69e11db5d0bd1802449bd0d05c8da37759e31efa0f9db6b7dde17176ffeb"
+    },
+    {
+      "logicalPath": "src/cqc-pass41-vs-delayed-bursts-v1.js",
+      "path": "@PROJECT_ROOT@/integration/vs-delayed-p41-burst-candidate-v1/cqc-pass41-vs-delayed-bursts.candidate-v3.js",
+      "bytes": 7667,
+      "sha256": "4029ee425fc63fbb53175dc19ae81f9ba9ee555a5a4e77bdb4a78acd7c7a867a"
+    }
+  ],
+  "jobs": [
+    {
+      "uid": "roster50__campbell_mg2",
+      "id": "retro-msx",
+      "armed": true,
+      "moveTests": [
+        {
+          "slot": "light",
+          "roleIndex": 6,
+          "renderStyle": "pixel"
+        },
+        {
+          "slot": "heavy",
+          "roleIndex": 10,
+          "renderStyle": "pixel"
+        },
+        {
+          "slot": "low",
+          "roleIndex": 7,
+          "renderStyle": "pixel"
+        },
+        {
+          "slot": "throw",
+          "roleIndex": 8,
+          "renderStyle": "pixel"
+        }
+      ]
+    }
+  ],
+  "qaLimits": [
+    "Only real GUI controls and combat inputs; no combat-state/meter/storage injection.",
+    "Original ten-slot contracts checked by independent compiler fixtures; supers of the three unarmed characters are not claimed as played in GUI.",
+    "Both real player slots with their opposing actual facings (P1 right, P2 left); no claim that each individual slot crosses sides. Campbell MGS1 remains refused and excluded.",
+    "Local exact-source transport, not a claim of production HTTPS browser validation."
+  ],
+  "approvedDelayedCodeReview": {
+    "path": "@PROJECT_ROOT@/integration/vs-delayed-p41-burst-candidate-v1/ROOT_CODE_REVIEW_ACTUAL_V3.json",
+    "sha256": "6f688fae02e9e775f2fdd4cea9c79519964055ebea7e691a0db9d5d14cbfe5cd",
+    "bytes": 950
+  },
+  "requireCrossing": false,
+  "knownAdditionalCrossingAttempt": "Earlier optional jump-crossing sequence did not invert Nastasha. Actual source ratio gives a narrow apex/contact clearance window; this is a limitation of that additional control, not a newly established engine bug. Failed V2 raw attempt retained; no product change."
+}

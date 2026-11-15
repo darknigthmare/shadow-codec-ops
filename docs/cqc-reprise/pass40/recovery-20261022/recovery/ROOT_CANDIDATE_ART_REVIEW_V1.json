@@ -1,0 +1,68 @@
+{
+  "schema": "cqc.pass40.root-candidate-review/1",
+  "reviewedUTC": "2026-10-22 19:44:11 UTC",
+  "uid": "core__snake",
+  "optionId": "mgs3-camo-soviet-woodland",
+  "status": "hold",
+  "artApproved": false,
+  "runtimeAdmitted": false,
+  "completeCostume": false,
+  "nativeSourcesPhysicallyViewed": [
+    {
+      "path": "art/core__snake/mgs3-camo-soviet-woodland/right-v1.png",
+      "sha256": "381a436da58bbefe60a26e3bb162cc073cd9bf59f9a0ee1386fa34feeae5cc29"
+    },
+    {
+      "path": "art/core__snake/mgs3-camo-soviet-woodland/left-v1.png",
+      "sha256": "3451da7acef0751c3d986be3e6e57a8939c674a584e325d294a60b20116147b7"
+    },
+    {
+      "path": "art/core__snake/mgs3-camo-soviet-woodland/native-walk-alternation-v1.png",
+      "sha256": "3abf3e56ab9093785eedf587dedf4e8529d8f1d1808dfd78f0d8bd308c173f6a"
+    }
+  ],
+  "officialReferencePhysicallyViewed": {
+    "url": "https://www.konami.com/mg/archive/mgs3/uk/pic/camo_unifo_soviet_wood.gif",
+    "sha256": "f8296e7a949e1569ca3efc1a87d7688ed6ea61151b59739b668a6e557e16b619"
+  },
+  "acceptedCandidateObservations": [
+    "Brown/tan/near-black Soviet Woodland palette and textile knees agree with the observed original publisher reference.",
+    "The supplemental gait page draws near/far arms and legs in alternating phases for both facings; it is not a mirrored image.",
+    "The native gait page is transparent in the actual Canvas two-background diagnostic. Brown RGB under alpha zero is not an opaque in-game background."
+  ],
+  "blockingHolds": [
+    {
+      "source": "right-v1.png",
+      "poseIndex": 12,
+      "reason": "Lower legs and boots are anatomically truncated inside the image, despite no opaque pixels touching the canvas edge. Gun silhouette resembles a revolver and does not attest an accurate Mk22 reload."
+    },
+    {
+      "source": "left-v1.png",
+      "poseIndex": 12,
+      "reason": "The precise Mk22 manual cycling gesture is not sufficiently clear to approve as the required reloading action."
+    }
+  ],
+  "supersededCandidatePoses": {
+    "sourcePages": [
+      "right-v1.png",
+      "left-v1.png"
+    ],
+    "poseIndices": [
+      2,
+      3
+    ],
+    "replacement": "Supplemental native walk page; final action metadata and per-facing scale calibration remain unadmitted."
+  },
+  "toolRejection": {
+    "requestID": "7b73ef1a-4556-479c-9974-081807683538",
+    "operation": "Right complete Mk22 reloading-pose repair",
+    "reportedReason": "Input moderation: violence",
+    "noRetryOrRephrasingPerformed": true
+  },
+  "diagnosticLimits": [
+    "The first contact plate has presentation overflow/cropping in several cells; that is not evidence of truncated source anatomy. It is being replaced by a wider diagnostic.",
+    "No weapon ports or full costume have been approved for gameplay.",
+    "These are newly authored 2D images, with no claim to exact retail animation timings or texture UV correspondence."
+  ],
+  "preservation": "Keep all native PNG bytes, prompts, references, rejection receipt and historical diagnostics. No P39 or old generated-image alias was changed."
+}

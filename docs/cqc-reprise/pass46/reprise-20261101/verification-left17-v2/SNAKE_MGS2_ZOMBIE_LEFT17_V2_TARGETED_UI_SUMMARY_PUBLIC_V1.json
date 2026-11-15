@@ -1,0 +1,393 @@
+{
+  "schema": "cqc.p46.snake-mgs2-zombie-left17-v2-targeted-ui-summary/1",
+  "scope": "Snake MGS2 zombie Native34 V2 ; contrôles locaux ciblés du mode VS, préalables à l’installation. La QA n’effectue aucune installation ni publication.",
+  "metadata": {
+    "file": "metadata-left-idle-v2.json",
+    "bytes": 1894595,
+    "sha256": "f1233691b66ecdfe15f8b96d9d5cffe890cea9e223881bb9d1556d69cff4c68a"
+  },
+  "runtimePins": {
+    "index": {
+      "file": "src/cqc-pass46-native-batch-index-v1.js",
+      "sha256": "bfa37e5e40c85e839b06fd6cf87c35c80df3d629baa1e81603442538bf303741"
+    },
+    "delayedBursts": {
+      "file": "src/cqc-pass46-vs-delayed-bursts-v1.js",
+      "sha256": "c201bd006a35173d93acbb8661693400b479cd4fbc32598c6a3968c07a9e2de8"
+    }
+  },
+  "sixteenObjectives": {
+    "previews": true,
+    "walkRight3": true,
+    "walkLeft3": true,
+    "reloadRight": true,
+    "reloadLeft": true,
+    "M9Right11": true,
+    "M9Left11": true,
+    "grenadeRight8": true,
+    "grenadeLeft8": true,
+    "rollRight15": true,
+    "rollLeft15": true,
+    "hitRight13": true,
+    "hitLeft13": true,
+    "KORight14": true,
+    "KOLeft14": true,
+    "superMelee": true
+  },
+  "evidenceCounts": {
+    "mainActions": 35,
+    "mainSelectedNativeSDKFrameSamples": 3398,
+    "mainSnapshotRecordsIncludingRepeatedObservations": 1699,
+    "mainNativeSourceFallbackOrPinDifferences": 0,
+    "uniqueRealNativeBirths": 4,
+    "realMeleeContacts": 26,
+    "realKO": 2,
+    "normalAttacksPerKO": [
+      13,
+      13
+    ],
+    "mainScreenshots": 23,
+    "gaitComplementScreenshots": 6,
+    "gaitComplementSelectedNativeSDKFrameSamples": 52,
+    "gaitComplementSourceFallbackOrPinDifferences": 0
+  },
+  "realNativeBirths": [
+    {
+      "ownerSlot": 0,
+      "face": 1,
+      "sourceRole": 11,
+      "worldXY": [
+        536.7640138408304,
+        365.21799307958474
+      ],
+      "nativeXY": [
+        990.5,
+        851.5
+      ],
+      "sourceFile": "assets/combat-costumes-pass46/core__snake_mgs2/zombie/right-main-eff5fd25.png",
+      "sourceSHA256": "eff5fd25aca86cedc5929821514c4a62b404f140072df90e7670050c0ee19191",
+      "sourceRect": [
+        730,
+        810,
+        265,
+        271
+      ],
+      "sourcePivot": [
+        0.35660377358490564,
+        0.992619926199262
+      ],
+      "phase": "active",
+      "scaleAppliedOnce": true
+    },
+    {
+      "ownerSlot": 0,
+      "face": 1,
+      "sourceRole": 8,
+      "worldXY": [
+        507.9880597014925,
+        363.65014925373134
+      ],
+      "nativeXY": [
+        565.5,
+        943.5
+      ],
+      "sourceFile": "assets/combat-costumes-pass46/core__snake_mgs2/zombie/right-corrections-4cfebdc7.png",
+      "sourceSHA256": "4cfebdc770295dd5211e5d3211566ef43946ee5dcdc6562cb91bb0c1f4245157",
+      "sourceRect": [
+        101,
+        792,
+        470,
+        685
+      ],
+      "sourcePivot": [
+        0.32872340425531915,
+        0.997080291970803
+      ],
+      "phase": "active",
+      "scaleAppliedOnce": true
+    },
+    {
+      "ownerSlot": 1,
+      "face": -1,
+      "sourceRole": 11,
+      "worldXY": [
+        734.4794007490636,
+        359.1220973782771
+      ],
+      "nativeXY": [
+        719.5,
+        796.5
+      ],
+      "sourceFile": "assets/combat-costumes-pass46/core__snake_mgs2/zombie/left-main-bdc8b5ed.png",
+      "sourceSHA256": "bdc8b5ed66162949d420bc30ef8a7186bb3b86dcc41c217f82618ea2104a289e",
+      "sourceRect": [
+        714,
+        755,
+        280,
+        260
+      ],
+      "sourcePivot": [
+        0.6160714285714286,
+        0.9923076923076923
+      ],
+      "phase": "active",
+      "scaleAppliedOnce": true
+    },
+    {
+      "ownerSlot": 1,
+      "face": -1,
+      "sourceRole": 8,
+      "worldXY": [
+        751.8456928838951,
+        375.52359550561795
+      ],
+      "nativeXY": [
+        718.5,
+        554.5
+      ],
+      "sourceFile": "assets/combat-costumes-pass46/core__snake_mgs2/zombie/left-main-bdc8b5ed.png",
+      "sourceSHA256": "bdc8b5ed66162949d420bc30ef8a7186bb3b86dcc41c217f82618ea2104a289e",
+      "sourceRect": [
+        712,
+        495,
+        244,
+        261
+      ],
+      "sourcePivot": [
+        0.6372950819672131,
+        0.9923371647509579
+      ],
+      "phase": "active",
+      "scaleAppliedOnce": true
+    }
+  ],
+  "resourceProof": {
+    "bothFaces": {
+      "initial": 8,
+      "afterM9": 7,
+      "afterExplosiveGrenade": 5,
+      "beforeReloadActivationTick53": 5,
+      "atReloadActivationTick54": 8,
+      "reloadSourceRole": 16,
+      "freeResourceEnabled": false
+    }
+  },
+  "contactsAndReactions": {
+    "contactCount": 26,
+    "totalKOContactDamage": 20000,
+    "hitRole13BothFaces": true,
+    "KORole14BothFaces": true,
+    "KOFinalLife": [
+      0,
+      0
+    ],
+    "superKind": "melee",
+    "superTag": "strike",
+    "superProjectile": false,
+    "noFlashEnabledViaOfficialUI": true
+  },
+  "gaitComplement": [
+    {
+      "slot": 0,
+      "face": 1,
+      "observedSDKRole": 2,
+      "returnedIdleRole": 0,
+      "beforeX": 380,
+      "afterX": 410.79999999999984,
+      "footYAfter": 568,
+      "capture": {
+        "file": "v2-walk2-right-ACTUAL_GAME_CANVAS.png",
+        "bytes": 2171917,
+        "sha256": "ea1a3f37069ed1d51e7e86c09d14caea04a8699243953b50dec9780572f01847"
+      }
+    },
+    {
+      "slot": 0,
+      "face": 1,
+      "observedSDKRole": 3,
+      "returnedIdleRole": 0,
+      "beforeX": 410.79999999999984,
+      "afterX": 419.5999999999998,
+      "footYAfter": 568,
+      "capture": {
+        "file": "v2-walk3-right-ACTUAL_GAME_CANVAS.png",
+        "bytes": 2171907,
+        "sha256": "83768fd251ee3366756e1319f6aaf9d9276e608fabd42372b3345a2fbc65b7b5"
+      }
+    },
+    {
+      "slot": 1,
+      "face": -1,
+      "observedSDKRole": 2,
+      "returnedIdleRole": 0,
+      "beforeX": 900,
+      "afterX": 895.6,
+      "footYAfter": 568,
+      "capture": {
+        "file": "v2-walk2-left-ACTUAL_GAME_CANVAS.png",
+        "bytes": 2171063,
+        "sha256": "4f56efadf01d08d3f61ef16b26d6f12cfc6216695c9f5d125f0b996c28b6e4d4"
+      }
+    },
+    {
+      "slot": 1,
+      "face": -1,
+      "observedSDKRole": 3,
+      "returnedIdleRole": 0,
+      "beforeX": 895.6,
+      "afterX": 886.8000000000001,
+      "footYAfter": 568,
+      "capture": {
+        "file": "v2-walk3-left-ACTUAL_GAME_CANVAS.png",
+        "bytes": 2170770,
+        "sha256": "a6e8ef4904448135cf4138ce68cc3911d71f11c7b7edd17b3735a6a505c99afd"
+      }
+    }
+  ],
+  "idleStature": {
+    "rightPixels": 263.83944636678206,
+    "leftPixels": 257.6,
+    "rightMinusLeftPixels": 6.239446366782033,
+    "rightOverLeftPercent": 2.422145328719738,
+    "previousV1Percent": 8.08977392398487,
+    "bothOwnedBootBoundariesY": 568,
+    "meaning": "Mesure de silhouette des deux poses natives idle ; aucune stature anatomique certifiée. LEFT17 est la sélection source approuvée ; aucun offset ni changement de taille Original/combat."
+  },
+  "errors": {
+    "mainJavaScript": 0,
+    "mainConsole": 0,
+    "mainTargetCrashes": 0,
+    "mainNonCanceledNetworkFailures": 0,
+    "mainCanceledFetchERR_ABORTED": 5,
+    "gaitJavaScript": 0,
+    "gaitConsole": 0,
+    "gaitTargetCrashes": 0,
+    "gaitNonCanceledNetworkFailures": 0,
+    "gaitCanceledFetchERR_ABORTED": 3,
+    "mainFixtureHTTPerrors": 0,
+    "gaitFixtureHTTPerrors": 0,
+    "explanation": "Les événements ERR_ABORTED sont explicitement annulés ; ils restent consignés séparément des erreurs JS/console et des échecs réseau non annulés. Leur statut canceled ne prouve pas à lui seul la cause exacte de navigation ou de fermeture."
+  },
+  "preservedInvariants": {
+    "originalCombatProfiles381Stable": true,
+    "originalNullSpriteRigsAndHeights24Stable": true,
+    "oldNineCasesRerun": false,
+    "runtimeStateInjection": false,
+    "storageInjection": false,
+    "observerOrSourceWrappers": false,
+    "sourcePNGChanged": false,
+    "hiddenOffsetsOrProfileChange": false,
+    "QAInstallationOrDeployment": false
+  },
+  "fixtureQualification": {
+    "mode": "Fixture locale explicite de cinq sources vérifiées octet par octet : métadonnée V2 et quatre PNG. Seules les données URL du nouveau Snake emploient les routes locales. Les neuf anciennes entrées et les algorithmes restent identiques.",
+    "externalChromiumTLSValidated": false,
+    "TLSValidationDisabled": false,
+    "certificateChanged": false,
+    "HTTPSIntercepted": false,
+    "mainRequests": 252,
+    "gaitRequests": 252,
+    "bothServersClosed": true
+  },
+  "limits": [
+    "Les deux faces appartiennent aux deux acteurs naturels opposés. Aucun retournement du même acteur ni croisement au sol n’est revendiqué.",
+    "Les échantillons comptent des observations SDK répétées, pas autant de frames rendues uniques. Le dessin emploie une horloge relative d’action ; la phase de marche affichée peut différer de la sélection SDK calculée au temps global. Aucun hook de dessin n’a été installé.",
+    "Les sources actives 8/11 durent un tick : leurs quatre naissances natives sont vérifiées indépendamment du moment de capture écran.",
+    "La livraison HTTPS externe dans Chromium reste non validée par cette fixture locale.",
+    "Les preuves fonctionnelles V1 restent distinctes ; les objectifs décrits ici proviennent du nouveau parcours V2."
+  ],
+  "capturePins": [
+    {
+      "file": "snake-candidate10-preview-right.png",
+      "bytes": 664644,
+      "sha256": "a0dbf53d185c9bcd04451fd9b42db4c6a29e51f388c8cce72b4296b5669b0733"
+    },
+    {
+      "file": "snake-candidate10-preview-left.png",
+      "bytes": 622179,
+      "sha256": "204084a5d0b7d3c2a8409c660960d726c023e064c135a133317bf644b471b6da"
+    },
+    {
+      "file": "snake-local-idle-both-slots.png",
+      "bytes": 1656265,
+      "sha256": "a91d194722fa37fe6e25539d53710be60bbffe7d814c9d9751749319a601f8f5"
+    },
+    {
+      "file": "snake-v2-local-idle-both-ACTUAL_GAME_CANVAS.png",
+      "bytes": 2171462,
+      "sha256": "cca9823e39296a620f5387d8b960433f60f12aa8047a78b3e59661bf949122d9"
+    },
+    {
+      "file": "snake-special-1-source11-ACTUAL_GAME_CANVAS.png",
+      "bytes": 2130044,
+      "sha256": "eb19f285ab5b434d69ccea09f47e351a15383b2a03e641ac399264ff31f9eee6"
+    },
+    {
+      "file": "snake-special--1-source11-ACTUAL_GAME_CANVAS.png",
+      "bytes": 2173491,
+      "sha256": "2fe90f66984bd69289d84c7b9ee9280159a23cb0f21ee2c52b6592af33c78617"
+    },
+    {
+      "file": "snake-specialDown-1-source8-ACTUAL_GAME_CANVAS.png",
+      "bytes": 2131049,
+      "sha256": "724c2b3b1a941e4958c1fe9913721770a3374fffadb3e4c9b53058146ab5c145"
+    },
+    {
+      "file": "snake-specialDown--1-source8-ACTUAL_GAME_CANVAS.png",
+      "bytes": 2172881,
+      "sha256": "0a0d871782eb55a8e077029b3d784cb73ff0c12571155a3ee5dada5653831ee1"
+    },
+    {
+      "file": "snake-utility-1-source16-ACTUAL_GAME_CANVAS.png",
+      "bytes": 2132348,
+      "sha256": "e7d3c39f870d90dc080357282cd79e40794154f640715d3460ccd7c8acb80565"
+    },
+    {
+      "file": "snake-utility--1-source16-ACTUAL_GAME_CANVAS.png",
+      "bytes": 2176323,
+      "sha256": "266dcc2af92d70d741ab4468f0308bf972dc3bb7c6f57f7d0366fd2f40d80f00"
+    },
+    {
+      "file": "snake-hit13--1-r1-f1419-ACTUAL_GAME_CANVAS.png",
+      "bytes": 2176158,
+      "sha256": "dc105fa2f45e743d8de7078fcdfa1ce062fa9c889406388c3fb3d16c1fb218d7"
+    },
+    {
+      "file": "snake-KO14--1-r1-f1495-ACTUAL_GAME_CANVAS.png",
+      "bytes": 2074590,
+      "sha256": "ef5924ec59759946c9ec0b06de3181146ec189651053c95a6fd35a75c7a4478b"
+    },
+    {
+      "file": "snake-hit13-1-r2-f2708-ACTUAL_GAME_CANVAS.png",
+      "bytes": 2171578,
+      "sha256": "6f566dbd401d6c6ff4336dfc78beff9265ae07e77161283373ef7aa10ce8efca"
+    },
+    {
+      "file": "snake-KO14-1-r2-f2789-ACTUAL_GAME_CANVAS.png",
+      "bytes": 2070825,
+      "sha256": "08fbd08127f2f8db286a0505ebf7327b14012b7e3f909df725791daaa83b08a1"
+    }
+  ],
+  "rawEvidencePins": {
+    "main": {
+      "file": "ACTUAL_UI_SNAKE_TARGETED_RECEIPT_V1.json",
+      "bytes": 31772698,
+      "sha256": "d5b0679b2af851b9387fbb26cf5b7e6c3dc59b78240a29b74c2f81b2458b1361"
+    },
+    "gaitComplement": {
+      "file": "ACTUAL_UI_SNAKE_TARGETED_RECEIPT_V1.json",
+      "bytes": 167561,
+      "sha256": "e9ac2fbf9014c2e86fd11f240d6351dfc244c8fc0f13c757457317e53d19560c"
+    },
+    "mainFixture": {
+      "file": "SNAKE_LOCAL_CANDIDATE_FIXTURE_HTTP_RECEIPT_V1.json",
+      "bytes": 61305,
+      "sha256": "25b0fa09e230bf2705b2138de09a12998922f9bd3e343dddceab13a23afa6532"
+    },
+    "gaitFixture": {
+      "file": "SNAKE_LOCAL_CANDIDATE_FIXTURE_HTTP_RECEIPT_V1.json",
+      "bytes": 61305,
+      "sha256": "19532e440bb75af363337258c757fa287f8f5c7d74ac641973c5832fd7e5497f"
+    }
+  }
+}

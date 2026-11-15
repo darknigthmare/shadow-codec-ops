@@ -1,0 +1,68 @@
+{
+  "schema": "cqc.pass15.root-final-local-acceptance/1",
+  "closed": true,
+  "actualRun": true,
+  "checkedAt": "2026-10-03T16:59:02.329744+00:00",
+  "rootApprovedForLosslessArchiveAndGit": true,
+  "runtimeState": "frozen",
+  "finalCoreSHA256": "61a01d070b32c78b665a2e8427a631dda07f7fb37458f4bae4cc98b8016381a5",
+  "shadowRuntimeManifestSHA256": "ba2c46048182772f7e1d6604094fbaed8243ebdeae9b3ecba0c74e8b92ecdffb",
+  "runtimePathsRetained": 1156,
+  "runtimePathsFinal": 1166,
+  "runtimeChangedGitPaths": 17,
+  "historicalPathDeletions": 0,
+  "nativeMachineCount": 6,
+  "newRuntimePNGCount": 9,
+  "newRuntimePNGBytes": 11611289,
+  "shadowLintPassed": true,
+  "shadowRegression": {
+    "tests": 705,
+    "suites": 104,
+    "failures": 0
+  },
+  "productionRendererContracts": {
+    "passed": 38,
+    "synthetic": true,
+    "notGameplayQA": true
+  },
+  "wholeCoreAndRendererBridgeReverseToPublishedBaselineExact": true,
+  "actualFinalQAPins": [
+    {
+      "path": "/tmp/cqc-pass15-browser-proofs/natural-raxa-final-smoke-v2/ACTUAL_NATURAL_MACHINE_GAME_QA_V2.json",
+      "bytes": 79420,
+      "sha256": "775bb85fdc19c697f3169b9501413a216dc2d3222434ffd3d251e554fd664b1f",
+      "status": "passed",
+      "actualChecks": 17
+    },
+    {
+      "path": "/tmp/cqc-pass15-browser-proofs/natural-icbmg-mobile-shadow-v2/ACTUAL_NATURAL_MACHINE_GAME_QA_V2.json",
+      "bytes": 122590,
+      "sha256": "462ec3d9c64bcd9af10dfcbb63f31ba656f906542d1567e3fa57fa41ef67c39c",
+      "status": "passed",
+      "actualChecks": 23
+    },
+    {
+      "path": "/tmp/cqc-pass15-browser-proofs/menu-mode-handoff-shadow-v3/ACTUAL_MENU_MODE_HANDOFF_QA_V3.json",
+      "bytes": 4410,
+      "sha256": "d3f77cb8822c7137cbed69fc70e07eb9df39ff7e2655f43a2146bbf66e015d5a",
+      "status": "passed",
+      "actualChecks": 7
+    }
+  ],
+  "actualRAXANaturalVictoryAlsoVerifiedOnPreviousIdenticalBattleEngine": true,
+  "actualICBMGNaturalVictoryVerifiedOnFinalCore": true,
+  "noNativePixelsEdited": true,
+  "absolute1To1Certified": false,
+  "productionVerified": false,
+  "limitations": [
+    "RAXA complete natural victory on ffd source; global old harness assertion failed because it wrapped character artBank instead of private stageBank. Report/failure retained, not relabeled. Final61a smoke uses transparent native drawImage observer,4 stage planes equal all430 machine intro/fight draws, and actual pause/reload/source hashing pass.",
+    "CSS mobile QA6 passing cases occurred on prior sources with identical CSS V2. Root audit states all subsequent source deltas affect native art hooks and menu routing, not CSS or combat engine. Final actual ICBMG Shadow and RAXA desktop pause/reload smokes confirm integration.",
+    "Historical CSS V1 overlay MENU occlusion was actual product failure and was corrected in V2; other failures are preserved harness issues or source preflight race.",
+    "Native fixture visuals are synthetic pose tests, separate from natural actual gameplay. RAXA accepted V3 proportions supersede high V2. Stage accepted only actual fixed camera800, stress camera±220 edge repeat seam remains qualified.",
+    "No absolute1:1 fidelity certification. Closest reference-grounded reconstruction with intact generated PNGs. Portrait HUD lettering still small.",
+    "ICBMG mobile natural victory used real touch for B/D/C plus real keyboard direction/reload input; this is not a claim of touch-only complete play.",
+    "The complete user backlog is not finished; the published inventory separates 302 absent story sprites and procedural/planned stages",
+    "Portable Ops playable Snake and ICBMG stage remain procedural; RAXA hangar is native",
+    "Publication, HTTPS byte equality and public browser verification remain separate later evidence"
+  ]
+}

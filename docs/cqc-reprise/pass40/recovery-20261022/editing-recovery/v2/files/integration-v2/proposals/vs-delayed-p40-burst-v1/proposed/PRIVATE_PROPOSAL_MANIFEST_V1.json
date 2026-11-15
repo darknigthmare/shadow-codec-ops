@@ -1,0 +1,96 @@
+{
+  "schema": "cqc.private-vs-delay-burst-proposal/1",
+  "notInstalled": true,
+  "rootFinalReviewRequired": true,
+  "scope": [
+    "Versus pass8 only",
+    "core__amanda_pw:tuxedo metadata c58 exact",
+    "Root approved reviewed shoot role11",
+    "two real independently authored faces"
+  ],
+  "unchanged": [
+    "all original UIDs",
+    "all other costumes, including other P40",
+    "all Core and Support runtimes",
+    "timings",
+    "profile data",
+    "damage",
+    "velocity",
+    "gravity",
+    "life",
+    "cost",
+    "delay",
+    "cancellation and KO behavior",
+    "source art and metadata"
+  ],
+  "changed": [
+    "explicit pinned source11 presentation while same owning burst has queued/emitting rounds, actual recovery phase retained",
+    "re-evaluate x/y at actual first projectile movement for same still-valid attack only"
+  ],
+  "legacyInterruptQualification": "Attack interrupted/hit/KO/costume/face changed: no held rifle and no refreshed origin; previously queued rounds still proceed by historical engine rules until ordinary roundEnd clears them.",
+  "sourcePureSDK": {
+    "path": "@PROJECT_ROOT@/integration-v2/amanda-tuxedo/v1/proposal-v3/compiled-sdk-v4/cqc-pass40-native-batch-index-v2.js",
+    "bytes": 103806,
+    "sha256": "ce70c7607c50b0837f5fc769ea21cd3790d97925c0d75c2e8ce3757890159a12"
+  },
+  "helper": {
+    "path": "@PROJECT_ROOT@/integration-v2/proposals/vs-delayed-p40-burst-v1/proposed/src/cqc-pass40-vs-delayed-bursts.proposed.js",
+    "bytes": 6070,
+    "sha256": "ee04cac643181f85506f1563a7bb134c0e124789a21d7357af228b47685800b1"
+  },
+  "runtime": [
+    {
+      "original": {
+        "path": "@APP_ROOT@/public/cqc/src/cqc-pass8-combat-engine.js",
+        "bytes": 31682,
+        "sha256": "66cab1f999e0936df175d11f8ccc10427f3390078c9e3004f47c2495d582b9c0"
+      },
+      "proposed": {
+        "path": "@PROJECT_ROOT@/integration-v2/proposals/vs-delayed-p40-burst-v1/proposed/src/cqc-pass8-combat-engine.js",
+        "bytes": 31887,
+        "sha256": "089f70f93b738f1c3f8dc62f393c7a6ea8b1765c8da37698daf31eda3449babd"
+      }
+    },
+    {
+      "original": {
+        "path": "@APP_ROOT@/public/cqc/src/cqc-pass19-versus-spatial.js",
+        "bytes": 20566,
+        "sha256": "df28e521ff75b0e198d12cb51625d8f6ee7b6deb4263cd09565953481b466612"
+      },
+      "proposed": {
+        "path": "@PROJECT_ROOT@/integration-v2/proposals/vs-delayed-p40-burst-v1/proposed/src/cqc-pass19-versus-spatial.js",
+        "bytes": 20643,
+        "sha256": "82232da2000cde09d486073007efd05bd87df47d8f7bb7f1ee4d309fc5168cb7"
+      }
+    },
+    {
+      "original": {
+        "path": "@APP_ROOT@/public/cqc/src/cqc-sprite-renderer.js",
+        "bytes": 46974,
+        "sha256": "1e27fc2a45db71e71e02aab4f30e779ca9556c289e2a57b8f6ed5e6f34fdd732"
+      },
+      "proposed": {
+        "path": "@PROJECT_ROOT@/integration-v2/proposals/vs-delayed-p40-burst-v1/proposed/src/cqc-sprite-renderer.js",
+        "bytes": 47098,
+        "sha256": "93abcacd7ef3a1dd968e2449bcb0a214f718915cf799a65cc8af1297dd26d681"
+      }
+    },
+    {
+      "original": {
+        "path": "@APP_ROOT@/public/cqc/src/cqc-pass22-native-projectile-presentation.js",
+        "bytes": 14279,
+        "sha256": "b2b9ed470003793e0c5c7f6c9f8c856c4f7a9d69d365babf057793ff29fd39dc"
+      },
+      "proposed": {
+        "path": "@PROJECT_ROOT@/integration-v2/proposals/vs-delayed-p40-burst-v1/proposed/src/cqc-pass22-native-projectile-presentation.js",
+        "bytes": 14388,
+        "sha256": "ef9c05f0f08ae165689b6c5e7a3054b7614aa80b6d1f15cb9e0c67651ce888b8"
+      }
+    }
+  ],
+  "combinedIndex": {
+    "path": "@PROJECT_ROOT@/integration-v2/proposals/vs-delayed-p40-burst-v1/proposed/cqc-pass40-native-batch-index-v2.js",
+    "bytes": 109877,
+    "sha256": "dfbe5bbb3bdff5109038da56fe77b551c4ff58c0649ac7d0c75f6a2274352868"
+  }
+}

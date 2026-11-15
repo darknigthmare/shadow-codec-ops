@@ -1,0 +1,59 @@
+{
+  "schema": "cqc.github.pass6-publication-preparation/1",
+  "status": "ready-awaiting-root-freeze",
+  "preparedAt": "2026-10-02T00:42:12.984211+00:00",
+  "repository": "darknigthmare/shadow-codec-ops",
+  "branch": "reprise/2026-10-02",
+  "requiredParent": "a5e33a020cd3b45378d33488e3753ed83281c6a0",
+  "publicationExecuted": false,
+  "githubNetworkRequests": 0,
+  "realGitMutations": 0,
+  "offlineVerification": {
+    "command": "python /workspace/test_pass6_github_publication_tools.py",
+    "exitCode": 0,
+    "tests": 17,
+    "failures": 0,
+    "source": "Fresh unittest output from this preparation turn; APIs and Git mutations were mocked in temporary fixtures.",
+    "scope": [
+      "Read-only execution has no requests/writes",
+      "Actual report SHA guard",
+      "Root frozen facts guard",
+      "Historical deletion refusal",
+      "Unique blob deduplication",
+      "Tree batches of at most 70 entries",
+      "Wrong tree never creates/attaches commit",
+      "Concurrent ref change never forces update",
+      "Wrong initial parent never mutates remote",
+      "Completed publication resumes without uploads/ref patch",
+      "Single-parent unsigned local commit guard",
+      "UTC identity normalization",
+      "Exact commit bytes reconstruction",
+      "Read-only local import has no requests/Git writes",
+      "Atomic local ref transaction preserves main/old branches/checkpoint and repeats safely",
+      "Changed local HEAD blocks import",
+      "Altered raw commit bytes block import"
+    ]
+  },
+  "files": [
+    {
+      "path": "/workspace/publish_verified_shadow_cqc_pass6.py",
+      "bytes": 21489,
+      "sha256": "ca0a9d4abd8585eff0424316bb9ffb286043bfb4cc39158394b427461b9dc466"
+    },
+    {
+      "path": "/workspace/import_verified_shadow_cqc_pass6_commit.py",
+      "bytes": 6341,
+      "sha256": "046793913bf257f8b5d87478b275f67493ea5210510d12d86e1e66cf0bd97658"
+    },
+    {
+      "path": "/workspace/test_pass6_github_publication_tools.py",
+      "bytes": 16254,
+      "sha256": "8898476d1049f987a751b03e651f24428339c1d30ee972978b2a2b967140b612"
+    },
+    {
+      "path": "/workspace/GITHUB_PASS6_PUBLICATION_PREPARATION.md",
+      "bytes": 2341,
+      "sha256": "8a14f6e876a874581a33b3544d48535d6f5d376ca5cc7d2c3114f6806b68c7ad"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "cqc.pass21.frozen-corrected-application-checks/1",
+  "status": "passed",
+  "sourceState": "frozen",
+  "tests": 705,
+  "testFiles": 104,
+  "typescript": true,
+  "testsAndTypeScriptReusedFromVerifiedIdenticalApplicationAndTestSources": true,
+  "identicalNonPublicSourcePaths": 703,
+  "originalFullChecks": {
+    "path": "/workspace/cqc-pass21/batches/v1/integration/APPLICATION_CHECKS_ACTUAL_V1.json",
+    "sha256": "7e2ad59cc0aec8e41347f64d1420a9807d257410d908db0fc98104963ece90b8"
+  },
+  "newRuntimeAndPWAChecks": [
+    {
+      "check": "cqc",
+      "path": "/workspace/cqc-pass21/batches/v1/integration-v2/CQC_ACTUAL_V1.log",
+      "sha256": "aeccd98bfb8232f24349f574ae0214d58a616667d4c79b7a2aafec1dd4b93817",
+      "exitCode": 0
+    },
+    {
+      "check": "pwa",
+      "path": "/workspace/cqc-pass21/batches/v1/integration-v2/PWA_ACTUAL_V1.log",
+      "sha256": "c2082605bf7e914cbfa34422e1ff340a84e280d36c79a5de6e15baf9a4b11d55",
+      "exitCode": 0
+    }
+  ],
+  "viteOriginalConfiguration": true,
+  "buildProofSHA256": "3cfd04886d1f4f68d9ba9d77a449aba97a2b1f17ccce7676e3d75befdaf687b1",
+  "runtimeManifestSHA256": "ad02db5142c5d838dda143e30260bc872a9e33b369e63b9905c82364edcb01b8",
+  "qualification": "No TypeScript/application/test/build-configuration source changed from the passing705/104 full check. This corrected candidate adds only Ocelot socket-kind metadata and its index pin. Targeted native-origin contract, actual shot births, runtime/PWA and a fresh original-config build verify the change."
+}

@@ -1,0 +1,78 @@
+{
+  "schema": "cqc-pass7-browser-preparation/v1",
+  "preparedAt": "2026-10-02T02:14:33.480744+00:00",
+  "status": "plan_only_no_browser_execution",
+  "needsRootFinalSourceFreezeAndShadowSyncSignal": true,
+  "syntaxChecks": [
+    "node --check observers",
+    "Python py_compile both runners"
+  ],
+  "dryPlanChecks": 2,
+  "immutablePASS6ToolsModified": 0,
+  "sourceRorSModified": 0,
+  "sourceContracts": [
+    {
+      "uid": "core__raven",
+      "incarnation": "MGS1 original PS1"
+    },
+    {
+      "uid": "core__old_snake",
+      "incarnation": "MGS4 original PS3"
+    },
+    {
+      "uid": "core__quiet",
+      "incarnation": "MGSV TPP default"
+    },
+    {
+      "uid": "archive__skull_face",
+      "incarnation": "MGSV TPP unarmed declared simulation; personal gun source pending"
+    }
+  ],
+  "nativeTotals": {
+    "UIDs": 26,
+    "PNG": 156,
+    "poses": 1872,
+    "oldEntryObjectsPreserved": 22
+  },
+  "viewports": [
+    1280,
+    390
+  ],
+  "frozenPinArguments": [
+    "expected-catalog-sha",
+    "expected-helper-sha",
+    "expected-origins-sha",
+    "Shadow expected-runtime-manifest-sha"
+  ],
+  "plannedCases": [
+    "all26 independent left/right idles including separate OC opt-in",
+    "actual startup/active/recovery native phases",
+    "actual engine projectiles and source-SHA Canvas launch origins",
+    "standing/crouching projectile contacts",
+    "Quiet real ammo/empty refusal and reload actually interrupted by enemy projectile",
+    "Raven complete eight-shot heat/meter cost and ceiling/refusal/cooling",
+    "Old Snake opaque OctoCamo draw and real incoming projectile collision/reveal",
+    "Chaff actual arc/fuse/cloud, no human life or guard damage, machine-only one-time electronics budget, denied guided fire, permitted basic melee/mobility/guard, finite expiry and reset",
+    "Chaff actually interrupted before activation",
+    "Skull Face actual unarmed mark/CQC, one-hit finite brace, no firearm/explosion/mental effect",
+    "sixteen historical finisher identities/commands/durations with actual native RAF phases and source-aware generic mental FX bypass",
+    "Shadow CQC toolbar/routes/mobile HUD, exact copied runtime/source hashes, direct standalone front/native smoke and save prefix isolation"
+  ],
+  "files": [
+    {
+      "path": "/workspace/cqc-pass7-browser-observers.js",
+      "bytes": 25379,
+      "sha256": "fc14a2e4ffdf4d394d475b4e7ee8205cd18f0e1c331a02f7ef223b4ebbc656f8"
+    },
+    {
+      "path": "/workspace/verify_cqc_pass7_gameplay_browser.py",
+      "bytes": 12779,
+      "sha256": "869a721041b6ab2885ff07d0bd207b773b149dead6f82fcb4560e6e5cbe064c5"
+    },
+    {
+      "path": "/workspace/verify_shadow_cqc_pass7_browser.py",
+      "bytes": 12732,
+      "sha256": "81e6c065b26550f6fa27ded2d1bd0811dd7951533a326ba20650fdb3c34f089f"
+    }
+  ]
+}

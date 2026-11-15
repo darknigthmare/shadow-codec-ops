@@ -1,0 +1,1 @@
+globalThis.CQC_PASS40_FENRIR_ADMISSION={"schema":"cqc.fenrir.native-admission/1","uid":"pass19__fenrir_mgr","approved":true,"rootReviewSHA256":"6b74b41493a5b451ecf2148e41dee91afb1b8913441e11891879e9b488b64792","status":"Root final review pending","absolute1to1Certified":false,"heightMetres":1.25,"heightOfficiallyCertified":false};

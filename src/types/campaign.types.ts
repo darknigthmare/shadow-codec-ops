@@ -270,6 +270,7 @@ export interface CampaignUpgradeDefinition {
 export interface CampaignLaunchDirective {
   module: Exclude<CampaignModule, 'campaign'>;
   targetId?: string;
+  conversationId?: string;
   era?: EraId | 'multi';
   nodeId?: string;
   createdAt: string;

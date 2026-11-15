@@ -1,0 +1,219 @@
+{
+  "schema": "cqc.p40.soviet-integration-candidate-delivery/1",
+  "createdAt": "2026-10-22T19:45:43.303343+00:00",
+  "status": "held-no-gameplay-activation",
+  "uid": "core__snake",
+  "costumeID": "mgs3-camo-soviet-woodland",
+  "incarnation": "Original PS2 MGS3 Naked Snake before eye injury; no other Big Boss/Snake incarnation merged.",
+  "newPlayableCostumes": 0,
+  "runtimeAdmitted": false,
+  "artApproved": false,
+  "productFilesModified": false,
+  "sourcePNGsModified": false,
+  "oldP40ApprovalsReused": false,
+  "nativeSources": [
+    {
+      "path": "/workspace/cqc-pass40-resume-20261022/art/core__snake/mgs3-camo-soviet-woodland/right-v1.png",
+      "bytes": 1420902,
+      "sha256": "381a436da58bbefe60a26e3bb162cc073cd9bf59f9a0ee1386fa34feeae5cc29"
+    },
+    {
+      "path": "/workspace/cqc-pass40-resume-20261022/art/core__snake/mgs3-camo-soviet-woodland/left-v1.png",
+      "bytes": 1131959,
+      "sha256": "3451da7acef0751c3d986be3e6e57a8939c674a584e325d294a60b20116147b7"
+    },
+    {
+      "path": "/workspace/cqc-pass40-resume-20261022/art/core__snake/mgs3-camo-soviet-woodland/native-walk-alternation-v1.png",
+      "bytes": 1934271,
+      "sha256": "3abf3e56ab9093785eedf587dedf4e8529d8f1d1808dfd78f0d8bd308c173f6a"
+    }
+  ],
+  "sourceDrawingAccounting": {
+    "physicalNativeFigures": 38,
+    "mainPages": 32,
+    "gaitPageFigures": 6,
+    "gaitPageNeutralCalibrationFigures": 2,
+    "candidateSemanticSlotsInDiagnostic": 32,
+    "reloadSlotsHeld": 2,
+    "oldMainGaitDrawingsHeldAndSuperseded": 4,
+    "newGaitAlternations": 4,
+    "actualGameActionsAdded": 0
+  },
+  "baselineActuallyObserved": {
+    "source": {
+      "path": "/workspace/cqc-pass40-resume-20261022/art/core__snake/mgs3-camo-soviet-woodland/review/RUNNING_SNAKE_CONTRACT_ACTUAL_V2.json.gz",
+      "bytes": 66668,
+      "sha256": "b9b820b11f567361071e1d9e87fafbbbcd1eae2587f1e594a70fb910cbe44808"
+    },
+    "actionGroupsPerFacing": 13,
+    "temporalFramesPerFacing": 42,
+    "originalPhysicalSourceFramesPerFacing": 36,
+    "special": {
+      "weapon": "MK22",
+      "kind": "projectile",
+      "tag": "tranq",
+      "startup": 19,
+      "selectedShootActiveFrame": 1
+    },
+    "specialDown": {
+      "kind": "projectile",
+      "tag": "explosive",
+      "startup": 24,
+      "selectedDeployActiveFrame": 2
+    },
+    "gameplayModified": false
+  },
+  "completedEvidence": [
+    "All38 component-owned figures measured from unchanged RGBA PNGs, every alpha>16 component explicitly attributed;0ownedopaque pixels lost and0foreign pixels admitted by normalized Canvas nonzero contours.",
+    "Four source-origin fixture cases use actual unchanged renderer.selectFrame;16source/identity/admission-negative cases rejected. These are not match or physical-socket approval.",
+    "Five actual-source ownership-book negatives rejected: dropped component, reused component, changed SHA, dimensions mismatch, attempted inferred approval.",
+    "Actual Canvas read-only32-pose contactV2: every source rectangle fits its cell at a common candidate180pxstanding scale. V1 preserved because diagnostic cells hid some intact source limbs.",
+    "Actual native gait PNG rendered on cyan and dark mattes; five interfigure native samples have alpha0. Brown RGB values in transparent source pixels are not an opaque backdrop.",
+    "Owned Chrome9455 and local servers8340/8341 closed; no unrelated processes terminated."
+  ],
+  "holds": [
+    {
+      "side": "right",
+      "semanticPoseIndex": 12,
+      "reason": "Reload figure truncates both lower legs despite zero opaque pixels at canvas edges; weapon operation is ambiguous."
+    },
+    {
+      "side": "left",
+      "semanticPoseIndex": 12,
+      "reason": "Complete body but manual Mk22 cycling gesture is not readable."
+    },
+    {
+      "scope": "image-generation-repair",
+      "reason": "Image tool rejected the right reload repair. No retry or alternate generation route was attempted to bypass that refusal.",
+      "requestID": "7b73ef1a-4556-479c-9974-081807683538"
+    }
+  ],
+  "remainingBeforeGameplay": [
+    "Complete readable native reloading art through an admissible source; retain the moderation refusal and held drawings.",
+    "Root review of source framing, exact selected-frame muzzle and release points, independent opposite-facing ownership and physical style.",
+    "Only then compile pinned metadata/index, run actual costume-selection and both-facing combat emission QA in both games before publishing gameplay."
+  ],
+  "limits": [
+    "ContactV2 is a Canvas inspection; it does not register art in the real game and does not use the game renderer.",
+    "Native static drawings and fixture temporal indices are not additional independently drawn animations.",
+    "No absolute1:1 certification, original retail animation fidelity, unseen anatomical detail or character-size approval is inferred from component counts.",
+    "Main and gait pages use different pixel densities. Candidate framing uses separately observed upright neutral heights; no automatic same-PNG=same-facing-height assumption."
+  ],
+  "artifacts": [
+    {
+      "path": "/workspace/cqc-pass40-resume-20261022/tools/read-runtime-contract.mjs",
+      "bytes": 2730,
+      "sha256": "f2e0d9f578c6cea2b84a7dec332c1a987c6e648ee5b5d1b323f1453e42b4081a"
+    },
+    {
+      "path": "/workspace/cqc-pass40-resume-20261022/tools/inspect-native-sheet.py",
+      "bytes": 2834,
+      "sha256": "736c7fad834bdde43b509ef370fe88aa7549c05766c8a036894208c757febb45"
+    },
+    {
+      "path": "/workspace/cqc-pass40-resume-20261022/tools/measure-owned-native.py",
+      "bytes": 5212,
+      "sha256": "588cb8e3b7bfafd375cf8a055ef95065c666cf164522bd6a270ebd4679acc745"
+    },
+    {
+      "path": "/workspace/cqc-pass40-resume-20261022/tools/selected-frame-canonical-origins.template.js",
+      "bytes": 4708,
+      "sha256": "e747e16595b93ba98105b8e501c1f4ee34711405a885e134993ff2a203a58aff"
+    },
+    {
+      "path": "/workspace/cqc-pass40-resume-20261022/tools/test-selected-frame-canonical-origins.mjs",
+      "bytes": 6441,
+      "sha256": "3241c9818bd4c559b99b1e451380ab988ba7ef21b3052c18811be15a50070b00"
+    },
+    {
+      "path": "/workspace/cqc-pass40-resume-20261022/tools/make-candidate-contact.py",
+      "bytes": 6083,
+      "sha256": "741221c8a17452cf379b0707039075927d9ef6102f810786ca21ce5b795a77e2"
+    },
+    {
+      "path": "/workspace/cqc-pass40-resume-20261022/tools/capture-candidate-contact.mjs",
+      "bytes": 2265,
+      "sha256": "7a1039c8f552da2c289c4e5dd3ad0d250179a1b48a9e1d9cc2703e421b54d915"
+    },
+    {
+      "path": "/workspace/cqc-pass40-resume-20261022/tools/recovered-p39/integration/native_geometry.py",
+      "bytes": 2253,
+      "sha256": "93b8d1d382bb84ba3dca9f927928cabb6660cb36c0a395d1c7fffe9c99a2561b"
+    },
+    {
+      "path": "/workspace/cqc-pass40-resume-20261022/art/core__snake/mgs3-camo-soviet-woodland/review/EXPLICIT_SOURCE_OWNERSHIP_CANDIDATE_V1.json",
+      "bytes": 11930,
+      "sha256": "f69ef50bb429be6eb4bd8c13687f9ac6ddd4d6a83b4fb0f304af574235c15aad"
+    },
+    {
+      "path": "/workspace/cqc-pass40-resume-20261022/art/core__snake/mgs3-camo-soviet-woodland/review/SOURCE_GEOMETRY_CANDIDATE_V1.json.gz",
+      "bytes": 144974,
+      "sha256": "eb857582912578a6942534698f7b9f6b0e51ae0eb2f6fc504ff4bd8beb5d2b83"
+    },
+    {
+      "path": "/workspace/cqc-pass40-resume-20261022/art/core__snake/mgs3-camo-soviet-woodland/review/RUNNING_SNAKE_CONTRACT_ACTUAL_V2.json.gz",
+      "bytes": 66668,
+      "sha256": "b9b820b11f567361071e1d9e87fafbbbcd1eae2587f1e594a70fb910cbe44808"
+    },
+    {
+      "path": "/workspace/cqc-pass40-resume-20261022/art/core__snake/mgs3-camo-soviet-woodland/review/SOURCE_ORIGIN_TEMPLATE_TESTS_ACTUAL.json",
+      "bytes": 1693,
+      "sha256": "12829ae45e732376897b96afcdca3aea003adda55c602271e87142c448320464"
+    },
+    {
+      "path": "/workspace/cqc-pass40-resume-20261022/art/core__snake/mgs3-camo-soviet-woodland/review/EXPLICIT_OWNERSHIP_NEGATIVE_TESTS_ACTUAL_V1.json",
+      "bytes": 911,
+      "sha256": "10f0fddd8745d72f4e0936a69766d450c33c80e49a81da935850643f577ac964"
+    },
+    {
+      "path": "/workspace/cqc-pass40-resume-20261022/art/core__snake/mgs3-camo-soviet-woodland/review/CONTACT_32_CANDIDATE_HOLDS_V1.png",
+      "bytes": 677040,
+      "sha256": "e1f7b3f85c90ba5e470c637bbb5990d1e5742cb10d7c1d22032a7303cddbaa92"
+    },
+    {
+      "path": "/workspace/cqc-pass40-resume-20261022/art/core__snake/mgs3-camo-soviet-woodland/review/CONTACT_32_CANDIDATE_HOLDS_V2.png",
+      "bytes": 689853,
+      "sha256": "98ab0990d3877f7208df60ad8d66577b9511b1538d56d1a25afaaeab5cae2fe1"
+    },
+    {
+      "path": "/workspace/cqc-pass40-resume-20261022/art/core__snake/mgs3-camo-soviet-woodland/review/GAIT_ALPHA_TWO_BACKGROUNDS_ACTUAL_V1.png",
+      "bytes": 255382,
+      "sha256": "1e6e0412f2aadeb06077a0ef1b474829ae2d6a281212429d5d8b013edc5d0cf5"
+    },
+    {
+      "path": "/workspace/cqc-pass40-resume-20261022/art/core__snake/mgs3-camo-soviet-woodland/review/GAIT_ALPHA_TWO_BACKGROUNDS_ACTUAL_V2.png",
+      "bytes": 255382,
+      "sha256": "1e6e0412f2aadeb06077a0ef1b474829ae2d6a281212429d5d8b013edc5d0cf5"
+    },
+    {
+      "path": "/workspace/cqc-pass40-resume-20261022/art/core__snake/mgs3-camo-soviet-woodland/review/CANDIDATE_CONTACT_READONLY_ACTUAL_V1.json",
+      "bytes": 11260,
+      "sha256": "792ea0077e373d98f3f1409cf1511e1a87744731b13e5659b057586d93d3bc9d"
+    },
+    {
+      "path": "/workspace/cqc-pass40-resume-20261022/art/core__snake/mgs3-camo-soviet-woodland/review/CANDIDATE_CONTACT_READONLY_ACTUAL_V2.json",
+      "bytes": 12722,
+      "sha256": "3878383543245f8522f646d1904351102dca660412d54810a50a657efe9afee3"
+    },
+    {
+      "path": "/workspace/cqc-pass40-resume-20261022/art/core__snake/mgs3-camo-soviet-woodland/review/OWNED_BROWSER_AND_SERVERS_CLOSED_ACTUAL_V1.json",
+      "bytes": 865,
+      "sha256": "1e258bd5f25e3b700670ee6d7d33f8b7a7fce2d0bfe72f1c790d2e8a22897f1c"
+    },
+    {
+      "path": "/workspace/cqc-pass40-resume-20261022/art/core__snake/mgs3-camo-soviet-woodland/review/right-alpha-inspection-v1.json",
+      "bytes": 6564,
+      "sha256": "a07e16c593d71dd7b219c4adde9835d84bc99f166d546d9d3562416e2ecdc31a"
+    },
+    {
+      "path": "/workspace/cqc-pass40-resume-20261022/art/core__snake/mgs3-camo-soviet-woodland/review/left-alpha-inspection-v1.json",
+      "bytes": 7031,
+      "sha256": "3f37e75c005de764f39820838d3bebd604ece72335dfe612bec3991fdd5339e1"
+    },
+    {
+      "path": "/workspace/cqc-pass40-resume-20261022/art/core__snake/mgs3-camo-soviet-woodland/review/walk-alpha-inspection-v1.json",
+      "bytes": 2690,
+      "sha256": "0502633fd980edd2d86d807a89bcf2992e7189a3e9071f25150f1542b12c1fdb"
+    }
+  ]
+}

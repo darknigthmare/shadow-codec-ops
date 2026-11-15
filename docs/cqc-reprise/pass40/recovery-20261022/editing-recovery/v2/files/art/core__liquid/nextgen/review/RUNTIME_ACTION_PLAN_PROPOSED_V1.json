@@ -1,0 +1,298 @@
+{
+  "actions": {
+    "idle": {
+      "fps": 0,
+      "loop": false,
+      "roles": [
+        0
+      ]
+    },
+    "guard": {
+      "fps": 0,
+      "loop": false,
+      "roles": [
+        1
+      ]
+    },
+    "walk": {
+      "fps": 7,
+      "loop": true,
+      "roles": [
+        2,
+        3
+      ]
+    },
+    "crouch": {
+      "fps": 0,
+      "loop": false,
+      "roles": [
+        4
+      ]
+    },
+    "jump": {
+      "fps": 0,
+      "loop": false,
+      "roles": [
+        5
+      ]
+    },
+    "attack": {
+      "fps": 9,
+      "loop": false,
+      "roles": [
+        1,
+        6,
+        1
+      ]
+    },
+    "punch": {
+      "fps": 9,
+      "loop": false,
+      "roles": [
+        1,
+        6,
+        1
+      ]
+    },
+    "heavy": {
+      "fps": 10,
+      "loop": false,
+      "roles": [
+        1,
+        10,
+        1
+      ]
+    },
+    "low": {
+      "fps": 9,
+      "loop": false,
+      "roles": [
+        4,
+        7,
+        4
+      ]
+    },
+    "throw": {
+      "fps": 9,
+      "loop": false,
+      "roles": [
+        1,
+        8,
+        1
+      ]
+    },
+    "deploy": {
+      "fps": 6,
+      "loop": false,
+      "roles": [
+        1,
+        8,
+        9,
+        1
+      ]
+    },
+    "shoot": {
+      "fps": 10,
+      "loop": false,
+      "roles": [
+        1,
+        11,
+        1
+      ]
+    },
+    "reload": {
+      "fps": 0,
+      "loop": false,
+      "roles": [
+        12
+      ]
+    },
+    "optic": {
+      "fps": 0,
+      "loop": false,
+      "roles": [
+        1
+      ]
+    },
+    "recover": {
+      "fps": 0,
+      "loop": false,
+      "roles": [
+        12
+      ]
+    },
+    "blade": {
+      "fps": 9,
+      "loop": false,
+      "roles": [
+        1,
+        10,
+        1
+      ]
+    },
+    "roll": {
+      "fps": 0,
+      "loop": false,
+      "roles": [
+        15
+      ]
+    },
+    "charge": {
+      "fps": 9,
+      "loop": false,
+      "roles": [
+        1,
+        11,
+        1
+      ]
+    },
+    "parry": {
+      "fps": 0,
+      "loop": false,
+      "roles": [
+        9
+      ]
+    },
+    "hit": {
+      "fps": 0,
+      "loop": false,
+      "roles": [
+        13
+      ]
+    },
+    "ko": {
+      "fps": 0,
+      "loop": false,
+      "roles": [
+        14
+      ]
+    }
+  },
+  "phaseMap": {
+    "attack": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "punch": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "heavy": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "low": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "throw": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "shoot": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "blade": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "deploy": {
+      "startup": [
+        0,
+        1
+      ],
+      "active": [
+        2
+      ],
+      "recovery": [
+        3
+      ]
+    },
+    "charge": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    }
+  },
+  "actionMap": {
+    "light": "punch",
+    "heavy": "heavy",
+    "low": "low",
+    "throw": "throw",
+    "special": "charge",
+    "specialDown": "low",
+    "specialForward": "throw",
+    "specialBack": "parry",
+    "super": "charge",
+    "utility": "recover"
+  },
+  "selectedActionBySlot": {
+    "light": "punch",
+    "heavy": "heavy",
+    "low": "low",
+    "throw": "throw",
+    "special": "charge",
+    "specialDown": "low",
+    "specialForward": "throw",
+    "specialBack": "parry",
+    "super": "charge",
+    "utility": "recover"
+  },
+  "scope": "UNAPPROVED visual role plan only. Preserve original actionMap and all move timings/resources. Integrator must check actual renderer action selection, the reviewed selectedActionBySlot expectation and distinct Core taxonomy before any compilation."
+}

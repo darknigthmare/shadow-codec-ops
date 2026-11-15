@@ -1,0 +1,367 @@
+{
+  "schema": "cqc.pass4.gameplay-independent-review/1",
+  "reviewer": "pass3_grayfox_native",
+  "reviewedAt": "2026-10-01T17:02:33.304Z",
+  "status": "accepted_final_frozen_helpers_including_wolf",
+  "scope": "Read-only focused review; no shared game edits, no browser/full QA, no packaging.",
+  "sourceFiles": [
+    {
+      "path": "src/cqc-pass4-combat-fidelity.js",
+      "sha256": "a2fdce84d7a4893da761ba13b41c6acda2b65e3452fa4897b7a7f6bade1c85da"
+    },
+    {
+      "path": "src/cqc-pass4-native-origins.js",
+      "sha256": "4adabfce6ebdecd396c73ddb6ef3ccc34d5184f34331625ea8e1cceda3ad9ad8"
+    },
+    {
+      "path": "src/cqc-pass4-projectile-art.js",
+      "sha256": "c289279d23ac519bd56e2cc13fb49a6b88ea2a371f1bd286562cbeb3ace215ff"
+    },
+    {
+      "path": "src/cqc-sprite-renderer.js",
+      "sha256": "bf08ed6aa762f9eef16cb2de268005bbd57d1fc2d60f8d70556f145e2f4cec25"
+    },
+    {
+      "path": "modules/unified-versus-v055.html",
+      "sha256": "bb11186ed0a94a865235ffc2ded80d677a1c12b0ded884b7606673b811f8c88c"
+    },
+    {
+      "path": "data/combat-sprite-catalog-v1.json",
+      "sha256": "a6a7ce8da9e758e85f75a4e763fe11f1a218c7e739813d015b77c083637a0118"
+    },
+    {
+      "path": "data/unified-roster-v053.json",
+      "sha256": "68fdbbd78c7abb88a737f0e62abf58e4c39847d3edd839e0ac64d4f5cdcc242d"
+    },
+    {
+      "path": "preparation/combat-sprites-pass4/SOURCE_COMBAT_ORIGINS.json",
+      "sha256": "211338d74099a6e76f50d23faf39c84cfc70d0f6e48a10538f66cad749f60ece"
+    },
+    {
+      "path": "tests/test_pass4_combat_fidelity.cjs",
+      "sha256": "b0ff602dbea4911989ef25a8cc5c39b06e9845ae3b7cf1753d630f1f4d087094"
+    },
+    {
+      "path": "tests/test_pass4_projectile_art.cjs",
+      "sha256": "ac5dafb64031535c694efe2d80b2fcb85b12abe5949f075d089647c00a298b90"
+    }
+  ],
+  "bugs": [],
+  "findings": "No concrete bug found. Final native Wolf source points validated; eight previously reviewed Fire/Mantis points remain mathematically and source-byte identical.",
+  "tests": [
+    {
+      "command": "node tests/test_pass4_combat_fidelity.cjs",
+      "tests": 12,
+      "passed": 12,
+      "failed": 0,
+      "observedExitCode": 0,
+      "coverage": "Exact Wolf source-incarnation/profile preservation, ammo+50meter consumption, empty reserve refusal, five-shot exhaustion, interruptible reload, missing-anchor fallback, changed-source SHA rejection, native scale/point rejection, unrelated-UID preservation, actual Fire/Mantis standing/crouch collision from both native facings."
+    },
+    {
+      "command": "node tests/test_pass4_projectile_art.cjs",
+      "tests": 8,
+      "passed": 8,
+      "failed": 0,
+      "observedExitCode": 0,
+      "coverage": "Native atlas SHA+dimensions, nested URL prefix, late readiness, load/dimension failure fallback, exact Mantis UID/tag eligibility, reflected owner retains source appearance and state, deterministic props+world zoom, dead/delayed/invalid zoom refusal."
+    }
+  ],
+  "independentOriginEvidence": {
+    "runtimeJSMatchesSavedMarks": true,
+    "originalPNGBytesVerified": true,
+    "points": [
+      {
+        "uid": "core__firetrooper",
+        "kind": "shoot",
+        "side": "right",
+        "face": 1,
+        "file": "assets/combat-sprites/core__firetrooper/c-right-v1.png",
+        "sourceSHA256": "beb71dd72b1c6c6ba57fb2db0b9ee945d7f6d4f9f5966b69d686197767662691",
+        "sourceHashMatched": true,
+        "rectPivotAndSourceHeightMatched": true,
+        "activeFrameMatched": 1,
+        "scaleIncludesWorld1_12": true,
+        "forward": 130.61796535286592,
+        "height": 150.33704918032785
+      },
+      {
+        "uid": "core__firetrooper",
+        "kind": "shoot",
+        "side": "left",
+        "face": -1,
+        "file": "assets/combat-sprites/core__firetrooper/c-left-v1.png",
+        "sourceSHA256": "e88db646013d231e0de857f5b059a0f4419796ef463f4f8c62a93efa641317ec",
+        "sourceHashMatched": true,
+        "rectPivotAndSourceHeightMatched": true,
+        "activeFrameMatched": 1,
+        "scaleIncludesWorld1_12": true,
+        "forward": 109.32527345797658,
+        "height": 159.79932203389833
+      },
+      {
+        "uid": "core__firetrooper",
+        "kind": "deploy",
+        "side": "right",
+        "face": 1,
+        "file": "assets/combat-sprites/core__firetrooper/c-right-v1.png",
+        "sourceSHA256": "beb71dd72b1c6c6ba57fb2db0b9ee945d7f6d4f9f5966b69d686197767662691",
+        "sourceHashMatched": true,
+        "rectPivotAndSourceHeightMatched": true,
+        "activeFrameMatched": 1,
+        "scaleIncludesWorld1_12": true,
+        "forward": 70.51050337512058,
+        "height": 74.3239344262295
+      },
+      {
+        "uid": "core__firetrooper",
+        "kind": "deploy",
+        "side": "left",
+        "face": -1,
+        "file": "assets/combat-sprites/core__firetrooper/c-left-v1.png",
+        "sourceSHA256": "e88db646013d231e0de857f5b059a0f4419796ef463f4f8c62a93efa641317ec",
+        "sourceHashMatched": true,
+        "rectPivotAndSourceHeightMatched": true,
+        "activeFrameMatched": 1,
+        "scaleIncludesWorld1_12": true,
+        "forward": 76.11817293881079,
+        "height": 85.57559322033899
+      },
+      {
+        "uid": "core__mantis",
+        "kind": "shoot",
+        "side": "right",
+        "face": 1,
+        "file": "assets/combat-sprites/core__mantis/c-right-v1.png",
+        "sourceSHA256": "bfc3160a52738f9c93b4cbfef057bb211a060f75dfbdd30eca6fc817c3889c25",
+        "sourceHashMatched": true,
+        "rectPivotAndSourceHeightMatched": true,
+        "activeFrameMatched": 1,
+        "scaleIncludesWorld1_12": true,
+        "forward": 116.11160330578515,
+        "height": 216.9263157894737
+      },
+      {
+        "uid": "core__mantis",
+        "kind": "shoot",
+        "side": "left",
+        "face": -1,
+        "file": "assets/combat-sprites/core__mantis/c-left-v1.png",
+        "sourceSHA256": "6c4a4ecf1e8d982fd9c64137f217e539e9c821c2044870f3adc5062e5ea78ea5",
+        "sourceHashMatched": true,
+        "rectPivotAndSourceHeightMatched": true,
+        "activeFrameMatched": 1,
+        "scaleIncludesWorld1_12": true,
+        "forward": 116.10770577933455,
+        "height": 216.20000000000005
+      },
+      {
+        "uid": "core__mantis",
+        "kind": "bind",
+        "side": "right",
+        "face": 1,
+        "file": "assets/combat-sprites/core__mantis/c-right-v1.png",
+        "sourceSHA256": "bfc3160a52738f9c93b4cbfef057bb211a060f75dfbdd30eca6fc817c3889c25",
+        "sourceHashMatched": true,
+        "rectPivotAndSourceHeightMatched": true,
+        "activeFrameMatched": 1,
+        "scaleIncludesWorld1_12": true,
+        "forward": 102.31021858325367,
+        "height": 68.46736842105264
+      },
+      {
+        "uid": "core__mantis",
+        "kind": "bind",
+        "side": "left",
+        "face": -1,
+        "file": "assets/combat-sprites/core__mantis/c-left-v1.png",
+        "sourceSHA256": "6c4a4ecf1e8d982fd9c64137f217e539e9c821c2044870f3adc5062e5ea78ea5",
+        "sourceHashMatched": true,
+        "rectPivotAndSourceHeightMatched": true,
+        "activeFrameMatched": 1,
+        "scaleIncludesWorld1_12": true,
+        "forward": 116.19717517876516,
+        "height": 51.914285714285725
+      },
+      {
+        "uid": "core__wolf",
+        "kind": "shoot",
+        "side": "right",
+        "face": 1,
+        "file": "assets/combat-sprites/core__wolf/c-right-v1.png",
+        "sourceSHA256": "cf9bd6d45e857394614ceb1420cadb0df21401a74ea494b7acdad112857e54b1",
+        "sourceHashMatched": true,
+        "rectPivotAndSourceHeightMatched": true,
+        "rect": [
+          43,
+          395,
+          344,
+          357
+        ],
+        "pivot": [
+          0.3632668152309261,
+          0.9859943977591037
+        ],
+        "sourceFrameHeight": 347,
+        "sourcePoint": [
+          381,
+          465
+        ],
+        "sourcePixelAlpha": 212,
+        "pointKind": "observed-PSG1-barrel-tip",
+        "activeFrameMatched": 1,
+        "scaleIncludesWorld1_12": true,
+        "worldScale": 0.7423631123919309,
+        "forward": 158.1502280357367,
+        "height": 209.3463976945245,
+        "sourceIncarnation": "Original PlayStation 1, original Sniper Wolf outfit and PSG1; not Twin Snakes"
+      },
+      {
+        "uid": "core__wolf",
+        "kind": "shoot",
+        "side": "left",
+        "face": -1,
+        "file": "assets/combat-sprites/core__wolf/c-left-v1.png",
+        "sourceSHA256": "8ec4203cfb91a12286312fbdb13e46559c4e7b0ca041a5cb47edf5aef2a4a556",
+        "sourceHashMatched": true,
+        "rectPivotAndSourceHeightMatched": true,
+        "rect": [
+          1,
+          390,
+          343,
+          341
+        ],
+        "pivot": [
+          0.6103427844248884,
+          0.9853372434017595
+        ],
+        "sourceFrameHeight": 338,
+        "sourcePoint": [
+          6,
+          465
+        ],
+        "sourcePixelAlpha": 209,
+        "pointKind": "observed-PSG1-barrel-tip",
+        "activeFrameMatched": 1,
+        "scaleIncludesWorld1_12": true,
+        "worldScale": 0.7621301775147931,
+        "forward": 155.73945365347038,
+        "height": 198.91597633136098,
+        "sourceIncarnation": "Original PlayStation 1, original Sniper Wolf outfit and PSG1; not Twin Snakes"
+      }
+    ],
+    "formula": "Renderer local source point=(mark-point minus rect pivot)*displayHeight/sourceFrameHeight*1.12*zoom. Engine world spawn adds signed face*forward and subtracts height; both native facings agree exactly. Each reviewed mark is active frame1 selected by phaseMap at activation.",
+    "finalTotalReviewedPoints": 10,
+    "priorFireMantisEightStrictlyUnchanged": true
+  },
+  "resourceCompatibility": {
+    "wolf": "Only core__wolf becomes PSG1-labelled. Super stays original timing/damage/speed/meter50, changes rail to conventional precision and costs one actual ammo round. Empty ammo cannot be bypassed by full meter; no automatic ammo regen. Twin Snakes Wolf UID remains untouched.",
+    "fireTrooper": "Only native origins are changed for special/super; legacy heat kind/costs/regen/cooling utility and meter-only super cost remain unchanged. Engine still adds ordinary move heat, checks cap and cools/reduces with existing recovery semantics.",
+    "mantis": "Only native origins change special/super and specialDown. Existing concentration costs/regeneration and meter rules remain intact."
+  },
+  "hookAndRendererEvidence": {
+    "loadOrder": "Native marks and helpers are loaded in module head; sprite catalog loads before inline FIGHTERS apply. PASS4 apply follows canonical/PASS3 corrections, then drawGame passes moveSlot, startup/active/recovery phase, progress, hit/KO/jump and world scale1.12*zoom.",
+    "props": "Eligibility uses unchanged q.def.id prefix core__mantis:: and psychic/bind tag, independently of mutable q.owner. Actual engine reflection changes owner/vx/face/hitTargets/damageScale/x but retains q.def; appearance stays tied to the original source move.",
+    "physics": "Debris draw reads projectile state only; it changes renderer diagnostics and balanced Canvas state, never x/y/vx/vy/life/owner/def/collision geometry. HTML hook saves/translates before draw and restores once on either true or fallback path.",
+    "assetURL": "Current external script src is captured when renderer constructs in the shipped head, then ../assets resolves under standalone and nested CQC roots. Loading/failure/wrong dimensions return false, preserving fallback; subsequent ordinary frame draws after onload need no explicit wake-up."
+  },
+  "knownPending": {
+    "wolfNativeCatalogPresent": true,
+    "wolfOriginMarksPresent": true,
+    "note": "Known pending Wolf catalog/marks are now present and independently validated; no pending issue remains in this focused review."
+  },
+  "limitations": [
+    "This is a focused code/20-test review, not the parallel browser or full game QA.",
+    "Source-SHA checks compare reviewed mark and catalog frame metadata; independent local PNG-byte hashing confirms their shipped source bytes. No unsupported claim of browser fetching and cryptographically hashing images at runtime."
+  ],
+  "priorReportPreservation": {
+    "backupPath": "/workspace/cqc-pass4-gameplay-independent-review.before-wolf-5b2ffb8ef28322eb61bdbeafcc86a1d215fe70cec2bc99bd5d985af75dec486e.json",
+    "sha256": "5b2ffb8ef28322eb61bdbeafcc86a1d215fe70cec2bc99bd5d985af75dec486e",
+    "bytes": 10190,
+    "byteExactVerified": true
+  },
+  "wolfFinalIndependentReview": {
+    "sourceScope": "core__wolf",
+    "actionMapSpecialAndSuper": "shoot",
+    "bothActiveFrames": 1,
+    "sourcePNGByteSHA": true,
+    "rectPivotSourceHeightMatched": true,
+    "signedWorldScale1_12ExactlyMatched": true,
+    "changedSourceSHARejected": true,
+    "bothProfileMoveOriginsBound": true,
+    "originalAmmoAndMeterCorrectionsPreserved": true,
+    "points": [
+      {
+        "uid": "core__wolf",
+        "kind": "shoot",
+        "side": "right",
+        "face": 1,
+        "file": "assets/combat-sprites/core__wolf/c-right-v1.png",
+        "sourceSHA256": "cf9bd6d45e857394614ceb1420cadb0df21401a74ea494b7acdad112857e54b1",
+        "sourceHashMatched": true,
+        "rectPivotAndSourceHeightMatched": true,
+        "rect": [
+          43,
+          395,
+          344,
+          357
+        ],
+        "pivot": [
+          0.3632668152309261,
+          0.9859943977591037
+        ],
+        "sourceFrameHeight": 347,
+        "sourcePoint": [
+          381,
+          465
+        ],
+        "sourcePixelAlpha": 212,
+        "pointKind": "observed-PSG1-barrel-tip",
+        "activeFrameMatched": 1,
+        "scaleIncludesWorld1_12": true,
+        "worldScale": 0.7423631123919309,
+        "forward": 158.1502280357367,
+        "height": 209.3463976945245,
+        "sourceIncarnation": "Original PlayStation 1, original Sniper Wolf outfit and PSG1; not Twin Snakes"
+      },
+      {
+        "uid": "core__wolf",
+        "kind": "shoot",
+        "side": "left",
+        "face": -1,
+        "file": "assets/combat-sprites/core__wolf/c-left-v1.png",
+        "sourceSHA256": "8ec4203cfb91a12286312fbdb13e46559c4e7b0ca041a5cb47edf5aef2a4a556",
+        "sourceHashMatched": true,
+        "rectPivotAndSourceHeightMatched": true,
+        "rect": [
+          1,
+          390,
+          343,
+          341
+        ],
+        "pivot": [
+          0.6103427844248884,
+          0.9853372434017595
+        ],
+        "sourceFrameHeight": 338,
+        "sourcePoint": [
+          6,
+          465
+        ],
+        "sourcePixelAlpha": 209,
+        "pointKind": "observed-PSG1-barrel-tip",
+        "activeFrameMatched": 1,
+        "scaleIncludesWorld1_12": true,
+        "worldScale": 0.7621301775147931,
+        "forward": 155.73945365347038,
+        "height": 198.91597633136098,
+        "sourceIncarnation": "Original PlayStation 1, original Sniper Wolf outfit and PSG1; not Twin Snakes"
+      }
+    ]
+  },
+  "followupExecution": {
+    "fullTestsRerun": false,
+    "browserRun": false,
+    "sharedGameSourcesWritten": false,
+    "checks": "Read-only final Wolf source-byte/catalog/geometry guard assertions and unchanged prior Fire/Mantis origins; prior12+8 passing tests retained as historical test evidence."
+  }
+}

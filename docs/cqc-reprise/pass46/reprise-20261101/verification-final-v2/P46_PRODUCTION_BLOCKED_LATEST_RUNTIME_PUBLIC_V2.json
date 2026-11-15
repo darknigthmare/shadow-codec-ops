@@ -1,0 +1,30 @@
+{
+  "schema": "cqc.p46.production-blocked-latest-runtime/2",
+  "observedAtUTC": "2026-11-01T02:16:25.321741+00:00",
+  "status": "BLOCKED_VERCEL_DAILY_DEPLOYMENT_QUOTA",
+  "desiredRuntimeGitCommit": "2397e520a3fa18afd01fdd5421adf3ad08161d0c",
+  "branch": "codex/cqc-p46-zombies-and-wardrobe",
+  "pullRequest": "https://github.com/darknigthmare/shadow-codec-ops/pull/8",
+  "previousManualDeploymentAttempt": {
+    "runtimeGitCommit": "dfc5b8f52b2aaac12448bfd7448c98f9cfdb0422",
+    "observedAtUTC": "2026-11-01T01:12:09.897040+00:00",
+    "response": {
+      "status": 402,
+      "code": "payment_required",
+      "resource": "api-deployments-free-per-day",
+      "message": "Resource is limited - try again in24hours (more than100)",
+      "retryAfterSeconds": 86400
+    }
+  },
+  "latestRuntimeManuallySubmittedAfterQuotaBlock": false,
+  "latestStrictProductionRead": {
+    "file": "P46_TEN_GIT_PRODUCTION_STATE_READBACK_PUBLIC_V1.json",
+    "sha256": "bf04997764b05e7a52824723214f1355eb162b41b4796380cb0d00d612fcd9a9",
+    "productionCommit": "77c830974fa672fc1746a875954af3e9bf39014e",
+    "deploymentId": "dpl_B142nqaBD7CWoC9xoBwL8voL271E",
+    "state": "READY",
+    "newP46Options": 0
+  },
+  "billingPlanSecurityOrProductionAliasesChanged": false,
+  "qualification": "All ten new costumes are committed and locally qualified. The earlier manual attempt failed at the Vercel daily quota; no successful deployment or manual retry for the latest runtime is claimed. Production remains on the previous P45 commit."
+}

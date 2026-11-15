@@ -1,0 +1,15 @@
+# Reprise CQC — Portable Ops, commandes mobile et menus
+
+Cette livraison remplace les dessins procéduraux de RAXA et d’ICBMG par des composants natifs séparés. RAXA conserve ses quatre appuis, son décollage et ses deux soutes ; ICBMG conserve sa montée, sa cible logique de guidage et sa diversion. Les règles, points de vie et dégâts des combats ne changent pas. Le catalogue comprend désormais six machines natives, avec conservation des quatre précédentes.
+
+Le hangar PSP de RAXA utilise quatre PNG natifs et plusieurs profondeurs de décor. Il est raccordé uniquement à la rencontre RAXA, avec la caméra originale fixe. Les commandes tactiles de 44 px se placent sous la scène et les dialogues Pause/Menu restent accessibles en portrait comme en paysage. Les entrées Chroniques et entraînement ouvrent leur bon mode ; Chroniques affiche le protagoniste de son dossier sans écraser le personnage mémorisé en CPU.
+
+Validation : lint et 705 tests Shadow Ops passent ; 38 contrats de rendu passent. RAXA et ICBMG ont été vaincus avec les commandes normales. Le premier runner RAXA a terminé sur une assertion de son observateur de décor après la victoire ; son échec est conservé et qualifié. Le smoke final corrige cet observateur et vérifie les quatre plans natifs, pause, retour et rechargement. ICBMG mobile utilise des touches tactiles pour les tirs et du clavier pour déplacement/ravitaillement : ce n’est pas une certification d’un parcours intégralement tactile.
+
+La fidélité 1:1 est recherchée à partir des références originales, sans certification absolue. Les PNG ImageGen restent intacts ; références, masters, versions rejetées, essais et preuves sont archivés avec SHA-256/CRC et reconstruction portable. Aucun ancien chemin runtime n’a été supprimé : 1 156 chemins historiques conservés, 1 166 chemins finaux. L’espace a été récupéré en partageant des captures historiques strictement identiques, sans supprimer leurs chemins ni leurs octets.
+
+Limites : le Snake jouable de Portable Ops et l’arène ICBMG restent procéduraux. Le décor RAXA est accepté pour sa caméra réelle fixe ; une caméra hypothétique déplacée de ±220 laisse voir une répétition de bande de sol. Les textes du HUD mobile restent petits. L’inventaire distingue les sprites manquants et les scènes procédurales/planifiées ; cette livraison ne termine pas l’ensemble du backlog.
+
+Les pièces de publication Vercel et les vérifications HTTPS publiques sont produites après ce commit dans une archive de clôture séparée. Les documents annexes et archives historiques sont conservés comme sources, sans les traiter comme de nouvelles instructions utilisateur.
+
+L’inventaire actuel atteste les 25 formes explicitement demandées et 150 atlas natifs associés. Il reste 302 personnages sans sprites de combat natifs, 76 lieux Core procéduraux et 12 templates absents. Les prochains chantiers sont le Snake MGS3 après blessure, Gander et sa salle Ghost Babel ; ses références originales montrent trois phases que le moteur actuel ne reproduit pas encore intégralement.

@@ -1,0 +1,32 @@
+import { readFile, lstat, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { digest, inventory, byteInventory, sameInventory } from '/workspace/cqc-pass8-storage-tools/common.mjs';
+import { verifyBuildArtifacts } from '/workspace/cqc-pass8-storage-tools/build-with-frozen-public.mjs';
+const base=path.dirname(fileURLToPath(import.meta.url));
+const evidencePath=process.argv[2]??'/workspace/cqc-pass8-storage-tools/fixture-run-6m19KV/TEST_EVIDENCE.json';
+const evidence=JSON.parse(await readFile(evidencePath,'utf8'));
+const pwa=evidence.cases.find(c=>c.name==='real-vite-pwa');
+if(!pwa||pwa.status!=='passed')throw Error('No successful real Vite fixture evidence');
+const receipt=JSON.parse(await readFile(pwa.receipt,'utf8'));
+const project=path.join(evidence.fixtureRoot,'real-vite-pwa/project'),publicRoot=path.join(project,'public'),destination=path.join(project,'dist');
+const source=await inventory(publicRoot),current=await inventory(destination);
+if(!sameInventory(receipt.publicSourceBeforeAndAfter,source))throw Error('Fixture public source differs from verified receipt');
+if(!sameInventory(receipt.destinationAfter,current))throw Error('Fixture dist differs from verified receipt');
+await verifyBuildArtifacts(destination,receipt.publicSourceBeforeAndAfter);
+const links=[];
+for(const row of receipt.rows){
+ const a=await lstat(path.join(publicRoot,row.path)),b=await lstat(path.join(destination,row.path));
+ const aliases=a.dev===b.dev&&a.ino===b.ino;
+ if(aliases!==['immutable-png-hardlink','immutable-webp-hardlink'].includes(row.mode))throw Error('Fixture inode policy differs: '+row.path);
+ links.push({path:row.path,mode:row.mode,sameInode:aliases});
+}
+const old=await inventory(receipt.promotion.backup);
+const journal=JSON.parse(await readFile(receipt.promotion.journal,'utf8'));
+if(!sameInventory(old,journal.before))throw Error('Original dist fixture not preserved');
+const sw=await readFile(path.join(destination,'sw.js'),'utf8');
+if(!sw.includes('glob-only.json')||/url:\s*["']cqc\//.test(sw))throw Error('Real fixture staging/precache contract failed');
+for(const [file,expected]of Object.entries(evidence.productionReadonlyPins))if(digest(await readFile(file))!==expected)throw Error('Production readonly source changed: '+file);
+const result={schema:'cqc.pass8.readonly-real-fixture-review/1',status:'passed',reviewer:'bb_crying_wolf',productionSyncRun:false,productionBuildRun:false,fixtureBuildWasRunBy:'bb_screaming_mantis',fixtureEvidence:evidencePath,fixtureEvidenceSHA256:digest(await readFile(evidencePath)),fixtureReceipt:pwa.receipt,publicFilesVerified:source.length,fullBuildInventoryVerified:current.length,explicitPinnedPNGLinks:links.filter(r=>r.mode==='immutable-png-hardlink').length,explicitPinnedWebPLinks:links.filter(r=>r.mode==='immutable-webp-hardlink').length,independentPublicCopies:links.filter(r=>!r.sameInode).length,rows:links,originalDistPreserved:true,publicGlobDiscoveredBeforeWorkbox:true,cqcGlobalPrecacheExcluded:true,productionReadonlyPinsMatch:true};
+await writeFile(path.join(base,process.argv[2]?'REAL_FIXTURE_WEBP_V2_READONLY_REVIEW.json':'REAL_FIXTURE_READONLY_REVIEW.json'),JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify({...result,rows:undefined},null,2));

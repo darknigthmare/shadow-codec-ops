@@ -1,0 +1,140 @@
+{
+  "schema": "cqc.pass8.reference-selection/1",
+  "status": "prepared_read_only_source_selection",
+  "preparedDate": "2026-10-02",
+  "targetFidelity": "1:1",
+  "absolute1to1Certified": false,
+  "selected": [
+    {
+      "uid": "core__ninja_mg2",
+      "originalName": "BLACK COLOR",
+      "contract": "core__ninja_mg2/SOURCE_CONTRACT.json",
+      "contractSHA256": "6e162e099b43f179932e23fe8ee412f9dc580a2a398f5e7d81bf38b8177d25a6",
+      "referenceBytes": 4830301,
+      "referenceCount": 7,
+      "nativeSpriteSheetsPlanned": 6,
+      "nativePosesPlanned": 72,
+      "unknowns": [
+        "Exact real face/hair, flex-armor materials and detailed seams.",
+        "Exact throwing-star model and number per original animation.",
+        "Standing original game capture not recovered; tiny sprite mirror and original corpse captures support palette with limited confidence."
+      ]
+    },
+    {
+      "uid": "core__runner_mg2",
+      "originalName": "RUNNING MAN",
+      "contract": "core__runner_mg2/SOURCE_CONTRACT.json",
+      "contractSHA256": "501d9a05f64741e9fbafd86bdad8d901cf5cdba9184929fa7e8c1ca7e02b3f7b",
+      "referenceBytes": 4811747,
+      "referenceCount": 5,
+      "nativeSpriteSheetsPlanned": 6,
+      "nativePosesPlanned": 72,
+      "unknowns": [
+        "Real facial likeness, hair style and exact headwear.",
+        "Exact cloth seams, glove style, tactical equipment and boot model.",
+        "Detailed natural human anatomy between tiny original sprite poses."
+      ]
+    },
+    {
+      "uid": "core__jungle_evil",
+      "originalName": "PREDATOR",
+      "contract": "core__jungle_evil/SOURCE_CONTRACT.json",
+      "contractSHA256": "715a997a4cad6b6da7e2b5b51316b64c94ef515ff3ddf6122fcabc9926902015",
+      "referenceBytes": 4879396,
+      "referenceCount": 8,
+      "nativeSpriteSheetsPlanned": 6,
+      "nativePosesPlanned": 72,
+      "unknowns": [
+        "Exact rifle type and firing effect: source video was blocked and no firing frame was inspected.",
+        "Real face, hair, realistic skin tone, gloves and ammunition-feed details.",
+        "Standing side views and original left/right costume asymmetry."
+      ]
+    },
+    {
+      "uid": "core__redblaster_mg2",
+      "originalName": "RED BLASTER",
+      "contract": "core__redblaster_mg2/SOURCE_CONTRACT.json",
+      "contractSHA256": "66ad6ebcd4568398fbc7e0ba29ddd5ed65645d008e0a40460a46fa81eb414780",
+      "referenceBytes": 4830635,
+      "referenceCount": 7,
+      "nativeSpriteSheetsPlanned": 6,
+      "nativePosesPlanned": 72,
+      "unknowns": [
+        "Exact grenade-launcher model, whether the tiny source actually depicts the weapon and its detail.",
+        "Exact grenade/canister geometry, fuze and grip.",
+        "Real face, hair, full costume seams, boot and glove model."
+      ]
+    }
+  ],
+  "deferred": [
+    {
+      "uid": "core__night_fright",
+      "audit": "research/deferred-core__night_fright/DEFERRED_SOURCE_AUDIT.json",
+      "reason": "Original true form unresolved by sources; no original costume basis for a certified visible1:1 sprite."
+    }
+  ],
+  "sourceInputs": [
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/data/unified-roster-v053.json",
+      "bytes": 3297682,
+      "sha256": "68fdbbd78c7abb88a737f0e62abf58e4c39847d3edd839e0ac64d4f5cdcc242d",
+      "access": "read_only"
+    },
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/data/finishers-v053.json",
+      "bytes": 1882314,
+      "sha256": "fd0e0c7d0b68c983ae11359d18825b5172b63eddc1fa2fd3ba250f0b55639763",
+      "access": "read_only"
+    },
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/data/combat-profiles-v053.json",
+      "bytes": 2747346,
+      "sha256": "de879152b4ba00273e65ddae971c7f60dcd58c978ee9a49eb14c6c00e5a7711b",
+      "access": "read_only"
+    },
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/data/chronicles-v056.json",
+      "bytes": 4707277,
+      "sha256": "8e65a6e27be11b1dcd0a7a41197305f64667663d98de653ad7b7f24019da7bf9",
+      "access": "read_only"
+    },
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/data/combat-sprite-catalog-v1.json",
+      "bytes": 32745805,
+      "sha256": "709af3851a2d1769ae98b4d4a77e2c552296eebfd904a19c900058596ec3ee47",
+      "access": "read_only"
+    },
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/src/cqc-pass6-combat-fidelity.js",
+      "bytes": 12599,
+      "sha256": "3f6af98bdffc76e1c82873a3cdd06bf15f2cba96ac1028d9843ad1b44a933d19",
+      "access": "read_only"
+    },
+    {
+      "path": "/workspace/cqc-game-working/cqc-versus-v056/src/cqc-pass7-combat-fidelity.js",
+      "bytes": 23851,
+      "sha256": "48257633fc4c8054c2343f1da44334fe532d97222cfdd3b76b4827c3377b8bed",
+      "access": "read_only"
+    }
+  ],
+  "backlog": {
+    "rawCanonicalRoster": 354,
+    "runtimeNativeEntries": 26,
+    "nativeCanonicalCharacters": 25,
+    "userAuthorizedOCNativeCharacters": 1,
+    "rawCanonicalNativeMissing": 329,
+    "nextFourRemainMissingUntilGeneratedReviewedImported": [
+      "core__ninja_mg2",
+      "core__runner_mg2",
+      "core__jungle_evil",
+      "core__redblaster_mg2"
+    ],
+    "projectedMissingAfterActualFourImports": 325,
+    "generatedNow": 0,
+    "importedNow": 0
+  },
+  "snapshots": "Unmodified parsed raw profiles/combat/finishers/chronicle objects serialized separately; original full file pins retained. Raw legacy properties are evidence of recovered project state, never canonical proof.",
+  "sourceExecutionLimit": "No unmodified Japanese1990 game video execution was recovered or inspected in this preparation. English LP captions/transcriptions and original-era visual pixels remain qualified secondary sources, with original Japanese manual primary for documented lore.",
+  "referenceAcquisitionFailures": "Original YouTube LP videos denied403; archive video metadata/search503. Failure logs preserved; no recovered or inspected video frames claimed.",
+  "rootSafetyScope": "Only /workspace/cqc-pass8-reference-selection was written; current R/S/assets/QA/generated_images/Git/API deployment were untouched by this subtask."
+}

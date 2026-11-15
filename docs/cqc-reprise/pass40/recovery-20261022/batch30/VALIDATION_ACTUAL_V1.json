@@ -1,0 +1,39 @@
+{
+  "schema": "cqc.pass40.batch30.validation-actual/1",
+  "observedUTC": "2026-10-22T19:38:18.370497+00:00",
+  "validator": {
+    "path": "batch30/validate-batch30.py",
+    "bytes": 17122,
+    "sha256": "95fded0c062b80d2c167e9f9b1af7287edaf00e5c5f70b5d5328feac62c00ed8"
+  },
+  "manifest": {
+    "path": "batch30/manifest.json",
+    "bytes": 17792,
+    "sha256": "73721a1b6e528fd36053078c12c07c56f3cb16286e2c14f354dc2415b4bea3ce"
+  },
+  "tests": {
+    "path": "batch30/test_validate_batch30.py",
+    "bytes": 12661,
+    "sha256": "6bb2dfe3840f2cfe6cf7e534ab30d2d4ee2bfc96818a97cbd8d0984b30779ab7"
+  },
+  "testProcessExitCode": 0,
+  "testOutput": "test_absolute_tmp_path_is_rejected (__main__.BatchGuards.test_absolute_tmp_path_is_rejected) ... ok\ntest_broken_raster_alias_is_rejected (__main__.BatchGuards.test_broken_raster_alias_is_rejected) ... ok\ntest_cannot_drop_a_slot (__main__.BatchGuards.test_cannot_drop_a_slot) ... ok\ntest_corrupted_source_is_rejected (__main__.BatchGuards.test_corrupted_source_is_rejected) ... ok\ntest_declared_scope_cannot_be_changed (__main__.BatchGuards.test_declared_scope_cannot_be_changed) ... ok\ntest_draft_art_cannot_hide_missing_sources (__main__.BatchGuards.test_draft_art_cannot_hide_missing_sources) ... ok\ntest_draft_is_valid_but_zero_delivered (__main__.BatchGuards.test_draft_is_valid_but_zero_delivered) ... ok\ntest_duplicate_slot_is_rejected (__main__.BatchGuards.test_duplicate_slot_is_rejected) ... ok\ntest_fatman_must_remain_outside_batch_and_no_retry (__main__.BatchGuards.test_fatman_must_remain_outside_batch_and_no_retry) ... ok\ntest_historical_qa_cannot_be_reused (__main__.BatchGuards.test_historical_qa_cannot_be_reused) ... ok\ntest_hold_cannot_be_ready (__main__.BatchGuards.test_hold_cannot_be_ready) ... ok\ntest_incarnation_cannot_change_to_meryl_mgs4 (__main__.BatchGuards.test_incarnation_cannot_change_to_meryl_mgs4) ... ok\ntest_incremental_completion_is_one_not_thirty (__main__.BatchGuards.test_incremental_completion_is_one_not_thirty) ... ok\ntest_invalid_png_filter_is_rejected_even_with_valid_crc_and_sha (__main__.BatchGuards.test_invalid_png_filter_is_rejected_even_with_valid_crc_and_sha) ... ok\ntest_liquid_is_not_a_new_family (__main__.BatchGuards.test_liquid_is_not_a_new_family) ... ok\ntest_machine_needs_articulation_and_aim_checks (__main__.BatchGuards.test_machine_needs_articulation_and_aim_checks) ... ok\ntest_missing_runtime_check_is_rejected (__main__.BatchGuards.test_missing_runtime_check_is_rejected) ... ok\ntest_missing_source_is_rejected (__main__.BatchGuards.test_missing_source_is_rejected) ... ok\ntest_new_valid_source_png_needs_new_qa (__main__.BatchGuards.test_new_valid_source_png_needs_new_qa) ... ok\ntest_parent_escape_is_rejected (__main__.BatchGuards.test_parent_escape_is_rejected) ... ok\ntest_png_corruption_is_rejected_even_with_new_sha (__main__.BatchGuards.test_png_corruption_is_rejected_even_with_new_sha) ... ok\ntest_production_validator_rejects_ephemeral_fixture_root (__main__.BatchGuards.test_production_validator_rejects_ephemeral_fixture_root) ... ok\ntest_public_readback_needs_current_input_digest (__main__.BatchGuards.test_public_readback_needs_current_input_digest) ... ok\ntest_published_cannot_point_to_another_commit (__main__.BatchGuards.test_published_cannot_point_to_another_commit) ... ok\ntest_published_requires_fresh_bound_readback (__main__.BatchGuards.test_published_requires_fresh_bound_readback) ... ok\ntest_qa_digest_must_match_exact_current_sources (__main__.BatchGuards.test_qa_digest_must_match_exact_current_sources) ... ok\ntest_ready_cannot_be_claimed_without_sources (__main__.BatchGuards.test_ready_cannot_be_claimed_without_sources) ... ok\ntest_ready_does_not_count_as_complete (__main__.BatchGuards.test_ready_does_not_count_as_complete) ... ok\ntest_same_image_cannot_supply_two_facings (__main__.BatchGuards.test_same_image_cannot_supply_two_facings) ... ok\ntest_symlink_file_is_rejected (__main__.BatchGuards.test_symlink_file_is_rejected) ... ok\ntest_symlink_parent_is_rejected (__main__.BatchGuards.test_symlink_parent_is_rejected) ... ok\ntest_undecodable_png_is_rejected_even_with_valid_crc_and_sha (__main__.BatchGuards.test_undecodable_png_is_rejected_even_with_valid_crc_and_sha) ... ok\ntest_updated_code_needs_new_qa (__main__.BatchGuards.test_updated_code_needs_new_qa) ... ok\ntest_wrong_dimensions_are_rejected (__main__.BatchGuards.test_wrong_dimensions_are_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 34 tests in 0.046s\n\nOK\n",
+  "productionDraftValidationExitCode": 0,
+  "productionDraftValidation": {
+    "validation": "PASS",
+    "meaning": "manifest structure and claimed admission evidence verified; not a visual fidelity certificate",
+    "entryCount": 30,
+    "counts": {
+      "draft": 30,
+      "ready": 0,
+      "complete": 0,
+      "published": 0,
+      "hold": 0
+    },
+    "completedCount": 0,
+    "deliveredBatch30": false,
+    "publishedBatch30": false
+  },
+  "productMutationPerformed": false,
+  "qualification": "34 synthetic guard tests are not playable art or real combat QA. This is a new recovery manifest, with0of30 completed."
+}

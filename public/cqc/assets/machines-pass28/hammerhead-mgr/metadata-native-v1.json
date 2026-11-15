@@ -1,0 +1,839 @@
+{
+  "schema": "cqc.hammerhead.native-art/1",
+  "edition": "Metal Gear Rising Revengeance 2013",
+  "uid": "pass19__hammerhead_mgr",
+  "productionNativePNGs": [
+    {
+      "id": "atlas",
+      "file": "assets/machines-pass28/hammerhead-mgr/hammerhead-mgr-left-parts-v2.png",
+      "bytes": 1870461,
+      "sha256": "df8e8c1a68b401747a78f51ee39dcc33aab553ba2575dad22dd59bb5f88cb5d2",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "id": "atlas",
+      "file": "assets/machines-pass28/hammerhead-mgr/hammerhead-mgr-right-parts-v1.png",
+      "bytes": 1763996,
+      "sha256": "f88425e57f55cc134209ba7152e7091eebb1b5bca9764fb0a976b0710d608b0e",
+      "width": 1536,
+      "height": 1024
+    }
+  ],
+  "references": [
+    {
+      "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=2763014963",
+      "kind": "community port of purported original extracted model",
+      "authorExtractionClaimIndependentlyCertified": false,
+      "physicallyViewedImages": [
+        {
+          "url": "https://images.steamusercontent.com/ugc/1841413631492454779/01744FF6BB457637308BC9041AED3A869FD56E53/",
+          "sha256": "0896822b5a6ebeb9bb352b48dd02c96388e265cc9a9e0e394b65ab0d393e67af"
+        },
+        {
+          "url": "https://images.steamusercontent.com/ugc/1841413631492461085/B74C5385CA39020443DAE3C894081962261BE4BA/",
+          "sha256": "1ddfb3db488db12cae7cae63b2bd5b1b92a7dd42dee381b785d05efe4d1980e8"
+        },
+        {
+          "url": "https://images.steamusercontent.com/ugc/1841413631492461695/2DC9C07C6966EC50E55011E844E9FE0C4258212D/",
+          "sha256": "49f7820b7751053ef91b3b31f31a6a062277efd0540873cfd3d282c1c8fd557d"
+        }
+      ]
+    }
+  ],
+  "height": {
+    "metres": 3.5,
+    "kind": "existing source-game candidate display estimate",
+    "official": false,
+    "projectionDisplayHeight": 389,
+    "qualification": "CQC display projection estimate, not official dimensions. Human figure in port comparison is from another game; not used as a canonical measurement."
+  },
+  "qualification": [
+    "Two independent projected views; perspective elevation and geometry are source-led redraws, not exact mesh cameras.",
+    "Far launcher hardware is reused at smaller depth scale behind rigid hull; separate far launcher generation failed review and remains unused.",
+    "Tail boom and original terminal tail remain one rigid hull source, additional tail drawing not used to avoid duplicate fin.",
+    "Rotor rotates through four real horizontal-plane native snapshots, never screen-plane spinning blade strips.",
+    "All movable equipment is parented to rigid fuselage; every destruction group uses its real attached snapshot in renderer supporting snapshots.",
+    "All motion/destruction is original CQC presentation adaptation, no changes to combat data, HP, saves or clocks."
+  ],
+  "nativeGeometryProof": [
+    {
+      "id": "pass19__hammerhead_mgr",
+      "face": -1,
+      "parts": 15,
+      "joints": [
+        {
+          "part": "fuselage",
+          "parent": null,
+          "sourcePivotNativeXY": [
+            202,
+            180
+          ],
+          "bodySocketNativeXY": null,
+          "sourceRect": [
+            22,
+            54,
+            420,
+            237
+          ]
+        },
+        {
+          "part": "rotor_frame1",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            1011,
+            140
+          ],
+          "bodySocketNativeXY": [
+            190,
+            109
+          ],
+          "sourceRect": [
+            838,
+            69,
+            317,
+            171
+          ]
+        },
+        {
+          "part": "rotor_frame2",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            1349,
+            143
+          ],
+          "bodySocketNativeXY": [
+            190,
+            109
+          ],
+          "sourceRect": [
+            1178,
+            120,
+            343,
+            56
+          ]
+        },
+        {
+          "part": "rotor_frame3",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            1338,
+            869
+          ],
+          "bodySocketNativeXY": [
+            190,
+            109
+          ],
+          "sourceRect": [
+            1126,
+            771,
+            387,
+            221
+          ]
+        },
+        {
+          "part": "rotor",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            661,
+            142
+          ],
+          "bodySocketNativeXY": [
+            190,
+            109
+          ],
+          "sourceRect": [
+            423,
+            86,
+            462,
+            120
+          ]
+        },
+        {
+          "part": "near_engine",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            180,
+            397
+          ],
+          "bodySocketNativeXY": [
+            177,
+            233
+          ],
+          "sourceRect": [
+            55,
+            310,
+            296,
+            185
+          ]
+        },
+        {
+          "part": "far_engine",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            584,
+            398
+          ],
+          "bodySocketNativeXY": [
+            200,
+            155
+          ],
+          "sourceRect": [
+            462,
+            306,
+            319,
+            180
+          ]
+        },
+        {
+          "part": "near_canard",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            1135,
+            371
+          ],
+          "bodySocketNativeXY": [
+            88,
+            255
+          ],
+          "sourceRect": [
+            846,
+            336,
+            316,
+            111
+          ]
+        },
+        {
+          "part": "far_canard",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            1480,
+            367
+          ],
+          "bodySocketNativeXY": [
+            75,
+            238
+          ],
+          "sourceRect": [
+            1224,
+            343,
+            278,
+            92
+          ]
+        },
+        {
+          "part": "near_rack",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            620,
+            617
+          ],
+          "bodySocketNativeXY": [
+            177,
+            252
+          ],
+          "sourceRect": [
+            451,
+            528,
+            302,
+            209
+          ]
+        },
+        {
+          "part": "far_rack",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            620,
+            617
+          ],
+          "bodySocketNativeXY": [
+            203,
+            236
+          ],
+          "sourceRect": [
+            451,
+            528,
+            302,
+            209
+          ]
+        },
+        {
+          "part": "gun",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            1158,
+            599
+          ],
+          "bodySocketNativeXY": [
+            76,
+            280
+          ],
+          "sourceRect": [
+            790,
+            541,
+            417,
+            147
+          ]
+        },
+        {
+          "part": "near_wheel",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            1393,
+            510
+          ],
+          "bodySocketNativeXY": [
+            171,
+            250
+          ],
+          "sourceRect": [
+            1275,
+            482,
+            195,
+            257
+          ]
+        },
+        {
+          "part": "far_wheel",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            211,
+            778
+          ],
+          "bodySocketNativeXY": [
+            203,
+            245
+          ],
+          "sourceRect": [
+            105,
+            754,
+            140,
+            238
+          ]
+        },
+        {
+          "part": "rear_wheel",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            1022,
+            799
+          ],
+          "bodySocketNativeXY": [
+            286,
+            193
+          ],
+          "sourceRect": [
+            892,
+            758,
+            200,
+            235
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pass19__hammerhead_mgr_right",
+      "face": 1,
+      "parts": 15,
+      "joints": [
+        {
+          "part": "fuselage",
+          "parent": null,
+          "sourcePivotNativeXY": [
+            347,
+            200
+          ],
+          "bodySocketNativeXY": null,
+          "sourceRect": [
+            24,
+            79,
+            511,
+            212
+          ]
+        },
+        {
+          "part": "rotor_frame1",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            1033,
+            177
+          ],
+          "bodySocketNativeXY": [
+            354,
+            126
+          ],
+          "sourceRect": [
+            879,
+            96,
+            308,
+            172
+          ]
+        },
+        {
+          "part": "rotor_frame2",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            1359,
+            181
+          ],
+          "bodySocketNativeXY": [
+            354,
+            126
+          ],
+          "sourceRect": [
+            1195,
+            157,
+            324,
+            48
+          ]
+        },
+        {
+          "part": "rotor_frame3",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            1283,
+            885
+          ],
+          "bodySocketNativeXY": [
+            354,
+            126
+          ],
+          "sourceRect": [
+            1095,
+            783,
+            370,
+            210
+          ]
+        },
+        {
+          "part": "rotor",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            746,
+            153
+          ],
+          "bodySocketNativeXY": [
+            354,
+            126
+          ],
+          "sourceRect": [
+            521,
+            105,
+            426,
+            94
+          ]
+        },
+        {
+          "part": "near_engine",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            229,
+            425
+          ],
+          "bodySocketNativeXY": [
+            425,
+            240
+          ],
+          "sourceRect": [
+            57,
+            336,
+            317,
+            176
+          ]
+        },
+        {
+          "part": "far_engine",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            602,
+            423
+          ],
+          "bodySocketNativeXY": [
+            374,
+            188
+          ],
+          "sourceRect": [
+            488,
+            350,
+            270,
+            153
+          ]
+        },
+        {
+          "part": "near_canard",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            870,
+            407
+          ],
+          "bodySocketNativeXY": [
+            487,
+            266
+          ],
+          "sourceRect": [
+            830,
+            374,
+            342,
+            111
+          ]
+        },
+        {
+          "part": "far_canard",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            1267,
+            425
+          ],
+          "bodySocketNativeXY": [
+            488,
+            240
+          ],
+          "sourceRect": [
+            1240,
+            392,
+            274,
+            88
+          ]
+        },
+        {
+          "part": "near_rack",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            217,
+            643
+          ],
+          "bodySocketNativeXY": [
+            420,
+            265
+          ],
+          "sourceRect": [
+            49,
+            546,
+            348,
+            193
+          ]
+        },
+        {
+          "part": "far_rack",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            217,
+            643
+          ],
+          "bodySocketNativeXY": [
+            384,
+            245
+          ],
+          "sourceRect": [
+            49,
+            546,
+            348,
+            193
+          ]
+        },
+        {
+          "part": "gun",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            864,
+            612
+          ],
+          "bodySocketNativeXY": [
+            489,
+            282
+          ],
+          "sourceRect": [
+            817,
+            571,
+            437,
+            143
+          ]
+        },
+        {
+          "part": "near_wheel",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            1406,
+            552
+          ],
+          "bodySocketNativeXY": [
+            424,
+            269
+          ],
+          "sourceRect": [
+            1348,
+            527,
+            123,
+            229
+          ]
+        },
+        {
+          "part": "far_wheel",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            143,
+            778
+          ],
+          "bodySocketNativeXY": [
+            391,
+            251
+          ],
+          "sourceRect": [
+            104,
+            753,
+            118,
+            222
+          ]
+        },
+        {
+          "part": "rear_wheel",
+          "parent": "fuselage",
+          "sourcePivotNativeXY": [
+            894,
+            799
+          ],
+          "bodySocketNativeXY": [
+            274,
+            213
+          ],
+          "sourceRect": [
+            817,
+            763,
+            191,
+            227
+          ]
+        }
+      ]
+    }
+  ],
+  "sourcePoints": {
+    "pass19__hammerhead_mgr": {
+      "ballistic": {
+        "part": "gun",
+        "nativeXY": [
+          800,
+          670
+        ],
+        "kind": "actual native Hammerhead undernose gun muzzle",
+        "pin": {
+          "machine": "pass19__hammerhead_mgr",
+          "part": "gun",
+          "source": {
+            "id": "atlas",
+            "file": "assets/machines-pass28/hammerhead-mgr/hammerhead-mgr-left-parts-v2.png",
+            "bytes": 1870461,
+            "sha256": "df8e8c1a68b401747a78f51ee39dcc33aab553ba2575dad22dd59bb5f88cb5d2",
+            "width": 1536,
+            "height": 1024
+          },
+          "rect": [
+            790,
+            541,
+            417,
+            147
+          ],
+          "pivot": [
+            368,
+            58
+          ],
+          "imageScale": 0.42
+        }
+      },
+      "missile": {
+        "part": "near_rack",
+        "nativeXY": [
+          464,
+          645
+        ],
+        "kind": "actual native Hammerhead missile tip",
+        "pin": {
+          "machine": "pass19__hammerhead_mgr",
+          "part": "near_rack",
+          "source": {
+            "id": "atlas",
+            "file": "assets/machines-pass28/hammerhead-mgr/hammerhead-mgr-left-parts-v2.png",
+            "bytes": 1870461,
+            "sha256": "df8e8c1a68b401747a78f51ee39dcc33aab553ba2575dad22dd59bb5f88cb5d2",
+            "width": 1536,
+            "height": 1024
+          },
+          "rect": [
+            451,
+            528,
+            302,
+            209
+          ],
+          "pivot": [
+            169,
+            89
+          ],
+          "imageScale": 0.53
+        }
+      },
+      "missileLower": {
+        "part": "near_rack",
+        "nativeXY": [
+          463,
+          711
+        ],
+        "kind": "actual native Hammerhead missileLower tip",
+        "pin": {
+          "machine": "pass19__hammerhead_mgr",
+          "part": "near_rack",
+          "source": {
+            "id": "atlas",
+            "file": "assets/machines-pass28/hammerhead-mgr/hammerhead-mgr-left-parts-v2.png",
+            "bytes": 1870461,
+            "sha256": "df8e8c1a68b401747a78f51ee39dcc33aab553ba2575dad22dd59bb5f88cb5d2",
+            "width": 1536,
+            "height": 1024
+          },
+          "rect": [
+            451,
+            528,
+            302,
+            209
+          ],
+          "pivot": [
+            169,
+            89
+          ],
+          "imageScale": 0.53
+        }
+      }
+    },
+    "pass19__hammerhead_mgr_right": {
+      "ballistic": {
+        "part": "gun",
+        "nativeXY": [
+          1246,
+          700
+        ],
+        "kind": "actual native Hammerhead undernose gun muzzle",
+        "pin": {
+          "machine": "pass19__hammerhead_mgr_right",
+          "part": "gun",
+          "source": {
+            "id": "atlas",
+            "file": "assets/machines-pass28/hammerhead-mgr/hammerhead-mgr-right-parts-v1.png",
+            "bytes": 1763996,
+            "sha256": "f88425e57f55cc134209ba7152e7091eebb1b5bca9764fb0a976b0710d608b0e",
+            "width": 1536,
+            "height": 1024
+          },
+          "rect": [
+            817,
+            571,
+            437,
+            143
+          ],
+          "pivot": [
+            47,
+            41
+          ],
+          "imageScale": 0.42
+        }
+      },
+      "missile": {
+        "part": "near_rack",
+        "nativeXY": [
+          366,
+          646
+        ],
+        "kind": "actual native Hammerhead missile tip",
+        "pin": {
+          "machine": "pass19__hammerhead_mgr_right",
+          "part": "near_rack",
+          "source": {
+            "id": "atlas",
+            "file": "assets/machines-pass28/hammerhead-mgr/hammerhead-mgr-right-parts-v1.png",
+            "bytes": 1763996,
+            "sha256": "f88425e57f55cc134209ba7152e7091eebb1b5bca9764fb0a976b0710d608b0e",
+            "width": 1536,
+            "height": 1024
+          },
+          "rect": [
+            49,
+            546,
+            348,
+            193
+          ],
+          "pivot": [
+            168,
+            97
+          ],
+          "imageScale": 0.53
+        }
+      },
+      "missileLower": {
+        "part": "near_rack",
+        "nativeXY": [
+          385,
+          702
+        ],
+        "kind": "actual native Hammerhead missileLower tip",
+        "pin": {
+          "machine": "pass19__hammerhead_mgr_right",
+          "part": "near_rack",
+          "source": {
+            "id": "atlas",
+            "file": "assets/machines-pass28/hammerhead-mgr/hammerhead-mgr-right-parts-v1.png",
+            "bytes": 1763996,
+            "sha256": "f88425e57f55cc134209ba7152e7091eebb1b5bca9764fb0a976b0710d608b0e",
+            "width": 1536,
+            "height": 1024
+          },
+          "rect": [
+            49,
+            546,
+            348,
+            193
+          ],
+          "pivot": [
+            168,
+            97
+          ],
+          "imageScale": 0.53
+        }
+      }
+    }
+  },
+  "runtimeRawPNGPixelsChanged": false,
+  "privateRawSources": [
+    {
+      "path": "/workspace/generated_images/exec-7c947a0b-d65e-4973-825e-8fc1d1e85deb.png",
+      "bytes": 1649757,
+      "sha256": "33c2a648608de7af44c411ceb887806906e0a435a5395c48556daa917d908031",
+      "status": "HOLD-not-loaded"
+    },
+    {
+      "path": "/workspace/generated_images/exec-ef94f872-ceab-4497-973e-a1e26711862f.png",
+      "bytes": 1870461,
+      "sha256": "df8e8c1a68b401747a78f51ee39dcc33aab553ba2575dad22dd59bb5f88cb5d2",
+      "status": "admitted-fixture-source"
+    },
+    {
+      "path": "/workspace/generated_images/exec-3d16e7fd-67fc-41b9-bda3-69a44dc7ac37.png",
+      "bytes": 1763996,
+      "sha256": "f88425e57f55cc134209ba7152e7091eebb1b5bca9764fb0a976b0710d608b0e",
+      "status": "admitted-fixture-source"
+    },
+    {
+      "path": "/workspace/generated_images/exec-3414e874-b993-469d-8f28-22fcbccdf211.png",
+      "bytes": 942126,
+      "sha256": "dbdd807821d12f5e826df5182275df95df000c2c89a1a50738d258c6b8f721c4",
+      "status": "HOLD-not-loaded"
+    }
+  ],
+  "validation": {
+    "nativeFixtureChromeDraws": 26,
+    "contracts": 12,
+    "partAlphaSocketProofs": 30,
+    "weaponOpaqueNativePointProofs": 6,
+    "browserExceptionCount": 0,
+    "browserConsoleErrorCount": 0,
+    "rootAdmission": "pending",
+    "koFirstUnspecifiedAge": 0,
+    "detachmentOwnerAndBasisPreserved": true
+  }
+}

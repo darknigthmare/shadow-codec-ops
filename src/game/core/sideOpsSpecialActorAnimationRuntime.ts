@@ -40,14 +40,15 @@ export function configureAuthoredSideOpsSpecialActor(
   const geometry = getSideOpsSpecialActorGeometry(actor, worldWidth, worldHeight);
   sprite.setData('sideopsSpecialSourceTexture', sourceTextureKey);
   sprite.setData('sideopsSpecialSourceFacingRight', actor.sourceFacing === 'right');
-  sprite.setTexture(idle.textureKey, idle.start).setOrigin(0.5, 0.5).setScale(geometry.scale);
+  sprite.setTexture(idle.textureKey, idle.start).setOrigin(geometry.originX, geometry.originY).setScale(geometry.scale);
   if (center) sprite.setPosition(center.x, center.y);
   if (body) {
     if (isStatic) {
       // StaticBody sizes are world pixels, unlike dynamic source-pixel sizes.
       body.setOffset(0, 0);
       body.updateFromGameObject();
-      body.setSize(worldWidth, worldHeight, true);
+      body.setSize(worldWidth, worldHeight, !actor.idleBounds);
+      if (actor.idleBounds) body.setOffset(geometry.offsetX * geometry.scale, geometry.offsetY * geometry.scale);
     } else {
       body.setSize(geometry.width, geometry.height, false);
       body.setOffset(geometry.offsetX, geometry.offsetY);

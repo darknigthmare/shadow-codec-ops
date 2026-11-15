@@ -1,0 +1,50 @@
+{
+  "schema": "cqc.lossless-snapshot-chunks.fixture-evidence/1",
+  "status": "passed",
+  "tests": 9,
+  "failures": 0,
+  "targetedCases": [
+    "test_roundtrip_multiple_parts_full_sha_and_git_blob",
+    "test_deterministic_compressed_parts_independent_of_output_name",
+    "test_supported_freeze_schemas_and_production_fixed_16mib",
+    "test_old_39_freeze_cannot_authorize_43_source",
+    "test_missing_library_freeze_pin_rejected_before_source_open",
+    "test_racing_destination_publication_is_exclusive",
+    "test_temporary_replacement_cannot_publish_substituted_bytes",
+    "test_manifest_temporary_replacement_cannot_publish_substituted_json",
+    "test_complete_source_sha_failure_preserves_parts_and_journal"
+  ],
+  "errors": 0,
+  "elapsedSeconds": 0.086,
+  "fixtureRoot": "/workspace/cqc-pass9-publication-preparation/lossless-tools/fixture-runs/run-7b258c3c7a3e4d34b85d23250cd1c2ec",
+  "allFixtureArtifactsPreserved": true,
+  "realCatalogRead": false,
+  "realCatalogCompressed": false,
+  "runtimeSourceWrites": 0,
+  "gitOperations": 0,
+  "apiOperations": 0,
+  "fixtureFileBytes": 353428,
+  "sourceTools": [
+    {
+      "path": "/workspace/cqc-pass9-publication-preparation/lossless-tools/lossless_chunks.py",
+      "bytes": 27474,
+      "sha256": "7e7796bcb3f7a528cafb474ecf7e829c554d251a0715b581bf2e96590f03c5ae"
+    },
+    {
+      "path": "/workspace/cqc-pass9-publication-preparation/lossless-tools/chunk_snapshot.py",
+      "bytes": 1377,
+      "sha256": "c34cd176b7d29847bcfd71db8f1d79b16a1f5d73fca17eeeeff6408429599f75"
+    },
+    {
+      "path": "/workspace/cqc-pass9-publication-preparation/lossless-tools/restore_snapshot.py",
+      "bytes": 1279,
+      "sha256": "47ce8aea209b12a52acba1680e85c4d642536ae43859e716cb3d3caaf971856b"
+    },
+    {
+      "path": "/workspace/cqc-pass9-publication-preparation/lossless-tools/test_lossless_chunks.py",
+      "bytes": 26703,
+      "sha256": "b4836c882aa9181d3ac5b76d5f97ddefb0290056fa7d9d9adeff66fa1f556bf7"
+    }
+  ],
+  "qualification": "Tiny local byte-preservation and adversarial fixtures; not production catalog QA."
+}

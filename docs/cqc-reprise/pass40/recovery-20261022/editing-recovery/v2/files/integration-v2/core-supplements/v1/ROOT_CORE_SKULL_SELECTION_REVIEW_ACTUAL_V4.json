@@ -1,0 +1,66 @@
+{
+  "schema": "cqc.p40.root-art-review/2",
+  "status": "approved",
+  "reviewer": "Root /root",
+  "reviewedAt": "2026-10-22T23:50:31.708876+00:00",
+  "inputSHA256": "99f55be085a91a4a29036a3f34a15aa1c1f8cf3df88a035ee5de04fd4fd97b18",
+  "checks": {
+    "identity": true,
+    "incarnation": true,
+    "nativeArt": true,
+    "semanticPoses": true,
+    "equipment": true,
+    "ownership": true,
+    "framing": true,
+    "selectedWeaponPoints": true
+  },
+  "scope": "Core-only complete32-role Skull retrospective costume source union; source and selection approval only.",
+  "baseVSMetadata": {
+    "path": "@PROJECT_ROOT@/publication/progressive/snapshot-03/skull-retro-metadata-v2.json",
+    "bytes": 2979741,
+    "sha256": "dcd22f4ce566206a4652b1cb0116aa26f50ed3601611e2e029e0a1c19d011a77"
+  },
+  "baseVSArtAuditSHA256": "0e1b65cd9f4bd374f540f5a5f6fb37a42d1d50918fc289769b82987d60b9c947",
+  "sourceOnlyReview": {
+    "path": "@PROJECT_ROOT@/integration-v2/core-supplements/v1/ROOT_SOURCE_GESTURES_REVIEW_ACTUAL_V1.json",
+    "bytes": 4689,
+    "sha256": "dc218c14874d734f1f53b696e3239745f5185526573f6202554f751ff1a72096"
+  },
+  "independentChecks": {
+    "inheritedFramesAndCanonicalClipSHAsExact": 30,
+    "newRole11GeometryClipsPivotsSourceOwnerExact": 2,
+    "role9HardeningExact": true,
+    "nativePointsSourceSHAAndRGBAPreviouslyRootReviewed": true
+  },
+  "reviewerFixtureCorrection": "Initial Node fixture incorrectly used whole-frame insertion-order SHA; source job explicitly hashes seven frame-identity fields with Python sorted-key canonical JSON. Independent Python review now verifies those exact canonical SHAs and all30frame/clip deep equalities. The following canonical check then caught two stale clipPolygonSHA256 values from old VS11. JOBV3 fixes only those two SHA fields and preserves both old SHA as baseClipPolygonSHA256; geometry/PNG/frames/pivots/points unchanged. All independent checks now pass.",
+  "limits": [
+    "Root physically inspected the original32VS contact earlier and complete native Core gestures/neutral contact; new2Skull source points, pelvis axes and H443442 approved in dc218. This review binds the exact union and Core visual mapping.",
+    "Only physical role11 changes per facing;30base source frames/clips/pivots are exact. VS sword11, source metadata dcd22 and original VS binding remain immutable.",
+    "Actual Core debris uses existing deploy visual group1,11,1; hardening9 stays optic, unarmed normals/super fists6, legacy charge recover12. No global action allowlist or Core profiles/costs/timings/projectile stats altered.",
+    "Mixed source foreignUID Venus and all PSG1 figures remain unselected. Core Venus remains INACTIVE, actual refusal HOLD unchanged.",
+    "Mode-scoped private authority and transformer/router code plus actual both-facing emission/getup/pause checks are separate before product admission.",
+    "Authored faithful fresh pixel-art adaptation and visual native calibration, no literal retail sprite/full original animation certificate."
+  ],
+  "heldRoles": [],
+  "productInstallationAuthorized": false,
+  "previousReview": {
+    "path": "@PROJECT_ROOT@/integration-v2/core-supplements/v1/ROOT_CORE_SKULL_SELECTION_REVIEW_ACTUAL_V3.json",
+    "sha256": "aac7ac42fb344b1eca9ac796a907aeee31c50f9b931533dfce95238202b83d45"
+  },
+  "logicalPathCorrection": {
+    "independentlyVerifiedExactLeafDelta": [
+      {
+        "path": "proposedRoleSelection.left[11].frame.fileProposal",
+        "before": "assets/combat-costumes-pass40-core/core__skull_armor/retro-msx/debris-left-v1.png",
+        "after": "assets/combat-costumes-pass40/core__skull_armor/retro-msx/core-debris-left-v1.png"
+      },
+      {
+        "path": "proposedRoleSelection.right[11].frame.fileProposal",
+        "before": "assets/combat-costumes-pass40-core/core__skull_armor/retro-msx/debris-right-v1.png",
+        "after": "assets/combat-costumes-pass40/core__skull_armor/retro-msx/core-debris-right-v1.png"
+      }
+    ],
+    "pixelsGeometryClipSHAsPointsPlansUnchanged": true,
+    "purpose": "Retain existing strict owned P40 complete32 source-region path and getup role15 guard; no renderer guard relaxation."
+  }
+}

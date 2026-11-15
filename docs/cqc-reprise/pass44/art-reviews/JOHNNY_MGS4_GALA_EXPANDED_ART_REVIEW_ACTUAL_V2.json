@@ -1,0 +1,57 @@
+{
+  "schema": "cqc.p42.root-art-review/2",
+  "reviewer": "Root P44",
+  "reviewedAt": "2026-10-26T10:22:37.832076+00:00",
+  "status": "approved",
+  "candidateJobSHA256": "3e0b5c361ca8ad21f61f67f30e778ebb644041a2f67245a5452592f8e816e0a5",
+  "geometrySHA256": "2682a6b96043df35346d34d56edc07dbd21287d729866c4c2d180552dd4ef9ff",
+  "ownershipBookSHA256": "b87f2bc9f76ad7aef835678bd8bd28eaa6528a476ccabda4615267073e455836",
+  "checks": {
+    "identity": true,
+    "incarnation": true,
+    "nativeArt": true,
+    "semanticPoses": true,
+    "equipment": true,
+    "ownership": true,
+    "framing": true,
+    "selectedWeaponPoints": true
+  },
+  "reviewedExtraRoleCount": 1,
+  "reviewedAdditionalRoleNames": [
+    "special-forward-buttstock"
+  ],
+  "actualVisualInspection": {
+    "sourceSHA256": [
+      "907b1dc527706a0350826e980fa580744f32937e1c9ac1afdca958e65c43b4a8",
+      "e2c6bdb9db7412b513ecceebfbdb6dcac2d162a2b9a353d4ffd99f378fa23b6e"
+    ],
+    "mechanism": "Root personally inspected original base32 sheet in first review and the new original supplement sheet using view_image. Same masked MGS4 Johnny identity and black-gala design, amber goggles, tan rifle. The two new active16 drawings independently face right/left, hold the real rifle reversed with two hands and visibly lead with its attached buttplate; barrel points back. Bent legs, hips/torso, arms and wrists connected. Two upright neutral calibration figures478/479 remain held-unmapped; base32/grenade preparation/release/actual firearm muzzles preserved exactly. Exact schema3 and semanticPoseIndex16 verified on new measured geometry.",
+    "priorBase32RootReviewSHA256": "4244a9261fcee570bcf1bf257d5faf9c70d158b3aa1b3dc027b79c9a590c1b51",
+    "meleeContactLandmarks": [
+      {
+        "nativeXY": [
+          618.5,
+          647.5
+        ],
+        "socket": "native-leading-attached-stock-buttplate",
+        "qualification": "Visible actual flat buttplate leading toward opponent. This is a melee contact landmark, NOT a projectile muzzle or spawn origin; muzzle points backward in this pose."
+      },
+      {
+        "nativeXY": [
+          943.5,
+          666.5
+        ],
+        "socket": "native-leading-attached-stock-buttplate",
+        "qualification": "Visible actual flat buttplate leading toward opponent. This is a melee contact landmark, NOT a projectile muzzle or spawn origin; muzzle points backward in this pose."
+      }
+    ]
+  },
+  "limits": [
+    "Original masked gala costume for the exact Johnny MGS4 UID; this is not his canonical unmasked wedding suit.",
+    "34 complete native physical role drawings: original32 plus two new buttstock contacts. Supplement upright bodies are calibration-only, never additional gameplay poses.",
+    "Buttplate landmarks are melee contact points only; barrel points backward in active16 and is never used as a projectile origin.",
+    "Tiny cloth seams and firearm manufacture details interpreted; no literal retail framebuffer or original-game motion certification.",
+    "Core prone rifle source remains separately proposed and Core mode excluded.",
+    "Actual finite controller, stock contact reach/pose in a real match and metadata cold loading need separate runtime checks."
+  ]
+}

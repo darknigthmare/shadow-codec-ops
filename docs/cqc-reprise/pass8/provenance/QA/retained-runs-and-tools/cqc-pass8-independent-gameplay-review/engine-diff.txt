@@ -1,0 +1,24 @@
+--- old inline
++++ new separate
+@@ -1,3 +1,4 @@
++/* Historical 0.48 engine preserved inline; this separate version adds only the two Sunny body-size hook. */
+ /* CQC Versus 0.48 — repertoire combat, finishers, remapping and deterministic local replays. */
+ (function(root){'use strict';
+ const FLOOR=568,LEFT=65,RIGHT=1215,SLOTS=['light','heavy','low','throw','special','specialDown','specialForward','specialBack','super','utility'];
+@@ -27,7 +28,8 @@
+ function reset(s,{keepWins=true}={}){const oldA=s.a,oldB=s.b;s.a=makeActor(oldA.f,0);s.b=makeActor(oldB.f,1);s.a.ai=oldA.ai;s.b.ai=oldB.ai;
+  if(keepWins){s.a.wins=oldA.wins;s.b.wins=oldB.wins;}s.timer=s.timerStart;s.phase=s.options.training?'fight':'intro';s.phaseT=s.options.training?0:90;
+  s.projectiles=[];s.traps=[];s.fx=[];s.roundWinner=null;s.idleTraining=0;event(s,'roundReset',null);return s;}
+-function box(p){const k=p.f.visual?.kind,species=p.f.visual?.species,small=p.f.combat.key==='small_drone'||species==='monkey';
++function box(p){const reviewed=root.CQC_PASS8_COMBAT_FIDELITY?.hurtbox(p);if(reviewed)return reviewed;
++ const k=p.f.visual?.kind,species=p.f.visual?.species,small=p.f.combat.key==='small_drone'||species==='monkey';
+  const low=k==='quadruped'||p.f.combat.key==='wolf_robot'||p.f.combat.key==='crying';
+  const w=small?60:low?140:k==='machine'?125:78;let h=small?90:low?134:k==='machine'?210:230;
+  if(species==='horse')h=185;if(p.crouch||p.attack?.def.lowProfile)h*=.53;return{x:p.x-w/2,y:p.y-h,w,h};}
+@@ -242,5 +244,5 @@
+ }
+ function directionSlot(held,face){if(held.down)return'specialDown';const dir=(held.right?1:0)-(held.left?1:0);return dir===face?'specialForward':dir===-face?'specialBack':'special';}
+ const api={version:'0.48',FPS:60,FLOOR,SLOTS,slotName,create,step,start,reset,box,hitbox,overlap,empty,cpu,directionSlot,costAllowed,damage,heal,explode};
+-root.CQCCombat046=api;root.CQCCombat045=api;if(typeof module!=='undefined'&&module.exports)module.exports=api;
++root.CQCCombat048Pass8=api;if(typeof module!=='undefined'&&module.exports)module.exports=api;
+ })(typeof globalThis!=='undefined'?globalThis:this);

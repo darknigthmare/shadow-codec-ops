@@ -1,0 +1,294 @@
+"""Fresh, actual browser evidence for PASS9. Default is preparation only.
+
+Does not start a server, publish, mutate either app, or copy the full catalog.
+Run only after root supplies a READY base, final commit and runtime manifest.
+"""
+import argparse
+import datetime
+import hashlib
+import importlib.util
+import json
+import pathlib
+import re
+import sys
+
+sys.dont_write_bytecode = True
+
+ROOT = pathlib.Path('/workspace/cqc-pass9-browser-preparation')
+spec = importlib.util.spec_from_file_location('pass6_browser_readonly', '/workspace/cqc-pass6-browser-common.py')
+C = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(C)
+
+NEW_UIDS = ['core__runner_mg2','core__ninja_mg2','core__redblaster_mg2','core__jungle_evil']
+PROJECTILES = {'core__ninja_mg2':['special','super'],'core__redblaster_mg2':['special','specialForward','super'],'core__jungle_evil':['special','super']}
+
+P8_RUNNER=pathlib.Path('/workspace/vercel-pass8-publication/verify-deployed-browser.py')
+P8_RUNNER_SHA='f05843d4caee99947c7e0387f828756c6157bdafb1b8e28f25dfb38140dbf6d2'
+P8_CATALOG=pathlib.Path('/workspace/cqc-pass8-independent-gameplay-review/verified-final-origins/source/combat-sprite-catalog-v1.json')
+P8_CATALOG_SHA='3fe34bf2be1cc7c5365a82e57b747b269adf795c1940885a6ce6e8a4a793d747'
+P8_LITERAL_GUARD=pathlib.Path('/workspace/cqc-pass9-importer-preparation/CURRENT_CATALOG_39_LITERAL_GUARD.json')
+P8_LITERAL_GUARD_SHA='204b8d49818b464287b0cc81cb7d349ac91bf095b404663edb26de94b6fedcf2'
+
+def sha_file(path):
+    h=hashlib.sha256()
+    with path.open('rb') as stream:
+        while chunk:=stream.read(1024*1024):h.update(chunk)
+    return h.hexdigest()
+
+def load_proof(catalog_path,catalog_sha,freeze_path,freeze_sha,manifest):
+    assert sha_file(P8_RUNNER)==P8_RUNNER_SHA,'Closed PASS8 runner changed'
+    assert sha_file(P8_CATALOG)==P8_CATALOG_SHA,'Closed PASS8 canonical catalog changed'
+    assert sha_file(catalog_path)==catalog_sha,'Future actual43 canonical source does not match ROOT pin'
+    assert sha_file(freeze_path)==freeze_sha,'Future ROOT43 freeze differs'
+    freeze=json.loads(freeze_path.read_text())
+    assert freeze.get('confirmedByRoot') is True and freeze['status']=='frozen' and freeze['entryCount']==43
+    pinned={str(pathlib.Path(x['path']).resolve()):x for x in freeze['files']}
+    assert pinned[str(catalog_path.resolve())]['sha256']==catalog_sha,'Actual43 catalog must be listed in ROOT freeze'
+    assert sha_file(P8_LITERAL_GUARD)==P8_LITERAL_GUARD_SHA,'Closed39 literal guard changed'
+    guard=json.loads(P8_LITERAL_GUARD.read_text())
+    assert guard['catalogSHA256']==P8_CATALOG_SHA and guard['entryCount']==39
+    actual_raw=catalog_path.read_text();actual=json.loads(actual_raw)
+    previous_raw=P8_CATALOG.read_text();literal_checks=[]
+    for uid,pin in guard['entries'].items():
+        start,end=pin['start'],pin['end']
+        original=hashlib.sha256(previous_raw[start:end].encode()).hexdigest()
+        current=hashlib.sha256(actual_raw[start:end].encode()).hexdigest()
+        assert original==pin['rawSHA256']==current,'Old39 actual entry literal bytes changed: '+uid
+        literal_checks.append({'uid':uid,'rawSHA256':current,'characters':end-start})
+    del actual_raw,previous_raw
+    prepared=json.loads((ROOT/'contracts/expected4.json').read_text())['entries']
+    assert set(actual['entries'])==set(guard['entries'])|set(NEW_UIDS) and len(actual['entries'])==43
+    assert not set(guard['entries'])&set(NEW_UIDS)
+    for uid,want in prepared.items():
+        got=actual['entries'][uid]
+        for key in ['displayHeight','facing','mirror','actionMap','phaseMap','sourceFrameHeights','baseFrameHeight']:
+            if key in want:assert got.get(key)==want[key],'Prepared4 metadata differs: '+uid+'/'+key
+        for side in ['actions','oppositeActions']:
+            for action,group in want[side].items():
+                real=got[side][action]['frames'];assert len(real)==len(group['frames'])
+                for left,right in zip(real,group['frames']):
+                    for key in ['file','sha256','rect','pivot']:assert left[key]==right[key],'Prepared native pose differs: '+uid+'/'+side+'/'+action
+    manifest_by_path={x['path']:x for x in manifest['files']}
+    verified=[]
+    for pin in freeze['files']:
+        path=pathlib.Path(pin['path']);assert sha_file(path)==pin['sha256'] and path.stat().st_size==pin['bytes'],'Frozen source changed: '+str(path)
+        relative=pin.get('runtimePath')
+        if relative is None:
+            try:relative=str(path.relative_to('/workspace/cqc-game-working/cqc-versus-v056'))
+            except ValueError:relative=None
+        published=relative in manifest_by_path
+        if published:assert manifest_by_path[relative]['sha256']==pin['sha256'],'Mounted future runtime differs: '+relative
+        verified.append({'path':str(path),'runtimePath':relative,'sha256':pin['sha256'],'bytes':pin['bytes'],'published':published})
+    js=manifest_by_path['src/cqc-sprite-catalog.js']
+    assert any(x['runtimePath']=='src/cqc-sprite-catalog.js' and x['sha256']==js['sha256'] for x in verified),'ROOT freeze must pin actual43 generated JS'
+    entries={}
+    for uid in NEW_UIDS+['core__old_snake','oc__parallaxe']:
+        e=actual['entries'][uid];copy={key:e.get(key) for key in ['uid','displayHeight','facing','mirror','actionMap','phaseMap','sourceFrameHeights','baseFrameHeight']}
+        copy['files']={f['file']:f['sha256'] for a in list(e['actions'].values())+list(e['oppositeActions'].values())for f in a['frames']}
+        entries[uid]=copy
+    files={file:sha for e in entries.values()for file,sha in e['files'].items()}
+    star=json.loads((ROOT/'contracts/native-star8.json').read_text())
+    assert manifest_by_path[star['file']]['sha256']==star['sha256'],'Future native star PNG differs from preserved approved pixels'
+    for relative in ['src/cqc-pass9-projectile-catalog.js','src/cqc-pass9-projectile-art.js',star['file']]:
+        assert relative in manifest_by_path and any(x['runtimePath']==relative and x['sha256']==manifest_by_path[relative]['sha256'] for x in verified),'ROOT freeze must pin installed native star source '+relative
+    files[star['file']]=star['sha256']
+    proof={'new4UIDs':NEW_UIDS,'all43UIDs':sorted(actual['entries']),'entries':entries,'sourceFiles':files,'projectileCatalog':star,'runtimeCatalogJSSHA256':js['sha256'],'catalogSHA256':catalog_sha,'previous39CatalogSHA256':P8_CATALOG_SHA,'previous39LiteralEntriesPreserved':True}
+    source_freeze={'path':str(freeze_path),'sha256':freeze_sha,'verifiedActualSourceFiles':verified,'entryCount':43,'previous39LiteralEntriesPreserved':True,'previous39LiteralChecks':literal_checks,'previous39LiteralGuardSHA256':P8_LITERAL_GUARD_SHA}
+    return proof,source_freeze
+
+def ready_js(proof, manifest):
+    source_paths = ['modules/unified-versus-v055.html', 'src/cqc-sprite-catalog.js',
+                    'src/cqc-sprite-renderer.js', 'src/cqc-pass9-combat-fidelity.js',
+                    'src/cqc-pass8-combat-engine.js', 'src/cqc-pass9-native-origins.js',
+                    'src/cqc-pass8-layout.css','src/cqc-pass9-projectile-catalog.js',
+                    'src/cqc-pass9-projectile-art.js']
+    pins = {p['path']: p['sha256'] for p in manifest['files'] if p['path'] in source_paths}
+    if len(pins) != len(source_paths):
+        raise ValueError('Final runtime manifest must pin all nine actual module/script/CSS sources')
+    return """(async()=>{
+const expected=PROOF,pins=PINS,cat=window.CQC_COMBAT_SPRITE_CATALOG?.entries;
+window.__pub9Expected=expected;
+if(!cat||JSON.stringify(Object.keys(cat).sort())!==JSON.stringify(expected.all43UIDs))throw Error('Exact 43-entry native catalog absent');
+if(window.CQC_PASS9_COMBAT_FIDELITY?.reviewedUIDs.length!==4)throw Error('Four reviewed original MSX2 incarnations absent');
+if(JSON.stringify(window.CQC_PASS9_PROJECTILE_CATALOG)!==JSON.stringify(expected.projectileCatalog))throw Error('Approved native star catalog differs');
+if(typeof window.CQC_PASS9_PROJECTILE_ART?.drawProjectile!=='function')throw Error('Actual native star renderer was not installed');
+const loaded=[];
+for(const [path,hash]of Object.entries(pins)){
+ const url=location.origin+'/cqc/'+path;
+ if(path.endsWith('.js')&&![...document.scripts].some(s=>s.src===url))throw Error('Expected actual script was not loaded '+path);
+ if(path.endsWith('.css')&&![...document.styleSheets].some(s=>s.href===url))throw Error('Final layout stylesheet not loaded');
+ const response=await fetch(path.endsWith('.html')?location.href:url,{cache:'force-cache'});if(!response.ok)throw Error('Loaded source fetch failed '+path);
+ const bytes=await response.arrayBuffer(),actual=[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(x=>x.toString(16).padStart(2,'0')).join('');
+ if(actual!==hash)throw Error('Actual loaded source bytes differ '+path+' '+actual);loaded.push({path,sha256:actual,bytes:bytes.byteLength});
+}
+const native=Object.keys(expected.entries),ready=await Promise.all(native.map(uid=>window.CQC_COMBAT_SPRITES.whenReady(uid)));
+if(ready.some(x=>!x))throw Error('Native image preload failed');
+for(let i=0;i<150&&window.CQC_PASS9_PROJECTILE_ART.diagnostics().status==='loading';i++)await new Promise(r=>setTimeout(r,100));
+const starReady=window.CQC_PASS9_PROJECTILE_ART.diagnostics();
+if(starReady.status!=='native-ready'||starReady.nativeSHA256!==expected.projectileCatalog.sha256||starReady.nativeFrameCount!==8||starReady.nativePoseTicks!==3)throw Error('Actual browser failed to decode native eight-pose star');
+for(const uid of native){const e=cat[uid],wanted=expected.entries[uid],frames=[...Object.values(e.actions),...Object.values(e.oppositeActions)].flatMap(a=>a.frames),files=[...new Set(frames.map(f=>f.file))],poses=[...new Set(frames.map(f=>f.file+JSON.stringify(f.rect)))];
+ if(files.length!==6||poses.length!==72||e.mirror!==false||e.displayHeight!==wanted.displayHeight||e.facing!==wanted.facing||JSON.stringify(e.actionMap)!==JSON.stringify(wanted.actionMap))throw Error('Actual native contract changed '+uid);
+ for(const f of frames)if(wanted.files[f.file]!==f.sha256)throw Error('Actual native frame SHA differs '+uid);
+}
+const items=Object.entries(expected.sourceFiles),hashes=[],workers=Array.from({length:5},async()=>{while(items.length){const [file,want]=items.shift(),response=await fetch(location.origin+'/cqc/'+file,{cache:'force-cache'});if(!response.ok)throw Error('Actual loaded native image fetch failed '+file);const data=await response.arrayBuffer(),hash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',data))].map(x=>x.toString(16).padStart(2,'0')).join('');if(hash!==want)throw Error('Actual loaded native PNG byte SHA differs '+file);hashes.push({file,sha256:hash,bytes:data.byteLength});}});
+await Promise.all(workers);return{catalogEntries:Object.keys(cat).length,newForms:expected.new4UIDs.length,newPoses:288,allImagesReady:true,nativeStarReady:starReady,actualNativePNGHashes:hashes.sort((a,b)=>a.file.localeCompare(b.file)),loadedSources:loaded};
+})()""".replace('PROOF', json.dumps(proof, separators=(',', ':'))).replace('PINS', json.dumps(pins))
+
+def run(base, commit, label, manifest_path, manifest_sha,scope, freeze_path, freeze_sha,catalog_path,catalog_sha):
+    if not re.fullmatch(r'[a-zA-Z0-9_-]+', label):
+        raise ValueError('Use a simple fresh evidence label')
+    out = ROOT / label
+    out.mkdir(exist_ok=False)
+    manifest_raw = manifest_path.read_bytes()
+    assert hashlib.sha256(manifest_raw).hexdigest()==manifest_sha,'Actual future runtime manifest differs from ROOT pin'
+    manifest = json.loads(manifest_raw)
+    proof,source_freeze=load_proof(catalog_path,catalog_sha,freeze_path,freeze_sha,manifest)
+    manifest_catalog = next(p for p in manifest['files'] if p['path'] == 'src/cqc-sprite-catalog.js')
+    assert manifest_catalog['sha256'] == proof['runtimeCatalogJSSHA256'], 'Actual43 runtime JS differs'
+    scripts = [pathlib.Path(__file__), ROOT/'browser-observers.js', ROOT/'layout-observer.js']
+    observer = scripts[1].read_text()
+    layout_observer = scripts[2].read_text()
+    source_pins = []
+    for p in scripts:
+        data = p.read_bytes()
+        (out / p.name).write_bytes(data)
+        source_pins.append({'path': str(p), 'sha256': hashlib.sha256(data).hexdigest(), 'bytes': len(data)})
+    b = C.Browser(out, 'vc9d')
+    b.env['AGENT_BROWSER_CA_CERT'] = '/etc/ssl/certs/ca-certificates.crt'
+    failure = None
+    screenshots = []
+    def module_access(embedded):
+        return 'document.querySelector(".cqc-game-frame")?.contentDocument?.querySelector("#moduleFrame")' if embedded else 'document.querySelector("#moduleFrame")'
+    def module_eval(js, embedded):
+        return b.evaluate('(()=>{const w=' + module_access(embedded) + '?.contentWindow;if(!w)throw Error("Actual CQC module absent");return w.eval(' + json.dumps(js) + ')})()')
+    def launch(embedded):
+        front = 'document.querySelector(".cqc-game-frame")?.contentDocument' if embedded else 'document'
+        b.evaluate('(async()=>{for(let i=0;i<150;i++){const d='+front+';if(d?.readyState==="complete"&&d.querySelector("[data-mode=versus]")){const t=d.querySelector("[data-mode=versus]"),w=d.defaultView;t.dispatchEvent(new w.MouseEvent("mouseenter"));t.click();return true}await new Promise(r=>setTimeout(r,100))}throw Error("Actual front not ready")})()')
+        state = b.evaluate('(async()=>{for(let i=0;i<150;i++){const w='+module_access(embedded)+'?.contentWindow;if(w?.document.readyState==="complete"&&w.__CQC055Versus?.engine)return{path:w.location.pathname,fighters:w.__CQC055Versus.fighters.length,original:w.__CQC055Versus.originalMode};await new Promise(r=>setTimeout(r,100))}throw Error("Actual versus not ready")})()')
+        assert state['fighters'] == 354 and not state['original'] and state['path'] == '/cqc/modules/unified-versus-v055.html'
+        return state
+    def screenshot(name):
+        b.screenshot(name)
+        p=out/(name+'.png')
+        screenshots.append({'file':p.name,'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
+        if sum(row['bytes'] for row in screenshots)>8*1024*1024:
+            raise RuntimeError('Sparse publication screenshot budget exceeded 8 MiB')
+    try:
+        for width, height in [(1280, 800), (390, 844)]:
+            for embedded in [True, False]:
+                name = str(width) + '-' + ('Shadow-tab' if embedded else 'direct-CQC')
+                b.call('set', 'viewport', str(width), str(height))
+                b.call('open', base + ('/?module=cqc' if embedded else '/cqc/index.html'))
+                b.call('wait', '--load', 'networkidle')
+                top = b.evaluate('(()=>{if(document.querySelector("vite-error-overlay,[data-nextjs-dialog]"))throw Error("Application error overlay");return{title:document.title,width:innerWidth,height:innerHeight,bodyCharacters:document.body.innerText.trim().length}})()')
+                assert top['bodyCharacters'] > 100
+                b.checks.append({'name':name+'-actual-canonical-launch','result':{'top':top,'module':launch(embedded)}})
+                ev = lambda js: module_eval(js, embedded)
+                rec = lambda suffix, js: b.record(name+'-'+suffix, js, ev)
+                rec('exact43-loaded-scripts-CSS-and-37-native-byte-SHAs', ready_js(proof,manifest))
+                ev(observer)
+                ev(layout_observer)
+                for uid in proof['new4UIDs']:
+                    for face in [1,-1]:
+                        rec('native-idle-'+uid+'-'+str(face),'window.__pub9Idle('+json.dumps(uid)+','+str(face)+')')
+                        rec('actual-all10-technique-phases-'+uid+'-'+str(face),'window.__pub9Phases('+json.dumps(uid)+','+str(face)+')')
+                        rec('actual-input-and-enemy-contact-states-'+uid+'-'+str(face),'window.__pub9States('+json.dumps(uid)+','+str(face)+')')
+                    rec('actual-source-HUD-identity-and-resource-'+uid,'window.__pub9HUD('+json.dumps(uid)+')')
+                for uid, slots in PROJECTILES.items():
+                    for face in [1,-1]:
+                        for slot in slots:
+                            rec('actual-native-source-origin-'+uid+'-'+str(face)+'-'+slot,'window.__pub9Origin('+json.dumps(uid)+','+str(face)+','+json.dumps(slot)+')')
+                for face in [1,-1]:
+                    rec('Black-actual-native-star-eight-source-poses-without-parent-rotation-'+str(face),'window.__pub9NativeStarSpin('+str(face)+')')
+                    rec('Red-stationary-A8-9-crouch-without-wire-'+str(face),'window.__pub9RedDown('+str(face)+')')
+                    for slot in ['special','specialForward','super']:
+                        rec('Red-real-bounded-grenade-blasts-and-Canvas-FX-'+str(face)+'-'+slot,'window.__pub9RedGrenades('+str(face)+','+json.dumps(slot)+')')
+                    rec('Running-Man-unarmed-without-emissions-'+str(face),'window.__pub9RunnerScope('+str(face)+')')
+                    for uid in ['core__ninja_mg2','core__jungle_evil']:
+                        rec('Black-Jungle-source-body-alpha1-'+uid+'-'+str(face),'window.__pub9OpaqueMovement('+json.dumps(uid)+','+str(face)+')')
+                for face in [1,-1]:
+                    rec('Old-Snake-complete-native-body-boots-and-layout-'+str(face),'(async()=>{const d=window.__pub9Idle("core__old_snake",'+str(face)+');return await window.__pub9Layout(d,{feet:true})})()')
+                rec('actual-Red-crouch-screenshot-state','window.__pub9RedDown(1)')
+                ev('window.__pub9Start("core__redblaster_mg2",1);(()=>{const a=window.__CQC055Versus,s=a.getState();a.engine.start(s,s.a,"specialDown");window.__pub9Step(s,s.a.f.combat.moves.specialDown.startup);a.draw();return true})()')
+                screenshot(name+'-Red-source-crouch9-without-wire')
+                rec('actual-Red-explosion-screenshot-state','window.__pub9RedGrenades(1,"super",true)')
+                if width==1280:screenshot(name+'-Red-real-grenade-explosion')
+                b.evaluate('(()=>{const frame='+module_access(embedded)+';if(!frame)throw Error("Actual optional OC module frame absent");frame.src="/cqc/modules/unified-versus-v055.html?original=parallaxe";return{requested:frame.src}})()')
+                b.call('wait','--load','networkidle')
+                original=ev('(async()=>{for(let i=0;i<150;i++){const a=window.__CQC055Versus;if(a?.engine)return{fighters:a.fighters.length,original:a.originalMode};await new Promise(r=>setTimeout(r,100))}throw Error("Optional OC module not ready")})()')
+                assert original['fighters']==355 and original['original']
+                b.checks.append({'name':name+'-optional-original-OC-preserved','result':original})
+                ev('window.__pub9Expected='+json.dumps(proof,separators=(',',':')))
+                ev('(async()=>{if(!await window.CQC_COMBAT_SPRITES.whenReady("oc__parallaxe"))throw Error("Optional OC PNG not ready");return true})()')
+                ev(observer)
+                for face in [1,-1]:
+                    rec('actual-native-optional-OC-'+str(face),'window.__pub9Idle("oc__parallaxe",'+str(face)+')')
+                errors=b.call('errors')
+                assert not errors.get('errors'), errors
+                b.checks.append({'name':name+'-page-errors-empty','result':errors})
+                print(name+' : four MSX2 actors, actual10-slot phases/states, typed source launches, eight decoded native star poses, grenade FX, visible bodies and preserved39 verified.',flush=True)
+        errors=b.call('errors')
+        console=b.call('console')
+        assert not errors.get('errors'), errors
+        assert sha_file(P8_RUNNER)==P8_RUNNER_SHA and sha_file(P8_CATALOG)==P8_CATALOG_SHA and sha_file(P8_LITERAL_GUARD)==P8_LITERAL_GUARD_SHA,'Closed P8 sources drifted during browser review'
+        assert sha_file(manifest_path)==manifest_sha and sha_file(freeze_path)==freeze_sha and sha_file(catalog_path)==catalog_sha,'ROOT frozen manifest/catalog drifted during browser review'
+        for pin in source_freeze['verifiedActualSourceFiles']:assert sha_file(pathlib.Path(pin['path']))==pin['sha256'],'Frozen source drifted during browser review: '+pin['path']
+        b.checks.append({'name':'all-root43-source-pins-and-closed39-rehashed-after-live-review','result':{'sourceFreezeSHA256':freeze_sha,'manifestSHA256':manifest_sha,'catalogSHA256':catalog_sha,'previous39SHA256':P8_CATALOG_SHA,'allSourcePinsUnchanged':True}})
+    except Exception as exc:
+        failure=repr(exc)
+        try:
+            screenshot('failure-state')
+        except Exception:
+            pass
+    finally:
+        b.close()
+        # Keep command evidence compact: scripts are preserved above, hashes identify eval bytes.
+        commands=[]
+        for row in b.commands:
+            copy=dict(row)
+            args=copy.get('command',[])
+            if args and args[0]=='eval':
+                copy['command']=['eval',{'javascriptSHA256':hashlib.sha256(args[1].encode()).hexdigest(),'characters':len(args[1])}]
+                result=copy.get('result',{})
+                if result.get('success') is True and 'result' in result.get('data',{}):
+                    actual=result['data']['result']
+                    copy['result']={'success':True,'actualResultSHA256':hashlib.sha256(json.dumps(actual,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()).hexdigest(),'largeResultStoredInChecksOrObservedOnly':True}
+            commands.append(copy)
+        report={'schema':'vercel-pass9-real-deployed-browser-verification/v1','checkedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'status':'failed' if failure else 'passed','failure':failure,'scope':scope,'baseURL':base,'expectedCommit':commit,'sourceFreeze':source_freeze,'manifestSHA256':hashlib.sha256(manifest_raw).hexdigest(),'runtimeCatalogJSSHA256':proof['runtimeCatalogJSSHA256'],'actual43LocalCatalogJSONSHA256':proof['catalogSHA256'],'closedPrevious39CatalogJSONSHA256':proof['previous39CatalogSHA256'],'previous39LiteralEntriesPreserved':True,'canonicalJSONPublishedOrRequired':False,'sourcePins':source_pins,'ownedBrowserSession':b.session,'checks':b.checks,'commands':commands,'checkCount':len(b.checks),'commandCount':len(commands),'screenshots':screenshots,'screenshotBytes':sum(p['bytes'] for p in screenshots),'pageErrors':locals().get('errors'),'console':locals().get('console'),'observed':{'actualNewNativeIdles':sum('-native-idle-' in row['name'] for row in b.checks),'actualTechniquePhases':sum(len(row['result']['realEnginePhaseSamples']) for row in b.checks if '-actual-all10-technique-phases-' in row['name']),'actualStates':sum(len(row['result']['rows']) for row in b.checks if '-actual-input-and-enemy-contact-states-' in row['name']),'actualSourceLaunches':sum('-actual-native-source-origin-' in row['name'] for row in b.checks),'actualNativeStarSpinCases':sum('-Black-actual-native-star-eight-source-poses-' in row['name'] for row in b.checks),'actualNativeStarSourceDraws':sum(len(row['result']['samples']) for row in b.checks if '-Black-actual-native-star-eight-source-poses-' in row['name']),'actualBootAndLayoutCases':sum('-Old-Snake-complete-native-body-boots-and-layout-' in row['name'] for row in b.checks),'measuredSourceMarks':8,'activeTypedSourceMarks':6,'slotFacingFixturesPerContext':14},'cleanup':'owned browser closed','limits':['Actual browser at two viewports and both canonical mounts; engine frames and input/contact states are advanced rather than assigned.','Native artwork and numerical ballistics are closest_supported original-era MSX2 Versus adaptations, not extracted original animations or absolute1:1.','Star origin is a hand-release point; eight unchanged authored native spin poses are decoded/drawn without added parent or local rotation. Timing and display size are Versus adaptations. Red grenade-hand points are qualified; Jungle points are generic longgun muzzles.','Two Red deploy documentary marks remain inactive; Down is A8/9 stationary crouch without wire/device.','Grenade blast Canvas FX remain explicit versus effects rather than native original-game particle art.','Old reports, PASS8 runner, app sources and all original PNG bytes remain unmodified.']}
+        serialized=json.dumps(report,ensure_ascii=False,separators=(',',':'))+'\n'
+        artifact_bytes=sum(p.stat().st_size for p in out.iterdir() if p.is_file())+len(serialized.encode())
+        if artifact_bytes>8*1024*1024:
+            failure='Fresh evidence budget exceeded8MiB; all existing evidence remains preserved: '+str(artifact_bytes)
+            report['status']='failed';report['failure']=failure
+            serialized=json.dumps(report,ensure_ascii=False,separators=(',',':'))+'\n'
+        (out/'verification.json').write_text(serialized)
+    print(json.dumps({k:v for k,v in report.items() if k not in ['checks','commands','console']},ensure_ascii=False,indent=2),flush=True)
+    if failure:
+        raise SystemExit(1)
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser()
+    p.add_argument('--run-after-root-ready',action='store_true')
+    p.add_argument('--commit')
+    p.add_argument('--base',default='https://shadow-codec-ops.vercel.app')
+    p.add_argument('--label',default='browser-final')
+    p.add_argument('--manifest',type=pathlib.Path,default=ROOT/'expected-runtime-manifest.json')
+    p.add_argument('--manifest-sha256')
+    p.add_argument('--scope',choices=['production','local-root-ready'],default='production')
+    p.add_argument('--source-freeze',type=pathlib.Path)
+    p.add_argument('--source-freeze-sha256')
+    p.add_argument('--catalog',type=pathlib.Path)
+    p.add_argument('--catalog-sha256')
+    opts=p.parse_args()
+    if opts.run_after_root_ready:
+        assert opts.manifest_sha256 and re.fullmatch('[0-9a-f]{64}',opts.manifest_sha256),'Every PASS9 run requires the exact future runtime manifest SHA'
+        assert opts.source_freeze and opts.source_freeze_sha256 and re.fullmatch('[0-9a-f]{64}',opts.source_freeze_sha256),'Every PASS9 run requires future ROOT43 frozen-source pins'
+        assert opts.catalog and opts.catalog_sha256 and re.fullmatch('[0-9a-f]{64}',opts.catalog_sha256),'Future actual43 canonical catalog path/SHA is required'
+        if opts.scope == 'production':
+            assert opts.commit and re.fullmatch('[0-9a-f]{40}',opts.commit),'Production requires a concrete root-approved source commit'
+        else:
+            assert opts.commit is None,'Local frozen-source evidence must not claim an unpublished commit'
+            assert opts.source_freeze and opts.source_freeze_sha256 and re.fullmatch('[0-9a-f]{64}',opts.source_freeze_sha256),'Local QA requires the exact root-approved source freeze'
+        run(opts.base.rstrip('/'),opts.commit,opts.label,opts.manifest,opts.manifest_sha256,opts.scope,opts.source_freeze,opts.source_freeze_sha256,opts.catalog,opts.catalog_sha256)
+    else:
+        print(json.dumps({'status':'prepared_not_executed','requiresFutureRoot43FreezeAndREADY':True,'sourceUIDs':NEW_UIDS,'viewports':[[1280,800],[390,844]],'routes':['/?module=cqc','/cqc/index.html'],'actualTechniquePhaseCases':960,'actualInputOrEnemyContactStates':224,'actualSourceLaunchCases':56,'actualNativeStarSpinCases':8,'actualNativeStarPoseDraws':64,'activeTypedPoints':6,'nativePNGsHashedPerMount':37,'sparseScreenshotMaximum':6,'totalEvidenceBudgetMiB':8,'fullCatalogRecopied':False,'sourceProjectileHandlerRequired':'CQC_PASS9_PROJECTILE_ART.drawProjectile(c,q,zoom,owner)','parentVelocityRotationMustBeAbsent':True}))

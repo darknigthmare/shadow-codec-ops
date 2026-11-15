@@ -1,0 +1,1689 @@
+{
+  "schema": "cqc.pass9.red-blaster-producer-validation/1",
+  "entry": {
+    "uid": "core__redblaster_mg2",
+    "name": "RED BLASTER",
+    "game": "Metal Gear2: Solid Snake (1990), original MSX2 visual incarnation",
+    "incarnation": "Original-era compact green-clad MSX2 grenadier; LP English localization and sprite extraction provenance unverified.",
+    "coverage": "action-frames",
+    "displayHeight": 225,
+    "baseFrameHeight": 350,
+    "sourceFrameHeights": {
+      "assets/combat-sprites/core__redblaster_mg2/a-right-v1.png": 227.5,
+      "assets/combat-sprites/core__redblaster_mg2/a-left-v1.png": 259.0,
+      "assets/combat-sprites/core__redblaster_mg2/b-right-v1.png": 227.0,
+      "assets/combat-sprites/core__redblaster_mg2/b-left-v1.png": 219.5,
+      "assets/combat-sprites/core__redblaster_mg2/c-right-v1.png": 246.0,
+      "assets/combat-sprites/core__redblaster_mg2/c-left-v1.png": 225.0
+    },
+    "facing": 1,
+    "mirror": false,
+    "fallbackMissingActions": true,
+    "actionMap": {
+      "light": "punch",
+      "heavy": "heavy",
+      "low": "low",
+      "throw": "throw",
+      "special": "shoot",
+      "specialDown": "deploy",
+      "specialForward": "shoot",
+      "specialBack": "walk",
+      "super": "shoot",
+      "utility": "recover"
+    },
+    "phaseMap": {
+      "punch": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "heavy": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "low": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "shoot": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "deploy": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "throw": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "recover": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "guard": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          0
+        ]
+      },
+      "attack": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      }
+    },
+    "actions": {
+      "idle": {
+        "fps": 4,
+        "loop": true,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/a-right-v1.png",
+            "sha256": "837295c3ecfd142c93d5a66082c0fb7f0e902c392fa919617f2de358a46323bd",
+            "rect": [
+              132,
+              75,
+              122,
+              238
+            ],
+            "pivot": [
+              0.4954690864732314,
+              0.9789915966386554
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/a-right-v1.png",
+            "sha256": "837295c3ecfd142c93d5a66082c0fb7f0e902c392fa919617f2de358a46323bd",
+            "rect": [
+              517,
+              75,
+              122,
+              238
+            ],
+            "pivot": [
+              0.482768846955809,
+              0.9789915966386554
+            ]
+          }
+        ]
+      },
+      "walk": {
+        "fps": 8,
+        "loop": true,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/a-right-v1.png",
+            "sha256": "837295c3ecfd142c93d5a66082c0fb7f0e902c392fa919617f2de358a46323bd",
+            "rect": [
+              884,
+              75,
+              153,
+              235
+            ],
+            "pivot": [
+              0.49406703284500963,
+              0.9744680851063829
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/a-right-v1.png",
+            "sha256": "837295c3ecfd142c93d5a66082c0fb7f0e902c392fa919617f2de358a46323bd",
+            "rect": [
+              1265,
+              75,
+              158,
+              238
+            ],
+            "pivot": [
+              0.4700289718265309,
+              0.9789915966386554
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/a-right-v1.png",
+            "sha256": "837295c3ecfd142c93d5a66082c0fb7f0e902c392fa919617f2de358a46323bd",
+            "rect": [
+              104,
+              414,
+              158,
+              230
+            ],
+            "pivot": [
+              0.5428108996038264,
+              0.9782608695652174
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/a-right-v1.png",
+            "sha256": "837295c3ecfd142c93d5a66082c0fb7f0e902c392fa919617f2de358a46323bd",
+            "rect": [
+              517,
+              412,
+              111,
+              232
+            ],
+            "pivot": [
+              0.5403571774539514,
+              0.9741379310344828
+            ]
+          }
+        ]
+      },
+      "guard": {
+        "fps": 4,
+        "loop": true,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/a-right-v1.png",
+            "sha256": "837295c3ecfd142c93d5a66082c0fb7f0e902c392fa919617f2de358a46323bd",
+            "rect": [
+              883,
+              423,
+              165,
+              225
+            ],
+            "pivot": [
+              0.43268015847521163,
+              0.9777777777777777
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/a-right-v1.png",
+            "sha256": "837295c3ecfd142c93d5a66082c0fb7f0e902c392fa919617f2de358a46323bd",
+            "rect": [
+              1275,
+              420,
+              149,
+              226
+            ],
+            "pivot": [
+              0.413483784234441,
+              0.9778761061946902
+            ]
+          }
+        ]
+      },
+      "crouch": {
+        "fps": 4,
+        "loop": true,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/a-right-v1.png",
+            "sha256": "837295c3ecfd142c93d5a66082c0fb7f0e902c392fa919617f2de358a46323bd",
+            "rect": [
+              123,
+              780,
+              143,
+              193
+            ],
+            "pivot": [
+              0.48132501107707726,
+              0.9689119170984456
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/a-right-v1.png",
+            "sha256": "837295c3ecfd142c93d5a66082c0fb7f0e902c392fa919617f2de358a46323bd",
+            "rect": [
+              506,
+              802,
+              141,
+              171
+            ],
+            "pivot": [
+              0.4712135843689708,
+              0.9649122807017544
+            ]
+          }
+        ]
+      },
+      "jump": {
+        "fps": 5,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/a-right-v1.png",
+            "sha256": "837295c3ecfd142c93d5a66082c0fb7f0e902c392fa919617f2de358a46323bd",
+            "rect": [
+              887,
+              719,
+              171,
+              250
+            ],
+            "pivot": [
+              0.445185935609979,
+              0.976
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/a-right-v1.png",
+            "sha256": "837295c3ecfd142c93d5a66082c0fb7f0e902c392fa919617f2de358a46323bd",
+            "rect": [
+              1291,
+              732,
+              123,
+              178
+            ],
+            "pivot": [
+              0.46457736529940274,
+              0.9662921348314607
+            ]
+          }
+        ]
+      },
+      "punch": {
+        "fps": 10,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-right-v1.png",
+            "sha256": "415e7a382edc53b3ba564aa0924823d033f01b6b727d2ae8c1f44450bcb8b13d",
+            "rect": [
+              120,
+              74,
+              141,
+              240
+            ],
+            "pivot": [
+              0.510957048370388,
+              0.9791666666666666
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-right-v1.png",
+            "sha256": "415e7a382edc53b3ba564aa0924823d033f01b6b727d2ae8c1f44450bcb8b13d",
+            "rect": [
+              490,
+              74,
+              202,
+              242
+            ],
+            "pivot": [
+              0.3984076979126486,
+              0.9752066115702479
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-right-v1.png",
+            "sha256": "415e7a382edc53b3ba564aa0924823d033f01b6b727d2ae8c1f44450bcb8b13d",
+            "rect": [
+              876,
+              75,
+              168,
+              241
+            ],
+            "pivot": [
+              0.4711804607120092,
+              0.975103734439834
+            ]
+          }
+        ]
+      },
+      "heavy": {
+        "fps": 9,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-right-v1.png",
+            "sha256": "415e7a382edc53b3ba564aa0924823d033f01b6b727d2ae8c1f44450bcb8b13d",
+            "rect": [
+              1258,
+              77,
+              176,
+              239
+            ],
+            "pivot": [
+              0.4872632898075373,
+              0.9748953974895398
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-right-v1.png",
+            "sha256": "415e7a382edc53b3ba564aa0924823d033f01b6b727d2ae8c1f44450bcb8b13d",
+            "rect": [
+              80,
+              414,
+              246,
+              230
+            ],
+            "pivot": [
+              0.4000429405702508,
+              0.9739130434782609
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-right-v1.png",
+            "sha256": "415e7a382edc53b3ba564aa0924823d033f01b6b727d2ae8c1f44450bcb8b13d",
+            "rect": [
+              491,
+              409,
+              153,
+              233
+            ],
+            "pivot": [
+              0.5141527526932521,
+              0.9742489270386266
+            ]
+          }
+        ]
+      },
+      "low": {
+        "fps": 9,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-right-v1.png",
+            "sha256": "415e7a382edc53b3ba564aa0924823d033f01b6b727d2ae8c1f44450bcb8b13d",
+            "rect": [
+              870,
+              438,
+              182,
+              206
+            ],
+            "pivot": [
+              0.46719941115767405,
+              0.970873786407767
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-right-v1.png",
+            "sha256": "415e7a382edc53b3ba564aa0924823d033f01b6b727d2ae8c1f44450bcb8b13d",
+            "rect": [
+              1233,
+              465,
+              228,
+              175
+            ],
+            "pivot": [
+              0.3771611059951363,
+              0.9714285714285714
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-right-v1.png",
+            "sha256": "415e7a382edc53b3ba564aa0924823d033f01b6b727d2ae8c1f44450bcb8b13d",
+            "rect": [
+              109,
+              734,
+              158,
+              231
+            ],
+            "pivot": [
+              0.478673637864612,
+              0.974025974025974
+            ]
+          }
+        ]
+      },
+      "hit": {
+        "fps": 0,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-right-v1.png",
+            "sha256": "415e7a382edc53b3ba564aa0924823d033f01b6b727d2ae8c1f44450bcb8b13d",
+            "rect": [
+              491,
+              738,
+              200,
+              226
+            ],
+            "pivot": [
+              0.47606218345526147,
+              0.9734513274336283
+            ]
+          }
+        ]
+      },
+      "ko": {
+        "fps": 4,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-right-v1.png",
+            "sha256": "415e7a382edc53b3ba564aa0924823d033f01b6b727d2ae8c1f44450bcb8b13d",
+            "rect": [
+              850,
+              806,
+              194,
+              148
+            ],
+            "pivot": [
+              0.5353037288801714,
+              0.9662162162162162
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-right-v1.png",
+            "sha256": "415e7a382edc53b3ba564aa0924823d033f01b6b727d2ae8c1f44450bcb8b13d",
+            "rect": [
+              1149,
+              871,
+              327,
+              82
+            ],
+            "pivot": [
+              0.5045109337059007,
+              0.926829268292683
+            ]
+          }
+        ]
+      },
+      "shoot": {
+        "fps": 9,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/c-right-v1.png",
+            "sha256": "6a34400c3a7f6466f24e53cbb52a6009afca66bf3df99466840ba78973775a89",
+            "rect": [
+              100,
+              91,
+              210,
+              262
+            ],
+            "pivot": [
+              0.515368473334575,
+              0.9809160305343512
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/c-right-v1.png",
+            "sha256": "6a34400c3a7f6466f24e53cbb52a6009afca66bf3df99466840ba78973775a89",
+            "rect": [
+              460,
+              103,
+              277,
+              250
+            ],
+            "pivot": [
+              0.3678422338773232,
+              0.98
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/c-right-v1.png",
+            "sha256": "6a34400c3a7f6466f24e53cbb52a6009afca66bf3df99466840ba78973775a89",
+            "rect": [
+              847,
+              103,
+              243,
+              251
+            ],
+            "pivot": [
+              0.390039926823748,
+              0.9760956175298805
+            ]
+          }
+        ]
+      },
+      "deploy": {
+        "fps": 8,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/c-right-v1.png",
+            "sha256": "6a34400c3a7f6466f24e53cbb52a6009afca66bf3df99466840ba78973775a89",
+            "rect": [
+              1270,
+              171,
+              166,
+              182
+            ],
+            "pivot": [
+              0.4425187146846356,
+              0.9725274725274725
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/c-right-v1.png",
+            "sha256": "6a34400c3a7f6466f24e53cbb52a6009afca66bf3df99466840ba78973775a89",
+            "rect": [
+              89,
+              478,
+              275,
+              186
+            ],
+            "pivot": [
+              0.34279723808868395,
+              0.967741935483871
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/c-right-v1.png",
+            "sha256": "6a34400c3a7f6466f24e53cbb52a6009afca66bf3df99466840ba78973775a89",
+            "rect": [
+              499,
+              479,
+              162,
+              186
+            ],
+            "pivot": [
+              0.45526485344277384,
+              0.967741935483871
+            ]
+          }
+        ]
+      },
+      "throw": {
+        "fps": 8,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/c-right-v1.png",
+            "sha256": "6a34400c3a7f6466f24e53cbb52a6009afca66bf3df99466840ba78973775a89",
+            "rect": [
+              851,
+              408,
+              214,
+              254
+            ],
+            "pivot": [
+              0.4356439268608871,
+              0.9763779527559056
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/c-right-v1.png",
+            "sha256": "6a34400c3a7f6466f24e53cbb52a6009afca66bf3df99466840ba78973775a89",
+            "rect": [
+              1222,
+              404,
+              252,
+              257
+            ],
+            "pivot": [
+              0.4334943205372686,
+              0.9766536964980544
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/c-right-v1.png",
+            "sha256": "6a34400c3a7f6466f24e53cbb52a6009afca66bf3df99466840ba78973775a89",
+            "rect": [
+              101,
+              753,
+              175,
+              225
+            ],
+            "pivot": [
+              0.4805867775201854,
+              0.9733333333333334
+            ]
+          }
+        ]
+      },
+      "recover": {
+        "fps": 5,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/c-right-v1.png",
+            "sha256": "6a34400c3a7f6466f24e53cbb52a6009afca66bf3df99466840ba78973775a89",
+            "rect": [
+              500,
+              726,
+              136,
+              252
+            ],
+            "pivot": [
+              0.518467852257182,
+              0.9761904761904762
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/c-right-v1.png",
+            "sha256": "6a34400c3a7f6466f24e53cbb52a6009afca66bf3df99466840ba78973775a89",
+            "rect": [
+              884,
+              711,
+              148,
+              267
+            ],
+            "pivot": [
+              0.4629553299023082,
+              0.9775280898876404
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/c-right-v1.png",
+            "sha256": "6a34400c3a7f6466f24e53cbb52a6009afca66bf3df99466840ba78973775a89",
+            "rect": [
+              1247,
+              722,
+              168,
+              256
+            ],
+            "pivot": [
+              0.48693348356973487,
+              0.9765625
+            ]
+          }
+        ]
+      },
+      "attack": {
+        "fps": 10,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-right-v1.png",
+            "sha256": "415e7a382edc53b3ba564aa0924823d033f01b6b727d2ae8c1f44450bcb8b13d",
+            "rect": [
+              120,
+              74,
+              141,
+              240
+            ],
+            "pivot": [
+              0.510957048370388,
+              0.9791666666666666
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-right-v1.png",
+            "sha256": "415e7a382edc53b3ba564aa0924823d033f01b6b727d2ae8c1f44450bcb8b13d",
+            "rect": [
+              490,
+              74,
+              202,
+              242
+            ],
+            "pivot": [
+              0.3984076979126486,
+              0.9752066115702479
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-right-v1.png",
+            "sha256": "415e7a382edc53b3ba564aa0924823d033f01b6b727d2ae8c1f44450bcb8b13d",
+            "rect": [
+              876,
+              75,
+              168,
+              241
+            ],
+            "pivot": [
+              0.4711804607120092,
+              0.975103734439834
+            ]
+          }
+        ]
+      }
+    },
+    "oppositeActions": {
+      "idle": {
+        "fps": 4,
+        "loop": true,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/a-left-v1.png",
+            "sha256": "ac6b37ff0f9da894052c3aa1106acf0d75d54d7bc0aa7748a92d75ef6ff3d36e",
+            "rect": [
+              118,
+              57,
+              129,
+              269
+            ],
+            "pivot": [
+              0.4500703327329854,
+              0.9814126394052045
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/a-left-v1.png",
+            "sha256": "ac6b37ff0f9da894052c3aa1106acf0d75d54d7bc0aa7748a92d75ef6ff3d36e",
+            "rect": [
+              502,
+              57,
+              128,
+              269
+            ],
+            "pivot": [
+              0.4511350235849054,
+              0.9814126394052045
+            ]
+          }
+        ]
+      },
+      "walk": {
+        "fps": 8,
+        "loop": true,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/a-left-v1.png",
+            "sha256": "ac6b37ff0f9da894052c3aa1106acf0d75d54d7bc0aa7748a92d75ef6ff3d36e",
+            "rect": [
+              876,
+              58,
+              175,
+              268
+            ],
+            "pivot": [
+              0.444298591783326,
+              0.9813432835820896
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/a-left-v1.png",
+            "sha256": "ac6b37ff0f9da894052c3aa1106acf0d75d54d7bc0aa7748a92d75ef6ff3d36e",
+            "rect": [
+              1259,
+              58,
+              178,
+              268
+            ],
+            "pivot": [
+              0.5990179835527307,
+              0.9813432835820896
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/a-left-v1.png",
+            "sha256": "ac6b37ff0f9da894052c3aa1106acf0d75d54d7bc0aa7748a92d75ef6ff3d36e",
+            "rect": [
+              97,
+              388,
+              182,
+              262
+            ],
+            "pivot": [
+              0.5133991856833757,
+              0.9770992366412213
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/a-left-v1.png",
+            "sha256": "ac6b37ff0f9da894052c3aa1106acf0d75d54d7bc0aa7748a92d75ef6ff3d36e",
+            "rect": [
+              486,
+              386,
+              157,
+              264
+            ],
+            "pivot": [
+              0.5046071787427874,
+              0.9772727272727273
+            ]
+          }
+        ]
+      },
+      "guard": {
+        "fps": 4,
+        "loop": true,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/a-left-v1.png",
+            "sha256": "ac6b37ff0f9da894052c3aa1106acf0d75d54d7bc0aa7748a92d75ef6ff3d36e",
+            "rect": [
+              891,
+              397,
+              167,
+              253
+            ],
+            "pivot": [
+              0.5560771358901128,
+              0.9802371541501976
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/a-left-v1.png",
+            "sha256": "ac6b37ff0f9da894052c3aa1106acf0d75d54d7bc0aa7748a92d75ef6ff3d36e",
+            "rect": [
+              1270,
+              393,
+              167,
+              257
+            ],
+            "pivot": [
+              0.5520495997800318,
+              0.9766536964980544
+            ]
+          }
+        ]
+      },
+      "crouch": {
+        "fps": 4,
+        "loop": true,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/a-left-v1.png",
+            "sha256": "ac6b37ff0f9da894052c3aa1106acf0d75d54d7bc0aa7748a92d75ef6ff3d36e",
+            "rect": [
+              116,
+              750,
+              159,
+              220
+            ],
+            "pivot": [
+              0.45837359893598584,
+              0.9727272727272728
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/a-left-v1.png",
+            "sha256": "ac6b37ff0f9da894052c3aa1106acf0d75d54d7bc0aa7748a92d75ef6ff3d36e",
+            "rect": [
+              494,
+              790,
+              163,
+              178
+            ],
+            "pivot": [
+              0.5228905656238,
+              0.9662921348314607
+            ]
+          }
+        ]
+      },
+      "jump": {
+        "fps": 5,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/a-left-v1.png",
+            "sha256": "ac6b37ff0f9da894052c3aa1106acf0d75d54d7bc0aa7748a92d75ef6ff3d36e",
+            "rect": [
+              894,
+              699,
+              159,
+              281
+            ],
+            "pivot": [
+              0.43965624849968793,
+              0.9786476868327402
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/a-left-v1.png",
+            "sha256": "ac6b37ff0f9da894052c3aa1106acf0d75d54d7bc0aa7748a92d75ef6ff3d36e",
+            "rect": [
+              1283,
+              711,
+              148,
+              204
+            ],
+            "pivot": [
+              0.560502182443455,
+              0.9705882352941176
+            ]
+          }
+        ]
+      },
+      "punch": {
+        "fps": 10,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-left-v1.png",
+            "sha256": "893047efff70fa708fd8e1a59f36bc634dbad88a7c53c9657b0356c3c85675a6",
+            "rect": [
+              122,
+              104,
+              178,
+              228
+            ],
+            "pivot": [
+              0.5293102271678087,
+              0.9736842105263158
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-left-v1.png",
+            "sha256": "893047efff70fa708fd8e1a59f36bc634dbad88a7c53c9657b0356c3c85675a6",
+            "rect": [
+              447,
+              103,
+              236,
+              231
+            ],
+            "pivot": [
+              0.5808590044950306,
+              0.974025974025974
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-left-v1.png",
+            "sha256": "893047efff70fa708fd8e1a59f36bc634dbad88a7c53c9657b0356c3c85675a6",
+            "rect": [
+              880,
+              104,
+              163,
+              229
+            ],
+            "pivot": [
+              0.49814373703345693,
+              0.9737991266375546
+            ]
+          }
+        ]
+      },
+      "heavy": {
+        "fps": 9,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-left-v1.png",
+            "sha256": "893047efff70fa708fd8e1a59f36bc634dbad88a7c53c9657b0356c3c85675a6",
+            "rect": [
+              1243,
+              102,
+              181,
+              232
+            ],
+            "pivot": [
+              0.42408552462244736,
+              0.9741379310344828
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-left-v1.png",
+            "sha256": "893047efff70fa708fd8e1a59f36bc634dbad88a7c53c9657b0356c3c85675a6",
+            "rect": [
+              58,
+              423,
+              259,
+              230
+            ],
+            "pivot": [
+              0.5970777340640354,
+              0.9739130434782609
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-left-v1.png",
+            "sha256": "893047efff70fa708fd8e1a59f36bc634dbad88a7c53c9657b0356c3c85675a6",
+            "rect": [
+              502,
+              421,
+              180,
+              236
+            ],
+            "pivot": [
+              0.5012146307798484,
+              0.9703389830508474
+            ]
+          }
+        ]
+      },
+      "low": {
+        "fps": 9,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-left-v1.png",
+            "sha256": "893047efff70fa708fd8e1a59f36bc634dbad88a7c53c9657b0356c3c85675a6",
+            "rect": [
+              871,
+              461,
+              177,
+              186
+            ],
+            "pivot": [
+              0.4037854689898558,
+              0.967741935483871
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-left-v1.png",
+            "sha256": "893047efff70fa708fd8e1a59f36bc634dbad88a7c53c9657b0356c3c85675a6",
+            "rect": [
+              1213,
+              472,
+              265,
+              176
+            ],
+            "pivot": [
+              0.5331278366868163,
+              0.9659090909090909
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-left-v1.png",
+            "sha256": "893047efff70fa708fd8e1a59f36bc634dbad88a7c53c9657b0356c3c85675a6",
+            "rect": [
+              122,
+              754,
+              165,
+              221
+            ],
+            "pivot": [
+              0.44479376659946884,
+              0.9728506787330317
+            ]
+          }
+        ]
+      },
+      "hit": {
+        "fps": 0,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-left-v1.png",
+            "sha256": "893047efff70fa708fd8e1a59f36bc634dbad88a7c53c9657b0356c3c85675a6",
+            "rect": [
+              475,
+              740,
+              221,
+              233
+            ],
+            "pivot": [
+              0.5394520901226175,
+              0.9742489270386266
+            ]
+          }
+        ]
+      },
+      "ko": {
+        "fps": 4,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-left-v1.png",
+            "sha256": "893047efff70fa708fd8e1a59f36bc634dbad88a7c53c9657b0356c3c85675a6",
+            "rect": [
+              842,
+              828,
+              222,
+              142
+            ],
+            "pivot": [
+              0.46622802356747295,
+              0.9577464788732394
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-left-v1.png",
+            "sha256": "893047efff70fa708fd8e1a59f36bc634dbad88a7c53c9657b0356c3c85675a6",
+            "rect": [
+              1187,
+              881,
+              316,
+              85
+            ],
+            "pivot": [
+              0.4935217612465739,
+              0.9411764705882353
+            ]
+          }
+        ]
+      },
+      "shoot": {
+        "fps": 9,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/c-left-v1.png",
+            "sha256": "06996aa1f4bc0aa04b10bf568cb043b58528221ad7f918fbd1ad604bd35b2d4c",
+            "rect": [
+              114,
+              88,
+              189,
+              238
+            ],
+            "pivot": [
+              0.49259114915374386,
+              0.9789915966386554
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/c-left-v1.png",
+            "sha256": "06996aa1f4bc0aa04b10bf568cb043b58528221ad7f918fbd1ad604bd35b2d4c",
+            "rect": [
+              442,
+              81,
+              251,
+              242
+            ],
+            "pivot": [
+              0.6186051068800494,
+              0.9752066115702479
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/c-left-v1.png",
+            "sha256": "06996aa1f4bc0aa04b10bf568cb043b58528221ad7f918fbd1ad604bd35b2d4c",
+            "rect": [
+              906,
+              81,
+              157,
+              242
+            ],
+            "pivot": [
+              0.4387993350393185,
+              0.9752066115702479
+            ]
+          }
+        ]
+      },
+      "deploy": {
+        "fps": 8,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/c-left-v1.png",
+            "sha256": "06996aa1f4bc0aa04b10bf568cb043b58528221ad7f918fbd1ad604bd35b2d4c",
+            "rect": [
+              1279,
+              168,
+              144,
+              162
+            ],
+            "pivot": [
+              0.5352657789325532,
+              0.9691358024691358
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/c-left-v1.png",
+            "sha256": "06996aa1f4bc0aa04b10bf568cb043b58528221ad7f918fbd1ad604bd35b2d4c",
+            "rect": [
+              95,
+              480,
+              231,
+              166
+            ],
+            "pivot": [
+              0.6328930410450653,
+              0.963855421686747
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/c-left-v1.png",
+            "sha256": "06996aa1f4bc0aa04b10bf568cb043b58528221ad7f918fbd1ad604bd35b2d4c",
+            "rect": [
+              537,
+              480,
+              151,
+              168
+            ],
+            "pivot": [
+              0.5072484137067725,
+              0.9702380952380952
+            ]
+          }
+        ]
+      },
+      "throw": {
+        "fps": 8,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/c-left-v1.png",
+            "sha256": "06996aa1f4bc0aa04b10bf568cb043b58528221ad7f918fbd1ad604bd35b2d4c",
+            "rect": [
+              859,
+              424,
+              209,
+              224
+            ],
+            "pivot": [
+              0.5536226074413649,
+              0.9732142857142857
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/c-left-v1.png",
+            "sha256": "06996aa1f4bc0aa04b10bf568cb043b58528221ad7f918fbd1ad604bd35b2d4c",
+            "rect": [
+              1245,
+              425,
+              234,
+              224
+            ],
+            "pivot": [
+              0.5883296067895222,
+              0.9732142857142857
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/c-left-v1.png",
+            "sha256": "06996aa1f4bc0aa04b10bf568cb043b58528221ad7f918fbd1ad604bd35b2d4c",
+            "rect": [
+              128,
+              728,
+              177,
+              225
+            ],
+            "pivot": [
+              0.45387898178852165,
+              0.9733333333333334
+            ]
+          }
+        ]
+      },
+      "recover": {
+        "fps": 5,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/c-left-v1.png",
+            "sha256": "06996aa1f4bc0aa04b10bf568cb043b58528221ad7f918fbd1ad604bd35b2d4c",
+            "rect": [
+              521,
+              744,
+              145,
+              204
+            ],
+            "pivot": [
+              0.524274303526203,
+              0.9754901960784313
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/c-left-v1.png",
+            "sha256": "06996aa1f4bc0aa04b10bf568cb043b58528221ad7f918fbd1ad604bd35b2d4c",
+            "rect": [
+              921,
+              721,
+              124,
+              238
+            ],
+            "pivot": [
+              0.47878229847368775,
+              0.9747899159663865
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/c-left-v1.png",
+            "sha256": "06996aa1f4bc0aa04b10bf568cb043b58528221ad7f918fbd1ad604bd35b2d4c",
+            "rect": [
+              1280,
+              726,
+              166,
+              229
+            ],
+            "pivot": [
+              0.47295393744458586,
+              0.9737991266375546
+            ]
+          }
+        ]
+      },
+      "attack": {
+        "fps": 10,
+        "loop": false,
+        "frames": [
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-left-v1.png",
+            "sha256": "893047efff70fa708fd8e1a59f36bc634dbad88a7c53c9657b0356c3c85675a6",
+            "rect": [
+              122,
+              104,
+              178,
+              228
+            ],
+            "pivot": [
+              0.5293102271678087,
+              0.9736842105263158
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-left-v1.png",
+            "sha256": "893047efff70fa708fd8e1a59f36bc634dbad88a7c53c9657b0356c3c85675a6",
+            "rect": [
+              447,
+              103,
+              236,
+              231
+            ],
+            "pivot": [
+              0.5808590044950306,
+              0.974025974025974
+            ]
+          },
+          {
+            "file": "assets/combat-sprites/core__redblaster_mg2/b-left-v1.png",
+            "sha256": "893047efff70fa708fd8e1a59f36bc634dbad88a7c53c9657b0356c3c85675a6",
+            "rect": [
+              880,
+              104,
+              163,
+              229
+            ],
+            "pivot": [
+              0.49814373703345693,
+              0.9737991266375546
+            ]
+          }
+        ]
+      }
+    },
+    "review": {
+      "uid": "core__redblaster_mg2",
+      "status": "approved",
+      "reviewer": "bb_crying_wolf / native producer physical inspection",
+      "reviewedAt": "2026-10-02T10:40:08.871342+00:00",
+      "sourceKind": "original-game-capture",
+      "fidelityStatus": "closest_supported",
+      "absolute1to1Certified": false,
+      "checks": {
+        "identity": true,
+        "costume": true,
+        "equipment": true,
+        "anatomicalSides": true,
+        "singleFigure": true,
+        "transparentBackground": true
+      },
+      "sources": [
+        {
+          "file": "/workspace/cqc-pass9-generation/red-blaster/references/manual-original1990-page42.png",
+          "source": "/workspace/cqc-pass8-reference-selection/core__redblaster_mg2/manual-original1990-page42.png",
+          "bytes": 680293,
+          "sha256": "878fa8490a695d6e98bba9abbce4bf685e72faba264533a5136fcfc8ad2a13d9",
+          "url": "https://archive.org/download/metal-gear-2-solid-snake-manual-original/MetalGear%202%20-%20SolidSnake%20Manual%20%28Original%29_text.pdf#page=42",
+          "authority": "reference-only rendering from saved manual scan",
+          "physicallyViewedByProducer": true,
+          "viewedAt": "2026-10-02T10:21:05.865005+00:00",
+          "preservedByImmutableHardlink": true,
+          "sourceKind": "official-game-reference",
+          "viewed": true,
+          "physicallyViewed": true,
+          "qualifiedEvidence": "English LP text and original-era MSX2 sprites; translation patch/emulator/ROM unverified, not certified unmodified Japanese1990 execution. Tiny sprite extracted-native provenance and enlargement unverified. Japanese manual page42 separately supports original name/lore."
+        },
+        {
+          "file": "/workspace/cqc-pass9-generation/red-blaster/references/red-blaster-msx2-original-sprite.webp",
+          "source": "/workspace/cqc-pass8-reference-selection/core__redblaster_mg2/red-blaster-msx2-original-sprite.webp",
+          "bytes": 222,
+          "sha256": "ad84d7a261960bd242d9cc2e26b59eb1f0643963208d436e321a1716332079f8",
+          "url": "https://thecodex.wiki/images/d/d0/Red_Blaster.webp",
+          "authority": "tiny sprite mirror; source game pixels/palette physically compared; hosting fan power statistics excluded",
+          "physicallyViewedByProducer": true,
+          "viewedAt": "2026-10-02T10:21:05.865067+00:00",
+          "preservedByImmutableHardlink": true,
+          "sourceKind": "original-game-capture",
+          "viewed": true,
+          "physicallyViewed": true,
+          "qualifiedEvidence": "English LP text and original-era MSX2 sprites; translation patch/emulator/ROM unverified, not certified unmodified Japanese1990 execution. Tiny sprite extracted-native provenance and enlargement unverified. Japanese manual page42 separately supports original name/lore."
+        },
+        {
+          "file": "/workspace/cqc-pass9-generation/red-blaster/references/lp26-30-Metal_Gear_2_0470.png",
+          "source": "/workspace/cqc-pass8-reference-selection/core__redblaster_mg2/lp26-30-Metal_Gear_2_0470.png",
+          "bytes": 9473,
+          "sha256": "ae4d3cf3bd62fe13c543bdfd45e3b0afabb4daa4c03633a744b419fbb9ed3c3d",
+          "url": "https://lparchive.org/Metal-Gear-1-2/Update%2026/30-Metal_Gear_2_0470.png",
+          "authority": "original-era MSX2 graphical capture with English translated text hosted in a secondary LP; ROM/patch unverified; tiny visual evidence, not unmodified-Japanese-ROM or LP-commentary authority",
+          "physicallyViewedByProducer": true,
+          "viewedAt": "2026-10-02T10:21:05.865110+00:00",
+          "preservedByImmutableHardlink": true,
+          "sourceKind": "original-game-capture",
+          "viewed": true,
+          "physicallyViewed": true,
+          "qualifiedEvidence": "English LP text and original-era MSX2 sprites; translation patch/emulator/ROM unverified, not certified unmodified Japanese1990 execution. Tiny sprite extracted-native provenance and enlargement unverified. Japanese manual page42 separately supports original name/lore."
+        },
+        {
+          "file": "/workspace/cqc-pass9-generation/red-blaster/references/lp26-33-Metal_Gear_2_0471.png",
+          "source": "/workspace/cqc-pass8-reference-selection/core__redblaster_mg2/lp26-33-Metal_Gear_2_0471.png",
+          "bytes": 9536,
+          "sha256": "e558ea4bc43aa34fa6f8fa106838608fee8aa97a28ad91e78f7b549895d5c0f8",
+          "url": "https://lparchive.org/Metal-Gear-1-2/Update%2026/33-Metal_Gear_2_0471.png",
+          "authority": "original-era MSX2 graphical capture with English translated text hosted in a secondary LP; ROM/patch unverified; tiny visual evidence, not unmodified-Japanese-ROM or LP-commentary authority",
+          "physicallyViewedByProducer": true,
+          "viewedAt": "2026-10-02T10:21:05.865146+00:00",
+          "preservedByImmutableHardlink": true,
+          "sourceKind": "original-game-capture",
+          "viewed": true,
+          "physicallyViewed": true,
+          "qualifiedEvidence": "English LP text and original-era MSX2 sprites; translation patch/emulator/ROM unverified, not certified unmodified Japanese1990 execution. Tiny sprite extracted-native provenance and enlargement unverified. Japanese manual page42 separately supports original name/lore."
+        },
+        {
+          "file": "/workspace/cqc-pass9-generation/red-blaster/references/lp26-34-Metal_Gear_2_0479.png",
+          "source": "/workspace/cqc-pass8-reference-selection/core__redblaster_mg2/lp26-34-Metal_Gear_2_0479.png",
+          "bytes": 9553,
+          "sha256": "9e0d22c2f2d341f7669d07c065a4c0c48e2531a32026566c9b6085ee2ac35806",
+          "url": "https://lparchive.org/Metal-Gear-1-2/Update%2026/34-Metal_Gear_2_0479.png",
+          "authority": "original-era MSX2 graphical capture with English translated text hosted in a secondary LP; ROM/patch unverified; tiny visual evidence, not unmodified-Japanese-ROM or LP-commentary authority",
+          "physicallyViewedByProducer": true,
+          "viewedAt": "2026-10-02T10:21:05.865219+00:00",
+          "preservedByImmutableHardlink": true,
+          "sourceKind": "original-game-capture",
+          "viewed": true,
+          "physicallyViewed": true,
+          "qualifiedEvidence": "English LP text and original-era MSX2 sprites; translation patch/emulator/ROM unverified, not certified unmodified Japanese1990 execution. Tiny sprite extracted-native provenance and enlargement unverified. Japanese manual page42 separately supports original name/lore."
+        },
+        {
+          "file": "/workspace/cqc-pass9-generation/red-blaster/references/lp26-31-Metal_Gear_2_0472.png",
+          "source": "/workspace/cqc-pass8-reference-selection/core__redblaster_mg2/lp26-31-Metal_Gear_2_0472.png",
+          "bytes": 10243,
+          "sha256": "9f215e4b9852dc80025e9e4ec92c1ec11f1bfc3d55b4ecc4396d7318bdac09da",
+          "url": "https://lparchive.org/Metal-Gear-1-2/Update%2026/31-Metal_Gear_2_0472.png",
+          "authority": "original-era MSX2 graphical capture with English translated text hosted in a secondary LP; ROM/patch unverified; tiny visual evidence, not unmodified-Japanese-ROM or LP-commentary authority",
+          "physicallyViewedByProducer": true,
+          "viewedAt": "2026-10-02T10:21:05.865262+00:00",
+          "preservedByImmutableHardlink": true,
+          "sourceKind": "original-game-capture",
+          "viewed": true,
+          "physicallyViewed": true,
+          "qualifiedEvidence": "English LP text and original-era MSX2 sprites; translation patch/emulator/ROM unverified, not certified unmodified Japanese1990 execution. Tiny sprite extracted-native provenance and enlargement unverified. Japanese manual page42 separately supports original name/lore."
+        }
+      ],
+      "limits": [
+        "Target original1990 MSX2 palette and silhouette wherever resolved; closest_supported newly authored native art. No absolute1:1, extraction, upscaling, certified exact face or original sprite topology claimed.",
+        "English LP text and original-era MSX2 sprites; translation patch/emulator/ROM unverified, not certified unmodified Japanese1990 execution. Tiny sprite extracted-native provenance and enlargement unverified. Japanese manual page42 separately supports original name/lore.",
+        "Original Japanese page42 names Lumumba University (ルムンバ大学), SPETSNAZ background, explosive sabotage and grenades. The previous Leningrad label was a transcription mistake, corrected without changing native art or source evidence; no Bergen or unrelated later-era biography is introduced.",
+        "Grenades/explosive sabotage and crossed immobilizing wires source-supported. Exact grenade launcher and canister/fuze/hardware model unresolved. Restrained connected hand-grenade and low wire placement are expressly authored versus interpretations, not exact original firing animation/model. No firearm model asserted.",
+        "Original tiny sprite/game captures support compact green body and limbs, dark outlines, ochre extremities. Specific short dark/green/ochre head blocks, small green shade/fold differences, simple waist line, boots and full sleeves are readability interpretations, not certified original hair/headwear, garment seam or hidden asymmetry.",
+        "No red-uniform inference from Red Blaster name, Running Man grey chest stripe, flamethrower, pistol, invented launcher model, Fatman rollers/bomber suit, C4 vest or player HUD equipment. A/B carry no weapon; C uses restrained grenade and wire interpretations only.",
+        "Grenades and crossed immobilizing gallery wires are source supported. Exact grenade launcher model and original throwing/placement animations are unresolved; a small hand grenade touching the active source hand and low placement gesture are qualified Versus adaptations.",
+        "C frame4 white segment is short and connected near the low hand. Its very straight stylized shape is visually ambiguous with a blade; no handle/guard/named knife or device is established. It is not proof of enemy knife lore, weapon model, original wire geometry or stage-wire implementation.",
+        "All normals, guard/crouch/jump, hit/KO, CQC throw, hand-grenade release, wire placement, phase timing, collision and balance are bounded Versus adaptations. C throw7 reads as arm-extension follow-through rather than a certified original CQC throw. Final C9-11 are planted recovery poses, not running.",
+        "Both B11 figures are completely lying defeated adults; right is prone/side-turned with head right and left prone/side-turned with head left. No unobserved precise fall motion is certified.",
+        "All seven attempts remain byte-identical tool PNGs. First A_LEFT_01 was rejected for bare forearms inconsistent with full-sleeve RIGHT; A_LEFT_02 was corrected through image_gen only, retaining independently authored LEFT poses. No native PNG was mirrored, recoloured, resized, cleaned or alpha edited. Rejected art is never deleted or repurposed as OC.",
+        "Native PNGs are RGBA with alpha0..254 and transparent regions; raw RGB behind alpha0/very low-alpha may show dark coloured glow in viewers. Complete major alpha>=8 components are retained with5px padding; actual body support/pelvis geometry uses alpha>80. Minor disconnected low-alpha speckles are not anatomy claims.",
+        "Every unchanged atlas has its own measured fixed upright source height. Upright C reference indices2/10/11 exclude elevated grenade/low-wire preparation. displayHeight225 is a relative Versus recommendation, not canonical centimetres. All72 pivots remain at measured body/support positions rather than prop centroids.",
+        "Generation-time contract a8dfffcff88297b0733f5c00d0fe6d109050b0aafe972d5ac8bbde8686360356 had a wrong university transcription corrected to Lumumba after Japanese-page review. The exact previous contract and metadata are retained. Prompts contained no university biography; images unchanged.",
+        "Producer approval covers six unchanged native source atlases and72 observed pose crops/metadata only. No catalog import, runtime helper change, Git write or deployment. Actual browser Canvas/contact/collision and1280/390 viewport review remain root integration work."
+      ],
+      "approvalScope": "Six native source atlases and72 qualified authored Versus poses only; browser/runtime integration pending."
+    }
+  },
+  "sourceFiles": [
+    {
+      "file": "assets/combat-sprites/core__redblaster_mg2/a-right-v1.png",
+      "source": "/workspace/cqc-pass9-generation/red-blaster/sources/A_RIGHT_01.png"
+    },
+    {
+      "file": "assets/combat-sprites/core__redblaster_mg2/a-left-v1.png",
+      "source": "/workspace/cqc-pass9-generation/red-blaster/sources/A_LEFT_02.png"
+    },
+    {
+      "file": "assets/combat-sprites/core__redblaster_mg2/b-right-v1.png",
+      "source": "/workspace/cqc-pass9-generation/red-blaster/sources/B_RIGHT_01.png"
+    },
+    {
+      "file": "assets/combat-sprites/core__redblaster_mg2/b-left-v1.png",
+      "source": "/workspace/cqc-pass9-generation/red-blaster/sources/B_LEFT_01.png"
+    },
+    {
+      "file": "assets/combat-sprites/core__redblaster_mg2/c-right-v1.png",
+      "source": "/workspace/cqc-pass9-generation/red-blaster/sources/C_RIGHT_01.png"
+    },
+    {
+      "file": "assets/combat-sprites/core__redblaster_mg2/c-left-v1.png",
+      "source": "/workspace/cqc-pass9-generation/red-blaster/sources/C_LEFT_01.png"
+    }
+  ],
+  "physical": {
+    "assets/combat-sprites/core__redblaster_mg2/a-right-v1.png": {
+      "source": "/workspace/cqc-pass9-generation/red-blaster/sources/A_RIGHT_01.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1236032,
+      "sha256": "837295c3ecfd142c93d5a66082c0fb7f0e902c392fa919617f2de358a46323bd"
+    },
+    "assets/combat-sprites/core__redblaster_mg2/a-left-v1.png": {
+      "source": "/workspace/cqc-pass9-generation/red-blaster/sources/A_LEFT_02.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1363444,
+      "sha256": "ac6b37ff0f9da894052c3aa1106acf0d75d54d7bc0aa7748a92d75ef6ff3d36e"
+    },
+    "assets/combat-sprites/core__redblaster_mg2/b-right-v1.png": {
+      "source": "/workspace/cqc-pass9-generation/red-blaster/sources/B_RIGHT_01.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1297760,
+      "sha256": "415e7a382edc53b3ba564aa0924823d033f01b6b727d2ae8c1f44450bcb8b13d"
+    },
+    "assets/combat-sprites/core__redblaster_mg2/b-left-v1.png": {
+      "source": "/workspace/cqc-pass9-generation/red-blaster/sources/B_LEFT_01.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1305628,
+      "sha256": "893047efff70fa708fd8e1a59f36bc634dbad88a7c53c9657b0356c3c85675a6"
+    },
+    "assets/combat-sprites/core__redblaster_mg2/c-right-v1.png": {
+      "source": "/workspace/cqc-pass9-generation/red-blaster/sources/C_RIGHT_01.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1345463,
+      "sha256": "6a34400c3a7f6466f24e53cbb52a6009afca66bf3df99466840ba78973775a89"
+    },
+    "assets/combat-sprites/core__redblaster_mg2/c-left-v1.png": {
+      "source": "/workspace/cqc-pass9-generation/red-blaster/sources/C_LEFT_01.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1295959,
+      "sha256": "06996aa1f4bc0aa04b10bf568cb043b58528221ad7f918fbd1ad604bd35b2d4c"
+    }
+  },
+  "independentAlpha80BodyHashes": [
+    "16834774115fb942a98da296d10a4be9d2e35a854fb05d7d97a13b9aa6d0d08d",
+    "ebd60d9e95b9c80fe25d6f85fe86de525f910e67c5f5150eacd4cf9a32a8eb72",
+    "a700b8af6760b846ad0a3f5e9ab2ba7979374579093b7ec2d61906c22391416c",
+    "43144e5cdca0049bf6ed28774c7ea2f7e59e01887e522dfe33b25ec3d4d44367",
+    "26b4e72fee5a2059ead0d498aeb49398d07a426fe0e29dd59fe4d06526f01df4",
+    "653029f572fb5a22d2605ced0c76cbd741a816e6a9e437da82438b1a7f9fb83a",
+    "31b380cf0655af2965909975066cf9e3405ad1bd6f26cced06723645f5196f6c",
+    "da2b80d291766ac5e5abe9d979510d47c57d211f829967fdcc0f6bf03e03c386",
+    "b2b95f1651114a892574dc8030d7e8af42b3e2b0ef1afc5233a56ef07b6c26e0",
+    "028cb87e8ff6afe3909f3c3fa070a520fdab8ed62e34c4e75f89eb824e2fe57e",
+    "b6c4ecf16c7993c753fcfb79a68e299ea2d7e131c5803721040ff0ad8e96ccd4",
+    "70e443295ea3bd9f40783503df9db89415cdeb4da3a72f4309887e2e83176a9a",
+    "8c234d3c51f4a8c98e07d55a88a316dae47f222bba4fde692aefb674839cc8a9",
+    "0966f8f45b94fd8c45afb86d3343fc6dfc2bc4b7479b179b0d7985d97dbedc5a",
+    "ecdeebb971ab1df49d9b36e271e30ab7a81d6acc110ea4a61fe986b4b251b0b2",
+    "4dd5379306037154939c2459216cd1a26f1b589a0527b00ca262dd252ac227de",
+    "16512293337516690cf832f431713948932c77a5079dcdf75c72010fca752585",
+    "1e5a7a061aed941ce62a6499d7cb83ff8ff64d01131bf57b2aa2ae3421ef063f",
+    "42c50307d8dfe577c2857fb38108e73aca89af476fd2057ed1d2db3e15ed7d34",
+    "82bec879d1874b7d17b8a956d1108c336ea8d799dc1a9b4929368cfaf358d41d",
+    "145a968128e0b9fffa22616669beb27bd67ee1b5ba6aeaae102f5a1a54a32320",
+    "b1361860163942da75bca9010eb0811e54f0bea995c096a0dc909c02edc67384",
+    "50a02752b932551446480f9fc5475a172c51b860f92d60aa37eff1ed9136bd80",
+    "d532c3f91e0cf2c2edba9186a297f9a9d5e9d2d86f74f60340d27385a9ebea71",
+    "ee185f5ee56dc9c9acec0fc5b542b8553a23aa9371fb1925f89e61b0c953fbc2",
+    "96e315130c2cf4343683a665ee69f61383a64b8495520db6c6302151aa0d7aa8",
+    "fa706dac1aecd4aeb990d05efd8e966a3ffb0969ee243d8832fff87a80f78842",
+    "64f2f8fc2a1f5a2f8943028f95aa225633efb927877be4a721d55cf29c68f738",
+    "0653b5f30b0315fffc15862f2254b072343020f0f51dd3fbc33b6e497194a8ba",
+    "9870ce2e60c4019572e90e167358cba0c2159163c1a8fa0695cf1ed284ec5e6c",
+    "2fc4f92a04cbd6fc50624154c074ee80d60d4fea17f8b2598c16745fe885de90",
+    "c6121fa11b7856817afd9123625f1da6ef384e3a91a3290e47704f57ddb47a28",
+    "33a95b29b0e083b558f95b0a597a997596bdd7e3a17cdce685034fd06b304863",
+    "3989c6a4588d88c076644fb25fed7f1f4631f0cb2d9aaa55982c72966937a0d0",
+    "2dfea1602512516ecba2e0b8071fe16ab30a79ae5da5403801e1077b3410572e",
+    "a33f6c529597a9e9fc12cbcef161020bf6875036dbcf6584de2c77f1fd0e6c5b",
+    "53ffb7eb47549150c304dc1041ae231c18a398c0da60f559396cb71fcdb45964",
+    "b392d216537ad3a9dcaad1521fe78b410b8516d490cf780d127248fbc7fef179",
+    "d586c231cf1cd0f6673f221beb27a2bb5ebec9f8412dcd009411755aa0887148",
+    "13123c4a3d1c63c28df2f3d39b4115b43bb9dfc0d810e9def5ba0c5129076beb",
+    "5bb0c426855254c0a3aeb8dbe4d131df7401ce0372b1dfc909b1e122f899f998",
+    "682aa1dc2409bc9b3faf3fd22e34734aeef8db092c1ca61f55653d9b5f3de50a",
+    "5f18de317039147da4e66e428cf6fa732e80b93557bd2e6509a8bb1abb6551e6",
+    "1369e8778641aa9e3649e93fcfcba0f9eb4e41dd6fb3c07b99e1ec887bc83607",
+    "0b0a81277d47461cd55e4cbfd3f1feed4d537f1e303ffdad0770571708244a49",
+    "16119b320e5dd3df94a53f130dc2fa50609fdc2f99ae2a6a9c63489675010cd8",
+    "c38418f5a10058f7c1231e6a7d9d9554ceb3993e22b59cc549fc418f37c35d0d",
+    "237f9f374f128104c2a3d3443e0a272139cc8f750879dd585284d29f45f8b6e1",
+    "e52b9ffcf6c93e260331d7cf150e3fba3e89063c71ec2b2acd7f407e1c88c869",
+    "8b4199c51ddfb3cee324b8ac58d88d1914f2e9d81d43acde076f87f3356ace70",
+    "f5fe086c841c82876560fcd5baefff198e543eba8bdffdae287d48e67bc894b9",
+    "945bac5a45c1d2d3765b66f80428e9068eb0520b8f715419cbec44f8d61822b2",
+    "ee8ee994e97ce4e8eb31a2cc8484bd682cfed2ce23900cb50840b911b0fe3cbe",
+    "5e6010e100ef6caf05e6c8d8169015aea25ef0b45aa2f99bbfc23ac0a300a14f",
+    "d8362984a77fa0f084d7b6d222811b9da1ec4b2de122de279ebddf313f076932",
+    "457a9b6af8ccbad2751a6913d7796a505b8fc73e59f78736d94d4c5da68db9c2",
+    "425875b0d81eb1eef512ce417513e5f53c04f54a9b0f981d1c26d82f997728f7",
+    "95bc69de13ffcc2610ea69eb47169cf26f37046081717f72d8512373b4988659",
+    "3a75be9d384c9fbb5b799adc6027148e4ecb82bffa5d8a54a0709c798deef195",
+    "4cade1a0f4c38ded26e8e8f8b01172d710a2552c68916c65cd94049172279b75",
+    "2e3b733bad32d381c0d5ea509e79426fbb3adec641ff027bed6d6ecc52eab226",
+    "693836ffd49567b21991b4c799ef3887b652d2487c5221d046ad6ca9c07e9146",
+    "04c69a5857e62242ad5ba84c2e91775cd14803d27c2dc7f3f4762b22943395db",
+    "d7fac75dd27bf37e221cc74586d15706a3ae65a2d540efcf31e95efd91d87e48",
+    "9ce2119d5605611aca79111b51543450e2a8f15297e60ff4a175118d6d4205ba",
+    "a3203baf4a9197f5002dc72419423a190bca29f9d9f8b0c8aea98221bcedd0ed",
+    "8e60956c7246c718f17c14311559daa327d0f0b5cfe9e5930d77e938a2eea2e2",
+    "0450c194d8ecb81e089a0d1082e2958e0f894e8dc8755bdb27a0245cefb36c25",
+    "92c0d6b8321d2b3526f8f800c5662bd715c889a69ca7af04ce14040566abc1f4",
+    "1e6066a073d62c863df6e9654c475eafa822480a355d1eaf1fc0f682a85d58cc",
+    "e15d1925b77dfe34a37e181cd72b2389dcc1a2df365866a6fdaf8d92db72ec8d",
+    "bee260b5f9958405d34ac19951bd5a83e2205abe0c88883c53156580b91edfd8"
+  ],
+  "poseCount": 72,
+  "uniqueFrameRectSourcePairs": 72,
+  "imagePixelsEdited": false,
+  "catalogImported": false,
+  "scope": "Pure validate_entry on completed producer metadata; browser/helper/runtime integration not performed.",
+  "resumedAfterMetadataOnlyFailure": true
+}

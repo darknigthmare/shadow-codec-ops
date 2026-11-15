@@ -1,0 +1,88 @@
+{
+  "schema": "cqc.p47.new-production-canonical-http-code-pins/1",
+  "atUTC": "2026-11-02T04:40:58.388747+00:00",
+  "status": "PASS",
+  "productionDeployment": "dpl_2TGWm7goxTCZ2RCcPUhKDSUPxqmS",
+  "runtimeCommit": "2397e520a3fa18afd01fdd5421adf3ad08161d0c",
+  "files": [
+    {
+      "url": "https://shadow-codec-ops.vercel.app/cqc/src/cqc-pass46-native-batch-index-v1.js",
+      "status": 200,
+      "TLSVerified": true,
+      "redirectFollowed": false,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 228004,
+      "sha256": "bfa37e5e40c85e839b06fd6cf87c35c80df3d629baa1e81603442538bf303741",
+      "expectedBytes": 228004,
+      "expectedSHA256": "bfa37e5e40c85e839b06fd6cf87c35c80df3d629baa1e81603442538bf303741",
+      "matchesExpectedCodePin": true
+    },
+    {
+      "url": "https://shadow-codec-ops.vercel.app/cqc/src/cqc-pass46-vs-delayed-bursts-v1.js",
+      "status": 200,
+      "TLSVerified": true,
+      "redirectFollowed": false,
+      "contentType": "application/javascript; charset=utf-8",
+      "bytes": 12377,
+      "sha256": "c201bd006a35173d93acbb8661693400b479cd4fbc32598c6a3968c07a9e2de8",
+      "expectedBytes": 12377,
+      "expectedSHA256": "c201bd006a35173d93acbb8661693400b479cd4fbc32598c6a3968c07a9e2de8",
+      "matchesExpectedCodePin": true
+    },
+    {
+      "url": "https://shadow-codec-ops.vercel.app/cqc/runtime-manifest.json",
+      "status": 200,
+      "TLSVerified": true,
+      "redirectFollowed": false,
+      "contentType": "application/json; charset=utf-8",
+      "bytes": 1527642,
+      "sha256": "e71d7f4b3101ca5c40f5694f007924c120413f62303fbccc124ebe64eb567fcb",
+      "expectedBytes": 1527642,
+      "expectedSHA256": "e71d7f4b3101ca5c40f5694f007924c120413f62303fbccc124ebe64eb567fcb",
+      "matchesExpectedCodePin": true
+    },
+    {
+      "url": "https://shadow-codec-ops.vercel.app/cqc/modules/unified-versus-v055.html",
+      "status": 200,
+      "TLSVerified": true,
+      "redirectFollowed": false,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 3486952,
+      "sha256": "dde3643914cb9cd1e81761a144a26ea9c5197929e03ae88f0cc429622eb662ff",
+      "expectedBytes": 3486952,
+      "expectedSHA256": "dde3643914cb9cd1e81761a144a26ea9c5197929e03ae88f0cc429622eb662ff",
+      "matchesExpectedCodePin": true
+    }
+  ],
+  "entries": [
+    {
+      "url": "https://shadow-codec-ops.vercel.app/cqc/",
+      "status": 200,
+      "TLSVerified": true,
+      "redirectFollowed": false,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 32626,
+      "sha256": "1405d009f76dec22cb8e3a38412999efd41747294dd609567544b7575b9573aa"
+    },
+    {
+      "url": "https://shadow-codec-ops.vercel.app/?module=cqc",
+      "status": 200,
+      "TLSVerified": true,
+      "redirectFollowed": false,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 708,
+      "sha256": "0d95e4d5ea31089db355ddf3c2a9c6fca2a0067f8d7aea33b04361b9632e94be"
+    },
+    {
+      "url": "https://shadow-codec-ops.vercel.app/",
+      "status": 200,
+      "TLSVerified": true,
+      "redirectFollowed": false,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 708,
+      "sha256": "0d95e4d5ea31089db355ddf3c2a9c6fca2a0067f8d7aea33b04361b9632e94be"
+    }
+  ],
+  "GitOnlyBuildScriptNotClaimedPublic": "scripts/sync-cqc-runtime.mjs",
+  "qualification": "Strict public HTTPS GET bodies only, after exact READY/canonical metadata confirmation. Three changed public runtime bodies plus unchanged Versus HTML match their complete SHA256/byte pins. Entry200 does not claim browser rendering or gameplay. No authorization header, cookie, share URL, security/billing change or certificate trust modification."
+}

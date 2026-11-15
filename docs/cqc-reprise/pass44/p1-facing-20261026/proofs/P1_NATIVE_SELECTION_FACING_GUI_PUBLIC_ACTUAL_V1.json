@@ -1,0 +1,196 @@
+{
+  "schema": "cqc.p44.p1-facing-public-gui-summary/1",
+  "createdAtUTC": "2026-10-26T08:16:39.748239+00:00",
+  "status": "PASS_FINITE_NATIVE_SELECTION_FACING_GUI",
+  "problem": "P1 et P2 regardaient tous les deux vers la gauche dans la sélection du Versus. Plusieurs wrappers de portraits machines perdaient aussi la direction demandée.",
+  "result": "P1 demande la vraie face droite native, P2 garde la face gauche. Core demande la face droite pour ses portraits machines, comme ses portraits humains. Aucun miroir CSS ni réécriture de pixels.",
+  "scope": {
+    "versusActualObservations": 7,
+    "coreActualObservations": 1,
+    "versusDistinctIdentities": 5,
+    "isolatedAPIDelegationCases": 5,
+    "wholeRosterVisualCertification": false,
+    "runtimeCombatChanges": false,
+    "sourceImageChanges": false,
+    "coreTestAPIEnabled": false
+  },
+  "cases": [
+    {
+      "uid": "core__venom",
+      "costume": "original",
+      "observation": "venom-original-two-panels",
+      "p1Facing": 1,
+      "p2Facing": -1,
+      "verifiedByActualCaptureAndNativeFacingRequest": true
+    },
+    {
+      "uid": "core__venom",
+      "costume": "mgsv-naked-gold-arm",
+      "observation": "venom-gold-arm-two-panels",
+      "p1Facing": 1,
+      "p2Facing": -1,
+      "verifiedByActualCaptureAndNativeFacingRequest": true
+    },
+    {
+      "uid": "core__venom",
+      "costume": "mgsv-naked-gold-arm",
+      "observation": "venom-gold-arm-resized",
+      "p1Facing": 1,
+      "p2Facing": -1,
+      "verifiedByActualCaptureAndNativeFacingRequest": true
+    },
+    {
+      "uid": "completion__mk2_mgs4",
+      "costume": "original",
+      "observation": "mkii-original-two-panels",
+      "p1Facing": 1,
+      "p2Facing": -1,
+      "verifiedByActualCaptureAndNativeFacingRequest": true
+    },
+    {
+      "uid": "core__cunningham",
+      "costume": "original",
+      "observation": "cunningham-platform-two-panels",
+      "p1Facing": 1,
+      "p2Facing": -1,
+      "verifiedByActualCaptureAndNativeFacingRequest": true
+    },
+    {
+      "uid": "pass19__dwarf_gekko_humanoid_mgr",
+      "costume": "original",
+      "observation": "double-tripod-shared-preview-two-panels",
+      "p1Facing": 1,
+      "p2Facing": -1,
+      "verifiedByActualCaptureAndNativeFacingRequest": true
+    },
+    {
+      "uid": "pass19__fenrir_mgr",
+      "costume": "original",
+      "observation": "fenrir-two-panels",
+      "p1Facing": 1,
+      "p2Facing": -1,
+      "verifiedByActualCaptureAndNativeFacingRequest": true
+    },
+    {
+      "uid": "core__khamsin",
+      "costume": "original",
+      "observation": "Core native portrait selected through real controls",
+      "facing": 1,
+      "verifiedByActualCaptureAndNativeFacingRequest": true
+    }
+  ],
+  "checks": {
+    "versusJavaScriptErrors": 0,
+    "versusConsoleErrors": 0,
+    "versusLocalAssetHTTPFailures": 0,
+    "coreJavaScriptErrors": 0,
+    "coreConsoleErrors": 0,
+    "coreLocalAssetHTTPFailures": 0,
+    "explicitCanceledFetchesRetainedInRawProof": 0
+  },
+  "qualifications": [
+    "Les observations couvrent des contrôles utilisateur réels et les portraits effectivement peints ; les appels de façades seuls ne certifient pas la direction affichée.",
+    "Les premières tentatives incomplètes et leurs reçus sont conservés séparément : attente QA avant publication, tenue MkII absente et wrappers machines perdant la face.",
+    "MkII et Dwarf Gekko rétro restent bloqués par leur garde-fou préexistant de contrat de rig ; aucune admission ni tenue jouable supplémentaire revendiquée.",
+    "Cunningham dans Core conserve un corps signalé pending-art-review et n’est pas certifié prêt ; sa plateforme est prête. Cunningham dans le Versus est vérifié sur les deux faces.",
+    "La fidélité graphique exacte aux jeux d’origine n’est pas certifiée par cette correction de présentation."
+  ],
+  "evidencePins": [
+    {
+      "document": "ACTUAL_GUI_RECEIPT_V1.json",
+      "bytes": 134347,
+      "sha256": "9ee6fae387b390a3f5bedd6535c383976e2b228a20f92444e9d802b4cbaa16d0",
+      "evidenceScope": "gui-before-v1"
+    },
+    {
+      "document": "ACTUAL_GUI_RECEIPT_V1.json",
+      "bytes": 163028,
+      "sha256": "9334f7a944c467eba1a535319498a14cb1b5b283d083236853256f177eb6eb0d",
+      "evidenceScope": "gui-after-v4"
+    },
+    {
+      "document": "ACTUAL_GUI_RECEIPT_V1.json",
+      "bytes": 142950,
+      "sha256": "9aea4f4db9132bb3072f105dcd43b6a5f2655f4fb84f2d18db22597b938e7650",
+      "evidenceScope": "gui-core-machine-v3"
+    },
+    {
+      "document": "NATIVE_MACHINE_PORTRAIT_API_ACTUAL_V1.json",
+      "bytes": 507,
+      "sha256": "f2b819cbad588fdb83c8ff1eca919281a0cc08162a41e087c56f91a858a19445",
+      "evidenceScope": "NATIVE_MACHINE_PORTRAIT_API_ACTUAL_V1.json"
+    },
+    {
+      "document": "ACTUAL_GUI_RECEIPT_V1.json",
+      "bytes": 116899,
+      "sha256": "0b2852aeb528dc1022b353661b950d1600e94f866cbdc33b8854a1483ff3b010",
+      "evidenceScope": "gui-machine-registration-before-v1"
+    }
+  ],
+  "screenshots": [
+    {
+      "document": "p1-before-venom.png",
+      "bytes": 558277,
+      "sha256": "7bfdc01c857b3c66f1d5afbe21fe38c702e6f186ecf84138591091687fe4cddb"
+    },
+    {
+      "document": "p1-after-venom.png",
+      "bytes": 689135,
+      "sha256": "d94db45b0e61cb3b675f82a9808fc23ed17655a185c4a967f92b50c2e59b0e06"
+    },
+    {
+      "document": "p1-after-mkii.png",
+      "bytes": 715775,
+      "sha256": "806940fd4ca5b33e02de41b6f411d9282d31aefe41aaf977af0d9dfc8ea6e38f"
+    },
+    {
+      "document": "core-khamsin-right.png",
+      "bytes": 24819,
+      "sha256": "1fcccd1d165ff0ad41adeb18cd8baf74e603f0cbad3a8f4f0caeae287185c2e7"
+    }
+  ],
+  "candidateFiles": [
+    {
+      "path": "public/cqc/modules/unified-versus-v055.html",
+      "sourceSHA256": "418cab1ee75226b6ffea7c58d33907cdfc80977bdf9a2aa3126e1a68b114aba5",
+      "candidateSHA256": "5b54ec893527adf9b7c0b8bb1d3e1eebd15efe08be493fe2352c3fa2305ff907",
+      "bytes": 3486378
+    },
+    {
+      "path": "public/cqc/modules/core-v032.html",
+      "sourceSHA256": "8d7f8eb987e86a0ab31667e0659a66d7da383000d8a4f05c6e8dde7b88289ae7",
+      "candidateSHA256": "1fde2c66c0a9cff3d9f6f676287d27dbfdb27511bf41903f214c640cebe99041",
+      "bytes": 1572465
+    },
+    {
+      "path": "public/cqc/src/cqc-pass18-machine-bridge.js",
+      "sourceSHA256": "022c95609125dea50df07edb9f8724bea5bec206bc61387f9370e05a588f59a9",
+      "candidateSHA256": "edbc6c98d7937652f47698b7a61888561c19b2564a6655adac87029b8609e0fb",
+      "bytes": 47623
+    },
+    {
+      "path": "public/cqc/src/cqc-pass21-native-machine-costume-registration.js",
+      "sourceSHA256": "b2b1d3dea39008719a81096ae7dad84e590171844aa8a8b7c73801133f4673f6",
+      "candidateSHA256": "d854b888a3fb9d0693a6ebb6d56b892c28d1e8d9594d24afc6300856cee61df8",
+      "bytes": 12453
+    },
+    {
+      "path": "public/cqc/src/cqc-pass19-machine-pixel-style.js",
+      "sourceSHA256": "6319d376ed97da79fc5907f10692680e550c7711fa09649e6242a7f57989f169",
+      "candidateSHA256": "6b78329535985954f261d821dd3e30ac344293d75ef92d7ad971fa49044923cc",
+      "bytes": 7761
+    },
+    {
+      "path": "public/cqc/src/cqc-pass19-machine-costume-routing.js",
+      "sourceSHA256": "a7e045566b436d6dcc943851312d2654bebfed1154c690659d8570c87ac0d309",
+      "candidateSHA256": "25b41058cb15f07281139b10205284eebb1578b3c3a3c53598bd46eb449b6a8b",
+      "bytes": 5988
+    },
+    {
+      "path": "public/cqc/src/cqc-pass40-fenrir-native-v1.js",
+      "sourceSHA256": "f869ecc7106b9e0d2d7b8de90e5e59d0c74fc0cd4d43b40da78bf2da70e30b1c",
+      "candidateSHA256": "5fdd3539d8bfb94243085f98780012fd1ada1fd427b455f4290e2ea669f32119",
+      "bytes": 16333
+    }
+  ]
+}

@@ -1,0 +1,988 @@
+{
+  "schema": "cqc.p42.native-costume-job/2",
+  "uid": "core__snake_pw",
+  "id": "pw-battle-dress-helmet",
+  "label": "Battle Dress (Helmet) — bandeau blindé",
+  "family": "canonical",
+  "provenance": {
+    "kind": "canonical-game-costume",
+    "sourceUID": "core__snake_pw",
+    "sourceSpriteUID": "core__snake_pw",
+    "originalDesign": false,
+    "canonicalAppearanceAttested": true,
+    "incarnation": "Big Boss/Naked Snake, Peace Walker original PSP2010/1974 incarnation, official in-game alternate outfit.",
+    "costumeName": "Battle Dress (Helmet) — bandeau blindé",
+    "sources": [
+      {
+        "url": "https://www.tentenpro.com/muni_shinobu/mgspw/costume.html",
+        "scope": "Original game/outfit identity evidence; source needs current specific visual inspection, not a whole-body32role certificate."
+      },
+      {
+        "url": "https://metalgear.fandom.com/wiki/Battle_Dress",
+        "scope": "Original game/outfit identity evidence; source needs current specific visual inspection, not a whole-body32role certificate."
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=39jhL0SBcP4",
+        "scope": "Original game/outfit identity evidence; source needs current specific visual inspection, not a whole-body32role certificate."
+      },
+      {
+        "url": "https://www.metalgearsolid.be/images/mgs_peace_walker_g_art_012.jpg",
+        "scope": "Original game/outfit identity evidence; source needs current specific visual inspection, not a whole-body32role certificate."
+      }
+    ],
+    "specificOriginalVisualReview": {
+      "path": "/tmp/cqc-pass43-batch30-20261024/mecha-audit/pw-art/ORIGINAL_SOURCE_VISUAL_REVIEW_CANDIDATE_V1.json",
+      "bytes": 9008,
+      "sha256": "4b4d63269da7f043902803d1cda323debe6e0b73da49db85f76fa24230d55387"
+    },
+    "qualification": "Original-game appearance target, not absolute1:1 or original-retail animation certification. All32new poses and timing are authored2D gameplay adaptations. Historical generated V4 static is not used as original design evidence. Core special/reload use separately drawn Mk22 roles10/9; VS/Soutien use M16 roles11/12.",
+    "coreNativePoseAndSocketProposal": {
+      "path": "/tmp/cqc-pass43-batch30-20261024/integration/pw-battle-dress-helmet-canonical-source-preparation-v1/CORE_PW_NATIVE_POSES_AND_SOCKETS_CANDIDATE_V1.json",
+      "bytes": 5297,
+      "sha256": "82c5949b62dd2e23c5428b1b87d429b04785f0f0c4a98d55e61d57abcb12ec1c",
+      "scope": "Separate Core special/transq10 and reload9 source sockets; no extra playable weapon added to the M16 Versus profile. Fresh Core metadata and Root exact source review required."
+    }
+  },
+  "geometry": {
+    "path": "/workspace/cqc-p43-resume-20261025/integration/recovered-nine/pw-battle-dress-helmet/source-preparation-v1/GEOMETRY_COMPLETE32_UNAPPROVED_V1.json.gz",
+    "bytes": 188833,
+    "sha256": "9055b855f22fc3b691e10563674594ff942fe74ac60d6f58e3c9e1c75e4a21ce"
+  },
+  "ownershipBook": {
+    "path": "/workspace/cqc-p43-resume-20261025/integration/recovered-nine/pw-battle-dress-helmet/source-preparation-v1/OWNERSHIP_BOOK_COMPLETE32_CANDIDATE_V1.json",
+    "bytes": 25209,
+    "sha256": "37c929c8d2a0b2f02daa38df66a8eaede8905ce416e8a6aa3b28cf5cedf22fb3"
+  },
+  "assets": [
+    {
+      "path": "/workspace/generated_images/exec-a05c04fe-d551-493e-afc7-5b4d90e5874a.png",
+      "bytes": 2098021,
+      "sha256": "0cec83344bffa57f13691726600ffbdb59c827187919776480c2b567d1a7a815",
+      "key": "right-main",
+      "file": "assets/combat-costumes-pass43/core__snake_pw/pw-battle-dress-helmet/right-main-0cec8334-v1.png",
+      "width": 1024,
+      "height": 1536,
+      "standingHeight": 410,
+      "calibration": {
+        "method": "same-page-neutral",
+        "pose": "right-role0-idle",
+        "scope": "Actual new upright original-camera role0, head hair/skull to planted sole baseline; no weapon extends above this witness. Current Root anatomy and stature review required."
+      }
+    },
+    {
+      "path": "/workspace/generated_images/exec-4b61c71e-3abf-4e1e-91a5-f6f0f40d8fff.png",
+      "bytes": 2198384,
+      "sha256": "79ec586ea112f7e88adac40a71d05df144179a3ca5bdf4a9b30572a75c634496",
+      "key": "right-actions",
+      "file": "assets/combat-costumes-pass43/core__snake_pw/pw-battle-dress-helmet/right-actions-79ec586e-v1.png",
+      "width": 1024,
+      "height": 1536,
+      "standingHeight": 439,
+      "calibration": {
+        "method": "reviewed-anatomical-transfer",
+        "referenceAssetKey": "right-main",
+        "referencePose": "right-role0-idle",
+        "candidatePose": "right-role12-m16-standing-rifle-reload-VS",
+        "referenceStandingHeight": 410,
+        "effectiveStandingHeight": 439,
+        "landmarkPairs": [
+          {
+            "landmark": "hair-skull-top",
+            "referenceNativeXY": [
+              287.5,
+              13.5
+            ],
+            "candidateNativeXY": [
+              263.5,
+              855.5
+            ],
+            "method": "Manual head ROI then actual alpha>16 owned-source top witness; ownership-restricted to each selected pose."
+          },
+          {
+            "landmark": "planted-sole-baseline",
+            "referenceNativeXY": [
+              280,
+              423
+            ],
+            "candidateNativeXY": [
+              284,
+              1294
+            ],
+            "method": "Actual lowest owned source of the upright figure; manual body-axis X, no rifle/weapon tip used as human stature."
+          }
+        ],
+        "tolerance": 8,
+        "scope": "Artist-reviewed fresh source head/sole measurements and independent pelvis-axis proposals, Root current source stature review pending. No claim of intermediate joint/retail animation equality. Head ROIs are restricted to the exact owned component IDs, excluding neighboring figures and rifle muzzle extent. Full witness evidence /tmp/cqc-pass43-batch30-20261024/mecha-audit/pw-art/ACTUAL_NATIVE_STATURE_WITNESSES_CANDIDATE_V2.json"
+      }
+    },
+    {
+      "path": "/workspace/generated_images/exec-3f1cf1b1-dbf0-4dc1-9e6c-8e38461bb01a.png",
+      "bytes": 2233283,
+      "sha256": "e3f9dd5fbfdfabf8a73df5551112081aaacd69b587e1e321b10e2da084d24f40",
+      "key": "left-main",
+      "file": "assets/combat-costumes-pass43/core__snake_pw/pw-battle-dress-helmet/left-main-e3f9dd5f-v1.png",
+      "width": 1024,
+      "height": 1536,
+      "standingHeight": 451,
+      "calibration": {
+        "method": "same-page-neutral",
+        "pose": "left-role0-idle",
+        "scope": "Actual new upright original-camera role0, head hair/skull to planted sole baseline; no weapon extends above this witness. Current Root anatomy and stature review required."
+      }
+    },
+    {
+      "path": "/workspace/generated_images/exec-266ddfea-d639-4493-891d-f0e1931c054d.png",
+      "bytes": 2311522,
+      "sha256": "a43df069249785940aad87799c70e908200af2cc36984184ad2a6debdb144a57",
+      "key": "left-actions",
+      "file": "assets/combat-costumes-pass43/core__snake_pw/pw-battle-dress-helmet/left-actions-a43df069-v1.png",
+      "width": 1024,
+      "height": 1536,
+      "standingHeight": 454,
+      "calibration": {
+        "method": "reviewed-anatomical-transfer",
+        "referenceAssetKey": "left-main",
+        "referencePose": "left-role0-idle",
+        "candidatePose": "left-role12-m16-standing-rifle-reload-VS",
+        "referenceStandingHeight": 451,
+        "effectiveStandingHeight": 454,
+        "landmarkPairs": [
+          {
+            "landmark": "hair-skull-top",
+            "referenceNativeXY": [
+              244.5,
+              8.5
+            ],
+            "candidateNativeXY": [
+              292.5,
+              878.5
+            ],
+            "method": "Manual head ROI then actual alpha>16 owned-source top witness; ownership-restricted to each selected pose."
+          },
+          {
+            "landmark": "planted-sole-baseline",
+            "referenceNativeXY": [
+              258,
+              459
+            ],
+            "candidateNativeXY": [
+              301,
+              1332
+            ],
+            "method": "Actual lowest owned source of the upright figure; manual body-axis X, no rifle/weapon tip used as human stature."
+          }
+        ],
+        "tolerance": 8,
+        "scope": "Artist-reviewed fresh source head/sole measurements and independent pelvis-axis proposals, Root current source stature review pending. No claim of intermediate joint/retail animation equality. Head ROIs are restricted to the exact owned component IDs, excluding neighboring figures and rifle muzzle extent. Full witness evidence /tmp/cqc-pass43-batch30-20261024/mecha-audit/pw-art/ACTUAL_NATIVE_STATURE_WITNESSES_CANDIDATE_V2.json"
+      }
+    }
+  ],
+  "roles": {
+    "right": [
+      {
+        "asset": "right-main",
+        "pose": "right-role0-idle",
+        "pivot": [
+          0.42857142857142855,
+          0.9951690821256038
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 280,
+          "groundNativeY": 423,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        },
+        "preview": {
+          "datumX": 114,
+          "bodyBounds": [
+            2,
+            2,
+            262,
+            410
+          ]
+        }
+      },
+      {
+        "asset": "right-main",
+        "pose": "right-role1-guard",
+        "pivot": [
+          0.4864864864864865,
+          0.9948320413436692
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 780,
+          "groundNativeY": 423,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "right-main",
+        "pose": "right-role2-walk-contact",
+        "pivot": [
+          0.4785100286532951,
+          0.9951338199513382
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 275,
+          "groundNativeY": 832,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "right-main",
+        "pose": "right-role3-walk-passing",
+        "pivot": [
+          0.46488294314381273,
+          0.995049504950495
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 785,
+          "groundNativeY": 834,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "right-main",
+        "pose": "right-role4-crouch",
+        "pivot": [
+          0.3806970509383378,
+          0.9930555555555556
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 285,
+          "groundNativeY": 1166,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "right-main",
+        "pose": "right-role5-airborne-jump",
+        "pivot": [
+          0.44200626959247646,
+          0.9941176470588236
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 785,
+          "groundNativeY": 1166,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "right-main",
+        "pose": "right-role6-empty-left-cqc-punch",
+        "pivot": [
+          0.5308641975308642,
+          0.994475138121547
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 275,
+          "groundNativeY": 1525,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "right-main",
+        "pose": "right-role7-low-kick",
+        "pivot": [
+          0.4025974025974026,
+          0.9936908517350158
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 720,
+          "groundNativeY": 1519,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "right-actions",
+        "pose": "right-role8-empty-hand-cqc-throw-release",
+        "pivot": [
+          0.4090909090909091,
+          0.9949622166246851
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 280,
+          "groundNativeY": 419,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "right-actions",
+        "pose": "right-role9-mk22-standing-pistol-reload-CORE",
+        "pivot": [
+          0.4716981132075472,
+          0.9953596287703016
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 780,
+          "groundNativeY": 438,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "right-actions",
+        "pose": "right-role10-mk22-horizontal-shoot-CORE",
+        "pivot": [
+          0.4988662131519274,
+          0.9950372208436724
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 278,
+          "groundNativeY": 850,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "right-actions",
+        "pose": "right-role11-m16-horizontal-shoot-VS-SUPPORT",
+        "pivot": [
+          0.48735632183908045,
+          0.9949874686716792
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 792,
+          "groundNativeY": 846,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "right-actions",
+        "pose": "right-role12-m16-standing-rifle-reload-VS",
+        "pivot": [
+          0.44047619047619047,
+          0.9955257270693513
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 284,
+          "groundNativeY": 1294,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "right-actions",
+        "pose": "right-role13-hurt-recoil",
+        "pivot": [
+          0.5434782608695652,
+          0.9949367088607595
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 796,
+          "groundNativeY": 1283,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "right-actions",
+        "pose": "right-role14-horizontal-lying-KO",
+        "pivot": [
+          0.4917763157894737,
+          0.9827586206896551
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 317,
+          "groundNativeY": 1503,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "right-actions",
+        "pose": "right-role15-low-roll-tuck",
+        "pivot": [
+          0.4280821917808219,
+          0.9912280701754386
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 812,
+          "groundNativeY": 1520,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      }
+    ],
+    "left": [
+      {
+        "asset": "left-main",
+        "pose": "left-role0-idle",
+        "pivot": [
+          0.6233766233766234,
+          0.9956043956043956
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 258,
+          "groundNativeY": 459,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        },
+        "preview": {
+          "datumX": 192,
+          "bodyBounds": [
+            2,
+            2,
+            304,
+            451
+          ]
+        }
+      },
+      {
+        "asset": "left-main",
+        "pose": "left-role1-guard",
+        "pivot": [
+          0.6202185792349727,
+          0.9949748743718593
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 751,
+          "groundNativeY": 458,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "left-main",
+        "pose": "left-role2-walk-contact",
+        "pivot": [
+          0.5,
+          0.9950738916256158
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 256,
+          "groundNativeY": 870,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "left-main",
+        "pose": "left-role3-walk-passing",
+        "pivot": [
+          0.5328083989501312,
+          0.9952267303102625
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 749,
+          "groundNativeY": 878,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "left-main",
+        "pose": "left-role4-crouch",
+        "pivot": [
+          0.6478494623655914,
+          0.9929328621908127
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 290,
+          "groundNativeY": 1192,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "left-main",
+        "pose": "left-role5-airborne-jump",
+        "pivot": [
+          0.4768211920529801,
+          0.993920972644377
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 783,
+          "groundNativeY": 1183,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "left-main",
+        "pose": "left-role6-empty-left-cqc-punch",
+        "pivot": [
+          0.5125,
+          0.993993993993994
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 292,
+          "groundNativeY": 1528,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "left-main",
+        "pose": "left-role7-low-kick",
+        "pivot": [
+          0.6792452830188679,
+          0.9939393939393939
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 818,
+          "groundNativeY": 1525,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "left-actions",
+        "pose": "left-role8-empty-hand-cqc-throw-release",
+        "pivot": [
+          0.5113122171945701,
+          0.995085995085995
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 275,
+          "groundNativeY": 437,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "left-actions",
+        "pose": "left-role9-mk22-standing-pistol-reload-CORE",
+        "pivot": [
+          0.5,
+          0.995575221238938
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 780,
+          "groundNativeY": 459,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "left-actions",
+        "pose": "left-role10-mk22-horizontal-shoot-CORE",
+        "pivot": [
+          0.5034013605442177,
+          0.9952941176470588
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 282,
+          "groundNativeY": 875,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "left-actions",
+        "pose": "left-role11-m16-horizontal-shoot-VS-SUPPORT",
+        "pivot": [
+          0.532293986636971,
+          0.9949874686716792
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 800,
+          "groundNativeY": 870,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "left-actions",
+        "pose": "left-role12-m16-standing-rifle-reload-VS",
+        "pivot": [
+          0.5226480836236934,
+          0.9956331877729258
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 301,
+          "groundNativeY": 1332,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "left-actions",
+        "pose": "left-role13-hurt-recoil",
+        "pivot": [
+          0.5105820105820106,
+          0.9951100244498777
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 794,
+          "groundNativeY": 1301,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "left-actions",
+        "pose": "left-role14-horizontal-lying-KO",
+        "pivot": [
+          0.48114901256732495,
+          0.987012987012987
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 300,
+          "groundNativeY": 1514,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      },
+      {
+        "asset": "left-actions",
+        "pose": "left-role15-low-roll-tuck",
+        "pivot": [
+          0.4205298013245033,
+          0.9898477157360406
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 815,
+          "groundNativeY": 1511,
+          "scope": "Manual fresh PW pelvis/body-balance axis after viewing exact source; never a rifle/hand/foot/bandana/bbox-centre stand-in. Sole baseline from actual owned source. Root current framing/alignment review pending."
+        }
+      }
+    ]
+  },
+  "plan": {
+    "actions": {
+      "idle": {
+        "fps": 4,
+        "loop": true,
+        "roles": [
+          0,
+          0,
+          0
+        ]
+      },
+      "walk": {
+        "fps": 9,
+        "loop": true,
+        "roles": [
+          2,
+          3,
+          2,
+          3
+        ]
+      },
+      "guard": {
+        "fps": 5,
+        "loop": true,
+        "roles": [
+          1,
+          1,
+          1
+        ]
+      },
+      "crouch": {
+        "fps": 4,
+        "loop": true,
+        "roles": [
+          4,
+          4,
+          4
+        ]
+      },
+      "punch": {
+        "fps": 12,
+        "loop": false,
+        "roles": [
+          1,
+          6,
+          1
+        ]
+      },
+      "heavy": {
+        "fps": 10,
+        "loop": false,
+        "roles": [
+          1,
+          6,
+          1
+        ]
+      },
+      "low": {
+        "fps": 10,
+        "loop": false,
+        "roles": [
+          4,
+          7,
+          4
+        ]
+      },
+      "jump": {
+        "fps": 6,
+        "loop": false,
+        "roles": [
+          5,
+          5,
+          5
+        ]
+      },
+      "shoot": {
+        "fps": 10,
+        "loop": false,
+        "roles": [
+          1,
+          11,
+          1
+        ]
+      },
+      "throw": {
+        "fps": 10,
+        "loop": false,
+        "roles": [
+          1,
+          8,
+          1
+        ]
+      },
+      "reload": {
+        "fps": 8,
+        "loop": false,
+        "roles": [
+          1,
+          12,
+          1
+        ]
+      },
+      "recover": {
+        "fps": 6,
+        "loop": false,
+        "roles": [
+          1,
+          12,
+          1
+        ]
+      },
+      "hit": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          13
+        ]
+      },
+      "ko": {
+        "fps": 5,
+        "loop": false,
+        "roles": [
+          14,
+          14
+        ]
+      },
+      "attack": {
+        "fps": 12,
+        "loop": false,
+        "roles": [
+          1,
+          6,
+          1
+        ]
+      },
+      "deploy": {
+        "fps": 6,
+        "loop": false,
+        "roles": [
+          1,
+          8,
+          9,
+          1
+        ]
+      },
+      "roll": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          15
+        ]
+      },
+      "blade": {
+        "fps": 9,
+        "loop": false,
+        "roles": [
+          1,
+          10,
+          1
+        ]
+      }
+    },
+    "actionMap": {
+      "light": "punch",
+      "heavy": "heavy",
+      "low": "low",
+      "throw": "throw",
+      "special": "shoot",
+      "specialDown": "low",
+      "specialForward": "throw",
+      "specialBack": "guard",
+      "super": "heavy",
+      "utility": "reload"
+    },
+    "phaseMap": {
+      "punch": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "heavy": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "low": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "jump": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "shoot": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "throw": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "reload": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "recover": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "guard": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "attack": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "deploy": {
+        "startup": [
+          0,
+          1
+        ],
+        "active": [
+          2
+        ],
+        "recovery": [
+          3
+        ]
+      },
+      "blade": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      }
+    },
+    "scope": "Current actual renderer gate: canonical non-pass18 Original atlas preserves its original actionMap; pass18 uses actual kind/tag semantics. Walk contact/passing loop has four temporal frames for two physical drawings. Unapproved source plan; gameplay rules unchanged.",
+    "dormantSourceRoleQualification": {
+      "9": "This physical drawing is a Mk22 pistol reload reserved for Core. Dormant VS deploy action group preserves32-source metadata inventory and is not selected by any current PW move.",
+      "10": "This physical drawing is Mk22 suppressor horizontal firing reserved for Core. Dormant VS blade action group preserves32-source metadata inventory and is not selected by any current PW move."
+    },
+    "selectedActionBySlot": {
+      "light": "punch",
+      "heavy": "heavy",
+      "low": "low",
+      "throw": "throw",
+      "special": "shoot",
+      "specialDown": "low",
+      "specialForward": "throw",
+      "specialBack": "guard",
+      "super": "heavy",
+      "utility": "reload"
+    }
+  },
+  "anchors": [
+    {
+      "side": "right",
+      "slot": "special",
+      "roleIndex": 11,
+      "action": "shoot",
+      "nativeXY": [
+        1011.5,
+        525.5
+      ],
+      "rearNativeXY": [
+        936.5,
+        525.5
+      ],
+      "socket": "m16a1-rifle-muzzle",
+      "status": "manual-source-native-candidate-root-review-pending",
+      "scope": "Actual source horizontal weapon muzzle and rear barrel witness in exact physical role; alpha>16 and explicit component ownership verified. Weapon identity, original-game model topology and runtime emission require current Root review."
+    },
+    {
+      "side": "left",
+      "slot": "special",
+      "roleIndex": 11,
+      "action": "shoot",
+      "nativeXY": [
+        564.5,
+        552.5
+      ],
+      "rearNativeXY": [
+        641.5,
+        552.5
+      ],
+      "socket": "m16a1-rifle-muzzle",
+      "status": "manual-source-native-candidate-root-review-pending",
+      "scope": "Actual source horizontal weapon muzzle and rear barrel witness in exact physical role; alpha>16 and explicit component ownership verified. Weapon identity, original-game model topology and runtime emission require current Root review."
+    }
+  ],
+  "proposalLimits": [
+    "No art approval or product installation is created.",
+    "Source PNG bytes remain exact; candidate points/axes/body calibration require current Root review.",
+    "Dormant internal action groups retain access to all16 physical roles and do not invent playable moves."
+  ]
+}

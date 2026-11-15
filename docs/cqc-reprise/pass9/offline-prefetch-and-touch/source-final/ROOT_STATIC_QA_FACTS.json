@@ -1,0 +1,27 @@
+{
+  "schema": "cqc-pass9-offline-prefetch-root-static-qa/v1",
+  "checkedAt": "2026-10-02T14:35:02.160939+00:00",
+  "status": "passed",
+  "confirmedByRoot": true,
+  "sourceGitHEAD": "7d4719d432cfe82087833f49df02b27fa2f3155f",
+  "actualApp": {
+    "path": "/workspace/shadow-codec-recovered/src/app/App.tsx",
+    "bytes": 7876,
+    "sha256": "eb5cca5cf44634733c85d451eca474e2b5450b06eb132ccaaef45d710869b911",
+    "gitBlob": "782980aa50bc15581b02c91cdb18b1f6b2ccd785"
+  },
+  "checks": [
+    {
+      "command": "npx tsc -b",
+      "actualSession": 10848,
+      "exitCode": 0
+    },
+    {
+      "command": "git --no-optional-locks diff --check",
+      "exitCode": 0
+    }
+  ],
+  "nativeRuntimeGitSubtree40": "14271e4f8141429b8035575116883fca50925057",
+  "actualBrowserStillPending": true,
+  "sourcesModifiedByRootVerification": false
+}

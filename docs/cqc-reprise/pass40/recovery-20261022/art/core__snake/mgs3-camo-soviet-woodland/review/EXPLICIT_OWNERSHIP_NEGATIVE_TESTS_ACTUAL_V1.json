@@ -1,0 +1,34 @@
+{
+  "schema": "cqc.p40.explicit-ownership-guard-tests/1",
+  "status": "passed-actual-source-pins-and-negative-books",
+  "negativeCases": [
+    {
+      "case": "unassigned-component",
+      "rejected": true,
+      "reason": "Every opaque component must be explicitly owned"
+    },
+    {
+      "case": "double-owned-component",
+      "rejected": true,
+      "reason": "Missing, repeated, or conflicting component ownership"
+    },
+    {
+      "case": "changed-source-hash",
+      "rejected": true,
+      "reason": "Source pin mismatch"
+    },
+    {
+      "case": "wrong-dimensions",
+      "rejected": true,
+      "reason": "Native RGBA/dimensions mismatch"
+    },
+    {
+      "case": "approval-cannot-be-inferred",
+      "rejected": true,
+      "reason": "An explicitly unapproved ownership book is required"
+    }
+  ],
+  "sourcePNGsModified": false,
+  "candidateArtApproved": false,
+  "runtimeAdmitted": false
+}

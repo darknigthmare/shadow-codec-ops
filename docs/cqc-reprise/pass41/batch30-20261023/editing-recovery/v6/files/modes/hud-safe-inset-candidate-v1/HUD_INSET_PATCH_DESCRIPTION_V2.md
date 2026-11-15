@@ -1,0 +1,9 @@
+Support HUD inset candidate
+
+The canvas remains at its existing full viewport size (1280×720 native coordinates). The top navigation overlays that canvas at 66 CSS pixels, or 58 CSS pixels on narrow viewports. The HUD background previously began at native y=18, which places the name and mission under that navigation.
+
+The candidate measures both existing elements, converts the navigation bottom plus a 12 CSS pixel gap into canvas coordinates and translates only the HUD drawing. A save/restore pair encloses that HUD block. Scene drawing, actors, shots, world foreground and subsequent floating effects keep their original coordinates and transform. The helper measures current layout on every draw, including resize and fullscreen changes. No new sprite ratios or canvas dimensions are introduced.
+
+The bounded inverse replacement reconstructs the exact original host bytes. WORLD_AND_SIMULATION_BYTE_INVARIANTS_V1.json records unchanged update, state construction, stage/brief drawing, world drawing and FX drawing. ART_SOURCE49_JOB9_INVARIANTS_V1.json separately verifies all original 49 PNG bytes and all nine frozen job pins.
+
+This is an isolated candidate. It has not modified the product host or approved any generated art. The v1 browser harness failed because capturing while a debugger pause blocked screenshot composition; that failed attempt is preserved. The v2 harness observes source transforms during a read-only pause, then resumes before taking visible screenshots. Its visual evidence is valid, but its initial movement report incorrectly counted idle points because paused inputs were ignored; the preserved BROWSER_V2_EVIDENCE_QUALIFICATION_V1.json excludes that claim. The v3 harness sends keys while running, requires actual accepted motion, and compares a twenty-frame rightward interval plus a ten-frame rising jump interval. Absolute input-event frame numbers are observed rather than assigned. No game state or storage is assigned.

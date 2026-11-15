@@ -18,6 +18,7 @@ const loadCodecModule = () => import('../components/codec/CodecScreen');
 const loadDirectorModule = () => import('../components/director/CodecDirector');
 const loadDirectorRuntimeModule = () => import('../components/director/DirectorRuntimeOverlay');
 const loadSideOpsModule = () => import('../components/sideops/SideOpsLauncher');
+const loadCqcModule = () => import('../components/cqc/CqcLauncher');
 const loadVrModule = () => import('../components/vr/VRMissionsScreen');
 const loadTapesModule = () => import('../components/tapes/TapeArchive');
 const loadStudioModule = () => import('../components/studio/ConversationStudio');
@@ -31,6 +32,7 @@ const CodecScreen = lazy(() => loadCodecModule().then((module) => ({ default: mo
 const CodecDirector = lazy(() => loadDirectorModule().then((module) => ({ default: module.CodecDirector })));
 const DirectorRuntimeOverlay = lazy(() => loadDirectorRuntimeModule().then((module) => ({ default: module.DirectorRuntimeOverlay })));
 const SideOpsLauncher = lazy(() => loadSideOpsModule().then((module) => ({ default: module.SideOpsLauncher })));
+const CqcLauncher = lazy(() => loadCqcModule().then((module) => ({ default: module.CqcLauncher })));
 const VRMissionsScreen = lazy(() => loadVrModule().then((module) => ({ default: module.VRMissionsScreen })));
 const TapeArchive = lazy(() => loadTapesModule().then((module) => ({ default: module.TapeArchive })));
 const ConversationStudio = lazy(() => loadStudioModule().then((module) => ({ default: module.ConversationStudio })));
@@ -44,6 +46,7 @@ const routeLoaders: Partial<Record<AppRoute, () => Promise<unknown>>> = {
   codec: loadCodecModule,
   director: loadDirectorModule,
   sideops: loadSideOpsModule,
+  cqc: loadCqcModule,
   vr: loadVrModule,
   tapes: loadTapesModule,
   studio: loadStudioModule,
@@ -59,6 +62,7 @@ const routeLabels: Record<AppRoute, string> = {
   codec: 'CODEC SIMULATOR',
   director: 'CODEC DIRECTOR',
   sideops: 'SIDE OPS',
+  cqc: 'CQC VERSUS LEGACY',
   vr: 'VR MISSIONS',
   tapes: 'TAPE ARCHIVE',
   studio: 'CONVERSATION STUDIO',
@@ -68,7 +72,9 @@ const routeLabels: Record<AppRoute, string> = {
 };
 
 function prefetchRoute(route: AppRoute): void {
-  void routeLoaders[route]?.();
+  if (!navigator.onLine) return;
+  // Prefetch is optional; navigation errors are handled by AppErrorBoundary.
+  void routeLoaders[route]?.().catch(() => {});
 }
 
 function initialRoute(): AppRoute {
@@ -104,10 +110,12 @@ export function App() {
         return <CodecDirector />;
       case 'sideops':
         return <SideOpsLauncher settings={settings} onOpenCodec={() => setRoute('codec')} onOpenBuilder={() => setRoute('builder')} />;
+      case 'cqc':
+        return <CqcLauncher />;
       case 'vr':
         return <VRMissionsScreen settings={settings} />;
       case 'tapes':
-        return <TapeArchive />;
+        return <TapeArchive onRouteChange={setRoute} />;
       case 'studio':
         return <ConversationStudio />;
       case 'builder':
@@ -123,7 +131,7 @@ export function App() {
   }
 
   return (
-    <div className={shellClassName}>
+    <div className={shellClassName} data-route={route}>
       <PwaRuntimeBanner />
       <AppLayout
         route={route}

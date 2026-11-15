@@ -1,0 +1,74 @@
+{
+  "schema": "cqc.pass16-preservation-helper-contracts/1",
+  "scope": "Synthetic CRC/SHA restoration, metadata, source immutability, chunk-size and determinism only.",
+  "nativeArtOrGameplayClaim": false,
+  "contracts": [
+    {
+      "name": "package-a",
+      "passed": true,
+      "result": {
+        "exit": 0,
+        "stdout": "{\"output\": \"/tmp/cqc-pass16-preservation/helper-contract-v1/package-a\", \"stats\": {\"sourceFiles\": 6, \"sourceDirectories\": 2, \"sourceSymlinks\": 0, \"logicalSourceBytes\": 9998851, \"uniqueContentCount\": 5, \"uniquePayloadBytes\": 9984070, \"gitReferencedBytes\": 14749, \"archiveBytes\": 9985304}, \"chunks\": 2, \"originalAliases\": 1}",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "package-b",
+      "passed": true,
+      "result": {
+        "exit": 0,
+        "stdout": "{\"output\": \"/tmp/cqc-pass16-preservation/helper-contract-v1/package-b\", \"stats\": {\"sourceFiles\": 6, \"sourceDirectories\": 2, \"sourceSymlinks\": 0, \"logicalSourceBytes\": 9998851, \"uniqueContentCount\": 5, \"uniquePayloadBytes\": 9984070, \"gitReferencedBytes\": 14749, \"archiveBytes\": 9985304}, \"chunks\": 2, \"originalAliases\": 1}",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "identical manifest and ZIP bytes across two runs",
+      "passed": true
+    },
+    {
+      "name": "content deduplication and runtime alias exclude duplicate PNG payload",
+      "passed": true
+    },
+    {
+      "name": "complete CRC/SHA and mode/mtime restoration including runtime PNG and original alias",
+      "passed": true,
+      "result": {
+        "exit": 0,
+        "stdout": "{\"status\": \"passed\", \"fixture\": \"/tmp/cqc-pass16-preservation/helper-contract-v1/restored\", \"files\": 6, \"aliases\": 1, \"crcChunks\": 2}",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "large 9.5 MiB original restored from segments across multiple ≤8 MiB ZIPs",
+      "passed": true
+    },
+    {
+      "name": "existing restoration destination refused",
+      "passed": true,
+      "result": {
+        "exit": 2,
+        "stdout": "",
+        "stderr": "FAILED: Restoration target already exists: /tmp/cqc-pass16-preservation/helper-contract-v1/restored"
+      }
+    },
+    {
+      "name": "unapproved source symlink refused",
+      "passed": true,
+      "result": {
+        "exit": 2,
+        "stdout": "",
+        "stderr": "FAILED: Unapproved symlink: /tmp/cqc-pass16-preservation/helper-contract-v1/closed-source/unapproved-alias"
+      }
+    },
+    {
+      "name": "missing final GO refused",
+      "passed": true,
+      "result": {
+        "exit": 2,
+        "stdout": "",
+        "stderr": "FAILED: No explicit final packaging GO in the input configuration"
+      }
+    }
+  ],
+  "status": "passed"
+}

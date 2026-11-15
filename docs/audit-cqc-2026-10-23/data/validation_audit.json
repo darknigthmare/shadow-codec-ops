@@ -1,0 +1,1219 @@
+{
+  "schema": "cqc.audit.validation/1",
+  "generated_at": "2026-10-23T10:36:27.095320+00:00",
+  "source_commit": "ba4e30a09e9e95727b75a665e7b6ab07d9941aea",
+  "audit_directory": "docs/audit-cqc-2026-10-23",
+  "status": "passed_with_warnings",
+  "require_deliverables": true,
+  "scope": "Rapprochement des données, cardinalités, références, liens locaux, arbre Git P41 et portée des fichiers modifiés.",
+  "not_certified": [
+    "Inspection des PNG",
+    "Rendu visuel ou sonore",
+    "Animations exécutées",
+    "Gameplay",
+    "Fidélité 1:1",
+    "Validité de toutes les sources web externes",
+    "Arbres Git historiques hors P41"
+  ],
+  "network_access": false,
+  "image_blobs_read": false,
+  "counts": {
+    "roster": 380,
+    "animation_fighters": 380,
+    "narration_profiles": 380,
+    "moves": 3800,
+    "finishers": 1520,
+    "variants": 597,
+    "alternative_costumes": 217,
+    "stages": 124,
+    "stage_batches": 113,
+    "rigs": 64,
+    "bosses": 33,
+    "machine_batches": 54,
+    "modules": 5,
+    "roster_tasks": 87,
+    "costume_references": 315,
+    "original_concepts": 20,
+    "priority_batches": 42
+  },
+  "check_totals": {
+    "passed": 145,
+    "warning": 1
+  },
+  "checks": [
+    {
+      "check": "count:roster",
+      "status": "passed",
+      "expected": 380,
+      "actual": 380
+    },
+    {
+      "check": "count:animation_fighters",
+      "status": "passed",
+      "expected": 380,
+      "actual": 380
+    },
+    {
+      "check": "count:narration_profiles",
+      "status": "passed",
+      "expected": 380,
+      "actual": 380
+    },
+    {
+      "check": "count:moves",
+      "status": "passed",
+      "expected": 3800,
+      "actual": 3800
+    },
+    {
+      "check": "count:finishers",
+      "status": "passed",
+      "expected": 1520,
+      "actual": 1520
+    },
+    {
+      "check": "count:variants",
+      "status": "passed",
+      "expected": 597,
+      "actual": 597
+    },
+    {
+      "check": "count:alternative_costumes",
+      "status": "passed",
+      "expected": 217,
+      "actual": 217
+    },
+    {
+      "check": "count:stages",
+      "status": "passed",
+      "expected": 124,
+      "actual": 124
+    },
+    {
+      "check": "count:stage_batches",
+      "status": "passed",
+      "expected": 113,
+      "actual": 113
+    },
+    {
+      "check": "count:rigs",
+      "status": "passed",
+      "expected": 64,
+      "actual": 64
+    },
+    {
+      "check": "count:bosses",
+      "status": "passed",
+      "expected": 33,
+      "actual": 33
+    },
+    {
+      "check": "count:machine_batches",
+      "status": "passed",
+      "expected": 54,
+      "actual": 54
+    },
+    {
+      "check": "count:modules",
+      "status": "passed",
+      "expected": 5,
+      "actual": 5
+    },
+    {
+      "check": "count:roster_tasks",
+      "status": "passed",
+      "expected": 87,
+      "actual": 87
+    },
+    {
+      "check": "count:costume_references",
+      "status": "passed",
+      "expected": 315,
+      "actual": 315
+    },
+    {
+      "check": "count:original_concepts",
+      "status": "passed",
+      "expected": 20,
+      "actual": 20
+    },
+    {
+      "check": "count:priority_batches",
+      "status": "passed",
+      "expected": 42,
+      "actual": 42
+    },
+    {
+      "check": "unique:roster",
+      "status": "passed",
+      "keys": [
+        "uid"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "uid_roster:roster",
+      "status": "passed",
+      "left_count": 380,
+      "right_count": 380,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "unique:animation_fighters",
+      "status": "passed",
+      "keys": [
+        "uid"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "uid_roster:animation_fighters",
+      "status": "passed",
+      "left_count": 380,
+      "right_count": 380,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "unique:narration_profiles",
+      "status": "passed",
+      "keys": [
+        "uid"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "uid_roster:narration_profiles",
+      "status": "passed",
+      "left_count": 380,
+      "right_count": 380,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "unique:stages",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "unique:stage_batches",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "unique:rigs",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "unique:bosses",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "unique:machine_batches",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "unique:modules",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "unique:roster_tasks",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "unique:costume_references",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "unique:original_concepts",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "unique:priority_batches",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "json_actor_contract_cardinality",
+      "status": "passed",
+      "anomalies": []
+    },
+    {
+      "check": "unique:moves",
+      "status": "passed",
+      "keys": [
+        "uid",
+        "slot"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "move_uids",
+      "status": "passed",
+      "left_count": 380,
+      "right_count": 380,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "ten_moves_per_uid",
+      "status": "passed",
+      "expected_slots": [
+        "heavy",
+        "light",
+        "low",
+        "special",
+        "specialBack",
+        "specialDown",
+        "specialForward",
+        "super",
+        "throw",
+        "utility"
+      ],
+      "anomalies": {}
+    },
+    {
+      "check": "move_ids_csv_json",
+      "status": "passed",
+      "left_count": 3800,
+      "right_count": 3800,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "move_descriptions_present",
+      "status": "passed",
+      "missing_count": 0,
+      "examples": []
+    },
+    {
+      "check": "unique:finishers",
+      "status": "passed",
+      "keys": [
+        "finisher_id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "finisher_uids",
+      "status": "passed",
+      "left_count": 380,
+      "right_count": 380,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "four_finishers_per_uid",
+      "status": "passed",
+      "anomalies": {}
+    },
+    {
+      "check": "finisher_ids_csv_json",
+      "status": "passed",
+      "left_count": 1520,
+      "right_count": 1520,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "finisher_storyboards_present",
+      "status": "passed"
+    },
+    {
+      "check": "unique:variants",
+      "status": "passed",
+      "keys": [
+        "uid",
+        "costume_id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "variant_originals",
+      "status": "passed",
+      "left_count": 380,
+      "right_count": 380,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "variant_alternatives_count",
+      "status": "passed",
+      "expected": 217,
+      "actual": 217
+    },
+    {
+      "check": "variant_alternatives_roster",
+      "status": "passed",
+      "left_count": 217,
+      "right_count": 217,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "variant_ids_csv_json",
+      "status": "passed",
+      "left_count": 597,
+      "right_count": 597,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "boss_rig_references",
+      "status": "passed",
+      "missing": []
+    },
+    {
+      "check": "native_catalog_count",
+      "status": "passed",
+      "actual": 357,
+      "expected": 357
+    },
+    {
+      "check": "runtime_route_counts",
+      "status": "passed",
+      "native_body_routes": 356,
+      "machine_routes": 24
+    },
+    {
+      "check": "machine_routes_body_complement",
+      "status": "passed",
+      "left_count": 24,
+      "right_count": 24,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "optional_catalog_actor",
+      "status": "passed",
+      "left_count": 1,
+      "right_count": 1,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "optional_original_separate",
+      "status": "passed",
+      "actor_ids": [
+        "oc__parallaxe"
+      ],
+      "move_count": 10
+    },
+    {
+      "check": "unique:02_roster_present.csv:csv",
+      "status": "passed",
+      "keys": [
+        "uid"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "unique:02_roster_present.csv:json",
+      "status": "passed",
+      "keys": [
+        "uid"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "csv_json_keys:02_roster_present.csv",
+      "status": "passed",
+      "left_count": 380,
+      "right_count": 380,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "csv_json_values:02_roster_present.csv",
+      "status": "passed",
+      "compared_cells": 4560,
+      "mismatch_count": 0,
+      "examples": []
+    },
+    {
+      "check": "unique:02_roster_lacunes.csv:csv",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "unique:02_roster_lacunes.csv:json",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "csv_json_keys:02_roster_lacunes.csv",
+      "status": "passed",
+      "left_count": 87,
+      "right_count": 87,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "csv_json_values:02_roster_lacunes.csv",
+      "status": "passed",
+      "compared_cells": 1131,
+      "mismatch_count": 0,
+      "examples": []
+    },
+    {
+      "check": "unique:02_costumes_presents.csv:csv",
+      "status": "passed",
+      "keys": [
+        "uid",
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "unique:02_costumes_presents.csv:json",
+      "status": "passed",
+      "keys": [
+        "uid",
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "csv_json_keys:02_costumes_presents.csv",
+      "status": "passed",
+      "left_count": 217,
+      "right_count": 217,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "csv_json_values:02_costumes_presents.csv",
+      "status": "passed",
+      "compared_cells": 2604,
+      "mismatch_count": 0,
+      "examples": []
+    },
+    {
+      "check": "unique:02_costumes_cibles.csv:csv",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "unique:02_costumes_cibles.csv:json",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "csv_json_keys:02_costumes_cibles.csv",
+      "status": "passed",
+      "left_count": 315,
+      "right_count": 315,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "csv_json_values:02_costumes_cibles.csv",
+      "status": "passed",
+      "compared_cells": 5040,
+      "mismatch_count": 0,
+      "examples": []
+    },
+    {
+      "check": "unique:02_costumes_originaux_proposes.csv:csv",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "unique:02_costumes_originaux_proposes.csv:json",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "csv_json_keys:02_costumes_originaux_proposes.csv",
+      "status": "passed",
+      "left_count": 20,
+      "right_count": 20,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "csv_json_values:02_costumes_originaux_proposes.csv",
+      "status": "passed",
+      "compared_cells": 240,
+      "mismatch_count": 0,
+      "examples": []
+    },
+    {
+      "check": "roster_source_catalog_copy",
+      "status": "passed"
+    },
+    {
+      "check": "unique:03_stages_existants.csv:csv",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "unique:03_stages_existants.csv:json",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "csv_json_keys:03_stages_existants.csv",
+      "status": "passed",
+      "left_count": 124,
+      "right_count": 124,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "csv_json_values:03_stages_existants.csv",
+      "status": "passed",
+      "compared_cells": 3472,
+      "mismatch_count": 0,
+      "examples": []
+    },
+    {
+      "check": "unique:03_stages_a_completer.csv:csv",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "unique:03_stages_a_completer.csv:json",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "csv_json_keys:03_stages_a_completer.csv",
+      "status": "passed",
+      "left_count": 113,
+      "right_count": 113,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "csv_json_values:03_stages_a_completer.csv",
+      "status": "passed",
+      "compared_cells": 1469,
+      "mismatch_count": 0,
+      "examples": []
+    },
+    {
+      "check": "unique:03_rigs_existants.csv:csv",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "unique:03_rigs_existants.csv:json",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "csv_json_keys:03_rigs_existants.csv",
+      "status": "passed",
+      "left_count": 64,
+      "right_count": 64,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "csv_json_values:03_rigs_existants.csv",
+      "status": "passed",
+      "compared_cells": 896,
+      "mismatch_count": 0,
+      "examples": []
+    },
+    {
+      "check": "unique:03_boss_fiches.csv:csv",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "unique:03_boss_fiches.csv:json",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "csv_json_keys:03_boss_fiches.csv",
+      "status": "passed",
+      "left_count": 33,
+      "right_count": 33,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "csv_json_values:03_boss_fiches.csv",
+      "status": "passed",
+      "compared_cells": 825,
+      "mismatch_count": 0,
+      "examples": []
+    },
+    {
+      "check": "unique:03_machines_a_completer.csv:csv",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "unique:03_machines_a_completer.csv:json",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "csv_json_keys:03_machines_a_completer.csv",
+      "status": "passed",
+      "left_count": 54,
+      "right_count": 54,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "csv_json_values:03_machines_a_completer.csv",
+      "status": "passed",
+      "compared_cells": 486,
+      "mismatch_count": 0,
+      "examples": []
+    },
+    {
+      "check": "unique:03_modules_separes.csv:csv",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "unique:03_modules_separes.csv:json",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "csv_json_keys:03_modules_separes.csv",
+      "status": "passed",
+      "left_count": 5,
+      "right_count": 5,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "csv_json_values:03_modules_separes.csv",
+      "status": "passed",
+      "compared_cells": 40,
+      "mismatch_count": 0,
+      "examples": []
+    },
+    {
+      "check": "unique:03_sources.csv:csv",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "unique:03_sources.csv:json",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "csv_json_keys:03_sources.csv",
+      "status": "passed",
+      "left_count": 46,
+      "right_count": 46,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "csv_json_values:03_sources.csv",
+      "status": "passed",
+      "compared_cells": 276,
+      "mismatch_count": 0,
+      "examples": []
+    },
+    {
+      "check": "unique:data/narration_profils.csv:csv",
+      "status": "passed",
+      "keys": [
+        "uid"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "unique:data/narration_profils.csv:json",
+      "status": "passed",
+      "keys": [
+        "uid"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "csv_json_keys:data/narration_profils.csv",
+      "status": "passed",
+      "left_count": 380,
+      "right_count": 380,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "csv_json_values:data/narration_profils.csv",
+      "status": "passed",
+      "compared_cells": 5320,
+      "mismatch_count": 0,
+      "examples": []
+    },
+    {
+      "check": "unique:data/narration_scenes.csv:csv",
+      "status": "passed",
+      "keys": [
+        "scene_id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "unique:data/narration_scenes.csv:json",
+      "status": "passed",
+      "keys": [
+        "scene_id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "csv_json_keys:data/narration_scenes.csv",
+      "status": "passed",
+      "left_count": 2124,
+      "right_count": 2124,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "csv_json_values:data/narration_scenes.csv",
+      "status": "passed",
+      "compared_cells": 29736,
+      "mismatch_count": 0,
+      "examples": []
+    },
+    {
+      "check": "unique:data/priorites.csv:csv",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "unique:data/priorites.csv:json",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "csv_json_keys:data/priorites.csv",
+      "status": "passed",
+      "left_count": 42,
+      "right_count": 42,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "csv_json_values:data/priorites.csv",
+      "status": "passed",
+      "compared_cells": 462,
+      "mismatch_count": 0,
+      "examples": []
+    },
+    {
+      "check": "unique:data/animation_fighters.csv:csv",
+      "status": "passed",
+      "keys": [
+        "uid"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "unique:data/animation_fighters.csv:json",
+      "status": "passed",
+      "keys": [
+        "uid"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "csv_json_keys:data/animation_fighters.csv",
+      "status": "passed",
+      "left_count": 380,
+      "right_count": 380,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "csv_json_values:data/animation_fighters.csv",
+      "status": "passed",
+      "compared_cells": 4940,
+      "mismatch_count": 0,
+      "examples": []
+    },
+    {
+      "check": "move_compact_json_values",
+      "status": "passed",
+      "compared_moves": 3800,
+      "mismatch_count": 0,
+      "examples": []
+    },
+    {
+      "check": "unique:data/animation_native_catalog.csv:csv",
+      "status": "passed",
+      "keys": [
+        "uid"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "unique:data/animation_native_catalog.csv:json",
+      "status": "passed",
+      "keys": [
+        "uid"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "csv_json_keys:data/animation_native_catalog.csv",
+      "status": "passed",
+      "left_count": 357,
+      "right_count": 357,
+      "only_left": [],
+      "only_right": []
+    },
+    {
+      "check": "csv_json_values:data/animation_native_catalog.csv",
+      "status": "passed",
+      "compared_cells": 3570,
+      "mismatch_count": 0,
+      "examples": []
+    },
+    {
+      "check": "unique:narration_scenes",
+      "status": "passed",
+      "keys": [
+        "scene_id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "narration_scene_uids",
+      "status": "passed",
+      "unknown": []
+    },
+    {
+      "check": "narration_scene_profile_counts",
+      "status": "passed",
+      "anomalies": []
+    },
+    {
+      "check": "narration_existing_story_counts",
+      "status": "passed",
+      "scenes": 2124,
+      "profiles_with_scenes": 354,
+      "profiles_without_scenes": 26
+    },
+    {
+      "check": "measured_counts_reconciliation",
+      "status": "passed",
+      "differences": {}
+    },
+    {
+      "check": "source_commit_consistency",
+      "status": "passed",
+      "commits": {
+        "roster": "ba4e30a09e9e95727b75a665e7b6ab07d9941aea",
+        "animations": "ba4e30a09e9e95727b75a665e7b6ab07d9941aea",
+        "measured": "ba4e30a09e9e95727b75a665e7b6ab07d9941aea",
+        "receipt": "ba4e30a09e9e95727b75a665e7b6ab07d9941aea"
+      }
+    },
+    {
+      "check": "capture_scope_not_visual_or_gameplay",
+      "status": "passed"
+    },
+    {
+      "check": "unique:sources:roster_costumes",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "source_id_references:roster_costumes",
+      "status": "passed",
+      "unknown_count": 0,
+      "examples": []
+    },
+    {
+      "check": "unique:sources:stages_machines",
+      "status": "passed",
+      "keys": [
+        "id"
+      ],
+      "duplicates": [],
+      "empty_rows": []
+    },
+    {
+      "check": "source_id_references:stages_machines",
+      "status": "passed",
+      "unknown_count": 0,
+      "examples": []
+    },
+    {
+      "check": "local_markdown_links",
+      "status": "passed",
+      "markdown_files": 57,
+      "checked_links": 1080,
+      "checked_fragments": 802,
+      "broken_count": 0,
+      "broken": []
+    },
+    {
+      "check": "explicit_anchor_uniqueness",
+      "status": "passed",
+      "explicit_anchors": 42,
+      "duplicates": []
+    },
+    {
+      "check": "pinned_source_git_paths",
+      "status": "passed",
+      "commit": "ba4e30a09e9e95727b75a665e7b6ab07d9941aea",
+      "git_tree_paths": 14237,
+      "unique_pinned_links": 29,
+      "unique_plain_code_paths": 56,
+      "missing_links": [],
+      "missing_plain_code_paths": [],
+      "method": "git ls-tree -r --name-only -z ; aucun blob ni image téléchargé"
+    },
+    {
+      "check": "historical_git_references",
+      "status": "warning",
+      "reason": "Provenance héritée hors SHA audité : existence non contrôlée, aucun fetch effectué.",
+      "references": [
+        {
+          "commit": "d652251fdf85bfae69ec48d393564487cd3809ec",
+          "kind": "tree",
+          "path": "docs/cqc-reprise",
+          "referenced_by": [
+            "animations/archive-07.md",
+            "animations/npc-network-0-53-05.md",
+            "animations/npc-network-0-53-06.md",
+            "animations/npc-network-0-53-07.md",
+            "data/animation_fighters.json",
+            "data/animation_native_catalog.json"
+          ]
+        }
+      ]
+    },
+    {
+      "check": "changed_files_documentation_scope",
+      "status": "passed",
+      "audit_prefix": "docs/audit-cqc-2026-10-23/",
+      "source_commit": "ba4e30a09e9e95727b75a665e7b6ab07d9941aea",
+      "head_commit": "ba4e30a09e9e95727b75a665e7b6ab07d9941aea",
+      "within_scope_count": 108,
+      "partitions": {
+        "committed_since_source": 0,
+        "staged": 0,
+        "tracked_worktree": 0,
+        "untracked_within_audit": 108
+      },
+      "outside_scope": [],
+      "scope": "Diff SOURCE–HEAD, index, modifications des fichiers suivis et nouveaux fichiers du seul dossier audit."
+    },
+    {
+      "check": "deliverable_exists:readme",
+      "status": "passed",
+      "path": "README.md"
+    },
+    {
+      "check": "deliverable_exists:workbook",
+      "status": "passed",
+      "path": "outputs/CQC_AUDIT_COMPLET_2026-10-23.xlsx"
+    },
+    {
+      "check": "workbook_package",
+      "status": "passed",
+      "missing": []
+    },
+    {
+      "check": "workbook_sheet_count",
+      "status": "passed",
+      "expected": 21,
+      "actual": 21,
+      "sheets": [
+        "Synthèse",
+        "Priorités",
+        "Roster",
+        "Roster à compléter",
+        "Costumes présents",
+        "Références costumes",
+        "Créations CQC",
+        "Stages",
+        "Stages à compléter",
+        "Boss et rencontres",
+        "Machines à compléter",
+        "Rigs",
+        "Modules dédiés",
+        "Poses et transitions",
+        "Techniques",
+        "Finishers",
+        "Variantes",
+        "Histoires",
+        "Illustrations",
+        "Politique styles",
+        "Sources"
+      ]
+    },
+    {
+      "check": "workbook_xml_and_excel_errors",
+      "status": "passed",
+      "parsed_worksheets": 21,
+      "error_cells": [],
+      "scope": "XML et cellules d'erreur enregistrées ; aucune certification du rendu ni recalcul de formules."
+    }
+  ]
+}

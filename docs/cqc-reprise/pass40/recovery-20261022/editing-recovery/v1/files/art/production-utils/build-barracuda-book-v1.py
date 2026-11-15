@@ -1,0 +1,22 @@
+from pathlib import Path
+import json,hashlib
+r=Path('@PROJECT_ROOT@');p=r/'art/core__snake/mgs3-camo-barracuda'
+names=['idle','guard','walkA','walkB','crouch','jump','punch','low','grab','empty-release','knife','shoot-mk22','reload-mk22','hit','ko','roll']
+maps={'right-16-v1':[[1,5],[4],[2],[3],[8],[6],[7],[9],[12],[11,15],[13,14],[10],[16],[17],[19],[18]],'left-16-v1':[[1,7,8],[4,6],[3,5],[2],[11],[9],[10],[12,13],[16,21,24,25,28],[14,26,27],[17,19,20,22],[15,18,23],[29],[30],[33],[31,32]]}
+sources=[]
+def pose(name,side,role,ids,hold=None):
+ return dict(name=name,side=side,semanticPoseIndex=None if hold else role,candidateUsage='held-unmapped' if hold else 'calibration-only' if role is None else 'physical-review-pending',componentIDs=ids,holdReasons=hold or [],**({'originalSemanticPoseIndex':role} if hold and role is not None else {}))
+def source(stem,h,poses,**extra):
+ f=p/(stem+'.png');cc=json.loads((p/(stem+'-cc.json')).read_text());assert sorted(sum([v['componentIDs'] for v in poses],[]))==sorted(c['id'] for c in cc['components'])
+ return dict(path=str(f),bytes=f.stat().st_size,sha256=hashlib.sha256(f.read_bytes()).hexdigest(),dimensions=[cc['width'],cc['height']],sourceFrameHeight=h,calibration=dict(method='same-page-same-facing-neutral-standing',measuredHeadToSolePixels=h,status='Candidate source extent; Root anatomy/calibration review required.'),poses=poses,**extra)
+
+for stem,groups in maps.items():
+ side='left' if stem.startswith('left') else 'right';sources.append(source(stem,324,[pose(names[i],side,i,ids,['Original walk pair duplicates nearlead or substitutes backcamera rotation; retained unmapped and replaced by independent native gait.'] if i in [2,3] else None) for i,ids in enumerate(groups)]))
+reason=['Whole firstRIGHT3 source has incorrect angular/mosaic Rock-like motif leakage from motion reference. Preserved completely held/unmapped; no selected actions, not a calibration for any admitted action. Replaced by independently drawnRIGHT3V2 based on officialBarracuda and actual spottedLEFT3 identity.']
+sources.append(source('right-gait-three-v1',707,[pose('held-neutral-right','right',None,[1],reason),pose('old-walkA-right','right',2,[3],reason),pose('old-walkB-right','right',3,[2,4],reason)],entireSourceHeld=True))
+sources.append(source('left-gait-three-v1',847,[pose('gait-neutral-left','left',None,[1]),pose('walkA','left',2,[2]),pose('walkB','left',3,[3])]))
+sources.append(source('right-gait-three-v2',704,[pose('gait-neutral-right','right',None,[1]),pose('walkA','right',2,[2,4]),pose('walkB','right',3,[3])]))
+selected=[(v['side'],v['semanticPoseIndex']) for s in sources for v in s['poses'] if v['semanticPoseIndex'] is not None];assert len(selected)==len(set(selected))==32
+ref=r/'references/canonical/camo_unifo_barracuda.gif'
+j=dict(schema='cqc.p40.explicit-source-ownership-candidate/1',approved=False,uid='core__snake',id='mgs3-camo-barracuda',sourceAlphaThreshold=16,sourceConnectivity=8,sources=sources,nativePhysicalBodyCount=32,additionalCalibrationBodyCount=2,heldOriginalPhysicalBodies=7,gaitCertification=False,reference=dict(path=str(ref),bytes=ref.stat().st_size,sha256=hashlib.sha256(ref.read_bytes()).hexdigest()),limitations=['All5sourcePNG physically viewed, every alpha>16 component explicitly assigned once, no source edits/mirroring/filters.','Original MGS3PS2 Barracuda olive cloth with round yellowgreen/darkgray spotted motif follows official reference. Exact tiny UV/straps/unseen surfaces and knee-pad side qualified.','Four old atlaswalks and entire firstRIGHT3 incorrect angular/mosaic-pattern source retained held/unmapped. RIGHT3V2 and independent LEFT3 selected as candidates. No prompt-based gait/pattern certification.','Measured same-page neutral extents324/324/847/704 are candidate densities; pelvis/sole/sourceweaponpoints and peraction calibration need Root review. The fullyheldRIGHT3v1 neutral707 calibrates no selected action.','RIGHT3V2 improves roundedspot markers after obviousv1Rockpatternleak; subtle painted cloth creases still need Root actual official-reference comparison. No absolute1:1 texture certification.','KO14 source still needs Root semantic review: head may be too raised/eyesopen or forearm-supported like getup15. Candidate selection never marks completion or admission.'])
+(p/'ROLEBOOK_NATIVE_CANDIDATE_V1.json').write_text(json.dumps(j,indent=2)+'\n');print({'sourceBook':str(p/'ROLEBOOK_NATIVE_CANDIDATE_V1.json'),'candidateRoles':32})

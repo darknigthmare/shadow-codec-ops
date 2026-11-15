@@ -18,13 +18,13 @@ export function PwaRuntimeBanner() {
   return (
     <aside className={`pwa-runtime-banner ${state.online ? '' : 'offline'}`} role="status" aria-live="polite">
       <div>
-        <strong>{state.online ? 'MOBILE LINK' : 'OFFLINE MODE'}</strong>
+        <strong>{state.online ? 'TERMINAL' : 'LIAISON COUPÉE'}</strong>
         <span>{state.message}</span>
       </div>
       <div className="pwa-runtime-actions">
-        {state.installAvailable && <button type="button" onClick={() => void requestPwaInstall()}>Install App</button>}
-        {state.updateAvailable && <button type="button" onClick={() => void applyPwaUpdate()}>Apply Update</button>}
-        <button type="button" onClick={() => setDismissed(true)} aria-label="Dismiss PWA status">×</button>
+        {state.installAvailable && <button type="button" onClick={() => void requestPwaInstall()}>Installer le terminal</button>}
+        {state.updateAvailable && <button type="button" onClick={() => void applyPwaUpdate()}>Mettre à jour</button>}
+        <button type="button" onClick={() => setDismissed(true)} aria-label="Fermer la notification du terminal">×</button>
       </div>
     </aside>
   );

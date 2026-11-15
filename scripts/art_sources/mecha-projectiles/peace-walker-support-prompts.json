@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "generatedWith": "OpenAI built-in imagegen",
+  "generatedAt": "2026-09-08",
+  "sheetId": "peace-walker-support",
+  "sourceFile": "peace-walker-support-projectiles-openai.png",
+  "sourceSha256": "4947981b96f2443521d0a00af9f8c2ff2501bce4582b6351b2bd97fc2dfd6f78",
+  "grid": {
+    "columns": 4,
+    "rows": 2
+  },
+  "rows": [
+    {
+      "row": 0,
+      "machine": "Chrysalis",
+      "weapon": "railgun",
+      "interpretation": "Short white-blue moving railgun tracer with separate four-phase ion trail; original readable ballistic game adaptation, not an exact physical depiction"
+    },
+    {
+      "row": 1,
+      "machine": "Cocoon",
+      "weapon": "cannon",
+      "interpretation": "Compact metallic pointed shell with short warm orange-brown vapor/tracer phases; original conventional projectile adaptation, no explosive blueprint"
+    }
+  ],
+  "references": [
+    {
+      "url": "https://www.konami.com/mg/archive/mgs_pw/jp/lineup/item.html",
+      "role": "Official Konami AI-weapon identities and licensed Play Arts Kai product references for Chrysalis and Cocoon"
+    },
+    {
+      "url": "https://www.previewsworld.com/Catalog/OCT101662",
+      "role": "Square Enix licensed Cocoon mobile fortress reference"
+    }
+  ],
+  "prompt": "Use case: stylized-concept. Asset type: production pixel-art projectile sprite sheet for a 2D side-scrolling Metal Gear fan game.\nCreate exactly EIGHT small separate projectile phases in a 4-column by 2-row grid. Landscape image, 1536x1024 requested. Flat pure MAGENTA #FF00FF background. Thin pure CYAN #00FFFF calibration guides: EXACTLY FIVE equally spaced vertical lines and THREE equally spaced horizontal lines, including all outer borders. No other lines or content.\nEvery projectile travels horizontally RIGHT, strict side view. Identical fixed center and scale for all four phases of a row. Keep every projectile and its entire glow/trail inside the CENTRAL HALF of the cell width and central THIRD of cell height. At least 40 pixels of completely empty magenta padding on all four sides of each cell. No cropping or overlapping guides.\nTOP ROW, CHRYSALIS RAILGUN: four independently drawn consecutive moving-flight phases of a compact white-blue piercing tracer with a tiny white forward point on the RIGHT and a narrow electric blue trailing streak extending LEFT. The luminous core remains a short thin horizontal dart. Different tiny blue ion sparks/trail shapes per phase, all contained close to the projectile. Not a continuous beam, no gun, no vehicle.\nBOTTOM ROW, COCOON CANNON SHELL: four independently drawn consecutive flight phases of a small dark steel/gray metallic pointed cannon shell, pointed nose to the RIGHT, short subdued warm orange-brown vapor/tracer streak trailing LEFT. Same shell body silhouette and scale in every frame, with subtly different vapor/tracer phases. It is a compact conventional projectile, NOT a missile with fins, no long flame, no explosion. No nuclear symbol or markings.\nStyle: readable high-quality crisp 2D pixel art, hard-edged clusters, modest short glow only. These are original gameplay ballistic adaptations inspired by the weapons of Peace Walker's Chrysalis and Cocoon, not literal physical blueprints or a claim of exact official effects.\nForbidden: any text, caption, number, UI, logo, watermark, additional sprites, scenery, weapons, characters, empty cells, blurred long glow, smoke outside cells, perspective rotation.",
+  "review": {
+    "sourceFacing": "right",
+    "sourceDimensions": [
+      1536,
+      1024
+    ],
+    "limitations": "Moving projectile visual adaptation for the side-scrolling game; not a claim of 1:1 official effects or real-world physical accuracy",
+    "requestedSourceMargins": 40,
+    "validation": "extract_rows(source, 2) and normalize_row passed; 2 rows of 4 distinct RGBA phases, all cyan guides detected, no clipped cell foreground",
+    "sourceActualMinHorizontalMargin": 56,
+    "expectedRuntimeSize": [
+      768,
+      64
+    ]
+  }
+}

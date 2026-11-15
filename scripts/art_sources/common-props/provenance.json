@@ -1,0 +1,305 @@
+{
+  "generator": "OpenAI built-in imagegen",
+  "provenance": "openai-authored-objects",
+  "scope": "Shared side-view adaptations; not a per-era canonical prop library",
+  "source": "scripts/art_sources/common-props/common-props-openai.png",
+  "sourceSha256": "76d851462a6232d61ea35ac3bfb80714abc40811526f078b3cc5ece1734dd79b",
+  "promptSpec": {
+    "generatedAt": "2026-09-08",
+    "generator": "OpenAI built-in imagegen",
+    "prompt": "Use case: stylized-concept.\nAsset type: a single production atlas of eight original fan-made bitmap props for a side-view Metal Gear-inspired tactical game. These replace simple procedural placeholder shapes, not official copied artwork.\nComposition: EXACTLY 4 columns and 2 rows, eight cells. Five thin straight cyan vertical lines including both outer borders, three thin straight cyan horizontal lines including both outer borders; uniform equal cells. Pure flat magenta #FF00FF background, no gradients. All objects fully contained with generous at least 30-pixel empty margin from all guides. No shadows outside the objects.\nStyle: crisp detailed military pixel art, readable silhouette at tiny gameplay sizes, side-view/front-elevation appropriate to a 2D platform game, neutral brushed steel and olive tones, restrained green status lights. No labels, text, numbers, lettering, logos, watermarks, UI or scenery.\nRow 1, left to right:\n1. Horizontal purple-gray rectangular military access card, with distinct small left chip block and long dark magnetic stripe; keep the simple rectangular silhouette and panel arrangement observed in the official MGS1 CARD icon.\n2. Tall narrow closed industrial security sliding door, armored gray panels, dark central seam, small red access indicator; straight FRONT elevation, no perspective floor.\n3. Tall vertical cargo-elevator doorway with closed ribbed gate, metal frame and small green indicator; front elevation, more open frame than the security door but still a closed gate, no surrounding building.\n4. Compact fixed wall surveillance camera in a protective gray rectangular hood, short mounting arm, black lens pointing RIGHT and very small red LED. Side view, no base or floor.\nRow 2, left to right:\n1. Small olive round military ration tin, shallow cylindrical can with circular lid rim and pull tab, no readable label. Match the round ration silhouette in the official MGS1 equipment icon, rendered as a tangible little prop.\n2. Horizontal olive ammunition box with hinged lid, two brass latch highlights and subtle embossed ridges, no cartridges loose outside, no readable text.\n3. Compact gray cylindrical electronic-countermeasure/chaff grenade, pull-ring and short olive safety lever, no markings, no cutaway.\n4. Small square blue-gray optical data disk cartridge with visible silver circular hub in the middle, a distinctive intelligence cache collectible; no text.\nEach cell contains only its listed single object, not animated phases. Exact eight objects, no duplicates, no icons added. This is a shared Side Ops adaptation atlas, not a claim that the same prop was canonical in every Metal Gear era.",
+    "referenceUrls": [
+      "https://metalgear.konami.net/manual/mc1/mgs1/pc/en/page17.html",
+      "https://metalgear.konami.net/manual/mc1/mgs1/pc/en/page16.html"
+    ],
+    "referenceReview": "Official equipment manual screenshot inspected: round ration, rectangular card. Other scene props are original shared Side Ops adaptations, not 1:1 canon reproductions."
+  },
+  "grid": {
+    "sourceSize": [
+      1620,
+      971
+    ],
+    "xGuides": [
+      [
+        17,
+        18
+      ],
+      [
+        413,
+        413
+      ],
+      [
+        808,
+        809
+      ],
+      [
+        1203,
+        1204
+      ],
+      [
+        1598,
+        1599
+      ]
+    ],
+    "yGuides": [
+      [
+        16,
+        17
+      ],
+      [
+        482,
+        482
+      ],
+      [
+        951,
+        952
+      ]
+    ],
+    "guideInset": 3,
+    "structures": null
+  },
+  "authoredObjects": 8,
+  "runtimeObjects": 6,
+  "synthesizedObjects": 0,
+  "deferred": [
+    {
+      "id": "door",
+      "reason": "Generated proportions failed the full collision-silhouette gate; keep the stable procedural door until a source passes."
+    },
+    {
+      "id": "elevator",
+      "reason": "Generated proportions failed the full interaction-silhouette gate; keep the stable procedural elevator until a source passes."
+    }
+  ],
+  "operations": [
+    "cyan-guide crop",
+    "magenta key removal",
+    "tight alpha bounds",
+    "uniform nearest-neighbor fit",
+    "bottom-center alignment"
+  ],
+  "outputs": [
+    {
+      "id": "keycard",
+      "path": "/sideops/common-props/keycard.png",
+      "width": 14,
+      "height": 10,
+      "sha256": "4756bd8b0fb8c8acae5eb45d43fc4691e7fab99d3de51abc84b5f003944f7eb1",
+      "sourceId": "main",
+      "cellRect": [
+        22,
+        21,
+        410,
+        479
+      ],
+      "sourceAlphaBounds": [
+        53,
+        144,
+        328,
+        305
+      ],
+      "uniformScale": 0.05090909090909091,
+      "fittedSize": [
+        14,
+        8
+      ],
+      "offset": [
+        0,
+        2
+      ],
+      "outputAlphaBounds": [
+        0,
+        2,
+        14,
+        10
+      ],
+      "resampling": "nearest-neighbor",
+      "alignment": "horizontal-center; bottom-anchor"
+    },
+    {
+      "id": "camera",
+      "path": "/sideops/common-props/camera.png",
+      "width": 30,
+      "height": 20,
+      "sha256": "0cc13b245d9e85591428d448e1f3d29adb9824b5b0cfb23f02dc037ecb7673ee",
+      "sourceId": "main",
+      "cellRect": [
+        1208,
+        21,
+        1595,
+        479
+      ],
+      "sourceAlphaBounds": [
+        60,
+        152,
+        326,
+        318
+      ],
+      "uniformScale": 0.11278195488721804,
+      "fittedSize": [
+        30,
+        19
+      ],
+      "offset": [
+        0,
+        1
+      ],
+      "outputAlphaBounds": [
+        0,
+        1,
+        30,
+        20
+      ],
+      "resampling": "nearest-neighbor",
+      "alignment": "horizontal-center; bottom-anchor"
+    },
+    {
+      "id": "ration",
+      "path": "/sideops/common-props/ration.png",
+      "width": 18,
+      "height": 12,
+      "sha256": "037f835c656db41384b7b947da5e7648f8ec9fe3ec64e919fbe161354b12645b",
+      "sourceId": "main",
+      "cellRect": [
+        22,
+        486,
+        410,
+        948
+      ],
+      "sourceAlphaBounds": [
+        70,
+        147,
+        306,
+        316
+      ],
+      "uniformScale": 0.07100591715976332,
+      "fittedSize": [
+        17,
+        12
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "outputAlphaBounds": [
+        0,
+        0,
+        17,
+        12
+      ],
+      "resampling": "nearest-neighbor",
+      "alignment": "horizontal-center; bottom-anchor"
+    },
+    {
+      "id": "ammo",
+      "path": "/sideops/common-props/ammo.png",
+      "width": 20,
+      "height": 12,
+      "sha256": "df0e2216dc14bbcf74da77749ef7955e20b154f011f2d166bc6ca6fe0719d691",
+      "sourceId": "main",
+      "cellRect": [
+        417,
+        486,
+        805,
+        948
+      ],
+      "sourceAlphaBounds": [
+        38,
+        147,
+        346,
+        308
+      ],
+      "uniformScale": 0.06493506493506493,
+      "fittedSize": [
+        20,
+        10
+      ],
+      "offset": [
+        0,
+        2
+      ],
+      "outputAlphaBounds": [
+        0,
+        2,
+        20,
+        12
+      ],
+      "resampling": "nearest-neighbor",
+      "alignment": "horizontal-center; bottom-anchor"
+    },
+    {
+      "id": "chaff",
+      "path": "/sideops/common-props/chaff.png",
+      "width": 16,
+      "height": 16,
+      "sha256": "5746d7355334a7917ef70b718395e4bca6d7c522d069eac1aa4b26ba980972b2",
+      "sourceId": "main",
+      "cellRect": [
+        813,
+        486,
+        1200,
+        948
+      ],
+      "sourceAlphaBounds": [
+        122,
+        83,
+        259,
+        354
+      ],
+      "uniformScale": 0.05904059040590406,
+      "fittedSize": [
+        8,
+        16
+      ],
+      "offset": [
+        4,
+        0
+      ],
+      "outputAlphaBounds": [
+        4,
+        0,
+        12,
+        16
+      ],
+      "resampling": "nearest-neighbor",
+      "alignment": "horizontal-center; bottom-anchor"
+    },
+    {
+      "id": "secret",
+      "path": "/sideops/common-props/secret.png",
+      "width": 12,
+      "height": 12,
+      "sha256": "ada93fe4585ee6a46b3f44b3604b5a4b4393c351f1b348882ed828c7a278a2a9",
+      "sourceId": "main",
+      "cellRect": [
+        1208,
+        486,
+        1595,
+        948
+      ],
+      "sourceAlphaBounds": [
+        82,
+        112,
+        298,
+        334
+      ],
+      "uniformScale": 0.05405405405405406,
+      "fittedSize": [
+        12,
+        12
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "outputAlphaBounds": [
+        0,
+        0,
+        12,
+        12
+      ],
+      "resampling": "nearest-neighbor",
+      "alignment": "horizontal-center; bottom-anchor"
+    }
+  ]
+}

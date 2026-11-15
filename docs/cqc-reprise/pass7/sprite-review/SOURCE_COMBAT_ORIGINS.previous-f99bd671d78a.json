@@ -1,0 +1,163 @@
+{
+  "schema": "cqc.native-source-origins/1",
+  "reviewer": "pass7_sprite_integrator",
+  "reviewedAt": "2026-10-02",
+  "coordinateSystem": "Full native PNG source pixels, without mirror or image edits",
+  "entries": {
+    "core__old_snake": {
+      "shoot": {
+        "right": {
+          "action": "shoot",
+          "frame": 1,
+          "file": "assets/combat-sprites/core__old_snake/c-right-v1.png",
+          "sha256": "d0d258d11244864bac49cd73c536e44c284bc2b90b0a74610723da17600920cf",
+          "point": [
+            1514,
+            73
+          ],
+          "sourcePixelAlpha": 250,
+          "rect": [
+            1169,
+            13,
+            355,
+            357
+          ],
+          "pivot": [
+            0.42754577604905214,
+            0.9859943977591037
+          ],
+          "sourceFrameHeight": 343.0,
+          "pointKind": "native-visible-firearm-muzzle",
+          "physicallyViewed": true,
+          "adaptedWorldForward": 145.11310166724863,
+          "adaptedWorldHeight": 219.29795918367347,
+          "engineBodyScale": 1.12,
+          "notes": [
+            "Original-style Mk.2 long suppressor muzzle opening, actual visible opaque native end. Root may spawn tranq from this muzzle; not Solid Eye/torso/lens.",
+            "Root independently physically viewed both full native action sheets, complete bodies, hands and visible muzzle ends; unchanged native-source coordinates."
+          ]
+        },
+        "left": {
+          "action": "shoot",
+          "frame": 1,
+          "file": "assets/combat-sprites/core__old_snake/c-left-v1.png",
+          "sha256": "64696a91063626b6df3a3cb21d5da403709799ef9bae2017efde5b7711a176dd",
+          "point": [
+            1167,
+            75
+          ],
+          "sourcePixelAlpha": 249,
+          "rect": [
+            1156,
+            6,
+            374,
+            336
+          ],
+          "pivot": [
+            0.61546393058382,
+            0.9851190476190477
+          ],
+          "sourceFrameHeight": 351.0,
+          "pointKind": "native-visible-firearm-muzzle",
+          "physicallyViewed": true,
+          "adaptedWorldForward": 160.85946491703314,
+          "adaptedWorldHeight": 192.28262108262112,
+          "engineBodyScale": 1.12,
+          "notes": [
+            "Original-style Mk.2 long suppressor muzzle opening, actual visible opaque native end. Root may spawn tranq from this muzzle; not Solid Eye/torso/lens.",
+            "Root independently physically viewed both full native action sheets, complete bodies, hands and visible muzzle ends; unchanged native-source coordinates."
+          ]
+        }
+      },
+      "deploy": {
+        "right": {
+          "action": "deploy",
+          "frame": 1,
+          "file": "assets/combat-sprites/core__old_snake/c-right-v1.png",
+          "sha256": "d0d258d11244864bac49cd73c536e44c284bc2b90b0a74610723da17600920cf",
+          "point": [
+            1148,
+            442
+          ],
+          "sourcePixelAlpha": 251,
+          "rect": [
+            774,
+            365,
+            406,
+            346
+          ],
+          "pivot": [
+            0.44122218738093555,
+            0.9855491329479769
+          ],
+          "sourceFrameHeight": 343.0,
+          "pointKind": "native-gloved-chaff-release-hand",
+          "physicallyViewed": true,
+          "adaptedWorldForward": 146.34668454650853,
+          "adaptedWorldHeight": 198.26938775510203,
+          "engineBodyScale": 1.12,
+          "notes": [
+            "Visible anatomical right glove at chaff canister release, immediately before tiny authored rectangular grenade. Hand source only, no physical color/fuze1:1 or electronic-effect certification.",
+            "Root independently physically viewed both full native action sheets, complete bodies, hands and visible muzzle ends; unchanged native-source coordinates."
+          ]
+        },
+        "left": {
+          "action": "deploy",
+          "frame": 1,
+          "file": "assets/combat-sprites/core__old_snake/c-left-v1.png",
+          "sha256": "64696a91063626b6df3a3cb21d5da403709799ef9bae2017efde5b7711a176dd",
+          "point": [
+            795,
+            421
+          ],
+          "sourcePixelAlpha": 251,
+          "rect": [
+            765,
+            359,
+            419,
+            346
+          ],
+          "pivot": [
+            0.551871837232568,
+            0.9855491329479769
+          ],
+          "sourceFrameHeight": 351.0,
+          "pointKind": "native-gloved-chaff-release-hand",
+          "physicallyViewed": true,
+          "adaptedWorldForward": 147.68648327235016,
+          "adaptedWorldHeight": 204.7589743589744,
+          "engineBodyScale": 1.12,
+          "notes": [
+            "Visible anatomical right glove at chaff canister release, immediately before tiny authored rectangular grenade. Hand source only, no physical color/fuze1:1 or electronic-effect certification.",
+            "Root independently physically viewed both full native action sheets, complete bodies, hands and visible muzzle ends; unchanged native-source coordinates."
+          ]
+        }
+      }
+    }
+  },
+  "slotSourceGroups": {
+    "core__old_snake": {
+      "shoot": [
+        "special"
+      ],
+      "deploy": [
+        "specialDown"
+      ]
+    }
+  },
+  "suppliedPhysicalMarkReviews": {
+    "core__old_snake": "preparation/combat-sprites-pass7/core__old_snake/INTEGRATOR_SOURCE_MARK_REVIEW.json"
+  },
+  "limits": [
+    "Each point is physically observed on the supplied native first-active pose and is attached to its actual unchanged PNG SHA, crop, pivot and upright source scale.",
+    "Marks align authored closest-supported versus animation, not extracted original boss rig or weapon world coordinates. Parent owns slot applicability, projectile physics and final browser contact proof."
+  ],
+  "completeUIDs": [
+    "core__old_snake"
+  ],
+  "pendingUIDs": [
+    "core__raven",
+    "core__quiet",
+    "archive__skull_face"
+  ]
+}

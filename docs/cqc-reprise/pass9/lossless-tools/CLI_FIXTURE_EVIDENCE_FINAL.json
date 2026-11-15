@@ -1,0 +1,101 @@
+{
+  "schema": "cqc.lossless-snapshot-chunks.cli-fixture-evidence/1",
+  "status": "passed",
+  "checks": [
+    {
+      "name": "missing-required-production-arguments",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/cqc-pass9-publication-preparation/lossless-tools/chunk_snapshot.py"
+      ],
+      "exitCode": 2,
+      "expectedExitCode": 2,
+      "passed": true,
+      "stdout": "",
+      "stderr": "usage: chunk_snapshot.py [-h] --source SOURCE --logical-path LOGICAL_PATH\n                         --output OUTPUT --expected-source-sha256\n                         EXPECTED_SOURCE_SHA256 --expected-source-bytes\n                         EXPECTED_SOURCE_BYTES --frozen-manifest\n                         FROZEN_MANIFEST --expected-frozen-manifest-sha256\n                         EXPECTED_FROZEN_MANIFEST_SHA256\nchunk_snapshot.py: error: the following arguments are required: --source, --logical-path, --output, --expected-source-sha256, --expected-source-bytes, --frozen-manifest, --expected-frozen-manifest-sha256\n"
+    },
+    {
+      "name": "fixture-cli-bypass-rejected",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/cqc-pass9-publication-preparation/lossless-tools/chunk_snapshot.py",
+        "--fixture"
+      ],
+      "exitCode": 2,
+      "expectedExitCode": 2,
+      "passed": true,
+      "stdout": "",
+      "stderr": "usage: chunk_snapshot.py [-h] --source SOURCE --logical-path LOGICAL_PATH\n                         --output OUTPUT --expected-source-sha256\n                         EXPECTED_SOURCE_SHA256 --expected-source-bytes\n                         EXPECTED_SOURCE_BYTES --frozen-manifest\n                         FROZEN_MANIFEST --expected-frozen-manifest-sha256\n                         EXPECTED_FROZEN_MANIFEST_SHA256\nchunk_snapshot.py: error: the following arguments are required: --source, --logical-path, --output, --expected-source-sha256, --expected-source-bytes, --frozen-manifest, --expected-frozen-manifest-sha256\n"
+    },
+    {
+      "name": "freeze39-cli-rejected",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/cqc-pass9-publication-preparation/lossless-tools/chunk_snapshot.py",
+        "--source",
+        "/workspace/cqc-pass9-publication-preparation/lossless-tools/fixture-runs/run-7b258c3c7a3e4d34b85d23250cd1c2ec/test_old_39_freeze_cannot_authorize_43_source/source.bin",
+        "--logical-path",
+        "source-code/data/combat-sprite-catalog-v1.json",
+        "--output",
+        "/workspace/cqc-pass9-publication-preparation/lossless-tools/fixture-runs/run-7b258c3c7a3e4d34b85d23250cd1c2ec/test_old_39_freeze_cannot_authorize_43_source/never-created-cli-output",
+        "--expected-source-sha256",
+        "a524945e30d57e01956c7408e749dac8c0ceedb75b4ce1e6d698f343d60bc82e",
+        "--expected-source-bytes",
+        "12345",
+        "--frozen-manifest",
+        "/workspace/cqc-pass9-publication-preparation/lossless-tools/fixture-runs/run-7b258c3c7a3e4d34b85d23250cd1c2ec/test_old_39_freeze_cannot_authorize_43_source/synthetic-fixture-freeze.json",
+        "--expected-frozen-manifest-sha256",
+        "fc4aba98cbd85ce07a145e064e3b50c6e179ae46ce2fc8d7ac1857e508ba98b1"
+      ],
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "passed": true,
+      "stdout": "",
+      "stderr": "{\"status\": \"failed\", \"reason\": \"The final 43-entry root freeze is required\", \"partialArtifactsPreserved\": true}\n"
+    },
+    {
+      "name": "verify-only-cli-byte-exact",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/cqc-pass9-publication-preparation/lossless-tools/restore_snapshot.py",
+        "--manifest",
+        "/workspace/cqc-pass9-publication-preparation/lossless-tools/fixture-runs/run-7b258c3c7a3e4d34b85d23250cd1c2ec/test_roundtrip_multiple_parts_full_sha_and_git_blob/snapshot/SNAPSHOT_CHUNKS.json",
+        "--expected-manifest-sha256",
+        "f35e62160ba7d1468ec73d63faa1fb2e7cceb991c61bf0bd87c5bfef0e60500f",
+        "--journal",
+        "/workspace/cqc-pass9-publication-preparation/lossless-tools/fixture-runs/run-7b258c3c7a3e4d34b85d23250cd1c2ec/test_roundtrip_multiple_parts_full_sha_and_git_blob/cli-verify-final.ndjson",
+        "--verify-only"
+      ],
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "passed": true,
+      "stdout": "{\n  \"status\": \"passed\",\n  \"manifestSha256\": \"f35e62160ba7d1468ec73d63faa1fb2e7cceb991c61bf0bd87c5bfef0e60500f\",\n  \"mode\": \"verify-only\",\n  \"parts\": 7,\n  \"source\": {\n    \"logicalPath\": \"data/catalog.json\",\n    \"originalBytes\": 12345,\n    \"originalGitBlob\": \"ee0494596999a495defc3ddd465b9b3d40bda36c\",\n    \"originalSha256\": \"a524945e30d57e01956c7408e749dac8c0ceedb75b4ce1e6d698f343d60bc82e\",\n    \"parts\": [\n      {\n        \"bytes\": 2071,\n        \"index\": 1,\n        \"offset\": 0,\n        \"path\": \"parts/part-000001.gz\",\n        \"sha256\": \"64dab20565387cfe4eb13a0f313686d38ee4b2f6310970a6da0ce93f5c219452\",\n        \"uncompressedBytes\": 2048,\n        \"uncompressedSha256\": \"1d9ed5af8394b39532d780986a87cb9e416cd02a392a66d6f13d10440a58187a\"\n      },\n      {\n        \"bytes\": 2071,\n        \"index\": 2,\n        \"offset\": 2048,\n        \"path\": \"parts/part-000002.gz\",\n        \"sha256\": \"7e8bc0ae7b050dec06489b21a1af28d0bd6989e931c899bd261ed0a38e04a9ce\",\n        \"uncompressedBytes\": 2048,\n        \"uncompressedSha256\": \"c54934fc7c97189e555b9b4518548bba97a26a8f57a399a043aa7b3ca9ea9cd7\"\n      },\n      {\n        \"bytes\": 2071,\n        \"index\": 3,\n        \"offset\": 4096,\n        \"path\": \"parts/part-000003.gz\",\n        \"sha256\": \"c245ec3b5169de2b2f85110896db8f7ff0938be1512a6513fc79b1ff93955f84\",\n        \"uncompressedBytes\": 2048,\n        \"uncompressedSha256\": \"3a14857383b09e5176e4c3d79170ae1fa8a99ec74972e4d20f78ae745a6fa94d\"\n      },\n      {\n        \"bytes\": 2071,\n        \"index\": 4,\n        \"offset\": 6144,\n        \"path\": \"parts/part-000004.gz\",\n        \"sha256\": \"aa7e02f37f1940d0bf1fa31e32577d88b66b613d4309fcaae40c41829f1c4be4\",\n        \"uncompressedBytes\": 2048,\n        \"uncompressedSha256\": \"03dba8d104f3240b36382dd2a25f5988b894a4ddb094c6e04bb5780a7ac540cf\"\n      },\n      {\n        \"bytes\": 2071,\n        \"index\": 5,\n        \"offset\": 8192,\n        \"path\": \"parts/part-000005.gz\",\n        \"sha256\": \"575527ef8faf419140288d79423dbf9e5bd0d151f9b1fae16f83f22bfa4c6911\",\n        \"uncompressedBytes\": 2048,\n        \"uncompressedSha256\": \"537f4e995db083fc95cb2830f9f8babb6e88c390aa07c5582b118c66d6fd3ab8\"\n      },\n      {\n        \"bytes\": 2071,\n        \"index\": 6,\n        \"offset\": 10240,\n        \"path\": \"parts/part-000006.gz\",\n        \"sha256\": \"a8ebdabea1731c8f861758a8dff2772f458b15c88d8dd4fb91239dc1041f8c6e\",\n        \"uncompressedBytes\": 2048,\n        \"uncompressedSha256\": \"6b67c14e6502b5a4594b4ced88552f8ff764995f546cb737a9f4b6e283044444\"\n      },\n      {\n        \"bytes\": 80,\n        \"index\": 7,\n        \"offset\": 12288,\n        \"path\": \"parts/part-000007.gz\",\n        \"sha256\": \"ece7cf6bf0b1b7a642ce57cdb04f8c0808f46e6a8f6199fc79c21e2d769a9711\",\n        \"uncompressedBytes\": 57,\n        \"uncompressedSha256\": \"2ec2e1b26279bb365eea4a81a3be6a3a39d311b9075de67549590df696fbb4d2\"\n      }\n    ]\n  },\n  \"wroteRestoredFile\": false,\n  \"existingFilesOverwritten\": 0,\n  \"currentRuntimeSourcesRead\": 0,\n  \"journalPath\": \"/workspace/cqc-pass9-publication-preparation/lossless-tools/fixture-runs/run-7b258c3c7a3e4d34b85d23250cd1c2ec/test_roundtrip_multiple_parts_full_sha_and_git_blob/cli-verify-final.ndjson\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "name": "wrong-manifest-pin-cli-rejected",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/cqc-pass9-publication-preparation/lossless-tools/restore_snapshot.py",
+        "--manifest",
+        "/workspace/cqc-pass9-publication-preparation/lossless-tools/fixture-runs/run-7b258c3c7a3e4d34b85d23250cd1c2ec/test_roundtrip_multiple_parts_full_sha_and_git_blob/snapshot/SNAPSHOT_CHUNKS.json",
+        "--expected-manifest-sha256",
+        "0000000000000000000000000000000000000000000000000000000000000000",
+        "--journal",
+        "/workspace/cqc-pass9-publication-preparation/lossless-tools/fixture-runs/run-7b258c3c7a3e4d34b85d23250cd1c2ec/test_roundtrip_multiple_parts_full_sha_and_git_blob/cli-wrong-pin-final.ndjson",
+        "--verify-only"
+      ],
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "passed": true,
+      "stdout": "",
+      "stderr": "{\"status\": \"failed\", \"reason\": \"Manifest SHA256 mismatch\", \"partialArtifactsPreserved\": true}\n"
+    }
+  ],
+  "realCatalogRead": false,
+  "realCatalogCompressed": false,
+  "runtimeSourceWrites": 0,
+  "gitOperations": 0,
+  "apiOperations": 0,
+  "qualification": "Only synthetic fixture sources and manifests; no actual PASS9 catalog QA."
+}

@@ -1,0 +1,400 @@
+{
+  "schema": "cqc.pass41.anubis-rainbow-actual-local-qa-handoff/2",
+  "status": "PASS-qualified-local-browser-and-independent-HTTP-readbacks",
+  "scope": [
+    "core__snake:mgs3-camo-anubis",
+    "core__snake:mgs3-camo-rainbow"
+  ],
+  "cumulativeIndexSHA256": "d512714e728825194a60144ea0ef0bf38216dd01e5be21517fbeaf1226feeeb0",
+  "config": {
+    "path": "@PROJECT_ROOT@/integration/anubis-browser-qa-v1/BROWSER_CONFIG_CUMULATIVE4_TWO_JOBS_V2.json",
+    "bytes": 3968,
+    "sha256": "724048bb7b52a7f690cfa6736869ffb4a0ddcf412fe1c21d9f46cda7c6fbaf64"
+  },
+  "rawActualReport": {
+    "path": "@PROJECT_ROOT@/integration/anubis-browser-qa-v1/attempt-v1/ACTUAL_NATIVE_SUBSET_QA_V2.json",
+    "bytes": 1910128,
+    "sha256": "2757ab9e982bee8bb65d41f05c13dae1c675ddf4bca4da10432124199ecae2a7"
+  },
+  "checks": {
+    "mirrorMatches": 2,
+    "realNativeOriginalNativeMenuCyclesBothPlayers": true,
+    "nativeDecodeBeforeCommitAndNoFallbackPortraitObserved": true,
+    "stageSelect": 2,
+    "exactPauseStateChecks": 2,
+    "actualMk22AndGrenadeEmissions": 8,
+    "actualHeavyAndLowMoves": 8,
+    "nativeEmissionSourceWorldMaxError": 0,
+    "originalIdentitiesConservedBeforeAndAfter": 12,
+    "independentHTTPReadbacks": 8,
+    "gameplayBrowserBodiesObserved": 4,
+    "canceledFetchesPreservedAndQualified": 4,
+    "browserCrashesOrErrors": 0,
+    "P1MenuCycleEvidence": "main actual match runner plus narrow supplement actual GUI cycles",
+    "P2SameCostumeMenuCycleEvidence": "supplement attempt-v2, two explicit actualP2NativeOriginalSameNativeMenuCycle records, no combat-state/storage injection",
+    "P2CyclesAddedBySupplement": 2,
+    "passedMainCombatRerunForSupplement": false,
+    "errorCountQualification": "Zero errors in the two successful runs. First narrow supplement failed boot due ERR_INSUFFICIENT_RESOURCES; raw failed attempt is retained separately and not counted as a product pass."
+  },
+  "visualInspection": {
+    "JPEGsPhysicallyViewed": 4,
+    "files": [
+      {
+        "path": "@PROJECT_ROOT@/integration/anubis-browser-qa-v1/attempt-v1/core__snake--mgs3-camo-rainbow--actual-match.jpg",
+        "bytes": 249970,
+        "sha256": "f0057670811465bc2ff2bfd2399e9ae42dd2a57266bf3bf2490110db54e8bfef"
+      },
+      {
+        "path": "@PROJECT_ROOT@/integration/anubis-browser-qa-v1/attempt-v1/core__snake--mgs3-camo-anubis--actual-match.jpg",
+        "bytes": 249707,
+        "sha256": "a62fcae339bfa10d0fb892a07b9f2bc91604ededb341d8dbc3fb3df0fc865854"
+      },
+      {
+        "path": "@PROJECT_ROOT@/integration/anubis-browser-qa-v1/p2-menu-supplement-attempt-v2/core__snake--mgs3-camo-anubis--two-native-costumes.jpg",
+        "bytes": 140618,
+        "sha256": "43be84a02c507774bbb26b3619ff233f81642ab60dbbd4d99c152b1cd46d3e8d"
+      },
+      {
+        "path": "@PROJECT_ROOT@/integration/anubis-browser-qa-v1/p2-menu-supplement-attempt-v2/core__snake--mgs3-camo-rainbow--two-native-costumes.jpg",
+        "bytes": 141788,
+        "sha256": "2794e418f87c4a4589d1bccd29342d4f0df1161697532510dceedb1965911e95"
+      }
+    ],
+    "findings": [
+      "Anubis orange originalMGS3 uniform and Rainbow bands appear on both independently drawn orientations at matching stature and ground plane.",
+      "Two fighters complete, boots intact, stage rendered, no fallback character or disappeared image visible in actual match screenshots.",
+      "Rainbow excluded white source artifact is absent from the displayed figures.",
+      "JPEGs show actual idle match frames after actions; active attack poses are observed through real engine/spatial/frame records, not claimed captured in active JPEGs.",
+      "Both actual menu JPEGs physically viewed after P2 cycle: Anubis and Rainbow remain rendered in both slots with full boots, matching idle stature/ground placement, matching costume labels, no fallback or vanished image visible.",
+      "Actual menu preview intentionally uses the same right-facing idle image in both slots; independently drawn left orientation was checked in the earlier actual match and native preview geometry observations."
+    ]
+  },
+  "transportQualification": {
+    "actualGameBodyObserverMissing": [
+      {
+        "logicalPath": "assets/combat-costumes-pass41/core__snake/mgs3-camo-anubis/metadata-v2.json",
+        "sha256": "806030a173f32173ce1884bd353ca258830c688e1a48eea76fbba0a49d0c34f8"
+      },
+      {
+        "logicalPath": "assets/combat-costumes-pass41/core__snake/mgs3-camo-anubis/page0-right-v1.png",
+        "sha256": "c16c2ec3eabdc5550599f72b8570d9ee3c5f7fcd74c93adeda41c2ee710802d2"
+      },
+      {
+        "logicalPath": "assets/combat-costumes-pass41/core__snake/mgs3-camo-rainbow/metadata-v2.json",
+        "sha256": "f4a7bbec2ce76f42d24bf8ec50a0d6f94a6bc48970ff1f6167149610ba908fd3"
+      },
+      {
+        "logicalPath": "assets/combat-costumes-pass41/core__snake/mgs3-camo-rainbow/page1-left-v1.png",
+        "sha256": "60fe3edc9fcbc9e4de9deac0ec13db5f6b423352289c7dc0bd5ada2f145bb147"
+      }
+    ],
+    "independentHTTPReadbacks": [
+      {
+        "url": "http://127.0.0.1:8845/modules/unified-versus-v055.html",
+        "bytes": 3485328,
+        "sha256": "88dcc69df3fe56b1a881c833e50d40d3a026d280884626432bf1af4fb3d5fe29",
+        "transport": "separateNodeHTTPreadbacknotgameplaybrowserbody",
+        "productionHTTPS": false
+      },
+      {
+        "url": "http://127.0.0.1:8845/src/cqc-pass41-native-batch-index-v1.js",
+        "bytes": 109865,
+        "sha256": "d512714e728825194a60144ea0ef0bf38216dd01e5be21517fbeaf1226feeeb0",
+        "transport": "separateNodeHTTPreadbacknotgameplaybrowserbody",
+        "productionHTTPS": false
+      },
+      {
+        "url": "http://127.0.0.1:8845/assets/combat-costumes-pass41/core__snake/mgs3-camo-anubis/metadata-v2.json",
+        "bytes": 2498717,
+        "sha256": "806030a173f32173ce1884bd353ca258830c688e1a48eea76fbba0a49d0c34f8",
+        "transport": "separateNodeHTTPreadbacknotgameplaybrowserbody",
+        "productionHTTPS": false
+      },
+      {
+        "url": "http://127.0.0.1:8845/assets/combat-costumes-pass41/core__snake/mgs3-camo-anubis/page0-right-v1.png",
+        "bytes": 1154350,
+        "sha256": "c16c2ec3eabdc5550599f72b8570d9ee3c5f7fcd74c93adeda41c2ee710802d2",
+        "transport": "separateNodeHTTPreadbacknotgameplaybrowserbody",
+        "productionHTTPS": false
+      },
+      {
+        "url": "http://127.0.0.1:8845/assets/combat-costumes-pass41/core__snake/mgs3-camo-anubis/page1-left-v1.png",
+        "bytes": 1282150,
+        "sha256": "c3fa86cd639f4c7be278fd06eb015d919c988bb2e6317c1a58207c5b525a8034",
+        "transport": "separateNodeHTTPreadbacknotgameplaybrowserbody",
+        "productionHTTPS": false
+      },
+      {
+        "url": "http://127.0.0.1:8845/assets/combat-costumes-pass41/core__snake/mgs3-camo-rainbow/metadata-v2.json",
+        "bytes": 2396945,
+        "sha256": "f4a7bbec2ce76f42d24bf8ec50a0d6f94a6bc48970ff1f6167149610ba908fd3",
+        "transport": "separateNodeHTTPreadbacknotgameplaybrowserbody",
+        "productionHTTPS": false
+      },
+      {
+        "url": "http://127.0.0.1:8845/assets/combat-costumes-pass41/core__snake/mgs3-camo-rainbow/page0-right-v1.png",
+        "bytes": 1238748,
+        "sha256": "590b16b3caaff9995e3c67858be911c7d5f5f4cee3ebf970948e0bede83ae867",
+        "transport": "separateNodeHTTPreadbacknotgameplaybrowserbody",
+        "productionHTTPS": false
+      },
+      {
+        "url": "http://127.0.0.1:8845/assets/combat-costumes-pass41/core__snake/mgs3-camo-rainbow/page1-left-v1.png",
+        "bytes": 1349996,
+        "sha256": "60fe3edc9fcbc9e4de9deac0ec13db5f6b423352289c7dc0bd5ada2f145bb147",
+        "transport": "separateNodeHTTPreadbacknotgameplaybrowserbody",
+        "productionHTTPS": false
+      }
+    ],
+    "legacyRemoteSourceFixtures": {
+      "responses": 7,
+      "bytePinned": true,
+      "localFixtureFulfillmentExplicit": true
+    },
+    "productionHTTPSBrowserObserved": false,
+    "qualification": "Game browser bodyobserver incomplete; exact independentHTTPreadbacks cover every stagedroute. Raw canceledfetchobservations preserved; no claim allbodieswereobservedbygameplaybrowser."
+  },
+  "previousFestivalSwamp": {
+    "rerun": false,
+    "priorQualifiedGameplayProofReusedSeparatelyByIntegrator": true,
+    "thisRunDoesNotClaimTheirNewGameplayExecution": true
+  },
+  "closure": {
+    "runnerReceipt": {
+      "path": "@PROJECT_ROOT@/integration/anubis-browser-qa-v1/OWNED_PROCESSES_CLOSED_ACTUAL_V1.json",
+      "bytes": 714,
+      "sha256": "09c46c7753df28c972a8c40092e6da20155e7392861cc4ef4d4ef65754508148"
+    },
+    "independentOwnedProcessAndPortChecks": [
+      {
+        "port": 9553,
+        "connectEx": 111,
+        "acceptingConnections": false
+      },
+      {
+        "port": 8845,
+        "connectEx": 111,
+        "acceptingConnections": false
+      },
+      {
+        "pid": 112858,
+        "kind": "ownedBrowserPid",
+        "procEntryPresent": false
+      },
+      {
+        "pid": 112857,
+        "kind": "ownedHTTPPid",
+        "procEntryPresent": false
+      }
+    ],
+    "bindReprobeQualification": "Initial raw bind without SO_REUSEADDR hit an address-in-use condition after teardown; connect probes and absent ownedPIDs prove no active listener remains. No process was killed by ownership guess.",
+    "P2Supplement": {
+      "runnerReceipt": {
+        "path": "@PROJECT_ROOT@/integration/anubis-browser-qa-v1/OWNED_PROCESSES_CLOSED_ACTUAL_P2_SUPPLEMENT_V2.json",
+        "bytes": 730,
+        "sha256": "20b6c602a21c8dcae70a288642825b73b69817edae53fc00eaed79b23b5fb765"
+      },
+      "independentOwnedProcessAndPortChecks": [
+        {
+          "kind": "ownedBrowserPid",
+          "pid": 114964,
+          "procEntryPresent": false
+        },
+        {
+          "kind": "ownedHTTPPid",
+          "pid": 114963,
+          "procEntryPresent": false
+        },
+        {
+          "port": 9553,
+          "connectEx": 111,
+          "acceptingConnections": false
+        },
+        {
+          "port": 8845,
+          "connectEx": 111,
+          "acceptingConnections": false
+        }
+      ]
+    }
+  },
+  "productMutations": false,
+  "sourcePNGMutations": false,
+  "combatStateOrStorageInjected": false,
+  "certificateChanges": false,
+  "SSLBypassFlags": false,
+  "runtimeInstalled": false,
+  "publicationClaimed": false,
+  "supersedes": {
+    "path": "@PROJECT_ROOT@/integration/anubis-browser-qa-v1/ANUBIS_RAINBOW_ACTUAL_LOCAL_QA_HANDOFF_V1.json",
+    "bytes": 8003,
+    "sha256": "a9226dcf6f4a095510ea5139ac237040c6c8bc844560e1422e90397ed0915f61"
+  },
+  "supersedesQualification": "V1 was not final-delivered and had an overbroad both-players menu-cycle statement; V2 binds the actual narrow P2 supplement that supplies the missing evidence without replaying passed combat.",
+  "P2MenuSupplement": {
+    "status": "passed actual P2 same-costume native-original-native menu cycles with exact restoration and originalconservation",
+    "rawActualReport": {
+      "path": "@PROJECT_ROOT@/integration/anubis-browser-qa-v1/p2-menu-supplement-attempt-v2/ACTUAL_NATIVE_SUBSET_QA_V2.json",
+      "bytes": 111220,
+      "sha256": "6ada0011a88ddcd3f3ecf07ae2ff97786af5b8358f1806680ccbd1325bc367ea"
+    },
+    "config": {
+      "path": "@PROJECT_ROOT@/integration/anubis-browser-qa-v1/BROWSER_CONFIG_P2_MENU_SUPPLEMENT_V2.json",
+      "bytes": 3987,
+      "sha256": "d73731d02656efe82384a5afd90b2e69c21cdf60251e36464536138a8fbbc8a4"
+    },
+    "actualCycles": [
+      {
+        "uid": "core__snake",
+        "id": "mgs3-camo-anubis",
+        "nativeOriginalSameNative": true,
+        "facesExactlyRestored": true
+      },
+      {
+        "uid": "core__snake",
+        "id": "mgs3-camo-rainbow",
+        "nativeOriginalSameNative": true,
+        "facesExactlyRestored": true
+      }
+    ],
+    "originalIdentitiesConservedBeforeAndAfter": 12,
+    "independentLocalHTTPReadbacks": [
+      {
+        "url": "http://127.0.0.1:8845/modules/unified-versus-v055.html",
+        "bytes": 3485328,
+        "sha256": "88dcc69df3fe56b1a881c833e50d40d3a026d280884626432bf1af4fb3d5fe29",
+        "transport": "separateNodeHTTPreadbacknotgameplaybrowserbody",
+        "productionHTTPS": false
+      },
+      {
+        "url": "http://127.0.0.1:8845/src/cqc-pass41-native-batch-index-v1.js",
+        "bytes": 109865,
+        "sha256": "d512714e728825194a60144ea0ef0bf38216dd01e5be21517fbeaf1226feeeb0",
+        "transport": "separateNodeHTTPreadbacknotgameplaybrowserbody",
+        "productionHTTPS": false
+      },
+      {
+        "url": "http://127.0.0.1:8845/assets/combat-costumes-pass41/core__snake/mgs3-camo-anubis/metadata-v2.json",
+        "bytes": 2498717,
+        "sha256": "806030a173f32173ce1884bd353ca258830c688e1a48eea76fbba0a49d0c34f8",
+        "transport": "separateNodeHTTPreadbacknotgameplaybrowserbody",
+        "productionHTTPS": false
+      },
+      {
+        "url": "http://127.0.0.1:8845/assets/combat-costumes-pass41/core__snake/mgs3-camo-anubis/page0-right-v1.png",
+        "bytes": 1154350,
+        "sha256": "c16c2ec3eabdc5550599f72b8570d9ee3c5f7fcd74c93adeda41c2ee710802d2",
+        "transport": "separateNodeHTTPreadbacknotgameplaybrowserbody",
+        "productionHTTPS": false
+      },
+      {
+        "url": "http://127.0.0.1:8845/assets/combat-costumes-pass41/core__snake/mgs3-camo-anubis/page1-left-v1.png",
+        "bytes": 1282150,
+        "sha256": "c3fa86cd639f4c7be278fd06eb015d919c988bb2e6317c1a58207c5b525a8034",
+        "transport": "separateNodeHTTPreadbacknotgameplaybrowserbody",
+        "productionHTTPS": false
+      },
+      {
+        "url": "http://127.0.0.1:8845/assets/combat-costumes-pass41/core__snake/mgs3-camo-rainbow/metadata-v2.json",
+        "bytes": 2396945,
+        "sha256": "f4a7bbec2ce76f42d24bf8ec50a0d6f94a6bc48970ff1f6167149610ba908fd3",
+        "transport": "separateNodeHTTPreadbacknotgameplaybrowserbody",
+        "productionHTTPS": false
+      },
+      {
+        "url": "http://127.0.0.1:8845/assets/combat-costumes-pass41/core__snake/mgs3-camo-rainbow/page0-right-v1.png",
+        "bytes": 1238748,
+        "sha256": "590b16b3caaff9995e3c67858be911c7d5f5f4cee3ebf970948e0bede83ae867",
+        "transport": "separateNodeHTTPreadbacknotgameplaybrowserbody",
+        "productionHTTPS": false
+      },
+      {
+        "url": "http://127.0.0.1:8845/assets/combat-costumes-pass41/core__snake/mgs3-camo-rainbow/page1-left-v1.png",
+        "bytes": 1349996,
+        "sha256": "60fe3edc9fcbc9e4de9deac0ec13db5f6b423352289c7dc0bd5ada2f145bb147",
+        "transport": "separateNodeHTTPreadbacknotgameplaybrowserbody",
+        "productionHTTPS": false
+      }
+    ],
+    "browserBodyObserverMissing": [
+      {
+        "logicalPath": "assets/combat-costumes-pass41/core__snake/mgs3-camo-anubis/metadata-v2.json",
+        "sha256": "806030a173f32173ce1884bd353ca258830c688e1a48eea76fbba0a49d0c34f8"
+      },
+      {
+        "logicalPath": "assets/combat-costumes-pass41/core__snake/mgs3-camo-rainbow/metadata-v2.json",
+        "sha256": "f4a7bbec2ce76f42d24bf8ec50a0d6f94a6bc48970ff1f6167149610ba908fd3"
+      },
+      {
+        "logicalPath": "assets/combat-costumes-pass41/core__snake/mgs3-camo-rainbow/page0-right-v1.png",
+        "sha256": "590b16b3caaff9995e3c67858be911c7d5f5f4cee3ebf970948e0bede83ae867"
+      },
+      {
+        "logicalPath": "assets/combat-costumes-pass41/core__snake/mgs3-camo-rainbow/page1-left-v1.png",
+        "sha256": "60fe3edc9fcbc9e4de9deac0ec13db5f6b423352289c7dc0bd5ada2f145bb147"
+      }
+    ],
+    "rawLoadingFailuresPreserved": [
+      {
+        "requestId": "115073.427",
+        "timestamp": 75214.207346,
+        "type": "Fetch",
+        "errorText": "net::ERR_ABORTED",
+        "canceled": true,
+        "url": "https://raw.githubusercontent.com/darknigthmare/shadow-codec-ops/475b8c0d1edeb00b728529c9c7c421d19277a157/raw/10bc1fd4b1c7e3b88305ccf71cad5fec2c33d8b015d3a26bed545701322edfd3.png"
+      },
+      {
+        "requestId": "115073.433",
+        "timestamp": 75214.343794,
+        "type": "Fetch",
+        "errorText": "net::ERR_ABORTED",
+        "canceled": true,
+        "url": "http://127.0.0.1:8845/assets/combat-costumes-pass41/core__snake/mgs3-camo-anubis/metadata-v2.json"
+      },
+      {
+        "requestId": "115073.441",
+        "timestamp": 75220.36218,
+        "type": "Fetch",
+        "errorText": "net::ERR_ABORTED",
+        "canceled": true,
+        "url": "http://127.0.0.1:8845/assets/combat-costumes-pass41/core__snake/mgs3-camo-rainbow/metadata-v2.json"
+      },
+      {
+        "requestId": "115073.442",
+        "timestamp": 75220.439026,
+        "type": "Fetch",
+        "errorText": "net::ERR_ABORTED",
+        "canceled": true,
+        "url": "http://127.0.0.1:8845/assets/combat-costumes-pass41/core__snake/mgs3-camo-rainbow/page0-right-v1.png"
+      },
+      {
+        "requestId": "115073.443",
+        "timestamp": 75220.442259,
+        "type": "Fetch",
+        "errorText": "net::ERR_ABORTED",
+        "canceled": true,
+        "url": "http://127.0.0.1:8845/assets/combat-costumes-pass41/core__snake/mgs3-camo-rainbow/page1-left-v1.png"
+      }
+    ],
+    "bodyObserverQualification": "Game browser bodyobserver incomplete; exact independentHTTPreadbacks cover every stagedroute. Raw canceledfetchobservations preserved; no claim allbodieswereobservedbygameplaybrowser.",
+    "combatReplay": false,
+    "errors": [],
+    "consoleErrors": [],
+    "targetCrashes": [],
+    "firstFailedAttemptPreserved": {
+      "path": "@PROJECT_ROOT@/integration/anubis-browser-qa-v1/p2-menu-supplement-attempt-v1",
+      "qualification": "Browser boot failed with net::ERR_INSUFFICIENT_RESOURCES causing missing scripts; no completed GUI cycles in this attempt. A single fresh owned profile retry succeeded with unchanged runtime8 byte pins, no assertion/transport weakening.",
+      "report": {
+        "path": "@PROJECT_ROOT@/integration/anubis-browser-qa-v1/p2-menu-supplement-attempt-v1/ACTUAL_NATIVE_SUBSET_QA_V2.json",
+        "bytes": 19562,
+        "sha256": "5d446113328d4b2ebdc82b133b23d4e3c9007bcd2ee7c88a28bc293001fbb2a7"
+      },
+      "closure": {
+        "path": "@PROJECT_ROOT@/integration/anubis-browser-qa-v1/OWNED_PROCESSES_CLOSED_ACTUAL_P2_SUPPLEMENT_V1.json",
+        "bytes": 730,
+        "sha256": "3a096227740da498f05d7b11271750d43f5fb9822caa6bca8ab4c3f7bd94f11e"
+      }
+    }
+  },
+  "generatedAtUTC": "2026-10-23T02:33:53.941187+00:00"
+}

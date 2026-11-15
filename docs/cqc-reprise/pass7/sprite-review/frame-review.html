@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PASS7 native frame review</title>
+<style>
+  body{margin:0;background:#161c21;color:#e5ecef;font:16px system-ui,sans-serif}
+  header{padding:18px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+  select{font:inherit;padding:7px;background:#26343e;color:#fff}
+  p{margin:0;padding:0 18px 12px}canvas{display:block;max-width:100%;height:auto}
+</style>
+<header><strong>PASS7 native frame review</strong><select id="fighter" aria-label="Exact fighter UID"></select><select id="sheet" aria-label="Native source sheet"></select></header>
+<p id="status">Loading reviewed native frames…</p>
+<canvas id="frames" width="1260" height="1080"></canvas>
+<script src="../../src/cqc-sprite-catalog.js"></script>
+<script src="../../src/cqc-sprite-renderer.js"></script>
+<script>
+'use strict';
+const uids=['core__raven','core__old_snake','core__quiet','archive__skull_face'].filter(uid=>CQC_COMBAT_SPRITE_CATALOG.entries[uid]);
+const catalog=CQC_COMBAT_SPRITE_CATALOG,api=CQC_COMBAT_SPRITES,canvas=document.querySelector('#frames'),ctx=canvas.getContext('2d');
+for(const uid of uids){const option=document.createElement('option');option.value=uid;option.textContent=uid;document.querySelector('#fighter').append(option)}
+for(const key of ['a-right','a-left','b-right','b-left','c-right','c-left']){const option=document.createElement('option');option.value=key;option.textContent=key;document.querySelector('#sheet').append(option)}
+function poseFor(entry,action,index){
+  const fps=entry.actions[action].fps,pose={actionTime:fps?index/fps+.00001:0,time:0};
+  if(['idle','walk','guard','crouch','jump','hit','ko'].includes(action)){if(action!=='idle')pose[action]=true;return pose}
+  const slot=Object.keys(entry.actionMap).find(k=>entry.actionMap[k]===action);
+  if(!slot)throw Error('Authored action has no state or explicit review slot: '+action);
+  return {...pose,moveSlot:slot,animationActive:true};
+}
+window.reviewNativeSheet=async(uid,key)=>{
+  document.querySelector('#fighter').value=uid;document.querySelector('#sheet').value=key;
+  const entry=catalog.entries[uid];if(!entry)throw Error('Reviewed entry not imported '+uid);
+  if(!await api.whenReady(uid))throw Error('Native PNG preload failed '+uid);
+  const face=key.endsWith('left')?-1:1,actions=face===entry.facing?entry.actions:entry.oppositeActions;
+  // Unused authored groups remain part of the source art. Review them through a
+  // temporary explicit preview slot; do not invent an actual playable move or
+  // mutate the production catalog, action maps, PNGs or renderer source.
+  const extraSlots={};
+  for(const action of Object.keys(actions))if(!['idle','walk','guard','crouch','jump','hit','ko','attack'].includes(action)&&!Object.values(entry.actionMap).includes(action))extraSlots['__nativeReview_'+action]=action;
+  const reviewEntry={...entry,actionMap:{...entry.actionMap,...extraSlots}};
+  api.configure({...catalog,entries:{...catalog.entries,[uid]:reviewEntry}});
+  if(!await api.whenReady(uid))throw Error('Native preview PNG preload failed '+uid);
+  const directional={...reviewEntry,actions},rows=[],seen=new Set();
+  for(const [action,spec] of Object.entries(actions))for(const [index,frame] of spec.frames.entries()){
+    if(!frame.file.endsWith('/'+key+'-v1.png'))continue;
+    const signature=JSON.stringify(frame.rect);if(seen.has(signature))continue;seen.add(signature);rows.push({action,index,frame});
+  }
+  if(rows.length!==12)throw Error('Expected twelve authored native source poses '+uid+' '+key);
+  rows.sort((a,b)=>a.frame.rect[1]+a.frame.rect[3]/2-b.frame.rect[1]-b.frame.rect[3]/2);
+  for(let row=0;row<3;row++)rows.splice(row*4,4,...rows.slice(row*4,row*4+4).sort((a,b)=>a.frame.rect[0]+a.frame.rect[2]/2-b.frame.rect[0]-b.frame.rect[2]/2));
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  for(let y=0;y<1080;y+=20)for(let x=0;x<1260;x+=20){ctx.fillStyle=((x+y)/20)%2?'#28323a':'#202930';ctx.fillRect(x,y,20,20)}
+  const observations=[];
+  for(const [position,row] of rows.entries()){
+    const col=position%4,line=Math.floor(position/4),left=col*315,top=line*360,frame=row.frame;
+    const sourceHeight=entry.sourceFrameHeights[frame.file],nativeWidth=frame.rect[2]*entry.displayHeight/sourceHeight,nativeHeight=frame.rect[3]*entry.displayHeight/sourceHeight,scale=Math.min(1,280/nativeWidth,275/nativeHeight);
+    const pose=poseFor(directional,row.action,row.index);
+    const selected=api.selectFrame(directional,pose);if(selected.frame!==frame)throw Error('Wrong actual frame selected');
+    const actorX=left+157.5+nativeWidth*scale*(frame.pivot[0]-.5),bounds=[left+157.5-nativeWidth*scale/2,top+315-nativeHeight*scale*frame.pivot[1],nativeWidth*scale,nativeHeight*scale];
+    if(bounds[0]<left||bounds[0]+bounds[2]>left+315||bounds[1]<top+35||bounds[1]+bounds[3]>top+330)throw Error('Complete native crop extends outside review cell');
+    const ok=api.draw(ctx,{uid},actorX,top+315,face,scale,pose);if(!ok)throw Error('Native render failed');
+    ctx.save();ctx.strokeStyle='#79dbe6';ctx.lineWidth=1;ctx.setLineDash([3,4]);
+    ctx.beginPath();ctx.moveTo(actorX,top+40);ctx.lineTo(actorX,top+319);ctx.stroke();
+    ctx.setLineDash([]);ctx.beginPath();ctx.moveTo(actorX-7,top+315);ctx.lineTo(actorX+7,top+315);ctx.stroke();ctx.restore();
+    ctx.fillStyle='#fff';ctx.font='15px system-ui';ctx.fillText(position+' · '+row.action+' ['+row.index+']',left+12,top+24);
+    ctx.fillStyle='#a9c3d2';ctx.fillText(frame.clipPolygon?'Contour excludes neighboring pose':'Native rectangle',left+12,top+346);
+    observations.push({uid,key,face,position,action:row.action,index:row.index,file:frame.file,sha256:frame.sha256,rect:frame.rect,pivot:frame.pivot,clipPolygon:frame.clipPolygon||null,sourceFrameHeight:sourceHeight,reviewScale:scale,reviewBounds:bounds,frameFullyInsideCell:true,nativeFacingWithoutMirror:true,poseSelection:pose.moveSlot?.startsWith('__nativeReview_')?'review-only-unused-source-group':pose.moveSlot?'actual-move-slot':'actual-state'});
+  }
+  api.configure(catalog);
+  window.__nativeFrameReview=observations;
+  document.querySelector('#status').textContent=entry.name+' · '+entry.incarnation+' · '+key+' · 12 complete native pose crops';
+  return observations;
+};
+document.querySelector('#fighter').onchange=document.querySelector('#sheet').onchange=()=>reviewNativeSheet(document.querySelector('#fighter').value,document.querySelector('#sheet').value).catch(e=>{document.querySelector('#status').textContent=e.message;throw e});
+if(catalog.entries[uids[0]])reviewNativeSheet(uids[0],'a-right');else document.querySelector('#status').textContent='Awaiting approved PASS7 imports.';
+</script>
+</html>

@@ -1,0 +1,2628 @@
+{
+  "schema": "cqc.pass15.actual-natural-machine-game/1",
+  "closed": true,
+  "actualRun": true,
+  "actualCombat": true,
+  "smokeOnly": true,
+  "synthetic": false,
+  "status": "passed",
+  "failure": null,
+  "boss": "raxa",
+  "mobileShadow": false,
+  "sourceBindings": {
+    "index.html": {
+      "bytes": 32805,
+      "sha256": "1cde08a124f5626efdf98a32bdee6bee1baf092eb5718ffb768b9ccae8c88819"
+    },
+    "modules/core-v032.html": {
+      "bytes": 1528007,
+      "sha256": "61a01d070b32c78b665a2e8427a631dda07f7fb37458f4bae4cc98b8016381a5"
+    },
+    "src/cqc-machine-parts-catalog-v1.js": {
+      "bytes": 58841,
+      "sha256": "2d6052daf8d28f5e404de0ae3f4c3ee0338a6990f1fceefa78b9d644350c3cd3"
+    },
+    "src/cqc-machine-parts-renderer-v1.js": {
+      "bytes": 26645,
+      "sha256": "a4b346b2f825925adba9aa01611d847b9a5cf2353649440cfe5270bca1b15693"
+    },
+    "src/cqc-machine-parts-bridge-v1.js": {
+      "bytes": 11892,
+      "sha256": "cf28178ff341d08a388053959e1c0a759fc2019a903bd1b5e9b6c259bbce120f"
+    },
+    "src/cqc-stage-layers.js": {
+      "bytes": 23680,
+      "sha256": "d3d648f4259133bc0ad00c3d452d7986b0422450c22304f0bf7dc52a47357c37"
+    },
+    "src/cqc-pass12-stage-bridge.js": {
+      "bytes": 13208,
+      "sha256": "21fff1ef1e49148ea48814ec83f7bbd33c9ad87aed71e75d3b09cdde5da2c25b"
+    },
+    "src/cqc-stage-layer-data.js": {
+      "bytes": 160513,
+      "sha256": "6099ce04ab9f908600469ba28ab2c9ec352a95e4d0f510c14ee884a27732afe2"
+    },
+    "src/cqc-pass12-stage-data.js": {
+      "bytes": 65750,
+      "sha256": "eb747aa6d8ddd8b05d4ba902a6981ec8a8152c2a0106534330001d94417375f7"
+    },
+    "src/cqc-pass14-rex-stage-data.js": {
+      "bytes": 16269,
+      "sha256": "83c61ec364e668c5ef754a6e626d69c22cf91f0435ab1221d29b9ce29e27d1c6"
+    },
+    "src/cqc-pass15-mpo-stage-data.js": {
+      "bytes": 20089,
+      "sha256": "a38f1afd9635a209238704d146c6c4bef8df22a572f392d7107e0f40dea9d0ed"
+    },
+    "assets/machine-parts/raxa-mpo-psp/body.png": {
+      "bytes": 1946701,
+      "sha256": "9abfbcaf2254ea36619dd627d30be065726100cc5750bb4ff06d88bfcf594f88"
+    },
+    "assets/machine-parts/raxa-mpo-psp/equipment.png": {
+      "bytes": 2074433,
+      "sha256": "4145648ef07d74950cc92483ddbfc8909c75328fcd449d328bfa7ec1fac035b5"
+    },
+    "assets/machine-parts/raxa-mpo-psp/legs.png": {
+      "bytes": 1896598,
+      "sha256": "cac75cce19bd350049d6181bed2d88c8522f92ceb603729388e7eeae83144e66"
+    },
+    "assets/machine-parts/raxa-mpo-psp/bays.png": {
+      "bytes": 2267401,
+      "sha256": "4496c2c7ef5b28a6ee887b1bab4560168627ef25792ad42a75cdd157e5529d19"
+    },
+    "assets/stages-reprise/mpo_raxa_test_hangar/back.png": {
+      "bytes": 1642823,
+      "sha256": "20f9d035f25cc9aa47b80f31f8449faf77c900c484e0ae97b4c786be5e7b747a"
+    },
+    "assets/stages-reprise/mpo_raxa_test_hangar/ground.png": {
+      "bytes": 902745,
+      "sha256": "37c71a6bfc580eef71e52dd5c9cae333b102fffe7dfe8b01459ae9c69e7cbab2"
+    },
+    "assets/stages-reprise/mpo_raxa_test_hangar/architecture.png": {
+      "bytes": 208736,
+      "sha256": "ad07746a43968bbb84fbd307952d687e5fa0b527021e42496d2b7022b029e813"
+    },
+    "assets/stages-reprise/mpo_raxa_test_hangar/foreground.png": {
+      "bytes": 179998,
+      "sha256": "db9db87b02e9a777844a19bcb858811fb3d7760e6ed200196b263564cf272ae8"
+    }
+  },
+  "runner": {
+    "path": "/tmp/cqc-pass15-browser-preparation/run-natural-machines-v2.py",
+    "sha256": "d97968bf24e9c5cdb9e3dfec0ebce39b5af09fdd68246e9874cf0c42997b7463",
+    "observerPath": "/tmp/cqc-pass15-browser-preparation/pass15-passive-observer-v2.js",
+    "observerSHA256": "64ef028a326f5d39b9f029ef231188d26a5ba3594dd91403fc830d46a9b067cd"
+  },
+  "checks": [
+    {
+      "name": "initial-Core-menu",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": false,
+        "phase": "intro",
+        "frame": 0,
+        "timer": 5940,
+        "paused": false,
+        "boss": null,
+        "player": {
+          "id": "boss",
+          "x": 560,
+          "y": 0,
+          "health": 10000,
+          "resource": 0,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": null
+        },
+        "projectiles": [],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mgs3-rokovoj-bereg-champ-de-fleurs",
+          "mapped": "flower_field",
+          "ground": 578,
+          "native": {
+            "id": "flower_field",
+            "state": "loading",
+            "errors": [],
+            "approved": true,
+            "layers": 4,
+            "weatherType": "petals"
+          }
+        },
+        "stageDiagnostics": {
+          "coreBackground": 0,
+          "coreForeground": 0,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": false,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 1280,
+          "height": 852
+        },
+        "topViewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 0,
+          "displayWidth": 1280,
+          "displayHeight": 852
+        }
+      }
+    },
+    {
+      "name": "raxa-before-start",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": false,
+        "phase": "intro",
+        "frame": 0,
+        "timer": 14400,
+        "paused": false,
+        "boss": {
+          "id": "raxa",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": false,
+          "attack": null,
+          "idle": 110,
+          "lastAttack": null,
+          "cycle": 0,
+          "serial": 0,
+          "activeFrames": 0,
+          "hazards": [],
+          "rations": 2,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 0,
+          "hits": 0,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 0,
+          "damageTaken": 0,
+          "guards": 0,
+          "feedback": "QUATRE APPUIS PUIS DEUX SOUTES / B CHOISIT / D RPG",
+          "feedbackFrames": 200,
+          "legs": {
+            "p1": 1600,
+            "p2": 1600,
+            "p3": 1600,
+            "p4": 1600
+          },
+          "pods": {
+            "left": 3200,
+            "right": 3200
+          },
+          "aimMode": "auto",
+          "x": 1170,
+          "y": 0,
+          "legHits": 0,
+          "podHits": 0
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 340,
+          "y": 0,
+          "health": 10000,
+          "resource": 8,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": null
+        },
+        "projectiles": [],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "loading",
+              "attemptState": "loading",
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "loading",
+              "attemptState": "loading",
+              "error": null,
+              "pins": []
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-site-essai-raxa",
+          "mapped": "mpo_raxa_test_hangar",
+          "ground": 600,
+          "native": {
+            "id": "mpo_raxa_test_hangar",
+            "state": "loading",
+            "errors": [],
+            "approved": true,
+            "layers": 4,
+            "weatherType": "none"
+          }
+        },
+        "stageDiagnostics": {
+          "coreBackground": 35,
+          "coreForeground": 35,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": false,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 1280,
+          "height": 852
+        },
+        "topViewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 0,
+          "displayWidth": 1280,
+          "displayHeight": 852
+        }
+      }
+    },
+    {
+      "name": "raxa-cold-native-ready-fight",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": true,
+        "phase": "fight",
+        "frame": 271,
+        "timer": 14399,
+        "paused": false,
+        "boss": {
+          "id": "raxa",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": false,
+          "attack": null,
+          "idle": 109,
+          "lastAttack": null,
+          "cycle": 0,
+          "serial": 0,
+          "activeFrames": 1,
+          "hazards": [],
+          "rations": 2,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 0,
+          "hits": 0,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 0,
+          "damageTaken": 0,
+          "guards": 0,
+          "feedback": "QUATRE APPUIS PUIS DEUX SOUTES / B CHOISIT / D RPG",
+          "feedbackFrames": 199,
+          "legs": {
+            "p1": 1600,
+            "p2": 1600,
+            "p3": 1600,
+            "p4": 1600
+          },
+          "pods": {
+            "left": 3200,
+            "right": 3200
+          },
+          "aimMode": "auto",
+          "x": 1170,
+          "y": 0,
+          "legHits": 0,
+          "podHits": 0
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 340,
+          "y": 0,
+          "health": 10000,
+          "resource": 8,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": null
+        },
+        "projectiles": [],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/rex-mgs1/body.png",
+                  "bytes": 2004429,
+                  "sha256": "b9c49febc4e7bda8897c0d2b1269cee4830265421a300370503f1de9d1a870fe",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "head",
+                  "file": "assets/machine-parts/rex-mgs1/head.png",
+                  "bytes": 2041360,
+                  "sha256": "706dcbc4c5ed1558d97075f6c5262d81d99d0ddbe9affc128ce80ef399bc066c",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "body_components",
+                  "file": "assets/machine-parts/rex-mgs1/body_components.png",
+                  "bytes": 1437350,
+                  "sha256": "5384ced4c9df00585d6500bb658b6d948db116044df2078a4f3aa82117e86156",
+                  "width": 1448,
+                  "height": 1086
+                },
+                {
+                  "id": "near_legs",
+                  "file": "assets/machine-parts/rex-mgs1/near_legs.png",
+                  "bytes": 2251232,
+                  "sha256": "6df07e6b1f05eb5392dc3c30d8c3b297259ee41fef52ab102539e7bb1db12403",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "far_legs",
+                  "file": "assets/machine-parts/rex-mgs1/far_legs.png",
+                  "bytes": 1365627,
+                  "sha256": "05d6dc576712ce5310430a9c1aa635d66ba507908a5f1fc5dd3864002c6913de",
+                  "width": 2172,
+                  "height": 724
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/rex-mgs1/equipment.png",
+                  "bytes": 1964138,
+                  "sha256": "cf6be6b13959b055a6cdcbf380ac84346467d4ef71d8af59cfd2e4821d49d413",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/raxa-mpo-psp/body.png",
+                  "bytes": 1946701,
+                  "sha256": "9abfbcaf2254ea36619dd627d30be065726100cc5750bb4ff06d88bfcf594f88",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/raxa-mpo-psp/equipment.png",
+                  "bytes": 2074433,
+                  "sha256": "4145648ef07d74950cc92483ddbfc8909c75328fcd449d328bfa7ec1fac035b5",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "legs",
+                  "file": "assets/machine-parts/raxa-mpo-psp/legs.png",
+                  "bytes": 1896598,
+                  "sha256": "cac75cce19bd350049d6181bed2d88c8522f92ceb603729388e7eeae83144e66",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "bays",
+                  "file": "assets/machine-parts/raxa-mpo-psp/bays.png",
+                  "bytes": 2267401,
+                  "sha256": "4496c2c7ef5b28a6ee887b1bab4560168627ef25792ad42a75cdd157e5529d19",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-site-essai-raxa",
+          "mapped": "mpo_raxa_test_hangar",
+          "ground": 600,
+          "native": {
+            "id": "mpo_raxa_test_hangar",
+            "state": "ready",
+            "errors": [],
+            "approved": true,
+            "layers": 4,
+            "weatherType": "none"
+          }
+        },
+        "stageDiagnostics": {
+          "coreBackground": 325,
+          "coreForeground": 325,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": false,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 1280,
+          "height": 852
+        },
+        "topViewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 0,
+          "displayWidth": 1280,
+          "displayHeight": 852
+        }
+      }
+    },
+    {
+      "name": "raxa-pause-before",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": true,
+        "phase": "fight",
+        "frame": 278,
+        "timer": 14392,
+        "paused": true,
+        "boss": {
+          "id": "raxa",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": false,
+          "attack": null,
+          "idle": 102,
+          "lastAttack": null,
+          "cycle": 0,
+          "serial": 0,
+          "activeFrames": 8,
+          "hazards": [],
+          "rations": 2,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 0,
+          "hits": 0,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 0,
+          "damageTaken": 0,
+          "guards": 0,
+          "feedback": "QUATRE APPUIS PUIS DEUX SOUTES / B CHOISIT / D RPG",
+          "feedbackFrames": 192,
+          "legs": {
+            "p1": 1600,
+            "p2": 1600,
+            "p3": 1600,
+            "p4": 1600
+          },
+          "pods": {
+            "left": 3200,
+            "right": 3200
+          },
+          "aimMode": "auto",
+          "x": 1170,
+          "y": 0,
+          "legHits": 0,
+          "podHits": 0
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 340,
+          "y": 0,
+          "health": 10000,
+          "resource": 8,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": null
+        },
+        "projectiles": [],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/rex-mgs1/body.png",
+                  "bytes": 2004429,
+                  "sha256": "b9c49febc4e7bda8897c0d2b1269cee4830265421a300370503f1de9d1a870fe",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "head",
+                  "file": "assets/machine-parts/rex-mgs1/head.png",
+                  "bytes": 2041360,
+                  "sha256": "706dcbc4c5ed1558d97075f6c5262d81d99d0ddbe9affc128ce80ef399bc066c",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "body_components",
+                  "file": "assets/machine-parts/rex-mgs1/body_components.png",
+                  "bytes": 1437350,
+                  "sha256": "5384ced4c9df00585d6500bb658b6d948db116044df2078a4f3aa82117e86156",
+                  "width": 1448,
+                  "height": 1086
+                },
+                {
+                  "id": "near_legs",
+                  "file": "assets/machine-parts/rex-mgs1/near_legs.png",
+                  "bytes": 2251232,
+                  "sha256": "6df07e6b1f05eb5392dc3c30d8c3b297259ee41fef52ab102539e7bb1db12403",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "far_legs",
+                  "file": "assets/machine-parts/rex-mgs1/far_legs.png",
+                  "bytes": 1365627,
+                  "sha256": "05d6dc576712ce5310430a9c1aa635d66ba507908a5f1fc5dd3864002c6913de",
+                  "width": 2172,
+                  "height": 724
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/rex-mgs1/equipment.png",
+                  "bytes": 1964138,
+                  "sha256": "cf6be6b13959b055a6cdcbf380ac84346467d4ef71d8af59cfd2e4821d49d413",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/raxa-mpo-psp/body.png",
+                  "bytes": 1946701,
+                  "sha256": "9abfbcaf2254ea36619dd627d30be065726100cc5750bb4ff06d88bfcf594f88",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/raxa-mpo-psp/equipment.png",
+                  "bytes": 2074433,
+                  "sha256": "4145648ef07d74950cc92483ddbfc8909c75328fcd449d328bfa7ec1fac035b5",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "legs",
+                  "file": "assets/machine-parts/raxa-mpo-psp/legs.png",
+                  "bytes": 1896598,
+                  "sha256": "cac75cce19bd350049d6181bed2d88c8522f92ceb603729388e7eeae83144e66",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "bays",
+                  "file": "assets/machine-parts/raxa-mpo-psp/bays.png",
+                  "bytes": 2267401,
+                  "sha256": "4496c2c7ef5b28a6ee887b1bab4560168627ef25792ad42a75cdd157e5529d19",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-site-essai-raxa",
+          "mapped": "mpo_raxa_test_hangar",
+          "ground": 600,
+          "native": {
+            "id": "mpo_raxa_test_hangar",
+            "state": "ready",
+            "errors": [],
+            "approved": true,
+            "layers": 4,
+            "weatherType": "none"
+          }
+        },
+        "stageDiagnostics": {
+          "coreBackground": 337,
+          "coreForeground": 337,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": true,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 1280,
+          "height": 852
+        },
+        "topViewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 0,
+          "displayWidth": 1280,
+          "displayHeight": 852
+        }
+      }
+    },
+    {
+      "name": "raxa-pause-after",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": true,
+        "phase": "fight",
+        "frame": 278,
+        "timer": 14392,
+        "paused": true,
+        "boss": {
+          "id": "raxa",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": false,
+          "attack": null,
+          "idle": 102,
+          "lastAttack": null,
+          "cycle": 0,
+          "serial": 0,
+          "activeFrames": 8,
+          "hazards": [],
+          "rations": 2,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 0,
+          "hits": 0,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 0,
+          "damageTaken": 0,
+          "guards": 0,
+          "feedback": "QUATRE APPUIS PUIS DEUX SOUTES / B CHOISIT / D RPG",
+          "feedbackFrames": 192,
+          "legs": {
+            "p1": 1600,
+            "p2": 1600,
+            "p3": 1600,
+            "p4": 1600
+          },
+          "pods": {
+            "left": 3200,
+            "right": 3200
+          },
+          "aimMode": "auto",
+          "x": 1170,
+          "y": 0,
+          "legHits": 0,
+          "podHits": 0
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 340,
+          "y": 0,
+          "health": 10000,
+          "resource": 8,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": null
+        },
+        "projectiles": [],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/rex-mgs1/body.png",
+                  "bytes": 2004429,
+                  "sha256": "b9c49febc4e7bda8897c0d2b1269cee4830265421a300370503f1de9d1a870fe",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "head",
+                  "file": "assets/machine-parts/rex-mgs1/head.png",
+                  "bytes": 2041360,
+                  "sha256": "706dcbc4c5ed1558d97075f6c5262d81d99d0ddbe9affc128ce80ef399bc066c",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "body_components",
+                  "file": "assets/machine-parts/rex-mgs1/body_components.png",
+                  "bytes": 1437350,
+                  "sha256": "5384ced4c9df00585d6500bb658b6d948db116044df2078a4f3aa82117e86156",
+                  "width": 1448,
+                  "height": 1086
+                },
+                {
+                  "id": "near_legs",
+                  "file": "assets/machine-parts/rex-mgs1/near_legs.png",
+                  "bytes": 2251232,
+                  "sha256": "6df07e6b1f05eb5392dc3c30d8c3b297259ee41fef52ab102539e7bb1db12403",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "far_legs",
+                  "file": "assets/machine-parts/rex-mgs1/far_legs.png",
+                  "bytes": 1365627,
+                  "sha256": "05d6dc576712ce5310430a9c1aa635d66ba507908a5f1fc5dd3864002c6913de",
+                  "width": 2172,
+                  "height": 724
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/rex-mgs1/equipment.png",
+                  "bytes": 1964138,
+                  "sha256": "cf6be6b13959b055a6cdcbf380ac84346467d4ef71d8af59cfd2e4821d49d413",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/raxa-mpo-psp/body.png",
+                  "bytes": 1946701,
+                  "sha256": "9abfbcaf2254ea36619dd627d30be065726100cc5750bb4ff06d88bfcf594f88",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/raxa-mpo-psp/equipment.png",
+                  "bytes": 2074433,
+                  "sha256": "4145648ef07d74950cc92483ddbfc8909c75328fcd449d328bfa7ec1fac035b5",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "legs",
+                  "file": "assets/machine-parts/raxa-mpo-psp/legs.png",
+                  "bytes": 1896598,
+                  "sha256": "cac75cce19bd350049d6181bed2d88c8522f92ceb603729388e7eeae83144e66",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "bays",
+                  "file": "assets/machine-parts/raxa-mpo-psp/bays.png",
+                  "bytes": 2267401,
+                  "sha256": "4496c2c7ef5b28a6ee887b1bab4560168627ef25792ad42a75cdd157e5529d19",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-site-essai-raxa",
+          "mapped": "mpo_raxa_test_hangar",
+          "ground": 600,
+          "native": {
+            "id": "mpo_raxa_test_hangar",
+            "state": "ready",
+            "errors": [],
+            "approved": true,
+            "layers": 4,
+            "weatherType": "none"
+          }
+        },
+        "stageDiagnostics": {
+          "coreBackground": 373,
+          "coreForeground": 373,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": true,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 1280,
+          "height": 852
+        },
+        "topViewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 0,
+          "displayWidth": 1280,
+          "displayHeight": 852
+        }
+      }
+    },
+    {
+      "name": "raxa-real-pause-freezes-simulation",
+      "frame": 278,
+      "timer": 14392,
+      "canvasPixelFreezeClaimed": false
+    },
+    {
+      "name": "raxa-natural-p1-damaged",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": true,
+        "phase": "fight",
+        "frame": 374,
+        "timer": 14296,
+        "paused": false,
+        "boss": {
+          "id": "raxa",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": false,
+          "attack": null,
+          "idle": 6,
+          "lastAttack": null,
+          "cycle": 0,
+          "serial": 0,
+          "activeFrames": 104,
+          "hazards": [],
+          "rations": 2,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 1,
+          "hits": 1,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 0,
+          "damageTaken": 0,
+          "guards": 0,
+          "feedback": "APPUI 1 / −800",
+          "feedbackFrames": 60,
+          "legs": {
+            "p1": 800,
+            "p2": 1600,
+            "p3": 1600,
+            "p4": 1600
+          },
+          "pods": {
+            "left": 3200,
+            "right": 3200
+          },
+          "aimMode": "auto",
+          "x": 1170,
+          "y": 0,
+          "legHits": 1,
+          "podHits": 0
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 186.60000000000025,
+          "y": 0,
+          "health": 10000,
+          "resource": 7,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": null
+        },
+        "projectiles": [],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/rex-mgs1/body.png",
+                  "bytes": 2004429,
+                  "sha256": "b9c49febc4e7bda8897c0d2b1269cee4830265421a300370503f1de9d1a870fe",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "head",
+                  "file": "assets/machine-parts/rex-mgs1/head.png",
+                  "bytes": 2041360,
+                  "sha256": "706dcbc4c5ed1558d97075f6c5262d81d99d0ddbe9affc128ce80ef399bc066c",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "body_components",
+                  "file": "assets/machine-parts/rex-mgs1/body_components.png",
+                  "bytes": 1437350,
+                  "sha256": "5384ced4c9df00585d6500bb658b6d948db116044df2078a4f3aa82117e86156",
+                  "width": 1448,
+                  "height": 1086
+                },
+                {
+                  "id": "near_legs",
+                  "file": "assets/machine-parts/rex-mgs1/near_legs.png",
+                  "bytes": 2251232,
+                  "sha256": "6df07e6b1f05eb5392dc3c30d8c3b297259ee41fef52ab102539e7bb1db12403",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "far_legs",
+                  "file": "assets/machine-parts/rex-mgs1/far_legs.png",
+                  "bytes": 1365627,
+                  "sha256": "05d6dc576712ce5310430a9c1aa635d66ba507908a5f1fc5dd3864002c6913de",
+                  "width": 2172,
+                  "height": 724
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/rex-mgs1/equipment.png",
+                  "bytes": 1964138,
+                  "sha256": "cf6be6b13959b055a6cdcbf380ac84346467d4ef71d8af59cfd2e4821d49d413",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/raxa-mpo-psp/body.png",
+                  "bytes": 1946701,
+                  "sha256": "9abfbcaf2254ea36619dd627d30be065726100cc5750bb4ff06d88bfcf594f88",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/raxa-mpo-psp/equipment.png",
+                  "bytes": 2074433,
+                  "sha256": "4145648ef07d74950cc92483ddbfc8909c75328fcd449d328bfa7ec1fac035b5",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "legs",
+                  "file": "assets/machine-parts/raxa-mpo-psp/legs.png",
+                  "bytes": 1896598,
+                  "sha256": "cac75cce19bd350049d6181bed2d88c8522f92ceb603729388e7eeae83144e66",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "bays",
+                  "file": "assets/machine-parts/raxa-mpo-psp/bays.png",
+                  "bytes": 2267401,
+                  "sha256": "4496c2c7ef5b28a6ee887b1bab4560168627ef25792ad42a75cdd157e5529d19",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-site-essai-raxa",
+          "mapped": "mpo_raxa_test_hangar",
+          "ground": 600,
+          "native": {
+            "id": "mpo_raxa_test_hangar",
+            "state": "ready",
+            "errors": [],
+            "approved": true,
+            "layers": 4,
+            "weatherType": "none"
+          }
+        },
+        "stageDiagnostics": {
+          "coreBackground": 479,
+          "coreForeground": 479,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": false,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 1280,
+          "height": 852
+        },
+        "topViewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 0,
+          "displayWidth": 1280,
+          "displayHeight": 852
+        }
+      }
+    },
+    {
+      "name": "raxa-actual-smoke-required-hit",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": true,
+        "phase": "fight",
+        "frame": 374,
+        "timer": 14296,
+        "paused": false,
+        "boss": {
+          "id": "raxa",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": false,
+          "attack": null,
+          "idle": 6,
+          "lastAttack": null,
+          "cycle": 0,
+          "serial": 0,
+          "activeFrames": 104,
+          "hazards": [],
+          "rations": 2,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 1,
+          "hits": 1,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 0,
+          "damageTaken": 0,
+          "guards": 0,
+          "feedback": "APPUI 1 / −800",
+          "feedbackFrames": 60,
+          "legs": {
+            "p1": 800,
+            "p2": 1600,
+            "p3": 1600,
+            "p4": 1600
+          },
+          "pods": {
+            "left": 3200,
+            "right": 3200
+          },
+          "aimMode": "auto",
+          "x": 1170,
+          "y": 0,
+          "legHits": 1,
+          "podHits": 0
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 186.60000000000025,
+          "y": 0,
+          "health": 10000,
+          "resource": 7,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": null
+        },
+        "projectiles": [],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/rex-mgs1/body.png",
+                  "bytes": 2004429,
+                  "sha256": "b9c49febc4e7bda8897c0d2b1269cee4830265421a300370503f1de9d1a870fe",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "head",
+                  "file": "assets/machine-parts/rex-mgs1/head.png",
+                  "bytes": 2041360,
+                  "sha256": "706dcbc4c5ed1558d97075f6c5262d81d99d0ddbe9affc128ce80ef399bc066c",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "body_components",
+                  "file": "assets/machine-parts/rex-mgs1/body_components.png",
+                  "bytes": 1437350,
+                  "sha256": "5384ced4c9df00585d6500bb658b6d948db116044df2078a4f3aa82117e86156",
+                  "width": 1448,
+                  "height": 1086
+                },
+                {
+                  "id": "near_legs",
+                  "file": "assets/machine-parts/rex-mgs1/near_legs.png",
+                  "bytes": 2251232,
+                  "sha256": "6df07e6b1f05eb5392dc3c30d8c3b297259ee41fef52ab102539e7bb1db12403",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "far_legs",
+                  "file": "assets/machine-parts/rex-mgs1/far_legs.png",
+                  "bytes": 1365627,
+                  "sha256": "05d6dc576712ce5310430a9c1aa635d66ba507908a5f1fc5dd3864002c6913de",
+                  "width": 2172,
+                  "height": 724
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/rex-mgs1/equipment.png",
+                  "bytes": 1964138,
+                  "sha256": "cf6be6b13959b055a6cdcbf380ac84346467d4ef71d8af59cfd2e4821d49d413",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/raxa-mpo-psp/body.png",
+                  "bytes": 1946701,
+                  "sha256": "9abfbcaf2254ea36619dd627d30be065726100cc5750bb4ff06d88bfcf594f88",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/raxa-mpo-psp/equipment.png",
+                  "bytes": 2074433,
+                  "sha256": "4145648ef07d74950cc92483ddbfc8909c75328fcd449d328bfa7ec1fac035b5",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "legs",
+                  "file": "assets/machine-parts/raxa-mpo-psp/legs.png",
+                  "bytes": 1896598,
+                  "sha256": "cac75cce19bd350049d6181bed2d88c8522f92ceb603729388e7eeae83144e66",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "bays",
+                  "file": "assets/machine-parts/raxa-mpo-psp/bays.png",
+                  "bytes": 2267401,
+                  "sha256": "4496c2c7ef5b28a6ee887b1bab4560168627ef25792ad42a75cdd157e5529d19",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-site-essai-raxa",
+          "mapped": "mpo_raxa_test_hangar",
+          "ground": 600,
+          "native": {
+            "id": "mpo_raxa_test_hangar",
+            "state": "ready",
+            "errors": [],
+            "approved": true,
+            "layers": 4,
+            "weatherType": "none"
+          }
+        },
+        "stageDiagnostics": {
+          "coreBackground": 480,
+          "coreForeground": 480,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": false,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 1280,
+          "height": 852
+        },
+        "topViewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 0,
+          "displayWidth": 1280,
+          "displayHeight": 852
+        }
+      }
+    },
+    {
+      "name": "raxa-natural-final",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": true,
+        "phase": "fight",
+        "frame": 374,
+        "timer": 14296,
+        "paused": false,
+        "boss": {
+          "id": "raxa",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": false,
+          "attack": null,
+          "idle": 6,
+          "lastAttack": null,
+          "cycle": 0,
+          "serial": 0,
+          "activeFrames": 104,
+          "hazards": [],
+          "rations": 2,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 1,
+          "hits": 1,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 0,
+          "damageTaken": 0,
+          "guards": 0,
+          "feedback": "APPUI 1 / −800",
+          "feedbackFrames": 60,
+          "legs": {
+            "p1": 800,
+            "p2": 1600,
+            "p3": 1600,
+            "p4": 1600
+          },
+          "pods": {
+            "left": 3200,
+            "right": 3200
+          },
+          "aimMode": "auto",
+          "x": 1170,
+          "y": 0,
+          "legHits": 1,
+          "podHits": 0
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 186.60000000000025,
+          "y": 0,
+          "health": 10000,
+          "resource": 7,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": null
+        },
+        "projectiles": [],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/rex-mgs1/body.png",
+                  "bytes": 2004429,
+                  "sha256": "b9c49febc4e7bda8897c0d2b1269cee4830265421a300370503f1de9d1a870fe",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "head",
+                  "file": "assets/machine-parts/rex-mgs1/head.png",
+                  "bytes": 2041360,
+                  "sha256": "706dcbc4c5ed1558d97075f6c5262d81d99d0ddbe9affc128ce80ef399bc066c",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "body_components",
+                  "file": "assets/machine-parts/rex-mgs1/body_components.png",
+                  "bytes": 1437350,
+                  "sha256": "5384ced4c9df00585d6500bb658b6d948db116044df2078a4f3aa82117e86156",
+                  "width": 1448,
+                  "height": 1086
+                },
+                {
+                  "id": "near_legs",
+                  "file": "assets/machine-parts/rex-mgs1/near_legs.png",
+                  "bytes": 2251232,
+                  "sha256": "6df07e6b1f05eb5392dc3c30d8c3b297259ee41fef52ab102539e7bb1db12403",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "far_legs",
+                  "file": "assets/machine-parts/rex-mgs1/far_legs.png",
+                  "bytes": 1365627,
+                  "sha256": "05d6dc576712ce5310430a9c1aa635d66ba507908a5f1fc5dd3864002c6913de",
+                  "width": 2172,
+                  "height": 724
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/rex-mgs1/equipment.png",
+                  "bytes": 1964138,
+                  "sha256": "cf6be6b13959b055a6cdcbf380ac84346467d4ef71d8af59cfd2e4821d49d413",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/raxa-mpo-psp/body.png",
+                  "bytes": 1946701,
+                  "sha256": "9abfbcaf2254ea36619dd627d30be065726100cc5750bb4ff06d88bfcf594f88",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/raxa-mpo-psp/equipment.png",
+                  "bytes": 2074433,
+                  "sha256": "4145648ef07d74950cc92483ddbfc8909c75328fcd449d328bfa7ec1fac035b5",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "legs",
+                  "file": "assets/machine-parts/raxa-mpo-psp/legs.png",
+                  "bytes": 1896598,
+                  "sha256": "cac75cce19bd350049d6181bed2d88c8522f92ceb603729388e7eeae83144e66",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "bays",
+                  "file": "assets/machine-parts/raxa-mpo-psp/bays.png",
+                  "bytes": 2267401,
+                  "sha256": "4496c2c7ef5b28a6ee887b1bab4560168627ef25792ad42a75cdd157e5529d19",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-site-essai-raxa",
+          "mapped": "mpo_raxa_test_hangar",
+          "ground": 600,
+          "native": {
+            "id": "mpo_raxa_test_hangar",
+            "state": "ready",
+            "errors": [],
+            "approved": true,
+            "layers": 4,
+            "weatherType": "none"
+          }
+        },
+        "stageDiagnostics": {
+          "coreBackground": 480,
+          "coreForeground": 480,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": false,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 1280,
+          "height": 852
+        },
+        "topViewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 0,
+          "displayWidth": 1280,
+          "displayHeight": 852
+        }
+      }
+    },
+    {
+      "name": "natural-phase-coverage",
+      "boss": "raxa",
+      "observed": [
+        "actual-smoke-hit",
+        "p1-damaged"
+      ],
+      "fullClearClaimed": false,
+      "combatDeadlineSeconds": 35
+    },
+    {
+      "name": "all-observed-actual-playing-native-machine-draws-ready",
+      "counted": {
+        "raxa|intro": 266,
+        "raxa|fight": 164
+      },
+      "badActualDraws": 0,
+      "everyInvalidDrawRetainedBeyondSampleLimit": true
+    },
+    {
+      "name": "actual-RAXA-stage-draws-ready-with-no-fallback",
+      "counts": {
+        "back|true|intro": 266,
+        "ground|true|intro": 266,
+        "architecture|true|intro": 266,
+        "foreground|true|intro": 266,
+        "back|true|fight": 164,
+        "ground|true|fight": 164,
+        "architecture|true|fight": 164,
+        "foreground|true|fight": 164
+      },
+      "machinePhaseCounts": {
+        "intro": 266,
+        "fight": 164
+      },
+      "nativePlanePhaseCounts": {
+        "back": {
+          "intro": 266,
+          "fight": 164
+        },
+        "ground": {
+          "intro": 266,
+          "fight": 164
+        },
+        "architecture": {
+          "intro": 266,
+          "fight": 164
+        },
+        "foreground": {
+          "intro": 266,
+          "fight": 164
+        }
+      },
+      "badDraws": 0
+    },
+    {
+      "name": "reload-raxa-before-start",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": false,
+        "phase": "intro",
+        "frame": 0,
+        "timer": 14400,
+        "paused": false,
+        "boss": {
+          "id": "raxa",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": false,
+          "attack": null,
+          "idle": 110,
+          "lastAttack": null,
+          "cycle": 0,
+          "serial": 0,
+          "activeFrames": 0,
+          "hazards": [],
+          "rations": 2,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 0,
+          "hits": 0,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 0,
+          "damageTaken": 0,
+          "guards": 0,
+          "feedback": "QUATRE APPUIS PUIS DEUX SOUTES / B CHOISIT / D RPG",
+          "feedbackFrames": 200,
+          "legs": {
+            "p1": 1600,
+            "p2": 1600,
+            "p3": 1600,
+            "p4": 1600
+          },
+          "pods": {
+            "left": 3200,
+            "right": 3200
+          },
+          "aimMode": "auto",
+          "x": 1170,
+          "y": 0,
+          "legHits": 0,
+          "podHits": 0
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 340,
+          "y": 0,
+          "health": 10000,
+          "resource": 8,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": null
+        },
+        "projectiles": [],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "loading",
+              "attemptState": "loading",
+              "error": null,
+              "pins": []
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-site-essai-raxa",
+          "mapped": "mpo_raxa_test_hangar",
+          "ground": 600,
+          "native": {
+            "id": "mpo_raxa_test_hangar",
+            "state": "ready",
+            "errors": [],
+            "approved": true,
+            "layers": 4,
+            "weatherType": "none"
+          }
+        },
+        "stageDiagnostics": {
+          "coreBackground": 43,
+          "coreForeground": 43,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": false,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 1280,
+          "height": 852
+        },
+        "topViewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 0,
+          "displayWidth": 1280,
+          "displayHeight": 852
+        }
+      }
+    },
+    {
+      "name": "reload-raxa-cold-native-ready-fight",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": true,
+        "phase": "fight",
+        "frame": 273,
+        "timer": 14397,
+        "paused": false,
+        "boss": {
+          "id": "raxa",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": false,
+          "attack": null,
+          "idle": 107,
+          "lastAttack": null,
+          "cycle": 0,
+          "serial": 0,
+          "activeFrames": 3,
+          "hazards": [],
+          "rations": 2,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 0,
+          "hits": 0,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 0,
+          "damageTaken": 0,
+          "guards": 0,
+          "feedback": "QUATRE APPUIS PUIS DEUX SOUTES / B CHOISIT / D RPG",
+          "feedbackFrames": 197,
+          "legs": {
+            "p1": 1600,
+            "p2": 1600,
+            "p3": 1600,
+            "p4": 1600
+          },
+          "pods": {
+            "left": 3200,
+            "right": 3200
+          },
+          "aimMode": "auto",
+          "x": 1170,
+          "y": 0,
+          "legHits": 0,
+          "podHits": 0
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 340,
+          "y": 0,
+          "health": 10000,
+          "resource": 8,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": null
+        },
+        "projectiles": [],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/raxa-mpo-psp/body.png",
+                  "bytes": 1946701,
+                  "sha256": "9abfbcaf2254ea36619dd627d30be065726100cc5750bb4ff06d88bfcf594f88",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/raxa-mpo-psp/equipment.png",
+                  "bytes": 2074433,
+                  "sha256": "4145648ef07d74950cc92483ddbfc8909c75328fcd449d328bfa7ec1fac035b5",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "legs",
+                  "file": "assets/machine-parts/raxa-mpo-psp/legs.png",
+                  "bytes": 1896598,
+                  "sha256": "cac75cce19bd350049d6181bed2d88c8522f92ceb603729388e7eeae83144e66",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "bays",
+                  "file": "assets/machine-parts/raxa-mpo-psp/bays.png",
+                  "bytes": 2267401,
+                  "sha256": "4496c2c7ef5b28a6ee887b1bab4560168627ef25792ad42a75cdd157e5529d19",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-site-essai-raxa",
+          "mapped": "mpo_raxa_test_hangar",
+          "ground": 600,
+          "native": {
+            "id": "mpo_raxa_test_hangar",
+            "state": "ready",
+            "errors": [],
+            "approved": true,
+            "layers": 4,
+            "weatherType": "none"
+          }
+        },
+        "stageDiagnostics": {
+          "coreBackground": 323,
+          "coreForeground": 323,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": false,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 1280,
+          "height": 852
+        },
+        "topViewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 0,
+          "displayWidth": 1280,
+          "displayHeight": 852
+        }
+      }
+    },
+    {
+      "name": "reload-raxa-pause-before",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": true,
+        "phase": "fight",
+        "frame": 279,
+        "timer": 14391,
+        "paused": true,
+        "boss": {
+          "id": "raxa",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": false,
+          "attack": null,
+          "idle": 101,
+          "lastAttack": null,
+          "cycle": 0,
+          "serial": 0,
+          "activeFrames": 9,
+          "hazards": [],
+          "rations": 2,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 0,
+          "hits": 0,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 0,
+          "damageTaken": 0,
+          "guards": 0,
+          "feedback": "QUATRE APPUIS PUIS DEUX SOUTES / B CHOISIT / D RPG",
+          "feedbackFrames": 191,
+          "legs": {
+            "p1": 1600,
+            "p2": 1600,
+            "p3": 1600,
+            "p4": 1600
+          },
+          "pods": {
+            "left": 3200,
+            "right": 3200
+          },
+          "aimMode": "auto",
+          "x": 1170,
+          "y": 0,
+          "legHits": 0,
+          "podHits": 0
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 340,
+          "y": 0,
+          "health": 10000,
+          "resource": 8,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": null
+        },
+        "projectiles": [],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/raxa-mpo-psp/body.png",
+                  "bytes": 1946701,
+                  "sha256": "9abfbcaf2254ea36619dd627d30be065726100cc5750bb4ff06d88bfcf594f88",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/raxa-mpo-psp/equipment.png",
+                  "bytes": 2074433,
+                  "sha256": "4145648ef07d74950cc92483ddbfc8909c75328fcd449d328bfa7ec1fac035b5",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "legs",
+                  "file": "assets/machine-parts/raxa-mpo-psp/legs.png",
+                  "bytes": 1896598,
+                  "sha256": "cac75cce19bd350049d6181bed2d88c8522f92ceb603729388e7eeae83144e66",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "bays",
+                  "file": "assets/machine-parts/raxa-mpo-psp/bays.png",
+                  "bytes": 2267401,
+                  "sha256": "4496c2c7ef5b28a6ee887b1bab4560168627ef25792ad42a75cdd157e5529d19",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-site-essai-raxa",
+          "mapped": "mpo_raxa_test_hangar",
+          "ground": 600,
+          "native": {
+            "id": "mpo_raxa_test_hangar",
+            "state": "ready",
+            "errors": [],
+            "approved": true,
+            "layers": 4,
+            "weatherType": "none"
+          }
+        },
+        "stageDiagnostics": {
+          "coreBackground": 333,
+          "coreForeground": 333,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": true,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 1280,
+          "height": 852
+        },
+        "topViewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 0,
+          "displayWidth": 1280,
+          "displayHeight": 852
+        }
+      }
+    },
+    {
+      "name": "reload-raxa-pause-after",
+      "result": {
+        "url": "http://localhost:5177/cqc/modules/core-v032.html",
+        "playing": true,
+        "phase": "fight",
+        "frame": 279,
+        "timer": 14391,
+        "paused": true,
+        "boss": {
+          "id": "raxa",
+          "phase": 1,
+          "transition": 0,
+          "collapse": 0,
+          "defeated": false,
+          "attack": null,
+          "idle": 101,
+          "lastAttack": null,
+          "cycle": 0,
+          "serial": 0,
+          "activeFrames": 9,
+          "hazards": [],
+          "rations": 2,
+          "chaff": 2,
+          "chaffFrames": 0,
+          "shots": 0,
+          "hits": 0,
+          "misses": 0,
+          "armored": 0,
+          "reloads": 0,
+          "damageTaken": 0,
+          "guards": 0,
+          "feedback": "QUATRE APPUIS PUIS DEUX SOUTES / B CHOISIT / D RPG",
+          "feedbackFrames": 191,
+          "legs": {
+            "p1": 1600,
+            "p2": 1600,
+            "p3": 1600,
+            "p4": 1600
+          },
+          "pods": {
+            "left": 3200,
+            "right": 3200
+          },
+          "aimMode": "auto",
+          "x": 1170,
+          "y": 0,
+          "legHits": 0,
+          "podHits": 0
+        },
+        "player": {
+          "id": "snake_mpo",
+          "x": 340,
+          "y": 0,
+          "health": 10000,
+          "resource": 8,
+          "hitstun": 0,
+          "blockstun": 0,
+          "attack": null
+        },
+        "projectiles": [],
+        "roundWinner": null,
+        "winner": null,
+        "bridge": {
+          "schema": "cqc.machine-parts-bridge-status/1",
+          "initializationError": null,
+          "pending": null,
+          "machines": [
+            {
+              "id": "rex_mgs1_ps1",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "ray_mgs2_arsenal",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "mgd_mg2_msx2",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "tx55_mg1_msx1987",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "icbmg_mpo_psp2006",
+              "state": "missing",
+              "attemptState": null,
+              "error": null,
+              "pins": []
+            },
+            {
+              "id": "raxa_mpo_psp2006",
+              "state": "ready",
+              "attemptState": "ready",
+              "error": null,
+              "pins": [
+                {
+                  "id": "body",
+                  "file": "assets/machine-parts/raxa-mpo-psp/body.png",
+                  "bytes": 1946701,
+                  "sha256": "9abfbcaf2254ea36619dd627d30be065726100cc5750bb4ff06d88bfcf594f88",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "equipment",
+                  "file": "assets/machine-parts/raxa-mpo-psp/equipment.png",
+                  "bytes": 2074433,
+                  "sha256": "4145648ef07d74950cc92483ddbfc8909c75328fcd449d328bfa7ec1fac035b5",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "legs",
+                  "file": "assets/machine-parts/raxa-mpo-psp/legs.png",
+                  "bytes": 1896598,
+                  "sha256": "cac75cce19bd350049d6181bed2d88c8522f92ceb603729388e7eeae83144e66",
+                  "width": 1536,
+                  "height": 1024
+                },
+                {
+                  "id": "bays",
+                  "file": "assets/machine-parts/raxa-mpo-psp/bays.png",
+                  "bytes": 2267401,
+                  "sha256": "4496c2c7ef5b28a6ee887b1bab4560168627ef25792ad42a75cdd157e5529d19",
+                  "width": 1536,
+                  "height": 1024
+                }
+              ]
+            }
+          ]
+        },
+        "stage": {
+          "surface": "core",
+          "sourceID": "mpo-site-essai-raxa",
+          "mapped": "mpo_raxa_test_hangar",
+          "ground": 600,
+          "native": {
+            "id": "mpo_raxa_test_hangar",
+            "state": "ready",
+            "errors": [],
+            "approved": true,
+            "layers": 4,
+            "weatherType": "none"
+          }
+        },
+        "stageDiagnostics": {
+          "coreBackground": 369,
+          "coreForeground": 369,
+          "episodeBackground": 0,
+          "episodeForeground": 0
+        },
+        "pauseVisible": true,
+        "briefVisible": false,
+        "loadingVisible": false,
+        "stageLoadingVisible": false,
+        "endVisible": false,
+        "winnerText": "",
+        "viewport": {
+          "width": 1280,
+          "height": 852
+        },
+        "topViewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "canvas": {
+          "width": 1280,
+          "height": 720,
+          "x": 0,
+          "y": 0,
+          "displayWidth": 1280,
+          "displayHeight": 852
+        }
+      }
+    },
+    {
+      "name": "reload-raxa-real-pause-freezes-simulation",
+      "frame": 279,
+      "timer": 14391,
+      "canvasPixelFreezeClaimed": false
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "/tmp/cqc-pass15-browser-proofs/natural-raxa-final-smoke-v2/raxa-intact-actual-fight.jpg",
+      "bytes": 116216,
+      "sha256": "27d0dea499d999f330861929de0ef79776e52809a3c45e04b9e39bae482d6e28",
+      "kind": "native-Chromium-JPEG60-screenshot-of-actual-natural-game"
+    },
+    {
+      "path": "/tmp/cqc-pass15-browser-proofs/natural-raxa-final-smoke-v2/raxa-actual-pause.jpg",
+      "bytes": 51923,
+      "sha256": "c8adb129e2522f367c1324da2e71f69a6638a02f6a226b13665c5af2bbc8d142",
+      "kind": "native-Chromium-JPEG60-screenshot-of-actual-natural-game"
+    },
+    {
+      "path": "/tmp/cqc-pass15-browser-proofs/natural-raxa-final-smoke-v2/reload-raxa-intact-actual-fight.jpg",
+      "bytes": 116236,
+      "sha256": "7258fbeba1e58e79e61df03f178bb2395f1cfb3373d1195a795a150577923488",
+      "kind": "native-Chromium-JPEG60-screenshot-of-actual-natural-game"
+    },
+    {
+      "path": "/tmp/cqc-pass15-browser-proofs/natural-raxa-final-smoke-v2/reload-raxa-actual-pause.jpg",
+      "bytes": 51923,
+      "sha256": "fb9483d1183d385588be9e7dc0b1320dad4b4f70c354c51f3cb77c3efe200a9e",
+      "kind": "native-Chromium-JPEG60-screenshot-of-actual-natural-game"
+    }
+  ],
+  "publication": {
+    "gitSHA": null,
+    "deploymentID": null,
+    "base": "http://localhost:5177"
+  },
+  "tls": {
+    "privateCertificateException": false,
+    "globalTrustMutation": false,
+    "independentStrictHTTPSProof": null
+  },
+  "checkedAt": "2026-10-03T16:52:55.035264+00:00",
+  "ownedBrowserClosed": true,
+  "proofBytes": 11446891,
+  "qualification": "Actual real menu/selection/start, trusted browser keyboard/touch actions, read-only snapshots and transparent draw pass-through preserving arguments/results. No engine/HP/phase/frame/timer/readiness forcing, Date override, source PNG edit or fake game. Natural phase coverage explicitly listed; fullClear only for actual winner0/finished observed. Closest art reconstruction, no absolute1:1 certificate."
+}

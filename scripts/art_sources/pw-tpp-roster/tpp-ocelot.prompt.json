@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "characterId": "ocelot",
+  "packId": "phantom-pain",
+  "tool": "image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: original fan-made production sprite sheet for a side-view tactical video game, faithful to Metal Gear Solid V The Phantom Pain (1984). EXACTLY 4 columns by 4 rows, exactly 16 independently DRAWN full-body poses of ONE same character. Pure flat magenta #FF00FF canvas with five thin continuous pure cyan #00FFFF vertical grid lines and five horizontal grid lines, including outer boundaries. Each equal square cell must contain exactly one complete character, wholly inside, generous empty margin at least 30 pixels, no extremity or equipment on guides. Fixed camera, strict orthographic RIGHT-facing profile, feet bottom aligned, identical physical scale every frame. Detailed crisp military pixel art, clear small-scale silhouette, no scenery, no ground shadow, no text, no labels, no logos, no watermark. The sixteen poses must be genuinely different drawings, never simple shifted duplicates. Four phases per row in left-to-right time order, preserve all costume and identity features in EVERY pose. Keep weapons and hands compact inside their cell. Subject: Revolver Ocelot MGSV The Phantom Pain 1984. Mature man with silver swept-back shoulder-length hair, silver mustache, no hat, no eyepatch. Dark brown knee-length leather duster, pale tan shearling collar, red scarf and gloves, twin holsters, dark trousers and black high riding boots. ALL noses point RIGHT. Row1: four idle breathing stages with hands near holstered revolvers. Row2: four compact RIGHT walking phases: heel contact, knees compression, passing legs close together, opposite heel contact. Row3: radio hand raising, radio listening, hand lowering, tactical pointing right. Row4: four phases of a controlled defensive crouch and recovery, knees flexing, deeper crouch, rising halfway, upright again. ONLY character drawings. All surrounding magenta space entirely empty, no white pixels, no icons, no surprise marks, no breath clouds. No firing or drawing guns. Preserve official Konami TPP/Play Arts Kai silhouette. All figures fully inside each cell.",
+  "references": [
+    {
+      "url": "https://www.konami.com/mg/mgs5/tpp/jp/story/",
+      "kind": "official character portrait",
+      "visuallyInspected": true
+    },
+    {
+      "url": "https://www.konami.com/mg/mgs5/tpp/jp/goods/item_playartskai_ocelot.html",
+      "kind": "licensed figure body reference",
+      "visuallyInspected": true
+    }
+  ],
+  "review": {
+    "accepted": "ocelot-v3",
+    "notes": [
+      "16 authored right-facing poses with complete costume and no detached decorative marks.",
+      "Pixel-art adaptation; no exact 1:1 likeness or perfect gait claim."
+    ],
+    "rejected": [
+      {
+        "file": "tpp-ocelot-rejected-v1.png",
+        "reason": "One left-facing pose and white emphasis marks."
+      },
+      {
+        "file": "tpp-ocelot-rejected-v2.png",
+        "reason": "Residual white emphasis marks; edit tool blocked by sandbox ACL, regenerated instead."
+      }
+    ]
+  }
+}

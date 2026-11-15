@@ -1,0 +1,48 @@
+[
+  {
+    "args": [
+      "open",
+      "http://127.0.0.1:42873/preview.html"
+    ],
+    "exitCode": 0,
+    "stdout": "\u2713 Quiet alpha compositing review\n  http://127.0.0.1:42873/preview.html\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "wait",
+      "--load",
+      "networkidle"
+    ],
+    "exitCode": 0,
+    "stdout": "\u2713 Done\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "screenshot",
+      "/workspace/cqc-pass7-generation/quiet/inspections/a-right-canvas-green.png"
+    ],
+    "exitCode": 0,
+    "stdout": "\u2713 Screenshot saved to /workspace/cqc-pass7-generation/quiet/inspections/a-right-canvas-green.png\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "eval",
+      "JSON.stringify({ready:window.ready,errors:window.__consoleErrors,overlay:!!document.querySelector(\"[data-nextjs-dialog],.vite-error-overlay\"),content:document.body.innerText.length})"
+    ],
+    "exitCode": 0,
+    "stdout": "\"{\\\"ready\\\":true,\\\"errors\\\":[],\\\"overlay\\\":false,\\\"content\\\":163}\"\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "snapshot",
+      "-i"
+    ],
+    "exitCode": 0,
+    "stdout": "- heading \"Quiet native Canvas alpha review\" [level=1, ref=e1]\n- button \"a-right\" [ref=e2]\n- button \"a-left\" [ref=e3]\n- button \"b-right\" [ref=e4]\n- button \"b-left\" [ref=e5]\n- button \"c-right\" [ref=e6]\n",
+    "stderr": ""
+  }
+]

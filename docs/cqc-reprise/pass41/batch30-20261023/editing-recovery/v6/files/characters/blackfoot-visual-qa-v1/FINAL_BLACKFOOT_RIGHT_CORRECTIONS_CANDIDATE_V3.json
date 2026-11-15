@@ -1,0 +1,266 @@
+{
+  "schema": "cqc.p41.blackfoot-right-corrections-candidate-handoff/3",
+  "createdAt": "2026-10-23T02:03:39.532040+00:00",
+  "status": "right-partial-candidate-ready-for-root-review-not-installed",
+  "uid": "pass41__uth66_blackfoot_mgsv",
+  "candidateController": {
+    "path": "@PROJECT_ROOT@/characters/blackfoot-visual-qa-v1/blackfoot-isolated-controller-landing-v3.js",
+    "bytes": 5740,
+    "sha256": "dbceaa43deb9eb004e9b6c1d4cab1515aad71c0f1d711777545be714412e30e6"
+  },
+  "previousCandidateV2": {
+    "path": "@PROJECT_ROOT@/characters/blackfoot-visual-qa-v1/blackfoot-isolated-controller-tailwheel-v2.js",
+    "bytes": 5382,
+    "sha256": "a6c391e05a4b6bb2df7b5f02efdd28824ef777c11c220c8cc2994b5f5209f2d0"
+  },
+  "baselineSourceFilesUnchanged": [
+    {
+      "path": "@PROJECT_ROOT@/machines/blackfoot/right-parts-v2.png",
+      "bytes": 1859482,
+      "sha256": "e5e0dd36ea1b9ac6885f77be8566581885103c1c19e406c4e6c7f3c1e325b3fb"
+    },
+    {
+      "path": "@PROJECT_ROOT@/machines/blackfoot/PARTS_CANDIDATE_ACTUAL_V1.json",
+      "bytes": 225014,
+      "sha256": "d4a167d00492280184afc05404d501dd3b7cf8ea2468ccafc4139b57db196c81"
+    },
+    {
+      "path": "@PROJECT_ROOT@/machines/blackfoot/blackfoot-isolated-controller.js",
+      "bytes": 5205,
+      "sha256": "0d009938cd3954d33222e7b63c237b4953506fd859b10e68e2e1fcfe0702376c"
+    },
+    {
+      "path": "@PROJECT_ROOT@/machines/blackfoot/isolated-preview.html",
+      "bytes": 226654,
+      "sha256": "554abaacb82c2ab58f10c7b2d2b49231a5dea312a564c23f3ffa8e543b054d89"
+    }
+  ],
+  "nativeSourceFacing": "right",
+  "leftStatus": "HOLD-tool-refused-no-retry-no-mirror-substitute",
+  "newPlayableEntries": 0,
+  "modeCoverage": [],
+  "sourcePixelEdits": false,
+  "sourceMapEdits": false,
+  "globalCatalogueChanged": false,
+  "physicalReviewByAgent": {
+    "sourcePNGAndOriginalModelReferenceViewed": true,
+    "baselineAssembledThreePosesViewed": true,
+    "V2ThreeCloseupsViewed": true,
+    "V3ThreeCloseupsViewed": true,
+    "observedCorrections": [
+      "Tail wheel moved from hidden internal fuselage point to underside ink; projected mask estimate visible fraction3.0percent to71.5percent.",
+      "Near front wheel moved from lower-window band to painted underside lug; scale reduced to fit fuselage projection.",
+      "Far front wheel moved to underside ledge and reduced separately, preserving distinct native projection and behind-body z order."
+    ],
+    "rootReviewStillRequired": true
+  },
+  "overrides": [
+    {
+      "id": "tail_wheel",
+      "oldSocket": [
+        170,
+        217
+      ],
+      "newSocket": [
+        170,
+        248
+      ],
+      "newSocketAlpha": 248,
+      "imageScaleUnchanged": 0.18
+    },
+    {
+      "id": "near_wheel",
+      "oldSocket": [
+        420,
+        285
+      ],
+      "newSocket": [
+        487,
+        329
+      ],
+      "newSocketAlpha": 251,
+      "oldImageScale": 0.26,
+      "newImageScale": 0.18
+    },
+    {
+      "id": "far_wheel",
+      "oldSocket": [
+        383,
+        277
+      ],
+      "newSocket": [
+        405,
+        321
+      ],
+      "newSocketAlpha": 252,
+      "oldImageScale": 0.23,
+      "newImageScale": 0.16
+    }
+  ],
+  "geometryFixtures": {
+    "schema": "cqc.p41.blackfoot-isolated-fixtures/1",
+    "status": "PASS",
+    "scope": "Pure source geometry and recording Canvas draw only; no game/browser/admission claim",
+    "sourceSHA256": "e5e0dd36ea1b9ac6885f77be8566581885103c1c19e406c4e6c7f3c1e325b3fb",
+    "samples": 432,
+    "attachments": 3024,
+    "maxAttachmentError": 1.6077746776921858e-13,
+    "axisChecks": 432,
+    "drawRecording": {
+      "save": 8,
+      "restore": 8,
+      "draw": 8,
+      "clip": 8
+    },
+    "missingLeftRefuses": true,
+    "playerAndCameraIndependent": true,
+    "sourceAndMapUnchanged": true,
+    "globalCatalogueTouched": false,
+    "sourcePixelEdits": false,
+    "officialDimensionsKnown": false
+  },
+  "legacyConservation": {
+    "schema": "cqc.p41.blackfoot-legacy-conservation/1",
+    "status": "PASS",
+    "oldRigs": 64,
+    "oldParts": 841,
+    "catalogueCanonicalSHA256": "5cf8dfd17bb7afa01d5c2ee7cdd7729095bdfcaeabffa6e45c5586854d0becc1",
+    "controllerSamples": 200,
+    "networkFetches": 0,
+    "historicalSourcesModified": false,
+    "globalRigCatalogueChanged": false
+  },
+  "browserQA": {
+    "proof": {
+      "path": "@PROJECT_ROOT@/characters/blackfoot-visual-qa-v1/RIGHT_ACTUAL_BROWSER_QA_V3.json",
+      "bytes": 62254,
+      "sha256": "09be68607f901ad5bd96e0a4ae82563439d9a13861a53844f4274b7bae7f2ad1"
+    },
+    "poses": 3,
+    "observedAnimationFrames": 48,
+    "observedMainRotorPhases": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "runtimeExceptions": 0,
+    "consoleErrors": 0,
+    "failedLoads": 0,
+    "ownerPositionUnchangedAcrossAnimation": true,
+    "scope": "Real local Canvas preview of isolated source-owned controller. Not actual installed-game combat or remote HTTPS."
+  },
+  "screenshotPins": [
+    {
+      "path": "@PROJECT_ROOT@/characters/blackfoot-visual-qa-v1/ASSEMBLY_LANDING_V3_THREE_ACTUAL.jpg",
+      "bytes": 88416,
+      "sha256": "ee33ce47209d59f62fadc4ca28252db7a4bda049ce93641d6fc0205aa7d788d7"
+    },
+    {
+      "path": "@PROJECT_ROOT@/characters/blackfoot-visual-qa-v1/CLOSEUP_LANDING_V3_POSE_0_ACTUAL.jpg",
+      "bytes": 105187,
+      "sha256": "9549136ea10cab10a8c80a85839920729725b61da63a810390f53b8d018b2077"
+    },
+    {
+      "path": "@PROJECT_ROOT@/characters/blackfoot-visual-qa-v1/CLOSEUP_LANDING_V3_POSE_1_ACTUAL.jpg",
+      "bytes": 99370,
+      "sha256": "109c20a2061c82dff2ffd7cfcf4e139e36fa339ad19647f12516cdf756884c4b"
+    },
+    {
+      "path": "@PROJECT_ROOT@/characters/blackfoot-visual-qa-v1/CLOSEUP_LANDING_V3_POSE_2_ACTUAL.jpg",
+      "bytes": 100971,
+      "sha256": "1ecfee5183868687d0dccfaa98f648655ff4a9a1efe8282585dfa9f18990b17f"
+    },
+    {
+      "path": "@PROJECT_ROOT@/characters/blackfoot-visual-qa-v1/ANIMATION_LANDING_V3_RIGHT_ACTUAL.jpg",
+      "bytes": 99147,
+      "sha256": "be2a1766855b74ffc17b06825cff27c6761d65ed6802fbed6ffb8c83a035d8d0"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "@PROJECT_ROOT@/characters/blackfoot-visual-qa-v1/TAIL_WHEEL_SOCKET_EVIDENCE_V1.json",
+      "bytes": 1304,
+      "sha256": "46b724fcf1a66b170d5a01074b2b9360fbe6772ea07e75f74f6397376cd2f8e6"
+    },
+    {
+      "path": "@PROJECT_ROOT@/characters/blackfoot-visual-qa-v1/MAIN_LANDING_SOURCE_EVIDENCE_V3.json",
+      "bytes": 1477,
+      "sha256": "d9c2c947bc10f3f14df31f30c3f70d30d22e2727b0c6f14caf2edb961d52d863"
+    },
+    {
+      "path": "@PROJECT_ROOT@/characters/blackfoot-visual-qa-v1/CONTROLLER_CANDIDATE_FIXTURES_ACTUAL_V3.json",
+      "bytes": 660,
+      "sha256": "13621e38e32bf24928986d3fca780664bfe8ddc8fb8c81a20929a7d589c9d5d6"
+    },
+    {
+      "path": "@PROJECT_ROOT@/characters/blackfoot-visual-qa-v1/LEGACY_CONSERVATION_CANDIDATE_ACTUAL_V3.json",
+      "bytes": 339,
+      "sha256": "93db76435c4640e7c6ef77f6f845e6f28f3480dc2b9b9a8f8bf4e17e27964247"
+    },
+    {
+      "path": "@PROJECT_ROOT@/characters/blackfoot-visual-qa-v1/ORIGINAL_THREE_POSES_ACTUAL.json",
+      "bytes": 10247,
+      "sha256": "d3bd86dd6d0987acfbfd0186dd4ae9d0880aa21a237df9afb8861ce8725c0dd3"
+    },
+    {
+      "path": "@PROJECT_ROOT@/characters/blackfoot-visual-qa-v1/ASSEMBLY_ORIGINAL_THREE_ACTUAL.jpg",
+      "bytes": 84368,
+      "sha256": "7297e2283da9b2f1d48ce6416d5d816e1fc4c64949394b3d5eafa2531388dca3"
+    }
+  ],
+  "editableQATools": [
+    {
+      "path": "@PROJECT_ROOT@/characters/blackfoot-visual-qa-v1/server.mjs",
+      "bytes": 1576,
+      "sha256": "ddec8efad2cfa686c14b8dad1056b5ec9ed6dbe2cb7702e9ffda7d58a0a53969"
+    },
+    {
+      "path": "@PROJECT_ROOT@/characters/blackfoot-visual-qa-v1/review-closeup.html",
+      "bytes": 1989,
+      "sha256": "b47ad1b120e39e48a77d24add464c989fb0c56886a8b34610a669a7fd1c51448"
+    },
+    {
+      "path": "@PROJECT_ROOT@/characters/blackfoot-visual-qa-v1/capture.mjs",
+      "bytes": 1760,
+      "sha256": "dec02e6cca1b8675a41ae0f4a8e8c119e9f495d3608d175989387280d0fc505e"
+    },
+    {
+      "path": "@PROJECT_ROOT@/characters/blackfoot-visual-qa-v1/capture-corrected-v2.mjs",
+      "bytes": 4088,
+      "sha256": "57f2276d211bd3d17944c124408c4ea37f8f56a00f209068bed3881c4461a684"
+    },
+    {
+      "path": "@PROJECT_ROOT@/characters/blackfoot-visual-qa-v1/capture-landing-v3.mjs",
+      "bytes": 4278,
+      "sha256": "a6f7c55d7380039696ed4a7699753a5c075b57dedb8c8d220445e9fb970c6555"
+    },
+    {
+      "path": "@PROJECT_ROOT@/characters/blackfoot-visual-qa-v1/test-controller-candidate-v3.cjs",
+      "bytes": 3133,
+      "sha256": "7c7a1111fa7160c27ee45d9c11f94e0fd91688e219489dc1fee1272d3ba5cb44"
+    },
+    {
+      "path": "@PROJECT_ROOT@/characters/blackfoot-visual-qa-v1/test-legacy-candidate-v3.mjs",
+      "bytes": 1988,
+      "sha256": "4ac0fb3e8211bb350e13acd9a0e3e0200234ab85fa6c637b826cfcc6d1c565b0"
+    }
+  ],
+  "ownedProcessesClosed": [
+    {
+      "port": 9643,
+      "closed": true
+    },
+    {
+      "port": 33377,
+      "closed": true
+    }
+  ],
+  "limits": [
+    "No absolute1:1 certificate or official source dimensions. Proposed mounts and scales are source-led2D placement corrections requiring Root review.",
+    "Whole minigun assembly uses authored bounded2D aim. No hidden trunnion geometry or independent barrel rig is fabricated.",
+    "Tail rotor remains static because only one native phase exists. Main rotor uses four authored source phases, not extracted retail cadence.",
+    "No left-source retry, PNG generation, mirroring, game admission, physical suspension, damage/HP, destruction or global64rig modification.",
+    "TT77 remains separately held with no accepted PNG; this right-only progress does not complete either machine."
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "schema": "cqc.pass40.new-source-snapshot/1",
+  "snapshot": "11",
+  "status": "Three reviewed Core metadata variants preserved as candidates; no runtime installation or deployment.",
+  "nativePNG": 0,
+  "runtimeMetadataCandidates": [
+    {
+      "relative": "integration-v2/core-three-modes/v2/core__boss--metalgear--metadata-core-v1.json",
+      "path": "rootassets/assets/combat-costumes-pass40/core__boss/metalgear/metadata-core-v1.json",
+      "bytes": 2087032,
+      "sha256": "858c77f9743c2731145bafd3e3ec1bdce9875412483fcae24ac917de68e4c9ca",
+      "role": "candidate-not-installed"
+    },
+    {
+      "relative": "integration-v2/core-three-modes/v2/core__liquid--nextgen--metadata-core-v1.json",
+      "path": "rootassets/assets/combat-costumes-pass40/core__liquid/nextgen/metadata-core-v1.json",
+      "bytes": 2010370,
+      "sha256": "ff212966b0498b799b749f85bd62211c4eb55ebfd530cb81b9ae8bf1a9efbf0d",
+      "role": "candidate-not-installed"
+    },
+    {
+      "relative": "integration-v2/core-three-modes/v2/core__quiet--cyborg--metadata-core-v1.json",
+      "path": "rootassets/assets/combat-costumes-pass40/core__quiet/cyborg/metadata-core-v1.json",
+      "bytes": 2913765,
+      "sha256": "66d74e269928882f238e5c33c8d2b749cb4087e95776fbdf56476c6579f4e3b3",
+      "role": "candidate-not-installed"
+    }
+  ],
+  "metadataFiles": 3,
+  "metadataBytes": 7011167,
+  "sourceEvidence": {
+    "rootModeDataAndCodeReviewSHA256": "d39f170522161e92268317aa81f73deb4bbecfd2d1c9f18a5844c6f132be3bdf",
+    "allThreeModesActualLocalQASHA256": "2e3cbbea7797202e210a900eba5427eea053b4baaebcbe4d7183ede84d2537b5",
+    "allNativePNGAlreadyArchived": true
+  },
+  "limits": [
+    "These Core-only visual aliases preserve the same source drawings, geometry and source-local points as their VS metadata. No fighter incarnation, gameplay move profile or new batch entry is added.",
+    "The Boss maps the actual Core counter/parry, throw and unarmed super to their corresponding poses. Liquid maps the actual travelling rushes and grapple to reviewed unarmed source poses. Quiet maps Core utility dash, reload and precision shots independently of VS.",
+    "All three Core variants passed twenty-six local actual cases, including eight actual Quiet projectiles across both facings, getup, reload, mode-specific actions and preserved roster checks. Immutable archiving still does not install or activate them.",
+    "Cumulative final-index routing, menu, combat and preservation QA remain required before installation.",
+    "Core Venus precision remains held and inactive. The old invalid Quiet candidate and its old Core variant are excluded.",
+    "These are authored CQC visual adaptations rather than extracted original animations or certified retail1:1.",
+    "Private local paths, temporary identifiers, generation receipts, Drive records, browser profiles and full local QA payloads are excluded."
+  ]
+}

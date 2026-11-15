@@ -1,0 +1,47 @@
+{
+  "schema": "cqc.pass9.red-blaster-generation-and-finalization-arguments/1",
+  "commands": [
+    {
+      "argv": [
+        "python",
+        "/workspace/cqc-pass9-generation/red-blaster/tools/prepare_generation.py"
+      ],
+      "env": {}
+    },
+    {
+      "argv": [
+        "python",
+        "/workspace/cqc-pass9-generation/red-blaster/tools/register_native_attempt.py",
+        "--name",
+        "<attempt-key>",
+        "--native",
+        "<native-original-per-result-summary>"
+      ],
+      "perAttemptArguments": "metadata/*.result-summary.json and metadata/*.tool-result.json retain exact attempt/native/args paths and SHA"
+    },
+    {
+      "argv": [
+        "python",
+        "/workspace/cqc-pass9-generation/red-blaster/tools/create_red_blaster_delivery.py"
+      ],
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "firstRunStatus": "Metadata Path serialization failed after pure geometry and validator passed; prior script and failure summary retained."
+    },
+    {
+      "argv": [
+        "python",
+        "/workspace/cqc-pass9-generation/red-blaster/tools/finish_validation_after_json_path_error.py"
+      ],
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "status": "passed"
+    }
+  ],
+  "imagegenArguments": "Seven exact submitted argument files in prompts/*_01.args.json and A_LEFT_02.args.json; initial pre-costume-lock B/C variants retained separately.",
+  "nativePostGenerationPixelEdits": 0,
+  "imagegenOnlySleeveRevisions": 1,
+  "sourceLibraryOnly": true
+}

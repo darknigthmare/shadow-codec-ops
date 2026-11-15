@@ -1,0 +1,13 @@
+Le contrôle final REV3 passe **66/66 cas**, et le contrôle général rerun passe **38/38 cas** avec le helper `988051c3627d24339aa87ec5865716937f8378ddcd58c58b24110b4bf2356b5a`. Le catalogue reste `3fe34bf2be1cc7c5365a82e57b747b269adf795c1940885a6ce6e8a4a793d747`.
+
+Le [rapport réel du moteur](FINAL_ORIGINS_GAMEPLAY_REVIEW.json) vérifie les 16 points de bouche natifs : pixels effectivement lus, SHA, alpha, pose active, crop, pivot, échelle, contour Canvas et départs de projectiles. Les six C complets ont été physiquement vus dans le contrôle précédent ; leurs bytes sont revalidés inchangés. Les 216 mutations de preuves incompatibles sont rejetées.
+
+Il y a **14 points source distincts utilisés**, puis **16 fixtures de slot/face**, car EVA réutilise la bouche debout pour spécial et super. Les deux bouches Wolf deploy restent des références inactives. WolfDown est une charge body-check réellement mêlée, coût20 et déplacement49px, sans projectile, maintenant liée au groupe heavy. Les burts comptent leurs projectiles réels et paient leur coût une seule fois ; les valeurs sont des adaptations du versus.
+
+Les tirs directs vérifient les dimensions adultes78×230, les deux Sunny52×145/62×170 et le quadrupède140×134. Les bouches hautes ratent réellement les cibles courtes. Les tirs à genou et les explosions ont leurs collisions réellement calculées ; aucun point natif n’a été abaissé pour forcer un hit.
+
+Le super Raven échouait avant correction car speed21/fuse48 envoyait les grenades hors de l’arène avant l’explosion. Le root a modifié seulement sa vitesse adaptée à9, conservant le helper précédent et les points natifs. Le contrôle actuel observe les vraies explosions dans les deux directions, leur cercle, leurs dégâts et les cibles hors rayon ratées. La reproduction et le candidat antérieurs restent conservés sous run-03.
+
+Le [rapport général REV3](../../verified-final-rev3-independent38/INDEPENDENT_GAMEPLAY_REVIEW.json) confirme les récupérations/observations, les collisions enfant, les 52 finishers, les 341 autres profils et le moteur historique préservé. Le catalogue complet52Mio a un seul snapshot partagé entre les essais ; les nouvelles preuves utilisent les mêmes bytes.
+
+Les essais et les rapports antérieurs restent intacts. Le reviewer n’a modifié ni R, ni S, ni les PNG. Les fichiers Shadow n’étaient pas tous synchronisés lors de la dernière lecture native ; leur état final et les navigateurs restent à vérifier par le root. Les limites closest_supported restent explicites, sans certification absolue1:1 des modèles, animations ou valeurs numériques originales.

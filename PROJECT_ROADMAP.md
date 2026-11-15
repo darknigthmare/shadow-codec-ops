@@ -1,4 +1,34 @@
-# Current priority
+# Current priority — v3.10.0, reprise du 1er octobre 2026
+
+Sources retrouvées : [GitHub](https://github.com/darknigthmare/shadow-codec-ops), branche [`codex/add-missing-character-art`](https://github.com/darknigthmare/shadow-codec-ops/tree/codex/add-missing-character-art), commit [`eb8a791`](https://github.com/darknigthmare/shadow-codec-ops/commit/eb8a791f1c559da92fd940a36ffb06f8e01bd70e). Application : [Vercel](https://shadow-codec-ops.vercel.app) ; gestion du projet : [dashboard Vercel](https://vercel.com/darknigthmares-projects/shadow-codec-ops). `main` est antérieure à ce lot.
+
+La reprise s'appuie sur les sources et rapports disponibles. Les conversations historiques ChatGPT ne sont pas accessibles par les outils de cette session ; leurs éventuelles décisions supplémentaires restent à rapprocher du projet avant de modifier son périmètre.
+
+## Livraison retrouvée
+
+- **28 opérations de campagne / 12 packs Side Ops** : 24 opérations Tactical Anthology et quatre opérations Peace Walker supplémentaires, dont les accès antérieurs sont conservés.
+- **14 acteurs spéciaux / 28 planches** : ZEKE, Basilisk, Chrysalis et Cocoon disposent de sprites neutres, animations et opérations propres. Le routage du Builder conserve l'identité explicitement choisie.
+- **Six objets communs acceptés** : carte, caméra, ration, munitions, chaff et renseignements. Porte et ascenseur restent différés.
+- **Archives PW / TPP : 40 dossiers** (16 PW, 24 TPP), avec visuels, animations et inspection 2D. Les trente nouveaux corps sont des ajouts visuels ; leur inspection n'ajoute ni collision, dégâts, récompense, nouvelle IA ni trente nouvelles missions de combat.
+- La 3.10 est documentée comme livraison web. Les installateurs Windows 3.9 ne sont pas des binaires 3.10 et leur recette d'installation reste distincte.
+
+Rapports du 8 septembre 2026 : [audit initial](ASSET_COVERAGE_AUDIT_2026-09-08.md), [vague 3.9](ASSET_WAVE_3.9.0.md), [vague 3.10](ASSET_WAVE_3.10.0.md). L'audit initial précède les corrections 3.9 : les PNG ZEKE/Basilisk, la calibration Basilisk, le test de roster et l'identité du héros dans le Builder ne doivent plus être repris comme des défauts actuels. La documentation [Tactical Anthology](docs/SIDEOPS_TACTICAL_ANTHOLOGY.md) décrit les 24 opérations de base ; les quatre opérations supplémentaires sont définies dans `src/game/core/peaceWalkerHeavyOperations.ts`.
+
+Les résultats de QA dans ces rapports sont historiques. Cette actualisation documentaire ne certifie pas une nouvelle recette, un nouvel installateur ou un nouveau déploiement.
+
+Les contrôles exécutés lors de la reprise et ses limites sont consignés dans le [rapport du 1er octobre](RECOVERY_REPORT_2026-10-01.md).
+
+## Priorités restantes vérifiées
+
+1. **Porte / ascenseur** : produire des sources respectant les silhouettes 34 × 92 et 42 × 68. `src/data/sideopsCommonProps.json` les marque encore `deferred` ; ne pas activer les images rejetées.
+2. **MG1 / MGS1** : remplacer les rigs historiques et effets encore procéduraux par des poses et effets propres, sans inventer un combat Decoy Octopus ni modifier les rencontres existantes.
+3. **Corps et rencontres non couverts** : MG2 (Holly, Gustava, Kio Marv, Madnar, Gray Fox, Big Boss) ; MGS2 (soutiens, Pliskin, Fortune, Fatman, Vamp, Solidus, RAY prototype Tanker) ; MGS3 (EVA, The Boss, Sokolov, Granin, Cobra, Volgin, Ocelot) ; MGS4 (Beauty and the Beast, Vamp, Liquid Ocelot, Raiden, alliés, Mk. II/III).
+4. **PW / TPP après les archives** : les corps Quiet, Man on Fire, Eli, D-Walker, Walker Gear et les soutiens du registre sont livrés. Leurs comportements de combat/compagnon, les variantes de machines et leurs armements restent des travaux séparés à définir et vérifier.
+5. **Couverture par jeu** : compléter props, décors, interactions, attaques secondaires et VFX selon un roster explicite. RAXA, GANDER, EXCELSUS et les épisodes supplémentaires demandent des lots dédiés ; aucune couverture intégrale de la franchise n'est annoncée.
+
+## Priorités historiques conservées — étapes v2.8 à v3.5
+
+Les recommandations ci-dessous sont conservées pour retracer les décisions de leurs versions. Leurs libellés « next » / « prochaine passe » ne constituent pas le backlog actuel.
 
 - **Codec Pass 6 — Export, Replay & Final Codec QA: COMPLETE (v2.8.0)**
 - Director Timeline Advanced / former Pass 24 remains intentionally deferred.
@@ -9,7 +39,9 @@
 
 ## État actuel
 
-Version `2.0.0` — Passe 21 terminée.
+Version `3.10.0` — Archives Peace Walker / The Phantom Pain livrées dans les sources retrouvées. Voir la livraison et les priorités en tête de document.
+
+Repère historique conservé : version `2.0.0` — Passe 21 terminée. Les six piliers décrits ci-dessous restent la structure du projet ; les bilans et comptes de tests des passes appartiennent à leur version.
 
 Le projet réunit maintenant six piliers interconnectés :
 
@@ -130,7 +162,7 @@ La même base fonctionne en web, PWA installable, Tauri desktop et interface tac
 - [x] Correction QA empêchant la double application des mutations de nœud.
 - [x] 44 tests automatisés et build/PWA validés.
 
-## Prochaine passe recommandée
+## Prochaine passe recommandée — historique v1.9, réalisée en v2.0
 
 ### Passe 21 — Narrative Audio, Localization & Subtitle Pipeline
 
@@ -143,7 +175,7 @@ La même base fonctionne en web, PWA installable, Tauri desktop et interface tac
 - import/export de packs audio et langues ;
 - options d’accessibilité pour vitesse, taille et lecture automatique.
 
-## Extensions futures
+## Extensions futures — propositions historiques, périmètre à confirmer
 
 - plusieurs portes/keycards et boss multiples dans le Mission Builder ;
 - phases top-down hybrides ;
@@ -254,7 +286,7 @@ La même base fonctionne en web, PWA installable, Tauri desktop et interface tac
 - [x] Migration globale vers le schéma 12.
 - [x] 98 tests automatisés et build/PWA validés.
 
-## Priorité suivante
+## Priorité suivante — historique v2.6, réalisée en v2.7
 
 ### Passe Codec 5 — Content & Assets
 
@@ -278,7 +310,7 @@ La même base fonctionne en web, PWA installable, Tauri desktop et interface tac
 - 18 additional localized context conversations
 - Save schema 13 migration
 
-## Next Codec Priority
+## Next Codec Priority — historique v2.7, réalisée en v2.8
 
 Codec Pass 6 — Export, replay and final Codec QA. Director Pass 24 remains deferred.
 
@@ -294,7 +326,7 @@ Codec Pass 6 — Export, replay and final Codec QA. Director Pass 24 remains def
 - [x] Deepthroat/Gray Fox reveal states.
 - [x] 112 automated tests, build and PWA validation.
 
-### Next MGS1 priority
+### Next MGS1 priority — historique v2.9, réalisée en v3.0
 
 MGS1-B: larger contextual conversation library, automatic incoming-call schedules, Mei Ling proverb rotation and weapon/boss topic expansion.
 
@@ -311,7 +343,7 @@ MGS1-B: larger contextual conversation library, automatic incoming-call schedule
 - live MGS1 library coverage indicator
 - 115 automated tests passing
 
-Next MGS1 pass: encyclopedic biographies, relationship graph, complete item/area catalog, portrait variants and final MGS1 QA.
+Historical next MGS1 pass (completed by v3.2): encyclopedic biographies, relationship graph, complete item/area catalog, portrait variants and final MGS1 QA.
 
 
 ## Completed — MGS1-C Encyclopedia (v3.1)
@@ -344,7 +376,7 @@ MGS3 now uses the same dossier and contextual-call standard in v3.3.
 - zone, equipment, timeline and portrait catalogues
 - automated coverage tests
 
-Next franchise priority: Peace Walker/MSF briefing and support network.
+Historical next franchise priority (v3.3): Peace Walker/MSF briefing and support network. See the later 3.9/3.10 delivery and the current priorities above before treating any PW/TPP visual as absent.
 
 ## Completed - Retractable Drawers, MGS1 Avatar Library & Side Ops Character Art (v3.4)
 
@@ -390,4 +422,4 @@ Character-art delivery status: 94 MGS2/MGS3 portraits, VR Character Pack 01 and 
 - multi-tone procedural SFX signatures per hardware generation
 - in-app fidelity profile with reference links
 
-Next visual priority: post-delivery visual QA and polish; the MGS2/MGS3 portrait expansion and Playable Operatives Pack 02 are no longer pending.
+Historical next visual priority (v3.5): post-delivery visual QA and polish; the MGS2/MGS3 portrait expansion and Playable Operatives Pack 02 are no longer pending. Current delivery and remaining priorities are recorded at the top of this roadmap.

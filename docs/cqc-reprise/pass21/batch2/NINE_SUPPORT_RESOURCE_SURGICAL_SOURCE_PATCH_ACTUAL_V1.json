@@ -1,0 +1,172 @@
+{
+  "schema": "cqc.pass21.nine-support-original-resource-fix/1",
+  "status": "source-patched-awaiting-actual-live-qa",
+  "reviewer": "/root",
+  "rows": [
+    {
+      "uid": "roster50__jacobsen_mg2",
+      "before": {
+        "kind": "ammo",
+        "label": "MUNITIONS",
+        "max": 8,
+        "regen": 0,
+        "reload": 58
+      },
+      "after": {
+        "kind": "energy",
+        "label": "OUTIL DE TERRAIN",
+        "max": 100,
+        "regen": 0.16,
+        "reload": 58
+      }
+    },
+    {
+      "uid": "roster50__nastasha_mgs1",
+      "before": {
+        "kind": "ammo",
+        "label": "MUNITIONS",
+        "max": 8,
+        "regen": 0,
+        "reload": 58
+      },
+      "after": {
+        "kind": "energy",
+        "label": "OUTIL DE TERRAIN",
+        "max": 100,
+        "regen": 0.16,
+        "reload": 58
+      }
+    },
+    {
+      "uid": "roster50__paramedic_mgs3",
+      "before": {
+        "kind": "ammo",
+        "label": "MUNITIONS",
+        "max": 8,
+        "regen": 0,
+        "reload": 58
+      },
+      "after": {
+        "kind": "energy",
+        "label": "OUTIL DE TERRAIN",
+        "max": 100,
+        "regen": 0.16,
+        "reload": 58
+      }
+    },
+    {
+      "uid": "roster50__codetalker_mgsv",
+      "before": {
+        "kind": "ammo",
+        "label": "MUNITIONS",
+        "max": 8,
+        "regen": 0,
+        "reload": 58
+      },
+      "after": {
+        "kind": "energy",
+        "label": "OUTIL DE TERRAIN",
+        "max": 100,
+        "regen": 0.16,
+        "reload": 58
+      }
+    },
+    {
+      "uid": "roster50__naomi_mgs4",
+      "before": {
+        "kind": "ammo",
+        "label": "MUNITIONS",
+        "max": 8,
+        "regen": 0,
+        "reload": 58
+      },
+      "after": {
+        "kind": "energy",
+        "label": "OUTIL DE TERRAIN",
+        "max": 100,
+        "regen": 0.16,
+        "reload": 58
+      }
+    },
+    {
+      "uid": "roster51__paramedic_delta",
+      "before": {
+        "kind": "ammo",
+        "label": "MUNITIONS",
+        "max": 8,
+        "regen": 0,
+        "reload": 58
+      },
+      "after": {
+        "kind": "energy",
+        "label": "OUTIL DE TERRAIN",
+        "max": 100,
+        "regen": 0.16,
+        "reload": 58
+      }
+    },
+    {
+      "uid": "npc53__msf_medic_gz",
+      "before": {
+        "kind": "ammo",
+        "label": "MUNITIONS",
+        "max": 8,
+        "regen": 0,
+        "reload": 58
+      },
+      "after": {
+        "kind": "energy",
+        "label": "OUTIL DE TERRAIN",
+        "max": 100,
+        "regen": 0.16,
+        "reload": 58
+      }
+    },
+    {
+      "uid": "npc53__paramedic_mpo",
+      "before": {
+        "kind": "ammo",
+        "label": "MUNITIONS",
+        "max": 8,
+        "regen": 0,
+        "reload": 58
+      },
+      "after": {
+        "kind": "energy",
+        "label": "OUTIL DE TERRAIN",
+        "max": 100,
+        "regen": 0.16,
+        "reload": 58
+      }
+    },
+    {
+      "uid": "npc53__chloe_dubois_survive",
+      "before": {
+        "kind": "ammo",
+        "label": "MUNITIONS",
+        "max": 8,
+        "regen": 0,
+        "reload": 58
+      },
+      "after": {
+        "kind": "energy",
+        "label": "OUTIL DE TERRAIN",
+        "max": 100,
+        "regen": 0.16,
+        "reload": 58
+      }
+    }
+  ],
+  "allOther345LiteralFightersUnchanged": true,
+  "allAffectedFieldsExceptResourceUnchanged": true,
+  "allEraUIDsWeaponMovesDamageCostsAndLoreUnchanged": true,
+  "priorSourceSHA256": "6cf6682ae42a4777258fb60f063dd49bb637d7a70acfdf53cdc70c88349f952f",
+  "newSourceSHA256": "2c3d5bbc870f2a92ab15bbfeb812857bf3271a35f5afe94cef3add7a35a78d12",
+  "priorWholeHTMLRetained": "/workspace/cqc-pass21/integration/support-resources/prior-unified-versus-before-nine-support-resources-v1.html",
+  "auditSource": {
+    "path": "/workspace/cqc-pass21-tuxedo-b/provenance/UNAFFORDABLE_BASELINE_AMMO_MOVES_READONLY_AUDIT_ACTUAL_V1.json",
+    "sha256": "5e1009dda8923e901fa6a05dad0b2b69a2405c424d9d79df8cfcc80a0dc20eff"
+  },
+  "outsideFrozenBatch2": true,
+  "qualification": "Same impossible support capacity as independently verified NaomiMGS1. The exact four affected moves are melee/mark/mobility, not ammunition projectiles. All9 need actual inputs/runtime verification; no completion claim from static maths."
+}

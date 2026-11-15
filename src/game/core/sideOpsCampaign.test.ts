@@ -8,12 +8,12 @@ import { evaluateSideOpsCampaignChallenges, getSideOpsCampaignExtractionBlocker,
 const clearSnapshot: SideOpsCampaignRunSnapshot = { hasKeycard: true, bossDefeated: true, secretsFound: 3, alerts: 0, kills: 0, damageTaken: 0, timeSeconds: 100 };
 
 describe('Tactical Anthology content', () => {
-  it('provides two different playable operations for every visual pack', () => {
-    expect(SIDEOPS_CAMPAIGN_MISSIONS).toHaveLength(24);
-    expect(new Set(SIDEOPS_CAMPAIGN_MISSIONS.map((mission) => mission.id)).size).toBe(24);
+  it('provides the original two operations per pack plus four Peace Walker heavy trials', () => {
+    expect(SIDEOPS_CAMPAIGN_MISSIONS).toHaveLength(28);
+    expect(new Set(SIDEOPS_CAMPAIGN_MISSIONS.map((mission) => mission.id)).size).toBe(28);
     for (const pack of Object.keys(SIDEOPS_VISUAL_PACK_RUNTIME_TEXTURES)) {
       const operations = SIDEOPS_CAMPAIGN_OPERATIONS.filter((mission) => mission.profile.visualPackId === pack);
-      expect(operations).toHaveLength(2);
+      expect(operations).toHaveLength(pack === 'peace_walker' ? 6 : 2);
       expect(operations[0].profile.platforms).not.toEqual(operations[1].profile.platforms);
       expect(operations[0].rules.bossRequired).toBe(false);
       expect(operations[1].rules.bossRequired).toBe(true);

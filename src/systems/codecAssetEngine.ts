@@ -1,4 +1,5 @@
 import packsJson from '../data/codecAssetPacks.json';
+import archivePortraitSetsJson from '../data/archivePortraitSets.json';
 import mg1PortraitSetsJson from '../data/mg1PortraitSets.json';
 import mg2PortraitSetsJson from '../data/mg2PortraitSets.json';
 import mgs4PortraitSetsJson from '../data/mgs4PortraitSets.json';
@@ -134,6 +135,13 @@ const patriotsAiCharacterPortraitSets = Object.fromEntries(
   })
 ) as Record<string, CharacterPortraitSet>;
 
+const archiveCharacterPortraitSets = Object.fromEntries(
+  archivePortraitSetsJson.flatMap(({ characterId, basePath, aliases, expressions }) => {
+    const set = portraitSet(basePath, expressions);
+    return [characterId, ...aliases].map(id => [id, set]);
+  })
+) as Record<string, CharacterPortraitSet>;
+
 const characterPortraitSets: Record<string, CharacterPortraitSet> = {
   ...mg1CharacterPortraitSets,
   ...mg2CharacterPortraitSets,
@@ -169,7 +177,9 @@ const characterPortraitSets: Record<string, CharacterPortraitSet> = {
   ...peaceWalkerCharacterPortraitSets,
   ...mgsvCharacterPortraitSets,
   ...vrSimulationCharacterPortraitSets,
-  ...patriotsAiCharacterPortraitSets
+  ...patriotsAiCharacterPortraitSets,
+  // Portrait availability is independent from radio contact availability.
+  ...archiveCharacterPortraitSets
 };
 
 export function getCharacterPortrait(

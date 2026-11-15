@@ -1,0 +1,18 @@
+{
+  "uid": "archive__skull_face",
+  "productionMutation": false,
+  "failedDraftAttempts": [
+    {
+      "failure": "AssertionError: a-right cell6 no neighbouring body pixels",
+      "cause": "Padded native rectangle contained lower-row neighbour; source PNG remained intact.",
+      "accepted": false
+    },
+    {
+      "failure": "AssertionError: a-left cell7 observed Canvas contour excludes neighbouring body pixels",
+      "cause": "Draft convex hull crossed concave gap and included neighbour pixels; source PNG remained intact.",
+      "accepted": false
+    }
+  ],
+  "resolution": "Use unchanged historical inspect_combat_sprite_sheet.py inspect_components with original concave distance-limited Canvas contour; independent ray-crossing check on neighbouring alpha>80 pixels confirms no opaque foreign body inside polygon. Final source pixels never changed.",
+  "draftPNGEdits": 0
+}

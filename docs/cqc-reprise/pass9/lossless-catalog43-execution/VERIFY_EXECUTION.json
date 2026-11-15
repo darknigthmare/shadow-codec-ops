@@ -1,0 +1,23 @@
+{
+  "schema": "cqc.pass9.catalog-verify-subprocess-execution/1",
+  "status": "passed",
+  "argv": [
+    "python",
+    "/workspace/cqc-pass9-publication-preparation/lossless-tools/restore_snapshot.py",
+    "--manifest",
+    "/workspace/cqc-pass9-publication-preparation/catalog43-chunks-v1/SNAPSHOT_CHUNKS.json",
+    "--expected-manifest-sha256",
+    "c0fe4e74e059b1ea12a35de7a5c66fbb9b4c5a639ce9e442a9e73904d4aaf4c1",
+    "--journal",
+    "/workspace/cqc-pass9-publication-preparation/catalog43-chunks-v1-execution/VERIFY_JOURNAL.ndjson",
+    "--verify-only"
+  ],
+  "exitCode": 0,
+  "elapsedSeconds": 0.209,
+  "stdoutPath": "/workspace/cqc-pass9-publication-preparation/catalog43-chunks-v1-execution/VERIFY_STDOUT.json",
+  "stderrPath": "/workspace/cqc-pass9-publication-preparation/catalog43-chunks-v1-execution/VERIFY_STDERR.txt",
+  "runtimeSourceWrites": 0,
+  "gitOperations": 0,
+  "apiOperations": 0,
+  "failureArtifactsPreserved": true
+}

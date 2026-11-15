@@ -1,0 +1,140 @@
+{
+  "schema": "cqc.p40.seven-source-recovery/1",
+  "observedDateUTC": "2026-10-22",
+  "sourceOfPlan": "conversation handoff; not evidence that missing files were recovered",
+  "productWritesPerformed": false,
+  "newPlayableUnitCount": 0,
+  "countedTowardCompletedBatch30": 0,
+  "units": [
+    {
+      "uid": "pass40__raiden_r00",
+      "name": "Raiden R-00",
+      "existingNamedPNGs": [
+        {
+          "path": "/workspace/cqc-pass21-application/public/cqc/assets/combat-sprites-pass31/raiden-r00/left-v1.png",
+          "bytes": 2263570,
+          "sha256": "d9b487d666e89913cbfa20d0033be33fc6ae7965b55d45edb92c62f93e7d5342"
+        },
+        {
+          "path": "/workspace/cqc-pass21-application/public/cqc/assets/combat-sprites-pass31/raiden-r00/right-v1.png",
+          "bytes": 2242691,
+          "sha256": "739356e91391e97d73964684fdafcb86d46d2f178ffd37e47868641c8c6476d0"
+        }
+      ],
+      "newP40UnitPlayable": false,
+      "newP40ArtRecovered": false,
+      "recoveryStatus": "older-restricted-body-preserved; complete-distinct-P40-unit-not-recovered",
+      "existingOlderImplementation": {
+        "path": "/workspace/cqc-pass21-application/public/cqc/src/cqc-pass31-raiden-r00.js",
+        "bytes": 120269,
+        "sha256": "ab7a0173e3dcd1de945dbb1226871f4914f46a3b50db3c36f122a0beb0199150"
+      },
+      "existingOlderScope": "P31 core__raiden costume mgr_r00_standard, RAY prologue and Arsenal RAY simulation only",
+      "physicalNativePosesPerFacing": 8,
+      "knownPoseAliases": {
+        "jump": "walk pose 2",
+        "hit": "guard pose 1",
+        "recover": "crouch pose 4"
+      },
+      "missingDedicatedArt": [
+        "jump",
+        "impact",
+        "recovery",
+        "roll",
+        "throw",
+        "finishers"
+      ]
+    },
+    {
+      "uid": "pass19__watcher_survive",
+      "name": "Watcher",
+      "existingNamedPNGs": [],
+      "newP40UnitPlayable": false,
+      "newP40ArtRecovered": false,
+      "recoveryStatus": "requires-native-art-regeneration-and-source-review",
+      "missingDedicatedArt": [
+        "both native combat facings",
+        "complete action bodies",
+        "native articulated joints for mechanical units"
+      ]
+    },
+    {
+      "uid": "pass19__grabber_survive",
+      "name": "Grabber",
+      "existingNamedPNGs": [],
+      "newP40UnitPlayable": false,
+      "newP40ArtRecovered": false,
+      "recoveryStatus": "requires-native-art-regeneration-and-source-review",
+      "missingDedicatedArt": [
+        "both native combat facings",
+        "complete action bodies",
+        "native articulated joints for mechanical units"
+      ]
+    },
+    {
+      "uid": "pass19__detonator_survive",
+      "name": "Detonator",
+      "existingNamedPNGs": [],
+      "newP40UnitPlayable": false,
+      "newP40ArtRecovered": false,
+      "recoveryStatus": "requires-native-art-regeneration-and-source-review",
+      "missingDedicatedArt": [
+        "both native combat facings",
+        "complete action bodies",
+        "native articulated joints for mechanical units"
+      ]
+    },
+    {
+      "uid": "pass40__powered_suit_mgs4",
+      "name": "Powered Suit MGS4",
+      "existingNamedPNGs": [],
+      "newP40UnitPlayable": false,
+      "newP40ArtRecovered": false,
+      "recoveryStatus": "requires-native-art-regeneration-and-source-review",
+      "missingDedicatedArt": [
+        "both native combat facings",
+        "complete action bodies",
+        "native articulated joints for mechanical units"
+      ]
+    },
+    {
+      "uid": "pass19__fenrir_mgr",
+      "name": "LQ-84 Fenrir",
+      "existingNamedPNGs": [],
+      "newP40UnitPlayable": false,
+      "newP40ArtRecovered": false,
+      "recoveryStatus": "requires-native-art-regeneration-and-source-review",
+      "missingDedicatedArt": [
+        "both native combat facings",
+        "complete action bodies",
+        "native articulated joints for mechanical units"
+      ]
+    },
+    {
+      "uid": "pass19__vodomjerka_mgr",
+      "name": "Vodomjerka",
+      "existingNamedPNGs": [],
+      "newP40UnitPlayable": false,
+      "newP40ArtRecovered": false,
+      "recoveryStatus": "requires-native-art-regeneration-and-source-review",
+      "missingDedicatedArt": [
+        "both native combat facings",
+        "complete action bodies",
+        "native articulated joints for mechanical units"
+      ]
+    }
+  ],
+  "backlogEvidence": [
+    {
+      "path": "/workspace/cqc-pass21-application/docs/cqc-reprise/pass31/NEXT_LOT.md",
+      "bytes": 3875,
+      "sha256": "7cce8fb5661b804e8cc5bf5f5e97e210a005b759359722da59d41e98d5018d77"
+    },
+    {
+      "path": "/workspace/cqc-pass21-application/public/cqc/src/cqc-pass27-machine-completion.js",
+      "bytes": 12254,
+      "sha256": "497133df3cf7721f81b974e7fa1c762a7ac13c7a7a095411a06bed1dc1cc359b"
+    }
+  ],
+  "qualification": "No activation or fallback substitution is safe from the currently recovered sources. Existing P31 R-00 body remains unchanged."
+}

@@ -1,0 +1,67 @@
+[
+  {
+    "cmd": [
+      "set",
+      "viewport",
+      "1280",
+      "960"
+    ],
+    "exit": 0,
+    "stdout": "\u2713 Done\n",
+    "stderr": ""
+  },
+  {
+    "cmd": [
+      "open",
+      "http://127.0.0.1:9327/preview.html"
+    ],
+    "exit": 0,
+    "stdout": "\u2713 Raven PASS7 native Canvas review\n  http://127.0.0.1:9327/preview.html\n",
+    "stderr": ""
+  },
+  {
+    "cmd": [
+      "wait",
+      "--load",
+      "networkidle"
+    ],
+    "exit": 0,
+    "stdout": "\u2713 Done\n",
+    "stderr": ""
+  },
+  {
+    "cmd": [
+      "screenshot",
+      "/workspace/cqc-pass7-generation/raven/inspections/Canvas-initial-retry.png"
+    ],
+    "exit": 0,
+    "stdout": "\u2713 Screenshot saved to /workspace/cqc-pass7-generation/raven/inspections/Canvas-initial-retry.png\n",
+    "stderr": ""
+  },
+  {
+    "cmd": [
+      "snapshot",
+      "-i"
+    ],
+    "exit": 0,
+    "stdout": "- button \"a-right\" [ref=e1]\n- button \"a-left\" [ref=e2]\n- button \"b-right\" [ref=e3]\n- button \"b-left\" [ref=e4]\n- button \"c-right\" [ref=e5]\n- button \"c-left\" [ref=e6]\n",
+    "stderr": ""
+  },
+  {
+    "cmd": [
+      "errors"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "cmd": [
+      "eval",
+      "JSON.stringify({ready:window.__ready,errors:window.__consoleErrors,overlay:!!document.querySelector(\"[data-nextjs-dialog],.vite-error-overlay\"),body:document.body.innerText.length,current:window.__current})"
+    ],
+    "exit": 0,
+    "stdout": "\"{\\\"ready\\\":true,\\\"errors\\\":[],\\\"overlay\\\":false,\\\"body\\\":109,\\\"current\\\":\\\"a-right\\\"}\"\n",
+    "stderr": ""
+  }
+]

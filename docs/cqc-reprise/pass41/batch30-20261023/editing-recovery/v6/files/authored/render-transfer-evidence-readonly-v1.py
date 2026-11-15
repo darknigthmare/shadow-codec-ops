@@ -1,0 +1,18 @@
+"""Make readable native SVG evidence; no raster editing or approval."""
+from pathlib import Path
+import json,gzip,html,sys
+R=Path('@PROJECT_ROOT@');d=Path(sys.argv[1]);e=json.loads((d/'CALIBRATION_LANDMARK_PROPOSALS_UNAPPROVED_V1.json').read_text());j=json.loads((d/'JOB_FOR_ROOT_REVIEW.json').read_text());g=json.loads(gzip.decompress(Path(j['geometry']['path']).read_bytes()));sources={s['path']:s for s in g['sources']}
+def svg(v,head=False):
+ s=sources[v['sourcePath']];p=next(p for p in s['poses']if p['name']==v['pose']);x,y,w,h=p['nativeAlphaBounds'];cx,cy=v['crown'];hx,hy=v['chin'];fx,fy=v['sole']
+ if head:x=min(cx,hx)-40;y=min(cy,hy)-8;w=abs(cx-hx)+80;h=abs(cy-hy)+24
+ ticks=[]
+ for yy in range(int(y//10)*10,int(y+h)+1,10):ticks.append(f'<line x1="{x}" x2="{x+w}" y1="{yy}" y2="{yy}" stroke="#82b7cb" stroke-width=".4" opacity=".5"/><text x="{x+1}" y="{yy+3}" fill="#e7f8ff" font-size="7">{yy}</text>')
+ for xx in range(int(x//25)*25,int(x+w)+1,25):ticks.append(f'<line x1="{xx}" x2="{xx}" y1="{y}" y2="{y+h}" stroke="#82b7cb" stroke-width=".4" opacity=".5"/><text x="{xx+1}" y="{y+8}" fill="#e7f8ff" font-size="7">{xx}</text>')
+ marks=f'<line x1="{cx}" y1="{cy}" x2="{hx}" y2="{hy}" stroke="#ff926b" stroke-width="1"/><line x1="{cx}" y1="{cy}" x2="{fx}" y2="{fy}" stroke="#74e3a6" stroke-width=".7"/>'
+ for label,px,py,color in [('C',cx,cy,'#ff6557'),('J',hx,hy,'#ffbf65'),('S',fx,fy,'#74e3a6')]:marks+=f'<circle cx="{px}" cy="{py}" r="1.8" fill="{color}"/><text x="{px+3}" y="{py+4}" font-size="8" fill="{color}">{label}[{px:g},{py:g}]</text>'
+ return f'<svg class="{"head"if head else"body"}" viewBox="{x-4} {y-4} {w+8} {h+8}"><image href="/{html.escape(str(Path(v["sourcePath"]).relative_to(R)))}" x="0" y="0" width="{s["dimensions"][0]}" height="{s["dimensions"][1]}"/>{"".join(ticks)}{marks}</svg>'
+cards=[]
+for r in e['entries']:
+ ref=r['reference'];target=r['target'];cards.append(f'<article><h2>{r["side"].upper()} — rôle{r["targetRole"]} — H proposé{r["proposedSourceFrameHeight"]}</h2><p>Tête: H={r["headDerivedSourceHeight"]:.2f}. Projection corps: H={r["projectedBodyDerivedSourceHeight"]:.2f}. Écart ratios={r["diagnosticRatioSpread"]:.4f}. Milieu arithmétique proposé, pas vérité anatomique.</p><div class="two"><section><b>Référence complète</b><small>{html.escape(ref["pose"])}</small>{svg(ref,True)}{svg(ref)}</section><section><b>Action native</b><small>{html.escape(target["pose"])}</small>{svg(target,True)}{svg(target)}</section></div><p><small>Référence SHA{ref["sourceSHA256"]}<br>Action SHA{target["sourceSHA256"]}</small></p></article>')
+page='<!doctype html><html lang="fr"><meta charset="utf-8"><title>Transferts natifs — non approuvés</title><style>body{background:#131a21;color:#e5edf1;font:13px system-ui;margin:10px}.cards{display:grid;grid-template-columns:repeat(2,minmax(540px,1fr));gap:12px}article{background:#26313d;padding:10px}h2{font-size:16px}.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}small{display:block;overflow-wrap:anywhere;font-size:10px}svg{display:block;width:100%;background:repeating-conic-gradient(#293642 0%25%,#34434f 0%50%)50%/16px 16px}.head{height:230px}.body{height:450px}p{line-height:1.3}</style><h1>'+html.escape(e['uid'])+' — transferts projetés à contre-vérifier</h1><p>Aucune approbation. C=contour couronne/chapeau, J=menton choisi sur grille, S=contour de semelle visible. PNG sources inchangés. Les postures changent la projection corps ; le milieu des deux estimations est un compromis de cadrage proposé et non une mesure de stature humaine. Toutes les coordonnées sont natives et liées au SHA de leur source.</p><main class="cards">'+''.join(cards)+'</main></html>'
+p=d/'source-landmarks-review-unapproved.html';p.write_text(page);print(str(p))

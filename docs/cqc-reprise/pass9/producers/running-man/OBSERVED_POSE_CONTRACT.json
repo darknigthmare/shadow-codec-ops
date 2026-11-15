@@ -1,0 +1,63 @@
+{
+  "schema": "cqc.pass9.running-man-observed-poses/1",
+  "uid": "core__runner_mg2",
+  "sourceContractFile": "/workspace/cqc-pass9-generation/running-man/SOURCE_AND_ACTION_CONTRACT.json",
+  "sourceContractSHA256": "f6d2c475613d703e3279d22ae8aade8cf96a4f66ef828c37ba8170c1752d9b7a",
+  "rootRequestedRuntimeCoverage": "A idle2/walk4/guard2/crouch2/jump2; B punch3/heavy3/low3/hit1/ko2; C sprint3/adaptedThrow3/chargeRun3/recover3.",
+  "poseSemantics": {
+    "A": [
+      "idle ready1",
+      "idle ready2",
+      "walk step1",
+      "walk step2",
+      "walk step3",
+      "walk step4",
+      "unarmed guard preparation",
+      "unarmed held guard",
+      "lower crouch",
+      "held crouch",
+      "rising jump",
+      "tucked jump"
+    ],
+    "B": [
+      "unarmed jab preparation",
+      "unarmed jab extension",
+      "unarmed jab recovery",
+      "unarmed strong strike preparation",
+      "unarmed strong strike extension",
+      "unarmed strong strike recovery",
+      "unarmed low sweep preparation",
+      "unarmed low sweep extension",
+      "unarmed low sweep recovery",
+      "full-body recoil from hit",
+      "kneeling KO collapse",
+      "complete side-lying KO"
+    ],
+    "C": [
+      "sprint start",
+      "sprint stride",
+      "controlled sprint stop",
+      "adapted grab preparation without victim",
+      "Empty open hands reach forward in adapted grab/contact; no victim or carried object.",
+      "Empty-hand forward follow-through/reset in the adapted throw triplet; reads as extended-arm motion, not a certified canonical CQC throw.",
+      "charge-run approach",
+      "adapted shoulder-contact stance",
+      "planted running finish",
+      "athletic breathing preparation",
+      "steady breath",
+      "return to stance"
+    ]
+  },
+  "canonicalMotionCertified": false,
+  "technicalAliases": {
+    "shoot": "unarmed sprint, no shooting",
+    "throw": "authored unarmed grab/follow-through",
+    "charge": "athletic charge-run/contact adaptation"
+  },
+  "sideSpecificObservedPoseOverrides": {
+    "b-left": {
+      "11": "Complete prone/side-turned lying KO, head LEFT and boots RIGHT; no injury or exact mirrored fall-animation claim."
+    }
+  },
+  "preparedOriginalPromptVariantsRetainedUnchanged": true
+}

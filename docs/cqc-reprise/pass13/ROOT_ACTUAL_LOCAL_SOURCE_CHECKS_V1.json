@@ -1,0 +1,36 @@
+{
+  "actualRun": true,
+  "at": "2026-10-03T07:02:41.676400+00:00",
+  "commands": [
+    {
+      "command": "node --test renderer-contracts.test.cjs bridge-contracts.test.cjs",
+      "exitCode": 0,
+      "tests": 27,
+      "passed": 27
+    },
+    {
+      "command": "npm run lint",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run test",
+      "exitCode": 0,
+      "tests": 705,
+      "passed": 705,
+      "suites": 104
+    },
+    {
+      "command": "node sync-reviewed-runtime-delta.mjs",
+      "exitCode": 0,
+      "runtimeFilesVerified": 1141,
+      "historicalDeletions": 0
+    }
+  ],
+  "compilerBuild": "Remote official Vercel build pending; local full build not run because two filesystem volumes cannot hold a fresh1.3GB public-copy output",
+  "actualGameBrowserPending": true,
+  "runtimeManifest": {
+    "path": "/workspace/shadow-codec-recovered/public/cqc/runtime-manifest.json",
+    "bytes": 442439,
+    "sha256": "07d5cb60f2bf149ed59b46b4fee86f1bde95685bdba9de803885f36b6e1f469d"
+  }
+}

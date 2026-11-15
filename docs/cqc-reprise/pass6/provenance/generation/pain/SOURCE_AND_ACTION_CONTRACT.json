@@ -1,0 +1,291 @@
+{
+  "uid": "core__pain",
+  "incarnation": "Metal Gear Solid 3: Snake Eater (2004) original PS2 FIRST PHASE mask",
+  "sourceBank": "/workspace/cqc-pass6-generation/pain/CANONICAL_REVIEW.json",
+  "noRuntimeEdits": true,
+  "actionMap": {
+    "light": "punch",
+    "heavy": "heavy",
+    "low": "low",
+    "throw": "throw",
+    "special": "shoot",
+    "specialDown": "deploy",
+    "specialForward": "shoot",
+    "specialBack": "walk",
+    "super": "charge",
+    "utility": "recover"
+  },
+  "actionLayout": {
+    "idle": {
+      "sheet": "a",
+      "indices": [
+        0,
+        1
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "walk": {
+      "sheet": "a",
+      "indices": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "fps": 8,
+      "loop": true
+    },
+    "guard": {
+      "sheet": "a",
+      "indices": [
+        6,
+        7
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "crouch": {
+      "sheet": "a",
+      "indices": [
+        8,
+        9
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "jump": {
+      "sheet": "a",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 5,
+      "loop": false
+    },
+    "punch": {
+      "sheet": "b",
+      "indices": [
+        0,
+        1,
+        2
+      ],
+      "fps": 12,
+      "loop": false
+    },
+    "heavy": {
+      "sheet": "b",
+      "indices": [
+        3,
+        4,
+        5
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "low": {
+      "sheet": "b",
+      "indices": [
+        6,
+        7,
+        8
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "hit": {
+      "sheet": "b",
+      "indices": [
+        9
+      ],
+      "fps": 0,
+      "loop": false
+    },
+    "ko": {
+      "sheet": "b",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 6,
+      "loop": false
+    },
+    "throw": {
+      "sheet": "c",
+      "indices": [
+        0,
+        1
+      ],
+      "fps": 9,
+      "loop": false
+    },
+    "shoot": {
+      "sheet": "c",
+      "indices": [
+        2,
+        3,
+        4
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "deploy": {
+      "sheet": "c",
+      "indices": [
+        5,
+        6
+      ],
+      "fps": 8,
+      "loop": false
+    },
+    "optic": {
+      "sheet": "c",
+      "indices": [
+        7
+      ],
+      "fps": 0,
+      "loop": false
+    },
+    "recover": {
+      "sheet": "c",
+      "indices": [
+        8,
+        9
+      ],
+      "fps": 5,
+      "loop": false
+    },
+    "charge": {
+      "sheet": "c",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 9,
+      "loop": false
+    }
+  },
+  "phaseMap": {
+    "punch": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "heavy": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "low": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "shoot": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "throw": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        0
+      ]
+    },
+    "deploy": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        0
+      ]
+    },
+    "charge": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        0
+      ]
+    },
+    "optic": {
+      "startup": [
+        0
+      ],
+      "active": [
+        0
+      ],
+      "recovery": [
+        0
+      ]
+    },
+    "recover": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        1
+      ]
+    },
+    "walk": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1,
+        2
+      ],
+      "recovery": [
+        3
+      ]
+    }
+  },
+  "poseCount": 72,
+  "independentFacings": true,
+  "mirror": false,
+  "phaseSemantics": {
+    "shoot": "open forward glove control preparation / open forward extended glove / hand retraction. special and specialForward share exactly one three-pose group",
+    "charge": "two-palms swarm barrage preparation / open forward palm barrage; no mouth",
+    "deploy": "arms open screen preparation / palms forward barrier control",
+    "recover": "settled breath / restored standing posture, existing utility adaptation"
+  },
+  "excluded": "Original phase-two bare disfigured face and mouth Bullet Bee are not selected."
+}

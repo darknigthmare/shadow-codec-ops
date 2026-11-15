@@ -1,0 +1,139 @@
+{
+  "schema": "cqc.p40.support-gold-final-handoff/1",
+  "status": "PASS_ACTUAL_GOLD_SMOKE_NO_QAFLAG",
+  "proof": {
+    "path": "@PROJECT_ROOT@/support-p40-candidate-v1/gold-actual-v1/ACTUAL_GOLD_SUPPORT_SMOKE_QA.json.gz",
+    "bytes": 2274,
+    "sha256": "2395e28a1733efcf59e7abdad2b54ba243797296490ffa594e9e18debc685367"
+  },
+  "scope": "Five trusted UI switches to two reviewed native guns plus original Solid/R00/Fenrir; complements prior ten full gun cases. Not seventeen-costume approval.",
+  "inheritedRootReview": {
+    "path": "@PROJECT_ROOT@/support-p40-candidate-v1/ROOT_GOLD_CODE_REVIEW_ACTUAL_V1.json",
+    "bytes": 1597,
+    "sha256": "35b3a74374fc42c4fdc46113c8c9bb926e44182a189fd742bd547d8cc2f667d2"
+  },
+  "gameplayTenCaseHandoff": {
+    "path": "@PROJECT_ROOT@/support-p40-candidate-v1/FINAL_LOCAL_QA_HANDOFF_ACTUAL_V1.json",
+    "bytes": 14097,
+    "sha256": "9185d7e14b50e3bb8d119f1afab7f92f2f5d26f6a0d60927c5547d472ecc2d5e"
+  },
+  "goldAdapter": {
+    "path": "@PROJECT_ROOT@/support-p40-candidate-v1/cqc-pass40-support-native-guns-v1.production-proposal.js",
+    "bytes": 6988,
+    "sha256": "8c68c205e7a99193e07ccfa1f3634a2da0460cbab792857227511a319f1c392d"
+  },
+  "leadScaleExportBridge": {
+    "path": "@PROJECT_ROOT@/support-p40-candidate-v1/cqc-pass27-support-native-actors.proposed.js",
+    "bytes": 16190,
+    "sha256": "7ba6c725c3ac241dc57b18921d218d7e542f79ac63baa1e545f8bc441635afb3"
+  },
+  "loadedSources": [
+    {
+      "name": "cqc-pass27-support-native-actors.js",
+      "bytes": 16190,
+      "sha256": "7ba6c725c3ac241dc57b18921d218d7e542f79ac63baa1e545f8bc441635afb3",
+      "actualLoadedResource": true
+    },
+    {
+      "name": "cqc-pass40-native-batch-index-v2.js",
+      "bytes": 133727,
+      "sha256": "c682e2ee4bfe2f03a5db76b7e491cfbdb5a36537aab168a6462b612e919b0f81",
+      "actualLoadedResource": true
+    },
+    {
+      "name": "cqc-pass40-support-native-guns-v1.js",
+      "bytes": 6988,
+      "sha256": "8c68c205e7a99193e07ccfa1f3634a2da0460cbab792857227511a319f1c392d",
+      "actualLoadedResource": true
+    },
+    {
+      "name": "cqc-sprite-renderer.js",
+      "bytes": 46974,
+      "sha256": "1e27fc2a45db71e71e02aab4f30e779ca9556c289e2a57b8f6ed5e6f34fdd732",
+      "actualLoadedResource": true
+    },
+    {
+      "name": "cqc-pass40-r00-support.js",
+      "bytes": 7784,
+      "sha256": "3c9a72206d51fc9214a93eb04be021795dee1233f438da2065f781003830b854",
+      "actualLoadedResource": true
+    },
+    {
+      "name": "cqc-pass40-fenrir-support-v1.js",
+      "bytes": 5492,
+      "sha256": "8ad5655193f403a32b57d94d4833242d42f0ddcaa159287fce729595e643efb3",
+      "actualLoadedResource": true
+    }
+  ],
+  "actualSwitches": [
+    {
+      "uid": "core__snake",
+      "selectedCostume": "mgs3-camo-watersnake",
+      "ammoBefore": 12,
+      "ammoAfter": 11,
+      "routerStable": true,
+      "nativeGunEmissionsDelta": 1
+    },
+    {
+      "uid": "core__meryl_mgs1",
+      "selectedCostume": "survive",
+      "ammoBefore": 12,
+      "ammoAfter": 11,
+      "routerStable": true,
+      "nativeGunEmissionsDelta": 1
+    },
+    {
+      "uid": "core__solid",
+      "selectedCostume": "original",
+      "ammoBefore": 12,
+      "ammoAfter": 11,
+      "routerStable": true,
+      "nativeGunEmissionsDelta": 0
+    },
+    {
+      "uid": "pass40__raiden_r00",
+      "selectedCostume": "original",
+      "ammoBefore": 12,
+      "ammoAfter": 12,
+      "routerStable": true,
+      "nativeGunEmissionsDelta": 0
+    },
+    {
+      "uid": "pass19__fenrir_mgr",
+      "selectedCostume": "original",
+      "ammoBefore": 12,
+      "ammoAfter": 12,
+      "routerStable": true,
+      "nativeGunEmissionsDelta": 0
+    }
+  ],
+  "checks": {
+    "trustedUI": true,
+    "combatStateInjected": false,
+    "storageInjected": false,
+    "productMutations": false,
+    "ownedBrowserClosed": true,
+    "noJSConsoleHTTPOrCrashes": true
+  },
+  "networkQualification": {
+    "externalBrowserHTTPSVerified": false,
+    "unattributedLoadingFailures": [
+      {
+        "requestId": "66667.788",
+        "timestamp": 65200.64175,
+        "type": "Other",
+        "errorText": "net::ERR_CACHE_MISS",
+        "canceled": false,
+        "url": null
+      }
+    ]
+  },
+  "installationAuthorized": false,
+  "installationNeeds": [
+    "cumulative SDK with reviewed sourcePoint",
+    "Root final product integration approval",
+    "readable stable native source transports"
+  ],
+  "startedAt": "2026-10-22T23:43:43.646Z",
+  "finishedAt": "2026-10-22T23:44:02.907Z"
+}

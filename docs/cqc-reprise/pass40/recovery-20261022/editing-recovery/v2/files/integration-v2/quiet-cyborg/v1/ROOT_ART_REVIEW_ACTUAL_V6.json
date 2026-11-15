@@ -1,0 +1,109 @@
+{
+  "schema": "cqc.p40.root-art-review/2",
+  "status": "approved",
+  "reviewer": "Root /root",
+  "reviewedAt": "2026-10-22T23:50:31.697910+00:00",
+  "inputSHA256": "9921ff53432a075fa26753f06f896edfb0160f86973f1efdd49d6bb9a14211ab",
+  "checks": {
+    "identity": true,
+    "incarnation": true,
+    "nativeArt": true,
+    "semanticPoses": true,
+    "equipment": true,
+    "ownership": true,
+    "framing": true,
+    "selectedWeaponPoints": true
+  },
+  "reviewedVisualRole14Aliases": [
+    {
+      "side": "right",
+      "roleIndex": 14,
+      "assetKey": "page2-right-ko-visual-h480-v3",
+      "sourceSHA256": "db1146ae8a60dbf98e39a7d54457ff0aefe4ced448414a2b32451fbebc17c3a8",
+      "standingHeight": 480,
+      "evidenceSHA256": "d3eb08dd08b3d8a88ae39c37dca1432a4f703b6962f80ae4ed2430a01471f359"
+    },
+    {
+      "side": "left",
+      "roleIndex": 14,
+      "assetKey": "page3-left-ko-visual-h475-v3",
+      "sourceSHA256": "8648236e3df8d95b996793143451e598bbcb729b0b5dbbfc015dc95b15672b70",
+      "standingHeight": 475,
+      "evidenceSHA256": "d3eb08dd08b3d8a88ae39c37dca1432a4f703b6962f80ae4ed2430a01471f359"
+    }
+  ],
+  "physicallyViewedContacts": [
+    {
+      "path": "@PROJECT_ROOT@/integration-v2/quiet-cyborg/v1/PHYSICAL_ROLES_CONTACT_CANDIDATE_V1.jpg",
+      "bytes": 490932,
+      "sha256": "07dc98961f5080cb7d37768040286af9c76ed9e8b31539c152368cde270c3b7a"
+    },
+    {
+      "path": "@PROJECT_ROOT@/integration-v2/quiet-cyborg/v1/NATIVE_WEAPON_POINTS_CANDIDATE_V2.jpg",
+      "bytes": 54051,
+      "sha256": "745ab222a124a6bdbe10d871032a2646faec8fd6c61ff0251b9ac45c4eeed0e6"
+    }
+  ],
+  "KOComparison": {
+    "path": "@PROJECT_ROOT@/integration-v2/originals-contact-run/ROOT_VISUAL_KO_H_COMPARISON_NOT_APPLIED_CANDIDATE_V2.jpg",
+    "bytes": 192832,
+    "sha256": "d3eb08dd08b3d8a88ae39c37dca1432a4f703b6962f80ae4ed2430a01471f359"
+  },
+  "limits": [
+    "Root physically inspected all32-source pose contacts, weapon-point zooms where applicable, six native neutral/KO head-torso-boot witnesses and same-scale KO comparison. Artists physically inspected all original source PNGs. No hidden anatomy or exact retail animation is certified.",
+    "All source facings are independently drawn with two contact-keypose walks, not mirrored or an asserted complete retail cycle. Manual pelvis/sole origins retain visible source-body axes; actual preview/movement/sizing and source-to-world emissions require game QA.",
+    "Only selected right/left KO14 logical aliases use the accepted visual display calibration: Liquid355/390 or Quiet480/475. Other30roles, native PNGs, points, combat timings and resources are unchanged. Boss306/297neutral calibration stays unchanged. This is a qualified global visual compromise based on native head/torso/boots and rendered comparison, not a certified anatomical transfer or bitmap editing.",
+    "Liquid remains the same adult MGS1 shirtless rooftop incarnation, redrawn as Next Gen; it already had nextgen family coverage and must not count as a newly covered franchise character/family. No coat/era fusion.",
+    "The Boss Metal Gear and Quiet cyborg are user-requested original character adaptations, not official alternate costumes. Boss is fully mechanical ivory/black armour/sensor head, no human face or hair. Quiet uses personalized Revengeance mechanical construction while retaining adult MGSV identity.",
+    "Quiet custom Wicked Butterfly is reference-based and closest in overall barrel/scope/chassis silhouette; fine receiver/stock geometry is less exact than the original capture and not certified1:1. Actual VS shoot projectile moves deliberately use native rifle role11, preserving original actionMap, timings and stats. Core dash/other actual moves require separate mode checks.",
+    "All weapon ports belong to the selected physical native role11, with independently inspected muzzle/rear axes; no generic screen-coordinate muzzle. Source review is not admission to Support/Core or a projectile profile replacement.",
+    "Only two previously inspected original rifle reference capture URLs are added to complete mandatory provenance. Source SHA/native art/geometry/roles/points/plans/profiles are unchanged. URLs identify IMFDB-hosted original-game screenshots, not generated identity authority for unseen surfaces."
+  ],
+  "heldRoles": [],
+  "productInstallationAuthorized": false,
+  "previousReview": {
+    "path": "@PROJECT_ROOT@/integration-v2/quiet-cyborg/v1/ROOT_ART_REVIEW_ACTUAL_V5.json",
+    "sha256": "473fc4c265c2f08dd5343c5e2da9197d1fc8aef3b6337aa990255dde4fb13f20"
+  },
+  "actualDispatchCorrection": {
+    "independentlyVerifiedExactLeafDelta": [
+      {
+        "path": "anchors[2].action",
+        "before": "deploy",
+        "after": "shoot"
+      },
+      {
+        "path": "anchors[3].action",
+        "before": "deploy",
+        "after": "shoot"
+      },
+      {
+        "path": "anchors[4].action",
+        "before": "charge",
+        "after": "shoot"
+      },
+      {
+        "path": "anchors[5].action",
+        "before": "charge",
+        "after": "shoot"
+      },
+      {
+        "path": "plan.selectedActionBySlot.specialDown",
+        "before": "deploy",
+        "after": "shoot"
+      },
+      {
+        "path": "plan.selectedActionBySlot.super",
+        "before": "charge",
+        "after": "shoot"
+      },
+      {
+        "path": "plan.selectedActionBySlot.utility",
+        "before": "recover",
+        "after": "reload"
+      }
+    ],
+    "pixelsGeometryPointsOriginalProfilesUnchanged": true,
+    "actualBrowserQARequired": true
+  }
+}

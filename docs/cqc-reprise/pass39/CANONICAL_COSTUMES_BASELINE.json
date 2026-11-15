@@ -1,0 +1,75 @@
+{
+  "schema": "cqc.pass39.canonical.audit.v1",
+  "status": "audit-and-candidates-only",
+  "uid": "core__raiden",
+  "incarnation": "Metal Gear Rising: Revengeance — final release, post-prologue cyborg body",
+  "recommendedBatch": [
+    {
+      "id": "mgr-white-armor",
+      "label": "White Armor · MGR",
+      "ref": "refs/white-armor-konami.jpg",
+      "priority": 1
+    },
+    {
+      "id": "mgr-inferno-armor",
+      "label": "Inferno Armor · MGR",
+      "ref": "refs/inferno-armor-konami.jpg",
+      "priority": 2
+    },
+    {
+      "id": "mgr-commando-armor",
+      "label": "Commando Armor · MGR",
+      "ref": "refs/commando-armor-konami.jpg",
+      "priority": 3
+    },
+    {
+      "id": "mgr-cyborg-ninja",
+      "label": "Cyborg Ninja · MGR",
+      "ref": "refs/cyborg-ninja-konami.jpg",
+      "priority": 4,
+      "qualified": "Official same-Raiden DLC disguise; not a new Gray Fox entry. New helmet silhouette requires stronger review."
+    }
+  ],
+  "officialPage": "https://www.konami.com/mg/archive/mgr/jp/special/",
+  "artContract": {
+    "perFacingPhysicalPoses": 16,
+    "facings": [
+      "right",
+      "left"
+    ],
+    "totalPhysicalPoses": 32,
+    "layout": "4x4, native square source1254x1254",
+    "semanticActions": 21,
+    "doNotClaim": "72 independently animated frames or frame-perfect MGR game footage",
+    "generation": "Edit native source atlas + official costume reference separately for each facing, transparent_background=true",
+    "measurement": "Measure new alpha geometry perpose and new native frame dimensions; never assume imagegen preserved pixel coordinates. Preserve common bodyheight and lateral datum."
+  },
+  "integrationBlockers": [
+    "P21 native wardrobe composer admits retro/tuxedo/reviewed cyborg only; introduce narrow canonical index extension with full provenance validation",
+    "Sync manifest currently treats embedded assets/ PNG paths as local; external immutable dependencies require explicit supported registry semantics",
+    "MGS4 Raiden body must not substitute for this MGR incarnation; no age/character merging"
+  ],
+  "currentCanonicalOptions": 4,
+  "historicalCatalogMappings": 362,
+  "filteredOutHistoricalMappings": 358,
+  "qa": "node --check new index; strict costume validateOption/registerBatch; verify both native facings,32 alpha-isolated physical poses,21 semantic actions,attachments/body datum; inspect hit/KO/utility/weapon hands; exercise selector/preview/combat/mirror=false; run root manifest and source-contract QA after explicit remote dependency support",
+  "limitations": [
+    "Official costume promo JPGs are136x283 and crop lowerlegs; exact hidden surfaces not attested",
+    "Source actionposes are authored CQC 2.5D combat adaptation,not original MGR animations",
+    "No artwork approved from metadata or download alone"
+  ],
+  "qaCommands": [
+    "node --check public/cqc/src/cqc-pass39-canonical-wardrobe-index.js",
+    "node --test scripts/sync-cqc-runtime.test.mjs",
+    "node scripts/sync-cqc-runtime.mjs --verify"
+  ],
+  "codePaths": [
+    "src/cqc-pass19-costume-request-data.js",
+    "src/cqc-pass19-canonical-appearances.js",
+    "src/cqc-pass19-costumes.js",
+    "src/cqc-pass19-native-wardrobe-library.js",
+    "src/cqc-pass21-native-wardrobe-index.js",
+    "src/cqc-pass18-sprite-catalog.js"
+  ],
+  "generatedWhiteArmorCandidateDirectory": "/tmp/cqc-pass39-art/white-armor"
+}

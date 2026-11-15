@@ -1,0 +1,222 @@
+{
+  "version": "0.44",
+  "scores": [
+    {
+      "id": "functional",
+      "name": "Fonctionnel",
+      "score": 94,
+      "status": "ready",
+      "note": "Fronts chargés, routes cohérentes, sauvegardes migrées."
+    },
+    {
+      "id": "content",
+      "name": "Contenu",
+      "score": 88,
+      "status": "strong",
+      "note": "31 titres catalogués, 194 entrées Versus, 32 machines, 32 boss nouveaux cumulés v0.41/v0.44."
+    },
+    {
+      "id": "ux",
+      "name": "UX / Interface",
+      "score": 86,
+      "status": "strong",
+      "note": "Command Front joueur séparé des écrans de production."
+    },
+    {
+      "id": "accessibility",
+      "name": "Accessibilité",
+      "score": 76,
+      "status": "warning",
+      "note": "Contraste, mouvement réduit, échelle de texte et sous-titres ajoutés. Remappage complet restant."
+    },
+    {
+      "id": "controls",
+      "name": "Contrôles",
+      "score": 79,
+      "status": "warning",
+      "note": "Clavier/tactile couverts. Manettes physiques non certifiées."
+    },
+    {
+      "id": "saves",
+      "name": "Sauvegardes",
+      "score": 88,
+      "status": "strong",
+      "note": "Profil central v2, export/import et migration conservatrice."
+    },
+    {
+      "id": "performance",
+      "name": "Performance",
+      "score": 82,
+      "status": "strong",
+      "note": "Canvas procédural et pas fixe. Profilage appareils bas de gamme restant."
+    },
+    {
+      "id": "audio",
+      "name": "Audio",
+      "score": 36,
+      "status": "blocker",
+      "note": "Mixage prévu, mais aucun pack audio final distribué."
+    },
+    {
+      "id": "localization",
+      "name": "Localisation",
+      "score": 52,
+      "status": "warning",
+      "note": "Français principal. Architecture multilingue et traductions complètes restantes."
+    },
+    {
+      "id": "legal",
+      "name": "Licence / IP",
+      "score": 35,
+      "status": "blocker",
+      "note": "Prototype privé non officiel : une commercialisation publique exige une licence ou une conversion en univers original."
+    },
+    {
+      "id": "network",
+      "name": "Réseau",
+      "score": 12,
+      "status": "blocker",
+      "note": "Versus local uniquement. Aucun rollback, matchmaking ou backend."
+    },
+    {
+      "id": "platform",
+      "name": "Plateformes",
+      "score": 45,
+      "status": "warning",
+      "note": "Navigateurs bureau testés localement. Safari iPhone, consoles et storefronts non certifiés."
+    },
+    {
+      "id": "privacy",
+      "name": "Vie privée",
+      "score": 84,
+      "status": "strong",
+      "note": "Aucune télémétrie distante. Export local explicite."
+    },
+    {
+      "id": "commercial",
+      "name": "Commercial / Release",
+      "score": 61,
+      "status": "warning",
+      "note": "Boucle de jeu et volume présents, mais licence, audio, art final et plateformes bloquent une sortie publique."
+    }
+  ],
+  "checks": [
+    [
+      "Roster unifié",
+      "unified-roster-v044.json",
+      194
+    ],
+    [
+      "Arènes Versus",
+      "unified-stages-v044.json",
+      30
+    ],
+    [
+      "Catalogue opus",
+      "franchise-catalog-v044.json",
+      31
+    ],
+    [
+      "Rival Files IV",
+      "rival-files-v044.json",
+      14
+    ],
+    [
+      "Arsenal v0.44",
+      "arsenal-v044.json",
+      32
+    ]
+  ],
+  "blockers": [
+    {
+      "severity": "S0",
+      "area": "Licence",
+      "title": "Droits commerciaux non détenus",
+      "fix": "Rester privé, obtenir une licence écrite ou convertir noms, personnages, histoire et identité visuelle en univers original."
+    },
+    {
+      "severity": "S0",
+      "area": "Réseau",
+      "title": "Multijoueur en ligne absent",
+      "fix": "Implémenter simulation déterministe, rollback, matchmaking, déconnexions, anti-triche et backend."
+    },
+    {
+      "severity": "S1",
+      "area": "Art",
+      "title": "Sprites et décors définitifs incomplets",
+      "fix": "Produire les atlas complets, retouches, LOD, VFX et passes de lisibilité sur chaque entrée prioritaire."
+    },
+    {
+      "severity": "S1",
+      "area": "Audio",
+      "title": "Mixage et contenu audio final absents",
+      "fix": "Créer musique/SFX/voix autorisés, bus audio, ducking, normalisation et modes nuit/accessibilité."
+    },
+    {
+      "severity": "S1",
+      "area": "Plateformes",
+      "title": "Contrôleurs et Safari non certifiés",
+      "fix": "Matrice appareils, tests Gamepad API, navigation tactile, mémoire iOS, plein écran et reprise après suspension."
+    },
+    {
+      "severity": "S2",
+      "area": "Équilibrage",
+      "title": "174+ profils non équilibrés humainement",
+      "fix": "Télémétrie locale consentie, sessions QA, matchups, frame data, tiers et correctifs de dégâts/timings."
+    },
+    {
+      "severity": "S2",
+      "area": "Contenu",
+      "title": "Campagnes intégrales non reproduites",
+      "fix": "Conserver l’étiquette simulation/chronique et développer séparément cartes, dialogues, transitions et conséquences."
+    },
+    {
+      "severity": "S2",
+      "area": "Accessibilité",
+      "title": "Remappage global incomplet",
+      "fix": "Éditeur de touches/manette, presets une main, maintien/bascule et navigation lecteur d’écran."
+    }
+  ],
+  "roadmap": [
+    {
+      "phase": "RC0 — Stabilisation",
+      "items": [
+        "Zéro erreur console",
+        "Tests saves/export/import",
+        "Manettes et tactile",
+        "Budget 60 FPS",
+        "Audit lisibilité HUD"
+      ]
+    },
+    {
+      "phase": "RC1 — Production",
+      "items": [
+        "Atlas prioritaires",
+        "Audio complet",
+        "Localisation EN",
+        "Passes VFX",
+        "Équilibrage 20 personnages cœur"
+      ]
+    },
+    {
+      "phase": "RC2 — Durée",
+      "items": [
+        "Saisons hors-ligne",
+        "Défis hebdomadaires locaux",
+        "Routes Arcade supplémentaires",
+        "Mutateurs",
+        "Galerie et codex enrichis"
+      ]
+    },
+    {
+      "phase": "Online optionnel",
+      "items": [
+        "Rollback",
+        "Lobbies privés",
+        "Matchmaking",
+        "Spectateur",
+        "Replays vérifiables"
+      ]
+    }
+  ]
+}

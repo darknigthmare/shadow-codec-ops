@@ -1,0 +1,539 @@
+{
+  "schema": "cqc.native-combat-delivery/1",
+  "uid": "npc53__paz_gz",
+  "name": "PAZ ORTEGA ANDRADE — GROUND ZEROES",
+  "game": "Metal Gear Solid V: Ground Zeroes (2014)",
+  "incarnation": "Original GZ adult Paz age23, short cropped blond hair, pale worn long prisoner shirt/tunic, rolled sleeves and bare feet; post-restraint-release authored bonus poses",
+  "selectedCostume": "original-gz-paz-prisoner-shirt",
+  "basis": "Apparence originale adulte vérifiée sur captures ; mouvements unarmés de soutien/défense et simulation versus explicite, sans arme, pouvoir ou bombes inventés.",
+  "displayHeight": 205,
+  "coverage": "action-frames",
+  "facing": 1,
+  "mirror": false,
+  "sourceFiles": [
+    {
+      "key": "a-right",
+      "source": "/workspace/cqc-pass8-generation/paz-eva/paz-gz/sources/A_RIGHT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-029fb6ad-4377-4519-b3af-cd17ec4e6098.png",
+      "sha256": "35f65eecba190816f5bb838644138dae12aa81f3067c44a5651c23ccdb46770c",
+      "bytes": 1840373,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": 1,
+      "mirror": false
+    },
+    {
+      "key": "a-left",
+      "source": "/workspace/cqc-pass8-generation/paz-eva/paz-gz/sources/A_LEFT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-665b8802-e871-4db3-9e16-375c4fbfc3ea.png",
+      "sha256": "a8b62ef64e4586d06894f473b3c276f474ce3ca3a2d5bbd49ea5d78dc0c07ba0",
+      "bytes": 1853488,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": -1,
+      "mirror": false
+    },
+    {
+      "key": "b-right",
+      "source": "/workspace/cqc-pass8-generation/paz-eva/paz-gz/sources/B_RIGHT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-04c5e899-e9a7-4ebf-9077-fe7defa5ba6a.png",
+      "sha256": "2322600a4e1b59aba47a63d900a25d4e25e230ce16460b641d3f5fad0e01b436",
+      "bytes": 2012575,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": 1,
+      "mirror": false
+    },
+    {
+      "key": "b-left",
+      "source": "/workspace/cqc-pass8-generation/paz-eva/paz-gz/sources/B_LEFT_02.png",
+      "nativeOriginal": "/workspace/generated_images/exec-db02703a-8b6b-4a67-b1cb-c3139839f5ca.png",
+      "sha256": "4ba1f03d67ed70dba4c8a8f940031bea3aba7a5d564244f4cfbb61b0d7711d3f",
+      "bytes": 1971767,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": -1,
+      "mirror": false
+    },
+    {
+      "key": "c-right",
+      "source": "/workspace/cqc-pass8-generation/paz-eva/paz-gz/sources/C_RIGHT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-a12d1375-28fe-45a3-84ad-ff0a02f14a18.png",
+      "sha256": "5effb44fd2adf95d75d8f8fa6a4a6ad6b0d191a88c8eae3624f35e9e84ef8d53",
+      "bytes": 1933459,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": 1,
+      "mirror": false
+    },
+    {
+      "key": "c-left",
+      "source": "/workspace/cqc-pass8-generation/paz-eva/paz-gz/sources/C_LEFT_01.png",
+      "nativeOriginal": "/workspace/generated_images/exec-86abe8ee-9c8c-49e8-b56e-796f2123b034.png",
+      "sha256": "d889dac14a84e1176c54d92cce9973bbe85e1790a7151e345b464818a8be65cd",
+      "bytes": 1919401,
+      "width": 1536,
+      "height": 1024,
+      "columns": 4,
+      "rows": 3,
+      "poseCount": 12,
+      "facing": -1,
+      "mirror": false
+    }
+  ],
+  "actionLayout": {
+    "idle": {
+      "sheet": "a",
+      "indices": [
+        0,
+        1
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "walk": {
+      "sheet": "a",
+      "indices": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "fps": 9,
+      "loop": true
+    },
+    "guard": {
+      "sheet": "a",
+      "indices": [
+        6,
+        7
+      ],
+      "fps": 5,
+      "loop": true
+    },
+    "crouch": {
+      "sheet": "a",
+      "indices": [
+        8,
+        9
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "jump": {
+      "sheet": "a",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 6,
+      "loop": false
+    },
+    "punch": {
+      "sheet": "b",
+      "indices": [
+        0,
+        1,
+        2
+      ],
+      "fps": 12,
+      "loop": false
+    },
+    "heavy": {
+      "sheet": "b",
+      "indices": [
+        3,
+        4,
+        5
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "low": {
+      "sheet": "b",
+      "indices": [
+        6,
+        7,
+        8
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "hit": {
+      "sheet": "b",
+      "indices": [
+        9
+      ],
+      "fps": 0,
+      "loop": false
+    },
+    "ko": {
+      "sheet": "b",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 6,
+      "loop": false
+    },
+    "shoot": {
+      "sheet": "c",
+      "indices": [
+        0,
+        1,
+        2
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "deploy": {
+      "sheet": "c",
+      "indices": [
+        3,
+        4,
+        5
+      ],
+      "fps": 8,
+      "loop": false
+    },
+    "throw": {
+      "sheet": "c",
+      "indices": [
+        6,
+        7,
+        8
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "recover": {
+      "sheet": "c",
+      "indices": [
+        9,
+        10,
+        11
+      ],
+      "fps": 5,
+      "loop": false
+    }
+  },
+  "actionMap": {
+    "light": "punch",
+    "heavy": "heavy",
+    "low": "low",
+    "throw": "throw",
+    "special": "shoot",
+    "specialDown": "deploy",
+    "specialForward": "throw",
+    "specialBack": "walk",
+    "super": "throw",
+    "utility": "recover"
+  },
+  "phaseMap": {
+    "punch": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "heavy": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "low": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "shoot": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "deploy": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "throw": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "recover": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "guard": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        0
+      ]
+    },
+    "jump": {
+      "startup": [
+        0
+      ],
+      "active": [
+        0
+      ],
+      "recovery": [
+        1
+      ]
+    },
+    "attack": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    }
+  },
+  "review": {
+    "status": "approved",
+    "reviewer": "paz_two_versions_eva producer original source and complete72-pose physical review",
+    "reviewedAt": "2026-10-02",
+    "sourceKind": "original-game-capture",
+    "checks": {
+      "identity": true,
+      "costume": true,
+      "equipment": true,
+      "anatomicalSides": true,
+      "singleFigure": true,
+      "transparentBackground": true
+    },
+    "fidelityStatus": "closest_supported",
+    "absolute1to1Certified": false,
+    "sources": [
+      {
+        "file": "/workspace/cqc-pass8-generation/paz-eva/paz-gz/references/original-2990s.png",
+        "url": "https://archive.org/download/Xbox_One_Longplay_004_Metal_Gear_Solid_V_Ground_Zeroes/Xbox_One_Longplay_004_Metal_Gear_Solid_V_Ground_Zeroes.mp4",
+        "sourceKind": "original-game-capture",
+        "scope": "Original GZ Xbox One title-card closeup proves short cropped blond hair, adult face, simple pale open-neck prisoner shirt; orange source light is not neutral color calibration.",
+        "viewed": true,
+        "sha256": "196a75e564c7025d295409964eb469cb250d06bc8e1448988ef3cd09d43a193f",
+        "bytes": 1019213,
+        "captureMethod": "ffmpeg remote-seek one native-resolution decoded frame, no complete movie download, crop, resize, recolor or pixel painting. Exact args and stderr preserved."
+      },
+      {
+        "file": "/workspace/cqc-pass8-generation/paz-eva/paz-gz/references/original-3005s.png",
+        "url": "https://archive.org/download/Xbox_One_Longplay_004_Metal_Gear_Solid_V_Ground_Zeroes/Xbox_One_Longplay_004_Metal_Gear_Solid_V_Ground_Zeroes.mp4",
+        "sourceKind": "original-game-capture",
+        "scope": "Original GZ Xbox One reverse/side short cropped hair and worn turned collar, buttons, sleeve materials; released-posture adapted sprites omit restraints and graphic trauma.",
+        "viewed": true,
+        "sha256": "00fba20103adc1bb591b0edb1edb87d30593c1afbc895a35f08f7b639f2debbe",
+        "bytes": 756323,
+        "captureMethod": "ffmpeg remote-seek one native-resolution decoded frame, no complete movie download, crop, resize, recolor or pixel painting. Exact args and stderr preserved."
+      },
+      {
+        "file": "/workspace/cqc-pass8-generation/paz-eva/paz-gz/references/original-3100s.png",
+        "url": "https://archive.org/download/Xbox_One_Longplay_004_Metal_Gear_Solid_V_Ground_Zeroes/Xbox_One_Longplay_004_Metal_Gear_Solid_V_Ground_Zeroes.mp4",
+        "sourceKind": "original-game-capture",
+        "scope": "Original GZ Xbox One rescued Paz carried by Snake; rolled pale sleeves, loose tunic and bare feet. Cloth hem/seams partly occluded and lighting dark.",
+        "viewed": true,
+        "sha256": "048d17e41a6dea4077e1c58362a08e907c5bf09f9d6debc045763e46b13e18ee",
+        "bytes": 894047,
+        "captureMethod": "ffmpeg remote-seek one native-resolution decoded frame, no complete movie download, crop, resize, recolor or pixel painting. Exact args and stderr preserved."
+      },
+      {
+        "file": "/workspace/cqc-pass8-generation/paz-eva/paz-gz/references/original-3250s.png",
+        "url": "https://archive.org/download/Xbox_One_Longplay_004_Metal_Gear_Solid_V_Ground_Zeroes/Xbox_One_Longplay_004_Metal_Gear_Solid_V_Ground_Zeroes.mp4",
+        "sourceKind": "original-game-capture",
+        "scope": "Original GZ Xbox One carried whole-body rear, actual bare feet, tunic/cuffs. Night vision distorts fabric colors; not used for neutral palette certification.",
+        "viewed": true,
+        "sha256": "ca80534c1bc4e25b9efeb84fd2310c8c141c1c379542b3cd98a3eec9225e74d8",
+        "bytes": 1539407,
+        "captureMethod": "ffmpeg remote-seek one native-resolution decoded frame, no complete movie download, crop, resize, recolor or pixel painting. Exact args and stderr preserved."
+      }
+    ],
+    "limits": [
+      "Paz selected here is the adult original GZ prisoner incarnation with short cropped blond hair, pale worn collared/buttoned tunic, sleeves rolled at elbows, bare lower legs/feet. She is not the TPP medical hallucination with braids/blue gown and not PW school-cover outfit.",
+      "Dark/orange and night-vision original capture lighting occludes neutral pale shirt hue, reverse seams and some garment hem details. Sprite pale beige-grey-green hue, cloth stain placement, exact buttons/finger topology and feet anatomy remain closest_supported, not exact model/material1:1.",
+      "These calm support/defense, authored normals/jump/guard, light recoil/tired-rest KO, empty-hand signal/protection/CQC/composure poses are bonus versus simulation after restraint release, not a canonical recovered GZ duel or an assertion that original trauma never occurred. No wounds, graphic violence, underwear, chains or bomb scenes appear.",
+      "B LEFT01 omitted a body and contains11 rather than12 poses; it is rejected, preserved and replaced by independently regenerated B LEFT02 containing12 complete bodies. No pixel erasure/paint/mirroring was used.",
+      "Target remains1:1 fidelity to selected original incarnation, closest_supported output only. Newly illustrated2D poses are not extracted original animation; absolute1:1 artistic or gameplay certification is false.",
+      "No firearm/grenade/projectile origin, bomb, ZEKE control, armor inheritance, psychic field or summoned machine is invented. Existing action keys shoot/deploy merely identify non-ballistic signal/protection pose groups; root must explicitly supersede historical generic weapon behavior.",
+      "Native source PNGs and all attempts unchanged. Both facings independently generated and SHA-distinct, no mirrored body raster. Every selected atlas and each12 complete bodies physically viewed by producer. Canvas crops/contours, source scale, mobile/desktop, phase/hitbox/finisher behavior remain independently root-owned.",
+      "Close native row spacing produces recorded foreign opaque pixels in some bounding rectangles. Metadata Canvas contour stencils exclude neighbors; no image pixels edited. Use the measured upright source height for each sheet, retaining actual lowered crouch/KO size."
+    ],
+    "approvalScope": "Source-qualified adult original-game clothing/identity and72 authored human unarmed bonus poses, no canon duel or runtime integration certification."
+  },
+  "counts": {
+    "selectedNativePngSheets": 6,
+    "totalPoseCells": 72,
+    "poseCellsPerSheet": 12,
+    "facings": 2,
+    "nativeGenerationAttempts": 7,
+    "rejectedNativeAttempts": 1,
+    "selectedWeaponPropAtlases": 0
+  },
+  "sourceGeometry": {
+    "a-right": {
+      "recommendStandingSourceHeight": 335.0,
+      "nativeUprightHeights": [
+        336,
+        334
+      ],
+      "observedUprightIndices": [
+        0,
+        1
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/paz-eva/paz-gz/layouts/a-right.json",
+      "basis": "Measured actual native upright head-to-foot source height; fixed positive per-sheet scale, lowered poses retain actual body height and are not stretched."
+    },
+    "a-left": {
+      "recommendStandingSourceHeight": 350.0,
+      "nativeUprightHeights": [
+        350,
+        350
+      ],
+      "observedUprightIndices": [
+        0,
+        1
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/paz-eva/paz-gz/layouts/a-left.json",
+      "basis": "Measured actual native upright head-to-foot source height; fixed positive per-sheet scale, lowered poses retain actual body height and are not stretched."
+    },
+    "b-right": {
+      "recommendStandingSourceHeight": 365.0,
+      "nativeUprightHeights": [
+        364,
+        366
+      ],
+      "observedUprightIndices": [
+        0,
+        2
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/paz-eva/paz-gz/layouts/b-right.json",
+      "basis": "Measured actual native upright head-to-foot source height; fixed positive per-sheet scale, lowered poses retain actual body height and are not stretched."
+    },
+    "b-left": {
+      "recommendStandingSourceHeight": 354.5,
+      "nativeUprightHeights": [
+        353,
+        356
+      ],
+      "observedUprightIndices": [
+        0,
+        2
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/paz-eva/paz-gz/layouts/b-left.json",
+      "basis": "Measured actual native upright head-to-foot source height; fixed positive per-sheet scale, lowered poses retain actual body height and are not stretched."
+    },
+    "c-right": {
+      "recommendStandingSourceHeight": 330.0,
+      "nativeUprightHeights": [
+        327,
+        333
+      ],
+      "observedUprightIndices": [
+        9,
+        11
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/paz-eva/paz-gz/layouts/c-right.json",
+      "basis": "Measured actual native upright head-to-foot source height; fixed positive per-sheet scale, lowered poses retain actual body height and are not stretched."
+    },
+    "c-left": {
+      "recommendStandingSourceHeight": 352.5,
+      "nativeUprightHeights": [
+        351,
+        354
+      ],
+      "observedUprightIndices": [
+        9,
+        11
+      ],
+      "measuredLayouts": "/workspace/cqc-pass8-generation/paz-eva/paz-gz/layouts/c-left.json",
+      "basis": "Measured actual native upright head-to-foot source height; fixed positive per-sheet scale, lowered poses retain actual body height and are not stretched."
+    }
+  },
+  "layouts": {
+    "a-right": "/workspace/cqc-pass8-generation/paz-eva/paz-gz/layouts/a-right.json",
+    "a-left": "/workspace/cqc-pass8-generation/paz-eva/paz-gz/layouts/a-left.json",
+    "b-right": "/workspace/cqc-pass8-generation/paz-eva/paz-gz/layouts/b-right.json",
+    "b-left": "/workspace/cqc-pass8-generation/paz-eva/paz-gz/layouts/b-left.json",
+    "c-right": "/workspace/cqc-pass8-generation/paz-eva/paz-gz/layouts/c-right.json",
+    "c-left": "/workspace/cqc-pass8-generation/paz-eva/paz-gz/layouts/c-left.json"
+  },
+  "sourceCombatOrigins": "/workspace/cqc-pass8-generation/paz-eva/paz-gz/SOURCE_COMBAT_ORIGINS.json",
+  "sourceContract": "/workspace/cqc-pass8-generation/paz-eva/paz-gz/SOURCE_AND_ACTION_CONTRACT.json",
+  "nativeAlphaReview": "/workspace/cqc-pass8-generation/paz-eva/paz-gz/NATIVE_ALPHA_REVIEW.json",
+  "limits": [
+    "Paz selected here is the adult original GZ prisoner incarnation with short cropped blond hair, pale worn collared/buttoned tunic, sleeves rolled at elbows, bare lower legs/feet. She is not the TPP medical hallucination with braids/blue gown and not PW school-cover outfit.",
+    "Dark/orange and night-vision original capture lighting occludes neutral pale shirt hue, reverse seams and some garment hem details. Sprite pale beige-grey-green hue, cloth stain placement, exact buttons/finger topology and feet anatomy remain closest_supported, not exact model/material1:1.",
+    "These calm support/defense, authored normals/jump/guard, light recoil/tired-rest KO, empty-hand signal/protection/CQC/composure poses are bonus versus simulation after restraint release, not a canonical recovered GZ duel or an assertion that original trauma never occurred. No wounds, graphic violence, underwear, chains or bomb scenes appear.",
+    "B LEFT01 omitted a body and contains11 rather than12 poses; it is rejected, preserved and replaced by independently regenerated B LEFT02 containing12 complete bodies. No pixel erasure/paint/mirroring was used.",
+    "Target remains1:1 fidelity to selected original incarnation, closest_supported output only. Newly illustrated2D poses are not extracted original animation; absolute1:1 artistic or gameplay certification is false.",
+    "No firearm/grenade/projectile origin, bomb, ZEKE control, armor inheritance, psychic field or summoned machine is invented. Existing action keys shoot/deploy merely identify non-ballistic signal/protection pose groups; root must explicitly supersede historical generic weapon behavior.",
+    "Native source PNGs and all attempts unchanged. Both facings independently generated and SHA-distinct, no mirrored body raster. Every selected atlas and each12 complete bodies physically viewed by producer. Canvas crops/contours, source scale, mobile/desktop, phase/hitbox/finisher behavior remain independently root-owned.",
+    "Close native row spacing produces recorded foreign opaque pixels in some bounding rectangles. Metadata Canvas contour stencils exclude neighbors; no image pixels edited. Use the measured upright source height for each sheet, retaining actual lowered crouch/KO size."
+  ],
+  "requiresGameplayContract": "Unarmed bonus simulation only: shoot=non-ballistic human signal, deploy=protective guard, throw=authored physical CQC, recover=composure. Remove historical firearm/grenade/ZEKE/psychic claims; runtime integration root-owned."
+}

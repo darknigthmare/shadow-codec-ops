@@ -1,0 +1,29 @@
+{
+  "schema": "cqc.p40.root-support-native-target-code-review/1",
+  "approved": true,
+  "reviewer": "Root /root",
+  "reviewedAt": "2026-10-23T00:04:33.956646+00:00",
+  "packetSHA256": "034c56eccd70c36da29d6b8ddf7c0be6d358c020ad63391d97581b4a70e6e4f0",
+  "adapter": {
+    "path": "@PROJECT_ROOT@/support-p40-scope17-candidate-v1/native-target-bounds-v1/cqc-pass40-support-native-guns-v3.proposed.js",
+    "bytes": 9631,
+    "sha256": "0d2b5db3635836b3bd0db95f2af050f3642bb0d843a68c312a9eaebbfbf2e845"
+  },
+  "hostEdit": {
+    "path": "@PROJECT_ROOT@/support-p40-scope17-candidate-v1/native-target-bounds-v1/SUPPORT_COLLISION_ONLY_EDIT.proposed.json",
+    "bytes": 570,
+    "sha256": "856e9770f8b8647891e8dfee623ac712b577ad0bd262c6b4d145575724fc0ca7"
+  },
+  "fixtureReportSHA256": "99da87c2333e27636b52abede115300352065c2b2d324e389932220081ab3ed8",
+  "checks": {
+    "fullDiffAndActualExistingDrawEnemyScaleRead": true,
+    "first40SourceFixturesIndependentlyRerunBeforeKnownObserverHelperFailure": true,
+    "correctedV2Final5CollisionFixturesReadAndAgent45PassVerified": true,
+    "ownedShotWeakSetNoNativeSourceMutation": true,
+    "nativeTargetVerticalScaleMatchesRendererAndLegacyHorizontal35Retained": true,
+    "unownedUnknownAndVRTargetsUseExactHistoricalFallback": true
+  },
+  "observerFailure": "Root ran original V1 fixture and reproduced its known missing clipPolygon.map observer bug after40 PASS. Actual adapter already handles missing clip polygon as [0,1]. Agent V2 observer handles same [0,1] correctly and all45 PASS; no production code changed for this fixture repair.",
+  "scope": "Isolated actual17 Support UI QA only. Stable upright native target extent, not per-pixel collision or every animation-frame outline. Scoped native muzzles unchanged; legacy shots/costs/timings/speed/damage and VR branch preserved.",
+  "productInstallationAuthorized": false
+}

@@ -1,0 +1,1311 @@
+{
+  "schema": "cqc.p40.native-costume-job/2",
+  "uid": "core__snake",
+  "id": "mgs3-camo-urban-tiger",
+  "label": "Urban Tiger",
+  "family": "canonical",
+  "provenance": {
+    "kind": "canonical-game-costume",
+    "sourceUID": "core__snake",
+    "sourceSpriteUID": "core__snake",
+    "originalDesign": false,
+    "canonicalAppearanceAttested": true,
+    "incarnation": "Naked Snake \u2014 original MGS3 PS2, 1964, before eye injury; two natural eyes.",
+    "costumeName": "Urban Tiger",
+    "sources": [
+      {
+        "url": "https://www.konami.com/mg/archive/mgs3/uk/pic/camo_unifo_urban_tiger.gif",
+        "sha256": "0bea7dd45fe8e5b358af3657ae162f6bdedd6c953847f7ff472bdaa96c2efb94",
+        "scope": "Original publisher PS2 camouflage plate; visible palette, cloth construction and pattern family only."
+      },
+      {
+        "url": "https://www.konami.com/mg/mc/manual/mgs3/ps5/en/page21.html",
+        "scope": "Publisher manual reference for the suppressed Mk22 silhouette and manual cycling. Authored CQC poses/timings remain an adaptation."
+      }
+    ]
+  },
+  "geometry": {
+    "path": "@PROJECT_ROOT@/integration-v2/urban-tiger/v1/SOURCE_GEOMETRY_CANDIDATE_V1.json.gz",
+    "bytes": 242485,
+    "sha256": "0cbb013a0a56cef7bfade9e5f9ef7bd29420da2b446457be3706beb34c3432b0"
+  },
+  "ownershipBook": {
+    "path": "@PROJECT_ROOT@/art/core__snake/mgs3-camo-urban-tiger/ROLEBOOK_EXPLICIT_CANDIDATE_V1.json",
+    "bytes": 16876,
+    "sha256": "1c20130cb6dfa1a8b273c0c42cca19304d818a31d10310dedc52e11a3c8589dc"
+  },
+  "assets": [
+    {
+      "key": "page0-right",
+      "file": "assets/combat-costumes-pass40/core__snake/mgs3-camo-urban-tiger/page0-right-v1.png",
+      "path": "@PROJECT_ROOT@/art/core__snake/mgs3-camo-urban-tiger/right-a-v1.png",
+      "bytes": 1293458,
+      "sha256": "f0c0616318e3403d5ce517d804560e3a713ae8c7045a5f2c6af4564d271575d5",
+      "width": 1672,
+      "height": 941,
+      "standingHeight": 435,
+      "calibration": {
+        "method": "same-page-neutral",
+        "pose": "right-right-a-v1-idle"
+      }
+    },
+    {
+      "key": "page1-right",
+      "file": "assets/combat-costumes-pass40/core__snake/mgs3-camo-urban-tiger/page1-right-v1.png",
+      "path": "@PROJECT_ROOT@/art/core__snake/mgs3-camo-urban-tiger/right-b-v1.png",
+      "bytes": 1531959,
+      "sha256": "08bfd1d23c98fc017ffe07f812236699d9d3259f7549124bdf6987fea6f296ae",
+      "width": 1254,
+      "height": 1254,
+      "standingHeight": 449,
+      "calibration": {
+        "method": "reviewed-anatomical-transfer",
+        "status": "UNAPPROVED-PROPOSAL-ROOT-REVIEW-REQUIRED",
+        "landmarkPairs": [
+          {
+            "name": "projected-crown-to-beard-chin",
+            "reference": [
+              [
+                1074,
+                872
+              ],
+              [
+                1090,
+                937
+              ]
+            ],
+            "action": [
+              [
+                247,
+                476
+              ],
+              [
+                260,
+                561
+              ]
+            ],
+            "ratio": 1.284553660835263
+          },
+          {
+            "name": "projected-elbow-to-glove-wrist",
+            "reference": [
+              [
+                1001,
+                1013
+              ],
+              [
+                999,
+                1062
+              ]
+            ],
+            "action": [
+              [
+                254,
+                588
+              ],
+              [
+                310,
+                579
+              ]
+            ],
+            "ratio": 1.1565595261939343
+          }
+        ],
+        "tolerance": 0.1,
+        "scope": "Head and forearm are projected2Dspans, not certified3Danatomy. Elbow/wrist centers have clothing/foreshortening uncertainty.10%framingtolerance is proposed, not an automaticpass. Actual world-scale contact and emission QA remain required.",
+        "sourceProposal": {
+          "path": "@PROJECT_ROOT@/art/core__snake/mgs3-camo-urban-tiger/calibration/URBAN_ANATOMICAL_DENSITY_PROPOSAL_V2.json",
+          "sha256": "1f3b42871cff3ca3a6b82d164c05b17a719140db960486a2eaee87655ba33d5c"
+        },
+        "observedRatioSpreadRelativeToMean": 0.10486538299118844,
+        "toleranceAutomaticallyPassed": false
+      }
+    },
+    {
+      "key": "page2-left",
+      "file": "assets/combat-costumes-pass40/core__snake/mgs3-camo-urban-tiger/page2-left-v1.png",
+      "path": "@PROJECT_ROOT@/art/core__snake/mgs3-camo-urban-tiger/left-a-v1.png",
+      "bytes": 1037266,
+      "sha256": "38c40dc64d24d282e38b0933a7d74cd747dc414fefdc8e8319da40b7ed3aea7b",
+      "width": 1133,
+      "height": 1388,
+      "standingHeight": 373,
+      "calibration": {
+        "method": "same-page-neutral",
+        "pose": "left-left-a-v1-idle"
+      }
+    },
+    {
+      "key": "page3-left",
+      "file": "assets/combat-costumes-pass40/core__snake/mgs3-camo-urban-tiger/page3-left-v1.png",
+      "path": "@PROJECT_ROOT@/art/core__snake/mgs3-camo-urban-tiger/left-b-v2.png",
+      "bytes": 2006183,
+      "sha256": "0c8683bc9fd008ffe4a8d1a5851f395a6910cee310f2b929f17a33b2aaf722a3",
+      "width": 1024,
+      "height": 1536,
+      "standingHeight": 387,
+      "calibration": {
+        "method": "reviewed-anatomical-transfer",
+        "status": "UNAPPROVED-PROPOSAL-ROOT-REVIEW-REQUIRED",
+        "landmarkPairs": [
+          {
+            "name": "projected-crown-to-beard-chin",
+            "reference": [
+              [
+                267,
+                1121
+              ],
+              [
+                259,
+                1187
+              ]
+            ],
+            "action": [
+              [
+                784,
+                331
+              ],
+              [
+                771,
+                399
+              ]
+            ],
+            "ratio": 1.0413400694640984
+          },
+          {
+            "name": "projected-elbow-to-glove-wrist",
+            "reference": [
+              [
+                320,
+                1258
+              ],
+              [
+                315,
+                1307
+              ]
+            ],
+            "action": [
+              [
+                783,
+                433
+              ],
+              [
+                738,
+                417
+              ]
+            ],
+            "ratio": 0.9696550070238029
+          }
+        ],
+        "tolerance": 0.1,
+        "scope": "Head and forearm are projected2Dspans, not certified3Danatomy. Elbow/wrist centers have clothing/foreshortening uncertainty.10%framingtolerance is proposed, not an automaticpass. Actual world-scale contact and emission QA remain required.",
+        "sourceProposal": {
+          "path": "@PROJECT_ROOT@/art/core__snake/mgs3-camo-urban-tiger/calibration/URBAN_ANATOMICAL_DENSITY_PROPOSAL_V2.json",
+          "sha256": "1f3b42871cff3ca3a6b82d164c05b17a719140db960486a2eaee87655ba33d5c"
+        },
+        "observedRatioSpreadRelativeToMean": 0.071293125754927,
+        "toleranceAutomaticallyPassed": false
+      }
+    },
+    {
+      "key": "page4-right",
+      "file": "assets/combat-costumes-pass40/core__snake/mgs3-camo-urban-tiger/page4-right-v1.png",
+      "path": "@PROJECT_ROOT@/art/core__snake/mgs3-camo-urban-tiger/native-walk-alternation-v1.png",
+      "bytes": 1998374,
+      "sha256": "8cf8bd3d2e50e2ba60035c4c0a049329166159e453983b365f79aac2ee57c622",
+      "width": 1536,
+      "height": 1024,
+      "standingHeight": 478,
+      "calibration": {
+        "method": "same-page-neutral",
+        "pose": "right-native-walk-alternation-v1-neutral"
+      }
+    },
+    {
+      "key": "page4-left",
+      "file": "assets/combat-costumes-pass40/core__snake/mgs3-camo-urban-tiger/page4-left-v1.png",
+      "path": "@PROJECT_ROOT@/art/core__snake/mgs3-camo-urban-tiger/native-walk-alternation-v1.png",
+      "bytes": 1998374,
+      "sha256": "8cf8bd3d2e50e2ba60035c4c0a049329166159e453983b365f79aac2ee57c622",
+      "width": 1536,
+      "height": 1024,
+      "standingHeight": 469,
+      "calibration": {
+        "method": "same-page-neutral",
+        "pose": "left-native-walk-alternation-v1-neutral"
+      }
+    },
+    {
+      "key": "page5-left",
+      "file": "assets/combat-costumes-pass40/core__snake/mgs3-camo-urban-tiger/page5-left-v1.png",
+      "path": "@PROJECT_ROOT@/art/core__snake/mgs3-camo-urban-tiger/left-step-opposite-v1.png",
+      "bytes": 1855860,
+      "sha256": "d41f23a216e2523a2c5d3cf8c014ce054bfa376294d86b014583e8ea30ba6767",
+      "width": 1536,
+      "height": 1024,
+      "standingHeight": 917,
+      "calibration": {
+        "method": "same-page-neutral",
+        "pose": "left-left-step-opposite-v1-neutral"
+      }
+    },
+    {
+      "key": "page6-right",
+      "file": "assets/combat-costumes-pass40/core__snake/mgs3-camo-urban-tiger/page6-right-v1.png",
+      "path": "@PROJECT_ROOT@/art/core__snake/mgs3-camo-urban-tiger/right-ground-corrective-v1.png",
+      "bytes": 1438022,
+      "sha256": "734e2d5ab0cb66d178284cdad5aebd655066b6702655ba40e7170c45c8438256",
+      "width": 1536,
+      "height": 1024,
+      "standingHeight": 586,
+      "calibration": {
+        "method": "same-page-neutral",
+        "pose": "right-right-ground-corrective-v1-neutral"
+      }
+    }
+  ],
+  "roles": {
+    "right": [
+      {
+        "asset": "page0-right",
+        "pose": "right-right-a-v1-idle",
+        "pivot": [
+          0.43288590604026844,
+          0.9954441913439636
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 190,
+          "sourceBandY": [
+            229,
+            299
+          ],
+          "sourceBandMedianRange": [
+            175,
+            209
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        },
+        "preview": {
+          "datumX": 129,
+          "bodyBounds": [
+            2,
+            2,
+            294,
+            435
+          ]
+        }
+      },
+      {
+        "asset": "page0-right",
+        "pose": "right-right-a-v1-guard",
+        "pivot": [
+          0.4855072463768116,
+          0.9953051643192489
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 594,
+          "sourceBandY": [
+            236,
+            304
+          ],
+          "sourceBandMedianRange": [
+            567.5,
+            614.5
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page4-right",
+        "pose": "right-native-walk-alternation-v1-walkA",
+        "pivot": [
+          0.4437669376693767,
+          0.9957894736842106
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 742.75,
+          "sourceBandY": [
+            247,
+            322
+          ],
+          "sourceBandMedianRange": [
+            740,
+            768
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page4-right",
+        "pose": "right-native-walk-alternation-v1-walkB",
+        "pivot": [
+          0.44291338582677164,
+          0.9957627118644068
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 1257.75,
+          "sourceBandY": [
+            247,
+            322
+          ],
+          "sourceBandMedianRange": [
+            1243.5,
+            1284.5
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page0-right",
+        "pose": "right-right-a-v1-crouch",
+        "pivot": [
+          0.4276595744680851,
+          0.9935275080906149
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 168.5,
+          "sourceBandY": [
+            746,
+            795
+          ],
+          "sourceBandMedianRange": [
+            165.5,
+            192.5
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page0-right",
+        "pose": "right-right-a-v1-jump",
+        "pivot": [
+          0.4528301886792453,
+          0.994413407821229
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 585,
+          "sourceBandY": [
+            650,
+            706
+          ],
+          "sourceBandMedianRange": [
+            573,
+            612
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page0-right",
+        "pose": "right-right-a-v1-punch",
+        "pivot": [
+          0.4403153153153153,
+          0.9949109414758269
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 964.5,
+          "sourceBandY": [
+            701,
+            763
+          ],
+          "sourceBandMedianRange": [
+            948.5,
+            992
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page0-right",
+        "pose": "right-right-a-v1-low",
+        "pivot": [
+          0.5420258620689655,
+          0.9919678714859438
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 1454.5,
+          "sourceBandY": [
+            770,
+            809
+          ],
+          "sourceBandMedianRange": [
+            1437,
+            1463.5
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page1-right",
+        "pose": "right-right-b-v1-grab",
+        "pivot": [
+          0.38854679802955666,
+          0.9952830188679245
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 191.75,
+          "sourceBandY": [
+            224,
+            291
+          ],
+          "sourceBandMedianRange": [
+            172.5,
+            212.5
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page1-right",
+        "pose": "right-right-b-v1-release",
+        "pivot": [
+          0.37223587223587223,
+          0.9952038369304557
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 593.5,
+          "sourceBandY": [
+            227,
+            293
+          ],
+          "sourceBandMedianRange": [
+            574.5,
+            620
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page1-right",
+        "pose": "right-right-b-v1-knife",
+        "pivot": [
+          0.4903314917127072,
+          0.9952267303102625
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 1052.5,
+          "sourceBandY": [
+            230,
+            296
+          ],
+          "sourceBandMedianRange": [
+            1021,
+            1074.5
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page1-right",
+        "pose": "right-right-b-v1-shoot",
+        "pivot": [
+          0.40162037037037035,
+          0.9952267303102625
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 203.5,
+          "sourceBandY": [
+            664,
+            730
+          ],
+          "sourceBandMedianRange": [
+            179,
+            229.5
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page1-right",
+        "pose": "right-right-b-v1-reload",
+        "pivot": [
+          0.4568452380952381,
+          0.9953810623556582
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 626.5,
+          "sourceBandY": [
+            668,
+            737
+          ],
+          "sourceBandMedianRange": [
+            605.5,
+            645
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page1-right",
+        "pose": "right-right-b-v1-hit",
+        "pivot": [
+          0.6550279329608939,
+          0.9949109414758269
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 1088.5,
+          "sourceBandY": [
+            658,
+            720
+          ],
+          "sourceBandMedianRange": [
+            1064,
+            1115.5
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page6-right",
+        "pose": "right-right-ground-corrective-v1-ko",
+        "pivot": [
+          0.5058997050147492,
+          0.9885714285714285
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 1095,
+          "sourceBandY": [
+            513,
+            540
+          ],
+          "sourceBandMedianRange": [
+            1091,
+            1101.5
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page6-right",
+        "pose": "right-right-ground-corrective-v1-roll",
+        "pivot": [
+          0.4938063063063063,
+          0.9935275080906149
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 381.25,
+          "sourceBandY": [
+            809,
+            858
+          ],
+          "sourceBandMedianRange": [
+            369.5,
+            416.5
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      }
+    ],
+    "left": [
+      {
+        "asset": "page2-left",
+        "pose": "left-left-a-v1-idle",
+        "pivot": [
+          0.5845454545454546,
+          0.9946949602122016
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 335.75,
+          "sourceBandY": [
+            204,
+            263
+          ],
+          "sourceBandMedianRange": [
+            315.5,
+            341.5
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        },
+        "preview": {
+          "datumX": 160.75,
+          "bodyBounds": [
+            2,
+            2,
+            271,
+            373
+          ]
+        }
+      },
+      {
+        "asset": "page2-left",
+        "pose": "left-left-a-v1-guard",
+        "pivot": [
+          0.5214007782101168,
+          0.9944903581267218
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 819,
+          "sourceBandY": [
+            210,
+            268
+          ],
+          "sourceBandMedianRange": [
+            805.5,
+            835
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page5-left",
+        "pose": "left-left-step-opposite-v1-walkA",
+        "pivot": [
+          0.5178006329113924,
+          0.9977578475336323
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 1111.25,
+          "sourceBandY": [
+            468,
+            611
+          ],
+          "sourceBandMedianRange": [
+            1082,
+            1122
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page4-left",
+        "pose": "left-native-walk-alternation-v1-walkB",
+        "pivot": [
+          0.5294906166219839,
+          0.9956043956043956
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 745.5,
+          "sourceBandY": [
+            747,
+            820
+          ],
+          "sourceBandMedianRange": [
+            726.5,
+            765
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page2-left",
+        "pose": "left-left-a-v1-crouch",
+        "pivot": [
+          0.5504694835680751,
+          0.9921568627450981
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 323.25,
+          "sourceBandY": [
+            953,
+            994
+          ],
+          "sourceBandMedianRange": [
+            314.5,
+            336
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page2-left",
+        "pose": "left-left-a-v1-jump",
+        "pivot": [
+          0.5634517766497462,
+          0.9931506849315068
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 830,
+          "sourceBandY": [
+            923,
+            970
+          ],
+          "sourceBandMedianRange": [
+            820.5,
+            851
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page2-left",
+        "pose": "left-left-a-v1-punch",
+        "pivot": [
+          0.5334595959595959,
+          0.9927007299270073
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 338.25,
+          "sourceBandY": [
+            1221,
+            1264
+          ],
+          "sourceBandMedianRange": [
+            330,
+            360
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page2-left",
+        "pose": "left-left-a-v1-low",
+        "pivot": [
+          0.46215596330275227,
+          0.9909502262443439
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 755.5,
+          "sourceBandY": [
+            1250,
+            1285
+          ],
+          "sourceBandMedianRange": [
+            744.5,
+            873.5
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page3-left",
+        "pose": "left-left-b-v2-grab",
+        "pivot": [
+          0.5506042296072508,
+          0.9932432432432432
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 315.25,
+          "sourceBandY": [
+            153,
+            200
+          ],
+          "sourceBandMedianRange": [
+            293,
+            324.5
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page3-left",
+        "pose": "left-left-b-v2-release",
+        "pivot": [
+          0.5988538681948424,
+          0.9932203389830508
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 785,
+          "sourceBandY": [
+            154,
+            200
+          ],
+          "sourceBandMedianRange": [
+            775.5,
+            790
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page3-left",
+        "pose": "left-left-b-v2-knife",
+        "pivot": [
+          0.5910290237467019,
+          0.993421052631579
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 313,
+          "sourceBandY": [
+            462,
+            510
+          ],
+          "sourceBandMedianRange": [
+            299,
+            319
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page3-left",
+        "pose": "left-left-b-v2-shoot",
+        "pivot": [
+          0.585820895522388,
+          0.9932432432432432
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 816.25,
+          "sourceBandY": [
+            464,
+            511
+          ],
+          "sourceBandMedianRange": [
+            806,
+            834.5
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page3-left",
+        "pose": "left-left-b-v2-reload",
+        "pivot": [
+          0.5279783393501805,
+          0.9938461538461538
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 303.25,
+          "sourceBandY": [
+            789,
+            840
+          ],
+          "sourceBandMedianRange": [
+            288,
+            318.5
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page3-left",
+        "pose": "left-left-b-v2-hit",
+        "pivot": [
+          0.36258278145695366,
+          0.9936507936507937
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 732.5,
+          "sourceBandY": [
+            789,
+            839
+          ],
+          "sourceBandMedianRange": [
+            710.5,
+            753.5
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page3-left",
+        "pose": "left-left-b-v2-ko",
+        "pivot": [
+          0.5072706935123042,
+          0.9795918367346939
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 318.75,
+          "sourceBandY": [
+            1052,
+            1067
+          ],
+          "sourceBandMedianRange": [
+            312.5,
+            322.5
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      },
+      {
+        "asset": "page3-left",
+        "pose": "left-left-b-v2-roll",
+        "pivot": [
+          0.38405797101449274,
+          0.9871794871794872
+        ],
+        "bodyAxisProposal": {
+          "nativeX": 723,
+          "sourceBandY": [
+            1044,
+            1068
+          ],
+          "sourceBandMedianRange": [
+            714,
+            735.5
+          ],
+          "method": "Median occupied body-row centre in46\u201362% native silhouette band; a framing proposal requiring physical waist/pelvis counterreview.",
+          "approved": false
+        }
+      }
+    ]
+  },
+  "plan": {
+    "actions": {
+      "idle": {
+        "fps": 4,
+        "loop": true,
+        "roles": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "walk": {
+        "fps": 8,
+        "loop": true,
+        "roles": [
+          2,
+          3,
+          2,
+          3
+        ]
+      },
+      "guard": {
+        "fps": 5,
+        "loop": true,
+        "roles": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "crouch": {
+        "fps": 4,
+        "loop": true,
+        "roles": [
+          4,
+          4
+        ]
+      },
+      "low": {
+        "fps": 8,
+        "loop": false,
+        "roles": [
+          4,
+          4,
+          7,
+          4
+        ]
+      },
+      "punch": {
+        "fps": 10,
+        "loop": false,
+        "roles": [
+          1,
+          6,
+          6,
+          1
+        ]
+      },
+      "hit": {
+        "fps": 8,
+        "loop": false,
+        "roles": [
+          13,
+          13
+        ]
+      },
+      "ko": {
+        "fps": 4,
+        "loop": false,
+        "roles": [
+          14,
+          14
+        ]
+      },
+      "throw": {
+        "fps": 10,
+        "loop": false,
+        "roles": [
+          1,
+          8,
+          8,
+          1
+        ]
+      },
+      "deploy": {
+        "fps": 6,
+        "loop": false,
+        "roles": [
+          1,
+          8,
+          9,
+          1
+        ]
+      },
+      "shoot": {
+        "fps": 10,
+        "loop": false,
+        "roles": [
+          1,
+          11,
+          1
+        ]
+      },
+      "reload": {
+        "fps": 4,
+        "loop": false,
+        "roles": [
+          1,
+          12
+        ]
+      },
+      "attack": {
+        "fps": 10,
+        "loop": false,
+        "roles": [
+          1,
+          6,
+          6,
+          1
+        ]
+      },
+      "jump": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          5
+        ]
+      },
+      "roll": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          15
+        ]
+      },
+      "blade": {
+        "fps": 9,
+        "loop": false,
+        "roles": [
+          1,
+          10,
+          1
+        ]
+      },
+      "heavy": {
+        "fps": 9,
+        "loop": false,
+        "roles": [
+          1,
+          6,
+          1
+        ]
+      }
+    },
+    "actionMap": {
+      "light": "punch",
+      "heavy": "punch",
+      "low": "low",
+      "throw": "throw",
+      "special": "shoot",
+      "specialDown": "deploy",
+      "specialForward": "throw",
+      "specialBack": "guard",
+      "super": "punch",
+      "utility": "reload"
+    },
+    "phaseMap": {
+      "punch": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1,
+          2
+        ],
+        "recovery": [
+          3
+        ]
+      },
+      "attack": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1,
+          2
+        ],
+        "recovery": [
+          3
+        ]
+      },
+      "low": {
+        "startup": [
+          0,
+          1
+        ],
+        "active": [
+          2
+        ],
+        "recovery": [
+          3
+        ]
+      },
+      "throw": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1,
+          2
+        ],
+        "recovery": [
+          3
+        ]
+      },
+      "deploy": {
+        "startup": [
+          0,
+          1
+        ],
+        "active": [
+          2
+        ],
+        "recovery": [
+          3
+        ]
+      },
+      "shoot": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "reload": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          1
+        ]
+      },
+      "guard": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1,
+          2
+        ],
+        "recovery": [
+          3
+        ]
+      },
+      "blade": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "heavy": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      }
+    },
+    "scope": "Unreviewed visual proposal; original combat timings and move profiles stay unchanged."
+  },
+  "anchors": [
+    {
+      "side": "right",
+      "slot": "special",
+      "roleIndex": 11,
+      "action": "shoot",
+      "nativeXY": [
+        458.5,
+        538.5
+      ],
+      "socket": "mk22-suppressor-muzzle",
+      "rearNativeXY": [
+        419.5,
+        538.5
+      ]
+    },
+    {
+      "side": "left",
+      "slot": "special",
+      "roleIndex": 11,
+      "action": "shoot",
+      "nativeXY": [
+        623.5,
+        384.5
+      ],
+      "socket": "mk22-suppressor-muzzle",
+      "rearNativeXY": [
+        660.5,
+        384.5
+      ]
+    },
+    {
+      "side": "right",
+      "slot": "specialDown",
+      "roleIndex": 9,
+      "action": "deploy",
+      "nativeXY": [
+        845.5,
+        121.5
+      ],
+      "socket": "grenade-release-hand"
+    },
+    {
+      "side": "left",
+      "slot": "specialDown",
+      "roleIndex": 9,
+      "action": "deploy",
+      "nativeXY": [
+        579.5,
+        95.5
+      ],
+      "socket": "grenade-release-hand"
+    }
+  ],
+  "proposalLimits": [
+    "Candidate pixel heights and pivots require physical review. A neutral pose on the same image can use a different drawn density; do not approve that value automatically.",
+    "Preview datum is proposed from contact pixels. Replace it with a reviewed pelvis/body axis where appropriate.",
+    "No source point is inferred from a gun bounding box. Native muzzle or release points must be supplied explicitly.",
+    "Urban right-B head/forearm ratio spread10.49% exceeds the proposed10% diagnostic tolerance. SourceH449 is a proposal only and MUST receive independent Root judgment or further calibration before runtime admission."
+  ]
+}

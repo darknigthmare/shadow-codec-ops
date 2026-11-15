@@ -1,0 +1,130 @@
+{
+  "schema": "cqc.pass8.root-shadow-qa-completion/1",
+  "status": "passed",
+  "failed": 0,
+  "checkedAtUTC": "2026-10-02T10:13:46.506296+00:00",
+  "freshPassingSteps": [
+    {
+      "label": "cqc-copy-verification",
+      "command": [
+        "npm",
+        "run",
+        "cqc:check"
+      ],
+      "cwd": "/workspace/shadow-codec-recovered",
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "/workspace/cqc-pass8-final-qa-tools/runs/run-20261002T100848Z-a9ad032e-shadow/shadow-logs/cqc-copy-verification.log",
+      "logSHA256": "4c13d78f2d638508a3f42e6000248e7229816059df5327276f00dac9467c12dd",
+      "elapsedSeconds": 1.3239277040120214,
+      "passed": true
+    },
+    {
+      "label": "typescript-noemit",
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "cwd": "/workspace/shadow-codec-recovered",
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "/workspace/cqc-pass8-final-qa-tools/runs/run-20261002T100848Z-a9ad032e-shadow/shadow-logs/typescript-noemit.log",
+      "logSHA256": "a5a1cfe056c5d555fab8a39692b1ee27cfe72309b69e4def697211928b8e5b59",
+      "elapsedSeconds": 7.638101000993629,
+      "passed": true
+    },
+    {
+      "label": "vitest",
+      "command": [
+        "npm",
+        "run",
+        "test"
+      ],
+      "cwd": "/workspace/shadow-codec-recovered",
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "/workspace/cqc-pass8-final-qa-tools/runs/run-20261002T100848Z-a9ad032e-shadow/shadow-logs/vitest.log",
+      "logSHA256": "c6f24e4ad1b6d8c26312936c07d2e624f61c578b8201cf66f3bffe4830e70e20",
+      "elapsedSeconds": 10.723147238997626,
+      "passed": true,
+      "testCounts": {
+        "passedFiles": 104,
+        "totalFiles": 104,
+        "passedTests": 705,
+        "totalTests": 705
+      }
+    },
+    {
+      "label": "typescript-build",
+      "command": [
+        "npm",
+        "exec",
+        "--",
+        "tsc",
+        "-b"
+      ],
+      "cwd": "/workspace/shadow-codec-recovered",
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "/workspace/cqc-pass8-final-qa-tools/runs/run-20261002T100848Z-a9ad032e-shadow/shadow-logs/typescript-build.log",
+      "logSHA256": "76162e465989f3f070a9de8db711fbf358e53b74d09ce1bbdb57c727e4c4a16d",
+      "elapsedSeconds": 8.233805734009366,
+      "passed": true
+    },
+    {
+      "label": "frozen-public-vite-build",
+      "command": [
+        "node",
+        "/workspace/cqc-pass8-storage-tools/build-with-frozen-public.mjs",
+        "--project",
+        "/workspace/shadow-codec-recovered",
+        "--destination",
+        "/workspace/shadow-codec-recovered/dist",
+        "--pins",
+        "/workspace/cqc-pass8-storage-tools/public-pins-root-rev3.json",
+        "--plan",
+        "/workspace/cqc-pass8-storage-tools/build-plan-root-rev3.json",
+        "--execute",
+        "--plan-sha256",
+        "8879202be71f23ba9f3de8b698d363c22bb582eb681d312c763409101a713f19",
+        "--skip-typecheck",
+        "--backup-root",
+        "/workspace/cqc-pass8-storage-tools/root-build-backups",
+        "--evidence-root",
+        "/workspace/cqc-pass8-storage-tools/root-build-evidence"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "log": "/workspace/cqc-pass8-root-final-proofs/shadow-build-wrapper-argv-correction/frozen-public-vite-build.log",
+      "logSHA256": "b41492c90b6d6aa6759c206c550a941bc80b5e084216e280db923f29052dda7f"
+    },
+    {
+      "label": "pwa-check",
+      "command": [
+        "npm",
+        "run",
+        "pwa:check"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "log": "/workspace/cqc-pass8-root-final-proofs/shadow-build-wrapper-argv-correction/pwa-check.log",
+      "logSHA256": "c2082605bf7e914cbfa34422e1ff340a84e280d36c79a5de6e15baf9a4b11d55"
+    }
+  ],
+  "retainedFirstAttemptReport": {
+    "path": "/workspace/cqc-pass8-final-qa-tools/runs/run-20261002T100848Z-a9ad032e-shadow/report.json",
+    "sha256": "9a32b4e879482de9c5a5e1eea4052cd1fb2b3c8529952ab23eca536efcf0a8f1"
+  },
+  "correction": "The first wrapper command accidentally included the node executable and wrapper path twice. The wrapper rejected positional arguments before building. The four passing verification/compiler/Vitest steps are retained; only the corrected official build and subsequent PWA check run again.",
+  "vitestTests": 705,
+  "vitestFiles": 104,
+  "originalRunSourceInputsUnchanged": true,
+  "finalRootSourceFreezeExact": true,
+  "finalRuntimeManifestExact": true,
+  "packageOrViteConfigModified": false,
+  "fullFrozenPublicBuildReceiptRequired": true,
+  "originalReportsAndFailedAttemptPreserved": true,
+  "repeatedAlreadyPassingTestSuites": 0,
+  "deploymentCertified": false
+}

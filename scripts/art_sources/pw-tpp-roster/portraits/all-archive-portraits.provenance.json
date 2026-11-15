@@ -1,0 +1,438 @@
+{
+  "version": 1,
+  "generator": "OpenAI built-in imagegen; individual generation prompts and detailed review records accompany the source atlases",
+  "scope": "Seven new PW/TPP archive portrait sets; archive dossiers, not seven new callable contacts",
+  "fidelity": "Original reference-informed fan-made adaptation, not an assertion of exact 1:1 reproduction",
+  "expressions": [
+    "neutral",
+    "serious",
+    "warning",
+    "calm",
+    "humor",
+    "glitch"
+  ],
+  "importer": "scripts/splitCodecPortraitSheet.py",
+  "command": "node scripts/art_sources/pw-tpp-roster/auditArchivePortraitProvenance.mjs --check",
+  "subjects": [
+    {
+      "characterId": "coldman_pw",
+      "source": {
+        "path": "scripts/art_sources/pw-tpp-roster/peace-walker/coldman-portraits-openai.png",
+        "sha256": "836064af39bf032fff161fb7e10cdbfd259ed4280f25f5bb3ff8376a8478c39b",
+        "bytes": 2593010,
+        "width": 1536,
+        "height": 1024
+      },
+      "prompt": {
+        "path": "scripts/art_sources/pw-tpp-roster/peace-walker/coldman-portraits-prompts.json",
+        "sha256": "466b8dca6b1b422efdf410ee7ddae8649dd7cbcdd51004124bd494805e7435bd",
+        "bytes": 2808,
+        "canonicalization": "utf8-lf"
+      },
+      "outputs": [
+        {
+          "path": "public/portraits/peace_walker/coldman/neutral.webp",
+          "sha256": "6e25416c90e3d67cc04ee5e81db261574022cccdd9fdd9ec268614aae45c31bb",
+          "bytes": 32530,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/peace_walker/coldman/serious.webp",
+          "sha256": "0b2787794e4e0239a11c9fb2c4c3a85dcb9fafc156f1c887f8e4b6a364b4b40d",
+          "bytes": 32278,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/peace_walker/coldman/warning.webp",
+          "sha256": "7468c63bc7e45182b23d3f19422c4933e3e4942e6addb25c69d86bbcbfd5e161",
+          "bytes": 31236,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/peace_walker/coldman/calm.webp",
+          "sha256": "f5f02aa4a060363669cefaa4cda065953659304324e759a60f951f607ccee0da",
+          "bytes": 31448,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/peace_walker/coldman/humor.webp",
+          "sha256": "5e21a463575249c350be1fa588e5a823d1a8cd6bd62adcd100d041665f57b412",
+          "bytes": 32474,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/peace_walker/coldman/glitch.webp",
+          "sha256": "9c2f0e697a7b282d703926c1bd4f59e1c1d2b107ee7dea77c4c749c0febff4bb",
+          "bytes": 36834,
+          "width": 512,
+          "height": 512
+        }
+      ]
+    },
+    {
+      "characterId": "eli_mgsv",
+      "source": {
+        "path": "scripts/art_sources/pw-tpp-roster/portraits/eli-openai.png",
+        "sha256": "1205666d54d14cd3d7f28a3b6a9e15a72a678a536e2c1018cfde45d80832fb57",
+        "bytes": 2387630,
+        "width": 1536,
+        "height": 1024
+      },
+      "prompt": {
+        "path": "scripts/art_sources/pw-tpp-roster/portraits/archive-portraits-prompts.json",
+        "sha256": "6128d2f21410486e81462fb0ee54b623d792bfe6ae3e6a677f2a4062e65fb944",
+        "bytes": 7465,
+        "canonicalization": "utf8-lf"
+      },
+      "outputs": [
+        {
+          "path": "public/portraits/mgsv/eli/neutral.webp",
+          "sha256": "e184ddc72915f0c9d8d018437bd7b6b5995aa02a27f0132ad5521a16597b61f9",
+          "bytes": 29230,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/eli/serious.webp",
+          "sha256": "a6ef7f65d3e4446984557aaf9f1aa650fbf5bff317faa18b46e32d4048977ff8",
+          "bytes": 29714,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/eli/warning.webp",
+          "sha256": "cf38bc6fdc1212e469259185cd515cadaa64cdcadf1d4f8d00909d3184469bb4",
+          "bytes": 30462,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/eli/calm.webp",
+          "sha256": "8a5e4b6af93fdc6a09845293d1f703c320521e00d4316180264cf60d648acbcf",
+          "bytes": 29448,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/eli/humor.webp",
+          "sha256": "f8b81d5ac4d60e55fe682b591eb2f1b7c5f0260a929f0cc411babb381f442999",
+          "bytes": 30006,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/eli/glitch.webp",
+          "sha256": "e2ba5bfc61b87ca64e28c4e0d9c4b5bf27e5bb102902e2b1b8d9c3ac73c13d73",
+          "bytes": 36900,
+          "width": 512,
+          "height": 512
+        }
+      ]
+    },
+    {
+      "characterId": "tretij_rebenok_mgsv",
+      "source": {
+        "path": "scripts/art_sources/pw-tpp-roster/portraits/tretij-rebenok-openai.png",
+        "sha256": "fcb6e17593e26d96cf45288ccfa8a77a32a3908b815712fa5585709a7bb21bd8",
+        "bytes": 2317225,
+        "width": 1536,
+        "height": 1024
+      },
+      "prompt": {
+        "path": "scripts/art_sources/pw-tpp-roster/portraits/archive-portraits-prompts.json",
+        "sha256": "6128d2f21410486e81462fb0ee54b623d792bfe6ae3e6a677f2a4062e65fb944",
+        "bytes": 7465,
+        "canonicalization": "utf8-lf"
+      },
+      "outputs": [
+        {
+          "path": "public/portraits/mgsv/tretij_rebenok/neutral.webp",
+          "sha256": "047aa09643921b52eeeb41a661a0193cb1b025d2f88a7f472c78b43a72f20c67",
+          "bytes": 30644,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/tretij_rebenok/serious.webp",
+          "sha256": "870eae4d1a4a8fdca9a031fe3403e7ed4c130f3502c50eda074c6d19cc7a9f04",
+          "bytes": 31872,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/tretij_rebenok/warning.webp",
+          "sha256": "38ec17599c0b56cad8cf7154bd0f28cd77afd710bb8fdabf91d912127fb65d4c",
+          "bytes": 34426,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/tretij_rebenok/calm.webp",
+          "sha256": "3acde44a76a8d02f98a5aa684a833c8ea81eca6ff5dbed915659c45233b9e16d",
+          "bytes": 28466,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/tretij_rebenok/humor.webp",
+          "sha256": "2e11bfe1bcf4bce2391899d98a3e4e83b91602f305f761aa016c141a37cac63f",
+          "bytes": 29608,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/tretij_rebenok/glitch.webp",
+          "sha256": "8bde064be5ed1a2b0739af3b9e1eecc1cd56cee63b7de89ecda6d4afde5c290a",
+          "bytes": 36632,
+          "width": 512,
+          "height": 512
+        }
+      ]
+    },
+    {
+      "characterId": "man_on_fire_mgsv",
+      "source": {
+        "path": "scripts/art_sources/pw-tpp-roster/tpp-man-on-fire-portraits.png",
+        "sha256": "fe884b29ffac0d9fece81e78bd9210a9fcba83f37cb77de5739f06dc714cb54b",
+        "bytes": 2607250,
+        "width": 1536,
+        "height": 1024
+      },
+      "prompt": {
+        "path": "scripts/art_sources/pw-tpp-roster/tpp-man-on-fire-portraits.prompt.json",
+        "sha256": "f9057688145cd675ce5e875eceae2f35c95ac1ed0063cd7fd8287dbcea708ff7",
+        "bytes": 3338,
+        "canonicalization": "utf8-lf"
+      },
+      "outputs": [
+        {
+          "path": "public/portraits/mgsv/man_on_fire/neutral.webp",
+          "sha256": "e0c1bd60fec2e9bec6b4ec1e8044121ebac7b4d6592799f29d81bbd0292bbaf2",
+          "bytes": 45508,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/man_on_fire/serious.webp",
+          "sha256": "f1b21944d5747429aab50f5e288388aa746a0e4ad8dca0de8a459b67238b168f",
+          "bytes": 52704,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/man_on_fire/warning.webp",
+          "sha256": "c35210c460008e5628f23f1e0e51f76c95950b4447ad06f4256efca6527afaed",
+          "bytes": 57980,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/man_on_fire/calm.webp",
+          "sha256": "61fcb2910036455fc8cb9659a57a1f3bc5d9a38b789f6ab3b2938c3dd0027735",
+          "bytes": 44698,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/man_on_fire/humor.webp",
+          "sha256": "5bfd0710758c995a3d360cb2d8599d1c997ff919e5f84150b00cfce816420324",
+          "bytes": 47108,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/man_on_fire/glitch.webp",
+          "sha256": "076367e1f4a5fe0e5f7309d61fa3fd6927d84a84c899de915a9b01eaa301c315",
+          "bytes": 43548,
+          "width": 512,
+          "height": 512
+        }
+      ]
+    },
+    {
+      "characterId": "ishmael_mgsv",
+      "source": {
+        "path": "scripts/art_sources/pw-tpp-roster/portraits/ishmael-openai.png",
+        "sha256": "f967d4622fdf5e4a7af1e08126989b880a49b98d71116934f73f4d1c7c2cb8c7",
+        "bytes": 2507029,
+        "width": 1536,
+        "height": 1024
+      },
+      "prompt": {
+        "path": "scripts/art_sources/pw-tpp-roster/portraits/archive-portraits-prompts.json",
+        "sha256": "6128d2f21410486e81462fb0ee54b623d792bfe6ae3e6a677f2a4062e65fb944",
+        "bytes": 7465,
+        "canonicalization": "utf8-lf"
+      },
+      "outputs": [
+        {
+          "path": "public/portraits/mgsv/ishmael/neutral.webp",
+          "sha256": "41e75bf227b9802090d6f3d0b228adae17cfd6131faa03a80f7e1e3a2bc0c1c6",
+          "bytes": 36600,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/ishmael/serious.webp",
+          "sha256": "066155e0267af9b9a06f1d886ff9a7e086251b272d1866802d3267cd5025bd78",
+          "bytes": 33642,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/ishmael/warning.webp",
+          "sha256": "891d93b5d9505b618a512eff3bf70e7a1030f25fefb24cd4480ae51f8bfc4573",
+          "bytes": 33834,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/ishmael/calm.webp",
+          "sha256": "874b0312c02659d725db00ca9488ee008dc944862f9b9758b0fd95ca79bc4c2b",
+          "bytes": 34980,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/ishmael/humor.webp",
+          "sha256": "f78284c47346dfbd24667d130fdf1a1db4dd9452ce3ed813be8fbc5265e751fb",
+          "bytes": 33580,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/ishmael/glitch.webp",
+          "sha256": "bb4732227a53c1397de9cef17c06e286b274fe3564d8a1592dda4d75638dad21",
+          "bytes": 42340,
+          "width": 512,
+          "height": 512
+        }
+      ]
+    },
+    {
+      "characterId": "mosquito_mgsv",
+      "source": {
+        "path": "scripts/art_sources/pw-tpp-roster/phantom-pain/mosquito-portraits-openai.png",
+        "sha256": "183c1855a04d8265255b5b4bc23a9361be5d1a8bd49fb3e3bc088a12df2c45b2",
+        "bytes": 2447440,
+        "width": 1536,
+        "height": 1024
+      },
+      "prompt": {
+        "path": "scripts/art_sources/pw-tpp-roster/phantom-pain/mosquito-portraits.prompt.json",
+        "sha256": "0965cea73a62983b1716986ce665926409c42ddfc6a2daf3f8426df4b6e8ec68",
+        "bytes": 2800,
+        "canonicalization": "utf8-lf"
+      },
+      "outputs": [
+        {
+          "path": "public/portraits/mgsv/mosquito/neutral.webp",
+          "sha256": "d21e459b13ebdce09a6d723e42e5ec38e6d9226c9805fa5f9769d887a2f32cab",
+          "bytes": 27282,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/mosquito/serious.webp",
+          "sha256": "323662e471644c42c9d96dbd0733d99f1374e0d6ec183754953222c91dc6df8f",
+          "bytes": 30352,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/mosquito/warning.webp",
+          "sha256": "844fd41439f1abe5252563655acad93a13aa28244b3f1dd46f289626431b2336",
+          "bytes": 29956,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/mosquito/calm.webp",
+          "sha256": "27205b87c6af1fd4712c5078cd20c180dc4ec9f10cbb4d28a049b7948e7398bf",
+          "bytes": 29646,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/mosquito/humor.webp",
+          "sha256": "1c696f76c8aea1815b99388c5eb177032e5cb30ff16d34e8a310bdd2b997c406",
+          "bytes": 28828,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/mosquito/glitch.webp",
+          "sha256": "452c8d016d57d4a1bd39d5b39145ef42425b8bd55dfc695e03d8866468da3b4b",
+          "bytes": 35488,
+          "width": 512,
+          "height": 512
+        }
+      ]
+    },
+    {
+      "characterId": "paz_1984_mgsv",
+      "source": {
+        "path": "scripts/art_sources/pw-tpp-roster/tpp-paz-1984-portraits.png",
+        "sha256": "c3c798fbbd1fbfb7af36d04798992f54d8cf53d22d44c61b68af9b2b1074e6ac",
+        "bytes": 2458914,
+        "width": 1536,
+        "height": 1024
+      },
+      "prompt": {
+        "path": "scripts/art_sources/pw-tpp-roster/tpp-paz-1984-portraits.prompt.json",
+        "sha256": "b17b98fb203d9377168651681ce9a5505f203117bbaa363ba4c95c911aadc431",
+        "bytes": 2945,
+        "canonicalization": "utf8-lf"
+      },
+      "outputs": [
+        {
+          "path": "public/portraits/mgsv/paz_1984/neutral.webp",
+          "sha256": "ea57d748ce5643f55b6c5c1834d3148d4dae7a5567ce20215611fb1be49830d4",
+          "bytes": 29996,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/paz_1984/serious.webp",
+          "sha256": "640b3593289090ef40d4964a55d8c9f93c4c0aa5a7f96f8f6fa0fbb2e0990768",
+          "bytes": 30238,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/paz_1984/warning.webp",
+          "sha256": "1cef7f35057215dfa9fe962a5a598e53e97c4025ef8b7b41539481acf6371332",
+          "bytes": 31012,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/paz_1984/calm.webp",
+          "sha256": "29e5ca9b417ae92c5460f13de8cd8c93a8f1ef0b757632e2589dceb50f09353d",
+          "bytes": 29458,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/paz_1984/humor.webp",
+          "sha256": "c31700e91043fbc55a995c1de047ced06a8631de52b4581e5b779016a6c72580",
+          "bytes": 30154,
+          "width": 512,
+          "height": 512
+        },
+        {
+          "path": "public/portraits/mgsv/paz_1984/glitch.webp",
+          "sha256": "7718b0a5fd95ac1f0c8d3b38134ed318980824816a63bcc45041242776f83a1c",
+          "bytes": 33514,
+          "width": 512,
+          "height": 512
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "schema": "cqc.pass21.batch2-frozen-application-checks/1",
+  "status": "passed",
+  "sourceState": "frozen",
+  "tests": 705,
+  "testFiles": 104,
+  "typescript": true,
+  "fullTestsReusedOnlyForByteIdenticalApplicationTestAndConfigurationSources": true,
+  "identicalNonPublicSourcePaths": 701,
+  "unchangedSourceComparison": {
+    "path": "/workspace/cqc-pass21/batches/v2/integration/UNCHANGED_APPLICATION_TEST_CONFIG_ACTUAL_V2.json",
+    "sha256": "b453fd10d05895ef7d1d7aa111a15c91656c7ea2e968ab78827025fd8b1de35d"
+  },
+  "originalFullChecks": {
+    "path": "/workspace/cqc-pass21/batches/v1/integration/APPLICATION_CHECKS_ACTUAL_V1.json",
+    "sha256": "7e2ad59cc0aec8e41347f64d1420a9807d257410d908db0fc98104963ece90b8"
+  },
+  "freshTargetedChecks": [
+    {
+      "path": "/workspace/cqc-pass21/batches/v2/integration/LAZY_INDEX_NATIVE_SOCKET_CONTRACT_ACTUAL_V2.json",
+      "sha256": "784ab7a9c17b8fdc0117342fe56a79b6c04b3c3d593b5951b67add97f1238c54"
+    },
+    {
+      "path": "/workspace/cqc-pass21/batches/v2/integration/FROZEN_RENDERER_SEMANTICS_CONTRACT_ACTUAL_V2.json",
+      "sha256": "b6a6e962ab1cfd502286d1e5c356ae5048db78c5c4b10d7dc034f367a9ec0f11"
+    },
+    {
+      "path": "/workspace/cqc-pass21/batches/v2/integration/RUNTIME_MANIFEST_ACTUAL_V3.json",
+      "sha256": "1fd0e04094398f37da0ab9896a070afcc6f5c19a36dd81b03d2e0a1939b5a26f"
+    }
+  ],
+  "viteOriginalConfiguration": true,
+  "freshBuildProof": {
+    "path": "/workspace/cqc-pass21/batches/v2/integration/APPLICATION_BUILD_PUBLIC_HARDLINK_PROOF_ACTUAL_V3.json",
+    "sha256": "19bdd161fb49e7393ffda35b082138f1884c0fad38887881265052c45ee95891"
+  },
+  "freshPWALog": {
+    "path": "/workspace/cqc-pass21/batches/v2/integration/PWA_ACTUAL_V3.log",
+    "sha256": "c2082605bf7e914cbfa34422e1ff340a84e280d36c79a5de6e15baf9a4b11d55"
+  },
+  "runtimeManifestSHA256": "488bf621097a81e854e4dbbf01a03e92532bf161a03bebf3863daae4011e8ec0",
+  "qualification": "No application TypeScript, tests, scripts or root configuration changed from passing full705/104 checks. New public CQC changes receive fresh original-config build, runtime/PWA checks and separate targeted source/engine/UI verification. Earlier helper asserted the word passed whereas the real PWA result is PWA CHECK PASS; actual product check passed on its first invocation.",
+  "freshRuntimeLog": {
+    "path": "/workspace/cqc-pass21/batches/v2/integration/CQC_FROZEN_RUNTIME_CHECK_ACTUAL_V3.log",
+    "sha256": "6387570d4cc0378056a9ed5ec5a9aea69422d2df4320d95407cc8058de1482b1"
+  },
+  "all701UnchangedSourcePinsReverifiedAtFinalReview": true
+}

@@ -1,0 +1,60 @@
+{
+  "schema": "cqc.p40.canonical-origin-template-tests/1",
+  "status": "passed-fixtures-not-art-approval",
+  "actualRendererSelectFrame": true,
+  "positiveSelectedFrameCases": [
+    {
+      "face": 1,
+      "slot": "special",
+      "selectedAction": "shoot",
+      "selectedFrameIndex": 1,
+      "forward": 44,
+      "height": 130.02
+    },
+    {
+      "face": 1,
+      "slot": "specialDown",
+      "selectedAction": "deploy",
+      "selectedFrameIndex": 2,
+      "forward": 44,
+      "height": 130.02
+    },
+    {
+      "face": -1,
+      "slot": "special",
+      "selectedAction": "shoot",
+      "selectedFrameIndex": 1,
+      "forward": 44,
+      "height": 130.02
+    },
+    {
+      "face": -1,
+      "slot": "specialDown",
+      "selectedAction": "deploy",
+      "selectedFrameIndex": 2,
+      "forward": 44,
+      "height": 130.02
+    }
+  ],
+  "negativeSourceOrIdentityCases": [
+    "wrong incarnation",
+    "wrong costume",
+    "wrong move family",
+    "nonprojectile",
+    "unreviewed revision",
+    "changed art audit",
+    "changed selected source hash",
+    "changed selected rectangle",
+    "changed selected pivot",
+    "missing calibrated density",
+    "mirrored sprite"
+  ],
+  "invalidCompiledBindingsRejected": 5,
+  "unrelatedOriginDelegatedExactlyOnce": true,
+  "productMutations": false,
+  "PNGReadsOrChanges": false,
+  "limits": [
+    "Synthetic geometry proves source-binding rejection and actual renderer phase selection, not physical anatomy or real game projectile emission.",
+    "The compatibility wrapper delegates an unresolved point to the existing origin provider. Exact real-profile coverage and actual match emissions must pass before publishing a costume."
+  ]
+}

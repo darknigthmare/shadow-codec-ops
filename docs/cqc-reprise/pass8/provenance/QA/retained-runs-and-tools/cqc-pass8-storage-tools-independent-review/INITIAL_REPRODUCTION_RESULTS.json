@@ -1,0 +1,49 @@
+{
+  "productionSyncOrBuildRun": false,
+  "productionRepositoriesModified": false,
+  "results": [
+    {
+      "name": "Build plan fails to detect source-code change",
+      "sourceCodeChanged": true,
+      "planUnchanged": true,
+      "classification": "integrity gap in reviewed-source snapshot"
+    },
+    {
+      "name": "Build output accepts project src directory",
+      "acceptedSourceOverlap": true,
+      "classification": "source safety gap in destination validation"
+    },
+    {
+      "name": "Only explicitly pinned PNG shares its source inode",
+      "frozenPNGHardlinked": true,
+      "mutableJSIndependent": true,
+      "classification": "passed"
+    },
+    {
+      "name": "JavaScript cannot be pinned as immutable PNG",
+      "rejected": true,
+      "error": "Invalid or duplicate frozen PNG pin: mutable.js",
+      "classification": "passed"
+    },
+    {
+      "name": "Unpinned PNG remains an independent copy",
+      "mode": "independent-copy",
+      "independentInode": true,
+      "classification": "passed"
+    },
+    {
+      "name": "Caught rename-stage failure restores previous destination",
+      "failedAsExpected": true,
+      "previousDestinationRestored": true,
+      "stageStillPreserved": true,
+      "classification": "passed"
+    },
+    {
+      "name": "Post-promotion stage-byte failure leaves new destination active",
+      "postcheckMismatch": true,
+      "previousDestinationPreservedAtBackup": true,
+      "incorrectNewDestinationStillActive": true,
+      "classification": "rollback covers rename errors but not wrapper post-promotion validation errors"
+    }
+  ]
+}

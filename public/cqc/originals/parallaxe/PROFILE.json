@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "uid": "oc__parallaxe",
+  "displayName": "PARALLAXE",
+  "nameStatus": "nom provisoire",
+  "language": "fr",
+  "identity": {
+    "universe": "Univers CQC original — Station Méridien",
+    "role": "Responsable des essais tactiques de Station Méridien, une installation autonome dont les salles de direction anciennes surplombent une cour de maintenance militaire.",
+    "civilIdentity": "Identité civile non définie ; PARALLAXE est un nom de code provisoire.",
+    "profile": "Parallaxe éprouve les contrats de ses opérateurs en créant des situations où deux consignes deviennent incompatibles. Il veut conserver l'avantage de celui qui connaît les choix réels derrière les engagements annoncés. Méthodique, défiant et ambitieux, il tolère l'incertitude lorsqu'il peut en tirer une prise sur autrui.",
+    "dramaticLimit": "Une réaction peut lui échapper, et plusieurs motifs peuvent produire le même geste. Son système recueille des traces ; son interprétation reste faillible.",
+    "moralContinuity": "Une victoire lui fournit des données supplémentaires sans le convertir ni effacer ses ambitions. Sa personnalité demeure la même quel que soit le camp du joueur.",
+    "relationship": {
+      "name": "Rook",
+      "status": "Opérateur original proposé pour cette fiction.",
+      "role": "Opérateur de reconnaissance de Station Méridien, associé à un rapace entraîné. Il accepte les essais tout en gardant ses propres marges de décision.",
+      "visualLimit": "Le rapace est visible dans la scène de cour ; l'apparence de Rook n'est pas définie par ces images."
+    }
+  },
+  "visualIdentity": {
+    "description": "Homme adulte athlétique au visage anguleux et aux cheveux bruns courts relevés ; armure articulée olive usée, sangles et poches sombres, gants et bottes noirs.",
+    "optic": "Optique verte amovible portée devant l'œil anatomique gauche, reliée à son équipement par un câble. Il s'agit d'un instrument porté, sans perte d'œil ni remplacement biologique supposés.",
+    "equipment": "Terminal portable, cartes de données, commandes locales et carabine conventionnelle visible dans le passage technique.",
+    "limits": "Aucune capacité surnaturelle, lecture des pensées ou connaissance automatique de l'avenir. L'optique ne garantit ni la vérité d'une observation ni l'intention d'un opérateur.",
+    "assetContinuity": "Réemploi du design interne existant pour ce personnage original. Les illustrations ne deviennent pas des preuves d'une identité officielle extérieure.",
+    "opticSide": {
+      "anatomical": "left",
+      "frontPortraitImageSide": "right",
+      "removable": true,
+      "eyeLossEstablished": false
+    }
+  },
+  "gameplayProposal": {
+    "status": "Implémenté dans le mode original : duel IA, versus local et dojo. Valeurs initiales à affiner après retours de jeu.",
+    "archetype": "Contrôle de zone et observation, avec préparation visible et engagement risqué.",
+    "proposedActions": [
+      "Poser un seul leurre de zone actif, précédé d'un signal visible ; l'adversaire peut l'éviter ou le neutraliser.",
+      "Activer brièvement l'optique pour mémoriser un déplacement déjà observé et choisir une riposte ; elle ne révèle pas les entrées du joueur ni ses actions futures.",
+      "Choisir entre surveiller la zone préparée et se déplacer librement : la préparation perd son utilité si le combat change de position."
+    ],
+    "proposedLimits": [
+      "Temps de préparation exposant Parallaxe à une interruption.",
+      "Autonomie limitée de l'optique et temps de récupération à régler après essai.",
+      "Portée courte du dispositif local, absence de déclenchement à travers tout le terrain.",
+      "Armure limitant la mobilité ; aucune invulnérabilité garantie.",
+      "Rook et le rapace servent ici le récit ; aucune attaque assistée par l'oiseau n'est proposée pour le combat."
+    ],
+    "validationNeeded": "Mécaniques et contre-jeu testés ; équilibrage initial, sans certification compétitive.",
+    "commands": [
+      {
+        "input": "Flèches",
+        "action": "Déplacement et saut court",
+        "limit": "Vitesse 0,86 ; aucune invulnérabilité."
+      },
+      {
+        "input": "J",
+        "action": "Frappe de contrôle",
+        "limit": "340 dégâts de base, préparation 7 images."
+      },
+      {
+        "input": "K",
+        "action": "Engagement lourd",
+        "limit": "660 dégâts de base, préparation 16 images et récupération 28."
+      },
+      {
+        "input": "I",
+        "action": "Leurre local visible",
+        "limit": "30 autonomie ; un seul actif, armement 35 images, destructible."
+      },
+      {
+        "input": "↓ + I",
+        "action": "Rappeler son leurre",
+        "limit": "Portée 240 px, sans explosion ni remboursement."
+      },
+      {
+        "input": "AVANT + I",
+        "action": "Carabine conventionnelle",
+        "limit": "15 autonomie ; tir haut, collision réelle."
+      },
+      {
+        "input": "ARRIÈRE + I",
+        "action": "Décrochage local",
+        "limit": "10 autonomie ; 60 px, sans invulnérabilité."
+      },
+      {
+        "input": "L",
+        "action": "Optique — trace visible",
+        "limit": "20 autonomie ; portée 380 px et récupération 210 images, aucune commande future lue."
+      },
+      {
+        "input": "U",
+        "action": "Rupture au contact",
+        "limit": "Saisie au sol, esquivable et déchopable."
+      },
+      {
+        "input": "O",
+        "action": "Croisement de trajectoires",
+        "limit": "75 jauge + 35 autonomie ; remplace le leurre actif, 38 images de préparation."
+      },
+      {
+        "input": "Espace",
+        "action": "Garde",
+        "limit": "La garde debout ne bloque pas un balayage bas."
+      }
+    ]
+  },
+  "nameEditable": true,
+  "portrait": "assets/portraits/parallaxe.webp",
+  "status": {
+    "fiction": "original_character",
+    "reader": "implemented",
+    "playableFighter": "implemented_original_mode",
+    "baseRosterModified": false,
+    "baseRosterCount": 354,
+    "canonAffiliation": null
+  },
+  "weaponsAndTools": [
+    {
+      "name": "Carabine conventionnelle",
+      "role": "Matériel porté dans le passage technique ; aucune arme réelle/modèle précis attribué."
+    },
+    {
+      "name": "Optique verte amovible",
+      "role": "Observation locale, autonomie limitée, sans lecture des pensées ni prédiction garantie."
+    },
+    {
+      "name": "Module de commande",
+      "role": "Accès séparés à un dispositif local."
+    },
+    {
+      "name": "Cartes et terminal",
+      "role": "Archivage de décisions et de traces."
+    },
+    {
+      "name": "Clé et mécanisme de scénario",
+      "role": "Accessoires narratifs de Station Méridien."
+    }
+  ],
+  "gameplayImplementation": {
+    "module": "../../modules/unified-versus-v055.html?original=parallaxe",
+    "uid": "oc__parallaxe",
+    "registeredOnlyInOriginalMode": true,
+    "baseRosterCount": 354,
+    "moves": 10,
+    "resource": {
+      "label": "AUTONOMIE",
+      "max": 100,
+      "regenPerFrame": 0.12,
+      "delayFrames": 80
+    },
+    "balanceStatus": "initial_playable",
+    "canonical": false
+  }
+}

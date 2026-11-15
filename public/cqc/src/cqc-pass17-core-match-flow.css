@@ -1,0 +1,28 @@
+.core-match-flow-pass17:not(.playing) #game{visibility:hidden}
+.core-match-flow-pass17 #menu #stage-label,.core-match-flow-pass17 #menu #stage-title,.core-match-flow-pass17 #menu #stage-episode{display:none!important}
+.core-launch-actions-pass17{display:flex;align-items:stretch;flex-shrink:0;gap:0}
+.core-launch-actions-pass17 #start{border-left:0;border-radius:0;min-height:44px}
+.core-launch-actions-pass17 .match-gear-pass17{border-radius:0;color:var(--accent,#dfce88);border-color:var(--accent,#dfce88)}
+.core-mode-section-pass17{grid-column:1/-1}
+.core-mode-section-pass17 h3{margin:0 0 12px;font:800 10px ui-monospace,monospace;color:#d7c58b;letter-spacing:.1em}
+#coreMatchSettingsPass17 .mode-row{margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;overflow:visible}
+#coreMatchSettingsPass17 .mode-row button{font-size:9px;min-width:0;padding:10px 8px;white-space:normal}
+#coreMatchSettingsPass17 .mode-row [aria-pressed=true]{background:#b5b282;color:#15231a;border-color:#ddcc91}
+.core-match-fixed-pass17{display:flex;flex-direction:column;justify-content:center;gap:10px;font:800 10px ui-monospace,monospace;color:#becab0}
+.core-match-fixed-pass17 span{color:#e1d799;font-size:12px;line-height:1.5}
+.core-stage-screen-pass17:not([open]){display:none!important}
+.core-stage-screen-pass17[open]{position:fixed;inset:0;width:100vw;height:100dvh;max-width:100vw;max-height:100dvh;box-sizing:border-box;margin:0;padding:0;border:0;color:#e7e7c9;display:grid;z-index:20}
+.core-stage-screen-pass17::backdrop{background:#06100b}
+.core-stage-screen-pass17 .topbar{display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:#0b1c12}
+.core-stage-screen-pass17 .brand{font-weight:800;letter-spacing:.05em;min-width:0}
+.core-stage-screen-pass17 .brand small{display:block;color:#bfb993;font:800 8px ui-monospace,monospace;margin-bottom:4px}
+.core-stage-screen-pass17 button,.core-stage-screen-pass17 input,.core-stage-screen-pass17 select{border-radius:0}
+.core-stage-screen-pass17 #coreStageCountPass17{font:800 9px ui-monospace,monospace;color:#a8b79e;letter-spacing:.12em;margin:12px 0}
+.core-stage-screen-pass17 #coreStageConfirmPass17{padding:12px 20px;border:1px solid #dfce88;background:#d6c77f;color:#142016;font:900 12px ui-monospace,monospace;letter-spacing:.06em}
+@media(max-width:760px){.core-stage-screen-pass17 .topbar{padding:0 10px}.core-mode-section-pass17 .mode-row{grid-template-columns:repeat(2,minmax(0,1fr))}.core-launch-actions-pass17{max-width:100%}.core-launch-actions-pass17 #start{min-width:0;font-size:10px}}
+/* Bound the two new controls against the historical .launch button min-width:210px!important. */
+.core-launch-actions-pass17{min-width:0;max-width:100%}
+.core-launch-actions-pass17 #coreMatchSettingsButtonPass17{box-sizing:border-box;min-width:44px!important;width:44px!important;max-width:44px!important;flex:0 0 44px!important;padding:9px!important}
+.core-launch-actions-pass17 #start{box-sizing:border-box;min-width:0!important;width:auto!important;flex:1 1 auto!important;max-width:100%;padding:12px 14px!important;white-space:normal;overflow-wrap:break-word;line-height:1.35}
+#coreMatchSettingsPass17 .mode-row{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+@media(max-width:760px){.core-launch-actions-pass17{width:100%}#coreMatchSettingsPass17 .mode-row{grid-template-columns:repeat(2,minmax(0,1fr))!important}}

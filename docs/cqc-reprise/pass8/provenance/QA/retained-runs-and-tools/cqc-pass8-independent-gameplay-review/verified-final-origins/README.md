@@ -1,0 +1,13 @@
+Le contrôle figé du catalogue rev2 `3fe34bf2be1cc7c5365a82e57b747b269adf795c1940885a6ce6e8a4a793d747` et du helper `af729ab492f0f54439a0cbdc9ec48e32847bfa45e0a2485e06d2cf9d17f1c913` trouve un défaut réel du super Raging Raven. Le [rapport](run-03/FINAL_ORIGINS_GAMEPLAY_REVIEW.json) passe 64 cas sur 66 ; les deux cas de vraie explosion du super échouent.
+
+Les 16 points natifs sont validés par lecture des pixels réels, SHA, alpha, pose active, crop, pivot, hauteur et contour Canvas. Les six C complets ont aussi été physiquement vus. Quatorze points distincts servent aux projectiles ; les deux bouches Wolf deploy restent des références mesurées sans émission. Seize fixtures de slot/face existent car EVA réutilise son point debout pour spécial et super. Les 216 mutations de preuves incompatibles sont rejetées.
+
+Le super Raven utilise speed21 et fuse48. Les grenades sortent de l’arène avant leur fusée aux placements normaux. À gauche, même le départ maximal x1215 donne x28 au frame47, sous la limite de retrait30, avant la fusée48. La [reproduction sur six placements](run-03/SUPER_OUT_OF_BOUNDS_REPRODUCTION.json) conserve les trajectoires exactes. Les données du moteur historique et les points natifs n’ont pas été modifiés.
+
+Le [correctif candidat isolé](run-03/CANDIDATE_SPEED9_ISOLATED_PROOF.json) réduit seulement la vitesse adaptée à9, comme le lance-grenades normal. Il produit trois explosions dans chaque face et inflige1689 dégâts aux placements standards x380→900 et x900→380. Les tirs peuvent toujours rater les cibles très éloignées. Aucune application, origine native ou donnée historique n’a été modifiée par ce test candidat.
+
+Les tirs directs réels vérifient les réserves et jauges, les corps adultes, Sunny145/170 et le quadrupède bas. Les bouches hautes ratent réellement les cibles courtes ; aucun point n’a été abaissé pour forcer un hit. Les grenades ordinaires utilisent leur vraie gravité et leur cercle d’explosion. WolfDown est une vraie charge mêlée de49 pixels, coût20, sans projectile, maintenant liée au groupe heavy.
+
+Le contrôle général final du helper passe séparément [38/38 cas](../verified-final-independent38/INDEPENDENT_GAMEPLAY_REVIEW.json). Les essais de lecteur de pixels synchronisé ont atteint leur borne30s ; leurs scripts et erreurs restent conservés. La lecture directe Python réussit en0,2s, sans crop, sauvegarde ni édition de PNG.
+
+Le catalogue complet52Mio n’a qu’un snapshot partagé entre les essais. Les copies Shadow n’étaient pas encore toutes synchronisées lors de cette lecture ; leur état final et les vérifications navigateur restent sous la responsabilité du root. La fidélité est closest_supported, cible1:1, sans certification absolue ni certification des valeurs numériques du jeu original.

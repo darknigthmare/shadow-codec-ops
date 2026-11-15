@@ -1,0 +1,69 @@
+{
+  "method": "Shipped engine + exact-UID runtime correction using game-capture evidence; realistic collisions and explicit counterplay, versus adaptation timing.",
+  "source": {
+    "title": "Ghost Babel — combat de Black Arts Viper (captures du jeu)",
+    "url": "https://lparchive.org/Metal-Gear-Ghost-Babel/Update%2040/",
+    "scope": "Fils à hauteur du torse, évitables accroupi ; mines retardées visant une position stationnaire ; retrait après impact."
+  },
+  "tests": 14,
+  "passed": 14,
+  "failed": 0,
+  "results": [
+    {
+      "name": "Only core__viper is corrected, preserving all 354 IDs and every other profile",
+      "ok": true
+    },
+    {
+      "name": "Canonical repertoire has wire/mines and no gun or invented arm projectile",
+      "ok": true
+    },
+    {
+      "name": "Runtime finisher corrections retain all IDs and other fighters while removing invented laser/gun families",
+      "ok": true
+    },
+    {
+      "name": "Torso wire does not trigger during its visible arming delay",
+      "ok": true
+    },
+    {
+      "name": "A standing target crossing an armed torso wire takes a real collision hit",
+      "ok": true
+    },
+    {
+      "name": "Crouching passes below the wire without chip or stun",
+      "ok": true
+    },
+    {
+      "name": "Standing guard blocks a frontal wire instead of taking the full collision",
+      "ok": true
+    },
+    {
+      "name": "Moving opponent cannot produce a mine at an unobserved future position",
+      "ok": true
+    },
+    {
+      "name": "A mine uses an already stationary position with 110 frames of warning",
+      "ok": true
+    },
+    {
+      "name": "Leaving the announced position avoids the mine; it never tracks the target",
+      "ok": true
+    },
+    {
+      "name": "Remaining in the announced position causes a delayed mine collision",
+      "ok": true
+    },
+    {
+      "name": "Impact interrupts mine preparation before a device is created",
+      "ok": true
+    },
+    {
+      "name": "A masked target is not used as a position oracle for mine spawning",
+      "ok": true
+    },
+    {
+      "name": "Sprites do not alter authored hurtbox or melee reach geometry",
+      "ok": true
+    }
+  ]
+}

@@ -1,0 +1,721 @@
+{
+  "schema": "cqc.native-machine-costume-candidate/1",
+  "uid": "completion__mk2_mgs4",
+  "option": {
+    "id": "retro-msx",
+    "family": "retro",
+    "label": "Rétro",
+    "provenance": {
+      "kind": "style-reinterpretation",
+      "sourceUID": "completion__mk2_mgs4",
+      "originalDesign": true,
+      "canonicalAppearanceAttested": false,
+      "sources": [
+        {
+          "url": "https://www.creativeuncut.com/gallery-06/art/mgs4-metal-gear-mk-ii1.jpg",
+          "sha256": "bec0757e39c806398c12d4408e6bce33a0ca3e49026bd18ece6bd17437b250cf",
+          "scope": "Final MGS4 blue-grey Mk.II publisher render, rehost: compact long-nosed chassis, closed camera mount, monitor, joint/piston details and roller-wheel feet."
+        },
+        {
+          "url": "https://www.creativeuncut.com/gallery-06/art/mgs4-metal-gear-mk-ii2.jpg",
+          "sha256": "b60c7726e4d4a5e4e878efc7a23293031be472b868e2b62634cb900ce2336da0",
+          "scope": "Final MGS4 blue-grey Mk.II publisher render, rehost: raised jointed optical camera, red and green lenses, open monitor, flexible electrical cable. Cable is not a separate source rig part and is not added to source mechanics."
+        },
+        {
+          "url": "https://cucdn.creativeuncut.com/gallery-06/art/mgs4-metal-gear-mk-ii-concept.jpg",
+          "sha256": "0278baef34a40da1de1c7e421f94c414b7dfa2dc66d8ba69ff6f9f7d9f5f69b9",
+          "scope": "Original Shinkawa Mk.II concept sheet. Lower blue-grey version is used; orange/red concept variant is excluded, and is not treated as a separately authenticated final Mk.III render."
+        }
+      ],
+      "qualification": "New deliberate pixel illustration of original2008 blue-grey Mk.II. Genuine wheeled feet and source optical layout. Not publisher animation extraction or hardware palette certification; source movement is a simulation adaptation."
+    },
+    "assetReview": {
+      "verified": true,
+      "independentArt": true,
+      "machineAnatomyReviewed": true,
+      "sourceJointGeometryReviewed": true,
+      "reviewer": "pass20_mecha_tripod source-native bearing review; actual assembly QA pending admission",
+      "reviewedAt": "2026-10-08T13:54:16.968794+00:00"
+    },
+    "machineParts": {
+      "schema": "cqc.native-machine-costume/1",
+      "sourceUID": "completion__mk2_mgs4",
+      "sourceContractSHA256": "24085b924bcf0b42b6c77897d81161a7f6540c52afbfa91e7c26d14677d73548",
+      "pass21Revision": "native-retro-parts-v1",
+      "displayHeight": 155,
+      "anatomy": {
+        "kind": "source-articulated-machine",
+        "limbCount": 2,
+        "pilotCount": 0,
+        "humanBody": false,
+        "identicalSourceSkeleton": true
+      },
+      "cameras": [
+        {
+          "face": 1,
+          "sourceRigID": "mk2_mgs4_right",
+          "sourceRigDefinitionSHA256": "b9a58ce166fdae228e079c1d6406bbb70b464c5a994462fd78f0f835ff3c1f59",
+          "sources": [
+            {
+              "id": "native",
+              "file": "assets/combat-costumes-pass21/completion__mk2_mgs4/retro-parts/right-v1.png",
+              "sha256": "b2800d27f88338383c9e08e2a644397658d83c7f85d910353014520f190e2031",
+              "bytes": 925507,
+              "width": 1086,
+              "height": 1448
+            },
+            {
+              "id": "right-optic",
+              "file": "assets/combat-costumes-pass21/completion__mk2_mgs4/retro-parts/right-optic-v3.png",
+              "sha256": "3681833ecebe7471f77f6536832ce3b8c69dc2d1b3295999cf17710ff2e8cde0",
+              "bytes": 1001330,
+              "width": 1536,
+              "height": 1024
+            }
+          ],
+          "bindings": [
+            {
+              "partID": "hull",
+              "source": "native",
+              "rect": [
+                32,
+                94,
+                435,
+                332
+              ],
+              "pivot": [
+                217.5,
+                166
+              ],
+              "imageScale": 0.367816091954023,
+              "textureRotation": 0,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-reviewed-native-component-centre",
+                "nativeProximalXY": [
+                  249.5,
+                  260
+                ],
+                "nativeDistalXY": null,
+                "sourceNativeSHA256": "b2800d27f88338383c9e08e2a644397658d83c7f85d910353014520f190e2031",
+                "PNGPixelEdits": false,
+                "sourceJointOffsetsChanged": false,
+                "qualification": "Texture bearing and camera-centre metadata only. Source parent DAG, channels, collision, offsets and detachment remain unchanged. Bearing centre may lie in transparent connector opening, not a projectile socket."
+              }
+            },
+            {
+              "partID": "far_upper",
+              "source": "native",
+              "rect": [
+                498,
+                57,
+                230,
+                369
+              ],
+              "pivot": [
+                67,
+                78
+              ],
+              "imageScale": 0.20879353332439524,
+              "textureRotation": 16.06988409071832,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-reviewed-native-mechanical-bearing-centres",
+                "nativeProximalXY": [
+                  565,
+                  135
+                ],
+                "nativeDistalXY": [
+                  635,
+                  378
+                ],
+                "sourceNativeSHA256": "b2800d27f88338383c9e08e2a644397658d83c7f85d910353014520f190e2031",
+                "PNGPixelEdits": false,
+                "sourceJointOffsetsChanged": false,
+                "qualification": "Texture bearing and camera-centre metadata only. Source parent DAG, channels, collision, offsets and detachment remain unchanged. Bearing centre may lie in transparent connector opening, not a projectile socket."
+              }
+            },
+            {
+              "partID": "far_lower",
+              "source": "native",
+              "rect": [
+                854,
+                57,
+                186,
+                369
+              ],
+              "pivot": [
+                106,
+                48
+              ],
+              "imageScale": 0.19634060161184075,
+              "textureRotation": -1.8344690323917519,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-reviewed-native-mechanical-bearing-centres",
+                "nativeProximalXY": [
+                  960,
+                  105
+                ],
+                "nativeDistalXY": [
+                  951,
+                  386
+                ],
+                "sourceNativeSHA256": "b2800d27f88338383c9e08e2a644397658d83c7f85d910353014520f190e2031",
+                "PNGPixelEdits": false,
+                "sourceJointOffsetsChanged": false,
+                "qualification": "Texture bearing and camera-centre metadata only. Source parent DAG, channels, collision, offsets and detachment remain unchanged. Bearing centre may lie in transparent connector opening, not a projectile socket."
+              }
+            },
+            {
+              "partID": "far_foot",
+              "source": "native",
+              "rect": [
+                102,
+                559,
+                195,
+                256
+              ],
+              "pivot": [
+                146,
+                30
+              ],
+              "imageScale": 0.12699318951103136,
+              "textureRotation": 0,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-reviewed-native-mechanical-bearing-centres",
+                "nativeProximalXY": [
+                  248,
+                  589
+                ],
+                "nativeDistalXY": null,
+                "sourceNativeSHA256": "b2800d27f88338383c9e08e2a644397658d83c7f85d910353014520f190e2031",
+                "PNGPixelEdits": false,
+                "sourceJointOffsetsChanged": false,
+                "qualification": "Texture bearing and camera-centre metadata only. Source parent DAG, channels, collision, offsets and detachment remain unchanged. Bearing centre may lie in transparent connector opening, not a projectile socket."
+              }
+            },
+            {
+              "partID": "near_upper",
+              "source": "native",
+              "rect": [
+                467,
+                465,
+                227,
+                353
+              ],
+              "pivot": [
+                143,
+                71
+              ],
+              "imageScale": 0.21655900972578832,
+              "textureRotation": -18.657888474119545,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-reviewed-native-mechanical-bearing-centres",
+                "nativeProximalXY": [
+                  610,
+                  536
+                ],
+                "nativeDistalXY": [
+                  532,
+                  767
+                ],
+                "sourceNativeSHA256": "b2800d27f88338383c9e08e2a644397658d83c7f85d910353014520f190e2031",
+                "PNGPixelEdits": false,
+                "sourceJointOffsetsChanged": false,
+                "qualification": "Texture bearing and camera-centre metadata only. Source parent DAG, channels, collision, offsets and detachment remain unchanged. Bearing centre may lie in transparent connector opening, not a projectile socket."
+              }
+            },
+            {
+              "partID": "near_lower",
+              "source": "native",
+              "rect": [
+                886,
+                469,
+                161,
+                353
+              ],
+              "pivot": [
+                92,
+                67
+              ],
+              "imageScale": 0.21826196469347658,
+              "textureRotation": -7.040716587004653,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-reviewed-native-mechanical-bearing-centres",
+                "nativeProximalXY": [
+                  978,
+                  536
+                ],
+                "nativeDistalXY": [
+                  947,
+                  787
+                ],
+                "sourceNativeSHA256": "b2800d27f88338383c9e08e2a644397658d83c7f85d910353014520f190e2031",
+                "PNGPixelEdits": false,
+                "sourceJointOffsetsChanged": false,
+                "qualification": "Texture bearing and camera-centre metadata only. Source parent DAG, channels, collision, offsets and detachment remain unchanged. Bearing centre may lie in transparent connector opening, not a projectile socket."
+              }
+            },
+            {
+              "partID": "near_foot",
+              "source": "native",
+              "rect": [
+                109,
+                925,
+                184,
+                248
+              ],
+              "pivot": [
+                60,
+                25
+              ],
+              "imageScale": 0.13036063917135093,
+              "textureRotation": 0,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-reviewed-native-mechanical-bearing-centres",
+                "nativeProximalXY": [
+                  169,
+                  950
+                ],
+                "nativeDistalXY": null,
+                "sourceNativeSHA256": "b2800d27f88338383c9e08e2a644397658d83c7f85d910353014520f190e2031",
+                "PNGPixelEdits": false,
+                "sourceJointOffsetsChanged": false,
+                "qualification": "Texture bearing and camera-centre metadata only. Source parent DAG, channels, collision, offsets and detachment remain unchanged. Bearing centre may lie in transparent connector opening, not a projectile socket."
+              }
+            },
+            {
+              "partID": "screen",
+              "source": "native",
+              "rect": [
+                400,
+                839,
+                436,
+                311
+              ],
+              "pivot": [
+                218,
+                155.5
+              ],
+              "imageScale": 0.1926605504587156,
+              "textureRotation": 0,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-reviewed-native-component-centre",
+                "nativeProximalXY": [
+                  618,
+                  994.5
+                ],
+                "nativeDistalXY": null,
+                "sourceNativeSHA256": "b2800d27f88338383c9e08e2a644397658d83c7f85d910353014520f190e2031",
+                "PNGPixelEdits": false,
+                "sourceJointOffsetsChanged": false,
+                "qualification": "Texture bearing and camera-centre metadata only. Source parent DAG, channels, collision, offsets and detachment remain unchanged. Bearing centre may lie in transparent connector opening, not a projectile socket."
+              }
+            },
+            {
+              "partID": "camera_stalk",
+              "source": "native",
+              "rect": [
+                904,
+                856,
+                142,
+                304
+              ],
+              "pivot": [
+                43,
+                292
+              ],
+              "imageScale": 0.2966714534709754,
+              "textureRotation": 0.8394385337123254,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-reviewed-native-mechanical-bearing-centres",
+                "nativeProximalXY": [
+                  947,
+                  1148
+                ],
+                "nativeDistalXY": [
+                  943,
+                  875
+                ],
+                "sourceNativeSHA256": "b2800d27f88338383c9e08e2a644397658d83c7f85d910353014520f190e2031",
+                "PNGPixelEdits": false,
+                "sourceJointOffsetsChanged": false,
+                "qualification": "Texture bearing and camera-centre metadata only. Source parent DAG, channels, collision, offsets and detachment remain unchanged. Bearing centre may lie in transparent connector opening, not a projectile socket."
+              }
+            },
+            {
+              "partID": "camera",
+              "source": "right-optic",
+              "rect": [
+                305,
+                251,
+                995,
+                601
+              ],
+              "pivot": [
+                497.5,
+                300.5
+              ],
+              "imageScale": 0.09409377655945128,
+              "textureRotation": 0,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-reviewed-native-component-centre",
+                "nativeProximalXY": [
+                  802.5,
+                  551.5
+                ],
+                "nativeDistalXY": null,
+                "sourceNativeSHA256": "3681833ecebe7471f77f6536832ce3b8c69dc2d1b3295999cf17710ff2e8cde0",
+                "PNGPixelEdits": false,
+                "sourceJointOffsetsChanged": false,
+                "qualification": "Texture bearing and camera-centre metadata only. Source parent DAG, channels, collision, offsets and detachment remain unchanged. Bearing centre may lie in transparent connector opening, not a projectile socket."
+              }
+            }
+          ]
+        },
+        {
+          "face": -1,
+          "sourceRigID": "mk2_mgs4_ps3_2008",
+          "sourceRigDefinitionSHA256": "e215ca29eaa6a85b022d05f0da8ab5e6fc8fd1de3ede4797c0e1b9b2946f969d",
+          "sources": [
+            {
+              "id": "native",
+              "file": "assets/combat-costumes-pass21/completion__mk2_mgs4/retro-parts/left-v1.png",
+              "sha256": "3f242947bebb778c1cdbcf582d2127473a6489fb71e25d6e2954f3828cacb4d6",
+              "bytes": 961247,
+              "width": 1085,
+              "height": 1450
+            }
+          ],
+          "bindings": [
+            {
+              "partID": "hull",
+              "source": "native",
+              "rect": [
+                50,
+                108,
+                436,
+                329
+              ],
+              "pivot": [
+                218,
+                164.5
+              ],
+              "imageScale": 0.3669724770642202,
+              "textureRotation": 0,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-reviewed-native-component-centre",
+                "nativeProximalXY": [
+                  268,
+                  272.5
+                ],
+                "nativeDistalXY": null,
+                "sourceNativeSHA256": "3f242947bebb778c1cdbcf582d2127473a6489fb71e25d6e2954f3828cacb4d6",
+                "PNGPixelEdits": false,
+                "sourceJointOffsetsChanged": false,
+                "qualification": "Texture bearing and camera-centre metadata only. Source parent DAG, channels, collision, offsets and detachment remain unchanged. Bearing centre may lie in transparent connector opening, not a projectile socket."
+              }
+            },
+            {
+              "partID": "far_upper",
+              "source": "native",
+              "rect": [
+                534,
+                59,
+                207,
+                373
+              ],
+              "pivot": [
+                115,
+                58
+              ],
+              "imageScale": 0.19780831153942646,
+              "textureRotation": -6.885397850172325,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-reviewed-native-mechanical-bearing-centres",
+                "nativeProximalXY": [
+                  649,
+                  117
+                ],
+                "nativeDistalXY": [
+                  617,
+                  382
+                ],
+                "sourceNativeSHA256": "3f242947bebb778c1cdbcf582d2127473a6489fb71e25d6e2954f3828cacb4d6",
+                "PNGPixelEdits": false,
+                "sourceJointOffsetsChanged": false,
+                "qualification": "Texture bearing and camera-centre metadata only. Source parent DAG, channels, collision, offsets and detachment remain unchanged. Bearing centre may lie in transparent connector opening, not a projectile socket."
+              }
+            },
+            {
+              "partID": "far_lower",
+              "source": "native",
+              "rect": [
+                848,
+                60,
+                203,
+                372
+              ],
+              "pivot": [
+                114,
+                44
+              ],
+              "imageScale": 0.18903998733678307,
+              "textureRotation": -0.1962176558939177,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-reviewed-native-mechanical-bearing-centres",
+                "nativeProximalXY": [
+                  962,
+                  104
+                ],
+                "nativeDistalXY": [
+                  961,
+                  396
+                ],
+                "sourceNativeSHA256": "3f242947bebb778c1cdbcf582d2127473a6489fb71e25d6e2954f3828cacb4d6",
+                "PNGPixelEdits": false,
+                "sourceJointOffsetsChanged": false,
+                "qualification": "Texture bearing and camera-centre metadata only. Source parent DAG, channels, collision, offsets and detachment remain unchanged. Bearing centre may lie in transparent connector opening, not a projectile socket."
+              }
+            },
+            {
+              "partID": "far_foot",
+              "source": "native",
+              "rect": [
+                120,
+                591,
+                196,
+                238
+              ],
+              "pivot": [
+                113,
+                27
+              ],
+              "imageScale": 0.16775662580423098,
+              "textureRotation": 0,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-reviewed-native-mechanical-bearing-centres",
+                "nativeProximalXY": [
+                  233,
+                  618
+                ],
+                "nativeDistalXY": null,
+                "sourceNativeSHA256": "3f242947bebb778c1cdbcf582d2127473a6489fb71e25d6e2954f3828cacb4d6",
+                "PNGPixelEdits": false,
+                "sourceJointOffsetsChanged": false,
+                "qualification": "Texture bearing and camera-centre metadata only. Source parent DAG, channels, collision, offsets and detachment remain unchanged. Bearing centre may lie in transparent connector opening, not a projectile socket."
+              }
+            },
+            {
+              "partID": "near_upper",
+              "source": "native",
+              "rect": [
+                492,
+                466,
+                203,
+                360
+              ],
+              "pivot": [
+                109,
+                70
+              ],
+              "imageScale": 0.2153756923422731,
+              "textureRotation": 11.768288932020653,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-reviewed-native-mechanical-bearing-centres",
+                "nativeProximalXY": [
+                  601,
+                  536
+                ],
+                "nativeDistalXY": [
+                  651,
+                  776
+                ],
+                "sourceNativeSHA256": "3f242947bebb778c1cdbcf582d2127473a6489fb71e25d6e2954f3828cacb4d6",
+                "PNGPixelEdits": false,
+                "sourceJointOffsetsChanged": false,
+                "qualification": "Texture bearing and camera-centre metadata only. Source parent DAG, channels, collision, offsets and detachment remain unchanged. Bearing centre may lie in transparent connector opening, not a projectile socket."
+              }
+            },
+            {
+              "partID": "near_lower",
+              "source": "native",
+              "rect": [
+                888,
+                466,
+                159,
+                360
+              ],
+              "pivot": [
+                39,
+                53
+              ],
+              "imageScale": 0.2036678523701247,
+              "textureRotation": -0.8456327557196346,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-reviewed-native-mechanical-bearing-centres",
+                "nativeProximalXY": [
+                  927,
+                  519
+                ],
+                "nativeDistalXY": [
+                  923,
+                  790
+                ],
+                "sourceNativeSHA256": "3f242947bebb778c1cdbcf582d2127473a6489fb71e25d6e2954f3828cacb4d6",
+                "PNGPixelEdits": false,
+                "sourceJointOffsetsChanged": false,
+                "qualification": "Texture bearing and camera-centre metadata only. Source parent DAG, channels, collision, offsets and detachment remain unchanged. Bearing centre may lie in transparent connector opening, not a projectile socket."
+              }
+            },
+            {
+              "partID": "near_foot",
+              "source": "native",
+              "rect": [
+                93,
+                952,
+                181,
+                223
+              ],
+              "pivot": [
+                120,
+                26
+              ],
+              "imageScale": 0.1817086810634088,
+              "textureRotation": 0,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-reviewed-native-mechanical-bearing-centres",
+                "nativeProximalXY": [
+                  213,
+                  978
+                ],
+                "nativeDistalXY": null,
+                "sourceNativeSHA256": "3f242947bebb778c1cdbcf582d2127473a6489fb71e25d6e2954f3828cacb4d6",
+                "PNGPixelEdits": false,
+                "sourceJointOffsetsChanged": false,
+                "qualification": "Texture bearing and camera-centre metadata only. Source parent DAG, channels, collision, offsets and detachment remain unchanged. Bearing centre may lie in transparent connector opening, not a projectile socket."
+              }
+            },
+            {
+              "partID": "screen",
+              "source": "native",
+              "rect": [
+                380,
+                903,
+                413,
+                263
+              ],
+              "pivot": [
+                206.5,
+                131.5
+              ],
+              "imageScale": 0.2033898305084746,
+              "textureRotation": 0,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-reviewed-native-component-centre",
+                "nativeProximalXY": [
+                  586.5,
+                  1034.5
+                ],
+                "nativeDistalXY": null,
+                "sourceNativeSHA256": "3f242947bebb778c1cdbcf582d2127473a6489fb71e25d6e2954f3828cacb4d6",
+                "PNGPixelEdits": false,
+                "sourceJointOffsetsChanged": false,
+                "qualification": "Texture bearing and camera-centre metadata only. Source parent DAG, channels, collision, offsets and detachment remain unchanged. Bearing centre may lie in transparent connector opening, not a projectile socket."
+              }
+            },
+            {
+              "partID": "camera_stalk",
+              "source": "native",
+              "rect": [
+                887,
+                867,
+                128,
+                301
+              ],
+              "pivot": [
+                28,
+                280
+              ],
+              "imageScale": 0.30798256457769063,
+              "textureRotation": -0.217853625097149,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-reviewed-native-mechanical-bearing-centres",
+                "nativeProximalXY": [
+                  915,
+                  1147
+                ],
+                "nativeDistalXY": [
+                  916,
+                  884
+                ],
+                "sourceNativeSHA256": "3f242947bebb778c1cdbcf582d2127473a6489fb71e25d6e2954f3828cacb4d6",
+                "PNGPixelEdits": false,
+                "sourceJointOffsetsChanged": false,
+                "qualification": "Texture bearing and camera-centre metadata only. Source parent DAG, channels, collision, offsets and detachment remain unchanged. Bearing centre may lie in transparent connector opening, not a projectile socket."
+              }
+            },
+            {
+              "partID": "camera",
+              "source": "native",
+              "rect": [
+                116,
+                1217,
+                195,
+                184
+              ],
+              "pivot": [
+                97.5,
+                92
+              ],
+              "imageScale": 0.31788252508361203,
+              "textureRotation": 0,
+              "variants": [],
+              "geometryReview": {
+                "method": "physically-reviewed-native-component-centre",
+                "nativeProximalXY": [
+                  213.5,
+                  1309
+                ],
+                "nativeDistalXY": null,
+                "sourceNativeSHA256": "3f242947bebb778c1cdbcf582d2127473a6489fb71e25d6e2954f3828cacb4d6",
+                "PNGPixelEdits": false,
+                "sourceJointOffsetsChanged": false,
+                "qualification": "Texture bearing and camera-centre metadata only. Source parent DAG, channels, collision, offsets and detachment remain unchanged. Bearing centre may lie in transparent connector opening, not a projectile socket."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "publicWardrobeRegistered": false,
+  "actualRigRuntimeQA": false,
+  "physicalPartCount": 20,
+  "physicalBodyPoseCount": 0,
+  "PNGPixelEdits": false,
+  "sourceArtQualifications": [
+    "RIGHT initial10parts are directionally rejected and preserved.",
+    "RIGHT v2 opticalhead is unused because its lenses faceLEFT; other9parts selected.",
+    "RIGHT optic v3 is one independent new native component pointingRIGHT.",
+    "LEFT v1 contains10 selected independent native components.",
+    "No extra cable joint, human body, rig bone or gameplay destruction event is added."
+  ]
+}

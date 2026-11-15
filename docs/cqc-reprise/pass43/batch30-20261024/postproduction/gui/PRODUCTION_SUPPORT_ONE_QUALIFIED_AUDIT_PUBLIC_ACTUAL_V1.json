@@ -1,0 +1,208 @@
+{
+  "schema": "cqc.p43.production-support-one-qualified-audit/1",
+  "qualificationStatus": "OBSERVED_COMPLETED_GAMEPLAY_WITH_AUXILIARY_NETWORK_ISSUES",
+  "originalGlobalStatus": "FAILED_OR_INCOMPLETE",
+  "originalGlobalError": "AssertionError [ERR_ASSERTION]: Unexpected network failures\n\n2 !== 0\n",
+  "globalProductionPASSClaimed": false,
+  "originalFailedReceiptRetainedExact": true,
+  "sourceRawReceipt": {
+    "bytes": 10979749,
+    "sha256": "c64fb5452d4cec34ba99ae845c2c826dc26994c7958fefd2fc68db12266edbd9"
+  },
+  "sourceCompactReceipt": {
+    "bytes": 1794,
+    "sha256": "986f4aea8bacd0808c7fbfcd468c8bc27017905c3dec128c89bd642457ef8d72"
+  },
+  "target": {
+    "origin": "https://shadow-codec-ops.vercel.app",
+    "deploymentId": "dpl_9JMLK7PMmmvKW3pXspzEC4A3AjeX",
+    "codeCommit": "ac90e6eadb876bd6a5f30ffe1306363ead0bd0b7",
+    "READYRawProof": {
+      "bytes": 1294,
+      "sha256": "bf5fc360eb612e91ce4ee2cdaf37dc9b16fad1acb85460b1d875fbd90de0b8b8"
+    }
+  },
+  "observedGameplay": {
+    "uid": "core__snake_pw",
+    "id": "pw-jungle-fatigues-pink",
+    "mode": "Support",
+    "operation": "shadow_relay",
+    "actualJobStatus": "PASS_ACTUAL_SUPPORT_FINITE_JOB",
+    "actualUISequence": [
+      "VS actual P1/search/card/wardrobe PWpink option/confirm",
+      "Same productionorigin Support operations/shadow_relay/leadSelect/briefStart",
+      "Actual ArrowRight and J, automatically loaded nativeVFX",
+      "Actual Leave returned to visibleHome"
+    ],
+    "selectionReady": {
+      "ms": 3151,
+      "chosen": "pw-jungle-fatigues-pink",
+      "ready": true,
+      "state": "ready",
+      "error": null,
+      "portraitState": "ready"
+    },
+    "portraitAlwaysReadyDuringPreferenceChange": true,
+    "nativeProjectileReadyBeforeInput": "native-ready",
+    "ammoBefore": 12,
+    "ammoAfter": 11,
+    "emissionsObserved": 1,
+    "nativeBodyDrawsObserved": 3,
+    "nativeVFXDrawsObserved": 24,
+    "actualSameFrameBodyDraw": {
+      "uid": "core__snake_pw",
+      "costume": "pw-jungle-fatigues-pink",
+      "face": 1,
+      "frame": 22,
+      "phase": "active",
+      "physicalPoseIndex": 11,
+      "sourceFile": "assets/combat-costumes-pass43/core__snake_pw/pw-jungle-fatigues-pink/right-actions-dadb6dfb-v1.png",
+      "sourceSHA256": "dadb6dfb6e522948e0a758c3b8607385a56c3016e77f3192493deb175220c1db",
+      "sourceRect": [
+        567,
+        448,
+        428,
+        400
+      ],
+      "sourcePivot": [
+        0.5093457943925234,
+        0.995
+      ]
+    },
+    "actualSameFrameNativeVFX": {
+      "frame": 22,
+      "index": 1,
+      "file": "assets/vfx-pass18/ballistics-native-pass18.png",
+      "sha256": "cb66deec0d4a9e412df551643ddedc00bd3097f741a00e1a98c5872da799a16f",
+      "sourceRect": [
+        476,
+        175,
+        190,
+        30
+      ],
+      "x": 446.61066763425254,
+      "y": 436.8455836616214,
+      "effect": "rifle-tracer",
+      "presentation": "rifle-tracer",
+      "sourcePixelsChanged": false
+    },
+    "returnedHome": true,
+    "attempts": 1,
+    "retries": 0,
+    "rectangleVFXFallbackObserved": false
+  },
+  "sourceCounts": {
+    "distinctCostumes": 1,
+    "modeResultsObserved": 1,
+    "actualAttackCases": 1,
+    "reviewedFighterPNGSourceBank": 4,
+    "fighterPNGSourceFilesActuallyObservedInActiveDraw": 1,
+    "VFXPNGAtlasesActuallyObserved": 1,
+    "newArtSourcePNGsGeneratedOrModified": 0
+  },
+  "networkQualification": {
+    "originalUnexpectedLoadingFailuresRetained": 2,
+    "qualifiedPreviewCancellations": [
+      {
+        "originalBrowserEvent": {
+          "requestId": "39605.427",
+          "timestamp": 16754.810912,
+          "type": "Fetch",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true,
+          "url": "https://shadow-codec-ops.vercel.app/cqc/assets/combat-costumes-pass21/core__snake_pw/retro/right-v1.png"
+        },
+        "originalBrowserClassification": "unexpectedLoadingFailure in unchanged helperV1 receipt",
+        "qualifiedAs": "Explicitly canceled prior wardrobe-preview Fetch for an exact declared production native asset; interrupted request did not receive an observed response.",
+        "sourceManifestEntry": {
+          "logicalPath": "cqc/assets/combat-costumes-pass21/core__snake_pw/retro/right-v1.png",
+          "bytes": 2008793,
+          "sha256": "1c0b312b0dcc108dc440ff0491e78e94920bd0d2ae1b85516b68a9011a3352de"
+        },
+        "browserResponse200Observed": false,
+        "separateVerificationGET": {
+          "url": "https://shadow-codec-ops.vercel.app/cqc/assets/combat-costumes-pass21/core__snake_pw/retro/right-v1.png",
+          "finalURL": "https://shadow-codec-ops.vercel.app/cqc/assets/combat-costumes-pass21/core__snake_pw/retro/right-v1.png",
+          "status": 200,
+          "bytes": 2008793,
+          "sha256": "1c0b312b0dcc108dc440ff0491e78e94920bd0d2ae1b85516b68a9011a3352de",
+          "matchesExactBuildInventory": true,
+          "startedAtUTC": "2026-10-25T10:57:04.481397+00:00",
+          "finishedAtUTC": "2026-10-25T10:57:04.732742+00:00"
+        },
+        "separateGETNotAssignedToOriginalBrowserRequest": true
+      },
+      {
+        "originalBrowserEvent": {
+          "requestId": "39605.428",
+          "timestamp": 16754.810974,
+          "type": "Fetch",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true,
+          "url": "https://shadow-codec-ops.vercel.app/cqc/assets/combat-costumes-pass21/core__snake_pw/retro/left-v2.png"
+        },
+        "originalBrowserClassification": "unexpectedLoadingFailure in unchanged helperV1 receipt",
+        "qualifiedAs": "Explicitly canceled prior wardrobe-preview Fetch for an exact declared production native asset; interrupted request did not receive an observed response.",
+        "sourceManifestEntry": {
+          "logicalPath": "cqc/assets/combat-costumes-pass21/core__snake_pw/retro/left-v2.png",
+          "bytes": 2050612,
+          "sha256": "aad17c4505cf27304775586f2c6ffae2f54dae1ec7b94179a3d2a53e34996c7f"
+        },
+        "browserResponse200Observed": false,
+        "separateVerificationGET": {
+          "url": "https://shadow-codec-ops.vercel.app/cqc/assets/combat-costumes-pass21/core__snake_pw/retro/left-v2.png",
+          "finalURL": "https://shadow-codec-ops.vercel.app/cqc/assets/combat-costumes-pass21/core__snake_pw/retro/left-v2.png",
+          "status": 200,
+          "bytes": 2050612,
+          "sha256": "aad17c4505cf27304775586f2c6ffae2f54dae1ec7b94179a3d2a53e34996c7f",
+          "matchesExactBuildInventory": true,
+          "startedAtUTC": "2026-10-25T10:57:04.480789+00:00",
+          "finishedAtUTC": "2026-10-25T10:57:04.664519+00:00"
+        },
+        "separateGETNotAssignedToOriginalBrowserRequest": true
+      }
+    ],
+    "separateHTTPSVerificationReceipt": {
+      "bytes": 4562,
+      "sha256": "0f2b7f99277477e1d6ccf4e8af2759380cecbd67660c17cb6d0d2f6030fc2e49"
+    },
+    "auxiliaryHTTPErrorResponses": [
+      {
+        "url": "https://shadow-codec-ops.vercel.app/favicon.ico",
+        "status": 404,
+        "type": "Other",
+        "mimeType": "text/plain",
+        "securityState": "secure",
+        "fromDiskCache": false,
+        "protocol": "h2",
+        "TLSProtocol": "TLS 1.3",
+        "issuer": "openai.com",
+        "subjectName": "shadow-codec-ops.vercel.app",
+        "certificateId": 0
+      }
+    ],
+    "HTTPErrorResponseCount": 1,
+    "runtimeExceptions": 0,
+    "consoleErrors": 0,
+    "targetCrashes": 0,
+    "noCanceledFetchResponse200Invented": true
+  },
+  "activeCanvasCapture": {
+    "fileName": "core__snake_pw--pw-jungle-fatigues-pink--face1--ACTIVE_CANVAS.png",
+    "bytes": 1847958,
+    "sha256": "afa0485437a60809abf6d3030e482632185bcb14a9e71c3a606528624a5cdc90",
+    "frame": 22,
+    "width": 1280,
+    "height": 720,
+    "actualExistingGameCanvasReadback": true
+  },
+  "ownedBrowserClosed": true,
+  "ownedServerClosed": true,
+  "limitations": [
+    "One productioncostume/mode/face/input case; no replay of30costumes/40cases or machine sizing and no retail1:1 certificate.",
+    "Original globalFAILED receipt remains unchanged. Two canceled old P21previewrequests had no browserresponse200; the2separate normalTLS GET200checks are later independent observations.",
+    "GET /favicon.ico returned404 and remains an explicit auxiliary issue. No blanketzeroHTTP or fullproductionPASS claim.",
+    "Support state.lead retains its legacyoriginal descriptor; equipped costume is proved by actual bridge.lastLead and successful nativeadapter lastDraw.",
+    "Production helper unused localreference server served no overlays. Coldprofile normalTLS, realUI/actions only; no combat/storage injection."
+  ]
+}

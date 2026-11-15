@@ -1,0 +1,7 @@
+{
+  "schema": "cqc.pass9.producer-attempt-failure/1",
+  "scope": "Metadata serialization after all native source geometry/body uniqueness and pure validate_entry had already passed. No PNG or runtime source mutation.",
+  "error": "TypeError: Object of type PosixPath is not JSON serializable",
+  "scriptBeforeSHA256": "cdfb82285ca68da604e6323f98da3c796a0701d3562f49d4cf14af7db6f0fc50",
+  "correction": "JSON serializer writes read-only validator Path values as strings; final validation report resumed from already written exact metadata without regenerating/cropping image files."
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "cqc.p40.support-liquid-scoped-host-edits/1",
+  "base": {
+    "path": "@APP_ROOT@/public/cqc/modules/support-network-v053.html",
+    "bytes": 305484,
+    "sha256": "3cb4fb1677cb16432ba4a4cd2991364641e3176a1011db0e34b7912d3cc15e3a"
+  },
+  "edits": [
+    {
+      "kind": "script-hook",
+      "needle": "<script src=\"../src/cqc-pass40-fenrir-support-v1.js\"></script>",
+      "replacement": "<script src=\"../src/cqc-pass40-fenrir-support-v1.js\"></script>\n<script src=\"../src/cqc-pass40-liquid-support-v1.js\"></script>"
+    },
+    {
+      "kind": "scoped-controls",
+      "needle": "(state.lead.uid===window.CQC_PASS40_R00_SUPPORT?.uid?'LAME':'TIRER')",
+      "replacement": "(window.CQC_PASS40_LIQUID_SUPPORT?.controlsLabel(state)||(state.lead.uid===window.CQC_PASS40_R00_SUPPORT?.uid?'LAME':'TIRER'))"
+    },
+    {
+      "kind": "scoped-ammo-label",
+      "needle": "state.lead.uid===window.CQC_PASS40_R00_SUPPORT?.uid?`LAME HF \u00b7 RATIONS ${state.hero.rations}`:`MUNITIONS ${state.hero.ammo} \u00b7 RATIONS ${state.hero.rations}`",
+      "replacement": "window.CQC_PASS40_LIQUID_SUPPORT?.hudLabel(state)||(state.lead.uid===window.CQC_PASS40_R00_SUPPORT?.uid?`LAME HF \u00b7 RATIONS ${state.hero.rations}`:`MUNITIONS ${state.hero.ammo} \u00b7 RATIONS ${state.hero.rations}`)"
+    }
+  ],
+  "proposal": {
+    "path": "@PROJECT_ROOT@/support-liquid-cqc-v1/support-network-v053.liquid-only-proposed-v1.html",
+    "bytes": 305658,
+    "sha256": "fb6e03beeb891bff2f416aa29e0f8894d61bac5767193f955a2f2b9723307275"
+  },
+  "scope": "Only one new scoped script hook and two conditional Liquid controls/HUD labels. No host firing, wave, physics, collision, R00/Fenrir/gun-adapter behavior or unrelated UI is changed. Rebase these same three unique edits on the final Support17 host before actual addon QA.",
+  "productMutations": false
+}

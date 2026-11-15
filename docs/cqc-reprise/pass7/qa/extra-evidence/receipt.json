@@ -1,0 +1,123 @@
+{
+  "schema": "cqc-pass7-browser-evidence-final-ui/v1",
+  "checkedAt": "2026-10-02T02:52:17.450711+00:00",
+  "runs": [
+    {
+      "path": "/workspace/cqc-pass7-gameplay-browser-final-c/verification.json",
+      "sha256": "a1c7c26595e3703742883a6b4a8f4eab622a9238c8f1ec43ec15d1820c7d23f0",
+      "status": "passed",
+      "observed": {
+        "completedChecks": 418,
+        "nativeIdleDraws": 104,
+        "sourceOriginCases": 32,
+        "nativeActionPhaseCases": 144,
+        "actualContactCases": 56,
+        "actualFinisherSceneCases": 20,
+        "actualQuietInterruptedReloadCases": 4,
+        "actualChaffHumanNoDamageCases": 8,
+        "actualChaffMachineCases": 4,
+        "SkullUnarmedSimulationCases": 16
+      },
+      "commands": 521,
+      "pageErrors": [],
+      "cleanup": {
+        "ownedHTTPServerClosed": true
+      },
+      "sourcePins": {
+        "data/combat-sprite-catalog-v1.json": "709af3851a2d1769ae98b4d4a77e2c552296eebfd904a19c900058596ec3ee47",
+        "src/cqc-pass7-combat-fidelity.js": "48257633fc4c8054c2343f1da44334fe532d97222cfdd3b76b4827c3377b8bed",
+        "src/cqc-pass7-native-origins.js": "042ae44b3af59a7f4c0318eac87dbbb1e3da3256287987059e44a9771c96b02b"
+      }
+    },
+    {
+      "path": "/workspace/shadow-cqc-pass7-browser-final-b/browser-results-pass7.json",
+      "sha256": "9df6696d05306f6c23e02c5966fcbeda88068ecd4c5c43b50643966ce5ae1c7a",
+      "status": "passed",
+      "observed": {
+        "completedChecks": 439,
+        "nativeIdleDraws": 104,
+        "sourceOriginCases": 38,
+        "nativeActionPhaseCases": 144,
+        "actualContactCases": 56,
+        "actualFinisherSceneCases": 20,
+        "actualQuietInterruptedReloadCases": 4,
+        "actualChaffHumanNoDamageCases": 8,
+        "actualChaffMachineCases": 4,
+        "SkullUnarmedSimulationCases": 16
+      },
+      "commands": 566,
+      "pageErrors": [],
+      "cleanup": {
+        "ownedViteServerExited": true
+      },
+      "sourcePins": {
+        "data/combat-sprite-catalog-v1.json": "709af3851a2d1769ae98b4d4a77e2c552296eebfd904a19c900058596ec3ee47",
+        "src/cqc-pass7-combat-fidelity.js": "48257633fc4c8054c2343f1da44334fe532d97222cfdd3b76b4827c3377b8bed",
+        "src/cqc-pass7-native-origins.js": "042ae44b3af59a7f4c0318eac87dbbb1e3da3256287987059e44a9771c96b02b"
+      }
+    }
+  ],
+  "tools": {
+    "/workspace/cqc-pass7-browser-observers.js": {
+      "sha256": "d90cd82e5ea727598b6a06d335a2d76f22717654feb6633cc653ece2aadab323"
+    },
+    "/workspace/verify_cqc_pass7_gameplay_browser.py": {
+      "sha256": "47d12eb3697b13d3001a734c3cd9e9b9e99f00345080ecb4d292df4b51bdf2ab"
+    },
+    "/workspace/verify_shadow_cqc_pass7_browser.py": {
+      "sha256": "38ae717f58ae084fc40f0fed89eaff51cb21032bc921b7c722a0adef87dd182d"
+    }
+  },
+  "runtime": {
+    "manifestSHA256": "74f3609fc8e00b31b3ff98855f90a1cc54b2481b04adb3db93f2120c7334d3a5",
+    "files": 906,
+    "bytes": 779376560,
+    "referenceEdges": 968
+  },
+  "old22NativeCatalogObjectsUnchanged": true,
+  "all26NativeUIDIndependentFacings": true,
+  "nativePNG": 156,
+  "nativePoses": 1872,
+  "physicallyReviewedScreenshots": [
+    {
+      "path": "/workspace/cqc-pass7-gameplay-browser-final-c/390-Skull-resource-HUD.png",
+      "sha256": "ea791ee986ff29a21744bf4702cf28f872c916b9c31f145248276bd91d3fb957"
+    },
+    {
+      "path": "/workspace/cqc-pass7-gameplay-browser-final-c/1280-Skull-resource-HUD.png",
+      "sha256": "65b8f376aaf5849bad15e6369e5786477368f38f86f351e85054477558c9641f"
+    },
+    {
+      "path": "/workspace/shadow-cqc-pass7-browser-final-b/390-Skull-resource-HUD.png",
+      "sha256": "563eb6583883f48bbd7fe0ba4c1f693c870bd8e7193e344b2fa5e3fbcd3ea9a5"
+    },
+    {
+      "path": "/workspace/shadow-cqc-pass7-browser-final-b/1280-Skull-resource-HUD.png",
+      "sha256": "cd811ef4670d2d8c586443ee85e872218893e818e3baee32912145f7ad01afcc"
+    },
+    {
+      "path": "/workspace/shadow-cqc-pass7-browser-final-b/390-direct-Skull-unarmed-super.png",
+      "sha256": "bb147c3afe06e4c984e54af6a2e092f474dd18f7b1fc70b707ab1bf9099d0a97"
+    }
+  ],
+  "mobileSkullHUD": {
+    "caption": "Effort XOF",
+    "rangeRectanglesNoTextValueOrPlayerOverlap": true,
+    "actualDesktopAndMobileDrawsReviewed": true
+  },
+  "authoredLimit": {
+    "description": "Quiet specialDown retains independent rifle source heights; standing target hit on both faces, crouched left target hit and crouched right target miss. Source-aligned muzzle is not lowered artificially.",
+    "rightMuzzleY": 433.1742690058479,
+    "leftMuzzleY": 445.9415977961432,
+    "crouchedHurtboxTop": 446.1,
+    "crouchedHurtboxHeight": 121.9
+  },
+  "preservedPreviousRuns": [
+    "/workspace/cqc-pass7-gameplay-browser-final-a",
+    "/workspace/cqc-pass7-gameplay-browser-final-b",
+    "/workspace/shadow-cqc-pass7-browser-final-a"
+  ],
+  "preLabelSourceSnapshots": "/workspace/cqc-pass7-browser-final-before-mobile-label-fix",
+  "noProductionSourceChangesByThisAgent": true,
+  "noAbsoluteOneToOneFidelityClaim": true
+}

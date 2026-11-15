@@ -140,11 +140,18 @@ function getDispositionLabel(entry: CallHistoryEntry): string {
 }
 
 export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
+  const [customConversations] = useState(() => loadCustomConversations());
   const [campaignDirective] = useState(() => consumeCampaignLaunchDirective('codec'));
   const campaignContact = contacts.find((contact) => contact.id === campaignDirective?.targetId);
+  const [campaignConversation] = useState(() => campaignDirective?.conversationId
+    ? mergeStudioConversations(builtInConversations, customConversations).find(conversation => conversation.id === campaignDirective.conversationId && conversation.contactId === campaignDirective.targetId)
+    : undefined);
   const storedContext = loadJson<StoredCodecContextState | null>('codec-context-state', null);
   const initialEra = (campaignContact?.era ?? settings.selectedEra) as EraId;
-  const campaignContext = campaignContact ? contexts.find((context) => context.era === campaignContact.era && context.unlockedContactIds.includes(campaignContact.id)) : undefined;
+  const campaignContext = campaignContact
+    ? contexts.find(context => context.era === campaignContact.era && context.unlockedContactIds.includes(campaignContact.id) && campaignConversation?.contextIds?.includes(context.id))
+      ?? contexts.find(context => context.era === campaignContact.era && context.unlockedContactIds.includes(campaignContact.id))
+    : undefined;
   const initialContext = campaignContext ?? contexts.find((context) => context.id === storedContext?.contextId && context.era === initialEra) ?? getFirstContextForEra(initialEra);
 
   const [selectedEra, setSelectedEra] = useState<EraId>(initialEra);
@@ -168,7 +175,9 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
   const currentTheme = themePacks.find((theme) => theme.id === settings.selectedTheme)
     ?? themePacks.find((theme) => theme.id === currentEra.visualStyle)
     ?? themePacks[0];
-  const [frequency, setFrequency] = useState<number>(() => campaignContact?.frequency ?? loadJson('last-frequency', currentEra.defaultFrequency));
+  const [frequency, setFrequency] = useState<number>(() => campaignContact && campaignConversation
+    ? getPreferredContactFrequency(campaignContact, initialContext.id, campaignConversation.subjectId).frequency
+    : campaignContact?.frequency ?? loadJson('last-frequency', currentEra.defaultFrequency));
   const [codecState, setCodecState] = useState<CodecState>('idle');
   const [activeCall, setActiveCall] = useState<ActiveCall | null>(null);
   const [lineIndex, setLineIndex] = useState(0);
@@ -184,10 +193,9 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
   const [mgs1ScheduledCallIds, setMgs1ScheduledCallIds] = useState<string[]>(() => loadJson('mgs1-scheduled-call-ids', []));
   const [mgs2ScheduledCallIds, setMgs2ScheduledCallIds] = useState<string[]>(() => loadJson('mgs2-scheduled-call-ids', []));
   const [mgs3ScheduledCallIds, setMgs3ScheduledCallIds] = useState<string[]>(() => loadJson('mgs3-scheduled-call-ids', []));
-  const [customConversations] = useState(() => loadCustomConversations());
   const [voicePackState, setVoicePackState] = useState(() => loadVoicePackState());
   const [preferredContactId, setPreferredContactId] = useState<string | null>(campaignContact?.id ?? null);
-  const [selectedSubjectId, setSelectedSubjectId] = useState('');
+  const [selectedSubjectId, setSelectedSubjectId] = useState(campaignConversation?.subjectId ?? '');
   const [pendingIncoming, setPendingIncoming] = useState<IncomingCallRequest | null>(null);
   const [incomingQueue, setIncomingQueue] = useState<IncomingCallRequest[]>([]);
   const [incomingSecondsRemaining, setIncomingSecondsRemaining] = useState(0);
@@ -344,6 +352,9 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
     [selectedContact, conversations, currentContext.id]
   );
   const selectedTopic = topics.find((topic) => topic.id === selectedSubjectId) ?? topics[0];
+  const requestedConversationVisible = campaignConversation && selectedContact?.id === campaignConversation.contactId && selectedEra === campaignConversation.era;
+  const preparedConversation = requestedConversationVisible && selectedContact
+    ? resolveConversationContactRoute(campaignConversation, selectedContact, currentContext.id) : undefined;
 
   useEffect(() => {
     if (!topics.some((topic) => topic.id === selectedSubjectId)) setSelectedSubjectId(topics[0]?.id ?? '');
@@ -369,9 +380,10 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
   const portraitRoutingContext = selectedEra === 'mgs1'
     ? { contextId: currentContext.id, flags: currentContext.flags }
     : undefined;
-  const contactPortraitImage = (activeCall && settings.voicePackEnabled
+  const customContactPortraitImage = activeCall && settings.voicePackEnabled
     ? resolvePortraitAsset(activeCall.contact.id, portraitExpression, activeCall.contact.era, voicePackState)
-    : undefined) ?? (settings.builtInPortraitsEnabled
+    : undefined;
+  const contactPortraitImage = customContactPortraitImage ?? (settings.builtInPortraitsEnabled
       ? getCharacterPortrait(routedPortraitContactId, portraitExpression, portraitRoutingContext) ?? getBuiltInPortrait(selectedEra, 'contact')
       : undefined);
   const playerPortraitImage = settings.builtInPortraitsEnabled
@@ -588,6 +600,12 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
     setCodecState(availability.access === 'jammed' ? 'signal_jammed' : 'no_response');
     setMessage(availability.reason.toUpperCase());
     if (settings.eraUiAudioEnabled) playCodecUiCue(selectedEra, 'no_response', settings.uiBeepVolume);
+  }
+
+  function callPreparedConversation() {
+    if (!selectedContact || !preparedConversation || !selectedAvailability?.manualCallable || !preparedConversation.canReplay) return;
+    setSidePanel(null);
+    startCall(selectedContact, preparedConversation.trigger, preparedConversation.id, preparedConversation.subjectId);
   }
 
   function simulateIncomingCall() {
@@ -1026,6 +1044,13 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
           {selectedTopic?.frequencyLabel && <small className="topic-frequency-label">{selectedTopic.frequencyLabel} · {formatFrequency(selectedTopic.frequencyOverride ?? selectedContact.frequency)}</small>}
         </>
       )}
+      {requestedConversationVisible ? (
+        <div className="codec-linked-conversation" data-linked-conversation-id={campaignConversation.id}>
+          <strong>{campaignConversation.title}</strong>
+          <button type="button" disabled={!preparedConversation?.canReplay || !selectedAvailability?.manualCallable} onClick={callPreparedConversation}>Lancer cet appel</button>
+          {!preparedConversation ? <p>Cet appel appartient à un autre contexte radio.</p> : !preparedConversation.canReplay ? <p>Cet appel ne peut pas être rejoué.</p> : !selectedAvailability?.manualCallable ? <p>{selectedAvailability?.reason}</p> : null}
+        </div>
+      ) : null}
     </div>
   ) : undefined;
 
@@ -1063,8 +1088,7 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
             {activeCall.subjectId && <span className="call-subject-label"> {activeCall.subjectId.replace('_', ' ')}</span>}
             {typeof currentLine.glitchLevel === 'number' && currentLine.glitchLevel > 0 && <span className="glitch-level"> GLITCH {currentLine.glitchLevel}</span>}
           </div>
-          <p>{localizedLineText}</p>
-          <span className="portrait-expression">EXPRESSION: {portraitExpression.toUpperCase()}</span>
+          {!settings.subtitlesEnabled && <p>{localizedLineText}</p>}
           <SubtitleTrack
             speaker={getSpeakerLabel(currentLine.speaker, activeCall.contact)}
             text={currentLine.localizedText ?? currentLine.text}
@@ -1081,7 +1105,7 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
         </>
       ) : (
         <p className="idle-copy">
-          {visualIdentity.dialogueLabel}: select a context and route a contact. Current state: <strong>{codecState.toUpperCase()}</strong>
+          {codecState === 'no_response' || codecState === 'signal_jammed' ? 'NO RESPONSE' : ''}
         </p>
       )}
     </div>
@@ -1102,6 +1126,8 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
       </button>
       {sidePanel && <button type="button" className="codec-drawer-backdrop" aria-label="Close Codec tools drawer" onClick={() => setSidePanel(null)} />}
       <Panel className="codec-main-panel">
+        <details className="codec-operation-setup">
+          <summary>Époque et opération · {currentEra.name}</summary>
         <div className="codec-topbar">
           <StatusBadge label={message} tone={getToneForState(codecState, scan.status)} />
           <StatusBadge label={scanLabel} tone={scan.status === 'stable' ? 'success' : scan.status === 'weak' ? 'warning' : scan.status === 'patriots_corrupt' ? 'warning' : 'neutral'} />
@@ -1130,12 +1156,16 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
           </div>
         </div>
 
+        </details>
+
         <CodecVisualStage
           era={selectedEra}
           identity={visualIdentity}
           contextName={currentContext.name}
           chapterLabel={currentContext.chapterId.replace(/_/g, ' ')}
           playerName={selectedPlayer?.name ?? 'Unknown'}
+          playerId={settings.builtInPortraitsEnabled ? selectedPlayer?.portraitId ?? selectedPlayer?.id : undefined}
+          contactId={settings.builtInPortraitsEnabled && !customContactPortraitImage ? displayContact?.id : undefined}
           contactName={visualContactName}
           contactRole={displayContact?.role}
           contactAccess={selectedAvailability?.access}
@@ -1145,11 +1175,19 @@ export function CodecScreen({ settings, onSettingsChange }: CodecScreenProps) {
           leftPortrait={leftPortrait}
           rightPortrait={rightPortrait}
           topicSelector={topicSelectorPanel}
+          briefingTopics={topics.map(({ id, label }) => ({ id, label }))}
+          selectedTopicId={selectedTopic?.id}
+          onTopicSelect={selectTopic}
           dialogue={dialoguePanel}
           utilityActions={utilityActions}
           onTune={tune}
           onFrequencyInput={setFrequencyFromInput}
           onCall={callFrequency}
+          onMemory={() => setSidePanel(sidePanel === 'memory' ? null : 'memory')}
+          onStop={() => endCall(false)}
+          onNext={nextLine}
+          onPrevious={() => { if (activeCall) setLineIndex((index) => Math.max(0, index - 1)); }}
+          callStartedAt={callStartedAtRef.current}
         />
       </Panel>
 

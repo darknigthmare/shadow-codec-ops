@@ -13,22 +13,22 @@ export function PwaSettingsPanel() {
   useEffect(() => subscribePwaRuntime(setState), []);
 
   return (
-    <Panel title="Mobile / PWA Deployment">
+    <Panel title="Terminal mobile">
       <div className="desktop-status-grid">
         <StatusBadge
-          label={state.isTauri ? 'TAURI HOST' : state.standalone ? 'PWA STANDALONE' : 'BROWSER MODE'}
+          label={state.isTauri ? 'TERMINAL LOCAL' : state.standalone ? 'TERMINAL INSTALLÉ' : 'ACCÈS WEB'}
           tone={state.standalone || state.isTauri ? 'success' : 'neutral'}
         />
-        <span>Network: <strong>{state.online ? 'ONLINE' : 'OFFLINE'}</strong></span>
-        <span>Service worker: <strong>{state.serviceWorkerReady ? 'READY' : state.isTauri ? 'NOT REQUIRED' : 'STANDBY'}</strong></span>
-        <span>Offline cache: <strong>{state.offlineReady ? 'READY' : 'PENDING FIRST LOAD'}</strong></span>
-        <span>Install prompt: <strong>{state.installAvailable ? 'AVAILABLE' : state.installed || state.standalone ? 'INSTALLED' : 'BROWSER CONTROLLED'}</strong></span>
+        <span>Liaison : <strong>{state.online ? 'ÉTABLIE' : 'COUPÉE'}</strong></span>
+        <span>Accès aux archives locales : <strong>{state.serviceWorkerReady ? 'PRÊT' : state.isTauri ? 'DIRECT' : 'EN VEILLE'}</strong></span>
+        <span>Données hors ligne : <strong>{state.offlineReady ? 'PRÊTES' : 'EN COURS DE PRÉPARATION'}</strong></span>
+        <span>Installation : <strong>{state.installAvailable ? 'DISPONIBLE' : state.installed || state.standalone ? 'INSTALLÉ' : 'DEPUIS LE NAVIGATEUR'}</strong></span>
       </div>
       <div className="desktop-actions">
-        <button type="button" onClick={() => void requestPwaInstall()} disabled={!state.installAvailable}>Install PWA</button>
-        <button type="button" onClick={() => void applyPwaUpdate()} disabled={!state.updateAvailable}>Apply Available Update</button>
+        <button type="button" onClick={() => void requestPwaInstall()} disabled={!state.installAvailable}>Installer le terminal</button>
+        <button type="button" onClick={() => void applyPwaUpdate()} disabled={!state.updateAvailable}>Mettre à jour le terminal</button>
       </div>
-      <p className="desktop-note">The service worker is disabled inside Tauri. Web installs cache the shell, lazy modules, data and game assets for offline use.</p>
+      <p className="desktop-note">Installe le terminal pour y accéder directement. Hors ligne, seules les données déjà téléchargées sur cet appareil restent disponibles.</p>
       <div className="desktop-message" role="status">{state.message}</div>
     </Panel>
   );

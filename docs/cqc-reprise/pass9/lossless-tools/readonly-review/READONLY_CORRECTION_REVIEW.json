@@ -1,0 +1,56 @@
+{
+  "schema": "cqc.lossless-snapshot-chunks.readonly-correction-review/1",
+  "status": "approved",
+  "checkedAtUTC": "2026-10-02T12:13:59.580042+00:00",
+  "reviewMode": "read-only source inspection and existing tiny fixture evidence; no new test execution",
+  "sourceTools": [
+    {
+      "path": "/workspace/cqc-pass9-publication-preparation/lossless-tools/lossless_chunks.py",
+      "bytes": 27474,
+      "sha256": "7e7796bcb3f7a528cafb474ecf7e829c554d251a0715b581bf2e96590f03c5ae"
+    },
+    {
+      "path": "/workspace/cqc-pass9-publication-preparation/lossless-tools/chunk_snapshot.py",
+      "bytes": 1377,
+      "sha256": "c34cd176b7d29847bcfd71db8f1d79b16a1f5d73fca17eeeeff6408429599f75"
+    },
+    {
+      "path": "/workspace/cqc-pass9-publication-preparation/lossless-tools/restore_snapshot.py",
+      "bytes": 1279,
+      "sha256": "47ce8aea209b12a52acba1680e85c4d642536ae43859e716cb3d3caaf971856b"
+    },
+    {
+      "path": "/workspace/cqc-pass9-publication-preparation/lossless-tools/test_lossless_chunks.py",
+      "bytes": 26703,
+      "sha256": "b4836c882aa9181d3ac5b76d5f97ddefb0290056fa7d9d9adeff66fa1f556bf7"
+    }
+  ],
+  "existingTargetedEvidence": {
+    "path": "/workspace/cqc-pass9-publication-preparation/lossless-tools/fixture-runs/run-7b258c3c7a3e4d34b85d23250cd1c2ec/FIXTURE_EVIDENCE.json",
+    "bytes": 2085,
+    "sha256": "421dca6589a962a8490046b786eb38bb5393d01e055cd027a6f600cfc39a3101"
+  },
+  "existingTargetedTests": 9,
+  "existingTargetedFailures": 0,
+  "existingTargetedErrors": 0,
+  "confirmedCorrections": [
+    "Mandatory digest(freeze_sha) rejects missing library freeze pin before reading the freeze or opening source.",
+    "Both publication callers retain the written descriptor through exclusive Linux /proc/self/fd publication; temporary and target inode seals checked around the link.",
+    "Substitution detected after the exclusive link retains the written target and substituted temporary; restore failure journal records publishedBeforeFailure.",
+    "Strict byte-exact-lossless manifest uses files[0] with originalGitBlob and exact part records."
+  ],
+  "unchangedPreviouslyInspectedProperties": [
+    "Gzip decompression drains bounded outputs across the 1 MiB boundary.",
+    "Compressed/raw/full SHA256 and full Git blob SHA1 checked, gzip EOF/CRC/trailing data constrained.",
+    "Directory descriptor traversal rejects symlinks; existing destinations, outputs and journals never overwritten."
+  ],
+  "qualification": "Scoped correction review of pinned helper tools. Existing fixture evidence is not production catalog QA and does not certify publication, restoration of missing history, or any real source. Linux procfs descriptor linking is required; there is no unsafe fallback.",
+  "remainingBlockingFindings": [],
+  "realCatalogRead": false,
+  "realCatalogCompressed": false,
+  "newTestsExecuted": 0,
+  "productionWrites": 0,
+  "gitOperations": 0,
+  "apiOperations": 0,
+  "historicFilesDeleted": 0
+}

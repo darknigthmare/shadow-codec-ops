@@ -1,0 +1,414 @@
+{
+  "uid": "roster50__campbell_mgs1",
+  "id": "retro-msx",
+  "label": "Rétro",
+  "family": "retro",
+  "geometryPath": "@PROJECT_ROOT@/retro-five/roster50__campbell_mgs1/GEOMETRY_CANDIDATE_V1.json.gz",
+  "ownershipBookPath": "@PROJECT_ROOT@/retro-five/roster50__campbell_mgs1/OWNERSHIP_BOOK_CANDIDATE_V1.json",
+  "output": "@PROJECT_ROOT@/integration/retro-five/roster50__campbell_mgs1/job-proposal-v1",
+  "provenance": {
+    "kind": "style-reinterpretation",
+    "sourceUID": "roster50__campbell_mgs1",
+    "sourceSpriteUID": "roster50__campbell_mgs1",
+    "originalDesign": true,
+    "canonicalAppearanceAttested": false,
+    "incarnation": "Roy Campbell — original MGS1 Shadow Moses command support incarnation; slate-blue military dress uniform, separate from MG2.",
+    "sources": [
+      {
+        "url": "https://www.konami.com/mg/archive/mgs/character/images/ch02_body.jpg",
+        "sha256": "c90a71d0a8bd728769c3c0e75e4c0880fa30cbeb9304b95aa72e136887176f1d",
+        "scope": "Exact-era publisher full-body official character art: face, gray hair, beret, military dress jacket/trousers and palette."
+      },
+      {
+        "url": "https://www.imfdb.org/images/7/74/Metal_Gear_Solid_SOCOM_VR.jpg",
+        "sha256": "52b65b31f6ddf7ca45d0ebea286ec53092dd7cc54cfc0a81638689395aaeb05d",
+        "scope": "Actual original MGS1 VRmenu SOCOMMk23LAM/suppressor; CQC gameplay equipment adaptation, not a claim of canonical Campbell weapon ownership."
+      },
+      {
+        "url": "https://www.metalgearsolid.be/images/grenade.jpg",
+        "sha256": "e3f37b547ab6e6b7674c8f293b82c8e1fd4faab11b84f9a651df74ceab2f7d7b",
+        "scope": "Original MGS1 inventory fragmentation-grenade silhouette."
+      }
+    ]
+  },
+  "calibrationPoses": {
+    "@PROJECT_ROOT@/art/roster50__campbell_mgs1/retro-msx/right-main-v1.png": {
+      "right": "right-role-00"
+    },
+    "@PROJECT_ROOT@/art/roster50__campbell_mgs1/retro-msx/right-idle-walk-v2.png": {
+      "right": "right-role-00"
+    },
+    "@PROJECT_ROOT@/art/roster50__campbell_mgs1/retro-msx/left-main-v4.png": {
+      "left": "left-role-00"
+    }
+  },
+  "anchors": [
+    {
+      "side": "right",
+      "slot": "special",
+      "roleIndex": 11,
+      "action": "shoot",
+      "nativeXY": [
+        1357.5,
+        624.5
+      ],
+      "rearNativeXY": [
+        1322.5,
+        624.5
+      ],
+      "socket": "socom-mk23-muzzle"
+    },
+    {
+      "side": "right",
+      "slot": "super",
+      "roleIndex": 11,
+      "action": "shoot",
+      "nativeXY": [
+        1357.5,
+        624.5
+      ],
+      "rearNativeXY": [
+        1322.5,
+        624.5
+      ],
+      "socket": "socom-mk23-muzzle"
+    },
+    {
+      "side": "right",
+      "slot": "specialDown",
+      "roleIndex": 9,
+      "action": "deploy",
+      "nativeXY": [
+        491.5,
+        581.5
+      ],
+      "socket": "grenade-release-hand"
+    },
+    {
+      "side": "left",
+      "slot": "special",
+      "roleIndex": 11,
+      "action": "shoot",
+      "nativeXY": [
+        1078.5,
+        627.5
+      ],
+      "rearNativeXY": [
+        1140.5,
+        627.5
+      ],
+      "socket": "socom-mk23-muzzle"
+    },
+    {
+      "side": "left",
+      "slot": "super",
+      "roleIndex": 11,
+      "action": "shoot",
+      "nativeXY": [
+        1078.5,
+        627.5
+      ],
+      "rearNativeXY": [
+        1140.5,
+        627.5
+      ],
+      "socket": "socom-mk23-muzzle"
+    },
+    {
+      "side": "left",
+      "slot": "specialDown",
+      "roleIndex": 9,
+      "action": "deploy",
+      "nativeXY": [
+        613.5,
+        589.5
+      ],
+      "socket": "grenade-release-hand"
+    }
+  ],
+  "plan": {
+    "actions": {
+      "idle": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          0
+        ]
+      },
+      "guard": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          1
+        ]
+      },
+      "walk": {
+        "fps": 7,
+        "loop": true,
+        "roles": [
+          2,
+          3
+        ]
+      },
+      "crouch": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          4
+        ]
+      },
+      "jump": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          5
+        ]
+      },
+      "attack": {
+        "fps": 9,
+        "loop": false,
+        "roles": [
+          1,
+          6,
+          1
+        ]
+      },
+      "punch": {
+        "fps": 9,
+        "loop": false,
+        "roles": [
+          1,
+          6,
+          1
+        ]
+      },
+      "heavy": {
+        "fps": 9,
+        "loop": false,
+        "roles": [
+          1,
+          10,
+          1
+        ]
+      },
+      "low": {
+        "fps": 9,
+        "loop": false,
+        "roles": [
+          4,
+          7,
+          4
+        ]
+      },
+      "throw": {
+        "fps": 9,
+        "loop": false,
+        "roles": [
+          1,
+          8,
+          1
+        ]
+      },
+      "deploy": {
+        "fps": 6,
+        "loop": false,
+        "roles": [
+          1,
+          8,
+          9,
+          1
+        ]
+      },
+      "shoot": {
+        "fps": 10,
+        "loop": false,
+        "roles": [
+          1,
+          11,
+          1
+        ]
+      },
+      "reload": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          12
+        ]
+      },
+      "optic": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          1
+        ]
+      },
+      "recover": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          12
+        ]
+      },
+      "blade": {
+        "fps": 9,
+        "loop": false,
+        "roles": [
+          1,
+          10,
+          1
+        ]
+      },
+      "roll": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          15
+        ]
+      },
+      "charge": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          6
+        ]
+      },
+      "parry": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          1
+        ]
+      },
+      "hit": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          13
+        ]
+      },
+      "ko": {
+        "fps": 0,
+        "loop": false,
+        "roles": [
+          14
+        ]
+      }
+    },
+    "actionMap": {
+      "light": "punch",
+      "heavy": "heavy",
+      "low": "low",
+      "throw": "throw",
+      "special": "punch",
+      "specialDown": "deploy",
+      "specialForward": "punch",
+      "specialBack": "guard",
+      "super": "heavy",
+      "utility": "recover"
+    },
+    "phaseMap": {
+      "attack": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "punch": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "heavy": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "low": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "throw": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "shoot": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "blade": {
+        "startup": [
+          0
+        ],
+        "active": [
+          1
+        ],
+        "recovery": [
+          2
+        ]
+      },
+      "deploy": {
+        "startup": [
+          0,
+          1
+        ],
+        "active": [
+          2
+        ],
+        "recovery": [
+          3
+        ]
+      }
+    },
+    "scope": "Unreviewed explicit native selection: original actionMap gate and combat stats/timings preserved, projectile slots select shoot/deploy, utility reload, heavy independently drawn kick10, low-profile repli independently drawn roll15. Root action-semantic review and actual renderer QA required.",
+    "selectedActionBySlot": {
+      "light": "punch",
+      "heavy": "heavy",
+      "low": "low",
+      "throw": "throw",
+      "special": "shoot",
+      "specialDown": "deploy",
+      "specialForward": "punch",
+      "specialBack": "roll",
+      "super": "shoot",
+      "utility": "reload"
+    }
+  }
+}

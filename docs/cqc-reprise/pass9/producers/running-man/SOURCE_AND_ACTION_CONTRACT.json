@@ -1,0 +1,121 @@
+{
+  "schema": "cqc.pass9.running-man-source-and-action-contract/1",
+  "uid": "core__runner_mg2",
+  "name": "RUNNING MAN",
+  "selectedCostume": "closest-supported-original1990-msx2-green-grey-unarmed",
+  "referenceContractFile": "/workspace/cqc-pass9-generation/running-man/original-reference-preparation/SOURCE_CONTRACT.json",
+  "referenceContractSHA256": "501d9a05f64741e9fbafd86bdad8d901cf5cdba9184929fa7e8c1ca7e02b3f7b",
+  "references": [
+    {
+      "file": "/workspace/cqc-pass9-generation/running-man/references/manual-original1990-page42.png",
+      "source": "/workspace/cqc-pass8-reference-selection/core__runner_mg2/manual-original1990-page42.png",
+      "bytes": 680293,
+      "sha256": "878fa8490a695d6e98bba9abbce4bf685e72faba264533a5136fcfc8ad2a13d9",
+      "physicallyViewedByProducer": true,
+      "viewedAt": "2026-10-02T09:50:06.759268+00:00",
+      "preservedByImmutableHardlink": true
+    },
+    {
+      "file": "/workspace/cqc-pass9-generation/running-man/references/running-man-msx2-original-sprite.webp",
+      "source": "/workspace/cqc-pass8-reference-selection/core__runner_mg2/running-man-msx2-original-sprite.webp",
+      "bytes": 272,
+      "sha256": "f7a17ea30ddf44da4178ee016134f8ec8760d836e955cea9c185e178e8a256f0",
+      "physicallyViewedByProducer": true,
+      "viewedAt": "2026-10-02T09:50:06.759373+00:00",
+      "preservedByImmutableHardlink": true
+    },
+    {
+      "file": "/workspace/cqc-pass9-generation/running-man/references/lp23-24-Metal_Gear_2_0281.png",
+      "source": "/workspace/cqc-pass8-reference-selection/core__runner_mg2/lp23-24-Metal_Gear_2_0281.png",
+      "bytes": 9894,
+      "sha256": "a2b877e9def666f05072aba2d67807a4752aca5e7cfb3aad5f5f63df5209648e",
+      "physicallyViewedByProducer": true,
+      "viewedAt": "2026-10-02T09:50:06.759443+00:00",
+      "preservedByImmutableHardlink": true
+    },
+    {
+      "file": "/workspace/cqc-pass9-generation/running-man/references/lp23-27-Metal_Gear_2_0287.png",
+      "source": "/workspace/cqc-pass8-reference-selection/core__runner_mg2/lp23-27-Metal_Gear_2_0287.png",
+      "bytes": 9973,
+      "sha256": "228ea8869511fa37b4cd9c761c5d440dca23c0f185cf6d0b9e83b9ffe718cde6",
+      "physicallyViewedByProducer": true,
+      "viewedAt": "2026-10-02T09:50:06.759562+00:00",
+      "preservedByImmutableHardlink": true
+    }
+  ],
+  "selectedReferenceBytes": 700432,
+  "fullManualOrVideoCopied": false,
+  "fullManualExternalPin": {
+    "file": "original1990-msx2-japanese-manual-text.pdf",
+    "url": "https://archive.org/download/metal-gear-2-solid-snake-manual-original/MetalGear%202%20-%20SolidSnake%20Manual%20%28Original%29_text.pdf",
+    "bytes": 4111315,
+    "sha256": "0da1dc1ca4d84612cec127a774e7c7290c556e5cb4b66acb9941729ce86c4b0f",
+    "authority": "original1990 Japanese manual scan hosted mirror",
+    "physicallyViewed": false,
+    "inspectionNote": "manual page42 inspected directly"
+  },
+  "target": "1:1 original1990 MSX2 palette and silhouette wherever resolved; closest_supported otherwise",
+  "absolute1to1Certified": false,
+  "paletteObserved": "Bright/dark green forearms/body/trousers, pale-grey shoulder/upper blocks, dark/ochre small head and boots; tiny sprite cannot certify seam/cut/material/hair/headwear",
+  "localizationQualification": "Saved original-era MSX2 LP screenshots include English text. Translation patch/emulator/ROM unverified; not certified unmodified Japanese1990 execution. Tiny sprite mirror extracted-native provenance and prior enlargement are unverified. Manual page42 Japanese original source supports names/lore, not facial/cloth fine details.",
+  "poseSemantics": {
+    "A": [
+      "idle ready1",
+      "idle ready2",
+      "walk step1",
+      "walk step2",
+      "walk step3",
+      "walk step4",
+      "unarmed guard preparation",
+      "unarmed held guard",
+      "lower crouch",
+      "held crouch",
+      "rising jump",
+      "tucked jump"
+    ],
+    "B": [
+      "unarmed jab preparation",
+      "unarmed jab extension",
+      "unarmed jab recovery",
+      "unarmed strong strike preparation",
+      "unarmed strong strike extension",
+      "unarmed strong strike recovery",
+      "unarmed low sweep preparation",
+      "unarmed low sweep extension",
+      "unarmed low sweep recovery",
+      "full-body recoil from hit",
+      "kneeling KO collapse",
+      "complete side-lying KO"
+    ],
+    "C": [
+      "sprint start",
+      "sprint stride",
+      "controlled sprint stop",
+      "adapted grab preparation without victim",
+      "adapted empty-hand throw followthrough",
+      "throw reset",
+      "charge-run approach",
+      "adapted shoulder-contact stance",
+      "planted running finish",
+      "athletic breathing preparation",
+      "steady breath",
+      "return to stance"
+    ]
+  },
+  "rootPoseRevision": "Root requested standard A/B runtime coverage, including real complete hit and KO. Original prepared triplet args are preserved unchanged; new prompt variants authored separately. C keeps source-specific sprint / adapted unarmed throw / chargeRun / recovery triplets.",
+  "nonBallistic": true,
+  "nativeCombatOrigins": {
+    "right": {},
+    "left": {}
+  },
+  "supportedCombatLore": "Original encounter is running and nerve-gas race; original LP account does not show Running Man directly attacking Snake. Versus strikes, guards, crouches, jumps, throws, hit/KO and contacts are clearly authored adaptations. No carried gun, grenade, player mine, detonator model, toxic projectile or invented gas device. No stage/gas gameplay implementation.",
+  "displayHeight": 225,
+  "budget": {
+    "initialMiB": 25,
+    "maximumMiB": 45,
+    "pauseAndNotifyAboveMaximum": true,
+    "noHistoricalDeletion": true
+  },
+  "runtimeImported": false,
+  "rootOrShadowSourceModified": false
+}

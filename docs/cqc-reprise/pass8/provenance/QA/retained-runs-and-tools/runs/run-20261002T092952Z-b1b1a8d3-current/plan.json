@@ -1,0 +1,91 @@
+{
+  "schema": "cqc.pass8.qa-plan/1",
+  "mode": "plan_only_no_tests_executed",
+  "preparedAt": "2026-10-02T09:29:52.867602+00:00",
+  "phase": "current",
+  "root": "/workspace/cqc-game-working/cqc-versus-v056",
+  "suites": [
+    {
+      "label": "live-catalog-and-physics-pass8",
+      "command": [
+        "node",
+        "/workspace/cqc-pass8-final-qa-tools/test_live_catalog_pass8.cjs"
+      ],
+      "cwd": "/workspace/cqc-game-working/cqc-versus-v056",
+      "scope": "current-pass8-39-entry-source-and-physics",
+      "python": false,
+      "testSource": "/workspace/cqc-pass8-final-qa-tools/test_live_catalog_pass8.cjs",
+      "testSourceSHA256": "2f7aa5f98d26399568f69dbe227197d28c3f3b15fc8456bf913c796bf5da460c",
+      "testSourceExists": true
+    },
+    {
+      "label": "live-native-contours-pass8",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "/workspace/cqc-pass8-final-qa-tools/test_live_contours_pass8.py",
+        "-v"
+      ],
+      "cwd": "/workspace/cqc-game-working/cqc-versus-v056",
+      "scope": "current-pass8-13-form-native-alpha",
+      "python": true,
+      "testSource": "/workspace/cqc-pass8-final-qa-tools/test_live_contours_pass8.py",
+      "testSourceSHA256": "a6f35c5d2d48cc9cffe5b3e73cde5ef90427ef1340181f0eb4daf4ea11cf1d2f",
+      "testSourceExists": true
+    }
+  ],
+  "historicalReportsProtected": [
+    "original-gameplay-reprise-results.json",
+    "viper-canonical-combat-reprise-results.json",
+    "combat-validation-v045.json",
+    "combat-results-v056.json",
+    "unit-results-v056.json",
+    "runtime-results-v056.json",
+    "album-results-v056.json"
+  ],
+  "restoration": "Restore exact original inode, bytes, permissions and nanosecond mtime; fresh output retained separately.",
+  "archiveCounting": "Archived PASS7 fixture counts are separate and never added to current PASS8 counts.",
+  "executionRequirements": [
+    "Root-approved freeze plus explicit document SHA256; all seven frozen source pins match.",
+    "Existing Node/Python executables; Pillow, NumPy, SciPy, Matplotlib for native alpha.",
+    "At least 20 MiB available for unique logs/report transactions; no full image or catalogue copies.",
+    "Shadow requires independent ready flag plus approved wrapper path and SHA; never syncs runtime itself."
+  ],
+  "shadowSteps": [
+    [
+      "npm",
+      "run",
+      "cqc:check"
+    ],
+    [
+      "npm",
+      "run",
+      "lint"
+    ],
+    [
+      "npm",
+      "run",
+      "test"
+    ],
+    [
+      "npm",
+      "exec",
+      "--",
+      "tsc",
+      "-b"
+    ],
+    [
+      "node",
+      "<root-approved build-with-frozen-public.mjs>"
+    ],
+    [
+      "npm",
+      "run",
+      "pwa:check"
+    ]
+  ],
+  "scopeLimits": [
+    "Source/VM/headless physics and alpha measurements do not certify browser pixels or original 1:1 artwork.",
+    "Canonical fidelity remains closest_supported, supported by preserved physical reviews.",
+    "Counts are fresh cases from one final count summary per distinct invocation; no baseline result reuse."
+  ]
+}

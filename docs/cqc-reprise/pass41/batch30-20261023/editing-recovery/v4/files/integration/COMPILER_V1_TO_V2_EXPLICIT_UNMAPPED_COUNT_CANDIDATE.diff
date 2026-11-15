@@ -1,0 +1,29 @@
+--- compile-native-batch-p41.candidate-v1.mjs
++++ compile-native-batch-p41.candidate-v2.mjs
+@@ -130,6 +130,8 @@
+  if(checks.some(key=>audit.checks?.[key]!==true))throw Error('Explicit Root MGR body and identity reviews are required');
+  return Object.fromEntries(checks.map(key=>[key,true]));
+ }
++// Explicitly unmapped artifact groups remain owned/measured but do not count as native body figures.
++export function countPhysicalSourceFigures(geometry){return geometry.sources.reduce((n,source)=>n+source.poses.filter(pose=>pose.candidateUsage!=='held-unmapped').length,0);}
+ export function assemble(job,audit,contract,geometry,assets,{inputSHA256=null}={}){
+  if(job.schema!=='cqc.p41.native-costume-job/2'||audit.schema!=='cqc.p41.root-art-review/2'||audit.status!=='approved'||!audit.reviewer?.startsWith('Root')||!audit.reviewedAt)throw Error('An explicit current Root art review is required');
+  for(const key of ['identity','incarnation','nativeArt','semanticPoses','equipment','ownership','framing'])if(audit.checks?.[key]!==true)throw Error('Root art check absent: '+key);
+@@ -155,7 +157,7 @@
+   if(!Array.isArray(job.roles?.[side])||job.roles[side].length!==16)throw Error('Exactly sixteen independently drawn roles per facing are required');
+   for(let index=0;index<16;index++){
+    const mapping=job.roles[side][index],asset=assetMap.get(mapping.asset),source=asset&&sourceByPath.get(asset.path),pose=source?.poses.find(p=>p.name===mapping.pose&&p.side===side);
+-   if(!pose||pose.holdReasons?.length||pose.candidateUsage==='held'||pose.side!==side||pose.ownPixelsLost!==0||pose.foreignPixelsKept!==0||pose.opaqueCanvasEdgePixels!==0)throw Error('Mapped source is held, clipped, foreign, or unowned');
++   if(!pose||pose.holdReasons?.length||['held','held-unmapped'].includes(pose.candidateUsage)||pose.side!==side||pose.ownPixelsLost!==0||pose.foreignPixelsKept!==0||pose.opaqueCanvasEdgePixels!==0)throw Error('Mapped source is held, clipped, foreign, or unowned');
+    const identity=roleIdentity(source,pose);if(roleKeys.has(identity))throw Error('A physical drawing cannot manufacture a second semantic role');roleKeys.add(identity);
+    if(!rectOK(pose.rect,asset.width,asset.height))throw Error('Native rectangle outside source');
+    const pivot=mapping.pivot;if(!Array.isArray(pivot)||pivot.length!==2||pivot.some(x=>!finite(x)||x<0||x>1))throw Error('Reviewed source ground/body axis missing');
+@@ -173,7 +175,7 @@
+  sprite.costumeConcept={schema:'cqc.costume-design/1',sourceUID:job.uid,family:job.family,originalDesign:job.family!=='canonical',canonicalAppearanceAttested:job.family==='canonical',...(job.concept||{})};
+  for(const[side,key]of [['right','actions'],['left','oppositeActions']]){sprite[key]={};for(const[name,group]of Object.entries(job.plan.actions)){if(!Array.isArray(group.roles)||!group.roles.length||group.roles.some(i=>!Number.isInteger(i)||i<0||i>15))throw Error('Invalid visual action role');sprite[key][name]={fps:group.fps,loop:group.loop,frames:group.roles.map(i=>clone(frames[side][i]))};}}
+  sprite.review={status:'approved',reviewer:audit.reviewer,reviewedAt:audit.reviewedAt,sourceKind:job.family==='canonical'?'official-art-reference':'original-character',sources:publicProvenanceSources(job.provenance.sources),checks:Object.fromEntries(['identity','costume','equipment','anatomicalSides','singleFigure','transparentBackground'].map(k=>[k,true])),limits:clone(audit.limits),artAuditSHA256:job.artAuditSHA256};
+- const option={id:job.id,label:job.label,family:job.family,provenance:{...clone(job.provenance),sources:publicProvenanceSources(job.provenance.sources)},sprite,assetReview:{status:'verified',independentArt:true,reviewer:audit.reviewer,reviewedAt:audit.reviewedAt,artAuditSHA256:job.artAuditSHA256,allDirectionsReviewed:true,physicalPoseCount:geometry.sources.reduce((n,s)=>n+s.poses.length,0),mappedSemanticRoles:32,temporalFramesAreNotAdditionalDrawings:true,...cyborgPolicyReview}};
++ const option={id:job.id,label:job.label,family:job.family,provenance:{...clone(job.provenance),sources:publicProvenanceSources(job.provenance.sources)},sprite,assetReview:{status:'verified',independentArt:true,reviewer:audit.reviewer,reviewedAt:audit.reviewedAt,artAuditSHA256:job.artAuditSHA256,allDirectionsReviewed:true,physicalPoseCount:countPhysicalSourceFigures(geometry),mappedSemanticRoles:32,temporalFramesAreNotAdditionalDrawings:true,...cyborgPolicyReview}};
+  if(job.physicalExtent)option.physicalExtent=clone(job.physicalExtent);
+  const anchors=[];
+  for(const input of job.anchors||[]){const move=contract.fighter.combat.moves[input.slot];if(move?.kind!=='projectile'||!['right','left'].includes(input.side)||!Number.isInteger(input.roleIndex)||input.roleIndex<0||input.roleIndex>15)throw Error('Invented native projectile point');const frame=frames[input.side][input.roleIndex];const xy=input.nativeXY;if(!Array.isArray(xy)||xy.length!==2||!xy.every(finite)||xy[0]<frame.rect[0]||xy[0]>frame.rect[0]+frame.rect[2]||xy[1]<frame.rect[1]||xy[1]>frame.rect[1]+frame.rect[3]||!input.socket?.trim()||!insideNative(frame,xy))throw Error('Unreviewed native source point outside its owned opaque pixels');if(input.rearNativeXY){const rear=input.rearNativeXY;if(!Array.isArray(rear)||rear.length!==2||!rear.every(finite)||!insideNative(frame,rear)||(xy[0]-rear[0])*(input.side==='right'?1:-1)<=0||Math.abs(Math.atan2(xy[1]-rear[1],Math.abs(xy[0]-rear[0]))*180/Math.PI)>12)throw Error('Native firearm axis does not match its actual horizontal shot');}anchors.push({side:input.side,slot:input.slot,tag:move.tag,action:input.action,file:frame.file,sourceSHA256:frame.sha256,rect:clone(frame.rect),pivot:clone(frame.pivot),nativeXY:clone(xy),socket:input.socket,...(input.rearNativeXY?{rearNativeXY:clone(input.rearNativeXY)}:{})});}

@@ -1,0 +1,298 @@
+{
+  "schema": "cqc.pass8.source-and-action-contract/1",
+  "uid": "core__raging_raven",
+  "incarnation": "Original2008 PS3 MGS4 RAGING RAVEN, armored boss form",
+  "referenceContract": "/workspace/cqc-pass8-generation/raging-raven/REFERENCE_CONTRACT.json",
+  "actionLayout": {
+    "idle": {
+      "sheet": "a",
+      "indices": [
+        0,
+        1
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "walk": {
+      "sheet": "a",
+      "indices": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "fps": 8,
+      "loop": true
+    },
+    "guard": {
+      "sheet": "a",
+      "indices": [
+        6,
+        7
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "crouch": {
+      "sheet": "a",
+      "indices": [
+        8,
+        9
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "jump": {
+      "sheet": "a",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 5,
+      "loop": false
+    },
+    "punch": {
+      "sheet": "b",
+      "indices": [
+        0,
+        1,
+        2
+      ],
+      "fps": 12,
+      "loop": false
+    },
+    "heavy": {
+      "sheet": "b",
+      "indices": [
+        3,
+        4,
+        5
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "low": {
+      "sheet": "b",
+      "indices": [
+        6,
+        7,
+        8
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "hit": {
+      "sheet": "b",
+      "indices": [
+        9
+      ],
+      "fps": 0,
+      "loop": false
+    },
+    "ko": {
+      "sheet": "b",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 6,
+      "loop": false
+    },
+    "throw": {
+      "sheet": "c",
+      "indices": [
+        0,
+        1
+      ],
+      "fps": 9,
+      "loop": false
+    },
+    "shoot": {
+      "sheet": "c",
+      "indices": [
+        2,
+        3,
+        4
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "deploy": {
+      "sheet": "c",
+      "indices": [
+        5,
+        6,
+        7
+      ],
+      "fps": 10,
+      "loop": false
+    },
+    "recover": {
+      "sheet": "c",
+      "indices": [
+        8,
+        9
+      ],
+      "fps": 5,
+      "loop": false
+    },
+    "charge": {
+      "sheet": "c",
+      "indices": [
+        10,
+        11
+      ],
+      "fps": 9,
+      "loop": false
+    }
+  },
+  "actionMap": {
+    "light": "punch",
+    "heavy": "heavy",
+    "low": "low",
+    "throw": "throw",
+    "special": "shoot",
+    "specialDown": "low",
+    "specialForward": "deploy",
+    "specialBack": "guard",
+    "super": "charge",
+    "utility": "recover"
+  },
+  "phaseMap": {
+    "punch": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "heavy": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "low": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "shoot": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "deploy": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        2
+      ]
+    },
+    "throw": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        0
+      ]
+    },
+    "charge": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        0
+      ]
+    },
+    "guard": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        0
+      ]
+    },
+    "recover": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1
+      ],
+      "recovery": [
+        1
+      ]
+    },
+    "walk": {
+      "startup": [
+        0
+      ],
+      "active": [
+        1,
+        2
+      ],
+      "recovery": [
+        3
+      ]
+    }
+  },
+  "nativeSheets": 6,
+  "uniquePoses": 72,
+  "independentFacings": true,
+  "mirror": false,
+  "unarmed": false,
+  "phaseSemantics": {
+    "shoot": "standing original-category grenade launcher aim",
+    "deploy": "low grounded grenade launcher aim",
+    "charge": "hovering launcher brace/aim"
+  },
+  "runtimeWritten": false,
+  "limits": [
+    "Target1:1 original2008 PS3 incarnation wherever original evidence supports it. These are newly authored detailed2D poses, not extracted original sprites/mesh or exact motion capture. fidelityStatus closest_supported; absolute1to1Certified false.",
+    "Original longplay metadata identifies PS3 game and recording deposited2014 by Spazbo4/worldoflongplays. Actual native1280x720 frames inspected. Emulator versus physical-console framebuffer, calibrated source palette, hidden reverse-side geometry and exact tiny surface texture are not independently certified.",
+    "Every left and right native sheet independently generated; no runtime mirroring or pixel editing. Fine seams, panel shading, source proportions and detailed face/gear fasteners vary between independent sheets; exact original texture coordinates and seam counts are not certified.",
+    "All CQC shoves/punches, sweeps, defenses, jumps, reaction/KO, animation timing and fighting-game resource/damage/armor values are authored Versus adaptation. Original boss equipment/chase categories do not certify these numerical mechanics or every action as an extracted canonical move.",
+    "The PNG inspector measures12 major isolated native alpha components per sheet. Some bounding rectangles contain neighbor pixels and therefore retain source-bound contour polygons. The twelve final actual Chromium Canvas charts were physically viewed: complete body/equipment, transparent composition and independent facing; originals remain byte-exact. HiddenRGB/low-alpha edge residuals are preserved rather than repainted.",
+    "Per-sheet standing/uprightSourceHeight and foot/body pivots are measured from source alpha, with C neutral pose8 excluding opened-wing tops. displayHeight is authored Canvas presentation, not certified in-world centimetres. Broad wings never determine a pelvis alpha-centroid pivot.",
+    "Source frames23650/24000 establish olive/gray mechanical helmet/black visor+respirator, segmented human exosuit, two broad hinged aircraft blades with pale external struts, mechanical jet-leg/boot category and original hand-carried drum-fed grenade launcher. No feather wings, exposed head, Vulcan Raven man or magical laser substituted.",
+    "Launcher category and silhouette are source supported; exact MGL manufacturer/model, real-world capacity, all hidden grip/feed joints and source ballistic damage/jet forces are not certified by these frames. Author does not label an ordinary rifle as a grenade launcher or claim source-perfect rotary-drum topology.",
+    "Grounded wings are folded/swept to preserve complete silhouette and room; opened-wing hover appears in C9/10/11. All mechanical details remain approximate closest_supported original-category art. No detached smoke/jet flame, projectile or magic effect embedded in body sheets.",
+    "First C RIGHT attempt lost the sling-mounted launcher in active grab and is rejected; second restored it but clipped3 opaque wing-tip edge pixels and is rejected. Third image_gen redraw retains launcher in every pose and complete wing tips with zero opaque border pixels. Both rejects retained unchanged; no OC repurpose.",
+    "C shoot is standing launcher aim; C deploy is grounded low launcher aim; C charge is hovering launcher aim. Actual source muzzle points are measured on first-active-frame1 (whole-sheet3/6/11). Runtime slot binding, collision and weapon handling remain root integration/QA responsibilities."
+  ]
+}

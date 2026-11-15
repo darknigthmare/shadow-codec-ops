@@ -1,0 +1,75 @@
+{
+  "schema": "cqc.pass38.native-completion/1",
+  "scope": "Archive native projectile flight budgets only",
+  "source": {
+    "path": "public/cqc/src/cqc-pass35-archive-native.js",
+    "sha256": "5f184a7a7bbdb9674e9eab3f7aaf4a61e571038c06df955f9f185904772cffd2",
+    "bytes": 26233
+  },
+  "runtime": {
+    "normalFiles": 2674,
+    "totalBytes": 3126015491,
+    "manifestSha256": "6deb77cb522b925f36a9fc3eb5a42f1a656c17ee31ebc55ffe5bb99ce075a2a0",
+    "sourceParity": "passed",
+    "changedReachableSources": [
+      "src/cqc-pass35-archive-native.js"
+    ],
+    "newImages": 0
+  },
+  "behavior": {
+    "calculation": "finite forward ray/AABB intersection captured at emission",
+    "enemyBox": "current player body at emission",
+    "playerBox": "selected native alpha-measured target part at emission",
+    "enemyCountdown": "predecrement; N-1 remaining required for N collision-tested moves",
+    "playerCountdown": "post-move decrement; N remaining required",
+    "collisionMargins": "existing enemy 0 / player 4",
+    "noPostEmissionHoming": true,
+    "contactsUnchanged": true,
+    "missedRaysNotExtended": true,
+    "originalMinimumLifetimesRetained": true
+  },
+  "verification": {
+    "engine": {
+      "status": "passed",
+      "cases": 119,
+      "reachableEnemyExpirationsBefore": 12,
+      "reachableEnemyExpirationsAfter": 0,
+      "emissionsPreserved": 180,
+      "nonintersectingRaysUnchanged": 27,
+      "contactsUnchanged": 24,
+      "boundaryTests": [
+        "long player shot",
+        "initial collision",
+        "offscreen removal",
+        "pause and ended freeze",
+        "captured target and constant velocity"
+      ],
+      "cadenceBudgetTicks": 21000,
+      "cadenceBudgetScope": "Phase 2 only: seven profiles, 24 patterns each at cadence 65. Additional phase 3/4 formation measurements are reported separately; no universal count or difficulty equivalence is claimed.",
+      "unchangedASTFunctions": 31,
+      "controlledPistolRegression": {
+        "profile": "mgs4_dwarf",
+        "input": "jump at frame 50, pistol at frame 69 after the first mobile volley",
+        "emissionFrame": 81,
+        "targetUnit": 4,
+        "originalLifetime": 70,
+        "requiredLifetime": 83,
+        "before": "expires at frame 150; score 0",
+        "after": "hits at frame 163; score 850; one round consumed",
+        "rootOrHPOverrides": false,
+        "qualification": "Controlled real-controller Dwarf fixture: first literal volley isolated by deferring enemy.t; real player inputs and native geometry; not a full-fight calendar reproduction."
+      }
+    },
+    "browser": "Recorded in final delivery evidence after the real standalone and integrated flows",
+    "buildAndPWA": "Recorded in final delivery evidence for the exact staged runtime"
+  },
+  "gameplayQualification": "Previously expired shots can now hit. Damage values and cadence are unchanged, but hit pressure and active-shot counts may change. Full difficulty tuning remains open.",
+  "preservation": {
+    "priorNextLot": "P37 NEXT_LOT appended byte-exact",
+    "priorNextLotSha256": "899f65795bd145ae3f92119f7af8f5878013c47e85fd526a6838c9bf77aa5902",
+    "historicalSources": "not removed",
+    "mainBranch": "not changed by this lot"
+  },
+  "publication": "The focused pull request and final delivery record report the commit, deployment and actual verification status.",
+  "absolute1to1Certified": false
+}

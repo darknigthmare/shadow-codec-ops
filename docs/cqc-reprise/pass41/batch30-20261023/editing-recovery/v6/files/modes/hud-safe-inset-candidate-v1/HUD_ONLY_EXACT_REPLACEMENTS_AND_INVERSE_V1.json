@@ -1,0 +1,51 @@
+{
+  "schema": "cqc.pass41.exact-HUD-only-patch/1",
+  "status": "candidate-awaiting-Root-GO",
+  "sourceSHA256": "4e992c7d5c59f7d8f98aa8d6f9737742b441b0fdeb149e202a710c8bbc734442",
+  "candidateSHA256": "135eef729392b03b43fdbb1507a9991d7297d1ffa7f075ee50d955ababf6b579",
+  "sourceBytes": 306192,
+  "candidateBytes": 306584,
+  "pairs": [
+    {
+      "index": 0,
+      "expectedNeedleCount": 1,
+      "expectedReplacementCountBefore": 0,
+      "needle": "function drawGame(){",
+      "replacement": "function supportHUDOffset(c){const canvasBox=c.canvas.getBoundingClientRect(),navBox=document.querySelector('.top')?.getBoundingClientRect();if(!canvasBox.height||!navBox?.height||navBox.right<=canvasBox.left||navBox.left>=canvasBox.right)return 0;return Math.max(0,(navBox.bottom-canvasBox.top+12)*c.canvas.height/canvasBox.height-18)}function drawGame(){"
+    },
+    {
+      "index": 1,
+      "expectedNeedleCount": 1,
+      "expectedReplacementCountBefore": 0,
+      "needle": "window.CQC_SUPPORT_STAGES.drawForeground(c,state.o);c.fillStyle='#050a10df';c.fillRect(20,18,1240,126);",
+      "replacement": "window.CQC_SUPPORT_STAGES.drawForeground(c,state.o);c.save();c.translate(0,supportHUDOffset(c));c.fillStyle='#050a10df';c.fillRect(20,18,1240,126);"
+    },
+    {
+      "index": 2,
+      "expectedNeedleCount": 1,
+      "expectedReplacementCountBefore": 0,
+      "needle": "c.textAlign='left';for(const fx of state.fx){",
+      "replacement": "c.restore();c.textAlign='left';for(const fx of state.fx){"
+    }
+  ],
+  "inversePairs": [
+    {
+      "needle": "c.restore();c.textAlign='left';for(const fx of state.fx){",
+      "replacement": "c.textAlign='left';for(const fx of state.fx){",
+      "expectedNeedleCount": 1
+    },
+    {
+      "needle": "window.CQC_SUPPORT_STAGES.drawForeground(c,state.o);c.save();c.translate(0,supportHUDOffset(c));c.fillStyle='#050a10df';c.fillRect(20,18,1240,126);",
+      "replacement": "window.CQC_SUPPORT_STAGES.drawForeground(c,state.o);c.fillStyle='#050a10df';c.fillRect(20,18,1240,126);",
+      "expectedNeedleCount": 1
+    },
+    {
+      "needle": "function supportHUDOffset(c){const canvasBox=c.canvas.getBoundingClientRect(),navBox=document.querySelector('.top')?.getBoundingClientRect();if(!canvasBox.height||!navBox?.height||navBox.right<=canvasBox.left||navBox.left>=canvasBox.right)return 0;return Math.max(0,(navBox.bottom-canvasBox.top+12)*c.canvas.height/canvasBox.height-18)}function drawGame(){",
+      "replacement": "function drawGame(){",
+      "expectedNeedleCount": 1
+    }
+  ],
+  "forwardRestoresExactCandidateBytes": true,
+  "inverseRestoresExactOriginalBytes": true,
+  "compositionRequirement": "For a different current host, require exactly one occurrence of each needle and zero of each full replacement. Apply only these replacements, then verify the bounded inverse reconstructs that current host byte for byte. Do not replace any index, guns or CQC integration. Obtain a fresh composed-host pin and review."
+}

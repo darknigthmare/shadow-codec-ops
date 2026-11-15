@@ -1,0 +1,123 @@
+[
+  {
+    "label": "brad-validation",
+    "command": [
+      "node",
+      "tests/test_combat_sprite_pass4_validation.cjs"
+    ],
+    "exitCode": 0,
+    "timedOut": false,
+    "elapsedSeconds": 0.04892310699506197,
+    "expectedCaseCount": 2,
+    "stdoutLog": "/workspace/cqc-pass7-sprite-qa-logs/run-20261002T023600Z-d90d79f2/logs/brad-validation.stdout.log",
+    "stdoutSha256": "e0f2ae19eefa6436e6b03b7d5d214f69aa64c12f19630292457a023492756146",
+    "stderrLog": "/workspace/cqc-pass7-sprite-qa-logs/run-20261002T023600Z-d90d79f2/logs/brad-validation.stderr.log",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests": 2,
+    "passed": 2,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0,
+    "countSource": "direct-node-TAP-or-spec-final-summary",
+    "suiteSucceeded": true
+  },
+  {
+    "label": "renderer",
+    "command": [
+      "node",
+      "tests/test_combat_sprite_renderer.cjs"
+    ],
+    "exitCode": 0,
+    "timedOut": false,
+    "elapsedSeconds": 0.9898351049923804,
+    "expectedCaseCount": 22,
+    "stdoutLog": "/workspace/cqc-pass7-sprite-qa-logs/run-20261002T023600Z-d90d79f2/logs/renderer.stdout.log",
+    "stdoutSha256": "5358122fd9e342d84a7dbd1ea7690d844950bd95a3c07c86e71dd5acbe22b716",
+    "stderrLog": "/workspace/cqc-pass7-sprite-qa-logs/run-20261002T023600Z-d90d79f2/logs/renderer.stderr.log",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests": 22,
+    "passed": 22,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0,
+    "countSource": "direct-node-TAP-or-spec-final-summary",
+    "suiteSucceeded": true
+  },
+  {
+    "label": "importer",
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_prepare_combat_sprite.py",
+      "-v"
+    ],
+    "exitCode": 0,
+    "timedOut": false,
+    "elapsedSeconds": 0.092702542009647,
+    "expectedCaseCount": 6,
+    "stdoutLog": "/workspace/cqc-pass7-sprite-qa-logs/run-20261002T023600Z-d90d79f2/logs/importer.stdout.log",
+    "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderrLog": "/workspace/cqc-pass7-sprite-qa-logs/run-20261002T023600Z-d90d79f2/logs/importer.stderr.log",
+    "stderrSha256": "f4531adc74c1673bbfd20ce1a76f1e84dadeeb74ac2f0c1cf0f942cef79ebf85",
+    "tests": 6,
+    "passed": 6,
+    "failed": 0,
+    "countSource": "fresh-python-unittest-final-summary",
+    "suiteSucceeded": true
+  },
+  {
+    "label": "brad-importer",
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_prepare_combat_sprite_pass4.py",
+      "-v"
+    ],
+    "exitCode": 0,
+    "timedOut": false,
+    "elapsedSeconds": 0.08644592999189626,
+    "expectedCaseCount": 2,
+    "stdoutLog": "/workspace/cqc-pass7-sprite-qa-logs/run-20261002T023600Z-d90d79f2/logs/brad-importer.stdout.log",
+    "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderrLog": "/workspace/cqc-pass7-sprite-qa-logs/run-20261002T023600Z-d90d79f2/logs/brad-importer.stderr.log",
+    "stderrSha256": "fe11ffb56d0f758ea8dad9283c0ac2649eeac6b7ee75c3b6f00d1e63b47a43dd",
+    "tests": 2,
+    "passed": 2,
+    "failed": 0,
+    "countSource": "fresh-python-unittest-final-summary",
+    "suiteSucceeded": true
+  },
+  {
+    "label": "native-contours",
+    "command": [
+      "python",
+      "tests/test_combat_sprite_contours_pass7.py",
+      "-v"
+    ],
+    "exitCode": 0,
+    "timedOut": false,
+    "elapsedSeconds": 9.848320634991978,
+    "expectedCaseCount": 3,
+    "stdoutLog": "/workspace/cqc-pass7-sprite-qa-logs/run-20261002T023600Z-d90d79f2/logs/native-contours.stdout.log",
+    "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderrLog": "/workspace/cqc-pass7-sprite-qa-logs/run-20261002T023600Z-d90d79f2/logs/native-contours.stderr.log",
+    "stderrSha256": "23a6b66731fc33d4da7ddb741a75d2161ef2a0d38104caa28e9fb7d8f33a28ee",
+    "tests": 3,
+    "passed": 3,
+    "failed": 0,
+    "countSource": "fresh-python-unittest-final-summary",
+    "suiteSucceeded": true
+  }
+]

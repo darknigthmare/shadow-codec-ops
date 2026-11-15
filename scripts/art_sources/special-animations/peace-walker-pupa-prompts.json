@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "actorId": "peace-walker-pupa",
+  "generatedWith": "OpenAI built-in imagegen",
+  "generatedAt": "2026-09-05",
+  "sourceFacing": "right",
+  "variant": "Metal Gear Solid: Peace Walker Pupa unmanned weapon; not a walker, ZEKE, Chrysalis or Peace Walker",
+  "references": [
+    {
+      "url": "https://www.konami.com/mg/archive/mgs_pw/jp/lineup/item.html",
+      "role": "Official Konami Peace Walker product/archive material"
+    },
+    {
+      "url": "https://www.konami.com/mg/archive/ssg/advice_pw/advice_mgspw_01.html",
+      "role": "Official Konami battle guide documenting Pupa gunfire, charge, electricity, lightning rods and cylindrical AI pod weak point"
+    },
+    {
+      "url": "https://www.konami.com/mg/archive/mg25th/truth/mgspw.html",
+      "role": "Official Konami Peace Walker history and 1974 context"
+    }
+  ],
+  "prompts": {
+    "core": "Create an original fan-made pixel-art production sprite board of Pupa from Metal Gear Solid: Peace Walker for side-view 2D gameplay. Preserve its canonical unmanned low, broad, charcoal and rust-orange hovercraft/tank silhouette, rear cylindrical AI pod with red ring, armored skirt and compact weapon hardware. It must have no humanoid body and no legs. Fixed orthographic side view facing screen right. Exactly 4 columns by 4 rows with sixteen distinct authored poses: idle, hover movement, rear-thrust charge and canonical electrical/gun attacks. Flat pure #FF00FF background, exactly five cyan vertical and five horizontal guides including outside borders, safe empty margins, no text, logo, UI, scenery, watermark or unrelated machine.",
+    "special": "Create the matching original fan-made Pupa special sprite board, preserving the exact same low hovercraft body, dark/rust palette, tall cylindrical AI pod and right-facing scale. Exactly 4 columns by 4 rows: recover, hit, disabled/death with the cylindrical pod tilting toward the ground, and scan. No legs or transformation into a walker. Flat #FF00FF, exactly five cyan guides per axis including borders, full actor contained in every cell, no text, logo, UI, scenery or watermark.",
+    "marginCorrectionCore": "Precision edit the supplied 4x4 Pupa core board. Preserve identity, 16 actions, facing and grid. Uniformly reduce every complete Pupa plus dust, exhaust, lightning, sparks and projectiles to about 82 percent, retaining its baseline and at least 24 source pixels of magenta clearance, especially movement dust and row-four electrical arcs.",
+    "marginCorrectionSpecial": "Precision edit the supplied 4x4 Pupa special board. Preserve identity, 16 actions, facing and grid. Uniformly reduce every vehicle and all effects to about 82 percent so no part touches a guide or cell edge while the disabled AI-pod poses remain recognizable."
+  },
+  "technicalGuideNormalization": "After visual approval, only long cyan guide bands on the core board were normalized to exact quarter-cell positions; all actor/effect pixels were inside the established safety margins.",
+  "review": {
+    "grid": "4x4; 32 authored poses across core and special; importer strict validation passed",
+    "identity": "Low charcoal/rust Pupa hovercraft with rear cylindrical AI pod, no legs and no cross-era drift",
+    "sourceDimensions": "1254x1254 RGB PNG per board",
+    "runtimeDimensions": "1024x1024 RGBA PNG per board",
+    "sourceCoreSha256": "090CA159019025C465BA6847C624D4727FD1CC1A8888B3174A8D577C1A75D382",
+    "sourceSpecialSha256": "C4B94E00B77B9027FBC41E7CCFA5D8FAB92068722FB6AE5911AEDFBA1D1B9878"
+  }
+}

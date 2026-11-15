@@ -1,0 +1,224 @@
+{
+  "schema": "cqc.pass8.final-qa/1",
+  "phase": "shadow",
+  "finishedAt": "2026-10-02T10:09:21.894427+00:00",
+  "runDirectory": "/workspace/cqc-pass8-final-qa-tools/runs/run-20261002T100848Z-a9ad032e-shadow",
+  "explicitFreeze": {
+    "file": "/workspace/cqc-pass8-source-freeze-39-rev3.json",
+    "sha256": "6929470adf81540681b190f92dcb0262863340177f7ed92b81f62ad9a76da14c",
+    "sourcePins": [
+      {
+        "path": "/workspace/cqc-game-working/cqc-versus-v056/data/combat-sprite-catalog-v1.json",
+        "sha256": "3fe34bf2be1cc7c5365a82e57b747b269adf795c1940885a6ce6e8a4a793d747",
+        "bytes": 53784490
+      },
+      {
+        "path": "/workspace/cqc-game-working/cqc-versus-v056/src/cqc-sprite-catalog.js",
+        "sha256": "2e77835dafc4ac5698b62c86700f2c6751ee551692216bcab89381b07183cc79",
+        "bytes": 19512237
+      },
+      {
+        "path": "/workspace/cqc-game-working/cqc-versus-v056/modules/unified-versus-v055.html",
+        "sha256": "18d1ed1970fde73a6b5daa69c1ce8382eac628cb0eb5d080bb1e1b29493592ee",
+        "bytes": 3445031
+      },
+      {
+        "path": "/workspace/cqc-game-working/cqc-versus-v056/src/cqc-pass8-layout.css",
+        "sha256": "cb49fbe8916ccf0cd78e80e4bb57a648498f05119465df6c4ce9298815c18034",
+        "bytes": 353
+      },
+      {
+        "path": "/workspace/cqc-game-working/cqc-versus-v056/src/cqc-pass8-combat-engine.js",
+        "sha256": "fd6c8d85333887a60056f1ab11e92abb63250c07de1664a6d832c1c679f34a8f",
+        "bytes": 28142
+      },
+      {
+        "path": "/workspace/cqc-game-working/cqc-versus-v056/src/cqc-pass8-native-origins.js",
+        "sha256": "f1f8364368d5f5362d7b7e351d3a314634e0147af9402c66361e631f08d96b96",
+        "bytes": 15007
+      },
+      {
+        "path": "/workspace/cqc-game-working/cqc-versus-v056/src/cqc-pass8-combat-fidelity.js",
+        "sha256": "988051c3627d24339aa87ec5865716937f8378ddcd58c58b24110b4bf2356b5a",
+        "bytes": 16435
+      }
+    ],
+    "scope": {
+      "entryCount": 39,
+      "nativePNG": 234,
+      "uniquePoses": 2808,
+      "newForms": 13,
+      "preservedOldEntries": 26
+    }
+  },
+  "suites": [],
+  "currentTotals": {
+    "suites": 0,
+    "tests": 0,
+    "passed": 0,
+    "failed": 0,
+    "successfulSuites": 0
+  },
+  "archivedPASS7FixtureTotals": {
+    "suites": 0,
+    "tests": 0,
+    "passed": 0,
+    "failed": 0,
+    "successfulSuites": 0
+  },
+  "countingRule": "Archived fixture counts stay separate from current tests. Exactly one fresh count summary per suite; no baseline totals reused.",
+  "historicalReportProtection": [],
+  "reportRestoration": [],
+  "historicalReportRestorationApplicable": false,
+  "allSevenHistoricalReportsRestoredByteAndMtimeExact": null,
+  "allSevenHistoricalReportStatesUnchanged": true,
+  "inputsUnchangedDuringRun": true,
+  "changedInputs": [],
+  "archivedFixtureUnchanged": true,
+  "runnerError": null,
+  "shadow": {
+    "steps": [
+      {
+        "label": "cqc-copy-verification",
+        "command": [
+          "npm",
+          "run",
+          "cqc:check"
+        ],
+        "cwd": "/workspace/shadow-codec-recovered",
+        "exitCode": 0,
+        "timedOut": false,
+        "log": "/workspace/cqc-pass8-final-qa-tools/runs/run-20261002T100848Z-a9ad032e-shadow/shadow-logs/cqc-copy-verification.log",
+        "logSHA256": "4c13d78f2d638508a3f42e6000248e7229816059df5327276f00dac9467c12dd",
+        "elapsedSeconds": 1.3239277040120214,
+        "passed": true
+      },
+      {
+        "label": "typescript-noemit",
+        "command": [
+          "npm",
+          "run",
+          "lint"
+        ],
+        "cwd": "/workspace/shadow-codec-recovered",
+        "exitCode": 0,
+        "timedOut": false,
+        "log": "/workspace/cqc-pass8-final-qa-tools/runs/run-20261002T100848Z-a9ad032e-shadow/shadow-logs/typescript-noemit.log",
+        "logSHA256": "a5a1cfe056c5d555fab8a39692b1ee27cfe72309b69e4def697211928b8e5b59",
+        "elapsedSeconds": 7.638101000993629,
+        "passed": true
+      },
+      {
+        "label": "vitest",
+        "command": [
+          "npm",
+          "run",
+          "test"
+        ],
+        "cwd": "/workspace/shadow-codec-recovered",
+        "exitCode": 0,
+        "timedOut": false,
+        "log": "/workspace/cqc-pass8-final-qa-tools/runs/run-20261002T100848Z-a9ad032e-shadow/shadow-logs/vitest.log",
+        "logSHA256": "c6f24e4ad1b6d8c26312936c07d2e624f61c578b8201cf66f3bffe4830e70e20",
+        "elapsedSeconds": 10.723147238997626,
+        "passed": true,
+        "testCounts": {
+          "passedFiles": 104,
+          "totalFiles": 104,
+          "passedTests": 705,
+          "totalTests": 705
+        }
+      },
+      {
+        "label": "typescript-build",
+        "command": [
+          "npm",
+          "exec",
+          "--",
+          "tsc",
+          "-b"
+        ],
+        "cwd": "/workspace/shadow-codec-recovered",
+        "exitCode": 0,
+        "timedOut": false,
+        "log": "/workspace/cqc-pass8-final-qa-tools/runs/run-20261002T100848Z-a9ad032e-shadow/shadow-logs/typescript-build.log",
+        "logSHA256": "76162e465989f3f070a9de8db711fbf358e53b74d09ce1bbdb57c727e4c4a16d",
+        "elapsedSeconds": 8.233805734009366,
+        "passed": true
+      },
+      {
+        "label": "frozen-public-vite-build",
+        "command": [
+          "node",
+          "/workspace/cqc-pass8-storage-tools/build-with-frozen-public.mjs",
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "/workspace/cqc-pass8-storage-tools/build-with-frozen-public.mjs",
+          "--project",
+          "/workspace/shadow-codec-recovered",
+          "--destination",
+          "/workspace/shadow-codec-recovered/dist",
+          "--pins",
+          "/workspace/cqc-pass8-storage-tools/public-pins-root-rev3.json",
+          "--plan",
+          "/workspace/cqc-pass8-storage-tools/build-plan-root-rev3.json",
+          "--execute",
+          "--plan-sha256",
+          "8879202be71f23ba9f3de8b698d363c22bb582eb681d312c763409101a713f19",
+          "--skip-typecheck",
+          "--backup-root",
+          "/workspace/cqc-pass8-storage-tools/root-build-backups",
+          "--evidence-root",
+          "/workspace/cqc-pass8-storage-tools/root-build-evidence"
+        ],
+        "cwd": "/workspace/shadow-codec-recovered",
+        "exitCode": 1,
+        "timedOut": false,
+        "log": "/workspace/cqc-pass8-final-qa-tools/runs/run-20261002T100848Z-a9ad032e-shadow/shadow-logs/frozen-public-vite-build.log",
+        "logSHA256": "1fc504d8ca1ad39aeda885a6c794b8d3adb8b47a974c8230e27f5683e2379f6f",
+        "elapsedSeconds": 0.06429139600368217,
+        "passed": false
+      }
+    ],
+    "allStepsPassed": false,
+    "inputsUnchangedDuringRun": true,
+    "changedInputs": [],
+    "runtimeManifestSHA256": "7dd2b1b338459f88781897903d32449378aff38e55283099df1f8b0cdb68bd8a",
+    "runtimeFiles": 988,
+    "runtimeBytes": 937139650,
+    "buildWrapper": {
+      "path": "/workspace/cqc-pass8-storage-tools/build-with-frozen-public.mjs",
+      "sha256": "a73c1cc4cbae4d01ae085d77120929e37c393b28c839cfaffdfef4eeb7278065",
+      "args": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "/workspace/cqc-pass8-storage-tools/build-with-frozen-public.mjs",
+        "--project",
+        "/workspace/shadow-codec-recovered",
+        "--destination",
+        "/workspace/shadow-codec-recovered/dist",
+        "--pins",
+        "/workspace/cqc-pass8-storage-tools/public-pins-root-rev3.json",
+        "--plan",
+        "/workspace/cqc-pass8-storage-tools/build-plan-root-rev3.json",
+        "--execute",
+        "--plan-sha256",
+        "8879202be71f23ba9f3de8b698d363c22bb582eb681d312c763409101a713f19",
+        "--skip-typecheck",
+        "--backup-root",
+        "/workspace/cqc-pass8-storage-tools/root-build-backups",
+        "--evidence-root",
+        "/workspace/cqc-pass8-storage-tools/root-build-evidence"
+      ],
+      "argsFile": "/workspace/cqc-pass8-storage-tools/root-build-wrapper-args-rev3.json",
+      "argsFileSHA256": "c831300cb19ea63585eeaa3a5839ac92e0bc8698f5de52499286fc96aa539c6b"
+    },
+    "npmRunQAScriptModified": false,
+    "executionDescription": "Explicit cqc:check, lint, Vitest, tsc -b, approved frozen-public Vite wrapper, pwa:check; npm run qa was not invoked.",
+    "passedAllChecks": false
+  },
+  "scopeLimits": [
+    "Source/VM/headless physics and alpha measurements do not certify browser pixels or original 1:1 artwork.",
+    "Canonical fidelity remains closest_supported, supported by preserved physical reviews.",
+    "Counts are fresh cases from one final count summary per distinct invocation; no baseline result reuse."
+  ],
+  "passedAllChecks": false
+}

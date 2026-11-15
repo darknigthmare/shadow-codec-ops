@@ -1,0 +1,201 @@
+{
+  "schema": "cqc.pass8.webp-v2-independent-regression/1",
+  "status": "passed",
+  "fixtureRoot": "/workspace/cqc-pass8-storage-tools-independent-review/webp-v2-fixtures-d4936ddd-da0e-4cb1-a5da-5074637709a3",
+  "productionSyncRun": false,
+  "productionBuildRun": false,
+  "productionRepositoriesModified": false,
+  "toolSources": [
+    {
+      "file": "/workspace/cqc-pass8-storage-tools/common.mjs",
+      "sha256": "1b7e594008cef5983af0e375acdce095f90bff8a261e2cc93038c5f89d5edc55"
+    },
+    {
+      "file": "/workspace/cqc-pass8-storage-tools/sync-frozen-runtime.mjs",
+      "sha256": "922e3ea112c6f58dc05e651b3255b26d7368aec0f952dba81482429fb61ecaa6"
+    },
+    {
+      "file": "/workspace/cqc-pass8-storage-tools/build-with-frozen-public.mjs",
+      "sha256": "a73c1cc4cbae4d01ae085d77120929e37c393b28c839cfaffdfef4eeb7278065"
+    },
+    {
+      "file": "/workspace/cqc-pass8-storage-tools/prepare-frozen-png-pins.mjs",
+      "sha256": "1dfa700fe95403428a20163e836b99c87629806e90da0f41e4044479fec80870"
+    }
+  ],
+  "checks": [
+    {
+      "name": "Real source WebP RIFF size matches physical bytes",
+      "status": "passed",
+      "details": {
+        "source": "/workspace/shadow-codec-recovered/public/portraits/msx/mg1/diane/calm.webp",
+        "bytes": 8676,
+        "sha256": "395c857a10a9573b8c8a5a778f5845507df00ad1de96682d2fdc25f533099761",
+        "firstChunk": "VP8L"
+      }
+    },
+    {
+      "name": "V2 explicit PNG and WebP pins both share source inodes",
+      "status": "passed",
+      "details": [
+        {
+          "path": "frozen.png",
+          "mode": "immutable-png-hardlink",
+          "sameInode": true
+        },
+        {
+          "path": "frozen.webp",
+          "mode": "immutable-webp-hardlink",
+          "sameInode": true
+        }
+      ]
+    },
+    {
+      "name": "Legacy PNG v1 still rejects a WebP pin",
+      "status": "passed",
+      "details": {
+        "rejected": "Invalid or duplicate frozen raster pin: frozen.webp"
+      }
+    },
+    {
+      "name": "Legacy PNG v1 still accepts a genuine PNG",
+      "status": "passed",
+      "details": {
+        "accepted": true
+      }
+    },
+    {
+      "name": "Unpinned WebP and JS/JSON are independent copies",
+      "status": "passed",
+      "details": [
+        {
+          "path": "frozen.webp",
+          "mode": "independent-copy",
+          "sameInode": false
+        },
+        {
+          "path": "mutable.js",
+          "mode": "independent-copy",
+          "sameInode": false
+        },
+        {
+          "path": "mutable.json",
+          "mode": "independent-copy",
+          "sameInode": false
+        }
+      ]
+    },
+    {
+      "name": "V2 rejects explicitly pinned .js",
+      "status": "passed",
+      "details": {
+        "rejected": "Unsupported immutable raster format: fake.js"
+      }
+    },
+    {
+      "name": "V2 rejects explicitly pinned .json",
+      "status": "passed",
+      "details": {
+        "rejected": "Unsupported immutable raster format: fake.json"
+      }
+    },
+    {
+      "name": "V2 rejects explicitly pinned .jpg",
+      "status": "passed",
+      "details": {
+        "rejected": "Unsupported immutable raster format: fake.jpg"
+      }
+    },
+    {
+      "name": "V2 rejects explicitly pinned .svg",
+      "status": "passed",
+      "details": {
+        "rejected": "Unsupported immutable raster format: fake.svg"
+      }
+    },
+    {
+      "name": "V2 requires explicit root freeze assertion",
+      "status": "passed",
+      "details": {
+        "rejected": "Explicit root-confirmed frozen PNG/1 or raster/2 pins required."
+      }
+    },
+    {
+      "name": "V2 requires explicit format matching the file extension",
+      "status": "passed",
+      "details": {
+        "rejected": "Invalid or duplicate frozen raster pin: frozen.webp"
+      }
+    },
+    {
+      "name": "Pinned WebP digest/length mismatch fails before linking",
+      "status": "passed",
+      "details": {
+        "rejected": "Frozen raster byte pin mismatch: frozen.webp"
+      }
+    },
+    {
+      "name": "Reject malformed format: PNG renamed WebP",
+      "status": "passed",
+      "details": {
+        "rejected": "Frozen WebP RIFF signature/length mismatch: invalid.webp"
+      }
+    },
+    {
+      "name": "Reject malformed format: WebP RIFF trailing byte",
+      "status": "passed",
+      "details": {
+        "rejected": "Frozen WebP RIFF signature/length mismatch: invalid.webp"
+      }
+    },
+    {
+      "name": "Reject malformed format: Bare twelve-byte RIFF WEBP without image chunk",
+      "status": "passed",
+      "details": {
+        "rejected": "Invalid or duplicate frozen raster pin: invalid.webp"
+      }
+    },
+    {
+      "name": "Pinned WebP collision preserves existing target",
+      "status": "passed",
+      "details": {
+        "preserved": true
+      }
+    },
+    {
+      "name": "No production WebP bytes changed",
+      "status": "passed",
+      "details": {
+        "unchanged": true
+      }
+    },
+    {
+      "name": "Stable reviewed tool common.mjs",
+      "status": "passed",
+      "details": {
+        "sha256": "1b7e594008cef5983af0e375acdce095f90bff8a261e2cc93038c5f89d5edc55"
+      }
+    },
+    {
+      "name": "Stable reviewed tool sync-frozen-runtime.mjs",
+      "status": "passed",
+      "details": {
+        "sha256": "922e3ea112c6f58dc05e651b3255b26d7368aec0f952dba81482429fb61ecaa6"
+      }
+    },
+    {
+      "name": "Stable reviewed tool build-with-frozen-public.mjs",
+      "status": "passed",
+      "details": {
+        "sha256": "a73c1cc4cbae4d01ae085d77120929e37c393b28c839cfaffdfef4eeb7278065"
+      }
+    },
+    {
+      "name": "Stable reviewed tool prepare-frozen-png-pins.mjs",
+      "status": "passed",
+      "details": {
+        "sha256": "1dfa700fe95403428a20163e836b99c87629806e90da0f41e4044479fec80870"
+      }
+    }
+  ]
+}

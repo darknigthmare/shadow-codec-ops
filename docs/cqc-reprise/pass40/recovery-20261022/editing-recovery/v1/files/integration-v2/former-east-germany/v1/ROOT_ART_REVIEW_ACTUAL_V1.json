@@ -1,0 +1,113 @@
+{
+  "schema": "cqc.p40.root-art-review/2",
+  "status": "approved",
+  "reviewer": "Root /root",
+  "reviewedAt": "2026-10-22T22:18:53.793155+00:00",
+  "inputSHA256": "6ed1d34d753b11df70e8d03609c5321d658220f56ea68fac7d24593def098ccc",
+  "checks": {
+    "identity": true,
+    "incarnation": true,
+    "nativeArt": true,
+    "semanticPoses": true,
+    "equipment": true,
+    "ownership": true,
+    "framing": true,
+    "selectedWeaponPoints": true
+  },
+  "limits": [
+    "Approval covers the exact32selected native2D drawings, complete Canvas source contact, four native weapon-point ROIs, explicit opaque-pixel ownership and proposed fixed densities. Original PNG byte pins were independently checked. Full original source pages were inspected by the artist, not all re-opened by Root.",
+    "Reference-led interpretation of original KONAMI PS2 costume plate. Exact retail UVs, hidden surfaces, original animation cycles, absolute metrics and literal1:1 identity remain unverified.",
+    "Two separately drawn gait half-steps per native direction; gait is an authored CQC adaptation. No mirrored bitmap, recolour or downsample is admitted as new source art.",
+    "Original game-profile contracts must remain exact. Actual mode, menus, pause, sizing and projectile-origin QA are required before installation."
+  ],
+  "requiredProjectilesFromFinalProfile": [
+    {
+      "slot": "special",
+      "kind": "projectile",
+      "tag": "tranq",
+      "startup": 19,
+      "requiredNativeFacings": [
+        "right",
+        "left"
+      ]
+    },
+    {
+      "slot": "specialDown",
+      "kind": "projectile",
+      "tag": "explosive",
+      "startup": 24,
+      "requiredNativeFacings": [
+        "right",
+        "left"
+      ]
+    }
+  ],
+  "observations": [
+    "Root physically reviewed original publisher PS2 costume reference, full32selected-role constant-density Canvas contact and all4native muzzle/release point zooms.",
+    "Naked Snake before eye injury remains distinct, two natural eyes, bandana, original harness/pouches and tall boots. Complete two-legged drawings, owned limbs and equipment were examined in both directions.",
+    "Pelvis-relative horizontal anchors and foot-floor placement were examined across locomotion, low/hit/KO/roll. Selected suppressed Mk22 muzzle follows barrel direction; grenade hand is open at the selected source release point.",
+    "Tan rain-stroke cloth follows the East German publisher plate. Corrected right open-finger release point lies on the visible finger, not the rejected transparent automated point."
+  ],
+  "heldRoles": [],
+  "evidencePins": {
+    "full32SourceContact": {
+      "path": "@PROJECT_ROOT@/integration-v2/former-east-germany/v1/qa-contact-v1/PHYSICAL_ROLES_CONTACT_CANDIDATE_V1.png",
+      "bytes": 1019608,
+      "sha256": "7662b123500625f1bd4814564900a5f66949e537c0ae3eeaf42572b3fa50d492"
+    },
+    "all4NativePortROIs": {
+      "path": "@PROJECT_ROOT@/integration-v2/former-east-germany/v1/qa-contact-v1/NATIVE_WEAPON_POINTS_CANDIDATE_V1.png",
+      "bytes": 186594,
+      "sha256": "b410e9428465189a1e6987b90ff288f17ad4a3885322f0a73b2ecdf2d8a9acc6"
+    },
+    "geometry": {
+      "path": "@PROJECT_ROOT@/integration-v2/former-east-germany/v1/SOURCE_GEOMETRY_CANDIDATE_V1.json.gz",
+      "bytes": 164060,
+      "sha256": "4a4f67526f4ba8d4adf0fe09918f5fefcc872706535d1f121db19e6ccf60874b"
+    },
+    "ownershipBook": {
+      "path": "@PROJECT_ROOT@/art/core__snake/mgs3-camo-former-east-germany/ROLEBOOK_EXPLICIT_CANDIDATE_V1.json",
+      "bytes": 11682,
+      "sha256": "2ae136707c5056a66175644abb42d818db33736c87d924e32d7d29b3a9558aee"
+    },
+    "bodyAxes": {
+      "path": "@PROJECT_ROOT@/integration-v2/former-east-germany/v1/BODY_AXIS_PROPOSALS_CANDIDATE_V1.json",
+      "bytes": 16787,
+      "sha256": "28d515eecc948b5970f5be1843b7718e6e41c4eeb1ddd5ca4e2ad32d2217a7b3"
+    }
+  },
+  "nativeSourceCalibrations": [
+    {
+      "file": "right-a-v1.png",
+      "sourceSHA256": "2758566e51269e7c1b99e4cb29a9f337cd6790f5193dd04d2d450e08a06336b4",
+      "proposedSourceFrameHeight": 402,
+      "kind": "same-page-neutral",
+      "neutralPose": "right-right-a-v1-idle",
+      "RootApproved": false
+    },
+    {
+      "file": "left-a-v1.png",
+      "sourceSHA256": "94c0b337bad2548f56a1ebb76be63b27e010f8761c9f708f8e757140b8e70e42",
+      "proposedSourceFrameHeight": 440,
+      "kind": "same-page-neutral",
+      "neutralPose": "left-left-a-v1-idle",
+      "RootApproved": false
+    },
+    {
+      "file": "right-b-v1.png",
+      "sourceSHA256": "05f793cb470632707180d7a46729189f3d344d0235f9ff076fa4fd0c81fda35c",
+      "proposedSourceFrameHeight": 333,
+      "kind": "same-page-neutral",
+      "neutralPose": "right-right-b-v1-neutral16",
+      "RootApproved": false
+    },
+    {
+      "file": "left-b-v1.png",
+      "sourceSHA256": "d0c8e1c8a299b25d36fb65a0b595fb4e920047958e8bb93b158141392f3d7181",
+      "proposedSourceFrameHeight": 342,
+      "kind": "same-page-neutral",
+      "neutralPose": "left-left-b-v1-neutral16",
+      "RootApproved": false
+    }
+  ]
+}

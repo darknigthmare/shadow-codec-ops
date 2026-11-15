@@ -1,0 +1,13 @@
+file:///workspace/cqc-pass8-storage-tools/common.mjs:253
+    if (!item.startsWith('--')) throw new Error(`Unexpected argument: ${item}`);
+                                      ^
+
+Error: Unexpected argument: /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node
+    at parseArgs (file:///workspace/cqc-pass8-storage-tools/common.mjs:253:39)
+    at cli (file:///workspace/cqc-pass8-storage-tools/build-with-frozen-public.mjs:122:16)
+    at file:///workspace/cqc-pass8-storage-tools/build-with-frozen-public.mjs:136:96
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.19.0

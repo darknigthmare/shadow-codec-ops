@@ -1,0 +1,49 @@
+{
+  "schema": "cqc.pass6.native-sprite-tool-qa/1",
+  "at": "2026-10-02T00:31:18.386221+00:00",
+  "success": true,
+  "expectedTests": 39,
+  "runs": [
+    {
+      "label": "node",
+      "command": [
+        "node",
+        "--test",
+        "tests/test_combat_sprite_catalog_pass6.cjs",
+        "tests/test_combat_sprite_pass4_validation.cjs",
+        "tests/test_combat_sprite_renderer.cjs"
+      ],
+      "exit": 0,
+      "log": "preparation/combat-sprites-pass6/tool-qa-20261002-final/node.log",
+      "logSHA256": "4ec7f9ea3ae9b4f230ea52853195cda02e798f2dc5278ffda11e4d7c9a4bb084"
+    },
+    {
+      "label": "python",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_prepare_combat_sprite.py",
+        "-v"
+      ],
+      "exit": 0,
+      "log": "preparation/combat-sprites-pass6/tool-qa-20261002-final/python.log",
+      "logSHA256": "db4e20b657ec64725d1a797e34e35000ac0184fd3e8ca29e4f234a4fb235a260"
+    },
+    {
+      "label": "contours",
+      "command": [
+        "python",
+        "tests/test_combat_sprite_contours_pass6.py",
+        "-v"
+      ],
+      "exit": 0,
+      "log": "preparation/combat-sprites-pass6/tool-qa-20261002-final/contours.log",
+      "logSHA256": "86f896e395fcf6bb347ccfe7695915ce84c1bcd886d3c532872c6d823bb083a7"
+    }
+  ]
+}

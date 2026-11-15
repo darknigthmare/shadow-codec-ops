@@ -1,0 +1,56 @@
+{
+  "schema": "cqc.p40.r00-root-art-review/1",
+  "approved": true,
+  "uid": "pass40__raiden_r00",
+  "auditBindingSHA256": "faecbd813da2cb0b405aec82a5e464d0d89248343f70b024d148213af7d3dd33",
+  "reviewer": "/root",
+  "reviewedAt": "2026-10-22T22:17:31.066207+00:00",
+  "checks": {
+    "identity": true,
+    "costume": true,
+    "equipment": true,
+    "anatomicalSides": true,
+    "singleFigure": true,
+    "transparentBackground": true
+  },
+  "evidence": {
+    "nativeSourceReview": "Root physically inspected the two original P31 sources, four new native PNGs, original standard-body references and the final complete 32-pose Canvas contact.",
+    "completeContactSHA256": "2570cec8e9517124c1f0f86436c032cfdffcbb4ffaf15e681e43f70d01919386",
+    "bodyCalibrationSHA256": "6ae36dad0264e8efd726f445da0630a52a91a138ff3fbd6f857d3b4d612a5fb2",
+    "rendererReferenceGate": "Actual renderer.configure stores each entry reference unchanged; getEntry returns that same reference. No admission bypass is needed.",
+    "nativeAnatomy": "Selected locomotion drawings have two legs and a complete held katana in both directions. A and B show opposite leading legs. Pelvis and boot soles determine placement; the left jumping sword tip is excluded from the foot datum. The five rejected supplement drawings remain unmapped."
+  },
+  "limits": "Approval covers the bound source selection and source geometry for a closest faithful R-00 adaptation. It does not certify absolute body height, retail mesh or UV identity, full animation cycles, or browser gameplay. Two-drawing walks, visible small native contour fringes, authored CQC rules and missing sheathing transition drawings remain explicit limits. Ten old P31 geometries remain exact, including seven historical unmapped right-source pixels. No FC, Ripper, Zandatsu, Blade Mode, firearm, black-body or MGS4 equipment is approved. V4 six-consumer and V5 cumulative Support QA passed; gold production-branch startup smoke remains required.",
+  "runtimeInstalled": false,
+  "browserGameplayApproved": true,
+  "publicationApproved": false,
+  "priorApprovedArtBindingSHA256": "8abb38ddff63baa2d714a04ad04b428475ab3edbf67fd53a81d09f314ad3e290",
+  "approvedWordingOnlyChange": {
+    "schema": "cqc.p40.r00-proposed-wording-delta/1",
+    "approved": true,
+    "applicationMutations": false,
+    "oldBindingSHA256": "b09116bb3ae33951d962ce095a25615bd36944db3384b920ea27c5d44048259f",
+    "scope": "One French product limitation string only; no combat value, geometry, source bitmap, source density or runtime behavior change.",
+    "before": "La locomotion utilise des dessins natifs supplémentaires avec lame tenue ; alternance anatomique, calibration et contacts attendent la revue physique Root.",
+    "after": "La locomotion utilise deux dessins natifs par sens avec lame tenue ; les transitions de rangement et de dégainage restent à compléter.",
+    "oldNativeModuleSHA256": "31bca1d779c5af3144ab6e5f367cecfec5e89d1d72db7a900f856da96e49e6aa",
+    "newNativeModuleSHA256": "67809712ce556b34422bdaeb9db67e5eb8f66a2ef16395d56013cd95620ce0d5",
+    "newBindingSHA256": "825e14c259a0c76fa31052a82b2090eda72d2f45b561be06a95c23864999bffe",
+    "deepBindingDeltas": [
+      "/inputs/profileModuleSHA256"
+    ],
+    "sourceFilesExact": true
+  },
+  "codeReview": {
+    "approved": true,
+    "supportModuleSHA256": "3c9a72206d51fc9214a93eb04be021795dee1233f438da2065f781003830b854",
+    "onlyDelta": "Capture predecessor once via !wrappedSupport; no growing R00/Fenrir chain."
+  },
+  "codeReleaseApproved": true,
+  "reviewScope": "V4 art, source geometry and calibration carried forward exactly; one Support wrapper condition corrected to install once. Independent deep binding comparison and byte reconstruction pass. Actual cumulative R00/Fenrir20launches pass with original Snake controls restored. Gold production-branch startup smoke and combined final plan still required before installation.",
+  "evidenceV5": {
+    "path": "integration-r00-v5/CUMULATIVE_QA_HANDOFF_ACTUAL_V5.json",
+    "bytes": 2577,
+    "sha256": "8f240229f4510816ca6e7faa32732cb7cf9ee62be6b54461dfd1f63f48247d80"
+  }
+}

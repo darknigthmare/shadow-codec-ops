@@ -1,0 +1,114 @@
+{
+  "schema": "cqc.pass20.pw-boxes-final-actual-live-QA/1",
+  "status": "passed",
+  "rawRuntimeReport": {
+    "path": "/workspace/cqc-pass20-box-anatomy/browser-qa/PW_BOXES_SIX_SHOTS_ACTUAL_BROWSER_V1.json",
+    "sha256": "d4374d002decea5612a98f2f614e0bc84da40ba125a98d9b7b2ff22740a5c203",
+    "statusUnmodified": "passed-runtime-awaiting-physical-live-screenshot-review"
+  },
+  "actualMatchesStartedThroughUI": 3,
+  "liveNativeTankBodyDrawReturnsTrue": 524,
+  "oldTankPNGCallsObserved": 0,
+  "nativeDrawFailuresObserved": 0,
+  "shotsVerifiedInRealMatchState": 6,
+  "shotFacingPairs": [
+    [
+      1,
+      -1
+    ],
+    [
+      1,
+      -1
+    ],
+    [
+      1,
+      -1
+    ]
+  ],
+  "maximumMuzzleRenderErrorPixels": 2.893931527201308e-06,
+  "maximumSpawnRenderErrorPixels": 2.893931527201308e-06,
+  "screenshotsPhysicallyViewed": [
+    {
+      "path": "/workspace/cqc-pass20-box-anatomy/browser-qa/pass19__box_tank_pw_BOTH_NATIVE_FACINGS_LIVE_ACTUAL_V1.png",
+      "bytes": 732107,
+      "sha256": "3a307cbff42929fa7699016f30bebac70decce143b081402f502009e9f3e87bb",
+      "nativeReady": [
+        true,
+        true
+      ],
+      "frame": 117,
+      "optionsHidden": true,
+      "pauseHidden": true,
+      "visualReviewStatus": "physically-viewed-and-approved",
+      "observedBootCounts": {
+        "rightFacingActor": 4,
+        "leftFacingActor": 4
+      },
+      "cardboardHullAndSquareSingleCannonPresent": true,
+      "emptyBackgroundNativeAlphaPreserved": true,
+      "optionsOrPauseObscuringActor": false,
+      "reviewer": "pass20-box-anatomy"
+    },
+    {
+      "path": "/workspace/cqc-pass20-box-anatomy/browser-qa/pass19__box_tank_stun_pw_BOTH_NATIVE_FACINGS_LIVE_ACTUAL_V1.png",
+      "bytes": 733522,
+      "sha256": "7a53b295ff182bce8127fe99ee560d04c538dc16bdd14ec0e5d318e6c4e222dc",
+      "nativeReady": [
+        true,
+        true
+      ],
+      "frame": 118,
+      "optionsHidden": true,
+      "pauseHidden": true,
+      "visualReviewStatus": "physically-viewed-and-approved",
+      "observedBootCounts": {
+        "rightFacingActor": 4,
+        "leftFacingActor": 4
+      },
+      "cardboardHullAndSquareSingleCannonPresent": true,
+      "emptyBackgroundNativeAlphaPreserved": true,
+      "optionsOrPauseObscuringActor": false,
+      "reviewer": "pass20-box-anatomy"
+    },
+    {
+      "path": "/workspace/cqc-pass20-box-anatomy/browser-qa/pass19__box_tank_smoke_pw_BOTH_NATIVE_FACINGS_LIVE_ACTUAL_V1.png",
+      "bytes": 734783,
+      "sha256": "384b4dee1472d98d949ccb825638a9e87771f6e2874c696fc0db9d1321435a1a",
+      "nativeReady": [
+        true,
+        true
+      ],
+      "frame": 112,
+      "optionsHidden": true,
+      "pauseHidden": true,
+      "visualReviewStatus": "physically-viewed-and-approved",
+      "observedBootCounts": {
+        "rightFacingActor": 4,
+        "leftFacingActor": 4
+      },
+      "cardboardHullAndSquareSingleCannonPresent": true,
+      "emptyBackgroundNativeAlphaPreserved": true,
+      "optionsOrPauseObscuringActor": false,
+      "reviewer": "pass20-box-anatomy"
+    }
+  ],
+  "gameExceptions": 0,
+  "networkFailures": 0,
+  "applicationHTTPFailures": 0,
+  "unrelatedFavicon404": [
+    {
+      "url": "http://127.0.0.1:8029/favicon.ico",
+      "status": 404
+    }
+  ],
+  "localStorageRestored": true,
+  "ownedBrowserPort9277ConfirmedClosed": true,
+  "runtimeSourceAndHTMLMutatedDuringQA": false,
+  "qualifications": [
+    "Live match screenshots show four distinct boots on both native facings for each of the three ammunition identities.",
+    "Six shots were created by actual engine input/step in UI-started match state while paused for deterministic origin measurement; actors separated using normal movement inputs only.",
+    "These checks certify muzzle/spawn/render placement; they do not claim all six projectiles hit enemies or validate every equipment move.",
+    "Raw runtime report retains its original screenshot-review-pending status; this separate receipt records the subsequent physical review.",
+    "A first final-receipt process check matched its own shell command. The corrected check requires actual process comm chromium; no application code changed."
+  ]
+}

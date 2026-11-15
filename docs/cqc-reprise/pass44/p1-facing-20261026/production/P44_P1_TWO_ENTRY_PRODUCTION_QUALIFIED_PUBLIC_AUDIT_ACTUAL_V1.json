@@ -1,0 +1,715 @@
+{
+  "schema": "cqc.p44.independent-production-p1-two-entry-qualified-audit/1",
+  "status": "PASS_OBSERVED_COMPLETED_P1_NATIVE_FACING_AND_TWO_ENTRY_GAMEPLAY_FLOWS_WITH_QUALIFIED_AUXILIARY_NETWORK_ISSUES",
+  "createdAtUTC": "2026-10-26T08:37:58.709430+00:00",
+  "productionOrigin": "https://shadow-codec-ops.vercel.app",
+  "deploymentId": "dpl_GUDCZ2joMgFod3JruVZvJeSBFtMH",
+  "codeCommit": "7f120bb1ec424e0d584750cc500a0e1dc83275c4",
+  "counts": {
+    "coldOwnedProfiles": 2,
+    "actualEntryFlows": 2,
+    "completedPortraitCases": 10,
+    "nativeDirections": [
+      1,
+      -1
+    ],
+    "actualMatchesStarted": 2,
+    "exactPauseAndResume": 2,
+    "returnsToCommand": 2,
+    "trustedControlActions": 90,
+    "canonicalSecureResponses200": 531,
+    "browserObservedChangedRuntimeBodiesExact": 12,
+    "runtimeExceptions": 0,
+    "consoleErrors": 0,
+    "crashes": 0,
+    "activeRuntimeHTTPFailures": 0,
+    "optionalBrowserFavicon404": 1,
+    "registeredUnusedNativePreviewCancellations": 3,
+    "unclassifiedLoadingFailuresAfterEvidenceAudit": 0
+  },
+  "sources": [
+    {
+      "entry": "standalone",
+      "document": "ACTUAL_PRODUCTION_GUI_RECEIPT_V1.json",
+      "bytes": 147872,
+      "sha256": "70877780447638eedd7965fb812dbe68717265cee7740ae5c8b0f44688a55a43",
+      "rawStatusPreserved": "PASS_FINITE_PRODUCTION_P1_WITH_RECORDED_AUXILIARY_NETWORK_ISSUES",
+      "completedTrustedActions": 45,
+      "optionalFavicon404": 1,
+      "normalSecureCanonicalResponses200": 260,
+      "completedPortraitCases": 5,
+      "actualMatchStarted": {
+        "frame": 109,
+        "phase": "fight",
+        "faces": [
+          1,
+          -1
+        ],
+        "costumes": [
+          "mgsv-naked-gold-arm",
+          null
+        ]
+      },
+      "pauseExact": true,
+      "resumedSimulation": true,
+      "returnedToSelection": true,
+      "returnedToCommand": true
+    },
+    {
+      "entry": "integrated",
+      "document": "ACTUAL_PRODUCTION_GUI_RECEIPT_V1.json",
+      "bytes": 151999,
+      "sha256": "af38a564ab7435d69d6494e104323baf304d33718fcacb6dad421fd2f0f7a433",
+      "rawStatusPreserved": "FAILED_OR_INCOMPLETE",
+      "completedTrustedActions": 45,
+      "optionalFavicon404": 0,
+      "normalSecureCanonicalResponses200": 271,
+      "completedPortraitCases": 5,
+      "actualMatchStarted": {
+        "frame": 105,
+        "phase": "fight",
+        "faces": [
+          1,
+          -1
+        ],
+        "costumes": [
+          "mgsv-naked-gold-arm",
+          null
+        ]
+      },
+      "pauseExact": true,
+      "resumedSimulation": true,
+      "returnedToSelection": true,
+      "returnedToCommand": true
+    }
+  ],
+  "cases": [
+    {
+      "entry": "standalone",
+      "uid": "core__venom",
+      "costumes": [
+        "original",
+        "original"
+      ],
+      "nativeFacingRequests": [
+        1,
+        -1
+      ],
+      "portraitStates": [
+        "ready",
+        "ready"
+      ],
+      "actualPixelSHA256": [
+        "12a3cabe7a6a61811c8a4176111741077a3c50cc8353019043f21ab17fbfb2fe",
+        "50eee46c5b70204fe02cc1588464c2e0cb295f797c919215599d6c0f6d41d134"
+      ],
+      "sources": [
+        {
+          "file": "assets/combat-sprites/core__venom/a-right-v1.png",
+          "sha256": "a89faf67fe47f8fb1d20b457f78a1084086f3fc258d343b1cdb08784ee43b36f",
+          "rect": [
+            110,
+            4,
+            179,
+            375
+          ],
+          "pivot": [
+            0.4916654756060427,
+            0.9866666666666667
+          ]
+        },
+        {
+          "file": "assets/combat-sprites/core__venom/a-left-v1.png",
+          "sha256": "c0984e12ed10669c3cfe4cafd8c5f3c161f4040dea5078f7a3779abb34ef88b6",
+          "rect": [
+            111,
+            0,
+            157,
+            361
+          ],
+          "pivot": [
+            0.5014277459754362,
+            0.9861495844875346
+          ]
+        }
+      ],
+      "screenshot": {
+        "document": "venom-original-two-native-faces.png",
+        "bytes": 677331,
+        "sha256": "c3d284fc0b71b788bc602f3c46781197b0fca692ee9f24e34625486839355421"
+      },
+      "qualification": "Actual native sprite draw callbacks plus screenshot."
+    },
+    {
+      "entry": "standalone",
+      "uid": "core__venom",
+      "costumes": [
+        "mgsv-naked-gold-arm",
+        "original"
+      ],
+      "nativeFacingRequests": [
+        1,
+        -1
+      ],
+      "portraitStates": [
+        "ready",
+        "ready"
+      ],
+      "actualPixelSHA256": [
+        "e20b84481a61d4778e55f6ccbefa471a9d14576687af5f1aca61e14c589fcc6e",
+        "50eee46c5b70204fe02cc1588464c2e0cb295f797c919215599d6c0f6d41d134"
+      ],
+      "sources": [
+        {
+          "file": "assets/combat-costumes-pass43/core__venom/mgsv-naked-gold-arm/right-main-781c62b7-p43.png",
+          "sha256": "781c62b72274d705825b0459029ca0313743a4fb49c2de1b983d3c3707036ab8",
+          "rect": [
+            163,
+            16,
+            265,
+            442
+          ],
+          "pivot": [
+            0.5169811320754717,
+            0.995475113122172
+          ]
+        },
+        {
+          "file": "assets/combat-sprites/core__venom/a-left-v1.png",
+          "sha256": "c0984e12ed10669c3cfe4cafd8c5f3c161f4040dea5078f7a3779abb34ef88b6",
+          "rect": [
+            111,
+            0,
+            157,
+            361
+          ],
+          "pivot": [
+            0.5014277459754362,
+            0.9861495844875346
+          ]
+        }
+      ],
+      "screenshot": {
+        "document": "venom-gold-p1-native-right.png",
+        "bytes": 725555,
+        "sha256": "1f32b336b54bd0e34b378622042f3d19a126cd2402cf83832339755ef7d2af6d"
+      },
+      "qualification": "Actual native sprite draw callbacks plus screenshot."
+    },
+    {
+      "entry": "standalone",
+      "uid": "core__venom",
+      "costumes": [
+        "mgsv-naked-gold-arm",
+        "original"
+      ],
+      "nativeFacingRequests": [
+        1,
+        -1
+      ],
+      "portraitStates": [
+        "ready",
+        "ready"
+      ],
+      "actualPixelSHA256": [
+        "25ca59cf5816720e803647d0f0ba2d182d1f30be6305f844c6ed85bc06b38dc5",
+        "3fc669a0c910dbe71627443fae4a538219d332f471c297a76e6f86c17ff0f816"
+      ],
+      "sources": [
+        {
+          "file": "assets/combat-costumes-pass43/core__venom/mgsv-naked-gold-arm/right-main-781c62b7-p43.png",
+          "sha256": "781c62b72274d705825b0459029ca0313743a4fb49c2de1b983d3c3707036ab8",
+          "rect": [
+            163,
+            16,
+            265,
+            442
+          ],
+          "pivot": [
+            0.5169811320754717,
+            0.995475113122172
+          ]
+        },
+        {
+          "file": "assets/combat-sprites/core__venom/a-left-v1.png",
+          "sha256": "c0984e12ed10669c3cfe4cafd8c5f3c161f4040dea5078f7a3779abb34ef88b6",
+          "rect": [
+            111,
+            0,
+            157,
+            361
+          ],
+          "pivot": [
+            0.5014277459754362,
+            0.9861495844875346
+          ]
+        }
+      ],
+      "screenshot": {
+        "document": "venom-gold-resize.png",
+        "bytes": 483226,
+        "sha256": "096d18310ca6e7cca685361490a7647320f407f8ff1e699274f014cd9fc2e43b"
+      },
+      "qualification": "Actual native sprite draw callbacks plus screenshot."
+    },
+    {
+      "entry": "standalone",
+      "uid": "completion__mk2_mgs4",
+      "costumes": [
+        "original",
+        "original"
+      ],
+      "nativeFacingRequests": [
+        1,
+        -1
+      ],
+      "portraitStates": [
+        "ready",
+        "ready"
+      ],
+      "actualPixelSHA256": [
+        "98f0809f50d1d91b86e3b655efea7ab04a8a7a6f6c3ae4a6a54d6ad51cc65028",
+        "2a1f4cb1eda29ba0ace94799651a8e93307608a44e8f6a5956c110a0ef1307e7"
+      ],
+      "sources": [
+        null,
+        null
+      ],
+      "screenshot": {
+        "document": "mkii-two-native-faces.png",
+        "bytes": 663874,
+        "sha256": "53178f20d3ffac227ca95d11f9d8a1b54b170dd8e06733cfffa07183c65df392"
+      },
+      "qualification": "Actual machine capture plus facade request; not a certificate from facade alone."
+    },
+    {
+      "entry": "standalone",
+      "uid": "pass19__dwarf_gekko_humanoid_mgr",
+      "costumes": [
+        "original",
+        "original"
+      ],
+      "nativeFacingRequests": [
+        1,
+        -1
+      ],
+      "portraitStates": [
+        "ready",
+        "ready"
+      ],
+      "actualPixelSHA256": [
+        "80ea9375353404952b089753370a52952ddb4c9c6ad514d9b3a92869dd4487a5",
+        "58abe48529c16c4f604c6d6efeee279fd58a92399890d3f0fc9496c5e5d7387e"
+      ],
+      "sources": [
+        null,
+        null
+      ],
+      "screenshot": {
+        "document": "double-tripod-shared-two-faces.png",
+        "bytes": 468122,
+        "sha256": "afd80be0bc5cbd507c33bf444f48fcaf3ef28d5c3e80f425c49328fca2db4e50"
+      },
+      "qualification": "Actual machine capture plus facade request; not a certificate from facade alone."
+    },
+    {
+      "entry": "integrated",
+      "uid": "core__venom",
+      "costumes": [
+        "original",
+        "original"
+      ],
+      "nativeFacingRequests": [
+        1,
+        -1
+      ],
+      "portraitStates": [
+        "ready",
+        "ready"
+      ],
+      "actualPixelSHA256": [
+        "1feedc3266a0db0fcaf9ed6c62667257722b3015a8a491e03552163d23eb36c5",
+        "3d92729f2bcc1346df50673ad1dd1bae771db81ffd6a9ca3ed37f5e483887dc5"
+      ],
+      "sources": [
+        {
+          "file": "assets/combat-sprites/core__venom/a-right-v1.png",
+          "sha256": "a89faf67fe47f8fb1d20b457f78a1084086f3fc258d343b1cdb08784ee43b36f",
+          "rect": [
+            110,
+            4,
+            179,
+            375
+          ],
+          "pivot": [
+            0.4916654756060427,
+            0.9866666666666667
+          ]
+        },
+        {
+          "file": "assets/combat-sprites/core__venom/a-left-v1.png",
+          "sha256": "c0984e12ed10669c3cfe4cafd8c5f3c161f4040dea5078f7a3779abb34ef88b6",
+          "rect": [
+            111,
+            0,
+            157,
+            361
+          ],
+          "pivot": [
+            0.5014277459754362,
+            0.9861495844875346
+          ]
+        }
+      ],
+      "screenshot": {
+        "document": "venom-original-two-native-faces.png",
+        "bytes": 801981,
+        "sha256": "b8ed27ac5e44fb5c3685daa59d5bcd21cdad41b2eb1dcfdef5c31fb6f9dd6ef9"
+      },
+      "qualification": "Actual native sprite draw callbacks plus screenshot."
+    },
+    {
+      "entry": "integrated",
+      "uid": "core__venom",
+      "costumes": [
+        "mgsv-naked-gold-arm",
+        "original"
+      ],
+      "nativeFacingRequests": [
+        1,
+        -1
+      ],
+      "portraitStates": [
+        "ready",
+        "ready"
+      ],
+      "actualPixelSHA256": [
+        "65ca131c2f1214dd13adc42dae6028d7e833e789dc7ceec2285acf3b56564eeb",
+        "3d92729f2bcc1346df50673ad1dd1bae771db81ffd6a9ca3ed37f5e483887dc5"
+      ],
+      "sources": [
+        {
+          "file": "assets/combat-costumes-pass43/core__venom/mgsv-naked-gold-arm/right-main-781c62b7-p43.png",
+          "sha256": "781c62b72274d705825b0459029ca0313743a4fb49c2de1b983d3c3707036ab8",
+          "rect": [
+            163,
+            16,
+            265,
+            442
+          ],
+          "pivot": [
+            0.5169811320754717,
+            0.995475113122172
+          ]
+        },
+        {
+          "file": "assets/combat-sprites/core__venom/a-left-v1.png",
+          "sha256": "c0984e12ed10669c3cfe4cafd8c5f3c161f4040dea5078f7a3779abb34ef88b6",
+          "rect": [
+            111,
+            0,
+            157,
+            361
+          ],
+          "pivot": [
+            0.5014277459754362,
+            0.9861495844875346
+          ]
+        }
+      ],
+      "screenshot": {
+        "document": "venom-gold-p1-native-right.png",
+        "bytes": 840122,
+        "sha256": "ff422bba1e31d2188e023a44b9cd28a53b9a12ac07fea9a1901d5d4e7161699b"
+      },
+      "qualification": "Actual native sprite draw callbacks plus screenshot."
+    },
+    {
+      "entry": "integrated",
+      "uid": "core__venom",
+      "costumes": [
+        "mgsv-naked-gold-arm",
+        "original"
+      ],
+      "nativeFacingRequests": [
+        1,
+        -1
+      ],
+      "portraitStates": [
+        "ready",
+        "ready"
+      ],
+      "actualPixelSHA256": [
+        "b4bbc346ba21485e9135564e3d329ac1be68657139b38ce81f9d042a4c15c816",
+        "57faec084e4d19a6ab258edf63c4869e4f0776057e452c060ccdc92334b174c1"
+      ],
+      "sources": [
+        {
+          "file": "assets/combat-costumes-pass43/core__venom/mgsv-naked-gold-arm/right-main-781c62b7-p43.png",
+          "sha256": "781c62b72274d705825b0459029ca0313743a4fb49c2de1b983d3c3707036ab8",
+          "rect": [
+            163,
+            16,
+            265,
+            442
+          ],
+          "pivot": [
+            0.5169811320754717,
+            0.995475113122172
+          ]
+        },
+        {
+          "file": "assets/combat-sprites/core__venom/a-left-v1.png",
+          "sha256": "c0984e12ed10669c3cfe4cafd8c5f3c161f4040dea5078f7a3779abb34ef88b6",
+          "rect": [
+            111,
+            0,
+            157,
+            361
+          ],
+          "pivot": [
+            0.5014277459754362,
+            0.9861495844875346
+          ]
+        }
+      ],
+      "screenshot": {
+        "document": "venom-gold-resize.png",
+        "bytes": 435946,
+        "sha256": "79ef6d5732412d3e88c6574d89e9a3cbbe1909b5ecfed39157ea11b1a3c40810"
+      },
+      "qualification": "Actual native sprite draw callbacks plus screenshot."
+    },
+    {
+      "entry": "integrated",
+      "uid": "completion__mk2_mgs4",
+      "costumes": [
+        "original",
+        "original"
+      ],
+      "nativeFacingRequests": [
+        1,
+        -1
+      ],
+      "portraitStates": [
+        "ready",
+        "ready"
+      ],
+      "actualPixelSHA256": [
+        "608f2f921aa02233445caa1ae2a7bef498138a585162108927814cd1f7993a74",
+        "511c1398cb82254cc9bcc4e72f531e0a81947bfbb7ce64472d67a0157b6f01a5"
+      ],
+      "sources": [
+        null,
+        null
+      ],
+      "screenshot": {
+        "document": "mkii-two-native-faces.png",
+        "bytes": 538516,
+        "sha256": "91691f1cd7baff8f76343ef7df23e93948b12871aa94e7870dc164bba5c23804"
+      },
+      "qualification": "Actual machine capture plus facade request; not a certificate from facade alone."
+    },
+    {
+      "entry": "integrated",
+      "uid": "pass19__dwarf_gekko_humanoid_mgr",
+      "costumes": [
+        "original",
+        "original"
+      ],
+      "nativeFacingRequests": [
+        1,
+        -1
+      ],
+      "portraitStates": [
+        "ready",
+        "ready"
+      ],
+      "actualPixelSHA256": [
+        "9d409e221dc7b1584f5ecbe3222bfe87bc0c29a409878cb30a1e87e575fd99bd",
+        "8131bcaf9443485ad635a99d0586b45c7ebe1472b19c1e79a6f4aac3ae3bb717"
+      ],
+      "sources": [
+        null,
+        null
+      ],
+      "screenshot": {
+        "document": "double-tripod-shared-two-faces.png",
+        "bytes": 413655,
+        "sha256": "82af69e49d5b9bbfdb3981663b1a2ddaf49543e1c4f33ae609c2be7a58a76c29"
+      },
+      "qualification": "Actual machine capture plus facade request; not a certificate from facade alone."
+    }
+  ],
+  "actualBrowserRuntimeByteEvidence": [
+    {
+      "entry": "standalone",
+      "url": "https://shadow-codec-ops.vercel.app/cqc/modules/unified-versus-v055.html",
+      "status": 200,
+      "bytes": 3486378,
+      "sha256": "5b54ec893527adf9b7c0b8bb1d3e1eebd15efe08be493fe2352c3fa2305ff907",
+      "expectedSHA256": "5b54ec893527adf9b7c0b8bb1d3e1eebd15efe08be493fe2352c3fa2305ff907",
+      "expectedBytes": 3486378,
+      "exact": true
+    },
+    {
+      "entry": "standalone",
+      "url": "https://shadow-codec-ops.vercel.app/cqc/src/cqc-pass18-machine-bridge.js",
+      "status": 200,
+      "bytes": 47623,
+      "sha256": "edbc6c98d7937652f47698b7a61888561c19b2564a6655adac87029b8609e0fb",
+      "expectedSHA256": "edbc6c98d7937652f47698b7a61888561c19b2564a6655adac87029b8609e0fb",
+      "expectedBytes": 47623,
+      "exact": true
+    },
+    {
+      "entry": "standalone",
+      "url": "https://shadow-codec-ops.vercel.app/cqc/src/cqc-pass19-machine-costume-routing.js",
+      "status": 200,
+      "bytes": 5988,
+      "sha256": "25b41058cb15f07281139b10205284eebb1578b3c3a3c53598bd46eb449b6a8b",
+      "expectedSHA256": "25b41058cb15f07281139b10205284eebb1578b3c3a3c53598bd46eb449b6a8b",
+      "expectedBytes": 5988,
+      "exact": true
+    },
+    {
+      "entry": "standalone",
+      "url": "https://shadow-codec-ops.vercel.app/cqc/src/cqc-pass19-machine-pixel-style.js",
+      "status": 200,
+      "bytes": 7761,
+      "sha256": "6b78329535985954f261d821dd3e30ac344293d75ef92d7ad971fa49044923cc",
+      "expectedSHA256": "6b78329535985954f261d821dd3e30ac344293d75ef92d7ad971fa49044923cc",
+      "expectedBytes": 7761,
+      "exact": true
+    },
+    {
+      "entry": "standalone",
+      "url": "https://shadow-codec-ops.vercel.app/cqc/src/cqc-pass21-native-machine-costume-registration.js",
+      "status": 200,
+      "bytes": 12453,
+      "sha256": "d854b888a3fb9d0693a6ebb6d56b892c28d1e8d9594d24afc6300856cee61df8",
+      "expectedSHA256": "d854b888a3fb9d0693a6ebb6d56b892c28d1e8d9594d24afc6300856cee61df8",
+      "expectedBytes": 12453,
+      "exact": true
+    },
+    {
+      "entry": "standalone",
+      "url": "https://shadow-codec-ops.vercel.app/cqc/src/cqc-pass40-fenrir-native-v1.js",
+      "status": 200,
+      "bytes": 16333,
+      "sha256": "5fdd3539d8bfb94243085f98780012fd1ada1fd427b455f4290e2ea669f32119",
+      "expectedSHA256": "5fdd3539d8bfb94243085f98780012fd1ada1fd427b455f4290e2ea669f32119",
+      "expectedBytes": 16333,
+      "exact": true
+    },
+    {
+      "entry": "integrated",
+      "url": "https://shadow-codec-ops.vercel.app/cqc/modules/unified-versus-v055.html",
+      "status": 200,
+      "bytes": 3486378,
+      "sha256": "5b54ec893527adf9b7c0b8bb1d3e1eebd15efe08be493fe2352c3fa2305ff907",
+      "expectedSHA256": "5b54ec893527adf9b7c0b8bb1d3e1eebd15efe08be493fe2352c3fa2305ff907",
+      "expectedBytes": 3486378,
+      "exact": true
+    },
+    {
+      "entry": "integrated",
+      "url": "https://shadow-codec-ops.vercel.app/cqc/src/cqc-pass18-machine-bridge.js",
+      "status": 200,
+      "bytes": 47623,
+      "sha256": "edbc6c98d7937652f47698b7a61888561c19b2564a6655adac87029b8609e0fb",
+      "expectedSHA256": "edbc6c98d7937652f47698b7a61888561c19b2564a6655adac87029b8609e0fb",
+      "expectedBytes": 47623,
+      "exact": true
+    },
+    {
+      "entry": "integrated",
+      "url": "https://shadow-codec-ops.vercel.app/cqc/src/cqc-pass19-machine-costume-routing.js",
+      "status": 200,
+      "bytes": 5988,
+      "sha256": "25b41058cb15f07281139b10205284eebb1578b3c3a3c53598bd46eb449b6a8b",
+      "expectedSHA256": "25b41058cb15f07281139b10205284eebb1578b3c3a3c53598bd46eb449b6a8b",
+      "expectedBytes": 5988,
+      "exact": true
+    },
+    {
+      "entry": "integrated",
+      "url": "https://shadow-codec-ops.vercel.app/cqc/src/cqc-pass19-machine-pixel-style.js",
+      "status": 200,
+      "bytes": 7761,
+      "sha256": "6b78329535985954f261d821dd3e30ac344293d75ef92d7ad971fa49044923cc",
+      "expectedSHA256": "6b78329535985954f261d821dd3e30ac344293d75ef92d7ad971fa49044923cc",
+      "expectedBytes": 7761,
+      "exact": true
+    },
+    {
+      "entry": "integrated",
+      "url": "https://shadow-codec-ops.vercel.app/cqc/src/cqc-pass21-native-machine-costume-registration.js",
+      "status": 200,
+      "bytes": 12453,
+      "sha256": "d854b888a3fb9d0693a6ebb6d56b892c28d1e8d9594d24afc6300856cee61df8",
+      "expectedSHA256": "d854b888a3fb9d0693a6ebb6d56b892c28d1e8d9594d24afc6300856cee61df8",
+      "expectedBytes": 12453,
+      "exact": true
+    },
+    {
+      "entry": "integrated",
+      "url": "https://shadow-codec-ops.vercel.app/cqc/src/cqc-pass40-fenrir-native-v1.js",
+      "status": 200,
+      "bytes": 16333,
+      "sha256": "5fdd3539d8bfb94243085f98780012fd1ada1fd427b455f4290e2ea669f32119",
+      "expectedSHA256": "5fdd3539d8bfb94243085f98780012fd1ada1fd427b455f4290e2ea669f32119",
+      "expectedBytes": 16333,
+      "exact": true
+    }
+  ],
+  "recordedPreviewCancellations": [
+    {
+      "entry": "standalone",
+      "url": "https://shadow-codec-ops.vercel.app/cqc/assets/combat-costumes-pass21/core__venom/tuxedo/metadata-v1.json",
+      "type": "Fetch",
+      "canceled": true,
+      "errorText": "net::ERR_ABORTED",
+      "knownRegisteredUID": "core__venom",
+      "knownRegisteredCostume": "tuxedo",
+      "registeredSourceSHA256": null,
+      "selectedInThisSmoke": false,
+      "classification": "unused-registered-legacy-tuxedo-preview-explicitly-canceled",
+      "successfulLoadClaimed": false
+    },
+    {
+      "entry": "integrated",
+      "url": "https://shadow-codec-ops.vercel.app/cqc/assets/combat-costumes-pass21/core__venom/tuxedo/right-v1.png",
+      "type": "Fetch",
+      "canceled": true,
+      "errorText": "net::ERR_ABORTED",
+      "knownRegisteredUID": "core__venom",
+      "knownRegisteredCostume": "tuxedo",
+      "registeredSourceSHA256": "31eda1da1e863189707b5d63f138e81e8db6675df28211274f3ca980719ddadf",
+      "selectedInThisSmoke": false,
+      "classification": "unused-registered-legacy-tuxedo-preview-explicitly-canceled",
+      "successfulLoadClaimed": false
+    },
+    {
+      "entry": "integrated",
+      "url": "https://shadow-codec-ops.vercel.app/cqc/assets/combat-costumes-pass21/core__venom/tuxedo/left-v1.png",
+      "type": "Fetch",
+      "canceled": true,
+      "errorText": "net::ERR_ABORTED",
+      "knownRegisteredUID": "core__venom",
+      "knownRegisteredCostume": "tuxedo",
+      "registeredSourceSHA256": "86c8c47869adc6463950ce0f3e9847cda7412942198df4cc0531725044aee7e9",
+      "selectedInThisSmoke": false,
+      "classification": "unused-registered-legacy-tuxedo-preview-explicitly-canceled",
+      "successfulLoadClaimed": false
+    }
+  ],
+  "qualifications": [
+    "Two cold owned Chromium profiles used the canonical production after actual APIREADY/id/resolvedGitSHA. No localHTTPserver, response overlay, hiddengamecontrol, engine/storage injection or TLS-ignore flag was used. Only a task-owned profile trusted the configured platformCA.",
+    "The actual portrait sprite draw callbacks requested independently authored right for P1 and left for P2. The QA agent viewed actual production captures of Venom, golden-armP1, MkII and sharedDoubleTripod. Machine facade observations are corroborated by screenshots, not treated as sufficient by themselves.",
+    "Both flows performed real character/wardrobe/settings/stage controls, a naturally advancing match, exact pause, resume, reselection and return to command. Existing P43 golden-arm costume was exercised; no new P44 costume was installed or certified in this smoke.",
+    "The integrated raw receipt remains FAILED_OR_INCOMPLETE. Its final assertion rejected two explicitly canceled legacyVenomtuxedoPNG previews because the original classifier read only explicitasset.url and omitted implicit localasset.file routes. Their exact registered paths and pins are independently reconciled here; neither request is called loaded or successful.",
+    "The standalone raw receipt retains its qualifiedPASSstatus, one optionalfavicon404 and one canceled legacytuxedometadata preview. Raw observations are never overwritten or upgraded.",
+    "Finite orientation/flow evidence is not a whole-roster visual inspection, a repeat of all723unit tests, or a canonical1:1retail art/movement certificate."
+  ]
+}

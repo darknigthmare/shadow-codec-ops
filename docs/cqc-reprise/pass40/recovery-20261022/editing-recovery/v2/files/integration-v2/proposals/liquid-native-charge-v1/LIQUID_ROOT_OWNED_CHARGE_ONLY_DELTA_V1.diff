@@ -1,0 +1,13 @@
+--- @PROJECT_ROOT@/integration-v2/proposals/native-family-guard-v3/cqc-sprite-renderer.proposed-v3.js
++++ @PROJECT_ROOT@/integration-v2/proposals/liquid-native-charge-v1/cqc-sprite-renderer.liquid-charge-proposed-v1.js
+@@ -278,6 +278,10 @@
+         if(kind==='projectile' && entry.uid==='core__ocelot' && slot==='specialDown' && tag==='ballistic' && mapped==='deploy' && entry.actions.deploy) action='deploy';
+         else if(kind==='projectile') action=['ballistic','precision','tranq','fire'].includes(tag)?'shoot':['blade','knife','boomerang'].includes(tag)?'blade':'deploy';
+         else if(kind==='melee' && entry.uid==='core__liquid' && slot==='specialDown' && tag==='strike' && mapped==='low' && entry.actions.low) action='low';
++        // Only Root-owned, complete P40 Liquid nextgen art may use its authored unarmed charge.
++        else if(kind==='melee' && entry.uid==='core__liquid' && ['special','super'].includes(slot) && tag==='strike' && mapped==='charge'
++          && entry.costumeConcept?.family==='nextgen' && hasReviewedPass40Roll(entry)
++          && entry.phaseMap?.charge?.active?.length>0 && entry.phaseMap.charge.active.every(index=>entry.actions?.charge?.frames?.[index]?.physicalPoseIndex===11)) action='charge';
+         else if(kind==='melee') action=tag==='grapple'||slot==='throw'?'throw':['blade','knife','machete','spear','tentacle'].includes(tag)?'blade':slot==='low'?'low':slot==='heavy'?'heavy':'punch';
+         else if(kind==='reload') action='reload';
+         else if(kind==='recover') action='recover';

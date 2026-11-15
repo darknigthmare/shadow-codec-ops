@@ -1,0 +1,2244 @@
+{
+  "supersedes": {
+    "path": "/workspace/cqc-p43-resume-20261025/qa/actual-current-contracts-v1/P43_CORE_MOVES_STATIC_DERIVATION_CURRENT_V1.json",
+    "sha256": "341690125f227014fd877a1e859488665d8ea7c8f43989b4f27bdc5cf61ccb18",
+    "reason": "Correct supplemental RaidenMGS2 gun normals: exact getMove branch returns generic MOVES[name]+blade:false, without fighter overrides. Main slots and gun SOCOM/reload stay exact."
+  },
+  "schema": "cqc.p43.core-moves-static-ast-derivation/1",
+  "capturedAtUTC": "2026-10-25T07:02:39.777Z",
+  "source": {
+    "path": "/workspace/cqc-pass21-application/public/cqc/modules/core-v032.html",
+    "bytes": 1571725,
+    "sha256": "a9c20d4a93e558d3f8262b7376115a9e35aaa9cc482f968a06d6d9ccef074aef"
+  },
+  "runtimeRosterCapture": {
+    "path": "/workspace/cqc-p43-resume-20261025/qa/actual-current-contracts-v1/core-current-contracts-v1.json",
+    "bytes": 5243082,
+    "sha256": "9f2d6717f0929c927128d4476ba1d459c5158813af7591d13a4418536047e7d3"
+  },
+  "parser": {
+    "name": "acorn",
+    "version": "8.15.0",
+    "programParsingOnly": true,
+    "executableProductCodeEvaluated": false,
+    "allowedDataNodes": [
+      "Literal",
+      "Identifier bound to move parameters or inspected literal expansion data",
+      "MemberExpression of inspected literal expansion data",
+      "Unary +/-/!",
+      "ArrayExpression",
+      "ObjectExpression/SpreadElement",
+      "CallExpression to exact inspected move data constructor only"
+    ]
+  },
+  "scriptRecords": [
+    {
+      "scriptNumber": 0,
+      "bytes": 44,
+      "sha256": "7020cbbc7f755b6aef241877c56d2a1b02a64e4526090cbae2f20c54567f62ca"
+    },
+    {
+      "scriptNumber": 1,
+      "bytes": 36,
+      "sha256": "5c9ec3b96fd9822c20d96a5b059dc7d69f8a3d6c285295691bba21f8baa99706"
+    },
+    {
+      "scriptNumber": 2,
+      "bytes": 36,
+      "sha256": "5c9ec3b96fd9822c20d96a5b059dc7d69f8a3d6c285295691bba21f8baa99706"
+    },
+    {
+      "scriptNumber": 3,
+      "bytes": 1409503,
+      "sha256": "7db922cdf1e9f54154feb91c8bde6b61b836e26c0d6344eff59871acc0987c96"
+    },
+    {
+      "scriptNumber": 4,
+      "bytes": 24273,
+      "sha256": "575537d999b540bdf32f46403ab315baddc154d998a39607c1ff46c3a336837c"
+    },
+    {
+      "scriptNumber": 5,
+      "bytes": 46858,
+      "sha256": "aeaa5c1a1cbd9893253f44176bf03b2c7e9835eb581c4379728cfc44a81a6b5b"
+    },
+    {
+      "scriptNumber": 6,
+      "bytes": 273,
+      "sha256": "a7a8353c2b3ae84e6dcf6fcac89894b79e099a35e5596b797b4a28fb200d9596"
+    },
+    {
+      "scriptNumber": 7,
+      "bytes": 362,
+      "sha256": "686f7aa693a2e9369e7a8dcf6433931fa1d9c946b43a9a38259d6f4e9aeeaf30"
+    }
+  ],
+  "declarationEvidence": {
+    "MOVES": {
+      "sha256": "ec148b1b0c27f9d969c3c76b41461019feac7edbcd42266ddc1f7a620a5a7206",
+      "scriptSHA256": "7db922cdf1e9f54154feb91c8bde6b61b836e26c0d6344eff59871acc0987c96",
+      "loc": {
+        "start": {
+          "line": 174,
+          "column": 6
+        },
+        "end": {
+          "line": 358,
+          "column": 1
+        }
+      }
+    },
+    "move": {
+      "sha256": "6887e9806f5d7e987452524870deabc04fdd85b5d7d40767c0d13af6bd9eeab1",
+      "scriptSHA256": "7db922cdf1e9f54154feb91c8bde6b61b836e26c0d6344eff59871acc0987c96",
+      "loc": {
+        "start": {
+          "line": 173,
+          "column": 6
+        },
+        "end": {
+          "line": 173,
+          "column": 185
+        }
+      }
+    },
+    "COMPLEMENTS024_DATA": {
+      "sha256": "ba06a33ff71f306299c682dd6b9b3418631083aceaf2118ff7b7f228c57017ce",
+      "scriptSHA256": "7db922cdf1e9f54154feb91c8bde6b61b836e26c0d6344eff59871acc0987c96",
+      "loc": {
+        "start": {
+          "line": 160,
+          "column": 6
+        },
+        "end": {
+          "line": 160,
+          "column": 5004
+        }
+      }
+    },
+    "COMPLEMENTS023_DATA": {
+      "sha256": "363bdc6c9da1f269161ba9d37116050e3c7d0a05fb7808bba745e7e010f4354e",
+      "scriptSHA256": "7db922cdf1e9f54154feb91c8bde6b61b836e26c0d6344eff59871acc0987c96",
+      "loc": {
+        "start": {
+          "line": 155,
+          "column": 6
+        },
+        "end": {
+          "line": 155,
+          "column": 12304
+        }
+      }
+    },
+    "EXPANSION022_DATA": {
+      "sha256": "eeed1a7a3db56379318c8ce621f8f3a45aef88491fee734b9473778250209cd8",
+      "scriptSHA256": "7db922cdf1e9f54154feb91c8bde6b61b836e26c0d6344eff59871acc0987c96",
+      "loc": {
+        "start": {
+          "line": 151,
+          "column": 6
+        },
+        "end": {
+          "line": 151,
+          "column": 14305
+        }
+      }
+    },
+    "FIGHTER_MOVES": {
+      "sha256": "15c4d406869889e02665107394b98e3aae1e382c58d9cd1122d6a78a504a8311",
+      "scriptSHA256": "7db922cdf1e9f54154feb91c8bde6b61b836e26c0d6344eff59871acc0987c96",
+      "loc": {
+        "start": {
+          "line": 84,
+          "column": 6
+        },
+        "end": {
+          "line": 148,
+          "column": 1
+        }
+      }
+    },
+    "ROSTER": {
+      "sha256": "4e38cf7a8e4c054bb0911d9c5a3bc92ec919aeabf73481c1274371359c9fb3ec",
+      "scriptSHA256": "7db922cdf1e9f54154feb91c8bde6b61b836e26c0d6344eff59871acc0987c96",
+      "loc": {
+        "start": {
+          "line": 13,
+          "column": 6
+        },
+        "end": {
+          "line": 82,
+          "column": 1
+        }
+      }
+    }
+  },
+  "branchingFunctionEvidence": {
+    "moveName": {
+      "text": "function moveName(f, action) {\n  if(f.zgLoadout==='spray')return action==='d'?(f.crouch?'zgSprayRefill':'zgSpray'):null;\n  if(f.zgLoadout==='fists'&&action==='d')return f.crouch?'zgBareHold':(f.facing>0?f.input?.left&&!f.input?.right:f.input?.right&&!f.input?.left)?'zgBareGuard':'zgBareHook';\n  if (action === 'a') return f.y > 0 ? 'airLight' : 'light';\n  if (action === 'b') return f.y > 0 ? 'airLight' : f.crouch ? 'launcher' : 'medium';\n  if (action === 'c') return f.y > 0 ? 'airHeavy' : f.crouch ? 'sweep' : 'heavy';\n  if (action === 'd') {\n if(f.id==='raiden_mgs2'){\n  if(f.crouch)return 'weaponSwitch';\n  if(f.stance==='gun')return (f.facing>0?f.input?.left&&!f.input?.right:f.input?.right&&!f.input?.left)?'reload':'socom';\n  return 'hfThrust';\n }\n const back=f.facing>0?f.input?.left&&!f.input?.right:f.input?.right&&!f.input?.left;\n if(!f.crouch&&back&&ROSTER[f.id].backSpecial)return ROSTER[f.id].backSpecial;\n return f.crouch?ROSTER[f.id].secondary:ROSTER[f.id].special;\n }\n  return ['throw','super'].includes(action) ? action : null;\n}",
+      "sha256": "470767dcb50f82514e51998fe8e4a1bc1c57b01eb45f2c4ef71945e00f6e10ca",
+      "loc": {
+        "start": {
+          "line": 423,
+          "column": 0
+        },
+        "end": {
+          "line": 440,
+          "column": 1
+        }
+      }
+    },
+    "getMove": {
+      "text": "function getMove(f,name) {\n if(name==='acPlay'&&ROSTER[f.id]?.cardDeck){\n  const key=f.attack?.name==='acPlay'&&f.attack.cardKey?f.attack.cardKey:f.cards?.hand[f.cards.selected??0];\n  const card=ACID_CARDS[key]||ACID_CARDS[ACID_DECKS[f.id][0]];\n  return {...MOVES[card.move],acidCard:key||ACID_DECKS[f.id][0],acidCost:card.cost};\n }\n const base={...MOVES[name],...(FIGHTER_MOVES[f.id]?.[name]||{})};\n if(f.zgLoadout==='fists'&&name==='super')return {...MOVES.super,startup:16,active:4,recovery:47,damage:2800,reach:146,level:'throw'};\n if(f.id==='raiden_mgs2'&&f.stance==='gun'&&['light','medium','heavy','airHeavy'].includes(name))return {...MOVES[name],blade:false};\n return base;\n}",
+      "sha256": "96584494996fbcc8cc58235367ce00c43d31ea70f772d617a84b48bcee8deeaa",
+      "loc": {
+        "start": {
+          "line": 359,
+          "column": 0
+        },
+        "end": {
+          "line": 369,
+          "column": 1
+        }
+      }
+    }
+  },
+  "assignmentEvidence": [
+    {
+      "target": "ROSTER",
+      "scriptNumber": 3,
+      "loc": {
+        "start": {
+          "line": 152,
+          "column": 0
+        },
+        "end": {
+          "line": 152,
+          "column": 46
+        }
+      },
+      "sha256": "a7609e4f1ad49edaaf59ad24f8b0630f84640988bdfba0ca6bd5da36aa43fdf5",
+      "keys": [
+        "snake_pw",
+        "kaz_pw",
+        "amanda_pw",
+        "snake_gz",
+        "raikov_mgs3",
+        "jonathan_mpo",
+        "snake_acid2",
+        "venus"
+      ]
+    },
+    {
+      "target": "FIGHTER_MOVES",
+      "scriptNumber": 3,
+      "loc": {
+        "start": {
+          "line": 153,
+          "column": 0
+        },
+        "end": {
+          "line": 153,
+          "column": 56
+        }
+      },
+      "sha256": "c676dc3c292f3fd23c5fdc4e4de9ab782c196c6e6cffefdcaf37e25c9356644a",
+      "keys": [
+        "snake_pw",
+        "kaz_pw",
+        "amanda_pw",
+        "snake_gz",
+        "raikov_mgs3",
+        "jonathan_mpo",
+        "snake_acid2",
+        "venus"
+      ]
+    },
+    {
+      "target": "ROSTER",
+      "scriptNumber": 3,
+      "loc": {
+        "start": {
+          "line": 156,
+          "column": 0
+        },
+        "end": {
+          "line": 156,
+          "column": 48
+        }
+      },
+      "sha256": "7835122e1516068452784dbe9b411330853f818df7fdb9f2a5f4cc324c9b6381",
+      "keys": [
+        "snake_sr",
+        "john_sr",
+        "nick_sr",
+        "bigboss_sr"
+      ]
+    },
+    {
+      "target": "FIGHTER_MOVES",
+      "scriptNumber": 3,
+      "loc": {
+        "start": {
+          "line": 157,
+          "column": 0
+        },
+        "end": {
+          "line": 157,
+          "column": 58
+        }
+      },
+      "sha256": "b8a408d6f2b1cde4120f54434f29f283715427318328bdaa0eaae5f4e85239c0",
+      "keys": [
+        "snake_sr",
+        "john_sr",
+        "nick_sr",
+        "bigboss_sr"
+      ]
+    },
+    {
+      "target": "ROSTER",
+      "scriptNumber": 3,
+      "loc": {
+        "start": {
+          "line": 161,
+          "column": 0
+        },
+        "end": {
+          "line": 161,
+          "column": 48
+        }
+      },
+      "sha256": "62b9df063bd149302c3a7b445c42ee0ea754d06b12341fa981e5018ab46dcc97",
+      "keys": [
+        "ed_mgs4",
+        "jonathan_mgs4"
+      ]
+    },
+    {
+      "target": "FIGHTER_MOVES",
+      "scriptNumber": 3,
+      "loc": {
+        "start": {
+          "line": 162,
+          "column": 0
+        },
+        "end": {
+          "line": 162,
+          "column": 58
+        }
+      },
+      "sha256": "3786a663783e7e28833c0b6a803e3d2b85ede20b8251d641cb49d26bf86065f1",
+      "keys": [
+        "ed_mgs4",
+        "jonathan_mgs4"
+      ]
+    },
+    {
+      "target": "MOVES",
+      "scriptNumber": 3,
+      "loc": {
+        "start": {
+          "line": 1513,
+          "column": 0
+        },
+        "end": {
+          "line": 1513,
+          "column": 44
+        }
+      },
+      "sha256": "f80144b057155215020fbe16fde9396c282348e98e2faf86a91a9be743009fbd",
+      "keys": [
+        "x22_snake_pw_D",
+        "x22_snake_pw_Down",
+        "x22_snake_pw_Back",
+        "x22_kaz_pw_D",
+        "x22_kaz_pw_Down",
+        "x22_kaz_pw_Back",
+        "x22_amanda_pw_D",
+        "x22_amanda_pw_Down",
+        "x22_amanda_pw_Back",
+        "x22_snake_gz_D",
+        "x22_snake_gz_Down",
+        "x22_snake_gz_Back",
+        "x22_raikov_mgs3_D",
+        "x22_raikov_mgs3_Down",
+        "x22_raikov_mgs3_Back",
+        "x22_jonathan_mpo_D",
+        "x22_jonathan_mpo_Down",
+        "x22_jonathan_mpo_Back",
+        "ac2Carbine",
+        "ac2Shuriken"
+      ]
+    },
+    {
+      "target": "MOVES",
+      "scriptNumber": 3,
+      "loc": {
+        "start": {
+          "line": 1515,
+          "column": 0
+        },
+        "end": {
+          "line": 1515,
+          "column": 46
+        }
+      },
+      "sha256": "5fa48c368cc0b48dbfa67e8c85c815ef802eea5dd52cb6dff0285bbdbdd7f9bf",
+      "keys": [
+        "sr_snake_sr_D",
+        "sr_snake_sr_Down",
+        "sr_snake_sr_Back",
+        "sr_john_sr_D",
+        "sr_john_sr_Down",
+        "sr_john_sr_Back",
+        "sr_nick_sr_D",
+        "sr_nick_sr_Down",
+        "sr_nick_sr_Back",
+        "sr_bigboss_sr_D",
+        "sr_bigboss_sr_Down",
+        "sr_bigboss_sr_Back"
+      ]
+    },
+    {
+      "target": "MOVES",
+      "scriptNumber": 3,
+      "loc": {
+        "start": {
+          "line": 1517,
+          "column": 0
+        },
+        "end": {
+          "line": 1517,
+          "column": 46
+        }
+      },
+      "sha256": "874050343b41252b54bd71ef01f2f711c38c04fc95ca2b155a31f93a2965b724",
+      "keys": [
+        "ed_mgs4_aim",
+        "ed_mgs4_close",
+        "ed_mgs4_reload",
+        "jonathan_mgs4_aim",
+        "jonathan_mgs4_close",
+        "jonathan_mgs4_reload"
+      ]
+    },
+    {
+      "target": "MOVES",
+      "scriptNumber": 3,
+      "loc": {
+        "start": {
+          "line": 2007,
+          "column": 0
+        },
+        "end": {
+          "line": 2012,
+          "column": 2
+        }
+      },
+      "sha256": "f4eb8860d373a4ce5b598948ed0ed4c0c76306eb9d55d338862c0497213a671a",
+      "keys": [
+        "txPlant",
+        "txReload",
+        "txChaff",
+        "txRation"
+      ]
+    },
+    {
+      "target": "MOVES",
+      "scriptNumber": 3,
+      "loc": {
+        "start": {
+          "line": 2187,
+          "column": 0
+        },
+        "end": {
+          "line": 2193,
+          "column": 2
+        }
+      },
+      "sha256": "e605e461325b5ab0ec355b73faa8570ea896dc6b82ce0e1fac24225ed20d34de",
+      "keys": [
+        "mgdShort",
+        "mgdLong",
+        "mgdReload",
+        "mgdRation",
+        "mgdRoll"
+      ]
+    },
+    {
+      "target": "MOVES",
+      "scriptNumber": 3,
+      "loc": {
+        "start": {
+          "line": 2397,
+          "column": 0
+        },
+        "end": {
+          "line": 2397,
+          "column": 240
+        }
+      },
+      "sha256": "f4bbbb3e0b324d908bcd70c41c321033307b3f1f68e9d60bb72617cf044a221c",
+      "keys": [
+        "zkRocket",
+        "zkSupply",
+        "zkRation",
+        "zkSocom"
+      ]
+    },
+    {
+      "target": "MOVES",
+      "scriptNumber": 3,
+      "loc": {
+        "start": {
+          "line": 2538,
+          "column": 0
+        },
+        "end": {
+          "line": 2538,
+          "column": 215
+        }
+      },
+      "sha256": "7e7db3289b61a689615601c88657728186acb259d8c6202f930ab0d0f55c683a",
+      "keys": [
+        "shgRpg",
+        "shgReload",
+        "shgSignal",
+        "shgRation"
+      ]
+    },
+    {
+      "target": "MOVES",
+      "scriptNumber": 3,
+      "loc": {
+        "start": {
+          "line": 2786,
+          "column": 0
+        },
+        "end": {
+          "line": 2786,
+          "column": 308
+        }
+      },
+      "sha256": "37c052ead3bc137fb02e4ea44675206c0a2ade5a89372d2bd31cf8260c48f411",
+      "keys": [
+        "harrierStinger",
+        "harrierSupply",
+        "harrierRation",
+        "harrierSocom",
+        "harrierClimb"
+      ]
+    },
+    {
+      "target": "MOVES",
+      "scriptNumber": 3,
+      "loc": {
+        "start": {
+          "line": 2935,
+          "column": 0
+        },
+        "end": {
+          "line": 2935,
+          "column": 352
+        }
+      },
+      "sha256": "3f869d9f6ad031491a898b7f39b1b03b743fe3f4837d2c0f988c88ec392a9ca0",
+      "keys": [
+        "ganderPlant",
+        "ganderNikita",
+        "ganderReload",
+        "ganderRation",
+        "ganderChaff",
+        "ganderGuide"
+      ]
+    },
+    {
+      "target": "MOVES",
+      "scriptNumber": 3,
+      "loc": {
+        "start": {
+          "line": 3111,
+          "column": 0
+        },
+        "end": {
+          "line": 3115,
+          "column": 2
+        }
+      },
+      "sha256": "92735be37c492c7996c98dddf49e75805fe1edb5f39d809412ed3bd59c613d9c",
+      "keys": [
+        "raxaRocket",
+        "raxaReload",
+        "icbmgRocket",
+        "icbmgReload",
+        "icbmgAssist",
+        "portableRation",
+        "portableChaff"
+      ]
+    },
+    {
+      "target": "MOVES",
+      "scriptNumber": 3,
+      "loc": {
+        "start": {
+          "line": 3332,
+          "column": 0
+        },
+        "end": {
+          "line": 3335,
+          "column": 2
+        }
+      },
+      "sha256": "3ef4c9e57e108ffd3a074d901a87d1946d4f523fbebadf6f51d73c2decf9d8c1",
+      "keys": [
+        "sahelRocket",
+        "sahelRifle",
+        "sahelSupply",
+        "sahelMedical"
+      ]
+    },
+    {
+      "target": "MOVES",
+      "scriptNumber": 3,
+      "loc": {
+        "start": {
+          "line": 3531,
+          "column": 0
+        },
+        "end": {
+          "line": 3531,
+          "column": 211
+        }
+      },
+      "sha256": "7c0579802d6811018f07a37e8258ccf81e0c6892ea6d0333082f42f01457fa0a",
+      "keys": [
+        "pwRocket",
+        "pwRifle",
+        "pwReload",
+        "pwRation"
+      ]
+    }
+  ],
+  "allMoveDataCount": 328,
+  "allFighterOverrideCount": 95,
+  "entries": {
+    "core__snake": {
+      "id": "snake",
+      "fighter": {
+        "id": "snake",
+        "name": "NAKED SNAKE",
+        "subtitle": "SNAKE EATER",
+        "era": "mgs3",
+        "speed": 5,
+        "color": "#90a875",
+        "drive": "Entrée CQC / grenade",
+        "special": "rush",
+        "secondary": "grenade",
+        "resource": {
+          "name": "GRENADES",
+          "max": 2,
+          "start": 2,
+          "regen": 0
+        },
+        "archetype": "CQC / CONTRÔLE DU SOL",
+        "tip": "D ferme la distance. Bas + D lance une grenade à retardement : deux par manche. Une grenade au sol reste dangereuse après interruption.",
+        "rival": "boss",
+        "stage": "mgs3-rokovoj-bereg-champ-de-fleurs"
+      },
+      "slots": {
+        "light": {
+          "moveName": "light",
+          "move": {
+            "startup": 5,
+            "active": 3,
+            "recovery": 12,
+            "damage": 360,
+            "reach": 108,
+            "level": "mid",
+            "stun": 23,
+            "blockstun": 12,
+            "push": 16,
+            "rank": 1
+          }
+        },
+        "medium": {
+          "moveName": "medium",
+          "move": {
+            "startup": 9,
+            "active": 4,
+            "recovery": 17,
+            "damage": 620,
+            "reach": 147,
+            "level": "mid",
+            "stun": 29,
+            "blockstun": 17,
+            "push": 24,
+            "rank": 2
+          }
+        },
+        "heavy": {
+          "moveName": "heavy",
+          "move": {
+            "startup": 16,
+            "active": 5,
+            "recovery": 25,
+            "damage": 940,
+            "reach": 188,
+            "level": "mid",
+            "stun": 35,
+            "blockstun": 21,
+            "push": 45,
+            "rank": 3
+          }
+        },
+        "low": {
+          "moveName": "sweep",
+          "move": {
+            "startup": 14,
+            "active": 5,
+            "recovery": 25,
+            "damage": 800,
+            "reach": 165,
+            "level": "low",
+            "stun": 38,
+            "blockstun": 12,
+            "push": 52,
+            "rank": 3
+          }
+        },
+        "throw": {
+          "moveName": "throw",
+          "move": {
+            "startup": 6,
+            "active": 2,
+            "recovery": 28,
+            "damage": 1150,
+            "reach": 88,
+            "level": "throw",
+            "stun": 45,
+            "blockstun": 12,
+            "push": 115,
+            "rank": 4
+          }
+        },
+        "special": {
+          "moveName": "rush",
+          "move": {
+            "startup": 12,
+            "active": 6,
+            "recovery": 25,
+            "damage": 790,
+            "reach": 138,
+            "level": "mid",
+            "stun": 32,
+            "blockstun": 12,
+            "push": 34,
+            "rank": 4,
+            "travel": 7
+          }
+        },
+        "specialDown": {
+          "moveName": "grenade",
+          "move": {
+            "startup": 21,
+            "active": 1,
+            "recovery": 31,
+            "damage": 1170,
+            "reach": 0,
+            "level": "mid",
+            "stun": 23,
+            "blockstun": 12,
+            "push": 16,
+            "rank": 4,
+            "resourceCost": 1,
+            "projectile": {
+              "speed": 7,
+              "vy": 8,
+              "range": 1100,
+              "size": 8,
+              "kind": "grenade",
+              "fuse": 62
+            }
+          }
+        },
+        "super": {
+          "moveName": "super",
+          "move": {
+            "startup": 15,
+            "active": 7,
+            "recovery": 37,
+            "damage": 2200,
+            "reach": 195,
+            "level": "mid",
+            "stun": 48,
+            "blockstun": 12,
+            "push": 120,
+            "rank": 5,
+            "cost": 50,
+            "launch": 8,
+            "travel": 5
+          }
+        }
+      },
+      "derivation": "AST data constructor move(...), source-ordered Object.assign data appends, then MOVES[name] + FIGHTER_MOVES[id][name] merge from current source. Initial/default loadout only in slots; explicit RaidenMGS2 gun variants are separate."
+    },
+    "core__raiden": {
+      "id": "raiden",
+      "fighter": {
+        "id": "raiden",
+        "name": "RAIDEN",
+        "subtitle": "REVENGEANCE / CYBORG",
+        "era": "mgr",
+        "speed": 5.5,
+        "color": "#85d9ee",
+        "drive": "Ruée HF / parade / suractivation",
+        "special": "bladeRush",
+        "secondary": "ripper",
+        "backSpecial": "bladeParry",
+        "resource": {
+          "name": "ÉNERGIE",
+          "max": 100,
+          "start": 100,
+          "regen": 0.1
+        },
+        "archetype": "LAME / OFFENSIVE",
+        "tip": "Arrière + D : parade de mêlée pour 15 énergie, seulement 10 images actives ; les prises et Supers la battent. Une réussite restitue 20 énergie. D dépense 20 énergie et coupe les tirs simples dans sa fenêtre active. Bas + D dépense 50 TACTIC pour renforcer brièvement les dégâts.",
+        "rival": "sam",
+        "stage": "mgr-denver-avenue"
+      },
+      "slots": {
+        "light": {
+          "moveName": "light",
+          "move": {
+            "startup": 5,
+            "active": 3,
+            "recovery": 12,
+            "damage": 345,
+            "reach": 128,
+            "level": "mid",
+            "stun": 23,
+            "blockstun": 12,
+            "push": 16,
+            "rank": 1
+          }
+        },
+        "medium": {
+          "moveName": "medium",
+          "move": {
+            "startup": 9,
+            "active": 4,
+            "recovery": 17,
+            "damage": 625,
+            "reach": 194,
+            "level": "mid",
+            "stun": 29,
+            "blockstun": 17,
+            "push": 24,
+            "rank": 2,
+            "blade": true
+          }
+        },
+        "heavy": {
+          "moveName": "heavy",
+          "move": {
+            "startup": 19,
+            "active": 5,
+            "recovery": 25,
+            "damage": 965,
+            "reach": 256,
+            "level": "mid",
+            "stun": 35,
+            "blockstun": 21,
+            "push": 45,
+            "rank": 3,
+            "blade": true
+          }
+        },
+        "low": {
+          "moveName": "sweep",
+          "move": {
+            "startup": 14,
+            "active": 5,
+            "recovery": 25,
+            "damage": 800,
+            "reach": 165,
+            "level": "low",
+            "stun": 38,
+            "blockstun": 12,
+            "push": 52,
+            "rank": 3
+          }
+        },
+        "throw": {
+          "moveName": "throw",
+          "move": {
+            "startup": 6,
+            "active": 2,
+            "recovery": 28,
+            "damage": 1150,
+            "reach": 88,
+            "level": "throw",
+            "stun": 45,
+            "blockstun": 12,
+            "push": 115,
+            "rank": 4
+          }
+        },
+        "special": {
+          "moveName": "bladeRush",
+          "move": {
+            "startup": 12,
+            "active": 6,
+            "recovery": 28,
+            "damage": 890,
+            "reach": 210,
+            "level": "mid",
+            "stun": 34,
+            "blockstun": 12,
+            "push": 16,
+            "rank": 4,
+            "resourceCost": 20,
+            "travel": 7,
+            "blade": true,
+            "cut": true
+          }
+        },
+        "specialDown": {
+          "moveName": "ripper",
+          "move": {
+            "startup": 1,
+            "active": 1,
+            "recovery": 29,
+            "damage": 0,
+            "reach": 0,
+            "level": "mid",
+            "stun": 23,
+            "blockstun": 12,
+            "push": 16,
+            "rank": 0,
+            "cost": 50,
+            "utility": "ripper"
+          }
+        },
+        "specialBack": {
+          "moveName": "bladeParry",
+          "move": {
+            "startup": 3,
+            "active": 10,
+            "recovery": 28,
+            "damage": 0,
+            "reach": 0,
+            "level": "mid",
+            "stun": 23,
+            "blockstun": 12,
+            "push": 16,
+            "rank": 0,
+            "resourceCost": 15,
+            "utility": "bladeParry"
+          }
+        },
+        "super": {
+          "moveName": "super",
+          "move": {
+            "startup": 15,
+            "active": 7,
+            "recovery": 37,
+            "damage": 2550,
+            "reach": 310,
+            "level": "mid",
+            "stun": 48,
+            "blockstun": 12,
+            "push": 120,
+            "rank": 5,
+            "cost": 50,
+            "launch": 8,
+            "blade": true,
+            "travel": 5
+          }
+        }
+      },
+      "derivation": "AST data constructor move(...), source-ordered Object.assign data appends, then MOVES[name] + FIGHTER_MOVES[id][name] merge from current source. Initial/default loadout only in slots; explicit RaidenMGS2 gun variants are separate."
+    },
+    "core__sam": {
+      "id": "sam",
+      "fighter": {
+        "id": "sam",
+        "name": "JETSTREAM SAM",
+        "subtitle": "REVENGEANCE / MURASAMA",
+        "era": "mgr",
+        "speed": 4.5,
+        "color": "#ec8c91",
+        "drive": "Dégainé / provocation",
+        "special": "iai",
+        "secondary": "taunt",
+        "resource": {
+          "name": "CONCENTRATION",
+          "max": 1,
+          "start": 0,
+          "regen": 0
+        },
+        "archetype": "PORTÉE / PUNITION",
+        "tip": "D prépare une longue taille au dégainé, très punissable à vide. Bas + D renforce la prochaine attaque en vous exposant pendant 60 images.",
+        "rival": "raiden",
+        "stage": "mgr-badlands-duel-sam"
+      },
+      "slots": {
+        "light": {
+          "moveName": "light",
+          "move": {
+            "startup": 6,
+            "active": 3,
+            "recovery": 12,
+            "damage": 385,
+            "reach": 122,
+            "level": "mid",
+            "stun": 23,
+            "blockstun": 12,
+            "push": 16,
+            "rank": 1
+          }
+        },
+        "medium": {
+          "moveName": "medium",
+          "move": {
+            "startup": 11,
+            "active": 4,
+            "recovery": 17,
+            "damage": 690,
+            "reach": 205,
+            "level": "mid",
+            "stun": 29,
+            "blockstun": 17,
+            "push": 24,
+            "rank": 2,
+            "blade": true
+          }
+        },
+        "heavy": {
+          "moveName": "heavy",
+          "move": {
+            "startup": 23,
+            "active": 5,
+            "recovery": 25,
+            "damage": 1120,
+            "reach": 278,
+            "level": "mid",
+            "stun": 35,
+            "blockstun": 21,
+            "push": 45,
+            "rank": 3,
+            "blade": true
+          }
+        },
+        "low": {
+          "moveName": "sweep",
+          "move": {
+            "startup": 14,
+            "active": 5,
+            "recovery": 25,
+            "damage": 800,
+            "reach": 165,
+            "level": "low",
+            "stun": 38,
+            "blockstun": 12,
+            "push": 52,
+            "rank": 3
+          }
+        },
+        "throw": {
+          "moveName": "throw",
+          "move": {
+            "startup": 6,
+            "active": 2,
+            "recovery": 28,
+            "damage": 1150,
+            "reach": 88,
+            "level": "throw",
+            "stun": 45,
+            "blockstun": 12,
+            "push": 115,
+            "rank": 4
+          }
+        },
+        "special": {
+          "moveName": "iai",
+          "move": {
+            "startup": 29,
+            "active": 5,
+            "recovery": 39,
+            "damage": 1440,
+            "reach": 305,
+            "level": "mid",
+            "stun": 38,
+            "blockstun": 12,
+            "push": 70,
+            "rank": 4,
+            "blade": true
+          }
+        },
+        "specialDown": {
+          "moveName": "taunt",
+          "move": {
+            "startup": 1,
+            "active": 1,
+            "recovery": 58,
+            "damage": 0,
+            "reach": 0,
+            "level": "mid",
+            "stun": 23,
+            "blockstun": 12,
+            "push": 16,
+            "rank": 0,
+            "utility": "focus"
+          }
+        },
+        "super": {
+          "moveName": "super",
+          "move": {
+            "startup": 23,
+            "active": 7,
+            "recovery": 44,
+            "damage": 2740,
+            "reach": 355,
+            "level": "mid",
+            "stun": 48,
+            "blockstun": 12,
+            "push": 120,
+            "rank": 5,
+            "cost": 50,
+            "launch": 8,
+            "blade": true
+          }
+        }
+      },
+      "derivation": "AST data constructor move(...), source-ordered Object.assign data appends, then MOVES[name] + FIGHTER_MOVES[id][name] merge from current source. Initial/default loadout only in slots; explicit RaidenMGS2 gun variants are separate."
+    },
+    "core__sundowner": {
+      "id": "sundowner",
+      "fighter": {
+        "id": "sundowner",
+        "name": "SUNDOWNER",
+        "subtitle": "REVENGEANCE / DESPERADO",
+        "era": "mgr",
+        "speed": 3.75,
+        "color": "#dca494",
+        "body": {
+          "width": 112,
+          "height": 264,
+          "crouch": 151,
+          "push": 55
+        },
+        "drive": "Bloodlust / boucliers réactifs",
+        "special": "bloodlust",
+        "secondary": "reactiveShield",
+        "resource": {
+          "name": "PLAQUES",
+          "max": 3,
+          "start": 3,
+          "regen": 0
+        },
+        "archetype": "BOUCLIERS / PRESSION LOURDE",
+        "tip": "D : cisaille Bloodlust. Bas + D ouvre les plaques de face : une interception consomme une plaque et une explosion menace la proximité. Bas + C contre les plaques les retire sans explosion. Trois plaques par manche, aucune recharge ; prises, dos, Supers et projectiles spéciaux passent.",
+        "rival": "raiden",
+        "stage": "mgr-world-marshal-toit"
+      },
+      "slots": {
+        "light": {
+          "moveName": "light",
+          "move": {
+            "startup": 8,
+            "active": 3,
+            "recovery": 12,
+            "damage": 470,
+            "reach": 133,
+            "level": "mid",
+            "stun": 23,
+            "blockstun": 12,
+            "push": 16,
+            "rank": 1
+          }
+        },
+        "medium": {
+          "moveName": "medium",
+          "move": {
+            "startup": 13,
+            "active": 4,
+            "recovery": 17,
+            "damage": 770,
+            "reach": 200,
+            "level": "mid",
+            "stun": 29,
+            "blockstun": 17,
+            "push": 24,
+            "rank": 2,
+            "blade": true
+          }
+        },
+        "heavy": {
+          "moveName": "heavy",
+          "move": {
+            "startup": 26,
+            "active": 5,
+            "recovery": 25,
+            "damage": 1280,
+            "reach": 275,
+            "level": "mid",
+            "stun": 35,
+            "blockstun": 21,
+            "push": 45,
+            "rank": 3,
+            "blade": true
+          }
+        },
+        "low": {
+          "moveName": "sweep",
+          "move": {
+            "startup": 14,
+            "active": 5,
+            "recovery": 25,
+            "damage": 800,
+            "reach": 165,
+            "level": "low",
+            "stun": 38,
+            "blockstun": 12,
+            "push": 52,
+            "rank": 3
+          }
+        },
+        "throw": {
+          "moveName": "throw",
+          "move": {
+            "startup": 9,
+            "active": 2,
+            "recovery": 28,
+            "damage": 1480,
+            "reach": 88,
+            "level": "throw",
+            "stun": 45,
+            "blockstun": 12,
+            "push": 115,
+            "rank": 4
+          }
+        },
+        "special": {
+          "moveName": "bloodlust",
+          "move": {
+            "startup": 24,
+            "active": 8,
+            "recovery": 42,
+            "damage": 1400,
+            "reach": 270,
+            "level": "mid",
+            "stun": 42,
+            "blockstun": 12,
+            "push": 68,
+            "rank": 4,
+            "blade": true
+          }
+        },
+        "specialDown": {
+          "moveName": "reactiveShield",
+          "move": {
+            "startup": 8,
+            "active": 40,
+            "recovery": 29,
+            "damage": 0,
+            "reach": 0,
+            "level": "mid",
+            "stun": 23,
+            "blockstun": 12,
+            "push": 16,
+            "rank": 0,
+            "requiredResource": 1,
+            "utility": "reactiveShield"
+          }
+        },
+        "super": {
+          "moveName": "super",
+          "move": {
+            "startup": 27,
+            "active": 8,
+            "recovery": 49,
+            "damage": 2900,
+            "reach": 303,
+            "level": "mid",
+            "stun": 48,
+            "blockstun": 12,
+            "push": 120,
+            "rank": 5,
+            "cost": 50,
+            "launch": 8,
+            "blade": true
+          }
+        }
+      },
+      "derivation": "AST data constructor move(...), source-ordered Object.assign data appends, then MOVES[name] + FIGHTER_MOVES[id][name] merge from current source. Initial/default loadout only in slots; explicit RaidenMGS2 gun variants are separate."
+    },
+    "core__raiden_mgs2": {
+      "id": "raiden_mgs2",
+      "fighter": {
+        "id": "raiden_mgs2",
+        "name": "RAIDEN — MGS2",
+        "subtitle": "SONS OF LIBERTY / SNEAKING SUIT",
+        "era": "mgs2",
+        "speed": 5.05,
+        "color": "#acc9d0",
+        "initialStance": "blade",
+        "drive": "Lame HF / SOCOM",
+        "special": "hfThrust",
+        "secondary": "weaponSwitch",
+        "resource": {
+          "name": "SOCOM",
+          "max": 8,
+          "start": 8,
+          "regen": 0
+        },
+        "archetype": "DEUX ARMES / ADAPTATION",
+        "tip": "Bas + D change d’arme à la fin de sa préparation. En lame : D taille et coupe les tirs simples. En SOCOM : D tire, Arrière + D recharge. Le changement ne rend pas de cartouches. Ce Raiden n’est pas le cyborg de Revengeance.",
+        "rival": "solidus",
+        "stage": "mgs2-federal-hall-toiture"
+      },
+      "slots": {
+        "light": {
+          "moveName": "light",
+          "move": {
+            "startup": 6,
+            "active": 3,
+            "recovery": 12,
+            "damage": 350,
+            "reach": 130,
+            "level": "mid",
+            "stun": 23,
+            "blockstun": 12,
+            "push": 16,
+            "rank": 1,
+            "blade": true
+          }
+        },
+        "medium": {
+          "moveName": "medium",
+          "move": {
+            "startup": 10,
+            "active": 4,
+            "recovery": 17,
+            "damage": 610,
+            "reach": 200,
+            "level": "mid",
+            "stun": 29,
+            "blockstun": 17,
+            "push": 24,
+            "rank": 2,
+            "blade": true
+          }
+        },
+        "heavy": {
+          "moveName": "heavy",
+          "move": {
+            "startup": 20,
+            "active": 5,
+            "recovery": 25,
+            "damage": 1010,
+            "reach": 266,
+            "level": "mid",
+            "stun": 35,
+            "blockstun": 21,
+            "push": 45,
+            "rank": 3,
+            "blade": true
+          }
+        },
+        "low": {
+          "moveName": "sweep",
+          "move": {
+            "startup": 14,
+            "active": 5,
+            "recovery": 25,
+            "damage": 800,
+            "reach": 165,
+            "level": "low",
+            "stun": 38,
+            "blockstun": 12,
+            "push": 52,
+            "rank": 3
+          }
+        },
+        "throw": {
+          "moveName": "throw",
+          "move": {
+            "startup": 6,
+            "active": 2,
+            "recovery": 28,
+            "damage": 1150,
+            "reach": 88,
+            "level": "throw",
+            "stun": 45,
+            "blockstun": 12,
+            "push": 115,
+            "rank": 4
+          }
+        },
+        "special": {
+          "moveName": "hfThrust",
+          "move": {
+            "startup": 17,
+            "active": 6,
+            "recovery": 31,
+            "damage": 1080,
+            "reach": 265,
+            "level": "mid",
+            "stun": 36,
+            "blockstun": 12,
+            "push": 52,
+            "rank": 4,
+            "blade": true,
+            "cut": true
+          }
+        },
+        "specialDown": {
+          "moveName": "weaponSwitch",
+          "move": {
+            "startup": 1,
+            "active": 1,
+            "recovery": 19,
+            "damage": 0,
+            "reach": 0,
+            "level": "mid",
+            "stun": 23,
+            "blockstun": 12,
+            "push": 16,
+            "rank": 0,
+            "utility": "weaponSwitch"
+          }
+        },
+        "super": {
+          "moveName": "super",
+          "move": {
+            "startup": 22,
+            "active": 6,
+            "recovery": 42,
+            "damage": 2440,
+            "reach": 320,
+            "level": "mid",
+            "stun": 48,
+            "blockstun": 12,
+            "push": 120,
+            "rank": 5,
+            "cost": 50,
+            "launch": 8,
+            "blade": true
+          }
+        }
+      },
+      "stanceVariants": {
+        "gun": {
+          "special": {
+            "moveName": "socom",
+            "move": {
+              "startup": 13,
+              "active": 1,
+              "recovery": 23,
+              "damage": 410,
+              "reach": 0,
+              "level": "mid",
+              "stun": 23,
+              "blockstun": 12,
+              "push": 16,
+              "rank": 4,
+              "resourceCost": 1,
+              "projectile": {
+                "speed": 22,
+                "range": 1250,
+                "size": 6,
+                "kind": "bullet"
+              }
+            }
+          },
+          "specialBack": {
+            "moveName": "reload",
+            "move": {
+              "startup": 1,
+              "active": 1,
+              "recovery": 65,
+              "damage": 0,
+              "reach": 0,
+              "level": "mid",
+              "stun": 23,
+              "blockstun": 12,
+              "push": 16,
+              "rank": 0,
+              "utility": "reload"
+            }
+          },
+          "normalOverrides": {
+            "light": {
+              "startup": 5,
+              "active": 3,
+              "recovery": 12,
+              "damage": 360,
+              "reach": 108,
+              "level": "mid",
+              "stun": 23,
+              "blockstun": 12,
+              "push": 16,
+              "rank": 1,
+              "blade": false
+            },
+            "medium": {
+              "startup": 9,
+              "active": 4,
+              "recovery": 17,
+              "damage": 620,
+              "reach": 147,
+              "level": "mid",
+              "stun": 29,
+              "blockstun": 17,
+              "push": 24,
+              "rank": 2,
+              "blade": false
+            },
+            "heavy": {
+              "startup": 16,
+              "active": 5,
+              "recovery": 25,
+              "damage": 940,
+              "reach": 188,
+              "level": "mid",
+              "stun": 35,
+              "blockstun": 21,
+              "push": 45,
+              "rank": 3,
+              "blade": false
+            },
+            "airHeavy": {
+              "startup": 12,
+              "active": 6,
+              "recovery": 22,
+              "damage": 770,
+              "reach": 168,
+              "level": "high",
+              "stun": 33,
+              "blockstun": 12,
+              "push": 42,
+              "rank": 3,
+              "blade": false
+            }
+          }
+        }
+      },
+      "derivation": "AST data constructor move(...), source-ordered Object.assign data appends, then MOVES[name] + FIGHTER_MOVES[id][name] merge from current source. Initial/default loadout only in slots; explicit RaidenMGS2 gun variants are separate."
+    },
+    "core__venom": {
+      "id": "venom",
+      "fighter": {
+        "id": "venom",
+        "name": "VENOM SNAKE",
+        "subtitle": "THE PHANTOM PAIN / DIAMOND DOGS",
+        "era": "mgsv",
+        "speed": 4.55,
+        "color": "#bd8e65",
+        "drive": "Bras bionique / Rocket Arm",
+        "special": "bionicStun",
+        "secondary": "rocketArm",
+        "backSpecial": "armCharge",
+        "resource": {
+          "name": "BRAS",
+          "max": 100,
+          "start": 100,
+          "regen": 0.08
+        },
+        "archetype": "CQC / NEUTRALISATION / BRAS GUIDÉ",
+        "tip": "D : décharge bionique rapprochée, 20 BRAS, 0 dégât de vie et 2 200 vigilance. Bas + D : Rocket Arm, 40 BRAS ; un trajet aller puis retour sans deuxième touche. Ces deux techniques et la Super attendent le retour du bras. Arrière + D recharge 55 BRAS à la 73e image de simulation, si non interrompu. Adaptation versus, pas un pilotage libre du projectile.",
+        "rival": "quiet",
+        "stage": "tpp-mother-base-diamond-dogs"
+      },
+      "slots": {
+        "light": {
+          "moveName": "light",
+          "move": {
+            "startup": 5,
+            "active": 3,
+            "recovery": 12,
+            "damage": 360,
+            "reach": 113,
+            "level": "mid",
+            "stun": 23,
+            "blockstun": 12,
+            "push": 16,
+            "rank": 1
+          }
+        },
+        "medium": {
+          "moveName": "medium",
+          "move": {
+            "startup": 10,
+            "active": 4,
+            "recovery": 17,
+            "damage": 625,
+            "reach": 153,
+            "level": "mid",
+            "stun": 29,
+            "blockstun": 17,
+            "push": 24,
+            "rank": 2
+          }
+        },
+        "heavy": {
+          "moveName": "heavy",
+          "move": {
+            "startup": 19,
+            "active": 5,
+            "recovery": 25,
+            "damage": 995,
+            "reach": 199,
+            "level": "mid",
+            "stun": 35,
+            "blockstun": 21,
+            "push": 45,
+            "rank": 3
+          }
+        },
+        "low": {
+          "moveName": "sweep",
+          "move": {
+            "startup": 14,
+            "active": 5,
+            "recovery": 25,
+            "damage": 800,
+            "reach": 165,
+            "level": "low",
+            "stun": 38,
+            "blockstun": 12,
+            "push": 52,
+            "rank": 3
+          }
+        },
+        "throw": {
+          "moveName": "throw",
+          "move": {
+            "startup": 6,
+            "active": 2,
+            "recovery": 28,
+            "damage": 1290,
+            "reach": 88,
+            "level": "throw",
+            "stun": 45,
+            "blockstun": 12,
+            "push": 115,
+            "rank": 4
+          }
+        },
+        "special": {
+          "moveName": "bionicStun",
+          "move": {
+            "startup": 18,
+            "active": 5,
+            "recovery": 34,
+            "damage": 0,
+            "reach": 145,
+            "level": "mid",
+            "stun": 33,
+            "blockstun": 12,
+            "push": 35,
+            "rank": 4,
+            "needsArm": true,
+            "resourceCost": 20,
+            "vigilanceDamage": 2200,
+            "electric": true
+          }
+        },
+        "specialDown": {
+          "moveName": "rocketArm",
+          "move": {
+            "startup": 29,
+            "active": 1,
+            "recovery": 34,
+            "damage": 1060,
+            "reach": 0,
+            "level": "mid",
+            "stun": 23,
+            "blockstun": 12,
+            "push": 16,
+            "rank": 4,
+            "needsArm": true,
+            "resourceCost": 40,
+            "projectile": {
+              "speed": 14,
+              "range": 780,
+              "size": 16,
+              "height": 136,
+              "kind": "rocketArm",
+              "deflectable": false,
+              "breakable": true
+            }
+          }
+        },
+        "specialBack": {
+          "moveName": "armCharge",
+          "move": {
+            "startup": 1,
+            "active": 1,
+            "recovery": 70,
+            "damage": 0,
+            "reach": 0,
+            "level": "mid",
+            "stun": 23,
+            "blockstun": 12,
+            "push": 16,
+            "rank": 0,
+            "utility": "armCharge"
+          }
+        },
+        "super": {
+          "moveName": "super",
+          "move": {
+            "startup": 18,
+            "active": 6,
+            "recovery": 42,
+            "damage": 2400,
+            "reach": 186,
+            "level": "mid",
+            "stun": 48,
+            "blockstun": 12,
+            "push": 120,
+            "rank": 5,
+            "cost": 50,
+            "launch": 8,
+            "needsArm": true,
+            "travel": 3,
+            "travelActiveOnly": true
+          }
+        }
+      },
+      "derivation": "AST data constructor move(...), source-ordered Object.assign data appends, then MOVES[name] + FIGHTER_MOVES[id][name] merge from current source. Initial/default loadout only in slots; explicit RaidenMGS2 gun variants are separate."
+    },
+    "core__mantis": {
+      "id": "mantis",
+      "fighter": {
+        "id": "mantis",
+        "name": "PSYCHO MANTIS",
+        "subtitle": "MGS1 / FOXHOUND",
+        "era": "mgs1",
+        "speed": 4.1,
+        "color": "#b6a5d3",
+        "drive": "Télékinésie / déplacement psychique",
+        "special": "psychic",
+        "secondary": "teleport",
+        "resource": {
+          "name": "PSY",
+          "max": 100,
+          "start": 100,
+          "regen": 0.1
+        },
+        "archetype": "ESPACE / TÉLÉPORTATION",
+        "tip": "D projette un débris, destructible par une frappe. Bas + D annonce une destination puis se téléporte : vulnérable avant et après. Ne lit aucun fichier, aucune manette ni donnée personnelle.",
+        "rival": "solid",
+        "stage": "mgs1-shadow-moses-bureau-mantis"
+      },
+      "slots": {
+        "light": {
+          "moveName": "light",
+          "move": {
+            "startup": 6,
+            "active": 3,
+            "recovery": 12,
+            "damage": 290,
+            "reach": 119,
+            "level": "mid",
+            "stun": 23,
+            "blockstun": 12,
+            "push": 16,
+            "rank": 1
+          }
+        },
+        "medium": {
+          "moveName": "medium",
+          "move": {
+            "startup": 11,
+            "active": 4,
+            "recovery": 17,
+            "damage": 530,
+            "reach": 183,
+            "level": "mid",
+            "stun": 29,
+            "blockstun": 17,
+            "push": 24,
+            "rank": 2
+          }
+        },
+        "heavy": {
+          "moveName": "heavy",
+          "move": {
+            "startup": 20,
+            "active": 5,
+            "recovery": 25,
+            "damage": 850,
+            "reach": 230,
+            "level": "mid",
+            "stun": 35,
+            "blockstun": 21,
+            "push": 45,
+            "rank": 3
+          }
+        },
+        "low": {
+          "moveName": "sweep",
+          "move": {
+            "startup": 14,
+            "active": 5,
+            "recovery": 25,
+            "damage": 800,
+            "reach": 165,
+            "level": "low",
+            "stun": 38,
+            "blockstun": 12,
+            "push": 52,
+            "rank": 3
+          }
+        },
+        "throw": {
+          "moveName": "throw",
+          "move": {
+            "startup": 8,
+            "active": 2,
+            "recovery": 28,
+            "damage": 950,
+            "reach": 88,
+            "level": "throw",
+            "stun": 45,
+            "blockstun": 12,
+            "push": 115,
+            "rank": 4
+          }
+        },
+        "special": {
+          "moveName": "psychic",
+          "move": {
+            "startup": 24,
+            "active": 1,
+            "recovery": 32,
+            "damage": 970,
+            "reach": 0,
+            "level": "mid",
+            "stun": 23,
+            "blockstun": 12,
+            "push": 16,
+            "rank": 4,
+            "resourceCost": 25,
+            "projectile": {
+              "speed": 8,
+              "range": 1450,
+              "size": 27,
+              "kind": "debris",
+              "height": 154,
+              "breakable": true,
+              "deflectable": false
+            }
+          }
+        },
+        "specialDown": {
+          "moveName": "teleport",
+          "move": {
+            "startup": 18,
+            "active": 4,
+            "recovery": 29,
+            "damage": 0,
+            "reach": 0,
+            "level": "mid",
+            "stun": 23,
+            "blockstun": 12,
+            "push": 16,
+            "rank": 0,
+            "utility": "teleport",
+            "resourceCost": 35
+          }
+        },
+        "super": {
+          "moveName": "super",
+          "move": {
+            "startup": 28,
+            "active": 21,
+            "recovery": 33,
+            "damage": 960,
+            "reach": 0,
+            "level": "mid",
+            "stun": 48,
+            "blockstun": 12,
+            "push": 120,
+            "rank": 5,
+            "cost": 50,
+            "launch": 8,
+            "projectile": {
+              "speed": 9,
+              "range": 1450,
+              "size": 28,
+              "kind": "debris",
+              "breakable": true,
+              "deflectable": false,
+              "height": 158,
+              "count": 3,
+              "interval": 10
+            }
+          }
+        }
+      },
+      "derivation": "AST data constructor move(...), source-ordered Object.assign data appends, then MOVES[name] + FIGHTER_MOVES[id][name] merge from current source. Initial/default loadout only in slots; explicit RaidenMGS2 gun variants are separate."
+    },
+    "core__snake_pw": {
+      "id": "snake_pw",
+      "fighter": {
+        "id": "snake_pw",
+        "name": "BIG BOSS — PEACE WALKER",
+        "subtitle": "PW / CONTENU 0.22",
+        "era": "pw",
+        "speed": 4.5,
+        "color": "#a4ab75",
+        "drive": "Mk22 / maîtrise MSF / Clé MSF non létale",
+        "special": "x22_snake_pw_D",
+        "secondary": "x22_snake_pw_Down",
+        "backSpecial": "x22_snake_pw_Back",
+        "resource": {
+          "name": "CARTOUCHES",
+          "max": 8,
+          "start": 8,
+          "regen": 0
+        },
+        "archetype": "ADAPTATION VERSUS / TECHNIQUES DISTINCTES",
+        "tip": "D : Mk22 / maîtrise MSF. Bas + D : Clé MSF non létale. Arrière + D : Recharge Mk22. Incarnation de 1974 : pas le bras bionique de Venom. L’immobilisation est une prise de commande ; A/B/C et projection normale restent létaux.",
+        "rival": "kaz_pw",
+        "stage": "pw-mother-base-msf",
+        "expansion022": true,
+        "visual": {
+          "kind": "soldier",
+          "hair": "bandanna",
+          "gun": "pistol",
+          "eyewear": false,
+          "officer": false
+        }
+      },
+      "slots": {
+        "light": {
+          "moveName": "light",
+          "move": {
+            "startup": 5,
+            "active": 3,
+            "recovery": 12,
+            "damage": 350,
+            "reach": 116,
+            "level": "mid",
+            "stun": 23,
+            "blockstun": 12,
+            "push": 16,
+            "rank": 1
+          }
+        },
+        "medium": {
+          "moveName": "medium",
+          "move": {
+            "startup": 10,
+            "active": 4,
+            "recovery": 17,
+            "damage": 615,
+            "reach": 165,
+            "level": "mid",
+            "stun": 29,
+            "blockstun": 17,
+            "push": 24,
+            "rank": 2
+          }
+        },
+        "heavy": {
+          "moveName": "heavy",
+          "move": {
+            "startup": 20,
+            "active": 5,
+            "recovery": 25,
+            "damage": 960,
+            "reach": 206,
+            "level": "mid",
+            "stun": 35,
+            "blockstun": 21,
+            "push": 45,
+            "rank": 3
+          }
+        },
+        "low": {
+          "moveName": "sweep",
+          "move": {
+            "startup": 14,
+            "active": 5,
+            "recovery": 25,
+            "damage": 800,
+            "reach": 165,
+            "level": "low",
+            "stun": 38,
+            "blockstun": 12,
+            "push": 52,
+            "rank": 3
+          }
+        },
+        "throw": {
+          "moveName": "throw",
+          "move": {
+            "startup": 6,
+            "active": 2,
+            "recovery": 28,
+            "damage": 1150,
+            "reach": 88,
+            "level": "throw",
+            "stun": 45,
+            "blockstun": 12,
+            "push": 115,
+            "rank": 4
+          }
+        },
+        "special": {
+          "moveName": "x22_snake_pw_D",
+          "move": {
+            "startup": 20,
+            "active": 1,
+            "recovery": 30,
+            "damage": 0,
+            "reach": 0,
+            "level": "high",
+            "stun": 28,
+            "blockstun": 13,
+            "push": 23,
+            "rank": 4,
+            "resourceCost": 1,
+            "payOnShot": true,
+            "projectile": {
+              "speed": 27,
+              "range": 1430,
+              "size": 7,
+              "height": 184,
+              "kind": "tranq",
+              "count": 1,
+              "interval": 6
+            },
+            "vigilanceDamage": 2050
+          }
+        },
+        "specialDown": {
+          "moveName": "x22_snake_pw_Down",
+          "move": {
+            "startup": 10,
+            "active": 5,
+            "recovery": 39,
+            "damage": 0,
+            "vigilanceDamage": 2200,
+            "reach": 101,
+            "level": "throw",
+            "stun": 40,
+            "blockstun": 0,
+            "push": 100,
+            "rank": 4,
+            "resourceCost": 0,
+            "commandGrab": true,
+            "grapple": "command"
+          }
+        },
+        "specialBack": {
+          "moveName": "x22_snake_pw_Back",
+          "move": {
+            "startup": 1,
+            "active": 1,
+            "recovery": 66,
+            "damage": 0,
+            "reach": 0,
+            "rank": 0,
+            "utility": "reload"
+          }
+        },
+        "super": {
+          "moveName": "super",
+          "move": {
+            "startup": 17,
+            "active": 6,
+            "recovery": 42,
+            "damage": 0,
+            "reach": 183,
+            "level": "mid",
+            "stun": 48,
+            "blockstun": 12,
+            "push": 120,
+            "rank": 5,
+            "cost": 50,
+            "launch": 8,
+            "vigilanceDamage": 4200,
+            "travel": 3,
+            "travelActiveOnly": true,
+            "commandGrab": true,
+            "grapple": "super"
+          }
+        }
+      },
+      "derivation": "AST data constructor move(...), source-ordered Object.assign data appends, then MOVES[name] + FIGHTER_MOVES[id][name] merge from current source. Initial/default loadout only in slots; explicit RaidenMGS2 gun variants are separate."
+    },
+    "core__solid": {
+      "id": "solid",
+      "fighter": {
+        "id": "solid",
+        "name": "SOLID SNAKE",
+        "subtitle": "MGS1 / SHADOW MOSES",
+        "era": "mgs1",
+        "speed": 4.8,
+        "color": "#86aec4",
+        "drive": "SOCOM / rechargement",
+        "special": "socom",
+        "secondary": "reload",
+        "resource": {
+          "name": "CARTOUCHES",
+          "max": 8,
+          "start": 8,
+          "regen": 0
+        },
+        "archetype": "POLYVALENT / PRESSION",
+        "tip": "D tire un projectile rapide de dégâts modérés. Bas + D recharge. Les attaques normales permettent de défendre sa zone rapprochée.",
+        "rival": "fox",
+        "stage": "mgs1-shadow-moses-heliport"
+      },
+      "slots": {
+        "light": {
+          "moveName": "light",
+          "move": {
+            "startup": 4,
+            "active": 3,
+            "recovery": 12,
+            "damage": 330,
+            "reach": 108,
+            "level": "mid",
+            "stun": 23,
+            "blockstun": 12,
+            "push": 16,
+            "rank": 1
+          }
+        },
+        "medium": {
+          "moveName": "medium",
+          "move": {
+            "startup": 9,
+            "active": 4,
+            "recovery": 17,
+            "damage": 590,
+            "reach": 141,
+            "level": "mid",
+            "stun": 29,
+            "blockstun": 17,
+            "push": 24,
+            "rank": 2
+          }
+        },
+        "heavy": {
+          "moveName": "heavy",
+          "move": {
+            "startup": 16,
+            "active": 5,
+            "recovery": 25,
+            "damage": 900,
+            "reach": 183,
+            "level": "mid",
+            "stun": 35,
+            "blockstun": 21,
+            "push": 45,
+            "rank": 3
+          }
+        },
+        "low": {
+          "moveName": "sweep",
+          "move": {
+            "startup": 14,
+            "active": 5,
+            "recovery": 25,
+            "damage": 800,
+            "reach": 165,
+            "level": "low",
+            "stun": 38,
+            "blockstun": 12,
+            "push": 52,
+            "rank": 3
+          }
+        },
+        "throw": {
+          "moveName": "throw",
+          "move": {
+            "startup": 6,
+            "active": 2,
+            "recovery": 28,
+            "damage": 1150,
+            "reach": 88,
+            "level": "throw",
+            "stun": 45,
+            "blockstun": 12,
+            "push": 115,
+            "rank": 4
+          }
+        },
+        "special": {
+          "moveName": "socom",
+          "move": {
+            "startup": 13,
+            "active": 1,
+            "recovery": 23,
+            "damage": 410,
+            "reach": 0,
+            "level": "mid",
+            "stun": 23,
+            "blockstun": 12,
+            "push": 16,
+            "rank": 4,
+            "resourceCost": 1,
+            "projectile": {
+              "speed": 22,
+              "range": 1250,
+              "size": 6,
+              "kind": "bullet"
+            }
+          }
+        },
+        "specialDown": {
+          "moveName": "reload",
+          "move": {
+            "startup": 1,
+            "active": 1,
+            "recovery": 64,
+            "damage": 0,
+            "reach": 0,
+            "level": "mid",
+            "stun": 23,
+            "blockstun": 12,
+            "push": 16,
+            "rank": 0,
+            "utility": "reload"
+          }
+        },
+        "super": {
+          "moveName": "super",
+          "move": {
+            "startup": 15,
+            "active": 7,
+            "recovery": 37,
+            "damage": 2180,
+            "reach": 207,
+            "level": "mid",
+            "stun": 48,
+            "blockstun": 12,
+            "push": 120,
+            "rank": 5,
+            "cost": 50,
+            "launch": 8,
+            "travel": 3.5
+          }
+        }
+      },
+      "derivation": "AST data constructor move(...), source-ordered Object.assign data appends, then MOVES[name] + FIGHTER_MOVES[id][name] merge from current source. Initial/default loadout only in slots; explicit RaidenMGS2 gun variants are separate."
+    }
+  },
+  "exclusions": [
+    {
+      "uid": "archive__captain",
+      "reason": "Absent from real Core roster; five Captain costume entries do not become Core playable claims."
+    }
+  ],
+  "qualification": "Read-only static derivation, not in-game execution or a balancing/retail-fidelity certificate. The exact getMove and moveName source is recorded so dynamic stance/loadout branches remain visible; no synthetic match or combat state was injected."
+}

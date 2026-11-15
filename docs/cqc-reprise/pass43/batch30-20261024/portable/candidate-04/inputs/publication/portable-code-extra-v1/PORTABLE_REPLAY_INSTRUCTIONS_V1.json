@@ -1,0 +1,27 @@
+{
+  "schema": "cqc.p43.portable-replay-instructions/1",
+  "scope": "Exact source jobs, ownership/geometries, reviews, compiler/mode code, compact QA evidence and dated Excel. Native metadata and native PNG bytes are separate immutable archive inputs.",
+  "recordedProjectNamespace": "/workspace/cqc-p43-resume-20261025",
+  "recordedNativeSourceNamespace": "/workspace/generated_images",
+  "baselineCommit": "0ff08f47b6a177b7ece939ef9ec91df272c45ef1",
+  "currentNativeArchiveTag": "cqc-pass43-native-002",
+  "currentNativeArchiveCommit": "d810ab3387f76211b4b0d67146e7a2ca166ac80e",
+  "historicalCandidateNative001IsNotCurrent": true,
+  "restorationOrder": [
+    "Verify the public package manifest bytes/SHA. A gzip-compressed input restores exactly the recorded uncompressed bytes; original source files and Root reviews are never silently rewritten.",
+    "Restore the grouped supplemental JSON files with restore-exact-supplements-v1.py. Its default mode only verifies; restoration requires an explicit new empty owned directory.",
+    "Restore primary files at each restorationProjectPath. Keep all absolute job/review pins intact, and reproduce the recorded namespaces inside a disposable isolated container or equivalent controlled filesystem.",
+    "Provide the separately listed read-only baseline code/host snapshot from Git. Use the explicit appRoot consistent with recorded pins and disjoint from the owned restoration root.",
+    "Fetch the forty metadata files from the Native002 restoration map. Some Core replay configurations intentionally consume preserved metadata at earlier recorded candidate paths; preserve their exact bytes/SHA rather than rewriting approved specifications.",
+    "Fetch only the required raw sources from the158-entry immutable map, verify bytes/SHA and recorded file names, then mount the newly restored source directory read-only at the recorded native namespace. Candidate and held sources remain distinct from the active assets selected by the jobs.",
+    "Load the exact compiler module, configurePortableRoots with explicit restorationRoot/appRoot, then compile using the pinned compile configuration. Python with Pillow and the packaged measurement helper are required; the pinned Acorn module includes its MIT notice.",
+    "Use current Core specifications/reviews and the corrected Core Mantis throw group/phase map. The complete Core VM proof is separate from source art approval and archive integrity.",
+    "Review compact QA evidence and its scope timestamps. Dated prepublication Excel records only validations actually obtained then; the final postproduction workbook is a separate version."
+  ],
+  "compilerAPI": [
+    "await compiler.configurePortableRoots({restorationRoot, appRoot});",
+    "await compiler.compile(compileConfigurationPath);"
+  ],
+  "portabilityQualification": "The packet preserves approved inputs byte-for-byte and records dependencies. It does not remap arbitrary absolute paths automatically. Replay requires the recorded isolated namespaces and separately restored immutable inputs.",
+  "runtimeOrProductionApprovalInheritedFromPackaging": false
+}

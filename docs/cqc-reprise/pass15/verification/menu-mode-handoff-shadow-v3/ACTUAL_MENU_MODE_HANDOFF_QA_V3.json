@@ -1,0 +1,117 @@
+{
+  "schema": "cqc.pass15.actual-menu-mode-handoff/1",
+  "closed": true,
+  "actualRun": true,
+  "synthetic": false,
+  "status": "passed",
+  "failure": null,
+  "shadow": true,
+  "sourceBindings": {
+    "index.html": {
+      "bytes": 32805,
+      "sha256": "1cde08a124f5626efdf98a32bdee6bee1baf092eb5718ffb768b9ccae8c88819"
+    },
+    "modules/core-v032.html": {
+      "bytes": 1528007,
+      "sha256": "61a01d070b32c78b665a2e8427a631dda07f7fb37458f4bae4cc98b8016381a5"
+    }
+  },
+  "runner": {
+    "path": "/tmp/cqc-pass15-browser-preparation/run-menu-mode-handoff-v3.py",
+    "sha256": "4cad07fdcfc876bae8fb5f48d33c4b0ce5075241dfe19ad90b67f7662bf4fd73"
+  },
+  "checks": [
+    {
+      "name": "normal-Core-before",
+      "status": "passed",
+      "actualURL": "http://localhost:5177/cqc/modules/core-v032.html",
+      "actualSelectedMode": "cpu",
+      "frontChoiceText": "LEGACY CORE · 95",
+      "startText": "COMBATTRE →"
+    },
+    {
+      "name": "story-Core-Chronicles",
+      "status": "passed",
+      "actualURL": "http://localhost:5177/cqc/modules/core-v032.html?mode=chronicle",
+      "actualSelectedMode": "chronicle",
+      "frontChoiceText": "CORE CHRONICLES",
+      "startText": "NOUVEAU PARCOURS →"
+    },
+    {
+      "name": "Chronicles-menu-canonical-protagonist-despite-prior-Raiden-profile",
+      "status": "passed",
+      "chapter": "snakeEater",
+      "displayedPlayer": "snake",
+      "savedPlayer": "raiden_mgs2"
+    },
+    {
+      "name": "normal-Core-after-story",
+      "status": "passed",
+      "actualURL": "http://localhost:5177/cqc/modules/core-v032.html",
+      "actualSelectedMode": "cpu",
+      "frontChoiceText": "LEGACY CORE · 95",
+      "startText": "COMBATTRE →"
+    },
+    {
+      "name": "training-Legacy-Lab",
+      "status": "passed",
+      "actualURL": "http://localhost:5177/cqc/modules/core-v032.html?mode=training",
+      "actualSelectedMode": "training",
+      "frontChoiceText": "LEGACY LAB",
+      "startText": "ENTRER AU LABO →"
+    },
+    {
+      "name": "normal-Core-after-training",
+      "status": "passed",
+      "actualURL": "http://localhost:5177/cqc/modules/core-v032.html",
+      "actualSelectedMode": "cpu",
+      "frontChoiceText": "LEGACY CORE · 95",
+      "startText": "COMBATTRE →"
+    },
+    {
+      "name": "normal-Core-keeps-private-prior-Raiden-CPU-profile-after-explicit-mode-routes",
+      "status": "passed"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "/tmp/cqc-pass15-browser-proofs/menu-mode-handoff-shadow-v3/normal-Core-before.jpg",
+      "bytes": 35754,
+      "sha256": "43bcb44cd17c0571d192ac72599a29595b6d14a50aa0dee9a9a6575e8a4991c6",
+      "kind": "native-Chromium-JPEG58-screenshot-of-actual-menu"
+    },
+    {
+      "path": "/tmp/cqc-pass15-browser-proofs/menu-mode-handoff-shadow-v3/prior-fighter-real-UI.jpg",
+      "bytes": 37026,
+      "sha256": "cd36d28b3c2259fcac9f919584a0f297f336417dee666d4ac5464a77641808d8",
+      "kind": "native-Chromium-JPEG58-screenshot-of-actual-menu"
+    },
+    {
+      "path": "/tmp/cqc-pass15-browser-proofs/menu-mode-handoff-shadow-v3/story-Core-Chronicles.jpg",
+      "bytes": 35831,
+      "sha256": "10649107dd8613619631e9f4a2373198fdedbb7706694639bf60f37dd42d8833",
+      "kind": "native-Chromium-JPEG58-screenshot-of-actual-menu"
+    },
+    {
+      "path": "/tmp/cqc-pass15-browser-proofs/menu-mode-handoff-shadow-v3/normal-Core-after-story.jpg",
+      "bytes": 35799,
+      "sha256": "ae8fd82892f818c69a800befa32554462e60dd0f5975acb1d8e334375c9b37e0",
+      "kind": "native-Chromium-JPEG58-screenshot-of-actual-menu"
+    },
+    {
+      "path": "/tmp/cqc-pass15-browser-proofs/menu-mode-handoff-shadow-v3/training-Legacy-Lab.jpg",
+      "bytes": 35788,
+      "sha256": "cabed8534bc9f1a9f6d0e41812348ca0c6d7ad07ccd1e7ba56e2423210a500c5",
+      "kind": "native-Chromium-JPEG58-screenshot-of-actual-menu"
+    },
+    {
+      "path": "/tmp/cqc-pass15-browser-proofs/menu-mode-handoff-shadow-v3/normal-Core-after-training.jpg",
+      "bytes": 35796,
+      "sha256": "63353b0bbaea62b47810266e0a0ea3b3d1dccfabb4a6168ae9ea48b3069f3e99",
+      "kind": "native-Chromium-JPEG58-screenshot-of-actual-menu"
+    }
+  ],
+  "checkedAt": "2026-10-03T16:55:00.989317+00:00",
+  "ownedBrowserClosed": true,
+  "qualification": "Fresh private browser, actual front controls/touch input and Core mode displays. Read-only profile/mode observations only. No start/combat/engine/profile forcing."
+}

@@ -1,0 +1,59 @@
+{
+  "schema": "cqc.p40.actual-dispatch-declaration-correction/1",
+  "previousJob": {
+    "path": "@PROJECT_ROOT@/integration-v2/quiet-cyborg/v1/JOB_CANDIDATE_V5.json",
+    "bytes": 33794,
+    "sha256": "268f273d641052bff6d78a9c471108d288a226944f82914e9b91f0a88e2d3680"
+  },
+  "proposedJob": {
+    "path": "@PROJECT_ROOT@/integration-v2/quiet-cyborg/v1/JOB_CANDIDATE_V6.json",
+    "bytes": 33787,
+    "sha256": "9921ff53432a075fa26753f06f896edfb0160f86973f1efdd49d6bb9a14211ab"
+  },
+  "diagnostic": {
+    "path": "@PROJECT_ROOT@/integration-v2/originals-three-qa/v1/ACTUAL_DATA_SELECTED_SLOT_DIAGNOSTIC_V1.json",
+    "bytes": 21175,
+    "sha256": "9d476700320129d66872fa51c9a61e77e68bdf08cb57ac51cb20012d468221b4"
+  },
+  "exactSemanticDelta": [
+    {
+      "jsonPath": "plan.selectedActionBySlot.specialDown",
+      "before": "deploy",
+      "after": "shoot"
+    },
+    {
+      "jsonPath": "plan.selectedActionBySlot.super",
+      "before": "charge",
+      "after": "shoot"
+    },
+    {
+      "jsonPath": "plan.selectedActionBySlot.utility",
+      "before": "recover",
+      "after": "reload"
+    },
+    {
+      "jsonPath": "anchors[2].action",
+      "before": "deploy",
+      "after": "shoot"
+    },
+    {
+      "jsonPath": "anchors[3].action",
+      "before": "deploy",
+      "after": "shoot"
+    },
+    {
+      "jsonPath": "anchors[4].action",
+      "before": "charge",
+      "after": "shoot"
+    },
+    {
+      "jsonPath": "anchors[5].action",
+      "before": "charge",
+      "after": "shoot"
+    }
+  ],
+  "sourcePixelsGeometryCalibrationsRoleMappingsOriginalActionMapPhaseMapCombatProfilesUnchanged": true,
+  "canonicalWeaponPointsUnchanged": true,
+  "rootRestampRequired": true,
+  "productMutations": false
+}

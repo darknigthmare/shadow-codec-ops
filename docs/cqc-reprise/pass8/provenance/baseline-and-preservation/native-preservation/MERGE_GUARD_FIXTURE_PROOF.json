@@ -1,0 +1,63 @@
+{
+  "schema": "cqc.pass8.additive-merge-fixture-checks/1",
+  "passed": 11,
+  "failures": 0,
+  "actualProductionWrites": 0,
+  "applyFunctionExecuted": false,
+  "fixtureScope": "Byte-only test fixtures under preservation-prep; no graphical source created or edited.",
+  "checks": [
+    {
+      "check": "literal insertion preserves Unicode, CRLF, old row and root fields",
+      "passed": true
+    },
+    {
+      "check": "validating a plan performs no native, inventory or target-directory write",
+      "passed": true
+    },
+    {
+      "check": "changed frozen inventory SHA is rejected",
+      "passed": true,
+      "rejection": "SHA256 changed: /workspace/cqc-pass8-preservation-prep/byte-level-test-fixtures/repository/preparation/inventory.json"
+    },
+    {
+      "check": "changed native source SHA is rejected",
+      "passed": true,
+      "rejection": "SHA256 changed: /workspace/cqc-pass8-preservation-prep/byte-level-test-fixtures/originals/exec-11111111-1111-1111-1111-111111111111.png"
+    },
+    {
+      "check": "replacement original inode is rejected",
+      "passed": true,
+      "rejection": "Original inode changed: /workspace/cqc-pass8-preservation-prep/byte-level-test-fixtures/originals/exec-11111111-1111-1111-1111-111111111111.png"
+    },
+    {
+      "check": "unassigned image is rejected",
+      "passed": true,
+      "rejection": "Unassigned original image or missing old image"
+    },
+    {
+      "check": "new or missing source filename is rejected",
+      "passed": true,
+      "rejection": "Original image set changed after preparation"
+    },
+    {
+      "check": "replacement of a frozen historical row is rejected",
+      "passed": true,
+      "rejection": "Attempt to replace an old row"
+    },
+    {
+      "check": "destination traversal is rejected",
+      "passed": true,
+      "rejection": "Invalid preservation directory"
+    },
+    {
+      "check": "drift from the current selected delivery is rejected",
+      "passed": true,
+      "rejection": "Current delivery selection changed"
+    },
+    {
+      "check": "changed producer evidence is rejected",
+      "passed": true,
+      "rejection": "SHA256 changed: /workspace/cqc-pass8-preservation-prep/byte-level-test-fixtures/delivery.json"
+    }
+  ]
+}

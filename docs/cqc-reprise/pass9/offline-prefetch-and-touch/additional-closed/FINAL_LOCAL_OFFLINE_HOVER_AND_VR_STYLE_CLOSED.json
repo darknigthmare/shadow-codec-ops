@@ -1,0 +1,95 @@
+{
+  "schema": "cqc-pass9-offline-prefetch-local-closure/v1",
+  "closedAt": "2026-10-02T14:44:39.244009+00:00",
+  "status": "passed-local-targeted-regression",
+  "sourceGuardReceipt": {
+    "path": "/workspace/cqc-pass9-offline-prefetch-fix/APPLIED_OFFLINE_GUARD_SOURCE_RECEIPT.json",
+    "bytes": 2530,
+    "sha256": "8d8c3c82a5430b49d874c668021991046b53612740baf44d4744d2028eece584"
+  },
+  "sourceAppSHA256": "eb5cca5cf44634733c85d451eca474e2b5450b06eb132ccaaef45d710869b911",
+  "sourceMobileCSSSHA256": "e368860a9d1f7e27a60f9d1d8a703b31a8a7710d5d1b367919dbefc632c1aeb4",
+  "actualLocalHEADBeforeAndAfter": "7d4719d432cfe82087833f49df02b27fa2f3155f",
+  "baseURL": "http://127.0.0.1:5179",
+  "native334SourceFilesUnchangedBeforeAndAfter": true,
+  "resultFacts": [
+    "Actual trusted offline and pointerover/mouseover on the real horizontally scrolled VR menu item; no VR requests or resource timings while offline.",
+    "Actual trusted online event, real VR menu navigation, TSX and dev VR stylesheet fetched with HTTP200 without HTTP cache/service-worker response reuse.",
+    "Applied real VR stylesheet: 73 rules, grid display and 18px gap; 53 actual mission library rows; no app error boundary, pageerrors or unhandledrejections.",
+    "Normal menu return changes route to CQC; no full CQC replay is claimed by this targeted regression.",
+    "Owned browser/CDP closed; online and cache/bypass settings restored; source pins and 334 frozen files unchanged."
+  ],
+  "preservedFailedAttempt": {
+    "report": {
+      "path": "/workspace/cqc-pass9-browser-preparation/offline-vr-hover-local-01/verification.json",
+      "bytes": 12744,
+      "sha256": "8d27ddd81742b580873778ee1bf0233875dd7e84695c8d92f53edee6d8679cd8"
+    },
+    "classification": "Harness attempted a centre hit test before horizontally scrolling the legitimate mobile nav; VR target x849.9 was outside viewport. No product defect or offline hover claim inferred. Original tool, failure report and physical screenshot preserved."
+  },
+  "passedReport": {
+    "path": "/workspace/cqc-pass9-browser-preparation/offline-vr-hover-local-02/verification.json",
+    "bytes": 27126,
+    "sha256": "3998aab911901ccec5836a98928f5ac2ee85e61cccadf4752a7ff71dd5f569cc"
+  },
+  "producerPhysicallyViewedBothScreens": true,
+  "rootPhysicalReviewPending": true,
+  "productionOfNewGuardNotYetRequestedOrVerified": true,
+  "qualification": "Local Vite validates import/route flow and the applied dev stylesheet. It does not certify production bundled CSS; a separately authorized real production run must require the actual bundled CSS link/sheet, applied grid rule and actual CSS bytes. Old production7d proofs validate the older App ea4 and remain exact; they do not validate this eb5 guard.",
+  "closedOlderEvidenceUnchanged": [
+    {
+      "path": "/workspace/cqc-pass9-browser-preparation/FINAL_PRODUCTION_MOBILE_CONTROLS_CLOSED.json",
+      "bytes": 9645,
+      "sha256": "ed90562e72b72e39203011d0deedc0983d086318616faf2dd0a5ca0ccdc548de"
+    },
+    {
+      "path": "/workspace/cqc-pass9-browser-preparation/mobile-toast-production-7d4719d4-01/verification.json",
+      "bytes": 1123392,
+      "sha256": "af4992c789d072abcb3830cb085b198732fe422c0f6f0b0cf825650d0bc715d7"
+    },
+    {
+      "path": "/workspace/cqc-pass9-browser-preparation/mobile-native-touch-production-7d4719d4-02/verification.json",
+      "bytes": 58855,
+      "sha256": "998aaeb8ade55f3caa28666a643a28c532ef4a1594c29f77030f0d3d2f4208b1"
+    }
+  ],
+  "filesToArchive": [
+    {
+      "path": "/workspace/cqc-pass9-browser-preparation/verify-mobile-toast-fix-v5.py",
+      "bytes": 15861,
+      "sha256": "67b5f0d890c55876774c64242e6107552559bb4e1df70c31ef84e5abcb44ddf9"
+    },
+    {
+      "path": "/workspace/cqc-pass9-browser-preparation/verify-mobile-toast-fix-v5b.py",
+      "bytes": 16058,
+      "sha256": "8b68aba65aece32f6c22bb9f0e41752f6c0461fdd134f751d2ac3c1fdaa0d722"
+    },
+    {
+      "path": "/workspace/cqc-pass9-browser-preparation/v5-passive-observer.pre-run-syntax-check.js",
+      "bytes": 584,
+      "sha256": "46d9d51a243b3bd7b5c52f7564596c98d1aa49495fdf0092ea6a434e900aa0f6"
+    },
+    {
+      "path": "/workspace/cqc-pass9-browser-preparation/offline-vr-hover-local-01/actual-failure-page-preserved.png",
+      "bytes": 40223,
+      "sha256": "791662a1065e1a610759756b554d7a2794bea4d30fae9bca22efa42bc6ad889b"
+    },
+    {
+      "path": "/workspace/cqc-pass9-browser-preparation/offline-vr-hover-local-01/verification.json",
+      "bytes": 12744,
+      "sha256": "8d27ddd81742b580873778ee1bf0233875dd7e84695c8d92f53edee6d8679cd8"
+    },
+    {
+      "path": "/workspace/cqc-pass9-browser-preparation/offline-vr-hover-local-02/390-real-online-VR-library-after-offline-hover.png",
+      "bytes": 93441,
+      "sha256": "818c1cfcd73e983df5a9ebbab0508e9924ac39e11ecad3ce1078e3bc6ea1af6c"
+    },
+    {
+      "path": "/workspace/cqc-pass9-browser-preparation/offline-vr-hover-local-02/verification.json",
+      "bytes": 27126,
+      "sha256": "3998aab911901ccec5836a98928f5ac2ee85e61cccadf4752a7ff71dd5f569cc"
+    }
+  ],
+  "artifactBytesExcludingThisReceipt": 206037,
+  "permissions": "No R/S/Git/native PNG source edits, no synthetic prefetch/offline events, no DOM/CSS hiding, no mocked response."
+}

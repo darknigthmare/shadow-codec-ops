@@ -1,0 +1,39 @@
+{
+  "schema": "cqc.p41.drebin-native-cache-static-budget/1",
+  "productMutations": false,
+  "limitsChanged": false,
+  "budgets": {
+    "lazyMetadataMaxEntries": 8,
+    "lazyMetadataMaxBytes": 8388608,
+    "lazyVerifiedPNGBlobMaxBytes": 67108864,
+    "rendererDecodedMaxBytes": 268435456,
+    "rendererReadyImages": 40
+  },
+  "counts": {
+    "costumeMetadataBytes": 1935384,
+    "logicalPNGs": 11,
+    "uniquePNGSourceSHA256": 6,
+    "logicalVerifiedPNGBlobBytes": 16795657,
+    "logicalDecodedPNGBytes": 69192336
+  },
+  "guards": [
+    "Metadata quota sums descriptor.metadata.bytes only; images do not count toward8MiB.",
+    "PNGblob quota sums asset job pin.bytes under distinct64MiB quota.",
+    "Renderer quota estimates each logical PNG width*height*4, even aliases sharing physical PNGsha.",
+    "Selected/pending/active fighter costume keys protected from metadata/blob retirement.",
+    "Renderer retainFighters protects active/selected/decoding logicalfiles."
+  ],
+  "qualification": "Static code/PNGheader accounting. Real GUI persistence and actual cache counters require browser run.",
+  "sourcePins": [
+    {
+      "path": "@APP_ROOT@/public/cqc/src/cqc-pass19-native-wardrobe-library.js",
+      "bytes": 33260,
+      "sha256": "cc3ca723c7bf9f6871cc090cee2e17ecde9337c69454dfe6a94832368afbb078"
+    },
+    {
+      "path": "@APP_ROOT@/public/cqc/src/cqc-sprite-renderer.js",
+      "bytes": 50667,
+      "sha256": "ca1b36c81606d2fa29bc2d9ebc631db3c33a25257023068f03a728bba930f756"
+    }
+  ]
+}

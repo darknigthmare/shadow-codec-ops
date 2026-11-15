@@ -1,0 +1,171 @@
+{
+  "schema": "cqc.pass21.horizontal-preview-datum-delivery/1",
+  "status": "passed",
+  "finishedAt": "2026-10-08T08:17:15.304495+00:00",
+  "scope": "Preview origins for human sprites and the reviewed DoubleTripod rig/coat only. No PNG reencoding, simulation, world-scale, collider or combat-draw changes.",
+  "sourcePins": [
+    {
+      "path": "/tmp/cqc-pass19-application/public/cqc/src/cqc-sprite-renderer.js",
+      "bytes": 44330,
+      "sha256": "53a7e9871bbeea7a876a2120bfa3c60be5f8993af3206aeb2d8013543499f53a"
+    },
+    {
+      "path": "/tmp/cqc-pass19-application/public/cqc/src/cqc-pass19-machine-costume-routing.js",
+      "bytes": 5954,
+      "sha256": "a7e045566b436d6dcc943851312d2654bebfed1154c690659d8570c87ac0d309"
+    }
+  ],
+  "baselineSourcePins": [
+    {
+      "name": "cqc-sprite-renderer.js",
+      "sha256": "52bf4af55267a7fed4c01a366a75337047fa843f9ac9e5351cc0f296349908f2",
+      "bytes": 39431
+    },
+    {
+      "name": "cqc-pass19-machine-costume-routing.js",
+      "sha256": "210438389c1643b13bb32dfe0b55b442552bd5972ce10e916d7a8a67c809d8c1",
+      "bytes": 5422
+    }
+  ],
+  "cause": "Fitted previews placed the historical frame pivot at the cell centre. That pivot could represent the feet or sprite layout rather than the lower torso/chassis, so independently drawn costumes and facings shifted horizontally despite stable height.",
+  "change": "A distinct preview body datum determines the horizontal drawing origin. Reviewed per-frame previewDatumX is preferred; otherwise a decoded alpha lower-body-band median estimates the body axis. Coat chassis axes are pinned to exact source SHA+rect. The articulated original rig receives its own alpha body datum from its native ready render.",
+  "bodyDatumAPI": {
+    "field": "frame.previewDatumX",
+    "units": "local source pixels within frame.rect",
+    "appliesTo": "first idle of each authored facing, reviewed independently",
+    "readOnlyDiagnostics": [
+      "CQC_COMBAT_SPRITES.previewDatum(fighter,face)",
+      "CQC_COMBAT_SPRITES.previewGeometry(fighter,box,face)",
+      "CQC_PASS19_MACHINE_COSTUME_ROUTING.previewMeasure(fighter,face)"
+    ],
+    "previewGeometryFields": {
+      "bodyX": "target body axis at cell centre",
+      "x": "compensated draw origin",
+      "datum": "source coordinate, pivot, method, PNG pin and rectangle"
+    },
+    "guide": {
+      "path": "/workspace/cqc-pass21-preview/PREVIEW_DATUM_API.md",
+      "bytes": 2336,
+      "sha256": "0d3571d3d7ea7647eee117b00ad21edcc14ed5c74e8f2a56a2e002a51f692aa6"
+    }
+  },
+  "verification": {
+    "uniqueActualNativeDrawCombinations": 44,
+    "directNativeDraws": 28,
+    "realLazyOriginalAndNextGenDraws": 16,
+    "extraArticulatedRasterChecks": 2,
+    "nativeBodyAxisProjectionMaxErrorPixels": 3.5792642876231184e-06,
+    "lazyBodyAxisProjectionMaxErrorPixels": 3.916177064411386e-06,
+    "originalRigRasterBodyAxisPixels": [
+      90.5,
+      90.5
+    ],
+    "originalRigFacingBodyAxisSpreadPixels": 0.0,
+    "originalRigFeetSpreadPixels": 0,
+    "nativeHeightSpreadMaxPixels": 1,
+    "nativeFeetSpreadMaxPixels": 0,
+    "lazyHeightSpreadMaxPixels": 0,
+    "lazyFeetSpreadMaxPixels": 0,
+    "previousNominalVerticalMetricsMaxDelta": 0,
+    "originalGeometryByteIdenticalAfterLazyRegistration": true,
+    "decodedClippingCount": 0,
+    "combatDrawFunctionByteIdentical": true,
+    "metadataValidationCasesPassed": 6,
+    "startupRAWRequests": 0,
+    "lazySourcePGsSHA256Verified": 8,
+    "preferencesUnchanged": true,
+    "runtimeExceptions": 0
+  },
+  "mechanicalAxisReview": {
+    "reviewer": "pass20_mecha_tripod",
+    "axis": "lower chassis between hip joints; forward upper sphere, fedora, forearms and coat outline excluded",
+    "right": {
+      "sourceSHA256": "ce7e7c09f4b1b06e4a13a85ab6e481556eff1fac7441f5b7dd45719e7799f77d",
+      "rect": [
+        76,
+        8,
+        211,
+        299
+      ],
+      "sourceDatumX": 100,
+      "visuallyReviewedAxisRange": [
+        96,
+        105
+      ],
+      "sourceBandY": [
+        202,
+        236
+      ]
+    },
+    "left": {
+      "sourceSHA256": "c434a81adf145c0b6d8f6e43feff59b4db1993a98afd99628c271be1de6d3fec",
+      "rect": [
+        72,
+        5,
+        200,
+        313
+      ],
+      "sourceDatumX": 100,
+      "visuallyReviewedAxisRange": [
+        96,
+        105
+      ],
+      "sourceBandY": [
+        217,
+        241
+      ]
+    }
+  },
+  "TLSVerification": {
+    "finalMode": "proxy SPKI scoped trust, otherwise normal TLS authority checks",
+    "trustedSPKI": "n9jEr2dCP1tg9exQzr7xEpZ4TjG2QWO02LUFhmAzII4=",
+    "globalCertificateIgnore": false,
+    "strictPinnedPreparationPassed": true,
+    "priorFailedStrictAttemptPreservedIn": "LAZY_HORIZONTAL_BODY_DATUM_ACTUAL_V1.json",
+    "priorGlobalRelaxationSuperseded": true,
+    "productionTLSChanged": false
+  },
+  "proofs": [
+    {
+      "path": "/workspace/cqc-pass21-preview/HORIZONTAL_BODY_DATUM_ACTUAL_V2.json",
+      "bytes": 60271,
+      "sha256": "83cee263eb49a88fad79c33a5c8d4316cf3a462556f0ba981ee960f9b0353ea3"
+    },
+    {
+      "path": "/workspace/cqc-pass21-preview/HORIZONTAL_BODY_AXES_REAL_CANVAS_V2.png",
+      "bytes": 335748,
+      "sha256": "da4068c3c5e924fc2094f6af2e0b9c0c0055fddbeca7f6cb467c54151b86353f"
+    },
+    {
+      "path": "/workspace/cqc-pass21-preview/LAZY_HORIZONTAL_BODY_DATUM_ACTUAL_V2.json",
+      "bytes": 36356,
+      "sha256": "53f95fc3664019d9004261319459d14c898837512747e850527de7f755de6198"
+    },
+    {
+      "path": "/workspace/cqc-pass21-preview/ORIGINAL_RIG_BODY_AXIS_ACTUAL_V1.json",
+      "bytes": 1571,
+      "sha256": "c43bc78caa0a704e0ffac65427c660ae11d2471d9a417addd2dc9f6547a8f5fd"
+    },
+    {
+      "path": "/workspace/cqc-pass21-preview/PREVIEW_DATUM_CONTRACT_ACTUAL_V1.json",
+      "bytes": 2888,
+      "sha256": "5e8afe518662c6d84ab3e6dc7ebde6bacd7dba4c766695781da8a032281df351"
+    }
+  ],
+  "preservedAttempts": {
+    "HORIZONTAL_BODY_DATUM_ACTUAL_V1.json": "Overly strict projection tolerance1e-6 rejected Canvas transform float rounding of about4e-6 pixels; all28 draws were genuine and had no clipping. Final tolerance1e-4 is substantially below1 pixel.",
+    "LAZY_HORIZONTAL_BODY_DATUM_ACTUAL_V1.json": "Initial restricted Chrome profile failed public-source authority validation; temporary broad browser trust was used for diagnosis only. Final fresh browser used only explicit proxy SPKI trust and all16 draws passed."
+  },
+  "limits": [
+    "The alpha median is a silhouette estimate, not a certified anatomical landmark. Unusual bodies and equipment crossing the band should provide reviewed previewDatumX.",
+    "A stable body axis does not make the full silhouette, head or accessory bounding box identical across independent poses.",
+    "Original articulated-rig source coordinates come from previewMeasure; the original sprite previewGeometry explicitly names its coat stature reference.",
+    "Existing art and canonical-fidelity qualifications remain unchanged.",
+    "No Git commit, production deployment, other module, HTML or source image was changed by this agent."
+  ],
+  "browser": {
+    "ownedPort9492Closed": true,
+    "profileStorage": "RAM only, scoped ephemeral /dev/shm/cqc-pass21-scratch/preview",
+    "sourcePixelsOrUserProfilesPurged": false
+  }
+}

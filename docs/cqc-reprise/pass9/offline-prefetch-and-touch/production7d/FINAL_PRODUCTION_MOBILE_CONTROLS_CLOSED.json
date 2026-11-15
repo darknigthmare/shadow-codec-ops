@@ -1,0 +1,224 @@
+{
+  "schema": "cqc-pass9-closed-production-mobile-controls-delivery/v1",
+  "closedAt": "2026-10-02T14:26:35.412005+00:00",
+  "status": "requested-controls-and-native-touch-passed-with-qualified-offline-prefetch-error",
+  "production": {
+    "baseURL": "https://shadow-codec-ops.vercel.app",
+    "commit40": "7d4719d432cfe82087833f49df02b27fa2f3155f",
+    "gitTree40": "62bf00d481bed6cfd5b4dc66c528a197ca895da1",
+    "deploymentID": "dpl_4vYWRMWyYaZojxgJCRUiWTpnGrK9",
+    "state": "READY",
+    "substate": "PROMOTED",
+    "target": "production",
+    "rootREADY": {
+      "path": "/workspace/vercel-pass9-publication/ROOT_CONFIRMED_MOBILE_CONTROLS_PRODUCTION_READY_7d4719d4.json",
+      "bytes": 1275,
+      "sha256": "80b680aaf119bbdc8bdbd28a2bb0b4bd8bb53bb3f42bfaae3cb3eddebf47ef54"
+    },
+    "actualDeploymentAPIProof": {
+      "path": "/workspace/vercel-pass9-publication/production-state-7d4719d-04.json",
+      "bytes": 12252,
+      "sha256": "ca6d54072a6920b17d75c339a82e2a6926f3542e0000bc370c8bb38c42f091ae"
+    }
+  },
+  "UI": {
+    "report": {
+      "path": "/workspace/cqc-pass9-browser-preparation/mobile-toast-production-7d4719d4-01/verification.json",
+      "bytes": 1123392,
+      "sha256": "af4992c789d072abcb3830cb085b198732fe422c0f6f0b0cf825650d0bc715d7"
+    },
+    "tool": {
+      "path": "/workspace/cqc-pass9-browser-preparation/verify-mobile-toast-fix-v4.py",
+      "bytes": 16221,
+      "sha256": "2cef40f88ddf4843c2a4e9440f71770d0b6fa908704ceb87eaf5a1716e47f49f"
+    },
+    "actualObservations": 40,
+    "actualWidths": [
+      390,
+      980,
+      981
+    ],
+    "routes": "CQC → HOME → SETTINGS → CQC via normal menu; same real offline banner element retained",
+    "CQC390And980": "banner mounted with display:none; twelve touch centres reach actual nested buttons at390 after real Resume",
+    "CQC981": "original desktop status remains visible; desktop game controls selected",
+    "realBrowserOfflineAndOnlineTrusted": true,
+    "actualMousePointersTrusted": true,
+    "requestedUIFlowPassed": true,
+    "pageErrors": [
+      {
+        "column": 1792,
+        "line": 1,
+        "text": "Error: Unable to preload CSS for /assets/VRMissionsScreen-D-X5unoV.css\n    at HTMLLinkElement.<anonymous> (https://shadow-codec-ops.vercel.app/assets/index-BzdOgW7R.js:2:1793)",
+        "url": null
+      }
+    ],
+    "errorQualification": "One optional VRMissionsScreen CSS prefetch rejects during real offline menu traversal. HOME/SETTINGS/CQC transitions and the requested real controls still pass. App.tsx:74–75 starts optional route prefetch without handling rejection. This report does not claim zero UI page errors or complete offline availability of every other module.",
+    "additionalGlobalSourceFixMade": false
+  },
+  "nativeTouch": {
+    "report": {
+      "path": "/workspace/cqc-pass9-browser-preparation/mobile-native-touch-production-7d4719d4-02/verification.json",
+      "bytes": 58855,
+      "sha256": "998aaeb8ade55f3caa28666a643a28c532ef4a1594c29f77030f0d3d2f4208b1"
+    },
+    "tool": {
+      "path": "/workspace/cqc-pass9-browser-preparation/verify-mobile-native-touch-v2.py",
+      "bytes": 15112,
+      "sha256": "fe122fbf07019961e8e73ade8e6311efa3897c8d3244e575987a347ebf9ea30a"
+    },
+    "observations": 7,
+    "actualRuntimeHashGETs": [
+      {
+        "bytes": 386122,
+        "path": "runtime-manifest.json",
+        "sha256": "7cd007af2691f7b9471e1d6ef66079e016ccad79934ae85cff4e793e066f1c21"
+      },
+      {
+        "bytes": 3445760,
+        "path": "modules/unified-versus-v055.html",
+        "sha256": "847ec162d224388058ad2e54490e0922636b042608c063c40c06149205bafea7"
+      }
+    ],
+    "nativePointerType": "touch",
+    "allRelevantNativePointerEventsTrusted": true,
+    "twoFingerSimultaneousInput": [
+      "ArrowRight",
+      "KeyI"
+    ],
+    "secondFingerIsPrimary": false,
+    "realFirstFingerDirectionX": {
+      "start": 380,
+      "afterConcurrentThrow": 459.1999999999996
+    },
+    "actualAmmoSequence": [
+      10,
+      9,
+      10
+    ],
+    "actualFrameSequence": [
+      34,
+      72,
+      136,
+      234
+    ],
+    "timerQualification": "Actual training DOJO timer stays0 (infinite); frame and native event time advance normally. No timer progress was fabricated.",
+    "bothNativeFingersEndedTogether": true,
+    "bothTrustedPointerupEventsObserved": true,
+    "keysAfterNativeTouchEnd": [],
+    "separateFingerReleaseClaimMade": false,
+    "actualLNativeTouchRestoresAmmo": true,
+    "enemyAI": false,
+    "pageErrors": [],
+    "physicalHardwareCertificationMade": false,
+    "scope": "Trusted Chrome touch emulation through real page/iframe hit testing, public match/pause API, actual Resume/controls and real engine frames."
+  },
+  "retainedFailedMicroAttempt": {
+    "report": {
+      "path": "/workspace/cqc-pass9-browser-preparation/mobile-native-touch-production-7d4719d4-01/verification.json",
+      "bytes": 42166,
+      "sha256": "1c1ac451bbc07ad3a3b1f40a004004d09608b9ded56f675df4e7c31d2e52e278"
+    },
+    "originalTool": {
+      "path": "/workspace/cqc-pass9-browser-preparation/verify-mobile-native-touch.py",
+      "bytes": 14751,
+      "sha256": "b107cd0932a62dff9fc8ec024fc8d5d8820665997e7b4cbb1a543a548853398c"
+    },
+    "failure": {
+      "type": "AssertionError",
+      "message": ""
+    },
+    "finding": "Original CDP partial-release hypothesis using touchMove did not generate pointerup for the omitted finger. The failed report and b107 tool remain exact. The distinct v2 ends both real fingers together with legal empty touchEnd and then verifies L."
+  },
+  "preservation": {
+    "parentSourcePins": [
+      {
+        "path": "/workspace/shadow-codec-recovered/src/app/App.tsx",
+        "bytes": 7749,
+        "sha256": "ea4d24ab423d3026718708f5f7501538832cc2de8108e0024e74780959267300"
+      },
+      {
+        "path": "/workspace/shadow-codec-recovered/src/styles/mobile.css",
+        "bytes": 7528,
+        "sha256": "e368860a9d1f7e27a60f9d1d8a703b31a8a7710d5d1b367919dbefc632c1aeb4"
+      },
+      {
+        "path": "/workspace/shadow-codec-recovered/src/components/common/PwaRuntimeBanner.tsx",
+        "bytes": 1226,
+        "sha256": "733542e9cf05c560ad543cc4b2b8b688192353c7438f167fe67bdbfabd8c6217"
+      },
+      {
+        "path": "/workspace/shadow-codec-recovered/src/systems/pwaEngine.ts",
+        "bytes": 3608,
+        "sha256": "aff802bd25640268498658e2ac0aedae479f1d038d80eb57445fedfa6c7eebcf"
+      },
+      {
+        "path": "/workspace/shadow-codec-recovered/src/components/cqc/CqcLauncher.tsx",
+        "bytes": 2096,
+        "sha256": "cfd90ed2b14dc3802799f5604029a498b082ea03844fd893a83821689a78a51d"
+      }
+    ],
+    "nativeSourceFreeze": {
+      "path": "/workspace/cqc-pass9-final-qa/actual43-source-freeze.json",
+      "bytes": 102955,
+      "sha256": "dea09b3b8870c5c7d3eb6f6fbe88c9540a0852422d7f255c30d6d51546687052"
+    },
+    "native334FilesRehashedBeforeAndAfter": true,
+    "publicCqcGitTrees": {
+      "26c5a845dce307c2f2a593cb4859882b023600e7": "14271e4f8141429b8035575116883fca50925057",
+      "7d4719d432cfe82087833f49df02b27fa2f3155f": "14271e4f8141429b8035575116883fca50925057"
+    },
+    "actualPublicCqcTreeIdentical": true,
+    "closed273Native1018HTTPProduction26cReceipt": {
+      "path": "/workspace/cqc-pass9-browser-preparation/FINAL_PRODUCTION_VERIFICATION_CLOSED.json",
+      "bytes": 12467,
+      "sha256": "b1013ded262868d59e4f86b493736f02b24d495c288e88e18224c44918c67bfb"
+    },
+    "closed40LocalUIReceipt": {
+      "path": "/workspace/cqc-pass9-browser-preparation/FINAL_LOCAL_MOBILE_TOAST_FIX_CLOSED.json",
+      "bytes": 8869,
+      "sha256": "355084f8c05ac5fa63b9fd9be755f4f95fce043c1c0c0f28677172bc4db1be9e"
+    },
+    "rootLocalPhysicalReview": {
+      "path": "/workspace/cqc-pass9-browser-preparation/mobile-toast-local-04/ROOT_PHYSICAL_REVIEW.json",
+      "bytes": 1849,
+      "sha256": "679ad0c8d582b0a54b65df18e5728bd2d2ab366f04f9ab2b695a6bc862458061"
+    },
+    "applicationOrPNGWritesByThisAgent": false,
+    "previousReportsOrToolsRewritten": false,
+    "GitOrDeploymentMutationsByThisAgent": false
+  },
+  "screenshots": [
+    {
+      "path": "/workspace/cqc-pass9-browser-preparation/mobile-toast-production-7d4719d4-01/390-CQC-real-offline-no-parent-toast-and-accessible-controls.png",
+      "bytes": 215010,
+      "sha256": "21f9ae42601268741a213e296830e7dd8551365569a8f0b64ccefe1e4bb5780e"
+    },
+    {
+      "path": "/workspace/cqc-pass9-browser-preparation/mobile-toast-production-7d4719d4-01/390-HOME-real-offline-parent-status-still-visible.png",
+      "bytes": 124695,
+      "sha256": "48f729699f1ab91b419b55fb1b49dc90d67fbaecfc980b986cf11c5f3b02b378"
+    },
+    {
+      "path": "/workspace/cqc-pass9-browser-preparation/mobile-toast-production-7d4719d4-01/981-CQC-original-desktop-parent-status-remains-visible.png",
+      "bytes": 489393,
+      "sha256": "c0deacd096615e9f5bd57553c567546bcfe7495c302ff64f4b3141e9a360de64"
+    },
+    {
+      "path": "/workspace/cqc-pass9-browser-preparation/mobile-native-touch-production-7d4719d4-02/390-real-native-multitouch-then-L-parent-toast-clear.png",
+      "bytes": 215266,
+      "sha256": "ad9aa314be633d936d7f4f5d3aac763d8d8e9097f89eb0503f7d83f66e7ecb6f"
+    }
+  ],
+  "producerPhysicallyViewedAllFour": true,
+  "rootPhysicalReviewPending": true,
+  "screenshotsReusedWithoutCopyOrRetouch": true,
+  "cleanup": {
+    "UI": "owned browser closed; actual network restored",
+    "nativeTouch": "owned browser/CDP closed; touches released and real network restored"
+  },
+  "storage": {
+    "UIArtifactsBytes": 1952490,
+    "microArtifactsIncludingFailedAttemptBytes": 316287,
+    "fullCatalogOrPNGCopyMade": false
+  }
+}

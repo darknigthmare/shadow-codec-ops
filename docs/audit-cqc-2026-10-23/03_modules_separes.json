@@ -1,0 +1,52 @@
+[
+  {
+    "id": "ray_mgs4_ps3_2008",
+    "nom": "RAY Liquid Ocelot MGS4",
+    "statut": "PRESENT_MODULE_PRIVE_HORS_64",
+    "preuve_code": "public/cqc/src/cqc-pass33-ray-mgs4.js",
+    "edition": "MGS4 PS3 2008 — Port Area",
+    "existant": "Caméra native gauche, parties segmentées par polygones, mâchoire et supports internes, articulations et contacts de pieds. Aucun raster MGS2 ou Rising substitué.",
+    "animation_cible": "Station lourde ; transferts et pas avec appuis IK ; tête/mâchoire orientée vers cible ; jet hydraulique émis par la bouche ; contact de mêlée et récupération ; impacts et défaite du duel contre REX. Relever chaque séquence dans le combat PS3.",
+    "ecart": "Face opposée indépendante, volumes cachés/extrêmes et chronologie1:1 non certifiés. Missiles/canons ont des ancrages de surface, pas toutes les ouvertures/éjections admises. Support interne du cou reconstruit et timing CQC adapté."
+  },
+  {
+    "id": "mgs4_shadow_moses_port_area",
+    "nom": "Port Area — duel REX/RAY MGS4",
+    "statut": "PRESENT_MODULE_PRIVE_HORS_124",
+    "preuve_code": "public/cqc/src/cqc-pass33-shadow-moses-duel-stage.js",
+    "edition": "MGS4 PS3 2008 — Acte4",
+    "existant": "Trois plans : mer/ciel(.04), quai/sol(1), architecture métallique(.2). Sol568 en unités CQC ; captures de référence aux secondes33810/33830 du longplay PS3 cité dans le code.",
+    "animation_cible": "Mer et atmosphère séparées du quai rigide ; poussière/impacts liés aux pieds des deux machines ; mouvement des structures uniquement attesté. Décor supportant largeur du duel sans étirer les volumes.",
+    "ecart": "Reconstruction peinte et projection2D déclarées non certifiées ; météo désactivée par défaut, pas absence de stage. Vérifier alignement en mouvement et états endommagés avec vrais assets."
+  },
+  {
+    "id": "rex_mgs4_ps3_2008",
+    "nom": "REX piloté MGS4",
+    "statut": "PRESENT_DANS_64_A_NE_PAS_REDUPLIQUER",
+    "preuve_code": "public/cqc/src/cqc-pass31-rex-mgs4.js",
+    "edition": "MGS4 PS3 2008 — REX endommagé",
+    "existant": "Caméra native droite ; cockpit déjà ouvert avec Old Snake, radôme déjà cassé, railgun absent. Rig21pièces ; le duel privé l’emploie avec RAY dédié.",
+    "animation_cible": "Activation depuis hangar, locomotion et poussée, mêlée de machine et tirs attestés, défense, impacts, écrasement et fin de duel. Ne jamais restaurer le radôme ou railgun de MGS1 par erreur.",
+    "ecart": "Caméra inverse et silhouettes extrêmes non admises ; trappes/éjection missiles à relever ; volumes hydrauliques cachés interprétés. L’échelle de présentation n’est pas une mesure canonique."
+  },
+  {
+    "id": "khamsin_mech",
+    "nom": "Khamsin — exosquelette et pilote",
+    "statut": "PRESENT_COMBATTANT_ET_RIGS_DEUX_FACES",
+    "preuve_code": "public/cqc/src/cqc-machine-parts-catalog-v1.js ; public/cqc/src/cqc-pass18-machine-bridge.js",
+    "edition": "Revengeance — Blade Wolf DLC",
+    "existant": "Rigs khamsin_mgr2013_left/right, combattant core__khamsin et arène dédiée Abkhazie.",
+    "animation_cible": "Poids du châssis et jambes mécaniques, anticipation de hache, souffle des réacteurs, balayage, impact au sol, exposition du pilote et attaque finale de Blade Wolf ; mains du pilote liées à commandes.",
+    "ecart": "Ne pas le lister absent du roster. À vérifier : mode boss reproduisant taille, déplacement, faiblesse/arrière et séquence DLC entière, au-delà de son adaptation jouable."
+  },
+  {
+    "id": "cunningham_platform",
+    "nom": "Cunningham — plateforme volante",
+    "statut": "PRESENT_RIG_ET_COMBATTANT",
+    "preuve_code": "public/cqc/src/cqc-pass34-vehicle-articulation.js ; public/cqc/src/cqc-pass18-machine-bridge.js",
+    "edition": "Portable Ops — ascenseur silo",
+    "existant": "Rig cunningham_hover_platform_mpo2006 frontal et scène ascenseur du silo.",
+    "animation_cible": "Cunningham vise depuis plateforme, translations de hover, maintien d’altitude, tir et réaction moteur ; le déplacement du monte-charge reste indépendant du hover.",
+    "ecart": "Profil inverse/arrière et propulsion cachée non admis. Le signal source1px de la sonde documentaire n’est pas une panne asset à rapporter."
+  }
+]
