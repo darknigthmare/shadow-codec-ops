@@ -1,0 +1,44 @@
+{
+  "targetId": "77C39AAA10D9D66BEC1A96BB7DA99382",
+  "sourcePixelsWritten": false,
+  "sourceFunction": "p50/catalog/manifest-model.mjs placement",
+  "actualPlacementFunctionSource": "function placement(frame, canvasWidth, canvasHeight) {\n  const [x, y, w, h] = frame.rect, [px, py] = frame.pivot || [0.5, 1];\n  const bodyHeight = frame.bodyBounds?.[3] || h;\n  const halfWidth = Math.max(0, canvasWidth / 2 - 14);\n  const leftExtent = px * w, rightExtent = (1 - px) * w;\n  const scale = Math.min((canvasHeight - 56) / bodyHeight, leftExtent > 0 ? halfWidth / leftExtent : Infinity, rightExtent > 0 ? halfWidth / rightExtent : Infinity);\n  return { x: canvasWidth / 2 - px * w * scale, y: canvasHeight - 20 - py * h * scale, width: w * scale, height: h * scale, scale, source: [x, y, w, h], groundY: canvasHeight - 20 };\n}",
+  "canvas": [
+    320,
+    360
+  ],
+  "rendered": [
+    {
+      "index": 0,
+      "uid": "roster50__kaz_mgsv",
+      "costumeId": "official--rescued-captive",
+      "sourceSHA256": "daafc984908de162f6ea56f2e4963b95b34ebf0cbf1e0b36a5c8e9a7b9c4ab10",
+      "frame": {
+        "rect": [
+          12,
+          94,
+          991,
+          1370
+        ],
+        "pivot": [
+          0.4429868819374369,
+          0.9992700729927008
+        ]
+      },
+      "placement": {
+        "x": 62.58686131386861,
+        "y": 36.221897810218934,
+        "width": 219.90072992700732,
+        "height": 304,
+        "scale": 0.22189781021897811,
+        "source": [
+          12,
+          94,
+          991,
+          1370
+        ],
+        "groundY": 340
+      }
+    }
+  ]
+}
