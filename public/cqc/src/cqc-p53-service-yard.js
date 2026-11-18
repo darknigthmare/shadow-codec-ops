@@ -21,6 +21,16 @@
         {file: 'mallette', x: 211, y: 545, h: 46, depth: 0.48},
         {file: 'touret', x: 1273, y: 708, h: 114, depth: 0.78, front: true}
       ]
+    },
+    {
+      id: 'p53_null_signals_room', name: 'SOUS-STATION · SALLE D’ÉCOUTE',
+      background: 'signals-room', foot: 0.80, weather: 'intérieur',
+      props: [
+        {file: 'magnetophone', tabletop: [155, 520], sourceHeight: 77},
+        {file: 'casque', tabletop: [300, 521], sourceHeight: 41},
+        {file: 'combine', tabletop: [1432, 520], sourceHeight: 57},
+        {file: 'touret', x: 22, y: 703, h: 85, depth: 0.72, front: true}
+      ]
     }
   ];
   const byId = new Map(rooms.map(room => [room.id, room]));
@@ -80,10 +90,19 @@
       const scale = Math.max((width + 64) / img.naturalWidth, floor / (img.naturalHeight * room.foot),
         (height - floor) / (img.naturalHeight * (1 - room.foot))) * Math.max(1, zoom);
       const w = img.naturalWidth * scale, h = img.naturalHeight * scale;
-      ctx.drawImage(img, (width - w) / 2 - camera * 0.12, floor - room.foot * h, w, h);
+      const left = (width - w) / 2 - camera * 0.12;
+      const top = floor - room.foot * h;
+      ctx.drawImage(img, left, top, w, h);
+      for (const prop of room.props.filter(item => item.tabletop)) {
+        const item = images.get(prop.file).image;
+        const propH = prop.sourceHeight * scale;
+        const propW = propH * item.naturalWidth / item.naturalHeight;
+        const [x, y] = prop.tabletop;
+        ctx.drawImage(item, left + x * scale - propW / 2, top + y * scale - propH, propW, propH);
+      }
     }
     for (const prop of room.props) {
-      if (!!prop.front !== front) continue;
+      if (prop.tabletop || !!prop.front !== front) continue;
       const img = images.get(prop.file).image;
       const h = prop.h * zoom, w = h * img.naturalWidth / img.naturalHeight;
       const x = width / 2 + (prop.x - width / 2 - camera * prop.depth) * zoom;
