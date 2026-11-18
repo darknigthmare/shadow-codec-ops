@@ -1,4 +1,4 @@
-/* Playable, authored Portable Ops simulations. Original backgrounds and movable props. */
+/* Authored Versus arenas and independently positioned scenery. */
 (() => {
   'use strict';
   const root = new URL('../assets/p53-service-yard/', document.currentScript.src);
@@ -31,13 +31,22 @@
         {file: 'combine', tabletop: [1432, 520], sourceHeight: 57},
         {file: 'touret', x: 22, y: 703, h: 85, depth: 0.72, front: true}
       ]
+    },
+    {
+      id: 'p53_big_shell_strut_c_dining', name: 'BIG SHELL · STRUT C · SALLE À MANGER',
+      ep: 'MGS2 · SONS OF LIBERTY', background: 'strut-c-mess', foot: 0.82, weather: 'intérieur',
+      props: [
+        {file: 'strut-c-serving-cart', x: 125, y: 519, h: 95, depth: 0.18},
+        {file: 'strut-c-bench', x: 936, y: 544, h: 90, depth: 0.32},
+        {file: 'strut-c-bench', x: -46, y: 715, h: 148, depth: 0.84, front: true}
+      ]
     }
   ];
   const byId = new Map(rooms.map(room => [room.id, room]));
   const images = new Map();
   const pending = new Map();
   const stages = rooms.map(room => ({
-    id: room.id, name: room.name, ep: 'PORTABLE OPS · SIMULATION CQC',
+    id: room.id, name: room.name, ep: room.ep || 'PORTABLE OPS · SIMULATION CQC',
     family: 'industriel', sky: ['#58625b', '#34423d', '#18211e'],
     weather: room.weather, props: room.props.map(prop => prop.file)
   }));
