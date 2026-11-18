@@ -2,7 +2,7 @@
 
 [Ouvrir les sprites et les calques](index.html) · [Données d’intégration](assets.json)
 
-Le soldat MSF de *Peace Walker* dispose ici d’une reprise d’appui pour chaque tenue Versus et d’une garde basse pour le Scout. La garde basse et la reprise d’appui se lisent chacune dans un PNG RGBA individuel orienté vers la droite. Les trois poses ont été produites avec ImageGen à partir des références de costume du projet. Les poses sont des interprétations de production. Leur admission dans le moteur et leur comparaison avec les animations du jeu d’origine restent à faire.
+Le soldat MSF de *Peace Walker* dispose ici de deux gestes dessinés pour chaque tenue Versus. La garde basse et la reprise d’appui se lisent chacune dans un PNG RGBA individuel orienté vers la droite. Les quatre poses ont été produites avec ImageGen à partir des références de costume du projet. Les poses sont des interprétations de production. Leur admission dans le moteur et leur comparaison avec les animations du jeu d’origine restent à faire.
 
 Le Guard possède quatre pièces séparées issues du premier pas de sa marche P53. Le Scout en possède cinq. Chaque pièce conserve ses pixels visibles et sa position exacte dans cette image. La surface occultée sous chaque pièce reste vide sur le calque du corps. Ces découpes servent donc à isoler le dessin, à le référencer et à le recomposer à sa position d’origine.
 
