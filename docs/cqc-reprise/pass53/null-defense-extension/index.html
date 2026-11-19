@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Null · poses défensives · CQC P53</title>
+<style>
+  :root{color-scheme:dark;font:16px/1.5 system-ui,sans-serif;background:#121719;color:#eef0e8}
+  *{box-sizing:border-box}body{margin:0}main{max-width:1400px;margin:auto;padding:36px 24px 64px}
+  h1{font-size:clamp(28px,4vw,48px);line-height:1.1;letter-spacing:-.03em;margin:10px 0 20px}h2{font-size:19px;margin:16px 0 8px}
+  p{max-width:900px}a{color:#d9df93}small,.caption{color:#bec5bd}header{border-bottom:1px solid #3b4544;padding-bottom:20px;margin-bottom:24px}
+  .eyebrow{letter-spacing:.16em;font-size:12px;text-transform:uppercase;color:#d9df93}.status{display:inline-block;border:1px solid #a28c52;border-radius:6px;color:#e1cc91;padding:4px 10px;font-size:13px}
+  .toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:24px}select{font:inherit;background:#26312f;border:1px solid #708076;color:#fff;padding:8px 12px;border-radius:6px}
+  .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}article{background:#1b2423;border:1px solid #414c46;border-radius:10px;overflow:hidden}.details{padding:0 18px 20px}.plate{height:520px;display:grid;place-items:center;padding:24px;background-color:#626862;background-image:linear-gradient(45deg,#4f5751 25%,transparent 25%),linear-gradient(-45deg,#4f5751 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#4f5751 75%),linear-gradient(-45deg,transparent 75%,#4f5751 75%);background-size:32px 32px;background-position:0 0,0 16px,16px -16px,-16px 0}
+  .plate img{max-width:100%;max-height:472px;width:auto;height:auto;object-fit:contain}body[data-bg="light"] .plate{background:#f3f0e6}body[data-bg="dark"] .plate{background:#18211d}body[data-bg="blue"] .plate{background:#819dad}
+  .notice{border-left:3px solid #a28c52;padding:8px 18px;margin-top:28px;background:#202824}.references{margin-top:32px}.reference-link{display:inline-block;margin-right:20px}
+  @media(max-width:900px){.grid{grid-template-columns:1fr}.plate{height:520px}main{padding:24px 16px}}
+</style>
+<main>
+  <header>
+    <div class="eyebrow">CQC Versus Legacy · Pass 53 · 19 novembre 2026</div>
+    <h1>Null — poses défensives</h1>
+    <span class="status">Sources de revue · hors combat</span>
+    <p>Trois dessins individuels complètent les études de garde existantes. Chaque image représente une pose distincte ; aucune boucle animée n’est simulée dans cette galerie.</p>
+  </header>
+  <div class="toolbar"><label for="background">Fond de contrôle</label><select id="background"><option value="checker">Damier</option><option value="light">Clair</option><option value="dark">Sombre</option><option value="blue">Bleu gris</option></select><small>Les PNG bruts conservent leur canal alpha.</small></div>
+  <section class="grid" aria-label="Trois nouvelles poses">
+    <article><div class="plate"><img src="null-high-guard-right.png" alt="Null en garde haute, corps entier orienté vers la droite"></div><div class="details"><h2>Garde haute neutre</h2><p>Deux appuis au sol, buste redressé, deux poings près du visage.</p><p class="caption">1024 × 1536 · RGBA · droite</p><a href="null-high-guard-right.png">Ouvrir le PNG</a></div></article>
+    <article><div class="plate"><img src="null-low-guard-entry-right.png" alt="Null fléchit les genoux et incline le buste pour entrer en garde basse"></div><div class="details"><h2>Entrée en garde basse</h2><p>Flexion intermédiaire, buste incliné, avant-bras près du masque.</p><p class="caption">1062 × 1482 · RGBA · droite</p><a href="null-low-guard-entry-right.png">Ouvrir le PNG</a></div></article>
+    <article><div class="plate"><img src="null-low-guard-release-right.png" alt="Null redresse son buste et abaisse légèrement son avant-bras avant"></div><div class="details"><h2>Relâchement de la garde</h2><p>Buste en redressement, avant-bras avant rouvert vers le torse.</p><p class="caption">1060 × 1484 · RGBA · droite</p><a href="null-low-guard-release-right.png">Ouvrir le PNG</a></div></article>
+  </section>
+  <div class="notice"><strong>Validation encore nécessaire.</strong><p>La fidélité au modèle officiel n’est pas certifiée. Raccords, durées, ancrages, volumes de collision et vue gauche restent à établir avant admission au jeu. Les figures sont ajustées aux cartes pour consultation ; cette mise à l’échelle ne définit pas une échelle de combat commune.</p></div>
+  <section class="references"><h2>Références et contrôle</h2><a class="reference-link" href="../null-defense/index.html">Deux poses précédentes</a><a class="reference-link" href="../null-defense/reference/null-p53-source.png">Sprite source du projet</a><a class="reference-link" href="manifest.json">Manifeste</a><a class="reference-link" href="verification.json">Vérification</a><a class="reference-link" href="generation-prompts.json">Prompts</a></section>
+</main>
+<script>document.getElementById('background').addEventListener('change',event=>{document.body.dataset.bg=event.target.value;});</script>
+</html>

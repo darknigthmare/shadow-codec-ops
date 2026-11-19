@@ -1,7 +1,29 @@
 /* Authored Versus arenas and independently positioned scenery. */
 (() => {
   'use strict';
-  const root = new URL('../assets/p53-service-yard/', document.currentScript.src);
+  const scriptUrl = document.currentScript.src;
+  // Explicit filenames also keep these dependencies visible to the runtime manifest.
+  const assetPaths = {
+    'power-yard': '../assets/p53-service-yard/power-yard.png',
+    'switchgear-hall': '../assets/p53-service-yard/switchgear-hall.png',
+    'signals-room': '../assets/p53-service-yard/signals-room.png',
+    'armoire': '../assets/p53-service-yard/armoire.png',
+    'touret': '../assets/p53-service-yard/touret.png',
+    'barriere': '../assets/p53-service-yard/barriere.png',
+    'diable': '../assets/p53-service-yard/diable.png',
+    'mallette': '../assets/p53-service-yard/mallette.png',
+    'magnetophone': '../assets/p53-service-yard/magnetophone.png',
+    'casque': '../assets/p53-service-yard/casque.png',
+    'combine': '../assets/p53-service-yard/combine.png',
+    'strut-c-mess': '../assets/p53-service-yard/strut-c-mess.png',
+    'strut-c-serving-cart': '../assets/p53-service-yard/strut-c-serving-cart.png',
+    'strut-c-bench': '../assets/p53-service-yard/strut-c-bench.png',
+    'strut-f-warehouse': '../assets/p53-service-yard/strut-f-warehouse.png',
+    'strut-f-storage-crate': '../assets/p53-service-yard/strut-f-storage-crate.png',
+    'strut-f-railing': '../assets/p53-service-yard/strut-f-railing.png',
+    'strut-f-pallet-jack': '../assets/p53-service-yard/strut-f-pallet-jack.png',
+    'strut-f-service-lamp': '../assets/p53-service-yard/strut-f-service-lamp.png'
+  };
   const width = 1280, height = 720, floor = 568;
   const rooms = [
     {
@@ -40,6 +62,17 @@
         {file: 'strut-c-bench', x: 936, y: 544, h: 90, depth: 0.32},
         {file: 'strut-c-bench', x: -46, y: 715, h: 148, depth: 0.84, front: true}
       ]
+    },
+    {
+      id: 'p53_big_shell_strut_f_warehouse', name: 'BIG SHELL · STRUT F · ENTREPÔT',
+      ep: 'MGS2 · SONS OF LIBERTY', background: 'strut-f-warehouse', foot: 0.81, weather: 'intérieur',
+      props: [
+        {file: 'strut-f-pallet-jack', sourceRect: [176, 13, 1421, 854], x: 170, y: 548, h: 90, depth: 0.28},
+        {file: 'strut-f-service-lamp', sourceRect: [300, 68, 623, 1191], x: 1236, y: 536, h: 116, depth: 0.20},
+        {file: 'strut-f-storage-crate', sourceRect: [120, 267, 1531, 428], x: 1110, y: 544, h: 62, depth: 0.25},
+        {file: 'strut-f-railing', sourceRect: [84, 80, 2002, 561], x: 100, y: 714, h: 122, depth: 0.78, front: true},
+        {file: 'strut-f-railing', sourceRect: [84, 80, 2002, 561], x: 1180, y: 714, h: 122, depth: 0.78, front: true}
+      ]
     }
   ];
   const byId = new Map(rooms.map(room => [room.id, room]));
@@ -66,7 +99,7 @@
       };
       image.onload = () => finish(image.naturalWidth > 0 && image.naturalHeight > 0);
       image.onerror = () => finish(false);
-      image.src = new URL(file + '.png', root).href;
+      image.src = new URL(assetPaths[file], scriptUrl).href;
     });
     return item.promise;
   }
@@ -81,8 +114,12 @@
   function preload(stage, options = {}) {
     const room = byId.get(stage?.id);
     if (!room) return Promise.resolve(false);
-    if (!options.retry && pending.has(room.id)) return pending.get(room.id);
-    const job = Promise.all(imageNames(room).map(file => load(file, !!options.retry))).then(items => items.every(Boolean));
+    if (pending.has(room.id)) return pending.get(room.id);
+    // Cache only in-flight work. A shared prop may have recovered in another
+    // room, so a completed failure must not prevent this room from starting.
+    const job = Promise.all(imageNames(room).map(file => load(file, !!options.retry)))
+      .then(items => items.every(Boolean))
+      .finally(() => { if (pending.get(room.id) === job) pending.delete(room.id); });
     pending.set(room.id, job);
     return job;
   }
@@ -113,10 +150,14 @@
     for (const prop of room.props) {
       if (prop.tabletop || !!prop.front !== front) continue;
       const img = images.get(prop.file).image;
-      const h = prop.h * zoom, w = h * img.naturalWidth / img.naturalHeight;
+      const source = prop.sourceRect;
+      const ratio = source ? source[2] / source[3] : img.naturalWidth / img.naturalHeight;
+      const h = prop.h * zoom, w = h * ratio;
       const x = width / 2 + (prop.x - width / 2 - camera * prop.depth) * zoom;
       const y = floor + (prop.y - floor) * zoom;
-      ctx.drawImage(img, x - w / 2, y - h, w, h);
+      // Trim transparent padding only while drawing; source PNG bytes stay intact.
+      if (source) ctx.drawImage(img, ...source, x - w / 2, y - h, w, h);
+      else ctx.drawImage(img, x - w / 2, y - h, w, h);
     }
     ctx.restore();
     return true;

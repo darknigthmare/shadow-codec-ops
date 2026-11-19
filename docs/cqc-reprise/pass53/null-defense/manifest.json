@@ -1,0 +1,103 @@
+{
+  "schema": "cqc.p53.null-defense/1",
+  "createdOn": "2026-11-19",
+  "title": "Null · Portable Ops · deux poses défensives",
+  "uid": "core__null_mpo",
+  "game": "Metal Gear Solid: Portable Ops",
+  "costumeId": "original",
+  "scope": "Deux nouvelles poses statiques individuelles, droite uniquement. Ne constitue pas une animation complète.",
+  "sourceReference": {
+    "file": "reference/null-p53-source.png",
+    "repositoryPath": "docs/cqc-reprise/pass53/arena-studies/actors/core__null_mpo.png",
+    "gitCommit": "192c473bf5c64f9babd0d2e3c45419ffe5fac0f4",
+    "gitBlob": "3acd191261ce3bd20469d72c0f2a1914bc28249c",
+    "sha256": "29b537e15714d3f9f08e9f30be1e7e98263163b6475090969409785920090735",
+    "kind": "existing-project-sprite",
+    "canvas": [
+      155,
+      340
+    ]
+  },
+  "provenance": {
+    "generator": "image_gen built-in",
+    "promptFile": "generation-prompts.json",
+    "pixelProcessing": "Aucun : copies exactes des PNG générés.",
+    "catalogueGapFile": "catalogue-gap.json"
+  },
+  "coordinateSystem": "Pixels depuis le coin supérieur gauche. Rectangles alpha [gauche, haut, droite exclusive, bas exclusif]. solePivotPixels est un repère visuel calculé sur les quatre dernières rangées alpha>=32, pas un point de collision.",
+  "review": {
+    "singleFigurePerImage": true,
+    "transparentBackground": true,
+    "fullBodyVisible": true,
+    "differentPoses": true,
+    "sameProjectIdentity": true,
+    "sourceGameFidelityCertified": false,
+    "runtimeAdmitted": false,
+    "limits": [
+      "La référence immédiate est une peinture du projet, pas une capture extraite de Portable Ops.",
+      "Détails de boucles, cheveux et volumes reconstruits à plus haute résolution ; comparaison au modèle du jeu encore nécessaire.",
+      "Deux poses isolées, sans phases de transition, timings, hitboxes, vue gauche ni validation en combat.",
+      "La reprise d’appui propose une lecture du mouvement arrière sur une seule pose ; la direction effective dépendra de la séquence et du déplacement du moteur."
+    ]
+  },
+  "assets": [
+    {
+      "id": "null-low-guard-right",
+      "uid": "core__null_mpo",
+      "action": "low-guard",
+      "description": "Garde basse : genoux fléchis, buste avancé, avant-bras protégeant le masque.",
+      "facing": "right",
+      "file": "null-low-guard-right.png",
+      "canvas": [
+        1227,
+        1281
+      ],
+      "mode": "RGBA",
+      "bytes": 945404,
+      "sha256": "6cf9306fc5e3c0a446c56b14470a161a09b9c715bed87acc0d5f2ec002d87361",
+      "alphaBounds32": [
+        126,
+        85,
+        1087,
+        1204
+      ],
+      "solePivotPixels": [
+        196.22,
+        1204
+      ],
+      "visiblePixelsAlpha32": 463593,
+      "fullyTransparentPixels": 1094046,
+      "status": "POSE_DRAWN_REVIEW_PENDING",
+      "runtimeAdmitted": false
+    },
+    {
+      "id": "null-backstep-recovery-right",
+      "uid": "core__null_mpo",
+      "action": "backstep-recovery",
+      "description": "Reprise d’appui arrière : poids sur le pied arrière, pied avant relevé, mains en garde.",
+      "facing": "right",
+      "file": "null-backstep-recovery-right.png",
+      "canvas": [
+        1062,
+        1481
+      ],
+      "mode": "RGBA",
+      "bytes": 1016239,
+      "sha256": "c4ce5d8b4397bfcd4962623d24aaff691e8aa1d0a3c9bbeff160486cc4f9d1a8",
+      "alphaBounds32": [
+        146,
+        16,
+        828,
+        1418
+      ],
+      "solePivotPixels": [
+        264.65,
+        1418
+      ],
+      "visiblePixelsAlpha32": 471569,
+      "fullyTransparentPixels": 1081836,
+      "status": "POSE_DRAWN_REVIEW_PENDING",
+      "runtimeAdmitted": false
+    }
+  ]
+}
