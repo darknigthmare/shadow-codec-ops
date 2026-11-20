@@ -161,6 +161,24 @@
       };
       decorated.add(bank); return bank;
     }
+    // Parent modes keep late child messages from affecting a newer launch.
+    function createLaunchSequence(prefix = 'mode') {
+      let serial = 0, current = null;
+      return {
+        begin() { current = `${prefix}-${Date.now().toString(36)}-${++serial}`; return current; },
+        current: () => current,
+        accepts: message => current !== null && message?.requestId === current,
+        clear() { const previous = current; current = null; return previous; }
+      };
+    }
+    function presentEmbeddedLoadError(overlay, host, message) {
+      const engine = host?.__CQC055Versus || host?.__CQC053Versus;
+      const childHasRecovery = engine?.getLoadingState?.()?.status === 'failed';
+      // The child owns the visible retry/cancel dialog. A parent cover blocks it.
+      overlay.classList.toggle('hidden', childHasRecovery);
+      if (!childHasRecovery) overlay.textContent = 'Liaison interrompue : ' + String(message || 'Le combat ne peut pas démarrer.');
+      return childHasRecovery;
+    }
     function loadingUI() {
       if (dependencies.loadingUI) return dependencies.loadingUI;
       let overlay, message, retry, cancel;
@@ -209,7 +227,8 @@
       load(false); return true;
     }
     return {version: 'cqc-authored-mode-scenes/1', stages, resolve, appendStages, appendCoreStages,
-      preload, status, renderPreview, renderPreviewForeground, decorateCoreBank, deferCoreLaunch};
+      preload, status, renderPreview, renderPreviewForeground, decorateCoreBank, deferCoreLaunch,
+      createLaunchSequence, presentEmbeddedLoadError};
   }
   return {createAdapter};
 });
