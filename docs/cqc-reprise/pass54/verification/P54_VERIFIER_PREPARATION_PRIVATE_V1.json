@@ -1,0 +1,29 @@
+{
+  "schema": "cqc.p54.independent-verifier-prepared/1",
+  "atUTC": "2026-11-20T10:27:09.424633+00:00",
+  "script": "/tmp/cqc-p54-20261120/verification/verify_p54_delivery.py",
+  "scriptSHA256": "ddebdee0a97cb9dbd0cc75574c2d147a4d44e819504d47ad7c1a300f7a50ff21",
+  "syntax": "PASS",
+  "previousExpandedProvisional": "PASS_PROVISIONAL_PENDING_GATES",
+  "currentSourceDataFrozenByVerifier": false,
+  "writesLimitedToVerificationDirectory": true,
+  "finalRequires": [
+    "Root frozen source inventory and --freeze contract",
+    "Root approved historical runtime HTML/JS --allowlist",
+    "Regenerated canonical runtime manifest",
+    "Actual --browser-report bound to inventorySHA256/runtimeManifestSHA256",
+    "Final workbook70sheets preserving67historicalsheetXMLs"
+  ],
+  "browserProofSchema": {
+    "status": "PASS",
+    "inventorySHA256": "actualfinalnormalizedinventory SHA256",
+    "runtimeManifestSHA256": "actualfinalruntime-manifest SHA256",
+    "sourceLoadErrors": 0,
+    "horizontalOverflow": false,
+    "uncaughtBrowserExceptions": [],
+    "cases": [
+      "actual observed case objects"
+    ]
+  },
+  "finalCommand": "python verification/verify_p54_delivery.py --mode final --workers 3 --allowlist ROOT_ALLOWLIST.json --freeze ROOT_FREEZE.json --browser-report ACTUAL_BROWSER.json"
+}

@@ -1,0 +1,60 @@
+{
+  "schema": "cqc.p54.mode-links/1",
+  "atUTC": "2026-11-20T10:18:27.647910+00:00",
+  "baseCommit": "04221faf7933b4a33cf63e3859533639f010723e",
+  "changedSources": [
+    {
+      "path": "public/cqc/src/cqc-p54-mode-scenes.js",
+      "bytes": 11682,
+      "sha256": "194ac8ac1f116576d5cc54b6f1391d1cef88900f38a26821efe2ec171307355c"
+    },
+    {
+      "path": "public/cqc/modules/core-v032.html",
+      "bytes": 1573482,
+      "sha256": "bf7eb7ac44d3830065213fe8a8b1442f4da63ac3774cb8d62cdb2b8912e21d17"
+    },
+    {
+      "path": "public/cqc/modules/arcade-chronicles-v055.html",
+      "bytes": 3139288,
+      "sha256": "4cc87d6b6ac03b5391e86cf4220dcfe521e5dd91a6cbea7f5f41f89cfbd1f0f3"
+    },
+    {
+      "path": "public/cqc/modules/combat-academy-v053.html",
+      "bytes": 3543797,
+      "sha256": "98975a3fd9ba52062bd9104341559e7d655d7358d2ff3a18bcd68c0c69a2358e"
+    },
+    {
+      "path": "scripts/test-cqc-p54-mode-scenes.mjs",
+      "bytes": 9557,
+      "sha256": "1f500557cd68dfe36f32a92070fa205c79d3fcca5d9c609997571400f5e7f8f2"
+    }
+  ],
+  "behavior": {
+    "Core": "Authored scene IDs are explicitly listed for free CPU/local/training/competition stage selection as EXERCICE; imported local art remains authoritative, pending launch waits on scene image loading with retry/cancel; Core floor mapped to578. No boss canonical stage reassignment.",
+    "Academy": "Only free AI scene options append actual iframe CQC_SERVICE_YARD stages, preserving the exact original stage name as launch value; lessons, weekly data and defaults unchanged.",
+    "Chronicles": "Explicitly named custom-run authored IDs resolve to actual iframe scene names for preview and result matching; no new circuits or canonical campaign scene admission.",
+    "renderer": "No PNG modifications or new images. Background/foreground share exact registered camera/time per frame; late preview completions cannot restore an old selected scene."
+  },
+  "canonicalRegistryChanged": false,
+  "newCanonicalRouteAdmissions": 0,
+  "newActorAdmissions": 0,
+  "tests": {
+    "runner": "node --test scripts/test-cqc-p54-mode-scenes.mjs",
+    "status": "PASS",
+    "checks": 13,
+    "exitCode": 0,
+    "usesActualP53ServiceModule": true,
+    "imageCallbacksControlled": true,
+    "inlineScriptsParsed": [
+      "core-v032.html",
+      "arcade-chronicles-v055.html",
+      "combat-academy-v053.html"
+    ]
+  },
+  "limits": [
+    "Real browser coverage Core13/Academy3/Chronicles4, not every fighter or campaign.",
+    "Controlled images in unit tests are transport fixtures, not new art.",
+    "Core includes Root stage/machine bootstrap additions preserved at source readback."
+  ],
+  "browserQAReport": "/tmp/cqc-p54-20261120/qa/modes/P54_MODES_BROWSER_QA_PRIVATE_V1.json"
+}
