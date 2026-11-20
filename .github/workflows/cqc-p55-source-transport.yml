@@ -3,6 +3,9 @@ on:
   push:
     branches: [codex/cqc-p55-source-transport-20261120]
     paths: ['docs/cqc-reprise/pass55/transport/*manifest.json']
+concurrency:
+  group: cqc-p55-source-transport
+  cancel-in-progress: true
 permissions:
   contents: write
 jobs:
@@ -27,6 +30,15 @@ jobs:
               except urllib.error.HTTPError as error:
                 if data is not None or error.code not in [429,500,502,503,504] or attempt==3:raise
                 time.sleep(min(20,2**attempt))
+          def raw_chunk(source,index):
+            path='docs/cqc-reprise/pass55/transport/chunks/'+source['id']+'/'+str(index).zfill(4)+'.bin'
+            url='https://raw.githubusercontent.com/'+repo+'/'+commit+'/'+path
+            for attempt in range(5):
+              try:
+                with urllib.request.urlopen(url,timeout=90) as response:return response.read()
+              except urllib.error.HTTPError as error:
+                if error.code not in [404,429,500,502,503,504] or attempt==4:raise
+                time.sleep(min(10,2**attempt))
           head=api('git/ref/heads/'+branch)['object']['sha']
           if head!=commit:raise RuntimeError('Source transport lease changed')
           parent=api('git/commits/'+commit)
@@ -51,8 +63,8 @@ jobs:
               if present.get(path)==source['blobSHA']:
                 print('Reused exact previously verified source',path,source['blobSHA']);continue
               chunks=[]
-              for chunk in source['chunks']:
-                raw=base64.b64decode(api('git/blobs/'+chunk['sha'])['content'])
+              for index,chunk in enumerate(source['chunks']):
+                raw=raw_chunk(source,index)
                 if len(raw)!=chunk['bytes'] or hashlib.sha256(raw).hexdigest()!=chunk['sha256']:raise RuntimeError('Chunk integrity failure')
                 chunks.append(raw)
               raw=b''.join(chunks)
