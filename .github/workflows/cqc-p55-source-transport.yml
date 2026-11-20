@@ -1,0 +1,54 @@
+name: Assemble exact P55 source bytes
+on:
+  push:
+    branches: [codex/cqc-p55-source-transport-20261120]
+    paths: ['docs/cqc-reprise/pass55/transport/*manifest.json']
+permissions:
+  contents: write
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Verify and assemble source chunks
+        env:
+          GH_TOKEN: ${{ github.token }}
+          INPUT_COMMIT: ${{ github.sha }}
+          SOURCE_BRANCH: codex/cqc-p55-source-transport-20261120
+        shell: python
+        run: |
+          import os,json,base64,hashlib,urllib.request,pathlib
+          repo=os.environ['GITHUB_REPOSITORY'];token=os.environ['GH_TOKEN'];commit=os.environ['INPUT_COMMIT'];branch=os.environ['SOURCE_BRANCH']
+          def api(route,data=None,method=None):
+            req=urllib.request.Request('https://api.github.com/repos/'+repo+'/'+route,data=None if data is None else json.dumps(data).encode(),method=method,headers={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','Content-Type':'application/json','X-GitHub-Api-Version':'2022-11-28'})
+            with urllib.request.urlopen(req,timeout=90) as response:return json.load(response)
+          head=api('git/ref/heads/'+branch)['object']['sha']
+          if head!=commit:raise RuntimeError('Source transport lease changed')
+          parent=api('git/commits/'+commit);tree=api('git/trees/'+parent['tree']['sha']+'?recursive=1')
+          if tree.get('truncated'):raise RuntimeError('Transport tree truncated')
+          manifests=[p for p in tree['tree'] if p['path'].startswith('docs/cqc-reprise/pass55/transport/') and p['path'].endswith('manifest.json')]
+          entries=[]
+          for entry in manifests:
+            manifest=json.loads(base64.b64decode(api('git/blobs/'+entry['sha'])['content']))
+            for source in manifest['sources']:
+              path=source['path']
+              if not path.startswith('docs/cqc-reprise/pass55/sources/') or '..' in pathlib.PurePosixPath(path).parts:raise RuntimeError('Invalid output path')
+              chunks=[]
+              for chunk in source['chunks']:
+                raw=base64.b64decode(api('git/blobs/'+chunk['sha'])['content'])
+                if len(raw)!=chunk['bytes'] or hashlib.sha256(raw).hexdigest()!=chunk['sha256']:raise RuntimeError('Chunk integrity failure')
+                chunks.append(raw)
+              raw=b''.join(chunks)
+              if len(raw)!=source['bytes'] or hashlib.sha256(raw).hexdigest()!=source['sha256']:raise RuntimeError('Source integrity failure')
+              oid=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
+              if oid!=source['blobSHA']:raise RuntimeError('Source Git OID failure')
+              result=api('git/blobs',{'encoding':'base64','content':base64.b64encode(raw).decode()})
+              if result['sha']!=oid:raise RuntimeError('Stored blob mismatch')
+              entries.append({'path':path,'mode':'100644','type':'blob','sha':oid})
+              print('Verified source',path,len(raw),source['sha256'],oid)
+          if not entries:raise RuntimeError('No transport sources')
+          newtree=api('git/trees',{'base_tree':parent['tree']['sha'],'tree':entries})
+          newcommit=api('git/commits',{'message':'art(cqc): assemble exact P55 PNG source bytes','tree':newtree['sha'],'parents':[commit]})
+          if api('git/ref/heads/'+branch)['object']['sha']!=commit:raise RuntimeError('Transport lease changed before publication')
+          api('git/refs/heads/'+branch,{'sha':newcommit['sha'],'force':False},'PATCH')
+          print('Exact source commit',newcommit['sha'])
