@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0e1716">
+  <title>Cour des balises · Station Méridien</title>
+  <link rel="stylesheet" href="rook.css">
+  <link rel="stylesheet" href="training.css">
+</head>
+<body>
+  <header>
+    <a href="index.html">← Dossier de Rook</a>
+    <span>Station Méridien</span>
+  </header>
+  <main class="training">
+    <p class="role">Reconnaissance</p>
+    <h1>Cour des balises</h1>
+    <p>Étalonne le récepteur de MULET avec l’impulsion à distance, puis approche-toi pour le marqueur de proximité.</p>
+    <canvas id="calibration-canvas" width="1280" height="720" tabindex="0" aria-label="Exercice de Rook et du banc d’étalonnage MULET"></canvas>
+    <div class="controls" aria-label="Commandes de l’exercice">
+      <button type="button" id="move-left" aria-label="Déplacer Rook à gauche">←</button>
+      <button type="button" id="move-right" aria-label="Déplacer Rook à droite">→</button>
+      <button type="button" id="send-pulse">Impulsion <kbd>J</kbd></button>
+      <button type="button" id="send-marker">Marqueur <kbd>K</kbd></button>
+      <button type="button" id="reset-training">Recommencer</button>
+    </div>
+    <p id="training-status" role="status">Préparation de la cour…</p>
+    <div class="preferences">
+      <label for="rook-outfit">Tenue de Rook</label>
+      <select id="rook-outfit">
+        <option value="terrain">Reconnaissance</option>
+        <option value="orage">Quart d’orage</option>
+      </select>
+      <label><input type="checkbox" id="reduced-motion"> Réduire les animations du décor</label>
+    </div>
+  </main>
+  <script src="../../src/cqc-p53-service-yard.js"></script>
+  <script src="../../src/cqc-p54-stages.js"></script>
+  <script src="../../src/cqc-p55-stage-planes.js"></script>
+  <script src="../../src/cqc-p56-reservoir.js"></script>
+  <script src="../../src/cqc-p57-beacon-yard.js"></script>
+  <script type="module" src="training.js"></script>
+</body>
+</html>

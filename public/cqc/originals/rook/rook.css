@@ -25,13 +25,17 @@ header {
   color: #bfcec3;
 }
 
-.dossier {
+.dossier, .wardrobe {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
   align-items: center;
   gap: clamp(1rem, 4vw, 3rem);
   padding: clamp(1.5rem, 5vw, 4rem) 0;
 }
+
+.wardrobe { border-top: 1px solid #354842; }
+.wardrobe h2 { font-size: clamp(2rem, 6vw, 3.5rem); line-height: 1.1; margin: 0; }
+.exercise-link { display: inline-block; padding: .65em 1em; border: 1px solid #697f6b; background: #273831; }
 
 .role {
   color: #8fd5c4;
@@ -58,5 +62,5 @@ img { display: block; width: min(100%, 500px); height: auto; }
 figcaption { margin-top: .5rem; text-align: center; font-size: .85rem; color: #bfcec3; }
 
 @media (max-width: 680px) {
-  .dossier { grid-template-columns: minmax(0, 1fr); }
+  .dossier, .wardrobe { grid-template-columns: minmax(0, 1fr); }
 }
