@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CQC — Dossiers des combattants</title>
+  <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+  <header><p class="frequency">CQC / ARCHIVES DE TERRAIN</p><h1>Renforts et équipements</h1>
+    <p>Les visages, silhouettes et tenues des opérations.</p>
+    <nav><a href="../../modules/atelier-v056.html">Retour à l’atelier</a><a href="../../modules/unified-versus-v055.html">Versus libre</a></nav>
+  </header>
+  <main>
+    <div class="filters"><label>Dossier<input id="search" type="search" placeholder="Nom ou équipement" autocomplete="off"></label>
+      <label>Collection<select id="collection"><option value="">Tous les dossiers</option><option value="character">Renforts</option><option value="costume">Tenues</option><option value="metalgear">Machines</option></select></label>
+    </div>
+    <p id="status" role="status">Transmission des dossiers…</p><div id="cards" class="grid"></div>
+  </main>
+  <script type="module" src="gallery.js"></script>
+</body>
+</html>

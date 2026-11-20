@@ -1,0 +1,27 @@
+{
+  "schema": "cqc.p54.verifier-completed/1",
+  "atUTC": "2026-11-20T10:53:44.224117+00:00",
+  "status": "PASS_FINAL",
+  "errors": 0,
+  "inputSnapshotStable": true,
+  "finalScriptSHA256": "347f1bc0fb5bc062fd0756eb280c15ec2d2e6f038e8fa2a94560493dc3208e4c",
+  "publicAggregateSHA256": "ca2c00b6c689842274a2753b3df31b3ae53f19bc0c3da337a6f87440d97bf4ef",
+  "detailSHA256": "ecf8ee2df9809b32ae12eaa2f480cd8214c79a92e9e4641a78c0828b501fbce1",
+  "verificationMethod": "Streamed materialized current Git blob SHA1 versus immutable baseline tree; sparse index pointers preserve excluded historical files. No historical-pack payload refetch.",
+  "narrowVerifierCorrections": [
+    "Replaced git diff after SIGBUS with stronger streamed baseline comparison; no source/runtime/index mutation.",
+    "Accepted only Root-authorized exact package QA script/chain delta after proving all other fields unchanged.",
+    "Workbook checks versioned (ID,SHA) pairs so selected OC010v2 and explicitly excluded historicalv1 are both preserved and distinguished."
+  ],
+  "preservedFailedTraces": [
+    "P54_FINAL_RUN_PRESERVED_SIGBUS.log",
+    "P54_FULL_VERIFICATION_FINAL_PRIVATE_V1_PRESERVED_INITIAL_ASSUMPTION_FAILURE.json",
+    "P54_FINAL_VERIFICATION_PUBLIC_V1_PRESERVED_INITIAL_ASSUMPTION_FAILURE.json"
+  ],
+  "sourcePixelsModified": false,
+  "runtimeFilesModifiedByVerifier": 0,
+  "gitRefsOrIndexModified": false,
+  "browserActualBrowserCaseCount": 39,
+  "browserTopLevelCaseRecords": 22,
+  "browserCountQualification": "Combined actual browser report explicitly records39actualcases represented in22top-levelcaseobjects. Both counts are distinguished; source report is unchanged and hash-bound."
+}

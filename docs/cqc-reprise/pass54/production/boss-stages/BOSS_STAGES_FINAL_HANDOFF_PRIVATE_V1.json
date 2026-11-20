@@ -1,0 +1,179 @@
+{
+  "schema": "cqc.p54.boss-stages-source-handoff/1",
+  "atUTC": "2026-11-20T10:13:32.251700+00:00",
+  "state": "DONE_NEW_SOURCE_ART",
+  "baseCommit": "04221faf7933b4a33cf63e3859533639f010723e",
+  "newPhysicalImages": 3,
+  "historicalImagesRecovered": 0,
+  "newAnimations": 0,
+  "runtimeFilesModifiedByArtist": 0,
+  "stages": [
+    {
+      "schema": "cqc.p54.boss-stage-source/1",
+      "id": "p54_mgs1_canyon",
+      "title": "SHADOW MOSES · CANYON",
+      "rawPNG": {
+        "path": "/tmp/cqc-p54-20261120/production/boss-stages/mgs1-canyon-background-raw-v1.png",
+        "bytes": 2474938,
+        "sha256": "7334ead3e0b677eafcc58f691ae97886d660d3921fd47c4374cb8b5e3b914a6a",
+        "gitBlobOID": "5e6260544361a6cd831ef6818a4894c892be5893",
+        "width": 1672,
+        "height": 941,
+        "fullyOpaque": true
+      },
+      "references": [
+        "references/MetalGearSolid-Canyon.png",
+        "references/Metal-Gear-Solid-M1-Tank-Boss-MGS1.jpg"
+      ],
+      "qualification": "BOSS_STAGE_REFERENCE_QUALIFICATION_PRIVATE_V1.json",
+      "promptFile": "GENERATION_PROMPTS_PRIVATE_V1.json",
+      "physicallyViewed": true,
+      "reviewNotes": [
+        "Recessed northern warhead storage gate, grey segmented facade, right service cylinders and enclosed snowy rock basin match the inspected original map landmarks.",
+        "No tank or characters baked into the scenery; separate existing M1 rig can be linked by Root.",
+        "Lateral camera and clear snow fighting plane are CQC adaptations. Exact original PS1 pixel/color fidelity is not certified."
+      ],
+      "placement": {
+        "backgroundFootFraction": 0.82,
+        "floorY": 568,
+        "cameraDepth": 0.12,
+        "stableBossCameraRequired": true,
+        "foregroundGroundingNotes": "Choose the clear lower snow lane; do not translate the boss rig with player movement. Camera should remain fixed for the giant-boss encounter."
+      },
+      "newArtwork": true,
+      "historicalRecovery": false,
+      "pixelEdits": false,
+      "runtimeAdmission": "PENDING_ROOT_INTEGRATION_AND_BROWSER_QA",
+      "atUTC": "2026-11-20T10:08:38.259108+00:00",
+      "targetExistingEncounter": {
+        "encounterKey": "m1tank",
+        "machineID": "m1_mgs1_ps1_1998",
+        "previousStage": [
+          "mgs1",
+          "shadow_heliport"
+        ],
+        "suggestedNewStageID": "p54_mgs1_canyon",
+        "qualification": "Exact current encounter and machine IDs confirmed independently by p54_machine_audit; Root selects the final stage ID and edits the runtime mapping."
+      },
+      "sourceContract": "/tmp/cqc-p54-20261120/production/boss-stages/MGS1_CANYON_SOURCE_CONTRACT_PRIVATE_V1.json",
+      "contractSHA256": "3d3735bd44601593610e3f5f9f3c765485d2a8f43a31aab8632981be53e9d5fa"
+    },
+    {
+      "schema": "cqc.p54.boss-stage-source/1",
+      "id": "p54_mgs1_tower_b_roof",
+      "title": "SHADOW MOSES · COMMUNICATIONS TOWER B",
+      "rawPNG": {
+        "path": "/tmp/cqc-p54-20261120/production/boss-stages/mgs1-tower-b-rooftop-background-raw-v1.png",
+        "bytes": 2326621,
+        "sha256": "b00d0a51c548d80abcdd3f4da0d55a314bd6a7dff0bde21b4d331eb7b8d3f812",
+        "gitBlobOID": "2749102dfdfde9662525081543e2b4eb7c7c6512",
+        "width": 1672,
+        "height": 941,
+        "fullyOpaque": true
+      },
+      "references": [
+        "references/Metal-Gear-Solid-MGS-Hind-D-Boss-Guide-1-MGS1.jpg",
+        "references/Metal-Gear-Solid-MGS-Hind-D-Boss-Guide-3-MGS1.jpg",
+        "references/MetalGearSolid-CommunicationsTower(Routes).png"
+      ],
+      "qualification": "BOSS_STAGE_REFERENCE_QUALIFICATION_PRIVATE_V1.json",
+      "promptFile": "GENERATION_PROMPTS_PRIVATE_V1.json",
+      "physicallyViewed": true,
+      "reviewNotes": [
+        "The faceted water-tank cover, rectangular left access hut, open pale guardrails and patterned metal-grate floor match the inspected MGS1 roof landmarks.",
+        "No Tower A satellite dish, helicopter, character, HUD or guide annotation is baked in.",
+        "The lateral clear combat lane, warm/cold grading and cover placement are adaptations. Cover is scenery, not a newly implemented collision system."
+      ],
+      "placement": {
+        "backgroundFootFraction": 0.84,
+        "floorY": 568,
+        "cameraDepth": 0.12,
+        "stableBossCameraRequired": true,
+        "foregroundGroundingNotes": "Use the broad clear lower rooftop lane. The water tank and hut must remain behind the feet of fighters. Keep the giant-boss camera fixed rather than tracking the player."
+      },
+      "newArtwork": true,
+      "historicalRecovery": false,
+      "pixelEdits": false,
+      "runtimeAdmission": "PENDING_ROOT_INTEGRATION_AND_BROWSER_QA",
+      "atUTC": "2026-11-20T10:11:10.664233+00:00",
+      "targetExistingEncounter": {
+        "encounterKey": "hind_d",
+        "machineID": "hind_d_mgs1_ps1_1998",
+        "previousStage": [
+          "mgs1",
+          "shadow_heliport"
+        ],
+        "suggestedNewStageID": "p54_mgs1_tower_b_roof",
+        "qualification": "Exact current encounter and machine IDs confirmed independently by p54_machine_audit; Root selects the final stage ID and edits the runtime mapping."
+      },
+      "sourceContract": "/tmp/cqc-p54-20261120/production/boss-stages/MGS1_TOWER_B_SOURCE_CONTRACT_PRIVATE_V1.json",
+      "contractSHA256": "523228d4c21308f0929283ad5585c404e90223d622f6ed76506fa573d84f744d"
+    },
+    {
+      "schema": "cqc.p54.boss-stage-source/1",
+      "id": "p54_mgr_r00_africa_avenue",
+      "title": "R-00 · AFRICAN AVENUE",
+      "rawPNG": {
+        "path": "/tmp/cqc-p54-20261120/production/boss-stages/mgr-r00-africa-avenue-background-raw-v1.png",
+        "bytes": 2792499,
+        "sha256": "6f35d32ca8b3173d46aced3b0164bb105e2a6c1b9ecf29c3851823c704e3777d",
+        "gitBlobOID": "091f5218a676e9e6aa40128df2e07b1c3c69eb5b",
+        "width": 1672,
+        "height": 941,
+        "fullyOpaque": true
+      },
+      "references": [
+        "references/mgr-r00-7.webp",
+        "references/mgr-r00-11.webp",
+        "references/mgr-r00-13.webp"
+      ],
+      "referenceProof": "references/R00_RETAIL_SCREENSHOT_FETCH_PRIVATE_V1.json",
+      "promptFile": "GENERATION_PROMPTS_PRIVATE_V1.json",
+      "physicallyViewed": true,
+      "reviewNotes": [
+        "The damaged beige modern tower, first RAY street, warm dusty overcast daylight, civic facades, awnings, street trees, palms and distant turbine match identified R00 landmarks.",
+        "No RAY, Raiden, robot limb, HUD, subtitles or watermark is baked in. This is not the R01 Abkhazia location or the later R00 train.",
+        "Flattened lateral roadway, wider clear fighting lane and facade spacing are CQC adaptations. No pixel-perfect or native renderer/platform certification is claimed."
+      ],
+      "placement": {
+        "backgroundFootFraction": 0.82,
+        "floorY": 568,
+        "cameraDepth": 0.12,
+        "stableBossCameraRequired": true,
+        "foregroundGroundingNotes": "The lower asphalt lane is clear and level. The existing RAY rig should remain world-anchored; the giant-boss camera must not track the approaching player."
+      },
+      "newArtwork": true,
+      "historicalRecovery": false,
+      "pixelEdits": false,
+      "runtimeAdmission": "PENDING_ROOT_INTEGRATION_AND_BROWSER_QA",
+      "atUTC": "2026-11-20T10:13:32.251014+00:00",
+      "targetExistingEncounter": {
+        "encounterKey": "ray_mgR",
+        "machineID": "ray_unmanned_mgr2013",
+        "previousStage": [
+          "mgr",
+          "p18_mgr_abkhazie_cour_desperado"
+        ],
+        "suggestedNewStageID": "p54_mgr_r00_africa_avenue",
+        "qualification": "Exact current encounter and machine IDs confirmed independently by p54_machine_audit; Root selects the final stage ID and edits the runtime mapping."
+      },
+      "sourceContract": "/tmp/cqc-p54-20261120/production/boss-stages/MGR_R00_SOURCE_CONTRACT_PRIVATE_V1.json",
+      "contractSHA256": "899a5afb63cfeebc23975cb46314bde74647d6f5f224c5ce7ee9635a81ffedfa"
+    }
+  ],
+  "sourceWCopies": {
+    "canyon": null,
+    "towerB": "/workspace/generated_images/exec-02e58e43-935e-4f23-bf19-d8e4bac5264c.png",
+    "mgrR00": "/workspace/generated_images/exec-3346fda4-5521-4fd5-93b8-d35c27507d1d.png"
+  },
+  "canyonPreservation": "Imagegen returned only a data URL during environment outage. Exact Base64 decoded once through noncanonical no-echo PTY stdin after recovery; PNG signature/decode/dimensions and hashes validated, no pixel edit. Earlier large MCP blob upload was interrupted without a receipt; Root watcher handles source commit.",
+  "runtimeAdmission": "Pending Root integration, fixed giant-boss camera, stage mapping, and browser QA.",
+  "limits": [
+    "These three opaque backgrounds are new authored scenery, not lossless recovery of old P53 files.",
+    "One flat background per encounter is provided. No separate foreground rig or full animated environment is claimed here.",
+    "Known game landmarks and edition boundaries are respected; lateral geometry and hidden surfaces remain adaptations."
+  ],
+  "referencePublication": "Only selected physically viewed screenshots/maps as appropriate; no whole books, videos or transport HTML.",
+  "imageSlotsHeld": 0,
+  "additionalGenerationPlanned": false
+}

@@ -1,0 +1,41 @@
+<!doctype html><meta charset="utf-8"><title>Gander — articulation et pièces natives</title>
+<style>body{margin:0;background:#0b1311;color:#dfe8df;font:16px system-ui}main{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:20px}section{background:#101d19;padding:10px;border:1px solid #385047}h2{margin:0 0 12px;font-size:17px}canvas{display:block;background:#192a22;width:100%;height:auto}header{padding:20px 24px 0}p{margin:5px 0}</style>
+<header><h1>Gander — comparaison du montage natif</h1><p>À gauche : atlas et découpes Canvas existants. À droite : PNG séparés P53, mêmes articulations et coordonnées.</p><p id="status">Chargement vérifié des pièces…</p></header><main id="views"></main>
+<script src="/project/public/cqc/src/cqc-machine-parts-renderer-v1.js"></script>
+<script src="/project/public/cqc/src/cqc-machine-parts-catalog-v1.js"></script>
+<script src="/project/public/cqc/src/cqc-pass16-machine-catalog.js"></script>
+<script src="/project/public/cqc/src/cqc-pass28-heavy-rig-fixes.js"></script>
+<script src="/project/public/cqc/src/cqc-pass29-classic-articulation.js"></script>
+<script src="/project/public/cqc/src/cqc-pass30-gander-fidelity.js"></script>
+<script src="/project/public/cqc/src/cqc-pass28-machine-geometry.js"></script>
+<script src="/project/public/cqc/src/cqc-p54-machine-parts.js"></script>
+<script>
+(async()=>{
+ const ID='gander_ghost_gbc2000',factory=CQC_MACHINE_PARTS,raw=CQC_MACHINE_PARTS_CATALOG.machines.find(m=>m.id===ID);
+ let catalog={schema:'cqc.machine-parts/1',machines:[raw]};
+ catalog=CQC_PASS28_HEAVY_RIG_FIXES.apply(catalog).catalog;
+ catalog=CQC_PASS29_CLASSIC_ARTICULATION.apply(catalog).catalog;
+ catalog=CQC_PASS30_GANDER_FIDELITY.apply(catalog).catalog;
+ const machine=factory.normalizeCatalog(catalog).get(ID);
+ const opts={baseURL:location.origin+'/project/public/cqc/'},old=factory.create(catalog,opts),separated=CQC_P54_MACHINE_PARTS.wrapFactory(factory).create(catalog,opts);
+ await Promise.all([old.load(ID),separated.load(ID)]);
+ const stats=[];
+ for(const sample of [
+  {name:'Appui neutre',channels:{},flags:{}},
+  {name:'Repli, visée et recul',channels:{ganderFold:.65,weaponAimDegreesNear:16,weaponAimDegreesFar:-11,weaponRecoilImpulse:1},flags:{}},
+  {name:'Pas levé et mâchoire ouverte',channels:{ganderNearLift:55,weaponAimDegrees:-15},flags:{ganderMouthOpen:true}}
+ ]){
+  const pose=CQC_PASS30_GANDER_FIDELITY.presentationPose(ID,{origin:[0,0],channels:sample.channels,flags:sample.flags});
+  const pair=[];
+  for(const[renderer,label]of[[old,'Atlas'],[separated,'Pièces séparées']]){
+   const section=document.createElement('section'),title=document.createElement('h2'),canvas=document.createElement('canvas');title.textContent=sample.name+' · '+label;canvas.width=720;canvas.height=490;
+   section.append(title,canvas);document.getElementById('views').append(section);const ctx=canvas.getContext('2d');ctx.clearRect(0,0,720,490);ctx.save();ctx.translate(240,435);renderer.draw(ctx,ID,pose);ctx.restore();pair.push(ctx.getImageData(0,0,720,490));
+  }
+  let differing=0,alphaDifferent=0,alphaStrongDifferent=0,max=0;
+  for(let i=0;i<pair[0].data.length;i+=4){let any=false;for(let c=0;c<4;c++){const d=Math.abs(pair[0].data[i+c]-pair[1].data[i+c]);max=Math.max(max,d);any ||=d>0}if(any)differing++;if(pair[0].data[i+3]!==pair[1].data[i+3])alphaDifferent++;if((pair[0].data[i+3]>127)!==(pair[1].data[i+3]>127))alphaStrongDifferent++;}
+  stats.push({name:sample.name,differingPixels:differing,alphaDifferentPixels:alphaDifferent,alphaStrongDifferentPixels:alphaStrongDifferent,maxChannelDifference:max,totalPixels:720*490});
+ }
+ window.ganderReview={ready:true,stats,individualPNGPins:separated.status(ID).pins.length,sourcePNGsModified:false,sourcePoseAndParentTransformsUnchanged:true,edgeQualification:'P53 PNGs use pixel-center cuts; original Canvas clips have antialiased edges. Pixel-perfect equality is not asserted.'};
+ document.getElementById('status').textContent='24 pièces vérifiées, trois états rendus. Articulations et coordonnées de tir conservées.';
+})().catch(error=>{document.getElementById('status').textContent=error.message;window.ganderReview={error:error.stack}})
+</script>

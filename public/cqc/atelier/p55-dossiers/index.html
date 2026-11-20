@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CQC — Dossiers des combattants</title>
+  <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+  <header><p class="frequency">CQC / ARCHIVES DE TERRAIN</p><h1>Équipements de terrain</h1>
+    <p>Les visages, silhouettes et tenues des opérations.</p>
+    <nav><a href="../../modules/atelier-v056.html">Retour à l’atelier</a><a href="../p55-blackfoot/index.html">Hangar Blackfoot</a><a href="../p54-dossiers/index.html">Renforts</a><a href="../../modules/unified-versus-v055.html">Versus libre</a></nav>
+  </header>
+  <main>
+    <div class="filters"><label>Dossier<input id="search" type="search" placeholder="Nom ou équipement" autocomplete="off"></label>
+      <label>Collection<select id="collection"><option value="">Tous les dossiers</option><option value="retro">Rétro</option><option value="tuxedo">Tenues de soirée</option><option value="cyborg">Châssis cybernétiques</option><option value="survive">Dité</option><option value="zombie">Infectés</option><option value="furry">Faune</option><option value="costume">Toutes les tenues</option><option value="metalgear">Machines</option></select></label>
+    </div>
+    <p id="status" role="status">Transmission des dossiers…</p><div id="cards" class="grid"></div>
+  </main>
+  <script type="module" src="gallery.js"></script>
+</body>
+</html>

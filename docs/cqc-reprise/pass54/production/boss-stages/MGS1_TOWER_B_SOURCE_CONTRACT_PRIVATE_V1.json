@@ -1,0 +1,49 @@
+{
+  "schema": "cqc.p54.boss-stage-source/1",
+  "id": "p54_mgs1_tower_b_roof",
+  "title": "SHADOW MOSES · COMMUNICATIONS TOWER B",
+  "rawPNG": {
+    "path": "/tmp/cqc-p54-20261120/production/boss-stages/mgs1-tower-b-rooftop-background-raw-v1.png",
+    "bytes": 2326621,
+    "sha256": "b00d0a51c548d80abcdd3f4da0d55a314bd6a7dff0bde21b4d331eb7b8d3f812",
+    "gitBlobOID": "2749102dfdfde9662525081543e2b4eb7c7c6512",
+    "width": 1672,
+    "height": 941,
+    "fullyOpaque": true
+  },
+  "references": [
+    "references/Metal-Gear-Solid-MGS-Hind-D-Boss-Guide-1-MGS1.jpg",
+    "references/Metal-Gear-Solid-MGS-Hind-D-Boss-Guide-3-MGS1.jpg",
+    "references/MetalGearSolid-CommunicationsTower(Routes).png"
+  ],
+  "qualification": "BOSS_STAGE_REFERENCE_QUALIFICATION_PRIVATE_V1.json",
+  "promptFile": "GENERATION_PROMPTS_PRIVATE_V1.json",
+  "physicallyViewed": true,
+  "reviewNotes": [
+    "The faceted water-tank cover, rectangular left access hut, open pale guardrails and patterned metal-grate floor match the inspected MGS1 roof landmarks.",
+    "No Tower A satellite dish, helicopter, character, HUD or guide annotation is baked in.",
+    "The lateral clear combat lane, warm/cold grading and cover placement are adaptations. Cover is scenery, not a newly implemented collision system."
+  ],
+  "placement": {
+    "backgroundFootFraction": 0.84,
+    "floorY": 568,
+    "cameraDepth": 0.12,
+    "stableBossCameraRequired": true,
+    "foregroundGroundingNotes": "Use the broad clear lower rooftop lane. The water tank and hut must remain behind the feet of fighters. Keep the giant-boss camera fixed rather than tracking the player."
+  },
+  "newArtwork": true,
+  "historicalRecovery": false,
+  "pixelEdits": false,
+  "runtimeAdmission": "PENDING_ROOT_INTEGRATION_AND_BROWSER_QA",
+  "atUTC": "2026-11-20T10:11:10.664233+00:00",
+  "targetExistingEncounter": {
+    "encounterKey": "hind_d",
+    "machineID": "hind_d_mgs1_ps1_1998",
+    "previousStage": [
+      "mgs1",
+      "shadow_heliport"
+    ],
+    "suggestedNewStageID": "p54_mgs1_tower_b_roof",
+    "qualification": "Exact current encounter and machine IDs confirmed independently by p54_machine_audit; Root selects the final stage ID and edits the runtime mapping."
+  }
+}

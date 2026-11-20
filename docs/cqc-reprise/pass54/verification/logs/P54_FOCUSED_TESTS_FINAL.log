@@ -1,0 +1,53 @@
+
+> shadow-codec-ops@3.10.0 cqc:p54:check
+> node --test scripts/test-cqc-p54-machine-parts.mjs scripts/test-cqc-p54-mode-scenes.mjs scripts/test-cqc-p54-stages.mjs scripts/test-cqc-p54-boss-scenes.mjs
+
+✔ cold launch retains the existing (definition, mode, callback) API (7.133249ms)
+✔ selection cancellation and failed preload cannot start a stale encounter (1.8939ms)
+✔ unaffected encounters retain exact callback delegation order (1.177749ms)
+✔ boss scenery stays on the same world anchor as the player crosses it (1.164218ms)
+✔ 43 exact exported PNG pins remain bound to the three original atlas hashes (11.054857ms)
+✔ both historical and current source-camera contracts validate without adding joints (19.37932ms)
+✔ changed joint parent, source, clipping or pivot is rejected before drawing (9.859041ms)
+✔ current camera loads only its 24 individual PNGs and pins the manifest (10.596865ms)
+✔ neutral and open-jaw draws preserve source placement and all existing matrices (11.593269ms)
+✔ muzzles share the independent native-world geometry at aim, recoil, fold and stomp extremes (28.331021ms)
+✔ rail and leg children stay on their actual articulated parent under motion (8.725679ms)
+✔ player position does not move the boss or emitted native muzzle (8.217091ms)
+✔ a failed piece never produces a partial rig and can be retried (13.52694ms)
+✔ manifest and individual source tampering fail before admission (10.335089ms)
+✔ registry wraps Gander only and never fetches an old atlas as a loading fallback (16.950461ms)
+✔ abort and dispose release a partial attempt without admitting it or poisoning a later load (11.292105ms)
+✔ non-Gander registries and operations keep the original renderer behavior (7.616535ms)
+✔ source manifests and match states remain byte-identical throughout presentation (11.729516ms)
+✔ actual P53 scenes append once as exercises without touching the reviewed registry (8.748003ms)
+✔ uses a later merged service-yard extension, not a frozen five-room copy (5.306365ms)
+✔ Core launch waits for every real P53 dependency and resumes once with the original options (13.060946ms)
+✔ failed image keeps launch stopped until an explicit successful retry (1.591053ms)
+✔ cancelled or superseded exercise launch cannot start after its images arrive (5.913742ms)
+✔ an authoritative boss-stage ID is not replaced by the free exercise selection (1.066932ms)
+✔ explicitly imported local stage art wins both drawing and launch loading (1.191279ms)
+✔ Core ground registration and front/back timing stay identical within one rendered frame (2.209417ms)
+✔ preview foreground reuses the exact background options after actor drawing (1.180102ms)
+✔ a late preview image cannot restore an exercise after another ready scene was selected (5.758487ms)
+✔ unknown preview preserves the caller fallback and invalidates pending authored work (2.275547ms)
+✔ the actual Core picker callback keeps imported local art ahead of authored exercise art (7.016627ms)
+✔ all inline scripts in the three changed mode pages still parse (149.080695ms)
+✔ new scene extends existing rooms and preserves all legacy delegation (2.915723ms)
+✔ complete preload gates drawing without a partial or fallback image (2.53595ms)
+✔ an image failure permits a clean retry and does not poison completed work (0.827459ms)
+✔ actual draw rectangles cover the viewport and register the pontoon at floor568 under pan/zoom (1.058739ms)
+✔ reduced motion produces identical image placements for opposite cameras and times (1.292632ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 36
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 286.972029
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice

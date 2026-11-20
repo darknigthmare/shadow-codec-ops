@@ -1,0 +1,3903 @@
+{
+  "schema": "cqc.p54.gander-separated-parts/1",
+  "machineID": "gander_ghost_gbc2000",
+  "sourceRevision": "04221faf7933b4a33cf63e3859533639f010723e",
+  "sourceContract": {
+    "path": "docs/cqc-reprise/pass53/gander-parts/gander-parts.json",
+    "sha256": "17dc48131ad35d7bf89cc23a069b18c5adc822b2a1c629b105b27221c2d7a604"
+  },
+  "originalSources": {
+    "atlas": {
+      "id": "atlas",
+      "file": "assets/machine-parts-pass16/gander/components-atlas-v2.png",
+      "sha256": "312e9d7d27c17c79af38d881a058aee702f4788927e27bb62d4e26f46a149071",
+      "bytes": 2070805,
+      "width": 1536,
+      "height": 1024
+    },
+    "gander_pass30": {
+      "id": "gander_pass30",
+      "file": "assets/machines-pass30/gander/gander-native-three-quarter.png",
+      "sha256": "433712ceaa769523e0b6585a6112fbda6a52ae37d86793422d3c5f10ae895bd2",
+      "bytes": 1524803,
+      "width": 1536,
+      "height": 1024
+    },
+    "gander_pass30_open": {
+      "id": "gander_pass30_open",
+      "file": "assets/machines-pass30/gander/gander-native-faceplate-open.png",
+      "sha256": "307c1342587a694fa598b23c52c38efe008846d1f01dbe1754cb1c6745bd84ab",
+      "bytes": 1543671,
+      "width": 1536,
+      "height": 1024
+    }
+  },
+  "rigs": {
+    "pass16": {
+      "anchors": [
+        {
+          "id": "anchor",
+          "pivot": [
+            0,
+            0
+          ],
+          "offset": [
+            0,
+            0
+          ],
+          "z": 0,
+          "channels": {
+            "y": [
+              {
+                "channel": "ganderCollapseDrop",
+                "factor": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "body_anchor",
+          "pivot": [
+            0,
+            0
+          ],
+          "offset": [
+            0,
+            330
+          ],
+          "z": 0,
+          "parent": "anchor",
+          "channels": {
+            "y": [
+              {
+                "channel": "ganderFold",
+                "factor": -85
+              }
+            ]
+          }
+        },
+        {
+          "id": "near_hip",
+          "pivot": [
+            0,
+            0
+          ],
+          "offset": [
+            -138,
+            238
+          ],
+          "z": 0,
+          "parent": "anchor",
+          "channels": {
+            "y": [
+              {
+                "channel": "ganderFold",
+                "factor": -77
+              }
+            ]
+          }
+        },
+        {
+          "id": "far_hip",
+          "pivot": [
+            0,
+            0
+          ],
+          "offset": [
+            138,
+            250
+          ],
+          "z": 0,
+          "parent": "anchor",
+          "channels": {
+            "y": [
+              {
+                "channel": "ganderFold",
+                "factor": -77
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "pass30": {
+      "anchors": [
+        {
+          "id": "anchor",
+          "pivot": [
+            0,
+            0
+          ],
+          "offset": [
+            0,
+            0
+          ],
+          "z": 0,
+          "channels": {
+            "y": [
+              {
+                "channel": "ganderCollapseDrop",
+                "factor": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "body_anchor",
+          "pivot": [
+            0,
+            0
+          ],
+          "offset": [
+            0,
+            330
+          ],
+          "z": 0,
+          "parent": "anchor",
+          "channels": {
+            "y": [
+              {
+                "channel": "ganderFold",
+                "factor": -85
+              },
+              {
+                "channel": "pass32GanderBraceSeat",
+                "factor": -1
+              }
+            ]
+          }
+        },
+        {
+          "id": "near_hip",
+          "pivot": [
+            0,
+            0
+          ],
+          "offset": [
+            -17.2,
+            -115.2
+          ],
+          "z": 0,
+          "parent": "body_anchor",
+          "channels": {}
+        },
+        {
+          "id": "far_hip",
+          "pivot": [
+            0,
+            0
+          ],
+          "offset": [
+            60.800000000000004,
+            -120.4
+          ],
+          "z": 0,
+          "parent": "body_anchor",
+          "channels": {}
+        }
+      ]
+    }
+  },
+  "records": [
+    {
+      "file": "pass16/carapace.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass16/carapace.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass16/carapace.png",
+      "sha256": "aa6e03971f018cf04f7d1311dfedb1a332b9c020a0df9d15102e7b3c344a2556",
+      "gitBlobOID": "f06a2c2948a7cfdffffb4859e0c321745b5f545a",
+      "bytes": 82772,
+      "width": 303,
+      "height": 157,
+      "representation": "pass16",
+      "part": "carapace",
+      "when": null,
+      "source": "atlas",
+      "sourceSHA256": "312e9d7d27c17c79af38d881a058aee702f4788927e27bb62d4e26f46a149071",
+      "sourceRectXYWH": [
+        73,
+        19,
+        303,
+        157
+      ],
+      "rigRectXYWH": [
+        73,
+        19,
+        303,
+        157
+      ],
+      "sourceClipPolygonNativeXY": null,
+      "parent": "body_anchor",
+      "pivotXY": [
+        151,
+        90
+      ],
+      "offsetXY": [
+        0,
+        0
+      ],
+      "imageScale": 1.04,
+      "channels": {},
+      "z": 30,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass16/pelvis.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass16/pelvis.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass16/pelvis.png",
+      "sha256": "c5542974a5c60beaef8fa04afeca84d8fda7a05fa75f417a00fb461c21bb110f",
+      "gitBlobOID": "a62b1344c40590dc2920d85425494cc6f40f3eb7",
+      "bytes": 96187,
+      "width": 295,
+      "height": 180,
+      "representation": "pass16",
+      "part": "pelvis",
+      "when": null,
+      "source": "atlas",
+      "sourceSHA256": "312e9d7d27c17c79af38d881a058aee702f4788927e27bb62d4e26f46a149071",
+      "sourceRectXYWH": [
+        457,
+        38,
+        295,
+        180
+      ],
+      "rigRectXYWH": [
+        457,
+        38,
+        295,
+        180
+      ],
+      "sourceClipPolygonNativeXY": null,
+      "parent": "body_anchor",
+      "pivotXY": [
+        147,
+        88
+      ],
+      "offsetXY": [
+        0,
+        -112
+      ],
+      "imageScale": 0.91,
+      "channels": {},
+      "z": 32,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass16/jaw.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass16/jaw.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass16/jaw.png",
+      "sha256": "922f0ed02a6ae2e5d87485707ee507f431e1f53add27f61bc8e89b1ba5b7c803",
+      "gitBlobOID": "4ed8c8cc064ef5655ad2f9e028a8ce6b4e75ec29",
+      "bytes": 77313,
+      "width": 238,
+      "height": 189,
+      "representation": "pass16",
+      "part": "jaw",
+      "when": null,
+      "source": "atlas",
+      "sourceSHA256": "312e9d7d27c17c79af38d881a058aee702f4788927e27bb62d4e26f46a149071",
+      "sourceRectXYWH": [
+        833,
+        41,
+        238,
+        189
+      ],
+      "rigRectXYWH": [
+        833,
+        41,
+        238,
+        189
+      ],
+      "sourceClipPolygonNativeXY": null,
+      "parent": "body_anchor",
+      "pivotXY": [
+        119,
+        29
+      ],
+      "offsetXY": [
+        0,
+        -48
+      ],
+      "imageScale": 0.85,
+      "channels": {},
+      "z": 44,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass16/jaw-open.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass16/jaw-open.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass16/jaw-open.png",
+      "sha256": "be24ed19509b5eb8854c64636731200c1fc3ec0160045b258f6693d5c3133f8e",
+      "gitBlobOID": "fbb8aeb8366686f3f69a190689aa05cfc5387598",
+      "bytes": 89028,
+      "width": 259,
+      "height": 199,
+      "representation": "pass16",
+      "part": "jaw",
+      "when": "ganderMouthOpen",
+      "source": "atlas",
+      "sourceSHA256": "312e9d7d27c17c79af38d881a058aee702f4788927e27bb62d4e26f46a149071",
+      "sourceRectXYWH": [
+        1197,
+        35,
+        259,
+        199
+      ],
+      "rigRectXYWH": [
+        1197,
+        35,
+        259,
+        199
+      ],
+      "sourceClipPolygonNativeXY": null,
+      "parent": "body_anchor",
+      "pivotXY": [
+        129,
+        27
+      ],
+      "offsetXY": [
+        0,
+        -48
+      ],
+      "imageScale": 0.8,
+      "channels": {},
+      "z": 44,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass16/near_thigh.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass16/near_thigh.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass16/near_thigh.png",
+      "sha256": "bbd442876dd5e6e433a30b105d0d52f0f4be5953061c4961c6e57b5ab12581c3",
+      "gitBlobOID": "76703fd257b00be5a70123a96e9a7a21475539e6",
+      "bytes": 72523,
+      "width": 231,
+      "height": 194,
+      "representation": "pass16",
+      "part": "near_thigh",
+      "when": null,
+      "source": "atlas",
+      "sourceSHA256": "312e9d7d27c17c79af38d881a058aee702f4788927e27bb62d4e26f46a149071",
+      "sourceRectXYWH": [
+        87,
+        242,
+        231,
+        194
+      ],
+      "rigRectXYWH": [
+        87,
+        242,
+        231,
+        194
+      ],
+      "sourceClipPolygonNativeXY": null,
+      "parent": "near_hip",
+      "pivotXY": [
+        48,
+        60
+      ],
+      "offsetXY": [
+        0,
+        0
+      ],
+      "imageScale": 0.8,
+      "channels": {
+        "rotation": [
+          {
+            "channel": "ganderNearUpper",
+            "factor": 1
+          }
+        ]
+      },
+      "z": 55,
+      "rotation": -30,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass16/near_shin.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass16/near_shin.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass16/near_shin.png",
+      "sha256": "edfa435cba97e5fee08c7ca17f29c54b0abd5501b80cfe6a0daaedad28256bc4",
+      "gitBlobOID": "af2731294ef608562042860be537f47e26e2b03b",
+      "bytes": 60645,
+      "width": 158,
+      "height": 221,
+      "representation": "pass16",
+      "part": "near_shin",
+      "when": null,
+      "source": "atlas",
+      "sourceSHA256": "312e9d7d27c17c79af38d881a058aee702f4788927e27bb62d4e26f46a149071",
+      "sourceRectXYWH": [
+        494,
+        235,
+        158,
+        221
+      ],
+      "rigRectXYWH": [
+        494,
+        235,
+        158,
+        221
+      ],
+      "sourceClipPolygonNativeXY": null,
+      "parent": "near_thigh",
+      "pivotXY": [
+        78,
+        40
+      ],
+      "offsetXY": [
+        80,
+        -84
+      ],
+      "imageScale": 0.8,
+      "channels": {
+        "rotation": [
+          {
+            "channel": "ganderNearLower",
+            "factor": 1
+          }
+        ]
+      },
+      "z": 56,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass16/near_foot.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass16/near_foot.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass16/near_foot.png",
+      "sha256": "d062194df2d64ac6ce8e423cca6e5708b29ce6d6413c90b264e3d8096146b07f",
+      "gitBlobOID": "f90ff9ffbde344e40f6668689967c740c7ba5e4a",
+      "bytes": 60298,
+      "width": 240,
+      "height": 168,
+      "representation": "pass16",
+      "part": "near_foot",
+      "when": null,
+      "source": "atlas",
+      "sourceSHA256": "312e9d7d27c17c79af38d881a058aee702f4788927e27bb62d4e26f46a149071",
+      "sourceRectXYWH": [
+        820,
+        294,
+        240,
+        168
+      ],
+      "rigRectXYWH": [
+        820,
+        294,
+        240,
+        168
+      ],
+      "sourceClipPolygonNativeXY": null,
+      "parent": "near_shin",
+      "pivotXY": [
+        49,
+        115
+      ],
+      "offsetXY": [
+        -25,
+        -119
+      ],
+      "imageScale": 0.55,
+      "channels": {
+        "rotation": [
+          {
+            "channel": "ganderNearFootLevel",
+            "factor": 1
+          }
+        ]
+      },
+      "z": 57,
+      "rotation": 30,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass16/near_rail.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass16/near_rail.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass16/near_rail.png",
+      "sha256": "8fd77375e4888cc475ce8c3e6375e5fce109135a7e06d0a13ec181ce88840c86",
+      "gitBlobOID": "8ea81939b7fb8bacc5f61defcc9d2b817983f167",
+      "bytes": 121796,
+      "width": 427,
+      "height": 189,
+      "representation": "pass16",
+      "part": "near_rail",
+      "when": null,
+      "source": "atlas",
+      "sourceSHA256": "312e9d7d27c17c79af38d881a058aee702f4788927e27bb62d4e26f46a149071",
+      "sourceRectXYWH": [
+        717,
+        467,
+        427,
+        189
+      ],
+      "rigRectXYWH": [
+        717,
+        467,
+        427,
+        189
+      ],
+      "sourceClipPolygonNativeXY": null,
+      "parent": "body_anchor",
+      "pivotXY": [
+        75,
+        55
+      ],
+      "offsetXY": [
+        -125,
+        56
+      ],
+      "imageScale": 0.81,
+      "channels": {},
+      "z": 50,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass16/near_front_turret.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass16/near_front_turret.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass16/near_front_turret.png",
+      "sha256": "fe745da5375099740a6fedfbf977571521f493099663a166d5c56de8e353fab7",
+      "gitBlobOID": "343cef1f68b49279a9bc0856981cf1c81a66b53d",
+      "bytes": 63317,
+      "width": 248,
+      "height": 157,
+      "representation": "pass16",
+      "part": "near_front_turret",
+      "when": null,
+      "source": "atlas",
+      "sourceSHA256": "312e9d7d27c17c79af38d881a058aee702f4788927e27bb62d4e26f46a149071",
+      "sourceRectXYWH": [
+        83,
+        654,
+        248,
+        157
+      ],
+      "rigRectXYWH": [
+        83,
+        654,
+        248,
+        157
+      ],
+      "sourceClipPolygonNativeXY": null,
+      "parent": "body_anchor",
+      "pivotXY": [
+        78,
+        68
+      ],
+      "offsetXY": [
+        -165,
+        -26
+      ],
+      "imageScale": 0.52,
+      "channels": {},
+      "z": 58,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass16/near_pod.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass16/near_pod.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass16/near_pod.png",
+      "sha256": "218b52c4496f15462bce241f00b4460293a07c1008fe6aad1af723e0b43cf0ee",
+      "gitBlobOID": "68cb1000d6c9e3c05fd9186d2695620d67cd745e",
+      "bytes": 55995,
+      "width": 215,
+      "height": 163,
+      "representation": "pass16",
+      "part": "near_pod",
+      "when": null,
+      "source": "atlas",
+      "sourceSHA256": "312e9d7d27c17c79af38d881a058aee702f4788927e27bb62d4e26f46a149071",
+      "sourceRectXYWH": [
+        838,
+        655,
+        215,
+        163
+      ],
+      "rigRectXYWH": [
+        838,
+        655,
+        215,
+        163
+      ],
+      "sourceClipPolygonNativeXY": null,
+      "parent": "body_anchor",
+      "pivotXY": [
+        105,
+        96
+      ],
+      "offsetXY": [
+        -70,
+        94
+      ],
+      "imageScale": 0.54,
+      "channels": {},
+      "z": 20,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass16/near_pod-open.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass16/near_pod-open.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass16/near_pod-open.png",
+      "sha256": "b01ff1d16008ebbd24a2e3aa37b2c66233de54a6aed4197998b941b4b35e7331",
+      "gitBlobOID": "c0424ee4ae7731ebf52adad1750986212fb92cc5",
+      "bytes": 68506,
+      "width": 212,
+      "height": 177,
+      "representation": "pass16",
+      "part": "near_pod",
+      "when": "ganderMissilesOpen",
+      "source": "atlas",
+      "sourceSHA256": "312e9d7d27c17c79af38d881a058aee702f4788927e27bb62d4e26f46a149071",
+      "sourceRectXYWH": [
+        1230,
+        641,
+        212,
+        177
+      ],
+      "rigRectXYWH": [
+        1230,
+        641,
+        212,
+        177
+      ],
+      "sourceClipPolygonNativeXY": null,
+      "parent": "body_anchor",
+      "pivotXY": [
+        106,
+        100
+      ],
+      "offsetXY": [
+        -70,
+        94
+      ],
+      "imageScale": 0.54,
+      "channels": {},
+      "z": 20,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass16/far_thigh.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass16/far_thigh.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass16/far_thigh.png",
+      "sha256": "ea2a1acf24844f83b0816020df7100276f2aaf41f83d06595472280e67280867",
+      "gitBlobOID": "ef950b4b996981a68e3bd2fac70cee3ba96f522a",
+      "bytes": 71831,
+      "width": 211,
+      "height": 208,
+      "representation": "pass16",
+      "part": "far_thigh",
+      "when": null,
+      "source": "atlas",
+      "sourceSHA256": "312e9d7d27c17c79af38d881a058aee702f4788927e27bb62d4e26f46a149071",
+      "sourceRectXYWH": [
+        1220,
+        242,
+        211,
+        208
+      ],
+      "rigRectXYWH": [
+        1220,
+        242,
+        211,
+        208
+      ],
+      "sourceClipPolygonNativeXY": null,
+      "parent": "far_hip",
+      "pivotXY": [
+        30,
+        52
+      ],
+      "offsetXY": [
+        0,
+        0
+      ],
+      "imageScale": 0.7,
+      "channels": {
+        "rotation": [
+          {
+            "channel": "ganderFarUpper",
+            "factor": 1
+          }
+        ]
+      },
+      "z": 15,
+      "rotation": -35,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass16/far_shin.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass16/far_shin.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass16/far_shin.png",
+      "sha256": "26efc86387979bbe577f799ed57e79fa5dd9822c2caf4157912952175fad8a45",
+      "gitBlobOID": "5d0abf767febe821cc0dc6ba02003e0b3adb6da8",
+      "bytes": 58078,
+      "width": 169,
+      "height": 203,
+      "representation": "pass16",
+      "part": "far_shin",
+      "when": null,
+      "source": "atlas",
+      "sourceSHA256": "312e9d7d27c17c79af38d881a058aee702f4788927e27bb62d4e26f46a149071",
+      "sourceRectXYWH": [
+        99,
+        444,
+        169,
+        203
+      ],
+      "rigRectXYWH": [
+        99,
+        444,
+        169,
+        203
+      ],
+      "sourceClipPolygonNativeXY": null,
+      "parent": "far_thigh",
+      "pivotXY": [
+        87,
+        31
+      ],
+      "offsetXY": [
+        70.7,
+        -88.2
+      ],
+      "imageScale": 0.7,
+      "channels": {
+        "rotation": [
+          {
+            "channel": "ganderFarLower",
+            "factor": 1
+          }
+        ]
+      },
+      "z": 16,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass16/far_foot.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass16/far_foot.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass16/far_foot.png",
+      "sha256": "ba6d1189e134608ea4a1411c393c5b69b5605d27468d64c989fdf944d9753876",
+      "gitBlobOID": "fbebc878c768c90e6edbe0bdccc9a8045a3e01ed",
+      "bytes": 53259,
+      "width": 222,
+      "height": 155,
+      "representation": "pass16",
+      "part": "far_foot",
+      "when": null,
+      "source": "atlas",
+      "sourceSHA256": "312e9d7d27c17c79af38d881a058aee702f4788927e27bb62d4e26f46a149071",
+      "sourceRectXYWH": [
+        441,
+        492,
+        222,
+        155
+      ],
+      "rigRectXYWH": [
+        441,
+        492,
+        222,
+        155
+      ],
+      "sourceClipPolygonNativeXY": null,
+      "parent": "far_shin",
+      "pivotXY": [
+        49,
+        115
+      ],
+      "offsetXY": [
+        54.6,
+        -102.9
+      ],
+      "imageScale": 0.55,
+      "channels": {
+        "rotation": [
+          {
+            "channel": "ganderFarFootLevel",
+            "factor": 1
+          }
+        ]
+      },
+      "z": 17,
+      "rotation": 35,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass16/far_rail.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass16/far_rail.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass16/far_rail.png",
+      "sha256": "6ee5794490c61bcbd75cd34d329cd5d24b39c86e59ea88ea2ab71acd530602a4",
+      "gitBlobOID": "dfc0d46a29626f68dde61ebffc556b6504ca6f43",
+      "bytes": 85733,
+      "width": 374,
+      "height": 193,
+      "representation": "pass16",
+      "part": "far_rail",
+      "when": null,
+      "source": "atlas",
+      "sourceSHA256": "312e9d7d27c17c79af38d881a058aee702f4788927e27bb62d4e26f46a149071",
+      "sourceRectXYWH": [
+        1147,
+        463,
+        374,
+        193
+      ],
+      "rigRectXYWH": [
+        1147,
+        463,
+        374,
+        193
+      ],
+      "sourceClipPolygonNativeXY": [
+        [
+          1207,
+          464
+        ],
+        [
+          1218,
+          463
+        ],
+        [
+          1229,
+          463
+        ],
+        [
+          1242,
+          467
+        ],
+        [
+          1275,
+          478
+        ],
+        [
+          1292,
+          484
+        ],
+        [
+          1304,
+          490
+        ],
+        [
+          1309,
+          492
+        ],
+        [
+          1518,
+          608
+        ],
+        [
+          1520,
+          610
+        ],
+        [
+          1520,
+          617
+        ],
+        [
+          1504,
+          651
+        ],
+        [
+          1503,
+          653
+        ],
+        [
+          1499,
+          655
+        ],
+        [
+          1492,
+          655
+        ],
+        [
+          1239,
+          621
+        ],
+        [
+          1233,
+          619
+        ],
+        [
+          1187,
+          592
+        ],
+        [
+          1186,
+          591
+        ],
+        [
+          1184,
+          588
+        ],
+        [
+          1169,
+          560
+        ],
+        [
+          1168,
+          558
+        ],
+        [
+          1148,
+          514
+        ],
+        [
+          1147,
+          510
+        ],
+        [
+          1147,
+          501
+        ],
+        [
+          1148,
+          497
+        ],
+        [
+          1149,
+          495
+        ],
+        [
+          1151,
+          492
+        ],
+        [
+          1154,
+          488
+        ],
+        [
+          1158,
+          484
+        ],
+        [
+          1164,
+          481
+        ]
+      ],
+      "parent": "body_anchor",
+      "pivotXY": [
+        75,
+        55
+      ],
+      "offsetXY": [
+        105,
+        56
+      ],
+      "imageScale": 0.81,
+      "channels": {},
+      "z": 11,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass16/far_front_turret.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass16/far_front_turret.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass16/far_front_turret.png",
+      "sha256": "22b466379f47bacda1cb7a5da1b42c86abf648c08f856ea2e56698f987a2963f",
+      "gitBlobOID": "2b0dd459f49c530abf2bf59496b35192ed7566c4",
+      "bytes": 65218,
+      "width": 252,
+      "height": 158,
+      "representation": "pass16",
+      "part": "far_front_turret",
+      "when": null,
+      "source": "atlas",
+      "sourceSHA256": "312e9d7d27c17c79af38d881a058aee702f4788927e27bb62d4e26f46a149071",
+      "sourceRectXYWH": [
+        441,
+        653,
+        252,
+        158
+      ],
+      "rigRectXYWH": [
+        441,
+        653,
+        252,
+        158
+      ],
+      "sourceClipPolygonNativeXY": null,
+      "parent": "body_anchor",
+      "pivotXY": [
+        78,
+        68
+      ],
+      "offsetXY": [
+        137,
+        -26
+      ],
+      "imageScale": 0.52,
+      "channels": {},
+      "z": 13,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass16/far_pod.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass16/far_pod.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass16/far_pod.png",
+      "sha256": "c288b1ffcda2b409ec3bb33d9ef240242f7578f952cb7e913435dabc19c81119",
+      "gitBlobOID": "b56777fb34bddf3f03ee8ff7582aee41a1588b72",
+      "bytes": 59190,
+      "width": 230,
+      "height": 166,
+      "representation": "pass16",
+      "part": "far_pod",
+      "when": null,
+      "source": "atlas",
+      "sourceSHA256": "312e9d7d27c17c79af38d881a058aee702f4788927e27bb62d4e26f46a149071",
+      "sourceRectXYWH": [
+        60,
+        823,
+        230,
+        166
+      ],
+      "rigRectXYWH": [
+        60,
+        823,
+        230,
+        166
+      ],
+      "sourceClipPolygonNativeXY": null,
+      "parent": "body_anchor",
+      "pivotXY": [
+        105,
+        96
+      ],
+      "offsetXY": [
+        60,
+        94
+      ],
+      "imageScale": 0.54,
+      "channels": {},
+      "z": 10,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass16/far_pod-open.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass16/far_pod-open.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass16/far_pod-open.png",
+      "sha256": "d4ba5023fd1a40160bacb33237a0d9ad90b6a26694cea094c407ad6f702317c2",
+      "gitBlobOID": "d9078f0fdece5dd5a378f7fbaaa8544cfe6b56a9",
+      "bytes": 74560,
+      "width": 232,
+      "height": 184,
+      "representation": "pass16",
+      "part": "far_pod",
+      "when": "ganderMissilesOpen",
+      "source": "atlas",
+      "sourceSHA256": "312e9d7d27c17c79af38d881a058aee702f4788927e27bb62d4e26f46a149071",
+      "sourceRectXYWH": [
+        455,
+        811,
+        232,
+        184
+      ],
+      "rigRectXYWH": [
+        455,
+        811,
+        232,
+        184
+      ],
+      "sourceClipPolygonNativeXY": null,
+      "parent": "body_anchor",
+      "pivotXY": [
+        106,
+        100
+      ],
+      "offsetXY": [
+        60,
+        94
+      ],
+      "imageScale": 0.54,
+      "channels": {},
+      "z": 10,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass16/backpack.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass16/backpack.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass16/backpack.png",
+      "sha256": "133d0f2f290621ec558c4374e015be30875393864f6d214b68146331dc1f1a5f",
+      "gitBlobOID": "55a7d55c66b9cdd2d1f161c2a88f3d7e98fd2286",
+      "bytes": 83394,
+      "width": 326,
+      "height": 179,
+      "representation": "pass16",
+      "part": "backpack",
+      "when": null,
+      "source": "atlas",
+      "sourceSHA256": "312e9d7d27c17c79af38d881a058aee702f4788927e27bb62d4e26f46a149071",
+      "sourceRectXYWH": [
+        782,
+        819,
+        326,
+        179
+      ],
+      "rigRectXYWH": [
+        782,
+        819,
+        326,
+        179
+      ],
+      "sourceClipPolygonNativeXY": null,
+      "parent": "body_anchor",
+      "pivotXY": [
+        160,
+        115
+      ],
+      "offsetXY": [
+        0,
+        83
+      ],
+      "imageScale": 0.64,
+      "channels": {},
+      "z": 5,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass30/carapace.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass30/carapace.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass30/carapace.png",
+      "sha256": "5f76c09ea2f57296f0549318001b75168caa9215efcffca776a1049f95fe8045",
+      "gitBlobOID": "9133e7342218153b1f8b08e02e0bdbee4a33c3d8",
+      "bytes": 165619,
+      "width": 509,
+      "height": 230,
+      "representation": "pass30",
+      "part": "carapace",
+      "when": null,
+      "source": "gander_pass30",
+      "sourceSHA256": "433712ceaa769523e0b6585a6112fbda6a52ae37d86793422d3c5f10ae895bd2",
+      "sourceRectXYWH": [
+        302,
+        30,
+        509,
+        230
+      ],
+      "rigRectXYWH": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sourceClipPolygonNativeXY": [
+        [
+          690,
+          0
+        ],
+        [
+          340,
+          0
+        ],
+        [
+          340,
+          80
+        ],
+        [
+          315,
+          128
+        ],
+        [
+          302,
+          165
+        ],
+        [
+          315,
+          205
+        ],
+        [
+          315,
+          260
+        ],
+        [
+          811,
+          260
+        ],
+        [
+          811,
+          245
+        ],
+        [
+          807,
+          232
+        ],
+        [
+          777,
+          190
+        ],
+        [
+          690,
+          103
+        ]
+      ],
+      "parent": "body_anchor",
+      "pivotXY": [
+        198,
+        137
+      ],
+      "offsetXY": [
+        0,
+        0
+      ],
+      "imageScale": 0.4,
+      "channels": {},
+      "z": 30,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass30/pelvis.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass30/pelvis.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass30/pelvis.png",
+      "sha256": "9c11cd8ba529c6f64ec3807c08e8458a6c06c704763bc851b4c2bf5baa92c880",
+      "gitBlobOID": "cce228e532f381efb51434924a9aef10409ba8d6",
+      "bytes": 100678,
+      "width": 209,
+      "height": 328,
+      "representation": "pass30",
+      "part": "pelvis",
+      "when": null,
+      "source": "gander_pass30",
+      "sourceSHA256": "433712ceaa769523e0b6585a6112fbda6a52ae37d86793422d3c5f10ae895bd2",
+      "sourceRectXYWH": [
+        445,
+        260,
+        209,
+        328
+      ],
+      "rigRectXYWH": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sourceClipPolygonNativeXY": [
+        [
+          451.30891793,
+          419.56052266
+        ],
+        [
+          457,
+          419
+        ],
+        [
+          464.02325159,
+          419.69172991
+        ],
+        [
+          470.77660357,
+          421.74033683
+        ],
+        [
+          477.00052839,
+          425.06709396
+        ],
+        [
+          482.45584412,
+          429.54415588
+        ],
+        [
+          486.93290604,
+          434.99947161
+        ],
+        [
+          490.25966317,
+          441.22339643
+        ],
+        [
+          492.30827009,
+          447.97674841
+        ],
+        [
+          493,
+          455
+        ],
+        [
+          492.30827009,
+          462.02325159
+        ],
+        [
+          490.25966317,
+          468.77660357
+        ],
+        [
+          486.93290604,
+          475.00052839
+        ],
+        [
+          482.45584412,
+          480.45584412
+        ],
+        [
+          477.00052839,
+          484.93290604
+        ],
+        [
+          470.77660357,
+          488.25966317
+        ],
+        [
+          464.02325159,
+          490.30827009
+        ],
+        [
+          457,
+          491
+        ],
+        [
+          455.26830237,
+          490.82944267
+        ],
+        [
+          459,
+          558
+        ],
+        [
+          540,
+          592
+        ],
+        [
+          654,
+          560
+        ],
+        [
+          654,
+          503.80301719
+        ],
+        [
+          652,
+          504
+        ],
+        [
+          644.97674841,
+          503.30827009
+        ],
+        [
+          638.22339643,
+          501.25966317
+        ],
+        [
+          631.99947161,
+          497.93290604
+        ],
+        [
+          626.54415588,
+          493.45584412
+        ],
+        [
+          622.06709396,
+          488.00052839
+        ],
+        [
+          618.74033683,
+          481.77660357
+        ],
+        [
+          616.69172991,
+          475.02325159
+        ],
+        [
+          616,
+          468
+        ],
+        [
+          616.69172991,
+          460.97674841
+        ],
+        [
+          618.74033683,
+          454.22339643
+        ],
+        [
+          622.06709396,
+          447.99947161
+        ],
+        [
+          626.54415588,
+          442.54415588
+        ],
+        [
+          631.99947161,
+          438.06709396
+        ],
+        [
+          638.22339643,
+          434.74033683
+        ],
+        [
+          644.97674841,
+          432.69172991
+        ],
+        [
+          652,
+          432
+        ],
+        [
+          654,
+          432.19698281
+        ],
+        [
+          654,
+          398
+        ],
+        [
+          654,
+          260
+        ],
+        [
+          445,
+          260
+        ],
+        [
+          445,
+          360
+        ],
+        [
+          448,
+          360
+        ]
+      ],
+      "parent": "body_anchor",
+      "pivotXY": [
+        111,
+        164
+      ],
+      "offsetXY": [
+        22.400000000000002,
+        -102.80000000000001
+      ],
+      "imageScale": 0.4,
+      "channels": {},
+      "z": 32,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass30/jaw.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass30/jaw.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass30/jaw.png",
+      "sha256": "450bd6425cf31f35cbfee0523cb4ab50d4a4dad81673aa76576a7b6bbb5d382b",
+      "gitBlobOID": "84b71cfdc18f81439bf8b25db0a073cc61b62020",
+      "bytes": 38455,
+      "width": 149,
+      "height": 150,
+      "representation": "pass30",
+      "part": "jaw",
+      "when": null,
+      "source": "gander_pass30",
+      "sourceSHA256": "433712ceaa769523e0b6585a6112fbda6a52ae37d86793422d3c5f10ae895bd2",
+      "sourceRectXYWH": [
+        191,
+        25,
+        149,
+        150
+      ],
+      "rigRectXYWH": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sourceClipPolygonNativeXY": [
+        [
+          340,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          165.39215686
+        ],
+        [
+          245,
+          175
+        ],
+        [
+          302,
+          165
+        ],
+        [
+          315,
+          128
+        ],
+        [
+          340,
+          80
+        ]
+      ],
+      "parent": "body_anchor",
+      "pivotXY": [
+        91,
+        123
+      ],
+      "offsetXY": [
+        -87.2,
+        7.6000000000000005
+      ],
+      "imageScale": 0.4,
+      "channels": {},
+      "z": 44,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass30/near_thigh.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass30/near_thigh.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass30/near_thigh.png",
+      "sha256": "2b40eb3130934007afc94d4bf633b06e6da6a258d3a486508e5d8cb822f32b92",
+      "gitBlobOID": "b7d252214f86a0172fe8eb3c68a846c72de2d7fc",
+      "bytes": 51106,
+      "width": 125,
+      "height": 289,
+      "representation": "pass30",
+      "part": "near_thigh",
+      "when": null,
+      "source": "gander_pass30",
+      "sourceSHA256": "433712ceaa769523e0b6585a6112fbda6a52ae37d86793422d3c5f10ae895bd2",
+      "sourceRectXYWH": [
+        333,
+        360,
+        125,
+        289
+      ],
+      "rigRectXYWH": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sourceClipPolygonNativeXY": [
+        [
+          510,
+          579.40740741
+        ],
+        [
+          459,
+          558
+        ],
+        [
+          455.26830237,
+          490.82944267
+        ],
+        [
+          449.97674841,
+          490.30827009
+        ],
+        [
+          443.22339643,
+          488.25966317
+        ],
+        [
+          436.99947161,
+          484.93290604
+        ],
+        [
+          431.54415588,
+          480.45584412
+        ],
+        [
+          427.06709396,
+          475.00052839
+        ],
+        [
+          423.74033683,
+          468.77660357
+        ],
+        [
+          421.69172991,
+          462.02325159
+        ],
+        [
+          421,
+          455
+        ],
+        [
+          421.69172991,
+          447.97674841
+        ],
+        [
+          423.74033683,
+          441.22339643
+        ],
+        [
+          427.06709396,
+          434.99947161
+        ],
+        [
+          431.54415588,
+          429.54415588
+        ],
+        [
+          436.99947161,
+          425.06709396
+        ],
+        [
+          443.22339643,
+          421.74033683
+        ],
+        [
+          449.97674841,
+          419.69172991
+        ],
+        [
+          451.30891793,
+          419.56052266
+        ],
+        [
+          448,
+          360
+        ],
+        [
+          434,
+          360
+        ],
+        [
+          333,
+          360
+        ],
+        [
+          333,
+          623.50678101
+        ],
+        [
+          334.12994231,
+          622.12994231
+        ],
+        [
+          339.88833115,
+          617.40415473
+        ],
+        [
+          346.45802957,
+          613.89257776
+        ],
+        [
+          353.58656776,
+          611.73015934
+        ],
+        [
+          361,
+          611
+        ],
+        [
+          368.41343224,
+          611.73015934
+        ],
+        [
+          375.54197043,
+          613.89257776
+        ],
+        [
+          382.11166885,
+          617.40415473
+        ],
+        [
+          387.87005769,
+          622.12994231
+        ],
+        [
+          392.59584527,
+          627.88833115
+        ],
+        [
+          396.10742224,
+          634.45802957
+        ],
+        [
+          398.26984066,
+          641.58656776
+        ],
+        [
+          399,
+          649
+        ],
+        [
+          434,
+          649
+        ],
+        [
+          510,
+          649
+        ]
+      ],
+      "parent": "near_hip",
+      "pivotXY": [
+        124,
+        95
+      ],
+      "offsetXY": [
+        0,
+        0
+      ],
+      "imageScale": 0.4,
+      "channels": {
+        "rotation": [
+          {
+            "channel": "ganderNearUpper",
+            "factor": 1
+          }
+        ]
+      },
+      "z": 55,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass30/near_shin.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass30/near_shin.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass30/near_shin.png",
+      "sha256": "51547247c01c424839788354a83ec3ce3e591b303402dc0edda05ecaa14cf731",
+      "gitBlobOID": "204200a042f2c3812164b3133e3a2bc9048b4d4d",
+      "bytes": 128665,
+      "width": 425,
+      "height": 304,
+      "representation": "pass30",
+      "part": "near_shin",
+      "when": null,
+      "source": "gander_pass30",
+      "sourceSHA256": "433712ceaa769523e0b6585a6112fbda6a52ae37d86793422d3c5f10ae895bd2",
+      "sourceRectXYWH": [
+        65,
+        649,
+        425,
+        304
+      ],
+      "rigRectXYWH": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sourceClipPolygonNativeXY": [
+        [
+          0,
+          953
+        ],
+        [
+          510,
+          953
+        ],
+        [
+          510,
+          649
+        ],
+        [
+          399,
+          649
+        ],
+        [
+          398.26984066,
+          656.41343224
+        ],
+        [
+          396.10742224,
+          663.54197043
+        ],
+        [
+          392.59584527,
+          670.11166885
+        ],
+        [
+          387.87005769,
+          675.87005769
+        ],
+        [
+          382.11166885,
+          680.59584527
+        ],
+        [
+          375.54197043,
+          684.10742224
+        ],
+        [
+          368.41343224,
+          686.26984066
+        ],
+        [
+          361,
+          687
+        ],
+        [
+          353.58656776,
+          686.26984066
+        ],
+        [
+          346.45802957,
+          684.10742224
+        ],
+        [
+          339.88833115,
+          680.59584527
+        ],
+        [
+          334.12994231,
+          675.87005769
+        ],
+        [
+          329.40415473,
+          670.11166885
+        ],
+        [
+          325.89257776,
+          663.54197043
+        ],
+        [
+          323.73015934,
+          656.41343224
+        ],
+        [
+          323,
+          649
+        ],
+        [
+          0,
+          649
+        ]
+      ],
+      "parent": "near_thigh",
+      "pivotXY": [
+        296,
+        0
+      ],
+      "offsetXY": [
+        -38.400000000000006,
+        -77.60000000000001
+      ],
+      "imageScale": 0.4,
+      "channels": {
+        "rotation": [
+          {
+            "channel": "ganderNearLower",
+            "factor": 1
+          }
+        ]
+      },
+      "z": 56,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass30/near_foot.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass30/near_foot.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass30/near_foot.png",
+      "sha256": "bc92f78af1759ca866ac73e0c82fce088d4fd160a869a04481cdd620cb8dbd10",
+      "gitBlobOID": "de7062d173ee6ca6a76180b20a4683db70f1ea84",
+      "bytes": 8069,
+      "width": 112,
+      "height": 43,
+      "representation": "pass30",
+      "part": "near_foot",
+      "when": null,
+      "source": "gander_pass30",
+      "sourceSHA256": "433712ceaa769523e0b6585a6112fbda6a52ae37d86793422d3c5f10ae895bd2",
+      "sourceRectXYWH": [
+        239,
+        953,
+        112,
+        43
+      ],
+      "rigRectXYWH": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sourceClipPolygonNativeXY": [
+        [
+          0,
+          953
+        ],
+        [
+          0,
+          1024
+        ],
+        [
+          510,
+          1024
+        ],
+        [
+          510,
+          953
+        ]
+      ],
+      "parent": "near_shin",
+      "pivotXY": [
+        61,
+        0
+      ],
+      "offsetXY": [
+        -24.400000000000002,
+        -121.60000000000001
+      ],
+      "imageScale": 0.4,
+      "channels": {
+        "rotation": [
+          {
+            "channel": "ganderNearFootLevel",
+            "factor": 1
+          }
+        ]
+      },
+      "z": 57,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass30/near_rail.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass30/near_rail.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass30/near_rail.png",
+      "sha256": "9e43b6849ccf6b579ab37e591cfb4b32852d89ffdc335359d1a30212540a8ee5",
+      "gitBlobOID": "389730a4c7ae82f4ef64d55c6760c89e2870dacd",
+      "bytes": 28480,
+      "width": 234,
+      "height": 87,
+      "representation": "pass30",
+      "part": "near_rail",
+      "when": null,
+      "source": "gander_pass30",
+      "sourceSHA256": "433712ceaa769523e0b6585a6112fbda6a52ae37d86793422d3c5f10ae895bd2",
+      "sourceRectXYWH": [
+        741,
+        154,
+        234,
+        87
+      ],
+      "rigRectXYWH": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sourceClipPolygonNativeXY": [
+        [
+          975,
+          155
+        ],
+        [
+          963,
+          155
+        ],
+        [
+          741.0877193,
+          154.0877193
+        ],
+        [
+          777,
+          190
+        ],
+        [
+          807,
+          232
+        ],
+        [
+          809.76923077,
+          241
+        ],
+        [
+          975,
+          241
+        ]
+      ],
+      "parent": "carapace",
+      "pivotXY": [
+        92,
+        34
+      ],
+      "offsetXY": [
+        133.20000000000002,
+        -8.4
+      ],
+      "imageScale": 0.4,
+      "channels": {
+        "rotation": [
+          {
+            "channel": "pass32GanderNearRailAim",
+            "factor": 1
+          }
+        ]
+      },
+      "z": 50,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass30/near_front_turret.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass30/near_front_turret.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass30/near_front_turret.png",
+      "sha256": "69c602047a588e623347a6b0983735d1eb83d12dcd3e8142abb04c1bf45f0fa2",
+      "gitBlobOID": "c9e7131b3157e6c0952af33210010273942382e0",
+      "bytes": 22224,
+      "width": 112,
+      "height": 100,
+      "representation": "pass30",
+      "part": "near_front_turret",
+      "when": null,
+      "source": "gander_pass30",
+      "sourceSHA256": "433712ceaa769523e0b6585a6112fbda6a52ae37d86793422d3c5f10ae895bd2",
+      "sourceRectXYWH": [
+        333,
+        260,
+        112,
+        100
+      ],
+      "rigRectXYWH": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sourceClipPolygonNativeXY": [
+        [
+          315,
+          260
+        ],
+        [
+          315,
+          360
+        ],
+        [
+          445,
+          360
+        ],
+        [
+          445,
+          260
+        ]
+      ],
+      "parent": "carapace",
+      "pivotXY": [
+        66,
+        38
+      ],
+      "offsetXY": [
+        -40.400000000000006,
+        -52.400000000000006
+      ],
+      "imageScale": 0.4,
+      "channels": {
+        "rotation": [
+          {
+            "channel": "pass30GanderTurretAim",
+            "factor": 1
+          }
+        ]
+      },
+      "z": 58,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass30/near_pod.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass30/near_pod.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass30/near_pod.png",
+      "sha256": "6ca3dc378c766934a13d0cb7d6a542342b039db719f12a03f978faa8b66d21dc",
+      "gitBlobOID": "e21c4cd958b8a74e132156b237eec5fe96af0bfc",
+      "bytes": 71395,
+      "width": 300,
+      "height": 283,
+      "representation": "pass30",
+      "part": "near_pod",
+      "when": null,
+      "source": "gander_pass30",
+      "sourceSHA256": "433712ceaa769523e0b6585a6112fbda6a52ae37d86793422d3c5f10ae895bd2",
+      "sourceRectXYWH": [
+        33,
+        366,
+        300,
+        283
+      ],
+      "rigRectXYWH": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sourceClipPolygonNativeXY": [
+        [
+          0,
+          649
+        ],
+        [
+          323,
+          649
+        ],
+        [
+          323.73015934,
+          641.58656776
+        ],
+        [
+          325.89257776,
+          634.45802957
+        ],
+        [
+          329.40415473,
+          627.88833115
+        ],
+        [
+          333,
+          623.50678101
+        ],
+        [
+          333,
+          360
+        ],
+        [
+          0,
+          360
+        ]
+      ],
+      "parent": "near_thigh",
+      "pivotXY": [
+        286,
+        56
+      ],
+      "offsetXY": [
+        -55.2,
+        13.200000000000001
+      ],
+      "imageScale": 0.4,
+      "channels": {},
+      "z": 20,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass30/far_thigh.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass30/far_thigh.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass30/far_thigh.png",
+      "sha256": "12ced5f5072da910ca32218af3e39698a3ce94d19187a5dd42a3090d236b2919",
+      "gitBlobOID": "ca296ed21f0d42a9e11dd264ba3f62590984e633",
+      "bytes": 60519,
+      "width": 220,
+      "height": 299,
+      "representation": "pass30",
+      "part": "far_thigh",
+      "when": null,
+      "source": "gander_pass30",
+      "sourceSHA256": "433712ceaa769523e0b6585a6112fbda6a52ae37d86793422d3c5f10ae895bd2",
+      "sourceRectXYWH": [
+        513,
+        401,
+        220,
+        299
+      ],
+      "rigRectXYWH": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sourceClipPolygonNativeXY": [
+        [
+          510,
+          579.40740741
+        ],
+        [
+          510,
+          700
+        ],
+        [
+          638,
+          700
+        ],
+        [
+          638.65330047,
+          693.36692905
+        ],
+        [
+          640.58809589,
+          686.9887633
+        ],
+        [
+          643.73003318,
+          681.11061208
+        ],
+        [
+          647.95836944,
+          675.95836944
+        ],
+        [
+          653.11061208,
+          671.73003318
+        ],
+        [
+          658.9887633,
+          668.58809589
+        ],
+        [
+          665.36692905,
+          666.65330047
+        ],
+        [
+          672,
+          666
+        ],
+        [
+          678.63307095,
+          666.65330047
+        ],
+        [
+          685.0112367,
+          668.58809589
+        ],
+        [
+          690.88938792,
+          671.73003318
+        ],
+        [
+          696.04163056,
+          675.95836944
+        ],
+        [
+          700.26996682,
+          681.11061208
+        ],
+        [
+          703.41190411,
+          686.9887633
+        ],
+        [
+          705.34669953,
+          693.36692905
+        ],
+        [
+          706,
+          700
+        ],
+        [
+          733,
+          700
+        ],
+        [
+          733,
+          445
+        ],
+        [
+          733,
+          398
+        ],
+        [
+          654,
+          398
+        ],
+        [
+          654,
+          432.19698281
+        ],
+        [
+          659.02325159,
+          432.69172991
+        ],
+        [
+          665.77660357,
+          434.74033683
+        ],
+        [
+          672.00052839,
+          438.06709396
+        ],
+        [
+          677.45584412,
+          442.54415588
+        ],
+        [
+          681.93290604,
+          447.99947161
+        ],
+        [
+          685.25966317,
+          454.22339643
+        ],
+        [
+          687.30827009,
+          460.97674841
+        ],
+        [
+          688,
+          468
+        ],
+        [
+          687.30827009,
+          475.02325159
+        ],
+        [
+          685.25966317,
+          481.77660357
+        ],
+        [
+          681.93290604,
+          488.00052839
+        ],
+        [
+          677.45584412,
+          493.45584412
+        ],
+        [
+          672.00052839,
+          497.93290604
+        ],
+        [
+          665.77660357,
+          501.25966317
+        ],
+        [
+          659.02325159,
+          503.30827009
+        ],
+        [
+          654,
+          503.80301719
+        ],
+        [
+          654,
+          560
+        ],
+        [
+          540,
+          592
+        ]
+      ],
+      "parent": "far_hip",
+      "pivotXY": [
+        139,
+        67
+      ],
+      "offsetXY": [
+        0,
+        0
+      ],
+      "imageScale": 0.4,
+      "channels": {
+        "rotation": [
+          {
+            "channel": "ganderFarUpper",
+            "factor": 1
+          }
+        ]
+      },
+      "z": 15,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass30/far_shin.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass30/far_shin.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass30/far_shin.png",
+      "sha256": "ad83ce4b2c323d6701347af269ec6bb931dcbf43dd65f8603c0f2cc7ad0870b2",
+      "gitBlobOID": "eddd146d1d8cb719481d42cd9e9f17374759d43f",
+      "bytes": 150457,
+      "width": 773,
+      "height": 260,
+      "representation": "pass30",
+      "part": "far_shin",
+      "when": null,
+      "source": "gander_pass30",
+      "sourceSHA256": "433712ceaa769523e0b6585a6112fbda6a52ae37d86793422d3c5f10ae895bd2",
+      "sourceRectXYWH": [
+        527,
+        700,
+        773,
+        260
+      ],
+      "rigRectXYWH": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sourceClipPolygonNativeXY": [
+        [
+          1536,
+          700
+        ],
+        [
+          706,
+          700
+        ],
+        [
+          705.34669953,
+          706.63307095
+        ],
+        [
+          703.41190411,
+          713.0112367
+        ],
+        [
+          700.26996682,
+          718.88938792
+        ],
+        [
+          696.04163056,
+          724.04163056
+        ],
+        [
+          690.88938792,
+          728.26996682
+        ],
+        [
+          685.0112367,
+          731.41190411
+        ],
+        [
+          678.63307095,
+          733.34669953
+        ],
+        [
+          672,
+          734
+        ],
+        [
+          665.36692905,
+          733.34669953
+        ],
+        [
+          658.9887633,
+          731.41190411
+        ],
+        [
+          653.11061208,
+          728.26996682
+        ],
+        [
+          647.95836944,
+          724.04163056
+        ],
+        [
+          643.73003318,
+          718.88938792
+        ],
+        [
+          640.58809589,
+          713.0112367
+        ],
+        [
+          638.65330047,
+          706.63307095
+        ],
+        [
+          638,
+          700
+        ],
+        [
+          510,
+          700
+        ],
+        [
+          510,
+          960
+        ],
+        [
+          1536,
+          960
+        ]
+      ],
+      "parent": "far_thigh",
+      "pivotXY": [
+        145,
+        0
+      ],
+      "offsetXY": [
+        8,
+        -92.80000000000001
+      ],
+      "imageScale": 0.4,
+      "channels": {
+        "rotation": [
+          {
+            "channel": "ganderFarLower",
+            "factor": 1
+          }
+        ]
+      },
+      "z": 16,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass30/far_foot.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass30/far_foot.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass30/far_foot.png",
+      "sha256": "d54b4a191a0beff75a2d32a7f7b5b21960eadfccc485499ab5f6d86ea7e4c957",
+      "gitBlobOID": "aae4a4aa313d9d44999cf12bbf087776df09dc77",
+      "bytes": 23311,
+      "width": 915,
+      "height": 40,
+      "representation": "pass30",
+      "part": "far_foot",
+      "when": null,
+      "source": "gander_pass30",
+      "sourceSHA256": "433712ceaa769523e0b6585a6112fbda6a52ae37d86793422d3c5f10ae895bd2",
+      "sourceRectXYWH": [
+        577,
+        960,
+        915,
+        40
+      ],
+      "rigRectXYWH": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sourceClipPolygonNativeXY": [
+        [
+          510,
+          1024
+        ],
+        [
+          1536,
+          1024
+        ],
+        [
+          1536,
+          960
+        ],
+        [
+          510,
+          960
+        ]
+      ],
+      "parent": "far_shin",
+      "pivotXY": [
+        89,
+        0
+      ],
+      "offsetXY": [
+        -2.4000000000000004,
+        -104
+      ],
+      "imageScale": 0.4,
+      "channels": {
+        "rotation": [
+          {
+            "channel": "ganderFarFootLevel",
+            "factor": 1
+          }
+        ]
+      },
+      "z": 17,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass30/far_rail.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass30/far_rail.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass30/far_rail.png",
+      "sha256": "b1d4d5fa4e61c286200911e9fe79808cd352cc5c57c53dad1183f31f05b7a7b7",
+      "gitBlobOID": "3ca701497c565d7d05ff75e1762c82c704c4323d",
+      "bytes": 21653,
+      "width": 285,
+      "height": 64,
+      "representation": "pass30",
+      "part": "far_rail",
+      "when": null,
+      "source": "gander_pass30",
+      "sourceSHA256": "433712ceaa769523e0b6585a6112fbda6a52ae37d86793422d3c5f10ae895bd2",
+      "sourceRectXYWH": [
+        690,
+        91,
+        285,
+        64
+      ],
+      "rigRectXYWH": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sourceClipPolygonNativeXY": [
+        [
+          975,
+          0
+        ],
+        [
+          690,
+          0
+        ],
+        [
+          690,
+          103
+        ],
+        [
+          741.0877193,
+          154.0877193
+        ],
+        [
+          963,
+          155
+        ],
+        [
+          975,
+          155
+        ]
+      ],
+      "parent": "carapace",
+      "pivotXY": [
+        128,
+        37
+      ],
+      "offsetXY": [
+        127.2,
+        15.600000000000001
+      ],
+      "imageScale": 0.4,
+      "channels": {
+        "rotation": [
+          {
+            "channel": "pass32GanderFarRailAim",
+            "factor": 1
+          }
+        ]
+      },
+      "z": 11,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass30/far_front_turret.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass30/far_front_turret.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass30/far_front_turret.png",
+      "sha256": "3b5be4de271840c1e0b2b7085e3a46cc564fe6e488f79e64b800a4c65c40d067",
+      "gitBlobOID": "417b470e3533d84f7ae8c2fbd6654ece1e78c463",
+      "bytes": 38158,
+      "width": 157,
+      "height": 132,
+      "representation": "pass30",
+      "part": "far_front_turret",
+      "when": null,
+      "source": "gander_pass30",
+      "sourceSHA256": "433712ceaa769523e0b6585a6112fbda6a52ae37d86793422d3c5f10ae895bd2",
+      "sourceRectXYWH": [
+        654,
+        260,
+        157,
+        132
+      ],
+      "rigRectXYWH": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sourceClipPolygonNativeXY": [
+        [
+          654,
+          398
+        ],
+        [
+          770,
+          398
+        ],
+        [
+          811,
+          398
+        ],
+        [
+          811,
+          260
+        ],
+        [
+          654,
+          260
+        ]
+      ],
+      "parent": "carapace",
+      "pivotXY": [
+        47,
+        60
+      ],
+      "offsetXY": [
+        80.4,
+        -61.2
+      ],
+      "imageScale": 0.4,
+      "channels": {
+        "rotation": [
+          {
+            "channel": "pass30GanderTurretAim",
+            "factor": 1
+          }
+        ]
+      },
+      "z": 13,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass30/far_pod.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass30/far_pod.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass30/far_pod.png",
+      "sha256": "eb706c00f04eb4463e438e2fbf18561d336ba9cbe888b559468ca85832a2744a",
+      "gitBlobOID": "56c0a0d025eec6536e9e9252e2d1cca383122f9a",
+      "bytes": 111466,
+      "width": 755,
+      "height": 285,
+      "representation": "pass30",
+      "part": "far_pod",
+      "when": null,
+      "source": "gander_pass30",
+      "sourceSHA256": "433712ceaa769523e0b6585a6112fbda6a52ae37d86793422d3c5f10ae895bd2",
+      "sourceRectXYWH": [
+        733,
+        415,
+        755,
+        285
+      ],
+      "rigRectXYWH": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sourceClipPolygonNativeXY": [
+        [
+          1536,
+          700
+        ],
+        [
+          1536,
+          398
+        ],
+        [
+          770,
+          398
+        ],
+        [
+          733,
+          398
+        ],
+        [
+          733,
+          700
+        ]
+      ],
+      "parent": "far_thigh",
+      "pivotXY": [
+        16,
+        55
+      ],
+      "offsetXY": [
+        38.800000000000004,
+        -0.8
+      ],
+      "imageScale": 0.4,
+      "channels": {},
+      "z": 10,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass30/backpack.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass30/backpack.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass30/backpack.png",
+      "sha256": "48fc563d9494274462d4d68df5cc47d18519ad5965932f06607acb1cd7114e00",
+      "gitBlobOID": "6bb1090540b9bd80c9d02a9a809f34df042a86f9",
+      "bytes": 63467,
+      "width": 606,
+      "height": 119,
+      "representation": "pass30",
+      "part": "backpack",
+      "when": null,
+      "source": "gander_pass30",
+      "sourceSHA256": "433712ceaa769523e0b6585a6112fbda6a52ae37d86793422d3c5f10ae895bd2",
+      "sourceRectXYWH": [
+        810,
+        241,
+        606,
+        119
+      ],
+      "rigRectXYWH": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sourceClipPolygonNativeXY": [
+        [
+          1536,
+          398
+        ],
+        [
+          1536,
+          241
+        ],
+        [
+          809.76923077,
+          241
+        ],
+        [
+          811,
+          245
+        ],
+        [
+          811,
+          398
+        ]
+      ],
+      "parent": "carapace",
+      "pivotXY": [
+        38,
+        25
+      ],
+      "offsetXY": [
+        139.20000000000002,
+        -39.6
+      ],
+      "imageScale": 0.4,
+      "channels": {},
+      "z": 5,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass30/near_hip_bearing.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass30/near_hip_bearing.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass30/near_hip_bearing.png",
+      "sha256": "12c478fe1ba6ed3ab4fba45c9f75c3183e4b6f01192bfe362be2285e22f902b1",
+      "gitBlobOID": "4a0189ea57f7f4e18427442e6c054dfa40e1dd59",
+      "bytes": 8949,
+      "width": 72,
+      "height": 72,
+      "representation": "pass30",
+      "part": "near_hip_bearing",
+      "when": null,
+      "source": "gander_pass30",
+      "sourceSHA256": "433712ceaa769523e0b6585a6112fbda6a52ae37d86793422d3c5f10ae895bd2",
+      "sourceRectXYWH": [
+        421,
+        419,
+        72,
+        72
+      ],
+      "rigRectXYWH": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sourceClipPolygonNativeXY": [
+        [
+          493,
+          455
+        ],
+        [
+          492.30827009,
+          447.97674841
+        ],
+        [
+          490.25966317,
+          441.22339643
+        ],
+        [
+          486.93290604,
+          434.99947161
+        ],
+        [
+          482.45584412,
+          429.54415588
+        ],
+        [
+          477.00052839,
+          425.06709396
+        ],
+        [
+          470.77660357,
+          421.74033683
+        ],
+        [
+          464.02325159,
+          419.69172991
+        ],
+        [
+          457,
+          419
+        ],
+        [
+          449.97674841,
+          419.69172991
+        ],
+        [
+          443.22339643,
+          421.74033683
+        ],
+        [
+          436.99947161,
+          425.06709396
+        ],
+        [
+          431.54415588,
+          429.54415588
+        ],
+        [
+          427.06709396,
+          434.99947161
+        ],
+        [
+          423.74033683,
+          441.22339643
+        ],
+        [
+          421.69172991,
+          447.97674841
+        ],
+        [
+          421,
+          455
+        ],
+        [
+          421.69172991,
+          462.02325159
+        ],
+        [
+          423.74033683,
+          468.77660357
+        ],
+        [
+          427.06709396,
+          475.00052839
+        ],
+        [
+          431.54415588,
+          480.45584412
+        ],
+        [
+          436.99947161,
+          484.93290604
+        ],
+        [
+          443.22339643,
+          488.25966317
+        ],
+        [
+          449.97674841,
+          490.30827009
+        ],
+        [
+          457,
+          491
+        ],
+        [
+          464.02325159,
+          490.30827009
+        ],
+        [
+          470.77660357,
+          488.25966317
+        ],
+        [
+          477.00052839,
+          484.93290604
+        ],
+        [
+          482.45584412,
+          480.45584412
+        ],
+        [
+          486.93290604,
+          475.00052839
+        ],
+        [
+          490.25966317,
+          468.77660357
+        ],
+        [
+          492.30827009,
+          462.02325159
+        ]
+      ],
+      "parent": "near_hip",
+      "pivotXY": [
+        36,
+        36
+      ],
+      "offsetXY": [
+        0,
+        0
+      ],
+      "imageScale": 0.4,
+      "channels": {},
+      "z": 55.001,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass30/far_hip_bearing.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass30/far_hip_bearing.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass30/far_hip_bearing.png",
+      "sha256": "5ad05d7fdd21ce418a9705e4c40d2102b57a164a9654274d40ae7398c0aa9125",
+      "gitBlobOID": "d4cd948686592acd91a6c62a45083bfb24de08eb",
+      "bytes": 8461,
+      "width": 72,
+      "height": 72,
+      "representation": "pass30",
+      "part": "far_hip_bearing",
+      "when": null,
+      "source": "gander_pass30",
+      "sourceSHA256": "433712ceaa769523e0b6585a6112fbda6a52ae37d86793422d3c5f10ae895bd2",
+      "sourceRectXYWH": [
+        616,
+        432,
+        72,
+        72
+      ],
+      "rigRectXYWH": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sourceClipPolygonNativeXY": [
+        [
+          688,
+          468
+        ],
+        [
+          687.30827009,
+          460.97674841
+        ],
+        [
+          685.25966317,
+          454.22339643
+        ],
+        [
+          681.93290604,
+          447.99947161
+        ],
+        [
+          677.45584412,
+          442.54415588
+        ],
+        [
+          672.00052839,
+          438.06709396
+        ],
+        [
+          665.77660357,
+          434.74033683
+        ],
+        [
+          659.02325159,
+          432.69172991
+        ],
+        [
+          652,
+          432
+        ],
+        [
+          644.97674841,
+          432.69172991
+        ],
+        [
+          638.22339643,
+          434.74033683
+        ],
+        [
+          631.99947161,
+          438.06709396
+        ],
+        [
+          626.54415588,
+          442.54415588
+        ],
+        [
+          622.06709396,
+          447.99947161
+        ],
+        [
+          618.74033683,
+          454.22339643
+        ],
+        [
+          616.69172991,
+          460.97674841
+        ],
+        [
+          616,
+          468
+        ],
+        [
+          616.69172991,
+          475.02325159
+        ],
+        [
+          618.74033683,
+          481.77660357
+        ],
+        [
+          622.06709396,
+          488.00052839
+        ],
+        [
+          626.54415588,
+          493.45584412
+        ],
+        [
+          631.99947161,
+          497.93290604
+        ],
+        [
+          638.22339643,
+          501.25966317
+        ],
+        [
+          644.97674841,
+          503.30827009
+        ],
+        [
+          652,
+          504
+        ],
+        [
+          659.02325159,
+          503.30827009
+        ],
+        [
+          665.77660357,
+          501.25966317
+        ],
+        [
+          672.00052839,
+          497.93290604
+        ],
+        [
+          677.45584412,
+          493.45584412
+        ],
+        [
+          681.93290604,
+          488.00052839
+        ],
+        [
+          685.25966317,
+          481.77660357
+        ],
+        [
+          687.30827009,
+          475.02325159
+        ]
+      ],
+      "parent": "far_hip",
+      "pivotXY": [
+        36,
+        36
+      ],
+      "offsetXY": [
+        0,
+        0
+      ],
+      "imageScale": 0.4,
+      "channels": {},
+      "z": 15.001,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass30/near_rail_barrel.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass30/near_rail_barrel.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass30/near_rail_barrel.png",
+      "sha256": "3405d0491b6603f653e7f7d57333a5d49edd5f4518923fa270f18de12365bf6b",
+      "gitBlobOID": "4f862a06b202b1f8838d625e07c40e218ba92f1f",
+      "bytes": 43583,
+      "width": 515,
+      "height": 85,
+      "representation": "pass30",
+      "part": "near_rail_barrel",
+      "when": null,
+      "source": "gander_pass30",
+      "sourceSHA256": "433712ceaa769523e0b6585a6112fbda6a52ae37d86793422d3c5f10ae895bd2",
+      "sourceRectXYWH": [
+        975,
+        155,
+        515,
+        85
+      ],
+      "rigRectXYWH": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sourceClipPolygonNativeXY": [
+        [
+          1536,
+          241
+        ],
+        [
+          1536,
+          155
+        ],
+        [
+          975,
+          155
+        ],
+        [
+          975,
+          241
+        ]
+      ],
+      "parent": "near_rail",
+      "pivotXY": [
+        0,
+        26
+      ],
+      "offsetXY": [
+        56.800000000000004,
+        2.8000000000000003
+      ],
+      "imageScale": 0.4,
+      "channels": {
+        "x": [
+          {
+            "channel": "pass32GanderNearRailRecoilX",
+            "factor": 1
+          }
+        ],
+        "y": [
+          {
+            "channel": "pass32GanderNearRailRecoilY",
+            "factor": 1
+          }
+        ]
+      },
+      "z": 50.001,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass30/far_rail_barrel.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass30/far_rail_barrel.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass30/far_rail_barrel.png",
+      "sha256": "eed77e5b290162f437e676ec835479b4c880388755d6273e4a4b0952092c026f",
+      "gitBlobOID": "d2c538ff278f73145d6d7f372379ee9dd4a8e5ca",
+      "bytes": 56367,
+      "width": 529,
+      "height": 122,
+      "representation": "pass30",
+      "part": "far_rail_barrel",
+      "when": null,
+      "source": "gander_pass30",
+      "sourceSHA256": "433712ceaa769523e0b6585a6112fbda6a52ae37d86793422d3c5f10ae895bd2",
+      "sourceRectXYWH": [
+        975,
+        33,
+        529,
+        122
+      ],
+      "rigRectXYWH": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sourceClipPolygonNativeXY": [
+        [
+          1536,
+          155
+        ],
+        [
+          1536,
+          0
+        ],
+        [
+          975,
+          0
+        ],
+        [
+          975,
+          155
+        ]
+      ],
+      "parent": "far_rail",
+      "pivotXY": [
+        0,
+        103
+      ],
+      "offsetXY": [
+        62.800000000000004,
+        -3.2
+      ],
+      "imageScale": 0.4,
+      "channels": {
+        "x": [
+          {
+            "channel": "pass32GanderFarRailRecoilX",
+            "factor": 1
+          }
+        ],
+        "y": [
+          {
+            "channel": "pass32GanderFarRailRecoilY",
+            "factor": 1
+          }
+        ]
+      },
+      "z": 11.001,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass30/jaw_lower_plate.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass30/jaw_lower_plate.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass30/jaw_lower_plate.png",
+      "sha256": "02ce8952424bd2abb27de1bc40fcc45e5099505b1aa9e2999c683c46b7fa594b",
+      "gitBlobOID": "d46d160451f32273a2533c750c29d006aba47656",
+      "bytes": 33254,
+      "width": 138,
+      "height": 143,
+      "representation": "pass30",
+      "part": "jaw_lower_plate",
+      "when": null,
+      "source": "gander_pass30",
+      "sourceSHA256": "433712ceaa769523e0b6585a6112fbda6a52ae37d86793422d3c5f10ae895bd2",
+      "sourceRectXYWH": [
+        177,
+        165,
+        138,
+        143
+      ],
+      "rigRectXYWH": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sourceClipPolygonNativeXY": [
+        [
+          0,
+          165.39215686
+        ],
+        [
+          0,
+          360
+        ],
+        [
+          315,
+          360
+        ],
+        [
+          315,
+          205
+        ],
+        [
+          302,
+          165
+        ],
+        [
+          245,
+          175
+        ]
+      ],
+      "parent": "jaw",
+      "pivotXY": [
+        105,
+        4
+      ],
+      "offsetXY": [
+        0,
+        -8.4
+      ],
+      "imageScale": 0.4,
+      "channels": {
+        "rotation": [
+          {
+            "channel": "pass30GanderFaceplateHinge",
+            "factor": 1
+          }
+        ]
+      },
+      "z": 44.001,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass30/jaw_lower_plate-open.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass30/jaw_lower_plate-open.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass30/jaw_lower_plate-open.png",
+      "sha256": "a1b9a50116cfa2b5e643e57c831780e7c8336f65b3312152fafef1746799195b",
+      "gitBlobOID": "989c2e93b8f817a3059fcb92b18b417ff5d68f87",
+      "bytes": 31541,
+      "width": 141,
+      "height": 121,
+      "representation": "pass30",
+      "part": "jaw_lower_plate",
+      "when": "ganderMouthOpen",
+      "source": "gander_pass30_open",
+      "sourceSHA256": "307c1342587a694fa598b23c52c38efe008846d1f01dbe1754cb1c6745bd84ab",
+      "sourceRectXYWH": [
+        174,
+        165,
+        141,
+        121
+      ],
+      "rigRectXYWH": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sourceClipPolygonNativeXY": [
+        [
+          0,
+          165.39215686
+        ],
+        [
+          0,
+          360
+        ],
+        [
+          315,
+          360
+        ],
+        [
+          315,
+          205
+        ],
+        [
+          302,
+          165
+        ],
+        [
+          245,
+          175
+        ]
+      ],
+      "parent": "jaw",
+      "pivotXY": [
+        108,
+        4
+      ],
+      "offsetXY": [
+        0,
+        -8.4
+      ],
+      "imageScale": 0.4,
+      "channels": {
+        "rotation": [
+          {
+            "channel": "pass30GanderFaceplateHinge",
+            "factor": 1
+          }
+        ]
+      },
+      "z": 44.001,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass30/near_knee_bearing.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass30/near_knee_bearing.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass30/near_knee_bearing.png",
+      "sha256": "a8576bd81e54306412d8ec3631bdc88ad1f1c031b0bae42d543261808bae5324",
+      "gitBlobOID": "5886a62050f16eb2527c7618e53610904b3f08f2",
+      "bytes": 8515,
+      "width": 76,
+      "height": 76,
+      "representation": "pass30",
+      "part": "near_knee_bearing",
+      "when": null,
+      "source": "gander_pass30",
+      "sourceSHA256": "433712ceaa769523e0b6585a6112fbda6a52ae37d86793422d3c5f10ae895bd2",
+      "sourceRectXYWH": [
+        323,
+        611,
+        76,
+        76
+      ],
+      "rigRectXYWH": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sourceClipPolygonNativeXY": [
+        [
+          399,
+          649
+        ],
+        [
+          398.26984066,
+          641.58656776
+        ],
+        [
+          396.10742224,
+          634.45802957
+        ],
+        [
+          392.59584527,
+          627.88833115
+        ],
+        [
+          387.87005769,
+          622.12994231
+        ],
+        [
+          382.11166885,
+          617.40415473
+        ],
+        [
+          375.54197043,
+          613.89257776
+        ],
+        [
+          368.41343224,
+          611.73015934
+        ],
+        [
+          361,
+          611
+        ],
+        [
+          353.58656776,
+          611.73015934
+        ],
+        [
+          346.45802957,
+          613.89257776
+        ],
+        [
+          339.88833115,
+          617.40415473
+        ],
+        [
+          334.12994231,
+          622.12994231
+        ],
+        [
+          329.40415473,
+          627.88833115
+        ],
+        [
+          325.89257776,
+          634.45802957
+        ],
+        [
+          323.73015934,
+          641.58656776
+        ],
+        [
+          323,
+          649
+        ],
+        [
+          323.73015934,
+          656.41343224
+        ],
+        [
+          325.89257776,
+          663.54197043
+        ],
+        [
+          329.40415473,
+          670.11166885
+        ],
+        [
+          334.12994231,
+          675.87005769
+        ],
+        [
+          339.88833115,
+          680.59584527
+        ],
+        [
+          346.45802957,
+          684.10742224
+        ],
+        [
+          353.58656776,
+          686.26984066
+        ],
+        [
+          361,
+          687
+        ],
+        [
+          368.41343224,
+          686.26984066
+        ],
+        [
+          375.54197043,
+          684.10742224
+        ],
+        [
+          382.11166885,
+          680.59584527
+        ],
+        [
+          387.87005769,
+          675.87005769
+        ],
+        [
+          392.59584527,
+          670.11166885
+        ],
+        [
+          396.10742224,
+          663.54197043
+        ],
+        [
+          398.26984066,
+          656.41343224
+        ]
+      ],
+      "parent": "near_thigh",
+      "pivotXY": [
+        38,
+        38
+      ],
+      "offsetXY": [
+        -38.400000000000006,
+        -77.60000000000001
+      ],
+      "imageScale": 0.4,
+      "channels": {
+        "rotation": [
+          {
+            "channel": "ganderNearLower",
+            "factor": 0.5
+          }
+        ]
+      },
+      "z": 56.01,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    },
+    {
+      "file": "pass30/far_knee_bearing.png",
+      "sourcePath": "docs/cqc-reprise/pass53/gander-parts/pass30/far_knee_bearing.png",
+      "path": "public/cqc/assets/p54-gander-parts/pass30/far_knee_bearing.png",
+      "sha256": "ee8f1a50d05feccd9de6609e30bac92d844cbc802e06955470d1de4913864e03",
+      "gitBlobOID": "925fa4c17eea86ee116d28bf6a18c6fe6e01d649",
+      "bytes": 7604,
+      "width": 68,
+      "height": 68,
+      "representation": "pass30",
+      "part": "far_knee_bearing",
+      "when": null,
+      "source": "gander_pass30",
+      "sourceSHA256": "433712ceaa769523e0b6585a6112fbda6a52ae37d86793422d3c5f10ae895bd2",
+      "sourceRectXYWH": [
+        638,
+        666,
+        68,
+        68
+      ],
+      "rigRectXYWH": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "sourceClipPolygonNativeXY": [
+        [
+          706,
+          700
+        ],
+        [
+          705.34669953,
+          693.36692905
+        ],
+        [
+          703.41190411,
+          686.9887633
+        ],
+        [
+          700.26996682,
+          681.11061208
+        ],
+        [
+          696.04163056,
+          675.95836944
+        ],
+        [
+          690.88938792,
+          671.73003318
+        ],
+        [
+          685.0112367,
+          668.58809589
+        ],
+        [
+          678.63307095,
+          666.65330047
+        ],
+        [
+          672,
+          666
+        ],
+        [
+          665.36692905,
+          666.65330047
+        ],
+        [
+          658.9887633,
+          668.58809589
+        ],
+        [
+          653.11061208,
+          671.73003318
+        ],
+        [
+          647.95836944,
+          675.95836944
+        ],
+        [
+          643.73003318,
+          681.11061208
+        ],
+        [
+          640.58809589,
+          686.9887633
+        ],
+        [
+          638.65330047,
+          693.36692905
+        ],
+        [
+          638,
+          700
+        ],
+        [
+          638.65330047,
+          706.63307095
+        ],
+        [
+          640.58809589,
+          713.0112367
+        ],
+        [
+          643.73003318,
+          718.88938792
+        ],
+        [
+          647.95836944,
+          724.04163056
+        ],
+        [
+          653.11061208,
+          728.26996682
+        ],
+        [
+          658.9887633,
+          731.41190411
+        ],
+        [
+          665.36692905,
+          733.34669953
+        ],
+        [
+          672,
+          734
+        ],
+        [
+          678.63307095,
+          733.34669953
+        ],
+        [
+          685.0112367,
+          731.41190411
+        ],
+        [
+          690.88938792,
+          728.26996682
+        ],
+        [
+          696.04163056,
+          724.04163056
+        ],
+        [
+          700.26996682,
+          718.88938792
+        ],
+        [
+          703.41190411,
+          713.0112367
+        ],
+        [
+          705.34669953,
+          706.63307095
+        ]
+      ],
+      "parent": "far_thigh",
+      "pivotXY": [
+        34,
+        34
+      ],
+      "offsetXY": [
+        8,
+        -92.80000000000001
+      ],
+      "imageScale": 0.4,
+      "channels": {
+        "rotation": [
+          {
+            "channel": "ganderFarLower",
+            "factor": 0.5
+          }
+        ]
+      },
+      "z": 16.01,
+      "rotation": 0,
+      "textureRotation": 0,
+      "opacity": 1
+    }
+  ],
+  "sourcePNGsModified": false,
+  "copiedPNGs": 43,
+  "separateNewDrawings": 0,
+  "scope": "Exact byte copies of existing P53 separated PNGs. P16 and P30 are different representations of one Gander; current P30 uses24appearances. This manifest does not admit new combat phases or certify original-game1:1."
+}

@@ -1,0 +1,14 @@
+{"status": "VERIFIER_ERROR_NO_PASS", "error": "Command '['git', 'diff', '--name-only', '-z', '04221faf7933b4a33cf63e3859533639f010723e']' died with <Signals.SIGBUS: 7>."}
+Traceback (most recent call last):
+  File "/tmp/cqc-p54-20261120/verification/verify_p54_delivery.py", line 255, in <module>
+    try:sys.exit(main())
+                 ^^^^^^
+  File "/tmp/cqc-p54-20261120/verification/verify_p54_delivery.py", line 193, in main
+    changed_tracked=subprocess.check_output(['git','diff','--name-only','-z',BASE_COMMIT],cwd=project).decode().split('\0');changed_tracked=[x for x in changed_tracked if x]
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'diff', '--name-only', '-z', '04221faf7933b4a33cf63e3859533639f010723e']' died with <Signals.SIGBUS: 7>.

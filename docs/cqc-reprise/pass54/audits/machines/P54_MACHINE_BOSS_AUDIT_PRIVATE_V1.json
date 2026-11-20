@@ -1,0 +1,135 @@
+{
+  "schema": "cqc.p54.machine-audit/1",
+  "atUTC": "2026-11-20T09:40:13.455674+00:00",
+  "revision": "04221faf7933b4a33cf63e3859533639f010723e",
+  "scope": "Read-only code/tree/document audit; no rendered machine or original game screenshot independently viewed during this audit. Existing art is not certified 1:1.",
+  "sourceEvidence": [
+    {
+      "path": "public/cqc/src/cqc-pass27-arsenal-native-scenes.js",
+      "sha256": "2c0cee87be3c2ca4f34a0a1002db5c28e227416da97836f87193b86047ed471d"
+    },
+    {
+      "path": "docs/cqc-reprise/pass53/gander-parts/gander-parts.json",
+      "sha256": "17dc48131ad35d7bf89cc23a069b18c5adc822b2a1c629b105b27221c2d7a604"
+    }
+  ],
+  "avoidDuplicateBodies": [
+    {
+      "id": "hind_d_mgs1_ps1_1998",
+      "asset": "public/cqc/assets/machines-pass18/hind-mgs1-parts-v1.png",
+      "extra": "Native main-rotor phases P28 and far rocket pod P35 already exist."
+    },
+    {
+      "id": "m1_mgs1_ps1_1998",
+      "asset": "public/cqc/assets/machines-pass18/m1-mgs1-parts-v1.png"
+    },
+    {
+      "id": "ray_unmanned_mgr2013",
+      "asset": "public/cqc/assets/machines-pass18/ray-mgr-parts-v1.png"
+    },
+    {
+      "id": "tx55_mg1_msx1987",
+      "asset": "public/cqc/assets/machine-parts/tx55-mg1-msx/body.png",
+      "extra": "Separate weapons.png and legs.png already exist."
+    },
+    {
+      "id": "gander_ghost_gbc2000",
+      "asset": "public/cqc/assets/machines-pass30/gander/gander-native-three-quarter.png",
+      "extra": "P16 atlas and P30 open-faceplate version already exist."
+    },
+    {
+      "id": "peacewalker_biped_pw_psp2010",
+      "asset": "public/cqc/assets/machines-pass31/peacewalker/peace-walker-biped-first-battle.png",
+      "extra": "P31 biped source and 25-part contract already exist."
+    }
+  ],
+  "highestPriorityProduction": [
+    {
+      "priority": 1,
+      "domain": "boss-stage",
+      "encounter": "m1tank",
+      "presentMapping": [
+        "mgs1",
+        "shadow_heliport"
+      ],
+      "missingSpecificScene": "MGS1 tank canyon / snowfield",
+      "action": "Produce/recover faithful original-PS1 snowfield stage, preserve separate depths, then add explicit bridge mapping. Do not redraw the existing M1 body.",
+      "confirmation": "Stage agent confirms all historical P53 canyon files absent from latest tree."
+    },
+    {
+      "priority": 1,
+      "domain": "boss-stage",
+      "encounter": "hind_d",
+      "presentMapping": [
+        "mgs1",
+        "shadow_heliport"
+      ],
+      "missingSpecificScene": "MGS1 Communications Tower roof",
+      "action": "Produce/recover Tower B roof/camera-concordant skyline/railings; patch bridge to dedicated scene. Keep aircraft world anchor independent of player/camera motion.",
+      "confirmation": "Stage agent confirms historical Tower B files absent."
+    },
+    {
+      "priority": 1,
+      "domain": "boss-stage",
+      "encounter": "ray_mgR",
+      "presentMapping": [
+        "mgr",
+        "p18_mgr_abkhazie_cour_desperado"
+      ],
+      "missingSpecificScene": "MGR R00 African avenue / rail encounter",
+      "action": "Use actual R00 Africa reference; do not relabel R01 Abkhazia as R00. Stage agent found arena-studies africa-avenue.png and africa-rail.png absent."
+    },
+    {
+      "priority": 2,
+      "domain": "boss-stage",
+      "encounter": "peacewalker_biped",
+      "presentMapping": [
+        "pw",
+        "p18_pw_cocoon_operation"
+      ],
+      "missingSpecificScene": "First-battle biped battlefield",
+      "action": "Separate first-battle geography from Cocoon quarry. Existing rig camera inverse, mines S, missile/howl/chase/helicopter phases remain unadmitted."
+    },
+    {
+      "priority": 2,
+      "domain": "machine-separated-parts",
+      "machine": "gander_ghost_gbc2000",
+      "existingPartsContract": "docs/cqc-reprise/pass53/gander-parts/gander-parts.json",
+      "rigs": {
+        "pass16": {
+          "anchors": 4,
+          "appearances": 19
+        },
+        "pass30": {
+          "anchors": 4,
+          "appearances": 24
+        }
+      },
+      "individualPNGs": 43,
+      "action": "Use the already-exported P53 individual PNGs to build an isolated articulated preview or carefully adapt source mapping in runtime; do not regenerate 43 pieces. Preserve parent chains, z order, source-native coordinates and pivots outside trimmed rectangles.",
+      "risk": "Engine native muzzle/aim points use atlas coordinates. Swapping to cropped PNGs without a native-origin mapping would displace projectiles and attachment pivots; first prove zero-motion assembly and emitted origin equivalence."
+    }
+  ],
+  "otherQualifiedGaps": [
+    {
+      "machine": "TT77 Nosorog",
+      "finding": "No file path naming nosorog or tt77 in latest Git tree. This is not sufficient to prove lack of an alias; roster agent should correlate UID and generic vehicle atlas before generation."
+    },
+    {
+      "machine": "UTH-66 Blackfoot",
+      "finding": "right-parts-v2.png already exists under rootassets/assets/machines-pass41/uth66-blackfoot-mgsv/, plus isolated controller/QA candidate docs. It is a recovered candidate, not proof of public registry/admitted combat. Avoid regenerating the same right projection merely because no public/cqc path is named Blackfoot."
+    }
+  ],
+  "remainingFidelityRequirements": [
+    "TX-55 current two-leg shots then CONTROL is an adapted CQC target rule, not original explosive/camera sequence.",
+    "Gander existing current engine explicitly preserves two phases/HP pools; canonical three-phase battle remains missing.",
+    "Hind/M1 opposite camera, rotor/tracks and projected weapon aim require actual screenshots/raster/real browser checks before fidelity claims."
+  ],
+  "guards": "Inherited 12 scopes plus P53 Snake ACID2 Color B correction guard unchanged; no generation attempted.",
+  "mutations": {
+    "runtime": 0,
+    "GitRefs": 0,
+    "sourcePixels": 0,
+    "newArt": 0
+  }
+}

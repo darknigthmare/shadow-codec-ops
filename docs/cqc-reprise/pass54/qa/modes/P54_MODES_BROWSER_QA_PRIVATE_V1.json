@@ -1,0 +1,92 @@
+{
+  "schema": "cqc.p54.mode-browser-qa/1",
+  "atUTC": "2026-11-20T10:19:08.947570+00:00",
+  "status": "PASS",
+  "sourceSnapshot": [
+    {
+      "path": "public/cqc/src/cqc-p54-mode-scenes.js",
+      "bytes": 11682,
+      "sha256": "194ac8ac1f116576d5cc54b6f1391d1cef88900f38a26821efe2ec171307355c"
+    },
+    {
+      "path": "public/cqc/src/cqc-p53-service-yard.js",
+      "bytes": 8551,
+      "sha256": "ad9a7ff5219e598c1f76b052da96006aa8fc5db94e7eaecef8ca4770bfcf157f"
+    },
+    {
+      "path": "public/cqc/src/cqc-p54-stages.js",
+      "bytes": 6376,
+      "sha256": "c0552ec3fb721224209cd8728baaa3d2a33dcddf033ab51adb02e105053be9ae"
+    },
+    {
+      "path": "public/cqc/modules/core-v032.html",
+      "bytes": 1573482,
+      "sha256": "bf7eb7ac44d3830065213fe8a8b1442f4da63ac3774cb8d62cdb2b8912e21d17"
+    },
+    {
+      "path": "public/cqc/modules/arcade-chronicles-v055.html",
+      "bytes": 3139288,
+      "sha256": "4cc87d6b6ac03b5391e86cf4220dcfe521e5dd91a6cbea7f5f41f89cfbd1f0f3"
+    },
+    {
+      "path": "public/cqc/modules/combat-academy-v053.html",
+      "bytes": 3543797,
+      "sha256": "98975a3fd9ba52062bd9104341559e7d655d7358d2ff3a18bcd68c0c69a2358e"
+    },
+    {
+      "path": "scripts/test-cqc-p54-mode-scenes.mjs",
+      "bytes": 9557,
+      "sha256": "1f500557cd68dfe36f32a92070fa205c79d3fcca5d9c609997571400f5e7f8f2"
+    }
+  ],
+  "browserCases": {
+    "Core": 13,
+    "Academy": 3,
+    "Chronicles": 4
+  },
+  "unitChecksAfterImportedPreviewFix": 13,
+  "coreExpectedNetworkFailure": "One intentional CDP Network.setBlockedURLs power-yard image failure; blockedReason inspector. Cancel then explicit retry recovered.",
+  "unexpectedRuntimeExceptions": 0,
+  "unexpectedHTTPErrorResponses": 0,
+  "unexpectedNetworkFailures": 0,
+  "canonicalDataChecks": [
+    {
+      "path": "public/cqc/modules/arcade-chronicles-v055.html",
+      "constant": "const DATA=",
+      "exactJSONValuePreserved": true,
+      "baselineCommit": "04221faf7933b4a33cf63e3859533639f010723e"
+    },
+    {
+      "path": "public/cqc/modules/combat-academy-v053.html",
+      "constant": "const ACADEMY=",
+      "exactJSONValuePreserved": true,
+      "baselineCommit": "04221faf7933b4a33cf63e3859533639f010723e"
+    }
+  ],
+  "limits": [
+    "Real Chromium UI/fight smoke, not all campaigns, every fighter or every action.",
+    "Chronicles result uses actual game engine advanced via advance(250), not a fabricated result message.",
+    "Core default TheBoss body remains an existing procedural/vector actor; this stage integration does not newly admit character sprites.",
+    "Imported-art picker precedence regression was reproduced in the actual callback source, corrected minimally, validated in13unit checks, then Core12browser cases repeated on final HTML."
+  ],
+  "reports": [
+    "CORE_ACTUAL_BROWSER_QA_PRIVATE_V1.json",
+    "ACADEMY_ACTUAL_BROWSER_QA_PRIVATE_V1.json",
+    "CHRONICLES_ACTUAL_BROWSER_QA_PRIVATE_V1.json"
+  ],
+  "screenshotsPhysicallyViewed": [
+    "core-cpu-yard.png",
+    "core-local-oil-fence.png",
+    "chronicles-custom-oil-fence-story.png",
+    "chronicles-custom-oil-fence-fight.png",
+    "academy-oil-fence-fight.png"
+  ],
+  "CoreBrowserRepeatedAfterImportedPreviewFix": true,
+  "reportSHA256": {
+    "CORE_ACTUAL_BROWSER_QA_PRIVATE_V1.json": "3606bb3bea0dd6d1cfc07a0d46f23b930712a3d12aa1499de778ac53a6487589",
+    "ACADEMY_ACTUAL_BROWSER_QA_PRIVATE_V1.json": "4b2fb40662144102f125e4d2098b2fd5552fad73dbc24c8d193a5fb51d6d465e",
+    "CHRONICLES_ACTUAL_BROWSER_QA_PRIVATE_V1.json": "0d0fe42142933733d1788d6efb51e4fe0cb68795097962b489f4b217e277c533"
+  },
+  "sourceSnapshotStableAtClose": true,
+  "authoredScenesInActualPicker": 9
+}

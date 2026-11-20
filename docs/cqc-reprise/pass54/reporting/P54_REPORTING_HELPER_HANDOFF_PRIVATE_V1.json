@@ -1,0 +1,80 @@
+{
+  "schema": "cqc.p54.reporting-helper-handoff/1",
+  "atUTC": "2026-11-20T10:12:48.207497+00:00",
+  "state": "HELPERS_AND_DRAFT_INVENTORY_READY_FINAL_RUN_WAITS_FOR_ROOT_FREEZE",
+  "collector": "collect_p54_sources.py",
+  "builder": "build_p54_tracking.py",
+  "draftInventory": "P54_NORMALIZED_SOURCE_INVENTORY_PRIVATE_V1.json",
+  "draftCounts": {
+    "visibleSourceRows": 14,
+    "newCostumePoses": 12,
+    "newCharacterPoses": 2,
+    "uniquePhysicalPNGs": 14,
+    "heldSourceRows": 0,
+    "newGanderArt": 0,
+    "newAnimations": 0,
+    "runtimeAdmissionsFromThisInventory": 0
+  },
+  "collectorCommand": "python collect_p54_sources.py [--freeze ROOT_FREEZE.json]",
+  "finalCommand": "python build_p54_tracking.py --freeze ROOT_FREEZE.json",
+  "dryRunCommand": "python build_p54_tracking.py --freeze ROOT_FREEZE.json --dry-run",
+  "rootFreezeContract": {
+    "state": "ROOT_APPROVED_FROZEN_COUNTS",
+    "approvedSourceSHA256": [
+      "actual approved gallery PNG SHA256 values, not planned IDs"
+    ],
+    "expectedCounts": {
+      "visibleSourceRows": "integer",
+      "newCostumePoses": "integer",
+      "newCharacterPoses": "integer",
+      "uniquePhysicalPNGs": "integer"
+    },
+    "integrationRows": [
+      {
+        "id": "scene/machine/mode identifier",
+        "domain": "stage|machine|mode-link",
+        "label": "name",
+        "edition": "actual source edition",
+        "sourceStatus": "actual qualified status",
+        "sources": [
+          "real source/proof paths"
+        ],
+        "newPNGs": "integer, excludes reused art",
+        "reusedPNGs": "integer",
+        "modes": [
+          "only actually linked modes"
+        ],
+        "integrationStatus": "source-only|linked-unverified|tested|...",
+        "verification": "actual test proof path",
+        "notes": "fidelity limitations"
+      }
+    ],
+    "pendingRows": [
+      {
+        "id": "identifier",
+        "uid": "same incarnation / encounter ID",
+        "domain": "costume|stage|machine|guard|...",
+        "label": "name",
+        "status": "pending|held|guarded",
+        "reason": "actual missing reference/source or scope of guard",
+        "evidence": "actual proof path",
+        "nextAction": "do not retry guarded scopes"
+      }
+    ]
+  },
+  "preservationQA": "P54_EXCEL_HELPER_FIXTURE_QA_PRIVATE_V1.json",
+  "preservationFixture": {
+    "oldSheets": 67,
+    "newSheets": 3,
+    "totalSheets": 70,
+    "old67SheetXMLsByteIdentical": true,
+    "allUnchangedZIPMembersByteIdentical": true,
+    "formulaLikeTextKeptLiteral": true,
+    "fixtureIsNotDeliveredP54Content": true
+  },
+  "noFinalWorkbookWritten": true,
+  "noRuntimeAdmissionInferredFromDrawings": true,
+  "pngsForGanderAreReused": 43,
+  "newDrawingsForGander": 0,
+  "guards": "12 inherited scopes, P53 Snake ACID2 Color B walk-correction guard, and current OC-002 input rejection remain distinct. Source collector excludes OC-002; freeze must preserve exact guard history in pendingRows."
+}

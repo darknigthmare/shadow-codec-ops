@@ -1,0 +1,863 @@
+{
+  "info": {
+    "title": "CQC VERSUS",
+    "coreAPI": true,
+    "modeAdapter": true,
+    "serviceStages": [
+      {
+        "id": "p53_null_power_yard",
+        "name": "SOUS-STATION · COUR EXTÉRIEURE"
+      },
+      {
+        "id": "p53_null_switchgear_hall",
+        "name": "SOUS-STATION · SALLE DES COMMANDES"
+      },
+      {
+        "id": "p53_null_signals_room",
+        "name": "SOUS-STATION · SALLE D’ÉCOUTE"
+      },
+      {
+        "id": "p53_big_shell_strut_c_dining",
+        "name": "BIG SHELL · STRUT C · SALLE À MANGER"
+      },
+      {
+        "id": "p53_big_shell_strut_f_warehouse",
+        "name": "BIG SHELL · STRUT F · ENTREPÔT"
+      },
+      {
+        "id": "p54_mgs2_oil_fence_hd",
+        "name": "BIG SHELL · OIL FENCE"
+      }
+    ],
+    "selects": [
+      {
+        "id": "roster-filter",
+        "value": "all",
+        "options": 19,
+        "last": [
+          {
+            "value": "acid",
+            "label": "DOSSIER AC!D"
+          },
+          {
+            "value": "acid2",
+            "label": "SAINTLOGIC / AC!D 2"
+          },
+          {
+            "value": "revenge",
+            "label": "OPÉRATION 747"
+          },
+          {
+            "value": "expansion024",
+            "label": "DOSSIERS TRANSVERSAUX"
+          },
+          {
+            "value": "expansion023",
+            "label": "DOSSIERS TRANSVERSAUX"
+          },
+          {
+            "value": "expansion022",
+            "label": "DOSSIERS TRANSVERSAUX"
+          },
+          {
+            "value": "legacy021",
+            "label": "DOSSIERS TRANSVERSAUX"
+          }
+        ]
+      },
+      {
+        "id": "mobile-costume-p1-pass17",
+        "value": "original",
+        "options": 1,
+        "last": [
+          {
+            "value": "original",
+            "label": "Tenue d’origine"
+          }
+        ]
+      },
+      {
+        "id": "mobile-costume-p2-pass17",
+        "value": "original",
+        "options": 2,
+        "last": [
+          {
+            "value": "original",
+            "label": "Original"
+          },
+          {
+            "value": "nextgen",
+            "label": "Next Gen"
+          }
+        ]
+      },
+      {
+        "id": "boss-select",
+        "value": "rex",
+        "options": 16,
+        "last": [
+          {
+            "value": "raxa",
+            "label": "PORTABLE OPS / METAL GEAR RAXA"
+          },
+          {
+            "value": "icbmg",
+            "label": "PORTABLE OPS / ICBMG / INTERCEPTION DU LANCEMENT"
+          },
+          {
+            "value": "sahelanthropus",
+            "label": "SAHELANTHROPUS"
+          },
+          {
+            "value": "pupa",
+            "label": "PUPA"
+          },
+          {
+            "value": "chrysalis",
+            "label": "CHRYSALIS"
+          },
+          {
+            "value": "cocoon",
+            "label": "COCOON"
+          },
+          {
+            "value": "peace_walker",
+            "label": "PEACE WALKER"
+          }
+        ]
+      },
+      {
+        "id": "opponent",
+        "value": "snake",
+        "options": 95,
+        "last": [
+          {
+            "value": "venus",
+            "label": "VENUS"
+          },
+          {
+            "value": "snake_sr",
+            "label": "SOLID SNAKE — SNAKE’S REVENGE"
+          },
+          {
+            "value": "john_sr",
+            "label": "JOHN TURNER"
+          },
+          {
+            "value": "nick_sr",
+            "label": "NICK MYER"
+          },
+          {
+            "value": "bigboss_sr",
+            "label": "BIG BOSS — CYBORG / SR"
+          },
+          {
+            "value": "ed_mgs4",
+            "label": "ED — RAT PATROL"
+          },
+          {
+            "value": "jonathan_mgs4",
+            "label": "JONATHAN — RAT PATROL"
+          }
+        ]
+      },
+      {
+        "id": "chapter",
+        "value": "snakeEater",
+        "options": 45,
+        "last": [
+          {
+            "value": "portableMachines",
+            "label": "Portable Ops — du prototype au lancement"
+          },
+          {
+            "value": "portableUprising",
+            "label": "Portable Ops — la fin de la rébellion"
+          },
+          {
+            "value": "phantomSteel",
+            "label": "The Phantom Pain — brume et acier"
+          },
+          {
+            "value": "pwAiResearch",
+            "label": "Peace Walker — les premières armes IA"
+          },
+          {
+            "value": "pwAiBench",
+            "label": "Peace Walker — des IA au banc ZEKE"
+          },
+          {
+            "value": "pwAiQuartet",
+            "label": "Peace Walker — les quatre armes IA"
+          },
+          {
+            "value": "pwAiToZeke",
+            "label": "Peace Walker — de Pupa à ZEKE"
+          }
+        ]
+      },
+      {
+        "id": "stage-select",
+        "value": "mgs3-rokovoj-bereg-champ-de-fleurs",
+        "options": 119,
+        "last": [
+          {
+            "value": "pw-peace-walker-operation",
+            "label": "Base américaine du Nicaragua — Peace Walker"
+          },
+          {
+            "value": "p53_null_power_yard",
+            "label": "SOUS-STATION · COUR EXTÉRIEURE · EXERCICE"
+          },
+          {
+            "value": "p53_null_switchgear_hall",
+            "label": "SOUS-STATION · SALLE DES COMMANDES · EXERCICE"
+          },
+          {
+            "value": "p53_null_signals_room",
+            "label": "SOUS-STATION · SALLE D’ÉCOUTE · EXERCICE"
+          },
+          {
+            "value": "p53_big_shell_strut_c_dining",
+            "label": "BIG SHELL · STRUT C · SALLE À MANGER · EXERCICE"
+          },
+          {
+            "value": "p53_big_shell_strut_f_warehouse",
+            "label": "BIG SHELL · STRUT F · ENTREPÔT · EXERCICE"
+          },
+          {
+            "value": "p54_mgs2_oil_fence_hd",
+            "label": "BIG SHELL · OIL FENCE · EXERCICE"
+          }
+        ]
+      },
+      {
+        "id": "dummy",
+        "value": "stand",
+        "options": 12,
+        "last": [
+          {
+            "value": "cpu",
+            "label": "IA active"
+          },
+          {
+            "value": "external",
+            "label": "Joueur 2 / enregistrement"
+          },
+          {
+            "value": "backSpecial",
+            "label": "Technique Arrière + D répétée"
+          },
+          {
+            "value": "throw",
+            "label": "Projection normale"
+          },
+          {
+            "value": "reload",
+            "label": "Recharge répétée"
+          },
+          {
+            "value": "projectile",
+            "label": "Technique D répétée"
+          },
+          {
+            "value": "secondary",
+            "label": "Technique Bas + D répétée"
+          }
+        ]
+      },
+      {
+        "id": "trial-select",
+        "value": "none",
+        "options": 93,
+        "last": [
+          {
+            "value": "srCover",
+            "label": "86 / Couverture de John"
+          },
+          {
+            "value": "srGrenade",
+            "label": "87 / Explosifs de Nick"
+          },
+          {
+            "value": "srImpact",
+            "label": "88 / Impact cyborg"
+          },
+          {
+            "value": "ratEdShot",
+            "label": "89 / Ed : tir annoncé"
+          },
+          {
+            "value": "ratEdStock",
+            "label": "90 / Ed : dégagement"
+          },
+          {
+            "value": "ratJonHigh",
+            "label": "91 / Jonathan : couverture"
+          },
+          {
+            "value": "ratJonLow",
+            "label": "92 / Jonathan : ligne basse"
+          }
+        ]
+      },
+      {
+        "id": "training-position",
+        "value": "spawn",
+        "options": 6,
+        "last": [
+          {
+            "value": "spawn",
+            "label": "Distance initiale"
+          },
+          {
+            "value": "center",
+            "label": "Corps à corps"
+          },
+          {
+            "value": "left",
+            "label": "Coin gauche"
+          },
+          {
+            "value": "right",
+            "label": "Coin droit"
+          },
+          {
+            "value": "ranged",
+            "label": "À distance"
+          },
+          {
+            "value": "reverse",
+            "label": "Côtés inversés"
+          }
+        ]
+      },
+      {
+        "id": "episode-filter",
+        "value": "all",
+        "options": 38,
+        "last": [
+          {
+            "value": "mgo3",
+            "label": "Metal Gear Online — MGSV"
+          },
+          {
+            "value": "arcade",
+            "label": "Metal Gear Arcade"
+          },
+          {
+            "value": "survive",
+            "label": "Metal Gear Survive"
+          },
+          {
+            "value": "rising-archive",
+            "label": "Metal Gear Solid: Rising — concept abandonné"
+          },
+          {
+            "value": "social",
+            "label": "Metal Gear Solid: Social Ops"
+          },
+          {
+            "value": "acid-mobile",
+            "label": "Metal Gear Ac!d Mobile"
+          },
+          {
+            "value": "acid2-mobile",
+            "label": "Metal Gear Ac!d 2 Mobile"
+          }
+        ]
+      },
+      {
+        "id": "preview-era",
+        "value": "msx",
+        "options": 15,
+        "last": [
+          {
+            "value": "mgsv",
+            "label": "MGSV / iDroid-inspired"
+          },
+          {
+            "value": "mgr",
+            "label": "Rising / Revengeance"
+          },
+          {
+            "value": "acid",
+            "label": "Metal Gear Ac!d"
+          },
+          {
+            "value": "acid2",
+            "label": "Metal Gear Ac!d 2"
+          },
+          {
+            "value": "vr",
+            "label": "VR / Special Missions"
+          },
+          {
+            "value": "mpo",
+            "label": "PORTABLE OPS / FOX"
+          },
+          {
+            "value": "revenge",
+            "label": "SNAKE’S REVENGE / NES"
+          }
+        ]
+      },
+      {
+        "id": "preview-kind",
+        "value": "intro",
+        "options": 7,
+        "last": [
+          {
+            "value": "intro",
+            "label": "Introduction"
+          },
+          {
+            "value": "ko",
+            "label": "K.O. / Perfect"
+          },
+          {
+            "value": "double-ko",
+            "label": "Double K.O."
+          },
+          {
+            "value": "timeout",
+            "label": "Temps écoulé"
+          },
+          {
+            "value": "time-draw",
+            "label": "Égalité au temps"
+          },
+          {
+            "value": "victory",
+            "label": "Victoire du match"
+          },
+          {
+            "value": "defeat",
+            "label": "Défaite solo"
+          }
+        ]
+      },
+      {
+        "id": "movebook-fighter",
+        "value": "meryl_mgs1",
+        "options": 95,
+        "last": [
+          {
+            "value": "venus",
+            "label": "VENUS"
+          },
+          {
+            "value": "snake_sr",
+            "label": "SOLID SNAKE — SNAKE’S REVENGE"
+          },
+          {
+            "value": "john_sr",
+            "label": "JOHN TURNER"
+          },
+          {
+            "value": "nick_sr",
+            "label": "NICK MYER"
+          },
+          {
+            "value": "bigboss_sr",
+            "label": "BIG BOSS — CYBORG / SR"
+          },
+          {
+            "value": "ed_mgs4",
+            "label": "ED — RAT PATROL"
+          },
+          {
+            "value": "jonathan_mgs4",
+            "label": "JONATHAN — RAT PATROL"
+          }
+        ]
+      },
+      {
+        "id": "controls-layout",
+        "value": "qwerty",
+        "options": 2,
+        "last": [
+          {
+            "value": "qwerty",
+            "label": "QWERTY"
+          },
+          {
+            "value": "azerty",
+            "label": "AZERTY français"
+          }
+        ]
+      },
+      {
+        "id": "competition-size",
+        "value": "",
+        "options": 0,
+        "last": []
+      },
+      {
+        "id": "competition-control",
+        "value": "cpu",
+        "options": 2,
+        "last": [
+          {
+            "value": "cpu",
+            "label": "Joueur 1 contre IA"
+          },
+          {
+            "value": "local",
+            "label": "Deux joueurs locaux"
+          }
+        ]
+      },
+      {
+        "id": "competition-rounds",
+        "value": "2",
+        "options": 2,
+        "last": [
+          {
+            "value": "2",
+            "label": "2 / par rencontre"
+          },
+          {
+            "value": "1",
+            "label": "1 / format rapide"
+          }
+        ]
+      },
+      {
+        "id": "competition-difficulty",
+        "value": "normal",
+        "options": 3,
+        "last": [
+          {
+            "value": "easy",
+            "label": "Accessible"
+          },
+          {
+            "value": "normal",
+            "label": "Normal"
+          },
+          {
+            "value": "hard",
+            "label": "Exigeant"
+          }
+        ]
+      },
+      {
+        "id": "competition-stage",
+        "value": "mgs3-rokovoj-bereg-champ-de-fleurs",
+        "options": 119,
+        "last": [
+          {
+            "value": "pw-peace-walker-operation",
+            "label": "Base américaine du Nicaragua — Peace Walker"
+          },
+          {
+            "value": "p53_null_power_yard",
+            "label": "SOUS-STATION · COUR EXTÉRIEURE · EXERCICE"
+          },
+          {
+            "value": "p53_null_switchgear_hall",
+            "label": "SOUS-STATION · SALLE DES COMMANDES · EXERCICE"
+          },
+          {
+            "value": "p53_null_signals_room",
+            "label": "SOUS-STATION · SALLE D’ÉCOUTE · EXERCICE"
+          },
+          {
+            "value": "p53_big_shell_strut_c_dining",
+            "label": "BIG SHELL · STRUT C · SALLE À MANGER · EXERCICE"
+          },
+          {
+            "value": "p53_big_shell_strut_f_warehouse",
+            "label": "BIG SHELL · STRUT F · ENTREPÔT · EXERCICE"
+          },
+          {
+            "value": "p54_mgs2_oil_fence_hd",
+            "label": "BIG SHELL · OIL FENCE · EXERCICE"
+          }
+        ]
+      },
+      {
+        "id": "competition-hud",
+        "value": "auto",
+        "options": 17,
+        "last": [
+          {
+            "value": "mgsv",
+            "label": "MGSV / iDroid-inspired"
+          },
+          {
+            "value": "mgr",
+            "label": "Rising / Revengeance"
+          },
+          {
+            "value": "acid",
+            "label": "Metal Gear Ac!d"
+          },
+          {
+            "value": "acid2",
+            "label": "Metal Gear Ac!d 2"
+          },
+          {
+            "value": "vr",
+            "label": "VR / Special Missions"
+          },
+          {
+            "value": "mpo",
+            "label": "PORTABLE OPS / FOX"
+          },
+          {
+            "value": "revenge",
+            "label": "SNAKE’S REVENGE / NES"
+          }
+        ]
+      },
+      {
+        "id": "cards-fighter",
+        "value": "snake_acid",
+        "options": 6,
+        "last": [
+          {
+            "value": "snake_acid",
+            "label": "SNAKE — AC!D"
+          },
+          {
+            "value": "teliko",
+            "label": "TELIKO FRIEDMAN"
+          },
+          {
+            "value": "leone",
+            "label": "LEONE"
+          },
+          {
+            "value": "clown",
+            "label": "CLOWN"
+          },
+          {
+            "value": "snake_acid2",
+            "label": "SNAKE — AC!D 2"
+          },
+          {
+            "value": "venus",
+            "label": "VENUS"
+          }
+        ]
+      },
+      {
+        "id": "coreMatchRoundsPass17",
+        "value": "2",
+        "options": 2,
+        "last": [
+          {
+            "value": "1",
+            "label": "1 MANCHE GAGNANTE"
+          },
+          {
+            "value": "2",
+            "label": "2 MANCHES GAGNANTES"
+          }
+        ]
+      },
+      {
+        "id": "difficulty",
+        "value": "normal",
+        "options": 3,
+        "last": [
+          {
+            "value": "easy",
+            "label": "Accessible"
+          },
+          {
+            "value": "normal",
+            "label": "Normal"
+          },
+          {
+            "value": "hard",
+            "label": "Exigeant"
+          }
+        ]
+      },
+      {
+        "id": "hud-select",
+        "value": "auto",
+        "options": 17,
+        "last": [
+          {
+            "value": "mgsv",
+            "label": "MGSV / iDroid-inspired"
+          },
+          {
+            "value": "mgr",
+            "label": "Rising / Revengeance"
+          },
+          {
+            "value": "acid",
+            "label": "Metal Gear Ac!d"
+          },
+          {
+            "value": "acid2",
+            "label": "Metal Gear Ac!d 2"
+          },
+          {
+            "value": "vr",
+            "label": "VR / Special Missions"
+          },
+          {
+            "value": "mpo",
+            "label": "PORTABLE OPS / FOX"
+          },
+          {
+            "value": "revenge",
+            "label": "SNAKE’S REVENGE / NES"
+          }
+        ]
+      },
+      {
+        "id": "coreStageEpisodeFilterPass17",
+        "value": "",
+        "options": 18,
+        "last": [
+          {
+            "value": "Metal Gear Rising: Revengeance",
+            "label": "Metal Gear Rising: Revengeance"
+          },
+          {
+            "value": "Metal Gear: Ghost Babel",
+            "label": "Metal Gear: Ghost Babel"
+          },
+          {
+            "value": "Metal Gear Ac!d",
+            "label": "Metal Gear Ac!d"
+          },
+          {
+            "value": "Metal Gear Ac!d 2",
+            "label": "Metal Gear Ac!d 2"
+          },
+          {
+            "value": "Metal Gear Survive",
+            "label": "Metal Gear Survive"
+          },
+          {
+            "value": "MGS: VR Missions / Special Missions",
+            "label": "MGS: VR Missions / Special Missions"
+          },
+          {
+            "value": "Snake’s Revenge",
+            "label": "Snake’s Revenge"
+          }
+        ]
+      },
+      {
+        "id": "coverage-episode",
+        "value": "all",
+        "options": 32,
+        "last": [
+          {
+            "value": "mgo3",
+            "label": "Metal Gear Online — MGSV"
+          },
+          {
+            "value": "arcade",
+            "label": "Metal Gear Arcade"
+          },
+          {
+            "value": "survive",
+            "label": "Metal Gear Survive"
+          },
+          {
+            "value": "rising-archive",
+            "label": "Metal Gear Solid: Rising — concept abandonné"
+          },
+          {
+            "value": "social",
+            "label": "Metal Gear Solid: Social Ops"
+          },
+          {
+            "value": "acid-mobile",
+            "label": "Metal Gear Ac!d Mobile"
+          },
+          {
+            "value": "acid2-mobile",
+            "label": "Metal Gear Ac!d 2 Mobile"
+          }
+        ]
+      },
+      {
+        "id": "coverage-kind",
+        "value": "all",
+        "options": 6,
+        "last": [
+          {
+            "value": "all",
+            "label": "TOUS LES AXES"
+          },
+          {
+            "value": "fighters",
+            "label": "PERSONNAGES & VARIANTES"
+          },
+          {
+            "value": "bosses",
+            "label": "BOSS & RENCONTRES"
+          },
+          {
+            "value": "machines",
+            "label": "METAL GEAR / MACHINES"
+          },
+          {
+            "value": "episodes",
+            "label": "ÉPISODES & ÉDITIONS"
+          },
+          {
+            "value": "support",
+            "label": "NARRATION & SOUTIEN"
+          }
+        ]
+      },
+      {
+        "id": "acid31-difficulty",
+        "value": "normal",
+        "options": 3,
+        "last": [
+          {
+            "value": "story",
+            "label": "DOSSIER"
+          },
+          {
+            "value": "normal",
+            "label": "NORMAL"
+          },
+          {
+            "value": "hard",
+            "label": "EXTRÊME"
+          }
+        ]
+      },
+      {
+        "id": "mgr32-difficulty",
+        "value": "normal",
+        "options": 3,
+        "last": [
+          {
+            "value": "story",
+            "label": "DOSSIER"
+          },
+          {
+            "value": "normal",
+            "label": "NORMAL"
+          },
+          {
+            "value": "hard",
+            "label": "REVENGEANCE"
+          }
+        ]
+      }
+    ],
+    "iframes": [],
+    "coreFlow": true,
+    "academyAPI": false,
+    "arcadeAPI": false
+  },
+  "exceptions": [],
+  "failed": [],
+  "responses": []
+}
