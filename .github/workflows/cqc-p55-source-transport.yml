@@ -17,17 +17,32 @@ jobs:
           SOURCE_BRANCH: codex/cqc-p55-source-transport-20261120
         shell: python
         run: |
-          import os,json,base64,hashlib,urllib.request,pathlib
+          import os,json,base64,hashlib,urllib.request,urllib.error,pathlib,time
           repo=os.environ['GITHUB_REPOSITORY'];token=os.environ['GH_TOKEN'];commit=os.environ['INPUT_COMMIT'];branch=os.environ['SOURCE_BRANCH']
           def api(route,data=None,method=None):
             req=urllib.request.Request('https://api.github.com/repos/'+repo+'/'+route,data=None if data is None else json.dumps(data).encode(),method=method,headers={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','Content-Type':'application/json','X-GitHub-Api-Version':'2022-11-28'})
-            with urllib.request.urlopen(req,timeout=90) as response:return json.load(response)
+            for attempt in range(4):
+              try:
+                with urllib.request.urlopen(req,timeout=90) as response:return json.load(response)
+              except urllib.error.HTTPError as error:
+                if data is not None or error.code not in [429,500,502,503,504] or attempt==3:raise
+                time.sleep(min(20,2**attempt))
           head=api('git/ref/heads/'+branch)['object']['sha']
           if head!=commit:raise RuntimeError('Source transport lease changed')
-          parent=api('git/commits/'+commit);tree=api('git/trees/'+parent['tree']['sha']+'?recursive=1')
-          if tree.get('truncated'):raise RuntimeError('Transport tree truncated')
-          manifests=[p for p in tree['tree'] if p['path'].startswith('docs/cqc-reprise/pass55/transport/') and p['path'].endswith('manifest.json')]
-          entries=[];present={p['path']:p['sha'] for p in tree['tree'] if p['type']=='blob'}
+          parent=api('git/commits/'+commit)
+          def subtree(sha,parts):
+            for name in parts:
+              children=api('git/trees/'+sha)['tree'];sha=next(p['sha'] for p in children if p['path']==name and p['type']=='tree')
+            return sha
+          production=subtree(parent['tree']['sha'],['docs','cqc-reprise','pass55'])
+          children=api('git/trees/'+production)['tree']
+          transport=next(p['sha'] for p in children if p['path']=='transport' and p['type']=='tree')
+          tree=api('git/trees/'+transport+'?recursive=1')
+          if tree.get('truncated'):raise RuntimeError('Transport subtree truncated')
+          manifests=[p for p in tree['tree'] if p['path'].endswith('manifest.json')]
+          source_dir=next((p['sha'] for p in children if p['path']=='sources' and p['type']=='tree'),None)
+          present={'docs/cqc-reprise/pass55/sources/'+p['path']:p['sha'] for p in api('git/trees/'+source_dir)['tree'] if p['type']=='blob'} if source_dir else {}
+          entries=[]
           for entry in manifests:
             manifest=json.loads(base64.b64decode(api('git/blobs/'+entry['sha'])['content']))
             for source in manifest['sources']:
