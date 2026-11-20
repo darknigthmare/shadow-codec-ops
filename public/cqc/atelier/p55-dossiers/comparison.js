@@ -1,27 +1,3 @@
-const imageLoads = new Map();
-
-// Share decoded sources with the library; failed loads remain retryable.
-export function loadSource(source) {
-  const url = new URL(source, document.baseURI).href;
-  if (imageLoads.has(url)) return imageLoads.get(url);
-  const image = new Image();
-  image.decoding = 'async';
-  const promise = new Promise((resolve, reject) => {
-    image.onerror = () => reject(Error('Image indisponible'));
-    image.onload = async () => {
-      try {
-        if (image.decode) await image.decode();
-        if (!image.naturalWidth || !image.naturalHeight) throw Error('Image vide');
-        resolve(image);
-      } catch (error) { reject(error); }
-    };
-    image.src = url;
-  });
-  imageLoads.set(url, promise);
-  promise.catch(() => { if (imageLoads.get(url) === promise) imageLoads.delete(url); });
-  return promise;
-}
-
 export function sharedFit(rows, width = 480, height = 520) {
   if (!rows.length || new Set(rows.map(row => row.uid)).size !== 1) throw Error('Un seul combattant par comparaison');
   const centerX = width / 2, floorY = height - 36, padding = 20;
@@ -73,7 +49,7 @@ function stagedCanvas(row, image, fit) {
   return canvas;
 }
 
-export function createComparison() {
+export function createComparison(loadSource) {
   const section = document.getElementById('comparison'), pair = document.getElementById('comparison-pair');
   const fighter = document.getElementById('compare-fighter'), selectors = ['a', 'b'].map(id => document.getElementById('compare-' + id));
   const status = document.getElementById('comparison-status'), retry = document.getElementById('comparison-retry');

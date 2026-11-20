@@ -1,4 +1,26 @@
-import {createComparison, loadSource} from './comparison.js';
+const imageLoads = new Map();
+
+// Share decoded sources with the library; failed loads remain retryable.
+function loadSource(source) {
+  const url = new URL(source, document.baseURI).href;
+  if (imageLoads.has(url)) return imageLoads.get(url);
+  const image = new Image();
+  image.decoding = 'async';
+  const promise = new Promise((resolve, reject) => {
+    image.onerror = () => reject(Error('Image indisponible'));
+    image.onload = async () => {
+      try {
+        if (image.decode) await image.decode();
+        if (!image.naturalWidth || !image.naturalHeight) throw Error('Image vide');
+        resolve(image);
+      } catch (error) { reject(error); }
+    };
+    image.src = url;
+  });
+  imageLoads.set(url, promise);
+  promise.catch(() => { if (imageLoads.get(url) === promise) imageLoads.delete(url); });
+  return promise;
+}
 
 const grid = document.getElementById('cards');
 const status = document.getElementById('status');
@@ -6,7 +28,8 @@ const search = document.getElementById('search');
 const collection = document.getElementById('collection');
 const normalized = text => String(text || '').normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase();
 const cards = [];
-const comparison = createComparison();
+const comparisonSection = document.getElementById('comparison');
+let comparison = null;
 const comparisonButtons = [];
 function filter() {
   const query = normalized(search.value), kind = collection.value;
@@ -37,9 +60,12 @@ function card(row) {
   portrait.append(canvas, loading, retry); element.append(portrait);
   const footer = document.createElement('footer'); footer.append(text('span', row.kind === 'character' ? 'Renfort' : 'Tenue créée'));
   const links = document.createElement('span'); links.className = 'links';
-  const compare = text('button', 'Comparer'); compare.type = 'button'; compare.disabled = true;
-  compare.setAttribute('aria-label', 'Comparer ' + row.character + ' — ' + row.label);
-  compare.addEventListener('click', () => comparison.show(row)); comparisonButtons.push(compare); links.append(compare);
+  if (comparisonSection) {
+    const compare = text('button', 'Comparer'); compare.type = 'button'; compare.disabled = true;
+    compare.setAttribute('aria-label', 'Comparer ' + row.character + ' — ' + row.label);
+    compare.addEventListener('click', () => comparison?.show(row));
+    comparisonButtons.push(compare); links.append(compare);
+  }
   const source = text('a', 'Planche'); source.href = row.src; source.target = '_blank'; source.rel = 'noopener noreferrer'; links.append(source);
   const reference = row.referenceURLs.find(url => /^https:\/\//.test(url));
   if (reference) { const link = text('a', 'Référence'); link.href = reference; link.target = '_blank'; link.rel = 'noopener noreferrer'; links.append(link); }
@@ -71,8 +97,17 @@ try {
   const response = await fetch('catalog.json'); if (!response.ok) throw Error('Dossiers indisponibles');
   const catalog = await response.json();
   for (const row of catalog.entries) card(row);
-  await comparison.initialize(catalog.entries);
-  comparisonButtons.forEach(button => { button.disabled = false; });
+  if (comparisonSection) {
+    try {
+      const {createComparison} = await import('./comparison.js');
+      comparison = createComparison(loadSource);
+      await comparison.initialize(catalog.entries);
+      comparisonButtons.forEach(button => { button.disabled = false; });
+    } catch {
+      document.getElementById('comparison-status').textContent = 'Comparaison indisponible. Les planches restent accessibles.';
+      comparisonButtons.forEach(button => { button.hidden = true; });
+    }
+  }
   document.documentElement.dataset.archiveReady = 'true'; filter();
 } catch {
   status.textContent = 'Dossiers indisponibles. Rechargez la transmission.';
