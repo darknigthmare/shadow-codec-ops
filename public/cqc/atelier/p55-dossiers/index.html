@@ -11,6 +11,22 @@
     <nav><a href="../../modules/atelier-v056.html">Retour à l’atelier</a><a href="../p55-blackfoot/index.html">Hangar Blackfoot</a><a href="../p54-dossiers/index.html">Renforts</a><a href="../../modules/unified-versus-v055.html">Versus libre</a></nav>
   </header>
   <main>
+    <section id="comparison" class="comparison" aria-labelledby="comparison-title">
+      <h2 id="comparison-title">Comparer les tenues</h2>
+      <p id="comparison-help">Même hauteur d’affichage et même ligne d’appui. Les proportions de chaque planche sont conservées ; cet alignement ne mesure pas les tailles réelles.</p>
+      <div class="comparison-controls">
+        <label>Combattant<select id="compare-fighter" disabled aria-describedby="comparison-help"></select></label>
+        <label>Tenue A<select id="compare-a" disabled></select></label>
+        <label>Tenue B<select id="compare-b" disabled></select></label>
+      </div>
+      <p id="comparison-status" role="status">Chargement de la comparaison…</p>
+      <button id="comparison-retry" type="button" hidden>Réessayer la comparaison</button>
+      <div id="comparison-pair" class="comparison-pair" aria-busy="true">
+        <figure class="comparison-pane"><figcaption><h3 id="compare-a-title">Tenue A</h3><p id="compare-a-character"></p></figcaption><canvas id="compare-a-canvas" width="480" height="520" role="img" aria-label="Tenue A en cours de chargement"></canvas><p class="links"><a id="compare-a-source" target="_blank" rel="noopener noreferrer" hidden>Planche A</a><a id="compare-a-reference" target="_blank" rel="noopener noreferrer" hidden>Référence A</a></p></figure>
+        <figure class="comparison-pane"><figcaption><h3 id="compare-b-title">Tenue B</h3><p id="compare-b-character"></p></figcaption><canvas id="compare-b-canvas" width="480" height="520" role="img" aria-label="Tenue B en cours de chargement"></canvas><p class="links"><a id="compare-b-source" target="_blank" rel="noopener noreferrer" hidden>Planche B</a><a id="compare-b-reference" target="_blank" rel="noopener noreferrer" hidden>Référence B</a></p></figure>
+      </div>
+    </section>
+    <h2 class="library-title">Toutes les tenues</h2>
     <div class="filters"><label>Dossier<input id="search" type="search" placeholder="Nom ou équipement" autocomplete="off"></label>
       <label>Collection<select id="collection"><option value="">Tous les dossiers</option><option value="retro">Rétro</option><option value="tuxedo">Tenues de soirée</option><option value="cyborg">Châssis cybernétiques</option><option value="survive">Dité</option><option value="zombie">Infectés</option><option value="furry">Faune</option><option value="costume">Toutes les tenues</option><option value="metalgear">Machines</option></select></label>
     </div>
