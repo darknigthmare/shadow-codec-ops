@@ -6,6 +6,10 @@ const canvas = document.getElementById('calibration-canvas');
 const context = canvas.getContext('2d');
 const status = document.getElementById('training-status');
 const outfit = document.getElementById('rook-outfit');
+const outfitStatus = document.createElement('p');
+outfitStatus.id = 'outfit-status';
+outfitStatus.setAttribute('role', 'status');
+outfit.closest('.preferences').after(outfitStatus);
 const pulse = document.getElementById('send-pulse');
 const marker = document.getElementById('send-marker');
 const reduce = document.getElementById('reduced-motion');
@@ -24,7 +28,7 @@ const dispatched = new Set();
 
 let state = createTraining();
 let costume = 'terrain', image = null, outfitRequest = 0;
-let attempt = '', elapsed = 0, lastTimestamp = null, ready = false;
+let elapsed = 0, lastTimestamp = null, ready = false;
 
 function loadCostume(name) {
   if (!decoded.has(name)) {
@@ -52,7 +56,6 @@ function reflectState() {
   marker.disabled = disabled;
   canvas.dataset.result = state.result;
   canvas.dataset.delivered = String(dispatched.size);
-  if (attempt) return;
   if (state.result === 'in-flight') message('Signal en route…');
   else if (state.result === 'wrong-direction') message('Oriente-toi vers le récepteur.');
   else if (state.result === 'out-of-range') message('Hors de portée. Approche-toi de MULET.');
@@ -151,21 +154,19 @@ document.getElementById('reset-training').onclick = () => {
 outfit.addEventListener('change', async () => {
   const requested = outfit.value;
   const ticket = ++outfitRequest;
-  attempt = 'pending';
-  message('Chargement de la tenue…');
+  outfitStatus.textContent = 'Chargement de la tenue…';
   try {
     const next = await loadCostume(requested);
     if (ticket !== outfitRequest) return;
     costume = requested;
     image = next;
     canvas.dataset.outfit = costume;
-    attempt = '';
+    outfitStatus.textContent = '';
     reflectState();
   } catch {
     if (ticket !== outfitRequest) return;
     outfit.value = costume;
-    attempt = 'failed';
-    message('Tenue indisponible. La tenue précédente reste affichée.');
+    outfitStatus.textContent = 'Tenue indisponible. La tenue précédente reste affichée.';
   }
 });
 
