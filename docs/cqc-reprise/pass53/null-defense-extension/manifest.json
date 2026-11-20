@@ -1,0 +1,189 @@
+{
+  "schema": "cqc.p53.null-defense-extension/1",
+  "createdOn": "2026-11-19",
+  "title": "Null — extension des poses défensives",
+  "uid": "core__null_mpo",
+  "game": "Metal Gear Solid: Portable Ops",
+  "costumeId": "original",
+  "scope": "Trois nouvelles poses individuelles droite ; aucune boucle animée, aucun remplacement des sources existantes.",
+  "sourceCommit": "192c473bf5c64f9babd0d2e3c45419ffe5fac0f4",
+  "sourceReferences": [
+    {
+      "repositoryPath": "docs/cqc-reprise/pass53/null-defense/reference/null-p53-source.png",
+      "role": "identité du sprite existant du projet",
+      "sha256": "29b537e15714d3f9f08e9f30be1e7e98263163b6475090969409785920090735",
+      "reusedReferenceNotNewArt": true
+    },
+    {
+      "repositoryPath": "docs/cqc-reprise/pass53/null-defense/null-backstep-recovery-right.png",
+      "role": "style et détails de costume du lot précédent",
+      "sha256": "c4ce5d8b4397bfcd4962623d24aaff691e8aa1d0a3c9bbeff160486cc4f9d1a8",
+      "reusedReferenceNotNewArt": true
+    }
+  ],
+  "provenance": {
+    "generator": "image_gen built-in",
+    "generationCalls": 3,
+    "newImages": 3,
+    "promptFile": "generation-prompts.json",
+    "pixelProcessing": "Aucun : copies exactes des trois PNG générés, alpha préservé."
+  },
+  "coordinateSystem": "Pixels depuis le coin supérieur gauche. alphaBounds32 = [gauche, haut, droite exclusive, bas exclusif]. lowestSoleSamplePixels est la moyenne des pixels alpha>=32 des quatre dernières rangées de silhouette, uniquement un repère visuel ; pas un ancrage moteur ni une collision.",
+  "review": {
+    "sourceGameFidelityCertified": false,
+    "runtimeAdmitted": false,
+    "animationComplete": false,
+    "loop": false,
+    "limits": [
+      "Références immédiates : dessins du projet ; aucune comparaison finale au modèle officiel de Portable Ops.",
+      "Chevelure, boucles, plissés et volumes reconstruits ; une identité pixel pour pixel ne peut pas être certifiée.",
+      "Les trois images proposent des phases distinctes ; durée, raccords, ancrages, volumes, hitboxes et vue gauche restent à valider.",
+      "Ne pas traiter ces trois images comme une animation fluide ou une couverture complète du personnage.",
+      "Le RGB masqué de la garde haute contient un halo coloré ; les pixels extérieurs concernés ont un alpha nul. Le PNG brut conserve ces octets et doit être affiché en respectant son alpha.",
+      "Quelques pixels d’alpha très faible existent hors de la silhouette utile ; ils sont conservés et exclus des bornes alpha>=32."
+    ]
+  },
+  "assets": [
+    {
+      "id": "null-high-guard-right",
+      "uid": "core__null_mpo",
+      "action": "high-guard",
+      "label": "Garde haute neutre",
+      "description": "Deux appuis au sol, buste redressé, deux poings près du visage.",
+      "facing": "right",
+      "file": "null-high-guard-right.png",
+      "generatedSourceFilename": "exec-224f6716-830c-42f0-bc4b-b1cb8723e7ba.png",
+      "bytes": 1619334,
+      "sha256": "c48b947d0820d930ed24ddb2388f9a9849e0164c826529260c0ddcec53d7a81c",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alphaBounds32": [
+        176,
+        32,
+        833,
+        1488
+      ],
+      "lowestSoleSamplePixels": [
+        282.35,
+        1488
+      ],
+      "alpha": {
+        "range": [
+          0,
+          254
+        ],
+        "zeroPixels": 1085792,
+        "partialPixels": 487072,
+        "opaquePixels": 0,
+        "visiblePixels32": 468694
+      },
+      "review": {
+        "singleFigure": true,
+        "fullBodyVisible": true,
+        "differentPoseFromOtherEntries": true,
+        "facingRight": true,
+        "sourceIdentityRetained": true,
+        "sourceGameFidelityCertified": false,
+        "runtimeAdmitted": false
+      },
+      "status": "POSE_DRAWN_REVIEW_PENDING"
+    },
+    {
+      "id": "null-low-guard-entry-right",
+      "uid": "core__null_mpo",
+      "action": "low-guard-entry",
+      "label": "Entrée en garde basse",
+      "description": "Flexion intermédiaire, buste incliné, avant-bras près du masque.",
+      "facing": "right",
+      "file": "null-low-guard-entry-right.png",
+      "generatedSourceFilename": "exec-2555a549-c39a-49b3-93ce-e8fd8cf5097c.png",
+      "bytes": 947063,
+      "sha256": "4137689e964bc73c27bc734ba673c80843f9cb0f81cae7af9f80257c652b4fa3",
+      "canvas": [
+        1062,
+        1482
+      ],
+      "mode": "RGBA",
+      "alphaBounds32": [
+        114,
+        66,
+        901,
+        1423
+      ],
+      "lowestSoleSamplePixels": [
+        235.68,
+        1423
+      ],
+      "alpha": {
+        "range": [
+          0,
+          255
+        ],
+        "zeroPixels": 1103459,
+        "partialPixels": 469159,
+        "opaquePixels": 1266,
+        "visiblePixels32": 455912
+      },
+      "review": {
+        "singleFigure": true,
+        "fullBodyVisible": true,
+        "differentPoseFromOtherEntries": true,
+        "facingRight": true,
+        "sourceIdentityRetained": true,
+        "sourceGameFidelityCertified": false,
+        "runtimeAdmitted": false
+      },
+      "status": "POSE_DRAWN_REVIEW_PENDING"
+    },
+    {
+      "id": "null-low-guard-release-right",
+      "uid": "core__null_mpo",
+      "action": "low-guard-release",
+      "label": "Relâchement de la garde basse",
+      "description": "Buste en redressement, avant-bras avant rouvert vers le torse.",
+      "facing": "right",
+      "file": "null-low-guard-release-right.png",
+      "generatedSourceFilename": "exec-9766b175-c0d8-486f-bbee-220baee90824.png",
+      "bytes": 907756,
+      "sha256": "bde5517ec36d8f5cb16af47528b32adeeb34791e416ef7aa35fe839f1466a8b0",
+      "canvas": [
+        1060,
+        1484
+      ],
+      "mode": "RGBA",
+      "alphaBounds32": [
+        159,
+        18,
+        891,
+        1430
+      ],
+      "lowestSoleSamplePixels": [
+        260.73,
+        1430
+      ],
+      "alpha": {
+        "range": [
+          0,
+          255
+        ],
+        "zeroPixels": 1127111,
+        "partialPixels": 445518,
+        "opaquePixels": 411,
+        "visiblePixels32": 429835
+      },
+      "review": {
+        "singleFigure": true,
+        "fullBodyVisible": true,
+        "differentPoseFromOtherEntries": true,
+        "facingRight": true,
+        "sourceIdentityRetained": true,
+        "sourceGameFidelityCertified": false,
+        "runtimeAdmitted": false
+      },
+      "status": "POSE_DRAWN_REVIEW_PENDING"
+    }
+  ]
+}

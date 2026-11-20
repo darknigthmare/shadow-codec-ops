@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Null · Poses défensives CQC</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#111715;color:#e7ede8}
+*{box-sizing:border-box}body{margin:0}main{max-width:1180px;margin:auto;padding:28px 20px 48px}
+header{border-bottom:1px solid #35413b;padding-bottom:20px}h1{font-size:clamp(26px,4vw,42px);margin:8px 0}p{line-height:1.6}
+.kicker{letter-spacing:.14em;text-transform:uppercase;color:#b0bc91;font-size:13px}.muted{color:#a8b7ac}
+a{color:#c4d5a6}nav{display:flex;flex-wrap:wrap;gap:18px;margin:20px 0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+figure{margin:0;background:#1b2420;border:1px solid #35413b;border-radius:14px;overflow:hidden}
+.art{height:560px;display:flex;align-items:flex-end;justify-content:center;padding:22px;background:repeating-conic-gradient(#222d27 0% 25%,#1c251f 0% 50%) 50%/28px 28px}
+.art img{display:block;max-width:100%;max-height:100%;object-fit:contain}
+figcaption{padding:18px 20px}figcaption h2{margin:0 0 8px;font-size:20px}figcaption p{margin:6px 0}
+.tag{display:inline-block;font-size:12px;padding:4px 8px;border:1px solid #536343;border-radius:30px;color:#c4d5a6}
+.reference{display:flex;gap:22px;align-items:center;border-top:1px solid #35413b;margin-top:28px;padding-top:24px}
+.reference img{width:78px;height:170px;object-fit:contain}.reference h2{font-size:20px;margin-top:0}
+small{color:#a8b7ac}details{margin-top:18px;border:1px solid #35413b;padding:15px;border-radius:10px}summary{cursor:pointer}
+@media(max-width:720px){.grid{grid-template-columns:1fr}.art{height:500px}main{padding:20px 14px}.reference{align-items:flex-start}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head><body><main>
+<header><div class="kicker">CQC Versus Legacy · production P53</div><h1>Null · poses défensives</h1><p class="muted">Portable Ops · incarnation d’origine · orientation droite</p><p>Deux dessins distincts : protéger le corps en position basse, puis reprendre appui après un pas en arrière.</p><span class="tag">Études à examiner</span></header>
+<nav aria-label="Documents du lot"><a href="manifest.json">Données des sprites</a><a href="generation-prompts.json">Consignes de dessin</a><a href="catalogue-gap.json">Actions déjà présentes</a><a href="README.md">Notes de production</a></nav>
+<div class="grid">
+<figure><div class="art"><img src="null-low-guard-right.png" alt="Null en garde basse, genoux fléchis et avant-bras devant son masque, tourné vers la droite."></div><figcaption><h2>Garde basse</h2><p>Appuis écartés, buste avancé et protection du haut du corps.</p><small>1 227 × 1 281 · PNG RGBA · une figure</small></figcaption></figure>
+<figure><div class="art"><img src="null-backstep-recovery-right.png" alt="Null debout en garde, poids sur le pied arrière et pied avant relevé, tourné vers la droite."></div><figcaption><h2>Reprise d’appui arrière</h2><p>Poids sur l’appui arrière, pied avant relevé et mains maintenues en garde.</p><small>1 062 × 1 481 · PNG RGBA · une figure</small></figcaption></figure>
+</div>
+<section class="reference"><img src="reference/null-p53-source.png" alt="Sprite de référence Null déjà publié dans le projet."><div><h2>Référence du projet</h2><p>Le masque, les cheveux blonds, le harnais olive, l’épaule rouge et les protections reprennent le dessin existant de Null. Les deux nouvelles poses sont des interprétations pour CQC.</p><small>Les deux images sont affichées séparément pour examiner leurs proportions. L’échelle et les transitions de combat restent à calibrer.</small></div></section>
+<details><summary>État d’intégration</summary><p>Les poses sont livrées comme PNG individuels. Elles ne constituent pas un cycle animé. L’admission au moteur, les durées, la vue gauche et la validation avec les références du jeu restent à effectuer.</p></details>
+</main></body></html>

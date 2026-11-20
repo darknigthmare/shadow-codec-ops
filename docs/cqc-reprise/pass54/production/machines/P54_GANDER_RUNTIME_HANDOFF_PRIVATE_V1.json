@@ -1,0 +1,46 @@
+{
+  "schema": "cqc.p54.gander-separated-runtime-handoff/1",
+  "atUTC": "2026-11-20T09:51:26.321489+00:00",
+  "state": "IMPLEMENTED_TESTED_AWAITING_ROOT_HTML_BOOTSTRAP",
+  "files": {
+    "module": "public/cqc/src/cqc-p54-machine-parts.js",
+    "tests": "scripts/test-cqc-p54-machine-parts.mjs",
+    "assetPrefix": "public/cqc/assets/p54-gander-parts/",
+    "manifest": "public/cqc/assets/p54-gander-parts/manifest.json"
+  },
+  "sourceCommit": "04221faf7933b4a33cf63e3859533639f010723e",
+  "newArtwork": 0,
+  "exactPNGCopies": 43,
+  "historicalPass16Appearances": 19,
+  "activePass30Appearances": 24,
+  "activeNativeVisibleParts": 23,
+  "existingRigJointRecords": 27,
+  "originalThreeAtlasPNGsUnchanged": true,
+  "unchangedAtlasCoordinateBindings": true,
+  "testCommand": "node --test scripts/test-cqc-p54-machine-parts.mjs",
+  "testsPassed": 14,
+  "nativeWorldMuzzleComparisons": 162,
+  "browserReport": "/tmp/cqc-p54-20261120/production/machines/qa/P54_GANDER_ACTUAL_BROWSER_RASTER_QA_PRIVATE_V1.json",
+  "physicalComparisonScreenshot": "/tmp/cqc-p54-20261120/production/machines/qa/gander-separated-comparison.png",
+  "activeSourceOptimization": {
+    "previousPNGsLoaded": 3,
+    "previousPNGBytes": 5139279,
+    "individualPNGsLoaded": 24,
+    "individualPNGBytes": 1281996,
+    "additionalPinnedManifestBytes": 80330,
+    "previousDecodedPixels": 4718592,
+    "individualDecodedPixels": 1290060,
+    "noOldAtlasFallbackDuringLoad": true
+  },
+  "integration": "Insert src/cqc-p54-machine-parts.js after renderer script and before machine bridge construction, then call CQC_P54_MACHINE_PARTS.install() once. The module does not install itself. Existing prepare() and later factory.create() retain all original coordinate geometry. Install before every registry is constructed, including standalone/integrated/Arsenal/Versus call sites.",
+  "limits": [
+    "Uses existing authored Gander adaptation, not extracted game geometry or a new source camera.",
+    "Canonical third-phase Gander battle and concealed hinge volumes remain missing. No combat rules/HP/attacks are added.",
+    "Source PNG outlines use the prior P53 pixel-center cuts, while old Canvas clipping used antialiasing; outline pixels differ and exact renderedRGBA equality is not claimed."
+  ],
+  "codeHashes": {
+    "public/cqc/src/cqc-p54-machine-parts.js": "d96e79169189636b1cdedcce9a2d26972cf08d65e8af2e8743bba883536ac473",
+    "scripts/test-cqc-p54-machine-parts.mjs": "0ae8c714fcc0155fdbad12126a5c6f9e594c6752b9c4cf0bb6fc9f32122dbb6f"
+  },
+  "sharedHTMLManifestOrSyncVerifierModified": false
+}

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101717">
+<title>Études de mouvement · CQC Versus</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#101717;color:#f3efde}
+*{box-sizing:border-box}
+body{margin:0}main{max-width:1000px;margin:auto;padding:1.2rem clamp(1rem,4vw,3rem) 2rem}
+header{display:flex;justify-content:space-between;align-items:center;gap:1rem;border-bottom:1px solid #53615b;padding:.3rem 0 1rem}
+header strong{letter-spacing:.07em}a{color:#e5cf84;text-underline-offset:.2em}
+h1{margin:1.25rem 0 1rem;font-size:clamp(1.55rem,4vw,2.7rem);line-height:1.12}
+label{display:block;font-weight:650;margin-bottom:.35rem}
+select,button{font:inherit;color:inherit;background:#22322e;border:1px solid #697a70;border-radius:.32rem;padding:.52rem .8rem}select{max-width:100%;width:min(100%,32rem)}
+button{cursor:pointer}button:disabled{opacity:.5;cursor:default}
+:focus-visible{outline:3px solid #efd787;outline-offset:2px}
+canvas{width:100%;height:clamp(235px,45vh,415px);display:block;background:#172322;border:1px solid #53615b;border-radius:.4rem;margin:1rem 0 .7rem}
+.controls,.meta{display:flex;align-items:center;gap:.65rem;flex-wrap:wrap}
+.meta{justify-content:space-between;margin:.8rem 0;color:#cfd4c8}
+#status,#archive{font-size:.92rem;line-height:1.5;margin:.65rem 0}button[aria-pressed="true"]{border-color:#e8d087}
+#pose{font-variant-numeric:tabular-nums;min-width:5rem}
+@media(max-width:480px){header{font-size:.86rem}.controls button{flex-grow:1}.meta{align-items:flex-start}}
+</style>
+</head>
+<body><main>
+<header><strong>CQC VERSUS LEGACY</strong><a id="back" href="../../modules/atelier-v056.html">Retour à l’atelier</a></header>
+<h1>Études de mouvement</h1>
+<label for="choice">Combattant et tenue</label><select id="choice" disabled></select>
+<canvas aria-label="Aperçu du sprite, orienté vers la droite" role="img"></canvas>
+<div class="controls"><button id="play" disabled>Lire</button><button id="prev" disabled aria-label="Image précédente">Précédente</button><button id="next" disabled aria-label="Image suivante">Suivante</button><span id="pose"></span></div>
+<p id="status" role="status">Chargement des dessins…</p>
+<div class="meta"><span id="origin"></span><a id="file" hidden download>Ouvrir le PNG individuel</a></div>
+<p id="archive"></p>
+</main>
+<script>
+'use strict';
+const byId=id=>document.getElementById(id);
+const choice=byId('choice'),play=byId('play'),prev=byId('prev'),next=byId('next');
+const canvas=document.querySelector('canvas'),ctx=canvas.getContext('2d');
+const publicPage=location.pathname.includes('/cqc/atelier/');
+byId('back').href=publicPage?'../../modules/atelier-v056.html':'../';
+if(!publicPage)byId('back').textContent='Dossier de production';
+let entries=[],active=null,images=[],index=0,request=0,timer=0;
+function stop(){clearInterval(timer);timer=0;play.textContent='Lire';play.setAttribute('aria-pressed','false')}
+function render(){
+ const w=canvas.clientWidth,h=canvas.clientHeight,dpr=Math.min(window.devicePixelRatio||1,2);
+ canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);
+ ctx.setTransform(dpr,0,0,dpr,0,0);
+ if(!active||!images.length)return;
+ const ground=h*.923,scale=Math.min(h*.82/Math.max(...active.frames.map(f=>f.pivot[1])),w*.88/Math.max(...images.map(im=>im.width)));
+ ctx.strokeStyle='#718179';ctx.beginPath();ctx.moveTo(0,ground+.5);ctx.lineTo(w,ground+.5);ctx.stroke();
+ const frame=active.frames[index],img=images[index];
+ ctx.drawImage(img,w/2-frame.pivot[0]*scale,ground-frame.pivot[1]*scale,img.width*scale,img.height*scale);
+ byId('pose').textContent=(index+1)+' / '+images.length;
+ const link=byId('file');link.href=frame.file;link.hidden=false;
+}
+function step(delta){index=(index+images.length+delta)%images.length;render()}
+function loadImage(path){return new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error(path));im.src=path})}
+async function choose(){
+ const version=++request;stop();images=[];index=0;active=entries[choice.selectedIndex];
+ play.disabled=prev.disabled=next.disabled=true;byId('file').hidden=true;byId('pose').textContent='';
+ byId('status').textContent='Chargement des dessins…';byId('origin').textContent=active.game;byId('archive').replaceChildren();
+ render();
+ try{
+  const result=await Promise.all(active.frames.map(f=>loadImage(f.file)));if(version!==request)return;
+  images=result;play.disabled=prev.disabled=next.disabled=images.length<2;
+  byId('status').textContent=images.length===1?'Pose de tenue originale.':active.loop?'Marche en boucle · 6 images/s.':'Séquence de deux poses · arrêt sur la deuxième image.';
+  if(active.archivedFrames?.length){const el=byId('archive');el.append('Croquis conservés hors séquence : ');active.archivedFrames.forEach((f,i)=>{if(i)el.append(' · ');const a=document.createElement('a');a.href=f.file;a.textContent='Image '+(i+3);el.append(a)})}
+  render();
+ }catch(e){if(version===request)byId('status').textContent='Le chargement a échoué. Sélectionnez à nouveau cette tenue ou rechargez la page.'}
+}
+play.onclick=()=>{if(timer){stop();return}if(!active.loop&&index===images.length-1){index=0;render()}
+ play.textContent='Pause';play.setAttribute('aria-pressed','true');
+ timer=setInterval(()=>{step(1);if(!active.loop&&index===images.length-1)stop()},1000/active.previewFps)};
+prev.onclick=()=>{stop();step(-1)};next.onclick=()=>{stop();step(1)};
+choice.onchange=choose;window.addEventListener('resize',render);document.addEventListener('visibilitychange',()=>{if(document.hidden)stop()});
+fetch('walk-cycles.json').then(r=>{if(!r.ok)throw Error(r.status);return r.json()}).then(data=>{
+ entries=[...data.cycles,...data.costumes];for(const e of entries){const o=document.createElement('option');o.value=e.id;o.textContent=e.character+' — '+e.costume;choice.append(o)}
+ choice.disabled=false;choose()
+}).catch(()=>{byId('status').textContent='Le catalogue de mouvements est indisponible.'});
+</script>
+</body></html>

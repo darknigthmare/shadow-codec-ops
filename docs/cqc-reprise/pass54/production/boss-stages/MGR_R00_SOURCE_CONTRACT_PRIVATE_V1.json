@@ -1,0 +1,49 @@
+{
+  "schema": "cqc.p54.boss-stage-source/1",
+  "id": "p54_mgr_r00_africa_avenue",
+  "title": "R-00 · AFRICAN AVENUE",
+  "rawPNG": {
+    "path": "/tmp/cqc-p54-20261120/production/boss-stages/mgr-r00-africa-avenue-background-raw-v1.png",
+    "bytes": 2792499,
+    "sha256": "6f35d32ca8b3173d46aced3b0164bb105e2a6c1b9ecf29c3851823c704e3777d",
+    "gitBlobOID": "091f5218a676e9e6aa40128df2e07b1c3c69eb5b",
+    "width": 1672,
+    "height": 941,
+    "fullyOpaque": true
+  },
+  "references": [
+    "references/mgr-r00-7.webp",
+    "references/mgr-r00-11.webp",
+    "references/mgr-r00-13.webp"
+  ],
+  "referenceProof": "references/R00_RETAIL_SCREENSHOT_FETCH_PRIVATE_V1.json",
+  "promptFile": "GENERATION_PROMPTS_PRIVATE_V1.json",
+  "physicallyViewed": true,
+  "reviewNotes": [
+    "The damaged beige modern tower, first RAY street, warm dusty overcast daylight, civic facades, awnings, street trees, palms and distant turbine match identified R00 landmarks.",
+    "No RAY, Raiden, robot limb, HUD, subtitles or watermark is baked in. This is not the R01 Abkhazia location or the later R00 train.",
+    "Flattened lateral roadway, wider clear fighting lane and facade spacing are CQC adaptations. No pixel-perfect or native renderer/platform certification is claimed."
+  ],
+  "placement": {
+    "backgroundFootFraction": 0.82,
+    "floorY": 568,
+    "cameraDepth": 0.12,
+    "stableBossCameraRequired": true,
+    "foregroundGroundingNotes": "The lower asphalt lane is clear and level. The existing RAY rig should remain world-anchored; the giant-boss camera must not track the approaching player."
+  },
+  "newArtwork": true,
+  "historicalRecovery": false,
+  "pixelEdits": false,
+  "runtimeAdmission": "PENDING_ROOT_INTEGRATION_AND_BROWSER_QA",
+  "atUTC": "2026-11-20T10:13:32.251014+00:00",
+  "targetExistingEncounter": {
+    "encounterKey": "ray_mgR",
+    "machineID": "ray_unmanned_mgr2013",
+    "previousStage": [
+      "mgr",
+      "p18_mgr_abkhazie_cour_desperado"
+    ],
+    "suggestedNewStageID": "p54_mgr_r00_africa_avenue",
+    "qualification": "Exact current encounter and machine IDs confirmed independently by p54_machine_audit; Root selects the final stage ID and edits the runtime mapping."
+  }
+}

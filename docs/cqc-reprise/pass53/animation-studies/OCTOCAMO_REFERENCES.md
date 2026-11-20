@@ -1,0 +1,11 @@
+# OctoCamo MGS4 : ce que montrent les références disponibles
+
+La [table OctoCamo de l’article *Downloadable Content*](https://metalgear.fandom.com/wiki/Metal_Gear_Solid_4:_Guns_of_the_Patriots/Downloadable_Content#OctoCamo_patterns) relie les noms des trois motifs à des images. La présence de ces liens ne suffit pas à identifier une surface de tissu qu’un artiste pourrait reproduire. Le 18 novembre 2026, leur consultation fournit le résultat suivant :
+
+| Entrée de la table | Destination de l’image | Résultat et décision |
+|---|---|---|
+| Digital Red | [Reddigital.jpg](https://static.wikia.nocookie.net/metalgear/images/c/c3/Reddigital.jpg/revision/latest/scale-to-width-down/200?cb=20120928175656) | La requête de consultation a reçu une réponse HTTP 402 ; ses pixels n’ont pas été examinés. La recherche d’images par ce nom retourne des captures génériques du camouflage. Pas de nuancier rouge inventé. |
+| Laughing | [E81m3t.jpg](https://static.wikia.nocookie.net/metalgear/images/7/7c/E81m3t.jpg/revision/latest/scale-to-width-down/200?cb=20111024155741) | Réponse HTTP 402 pendant cette passe. La comparaison antérieure, conservée dans le [registre P52](../../pass52/static-poses/inventaires/OFFICIAL416_REFERENCE_DISPOSITIONS_PRIVATE_V1.json), décrit la capture réellement examinée : Snake accroupi, visage de Beauty blond et camouflage corporel adaptatif ordinaire. Elle ne confirme pas un motif *Laughing* sur le corps. |
+| Snake | [Destination produite par la cellule Snake](https://metalgear.fandom.com/wiki/Metal_Gear_Solid_4%3A_Guns_of_the_Patriots/MIDDLE_EAST_RED_ZONEYmyk.jpg) | La destination a été résolue comme une sous-page wiki plutôt que comme un fichier image exploitable ; la consultation n’a pas fourni les pixels. Le nom seul ne permet pas de choisir la taille des écailles, les teintes ou leur répartition. |
+
+Les trois lignes restent **en attente d’une preuve visuelle identifiable**. Une prochaine preuve utile serait une capture du menu d’origine montrant simultanément le nom sélectionné et son motif lisible. Un nuancier correctement identifié permettrait d’étudier le tissu ; il ne prouverait toujours pas, à lui seul, sa distribution sur toutes les plaques et coutures de la tenue portée. Aucun nouveau costume officiel, coloris ou nuancier n’est compté ici.

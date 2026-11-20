@@ -1,0 +1,209 @@
+{
+  "schema": "cqc.p54.frozen-generation-guard-registry/1",
+  "baseCommit": "04221faf7933b4a33cf63e3859533639f010723e",
+  "inheritedP52Scopes": [
+    {
+      "uid": "core__eva_mgs3",
+      "costumeId": "cyborg",
+      "family": "cyborg",
+      "guard": {
+        "uid": "core__eva_mgs3",
+        "family": "cyborg",
+        "scope": "Existing service refusal; no retry or alias workaround."
+      },
+      "oldSourcePresent": false
+    },
+    {
+      "uid": "core__fear",
+      "costumeId": "cyborg",
+      "family": "cyborg",
+      "guard": {
+        "uid": "core__fear",
+        "family": "cyborg",
+        "scope": "Existing service refusal; no retry or alias workaround."
+      },
+      "oldSourcePresent": false
+    },
+    {
+      "uid": "core__end",
+      "costumeId": "metalgear",
+      "family": "metalgear",
+      "guard": {
+        "uid": "core__end",
+        "family": "metalgear",
+        "scope": "Correction request e6cd633e-e135-44d1-9618-44eca66be28f refused; no retry."
+      },
+      "oldSourcePresent": true
+    },
+    {
+      "uid": "roster51__eva_delta",
+      "costumeId": "cyborg",
+      "family": "cyborg",
+      "guard": {
+        "uid": "roster51__eva_delta",
+        "family": "cyborg",
+        "scope": "Same MGS3 EVA goal through remake alias; no retry."
+      },
+      "oldSourcePresent": false
+    },
+    {
+      "uid": "roster51__fear_delta",
+      "costumeId": "cyborg",
+      "family": "cyborg",
+      "guard": {
+        "uid": "roster51__fear_delta",
+        "family": "cyborg",
+        "scope": "Same The Fear goal through remake alias; no retry."
+      },
+      "oldSourcePresent": false
+    },
+    {
+      "uid": "roster51__end_delta",
+      "costumeId": "metalgear",
+      "family": "metalgear",
+      "guard": {
+        "uid": "roster51__end_delta",
+        "family": "metalgear",
+        "scope": "Same The End MG correction through remake alias; no retry."
+      },
+      "oldSourcePresent": false
+    },
+    {
+      "uid": "npc53__tatyana_mgs3",
+      "costumeId": "cyborg",
+      "family": "cyborg",
+      "guard": {
+        "uid": "npc53__tatyana_mgs3",
+        "family": "cyborg",
+        "scope": "Same MGS3 EVA undercover alias; no retry."
+      },
+      "oldSourcePresent": false
+    },
+    {
+      "uid": "core__mistral",
+      "costumeId": "official--two-arm-configuration",
+      "family": "canonical",
+      "guard": {
+        "uid": "core__mistral",
+        "costumeId": "official--two-arm-configuration",
+        "historicalID": "core__mistral__alt__two_arm_configuration",
+        "kind": "image-generation-output-refusal",
+        "requestID": "bc6ef892-2fcb-4786-8be7-a79f4bb731ab",
+        "reason": "Image generation declined at output moderation; no Source PNG produced. No retry, alias or alternate-agent attempt for the same goal.",
+        "reviewer": "Root received exact refusal report from artist B",
+        "generationPermitted": false
+      },
+      "oldSourcePresent": false
+    },
+    {
+      "uid": "archive__raiden_vr",
+      "costumeId": "official--x-raiden-substance",
+      "family": "canonical",
+      "guard": {
+        "uid": "archive__raiden_vr",
+        "costumeId": "official--x-raiden-substance",
+        "historicalID": "archive__raiden_vr__alt__x_raiden_substance",
+        "kind": "image-generation-input-refusal",
+        "requestID": "6a59ccff-555f-96fe-8483-3f7a37dcdc06",
+        "sameGoalAlias": false,
+        "reason": "Nude Raiden MGS2/X-form generation declined at input moderation; no Source PNG. Same nude-form goal is not retried under another UID, story label, prompt or agent. Clothed variants are separately scoped.",
+        "reviewer": "Root propagated exact artistE refusal and its identical-goal alias",
+        "generationPermitted": false
+      },
+      "oldSourcePresent": false
+    },
+    {
+      "uid": "core__kaz_pw",
+      "costumeId": "official--swimsuit",
+      "family": "canonical",
+      "guard": {
+        "historicalID": "core__kaz_pw__alt__swimsuit",
+        "uid": "core__kaz_pw",
+        "costumeId": "official--swimsuit",
+        "kind": "image-generation-input-refusal",
+        "serviceRequestID": "405d4fa6-026e-4b5e-8576-df1a168af4fd",
+        "newPNGCount": 0,
+        "reason": "P51 actual service input refusal HTTP400 moderation_blocked (sexual+violence). Correctly qualified adult retail swimsuit reference, but no PNG produced. Exact same-incarnation goal and aliases held without retry or prompt rewrite.",
+        "noRetryOrAliasWorkaround": true,
+        "reviewer": "Root records actual artistA service response",
+        "atUTC": "2026-11-13T16:23:44.799769+00:00"
+      },
+      "oldSourcePresent": false
+    },
+    {
+      "uid": "archive__paz",
+      "costumeId": "official--swimsuit",
+      "family": "canonical",
+      "guard": {
+        "uid": "archive__paz",
+        "costumeId": "official--swimsuit",
+        "historicalID": "archive__paz__alt__swimsuit",
+        "kind": "content-guard-no-generation",
+        "reason": "Sexualized lingerie depiction of a character with very young appearance; no image generation requested, no substitution or retry. Ordinary nonsexual appearances remain separately scoped.",
+        "reviewer": "Root and artist A reference-screening decision",
+        "generationPermitted": false
+      },
+      "oldSourcePresent": false
+    },
+    {
+      "uid": "archive__paz",
+      "costumeId": "official--zeke-pilot",
+      "family": "canonical",
+      "guard": {
+        "uid": "archive__paz",
+        "costumeId": "official--zeke-pilot",
+        "historicalID": "archive__paz__alt__zeke_pilot",
+        "kind": "content-guard-no-generation",
+        "reason": "Same sexualized lingerie and very young appearance confirmed in actual ZEKE scene. No generation, substitution, alternate-agent attempt or retry. Evidence locators/timecodes/hashes only in export.",
+        "reviewer": "Root and artist A reference-screening decision",
+        "generationPermitted": false
+      },
+      "oldSourcePresent": false
+    }
+  ],
+  "inheritedP53WalkCorrectionScope": {
+    "schema": "cqc.p53.animation-generation-guard/1",
+    "uid": "core__snake_acid2",
+    "costumeId": "official--link-battle-color-b",
+    "action": "walk-right-opposing-stride-correction",
+    "event": "image-generation-output-refusal",
+    "requestId": "7e821fb4-aef1-488d-8e82-a87953042f9c",
+    "httpStatus": 400,
+    "serviceCode": "moderation_blocked",
+    "serviceStage": "output",
+    "serviceCategories": [
+      "other"
+    ],
+    "outputCount": 0,
+    "noRetryOrAliasWorkaround": true,
+    "scope": "Correction des deux phases opposées de marche pour ce Snake AC!D 2 Color B. Aucun remplacement, renommage ou changement d’agent pour cette demande.",
+    "previouslyCreatedSource": "atlases/snake-walk-right-v1.png",
+    "disposition": "Le premier dessin préexiste à cet événement. Deux des quatre poses restent des croquis archivés et ne sont pas utilisées pour prétendre à un cycle complet. Aucune nouvelle source n’est attribuée à la demande refusée."
+  },
+  "newOC002ActualInputRefusal": {
+    "schema": "cqc.p54.image-generation-input-refusal/1",
+    "atUTC": "2026-11-20T09:48:48.860600+00:00",
+    "id": "OC-002",
+    "uid": "core__raven",
+    "costumeName": "Expédition polaire",
+    "scope": "OC-002 / one static RIGHT pose",
+    "kind": "image-generation-input-refusal",
+    "tool": "image_gen.imagegen",
+    "httpStatus": 400,
+    "requestID": "2ad07afa-f04b-4f06-838f-ec4720c63e3e",
+    "moderationStage": "input",
+    "category": "violence",
+    "reason": "Your request was rejected by the safety system.",
+    "newPNGs": 0,
+    "retryAllowed": false,
+    "retryAttempts": 0,
+    "guardAction": "Do not retry, rephrase, use aliases, change tools or delegate this same rejected target. Preserve attempted prompt and references; other independent targets remain unaffected."
+  },
+  "scopeCounts": {
+    "P52": 12,
+    "P53": 1,
+    "P54": 1,
+    "total": 14
+  },
+  "qualification": "The twelve P52 scopes mix actual tool refusals and pre-generation content guards. They are not labeled twelve tool refusals. One historical source already held under guard remains an archive, not authorization for another generation."
+}

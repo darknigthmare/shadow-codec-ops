@@ -1,0 +1,139 @@
+{
+  "schema": "cqc.p53.orphan-blob-recovery/1",
+  "recordedAt": "2026-11-19T05:36:05+00:00",
+  "repository": "darknigthmare/shadow-codec-ops",
+  "method": "Read-only GitHub fetch_blob requests for exact Git blob hashes preserved in the historical observation record. UTF-8 bytes were rehashed with the Git blob header before any local write.",
+  "canonicalDestinationsRestored": 3,
+  "historicalVariantsArchived": 2,
+  "totalTextBlobsRecovered": 5,
+  "imagesRecovered": 0,
+  "sourceHashesTested": 7,
+  "restored": [
+    {
+      "repositoryPath": "docs/cqc-reprise/pass53/original-costumes/costumes.json",
+      "requestedGitBlobSha": "c1e5161f1cef1c1c477481e8d7da16b73924f6e6",
+      "shaVerified": true,
+      "category": "historical-destination",
+      "format": "JSON catalogue",
+      "bytes": 28231,
+      "sha256": "d53d4bc347333747a3367ee0c88c9f32fd0062f2b426cc591035506f8c81d6d5",
+      "gitBlobSha": "c1e5161f1cef1c1c477481e8d7da16b73924f6e6"
+    },
+    {
+      "repositoryPath": "docs/cqc-reprise/pass53/original-costumes/index.html",
+      "requestedGitBlobSha": "bbd01820ab9ff3c157ff7ceab6754b7f29d6433c",
+      "shaVerified": true,
+      "category": "historical-destination",
+      "format": "HTML gallery",
+      "bytes": 9697,
+      "sha256": "14d4f7b5b029d02a237eaa921fd907c4245c47ce825523e7c57ebf49591a5f08",
+      "gitBlobSha": "bbd01820ab9ff3c157ff7ceab6754b7f29d6433c"
+    },
+    {
+      "repositoryPath": "docs/cqc-reprise/pass53/visuels-recuperes/sources.json",
+      "requestedGitBlobSha": "4a1229a0a074179e13439a0f1afdf8dae6d244f3",
+      "shaVerified": true,
+      "category": "historical-destination",
+      "format": "JSON source register",
+      "bytes": 2264,
+      "sha256": "a27620f816e64e4d3dd6c83a5d24e40e2ee32b4ee3bfd4c68c1fcdf46cc99c36",
+      "gitBlobSha": "4a1229a0a074179e13439a0f1afdf8dae6d244f3"
+    },
+    {
+      "repositoryPath": "docs/cqc-reprise/pass53/recovery-20261119/recovered-variants/original-costumes/costumes.eed2d221c8cae09fb538e1d05b84150b868cf3e2.json",
+      "requestedGitBlobSha": "eed2d221c8cae09fb538e1d05b84150b868cf3e2",
+      "shaVerified": true,
+      "category": "archived-variant",
+      "format": "Older JSON catalogue",
+      "bytes": 27535,
+      "sha256": "f352f5d73a4342efd5ef04fa64d4c72f04ce726dc03c58e7a6b52247b6317b56",
+      "gitBlobSha": "eed2d221c8cae09fb538e1d05b84150b868cf3e2"
+    },
+    {
+      "repositoryPath": "docs/cqc-reprise/pass53/recovery-20261119/recovered-variants/original-costumes/index.153e752bee35fa77abdad8f342b1d29e2e4cb77a.html",
+      "requestedGitBlobSha": "153e752bee35fa77abdad8f342b1d29e2e4cb77a",
+      "shaVerified": true,
+      "category": "archived-variant",
+      "format": "Older HTML gallery",
+      "bytes": 9104,
+      "sha256": "2f2d80fca1f26ffb885152d5d42f19fcec8cb920af61c4bad6e48a2baf1ba531",
+      "gitBlobSha": "153e752bee35fa77abdad8f342b1d29e2e4cb77a"
+    }
+  ],
+  "unavailable": [
+    {
+      "sourceDestination": "docs/cqc-reprise/pass53/visuels-recuperes/sources.json",
+      "gitBlobSha": "8796436680b2f20f0341f9ddd63d33dd45aa3f81",
+      "result": "GitHub404 NOT_FOUND"
+    },
+    {
+      "sourceDestination": "docs/cqc-reprise/pass53/visuels-recuperes/sources.json",
+      "gitBlobSha": "18be486fb1d4e2ef87d031d7e09c94647d5b913e",
+      "result": "GitHub404 NOT_FOUND"
+    }
+  ],
+  "imageRecoveryEvidence": {
+    "missingImageGitSha1Available": false,
+    "availableImageDigests": "SHA-256 only; insufficient to address GitHub Git blobs",
+    "originalCostumeArtSha256MatchesInTrackedFilenames": 0,
+    "additionalCostumeSha256MentionsInLocalCqcRegisters": 0,
+    "visuelsLocalScan": "visuels-local-scan.json",
+    "visuelsLocalScanSummary": {
+      "targetCount": 8,
+      "pngCount": 7955,
+      "dimensionCandidates": 3753,
+      "hashedBytes": 4485703894,
+      "recovered": [],
+      "errors": [],
+      "missing": [
+        "balise-lumineuse-deux-etats.png",
+        "ravin-boise.png",
+        "pilier-industriel.png",
+        "snake-smoking-garde.png",
+        "quai-passerelle.png",
+        "quai-industriel.png",
+        "panorama-viaduc.png",
+        "signal-ferroviaire.png"
+      ],
+      "seconds": 10.4,
+      "repository": "darknigthmare/shadow-codec-ops",
+      "githubVariantChecks": [
+        {
+          "gitBlob": "8796436680b2f20f0341f9ddd63d33dd45aa3f81",
+          "httpStatus": 404,
+          "errorCode": "NOT_FOUND",
+          "recovered": false
+        },
+        {
+          "gitBlob": "18be486fb1d4e2ef87d031d7e09c94647d5b913e",
+          "httpStatus": 404,
+          "errorCode": "NOT_FOUND",
+          "recovered": false
+        }
+      ],
+      "currentTreeRawPathsChecked": 8,
+      "currentTreeRawPathMatches": 0,
+      "localScanScope": {
+        "root": "/workspace/scratch",
+        "extension": ".png",
+        "exclude": [
+          "node_modules",
+          "dist",
+          "cache",
+          ".git"
+        ],
+        "strategy": "PNG IHDR dimensions matched to eight expected images before complete SHA-256 hashing; no matching content found."
+      },
+      "libraryChecks": {
+        "exactFilenameQueries": 8,
+        "exactMatches": 0,
+        "descriptiveQueries": 3,
+        "simplifiedQueries": 3,
+        "createdAfter": "2026-11-17T00:00:00Z",
+        "usableCandidates": 0,
+        "limitation": "No usable search result; not proof that an unindexed Library copy does not exist."
+      }
+    }
+  },
+  "preservation": "Recovered files retain their exact original bytes and historical statements. Companion README files explain present-day asset availability. No runtime/menu link was added; no remote mutation or commit was performed by this recovery."
+}

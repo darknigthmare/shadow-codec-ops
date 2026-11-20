@@ -1,0 +1,48 @@
+{
+  "schema": "cqc.p54.boss-stage-source/1",
+  "id": "p54_mgs1_canyon",
+  "title": "SHADOW MOSES · CANYON",
+  "rawPNG": {
+    "path": "/tmp/cqc-p54-20261120/production/boss-stages/mgs1-canyon-background-raw-v1.png",
+    "bytes": 2474938,
+    "sha256": "7334ead3e0b677eafcc58f691ae97886d660d3921fd47c4374cb8b5e3b914a6a",
+    "gitBlobOID": "5e6260544361a6cd831ef6818a4894c892be5893",
+    "width": 1672,
+    "height": 941,
+    "fullyOpaque": true
+  },
+  "references": [
+    "references/MetalGearSolid-Canyon.png",
+    "references/Metal-Gear-Solid-M1-Tank-Boss-MGS1.jpg"
+  ],
+  "qualification": "BOSS_STAGE_REFERENCE_QUALIFICATION_PRIVATE_V1.json",
+  "promptFile": "GENERATION_PROMPTS_PRIVATE_V1.json",
+  "physicallyViewed": true,
+  "reviewNotes": [
+    "Recessed northern warhead storage gate, grey segmented facade, right service cylinders and enclosed snowy rock basin match the inspected original map landmarks.",
+    "No tank or characters baked into the scenery; separate existing M1 rig can be linked by Root.",
+    "Lateral camera and clear snow fighting plane are CQC adaptations. Exact original PS1 pixel/color fidelity is not certified."
+  ],
+  "placement": {
+    "backgroundFootFraction": 0.82,
+    "floorY": 568,
+    "cameraDepth": 0.12,
+    "stableBossCameraRequired": true,
+    "foregroundGroundingNotes": "Choose the clear lower snow lane; do not translate the boss rig with player movement. Camera should remain fixed for the giant-boss encounter."
+  },
+  "newArtwork": true,
+  "historicalRecovery": false,
+  "pixelEdits": false,
+  "runtimeAdmission": "PENDING_ROOT_INTEGRATION_AND_BROWSER_QA",
+  "atUTC": "2026-11-20T10:08:38.259108+00:00",
+  "targetExistingEncounter": {
+    "encounterKey": "m1tank",
+    "machineID": "m1_mgs1_ps1_1998",
+    "previousStage": [
+      "mgs1",
+      "shadow_heliport"
+    ],
+    "suggestedNewStageID": "p54_mgs1_canyon",
+    "qualification": "Exact current encounter and machine IDs confirmed independently by p54_machine_audit; Root selects the final stage ID and edits the runtime mapping."
+  }
+}

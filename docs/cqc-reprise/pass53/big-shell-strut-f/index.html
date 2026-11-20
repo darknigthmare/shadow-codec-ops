@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CQC P53 — Scènes et parallaxe</title>
+<style>
+  :root{color-scheme:dark;font:15px/1.5 system-ui,sans-serif;background:#101713;color:#e8eee7}
+  body{margin:0}main{max-width:1280px;margin:24px auto;padding:0 20px}
+  h1{font-size:28px;margin-bottom:6px}p{color:#b9c8bc;margin-top:0}
+  a{color:#e6ca79}nav{display:flex;flex-wrap:wrap;gap:18px;margin:16px 0}
+  .controls{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin:16px 0;padding:15px;background:#1c2820;border:1px solid #405246;border-radius:8px}
+  label{display:flex;align-items:center;gap:8px}select{max-width:100%;padding:7px;background:#111c15;color:inherit;border:1px solid #7b927f}
+  input{accent-color:#ddc776}canvas{width:100%;height:auto;display:block;background:#080d0a;border:1px solid #46574b;box-sizing:border-box}
+  output{min-width:42px;font-variant-numeric:tabular-nums}#status{margin:10px 0;min-height:23px}.note{font-size:13px;max-width:1000px}
+</style>
+<main>
+  <h1>CQC P53 — Scènes et parallaxe</h1>
+  <p>Le même rendu de décor que dans Versus, avec les accessoires placés séparément.</p>
+  <div class="controls">
+    <label>Scène <select id="scene" aria-label="Scène"></select></label>
+    <label>Caméra <input id="camera" type="range" min="-220" max="220" value="0"><output id="cameraValue">0</output></label>
+    <label>Zoom <input id="zoom" type="range" min="76" max="115" value="100"><output id="zoomValue">100 %</output></label>
+    <label><input id="motion" type="checkbox" checked>Parallaxe</label>
+    <label><input id="guides" type="checkbox">Repère du sol</label>
+  </div>
+  <canvas id="sceneCanvas" width="1280" height="720" aria-label="Aperçu de l’arène"></canvas>
+  <div id="status" role="status">Chargement…</div>
+  <p class="note">Aperçu du décor, sans combattants ni simulation des collisions. Strut F est une adaptation pour le combat latéral ; l’identité visuelle du lieu reste à comparer aux références du jeu avant toute certification 1:1. Les PNG sources conservent leurs pixels et leur transparence.</p>
+  <nav><a href="manifest.json">Sources et contrôles du décor</a><a href="additional-props-manifest.json">Accessoires supplémentaires</a><a href="../null-defense-extension/index.html">Nouvelles poses de Null</a><a href="../../../../public/cqc/modules/unified-versus-v055.html">Ouvrir Versus</a></nav>
+</main>
+<script src="../../../../public/cqc/src/cqc-p53-service-yard.js"></script>
+<script>
+  const sceneSelect=document.getElementById('scene'), canvas=document.getElementById('sceneCanvas');
+  const ctx=canvas.getContext('2d'), renderer=window.CQC_SERVICE_YARD;
+  const camera=document.getElementById('camera'), zoom=document.getElementById('zoom');
+  const motion=document.getElementById('motion'), guides=document.getElementById('guides');
+  let request=0;
+  for(const stage of renderer.stages){const option=document.createElement('option');option.value=stage.id;option.textContent=stage.name;sceneSelect.append(option);}
+  sceneSelect.value='p53_big_shell_strut_f_warehouse';
+  async function render(){
+    const revision=++request,stage=renderer.stages.find(item=>item.id===sceneSelect.value);
+    document.getElementById('status').textContent='Chargement…';
+    const ready=await renderer.preload(stage,{retry:renderer.status(stage).state==='error'});
+    if(revision!==request)return false;
+    if(!ready){document.getElementById('status').textContent='Une image ne peut pas être chargée. Vérifiez le chemin de la scène.';return false;}
+    const options={camera:Number(camera.value),zoom:Number(zoom.value)/100,motion:motion.checked};
+    ctx.clearRect(0,0,1280,720);renderer.drawBackground(ctx,stage,options);renderer.drawForeground(ctx,stage,options);
+    if(guides.checked){ctx.save();ctx.strokeStyle='#edd071';ctx.setLineDash([9,6]);ctx.beginPath();ctx.moveTo(0,568);ctx.lineTo(1280,568);ctx.stroke();ctx.restore();}
+    document.getElementById('cameraValue').value=camera.value;
+    document.getElementById('zoomValue').value=zoom.value+' %';
+    document.getElementById('status').textContent=stage.name+' · Images chargées';
+    return true;
+  }
+  for(const control of [sceneSelect,camera,zoom,motion,guides])control.addEventListener('input',render);
+  window.__p53Preview={render,ready:render()};
+</script>
+</html>

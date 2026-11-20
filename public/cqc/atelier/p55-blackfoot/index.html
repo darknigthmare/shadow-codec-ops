@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1515">
+  <title>Hangar · UTH-66 Blackfoot</title>
+  <link rel="stylesheet" href="./hangar.css">
+  <link rel="preload" href="./PARTS_CANDIDATE_ACTUAL_V1.json" as="fetch" crossorigin="anonymous">
+  <link rel="preload" href="./right-parts-v2.png" as="fetch" crossorigin="anonymous">
+  <script defer src="./blackfoot-isolated-controller-landing-v3.js" integrity="sha256-286qQ9656wBOm2wdTKsVFarXHA8dcRd3VFvnFEEuMOY=" crossorigin="anonymous"></script>
+  <script defer src="./hangar-controller.js"></script>
+  <script defer src="./hangar.js"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <a class="return" href="../p55-dossiers/index.html">← Atelier</a>
+      <p class="eyebrow">Hangar</p>
+      <h1>UTH-66 Blackfoot</h1>
+      <p>Essai du montage</p>
+      <p class="clearance">Ne peut pas encore être déployé</p>
+    </header>
+    <section class="bay" aria-label="Aperçu du Blackfoot">
+      <canvas id="hangar" width="1200" height="660" aria-label="UTH-66 Blackfoot, vue latérale droite"></canvas>
+      <div class="loading" id="loading" role="status" aria-live="polite">Préparation du montage…</div>
+    </section>
+    <section class="controls" aria-label="Commandes du montage">
+      <div class="buttons"><button id="play" type="button" disabled>Démarrer</button><button id="step" type="button" disabled>Pas à pas</button></div>
+      <label for="aim">Visée de l’armement <output id="aim-value" for="aim">0°</output><input id="aim" type="range" min="-12" max="12" step="1" value="0" disabled></label>
+      <label for="pitch">Assiette <output id="pitch-value" for="pitch">0°</output><input id="pitch" type="range" min="-4" max="4" step="0.5" value="0" disabled></label>
+      <label class="sight"><input id="sight" type="checkbox" disabled> Viseur</label>
+      <button id="retry" type="button" hidden>Réessayer</button>
+      <p id="motion-note" class="motion-note" hidden>Animation réduite</p>
+    </section>
+  </main>
+</body>
+</html>

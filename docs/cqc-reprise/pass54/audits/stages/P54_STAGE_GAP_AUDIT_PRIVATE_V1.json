@@ -1,0 +1,112 @@
+{
+  "schema": "cqc.p54.current-stage-gap-audit/1",
+  "atUTC": "2026-11-20T09:47:10.595080+00:00",
+  "commit": "04221faf7933b4a33cf63e3859533639f010723e",
+  "method": "Read latest Git tree and exact HEAD file bytes; compare historical path inventory without treating metadata as artwork. No sparse-checkout, reference or runtime mutation.",
+  "sourceDocuments": [
+    "docs/cqc-reprise/pass53/recovery-20261119/current-local-audit.json",
+    "docs/cqc-reprise/pass53/recovery-20261119/local-recovery-observations.json",
+    "public/cqc/src/cqc-p53-service-yard.js",
+    "public/cqc/modules/unified-versus-v055.html",
+    "docs/audit-cqc-2026-10-23/03_stages_a_completer.json",
+    "docs/audit-cqc-2026-10-23/03_stages_existants.json"
+  ],
+  "historicalP53Paths": 143,
+  "historicalP53PresentAtCurrentHead": 53,
+  "historicalP53MissingAtCurrentHead": 90,
+  "additionalPublicMissing": [
+    "public/cqc/assets/p53-oil-fence/signal-buoy.webp",
+    "public/cqc/assets/p53-oil-fence/oil-fence-pontoon.webp",
+    "public/cqc/assets/p53-oil-fence/big-shell-sunset.webp"
+  ],
+  "missingHistoricalStageRelatedPaths": [
+    "docs/cqc-reprise/pass53/arena-studies/actors/core__snake_mpo.png",
+    "docs/cqc-reprise/pass53/arena-studies/actors/pass40__raiden_r00.png",
+    "docs/cqc-reprise/pass53/arena-studies/africa-avenue.png",
+    "docs/cqc-reprise/pass53/arena-studies/africa-rail.png",
+    "docs/cqc-reprise/pass53/arena-studies/index.html",
+    "docs/cqc-reprise/pass53/arena-studies/rooms.js",
+    "docs/cqc-reprise/pass53/arena-studies/scene.js",
+    "docs/cqc-reprise/pass53/arena-studies/silo-entrance.png",
+    "docs/cqc-reprise/pass53/shadow-moses/README.md",
+    "docs/cqc-reprise/pass53/shadow-moses/canyon/background.png",
+    "docs/cqc-reprise/pass53/shadow-moses/canyon/foreground.png",
+    "docs/cqc-reprise/pass53/shadow-moses/canyon/preview.jpg",
+    "docs/cqc-reprise/pass53/shadow-moses/generation-prompts.json",
+    "docs/cqc-reprise/pass53/shadow-moses/index.html",
+    "docs/cqc-reprise/pass53/shadow-moses/snake-reference.png",
+    "docs/cqc-reprise/pass53/shadow-moses/stage.css",
+    "docs/cqc-reprise/pass53/shadow-moses/stage.js",
+    "docs/cqc-reprise/pass53/shadow-moses/stages.js",
+    "docs/cqc-reprise/pass53/shadow-moses/stages.json",
+    "docs/cqc-reprise/pass53/shadow-moses/tower-b/background.png",
+    "docs/cqc-reprise/pass53/shadow-moses/tower-b/foreground.png",
+    "docs/cqc-reprise/pass53/shadow-moses/tower-b/preview.jpg",
+    "docs/cqc-reprise/pass53/shadow-moses/verification.json",
+    "docs/cqc-reprise/pass53/shadow-moses/verify.cjs"
+  ],
+  "alreadyPresentP53Scenes": [
+    "p53_null_power_yard",
+    "p53_null_switchgear_hall",
+    "p53_null_signals_room",
+    "p53_big_shell_strut_c_dining",
+    "p53_big_shell_strut_f_warehouse"
+  ],
+  "auditCorrections": [
+    {
+      "ids": [
+        "mgs2_strut_c",
+        "mgs2_strut_f"
+      ],
+      "historicalAuditState": "PAS_DE_SCENE_NATIVE_DEDIEE_DANS_LES_124",
+      "currentState": "Dedicated authored P53 scenes now exist in Versus, fidelity/admission still qualified. Do not regenerate duplicates based only on old audit."
+    }
+  ],
+  "confirmedIntegrationGap": {
+    "presentIn": "public/cqc/modules/unified-versus-v055.html",
+    "references": "STAGES.push(...window.CQC_SERVICE_YARD.stages) and stageRenderer() ownership routing",
+    "notDeclaredIn": [
+      "public/cqc/modules/core-v032.html",
+      "public/cqc/modules/arcade-chronicles-v055.html",
+      "public/cqc/modules/combat-academy-v053.html"
+    ],
+    "evidence": "Each missing-mode source has zero occurrences of cqc-p53-service-yard.js, CQC_SERVICE_YARD, p53_big_shell_strut and p53_null_."
+  },
+  "recommendedProduction": [
+    {
+      "priority": 1,
+      "id": "p54_mgs2_oil_fence_hd",
+      "scope": "New background/pontoon/pylon sources, explicitly not recovery of lost historical P53 filenames.",
+      "evidence": "3 public historical files absent, no Oil Fence scene declared in current layer data/pass12/P53 renderer/Versus source.",
+      "runtimeIntegration": "Extend service-yard-compatible room contract; expose across proper mode adapters after validation.",
+      "references": [
+        "https://www.konami.com/mg/archive/ssg/advice_2/advice_mgs2_04.html"
+      ],
+      "buoyQualification": "No canonical buoy verified; Root approved attested concrete steeple instead."
+    },
+    {
+      "priority": 2,
+      "id": "mgs1_communications_tower_b_roof",
+      "scope": "Dedicated Hind boss roof arena; preserve existing heliport as separate location.",
+      "evidence": "All historical P53 shadow-moses/tower-b files absent; existing stage list has heliport, not named tower roof.",
+      "needs": "Actual original MGS1 edition gameplay references and separate scene registration."
+    },
+    {
+      "priority": 3,
+      "id": "mgs1_canyon_m1",
+      "scope": "Dedicated M1 tank canyon scene; preserve existing snowfield/heliport identities.",
+      "evidence": "All historical shadow-moses/canyon files absent; no exact canyon in existing124 identities.",
+      "needs": "Validate current encounter stage mapping then actual MGS1 canyon references."
+    },
+    {
+      "priority": 4,
+      "id": "mgr_r00_africa_avenue",
+      "scope": "RAY R00 street/rail scene distinct from R01 Abkhazia.",
+      "evidence": "Historical arena-studies/africa-avenue.png and africa-rail.png absent.",
+      "needs": "Current boss mapping check and actual R00 references."
+    }
+  ],
+  "newArtworkAdmittedByThisAudit": false,
+  "wholeBooksPublished": false,
+  "runtimeFilesModified": 0
+}

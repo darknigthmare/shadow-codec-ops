@@ -1,0 +1,3475 @@
+{
+  "machine": "gander_ghost_gbc2000",
+  "edition": "Metal Gear: Ghost Babel (Game Boy Color)",
+  "sourceRevision": "3755d082d1f9c2a971795c2b33733b28a1b4535e",
+  "sourcePrefix": "public/cqc/",
+  "sourceCatalogs": {
+    "pass16": [
+      "src/cqc-pass16-machine-catalog.js"
+    ],
+    "pass30": [
+      "src/cqc-pass16-machine-catalog.js",
+      "src/cqc-pass29-classic-articulation.js",
+      "src/cqc-pass30-gander-fidelity.js"
+    ]
+  },
+  "coordinates": "All coordinates are in native image pixels. sourceRectXYWH is the exported bounds in the atlas. Place pivotXY at the joint. The Y axis points down. No texture was scaled, mirrored or rotated. In pass30 the PNGs are trimmed to their nonzero alpha bounds. Rig offsets, z and scale retain their engine values.",
+  "rasterization": "Native clips use the even-odd rule at pixel centers. The RGBA tuple outside the clip becomes transparent black. The source PNG and rig remain authoritative.",
+  "sources": {
+    "atlas": {
+      "id": "atlas",
+      "file": "assets/machine-parts-pass16/gander/components-atlas-v2.png",
+      "sha256": "312e9d7d27c17c79af38d881a058aee702f4788927e27bb62d4e26f46a149071",
+      "bytes": 2070805,
+      "width": 1536,
+      "height": 1024
+    },
+    "gander_pass30": {
+      "id": "gander_pass30",
+      "file": "assets/machines-pass30/gander/gander-native-three-quarter.png",
+      "sha256": "433712ceaa769523e0b6585a6112fbda6a52ae37d86793422d3c5f10ae895bd2",
+      "bytes": 1524803,
+      "width": 1536,
+      "height": 1024
+    },
+    "gander_pass30_open": {
+      "id": "gander_pass30_open",
+      "file": "assets/machines-pass30/gander/gander-native-faceplate-open.png",
+      "sha256": "307c1342587a694fa598b23c52c38efe008846d1f01dbe1754cb1c6745bd84ab",
+      "bytes": 1543671,
+      "width": 1536,
+      "height": 1024
+    }
+  },
+  "rigs": {
+    "pass16": {
+      "anchors": [
+        {
+          "id": "anchor",
+          "pivot": [
+            0,
+            0
+          ],
+          "offset": [
+            0,
+            0
+          ],
+          "z": 0,
+          "channels": {
+            "y": [
+              {
+                "channel": "ganderCollapseDrop",
+                "factor": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "body_anchor",
+          "pivot": [
+            0,
+            0
+          ],
+          "offset": [
+            0,
+            330
+          ],
+          "z": 0,
+          "parent": "anchor",
+          "channels": {
+            "y": [
+              {
+                "channel": "ganderFold",
+                "factor": -85
+              }
+            ]
+          }
+        },
+        {
+          "id": "near_hip",
+          "pivot": [
+            0,
+            0
+          ],
+          "offset": [
+            -138,
+            238
+          ],
+          "z": 0,
+          "parent": "anchor",
+          "channels": {
+            "y": [
+              {
+                "channel": "ganderFold",
+                "factor": -77
+              }
+            ]
+          }
+        },
+        {
+          "id": "far_hip",
+          "pivot": [
+            0,
+            0
+          ],
+          "offset": [
+            138,
+            250
+          ],
+          "z": 0,
+          "parent": "anchor",
+          "channels": {
+            "y": [
+              {
+                "channel": "ganderFold",
+                "factor": -77
+              }
+            ]
+          }
+        }
+      ],
+      "appearances": [
+        {
+          "part": "carapace",
+          "when": null,
+          "file": "pass16/carapace.png",
+          "source": "atlas",
+          "sourceRectXYWH": [
+            73,
+            19,
+            303,
+            157
+          ],
+          "pivotXY": [
+            151,
+            90
+          ],
+          "rigRectXYWH": [
+            73,
+            19,
+            303,
+            157
+          ],
+          "sourceClipPolygonNativeXY": null,
+          "parent": "body_anchor",
+          "offsetXY": [
+            0,
+            0
+          ],
+          "z": 30,
+          "imageScale": 1.04,
+          "channels": {}
+        },
+        {
+          "part": "pelvis",
+          "when": null,
+          "file": "pass16/pelvis.png",
+          "source": "atlas",
+          "sourceRectXYWH": [
+            457,
+            38,
+            295,
+            180
+          ],
+          "pivotXY": [
+            147,
+            88
+          ],
+          "rigRectXYWH": [
+            457,
+            38,
+            295,
+            180
+          ],
+          "sourceClipPolygonNativeXY": null,
+          "parent": "body_anchor",
+          "offsetXY": [
+            0,
+            -112
+          ],
+          "z": 32,
+          "imageScale": 0.91,
+          "channels": {}
+        },
+        {
+          "part": "jaw",
+          "when": null,
+          "file": "pass16/jaw.png",
+          "source": "atlas",
+          "sourceRectXYWH": [
+            833,
+            41,
+            238,
+            189
+          ],
+          "pivotXY": [
+            119,
+            29
+          ],
+          "rigRectXYWH": [
+            833,
+            41,
+            238,
+            189
+          ],
+          "sourceClipPolygonNativeXY": null,
+          "parent": "body_anchor",
+          "offsetXY": [
+            0,
+            -48
+          ],
+          "z": 44,
+          "imageScale": 0.85,
+          "channels": {}
+        },
+        {
+          "part": "jaw",
+          "when": "ganderMouthOpen",
+          "file": "pass16/jaw-open.png",
+          "source": "atlas",
+          "sourceRectXYWH": [
+            1197,
+            35,
+            259,
+            199
+          ],
+          "pivotXY": [
+            129,
+            27
+          ],
+          "rigRectXYWH": [
+            1197,
+            35,
+            259,
+            199
+          ],
+          "sourceClipPolygonNativeXY": null,
+          "parent": "body_anchor",
+          "offsetXY": [
+            0,
+            -48
+          ],
+          "z": 44,
+          "imageScale": 0.8,
+          "channels": {}
+        },
+        {
+          "part": "near_thigh",
+          "when": null,
+          "file": "pass16/near_thigh.png",
+          "source": "atlas",
+          "sourceRectXYWH": [
+            87,
+            242,
+            231,
+            194
+          ],
+          "pivotXY": [
+            48,
+            60
+          ],
+          "rigRectXYWH": [
+            87,
+            242,
+            231,
+            194
+          ],
+          "sourceClipPolygonNativeXY": null,
+          "parent": "near_hip",
+          "offsetXY": [
+            0,
+            0
+          ],
+          "z": 55,
+          "imageScale": 0.8,
+          "channels": {
+            "rotation": [
+              {
+                "channel": "ganderNearUpper",
+                "factor": 1
+              }
+            ]
+          },
+          "rotation": -30
+        },
+        {
+          "part": "near_shin",
+          "when": null,
+          "file": "pass16/near_shin.png",
+          "source": "atlas",
+          "sourceRectXYWH": [
+            494,
+            235,
+            158,
+            221
+          ],
+          "pivotXY": [
+            78,
+            40
+          ],
+          "rigRectXYWH": [
+            494,
+            235,
+            158,
+            221
+          ],
+          "sourceClipPolygonNativeXY": null,
+          "parent": "near_thigh",
+          "offsetXY": [
+            80,
+            -84
+          ],
+          "z": 56,
+          "imageScale": 0.8,
+          "channels": {
+            "rotation": [
+              {
+                "channel": "ganderNearLower",
+                "factor": 1
+              }
+            ]
+          }
+        },
+        {
+          "part": "near_foot",
+          "when": null,
+          "file": "pass16/near_foot.png",
+          "source": "atlas",
+          "sourceRectXYWH": [
+            820,
+            294,
+            240,
+            168
+          ],
+          "pivotXY": [
+            49,
+            115
+          ],
+          "rigRectXYWH": [
+            820,
+            294,
+            240,
+            168
+          ],
+          "sourceClipPolygonNativeXY": null,
+          "parent": "near_shin",
+          "offsetXY": [
+            -25,
+            -119
+          ],
+          "z": 57,
+          "imageScale": 0.55,
+          "channels": {
+            "rotation": [
+              {
+                "channel": "ganderNearFootLevel",
+                "factor": 1
+              }
+            ]
+          },
+          "rotation": 30
+        },
+        {
+          "part": "near_rail",
+          "when": null,
+          "file": "pass16/near_rail.png",
+          "source": "atlas",
+          "sourceRectXYWH": [
+            717,
+            467,
+            427,
+            189
+          ],
+          "pivotXY": [
+            75,
+            55
+          ],
+          "rigRectXYWH": [
+            717,
+            467,
+            427,
+            189
+          ],
+          "sourceClipPolygonNativeXY": null,
+          "parent": "body_anchor",
+          "offsetXY": [
+            -125,
+            56
+          ],
+          "z": 50,
+          "imageScale": 0.81,
+          "channels": {}
+        },
+        {
+          "part": "near_front_turret",
+          "when": null,
+          "file": "pass16/near_front_turret.png",
+          "source": "atlas",
+          "sourceRectXYWH": [
+            83,
+            654,
+            248,
+            157
+          ],
+          "pivotXY": [
+            78,
+            68
+          ],
+          "rigRectXYWH": [
+            83,
+            654,
+            248,
+            157
+          ],
+          "sourceClipPolygonNativeXY": null,
+          "parent": "body_anchor",
+          "offsetXY": [
+            -165,
+            -26
+          ],
+          "z": 58,
+          "imageScale": 0.52,
+          "channels": {}
+        },
+        {
+          "part": "near_pod",
+          "when": null,
+          "file": "pass16/near_pod.png",
+          "source": "atlas",
+          "sourceRectXYWH": [
+            838,
+            655,
+            215,
+            163
+          ],
+          "pivotXY": [
+            105,
+            96
+          ],
+          "rigRectXYWH": [
+            838,
+            655,
+            215,
+            163
+          ],
+          "sourceClipPolygonNativeXY": null,
+          "parent": "body_anchor",
+          "offsetXY": [
+            -70,
+            94
+          ],
+          "z": 20,
+          "imageScale": 0.54,
+          "channels": {}
+        },
+        {
+          "part": "near_pod",
+          "when": "ganderMissilesOpen",
+          "file": "pass16/near_pod-open.png",
+          "source": "atlas",
+          "sourceRectXYWH": [
+            1230,
+            641,
+            212,
+            177
+          ],
+          "pivotXY": [
+            106,
+            100
+          ],
+          "rigRectXYWH": [
+            1230,
+            641,
+            212,
+            177
+          ],
+          "sourceClipPolygonNativeXY": null,
+          "parent": "body_anchor",
+          "offsetXY": [
+            -70,
+            94
+          ],
+          "z": 20,
+          "imageScale": 0.54,
+          "channels": {}
+        },
+        {
+          "part": "far_thigh",
+          "when": null,
+          "file": "pass16/far_thigh.png",
+          "source": "atlas",
+          "sourceRectXYWH": [
+            1220,
+            242,
+            211,
+            208
+          ],
+          "pivotXY": [
+            30,
+            52
+          ],
+          "rigRectXYWH": [
+            1220,
+            242,
+            211,
+            208
+          ],
+          "sourceClipPolygonNativeXY": null,
+          "parent": "far_hip",
+          "offsetXY": [
+            0,
+            0
+          ],
+          "z": 15,
+          "imageScale": 0.7,
+          "channels": {
+            "rotation": [
+              {
+                "channel": "ganderFarUpper",
+                "factor": 1
+              }
+            ]
+          },
+          "rotation": -35
+        },
+        {
+          "part": "far_shin",
+          "when": null,
+          "file": "pass16/far_shin.png",
+          "source": "atlas",
+          "sourceRectXYWH": [
+            99,
+            444,
+            169,
+            203
+          ],
+          "pivotXY": [
+            87,
+            31
+          ],
+          "rigRectXYWH": [
+            99,
+            444,
+            169,
+            203
+          ],
+          "sourceClipPolygonNativeXY": null,
+          "parent": "far_thigh",
+          "offsetXY": [
+            70.7,
+            -88.2
+          ],
+          "z": 16,
+          "imageScale": 0.7,
+          "channels": {
+            "rotation": [
+              {
+                "channel": "ganderFarLower",
+                "factor": 1
+              }
+            ]
+          }
+        },
+        {
+          "part": "far_foot",
+          "when": null,
+          "file": "pass16/far_foot.png",
+          "source": "atlas",
+          "sourceRectXYWH": [
+            441,
+            492,
+            222,
+            155
+          ],
+          "pivotXY": [
+            49,
+            115
+          ],
+          "rigRectXYWH": [
+            441,
+            492,
+            222,
+            155
+          ],
+          "sourceClipPolygonNativeXY": null,
+          "parent": "far_shin",
+          "offsetXY": [
+            54.6,
+            -102.9
+          ],
+          "z": 17,
+          "imageScale": 0.55,
+          "channels": {
+            "rotation": [
+              {
+                "channel": "ganderFarFootLevel",
+                "factor": 1
+              }
+            ]
+          },
+          "rotation": 35
+        },
+        {
+          "part": "far_rail",
+          "when": null,
+          "file": "pass16/far_rail.png",
+          "source": "atlas",
+          "sourceRectXYWH": [
+            1147,
+            463,
+            374,
+            193
+          ],
+          "pivotXY": [
+            75,
+            55
+          ],
+          "rigRectXYWH": [
+            1147,
+            463,
+            374,
+            193
+          ],
+          "sourceClipPolygonNativeXY": [
+            [
+              1207,
+              464
+            ],
+            [
+              1218,
+              463
+            ],
+            [
+              1229,
+              463
+            ],
+            [
+              1242,
+              467
+            ],
+            [
+              1275,
+              478
+            ],
+            [
+              1292,
+              484
+            ],
+            [
+              1304,
+              490
+            ],
+            [
+              1309,
+              492
+            ],
+            [
+              1518,
+              608
+            ],
+            [
+              1520,
+              610
+            ],
+            [
+              1520,
+              617
+            ],
+            [
+              1504,
+              651
+            ],
+            [
+              1503,
+              653
+            ],
+            [
+              1499,
+              655
+            ],
+            [
+              1492,
+              655
+            ],
+            [
+              1239,
+              621
+            ],
+            [
+              1233,
+              619
+            ],
+            [
+              1187,
+              592
+            ],
+            [
+              1186,
+              591
+            ],
+            [
+              1184,
+              588
+            ],
+            [
+              1169,
+              560
+            ],
+            [
+              1168,
+              558
+            ],
+            [
+              1148,
+              514
+            ],
+            [
+              1147,
+              510
+            ],
+            [
+              1147,
+              501
+            ],
+            [
+              1148,
+              497
+            ],
+            [
+              1149,
+              495
+            ],
+            [
+              1151,
+              492
+            ],
+            [
+              1154,
+              488
+            ],
+            [
+              1158,
+              484
+            ],
+            [
+              1164,
+              481
+            ]
+          ],
+          "parent": "body_anchor",
+          "offsetXY": [
+            105,
+            56
+          ],
+          "z": 11,
+          "imageScale": 0.81,
+          "channels": {}
+        },
+        {
+          "part": "far_front_turret",
+          "when": null,
+          "file": "pass16/far_front_turret.png",
+          "source": "atlas",
+          "sourceRectXYWH": [
+            441,
+            653,
+            252,
+            158
+          ],
+          "pivotXY": [
+            78,
+            68
+          ],
+          "rigRectXYWH": [
+            441,
+            653,
+            252,
+            158
+          ],
+          "sourceClipPolygonNativeXY": null,
+          "parent": "body_anchor",
+          "offsetXY": [
+            137,
+            -26
+          ],
+          "z": 13,
+          "imageScale": 0.52,
+          "channels": {}
+        },
+        {
+          "part": "far_pod",
+          "when": null,
+          "file": "pass16/far_pod.png",
+          "source": "atlas",
+          "sourceRectXYWH": [
+            60,
+            823,
+            230,
+            166
+          ],
+          "pivotXY": [
+            105,
+            96
+          ],
+          "rigRectXYWH": [
+            60,
+            823,
+            230,
+            166
+          ],
+          "sourceClipPolygonNativeXY": null,
+          "parent": "body_anchor",
+          "offsetXY": [
+            60,
+            94
+          ],
+          "z": 10,
+          "imageScale": 0.54,
+          "channels": {}
+        },
+        {
+          "part": "far_pod",
+          "when": "ganderMissilesOpen",
+          "file": "pass16/far_pod-open.png",
+          "source": "atlas",
+          "sourceRectXYWH": [
+            455,
+            811,
+            232,
+            184
+          ],
+          "pivotXY": [
+            106,
+            100
+          ],
+          "rigRectXYWH": [
+            455,
+            811,
+            232,
+            184
+          ],
+          "sourceClipPolygonNativeXY": null,
+          "parent": "body_anchor",
+          "offsetXY": [
+            60,
+            94
+          ],
+          "z": 10,
+          "imageScale": 0.54,
+          "channels": {}
+        },
+        {
+          "part": "backpack",
+          "when": null,
+          "file": "pass16/backpack.png",
+          "source": "atlas",
+          "sourceRectXYWH": [
+            782,
+            819,
+            326,
+            179
+          ],
+          "pivotXY": [
+            160,
+            115
+          ],
+          "rigRectXYWH": [
+            782,
+            819,
+            326,
+            179
+          ],
+          "sourceClipPolygonNativeXY": null,
+          "parent": "body_anchor",
+          "offsetXY": [
+            0,
+            83
+          ],
+          "z": 5,
+          "imageScale": 0.64,
+          "channels": {}
+        }
+      ]
+    },
+    "pass30": {
+      "anchors": [
+        {
+          "id": "anchor",
+          "pivot": [
+            0,
+            0
+          ],
+          "offset": [
+            0,
+            0
+          ],
+          "z": 0,
+          "channels": {
+            "y": [
+              {
+                "channel": "ganderCollapseDrop",
+                "factor": 1
+              }
+            ]
+          }
+        },
+        {
+          "id": "body_anchor",
+          "pivot": [
+            0,
+            0
+          ],
+          "offset": [
+            0,
+            330
+          ],
+          "z": 0,
+          "parent": "anchor",
+          "channels": {
+            "y": [
+              {
+                "channel": "ganderFold",
+                "factor": -85
+              },
+              {
+                "channel": "pass32GanderBraceSeat",
+                "factor": -1
+              }
+            ]
+          }
+        },
+        {
+          "id": "near_hip",
+          "pivot": [
+            0,
+            0
+          ],
+          "offset": [
+            -17.2,
+            -115.2
+          ],
+          "z": 0,
+          "parent": "body_anchor",
+          "channels": {}
+        },
+        {
+          "id": "far_hip",
+          "pivot": [
+            0,
+            0
+          ],
+          "offset": [
+            60.800000000000004,
+            -120.4
+          ],
+          "z": 0,
+          "parent": "body_anchor",
+          "channels": {}
+        }
+      ],
+      "appearances": [
+        {
+          "part": "carapace",
+          "when": null,
+          "file": "pass30/carapace.png",
+          "source": "gander_pass30",
+          "sourceRectXYWH": [
+            302,
+            30,
+            509,
+            230
+          ],
+          "pivotXY": [
+            198,
+            137
+          ],
+          "rigRectXYWH": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "sourceClipPolygonNativeXY": [
+            [
+              690,
+              0
+            ],
+            [
+              340,
+              0
+            ],
+            [
+              340,
+              80
+            ],
+            [
+              315,
+              128
+            ],
+            [
+              302,
+              165
+            ],
+            [
+              315,
+              205
+            ],
+            [
+              315,
+              260
+            ],
+            [
+              811,
+              260
+            ],
+            [
+              811,
+              245
+            ],
+            [
+              807,
+              232
+            ],
+            [
+              777,
+              190
+            ],
+            [
+              690,
+              103
+            ]
+          ],
+          "parent": "body_anchor",
+          "offsetXY": [
+            0,
+            0
+          ],
+          "z": 30,
+          "imageScale": 0.4,
+          "channels": {},
+          "rotation": 0,
+          "textureRotation": 0,
+          "opacity": 1
+        },
+        {
+          "part": "pelvis",
+          "when": null,
+          "file": "pass30/pelvis.png",
+          "source": "gander_pass30",
+          "sourceRectXYWH": [
+            445,
+            260,
+            209,
+            328
+          ],
+          "pivotXY": [
+            111,
+            164
+          ],
+          "rigRectXYWH": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "sourceClipPolygonNativeXY": [
+            [
+              451.30891793,
+              419.56052266
+            ],
+            [
+              457,
+              419
+            ],
+            [
+              464.02325159,
+              419.69172991
+            ],
+            [
+              470.77660357,
+              421.74033683
+            ],
+            [
+              477.00052839,
+              425.06709396
+            ],
+            [
+              482.45584412,
+              429.54415588
+            ],
+            [
+              486.93290604,
+              434.99947161
+            ],
+            [
+              490.25966317,
+              441.22339643
+            ],
+            [
+              492.30827009,
+              447.97674841
+            ],
+            [
+              493,
+              455
+            ],
+            [
+              492.30827009,
+              462.02325159
+            ],
+            [
+              490.25966317,
+              468.77660357
+            ],
+            [
+              486.93290604,
+              475.00052839
+            ],
+            [
+              482.45584412,
+              480.45584412
+            ],
+            [
+              477.00052839,
+              484.93290604
+            ],
+            [
+              470.77660357,
+              488.25966317
+            ],
+            [
+              464.02325159,
+              490.30827009
+            ],
+            [
+              457,
+              491
+            ],
+            [
+              455.26830237,
+              490.82944267
+            ],
+            [
+              459,
+              558
+            ],
+            [
+              540,
+              592
+            ],
+            [
+              654,
+              560
+            ],
+            [
+              654,
+              503.80301719
+            ],
+            [
+              652,
+              504
+            ],
+            [
+              644.97674841,
+              503.30827009
+            ],
+            [
+              638.22339643,
+              501.25966317
+            ],
+            [
+              631.99947161,
+              497.93290604
+            ],
+            [
+              626.54415588,
+              493.45584412
+            ],
+            [
+              622.06709396,
+              488.00052839
+            ],
+            [
+              618.74033683,
+              481.77660357
+            ],
+            [
+              616.69172991,
+              475.02325159
+            ],
+            [
+              616,
+              468
+            ],
+            [
+              616.69172991,
+              460.97674841
+            ],
+            [
+              618.74033683,
+              454.22339643
+            ],
+            [
+              622.06709396,
+              447.99947161
+            ],
+            [
+              626.54415588,
+              442.54415588
+            ],
+            [
+              631.99947161,
+              438.06709396
+            ],
+            [
+              638.22339643,
+              434.74033683
+            ],
+            [
+              644.97674841,
+              432.69172991
+            ],
+            [
+              652,
+              432
+            ],
+            [
+              654,
+              432.19698281
+            ],
+            [
+              654,
+              398
+            ],
+            [
+              654,
+              260
+            ],
+            [
+              445,
+              260
+            ],
+            [
+              445,
+              360
+            ],
+            [
+              448,
+              360
+            ]
+          ],
+          "parent": "body_anchor",
+          "offsetXY": [
+            22.400000000000002,
+            -102.80000000000001
+          ],
+          "z": 32,
+          "imageScale": 0.4,
+          "channels": {},
+          "rotation": 0,
+          "textureRotation": 0,
+          "opacity": 1
+        },
+        {
+          "part": "jaw",
+          "when": null,
+          "file": "pass30/jaw.png",
+          "source": "gander_pass30",
+          "sourceRectXYWH": [
+            191,
+            25,
+            149,
+            150
+          ],
+          "pivotXY": [
+            91,
+            123
+          ],
+          "rigRectXYWH": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "sourceClipPolygonNativeXY": [
+            [
+              340,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              165.39215686
+            ],
+            [
+              245,
+              175
+            ],
+            [
+              302,
+              165
+            ],
+            [
+              315,
+              128
+            ],
+            [
+              340,
+              80
+            ]
+          ],
+          "parent": "body_anchor",
+          "offsetXY": [
+            -87.2,
+            7.6000000000000005
+          ],
+          "z": 44,
+          "imageScale": 0.4,
+          "channels": {},
+          "rotation": 0,
+          "textureRotation": 0,
+          "opacity": 1
+        },
+        {
+          "part": "near_thigh",
+          "when": null,
+          "file": "pass30/near_thigh.png",
+          "source": "gander_pass30",
+          "sourceRectXYWH": [
+            333,
+            360,
+            125,
+            289
+          ],
+          "pivotXY": [
+            124,
+            95
+          ],
+          "rigRectXYWH": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "sourceClipPolygonNativeXY": [
+            [
+              510,
+              579.40740741
+            ],
+            [
+              459,
+              558
+            ],
+            [
+              455.26830237,
+              490.82944267
+            ],
+            [
+              449.97674841,
+              490.30827009
+            ],
+            [
+              443.22339643,
+              488.25966317
+            ],
+            [
+              436.99947161,
+              484.93290604
+            ],
+            [
+              431.54415588,
+              480.45584412
+            ],
+            [
+              427.06709396,
+              475.00052839
+            ],
+            [
+              423.74033683,
+              468.77660357
+            ],
+            [
+              421.69172991,
+              462.02325159
+            ],
+            [
+              421,
+              455
+            ],
+            [
+              421.69172991,
+              447.97674841
+            ],
+            [
+              423.74033683,
+              441.22339643
+            ],
+            [
+              427.06709396,
+              434.99947161
+            ],
+            [
+              431.54415588,
+              429.54415588
+            ],
+            [
+              436.99947161,
+              425.06709396
+            ],
+            [
+              443.22339643,
+              421.74033683
+            ],
+            [
+              449.97674841,
+              419.69172991
+            ],
+            [
+              451.30891793,
+              419.56052266
+            ],
+            [
+              448,
+              360
+            ],
+            [
+              434,
+              360
+            ],
+            [
+              333,
+              360
+            ],
+            [
+              333,
+              623.50678101
+            ],
+            [
+              334.12994231,
+              622.12994231
+            ],
+            [
+              339.88833115,
+              617.40415473
+            ],
+            [
+              346.45802957,
+              613.89257776
+            ],
+            [
+              353.58656776,
+              611.73015934
+            ],
+            [
+              361,
+              611
+            ],
+            [
+              368.41343224,
+              611.73015934
+            ],
+            [
+              375.54197043,
+              613.89257776
+            ],
+            [
+              382.11166885,
+              617.40415473
+            ],
+            [
+              387.87005769,
+              622.12994231
+            ],
+            [
+              392.59584527,
+              627.88833115
+            ],
+            [
+              396.10742224,
+              634.45802957
+            ],
+            [
+              398.26984066,
+              641.58656776
+            ],
+            [
+              399,
+              649
+            ],
+            [
+              434,
+              649
+            ],
+            [
+              510,
+              649
+            ]
+          ],
+          "parent": "near_hip",
+          "offsetXY": [
+            0,
+            0
+          ],
+          "z": 55,
+          "imageScale": 0.4,
+          "channels": {
+            "rotation": [
+              {
+                "channel": "ganderNearUpper",
+                "factor": 1
+              }
+            ]
+          },
+          "rotation": 0,
+          "textureRotation": 0,
+          "opacity": 1
+        },
+        {
+          "part": "near_shin",
+          "when": null,
+          "file": "pass30/near_shin.png",
+          "source": "gander_pass30",
+          "sourceRectXYWH": [
+            65,
+            649,
+            425,
+            304
+          ],
+          "pivotXY": [
+            296,
+            0
+          ],
+          "rigRectXYWH": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "sourceClipPolygonNativeXY": [
+            [
+              0,
+              953
+            ],
+            [
+              510,
+              953
+            ],
+            [
+              510,
+              649
+            ],
+            [
+              399,
+              649
+            ],
+            [
+              398.26984066,
+              656.41343224
+            ],
+            [
+              396.10742224,
+              663.54197043
+            ],
+            [
+              392.59584527,
+              670.11166885
+            ],
+            [
+              387.87005769,
+              675.87005769
+            ],
+            [
+              382.11166885,
+              680.59584527
+            ],
+            [
+              375.54197043,
+              684.10742224
+            ],
+            [
+              368.41343224,
+              686.26984066
+            ],
+            [
+              361,
+              687
+            ],
+            [
+              353.58656776,
+              686.26984066
+            ],
+            [
+              346.45802957,
+              684.10742224
+            ],
+            [
+              339.88833115,
+              680.59584527
+            ],
+            [
+              334.12994231,
+              675.87005769
+            ],
+            [
+              329.40415473,
+              670.11166885
+            ],
+            [
+              325.89257776,
+              663.54197043
+            ],
+            [
+              323.73015934,
+              656.41343224
+            ],
+            [
+              323,
+              649
+            ],
+            [
+              0,
+              649
+            ]
+          ],
+          "parent": "near_thigh",
+          "offsetXY": [
+            -38.400000000000006,
+            -77.60000000000001
+          ],
+          "z": 56,
+          "imageScale": 0.4,
+          "channels": {
+            "rotation": [
+              {
+                "channel": "ganderNearLower",
+                "factor": 1
+              }
+            ]
+          },
+          "rotation": 0,
+          "textureRotation": 0,
+          "opacity": 1
+        },
+        {
+          "part": "near_foot",
+          "when": null,
+          "file": "pass30/near_foot.png",
+          "source": "gander_pass30",
+          "sourceRectXYWH": [
+            239,
+            953,
+            112,
+            43
+          ],
+          "pivotXY": [
+            61,
+            0
+          ],
+          "rigRectXYWH": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "sourceClipPolygonNativeXY": [
+            [
+              0,
+              953
+            ],
+            [
+              0,
+              1024
+            ],
+            [
+              510,
+              1024
+            ],
+            [
+              510,
+              953
+            ]
+          ],
+          "parent": "near_shin",
+          "offsetXY": [
+            -24.400000000000002,
+            -121.60000000000001
+          ],
+          "z": 57,
+          "imageScale": 0.4,
+          "channels": {
+            "rotation": [
+              {
+                "channel": "ganderNearFootLevel",
+                "factor": 1
+              }
+            ]
+          },
+          "rotation": 0,
+          "textureRotation": 0,
+          "opacity": 1
+        },
+        {
+          "part": "near_rail",
+          "when": null,
+          "file": "pass30/near_rail.png",
+          "source": "gander_pass30",
+          "sourceRectXYWH": [
+            741,
+            154,
+            234,
+            87
+          ],
+          "pivotXY": [
+            92,
+            34
+          ],
+          "rigRectXYWH": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "sourceClipPolygonNativeXY": [
+            [
+              975,
+              155
+            ],
+            [
+              963,
+              155
+            ],
+            [
+              741.0877193,
+              154.0877193
+            ],
+            [
+              777,
+              190
+            ],
+            [
+              807,
+              232
+            ],
+            [
+              809.76923077,
+              241
+            ],
+            [
+              975,
+              241
+            ]
+          ],
+          "parent": "carapace",
+          "offsetXY": [
+            133.20000000000002,
+            -8.4
+          ],
+          "z": 50,
+          "imageScale": 0.4,
+          "channels": {
+            "rotation": [
+              {
+                "channel": "pass32GanderNearRailAim",
+                "factor": 1
+              }
+            ]
+          },
+          "rotation": 0,
+          "textureRotation": 0,
+          "opacity": 1
+        },
+        {
+          "part": "near_front_turret",
+          "when": null,
+          "file": "pass30/near_front_turret.png",
+          "source": "gander_pass30",
+          "sourceRectXYWH": [
+            333,
+            260,
+            112,
+            100
+          ],
+          "pivotXY": [
+            66,
+            38
+          ],
+          "rigRectXYWH": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "sourceClipPolygonNativeXY": [
+            [
+              315,
+              260
+            ],
+            [
+              315,
+              360
+            ],
+            [
+              445,
+              360
+            ],
+            [
+              445,
+              260
+            ]
+          ],
+          "parent": "carapace",
+          "offsetXY": [
+            -40.400000000000006,
+            -52.400000000000006
+          ],
+          "z": 58,
+          "imageScale": 0.4,
+          "channels": {
+            "rotation": [
+              {
+                "channel": "pass30GanderTurretAim",
+                "factor": 1
+              }
+            ]
+          },
+          "rotation": 0,
+          "textureRotation": 0,
+          "opacity": 1
+        },
+        {
+          "part": "near_pod",
+          "when": null,
+          "file": "pass30/near_pod.png",
+          "source": "gander_pass30",
+          "sourceRectXYWH": [
+            33,
+            366,
+            300,
+            283
+          ],
+          "pivotXY": [
+            286,
+            56
+          ],
+          "rigRectXYWH": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "sourceClipPolygonNativeXY": [
+            [
+              0,
+              649
+            ],
+            [
+              323,
+              649
+            ],
+            [
+              323.73015934,
+              641.58656776
+            ],
+            [
+              325.89257776,
+              634.45802957
+            ],
+            [
+              329.40415473,
+              627.88833115
+            ],
+            [
+              333,
+              623.50678101
+            ],
+            [
+              333,
+              360
+            ],
+            [
+              0,
+              360
+            ]
+          ],
+          "parent": "near_thigh",
+          "offsetXY": [
+            -55.2,
+            13.200000000000001
+          ],
+          "z": 20,
+          "imageScale": 0.4,
+          "channels": {},
+          "rotation": 0,
+          "textureRotation": 0,
+          "opacity": 1
+        },
+        {
+          "part": "far_thigh",
+          "when": null,
+          "file": "pass30/far_thigh.png",
+          "source": "gander_pass30",
+          "sourceRectXYWH": [
+            513,
+            401,
+            220,
+            299
+          ],
+          "pivotXY": [
+            139,
+            67
+          ],
+          "rigRectXYWH": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "sourceClipPolygonNativeXY": [
+            [
+              510,
+              579.40740741
+            ],
+            [
+              510,
+              700
+            ],
+            [
+              638,
+              700
+            ],
+            [
+              638.65330047,
+              693.36692905
+            ],
+            [
+              640.58809589,
+              686.9887633
+            ],
+            [
+              643.73003318,
+              681.11061208
+            ],
+            [
+              647.95836944,
+              675.95836944
+            ],
+            [
+              653.11061208,
+              671.73003318
+            ],
+            [
+              658.9887633,
+              668.58809589
+            ],
+            [
+              665.36692905,
+              666.65330047
+            ],
+            [
+              672,
+              666
+            ],
+            [
+              678.63307095,
+              666.65330047
+            ],
+            [
+              685.0112367,
+              668.58809589
+            ],
+            [
+              690.88938792,
+              671.73003318
+            ],
+            [
+              696.04163056,
+              675.95836944
+            ],
+            [
+              700.26996682,
+              681.11061208
+            ],
+            [
+              703.41190411,
+              686.9887633
+            ],
+            [
+              705.34669953,
+              693.36692905
+            ],
+            [
+              706,
+              700
+            ],
+            [
+              733,
+              700
+            ],
+            [
+              733,
+              445
+            ],
+            [
+              733,
+              398
+            ],
+            [
+              654,
+              398
+            ],
+            [
+              654,
+              432.19698281
+            ],
+            [
+              659.02325159,
+              432.69172991
+            ],
+            [
+              665.77660357,
+              434.74033683
+            ],
+            [
+              672.00052839,
+              438.06709396
+            ],
+            [
+              677.45584412,
+              442.54415588
+            ],
+            [
+              681.93290604,
+              447.99947161
+            ],
+            [
+              685.25966317,
+              454.22339643
+            ],
+            [
+              687.30827009,
+              460.97674841
+            ],
+            [
+              688,
+              468
+            ],
+            [
+              687.30827009,
+              475.02325159
+            ],
+            [
+              685.25966317,
+              481.77660357
+            ],
+            [
+              681.93290604,
+              488.00052839
+            ],
+            [
+              677.45584412,
+              493.45584412
+            ],
+            [
+              672.00052839,
+              497.93290604
+            ],
+            [
+              665.77660357,
+              501.25966317
+            ],
+            [
+              659.02325159,
+              503.30827009
+            ],
+            [
+              654,
+              503.80301719
+            ],
+            [
+              654,
+              560
+            ],
+            [
+              540,
+              592
+            ]
+          ],
+          "parent": "far_hip",
+          "offsetXY": [
+            0,
+            0
+          ],
+          "z": 15,
+          "imageScale": 0.4,
+          "channels": {
+            "rotation": [
+              {
+                "channel": "ganderFarUpper",
+                "factor": 1
+              }
+            ]
+          },
+          "rotation": 0,
+          "textureRotation": 0,
+          "opacity": 1
+        },
+        {
+          "part": "far_shin",
+          "when": null,
+          "file": "pass30/far_shin.png",
+          "source": "gander_pass30",
+          "sourceRectXYWH": [
+            527,
+            700,
+            773,
+            260
+          ],
+          "pivotXY": [
+            145,
+            0
+          ],
+          "rigRectXYWH": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "sourceClipPolygonNativeXY": [
+            [
+              1536,
+              700
+            ],
+            [
+              706,
+              700
+            ],
+            [
+              705.34669953,
+              706.63307095
+            ],
+            [
+              703.41190411,
+              713.0112367
+            ],
+            [
+              700.26996682,
+              718.88938792
+            ],
+            [
+              696.04163056,
+              724.04163056
+            ],
+            [
+              690.88938792,
+              728.26996682
+            ],
+            [
+              685.0112367,
+              731.41190411
+            ],
+            [
+              678.63307095,
+              733.34669953
+            ],
+            [
+              672,
+              734
+            ],
+            [
+              665.36692905,
+              733.34669953
+            ],
+            [
+              658.9887633,
+              731.41190411
+            ],
+            [
+              653.11061208,
+              728.26996682
+            ],
+            [
+              647.95836944,
+              724.04163056
+            ],
+            [
+              643.73003318,
+              718.88938792
+            ],
+            [
+              640.58809589,
+              713.0112367
+            ],
+            [
+              638.65330047,
+              706.63307095
+            ],
+            [
+              638,
+              700
+            ],
+            [
+              510,
+              700
+            ],
+            [
+              510,
+              960
+            ],
+            [
+              1536,
+              960
+            ]
+          ],
+          "parent": "far_thigh",
+          "offsetXY": [
+            8,
+            -92.80000000000001
+          ],
+          "z": 16,
+          "imageScale": 0.4,
+          "channels": {
+            "rotation": [
+              {
+                "channel": "ganderFarLower",
+                "factor": 1
+              }
+            ]
+          },
+          "rotation": 0,
+          "textureRotation": 0,
+          "opacity": 1
+        },
+        {
+          "part": "far_foot",
+          "when": null,
+          "file": "pass30/far_foot.png",
+          "source": "gander_pass30",
+          "sourceRectXYWH": [
+            577,
+            960,
+            915,
+            40
+          ],
+          "pivotXY": [
+            89,
+            0
+          ],
+          "rigRectXYWH": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "sourceClipPolygonNativeXY": [
+            [
+              510,
+              1024
+            ],
+            [
+              1536,
+              1024
+            ],
+            [
+              1536,
+              960
+            ],
+            [
+              510,
+              960
+            ]
+          ],
+          "parent": "far_shin",
+          "offsetXY": [
+            -2.4000000000000004,
+            -104
+          ],
+          "z": 17,
+          "imageScale": 0.4,
+          "channels": {
+            "rotation": [
+              {
+                "channel": "ganderFarFootLevel",
+                "factor": 1
+              }
+            ]
+          },
+          "rotation": 0,
+          "textureRotation": 0,
+          "opacity": 1
+        },
+        {
+          "part": "far_rail",
+          "when": null,
+          "file": "pass30/far_rail.png",
+          "source": "gander_pass30",
+          "sourceRectXYWH": [
+            690,
+            91,
+            285,
+            64
+          ],
+          "pivotXY": [
+            128,
+            37
+          ],
+          "rigRectXYWH": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "sourceClipPolygonNativeXY": [
+            [
+              975,
+              0
+            ],
+            [
+              690,
+              0
+            ],
+            [
+              690,
+              103
+            ],
+            [
+              741.0877193,
+              154.0877193
+            ],
+            [
+              963,
+              155
+            ],
+            [
+              975,
+              155
+            ]
+          ],
+          "parent": "carapace",
+          "offsetXY": [
+            127.2,
+            15.600000000000001
+          ],
+          "z": 11,
+          "imageScale": 0.4,
+          "channels": {
+            "rotation": [
+              {
+                "channel": "pass32GanderFarRailAim",
+                "factor": 1
+              }
+            ]
+          },
+          "rotation": 0,
+          "textureRotation": 0,
+          "opacity": 1
+        },
+        {
+          "part": "far_front_turret",
+          "when": null,
+          "file": "pass30/far_front_turret.png",
+          "source": "gander_pass30",
+          "sourceRectXYWH": [
+            654,
+            260,
+            157,
+            132
+          ],
+          "pivotXY": [
+            47,
+            60
+          ],
+          "rigRectXYWH": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "sourceClipPolygonNativeXY": [
+            [
+              654,
+              398
+            ],
+            [
+              770,
+              398
+            ],
+            [
+              811,
+              398
+            ],
+            [
+              811,
+              260
+            ],
+            [
+              654,
+              260
+            ]
+          ],
+          "parent": "carapace",
+          "offsetXY": [
+            80.4,
+            -61.2
+          ],
+          "z": 13,
+          "imageScale": 0.4,
+          "channels": {
+            "rotation": [
+              {
+                "channel": "pass30GanderTurretAim",
+                "factor": 1
+              }
+            ]
+          },
+          "rotation": 0,
+          "textureRotation": 0,
+          "opacity": 1
+        },
+        {
+          "part": "far_pod",
+          "when": null,
+          "file": "pass30/far_pod.png",
+          "source": "gander_pass30",
+          "sourceRectXYWH": [
+            733,
+            415,
+            755,
+            285
+          ],
+          "pivotXY": [
+            16,
+            55
+          ],
+          "rigRectXYWH": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "sourceClipPolygonNativeXY": [
+            [
+              1536,
+              700
+            ],
+            [
+              1536,
+              398
+            ],
+            [
+              770,
+              398
+            ],
+            [
+              733,
+              398
+            ],
+            [
+              733,
+              700
+            ]
+          ],
+          "parent": "far_thigh",
+          "offsetXY": [
+            38.800000000000004,
+            -0.8
+          ],
+          "z": 10,
+          "imageScale": 0.4,
+          "channels": {},
+          "rotation": 0,
+          "textureRotation": 0,
+          "opacity": 1
+        },
+        {
+          "part": "backpack",
+          "when": null,
+          "file": "pass30/backpack.png",
+          "source": "gander_pass30",
+          "sourceRectXYWH": [
+            810,
+            241,
+            606,
+            119
+          ],
+          "pivotXY": [
+            38,
+            25
+          ],
+          "rigRectXYWH": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "sourceClipPolygonNativeXY": [
+            [
+              1536,
+              398
+            ],
+            [
+              1536,
+              241
+            ],
+            [
+              809.76923077,
+              241
+            ],
+            [
+              811,
+              245
+            ],
+            [
+              811,
+              398
+            ]
+          ],
+          "parent": "carapace",
+          "offsetXY": [
+            139.20000000000002,
+            -39.6
+          ],
+          "z": 5,
+          "imageScale": 0.4,
+          "channels": {},
+          "rotation": 0,
+          "textureRotation": 0,
+          "opacity": 1
+        },
+        {
+          "part": "near_hip_bearing",
+          "when": null,
+          "file": "pass30/near_hip_bearing.png",
+          "source": "gander_pass30",
+          "sourceRectXYWH": [
+            421,
+            419,
+            72,
+            72
+          ],
+          "pivotXY": [
+            36,
+            36
+          ],
+          "rigRectXYWH": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "sourceClipPolygonNativeXY": [
+            [
+              493,
+              455
+            ],
+            [
+              492.30827009,
+              447.97674841
+            ],
+            [
+              490.25966317,
+              441.22339643
+            ],
+            [
+              486.93290604,
+              434.99947161
+            ],
+            [
+              482.45584412,
+              429.54415588
+            ],
+            [
+              477.00052839,
+              425.06709396
+            ],
+            [
+              470.77660357,
+              421.74033683
+            ],
+            [
+              464.02325159,
+              419.69172991
+            ],
+            [
+              457,
+              419
+            ],
+            [
+              449.97674841,
+              419.69172991
+            ],
+            [
+              443.22339643,
+              421.74033683
+            ],
+            [
+              436.99947161,
+              425.06709396
+            ],
+            [
+              431.54415588,
+              429.54415588
+            ],
+            [
+              427.06709396,
+              434.99947161
+            ],
+            [
+              423.74033683,
+              441.22339643
+            ],
+            [
+              421.69172991,
+              447.97674841
+            ],
+            [
+              421,
+              455
+            ],
+            [
+              421.69172991,
+              462.02325159
+            ],
+            [
+              423.74033683,
+              468.77660357
+            ],
+            [
+              427.06709396,
+              475.00052839
+            ],
+            [
+              431.54415588,
+              480.45584412
+            ],
+            [
+              436.99947161,
+              484.93290604
+            ],
+            [
+              443.22339643,
+              488.25966317
+            ],
+            [
+              449.97674841,
+              490.30827009
+            ],
+            [
+              457,
+              491
+            ],
+            [
+              464.02325159,
+              490.30827009
+            ],
+            [
+              470.77660357,
+              488.25966317
+            ],
+            [
+              477.00052839,
+              484.93290604
+            ],
+            [
+              482.45584412,
+              480.45584412
+            ],
+            [
+              486.93290604,
+              475.00052839
+            ],
+            [
+              490.25966317,
+              468.77660357
+            ],
+            [
+              492.30827009,
+              462.02325159
+            ]
+          ],
+          "parent": "near_hip",
+          "offsetXY": [
+            0,
+            0
+          ],
+          "z": 55.001,
+          "imageScale": 0.4,
+          "channels": {},
+          "rotation": 0,
+          "textureRotation": 0,
+          "opacity": 1
+        },
+        {
+          "part": "far_hip_bearing",
+          "when": null,
+          "file": "pass30/far_hip_bearing.png",
+          "source": "gander_pass30",
+          "sourceRectXYWH": [
+            616,
+            432,
+            72,
+            72
+          ],
+          "pivotXY": [
+            36,
+            36
+          ],
+          "rigRectXYWH": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "sourceClipPolygonNativeXY": [
+            [
+              688,
+              468
+            ],
+            [
+              687.30827009,
+              460.97674841
+            ],
+            [
+              685.25966317,
+              454.22339643
+            ],
+            [
+              681.93290604,
+              447.99947161
+            ],
+            [
+              677.45584412,
+              442.54415588
+            ],
+            [
+              672.00052839,
+              438.06709396
+            ],
+            [
+              665.77660357,
+              434.74033683
+            ],
+            [
+              659.02325159,
+              432.69172991
+            ],
+            [
+              652,
+              432
+            ],
+            [
+              644.97674841,
+              432.69172991
+            ],
+            [
+              638.22339643,
+              434.74033683
+            ],
+            [
+              631.99947161,
+              438.06709396
+            ],
+            [
+              626.54415588,
+              442.54415588
+            ],
+            [
+              622.06709396,
+              447.99947161
+            ],
+            [
+              618.74033683,
+              454.22339643
+            ],
+            [
+              616.69172991,
+              460.97674841
+            ],
+            [
+              616,
+              468
+            ],
+            [
+              616.69172991,
+              475.02325159
+            ],
+            [
+              618.74033683,
+              481.77660357
+            ],
+            [
+              622.06709396,
+              488.00052839
+            ],
+            [
+              626.54415588,
+              493.45584412
+            ],
+            [
+              631.99947161,
+              497.93290604
+            ],
+            [
+              638.22339643,
+              501.25966317
+            ],
+            [
+              644.97674841,
+              503.30827009
+            ],
+            [
+              652,
+              504
+            ],
+            [
+              659.02325159,
+              503.30827009
+            ],
+            [
+              665.77660357,
+              501.25966317
+            ],
+            [
+              672.00052839,
+              497.93290604
+            ],
+            [
+              677.45584412,
+              493.45584412
+            ],
+            [
+              681.93290604,
+              488.00052839
+            ],
+            [
+              685.25966317,
+              481.77660357
+            ],
+            [
+              687.30827009,
+              475.02325159
+            ]
+          ],
+          "parent": "far_hip",
+          "offsetXY": [
+            0,
+            0
+          ],
+          "z": 15.001,
+          "imageScale": 0.4,
+          "channels": {},
+          "rotation": 0,
+          "textureRotation": 0,
+          "opacity": 1
+        },
+        {
+          "part": "near_rail_barrel",
+          "when": null,
+          "file": "pass30/near_rail_barrel.png",
+          "source": "gander_pass30",
+          "sourceRectXYWH": [
+            975,
+            155,
+            515,
+            85
+          ],
+          "pivotXY": [
+            0,
+            26
+          ],
+          "rigRectXYWH": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "sourceClipPolygonNativeXY": [
+            [
+              1536,
+              241
+            ],
+            [
+              1536,
+              155
+            ],
+            [
+              975,
+              155
+            ],
+            [
+              975,
+              241
+            ]
+          ],
+          "parent": "near_rail",
+          "offsetXY": [
+            56.800000000000004,
+            2.8000000000000003
+          ],
+          "z": 50.001,
+          "imageScale": 0.4,
+          "channels": {
+            "x": [
+              {
+                "channel": "pass32GanderNearRailRecoilX",
+                "factor": 1
+              }
+            ],
+            "y": [
+              {
+                "channel": "pass32GanderNearRailRecoilY",
+                "factor": 1
+              }
+            ]
+          },
+          "rotation": 0,
+          "textureRotation": 0,
+          "opacity": 1
+        },
+        {
+          "part": "far_rail_barrel",
+          "when": null,
+          "file": "pass30/far_rail_barrel.png",
+          "source": "gander_pass30",
+          "sourceRectXYWH": [
+            975,
+            33,
+            529,
+            122
+          ],
+          "pivotXY": [
+            0,
+            103
+          ],
+          "rigRectXYWH": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "sourceClipPolygonNativeXY": [
+            [
+              1536,
+              155
+            ],
+            [
+              1536,
+              0
+            ],
+            [
+              975,
+              0
+            ],
+            [
+              975,
+              155
+            ]
+          ],
+          "parent": "far_rail",
+          "offsetXY": [
+            62.800000000000004,
+            -3.2
+          ],
+          "z": 11.001,
+          "imageScale": 0.4,
+          "channels": {
+            "x": [
+              {
+                "channel": "pass32GanderFarRailRecoilX",
+                "factor": 1
+              }
+            ],
+            "y": [
+              {
+                "channel": "pass32GanderFarRailRecoilY",
+                "factor": 1
+              }
+            ]
+          },
+          "rotation": 0,
+          "textureRotation": 0,
+          "opacity": 1
+        },
+        {
+          "part": "jaw_lower_plate",
+          "when": null,
+          "file": "pass30/jaw_lower_plate.png",
+          "source": "gander_pass30",
+          "sourceRectXYWH": [
+            177,
+            165,
+            138,
+            143
+          ],
+          "pivotXY": [
+            105,
+            4
+          ],
+          "rigRectXYWH": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "sourceClipPolygonNativeXY": [
+            [
+              0,
+              165.39215686
+            ],
+            [
+              0,
+              360
+            ],
+            [
+              315,
+              360
+            ],
+            [
+              315,
+              205
+            ],
+            [
+              302,
+              165
+            ],
+            [
+              245,
+              175
+            ]
+          ],
+          "parent": "jaw",
+          "offsetXY": [
+            0,
+            -8.4
+          ],
+          "z": 44.001,
+          "imageScale": 0.4,
+          "channels": {
+            "rotation": [
+              {
+                "channel": "pass30GanderFaceplateHinge",
+                "factor": 1
+              }
+            ]
+          },
+          "rotation": 0,
+          "textureRotation": 0,
+          "opacity": 1
+        },
+        {
+          "part": "jaw_lower_plate",
+          "when": "ganderMouthOpen",
+          "file": "pass30/jaw_lower_plate-open.png",
+          "source": "gander_pass30_open",
+          "sourceRectXYWH": [
+            174,
+            165,
+            141,
+            121
+          ],
+          "pivotXY": [
+            108,
+            4
+          ],
+          "rigRectXYWH": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "sourceClipPolygonNativeXY": [
+            [
+              0,
+              165.39215686
+            ],
+            [
+              0,
+              360
+            ],
+            [
+              315,
+              360
+            ],
+            [
+              315,
+              205
+            ],
+            [
+              302,
+              165
+            ],
+            [
+              245,
+              175
+            ]
+          ],
+          "parent": "jaw",
+          "offsetXY": [
+            0,
+            -8.4
+          ],
+          "z": 44.001,
+          "imageScale": 0.4,
+          "channels": {
+            "rotation": [
+              {
+                "channel": "pass30GanderFaceplateHinge",
+                "factor": 1
+              }
+            ]
+          },
+          "rotation": 0,
+          "textureRotation": 0,
+          "opacity": 1
+        },
+        {
+          "part": "near_knee_bearing",
+          "when": null,
+          "file": "pass30/near_knee_bearing.png",
+          "source": "gander_pass30",
+          "sourceRectXYWH": [
+            323,
+            611,
+            76,
+            76
+          ],
+          "pivotXY": [
+            38,
+            38
+          ],
+          "rigRectXYWH": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "sourceClipPolygonNativeXY": [
+            [
+              399,
+              649
+            ],
+            [
+              398.26984066,
+              641.58656776
+            ],
+            [
+              396.10742224,
+              634.45802957
+            ],
+            [
+              392.59584527,
+              627.88833115
+            ],
+            [
+              387.87005769,
+              622.12994231
+            ],
+            [
+              382.11166885,
+              617.40415473
+            ],
+            [
+              375.54197043,
+              613.89257776
+            ],
+            [
+              368.41343224,
+              611.73015934
+            ],
+            [
+              361,
+              611
+            ],
+            [
+              353.58656776,
+              611.73015934
+            ],
+            [
+              346.45802957,
+              613.89257776
+            ],
+            [
+              339.88833115,
+              617.40415473
+            ],
+            [
+              334.12994231,
+              622.12994231
+            ],
+            [
+              329.40415473,
+              627.88833115
+            ],
+            [
+              325.89257776,
+              634.45802957
+            ],
+            [
+              323.73015934,
+              641.58656776
+            ],
+            [
+              323,
+              649
+            ],
+            [
+              323.73015934,
+              656.41343224
+            ],
+            [
+              325.89257776,
+              663.54197043
+            ],
+            [
+              329.40415473,
+              670.11166885
+            ],
+            [
+              334.12994231,
+              675.87005769
+            ],
+            [
+              339.88833115,
+              680.59584527
+            ],
+            [
+              346.45802957,
+              684.10742224
+            ],
+            [
+              353.58656776,
+              686.26984066
+            ],
+            [
+              361,
+              687
+            ],
+            [
+              368.41343224,
+              686.26984066
+            ],
+            [
+              375.54197043,
+              684.10742224
+            ],
+            [
+              382.11166885,
+              680.59584527
+            ],
+            [
+              387.87005769,
+              675.87005769
+            ],
+            [
+              392.59584527,
+              670.11166885
+            ],
+            [
+              396.10742224,
+              663.54197043
+            ],
+            [
+              398.26984066,
+              656.41343224
+            ]
+          ],
+          "parent": "near_thigh",
+          "offsetXY": [
+            -38.400000000000006,
+            -77.60000000000001
+          ],
+          "z": 56.01,
+          "imageScale": 0.4,
+          "channels": {
+            "rotation": [
+              {
+                "channel": "ganderNearLower",
+                "factor": 0.5
+              }
+            ]
+          },
+          "rotation": 0,
+          "textureRotation": 0,
+          "opacity": 1
+        },
+        {
+          "part": "far_knee_bearing",
+          "when": null,
+          "file": "pass30/far_knee_bearing.png",
+          "source": "gander_pass30",
+          "sourceRectXYWH": [
+            638,
+            666,
+            68,
+            68
+          ],
+          "pivotXY": [
+            34,
+            34
+          ],
+          "rigRectXYWH": [
+            0,
+            0,
+            1536,
+            1024
+          ],
+          "sourceClipPolygonNativeXY": [
+            [
+              706,
+              700
+            ],
+            [
+              705.34669953,
+              693.36692905
+            ],
+            [
+              703.41190411,
+              686.9887633
+            ],
+            [
+              700.26996682,
+              681.11061208
+            ],
+            [
+              696.04163056,
+              675.95836944
+            ],
+            [
+              690.88938792,
+              671.73003318
+            ],
+            [
+              685.0112367,
+              668.58809589
+            ],
+            [
+              678.63307095,
+              666.65330047
+            ],
+            [
+              672,
+              666
+            ],
+            [
+              665.36692905,
+              666.65330047
+            ],
+            [
+              658.9887633,
+              668.58809589
+            ],
+            [
+              653.11061208,
+              671.73003318
+            ],
+            [
+              647.95836944,
+              675.95836944
+            ],
+            [
+              643.73003318,
+              681.11061208
+            ],
+            [
+              640.58809589,
+              686.9887633
+            ],
+            [
+              638.65330047,
+              693.36692905
+            ],
+            [
+              638,
+              700
+            ],
+            [
+              638.65330047,
+              706.63307095
+            ],
+            [
+              640.58809589,
+              713.0112367
+            ],
+            [
+              643.73003318,
+              718.88938792
+            ],
+            [
+              647.95836944,
+              724.04163056
+            ],
+            [
+              653.11061208,
+              728.26996682
+            ],
+            [
+              658.9887633,
+              731.41190411
+            ],
+            [
+              665.36692905,
+              733.34669953
+            ],
+            [
+              672,
+              734
+            ],
+            [
+              678.63307095,
+              733.34669953
+            ],
+            [
+              685.0112367,
+              731.41190411
+            ],
+            [
+              690.88938792,
+              728.26996682
+            ],
+            [
+              696.04163056,
+              724.04163056
+            ],
+            [
+              700.26996682,
+              718.88938792
+            ],
+            [
+              703.41190411,
+              713.0112367
+            ],
+            [
+              705.34669953,
+              706.63307095
+            ]
+          ],
+          "parent": "far_thigh",
+          "offsetXY": [
+            8,
+            -92.80000000000001
+          ],
+          "z": 16.01,
+          "imageScale": 0.4,
+          "channels": {
+            "rotation": [
+              {
+                "channel": "ganderFarLower",
+                "factor": 0.5
+              }
+            ]
+          },
+          "rotation": 0,
+          "textureRotation": 0,
+          "opacity": 1
+        }
+      ],
+      "baseCoverage": {
+        "sourceVisiblePixels": 445622,
+        "omittedVisiblePixels": 0,
+        "overlappingVisiblePixels": 0
+      }
+    }
+  }
+}
