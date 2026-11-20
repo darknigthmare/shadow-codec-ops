@@ -27,12 +27,14 @@ jobs:
           parent=api('git/commits/'+commit);tree=api('git/trees/'+parent['tree']['sha']+'?recursive=1')
           if tree.get('truncated'):raise RuntimeError('Transport tree truncated')
           manifests=[p for p in tree['tree'] if p['path'].startswith('docs/cqc-reprise/pass55/transport/') and p['path'].endswith('manifest.json')]
-          entries=[]
+          entries=[];present={p['path']:p['sha'] for p in tree['tree'] if p['type']=='blob'}
           for entry in manifests:
             manifest=json.loads(base64.b64decode(api('git/blobs/'+entry['sha'])['content']))
             for source in manifest['sources']:
               path=source['path']
               if not path.startswith('docs/cqc-reprise/pass55/sources/') or '..' in pathlib.PurePosixPath(path).parts:raise RuntimeError('Invalid output path')
+              if present.get(path)==source['blobSHA']:
+                print('Reused exact previously verified source',path,source['blobSHA']);continue
               chunks=[]
               for chunk in source['chunks']:
                 raw=base64.b64decode(api('git/blobs/'+chunk['sha'])['content'])
@@ -46,7 +48,8 @@ jobs:
               if result['sha']!=oid:raise RuntimeError('Stored blob mismatch')
               entries.append({'path':path,'mode':'100644','type':'blob','sha':oid})
               print('Verified source',path,len(raw),source['sha256'],oid)
-          if not entries:raise RuntimeError('No transport sources')
+          if not entries:
+            print('All exact source blobs are already assembled');raise SystemExit(0)
           newtree=api('git/trees',{'base_tree':parent['tree']['sha'],'tree':entries})
           newcommit=api('git/commits',{'message':'art(cqc): assemble exact P55 PNG source bytes','tree':newtree['sha'],'parents':[commit]})
           if api('git/ref/heads/'+branch)['object']['sha']!=commit:raise RuntimeError('Transport lease changed before publication')
