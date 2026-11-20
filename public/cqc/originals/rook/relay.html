@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0e1716">
+  <title>Serre des relais · Station Méridien</title>
+  <link rel="stylesheet" href="rook.css">
+  <link rel="stylesheet" href="training.css">
+</head>
+<body>
+  <header>
+    <a href="index.html">← Dossier de Rook</a>
+    <span>Station Méridien</span>
+  </header>
+  <main class="training">
+    <p class="role">Reconnaissance</p>
+    <h1>Serre des relais</h1>
+    <p>Fais parvenir trois traceurs à Luciole. Approche-toi et attends que le voyant du récepteur passe au vert.</p>
+    <canvas id="relay-canvas" width="1280" height="720" tabindex="0" aria-label="Exercice de relais avec Rook et Luciole"></canvas>
+    <div class="controls" aria-label="Commandes de l’exercice">
+      <button type="button" id="relay-left" aria-label="Déplacer Rook à gauche">←</button>
+      <button type="button" id="relay-right" aria-label="Déplacer Rook à droite">→</button>
+      <button type="button" id="send-trace" disabled>Traceur <kbd>J</kbd></button>
+      <button type="button" id="restart-relay">Recommencer</button>
+    </div>
+    <p id="relay-progress" aria-live="polite">Signaux reçus 0 / 3</p>
+    <p id="training-status" role="status">Préparation de la serre…</p>
+    <div class="preferences">
+      <label><input type="checkbox" id="relay-reduce"> Réduire les animations du décor</label>
+    </div>
+  </main>
+  <script src="../../src/cqc-p53-service-yard.js"></script>
+  <script src="../../src/cqc-p54-stages.js"></script>
+  <script src="../../src/cqc-p55-stage-planes.js"></script>
+  <script src="../../src/cqc-p56-reservoir.js"></script>
+  <script src="../../src/cqc-p57-beacon-yard.js"></script>
+  <script src="../../src/cqc-p58-relay-glasshouse.js"></script>
+  <script type="module" src="relay.js"></script>
+</body>
+</html>
