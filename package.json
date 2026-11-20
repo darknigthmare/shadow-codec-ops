@@ -16,7 +16,7 @@
     "tauri:icon": "tauri icon app-icon.png",
     "test": "vitest run --no-isolate --pool=threads --maxWorkers=1 --no-file-parallelism --reporter=default",
     "test:watch": "vitest",
-    "qa": "npm run cqc:check && npm run cqc:p54:check && npm run cqc:p55:check && npm run cqc:p56:check && npm run cqc:p57:check && npm run lint && npm run test && npm run build && npm run pwa:check",
+    "qa": "npm run cqc:check && npm run cqc:p54:check && npm run cqc:p55:check && npm run cqc:p56:check && npm run cqc:p57:check && npm run cqc:p58:check && npm run lint && npm run test && npm run build && npm run pwa:check",
     "pwa:preview": "npm run build && vite preview --host 0.0.0.0",
     "pwa:check": "node scripts/check-pwa.mjs",
     "cqc:sync": "node scripts/sync-cqc-runtime.mjs",
@@ -24,7 +24,8 @@
     "cqc:p54:check": "node --test scripts/test-cqc-p54-machine-parts.mjs scripts/test-cqc-p54-mode-scenes.mjs scripts/test-cqc-p54-stages.mjs scripts/test-cqc-p54-boss-scenes.mjs",
     "cqc:p55:check": "node --test scripts/test-cqc-p55-stage-planes.mjs scripts/test-cqc-p55-blackfoot-audit.mjs",
     "cqc:p56:check": "node --test scripts/test-cqc-p56-reservoir.mjs scripts/test-cqc-p56-dossier-comparison.mjs scripts/test-cqc-p56-embedded-recovery.mjs scripts/test-cqc-p56-hind-stop.mjs",
-    "cqc:p57:check": "node --test scripts/test-cqc-p57-beacon-yard.mjs scripts/test-cqc-p57-calibration-trolley.mjs scripts/test-cqc-p57-rook-training.mjs scripts/test-cqc-p57-signal-effects.mjs"
+    "cqc:p57:check": "node --test scripts/test-cqc-p57-beacon-yard.mjs scripts/test-cqc-p57-calibration-trolley.mjs scripts/test-cqc-p57-rook-training.mjs scripts/test-cqc-p57-signal-effects.mjs",
+    "cqc:p58:check": "node --test scripts/test-cqc-p58-relay-glasshouse.mjs scripts/test-cqc-p58-relay-course.mjs scripts/test-cqc-p58-relay-drone.mjs scripts/test-cqc-p58-relay-signal.mjs"
   },
   "dependencies": {
     "@tauri-apps/api": "^2.11.1",
