@@ -1,5 +1,7 @@
 # Audit complet CQC — P41, 23 octobre 2026
 
+> **Suite du travail — P62, 25 novembre 2026 :** la [bible centrale CQC](../cqc-bible/README.md) associe désormais cet audit au guide général de jeux de combat, aux exigences de conception et aux preuves du code actuel. Les [sources P60/P61/P62](../cqc-bible/ASSOCIATIONS.md) et l’[inventaire rapproché P61](../cqc-reprise/pass61/INVENTAIRE.md) complètent les états historiques ci-dessous, sans en réécrire les chiffres datés.
+
 **Objet : établir ce qui existe, ce qui manque, ce qui reste partiel et les travaux nécessaires pour viser une fidélité 1:1 vérifiable.** L’audit couvre les personnages principaux, secondaires et tertiaires, les incarnations et PNJ, les costumes officiels et originaux, les stages, les Metal Gear et gros boss, les sprites et animations, les Chroniques, l’audio et les systèmes de jeu.
 
 **Version de référence :** [`ba4e30a09e9e95727b75a665e7b6ab07d9941aea`](https://github.com/darknigthmare/shadow-codec-ops/commit/ba4e30a09e9e95727b75a665e7b6ab07d9941aea), branche `codex/cqc-p40-batch30-recovery`, dernière tête P41 vérifiée dans la [PR source #3](https://github.com/darknigthmare/shadow-codec-ops/pull/3). La branche `main` ne représente pas cette version. La PR d’audit est donc basée sur cette branche P41 ; son diff ne contient que ce dossier documentaire. L’état de déploiement public n’est pas utilisé comme preuve.

@@ -1,0 +1,126 @@
+{
+  "schema": "cqc.bible.requirements-source.v1",
+  "interpretation": "Décisions de conception CQC adaptées au guide ; leur présence ne certifie pas une fonctionnalité jouable.",
+  "sections": [
+    {"section":"00","title":"Utilisation et priorités","priority":"P0","document":"README.md","requirements":[
+      ["Conserver le guide original","Copie exacte, version et SHA-256 disponibles ; aucune modification du texte utilisateur."],
+      ["Relier le guide à CQC","Chaque rubrique 00–29 possède une décision, un document, une exigence et un critère vérifiable."],
+      ["Respecter la phase sprites fixes","Les nouveaux PNG restent individuels ; animations et actions nouvelles conservent leur statut futur."]]},
+    {"section":"01","title":"Identité et périmètre","priority":"P0","document":"README.md","requirements":[
+      ["Conserver le duel latéral CQC","Le périmètre décrit navigateur, runtime autonome et intégration Shadow sans changement de moteur implicite."],
+      ["Délimiter les continuités","Chaque édition, spin-off, prototype et création originale conserve son identité et sa période."],
+      ["Définir les modes et piliers","Les objectifs P0/P1/P2 sont motivés et séparés des modes effectivement accessibles."]]},
+    {"section":"02","title":"Fidélité et sources","priority":"P0","document":"COMBAT.md","requirements":[
+      ["Classifier la provenance","Chaque fiche distingue canon attesté, adaptation jouable, original compatible, alternatif et à confirmer."],
+      ["Contrôler incarnation et équipement","UID, période, costume, arme, anatomie et asymétries sont comparés aux références du bon opus."],
+      ["Garder les limites visibles","Aucun fichier généré ou nom de technique créé ne reçoit automatiquement le statut canonique ou certifié 1:1."]]},
+    {"section":"03","title":"Roster et costumes","priority":"P0","document":"ROSTER.md","requirements":[
+      ["Conserver les identifiants existants","Les 354 UID de base sont référencés ; les 384 incarnations de garde-robe restent un périmètre distinct."],
+      ["Qualifier le rôle et la variante","Jouable, boss, ennemi, soutien, PNJ et présence documentaire sont distingués avant admission."],
+      ["Séparer costume et kit","Une arme, une morphologie ou un pouvoir différent déclenche une revue de variante et de collisions."]]},
+    {"section":"04","title":"Fondations du combat","priority":"P0","document":"COMBAT.md","requirements":[
+      ["Vérifier le pas de simulation","Les 60 pas annoncés par le moteur restent indépendants du rendu et des ralentissements visuels."],
+      ["Fermer un match complet","KO, double KO, timeout, manches, pause, revanche et sortie ont un résultat déterministe et testable."],
+      ["Valider saisie et défense","Garde, projection, déchoppe, priorités de touches et changement de côté sont testés avec les profils réels."]]},
+    {"section":"05","title":"Movesets et ressources","priority":"P0","document":"COMBAT.md","requirements":[
+      ["Documenter les actions par UID","Chaque action relie commande, durées, collision, coût, résultat, annulations et preuve de version."],
+      ["Distinguer base et adaptateurs","Les 80 emplacements pilotes compilés ne sont pas présentés comme état final après hooks de fidélité."],
+      ["Garantir des réponses adverses","Chaque kit décrit approche, punition, anti-pression, ressource et vulnérabilité reproductible."]]},
+    {"section":"06","title":"Neutralisations et ultimes","priority":"P1","document":"COMBAT.md","requirements":[
+      ["Distinguer les conclusions","Ultime, neutralisation, victoire et outro possèdent des objets et conditions distincts."],
+      ["Qualifier chaque famille de cible","Humain, cyborg, quadrupède, machine et géant possèdent une séquence compatible ou un remplacement."],
+      ["Garantir retour au résultat","Séquence abrégée, asset absent et interruption ne changent pas le vainqueur ni ne bloquent la sortie."]]},
+    {"section":"07","title":"Présentation et relations","priority":"P1","document":"NARRATION.md","requirements":[
+      ["Écrire des relations situées","Chaque rivalité précise époque, connaissances des acteurs et statut canonique ou hypothétique."],
+      ["Donner une attitude propre","Arrivée, provocation, victoire et défaite respectent le langage corporel de l’incarnation."],
+      ["Borner les dialogues spécifiques","Les relations prioritaires ont leurs répliques ; les autres utilisent un générique qualifié sans faux dialogue officiel."]]},
+    {"section":"08","title":"Routes individuelles","priority":"P1","document":"NARRATION.md","requirements":[
+      ["Conserver les routes héritées","Les Chroniques existantes restent liées aux UID ; les enrichissements ne sont pas comptés comme nouveaux personnages."],
+      ["Motiver les rencontres pilotes","Chaque combat des huit routes précise adversaire, lieu, enjeu, conséquence et condition de progression."],
+      ["Distinguer intro rival outro","Plans et objectifs émotionnels diffèrent ; une image commune ne clôt pas plusieurs scènes requises."]]},
+    {"section":"09","title":"Campagne globale","priority":"P1","document":"NARRATION.md","requirements":[
+      ["Créer un conflit commun distinct","La campagne possède incident, menace, revers et résolution ; un circuit de duels n’est pas compté comme ce récit."],
+      ["Ficher les chapitres","Chaque chapitre relie acteur, époque, objectif, scènes, lieux, combats, checkpoint et assets."],
+      ["Séparer fiction du projet et canon","Les rencontres entre époques et reconstructions d’archives sont annoncées comme dispositif CQC."]]},
+    {"section":"10","title":"Illustrations narratives","priority":"P1","document":"NARRATION.md","requirements":[
+      ["Préparer les plans avant génération","Chaque plan précise fonction narrative, acteurs/version, cadrage, expression, lumière et raccord."],
+      ["Conserver texte et continuité","Dialogue séparé des images ; tenue, blessures, armes et état du décor suivent la scène précédente."],
+      ["Suivre les images par unité","Un plan décrit reste à produire tant que son fichier et sa revue visuelle ne sont pas présents."]]},
+    {"section":"11","title":"Boss et Boss Rush","priority":"P1","document":"ARENES_ET_BOSS.md","requirements":[
+      ["Décrire phases et fenêtres","Chaque boss relie signaux, attaques, points faibles, réponses, échec, victoire et reprise."],
+      ["Respecter échelle et morphologie","Tester courte portée, zoner, petite cible et grande machine ; aucune prise humanoïde imposée à un véhicule."],
+      ["Borner les règles du Boss Rush","Ordre, vie conservée, ressources, récupération, essais, score et récompenses sont explicités."]]},
+    {"section":"12","title":"Modes de jeu","priority":"P0","document":"README.md","requirements":[
+      ["Conserver les modes accessibles","Inventorier les routes réelles du menu et leur module ; préserver les extensions existantes."],
+      ["Décrire un parcours complet","Entrée, sélection, combat, résultat, revanche, sortie et reprise sont contrôlés pour chaque mode retenu."],
+      ["Décider les extensions","Tag, coopération, exploration, classement et crossplay restent différés ou à décider avec justification."]]},
+    {"section":"13","title":"Composition des arènes","priority":"P0","document":"ARENES_ET_BOSS.md","requirements":[
+      ["Délimiter chaque vue","Lieu, époque, secteur représenté et parties encore absentes restent explicitement décrits."],
+      ["Garantir la lisibilité latérale","Sol, ancrage des pieds, échelle, contraste et avant-plan sont contrôlés à la taille de jeu."],
+      ["Définir les couches utiles","Les PNG opaques P61/P62 restent sources ; parallaxe, sol et props séparés sont suivis comme tâches distinctes."]]},
+    {"section":"14","title":"Arènes vivantes et statiques","priority":"P1","document":"ARENES_ET_BOSS.md","requirements":[
+      ["Séparer quatre axes","Présentation, interactions, dangers et transitions possèdent quatre réglages indépendants."],
+      ["Préserver les signaux en statique","Le mode réduit/statique conserve terrain et informations nécessaires aux événements actifs."],
+      ["Décrire les activités de fond","Chaque boucle possède rôle, acteurs, fréquence, durée et priorité ; son impact gameplay est explicite."]]},
+    {"section":"15","title":"Connexions et interactions","priority":"P1","document":"ARENES_ET_BOSS.md","requirements":[
+      ["Relier des zones jouables","Chaque liaison possède IDs origine/destination et preuve de disponibilité avant activation."],
+      ["Définir état et contre-jeu","Déclencheur, défense, dégâts, chrono, combo, positions, retour et cas KO/simultanés sont spécifiés."],
+      ["Qualifier les props interactifs","Dessin de fond, destructible, obstacle et interaction ont des statuts séparés avec coûts et reset."]]},
+    {"section":"16","title":"Ennemis et projectiles","priority":"P0","document":"COMBAT.md","requirements":[
+      ["Conserver des inventaires par rôle","Ennemi, soutien, véhicule, projectile et VFX ont chacun leur unité et leur propriétaire."],
+      ["Séparer corps et effet","Corps, émission, trajet et impact sont liés sans confondre fumée VFX et obus BOX-T."],
+      ["Spécifier le comportement distant","Origine, vitesse, durée, collision, garde, destruction, réflexion et fin de manche sont vérifiables."]]},
+    {"section":"17","title":"Production des assets","priority":"P0","document":"FICHES_ET_VALIDATION.md","requirements":[
+      ["Conserver une source par image","Un sujet exploitable par PNG ; cadrage complet et véritable transparence pour les détourages."],
+      ["Contrôler référence et asymétrie","La revue compare silhouette, proportions, matériaux, accessoires et côtés anatomiques."],
+      ["Préserver provenance et octets","Chemin, dimensions, SHA-256, SHA Git, références et réserves sont conservés par source."]]},
+    {"section":"18","title":"Animation VFX son caméra","priority":"P1","document":"FICHES_ET_VALIDATION.md","requirements":[
+      ["Produire les animations après la phase de sprites fixes","La planification des entrées/sorties, contacts, gardes, chutes et actions est conservée ; les fichiers animés sont produits dans un lot ultérieur."],
+      ["Définir les signaux audiovisuels","Émission, impact, garde, ressource, ambiance et annonces restent lisibles et réglables."],
+      ["Préserver le temps du combat","Caméra et hitstop ne modifient pas silencieusement simulation, collisions et résultats."]]},
+    {"section":"19","title":"Interface et expérience","priority":"P0","document":"ETAT_DU_JEU.md","requirements":[
+      ["Vérifier tous les écrans du parcours","Mode, sélection, HUD, pause, résultat et reprise affichent les règles et le contenu disponibles."],
+      ["Garder la navigation cohérente","Clavier/manette, retour, focus, confirmation et erreur permettent de sortir de chaque écran."],
+      ["Distinguer disponible et candidat","Un PNG en PR ou une fiche de conception n’est pas présenté comme combattant ou stage prêt."]]},
+    {"section":"20","title":"Tutoriels et entraînement","priority":"P0","document":"COMBAT.md","requirements":[
+      ["Enseigner les règles réellement actives","Approche, garde, projection, punition et ressource ont des exercices reproductibles."],
+      ["Configurer une situation","Position, vie, jauge et partenaire peuvent être réinitialisés pour isoler un problème."],
+      ["Diagnostiquer les actions","Commandes, dégâts, durées et collisions sont observables ; enregistrement de mannequin reste qualifié selon le code."]]},
+    {"section":"21","title":"IA et difficulté","priority":"P0","document":"COMBAT.md","requirements":[
+      ["Respecter le kit de l’incarnation","L’IA utilise coûts, délais et actions réellement autorisés par son profil."],
+      ["Rendre la difficulté explicable","Réaction, choix, erreurs et ressources changent selon le niveau ; exceptions de boss annoncées."],
+      ["Tester les familles de situations","Coins, projectiles, pièges, petites cibles, géants et objectifs de campagne ont des scénarios dédiés."]]},
+    {"section":"22","title":"Équilibrage et accessibilité","priority":"P0","document":"COMBAT.md","requirements":[
+      ["Éviter les boucles sans réponse","Combos, garde, projection et transitions sont testés avec retour au contrôle du défenseur."],
+      ["Offrir les réglages de confort","Texte, contraste, sous-titres, volumes, secousses, flashs et fond statique conservent les informations utiles."],
+      ["Séparer campagne et duel normalisé","Bonus d’équipement/progression ne modifient pas silencieusement les règles compétitives."]]},
+    {"section":"23","title":"Multijoueur et replays","priority":"P0","document":"COMBAT.md","requirements":[
+      ["Fermer le parcours local","Attribution des côtés, profils de commandes, reconnexion, pause et revanche sont testés."],
+      ["Préparer le réseau sans le déclarer livré","Rollback, matchmaking, classement et crossplay sont différés ; dépendances de simulation documentées."],
+      ["Versionner les replays","Commandes, RNG et version de règles sont nécessaires ; un historique de résultats n’est pas un replay reproductible."]]},
+    {"section":"24","title":"Progression et sauvegardes","priority":"P0","document":"ETAT_DU_JEU.md","requirements":[
+      ["Isoler les espaces de sauvegarde","Les clés CQC et Shadow restent distinctes dans export, import et réinitialisation."],
+      ["Reprendre les parcours","Chapitre, route, déblocages et options survivent à une fermeture et à une mise à jour compatible."],
+      ["Rendre les récompenses lisibles","Conditions de scène, costume, défi et mode sont annoncées sans confondre fichier présent et contenu débloqué."]]},
+    {"section":"25","title":"Inventaires et statistiques","priority":"P0","document":"README.md","requirements":[
+      ["Suivre six étapes séparées","Lore, conception, assets, intégration, validation et publication possèdent leurs états propres."],
+      ["Relier les sources aux périmètres","Chaque asset sélectionné a ses workIds, documents, empreintes et références ; les archives restent exclues."],
+      ["Publier des comptes comparables","Images, périmètres, profils, plans narratifs et tests ont des dénominateurs distincts et datés."]]},
+    {"section":"26","title":"Validation et ordre de production","priority":"P0","document":"FICHES_ET_VALIDATION.md","requirements":[
+      ["Définir terminé par livrable","Source fixe, combattant, arène, boss, route et campagne ont chacun leurs portes de validation."],
+      ["Vérifier les dépendances avant admission","Un asset n’est admis qu’après identité, bindings, mode d’usage et test du parcours annoncés."],
+      ["Produire par lots cohérents","Le lot P62 complète les secteurs partiels existants avant d’inventer de nouvelles cartes ou variantes."]]},
+    {"section":"27","title":"Fiches types","priority":"P0","document":"FICHES_ET_VALIDATION.md","requirements":[
+      ["Associer les dix types de fiches","Projet, personnage, action, finisher, route, scène, arène, transition, boss et asset ont un emplacement CQC."],
+      ["Conserver les champs inconnus","Un champ non établi garde un motif et une prochaine preuve ; aucune valeur de remplissage présentée comme validée."],
+      ["Fournir des fiches concrètes","Les huit pilotes, leurs récits, les arènes et les boss détaillés servent de références contextualisées."]]},
+    {"section":"28","title":"Instruction du projet","priority":"P0","document":"README.md","requirements":[
+      ["Relier cette bible au dépôt","README racine, guide d’intégration et audit historique pointent vers le même index central."],
+      ["Préserver les autorisations existantes","Les ajouts nécessaires sont publiés dans PR25 ; aucune fusion ou certification n’est déduite de la publication."],
+      ["Conserver la reprise vérifiable","Le bilan indique refs auditées, fichiers produits, validations exécutées, restants et blocages."]]},
+    {"section":"29","title":"Références et vocabulaire","priority":"P0","document":"README.md","requirements":[
+      ["Séparer inspirations et règles","Les jeux du guide inspirent des choix ; leurs fonctionnalités ne sont pas attribuées automatiquement à CQC."],
+      ["Utiliser des sources identifiables","Les faits techniques citent le code épinglé ; les faits de lore citent les références de l’incarnation."],
+      ["Garder un vocabulaire commun","Roster, moveset, hitbox, hurtbox, rollback et placeholder sont employés avec les sens du guide."]]}
+  ]
+}

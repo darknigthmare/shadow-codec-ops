@@ -1,0 +1,1870 @@
+{
+  "schema": "cqc.bible.runtime-evidence/1",
+  "asOf": "2026-11-25",
+  "repository": "darknigthmare/shadow-codec-ops",
+  "pullRequest": 25,
+  "references": [
+    {
+      "role": "main",
+      "ref": "main",
+      "commit": "02cce7c56c97d0c0008b1dfe805c7d003c9f63e1"
+    },
+    {
+      "role": "base_reelle_PR25",
+      "ref": "codex/cqc-p51-remaining-costumes-20261113",
+      "commit": "67b61f0b536b34921b3d604631409e2b9d384ce4"
+    },
+    {
+      "role": "head_PR25",
+      "ref": "codex/cqc-p61-missing-static-sources-20261125",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68"
+    }
+  ],
+  "purpose": "État du code et points de raccordement documentaire du guide Combat Games; aucune modification du runtime.",
+  "statusDefinitions": {
+    "observé_en_code": "Implémentation ou données concrètes lues; fonctionnement non certifié.",
+    "partiel": "Une partie du besoin est codée; portée ou preuve incomplète.",
+    "nonétabli": "Pas de preuve suffisante dans le périmètre inspecté; ne signifie pas une absence démontrée dans tout le dépôt."
+  },
+  "method": {
+    "kind": "lecture_statique_et_comparaison_git",
+    "gameExecuted": false,
+    "functionalTestsRun": false,
+    "networkTestsRun": false,
+    "artFidelityCertified": false,
+    "sourceCopiesVerifiedByGitBlobSha": 38,
+    "scope": "Entrée CQC, modules centraux et dépendances sélectionnées; arbres src/modules comparés intégralement par SHA, contenu de tous les scripts non lu."
+  },
+  "provenance": {
+    "mainIsNotPrBase": true,
+    "baseAndHeadRuntimeEqual": true,
+    "runtimeComponentsCompared": [
+      "src",
+      "modules",
+      "data",
+      "metadata",
+      "index.html",
+      "runtime-manifest.json",
+      "originals",
+      "atelier"
+    ],
+    "changedBaseHeadComponentInCqc": [
+      "assets"
+    ],
+    "conclusion": "Les différences de runtime entre main et le head sont héritées de la base 67b61f0. P60/P61 livrent sources et documentation sans modifier ces composants runtime."
+  },
+  "treeComparison": [
+    {
+      "path": "public/cqc/assets",
+      "mainSha": "996446eae31d774140f228ac9c83d3e714312d4d",
+      "baseSha": "5f7ee4a83319bb1739f88478588916f69ef7c657",
+      "headSha": "74920fc3c20c4c8c425dd98345a2d06367ccf7ec",
+      "sameMainHead": false,
+      "sameBaseHead": false
+    },
+    {
+      "path": "public/cqc/atelier",
+      "mainSha": null,
+      "baseSha": "fa807c5a3368f1d7ece3c3e281fe9df6729474ca",
+      "headSha": "fa807c5a3368f1d7ece3c3e281fe9df6729474ca",
+      "sameMainHead": false,
+      "sameBaseHead": true
+    },
+    {
+      "path": "public/cqc/data",
+      "mainSha": "d4ffa0dc431ffc89373d23fd532a1756deeebe34",
+      "baseSha": "d4ffa0dc431ffc89373d23fd532a1756deeebe34",
+      "headSha": "d4ffa0dc431ffc89373d23fd532a1756deeebe34",
+      "sameMainHead": true,
+      "sameBaseHead": true
+    },
+    {
+      "path": "public/cqc/index.html",
+      "mainSha": "88f48171961989ac9b688ed1c6d73f2fe261dcab",
+      "baseSha": "88f48171961989ac9b688ed1c6d73f2fe261dcab",
+      "headSha": "88f48171961989ac9b688ed1c6d73f2fe261dcab",
+      "sameMainHead": true,
+      "sameBaseHead": true
+    },
+    {
+      "path": "public/cqc/metadata",
+      "mainSha": "92ccc43eee38845c2d9df911f237bf40fa6e5d19",
+      "baseSha": "92ccc43eee38845c2d9df911f237bf40fa6e5d19",
+      "headSha": "92ccc43eee38845c2d9df911f237bf40fa6e5d19",
+      "sameMainHead": true,
+      "sameBaseHead": true
+    },
+    {
+      "path": "public/cqc/modules",
+      "mainSha": "8d2e8904f72878f2ad75bbc10c4cbfde3799134d",
+      "baseSha": "6794318ff5f08fccffbc575f411a2c0f41944531",
+      "headSha": "6794318ff5f08fccffbc575f411a2c0f41944531",
+      "sameMainHead": false,
+      "sameBaseHead": true
+    },
+    {
+      "path": "public/cqc/originals",
+      "mainSha": "a240413bb67a619db08f16c587cf6429fd3fb1d8",
+      "baseSha": "05c00035df02e0e41d066ce9643ee74f6232d555",
+      "headSha": "05c00035df02e0e41d066ce9643ee74f6232d555",
+      "sameMainHead": false,
+      "sameBaseHead": true
+    },
+    {
+      "path": "public/cqc/runtime-manifest.json",
+      "mainSha": "17463ec22191213012c72be6309be14153be39fb",
+      "baseSha": "d2e24c5eb01f8656d040432d6f9a382955e31025",
+      "headSha": "d2e24c5eb01f8656d040432d6f9a382955e31025",
+      "sameMainHead": false,
+      "sameBaseHead": true
+    },
+    {
+      "path": "public/cqc/src",
+      "mainSha": "a6fc38096238f571393efe23f90c1bde1b27d0d8",
+      "baseSha": "bf02d253f059f41b7ff41ba22a64e7f3d853aeae",
+      "headSha": "bf02d253f059f41b7ff41ba22a64e7f3d853aeae",
+      "sameMainHead": false,
+      "sameBaseHead": true
+    }
+  ],
+  "mainToHeadRuntimeDiff": {
+    "srcMainCount": 274,
+    "srcHeadCount": 286,
+    "srcAdded": 12,
+    "srcModified": 2,
+    "srcRemoved": 0,
+    "moduleCount": 29,
+    "modulesModified": 13,
+    "changes": {
+      "src": [
+        {
+          "path": "cqc-pass19-native-wardrobe-library.js",
+          "status": "modified",
+          "mainSha": "3f11f3140d66e475b0e85aaee66f51c67bbfba3b",
+          "prSha": "02fe1901c1399b858861e19bd498ec773b53b38a",
+          "size": 35974
+        },
+        {
+          "path": "cqc-pass34-vehicle-articulation.js",
+          "status": "modified",
+          "mainSha": "3f927851081fbcab56e234b602162d881cf0c6bc",
+          "prSha": "4b7f1b0847553462c2ca36e2b31c0d1c41cd0c91",
+          "size": 26979
+        },
+        {
+          "path": "cqc-p53-service-yard.js",
+          "status": "added",
+          "prSha": "105ed2bede3b2bb3fc3d4457687511ad3cbcd662",
+          "size": 8551
+        },
+        {
+          "path": "cqc-p54-boss-scenes.js",
+          "status": "added",
+          "prSha": "b5893af91a2e694f73de4239095fd4a51c643e43",
+          "size": 4761
+        },
+        {
+          "path": "cqc-p54-machine-parts.js",
+          "status": "added",
+          "prSha": "1507fd7c0012fff32e2b1e25844ffacd0d4fea05",
+          "size": 12851
+        },
+        {
+          "path": "cqc-p54-mode-scenes.js",
+          "status": "added",
+          "prSha": "f3bb36f41403c040c8bc31a1a2b1fa0c1dac6030",
+          "size": 12748
+        },
+        {
+          "path": "cqc-p54-stages.js",
+          "status": "added",
+          "prSha": "86eba88217c069fb91fd6d136cc670621438c966",
+          "size": 6376
+        },
+        {
+          "path": "cqc-p55-stage-planes.js",
+          "status": "added",
+          "prSha": "f3b06033e6142e581b539fe5cbdca0af342ec427",
+          "size": 5627
+        },
+        {
+          "path": "cqc-p56-reservoir.js",
+          "status": "added",
+          "prSha": "39a386c3be64c1f70ff533bc1e398f03ce026256",
+          "size": 10416
+        },
+        {
+          "path": "cqc-p57-beacon-yard.js",
+          "status": "added",
+          "prSha": "28047db22023e3502da515a966f626c758f579f6",
+          "size": 9142
+        },
+        {
+          "path": "cqc-p58-relay-glasshouse.js",
+          "status": "added",
+          "prSha": "4fbbd4637e15113239c3a92a1089786a01fbd983",
+          "size": 10068
+        },
+        {
+          "path": "cqc-pass48-finite-asset-policy-v1.js",
+          "status": "added",
+          "prSha": "f0474a25f4c0666c3aad5c600239b36ce2c5f30f",
+          "size": 3124
+        },
+        {
+          "path": "cqc-pass48-metadata-gzip-transport-v1.js",
+          "status": "added",
+          "prSha": "767ebab300ced890754ba7df6a8802f4fc2e9d87",
+          "size": 7894
+        },
+        {
+          "path": "cqc-pass48-reviewed-vs-runtime-v1.js",
+          "status": "added",
+          "prSha": "527a62476f1d961ed7eae1f366c8bcfc32db0923",
+          "size": 329254
+        }
+      ],
+      "modules": [
+        {
+          "path": "acid-machines-v031.html",
+          "status": "modified",
+          "mainSha": "826d523a9ffe7c6ac629818fbf3cc7585acf3c45",
+          "prSha": "03d56dc46053df14c69a9a61a744117e46e020d5",
+          "size": 36643
+        },
+        {
+          "path": "arcade-chronicles-v055.html",
+          "status": "modified",
+          "mainSha": "a77807140001781d3e667e819173f0d14a445744",
+          "prSha": "8109bffefed7754558b122a895b164890b602719",
+          "size": 3140043
+        },
+        {
+          "path": "archive-front-v040.html",
+          "status": "modified",
+          "mainSha": "f5a65fb47dcb8e34af910b44e37f01839d526bbe",
+          "prSha": "7d42e7d98f3a12a67e4c031bcda118c0b716b582",
+          "size": 158596
+        },
+        {
+          "path": "arsenal-files-v044.html",
+          "status": "modified",
+          "mainSha": "81b3b48cbd01dbc8f1b9c209c3b5c392880bb4ae",
+          "prSha": "03f799b5def0bef08d9c95a840dfc96030d53fe8",
+          "size": 103820
+        },
+        {
+          "path": "atelier-v056.html",
+          "status": "modified",
+          "mainSha": "92981918553b1c155a269f5b71cd5c705bb2a5f5",
+          "prSha": "e43a76a00e0fbd7078cc0da09a47a73189502f86",
+          "size": 1589
+        },
+        {
+          "path": "chronicles-v056.html",
+          "status": "modified",
+          "mainSha": "0236213bf2e7032a3bf714d9411d9b890e8ea7c9",
+          "prSha": "37728ab9b0be311489af0a415f2d3e2b0ba7127d",
+          "size": 10540
+        },
+        {
+          "path": "combat-academy-v053.html",
+          "status": "modified",
+          "mainSha": "72dd1ffa88457e6ec405bcf674ec85cdc6b4ed33",
+          "prSha": "7b147b8289aa39a03effc5684814d88f71b3f124",
+          "size": 3544457
+        },
+        {
+          "path": "core-v032.html",
+          "status": "modified",
+          "mainSha": "fb822b3ac9c29a28a78e28f8e34d841a7a0f7ec3",
+          "prSha": "24fa135157fe18c92d0c9b66d4f9c35354ae59ad",
+          "size": 1573702
+        },
+        {
+          "path": "finisher-archive-v053.html",
+          "status": "modified",
+          "mainSha": "17c3d23232ce6eeea886c4bd39a7cb38ff55c79d",
+          "prSha": "de9af00bab80afc86f011383019e748f66a18d0b",
+          "size": 1273018
+        },
+        {
+          "path": "revengeance-machines-v032.html",
+          "status": "modified",
+          "mainSha": "d11ca4288a0d73e0c0845d20630b7d1c1582b955",
+          "prSha": "d1f401a740c1fe3a06ec6290dfea88c3ce79b3e6",
+          "size": 61658
+        },
+        {
+          "path": "roster-command-v053.html",
+          "status": "modified",
+          "mainSha": "f76f0f9a17d14e334e50723600a896c097798e83",
+          "prSha": "f596966e5dc236402d2538a0afc33dd1da0e3927",
+          "size": 2130492
+        },
+        {
+          "path": "support-network-v053.html",
+          "status": "modified",
+          "mainSha": "31ff97b74d15fea03720e8b1b0fe6f67ec19c25d",
+          "prSha": "d1e68540ce46312ef63c411311a2b0635afccd4a",
+          "size": 307429
+        },
+        {
+          "path": "unified-versus-v055.html",
+          "status": "modified",
+          "mainSha": "75dc412ff3dd4b873256104a7c70d2fe3e7db3cf",
+          "prSha": "132eafa2808b40246ea25c66af9b1a382ec2cbbd",
+          "size": 3488570
+        }
+      ]
+    },
+    "unifiedExternalScriptCount": {
+      "main": 191,
+      "head": 201
+    },
+    "unifiedAddedScripts": [
+      "../src/cqc-p54-machine-parts.js",
+      "../src/cqc-p53-service-yard.js",
+      "../src/cqc-p54-stages.js",
+      "../src/cqc-p55-stage-planes.js",
+      "../src/cqc-p56-reservoir.js",
+      "../src/cqc-p57-beacon-yard.js",
+      "../src/cqc-p58-relay-glasshouse.js",
+      "../src/cqc-pass48-metadata-gzip-transport-v1.js",
+      "../src/cqc-pass48-finite-asset-policy-v1.js",
+      "../src/cqc-pass48-reviewed-vs-runtime-v1.js"
+    ],
+    "inheritedBehaviorChanges": [
+      "Sélection de stageRenderer pour scènes authored P53–P58.",
+      "requestId ajouté aux messages de lancement, télémétrie et résultat dans les modules concernés.",
+      "Origines P48 et politiques finies de chargement des costumes."
+    ],
+    "compiledBaseFightersIdentical": true
+  },
+  "counts": {
+    "compiledBaseFighters": 354,
+    "compiledBaseMoveSlots": 3540,
+    "compiledBaseStages": 30,
+    "pass19Candidates": 32,
+    "arsenalEncountersInLiteral": 32,
+    "currentAdmittedFighters": null,
+    "currentAdmittedStages": null,
+    "countQualification": "Comptages de littéraux/documentation, pas recensement dynamique après tous les installateurs."
+  },
+  "pilotUids": [
+    "core__snake",
+    "core__boss",
+    "core__solid",
+    "core__ocelot_mgs1",
+    "core__raiden_mgs2",
+    "core__raiden",
+    "core__wolf",
+    "core__venom"
+  ],
+  "evidence": [
+    {
+      "id": "RT-SHELL",
+      "path": "public/cqc/index.html",
+      "gitBlobSha": "88f48171961989ac9b688ed1c6d73f2fe261dcab",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        39
+      ],
+      "symbols": [
+        "modules",
+        "openModule",
+        "launch"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/index.html#L39",
+      "observation": "Le shell route vers des modules HTML en iframe : versus v055, chroniques v056, Academy, Arcade, Operations, Arsenal et archives.",
+      "limits": [
+        "La présence d’une route de menu ne valide ni le chargement des assets ni la fin d’un mode."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-PROFILE",
+      "path": "public/cqc/index.html",
+      "gitBlobSha": "88f48171961989ac9b688ed1c6d73f2fe261dcab",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        19,
+        23,
+        28,
+        32,
+        33
+      ],
+      "symbols": [
+        "CQCProfileV044",
+        "migrate",
+        "load",
+        "exportAll",
+        "importAll"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/index.html#L19",
+      "observation": "Profil local schema 2, migration des anciens réglages, export/import des clés préfixées cqc.",
+      "limits": [
+        "L’import global ne remplace pas la validation propre à chaque module. Écriture, migration et reprise non exécutées."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-ROSTER-BASE",
+      "path": "public/cqc/modules/unified-versus-v055.html",
+      "gitBlobSha": "132eafa2808b40246ea25c66af9b1a382ec2cbbd",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        512,
+        515,
+        523,
+        524,
+        525,
+        791,
+        1063
+      ],
+      "symbols": [
+        "FIGHTERS",
+        "CQC_PASS10_COMBAT_FIDELITY.apply",
+        "CQC_PASS19_ROSTER_NATIVE.install",
+        "CQC_PASS20_ROSTER_NATIVE.install",
+        "Combat",
+        "__CQC055Versus"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/modules/unified-versus-v055.html#L512",
+      "observation": "Le littéral de base contient 354 profils, 30 définitions de stages et 10 slots par profil. Les correctifs et installateurs s’appliquent ensuite. Le moteur choisi est CQCCombat048Pass8, avec replis historiques.",
+      "limits": [
+        "354 est le socle compilé, pas le nombre final de personnages admis à l’exécution. 30 est le socle de stages, pas le catalogue après extensions."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-ROSTER-ADMISSION",
+      "path": "public/cqc/src/cqc-pass19-roster-native.js",
+      "gitBlobSha": "37705154f8980144c861370ab23ac0b719b74aad",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        3,
+        4,
+        9,
+        13,
+        19
+      ],
+      "symbols": [
+        "install",
+        "finishers"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/src/cqc-pass19-roster-native.js#L3",
+      "observation": "Ajout PASS19 conditionné par CQC_COMBAT_SPRITES.has(uid) ou CQC_PASS18_MACHINES.has(uid); finisher généré comme adaptation, canonical:false.",
+      "limits": [
+        "Le chargement réel de tous les catalogues et l’admission finale ne sont pas exécutés."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-ROSTER-CANDIDATES",
+      "path": "public/cqc/src/cqc-pass19-roster-additions-v2.js",
+      "gitBlobSha": "158e41f505b15f3fe660b27c6f432baa5ccffc83",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        4
+      ],
+      "symbols": [
+        "registry",
+        "prepare",
+        "install"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/src/cqc-pass19-roster-additions-v2.js#L4",
+      "observation": "Le registre PASS19 annonce 32 candidats; install sépare added et pending selon le prédicat fourni.",
+      "limits": [
+        "Un candidat référencé n’est pas automatiquement un combattant actif."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-ROSTER-UG",
+      "path": "public/cqc/src/cqc-pass20-roster-native.js",
+      "gitBlobSha": "f0e1a1c311a06bf8231c8cc7682abbd5ebaea123",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        3,
+        40,
+        48,
+        52,
+        56
+      ],
+      "symbols": [
+        "uids",
+        "tailor",
+        "install"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/src/cqc-pass20-roster-native.js#L3",
+      "observation": "Mastiff et Slider peuvent être ajoutés ou redécorés selon la présence du sprite. Les valeurs et mouvements sont explicitement des adaptations CQC; absolute1to1Certified:false.",
+      "limits": [
+        "La destruction indépendante des pièces de ces combattants versus est explicitement absente de ce contrat."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-COMBAT-STATE",
+      "path": "public/cqc/src/cqc-pass8-combat-engine.js",
+      "gitBlobSha": "332acb3034433f5bbecc9a9126156f0b7da2e4a4",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        4,
+        14,
+        22,
+        30,
+        269
+      ],
+      "symbols": [
+        "SLOTS",
+        "makeActor",
+        "create",
+        "reset",
+        "CQCCombat048Pass8"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/src/cqc-pass8-combat-engine.js#L4",
+      "observation": "Moteur à 60 étapes par seconde, état de deux acteurs, ressources, jauges, timer, manches, graine pseudo-aléatoire, projectiles et pièges.",
+      "limits": [
+        "Le code n’est pas une preuve de cadence stable sur appareil réel ni de déterminisme entre versions."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-COMBAT-ACTIONS",
+      "path": "public/cqc/src/cqc-pass8-combat-engine.js",
+      "gitBlobSha": "332acb3034433f5bbecc9a9126156f0b7da2e4a4",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        46,
+        59,
+        74,
+        85,
+        96,
+        104,
+        129
+      ],
+      "symbols": [
+        "start",
+        "canParry",
+        "damage",
+        "activate"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/src/cqc-pass8-combat-engine.js#L46",
+      "observation": "Coûts, startup/active/recovery, cancels confirmés plafonnés, garde basse, brise-garde, déchope, parades, réflexion et états sont programmés.",
+      "limits": [
+        "Équilibrage, fenêtres de commandes, cohérence de toutes les incarnations et contre-jeu doivent être essayés en jeu."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-COMBAT-STEP",
+      "path": "public/cqc/src/cqc-pass8-combat-engine.js",
+      "gitBlobSha": "332acb3034433f5bbecc9a9126156f0b7da2e4a4",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        225,
+        228,
+        229,
+        240,
+        243,
+        247
+      ],
+      "symbols": [
+        "destroyObjects",
+        "roundEnd",
+        "step",
+        "cpu"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/src/cqc-pass8-combat-engine.js#L225",
+      "observation": "Pas de simulation ordonné, résolution de contacts collectés, fin de manche par KO ou temps, CPU fondé sur état visible et pseudo-aléatoire.",
+      "limits": [
+        "destroyObjects concerne les pièges et projectiles des combattants; ce nom ne démontre pas des objets de décor interactifs."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-COMBAT-LOOP",
+      "path": "public/cqc/modules/unified-versus-v055.html",
+      "gitBlobSha": "132eafa2808b40246ea25c66af9b1a382ec2cbbd",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        838,
+        937,
+        938
+      ],
+      "symbols": [
+        "update",
+        "advance43",
+        "loop"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/modules/unified-versus-v055.html#L838",
+      "observation": "Accumulateur de pas fixes, delta borné à 250 ms, au plus 15 étapes par image de rendu.",
+      "limits": [
+        "Aucun relevé de latence, FPS, mémoire ou comportement après suspension n’a été effectué."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-STAGE-REVIEW",
+      "path": "public/cqc/src/cqc-stage-layers.js",
+      "gitBlobSha": "0256b3617c3f695be1ab52e71d7d67176b2a9498",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        29,
+        34,
+        37,
+        42,
+        55,
+        57
+      ],
+      "symbols": [
+        "validateStage"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/src/cqc-stage-layers.js#L29",
+      "observation": "Validation documentaire des stages approved : incarnation, notes, références extérieures qualifiées, SHA-256 et au moins trois plans distincts.",
+      "limits": [
+        "accepted_closest est un statut de revue du dépôt; il ne certifie pas une reproduction exacte 1:1."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-STAGE-PRESENTATION",
+      "path": "public/cqc/src/cqc-stage-layers.js",
+      "gitBlobSha": "0256b3617c3f695be1ab52e71d7d67176b2a9498",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        145,
+        155,
+        352,
+        373,
+        384,
+        400,
+        407
+      ],
+      "symbols": [
+        "layerTransform",
+        "optionsFor",
+        "weather",
+        "drawBackground",
+        "drawForeground",
+        "status",
+        "cacheInfo"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/src/cqc-stage-layers.js#L145",
+      "observation": "Composition en plans, parallaxe, particules météo, préchargement, états erreur/prêt et cache de rendu.",
+      "limits": [
+        "Ces fonctions dessinent; elles ne définissent pas à elles seules des dégâts ou transitions de zone."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-STAGE-AUTHORED",
+      "path": "public/cqc/src/cqc-p53-service-yard.js",
+      "gitBlobSha": "105ed2bede3b2bb3fc3d4457687511ad3cbcd662",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        27,
+        80,
+        109,
+        126,
+        168
+      ],
+      "symbols": [
+        "rooms",
+        "stages",
+        "status",
+        "draw",
+        "CQC_SERVICE_YARD"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/src/cqc-p53-service-yard.js#L27",
+      "observation": "Décors et accessoires positionnés individuellement; status expose authored:true et approved:false.",
+      "limits": [
+        "Les props consultés sont des éléments dessinés; leur utilisation par un combattant n’est pas établie."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-STAGE-STATIC",
+      "path": "public/cqc/src/cqc-p58-relay-glasshouse.js",
+      "gitBlobSha": "4fbbd4637e15113239c3a92a1089786a01fbd983",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        14,
+        15,
+        16,
+        122,
+        123,
+        159,
+        175
+      ],
+      "symbols": [
+        "geometry",
+        "lane",
+        "drawBackground",
+        "CQC_P58_RELAY_GLASSHOUSE"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/src/cqc-p58-relay-glasshouse.js#L14",
+      "observation": "Le mouvement respecte prefers-reduced-motion et options.motion; temps et caméra peuvent être figés. Le sol reste fixe et le commentaire précise que le dessin ne modifie pas la collision.",
+      "limits": [
+        "Les profils spectacle/compétition/confort à quatre axes indépendants ne sont pas exposés comme contrat complet."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-STAGE-REGISTRY",
+      "path": "public/cqc/src/cqc-pass26-stage-registry.js",
+      "gitBlobSha": "0bd41819fe7813eb4b139c68ba5eec3b15f4ff6a",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        57,
+        64,
+        94,
+        104,
+        113,
+        120
+      ],
+      "symbols": [
+        "createRegistry",
+        "resolve",
+        "appendStages",
+        "choose"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/src/cqc-pass26-stage-registry.js#L57",
+      "observation": "Registre partagé résolvant les scènes acceptées, leur édition et un repli explicite vers vr_grid.",
+      "limits": [
+        "choose sélectionne une scène; ce n’est pas un passage jouable entre zones pendant un combat."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-STORY-CORE",
+      "path": "public/cqc/src/chronicles-core-v056.js",
+      "gitBlobSha": "1c765b854c0bdb53f468124694e2396200485e9c",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        3,
+        9,
+        16,
+        17,
+        18,
+        19
+      ],
+      "symbols": [
+        "schema",
+        "valid",
+        "begin",
+        "next",
+        "result",
+        "checkpoint"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/src/chronicles-core-v056.js#L3",
+      "observation": "Machine de progression intro/pre/fight/post/defeat/outro/finished sur huit duels; trois continues; résultats cohérents avec les adversaires de la route.",
+      "limits": [
+        "Une reprise pendant fight revient à pre, pas à la frame précise du duel. Les données narratives sont héritées et demandent une revue du lore."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-STORY-LINK",
+      "path": "public/cqc/src/chronicles-v056.js",
+      "gitBlobSha": "c5d0a219cd13649e5352935770c08d012a70a407",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        59,
+        61,
+        63,
+        64
+      ],
+      "symbols": [
+        "ensureEngine",
+        "launch",
+        "acceptResult",
+        "addEventListener"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/src/chronicles-v056.js#L59",
+      "observation": "Moteur en iframe, jeton de rencontre, accusé de démarrage, délais et validation des participants/manches/stage avant d’accepter le résultat.",
+      "limits": [
+        "Le protocole observé est intra-page. Ce n’est pas un protocole multijoueur en ligne. Aucun scénario de chargement interrompu n’a été joué."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-STORY-SAVES",
+      "path": "public/cqc/src/chronicles-core-v056.js",
+      "gitBlobSha": "1c765b854c0bdb53f468124694e2396200485e9c",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        20,
+        21,
+        22,
+        23
+      ],
+      "symbols": [
+        "checksum",
+        "envelope",
+        "readSlot",
+        "loadSlots"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/src/chronicles-core-v056.js#L20",
+      "observation": "Deux slots versionnés, checksum, révision, validation du contenu; dernier slot valide et reprise de secours en cas d’autre slot invalide.",
+      "limits": [
+        "La résistance à la corruption est une logique observée, pas un résultat de test dans cette passe."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-STORY-SAVE-UI",
+      "path": "public/cqc/src/chronicles-v056.js",
+      "gitBlobSha": "c5d0a219cd13649e5352935770c08d012a70a407",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        7,
+        69
+      ],
+      "symbols": [
+        "save",
+        "importText"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/src/chronicles-v056.js#L7",
+      "observation": "Écriture relue pour confirmation; avertissement de progression volatile; import borné à un million de caractères et validé par readSlot.",
+      "limits": [
+        "Ces garanties concernent Chronicles; elles ne sont pas homogènes dans tous les profils historiques."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-CAMPAIGN",
+      "path": "public/cqc/src/cqc-campaign-routes-v1.js",
+      "gitBlobSha": "8a56c8bd27b28a400d351afd83c1623414a8e699",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        17,
+        23,
+        25
+      ],
+      "symbols": [
+        "circuits",
+        "campaignMatches",
+        "recordTour"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/src/cqc-campaign-routes-v1.js#L17",
+      "observation": "Circuits par opus et tours composent des duels, assignent joueur/adversaire/scène et enregistrent la progression; repli VR déclaré quand une arène manque.",
+      "limits": [
+        "Ce mécanisme ne suffit pas à établir une campagne globale distincte avec chapitres, scènes et dramaturgie spécifiques."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-ARCADE",
+      "path": "public/cqc/modules/arcade-chronicles-v055.html",
+      "gitBlobSha": "8109bffefed7754558b122a895b164890b602719",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        51,
+        52,
+        57,
+        58,
+        59,
+        63
+      ],
+      "symbols": [
+        "createRun",
+        "saveRun",
+        "launchFight",
+        "sendStart",
+        "onResult",
+        "completeRun"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/modules/arcade-chronicles-v055.html#L51",
+      "observation": "Parcours arcade persisté, lancement de combat, traitement des victoires/défaites, continues, score, fins individuelles et circuits.",
+      "limits": [
+        "La fin de chaque route et l’admission de chaque scène ne sont pas testées."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-OPERATIONS",
+      "path": "public/cqc/modules/battle-operations-v053.html",
+      "gitBlobSha": "1bd0dc73f3c9d573c4420648d608328070e2d949",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        43,
+        48,
+        57,
+        66,
+        67,
+        68,
+        70,
+        71,
+        76
+      ],
+      "symbols": [
+        "sim",
+        "openMode",
+        "createRun",
+        "launchFight",
+        "matchConfig",
+        "onResult",
+        "completeRun",
+        "playReplay"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/modules/battle-operations-v053.html#L43",
+      "observation": "Logique de survie, chrono, relais, draft, tournoi et ligue locale; combats via versus et certains résultats de tableau simulés par rating/graine.",
+      "limits": [
+        "Relais signifie ici succession de duels, pas tag simultané; une ligue locale n’est pas une compétition réseau."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-DOJO",
+      "path": "public/cqc/modules/unified-versus-v055.html",
+      "gitBlobSha": "132eafa2808b40246ea25c66af9b1a382ec2cbbd",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        786,
+        789,
+        931,
+        937
+      ],
+      "symbols": [
+        "saveDojo",
+        "drawDojo",
+        "advance43"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/modules/unified-versus-v055.html#L786",
+      "observation": "Dojo avec dummy, réglages de ressources, historique d’entrées et affichage startup/actives/récupération; reset et pause existent.",
+      "limits": [
+        "Enregistrement/relecture de scénarios de dummy, avance image manuelle et explications de punition par situation restent à qualifier."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-ACADEMY",
+      "path": "public/cqc/modules/combat-academy-v053.html",
+      "gitBlobSha": "7b147b8289aa39a03effc5684814d88f71b3f124",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        51,
+        55,
+        56,
+        58,
+        59,
+        60,
+        61
+      ],
+      "symbols": [
+        "launchLesson",
+        "launchAttempt",
+        "sendStart",
+        "eventMatch",
+        "updateGoal",
+        "completeAttempt",
+        "onResult"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/modules/combat-academy-v053.html#L51",
+      "observation": "Leçons/trials évalués sur événements, commandes, états et résultats du moteur, avec progression et XP.",
+      "limits": [
+        "Les objectifs sont programmés mais leur atteignabilité et l’absence de faux positifs ne sont pas testées."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-BOSS-DATA",
+      "path": "public/cqc/modules/arsenal-files-v044.html",
+      "gitBlobSha": "03f799b5def0bef08d9c95a840dfc96030d53fe8",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        49
+      ],
+      "symbols": [
+        "DATA.machines",
+        "DATA.campaigns"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/modules/arsenal-files-v044.html#L49",
+      "observation": "32 rencontres de machines dans le littéral Arsenal. REX id=rex; Shagohod id=shagohod; Sahelanthropus id=sahel.",
+      "limits": [
+        "Ces IDs de rencontre ne doivent pas être confondus avec UID de combattant ou ID d’asset. Le chiffre ne compte pas tous les boss de tous les autres modules."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-BOSS-ENGINE",
+      "path": "public/cqc/modules/arsenal-files-v044.html",
+      "gitBlobSha": "03f799b5def0bef08d9c95a840dfc96030d53fe8",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        58,
+        80,
+        92,
+        102,
+        131,
+        157,
+        193,
+        211,
+        212
+      ],
+      "symbols": [
+        "create",
+        "isUnlocked",
+        "damagePart",
+        "patterns",
+        "schedule",
+        "step"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/modules/arsenal-files-v044.html#L58",
+      "observation": "Moteur Arsenal distinct : sous-systèmes, prérequis d’exposition, attaques télégraphiées, suppression d’attaques liées à une pièce détruite, vagues et dangers de boss.",
+      "limits": [
+        "transition est ici aussi un délai de nouvelle vague; cela ne prouve pas un changement d’arène. Ces comportements ne sont pas automatiquement ceux du versus standard."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-BOSS-PROGRESSION",
+      "path": "public/cqc/modules/arsenal-files-v044.html",
+      "gitBlobSha": "03f799b5def0bef08d9c95a840dfc96030d53fe8",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        488,
+        489,
+        491,
+        493,
+        496,
+        497
+      ],
+      "symbols": [
+        "start",
+        "finishUI",
+        "resumeCheckpoint",
+        "pause"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/modules/arsenal-files-v044.html#L488",
+      "observation": "Mode combat/practice, chaînes de machines et checkpoint au début de la prochaine rencontre; records séparés du practice.",
+      "limits": [
+        "Cela étaye des parcours de machines; le Boss Rush universel souhaité par le guide reste à spécifier et vérifier."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-REPLAY",
+      "path": "public/cqc/modules/unified-versus-v055.html",
+      "gitBlobSha": "132eafa2808b40246ea25c66af9b1a382ec2cbbd",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        594,
+        596,
+        597
+      ],
+      "symbols": [
+        "saveReplay48",
+        "finalizeReplay48",
+        "beginReplay48"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/modules/unified-versus-v055.html#L594",
+      "observation": "Replays locaux avec métadonnées, frames d’entrées compressées, résultats, stockage limité aux trente derniers et relecture/ghost.",
+      "limits": [
+        "Le format ne constitue pas une preuve de synchronisation déterministe inter-version; transport réseau, prédiction et rollback non établis."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    },
+    {
+      "id": "RT-ASSET-ADMISSION",
+      "path": "public/cqc/src/cqc-pass48-finite-asset-policy-v1.js",
+      "gitBlobSha": "f0474a25f4c0666c3aad5c600239b36ce2c5f30f",
+      "commit": "5c2cbed73f15c4583f5ffd2cee0c2344180b5d68",
+      "sameAtBase": true,
+      "lines": [
+        4,
+        5,
+        10,
+        14,
+        25,
+        31
+      ],
+      "symbols": [
+        "LIMITS",
+        "create",
+        "add",
+        "allows",
+        "pinFor"
+      ],
+      "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/5c2cbed73f15c4583f5ffd2cee0c2344180b5d68/public/cqc/src/cqc-pass48-finite-asset-policy-v1.js#L4",
+      "observation": "Politique finie P48 : liste explicite, tailles, empreintes et adresses permises.",
+      "limits": [
+        "Cette admission P48 ne s’étend pas automatiquement aux PNG sources P60/P61/P62."
+      ],
+      "method": "lecture_statique",
+      "functionalTested": false
+    }
+  ],
+  "findings": [
+    {
+      "id": "combat",
+      "label": "Fondations du combat",
+      "guideSections": [
+        "04",
+        "05",
+        "21"
+      ],
+      "status": "observé_en_code",
+      "observed": "Deux acteurs, 60 Hz, dix slots, hitboxes/hurtboxes, coûts, ressources, garde, déchope, parades, cancels, états et fin de manche.",
+      "gaps": [
+        "Cadence réelle, input buffer complet, frame advantage, cohérence des doubles KO et équilibre non validés."
+      ],
+      "evidenceIds": [
+        "RT-COMBAT-STATE",
+        "RT-COMBAT-ACTIONS",
+        "RT-COMBAT-STEP",
+        "RT-COMBAT-LOOP"
+      ],
+      "nextVerification": "Jouer les huit pilotes, relever commandes/garde/ressources/KO et comparer les résultats des mêmes entrées/graine.",
+      "priority": "P0",
+      "functionalTested": false
+    },
+    {
+      "id": "roster",
+      "label": "Roster et fidélité",
+      "guideSections": [
+        "02",
+        "03",
+        "05",
+        "16"
+      ],
+      "status": "partiel",
+      "observed": "354 profils compilés puis correctifs et admission conditionnelle des ajouts. Les adaptations CQC sont déclarées dans les sources.",
+      "gaps": [
+        "Compteur final admis non exécuté. Les 32 candidats PASS19 et les 380 UID d’un audit historique sont des périmètres différents. Une source PNG ne crée pas un profil."
+      ],
+      "evidenceIds": [
+        "RT-ROSTER-BASE",
+        "RT-ROSTER-ADMISSION",
+        "RT-ROSTER-CANDIDATES",
+        "RT-ROSTER-UG"
+      ],
+      "nextVerification": "Exporter les UID réellement installés au lancement et joindre séparément provenance, incarnation, sources, disponibilité et statut de revue.",
+      "priority": "P0",
+      "functionalTested": false
+    },
+    {
+      "id": "finishers",
+      "label": "Ultimes et finishers",
+      "guideSections": [
+        "06"
+      ],
+      "status": "partiel",
+      "observed": "Catalogue de conclusions et ajout de finishers PASS19 marqués adaptation/canonical:false.",
+      "gaps": [
+        "Présence et pertinence de chaque conclusion par victime/incarnation non validées; adaptation ne doit pas être renommée canonique."
+      ],
+      "evidenceIds": [
+        "RT-ROSTER-BASE",
+        "RT-ROSTER-ADMISSION"
+      ],
+      "nextVerification": "Vérifier lancement, interruption, retour au résultat et lecture des conclusions des pilotes.",
+      "priority": "P0",
+      "functionalTested": false
+    },
+    {
+      "id": "modes",
+      "label": "Modes locaux",
+      "guideSections": [
+        "12"
+      ],
+      "status": "observé_en_code",
+      "observed": "Versus, Arcade, Chronicles, Operations, Dojo, Academy et Arsenal disposent de logique derrière leurs routes.",
+      "gaps": [
+        "Chaque parcours n’a pas été terminé. Relais local, tag simultané, coop et jeu en ligne ne sont pas équivalents."
+      ],
+      "evidenceIds": [
+        "RT-SHELL",
+        "RT-ARCADE",
+        "RT-OPERATIONS",
+        "RT-BOSS-PROGRESSION"
+      ],
+      "nextVerification": "Exécuter au moins un cycle sélection→combat→résultat→reprise par mode conservé.",
+      "priority": "P0",
+      "functionalTested": false
+    },
+    {
+      "id": "stage_presentation",
+      "label": "Arènes : présentation",
+      "guideSections": [
+        "13",
+        "14",
+        "18"
+      ],
+      "status": "observé_en_code",
+      "observed": "Plans, parallaxe, météo visuelle, cache et mode de mouvement réduit/static existent.",
+      "gaps": [
+        "Lisibilité de toutes tailles, performance et fidélité externe non certifiées; profils spectacle/compétition/confort non unifiés."
+      ],
+      "evidenceIds": [
+        "RT-STAGE-REVIEW",
+        "RT-STAGE-PRESENTATION",
+        "RT-STAGE-AUTHORED",
+        "RT-STAGE-STATIC"
+      ],
+      "nextVerification": "Comparer animé/statique sur mêmes entrées et confirmer que les choix visuels seuls ne changent pas la simulation.",
+      "priority": "P1",
+      "functionalTested": false
+    },
+    {
+      "id": "stage_interactions",
+      "label": "Arènes : interactions",
+      "guideSections": [
+        "15"
+      ],
+      "status": "nonétabli",
+      "observed": "Les props P53 sont dessinés et les objets détruits par le moteur versus sont des pièges/projectiles de combattants.",
+      "gaps": [
+        "Aucun système général d’objets de décor utilisables avec déclencheur, coût, effet et contre-jeu établi dans les sources inspectées."
+      ],
+      "evidenceIds": [
+        "RT-STAGE-AUTHORED",
+        "RT-COMBAT-STEP"
+      ],
+      "nextVerification": "Décrire une interaction pilote dans une fiche H puis tester portée, usage concurrent, réutilisation et état sauvegardé/rejoué.",
+      "priority": "P1",
+      "functionalTested": false
+    },
+    {
+      "id": "stage_hazards",
+      "label": "Arènes : dangers",
+      "guideSections": [
+        "14",
+        "15"
+      ],
+      "status": "partiel",
+      "observed": "Arsenal inclut des attaques de boss et nuages produisant des dégâts.",
+      "gaps": [
+        "Pas de contrat indépendant de hazards de scène démontré pour les arènes versus; météo dessinée ne signifie pas danger."
+      ],
+      "evidenceIds": [
+        "RT-STAGE-PRESENTATION",
+        "RT-BOSS-ENGINE"
+      ],
+      "nextVerification": "Séparer effet de boss et danger d’arène, puis définir une activation synchronisée et son contre-jeu.",
+      "priority": "P1",
+      "functionalTested": false
+    },
+    {
+      "id": "stage_transitions",
+      "label": "Arènes : transitions entre zones",
+      "guideSections": [
+        "15"
+      ],
+      "status": "nonétabli",
+      "observed": "Le registre choisit une scène; Arsenal utilise un délai de transition de vague.",
+      "gaps": [
+        "Aucun passage entre deux zones jouables avec états/positions d’arrivée, caméra, KO simultané et replay établi."
+      ],
+      "evidenceIds": [
+        "RT-STAGE-REGISTRY",
+        "RT-BOSS-ENGINE"
+      ],
+      "nextVerification": "Décrire source/destination et conservation HP/jauges/timer/combo, puis essayer les cas d’entrée simultanée et de KO.",
+      "priority": "P1",
+      "functionalTested": false
+    },
+    {
+      "id": "individual_stories",
+      "label": "Histoires individuelles",
+      "guideSections": [
+        "07",
+        "08",
+        "10"
+      ],
+      "status": "partiel",
+      "observed": "Chronicles possède un automate sur huit duels, scènes, reprises, jetons de combat et validation de résultats.",
+      "gaps": [
+        "La revue narrative actuelle ne peut être étendue automatiquement à tous les UID; les histoires héritées ne prouvent pas la fidélité au lore."
+      ],
+      "evidenceIds": [
+        "RT-STORY-CORE",
+        "RT-STORY-LINK",
+        "RT-ARCADE"
+      ],
+      "nextVerification": "Revoir les huit pilotes puis dérouler chaque phase, choix de reprise et épilogue sans attribuer une histoire inexistante aux ajouts.",
+      "priority": "P1",
+      "functionalTested": false
+    },
+    {
+      "id": "global_campaign",
+      "label": "Campagne globale distincte",
+      "guideSections": [
+        "09"
+      ],
+      "status": "partiel",
+      "observed": "Circuits et tours compilent des confrontations par opus et enregistrent les victoires.",
+      "gaps": [
+        "Une campagne globale scénarisée distincte des routes et tours n’est pas établie dans les fichiers audités."
+      ],
+      "evidenceIds": [
+        "RT-CAMPAIGN",
+        "RT-ARCADE"
+      ],
+      "nextVerification": "Associer chapitres/scènes/branches/fin du registre narratif aux UID et scènes réelles avant une intégration future.",
+      "priority": "P1",
+      "functionalTested": false
+    },
+    {
+      "id": "bosses",
+      "label": "Boss et machines",
+      "guideSections": [
+        "11",
+        "16"
+      ],
+      "status": "observé_en_code",
+      "observed": "Arsenal contient 32 rencontres et un moteur dédié à pièces, expositions, télégraphies, patterns, practice et chaînes.",
+      "gaps": [
+        "Boss Rush universel, variantes complètes et équivalence avec les machines versus non établis."
+      ],
+      "evidenceIds": [
+        "RT-BOSS-DATA",
+        "RT-BOSS-ENGINE",
+        "RT-BOSS-PROGRESSION"
+      ],
+      "nextVerification": "Jouer REX, Shagohod et Sahelanthropus en conservant leurs IDs de rencontre et mesurer destruction/phase/reprise.",
+      "priority": "P1",
+      "functionalTested": false
+    },
+    {
+      "id": "interface",
+      "label": "Interface et accessibilité",
+      "guideSections": [
+        "19",
+        "22"
+      ],
+      "status": "partiel",
+      "observed": "Shell, commandes clavier/manette, réglages visuels, pause, overlays de préparation et erreurs sont présents dans les sources.",
+      "gaps": [
+        "Propagation homogène des options entre modules, navigation sans souris, tactile, contrastes et lecture audio non testées."
+      ],
+      "evidenceIds": [
+        "RT-SHELL",
+        "RT-PROFILE",
+        "RT-DOJO",
+        "RT-STORY-LINK",
+        "RT-STAGE-STATIC"
+      ],
+      "nextVerification": "Vérifier clavier seul, manette, focus après iframe/pause et mouvement réduit sur les parcours essentiels.",
+      "priority": "P0",
+      "functionalTested": false
+    },
+    {
+      "id": "training",
+      "label": "Entraînement et apprentissage",
+      "guideSections": [
+        "20",
+        "21"
+      ],
+      "status": "observé_en_code",
+      "observed": "Dojo et Academy relient exercices, états/événements, résultats et progression locale.",
+      "gaps": [
+        "L’atteignabilité de chaque objectif, des explications de punition et l’enregistrement de scénarios de dummy ne sont pas établis."
+      ],
+      "evidenceIds": [
+        "RT-DOJO",
+        "RT-ACADEMY",
+        "RT-COMBAT-STEP"
+      ],
+      "nextVerification": "Exécuter les exercices des pilotes et comparer succès attendu, télémétrie reçue et validation affichée.",
+      "priority": "P0",
+      "functionalTested": false
+    },
+    {
+      "id": "saves",
+      "label": "Progression et sauvegardes",
+      "guideSections": [
+        "24"
+      ],
+      "status": "partiel",
+      "observed": "Profils locaux multiples; Chronicles a schéma, validation stricte, slots alternés, checksum et récupération.",
+      "gaps": [
+        "Robustesse hétérogène : certains save historiques avalent l’échec localStorage. Pas de preuve de conservation après fermeture/migration/corruption."
+      ],
+      "evidenceIds": [
+        "RT-PROFILE",
+        "RT-STORY-SAVES",
+        "RT-STORY-SAVE-UI",
+        "RT-OPERATIONS",
+        "RT-BOSS-PROGRESSION"
+      ],
+      "nextVerification": "Tester fermeture/réouverture, quota refusé, un slot corrompu, import invalide et ancienne sauvegarde.",
+      "priority": "P0",
+      "functionalTested": false
+    },
+    {
+      "id": "local_replay",
+      "label": "Replays locaux",
+      "guideSections": [
+        "23"
+      ],
+      "status": "partiel",
+      "observed": "Entrées compressées, graine/métadonnées et résultats enregistrés; relecture et ghost local présents.",
+      "gaps": [
+        "Version/empreinte du contenu complet, stabilité des replays après changement de profils et validation déterministe non établies."
+      ],
+      "evidenceIds": [
+        "RT-REPLAY",
+        "RT-OPERATIONS",
+        "RT-COMBAT-STATE"
+      ],
+      "nextVerification": "Relire deux fois un match identique et comparer état final, événements, graine et empreintes de règles.",
+      "priority": "P0",
+      "functionalTested": false
+    },
+    {
+      "id": "network",
+      "label": "Réseau et rollback",
+      "guideSections": [
+        "23"
+      ],
+      "status": "nonétabli",
+      "observed": "Les échanges observés sont postMessage entre modules de la même application.",
+      "gaps": [
+        "Transport de match distant, matchmaking, prédiction, rollback et resynchronisation non établis dans les fichiers inspectés. Recherche ciblée sans occurrence WebSocket/RTCPeerConnection/rollback/netcode."
+      ],
+      "evidenceIds": [
+        "RT-STORY-LINK",
+        "RT-OPERATIONS",
+        "RT-REPLAY"
+      ],
+      "nextVerification": "Décider si le réseau est retenu; si oui, spécifier état déterministe et protocole avant d’annoncer un mode en ligne.",
+      "priority": "P2_conditionnel",
+      "functionalTested": false
+    },
+    {
+      "id": "assets",
+      "label": "Production et admission des assets",
+      "guideSections": [
+        "17",
+        "18",
+        "25",
+        "26"
+      ],
+      "status": "partiel",
+      "observed": "Contrats de sources/revue et admission finie existent; P60/P61 ne modifient pas src/modules/runtime-manifest par rapport à la base réelle.",
+      "gaps": [
+        "Sources statiques livrées, admission runtime, animation, fonctionnement et fidélité 1:1 sont des états distincts. Aucun actif P62 n’est admis par ce rapport."
+      ],
+      "evidenceIds": [
+        "RT-STAGE-REVIEW",
+        "RT-ASSET-ADMISSION",
+        "RT-ROSTER-ADMISSION"
+      ],
+      "nextVerification": "Relier chaque source à son ID, à sa fiche, au futur contrat d’animation puis à une preuve de chargement avant de marquer intégré.",
+      "priority": "P0",
+      "functionalTested": false
+    }
+  ],
+  "scopedSearch": {
+    "files": 38,
+    "terms": [
+      {
+        "term": "WebSocket",
+        "hits": []
+      },
+      {
+        "term": "RTCPeerConnection",
+        "hits": []
+      },
+      {
+        "term": "rollback",
+        "hits": []
+      },
+      {
+        "term": "netcode",
+        "hits": []
+      }
+    ],
+    "interpretation": "Recherche complémentaire limitée aux copies listées; le mot support-network ne constitue pas une preuve de transport multijoueur."
+  },
+  "sourceFiles": [
+    {
+      "path": "public/cqc/src/chronicles-core-v056.js",
+      "gitBlobSha": "1c765b854c0bdb53f468124694e2396200485e9c",
+      "localGitBlobSha": "1c765b854c0bdb53f468124694e2396200485e9c",
+      "exactCopy": true,
+      "bytes": 6977
+    },
+    {
+      "path": "public/cqc/src/chronicles-v056.js",
+      "gitBlobSha": "c5d0a219cd13649e5352935770c08d012a70a407",
+      "localGitBlobSha": "c5d0a219cd13649e5352935770c08d012a70a407",
+      "exactCopy": true,
+      "bytes": 29093
+    },
+    {
+      "path": "public/cqc/src/cqc-campaign-routes-v1.js",
+      "gitBlobSha": "8a56c8bd27b28a400d351afd83c1623414a8e699",
+      "localGitBlobSha": "8a56c8bd27b28a400d351afd83c1623414a8e699",
+      "exactCopy": true,
+      "bytes": 24612
+    },
+    {
+      "path": "public/cqc/src/cqc-p53-service-yard.js",
+      "gitBlobSha": "105ed2bede3b2bb3fc3d4457687511ad3cbcd662",
+      "localGitBlobSha": "105ed2bede3b2bb3fc3d4457687511ad3cbcd662",
+      "exactCopy": true,
+      "bytes": 8551
+    },
+    {
+      "path": "public/cqc/src/cqc-p54-boss-scenes.js",
+      "gitBlobSha": "b5893af91a2e694f73de4239095fd4a51c643e43",
+      "localGitBlobSha": "b5893af91a2e694f73de4239095fd4a51c643e43",
+      "exactCopy": true,
+      "bytes": 4761
+    },
+    {
+      "path": "public/cqc/src/cqc-p54-mode-scenes.js",
+      "gitBlobSha": "f3bb36f41403c040c8bc31a1a2b1fa0c1dac6030",
+      "localGitBlobSha": "f3bb36f41403c040c8bc31a1a2b1fa0c1dac6030",
+      "exactCopy": true,
+      "bytes": 12748
+    },
+    {
+      "path": "public/cqc/src/cqc-p54-stages.js",
+      "gitBlobSha": "86eba88217c069fb91fd6d136cc670621438c966",
+      "localGitBlobSha": "86eba88217c069fb91fd6d136cc670621438c966",
+      "exactCopy": true,
+      "bytes": 6376
+    },
+    {
+      "path": "public/cqc/src/cqc-p55-stage-planes.js",
+      "gitBlobSha": "f3b06033e6142e581b539fe5cbdca0af342ec427",
+      "localGitBlobSha": "f3b06033e6142e581b539fe5cbdca0af342ec427",
+      "exactCopy": true,
+      "bytes": 5627
+    },
+    {
+      "path": "public/cqc/src/cqc-p56-reservoir.js",
+      "gitBlobSha": "39a386c3be64c1f70ff533bc1e398f03ce026256",
+      "localGitBlobSha": "39a386c3be64c1f70ff533bc1e398f03ce026256",
+      "exactCopy": true,
+      "bytes": 10416
+    },
+    {
+      "path": "public/cqc/src/cqc-p57-beacon-yard.js",
+      "gitBlobSha": "28047db22023e3502da515a966f626c758f579f6",
+      "localGitBlobSha": "28047db22023e3502da515a966f626c758f579f6",
+      "exactCopy": true,
+      "bytes": 9142
+    },
+    {
+      "path": "public/cqc/src/cqc-p58-relay-glasshouse.js",
+      "gitBlobSha": "4fbbd4637e15113239c3a92a1089786a01fbd983",
+      "localGitBlobSha": "4fbbd4637e15113239c3a92a1089786a01fbd983",
+      "exactCopy": true,
+      "bytes": 10068
+    },
+    {
+      "path": "public/cqc/src/cqc-pass10-combat-fidelity.js",
+      "gitBlobSha": "8ab95bd4e6d31e5fa97bdc6db3c65f78562bf841",
+      "localGitBlobSha": "8ab95bd4e6d31e5fa97bdc6db3c65f78562bf841",
+      "exactCopy": true,
+      "bytes": 40001
+    },
+    {
+      "path": "public/cqc/src/cqc-pass10-cpu-ai.js",
+      "gitBlobSha": "825441ca054dfaf5ce35a96425bfe5bfdfa2e41a",
+      "localGitBlobSha": "825441ca054dfaf5ce35a96425bfe5bfdfa2e41a",
+      "exactCopy": true,
+      "bytes": 1271
+    },
+    {
+      "path": "public/cqc/src/cqc-pass10-source-contracts.js",
+      "gitBlobSha": "40c2122bdafb5127bf0123a9640bded907d8264c",
+      "localGitBlobSha": "40c2122bdafb5127bf0123a9640bded907d8264c",
+      "exactCopy": true,
+      "bytes": 31833
+    },
+    {
+      "path": "public/cqc/src/cqc-pass12-stage-bridge.js",
+      "gitBlobSha": "fa7afc2da4d6ee5de609a8669b6fcc8e3c1e26fd",
+      "localGitBlobSha": "fa7afc2da4d6ee5de609a8669b6fcc8e3c1e26fd",
+      "exactCopy": true,
+      "bytes": 13661
+    },
+    {
+      "path": "public/cqc/src/cqc-pass17-match-flow.js",
+      "gitBlobSha": "e1c38669e306de08b6d93fab32ec91dfa8158879",
+      "localGitBlobSha": "e1c38669e306de08b6d93fab32ec91dfa8158879",
+      "exactCopy": true,
+      "bytes": 17813
+    },
+    {
+      "path": "public/cqc/src/cqc-pass17-pause.js",
+      "gitBlobSha": "8136234bbc906c6fd28e2ef93342bcf4e2a2d7b0",
+      "localGitBlobSha": "8136234bbc906c6fd28e2ef93342bcf4e2a2d7b0",
+      "exactCopy": true,
+      "bytes": 5487
+    },
+    {
+      "path": "public/cqc/src/cqc-pass18-stage-bridge.js",
+      "gitBlobSha": "727276ea62d820c9ac1aa77da796bbc5cf31b53c",
+      "localGitBlobSha": "727276ea62d820c9ac1aa77da796bbc5cf31b53c",
+      "exactCopy": true,
+      "bytes": 7208
+    },
+    {
+      "path": "public/cqc/src/cqc-pass19-combat-additions.js",
+      "gitBlobSha": "02ba2a64050ad9a691f22f2ff09064ccd68c81db",
+      "localGitBlobSha": "02ba2a64050ad9a691f22f2ff09064ccd68c81db",
+      "exactCopy": true,
+      "bytes": 13327
+    },
+    {
+      "path": "public/cqc/src/cqc-pass19-roster-additions-v2.js",
+      "gitBlobSha": "158e41f505b15f3fe660b27c6f432baa5ccffc83",
+      "localGitBlobSha": "158e41f505b15f3fe660b27c6f432baa5ccffc83",
+      "exactCopy": true,
+      "bytes": 41461
+    },
+    {
+      "path": "public/cqc/src/cqc-pass19-roster-native.js",
+      "gitBlobSha": "37705154f8980144c861370ab23ac0b719b74aad",
+      "localGitBlobSha": "37705154f8980144c861370ab23ac0b719b74aad",
+      "exactCopy": true,
+      "bytes": 2630
+    },
+    {
+      "path": "public/cqc/src/cqc-pass19-smoke-mechanics.js",
+      "gitBlobSha": "bd82aee63e1c847cf6701c64dc8c13a6c0c72e37",
+      "localGitBlobSha": "bd82aee63e1c847cf6701c64dc8c13a6c0c72e37",
+      "exactCopy": true,
+      "bytes": 3610
+    },
+    {
+      "path": "public/cqc/src/cqc-pass20-roster-native.js",
+      "gitBlobSha": "f0e1a1c311a06bf8231c8cc7682abbd5ebaea123",
+      "localGitBlobSha": "f0e1a1c311a06bf8231c8cc7682abbd5ebaea123",
+      "exactCopy": true,
+      "bytes": 6018
+    },
+    {
+      "path": "public/cqc/src/cqc-pass26-stage-registry.js",
+      "gitBlobSha": "0bd41819fe7813eb4b139c68ba5eec3b15f4ff6a",
+      "localGitBlobSha": "0bd41819fe7813eb4b139c68ba5eec3b15f4ff6a",
+      "exactCopy": true,
+      "bytes": 8757
+    },
+    {
+      "path": "public/cqc/src/cqc-pass48-finite-asset-policy-v1.js",
+      "gitBlobSha": "f0474a25f4c0666c3aad5c600239b36ce2c5f30f",
+      "localGitBlobSha": "f0474a25f4c0666c3aad5c600239b36ce2c5f30f",
+      "exactCopy": true,
+      "bytes": 3124
+    },
+    {
+      "path": "public/cqc/src/cqc-pass48-metadata-gzip-transport-v1.js",
+      "gitBlobSha": "767ebab300ced890754ba7df6a8802f4fc2e9d87",
+      "localGitBlobSha": "767ebab300ced890754ba7df6a8802f4fc2e9d87",
+      "exactCopy": true,
+      "bytes": 7894
+    },
+    {
+      "path": "public/cqc/src/cqc-pass48-reviewed-vs-runtime-v1.js",
+      "gitBlobSha": "527a62476f1d961ed7eae1f366c8bcfc32db0923",
+      "localGitBlobSha": "527a62476f1d961ed7eae1f366c8bcfc32db0923",
+      "exactCopy": true,
+      "bytes": 329254
+    },
+    {
+      "path": "public/cqc/src/cqc-pass8-combat-engine.js",
+      "gitBlobSha": "332acb3034433f5bbecc9a9126156f0b7da2e4a4",
+      "localGitBlobSha": "332acb3034433f5bbecc9a9126156f0b7da2e4a4",
+      "exactCopy": true,
+      "bytes": 31887
+    },
+    {
+      "path": "public/cqc/src/cqc-stage-layers.js",
+      "gitBlobSha": "0256b3617c3f695be1ab52e71d7d67176b2a9498",
+      "localGitBlobSha": "0256b3617c3f695be1ab52e71d7d67176b2a9498",
+      "exactCopy": true,
+      "bytes": 27229
+    },
+    {
+      "path": "public/cqc/modules/arcade-chronicles-v055.html",
+      "gitBlobSha": "8109bffefed7754558b122a895b164890b602719",
+      "localGitBlobSha": "8109bffefed7754558b122a895b164890b602719",
+      "exactCopy": true,
+      "bytes": 3140043
+    },
+    {
+      "path": "public/cqc/modules/archive-front-v040.html",
+      "gitBlobSha": "7d42e7d98f3a12a67e4c031bcda118c0b716b582",
+      "localGitBlobSha": "7d42e7d98f3a12a67e4c031bcda118c0b716b582",
+      "exactCopy": true,
+      "bytes": 158596
+    },
+    {
+      "path": "public/cqc/modules/arsenal-files-v044.html",
+      "gitBlobSha": "03f799b5def0bef08d9c95a840dfc96030d53fe8",
+      "localGitBlobSha": "03f799b5def0bef08d9c95a840dfc96030d53fe8",
+      "exactCopy": true,
+      "bytes": 103820
+    },
+    {
+      "path": "public/cqc/modules/atelier-v056.html",
+      "gitBlobSha": "e43a76a00e0fbd7078cc0da09a47a73189502f86",
+      "localGitBlobSha": "e43a76a00e0fbd7078cc0da09a47a73189502f86",
+      "exactCopy": true,
+      "bytes": 1589
+    },
+    {
+      "path": "public/cqc/modules/battle-operations-v053.html",
+      "gitBlobSha": "1bd0dc73f3c9d573c4420648d608328070e2d949",
+      "localGitBlobSha": "1bd0dc73f3c9d573c4420648d608328070e2d949",
+      "exactCopy": true,
+      "bytes": 2086471
+    },
+    {
+      "path": "public/cqc/modules/chronicles-v056.html",
+      "gitBlobSha": "37728ab9b0be311489af0a415f2d3e2b0ba7127d",
+      "localGitBlobSha": "37728ab9b0be311489af0a415f2d3e2b0ba7127d",
+      "exactCopy": true,
+      "bytes": 10540
+    },
+    {
+      "path": "public/cqc/modules/combat-academy-v053.html",
+      "gitBlobSha": "7b147b8289aa39a03effc5684814d88f71b3f124",
+      "localGitBlobSha": "7b147b8289aa39a03effc5684814d88f71b3f124",
+      "exactCopy": true,
+      "bytes": 3544457
+    },
+    {
+      "path": "public/cqc/modules/unified-versus-v055.html",
+      "gitBlobSha": "132eafa2808b40246ea25c66af9b1a382ec2cbbd",
+      "localGitBlobSha": "132eafa2808b40246ea25c66af9b1a382ec2cbbd",
+      "exactCopy": true,
+      "bytes": 3488570
+    },
+    {
+      "path": "public/cqc/index.html",
+      "gitBlobSha": "88f48171961989ac9b688ed1c6d73f2fe261dcab",
+      "localGitBlobSha": "88f48171961989ac9b688ed1c6d73f2fe261dcab",
+      "exactCopy": true,
+      "bytes": 32626
+    }
+  ],
+  "integrationRecommendations": [
+    {
+      "id": "DOC-01",
+      "action": "Rattacher les fiches du guide aux evidenceIds de ce fichier; conserver la référence de code datée."
+    },
+    {
+      "id": "DOC-02",
+      "action": "Conserver UID combattant, ID rencontre Arsenal, ID arène et ID source distincts avec liens explicites."
+    },
+    {
+      "id": "DOC-03",
+      "action": "Décrire les quatre axes de chaque arène séparément; null/nonétabli pour interactions, dangers et transitions non définis."
+    },
+    {
+      "id": "DOC-04",
+      "action": "Enregistrer séparément source produite, revue, admission runtime, test et publication; une image statique ne valide aucun des autres états."
+    },
+    {
+      "id": "DOC-05",
+      "action": "Faire les essais fonctionnels ciblés du guide après toute future intégration, sans rétroattribuer une réussite à cet audit statique."
+    }
+  ],
+  "stageAxes": {
+    "independent": true,
+    "axes": [
+      {
+        "id": "presentation",
+        "findingId": "stage_presentation",
+        "status": "observé_en_code",
+        "valuesObserved": [
+          "plans",
+          "parallaxe",
+          "météo visuelle",
+          "mouvement réduit",
+          "temps/caméra figés"
+        ],
+        "gameplayChangeImplied": false
+      },
+      {
+        "id": "interactions",
+        "findingId": "stage_interactions",
+        "status": "nonétabli",
+        "valuesObserved": [],
+        "reason": "Props dessinés sans contrat d’usage établi."
+      },
+      {
+        "id": "hazards",
+        "findingId": "stage_hazards",
+        "status": "partiel",
+        "valuesObserved": [
+          "effets de rencontre Arsenal causant des dégâts"
+        ],
+        "reason": "Pas de système indépendant de dangers de scène versus établi."
+      },
+      {
+        "id": "transitions",
+        "findingId": "stage_transitions",
+        "status": "nonétabli",
+        "valuesObserved": [],
+        "reason": "Choix de scène et délai de vague ne prouvent pas un passage entre zones."
+      }
+    ]
+  }
+}

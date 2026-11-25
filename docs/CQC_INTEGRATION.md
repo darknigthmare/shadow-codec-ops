@@ -1,5 +1,11 @@
 # CQC Versus Legacy dans Shadow Codec Ops
 
+## Bible de conception et sources P62
+
+La [bible centrale CQC](cqc-bible/README.md) associe le guide général fourni le 25 novembre 2026 aux contrats, modes et contenus de ce dépôt. Elle comprend la [matrice de 90 exigences](cqc-bible/EXIGENCES.md), l’[état du runtime inspecté](cqc-bible/ETAT_DU_JEU.md), les fiches combat/narration/arènes/boss et les [associations des sources](cqc-bible/ASSOCIATIONS.md).
+
+Les sources P60/P61/P62 y conservent un statut distinct de l’intégration jouable. Les ajouts de bible et les cinq PNG P62 ne modifient pas le manifeste runtime ; une admission ultérieure devra établir les bindings, synchroniser la distribution et exécuter les contrôles des modes concernés. Les rapports historiques ci-dessous restent datés de leur vérification d’origine.
+
 L’onglet **CQC VERSUS** lance le même runtime que le jeu CQC indépendant. Il est disponible dans la navigation principale, depuis l’accueil et directement à `/?module=cqc`. Le bouton **Ouvrir le jeu séparément** ouvre `/cqc/index.html` sur le même site ; **Plein écran** réserve toute la surface au jeu. Le module React et son iframe sont créés seulement lorsque l’onglet est ouvert.
 
 ## Sources et synchronisation
