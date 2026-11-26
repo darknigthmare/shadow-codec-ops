@@ -1,8 +1,8 @@
 {
   "schema": "cqc.source-atlas.v1",
   "asOf": "2026-11-26",
-  "sourcePass": "P63+P64+P65+P66+P67",
-  "description": "Sources fixes candidates ; accès Atlas uniquement. Fidélité externe en revue.",
+  "sourcePass": "P63+P64+P65+P66+P67+P68",
+  "description": "82 dossiers de sources fixes P63–P68 ; images, édition, références et réserves. Les 77 dossiers antérieurs sont conservés sans modification.",
   "assets": [
     {
       "id": "acid-lobito-forest",
@@ -4255,6 +4255,320 @@
         "tool": "image_gen.imagegen",
         "mode": "reference_generation",
         "promptId": "touch-gekko-mission07"
+      }
+    },
+    {
+      "id": "classic-mg1-msx-guard-dog-side",
+      "label": "Metal Gear MSX2 — chien de garde, profil natif",
+      "episodeKey": "mg_msx",
+      "workIds": [
+        "character:R-MG1-03",
+        "machine:mg1_msx_guard_dog_side"
+      ],
+      "referenceURLs": [
+        "https://www.spriters-resource.com/msx2/metalgear/asset/22528/",
+        "https://www.spriters-resource.com/media/assets/21/22528.png?updated=1755472545"
+      ],
+      "scope": "Une seule pose complète de la variante native indiquée ; ni animation, ni ensemble de la famille, ni admission au combat.",
+      "qaNotes": [
+        "Chien MSX2 de profil gauche, silhouette noire et rehauts cuivre conservés dans un rendu pixel art agrandi.",
+        "Une pose quadrupède complète ; tête, queue et pattes visibles, sans cadre, autres animaux, sol ou ombre.",
+        "Le placement exact des pixels et des pattes n’est pas une extraction déterministe de la frame native ; les microvariations de palette et surface générées restent à revoir.",
+        "Sortie PNG brute conservée sans retouche, découpe, recoloration ou agrandissement des pixels. Les deux planches JPEG de contrôle sont des dérivés de visualisation seulement.",
+        "Inspection sur fond clair et sombre : silhouette lisible, pas de fond opaque ou de coupe du sujet. Quelques pixels alpha très faibles périphériques sont conservés dans les fichiers bruts.",
+        "La plupart des pixels intérieurs atteignent alpha 254 ; l’absence de pixel alpha 255 dans certaines sorties n’implique pas que le personnage soit invisible.",
+        "Source statique candidate ; fidélité absolue 1:1 et UHD native non certifiées, aucun groupe clôturé."
+      ],
+      "episode": "Metal Gear — version MSX2",
+      "edition": "Jeu original MSX2",
+      "bodyCoverage": "full_body",
+      "kind": "machine",
+      "width": 1536,
+      "height": 1024,
+      "bitDepth": 8,
+      "colorType": 6,
+      "bytes": 707615,
+      "sha256": "552b164d66e387ef8ecf7dd499f317a1dea4fc2645e90ccec1e0132bffca702a",
+      "pass": "P68",
+      "gitBlobSha": "b52257931416c6ba04e08bbfa1a90f29ec748fab",
+      "colorMode": "RGBA",
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": true,
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "assetId": "asset:p68:classic-mg1-msx-guard-dog-side",
+      "bibleURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/docs/cqc-bible/CONTINUATION_P68.md#classic-mg1-msx-guard-dog-side",
+      "blobURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/public/cqc/assets/p68/classic-mg1-msx-guard-dog-side.png",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentBackground": true,
+      "selectedVersion": "v1",
+      "path": "../assets/p68/classic-mg1-msx-guard-dog-side.png",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "promptId": "classic-mg1-msx-guard-dog-side"
+      }
+    },
+    {
+      "id": "classic-mg1-nes-guard-dog-side",
+      "label": "Metal Gear NES — chien de garde, profil natif",
+      "episodeKey": "mg_nes",
+      "workIds": [
+        "character:R-MG1-03",
+        "machine:mg1_nes_guard_dog_side"
+      ],
+      "referenceURLs": [
+        "https://www.spriters-resource.com/nes/mg/asset/19406/page-1/",
+        "https://www.spriters-resource.com/media/assets/18/19406.png?updated=1755472532"
+      ],
+      "scope": "Une seule pose complète de la variante native indiquée ; ni animation, ni ensemble de la famille, ni admission au combat.",
+      "qaNotes": [
+        "Chien NES distinct du candidat MSX2 : profil gauche, silhouette noire, rehauts beige clair et gris, pose de course étirée.",
+        "Une seule créature complète ; l’édition est attribuée à la planche NES et n’est pas transférée aux autres jeux.",
+        "Les blocs de pixels, leurs dimensions et leur espacement sont reconstruits par le générateur ; une fidélité au pixel près n’est pas certifiée.",
+        "Sortie PNG brute conservée sans retouche, découpe, recoloration ou agrandissement des pixels. Les deux planches JPEG de contrôle sont des dérivés de visualisation seulement.",
+        "Inspection sur fond clair et sombre : silhouette lisible, pas de fond opaque ou de coupe du sujet. Quelques pixels alpha très faibles périphériques sont conservés dans les fichiers bruts.",
+        "La plupart des pixels intérieurs atteignent alpha 254 ; l’absence de pixel alpha 255 dans certaines sorties n’implique pas que le personnage soit invisible.",
+        "Source statique candidate ; fidélité absolue 1:1 et UHD native non certifiées, aucun groupe clôturé."
+      ],
+      "episode": "Metal Gear — version NES",
+      "edition": "Portage NES",
+      "bodyCoverage": "full_body",
+      "kind": "machine",
+      "width": 1774,
+      "height": 887,
+      "bitDepth": 8,
+      "colorType": 6,
+      "bytes": 363154,
+      "sha256": "f55c32c07df48be89468fc1edea07a7292203868edd17af3722043584a9504bd",
+      "pass": "P68",
+      "gitBlobSha": "336d4b6e63012a622748e4dfd4554577d5fe0365",
+      "colorMode": "RGBA",
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": true,
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "assetId": "asset:p68:classic-mg1-nes-guard-dog-side",
+      "bibleURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/docs/cqc-bible/CONTINUATION_P68.md#classic-mg1-nes-guard-dog-side",
+      "blobURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/public/cqc/assets/p68/classic-mg1-nes-guard-dog-side.png",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentBackground": true,
+      "selectedVersion": "v1",
+      "path": "../assets/p68/classic-mg1-nes-guard-dog-side.png",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "promptId": "classic-mg1-nes-guard-dog-side"
+      }
+    },
+    {
+      "id": "classic-mg1-nes-jetpack-guard",
+      "label": "Metal Gear NES — garde au jetpack, pose native",
+      "episodeKey": "mg_nes",
+      "workIds": [
+        "character:R-MG1-03",
+        "character:mg1_nes_jetpack_guard"
+      ],
+      "referenceURLs": [
+        "https://www.spriters-resource.com/nes/mg/asset/19406/page-1/",
+        "https://www.spriters-resource.com/media/assets/18/19406.png?updated=1755472532"
+      ],
+      "scope": "Une seule pose complète de la variante native indiquée ; ni animation, ni ensemble de la famille, ni admission au combat.",
+      "qaNotes": [
+        "Garde NES du bloc JETPACK GUARD, pose verticale native, noir, crème et beige, deux grandes formes supérieures de l’équipement visibles.",
+        "Le corps complet est cadré avec une marge ; aucune flamme, animation de vol ou mécanique nouvelle n’est ajoutée.",
+        "La petite frame ne fournit pas une géométrie 3D complète de l’équipement ; le dessin agrandi ne prouve ni le nombre de composants cachés ni une copie exacte des texels.",
+        "Sortie PNG brute conservée sans retouche, découpe, recoloration ou agrandissement des pixels. Les deux planches JPEG de contrôle sont des dérivés de visualisation seulement.",
+        "Inspection sur fond clair et sombre : silhouette lisible, pas de fond opaque ou de coupe du sujet. Quelques pixels alpha très faibles périphériques sont conservés dans les fichiers bruts.",
+        "La plupart des pixels intérieurs atteignent alpha 254 ; l’absence de pixel alpha 255 dans certaines sorties n’implique pas que le personnage soit invisible.",
+        "Source statique candidate ; fidélité absolue 1:1 et UHD native non certifiées, aucun groupe clôturé."
+      ],
+      "episode": "Metal Gear — version NES",
+      "edition": "Portage NES",
+      "bodyCoverage": "full_body",
+      "kind": "character",
+      "width": 1024,
+      "height": 1536,
+      "bitDepth": 8,
+      "colorType": 6,
+      "bytes": 794200,
+      "sha256": "a66b15d776dae733d6ce3ddaa33e3ac5977a4ebfa8b6f7cef09f2955c4aecffe",
+      "pass": "P68",
+      "gitBlobSha": "54fae496dca66485c6525cc79a3e403467391954",
+      "colorMode": "RGBA",
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": true,
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "assetId": "asset:p68:classic-mg1-nes-jetpack-guard",
+      "bibleURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/docs/cqc-bible/CONTINUATION_P68.md#classic-mg1-nes-jetpack-guard",
+      "blobURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/public/cqc/assets/p68/classic-mg1-nes-jetpack-guard.png",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentBackground": true,
+      "selectedVersion": "v1",
+      "path": "../assets/p68/classic-mg1-nes-jetpack-guard.png",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "promptId": "classic-mg1-nes-jetpack-guard"
+      }
+    },
+    {
+      "id": "classic-mg1-msx-red-guard",
+      "label": "Metal Gear MSX2 — garde rouge d’Outer Heaven",
+      "episodeKey": "mg_msx",
+      "workIds": [
+        "character:R-MG1-03"
+      ],
+      "referenceURLs": [
+        "https://www.spriters-resource.com/msx2/metalgear/asset/22528/",
+        "https://www.spriters-resource.com/media/assets/21/22528.png?updated=1755472545"
+      ],
+      "scope": "Une seule pose complète de la variante native indiquée ; ni animation, ni ensemble de la famille, ni admission au combat.",
+      "qaNotes": [
+        "Garde rouge MSX2, silhouette compacte, uniforme rouge/noir et visage/mains clairs, pose native légèrement élevée.",
+        "Le cadrage contient tête, équipement visible et deux pieds. Le motif de pixels et les détails gris sont reconstruits, sans certification pixel exacte.",
+        "Génération depuis les cinq dernières images de conversation après disparition du chemin local : seule la première image, planche MSX2 inspectée, a été désignée comme référence de design.",
+        "Sortie PNG brute conservée sans retouche, découpe, recoloration ou agrandissement des pixels. Les deux planches JPEG de contrôle sont des dérivés de visualisation seulement.",
+        "Inspection sur fond clair et sombre : silhouette lisible, pas de fond opaque ou de coupe du sujet. Quelques pixels alpha très faibles périphériques sont conservés dans les fichiers bruts.",
+        "La plupart des pixels intérieurs atteignent alpha 254 ; l’absence de pixel alpha 255 dans certaines sorties n’implique pas que le personnage soit invisible.",
+        "Source statique candidate ; fidélité absolue 1:1 et UHD native non certifiées, aucun groupe clôturé."
+      ],
+      "episode": "Metal Gear — version MSX2",
+      "edition": "Jeu original MSX2",
+      "bodyCoverage": "full_body",
+      "kind": "character",
+      "width": 1024,
+      "height": 1536,
+      "bitDepth": 8,
+      "colorType": 6,
+      "bytes": 659309,
+      "sha256": "5a977ced18f3b43233ab6e310127e9530a84a216d90edfe849bb736da5015a5f",
+      "pass": "P68",
+      "gitBlobSha": "a6aff12493a84cb5475c7886198b42d91d53170b",
+      "colorMode": "RGBA",
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": true,
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "assetId": "asset:p68:classic-mg1-msx-red-guard",
+      "bibleURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/docs/cqc-bible/CONTINUATION_P68.md#classic-mg1-msx-red-guard",
+      "blobURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/public/cqc/assets/p68/classic-mg1-msx-red-guard.png",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentBackground": true,
+      "selectedVersion": "v1",
+      "path": "../assets/p68/classic-mg1-msx-red-guard.png",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "promptId": "classic-mg1-msx-red-guard"
+      }
+    },
+    {
+      "id": "survive-balloon-trap",
+      "label": "Survive — Balloon Trap, déployé inactif",
+      "episodeKey": "survive",
+      "workIds": [
+        "prop:survive_balloon_trap"
+      ],
+      "referenceURLs": [
+        "https://w.atwiki.jp/mgsurvive/pages/111.html",
+        "https://img.atwiki.jp/mgsurvive/attach/111/98/220401_12.jpg",
+        "https://w.atwiki.jp/mgsurvive/pages/81.html"
+      ],
+      "scope": "Un gadget Balloon Trap déployé sans ballon gonflé, vue trois quarts plongeante ; source statique individuelle.",
+      "qaNotes": [
+        "Capture native portant explicitement le libellé バルーントラップ, hébergée sur un wiki communautaire ; aucune provenance d’illustration officielle Konami revendiquée.",
+        "Corps olive facetté, sommet étroit, détails circulaires frontaux, creux ovale inférieur, collerette ronde et supports noirs très bas repris de la capture.",
+        "Portion du support gauche masquée par l’avatar complétée par continuité ; vue arrière, implantation et nombre réel des supports restent à vérifier sur une seconde vue.",
+        "Hauteur du corps et proportions interprétées ; rivets, découpes, plaque supérieure et usure interpolés, sans validation métrique ni certification absolue 1:1.",
+        "Le root a signalé un large halo dans l’aperçu. La lecture des pixels échantillonnés dans ces plages donne alpha=0 : leurs couleurs RGB sont invisibles avec une composition alpha correcte. Une faible frange native demeure ; à plus de 8 px du masque alpha>128, 1 521 pixels ont alpha=1, dont 498 à plus de 32 px. Aucun nettoyage de pixels effectué.",
+        "PNG brut RGBA 1536×1024, alpha maximal 254/255 préservé ; aucune valeur alpha>16 sur les bords. Pas de validation de rendu navigateur revendiquée.",
+        "Un seul objet inactif ; aucun gonflage, câble, capture, élévation, retour, effet, collision ou comportement jouable fourni."
+      ],
+      "episode": "Metal Gear Survive",
+      "edition": "Metal Gear Survive — capture native PC/console, plateforme de capture non certifiée",
+      "bodyCoverage": "full_object",
+      "kind": "prop",
+      "width": 1536,
+      "height": 1024,
+      "bitDepth": 8,
+      "colorType": 6,
+      "bytes": 1703307,
+      "sha256": "665ea5e6f9b46ac7985943738ba6b184d9fde13181b4fb711d27e86c723b17da",
+      "pass": "P68",
+      "gitBlobSha": "46f38e19fd4300b14e0ddc445427989eb11319e5",
+      "colorMode": "RGBA",
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": true,
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "assetId": "asset:p68:survive-balloon-trap",
+      "bibleURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/docs/cqc-bible/CONTINUATION_P68.md#survive-balloon-trap",
+      "blobURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/public/cqc/assets/p68/survive-balloon-trap.png",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentBackground": true,
+      "selectedVersion": "v1",
+      "path": "../assets/p68/survive-balloon-trap.png",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "promptId": "survive-balloon-trap"
       }
     }
   ]

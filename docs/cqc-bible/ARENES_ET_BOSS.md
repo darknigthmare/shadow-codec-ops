@@ -259,3 +259,12 @@ Les liens de code ci-dessous pointent vers les fichiers du dépôt ; l’état e
 P66 ajoute huit fragments : FAR B3F/B4F/B5F, Control Section, Communications Tower, Terminal, Residential Area et une terrasse de Forsaken Ruins. Ces images enrichissent la présentation seulement. Navigation, dimensions, quatre axes d’arène, transitions et règles de boss restent à définir et à tester. B4F porte une réserve renforcée sur la géométrie et les turbines.
 
 [Continuation et fiches P66](CONTINUATION_P66.md) · [Associations P66](asset-associations-p66.json) · [Delta](../cqc-reprise/pass66/scope-delta.json) · [QA](../cqc-reprise/pass66/INTEGRATION_QA.md)
+
+
+<!-- BEGIN:P68 -->
+## P68 — contraintes de placement et de petite cible
+
+P68 ne livre aucune nouvelle arène. Les [fiches](CONTINUATION_P68.md) préparent les contraintes des deux chiens, de la variante au jetpack et du Balloon Trap : ancrage au terrain, volumes propres aux quadrupèdes, éventuels états aériens qualifiés séparément et surface de support du gadget. Aucun nouvel obstacle, danger, connexion de niveau ou comportement de boss n’est activé par les PNG.
+
+Le futur piège exige une zone de placement valide et une matrice de cibles compatibles ; la capture d’un grand boss ou d’une machine ne se déduit pas de son apparence. Les transitions de manche, la pause et les interruptions doivent rendre le contrôle sans laisser une cible hors état. Ces règles sont des travaux de conception non implémentés.
+<!-- END:P68 -->

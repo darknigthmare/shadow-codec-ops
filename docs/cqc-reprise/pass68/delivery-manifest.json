@@ -1,0 +1,1169 @@
+{
+  "schema": "cqc.p68.delivery.v1",
+  "asOf": "2026-11-26",
+  "parentCommit": "0a92d18aa7bb4068f0be0265bf01d884e3404e95",
+  "publicationParent": "97b19718581154374ecb8bbb299540fd4c8b0322",
+  "previousSelected": 254,
+  "counts": {
+    "selectedSources": 5,
+    "archivedAttempts": 1,
+    "generatedPNGs": 6,
+    "generationRequests": 6,
+    "blockedRequests": 0,
+    "previousSelected": 254,
+    "totalSelected": 259,
+    "previousArchivedAttempts": 19,
+    "totalArchivedAttempts": 20,
+    "atlasSources": 82,
+    "editionCount": 3,
+    "byEpisode": {
+      "mg_msx": 2,
+      "mg_nes": 2,
+      "survive": 1
+    },
+    "byKind": {
+      "machine": 2,
+      "character": 2,
+      "prop": 1
+    },
+    "byBodyCoverage": {
+      "full_body": 4,
+      "full_object": 1
+    },
+    "allPassesByKind": {
+      "character": 50,
+      "costume": 9,
+      "machine": 49,
+      "stage": 133,
+      "vfx": 1,
+      "prop": 15,
+      "projectile": 2
+    },
+    "selectedBytes": 4227585,
+    "archivedBytes": 1714998,
+    "combatAdmissions": 0,
+    "absolute1to1Certifications": 0,
+    "newNarrativeImages": 0,
+    "closedScopes": 0
+  },
+  "historicalRows": 277,
+  "historicalUnmatchedRows": 97,
+  "historicalCountsMeaning": "Statuts P61 conservés. Après P67 comme après P68, 76 des 97 lignes historiquement non résolues restent sans candidat sélectionné ; aucun groupe fermé.",
+  "extensionScopes": [
+    "character:mg1_nes_jetpack_guard",
+    "machine:mg1_msx_guard_dog_side",
+    "machine:mg1_nes_guard_dog_side",
+    "prop:survive_balloon_trap"
+  ],
+  "historicalScopeUpdates": [
+    "character:R-MG1-03"
+  ],
+  "inherits": [
+    "docs/cqc-bible/asset-associations.json",
+    "docs/cqc-bible/asset-associations-p63.json",
+    "docs/cqc-bible/asset-associations-p64.json",
+    "docs/cqc-bible/asset-associations-p65.json",
+    "docs/cqc-bible/asset-associations-p66.json",
+    "docs/cqc-bible/asset-associations-p67.json"
+  ],
+  "interpretation": "Cinq sources fixes consultables dans l’Atlas ; deux personnages, deux créatures et un accessoire. Aucune animation produite, admission au combat, certification pixel exacte, UHD native ou clôture de périmètre.",
+  "requirementsGuide": "docs/cqc-bible/guide-map.json",
+  "assets": [
+    {
+      "id": "classic-mg1-msx-guard-dog-side",
+      "assetId": "asset:p68:classic-mg1-msx-guard-dog-side",
+      "pass": "P68",
+      "passId": "P68",
+      "label": "Metal Gear MSX2 — chien de garde, profil natif",
+      "episode": "Metal Gear — version MSX2",
+      "episodeKey": "mg_msx",
+      "edition": "Jeu original MSX2",
+      "kind": "machine",
+      "workIds": [
+        "character:R-MG1-03",
+        "machine:mg1_msx_guard_dog_side"
+      ],
+      "scope": "Une seule pose complète de la variante native indiquée ; ni animation, ni ensemble de la famille, ni admission au combat.",
+      "bodyCoverage": "full_body",
+      "selectedVersion": "v1",
+      "referenceType": "community_native_sprite_extraction_sheet",
+      "referenceURLs": [
+        "https://www.spriters-resource.com/msx2/metalgear/asset/22528/",
+        "https://www.spriters-resource.com/media/assets/21/22528.png?updated=1755472545"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass68/research/classic/references/mg1-msx-enemies-native.png"
+      ],
+      "targetNativeFrame": "DOG group, upper row, first horizontal side-profile frame at approximately x124–156/y10–27 of the original 420×273 sheet.",
+      "referenceSourceHashes": {
+        "mg1-msx-enemies-native.png": "148912028441b199391af77faca0610258bec994f95328111749fb53265ccf95"
+      },
+      "qaNotes": [
+        "Chien MSX2 de profil gauche, silhouette noire et rehauts cuivre conservés dans un rendu pixel art agrandi.",
+        "Une pose quadrupède complète ; tête, queue et pattes visibles, sans cadre, autres animaux, sol ou ombre.",
+        "Le placement exact des pixels et des pattes n’est pas une extraction déterministe de la frame native ; les microvariations de palette et surface générées restent à revoir.",
+        "Sortie PNG brute conservée sans retouche, découpe, recoloration ou agrandissement des pixels. Les deux planches JPEG de contrôle sont des dérivés de visualisation seulement.",
+        "Inspection sur fond clair et sombre : silhouette lisible, pas de fond opaque ou de coupe du sujet. Quelques pixels alpha très faibles périphériques sont conservés dans les fichiers bruts.",
+        "La plupart des pixels intérieurs atteignent alpha 254 ; l’absence de pixel alpha 255 dans certaines sorties n’implique pas que le personnage soit invisible.",
+        "Source statique candidate ; fidélité absolue 1:1 et UHD native non certifiées, aucun groupe clôturé."
+      ],
+      "selected": true,
+      "sourceGenerated": true,
+      "atlasIntegrated": true,
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "qaVerdict": "accept-as-bounded-native-style-reconstruction",
+      "imageVisuallyInspected": true,
+      "referencesVisuallyInspected": true,
+      "transparentBackground": true,
+      "bitDepth": 8,
+      "colorType": 6,
+      "nextWork": "Produire et valider les états décrits dans la fiche, depuis des vues natives complémentaires ; aucune admission au combat déduite de ce PNG.",
+      "path": "public/cqc/assets/p68/classic-mg1-msx-guard-dog-side.png",
+      "bytes": 707615,
+      "sha256": "552b164d66e387ef8ecf7dd499f317a1dea4fc2645e90ccec1e0132bffca702a",
+      "gitBlobSha": "b52257931416c6ba04e08bbfa1a90f29ec748fab",
+      "width": 1536,
+      "height": 1024,
+      "colorMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1318555,
+        "opaquePixels": 0,
+        "semiTransparentPixels": 254309,
+        "boundsByThreshold": {
+          "0": [
+            67,
+            33,
+            1493,
+            984
+          ],
+          "16": [
+            252,
+            258,
+            1211,
+            770
+          ],
+          "128": [
+            252,
+            259,
+            1210,
+            770
+          ]
+        },
+        "edgeAlphaMax": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "nearOpaquePixels250To255": 232788
+      },
+      "pngDecoded": true,
+      "pngCRCVerified": true,
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "exactPrompt": "Use case: stylized-concept.\nAsset type: one individual transparent pixel-art creature sprite for a Metal Gear MSX2 visual atlas.\nInput image 1 is a native extraction sheet from the original Metal Gear MSX2 game, used only as a design reference.\nTarget ONLY the first horizontal side-profile guard dog in the DOG section at the very top: the frame approximately at x124–156, y10–27 of the 420×273 reference, immediately to the right of the four upright-looking dog frames. It is the left-facing side-profile dog, NOT the sleeping dog at the extreme left, not a human guard and not any other animation frame.\nReconstruct ONE complete isolated enlarged pixel-art version of that exact observed dog frame. Preserve its original compact body silhouette, left-facing head and muzzle, back, tail, leg positions and angular pixel-cluster arrangement. Keep the black body with the sparse muted copper/tan highlight pixels visible in the source. The tiny native sprite is the entire design authority. Do not reinterpret it as a realistic German Shepherd or redesign its anatomy.\nComposition: one left-facing dog, complete muzzle, tail and all limbs inside a landscape transparent canvas with generous empty margins. Crisp square pixel-art blocks, no smooth painted fur and no new material textures. Keep the source pose and elevated native viewing angle.\nRemove the sheet's magenta tiles, red backdrop, frame lines and lettering. No collar, harness, leash, military armor, eyes or facial detail beyond the source, no extra dog, person, second frame, floor, shadow, effects, words, checkerboard or border. Output ONE PNG on a genuinely transparent alpha background.",
+        "promptFile": "docs/cqc-reprise/pass68/research/classic/prompt-classic-mg1-msx-guard-dog-side.txt",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass68/research/classic/references/mg1-msx-enemies-native.png"
+        ],
+        "transparent_background": true,
+        "referenceInputMode": "local_reference_path_before_executor_reset",
+        "sourceOutputPath": "/workspace/scratch/f62c7b61a198/generated_images/exec-17f6bfc1-589c-459d-9d18-6210ce4dba41.png",
+        "postprocessing": "none; raw image bytes preserved",
+        "transport": "source file copied byte-for-byte",
+        "referenced_image_paths": [
+          "/mnt/data/cqc-p66/shadow-codec-ops/docs/cqc-reprise/pass68/research/classic/references/mg1-msx-enemies-native.png"
+        ]
+      },
+      "recovery": {
+        "executorResetHandled": true,
+        "rawPNGPreserved": true,
+        "preuploadedGitBlobSha": "b52257931416c6ba04e08bbfa1a90f29ec748fab",
+        "referencesRecoveredFromP67Blobs": true,
+        "referenceCopyRecord": "docs/cqc-reprise/pass68/research/classic/reference-copies.json"
+      },
+      "reviewRecords": [
+        "docs/cqc-reprise/pass68/reviewed-batch.json"
+      ],
+      "guideSections": [
+        "02",
+        "03",
+        "04",
+        "16",
+        "17",
+        "18",
+        "25",
+        "26",
+        "27",
+        "29"
+      ],
+      "runtimeBinding": {
+        "status": "atlas_only",
+        "moduleKey": "atlas63",
+        "catalogPath": "public/cqc/data/cqc-p63-source-atlas.json",
+        "admittedByThisPass": false
+      },
+      "bibleURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/docs/cqc-bible/CONTINUATION_P68.md#classic-mg1-msx-guard-dog-side",
+      "blobURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/public/cqc/assets/p68/classic-mg1-msx-guard-dog-side.png",
+      "manifest": "docs/cqc-reprise/pass68/delivery-manifest.json",
+      "bibleDocuments": [
+        "docs/cqc-bible/CONTINUATION_P68.md",
+        "docs/cqc-bible/ASSOCIATIONS.md",
+        "docs/cqc-bible/COMBAT.md",
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md"
+      ],
+      "promptRecord": "docs/cqc-reprise/pass68/prompt-index.json#classic-mg1-msx-guard-dog-side",
+      "productionPlan": {
+        "status": "documented_future_work_not_generated_or_implemented",
+        "classification": "proposition_CQC_a_valider_par_references_natives",
+        "framesGeneratedByP68": 1,
+        "animationClipsGeneratedByP68": 0,
+        "frameTimings": "À mesurer sur les références puis équilibrer dans CQC ; aucun nombre de frames canonique inventé.",
+        "camera": "La source conserve sa vue native. Une éventuelle vue latérale CQC demande des références et des sprites séparés.",
+        "acceptance": [
+          "Comparer incarnation, silhouette et palette à la bonne édition.",
+          "Définir ancrage, échelle, volumes et transitions sans les déduire de la marge transparente.",
+          "Vérifier retour au contrôle, réaction à la pause, KO et fin de manche avant toute admission."
+        ],
+        "role": "Ennemi quadrupède de référence MSX2 ; aucun combattant humain ou compagnon ajouté au roster.",
+        "states": [
+          {
+            "name": "Attente et observation",
+            "description": "Stabiliser les quatre appuis, conserver le dos et la queue de la variante ; tout mouvement de tête exige une frame native ou une adaptation clairement identifiée."
+          },
+          {
+            "name": "Déplacement",
+            "description": "Décomposer appui, poussée, passage des membres et retour à la pose initiale. Les pattes proches et éloignées doivent rester identifiables ; ne pas dupliquer le PNG fixe pour prétendre livrer un cycle."
+          },
+          {
+            "name": "Alerte et approche",
+            "description": "Préparer une transition lisible entre locomotion et orientation vers la cible. La portée de détection, le temps de réaction et le changement de direction sont des paramètres CQC encore non implémentés."
+          },
+          {
+            "name": "Contact, récupération et sortie",
+            "description": "Si une attaque de contact est retenue après qualification native, séparer préparation, contact et récupération. Prévoir réaction à impact, interruption et sortie de scène ; aucune nouvelle morsure ou neutralisation produite ici."
+          }
+        ],
+        "interactions": [
+          "Mesurer séparément le volume bas de la créature et les collisions du terrain ; ne pas appliquer une capsule humaine par défaut.",
+          "Établir le contre-jeu et la compatibilité des projections/neutralisations avec une petite cible avant de l’utiliser dans un duel.",
+          "Conserver les deux éditions et leurs palettes, sans échange automatique de cycles entre MSX2 et NES."
+        ],
+        "separateAssetsNeeded": [
+          "Frames natives complémentaires",
+          "Vues latérales CQC si retenues",
+          "Cycle de déplacement",
+          "Réactions et états de sortie",
+          "Sons et effets éventuels séparés"
+        ]
+      }
+    },
+    {
+      "id": "classic-mg1-nes-guard-dog-side",
+      "assetId": "asset:p68:classic-mg1-nes-guard-dog-side",
+      "pass": "P68",
+      "passId": "P68",
+      "label": "Metal Gear NES — chien de garde, profil natif",
+      "episode": "Metal Gear — version NES",
+      "episodeKey": "mg_nes",
+      "edition": "Portage NES",
+      "kind": "machine",
+      "workIds": [
+        "character:R-MG1-03",
+        "machine:mg1_nes_guard_dog_side"
+      ],
+      "scope": "Une seule pose complète de la variante native indiquée ; ni animation, ni ensemble de la famille, ni admission au combat.",
+      "bodyCoverage": "full_body",
+      "selectedVersion": "v1",
+      "referenceType": "community_native_sprite_extraction_sheet",
+      "referenceURLs": [
+        "https://www.spriters-resource.com/nes/mg/asset/19406/page-1/",
+        "https://www.spriters-resource.com/media/assets/18/19406.png?updated=1755472532"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass68/research/classic/references/mg1-nes-enemies-native.png"
+      ],
+      "targetNativeFrame": "DOG group, upper row, first horizontal side-profile frame at approximately x124–156/y10–27 of the original 255×211 sheet.",
+      "referenceSourceHashes": {
+        "mg1-nes-enemies-native.png": "3f20f028580aea6049a2b0e5933b9039dc383dcd8eb68b6389477fdef619b1fb"
+      },
+      "qaNotes": [
+        "Chien NES distinct du candidat MSX2 : profil gauche, silhouette noire, rehauts beige clair et gris, pose de course étirée.",
+        "Une seule créature complète ; l’édition est attribuée à la planche NES et n’est pas transférée aux autres jeux.",
+        "Les blocs de pixels, leurs dimensions et leur espacement sont reconstruits par le générateur ; une fidélité au pixel près n’est pas certifiée.",
+        "Sortie PNG brute conservée sans retouche, découpe, recoloration ou agrandissement des pixels. Les deux planches JPEG de contrôle sont des dérivés de visualisation seulement.",
+        "Inspection sur fond clair et sombre : silhouette lisible, pas de fond opaque ou de coupe du sujet. Quelques pixels alpha très faibles périphériques sont conservés dans les fichiers bruts.",
+        "La plupart des pixels intérieurs atteignent alpha 254 ; l’absence de pixel alpha 255 dans certaines sorties n’implique pas que le personnage soit invisible.",
+        "Source statique candidate ; fidélité absolue 1:1 et UHD native non certifiées, aucun groupe clôturé."
+      ],
+      "selected": true,
+      "sourceGenerated": true,
+      "atlasIntegrated": true,
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "qaVerdict": "accept-as-bounded-native-style-reconstruction",
+      "imageVisuallyInspected": true,
+      "referencesVisuallyInspected": true,
+      "transparentBackground": true,
+      "bitDepth": 8,
+      "colorType": 6,
+      "nextWork": "Produire et valider les états décrits dans la fiche, depuis des vues natives complémentaires ; aucune admission au combat déduite de ce PNG.",
+      "path": "public/cqc/assets/p68/classic-mg1-nes-guard-dog-side.png",
+      "bytes": 363154,
+      "sha256": "f55c32c07df48be89468fc1edea07a7292203868edd17af3722043584a9504bd",
+      "gitBlobSha": "336d4b6e63012a622748e4dfd4554577d5fe0365",
+      "width": 1774,
+      "height": 887,
+      "colorMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1045715,
+        "opaquePixels": 2134,
+        "semiTransparentPixels": 525689,
+        "boundsByThreshold": {
+          "0": [
+            49,
+            81,
+            1598,
+            779
+          ],
+          "16": [
+            142,
+            135,
+            1594,
+            776
+          ],
+          "128": [
+            142,
+            136,
+            1594,
+            776
+          ]
+        },
+        "edgeAlphaMax": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "nearOpaquePixels250To255": 504095
+      },
+      "pngDecoded": true,
+      "pngCRCVerified": true,
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "exactPrompt": "Use case: stylized-concept.\nAsset type: one individual transparent pixel-art creature sprite for the Metal Gear NES visual atlas.\nInput image 1 is the native extraction sheet from Metal Gear on NES, used only as a design reference. This specific NES frame is the authority; do not substitute an MSX2 dog.\nTarget ONLY the first horizontal side-profile dog in the DOG section at the top: approximately x124–156, y10–27 of the 255×211 reference sheet, immediately to the right of the four upright-looking dog frames. Use that one left-facing running/crouched side-profile frame, not the sleeping dogs at the far left and not a different frame.\nReconstruct ONE enlarged isolated pixel-art rendering of that complete NES guard dog. Preserve its angular compact silhouette, left-facing head and muzzle, black back and body, native leg positions and tail, and the sparse pale beige/tan and gray highlight pixels. Preserve exactly the character of the limited NES palette and the elevated native view. Do not transform the tiny source into a realistically detailed dog or add fur texture.\nComposition: one entire left-facing dog on a landscape transparent canvas; keep muzzle, tail and every source limb inside generous margins. Crisp square pixel blocks and no painted gradients. One pose only.\nRemove all magenta tiles, red background, dividing lines and text from the sheet. No collar, harness, leash, armor, extra facial features, person, extra animal, alternate view, floor, cast shadow, smoke, HUD, frame, watermark or checkerboard. Output ONE PNG with genuine transparent alpha around the entire silhouette.",
+        "promptFile": "docs/cqc-reprise/pass68/research/classic/prompt-classic-mg1-nes-guard-dog-side.txt",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass68/research/classic/references/mg1-nes-enemies-native.png"
+        ],
+        "transparent_background": true,
+        "referenceInputMode": "local_reference_path_before_executor_reset",
+        "sourceOutputPath": null,
+        "postprocessing": "none; raw image bytes preserved",
+        "transport": "raw tool image data URL decoded byte-for-byte after executor reset",
+        "referenced_image_paths": [
+          "/mnt/data/cqc-p66/shadow-codec-ops/docs/cqc-reprise/pass68/research/classic/references/mg1-nes-enemies-native.png"
+        ]
+      },
+      "recovery": {
+        "executorResetHandled": true,
+        "rawPNGPreserved": true,
+        "preuploadedGitBlobSha": "336d4b6e63012a622748e4dfd4554577d5fe0365",
+        "referencesRecoveredFromP67Blobs": true,
+        "referenceCopyRecord": "docs/cqc-reprise/pass68/research/classic/reference-copies.json"
+      },
+      "reviewRecords": [
+        "docs/cqc-reprise/pass68/reviewed-batch.json"
+      ],
+      "guideSections": [
+        "02",
+        "03",
+        "04",
+        "16",
+        "17",
+        "18",
+        "25",
+        "26",
+        "27",
+        "29"
+      ],
+      "runtimeBinding": {
+        "status": "atlas_only",
+        "moduleKey": "atlas63",
+        "catalogPath": "public/cqc/data/cqc-p63-source-atlas.json",
+        "admittedByThisPass": false
+      },
+      "bibleURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/docs/cqc-bible/CONTINUATION_P68.md#classic-mg1-nes-guard-dog-side",
+      "blobURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/public/cqc/assets/p68/classic-mg1-nes-guard-dog-side.png",
+      "manifest": "docs/cqc-reprise/pass68/delivery-manifest.json",
+      "bibleDocuments": [
+        "docs/cqc-bible/CONTINUATION_P68.md",
+        "docs/cqc-bible/ASSOCIATIONS.md",
+        "docs/cqc-bible/COMBAT.md",
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md"
+      ],
+      "promptRecord": "docs/cqc-reprise/pass68/prompt-index.json#classic-mg1-nes-guard-dog-side",
+      "productionPlan": {
+        "status": "documented_future_work_not_generated_or_implemented",
+        "classification": "proposition_CQC_a_valider_par_references_natives",
+        "framesGeneratedByP68": 1,
+        "animationClipsGeneratedByP68": 0,
+        "frameTimings": "À mesurer sur les références puis équilibrer dans CQC ; aucun nombre de frames canonique inventé.",
+        "camera": "La source conserve sa vue native. Une éventuelle vue latérale CQC demande des références et des sprites séparés.",
+        "acceptance": [
+          "Comparer incarnation, silhouette et palette à la bonne édition.",
+          "Définir ancrage, échelle, volumes et transitions sans les déduire de la marge transparente.",
+          "Vérifier retour au contrôle, réaction à la pause, KO et fin de manche avant toute admission."
+        ],
+        "role": "Ennemi quadrupède de référence NES ; aucun combattant humain ou compagnon ajouté au roster.",
+        "states": [
+          {
+            "name": "Attente et observation",
+            "description": "Stabiliser les quatre appuis, conserver le dos et la queue de la variante ; tout mouvement de tête exige une frame native ou une adaptation clairement identifiée."
+          },
+          {
+            "name": "Déplacement",
+            "description": "Décomposer appui, poussée, passage des membres et retour à la pose initiale. Les pattes proches et éloignées doivent rester identifiables ; ne pas dupliquer le PNG fixe pour prétendre livrer un cycle."
+          },
+          {
+            "name": "Alerte et approche",
+            "description": "Préparer une transition lisible entre locomotion et orientation vers la cible. La portée de détection, le temps de réaction et le changement de direction sont des paramètres CQC encore non implémentés."
+          },
+          {
+            "name": "Contact, récupération et sortie",
+            "description": "Si une attaque de contact est retenue après qualification native, séparer préparation, contact et récupération. Prévoir réaction à impact, interruption et sortie de scène ; aucune nouvelle morsure ou neutralisation produite ici."
+          }
+        ],
+        "interactions": [
+          "Mesurer séparément le volume bas de la créature et les collisions du terrain ; ne pas appliquer une capsule humaine par défaut.",
+          "Établir le contre-jeu et la compatibilité des projections/neutralisations avec une petite cible avant de l’utiliser dans un duel.",
+          "Conserver les deux éditions et leurs palettes, sans échange automatique de cycles entre MSX2 et NES."
+        ],
+        "separateAssetsNeeded": [
+          "Frames natives complémentaires",
+          "Vues latérales CQC si retenues",
+          "Cycle de déplacement",
+          "Réactions et états de sortie",
+          "Sons et effets éventuels séparés"
+        ]
+      }
+    },
+    {
+      "id": "classic-mg1-nes-jetpack-guard",
+      "assetId": "asset:p68:classic-mg1-nes-jetpack-guard",
+      "pass": "P68",
+      "passId": "P68",
+      "label": "Metal Gear NES — garde au jetpack, pose native",
+      "episode": "Metal Gear — version NES",
+      "episodeKey": "mg_nes",
+      "edition": "Portage NES",
+      "kind": "character",
+      "workIds": [
+        "character:R-MG1-03",
+        "character:mg1_nes_jetpack_guard"
+      ],
+      "scope": "Une seule pose complète de la variante native indiquée ; ni animation, ni ensemble de la famille, ni admission au combat.",
+      "bodyCoverage": "full_body",
+      "selectedVersion": "v1",
+      "referenceType": "community_native_sprite_extraction_sheet",
+      "referenceURLs": [
+        "https://www.spriters-resource.com/nes/mg/asset/19406/page-1/",
+        "https://www.spriters-resource.com/media/assets/18/19406.png?updated=1755472532"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass68/research/classic/references/mg1-nes-enemies-native.png"
+      ],
+      "targetNativeFrame": "JETPACK GUARD group, first complete guard frame at the lower-left, approximately x1–18/y144–173 of the 255×211 sheet.",
+      "referenceSourceHashes": {
+        "mg1-nes-enemies-native.png": "3f20f028580aea6049a2b0e5933b9039dc383dcd8eb68b6389477fdef619b1fb"
+      },
+      "qaNotes": [
+        "Garde NES du bloc JETPACK GUARD, pose verticale native, noir, crème et beige, deux grandes formes supérieures de l’équipement visibles.",
+        "Le corps complet est cadré avec une marge ; aucune flamme, animation de vol ou mécanique nouvelle n’est ajoutée.",
+        "La petite frame ne fournit pas une géométrie 3D complète de l’équipement ; le dessin agrandi ne prouve ni le nombre de composants cachés ni une copie exacte des texels.",
+        "Sortie PNG brute conservée sans retouche, découpe, recoloration ou agrandissement des pixels. Les deux planches JPEG de contrôle sont des dérivés de visualisation seulement.",
+        "Inspection sur fond clair et sombre : silhouette lisible, pas de fond opaque ou de coupe du sujet. Quelques pixels alpha très faibles périphériques sont conservés dans les fichiers bruts.",
+        "La plupart des pixels intérieurs atteignent alpha 254 ; l’absence de pixel alpha 255 dans certaines sorties n’implique pas que le personnage soit invisible.",
+        "Source statique candidate ; fidélité absolue 1:1 et UHD native non certifiées, aucun groupe clôturé."
+      ],
+      "selected": true,
+      "sourceGenerated": true,
+      "atlasIntegrated": true,
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "qaVerdict": "accept-as-bounded-native-style-reconstruction",
+      "imageVisuallyInspected": true,
+      "referencesVisuallyInspected": true,
+      "transparentBackground": true,
+      "bitDepth": 8,
+      "colorType": 6,
+      "nextWork": "Produire et valider les états décrits dans la fiche, depuis des vues natives complémentaires ; aucune admission au combat déduite de ce PNG.",
+      "path": "public/cqc/assets/p68/classic-mg1-nes-jetpack-guard.png",
+      "bytes": 794200,
+      "sha256": "a66b15d776dae733d6ce3ddaa33e3ac5977a4ebfa8b6f7cef09f2955c4aecffe",
+      "gitBlobSha": "54fae496dca66485c6525cc79a3e403467391954",
+      "width": 1024,
+      "height": 1536,
+      "colorMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1110204,
+        "opaquePixels": 0,
+        "semiTransparentPixels": 462660,
+        "boundsByThreshold": {
+          "0": [
+            0,
+            128,
+            984,
+            1482
+          ],
+          "16": [
+            242,
+            192,
+            783,
+            1348
+          ],
+          "128": [
+            242,
+            192,
+            782,
+            1348
+          ]
+        },
+        "edgeAlphaMax": {
+          "top": 0,
+          "bottom": 0,
+          "left": 1,
+          "right": 0
+        },
+        "nearOpaquePixels250To255": 447442
+      },
+      "pngDecoded": true,
+      "pngCRCVerified": true,
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "exactPrompt": "Use case: stylized-concept.\nAsset type: one individual transparent character sprite for the Metal Gear NES visual atlas.\nInput image 1 is the native sprite extraction sheet from the original Metal Gear NES port. Use only the FIRST full guard frame immediately under the JETPACK GUARD heading at the lower left of the sheet, approximately x1–18, y144–173 of the 255×211 source. Ignore the ordinary GUARD section, dogs, cameras, scorpions and roller.\nPrimary request: create ONE isolated enlarged pixel-art rendering of that exact jetpack guard frame. Preserve the compact upright human silhouette, the original helmet/head shape, shoulders and arms, narrow waist, native leg and foot arrangement, and the visible jetpack/back-equipment shapes. Preserve the small black, pale cream and tan NES palette and angular pixel-cluster construction. The native frame is the whole design reference; do not invent hidden machinery.\nComposition: one whole figure centered head to feet on a portrait transparent canvas, same native facing/view and pose, with generous transparent margins. Crisp uniform square pixel-art blocks, no realistic soldier redesign, no photorealistic texture, no new armor plating or newly detailed face.\nNo visible jet flame, smoke, flight trail or muzzle flash unless contained in the selected native frame; the chosen frame is a quiet static pose. No new weapon design, markings, insignia, modern tactical gear, second character, sheet or alternate frame. Remove the magenta tile, red sheet backdrop, borders, labels and all other objects. No floor, cast shadow, UI, text, logo, opaque background or checkerboard. Exactly one PNG with true transparent alpha.",
+        "promptFile": "docs/cqc-reprise/pass68/research/classic/prompt-classic-mg1-nes-jetpack-guard.txt",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass68/research/classic/references/mg1-nes-enemies-native.png"
+        ],
+        "transparent_background": true,
+        "referenceInputMode": "local_reference_path_before_executor_reset",
+        "sourceOutputPath": "/workspace/scratch/f62c7b61a198/generated_images/exec-70da7b7d-c0ec-41a6-8179-1e60df362ba7.png",
+        "postprocessing": "none; raw image bytes preserved",
+        "transport": "source file copied byte-for-byte",
+        "referenced_image_paths": [
+          "/mnt/data/cqc-p66/shadow-codec-ops/docs/cqc-reprise/pass68/research/classic/references/mg1-nes-enemies-native.png"
+        ]
+      },
+      "recovery": {
+        "executorResetHandled": true,
+        "rawPNGPreserved": true,
+        "preuploadedGitBlobSha": "54fae496dca66485c6525cc79a3e403467391954",
+        "referencesRecoveredFromP67Blobs": true,
+        "referenceCopyRecord": "docs/cqc-reprise/pass68/research/classic/reference-copies.json"
+      },
+      "reviewRecords": [
+        "docs/cqc-reprise/pass68/reviewed-batch.json"
+      ],
+      "guideSections": [
+        "02",
+        "03",
+        "04",
+        "16",
+        "17",
+        "18",
+        "25",
+        "26",
+        "27",
+        "29"
+      ],
+      "runtimeBinding": {
+        "status": "atlas_only",
+        "moduleKey": "atlas63",
+        "catalogPath": "public/cqc/data/cqc-p63-source-atlas.json",
+        "admittedByThisPass": false
+      },
+      "bibleURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/docs/cqc-bible/CONTINUATION_P68.md#classic-mg1-nes-jetpack-guard",
+      "blobURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/public/cqc/assets/p68/classic-mg1-nes-jetpack-guard.png",
+      "manifest": "docs/cqc-reprise/pass68/delivery-manifest.json",
+      "bibleDocuments": [
+        "docs/cqc-bible/CONTINUATION_P68.md",
+        "docs/cqc-bible/ASSOCIATIONS.md",
+        "docs/cqc-bible/COMBAT.md",
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md"
+      ],
+      "promptRecord": "docs/cqc-reprise/pass68/prompt-index.json#classic-mg1-nes-jetpack-guard",
+      "productionPlan": {
+        "status": "documented_future_work_not_generated_or_implemented",
+        "classification": "proposition_CQC_a_valider_par_references_natives",
+        "framesGeneratedByP68": 1,
+        "animationClipsGeneratedByP68": 0,
+        "frameTimings": "À mesurer sur les références puis équilibrer dans CQC ; aucun nombre de frames canonique inventé.",
+        "camera": "La source conserve sa vue native. Une éventuelle vue latérale CQC demande des références et des sprites séparés.",
+        "acceptance": [
+          "Comparer incarnation, silhouette et palette à la bonne édition.",
+          "Définir ancrage, échelle, volumes et transitions sans les déduire de la marge transparente.",
+          "Vérifier retour au contrôle, réaction à la pause, KO et fin de manche avant toute admission."
+        ],
+        "role": "Variante ennemie NES à appareil dorsal ; la frame fixe ne prouve pas un kit aérien complet.",
+        "states": [
+          {
+            "name": "Pose de référence",
+            "description": "Conserver l’axe du corps, les pieds et les deux grandes formes supérieures de l’équipement ; fixer l’ancrage du personnage et celui du dispositif séparément."
+          },
+          {
+            "name": "Déplacement au sol",
+            "description": "Décomposer départ, appuis et arrêt uniquement après observation de frames du même ennemi. Éviter la copie des animations du garde standard."
+          },
+          {
+            "name": "Transition aérienne à qualifier",
+            "description": "Rechercher une séquence native pour départ, déplacement aérien et retour au sol. Les variations d’altitude, flammes et fumées restent des besoins conditionnels, pas des capacités déclarées par ce PNG."
+          },
+          {
+            "name": "Réaction et interruption",
+            "description": "Documenter séparément réaction au sol, interruption d’une transition et reprise stable. Les poses intermédiaires et éventuels morceaux détachés ne sont pas fournis."
+          }
+        ],
+        "interactions": [
+          "Définir limites d’altitude et interaction avec plateformes uniquement après validation de la séquence source.",
+          "Séparer masse du corps, accessoire dorsal et éventuels effets ; aucune hitbox ni invulnérabilité déduite de l’appareil.",
+          "Qualifier les armes visibles avant d’ajouter tir, projectile ou rechargement."
+        ],
+        "separateAssetsNeeded": [
+          "Vues natives complémentaires",
+          "Frames de déplacement",
+          "États aériens si attestés",
+          "Réactions",
+          "VFX et projectiles qualifiés séparément"
+        ]
+      }
+    },
+    {
+      "id": "classic-mg1-msx-red-guard",
+      "assetId": "asset:p68:classic-mg1-msx-red-guard",
+      "pass": "P68",
+      "passId": "P68",
+      "label": "Metal Gear MSX2 — garde rouge d’Outer Heaven",
+      "episode": "Metal Gear — version MSX2",
+      "episodeKey": "mg_msx",
+      "edition": "Jeu original MSX2",
+      "kind": "character",
+      "workIds": [
+        "character:R-MG1-03"
+      ],
+      "scope": "Une seule pose complète de la variante native indiquée ; ni animation, ni ensemble de la famille, ni admission au combat.",
+      "bodyCoverage": "full_body",
+      "selectedVersion": "v1",
+      "referenceType": "community_native_sprite_extraction_sheet",
+      "referenceURLs": [
+        "https://www.spriters-resource.com/msx2/metalgear/asset/22528/",
+        "https://www.spriters-resource.com/media/assets/21/22528.png?updated=1755472545"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass68/research/classic/references/mg1-msx-enemies-native.png"
+      ],
+      "targetNativeFrame": "GUARDS group, first red-uniform guard of the top row after the six gray guard frames, approximately x124–140/y56–88.",
+      "referenceSourceHashes": {
+        "mg1-msx-enemies-native.png": "148912028441b199391af77faca0610258bec994f95328111749fb53265ccf95"
+      },
+      "qaNotes": [
+        "Garde rouge MSX2, silhouette compacte, uniforme rouge/noir et visage/mains clairs, pose native légèrement élevée.",
+        "Le cadrage contient tête, équipement visible et deux pieds. Le motif de pixels et les détails gris sont reconstruits, sans certification pixel exacte.",
+        "Génération depuis les cinq dernières images de conversation après disparition du chemin local : seule la première image, planche MSX2 inspectée, a été désignée comme référence de design.",
+        "Sortie PNG brute conservée sans retouche, découpe, recoloration ou agrandissement des pixels. Les deux planches JPEG de contrôle sont des dérivés de visualisation seulement.",
+        "Inspection sur fond clair et sombre : silhouette lisible, pas de fond opaque ou de coupe du sujet. Quelques pixels alpha très faibles périphériques sont conservés dans les fichiers bruts.",
+        "La plupart des pixels intérieurs atteignent alpha 254 ; l’absence de pixel alpha 255 dans certaines sorties n’implique pas que le personnage soit invisible.",
+        "Source statique candidate ; fidélité absolue 1:1 et UHD native non certifiées, aucun groupe clôturé."
+      ],
+      "selected": true,
+      "sourceGenerated": true,
+      "atlasIntegrated": true,
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "qaVerdict": "accept-as-bounded-native-style-reconstruction",
+      "imageVisuallyInspected": true,
+      "referencesVisuallyInspected": true,
+      "transparentBackground": true,
+      "bitDepth": 8,
+      "colorType": 6,
+      "nextWork": "Produire et valider les états décrits dans la fiche, depuis des vues natives complémentaires ; aucune admission au combat déduite de ce PNG.",
+      "path": "public/cqc/assets/p68/classic-mg1-msx-red-guard.png",
+      "bytes": 659309,
+      "sha256": "5a977ced18f3b43233ab6e310127e9530a84a216d90edfe849bb736da5015a5f",
+      "gitBlobSha": "a6aff12493a84cb5475c7886198b42d91d53170b",
+      "width": 1024,
+      "height": 1536,
+      "colorMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1274950,
+        "opaquePixels": 0,
+        "semiTransparentPixels": 297914,
+        "boundsByThreshold": {
+          "0": [
+            0,
+            227,
+            932,
+            1400
+          ],
+          "16": [
+            272,
+            257,
+            753,
+            1272
+          ],
+          "128": [
+            272,
+            258,
+            752,
+            1272
+          ]
+        },
+        "edgeAlphaMax": {
+          "top": 0,
+          "bottom": 0,
+          "left": 1,
+          "right": 0
+        },
+        "nearOpaquePixels250To255": 286679
+      },
+      "pngDecoded": true,
+      "pngCRCVerified": true,
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "exactPrompt": "Use case: stylized-concept.\nAsset type: one individual transparent character sprite for the original Metal Gear MSX2 visual atlas.\nInput image 1 is a native sprite extraction sheet, a design reference only. Target ONLY the first red-uniform guard frame in the top row of the GUARDS section: immediately after the six gray guard frames, approximately x124–140/y56–88 in the 420×273 sheet. Use this exact red guard pose, not the gray, blue or green variants, and not the NES version.\nCreate ONE complete enlarged pixel-art reconstruction of that native red guard. Preserve the source's compact proportions, slightly elevated native viewpoint, head covering, pose, visible arms, equipment shapes, legs and boots, and the red/black/tan pixel palette. Retain the original silhouette and pixel-cluster appearance; no conversion into a new realistic military character.\nComposition: one complete head-to-boots figure centered on a portrait transparent canvas with generous margin on every side. The exact facing and posture of the selected frame are retained. Crisp consistent square pixel blocks; no smooth shading, new texture, invented facial detail, pouches, insignia, body armor, rifle attachments or backpack details.\nDo not copy the red sheet backdrop, magenta tile, dividing lines, labels or any other sprite. No extra pose, duplicate guard, montage, contact sheet, border, ground, shadow, text, watermark, colored background or checkerboard. Exactly one PNG with genuine transparent alpha outside the character.\nReference routing: of the five supplied recent conversation images, use ONLY the FIRST image, the original 420×273 MSX2 native sprite sheet, for this red guard. The second image is the NES sheet and the remaining images are previous outputs of other targets; ignore those for the design. This is a new MSX2 red guard asset.",
+        "promptFile": "docs/cqc-reprise/pass68/research/classic/prompt-classic-mg1-msx-red-guard.txt",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass68/research/classic/references/mg1-msx-enemies-native.png"
+        ],
+        "transparent_background": true,
+        "referenceInputMode": "recent_conversation_images",
+        "sourceOutputPath": "/workspace/scratch/f62c7b61a198/generated_images/exec-93991c2f-6a36-43b0-a6bb-29b552db4d1c.png",
+        "postprocessing": "none; raw image bytes preserved",
+        "transport": "source file copied byte-for-byte",
+        "num_last_images_to_include": 5
+      },
+      "recovery": {
+        "executorResetHandled": true,
+        "rawPNGPreserved": true,
+        "preuploadedGitBlobSha": null,
+        "referencesRecoveredFromP67Blobs": true,
+        "referenceCopyRecord": "docs/cqc-reprise/pass68/research/classic/reference-copies.json"
+      },
+      "reviewRecords": [
+        "docs/cqc-reprise/pass68/reviewed-batch.json"
+      ],
+      "guideSections": [
+        "02",
+        "03",
+        "04",
+        "16",
+        "17",
+        "18",
+        "25",
+        "26",
+        "27",
+        "29"
+      ],
+      "runtimeBinding": {
+        "status": "atlas_only",
+        "moduleKey": "atlas63",
+        "catalogPath": "public/cqc/data/cqc-p63-source-atlas.json",
+        "admittedByThisPass": false
+      },
+      "bibleURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/docs/cqc-bible/CONTINUATION_P68.md#classic-mg1-msx-red-guard",
+      "blobURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/public/cqc/assets/p68/classic-mg1-msx-red-guard.png",
+      "manifest": "docs/cqc-reprise/pass68/delivery-manifest.json",
+      "bibleDocuments": [
+        "docs/cqc-bible/CONTINUATION_P68.md",
+        "docs/cqc-bible/ASSOCIATIONS.md",
+        "docs/cqc-bible/COMBAT.md",
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md"
+      ],
+      "promptRecord": "docs/cqc-reprise/pass68/prompt-index.json#classic-mg1-msx-red-guard",
+      "productionPlan": {
+        "status": "documented_future_work_not_generated_or_implemented",
+        "classification": "proposition_CQC_a_valider_par_references_natives",
+        "framesGeneratedByP68": 1,
+        "animationClipsGeneratedByP68": 0,
+        "frameTimings": "À mesurer sur les références puis équilibrer dans CQC ; aucun nombre de frames canonique inventé.",
+        "camera": "La source conserve sa vue native. Une éventuelle vue latérale CQC demande des références et des sprites séparés.",
+        "acceptance": [
+          "Comparer incarnation, silhouette et palette à la bonne édition.",
+          "Définir ancrage, échelle, volumes et transitions sans les déduire de la marge transparente.",
+          "Vérifier retour au contrôle, réaction à la pause, KO et fin de manche avant toute admission."
+        ],
+        "role": "Une variante de garde MSX2 ; la couleur ne crée pas une classe ou un équipement universel.",
+        "states": [
+          {
+            "name": "Garde de référence",
+            "description": "Relever l’orientation, la position des mains et la silhouette sombre de l’équipement. Conserver l’asymétrie et la palette rouge propre à la frame."
+          },
+          {
+            "name": "Patrouille et arrêt",
+            "description": "Décomposer appui gauche, passage, appui droit et retour sans glissement des pieds ; la chronologie doit venir des frames natives de cette variante."
+          },
+          {
+            "name": "Détection et action",
+            "description": "Séparer pivot, préparation et récupération. La nature de l’arme et du tir doit être qualifiée avant de produire recul, flash ou projectile."
+          },
+          {
+            "name": "Impact et sortie",
+            "description": "Prévoir réaction courte, interruption et état final adaptés à CQC ; les poses de neutralisation et de fin de manche sont à produire et à valider, sans être attribuées automatiquement au jeu MSX2."
+          }
+        ],
+        "interactions": [
+          "Mesurer le volume corporel et la portée de contact indépendamment de l’image agrandie.",
+          "Vérifier la garde, les projections et la lisibilité de la préparation contre petite et grande cible avant admission.",
+          "Ne pas transformer une variation de palette en bonus de dégâts, rang ou IA sans preuve ou décision de conception explicite."
+        ],
+        "separateAssetsNeeded": [
+          "Patrouille et pivots",
+          "Actions avec arme qualifiée",
+          "Réactions et neutralisations",
+          "Vues opposées vérifiées",
+          "Projectiles et VFX séparés"
+        ]
+      }
+    },
+    {
+      "kind": "prop",
+      "episode": "Metal Gear Survive",
+      "episodeKey": "survive",
+      "passId": "P68",
+      "workIds": [
+        "prop:survive_balloon_trap"
+      ],
+      "scope": "Un gadget Balloon Trap déployé sans ballon gonflé, vue trois quarts plongeante ; source statique individuelle.",
+      "referenceURLs": [
+        "https://w.atwiki.jp/mgsurvive/pages/111.html",
+        "https://img.atwiki.jp/mgsurvive/attach/111/98/220401_12.jpg",
+        "https://w.atwiki.jp/mgsurvive/pages/81.html"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass68/research/survive/references/native-balloon-trap-220401_12.jpg"
+      ],
+      "qaNotes": [
+        "Capture native portant explicitement le libellé バルーントラップ, hébergée sur un wiki communautaire ; aucune provenance d’illustration officielle Konami revendiquée.",
+        "Corps olive facetté, sommet étroit, détails circulaires frontaux, creux ovale inférieur, collerette ronde et supports noirs très bas repris de la capture.",
+        "Portion du support gauche masquée par l’avatar complétée par continuité ; vue arrière, implantation et nombre réel des supports restent à vérifier sur une seconde vue.",
+        "Hauteur du corps et proportions interprétées ; rivets, découpes, plaque supérieure et usure interpolés, sans validation métrique ni certification absolue 1:1.",
+        "Le root a signalé un large halo dans l’aperçu. La lecture des pixels échantillonnés dans ces plages donne alpha=0 : leurs couleurs RGB sont invisibles avec une composition alpha correcte. Une faible frange native demeure ; à plus de 8 px du masque alpha>128, 1 521 pixels ont alpha=1, dont 498 à plus de 32 px. Aucun nettoyage de pixels effectué.",
+        "PNG brut RGBA 1536×1024, alpha maximal 254/255 préservé ; aucune valeur alpha>16 sur les bords. Pas de validation de rendu navigateur revendiquée.",
+        "Un seul objet inactif ; aucun gonflage, câble, capture, élévation, retour, effet, collision ou comportement jouable fourni."
+      ],
+      "transparentBackground": true,
+      "sourceGenerated": true,
+      "atlasIntegrated": true,
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "tracking": {
+        "scopeClosed": false,
+        "historicalWorkIds": [],
+        "extensionWorkIds": [
+          "prop:survive_balloon_trap"
+        ],
+        "narrativePlansCreated": 0
+      },
+      "path": "public/cqc/assets/p68/survive-balloon-trap.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1703307,
+      "colorMode": "RGBA",
+      "sha256": "665ea5e6f9b46ac7985943738ba6b184d9fde13181b4fb711d27e86c723b17da",
+      "gitBlobSha": "46f38e19fd4300b14e0ddc445427989eb11319e5",
+      "bitDepth": 8,
+      "colorType": 6,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1153337,
+        "nearOpaquePixels250To255": 369728,
+        "semiTransparentPixels1To249": 49799,
+        "alphaAbove16OnCanvasEdges": 0,
+        "boundsAt16": [
+          78,
+          33,
+          1460,
+          998
+        ],
+        "boundsAt128": [
+          79,
+          34,
+          1459,
+          997
+        ]
+      },
+      "id": "survive-balloon-trap",
+      "assetId": "asset:p68:survive-balloon-trap",
+      "label": "Survive — Balloon Trap, déployé inactif",
+      "publishedPath": "public/cqc/assets/p68/survive-balloon-trap.png",
+      "selected": true,
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "promptId": "survive-balloon-trap",
+        "promptFile": "docs/cqc-reprise/pass68/research/survive/prompt-balloon-trap.txt",
+        "exactPrompt": "Use case: background-extraction\nAsset type: ONE individual Metal Gear Survive Balloon Trap static deployable prop, genuine transparent PNG, one subject.\nInput image 1 is the native gameplay reference, not an artistic style guide. Isolate and faithfully redraw ONLY the small olive Balloon Trap device on the floor at lower right, centered around pixel x=1025 y=648 of the 1920x1080 image. The Japanese inventory label バルーントラップ identifies the selected trap. Do not reproduce the tall Air Shock Cannon at left.\nSubject: one squat upright tapered faceted olive-green canister on a low dark circular collar and a star-shaped arrangement of flat black splayed support strips. Preserve the visible reference silhouette: narrower flat top, shoulders sloping outward into a wider round base, a small recessed dark circular detail high on the front, a larger circular dark recessed panel below it, and a gray-green oval recess at the lower front above the round base collar. The body is only about the length of one support strip tall. The support strips are low flat segmented straps/blades, spread radially along the floor; they are not tall insect legs. Follow the visible six exposed strips and the partly occluded left-side strip arrangement in the reference; keep the short rear strips correctly foreshortened and the longer forward strips spread diagonally. The small part hidden by the avatar may be conservatively completed by continuing the same simple flat strip, without inventing mechanisms.\nComposition: retain the shallow elevated three-quarter view of the native reference. One complete device centered, all support tips inside frame, generous clean transparent margins. Faithful detailed 2D game asset with subdued realistic olive-painted worn metal and black rubber/metal straps, neutral even illumination. Keep the reference's compact utilitarian design and low proportions.\nRemove avatar, tall cannon, fences, floor grid, UI overlays, icons, text, health bars, white placement rings, background and ground shadow. No inflated balloon, person, wire tether, projectile, smoke, effects, captions, watermark, extra view, sheet, duplicate device, or invented glowing parts. Genuine alpha outside the single object and opaque material surfaces.",
+        "referenced_image_paths": [
+          "/mnt/data/cqc-p66/shadow-codec-ops/docs/cqc-reprise/pass66/research/survive/references/native-air-cannon-220401_12.jpg"
+        ],
+        "transparent_background": true,
+        "postprocessing": "none; original generated PNG bytes preserved",
+        "originalGeneratedPath": "/workspace/scratch/f62c7b61a198/generated_images/exec-fb735d25-1a74-4c36-9d54-428072b5ccf4.png",
+        "transport": "copied byte-for-byte; blob uploaded via base64 while filesystem unavailable"
+      },
+      "decision": "V1 retained after one requested alpha correction attempt; no broad nonzero-alpha haze established in samples, preserve original material details.",
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "pass": "P68",
+      "selectedVersion": "v1",
+      "bodyCoverage": "full_object",
+      "edition": "Metal Gear Survive — capture native PC/console, plateforme de capture non certifiée",
+      "reviewRecords": [
+        "docs/cqc-reprise/pass68/reviewed-batch.json"
+      ],
+      "guideSections": [
+        "02",
+        "04",
+        "05",
+        "15",
+        "16",
+        "17",
+        "18",
+        "22",
+        "25",
+        "26",
+        "27",
+        "29"
+      ],
+      "runtimeBinding": {
+        "status": "atlas_only",
+        "moduleKey": "atlas63",
+        "catalogPath": "public/cqc/data/cqc-p63-source-atlas.json",
+        "admittedByThisPass": false
+      },
+      "bibleURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/docs/cqc-bible/CONTINUATION_P68.md#survive-balloon-trap",
+      "blobURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/public/cqc/assets/p68/survive-balloon-trap.png",
+      "manifest": "docs/cqc-reprise/pass68/delivery-manifest.json",
+      "bibleDocuments": [
+        "docs/cqc-bible/CONTINUATION_P68.md",
+        "docs/cqc-bible/ASSOCIATIONS.md",
+        "docs/cqc-bible/COMBAT.md",
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md"
+      ],
+      "promptRecord": "docs/cqc-reprise/pass68/prompt-index.json#survive-balloon-trap",
+      "productionPlan": {
+        "status": "documented_future_work_not_generated_or_implemented",
+        "classification": "proposition_CQC_a_valider_par_references_natives",
+        "framesGeneratedByP68": 1,
+        "animationClipsGeneratedByP68": 0,
+        "frameTimings": "À mesurer sur les références puis équilibrer dans CQC ; aucun nombre de frames canonique inventé.",
+        "camera": "La source conserve sa vue native. Une éventuelle vue latérale CQC demande des références et des sprites séparés.",
+        "acceptance": [
+          "Comparer incarnation, silhouette et palette à la bonne édition.",
+          "Définir ancrage, échelle, volumes et transitions sans les déduire de la marge transparente.",
+          "Vérifier retour au contrôle, réaction à la pause, KO et fin de manche avant toute admission."
+        ],
+        "role": "Accessoire Survive déployé inactif ; aucun ballon gonflé, câble ou ennemi capturé livré.",
+        "states": [
+          {
+            "name": "Pose et armement",
+            "description": "Définir une pose au sol avec toutes les extrémités dans une zone de support valide. Séparer apparition/installation et état armé ; la séquence et sa durée restent à documenter."
+          },
+          {
+            "name": "Attente déployée",
+            "description": "Utiliser la source fixe comme référence du boîtier et des supports. Toute animation de témoin, vibration ou signal sonore doit être sourcée ou marquée comme adaptation CQC."
+          },
+          {
+            "name": "Déclenchement et capture à confirmer",
+            "description": "Obtenir les vues natives du mécanisme avant de produire ouverture, ballon, câble, attache et éventuelle élévation. Chaque élément doit être un asset distinct, avec ancrage et occlusion propres."
+          },
+          {
+            "name": "Interruption, expiration et retrait",
+            "description": "Prévoir libération de la cible, retour à un état contrôlable et retrait du piège aux transitions de manche. Les règles d’immunité, destruction et récupération restent des choix non implémentés."
+          }
+        ],
+        "interactions": [
+          "Définir placement, espace requis et compatibilité avec les plateformes ; aucune pose flottante ou support traversant le terrain.",
+          "Établir une matrice de cibles compatibles par taille, morphologie et état ; ne pas supposer qu’une machine géante peut être capturée.",
+          "Prévoir anticipation et contre-jeu lisibles, pause, KO simultané et fin de manche sans cible suspendue hors état.",
+          "Conserver le piège distinct du Mortar ennemi, de son projectile et de l’Air Shock Cannon."
+        ],
+        "separateAssetsNeeded": [
+          "Vue dégagée des supports",
+          "Vue arrière",
+          "Ballon et câble natifs",
+          "Déclenchement et retour",
+          "VFX/SFX et collisions"
+        ]
+      },
+      "nextWork": "Produire et valider les états décrits dans la fiche, depuis des vues natives complémentaires ; aucune admission au combat déduite de ce PNG."
+    }
+  ],
+  "archives": [
+    {
+      "kind": "prop",
+      "episode": "Metal Gear Survive",
+      "episodeKey": "survive",
+      "passId": "P68",
+      "workIds": [
+        "prop:survive_balloon_trap"
+      ],
+      "scope": "Un gadget Balloon Trap déployé sans ballon gonflé, vue trois quarts plongeante ; source statique individuelle.",
+      "referenceURLs": [
+        "https://w.atwiki.jp/mgsurvive/pages/111.html",
+        "https://img.atwiki.jp/mgsurvive/attach/111/98/220401_12.jpg",
+        "https://w.atwiki.jp/mgsurvive/pages/81.html"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass68/research/survive/references/native-balloon-trap-220401_12.jpg"
+      ],
+      "qaNotes": [
+        "Une retouche ciblée de retrait du halo a été demandée, sans nouvelle cible.",
+        "V2 réduit la faible frange alpha mais change des microtextures ; les plages larges soupçonnées de halo avaient déjà un alpha nul dans V1.",
+        "V1 conservée sur décision root ; V2 archivée, exclue de la sélection, de l’Atlas et du runtime."
+      ],
+      "transparentBackground": true,
+      "sourceGenerated": true,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "tracking": {
+        "scopeClosed": false,
+        "historicalWorkIds": [],
+        "extensionWorkIds": [
+          "prop:survive_balloon_trap"
+        ],
+        "narrativePlansCreated": 0
+      },
+      "path": "docs/cqc-reprise/pass68/research/survive/archive/survive-balloon-trap-v2-alpha-attempt.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1714998,
+      "colorMode": "RGBA",
+      "sha256": "961073e92fb748d66af3abe433a9a594312bd78d70c6a1d03811ac2436fd9dfb",
+      "gitBlobSha": "ebed9edccf50bd1667c026db0f298b1aa9c4c220",
+      "bitDepth": 8,
+      "colorType": 6,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1145825,
+        "nearOpaquePixels250To255": 382601,
+        "semiTransparentPixels1To249": 44438,
+        "alphaAbove16OnCanvasEdges": 0,
+        "boundsAt16": [
+          77,
+          30,
+          1460,
+          1001
+        ],
+        "boundsAt128": [
+          77,
+          31,
+          1460,
+          1000
+        ]
+      },
+      "id": "survive-balloon-trap-v2-alpha-attempt",
+      "assetId": "archive:p68:survive-balloon-trap-v2-alpha-attempt",
+      "label": "Survive — Balloon Trap, essai v2 de correction alpha archivé",
+      "selected": false,
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "edit",
+        "attempts": 1,
+        "promptId": "survive-balloon-trap-v2-alpha",
+        "promptFile": "docs/cqc-reprise/pass68/research/survive/prompt-balloon-trap-v2-alpha.txt",
+        "exactPrompt": "Use case: background-extraction.\nEdit target: the most recent generated image, our single olive Metal Gear Survive Balloon Trap on black radial support strips.\nMake exactly one targeted correction: REMOVE THE FAINT GRAY/OLIVE GLOW, HAZE AND FOG OUTSIDE THE DEVICE. All pixels outside the physical silhouette of the olive canister, round base collar and black radial support strips must have zero alpha, except the very narrow antialiased transition directly touching the physical edges. The wide blurred translucent halo currently surrounds the body and the spaces between support strips; completely remove it. Fully transparent gaps between the strips. No drop shadow, no ambient glow, no haze, no smoke, no checkerboard pixels, no ground or background.\nPreserve the device itself: identical olive faceted body silhouette, height and width, front circular details, oval recess, top plate, worn surface, round base collar, all seven visible black flat radial support strips, their angles/lengths and details. Keep the same framing, placement, camera view, lighting on the material, proportions and entire object within the margins. Do not redesign, shorten, sharpen or change any device component. Keep object surfaces solid and well defined. One complete device, one view, no captions or extra elements. Output a clean genuine transparent-alpha PNG.",
+        "num_last_images_to_include": 1,
+        "inputTarget": "previously displayed V1 generated image; local reference path temporarily unavailable after environment reset",
+        "inputTargetPath": "public/cqc/assets/p68/survive-balloon-trap.png",
+        "inputTargetSha256": "665ea5e6f9b46ac7985943738ba6b184d9fde13181b4fb711d27e86c723b17da",
+        "transparent_background": true,
+        "postprocessing": "none; original generated PNG bytes preserved",
+        "originalGeneratedPath": "/workspace/scratch/f62c7b61a198/generated_images/exec-45f6fc9d-c8d0-40c2-96eb-5c7fb35409ed.png"
+      },
+      "archiveReason": "Single requested halo-correction attempt. Original V1 selected to preserve original device microtexture; broad preview haze samples are alpha0 in both versions.",
+      "supersededBy": "survive-balloon-trap",
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "pass": "P68",
+      "selectedVersion": "v2",
+      "bodyCoverage": "full_object",
+      "edition": "Metal Gear Survive — capture native PC/console, plateforme de capture non certifiée",
+      "reviewRecords": [
+        "docs/cqc-reprise/pass68/reviewed-batch.json"
+      ]
+    }
+  ],
+  "blockedRequests": []
+}

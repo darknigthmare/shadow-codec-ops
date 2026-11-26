@@ -117,3 +117,12 @@ P67 ajoute 22 corps de personnages, 6 portraits et un Gekko Touch. La [continuat
 Avant une future admission, valider silhouette, incarnation, échelle, ancrages, vues utiles et états requis. Les mains, armes et équipements reconstruits demandent une validation distincte. Les portraits restent réservés à la consultation ou à une présentation autorisée ; les détails du corps hors cadre ne sont pas inventés. Les presets MGO ne deviennent pas l’uniforme universel d’une classe.
 
 Les flags de combat et de certification restent faux pour les 29 fichiers. Aucun coup, dégât, contre-jeu, VFX, son, animation ou nouvelle neutralisation n’est ajouté. Le Gekko Touch demeure associé à sa pose observée, sans assimilation automatique aux Gekko MGS4.
+
+
+<!-- BEGIN:P68 -->
+## P68 — états documentés, sources fixes uniquement
+
+Les [fiches P68](CONTINUATION_P68.md) détaillent les séquences à produire pour les chiens MSX2/NES, le garde au jetpack NES, le garde rouge MSX2 et le Balloon Trap Survive : attente, déplacement, préparation, interruption et sortie, avec ancrages et interactions à vérifier. Les états aériens du jetpack et la capture par ballon restent conditionnés par des références complémentaires.
+
+Les règles proposées pour CQC sont distinguées des observations natives. Aucun cycle animé, tir, dommage, hitbox, collision, VFX, son, neutralisation ou nouveau combattant jouable n’est implémenté par cette passe. Les cinq images ont `atlasIntegrated:true` et des flags de combat/certification faux ; les chiens gardent une morphologie quadrupède et les éditions restent séparées.
+<!-- END:P68 -->

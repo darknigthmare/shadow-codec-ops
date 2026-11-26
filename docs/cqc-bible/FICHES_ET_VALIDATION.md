@@ -113,3 +113,12 @@ Les [fiches P67](CONTINUATION_P67.md) comptent 29 candidats : 23 sujets complets
 La revue visuelle décrit ce que la référence établit et ce que la génération reconstruit. Les previews PSP, les illustrations du manuel MGS1, les captures HD et les variantes de menus conservent leur attribution. L’intégrité d’un PNG ne démontre ni une correspondance pixel par pixel ni une géométrie native exacte. Les marges basses volontairement coupées des portraits ne sont pas confondues avec un corps complet.
 
 L’extension Atlas préserve les 48 dossiers historiques et ajoute 29 dossiers filtrables sur les 32 clés d’édition. Les anciens registres, les 225 sélections et les 18 archives P66 sont préservés. Le [rapport QA P67](../cqc-reprise/pass67/INTEGRATION_QA.md) décrit le contrôle du graphe runtime et ses limites navigateur/déploiement. Les 30 rubriques et 90 exigences du guide demeurent inchangées.
+
+
+<!-- BEGIN:P68 -->
+## Validation P68 — cinq sélections et une archive
+
+Les six PNG sont suivis individuellement dans le [manifeste](../cqc-reprise/pass68/delivery-manifest.json), les [prompts](../cqc-reprise/pass68/prompt-index.json) et le [contrat de revue root](../cqc-reprise/pass68/reviewed-batch.json). La revue accepte cinq sources bornées ; elle ne certifie ni fidélité 1:1, ni grille de pixels native, ni géométrie de parties occultées. V2 du Balloon Trap reste archivé.
+
+Le contrôle P68 vérifie le préfixe exact de 77 dossiers Atlas, les 254 sélections et 19 archives historiques, la nouvelle bijection de cinq sources et l’exclusion de l’archive du runtime. Les [fiches](CONTINUATION_P68.md) relient les plans d’animation aux sections du guide sans prétendre produire leurs frames. Le [rapport QA](../cqc-reprise/pass68/INTEGRATION_QA.md) conserve les résultats réellement exécutés et la limite du navigateur indisponible.
+<!-- END:P68 -->

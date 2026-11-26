@@ -1,0 +1,256 @@
+{
+  "schema": "cqc.p68.survive.handoff.v1",
+  "pass": "P68",
+  "domain": "survive",
+  "checkedAt": "2026-11-26T16:09:18.383987+00:00",
+  "generationCalls": 2,
+  "generatedOutputs": 2,
+  "selectedOutputs": 1,
+  "rejectedOutputs": 1,
+  "archivedOutputs": 1,
+  "refusals": [],
+  "assets": [
+    {
+      "kind": "prop",
+      "episode": "Metal Gear Survive",
+      "episodeKey": "survive",
+      "passId": "P68",
+      "workIds": [
+        "prop:survive_balloon_trap"
+      ],
+      "scope": "Un gadget Balloon Trap déployé sans ballon gonflé, vue trois quarts plongeante ; source statique individuelle.",
+      "referenceURLs": [
+        "https://w.atwiki.jp/mgsurvive/pages/111.html",
+        "https://img.atwiki.jp/mgsurvive/attach/111/98/220401_12.jpg",
+        "https://w.atwiki.jp/mgsurvive/pages/81.html"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass68/research/survive/references/native-balloon-trap-220401_12.jpg"
+      ],
+      "qaNotes": [
+        "Capture native portant explicitement le libellé バルーントラップ, hébergée sur un wiki communautaire ; aucune provenance d’illustration officielle Konami revendiquée.",
+        "Corps olive facetté, sommet étroit, détails circulaires frontaux, creux ovale inférieur, collerette ronde et supports noirs très bas repris de la capture.",
+        "Portion du support gauche masquée par l’avatar complétée par continuité ; vue arrière, implantation et nombre réel des supports restent à vérifier sur une seconde vue.",
+        "Hauteur du corps et proportions interprétées ; rivets, découpes, plaque supérieure et usure interpolés, sans validation métrique ni certification absolue 1:1.",
+        "Le root a signalé un large halo dans l’aperçu. La lecture des pixels échantillonnés dans ces plages donne alpha=0 : leurs couleurs RGB sont invisibles avec une composition alpha correcte. Une faible frange native demeure ; à plus de 8 px du masque alpha>128, 1 521 pixels ont alpha=1, dont 498 à plus de 32 px. Aucun nettoyage de pixels effectué.",
+        "PNG brut RGBA 1536×1024, alpha maximal 254/255 préservé ; aucune valeur alpha>16 sur les bords. Pas de validation de rendu navigateur revendiquée.",
+        "Un seul objet inactif ; aucun gonflage, câble, capture, élévation, retour, effet, collision ou comportement jouable fourni."
+      ],
+      "transparentBackground": true,
+      "sourceGenerated": true,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "tracking": {
+        "scopeClosed": false,
+        "historicalWorkIds": [],
+        "extensionWorkIds": [
+          "prop:survive_balloon_trap"
+        ],
+        "narrativePlansCreated": 0
+      },
+      "path": "public/cqc/assets/p68/survive-balloon-trap.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1703307,
+      "colorMode": "RGBA",
+      "sha256": "665ea5e6f9b46ac7985943738ba6b184d9fde13181b4fb711d27e86c723b17da",
+      "gitBlobSha": "46f38e19fd4300b14e0ddc445427989eb11319e5",
+      "bitDepth": 8,
+      "colorType": 6,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1153337,
+        "nearOpaquePixels250To255": 369728,
+        "semiTransparentPixels1To249": 49799,
+        "alphaAbove16OnCanvasEdges": 0,
+        "boundsAt16": [
+          78,
+          33,
+          1460,
+          998
+        ],
+        "boundsAt128": [
+          79,
+          34,
+          1459,
+          997
+        ]
+      },
+      "id": "survive-balloon-trap",
+      "assetId": "asset:p68:survive-balloon-trap",
+      "label": "Survive — Balloon Trap, déployé inactif",
+      "publishedPath": "public/cqc/assets/p68/survive-balloon-trap.png",
+      "selected": true,
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "promptId": "survive-balloon-trap",
+        "promptFile": "docs/cqc-reprise/pass68/research/survive/prompt-balloon-trap.txt",
+        "exactPrompt": "Use case: background-extraction\nAsset type: ONE individual Metal Gear Survive Balloon Trap static deployable prop, genuine transparent PNG, one subject.\nInput image 1 is the native gameplay reference, not an artistic style guide. Isolate and faithfully redraw ONLY the small olive Balloon Trap device on the floor at lower right, centered around pixel x=1025 y=648 of the 1920x1080 image. The Japanese inventory label バルーントラップ identifies the selected trap. Do not reproduce the tall Air Shock Cannon at left.\nSubject: one squat upright tapered faceted olive-green canister on a low dark circular collar and a star-shaped arrangement of flat black splayed support strips. Preserve the visible reference silhouette: narrower flat top, shoulders sloping outward into a wider round base, a small recessed dark circular detail high on the front, a larger circular dark recessed panel below it, and a gray-green oval recess at the lower front above the round base collar. The body is only about the length of one support strip tall. The support strips are low flat segmented straps/blades, spread radially along the floor; they are not tall insect legs. Follow the visible six exposed strips and the partly occluded left-side strip arrangement in the reference; keep the short rear strips correctly foreshortened and the longer forward strips spread diagonally. The small part hidden by the avatar may be conservatively completed by continuing the same simple flat strip, without inventing mechanisms.\nComposition: retain the shallow elevated three-quarter view of the native reference. One complete device centered, all support tips inside frame, generous clean transparent margins. Faithful detailed 2D game asset with subdued realistic olive-painted worn metal and black rubber/metal straps, neutral even illumination. Keep the reference's compact utilitarian design and low proportions.\nRemove avatar, tall cannon, fences, floor grid, UI overlays, icons, text, health bars, white placement rings, background and ground shadow. No inflated balloon, person, wire tether, projectile, smoke, effects, captions, watermark, extra view, sheet, duplicate device, or invented glowing parts. Genuine alpha outside the single object and opaque material surfaces.",
+        "referenced_image_paths": [
+          "/mnt/data/cqc-p66/shadow-codec-ops/docs/cqc-reprise/pass66/research/survive/references/native-air-cannon-220401_12.jpg"
+        ],
+        "transparent_background": true,
+        "postprocessing": "none; original generated PNG bytes preserved",
+        "originalGeneratedPath": "/workspace/scratch/f62c7b61a198/generated_images/exec-fb735d25-1a74-4c36-9d54-428072b5ccf4.png",
+        "transport": "copied byte-for-byte; blob uploaded via base64 while filesystem unavailable"
+      },
+      "decision": "V1 retained after one requested alpha correction attempt; no broad nonzero-alpha haze established in samples, preserve original material details."
+    }
+  ],
+  "archives": [
+    {
+      "kind": "prop",
+      "episode": "Metal Gear Survive",
+      "episodeKey": "survive",
+      "passId": "P68",
+      "workIds": [
+        "prop:survive_balloon_trap"
+      ],
+      "scope": "Un gadget Balloon Trap déployé sans ballon gonflé, vue trois quarts plongeante ; source statique individuelle.",
+      "referenceURLs": [
+        "https://w.atwiki.jp/mgsurvive/pages/111.html",
+        "https://img.atwiki.jp/mgsurvive/attach/111/98/220401_12.jpg",
+        "https://w.atwiki.jp/mgsurvive/pages/81.html"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass68/research/survive/references/native-balloon-trap-220401_12.jpg"
+      ],
+      "qaNotes": [
+        "Une retouche ciblée de retrait du halo a été demandée, sans nouvelle cible.",
+        "V2 réduit la faible frange alpha mais change des microtextures ; les plages larges soupçonnées de halo avaient déjà un alpha nul dans V1.",
+        "V1 conservée sur décision root ; V2 archivée, exclue de la sélection, de l’Atlas et du runtime."
+      ],
+      "transparentBackground": true,
+      "sourceGenerated": true,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "tracking": {
+        "scopeClosed": false,
+        "historicalWorkIds": [],
+        "extensionWorkIds": [
+          "prop:survive_balloon_trap"
+        ],
+        "narrativePlansCreated": 0
+      },
+      "path": "docs/cqc-reprise/pass68/research/survive/archive/survive-balloon-trap-v2-alpha-attempt.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1714998,
+      "colorMode": "RGBA",
+      "sha256": "961073e92fb748d66af3abe433a9a594312bd78d70c6a1d03811ac2436fd9dfb",
+      "gitBlobSha": "ebed9edccf50bd1667c026db0f298b1aa9c4c220",
+      "bitDepth": 8,
+      "colorType": 6,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1145825,
+        "nearOpaquePixels250To255": 382601,
+        "semiTransparentPixels1To249": 44438,
+        "alphaAbove16OnCanvasEdges": 0,
+        "boundsAt16": [
+          77,
+          30,
+          1460,
+          1001
+        ],
+        "boundsAt128": [
+          77,
+          31,
+          1460,
+          1000
+        ]
+      },
+      "id": "survive-balloon-trap-v2-alpha-attempt",
+      "assetId": "archive:p68:survive-balloon-trap-v2-alpha-attempt",
+      "label": "Survive — Balloon Trap, essai v2 de correction alpha archivé",
+      "selected": false,
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "edit",
+        "attempts": 1,
+        "promptId": "survive-balloon-trap-v2-alpha",
+        "promptFile": "docs/cqc-reprise/pass68/research/survive/prompt-balloon-trap-v2-alpha.txt",
+        "exactPrompt": "Use case: background-extraction.\nEdit target: the most recent generated image, our single olive Metal Gear Survive Balloon Trap on black radial support strips.\nMake exactly one targeted correction: REMOVE THE FAINT GRAY/OLIVE GLOW, HAZE AND FOG OUTSIDE THE DEVICE. All pixels outside the physical silhouette of the olive canister, round base collar and black radial support strips must have zero alpha, except the very narrow antialiased transition directly touching the physical edges. The wide blurred translucent halo currently surrounds the body and the spaces between support strips; completely remove it. Fully transparent gaps between the strips. No drop shadow, no ambient glow, no haze, no smoke, no checkerboard pixels, no ground or background.\nPreserve the device itself: identical olive faceted body silhouette, height and width, front circular details, oval recess, top plate, worn surface, round base collar, all seven visible black flat radial support strips, their angles/lengths and details. Keep the same framing, placement, camera view, lighting on the material, proportions and entire object within the margins. Do not redesign, shorten, sharpen or change any device component. Keep object surfaces solid and well defined. One complete device, one view, no captions or extra elements. Output a clean genuine transparent-alpha PNG.",
+        "num_last_images_to_include": 1,
+        "inputTarget": "previously displayed V1 generated image; local reference path temporarily unavailable after environment reset",
+        "inputTargetPath": "public/cqc/assets/p68/survive-balloon-trap.png",
+        "inputTargetSha256": "665ea5e6f9b46ac7985943738ba6b184d9fde13181b4fb711d27e86c723b17da",
+        "transparent_background": true,
+        "postprocessing": "none; original generated PNG bytes preserved",
+        "originalGeneratedPath": "/workspace/scratch/f62c7b61a198/generated_images/exec-45f6fc9d-c8d0-40c2-96eb-5c7fb35409ed.png"
+      },
+      "archiveReason": "Single requested halo-correction attempt. Original V1 selected to preserve original device microtexture; broad preview haze samples are alpha0 in both versions.",
+      "supersededBy": "survive-balloon-trap"
+    }
+  ],
+  "referenceFiles": [
+    {
+      "path": "docs/cqc-reprise/pass68/research/survive/references/native-balloon-trap-220401_12.jpg",
+      "sourceURL": "https://img.atwiki.jp/mgsurvive/attach/111/98/220401_12.jpg",
+      "contextURL": "https://w.atwiki.jp/mgsurvive/pages/111.html",
+      "sourceKind": "native_gameplay_screenshot_hosted_on_community_wiki",
+      "officialPublisherHosted": false,
+      "width": 1920,
+      "height": 1080,
+      "bytes": 292612,
+      "sha256": "6aa3590b40a45424cbd054f373bbf257b9c9da81747dc6b05a7253e6d06d147b",
+      "gitBlobSha": "2622177ae31c7c46e7c30693d6276033b6345560",
+      "inheritedFrom": "docs/cqc-reprise/pass66/research/survive/references/native-air-cannon-220401_12.jpg",
+      "inheritedCommit": "5d7c6c5187f3906ad1ead53706e83674750f1c34",
+      "visuallyInspected": true,
+      "editing": "none; exact inherited source bytes recovered after environment reset",
+      "observation": "Selected UI label バルーントラップ and small olive device visible lower right; avatar obscures part of a left support strip."
+    }
+  ],
+  "research": {
+    "nativeScreenshotWebRef": "turn618046783view0",
+    "contextPageWebRef": "turn270872535view0",
+    "itemPageWebRef": "turn605841228search3",
+    "officialLookup": "Konami item search yielded no dedicated Balloon Trap visual; main Konami page inaccessible. No official-hosted provenance claimed."
+  },
+  "selfVisualReview": {
+    "status": "accept-as-bounded-candidate-after-root-review",
+    "reviewedSha256": "665ea5e6f9b46ac7985943738ba6b184d9fde13181b4fb711d27e86c723b17da",
+    "rootApprovedRetainV1ArchiveV2": true,
+    "quantitativeAlphaReport": "docs/cqc-reprise/pass68/research/survive/pixel-qa.json"
+  },
+  "openCandidates": [
+    {
+      "id": "survive-large-spike-barricade",
+      "status": "not_generated",
+      "reason": "Avatar obscures central/lower structure in available screenshot; requires clearer native reference."
+    }
+  ],
+  "previousRefusalsRetried": false,
+  "recovery": {
+    "filesystemResetOccurred": true,
+    "originalGenerationReferencePathWasValidAtGeneration": true,
+    "originalLocalReferenceLostDuringReset": true,
+    "referenceRecoveredByteIdenticalFromPublishedP66": true,
+    "rawImagesSurvivedInGeneratedImages": true,
+    "v1BlobUploaded": "46f38e19fd4300b14e0ddc445427989eb11319e5",
+    "v2BlobUploaded": "ebed9edccf50bd1667c026db0f298b1aa9c4c220",
+    "treeOrRefModifiedByThisAgent": false
+  },
+  "integrationNote": "Only own P68 survive subtree and survive-* PNG written in restored repo. Atlas/bible/P67 untouched. Parent must update P68 central manifests after integration."
+}

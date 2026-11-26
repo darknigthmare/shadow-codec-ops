@@ -1,0 +1,542 @@
+{
+  "schema": "cqc.p68.classic-generation-handoff.v1",
+  "asOf": "2026-11-26",
+  "selectedCount": 4,
+  "requests": 4,
+  "successfulOutputs": 4,
+  "generatedOutputs": 4,
+  "archivedCount": 0,
+  "blockedRequests": [],
+  "assets": [
+    {
+      "id": "classic-mg1-msx-guard-dog-side",
+      "assetId": "asset:p68:classic-mg1-msx-guard-dog-side",
+      "pass": "P68",
+      "passId": "P68",
+      "label": "Metal Gear MSX2 — chien de garde, profil natif",
+      "episode": "Metal Gear — version MSX2",
+      "episodeKey": "mg_msx",
+      "edition": "Jeu original MSX2",
+      "kind": "machine",
+      "workIds": [
+        "character:R-MG1-03",
+        "machine:mg1_msx_guard_dog_side"
+      ],
+      "scope": "Une seule pose complète de la variante native indiquée ; ni animation, ni ensemble de la famille, ni admission au combat.",
+      "bodyCoverage": "full_body",
+      "selectedVersion": "v1",
+      "referenceType": "community_native_sprite_extraction_sheet",
+      "referenceURLs": [
+        "https://www.spriters-resource.com/msx2/metalgear/asset/22528/",
+        "https://www.spriters-resource.com/media/assets/21/22528.png?updated=1755472545"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass68/research/classic/references/mg1-msx-enemies-native.png"
+      ],
+      "targetNativeFrame": "DOG group, upper row, first horizontal side-profile frame at approximately x124–156/y10–27 of the original 420×273 sheet.",
+      "referenceSourceHashes": {
+        "mg1-msx-enemies-native.png": "148912028441b199391af77faca0610258bec994f95328111749fb53265ccf95"
+      },
+      "qaNotes": [
+        "Chien MSX2 de profil gauche, silhouette noire et rehauts cuivre conservés dans un rendu pixel art agrandi.",
+        "Une pose quadrupède complète ; tête, queue et pattes visibles, sans cadre, autres animaux, sol ou ombre.",
+        "Le placement exact des pixels et des pattes n’est pas une extraction déterministe de la frame native ; les microvariations de palette et surface générées restent à revoir.",
+        "Sortie PNG brute conservée sans retouche, découpe, recoloration ou agrandissement des pixels. Les deux planches JPEG de contrôle sont des dérivés de visualisation seulement.",
+        "Inspection sur fond clair et sombre : silhouette lisible, pas de fond opaque ou de coupe du sujet. Quelques pixels alpha très faibles périphériques sont conservés dans les fichiers bruts.",
+        "La plupart des pixels intérieurs atteignent alpha 254 ; l’absence de pixel alpha 255 dans certaines sorties n’implique pas que le personnage soit invisible.",
+        "Source statique candidate ; fidélité absolue 1:1 et UHD native non certifiées, aucun groupe clôturé."
+      ],
+      "selected": true,
+      "sourceGenerated": true,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "qaVerdict": "accept-as-bounded-native-style-reconstruction",
+      "imageVisuallyInspected": true,
+      "referencesVisuallyInspected": true,
+      "transparentBackground": true,
+      "bitDepth": 8,
+      "colorType": 6,
+      "nextWork": "Revue indépendante, rapprochement précis des frames/palettes natives, autres poses et animations ; ne pas admettre au combat sur la seule base de cette source.",
+      "path": "public/cqc/assets/p68/classic-mg1-msx-guard-dog-side.png",
+      "bytes": 707615,
+      "sha256": "552b164d66e387ef8ecf7dd499f317a1dea4fc2645e90ccec1e0132bffca702a",
+      "gitBlobSha": "b52257931416c6ba04e08bbfa1a90f29ec748fab",
+      "width": 1536,
+      "height": 1024,
+      "colorMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1318555,
+        "opaquePixels": 0,
+        "semiTransparentPixels": 254309,
+        "boundsByThreshold": {
+          "0": [
+            67,
+            33,
+            1493,
+            984
+          ],
+          "16": [
+            252,
+            258,
+            1211,
+            770
+          ],
+          "128": [
+            252,
+            259,
+            1210,
+            770
+          ]
+        },
+        "edgeAlphaMax": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "nearOpaquePixels250To255": 232788
+      },
+      "pngDecoded": true,
+      "pngCRCVerified": true,
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "exactPrompt": "Use case: stylized-concept.\nAsset type: one individual transparent pixel-art creature sprite for a Metal Gear MSX2 visual atlas.\nInput image 1 is a native extraction sheet from the original Metal Gear MSX2 game, used only as a design reference.\nTarget ONLY the first horizontal side-profile guard dog in the DOG section at the very top: the frame approximately at x124–156, y10–27 of the 420×273 reference, immediately to the right of the four upright-looking dog frames. It is the left-facing side-profile dog, NOT the sleeping dog at the extreme left, not a human guard and not any other animation frame.\nReconstruct ONE complete isolated enlarged pixel-art version of that exact observed dog frame. Preserve its original compact body silhouette, left-facing head and muzzle, back, tail, leg positions and angular pixel-cluster arrangement. Keep the black body with the sparse muted copper/tan highlight pixels visible in the source. The tiny native sprite is the entire design authority. Do not reinterpret it as a realistic German Shepherd or redesign its anatomy.\nComposition: one left-facing dog, complete muzzle, tail and all limbs inside a landscape transparent canvas with generous empty margins. Crisp square pixel-art blocks, no smooth painted fur and no new material textures. Keep the source pose and elevated native viewing angle.\nRemove the sheet's magenta tiles, red backdrop, frame lines and lettering. No collar, harness, leash, military armor, eyes or facial detail beyond the source, no extra dog, person, second frame, floor, shadow, effects, words, checkerboard or border. Output ONE PNG on a genuinely transparent alpha background.",
+        "promptFile": "docs/cqc-reprise/pass68/research/classic/prompt-classic-mg1-msx-guard-dog-side.txt",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass68/research/classic/references/mg1-msx-enemies-native.png"
+        ],
+        "transparent_background": true,
+        "referenceInputMode": "local_reference_path_before_executor_reset",
+        "sourceOutputPath": "/workspace/scratch/f62c7b61a198/generated_images/exec-17f6bfc1-589c-459d-9d18-6210ce4dba41.png",
+        "postprocessing": "none; raw image bytes preserved",
+        "transport": "source file copied byte-for-byte",
+        "referenced_image_paths": [
+          "/mnt/data/cqc-p66/shadow-codec-ops/docs/cqc-reprise/pass68/research/classic/references/mg1-msx-enemies-native.png"
+        ]
+      },
+      "recovery": {
+        "executorResetHandled": true,
+        "rawPNGPreserved": true,
+        "preuploadedGitBlobSha": "b52257931416c6ba04e08bbfa1a90f29ec748fab",
+        "referencesRecoveredFromP67Blobs": true,
+        "referenceCopyRecord": "docs/cqc-reprise/pass68/research/classic/reference-copies.json"
+      }
+    },
+    {
+      "id": "classic-mg1-nes-guard-dog-side",
+      "assetId": "asset:p68:classic-mg1-nes-guard-dog-side",
+      "pass": "P68",
+      "passId": "P68",
+      "label": "Metal Gear NES — chien de garde, profil natif",
+      "episode": "Metal Gear — version NES",
+      "episodeKey": "mg_nes",
+      "edition": "Portage NES",
+      "kind": "machine",
+      "workIds": [
+        "character:R-MG1-03",
+        "machine:mg1_nes_guard_dog_side"
+      ],
+      "scope": "Une seule pose complète de la variante native indiquée ; ni animation, ni ensemble de la famille, ni admission au combat.",
+      "bodyCoverage": "full_body",
+      "selectedVersion": "v1",
+      "referenceType": "community_native_sprite_extraction_sheet",
+      "referenceURLs": [
+        "https://www.spriters-resource.com/nes/mg/asset/19406/page-1/",
+        "https://www.spriters-resource.com/media/assets/18/19406.png?updated=1755472532"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass68/research/classic/references/mg1-nes-enemies-native.png"
+      ],
+      "targetNativeFrame": "DOG group, upper row, first horizontal side-profile frame at approximately x124–156/y10–27 of the original 255×211 sheet.",
+      "referenceSourceHashes": {
+        "mg1-nes-enemies-native.png": "3f20f028580aea6049a2b0e5933b9039dc383dcd8eb68b6389477fdef619b1fb"
+      },
+      "qaNotes": [
+        "Chien NES distinct du candidat MSX2 : profil gauche, silhouette noire, rehauts beige clair et gris, pose de course étirée.",
+        "Une seule créature complète ; l’édition est attribuée à la planche NES et n’est pas transférée aux autres jeux.",
+        "Les blocs de pixels, leurs dimensions et leur espacement sont reconstruits par le générateur ; une fidélité au pixel près n’est pas certifiée.",
+        "Sortie PNG brute conservée sans retouche, découpe, recoloration ou agrandissement des pixels. Les deux planches JPEG de contrôle sont des dérivés de visualisation seulement.",
+        "Inspection sur fond clair et sombre : silhouette lisible, pas de fond opaque ou de coupe du sujet. Quelques pixels alpha très faibles périphériques sont conservés dans les fichiers bruts.",
+        "La plupart des pixels intérieurs atteignent alpha 254 ; l’absence de pixel alpha 255 dans certaines sorties n’implique pas que le personnage soit invisible.",
+        "Source statique candidate ; fidélité absolue 1:1 et UHD native non certifiées, aucun groupe clôturé."
+      ],
+      "selected": true,
+      "sourceGenerated": true,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "qaVerdict": "accept-as-bounded-native-style-reconstruction",
+      "imageVisuallyInspected": true,
+      "referencesVisuallyInspected": true,
+      "transparentBackground": true,
+      "bitDepth": 8,
+      "colorType": 6,
+      "nextWork": "Revue indépendante, rapprochement précis des frames/palettes natives, autres poses et animations ; ne pas admettre au combat sur la seule base de cette source.",
+      "path": "public/cqc/assets/p68/classic-mg1-nes-guard-dog-side.png",
+      "bytes": 363154,
+      "sha256": "f55c32c07df48be89468fc1edea07a7292203868edd17af3722043584a9504bd",
+      "gitBlobSha": "336d4b6e63012a622748e4dfd4554577d5fe0365",
+      "width": 1774,
+      "height": 887,
+      "colorMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1045715,
+        "opaquePixels": 2134,
+        "semiTransparentPixels": 525689,
+        "boundsByThreshold": {
+          "0": [
+            49,
+            81,
+            1598,
+            779
+          ],
+          "16": [
+            142,
+            135,
+            1594,
+            776
+          ],
+          "128": [
+            142,
+            136,
+            1594,
+            776
+          ]
+        },
+        "edgeAlphaMax": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "nearOpaquePixels250To255": 504095
+      },
+      "pngDecoded": true,
+      "pngCRCVerified": true,
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "exactPrompt": "Use case: stylized-concept.\nAsset type: one individual transparent pixel-art creature sprite for the Metal Gear NES visual atlas.\nInput image 1 is the native extraction sheet from Metal Gear on NES, used only as a design reference. This specific NES frame is the authority; do not substitute an MSX2 dog.\nTarget ONLY the first horizontal side-profile dog in the DOG section at the top: approximately x124–156, y10–27 of the 255×211 reference sheet, immediately to the right of the four upright-looking dog frames. Use that one left-facing running/crouched side-profile frame, not the sleeping dogs at the far left and not a different frame.\nReconstruct ONE enlarged isolated pixel-art rendering of that complete NES guard dog. Preserve its angular compact silhouette, left-facing head and muzzle, black back and body, native leg positions and tail, and the sparse pale beige/tan and gray highlight pixels. Preserve exactly the character of the limited NES palette and the elevated native view. Do not transform the tiny source into a realistically detailed dog or add fur texture.\nComposition: one entire left-facing dog on a landscape transparent canvas; keep muzzle, tail and every source limb inside generous margins. Crisp square pixel blocks and no painted gradients. One pose only.\nRemove all magenta tiles, red background, dividing lines and text from the sheet. No collar, harness, leash, armor, extra facial features, person, extra animal, alternate view, floor, cast shadow, smoke, HUD, frame, watermark or checkerboard. Output ONE PNG with genuine transparent alpha around the entire silhouette.",
+        "promptFile": "docs/cqc-reprise/pass68/research/classic/prompt-classic-mg1-nes-guard-dog-side.txt",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass68/research/classic/references/mg1-nes-enemies-native.png"
+        ],
+        "transparent_background": true,
+        "referenceInputMode": "local_reference_path_before_executor_reset",
+        "sourceOutputPath": null,
+        "postprocessing": "none; raw image bytes preserved",
+        "transport": "raw tool image data URL decoded byte-for-byte after executor reset",
+        "referenced_image_paths": [
+          "/mnt/data/cqc-p66/shadow-codec-ops/docs/cqc-reprise/pass68/research/classic/references/mg1-nes-enemies-native.png"
+        ]
+      },
+      "recovery": {
+        "executorResetHandled": true,
+        "rawPNGPreserved": true,
+        "preuploadedGitBlobSha": "336d4b6e63012a622748e4dfd4554577d5fe0365",
+        "referencesRecoveredFromP67Blobs": true,
+        "referenceCopyRecord": "docs/cqc-reprise/pass68/research/classic/reference-copies.json"
+      }
+    },
+    {
+      "id": "classic-mg1-nes-jetpack-guard",
+      "assetId": "asset:p68:classic-mg1-nes-jetpack-guard",
+      "pass": "P68",
+      "passId": "P68",
+      "label": "Metal Gear NES — garde au jetpack, pose native",
+      "episode": "Metal Gear — version NES",
+      "episodeKey": "mg_nes",
+      "edition": "Portage NES",
+      "kind": "character",
+      "workIds": [
+        "character:R-MG1-03",
+        "character:mg1_nes_jetpack_guard"
+      ],
+      "scope": "Une seule pose complète de la variante native indiquée ; ni animation, ni ensemble de la famille, ni admission au combat.",
+      "bodyCoverage": "full_body",
+      "selectedVersion": "v1",
+      "referenceType": "community_native_sprite_extraction_sheet",
+      "referenceURLs": [
+        "https://www.spriters-resource.com/nes/mg/asset/19406/page-1/",
+        "https://www.spriters-resource.com/media/assets/18/19406.png?updated=1755472532"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass68/research/classic/references/mg1-nes-enemies-native.png"
+      ],
+      "targetNativeFrame": "JETPACK GUARD group, first complete guard frame at the lower-left, approximately x1–18/y144–173 of the 255×211 sheet.",
+      "referenceSourceHashes": {
+        "mg1-nes-enemies-native.png": "3f20f028580aea6049a2b0e5933b9039dc383dcd8eb68b6389477fdef619b1fb"
+      },
+      "qaNotes": [
+        "Garde NES du bloc JETPACK GUARD, pose verticale native, noir, crème et beige, deux grandes formes supérieures de l’équipement visibles.",
+        "Le corps complet est cadré avec une marge ; aucune flamme, animation de vol ou mécanique nouvelle n’est ajoutée.",
+        "La petite frame ne fournit pas une géométrie 3D complète de l’équipement ; le dessin agrandi ne prouve ni le nombre de composants cachés ni une copie exacte des texels.",
+        "Sortie PNG brute conservée sans retouche, découpe, recoloration ou agrandissement des pixels. Les deux planches JPEG de contrôle sont des dérivés de visualisation seulement.",
+        "Inspection sur fond clair et sombre : silhouette lisible, pas de fond opaque ou de coupe du sujet. Quelques pixels alpha très faibles périphériques sont conservés dans les fichiers bruts.",
+        "La plupart des pixels intérieurs atteignent alpha 254 ; l’absence de pixel alpha 255 dans certaines sorties n’implique pas que le personnage soit invisible.",
+        "Source statique candidate ; fidélité absolue 1:1 et UHD native non certifiées, aucun groupe clôturé."
+      ],
+      "selected": true,
+      "sourceGenerated": true,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "qaVerdict": "accept-as-bounded-native-style-reconstruction",
+      "imageVisuallyInspected": true,
+      "referencesVisuallyInspected": true,
+      "transparentBackground": true,
+      "bitDepth": 8,
+      "colorType": 6,
+      "nextWork": "Revue indépendante, rapprochement précis des frames/palettes natives, autres poses et animations ; ne pas admettre au combat sur la seule base de cette source.",
+      "path": "public/cqc/assets/p68/classic-mg1-nes-jetpack-guard.png",
+      "bytes": 794200,
+      "sha256": "a66b15d776dae733d6ce3ddaa33e3ac5977a4ebfa8b6f7cef09f2955c4aecffe",
+      "gitBlobSha": "54fae496dca66485c6525cc79a3e403467391954",
+      "width": 1024,
+      "height": 1536,
+      "colorMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1110204,
+        "opaquePixels": 0,
+        "semiTransparentPixels": 462660,
+        "boundsByThreshold": {
+          "0": [
+            0,
+            128,
+            984,
+            1482
+          ],
+          "16": [
+            242,
+            192,
+            783,
+            1348
+          ],
+          "128": [
+            242,
+            192,
+            782,
+            1348
+          ]
+        },
+        "edgeAlphaMax": {
+          "top": 0,
+          "bottom": 0,
+          "left": 1,
+          "right": 0
+        },
+        "nearOpaquePixels250To255": 447442
+      },
+      "pngDecoded": true,
+      "pngCRCVerified": true,
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "exactPrompt": "Use case: stylized-concept.\nAsset type: one individual transparent character sprite for the Metal Gear NES visual atlas.\nInput image 1 is the native sprite extraction sheet from the original Metal Gear NES port. Use only the FIRST full guard frame immediately under the JETPACK GUARD heading at the lower left of the sheet, approximately x1–18, y144–173 of the 255×211 source. Ignore the ordinary GUARD section, dogs, cameras, scorpions and roller.\nPrimary request: create ONE isolated enlarged pixel-art rendering of that exact jetpack guard frame. Preserve the compact upright human silhouette, the original helmet/head shape, shoulders and arms, narrow waist, native leg and foot arrangement, and the visible jetpack/back-equipment shapes. Preserve the small black, pale cream and tan NES palette and angular pixel-cluster construction. The native frame is the whole design reference; do not invent hidden machinery.\nComposition: one whole figure centered head to feet on a portrait transparent canvas, same native facing/view and pose, with generous transparent margins. Crisp uniform square pixel-art blocks, no realistic soldier redesign, no photorealistic texture, no new armor plating or newly detailed face.\nNo visible jet flame, smoke, flight trail or muzzle flash unless contained in the selected native frame; the chosen frame is a quiet static pose. No new weapon design, markings, insignia, modern tactical gear, second character, sheet or alternate frame. Remove the magenta tile, red sheet backdrop, borders, labels and all other objects. No floor, cast shadow, UI, text, logo, opaque background or checkerboard. Exactly one PNG with true transparent alpha.",
+        "promptFile": "docs/cqc-reprise/pass68/research/classic/prompt-classic-mg1-nes-jetpack-guard.txt",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass68/research/classic/references/mg1-nes-enemies-native.png"
+        ],
+        "transparent_background": true,
+        "referenceInputMode": "local_reference_path_before_executor_reset",
+        "sourceOutputPath": "/workspace/scratch/f62c7b61a198/generated_images/exec-70da7b7d-c0ec-41a6-8179-1e60df362ba7.png",
+        "postprocessing": "none; raw image bytes preserved",
+        "transport": "source file copied byte-for-byte",
+        "referenced_image_paths": [
+          "/mnt/data/cqc-p66/shadow-codec-ops/docs/cqc-reprise/pass68/research/classic/references/mg1-nes-enemies-native.png"
+        ]
+      },
+      "recovery": {
+        "executorResetHandled": true,
+        "rawPNGPreserved": true,
+        "preuploadedGitBlobSha": "54fae496dca66485c6525cc79a3e403467391954",
+        "referencesRecoveredFromP67Blobs": true,
+        "referenceCopyRecord": "docs/cqc-reprise/pass68/research/classic/reference-copies.json"
+      }
+    },
+    {
+      "id": "classic-mg1-msx-red-guard",
+      "assetId": "asset:p68:classic-mg1-msx-red-guard",
+      "pass": "P68",
+      "passId": "P68",
+      "label": "Metal Gear MSX2 — garde rouge d’Outer Heaven",
+      "episode": "Metal Gear — version MSX2",
+      "episodeKey": "mg_msx",
+      "edition": "Jeu original MSX2",
+      "kind": "character",
+      "workIds": [
+        "character:R-MG1-03"
+      ],
+      "scope": "Une seule pose complète de la variante native indiquée ; ni animation, ni ensemble de la famille, ni admission au combat.",
+      "bodyCoverage": "full_body",
+      "selectedVersion": "v1",
+      "referenceType": "community_native_sprite_extraction_sheet",
+      "referenceURLs": [
+        "https://www.spriters-resource.com/msx2/metalgear/asset/22528/",
+        "https://www.spriters-resource.com/media/assets/21/22528.png?updated=1755472545"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass68/research/classic/references/mg1-msx-enemies-native.png"
+      ],
+      "targetNativeFrame": "GUARDS group, first red-uniform guard of the top row after the six gray guard frames, approximately x124–140/y56–88.",
+      "referenceSourceHashes": {
+        "mg1-msx-enemies-native.png": "148912028441b199391af77faca0610258bec994f95328111749fb53265ccf95"
+      },
+      "qaNotes": [
+        "Garde rouge MSX2, silhouette compacte, uniforme rouge/noir et visage/mains clairs, pose native légèrement élevée.",
+        "Le cadrage contient tête, équipement visible et deux pieds. Le motif de pixels et les détails gris sont reconstruits, sans certification pixel exacte.",
+        "Génération depuis les cinq dernières images de conversation après disparition du chemin local : seule la première image, planche MSX2 inspectée, a été désignée comme référence de design.",
+        "Sortie PNG brute conservée sans retouche, découpe, recoloration ou agrandissement des pixels. Les deux planches JPEG de contrôle sont des dérivés de visualisation seulement.",
+        "Inspection sur fond clair et sombre : silhouette lisible, pas de fond opaque ou de coupe du sujet. Quelques pixels alpha très faibles périphériques sont conservés dans les fichiers bruts.",
+        "La plupart des pixels intérieurs atteignent alpha 254 ; l’absence de pixel alpha 255 dans certaines sorties n’implique pas que le personnage soit invisible.",
+        "Source statique candidate ; fidélité absolue 1:1 et UHD native non certifiées, aucun groupe clôturé."
+      ],
+      "selected": true,
+      "sourceGenerated": true,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "qaVerdict": "accept-as-bounded-native-style-reconstruction",
+      "imageVisuallyInspected": true,
+      "referencesVisuallyInspected": true,
+      "transparentBackground": true,
+      "bitDepth": 8,
+      "colorType": 6,
+      "nextWork": "Revue indépendante, rapprochement précis des frames/palettes natives, autres poses et animations ; ne pas admettre au combat sur la seule base de cette source.",
+      "path": "public/cqc/assets/p68/classic-mg1-msx-red-guard.png",
+      "bytes": 659309,
+      "sha256": "5a977ced18f3b43233ab6e310127e9530a84a216d90edfe849bb736da5015a5f",
+      "gitBlobSha": "a6aff12493a84cb5475c7886198b42d91d53170b",
+      "width": 1024,
+      "height": 1536,
+      "colorMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1274950,
+        "opaquePixels": 0,
+        "semiTransparentPixels": 297914,
+        "boundsByThreshold": {
+          "0": [
+            0,
+            227,
+            932,
+            1400
+          ],
+          "16": [
+            272,
+            257,
+            753,
+            1272
+          ],
+          "128": [
+            272,
+            258,
+            752,
+            1272
+          ]
+        },
+        "edgeAlphaMax": {
+          "top": 0,
+          "bottom": 0,
+          "left": 1,
+          "right": 0
+        },
+        "nearOpaquePixels250To255": 286679
+      },
+      "pngDecoded": true,
+      "pngCRCVerified": true,
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "exactPrompt": "Use case: stylized-concept.\nAsset type: one individual transparent character sprite for the original Metal Gear MSX2 visual atlas.\nInput image 1 is a native sprite extraction sheet, a design reference only. Target ONLY the first red-uniform guard frame in the top row of the GUARDS section: immediately after the six gray guard frames, approximately x124–140/y56–88 in the 420×273 sheet. Use this exact red guard pose, not the gray, blue or green variants, and not the NES version.\nCreate ONE complete enlarged pixel-art reconstruction of that native red guard. Preserve the source's compact proportions, slightly elevated native viewpoint, head covering, pose, visible arms, equipment shapes, legs and boots, and the red/black/tan pixel palette. Retain the original silhouette and pixel-cluster appearance; no conversion into a new realistic military character.\nComposition: one complete head-to-boots figure centered on a portrait transparent canvas with generous margin on every side. The exact facing and posture of the selected frame are retained. Crisp consistent square pixel blocks; no smooth shading, new texture, invented facial detail, pouches, insignia, body armor, rifle attachments or backpack details.\nDo not copy the red sheet backdrop, magenta tile, dividing lines, labels or any other sprite. No extra pose, duplicate guard, montage, contact sheet, border, ground, shadow, text, watermark, colored background or checkerboard. Exactly one PNG with genuine transparent alpha outside the character.\nReference routing: of the five supplied recent conversation images, use ONLY the FIRST image, the original 420×273 MSX2 native sprite sheet, for this red guard. The second image is the NES sheet and the remaining images are previous outputs of other targets; ignore those for the design. This is a new MSX2 red guard asset.",
+        "promptFile": "docs/cqc-reprise/pass68/research/classic/prompt-classic-mg1-msx-red-guard.txt",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass68/research/classic/references/mg1-msx-enemies-native.png"
+        ],
+        "transparent_background": true,
+        "referenceInputMode": "recent_conversation_images",
+        "sourceOutputPath": "/workspace/scratch/f62c7b61a198/generated_images/exec-93991c2f-6a36-43b0-a6bb-29b552db4d1c.png",
+        "postprocessing": "none; raw image bytes preserved",
+        "transport": "source file copied byte-for-byte",
+        "num_last_images_to_include": 5
+      },
+      "recovery": {
+        "executorResetHandled": true,
+        "rawPNGPreserved": true,
+        "preuploadedGitBlobSha": null,
+        "referencesRecoveredFromP67Blobs": true,
+        "referenceCopyRecord": "docs/cqc-reprise/pass68/research/classic/reference-copies.json"
+      }
+    }
+  ],
+  "archives": [],
+  "counts": {
+    "selectedSources": 4,
+    "byEpisode": {
+      "mg_msx": 2,
+      "mg_nes": 2
+    },
+    "byKind": {
+      "machine": 2,
+      "character": 2
+    },
+    "selectedBytes": 2524278,
+    "combatAdmissions": 0,
+    "absolute1to1Certifications": 0,
+    "closedScopes": 0
+  },
+  "visualQA": "docs/cqc-reprise/pass68/research/classic/pixel-qa.json",
+  "centralRegistriesModified": false,
+  "githubBranchModified": false,
+  "remoteBlobsOnly": 3,
+  "integrationNote": "Ready for root review and association; preserve all P67 entries. These files are original raw ImageGen outputs, not deterministic native sprite extractions."
+}

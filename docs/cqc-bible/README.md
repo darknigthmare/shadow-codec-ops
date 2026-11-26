@@ -184,3 +184,12 @@ Le socle P63 a désormais été réellement revérifié par Node, reconstruction
 P65 ajoute six sources au module existant sans changer son interface, son routeur ni ses règles. Le [vérificateur P65](../cqc-reprise/pass65/p65-local-verification.json) contrôle les six PNG sélectionnés et l’archive, les associations de la bible, les 205 entrées historiques et les 28 objets Atlas conservés. Les [30 tests Node](../cqc-reprise/pass65/p65-node-tests.txt) couvrent le module et les contrats P64/P65. Le scanner reconstruit **3 047 fichiers et 4 983 références**.
 
 Le fragment Research Block conserve le point de vue oblique de sa vignette ; sa conversion en arène latérale et ses couches séparées restent ouvertes. Les props gardent leurs limites de texture, de détails masqués et d’interaction. Les identités documentaires sans apparence ne reçoivent aucun corps inventé et les refus antérieurs ne sont pas relancés. La publication et le statut du navigateur sont suivis dans [publication.json](../cqc-reprise/pass65/publication.json) et [INTEGRATION_QA.md](../cqc-reprise/pass65/INTEGRATION_QA.md).
+
+
+<!-- BEGIN:P68 -->
+## Continuation P68 et récupération locale
+
+**259 sources sélectionnées, 82 dossiers Atlas et 20 archives.** P68 ajoute cinq PNG individuels : chiens MSX2/NES, garde au jetpack NES, garde rouge MSX2 et Balloon Trap Survive. Les [fiches détaillées](CONTINUATION_P68.md) associent les images, leur édition, les références, les réserves et les états encore à produire. [Galerie](../cqc-reprise/pass68/README.md) · [Manquants](../cqc-reprise/pass68/MANQUANTS.md) · [Contrôles](../cqc-reprise/pass68/INTEGRATION_QA.md).
+
+Les 53 fichiers locaux de suivi et snapshots ont été conservés dans la [récupération du 26 novembre](../cqc-reprise/local-recovery-20261126/README.md), distincte des nouveaux assets. Les sources P67 et antérieures restent inchangées. Les cinq PNG sont consultables dans l’Atlas ; cette présence n’est pas une admission au combat et ne ferme aucun groupe historique.
+<!-- END:P68 -->

@@ -293,3 +293,12 @@ Les [29 associations P67](asset-associations-p67.json) portent le cumul à **254
 Chaque association conserve l’édition effective, les workIds, les références, le type de représentation, les réserves visuelles, les hashes et les rubriques du guide. Le même workId partagé ne justifie pas un transfert de modèle entre jeux. Les 29 sources ont `atlasIntegrated:true`, `runtimeIntegrated:false` et `absolute1to1Certified:false`.
 
 Les [fiches P67](CONTINUATION_P67.md), le [delta des périmètres](../cqc-reprise/pass67/scope-delta.json) et le [suivi des manquants](../cqc-reprise/pass67/MANQUANTS.md) maintiennent les familles ouvertes. Aucun des 277 enregistrements P61 n’est réécrit pour suggérer une clôture. Le refus PW Sentinel Vest n’a pas de fichier associé.
+
+
+<!-- BEGIN:P68 -->
+## Extension P68 — deux éditions MG1 et Survive
+
+Les [cinq associations P68](asset-associations-p68.json) ajoutent deux personnages, deux créatures et un accessoire. Le cumul passe à **259 sources** : 50 personnages, 9 costumes, 49 machines/créatures, 133 décors, 15 accessoires, 2 projectiles et 1 VFX. Les **20 archives** restent exclues de la sélection.
+
+Les quatre classiques prolongent le groupe R-MG1-03 déjà couvert partiellement ; le Balloon Trap est un périmètre supplémentaire. Les 76 anciennes lignes non résolues sans candidat ne changent pas. Chaque fiche conserve son édition, les sources, hashes, prompts, limites et rubriques du guide. [Fiches P68](CONTINUATION_P68.md) · [Delta](../cqc-reprise/pass68/scope-delta.json).
+<!-- END:P68 -->
