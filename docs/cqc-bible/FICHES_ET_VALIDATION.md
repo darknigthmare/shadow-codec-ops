@@ -122,3 +122,12 @@ Les six PNG sont suivis individuellement dans le [manifeste](../cqc-reprise/pass
 
 Le contrôle P68 vérifie le préfixe exact de 77 dossiers Atlas, les 254 sélections et 19 archives historiques, la nouvelle bijection de cinq sources et l’exclusion de l’archive du runtime. Les [fiches](CONTINUATION_P68.md) relient les plans d’animation aux sections du guide sans prétendre produire leurs frames. Le [rapport QA](../cqc-reprise/pass68/INTEGRATION_QA.md) conserve les résultats réellement exécutés et la limite du navigateur indisponible.
 <!-- END:P68 -->
+
+
+<!-- BEGIN:P69 -->
+## P69 — contrôle des nouvelles sources
+
+**8 nouvelles sources sélectionnées, 0 essais archivés et 1 refus conservés.** Cumul : **267 sources sélectionnées**, **90 dossiers Atlas**, **20 essais archivés**.
+
+Le [rapport P69](../cqc-reprise/pass69/p69-local-verification.json) contrôle les PNG (CRC, décompression, dimensions, alpha, empreintes), les références, prompts et liens, la conservation des 82 fiches et du graphe runtime antérieur. Les détails du navigateur et de la publication sont explicités dans [INTEGRATION_QA](../cqc-reprise/pass69/INTEGRATION_QA.md).
+<!-- END:P69 -->

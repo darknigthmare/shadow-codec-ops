@@ -302,3 +302,23 @@ Les [cinq associations P68](asset-associations-p68.json) ajoutent deux personnag
 
 Les quatre classiques prolongent le groupe R-MG1-03 déjà couvert partiellement ; le Balloon Trap est un périmètre supplémentaire. Les 76 anciennes lignes non résolues sans candidat ne changent pas. Chaque fiche conserve son édition, les sources, hashes, prompts, limites et rubriques du guide. [Fiches P68](CONTINUATION_P68.md) · [Delta](../cqc-reprise/pass68/scope-delta.json).
 <!-- END:P68 -->
+
+
+<!-- BEGIN:P69 -->
+## P69 — associations individuelles
+
+**8 nouvelles sources sélectionnées, 0 essais archivés et 1 refus conservés.** Cumul : **267 sources sélectionnées**, **90 dossiers Atlas**, **20 essais archivés**.
+
+| Source | Type / édition | Fiche |
+|---|---|---|
+| AC!D 2 — soldat lance-flammes, vue de face oblique | `character` / `acid2` | [Fiche](CONTINUATION_P69.md#acid2-flamethrower-soldier) |
+| AC!D 2 — garde au bouclier et béret rouge | `character` / `acid2` | [Fiche](CONTINUATION_P69.md#acid2-shield-guard) |
+| AC!D 2 — soldat Hi-Tech, uniforme complet | `character` / `acid2` | [Fiche](CONTINUATION_P69.md#acid2-high-tech-soldier) |
+| Survive — Air Shock Cannon, déployé inactif | `prop` / `survive` | [Fiche](CONTINUATION_P69.md#survive-air-shock-cannon) |
+| Survive — Sledgehammer [Gold], Survival Pack | `prop` / `survive` | [Fiche](CONTINUATION_P69.md#survive-sledgehammer-gold) |
+| Survive — Survival Spear [Gold], Survival Pack | `prop` / `survive` | [Fiche](CONTINUATION_P69.md#survive-survival-spear-gold) |
+| Revengeance — collier mécanique de Mistral, étude de concept | `prop` / `mgr` | [Fiche](CONTINUATION_P69.md#mgr-mistral-collar-concept) |
+| Revengeance — agent Maverick R-00 à casquette, portrait | `character` / `mgr` | [Fiche](CONTINUATION_P69.md#mgr-r00-maverick-cap-portrait) |
+
+Les associations détaillées, prompts, références et limites sont dans [asset-associations-p69.json](asset-associations-p69.json). Les sept registres précédents restent identiques.
+<!-- END:P69 -->

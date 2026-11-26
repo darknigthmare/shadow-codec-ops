@@ -126,3 +126,10 @@ Les [fiches P68](CONTINUATION_P68.md) détaillent les séquences à produire pou
 
 Les règles proposées pour CQC sont distinguées des observations natives. Aucun cycle animé, tir, dommage, hitbox, collision, VFX, son, neutralisation ou nouveau combattant jouable n’est implémenté par cette passe. Les cinq images ont `atlasIntegrated:true` et des flags de combat/certification faux ; les chiens gardent une morphologie quadrupède et les éditions restent séparées.
 <!-- END:P68 -->
+
+
+<!-- BEGIN:P69 -->
+## P69 — états proposés, aucune nouvelle admission
+
+Les [fiches P69](CONTINUATION_P69.md) décrivent les poses, ancrages, interactions, réactions et éléments séparés à produire. Chaque sujet dispose d’un PNG fixe. Il faut qualifier les vues natives, produire les cycles et valider collisions, interruptions et fin de manche avant activation en combat. Les références conceptuelles et portraits conservent leur portée documentaire.
+<!-- END:P69 -->

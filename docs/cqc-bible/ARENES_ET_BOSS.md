@@ -268,3 +268,10 @@ P68 ne livre aucune nouvelle arène. Les [fiches](CONTINUATION_P68.md) préparen
 
 Le futur piège exige une zone de placement valide et une matrice de cibles compatibles ; la capture d’un grand boss ou d’une machine ne se déduit pas de son apparence. Les transitions de manche, la pause et les interruptions doivent rendre le contrôle sans laisser une cible hors état. Ces règles sont des travaux de conception non implémentés.
 <!-- END:P68 -->
+
+
+<!-- BEGIN:P69 -->
+## P69 — accessoires et interactions documentés
+
+Les [sources P69](CONTINUATION_P69.md) ajoutent des variantes et équipements individuels. Les accessoires de boss sont qualifiés séparément de leur porteur. Les poses des objets ne déterminent pas les points d’attache, portées, volumes ou phases d’une rencontre ; ces éléments restent à mesurer et produire. Aucun nouveau stage jouable n’est admis par cette passe.
+<!-- END:P69 -->

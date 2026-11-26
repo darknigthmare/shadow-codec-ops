@@ -193,3 +193,23 @@ Le fragment Research Block conserve le point de vue oblique de sa vignette ; sa 
 
 Les 53 fichiers locaux de suivi et snapshots ont été conservés dans la [récupération du 26 novembre](../cqc-reprise/local-recovery-20261126/README.md), distincte des nouveaux assets. Les sources P67 et antérieures restent inchangées. Les cinq PNG sont consultables dans l’Atlas ; cette présence n’est pas une admission au combat et ne ferme aucun groupe historique.
 <!-- END:P68 -->
+
+
+<!-- BEGIN:P69 -->
+## P69 — extension des sources
+
+**8 nouvelles sources sélectionnées, 0 essais archivés et 1 refus conservés.** Cumul : **267 sources sélectionnées**, **90 dossiers Atlas**, **20 essais archivés**.
+
+[Galerie](../cqc-reprise/pass69/README.md) · [Associations](asset-associations-p69.json) · [Manifeste](../cqc-reprise/pass69/delivery-manifest.json) · [Manquants](../cqc-reprise/pass69/MANQUANTS.md) · [Contrôles](../cqc-reprise/pass69/INTEGRATION_QA.md)
+
+| Source | Type / édition | Fiche |
+|---|---|---|
+| AC!D 2 — soldat lance-flammes, vue de face oblique | `character` / `acid2` | [Fiche](CONTINUATION_P69.md#acid2-flamethrower-soldier) |
+| AC!D 2 — garde au bouclier et béret rouge | `character` / `acid2` | [Fiche](CONTINUATION_P69.md#acid2-shield-guard) |
+| AC!D 2 — soldat Hi-Tech, uniforme complet | `character` / `acid2` | [Fiche](CONTINUATION_P69.md#acid2-high-tech-soldier) |
+| Survive — Air Shock Cannon, déployé inactif | `prop` / `survive` | [Fiche](CONTINUATION_P69.md#survive-air-shock-cannon) |
+| Survive — Sledgehammer [Gold], Survival Pack | `prop` / `survive` | [Fiche](CONTINUATION_P69.md#survive-sledgehammer-gold) |
+| Survive — Survival Spear [Gold], Survival Pack | `prop` / `survive` | [Fiche](CONTINUATION_P69.md#survive-survival-spear-gold) |
+| Revengeance — collier mécanique de Mistral, étude de concept | `prop` / `mgr` | [Fiche](CONTINUATION_P69.md#mgr-mistral-collar-concept) |
+| Revengeance — agent Maverick R-00 à casquette, portrait | `character` / `mgr` | [Fiche](CONTINUATION_P69.md#mgr-r00-maverick-cap-portrait) |
+<!-- END:P69 -->

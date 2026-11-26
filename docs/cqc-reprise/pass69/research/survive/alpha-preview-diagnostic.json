@@ -1,0 +1,104 @@
+{
+  "schema": "cqc.p69.survive.alpha-preview-diagnostic.v1",
+  "checkedAt": "2026-11-26T18:11:04.284337+00:00",
+  "asset": {
+    "path": "public/cqc/assets/p69/survive-air-shock-cannon.png",
+    "bytes": 824547,
+    "sha256": "27a2d4aa98da3bb28e675281e4f3eb2df004aaae1f5be51e8c2e576421a02a17",
+    "gitBlobSha": "02c84fbad630de587d8859ec91d4cafabc3e8f11",
+    "width": 1086,
+    "height": 1448,
+    "colorMode": "RGBA",
+    "bitDepth": 8,
+    "colorType": 6,
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "alphaStats": {
+      "fullyTransparentPixels": 1196355,
+      "nearOpaquePixels250To255": 323287,
+      "semiTransparentPixels1To249": 52886,
+      "alphaAbove16OnCanvasEdges": 0,
+      "boundsAt16": [
+        110,
+        65,
+        999,
+        1390
+      ],
+      "boundsAt128": [
+        110,
+        66,
+        998,
+        1389
+      ]
+    }
+  },
+  "requestedSamples": [
+    {
+      "x": 430,
+      "y": 386,
+      "rgba": [
+        255,
+        255,
+        255,
+        1
+      ]
+    },
+    {
+      "x": 360,
+      "y": 440,
+      "rgba": [
+        255,
+        255,
+        255,
+        1
+      ]
+    }
+  ],
+  "brightRgbDefinition": "min(R,G,B)>220",
+  "regions": [
+    {
+      "rectangle": [
+        420,
+        370,
+        440,
+        410
+      ],
+      "pixels": 800,
+      "brightRgbPixels": 194,
+      "brightAlpha0": 0,
+      "brightAlpha1To16": 194,
+      "brightAlphaAbove16": 0,
+      "brightMaxAlpha": 2,
+      "brightBoundsInclusive": [
+        423,
+        371,
+        434,
+        402
+      ]
+    },
+    {
+      "rectangle": [
+        340,
+        430,
+        390,
+        447
+      ],
+      "pixels": 850,
+      "brightRgbPixels": 266,
+      "brightAlpha0": 0,
+      "brightAlpha1To16": 266,
+      "brightAlphaAbove16": 0,
+      "brightMaxAlpha": 2,
+      "brightBoundsInclusive": [
+        351,
+        435,
+        389,
+        446
+      ]
+    }
+  ],
+  "pixelEdits": false,
+  "interpretation": "Both requested white preview spots are RGBA(255,255,255,1), not alpha0. In the two inspected rectangles all bright RGB pixels have alpha1 or2 (max2/255); no bright pixel has alpha>16. A faint fringe remains. These regions also include gray object-edge antialiasing, so the conclusion applies to the white preview spots, not every pixel in the rectangles. Original PNG bytes unchanged."
+}
