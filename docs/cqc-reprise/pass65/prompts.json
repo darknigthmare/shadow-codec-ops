@@ -1,0 +1,86 @@
+{
+  "schema": "cqc.p65.prompts.v1",
+  "tool": "image_gen.imagegen",
+  "generationRequests": 7,
+  "records": [
+    {
+      "id": "acid2-research-block-machinery-bay",
+      "selectedVersion": "v1",
+      "prompt": "Use case: stylized-concept\nAsset type: one individual opaque PNG environment source for the MGS Codec Simulator CQC visual atlas.\nPrimary request: reconstruct only the visible machinery bay of Metal Gear AC!D 2 (PSP), Stage 04 Research Block, using the attached native gameplay thumbnail as the geometric and color reference.\nInput image 1: native gameplay thumbnail from chaffXgrenade, “Metal Gear Ac!d 2 Walkthrough - 07 - Stage 04: Research Block (2)”; it is a reference image, not a finished asset to upscale.\nSubject and geometry: the narrow rectangular interior bay visible in the reference. Pale lilac floor made of large square tiles with thin yellow guide lines along the aisle. Tall purple-lilac paneled walls on the left and rear. Two dark rectangular technical equipment islands placed one behind the other along the centerline; they have black/dark tops with small dense yellow-green mechanical or circuit-like markings and pale square plinths. The nearer island is lower and fully visible; the rear island is taller, with the same plain box-like construction. A slim dark rectangular doorway/partition break projects from the left wall. Preserve the simple perpendicular wall joints and the black edge framing seen in the foreground.\nComposition: a clean wide landscape view of this limited bay, with the same elevated oblique isometric camera and the same spatial relationship between both equipment islands and the surrounding aisle. Keep sufficient pale floor visible around the islands. Do not expand this into a complete level plan. Do not invent architecture outside the visible bay.\nStyle: crisp faithful early-2000s cel-shaded PSP game reconstruction; simplified hard-edged forms, restrained fine detail, strong purple ambient light against pale gray-lilac flooring and near-black equipment. Clean linework and readable shapes. It must retain the distinctly violet Research Block palette.\nConstraints: remove all characters, robots, portraits, status panels, numbers, card icons, compass, tactical markers and interface from the reference. Reconstruct those small occluded areas using only immediately adjacent floor or wall patterns. No readable text, logos or watermark. No operating consoles with giant screens, no specimen pods, no test tubes, no hanging cables, no giant machinery, no extra rooms, no windows or invented exits. One scene only, no contact sheet, no collage. Opaque background, no transparency.",
+      "referencedImagePaths": [
+        "/workspace/scratch/52317e972fd3/p64-runtime-review-9725a40/docs/cqc-reprise/pass65/research/acid2/references/research-block-2-native-thumbnail.png"
+      ],
+      "transparentBackground": false,
+      "outputPath": "public/cqc/assets/p65/acid2-research-block-machinery-bay.png",
+      "originalGeneratedFile": "/workspace/scratch/52317e972fd3/generated_images/exec-a403270c-3bac-4f99-be87-8320a23c8e3c.png"
+    },
+    {
+      "id": "survive-normal-fence",
+      "selectedVersion": "v1",
+      "prompt": "Use case: background-extraction\nAsset type: one individual static PNG game prop for a Metal Gear Survive visual source atlas.\nPrimary request: isolate and faithfully redraw the Metal Gear Survive Normal Fence unit visible at the far right of the reference screenshot, with an actually transparent background.\nInput image 1 is a native in-game reference, not the output composition. Use only the complete fence at the right: the two adjoining tall rectangular chain-link mesh panels, three slender upright metal posts, thin upper and lower rails. Preserve its original slightly oblique perspective, the proportions of the two panels, subdued gray-brown weathered metal, tiny bands/joints along the posts, fine diamond wire mesh. This is one assembled fence unit. Keep every wire aperture transparent.\nComposition/framing: the full fence by itself, centered with generous transparent margins on all four sides, shown from the same front three-quarter view as the rightmost reference fence, no cropped posts. Crisp readable game-render finish, neutral even light.\nConstraints: preserve the native simple structure exactly; no added support feet, stands, concrete blocks, spikes, barbed wire, lights, armor panels, ornaments or extra fence sections. Remove the player, the separate edge-on fence, the turret, all labels, HUD, grid, floor, sky, shadows and scenery. No captions, no watermark, no sheet or multiple views. One fence PNG, true alpha transparency including the open mesh.\n",
+      "referencedImagePaths": [
+        "/workspace/scratch/52317e972fd3/p64-runtime-review-9725a40/docs/cqc-reprise/pass65/research/survive/references/normal-fence-atwiki-220401_01.jpg"
+      ],
+      "transparentBackground": true,
+      "outputPath": "public/cqc/assets/p65/survive-normal-fence.png",
+      "originalGeneratedFile": "/workspace/scratch/52317e972fd3/generated_images/exec-24d6474d-ff26-4be5-a75f-defc76e812da.png"
+    },
+    {
+      "id": "survive-survival-bow",
+      "selectedVersion": "v1",
+      "prompt": "Use case: background-extraction\nAsset type: one individual static PNG equipment prop for a Metal Gear Survive visual source atlas.\nPrimary request: isolate and faithfully redraw the native Survival Bow shown in the right-hand equipment preview in the reference, as a single clean bow on an actually transparent background.\nInput image 1 is the original in-game CRAFT screen; its selected item is explicitly Survival Bow. The bow itself is the tall simple pale weathered wooden stave at the right of the central information panel. Preserve the long shallow C-shaped bend, narrow tapering limbs, rough light gray-tan wood grain, small yellow binding bands near BOTH tips, and a single fine straight dark string between the tips. Reconstruct the small part hidden by the UI as the simplest continuous matching wooden stave, with no added attachments.\nComposition/framing: whole bow upright, wood curving to the left and the string on the right, centered, all tips visible with generous transparent margin, clean profile/very slight three-quarter native game-render appearance, softly lit enough to read the wood and string.\nConstraints: ONLY one plain native Survival Bow. No arrows, quiver, sights, pulleys, compound-bow cams, grip electronics, ornament, person, hands, HUD, statistics, floor, ground shadow, backdrop, captions or watermark. This is an atlas cutout, not an action scene. True alpha transparency, including all empty space between bow and string.\n",
+      "referencedImagePaths": [
+        "/workspace/scratch/52317e972fd3/p64-runtime-review-9725a40/docs/cqc-reprise/pass65/research/survive/references/survival-bow-craft-20180222142556.jpg"
+      ],
+      "transparentBackground": true,
+      "outputPath": "public/cqc/assets/p65/survive-survival-bow.png",
+      "originalGeneratedFile": "/workspace/scratch/52317e972fd3/generated_images/exec-4eb16d7a-1ced-4598-b10c-ea5195671139.png"
+    },
+    {
+      "id": "mgr-item-box-normal-v1",
+      "assetId": "asset:p65:mgr-item-box-normal",
+      "prompt": "Create exactly ONE isolated game environment prop: the NORMAL ITEM BOX from Metal Gear Rising: Revengeance, faithfully based on the attached official game manual screenshot. Recreate only the orange storage chest shown in the reference, at the same three-quarter front-right view from slightly above. Preserve its squat near-cubic proportions, thick orange rust-colored rounded corner blocks and lid, paired dark gray vertical reinforcement straps on the front, narrow lid seam, small subdued green rectangular front marking, and the inset silver rectangular carry handle on the visible right side. Preserve the reference's restrained worn industrial finish and simple geometry; make details crisp without inventing extra equipment, labels, hinges or ornaments. The whole chest must be visible with generous clear margins, centered in a square image, neutral diffuse studio lighting, clean realistic game-asset rendering. Remove the screenshot environment entirely: no floor, walls, shadows cast onto a backdrop, scenery, character, HUD, text captions or watermark. True transparent background. One chest only, not a contact sheet or multiple views.",
+      "referencedImagePaths": [
+        "/workspace/scratch/52317e972fd3/p64-runtime-review-9725a40/docs/cqc-reprise/pass65/research/mgr/mgr-item-box-normal-reference.png"
+      ],
+      "transparentBackground": true,
+      "outputPath": "public/cqc/assets/p65/mgr-item-box-normal.png",
+      "selected": true
+    },
+    {
+      "id": "mgr-item-box-locked-v1",
+      "assetId": "asset:p65:mgr-item-box-locked",
+      "prompt": "Create exactly ONE isolated game environment prop: the LOCKED ITEM BOX from Metal Gear Rising: Revengeance, faithfully based on the attached official game manual screenshot. Recreate only the gray storage chest shown in the reference, using the same three-quarter front-right view from slightly above. Preserve the squat near-cubic proportions, thick pale gray rounded corner blocks and broad lid, dark gray paired vertical reinforcement bands on the front, inset rectangular silver carry handle on the visible right face, and the distinctive horizontal lock assembly across the upper front with a small cyan-blue luminous central indicator and restrained diagonal yellow-and-black caution accents near the lock. The worn gray metal and exact major silhouette should follow the reference. Keep the lock visibly attached to the box; do not add detached parts, tools, weapons or items. The whole chest is centered with generous clear margins in a square image. Crisp realistic game-asset rendering, neutral diffuse studio lighting, no redesigned sci-fi panels. True transparent background, no floor, wall, environment, backdrop shadow, person, interface, caption or watermark. Exactly one chest, no montage or multiple views.",
+      "referencedImagePaths": [
+        "/workspace/scratch/52317e972fd3/p64-runtime-review-9725a40/docs/cqc-reprise/pass65/research/mgr/mgr-item-box-locked-reference.png"
+      ],
+      "transparentBackground": true,
+      "outputPath": "docs/cqc-reprise/pass65/rejected/mgr-item-box-locked-v1.png",
+      "selected": false
+    },
+    {
+      "id": "mgr-vr-data-terminal-v1",
+      "assetId": "asset:p65:mgr-vr-data-terminal",
+      "prompt": "Create exactly ONE isolated game environment prop: the portable VR DATA TERMINAL from Metal Gear Rising: Revengeance, following the attached official game manual screenshot as closely as possible. Reconstruct only the complete open rugged laptop in its olive green carry case, at the same front three-quarter view from slightly above. Preserve the olive military case base with squared corner guards, silver latch/handle details on the front, the black keyboard and touchpad deck, and the thick bright silver-green protective rim around the upright screen. The screen must retain the reference's small dark software interface with thin light gray lines near the top and a large centered red angular emblem inside a restrained yellow-orange rectangular frame; this is a display graphic, not a floating hologram. The lid is open roughly a right angle and attached to the base. Preserve the compact proportions and recognizable main geometry rather than redesigning it. One whole terminal centered in a square image with generous transparent margins. Crisp neutral game-asset rendering and diffuse lighting. Remove the wooden crate, stones, floor, cables in the scenery, background, people and HUD. No detached accessories, text labels outside the screen, montage, added branding, or watermark. True transparent background.",
+      "referencedImagePaths": [
+        "/workspace/scratch/52317e972fd3/p64-runtime-review-9725a40/docs/cqc-reprise/pass65/research/mgr/mgr-vr-data-terminal-reference.png"
+      ],
+      "transparentBackground": true,
+      "outputPath": "public/cqc/assets/p65/mgr-vr-data-terminal.png",
+      "selected": true
+    },
+    {
+      "id": "mgr-item-box-locked-v2",
+      "assetId": "asset:p65:mgr-item-box-locked",
+      "prompt": "Edit the attached transparent PNG of the locked item box from Metal Gear Rising: Revengeance. This is a precise alpha-edge cleanup only. Keep the same single chest, all its geometry, proportions, gray metal materials, camera, scale, framing, front lock, yellow-black hazard details, cyan indicator, side handle, and legitimate metallic highlights unchanged. Remove the spurious detached white flecks and white clumps just outside or protruding from the upper-left and rear top silhouette. Remove the tiny purple/blue colored edge specks on the top/back silhouette. Replace those artifacts with true transparent pixels and a smooth clean antialiased contour that follows the existing box, without shaving away its corners. Preserve the actual continuous bright gray metal along the chest edge; only remove foreign fringe artifacts. Do not repaint the surface, add details, change the silhouette design, crop, rotate, add a background, add shadows, or create a new box. One whole chest, same composition, true transparent background.",
+      "referencedImagePaths": [
+        "/workspace/scratch/52317e972fd3/p64-runtime-review-9725a40/public/cqc/assets/p65/mgr-item-box-locked.png"
+      ],
+      "referenceAtCallSha256": "3bf1b6f3d29f5c10889f872a41a4d50c77c0932867d647691798c68a1e01a785",
+      "referenceSnapshotPath": "docs/cqc-reprise/pass65/rejected/mgr-item-box-locked-v1.png",
+      "transparentBackground": true,
+      "outputPath": "public/cqc/assets/p65/mgr-item-box-locked.png",
+      "selected": true
+    }
+  ]
+}

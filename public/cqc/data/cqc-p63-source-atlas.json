@@ -1,7 +1,7 @@
 {
   "schema": "cqc.source-atlas.v1",
   "asOf": "2026-11-26",
-  "sourcePass": "P63+P64",
+  "sourcePass": "P63+P64+P65",
   "description": "Sources fixes candidates ; accès Atlas uniquement. Fidélité externe en revue.",
   "assets": [
     {
@@ -1453,6 +1453,347 @@
       "transparentBackground": true,
       "selectedVersion": "v1",
       "nativeUhd": false
+    },
+    {
+      "id": "acid2-research-block-machinery-bay",
+      "label": "AC!D 2 — Research Block, fragment de baie technique",
+      "episodeKey": "acid2",
+      "workIds": [
+        "stage:acid2_research_block_machinery_bay"
+      ],
+      "referenceURLs": [
+        "https://www.youtube.com/watch?v=7H7vIk6QXJE",
+        "https://www.youtube.com/watch?v=k8iS-ao5PcA",
+        "https://i.ytimg.com/vi/7H7vIk6QXJE/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUABovOX_wMOCPOFtNEFGODqBCDgqAE=&rs=AOn4CLDS701I4GGNuPRXq0w7PGW3TgNEuQ&usqp=CBU",
+        "https://gamefaqs.gamespot.com/psp/928434-metal-gear-acid-2/faqs/40367"
+      ],
+      "scope": "Un fragment de baie technique du Stage 04 Research Block : deux îlots sombres, parois mauves et allées claires observés dans une vignette native. Ne couvre ni le plan complet du secteur, ni ses autres pièces, sorties, parcours ou rencontres.",
+      "qaNotes": [
+        "Le fragment reprend le point de vue élevé oblique, les deux îlots sombres en enfilade, le sol clair lilas quadrillé, les deux lignes jaunes, les panneaux mauves et les coupes noires au premier plan de la vignette native.",
+        "Personnages, robots, portraits, compteurs et carte/compas retirés ; aucune interface ou légende ajoutée.",
+        "La géométrie générale est visuellement proche de la vignette ; circuits, vis, grilles, joints et zones masquées par les unités/HUD sont reconstruits et ne constituent pas une preuve canonique détaillée.",
+        "Le grand îlot arrière reste coupé par le bord supérieur, comme dans le cadrage de référence. Le noir périphérique représente la coupe de scène et fait partie du PNG opaque.",
+        "La référence est une vignette de 336 × 188 pixels attribuée par le titre de la vidéo, sans minutage de la frame établi ; aucune lecture de la séquence complète n’a été validée.",
+        "Source de baie technique limitée, non carte complète du Research Block. Vue oblique conservée ; aucune conversion latérale CQC, collision, animation, plan de caméra ou admission combat.",
+        "PNG RGB opaque natif 1672 × 941, sans agrandissement ultérieur ; ni UHD native ni certification absolue 1:1."
+      ],
+      "episode": "Metal Gear AC!D 2",
+      "kind": "stage",
+      "width": 1672,
+      "height": 941,
+      "bitDepth": 8,
+      "colorType": 2,
+      "bytes": 1680399,
+      "sha256": "ee9dd7a962bb30e95bee0042f633c82142839b549bc4ff750faa2176923be75f",
+      "pass": "P65",
+      "path": "../assets/p65/acid2-research-block-machinery-bay.png",
+      "gitBlobSha": "e9f90e81e8ffe970e04d95a0d12e9efe5c13e36b",
+      "colorMode": "RGB",
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": true,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "fidelityStatus": "pending_external_review",
+      "referenceGeometryValidated": false,
+      "assetId": "asset:p65:acid2-research-block-machinery-bay",
+      "bibleURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/docs/cqc-bible/CONTINUATION_P65.md#acid2-research-block-machinery-bay",
+      "blobURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/public/cqc/assets/p65/acid2-research-block-machinery-bay.png",
+      "alphaExtrema": null,
+      "transparentBackground": false,
+      "selectedVersion": "v1",
+      "nativeUhd": false,
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "built_in_imagegen",
+        "promptId": "acid2-research-block-machinery-bay"
+      }
+    },
+    {
+      "id": "survive-normal-fence",
+      "label": "Survive — Normal Fence",
+      "episodeKey": "survive",
+      "workIds": [
+        "prop:survive_normal_fence"
+      ],
+      "referenceURLs": [
+        "https://w.atwiki.jp/mgsurvive/pages/111.html",
+        "https://img.atwiki.jp/mgsurvive/attach/111/92/220401_01.jpg",
+        "https://gameranx.com/features/id/139663/article/metal-gear-survive-walkthrough-chapter-4-the-wormhole-transporter/",
+        "https://gameranx.com/wp-content/uploads/2018/02/METAL-GEAR-SURVIVE_20180222143434.jpg"
+      ],
+      "scope": "Un module Normal Fence complet, composé de deux panneaux grillagés et de trois montants ; une source statique isolée. Échelle, collision, destruction et interaction non couvertes.",
+      "qaNotes": [
+        "La référence native atwiki montre le prefab entier à droite : deux panneaux grillagés, trois montants, rails supérieurs et inférieurs, sans pieds ajoutés.",
+        "La capture Gameranx associe explicitement la barrière au libellé Normal Fence.",
+        "Le PNG conserve la structure simple et la perspective oblique ; texture, épaisseur des fils et micro-joints sont reconstruits.",
+        "Le grillage est ajouré par un canal alpha réel. Fins résidus alpha ≤8 en dehors du contour utile ; aucun pixel rouge saturé détecté avec alpha >16, ni pixel alpha >16 sur les bords du canevas.",
+        "Toutes les extrémités du contour utile sont visibles ; l’image native est sous UHD, sans mise à l’échelle.",
+        "Aucune animation, collision, destruction ou logique défensive intégrée ; aucune certification absolue 1:1."
+      ],
+      "episode": "Metal Gear Survive",
+      "kind": "prop",
+      "width": 1189,
+      "height": 1323,
+      "bitDepth": 8,
+      "colorType": 6,
+      "bytes": 2664920,
+      "sha256": "aae439035dde48a4f990522462fc2e1079d6f5d23c497d76375a946e5cfd124b",
+      "pass": "P65",
+      "path": "../assets/p65/survive-normal-fence.png",
+      "gitBlobSha": "c9c7cb863a345706bbebc6ece1b23990beb6d3e5",
+      "colorMode": "RGBA",
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": true,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "fidelityStatus": "pending_external_review",
+      "referenceGeometryValidated": false,
+      "assetId": "asset:p65:survive-normal-fence",
+      "bibleURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/docs/cqc-bible/CONTINUATION_P65.md#survive-normal-fence",
+      "blobURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/public/cqc/assets/p65/survive-normal-fence.png",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentBackground": true,
+      "selectedVersion": "v1",
+      "nativeUhd": false,
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "promptId": "survive-normal-fence"
+      }
+    },
+    {
+      "id": "survive-survival-bow",
+      "label": "Survive — Survival Bow",
+      "episodeKey": "survive",
+      "workIds": [
+        "prop:survive_survival_bow"
+      ],
+      "referenceURLs": [
+        "https://gameranx.com/features/id/139663/article/metal-gear-survive-walkthrough-chapter-4-the-wormhole-transporter/",
+        "https://gameranx.com/wp-content/uploads/2018/02/METAL-GEAR-SURVIVE_20180222142556.jpg"
+      ],
+      "scope": "Une vue isolée du Survival Bow identifié dans le menu Craft. La partie médiane masquée par l’interface est reconstruite ; flèches, tir, animation et comportement de combat non couverts.",
+      "qaNotes": [
+        "Le menu CRAFT de la référence sélectionne explicitement Survival Bow et montre le bois pâle usé, le long arc simple, les bandes jaunes aux deux extrémités et la corde.",
+        "Le PNG conserve ces traits ; la portion centrale partiellement cachée par le panneau du menu est reconstruite en simple continuité de bois, sans accessoire ajouté.",
+        "Un seul arc complet, corde continue et espace intérieur transparent ; aucun personnage, flèche, carquois ou interface.",
+        "Alpha natif préservé : plage 0–254, 93,846 % de pixels entièrement transparents. Le halo brun apparent dans certains aperçus RGB correspond surtout à des couleurs cachées sous alpha zéro, pas à un fond opaque.",
+        "Faibles résidus alpha ≤8 au-delà du contour utile ; aucun pixel alpha >16 sur les bords du canevas.",
+        "PNG natif sous UHD, sans agrandissement ; aucun tir, projectile, animation ou binding de combat intégré, aucune certification absolue 1:1."
+      ],
+      "episode": "Metal Gear Survive",
+      "kind": "prop",
+      "width": 1024,
+      "height": 1536,
+      "bitDepth": 8,
+      "colorType": 6,
+      "bytes": 1111220,
+      "sha256": "66ff93608ec17afa4feeb4e4f3e73254f7c9bf7c8138ceafa05e34b8793c8a4c",
+      "pass": "P65",
+      "path": "../assets/p65/survive-survival-bow.png",
+      "gitBlobSha": "aa23dc0c50852a40c6afde1c56422023dfd15dda",
+      "colorMode": "RGBA",
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": true,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "fidelityStatus": "pending_external_review",
+      "referenceGeometryValidated": false,
+      "assetId": "asset:p65:survive-survival-bow",
+      "bibleURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/docs/cqc-bible/CONTINUATION_P65.md#survive-survival-bow",
+      "blobURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/public/cqc/assets/p65/survive-survival-bow.png",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentBackground": true,
+      "selectedVersion": "v1",
+      "nativeUhd": false,
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "promptId": "survive-survival-bow"
+      }
+    },
+    {
+      "id": "mgr-item-box-normal",
+      "label": "Revengeance — coffre d’objets normal",
+      "episodeKey": "mgr",
+      "workIds": [
+        "prop:mgr_item_box_normal"
+      ],
+      "referenceURLs": [
+        "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/235460/manuals/MGR_PC_manual_English.pdf?t=1718869136"
+      ],
+      "scope": "Une vue statique isolée de coffre d’objets normal ; extension descriptive hors des 277 périmètres historiques. Faces cachées, états interactifs, collisions et animations non couverts.",
+      "qaNotes": [
+        "Coffre orange unique entier, avec deux renforts de face et poignée latérale droite, suivant la capture du manuel officiel p.11.",
+        "Lumière, usure et microdétails reconstruits ; les faces cachées et l’échelle physique restent non validées.",
+        "Fines franges rouge/jaune ponctuelles documentées ; aucune scène, aucun personnage ou contenu du coffre ajouté.",
+        "PNG RGBA natif sous UHD, sans redimensionnement ultérieur. Source statique candidate ; aucune certification absolue 1:1 ni admission au combat.",
+        "Revue indépendante : Orange plus lumineux et texture d’usure beaucoup plus détaillée que dans la capture en environnement sombre. Les micro-rayures, joints et détails de serrure sont reconstruits. Le petit rectangle frontal reste sans texte lisible.",
+        "Revue indépendante du contour : Fines franges rouge/jaune visibles par endroits sur les arêtes supérieures et gauches. Pas de gros morceau blanc, d’objet secondaire, de sol ou d’arrière-plan incorporé."
+      ],
+      "episode": "Metal Gear Rising: Revengeance",
+      "kind": "prop",
+      "width": 1254,
+      "height": 1254,
+      "bitDepth": 8,
+      "colorType": 6,
+      "bytes": 1404527,
+      "sha256": "f7562b7a585a9444faf995f2c828046a174fbfdd9cd8d6e1332e17b6658587e0",
+      "pass": "P65",
+      "path": "../assets/p65/mgr-item-box-normal.png",
+      "gitBlobSha": "1828491f6da113dc1114e82a8294911ae1f1cc3f",
+      "colorMode": "RGBA",
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": true,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "fidelityStatus": "pending_external_review",
+      "referenceGeometryValidated": false,
+      "assetId": "asset:p65:mgr-item-box-normal",
+      "bibleURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/docs/cqc-bible/CONTINUATION_P65.md#mgr-item-box-normal",
+      "blobURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/public/cqc/assets/p65/mgr-item-box-normal.png",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentBackground": true,
+      "selectedVersion": "v1",
+      "nativeUhd": false,
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "promptId": "mgr-item-box-normal"
+      }
+    },
+    {
+      "id": "mgr-item-box-locked",
+      "label": "Revengeance — coffre d’objets verrouillé",
+      "episodeKey": "mgr",
+      "workIds": [
+        "prop:mgr_item_box_locked"
+      ],
+      "referenceURLs": [
+        "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/235460/manuals/MGR_PC_manual_English.pdf?t=1718869136"
+      ],
+      "scope": "Une vue statique isolée de coffre d’objets verrouillé ; extension descriptive hors des 277 périmètres historiques. Faces cachées, états interactifs, collisions et animations non couverts.",
+      "qaNotes": [
+        "Coffre métallique verrouillé unique entier ; verrou horizontal, signal cyan et accents jaune/noir repris de la capture du manuel officiel p.11.",
+        "La première version comportait des excroissances blanches sur le contour supérieur ; une seconde génération a corrigé ce détourage. La v1 reste archivée hors Atlas.",
+        "La v2 conserve la forme, la poignée et le verrou, avec un grain métallique légèrement réinterprété. Aucun mécanisme d’ouverture ni destruction intégré.",
+        "PNG RGBA natif sous UHD, sans redimensionnement ultérieur. Source statique candidate ; aucune certification absolue 1:1 ni admission au combat.",
+        "Revue indépendante : Le grain de surface a été réinterprété au-delà du seul contour : la v2 présente une texture plus marbrée/ondulée, moins proche du grain fin de la v1. La capture native est trop petite pour certifier ces microdétails. Les marques bleues, rivets et la lueur cyan restent interprétés ; la palette gris/acier et les éléments d’identification sont conservés.",
+        "Revue indépendante du contour : Les gros morceaux blancs et excroissances irrégulières du bord arrière/haut gauche de la v1 sont supprimés. L’arête supérieure forme désormais un tracé fin et continu, avec une fine ligne claire visuellement compatible avec le métal. Quelques points/liserés colorés très fins subsistent à fort contraste ; aucun fragment blanc important, morceau séparé ou nouveau décor observé."
+      ],
+      "episode": "Metal Gear Rising: Revengeance",
+      "kind": "prop",
+      "width": 1254,
+      "height": 1254,
+      "bitDepth": 8,
+      "colorType": 6,
+      "bytes": 1598806,
+      "sha256": "2b754347c8dbaae4d7899f4e25a1ca49ea22b251831e88b143c1a9d7d886283b",
+      "pass": "P65",
+      "path": "../assets/p65/mgr-item-box-locked.png",
+      "gitBlobSha": "2bdbca393330395acb777f86d940af36d9cbfb0a",
+      "colorMode": "RGBA",
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": true,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "fidelityStatus": "pending_external_review",
+      "referenceGeometryValidated": false,
+      "assetId": "asset:p65:mgr-item-box-locked",
+      "bibleURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/docs/cqc-bible/CONTINUATION_P65.md#mgr-item-box-locked",
+      "blobURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/public/cqc/assets/p65/mgr-item-box-locked.png",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentBackground": true,
+      "selectedVersion": "v2",
+      "nativeUhd": false,
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation_then_targeted_edit",
+        "promptId": "mgr-item-box-locked"
+      }
+    },
+    {
+      "id": "mgr-vr-data-terminal",
+      "label": "Revengeance — terminal de données VR",
+      "episodeKey": "mgr",
+      "workIds": [
+        "prop:mgr_vr_data_terminal"
+      ],
+      "referenceURLs": [
+        "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/235460/manuals/MGR_PC_manual_English.pdf?t=1718869136"
+      ],
+      "scope": "Une vue statique isolée de terminal de données VR ; extension descriptive hors des 277 périmètres historiques. Faces cachées, états interactifs, collisions et animations non couverts.",
+      "qaNotes": [
+        "Terminal VR portable unique entier : ordinateur ouvert dans une valise olive, clavier, écran, fermoirs et poignée, d’après le manuel officiel p.14.",
+        "L’interface, le motif rouge et la petite quincaillerie sont reconstruits depuis une référence de 315 × 178 ; aucun texte d’écran ni pictogramme ne vaut certification pixel exact.",
+        "Très fines franges vert/jaune ponctuelles ; aucun terminal fixe sur pied, caisse de décor ou fonction de déverrouillage ajoutés.",
+        "PNG RGBA natif sous UHD, sans redimensionnement ultérieur. Source statique candidate ; aucune certification absolue 1:1 ni admission au combat.",
+        "Revue indépendante : Le clavier, le pavé tactile, les charnières, la poignée et les nombreux petits panneaux/traits de l’interface sont des reconstructions détaillées depuis une référence de 315 ×178. Le motif rouge et les éventuels caractères ne constituent pas une reproduction exacte validée de l’interface.",
+        "Revue indépendante du contour : Quelques très fins liserés vert/jaune le long du boîtier et sous la poignée ; pas de gros fragment blanc, de caisse de décor, de sol ni d’autre objet repris de la référence."
+      ],
+      "episode": "Metal Gear Rising: Revengeance",
+      "kind": "prop",
+      "width": 1254,
+      "height": 1254,
+      "bitDepth": 8,
+      "colorType": 6,
+      "bytes": 1558815,
+      "sha256": "e31f0458a4c1636dda5df34fb31bccd5a7974e790a8cb9b8eb049a79a15d1a56",
+      "pass": "P65",
+      "path": "../assets/p65/mgr-vr-data-terminal.png",
+      "gitBlobSha": "53e99cece19d38ba9fa4b1cfb743fc333c9ebfeb",
+      "colorMode": "RGBA",
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": true,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "fidelityStatus": "pending_external_review",
+      "referenceGeometryValidated": false,
+      "assetId": "asset:p65:mgr-vr-data-terminal",
+      "bibleURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/docs/cqc-bible/CONTINUATION_P65.md#mgr-vr-data-terminal",
+      "blobURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/public/cqc/assets/p65/mgr-vr-data-terminal.png",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentBackground": true,
+      "selectedVersion": "v1",
+      "nativeUhd": false,
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "promptId": "mgr-vr-data-terminal"
+      }
     }
   ]
 }

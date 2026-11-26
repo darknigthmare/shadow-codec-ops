@@ -1,8 +1,25 @@
 # Sources associées à la bible CQC
 
-**205 sources sélectionnées : 177 P60/P61/P62 + 17 P63 + 11 P64**. Les **277 périmètres historiques** et les **2 périmètres P60 auxiliaires** gardent leur unité.
+**211 sources sélectionnées : 177 P60/P61/P62 + 17 P63 + 11 P64 + 6 P65**. Les **277 périmètres historiques** et les **2 périmètres P60 auxiliaires** gardent leur unité.
 
-Les sources candidates ne sont pas automatiquement admises au combat. Les **14 essais écartés uniques** restent exclus : 12 antérieurs et 2 P64. Les trois refus P64 sans fichier ne sont pas des archives PNG. [Registre historique des 177 sources](asset-associations.json) · [Extension P63](asset-associations-p63.json) · [Extension P64](asset-associations-p64.json).
+Les sources candidates ne sont pas automatiquement admises au combat. Les **15 essais écartés uniques** restent exclus : 12 antérieurs, 2 P64 et 1 P65. Les trois refus P64 sans fichier ne sont pas des archives PNG. [Registre historique des 177 sources](asset-associations.json) · [Extension P63](asset-associations-p63.json) · [Extension P64](asset-associations-p64.json) · [Extension P65](asset-associations-p65.json).
+
+## P65 — six associations supplémentaires
+
+Les 205 sources antérieures et les 28 objets Atlas P63/P64 sont conservés. P65 ajoute un fragment de baie technique et cinq objets isolés, portant le catalogue à 34. Chaque périmètre reste ouvert ; les six workIds sont des extensions descriptives, sans réécriture des 277 lignes historiques.
+
+| Source | Type | Périmètre de travail | Rubriques du guide | Bible |
+|---|---|---|---|---|
+| [AC!D 2 — Research Block, fragment de baie technique](../../public/cqc/assets/p65/acid2-research-block-machinery-bay.png) | stage | stage:acid2_research_block_machinery_bay | 02, 13, 14, 15, 17, 19, 25, 26, 27, 29 | [Fiche](CONTINUATION_P65.md#acid2-research-block-machinery-bay) |
+| [Survive — Normal Fence](../../public/cqc/assets/p65/survive-normal-fence.png) | prop | prop:survive_normal_fence | 02, 13, 14, 15, 17, 18, 25, 26, 27, 29 | [Fiche](CONTINUATION_P65.md#survive-normal-fence) |
+| [Survive — Survival Bow](../../public/cqc/assets/p65/survive-survival-bow.png) | prop | prop:survive_survival_bow | 02, 05, 15, 16, 17, 18, 25, 26, 27, 29 | [Fiche](CONTINUATION_P65.md#survive-survival-bow) |
+| [Revengeance — coffre d’objets normal](../../public/cqc/assets/p65/mgr-item-box-normal.png) | prop | prop:mgr_item_box_normal | 02, 13, 15, 17, 19, 25, 26, 27, 29 | [Fiche](CONTINUATION_P65.md#mgr-item-box-normal) |
+| [Revengeance — coffre d’objets verrouillé](../../public/cqc/assets/p65/mgr-item-box-locked.png) | prop | prop:mgr_item_box_locked | 02, 13, 15, 17, 19, 25, 26, 27, 29 | [Fiche](CONTINUATION_P65.md#mgr-item-box-locked) |
+| [Revengeance — terminal de données VR](../../public/cqc/assets/p65/mgr-vr-data-terminal.png) | prop | prop:mgr_vr_data_terminal | 02, 13, 15, 17, 19, 25, 26, 27, 29 | [Fiche](CONTINUATION_P65.md#mgr-vr-data-terminal) |
+
+Les rubriques 13–15 relient le décor et les objets aux exigences d’arène et d’interaction ; les rubriques 17, 25–27 encadrent production, inventaire et validation. Ces liens ne constituent pas une implémentation des mécanismes décrits. L’arc reste séparé de ses flèches, le terminal de sa logique de déverrouillage et les coffres de leur contenu/état ouvert.
+
+La seule archive P65 est le coffre verrouillé v1 : ses parasites blancs ont conduit à une correction imagegen, puis à la sélection de la v2. Les cinq props ont un canal alpha réel ; le décor est opaque. [Galerie et QA P65](../cqc-reprise/pass65/README.md).
 
 ## P64 — onze associations supplémentaires
 

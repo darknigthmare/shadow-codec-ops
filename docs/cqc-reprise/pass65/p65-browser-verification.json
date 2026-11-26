@@ -1,0 +1,26 @@
+{
+  "schema": "cqc.p65.browser-verification.v1",
+  "status": "not_run_no_p65_deployment_yet",
+  "asOf": "2026-11-26",
+  "publishedP65Commit": null,
+  "p65BrowserJourneyExecuted": false,
+  "p65ScreenshotsCaptured": false,
+  "priorDeploymentLimitation": {
+    "pass": "P64",
+    "status": "failure",
+    "description": "Deployment rate limited — retry in 24 hours.",
+    "observedAt": "2026-11-26T07:09:40Z",
+    "evidence": "docs/cqc-reprise/pass64/p64-browser-verification.json"
+  },
+  "localBrowserLimitation": {
+    "status": "not_run_missing_browser_binary",
+    "evidence": "docs/cqc-reprise/pass64/p64-local-browser-verification.json",
+    "repeatedInstallOrLaunchAttempts": false
+  },
+  "staticVerification": "docs/cqc-reprise/pass65/p65-local-verification.json",
+  "manualDeploymentRetryAttempted": false,
+  "claims": [
+    "La vérification statique des PNG et du graphe n’est pas une exécution navigateur.",
+    "Aucune capture ou interaction P65 n’est déclarée validée avant publication et observation du déploiement."
+  ]
+}

@@ -1,8 +1,10 @@
 # Bible CQC Versus Legacy — guide associé au projet
 
-**Version P64 — 26 novembre 2026. Fondation documentaire P62 et extension P63 conservées.** Le guide général fourni par Darknigthmare est intégré comme référence commune, puis traduit en décisions, fiches et exigences propres au jeu de combat Metal Gear. Cet index relie le contenu existant du dépôt et les sources statiques P60/P61/P62/P63/P64.
+**Version P65 — 26 novembre 2026. Fondation P62 et extensions P63/P64 conservées.** Le guide général fourni par Darknigthmare est intégré comme référence commune, puis traduit en décisions, fiches et exigences propres au jeu de combat Metal Gear. Cet index relie le contenu existant du dépôt et les sources statiques P60/P61/P62/P63/P64/P65.
 
-La [continuation P64](CONTINUATION_P64.md) ajoute **11 sources individuelles transparentes** : 3 personnages AC!D, 2 costumes de démonstration Survive, 1 machine Survive, 3 accessoires et 2 corps de projectiles MGR. Le total passe à **205 sources sélectionnées** et l’Atlas à **28 entrées**. Les 194 identités historiques et les 17 objets P63 restent inchangés. Les [associations P64](asset-associations-p64.json) et la [galerie P64](../cqc-reprise/pass64/README.md) détaillent provenance, limites et refus. **0 nouvelle admission au combat, 0 certification 1:1, aucun PNG natif UHD et aucun périmètre déclaré clos.**
+La [continuation P65](CONTINUATION_P65.md) ajoute **6 sources individuelles** : un fragment de baie technique du Research Block d’AC!D 2, Normal Fence et Survival Bow de Survive, ainsi que les deux coffres d’objets et le terminal VR de Rising. Le total atteint **211 sources sélectionnées** et l’Atlas **34 entrées**. Les 205 sources antérieures et les 28 objets Atlas P63/P64 sont conservés. La [galerie P65](../cqc-reprise/pass65/README.md), les [associations P65](asset-associations-p65.json) et le [delta des périmètres](../cqc-reprise/pass65/scope-delta.json) donnent les références, les limites et l’archive du coffre verrouillé v1. **0 admission au combat, 0 certification absolue 1:1, aucun PNG natif UHD et aucun périmètre déclaré clos.**
+
+**Historique P64 conservé.** La [continuation P64](CONTINUATION_P64.md) ajoute **11 sources individuelles transparentes** : 3 personnages AC!D, 2 costumes de démonstration Survive, 1 machine Survive, 3 accessoires et 2 corps de projectiles MGR. Le total passe à **205 sources sélectionnées** et l’Atlas à **28 entrées**. Les 194 identités historiques et les 17 objets P63 restent inchangés. Les [associations P64](asset-associations-p64.json) et la [galerie P64](../cqc-reprise/pass64/README.md) détaillent provenance, limites et refus. **0 nouvelle admission au combat, 0 certification 1:1, aucun PNG natif UHD et aucun périmètre déclaré clos.**
 
 **Historique P63 conservé.** La [continuation P63](CONTINUATION_P63.md) ajoute **17 décors individuels** pour Survive, AC!D, AC!D 2 et Revengeance, portant le total à **194 sources sélectionnées**. Ils sont consultables dans l’**Atlas des sources**, accessible depuis Chroniques/Extras et par `/cqc/?module=atlas63`. Les [associations P63](asset-associations-p63.json) complètent le registre historique ; les trois essais écartés restent hors de l’Atlas. **0 nouvelle admission au combat, 0 certification absolue 1:1.**
 
@@ -19,7 +21,10 @@ La [continuation P64](CONTINUATION_P64.md) ajoute **11 sources individuelles tra
 | Arènes, quatre axes, connexions et boss | [ARENES_ET_BOSS.md](ARENES_ET_BOSS.md) |
 | Sources reliées aux besoins de la bible | [ASSOCIATIONS.md](ASSOCIATIONS.md) ; [asset-associations.json](asset-associations.json) |
 | Fiches, phase de production et critères d’admission | [FICHES_ET_VALIDATION.md](FICHES_ET_VALIDATION.md) |
-| Livraison courante : 11 sources et extension Atlas P64 | [CONTINUATION_P64.md](CONTINUATION_P64.md) ; [galerie et bilan P64](../cqc-reprise/pass64/README.md) |
+| Livraison courante : 6 sources et extension Atlas P65 | [CONTINUATION_P65.md](CONTINUATION_P65.md) ; [galerie et bilan P65](../cqc-reprise/pass65/README.md) |
+| Registre des nouvelles associations P65 | [asset-associations-p65.json](asset-associations-p65.json) |
+| Preuves et contrôles P65 | [INTEGRATION_QA.md](../cqc-reprise/pass65/INTEGRATION_QA.md) |
+| Historique : 11 sources et extension Atlas P64 | [CONTINUATION_P64.md](CONTINUATION_P64.md) ; [galerie et bilan P64](../cqc-reprise/pass64/README.md) |
 | Registre des nouvelles associations P64 | [asset-associations-p64.json](asset-associations-p64.json) |
 | Preuves et contrôles P64 | [INTEGRATION_QA.md](../cqc-reprise/pass64/INTEGRATION_QA.md) |
 | Historique : 17 sources et Atlas P63 | [CONTINUATION_P63.md](CONTINUATION_P63.md) ; [galerie et bilan P63](../cqc-reprise/pass63/README.md) |
@@ -116,6 +121,12 @@ Les nouvelles vues P62 complètent Crescent Meridian, Cove Valley Village, Zaozy
 | Essais uniques écartés P64 et cumul | **2 P64 ; 14 cumulés**. La copie redondante Leone v1 supprimée ne compte pas comme essai. |
 | Appels P64 | **16 : 13 sorties PNG et 3 refus sans fichier**, sans seconde tentative des cibles refusées. |
 | Admission et fidélité P64 | **0 admission au combat, 0 certification 1:1, 0 clôture de périmètre** ; fidélité externe en revue. |
+| Sources sélectionnées P65 | **6 PNG : 1 fragment de décor et 5 objets**. |
+| Total P60–P65 | **211 PNG : 125 décors, 20 personnages, 9 costumes, 46 machines, 8 objets, 2 projectiles et 1 VFX**. |
+| Atlas après ajout P65 | **34 sources** : 28 objets historiques inchangés et 6 ajouts. |
+| Essais uniques écartés P65 et cumul | **1 P65 ; 15 cumulés**. Coffre verrouillé v1 remplacé par v2. |
+| Appels P65 | **7 appels, 7 PNG, 6 retenus et 1 archive ; 0 refus nouveau**. |
+| Admission et fidélité P65 | **0 admission au combat, 0 certification 1:1, 0 clôture de périmètre**. |
 
 Les fiches narratives publient leur propre compte de routes, scènes et plans. Un plan écrit n’est pas une image produite. Les associations JSON permettent de suivre un fichier vers ses périmètres, les rubriques du guide et les documents de conception sans additionner ces unités.
 
@@ -153,3 +164,9 @@ Les trois demandes `mgr-fragmentation-grenade`, `mgr-em-grenade` et `mgr-rocket-
 Les **23 tests Node sur 23 sont passés** : 14 tests du module Atlas et 9 tests du helper et du contrat P64, avec la [sortie finale conservée](../cqc-reprise/pass64/p64-node-tests.txt). Le [checker final P64 et le manifeste runtime sont passés](../cqc-reprise/pass64/p64-local-verification.json) : 13 PNG contrôlés, dont 11 retenus et 2 archives, 28 entrées Atlas et 205 sources cumulées. Le scanner réel vérifie 3 041 fichiers et 4 977 références ; 3 029 lignes historiques sont inchangées, le catalogue est le seul ancien fichier modifié, et les 4 966 références historiques, 740 omissions et 499 routes externes sont préservées.
 
 Le socle P63 a désormais été réellement revérifié par Node, reconstruction PNG/IDAT et inspection navigateur, avec ses nouvelles preuves sous [pass64](../cqc-reprise/pass64/INTEGRATION_QA.md). Le **parcours navigateur P64 n’a pas été exécuté** : Vercel refuse le déploiement par limite de quota et demande de réessayer dans 24 heures ; la tentative locale s’arrête avant démarrage faute de binaires Chromium. Les [preuves Vercel](../cqc-reprise/pass64/p64-browser-verification.json) et [locales](../cqc-reprise/pass64/p64-local-browser-verification.json) restent distinctes du résultat déjà obtenu sur P63. Les contrôles de fichiers et de graphe ne valent pas validation de combat ou certification visuelle absolue.
+
+## 9. Continuation P65 et contrôle de conservation
+
+P65 ajoute six sources au module existant sans changer son interface, son routeur ni ses règles. Le [vérificateur P65](../cqc-reprise/pass65/p65-local-verification.json) contrôle les six PNG sélectionnés et l’archive, les associations de la bible, les 205 entrées historiques et les 28 objets Atlas conservés. Les [30 tests Node](../cqc-reprise/pass65/p65-node-tests.txt) couvrent le module et les contrats P64/P65. Le scanner reconstruit **3 047 fichiers et 4 983 références**.
+
+Le fragment Research Block conserve le point de vue oblique de sa vignette ; sa conversion en arène latérale et ses couches séparées restent ouvertes. Les props gardent leurs limites de texture, de détails masqués et d’interaction. Les identités documentaires sans apparence ne reçoivent aucun corps inventé et les refus antérieurs ne sont pas relancés. La publication et le statut du navigateur sont suivis dans [publication.json](../cqc-reprise/pass65/publication.json) et [INTEGRATION_QA.md](../cqc-reprise/pass65/INTEGRATION_QA.md).

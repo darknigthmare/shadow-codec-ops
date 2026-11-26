@@ -1,0 +1,131 @@
+{
+  "schema": "cqc-p65-acid2-visual-research-v1",
+  "asOf": "2026-11-26T08:24:40.271535+00:00",
+  "decision": "Select one bounded Research Block machinery-bay environment source. All other requested stage scopes remain open.",
+  "retainedCandidate": "acid2-research-block-machinery-bay",
+  "researchPaths": [
+    {
+      "path": "chaffXgrenade Research Block walkthrough",
+      "urls": [
+        "https://www.youtube.com/watch?v=k8iS-ao5PcA",
+        "https://www.youtube.com/watch?v=7H7vIk6QXJE"
+      ],
+      "result": "Visible native related-video thumbnail inspected and saved; current video playback remained black at 0:00. The thumbnail supports only the narrow machinery bay.",
+      "pixelsInspected": true
+    },
+    {
+      "path": "Rellings ACID2 chapter stills",
+      "url": "https://www.youtube.com/watch?v=vt0S_DG7c9U",
+      "result": "Expanded description and Chapters > View all inspected. All loaded chapter thumbnails repeat the same cover/title artwork, not native stage frames. No new stage geometry validated.",
+      "pixelsInspected": true,
+      "nativeStagePixelsFound": false
+    },
+    {
+      "path": "Seesaa 2005 walkthrough notes",
+      "urls": [
+        "https://mga2.seesaa.net/",
+        "https://mga2.seesaa.net/article/11057471.html",
+        "https://mga2.seesaa.net/article/11053614.html"
+      ],
+      "result": "Research Block and Control Section trial articles contain textual solutions and a text grid, no native environment screenshots. Comment-form CAPTCHA is unrelated and was not used as reference.",
+      "nativeStagePixelsFound": false
+    },
+    {
+      "path": "Game Watch developer interview 2005-12-13",
+      "urls": [
+        "https://game.watch.impress.co.jp/docs/20051213/mga.htm",
+        "https://game.watch.impress.co.jp/docs/20051213/mga03.jpg",
+        "https://game.watch.impress.co.jp/docs/20051213/mga01.jpg",
+        "https://game.watch.impress.co.jp/docs/20051213/mga02.jpg"
+      ],
+      "result": "Three images actually inspected: promotional illustration, multiplayer confirmation screen, and green multiplayer equipment-box scene. None established the requested missing stage geometry; excluded from generation.",
+      "pixelsInspected": true,
+      "selectedAsReference": false
+    },
+    {
+      "path": "Game Watch publisher announcement 2005-08-26",
+      "url": "https://game.watch.impress.co.jp/docs/20050826/mgsa.htm",
+      "result": "Announcement and image links found; source explicitly describes development and overseas-version screenshots. No attributable target-stage screenshot was retained.",
+      "selectedAsReference": false
+    },
+    {
+      "path": "Metal Gear Speedrunners / Wikiwiki",
+      "urls": [
+        "https://metalgearspeedrunners.com/wiki/doku.php?id=acid2ng",
+        "https://wikiwiki.jp/mga/MGA2/%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AA%E3%83%BC%E6%94%BB%E7%95%A5"
+      ],
+      "result": "Search text confirms stage names/routes; direct image discovery returned 403. No image-grounded geometry added.",
+      "selectedAsReference": false
+    },
+    {
+      "path": "Something Awful ACID screenshot LP, FAR",
+      "urls": [
+        "https://forums.somethingawful.com/showthread.php?threadid=3841082",
+        "https://forums.somethingawful.com/showthread.php?pagenumber=10&perpage=40&threadid=3841082&userid=0"
+      ],
+      "result": "Search-index snippets mention FAR and Outside FAR, but direct page opens returned 403; no FAR frame pixels obtained.",
+      "nativeStagePixelsFound": false
+    },
+    {
+      "path": "Gamespot ACID walkthrough FAR",
+      "url": "https://www.gamespot.com/articles/metal-gear-acid-walkthrough/1100-6122267/",
+      "result": "Search-index narrative found; page open failed as restricted URL. No FAR geometry validated.",
+      "nativeStagePixelsFound": false
+    }
+  ],
+  "openScopes": [
+    {
+      "id": "acid2-control-section",
+      "scope": "Stage 02 Control Section",
+      "reason": "Text routes and terminals identified, but no native frame inspected."
+    },
+    {
+      "id": "acid2-communications-tower",
+      "scope": "Stage 03 Communications Tower and Part 2",
+      "reason": "Text route identified, but no native frame inspected."
+    },
+    {
+      "id": "acid2-research-block",
+      "scope": "Whole Stage 04 Research Block",
+      "reason": "Only a narrow two-island machinery bay has a retained source; other rooms, ladders, ducts, exits and Vince arena remain unvalidated."
+    },
+    {
+      "id": "acid2-terminal",
+      "scope": "Stage 06 Terminal",
+      "reason": "Tracks/platform/passing-train rules identified in guide, but no native frame inspected; not confused with Cargo Train."
+    },
+    {
+      "id": "acid2-residential-area",
+      "scope": "Stage 08 Residential Area",
+      "reason": "Interior room/stair/crawl route text found, but no native frame inspected; no generic houses generated."
+    },
+    {
+      "id": "acid2-prototype-floors",
+      "scope": "Additional Stage 09 Prototype Factory floors beyond existing P61",
+      "reason": "No new distinct attributable floor frame inspected; P61 source not duplicated."
+    },
+    {
+      "id": "acid-far-b3f",
+      "scope": "ACID FAR B3F",
+      "reason": "Text and timestamps only; no native geometry validated."
+    },
+    {
+      "id": "acid-far-b4f",
+      "scope": "ACID FAR B4F",
+      "reason": "Text and timestamps only; no native geometry validated."
+    },
+    {
+      "id": "acid-far-b5f",
+      "scope": "ACID FAR B5F",
+      "reason": "Text and timestamps only; no native geometry validated."
+    }
+  ],
+  "excludedDuplicates": [
+    "acid2-harbor-area P63",
+    "acid2-cargo-train P63",
+    "acid2-security-monitor-room P63",
+    "Test Subjects rooms and Prototype source P61"
+  ],
+  "noGenericFallbackArchitecture": true,
+  "noPixelExactCertification": true
+}
