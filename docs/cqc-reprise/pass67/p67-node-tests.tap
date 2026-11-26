@@ -1,0 +1,142 @@
+TAP version 13
+# Subtest: AC!D and AC!D 2 remain distinct, and all four titles resolve
+ok 1 - AC!D and AC!D 2 remain distinct, and all four titles resolve
+  ---
+  duration_ms: 3.889724
+  type: 'test'
+  ...
+# Subtest: paths stay within local asset PNGs; traversal and external image URLs are refused
+ok 2 - paths stay within local asset PNGs; traversal and external image URLs are refused
+  ---
+  duration_ms: 0.362168
+  type: 'test'
+  ...
+# Subtest: a duplicate identity, unknown title, bad path or combat claim blocks catalog admission
+ok 3 - a duplicate identity, unknown title, bad path or combat claim blocks catalog admission
+  ---
+  duration_ms: 0.706158
+  type: 'test'
+  ...
+# Subtest: unselected or unavailable sources do not inflate the atlas
+ok 4 - unselected or unavailable sources do not inflate the atlas
+  ---
+  duration_ms: 0.435508
+  type: 'test'
+  ...
+# Subtest: search ignores accents and title filtering cannot mix Acid editions
+ok 5 - search ignores accents and title filtering cannot mix Acid editions
+  ---
+  duration_ms: 0.643193
+  type: 'test'
+  ...
+# Subtest: selection follows the visible subset, including an empty result
+ok 6 - selection follows the visible subset, including an empty result
+  ---
+  duration_ms: 0.484102
+  type: 'test'
+  ...
+# Subtest: query restoration validates filters and serializes a stable deep link
+ok 7 - query restoration validates filters and serializes a stable deep link
+  ---
+  duration_ms: 0.78676
+  type: 'test'
+  ...
+# Subtest: external reference links reject executable URLs and credentials
+ok 8 - external reference links reject executable URLs and credentials
+  ---
+  duration_ms: 0.369178
+  type: 'test'
+  ...
+# Subtest: shell provides atlas routes in Extras and Chroniques with separate selected-asset validation
+ok 9 - shell provides atlas routes in Extras and Chroniques with separate selected-asset validation
+  ---
+  duration_ms: 0.658396
+  type: 'test'
+  ...
+# Subtest: failed loading exposes retry and a successful retry renders the catalog
+ok 10 - failed loading exposes retry and a successful retry renders the catalog
+  ---
+  duration_ms: 21.506078
+  type: 'test'
+  ...
+# Subtest: an older pending response cannot replace the newer catalog
+ok 11 - an older pending response cannot replace the newer catalog
+  ---
+  duration_ms: 4.522742
+  type: 'test'
+  ...
+# Subtest: an image failure exposes retry after a successful catalog load
+ok 12 - an image failure exposes retry after a successful catalog load
+  ---
+  duration_ms: 1.419427
+  type: 'test'
+  ...
+# Subtest: mounted control changes and reset update the visible selected dossier
+ok 13 - mounted control changes and reset update the visible selected dossier
+  ---
+  duration_ms: 1.198062
+  type: 'test'
+  ...
+# Subtest: embedded navigation returns to the existing shell without nesting a second shell
+ok 14 - embedded navigation returns to the existing shell without nesting a second shell
+  ---
+  duration_ms: 1.099513
+  type: 'test'
+  ...
+# Subtest: explicit edition keys keep visually similar incarnations separate
+ok 15 - explicit edition keys keep visually similar incarnations separate
+  ---
+  duration_ms: 2.69746
+  type: 'test'
+  ...
+# Subtest: ambiguous labels and malformed explicit keys cannot fall back to another edition
+ok 16 - ambiguous labels and malformed explicit keys cannot fall back to another edition
+  ---
+  duration_ms: 1.141086
+  type: 'test'
+  ...
+# Subtest: search covers canonical edition labels, accents and exact historical work IDs
+ok 17 - search covers canonical edition labels, accents and exact historical work IDs
+  ---
+  duration_ms: 0.701612
+  type: 'test'
+  ...
+# Subtest: new edition filters round-trip through deep links without losing unrelated route state
+ok 18 - new edition filters round-trip through deep links without losing unrelated route state
+  ---
+  duration_ms: 0.924188
+  type: 'test'
+  ...
+# Subtest: the 48 historical dossiers retain their pre-P67 normalized data exactly
+ok 19 - the 48 historical dossiers retain their pre-P67 normalized data exactly
+  ---
+  duration_ms: 6.41909
+  type: 'test'
+  ...
+# Subtest: real filters expose each edition once and select its actual dossier
+ok 20 - real filters expose each edition once and select its actual dossier
+  ---
+  duration_ms: 13.944214
+  type: 'test'
+  ...
+# Subtest: new-title dossier navigation reuses the existing archives route in the host shell
+ok 21 - new-title dossier navigation reuses the existing archives route in the host shell
+  ---
+  duration_ms: 1.75185
+  type: 'test'
+  ...
+# Subtest: browser-history restoration applies a new edition before rendering its selection
+ok 22 - browser-history restoration applies a new edition before rendering its selection
+  ---
+  duration_ms: 1.413338
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 221.599148

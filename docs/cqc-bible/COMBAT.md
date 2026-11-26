@@ -109,3 +109,11 @@ La chaîne de validation suit [FICHES_ET_VALIDATION.md](FICHES_ET_VALIDATION.md)
 P66 prépare six sources d’objet : Machine Gun Turret, Oil Trap, Flame Trap, Cardboard Box, Drum Can et variante Mariachi. Leurs états, délais, ciblage, dommages, collisions, neutralisations et contre-jeu sont consignés comme travaux nécessaires. Aucun comportement ni moveset n’est admis par l’ajout des PNG. La variante Mariachi partage l’objet de base et ne crée pas un combattant.
 
 [Continuation et fiches P66](CONTINUATION_P66.md) · [Associations P66](asset-associations-p66.json) · [Delta](../cqc-reprise/pass66/scope-delta.json) · [QA](../cqc-reprise/pass66/INTEGRATION_QA.md)
+
+## P67 — sources de personnages, sans admission implicite
+
+P67 ajoute 22 corps de personnages, 6 portraits et un Gekko Touch. La [continuation](CONTINUATION_P67.md) distingue civils assis, poses T, posture hospitalière reconstruite, avatars personnalisés et portrait. Aucun de ces cadrages ne fournit à lui seul une garde, un moveset ou une collision utilisable.
+
+Avant une future admission, valider silhouette, incarnation, échelle, ancrages, vues utiles et états requis. Les mains, armes et équipements reconstruits demandent une validation distincte. Les portraits restent réservés à la consultation ou à une présentation autorisée ; les détails du corps hors cadre ne sont pas inventés. Les presets MGO ne deviennent pas l’uniforme universel d’une classe.
+
+Les flags de combat et de certification restent faux pour les 29 fichiers. Aucun coup, dégât, contre-jeu, VFX, son, animation ou nouvelle neutralisation n’est ajouté. Le Gekko Touch demeure associé à sa pose observée, sans assimilation automatique aux Gekko MGS4.

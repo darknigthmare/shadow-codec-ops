@@ -8,9 +8,23 @@
 })(typeof globalThis === 'object' ? globalThis : this, function () {
   'use strict';
   const DATA_URL = '../data/cqc-p63-source-atlas.json';
-  const EPISODES = Object.freeze({survive:'Survive', acid:'AC!D', acid2:'AC!D 2', mgr:'Revengeance'});
+  // Explicit edition keys keep ports, remakes, mobile games and online titles
+  // separate. Display labels and filter options share this single dictionary.
+  const EPISODES = Object.freeze({
+    mg_msx:'Metal Gear — MSX', mg_nes:'Metal Gear — NES', mg2:'Metal Gear 2: Solid Snake',
+    snakes_revenge:'Snake’s Revenge', mgs1:'Metal Gear Solid', twin_snakes:'The Twin Snakes',
+    vr_missions:'MGS Integral / VR Missions', mgs2:'Metal Gear Solid 2', mgs3:'Metal Gear Solid 3',
+    delta:'Metal Gear Solid Δ', snake_eater_3d:'Snake Eater 3D', mpo:'Portable Ops',
+    mpo_plus:'Portable Ops Plus', pw:'Peace Walker', gz:'Ground Zeroes', tpp:'The Phantom Pain',
+    mgs4:'Metal Gear Solid 4', mgr:'Revengeance', rising_proto:'MGS Rising — projet initial',
+    ghost_babel:'Ghost Babel', acid:'AC!D', acid2:'AC!D 2', acid_mobile:'AC!D Mobile',
+    acid2_mobile:'AC!D 2 Mobile', survive:'Survive', mobile:'MGS Mobile', touch:'MGS Touch',
+    social_ops:'Social Ops', mgo1:'Metal Gear Online 1', mgo2:'Metal Gear Online 2',
+    mgo3:'Metal Gear Online 3', arcade:'Metal Gear Arcade'
+  });
   const KINDS = Object.freeze({stage:'Décors', character:'Personnages', costume:'Costumes', machine:'Machines et créatures', projectile:'Projectiles', vfx:'Effets', prop:'Accessoires'});
   const FRONTS = Object.freeze({survive:{module:'episodes52', label:'Archives de mission'}, acid:{module:'acid', label:'Dossiers AC!D'}, acid2:{module:'acid', label:'Dossiers AC!D'}, mgr:{module:'mgr', label:'Dossiers Revengeance'}});
+  const DEFAULT_FRONT = Object.freeze({module:'episodes52', label:'Archives de mission'});
   const BIBLE_URL = 'https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/docs/cqc-bible/README.md';
   const plain = value => typeof value === 'string' ? value.trim() : '';
   const fold = value => plain(value).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('fr');
@@ -19,11 +33,13 @@
 
   function episodeKey(value) {
     if (Object.hasOwn(EPISODES, value)) return value;
-    const name = fold(value).replace(/!/g, 'i');
-    if (/survive/.test(name)) return 'survive';
-    if (/acid[\s_-]*2/.test(name)) return 'acid2';
-    if (/acid/.test(name)) return 'acid';
-    if (/rising|revengeance|^mgr$/.test(name)) return 'mgr';
+    const name = fold(value).replace(/!/g, 'i').replace(/\s+/g, ' ');
+    // Bounded compatibility aliases, not substring matching: Mobile editions
+    // and the original Rising project must never become PSP/Revengeance rows.
+    if (/^(?:metal gear )?survive(?: \(2018\))?$/.test(name)) return 'survive';
+    if (/^(?:metal gear )?acid ?2(?: \(psp\))?$/.test(name)) return 'acid2';
+    if (/^(?:metal gear )?acid(?: \(psp\))?$/.test(name)) return 'acid';
+    if (/^(?:metal gear rising: )?revengeance(?: \(2013\))?$/.test(name)) return 'mgr';
     return null;
   }
   function assetPath(value) {
@@ -41,7 +57,11 @@
     if (!catalog || !Array.isArray(catalog.assets)) throw new Error('Le catalogue de sources est incomplet.');
     const seen = new Set();
     return catalog.assets.filter(asset => asset?.selected !== false && asset?.sourceGenerated !== false).map(asset => {
-      const id = plain(asset.id), label = plain(asset.label), episode = episodeKey(asset.episodeKey || asset.game || asset.episode);
+      const id = plain(asset.id), label = plain(asset.label), explicitEpisode = plain(asset.episodeKey);
+      // Legacy labels remain supported for the first four Atlas editions. New
+      // editions require a canonical key; an unknown explicit key is never
+      // guessed from a similar game name (for example an AC!D Mobile typo).
+      const episode = Object.hasOwn(asset, 'episodeKey') ? (Object.hasOwn(EPISODES, explicitEpisode) ? explicitEpisode : null) : episodeKey(asset.game || asset.episode);
       const path = assetPath(asset.path), kind = plain(asset.kind);
       if (!idPattern.test(id) || seen.has(id) || !label || !episode || !path || !Object.hasOwn(KINDS, kind)) throw new Error('Un dossier du catalogue possède une identité ou une image invalide.');
       if (asset.combatReady === true) throw new Error('Le catalogue de sources fixes contient une admission au combat inattendue.');
@@ -66,7 +86,7 @@
     const needle = fold(state.query);
     return assets.filter(asset => (state.episode === 'all' || asset.episode === state.episode) &&
       (state.kind === 'all' || asset.kind === state.kind) && (!needle ||
-        fold([asset.label, asset.edition, asset.scope, ...asset.workIds].join(' ')).includes(needle)));
+        fold([asset.label, asset.edition, EPISODES[asset.episode], asset.scope, ...asset.workIds].join(' ')).includes(needle)));
   }
   function selectedAsset(visible, requested) { return visible.find(asset => asset.id === requested) || visible[0] || null; }
   function stateURL(state, current) {
@@ -76,7 +96,7 @@
     }
     return url.href;
   }
-  function frontURL(episode) { return '../index.html?module=' + FRONTS[episode].module; }
+  function frontURL(episode) { return '../index.html?module=' + (FRONTS[episode] || DEFAULT_FRONT).module; }
 
   function mount(host) {
     const doc = host.document, byID = id => doc.getElementById(id);
@@ -134,7 +154,7 @@
         body.append(refs);
       }
       body.append(create('h3', '', 'Continuer dans CQC'));
-      const front = FRONTS[asset.episode];
+      const front = FRONTS[asset.episode] || DEFAULT_FRONT;
       body.append(link(frontURL(asset.episode),front.label));
       body.append(create('p', '', 'Retrouver les machines, missions et dossiers déjà disponibles dans ce front.'));
       detail.append(body);
@@ -175,6 +195,7 @@
         retry.hidden = false;
       }
     }
+    for (const [value,text] of Object.entries(EPISODES)) { const option = create('option','',text); option.value = value; episodeSelect.append(option); }
     for (const [value,text] of Object.entries(KINDS)) { const option = create('option','',text); option.value = value; kindSelect.append(option); }
     episodeSelect.addEventListener('change',readControls); kindSelect.addEventListener('change',readControls); search.addEventListener('input',readControls);
     form.addEventListener('submit',event => event.preventDefault());

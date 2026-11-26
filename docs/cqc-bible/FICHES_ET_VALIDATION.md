@@ -105,3 +105,11 @@ Le rapport effectivement exécuté est conservé dans le [bilan P62](../cqc-repr
 Les 14 fiches P66 disposent d’une identité, de dimensions mesurées, d’un SHA-256, de références, d’un périmètre borné et de réserves. La revue indépendante accepte des candidats de travail ; elle ne certifie pas le 1:1. L’intégrité PNG et les bijections de catalogue sont vérifiées séparément de la fidélité visuelle. Le parcours navigateur reste non validé dans cette passe.
 
 [Continuation et fiches P66](CONTINUATION_P66.md) · [Associations P66](asset-associations-p66.json) · [Delta](../cqc-reprise/pass66/scope-delta.json) · [QA](../cqc-reprise/pass66/INTEGRATION_QA.md)
+
+## Validation P67 — portée des images et preuves distinctes
+
+Les [fiches P67](CONTINUATION_P67.md) comptent 29 candidats : 23 sujets complets (22 personnages et une machine) et 6 portraits. Les dimensions, alpha, CRC, décompression et hashes sont consignés pour les 30 PNG bruts, dont la version Scout v1 archivée. Un refus sans sortie est enregistré séparément ; il n’a ni hash de PNG ni entrée Atlas.
+
+La revue visuelle décrit ce que la référence établit et ce que la génération reconstruit. Les previews PSP, les illustrations du manuel MGS1, les captures HD et les variantes de menus conservent leur attribution. L’intégrité d’un PNG ne démontre ni une correspondance pixel par pixel ni une géométrie native exacte. Les marges basses volontairement coupées des portraits ne sont pas confondues avec un corps complet.
+
+L’extension Atlas préserve les 48 dossiers historiques et ajoute 29 dossiers filtrables sur les 32 clés d’édition. Les anciens registres, les 225 sélections et les 18 archives P66 sont préservés. Le [rapport QA P67](../cqc-reprise/pass67/INTEGRATION_QA.md) décrit le contrôle du graphe runtime et ses limites navigateur/déploiement. Les 30 rubriques et 90 exigences du guide demeurent inchangées.

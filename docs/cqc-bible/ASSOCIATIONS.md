@@ -285,3 +285,11 @@ Les seules archives uniques P64 sont Genetics v1 et Leone v2. Leone v1 reste sé
 Les 14 sources P66 sont associées individuellement aux périmètres, rubriques du guide, références, réserves et tâches suivantes. Le registre historique reste inchangé ; FAR reçoit trois fragments distincts sur sa ligne historique et les autres sous-périmètres descriptifs sont suivis en extension. Le cumul est de 225 sources sélectionnées, dont 48 dans l’Atlas. Les 3 archives P66 ne sont pas des sources retenues.
 
 [Continuation et fiches P66](CONTINUATION_P66.md) · [Associations P66](asset-associations-p66.json) · [Delta](../cqc-reprise/pass66/scope-delta.json) · [QA](../cqc-reprise/pass66/INTEGRATION_QA.md)
+
+## Extension P67 — variantes et portraits de 17 éditions
+
+Les [29 associations P67](asset-associations-p67.json) portent le cumul à **254 sources sélectionnées** : 48 personnages, 9 costumes, 47 machines, 133 décors, 14 objets, 2 corps de projectiles et 1 VFX. Le lot contient 22 corps de personnages, 6 portraits et 1 machine complète. Les 19 archives cumulées restent exclues.
+
+Chaque association conserve l’édition effective, les workIds, les références, le type de représentation, les réserves visuelles, les hashes et les rubriques du guide. Le même workId partagé ne justifie pas un transfert de modèle entre jeux. Les 29 sources ont `atlasIntegrated:true`, `runtimeIntegrated:false` et `absolute1to1Certified:false`.
+
+Les [fiches P67](CONTINUATION_P67.md), le [delta des périmètres](../cqc-reprise/pass67/scope-delta.json) et le [suivi des manquants](../cqc-reprise/pass67/MANQUANTS.md) maintiennent les familles ouvertes. Aucun des 277 enregistrements P61 n’est réécrit pour suggérer une clôture. Le refus PW Sentinel Vest n’a pas de fichier associé.
