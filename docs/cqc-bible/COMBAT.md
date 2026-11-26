@@ -103,3 +103,9 @@ Les réglages de confort portent séparément sur secousses, flashs, volume, tai
 - [`unified-versus-v055.html`](../../public/cqc/modules/unified-versus-v055.html) : base compilée des profils, suivie d’adaptateurs. L’extraction P62 conserve cette limite.
 
 La chaîne de validation suit [FICHES_ET_VALIDATION.md](FICHES_ET_VALIDATION.md). La phase actuelle produit des sprites fixes et des documents ; les nouveaux movesets, neutralisations et séquences narratives ci-dessus n’ont pas été déclarés jouables par cette passe.
+
+## Extension P66 — 26 novembre 2026
+
+P66 prépare six sources d’objet : Machine Gun Turret, Oil Trap, Flame Trap, Cardboard Box, Drum Can et variante Mariachi. Leurs états, délais, ciblage, dommages, collisions, neutralisations et contre-jeu sont consignés comme travaux nécessaires. Aucun comportement ni moveset n’est admis par l’ajout des PNG. La variante Mariachi partage l’objet de base et ne crée pas un combattant.
+
+[Continuation et fiches P66](CONTINUATION_P66.md) · [Associations P66](asset-associations-p66.json) · [Delta](../cqc-reprise/pass66/scope-delta.json) · [QA](../cqc-reprise/pass66/INTEGRATION_QA.md)

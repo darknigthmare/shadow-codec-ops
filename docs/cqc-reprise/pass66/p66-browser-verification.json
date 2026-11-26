@@ -1,0 +1,31 @@
+{
+  "schema": "cqc.p66.browser-verification.v1",
+  "status": "blocked_before_browser_start",
+  "checkedAt": "2026-11-26T14:21:23.662618+00:00",
+  "localChromium": {
+    "wrapper": "/usr/bin/chromium",
+    "requiredBinary": "/usr/lib/chromium/chromium",
+    "binaryPresent": false,
+    "launchExitCode": 127,
+    "error": "exec: /usr/lib/chromium/chromium: not found"
+  },
+  "isolatedInstallAttempt": {
+    "command": "PLAYWRIGHT_BROWSERS_PATH=/mnt/data/cqc-p66/playwright-browsers node /opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/cli.js install chromium --only-shell",
+    "url": "https://cdn.playwright.dev/builds/cft/151.0.7922.34/linux64/chrome-headless-shell-linux64.zip",
+    "httpStatus": 403,
+    "bodySummary": "Site Unavailable — Unable to access this site.",
+    "exitCode": 1,
+    "automaticCliDownloadAttempts": 5,
+    "alternateRouteAttempted": false
+  },
+  "runner": "scripts/qa-cqc-p66-browser.mjs",
+  "runnerSyntaxChecked": true,
+  "runnerExecutedAgainstFinalAssets": false,
+  "pagesLoaded": 0,
+  "screenshotsCreated": 0,
+  "limits": [
+    "No actual browser traversal is validated.",
+    "The prepared browser runner was syntax-checked only.",
+    "Node, file hashing, PNG decoding and static reference checks are separate from browser execution."
+  ]
+}

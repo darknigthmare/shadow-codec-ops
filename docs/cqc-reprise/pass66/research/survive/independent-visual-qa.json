@@ -1,0 +1,488 @@
+{
+  "schema": "cqc.p66.survive.independent-visual-qa.v1",
+  "reviewer": "rising_assets independent from Survive generating agent",
+  "reviewedAtUTC": "2026-11-26T14:39:25.510476+00:00",
+  "inputHandoff": "docs/cqc-reprise/pass66/research/survive/handoff.json",
+  "inputHandoffSha256": "5f5db0595534b3a58f2f0cdf2d2c751a0e1f15857587e010a8779fa38e34305f",
+  "baseCommit": "101b15617f8766353800ffc1be592ec1aef6b66c",
+  "scope": "Independent visual review of the four published v1 candidates and reference-backed remaining priorities. No generated image or central catalog was modified.",
+  "method": [
+    "Opened original reference screenshots and original published PNGs.",
+    "Compared RGB features and silhouettes against named native gameplay references.",
+    "Independently recomputed PNG dimensions, modes, byte counts, SHA-256 and alpha statistics.",
+    "Viewed temporary RGBA composites on light (242,242,238) and dark (25,29,34) backgrounds. QA previews are temporary, never replacements for the original files.",
+    "Inspected enlarged crops of the native flame-trap reference only for panel counting; enlargement adds no source detail."
+  ],
+  "summary": {
+    "supportedWithinLimitedScope": 3,
+    "requiresGeometryCorrection": 1,
+    "alphaContourBlockingDefects": 0,
+    "hashMismatches": 0,
+    "absolute1to1Certifications": 0,
+    "combatAdmissions": 0,
+    "wholeStageClosures": 0
+  },
+  "assets": [
+    {
+      "id": "survive-forsaken-ruins-terrace",
+      "decision": "supported_as_partial_stage_source",
+      "reviewedVersion": "v1",
+      "visualAgreement": [
+        "Maçonnerie en blocs gris-verts à joints horizontaux, petits couronnements étagés, linteau rectangulaire lourd et dallage cohérents avec les planches 0, 2 et 6.",
+        "Végétation humide, mousse, lianes, grands troncs et brume cohérents avec le gameplay natif.",
+        "Une seule scène opaque ; aucun HUD, avatar, ennemi, Digger ou grillage placé repéré."
+      ],
+      "limitations": [
+        "La composition latérale et la largeur de la terrasse ont été recomposées pour une vue 2D. La position du passage à droite et le nombre exact de blocs ne sont pas démontrés par une seule capture native.",
+        "Les références sont des cellules de storyboard 320×180. Elles établissent les motifs architecturaux, pas les distances, la topologie ou chaque détail.",
+        "Uniquement un sous-fragment terrasse/passage. Carte entière, routes, entrées, verticalité, occlusions et couches de parallaxe restent ouvertes."
+      ],
+      "alphaReview": {
+        "applicable": false,
+        "observation": "Image RGB opaque, conforme au rôle de décor complet sur son canevas."
+      },
+      "recommendedScope": "Conserver comme source fixe partielle de Forsaken Ruins ; ne pas clore stage:survive_forsaken_ruins.",
+      "publishedPath": "public/cqc/assets/p66/survive-forsaken-ruins-terrace.png",
+      "reviewedSha256": "fd0741bc3d0dbc82532d5ef5b5ab160fec0c861a86c0ef0b746d2a0c66459446",
+      "pixelVerification": {
+        "id": "survive-forsaken-ruins-terrace",
+        "width": 1672,
+        "height": 941,
+        "mode": "RGB",
+        "bytes": 3271944,
+        "sha256": "fd0741bc3d0dbc82532d5ef5b5ab160fec0c861a86c0ef0b746d2a0c66459446",
+        "hashMatchesHandoff": true
+      },
+      "referenceFiles": [
+        "docs/cqc-reprise/pass66/research/survive/references/forsaken-7GoezFHu3VE-storyboard-0.jpg",
+        "docs/cqc-reprise/pass66/research/survive/references/forsaken-7GoezFHu3VE-storyboard-2.jpg",
+        "docs/cqc-reprise/pass66/research/survive/references/forsaken-7GoezFHu3VE-storyboard-6.jpg"
+      ],
+      "referenceURLs": [
+        "https://www.youtube.com/watch?v=7GoezFHu3VE",
+        "https://steamcommunity.com/sharedfiles/filedetails/?id=3550410754"
+      ],
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "scopeClosed": false
+    },
+    {
+      "id": "survive-machine-gun-turret",
+      "decision": "supported_as_static_source_with_geometry_reservations",
+      "reviewedVersion": "v1",
+      "visualAgreement": [
+        "La silhouette reprend le canon long, le boîtier latéral anguleux, le corps à nervures, l’antenne verticale et le boîtier suspendu avec câble visible dans 220401_04.",
+        "Collerette claire, berceau blanc, poteau central et stabilisateurs plats concordent avec les deux côtés montrés par 220401_04 et 220401_01.",
+        "Objet complet, extrémités visibles, sans avatar, HUD, sol ni effet de tir."
+      ],
+      "limitations": [
+        "Le canon et certaines épaisseurs sont légèrement accentués dans la reconstruction ; vis, jonctions et partie sous barre de vie restent interprétées.",
+        "Marges utiles haut et bas de seulement 12 pixels à alpha>16 : aucune coupe constatée, mais marge moins généreuse que demandée.",
+        "Aucune rotation, animation de tir, collision ou logique de tourelle n’est vérifiée."
+      ],
+      "alphaReview": {
+        "applicable": true,
+        "lightBackgroundInspected": true,
+        "darkBackgroundInspected": true,
+        "observation": "Contours lisibles et détourage visuellement propre sur fonds clair et sombre ; pas de halo opaque ni fond résiduel visible à taille d’inspection. Les fines transitions alpha de bord sont conservées."
+      },
+      "recommendedScope": "Source statique de tourelle autonome ; ne pas confondre avec une mitrailleuse manuelle ou un mortier.",
+      "publishedPath": "public/cqc/assets/p66/survive-machine-gun-turret.png",
+      "reviewedSha256": "72d552fd47571e21ac2ccda0cc36f786e6246e44c11dd2456c72500e61aed1be",
+      "pixelVerification": {
+        "id": "survive-machine-gun-turret",
+        "width": 1314,
+        "height": 1197,
+        "mode": "RGBA",
+        "bytes": 766028,
+        "sha256": "72d552fd47571e21ac2ccda0cc36f786e6246e44c11dd2456c72500e61aed1be",
+        "hashMatchesHandoff": true,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaPixels0": 1256912,
+        "alphaPixels1To249": 41955,
+        "alphaPixels250To255": 273991,
+        "boundsAt16": [
+          136,
+          12,
+          1210,
+          1185
+        ],
+        "alphaAbove16OnCanvasEdges": 0,
+        "marginsAt16": {
+          "left": 136,
+          "top": 12,
+          "right": 104,
+          "bottom": 12
+        }
+      },
+      "referenceFiles": [
+        "docs/cqc-reprise/pass66/research/survive/references/native-defenses-220401_04.jpg",
+        "docs/cqc-reprise/pass66/research/survive/references/native-turret-220401_01.jpg"
+      ],
+      "referenceURLs": [
+        "https://w.atwiki.jp/mgsurvive/pages/111.html",
+        "https://img.atwiki.jp/mgsurvive/attach/111/95/220401_04.jpg",
+        "https://img.atwiki.jp/mgsurvive/attach/111/92/220401_01.jpg"
+      ],
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "scopeClosed": false
+    },
+    {
+      "id": "survive-oil-trap",
+      "decision": "supported_as_inactive_static_source_with_geometry_reservations",
+      "reviewedVersion": "v1",
+      "visualAgreement": [
+        "Quatre panneaux noirs disposés autour d’une croix simple, cadre métallique bas et segments roses concordent avec la plaque de droite étiquetée オイルトラップ dans 220401_03.",
+        "Le second angle 220401_04 confirme la surface noire et les bandes roses.",
+        "Les quatre coins sont conservés ; aucun sol, avatar, grillage ou piège voisin n’est incorporé."
+      ],
+      "limitations": [
+        "Perspective, largeur des traverses, marques d’usure et texture huileuse sont reconstruites ; aucune mesure physique exacte.",
+        "État inactif seulement ; glissade, déclenchement et dégradation ne sont pas établis."
+      ],
+      "alphaReview": {
+        "applicable": true,
+        "lightBackgroundInspected": true,
+        "darkBackgroundInspected": true,
+        "observation": "Les contours fins et les quatre angles restent propres sur les deux fonds. Pas de halo manifeste, de sol collé ou de coupe par le canevas."
+      },
+      "recommendedScope": "Source fixe du piège à huile au repos.",
+      "publishedPath": "public/cqc/assets/p66/survive-oil-trap.png",
+      "reviewedSha256": "dfae72b53439e412f991e8dcade7be642d1d5cf31d480975c4a2bfcc06c10274",
+      "pixelVerification": {
+        "id": "survive-oil-trap",
+        "width": 1774,
+        "height": 887,
+        "mode": "RGBA",
+        "bytes": 950151,
+        "sha256": "dfae72b53439e412f991e8dcade7be642d1d5cf31d480975c4a2bfcc06c10274",
+        "hashMatchesHandoff": true,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaPixels0": 1102500,
+        "alphaPixels1To249": 18887,
+        "alphaPixels250To255": 452151,
+        "boundsAt16": [
+          146,
+          178,
+          1628,
+          749
+        ],
+        "alphaAbove16OnCanvasEdges": 0,
+        "marginsAt16": {
+          "left": 146,
+          "top": 178,
+          "right": 146,
+          "bottom": 138
+        }
+      },
+      "referenceFiles": [
+        "docs/cqc-reprise/pass66/research/survive/references/native-defenses-220401_03.jpg",
+        "docs/cqc-reprise/pass66/research/survive/references/native-defenses-220401_04.jpg"
+      ],
+      "referenceURLs": [
+        "https://w.atwiki.jp/mgsurvive/pages/111.html",
+        "https://img.atwiki.jp/mgsurvive/attach/111/94/220401_03.jpg",
+        "https://img.atwiki.jp/mgsurvive/attach/111/95/220401_04.jpg"
+      ],
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "scopeClosed": false
+    },
+    {
+      "id": "survive-flame-trap",
+      "decision": "requires_panel_layout_correction",
+      "reviewedVersion": "v1_before_parent_correction",
+      "visualAgreement": [
+        "Plaque basse, matériau métallique gris, grilles perforées, cadre droit et bandes rouge-orange correspondent aux traits distinctifs du piège natif.",
+        "Détourage propre, aucun avatar, HUD, sol ni flamme incorporé."
+      ],
+      "geometryIssue": {
+        "severity": "material_reference_mismatch",
+        "nativeReading": {
+          "totalPanels": 12,
+          "layoutInReference04": "6 panneaux sur la largeur × 2 en profondeur ; 3 panneaux dans chacun des 4 quadrants de la croix principale.",
+          "confidence": "high_for_reference04_supported_by_partial_reference03",
+          "reference04ImageRegion": [
+            540,
+            380,
+            1020,
+            515
+          ],
+          "reference03Observation": "L’angle oblique est partiellement masqué par le grillage, le personnage et le HUD ; le quadrant proche lisible montre également 3 grilles, compatible avec 12 au total."
+        },
+        "generatedReading": {
+          "totalPanels": 8,
+          "layout": "2 colonnes × 4 rangées ; 2 panneaux dans chacun des 4 quadrants."
+        },
+        "requiredCorrection": "Conserver une croix principale et 3 grilles par quadrant, soit 12 grilles au total. La vue choisie peut présenter 6×2 ou 2×6 selon rotation du carré ; le total et les 3 grilles par quadrant doivent rester cohérents."
+      },
+      "limitations": [
+        "Les perforations individuelles, leur espacement et les vis restent non certifiés même après correction de la matrice.",
+        "Cette revue concerne uniquement le SHA v1 enregistré ici. Elle ne valide pas une future correction sous le même chemin."
+      ],
+      "alphaReview": {
+        "applicable": true,
+        "lightBackgroundInspected": true,
+        "darkBackgroundInspected": true,
+        "observation": "Alpha et contours valides visuellement, coins complets, pas de coupe utile par le canevas ; cette qualité de détourage ne résout pas l’écart de panneaux."
+      },
+      "recommendedScope": "Archiver v1 comme candidat écarté si une correction à 12 panneaux est retenue. Ne pas la déclarer géométriquement validée.",
+      "publishedPath": "public/cqc/assets/p66/survive-flame-trap.png",
+      "reviewedSha256": "e0ca318e37447a7a40ba81d6382a25ed90375cdf8e065bcffee01819408695f4",
+      "pixelVerification": {
+        "id": "survive-flame-trap",
+        "width": 1672,
+        "height": 941,
+        "mode": "RGBA",
+        "bytes": 2097707,
+        "sha256": "e0ca318e37447a7a40ba81d6382a25ed90375cdf8e065bcffee01819408695f4",
+        "hashMatchesHandoff": true,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaPixels0": 798379,
+        "alphaPixels1To249": 30107,
+        "alphaPixels250To255": 744866,
+        "boundsAt16": [
+          80,
+          197,
+          1593,
+          808
+        ],
+        "alphaAbove16OnCanvasEdges": 0,
+        "marginsAt16": {
+          "left": 80,
+          "top": 197,
+          "right": 79,
+          "bottom": 133
+        }
+      },
+      "referenceFiles": [
+        "docs/cqc-reprise/pass66/research/survive/references/native-defenses-220401_03.jpg",
+        "docs/cqc-reprise/pass66/research/survive/references/native-defenses-220401_04.jpg"
+      ],
+      "referenceURLs": [
+        "https://w.atwiki.jp/mgsurvive/pages/111.html",
+        "https://img.atwiki.jp/mgsurvive/attach/111/94/220401_03.jpg",
+        "https://img.atwiki.jp/mgsurvive/attach/111/95/220401_04.jpg"
+      ],
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "scopeClosed": false
+    }
+  ],
+  "remainingPriorities": [
+    {
+      "id": "survive-air-shock-cannon",
+      "priority": 1,
+      "status": "needs_unobstructed_body_reference",
+      "evidenceFiles": [
+        "docs/cqc-reprise/pass66/research/survive/references/native-air-cannon-220401_11.jpg",
+        "docs/cqc-reprise/pass66/research/survive/references/native-air-cannon-220401_12.jpg"
+      ],
+      "evidenceURLs": [
+        "https://w.atwiki.jp/mgsurvive/pages/111.html"
+      ],
+      "independentObservation": "220401_12 montre nettement le poteau, les stabilisateurs, la collerette blanche et une partie du corps. L’icône d’inventaire masque la face du canon ; le grillage et les autres HUD gênent aussi. 220401_11 ne fournit qu’une petite vue distante derrière la grille.",
+      "nextEvidence": "Vue native rapprochée de face et de trois quarts, inventaire fermé et avatar décalé, avec corps et pied entiers.",
+      "generationAuthorizedByThisReview": false,
+      "scopeClosed": false
+    },
+    {
+      "id": "survive-wormhole-transporter",
+      "priority": 2,
+      "status": "needs_clean_close_view",
+      "evidenceFiles": [
+        "docs/cqc-reprise/pass65/research/survive/handoff.json"
+      ],
+      "evidenceURLs": [
+        "https://gameranx.com/features/id/139663/article/metal-gear-survive-walkthrough-chapter-4-the-wormhole-transporter/",
+        "https://gameranx.com/wp-content/uploads/2018/02/METAL-GEAR-SURVIVE_20180222141209.jpg"
+      ],
+      "independentObservation": "L’aperçu natif a été récupéré et revu : anneau polygonal haut sur grands montants, plateforme au sol, repère 17 m. Poussière, distance et bord de terrain cachent détails et partie basse. Forme distincte du Digger cylindrique P64.",
+      "nextEvidence": "Machine entière proche, anneau, nombre de supports, base et commandes lisibles ; vue latérale complémentaire pour les parties occultées.",
+      "generationAuthorizedByThisReview": false,
+      "scopeClosed": false
+    },
+    {
+      "id": "survive-captain-modular",
+      "workId": "character:R-SURVIVE-AVATAR",
+      "priority": 3,
+      "status": "variant_inventory_incomplete",
+      "evidenceFiles": [
+        "docs/cqc-reprise/pass64/delivery-manifest.json",
+        "docs/cqc-bible/asset-associations.json"
+      ],
+      "evidenceURLs": [
+        "https://www.4gamer.net/games/353/G035307/20170923011/",
+        "https://www.4gamer.net/games/353/G035307/20170923011/SS/005.jpg",
+        "https://blog.ja.playstation.com/2018/02/21/20180221-mgsurvive/",
+        "https://blog.ja.playstation.com/tachyon/sites/7/2018/02/20180221-mgsurvive-19.jpg"
+      ],
+      "independentObservation": "Le manifeste P64 couvre deux apparences de démonstration TGS2017. L’image PlayStation publiée au lancement a été revérifiée : quatre avatars dans l’espace de préparation, petites silhouettes et équipements partiellement masqués. Elle ne fournit pas d’inventaire complet ni de dos propre pour chaque équipement.",
+      "nextEvidence": "Écran de personnalisation et équipement du jeu final : morphologies, vêtements et pièces nommées, vues avant/dos/latérales. Constituer des modules identifiés plutôt qu’un visage canonique inventé ou des milliers de personnages distincts.",
+      "identityLimits": [
+        "Aucun rôle Shooter/Fighter déduit de l’apparence.",
+        "Aucun visage unique canonique attribué au Captain.",
+        "Une image promotionnelle publiée au lancement ne transforme pas les deux apparences TGS2017 en inventaire complet du jeu final."
+      ],
+      "generationAuthorizedByThisReview": false,
+      "scopeClosed": false
+    },
+    {
+      "id": "survive-mortar-enemy-projectile",
+      "workId": "projectile:crystal-grenade",
+      "priority": 4,
+      "status": "projectile_geometry_not_established",
+      "evidenceFiles": [
+        "docs/cqc-bible/asset-associations.json",
+        "docs/cqc-reprise/pass64/scope-delta.json",
+        "docs/cqc-reprise/pass65/research/survive/handoff.json"
+      ],
+      "independentObservation": "Les dossiers existants documentent une attaque du Mortar et une petite lueur mobile, mais aucune nouvelle image inspectée dans P66 ne donne une forme de projectile nette et attribuable. Le dossier de recherche P64 mentionné historiquement n’est pas présent dans ce checkout ; cette revue ne prétend pas l’avoir consulté.",
+      "nextEvidence": "Frame native nette juste avant impact ou renvoi, ou vue du modèle/texture de ce projectile avec attribution ; conserver séparés corps du projectile, effet lumineux et explosion.",
+      "exclusions": [
+        "Pas de cristal générique.",
+        "Pas de leurre Kuban.",
+        "Pas d’obus d’un mortier construit par le joueur."
+      ],
+      "generationAuthorizedByThisReview": false,
+      "scopeClosed": false
+    },
+    {
+      "id": "survive-mortar-emplacement",
+      "priority": 5,
+      "status": "separate_optional_prop_requires_support_view",
+      "evidenceFiles": [
+        "docs/cqc-reprise/pass66/research/survive/references/survive_defenses_official.png"
+      ],
+      "evidenceURLs": [
+        "https://eu-support.konami.com/hc/en-gb/articles/9649642757399-Game-Modes",
+        "https://eu-support.konami.com/hc/article_attachments/25993239646359"
+      ],
+      "independentObservation": "La capture officielle 518×287 montre un tube dressé sur support utilisé par un opérateur, mais son corps et la faible résolution occultent une partie de l’assemblage. Konami documente les mortiers comme unités de défense/interception.",
+      "nextEvidence": "Vue proche dégagée du tube, de la base, du support et des commandes. Traiter ce matériel comme cible distincte du Mortar ennemi et de son projectile.",
+      "generationAuthorizedByThisReview": false,
+      "scopeClosed": false
+    }
+  ],
+  "publicationGuard": "This review applies only to each reviewedSha256. In particular the Flame Trap v1 result must not be carried over automatically to a corrected PNG.",
+  "additionalReadOnlyEvidence": [
+    {
+      "url": "https://gameranx.com/wp-content/uploads/2018/02/METAL-GEAR-SURVIVE_20180222141209.jpg",
+      "width": 1920,
+      "height": 1080,
+      "retrievedForIndependentInspection": true,
+      "localCopyCommitted": false
+    },
+    {
+      "url": "https://blog.ja.playstation.com/tachyon/sites/7/2018/02/20180221-mgsurvive-19.jpg",
+      "width": 640,
+      "height": 360,
+      "retrievedForIndependentInspection": true,
+      "localCopyCommitted": false
+    }
+  ],
+  "initialSummaryScope": "The existing summary and asset entries record the initial four v1 candidates; the finalAddendum below reviews the corrected Flame Trap v2.",
+  "finalAddendum": {
+    "reviewedAtUTC": "2026-11-26T14:41:55.731318+00:00",
+    "id": "survive-flame-trap",
+    "reviewedVersion": "v2",
+    "publishedPath": "public/cqc/assets/p66/survive-flame-trap.png",
+    "reviewedSha256": "8bdfd33f73da99ec1b6dba840dddcae2c6711d5c5c82fdcadc60aa69ca9b18f2",
+    "pixelVerification": {
+      "width": 1448,
+      "height": 1086,
+      "mode": "RGBA",
+      "bytes": 2317951,
+      "sha256": "8bdfd33f73da99ec1b6dba840dddcae2c6711d5c5c82fdcadc60aa69ca9b18f2",
+      "gitBlobSha": "a0e802ff5f7a3b7f4b18520378532d15f72b6759",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaPixels0": 718933,
+      "alphaPixels1To249": 22151,
+      "alphaPixels250To255": 831444,
+      "alphaAbove16OnCanvasEdges": 0,
+      "boundsAt16": [
+        49,
+        192,
+        1401,
+        923
+      ],
+      "marginsAt16": {
+        "left": 49,
+        "top": 192,
+        "right": 47,
+        "bottom": 163
+      }
+    },
+    "supersedesDecisionForSha256": "e0ca318e37447a7a40ba81d6382a25ed90375cdf8e065bcffee01819408695f4",
+    "priorFindingPreserved": true,
+    "archivedV1Path": "docs/cqc-reprise/pass66/rejected/survive-flame-trap-v1.png",
+    "archivedV1HashVerified": true,
+    "decision": "supported_as_inactive_static_source_with_geometry_reservations",
+    "visualFindings": [
+      "La v2 montre bien 6 colonnes × 2 rangées de grilles perforées, soit 12 panneaux ; chacun des quatre quadrants possède 3 panneaux.",
+      "La disposition correspond maintenant au comptage lisible dans 220401_04 et au quadrant visible dans 220401_03.",
+      "La plaque basse, le cadre métallique, la croix principale et les bandes rouge-orange sont conservés.",
+      "Une seule plaque inactive, sans avatar, grillage, HUD, sol ou flamme incorporés."
+    ],
+    "alphaReview": {
+      "lightBackgroundInspected": true,
+      "darkBackgroundInspected": true,
+      "decision": "no_blocking_contour_defect_observed",
+      "notes": [
+        "Les quatre angles et côtés sont entiers ; aucun pixel alpha>16 sur le bord du canevas.",
+        "Pas de halo opaque ou de fond résiduel manifeste sur les composites clair et sombre.",
+        "Marges alpha>16 : gauche 49 px, droite 47 px, haut 192 px, bas 163 px."
+      ]
+    },
+    "remainingReservations": [
+      "Le nombre et la disposition générale des panneaux sont corrigés ; les trous individuels, vis, épaisseurs et proportions fines restent reconstruits.",
+      "Perspective interprétée depuis des captures en jeu ; aucune certification absolue 1:1.",
+      "État inactif seulement ; activation, feu, désactivation, dégâts, destruction, collisions et intégration combat restent ouverts."
+    ],
+    "referenceFiles": [
+      "docs/cqc-reprise/pass66/research/survive/references/native-defenses-220401_03.jpg",
+      "docs/cqc-reprise/pass66/research/survive/references/native-defenses-220401_04.jpg"
+    ],
+    "referenceURLs": [
+      "https://w.atwiki.jp/mgsurvive/pages/111.html",
+      "https://img.atwiki.jp/mgsurvive/attach/111/94/220401_03.jpg",
+      "https://img.atwiki.jp/mgsurvive/attach/111/95/220401_04.jpg"
+    ],
+    "absolute1to1Certified": false,
+    "referenceGeometryValidated": false,
+    "combatReady": false,
+    "combatRuntimeIntegrated": false,
+    "scopeClosed": false
+  },
+  "finalSummary": {
+    "currentSelectedCandidatesReviewed": 4,
+    "supportedWithinLimitedScope": 4,
+    "supersededV1CandidatesWithMaterialMismatch": 1,
+    "unresolvedPanelCountMismatchInSelectedV2": false,
+    "alphaContourBlockingDefectsObserved": 0,
+    "absolute1to1Certifications": 0,
+    "combatAdmissions": 0,
+    "wholeStageClosures": 0
+  }
+}

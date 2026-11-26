@@ -279,3 +279,9 @@ Les seules archives uniques P64 sont Genetics v1 et Leone v2. Leone v1 reste sé
 | `asset:p60:mgs3-runway` | `mgs3-runway` | 0 parcours / 1 chapitres | 1 séquences / 1 plans |
 | `asset:p60:mgs3-ponizovje-warehouse` | `mgs3-ponizovje-warehouse` | 1 parcours / 0 chapitres | 0 séquences / 0 plans |
 | `asset:p60:mgs3-rassvet` | `mgs3-rassvet` | 1 parcours / 1 chapitres | 2 séquences / 2 plans |
+
+## Extension P66 — 26 novembre 2026
+
+Les 14 sources P66 sont associées individuellement aux périmètres, rubriques du guide, références, réserves et tâches suivantes. Le registre historique reste inchangé ; FAR reçoit trois fragments distincts sur sa ligne historique et les autres sous-périmètres descriptifs sont suivis en extension. Le cumul est de 225 sources sélectionnées, dont 48 dans l’Atlas. Les 3 archives P66 ne sont pas des sources retenues.
+
+[Continuation et fiches P66](CONTINUATION_P66.md) · [Associations P66](asset-associations-p66.json) · [Delta](../cqc-reprise/pass66/scope-delta.json) · [QA](../cqc-reprise/pass66/INTEGRATION_QA.md)

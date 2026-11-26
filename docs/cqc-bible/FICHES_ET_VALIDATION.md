@@ -99,3 +99,9 @@ Ces scénarios sont des critères à exécuter lors de l’intégration ; cette 
 `node scripts/check-cqc-bible.mjs` vérifie les identifiants, liens de registres, compteurs, guide conservé et séparation des statuts. Ces contrôles protègent l’intégrité documentaire et les associations. Ils ne certifient pas le lore, la fidélité visuelle ou le fonctionnement de tous les modes du jeu.
 
 Le rapport effectivement exécuté est conservé dans le [bilan P62](../cqc-reprise/pass62/README.md). Les contrôles historiques ne sont pas présentés comme réexécutés sur ce lot de documentation et de sources fixes.
+
+## Extension P66 — 26 novembre 2026
+
+Les 14 fiches P66 disposent d’une identité, de dimensions mesurées, d’un SHA-256, de références, d’un périmètre borné et de réserves. La revue indépendante accepte des candidats de travail ; elle ne certifie pas le 1:1. L’intégrité PNG et les bijections de catalogue sont vérifiées séparément de la fidélité visuelle. Le parcours navigateur reste non validé dans cette passe.
+
+[Continuation et fiches P66](CONTINUATION_P66.md) · [Associations P66](asset-associations-p66.json) · [Delta](../cqc-reprise/pass66/scope-delta.json) · [QA](../cqc-reprise/pass66/INTEGRATION_QA.md)

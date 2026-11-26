@@ -1,0 +1,356 @@
+{
+  "schema": "cqc.p66.mgr-generation-handoff.v1",
+  "parentCommit": "101b15617f8766353800ffc1be592ec1aef6b66c",
+  "selectedCount": 3,
+  "requests": 5,
+  "successfulOutputs": 5,
+  "blockedRequests": [],
+  "assets": [
+    {
+      "id": "mgr-cardboard-box",
+      "label": "Revengeance — Cardboard Box, déguisement normal",
+      "kind": "prop",
+      "workIds": [
+        "prop:mgr_cardboard_box"
+      ],
+      "selectedVersion": "v2",
+      "edition": "Jeu original 2013 ; captures PC Steam et vidéo de gameplay",
+      "referenceURLs": [
+        "https://www.piggyback.com/en/wp-content/uploads/sites/7/2020/04/MGR_U_SamplePages.pdf",
+        "https://steamcommunity.com/sharedfiles/filedetails/?id=224227085",
+        "https://www.youtube.com/watch?v=4lA4lvNpF7M",
+        "https://i.ytimg.com/vi/4lA4lvNpF7M/maxresdefault.jpg"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass66/research/mgr/box-steam-native.jpg",
+        "docs/cqc-reprise/pass66/research/mgr/box-video-thumb.jpg",
+        "docs/cqc-reprise/pass66/research/mgr/guide-icons-box-drum.png"
+      ],
+      "scope": "Une vue trois-quarts du déguisement Cardboard Box normal, ruban, bande verte et rabats. Ni l'autre face à étiquette, ni Raiden dedans, ni animation de déplacement ou mécanique de furtivité.",
+      "qaNotes": [
+        "Deux vues natives inspectées ; ruban central, fente de prise, bande olive basse et rabats repris.",
+        "La v2 affine l'alpha ; vérification sur composite blanc : aucun fond ou halo visible. Des couleurs brunes existent sous alpha nul et ne constituent pas un fond.",
+        "Matériau plus détaillé et éclairage reconstruits ; proportions, détails des découpes et texture restent à valider contre le modèle final.",
+        "La face opposée porte une étiquette sur la capture de preview GAME Watch 32 ; cette vue ne la montre pas et ne couvre pas l'intégralité du modèle.",
+        "PNG natif RGBA, aucune retouche de pixels ni agrandissement ; 0 certification absolue 1:1 et aucune admission combat.",
+        "Alpha maximal 254/255 : la surface reste très légèrement translucide ; fichier natif conservé sans forcer son opacité."
+      ],
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation_then_alpha_edit",
+        "attempts": 2,
+        "promptId": "mgr-cardboard-box",
+        "prompt": "Use case: stylized-concept. Asset type: one isolated high-detail 2D game prop sprite for CQC Versus Legacy. Subject: the actual normal Cardboard Box disguise from Metal Gear Rising: Revengeance (2013). Input image 1 is a real gameplay view of the normal box, input image 2 is a second gameplay view of the same box with a sombrero; use the box's geometry, not the hat. Recreate precisely that same rectangular brown corrugated cardboard silhouette, with a single pale tan sealing tape strip running along the top center and a short tape tab down the narrow front, small horizontal hand-slot on the narrow face, a dark olive-green band wrapping the lower third of the body, and flat outward-folded lower flaps around its base. Choose the front/right three-quarter view from the second reference, compact tall proportions, plain weathered brown texture, folded seams and modest edge wear. One normal box only, entire silhouette and all base flaps visible with generous transparent margin. Render as a polished hand-painted realistic 2D fighting-game prop with crisp edge definition and readable forms, matching the screenshot's geometry rather than redesigning it. No people, no feet, no arms, no sombrero or other hat, no extra lid, no weapons, no printed logos, no invented labels, no environmental ground, no cast shadow plane, no HUD, no text, no border, no montage. True transparent background. Native large image, not a resized thumbnail.",
+        "correctionPrompt": "Use case: background-extraction. Edit this single cardboard-box game prop. Preserve the exact box geometry, tape, green band, hand slots, all cardboard flaps, camera angle, proportions, visible detail and brown colors. Change only the surrounding background: completely remove the brown haze, glow, gradient, vignette, soft halo and all shadow outside the hard cardboard silhouette. Set every pixel outside the cardboard object to fully transparent alpha zero, leaving only a very narrow clean antialiased edge. Keep the cardboard itself solid and opaque. A single clean cutout on true transparency with generous transparent margins; no floor, no mist, no halo, no drop shadow, no background color. Do not redesign or move any part of the box. Entire object must remain inside the frame.",
+        "promptRecord": "docs/cqc-reprise/pass66/research/mgr/box-prompt.txt",
+        "correctionPromptRecord": "docs/cqc-reprise/pass66/research/mgr/box-correction-prompt.txt",
+        "postProcessing": "Décodage base64 et copie brute du PNG ; aucun changement de pixels."
+      },
+      "path": "public/cqc/assets/p66/mgr-cardboard-box.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2099442,
+      "sha256": "177e31069ceab9ad3d36d78ffafd1fc96ca8c4ad0d04c9a7a32b7fb7d772f7dd",
+      "gitBlobSha": "83f9246ae164c245cbe9bd132d1ee34a26197434",
+      "colorMode": "RGBA",
+      "colorType": 6,
+      "bitDepth": 8,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 802066,
+        "nearOpaquePixels250To255": 748460,
+        "semiTransparentPixels1To249": 22338,
+        "boundsAt16": [
+          157,
+          48,
+          1394,
+          1010
+        ]
+      },
+      "assetId": "asset:p66:mgr-cardboard-box",
+      "pass": "P66",
+      "episode": "Metal Gear Rising: Revengeance",
+      "episodeKey": "mgr",
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "runtimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "fidelityStatus": "pending_external_review",
+      "transparentBackground": true,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "guideSections": [
+        "02",
+        "07",
+        "16",
+        "17",
+        "18",
+        "19",
+        "25",
+        "26",
+        "29"
+      ]
+    },
+    {
+      "id": "mgr-drum-can",
+      "label": "Revengeance — Drum Can, fût de camouflage",
+      "kind": "prop",
+      "workIds": [
+        "prop:mgr_drum_can"
+      ],
+      "selectedVersion": "v2",
+      "edition": "PS3 — capture de preview GAME Watch, 26 janvier 2013",
+      "referenceURLs": [
+        "https://www.piggyback.com/en/wp-content/uploads/sites/7/2020/04/MGR_U_SamplePages.pdf",
+        "https://game.watch.impress.co.jp/docs/news/585161.html",
+        "https://asset.watch.impress.co.jp/img/gmw/docs/585/161/33.jpg"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass66/research/mgr/gamewatch-33.jpg",
+        "docs/cqc-reprise/pass66/research/mgr/guide-icons-box-drum.png"
+      ],
+      "scope": "Un fût de camouflage dressé, isolé de Raiden, d'après une capture PS3 de preview. Ni roulade, ni état renversé ou détruit, ni validation du modèle retail final.",
+      "qaNotes": [
+        "La capture native de preview montre une coque métallique argentée à grandes taches rouille rouge/brun et deux groupes serrés de bourrelets. L'icône officielle confirme l'identité.",
+        "V1 trop haute et mince écartée ; v2 plus compacte retenue. Les proportions restent approximatives et le couvercle peu visible en source a été reconstruit.",
+        "Texture et distribution fine de rouille interprétées, pas reproduction pixel par pixel. La source est une version de preview ; équivalence stricte à la version finale non certifiée.",
+        "Un objet entier isolé ; alpha inspecté sur fond blanc ; pas de jambes ni d'environnement.",
+        "PNG RGBA natif sans agrandissement ; pas d'animation, collision, comportement ou admission combat."
+      ],
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation_then_proportion_edit",
+        "attempts": 2,
+        "promptId": "mgr-drum-can",
+        "prompt": "Use case: stylized-concept. Asset type: one isolated hand-painted realistic 2D prop sprite for the Metal Gear Rising: Revengeance portion of CQC Versus Legacy. Input is an actual MGR PS3 preview gameplay screenshot from GAME Watch January 2013. Recreate only the rusty silver DRUM CAN covering Raiden in the center, as an empty upright disguise prop resting directly on its flat bottom rim. Preserve the reference's tall cylindrical silhouette, height about 1.7 times diameter, silver-gray worn metal with irregular large dark reddish-brown rust patches, a narrow rusty top rolled rim, two broad groups of several tightly spaced horizontal strengthening ridges in the upper third and lower third, separated by one smooth broad middle panel, and the thin dark bottom rolled rim. Subtle view of the shallow top ellipse, straight upright body, frontal slight three-quarter lighting. Keep the visible locations and grouping of the rings and major rust patterns close to the reference; avoid generic painted oil-barrel redesign. Render large, sharp, richly textured but readable as a single 2D fighting-game prop. The metal itself is opaque. True transparent alpha outside the object, clean hard cutout edges with narrow antialiasing only. Entire drum in frame, generous empty transparent margins. No legs, feet, hands or person. No environment, ground plane, cast shadow, fire, trees, cyan light, HUD, lettering, logos, hazard markings, extra objects or collage. No floating glow, fog or colored background. One barrel only.",
+        "correctionPrompt": "Edit this rusty metal Drum Can sprite using the second image as the real Metal Gear Rising gameplay reference. Change only the overall cylinder proportions: the current sprite is too tall and thin. Make the drum's opaque silhouette approximately 1.65 to 1.70 times as tall as its diameter, a visibly broader and more compact cylindrical oil drum matching the reference. Preserve the silver-gray metal, mottled dark red-brown corrosion, rolled top and bottom rims, and two broad groups of tightly spaced horizontal ridges at the same relative heights (upper group near one quarter of height; lower group near three quarters). Preserve the flat shallow top and front view. The object should be solid opaque metal. No legs/person and no background. True transparent alpha zero outside the object, clean antialiased edge, no shadow or haze, generous margin, complete object inside the image. Do not change the texture into paint or add text/logos.",
+        "promptRecord": "docs/cqc-reprise/pass66/research/mgr/drum-prompt.txt",
+        "correctionPromptRecord": "docs/cqc-reprise/pass66/research/mgr/drum-correction-prompt.txt",
+        "postProcessing": "Décodage base64 et copie brute du PNG ; aucun changement de pixels."
+      },
+      "path": "public/cqc/assets/p66/mgr-drum-can.png",
+      "width": 972,
+      "height": 1618,
+      "bytes": 2593942,
+      "sha256": "3237af9e398897984902e3dcd0eaf6c467d1e127a41e1e322dc6711a6165ebab",
+      "gitBlobSha": "d576a813ad874e2261c606712bd9f4f7fe964b3e",
+      "colorMode": "RGBA",
+      "colorType": 6,
+      "bitDepth": 8,
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 456537,
+        "nearOpaquePixels250To255": 1088953,
+        "semiTransparentPixels1To249": 27206,
+        "boundsAt16": [
+          58,
+          136,
+          915,
+          1482
+        ]
+      },
+      "assetId": "asset:p66:mgr-drum-can",
+      "pass": "P66",
+      "episode": "Metal Gear Rising: Revengeance",
+      "episodeKey": "mgr",
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "runtimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "fidelityStatus": "pending_external_review",
+      "transparentBackground": true,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "guideSections": [
+        "02",
+        "07",
+        "16",
+        "17",
+        "18",
+        "19",
+        "25",
+        "26",
+        "29"
+      ]
+    },
+    {
+      "id": "mgr-cardboard-box-mariachi",
+      "label": "Revengeance — Cardboard Box, variante Mariachi",
+      "kind": "prop",
+      "workIds": [
+        "prop:mgr_cardboard_box_mariachi"
+      ],
+      "selectedVersion": "v1",
+      "edition": "Jeu original 2013 — variante Mariachi attestée par une capture PC Steam",
+      "referenceURLs": [
+        "https://www.piggyback.com/en/wp-content/uploads/sites/7/2020/04/MGR_U_SamplePages.pdf",
+        "https://steamcommunity.com/sharedfiles/filedetails/?id=224227085"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass66/research/mgr/box-steam-native.jpg",
+        "public/cqc/assets/p66/mgr-cardboard-box.png"
+      ],
+      "scope": "Variante cosmétique du déguisement Cardboard Box avec sombrero Mariachi. Un seul ensemble équipé, distinct du personnage Raiden et du costume plein corps.",
+      "qaNotes": [
+        "Variante du prop normal ajoutée à partir du sprite P66 et du sombrero visible dans une vraie capture PC Steam.",
+        "Sombrero noir, bordure blanche répétée et broderie claire repris ; motifs fins, taille relative et position exacte restent des approximations.",
+        "La silhouette et le cadrage de la boîte sont maintenus ; microtexture légèrement régénérée. Les deux images ne sont pas des frames d'animation.",
+        "Objet complet inspecté sur composite blanc ; transparence réelle préservée, aucune retouche de pixels ni upscaling.",
+        "Variante de source, aucun nouveau combattant, aucune certification absolue 1:1 et aucune admission combat.",
+        "Alpha maximal 254/255 : la surface reste très légèrement translucide ; fichier natif conservé sans forcer son opacité."
+      ],
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "cosmetic_variant_edit",
+        "attempts": 1,
+        "promptId": "mgr-cardboard-box-mariachi",
+        "prompt": "Use case: precise-object-edit. Create the canonical Mariachi cosmetic version of the Metal Gear Rising: Revengeance cardboard-box disguise. The first input is our clean normal box sprite to preserve exactly; the second is the actual game screenshot showing the Mariachi sombrero placed on that box. Keep the first box's entire body, camera angle, tape, green stripe, hand slots, weathering and flat flaps unchanged. Add ONLY the small black Mariachi sombrero from the gameplay reference, sitting flat on the upper back-central portion of the box top, with its oval brim width about half the box's top depth as it appears in perspective. Reproduce its black felt, gently upturned wide brim, white/silver embroidered scrollwork, repeated white teardrop-like edging around the brim and short black crown. Keep the hat compact like the game reference; it must not be as wide as the box. One single equipped disguise prop, full silhouette of box plus hat visible, generous transparent margin. True transparent background and clean alpha edge. No character, feet, hands, ground, shadow plane, glow, mist, environment, lettering, logo or extra objects. Native detailed 2D game asset; this is a costume variant of an existing prop, not a new character.",
+        "promptRecord": "docs/cqc-reprise/pass66/research/mgr/mariachi-prompt.txt",
+        "postProcessing": "Décodage base64 et copie brute du PNG ; aucun changement de pixels."
+      },
+      "path": "public/cqc/assets/p66/mgr-cardboard-box-mariachi.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2097259,
+      "sha256": "521a130807c9726f9eb018ba02cd502c01d2d2749f5a193ae0383e9427c1f112",
+      "gitBlobSha": "ca36564c9935eac5dfa07258d4ce3fc5e3cee15a",
+      "colorMode": "RGBA",
+      "colorType": 6,
+      "bitDepth": 8,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 800230,
+        "nearOpaquePixels250To255": 746805,
+        "semiTransparentPixels1To249": 25829,
+        "boundsAt16": [
+          157,
+          48,
+          1394,
+          1010
+        ]
+      },
+      "assetId": "asset:p66:mgr-cardboard-box-mariachi",
+      "pass": "P66",
+      "episode": "Metal Gear Rising: Revengeance",
+      "episodeKey": "mgr",
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "runtimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "fidelityStatus": "pending_external_review",
+      "transparentBackground": true,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "guideSections": [
+        "02",
+        "07",
+        "16",
+        "17",
+        "18",
+        "19",
+        "25",
+        "26",
+        "29"
+      ]
+    }
+  ],
+  "archives": [
+    {
+      "id": "mgr-cardboard-box-v1",
+      "path": "docs/cqc-reprise/pass66/rejected/mgr-cardboard-box-v1.png",
+      "supersededBy": "mgr-cardboard-box",
+      "reason": "Essai remplacé par v2 : alpha affiné, pixels non nuls périphériques réduits ; aucune admission combat.",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2183624,
+      "sha256": "cf12347c2074a20857321742db2a111c54248817633fb4385b454a738001d444",
+      "gitBlobSha": "291d665c7a23b18d4e6b3676db8bbfd64c733ec7",
+      "colorMode": "RGBA",
+      "colorType": 6,
+      "bitDepth": 8,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 789581,
+        "nearOpaquePixels250To255": 745913,
+        "semiTransparentPixels1To249": 37370,
+        "boundsAt16": [
+          157,
+          48,
+          1393,
+          1010
+        ]
+      },
+      "selected": false,
+      "atlasIntegrated": false,
+      "sourceGenerated": true,
+      "absolute1to1Certified": false,
+      "combatReady": false
+    },
+    {
+      "id": "mgr-drum-can-v1",
+      "path": "docs/cqc-reprise/pass66/rejected/mgr-drum-can-v1.png",
+      "supersededBy": "mgr-drum-can",
+      "reason": "Proportions trop hautes et étroites par rapport à la capture native ; remplacé par v2.",
+      "width": 962,
+      "height": 1635,
+      "bytes": 2750519,
+      "sha256": "d814088e16e38d528bc0cec69789637b44dfda2ef1c7189c4f508eac6ab99679",
+      "gitBlobSha": "43af482746f668dd4b51062cd3c85c883d6835ef",
+      "colorMode": "RGBA",
+      "colorType": 6,
+      "bitDepth": 8,
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 471052,
+        "nearOpaquePixels250To255": 1073078,
+        "semiTransparentPixels1To249": 28740,
+        "boundsAt16": [
+          99,
+          74,
+          859,
+          1561
+        ]
+      },
+      "selected": false,
+      "atlasIntegrated": false,
+      "sourceGenerated": true,
+      "absolute1to1Certified": false,
+      "combatReady": false
+    }
+  ],
+  "qa": {
+    "imagesInspected": true,
+    "alphaCompositedOnWhiteForInspection": true,
+    "mechanicalEditsToSelectedImages": false,
+    "selectedBytes": 6790643,
+    "archiveBytes": 4934143,
+    "duplicateSelectedHashes": false
+  }
+}

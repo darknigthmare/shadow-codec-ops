@@ -1,0 +1,330 @@
+{
+  "schema": "cqc.p66.mgr-independent-visual-qa.v1",
+  "date": "2026-11-26",
+  "reviewer": "reference_audit subagent; not generator of these MGR images",
+  "summary": "Trois sources candidates acceptables avec limites explicites ; alpha véritable et silhouettes entières. Variante sombrero attribuable à la capture MGR Steam. Drum Can reste fondé sur preview PS3.",
+  "assets": [
+    {
+      "id": "mgr-cardboard-box",
+      "verdict": "accept-as-bounded-candidate",
+      "referenceFiles": [
+        "docs/cqc-reprise/pass66/research/mgr/box-steam-native.jpg",
+        "docs/cqc-reprise/pass66/research/mgr/box-video-thumb.jpg",
+        "docs/cqc-reprise/pass66/research/mgr/gamewatch-32.jpg",
+        "docs/cqc-reprise/pass66/research/mgr/guide-icons-box-drum.png"
+      ],
+      "matches": [
+        "Forme de carton rectangulaire avec rabats inférieurs étalés.",
+        "Ruban central clair sur le dessus, fente de prise sur la petite face et bande olive basse.",
+        "Vue cohérente avec les captures natives ; aucun personnage ou HUD incorporé."
+      ],
+      "limitations": [
+        "Microtexture, épaisseur des rabats et découpes sont reconstruits en HD.",
+        "La face portant une étiquette dans la capture PS3 de preview n’est pas montrée par le sprite ; ne pas déduire que toutes les faces du modèle sont couvertes.",
+        "Source fixe trois-quarts ; aucune animation de déplacement ou interaction."
+      ],
+      "editionNote": "MGR original ; la capture Steam utilisée est publiée le 3 février 2014, pas en 2013.",
+      "imagePath": "public/cqc/assets/p66/mgr-cardboard-box.png",
+      "sha256": "177e31069ceab9ad3d36d78ffafd1fc96ca8c4ad0d04c9a7a32b7fb7d772f7dd",
+      "width": 1536,
+      "height": 1024,
+      "colorMode": "RGBA",
+      "imageVisuallyInspected": true,
+      "referencesVisuallyInspected": true,
+      "alphaQA": {
+        "extrema": [
+          0,
+          254
+        ],
+        "fullyTransparentPixels": 802066,
+        "fullyTransparentFraction": 0.5099398295084635,
+        "nearOpaquePixels250To255": 748460,
+        "canvasEdgeNonZeroPixels": 15,
+        "canvasEdgeMaxAlpha": 1,
+        "canvasEdgePixelsAbove16": 0,
+        "boundsAt16": [
+          157,
+          48,
+          1394,
+          1010
+        ],
+        "marginsAt16": {
+          "left": 157,
+          "top": 48,
+          "right": 142,
+          "bottom": 14
+        },
+        "usefulSilhouetteCropped": false,
+        "realTransparentAlpha": true,
+        "apparentBrownHaze": "The raw RGB preview shows brown haze, but checked pixels in that haze have alpha 0; these colors are hidden when alpha is respected. Very small alpha 1 residuals exist in some outer pixels.",
+        "outsideSamplePixels": [
+          {
+            "x": 1000,
+            "y": 5,
+            "alpha": 0,
+            "rgb": [
+              148,
+              112,
+              73
+            ]
+          },
+          {
+            "x": 800,
+            "y": 10,
+            "alpha": 0,
+            "rgb": [
+              116,
+              81,
+              47
+            ]
+          },
+          {
+            "x": 200,
+            "y": 500,
+            "alpha": 0,
+            "rgb": [
+              9,
+              6,
+              3
+            ]
+          },
+          {
+            "x": 1500,
+            "y": 500,
+            "alpha": 0,
+            "rgb": [
+              5,
+              3,
+              1
+            ]
+          },
+          {
+            "x": 100,
+            "y": 800,
+            "alpha": 0,
+            "rgb": [
+              45,
+              34,
+              23
+            ]
+          },
+          {
+            "x": 1450,
+            "y": 800,
+            "alpha": 0,
+            "rgb": [
+              10,
+              7,
+              4
+            ]
+          }
+        ]
+      },
+      "absolute1to1Certified": false,
+      "combatReady": false,
+      "scopeClosed": false
+    },
+    {
+      "id": "mgr-drum-can",
+      "verdict": "accept-as-bounded-candidate",
+      "referenceFiles": [
+        "docs/cqc-reprise/pass66/research/mgr/gamewatch-33.jpg",
+        "docs/cqc-reprise/pass66/research/mgr/guide-icons-box-drum.png"
+      ],
+      "matches": [
+        "Fût cylindrique argenté avec grandes plages de rouille rouge-brun.",
+        "Deux groupes de bourrelets serrés et larges zones lisses entre eux.",
+        "Contour complet et absence de pieds/jambes de Raiden."
+      ],
+      "limitations": [
+        "L’ellipse et la surface du couvercle sont beaucoup plus visibles dans la génération que dans la capture native ; zone partiellement reconstruite.",
+        "La répartition de la corrosion est une interprétation de la texture, pas une correspondance pixel pour pixel.",
+        "Le rapport hauteur/largeur de la silhouette utile vaut environ 1,57 dans le sprite ; il reste approximatif face à la perspective du screenshot.",
+        "La capture GAME Watch est une preview PS3 datée du 26 janvier 2013. Elle ne valide pas à elle seule un modèle retail final identique.",
+        "Une seule pose dressée ; roulade, basculement, intérieur et destruction restent absents."
+      ],
+      "editionNote": "PREVIEW PS3 du 26 janvier 2013 — aucune équivalence stricte au jeu final certifiée.",
+      "retailFinalModelVerified": false,
+      "imagePath": "public/cqc/assets/p66/mgr-drum-can.png",
+      "sha256": "3237af9e398897984902e3dcd0eaf6c467d1e127a41e1e322dc6711a6165ebab",
+      "width": 972,
+      "height": 1618,
+      "colorMode": "RGBA",
+      "imageVisuallyInspected": true,
+      "referencesVisuallyInspected": true,
+      "alphaQA": {
+        "extrema": [
+          0,
+          255
+        ],
+        "fullyTransparentPixels": 456537,
+        "fullyTransparentFraction": 0.2902894138473042,
+        "nearOpaquePixels250To255": 1088953,
+        "canvasEdgeNonZeroPixels": 124,
+        "canvasEdgeMaxAlpha": 1,
+        "canvasEdgePixelsAbove16": 0,
+        "boundsAt16": [
+          58,
+          136,
+          915,
+          1482
+        ],
+        "marginsAt16": {
+          "left": 58,
+          "top": 136,
+          "right": 57,
+          "bottom": 136
+        },
+        "usefulSilhouetteCropped": false,
+        "realTransparentAlpha": true
+      },
+      "absolute1to1Certified": false,
+      "combatReady": false,
+      "scopeClosed": false
+    },
+    {
+      "id": "mgr-cardboard-box-mariachi",
+      "verdict": "accept-as-bounded-candidate",
+      "referenceFiles": [
+        "docs/cqc-reprise/pass66/research/mgr/box-steam-native.jpg"
+      ],
+      "matches": [
+        "La vraie capture Steam montre bien le carton surmonté d’un sombrero noir à bordure blanche et broderies claires.",
+        "L’image candidate conserve le corps du carton et ajoute un seul sombrero, sans transformer le prop en nouveau personnage.",
+        "Sombrero de taille limitée, centré vers l’arrière du dessus, silhouette entière."
+      ],
+      "limitations": [
+        "Position précise, taille relative du chapeau, hauteur de la calotte et motifs brodés restent approximatifs.",
+        "La source de la variante est une capture communautaire de gameplay, pas un rendu de référence officiel Konami.",
+        "Ce sprite couvre l’ensemble carton + sombrero seulement, pas le costume Mariachi de Raiden ni ses animations."
+      ],
+      "editionNote": "Variante observée dans une capture PC Steam MGR publiée le 3 février 2014.",
+      "variantAttribution": {
+        "verifiedVisualPresence": true,
+        "game": "METAL GEAR RISING: REVENGEANCE",
+        "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=224227085",
+        "sourceClass": "community gameplay screenshot",
+        "author": "CHOPPED HOG",
+        "postedDate": "2014-02-03",
+        "sourceDimensions": [
+          1920,
+          1080
+        ],
+        "pageMetadataIndependentlyOpened": true,
+        "officialKonamiRender": false
+      },
+      "imagePath": "public/cqc/assets/p66/mgr-cardboard-box-mariachi.png",
+      "sha256": "521a130807c9726f9eb018ba02cd502c01d2d2749f5a193ae0383e9427c1f112",
+      "width": 1536,
+      "height": 1024,
+      "colorMode": "RGBA",
+      "imageVisuallyInspected": true,
+      "referencesVisuallyInspected": true,
+      "alphaQA": {
+        "extrema": [
+          0,
+          254
+        ],
+        "fullyTransparentPixels": 800230,
+        "fullyTransparentFraction": 0.5087725321451823,
+        "nearOpaquePixels250To255": 746805,
+        "canvasEdgeNonZeroPixels": 19,
+        "canvasEdgeMaxAlpha": 1,
+        "canvasEdgePixelsAbove16": 0,
+        "boundsAt16": [
+          157,
+          48,
+          1394,
+          1010
+        ],
+        "marginsAt16": {
+          "left": 157,
+          "top": 48,
+          "right": 142,
+          "bottom": 14
+        },
+        "usefulSilhouetteCropped": false,
+        "realTransparentAlpha": true,
+        "apparentBrownHaze": "The raw RGB preview shows brown haze, but checked pixels in that haze have alpha 0; these colors are hidden when alpha is respected. Very small alpha 1 residuals exist in some outer pixels.",
+        "outsideSamplePixels": [
+          {
+            "x": 1000,
+            "y": 5,
+            "alpha": 0,
+            "rgb": [
+              110,
+              98,
+              89
+            ]
+          },
+          {
+            "x": 800,
+            "y": 10,
+            "alpha": 0,
+            "rgb": [
+              110,
+              76,
+              47
+            ]
+          },
+          {
+            "x": 200,
+            "y": 500,
+            "alpha": 0,
+            "rgb": [
+              10,
+              6,
+              3
+            ]
+          },
+          {
+            "x": 1500,
+            "y": 500,
+            "alpha": 0,
+            "rgb": [
+              4,
+              2,
+              1
+            ]
+          },
+          {
+            "x": 100,
+            "y": 800,
+            "alpha": 0,
+            "rgb": [
+              47,
+              35,
+              25
+            ]
+          },
+          {
+            "x": 1450,
+            "y": 800,
+            "alpha": 0,
+            "rgb": [
+              10,
+              7,
+              3
+            ]
+          }
+        ]
+      },
+      "absolute1to1Certified": false,
+      "combatReady": false,
+      "scopeClosed": false
+    }
+  ],
+  "sourcesIndependentlyOpened": [
+    {
+      "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=224227085",
+      "finding": "Page de captures MGR ; sombrero visible ; auteur CHOPPED HOG ; publication le 3 février 2014 ; 1920 × 1080."
+    },
+    {
+      "url": "https://game.watch.impress.co.jp/docs/news/585161.html",
+      "finding": "Article impressions PS3 daté du 26 janvier 2013 ; source de preview antérieure à la sortie, pas preuve de modèle retail final."
+    }
+  ],
+  "selectedFilesModified": false,
+  "globalSelectionModified": false,
+  "acceptanceMeaning": "Acceptation comme sources d’Atlas en attente de revue géométrique, pas validation 1:1 ni intégration combat."
+}

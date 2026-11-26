@@ -1,8 +1,10 @@
 # Bible CQC Versus Legacy — guide associé au projet
 
-**Version P65 — 26 novembre 2026. Fondation P62 et extensions P63/P64 conservées.** Le guide général fourni par Darknigthmare est intégré comme référence commune, puis traduit en décisions, fiches et exigences propres au jeu de combat Metal Gear. Cet index relie le contenu existant du dépôt et les sources statiques P60/P61/P62/P63/P64/P65.
+**Version P66 — 26 novembre 2026. Fondation P62 et extensions P63/P64/P65 conservées.** Le guide général fourni par Darknigthmare est intégré comme référence commune, puis traduit en décisions, fiches et exigences propres au jeu de combat Metal Gear. Cet index relie le contenu existant du dépôt et les sources statiques P60/P61/P62/P63/P64/P65/P66.
 
-La [continuation P65](CONTINUATION_P65.md) ajoute **6 sources individuelles** : un fragment de baie technique du Research Block d’AC!D 2, Normal Fence et Survival Bow de Survive, ainsi que les deux coffres d’objets et le terminal VR de Rising. Le total atteint **211 sources sélectionnées** et l’Atlas **34 entrées**. Les 205 sources antérieures et les 28 objets Atlas P63/P64 sont conservés. La [galerie P65](../cqc-reprise/pass65/README.md), les [associations P65](asset-associations-p65.json) et le [delta des périmètres](../cqc-reprise/pass65/scope-delta.json) donnent les références, les limites et l’archive du coffre verrouillé v1. **0 admission au combat, 0 certification absolue 1:1, aucun PNG natif UHD et aucun périmètre déclaré clos.**
+La [continuation P66](CONTINUATION_P66.md) ajoute **14 sources individuelles** : trois fragments FAR d’AC!D, quatre secteurs d’AC!D 2, quatre sources Survive et trois objets Rising. Le total atteint **225 sources sélectionnées** et l’Atlas **48 entrées**. Les 211 sources et les 34 entrées Atlas antérieures restent inchangées. La [galerie P66](../cqc-reprise/pass66/README.md), les [associations P66](asset-associations-p66.json) et les [manquants suivis](../cqc-reprise/pass66/MANQUANTS.md) précisent les limites. **0 admission au combat, 0 certification absolue 1:1, aucun PNG natif UHD et aucun périmètre clos.**
+
+**Historique P65 conservé.** La [continuation P65](CONTINUATION_P65.md) ajoute **6 sources individuelles** : un fragment de baie technique du Research Block d’AC!D 2, Normal Fence et Survival Bow de Survive, ainsi que les deux coffres d’objets et le terminal VR de Rising. Le total atteint **211 sources sélectionnées** et l’Atlas **34 entrées**. Les 205 sources antérieures et les 28 objets Atlas P63/P64 sont conservés. La [galerie P65](../cqc-reprise/pass65/README.md), les [associations P65](asset-associations-p65.json) et le [delta des périmètres](../cqc-reprise/pass65/scope-delta.json) donnent les références, les limites et l’archive du coffre verrouillé v1. **0 admission au combat, 0 certification absolue 1:1, aucun PNG natif UHD et aucun périmètre déclaré clos.**
 
 **Historique P64 conservé.** La [continuation P64](CONTINUATION_P64.md) ajoute **11 sources individuelles transparentes** : 3 personnages AC!D, 2 costumes de démonstration Survive, 1 machine Survive, 3 accessoires et 2 corps de projectiles MGR. Le total passe à **205 sources sélectionnées** et l’Atlas à **28 entrées**. Les 194 identités historiques et les 17 objets P63 restent inchangés. Les [associations P64](asset-associations-p64.json) et la [galerie P64](../cqc-reprise/pass64/README.md) détaillent provenance, limites et refus. **0 nouvelle admission au combat, 0 certification 1:1, aucun PNG natif UHD et aucun périmètre déclaré clos.**
 
@@ -21,7 +23,9 @@ La [continuation P65](CONTINUATION_P65.md) ajoute **6 sources individuelles** : 
 | Arènes, quatre axes, connexions et boss | [ARENES_ET_BOSS.md](ARENES_ET_BOSS.md) |
 | Sources reliées aux besoins de la bible | [ASSOCIATIONS.md](ASSOCIATIONS.md) ; [asset-associations.json](asset-associations.json) |
 | Fiches, phase de production et critères d’admission | [FICHES_ET_VALIDATION.md](FICHES_ET_VALIDATION.md) |
-| Livraison courante : 6 sources et extension Atlas P65 | [CONTINUATION_P65.md](CONTINUATION_P65.md) ; [galerie et bilan P65](../cqc-reprise/pass65/README.md) |
+| Livraison courante : 14 sources et extension Atlas P66 | [CONTINUATION_P66.md](CONTINUATION_P66.md) ; [galerie P66](../cqc-reprise/pass66/README.md) |
+| Associations et contrôles P66 | [asset-associations-p66.json](asset-associations-p66.json) ; [INTEGRATION_QA.md](../cqc-reprise/pass66/INTEGRATION_QA.md) |
+| Historique : 6 sources et extension Atlas P65 | [CONTINUATION_P65.md](CONTINUATION_P65.md) ; [galerie et bilan P65](../cqc-reprise/pass65/README.md) |
 | Registre des nouvelles associations P65 | [asset-associations-p65.json](asset-associations-p65.json) |
 | Preuves et contrôles P65 | [INTEGRATION_QA.md](../cqc-reprise/pass65/INTEGRATION_QA.md) |
 | Historique : 11 sources et extension Atlas P64 | [CONTINUATION_P64.md](CONTINUATION_P64.md) ; [galerie et bilan P64](../cqc-reprise/pass64/README.md) |
@@ -127,6 +131,12 @@ Les nouvelles vues P62 complètent Crescent Meridian, Cove Valley Village, Zaozy
 | Essais uniques écartés P65 et cumul | **1 P65 ; 15 cumulés**. Coffre verrouillé v1 remplacé par v2. |
 | Appels P65 | **7 appels, 7 PNG, 6 retenus et 1 archive ; 0 refus nouveau**. |
 | Admission et fidélité P65 | **0 admission au combat, 0 certification 1:1, 0 clôture de périmètre**. |
+| Sources sélectionnées P66 | **14 PNG : 8 fragments de décor et 6 objets**. |
+| Total P60–P66 | **225 PNG : 133 décors, 20 personnages, 9 costumes, 46 machines, 14 objets, 2 projectiles et 1 VFX**. |
+| Atlas après P66 | **48 entrées**, dont les 34 antérieures conservées. |
+| Essais P66 et cumul | **3 P66 ; 18 cumulés**. |
+| Appels P66 | **17 appels, 17 PNG, 14 retenus et 3 archives ; 0 refus nouveau**. |
+| Admission et fidélité P66 | **0 admission au combat, 0 certification 1:1, 0 clôture de périmètre**. |
 
 Les fiches narratives publient leur propre compte de routes, scènes et plans. Un plan écrit n’est pas une image produite. Les associations JSON permettent de suivre un fichier vers ses périmètres, les rubriques du guide et les documents de conception sans additionner ces unités.
 

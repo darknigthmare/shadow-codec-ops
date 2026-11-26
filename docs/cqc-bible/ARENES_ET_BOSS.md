@@ -253,3 +253,9 @@ Les liens de code ci-dessous pointent vers les fichiers du dépôt ; l’état e
 [V04]: https://www.youtube.com/watch?v=EhyTbOshlz0
 [V05]: https://mgsdb.com/fr/enc/316
 [V06]: https://metalgear.fandom.com/wiki/Metal_Gear_Sahelanthropus
+
+## Extension P66 — 26 novembre 2026
+
+P66 ajoute huit fragments : FAR B3F/B4F/B5F, Control Section, Communications Tower, Terminal, Residential Area et une terrasse de Forsaken Ruins. Ces images enrichissent la présentation seulement. Navigation, dimensions, quatre axes d’arène, transitions et règles de boss restent à définir et à tester. B4F porte une réserve renforcée sur la géométrie et les turbines.
+
+[Continuation et fiches P66](CONTINUATION_P66.md) · [Associations P66](asset-associations-p66.json) · [Delta](../cqc-reprise/pass66/scope-delta.json) · [QA](../cqc-reprise/pass66/INTEGRATION_QA.md)
