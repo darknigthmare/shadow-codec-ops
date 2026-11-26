@@ -1,0 +1,357 @@
+{
+  "schema": "cqc.p64.mgr-visual-qa.v1",
+  "reviewedAtUtcDate": "2026-11-26",
+  "reviewer": "independent visual review by /root/fidelity_references/map_match",
+  "scope": "Five selected MGR PNGs only. Read-only image inspection and metrics; no image generation, image editing, retry of rejected requests, or Git mutation.",
+  "referenceBasis": {
+    "url": "https://www.piggyback.com/en/wp-content/uploads/sites/7/2020/04/MGR_U_SamplePages.pdf",
+    "locator": "PDF page 3, printed pages 32–33, as recorded by the source handoff",
+    "type": "Official Piggyback guide equipment icons, supplied as local cropped raster references",
+    "inspected": "All five local icon crops and all five selected PNGs viewed individually with view_image.",
+    "limits": [
+      "The supplied references are stylized, flat guide icons, not exported native models.",
+      "The original PDF was not reopened by this reviewer; source attribution and page locator follow the handoff.",
+      "No unseen rear geometry, physical scale, exact materials or interactive behavior can be validated from these icons."
+    ]
+  },
+  "overall": {
+    "verdict": "candidate_with_documented_limits",
+    "assetsReviewed": 5,
+    "singleObjectReadabilityPassed": 5,
+    "completeSilhouettesPassed": 5,
+    "nativeDimensionsAll": [
+      1254,
+      1254
+    ],
+    "absolute1to1Certified": false,
+    "referenceGeometryValidated": false,
+    "combatReady": false,
+    "nativeUhd": false,
+    "summary": "All five images preserve the icon-level visual identity and show one complete object with comfortable margins. Fine colored edge traces and low-alpha residue remain; geometry and material choices are reconstructions.",
+    "commonLimitations": [
+      "The painted worn-metal surfaces, bevels and highlights add detail not established by the flat guide icons.",
+      "Occasional fine cyan/blue or colored traces are visible at some silhouette edges at native inspection scale; these are not perfectly neutral cutouts.",
+      "Low-alpha residue includes isolated nonzero pixels near canvas edges. The visible objects do not touch the canvas at alpha >=16.",
+      "This review concerns the static asset only; no smoke, hologram, jamming field, projectile simulation, pickup logic, scale or combat binding is validated."
+    ],
+    "blockedRequestsExcluded": [
+      "mgr-fragmentation-grenade",
+      "mgr-em-grenade",
+      "mgr-rocket-launcher"
+    ],
+    "additionalGenerationCalls": 0,
+    "allHandoffHashesMatch": true
+  },
+  "assets": [
+    {
+      "id": "mgr-repair-nanopaste",
+      "path": "public/cqc/assets/p64/mgr-repair-nanopaste.png",
+      "referencePath": "docs/cqc-reprise/pass64/research/mgr/mgr-repair-nanopaste-reference.png",
+      "verdict": "candidate_with_documented_limits",
+      "visual": {
+        "singleObject": true,
+        "completeSilhouette": true,
+        "transparentBackground": true,
+        "textOrPageBorderCopied": false,
+        "extraneousObjectVisible": false,
+        "preserved": [
+          "Squat circular grey housing viewed from above/front.",
+          "Radial vertical fins around the body and layered circular rim.",
+          "Yellow top disk with a large red cross and dark outline.",
+          "Front central angular seam and the overall ribbed silhouette."
+        ],
+        "deviations": [
+          "Metal is substantially darker and more reflective, with scratches and bevels absent from the flat icon.",
+          "Fin thickness, ring depth and exact spacing are interpreted; the icon cannot certify a complete model.",
+          "A few fine cyan/blue traces are visible along the outside edge at native scale."
+        ],
+        "limitation": "Icon identity is clear; material finish and precise three-dimensional construction are not validated."
+      },
+      "statistics": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "bytes": 1603463,
+        "sha256": "afa5d757184681003c2fc3b562eb18aa1eb425ce3e5e226d62af216fd2104c61",
+        "matchesHandoffHash": true,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "fullyTransparentPixels": 762657,
+        "fullyTransparentFraction": 0.484992,
+        "alpha1To15Pixels": 10665,
+        "alpha16To249Pixels": 10667,
+        "alpha250To255Pixels": 788527,
+        "boundsAtAlpha16": [
+          124,
+          120,
+          1124,
+          1122
+        ],
+        "boundsAtAlpha250": [
+          126,
+          122,
+          1122,
+          1120
+        ],
+        "marginsAtAlpha16": {
+          "left": 124,
+          "top": 120,
+          "right": 130,
+          "bottom": 132
+        },
+        "canvasEdgeNonzeroAlphaPixels": 98,
+        "canvasEdgeAlphaAtLeast16Pixels": 0
+      }
+    },
+    {
+      "id": "mgr-electrolyte-pack",
+      "path": "public/cqc/assets/p64/mgr-electrolyte-pack.png",
+      "referencePath": "docs/cqc-reprise/pass64/research/mgr/mgr-electrolyte-pack-reference.png",
+      "verdict": "candidate_with_documented_limits",
+      "visual": {
+        "singleObject": true,
+        "completeSilhouette": true,
+        "transparentBackground": true,
+        "textOrPageBorderCopied": false,
+        "extraneousObjectVisible": false,
+        "preserved": [
+          "Squat grey ribbed circular housing matching the family of the Repair Nanopaste icon.",
+          "Cyan top disk.",
+          "Dark horizontal battery pictogram with white outline and right-side terminal shape.",
+          "Radial outer fins and central front angular seam."
+        ],
+        "deviations": [
+          "Painted metal texture, thicker bevels and layered ring depth are reconstructed.",
+          "The cyan disk is more luminous and textured than the flat source icon.",
+          "Minor fine cyan/blue edge contamination remains in isolated places."
+        ],
+        "limitation": "Distinct from Repair Nanopaste through the correct top color and symbol; no native mesh or unseen sides validated."
+      },
+      "statistics": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "bytes": 1540332,
+        "sha256": "bf0b2f4b4e3a5e194ec65e1961f6a770fda2358885a7d167fbb1eba08d8cf3ac",
+        "matchesHandoffHash": true,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "fullyTransparentPixels": 783897,
+        "fullyTransparentFraction": 0.498499,
+        "alpha1To15Pixels": 14780,
+        "alpha16To249Pixels": 9959,
+        "alpha250To255Pixels": 763880,
+        "boundsAtAlpha16": [
+          138,
+          128,
+          1114,
+          1112
+        ],
+        "boundsAtAlpha250": [
+          140,
+          129,
+          1112,
+          1110
+        ],
+        "marginsAtAlpha16": {
+          "left": 138,
+          "top": 128,
+          "right": 140,
+          "bottom": 142
+        },
+        "canvasEdgeNonzeroAlphaPixels": 143,
+        "canvasEdgeAlphaAtLeast16Pixels": 0
+      }
+    },
+    {
+      "id": "mgr-3d-photo-frame",
+      "path": "public/cqc/assets/p64/mgr-3d-photo-frame.png",
+      "referencePath": "docs/cqc-reprise/pass64/research/mgr/mgr-photo-frame-reference.png",
+      "verdict": "candidate_with_documented_limits",
+      "visual": {
+        "singleObject": true,
+        "completeSilhouette": true,
+        "transparentBackground": true,
+        "textOrPageBorderCopied": false,
+        "extraneousObjectVisible": false,
+        "preserved": [
+          "Tall front-facing rectangular grey housing with broader upper and lower ends.",
+          "Central notch at the top and bottom; stepped side outline.",
+          "Orange rectangular display.",
+          "Large circular lower control and flanking grooves; upper L-shaped grooves."
+        ],
+        "deviations": [
+          "Orange display has a brighter glowing perimeter and reflective treatment not established by the small source icon.",
+          "Bevel width, housing thickness, scratches and groove depth are interpreted.",
+          "Fine blue/cyan traces appear at portions of the outer top and lower edges."
+        ],
+        "limitation": "The physical frame is readable. No hologram is depicted or validated; this is not evidence of a functional distraction effect."
+      },
+      "statistics": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "bytes": 1080425,
+        "sha256": "74f8fc35837b83da9a1aae476980b4b5e30c11bc10f1254f663bf3578028da6a",
+        "matchesHandoffHash": true,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "fullyTransparentPixels": 967758,
+        "fullyTransparentFraction": 0.61542,
+        "alpha1To15Pixels": 20430,
+        "alpha16To249Pixels": 13663,
+        "alpha250To255Pixels": 570665,
+        "boundsAtAlpha16": [
+          300,
+          122,
+          954,
+          1086
+        ],
+        "boundsAtAlpha250": [
+          302,
+          124,
+          953,
+          1085
+        ],
+        "marginsAtAlpha16": {
+          "left": 300,
+          "top": 122,
+          "right": 300,
+          "bottom": 168
+        },
+        "canvasEdgeNonzeroAlphaPixels": 375,
+        "canvasEdgeAlphaAtLeast16Pixels": 0
+      }
+    },
+    {
+      "id": "mgr-rp-grenade",
+      "path": "public/cqc/assets/p64/mgr-rp-grenade.png",
+      "referencePath": "docs/cqc-reprise/pass64/research/mgr/mgr-rp-grenade-reference.png",
+      "verdict": "candidate_with_documented_limits",
+      "visual": {
+        "singleObject": true,
+        "completeSilhouette": true,
+        "transparentBackground": true,
+        "textOrPageBorderCopied": false,
+        "extraneousObjectVisible": false,
+        "preserved": [
+          "Tall grey cylindrical body with rounded shoulder and narrow neck.",
+          "Two lower horizontal bands and a subtle upper body seam.",
+          "Forward-leaning oval ring at the upper right and long right-side lever.",
+          "Plain grey body without added lettering, electronics or unrelated ornament."
+        ],
+        "deviations": [
+          "Overall body appears slightly more elongated than the icon.",
+          "Ring, lever and top assembly are modeled with greater thickness and depth than the icon establishes.",
+          "Worn brushed-metal texture and highlights are reconstructed; a few fine colored edge pixels remain."
+        ],
+        "limitation": "Recognizable as the supplied RP icon; exact proportions, hidden assembly and any smoke/projectile behavior remain unverified."
+      },
+      "statistics": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "bytes": 841539,
+        "sha256": "b74fa3c517882811dc001f587f584d4fa45cf77ce4d51a8d765bf35c5a172ab9",
+        "matchesHandoffHash": true,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "fullyTransparentPixels": 1134544,
+        "fullyTransparentFraction": 0.721483,
+        "alpha1To15Pixels": 11829,
+        "alpha16To249Pixels": 9925,
+        "alpha250To255Pixels": 416218,
+        "boundsAtAlpha16": [
+          407,
+          88,
+          851,
+          1167
+        ],
+        "boundsAtAlpha250": [
+          409,
+          89,
+          849,
+          1165
+        ],
+        "marginsAtAlpha16": {
+          "left": 407,
+          "top": 88,
+          "right": 403,
+          "bottom": 87
+        },
+        "canvasEdgeNonzeroAlphaPixels": 8,
+        "canvasEdgeAlphaAtLeast16Pixels": 0
+      }
+    },
+    {
+      "id": "mgr-jamming-grenade",
+      "path": "public/cqc/assets/p64/mgr-jamming-grenade.png",
+      "referencePath": "docs/cqc-reprise/pass64/research/mgr/mgr-jamming-grenade-reference.png",
+      "verdict": "candidate_with_documented_limits",
+      "visual": {
+        "singleObject": true,
+        "completeSilhouette": true,
+        "transparentBackground": true,
+        "textOrPageBorderCopied": false,
+        "extraneousObjectVisible": false,
+        "preserved": [
+          "Tall grey body with relatively straight sides and rounded lower corners.",
+          "Large dark repeating hexagonal pattern across the main face.",
+          "Narrow neck and forward oval ring at upper right.",
+          "Long right-side lever and restrained grey palette."
+        ],
+        "deviations": [
+          "The hexagonal lattice is bolder and visually heavier than in the small source icon.",
+          "Shoulder, top assembly, ring thickness and side depth are reconstructed.",
+          "Scuffed metal finish is added; minor fine colored traces remain near parts of the silhouette."
+        ],
+        "limitation": "Hexagonal ornament distinguishes this asset from the RP body. Hidden faces, exact pattern continuation and jamming effects are not validated."
+      },
+      "statistics": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "bytes": 902009,
+        "sha256": "e8a484f0d41389a3c7d1adac6851c5256cd030d11be4f392ed041e0812562093",
+        "matchesHandoffHash": true,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "fullyTransparentPixels": 1136263,
+        "fullyTransparentFraction": 0.722576,
+        "alpha1To15Pixels": 11019,
+        "alpha16To249Pixels": 10604,
+        "alpha250To255Pixels": 414630,
+        "boundsAtAlpha16": [
+          414,
+          95,
+          878,
+          1150
+        ],
+        "boundsAtAlpha250": [
+          417,
+          97,
+          876,
+          1148
+        ],
+        "marginsAtAlpha16": {
+          "left": 414,
+          "top": 95,
+          "right": 376,
+          "bottom": 104
+        },
+        "canvasEdgeNonzeroAlphaPixels": 27,
+        "canvasEdgeAlphaAtLeast16Pixels": 0
+      }
+    }
+  ]
+}

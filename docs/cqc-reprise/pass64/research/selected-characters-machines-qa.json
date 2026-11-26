@@ -1,0 +1,288 @@
+{
+  "pass": 64,
+  "reviewedAtUtc": "2026-11-26T06:49:30.294244+00:00",
+  "reviewer": "fidelity_references",
+  "scope": "Six selected character/machine PNGs only; other P64 outputs are outside this audit.",
+  "method": "Each selected local PNG reopened with view_image. Local reference artwork/gameplay screenshots inspected. PIL used only for dimensions, alpha statistics and hashes; no pixel modification.",
+  "selectedCount": 6,
+  "overall": {
+    "allSingleSubjects": true,
+    "allFullSilhouettes": true,
+    "allHaveRealAlpha": true,
+    "allNativeUhd": false,
+    "pixelExactCanonCertified": false,
+    "combatAnimationsOrAdmissionCertified": false,
+    "summary": "Six silhouettes entières avec transparence réelle. Deux gardes conservent des franges colorées documentées ; les autres ont de faibles résidus alpha de détourage. Les références soutiennent les costumes/silhouettes visibles, sans validation 1:1 ni du dos."
+  },
+  "assets": [
+    {
+      "id": "acid-flemming-decoy",
+      "path": "public/cqc/assets/p64/acid-flemming-decoy.png",
+      "sha256": "8eb06647456c56df56ac0eeb1bb1493ccf36c51db1b3d255ca7754373e0c78ad",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "alpha": {
+        "extrema": [
+          0,
+          254
+        ],
+        "fullyTransparentFraction": 0.626005,
+        "nearZeroAlpha1To15Fraction": 0.014897,
+        "visuallySolidAlpha240To255Fraction": 0.353321,
+        "bboxAlpha16": [
+          131,
+          43,
+          841,
+          1517
+        ],
+        "bodyTouchesCanvasAtAlpha16": false
+      },
+      "fullSilhouetteReviewed": true,
+      "nativeUhd": false,
+      "selectedVersion": "v1",
+      "sources": [
+        "research/flemming-art-reference.jpg",
+        "research/flemming-decoy-native-reference.jpg"
+      ],
+      "silhouette": "Personnage unique entier ; sac, deux mains, manteau et deux chaussures visibles.",
+      "referenceMatch": "Long manteau gris brun sombre, revers larges, pantalon et chaussures noirs, sac brun entièrement opaque sans ouvertures cohérents avec art final et capture PSP.",
+      "adaptation": "Posture défensive CQC, détails de plis et matière du sac reconstruits ; pose différente de la capture narrative.",
+      "edgeReview": "Pas de frange rouge/jaune ni objet parasite manifeste ; faibles résidus alpha diffus autour du détourage.",
+      "limitations": [
+        "Le sac a une texture et une géométrie détaillées réinterprétées depuis une petite capture PSP.",
+        "Le leurre reste distinct du vrai Flemming/Gary Murray."
+      ],
+      "verdict": "retained_with_documented_adaptation"
+    },
+    {
+      "id": "acid-genetics-guard",
+      "path": "public/cqc/assets/p64/acid-genetics-guard.png",
+      "sha256": "84b9d0d064f574deab11b30095d429b71bb7b3d6bcc4f360920226e282a32aad",
+      "width": 1191,
+      "height": 1321,
+      "mode": "RGBA",
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "fullyTransparentFraction": 0.734959,
+        "nearZeroAlpha1To15Fraction": 0.008315,
+        "visuallySolidAlpha240To255Fraction": 0.251282,
+        "bboxAlpha16": [
+          182,
+          11,
+          972,
+          1279
+        ],
+        "bodyTouchesCanvasAtAlpha16": false
+      },
+      "fullSilhouetteReviewed": true,
+      "nativeUhd": false,
+      "selectedVersion": "v2",
+      "sources": [
+        "research/acid-guards-reference.jpg",
+        "research/acid-guards-edits.json"
+      ],
+      "silhouette": "Garde humain entier, casque, deux poings et deux bottes visibles ; vue trois-quarts droite.",
+      "referenceMatch": "Camouflage gris, casque beige avec voyant rouge, webbing ochre, cagoule noire et protections claires reprennent la paire gauche de la planche.",
+      "adaptation": "Pose CQC créée depuis une planche front/dos neutre ; microdétails des protections et proportions interprétés.",
+      "edgeReview": "Pointe blanche au-dessus du casque supprimée. De fines franges rouges/jaunes restent par endroits au casque, aux bras et aux jambes ; le voyant rouge intentionnel est conservé.",
+      "limitations": [
+        "Contours améliorés mais non parfaits.",
+        "Ne pas confondre le garde standard avec le boss Genetics inutilisé."
+      ],
+      "verdict": "retained_v2_with_visible_edge_defects"
+    },
+    {
+      "id": "acid-leone-guard",
+      "path": "public/cqc/assets/p64/acid-leone-guard.png",
+      "sha256": "c59bc02ce56b3e6a504b07c31df81487879ca8df3e199c822caef8c22a191116",
+      "width": 1199,
+      "height": 1312,
+      "mode": "RGBA",
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "fullyTransparentFraction": 0.733723,
+        "nearZeroAlpha1To15Fraction": 0.011811,
+        "visuallySolidAlpha240To255Fraction": 0.248766,
+        "bboxAlpha16": [
+          212,
+          8,
+          987,
+          1298
+        ],
+        "bodyTouchesCanvasAtAlpha16": false
+      },
+      "fullSilhouetteReviewed": true,
+      "nativeUhd": false,
+      "selectedVersion": "v1",
+      "sources": [
+        "research/acid-guards-reference.jpg",
+        "research/acid-guards-edits.json"
+      ],
+      "silhouette": "Garde humain entier, bonnet, deux poings et deux bottes visibles ; vue trois-quarts droite.",
+      "referenceMatch": "Tenue désert beige, gilet woodland, bonnet/cagoule noirs, foulard et gantelets verts cohérents avec la paire droite de la planche.",
+      "adaptation": "Pose CQC créée depuis une planche front/dos neutre ; formes des poches et plis interprétés.",
+      "edgeReview": "Franges rouges/jaunes visibles surtout à l’épaule gauche de l’image et sur les contours des jambes ; absence de fond de scène mais détourage imparfait.",
+      "limitations": [
+        "La v2 ne démontrait pas d’amélioration et est écartée.",
+        "La copie redondante de v1 a été supprimée après comparaison des octets ; v1 reste sélectionnée, sans nouvel essai ni rejet."
+      ],
+      "verdict": "retained_v1_with_visible_edge_defects"
+    },
+    {
+      "id": "survive-wormhole-digger",
+      "path": "public/cqc/assets/p64/survive-wormhole-digger.png",
+      "sha256": "862db4c8b15f0743fef425974a9b5718a72bda25bbc26481fb881fd3d7eb1d9c",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "alpha": {
+        "extrema": [
+          0,
+          254
+        ],
+        "fullyTransparentFraction": 0.60083,
+        "nearZeroAlpha1To15Fraction": 0.024591,
+        "visuallySolidAlpha240To255Fraction": 0.364646,
+        "bboxAlpha16": [
+          61,
+          22,
+          929,
+          1527
+        ],
+        "bodyTouchesCanvasAtAlpha16": false
+      },
+      "fullSilhouetteReviewed": true,
+      "nativeUhd": false,
+      "selectedVersion": "v1",
+      "sources": [
+        "research/digger/reference-playstation-official.jpg",
+        "research/digger/reference-kyupiru-close.jpg",
+        "research/digger/references.json"
+      ],
+      "silhouette": "Machine unique entière, couronne et pieds radiaux inclus.",
+      "referenceMatch": "Axe vertical, couronne de panneaux inclinés, chambre centrale maillée, disques, double tambour segmenté à fentes obliques et pieds/planchers grillagés présents.",
+      "adaptation": "Reconstruction de pièces visibles depuis deux captures ; distribution exacte des éléments masqués et arrière non démontrée.",
+      "edgeReview": "Pas de cercle rouge, étincelles, interface, joueur ou sol intégré. Faible alpha résiduel diffus hors contour ; pas de frange saturée manifeste.",
+      "limitations": [
+        "Nombre précis des éléments arrière et des appuis non validé.",
+        "Rapport environ deux hauteurs adultes est une estimation de perspective, pas une mesure canonique."
+      ],
+      "verdict": "retained_reference_informed_machine"
+    },
+    {
+      "id": "survive-captain-tgs2017-female",
+      "path": "public/cqc/assets/p64/survive-captain-tgs2017-female.png",
+      "sha256": "2e21d8ad61fd529f9b4720181946e35ec535ab8ece43a725391ce4f6177b7dc1",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "alpha": {
+        "extrema": [
+          0,
+          254
+        ],
+        "fullyTransparentFraction": 0.704866,
+        "nearZeroAlpha1To15Fraction": 0.013556,
+        "visuallySolidAlpha240To255Fraction": 0.275248,
+        "bboxAlpha16": [
+          166,
+          9,
+          799,
+          1525
+        ],
+        "bodyTouchesCanvasAtAlpha16": false
+      },
+      "fullSilhouetteReviewed": true,
+      "nativeUhd": false,
+      "selectedVersion": "v1",
+      "sources": [
+        "research/captain/reference-tgs2017-lobby.jpg",
+        "research/captain/references.json"
+      ],
+      "silhouette": "Femme adulte entière, main droite levée, accessoire de main gauche et deux bottes visibles.",
+      "referenceMatch": "Cheveux blonds très courts, haut tactique noir, poches de hanche, pantalon woodland vert et protection claire au genou conservés.",
+      "adaptation": "Pose de salutation de la capture reprise ; visage, doigts, poches et petite arme détaillés à partir d’une silhouette de faible résolution.",
+      "edgeReview": "Pas de frange rouge/jaune, interface ou autre personnage manifeste. Faibles résidus alpha diffus ; marge supérieure courte mais cheveux entiers.",
+      "limitations": [
+        "Démo TGS2017 seulement ; aucun rôle Shooter/Fighter attribué.",
+        "Visage non canonique fixe, dos non validé, modèle précis de l’arme non établi.",
+        "Ne clôt pas character:R-SURVIVE-AVATAR."
+      ],
+      "verdict": "retained_demo_costume_only"
+    },
+    {
+      "id": "survive-captain-tgs2017-male",
+      "path": "public/cqc/assets/p64/survive-captain-tgs2017-male.png",
+      "sha256": "ea3131999e12a9debb8bc06f82cc425e5912b28d79e701fe374ca00aa4d8776c",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "alpha": {
+        "extrema": [
+          0,
+          254
+        ],
+        "fullyTransparentFraction": 0.677701,
+        "nearZeroAlpha1To15Fraction": 0.01619,
+        "visuallySolidAlpha240To255Fraction": 0.298569,
+        "bboxAlpha16": [
+          179,
+          10,
+          884,
+          1529
+        ],
+        "bodyTouchesCanvasAtAlpha16": false
+      },
+      "fullSilhouetteReviewed": true,
+      "nativeUhd": false,
+      "selectedVersion": "v1",
+      "sources": [
+        "research/captain/reference-tgs2017-lobby.jpg",
+        "research/captain/references.json"
+      ],
+      "silhouette": "Homme adulte entier, deux mains, fusil porté bas, sangle et deux bottes visibles.",
+      "referenceMatch": "Cheveux blonds courts, chemise manches courtes gris kaki, gilet/col olive, pantalon camouflé gris et protections noires conservés.",
+      "adaptation": "Pose visible globalement reprise ; détails du visage, de l’armure et du fusil reconstruits depuis la petite silhouette.",
+      "edgeReview": "Pas de frange saturée, interface ou autre personnage manifeste. Faibles résidus alpha diffus ; marges verticales courtes, extrémités complètes.",
+      "limitations": [
+        "Démo TGS2017 seulement ; aucun rôle Shooter/Fighter attribué.",
+        "Visage non canonique fixe, dos non validé, modèle précis de l’arme non établi.",
+        "Ne clôt pas character:R-SURVIVE-AVATAR."
+      ],
+      "verdict": "retained_demo_costume_only"
+    }
+  ],
+  "versionAccounting": {
+    "reviewedSubsetUniqueRejectedOutputs": 2,
+    "notGlobalPassRejectionCount": true,
+    "versions": [
+      {
+        "path": "docs/cqc-reprise/pass64/rejected/acid-genetics-guard-v1.png",
+        "classification": "rejected_superseded_by_v2",
+        "countsAsRejected": true,
+        "sha256": "b798c9a88e3c982f04a806db1fff8c16d7218addd803e77ac122c3cd0e0f5243"
+      },
+      {
+        "path": "docs/cqc-reprise/pass64/rejected/acid-leone-guard-v2.png",
+        "classification": "rejected_no_edge_improvement",
+        "countsAsRejected": true,
+        "sha256": "fc8829cc1f198c4a42eb0f102dd52a9c5f14f71c99db48553a61564961130a76"
+      }
+    ],
+    "duplicateCopyRemoved": {
+      "retainedPath": "public/cqc/assets/p64/acid-leone-guard.png",
+      "sha256": "c59bc02ce56b3e6a504b07c31df81487879ca8df3e199c822caef8c22a191116",
+      "reason": "Byte-identical redundant file removed; v1 remains selected and is not counted as a rejection or an additional attempt.",
+      "countsAsRejected": false,
+      "countsAsAttempt": false
+    }
+  },
+  "noImageFilesChangedByThisReview": true
+}

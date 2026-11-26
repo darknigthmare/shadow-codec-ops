@@ -1,8 +1,10 @@
 # Bible CQC Versus Legacy — guide associé au projet
 
-**Version P63 — 26 novembre 2026. Fondation documentaire P62 conservée.** Le guide général fourni par Darknigthmare est intégré comme référence commune, puis traduit en décisions, fiches et exigences propres au jeu de combat Metal Gear. Cet index relie le contenu existant du dépôt et les sources statiques P60/P61/P62/P63.
+**Version P64 — 26 novembre 2026. Fondation documentaire P62 et extension P63 conservées.** Le guide général fourni par Darknigthmare est intégré comme référence commune, puis traduit en décisions, fiches et exigences propres au jeu de combat Metal Gear. Cet index relie le contenu existant du dépôt et les sources statiques P60/P61/P62/P63/P64.
 
-La [continuation P63](CONTINUATION_P63.md) ajoute **17 décors individuels** pour Survive, AC!D, AC!D 2 et Revengeance, portant le total à **194 sources sélectionnées**. Ils sont consultables dans l’**Atlas des sources**, accessible depuis Chroniques/Extras et par `/cqc/?module=atlas63`. Les [associations P63](asset-associations-p63.json) complètent le registre historique ; les trois essais écartés restent hors de l’Atlas. **0 nouvelle admission au combat, 0 certification absolue 1:1.**
+La [continuation P64](CONTINUATION_P64.md) ajoute **11 sources individuelles transparentes** : 3 personnages AC!D, 2 costumes de démonstration Survive, 1 machine Survive, 3 accessoires et 2 corps de projectiles MGR. Le total passe à **205 sources sélectionnées** et l’Atlas à **28 entrées**. Les 194 identités historiques et les 17 objets P63 restent inchangés. Les [associations P64](asset-associations-p64.json) et la [galerie P64](../cqc-reprise/pass64/README.md) détaillent provenance, limites et refus. **0 nouvelle admission au combat, 0 certification 1:1, aucun PNG natif UHD et aucun périmètre déclaré clos.**
+
+**Historique P63 conservé.** La [continuation P63](CONTINUATION_P63.md) ajoute **17 décors individuels** pour Survive, AC!D, AC!D 2 et Revengeance, portant le total à **194 sources sélectionnées**. Ils sont consultables dans l’**Atlas des sources**, accessible depuis Chroniques/Extras et par `/cqc/?module=atlas63`. Les [associations P63](asset-associations-p63.json) complètent le registre historique ; les trois essais écartés restent hors de l’Atlas. **0 nouvelle admission au combat, 0 certification absolue 1:1.**
 
 ## Lire la bible
 
@@ -17,7 +19,10 @@ La [continuation P63](CONTINUATION_P63.md) ajoute **17 décors individuels** pou
 | Arènes, quatre axes, connexions et boss | [ARENES_ET_BOSS.md](ARENES_ET_BOSS.md) |
 | Sources reliées aux besoins de la bible | [ASSOCIATIONS.md](ASSOCIATIONS.md) ; [asset-associations.json](asset-associations.json) |
 | Fiches, phase de production et critères d’admission | [FICHES_ET_VALIDATION.md](FICHES_ET_VALIDATION.md) |
-| Livraison courante : 17 sources et Atlas P63 | [CONTINUATION_P63.md](CONTINUATION_P63.md) ; [galerie et bilan P63](../cqc-reprise/pass63/README.md) |
+| Livraison courante : 11 sources et extension Atlas P64 | [CONTINUATION_P64.md](CONTINUATION_P64.md) ; [galerie et bilan P64](../cqc-reprise/pass64/README.md) |
+| Registre des nouvelles associations P64 | [asset-associations-p64.json](asset-associations-p64.json) |
+| Preuves et contrôles P64 | [INTEGRATION_QA.md](../cqc-reprise/pass64/INTEGRATION_QA.md) |
+| Historique : 17 sources et Atlas P63 | [CONTINUATION_P63.md](CONTINUATION_P63.md) ; [galerie et bilan P63](../cqc-reprise/pass63/README.md) |
 | Registre des nouvelles associations P63 | [asset-associations-p63.json](asset-associations-p63.json) |
 | Historique : cinq décors P62 | [Bilan et galerie P62](../cqc-reprise/pass62/README.md) |
 
@@ -105,6 +110,12 @@ Les nouvelles vues P62 complètent Crescent Meridian, Cove Valley Village, Zaozy
 | Garde-robe historique | 3 399 lignes / 384 incarnations dans l’audit P61 ; unité distincte des profils compilés. |
 | Consultation ajoutée par P63 | **17 sources dans l’Atlas**, reliées au menu et au manifeste runtime. |
 | Admission au combat des sources P63 | **0 nouvelle arène admise, 0 nouvelle certification 1:1**. |
+| Sources sélectionnées P64 | **11 PNG : 3 personnages, 2 costumes, 1 machine, 3 accessoires et 2 corps de projectiles**. |
+| Total P60/P61/P62/P63/P64 | **205 PNG : 124 décors, 20 personnages, 9 costumes, 46 machines, 3 accessoires, 2 projectiles et 1 VFX**. |
+| Atlas après ajout P64 | **28 sources** : les 17 objets P63 conservés et 11 objets P64. |
+| Essais uniques écartés P64 et cumul | **2 P64 ; 14 cumulés**. La copie redondante Leone v1 supprimée ne compte pas comme essai. |
+| Appels P64 | **16 : 13 sorties PNG et 3 refus sans fichier**, sans seconde tentative des cibles refusées. |
+| Admission et fidélité P64 | **0 admission au combat, 0 certification 1:1, 0 clôture de périmètre** ; fidélité externe en revue. |
 
 Les fiches narratives publient leur propre compte de routes, scènes et plans. Un plan écrit n’est pas une image produite. Les associations JSON permettent de suivre un fichier vers ses périmètres, les rubriques du guide et les documents de conception sans additionner ces unités.
 
@@ -131,3 +142,14 @@ Publication suivie dans la [PR #25](https://github.com/darknigthmare/shadow-code
 Pour le socle P62, `python3 docs/cqc-bible/build_registry.py --verify-images` et `node scripts/check-cqc-bible.mjs` conservent leur périmètre historique de 177 sources. **P63 est une extension additive** : son manifeste, ses prompts, ses associations et son catalogue sont dans les liens ci-dessus. `node scripts/check-cqc-p63.mjs` contrôle les nouveaux PNG et leurs associations ; `node scripts/test-cqc-p63-source-atlas.mjs` contrôle le module. Les commandes disponibles et celles effectivement exécutées sont distinguées dans le [rapport P63](../cqc-reprise/pass63/verification.json). Toute admission au combat doit ensuite compléter les plans, bindings, interactions et preuves de validation fonctionnelle.
 
 Les dix types de fiches et les scénarios de validation sont centralisés dans [FICHES_ET_VALIDATION.md](FICHES_ET_VALIDATION.md). Les incertitudes sont conservées jusqu’à obtention d’une référence ou d’un test suffisant ; les comptes de production continuent d’être calculés depuis les fichiers sélectionnés.
+
+
+## 8. Continuation P64 et preuves bornées
+
+P64 poursuit la phase de sources fixes. Les deux costumes de Captain proviennent de la démonstration TGS2017 et restent reliés à `archive__captain` ; ils ne définissent pas un visage canonique ni toutes les combinaisons du jeu final. Le faux Flemming reste distinct du personnage réel ; les deux gardes représentent des tenues précises, avec des défauts de contour documentés. Le Digger et les objets MGR restent séparés de leurs effets et comportements.
+
+Les trois demandes `mgr-fragmentation-grenade`, `mgr-em-grenade` et `mgr-rocket-launcher` ont reçu un refus imagegen sans fichier et sans nouvelle tentative. Aucun nouveau décor AC!D 2 n’a été produit faute de captures exactes ; la fiche des huit secteurs conserve les pistes de recherche. Les sources, archives uniques, refus et périmètres ouverts sont détaillés dans la [galerie P64](../cqc-reprise/pass64/README.md).
+
+Les **23 tests Node sur 23 sont passés** : 14 tests du module Atlas et 9 tests du helper et du contrat P64, avec la [sortie finale conservée](../cqc-reprise/pass64/p64-node-tests.txt). Le [checker final P64 et le manifeste runtime sont passés](../cqc-reprise/pass64/p64-local-verification.json) : 13 PNG contrôlés, dont 11 retenus et 2 archives, 28 entrées Atlas et 205 sources cumulées. Le scanner réel vérifie 3 041 fichiers et 4 977 références ; 3 029 lignes historiques sont inchangées, le catalogue est le seul ancien fichier modifié, et les 4 966 références historiques, 740 omissions et 499 routes externes sont préservées.
+
+Le socle P63 a désormais été réellement revérifié par Node, reconstruction PNG/IDAT et inspection navigateur, avec ses nouvelles preuves sous [pass64](../cqc-reprise/pass64/INTEGRATION_QA.md). Le **parcours navigateur P64 reste en attente du déploiement P64** ; il est distinct du résultat déjà obtenu sur P63. Les contrôles de fichiers et de graphe ne valent pas validation de combat ou certification visuelle absolue.

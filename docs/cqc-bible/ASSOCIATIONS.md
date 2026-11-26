@@ -1,8 +1,30 @@
 # Sources associées à la bible CQC
 
-**194 sources sélectionnées : 177 P60/P61/P62 + 17 P63**. Les **277 périmètres historiques** et les **2 périmètres P60 auxiliaires** gardent leur unité.
+**205 sources sélectionnées : 177 P60/P61/P62 + 17 P63 + 11 P64**. Les **277 périmètres historiques** et les **2 périmètres P60 auxiliaires** gardent leur unité.
 
-Les sources candidates ne sont pas automatiquement admises au combat. Les **12 essais remplacés** restent exclus. [Registre historique des 177 sources](asset-associations.json) · [Extension P63](asset-associations-p63.json).
+Les sources candidates ne sont pas automatiquement admises au combat. Les **14 essais écartés uniques** restent exclus : 12 antérieurs et 2 P64. Les trois refus P64 sans fichier ne sont pas des archives PNG. [Registre historique des 177 sources](asset-associations.json) · [Extension P63](asset-associations-p63.json) · [Extension P64](asset-associations-p64.json).
+
+## P64 — onze associations supplémentaires
+
+Les **194 sources historiques et les 17 objets P63 de l’Atlas sont conservés**. Les 11 sources P64 portent l’Atlas à 28 entrées ; elles restent des sources fixes avec fidélité externe en revue, sans admission au combat, UHD natif, certification 1:1 ni clôture de périmètre.
+
+| Source | Type | Périmètre de travail | Rubriques du guide | Bible |
+|---|---|---|---|---|
+| [AC!D — faux Flemming / leurre de la zone résidentielle](../../public/cqc/assets/p64/acid-flemming-decoy.png) | `character` | `character:R-ACID-DECOY` | 02, 03, 05, 09, 10, 16, 17, 26, 29 | [Fiche](CONTINUATION_P64.md#acid-flemming-decoy) |
+| [AC!D — garde standard de Genetics Army](../../public/cqc/assets/p64/acid-genetics-guard.png) | `character` | `character:R-ACID-GUARDS` | 02, 03, 05, 16, 17, 18, 25, 26, 29 | [Fiche](CONTINUATION_P64.md#acid-genetics-guard) |
+| [AC!D — mercenaire de l’unité de Leone](../../public/cqc/assets/p64/acid-leone-guard.png) | `character` | `character:R-ACID-GUARDS` | 02, 03, 05, 16, 17, 18, 25, 26, 29 | [Fiche](CONTINUATION_P64.md#acid-leone-guard) |
+| [Survive — Wormhole Digger / machine matérielle](../../public/cqc/assets/p64/survive-wormhole-digger.png) | `machine` | `machine:survive_wormhole_digger` | 02, 13, 14, 15, 17, 18, 25, 26, 29 | [Fiche](CONTINUATION_P64.md#survive-wormhole-digger) |
+| [Survive — Captain / avatar féminin de démonstration TGS2017](../../public/cqc/assets/p64/survive-captain-tgs2017-female.png) | `costume` | `character:R-SURVIVE-AVATAR` | 01, 02, 03, 17, 18, 25, 26, 29 | [Fiche](CONTINUATION_P64.md#survive-captain-tgs2017-female) |
+| [Survive — Captain / avatar masculin de démonstration TGS2017](../../public/cqc/assets/p64/survive-captain-tgs2017-male.png) | `costume` | `character:R-SURVIVE-AVATAR` | 01, 02, 03, 17, 18, 25, 26, 29 | [Fiche](CONTINUATION_P64.md#survive-captain-tgs2017-male) |
+| [Revengeance — Repair Nanopaste](../../public/cqc/assets/p64/mgr-repair-nanopaste.png) | `prop` | `prop:mgr_repair_nanopaste` | 02, 07, 16, 17, 18, 19, 25, 26, 29 | [Fiche](CONTINUATION_P64.md#mgr-repair-nanopaste) |
+| [Revengeance — Electrolyte Pack](../../public/cqc/assets/p64/mgr-electrolyte-pack.png) | `prop` | `prop:mgr_electrolyte_pack` | 02, 07, 16, 17, 18, 19, 25, 26, 29 | [Fiche](CONTINUATION_P64.md#mgr-electrolyte-pack) |
+| [Revengeance — 3D Photo Frame](../../public/cqc/assets/p64/mgr-3d-photo-frame.png) | `prop` | `prop:mgr_3d_photo_frame` | 02, 07, 16, 17, 18, 19, 25, 26, 29 | [Fiche](CONTINUATION_P64.md#mgr-3d-photo-frame) |
+| [Revengeance — RP Grenade](../../public/cqc/assets/p64/mgr-rp-grenade.png) | `projectile` | `projectile:mgr_rp_grenade` | 02, 07, 16, 17, 18, 19, 25, 26, 29 | [Fiche](CONTINUATION_P64.md#mgr-rp-grenade) |
+| [Revengeance — Jamming Grenade](../../public/cqc/assets/p64/mgr-jamming-grenade.png) | `projectile` | `projectile:mgr_jamming_grenade` | 02, 07, 16, 17, 18, 19, 25, 26, 29 | [Fiche](CONTINUATION_P64.md#mgr-jamming-grenade) |
+
+Le rapprochement du leurre avec `completion__flemming_acid` est documentaire et vestimentaire ; il n’identifie pas le leurre au vrai Flemming. Les deux costumes de démo gardent `avatarUID:archive__captain`. Les gardes partagent le périmètre historique `character:R-ACID-GUARDS`, qui reste ouvert. Le Digger et les cinq objets MGR constituent des extensions descriptives distinctes du dénominateur historique des 277 lignes.
+
+Les seules archives uniques P64 sont Genetics v1 et Leone v2. Leone v1 reste sélectionnée ; sa copie redondante a été supprimée. Les refus sans sortie concernent Fragmentation Grenade, EM Grenade et Rocket Launcher. [Galerie, QA et compteurs P64](../cqc-reprise/pass64/README.md).
 
 ## P63 — sources consultables dans l’Atlas
 

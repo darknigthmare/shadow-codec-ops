@@ -1,0 +1,59 @@
+{
+  "schema": "cqc.p64.p63-baseline-preservation.v1",
+  "status": "passed",
+  "checkedAt": "2026-11-26T06:44:31.511Z",
+  "nodeVersion": "v24.22.3",
+  "commit": "9725a40cb60a436126eb067d61c6c7ab4c66badc",
+  "parentCommit": "dd6338087538d9a00e6e0241cd9cd38a24c87393",
+  "method": "Real Node execution of extendP63RuntimeManifest with the imported discoverReferences scanner; exact deep equality to the committed P63 runtime manifest.",
+  "parent": {
+    "files": 3009,
+    "references": 4943,
+    "bytes": 3446705189,
+    "manifestSha256": "5b87c8a4d9ebed3c475cdfe6f6d20640a85520f727107d1a144955561907bfed"
+  },
+  "current": {
+    "files": 3030,
+    "references": 4966,
+    "bytes": 3488155704,
+    "manifestSha256": "586008628271d391b886b2266d5d7c591da10516886724bf306de8f9f8f86728"
+  },
+  "preserved": {
+    "unchangedOldRows": 3008,
+    "intentionallyChangedOldRows": [
+      "index.html"
+    ],
+    "oldReferences": 4943,
+    "omissions": 740,
+    "externalRoutes": 499,
+    "externalPolicySha256": "e9db83c672685a37e66a07dc53637bf6d8b0c05877e01ed420c8853f0438e4ef"
+  },
+  "verifiedLocalPaths": [
+    "index.html",
+    "modules/source-atlas-v063.html",
+    "src/cqc-p63-source-atlas.js",
+    "src/cqc-p63-source-atlas.css",
+    "data/cqc-p63-source-atlas.json",
+    "assets/p63/acid-lobito-forest.png",
+    "assets/p63/acid-far-exterior.png",
+    "assets/p63/acid-far-interior.png",
+    "assets/p63/acid2-harbor-area.png",
+    "assets/p63/acid2-cargo-train.png",
+    "assets/p63/acid2-security-monitor-room.png",
+    "assets/p63/mgr-wm-lobby.png",
+    "assets/p63/mgr-wm-freight-elevator.png",
+    "assets/p63/mgr-wm-japanese-garden.png",
+    "assets/p63/mgr-wm-server-room.png",
+    "assets/p63/mgr-guadalajara-brain-chamber.png",
+    "assets/p63/mgr-guadalajara-grad-arena.png",
+    "assets/p63/mgr-pakistan-exterior.png",
+    "assets/p63/survive-wrecked-base.png",
+    "assets/p63/survive-fallen-village.png",
+    "assets/p63/survive-deserted-mine.png",
+    "assets/p63/survive-abandoned-airport.png"
+  ],
+  "limitations": [
+    "Historical PNG bytes were not downloaded or read; historical manifest rows and reference records were compared exactly.",
+    "The separate local P63 verifier checks the 20 new PNGs including three archived attempts."
+  ]
+}
