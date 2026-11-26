@@ -158,7 +158,7 @@ Les résultats `moderation_blocked` sont conservés dans les [records MGR](resea
 | Suite Node finale P64 | **23 tests sur 23 passés** : 14 tests Atlas et 9 tests du helper et du contrat P64. | [Sortie Node finale](p64-node-tests.txt) |
 | Checker final P64 et manifeste runtime | **Passés** : 13 PNG vérifiés, dont 11 retenus et 2 archives ; 28 entrées Atlas et 205 sources cumulées. Le scanner réel retrouve 3 041 fichiers et 4 977 références. | [Vérification locale finale](p64-local-verification.json) |
 | Préservation du graphe runtime | **Vérifiée** : 3 029 lignes historiques inchangées ; seul le catalogue change parmi les 3 030 anciens fichiers. Les 4 966 références historiques, 740 omissions et 499 routes externes sont préservées. | [Détail du contrôle final](p64-local-verification.json) |
-| Parcours navigateur P64 | **En attente du déploiement P64.** Le résultat du navigateur P63 reste une preuve distincte. | [Plan et preuves d’intégration](INTEGRATION_QA.md) |
+| Parcours navigateur P64 | **Non exécuté : déploiement Vercel limité** (`Deployment rate limited — retry in 24 hours.`). La tentative locale s’arrête avant démarrage, car les binaires Chromium sont absents. Le résultat P63 reste distinct. | [Blocage Vercel](p64-browser-verification.json), [blocage local](p64-local-browser-verification.json). |
 
 La réinspection P63 ne réécrit pas ses anciens rapports, qui décrivaient les limites d’exécution rencontrées lors de cette passe. Les nouvelles preuves sont datées et conservées ici. Une vérification de fichier ou de graphe runtime ne valide ni la fidélité absolue, ni le gameplay, ni toutes les tailles d’écran.
 

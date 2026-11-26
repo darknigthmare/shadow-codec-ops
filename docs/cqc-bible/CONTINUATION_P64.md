@@ -51,7 +51,7 @@ Trois associations historiques reçoivent ces compléments : `character:R-ACID-D
 | P63 repris localement | Vérifications Node, PNG/IDAT et navigateur réalisées | [Vérification locale P63](../cqc-reprise/pass64/p63-local-verification.json), [tests P63](../cqc-reprise/pass64/p63-node-tests.txt), [navigateur P63](../cqc-reprise/pass64/p63-browser-verification.json) |
 | Revue visuelle des personnages et de la machine | Comparaisons et limites consignées | [QA des six sources](../cqc-reprise/pass64/research/selected-characters-machines-qa.json) |
 | Revue visuelle indépendante MGR | Cinq candidats reconnus, silhouettes entières ; limites géométriques, matériaux et détourage explicites | [visual-qa.json](../cqc-reprise/pass64/research/mgr/visual-qa.json) |
-| Navigateur P64 | **En attente du déploiement** ; aucune réussite P64 annoncée à ce point de contrôle | À distinguer de la réussite navigateur P63. |
+| Navigateur P64 | **Non exécuté : déploiement Vercel limité** (`Deployment rate limited — retry in 24 hours.`). La tentative locale s’arrête avant démarrage, car les binaires Chromium sont absents. | [Blocage Vercel](../cqc-reprise/pass64/p64-browser-verification.json), [blocage local](../cqc-reprise/pass64/p64-local-browser-verification.json). |
 
 Les cinq objets MGR ont des empreintes identiques à celles de leur fiche de transmission. Leurs PNG contiennent de 48,5 % à 72,3 % de pixels entièrement transparents ; au seuil alpha 16, les objets disposent d’au moins 87 pixels de marge et aucun ne touche le bord de toile. De faibles résidus alpha 1–15 et quelques traces colorées fines subsistent : transparence réelle ne signifie pas détourage parfait.
 

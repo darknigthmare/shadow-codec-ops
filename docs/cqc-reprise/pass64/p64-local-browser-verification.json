@@ -1,0 +1,82 @@
+{
+  "schema": "cqc.p64.local-browser-verification.v1",
+  "status": "not_run_missing_browser_binary",
+  "checkedAt": "2026-11-26T07:12:57.580554+00:00",
+  "targetCommit": "dd73bbb99c6df3c43bd3b4fc607a4ba32c7090c9",
+  "workingTreeHead": "dd73bbb99c6df3c43bd3b4fc607a4ba32c7090c9",
+  "scope": "Standalone local Atlas module; no global wrapper or Vercel deployment tested.",
+  "localInputs": {
+    "module": "public/cqc/modules/source-atlas-v063.html",
+    "moduleExists": true,
+    "atlasSources": 28,
+    "atlasPngFilesPresentAtAttempt": 17
+  },
+  "environment": {
+    "nodeVersion": "v24.22.3",
+    "playwrightVersion": "1.62.1",
+    "playwrightLibraryInstalled": true,
+    "playwrightChromiumBinaryPresent": false,
+    "playwrightHeadlessShellBinaryPresent": false,
+    "systemChromiumLauncherPresent": true,
+    "systemChromiumBinaryPresent": false,
+    "alternativeChromeFirefoxOrPuppeteerFound": false
+  },
+  "attempts": [
+    {
+      "action": "playwright.chromium.launch({headless:true,timeout:10000})",
+      "result": "failed_before_browser_start",
+      "error": "Executable does not exist: chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell"
+    },
+    {
+      "action": "/usr/bin/chromium --version",
+      "exitCode": 127,
+      "result": "launcher_without_binary",
+      "error": "exec: /usr/lib/chromium/chromium: not found"
+    }
+  ],
+  "browser": {
+    "started": false,
+    "httpServerStarted": false,
+    "screenshots": [],
+    "downloadsAttempted": false,
+    "newDeploymentAttempted": false,
+    "personalAccountUsed": false
+  },
+  "pendingChecks": {
+    "newP64ImageDecodesAndDimensions": 11,
+    "totalAtlasSources": 28,
+    "episodeFilterCounts": {
+      "acid": 6,
+      "acid2": 3,
+      "mgr": 12,
+      "survive": 7
+    },
+    "kindFilterCounts": {
+      "prop": 3,
+      "projectile": 2
+    },
+    "selectedAssetDeepLink": true,
+    "bibleLinks": true
+  },
+  "separateEvidence": {
+    "deploymentBlocked": "docs/cqc-reprise/pass64/p64-browser-verification.json",
+    "p63LiveBrowserPassed": "docs/cqc-reprise/pass64/p63-browser-verification.json",
+    "p64NodeTestsPassed": "docs/cqc-reprise/pass64/p64-node-tests.txt",
+    "p64LocalIntegrityPassed": "docs/cqc-reprise/pass64/p64-local-verification.json"
+  },
+  "limits": [
+    "No P64 browser interactions or screenshots were produced.",
+    "Installed JavaScript automation libraries alone do not provide a browser engine.",
+    "The existing P63 cloud-browser evidence and local Node/PNG checks remain separate."
+  ],
+  "postAttemptWorkingTreeRepair": {
+    "checkedAt": "2026-11-26T07:15:13.064019+00:00",
+    "action": "Expanded the sparse checkout for published P64 paths/directories and the checker dependencies; restored tracked files from existing Git objects.",
+    "p64PngFilesPresent": 11,
+    "totalAtlasPngFilesPresent": 28,
+    "browserRetried": false,
+    "remainingBlocker": "Browser executable absent.",
+    "integrityVerification": "p64-post-publication-verification.json",
+    "integrityResult": "passed"
+  }
+}

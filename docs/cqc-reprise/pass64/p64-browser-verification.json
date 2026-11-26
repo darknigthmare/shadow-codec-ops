@@ -1,0 +1,64 @@
+{
+  "schema": "cqc.p64.browser-verification.v1",
+  "status": "not_run_deployment_rate_limited",
+  "checkedAt": "2026-11-26T07:11:08.238Z",
+  "commit": "dd73bbb99c6df3c43bd3b4fc607a4ba32c7090c9",
+  "tree": "8211c1178c3973d481b378113e74fbeb68de894f",
+  "deploymentLookup": {
+    "projectId": "prj_CAulbIX6GAPNda82UbIEbe8e33MV",
+    "teamSlug": "darknigthmares-projects",
+    "shaFilter": "dd73bbb99c6df3c43bd3b4fc607a4ba32c7090c9",
+    "matchingDeployments": 0
+  },
+  "githubStatus": {
+    "source": "https://api.github.com/repos/darknigthmare/shadow-codec-ops/commits/dd73bbb99c6df3c43bd3b4fc607a4ba32c7090c9/status",
+    "combinedState": "failure",
+    "context": "Vercel",
+    "state": "failure",
+    "description": "Deployment rate limited — retry in 24 hours.",
+    "createdAt": "2026-11-26T07:09:40Z",
+    "updatedAt": "2026-11-26T07:09:40Z",
+    "targetURL": "https://vercel.com/darknigthmares-projects?upgradeToPro=build-rate-limit"
+  },
+  "browser": {
+    "started": false,
+    "shareLinkRequested": false,
+    "verifiedLiveP64": false,
+    "screenshots": []
+  },
+  "pendingChecks": {
+    "totalAtlasSources": 28,
+    "newP64Images": 11,
+    "oldP63Entries": 17,
+    "episodeFilterCounts": {
+      "acid": 6,
+      "acid2": 3,
+      "mgr": 12,
+      "survive": 7
+    },
+    "kindFilterCounts": {
+      "stage": 17,
+      "character": 3,
+      "costume": 2,
+      "machine": 1,
+      "prop": 3,
+      "projectile": 2
+    },
+    "actions": [
+      "Decode the 11 new PNGs and compare intrinsic dimensions to delivery metadata.",
+      "Verify the 28-entry total and episode/category filters.",
+      "Verify selected-asset deep link and bible link.",
+      "Confirm the 17 historical P63 sources remain available."
+    ]
+  },
+  "priorEvidence": {
+    "p63Browser": "docs/cqc-reprise/pass64/p63-browser-verification.json",
+    "p64Node": "docs/cqc-reprise/pass64/p64-node-tests.txt",
+    "p64Local": "docs/cqc-reprise/pass64/p64-local-verification.json"
+  },
+  "limits": [
+    "No browser QA was performed against P64 because no READY deployment exists for the published commit.",
+    "The previous P63 browser proof is not evidence of a live P64 deployment.",
+    "No deployment retry, quota workaround or protection change was attempted."
+  ]
+}

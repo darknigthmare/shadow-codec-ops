@@ -72,3 +72,13 @@ writeFileSync('public/cqc/runtime-manifest.json', JSON.stringify(next, null, 2) 
 Les **9 tests spécifiques au helper P64 ont réussi** avec le vrai PNG RGBA Flemming déjà produit et un vrai décor RGB P63, sans image factice. Ils vérifient notamment les refus de mutation des anciens objets et du ledger, de chemin étranger, de référence non résolue, de faux flag de combat, de PNG corrompu ou tronqué. Voir [runtime-helper-tests.txt](runtime-helper-tests.txt) pour leur première exécution ; la sortie combinée finale figure dans [p64-node-tests.txt](p64-node-tests.txt).
 
 Le contrôleur P63 reste un vérificateur de son instantané de 17 sources. Après extension du catalogue, le contrôleur P64 assure la conservation de cet instantané et vérifie l’ensemble actif. Aucune de ces preuves ne certifie une fidélité absolue 1:1 ou une admission au combat.
+
+## Publication et limites navigateur constatées
+
+Le lot de 69 fichiers est publié dans la PR #25 par le commit `dd73bbb99c6df3c43bd3b4fc607a4ba32c7090c9`. Son arbre Git est exactement identique au lot vérifié localement : `8211c1178c3973d481b378113e74fbeb68de894f`.
+
+La recherche de déploiement pour ce SHA retourne zéro résultat. Le statut Vercel est `failure` et indique « Deployment rate limited — retry in 24 hours. » le 26 novembre 2026 à 08:09:40, heure de Paris. Il ne s’agit pas d’un build P64 encore en cours. [Preuve de déploiement](p64-browser-verification.json).
+
+La tentative de navigateur local ne démarre pas : Playwright est installé, mais ses moteurs Chromium et Headless Shell sont absents ; le lanceur système ne possède pas non plus son exécutable. Aucun parcours ni capture P64 n’est déclaré validé. [Preuve locale](p64-local-browser-verification.json).
+
+Les chemins P64 ont été rétablis dans le checkout léger après son alignement sur le commit publié : les 28 PNG du catalogue sont présents. Cette correction de matérialisation ne modifie aucun blob publié. Le [contrôle après publication](p64-post-publication-verification.json) vérifie de nouveau le lot depuis ces fichiers restaurés. La QA P63, les 23 tests Node et la validation des fichiers P64 sont des preuves séparées de la QA navigateur P64 restant à réaliser.
