@@ -1,8 +1,34 @@
 # Sources associées à la bible CQC
 
-**177 sources sélectionnées**, dont 5 nouvelles P62 ; **277 périmètres historiques** et **2 périmètres P60 auxiliaires** conservés séparément.
+**194 sources sélectionnées : 177 P60/P61/P62 + 17 P63**. Les **277 périmètres historiques** et les **2 périmètres P60 auxiliaires** gardent leur unité.
 
-Les sources candidates ne sont pas automatiquement admises au combat. Les 9 essais remplacés restent exclus. [Données et suivi par périmètre](asset-associations.json).
+Les sources candidates ne sont pas automatiquement admises au combat. Les **12 essais remplacés** restent exclus. [Registre historique des 177 sources](asset-associations.json) · [Extension P63](asset-associations-p63.json).
+
+## P63 — sources consultables dans l’Atlas
+
+**17 décors nouveaux**, chacun associé aux rubriques 02, 13, 14, 15, 17, 19, 25 et 26 du guide. Atlas intégré ; combat non admis ; fidélité externe en revue.
+
+| Source | Périmètre | Bible |
+|---|---|---|
+| [AC!D — Lobito / forêt](../../public/cqc/assets/p63/acid-lobito-forest.png) | `stage:acid_ruins` | [Fiche](CONTINUATION_P63.md#acid-lobito-forest) |
+| [AC!D — FAR / extérieur](../../public/cqc/assets/p63/acid-far-exterior.png) | `stage:acid_far` | [Fiche](CONTINUATION_P63.md#acid-far-exterior) |
+| [AC!D — FAR / accès intérieur](../../public/cqc/assets/p63/acid-far-interior.png) | `stage:acid_far` | [Fiche](CONTINUATION_P63.md#acid-far-interior) |
+| [AC!D 2 — Harbor Area](../../public/cqc/assets/p63/acid2-harbor-area.png) | `stage:acid2_harbor_area` | [Fiche](CONTINUATION_P63.md#acid2-harbor-area) |
+| [AC!D 2 — Cargo Train](../../public/cqc/assets/p63/acid2-cargo-train.png) | `stage:acid2_cargo_train` | [Fiche](CONTINUATION_P63.md#acid2-cargo-train) |
+| [AC!D 2 — Security Section / Monitor Room](../../public/cqc/assets/p63/acid2-security-monitor-room.png) | `stage:acid2_security_monitor` | [Fiche](CONTINUATION_P63.md#acid2-security-monitor-room) |
+| [Revengeance — World Marshal / hall](../../public/cqc/assets/p63/mgr-wm-lobby.png) | `stage:mgr_wm_interior` | [Fiche](CONTINUATION_P63.md#mgr-wm-lobby) |
+| [Revengeance — World Marshal / ascenseur de fret](../../public/cqc/assets/p63/mgr-wm-freight-elevator.png) | `stage:mgr_wm_interior` | [Fiche](CONTINUATION_P63.md#mgr-wm-freight-elevator) |
+| [Revengeance — World Marshal / jardin japonais](../../public/cqc/assets/p63/mgr-wm-japanese-garden.png) | `stage:mgr_wm_interior` | [Fiche](CONTINUATION_P63.md#mgr-wm-japanese-garden) |
+| [Revengeance — World Marshal / serveurs](../../public/cqc/assets/p63/mgr-wm-server-room.png) | `stage:mgr_wm_interior` | [Fiche](CONTINUATION_P63.md#mgr-wm-server-room) |
+| [Revengeance — R-02 / chambre biologique](../../public/cqc/assets/p63/mgr-guadalajara-brain-chamber.png) | `stage:mgr_guadalajara` | [Fiche](CONTINUATION_P63.md#mgr-guadalajara-brain-chamber) |
+| [Revengeance — R-02 / salle du GRAD](../../public/cqc/assets/p63/mgr-guadalajara-grad-arena.png) | `stage:mgr_guadalajara` | [Fiche](CONTINUATION_P63.md#mgr-guadalajara-grad-arena) |
+| [Revengeance — R-07 / base pakistanaise extérieure](../../public/cqc/assets/p63/mgr-pakistan-exterior.png) | `stage:mgr_pakistan_base` | [Fiche](CONTINUATION_P63.md#mgr-pakistan-exterior) |
+| [Survive — Wrecked Base](../../public/cqc/assets/p63/survive-wrecked-base.png) | `stage:survive_wrecked_base` | [Fiche](CONTINUATION_P63.md#survive-wrecked-base) |
+| [Survive — Fallen Village](../../public/cqc/assets/p63/survive-fallen-village.png) | `stage:survive_fallen_village` | [Fiche](CONTINUATION_P63.md#survive-fallen-village) |
+| [Survive — Deserted Mine](../../public/cqc/assets/p63/survive-deserted-mine.png) | `stage:survive_deserted_mine` | [Fiche](CONTINUATION_P63.md#survive-deserted-mine) |
+| [Survive — Abandoned Airport](../../public/cqc/assets/p63/survive-abandoned-airport.png) | `stage:survive_abandoned_airport` | [Fiche](CONTINUATION_P63.md#survive-abandoned-airport) |
+
+## Registre historique P60/P61/P62 — 177 sources
 
 | Source | Passe / catégorie | Périmètres associés | Rubriques du guide |
 |---|---|---|---|

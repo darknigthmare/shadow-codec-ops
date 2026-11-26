@@ -1,6 +1,8 @@
 # Bible CQC Versus Legacy — guide associé au projet
 
-**Version P62 — 25 novembre 2026.** Le guide général fourni par Darknigthmare est intégré comme référence commune, puis traduit en décisions, fiches et exigences propres au jeu de combat Metal Gear. Cet index relie le contenu existant du dépôt, les nouveaux documents et les sources statiques P60/P61/P62.
+**Version P63 — 26 novembre 2026. Fondation documentaire P62 conservée.** Le guide général fourni par Darknigthmare est intégré comme référence commune, puis traduit en décisions, fiches et exigences propres au jeu de combat Metal Gear. Cet index relie le contenu existant du dépôt et les sources statiques P60/P61/P62/P63.
+
+La [continuation P63](CONTINUATION_P63.md) ajoute **17 décors individuels** pour Survive, AC!D, AC!D 2 et Revengeance, portant le total à **194 sources sélectionnées**. Ils sont consultables dans l’**Atlas des sources**, accessible depuis Chroniques/Extras et par `/cqc/?module=atlas63`. Les [associations P63](asset-associations-p63.json) complètent le registre historique ; les trois essais écartés restent hors de l’Atlas. **0 nouvelle admission au combat, 0 certification absolue 1:1.**
 
 ## Lire la bible
 
@@ -15,7 +17,9 @@
 | Arènes, quatre axes, connexions et boss | [ARENES_ET_BOSS.md](ARENES_ET_BOSS.md) |
 | Sources reliées aux besoins de la bible | [ASSOCIATIONS.md](ASSOCIATIONS.md) ; [asset-associations.json](asset-associations.json) |
 | Fiches, phase de production et critères d’admission | [FICHES_ET_VALIDATION.md](FICHES_ET_VALIDATION.md) |
-| Nouvelles images et vérifications de cette passe | [Bilan et galerie P62](../cqc-reprise/pass62/README.md) |
+| Livraison courante : 17 sources et Atlas P63 | [CONTINUATION_P63.md](CONTINUATION_P63.md) ; [galerie et bilan P63](../cqc-reprise/pass63/README.md) |
+| Registre des nouvelles associations P63 | [asset-associations-p63.json](asset-associations-p63.json) |
+| Historique : cinq décors P62 | [Bilan et galerie P62](../cqc-reprise/pass62/README.md) |
 
 Le guide source fait **55 172 octets**, SHA-256 `4844584616072ac0d52d37c2fab4365e1ec489240f17a721ee216e223b0355b7`. Sa copie est identique à la pièce jointe. Les adaptations sont écrites dans les documents CQC, sans modifier cette référence.
 
@@ -56,7 +60,7 @@ FOX HUNT, les modes Monkey/Bomberman et les comparaisons Master Collection reste
 
 Les [audits détaillés d’octobre](../audit-cqc-2026-10-23/README.md), les données de Chroniques et les contrats de fidélité constituent l’héritage du projet. La bible centrale les associe au guide et les complète ; elle ne réinitialise ni leurs UID ni leurs compteurs historiques.
 
-Cette passe ajoute une matrice de **90 exigences pour 30 rubriques** : **87 retenues et 3 différées**. Une exigence retenue peut encore être manquante dans le jeu. Les éléments différés regroupent les extensions à décider, la production d’animations pendant la phase de sprites fixes et les services réseau. Les modes déjà présents sont conservés.
+La fondation P62 ajoute une matrice de **90 exigences pour 30 rubriques** : **87 retenues et 3 différées**. Une exigence retenue peut encore être manquante dans le jeu. Les éléments différés regroupent les extensions à décider, la production d’animations pendant la phase de sprites fixes et les services réseau. Les modes déjà présents sont conservés.
 
 Les huit pilotes détaillés sont Naked Snake MGS3, The Boss, Solid Snake MGS1, Revolver Ocelot MGS1, Raiden MGS2, Raiden MGR, Sniper Wolf et Venom Snake. Leurs **80 emplacements d’action compilés** sont reliés aux routes narratives et à huit propositions de neutralisation. Les paramètres de base restent distincts des adaptateurs exécutés ensuite et des valeurs des jeux d’origine.
 
@@ -93,11 +97,14 @@ Les nouvelles vues P62 complètent Crescent Meridian, Cove Valley Village, Zaozy
 | Pilotes P62 | 8 enrichissements combat/narration, sur des personnages déjà présents ; aucun nouveau combattant admis. |
 | Sources sélectionnées P60/P61/P62 | **177 PNG : 40 P60 + 132 P61 + 5 P62**. |
 | Répartition des 177 sources | **107 stages, 17 personnages, 7 costumes, 45 machines et 1 VFX**. |
-| Essais archivés | **9**, exclus des sources sélectionnées : 2 P60, 6 P61, 1 P62. |
+| Sources sélectionnées P63 | **17 décors : 3 AC!D, 3 AC!D 2, 7 Revengeance, 4 Survive**. |
+| Total P60/P61/P62/P63 | **194 PNG : 124 décors, 17 personnages, 7 costumes, 45 machines et 1 VFX**. |
+| Essais archivés P60/P61/P62/P63 | **12**, exclus des sources sélectionnées : 2 P60, 6 P61, 1 P62, 3 P63. |
 | Inventaire historique P61 | **277 lignes**, dont **97 sans correspondance démontrée** ; plusieurs lignes sont des groupes à détailler. |
 | Périmètres auxiliaires | 2 costumes P60 déjà produits, conservés hors du dénominateur des 277 lacunes. |
 | Garde-robe historique | 3 399 lignes / 384 incarnations dans l’audit P61 ; unité distincte des profils compilés. |
-| Admission par cette passe | **0 nouvelle admission runtime, 0 nouvelle certification 1:1**. |
+| Consultation ajoutée par P63 | **17 sources dans l’Atlas**, reliées au menu et au manifeste runtime. |
+| Admission au combat des sources P63 | **0 nouvelle arène admise, 0 nouvelle certification 1:1**. |
 
 Les fiches narratives publient leur propre compte de routes, scènes et plans. Un plan écrit n’est pas une image produite. Les associations JSON permettent de suivre un fichier vers ses périmètres, les rubriques du guide et les documents de conception sans additionner ces unités.
 
@@ -121,6 +128,6 @@ Publication suivie dans la [PR #25](https://github.com/darknigthmare/shadow-code
 
 ## 7. Maintenance et prochaine admission
 
-Pour ajouter une source, compléter son lot, ses références et son `workId`, puis reconstruire les associations avec `python3 docs/cqc-bible/build_registry.py --verify-images` dans un Python disposant de Pillow. Exécuter `node scripts/check-cqc-bible.mjs` pour vérifier la cohérence documentaire. L’étape d’intégration doit ensuite mettre à jour le binding réel, les modes concernés et les preuves de validation fonctionnelle.
+Pour le socle P62, `python3 docs/cqc-bible/build_registry.py --verify-images` et `node scripts/check-cqc-bible.mjs` conservent leur périmètre historique de 177 sources. **P63 est une extension additive** : son manifeste, ses prompts, ses associations et son catalogue sont dans les liens ci-dessus. `node scripts/check-cqc-p63.mjs` contrôle les nouveaux PNG et leurs associations ; `node scripts/test-cqc-p63-source-atlas.mjs` contrôle le module. Les commandes disponibles et celles effectivement exécutées sont distinguées dans le [rapport P63](../cqc-reprise/pass63/verification.json). Toute admission au combat doit ensuite compléter les plans, bindings, interactions et preuves de validation fonctionnelle.
 
 Les dix types de fiches et les scénarios de validation sont centralisés dans [FICHES_ET_VALIDATION.md](FICHES_ET_VALIDATION.md). Les incertitudes sont conservées jusqu’à obtention d’une référence ou d’un test suffisant ; les comptes de production continuent d’être calculés depuis les fichiers sélectionnés.

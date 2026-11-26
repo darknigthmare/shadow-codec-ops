@@ -1,0 +1,271 @@
+{
+  "scope": "CQC P63 source atlas UI and routing; no gameplay admission",
+  "validation": {
+    "nodeTests": {
+      "passed": 14,
+      "failed": 0,
+      "command": "node --test scripts/test-cqc-p63-source-atlas.mjs",
+      "executionPhase": "Before executor failure; original Node run."
+    },
+    "javascriptSyntax": "passed",
+    "runtimeDependencyDiscovery": "passed for new HTML/JS/CSS and a representative catalog path",
+    "browser": {
+      "status": "blocked",
+      "reason": "No installed Chromium binary; official Playwright download returned HTTP 403. No rendered layout or production image decoding claim."
+    },
+    "afterRecoveryV8": {
+      "executionPhase": "After executor failure, inside functions V8 isolate.",
+      "passed": 14,
+      "failed": 0,
+      "testBodies": "Original 14 bodies and original FakeDOM; cases were not changed.",
+      "adapters": [
+        "node:test registration",
+        "assert methods",
+        "fs reads from recovered text map",
+        "vm execution context",
+        "POSIX path subset",
+        "URL subset",
+        "URLSearchParams subset",
+        "AbortController signal",
+        "setImmediate via isolate timer"
+      ],
+      "limits": "This is not Node, Chromium, native URL API conformance or browser rendering.",
+      "results": [
+        {
+          "name": "AC!D and AC!D 2 remain distinct, and all four titles resolve",
+          "status": "passed"
+        },
+        {
+          "name": "paths stay within local asset PNGs; traversal and external image URLs are refused",
+          "status": "passed"
+        },
+        {
+          "name": "a duplicate identity, unknown title, bad path or combat claim blocks catalog admission",
+          "status": "passed"
+        },
+        {
+          "name": "unselected or unavailable sources do not inflate the atlas",
+          "status": "passed"
+        },
+        {
+          "name": "search ignores accents and title filtering cannot mix Acid editions",
+          "status": "passed"
+        },
+        {
+          "name": "selection follows the visible subset, including an empty result",
+          "status": "passed"
+        },
+        {
+          "name": "query restoration validates filters and serializes a stable deep link",
+          "status": "passed"
+        },
+        {
+          "name": "external reference links reject executable URLs and credentials",
+          "status": "passed"
+        },
+        {
+          "name": "shell provides atlas routes in Extras and Chroniques with separate selected-asset validation",
+          "status": "passed"
+        },
+        {
+          "name": "failed loading exposes retry and a successful retry renders the catalog",
+          "status": "passed"
+        },
+        {
+          "name": "an older pending response cannot replace the newer catalog",
+          "status": "passed"
+        },
+        {
+          "name": "an image failure exposes retry after a successful catalog load",
+          "status": "passed"
+        },
+        {
+          "name": "mounted control changes and reset update the visible selected dossier",
+          "status": "passed"
+        },
+        {
+          "name": "embedded navigation returns to the existing shell without nesting a second shell",
+          "status": "passed"
+        }
+      ]
+    },
+    "afterRecoveryStaticDOMCSS": {
+      "passed": 23,
+      "failed": 0,
+      "scope": "Static HTML/CSS/runtime-contract checks, including unchanged hashes of all 8 delivered files.",
+      "limits": "No browser DOM parser, CSS engine, viewport rendering or production image decoding.",
+      "results": [
+        {
+          "name": "Unique HTML IDs",
+          "status": "passed"
+        },
+        {
+          "name": "All 10 JS mount IDs present",
+          "status": "passed"
+        },
+        {
+          "name": "Deferred module script at correct relative path",
+          "status": "passed"
+        },
+        {
+          "name": "Stylesheet at correct relative path",
+          "status": "passed"
+        },
+        {
+          "name": "Filter form and native reset action",
+          "status": "passed"
+        },
+        {
+          "name": "Visible implicit label for atlas-episode",
+          "status": "passed"
+        },
+        {
+          "name": "Visible implicit label for atlas-kind",
+          "status": "passed"
+        },
+        {
+          "name": "Visible implicit label for atlas-search",
+          "status": "passed"
+        },
+        {
+          "name": "Episode option values match runtime constants",
+          "status": "passed"
+        },
+        {
+          "name": "Category default supports runtime-populated options",
+          "status": "passed"
+        },
+        {
+          "name": "Search length matches runtime limit",
+          "status": "passed"
+        },
+        {
+          "name": "Loading and filter status announced politely",
+          "status": "passed"
+        },
+        {
+          "name": "Initial retry, empty and detail states hidden",
+          "status": "passed"
+        },
+        {
+          "name": "CSS respects all runtime hidden states",
+          "status": "passed"
+        },
+        {
+          "name": "Every dynamic presentation class has a CSS selector",
+          "status": "passed"
+        },
+        {
+          "name": "Image load class makes both image types visible",
+          "status": "passed"
+        },
+        {
+          "name": "Image load and failure messages styled",
+          "status": "passed"
+        },
+        {
+          "name": "Tablet and phone layout rules present",
+          "status": "passed"
+        },
+        {
+          "name": "Reduced-motion and keyboard-focus rules present",
+          "status": "passed"
+        },
+        {
+          "name": "Static HTML element nesting balanced",
+          "status": "passed"
+        },
+        {
+          "name": "Stylesheet block delimiters balanced",
+          "status": "passed"
+        },
+        {
+          "name": "Stylesheet has no remote font/image dependencies",
+          "status": "passed"
+        },
+        {
+          "name": "All 8 file hashes unchanged during replay",
+          "status": "passed"
+        }
+      ]
+    },
+    "afterRecoveryDependencyDiscovery": {
+      "engine": "Exact discoverReferences body from scripts/sync-cqc-runtime.mjs, executed in V8 with explicit POSIX path adapters.",
+      "oldIndex": "Its 27 references exactly match the previous runtime manifest.",
+      "results": [
+        {
+          "from": "src/cqc-p63-source-atlas.js",
+          "referenceCount": 2,
+          "added": [
+            "data/cqc-p63-source-atlas.json",
+            "index.html"
+          ],
+          "removed": [],
+          "omissions": []
+        },
+        {
+          "from": "index.html",
+          "referenceCount": 28,
+          "added": [
+            "modules/source-atlas-v063.html"
+          ],
+          "removed": [],
+          "omissions": []
+        },
+        {
+          "from": "modules/source-atlas-v063.html",
+          "referenceCount": 3,
+          "added": [
+            "index.html",
+            "src/cqc-p63-source-atlas.css",
+            "src/cqc-p63-source-atlas.js"
+          ],
+          "removed": [],
+          "omissions": []
+        },
+        {
+          "from": "src/cqc-p63-source-atlas.css",
+          "referenceCount": 0,
+          "added": [],
+          "removed": [],
+          "omissions": []
+        }
+      ],
+      "limitations": "The final P63 catalog and PNG rows are not included yet."
+    }
+  },
+  "files": [
+    "scripts/test-cqc-p63-source-atlas.mjs",
+    "public/cqc/index.html",
+    "public/cqc/modules/source-atlas-v063.html",
+    "public/cqc/src/cqc-p63-source-atlas.js",
+    "public/cqc/src/cqc-p63-source-atlas.css"
+  ],
+  "requiredData": "public/cqc/data/cqc-p63-source-atlas.json, supplied by the P63 source manifest build",
+  "entry": "/cqc/?module=atlas63",
+  "gameplayCatalogsModified": false,
+  "recovery": {
+    "status": "Preserved as unreferenced GitHub blobs after executor failure.",
+    "historicalValidation": "The 14 passing Node tests and dependency discovery above occurred before the executor failure.",
+    "exactTextRecovered": [
+      "public/cqc/src/cqc-p63-source-atlas.js",
+      "scripts/test-cqc-p63-source-atlas.mjs"
+    ],
+    "reconstructed": [
+      "public/cqc/modules/source-atlas-v063.html",
+      "public/cqc/src/cqc-p63-source-atlas.css"
+    ],
+    "shell": "Six targeted integrations reapplied to exact dd633808 base; byte-identical recovery of prior modified shell is not claimed.",
+    "checksPerformedAfterRecovery": [
+      "JS restored: syntax parse, API initialization, AC!D/2 and asset path checks in functions V8 only",
+      "scripts/test-cqc-p63-source-atlas.mjs: syntax parse in functions V8 only",
+      "scripts/extend-cqc-p63-runtime.mjs: syntax parse in functions V8 only",
+      "Restored shell inline scripts parse",
+      "Reconstructed HTML contains all 10 required DOM IDs",
+      "Restored six shell integrations present",
+      "All original 14 test bodies passed under explicit V8 environment adapters.",
+      "23 static HTML/CSS/runtime contract checks passed."
+    ],
+    "notPerformed": "No Node suite, filesystem helper execution, browser rendering or production image decoding after recovery."
+  }
+}
