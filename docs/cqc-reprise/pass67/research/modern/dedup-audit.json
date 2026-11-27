@@ -1,0 +1,150 @@
+{
+  "schema": "cqc.p67.modern-dedup.v1",
+  "baselineCommit": "5d7c6c5187f3906ad1ead53706e83674750f1c34",
+  "asOf": "2026-11-26",
+  "inventory": "docs/cqc-reprise/pass61/inventory.json",
+  "associationRegistries": [
+    {
+      "path": "docs/cqc-bible/asset-associations.json",
+      "assetCount": 177
+    },
+    {
+      "path": "docs/cqc-bible/asset-associations-p63.json",
+      "assetCount": 17
+    },
+    {
+      "path": "docs/cqc-bible/asset-associations-p64.json",
+      "assetCount": 11
+    },
+    {
+      "path": "docs/cqc-bible/asset-associations-p65.json",
+      "assetCount": 6
+    },
+    {
+      "path": "docs/cqc-bible/asset-associations-p66.json",
+      "assetCount": 14
+    }
+  ],
+  "selectedBaselineTotal": 225,
+  "treeFileUsed": "/mnt/data/cqc-p66/p66-tree-paths.txt",
+  "treePathCount": 23339,
+  "method": "Inspection des cinq registres, des lignes P61, recherche de chemins dans l’arbre P66 complet et inspection visuelle des petits sprites existants récupérés par git show. Aucun PNG absent dans le répertoire exporté n’est traité comme une preuve d’absence du dépôt.",
+  "existingSourcesConsidered": [
+    {
+      "path": "public/sideops/peace_walker/enemies/peace-sentinel-soldier.png",
+      "bytes": 2513,
+      "visuallyInspected": true,
+      "note": "Petit sprite gameplay existant ; aucune suppression ou substitution."
+    },
+    {
+      "path": "public/sideops/peace_walker/enemies/peace-sentinel-heavy-reinforcement.png",
+      "bytes": 3266,
+      "visuallyInspected": true,
+      "note": "Variante lourde déjà présente ; pas de recréation."
+    },
+    {
+      "path": "public/sideops/mgs4/enemies/pmc-soldier.png",
+      "bytes": 2761,
+      "visuallyInspected": true,
+      "note": "Petit sprite gameplay PMC existant, distinct des deux rebelles observés."
+    },
+    {
+      "path": "public/sideops/mgs3/enemies/gru-heavy-reinforcement.png",
+      "note": "Variante lourde existante ; ne prouve pas une absence générale des GRU."
+    },
+    {
+      "path": "public/sideops/mgs3/enemies/ocelot-unit-soldier.png",
+      "note": "Ocelot masculin existant ; ne remplace pas le modèle féminin A de MPO+."
+    }
+  ],
+  "additionalExistingFamilies": [
+    "Praying Mantis PMC, Raven Sword, Pieuvre et Werewolf dans les anciennes passes de combat P18/P49",
+    "Déguisement scientifique de Snake PS2 déjà présent ; distinct du scientifique recrutable MPO+"
+  ],
+  "candidateFindings": [
+    {
+      "id": "mpop-ussr-female-a",
+      "workIds": [
+        "character:R-MPO-soviet"
+      ],
+      "episodeKey": "mpo_plus",
+      "finding": "Aucune source dédiée équivalente identifiée dans les 225 associations et chemins P66 examinés ; ajout candidat de variante, pas déclaration d’absence globale.",
+      "scopeClosed": false
+    },
+    {
+      "id": "mpop-ocelot-female-a",
+      "workIds": [
+        "character:R-MPO-ocelot"
+      ],
+      "episodeKey": "mpo_plus",
+      "finding": "Aucune source dédiée équivalente identifiée dans les 225 associations et chemins P66 examinés ; ajout candidat de variante, pas déclaration d’absence globale.",
+      "scopeClosed": false
+    },
+    {
+      "id": "mpop-male-scientist-a",
+      "workIds": [
+        "character:R-MPO-medical"
+      ],
+      "episodeKey": "mpo_plus",
+      "finding": "Aucune source dédiée équivalente identifiée dans les 225 associations et chemins P66 examinés ; ajout candidat de variante, pas déclaration d’absence globale.",
+      "scopeClosed": false
+    },
+    {
+      "id": "pw-sandinista",
+      "workIds": [
+        "character:R-PW-FSLN"
+      ],
+      "episodeKey": "pw",
+      "finding": "Aucune source dédiée équivalente identifiée dans les 225 associations et chemins P66 examinés ; ajout candidat de variante, pas déclaration d’absence globale.",
+      "scopeClosed": false
+    },
+    {
+      "id": "mpop-ussr-male-a",
+      "workIds": [
+        "character:R-MPO-soviet"
+      ],
+      "episodeKey": "mpo_plus",
+      "finding": "Aucune source dédiée équivalente identifiée dans les 225 associations et chemins P66 examinés ; ajout candidat de variante, pas déclaration d’absence globale.",
+      "scopeClosed": false
+    },
+    {
+      "id": "mpop-female-officer-a",
+      "workIds": [
+        "character:R-MPO-medical"
+      ],
+      "episodeKey": "mpo_plus",
+      "finding": "Aucune source dédiée équivalente identifiée dans les 225 associations et chemins P66 examinés ; ajout candidat de variante, pas déclaration d’absence globale.",
+      "scopeClosed": false
+    },
+    {
+      "id": "delta-gru-balaclava-portrait",
+      "workIds": [
+        "character:R-MGS3-gru"
+      ],
+      "episodeKey": "delta",
+      "finding": "Aucune source dédiée équivalente identifiée dans les 225 associations et chemins P66 examinés ; ajout candidat de variante, pas déclaration d’absence globale.",
+      "scopeClosed": false
+    },
+    {
+      "id": "mgs4-middle-east-rebel-short-sleeve",
+      "workIds": [
+        "character:R-MGS4-rebelme"
+      ],
+      "episodeKey": "mgs4",
+      "finding": "Aucune source dédiée équivalente identifiée dans les 225 associations et chemins P66 examinés ; ajout candidat de variante, pas déclaration d’absence globale.",
+      "scopeClosed": false
+    },
+    {
+      "id": "mgs4-middle-east-rebel-light-tunic",
+      "workIds": [
+        "character:R-MGS4-rebelme"
+      ],
+      "episodeKey": "mgs4",
+      "finding": "Aucune source dédiée équivalente identifiée dans les 225 associations et chemins P66 examinés ; ajout candidat de variante, pas déclaration d’absence globale.",
+      "scopeClosed": false
+    }
+  ],
+  "mgs4RebelSearchResult": "Les recherches rebel/resistan/insurgent/militia/middle-east ne retrouvent que des décors du Moyen-Orient, aucun PNG dédié aux deux variantes de rebelles choisies.",
+  "historicalGroupMeaning": "Les lignes P61 sont des ensembles de variantes incomplets. Un ou deux candidats n’en ferment jamais l’inventaire.",
+  "crossEditionRule": "MPO+ PSP, MPO PSP, MGS3 PS2, Snake Eater 3D, Delta et FOX HUNT restent des profils distincts ; aucune réutilisation d’apparence entre éditions sans preuve."
+}

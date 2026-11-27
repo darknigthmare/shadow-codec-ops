@@ -1,0 +1,932 @@
+{
+  "schema": "cqc.p63.four-game-scope-audit.v1",
+  "asOf": "2026-11-26",
+  "repository": "darknigthmare/shadow-codec-ops",
+  "branch": "codex/cqc-p61-missing-static-sources-20261125",
+  "pullRequest": "https://github.com/darknigthmare/shadow-codec-ops/pull/25",
+  "observedHead": "dd6338087538d9a00e6e0241cd9cd38a24c87393",
+  "auditOnly": true,
+  "productionCounts": {
+    "newPNGs": 0,
+    "newRuntimeAdmissions": 0,
+    "newAbsolute1to1Certifications": 0
+  },
+  "historicalSelection": {
+    "source": "docs/cqc-reprise/pass61/inventory.json",
+    "algorithm": "Select rows where /acid|survive|mgr|revengeance/i.test(row.id + ' ' + row.episode). The exact 33 selected IDs are preserved below.",
+    "excluded": "AC!D Mobile/other spin-off mixed catalogue and the cancelled pre-Platinum Rising concept are not included by this filter.",
+    "total": 33,
+    "counts": {
+      "p61_candidate": 19,
+      "unresolved": 10,
+      "existing_source": 4
+    },
+    "interpretation": "Historical scopes, not missing individual sprite bodies or whole-franchise completion percentage."
+  },
+  "historicalRows": [
+    {
+      "id": "character:R-MGR-standard",
+      "category": "characters",
+      "label": "Cyborg Desperado standard",
+      "episode": "Revengeance",
+      "historicalPresenceClass": "p61_candidate",
+      "historicalStatus": "Source candidate P61 — revue requise",
+      "selectedSourceIDs": [
+        "desperado-cyborg"
+      ],
+      "selectedSourcePaths": [
+        "public/cqc/assets/p61/desperado-cyborg-right.png"
+      ],
+      "existingSourcePaths": [],
+      "scopeNote": "",
+      "reason": "Une variante Desperado standard avec MAK-200. Les autres couleurs, états ou équipements restent distincts.",
+      "nextEvidenceOrWork": "Comparer la source générée au modèle/captures natifs, compléter les variantes de portée, puis réaliser et tester une intégration séparée si demandée."
+    },
+    {
+      "id": "character:R-MGR-armored",
+      "category": "characters",
+      "label": "Cyborgs blindés / variantes de commandement",
+      "episode": "Revengeance",
+      "historicalPresenceClass": "unresolved",
+      "historicalStatus": "Génération refusée — aucun PNG",
+      "selectedSourceIDs": [],
+      "selectedSourcePaths": [],
+      "existingSourcePaths": [],
+      "scopeNote": "",
+      "reason": "Tentative de génération effectivement refusée par le service : HTTP 400 moderation_blocked, catégorie other, request_id 46cb7afe-6c1f-4e55-9839-c68a7b5cdff8. Aucun PNG produit pour cet objectif ; aucun nouvel essai sous alias.",
+      "nextEvidenceOrWork": "Conserver la référence et le refus effectif ; ne pas compter un PNG inexistant."
+    },
+    {
+      "id": "character:R-MGR-berserker",
+      "category": "characters",
+      "label": "Berserkers et utilisateurs d’armes lourdes",
+      "episode": "Revengeance",
+      "historicalPresenceClass": "p61_candidate",
+      "historicalStatus": "Source candidate P61 — revue requise",
+      "selectedSourceIDs": [
+        "mgr-berserker"
+      ],
+      "selectedSourcePaths": [
+        "public/cqc/assets/p61/mgr-berserker-right.png"
+      ],
+      "existingSourcePaths": [],
+      "scopeNote": "",
+      "reason": "Un archétype lourd au marteau. Les autres armes et variantes de la ligne groupée ne sont pas fermées par cette seule source.",
+      "nextEvidenceOrWork": "Comparer la source générée au modèle/captures natifs, compléter les variantes de portée, puis réaliser et tester une intégration séparée si demandée."
+    },
+    {
+      "id": "character:R-MGR-police",
+      "category": "characters",
+      "label": "Forces de sécurité / police de Denver",
+      "episode": "Revengeance",
+      "historicalPresenceClass": "p61_candidate",
+      "historicalStatus": "Source candidate P61 — revue requise",
+      "selectedSourceIDs": [
+        "mgr-denver-police"
+      ],
+      "selectedSourcePaths": [
+        "public/cqc/assets/p61/mgr-denver-police-right.png"
+      ],
+      "existingSourcePaths": [],
+      "scopeNote": "",
+      "reason": "Un policier cyborg masqué de Denver. Les variantes à casquette et personnages individualisés ne sont pas couverts par cette image.",
+      "nextEvidenceOrWork": "Comparer la source générée au modèle/captures natifs, compléter les variantes de portée, puis réaliser et tester une intégration séparée si demandée."
+    },
+    {
+      "id": "character:R-MGR-scientist",
+      "category": "characters",
+      "label": "Scientifique de la séquence du laboratoire",
+      "episode": "Revengeance",
+      "historicalPresenceClass": "p61_candidate",
+      "historicalStatus": "Source candidate P61 — revue requise",
+      "selectedSourceIDs": [
+        "mgr-scientist"
+      ],
+      "selectedSourcePaths": [
+        "public/cqc/assets/p61/mgr-scientist-right.png"
+      ],
+      "existingSourcePaths": [],
+      "scopeNote": "",
+      "reason": "Une source dédiée à l’incarnation a été générée à partir des références documentées. La ressemblance, les détails et le rendu restent à valider.",
+      "nextEvidenceOrWork": "Comparer la source générée au modèle/captures natifs, compléter les variantes de portée, puis réaliser et tester une intégration séparée si demandée."
+    },
+    {
+      "id": "character:R-MGR-soldier",
+      "category": "characters",
+      "label": "Soldats humains de la séquence R-00",
+      "episode": "Revengeance",
+      "historicalPresenceClass": "unresolved",
+      "historicalStatus": "Groupes à séparer et vues complètes requises",
+      "selectedSourceIDs": [],
+      "selectedSourcePaths": [],
+      "existingSourcePaths": [],
+      "scopeNote": "",
+      "reason": "Les captures montrent des agents Maverick en polo bleu (casquette/casque) et des militaires locaux en camouflage/béret rouge. La ligne historique « soldats humains / ennemi récurrent » ne distingue pas ces groupes. Les détails complets des jambes et chaussures du modèle ciblé restent insuffisamment visibles pour la fidélité demandée.",
+      "nextEvidenceOrWork": "Séparer affiliation, variante et éventuelle augmentation ; obtenir une vue complète de chaque modèle retenu. Ne pas substituer le cyborg Desperado standard."
+    },
+    {
+      "id": "character:R-ACID-HAROLD",
+      "category": "characters",
+      "label": "Harold Burton",
+      "episode": "AC!D",
+      "historicalPresenceClass": "unresolved",
+      "historicalStatus": "Identité documentaire — corps non établi",
+      "selectedSourceIDs": [],
+      "selectedSourcePaths": [],
+      "existingSourcePaths": [],
+      "scopeNote": "",
+      "reason": "L’identité est documentaire, évoquée ou insuffisamment montrée. Aucun corps complet spécifique n’est établi dans le rapprochement de référence ; ne pas créer une apparence inventée.",
+      "nextEvidenceOrWork": "Définir rôle, mention/apparition et relation aux identités déjà présentes; pas de corps 1:1 sans image."
+    },
+    {
+      "id": "character:R-ACID-DECOY",
+      "category": "characters",
+      "label": "Faux Flemming",
+      "episode": "AC!D",
+      "historicalPresenceClass": "unresolved",
+      "historicalStatus": "Profil d’édition ou d’identité à rapprocher",
+      "selectedSourceIDs": [],
+      "selectedSourcePaths": [],
+      "existingSourcePaths": [],
+      "scopeNote": "",
+      "reason": "Le profil de cette édition ou de cette identité doit être rapproché avec les sources existantes. Un corps générique d’une autre édition ne clôture pas cette ligne.",
+      "nextEvidenceOrWork": "Créer le lien d’apparence et la séquence propre au leurre; ne pas assimiler cet imposteur au véritable alias Gary Murray."
+    },
+    {
+      "id": "character:R-ACID-GUARDS",
+      "category": "characters",
+      "label": "Soldats de Genetics / mercenaires de Leone / personnels SaintLogic",
+      "episode": "AC!D / AC!D 2",
+      "historicalPresenceClass": "unresolved",
+      "historicalStatus": "Groupe/variantes à inventorier",
+      "selectedSourceIDs": [],
+      "selectedSourcePaths": [],
+      "existingSourcePaths": [],
+      "scopeNote": "",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "nextEvidenceOrWork": "Séparer les modèles PSP des illustrations de cartes, puis palettes/armes officielles; ne pas transférer toutes les cartes au roster."
+    },
+    {
+      "id": "character:R-SURVIVE-harley-warren",
+      "category": "characters",
+      "label": "Harley Warren",
+      "episode": "Survive",
+      "historicalPresenceClass": "unresolved",
+      "historicalStatus": "Identité documentaire — corps non établi",
+      "selectedSourceIDs": [],
+      "selectedSourcePaths": [],
+      "existingSourcePaths": [],
+      "scopeNote": "",
+      "reason": "L’identité est documentaire, évoquée ou insuffisamment montrée. Aucun corps complet spécifique n’est établi dans le rapprochement de référence ; ne pas créer une apparence inventée.",
+      "nextEvidenceOrWork": "Recueillir journal/enregistrement et éventuel portrait; exclure les inventions corporelles du compte officiel."
+    },
+    {
+      "id": "character:R-SURVIVE-joel-marton",
+      "category": "characters",
+      "label": "Joel Marton",
+      "episode": "Survive",
+      "historicalPresenceClass": "unresolved",
+      "historicalStatus": "Identité documentaire — corps non établi",
+      "selectedSourceIDs": [],
+      "selectedSourcePaths": [],
+      "existingSourcePaths": [],
+      "scopeNote": "",
+      "reason": "L’identité est documentaire, évoquée ou insuffisamment montrée. Aucun corps complet spécifique n’est établi dans le rapprochement de référence ; ne pas créer une apparence inventée.",
+      "nextEvidenceOrWork": "Recueillir journal/enregistrement et éventuel portrait; exclure les inventions corporelles du compte officiel."
+    },
+    {
+      "id": "character:R-SURVIVE-AVATAR",
+      "category": "characters",
+      "label": "Captain — avatar féminin/masculin et apparences personnalisées",
+      "episode": "Survive",
+      "historicalPresenceClass": "unresolved",
+      "historicalStatus": "Groupe/variantes à inventorier",
+      "selectedSourceIDs": [],
+      "selectedSourcePaths": [],
+      "existingSourcePaths": [],
+      "scopeNote": "",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "nextEvidenceOrWork": "Cataloguer morphologies, vêtements et équipement sélectionnables; combinaisons dans un système modulaire, pas des milliers de faux personnages."
+    },
+    {
+      "id": "costume:archive__virgil_at9:official--deployed",
+      "category": "costumes",
+      "label": "VIRGIL AT-9 — Configuration déployée — pod ouvert",
+      "episode": "SURVIVE",
+      "historicalPresenceClass": "p61_candidate",
+      "historicalStatus": "Source candidate P61 — revue requise",
+      "selectedSourceIDs": [
+        "virgil-at9-deployed"
+      ],
+      "selectedSourcePaths": [
+        "public/cqc/assets/p61/virgil-at9-deployed-right.png"
+      ],
+      "existingSourcePaths": [],
+      "scopeNote": "",
+      "reason": "Source statique dédiée produite ; identité détaillée, proportions, surfaces cachées et fidélité 1:1 restent à valider.",
+      "nextEvidenceOrWork": "Comparer aux captures/modèles natifs ; compléter les portions du périmètre manquantes avant toute admission au jeu."
+    },
+    {
+      "id": "costume:core__snake_acid2:official--epilogue-bandages",
+      "category": "costumes",
+      "label": "SNAKE — AC!D 2 — Épilogue — convalescence bandée",
+      "episode": "AC!D2 Snake, navy chest armor and blue shin/boot armor, square-pattern tan camouflage cargo trousers and right red-brown hanging pouch",
+      "historicalPresenceClass": "p61_candidate",
+      "historicalStatus": "Source candidate P61 — revue requise",
+      "selectedSourceIDs": [
+        "snake-acid2-bandages"
+      ],
+      "selectedSourcePaths": [
+        "public/cqc/assets/p61/snake-acid2-bandages-right.png"
+      ],
+      "existingSourcePaths": [],
+      "scopeNote": "",
+      "reason": "Source statique dédiée produite ; identité détaillée, proportions, surfaces cachées et fidélité 1:1 restent à valider.",
+      "nextEvidenceOrWork": "Comparer aux captures/modèles natifs ; compléter les portions du périmètre manquantes avant toute admission au jeu."
+    },
+    {
+      "id": "stage:mgr_r00_africa",
+      "category": "stages",
+      "label": "Afrique — R00 train et avenue",
+      "episode": "Revengeance",
+      "historicalPresenceClass": "existing_source",
+      "historicalStatus": "Source antérieure présente — non recertifiée",
+      "selectedSourceIDs": [],
+      "selectedSourcePaths": [],
+      "existingSourcePaths": [
+        "public/cqc/assets/p54-boss-stages/mgr-r00-africa-avenue-background.png"
+      ],
+      "scopeNote": "",
+      "reason": "Source and code mapping exist. This audit does not revalidate geometry or gameplay; simulation adaptations remain identified.",
+      "nextEvidenceOrWork": "Séparer géométrie de poursuite, duels humains et emprise du boss géant."
+    },
+    {
+      "id": "stage:mgr_guadalajara",
+      "category": "stages",
+      "label": "Guadalajara — égouts / labo",
+      "episode": "Revengeance",
+      "historicalPresenceClass": "p61_candidate",
+      "historicalStatus": "Source candidate P61 — revue requise",
+      "selectedSourceIDs": [
+        "mgr-guadalajara-lab",
+        "mgr-guadalajara-sewers"
+      ],
+      "selectedSourcePaths": [
+        "public/cqc/assets/p61/mgr-guadalajara-lab.png",
+        "public/cqc/assets/p61/mgr-guadalajara-sewers.png"
+      ],
+      "existingSourcePaths": [],
+      "scopeNote": "Deux sources : égouts et atelier du laboratoire. Chambre biologique, arène GRAD et transitions restent distinctes.",
+      "reason": "Source statique dédiée produite ; identité détaillée, proportions, surfaces cachées et fidélité 1:1 restent à valider.",
+      "nextEvidenceOrWork": "Comparer aux captures/modèles natifs ; compléter les portions du périmètre manquantes avant toute admission au jeu."
+    },
+    {
+      "id": "stage:mgr_wm_interior",
+      "category": "stages",
+      "label": "Denver — bureaux World Marshal",
+      "episode": "Revengeance",
+      "historicalPresenceClass": "p61_candidate",
+      "historicalStatus": "Source candidate P61 — revue requise",
+      "selectedSourceIDs": [
+        "mgr-wm-office"
+      ],
+      "selectedSourcePaths": [
+        "public/cqc/assets/p61/mgr-wm-office.png"
+      ],
+      "existingSourcePaths": [],
+      "scopeNote": "Secteur des bureaux du 20e étage. Hall, ascenseurs et jardin japonais ne sont pas couverts par cette image.",
+      "reason": "Source statique dédiée produite ; identité détaillée, proportions, surfaces cachées et fidélité 1:1 restent à valider.",
+      "nextEvidenceOrWork": "Comparer aux captures/modèles natifs ; compléter les portions du périmètre manquantes avant toute admission au jeu."
+    },
+    {
+      "id": "stage:mgr_pakistan_base",
+      "category": "stages",
+      "label": "Pakistan — base avant EXCELSUS",
+      "episode": "Revengeance",
+      "historicalPresenceClass": "p61_candidate",
+      "historicalStatus": "Source candidate P61 — revue requise",
+      "selectedSourceIDs": [
+        "mgr-pakistan-hangar"
+      ],
+      "selectedSourcePaths": [
+        "public/cqc/assets/p61/mgr-pakistan-hangar.png"
+      ],
+      "existingSourcePaths": [],
+      "scopeNote": "Hangar de la base, architecture vide ; aéronefs omis. Extérieurs et arène EXCELSUS distincts.",
+      "reason": "Source statique dédiée produite ; identité détaillée, proportions, surfaces cachées et fidélité 1:1 restent à valider.",
+      "nextEvidenceOrWork": "Comparer aux captures/modèles natifs ; compléter les portions du périmètre manquantes avant toute admission au jeu."
+    },
+    {
+      "id": "stage:mgr_sam_armstrong",
+      "category": "stages",
+      "label": "Jetstream DLC — toit Armstrong",
+      "episode": "Revengeance",
+      "historicalPresenceClass": "p61_candidate",
+      "historicalStatus": "Source candidate P61 — revue requise",
+      "selectedSourceIDs": [
+        "mgr-sam-armstrong"
+      ],
+      "selectedSourcePaths": [
+        "public/cqc/assets/p61/mgr-sam-armstrong.png"
+      ],
+      "existingSourcePaths": [],
+      "scopeNote": "",
+      "reason": "Source statique dédiée produite ; identité détaillée, proportions, surfaces cachées et fidélité 1:1 restent à valider.",
+      "nextEvidenceOrWork": "Comparer aux captures/modèles natifs ; compléter les portions du périmètre manquantes avant toute admission au jeu."
+    },
+    {
+      "id": "stage:mgr_vr_dlc",
+      "category": "stages",
+      "label": "VR Missions — DLC",
+      "episode": "Revengeance",
+      "historicalPresenceClass": "unresolved",
+      "historicalStatus": "Lot de scènes ou contrôle d’édition à décomposer",
+      "selectedSourceIDs": [],
+      "selectedSourcePaths": [],
+      "existingSourcePaths": [],
+      "scopeNote": "",
+      "reason": "Cette ligne n’est pas une carte unique. Il faut établir une liste finie de scènes/missions et leurs références propres.",
+      "nextEvidenceOrWork": "Séparer géométrie de poursuite, duels humains et emprise du boss géant."
+    },
+    {
+      "id": "stage:acid_ruins",
+      "category": "stages",
+      "label": "Lobito — Ruins / forêt",
+      "episode": "AC!D",
+      "historicalPresenceClass": "p61_candidate",
+      "historicalStatus": "Source candidate P61 — revue requise",
+      "selectedSourceIDs": [
+        "acid-ruins-lower"
+      ],
+      "selectedSourcePaths": [
+        "public/cqc/assets/p61/acid-ruins-lower.png"
+      ],
+      "existingSourcePaths": [],
+      "scopeNote": "Ruins Lower 3A seulement. Ruines hautes et forêt restent sans sources dédiées dans ce lot.",
+      "reason": "Source statique dédiée produite ; identité détaillée, proportions, surfaces cachées et fidélité 1:1 restent à valider.",
+      "nextEvidenceOrWork": "Comparer aux captures/modèles natifs ; compléter les portions du périmètre manquantes avant toute admission au jeu."
+    },
+    {
+      "id": "stage:acid_far",
+      "category": "stages",
+      "label": "Lobito — FAR / salle KODOQUE",
+      "episode": "AC!D",
+      "historicalPresenceClass": "p61_candidate",
+      "historicalStatus": "Source candidate P61 — revue requise",
+      "selectedSourceIDs": [
+        "acid-far-kodoque"
+      ],
+      "selectedSourcePaths": [
+        "public/cqc/assets/p61/acid-far-kodoque.png"
+      ],
+      "existingSourcePaths": [],
+      "scopeNote": "Chambre KODOQUE seulement. Entrée/extérieurs FAR et segment intérieur Teliko non couverts.",
+      "reason": "Source statique dédiée produite ; identité détaillée, proportions, surfaces cachées et fidélité 1:1 restent à valider.",
+      "nextEvidenceOrWork": "Comparer aux captures/modèles natifs ; compléter les portions du périmètre manquantes avant toute admission au jeu."
+    },
+    {
+      "id": "stage:acid2_prototype",
+      "category": "stages",
+      "label": "SaintLogic — Prototype KODOQUE",
+      "episode": "AC!D2",
+      "historicalPresenceClass": "p61_candidate",
+      "historicalStatus": "Source candidate P61 — revue requise",
+      "selectedSourceIDs": [
+        "acid2-prototype"
+      ],
+      "selectedSourcePaths": [
+        "public/cqc/assets/p61/acid2-prototype.png"
+      ],
+      "existingSourcePaths": [],
+      "scopeNote": "Un étage représentatif du prototype ; les quatre étages du périmètre ne sont pas tous produits.",
+      "reason": "Source statique dédiée produite ; identité détaillée, proportions, surfaces cachées et fidélité 1:1 restent à valider.",
+      "nextEvidenceOrWork": "Comparer aux captures/modèles natifs ; compléter les portions du périmètre manquantes avant toute admission au jeu."
+    },
+    {
+      "id": "stage:acid2_tests",
+      "category": "stages",
+      "label": "SaintLogic — combats Test Subjects",
+      "episode": "AC!D2",
+      "historicalPresenceClass": "p61_candidate",
+      "historicalStatus": "Source candidate P61 — revue requise",
+      "selectedSourceIDs": [
+        "acid2-chaigidiel-room",
+        "acid2-golab-room",
+        "acid2-harab-room"
+      ],
+      "selectedSourcePaths": [
+        "public/cqc/assets/p61/acid2-chaigidiel-room.png",
+        "public/cqc/assets/p61/acid2-golab-room.png",
+        "public/cqc/assets/p61/acid2-harab-room.png"
+      ],
+      "existingSourcePaths": [],
+      "scopeNote": "Trois sources distinctes : Harab Serap, Golab et Chaigidiel. La géométrie est adaptée au cadrage latéral.",
+      "reason": "Source statique dédiée produite ; identité détaillée, proportions, surfaces cachées et fidélité 1:1 restent à valider.",
+      "nextEvidenceOrWork": "Comparer aux captures/modèles natifs ; compléter les portions du périmètre manquantes avant toute admission au jeu."
+    },
+    {
+      "id": "stage:survive_bigmouth_arena",
+      "category": "stages",
+      "label": "Dite — Ruins / Big Mouth",
+      "episode": "Survive",
+      "historicalPresenceClass": "p61_candidate",
+      "historicalStatus": "Source candidate P61 — revue requise",
+      "selectedSourceIDs": [
+        "survive-bigmouth-arena"
+      ],
+      "selectedSourcePaths": [
+        "public/cqc/assets/p61/survive-bigmouth-arena.png"
+      ],
+      "existingSourcePaths": [],
+      "scopeNote": "",
+      "reason": "Source statique dédiée produite ; identité détaillée, proportions, surfaces cachées et fidélité 1:1 restent à valider.",
+      "nextEvidenceOrWork": "Comparer aux captures/modèles natifs ; compléter les portions du périmètre manquantes avant toute admission au jeu."
+    },
+    {
+      "id": "stage:survive_frostbite_arena",
+      "category": "stages",
+      "label": "Dite — FOB / Frostbite",
+      "episode": "Survive",
+      "historicalPresenceClass": "p61_candidate",
+      "historicalStatus": "Source candidate P61 — revue requise",
+      "selectedSourceIDs": [
+        "survive-frostbite-arena"
+      ],
+      "selectedSourcePaths": [
+        "public/cqc/assets/p61/survive-frostbite-arena.png"
+      ],
+      "existingSourcePaths": [],
+      "scopeNote": "",
+      "reason": "Source statique dédiée produite ; identité détaillée, proportions, surfaces cachées et fidélité 1:1 restent à valider.",
+      "nextEvidenceOrWork": "Comparer aux captures/modèles natifs ; compléter les portions du périmètre manquantes avant toute admission au jeu."
+    },
+    {
+      "id": "stage:survive_final_defense",
+      "category": "stages",
+      "label": "Dite — défense finale Lord of Dust",
+      "episode": "Survive",
+      "historicalPresenceClass": "p61_candidate",
+      "historicalStatus": "Source candidate P61 — revue requise",
+      "selectedSourceIDs": [
+        "survive-final-defense"
+      ],
+      "selectedSourcePaths": [
+        "public/cqc/assets/p61/survive-final-defense.png"
+      ],
+      "existingSourcePaths": [],
+      "scopeNote": "Périmètre représentatif d’une partie. Placement des défenses variable selon la construction.",
+      "reason": "Source statique dédiée produite ; identité détaillée, proportions, surfaces cachées et fidélité 1:1 restent à valider.",
+      "nextEvidenceOrWork": "Comparer aux captures/modèles natifs ; compléter les portions du périmètre manquantes avant toute admission au jeu."
+    },
+    {
+      "id": "machine:big_mouth",
+      "category": "machines",
+      "label": "Big Mouth",
+      "episode": "Survive",
+      "historicalPresenceClass": "existing_source",
+      "historicalStatus": "Source antérieure présente — non recertifiée",
+      "selectedSourceIDs": [],
+      "selectedSourcePaths": [],
+      "existingSourcePaths": [
+        "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/c08544e3cc243f976d66b24a1143a6fb8e9ddd86e031a334a8ca309fabbf88ff.png"
+      ],
+      "scopeNote": "",
+      "reason": "Do not regenerate these existing bodies solely because the October machine audit requested a rig or complete enemy suite.",
+      "nextEvidenceOrWork": ""
+    },
+    {
+      "id": "machine:frostbite",
+      "category": "machines",
+      "label": "Frostbite",
+      "episode": "Survive",
+      "historicalPresenceClass": "existing_source",
+      "historicalStatus": "Source antérieure présente — non recertifiée",
+      "selectedSourceIDs": [],
+      "selectedSourcePaths": [],
+      "existingSourcePaths": [
+        "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/840a067a3f918429e0b209ec9e759c11fd924ca29ef988d25353165f5db0e2b7.png"
+      ],
+      "scopeNote": "",
+      "reason": "Do not regenerate these existing bodies solely because the October machine audit requested a rig or complete enemy suite.",
+      "nextEvidenceOrWork": ""
+    },
+    {
+      "id": "machine:lord_of_dust",
+      "category": "machines",
+      "label": "Lord of Dust",
+      "episode": "Survive",
+      "historicalPresenceClass": "p61_candidate",
+      "historicalStatus": "Source candidate P61 — revue requise",
+      "selectedSourceIDs": [
+        "lord-of-dust-right"
+      ],
+      "selectedSourcePaths": [
+        "public/cqc/assets/p61/lord-of-dust-right.png"
+      ],
+      "existingSourcePaths": [],
+      "scopeNote": "",
+      "reason": "Source statique dédiée produite ; identité détaillée, proportions, surfaces cachées et fidélité 1:1 restent à valider.",
+      "nextEvidenceOrWork": "Comparer aux captures/modèles natifs ; compléter les portions du périmètre manquantes avant toute admission au jeu."
+    },
+    {
+      "id": "machine:survive_devastator",
+      "category": "machines",
+      "label": "Devastator",
+      "episode": "Survive coopération",
+      "historicalPresenceClass": "p61_candidate",
+      "historicalStatus": "Source candidate P61 — revue requise",
+      "selectedSourceIDs": [
+        "survive-devastator-right"
+      ],
+      "selectedSourcePaths": [
+        "public/cqc/assets/p61/survive-devastator-right.png"
+      ],
+      "existingSourcePaths": [],
+      "scopeNote": "",
+      "reason": "Source statique dédiée produite ; identité détaillée, proportions, surfaces cachées et fidélité 1:1 restent à valider.",
+      "nextEvidenceOrWork": "Comparer aux captures/modèles natifs ; compléter les portions du périmètre manquantes avant toute admission au jeu."
+    },
+    {
+      "id": "machine:mgr_enemy_suite",
+      "category": "machines",
+      "label": "Raptor / Mastiff / Slider / Hammerhead / Fenrir",
+      "episode": "Revengeance",
+      "historicalPresenceClass": "existing_source",
+      "historicalStatus": "Source antérieure présente — non recertifiée",
+      "selectedSourceIDs": [],
+      "selectedSourcePaths": [],
+      "existingSourcePaths": [
+        "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/27a6fb173e18154d0fac2e4af5309b6c9f7f09ceae41a63a46356a9ac09e81c2.png",
+        "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/84c7417bb5e37c69e26f82fecd2d7e9a31fd54941f94e9668f1166520e65bf37.png",
+        "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/1d4c482b995962760cf3a76a9ec61ecd86f549617e14ec4b37e4796a0e57e668.png",
+        "docs/cqc-reprise/pass52/static-poses/catalogue/assets/composite-sources/bd039f6139c8be592417065e0cb05dbb1e72578d1fe77649a589ed05b8bea1c3.png",
+        "docs/cqc-reprise/pass52/static-poses/catalogue/assets/composite-sources/0c8cebecba7258beb7b4f0431ca8dfa708b7a922b436915e7cdab5bfab7c2882.png"
+      ],
+      "scopeNote": "",
+      "reason": "Do not regenerate these existing bodies solely because the October machine audit requested a rig or complete enemy suite.",
+      "nextEvidenceOrWork": ""
+    },
+    {
+      "id": "projectile:crystal-grenade",
+      "category": "projectiles",
+      "label": "Projectile explosif du Mortar — nom historique CQC crystal-grenade",
+      "episode": "Survive",
+      "historicalPresenceClass": "unresolved",
+      "historicalStatus": "Corps de projectile : référence géométrique insuffisante",
+      "selectedSourceIDs": [],
+      "selectedSourcePaths": [],
+      "existingSourcePaths": [],
+      "scopeNote": "",
+      "reason": "Le Mortar tire depuis son bras une masse cristalline explosive en trajectoire courbe, avec délai avant explosion et possibilité de la repousser. Il s'agit d'une attaque ennemie, pas du Kuban Crystal lure du joueur. Une vidéo dédiée montre le renvoi à la batte ; l'objet mobile apparaît comme une petite lueur rouge allongée sur les storyboards, sans facettes ou contour assez nets pour une source HD fidèle.",
+      "nextEvidenceOrWork": "Une frame non floue du cristal juste avant impact/renvoi, ou un modèle/texture canonique du projectile."
+    }
+  ],
+  "p62Supplement": {
+    "source": "docs/cqc-reprise/pass62/delivery-manifest.json",
+    "id": "acid-ruins-upper",
+    "path": "public/cqc/assets/p62/acid-ruins-upper.png",
+    "workIds": [
+      "stage:acid_ruins"
+    ],
+    "coverage": "Ruins Upper 03B",
+    "remaining": "Forêt AC!D ; aucune clôture automatique du groupe historique."
+  },
+  "proposedSources": [
+    {
+      "id": "acid-lobito-forest",
+      "workIds": [
+        "stage:acid_ruins"
+      ],
+      "game": "acid",
+      "label": "Lobito — forêt",
+      "status": "missing_subscope_reference_required",
+      "basis": "Ruins Lower P61 et Upper 03B P62 existent ; la forêt est explicitement absente.",
+      "referenceGate": "Identifier un secteur forestier et ses captures PSP, puis conserver la végétation et la géométrie visibles."
+    },
+    {
+      "id": "acid-far-exterior",
+      "workIds": [
+        "stage:acid_far"
+      ],
+      "game": "acid",
+      "label": "FAR — approche extérieure",
+      "status": "missing_subscope_reference_required",
+      "basis": "Seule la chambre KODOQUE a une source P61 dans ce groupe.",
+      "referenceGate": "Fixer le secteur d'entrée extérieur exact ; le fond KODOQUE ne vaut pas cette vue."
+    },
+    {
+      "id": "acid-far-teliko-interior",
+      "workIds": [
+        "stage:acid_far"
+      ],
+      "game": "acid",
+      "label": "FAR — intérieur du segment Teliko",
+      "status": "missing_subscope_reference_required",
+      "basis": "Segment Teliko explicitement non couvert P61.",
+      "referenceGate": "Vérifier salle, portes et panneaux sur la séquence PSP, avant projection latérale."
+    },
+    {
+      "id": "mgr-guadalajara-brain-chamber",
+      "workIds": [
+        "stage:mgr_guadalajara"
+      ],
+      "game": "mgr",
+      "label": "R-02 — chambre biologique",
+      "status": "missing_subscope_reference_required",
+      "basis": "Égouts et atelier de service existent ; la chambre biologique est explicitement distincte.",
+      "referenceGate": "Captures de la bonne salle, machines fixées hors plan de combat, éléments mobiles séparés."
+    },
+    {
+      "id": "mgr-guadalajara-grad-arena",
+      "workIds": [
+        "stage:mgr_guadalajara"
+      ],
+      "game": "mgr",
+      "label": "R-02 — arène GRAD",
+      "status": "missing_subscope_reference_required",
+      "basis": "Arène GRAD explicitement non couverte par l'atelier du laboratoire.",
+      "referenceGate": "Vérifier architecture et limites de l'arène sans peindre le GRAD dans le fond."
+    },
+    {
+      "id": "mgr-wm-lobby",
+      "workIds": [
+        "stage:mgr_wm_interior"
+      ],
+      "game": "mgr",
+      "label": "World Marshal — hall",
+      "status": "missing_subscope_reference_required",
+      "basis": "P61 couvre les bureaux du 20e étage uniquement.",
+      "referenceGate": "Référence finale du jeu ; béton, acier et verre cohérents, pas de cyberpunk ajouté."
+    },
+    {
+      "id": "mgr-wm-freight-elevator",
+      "workIds": [
+        "stage:mgr_wm_interior"
+      ],
+      "game": "mgr",
+      "label": "World Marshal — ascenseur de fret",
+      "status": "missing_subscope_reference_required",
+      "basis": "Les ascenseurs sont explicitement exclus du secteur bureau P61.",
+      "referenceGate": "Définir quel ascenseur et quel palier ; ne pas fusionner cabine et cage."
+    },
+    {
+      "id": "mgr-wm-japanese-garden",
+      "workIds": [
+        "stage:mgr_wm_interior"
+      ],
+      "game": "mgr",
+      "label": "World Marshal — jardin japonais",
+      "status": "missing_subscope_reference_required",
+      "basis": "Jardin explicitement absent du secteur bureau P61.",
+      "referenceGate": "Conserver la salle du jeu, son architecture et sa végétation, pas un temple inventé."
+    },
+    {
+      "id": "mgr-pakistan-exterior",
+      "workIds": [
+        "stage:mgr_pakistan_base"
+      ],
+      "game": "mgr",
+      "label": "Pakistan — extérieur de la base R-07",
+      "status": "missing_subscope_reference_required",
+      "basis": "P61 ne couvre que le hangar vide.",
+      "referenceGate": "Fixer l'approche extérieure avant EXCELSUS, distincte de pakistan_wreck."
+    },
+    {
+      "id": "mgr-pakistan-excelsus-apron",
+      "workIds": [
+        "stage:mgr_pakistan_base"
+      ],
+      "game": "mgr",
+      "label": "Pakistan — emprise de l'arène EXCELSUS",
+      "status": "missing_subscope_reference_and_existing_scene_comparison_required",
+      "basis": "La base P61 distingue l'arène EXCELSUS ; le runtime utilise déjà pakistan_wreck pour Armstrong.",
+      "referenceGate": "Comparer le terrain avant/destruction et la source existante pakistan_wreck avant d'admettre une nouvelle source."
+    },
+    {
+      "id": "mgr-vr-dlc-005",
+      "workIds": [
+        "stage:mgr_vr_dlc"
+      ],
+      "game": "mgr",
+      "label": "DL-VR 005 — secteur à identifier",
+      "status": "proposed_number_reference_unverified",
+      "basis": "Le groupe DLC VR reste non décomposé. Le numéro 005 apparaît dans le contexte de la livraison précédente mais aucun fichier n'a été récupéré.",
+      "referenceGate": "Vérifier numéro de mission, capture et géométrie exacte ; ne pas représenter toutes les missions par un seul cube VR."
+    }
+  ],
+  "decompositionRequired": [
+    {
+      "workId": "stage:acid2_prototype",
+      "sourceAlreadyPresent": "acid2-prototype",
+      "required": "Identifier précisément l'étage représenté, puis les trois autres étages avec références séparées.",
+      "warning": "Le marquage plateforme 02 ne prouve pas l'étage 2 ; pas d'IDs de nouveaux étages attribués sans cette vérification."
+    },
+    {
+      "workId": "character:R-ACID-GUARDS",
+      "existingUID": "completion44__saintlogic_guard_44",
+      "required": "Ventiler modèles PSP Genetics/Leone/SaintLogic, couleurs et armes ; ne pas importer tous les personnages de cartes."
+    },
+    {
+      "workId": "character:R-SURVIVE-AVATAR",
+      "existingUID": "archive__captain",
+      "required": "Inventaire modulaire des morphologies, vêtements et équipements ; pas de visage canonique imposé."
+    },
+    {
+      "workId": "character:R-MGR-soldier",
+      "required": "Séparer agents Maverick R-00 en polo bleu et soldats locaux en camouflage/béret ; références corps entier avant génération."
+    },
+    {
+      "workId": "character:R-ACID-DECOY",
+      "existingUID": "completion__flemming_acid",
+      "required": "Identifier la scène du leurre et l'apparence au sac sur la tête ; ne pas confondre identité de l'imposteur et Gary Murray."
+    }
+  ],
+  "expansionCandidatesNotYetAudited": [
+    {
+      "game": "survive",
+      "subject": "Cartes coop de Salvage et Wormhole Digger",
+      "status": "previous_turn_announced_no_recovered_bytes",
+      "required": "Vérifier noms officiels, scènes distinctes et absence de source dans l'ensemble des catalogues avant nouveau workId/génération.",
+      "notIncludedInHistorical33": true
+    },
+    {
+      "game": "acid2",
+      "subject": "Autres secteurs SaintLogic mentionnés dans la dernière continuation",
+      "status": "previous_turn_announced_no_recovered_bytes",
+      "required": "Retrouver la liste et les références natives ; aucun chiffre de fichiers produits déduit du souvenir.",
+      "notIncludedInHistorical33": true
+    }
+  ],
+  "blocked": [
+    {
+      "id": "character:R-MGR-armored",
+      "class": "service_refusal",
+      "retry": false,
+      "reason": "Refus effectif enregistré. Aucun nouvel essai ou renommage de contournement."
+    },
+    {
+      "subject": "REX — The Twin Snakes",
+      "class": "service_refusal_outside_current_four_game_scope",
+      "retry": false,
+      "reason": "Refus antérieur conservé par la bible ; aucun workId inventé dans ce registre et aucune génération demandée ici."
+    },
+    {
+      "id": "character:R-ACID-HAROLD",
+      "class": "documentary_identity",
+      "reason": "Aucun corps spécifique établi."
+    },
+    {
+      "id": "character:R-SURVIVE-harley-warren",
+      "class": "documentary_identity",
+      "reason": "Aucun corps spécifique établi."
+    },
+    {
+      "id": "character:R-SURVIVE-joel-marton",
+      "class": "documentary_identity",
+      "reason": "Aucun corps spécifique établi."
+    },
+    {
+      "id": "projectile:crystal-grenade",
+      "class": "geometry_reference_insufficient",
+      "reason": "Projectile du Mortar, différent du leurre Kuban du joueur ; modèle/capture nette nécessaire."
+    }
+  ],
+  "recoveryAudit": {
+    "date": "2026-11-26",
+    "bytesRecoveredForPreviousNov25Continuation": 0,
+    "checks": [
+      "Inventaire accessible récursif créé après 2026-11-25 : aucun élément.",
+      "Recherche CQC/Survive/Acid/Rising après 2026-11-24 : aucun résultat.",
+      "Recherche simplifiée et dossier /MGS Codec Simulator : anciens résultats, plus récents visibles au 22 septembre.",
+      "Inventaire global récent : dernière modification au 24 novembre (site Nexus), puis 19 novembre ; aucun lot CQC récent identifié."
+    ],
+    "interpretation": "Absence de récupération dans les vues inspectées, sans établir une perte définitive. Les images annoncées dans une conversation ne sont pas comptées comme PNG présents au head."
+  },
+  "runtimeIntegration": {
+    "registry": "public/cqc/src/cqc-pass26-stage-registry.js",
+    "currentReviewedCatalogue": "public/cqc/src/cqc-pass18-stage-catalog.js",
+    "titleIDs": [
+      "acid",
+      "acid2",
+      "mgr",
+      "survive"
+    ],
+    "admissionRequirements": [
+      "approved === true",
+      "review.status === 'accepted_closest'",
+      "ID stable et non ambigu",
+      "legacyVisualDefinition de la bonne édition",
+      "validation des couches sans erreur",
+      "ressources chargeables",
+      "revue de composition en jeu"
+    ],
+    "separation": "Les sources fixes P61/P62 et les futurs PNG candidats ne deviennent pas automatiquement des stages jouables. Préparer un atlas/contrat et un binding réel puis vérifier le composite et les points d'appui.",
+    "existingSourcesToPreserve": [
+      {
+        "id": "p18_acid_lobito_entrepot",
+        "name": "Lobito — entrepôt BRC-026",
+        "targetCoreIDs": [
+          "acid-lobito-entrepot"
+        ],
+        "absolute1to1Certified": false
+      },
+      {
+        "id": "p18_acid_lobito_passerelle",
+        "name": "Lobito — pont-levis",
+        "targetCoreIDs": [
+          "acid-lobito-passerelle"
+        ],
+        "absolute1to1Certified": false
+      },
+      {
+        "id": "p18_acid_tour_ebro_salle",
+        "name": "Ebro Tower — salle de l’usine",
+        "targetCoreIDs": [
+          "acid-tour-ebro-salle"
+        ],
+        "absolute1to1Certified": false
+      },
+      {
+        "id": "p18_acid2_saintlogic_installation",
+        "name": "SaintLogic — installation",
+        "targetCoreIDs": [
+          "acid2-saintlogic-installation"
+        ],
+        "absolute1to1Certified": false
+      },
+      {
+        "id": "p18_acid2_saintlogic_passerelle",
+        "name": "SaintLogic — passerelle de sécurité",
+        "targetCoreIDs": [
+          "acid2-saintlogic-passerelle"
+        ],
+        "absolute1to1Certified": false
+      },
+      {
+        "id": "p18_mgr_abkhazie_carriere_khamsin",
+        "name": "Abkhazie — aire urbaine Khamsin",
+        "targetCoreIDs": [
+          "mgr-abkhazie-carriere-khamsin"
+        ],
+        "absolute1to1Certified": false
+      },
+      {
+        "id": "p18_mgr_abkhazie_cour_desperado",
+        "name": "Abkhazie — cour occupée par Desperado",
+        "targetCoreIDs": [
+          "mgr-abkhazie-cour-desperado"
+        ],
+        "absolute1to1Certified": false
+      },
+      {
+        "id": "p18_mgr_abkhazie_installation_industrielle",
+        "name": "Abkhazie — raffinerie de Mistral",
+        "targetCoreIDs": [
+          "mgr-abkhazie-installation-industrielle"
+        ],
+        "absolute1to1Certified": false
+      },
+      {
+        "id": "p18_mgr_badlands_duel_sam",
+        "name": "Badlands — duel Jetstream Sam",
+        "targetCoreIDs": [
+          "mgr-badlands-duel-sam"
+        ],
+        "absolute1to1Certified": false
+      },
+      {
+        "id": "p18_mgr_denver_avenue",
+        "name": "Denver — avenue R03",
+        "targetCoreIDs": [
+          "mgr-denver-avenue"
+        ],
+        "absolute1to1Certified": false
+      },
+      {
+        "id": "p18_mgr_world_marshal_esplanade",
+        "name": "World Marshal — esplanade sous la pluie",
+        "targetCoreIDs": [
+          "mgr-world-marshal-esplanade"
+        ],
+        "absolute1to1Certified": false
+      },
+      {
+        "id": "p18_survive_dite_camp_de_base",
+        "name": "Dite — camp de base",
+        "targetCoreIDs": [
+          "survive-dite-camp-de-base"
+        ],
+        "absolute1to1Certified": false
+      },
+      {
+        "id": "p18_survive_dite_zone_de_poussiere",
+        "name": "Dite — poussière / ruines industrielles",
+        "targetCoreIDs": [
+          "survive-dite-zone-de-poussiere"
+        ],
+        "absolute1to1Certified": false
+      }
+    ]
+  }
+}
+

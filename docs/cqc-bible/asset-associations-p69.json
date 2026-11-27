@@ -1,0 +1,1748 @@
+{
+  "schema": "cqc.bible.asset-associations-p69.v1",
+  "asOf": "2026-11-26",
+  "parentCommit": "764ba74e7650b3f744899636cfabc2683c960bfe",
+  "previousSelected": 259,
+  "counts": {
+    "selectedSources": 8,
+    "archivedAttempts": 0,
+    "generatedPNGs": 8,
+    "generationRequests": 9,
+    "blockedRequests": 1,
+    "previousSelected": 259,
+    "totalSelected": 267,
+    "previousArchivedAttempts": 20,
+    "totalArchivedAttempts": 20,
+    "atlasSources": 90,
+    "editionCount": 3,
+    "byEpisode": {
+      "acid2": 3,
+      "survive": 3,
+      "mgr": 2
+    },
+    "byKind": {
+      "character": 4,
+      "prop": 4
+    },
+    "byBodyCoverage": {
+      "full_body": 3,
+      "full_object": 4,
+      "portrait": 1
+    },
+    "allPassesByKind": {
+      "character": 54,
+      "costume": 9,
+      "machine": 49,
+      "stage": 133,
+      "vfx": 1,
+      "prop": 19,
+      "projectile": 2
+    },
+    "selectedBytes": 7880823,
+    "archivedBytes": 0,
+    "combatAdmissions": 0,
+    "absolute1to1Certifications": 0,
+    "newNarrativeImages": 0,
+    "closedScopes": 0
+  },
+  "historicalRows": 277,
+  "historicalUnmatchedRows": 97,
+  "historicalRowsWithoutSelectedCandidate": 75,
+  "historicalCountsMeaning": "Les statuts P61 sont conservés. Après P69, 75 lignes historiques restent sans candidat sélectionné ; un portrait peut être un premier candidat documentaire sans fournir de corps complet. Aucun groupe fermé.",
+  "extensionScopes": [
+    "prop:mgr_mistral_collar_concept",
+    "prop:survive_air_shock_cannon",
+    "prop:survive_sledgehammer_gold",
+    "prop:survive_survival_spear_gold"
+  ],
+  "historicalScopeUpdates": [
+    "character:R-ACID-GUARDS",
+    "character:R-MGR-soldier"
+  ],
+  "inherits": [
+    "docs/cqc-bible/asset-associations.json",
+    "docs/cqc-bible/asset-associations-p63.json",
+    "docs/cqc-bible/asset-associations-p64.json",
+    "docs/cqc-bible/asset-associations-p65.json",
+    "docs/cqc-bible/asset-associations-p66.json",
+    "docs/cqc-bible/asset-associations-p67.json",
+    "docs/cqc-bible/asset-associations-p68.json"
+  ],
+  "interpretation": "Sources PNG fixes consultables dans l’Atlas, avec limites natives/concepts/portraits explicites. Les animations et interactions décrites sont du travail prévu ; aucune nouvelle admission au combat ou certification 1:1.",
+  "requirementsGuide": "docs/cqc-bible/guide-map.json",
+  "assets": [
+    {
+      "path": "public/cqc/assets/p69/acid2-flamethrower-soldier.png",
+      "bytes": 700911,
+      "sha256": "d5bdc7f85fd0e8727f4b18238aee9a1a3ff9a6a268ea3263a037a7fc9cb0f659",
+      "gitBlobSha": "2cb10ce43365beda681073f782e3ebb4ea67f3a7",
+      "width": 1312,
+      "height": 1199,
+      "colorMode": "RGBA",
+      "bitDepth": 8,
+      "colorType": 6,
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        41,
+        6,
+        1260,
+        1199
+      ],
+      "visibleAlphaBounds": [
+        280,
+        11,
+        1033,
+        1188
+      ],
+      "transparentPixels": 1108115,
+      "opaquePixels": 207,
+      "nearOpaquePixels240to255": 440442,
+      "weakFringePixels1to8": 14587,
+      "modalPositiveAlpha": 253,
+      "id": "acid2-flamethrower-soldier",
+      "label": "AC!D 2 — soldat lance-flammes, vue de face oblique",
+      "episode": "Metal Gear AC!D 2",
+      "episodeKey": "acid2",
+      "kind": "character",
+      "bodyCoverage": "full_body",
+      "edition": "PSP — vues du jeu publiées par un tiers",
+      "passId": "P69",
+      "workIds": [
+        "character:R-ACID-GUARDS"
+      ],
+      "scope": "Un soldat lance-flammes AC!D 2, corps complet en vue frontale oblique, avec équipement porté. Une seule variante et une seule pose.",
+      "scopeClosed": false,
+      "referenceURLs": [
+        "https://www.imfdb.org/wiki/Metal_Gear_Ac%21d_2",
+        "https://www.imfdb.org/images/f/fd/MgAc%21d2enemyflamethrower.jpg"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass69/research/acid/references/acid2-native-flamethrower-soldier.jpg"
+      ],
+      "referenceMetadata": [
+        {
+          "path": "docs/cqc-reprise/pass69/research/acid/references/acid2-native-flamethrower-soldier.jpg",
+          "bytes": 114105,
+          "sha256": "34bdc0ea8d5c3445f02e1f74c93e695dd1a145c0c637ba68320cf00dfeda72cd",
+          "gitBlobSha": "8023f81c57cc8d4592747c5217c185e4378d2a04"
+        }
+      ],
+      "qaNotes": [
+        "La capture native de référence mesure seulement 360×461 pixels et comporte deux vues du même type ennemi ; seule la vue frontale oblique est produite.",
+        "Silhouette entière, tenue rouge/noire, masque pâle, deux bonbonnes, tuyau et lance repris. Les petits raccords, le harnais, le masque et la forme fine de la buse sont reconstruits ; aucune dimension métrique ni vue cachée n’est validée.",
+        "Pose et cadrage obliques conservés dans un rendu polygonal propre ; ce n’est pas un sprite latéral prêt au combat.",
+        "Un seul soldat, pieds et équipement complets ; aucune flamme, attaque ou séquence animée.",
+        "PNG RGBA brut ; alpha réel 0–255, corps majoritairement alpha 253, faible frange alpha 1–8 documentée. Aucune retouche de pixels ou mise à l’échelle."
+      ],
+      "transparentBackground": true,
+      "sourceGenerated": true,
+      "selected": true,
+      "selectedVersion": "v1",
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "fidelityStatus": "pending_external_review",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "promptId": "acid2-flamethrower-soldier",
+        "exactPrompt": "Create one individual transparent-background PNG source asset for the CQC Metal Gear Atlas. Use the attached native game reference as the visual authority. Exactly ONE subject, full body from head through both complete boots, with a small transparent margin. No contact sheet, second pose, text, HUD, card interface, environment, floor, stand, shadow, muzzle flash, fire, injury, or extra character. Preserve the source game's bold cel-shaded shapes, proportions, recognizable equipment silhouette and colors. Clean higher-resolution edges and readable shapes, restrained surface detail, no photorealism, no new decorative technology. Do not modernize or redesign. This is a static reference-based illustration, not a claim of exact native pixels.\nSubject: the red-and-black flamethrower soldier in Metal Gear AC!D 2 PSP. The reference image contains two views of the SAME enemy: use only the full front-facing figure on the upper right as the pose/camera anchor, and the lower-left rear view only to understand its already visible backpack. Keep the elevated three-quarter front camera, slightly bent knees and the long narrow nozzle held down diagonally across the body as in the upper-right figure. Preserve the scarlet sleeves and trousers, black harness/torso panels, dark gloves and boots, pale gray enclosed helmet/mask with the blank pale face area, and the pair of light gray vertical cylindrical canisters strapped on the back. Keep the broad simple low-polygon game forms. Show only the one entire soldier and its attached carried equipment. Do not add flames, smoke, extra valves or intricate technical internals.",
+        "promptFile": "docs/cqc-reprise/pass69/research/acid/prompts/acid2-flamethrower-soldier.txt",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass69/research/acid/references/acid2-native-flamethrower-soldier.jpg"
+        ],
+        "referenced_image_paths": [
+          "/workspace/scratch/f62c7b61a198/shadow-codec-p68/docs/cqc-reprise/pass69/research/acid/references/acid2-native-flamethrower-soldier.jpg"
+        ],
+        "transparent_background": true,
+        "num_last_images_to_include": null,
+        "outputSourcePath": "/workspace/scratch/f62c7b61a198/generated_images/exec-bdbe7c28-325e-4343-88b4-c96bafeab2ea.png",
+        "postprocessing": "none; exact original PNG copied byte-for-byte"
+      },
+      "nextWork": [
+        "Obtenir des captures plus grandes face/dos/profil pour vérifier masque, bonbonnes, raccords et proportions.",
+        "Produire les poses latérales et états d’action/attente/marche seulement à partir de nouvelles preuves.",
+        "Définir pivots, cadrage, collisions et interactions avant toute admission au combat."
+      ],
+      "visualReviewedBy": "/root/p69_acid",
+      "atlasIntegrated": true,
+      "pass": "P69",
+      "assetId": "asset:p69:acid2-flamethrower-soldier",
+      "reviewRecords": [
+        "docs/cqc-reprise/pass69/reviewed-batch.json"
+      ],
+      "guideSections": [
+        "02",
+        "03",
+        "04",
+        "16",
+        "17",
+        "18",
+        "25",
+        "26",
+        "27",
+        "29"
+      ],
+      "runtimeBinding": {
+        "status": "atlas_only",
+        "moduleKey": "atlas63",
+        "catalogPath": "public/cqc/data/cqc-p63-source-atlas.json",
+        "admittedByThisPass": false
+      },
+      "bibleURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/docs/cqc-bible/CONTINUATION_P69.md#acid2-flamethrower-soldier",
+      "blobURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/public/cqc/assets/p69/acid2-flamethrower-soldier.png",
+      "manifest": "docs/cqc-reprise/pass69/delivery-manifest.json",
+      "bibleDocuments": [
+        "docs/cqc-bible/CONTINUATION_P69.md",
+        "docs/cqc-bible/ASSOCIATIONS.md",
+        "docs/cqc-bible/COMBAT.md",
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md"
+      ],
+      "promptRecord": "docs/cqc-reprise/pass69/prompt-index.json#acid2-flamethrower-soldier",
+      "productionPlan": {
+        "status": "documented_future_work_not_generated_or_implemented",
+        "classification": "proposition_CQC_a_valider_par_references_natives",
+        "framesGeneratedByP69": 1,
+        "animationClipsGeneratedByP69": 0,
+        "frameTimings": "Les durées, fenêtres et vitesses restent à mesurer sur des séquences natives puis à équilibrer dans CQC. Aucun nombre de frames canonique n’est déduit du PNG.",
+        "camera": "La vue livrée reste celle de sa référence. Une vue de profil, une orientation opposée ou une rotation demande une référence et une source distinctes.",
+        "acceptance": [
+          "Conserver l’édition, l’incarnation, la couverture et le statut natif ou conceptuel indiqués.",
+          "Valider ancrage et volumes séparément de la marge transparente.",
+          "Vérifier pause, interruption et fin de manche avant toute admission au jeu."
+        ],
+        "role": "Variante ennemie AC!D 2 en combinaison rouge, équipée du dispositif dorsal visible. Cette source montre une pose entière oblique ; elle ne fournit ni cycle de déplacement ni attaque. La petite capture native permet de qualifier la silhouette générale, mais pas chaque attache et détail du costume.",
+        "states": [
+          {
+            "name": "Pose de référence et attente",
+            "description": "Fixer l’appui des deux bottes et l’axe du buste sans transformer la perspective plongeante en profil latéral. Une animation d’attente devra conserver le masque, les bonbonnes et la continuité du tuyau ; les déplacements secondaires ne sont pas fournis par ce PNG."
+          },
+          {
+            "name": "Patrouille et orientation",
+            "description": "Rechercher une séquence du même ennemi pour départ, marche, arrêt et pivot. Distinguer les positions des mains, du dispositif tenu et de la charge dorsale ; un simple miroir peut inverser les liaisons et ne constitue pas une nouvelle vue validée."
+          },
+          {
+            "name": "Action et récupération à documenter",
+            "description": "Isoler préparation, émission éventuelle de l’effet visuel et retour à la garde depuis une séquence native. Les effets doivent être séparés du personnage, avec origine et durée vérifiées ; le PNG ne fixe ni portée, ni dégâts, ni consommation."
+          },
+          {
+            "name": "Réaction et sortie de scène",
+            "description": "Prévoir réaction courte, interruption, déséquilibre et état de sortie compatibles avec la silhouette équipée. Les pièces dorsales et le tuyau doivent rester cohérents avec le corps ; aucun détachement ni comportement explosif n’est déduit de leur apparence."
+          }
+        ],
+        "interactions": [
+          "Établir des volumes distincts pour le corps et l’encombrement visible de l’équipement ; les zones de contact se définissent dans le moteur.",
+          "Vérifier garde, projection, passage derrière une cible et changements d’orientation sans traversée du tuyau ou du dispositif dorsal.",
+          "Séparer effets, son et réactions de cible de la source du personnage afin de pouvoir interrompre l’action proprement.",
+          "Conserver la famille AC!D 2 ; cette tenue ne couvre aucune variante AC!D 1 ni une animation héritée d’un autre opus."
+        ],
+        "separateAssetsNeeded": [
+          "Vues latérales et arrière natives",
+          "Cycle de patrouille",
+          "Pivots et actions sourcés",
+          "Effets séparés",
+          "Réactions et état de sortie"
+        ]
+      }
+    },
+    {
+      "path": "public/cqc/assets/p69/acid2-shield-guard.png",
+      "bytes": 1179145,
+      "sha256": "fbfb047ebcc5bcd0df5bae920f3887887b9cb81a85704a75440ea3bc998d429b",
+      "gitBlobSha": "a7dfc66259c6ac66c93623cb101221c0bf2726c3",
+      "width": 1229,
+      "height": 1280,
+      "colorMode": "RGBA",
+      "bitDepth": 8,
+      "colorType": 6,
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        0,
+        9,
+        1151,
+        1280
+      ],
+      "visibleAlphaBounds": [
+        84,
+        11,
+        1149,
+        1279
+      ],
+      "transparentPixels": 824013,
+      "opaquePixels": 867,
+      "nearOpaquePixels240to255": 721799,
+      "weakFringePixels1to8": 16237,
+      "modalPositiveAlpha": 253,
+      "id": "acid2-shield-guard",
+      "label": "AC!D 2 — garde au bouclier et béret rouge",
+      "episode": "Metal Gear AC!D 2",
+      "episodeKey": "acid2",
+      "kind": "character",
+      "bodyCoverage": "full_body",
+      "edition": "PSP — vues du jeu publiées par un tiers",
+      "passId": "P69",
+      "workIds": [
+        "character:R-ACID-GUARDS"
+      ],
+      "scope": "Un garde SaintLogic AC!D 2 équipé du bouclier et du pistolet, corps complet en posture oblique issue du jeu.",
+      "scopeClosed": false,
+      "referenceURLs": [
+        "https://www.imfdb.org/wiki/Metal_Gear_Ac%21d_2",
+        "https://www.imfdb.org/images/7/75/MetalGearAc%21d2USPShield.jpg",
+        "https://www.creativeuncut.com/gallery-11/mga2-soldier-concept2.html",
+        "https://www.creativeuncut.com/gallery-11/art/mga2-soldier-concept2.jpg"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass69/research/acid/references/acid2-native-shield-guard.jpg",
+        "docs/cqc-reprise/pass69/research/acid/references/mga2-soldier-concept2.jpg"
+      ],
+      "referenceMetadata": [
+        {
+          "path": "docs/cqc-reprise/pass69/research/acid/references/acid2-native-shield-guard.jpg",
+          "bytes": 196207,
+          "sha256": "7254c214baa25f5ef4326b4e2c3c19a00c48c9bb37d5aea6bb5bc0e17455423c",
+          "gitBlobSha": "9baa2f12379c2c23d6f5cfdca51926c07a489969"
+        },
+        {
+          "path": "docs/cqc-reprise/pass69/research/acid/references/mga2-soldier-concept2.jpg",
+          "bytes": 74388,
+          "sha256": "502422caf30769fb93c346fbba8488967bdeb2cadbe59f3e06002d5d5f95dba8",
+          "gitBlobSha": "f5fc11992a5ca000bd69fcb1e8ee740f6ac3d009"
+        }
+      ],
+      "qaNotes": [
+        "Le garde porteur du bouclier dans la capture native est le sujet principal. CONCEPT2 précise l’uniforme ; la variante CONCEPT2 sans équipement existait déjà en P50 et n’est pas remplacée.",
+        "Pose accroupie/oblique, béret rouge, gilet brun-orangé, uniforme anthracite, pistolet et bouclier distincts du garde historique sans bouclier.",
+        "Le flash de la capture masquait une partie du bouclier. Cette surface, le visage, certaines poches et l’arme sont reconstruits ; largeur/épaisseur du bouclier, poignée arrière et exactitude mécanique non certifiées.",
+        "Une seule pose fixe sans tir, flash, HUD ni autre personnage. Le pied inférieur possède une marge très faible ; prévoir un cadrage moteur distinct avant admission.",
+        "PNG RGBA brut ; alpha réel 0–255, corps majoritairement alpha 253, faible frange alpha 1–8 documentée. Aucune retouche de pixels ou mise à l’échelle."
+      ],
+      "transparentBackground": true,
+      "sourceGenerated": true,
+      "selected": true,
+      "selectedVersion": "v1",
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "fidelityStatus": "pending_external_review",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "promptId": "acid2-shield-guard",
+        "exactPrompt": "Create one individual transparent-background PNG source asset for the CQC Metal Gear Atlas. Use the attached native game reference as the visual authority. Exactly ONE subject, full body from head through both complete boots, with a small transparent margin. No contact sheet, second pose, text, HUD, card interface, environment, floor, stand, shadow, muzzle flash, fire, injury, or extra character. Preserve the source game's bold cel-shaded shapes, proportions, recognizable equipment silhouette and colors. Clean higher-resolution edges and readable shapes, restrained surface detail, no photorealism, no new decorative technology. Do not modernize or redesign. This is a static reference-based illustration, not a claim of exact native pixels.\nSubject: the red-beret SaintLogic shield guard on the LEFT of the native Metal Gear AC!D 2 PSP screenshot. Preserve this particular elevated three-quarter front-left view, bent-knee stance, orange-brown sleeveless vest and pouches over charcoal uniform, dark gloves and boots, red beret, exposed light adult face, and tall dark gray slightly curved rectangular shield with chamfered corners. He carries the shield in his left arm and holds the compact dark pistol in his right hand. Remove the flash and continue only the adjacent plain shield surface under it; there must be no shot, flash, tracer or impact. The second reference is official concept art of the unmasked AC!D 2 uniform, used only to clarify garments and pouch colors. The gameplay screenshot controls the shield, posture, held pistol and camera. Retain only this one shield-bearing guard and attached equipment; remove Snake on the right, every UI element and all environment. Keep full boots and complete shield visible; do not change the guard into the masked or high-tech variant.",
+        "promptFile": "docs/cqc-reprise/pass69/research/acid/prompts/acid2-shield-guard.txt",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass69/research/acid/references/acid2-native-shield-guard.jpg",
+          "docs/cqc-reprise/pass69/research/acid/references/mga2-soldier-concept2.jpg"
+        ],
+        "referenced_image_paths": [
+          "/workspace/scratch/f62c7b61a198/shadow-codec-p68/docs/cqc-reprise/pass69/research/acid/references/acid2-native-shield-guard.jpg",
+          "/workspace/scratch/f62c7b61a198/shadow-codec-p68/docs/cqc-reprise/pass69/research/acid/references/mga2-soldier-concept2.jpg"
+        ],
+        "transparent_background": true,
+        "num_last_images_to_include": null,
+        "outputSourcePath": "/workspace/scratch/f62c7b61a198/generated_images/exec-ace90fb0-5bd5-4023-b517-bf5ac2d94218.png",
+        "postprocessing": "none; exact original PNG copied byte-for-byte"
+      },
+      "nextWork": [
+        "Obtenir une vue du bouclier sans flash et de son dos/sa poignée.",
+        "Vérifier les états garde, déplacement, abaissement et impact séparément ; aucune animation livrée.",
+        "Distinguer le personnage, son bouclier détachable et les effets éventuels dans un futur contrat moteur."
+      ],
+      "visualReviewedBy": "/root/p69_acid",
+      "atlasIntegrated": true,
+      "pass": "P69",
+      "assetId": "asset:p69:acid2-shield-guard",
+      "reviewRecords": [
+        "docs/cqc-reprise/pass69/reviewed-batch.json"
+      ],
+      "guideSections": [
+        "02",
+        "03",
+        "04",
+        "16",
+        "17",
+        "18",
+        "25",
+        "26",
+        "27",
+        "29"
+      ],
+      "runtimeBinding": {
+        "status": "atlas_only",
+        "moduleKey": "atlas63",
+        "catalogPath": "public/cqc/data/cqc-p63-source-atlas.json",
+        "admittedByThisPass": false
+      },
+      "bibleURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/docs/cqc-bible/CONTINUATION_P69.md#acid2-shield-guard",
+      "blobURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/public/cqc/assets/p69/acid2-shield-guard.png",
+      "manifest": "docs/cqc-reprise/pass69/delivery-manifest.json",
+      "bibleDocuments": [
+        "docs/cqc-bible/CONTINUATION_P69.md",
+        "docs/cqc-bible/ASSOCIATIONS.md",
+        "docs/cqc-bible/COMBAT.md",
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md"
+      ],
+      "promptRecord": "docs/cqc-reprise/pass69/prompt-index.json#acid2-shield-guard",
+      "productionPlan": {
+        "status": "documented_future_work_not_generated_or_implemented",
+        "classification": "proposition_CQC_a_valider_par_references_natives",
+        "framesGeneratedByP69": 1,
+        "animationClipsGeneratedByP69": 0,
+        "frameTimings": "Les durées, fenêtres et vitesses restent à mesurer sur des séquences natives puis à équilibrer dans CQC. Aucun nombre de frames canonique n’est déduit du PNG.",
+        "camera": "La vue livrée reste celle de sa référence. Une vue de profil, une orientation opposée ou une rotation demande une référence et une source distinctes.",
+        "acceptance": [
+          "Conserver l’édition, l’incarnation, la couverture et le statut natif ou conceptuel indiqués.",
+          "Valider ancrage et volumes séparément de la marge transparente.",
+          "Vérifier pause, interruption et fin de manche avant toute admission au jeu."
+        ],
+        "role": "Variante de garde AC!D 2 au béret rouge, équipée d’un bouclier et d’un objet tenu. La nouvelle source représente cet équipement dans une pose native oblique. Le bouclier, le visage et le bras partiellement couverts par les éléments d’interface restent des reconstructions à comparer à d’autres vues.",
+        "states": [
+          {
+            "name": "Garde équipée",
+            "description": "Définir un ancrage au sol et conserver l’angle du bouclier par rapport au torse. L’objet protecteur doit rester une couche ou un élément identifié séparément pour les futures animations ; sa taille affichée ne suffit pas à fixer une zone de protection."
+          },
+          {
+            "name": "Avancée, recul et pivot",
+            "description": "Documenter des pas compatibles avec l’équipement, sans faire glisser la botte avancée. Prévoir les changements de direction en conservant la latéralité des mains ; les faces interne et arrière du bouclier demandent d’autres références."
+          },
+          {
+            "name": "Protection et réaction",
+            "description": "Si un comportement de garde est retenu dans CQC, produire anticipation, contact, recul et reprise. La possibilité de contourner, interrompre ou briser cette garde est une décision à valider ; aucune invulnérabilité ou résistance chiffrée n’est attestée ici."
+          },
+          {
+            "name": "Action puis retour à la garde",
+            "description": "Qualifier le mouvement du bras et le dégagement du bouclier à partir d’une séquence du jeu. Les éclats, effets et projectiles éventuels doivent être des assets distincts ; le flash de la capture n’est pas intégré au PNG de référence."
+          }
+        ],
+        "interactions": [
+          "Tester l’occlusion du bras et du visage derrière le bouclier dans les deux orientations, avec caméra CQC définitive.",
+          "Définir séparément volumes corporels, protection et éventuels contacts du bouclier ; éviter une collision unique sur toute l’image.",
+          "Valider interruption, chute et fin de manche pour éviter un bouclier orphelin ou une protection persistante.",
+          "Conserver l’association au loadout observé, sans compter cette image comme un nouveau personnage nommé ou une famille entièrement terminée."
+        ],
+        "separateAssetsNeeded": [
+          "Face interne du bouclier",
+          "Vues opposées sourcées",
+          "Déplacement équipé",
+          "Réactions à la garde",
+          "Actions et effets séparés"
+        ]
+      }
+    },
+    {
+      "path": "public/cqc/assets/p69/acid2-high-tech-soldier.png",
+      "bytes": 1323895,
+      "sha256": "50978a94fd98fae0df9b39c1430d057f102ed1ab33dd83ec3a9baf8049e39336",
+      "gitBlobSha": "9b6f09b722da0adf9e7c8ff20bc45c97ed281b66",
+      "width": 887,
+      "height": 1774,
+      "colorMode": "RGBA",
+      "bitDepth": 8,
+      "colorType": 6,
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        0,
+        5,
+        887,
+        1774
+      ],
+      "visibleAlphaBounds": [
+        52,
+        12,
+        839,
+        1764
+      ],
+      "transparentPixels": 713911,
+      "opaquePixels": 577,
+      "nearOpaquePixels240to255": 822275,
+      "weakFringePixels1to8": 25095,
+      "modalPositiveAlpha": 253,
+      "id": "acid2-high-tech-soldier",
+      "label": "AC!D 2 — soldat Hi-Tech, uniforme complet",
+      "episode": "Metal Gear AC!D 2",
+      "episodeKey": "acid2",
+      "kind": "character",
+      "bodyCoverage": "full_body",
+      "edition": "PSP — concept officiel CONCEPT3 ; partie supérieure corroborée en jeu",
+      "passId": "P69",
+      "workIds": [
+        "character:R-ACID-GUARDS"
+      ],
+      "scope": "Soldat Hi-Tech AC!D 2, corps complet de CONCEPT3 en pose frontale, identité visuelle supérieure corroborée par une capture native.",
+      "scopeClosed": false,
+      "referenceURLs": [
+        "https://www.creativeuncut.com/gallery-11/mga2-soldier-concept3.html",
+        "https://www.creativeuncut.com/gallery-11/art/mga2-soldier-concept3.jpg",
+        "https://www.imfdb.org/wiki/Metal_Gear_Ac%21d_2",
+        "https://www.imfdb.org/images/0/03/MetalGearAc%21d2P90Guard.jpg"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass69/research/acid/references/mga2-soldier-concept3.jpg",
+        "docs/cqc-reprise/pass69/research/acid/references/acid2-native-high-tech-p90.jpg"
+      ],
+      "referenceMetadata": [
+        {
+          "path": "docs/cqc-reprise/pass69/research/acid/references/mga2-soldier-concept3.jpg",
+          "bytes": 82891,
+          "sha256": "8ad9aa349b7151f54e77c81bacbf84a66a62002b9265e1d1dfd6b53fcdf06494",
+          "gitBlobSha": "8edae466573712b142de98c5efca61cf929076ba"
+        },
+        {
+          "path": "docs/cqc-reprise/pass69/research/acid/references/acid2-native-high-tech-p90.jpg",
+          "bytes": 154772,
+          "sha256": "390d6c436a062e6ce581685b8b35369d90cbb2476eaa6e6ec182730a0f9f8005",
+          "gitBlobSha": "f62c062ed0e511b05224468c1ae460fe51c949a3"
+        }
+      ],
+      "qaNotes": [
+        "Source principale : planche officielle Hi-Tech CONCEPT3 hébergée par Creative Uncut ; pose frontale avec les mains baissées.",
+        "La capture du soldat P90 corrobore casque clair, visière rouge, col vert, armure et poches ; elle coupe le bas des jambes. Les jambes du PNG viennent du concept complet, pas d’une capture PSP intégrale.",
+        "Silhouette, couleurs et grandes pièces du concept conservées. Motif exact du camouflage, coutures, visage sous la visière et épaisseurs reconstruits ; équivalence complète avec le modèle commercial non certifiée.",
+        "Aucune arme tenue n’a été ajoutée. Ce PNG ne livre ni la pose P90, ni une animation, ni une nouvelle admission au combat.",
+        "PNG RGBA brut ; alpha réel 0–255, corps majoritairement alpha 253, faible frange alpha 1–8 documentée. Aucune retouche de pixels ou mise à l’échelle."
+      ],
+      "transparentBackground": true,
+      "sourceGenerated": true,
+      "selected": true,
+      "selectedVersion": "v1",
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "fidelityStatus": "pending_external_review",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "promptId": "acid2-high-tech-soldier",
+        "exactPrompt": "Create one individual transparent-background PNG source asset for the CQC Metal Gear Atlas. Use the attached native game reference as the visual authority. Exactly ONE subject, full body from head through both complete boots, with a small transparent margin. No contact sheet, second pose, text, HUD, card interface, environment, floor, stand, shadow, muzzle flash, fire, injury, or extra character. Preserve the source game's bold cel-shaded shapes, proportions, recognizable equipment silhouette and colors. Clean higher-resolution edges and readable shapes, restrained surface detail, no photorealism, no new decorative technology. Do not modernize or redesign. This is a static reference-based illustration, not a claim of exact native pixels.\nSubject: the Hi-Tech Soldier from Metal Gear AC!D 2 PSP. Use the full-body official concept sheet as the PRIMARY silhouette and exact frontal standing pose: a bulky man, pale gray/ivory mottled helmet and plate armor, broad shoulders, tall dark green padded collar, red-tinted full face visor, small red indicator on the side of the helmet, green camouflage sleeves and trousers, black gloves/straps, two dark red chest pouches, pale gray belly protection and green boots with dark soles. The native gameplay screenshot of the P90 soldier is a SECONDARY corroborating reference only for the helmet, red visor, collar and colors. Do NOT copy the screenshot's raised weapon pose or Venus in the background, because the primary full-body sheet shows the arms down. Match the primary concept's hand, boot, sleeve and trouser positions. The result must be one entire standing Hi-Tech Soldier with NO hand-held weapon, no new helmet fins, no modernized armor panels and no invented logos.",
+        "promptFile": "docs/cqc-reprise/pass69/research/acid/prompts/acid2-high-tech-soldier.txt",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass69/research/acid/references/mga2-soldier-concept3.jpg",
+          "docs/cqc-reprise/pass69/research/acid/references/acid2-native-high-tech-p90.jpg"
+        ],
+        "referenced_image_paths": [
+          "/workspace/scratch/f62c7b61a198/shadow-codec-p68/docs/cqc-reprise/pass69/research/acid/references/mga2-soldier-concept3.jpg",
+          "/workspace/scratch/f62c7b61a198/shadow-codec-p68/docs/cqc-reprise/pass69/research/acid/references/acid2-native-high-tech-p90.jpg"
+        ],
+        "transparent_background": true,
+        "num_last_images_to_include": null,
+        "outputSourcePath": "/workspace/scratch/f62c7b61a198/generated_images/exec-937f4bae-224e-4fcc-82cf-ae3a7bb3e1f4.png",
+        "postprocessing": "none; exact original PNG copied byte-for-byte"
+      },
+      "nextWork": [
+        "Rapprocher le concept de vues complètes du modèle PSP et confirmer les variantes de camouflage/équipement.",
+        "Documenter séparément la pose équipée P90 et les états de déplacement.",
+        "Définir cadrage, pivots et interaction moteur sans transformer le concept en certification 1:1."
+      ],
+      "visualReviewedBy": "/root/p69_acid",
+      "atlasIntegrated": true,
+      "pass": "P69",
+      "assetId": "asset:p69:acid2-high-tech-soldier",
+      "reviewRecords": [
+        "docs/cqc-reprise/pass69/reviewed-batch.json"
+      ],
+      "guideSections": [
+        "02",
+        "03",
+        "04",
+        "16",
+        "17",
+        "18",
+        "25",
+        "26",
+        "27",
+        "29"
+      ],
+      "runtimeBinding": {
+        "status": "atlas_only",
+        "moduleKey": "atlas63",
+        "catalogPath": "public/cqc/data/cqc-p63-source-atlas.json",
+        "admittedByThisPass": false
+      },
+      "bibleURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/docs/cqc-bible/CONTINUATION_P69.md#acid2-high-tech-soldier",
+      "blobURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/public/cqc/assets/p69/acid2-high-tech-soldier.png",
+      "manifest": "docs/cqc-reprise/pass69/delivery-manifest.json",
+      "bibleDocuments": [
+        "docs/cqc-bible/CONTINUATION_P69.md",
+        "docs/cqc-bible/ASSOCIATIONS.md",
+        "docs/cqc-bible/COMBAT.md",
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md"
+      ],
+      "promptRecord": "docs/cqc-reprise/pass69/prompt-index.json#acid2-high-tech-soldier",
+      "productionPlan": {
+        "status": "documented_future_work_not_generated_or_implemented",
+        "classification": "proposition_CQC_a_valider_par_references_natives",
+        "framesGeneratedByP69": 1,
+        "animationClipsGeneratedByP69": 0,
+        "frameTimings": "Les durées, fenêtres et vitesses restent à mesurer sur des séquences natives puis à équilibrer dans CQC. Aucun nombre de frames canonique n’est déduit du PNG.",
+        "camera": "La vue livrée reste celle de sa référence. Une vue de profil, une orientation opposée ou une rotation demande une référence et une source distinctes.",
+        "acceptance": [
+          "Conserver l’édition, l’incarnation, la couverture et le statut natif ou conceptuel indiqués.",
+          "Valider ancrage et volumes séparément de la marge transparente.",
+          "Vérifier pause, interruption et fin de manche avant toute admission au jeu."
+        ],
+        "role": "Soldat Hi-Tech AC!D 2 en pose frontale issue du dessin CONCEPT3. La capture native P90 corrobore casque, visière, col et palette du haut du corps ; les jambes de cette source viennent du concept complet. Cette distinction doit rester visible dans l’Atlas et dans toute future qualification.",
+        "states": [
+          {
+            "name": "Pose conceptuelle",
+            "description": "Conserver casque clair, visière rouge, col montant, protections et poches propres à ce dessin. Cette pose neutre sert à comparer les proportions et la palette ; elle ne constitue pas une frame extraite du modèle PSP."
+          },
+          {
+            "name": "Qualification du modèle natif",
+            "description": "Rassembler des captures en pied de face, de dos et de profil pour mesurer les différences entre concept et modèle final. Documenter les écarts avant de transformer cette source en sprite de combat ; les détails du dessin ne doivent pas devenir automatiquement des propriétés du modèle."
+          },
+          {
+            "name": "Locomotion après qualification",
+            "description": "Produire les appuis et pivots à partir d’une silhouette native approuvée, en contrôlant les protections d’épaules et le col. La position neutre des bras ne documente aucune garde, course ou manipulation d’équipement."
+          },
+          {
+            "name": "Actions et réactions à produire",
+            "description": "Choisir les équipements réellement attestés pour cette variante, puis produire les poses correspondantes et leur récupération. Les réactions aux contacts, interruptions et sortie de scène doivent être compatibles avec les volumes validés ; aucun kit d’action n’est livré ici."
+          }
+        ],
+        "interactions": [
+          "Maintenir la traçabilité concept versus capture native pour chaque futur élément réutilisé.",
+          "Ne pas attribuer bonus de défense, résistance, capteur ou capacité spéciale à partir d’une plaque ou d’un voyant dessiné.",
+          "Valider amplitudes des bras et rotations de tête avec les protections avant d’utiliser les animations d’un garde standard.",
+          "Garder séparés la pose neutre, le port d’équipement natif et les variantes de personnel SaintLogic encore non qualifiées."
+        ],
+        "separateAssetsNeeded": [
+          "Captures natives en pied",
+          "Comparaison concept/modèle",
+          "Dos et profils",
+          "Déplacements du modèle qualifié",
+          "Équipements et actions séparés"
+        ]
+      }
+    },
+    {
+      "path": "public/cqc/assets/p69/survive-air-shock-cannon.png",
+      "bytes": 824547,
+      "sha256": "27a2d4aa98da3bb28e675281e4f3eb2df004aaae1f5be51e8c2e576421a02a17",
+      "gitBlobSha": "02c84fbad630de587d8859ec91d4cafabc3e8f11",
+      "width": 1086,
+      "height": 1448,
+      "colorMode": "RGBA",
+      "bitDepth": 8,
+      "colorType": 6,
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1196355,
+        "nearOpaquePixels250To255": 323287,
+        "semiTransparentPixels1To249": 52886,
+        "alphaAbove16OnCanvasEdges": 0,
+        "boundsAt16": [
+          110,
+          65,
+          999,
+          1390
+        ],
+        "boundsAt128": [
+          110,
+          66,
+          998,
+          1389
+        ]
+      },
+      "id": "survive-air-shock-cannon",
+      "assetId": "asset:p69:survive-air-shock-cannon",
+      "label": "Survive — Air Shock Cannon, déployé inactif",
+      "kind": "prop",
+      "episode": "Metal Gear Survive",
+      "episodeKey": "survive",
+      "edition": "Metal Gear Survive — équipement de défense, plateforme non certifiée",
+      "pass": "P69",
+      "passId": "P69",
+      "workIds": [
+        "prop:survive_air_shock_cannon"
+      ],
+      "scope": "Un canon à choc d’air déployé, vue trois quarts frontale, statique ; nouveau candidat pour le périmètre auparavant sans vue dégagée.",
+      "bodyCoverage": "full_object",
+      "referenceFiles": [
+        "docs/cqc-reprise/pass69/research/survive/references/native-air-side-220401_10.jpg",
+        "docs/cqc-reprise/pass69/research/survive/references/native-air-support-220401_12.jpg"
+      ],
+      "referenceURLs": [
+        "https://w.atwiki.jp/mgsurvive/pages/111.html",
+        "https://img.atwiki.jp/mgsurvive/attach/111/100/220401_10.jpg",
+        "https://img.atwiki.jp/mgsurvive/attach/111/98/220401_12.jpg"
+      ],
+      "referenceMetadata": [
+        {
+          "path": "docs/cqc-reprise/pass69/research/survive/references/native-air-side-220401_10.jpg",
+          "bytes": 300444,
+          "sha256": "5a35c229924a73b1729ffa4b67bf22eeb00b14d4d87ae3b6d19744e4efd28c52",
+          "gitBlobSha": "b785500ebb485ba41495d9749e85fe1bc27d87f7"
+        },
+        {
+          "path": "docs/cqc-reprise/pass69/research/survive/references/native-air-support-220401_12.jpg",
+          "bytes": 292612,
+          "sha256": "6aa3590b40a45424cbd054f373bbf257b9c9da81747dc6b05a7253e6d06d147b",
+          "gitBlobSha": "2622177ae31c7c46e7c30693d6276033b6345560"
+        }
+      ],
+      "qaNotes": [
+        "La nouvelle capture 220401_10 dégage la face ronde olive que P68 ne pouvait pas lire sous le HUD de 220401_12. Les deux vues native-gameplay ont été inspectées avant génération.",
+        "Disque court et large, boîtier sombre, collerette blanche, monture, câble latéral, antenne et quatre appuis bas sont repris ; aucun long tube de canon ou effet lumineux ajouté.",
+        "Le rendu conserve la grande silhouette. Les vis, grilles, arêtes et textures sont interpolées à partir de petits détails, sans mesure ni validation géométrique absolue. Le boîtier opposé et le dos ne sont pas documentés.",
+        "Un seul objet, entier, sans avatar, clôture ou HUD. Quatre appuis détachés et pointes présentes. Aucun cycle actif, déplacement d’air, impact, collision ou comportement de défense livré.",
+        "Les boutons PlayStation des captures n’établissent pas à eux seuls la plateforme d’exécution. L’édition est donc enregistrée avec plateforme non certifiée.",
+        "Diagnostic demandé par le root : les taches blanches d’aperçu aux pixels (430,386) et (360,440) valent chacune RGBA(255,255,255,1), pas alpha0. Dans les rectangles [420,370,440,410] et [340,430,390,447], tous les pixels RGB clairs ont un alpha de1 ou2, aucun supérieur à16. Faible frange conservée, aucune retouche ; détails dans alpha-preview-diagnostic.json."
+      ],
+      "nextWork": [
+        "Obtenir une vue native nette du dos et du boîtier opposé puis vérifier les dimensions du disque, du pivot et des quatre appuis.",
+        "Produire séparément les états posé, armé, déclenchement, retour et désactivation à partir de séquences natives.",
+        "Définir pour CQC, après validation, un pivot et une zone d’effet orientée ; créer séparément le VFX de déplacement d’air et les réactions. Aucune donnée de combat n’est déduite de ce PNG."
+      ],
+      "transparentBackground": true,
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": true,
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "publishedPath": "public/cqc/assets/p69/survive-air-shock-cannon.png",
+      "tracking": {
+        "scopeClosed": false,
+        "historicalWorkIds": [],
+        "extensionWorkIds": [
+          "prop:survive_air_shock_cannon"
+        ],
+        "narrativePlansCreated": 0
+      },
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "promptId": "survive-air-shock-cannon",
+        "promptFile": "docs/cqc-reprise/pass69/research/survive/prompts/survive-air-shock-cannon.txt",
+        "exactPrompt": "Use case: reference-grounded isolated game prop.\nCreate ONE individual PNG of the Air Shock Cannon from Metal Gear Survive, in the deployed inactive state shown in the two supplied native gameplay screenshots. The first screenshot, 220401_10, is the primary reference: its cannon is the small device to the LEFT of the survivor, in front of the fence. The second screenshot, 220401_12, clarifies the same cannon's lower support and side attachments. The balloon trap at lower right in that second image is NOT the subject.\nReproduce the visible three-quarter front/side view, with the short broad olive cylindrical emitter at upper left, its round shallow dish-like face aimed slightly left toward the viewer, the dark compact receiver and rectangular rear electronics to its right, the pale white/silver pivot collar and horizontal cradle below, the long narrow dark green vertical post, and the low four splayed flat stabilizer feet. Retain the visibly curved cable loop and small upright rear antenna. Match the native proportions, edge shapes and restrained dark olive/gunmetal palette. The emitter is SHORT AND WIDE, not a long gun barrel, speaker cone, glowing laser aperture or cannon muzzle. Keep its circular face shallow and muted as the reference shows. No added barrels, magazines, armor, handles, lights or new technology.\nFrame the complete single assembled object centered with generous transparent margins and all support tips intact. Use the primary reference orientation. Clean detailed 2D game sprite source, realistic material wear, neutral soft illumination and crisp readable silhouette. Preserve reference geometry; detail only the surfaces already visible, not an unseen opposite side. Remove people, fences, training grid, ground, placement circles, menus, health bars, captions, numbers and all other objects. No shadow or background. Genuine alpha transparency. One static prop only, no contact sheet, no exploded diagram, no projectile, no action effect, no watermark.\n",
+        "referenced_image_paths": [
+          "/workspace/scratch/f62c7b61a198/shadow-codec-p68/docs/cqc-reprise/pass69/research/survive/references/native-air-side-220401_10.jpg",
+          "/workspace/scratch/f62c7b61a198/shadow-codec-p68/docs/cqc-reprise/pass69/research/survive/references/native-air-support-220401_12.jpg"
+        ],
+        "transparent_background": true,
+        "postprocessing": "none; original generated PNG bytes preserved",
+        "originalGeneratedPath": "/workspace/scratch/f62c7b61a198/generated_images/exec-61fd50a9-c276-4d06-b82d-f378683759f2.png",
+        "transport": "referenced_image_paths; output copied byte-for-byte from local generated_images file"
+      },
+      "decision": "Agent visual selection, root independent review required before Atlas integration.",
+      "selectedVersion": "v1",
+      "reviewRecords": [
+        "docs/cqc-reprise/pass69/reviewed-batch.json"
+      ],
+      "guideSections": [
+        "02",
+        "04",
+        "05",
+        "15",
+        "16",
+        "17",
+        "18",
+        "22",
+        "25",
+        "26",
+        "27",
+        "29"
+      ],
+      "runtimeBinding": {
+        "status": "atlas_only",
+        "moduleKey": "atlas63",
+        "catalogPath": "public/cqc/data/cqc-p63-source-atlas.json",
+        "admittedByThisPass": false
+      },
+      "bibleURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/docs/cqc-bible/CONTINUATION_P69.md#survive-air-shock-cannon",
+      "blobURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/public/cqc/assets/p69/survive-air-shock-cannon.png",
+      "manifest": "docs/cqc-reprise/pass69/delivery-manifest.json",
+      "bibleDocuments": [
+        "docs/cqc-bible/CONTINUATION_P69.md",
+        "docs/cqc-bible/ASSOCIATIONS.md",
+        "docs/cqc-bible/COMBAT.md",
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md"
+      ],
+      "promptRecord": "docs/cqc-reprise/pass69/prompt-index.json#survive-air-shock-cannon",
+      "productionPlan": {
+        "status": "documented_future_work_not_generated_or_implemented",
+        "classification": "proposition_CQC_a_valider_par_references_natives",
+        "framesGeneratedByP69": 1,
+        "animationClipsGeneratedByP69": 0,
+        "frameTimings": "Les durées, fenêtres et vitesses restent à mesurer sur des séquences natives puis à équilibrer dans CQC. Aucun nombre de frames canonique n’est déduit du PNG.",
+        "camera": "La vue livrée reste celle de sa référence. Une vue de profil, une orientation opposée ou une rotation demande une référence et une source distinctes.",
+        "acceptance": [
+          "Conserver l’édition, l’incarnation, la couverture et le statut natif ou conceptuel indiqués.",
+          "Valider ancrage et volumes séparément de la marge transparente.",
+          "Vérifier pause, interruption et fin de manche avant toute admission au jeu."
+        ],
+        "role": "Gadget Survive déployé, documenté par deux captures natives complémentaires. La nouvelle vue dégage davantage le disque frontal et la seconde montre les appuis ; quelques zones restent masquées par l’avatar ou le HUD. La source est une reconstruction de la vue visible, avec géométrie et microdétails à confirmer.",
+        "states": [
+          {
+            "name": "Placement et ancrage",
+            "description": "Fixer une position au sol compatible avec tous les appuis et conserver la hauteur relative du mât et du bloc supérieur. Produire l’installation comme séquence séparée si elle est nécessaire ; le PNG déployé ne documente pas un dépliage."
+          },
+          {
+            "name": "Attente déployée",
+            "description": "Conserver l’orientation du disque et les relations entre bloc, monture et pied. Les variations de voyant ou de mouvement demandent une séquence native ; aucune rotation automatique n’est déduite de la présence d’un support."
+          },
+          {
+            "name": "Déclenchement à qualifier",
+            "description": "Observer une activation native pour séparer préparation, impulsion visuelle et récupération. L’effet doit être un asset distinct de l’objet ; sa portée, les cibles compatibles et la direction de réaction restent des paramètres à établir dans le jeu."
+          },
+          {
+            "name": "Interruption et retrait",
+            "description": "Prévoir retrait, désactivation et restauration après pause, fin de manche ou destruction si celle-ci est retenue. Les pieds, l’objet et l’éventuel effet doivent quitter la scène de façon cohérente, sans volume de collision résiduel."
+          }
+        ],
+        "interactions": [
+          "Valider implantation sur sol plat, bord de plateforme et proximité d’autres objets avant d’autoriser le placement.",
+          "Distinguer collision de l’appareil, zone d’activation et effet de déplacement éventuel ; une seule silhouette PNG ne suffit pas à les définir.",
+          "Obtenir les vues arrière et les zones cachées pour confirmer le nombre, la longueur et la position des appuis.",
+          "Conserver une association propre à l’Air Shock Cannon ; le Balloon Trap, le Mortar déployé et le Mortar ennemi restent des sources distinctes."
+        ],
+        "separateAssetsNeeded": [
+          "Vue arrière dégagée",
+          "Vérification des supports et proportions",
+          "Installation si attestée",
+          "Activation et récupération natives",
+          "Effet et son séparés"
+        ]
+      }
+    },
+    {
+      "path": "public/cqc/assets/p69/survive-sledgehammer-gold.png",
+      "bytes": 590712,
+      "sha256": "15822b3e2bf7601f9f8b5928d03015f3d37e52b493978b9e4e047b3e328e29d4",
+      "gitBlobSha": "afac038a4d850d2be3ce1b46e114b9c7bfaeed2d",
+      "width": 1555,
+      "height": 1012,
+      "colorMode": "RGBA",
+      "bitDepth": 8,
+      "colorType": 6,
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1348544,
+        "nearOpaquePixels250To255": 199143,
+        "semiTransparentPixels1To249": 25973,
+        "alphaAbove16OnCanvasEdges": 0,
+        "boundsAt16": [
+          40,
+          25,
+          1526,
+          984
+        ],
+        "boundsAt128": [
+          41,
+          26,
+          1526,
+          984
+        ]
+      },
+      "id": "survive-sledgehammer-gold",
+      "assetId": "asset:p69:survive-sledgehammer-gold",
+      "label": "Survive — Sledgehammer [Gold], Survival Pack",
+      "kind": "prop",
+      "episode": "Metal Gear Survive",
+      "episodeKey": "survive",
+      "edition": "Metal Gear Survive — Survival Pack / variante Gold",
+      "pass": "P69",
+      "passId": "P69",
+      "workIds": [
+        "prop:survive_sledgehammer_gold"
+      ],
+      "scope": "Masse dorée complète, une vue trois quarts diagonale du modèle d’inventaire ; accessoire séparé de tout avatar.",
+      "bodyCoverage": "full_object",
+      "referenceFiles": [
+        "docs/cqc-reprise/pass69/research/survive/references/native-heavy-weapon-20180815182912_1.jpg",
+        "docs/cqc-reprise/pass69/research/survive/references/official-mgv-preorder-beauty-shot.png"
+      ],
+      "referenceURLs": [
+        "https://w.atwiki.jp/mgsurvive/pages/25.html",
+        "https://img.atwiki.jp/mgsurvive/attach/25/71/20180815182912_1.jpg",
+        "https://www.konami.com/games/us/en/topics/917/",
+        "https://www.konami.com/kde_cms/na_publish/uploads/mgv_preorder_beauty_shot.png"
+      ],
+      "referenceMetadata": [
+        {
+          "path": "docs/cqc-reprise/pass69/research/survive/references/native-heavy-weapon-20180815182912_1.jpg",
+          "bytes": 80730,
+          "sha256": "a8849122e2ce3ec3c7952829154e37dd742fc9b527af9bb7959f58d497ab9e4d",
+          "gitBlobSha": "c9e8cc3237073aa63bdde0832a869706a3b4c749"
+        },
+        {
+          "path": "docs/cqc-reprise/pass69/research/survive/references/official-mgv-preorder-beauty-shot.png",
+          "bytes": 3291001,
+          "sha256": "c457b585462e3467e92da4b6ca04e89327eaf99bab5d274b8e6c450d05646502",
+          "gitBlobSha": "48e2dca40924d8ae469bc571a5ef442a66930960"
+        }
+      ],
+      "qaNotes": [
+        "Capture native de l’exemple Heavy Weapons sur atwiki, corroborée par la vignette de masse nommée dans la planche officielle Survival Pack et par l’annonce KONAMI des quatre armes dorées.",
+        "Attribution Gold fondée sur la comparaison visuelle et la source officielle ; la page communautaire ne légende pas individuellement cette image. Revue externe du modèle exact encore requise.",
+        "Tête massive à encoches, faces d’impact polygonales sombres, plaque latérale dorée, cou évasé et long manche enveloppé conservés ; tête et extrémité du manche entièrement cadrées.",
+        "Détails de surface et micro-rayures réinterprétés. La vue opposée, l’attache à la main et les collisions n’ont pas été établies. Aucun swing, coup chargé ou effet d’impact fourni."
+      ],
+      "nextWork": [
+        "Confirmer l’identifiant de modèle Gold et obtenir l’autre flanc ainsi que la vue de dessus native.",
+        "Définir un point de prise et l’axe du manche pour les futurs avatars CQC ; garder le prop autonome tant que les mains et poses correspondantes ne sont pas validées.",
+        "Créer des poses statiques puis des cycles de préparation, frappe verticale, frappe latérale et récupération à partir de captures de référence ; séparer choc, poussière et son de cette source."
+      ],
+      "transparentBackground": true,
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": true,
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "publishedPath": "public/cqc/assets/p69/survive-sledgehammer-gold.png",
+      "tracking": {
+        "scopeClosed": false,
+        "historicalWorkIds": [],
+        "extensionWorkIds": [
+          "prop:survive_sledgehammer_gold"
+        ],
+        "narrativePlansCreated": 0
+      },
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "promptId": "survive-sledgehammer-gold",
+        "promptFile": "docs/cqc-reprise/pass69/research/survive/prompts/survive-sledgehammer-gold.txt",
+        "exactPrompt": "Use case: reference-grounded game prop extraction.\nCreate one individual PNG of the Sledgehammer [Gold] from Metal Gear Survive, the gold-plated Survival Pack melee weapon. Use the supplied native inventory screenshot as the exact visual reference for the entire weapon. It shows one complete hammer from the left head down to the right handle end. Reproduce the same three-quarter side view and diagonal orientation, with the head upper left and handle lower right.\nPreserve the squat long block-shaped hammer head, its flat polygonal striking ends, three recessed/notched sections along the near side silhouette, the small round fasteners on the broad gold side plate, the flared tapered metal neck joining the head, the very long slender straight handle, the rough gold-brown wrap covering most of the handle, and the small plain rounded end cap. Match the precise relative lengths, head thickness, notch shapes and attachment angle in the screenshot. Worn warm brass/gold finish with dark bronze rough impact faces and gold-colored wrapped grip. This is a rugged industrial game hammer, not a fantasy warhammer, axe or ornamental weapon. No extra spikes, no extra plates or motor, no decorative emblem.\nRender as a clean detailed 2D game source asset with crisp silhouette, neutral even lighting and realistically worn metallic surfaces. One whole object only. Center it with generous transparent margins on every side, including the handle tip. Remove the gray inventory grid, circle, all UI and the entire background. Genuine alpha transparency. No ground, cast shadow, text, label, frame, character, motion blur or impact effect. No contact sheet or extra view. Do not change the visible geometry or invent unseen mechanical internals.\n",
+        "referenced_image_paths": [
+          "/workspace/scratch/f62c7b61a198/shadow-codec-p68/docs/cqc-reprise/pass69/research/survive/references/native-heavy-weapon-20180815182912_1.jpg"
+        ],
+        "transparent_background": true,
+        "postprocessing": "none; original generated PNG bytes preserved",
+        "originalGeneratedPath": "/workspace/scratch/f62c7b61a198/generated_images/exec-dd6d1243-ea65-4024-a9a8-39b4bea44742.png",
+        "transport": "referenced_image_paths; output copied byte-for-byte from local generated_images file"
+      },
+      "decision": "Agent visual selection, root independent review required before Atlas integration.",
+      "selectedVersion": "v1",
+      "reviewRecords": [
+        "docs/cqc-reprise/pass69/reviewed-batch.json"
+      ],
+      "guideSections": [
+        "02",
+        "04",
+        "05",
+        "15",
+        "16",
+        "17",
+        "18",
+        "22",
+        "25",
+        "26",
+        "27",
+        "29"
+      ],
+      "runtimeBinding": {
+        "status": "atlas_only",
+        "moduleKey": "atlas63",
+        "catalogPath": "public/cqc/data/cqc-p63-source-atlas.json",
+        "admittedByThisPass": false
+      },
+      "bibleURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/docs/cqc-bible/CONTINUATION_P69.md#survive-sledgehammer-gold",
+      "blobURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/public/cqc/assets/p69/survive-sledgehammer-gold.png",
+      "manifest": "docs/cqc-reprise/pass69/delivery-manifest.json",
+      "bibleDocuments": [
+        "docs/cqc-bible/CONTINUATION_P69.md",
+        "docs/cqc-bible/ASSOCIATIONS.md",
+        "docs/cqc-bible/COMBAT.md",
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md"
+      ],
+      "promptRecord": "docs/cqc-reprise/pass69/prompt-index.json#survive-sledgehammer-gold",
+      "productionPlan": {
+        "status": "documented_future_work_not_generated_or_implemented",
+        "classification": "proposition_CQC_a_valider_par_references_natives",
+        "framesGeneratedByP69": 1,
+        "animationClipsGeneratedByP69": 0,
+        "frameTimings": "Les durées, fenêtres et vitesses restent à mesurer sur des séquences natives puis à équilibrer dans CQC. Aucun nombre de frames canonique n’est déduit du PNG.",
+        "camera": "La vue livrée reste celle de sa référence. Une vue de profil, une orientation opposée ou une rotation demande une référence et une source distinctes.",
+        "acceptance": [
+          "Conserver l’édition, l’incarnation, la couverture et le statut natif ou conceptuel indiqués.",
+          "Valider ancrage et volumes séparément de la marge transparente.",
+          "Vérifier pause, interruption et fin de manche avant toute admission au jeu."
+        ],
+        "role": "Masse Survive isolée dans la variante dorée rapprochée du Survival Pack. La capture de classe Heavy Weapons donne une vue entière et la planche officielle confirme une masse Gold comparable. Le nom exact du modèle de la capture reste à confirmer ; la source conserve cette réserve et ses détails de surface interpolés.",
+        "states": [
+          {
+            "name": "Objet de référence",
+            "description": "Conserver la silhouette de la tête à encoches, le cou et la longueur du manche dans leur orientation oblique. Définir un cadrage documentaire puis une échelle de jeu séparée ; les dimensions du fichier et ses marges ne donnent aucune mesure physique."
+          },
+          {
+            "name": "Prise en main à documenter",
+            "description": "Obtenir une capture native avec porteur pour déterminer prise, orientation et occlusion des mains. Les points d’attache et la position au repos ne doivent pas être inventés depuis cette vue isolée ; le porteur et ses membres restent des sources distinctes."
+          },
+          {
+            "name": "Action et récupération futures",
+            "description": "Rechercher une séquence pour décomposer préparation, déplacement, contact éventuel et retour. Les timings, trajectoires et contraintes de déplacement seront des paramètres CQC à valider ; aucune frappe, charge ou propriété spéciale n’est livrée par ce PNG."
+          },
+          {
+            "name": "Interruption et rangement",
+            "description": "Prévoir abandon d’une action, retour au repos et retrait de scène en conservant les points d’attache. Les états de chute, usure ou rupture demandent une preuve ou une décision explicite d’adaptation ; ils ne se déduisent pas de la texture rayée."
+          }
+        ],
+        "interactions": [
+          "Vérifier les deux mains et les masques d’occlusion avec le porteur retenu avant d’utiliser un sprite d’action.",
+          "Séparer volume visuel de l’objet, contact de jeu et effet d’impact ; le contour complet de l’image ne devient pas une zone de dégâts.",
+          "Contrôler proximité des murs, plateformes et autres personnages pendant les transitions futures, sans ajouter de comportement automatique.",
+          "Conserver la qualification Gold comme attribution recoupée et ouverte à vérification du modèle ; les autres variantes de masse restent séparées."
+        ],
+        "separateAssetsNeeded": [
+          "Identifiant du modèle natif",
+          "Vue opposée",
+          "Prise en main native",
+          "Poses du porteur et récupération",
+          "Effets et sons séparés"
+        ]
+      }
+    },
+    {
+      "path": "public/cqc/assets/p69/survive-survival-spear-gold.png",
+      "bytes": 316046,
+      "sha256": "64ec8211084eec1816569a275f2a40336cb614b796988ace4d81e23237862b58",
+      "gitBlobSha": "c3cec297df91cb634a5f9133c288ec7f75526815",
+      "width": 2172,
+      "height": 724,
+      "colorMode": "RGBA",
+      "bitDepth": 8,
+      "colorType": 6,
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1457850,
+        "nearOpaquePixels250To255": 86377,
+        "semiTransparentPixels1To249": 28301,
+        "alphaAbove16OnCanvasEdges": 0,
+        "boundsAt16": [
+          24,
+          215,
+          2137,
+          477
+        ],
+        "boundsAt128": [
+          25,
+          216,
+          2137,
+          476
+        ]
+      },
+      "id": "survive-survival-spear-gold",
+      "assetId": "asset:p69:survive-survival-spear-gold",
+      "label": "Survive — Survival Spear [Gold], Survival Pack",
+      "kind": "prop",
+      "episode": "Metal Gear Survive",
+      "episodeKey": "survive",
+      "edition": "Metal Gear Survive — Survival Pack / variante Gold",
+      "pass": "P69",
+      "passId": "P69",
+      "workIds": [
+        "prop:survive_survival_spear_gold"
+      ],
+      "scope": "Lance dorée complète, profil trois quarts de l’inventaire, lame vers la gauche ; un PNG indépendant sans porteur.",
+      "bodyCoverage": "full_object",
+      "referenceFiles": [
+        "docs/cqc-reprise/pass69/research/survive/references/native-survival-spear-gold.jpg",
+        "docs/cqc-reprise/pass69/research/survive/references/official-mgv-preorder-beauty-shot.png"
+      ],
+      "referenceURLs": [
+        "https://w.atwiki.jp/mgsurvive/pages/24.html",
+        "https://img.atwiki.jp/mgsurvive/attach/24/64/20180815182903_1.jpg",
+        "https://www.konami.com/games/us/en/topics/917/",
+        "https://www.konami.com/kde_cms/na_publish/uploads/mgv_preorder_beauty_shot.png"
+      ],
+      "referenceMetadata": [
+        {
+          "path": "docs/cqc-reprise/pass69/research/survive/references/native-survival-spear-gold.jpg",
+          "bytes": 27961,
+          "sha256": "3074f350c1269c64ccd0b6baee3ba7049ab7f0c1cf4afbfb9fe454719784629d",
+          "gitBlobSha": "88510a6f36ebe969f6fd944c460f8fed9de00578"
+        },
+        {
+          "path": "docs/cqc-reprise/pass69/research/survive/references/official-mgv-preorder-beauty-shot.png",
+          "bytes": 3291001,
+          "sha256": "c457b585462e3467e92da4b6ca04e89327eaf99bab5d274b8e6c450d05646502",
+          "gitBlobSha": "48e2dca40924d8ae469bc571a5ef442a66930960"
+        }
+      ],
+      "qaNotes": [
+        "Capture native de l’exemple Thrust Weapons sur atwiki ; comparaison avec la Survival Spear dorée explicitement présente dans le Survival Pack officiel.",
+        "Lame courte asymétrique, petite garde circulaire, douille évasée, hampe fine très longue, bagues et pommeau arrondi sont conservés. La pointe, le pommeau et les marges sont présents.",
+        "Le nom précis de variante est corroboré par la planche officielle et la teinte du modèle ; la page communautaire ne fournit pas de légende individuelle Gold. Une confirmation de modèle reste ouverte.",
+        "L’échelle du relief, de l’usure et des bagues est interprétée, sans extraction 1:1 du modèle. Aucun porteur, estoc, projectile, collision ni comportement de combat n’est livré."
+      ],
+      "nextWork": [
+        "Vérifier le nom de modèle Gold, le revers de la lame, l’épaisseur de la garde et les bagues avec des vues natives supplémentaires.",
+        "Définir pour l’intégration future deux prises de mains sur la hampe sans modifier la proportion lame/hampe validée.",
+        "Documenter puis produire les positions de garde, estoc, retrait et transition de course ; traiter l’arme de mêlée séparément d’un projectile et garder l’effet de contact distinct."
+      ],
+      "transparentBackground": true,
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": true,
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "publishedPath": "public/cqc/assets/p69/survive-survival-spear-gold.png",
+      "tracking": {
+        "scopeClosed": false,
+        "historicalWorkIds": [],
+        "extensionWorkIds": [
+          "prop:survive_survival_spear_gold"
+        ],
+        "narrativePlansCreated": 0
+      },
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "promptId": "survive-survival-spear-gold",
+        "promptFile": "docs/cqc-reprise/pass69/research/survive/prompts/survive-survival-spear-gold.txt",
+        "exactPrompt": "Use case: reference-grounded game prop extraction.\nCreate one individual PNG of the Survival Spear [Gold] from Metal Gear Survive, the gold-plated Survival Pack melee weapon. The supplied native inventory screenshot is the visual reference. Reproduce this complete single spear with the same long narrow proportions and same visible three-quarter side profile: the short broad blade points LEFT, the long gold cylindrical shaft extends to the RIGHT, rising very gently to the right as in the reference.\nPreserve the short knife-like asymmetric spear blade, its pointed bevelled tip and stepped back edge, the small disk-like guard/collar just behind the blade, the flared metal socket, the exceptionally long thin straight shaft, the specific subtle ring collars and stepped shaft diameters, the dark worn grip bands farther to the right, and the small rounded cylindrical pommel at the extreme right. Keep the blade short relative to the total shaft and retain the reference silhouette. Weathered brass/gold coating with dark brown worn patches and modest metallic highlights, matching the native rendering. Do not replace this with a medieval spear, trident, futuristic energy lance, long sword blade or bayonet on a rifle. No extra fins, cables, ornaments or new attachment.\nCompose one full-length isolated item on a wide landscape transparent canvas, generous padding around both tip and pommel. Sharp detailed 2D game asset, neutral even lighting, realistic material texture. No hands, character, weapon stand, ground, shadow, UI grid, targeting circle, numbers, letters, captions, border or background. Genuine alpha transparency. No contact sheet, alternate view, effect or animation. Preserve geometry visible in the reference; no invented opposite-side details.\n",
+        "referenced_image_paths": [
+          "/workspace/scratch/f62c7b61a198/shadow-codec-p68/docs/cqc-reprise/pass69/research/survive/references/native-survival-spear-gold.jpg"
+        ],
+        "transparent_background": true,
+        "postprocessing": "none; original generated PNG bytes preserved",
+        "originalGeneratedPath": "/workspace/scratch/f62c7b61a198/generated_images/exec-ec2afa99-84f0-4451-80e0-2c26c16162df.png",
+        "transport": "referenced_image_paths; output copied byte-for-byte from local generated_images file"
+      },
+      "decision": "Agent visual selection, root independent review required before Atlas integration.",
+      "selectedVersion": "v1",
+      "reviewRecords": [
+        "docs/cqc-reprise/pass69/reviewed-batch.json"
+      ],
+      "guideSections": [
+        "02",
+        "04",
+        "05",
+        "15",
+        "16",
+        "17",
+        "18",
+        "22",
+        "25",
+        "26",
+        "27",
+        "29"
+      ],
+      "runtimeBinding": {
+        "status": "atlas_only",
+        "moduleKey": "atlas63",
+        "catalogPath": "public/cqc/data/cqc-p63-source-atlas.json",
+        "admittedByThisPass": false
+      },
+      "bibleURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/docs/cqc-bible/CONTINUATION_P69.md#survive-survival-spear-gold",
+      "blobURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/public/cqc/assets/p69/survive-survival-spear-gold.png",
+      "manifest": "docs/cqc-reprise/pass69/delivery-manifest.json",
+      "bibleDocuments": [
+        "docs/cqc-bible/CONTINUATION_P69.md",
+        "docs/cqc-bible/ASSOCIATIONS.md",
+        "docs/cqc-bible/COMBAT.md",
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md"
+      ],
+      "promptRecord": "docs/cqc-reprise/pass69/prompt-index.json#survive-survival-spear-gold",
+      "productionPlan": {
+        "status": "documented_future_work_not_generated_or_implemented",
+        "classification": "proposition_CQC_a_valider_par_references_natives",
+        "framesGeneratedByP69": 1,
+        "animationClipsGeneratedByP69": 0,
+        "frameTimings": "Les durées, fenêtres et vitesses restent à mesurer sur des séquences natives puis à équilibrer dans CQC. Aucun nombre de frames canonique n’est déduit du PNG.",
+        "camera": "La vue livrée reste celle de sa référence. Une vue de profil, une orientation opposée ou une rotation demande une référence et une source distinctes.",
+        "acceptance": [
+          "Conserver l’édition, l’incarnation, la couverture et le statut natif ou conceptuel indiqués.",
+          "Valider ancrage et volumes séparément de la marge transparente.",
+          "Vérifier pause, interruption et fin de manche avant toute admission au jeu."
+        ],
+        "role": "Lance Survive isolée dans la variante dorée rapprochée du Survival Pack. La vue de classe Thrust Weapons montre la silhouette entière, de la lame au pommeau. La planche officielle corrobore la famille Gold ; le raccord exact entre cette capture communautaire et l’identifiant de modèle reste à confirmer.",
+        "states": [
+          {
+            "name": "Vue entière de référence",
+            "description": "Conserver la longueur relative de la hampe, la lame asymétrique, la petite garde, les bagues et le pommeau. La vue livrée est oblique et presque horizontale ; produire d’autres orientations seulement à partir de références correspondantes, avec pointe et extrémité toujours lisibles."
+          },
+          {
+            "name": "Port et garde à qualifier",
+            "description": "Obtenir des vues natives avec porteur pour observer les positions des mains et les points d’appui. Un objet isolé ne permet pas de choisir la latéralité ou la distance au corps ; ces éléments conditionnent les futures couches et collisions."
+          },
+          {
+            "name": "Mouvement et retour futurs",
+            "description": "Documenter la préparation, l’avancée visuelle et le retour de la pose native retenue. La longueur apparente ne détermine ni portée ni vitesse de jeu ; les règles de contact, déplacement et interruption doivent être définies puis testées dans CQC."
+          },
+          {
+            "name": "Réaction et sortie",
+            "description": "Prévoir réaction au contact, retour au repos et rangement en gardant la continuité entre la hampe et les mains. Aucun lancer, projectile ou état cassé n’est livré ou déduit de la forme de la lance ; ces possibilités exigeraient des preuves et assets propres."
+          }
+        ],
+        "interactions": [
+          "Valider l’ancrage de la hampe et l’occultation par chacune des mains, avec caméra et échelle définitives.",
+          "Distinguer collision de décor, contact de jeu et rendu de la pointe pour éviter une zone d’impact fondée sur toute la longueur du PNG.",
+          "Vérifier le retour au contrôle après arrêt ou interruption, ainsi que les croisements avec une petite cible et les bords de plateforme.",
+          "Conserver les données de variante et les réserves d’identification ; aucune capacité ou bonus particulier n’est attribué à la teinte dorée."
+        ],
+        "separateAssetsNeeded": [
+          "Confirmation du modèle Gold",
+          "Vue opposée et détails natifs",
+          "Port et garde du personnage",
+          "Actions et récupérations sourcées",
+          "Réactions et effets séparés"
+        ]
+      }
+    },
+    {
+      "id": "mgr-mistral-collar-concept",
+      "label": "Revengeance — collier mécanique de Mistral, étude de concept",
+      "kind": "prop",
+      "bodyCoverage": "full_object",
+      "workIds": [
+        "prop:mgr_mistral_collar_concept"
+      ],
+      "scope": "Un collier mécanique isolé, même vue trois-quarts supérieure que la planche de détail PlatinumGames008. Source de concept finale, sans bras ni corps.",
+      "sourceType": "primary_developer_equipment_concept",
+      "referenceIds": [
+        "mistral-equipment-platinum"
+      ],
+      "generationOutput": "/workspace/scratch/f62c7b61a198/generated_images/exec-814dd0ef-6918-4ec1-9b71-e08d7c5a6724.png",
+      "qaNotes": [
+        "Un seul collier ; silhouette générale, cavité rouge, anneau mécanique interne et logements frontaux repris du dessin primaire.",
+        "Les proportions exactes, rainures, attaches et microdétails sont interpolés ; aucune comparaison géométrique au modèle de jeu ne valide une identité 1:1.",
+        "Fond réellement transparent. Les pixels du bord gauche culminent à alpha1 ; le corps visible dispose de marges.",
+        "Le dessin d’origine appartient au travail de conception de Mistral ; ce PNG n’est ni un export de modèle ni la preuve d’un état détachable en jeu."
+      ],
+      "nextWork": [
+        "Rapprocher la vue de concept du modèle final et de captures natives haute définition du collier.",
+        "Documenter dos, dessous, logements cachés et points d’attache des bras avant tout rig.",
+        "Créer et tester des états/animations séparés seulement après validation des références ; aucune animation ni interaction livrée ici."
+      ],
+      "observed": "Collier noir, intérieur rouge segmenté, mécanismes circulaires et petites attaches visibles dans la planche008.",
+      "proposedCqc": "Dossier Atlas d’accessoire à comparer ; futur parent possible de bras auxiliaires, sans admission au combat ni détachement simulé.",
+      "path": "public/cqc/assets/p69/mgr-mistral-collar-concept.png",
+      "bytes": 1514646,
+      "sha256": "0471a9b406fb701c1803b797484501863cae5d618ddec48117d02fbcb4de1e6f",
+      "gitBlobSha": "3b3567cffee864c86db586db4afd445d1f66c7c3",
+      "width": 1371,
+      "height": 1147,
+      "colorMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        42,
+        1301,
+        1132
+      ],
+      "thresholdBBoxes": {
+        "1": [
+          0,
+          42,
+          1301,
+          1132
+        ],
+        "16": [
+          122,
+          45,
+          1286,
+          1130
+        ],
+        "128": [
+          123,
+          45,
+          1285,
+          1129
+        ],
+        "254": [
+          146,
+          46,
+          1280,
+          1128
+        ],
+        "255": [
+          146,
+          46,
+          1279,
+          1128
+        ]
+      },
+      "edgeAlphaMax": {
+        "top": 0,
+        "bottom": 0,
+        "left": 1,
+        "right": 0
+      },
+      "transparentPixels": 781646,
+      "opaquePixels": 371,
+      "pass": "P69",
+      "passId": "P69",
+      "episode": "Metal Gear Rising: Revengeance",
+      "episodeKey": "mgr",
+      "edition": "Metal Gear Rising: Revengeance — étude de concept PlatinumGames, planche de détails Mistral (2013)",
+      "assetId": "asset:p69:mgr-mistral-collar-concept",
+      "selected": true,
+      "sourceGenerated": true,
+      "atlasIntegrated": true,
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "transparentBackground": true,
+      "bitDepth": 8,
+      "colorType": 6,
+      "referenceFiles": [
+        "docs/cqc-reprise/pass69/research/rising/references/mistral-equipment-platinum.jpg"
+      ],
+      "references": [
+        {
+          "id": "mistral-equipment-platinum",
+          "path": "docs/cqc-reprise/pass69/research/rising/references/mistral-equipment-platinum.jpg",
+          "bytes": 287003,
+          "sha256": "918ac4c24ab7af6f184f945a8a53af2bce95206e7dc922c7d79db8ad2c06af97",
+          "gitBlobSha": "60e8632a5df1bd0110dda2bd2cb7da3f1efa4762",
+          "width": 1000,
+          "height": 837,
+          "colorMode": "RGB",
+          "sourceURL": "https://www.platinumgames.com/official-blog/wp-content/uploads/sites/2/2013/01/008.jpg?w=600",
+          "contextURL": "https://www.platinumgames.com/official-blog/article/4694",
+          "sourceType": "primary_developer_equipment_concept",
+          "nativeGameplay": false,
+          "observations": "Planche de détails Mistral publiée par son concepteur chez PlatinumGames. Collier isolé au centre supérieur, intérieur rouge, boîtier noir et logements mécaniques. La planche est une étude de conception, pas une capture de jeu."
+        }
+      ],
+      "referenceURLs": [
+        "https://www.platinumgames.com/official-blog/article/4694",
+        "https://www.platinumgames.com/official-blog/wp-content/uploads/sites/2/2013/01/008.jpg?w=600"
+      ],
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "edit",
+        "useCase": "background-extraction",
+        "exactPrompt": "Use case: background-extraction\nAsset type: single isolated reference-grounded static prop sprite for the CQC Atlas, Metal Gear Rising: Revengeance.\nInput image 1 is the official PlatinumGames equipment concept sheet for Mistral. It is the only design reference.\nPrimary request: extract and faithfully redraw ONLY the complete black mechanical collar object in the UPPER CENTER of this sheet, the object shown from a slightly elevated three-quarter angle with an oval open neck cavity, red inner segmented padding and circular mechanical sockets around its outside. One isolated prop on an actually transparent RGBA background.\nPreserve the exact visible silhouette, asymmetrical socket layout, charcoal outer housing, red interior segmentation, tiny silver fasteners, mechanical ring visible inside, and the original camera angle. Keep the object closed and assembled exactly as pictured. Do not attach arms, body parts, a person, straps from other diagrams, or invent a reverse view. Keep the fine outlined painted game concept style of the reference, with restrained material shading, no photoreal reinterpretation.\nComposition: the whole collar centered with comfortable transparent margins, large readable sprite. Only this one collar; no other diagrams, knives, hands, lettering outside the object, callouts, panel, frame, floor, cast shadow or decorative background. Do not reproduce the white paper. Use genuine transparency, not a painted checkerboard. Do not add speculative hidden components or more sockets than the reference shows.\n",
+        "promptFile": "docs/cqc-reprise/pass69/research/rising/prompts/mgr-mistral-collar-concept.txt",
+        "referenced_image_paths": [
+          "/workspace/scratch/f62c7b61a198/shadow-codec-p68/docs/cqc-reprise/pass69/research/rising/references/mistral-equipment-platinum.jpg"
+        ],
+        "transparent_background": true,
+        "num_last_images_to_include": null,
+        "outputPath": "/workspace/scratch/f62c7b61a198/generated_images/exec-814dd0ef-6918-4ec1-9b71-e08d7c5a6724.png",
+        "rawBytesPreserved": true
+      },
+      "selectedVersion": "v1",
+      "referenceMetadata": [
+        {
+          "path": "docs/cqc-reprise/pass69/research/rising/references/mistral-equipment-platinum.jpg",
+          "bytes": 287003,
+          "sha256": "918ac4c24ab7af6f184f945a8a53af2bce95206e7dc922c7d79db8ad2c06af97",
+          "gitBlobSha": "60e8632a5df1bd0110dda2bd2cb7da3f1efa4762"
+        }
+      ],
+      "reviewRecords": [
+        "docs/cqc-reprise/pass69/reviewed-batch.json"
+      ],
+      "guideSections": [
+        "02",
+        "04",
+        "05",
+        "15",
+        "16",
+        "17",
+        "18",
+        "22",
+        "25",
+        "26",
+        "27",
+        "29"
+      ],
+      "runtimeBinding": {
+        "status": "atlas_only",
+        "moduleKey": "atlas63",
+        "catalogPath": "public/cqc/data/cqc-p63-source-atlas.json",
+        "admittedByThisPass": false
+      },
+      "bibleURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/docs/cqc-bible/CONTINUATION_P69.md#mgr-mistral-collar-concept",
+      "blobURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/public/cqc/assets/p69/mgr-mistral-collar-concept.png",
+      "manifest": "docs/cqc-reprise/pass69/delivery-manifest.json",
+      "bibleDocuments": [
+        "docs/cqc-bible/CONTINUATION_P69.md",
+        "docs/cqc-bible/ASSOCIATIONS.md",
+        "docs/cqc-bible/COMBAT.md",
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md"
+      ],
+      "promptRecord": "docs/cqc-reprise/pass69/prompt-index.json#mgr-mistral-collar-concept",
+      "productionPlan": {
+        "status": "documented_future_work_not_generated_or_implemented",
+        "classification": "proposition_CQC_a_valider_par_references_natives",
+        "framesGeneratedByP69": 1,
+        "animationClipsGeneratedByP69": 0,
+        "frameTimings": "Les durées, fenêtres et vitesses restent à mesurer sur des séquences natives puis à équilibrer dans CQC. Aucun nombre de frames canonique n’est déduit du PNG.",
+        "camera": "La vue livrée reste celle de sa référence. Une vue de profil, une orientation opposée ou une rotation demande une référence et une source distinctes.",
+        "acceptance": [
+          "Conserver l’édition, l’incarnation, la couverture et le statut natif ou conceptuel indiqués.",
+          "Valider ancrage et volumes séparément de la marge transparente.",
+          "Vérifier pause, interruption et fin de manche avant toute admission au jeu."
+        ],
+        "role": "Accessoire mécanique de Mistral isolé depuis une planche de conception PlatinumGames. Cette source documente le volume apparent, les ports et le revêtement intérieur visibles. Elle ne représente pas un objet déjà assemblé au personnage dans le runtime ni une preuve de toutes les connexions du modèle final.",
+        "states": [
+          {
+            "name": "Vue de référence isolée",
+            "description": "Fixer l’orientation et une échelle documentaire cohérente avec la planche. Les surfaces internes, disques et détails périphériques peuvent servir de repères visuels, mais pas de plan technique ni de mesure d’assemblage."
+          },
+          {
+            "name": "Association au porteur",
+            "description": "Obtenir une vue native du collier porté et vérifier position relative au cou et aux épaules. Définir les points d’attache et les couches d’occlusion à partir de ces vues, sans déduire de la perspective du concept une géométrie arrière complète."
+          },
+          {
+            "name": "Transitions visibles à qualifier",
+            "description": "Rechercher les séquences où l’accessoire change d’état ou accompagne un mouvement. Chaque variation réelle de port, rotation ou connexion demande ses frames ; aucun mécanisme mobile ou effet lumineux n’est animé par la source fixe."
+          },
+          {
+            "name": "Réaction et fin de séquence",
+            "description": "Prévoir les transitions d’apparition, masquage et retrait nécessaires à la scène CQC choisie. Les états de dommage ou détachement, s’ils sont retenus et sourcés, restent des objets et animations séparés ; ne pas les inventer depuis la présence de raccords."
+          }
+        ],
+        "interactions": [
+          "Vérifier les masques d’occlusion avec le corps, les bras et la caméra avant de superposer l’accessoire au personnage.",
+          "Conserver la provenance conceptuelle dans chaque association ; la fidélité au modèle natif final demande une comparaison dédiée.",
+          "Ne pas ajouter de portée, dégâts, cible ou état actif au collier sur la seule base de son apparence mécanique.",
+          "Maintenir un retour propre à la scène initiale après pause, interruption ou changement de dossier ; aucun élément ne doit rester accroché à un autre porteur."
+        ],
+        "separateAssetsNeeded": [
+          "Vues natives porté et arrière",
+          "Échelle et points d’attache",
+          "Masques d’occlusion",
+          "États mobiles attestés",
+          "Version finale native si distincte"
+        ]
+      }
+    },
+    {
+      "id": "mgr-r00-maverick-cap-portrait",
+      "label": "Revengeance — agent Maverick R-00 à casquette, portrait",
+      "kind": "character",
+      "bodyCoverage": "portrait",
+      "workIds": [
+        "character:R-MGR-soldier"
+      ],
+      "scope": "Portrait du personnage au premier plan de la capture R-00, de la casquette au haut du torse. Ne représente aucun corps complet et ne détermine pas son augmentation.",
+      "sourceType": "native_cutscene_screenshot_third_party_host",
+      "referenceIds": [
+        "r00-maverick-f2000"
+      ],
+      "generationOutput": "/workspace/scratch/f62c7b61a198/generated_images/exec-ea53dde7-ed6c-49d9-9d38-196ecc99a764.png",
+      "qaNotes": [
+        "Un seul portrait, variante à casquette distincte de l’individu casqué placé derrière lui dans la référence. Polo sombre, harnais, barbe et inclinaison de tête conservés dans les grandes lignes.",
+        "Le visage et les textures sont largement reconstruits depuis une petite zone de la capture : aucun détail facial interpolé ne vaut certification.",
+        "Cadrage volontaire aux épaules/haut du torse ; aucun pantalon, pied, arme ou mouvement n’est livré.",
+        "Aux bords, maximum alpha3 en haut,7 en bas,6 à gauche,4 à droite ; la boîte alpha≥16 conserve une marge de3px ou plus. Le sommet n’est donc pas tronqué par une partie opaque.",
+        "Le groupe historique R-MGR-soldier reste à séparer et à documenter en pied ; ce portrait ne résout pas la ligne de corps manquants."
+      ],
+      "nextWork": [
+        "Obtenir plusieurs captures R-00 plus nettes de cet agent, distinguer sa variante de celle au casque et des militaires locaux au béret rouge.",
+        "Valider identité faciale, insignes et affiliation depuis la cinématique ; documenter jambes et chaussures pour un éventuel corps complet.",
+        "Produire des poses et réactions depuis références avant animation ; aucun kit jouable n’est admis par ce portrait."
+      ],
+      "observed": "Casquette sombre et barbe, polo à col, bretelles de harnais ; visage partiellement masqué par la visière dans la capture.",
+      "proposedCqc": "Portrait documentaire dans l’Atlas associé à R-MGR-soldier, sans corps ni capacités de combat.",
+      "path": "public/cqc/assets/p69/mgr-r00-maverick-cap-portrait.png",
+      "bytes": 1430921,
+      "sha256": "6e5d37e9305d7564d1efd2166ebb0eed98562e8f3e6d9489cf33a35a64e7307a",
+      "gitBlobSha": "55ab952f44c893668c852be3bcbc752cf4cfcf19",
+      "width": 1434,
+      "height": 1097,
+      "colorMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1434,
+        1097
+      ],
+      "thresholdBBoxes": {
+        "1": [
+          0,
+          0,
+          1434,
+          1097
+        ],
+        "16": [
+          3,
+          8,
+          1431,
+          1094
+        ],
+        "128": [
+          4,
+          9,
+          1430,
+          1093
+        ],
+        "254": [
+          49,
+          16,
+          1402,
+          1090
+        ],
+        "255": [
+          49,
+          16,
+          1402,
+          942
+        ]
+      },
+      "edgeAlphaMax": {
+        "top": 3,
+        "bottom": 7,
+        "left": 6,
+        "right": 4
+      },
+      "transparentPixels": 751619,
+      "opaquePixels": 436,
+      "pass": "P69",
+      "passId": "P69",
+      "episode": "Metal Gear Rising: Revengeance",
+      "episodeKey": "mgr",
+      "edition": "Metal Gear Rising: Revengeance — capture cinématique R-00, plateforme non certifiée",
+      "assetId": "asset:p69:mgr-r00-maverick-cap-portrait",
+      "selected": true,
+      "sourceGenerated": true,
+      "atlasIntegrated": true,
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "transparentBackground": true,
+      "bitDepth": 8,
+      "colorType": 6,
+      "referenceFiles": [
+        "docs/cqc-reprise/pass69/research/rising/references/r00-maverick-f2000.jpg"
+      ],
+      "references": [
+        {
+          "id": "r00-maverick-f2000",
+          "path": "docs/cqc-reprise/pass69/research/rising/references/r00-maverick-f2000.jpg",
+          "bytes": 125449,
+          "sha256": "3a5b2be443c887362e04b2139792b6603b1353a1531e26a1d97151e8bd444920",
+          "gitBlobSha": "365644b9349a2d0e3bb1ba5febff1544fd8ca666",
+          "width": 1280,
+          "height": 720,
+          "colorMode": "RGB",
+          "sourceURL": "https://www.imfdb.org/images/8/8b/Rising-F2000-1.jpg",
+          "contextURL": "https://www.imfdb.org/wiki/Metal_Gear_Rising:_Revengeance",
+          "sourceType": "native_cutscene_screenshot_third_party_host",
+          "nativeGameplay": false,
+          "nativeCutscene": true,
+          "observations": "Capture R-00 : homme au premier plan avec casquette noire, barbe, polo sombre et harnais. Individu casqué distinct à l’arrière. Jambes et chaussures insuffisamment documentées. Le fichier est une capture native hébergée par une communauté, pas un rendu officiel isolé."
+        }
+      ],
+      "referenceURLs": [
+        "https://www.imfdb.org/wiki/Metal_Gear_Rising:_Revengeance",
+        "https://www.imfdb.org/images/8/8b/Rising-F2000-1.jpg"
+      ],
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "edit",
+        "useCase": "identity-preserve",
+        "exactPrompt": "Use case: identity-preserve\nAsset type: single portrait source sprite for the CQC character Atlas, Metal Gear Rising: Revengeance, R-00 Maverick Security cap variant.\nReference: native cutscene still. The target is ONLY the man in the FOREGROUND at image right, wearing a black patrol/baseball cap, trimmed dark beard, dark navy short-sleeved polo and dark tactical harness. The helmeted person behind him is a different individual and must not be included.\nPrimary request: a faithful isolated portrait of that foreground man from the top of his cap to the upper chest, on true transparent RGBA background. Match the same head tilt, three-quarter facing direction, shadow beneath his cap brim, beard shape, warm tan skin tone, navy collar and visible black harness straps from this exact image. Show only the observed upper chest, crop cleanly above the hands and firearm. Do not fabricate unseen lower-body clothing, gloves, weapons, insignia, equipment, or the back of the head. Keep recognizable native realistic videogame cinematics style, with clean edges and modestly clarified detail; do not change his ethnicity, facial identity, build, expression or cap silhouette.\nComposition: one subject, the portrait centered with generous transparent margins at top and sides. An intentional upper-chest bottom crop is permitted; this is a portrait, not a full body. No second person, car, street, concrete wall, text, HUD, border, vignette, floor, shadow plane or opaque background. Preserve actual alpha transparency rather than painting a checkerboard. This image does not certify a complete body or human-versus-augmented status.\n",
+        "promptFile": "docs/cqc-reprise/pass69/research/rising/prompts/mgr-r00-maverick-cap-portrait.txt",
+        "referenced_image_paths": [
+          "/workspace/scratch/f62c7b61a198/shadow-codec-p68/docs/cqc-reprise/pass69/research/rising/references/r00-maverick-f2000.jpg"
+        ],
+        "transparent_background": true,
+        "num_last_images_to_include": null,
+        "outputPath": "/workspace/scratch/f62c7b61a198/generated_images/exec-ea53dde7-ed6c-49d9-9d38-196ecc99a764.png",
+        "rawBytesPreserved": true
+      },
+      "selectedVersion": "v1",
+      "referenceMetadata": [
+        {
+          "path": "docs/cqc-reprise/pass69/research/rising/references/r00-maverick-f2000.jpg",
+          "bytes": 125449,
+          "sha256": "3a5b2be443c887362e04b2139792b6603b1353a1531e26a1d97151e8bd444920",
+          "gitBlobSha": "365644b9349a2d0e3bb1ba5febff1544fd8ca666"
+        }
+      ],
+      "reviewRecords": [
+        "docs/cqc-reprise/pass69/reviewed-batch.json"
+      ],
+      "guideSections": [
+        "02",
+        "03",
+        "04",
+        "16",
+        "17",
+        "18",
+        "25",
+        "26",
+        "27",
+        "29"
+      ],
+      "runtimeBinding": {
+        "status": "atlas_only",
+        "moduleKey": "atlas63",
+        "catalogPath": "public/cqc/data/cqc-p63-source-atlas.json",
+        "admittedByThisPass": false
+      },
+      "bibleURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/docs/cqc-bible/CONTINUATION_P69.md#mgr-r00-maverick-cap-portrait",
+      "blobURL": "https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/public/cqc/assets/p69/mgr-r00-maverick-cap-portrait.png",
+      "manifest": "docs/cqc-reprise/pass69/delivery-manifest.json",
+      "bibleDocuments": [
+        "docs/cqc-bible/CONTINUATION_P69.md",
+        "docs/cqc-bible/ASSOCIATIONS.md",
+        "docs/cqc-bible/COMBAT.md",
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md"
+      ],
+      "promptRecord": "docs/cqc-reprise/pass69/prompt-index.json#mgr-r00-maverick-cap-portrait",
+      "productionPlan": {
+        "status": "documented_future_work_not_generated_or_implemented",
+        "classification": "proposition_CQC_a_valider_par_references_natives",
+        "framesGeneratedByP69": 1,
+        "animationClipsGeneratedByP69": 0,
+        "frameTimings": "Les durées, fenêtres et vitesses restent à mesurer sur des séquences natives puis à équilibrer dans CQC. Aucun nombre de frames canonique n’est déduit du PNG.",
+        "camera": "La vue livrée reste celle de sa référence. Une vue de profil, une orientation opposée ou une rotation demande une référence et une source distinctes.",
+        "acceptance": [
+          "Conserver l’édition, l’incarnation, la couverture et le statut natif ou conceptuel indiqués.",
+          "Valider ancrage et volumes séparément de la marge transparente.",
+          "Vérifier pause, interruption et fin de manche avant toute admission au jeu."
+        ],
+        "role": "Portrait d’un soldat Maverick à casquette visible dans R-00. La source s’arrête aux épaules et sert à documenter la tête, la casquette et une partie du vêtement. Le visage, les textures et les coutures sont reconstruits depuis une capture limitée ; aucun corps complet ni identité personnelle supplémentaire n’est fourni.",
+        "states": [
+          {
+            "name": "Portrait statique",
+            "description": "Conserver le cadrage documentaire, la casquette abaissée et les épaules coupées volontairement. Définir une zone de cadrage pour la fiche sans interpréter les limites de l’image comme des limites anatomiques ou un volume de collision."
+          },
+          {
+            "name": "Autres angles et expressions",
+            "description": "Rechercher des gros plans natifs avant de produire profil, regard ou expression. La visière masque les yeux dans la référence ; les faire apparaître ou inventer une expression lisible demanderait une autre source."
+          },
+          {
+            "name": "Présentation dans l’interface",
+            "description": "Si la fiche reçoit une transition, définir apparition, disparition et recadrage comme comportements d’interface CQC. Un fondu ou un léger mouvement de présentation ne devient pas une animation native du personnage et doit être décrit comme tel."
+          },
+          {
+            "name": "Qualification ultérieure du corps",
+            "description": "Conserver l’exigence de vues natives en pied pour tenue, équipements et morphologie complète. Toute intégration combattant attend ces références et les cycles correspondants ; le portrait ne réduit pas à lui seul ce travail restant."
+          }
+        ],
+        "interactions": [
+          "Séparer sélection de dossier et sélection de combattant ; la fiche doit rester consultable sans ouvrir une admission de jeu.",
+          "Vérifier lisibilité sur fonds clairs et sombres, avec respect du cadrage des épaules et des réserves d’alpha.",
+          "Ne pas associer armes, rang, nom ou capacités supplémentaires à partir du visage et de la casquette seuls.",
+          "Conserver R-00 comme contexte de cette source ; aucune couverture des autres soldats humains de Revengeance n’est transférée."
+        ],
+        "separateAssetsNeeded": [
+          "Autres gros plans natifs",
+          "Vues intégrales de la tenue",
+          "Dos et profils",
+          "Équipements qualifiés séparément",
+          "Cycles si future admission"
+        ]
+      }
+    }
+  ],
+  "archives": [],
+  "blockedRequests": [
+    {
+      "id": "mgr-mistral-knife-concept",
+      "tool": "image_gen.imagegen",
+      "status": "blocked_by_image_tool",
+      "httpStatus": 400,
+      "requestId": "535a656f-2f2d-4b00-b1f3-b3ea38ec4e10",
+      "stage": "output",
+      "categories": [
+        "illicit"
+      ],
+      "promptFile": "docs/cqc-reprise/pass69/research/rising/prompts/mgr-mistral-knife-concept.txt",
+      "referenced_image_paths": [
+        "/workspace/scratch/f62c7b61a198/shadow-codec-p68/docs/cqc-reprise/pass69/research/rising/references/mistral-equipment-platinum.jpg"
+      ],
+      "transparent_background": true,
+      "generatedPngs": 0,
+      "retried": false,
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "exactPrompt": "Use case: background-extraction\nAsset type: one isolated static prop sprite, Metal Gear Rising: Revengeance, Mistral equipment design study.\nReference image: the official PlatinumGames Mistral final equipment sheet. Extract ONLY ONE of the three matching silver mechanical knives shown in the UPPER LEFT-CENTER, immediately to the right of the black thigh detail. Use the LEFTMOST of that trio as the exact design and camera reference; do not combine the three knives.\nPrimary request: a single faithful knife sprite in the same slightly diagonal downward orientation, fully visible on genuine transparent RGBA background. Preserve its broad silver pointed blade, dark elongated spine recess, small short grooves along the opposite blade edge, circular opening near the blade root, angular mechanical hilt and long narrow silver handle with dark inset and small attachment slot at the end. Reproduce only the geometry visible on that single reference object. Keep the thin dark outlines and restrained gray painted mechanical shading from the original concept drawing.\nComposition: one complete object centered, comfortable clear margins, no cropping. Do not include thigh, holster, hands, character, other knives, blood, labels, annotations, diagrams, title, floor, shadow, frame or background. Do not make this into a realistic generic knife or add ornamental parts. No reconstruction of unseen reverse-side details. This is a static reference-grounded concept candidate, not a fabrication diagram.\n",
+        "promptFile": "docs/cqc-reprise/pass69/research/rising/prompts/mgr-mistral-knife-concept.txt",
+        "referenced_image_paths": [
+          "/workspace/scratch/f62c7b61a198/shadow-codec-p68/docs/cqc-reprise/pass69/research/rising/references/mistral-equipment-platinum.jpg"
+        ],
+        "transparent_background": true
+      },
+      "label": "Revengeance — couteau de la planche d’équipement Mistral (aucun PNG)",
+      "toolStatus": "moderation_blocked",
+      "hasOutputFile": false,
+      "selected": false,
+      "atlasIntegrated": false,
+      "attempts": 1,
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "scopeClosed": false
+    }
+  ]
+}

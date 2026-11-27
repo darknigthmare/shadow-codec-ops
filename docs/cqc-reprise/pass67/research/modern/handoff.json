@@ -1,0 +1,914 @@
+{
+  "schema": "cqc.p67.modern-generation-handoff.v1",
+  "asOf": "2026-11-26",
+  "parentCommit": "5d7c6c5187f3906ad1ead53706e83674750f1c34",
+  "selectedCount": 9,
+  "requests": 10,
+  "successfulOutputs": 9,
+  "archivedCount": 0,
+  "archivedAttempts": [],
+  "blockedRequests": [
+    {
+      "id": "pw-sentinel-vest",
+      "pass": "P67",
+      "episodeKey": "pw",
+      "tool": "image_gen.imagegen",
+      "status": "refused_no_output",
+      "attempts": 1,
+      "requestId": "56300066-bee6-4ef8-be70-974a9dc6c460",
+      "code": "moderation_blocked",
+      "moderationStage": "output",
+      "categories": [
+        "other"
+      ],
+      "message": "Your request was rejected by the safety system.",
+      "promptFile": "docs/cqc-reprise/pass67/research/modern/pw-sentinel-vest-prompt.txt",
+      "referenceFile": "docs/cqc-reprise/pass67/research/modern/references/pw-sentinel-vest-preview.png",
+      "selected": false,
+      "outputFile": null,
+      "retries": 0,
+      "alternateGeneratorUsed": false,
+      "aliasRetryPerformed": false,
+      "scopeClosed": false
+    }
+  ],
+  "counts": {
+    "selectedSources": 9,
+    "generatedPNGs": 9,
+    "generationRequests": 10,
+    "blockedRequests": 1,
+    "archivedAttempts": 0,
+    "fullBodyCandidates": 8,
+    "portraitCandidates": 1,
+    "byEpisode": {
+      "mpo_plus": 5,
+      "pw": 1,
+      "delta": 1,
+      "mgs4": 2
+    },
+    "byKind": {
+      "character": 9
+    },
+    "selectedBytes": 6853498,
+    "combatAdmissions": 0,
+    "absolute1to1Certifications": 0,
+    "closedScopes": 0
+  },
+  "assets": [
+    {
+      "id": "mpop-ussr-female-a",
+      "label": "Portable Ops Plus — USSR Female Soldier (A)",
+      "episode": "Metal Gear Solid: Portable Ops Plus",
+      "episodeKey": "mpo_plus",
+      "workIds": [
+        "character:R-MPO-soviet"
+      ],
+      "scope": "Une recrue féminine soviétique A en pose frontale T, tenue ocre et bretelles noires. Aucun autre visage, équipement, palette, dos ou animation du groupe.",
+      "assetId": "asset:p67:mpop-ussr-female-a",
+      "pass": "P67",
+      "passId": "P67",
+      "kind": "character",
+      "edition": "Metal Gear Solid: Portable Ops Plus — PSP, preview communautaire d’un modèle attribué au jeu",
+      "bodyCoverage": "full_body_in_observed_pose",
+      "selectedVersion": "v1",
+      "referenceType": "community_native_PSP_model_preview",
+      "referenceURLs": [
+        "https://models.spriters-resource.com/psp/metalgearsolidportableopsplus/asset/323917/",
+        "https://models.spriters-resource.com/media/preview_icons/321/323917.png"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass67/research/modern/references/mpop-ussr-female-a-preview.png"
+      ],
+      "referenceInputFiles": [
+        "docs/cqc-reprise/pass67/research/modern/references/mpop-ussr-female-a-preview.png"
+      ],
+      "qaNotes": [
+        "Cheveux courts bruns, manches courtes à revers gris, sous-vêtement rayé, deux bretelles, étui côté image-gauche et poche côté image-droite concordent avec le preview PSP.",
+        "Pose source frontale conservée ; visage, plis et microtextures sont reconstruits à plus grande définition.",
+        "Référence 750×650 issue d’un preview communautaire du modèle PSP ; origine de jeu attribuée par la fiche, pas un rendu promotionnel officiel. La taille de sortie ne restitue pas des détails absents de la source.",
+        "Composites clair et sombre inspectés : silhouette lisible, sans fond opaque ni halo coloré visible. Quelques valeurs alpha très faibles subsistent loin du contour ; fichier brut conservé.",
+        "PNG individuel brut du générateur, aucune retouche des pixels ni agrandissement. Les composites JPEG et les crops de références sont uniquement des outils de QA.",
+        "Source statique candidate : aucune certification absolue 1:1, aucune validation de géométrie native, aucune admission au combat, aucun groupe clôturé."
+      ],
+      "path": "public/cqc/assets/p67/mpop-ussr-female-a.png",
+      "publishedPath": "public/cqc/assets/p67/mpop-ussr-female-a.png",
+      "width": 1347,
+      "height": 1167,
+      "bytes": 529932,
+      "sha256": "7d2f5587a779db22afc3ff70068a3cdd9115f0188eedcdd0d551013a708ad7eb",
+      "gitBlobSha": "f64181efea6a586bf87886d902114b3a0257ba66",
+      "colorMode": "RGBA",
+      "colorType": 6,
+      "bitDepth": 8,
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1293770,
+        "nearOpaquePixels250To255": 233006,
+        "semiTransparentPixels1To249": 45173,
+        "boundsAt16": [
+          131,
+          28,
+          1214,
+          1156
+        ],
+        "borderAlphaMax": {
+          "top": 1,
+          "bottom": 1,
+          "left": 1,
+          "right": 0
+        }
+      },
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "exactPrompt": "Use case: background-extraction\nAsset type: one individual static full-body character sprite for a Metal Gear visual source atlas.\nPrimary request: faithfully redraw the native USSR Female Soldier (A) character model from Metal Gear Solid: Portable Ops Plus, PSP, shown in the supplied model-preview reference. One adult woman only, genuine transparent alpha background.\nReference role: the supplied image is a community-rendered preview of the extracted original PSP model (Models Resource asset 323917). Follow this specific variant, not a generic soldier, not Snake Eater or Delta.\nPreserve the exact visible costume and identity cues: short side-swept medium-brown hair, serious unobscured face, ochre-brown short-sleeved field shirt with rolled grayish sleeve hems, small striped gray undershirt at the collar, paired straight black suspenders, black waist belt with square buckle, dark pouch/holster attachments and the narrow hanging strap, matching ochre-brown trousers tucked into tall very dark brown boots. Preserve the native slim realistic proportions and simple PSP garment construction.\nComposition: a single full figure, frontal model-reference T pose with both arms straight to the sides exactly as the reference, hands and all fingers present, complete boots, centered with generous transparent margins. Preserve the pose and visible handedness of belt attachments. Clean detailed 2D game illustration with restrained surface detail and neutral even light; preserve the reference colors and anatomy. Do not redesign, glamorize or add equipment.\nConstraints: no weapon held, no helmet, no beret, no armor vest, no extra pouches, no medals or invented badges, no backpack invented behind the body. No second figure, alternate view, ground, cast shadow, HUD, gray background, text, watermark or contact sheet. True transparency around the entire silhouette and between separated limbs. One PNG only.",
+        "promptRecord": "docs/cqc-reprise/pass67/research/modern/mpop-ussr-female-a-prompt.txt",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass67/research/modern/references/mpop-ussr-female-a-preview.png"
+        ],
+        "transparent_background": true,
+        "postprocessing": "none; original image data URL decoded byte-for-byte; no programmatic pixel edits"
+      },
+      "selected": true,
+      "sourceGenerated": true,
+      "transparentBackground": true,
+      "nativeUhd": false,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "fidelityStatus": "pending_external_review",
+      "scopeClosed": false,
+      "nextWork": "Revue indépendante contre les références, puis inventaire séparé des autres variantes, des vues de dos et des postures utiles. Aucun changement de statut de combat."
+    },
+    {
+      "id": "mpop-ocelot-female-a",
+      "label": "Portable Ops Plus — Ocelot Unit Female Soldier (A)",
+      "episode": "Metal Gear Solid: Portable Ops Plus",
+      "episodeKey": "mpo_plus",
+      "workIds": [
+        "character:R-MPO-ocelot"
+      ],
+      "scope": "Une recrue féminine A de l’unité Ocelot, béret rouge-brun et uniforme noir, vue frontale T. Ne couvre ni les variantes B/C ni la recrue masculine.",
+      "assetId": "asset:p67:mpop-ocelot-female-a",
+      "pass": "P67",
+      "passId": "P67",
+      "kind": "character",
+      "edition": "Metal Gear Solid: Portable Ops Plus — PSP, preview communautaire d’un modèle attribué au jeu",
+      "bodyCoverage": "full_body_in_observed_pose",
+      "selectedVersion": "v1",
+      "referenceType": "community_native_PSP_model_preview",
+      "referenceURLs": [
+        "https://models.spriters-resource.com/psp/metalgearsolidportableopsplus/asset/323902/",
+        "https://models.spriters-resource.com/media/preview_icons/321/323902.png"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass67/research/modern/references/mpop-ocelot-female-a-preview.png"
+      ],
+      "referenceInputFiles": [
+        "docs/cqc-reprise/pass67/research/modern/references/mpop-ocelot-female-a-preview.png"
+      ],
+      "qaNotes": [
+        "Béret incliné, cheveux blonds, pattes de col rouges, sangle diagonale, poches aux hanches et gants noirs sont repris du preview.",
+        "Visage, boucles et pattes de col sont reconstruits ; aucune validation des insignes à l’échelle du texel.",
+        "Référence 750×650 issue d’un preview communautaire du modèle PSP ; origine de jeu attribuée par la fiche, pas un rendu promotionnel officiel. La taille de sortie ne restitue pas des détails absents de la source.",
+        "Composites clair et sombre inspectés : silhouette lisible, sans fond opaque ni halo coloré visible. Quelques valeurs alpha très faibles subsistent loin du contour ; fichier brut conservé.",
+        "PNG individuel brut du générateur, aucune retouche des pixels ni agrandissement. Les composites JPEG et les crops de références sont uniquement des outils de QA.",
+        "Source statique candidate : aucune certification absolue 1:1, aucune validation de géométrie native, aucune admission au combat, aucun groupe clôturé."
+      ],
+      "path": "public/cqc/assets/p67/mpop-ocelot-female-a.png",
+      "publishedPath": "public/cqc/assets/p67/mpop-ocelot-female-a.png",
+      "width": 1347,
+      "height": 1167,
+      "bytes": 518944,
+      "sha256": "15e9ce8ffe5681aca09ac855611052db85a204c0c95fccaae20f6270871103cd",
+      "gitBlobSha": "a5e2f6e11928dc933a51183dea4235cd151f8c6e",
+      "colorMode": "RGBA",
+      "colorType": 6,
+      "bitDepth": 8,
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1308039,
+        "nearOpaquePixels250To255": 228809,
+        "semiTransparentPixels1To249": 35101,
+        "boundsAt16": [
+          132,
+          29,
+          1215,
+          1152
+        ],
+        "borderAlphaMax": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        }
+      },
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "exactPrompt": "Use case: background-extraction\nAsset type: one individual static full-body character sprite for a Metal Gear visual source atlas.\nPrimary request: faithfully redraw the Ocelot Unit Female Soldier (A) native character model from Metal Gear Solid: Portable Ops Plus, PSP, shown in the supplied model-preview reference. One adult woman, genuine transparent alpha.\nReference role: image 1 is the extracted PSP model preview attributed to Models Resource asset 323902. This specific recruit variant is the entire design reference; do not substitute Ocelot himself, the male Ocelot Unit soldier, PS2 or Delta.\nPreserve: short light-blond hair with straight fringe, serious visible face, small dark red-brown beret tilted as shown; black fitted long-sleeved field tunic with simple red collar tabs, dark gray striped undershirt at the neckline, black gloves, diagonal black shoulder strap with its native buckles crossing from the image-left shoulder toward the image-right waist; black belt with pale rectangular buckle; brown field pouch on image-left hip and smaller brown pouch on image-right, the native hanging attachment near the right side of the picture; loose black trousers tucked into tall black boots. Preserve the reference's modest, realistic body proportions, all garment boundaries and dark palette.\nComposition: one complete frontal figure in the SAME model-reference T pose with arms stretched sideways, hands/fingers and both boots complete. Center with generous transparent margins. Detailed restrained 2D game illustration, readable clean shapes and neutral soft light. Preserve the costume and handedness, improve clarity without adding design elements.\nConstraints: no firearm held, no armor plates, medals, extra belts, extra pouch, helmet or goggles. No changes to the beret or uniform palette. No second figure, alternate view, floor, shadow, gray background, HUD, lettering, caption or watermark. Genuine alpha outside the figure. One PNG.",
+        "promptRecord": "docs/cqc-reprise/pass67/research/modern/mpop-ocelot-female-a-prompt.txt",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass67/research/modern/references/mpop-ocelot-female-a-preview.png"
+        ],
+        "transparent_background": true,
+        "postprocessing": "none; original image data URL decoded byte-for-byte; no programmatic pixel edits"
+      },
+      "selected": true,
+      "sourceGenerated": true,
+      "transparentBackground": true,
+      "nativeUhd": false,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "fidelityStatus": "pending_external_review",
+      "scopeClosed": false,
+      "nextWork": "Revue indépendante contre les références, puis inventaire séparé des autres variantes, des vues de dos et des postures utiles. Aucun changement de statut de combat."
+    },
+    {
+      "id": "mpop-male-scientist-a",
+      "label": "Portable Ops Plus — Male Scientist (A)",
+      "episode": "Metal Gear Solid: Portable Ops Plus",
+      "episodeKey": "mpo_plus",
+      "workIds": [
+        "character:R-MPO-medical"
+      ],
+      "scope": "Un scientifique masculin A recrutable en blouse blanche et pose T. Ni déguisement de Snake dans MGS3, ni ensemble des médecins/scientifiques/officiers MPO.",
+      "assetId": "asset:p67:mpop-male-scientist-a",
+      "pass": "P67",
+      "passId": "P67",
+      "kind": "character",
+      "edition": "Metal Gear Solid: Portable Ops Plus — PSP, preview communautaire d’un modèle attribué au jeu",
+      "bodyCoverage": "full_body_in_observed_pose",
+      "selectedVersion": "v1",
+      "referenceType": "community_native_PSP_model_preview",
+      "referenceURLs": [
+        "https://models.spriters-resource.com/psp/metalgearsolidportableopsplus/asset/323074/",
+        "https://models.spriters-resource.com/media/preview_icons/320/323074.png"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass67/research/modern/references/mpop-male-scientist-a-preview.png"
+      ],
+      "referenceInputFiles": [
+        "docs/cqc-reprise/pass67/research/modern/references/mpop-male-scientist-a-preview.png"
+      ],
+      "qaNotes": [
+        "Blouse longue, cravate bordeaux, pantalon olive-brun et emplacement des patchs/du badge suivent le modèle PSP.",
+        "Lettrage des patchs et microcontenu du badge reconstruits et non validés ; aucune inscription produite ne vaut preuve canonique.",
+        "Référence 750×650 issue d’un preview communautaire du modèle PSP ; origine de jeu attribuée par la fiche, pas un rendu promotionnel officiel. La taille de sortie ne restitue pas des détails absents de la source.",
+        "Composites clair et sombre inspectés : silhouette lisible, sans fond opaque ni halo coloré visible. Quelques valeurs alpha très faibles subsistent loin du contour ; fichier brut conservé.",
+        "PNG individuel brut du générateur, aucune retouche des pixels ni agrandissement. Les composites JPEG et les crops de références sont uniquement des outils de QA.",
+        "Source statique candidate : aucune certification absolue 1:1, aucune validation de géométrie native, aucune admission au combat, aucun groupe clôturé."
+      ],
+      "path": "public/cqc/assets/p67/mpop-male-scientist-a.png",
+      "publishedPath": "public/cqc/assets/p67/mpop-male-scientist-a.png",
+      "width": 1244,
+      "height": 1264,
+      "bytes": 584414,
+      "sha256": "b7dbdffa63eddde9470e931b96a9a29db176b05b49415a398feaac7a06745269",
+      "gitBlobSha": "d9c270336d4a66f8c4c8c4b7b1dec72ec12fa066",
+      "colorMode": "RGBA",
+      "colorType": 6,
+      "bitDepth": 8,
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1249487,
+        "nearOpaquePixels250To255": 290757,
+        "semiTransparentPixels1To249": 32172,
+        "boundsAt16": [
+          62,
+          40,
+          1184,
+          1226
+        ],
+        "borderAlphaMax": {
+          "top": 0,
+          "bottom": 1,
+          "left": 0,
+          "right": 0
+        }
+      },
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "exactPrompt": "Use case: background-extraction\nAsset type: ONE static full-body character sprite on genuine transparent alpha.\nPrimary request: faithfully redraw the specific Male Scientist (A) native character model from Metal Gear Solid: Portable Ops Plus, PSP, shown in reference image 1, Models Resource asset 323074. One adult man only. This is the recruitable PSP variant, not Snake wearing a disguise, Sokolov, Granin, or a Delta scientist.\nPreserve the exact visible design: older light-skinned man with short thinning gray-brown hair, lined long face and serious neutral expression; white knee-length laboratory coat buttoned closed, broad lapels, dark olive-gray shirt and narrow dark burgundy tie; two low rectangular coat pockets; the small dark-and-burgundy block insignia at the upper sleeves and left chest and the rectangular ID patch beneath the chest insignia; dark gray-olive trousers and plain black shoes. Follow the visible patches as small graphic blocks; do not invent readable words that the source does not establish. Preserve the model's head, shoulder, waist and leg proportions.\nComposition: the same frontal model-reference T pose with arms straight outward, pale hands visible, full body and both shoes intact. Center with generous transparent margin at head, fingertips and feet. Clean detailed 2D game illustration, restrained realistic shading and folds that follow the simple native PSP shape; no modern costume redesign.\nConstraints: no glasses, beard, helmet, gun, medical instruments, clipboard or extra accessories. No extra limbs or duplicate body. Remove gray preview backdrop, all interface and watermarks; no floor or cast shadow, no caption, no contact sheet. True alpha around the entire figure and between the legs. One PNG.",
+        "promptRecord": "docs/cqc-reprise/pass67/research/modern/mpop-male-scientist-a-prompt.txt",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass67/research/modern/references/mpop-male-scientist-a-preview.png"
+        ],
+        "transparent_background": true,
+        "postprocessing": "none; original image data URL decoded byte-for-byte; no programmatic pixel edits"
+      },
+      "selected": true,
+      "sourceGenerated": true,
+      "transparentBackground": true,
+      "nativeUhd": false,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "fidelityStatus": "pending_external_review",
+      "scopeClosed": false,
+      "nextWork": "Revue indépendante contre les références, puis inventaire séparé des autres variantes, des vues de dos et des postures utiles. Aucun changement de statut de combat."
+    },
+    {
+      "id": "pw-sandinista",
+      "label": "Peace Walker — guérillero Sandinista, modèle PSP",
+      "episode": "Metal Gear Solid: Peace Walker",
+      "episodeKey": "pw",
+      "workIds": [
+        "character:R-PW-FSLN"
+      ],
+      "scope": "Un modèle Sandinista PSP, casquette olive et foulard jaune, vue frontale T. Aucun ensemble complet des FSLN ni posture blessée/transportée.",
+      "assetId": "asset:p67:pw-sandinista",
+      "pass": "P67",
+      "passId": "P67",
+      "kind": "character",
+      "edition": "Metal Gear Solid: Peace Walker — PSP, preview communautaire d’un modèle attribué au jeu",
+      "bodyCoverage": "full_body_in_observed_pose",
+      "selectedVersion": "v1",
+      "referenceType": "community_native_PSP_model_preview",
+      "referenceURLs": [
+        "https://models.spriters-resource.com/psp/metalgearsolidpeacewalker/asset/331654/",
+        "https://models.spriters-resource.com/media/preview_icons/328/331654.png"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass67/research/modern/references/pw-sandinista-preview.png"
+      ],
+      "referenceInputFiles": [
+        "docs/cqc-reprise/pass67/research/modern/references/pw-sandinista-preview.png"
+      ],
+      "qaNotes": [
+        "Casquette olive, visage barbu/moustachu, foulard jaune, chemise à poches, ceinturon, étui et chaussures sombres concordent avec le preview natif.",
+        "Texture faciale, plis et détails des poches sont reconstruits. La pose T n’est pas une animation de repos du gameplay.",
+        "Référence 750×650 issue d’un preview communautaire du modèle PSP ; origine de jeu attribuée par la fiche, pas un rendu promotionnel officiel. La taille de sortie ne restitue pas des détails absents de la source.",
+        "Composites clair et sombre inspectés : silhouette lisible, sans fond opaque ni halo coloré visible. Quelques valeurs alpha très faibles subsistent loin du contour ; fichier brut conservé.",
+        "PNG individuel brut du générateur, aucune retouche des pixels ni agrandissement. Les composites JPEG et les crops de références sont uniquement des outils de QA.",
+        "Source statique candidate : aucune certification absolue 1:1, aucune validation de géométrie native, aucune admission au combat, aucun groupe clôturé."
+      ],
+      "path": "public/cqc/assets/p67/pw-sandinista.png",
+      "publishedPath": "public/cqc/assets/p67/pw-sandinista.png",
+      "width": 1347,
+      "height": 1167,
+      "bytes": 523771,
+      "sha256": "899a543a7ed4e51fcce8808b4316167bb30d848e5d2212b7f2893d8813167205",
+      "gitBlobSha": "f043dc9be5442212fa0130f9645adb4dff883015",
+      "colorMode": "RGBA",
+      "colorType": 6,
+      "bitDepth": 8,
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1310557,
+        "nearOpaquePixels250To255": 231665,
+        "semiTransparentPixels1To249": 29727,
+        "boundsAt16": [
+          221,
+          102,
+          1154,
+          1109
+        ],
+        "borderAlphaMax": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        }
+      },
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "exactPrompt": "Use case: background-extraction\nAsset type: ONE individual static full-body Metal Gear Solid: Peace Walker PSP character sprite on true transparent alpha.\nPrimary request: faithfully redraw the exact Sandinista model shown in the supplied native extracted-model preview, Models Resource asset 331654. One adult male guerrilla in his reference outfit, not a generic rebel or a different Metal Gear character.\nPreserve all visible identifiers: medium-tan weathered face, black mustache and short dark beard, dark eyebrows, plain dark olive soft field cap; mustard-yellow scarf knotted at the front of his throat with two hanging ends; dark olive-brown long-sleeved fatigue shirt with two square breast pockets and a button placket; olive web waist belt with a central buckle, dark pistol holster at image-left hip and dark rectangular ammunition pouch at image-right; matching olive-brown trousers with large thigh pockets and dark worn short field boots. Keep the simple native PSP uniform, moderately stocky body proportions, cuff shapes and belt accessory placement. No added camouflage pattern or badge.\nComposition: complete frontal model-reference T pose as shown, arms straight outward, both hands and all boots present, generous transparent margins. One figure only, clean detailed 2D game illustration with restrained realistic folds and texture, neutral soft light. Preserve the source's silhouette and palette rather than inventing details.\nConstraints: no rifle or pistol held, no new vest or backpack, no helmet, no red beret, no flags, insignia or lettering. Remove gray background and tiny model-viewer text. No floor, cast shadow, scenery, HUD, caption, watermark, sheet or alternate view. Genuine alpha all around the one figure.",
+        "promptRecord": "docs/cqc-reprise/pass67/research/modern/pw-sandinista-prompt.txt",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass67/research/modern/references/pw-sandinista-preview.png"
+        ],
+        "transparent_background": true,
+        "postprocessing": "none; original image data URL decoded byte-for-byte; no programmatic pixel edits"
+      },
+      "selected": true,
+      "sourceGenerated": true,
+      "transparentBackground": true,
+      "nativeUhd": false,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "fidelityStatus": "pending_external_review",
+      "scopeClosed": false,
+      "nextWork": "Revue indépendante contre les références, puis inventaire séparé des autres variantes, des vues de dos et des postures utiles. Aucun changement de statut de combat."
+    },
+    {
+      "id": "mpop-ussr-male-a",
+      "label": "Portable Ops Plus — USSR Male Soldier (A)",
+      "episode": "Metal Gear Solid: Portable Ops Plus",
+      "episodeKey": "mpo_plus",
+      "workIds": [
+        "character:R-MPO-soviet"
+      ],
+      "scope": "Une recrue masculine soviétique A, cagoule sombre, tunique ocre à manches longues, vue frontale T. Ne couvre pas les autres types ni leurs palettes.",
+      "assetId": "asset:p67:mpop-ussr-male-a",
+      "pass": "P67",
+      "passId": "P67",
+      "kind": "character",
+      "edition": "Metal Gear Solid: Portable Ops Plus — PSP, preview communautaire d’un modèle attribué au jeu",
+      "bodyCoverage": "full_body_in_observed_pose",
+      "selectedVersion": "v1",
+      "referenceType": "community_native_PSP_model_preview",
+      "referenceURLs": [
+        "https://models.spriters-resource.com/psp/metalgearsolidportableopsplus/asset/323923/",
+        "https://models.spriters-resource.com/media/preview_icons/321/323923.png?updated=1755506373"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass67/research/modern/references/mpop-ussr-male-a-preview.png"
+      ],
+      "referenceInputFiles": [
+        "docs/cqc-reprise/pass67/research/modern/references/mpop-ussr-male-a-preview.png"
+      ],
+      "qaNotes": [
+        "Cagoule à ouverture étroite, quatre poches de tunique, bretelles doubles, étui image-gauche, poche et attache pendante image-droite, bottes brunes repris du preview.",
+        "Détails du visage autour des yeux, boucles, coutures et plis sont reconstruits.",
+        "Référence 750×650 issue d’un preview communautaire du modèle PSP ; origine de jeu attribuée par la fiche, pas un rendu promotionnel officiel. La taille de sortie ne restitue pas des détails absents de la source.",
+        "Composites clair et sombre inspectés : silhouette lisible, sans fond opaque ni halo coloré visible. Quelques valeurs alpha très faibles subsistent loin du contour ; fichier brut conservé.",
+        "PNG individuel brut du générateur, aucune retouche des pixels ni agrandissement. Les composites JPEG et les crops de références sont uniquement des outils de QA.",
+        "Source statique candidate : aucune certification absolue 1:1, aucune validation de géométrie native, aucune admission au combat, aucun groupe clôturé."
+      ],
+      "path": "public/cqc/assets/p67/mpop-ussr-male-a.png",
+      "publishedPath": "public/cqc/assets/p67/mpop-ussr-male-a.png",
+      "width": 1347,
+      "height": 1167,
+      "bytes": 543440,
+      "sha256": "3b0fd44c659bc74adf7f54ea967cabbb549947b4728f2225c345513f30f6e524",
+      "gitBlobSha": "55834a50055ce8c1f24dd473cfde1aae34d67f2b",
+      "colorMode": "RGBA",
+      "colorType": 6,
+      "bitDepth": 8,
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1256253,
+        "nearOpaquePixels250To255": 281681,
+        "semiTransparentPixels1To249": 34015,
+        "boundsAt16": [
+          121,
+          38,
+          1227,
+          1153
+        ],
+        "borderAlphaMax": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        }
+      },
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "exactPrompt": "Create ONE isolated full-body reference sprite of the exact USSR Male Soldier (A) recruit from Metal Gear Solid: Portable Ops Plus on PSP, using the attached native PSP model preview as the visual authority. This is a faithful source study for a fan game character catalogue. One adult fictional character only.\n\nMatch the entire visible silhouette and proportions from the reference, including its front-facing horizontal T pose, height, arm angles, hand pose, masked head, costume geometry, and left/right placement of each item. Preserve the characteristic original PSP game-model look, restrained low-poly surfaces, muted game texture colours and simple even lighting. Do not redesign or modernize the uniform.\n\nVisible identifying details: dark charcoal balaclava with only a narrow horizontal opening for the eyes; ochre mustard long-sleeved field tunic with two chest pockets and two large lower pockets; dark double vertical suspenders with small silver slides; dark belt; long dark holster at image-left hip; a small dark olive pouch at image-right hip; a narrow hanging brown/dark attachment and strap down image-right thigh; matching ochre cargo trousers gathered into tall brown leather boots. Keep the little striped undershirt visible at the neck and the bare medium-tan hands. Retain all visible seam and colour-block placements. No new insignia, no extra weapons, no labels, no text.\n\nShow the full original body from top of head to soles, uncropped, centred with clear transparent margins around hands and boots. The background must be genuinely transparent alpha everywhere outside the character. No floor, no pedestal, no contact shadow, no studio backdrop, no grey reference canvas, no viewer UI. Output a single PNG cutout. Do not include the reference image, a comparison panel, or multiple views. Preserve the source-facing pose rather than invent unseen geometry.",
+        "promptRecord": "docs/cqc-reprise/pass67/research/modern/mpop-ussr-male-a-prompt.txt",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass67/research/modern/references/mpop-ussr-male-a-preview.png"
+        ],
+        "transparent_background": true,
+        "postprocessing": "none; original image data URL decoded byte-for-byte; no programmatic pixel edits"
+      },
+      "selected": true,
+      "sourceGenerated": true,
+      "transparentBackground": true,
+      "nativeUhd": false,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "fidelityStatus": "pending_external_review",
+      "scopeClosed": false,
+      "nextWork": "Revue indépendante contre les références, puis inventaire séparé des autres variantes, des vues de dos et des postures utiles. Aucun changement de statut de combat."
+    },
+    {
+      "id": "mpop-female-officer-a",
+      "label": "Portable Ops Plus — Female Officer (A)",
+      "episode": "Metal Gear Solid: Portable Ops Plus",
+      "episodeKey": "mpo_plus",
+      "workIds": [
+        "character:R-MPO-medical"
+      ],
+      "scope": "Une officière recrutable A, coiffe olive, tunique à boutons et sangle diagonale, vue frontale T. Rattachement au groupe P61 « médecins, scientifiques et officiers recrutables » ; pas de région promotionnelle inventée.",
+      "assetId": "asset:p67:mpop-female-officer-a",
+      "pass": "P67",
+      "passId": "P67",
+      "kind": "character",
+      "edition": "Metal Gear Solid: Portable Ops Plus — PSP, preview communautaire d’un modèle attribué au jeu",
+      "bodyCoverage": "full_body_in_observed_pose",
+      "selectedVersion": "v1",
+      "referenceType": "community_native_PSP_model_preview",
+      "referenceURLs": [
+        "https://models.spriters-resource.com/psp/metalgearsolidportableopsplus/asset/323051/",
+        "https://models.spriters-resource.com/media/preview_icons/320/323051.png?updated=1755506115"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass67/research/modern/references/mpop-female-officer-a-preview.png"
+      ],
+      "referenceInputFiles": [
+        "docs/cqc-reprise/pass67/research/modern/references/mpop-female-officer-a-preview.png"
+      ],
+      "qaNotes": [
+        "Cheveux blonds, coiffe olive à panneau brun, col brun/rouge, poches de poitrine, sangle noire diagonale, petit étui et pochette de ceinture concordent avec le preview.",
+        "Cadre serré mais mains, coiffe et semelles restent visibles ; le contour significatif garde au moins 6 px de marge. Insigne et visage restent reconstruits.",
+        "Référence 750×650 issue d’un preview communautaire du modèle PSP ; origine de jeu attribuée par la fiche, pas un rendu promotionnel officiel. La taille de sortie ne restitue pas des détails absents de la source.",
+        "Composites clair et sombre inspectés : silhouette lisible, sans fond opaque ni halo coloré visible. Quelques valeurs alpha très faibles subsistent loin du contour ; fichier brut conservé.",
+        "PNG individuel brut du générateur, aucune retouche des pixels ni agrandissement. Les composites JPEG et les crops de références sont uniquement des outils de QA.",
+        "Source statique candidate : aucune certification absolue 1:1, aucune validation de géométrie native, aucune admission au combat, aucun groupe clôturé."
+      ],
+      "path": "public/cqc/assets/p67/mpop-female-officer-a.png",
+      "publishedPath": "public/cqc/assets/p67/mpop-female-officer-a.png",
+      "width": 1239,
+      "height": 1270,
+      "bytes": 501626,
+      "sha256": "894d9f01444dba1962e7b61b25386c62285563e3ddd0af8fea6a006235a9a5a3",
+      "gitBlobSha": "0adf6e30534acb99ae2c1f9efed09aeb4c54986d",
+      "colorMode": "RGBA",
+      "colorType": 6,
+      "bitDepth": 8,
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1272589,
+        "nearOpaquePixels250To255": 260433,
+        "semiTransparentPixels1To249": 40508,
+        "boundsAt16": [
+          11,
+          6,
+          1227,
+          1257
+        ],
+        "borderAlphaMax": {
+          "top": 1,
+          "bottom": 1,
+          "left": 1,
+          "right": 1
+        }
+      },
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "exactPrompt": "Create ONE isolated full-body reference sprite of the exact Female Officer (A) recruit from Metal Gear Solid: Portable Ops Plus on PSP, using the attached native PSP model preview as the visual authority. This is a faithful source study for a fan game character catalogue. One adult fictional character only.\n\nMatch the visible front-facing silhouette, proportions and horizontal T pose of the reference exactly as closely as possible. Preserve the original PSP low-poly game-model appearance, restrained texture detail and even neutral lighting. Do not redesign the character or give her a contemporary uniform.\n\nVisible identifying features: short straight pale blonde hair parted at the side, adult fair-skinned face, tilted olive side cap with a reddish-brown front triangular panel and tiny pale emblem, olive long-sleeved buttoned service tunic with reddish-brown collar tabs and narrow shoulder accents, two buttoned chest flap pockets, long lower tunic, narrow black diagonal shoulder strap running from image-left shoulder to image-right waist, dark belt and rectangular dark belt buckle, small brown holster on image-left hip, small rectangular grey-brown pouch on image-right hip, matching olive trousers, tall close-fitting black boots. Bare hands in the same source pose. Preserve the exact observed positions and modest proportions of buttons, pockets and straps. Do not invent lettering, medals or extra equipment.\n\nOne complete figure only, top of cap to soles visible with margins around hands and boots. True transparent alpha background outside the figure, no floor or contact shadow, no grey studio backdrop, no text, no labels, no viewer UI, no reference comparison. Output a single cutout PNG. Keep the observed pose to avoid inventing hidden geometry.",
+        "promptRecord": "docs/cqc-reprise/pass67/research/modern/mpop-female-officer-a-prompt.txt",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass67/research/modern/references/mpop-female-officer-a-preview.png"
+        ],
+        "transparent_background": true,
+        "postprocessing": "none; original image data URL decoded byte-for-byte; no programmatic pixel edits"
+      },
+      "selected": true,
+      "sourceGenerated": true,
+      "transparentBackground": true,
+      "nativeUhd": false,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "fidelityStatus": "pending_external_review",
+      "scopeClosed": false,
+      "nextWork": "Revue indépendante contre les références, puis inventaire séparé des autres variantes, des vues de dos et des postures utiles. Aucun changement de statut de combat."
+    },
+    {
+      "id": "delta-gru-balaclava-portrait",
+      "label": "Delta — GRU à cagoule, portrait du haut du torse",
+      "episode": "Metal Gear Solid Delta: Snake Eater",
+      "episodeKey": "delta",
+      "workIds": [
+        "character:R-MGS3-gru"
+      ],
+      "scope": "Portrait tête, épaules et haut du torse uniquement, d’après une capture native PC. Le bord inférieur au niveau des poches est volontaire ; aucun bras complet, taille, dos, jambe ou pied n’est produit.",
+      "assetId": "asset:p67:delta-gru-balaclava-portrait",
+      "pass": "P67",
+      "passId": "P67",
+      "kind": "character",
+      "edition": "Delta — capture PC (Esc Pause visible), publication IMFDB le 31 août 2025",
+      "bodyCoverage": "portrait_upper_torso",
+      "selectedVersion": "v1",
+      "referenceType": "native_PC_cutscene_screenshot_community_archive",
+      "referenceURLs": [
+        "https://www.imfdb.org/wiki/File:Metal_Gear_Solid_3_Delta_GRU_Soldier_cutscene_AK.jpg",
+        "https://www.imfdb.org/images/6/63/Metal_Gear_Solid_3_Delta_GRU_Soldier_cutscene_AK.jpg",
+        "https://www.imfdb.org/wiki/Metal_Gear_Solid_%CE%94:_Snake_Eater"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass67/research/modern/references/delta-gru-cutscene-ak-native.jpg",
+        "docs/cqc-reprise/pass67/research/modern/references/delta-gru-balaclava-upper-body-crop.png"
+      ],
+      "referenceInputFiles": [
+        "docs/cqc-reprise/pass67/research/modern/references/delta-gru-balaclava-upper-body-crop.png"
+      ],
+      "qaNotes": [
+        "Cagoule olive, ouverture des yeux, regard vers image-gauche, coutures de tête, col sombre, camouflage et trois poches frontales respectent les détails observés.",
+        "Texture des tissus et peau reconstruite à plus grande définition ; petits écarts d’éclairage et de plis. Ce portrait ne remplace pas un corps GRU complet.",
+        "Édition Delta explicite : pas d’association automatique à la tenue PS2 de MGS3 ni au mode FOX HUNT.",
+        "Une seule capture de cutscene native archivée par Samz. Son cadrage ne montre pas le bas du corps ; l’image générée reste un portrait limité au haut du torse.",
+        "Composites clair et sombre inspectés : silhouette lisible, sans fond opaque ni halo coloré visible. Quelques valeurs alpha très faibles subsistent loin du contour ; fichier brut conservé.",
+        "PNG individuel brut du générateur, aucune retouche des pixels ni agrandissement. Les composites JPEG et les crops de références sont uniquement des outils de QA.",
+        "Source statique candidate : aucune certification absolue 1:1, aucune validation de géométrie native, aucune admission au combat, aucun groupe clôturé."
+      ],
+      "path": "public/cqc/assets/p67/delta-gru-balaclava-portrait.png",
+      "publishedPath": "public/cqc/assets/p67/delta-gru-balaclava-portrait.png",
+      "width": 1492,
+      "height": 1054,
+      "bytes": 1501583,
+      "sha256": "155052e3f1288eb9278af25d2e1062149fd27381ac1c4ce4977158ff8668068e",
+      "gitBlobSha": "2b97ad1ea0f698fd79f9ebbd020ad087d8998d80",
+      "colorMode": "RGBA",
+      "colorType": 6,
+      "bitDepth": 8,
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 828693,
+        "nearOpaquePixels250To255": 714600,
+        "semiTransparentPixels1To249": 29275,
+        "boundsAt16": [
+          9,
+          20,
+          1463,
+          1051
+        ],
+        "borderAlphaMax": {
+          "top": 0,
+          "bottom": 7,
+          "left": 2,
+          "right": 0
+        }
+      },
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "exactPrompt": "Create ONE transparent cutout portrait of the exact GRU soldier visible in the attached native cutscene crop from Metal Gear Solid Delta: Snake Eater. Use this inspected screenshot as the sole visual authority for the character. This is an adult fictional game NPC; preserve the source's original realistic in-game rendering, muted olive palette and dramatic but readable lighting.\n\nOnly reproduce the head, neck, shoulders and upper chest shown in this crop. Keep the same slightly low camera angle, head turned a little toward image-left and eyes looking that way. Preserve the olive fabric balaclava with its narrow eye opening, forehead panel and sewn side seams; exposed light skin around the eyes; brown eyebrows; the dark collar around the neck; green camouflage upper sleeves; chest harness straps and the three large vertical dark olive magazine pouches with rounded flap closures visible across the chest. Keep the actual source proportions, fabrics, folds, lighting and asymmetric strap placements. No new badge, helmet, face covering, insignia or invented readable text.\n\nDo not extend the character into a full body. The output scope is strictly this observed head-and-upper-torso portrait, with the lower edge cut horizontally at the same chest level as the reference. Do not invent hands, weapon, waist, legs or unseen rear equipment. Leave a transparent margin around the top and sides of the source-derived silhouette while keeping the same portrait crop. Remove the background sky, building, searchlight and all environment; true transparent alpha outside the character. No ground, no frame, no text or UI, no comparison, no additional character. Output one isolated PNG portrait.",
+        "promptRecord": "docs/cqc-reprise/pass67/research/modern/delta-gru-balaclava-portrait-prompt.txt",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass67/research/modern/references/delta-gru-balaclava-upper-body-crop.png"
+        ],
+        "transparent_background": true,
+        "postprocessing": "none; original image data URL decoded byte-for-byte; no programmatic pixel edits"
+      },
+      "selected": true,
+      "sourceGenerated": true,
+      "transparentBackground": true,
+      "nativeUhd": false,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "fidelityStatus": "pending_external_review",
+      "scopeClosed": false,
+      "nextWork": "Revue indépendante contre les références, puis inventaire séparé des autres variantes, des vues de dos et des postures utiles. Aucun changement de statut de combat."
+    },
+    {
+      "id": "mgs4-middle-east-rebel-short-sleeve",
+      "label": "MGS4 — rebelle du Moyen-Orient, manches courtes",
+      "episode": "Metal Gear Solid 4: Guns of the Patriots",
+      "episodeKey": "mgs4",
+      "workIds": [
+        "character:R-MGS4-rebelme"
+      ],
+      "scope": "Un rebelle au premier plan de la capture PS3 archivée, manches courtes olive et tissu autour de la tête/du cou, corps entier dans la pose observée. Ni groupe régional complet, ni variante sud-américaine.",
+      "assetId": "asset:p67:mgs4-middle-east-rebel-short-sleeve",
+      "pass": "P67",
+      "passId": "P67",
+      "kind": "character",
+      "edition": "MGS4 — capture attribuée au jeu PS3 par IGDB/Backloggd ; date et build de capture non établis",
+      "bodyCoverage": "full_body_in_observed_pose",
+      "selectedVersion": "v1",
+      "referenceType": "native_PS3_game_or_promotional_screenshot_archive",
+      "referenceURLs": [
+        "https://backloggd.com/games/metal-gear-solid-4-guns-of-the-patriots/",
+        "https://images.igdb.com/igdb/image/upload/t_1080p_2x/xvxsun2a7aoiexmuvftz.webp"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass67/research/modern/references/mgs4-rebel-short-sleeve-native-crop.png",
+        "docs/cqc-reprise/pass67/research/modern/references/mgs4-rebels-native-igdb.webp"
+      ],
+      "referenceInputFiles": [
+        "docs/cqc-reprise/pass67/research/modern/references/mgs4-rebel-short-sleeve-native-crop.png",
+        "docs/cqc-reprise/pass67/research/modern/references/mgs4-rebels-native-igdb.webp"
+      ],
+      "qaNotes": [
+        "Tissu de tête à plis diagonaux, ouverture du visage, chemisette olive, bras nus, sangles, pantalon ample et bottes concordent avec le sujet choisi.",
+        "L’autre rebelle situé derrière est exclu ; la silhouette entière et l’arme tenue dans la pose source sont visibles.",
+        "Pose, proportions fines, mains et géométrie de l’arme demeurent reconstruites ; aucun rôle combat ou mouvement validé.",
+        "Capture PS3 de jeu ou promotionnelle, archivée en présentation agrandie et douce. La build exacte (preview ou retail) n’est pas établie. Le PNG reproduit le sujet observé ; aucune équivalence certifiée au modèle retail.",
+        "Composites clair et sombre inspectés : silhouette lisible, sans fond opaque ni halo coloré visible. Quelques valeurs alpha très faibles subsistent loin du contour ; fichier brut conservé.",
+        "PNG individuel brut du générateur, aucune retouche des pixels ni agrandissement. Les composites JPEG et les crops de références sont uniquement des outils de QA.",
+        "Source statique candidate : aucune certification absolue 1:1, aucune validation de géométrie native, aucune admission au combat, aucun groupe clôturé."
+      ],
+      "path": "public/cqc/assets/p67/mgs4-middle-east-rebel-short-sleeve.png",
+      "publishedPath": "public/cqc/assets/p67/mgs4-middle-east-rebel-short-sleeve.png",
+      "width": 1094,
+      "height": 1438,
+      "bytes": 1023813,
+      "sha256": "7f4e487096e5886c02becb30e60b908eb894569a057c199259eca94e79713c40",
+      "gitBlobSha": "459fca707dc5c68cd24d51dcfa7a00a4eb38df32",
+      "colorMode": "RGBA",
+      "colorType": 6,
+      "bitDepth": 8,
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 986136,
+        "nearOpaquePixels250To255": 533083,
+        "semiTransparentPixels1To249": 53953,
+        "boundsAt16": [
+          69,
+          5,
+          1060,
+          1430
+        ],
+        "borderAlphaMax": {
+          "top": 4,
+          "bottom": 2,
+          "left": 0,
+          "right": 0
+        }
+      },
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "exactPrompt": "Create ONE full-body transparent character sprite of the precise foreground short-sleeved Middle Eastern rebel in the attached native Metal Gear Solid 4: Guns of the Patriots PS3 screenshot. The first reference is a focused crop; the second shows the entire original game scene for context. The requested subject is the adult man nearest the camera on the left, wearing a dark olive short-sleeve shirt, pale olive trousers and a tan/olive head-and-neck scarf, holding a dark rifle. Do not include the man behind him, the light-tunic man to his right, or the robot.\n\nFaithfully reproduce this ONE observed game character in his source pose: full body seen slightly from above, legs spread with knees bent, torso twisted a little toward image-right, head looking toward image-right, both bare forearms visible, rifle held across his chest toward image-right. Preserve the wrapped cloth on his head with its diagonal folds, face opening, neck scarf, short dark olive sleeves, dark chest straps and rectangular belt/chest pouches, muted pale olive loose trousers, dark olive-brown boots, and the exact source proportions. Keep the rifle as the existing fictional game prop in the same position, scale, dark colour blocks and silhouette, without adding attachments, changing weapons or inventing labels.\n\nRecreate the restrained PS3 in-game model and texture appearance visible in the screenshot, with muted dusty colours and simple game lighting. Do not turn it into a photographic real-world soldier or a new generic design. Preserve the actual visible outfit and stance; do not add a helmet, armor, insignia or gear not present.\n\nThe complete chosen figure, head to boot soles and entire visible rifle, must be uncropped with transparent margins. Isolate only him on true transparent alpha; remove all other characters, paving, shadows and environmental pixels. No floor, no contact shadow, no UI, no text, no comparison panels. One character PNG only. No unseen back view or animation frames.",
+        "promptRecord": "docs/cqc-reprise/pass67/research/modern/mgs4-middle-east-rebel-short-sleeve-prompt.txt",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass67/research/modern/references/mgs4-rebel-short-sleeve-native-crop.png",
+          "docs/cqc-reprise/pass67/research/modern/references/mgs4-rebels-native-igdb.webp"
+        ],
+        "transparent_background": true,
+        "postprocessing": "none; original image data URL decoded byte-for-byte; no programmatic pixel edits"
+      },
+      "selected": true,
+      "sourceGenerated": true,
+      "transparentBackground": true,
+      "nativeUhd": false,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "fidelityStatus": "pending_external_review",
+      "scopeClosed": false,
+      "nextWork": "Revue indépendante contre les références, puis inventaire séparé des autres variantes, des vues de dos et des postures utiles. Aucun changement de statut de combat."
+    },
+    {
+      "id": "mgs4-middle-east-rebel-light-tunic",
+      "label": "MGS4 — rebelle du Moyen-Orient, tunique claire",
+      "episode": "Metal Gear Solid 4: Guns of the Patriots",
+      "episodeKey": "mgs4",
+      "workIds": [
+        "character:R-MGS4-rebelme"
+      ],
+      "scope": "Un second rebelle distinct de la même capture PS3, tunique claire longue et manches longues, corps entier dans la pose observée. Variante indépendante du rebelle à manches courtes.",
+      "assetId": "asset:p67:mgs4-middle-east-rebel-light-tunic",
+      "pass": "P67",
+      "passId": "P67",
+      "kind": "character",
+      "edition": "MGS4 — capture attribuée au jeu PS3 par IGDB/Backloggd ; date et build de capture non établis",
+      "bodyCoverage": "full_body_in_observed_pose",
+      "selectedVersion": "v1",
+      "referenceType": "native_PS3_game_or_promotional_screenshot_archive",
+      "referenceURLs": [
+        "https://backloggd.com/games/metal-gear-solid-4-guns-of-the-patriots/",
+        "https://images.igdb.com/igdb/image/upload/t_1080p_2x/xvxsun2a7aoiexmuvftz.webp"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass67/research/modern/references/mgs4-rebel-light-tunic-native-crop.png",
+        "docs/cqc-reprise/pass67/research/modern/references/mgs4-rebels-native-igdb.webp"
+      ],
+      "referenceInputFiles": [
+        "docs/cqc-reprise/pass67/research/modern/references/mgs4-rebel-light-tunic-native-crop.png",
+        "docs/cqc-reprise/pass67/research/modern/references/mgs4-rebels-native-igdb.webp"
+      ],
+      "qaNotes": [
+        "Tissu olive sur la tête, tunique claire évasée au niveau des genoux, harnais noir à poches, pantalon clair et chaussures basses sombres suivent le personnage central visible.",
+        "Les deux semelles existent dans la référence ; aucun pied documentaire n’a été complété à partir d’un buste.",
+        "Marge inférieure très serrée (1 px au seuil alpha >16), sans semelle manquante constatée sur les composites. Mains, poches, arme et motifs du pantalon restent reconstruits.",
+        "Capture PS3 de jeu ou promotionnelle, archivée en présentation agrandie et douce. La build exacte (preview ou retail) n’est pas établie. Le PNG reproduit le sujet observé ; aucune équivalence certifiée au modèle retail.",
+        "Composites clair et sombre inspectés : silhouette lisible, sans fond opaque ni halo coloré visible. Quelques valeurs alpha très faibles subsistent loin du contour ; fichier brut conservé.",
+        "PNG individuel brut du générateur, aucune retouche des pixels ni agrandissement. Les composites JPEG et les crops de références sont uniquement des outils de QA.",
+        "Source statique candidate : aucune certification absolue 1:1, aucune validation de géométrie native, aucune admission au combat, aucun groupe clôturé."
+      ],
+      "path": "public/cqc/assets/p67/mgs4-middle-east-rebel-light-tunic.png",
+      "publishedPath": "public/cqc/assets/p67/mgs4-middle-east-rebel-light-tunic.png",
+      "width": 1079,
+      "height": 1458,
+      "bytes": 1125975,
+      "sha256": "127ef723240004424831289d81bd9754985a59ea5a8767e9ed6c4c7e6390deae",
+      "gitBlobSha": "6fa7b356aebeed69a5232420b2a4ddb579a31c65",
+      "colorMode": "RGBA",
+      "colorType": 6,
+      "bitDepth": 8,
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 900528,
+        "nearOpaquePixels250To255": 627084,
+        "semiTransparentPixels1To249": 45570,
+        "boundsAt16": [
+          96,
+          10,
+          1013,
+          1457
+        ],
+        "borderAlphaMax": {
+          "top": 1,
+          "bottom": 6,
+          "left": 1,
+          "right": 0
+        }
+      },
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "exactPrompt": "Create ONE full-body transparent character sprite of the precise light-tunic Middle Eastern rebel standing in the centre of the attached native Metal Gear Solid 4: Guns of the Patriots PS3 screenshot. The first reference is a focused crop of him, and the second is the entire original scene. The requested subject is the adult man in the pale cream long-sleeve tunic with a dark chest rig, olive cloth on his head, light trousers and dark shoes. Do not include the short-sleeved foreground man, any other rebel, or the robot.\n\nReproduce this exact observed variant and source pose: three-quarter body facing and aiming toward image-right, head looking that way, both hands on the dark compact rifle held at upper chest height; elbows bent, feet planted apart, knees slightly bent. Preserve the olive head wrap with its visible fold, uncovered adult face, collar and long sleeves of the pale dusty cream tunic, the dark harness with visible front pouches, the tunic's flaring knee-length lower shape, the light loose trousers with their dark fabric folds and markings below the hem, and low dark worn lace-up shoes. Keep the game-source body proportions, silhouette, shoulder angle, sleeve volume, chest equipment, hem length and footwear. Reproduce the original visible fictional game weapon prop in exactly its source position and silhouette without added attachments or technical redesign.\n\nKeep a restrained original PS3 in-game render and texture appearance with muted dusty colour grading. Do not make a photographic real-world combatant, a generic redesign or a different cultural costume. Do not add insignia, a helmet, beard, modern armor, additional gear, readable text or ornament absent from the image.\n\nThe whole requested character from top of head to both shoe soles, plus the full visible rifle, must be within the frame with clear transparent margins. Remove all background, paving, other figures and cast shadow. True transparent alpha outside this one complete character; no ground plane, no contact shadow, no UI, no labels, no text, no comparison panels or other angles. Output a single isolated PNG.",
+        "promptRecord": "docs/cqc-reprise/pass67/research/modern/mgs4-middle-east-rebel-light-tunic-prompt.txt",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass67/research/modern/references/mgs4-rebel-light-tunic-native-crop.png",
+          "docs/cqc-reprise/pass67/research/modern/references/mgs4-rebels-native-igdb.webp"
+        ],
+        "transparent_background": true,
+        "postprocessing": "none; original image data URL decoded byte-for-byte; no programmatic pixel edits"
+      },
+      "selected": true,
+      "sourceGenerated": true,
+      "transparentBackground": true,
+      "nativeUhd": false,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "fidelityStatus": "pending_external_review",
+      "scopeClosed": false,
+      "nextWork": "Revue indépendante contre les références, puis inventaire séparé des autres variantes, des vues de dos et des postures utiles. Aucun changement de statut de combat."
+    }
+  ],
+  "dedupAudit": "docs/cqc-reprise/pass67/research/modern/dedup-audit.json",
+  "sources": "docs/cqc-reprise/pass67/research/modern/sources.json",
+  "visualQA": "docs/cqc-reprise/pass67/research/modern/visual-qa.json",
+  "pixelQA": "docs/cqc-reprise/pass67/research/modern/pixel-qa.json",
+  "remainingPriorities": "docs/cqc-reprise/pass67/research/modern/remaining-priorities.json",
+  "integrationInstructions": [
+    "Les neuf PNG sont sélectionnés comme sources statiques candidates, pas comme sprites admis au combat.",
+    "episodeKey explicite obligatoire : mpo_plus, pw, delta, mgs4. Aucun alias automatique vers MPO/MGS3/3DS/FOX HUNT.",
+    "Conserver scopeClosed:false, absolute1to1Certified:false et referenceGeometryValidated:false.",
+    "Le GRU Delta est uniquement un portrait haut du torse.",
+    "Les deux rebelles MGS4 suivent une capture PS3 archivée à build/date non vérifiées, éventuellement promotionnelle.",
+    "Le refus Sentinel Vest ne produit aucun PNG et ne doit pas être relancé ou renommé pour réessayer.",
+    "Aucun fichier central, arbre Git, commit, référence GitHub ou upload GitHub modifié par cet agent pour P67."
+  ],
+  "githubUploaded": false,
+  "centralRegistriesModified": false
+}

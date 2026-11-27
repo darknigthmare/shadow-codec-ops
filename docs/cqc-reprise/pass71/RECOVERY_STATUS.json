@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "project": "MGS Codec Simulator / CQC Versus Legacy",
+  "batch": "P70",
+  "checked_at_utc": "2026-11-27 05:21:57 UTC",
+  "status": "not_recovered_from_checked_sources",
+  "recovered_png_count": 0,
+  "recovered_prompt_count": 0,
+  "recovered_manifest_count": 0,
+  "claimed_prior_state": {
+    "provenance": "Prior assistant statements retrieved by the parent via Personal Context; not independent file verification",
+    "announced_at_utc": [
+      "2026-11-26T19:07:14Z",
+      "2026-11-26T19:10:26Z"
+    ],
+    "announced_new_sources": 11,
+    "announced_total_selected_sources": 278,
+    "announced_atlas_records": 101,
+    "announced_historical_rows_without_candidate": 72
+  },
+  "last_repository_state_reported_by_parent": {
+    "repository": "darknigthmare/shadow-codec-ops",
+    "pull_request": 25,
+    "branch": "codex/cqc-p61-missing-static-sources-20261125",
+    "commit": "f2b7c526a3a6a763767afcd8ae91f60bc7012d7c",
+    "batch": "P69",
+    "selected_sources": 267,
+    "atlas_records": 90,
+    "verified_by": "Parent; no additional GitHub lookup performed by recovery subtask"
+  },
+  "checks": [
+    {
+      "source": "ChatGPT Library",
+      "operation": "search",
+      "queries": [
+        {
+          "q": "CQC",
+          "search_title_only": true
+        },
+        {
+          "q": "P70",
+          "search_title_only": true
+        }
+      ],
+      "top_k": 50,
+      "outcome": "50 CQC filename matches from earlier production; no P70 candidate returned. None of these older files was downloaded."
+    },
+    {
+      "source": "ChatGPT Library",
+      "operation": "list",
+      "recursive": true,
+      "include_generated": true,
+      "limit": 200,
+      "filters": {
+        "created_after": "2026-11-26T18:40:00Z",
+        "created_before": "2026-11-26T19:30:00Z"
+      },
+      "outcome": "0 items returned; no continuation cursor."
+    },
+    {
+      "source": "ChatGPT Library",
+      "operation": "list",
+      "library_path": "/MGS Codec Simulator",
+      "recursive": true,
+      "limit": 200,
+      "sort": "created_at",
+      "sort_order": "desc",
+      "outcome": "200 items returned with continuation. Newest returned project item created 2026-09-22T01:33:03.436511+00:00; no P70 candidate in inspected first page. Older continuation pages were not read."
+    },
+    {
+      "source": "ChatGPT Library",
+      "operation": "search",
+      "queries": [
+        {
+          "q": "P70"
+        },
+        {
+          "q": "278 sources"
+        },
+        {
+          "q": "101 fiches"
+        }
+      ],
+      "filters": {
+        "created_after": "2026-11-25T00:00:00Z"
+      },
+      "top_k": 20,
+      "outcome": "0 results returned."
+    },
+    {
+      "source": "ChatGPT Library",
+      "operation": "list",
+      "recursive": true,
+      "include_generated": true,
+      "include_folders": false,
+      "limit": 30,
+      "sort": "created_at",
+      "sort_order": "desc",
+      "outcome": "30 files returned with continuation. Newest returned file created 2026-11-19T11:31:23.971985+00:00. No P70 candidate in inspected first page."
+    },
+    {
+      "source": "ChatGPT Library",
+      "operation": "search",
+      "queries": [
+        {
+          "q": "P70",
+          "search_title_only": true
+        }
+      ],
+      "top_k": 100,
+      "sort": "created_at",
+      "sort_order": "desc",
+      "outcome": "0 results returned."
+    },
+    {
+      "source": "ChatGPT Library",
+      "operation": "search",
+      "queries": [
+        {
+          "q": "CQC",
+          "search_title_only": true
+        }
+      ],
+      "filters": {
+        "created_after": "2026-11-01T00:00:00Z"
+      },
+      "top_k": 20,
+      "outcome": "0 results returned."
+    },
+    {
+      "source": "Google Drive",
+      "operation": "search",
+      "query": "P70",
+      "topn": 30,
+      "outcome": "2 incidental older text/HTML matches returned; neither identifies a CQC P70 deliverable. No content fetched."
+    },
+    {
+      "source": "Google Drive",
+      "operation": "search",
+      "query": "CQC",
+      "topn": 100,
+      "special_filter_query_str": "trashed = false and modifiedTime > '2026-11-25T00:00:00'",
+      "outcome": "4 matches returned: portfolio dashboard/supporting README files and an unrelated workbook; no P70 deliverable identified. No content fetched."
+    },
+    {
+      "source": "Google Drive",
+      "operation": "search",
+      "query": "shadow-codec",
+      "topn": 30,
+      "outcome": "5 matches returned: dashboard, historical PASS38 reports and unrelated workbooks; no P70 deliverable identified. No content fetched."
+    },
+    {
+      "source": "Google Drive",
+      "operation": "search",
+      "topn": 100,
+      "special_filter_query_str": "trashed = false and createdTime > '2026-11-26T18:40:00' and createdTime < '2026-11-26T19:30:00'",
+      "outcome": "8 matches returned, all NEXUS deliverables by title; no CQC PNG or P70 deliverable. No content fetched."
+    },
+    {
+      "source": "Personal Context",
+      "operation": "search",
+      "query": "Pour reprendre le projet MGS Codec Simulator/CQC, j'ai besoin des onze NOMS de sujets du lot P70 annoncé le 26 novembre 2026 entre 18h47 et 19h10 après P69, passant de 267 à 278 sources et de 90 à 101 fiches Atlas. Retrouve uniquement les personnages, machines, décors ou accessoires de ces onze nouvelles images, leurs noms de PNG et chemins locaux ou les prompts exacts s'ils figurent dans les échanges. Je connais déjà la PR #25 et les compteurs ; ils ne suffisent pas pour retrouver les originaux. Ne mélange pas les lots Alien, Infernal, Halo, Tantalus ou d'autres projets.",
+      "outcome": "Unavailable in this child conversation: INVALID_ARGUMENT, Personal context is unavailable for this conversation."
+    },
+    {
+      "source": "Personal Context",
+      "operation": "search",
+      "query": "MGS Codec Simulator CQC : quels sont les noms des 11 images du lot P70 préparé le 26 novembre 2026 après P69, portant le total à 278 sources et 101 fiches Atlas ? Je cherche les sujets et noms de fichiers pour récupérer la production précédente.",
+      "outcome": "Unavailable in this child conversation: INVALID_ARGUMENT, Personal context is unavailable for this conversation."
+    }
+  ],
+  "limits": [
+    "A zero-result search or first inventory page does not prove that the files never existed or were deleted.",
+    "No authoritative source filenames, file IDs, subjects, source PNG bytes, or exact prompts for P70 were recovered.",
+    "The search covers only accessible Library/Drive search and inventory results; it is not an exhaustive search of all historic conversation attachments or transient workspaces.",
+    "No P70 asset was regenerated, relabeled, counted as delivered, or published by this recovery subtask."
+  ],
+  "continuation": {
+    "reserve_batch_identifier": "P70",
+    "use_next_identifier_for_new_work": "P71",
+    "reason": "Keep P70 recoverable without overwriting the 11 sources announced previously.",
+    "counting_rule": "Count only verified repository files; do not add the announced 11 P70 sources until original files are recovered and verified.",
+    "followup_if_originals_found": "Compare original SHA-256/Git blob IDs against current published assets; archive provenance and exact original prompts; admit only verified non-duplicates."
+  }
+}

@@ -1,0 +1,3881 @@
+{
+  "schema": "cqc.bible.extension-guide-map-p71.v1",
+  "asOf": "2026-11-27",
+  "timezone": "Europe/Paris",
+  "repository": "darknigthmare/shadow-codec-ops",
+  "pullRequest": 25,
+  "baselineCommit": "f2b7c526a3a6a763767afcd8ae91f60bc7012d7c",
+  "historicalGuideMap": "docs/cqc-bible/guide-map.json",
+  "sourceProvenance": "docs/cqc-bible/sources/provenance-p71.json",
+  "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+  "scope": {
+    "pass": "P71",
+    "reservedPreviousPass": "P70: prior announced 11 files not recovered; not counted or recreated here.",
+    "baseGuideAlreadyIntegrated": true,
+    "baseGuideByteIdentical": true,
+    "historicalRequirementsPreserved": 90,
+    "newSections": [
+      30,
+      67
+    ],
+    "phase": "static_sources_and_bible_with_local_dossier_access_slice",
+    "historicalP69Counts": {
+      "selectedSources": 267,
+      "atlasDossiers": 90,
+      "archivedAttempts": 20
+    },
+    "noNewRuntimeTag": true,
+    "noNewPaidEntitlement": true,
+    "noHistoricalRosterGate": true,
+    "currentP71Counts": {
+      "selectedSources": 272,
+      "atlasDossiers": 95,
+      "archivedAttempts": 20,
+      "newSelectedSources": 5,
+      "historicalMissingRowsStillOpen": 75,
+      "sourceManifest": "docs/cqc-reprise/pass71/delivery-manifest.json",
+      "localRewardDossiersExcludedFromAtlasCount": 3
+    }
+  },
+  "statusDefinitions": {
+    "documented": "Documentation delivered; no new runtime claim.",
+    "specification_only": "Specified only; implementation and functional validation still required.",
+    "partial_inherited_code": "Partial existing behavior read in source; not added by P71 and not a complete extension implementation.",
+    "deferred_dependency": "Implementation depends on named future systems, service or backend; not operational.",
+    "implemented_p71_local_scope": "Implemented for three local dossier rewards. Logic and DOM checks passed within that scope; real-browser rendering and interaction scenarios remain unexecuted. No full combat/catalogue-wide access claim."
+  },
+  "guides": [
+    {
+      "id": "general",
+      "path": "docs/cqc-bible/sources/Combat_Games_Guide_General_v1.0.txt",
+      "sections": [
+        0,
+        29
+      ],
+      "preexisting": true
+    },
+    {
+      "id": "extension01",
+      "path": "docs/cqc-bible/sources/Combat_Games_Extension_01_Tag_Taunts_Bonus_v1.0.txt",
+      "sections": [
+        30,
+        49
+      ],
+      "preexisting": false
+    },
+    {
+      "id": "extension02",
+      "path": "docs/cqc-bible/sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt",
+      "sections": [
+        50,
+        67
+      ],
+      "preexisting": false
+    }
+  ],
+  "counts": {
+    "sections": 38,
+    "requirements": 114,
+    "decisions": {
+      "retenue": 87,
+      "adaptee": 24,
+      "differee": 3
+    },
+    "implementationStatuses": {
+      "documented": 40,
+      "specification_only": 41,
+      "partial_inherited_code": 4,
+      "implemented_p71_local_scope": 20,
+      "deferred_dependency": 9
+    },
+    "verifiedExistingUids": 20,
+    "newDocumentedTauntProfiles": 8,
+    "newDocumentedPriorityPairs": 5,
+    "newDocumentedBonusProfiles": 6,
+    "localRewardDossiers": 3
+  },
+  "sections": [
+    {
+      "id": "30",
+      "title": "Portée et rattachement au guide général",
+      "guideId": "extension01",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E30-01",
+        "CQC-E30-02",
+        "CQC-E30-03"
+      ],
+      "existingPaths": [
+        "docs/cqc-bible/README.md",
+        "docs/cqc-bible/EXIGENCES.md",
+        "docs/cqc-bible/guide-map.json"
+      ],
+      "implementationStatuses": [
+        "documented"
+      ]
+    },
+    {
+      "id": "31",
+      "title": "Taunts : provocations et réactions de personnalité",
+      "guideId": "extension01",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E31-01",
+        "CQC-E31-02",
+        "CQC-E31-03"
+      ],
+      "existingPaths": [
+        "docs/cqc-bible/COMBAT.md",
+        "docs/cqc-bible/roster-coverage.json",
+        "public/cqc/src/cqc-pass8-combat-engine.js"
+      ],
+      "implementationStatuses": [
+        "partial_inherited_code",
+        "specification_only"
+      ]
+    },
+    {
+      "id": "32",
+      "title": "Animations de sélection, confirmation et désélection",
+      "guideId": "extension01",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E32-01",
+        "CQC-E32-02",
+        "CQC-E32-03"
+      ],
+      "existingPaths": [
+        "docs/cqc-bible/roster-coverage.json",
+        "public/cqc/modules/unified-versus-v055.html"
+      ],
+      "implementationStatuses": [
+        "specification_only"
+      ]
+    },
+    {
+      "id": "33",
+      "title": "Profils d’équipe et catégories de partenaires",
+      "guideId": "extension01",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E33-01",
+        "CQC-E33-02",
+        "CQC-E33-03"
+      ],
+      "existingPaths": [
+        "public/cqc/modules/battle-operations-v053.html",
+        "docs/cqc-bible/roster-coverage.json",
+        "docs/cqc-bible/COMBAT.md"
+      ],
+      "implementationStatuses": [
+        "documented",
+        "partial_inherited_code",
+        "specification_only"
+      ]
+    },
+    {
+      "id": "34",
+      "title": "Commandes, jauges et disponibilité",
+      "guideId": "extension01",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E34-01",
+        "CQC-E34-02",
+        "CQC-E34-03"
+      ],
+      "existingPaths": [
+        "public/cqc/src/cqc-pass8-combat-engine.js",
+        "public/cqc/modules/unified-versus-v055.html"
+      ],
+      "implementationStatuses": [
+        "specification_only"
+      ]
+    },
+    {
+      "id": "35",
+      "title": "Assistances ponctuelles",
+      "guideId": "extension01",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E35-01",
+        "CQC-E35-02",
+        "CQC-E35-03"
+      ],
+      "existingPaths": [
+        "public/cqc/src/cqc-pass8-combat-engine.js",
+        "docs/cqc-bible/roster-coverage.json"
+      ],
+      "implementationStatuses": [
+        "specification_only"
+      ]
+    },
+    {
+      "id": "36",
+      "title": "Tag : changement réel de combattant",
+      "guideId": "extension01",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E36-01",
+        "CQC-E36-02",
+        "CQC-E36-03"
+      ],
+      "existingPaths": [
+        "public/cqc/modules/battle-operations-v053.html",
+        "public/cqc/src/cqc-pass8-combat-engine.js"
+      ],
+      "implementationStatuses": [
+        "specification_only"
+      ]
+    },
+    {
+      "id": "37",
+      "title": "Techniques combinées et supers d’équipe",
+      "guideId": "extension01",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E37-01",
+        "CQC-E37-02",
+        "CQC-E37-03"
+      ],
+      "existingPaths": [
+        "docs/cqc-bible/roster-coverage.json",
+        "docs/cqc-bible/combat-pilots.json"
+      ],
+      "implementationStatuses": [
+        "documented",
+        "specification_only"
+      ]
+    },
+    {
+      "id": "38",
+      "title": "Finishers d’équipe et fins dramatiques conditionnelles",
+      "guideId": "extension01",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E38-01",
+        "CQC-E38-02",
+        "CQC-E38-03"
+      ],
+      "existingPaths": [
+        "docs/cqc-bible/COMBAT.md",
+        "docs/cqc-bible/narrative-registry.json"
+      ],
+      "implementationStatuses": [
+        "documented",
+        "specification_only"
+      ]
+    },
+    {
+      "id": "39",
+      "title": "Clashes et confrontations avec QTE",
+      "guideId": "extension01",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E39-01",
+        "CQC-E39-02",
+        "CQC-E39-03"
+      ],
+      "existingPaths": [
+        "public/cqc/src/cqc-pass8-combat-engine.js",
+        "docs/cqc-bible/COMBAT.md"
+      ],
+      "implementationStatuses": [
+        "specification_only"
+      ]
+    },
+    {
+      "id": "40",
+      "title": "Movesets à entités indépendantes et objets placés",
+      "guideId": "extension01",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E40-01",
+        "CQC-E40-02",
+        "CQC-E40-03"
+      ],
+      "existingPaths": [
+        "public/cqc/src/cqc-pass8-combat-engine.js",
+        "docs/cqc-bible/roster-coverage.json",
+        "docs/cqc-bible/asset-associations-p66.json",
+        "docs/cqc-bible/asset-associations-p69.json"
+      ],
+      "implementationStatuses": [
+        "documented",
+        "partial_inherited_code",
+        "specification_only"
+      ]
+    },
+    {
+      "id": "41",
+      "title": "Projectiles persistants et règles communes aux entités",
+      "guideId": "extension01",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E41-01",
+        "CQC-E41-02",
+        "CQC-E41-03"
+      ],
+      "existingPaths": [
+        "public/cqc/src/cqc-pass8-combat-engine.js",
+        "docs/cqc-bible/COMBAT.md"
+      ],
+      "implementationStatuses": [
+        "partial_inherited_code",
+        "specification_only"
+      ]
+    },
+    {
+      "id": "42",
+      "title": "Stages bonus et épreuves intégrées aux histoires",
+      "guideId": "extension01",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E42-01",
+        "CQC-E42-02",
+        "CQC-E42-03"
+      ],
+      "existingPaths": [
+        "docs/cqc-bible/NARRATION.md",
+        "docs/cqc-bible/narrative-registry.json",
+        "docs/cqc-bible/asset-associations-p66.json"
+      ],
+      "implementationStatuses": [
+        "documented",
+        "specification_only"
+      ]
+    },
+    {
+      "id": "43",
+      "title": "Espace d’exploration et de déblocage inspiré de la Krypt",
+      "guideId": "extension01",
+      "decision": "adaptee",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E43-01",
+        "CQC-E43-02",
+        "CQC-E43-03"
+      ],
+      "existingPaths": [
+        "public/cqc/modules/classified-archives-p71.html",
+        "public/cqc/src/cqc-p71-archives.js",
+        "public/cqc/src/cqc-p71-access.js",
+        "docs/cqc-bible/NARRATION.md"
+      ],
+      "implementationStatuses": [
+        "implemented_p71_local_scope",
+        "specification_only"
+      ]
+    },
+    {
+      "id": "44",
+      "title": "Cohérence narrative, relations et compatibilités",
+      "guideId": "extension01",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E44-01",
+        "CQC-E44-02",
+        "CQC-E44-03"
+      ],
+      "existingPaths": [
+        "docs/cqc-bible/roster-coverage.json",
+        "docs/cqc-bible/narrative-registry.json",
+        "docs/cqc-bible/sources-narrative.json"
+      ],
+      "implementationStatuses": [
+        "documented"
+      ]
+    },
+    {
+      "id": "45",
+      "title": "Assets, animations, sons et mise en scène",
+      "guideId": "extension01",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E45-01",
+        "CQC-E45-02",
+        "CQC-E45-03"
+      ],
+      "existingPaths": [
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md",
+        "docs/cqc-bible/asset-associations-p69.json"
+      ],
+      "implementationStatuses": [
+        "documented",
+        "specification_only"
+      ]
+    },
+    {
+      "id": "46",
+      "title": "Interface, apprentissage, accessibilité et réseau",
+      "guideId": "extension01",
+      "decision": "adaptee",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E46-01",
+        "CQC-E46-02",
+        "CQC-E46-03"
+      ],
+      "existingPaths": [
+        "public/cqc/modules/classified-archives-p71.html",
+        "public/cqc/src/cqc-p71-archives.js",
+        "public/cqc/src/cqc-p71-archives.css",
+        "public/cqc/modules/combat-academy-v053.html"
+      ],
+      "implementationStatuses": [
+        "deferred_dependency",
+        "implemented_p71_local_scope",
+        "specification_only"
+      ]
+    },
+    {
+      "id": "47",
+      "title": "Validation, statistiques et ordre d’intégration",
+      "guideId": "extension01",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E47-01",
+        "CQC-E47-02",
+        "CQC-E47-03"
+      ],
+      "existingPaths": [
+        "docs/cqc-bible/README.md",
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md"
+      ],
+      "implementationStatuses": [
+        "documented"
+      ]
+    },
+    {
+      "id": "48",
+      "title": "Dix fiches de production complémentaires",
+      "guideId": "extension01",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E48-01",
+        "CQC-E48-02",
+        "CQC-E48-03"
+      ],
+      "existingPaths": [
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md",
+        "docs/cqc-bible/roster-coverage.json"
+      ],
+      "implementationStatuses": [
+        "documented"
+      ]
+    },
+    {
+      "id": "49",
+      "title": "Instruction d’intégration et références",
+      "guideId": "extension01",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E49-01",
+        "CQC-E49-02",
+        "CQC-E49-03"
+      ],
+      "existingPaths": [
+        "docs/cqc-bible/README.md",
+        "docs/cqc-bible/EXIGENCES.md",
+        "docs/cqc-bible/sources/provenance-p71.json"
+      ],
+      "implementationStatuses": [
+        "documented"
+      ]
+    },
+    {
+      "id": "50",
+      "title": "Portée, principes et raccordement aux guides",
+      "guideId": "extension02",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E50-01",
+        "CQC-E50-02",
+        "CQC-E50-03"
+      ],
+      "existingPaths": [
+        "docs/cqc-bible/EXIGENCES.md",
+        "docs/cqc-bible/roster-coverage.json",
+        "public/cqc/data/cqc-p63-source-atlas.json"
+      ],
+      "implementationStatuses": [
+        "documented",
+        "implemented_p71_local_scope"
+      ]
+    },
+    {
+      "id": "51",
+      "title": "États de découverte, de droit et de disponibilité",
+      "guideId": "extension02",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E51-01",
+        "CQC-E51-02",
+        "CQC-E51-03"
+      ],
+      "existingPaths": [
+        "public/cqc/src/cqc-p71-access.js",
+        "public/cqc/src/cqc-p71-archives.js"
+      ],
+      "implementationStatuses": [
+        "implemented_p71_local_scope",
+        "specification_only"
+      ]
+    },
+    {
+      "id": "52",
+      "title": "Langage visuel adapté au lore",
+      "guideId": "extension02",
+      "decision": "adaptee",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E52-01",
+        "CQC-E52-02",
+        "CQC-E52-03"
+      ],
+      "existingPaths": [
+        "public/cqc/modules/classified-archives-p71.html",
+        "public/cqc/src/cqc-p71-archives.js",
+        "public/cqc/src/cqc-p71-archives.css"
+      ],
+      "implementationStatuses": [
+        "implemented_p71_local_scope",
+        "specification_only"
+      ]
+    },
+    {
+      "id": "53",
+      "title": "Emplacements de personnages et partenaires",
+      "guideId": "extension02",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E53-01",
+        "CQC-E53-02",
+        "CQC-E53-03"
+      ],
+      "existingPaths": [
+        "docs/cqc-bible/roster-coverage.json",
+        "public/cqc/modules/unified-versus-v055.html"
+      ],
+      "implementationStatuses": [
+        "documented",
+        "specification_only"
+      ]
+    },
+    {
+      "id": "54",
+      "title": "Costumes, palettes et accessoires",
+      "guideId": "extension02",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E54-01",
+        "CQC-E54-02",
+        "CQC-E54-03"
+      ],
+      "existingPaths": [
+        "docs/cqc-bible/roster-coverage.json",
+        "docs/cqc-bible/ROSTER.md",
+        "docs/cqc-bible/asset-associations-p64.json"
+      ],
+      "implementationStatuses": [
+        "documented",
+        "specification_only"
+      ]
+    },
+    {
+      "id": "55",
+      "title": "Stages, variantes et destinations",
+      "guideId": "extension02",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E55-01",
+        "CQC-E55-02",
+        "CQC-E55-03"
+      ],
+      "existingPaths": [
+        "docs/cqc-bible/ARENES_ET_BOSS.md",
+        "public/cqc/data/cqc-p63-source-atlas.json"
+      ],
+      "implementationStatuses": [
+        "documented",
+        "specification_only"
+      ]
+    },
+    {
+      "id": "56",
+      "title": "Modes de jeu et parcours verrouillés",
+      "guideId": "extension02",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E56-01",
+        "CQC-E56-02",
+        "CQC-E56-03"
+      ],
+      "existingPaths": [
+        "public/cqc/modules/battle-operations-v053.html",
+        "public/cqc/index.html"
+      ],
+      "implementationStatuses": [
+        "documented",
+        "specification_only"
+      ]
+    },
+    {
+      "id": "57",
+      "title": "Conditions de déblocage et progression",
+      "guideId": "extension02",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E57-01",
+        "CQC-E57-02",
+        "CQC-E57-03"
+      ],
+      "existingPaths": [
+        "public/cqc/src/cqc-p71-access.js",
+        "public/cqc/src/chronicles-core-v056.js",
+        "public/cqc/modules/battle-operations-v053.html"
+      ],
+      "implementationStatuses": [
+        "implemented_p71_local_scope"
+      ]
+    },
+    {
+      "id": "58",
+      "title": "Exploration, récompenses et scène de révélation",
+      "guideId": "extension02",
+      "decision": "adaptee",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E58-01",
+        "CQC-E58-02",
+        "CQC-E58-03"
+      ],
+      "existingPaths": [
+        "public/cqc/src/cqc-p71-access.js",
+        "public/cqc/src/cqc-p71-archives.js",
+        "public/cqc/data/cqc-p71-access-dossiers.json"
+      ],
+      "implementationStatuses": [
+        "documented",
+        "implemented_p71_local_scope"
+      ]
+    },
+    {
+      "id": "59",
+      "title": "Contenus dédiés aux abonnés et modèles d’acquisition",
+      "guideId": "extension02",
+      "decision": "adaptee",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E59-01",
+        "CQC-E59-02",
+        "CQC-E59-03"
+      ],
+      "existingPaths": [
+        "docs/cqc-bible/sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt"
+      ],
+      "implementationStatuses": [
+        "deferred_dependency",
+        "documented",
+        "specification_only"
+      ]
+    },
+    {
+      "id": "60",
+      "title": "Liaison avec Patreon ou un service équivalent",
+      "guideId": "extension02",
+      "decision": "differee",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E60-01",
+        "CQC-E60-02",
+        "CQC-E60-03"
+      ],
+      "existingPaths": [
+        "docs/cqc-bible/sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt"
+      ],
+      "implementationStatuses": [
+        "deferred_dependency"
+      ]
+    },
+    {
+      "id": "61",
+      "title": "Expiration, changements d’accès et fonctionnement hors ligne",
+      "guideId": "extension02",
+      "decision": "adaptee",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E61-01",
+        "CQC-E61-02",
+        "CQC-E61-03"
+      ],
+      "existingPaths": [
+        "public/cqc/src/cqc-p71-access.js",
+        "docs/cqc-bible/sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt"
+      ],
+      "implementationStatuses": [
+        "deferred_dependency",
+        "implemented_p71_local_scope"
+      ]
+    },
+    {
+      "id": "62",
+      "title": "Sélection locale, multijoueur, entraînement et replays",
+      "guideId": "extension02",
+      "decision": "adaptee",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E62-01",
+        "CQC-E62-02",
+        "CQC-E62-03"
+      ],
+      "existingPaths": [
+        "public/cqc/modules/unified-versus-v055.html",
+        "docs/cqc-bible/COMBAT.md"
+      ],
+      "implementationStatuses": [
+        "deferred_dependency",
+        "documented",
+        "specification_only"
+      ]
+    },
+    {
+      "id": "63",
+      "title": "Interface, textes, accessibilité et protection des surprises",
+      "guideId": "extension02",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E63-01",
+        "CQC-E63-02",
+        "CQC-E63-03"
+      ],
+      "existingPaths": [
+        "public/cqc/modules/classified-archives-p71.html",
+        "public/cqc/src/cqc-p71-archives.js",
+        "public/cqc/src/cqc-p71-archives.css"
+      ],
+      "implementationStatuses": [
+        "implemented_p71_local_scope"
+      ]
+    },
+    {
+      "id": "64",
+      "title": "Production, sauvegarde et critères de validation",
+      "guideId": "extension02",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E64-01",
+        "CQC-E64-02",
+        "CQC-E64-03"
+      ],
+      "existingPaths": [
+        "public/cqc/src/cqc-p71-access.js",
+        "public/cqc/src/cqc-p71-archives.js",
+        "public/cqc/data/cqc-p71-access-dossiers.json",
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md"
+      ],
+      "implementationStatuses": [
+        "documented",
+        "implemented_p71_local_scope"
+      ]
+    },
+    {
+      "id": "65",
+      "title": "Six fiches de production à remplir",
+      "guideId": "extension02",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E65-01",
+        "CQC-E65-02",
+        "CQC-E65-03"
+      ],
+      "existingPaths": [
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md",
+        "public/cqc/src/cqc-p71-access.js",
+        "public/cqc/data/cqc-p71-access-dossiers.json"
+      ],
+      "implementationStatuses": [
+        "documented",
+        "implemented_p71_local_scope"
+      ]
+    },
+    {
+      "id": "66",
+      "title": "Instruction prête à transmettre à un projet",
+      "guideId": "extension02",
+      "decision": "retenue",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E66-01",
+        "CQC-E66-02",
+        "CQC-E66-03"
+      ],
+      "existingPaths": [
+        "docs/cqc-bible/README.md",
+        "docs/cqc-bible/EXIGENCES.md",
+        "docs/cqc-bible/sources/provenance-p71.json"
+      ],
+      "implementationStatuses": [
+        "documented"
+      ]
+    },
+    {
+      "id": "67",
+      "title": "Références vérifiées et vocabulaire",
+      "guideId": "extension02",
+      "decision": "adaptee",
+      "document": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "requirementIds": [
+        "CQC-E67-01",
+        "CQC-E67-02",
+        "CQC-E67-03"
+      ],
+      "existingPaths": [
+        "docs/cqc-bible/sources/provenance-p71.json",
+        "docs/cqc-bible/sources-narrative.json"
+      ],
+      "implementationStatuses": [
+        "deferred_dependency",
+        "documented"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "CQC-E30-01",
+      "sectionId": "30",
+      "title": "Conserver les deux originaux complets",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "Les octets et SHA-256 correspondent aux trois sources utilisateur, guide général compris.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/README.md",
+        "docs/cqc-bible/EXIGENCES.md",
+        "docs/cqc-bible/guide-map.json"
+      ],
+      "validationIds": [
+        "P71-QA-01"
+      ],
+      "validationStatus": "not_executed_for_requirement",
+      "documentaryVerification": {
+        "status": "structure_links_and_sources_checked",
+        "proofPath": "docs/cqc-bible/guide-integration-verification-p71.json",
+        "limit": "Documentary structure and source preservation only; functional requirements retain their individual execution status."
+      }
+    },
+    {
+      "id": "CQC-E30-02",
+      "sectionId": "30",
+      "title": "Relier les 38 rubriques au projet existant",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "Chaque rubrique possède des chemins, une décision, des exigences et un périmètre explicite.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/README.md",
+        "docs/cqc-bible/EXIGENCES.md",
+        "docs/cqc-bible/guide-map.json"
+      ],
+      "validationIds": [
+        "P71-QA-02"
+      ],
+      "validationStatus": "not_executed_for_requirement",
+      "documentaryVerification": {
+        "status": "structure_links_and_sources_checked",
+        "proofPath": "docs/cqc-bible/guide-integration-verification-p71.json",
+        "limit": "Documentary structure and source preservation only; functional requirements retain their individual execution status."
+      }
+    },
+    {
+      "id": "CQC-E30-03",
+      "sectionId": "30",
+      "title": "Distinguer les fonctions de l’extension",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "Assistance, tag, super, conclusion, entité et exploration ne partagent pas un statut de livraison trompeur.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/README.md",
+        "docs/cqc-bible/EXIGENCES.md",
+        "docs/cqc-bible/guide-map.json"
+      ],
+      "validationIds": [
+        "P71-QA-02"
+      ],
+      "validationStatus": "not_executed_for_requirement",
+      "documentaryVerification": {
+        "status": "structure_links_and_sources_checked",
+        "proofPath": "docs/cqc-bible/guide-integration-verification-p71.json",
+        "limit": "Documentary structure and source preservation only; functional requirements retain their individual execution status."
+      }
+    },
+    {
+      "id": "CQC-E31-01",
+      "sectionId": "31",
+      "title": "Ficher entrée, pose, sortie et interruption",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Chaque taunt pilote possède incarnation, geste, vulnérabilité, reprise et références avant admission.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "docs/cqc-bible/COMBAT.md",
+        "docs/cqc-bible/roster-coverage.json",
+        "public/cqc/src/cqc-pass8-combat-engine.js"
+      ],
+      "validationIds": [
+        "P71-QA-04",
+        "P71-QA-24"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E31-02",
+      "sectionId": "31",
+      "title": "Séparer personnalité et effet de gameplay",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Le buff taunt hérité reste qualifié et aucune pose cosmétique ne modifie une ressource implicitement.",
+      "documentationStatus": "documented",
+      "implementationStatus": "partial_inherited_code",
+      "implementationScope": "Inherited behavior observed statically, with the limitation in acceptance; not newly implemented by P71.",
+      "existingPaths": [
+        "docs/cqc-bible/COMBAT.md",
+        "docs/cqc-bible/roster-coverage.json",
+        "public/cqc/src/cqc-pass8-combat-engine.js"
+      ],
+      "validationIds": [
+        "P71-QA-04"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E31-03",
+      "sectionId": "31",
+      "title": "Limiter les répétitions et commandes automatiques",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Voix et scènes respectent la fréquence définie et ne volent pas une commande de combat.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "docs/cqc-bible/COMBAT.md",
+        "docs/cqc-bible/roster-coverage.json",
+        "public/cqc/src/cqc-pass8-combat-engine.js"
+      ],
+      "validationIds": [
+        "P71-QA-04"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E32-01",
+      "sectionId": "32",
+      "title": "Définir les huit états de présentation",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Survol, aperçu, confirmation, attente, costume, désélection, équipe et départ restent distingués.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "docs/cqc-bible/roster-coverage.json",
+        "public/cqc/modules/unified-versus-v055.html"
+      ],
+      "validationIds": [
+        "P71-QA-03"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E32-02",
+      "sectionId": "32",
+      "title": "Nettoyer les aperçus remplacés",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Navigation rapide ne laisse aucune voix, particule, ombre, compagnon ni chargement obsolète.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "docs/cqc-bible/roster-coverage.json",
+        "public/cqc/modules/unified-versus-v055.html"
+      ],
+      "validationIds": [
+        "P71-QA-03"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E32-03",
+      "sectionId": "32",
+      "title": "Conserver une sortie abrégée et un mode réduit",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Entrées prises en compte immédiatement, choix simultanés et personnage miroir traités sans bloquer.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "docs/cqc-bible/roster-coverage.json",
+        "public/cqc/modules/unified-versus-v055.html"
+      ],
+      "validationIds": [
+        "P71-QA-03",
+        "P71-QA-22"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E33-01",
+      "sectionId": "33",
+      "title": "Nommer chaque profil et sa condition de défaite",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Duel, assistance, tag et hybride annoncent membres, rôles, vie, KO et doublons.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "public/cqc/modules/battle-operations-v053.html",
+        "docs/cqc-bible/roster-coverage.json",
+        "docs/cqc-bible/COMBAT.md"
+      ],
+      "validationIds": [
+        "P71-QA-05",
+        "P71-QA-06"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E33-02",
+      "sectionId": "33",
+      "title": "Préserver le relais successif existant",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Les modes relay3/relay5 restent décrits comme succession après duel, sans faux transfert temps réel.",
+      "documentationStatus": "documented",
+      "implementationStatus": "partial_inherited_code",
+      "implementationScope": "Inherited behavior observed statically, with the limitation in acceptance; not newly implemented by P71.",
+      "existingPaths": [
+        "public/cqc/modules/battle-operations-v053.html",
+        "docs/cqc-bible/roster-coverage.json",
+        "docs/cqc-bible/COMBAT.md"
+      ],
+      "validationIds": [
+        "P71-QA-06",
+        "P71-QA-23"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E33-03",
+      "sectionId": "33",
+      "title": "Séparer entité native et membre du roster",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Un compagnon de kit et un partenaire sélectionnable gardent budgets, propriétaire et disponibilité distincts.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "public/cqc/modules/battle-operations-v053.html",
+        "docs/cqc-bible/roster-coverage.json",
+        "docs/cqc-bible/COMBAT.md"
+      ],
+      "validationIds": [
+        "P71-QA-05",
+        "P71-QA-10"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E34-01",
+      "sectionId": "34",
+      "title": "Créer des actions remappables non ambiguës",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "Taunt, assistance, relais, super duo et ordre d’entité ont des priorités et des entrées distinctes.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "public/cqc/src/cqc-pass8-combat-engine.js",
+        "public/cqc/modules/unified-versus-v055.html"
+      ],
+      "validationIds": [
+        "P71-QA-05"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E34-02",
+      "sectionId": "34",
+      "title": "Réserver participants et ressource une seule fois",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "Deux demandes au même instant ne peuvent dépenser la même jauge ni engager deux fois un partenaire.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "public/cqc/src/cqc-pass8-combat-engine.js",
+        "public/cqc/modules/unified-versus-v055.html"
+      ],
+      "validationIds": [
+        "P71-QA-05"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E34-03",
+      "sectionId": "34",
+      "title": "Définir coûts, refus et horloge",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "Refus avant engagement sans dépense, récupération et remboursements selon pause/cinématique explicités.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "public/cqc/src/cqc-pass8-combat-engine.js",
+        "public/cqc/modules/unified-versus-v055.html"
+      ],
+      "validationIds": [
+        "P71-QA-05",
+        "P71-QA-06"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E35-01",
+      "sectionId": "35",
+      "title": "Implémenter un cycle d’assistance complet",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Disponible, appel, arrivée, action, sortie, récupération et branches d’interruption correspondent à la fiche.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "public/cqc/src/cqc-pass8-combat-engine.js",
+        "docs/cqc-bible/roster-coverage.json"
+      ],
+      "validationIds": [
+        "P71-QA-05",
+        "P71-QA-06"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E35-02",
+      "sectionId": "35",
+      "title": "Définir vulnérabilité et effets sur la réserve",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Un soutien touché ou KO applique les bons dégâts, sorties et gains de ressource sans doublon.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "public/cqc/src/cqc-pass8-combat-engine.js",
+        "docs/cqc-bible/roster-coverage.json"
+      ],
+      "validationIds": [
+        "P71-QA-06"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E35-03",
+      "sectionId": "35",
+      "title": "Tester les cibles et situations extrêmes",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Mur, boss, transition, actif KO et attaque touchant les deux membres gardent une résolution définie.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "public/cqc/src/cqc-pass8-combat-engine.js",
+        "docs/cqc-bible/roster-coverage.json"
+      ],
+      "validationIds": [
+        "P71-QA-06",
+        "P71-QA-10"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E36-01",
+      "sectionId": "36",
+      "title": "Transférer contrôle et HUD à un instant unique",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Le relais volontaire/combo/secours/KO/scénario applique ses restrictions et positions sans mélange de commandes.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "public/cqc/modules/battle-operations-v053.html",
+        "public/cqc/src/cqc-pass8-combat-engine.js"
+      ],
+      "validationIds": [
+        "P71-QA-06"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E36-02",
+      "sectionId": "36",
+      "title": "Conserver ressources et historique du combo",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Munitions, statuts, récupérations, réductions, rebonds et captures ne sont pas réinitialisés par le tag.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "public/cqc/modules/battle-operations-v053.html",
+        "public/cqc/src/cqc-pass8-combat-engine.js"
+      ],
+      "validationIds": [
+        "P71-QA-06",
+        "P71-QA-11"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E36-03",
+      "sectionId": "36",
+      "title": "Conserver les propriétaires des menaces",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Les objets du sortant gardent leur propriétaire ; cible et trajectoire ne changent que selon la règle annoncée.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "public/cqc/modules/battle-operations-v053.html",
+        "public/cqc/src/cqc-pass8-combat-engine.js"
+      ],
+      "validationIds": [
+        "P71-QA-10"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E37-01",
+      "sectionId": "37",
+      "title": "Associer les deux contributions à des versions précises",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Cinq paires prioritaires ont UID, sources, contexte et statut d’adaptation ; aucun nom créé n’est présenté comme canon.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/roster-coverage.json",
+        "docs/cqc-bible/combat-pilots.json"
+      ],
+      "validationIds": [
+        "P71-QA-02",
+        "P71-QA-07"
+      ],
+      "validationStatus": "not_executed_for_requirement",
+      "documentaryVerification": {
+        "status": "structure_links_and_sources_checked",
+        "proofPath": "docs/cqc-bible/guide-integration-verification-p71.json",
+        "limit": "Documentary structure and source preservation only; functional requirements retain their individual execution status."
+      }
+    },
+    {
+      "id": "CQC-E37-02",
+      "sectionId": "37",
+      "title": "Conditionner la chorégraphie à une ouverture valide",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Composition, disponibilité, coût et cible validés ; garde/échec/interruption résolus sans longue scène injustifiée.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "docs/cqc-bible/roster-coverage.json",
+        "docs/cqc-bible/combat-pilots.json"
+      ],
+      "validationIds": [
+        "P71-QA-05",
+        "P71-QA-07"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E37-03",
+      "sectionId": "37",
+      "title": "Restituer positions et disponibilité",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "La sortie fixe le membre actif, les coûts, le contrôle et le combo ; aucune invocation parallèle d’un participant.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "docs/cqc-bible/roster-coverage.json",
+        "docs/cqc-bible/combat-pilots.json"
+      ],
+      "validationIds": [
+        "P71-QA-05",
+        "P71-QA-07"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E38-01",
+      "sectionId": "38",
+      "title": "Distinguer neutralisation et scène conditionnelle",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Chaque scène précise participants, versions, lieu, contexte, cible et éventuelle dernière action.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/COMBAT.md",
+        "docs/cqc-bible/narrative-registry.json"
+      ],
+      "validationIds": [
+        "P71-QA-08"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E38-02",
+      "sectionId": "38",
+      "title": "Garder une priorité et un repli déterministes",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Fin dramatique, équipe, individuel, victoire ; incompatible ou partenaire KO conduit à une conclusion valide.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "docs/cqc-bible/COMBAT.md",
+        "docs/cqc-bible/narrative-registry.json"
+      ],
+      "validationIds": [
+        "P71-QA-08"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E38-03",
+      "sectionId": "38",
+      "title": "Préserver résultat et continuité",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Une présentation ne change pas le vainqueur acquis ; scène alternative ou inter-époques signalée comme CQC.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "docs/cqc-bible/COMBAT.md",
+        "docs/cqc-bible/narrative-registry.json"
+      ],
+      "validationIds": [
+        "P71-QA-08"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E39-01",
+      "sectionId": "39",
+      "title": "Définir compatibilité et collision réelle",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Contact, phases actives, simultanéité de simulation, orientation et fréquence validés par groupe d’attaques.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "public/cqc/src/cqc-pass8-combat-engine.js",
+        "docs/cqc-bible/COMBAT.md"
+      ],
+      "validationIds": [
+        "P71-QA-09"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E39-02",
+      "sectionId": "39",
+      "title": "Résoudre toutes les issues du QTE",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Réussite, échec, égalité, absence, déconnexion et limite de durée ont un état final stable.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "public/cqc/src/cqc-pass8-combat-engine.js",
+        "docs/cqc-bible/COMBAT.md"
+      ],
+      "validationIds": [
+        "P71-QA-09"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E39-03",
+      "sectionId": "39",
+      "title": "Proposer des profils cohérents avec les tiers",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Sans QTE, réduit, histoire et PvP ont des règles annoncées pour chrono, objets et attaques simultanées.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "public/cqc/src/cqc-pass8-combat-engine.js",
+        "docs/cqc-bible/COMBAT.md"
+      ],
+      "validationIds": [
+        "P71-QA-09",
+        "P71-QA-22"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E40-01",
+      "sectionId": "40",
+      "title": "Relier chaque entité à son propriétaire et son lore",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "UID, version, commande, simultanéité et capacité attestée ; aucune entité générique ajoutée à tout le roster.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "public/cqc/src/cqc-pass8-combat-engine.js",
+        "docs/cqc-bible/roster-coverage.json",
+        "docs/cqc-bible/asset-associations-p66.json",
+        "docs/cqc-bible/asset-associations-p69.json"
+      ],
+      "validationIds": [
+        "P71-QA-10"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E40-02",
+      "sectionId": "40",
+      "title": "Définir placement, activation et contre-jeu",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Pose, armement, durée, nombre maximal, rappel, destruction et réponse adverse décrits puis testés.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "public/cqc/src/cqc-pass8-combat-engine.js",
+        "docs/cqc-bible/roster-coverage.json",
+        "docs/cqc-bible/asset-associations-p66.json",
+        "docs/cqc-bible/asset-associations-p69.json"
+      ],
+      "validationIds": [
+        "P71-QA-10",
+        "P71-QA-11"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E40-03",
+      "sectionId": "40",
+      "title": "Qualifier le socle de pièges existant",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Les pièges/projectiles hérités restent partiels ; les PNG de tourelles et traps ne prouvent aucun nouveau comportement.",
+      "documentationStatus": "documented",
+      "implementationStatus": "partial_inherited_code",
+      "implementationScope": "Inherited behavior observed statically, with the limitation in acceptance; not newly implemented by P71.",
+      "existingPaths": [
+        "public/cqc/src/cqc-pass8-combat-engine.js",
+        "docs/cqc-bible/roster-coverage.json",
+        "docs/cqc-bible/asset-associations-p66.json",
+        "docs/cqc-bible/asset-associations-p69.json"
+      ],
+      "validationIds": [
+        "P71-QA-10",
+        "P71-QA-24"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E41-01",
+      "sectionId": "41",
+      "title": "Préserver création, collision et attribution",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Les propriétaires et collisions du moteur hérité sont un point de départ ; réflexion et dégâts restent attribués.",
+      "documentationStatus": "documented",
+      "implementationStatus": "partial_inherited_code",
+      "implementationScope": "Inherited behavior observed statically, with the limitation in acceptance; not newly implemented by P71.",
+      "existingPaths": [
+        "public/cqc/src/cqc-pass8-combat-engine.js",
+        "docs/cqc-bible/COMBAT.md"
+      ],
+      "validationIds": [
+        "P71-QA-10"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E41-02",
+      "sectionId": "41",
+      "title": "Spécifier tous les changements d’état du propriétaire",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Hit, KO, réserve, transformation, transition, fin de manche et cinématique appliquent une politique unique.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "public/cqc/src/cqc-pass8-combat-engine.js",
+        "docs/cqc-bible/COMBAT.md"
+      ],
+      "validationIds": [
+        "P71-QA-10"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E41-03",
+      "sectionId": "41",
+      "title": "Partager budgets et limites de combo",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Actif, réserve, pièges et entités partagent les limites ; les options de confort ne suppriment pas une menace.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "public/cqc/src/cqc-pass8-combat-engine.js",
+        "docs/cqc-bible/COMBAT.md"
+      ],
+      "validationIds": [
+        "P71-QA-11",
+        "P71-QA-22"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E42-01",
+      "sectionId": "42",
+      "title": "Concevoir des bonus contextualisés",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Six fiches relient UID, épisode, objectif et périmètre existants ; elles restent des créations CQC.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/NARRATION.md",
+        "docs/cqc-bible/narrative-registry.json",
+        "docs/cqc-bible/asset-associations-p66.json"
+      ],
+      "validationIds": [
+        "P71-QA-02",
+        "P71-QA-12"
+      ],
+      "validationStatus": "not_executed_for_requirement",
+      "documentaryVerification": {
+        "status": "structure_links_and_sources_checked",
+        "proofPath": "docs/cqc-bible/guide-integration-verification-p71.json",
+        "limit": "Documentary structure and source preservation only; functional requirements retain their individual execution status."
+      }
+    },
+    {
+      "id": "CQC-E42-02",
+      "sectionId": "42",
+      "title": "Définir victoire, échec, score et sortie",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Ressources initiales, reprise, récompenses, état transmis et caractère facultatif/obligatoire sont déterminés.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "docs/cqc-bible/NARRATION.md",
+        "docs/cqc-bible/narrative-registry.json",
+        "docs/cqc-bible/asset-associations-p66.json"
+      ],
+      "validationIds": [
+        "P71-QA-12",
+        "P71-QA-16"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E42-03",
+      "sectionId": "42",
+      "title": "Préserver fidélité et performances des hordes",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Unités, PV adaptés, apparitions, budget de présence, nettoyage et solution pour kits à munitions limités vérifiés.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "docs/cqc-bible/NARRATION.md",
+        "docs/cqc-bible/narrative-registry.json",
+        "docs/cqc-bible/asset-associations-p66.json"
+      ],
+      "validationIds": [
+        "P71-QA-12"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E43-01",
+      "sectionId": "43",
+      "title": "Nommer une interface de dossiers propre à CQC",
+      "priority": "P1",
+      "decision": "adaptee",
+      "acceptance": "Archives classifiées est une interface originale ; elle n’est pas annoncée comme une base explorable livrée.",
+      "documentationStatus": "documented",
+      "implementationStatus": "implemented_p71_local_scope",
+      "implementationScope": "Three original local dossiers only; no roster/costume/stage/mode gate and no paid entitlement.",
+      "existingPaths": [
+        "public/cqc/modules/classified-archives-p71.html",
+        "public/cqc/src/cqc-p71-archives.js",
+        "public/cqc/src/cqc-p71-access.js",
+        "docs/cqc-bible/NARRATION.md"
+      ],
+      "validationIds": [
+        "P71-QA-14",
+        "P71-QA-22"
+      ],
+      "validationStatus": "partial_dom_checks_browser_blocked",
+      "validationProofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md"
+      ],
+      "validationLimits": "Only the three local document rewards. No full catalogue, combat flow, real-browser visual check or external-service certification."
+    },
+    {
+      "id": "CQC-E43-02",
+      "sectionId": "43",
+      "title": "Planifier un espace cohérent sans impasse",
+      "priority": "P1",
+      "decision": "adaptee",
+      "acceptance": "Carte, portes, indices, clés et récompenses devront former un graphe sans cycle de prérequis.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "public/cqc/modules/classified-archives-p71.html",
+        "public/cqc/src/cqc-p71-archives.js",
+        "public/cqc/src/cqc-p71-access.js",
+        "docs/cqc-bible/NARRATION.md"
+      ],
+      "validationIds": [
+        "P71-QA-12"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E43-03",
+      "sectionId": "43",
+      "title": "Relier récompenses et sauvegarde locale",
+      "priority": "P1",
+      "decision": "adaptee",
+      "acceptance": "Trois dossiers relisent la progression existante et conservent leurs acquisitions sans modifier les anciens profils.",
+      "documentationStatus": "documented",
+      "implementationStatus": "implemented_p71_local_scope",
+      "implementationScope": "Three original local dossiers only; no roster/costume/stage/mode gate and no paid entitlement.",
+      "existingPaths": [
+        "public/cqc/modules/classified-archives-p71.html",
+        "public/cqc/src/cqc-p71-archives.js",
+        "public/cqc/src/cqc-p71-access.js",
+        "docs/cqc-bible/NARRATION.md"
+      ],
+      "validationIds": [
+        "P71-QA-15",
+        "P71-QA-16",
+        "P71-QA-23"
+      ],
+      "validationStatus": "local_scope_checks_passed",
+      "validationProofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md"
+      ],
+      "validationLimits": "Only the three local document rewards. No full catalogue, combat flow, real-browser visual check or external-service certification."
+    },
+    {
+      "id": "CQC-E44-01",
+      "sectionId": "44",
+      "title": "Situer chaque équipe dans sa continuité",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "UID, période, présence, motivation et connaissances précisés ; Survive et AC!D gardent leurs périmètres.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/roster-coverage.json",
+        "docs/cqc-bible/narrative-registry.json",
+        "docs/cqc-bible/sources-narrative.json"
+      ],
+      "validationIds": [
+        "P71-QA-02",
+        "P71-QA-08"
+      ],
+      "validationStatus": "not_executed_for_requirement",
+      "documentaryVerification": {
+        "status": "structure_links_and_sources_checked",
+        "proofPath": "docs/cqc-bible/guide-integration-verification-p71.json",
+        "limit": "Documentary structure and source preservation only; functional requirements retain their individual execution status."
+      }
+    },
+    {
+      "id": "CQC-E44-02",
+      "sectionId": "44",
+      "title": "Séparer libre composition et récit principal",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Les équipes hypothétiques de versus ne deviennent pas alliances officielles dans les chapitres.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/roster-coverage.json",
+        "docs/cqc-bible/narrative-registry.json",
+        "docs/cqc-bible/sources-narrative.json"
+      ],
+      "validationIds": [
+        "P71-QA-08"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E44-03",
+      "sectionId": "44",
+      "title": "Prioriser les paires et borner le volume",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Attestées et narratives d’abord, générique qualifié ensuite ; aucune promesse de chorégraphie exclusive pour chaque paire.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/roster-coverage.json",
+        "docs/cqc-bible/narrative-registry.json",
+        "docs/cqc-bible/sources-narrative.json"
+      ],
+      "validationIds": [
+        "P71-QA-02"
+      ],
+      "validationStatus": "not_executed_for_requirement",
+      "documentaryVerification": {
+        "status": "structure_links_and_sources_checked",
+        "proofPath": "docs/cqc-bible/guide-integration-verification-p71.json",
+        "limit": "Documentary structure and source preservation only; functional requirements retain their individual execution status."
+      }
+    },
+    {
+      "id": "CQC-E45-01",
+      "sectionId": "45",
+      "title": "Étendre les catégories sans confondre les unités",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "Taunt, sélection, équipe, entité, bonus et exploration ont des inventaires séparés.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md",
+        "docs/cqc-bible/asset-associations-p69.json"
+      ],
+      "validationIds": [
+        "P71-QA-02",
+        "P71-QA-24"
+      ],
+      "validationStatus": "not_executed_for_requirement",
+      "documentaryVerification": {
+        "status": "structure_links_and_sources_checked",
+        "proofPath": "docs/cqc-bible/guide-integration-verification-p71.json",
+        "limit": "Documentary structure and source preservation only; functional requirements retain their individual execution status."
+      }
+    },
+    {
+      "id": "CQC-E45-02",
+      "sectionId": "45",
+      "title": "Conserver un sujet et les ancrages nécessaires",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "Sprites autonomes séparés, échelle, pieds, armes, mains, orientation et asymétries contrôlés contre référence.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md",
+        "docs/cqc-bible/asset-associations-p69.json"
+      ],
+      "validationIds": [
+        "P71-QA-24"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E45-03",
+      "sectionId": "45",
+      "title": "Distinguer pose et animation finalisée",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "Conception, pose clé, cycle animé, intégration et test gardent leurs statuts et preuves propres.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md",
+        "docs/cqc-bible/asset-associations-p69.json"
+      ],
+      "validationIds": [
+        "P71-QA-02",
+        "P71-QA-24"
+      ],
+      "validationStatus": "not_executed_for_requirement",
+      "documentaryVerification": {
+        "status": "structure_links_and_sources_checked",
+        "proofPath": "docs/cqc-bible/guide-integration-verification-p71.json",
+        "limit": "Documentary structure and source preservation only; functional requirements retain their individual execution status."
+      }
+    },
+    {
+      "id": "CQC-E46-01",
+      "sectionId": "46",
+      "title": "Présenter états et actions des dossiers",
+      "priority": "P1",
+      "decision": "adaptee",
+      "acceptance": "Focus, conditions, droit, installation, contexte et action utile sont distincts dans la tranche P71.",
+      "documentationStatus": "documented",
+      "implementationStatus": "implemented_p71_local_scope",
+      "implementationScope": "Three original local dossiers only; no roster/costume/stage/mode gate and no paid entitlement.",
+      "existingPaths": [
+        "public/cqc/modules/classified-archives-p71.html",
+        "public/cqc/src/cqc-p71-archives.js",
+        "public/cqc/src/cqc-p71-archives.css",
+        "public/cqc/modules/combat-academy-v053.html"
+      ],
+      "validationIds": [
+        "P71-QA-18",
+        "P71-QA-22"
+      ],
+      "validationStatus": "partial_dom_checks_browser_blocked",
+      "validationProofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md"
+      ],
+      "validationLimits": "Only the three local document rewards. No full catalogue, combat flow, real-browser visual check or external-service certification."
+    },
+    {
+      "id": "CQC-E46-02",
+      "sectionId": "46",
+      "title": "Préparer l’apprentissage des nouveaux systèmes",
+      "priority": "P1",
+      "decision": "adaptee",
+      "acceptance": "Exercices d’assistance, punition, relais, duo, clash et entité attendent leurs systèmes réels.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "public/cqc/modules/classified-archives-p71.html",
+        "public/cqc/src/cqc-p71-archives.js",
+        "public/cqc/src/cqc-p71-archives.css",
+        "public/cqc/modules/combat-academy-v053.html"
+      ],
+      "validationIds": [
+        "P71-QA-05",
+        "P71-QA-06",
+        "P71-QA-09"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E46-03",
+      "sectionId": "46",
+      "title": "Reporter réseau sans fausse certification",
+      "priority": "P1",
+      "decision": "adaptee",
+      "acceptance": "Simulation déterministe, replays et corrections documentés ; aucun rollback, service ni crossplay revendiqué.",
+      "documentationStatus": "documented",
+      "implementationStatus": "deferred_dependency",
+      "implementationScope": "Dependency recorded; not operational.",
+      "existingPaths": [
+        "public/cqc/modules/classified-archives-p71.html",
+        "public/cqc/src/cqc-p71-archives.js",
+        "public/cqc/src/cqc-p71-archives.css",
+        "public/cqc/modules/combat-academy-v053.html"
+      ],
+      "validationIds": [
+        "P71-QA-21"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E47-01",
+      "sectionId": "47",
+      "title": "Compter les exigences et les livrables séparément",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "114 exigences/38 sections ne représentent pas 114 fonctionnalités terminées ni de nouveaux personnages.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/README.md",
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md"
+      ],
+      "validationIds": [
+        "P71-QA-02"
+      ],
+      "validationStatus": "not_executed_for_requirement",
+      "documentaryVerification": {
+        "status": "structure_links_and_sources_checked",
+        "proofPath": "docs/cqc-bible/guide-integration-verification-p71.json",
+        "limit": "Documentary structure and source preservation only; functional requirements retain their individual execution status."
+      }
+    },
+    {
+      "id": "CQC-E47-02",
+      "sectionId": "47",
+      "title": "Conserver un backlog d’acceptation explicite",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "Scénarios, portée, statut et preuve réelle sont liés ; un test des dossiers ne valide pas le combat.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/README.md",
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md"
+      ],
+      "validationIds": [
+        "P71-QA-01",
+        "P71-QA-02"
+      ],
+      "validationStatus": "not_executed_for_requirement",
+      "documentaryVerification": {
+        "status": "structure_links_and_sources_checked",
+        "proofPath": "docs/cqc-bible/guide-integration-verification-p71.json",
+        "limit": "Documentary structure and source preservation only; functional requirements retain their individual execution status."
+      }
+    },
+    {
+      "id": "CQC-E47-03",
+      "sectionId": "47",
+      "title": "Réaliser une tranche avant l’extension générale",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "Dossiers locaux d’abord ; tag, combo, duo et services conservent leurs portes d’intégration distinctes.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/README.md",
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md"
+      ],
+      "validationIds": [
+        "P71-QA-14",
+        "P71-QA-16"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E48-01",
+      "sectionId": "48",
+      "title": "Conserver les dix fiches complémentaires",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Taunt, sélection, équipe, soutien, scène, clash, entité, bonus, lieu et condition ont leurs champs.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md",
+        "docs/cqc-bible/roster-coverage.json"
+      ],
+      "validationIds": [
+        "P71-QA-02"
+      ],
+      "validationStatus": "not_executed_for_requirement",
+      "documentaryVerification": {
+        "status": "structure_links_and_sources_checked",
+        "proofPath": "docs/cqc-bible/guide-integration-verification-p71.json",
+        "limit": "Documentary structure and source preservation only; functional requirements retain their individual execution status."
+      }
+    },
+    {
+      "id": "CQC-E48-02",
+      "sectionId": "48",
+      "title": "Associer les fiches à des UID et sources réels",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Huit taunts, cinq paires et six bonus utilisent les UID vérifiés et les périmètres déjà présents.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md",
+        "docs/cqc-bible/roster-coverage.json"
+      ],
+      "validationIds": [
+        "P71-QA-02"
+      ],
+      "validationStatus": "not_executed_for_requirement",
+      "documentaryVerification": {
+        "status": "structure_links_and_sources_checked",
+        "proofPath": "docs/cqc-bible/guide-integration-verification-p71.json",
+        "limit": "Documentary structure and source preservation only; functional requirements retain their individual execution status."
+      }
+    },
+    {
+      "id": "CQC-E48-03",
+      "sectionId": "48",
+      "title": "Garder visibles les inconnus",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Durées, captures, référence de scène, morphologie ou binding manquants restent à qualifier avant admission.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md",
+        "docs/cqc-bible/roster-coverage.json"
+      ],
+      "validationIds": [
+        "P71-QA-24"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E49-01",
+      "sectionId": "49",
+      "title": "Intégrer l’extension à la bible centrale",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "README et EXIGENCES pointent vers l’annexe et le registre P71 sans remplacer les tableaux historiques.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/README.md",
+        "docs/cqc-bible/EXIGENCES.md",
+        "docs/cqc-bible/sources/provenance-p71.json"
+      ],
+      "validationIds": [
+        "P71-QA-01",
+        "P71-QA-02"
+      ],
+      "validationStatus": "not_executed_for_requirement",
+      "documentaryVerification": {
+        "status": "structure_links_and_sources_checked",
+        "proofPath": "docs/cqc-bible/guide-integration-verification-p71.json",
+        "limit": "Documentary structure and source preservation only; functional requirements retain their individual execution status."
+      }
+    },
+    {
+      "id": "CQC-E49-02",
+      "sectionId": "49",
+      "title": "Conserver la portée des inspirations",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "Les règles d’autres jeux ne sont pas automatiquement attribuées à CQC ; sources primaires datées.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/README.md",
+        "docs/cqc-bible/EXIGENCES.md",
+        "docs/cqc-bible/sources/provenance-p71.json"
+      ],
+      "validationIds": [
+        "P71-QA-02"
+      ],
+      "validationStatus": "not_executed_for_requirement",
+      "documentaryVerification": {
+        "status": "structure_links_and_sources_checked",
+        "proofPath": "docs/cqc-bible/guide-integration-verification-p71.json",
+        "limit": "Documentary structure and source preservation only; functional requirements retain their individual execution status."
+      }
+    },
+    {
+      "id": "CQC-E49-03",
+      "sectionId": "49",
+      "title": "Clore le lot par preuves et restants",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "Le bilan distingue documentation, production, intégration, tests et publication.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/README.md",
+        "docs/cqc-bible/EXIGENCES.md",
+        "docs/cqc-bible/sources/provenance-p71.json"
+      ],
+      "validationIds": [
+        "P71-QA-01",
+        "P71-QA-02"
+      ],
+      "validationStatus": "not_executed_for_requirement",
+      "documentaryVerification": {
+        "status": "structure_links_and_sources_checked",
+        "proofPath": "docs/cqc-bible/guide-integration-verification-p71.json",
+        "limit": "Documentary structure and source preservation only; functional requirements retain their individual execution status."
+      }
+    },
+    {
+      "id": "CQC-E50-01",
+      "sectionId": "50",
+      "title": "Délimiter les catégories d’accès",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "Personnage, partenaire, costume, stage, mode et dossier conservent un périmètre et une priorité explicites.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/EXIGENCES.md",
+        "docs/cqc-bible/roster-coverage.json",
+        "public/cqc/data/cqc-p63-source-atlas.json"
+      ],
+      "validationIds": [
+        "P71-QA-02"
+      ],
+      "validationStatus": "not_executed_for_requirement",
+      "documentaryVerification": {
+        "status": "structure_links_and_sources_checked",
+        "proofPath": "docs/cqc-bible/guide-integration-verification-p71.json",
+        "limit": "Documentary structure and source preservation only; functional requirements retain their individual execution status."
+      }
+    },
+    {
+      "id": "CQC-E50-02",
+      "sectionId": "50",
+      "title": "Ne pas masquer une production inachevée par un verrou",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "Absence de fichier, erreur, acquisition et progression possèdent des messages distincts.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/EXIGENCES.md",
+        "docs/cqc-bible/roster-coverage.json",
+        "public/cqc/data/cqc-p63-source-atlas.json"
+      ],
+      "validationIds": [
+        "P71-QA-18"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E50-03",
+      "sectionId": "50",
+      "title": "Conserver les accès existants",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "La tranche P71 ajoute seulement trois dossiers ; elle ne verrouille ni ancien roster, ni mode, ni asset.",
+      "documentationStatus": "documented",
+      "implementationStatus": "implemented_p71_local_scope",
+      "implementationScope": "Three original local dossiers only; no roster/costume/stage/mode gate and no paid entitlement.",
+      "existingPaths": [
+        "docs/cqc-bible/EXIGENCES.md",
+        "docs/cqc-bible/roster-coverage.json",
+        "public/cqc/data/cqc-p63-source-atlas.json"
+      ],
+      "validationIds": [
+        "P71-QA-23"
+      ],
+      "validationStatus": "local_scope_checks_passed",
+      "validationProofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md"
+      ],
+      "validationLimits": "Only the three local document rewards. No full catalogue, combat flow, real-browser visual check or external-service certification."
+    },
+    {
+      "id": "CQC-E51-01",
+      "sectionId": "51",
+      "title": "Calculer les quatre axes indépendamment",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "Discovery, right, technical et compatibility donnent des valeurs distinctes pour chaque dossier.",
+      "documentationStatus": "documented",
+      "implementationStatus": "implemented_p71_local_scope",
+      "implementationScope": "Three original local dossiers only; no roster/costume/stage/mode gate and no paid entitlement.",
+      "existingPaths": [
+        "public/cqc/src/cqc-p71-access.js",
+        "public/cqc/src/cqc-p71-archives.js"
+      ],
+      "validationIds": [
+        "P71-QA-13",
+        "P71-QA-14",
+        "P71-QA-18"
+      ],
+      "validationStatus": "local_scope_checks_passed",
+      "validationProofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md"
+      ],
+      "validationLimits": "Only the three local document rewards. No full catalogue, combat flow, real-browser visual check or external-service certification."
+    },
+    {
+      "id": "CQC-E51-02",
+      "sectionId": "51",
+      "title": "Séparer acquisition et utilisabilité",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "Un permanent peut attendre un fichier ; l’interface montre le bon obstacle sans retirer la récompense.",
+      "documentationStatus": "documented",
+      "implementationStatus": "implemented_p71_local_scope",
+      "implementationScope": "Three original local dossiers only; no roster/costume/stage/mode gate and no paid entitlement.",
+      "existingPaths": [
+        "public/cqc/src/cqc-p71-access.js",
+        "public/cqc/src/cqc-p71-archives.js"
+      ],
+      "validationIds": [
+        "P71-QA-18"
+      ],
+      "validationStatus": "local_scope_checks_passed",
+      "validationProofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md"
+      ],
+      "validationLimits": "Only the three local document rewards. No full catalogue, combat flow, real-browser visual check or external-service certification."
+    },
+    {
+      "id": "CQC-E51-03",
+      "sectionId": "51",
+      "title": "Étendre les droits externes ultérieurement",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "La tranche implémente none/claimable/pending/permanent ; temporaire/expiré et catalogue global restent à réaliser.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "public/cqc/src/cqc-p71-access.js",
+        "public/cqc/src/cqc-p71-archives.js"
+      ],
+      "validationIds": [
+        "P71-QA-19",
+        "P71-QA-20"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E52-01",
+      "sectionId": "52",
+      "title": "Employer une métaphore de dossier classifié",
+      "priority": "P1",
+      "decision": "adaptee",
+      "acceptance": "Dossier, verrou, focus et textes forment une UI originale compatible ; pas un objet canonique inventé.",
+      "documentationStatus": "documented",
+      "implementationStatus": "implemented_p71_local_scope",
+      "implementationScope": "Three original local dossiers only; no roster/costume/stage/mode gate and no paid entitlement.",
+      "existingPaths": [
+        "public/cqc/modules/classified-archives-p71.html",
+        "public/cqc/src/cqc-p71-archives.js",
+        "public/cqc/src/cqc-p71-archives.css"
+      ],
+      "validationIds": [
+        "P71-QA-13",
+        "P71-QA-22"
+      ],
+      "validationStatus": "partial_dom_checks_browser_blocked",
+      "validationProofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md"
+      ],
+      "validationLimits": "Only the three local document rewards. No full catalogue, combat flow, real-browser visual check or external-service certification."
+    },
+    {
+      "id": "CQC-E52-02",
+      "sectionId": "52",
+      "title": "Protéger les identités réellement secrètes",
+      "priority": "P1",
+      "decision": "adaptee",
+      "acceptance": "Un dossier neutre précède l’indice ; noms, titres accessibles et contenu ne sont révélés que dans l’état autorisé.",
+      "documentationStatus": "documented",
+      "implementationStatus": "implemented_p71_local_scope",
+      "implementationScope": "Three original local dossiers only; no roster/costume/stage/mode gate and no paid entitlement.",
+      "existingPaths": [
+        "public/cqc/modules/classified-archives-p71.html",
+        "public/cqc/src/cqc-p71-archives.js",
+        "public/cqc/src/cqc-p71-archives.css"
+      ],
+      "validationIds": [
+        "P71-QA-13"
+      ],
+      "validationStatus": "local_scope_checks_passed",
+      "validationProofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md"
+      ],
+      "validationLimits": "Only the three local document rewards. No full catalogue, combat flow, real-browser visual check or external-service certification."
+    },
+    {
+      "id": "CQC-E52-03",
+      "sectionId": "52",
+      "title": "Prévoir les silhouettes de roster séparément",
+      "priority": "P1",
+      "decision": "adaptee",
+      "acceptance": "Les silhouettes/cadenas de personnages, costumes et stages restent une production future, sans nouveau faux slot jouable.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "public/cqc/modules/classified-archives-p71.html",
+        "public/cqc/src/cqc-p71-archives.js",
+        "public/cqc/src/cqc-p71-archives.css"
+      ],
+      "validationIds": [
+        "P71-QA-03",
+        "P71-QA-24"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E53-01",
+      "sectionId": "53",
+      "title": "Rendre le verrou consultable sans sélection interdite",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Focus, fiche de condition, action utile et aléatoire filtré sont exigés lors du futur raccord au roster.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "docs/cqc-bible/roster-coverage.json",
+        "public/cqc/modules/unified-versus-v055.html"
+      ],
+      "validationIds": [
+        "P71-QA-03",
+        "P71-QA-13"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E53-02",
+      "sectionId": "53",
+      "title": "Conserver un kit natif complet",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Compagnon/objet indispensable ne reçoit pas un verrou séparé ; partenaire et scène de duo restent distincts.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "docs/cqc-bible/roster-coverage.json",
+        "public/cqc/modules/unified-versus-v055.html"
+      ],
+      "validationIds": [
+        "P71-QA-05",
+        "P71-QA-10"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E53-03",
+      "sectionId": "53",
+      "title": "Distinguer prêt narratif, acquisition et relation",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Jouer dans un chapitre n’accorde pas implicitement un droit permanent ni une alliance historique.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/roster-coverage.json",
+        "public/cqc/modules/unified-versus-v055.html"
+      ],
+      "validationIds": [
+        "P71-QA-08",
+        "P71-QA-19"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E54-01",
+      "sectionId": "54",
+      "title": "Conserver dépendances et provenance",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Aperçu et droit d’équiper distincts ; costume obtenu avant personnage reste acquis avec la bonne condition.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "docs/cqc-bible/roster-coverage.json",
+        "docs/cqc-bible/ROSTER.md",
+        "docs/cqc-bible/asset-associations-p64.json"
+      ],
+      "validationIds": [
+        "P71-QA-19"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E54-02",
+      "sectionId": "54",
+      "title": "Préserver les propriétés du kit",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Cosmétique conserve stats/timings/collisions ; modification réelle d’arme ou morphologie qualifiée en variante.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/roster-coverage.json",
+        "docs/cqc-bible/ROSTER.md",
+        "docs/cqc-bible/asset-associations-p64.json"
+      ],
+      "validationIds": [
+        "P71-QA-24"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E54-03",
+      "sectionId": "54",
+      "title": "Respecter période, spoiler et doublons",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Compatibilité de chapitre, parent d’accessoire et compensation sont explicites ; pas de perte silencieuse.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "docs/cqc-bible/roster-coverage.json",
+        "docs/cqc-bible/ROSTER.md",
+        "docs/cqc-bible/asset-associations-p64.json"
+      ],
+      "validationIds": [
+        "P71-QA-13",
+        "P71-QA-19"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E55-01",
+      "sectionId": "55",
+      "title": "Séparer stage, ambiance et règle",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Accès, découverte, danger, interaction et transition ont leurs propres champs ; miniature peut être secrète.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "docs/cqc-bible/ARENES_ET_BOSS.md",
+        "public/cqc/data/cqc-p63-source-atlas.json"
+      ],
+      "validationIds": [
+        "P71-QA-13",
+        "P71-QA-18"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E55-02",
+      "sectionId": "55",
+      "title": "Préserver les variantes de confort",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Présentation statique/réduite conserve les informations et n’est pas payante ni soumise à un autre droit.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/ARENES_ET_BOSS.md",
+        "public/cqc/data/cqc-p63-source-atlas.json"
+      ],
+      "validationIds": [
+        "P71-QA-22"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E55-03",
+      "sectionId": "55",
+      "title": "Préparer participation et destinations du match",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Adversaire, assets et transitions autorisés validés avant chargement ; géométrie et règles communes annoncées.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "docs/cqc-bible/ARENES_ET_BOSS.md",
+        "public/cqc/data/cqc-p63-source-atlas.json"
+      ],
+      "validationIds": [
+        "P71-QA-21"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E56-01",
+      "sectionId": "56",
+      "title": "Documenter les futurs accès aux modes avancés",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Boss Rush, défis et routes possèdent conditions/description sans verrouiller les anciens accès en P71.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "public/cqc/modules/battle-operations-v053.html",
+        "public/cqc/index.html"
+      ],
+      "validationIds": [
+        "P71-QA-23"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E56-02",
+      "sectionId": "56",
+      "title": "Éviter les cycles de prérequis",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Aucun mode ne demande sa propre victoire ni une chaîne impossible pour se débloquer.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "public/cqc/modules/battle-operations-v053.html",
+        "public/cqc/index.html"
+      ],
+      "validationIds": [
+        "P71-QA-12"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E56-03",
+      "sectionId": "56",
+      "title": "Préserver apprentissage et erreurs techniques",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Réglages/tutoriels restent accessibles ; maintenance et installation ne sont pas des conditions de progression.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "public/cqc/modules/battle-operations-v053.html",
+        "public/cqc/index.html"
+      ],
+      "validationIds": [
+        "P71-QA-18",
+        "P71-QA-22"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E57-01",
+      "sectionId": "57",
+      "title": "Calculer les branches ET/OU sans ambiguïté",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "Mémoire = intro ET parcours terminé ; Relais = victoire 3v3 OU 5v5 ; inconnus traités séparément des échecs.",
+      "documentationStatus": "documented",
+      "implementationStatus": "implemented_p71_local_scope",
+      "implementationScope": "Three original local dossiers only; no roster/costume/stage/mode gate and no paid entitlement.",
+      "existingPaths": [
+        "public/cqc/src/cqc-p71-access.js",
+        "public/cqc/src/chronicles-core-v056.js",
+        "public/cqc/modules/battle-operations-v053.html"
+      ],
+      "validationIds": [
+        "P71-QA-14"
+      ],
+      "validationStatus": "local_scope_checks_passed",
+      "validationProofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md"
+      ],
+      "validationLimits": "Only the three local document rewards. No full catalogue, combat flow, real-browser visual check or external-service certification."
+    },
+    {
+      "id": "CQC-E57-02",
+      "sectionId": "57",
+      "title": "Relire seulement les faits conservés",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "Chroniques validé et records Operations constituent la portée de rétroactivité ; aucune victoire non enregistrée inventée.",
+      "documentationStatus": "documented",
+      "implementationStatus": "implemented_p71_local_scope",
+      "implementationScope": "Three original local dossiers only; no roster/costume/stage/mode gate and no paid entitlement.",
+      "existingPaths": [
+        "public/cqc/src/cqc-p71-access.js",
+        "public/cqc/src/chronicles-core-v056.js",
+        "public/cqc/modules/battle-operations-v053.html"
+      ],
+      "validationIds": [
+        "P71-QA-15"
+      ],
+      "validationStatus": "local_scope_checks_passed",
+      "validationProofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md"
+      ],
+      "validationLimits": "Only the three local document rewards. No full catalogue, combat flow, real-browser visual check or external-service certification."
+    },
+    {
+      "id": "CQC-E57-03",
+      "sectionId": "57",
+      "title": "Nommer les événements et l’autorité",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "Chaque dossier a un ID, un événement stable et local-progression ; aucune acquisition externe simulée.",
+      "documentationStatus": "documented",
+      "implementationStatus": "implemented_p71_local_scope",
+      "implementationScope": "Three original local dossiers only; no roster/costume/stage/mode gate and no paid entitlement.",
+      "existingPaths": [
+        "public/cqc/src/cqc-p71-access.js",
+        "public/cqc/src/chronicles-core-v056.js",
+        "public/cqc/modules/battle-operations-v053.html"
+      ],
+      "validationIds": [
+        "P71-QA-16"
+      ],
+      "validationStatus": "local_scope_checks_passed",
+      "validationProofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md"
+      ],
+      "validationLimits": "Only the three local document rewards. No full catalogue, combat flow, real-browser visual check or external-service certification."
+    },
+    {
+      "id": "CQC-E58-01",
+      "sectionId": "58",
+      "title": "Attribuer un contenu unique depuis le catalogue",
+      "priority": "P1",
+      "decision": "adaptee",
+      "acceptance": "Report01/02/03 ne sont pas dupliqués lors d’une réclamation répétée ou d’un retour à la page.",
+      "documentationStatus": "documented",
+      "implementationStatus": "implemented_p71_local_scope",
+      "implementationScope": "Three original local dossiers only; no roster/costume/stage/mode gate and no paid entitlement.",
+      "existingPaths": [
+        "public/cqc/src/cqc-p71-access.js",
+        "public/cqc/src/cqc-p71-archives.js",
+        "public/cqc/data/cqc-p71-access-dossiers.json"
+      ],
+      "validationIds": [
+        "P71-QA-16"
+      ],
+      "validationStatus": "local_scope_checks_passed",
+      "validationProofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md"
+      ],
+      "validationLimits": "Only the three local document rewards. No full catalogue, combat flow, real-browser visual check or external-service certification."
+    },
+    {
+      "id": "CQC-E58-02",
+      "sectionId": "58",
+      "title": "Sauvegarder avant la présentation",
+      "priority": "P1",
+      "decision": "adaptee",
+      "acceptance": "Une interruption après attribution conserve la récompense ; échec d’enregistrement ne produit pas un faux succès.",
+      "documentationStatus": "documented",
+      "implementationStatus": "implemented_p71_local_scope",
+      "implementationScope": "Three original local dossiers only; no roster/costume/stage/mode gate and no paid entitlement.",
+      "existingPaths": [
+        "public/cqc/src/cqc-p71-access.js",
+        "public/cqc/src/cqc-p71-archives.js",
+        "public/cqc/data/cqc-p71-access-dossiers.json"
+      ],
+      "validationIds": [
+        "P71-QA-16",
+        "P71-QA-17"
+      ],
+      "validationStatus": "local_scope_checks_passed",
+      "validationProofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md"
+      ],
+      "validationLimits": "Only the three local document rewards. No full catalogue, combat flow, real-browser visual check or external-service certification."
+    },
+    {
+      "id": "CQC-E58-03",
+      "sectionId": "58",
+      "title": "Distinguer dossier et lieu explorable",
+      "priority": "P1",
+      "decision": "adaptee",
+      "acceptance": "Le même catalogue pourra recevoir d’autres sources ; aucun coffre ou base parcourable n’est annoncé comme réalisé.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "public/cqc/src/cqc-p71-access.js",
+        "public/cqc/src/cqc-p71-archives.js",
+        "public/cqc/data/cqc-p71-access-dossiers.json"
+      ],
+      "validationIds": [
+        "P71-QA-12"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E59-01",
+      "sectionId": "59",
+      "title": "Définir permanent, temporaire et par période",
+      "priority": "P2",
+      "decision": "adaptee",
+      "acceptance": "Chaque futur avantage doit annoncer contenus, durée, dépendances, essais/cadeaux et lots antérieurs.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt"
+      ],
+      "validationIds": [
+        "P71-QA-19",
+        "P71-QA-20"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E59-02",
+      "sectionId": "59",
+      "title": "Rendre les alternatives d’acquisition lisibles",
+      "priority": "P2",
+      "decision": "adaptee",
+      "acceptance": "Gratuit OU soutien, durée d’exclusivité et permanence sont affichés avant une redirection volontaire.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "docs/cqc-bible/sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt"
+      ],
+      "validationIds": [
+        "P71-QA-14",
+        "P71-QA-20"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E59-03",
+      "sectionId": "59",
+      "title": "Ne pas annoncer une offre inexistante",
+      "priority": "P2",
+      "decision": "adaptee",
+      "acceptance": "Aucun paiement, niveau abonné ni compte externe opérationnel n’est créé par P71.",
+      "documentationStatus": "documented",
+      "implementationStatus": "deferred_dependency",
+      "implementationScope": "Dependency recorded; not operational.",
+      "existingPaths": [
+        "docs/cqc-bible/sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt"
+      ],
+      "validationIds": [
+        "P71-QA-20"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E60-01",
+      "sectionId": "60",
+      "title": "Prévoir un parcours officiel de liaison",
+      "priority": "P2",
+      "decision": "differee",
+      "acceptance": "Fournisseur, campagne, compte et avantages nécessitent un backend de confiance ; pas de mot de passe demandé au client.",
+      "documentationStatus": "documented",
+      "implementationStatus": "deferred_dependency",
+      "implementationScope": "Dependency recorded; not operational.",
+      "existingPaths": [
+        "docs/cqc-bible/sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt"
+      ],
+      "validationIds": [
+        "P71-QA-20"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E60-02",
+      "sectionId": "60",
+      "title": "Vérifier les droits et garder les secrets hors client",
+      "priority": "P2",
+      "decision": "differee",
+      "acceptance": "Un booléen local ne prouve aucun abonnement ; validation et événements doivent être autoritatifs.",
+      "documentationStatus": "documented",
+      "implementationStatus": "deferred_dependency",
+      "implementationScope": "Dependency recorded; not operational.",
+      "existingPaths": [
+        "docs/cqc-bible/sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt"
+      ],
+      "validationIds": [
+        "P71-QA-20"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E60-03",
+      "sectionId": "60",
+      "title": "Traiter réconciliation et changements de compte",
+      "priority": "P2",
+      "decision": "differee",
+      "acceptance": "Doublons, désordre, déliaison, resynchronisation et transfert ont une politique précise avant mise en service.",
+      "documentationStatus": "documented",
+      "implementationStatus": "deferred_dependency",
+      "implementationScope": "Dependency recorded; not operational.",
+      "existingPaths": [
+        "docs/cqc-bible/sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt"
+      ],
+      "validationIds": [
+        "P71-QA-20"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E61-01",
+      "sectionId": "61",
+      "title": "Conserver la source permanente locale",
+      "priority": "P1",
+      "decision": "adaptee",
+      "acceptance": "Une récompense déjà accordée reste acquise même si la relecture de progression devient indisponible.",
+      "documentationStatus": "documented",
+      "implementationStatus": "implemented_p71_local_scope",
+      "implementationScope": "Three original local dossiers only; no roster/costume/stage/mode gate and no paid entitlement.",
+      "existingPaths": [
+        "public/cqc/src/cqc-p71-access.js",
+        "docs/cqc-bible/sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt"
+      ],
+      "validationIds": [
+        "P71-QA-16",
+        "P71-QA-17"
+      ],
+      "validationStatus": "local_scope_checks_passed",
+      "validationProofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md"
+      ],
+      "validationLimits": "Only the three local document rewards. No full catalogue, combat flow, real-browser visual check or external-service certification."
+    },
+    {
+      "id": "CQC-E61-02",
+      "sectionId": "61",
+      "title": "Retirer seulement la source externe concernée",
+      "priority": "P1",
+      "decision": "adaptee",
+      "acceptance": "Expiration, remboursement et annulation ne suppriment pas les autres droits, préférences ou progression.",
+      "documentationStatus": "documented",
+      "implementationStatus": "deferred_dependency",
+      "implementationScope": "Dependency recorded; not operational.",
+      "existingPaths": [
+        "public/cqc/src/cqc-p71-access.js",
+        "docs/cqc-bible/sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt"
+      ],
+      "validationIds": [
+        "P71-QA-19",
+        "P71-QA-20"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E61-03",
+      "sectionId": "61",
+      "title": "Définir vérification et maintien de partie",
+      "priority": "P1",
+      "decision": "adaptee",
+      "acceptance": "Panne n’équivaut pas expiration ; justification hors ligne bornée et changement après le match autorisé.",
+      "documentationStatus": "documented",
+      "implementationStatus": "deferred_dependency",
+      "implementationScope": "Dependency recorded; not operational.",
+      "existingPaths": [
+        "public/cqc/src/cqc-p71-access.js",
+        "docs/cqc-bible/sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt"
+      ],
+      "validationIds": [
+        "P71-QA-20",
+        "P71-QA-21"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E62-01",
+      "sectionId": "62",
+      "title": "Séparer quatre autorisations de contenu",
+      "priority": "P2",
+      "decision": "adaptee",
+      "acceptance": "Consulter, sélectionner, participer et s’entraîner ont des politiques par profil/mode.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "public/cqc/modules/unified-versus-v055.html",
+        "docs/cqc-bible/COMBAT.md"
+      ],
+      "validationIds": [
+        "P71-QA-18",
+        "P71-QA-21"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E62-02",
+      "sectionId": "62",
+      "title": "Vérifier le lancement et le remplacement",
+      "priority": "P2",
+      "decision": "adaptee",
+      "acceptance": "Assets, versions, partenaires et stages compatibles avant match ; préférences conservées après remplacement.",
+      "documentationStatus": "documented",
+      "implementationStatus": "specification_only",
+      "implementationScope": "Design and acceptance contract only; no runtime implementation claimed.",
+      "existingPaths": [
+        "public/cqc/modules/unified-versus-v055.html",
+        "docs/cqc-bible/COMBAT.md"
+      ],
+      "validationIds": [
+        "P71-QA-19",
+        "P71-QA-21"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E62-03",
+      "sectionId": "62",
+      "title": "Versionner le replay et les contenus externes",
+      "priority": "P2",
+      "decision": "adaptee",
+      "acceptance": "La lecture ne dépend pas du seul abonnement actuel ; réseau/replay complet attendent leurs preuves.",
+      "documentationStatus": "documented",
+      "implementationStatus": "deferred_dependency",
+      "implementationScope": "Dependency recorded; not operational.",
+      "existingPaths": [
+        "public/cqc/modules/unified-versus-v055.html",
+        "docs/cqc-bible/COMBAT.md"
+      ],
+      "validationIds": [
+        "P71-QA-21"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E63-01",
+      "sectionId": "63",
+      "title": "Donner un état et une action utiles",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "Condition, progression, droit, installation et compatibilité produisent le bon texte dans les dossiers.",
+      "documentationStatus": "documented",
+      "implementationStatus": "implemented_p71_local_scope",
+      "implementationScope": "Three original local dossiers only; no roster/costume/stage/mode gate and no paid entitlement.",
+      "existingPaths": [
+        "public/cqc/modules/classified-archives-p71.html",
+        "public/cqc/src/cqc-p71-archives.js",
+        "public/cqc/src/cqc-p71-archives.css"
+      ],
+      "validationIds": [
+        "P71-QA-14",
+        "P71-QA-18"
+      ],
+      "validationStatus": "local_scope_checks_passed",
+      "validationProofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md"
+      ],
+      "validationLimits": "Only the three local document rewards. No full catalogue, combat flow, real-browser visual check or external-service certification."
+    },
+    {
+      "id": "CQC-E63-02",
+      "sectionId": "63",
+      "title": "Préserver le secret dans toutes les représentations",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "Titres, texte accessible, messages et contenu respectent le niveau de découverte du dossier.",
+      "documentationStatus": "documented",
+      "implementationStatus": "implemented_p71_local_scope",
+      "implementationScope": "Three original local dossiers only; no roster/costume/stage/mode gate and no paid entitlement.",
+      "existingPaths": [
+        "public/cqc/modules/classified-archives-p71.html",
+        "public/cqc/src/cqc-p71-archives.js",
+        "public/cqc/src/cqc-p71-archives.css"
+      ],
+      "validationIds": [
+        "P71-QA-13"
+      ],
+      "validationStatus": "local_scope_checks_passed",
+      "validationProofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md"
+      ],
+      "validationLimits": "Only the three local document rewards. No full catalogue, combat flow, real-browser visual check or external-service certification."
+    },
+    {
+      "id": "CQC-E63-03",
+      "sectionId": "63",
+      "title": "Prévoir clavier, écran étroit et mouvement réduit",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "Focus visible, état écrit et informations critiques disponibles sans son ni animation.",
+      "documentationStatus": "documented",
+      "implementationStatus": "implemented_p71_local_scope",
+      "implementationScope": "Three original local dossiers only; no roster/costume/stage/mode gate and no paid entitlement.",
+      "existingPaths": [
+        "public/cqc/modules/classified-archives-p71.html",
+        "public/cqc/src/cqc-p71-archives.js",
+        "public/cqc/src/cqc-p71-archives.css"
+      ],
+      "validationIds": [
+        "P71-QA-22"
+      ],
+      "validationStatus": "partial_dom_checks_browser_blocked",
+      "validationProofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md"
+      ],
+      "validationLimits": "Only the three local document rewards. No full catalogue, combat flow, real-browser visual check or external-service certification."
+    },
+    {
+      "id": "CQC-E64-01",
+      "sectionId": "64",
+      "title": "Versionner le catalogue et les attributions",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "IDs stables, source, eventId et kind permanent validés ; pas de collision avec les profils historiques.",
+      "documentationStatus": "documented",
+      "implementationStatus": "implemented_p71_local_scope",
+      "implementationScope": "Three original local dossiers only; no roster/costume/stage/mode gate and no paid entitlement.",
+      "existingPaths": [
+        "public/cqc/src/cqc-p71-access.js",
+        "public/cqc/src/cqc-p71-archives.js",
+        "public/cqc/data/cqc-p71-access-dossiers.json",
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md"
+      ],
+      "validationIds": [
+        "P71-QA-16",
+        "P71-QA-23"
+      ],
+      "validationStatus": "local_scope_checks_passed",
+      "validationProofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md"
+      ],
+      "validationLimits": "Only the three local document rewards. No full catalogue, combat flow, real-browser visual check or external-service certification."
+    },
+    {
+      "id": "CQC-E64-02",
+      "sectionId": "64",
+      "title": "Résister aux écritures et profils endommagés",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "Écriture locale confirmée, relecture des emplacements et signal d’erreur sans effacement silencieux.",
+      "documentationStatus": "documented",
+      "implementationStatus": "implemented_p71_local_scope",
+      "implementationScope": "Three original local dossiers only; no roster/costume/stage/mode gate and no paid entitlement.",
+      "existingPaths": [
+        "public/cqc/src/cqc-p71-access.js",
+        "public/cqc/src/cqc-p71-archives.js",
+        "public/cqc/data/cqc-p71-access-dossiers.json",
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md"
+      ],
+      "validationIds": [
+        "P71-QA-17"
+      ],
+      "validationStatus": "local_scope_checks_passed",
+      "validationProofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md"
+      ],
+      "validationLimits": "Only the three local document rewards. No full catalogue, combat flow, real-browser visual check or external-service certification."
+    },
+    {
+      "id": "CQC-E64-03",
+      "sectionId": "64",
+      "title": "Distinguer validation de l’accès et du contenu",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "Tests locaux de dossiers ne certifient ni costume, sprite, tag, service externe ni totalité de la production.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "public/cqc/src/cqc-p71-access.js",
+        "public/cqc/src/cqc-p71-archives.js",
+        "public/cqc/data/cqc-p71-access-dossiers.json",
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md"
+      ],
+      "validationIds": [
+        "P71-QA-02",
+        "P71-QA-24"
+      ],
+      "validationStatus": "not_executed_for_requirement",
+      "documentaryVerification": {
+        "status": "structure_links_and_sources_checked",
+        "proofPath": "docs/cqc-bible/guide-integration-verification-p71.json",
+        "limit": "Documentary structure and source preservation only; functional requirements retain their individual execution status."
+      }
+    },
+    {
+      "id": "CQC-E65-01",
+      "sectionId": "65",
+      "title": "Renseigner les six familles de fiches d’accès",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Contenu/slot, règle, avantage, charte, stage et matrice de droits ont des champs précis dans l’annexe.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md",
+        "public/cqc/src/cqc-p71-access.js",
+        "public/cqc/data/cqc-p71-access-dossiers.json"
+      ],
+      "validationIds": [
+        "P71-QA-02"
+      ],
+      "validationStatus": "not_executed_for_requirement",
+      "documentaryVerification": {
+        "status": "structure_links_and_sources_checked",
+        "proofPath": "docs/cqc-bible/guide-integration-verification-p71.json",
+        "limit": "Documentary structure and source preservation only; functional requirements retain their individual execution status."
+      }
+    },
+    {
+      "id": "CQC-E65-02",
+      "sectionId": "65",
+      "title": "Raccorder les trois dossiers concrets",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Définitions report01/report02/report03, conditions et paragraphes concordent avec le module local.",
+      "documentationStatus": "documented",
+      "implementationStatus": "implemented_p71_local_scope",
+      "implementationScope": "Three original local dossiers only; no roster/costume/stage/mode gate and no paid entitlement.",
+      "existingPaths": [
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md",
+        "public/cqc/src/cqc-p71-access.js",
+        "public/cqc/data/cqc-p71-access-dossiers.json"
+      ],
+      "validationIds": [
+        "P71-QA-14",
+        "P71-QA-15",
+        "P71-QA-16"
+      ],
+      "validationStatus": "local_scope_checks_passed",
+      "validationProofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md"
+      ],
+      "validationLimits": "Only the three local document rewards. No full catalogue, combat flow, real-browser visual check or external-service certification."
+    },
+    {
+      "id": "CQC-E65-03",
+      "sectionId": "65",
+      "title": "Ne pas inventer les fiches de service absentes",
+      "priority": "P1",
+      "decision": "retenue",
+      "acceptance": "Catalogue externe et cas d’abonnement restent en conception/dépendance, sans faux identifiants fournisseur.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/FICHES_ET_VALIDATION.md",
+        "public/cqc/src/cqc-p71-access.js",
+        "public/cqc/data/cqc-p71-access-dossiers.json"
+      ],
+      "validationIds": [
+        "P71-QA-20"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    },
+    {
+      "id": "CQC-E66-01",
+      "sectionId": "66",
+      "title": "Conserver les deux textes et leur application CQC",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "L’annexe et sa matrice couvrent 30–67 ; les originaux sont intacts et liés à la bible.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/README.md",
+        "docs/cqc-bible/EXIGENCES.md",
+        "docs/cqc-bible/sources/provenance-p71.json"
+      ],
+      "validationIds": [
+        "P71-QA-01",
+        "P71-QA-02"
+      ],
+      "validationStatus": "not_executed_for_requirement",
+      "documentaryVerification": {
+        "status": "structure_links_and_sources_checked",
+        "proofPath": "docs/cqc-bible/guide-integration-verification-p71.json",
+        "limit": "Documentary structure and source preservation only; functional requirements retain their individual execution status."
+      }
+    },
+    {
+      "id": "CQC-E66-02",
+      "sectionId": "66",
+      "title": "Exposer les statuts et les dépendances",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "Retenu, adapté, différé, code hérité et tranche locale ne sont pas confondus avec une livraison complète.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/README.md",
+        "docs/cqc-bible/EXIGENCES.md",
+        "docs/cqc-bible/sources/provenance-p71.json"
+      ],
+      "validationIds": [
+        "P71-QA-02"
+      ],
+      "validationStatus": "not_executed_for_requirement",
+      "documentaryVerification": {
+        "status": "structure_links_and_sources_checked",
+        "proofPath": "docs/cqc-bible/guide-integration-verification-p71.json",
+        "limit": "Documentary structure and source preservation only; functional requirements retain their individual execution status."
+      }
+    },
+    {
+      "id": "CQC-E66-03",
+      "sectionId": "66",
+      "title": "Assurer une reprise additive",
+      "priority": "P0",
+      "decision": "retenue",
+      "acceptance": "P70 réservé, P69 conservé, registres historiques non réécrits ; nouvelles preuves bornées au lot P71.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/README.md",
+        "docs/cqc-bible/EXIGENCES.md",
+        "docs/cqc-bible/sources/provenance-p71.json"
+      ],
+      "validationIds": [
+        "P71-QA-02",
+        "P71-QA-23"
+      ],
+      "validationStatus": "not_executed_for_requirement",
+      "documentaryVerification": {
+        "status": "structure_links_and_sources_checked",
+        "proofPath": "docs/cqc-bible/guide-integration-verification-p71.json",
+        "limit": "Documentary structure and source preservation only; functional requirements retain their individual execution status."
+      }
+    },
+    {
+      "id": "CQC-E67-01",
+      "sectionId": "67",
+      "title": "Conserver les sources primaires datées",
+      "priority": "P2",
+      "decision": "adaptee",
+      "acceptance": "KONAMI pour relations/capacités/continuités ; sources utilisateur et code identifiés séparément.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/sources/provenance-p71.json",
+        "docs/cqc-bible/sources-narrative.json"
+      ],
+      "validationIds": [
+        "P71-QA-02"
+      ],
+      "validationStatus": "not_executed_for_requirement",
+      "documentaryVerification": {
+        "status": "structure_links_and_sources_checked",
+        "proofPath": "docs/cqc-bible/guide-integration-verification-p71.json",
+        "limit": "Documentary structure and source preservation only; functional requirements retain their individual execution status."
+      }
+    },
+    {
+      "id": "CQC-E67-02",
+      "sectionId": "67",
+      "title": "Séparer faits et règles de conception",
+      "priority": "P2",
+      "decision": "adaptee",
+      "acceptance": "Noms nouveaux, coûts, animations, UI et récompenses sont étiquetés comme adaptations ou originaux.",
+      "documentationStatus": "documented",
+      "implementationStatus": "documented",
+      "implementationScope": "Documentation delivered; no gameplay claim.",
+      "existingPaths": [
+        "docs/cqc-bible/sources/provenance-p71.json",
+        "docs/cqc-bible/sources-narrative.json"
+      ],
+      "validationIds": [
+        "P71-QA-02",
+        "P71-QA-24"
+      ],
+      "validationStatus": "not_executed_for_requirement",
+      "documentaryVerification": {
+        "status": "structure_links_and_sources_checked",
+        "proofPath": "docs/cqc-bible/guide-integration-verification-p71.json",
+        "limit": "Documentary structure and source preservation only; functional requirements retain their individual execution status."
+      }
+    },
+    {
+      "id": "CQC-E67-03",
+      "sectionId": "67",
+      "title": "Revalider la documentation au raccord externe",
+      "priority": "P2",
+      "decision": "adaptee",
+      "acceptance": "Les références Patreon datées ne valent pas validation d’un adaptateur ; revue requise lors de sa réalisation.",
+      "documentationStatus": "documented",
+      "implementationStatus": "deferred_dependency",
+      "implementationScope": "Dependency recorded; not operational.",
+      "existingPaths": [
+        "docs/cqc-bible/sources/provenance-p71.json",
+        "docs/cqc-bible/sources-narrative.json"
+      ],
+      "validationIds": [
+        "P71-QA-20"
+      ],
+      "validationStatus": "not_executed_for_requirement"
+    }
+  ],
+  "rosterBindings": [
+    {
+      "uid": "core__snake",
+      "name": "NAKED SNAKE",
+      "incarnation": "SNAKE EATER",
+      "sourcePath": "docs/cqc-bible/roster-coverage.json",
+      "scope": "compiled base profile, not final runtime admission"
+    },
+    {
+      "uid": "core__boss",
+      "name": "THE BOSS",
+      "incarnation": "THE JOY",
+      "sourcePath": "docs/cqc-bible/roster-coverage.json",
+      "scope": "compiled base profile, not final runtime admission"
+    },
+    {
+      "uid": "core__solid",
+      "name": "SOLID SNAKE",
+      "incarnation": "MGS1 / SHADOW MOSES",
+      "sourcePath": "docs/cqc-bible/roster-coverage.json",
+      "scope": "compiled base profile, not final runtime admission"
+    },
+    {
+      "uid": "core__ocelot_mgs1",
+      "name": "REVOLVER OCELOT",
+      "incarnation": "MGS1 / FOXHOUND",
+      "sourcePath": "docs/cqc-bible/roster-coverage.json",
+      "scope": "compiled base profile, not final runtime admission"
+    },
+    {
+      "uid": "core__raiden_mgs2",
+      "name": "RAIDEN — MGS2",
+      "incarnation": "SONS OF LIBERTY / SNEAKING SUIT",
+      "sourcePath": "docs/cqc-bible/roster-coverage.json",
+      "scope": "compiled base profile, not final runtime admission"
+    },
+    {
+      "uid": "core__raiden",
+      "name": "RAIDEN",
+      "incarnation": "REVENGEANCE / CYBORG",
+      "sourcePath": "docs/cqc-bible/roster-coverage.json",
+      "scope": "compiled base profile, not final runtime admission"
+    },
+    {
+      "uid": "core__wolf",
+      "name": "SNIPER WOLF",
+      "incarnation": "MGS1 / FOXHOUND",
+      "sourcePath": "docs/cqc-bible/roster-coverage.json",
+      "scope": "compiled base profile, not final runtime admission"
+    },
+    {
+      "uid": "core__venom",
+      "name": "VENOM SNAKE",
+      "incarnation": "THE PHANTOM PAIN / DIAMOND DOGS",
+      "sourcePath": "docs/cqc-bible/roster-coverage.json",
+      "scope": "compiled base profile, not final runtime admission"
+    },
+    {
+      "uid": "core__quiet",
+      "name": "QUIET",
+      "incarnation": "THE PHANTOM PAIN / TIREUSE",
+      "sourcePath": "docs/cqc-bible/roster-coverage.json",
+      "scope": "compiled base profile, not final runtime admission"
+    },
+    {
+      "uid": "core__sam",
+      "name": "JETSTREAM SAM",
+      "incarnation": "REVENGEANCE / MURASAMA",
+      "sourcePath": "docs/cqc-bible/roster-coverage.json",
+      "scope": "compiled base profile, not final runtime admission"
+    },
+    {
+      "uid": "core__blade_wolf",
+      "name": "BLADE WOLF / LQ-84I",
+      "incarnation": "MGR / RENFORTS",
+      "sourcePath": "docs/cqc-bible/roster-coverage.json",
+      "scope": "compiled base profile, not final runtime admission"
+    },
+    {
+      "uid": "core__snake_acid",
+      "name": "SNAKE — AC!D",
+      "incarnation": "METAL GEAR AC!D / ADAPTATION VERSUS",
+      "sourcePath": "docs/cqc-bible/roster-coverage.json",
+      "scope": "compiled base profile, not final runtime admission"
+    },
+    {
+      "uid": "core__teliko",
+      "name": "TELIKO FRIEDMAN",
+      "incarnation": "METAL GEAR AC!D / ADAPTATION VERSUS",
+      "sourcePath": "docs/cqc-bible/roster-coverage.json",
+      "scope": "compiled base profile, not final runtime admission"
+    },
+    {
+      "uid": "core__snake_acid2",
+      "name": "SNAKE — AC!D 2",
+      "incarnation": "AC!D 2 / SIMULATION VERSUS",
+      "sourcePath": "docs/cqc-bible/roster-coverage.json",
+      "scope": "compiled base profile, not final runtime admission"
+    },
+    {
+      "uid": "core__venus",
+      "name": "VENUS",
+      "incarnation": "AC!D 2 / SIMULATION VERSUS",
+      "sourcePath": "docs/cqc-bible/roster-coverage.json",
+      "scope": "compiled base profile, not final runtime admission"
+    },
+    {
+      "uid": "archive__captain",
+      "name": "CAPTAIN",
+      "incarnation": "SURVIVE",
+      "sourcePath": "docs/cqc-bible/roster-coverage.json",
+      "scope": "compiled base profile, not final runtime admission"
+    },
+    {
+      "uid": "archive__reeve",
+      "name": "REEVE",
+      "incarnation": "SURVIVE",
+      "sourcePath": "docs/cqc-bible/roster-coverage.json",
+      "scope": "compiled base profile, not final runtime admission"
+    },
+    {
+      "uid": "core__monsoon",
+      "name": "MONSOON",
+      "incarnation": "REVENGEANCE / DESPERADO",
+      "sourcePath": "docs/cqc-bible/roster-coverage.json",
+      "scope": "compiled base profile, not final runtime admission"
+    },
+    {
+      "uid": "core__mistral",
+      "name": "MISTRAL",
+      "incarnation": "REVENGEANCE / DESPERADO",
+      "sourcePath": "docs/cqc-bible/roster-coverage.json",
+      "scope": "compiled base profile, not final runtime admission"
+    },
+    {
+      "uid": "core__sundowner",
+      "name": "SUNDOWNER",
+      "incarnation": "REVENGEANCE / DESPERADO",
+      "sourcePath": "docs/cqc-bible/roster-coverage.json",
+      "scope": "compiled base profile, not final runtime admission"
+    }
+  ],
+  "runtimeSlice": {
+    "name": "Archives classifiées",
+    "scope": "Three original local document rewards; four independent axes and permanent local grants only.",
+    "existingPaths": [
+      "public/cqc/modules/classified-archives-p71.html",
+      "public/cqc/src/cqc-p71-access.js",
+      "public/cqc/src/cqc-p71-archives.js",
+      "public/cqc/src/cqc-p71-archives.css",
+      "public/cqc/data/cqc-p71-access-dossiers.json"
+    ],
+    "sourceProgressPaths": [
+      "public/cqc/src/chronicles-core-v056.js",
+      "public/cqc/modules/battle-operations-v053.html"
+    ],
+    "sourceStorageKeys": [
+      "cqc.chronicles055.a",
+      "cqc.chronicles055.b",
+      "cqc-v048-operations-profile"
+    ],
+    "ownedStorageKeys": [
+      "cqc.p71.access.a",
+      "cqc.p71.access.b"
+    ],
+    "rewards": [
+      {
+        "id": "report01",
+        "rule": "chronicleIntros >= 1 AND chronicleClears >= 1",
+        "authority": "local-progression",
+        "kind": "permanent"
+      },
+      {
+        "id": "report02",
+        "rule": "survivalBest >= 3",
+        "authority": "local-progression",
+        "kind": "permanent"
+      },
+      {
+        "id": "report03",
+        "rule": "relay3Wins >= 1 OR relay5Wins >= 1",
+        "authority": "local-progression",
+        "kind": "permanent"
+      }
+    ],
+    "implementedAxes": {
+      "discovery": [
+        "secret",
+        "hint",
+        "identified"
+      ],
+      "right": [
+        "none",
+        "claimable",
+        "pending",
+        "permanent"
+      ],
+      "technical": [
+        "ready",
+        "missing",
+        "error"
+      ],
+      "compatibility": [
+        "allowed",
+        "incompatible"
+      ]
+    },
+    "notImplemented": [
+      "real-time tag",
+      "roster assist",
+      "duo super",
+      "new finisher animation",
+      "cinematic clash",
+      "new bonus mode",
+      "explorable Krypt-style world",
+      "new fighter/costume/stage/mode locks",
+      "temporary subscriber rights",
+      "OAuth or payment service",
+      "global catalogue migration",
+      "network access reconciliation"
+    ],
+    "validationStatus": "logic_and_dom_passed_real_browser_blocked",
+    "localIntegrityNotice": "Checksums detect damaged local writes; they are not authentication or anti-cheat proofs.",
+    "executedTests": {
+      "logicAndBinding": {
+        "executed": 20,
+        "passed": 20
+      },
+      "dom": {
+        "executed": 10,
+        "passed": 10,
+        "engine": "jsdom 29.1.1",
+        "visualRendering": false
+      },
+      "realBrowser": {
+        "executed": 0,
+        "status": "blocked"
+      }
+    },
+    "proofPaths": [
+      "scripts/test-cqc-p71-access.mjs",
+      "scripts/test-cqc-p71-archives-dom.mjs",
+      "scripts/test-cqc-p71-archives-browser.mjs",
+      "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md",
+      "docs/cqc-reprise/pass71/access-runtime-qa.json",
+      "docs/cqc-reprise/pass71/access-browser-attempt.json",
+      "docs/cqc-bible/guide-integration-verification-p71.json"
+    ],
+    "persistenceNotice": "Automatic local storage in this browser. Existing export/import API accepts cqc-prefixed keys, but no visible current-menu export/import flow is established.",
+    "ownedPreferenceKeys": [
+      "cqc.p71.access.hide-secrets"
+    ]
+  },
+  "primarySources": [
+    {
+      "id": "P71-S01",
+      "title": "KONAMI — AC!D Link Battle",
+      "url": "https://www.konami.com/mg/archive/mga/english/link_battle.html",
+      "consultedOn": "2026-11-27",
+      "supports": "Snake/Teliko team and original Link Battle rules; no 2D fighter timings."
+    },
+    {
+      "id": "P71-S02",
+      "title": "KONAMI — MGSV Freedom of Infiltration",
+      "url": "https://www.konami.com/games/us/en/topics/53/",
+      "consultedOn": "2026-11-27",
+      "supports": "Quiet support, cover and coordinated attacks; CQC choreography is adapted."
+    },
+    {
+      "id": "P71-S03",
+      "title": "KONAMI — MGR characters",
+      "url": "https://www.konami.com/mg/archive/mgr/jp/characters/",
+      "consultedOn": "2026-11-27",
+      "supports": "Character identities and described abilities, not new animation validation."
+    },
+    {
+      "id": "P71-S04",
+      "title": "KONAMI — Metal Gear Survive",
+      "url": "https://www.konami.com/games/eu/en/products/mg_survive/",
+      "consultedOn": "2026-11-27",
+      "supports": "Alternate continuity and cooperation."
+    },
+    {
+      "id": "P71-S05",
+      "title": "KONAMI — Survive support",
+      "url": "https://eu-support.konami.com/hc/en-gb/articles/9649242319127-Metal-Gear-Survive",
+      "consultedOn": "2026-11-27",
+      "supports": "Story context, defensive placement and survival; chapter availability still to qualify."
+    }
+  ],
+  "validationBacklog": [
+    {
+      "id": "P71-QA-01",
+      "scenario": "Three source sizes, hashes and exact copy preservation",
+      "scope": "documentary",
+      "status": "passed_documentary_scope",
+      "proofPaths": [
+        "docs/cqc-bible/guide-integration-verification-p71.json"
+      ]
+    },
+    {
+      "id": "P71-QA-02",
+      "scenario": "38 sections, 114 requirements and existing paths/UID references",
+      "scope": "documentary",
+      "status": "passed_documentary_scope",
+      "proofPaths": [
+        "docs/cqc-bible/guide-integration-verification-p71.json"
+      ]
+    },
+    {
+      "id": "P71-QA-03",
+      "scenario": "Fast navigation and deselection cleanup",
+      "scope": "future_selection",
+      "status": "not_executed",
+      "proofPaths": []
+    },
+    {
+      "id": "P71-QA-04",
+      "scenario": "Interrupted taunt and return to control",
+      "scope": "future_taunt",
+      "status": "not_executed",
+      "proofPaths": []
+    },
+    {
+      "id": "P71-QA-05",
+      "scenario": "Concurrent assist/tag/super and single resource spend",
+      "scope": "future_teams",
+      "status": "not_executed",
+      "proofPaths": []
+    },
+    {
+      "id": "P71-QA-06",
+      "scenario": "Partner damage/KO, relay, ammunition and combo state",
+      "scope": "future_teams",
+      "status": "not_executed",
+      "proofPaths": []
+    },
+    {
+      "id": "P71-QA-07",
+      "scenario": "Guarded/missed duo starter and participant cleanup",
+      "scope": "future_supers",
+      "status": "not_executed",
+      "proofPaths": []
+    },
+    {
+      "id": "P71-QA-08",
+      "scenario": "Incompatible dramatic ending fallback",
+      "scope": "future_conclusions",
+      "status": "not_executed",
+      "proofPaths": []
+    },
+    {
+      "id": "P71-QA-09",
+      "scenario": "Clash third actors and all QTE outcomes",
+      "scope": "future_clashes",
+      "status": "not_executed",
+      "proofPaths": []
+    },
+    {
+      "id": "P71-QA-10",
+      "scenario": "Entity ownership after tag/KO/transformation/transition",
+      "scope": "future_entities",
+      "status": "not_executed",
+      "proofPaths": []
+    },
+    {
+      "id": "P71-QA-11",
+      "scenario": "Trap/assist/tag infinite loop counterplay",
+      "scope": "future_balance",
+      "status": "not_executed",
+      "proofPaths": []
+    },
+    {
+      "id": "P71-QA-12",
+      "scenario": "Bonus success/failure, reward, continuation and crowd budget",
+      "scope": "future_bonus",
+      "status": "not_executed",
+      "proofPaths": []
+    },
+    {
+      "id": "P71-QA-13",
+      "scenario": "Secret UI identity leakage",
+      "scope": "access_and_future_selection",
+      "status": "passed_p71_local_scope",
+      "proofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md",
+        "docs/cqc-bible/guide-integration-verification-p71.json"
+      ],
+      "remainingScope": "Full fighter/costume/stage/mode catalogue and historical full workflows are not covered; local dossier tests only."
+    },
+    {
+      "id": "P71-QA-14",
+      "scenario": "AND/OR conditions and matching UI",
+      "scope": "p71_local_access",
+      "status": "passed_p71_local_scope",
+      "proofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md",
+        "docs/cqc-bible/guide-integration-verification-p71.json"
+      ],
+      "remainingScope": "Real-browser execution remains unperformed; scope limited to local dossier logic/DOM."
+    },
+    {
+      "id": "P71-QA-15",
+      "scenario": "Accepted Chronicle/Survival/Relay progress",
+      "scope": "p71_local_access",
+      "status": "passed_p71_local_scope",
+      "proofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md",
+        "docs/cqc-bible/guide-integration-verification-p71.json"
+      ],
+      "remainingScope": "Real-browser execution remains unperformed; scope limited to local dossier logic/DOM."
+    },
+    {
+      "id": "P71-QA-16",
+      "scenario": "Repeated claim/reload and source profile conservation",
+      "scope": "p71_local_access",
+      "status": "passed_p71_local_scope",
+      "proofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md",
+        "docs/cqc-bible/guide-integration-verification-p71.json"
+      ],
+      "remainingScope": "Real-browser execution remains unperformed; scope limited to local dossier logic/DOM."
+    },
+    {
+      "id": "P71-QA-17",
+      "scenario": "Corrupt/unavailable storage and honest errors",
+      "scope": "p71_local_access",
+      "status": "passed_p71_local_scope",
+      "proofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md",
+        "docs/cqc-bible/guide-integration-verification-p71.json"
+      ],
+      "remainingScope": "Real-browser execution remains unperformed; scope limited to local dossier logic/DOM."
+    },
+    {
+      "id": "P71-QA-18",
+      "scenario": "Independent right/technical/compatibility",
+      "scope": "p71_access_engine",
+      "status": "passed_p71_local_scope",
+      "proofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md",
+        "docs/cqc-bible/guide-integration-verification-p71.json"
+      ],
+      "remainingScope": "Real-browser execution remains unperformed; scope limited to local dossier logic/DOM."
+    },
+    {
+      "id": "P71-QA-19",
+      "scenario": "Costume before fighter and permanent plus expired source",
+      "scope": "future_global_catalogue",
+      "status": "not_executed",
+      "proofPaths": []
+    },
+    {
+      "id": "P71-QA-20",
+      "scenario": "External cancellation/outage/out-of-order events",
+      "scope": "external_service_deferred",
+      "status": "not_executed",
+      "proofPaths": []
+    },
+    {
+      "id": "P71-QA-21",
+      "scenario": "Stages, participants and expiration during match",
+      "scope": "network_deferred",
+      "status": "not_executed",
+      "proofPaths": []
+    },
+    {
+      "id": "P71-QA-22",
+      "scenario": "Keyboard, focus, responsive and reduced motion",
+      "scope": "p71_ui_and_future_catalogue",
+      "status": "partial_dom_passed_browser_blocked",
+      "proofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md",
+        "docs/cqc-reprise/pass71/access-browser-attempt.json",
+        "docs/cqc-bible/guide-integration-verification-p71.json"
+      ],
+      "remainingScope": "Visual contrast, responsive layout, rendered focus geometry, physical controller, reduced-motion rendering and actual multi-tab concurrency remain unexecuted."
+    },
+    {
+      "id": "P71-QA-23",
+      "scenario": "Historical profile/content access preservation",
+      "scope": "p71_local_access",
+      "status": "passed_p71_local_scope",
+      "proofPaths": [
+        "docs/cqc-reprise/pass71/access-runtime-qa.json",
+        "docs/cqc-reprise/pass71/ACCESS_RUNTIME_QA.md",
+        "docs/cqc-bible/guide-integration-verification-p71.json"
+      ],
+      "remainingScope": "Full fighter/costume/stage/mode catalogue and historical full workflows are not covered; local dossier tests only."
+    },
+    {
+      "id": "P71-QA-24",
+      "scenario": "Individual image, alpha, framing, asymmetry and source review",
+      "scope": "future_visual_production",
+      "status": "not_executed",
+      "proofPaths": []
+    }
+  ]
+}

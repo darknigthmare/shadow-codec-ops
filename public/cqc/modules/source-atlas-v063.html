@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#071311">
+  <title>CQC — Atlas des opérations</title>
+  <link rel="stylesheet" href="../src/cqc-p63-source-atlas.css">
+  <script defer src="../src/cqc-p63-source-atlas.js"></script>
+</head>
+<body>
+  <main id="source-atlas">
+    <header class="atlas-header">
+      <div class="header-top">
+        <a class="wordmark" href="../index.html" aria-label="Retour au commandement CQC">CQC <span>ARCHIVES</span></a>
+        <nav aria-label="Navigation des archives">
+          <a href="../index.html?module=chronicles56">Chroniques</a>
+          <a href="classified-archives-p71.html">Archives classifiées</a>
+          <a href="../index.html">Commandement ↗</a>
+        </nav>
+      </div>
+      <p class="eyebrow">Dossiers de terrain / Sources fixes</p>
+      <h1>Atlas des <em>opérations.</em></h1>
+      <p class="intro">Lieux, silhouettes et machines. Retrouver les images, leurs repères et les dossiers qui prolongent chaque opération.</p>
+    </header>
+
+    <form id="atlas-filters" class="atlas-filters" role="search" aria-label="Filtrer les sources">
+      <label>Opération
+        <select id="atlas-episode" name="episode">
+          <option value="all">Toutes les opérations</option>
+        </select>
+      </label>
+      <label>Catégorie
+        <select id="atlas-kind" name="kind">
+          <option value="all">Toutes les catégories</option>
+        </select>
+      </label>
+      <label class="search-field">Rechercher
+        <input id="atlas-search" type="search" name="q" maxlength="140" placeholder="Un lieu, une figure, un dossier…" autocomplete="off">
+      </label>
+      <button class="filter-reset" type="reset">Réinitialiser</button>
+    </form>
+
+    <div class="atlas-summary">
+      <p id="atlas-status" role="status" aria-live="polite">Chargement des dossiers…</p>
+      <button id="atlas-retry" class="retry-button" type="button" hidden>Réessayer</button>
+    </div>
+
+    <div class="atlas-layout">
+      <section class="atlas-list" aria-label="Sources disponibles">
+        <div id="atlas-grid" class="atlas-grid"></div>
+        <p id="atlas-empty" class="empty-state" hidden>Aucun dossier ne correspond à ces filtres. Essayer une autre opération ou réinitialiser la recherche.</p>
+      </section>
+      <aside id="atlas-detail" class="atlas-detail" aria-label="Dossier de la source sélectionnée" hidden></aside>
+    </div>
+
+    <footer class="atlas-footer">
+      <p>Ces sources fixes alimentent les dossiers visuels de CQC.</p>
+      <a href="https://github.com/darknigthmare/shadow-codec-ops/blob/codex/cqc-p61-missing-static-sources-20261125/docs/cqc-bible/README.md" target="_blank" rel="noopener noreferrer">Consulter la bible ↗</a>
+    </footer>
+    <noscript><p class="empty-state">Activer JavaScript pour consulter et filtrer les dossiers.</p></noscript>
+  </main>
+</body>
+</html>

@@ -1,4 +1,4 @@
-/* Historical 0.48 engine preserved inline; this separate version adds only the two Sunny body-size hook. */
+/* Historical duel engine, with opt-in P74 tag/assist teams. No teams option preserves the duel path. */
 /* CQC Versus 0.48 — repertoire combat, finishers, remapping and deterministic local replays. */
 (function(root){'use strict';
 const FLOOR=568,LEFT=65,RIGHT=1215,SLOTS=['light','heavy','low','throw','special','specialDown','specialForward','specialBack','super','utility'];
@@ -6,6 +6,12 @@ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const copy=x=>JSON.parse(JSON.stringify(x));
 const spatial=()=>root.CQC_PASS19_VERSUS_SPATIAL,bodyY=(p,h)=>spatial()?.bodyY(p,h)??p.y-h,bodyPoint=(p,x,y)=>spatial()?.bodyPoint(p,x,y)||{x:p.x+p.face*x,y:p.y-y};
 const actorX=(s,p,x)=>spatial()?.clampActor(s,p,x)??clamp(x,LEFT,RIGHT),arena=(s)=>spatial()?.arena(s)||{left:LEFT,right:RIGHT};
+const teams=()=>root.CQC_P74_TEAMS;
+const teamHooks=()=>({floor:FLOOR,empty,start,costAllowed,clampActor:actorX});
+const onField=s=>teams()?.actors(s)||[s.a,s.b];
+const targets=(s,p)=>teams()?.targets(s,p)||[other(s,p)];
+const owner=(s,e)=>teams()?.owner(s,e)||actors(s)[e.owner];
+const actorKey=p=>teams()?.key(p)||String(p.slot);
 const empty=()=>({left:false,right:false,down:false,guard:false,jump:false,dash:false,tech:false,slot:null});
 const slotName={special:'I',specialDown:'↓ + I',specialForward:'AVANT + I',specialBack:'ARRIÈRE + I',super:'O',utility:'L',light:'J',heavy:'K',low:'↓ + J',throw:'U'};
 function rand(s){let x=s.seed>>>0;x^=x<<13;x^=x>>>17;x^=x<<5;s.seed=x>>>0;return(s.seed>>>0)/4294967296;}
@@ -24,11 +30,11 @@ function create(a,b,options={}){const s={version:'0.45',a:makeActor(a,0),b:makeA
  rounds:options.rounds??2,round:1,phase:options.training||options.skipIntro?'fight':'intro',phaseT:options.training||options.skipIntro?0:100,
  finished:false,roundWinner:null,winner:null,projectiles:[],traps:[],fx:[],events:[],metrics:{},nextId:1,
  options:{training:false,dummy:'idle',autoheal:false,freeMeter:false,freeResource:false,...options},idleTraining:0};
- s.b.ai=options.mode==='cpu';spatial()?.placeRound(s);return s;}
+ s.b.ai=options.mode==='cpu';teams()?.create(s,makeActor);spatial()?.placeRound(s);return s;}
 function actors(s){return[s.a,s.b];}
 function other(s,p){return p.slot===0?s.b:s.a;}
-function reset(s,{keepWins=true}={}){const oldA=s.a,oldB=s.b;s.a=makeActor(oldA.f,0);s.b=makeActor(oldB.f,1);s.a.ai=oldA.ai;s.b.ai=oldB.ai;
- if(keepWins){s.a.wins=oldA.wins;s.b.wins=oldB.wins;}s.timer=s.timerStart;s.phase=s.options.training?'fight':'intro';s.phaseT=s.options.training?0:90;
+function reset(s,{keepWins=true}={}){const oldA=s.a,oldB=s.b;if(!teams()?.reset(s,makeActor,keepWins)){s.a=makeActor(oldA.f,0);s.b=makeActor(oldB.f,1);s.a.ai=oldA.ai;s.b.ai=oldB.ai;
+ if(keepWins){s.a.wins=oldA.wins;s.b.wins=oldB.wins;}}s.timer=s.timerStart;s.phase=s.options.training?'fight':'intro';s.phaseT=s.options.training?0:90;
  s.projectiles=[];s.traps=[];s.fx=[];s.roundWinner=null;s.idleTraining=0;spatial()?.placeRound(s);event(s,'roundReset',null);return s;}
 function baseBox(p){const reviewed=root.CQC_PASS8_COMBAT_FIDELITY?.hurtbox(p);if(reviewed)return reviewed;
  const authored=p.f.combat.simulationBody;if(authored&&[authored.width,authored.height].every(n=>Number.isFinite(n)&&n>0)){const low=p.crouch||p.attack?.def.lowProfile,h=low?(Number.isFinite(authored.crouchHeight)&&authored.crouchHeight>0?authored.crouchHeight:authored.height*.53):authored.height;return{x:p.x-authored.width/2,y:p.y-h,w:authored.width,h};}
@@ -78,7 +84,7 @@ function damage(s,a,d,m,{projectile=null,forced=false,scale=1}={}){if(root.CQC_P
  if(!forced&&frontal&&canParry(d,m,!!projectile)){
   const par=d.attack.def;d.stats.parries++;d.meter=clamp(d.meter+10+(d.f.combat.passive.parryMeter||0),0,100);
   if(par.restoreOnParry) {d.r=clamp(d.r+par.restoreOnParry,0,d.f.combat.resource.max);}
-  if(projectile&&projectile.reflections<1){projectile.owner=d.slot;projectile.vx=-projectile.vx;projectile.face=d.face;projectile.reflections++;projectile.hitTargets={};projectile.damageScale*=.85;projectile.x=bodyPoint(d,62,0).x;event(s,'reflect',d,{projectile:projectile.id});}
+  if(projectile&&projectile.reflections<1){projectile.owner=d.slot;projectile.ownerActorId=d.actorId;projectile.vx=-projectile.vx;projectile.face=d.face;projectile.reflections++;projectile.hitTargets={};projectile.damageScale*=.85;projectile.x=bodyPoint(d,62,0).x;event(s,'reflect',d,{projectile:projectile.id});}
   else{if(projectile)projectile.dead=true;a.hit=32;a.attack=null;a.vx=d.face*7;damage(s,d,a,{...par,kind:'melee',level:'mid',tag:'counter'}, {forced:true});event(s,'parry',d,{target:a.slot});}
   fx(s,d.x,bodyY(d,140),'ring','counter','PARADE');d.attack=null;d.cool=16;return{hit:true,parried:true};
  }
@@ -110,12 +116,12 @@ function damage(s,a,d,m,{projectile=null,forced=false,scale=1}={}){if(root.CQC_P
  a.stats.hits++;a.stats.damage+=amount;s.idleTraining=0;fx(s,d.x,bodyY(d,100),blocking?'guard':'hit',m.tag);event(s,'damage',a,{target:d.slot,amount,blocked:blocking,slot:m.slot,tag:m.tag});
  return{hit:true,blocked:blocking,amount};
 }
-function explode(s,q){if(root.CQC_PASS19_SMOKE?.explode(s,q,{event}))return;if(q.dead)return;q.dead=true;const a=actors(s)[q.owner],d=other(s,a),radius=q.def.radius||90;
+function explode(s,q){if(root.CQC_PASS19_SMOKE?.explode(s,q,{event}))return;if(q.dead)return;q.dead=true;const a=owner(s,q),radius=q.def.radius||90;
  fx(s,q.x,q.y,'blast',q.def.tag,'');event(s,'explosion',a,{id:q.id});
- const hb={x:q.x-radius,y:q.y-radius,w:radius*2,h:radius*2};if(overlap(hb,box(d)))damage(s,a,d,{...q.def,level:'mid'},{scale:q.damageScale||1});
+ const hb={x:q.x-radius,y:q.y-radius,w:radius*2,h:radius*2};for(const d of targets(s,a))if(overlap(hb,box(d)))damage(s,a,d,{...q.def,level:'mid'},{scale:q.damageScale||1});
  for(const tr of s.traps)if(tr.owner!==q.owner&&overlap(hb,{x:tr.x-20,y:tr.y-35,w:40,h:35}))tr.dead=true;
 }
-function spawn(s,p,m,atk,i){const heavy=['rocket','rail','explosive','fire'].includes(m.tag),origin=m.projectileOrigin?.[p.face],nativeOrigin=origin&&Number.isFinite(origin.forward)&&origin.forward>=0&&origin.forward<=220&&Number.isFinite(origin.height)&&origin.height>0&&origin.height<=330;const bodyAim=root.CQC_PASS19_NATIVE_AIM?.prepare(p,m,box(other(s,p)),{frame:s.frame});const point=spatial()?.projectilePoint(p,m,baseBox(p),{frame:s.frame})||{x:p.x+p.face*(nativeOrigin?origin.forward:52),y:p.y-(nativeOrigin?origin.height:m.height||Math.min(145,baseBox(p).h*.75))};const q={id:s.nextId++,owner:p.slot,
+function spawn(s,p,m,atk,i){const heavy=['rocket','rail','explosive','fire'].includes(m.tag),origin=m.projectileOrigin?.[p.face],nativeOrigin=origin&&Number.isFinite(origin.forward)&&origin.forward>=0&&origin.forward<=220&&Number.isFinite(origin.height)&&origin.height>0&&origin.height<=330;const bodyAim=root.CQC_PASS19_NATIVE_AIM?.prepare(p,m,box(other(s,p)),{frame:s.frame});const point=spatial()?.projectilePoint(p,m,baseBox(p),{frame:s.frame})||{x:p.x+p.face*(nativeOrigin?origin.forward:52),y:p.y-(nativeOrigin?origin.height:m.height||Math.min(145,baseBox(p).h*.75))};const q={id:s.nextId++,owner:p.slot,ownerActorId:p.actorId,
  x:point.x,y:point.y,vx:p.face*(m.speed||15),vy:m.vy||0,
  def:m,damageScale:1,life:m.life||80,delay:i*(m.interval||0),age:0,kind:m.fuse?'grenade':m.tag==='psychic'?'orb':m.tag,
  face:p.face,reflections:0,bounces:m.bounces||0,returned:false,dead:false,hitTargets:{},steady:atk.steady,
@@ -127,7 +133,7 @@ function activate(s,p,a){if(a.activated)return;a.activated=true;p.stats.activati
  if(d.kind==='projectile'){for(let i=0;i<(d.count||1);i++)spawn(s,p,d,a,i);}
  if(d.kind==='trap'||d.kind==='stationaryMine'){if(d.kind==='stationaryMine'&&((o.still||0)<(d.requiresStillFrames||60)||!o.onGround||o.buffs.cloak)){p.feedback='AUCUN ARRÊT VISIBLE ASSEZ LONG';p.feedbackT=70;event(s,'mineMiss',p);return;}
   const owned=s.traps.filter(t=>t.owner===p.slot&&!t.dead);while(owned.length>=(d.maxTraps||2)){owned.shift().dead=true;}
-  s.traps.push({id:s.nextId++,owner:p.slot,x:clamp(d.kind==='stationaryMine'?o.x:p.x+p.face*(Math.min(d.reach||70,150)),arena(s).left,arena(s).right),y:FLOOR,age:0,life:d.duration||360,arm:d.arm||40,hp:d.hp||160,def:d,dead:false});
+  s.traps.push({id:s.nextId++,owner:p.slot,ownerActorId:p.actorId,x:clamp(d.kind==='stationaryMine'?o.x:p.x+p.face*(Math.min(d.reach||70,150)),arena(s).left,arena(s).right),y:FLOOR,age:0,life:d.duration||360,arm:d.arm||40,hp:d.hp||160,def:d,dead:false});
   event(s,'trapPlaced',p,{slot:a.name,targetPosition:d.kind==='stationaryMine'?o.x:null,arm:d.arm||40});
  }
  if(d.kind==='recallTrap'){let recalled=0;for(const tr of s.traps)if(tr.owner===p.slot&&!tr.dead&&Math.abs(tr.x-p.x)<=(d.reach||240)){tr.dead=true;recalled++;}p.feedback=recalled?'LEURRE RAPPELÉ':'AUCUN LEURRE À PORTÉE';p.feedbackT=65;event(s,'trapRecall',p,{recalled,reach:d.reach||240});}
@@ -144,7 +150,7 @@ function activate(s,p,a){if(a.activated)return;a.activated=true;p.stats.activati
  if(d.launchSelf&&p.onGround){p.vy=d.launchSelf;p.onGround=false;}
  if(d.selfDamage){p.life=Math.max(1,p.life-d.selfDamage);p.gray=Math.min(p.gray,10000-p.life);event(s,'selfDamage',p,{amount:d.selfDamage});}
 }
-function prepare(s,p,input){const o=other(s,p);if(!p.attack)p.face=o.x>=p.x?1:-1;
+function prepare(s,p,input){if(p.life<=0){p.state='ko';p.vx=0;return;}const o=other(s,p);if(!p.attack)p.face=o.x>=p.x?1:-1;
  p.crouch=!!input.down&&p.onGround&&!p.attack;p.block=!!input.guard&&!p.attack&&!p.hit&&!p.blockstun;
  if(input.tech||input.slot==='throw')p.lastTech=s.frame;
  if(p.hit||p.blockstun){p.state=p.hit?'hit':'guard';return;}
@@ -186,9 +192,9 @@ function projectileStep(s){for(const q of s.projectiles){if(q.dead)continue;if(q
  // actual first simulation tick only, use the still-owning original box's visible
  // native tube. Interrupted/KO/costume-changed owners retain historical behavior.
  if(q.age===0&&q.pass35BoxEmissionOwner){
-  const owner=actors(s)[q.owner],binding=q.pass35BoxEmissionOwner;
-  if(owner?.f?.uid===binding.uid&&(owner.f.costume||'original')===binding.costume&&owner.face===q.face&&owner.attack?.id===binding.attackId&&owner.attack.def===q.def&&root.CQC_PASS35_PW_BOX_ARTICULATION?.ownsProjectile?.(owner,q.def)){
-   const point=spatial()?.projectilePoint(owner,q.def,baseBox(owner),{frame:s.frame});
+  const nativeOwner=owner(s,q),binding=q.pass35BoxEmissionOwner;
+  if(nativeOwner?.f?.uid===binding.uid&&(nativeOwner.f.costume||'original')===binding.costume&&nativeOwner.face===q.face&&nativeOwner.attack?.id===binding.attackId&&nativeOwner.attack.def===q.def&&root.CQC_PASS35_PW_BOX_ARTICULATION?.ownsProjectile?.(nativeOwner,q.def)){
+   const point=spatial()?.projectilePoint(nativeOwner,q.def,baseBox(nativeOwner),{frame:s.frame});
    if(point?.origin?.reviewKind==='source-native-pw-cardboard-tube-shared-render-emission'&&Number.isFinite(point.x)&&Number.isFinite(point.y)&&Number.isFinite(point.origin.angle)){
     const scalarLaunchSpeed=Math.hypot(q.vx,q.vy);
     q.x=point.x;q.y=point.y;q.vx=Math.cos(point.origin.angle)*scalarLaunchSpeed;q.vy=Math.sin(point.origin.angle)*scalarLaunchSpeed;
@@ -198,7 +204,7 @@ function projectileStep(s){for(const q of s.projectiles){if(q.dead)continue;if(q
  }
  const nativeBurstPoint=root.CQC_PASS40_VS_DELAYED_BURSTS?.emission?.(s,q);if(nativeBurstPoint){q.x=nativeBurstPoint.x;q.y=nativeBurstPoint.y;}
  q.age++;q.life--;
- const m=q.def,a=actors(s)[q.owner],d=other(s,a);q.x+=q.vx;q.y+=q.vy;
+ const m=q.def,a=owner(s,q),d=other(s,a);q.x+=q.vx;q.y+=q.vy;
  if(m.gravity)q.vy+=m.gravity;
  if(m.homing&&!d.buffs.cloak){const targetY=d.y-Math.min(baseBox(d).h*.55,140)*(spatial()?.ratio(d)||1),max=m.homing;q.vy=clamp(q.vy+clamp((targetY-q.y)*.001,-max,max),-3.6,3.6);}
  if(m.returnAt&&q.age>=m.returnAt&&!q.returned){q.vx=-q.vx;q.returned=true;event(s,'return',a,{id:q.id});}
@@ -207,39 +213,47 @@ function projectileStep(s){for(const q of s.projectiles){if(q.dead)continue;if(q
  else{
   // Swept segment prevents a fast bullet skipping a narrow drone.
   const r={x:Math.min(q.x,q.x-q.vx)-8,y:Math.min(q.y,q.y-q.vy)-7,w:Math.abs(q.vx)+16,h:Math.abs(q.vy)+14};
-  if(overlap(r,box(d))&&!q.hitTargets[d.slot]){
-   const ret=damage(s,a,d,m,{projectile:q});
-   if(!ret.parried){q.hitTargets[d.slot]=q.returned?'return':'out';if(!m.returnAt||q.returned)q.dead=true;}
-  }else if(m.returnAt&&q.returned&&q.hitTargets[d.slot]==='out'&&Math.abs(q.x-d.x)>90){delete q.hitTargets[d.slot];}
+  // Assisting reserves are hittable, using stable member identity across tags.
+  const defenders=targets(s,a).sort((u,v)=>(q.vx>=0?u.x-v.x:v.x-u.x));
+  for(const defender of defenders){const targetKey=actorKey(defender);
+   if(overlap(r,box(defender))&&!q.hitTargets[targetKey]){
+    const ret=damage(s,a,defender,m,{projectile:q});
+    if(!ret.parried){q.hitTargets[targetKey]=q.returned?'return':'out';if(!m.returnAt||q.returned)q.dead=true;}
+    if(q.dead||ret.parried)break;
+   }else if(m.returnAt&&q.returned&&q.hitTargets[targetKey]==='out'&&Math.abs(q.x-defender.x)>90){delete q.hitTargets[targetKey];}
+  }
  }
  if(q.x<arena(s).left-35||q.x>arena(s).right+35){if(q.bounces>0){q.vx=-q.vx;q.bounces--;q.x=clamp(q.x,arena(s).left-35,arena(s).right+35);event(s,'ricochet',a,{id:q.id});}else if(!m.returnAt||q.returned)q.dead=true;}
  if(q.life<=0){if(m.fuse)explode(s,q);else q.dead=true;}if(q.y>FLOOR+100||q.y<(spatial()?.worldCeiling(s)??-140))q.dead=true;
  }
  s.projectiles=s.projectiles.filter(q=>!q.dead);
 }
-function objectsStep(s){for(const tr of s.traps){if(tr.dead)continue;tr.age++;tr.life--;const a=actors(s)[tr.owner],d=other(s,a);
+function objectsStep(s){for(const tr of s.traps){if(tr.dead)continue;tr.age++;tr.life--;const a=owner(s,tr),d=other(s,a);
  if(tr.life<=0){tr.dead=true;continue;}if(tr.age<tr.arm)continue;
  if(root.CQC_PASS19_SMOKE?.trap(s,tr,a,d,{event}))continue;
- if(!tr.def.remoteOnly&&(tr.def.tag==='wire'?overlap({x:tr.x-(tr.def.reach||150),y:FLOOR-155,w:2*(tr.def.reach||150),h:5},box(d)):Math.abs(tr.x-d.x)<(tr.def.reach||90)&&d.y>FLOOR-95)){const result=damage(s,a,d,{...tr.def,level:tr.def.tag==='wire'?'high':tr.def.tag==='snare'?'low':'mid'});if(result.hit){tr.dead=true;fx(s,tr.x,FLOOR-30,'blast',tr.def.tag);event(s,'trapTrigger',a);}}
+ for(const defender of targets(s,a)){if(!tr.dead&&!tr.def.remoteOnly&&(tr.def.tag==='wire'?overlap({x:tr.x-(tr.def.reach||150),y:FLOOR-155,w:2*(tr.def.reach||150),h:5},box(defender)):Math.abs(tr.x-defender.x)<(tr.def.reach||90)&&defender.y>FLOOR-95)){const result=damage(s,a,defender,{...tr.def,level:tr.def.tag==='wire'?'high':tr.def.tag==='snare'?'low':'mid'});if(result.hit){tr.dead=true;fx(s,tr.x,FLOOR-30,'blast',tr.def.tag);event(s,'trapTrigger',a);}}}
  }s.traps=s.traps.filter(t=>!t.dead);}
 function destroyObjects(s,p,hb,m){for(const tr of s.traps)if(tr.owner!==p.slot&&!tr.dead&&overlap(hb,{x:tr.x-22,y:tr.y-60,w:44,h:60})){tr.hp-=Math.max(140,m.damage);if(tr.hp<=0){tr.dead=true;event(s,'trapDestroyed',p);fx(s,tr.x,tr.y-30,'hit',tr.def.tag);}}
  for(const q of s.projectiles)if(q.owner!==p.slot&&!q.dead&&q.delay<=0&&overlap(hb,{x:q.x-16,y:q.y-12,w:32,h:24})&& !['rail','laser'].includes(q.def.tag)){q.dead=true;event(s,'projectileDestroyed',p);fx(s,q.x,q.y,'ring','counter');}
 }
-function roundEnd(s,winner){s.phase='roundEnd';s.phaseT=90;s.roundWinner=winner;if(winner>=0)actors(s)[winner].wins++;s.projectiles=[];s.traps=[];event(s,'roundEnd',winner<0?null:actors(s)[winner],{winner});}
+function roundEnd(s,winner){s.phase='roundEnd';s.phaseT=90;s.roundWinner=winner;if(s.teams)teams().roundEnd(s,winner);else if(winner>=0)actors(s)[winner].wins++;s.projectiles=[];s.traps=[];event(s,'roundEnd',winner<0?null:actors(s)[winner],{winner});}
 function step(s,inputs=[empty(),empty()]){if(s.finished)return s;
  s.frame++;s.fx.forEach(x=>x.t--);s.fx=s.fx.filter(x=>x.t>0);
  if(s.phase==='intro'){if(--s.phaseT<=0)s.phase='fight';return s;}
  if(s.phase==='roundEnd'){if(--s.phaseT<=0){if(s.a.wins>=s.rounds||s.b.wins>=s.rounds){s.finished=true;s.winner=s.a.wins>s.b.wins?0:1;event(s,'matchEnd',actors(s)[s.winner]);}else{s.round++;reset(s);}}return s;}
  if(s.phase!=='fight')return s;
  if(!s.options.training&&s.timerStart>0)s.timer=Math.max(0,s.timer-1);
- const ps=actors(s),contactOrigins=new Map(ps.map(p=>[p,p.x]));ps.forEach(p=>upkeep(s,p));for(const p of ps)if(p.f.combat.passive.observeMovement){const o=other(s,p),old=p.visibleTrace;if(!o.buffs.cloak&&Math.abs(o.x-p.x)<=380)p.visibleTrace={frame:s.frame-1,x:o.x,y:o.y,dx:old?o.x-old.x:0,dy:old?o.y-old.y:0};else p.visibleTrace=null;}ps.forEach((p,i)=>prepare(s,p,inputs[i]||empty()));ps.forEach(p=>action(s,p));
+ inputs=teams()?.before(s,inputs,teamHooks())||inputs;
+ const ps=onField(s),contactOrigins=new Map(ps.map(p=>[p,p.x]));ps.forEach(p=>upkeep(s,p));for(const p of ps)if(p.f.combat.passive.observeMovement){const o=other(s,p),old=p.visibleTrace;if(!o.buffs.cloak&&Math.abs(o.x-p.x)<=380)p.visibleTrace={frame:s.frame-1,x:o.x,y:o.y,dx:old?o.x-old.x:0,dy:old?o.y-old.y:0};else p.visibleTrace=null;}actors(s).forEach((p,i)=>prepare(s,p,inputs[i]||empty()));ps.forEach(p=>action(s,p));
  for(const p of ps){if(p.hit||p.blockstun||p.cool)p.vx*=.82;p.x=actorX(s,p,p.x+p.vx);if(!p.onGround)p.vy+=.72;p.y+=p.vy;if(p.y>=FLOOR){p.y=FLOOR;p.vy=0;p.onGround=true;}else p.onGround=false;}
  if(spatial()?.pushActors)spatial().pushActors(s,box,contactOrigins);else{const minGap=(box(s.a).w+box(s.b).w)*.30,gap=Math.abs(s.a.x-s.b.x);if(gap<minGap&&Math.abs(s.a.y-s.b.y)<110){const dir=s.a.x<=s.b.x?-1:1,shift=(minGap-gap)/2;s.a.x=clamp(s.a.x+dir*shift,LEFT,RIGHT);s.b.x=clamp(s.b.x-dir*shift,LEFT,RIGHT);}}
  // Collect before applying damage, allowing genuinely simultaneous active frames.
- const pending=[];for(const p of ps){const hb=hitbox(p),a=p.attack;if(!hb||!a||a.hit)continue;destroyObjects(s,p,hb,a.def);const o=other(s,p);if(overlap(hb,box(o))){pending.push({p,o,a});}}
+ const pending=[];for(const p of ps){const hb=hitbox(p),a=p.attack;if(!hb||!a||a.hit)continue;destroyObjects(s,p,hb,a.def);for(const o of targets(s,p))if(overlap(hb,box(o))){pending.push({p,o,a});}}
  for(const {p,o,a} of pending){const hit=damage(s,p,o,a.def);if(hit.hit){a.hit=true;a.confirmed=!hit.blocked&&!hit.parried;}}
- projectileStep(s);objectsStep(s);root.CQC_PASS19_SMOKE?.step(s,{event,box});for(const p of ps)p.projectiles=s.projectiles.filter(q=>q.owner===p.slot&&!q.dead);
+ projectileStep(s);objectsStep(s);root.CQC_PASS19_SMOKE?.step(s,{event,box});for(const p of ps)p.projectiles=s.projectiles.filter(q=>q.owner===p.slot&&(!q.ownerActorId||q.ownerActorId===p.actorId)&&!q.dead);
+ teams()?.after(s,teamHooks());
  if(s.options.training){s.idleTraining++;for(const p of ps)p.life=Math.max(1,p.life);if(s.options.autoheal&&s.idleTraining>=150){for(const p of ps){p.life=10000;p.gray=0;p.guard=100;p.statuses={};}s.idleTraining=0;}}
+ else if(s.teams){const aliveA=teams().alive(s,0),aliveB=teams().alive(s,1);if(!aliveA||!aliveB)roundEnd(s,aliveA===aliveB?-1:aliveA?0:1);else if(s.timerStart>0&&s.timer<=0){const a=teams().vitality(s,0),b=teams().vitality(s,1);roundEnd(s,a===b?-1:a>b?0:1);}}
  else if(s.a.life<=0||s.b.life<=0)roundEnd(s,s.a.life===s.b.life?-1:s.a.life>s.b.life?0:1);
  else if(s.timerStart>0&&s.timer<=0)roundEnd(s,s.a.life===s.b.life?-1:s.a.life>s.b.life?0:1);
  return s;
@@ -263,9 +277,9 @@ function cpu(s,p,o){const i=empty(),d=spatial()?.bodyDistance?.(p,o)??Math.abs(o
   return true;
  });
  if(candidates.length&&rand(s)<.83)i.slot=candidates[Math.floor(rand(s)*candidates.length)].slot;
- if(!i.slot&&d>100){i.left=dir<0;i.right=dir>0;}if(rand(s)<.06)i.jump=true;return i;
+ if(!i.slot&&d>100){i.left=dir<0;i.right=dir>0;}if(rand(s)<.06)i.jump=true;return teams()?.cpu(s,p,o,i)||i;
 }
 function directionSlot(held,face){if(held.down)return'specialDown';const dir=(held.right?1:0)-(held.left?1:0);return dir===face?'specialForward':dir===-face?'specialBack':'special';}
-const api={smokeContract:'pass19-non-damaging-smoke-v1',spatialContract:'pass19-feet-spatial-v1',version:'0.48',FPS:60,FLOOR,SLOTS,slotName,create,step,start,reset,box,hitbox,overlap,empty,cpu,directionSlot,costAllowed,damage,heal,explode};
+const api={smokeContract:'pass19-non-damaging-smoke-v1',spatialContract:'pass19-feet-spatial-v1',version:'0.48',FPS:60,FLOOR,SLOTS,slotName,create,step,start,reset,box,hitbox,overlap,empty,cpu,directionSlot,costAllowed,damage,heal,explode,onField,owner,actorKey,teamRules:teams()?.RULES};
 root.CQCCombat048Pass8=api;spatial()?.registerEngine(api);if(typeof module!=='undefined'&&module.exports)module.exports=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

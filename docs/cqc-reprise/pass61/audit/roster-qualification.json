@@ -1,0 +1,2834 @@
+{
+  "schema": "cqc-p61-roster-qualification-v1",
+  "asOf": "2026-11-25",
+  "baselineCommit": "2e2864e3cba653c10727113f574ec1107c274e41",
+  "scope": "Independent reconciliation of all 87 roster coverage rows, with actual P61 outcomes for the 23 dedicated-source priority rows.",
+  "counts": {
+    "catalogueRows": 87,
+    "priorityRows": 23,
+    "priorityRowsWithCandidateSources": 14,
+    "priorityRowsWithoutCandidateSource": 9,
+    "extraSelectedSourceFiles": 16,
+    "extraRejectedDrafts": 4,
+    "separateStandardDesperadoSources": 1,
+    "totalNewRosterSourceFilesAcrossTheseBatches": 17,
+    "baselineRowsWithLinkedSource": 4,
+    "otherInheritedGroupRows": 35,
+    "otherInheritedDocumentaryRows": 10,
+    "otherInheritedEditionOrIdentityRows": 15,
+    "rowsWithoutLinkedBaselineOrP61Candidate": 69,
+    "p61Certified1to1Sources": 0,
+    "p61RuntimeIntegratedSources": 0
+  },
+  "interpretation": [
+    "A row may be a group, edition profile or documentary identity; row counts are not counts of unique missing physical character bodies.",
+    "A generated source candidate is not an exact native-game copy, a certified 1:1 rendition, an animation set or a runtime integration.",
+    "No source established in this audit is not proof that no source exists anywhere in the repository.",
+    "Baseline findings for the other 60 unresolved group/documentary/edition rows are inherited, not newly visually certified."
+  ],
+  "rows": [
+    {
+      "id": "character:R-MG1-01",
+      "historicalId": "R-MG1-01",
+      "label": "Frère de Jennifer",
+      "episode": "MG MSX",
+      "level": "tertiaire",
+      "historicalStatus": "absent_du_roster_actif",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Otage associé à Jennifer; ne pas lui inventer le visage de Steve.",
+      "nextWork": "Relever sprite, dialogue et position exacte; fiche d’otage, animation attente/peur/libération, aucun kit de mercenaire par défaut.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Shotmaker"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "dedicated_source_not_established",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "not_generated_exact_sprite_identity_not_established",
+      "reasonClass": "reference_insufficient",
+      "reason": "Le frère de Jennifer est identifié par le récit, mais aucun sprite natif individuel et sa salle/dialogue n'ont été rapprochés avec certitude dans les références consultées. Ne pas inventer un visage ou un corps réaliste à partir de ce seul nom.",
+      "requiredNextEvidence": "Capture MSX avec dialogue et position de salle, puis correspondance du sprite et de sa palette.",
+      "reviewReferences": [
+        "https://metalgear.fandom.com/wiki/Shotmaker"
+      ]
+    },
+    {
+      "id": "character:R-MG1-02",
+      "historicalId": "R-MG1-02",
+      "label": "Faux Dr Madnar",
+      "episode": "MG MSX",
+      "level": "tertiaire",
+      "historicalStatus": "absent_comme_identite_documentee",
+      "source": null,
+      "linkedHistoricalUID": "roster50__madnar_mg1",
+      "requiredEvidence": "Imposture distincte de Madnar réel, pas nécessairement une silhouette nouvelle.",
+      "nextWork": "Lier l’apparence au leurre et sa séquence source; pas de doublon corporel si le même sprite est utilisé.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Shotmaker"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/046bf317a4e5a14ce7c2287e9572f024f6db1b9822fe19a0a12266095b322e16.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "6f0e8093ada1b07ef20de70f736bf27d7ffa5cd9",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/046bf317a4e5a14ce7c2287e9572f024f6db1b9822fe19a0a12266095b322e16.png",
+          "recordedSHA256": "046bf317a4e5a14ce7c2287e9572f024f6db1b9822fe19a0a12266095b322e16"
+        }
+      ],
+      "baselineStatus": "dedicated_source_not_established",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "not_generated_exact_sprite_identity_not_established",
+      "reasonClass": "identity_and_reference_insufficient",
+      "reason": "L'ancien lien roster50__madnar_mg1 désigne Madnar sans établir qu'il s'agit du faux docteur. Un modèle du vrai Madnar ne prouve pas la présence d'une source dédiée à l'imposteur.",
+      "requiredNextEvidence": "Capture native de la rencontre du faux Madnar avec dialogue et sprite identifié, sans réutiliser automatiquement le vrai docteur.",
+      "reviewReferences": [
+        "https://metalgear.fandom.com/wiki/Shotmaker"
+      ]
+    },
+    {
+      "id": "character:R-MG1-03",
+      "historicalId": "R-MG1-03",
+      "label": "Gardes d’Outer Heaven et chiens de garde",
+      "episode": "MG MSX / NES",
+      "level": "ennemi_recurrent",
+      "historicalStatus": "couverture_generique_non_ventilee",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Les incarnations des boss ne remplacent pas les soldats et animaux ordinaires.",
+      "nextWork": "Capturer séparément silhouettes MSX/NES, couleurs fonctionnelles, patrouille/alerte; chiens quadrupèdes dans le catalogue animaux.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc1/en/index.html",
+        "https://metalgear.fandom.com/wiki/Shotmaker"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Capturer séparément silhouettes MSX/NES, couleurs fonctionnelles, patrouille/alerte; chiens quadrupèdes dans le catalogue animaux.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MG1-04",
+      "historicalId": "R-MG1-04",
+      "label": "Commander South / Vermon CaTaffy",
+      "episode": "MG NES — manuel localisé",
+      "level": "documentaire",
+      "historicalStatus": "dossier_documentaire_a_completer",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Noms du matériel localisé; pas des preuves d’un nouveau modèle visible dans le jeu.",
+      "nextWork": "Dossier textuel avec scan/page/édition; aucun corps officiel à inventer ni fusion avec Big Boss.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Shotmaker"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "documentary_identity_visual_body_not_established",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "documentary_body_not_established",
+      "reason": "L’identité est documentaire, évoquée ou insuffisamment montrée. Aucun corps complet spécifique n’est établi dans le rapprochement de référence ; ne pas créer une apparence inventée.",
+      "requiredNextEvidence": "Dossier textuel avec scan/page/édition; aucun corps officiel à inventer ni fusion avec Big Boss.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MG2-01",
+      "historicalId": "R-MG2-01",
+      "label": "Enfants de Zanzibar",
+      "episode": "MG2",
+      "level": "tertiaire",
+      "historicalStatus": "absent_comme_collectif_documente",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Personnages civils du fort.",
+      "nextWork": "Inventorier les sprites et dialogues par emplacement; définir attente, fuite et conversation sans armes inventées.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AMG2_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Inventorier les sprites et dialogues par emplacement; définir attente, fuite et conversation sans armes inventées.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MG2-02",
+      "historicalId": "R-MG2-02",
+      "label": "Four Horsemen — quatre membres",
+      "episode": "MG2",
+      "level": "secondaire",
+      "historicalStatus": "entree_collective_presente_completude_a_verifier",
+      "source": null,
+      "linkedHistoricalUID": "roster50__four_horsemen_mg2",
+      "requiredEvidence": "Une entrée de roster ne prouve pas que les quatre adversaires et leurs positions existent.",
+      "nextWork": "Décrire le groupe, ses quatre sprites/positions et la permutation; ne pas compter quatre nouvelles identités sans distinction source.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AMG2_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/b549e07f6c39e4f24b14caf9440db631d2c71e42c359314186f02c7674226f3c.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "0456aa118e5b4bd4388e39cd98b43fe801c9b75b",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/b549e07f6c39e4f24b14caf9440db631d2c71e42c359314186f02c7674226f3c.png",
+          "recordedSHA256": "b549e07f6c39e4f24b14caf9440db631d2c71e42c359314186f02c7674226f3c"
+        }
+      ],
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Décrire le groupe, ses quatre sprites/positions et la permutation; ne pas compter quatre nouvelles identités sans distinction source.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MGS1-nbc",
+      "historicalId": "R-MGS1-nbc",
+      "label": "Genome NBC",
+      "episode": "MGS1",
+      "level": "ennemi_recurrent",
+      "historicalStatus": "variante_officielle_non_ventilee",
+      "source": {
+        "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/source-pages/72cc2862bfe19f862456fcdfba6c5c4f689a21b68f2a37103d1ddafc61094b1e.png",
+        "presentInPinnedTree": true,
+        "gitBlobSHA": "4d19a0994636eb1d2178a0dc9617a896c6fe035e",
+        "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/source-pages/72cc2862bfe19f862456fcdfba6c5c4f689a21b68f2a37103d1ddafc61094b1e.png",
+        "recordedSHA256": "72cc2862bfe19f862456fcdfba6c5c4f689a21b68f2a37103d1ddafc61094b1e"
+      },
+      "linkedHistoricalUID": "completion44__genome_soldier_44",
+      "requiredEvidence": "Catégorie explicitement distinguée dans le manuel officiel.",
+      "nextWork": "Identifier la variante déjà représentée par Genome Soldier, produire les autres silhouettes; masque/casque/gilet/arme et gestes doivent correspondre à cette catégorie.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc1/mgs1/ps4/fr/page18.html"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "resolvedBy": "costume:completion44__genome_soldier_44:official--combinaison-masque-gaz",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/72c4557ccb85adf56ea3e831167bd68304576f443c9c2053177d780e878523fd.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "344d24fe84895100aa2ecf2171d843c79e046758",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/72c4557ccb85adf56ea3e831167bd68304576f443c9c2053177d780e878523fd.png",
+          "recordedSHA256": "72c4557ccb85adf56ea3e831167bd68304576f443c9c2053177d780e878523fd"
+        }
+      ],
+      "baselineStatus": "source_present_scope_qualified",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "baseline_source_present_scope_qualified",
+      "reason": "Une source déjà présente est reliée à cette portée dans le commit P60. Cette disponibilité ne recertifie ni sa fidélité ni son intégration.",
+      "requiredNextEvidence": "Identifier la variante déjà représentée par Genome Soldier, produire les autres silhouettes; masque/casque/gilet/arme et gestes doivent correspondre à cette catégorie.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MGS1-light",
+      "historicalId": "R-MGS1-light",
+      "label": "Genome léger",
+      "episode": "MGS1",
+      "level": "ennemi_recurrent",
+      "historicalStatus": "variante_officielle_non_ventilee",
+      "source": null,
+      "linkedHistoricalUID": "completion44__genome_soldier_44",
+      "requiredEvidence": "Catégorie explicitement distinguée dans le manuel officiel.",
+      "nextWork": "Identifier la variante déjà représentée par Genome Soldier, produire les autres silhouettes; masque/casque/gilet/arme et gestes doivent correspondre à cette catégorie.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc1/mgs1/ps4/fr/page18.html"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/72c4557ccb85adf56ea3e831167bd68304576f443c9c2053177d780e878523fd.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "344d24fe84895100aa2ecf2171d843c79e046758",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/72c4557ccb85adf56ea3e831167bd68304576f443c9c2053177d780e878523fd.png",
+          "recordedSHA256": "72c4557ccb85adf56ea3e831167bd68304576f443c9c2053177d780e878523fd"
+        }
+      ],
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Identifier la variante déjà représentée par Genome Soldier, produire les autres silhouettes; masque/casque/gilet/arme et gestes doivent correspondre à cette catégorie.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MGS1-arctic",
+      "historicalId": "R-MGS1-arctic",
+      "label": "Genome arctique",
+      "episode": "MGS1",
+      "level": "ennemi_recurrent",
+      "historicalStatus": "variante_officielle_non_ventilee",
+      "source": {
+        "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/source-pages/72cc2862bfe19f862456fcdfba6c5c4f689a21b68f2a37103d1ddafc61094b1e.png",
+        "presentInPinnedTree": true,
+        "gitBlobSHA": "4d19a0994636eb1d2178a0dc9617a896c6fe035e",
+        "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/source-pages/72cc2862bfe19f862456fcdfba6c5c4f689a21b68f2a37103d1ddafc61094b1e.png",
+        "recordedSHA256": "72cc2862bfe19f862456fcdfba6c5c4f689a21b68f2a37103d1ddafc61094b1e"
+      },
+      "linkedHistoricalUID": "completion44__genome_soldier_44",
+      "requiredEvidence": "Catégorie explicitement distinguée dans le manuel officiel.",
+      "nextWork": "Identifier la variante déjà représentée par Genome Soldier, produire les autres silhouettes; masque/casque/gilet/arme et gestes doivent correspondre à cette catégorie.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc1/mgs1/ps4/fr/page18.html"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "resolvedBy": "costume:completion44__genome_soldier_44:official--tenue-hiver",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/72c4557ccb85adf56ea3e831167bd68304576f443c9c2053177d780e878523fd.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "344d24fe84895100aa2ecf2171d843c79e046758",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/72c4557ccb85adf56ea3e831167bd68304576f443c9c2053177d780e878523fd.png",
+          "recordedSHA256": "72c4557ccb85adf56ea3e831167bd68304576f443c9c2053177d780e878523fd"
+        }
+      ],
+      "baselineStatus": "source_present_scope_qualified",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "baseline_source_present_scope_qualified",
+      "reason": "Une source déjà présente est reliée à cette portée dans le commit P60. Cette disponibilité ne recertifie ni sa fidélité ni son intégration.",
+      "requiredNextEvidence": "Identifier la variante déjà représentée par Genome Soldier, produire les autres silhouettes; masque/casque/gilet/arme et gestes doivent correspondre à cette catégorie.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MGS1-heavy",
+      "historicalId": "R-MGS1-heavy",
+      "label": "Genome lourd",
+      "episode": "MGS1",
+      "level": "ennemi_recurrent",
+      "historicalStatus": "variante_officielle_non_ventilee",
+      "source": null,
+      "linkedHistoricalUID": "completion44__genome_soldier_44",
+      "requiredEvidence": "Catégorie explicitement distinguée dans le manuel officiel.",
+      "nextWork": "Identifier la variante déjà représentée par Genome Soldier, produire les autres silhouettes; masque/casque/gilet/arme et gestes doivent correspondre à cette catégorie.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc1/mgs1/ps4/fr/page18.html"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/72c4557ccb85adf56ea3e831167bd68304576f443c9c2053177d780e878523fd.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "344d24fe84895100aa2ecf2171d843c79e046758",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/72c4557ccb85adf56ea3e831167bd68304576f443c9c2053177d780e878523fd.png",
+          "recordedSHA256": "72c4557ccb85adf56ea3e831167bd68304576f443c9c2053177d780e878523fd"
+        }
+      ],
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Identifier la variante déjà représentée par Genome Soldier, produire les autres silhouettes; masque/casque/gilet/arme et gestes doivent correspondre à cette catégorie.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MGS1-VR",
+      "historicalId": "R-MGS1-VR",
+      "label": "Gray Fox — missions Ninja",
+      "episode": "MGS1 Integral / VR Missions",
+      "level": "bonus_officiel",
+      "historicalStatus": "profil_edition_non_isole",
+      "source": null,
+      "linkedHistoricalUID": "core__fox",
+      "requiredEvidence": "Gray Fox existe déjà; sa disponibilité et ses missions VR sont un contexte officiel distinct.",
+      "nextWork": "Rattacher le corps exact PS1 et les mouvements VR documentés; ne pas importer le kit Revengeance.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc1/en/index.html"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/40d35e2cd9627f3dbc84434935bc1bd9930b92214612ecfeb03767a76cc64d59.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "8d66e9c5a5c8896680e74e5a6a7666794d410da6",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/40d35e2cd9627f3dbc84434935bc1bd9930b92214612ecfeb03767a76cc64d59.png",
+          "recordedSHA256": "40d35e2cd9627f3dbc84434935bc1bd9930b92214612ecfeb03767a76cc64d59"
+        }
+      ],
+      "baselineStatus": "edition_or_identity_profile_needs_review",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "edition_or_identity_review_required",
+      "reason": "Le profil de cette édition ou de cette identité doit être rapproché avec les sources existantes. Un corps générique d’une autre édition ne clôture pas cette ligne.",
+      "requiredNextEvidence": "Rattacher le corps exact PS1 et les mouvements VR documentés; ne pas importer le kit Revengeance.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-TTS-campbell",
+      "historicalId": "R-TTS-campbell",
+      "label": "Campbell",
+      "episode": "The Twin Snakes",
+      "level": "secondaire",
+      "historicalStatus": "personnage_present_sans_UID_TTS_dedie",
+      "source": null,
+      "linkedHistoricalUID": "roster50__campbell_mgs1",
+      "requiredEvidence": "Le personnage existe dans CQC côté MGS1; la preuve graphique GameCube doit être distincte.",
+      "nextWork": "Comparer portrait/modèle, âge, visage et vêtements du remake; créer une incarnation seulement si une vraie différence visible le justifie.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc1/mgs1/ps4/fr/page18.html",
+        "https://metalgear.konami.net/manual/mc1/en/index.html"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/f1001375ba7ee2b667d95ed033d6df285b1e7f337036da2893709202700807f3.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "bc4b8e5e857e0863bef721c253f5cfeb6b558058",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/f1001375ba7ee2b667d95ed033d6df285b1e7f337036da2893709202700807f3.png",
+          "recordedSHA256": "f1001375ba7ee2b667d95ed033d6df285b1e7f337036da2893709202700807f3"
+        }
+      ],
+      "baselineStatus": "edition_or_identity_profile_needs_review",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "edition_or_identity_review_required",
+      "reason": "Le profil de cette édition ou de cette identité doit être rapproché avec les sources existantes. Un corps générique d’une autre édition ne clôture pas cette ligne.",
+      "requiredNextEvidence": "Comparer portrait/modèle, âge, visage et vêtements du remake; créer une incarnation seulement si une vraie différence visible le justifie.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-TTS-naomi",
+      "historicalId": "R-TTS-naomi",
+      "label": "Naomi",
+      "episode": "The Twin Snakes",
+      "level": "secondaire",
+      "historicalStatus": "personnage_present_sans_UID_TTS_dedie",
+      "source": null,
+      "linkedHistoricalUID": "roster50__naomi_mgs1",
+      "requiredEvidence": "Le personnage existe dans CQC côté MGS1; la preuve graphique GameCube doit être distincte.",
+      "nextWork": "Comparer portrait/modèle, âge, visage et vêtements du remake; créer une incarnation seulement si une vraie différence visible le justifie.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc1/mgs1/ps4/fr/page18.html",
+        "https://metalgear.konami.net/manual/mc1/en/index.html"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/de9208fb1de9e44aa0e74dcea7f38f6bf7f81c7a7f15a7154699b75e6dcb9776.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "8a37aa8bc3c20b747bdbbba4c755b3266fbfc288",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/de9208fb1de9e44aa0e74dcea7f38f6bf7f81c7a7f15a7154699b75e6dcb9776.png",
+          "recordedSHA256": "de9208fb1de9e44aa0e74dcea7f38f6bf7f81c7a7f15a7154699b75e6dcb9776"
+        }
+      ],
+      "baselineStatus": "edition_or_identity_profile_needs_review",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "edition_or_identity_review_required",
+      "reason": "Le profil de cette édition ou de cette identité doit être rapproché avec les sources existantes. Un corps générique d’une autre édition ne clôture pas cette ligne.",
+      "requiredNextEvidence": "Comparer portrait/modèle, âge, visage et vêtements du remake; créer une incarnation seulement si une vraie différence visible le justifie.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-TTS-mei-ling",
+      "historicalId": "R-TTS-mei-ling",
+      "label": "Mei Ling",
+      "episode": "The Twin Snakes",
+      "level": "secondaire",
+      "historicalStatus": "personnage_present_sans_UID_TTS_dedie",
+      "source": null,
+      "linkedHistoricalUID": "roster50__mei_mgs1",
+      "requiredEvidence": "Le personnage existe dans CQC côté MGS1; la preuve graphique GameCube doit être distincte.",
+      "nextWork": "Comparer portrait/modèle, âge, visage et vêtements du remake; créer une incarnation seulement si une vraie différence visible le justifie.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc1/mgs1/ps4/fr/page18.html",
+        "https://metalgear.konami.net/manual/mc1/en/index.html"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/2baeb962bdd6a829687d5cafdbf591d8bdb57286ef87f4ecc73aac82f2d69e11.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "cfe4887a6c772e5fa8936e6f57f6a3a8ad07b022",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/2baeb962bdd6a829687d5cafdbf591d8bdb57286ef87f4ecc73aac82f2d69e11.png",
+          "recordedSHA256": "2baeb962bdd6a829687d5cafdbf591d8bdb57286ef87f4ecc73aac82f2d69e11"
+        }
+      ],
+      "baselineStatus": "edition_or_identity_profile_needs_review",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "edition_or_identity_review_required",
+      "reason": "Le profil de cette édition ou de cette identité doit être rapproché avec les sources existantes. Un corps générique d’une autre édition ne clôture pas cette ligne.",
+      "requiredNextEvidence": "Comparer portrait/modèle, âge, visage et vêtements du remake; créer une incarnation seulement si une vraie différence visible le justifie.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-TTS-nastasha",
+      "historicalId": "R-TTS-nastasha",
+      "label": "Nastasha",
+      "episode": "The Twin Snakes",
+      "level": "secondaire",
+      "historicalStatus": "personnage_present_sans_UID_TTS_dedie",
+      "source": null,
+      "linkedHistoricalUID": "roster50__nastasha_mgs1",
+      "requiredEvidence": "Le personnage existe dans CQC côté MGS1; la preuve graphique GameCube doit être distincte.",
+      "nextWork": "Comparer portrait/modèle, âge, visage et vêtements du remake; créer une incarnation seulement si une vraie différence visible le justifie.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc1/mgs1/ps4/fr/page18.html",
+        "https://metalgear.konami.net/manual/mc1/en/index.html"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/04dfb6d882d848175837968b509c472088b5fe504c3f69236151c649eb8107b6.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "e32b7b0507551ce9183e6c20a1a73fb7ceef7aa2",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/04dfb6d882d848175837968b509c472088b5fe504c3f69236151c649eb8107b6.png",
+          "recordedSHA256": "04dfb6d882d848175837968b509c472088b5fe504c3f69236151c649eb8107b6"
+        }
+      ],
+      "baselineStatus": "edition_or_identity_profile_needs_review",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "edition_or_identity_review_required",
+      "reason": "Le profil de cette édition ou de cette identité doit être rapproché avec les sources existantes. Un corps générique d’une autre édition ne clôture pas cette ligne.",
+      "requiredNextEvidence": "Comparer portrait/modèle, âge, visage et vêtements du remake; créer une incarnation seulement si une vraie différence visible le justifie.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-TTS-miller-liquid-d-guis",
+      "historicalId": "R-TTS-miller-liquid-d-guis",
+      "label": "Miller / Liquid déguisé",
+      "episode": "The Twin Snakes",
+      "level": "secondaire",
+      "historicalStatus": "personnage_present_sans_UID_TTS_dedie",
+      "source": null,
+      "linkedHistoricalUID": "roster51__miller_mgs1",
+      "requiredEvidence": "Le personnage existe dans CQC côté MGS1; la preuve graphique GameCube doit être distincte.",
+      "nextWork": "Comparer portrait/modèle, âge, visage et vêtements du remake; créer une incarnation seulement si une vraie différence visible le justifie.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc1/mgs1/ps4/fr/page18.html",
+        "https://metalgear.konami.net/manual/mc1/en/index.html"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/ae16af0450cbea155363779419f0639da90b86b7a20a4f6d74a4422db9095497.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "c7e68f81e4f9f7c8ddf6563cc72ae97fcdb98ee5",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/ae16af0450cbea155363779419f0639da90b86b7a20a4f6d74a4422db9095497.png",
+          "recordedSHA256": "ae16af0450cbea155363779419f0639da90b86b7a20a4f6d74a4422db9095497"
+        }
+      ],
+      "baselineStatus": "edition_or_identity_profile_needs_review",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "edition_or_identity_review_required",
+      "reason": "Le profil de cette édition ou de cette identité doit être rapproché avec les sources existantes. Un corps générique d’une autre édition ne clôture pas cette ligne.",
+      "requiredNextEvidence": "Comparer portrait/modèle, âge, visage et vêtements du remake; créer une incarnation seulement si une vraie différence visible le justifie.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-TTS-donald-anderson-decoy",
+      "historicalId": "R-TTS-donald-anderson-decoy",
+      "label": "Donald Anderson / Decoy",
+      "episode": "The Twin Snakes",
+      "level": "secondaire",
+      "historicalStatus": "personnage_present_sans_UID_TTS_dedie",
+      "source": null,
+      "linkedHistoricalUID": "roster50__anderson_mgs1",
+      "requiredEvidence": "Le personnage existe dans CQC côté MGS1; la preuve graphique GameCube doit être distincte.",
+      "nextWork": "Comparer portrait/modèle, âge, visage et vêtements du remake; créer une incarnation seulement si une vraie différence visible le justifie.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc1/mgs1/ps4/fr/page18.html",
+        "https://metalgear.konami.net/manual/mc1/en/index.html"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/870ae57e66aab10a44d9e0f3bd82ad8b755574029271714ce9be55bce7c6f9dd.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "806a740fad9cb7118837fb67f2e8420631c869b4",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/870ae57e66aab10a44d9e0f3bd82ad8b755574029271714ce9be55bce7c6f9dd.png",
+          "recordedSHA256": "870ae57e66aab10a44d9e0f3bd82ad8b755574029271714ce9be55bce7c6f9dd"
+        }
+      ],
+      "baselineStatus": "edition_or_identity_profile_needs_review",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "edition_or_identity_review_required",
+      "reason": "Le profil de cette édition ou de cette identité doit être rapproché avec les sources existantes. Un corps générique d’une autre édition ne clôture pas cette ligne.",
+      "requiredNextEvidence": "Comparer portrait/modèle, âge, visage et vêtements du remake; créer une incarnation seulement si une vraie différence visible le justifie.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-TTS-kenneth-baker",
+      "historicalId": "R-TTS-kenneth-baker",
+      "label": "Kenneth Baker",
+      "episode": "The Twin Snakes",
+      "level": "secondaire",
+      "historicalStatus": "personnage_present_sans_UID_TTS_dedie",
+      "source": null,
+      "linkedHistoricalUID": "roster50__baker_mgs1",
+      "requiredEvidence": "Le personnage existe dans CQC côté MGS1; la preuve graphique GameCube doit être distincte.",
+      "nextWork": "Comparer portrait/modèle, âge, visage et vêtements du remake; créer une incarnation seulement si une vraie différence visible le justifie.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc1/mgs1/ps4/fr/page18.html",
+        "https://metalgear.konami.net/manual/mc1/en/index.html"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/c02091b68168eabf955862bdcca4adeeddf1fe51dd624df2cde14551b96e2e28.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "68a27dee3f3d18e4dc2a0368ffe73a57dd4b2d6d",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/c02091b68168eabf955862bdcca4adeeddf1fe51dd624df2cde14551b96e2e28.png",
+          "recordedSHA256": "c02091b68168eabf955862bdcca4adeeddf1fe51dd624df2cde14551b96e2e28"
+        }
+      ],
+      "baselineStatus": "edition_or_identity_profile_needs_review",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "edition_or_identity_review_required",
+      "reason": "Le profil de cette édition ou de cette identité doit être rapproché avec les sources existantes. Un corps générique d’une autre édition ne clôture pas cette ligne.",
+      "requiredNextEvidence": "Comparer portrait/modèle, âge, visage et vêtements du remake; créer une incarnation seulement si une vraie différence visible le justifie.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-TTS-jim-houseman",
+      "historicalId": "R-TTS-jim-houseman",
+      "label": "Jim Houseman",
+      "episode": "The Twin Snakes",
+      "level": "secondaire",
+      "historicalStatus": "personnage_present_sans_UID_TTS_dedie",
+      "source": null,
+      "linkedHistoricalUID": "roster50__houseman_mgs1",
+      "requiredEvidence": "Le personnage existe dans CQC côté MGS1; la preuve graphique GameCube doit être distincte.",
+      "nextWork": "Comparer portrait/modèle, âge, visage et vêtements du remake; créer une incarnation seulement si une vraie différence visible le justifie.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc1/mgs1/ps4/fr/page18.html",
+        "https://metalgear.konami.net/manual/mc1/en/index.html"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/95503d75d0d2ac5e0bad305117c4760bbe6531b18990605d5a9e395d882fed78.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "56fcd12d31fb698c4fa510f008b816ec3f21675a",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/95503d75d0d2ac5e0bad305117c4760bbe6531b18990605d5a9e395d882fed78.png",
+          "recordedSHA256": "95503d75d0d2ac5e0bad305117c4760bbe6531b18990605d5a9e395d882fed78"
+        }
+      ],
+      "baselineStatus": "edition_or_identity_profile_needs_review",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "edition_or_identity_review_required",
+      "reason": "Le profil de cette édition ou de cette identité doit être rapproché avec les sources existantes. Un corps générique d’une autre édition ne clôture pas cette ligne.",
+      "requiredNextEvidence": "Comparer portrait/modèle, âge, visage et vêtements du remake; créer une incarnation seulement si une vraie différence visible le justifie.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MGS2-01",
+      "historicalId": "R-MGS2-01",
+      "label": "Hi-Tech Soldier",
+      "episode": "MGS2 / MPO+",
+      "level": "ennemi_recurrent",
+      "historicalStatus": "absent_du_roster_actif",
+      "source": {
+        "path": "public/cqc/assets/p54-poses/p54__hi_tech_mgs2--8ff7e6b7fa40.png",
+        "presentInPinnedTree": true,
+        "gitBlobSHA": "7bdb9201c4b99a6ea2ca26ddb247b38cf9091e8a",
+        "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/public/cqc/assets/p54-poses/p54__hi_tech_mgs2--8ff7e6b7fa40.png",
+        "recordedSHA256": "8ff7e6b7fa40be9b091aff1997daaf6adecf47a3b4baa9440755ff387954e9fb"
+      },
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Soldat blindé au casque intégral, distinct du mercenaire Gurlukovich.",
+      "nextWork": "Référence de face/profil/dos MGS2, épaulières/col/avant-bras, arme et visière; entrée MPO+ séparée si son modèle est reproduit.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Hi-Tech_Soldiers"
+      ],
+      "scopeWarning": "P54 covers the MGS2 incarnation only. Portable Ops Plus remains a separate edition profile.",
+      "resolvedBy": "costume:p54__hi_tech_mgs2:original",
+      "baselineStatus": "source_present_scope_qualified",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "baseline_source_present_scope_qualified",
+      "reason": "Une source déjà présente est reliée à cette portée dans le commit P60. Cette disponibilité ne recertifie ni sa fidélité ni son intégration.",
+      "requiredNextEvidence": "Référence de face/profil/dos MGS2, épaulières/col/avant-bras, arme et visière; entrée MPO+ séparée si son modèle est reproduit.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MGS2-02",
+      "historicalId": "R-MGS2-02",
+      "label": "Marines du Tanker",
+      "episode": "MGS2",
+      "level": "tertiaire",
+      "historicalStatus": "absent_comme_archetype_dedie",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Les Marines présents au discours ne sont pas le SEAL de la Big Shell.",
+      "nextWork": "Postures au garde-à-vous, écoute, alerte; rangs/couleurs documentés, pas de tenue SEAL réutilisée sans preuve.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AMGS2_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "dedicated_source_not_established",
+      "selectedCandidates": [
+        {
+          "id": "mgs2-tanker-marine",
+          "path": "public/cqc/assets/p61/mgs2-tanker-marine-right.png",
+          "gitBlobSha": "1fe4fff53ef7a4ee12f3248d5ee49a5d86e9910e",
+          "manifest": "docs/cqc-reprise/pass61/batches/personnages-extra.json",
+          "fidelityStatus": "pending_external_review",
+          "absolute1to1Certified": false,
+          "runtimeIntegrated": false,
+          "referenceURLs": [
+            "https://superadventuresingaming.blogspot.com/2020/03/metal-gear-solid-2-substance-ps2.html"
+          ],
+          "scopeLimitations": []
+        }
+      ],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "candidate_sources_partial_scope_pending_review",
+      "reason": "Un archétype Marine du Tanker en tenue standard. Les visages, sous-vêtements et autres états du groupe ne sont pas tous représentés.",
+      "requiredNextEvidence": "Comparer la source générée au modèle/captures natifs, compléter les variantes de portée, puis réaliser et tester une intégration séparée si demandée."
+    },
+    {
+      "id": "character:R-MGS2-03",
+      "historicalId": "R-MGS2-03",
+      "label": "Otages du Shell 1",
+      "episode": "MGS2",
+      "level": "tertiaire",
+      "historicalStatus": "absent_comme_collectif_documente",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Ames présent ne représente pas l’ensemble des otages.",
+      "nextWork": "Cataloguer corps/visages visibles, masque et entraves éventuels, animation assise/peur/interrogation; ne pas imposer un kit de combat.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AMGS2_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Cataloguer corps/visages visibles, masque et entraves éventuels, animation assise/peur/interrogation; ne pas imposer un kit de combat.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MGS2-04",
+      "historicalId": "R-MGS2-04",
+      "label": "Rose réelle / interface IA",
+      "episode": "MGS2",
+      "level": "secondaire",
+      "historicalStatus": "distinction_identitaire_a_formaliser",
+      "source": null,
+      "linkedHistoricalUID": "roster50__rose_mgs2",
+      "requiredEvidence": "Même apparence d’interface ne signifie pas même acteur narratif.",
+      "nextWork": "Annoter les séquences et voix; conserver le visage de Rose, signaler l’instance IA sans inventer un nouveau corps.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc1/mgs2/xbox/en/page24.html"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/21ae87a8cb89f31a347a51865edf98acc5cba4439668c4706432e51afd6e2d47.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "1d003bc78d679f233d0f17eea470e734986da4aa",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/21ae87a8cb89f31a347a51865edf98acc5cba4439668c4706432e51afd6e2d47.png",
+          "recordedSHA256": "21ae87a8cb89f31a347a51865edf98acc5cba4439668c4706432e51afd6e2d47"
+        }
+      ],
+      "baselineStatus": "edition_or_identity_profile_needs_review",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "edition_or_identity_review_required",
+      "reason": "Le profil de cette édition ou de cette identité doit être rapproché avec les sources existantes. Un corps générique d’une autre édition ne clôture pas cette ligne.",
+      "requiredNextEvidence": "Annoter les séquences et voix; conserver le visage de Rose, signaler l’instance IA sans inventer un nouveau corps.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MGS2-05",
+      "historicalId": "R-MGS2-05",
+      "label": "Meryl — Snake Tales",
+      "episode": "MGS2 Substance",
+      "level": "bonus_officiel",
+      "historicalStatus": "absence_de_profil_snake_tales",
+      "source": null,
+      "linkedHistoricalUID": "core__meryl_mgs1",
+      "requiredEvidence": "Le scénario alternatif et la source de son modèle doivent être explicités.",
+      "nextWork": "Localiser apparition/illustration dans Snake Tales avant toute réutilisation d’un corps MGS1 ou TTS.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AMGS2_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/eefc2d4fe0ec5d1796557aa2c36e98b0a271962cb7579d42e7a8a6836203ec27.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "f380c77c7710c7cb62f03d4d0c36b827a64558da",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/eefc2d4fe0ec5d1796557aa2c36e98b0a271962cb7579d42e7a8a6836203ec27.png",
+          "recordedSHA256": "eefc2d4fe0ec5d1796557aa2c36e98b0a271962cb7579d42e7a8a6836203ec27"
+        }
+      ],
+      "baselineStatus": "edition_or_identity_profile_needs_review",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "edition_or_identity_review_required",
+      "reason": "Le profil de cette édition ou de cette identité doit être rapproché avec les sources existantes. Un corps générique d’une autre édition ne clôture pas cette ligne.",
+      "requiredNextEvidence": "Localiser apparition/illustration dans Snake Tales avant toute réutilisation d’un corps MGS1 ou TTS.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MGS3-kgb",
+      "historicalId": "R-MGS3-kgb",
+      "label": "Gardes du KGB",
+      "episode": "MGS3 / Delta",
+      "level": "ennemi_recurrent",
+      "historicalStatus": "couverture_non_ventilee",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Uniformes de surveillance distincts du GRU.",
+      "nextWork": "Table de variantes PS2 et Delta distincte; enregistrer visage, couvre-chef, insignes, gants et arme/posture source.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc1/mgs3/pc/en/page24.html",
+        "https://metalgear.konami.net/manual/mc1/en/index.html"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Table de variantes PS2 et Delta distincte; enregistrer visage, couvre-chef, insignes, gants et arme/posture source.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MGS3-gru",
+      "historicalId": "R-MGS3-gru",
+      "label": "GRU standard",
+      "episode": "MGS3 / Delta",
+      "level": "ennemi_recurrent",
+      "historicalStatus": "couverture_non_ventilee",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Le heavy gunner existant ne prouve pas la couverture du soldat ordinaire.",
+      "nextWork": "Table de variantes PS2 et Delta distincte; enregistrer visage, couvre-chef, insignes, gants et arme/posture source.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc1/mgs3/pc/en/page24.html",
+        "https://metalgear.konami.net/manual/mc1/en/index.html"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Table de variantes PS2 et Delta distincte; enregistrer visage, couvre-chef, insignes, gants et arme/posture source.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MGS3-scientist",
+      "historicalId": "R-MGS3-scientist",
+      "label": "Scientifiques de Groznyj Grad",
+      "episode": "MGS3 / Delta",
+      "level": "tertiaire",
+      "historicalStatus": "couverture_non_ventilee",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Blouses et silhouettes non combattantes de la base.",
+      "nextWork": "Table de variantes PS2 et Delta distincte; enregistrer visage, couvre-chef, insignes, gants et arme/posture source.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc1/mgs3/pc/en/page24.html",
+        "https://metalgear.konami.net/manual/mc1/en/index.html"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Table de variantes PS2 et Delta distincte; enregistrer visage, couvre-chef, insignes, gants et arme/posture source.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MGS3-president",
+      "historicalId": "R-MGS3-president",
+      "label": "Président des États-Unis — cérémonie",
+      "episode": "MGS3 / Delta",
+      "level": "tertiaire",
+      "historicalStatus": "absent_du_roster_actif",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Apparition ou voix de scène à relever dans le scénario; une mention ne prouve pas un corps complet.",
+      "nextWork": "Ajouter le timecode et l’édition; portrait/voix suffisent si le corps n’est pas montré. Aucun kit CQC canonique supposé.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc1/mgs3/pc/en/page24.html",
+        "https://metalgear.konami.net/manual/mc1/en/index.html"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "dedicated_source_not_established",
+      "selectedCandidates": [
+        {
+          "id": "mgs3-president-johnson",
+          "path": "public/cqc/assets/p61/mgs3-president-johnson-right.png",
+          "gitBlobSha": "4bf3ed886d9d05899e1fe66e7cedf2c8abdef42a",
+          "manifest": "docs/cqc-reprise/pass61/batches/personnages-extra.json",
+          "fidelityStatus": "pending_external_review",
+          "absolute1to1Certified": false,
+          "runtimeIntegrated": false,
+          "referenceURLs": [
+            "https://www.youtube.com/watch?v=-lTtkL-50bw",
+            "https://i.ytimg.com/vi/-lTtkL-50bw/hq1.jpg"
+          ],
+          "scopeLimitations": [
+            "Low-resolution body footage and warm grading limit exact fabric and tie-color verification.",
+            "Generated face, shoes and proportions require native-model comparison; no exact likeness certification."
+          ]
+        },
+        {
+          "id": "delta-president-johnson",
+          "path": "public/cqc/assets/p61/delta-president-johnson-right.png",
+          "gitBlobSha": "ff7523dde0135b5c33860a5238eb44535013e562",
+          "manifest": "docs/cqc-reprise/pass61/batches/personnages-extra.json",
+          "fidelityStatus": "pending_external_review",
+          "absolute1to1Certified": false,
+          "runtimeIntegrated": false,
+          "referenceURLs": [
+            "https://www.youtube.com/watch?v=KRVzikZATdE",
+            "https://www.playstation.com/fr-fr/games/metal-gear-solid-delta-snake-eater/"
+          ],
+          "scopeLimitations": [
+            "Native game footage was viewed through 320x180 storyboard frames; exact face, fabric, shoes and proportions require native-resolution comparison.",
+            "A static generated source, not a certified exact model or gameplay-ready animation."
+          ]
+        }
+      ],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "candidate_sources_pending_review",
+      "reason": "Deux sources séparées : modèle MGS3 original et modèle Delta. Les poses sont adaptées et les détails demandent une comparaison native.",
+      "requiredNextEvidence": "Comparer la source générée au modèle/captures natifs, compléter les variantes de portée, puis réaliser et tester une intégration séparée si demandée."
+    },
+    {
+      "id": "character:R-MGS3-cia",
+      "historicalId": "R-MGS3-cia",
+      "label": "Directeur de la CIA",
+      "episode": "MGS3 / Delta",
+      "level": "tertiaire",
+      "historicalStatus": "absent_du_roster_actif",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Apparition ou voix de scène à relever dans le scénario; une mention ne prouve pas un corps complet.",
+      "nextWork": "Ajouter le timecode et l’édition; portrait/voix suffisent si le corps n’est pas montré. Aucun kit CQC canonique supposé.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc1/mgs3/pc/en/page24.html",
+        "https://metalgear.konami.net/manual/mc1/en/index.html"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "dedicated_source_not_established",
+      "selectedCandidates": [
+        {
+          "id": "mgs3-cia-director",
+          "path": "public/cqc/assets/p61/mgs3-cia-director-right.png",
+          "gitBlobSha": "c0592ca9942f364ef8696a1a5aa54d03c302f089",
+          "manifest": "docs/cqc-reprise/pass61/batches/personnages-extra.json",
+          "fidelityStatus": "pending_external_review",
+          "absolute1to1Certified": false,
+          "runtimeIntegrated": false,
+          "referenceURLs": [
+            "https://metalgear.fandom.com/wiki/CIA_Director",
+            "https://static.wikia.nocookie.net/metalgear/images/a/a6/CIADpp.png/revision/latest",
+            "https://www.youtube.com/watch?v=eFSiIgd05M8"
+          ],
+          "scopeLimitations": [
+            "Generated facial likeness and pinstripe spacing need comparison with the native model.",
+            "Shoes and trouser folds derive from low-resolution full-body footage; these details are not certified exact.",
+            "One edition covered; does not close the combined MGS3/Delta catalogue scope."
+          ]
+        },
+        {
+          "id": "delta-cia-director",
+          "path": "public/cqc/assets/p61/delta-cia-director-right.png",
+          "gitBlobSha": "afc22d1537b425e626eb03b87beefeae17d07742",
+          "manifest": "docs/cqc-reprise/pass61/batches/personnages-extra.json",
+          "fidelityStatus": "pending_external_review",
+          "absolute1to1Certified": false,
+          "runtimeIntegrated": false,
+          "referenceURLs": [
+            "https://www.youtube.com/watch?v=KRVzikZATdE",
+            "https://www.playstation.com/fr-fr/games/metal-gear-solid-delta-snake-eater/"
+          ],
+          "scopeLimitations": [
+            "Native game footage was viewed through 320x180 storyboard frames; exact face, weave, spectacles and footwear need comparison at native resolution.",
+            "One static appearance reconstruction, not an extracted native model or certified 1:1 asset."
+          ]
+        }
+      ],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "candidate_sources_pending_review",
+      "reason": "Deux sources séparées : modèle MGS3 original et modèle Delta. Ne pas mélanger avec le directeur de Portable Ops ni le responsable du DoD.",
+      "requiredNextEvidence": "Comparer la source générée au modèle/captures natifs, compléter les variantes de portée, puis réaliser et tester une intégration séparée si demandée."
+    },
+    {
+      "id": "character:R-MGS3-khrushchev",
+      "historicalId": "R-MGS3-khrushchev",
+      "label": "Nikita Khrouchtchev — interlocuteur",
+      "episode": "MGS3 / Delta",
+      "level": "tertiaire",
+      "historicalStatus": "absent_du_roster_actif",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Apparition ou voix de scène à relever dans le scénario; une mention ne prouve pas un corps complet.",
+      "nextWork": "Ajouter le timecode et l’édition; portrait/voix suffisent si le corps n’est pas montré. Aucun kit CQC canonique supposé.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc1/mgs3/pc/en/page24.html",
+        "https://metalgear.konami.net/manual/mc1/en/index.html"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "dedicated_source_not_established",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "not_generated_documentary_or_voice_body_not_established",
+      "reasonClass": "documentary_body_not_shown",
+      "reason": "L'interlocuteur est établi dans la conversation historique. Aucun modèle complet de personnage propre à MGS3 ou Delta n'a été établi pour cette ligne ; une photo historique ne serait pas un modèle canonique de jeu.",
+      "requiredNextEvidence": "Modèle ou vue complète propre à l'édition concernée, si elle existe ; sinon conserver une fiche documentaire/voix.",
+      "reviewReferences": [
+        "https://www.youtube.com/watch?v=SCQmd9MA_c8",
+        "https://metalgear.konami.net/manual/mc1/mgs3/pc/en/page24.html"
+      ]
+    },
+    {
+      "id": "character:R-MGS3-GUY",
+      "historicalId": "R-MGS3-GUY",
+      "label": "Guy Savage — version PS2",
+      "episode": "MGS3 PS2",
+      "level": "bonus_officiel",
+      "historicalStatus": "version_PS2_non_isolee",
+      "source": null,
+      "linkedHistoricalUID": "roster51__guy_savage_delta",
+      "requiredEvidence": "Le Guy Savage Δ présent est une réinterprétation différente.",
+      "nextWork": "Référencer héros, ennemis et mouvements du mini-jeu PS2; créer une fiche distincte du remake Delta.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc1/en/index.html"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/14e0a4cbeeacd6c3ce27fc5dbc3f2582b7128a7e0b27c892518b636d48a78a8a.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "f1dc6aed605393731180e9a0d9e76c06cc190d5d",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/14e0a4cbeeacd6c3ce27fc5dbc3f2582b7128a7e0b27c892518b636d48a78a8a.png",
+          "recordedSHA256": "14e0a4cbeeacd6c3ce27fc5dbc3f2582b7128a7e0b27c892518b636d48a78a8a"
+        }
+      ],
+      "baselineStatus": "edition_or_identity_profile_needs_review",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "edition_or_identity_review_required",
+      "reason": "Le profil de cette édition ou de cette identité doit être rapproché avec les sources existantes. Un corps générique d’une autre édition ne clôture pas cette ligne.",
+      "requiredNextEvidence": "Référencer héros, ennemis et mouvements du mini-jeu PS2; créer une fiche distincte du remake Delta.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MGS3-MONKEY",
+      "historicalId": "R-MGS3-MONKEY",
+      "label": "Pipo Monkeys",
+      "episode": "MGS3 / Delta — Snake vs Monkey",
+      "level": "bonus_officiel",
+      "historicalStatus": "absent_du_roster_actif",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Personnages de crossover interne au bonus, pas ennemis historiques de 1964.",
+      "nextWork": "Séparer modèle/animation PS2 et Delta; inventorier les variantes réellement visibles.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc1/en/index.html",
+        "https://www.konami.com/games/eu/fr/topics/18806/"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "dedicated_source_not_established",
+      "selectedCandidates": [
+        {
+          "id": "delta-pipo-goggles-alert",
+          "path": "public/cqc/assets/p61/delta-pipo-goggles-alert-right.png",
+          "gitBlobSha": "9afc44396b7f788e8e5d8ea669e6c3127b64446d",
+          "manifest": "docs/cqc-reprise/pass61/batches/personnages-extra.json",
+          "fidelityStatus": "pending_external_review",
+          "absolute1to1Certified": false,
+          "runtimeIntegrated": false,
+          "referenceURLs": [
+            "https://www.konami.com/games/eu/fr/topics/18806/",
+            "https://www.konami.com/games_cms/promo/eu/uploads/screenshot4-1.jpg",
+            "https://www.youtube.com/watch?v=AMagBqMUVmA"
+          ],
+          "scopeLimitations": [
+            "Initial disproportionately large-headed draft replaced by slimmer corrected source.",
+            "Exact limb/head ratio, number and shape of digits, camouflage pattern and eyewear require direct comparison with game model.",
+            "Covers one archetype/state, not every monkey, clothing variant or state in the grouped catalogue row."
+          ]
+        },
+        {
+          "id": "mgs3-pipo-tea",
+          "path": "public/cqc/assets/p61/mgs3-pipo-tea-right.png",
+          "gitBlobSha": "c977eca1c5603df8f9454b547b40ed9747bb65a9",
+          "manifest": "docs/cqc-reprise/pass61/batches/personnages-extra.json",
+          "fidelityStatus": "pending_external_review",
+          "absolute1to1Certified": false,
+          "runtimeIntegrated": false,
+          "referenceURLs": [
+            "https://games.kikizo.com/reviews/ps2/metalgearsolid3_subsistence.asp",
+            "https://games.kikizo.com/media/mgs3_subsistence_rev/05.jpg",
+            "https://www.piggyback.com/fr/wp-content/uploads/sites/3/2020/04/MGS3_F_SamplePages.pdf",
+            "https://www.youtube.com/watch?v=BUMVSmLRPss"
+          ],
+          "scopeLimitations": [
+            "Waist/clothing detail is occluded in the reference and remains unspecified; no claim of a complete canonical outfit.",
+            "Generated topology, head ratio, fingers and cup silhouette require native comparison.",
+            "One documented pose/archetype only, not all monkeys or states in the grouped row."
+          ]
+        }
+      ],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "candidate_sources_partial_scope_pending_review",
+      "reason": "Deux éditions ont chacune une source : PS2 sans lunettes, balise bleue, pose assise avec tasse ; Delta avec lunettes, short camouflage, alerte rouge. Les autres singes, accessoires et états restent ouverts.",
+      "requiredNextEvidence": "Comparer la source générée au modèle/captures natifs, compléter les variantes de portée, puis réaliser et tester une intégration séparée si demandée."
+    },
+    {
+      "id": "character:R-3DS-01",
+      "historicalId": "R-3DS-01",
+      "label": "Naked Snake — présentation 3DS",
+      "episode": "Snake Eater 3D",
+      "level": "principal",
+      "historicalStatus": "edition_non_isolee",
+      "source": null,
+      "linkedHistoricalUID": "core__snake",
+      "requiredEvidence": "Le modèle PS2 et celui de Delta ne prouvent pas la fidélité à la version 3DS.",
+      "nextWork": "Collecter vues modèle 3DS, animations de déplacement accroupi, références photo-camo; même personne, édition graphique distincte.",
+      "sources": [
+        "https://www.konami.com/mg/archive/mgs_se/jp/guide/index.html"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/7133eeefeac5d28aa53b69d5d2dc09e166e5ad60f5ba61b9881e79e7c711f28a.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "a7f0827611e82fc9443bcf14f09c417f16aec8d6",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/7133eeefeac5d28aa53b69d5d2dc09e166e5ad60f5ba61b9881e79e7c711f28a.png",
+          "recordedSHA256": "7133eeefeac5d28aa53b69d5d2dc09e166e5ad60f5ba61b9881e79e7c711f28a"
+        }
+      ],
+      "baselineStatus": "edition_or_identity_profile_needs_review",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "edition_or_identity_review_required",
+      "reason": "Le profil de cette édition ou de cette identité doit être rapproché avec les sources existantes. Un corps générique d’une autre édition ne clôture pas cette ligne.",
+      "requiredNextEvidence": "Collecter vues modèle 3DS, animations de déplacement accroupi, références photo-camo; même personne, édition graphique distincte.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-DELTA-FOX",
+      "historicalId": "R-DELTA-FOX",
+      "label": "Opérateurs / avatars FOX HUNT",
+      "episode": "Delta — FOX HUNT",
+      "level": "bonus_officiel",
+      "historicalStatus": "mode_non_reference_par_UID_dedie",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Mode publié après le lancement Delta et disponible avant la date de cet audit.",
+      "nextWork": "Inventaire des corps, équipements, variations et animations propres au mode; éviter une simple copie de l’avatar MGO3.",
+      "sources": [
+        "https://konami-fr.prezly.com/?category=6622"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "dedicated_source_not_established",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "not_generated_group_variant_inventory_required",
+      "reasonClass": "group_not_one_body",
+      "reason": "Cette ligne représente un ensemble d'avatars personnalisables et d'équipements. Un soldat générique ne couvrirait pas tous les corps, visages et tenues ; l'inventaire de variantes du mode n'est pas établi dans ce lot.",
+      "requiredNextEvidence": "Inventaire des choix d'avatar/tenues effectivement disponibles, captures de chaque variante et correspondance des identifiants.",
+      "reviewReferences": [
+        "https://www.konami.com/games/eu/fr/topics/18806/",
+        "https://konami-fr.prezly.com/?category=6622"
+      ]
+    },
+    {
+      "id": "character:R-MPO-soviet",
+      "historicalId": "R-MPO-soviet",
+      "label": "Soldats soviétiques — hommes/femmes",
+      "episode": "Portable Ops / Plus",
+      "level": "tertiaire",
+      "historicalStatus": "couverture_non_ventilee",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Familles de recrues et silhouettes sexuées, pas une seule tenue FOX.",
+      "nextWork": "Table de modèles et équipements par version; nom de provenance, palette, accessoire et région dans les métadonnées.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Metal_Gear_Solid%3A_Portable_Ops_Plus"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Table de modèles et équipements par version; nom de provenance, palette, accessoire et région dans les métadonnées.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MPO-ocelot",
+      "historicalId": "R-MPO-ocelot",
+      "label": "Ocelot Unit — hommes/femmes",
+      "episode": "Portable Ops / Plus",
+      "level": "tertiaire",
+      "historicalStatus": "couverture_non_ventilee",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Modèles de recrutement de MPO/+ à distinguer des soldats MGS3.",
+      "nextWork": "Table de modèles et équipements par version; nom de provenance, palette, accessoire et région dans les métadonnées.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Metal_Gear_Solid%3A_Portable_Ops_Plus"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Table de modèles et équipements par version; nom de provenance, palette, accessoire et région dans les métadonnées.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MPO-medical",
+      "historicalId": "R-MPO-medical",
+      "label": "Médecins, scientifiques et officiers recrutables",
+      "episode": "Portable Ops / Plus",
+      "level": "tertiaire",
+      "historicalStatus": "couverture_non_ventilee",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Fonctions à illustrer sans leur inventer une nouvelle identité héroïque.",
+      "nextWork": "Table de modèles et équipements par version; nom de provenance, palette, accessoire et région dans les métadonnées.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Metal_Gear_Solid%3A_Portable_Ops_Plus"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Table de modèles et équipements par version; nom de provenance, palette, accessoire et région dans les métadonnées.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MPO-regional",
+      "historicalId": "R-MPO-regional",
+      "label": "Soldats régionaux et promotionnels MPO+",
+      "episode": "Portable Ops / Plus",
+      "level": "tertiaire",
+      "historicalStatus": "couverture_non_ventilee",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Drapeaux et événements sont des variantes officielles; nombre exact à figer par région/édition.",
+      "nextWork": "Table de modèles et équipements par version; nom de provenance, palette, accessoire et région dans les métadonnées.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Metal_Gear_Solid%3A_Portable_Ops_Plus"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Table de modèles et équipements par version; nom de provenance, palette, accessoire et région dans les métadonnées.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MPO-GUEST",
+      "historicalId": "R-MPO-GUEST",
+      "label": "Invités de jeux antérieurs",
+      "episode": "Portable Ops Plus",
+      "level": "bonus_officiel",
+      "historicalStatus": "couverture_partielle",
+      "source": null,
+      "linkedHistoricalUID": "npc53__old_snake_mpo_plus; npc53__raiden_mpo_plus",
+      "requiredEvidence": "Old Snake et Raiden MPO+ présents; les autres types invités doivent être rapprochés, pas recomptés comme personnes inédites.",
+      "nextWork": "Vérifier Johnny, Genome arctique, SEAL, Gurlukovich, Hi-Tech et Tengu selon l’édition, puis leur modèle PSP spécifique.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Metal_Gear_Solid%3A_Portable_Ops_Plus"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/e85a7bc39b6116a0e6632593e08974e0b96ea1bb939b333ebe934b0e2c47213a.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "b589f5064d5b48a2a27a2e03e4c5e5477ce97f69",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/e85a7bc39b6116a0e6632593e08974e0b96ea1bb939b333ebe934b0e2c47213a.png",
+          "recordedSHA256": "e85a7bc39b6116a0e6632593e08974e0b96ea1bb939b333ebe934b0e2c47213a"
+        },
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/a04820de5841998ddbdc756f9abca77965e5363a05336caebc9a776a4969d03c.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "b9c0c66d25a940ab3954ddea96417b85e717f455",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/a04820de5841998ddbdc756f9abca77965e5363a05336caebc9a776a4969d03c.png",
+          "recordedSHA256": "a04820de5841998ddbdc756f9abca77965e5363a05336caebc9a776a4969d03c"
+        }
+      ],
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Vérifier Johnny, Genome arctique, SEAL, Gurlukovich, Hi-Tech et Tengu selon l’édition, puis leur modèle PSP spécifique.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-PW-PS",
+      "historicalId": "R-PW-PS",
+      "label": "Peace Sentinel — classes d’ennemis",
+      "episode": "Peace Walker",
+      "level": "ennemi_recurrent",
+      "historicalStatus": "couverture_non_ventilee",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "MSF Soldier ne remplace pas l’ennemi Peace Sentinel.",
+      "nextWork": "Reconnaissance, fantassin, blindé et tireur : relever les classes réellement visibles et leur équipement dans le jeu; aucune liste de classes supposée complète.",
+      "sources": [
+        "https://www.konami.com/mg/archive/mgs_pw/us/character/index.html",
+        "https://metalgear.fandom.com/wiki/Camouflage_%28Peace_Walker%29"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Reconnaissance, fantassin, blindé et tireur : relever les classes réellement visibles et leur équipement dans le jeu; aucune liste de classes supposée complète.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-PW-FSLN",
+      "historicalId": "R-PW-FSLN",
+      "label": "Guérilleros sandinistes",
+      "episode": "Peace Walker",
+      "level": "tertiaire",
+      "historicalStatus": "couverture_collective_absente",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Amanda et Chico présents; les combattants du groupe restent un collectif différent.",
+      "nextWork": "Modèles et accessoires des guérilleros, postures repos/alerte/transport blessé; même époque 1974.",
+      "sources": [
+        "https://www.konami.com/mg/archive/mgs_pw/us/character/index.html"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Modèles et accessoires des guérilleros, postures repos/alerte/transport blessé; même époque 1974.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-PW-TRENYA",
+      "historicalId": "R-PW-TRENYA",
+      "label": "Trenya",
+      "episode": "Peace Walker — Monster Hunter",
+      "level": "bonus_officiel",
+      "historicalStatus": "absent_du_roster_actif",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Collaboration officielle Monster Hunter, distincte de l’histoire principale.",
+      "nextWork": "Référence de la créature, barque, tenue et gestes; pas de conversion automatique en chat humanoïde générique.",
+      "sources": [
+        "https://www.konami.com/mg/archive/mgs_pw/en/"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "dedicated_source_not_established",
+      "selectedCandidates": [
+        {
+          "id": "trenya-pw",
+          "path": "public/cqc/assets/p61/trenya-pw-right.png",
+          "gitBlobSha": "727d0fb0eccade2c8a62dda842e87d8c3c6b33b5",
+          "manifest": "docs/cqc-reprise/pass61/batches/personnages-extra.json",
+          "fidelityStatus": "pending_external_review",
+          "absolute1to1Certified": false,
+          "runtimeIntegrated": false,
+          "referenceURLs": [
+            "https://www.youtube.com/watch?v=JjJdFFNbNCU",
+            "https://img.youtube.com/vi/JjJdFFNbNCU/hqdefault.jpg"
+          ],
+          "scopeLimitations": []
+        }
+      ],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "candidate_sources_pending_review",
+      "reason": "Une source dédiée à l’incarnation a été générée à partir des références documentées. La ressemblance, les détails et le rendu restent à valider.",
+      "requiredNextEvidence": "Comparer la source générée au modèle/captures natifs, compléter les variantes de portée, puis réaliser et tester une intégration séparée si demandée."
+    },
+    {
+      "id": "character:R-HIDEO-peace-walker",
+      "historicalId": "R-HIDEO-peace-walker",
+      "label": "Hideo — incarnation de jeu",
+      "episode": "Peace Walker",
+      "level": "bonus_officiel",
+      "historicalStatus": "portrait_produit_corps_non_livre",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "P41 a produit les portraits de trois incarnations, pas trois corps jouables.",
+      "nextWork": "Conserver âge, lunettes, cheveux, uniforme et événement de sauvetage de chaque opus; produire le corps et son dossier de références séparément.",
+      "sources": [
+        "https://github.com/darknigthmare/shadow-codec-ops/blob/ba4e30a09e9e95727b75a665e7b6ab07d9941aea/docs/cqc-reprise/pass41/batch30-20261023/RELEASE_NOTES_FR_20261023.md"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "dedicated_source_not_established",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "not_generated_portrait_only_body_not_established",
+      "reasonClass": "portrait_not_full_body",
+      "reason": "La référence Peace Walker consultée montre Hideo en portrait dans la séquence du camion. Aucun corps complet individualisé de cette incarnation n'est établi. Les corps Ground Zeroes et TPP sont des incarnations distinctes.",
+      "requiredNextEvidence": "Vue corps entier réellement présente dans Peace Walker ; à défaut, conserver un portrait documenté sans inventer d'uniforme.",
+      "reviewReferences": [
+        "https://www.metalgearinformer.com/wp-content/uploads/2014/02/MGS-Peace-Walker-Kojima-Truck.jpg",
+        "https://www.youtube.com/watch?v=9yiwPhdVIOo"
+      ]
+    },
+    {
+      "id": "character:R-HIDEO-ground-zeroes",
+      "historicalId": "R-HIDEO-ground-zeroes",
+      "label": "Hideo — incarnation de jeu",
+      "episode": "Ground Zeroes",
+      "level": "bonus_officiel",
+      "historicalStatus": "portrait_produit_corps_non_livre",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "P41 a produit les portraits de trois incarnations, pas trois corps jouables.",
+      "nextWork": "Conserver âge, lunettes, cheveux, uniforme et événement de sauvetage de chaque opus; produire le corps et son dossier de références séparément.",
+      "sources": [
+        "https://github.com/darknigthmare/shadow-codec-ops/blob/ba4e30a09e9e95727b75a665e7b6ab07d9941aea/docs/cqc-reprise/pass41/batch30-20261023/RELEASE_NOTES_FR_20261023.md"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "dedicated_source_not_established",
+      "selectedCandidates": [
+        {
+          "id": "hideo-ground-zeroes",
+          "path": "public/cqc/assets/p61/hideo-ground-zeroes-right.png",
+          "gitBlobSha": "82363029ea79e25173dfa04860e28a0cc9f5b4f0",
+          "manifest": "docs/cqc-reprise/pass61/batches/personnages-extra.json",
+          "fidelityStatus": "pending_external_review",
+          "absolute1to1Certified": false,
+          "runtimeIntegrated": false,
+          "referenceURLs": [
+            "https://www.metalgearinformer.com/memorable-metal-gear-moments-rescuing-hideo-kojima-in-ground-zeroes/",
+            "https://www.youtube.com/watch?v=9yiwPhdVIOo",
+            "https://saikai0.blogspot.com/2015/10/hideo-kojima-metal-gear-solid-v-ground.html",
+            "https://3.bp.blogspot.com/-u0amIZ6ZpgI/VgxKwXzpAsI/AAAAAAAACxg/ven_kRSMM-k/s1600/4.jpg"
+          ],
+          "scopeLimitations": []
+        }
+      ],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "candidate_sources_pending_review",
+      "reason": "Une source dédiée à l’incarnation a été générée à partir des références documentées. La ressemblance, les détails et le rendu restent à valider.",
+      "requiredNextEvidence": "Comparer la source générée au modèle/captures natifs, compléter les variantes de portée, puis réaliser et tester une intégration séparée si demandée."
+    },
+    {
+      "id": "character:R-HIDEO-the-phantom-pain",
+      "historicalId": "R-HIDEO-the-phantom-pain",
+      "label": "Hideo — incarnation de jeu",
+      "episode": "The Phantom Pain",
+      "level": "bonus_officiel",
+      "historicalStatus": "portrait_produit_corps_non_livre",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "P41 a produit les portraits de trois incarnations, pas trois corps jouables.",
+      "nextWork": "Conserver âge, lunettes, cheveux, uniforme et événement de sauvetage de chaque opus; produire le corps et son dossier de références séparément.",
+      "sources": [
+        "https://github.com/darknigthmare/shadow-codec-ops/blob/ba4e30a09e9e95727b75a665e7b6ab07d9941aea/docs/cqc-reprise/pass41/batch30-20261023/RELEASE_NOTES_FR_20261023.md"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "dedicated_source_not_established",
+      "selectedCandidates": [
+        {
+          "id": "hideo-the-phantom-pain",
+          "path": "public/cqc/assets/p61/hideo-the-phantom-pain-right.png",
+          "gitBlobSha": "382437414eab6f8bbdf60edea7fbb6e84d40c457",
+          "manifest": "docs/cqc-reprise/pass61/batches/personnages-extra.json",
+          "fidelityStatus": "pending_external_review",
+          "absolute1to1Certified": false,
+          "runtimeIntegrated": false,
+          "referenceURLs": [
+            "https://www.youtube.com/watch?v=9yiwPhdVIOo",
+            "https://rushbfast.com/rette-den-spieleentwickler-metal-gear-solid-v-the-phantom-pain/",
+            "https://rushbfast.com/wp-content/uploads/2018/07/metal-gear-solid-v-the-phantom-pain_kojima-287700_screenshots_2015-09-14_000461.jpg"
+          ],
+          "scopeLimitations": []
+        }
+      ],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "candidate_sources_pending_review",
+      "reason": "Une source dédiée à l’incarnation a été générée à partir des références documentées. La ressemblance, les détails et le rendu restent à valider.",
+      "requiredNextEvidence": "Comparer la source générée au modèle/captures natifs, compléter les variantes de portée, puis réaliser et tester une intégration séparée si demandée."
+    },
+    {
+      "id": "character:R-GZ-camp",
+      "historicalId": "R-GZ-camp",
+      "label": "Gardes du camp Omega",
+      "episode": "Ground Zeroes",
+      "level": "ennemi_recurrent",
+      "historicalStatus": "absent_comme_entree_dediee",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Les XOF, Glaz, Palitz, Chico et Paz déjà présents ne couvrent pas toutes les cibles annexes.",
+      "nextWork": "Identifier nom/mission exacte et modèle source; type d’uniforme, entraves et attitude; préserver le rôle d’infiltration plutôt qu’inventer des attaques.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AGround_Zeroes_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "dedicated_source_not_established",
+      "selectedCandidates": [
+        {
+          "id": "gz-camp-guard",
+          "path": "public/cqc/assets/p61/gz-camp-guard-right.png",
+          "gitBlobSha": "1b42b845b1b11ecde921085003ff049629ddede5",
+          "manifest": "docs/cqc-reprise/pass61/batches/personnages-extra.json",
+          "fidelityStatus": "pending_external_review",
+          "absolute1to1Certified": false,
+          "runtimeIntegrated": false,
+          "referenceURLs": [
+            "https://www.imfdb.org/wiki/Metal_Gear_Solid_V%3A_Ground_Zeroes",
+            "https://www.imfdb.org/images/a/ad/US_Marine_armed_with_AM-69.jpg",
+            "https://steamcommunity.com/workshop/filedetails/?id=420729039",
+            "https://www.youtube.com/watch?v=bHatPyvQMCE"
+          ],
+          "scopeLimitations": []
+        }
+      ],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "candidate_sources_partial_scope_pending_review",
+      "reason": "Un garde Marine du camp, sans masque et avec casquette. Casques, ponchos et autres têtes/équipements du groupe restent à inventorier.",
+      "requiredNextEvidence": "Comparer la source générée au modèle/captures natifs, compléter les variantes de portée, puis réaliser et tester une intégration séparée si demandée."
+    },
+    {
+      "id": "character:R-GZ-jcs",
+      "historicalId": "R-GZ-jcs",
+      "label": "Agent du JCS",
+      "episode": "Ground Zeroes",
+      "level": "tertiaire",
+      "historicalStatus": "absent_comme_entree_dediee",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Les XOF, Glaz, Palitz, Chico et Paz déjà présents ne couvrent pas toutes les cibles annexes.",
+      "nextWork": "Identifier nom/mission exacte et modèle source; type d’uniforme, entraves et attitude; préserver le rôle d’infiltration plutôt qu’inventer des attaques.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AGround_Zeroes_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "dedicated_source_not_established",
+      "selectedCandidates": [
+        {
+          "id": "gz-jcs-undercover-agent",
+          "path": "public/cqc/assets/p61/gz-jcs-undercover-agent-right.png",
+          "gitBlobSha": "05195f4c70d15778fea636760e4ebf35e36f2eaf",
+          "manifest": "docs/cqc-reprise/pass61/batches/personnages-extra.json",
+          "fidelityStatus": "pending_external_review",
+          "absolute1to1Certified": false,
+          "runtimeIntegrated": false,
+          "referenceURLs": [
+            "https://www.youtube.com/watch?v=EpnCM0SIDTc",
+            "https://www.youtube.com/watch?v=bHatPyvQMCE",
+            "https://metalgear.fandom.com/wiki/Undercover_agent_%28JCS%29"
+          ],
+          "scopeLimitations": []
+        }
+      ],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "candidate_sources_pending_review",
+      "reason": "Une source dédiée à l’incarnation a été générée à partir des références documentées. La ressemblance, les détails et le rendu restent à valider.",
+      "requiredNextEvidence": "Comparer la source générée au modèle/captures natifs, compléter les variantes de portée, puis réaliser et tester une intégration séparée si demandée."
+    },
+    {
+      "id": "character:R-GZ-dod",
+      "historicalId": "R-GZ-dod",
+      "label": "Agent du Department of Defense",
+      "episode": "Ground Zeroes",
+      "level": "tertiaire",
+      "historicalStatus": "absent_comme_entree_dediee",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Les XOF, Glaz, Palitz, Chico et Paz déjà présents ne couvrent pas toutes les cibles annexes.",
+      "nextWork": "Identifier nom/mission exacte et modèle source; type d’uniforme, entraves et attitude; préserver le rôle d’infiltration plutôt qu’inventer des attaques.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AGround_Zeroes_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "dedicated_source_not_established",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "not_generated_identity_not_established",
+      "reasonClass": "identity_and_edition_conflict",
+      "reason": "Aucun modèle de terrain Ground Zeroes distinct portant cette identité n'a été établi. L'agent JCS est identifié séparément ; le responsable du DoD visible dans d'autres épisodes ne doit pas être substitué à ce libellé.",
+      "requiredNextEvidence": "Identité officielle, mission et capture du modèle GZ correspondant, ou correction explicite du catalogue.",
+      "reviewReferences": [
+        "https://metalgear.fandom.com/wiki/Undercover_agent_%28JCS%29",
+        "https://metalgear.fandom.com/wiki/DOD_Official"
+      ]
+    },
+    {
+      "id": "character:R-GZ-prisoner",
+      "historicalId": "R-GZ-prisoner",
+      "label": "Prisonniers des missions annexes",
+      "episode": "Ground Zeroes",
+      "level": "tertiaire",
+      "historicalStatus": "absent_comme_entree_dediee",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Les XOF, Glaz, Palitz, Chico et Paz déjà présents ne couvrent pas toutes les cibles annexes.",
+      "nextWork": "Identifier nom/mission exacte et modèle source; type d’uniforme, entraves et attitude; préserver le rôle d’infiltration plutôt qu’inventer des attaques.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AGround_Zeroes_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "dedicated_source_not_established",
+      "selectedCandidates": [
+        {
+          "id": "gz-hooded-prisoner",
+          "path": "public/cqc/assets/p61/gz-hooded-prisoner-right.png",
+          "gitBlobSha": "cdc9c02952016d2792c32d00470975cdd8920b72",
+          "manifest": "docs/cqc-reprise/pass61/batches/personnages-extra.json",
+          "fidelityStatus": "pending_external_review",
+          "absolute1to1Certified": false,
+          "runtimeIntegrated": false,
+          "referenceURLs": [
+            "https://www.youtube.com/watch?v=-tZ-I7pf0kQ",
+            "https://www.youtube.com/watch?v=Y3EYAIO1NuM",
+            "https://metalgear.fandom.com/wiki/Prisoner_of_war"
+          ],
+          "scopeLimitations": []
+        }
+      ],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "candidate_sources_partial_scope_pending_review",
+      "reason": "Un prisonnier adulte encapuchonné en pose agenouillée. Ne représente pas chaque prisonnier des missions annexes ni tous ses états.",
+      "requiredNextEvidence": "Comparer la source générée au modèle/captures natifs, compléter les variantes de portée, puis réaliser et tester une intégration séparée si demandée."
+    },
+    {
+      "id": "character:R-GZ-SNATCH",
+      "historicalId": "R-GZ-SNATCH",
+      "label": "Body Snatchers / Raiden bonus",
+      "episode": "Ground Zeroes — Jamais Vu",
+      "level": "bonus_officiel",
+      "historicalStatus": "contexte_bonus_non_isole",
+      "source": null,
+      "linkedHistoricalUID": "core__raiden",
+      "requiredEvidence": "Raiden existe ailleurs mais le bonus GZ a sa propre représentation et ses règles.",
+      "nextWork": "Capturer distinction cible humaine/Snatcher et modèle de Raiden; ne pas présenter ce bonus comme événement canonique de 1975.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AGround_Zeroes_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/495483cf948dfd97f658f968b23bad0de0091618f4cb8eba65f7f962d8fbd8af.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "72ed608965bec181016e1cfbe3f9f6e4569f26cc",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/495483cf948dfd97f658f968b23bad0de0091618f4cb8eba65f7f962d8fbd8af.png",
+          "recordedSHA256": "495483cf948dfd97f658f968b23bad0de0091618f4cb8eba65f7f962d8fbd8af"
+        }
+      ],
+      "baselineStatus": "edition_or_identity_profile_needs_review",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "edition_or_identity_review_required",
+      "reason": "Le profil de cette édition ou de cette identité doit être rapproché avec les sources existantes. Un corps générique d’une autre édition ne clôture pas cette ligne.",
+      "requiredNextEvidence": "Capturer distinction cible humaine/Snatcher et modèle de Raiden; ne pas présenter ce bonus comme événement canonique de 1975.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-TPP-PEQ",
+      "historicalId": "R-TPP-PEQ",
+      "label": "Pequod",
+      "episode": "The Phantom Pain",
+      "level": "secondaire",
+      "historicalStatus": "absent_du_roster_actif",
+      "source": {
+        "path": "public/cqc/assets/p54-poses/p54__pequod_tpp--14f86e46559d.png",
+        "presentInPinnedTree": true,
+        "gitBlobSHA": "35a8175fe2a3a1a9100c27537bf7ced589fbcba7",
+        "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/public/cqc/assets/p54-poses/p54__pequod_tpp--14f86e46559d.png",
+        "recordedSHA256": "14f86e46559d2b6abbde52c064a42c741f81a9327c19b92bb7194a71f0f21ba9"
+      },
+      "linkedHistoricalUID": "npc53__morpho_gz",
+      "requiredEvidence": "Indicatif de pilotes Diamond Dogs, distinct de Morpho et du véhicule UTH-66.",
+      "nextWork": "Fiche pilote, tenue et gestes de cockpit documentés; rattacher explicitement l’hélicoptère. Ne pas supposer une seule biographie continue.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Pequod"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "resolvedBy": "costume:p54__pequod_tpp:original",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/02110794bd00de714dddab5ca71d9359c10882ef8475e21aee60e2d4dc86a844.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "b4cc0cd1e9dd1bf1ec7757fa51b8e18d18db9914",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/02110794bd00de714dddab5ca71d9359c10882ef8475e21aee60e2d4dc86a844.png",
+          "recordedSHA256": "02110794bd00de714dddab5ca71d9359c10882ef8475e21aee60e2d4dc86a844"
+        }
+      ],
+      "baselineStatus": "source_present_scope_qualified",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "baseline_source_present_scope_qualified",
+      "reason": "Une source déjà présente est reliée à cette portée dans le commit P60. Cette disponibilité ne recertifie ni sa fidélité ni son intégration.",
+      "requiredNextEvidence": "Fiche pilote, tenue et gestes de cockpit documentés; rattacher explicitement l’hélicoptère. Ne pas supposer une seule biographie continue.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-TPP-QUE",
+      "historicalId": "R-TPP-QUE",
+      "label": "Queequeg",
+      "episode": "The Phantom Pain",
+      "level": "tertiaire",
+      "historicalStatus": "absent_du_roster_actif",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Pilote nommé; apparence complète non certifiée dans cet audit.",
+      "nextWork": "Voix/mission/indicatif d’abord; produire une silhouette seulement à partir du modèle effectivement visible.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Queequeg"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "dedicated_source_not_established",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "not_generated_unseen_body_not_established",
+      "reasonClass": "documentary_body_not_shown",
+      "reason": "Le nom de pilote est documenté, mais aucun corps individualisé de Queequeg n'a été établi dans les références consultées. Le corps Pequod existant ne doit pas être rebaptisé Queequeg.",
+      "requiredNextEvidence": "Vue canonique identifiée du pilote Queequeg ; à défaut, fiche de rôle documentaire.",
+      "reviewReferences": [
+        "https://metalgear.fandom.com/wiki/Queequeg"
+      ]
+    },
+    {
+      "id": "character:R-TPP-doctor",
+      "historicalId": "R-TPP-doctor",
+      "label": "Médecin de l’hôpital",
+      "episode": "The Phantom Pain",
+      "level": "tertiaire",
+      "historicalStatus": "couverture_non_ventilee",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Des noms centraux sont présents; une entrée générique ne couvre pas tous les modèles.",
+      "nextWork": "Relever mission, modèle, variante corporelle et vêtement; les cibles déjà présentes Malak/Viscount/Mosquito/Shabani restent liées à leurs UID. Les civils et enfants privilégient dossier/scène, sans kit de mercenaire inventé.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AThe_Phantom_Pain_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Relever mission, modèle, variante corporelle et vêtement; les cibles déjà présentes Malak/Viscount/Mosquito/Shabani restent liées à leurs UID. Les civils et enfants privilégient dossier/scène, sans kit de mercenaire inventé.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-TPP-nurse",
+      "historicalId": "R-TPP-nurse",
+      "label": "Infirmière de l’hôpital",
+      "episode": "The Phantom Pain",
+      "level": "tertiaire",
+      "historicalStatus": "couverture_non_ventilee",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Des noms centraux sont présents; une entrée générique ne couvre pas tous les modèles.",
+      "nextWork": "Relever mission, modèle, variante corporelle et vêtement; les cibles déjà présentes Malak/Viscount/Mosquito/Shabani restent liées à leurs UID. Les civils et enfants privilégient dossier/scène, sans kit de mercenaire inventé.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AThe_Phantom_Pain_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Relever mission, modèle, variante corporelle et vêtement; les cibles déjà présentes Malak/Viscount/Mosquito/Shabani restent liées à leurs UID. Les civils et enfants privilégient dossier/scène, sans kit de mercenaire inventé.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-TPP-patients",
+      "historicalId": "R-TPP-patients",
+      "label": "Patients et personnel de l’hôpital",
+      "episode": "The Phantom Pain",
+      "level": "tertiaire",
+      "historicalStatus": "couverture_non_ventilee",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Des noms centraux sont présents; une entrée générique ne couvre pas tous les modèles.",
+      "nextWork": "Relever mission, modèle, variante corporelle et vêtement; les cibles déjà présentes Malak/Viscount/Mosquito/Shabani restent liées à leurs UID. Les civils et enfants privilégient dossier/scène, sans kit de mercenaire inventé.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AThe_Phantom_Pain_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Relever mission, modèle, variante corporelle et vêtement; les cibles déjà présentes Malak/Viscount/Mosquito/Shabani restent liées à leurs UID. Les civils et enfants privilégient dossier/scène, sans kit de mercenaire inventé.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-TPP-interpreters",
+      "historicalId": "R-TPP-interpreters",
+      "label": "Interprètes russophone/afrikaans/kikongo",
+      "episode": "The Phantom Pain",
+      "level": "tertiaire",
+      "historicalStatus": "couverture_non_ventilee",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Des noms centraux sont présents; une entrée générique ne couvre pas tous les modèles.",
+      "nextWork": "Relever mission, modèle, variante corporelle et vêtement; les cibles déjà présentes Malak/Viscount/Mosquito/Shabani restent liées à leurs UID. Les civils et enfants privilégient dossier/scène, sans kit de mercenaire inventé.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AThe_Phantom_Pain_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Relever mission, modèle, variante corporelle et vêtement; les cibles déjà présentes Malak/Viscount/Mosquito/Shabani restent liées à leurs UID. Les civils et enfants privilégient dossier/scène, sans kit de mercenaire inventé.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-TPP-targets",
+      "historicalId": "R-TPP-targets",
+      "label": "Commandants, ingénieurs, marchands et prisonniers de missions",
+      "episode": "The Phantom Pain",
+      "level": "tertiaire",
+      "historicalStatus": "couverture_non_ventilee",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Des noms centraux sont présents; une entrée générique ne couvre pas tous les modèles.",
+      "nextWork": "Relever mission, modèle, variante corporelle et vêtement; les cibles déjà présentes Malak/Viscount/Mosquito/Shabani restent liées à leurs UID. Les civils et enfants privilégient dossier/scène, sans kit de mercenaire inventé.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AThe_Phantom_Pain_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Relever mission, modèle, variante corporelle et vêtement; les cibles déjà présentes Malak/Viscount/Mosquito/Shabani restent liées à leurs UID. Les civils et enfants privilégient dossier/scène, sans kit de mercenaire inventé.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-TPP-children",
+      "historicalId": "R-TPP-children",
+      "label": "Enfants de la troupe d’Eli / Mbele",
+      "episode": "The Phantom Pain",
+      "level": "tertiaire",
+      "historicalStatus": "couverture_non_ventilee",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Des noms centraux sont présents; une entrée générique ne couvre pas tous les modèles.",
+      "nextWork": "Relever mission, modèle, variante corporelle et vêtement; les cibles déjà présentes Malak/Viscount/Mosquito/Shabani restent liées à leurs UID. Les civils et enfants privilégient dossier/scène, sans kit de mercenaire inventé.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AThe_Phantom_Pain_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Relever mission, modèle, variante corporelle et vêtement; les cibles déjà présentes Malak/Viscount/Mosquito/Shabani restent liées à leurs UID. Les civils et enfants privilégient dossier/scène, sans kit de mercenaire inventé.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-TPP-pf",
+      "historicalId": "R-TPP-pf",
+      "label": "Soldats soviétiques et forces privées africaines",
+      "episode": "The Phantom Pain",
+      "level": "ennemi_recurrent",
+      "historicalStatus": "couverture_non_ventilee",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Des noms centraux sont présents; une entrée générique ne couvre pas tous les modèles.",
+      "nextWork": "Relever mission, modèle, variante corporelle et vêtement; les cibles déjà présentes Malak/Viscount/Mosquito/Shabani restent liées à leurs UID. Les civils et enfants privilégient dossier/scène, sans kit de mercenaire inventé.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AThe_Phantom_Pain_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Relever mission, modèle, variante corporelle et vêtement; les cibles déjà présentes Malak/Viscount/Mosquito/Shabani restent liées à leurs UID. Les civils et enfants privilégient dossier/scène, sans kit de mercenaire inventé.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-TPP-dd",
+      "historicalId": "R-TPP-dd",
+      "label": "Personnel Diamond Dogs — femmes et hommes",
+      "episode": "The Phantom Pain",
+      "level": "ennemi_recurrent",
+      "historicalStatus": "couverture_non_ventilee",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Des noms centraux sont présents; une entrée générique ne couvre pas tous les modèles.",
+      "nextWork": "Relever mission, modèle, variante corporelle et vêtement; les cibles déjà présentes Malak/Viscount/Mosquito/Shabani restent liées à leurs UID. Les civils et enfants privilégient dossier/scène, sans kit de mercenaire inventé.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AThe_Phantom_Pain_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Relever mission, modèle, variante corporelle et vêtement; les cibles déjà présentes Malak/Viscount/Mosquito/Shabani restent liées à leurs UID. Les civils et enfants privilégient dossier/scène, sans kit de mercenaire inventé.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MGS4-rebelme",
+      "historicalId": "R-MGS4-rebelme",
+      "label": "Rebelles du Moyen-Orient",
+      "episode": "MGS4",
+      "level": "tertiaire",
+      "historicalStatus": "couverture_non_ventilee",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Les quatre PMC et les personnages centraux existent; l’exhaustivité de leurs silhouettes n’est pas établie.",
+      "nextWork": "Source scène/modèle, distinction région, couvre-chef et port d’arme. Little John reste un enfant de scène, pas un corps de Raiden miniature.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc2/mgs4/xbox/fr/page19.html",
+        "https://metalgear.fandom.com/wiki/Camouflage_%28Metal_Gear_Solid_4_and_Metal_Gear_Online%29"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Source scène/modèle, distinction région, couvre-chef et port d’arme. Little John reste un enfant de scène, pas un corps de Raiden miniature.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MGS4-rebelsa",
+      "historicalId": "R-MGS4-rebelsa",
+      "label": "Rebelles sud-américains",
+      "episode": "MGS4",
+      "level": "tertiaire",
+      "historicalStatus": "couverture_non_ventilee",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Les quatre PMC et les personnages centraux existent; l’exhaustivité de leurs silhouettes n’est pas établie.",
+      "nextWork": "Source scène/modèle, distinction région, couvre-chef et port d’arme. Little John reste un enfant de scène, pas un corps de Raiden miniature.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc2/mgs4/xbox/fr/page19.html",
+        "https://metalgear.fandom.com/wiki/Camouflage_%28Metal_Gear_Solid_4_and_Metal_Gear_Online%29"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Source scène/modèle, distinction région, couvre-chef et port d’arme. Little John reste un enfant de scène, pas un corps de Raiden miniature.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MGS4-resistance",
+      "historicalId": "R-MGS4-resistance",
+      "label": "Résistant d’Europe de l’Est",
+      "episode": "MGS4",
+      "level": "tertiaire",
+      "historicalStatus": "couverture_non_ventilee",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Les quatre PMC et les personnages centraux existent; l’exhaustivité de leurs silhouettes n’est pas établie.",
+      "nextWork": "Source scène/modèle, distinction région, couvre-chef et port d’arme. Little John reste un enfant de scène, pas un corps de Raiden miniature.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc2/mgs4/xbox/fr/page19.html",
+        "https://metalgear.fandom.com/wiki/Camouflage_%28Metal_Gear_Solid_4_and_Metal_Gear_Online%29"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Source scène/modèle, distinction région, couvre-chef et port d’arme. Little John reste un enfant de scène, pas un corps de Raiden miniature.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MGS4-pmc",
+      "historicalId": "R-MGS4-pmc",
+      "label": "PMC — classes et équipements",
+      "episode": "MGS4",
+      "level": "ennemi_recurrent",
+      "historicalStatus": "couverture_non_ventilee",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Les quatre PMC et les personnages centraux existent; l’exhaustivité de leurs silhouettes n’est pas établie.",
+      "nextWork": "Source scène/modèle, distinction région, couvre-chef et port d’arme. Little John reste un enfant de scène, pas un corps de Raiden miniature.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc2/mgs4/xbox/fr/page19.html",
+        "https://metalgear.fandom.com/wiki/Camouflage_%28Metal_Gear_Solid_4_and_Metal_Gear_Online%29"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Source scène/modèle, distinction région, couvre-chef et port d’arme. Little John reste un enfant de scène, pas un corps de Raiden miniature.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MGS4-littlejohn",
+      "historicalId": "R-MGS4-littlejohn",
+      "label": "Little John",
+      "episode": "MGS4",
+      "level": "tertiaire",
+      "historicalStatus": "couverture_non_ventilee",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Les quatre PMC et les personnages centraux existent; l’exhaustivité de leurs silhouettes n’est pas établie.",
+      "nextWork": "Source scène/modèle, distinction région, couvre-chef et port d’arme. Little John reste un enfant de scène, pas un corps de Raiden miniature.",
+      "sources": [
+        "https://metalgear.konami.net/manual/mc2/mgs4/xbox/fr/page19.html",
+        "https://metalgear.fandom.com/wiki/Camouflage_%28Metal_Gear_Solid_4_and_Metal_Gear_Online%29"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Source scène/modèle, distinction région, couvre-chef et port d’arme. Little John reste un enfant de scène, pas un corps de Raiden miniature.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MGR-standard",
+      "historicalId": "R-MGR-standard",
+      "label": "Cyborg Desperado standard",
+      "episode": "Revengeance",
+      "level": "ennemi_recurrent",
+      "historicalStatus": "absent_comme_archetype_dedie",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Les boss et les UG ne remplacent pas les ennemis humanoïdes ordinaires.",
+      "nextWork": "Capturer les modèles, armes et états présents; séparer humain R00, cyborg, blindage et arme équipée. La possession d’une arme n’est pas une nouvelle personne.",
+      "sources": [
+        "https://www.konami.com/mg/archive/mgr/jp/characters/",
+        "https://www.trueachievements.com/game/Metal-Gear-Rising-Revengeance/walkthrough/6"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "dedicated_source_not_established",
+      "selectedCandidates": [
+        {
+          "id": "desperado-cyborg",
+          "path": "public/cqc/assets/p61/desperado-cyborg-right.png",
+          "gitBlobSha": "52837c829d0deaf1c80960038399254537a8d2df",
+          "manifest": "docs/cqc-reprise/pass61/batches/desperado-cyborg.json",
+          "fidelityStatus": "pending_external_review",
+          "absolute1to1Certified": false,
+          "runtimeIntegrated": false,
+          "referenceURLs": [
+            "https://www.piggyback.com/us/wp-content/uploads/sites/6/2020/04/MGR_U_SamplePages.pdf",
+            "https://www.platinumgames.com/official-blog/article/4694"
+          ],
+          "scopeLimitations": []
+        }
+      ],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "candidate_sources_partial_scope_pending_review",
+      "reason": "Une variante Desperado standard avec MAK-200. Les autres couleurs, états ou équipements restent distincts.",
+      "requiredNextEvidence": "Comparer la source générée au modèle/captures natifs, compléter les variantes de portée, puis réaliser et tester une intégration séparée si demandée."
+    },
+    {
+      "id": "character:R-MGR-armored",
+      "historicalId": "R-MGR-armored",
+      "label": "Cyborgs blindés / variantes de commandement",
+      "episode": "Revengeance",
+      "level": "ennemi_recurrent",
+      "historicalStatus": "absent_comme_archetype_dedie",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Les boss et les UG ne remplacent pas les ennemis humanoïdes ordinaires.",
+      "nextWork": "Capturer les modèles, armes et états présents; séparer humain R00, cyborg, blindage et arme équipée. La possession d’une arme n’est pas une nouvelle personne.",
+      "sources": [
+        "https://www.konami.com/mg/archive/mgr/jp/characters/",
+        "https://www.trueachievements.com/game/Metal-Gear-Rising-Revengeance/walkthrough/6"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "dedicated_source_not_established",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "generation_service_refused",
+      "reasonClass": "actual_service_refusal",
+      "reason": "Tentative de génération effectivement refusée par le service : HTTP 400 moderation_blocked, catégorie other, request_id 46cb7afe-6c1f-4e55-9839-c68a7b5cdff8. Aucun PNG produit pour cet objectif ; aucun nouvel essai sous alias.",
+      "requiredNextEvidence": "Conserver la référence et le refus effectif ; ne pas compter un PNG inexistant.",
+      "reviewReferences": [
+        "https://static.wikia.nocookie.net/metalgear/images/c/c2/Cyborg_%28Custom%29_ready_01.jpg/revision/latest"
+      ],
+      "actualServiceRefusal": {
+        "serviceRequestID": "46cb7afe-6c1f-4e55-9839-c68a7b5cdff8",
+        "currentPassActualRefusal": true,
+        "noRetryOrAliasWorkaround": true
+      }
+    },
+    {
+      "id": "character:R-MGR-berserker",
+      "historicalId": "R-MGR-berserker",
+      "label": "Berserkers et utilisateurs d’armes lourdes",
+      "episode": "Revengeance",
+      "level": "ennemi_recurrent",
+      "historicalStatus": "absent_comme_archetype_dedie",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Les boss et les UG ne remplacent pas les ennemis humanoïdes ordinaires.",
+      "nextWork": "Capturer les modèles, armes et états présents; séparer humain R00, cyborg, blindage et arme équipée. La possession d’une arme n’est pas une nouvelle personne.",
+      "sources": [
+        "https://www.konami.com/mg/archive/mgr/jp/characters/",
+        "https://www.trueachievements.com/game/Metal-Gear-Rising-Revengeance/walkthrough/6"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "dedicated_source_not_established",
+      "selectedCandidates": [
+        {
+          "id": "mgr-berserker",
+          "path": "public/cqc/assets/p61/mgr-berserker-right.png",
+          "gitBlobSha": "6a3f1f7601b00222df518f2ef2e353b06e2eeee7",
+          "manifest": "docs/cqc-reprise/pass61/batches/personnages-extra.json",
+          "fidelityStatus": "pending_external_review",
+          "absolute1to1Certified": false,
+          "runtimeIntegrated": false,
+          "referenceURLs": [
+            "https://metalgear.fandom.com/wiki/Category%3AMetal_Gear_Rising%3A_Revengeance_Screenshots",
+            "https://static.wikia.nocookie.net/metalgear/images/f/f0/Cyborg_%28Heavily_Armed%29_ready_01.jpg/revision/latest",
+            "https://static.wikia.nocookie.net/metalgear/images/a/ac/Cyborg_%28Heavily_Armed%29_lengthwise_01.jpg/revision/latest",
+            "https://static.wikia.nocookie.net/metalgear/images/2/22/Cyborg_%28Heavily_Armed%29_wide.jpg/revision/latest"
+          ],
+          "scopeLimitations": []
+        }
+      ],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "candidate_sources_partial_scope_pending_review",
+      "reason": "Un archétype lourd au marteau. Les autres armes et variantes de la ligne groupée ne sont pas fermées par cette seule source.",
+      "requiredNextEvidence": "Comparer la source générée au modèle/captures natifs, compléter les variantes de portée, puis réaliser et tester une intégration séparée si demandée."
+    },
+    {
+      "id": "character:R-MGR-police",
+      "historicalId": "R-MGR-police",
+      "label": "Forces de sécurité / police de Denver",
+      "episode": "Revengeance",
+      "level": "ennemi_recurrent",
+      "historicalStatus": "absent_comme_archetype_dedie",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Les boss et les UG ne remplacent pas les ennemis humanoïdes ordinaires.",
+      "nextWork": "Capturer les modèles, armes et états présents; séparer humain R00, cyborg, blindage et arme équipée. La possession d’une arme n’est pas une nouvelle personne.",
+      "sources": [
+        "https://www.konami.com/mg/archive/mgr/jp/characters/",
+        "https://www.trueachievements.com/game/Metal-Gear-Rising-Revengeance/walkthrough/6"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "dedicated_source_not_established",
+      "selectedCandidates": [
+        {
+          "id": "mgr-denver-police",
+          "path": "public/cqc/assets/p61/mgr-denver-police-right.png",
+          "gitBlobSha": "31fa8682e8eed45e6a278819dbfd5b51d5de8066",
+          "manifest": "docs/cqc-reprise/pass61/batches/personnages-extra.json",
+          "fidelityStatus": "pending_external_review",
+          "absolute1to1Certified": false,
+          "runtimeIntegrated": false,
+          "referenceURLs": [
+            "https://www.piggyback.com/us/wp-content/uploads/sites/6/2020/04/MGR_U_SamplePages.pdf",
+            "https://www.youtube.com/watch?v=96DdjYc3_30",
+            "https://www.toplevelcanon.com/reviews/wgwd2p6guqo58y5uev5k3nm5m2rtf8"
+          ],
+          "scopeLimitations": []
+        }
+      ],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "candidate_sources_partial_scope_pending_review",
+      "reason": "Un policier cyborg masqué de Denver. Les variantes à casquette et personnages individualisés ne sont pas couverts par cette image.",
+      "requiredNextEvidence": "Comparer la source générée au modèle/captures natifs, compléter les variantes de portée, puis réaliser et tester une intégration séparée si demandée."
+    },
+    {
+      "id": "character:R-MGR-scientist",
+      "historicalId": "R-MGR-scientist",
+      "label": "Scientifique de la séquence du laboratoire",
+      "episode": "Revengeance",
+      "level": "tertiaire",
+      "historicalStatus": "absent_comme_archetype_dedie",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Les boss et les UG ne remplacent pas les ennemis humanoïdes ordinaires.",
+      "nextWork": "Capturer les modèles, armes et états présents; séparer humain R00, cyborg, blindage et arme équipée. La possession d’une arme n’est pas une nouvelle personne.",
+      "sources": [
+        "https://www.konami.com/mg/archive/mgr/jp/characters/",
+        "https://www.trueachievements.com/game/Metal-Gear-Rising-Revengeance/walkthrough/6"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "dedicated_source_not_established",
+      "selectedCandidates": [
+        {
+          "id": "mgr-scientist",
+          "path": "public/cqc/assets/p61/mgr-scientist-right.png",
+          "gitBlobSha": "d232643efa953f40bd5f8c87a8669768312947a9",
+          "manifest": "docs/cqc-reprise/pass61/batches/personnages-extra.json",
+          "fidelityStatus": "pending_external_review",
+          "absolute1to1Certified": false,
+          "runtimeIntegrated": false,
+          "referenceURLs": [
+            "https://www.youtube.com/watch?v=z76s8CwCg1o",
+            "https://metalgear.fandom.com/wiki/Desperado_scientist"
+          ],
+          "scopeLimitations": []
+        }
+      ],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "candidate_sources_pending_review",
+      "reason": "Une source dédiée à l’incarnation a été générée à partir des références documentées. La ressemblance, les détails et le rendu restent à valider.",
+      "requiredNextEvidence": "Comparer la source générée au modèle/captures natifs, compléter les variantes de portée, puis réaliser et tester une intégration séparée si demandée."
+    },
+    {
+      "id": "character:R-MGR-soldier",
+      "historicalId": "R-MGR-soldier",
+      "label": "Soldats humains de la séquence R-00",
+      "episode": "Revengeance",
+      "level": "ennemi_recurrent",
+      "historicalStatus": "absent_comme_archetype_dedie",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Les boss et les UG ne remplacent pas les ennemis humanoïdes ordinaires.",
+      "nextWork": "Capturer les modèles, armes et états présents; séparer humain R00, cyborg, blindage et arme équipée. La possession d’une arme n’est pas une nouvelle personne.",
+      "sources": [
+        "https://www.konami.com/mg/archive/mgr/jp/characters/",
+        "https://www.trueachievements.com/game/Metal-Gear-Rising-Revengeance/walkthrough/6"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "dedicated_source_not_established",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "not_generated_group_and_visual_reference_insufficient",
+      "reasonClass": "group_and_reference_insufficient",
+      "reason": "Les captures montrent des agents Maverick en polo bleu (casquette/casque) et des militaires locaux en camouflage/béret rouge. La ligne historique « soldats humains / ennemi récurrent » ne distingue pas ces groupes. Les détails complets des jambes et chaussures du modèle ciblé restent insuffisamment visibles pour la fidélité demandée.",
+      "requiredNextEvidence": "Séparer affiliation, variante et éventuelle augmentation ; obtenir une vue complète de chaque modèle retenu. Ne pas substituer le cyborg Desperado standard.",
+      "reviewReferences": [
+        "https://www.youtube.com/watch?v=VLYEaAZFztA",
+        "https://www.imfdb.org/wiki/Metal_Gear_Rising:_Revengeance",
+        "https://www.imfdb.org/images/8/8b/Rising-F2000-1.jpg",
+        "https://www.toplevelcanon.com/reviews/metal-gear-rising-revengeance-part-one"
+      ]
+    },
+    {
+      "id": "character:R-GB-no4",
+      "historicalId": "R-GB-no4",
+      "label": "No. 4",
+      "episode": "Ghost Babel",
+      "level": "tertiaire",
+      "historicalStatus": "pas_de_dossier_individualise_retrouve",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Piste de l’index complémentaire; présence visuelle et rôle exact restent à relever dans le scénario.",
+      "nextWork": "Fiche nominative avec citation de scène; aucun corps ou costume officiel inventé lorsque la source est seulement textuelle.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AGhost_Babel_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "documentary_identity_visual_body_not_established",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "documentary_body_not_established",
+      "reason": "L’identité est documentaire, évoquée ou insuffisamment montrée. Aucun corps complet spécifique n’est établi dans le rapprochement de référence ; ne pas créer une apparence inventée.",
+      "requiredNextEvidence": "Fiche nominative avec citation de scène; aucun corps ou costume officiel inventé lorsque la source est seulement textuelle.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-GB-smith",
+      "historicalId": "R-GB-smith",
+      "label": "Lieutenant Smith",
+      "episode": "Ghost Babel",
+      "level": "tertiaire",
+      "historicalStatus": "pas_de_dossier_individualise_retrouve",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Piste de l’index complémentaire; présence visuelle et rôle exact restent à relever dans le scénario.",
+      "nextWork": "Fiche nominative avec citation de scène; aucun corps ou costume officiel inventé lorsque la source est seulement textuelle.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AGhost_Babel_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "documentary_identity_visual_body_not_established",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "documentary_body_not_established",
+      "reason": "L’identité est documentaire, évoquée ou insuffisamment montrée. Aucun corps complet spécifique n’est établi dans le rapprochement de référence ; ne pas créer une apparence inventée.",
+      "requiredNextEvidence": "Fiche nominative avec citation de scène; aucun corps ou costume officiel inventé lorsque la source est seulement textuelle.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-GB-parker",
+      "historicalId": "R-GB-parker",
+      "label": "John Parker",
+      "episode": "Ghost Babel",
+      "level": "tertiaire",
+      "historicalStatus": "pas_de_dossier_individualise_retrouve",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Piste de l’index complémentaire; présence visuelle et rôle exact restent à relever dans le scénario.",
+      "nextWork": "Fiche nominative avec citation de scène; aucun corps ou costume officiel inventé lorsque la source est seulement textuelle.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AGhost_Babel_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "documentary_identity_visual_body_not_established",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "documentary_body_not_established",
+      "reason": "L’identité est documentaire, évoquée ou insuffisamment montrée. Aucun corps complet spécifique n’est établi dans le rapprochement de référence ; ne pas créer une apparence inventée.",
+      "requiredNextEvidence": "Fiche nominative avec citation de scène; aucun corps ou costume officiel inventé lorsque la source est seulement textuelle.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-GB-gardner",
+      "historicalId": "R-GB-gardner",
+      "label": "Steve Gardner",
+      "episode": "Ghost Babel",
+      "level": "tertiaire",
+      "historicalStatus": "pas_de_dossier_individualise_retrouve",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Piste de l’index complémentaire; présence visuelle et rôle exact restent à relever dans le scénario.",
+      "nextWork": "Fiche nominative avec citation de scène; aucun corps ou costume officiel inventé lorsque la source est seulement textuelle.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AGhost_Babel_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "documentary_identity_visual_body_not_established",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "documentary_body_not_established",
+      "reason": "L’identité est documentaire, évoquée ou insuffisamment montrée. Aucun corps complet spécifique n’est établi dans le rapprochement de référence ; ne pas créer une apparence inventée.",
+      "requiredNextEvidence": "Fiche nominative avec citation de scène; aucun corps ou costume officiel inventé lorsque la source est seulement textuelle.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-GB-weah",
+      "historicalId": "R-GB-weah",
+      "label": "William Weah",
+      "episode": "Ghost Babel",
+      "level": "tertiaire",
+      "historicalStatus": "pas_de_dossier_individualise_retrouve",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Piste de l’index complémentaire; présence visuelle et rôle exact restent à relever dans le scénario.",
+      "nextWork": "Fiche nominative avec citation de scène; aucun corps ou costume officiel inventé lorsque la source est seulement textuelle.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AGhost_Babel_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "documentary_identity_visual_body_not_established",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "documentary_body_not_established",
+      "reason": "L’identité est documentaire, évoquée ou insuffisamment montrée. Aucun corps complet spécifique n’est établi dans le rapprochement de référence ; ne pas créer une apparence inventée.",
+      "requiredNextEvidence": "Fiche nominative avec citation de scène; aucun corps ou costume officiel inventé lorsque la source est seulement textuelle.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-GB-brother",
+      "historicalId": "R-GB-brother",
+      "label": "Frère de Weasel",
+      "episode": "Ghost Babel",
+      "level": "tertiaire",
+      "historicalStatus": "pas_de_dossier_individualise_retrouve",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Piste de l’index complémentaire; présence visuelle et rôle exact restent à relever dans le scénario.",
+      "nextWork": "Fiche nominative avec citation de scène; aucun corps ou costume officiel inventé lorsque la source est seulement textuelle.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AGhost_Babel_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "documentary_identity_visual_body_not_established",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "documentary_body_not_established",
+      "reason": "L’identité est documentaire, évoquée ou insuffisamment montrée. Aucun corps complet spécifique n’est établi dans le rapprochement de référence ; ne pas créer une apparence inventée.",
+      "requiredNextEvidence": "Fiche nominative avec citation de scène; aucun corps ou costume officiel inventé lorsque la source est seulement textuelle.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-ACID-HAROLD",
+      "historicalId": "R-ACID-HAROLD",
+      "label": "Harold Burton",
+      "episode": "AC!D",
+      "level": "tertiaire",
+      "historicalStatus": "pas_de_dossier_individualise_retrouve",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Nom secondaire à recouper au script.",
+      "nextWork": "Définir rôle, mention/apparition et relation aux identités déjà présentes; pas de corps 1:1 sans image.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AMetal_Gear_Acid_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "documentary_identity_visual_body_not_established",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "documentary_body_not_established",
+      "reason": "L’identité est documentaire, évoquée ou insuffisamment montrée. Aucun corps complet spécifique n’est établi dans le rapprochement de référence ; ne pas créer une apparence inventée.",
+      "requiredNextEvidence": "Définir rôle, mention/apparition et relation aux identités déjà présentes; pas de corps 1:1 sans image.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-ACID-DECOY",
+      "historicalId": "R-ACID-DECOY",
+      "label": "Faux Flemming",
+      "episode": "AC!D",
+      "level": "tertiaire",
+      "historicalStatus": "apparence_du_leurre_non_isolee",
+      "source": null,
+      "linkedHistoricalUID": "completion__flemming_acid",
+      "requiredEvidence": "Le modèle du scientifique est réemployé avec un sac sur la tête pour l’imposteur.",
+      "nextWork": "Créer le lien d’apparence et la séquence propre au leurre; ne pas assimiler cet imposteur au véritable alias Gary Murray.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/William_L._Flemming"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/24de7fa1323096eb72db0f62d3c4456d4ac45d33eea225354c877b9a65978707.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "42ff16e9cf2726e7276f0ee1b37ae87ddb57a9f4",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/24de7fa1323096eb72db0f62d3c4456d4ac45d33eea225354c877b9a65978707.png",
+          "recordedSHA256": "24de7fa1323096eb72db0f62d3c4456d4ac45d33eea225354c877b9a65978707"
+        }
+      ],
+      "baselineStatus": "edition_or_identity_profile_needs_review",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "edition_or_identity_review_required",
+      "reason": "Le profil de cette édition ou de cette identité doit être rapproché avec les sources existantes. Un corps générique d’une autre édition ne clôture pas cette ligne.",
+      "requiredNextEvidence": "Créer le lien d’apparence et la séquence propre au leurre; ne pas assimiler cet imposteur au véritable alias Gary Murray.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-ACID-GUARDS",
+      "historicalId": "R-ACID-GUARDS",
+      "label": "Soldats de Genetics / mercenaires de Leone / personnels SaintLogic",
+      "episode": "AC!D / AC!D 2",
+      "level": "ennemi_recurrent",
+      "historicalStatus": "couverture_partielle",
+      "source": null,
+      "linkedHistoricalUID": "completion44__saintlogic_guard_44",
+      "requiredEvidence": "SaintLogic Guard est présent; les autres ensembles doivent être ventilés.",
+      "nextWork": "Séparer les modèles PSP des illustrations de cartes, puis palettes/armes officielles; ne pas transférer toutes les cartes au roster.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AMetal_Gear_Acid_Characters",
+        "https://metalgear.fandom.com/wiki/Category%3AMetal_Gear_Acid_2_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/92035eaae71a41ffa067f4756b96855bef5406559fc1cf5d2ac3fa7d64d503b2.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "fd73aed504be1cda1023061bd4f86dec52bd2ea1",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/92035eaae71a41ffa067f4756b96855bef5406559fc1cf5d2ac3fa7d64d503b2.png",
+          "recordedSHA256": "92035eaae71a41ffa067f4756b96855bef5406559fc1cf5d2ac3fa7d64d503b2"
+        }
+      ],
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Séparer les modèles PSP des illustrations de cartes, puis palettes/armes officielles; ne pas transférer toutes les cartes au roster.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-SURVIVE-harley-warren",
+      "historicalId": "R-SURVIVE-harley-warren",
+      "label": "Harley Warren",
+      "episode": "Survive",
+      "level": "tertiaire",
+      "historicalStatus": "pas_de_dossier_individualise_retrouve",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Nom d’archives; une entrée encyclopédique ne prouve pas une tenue de combat visible.",
+      "nextWork": "Recueillir journal/enregistrement et éventuel portrait; exclure les inventions corporelles du compte officiel.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AMetal_Gear_Survive_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "documentary_identity_visual_body_not_established",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "documentary_body_not_established",
+      "reason": "L’identité est documentaire, évoquée ou insuffisamment montrée. Aucun corps complet spécifique n’est établi dans le rapprochement de référence ; ne pas créer une apparence inventée.",
+      "requiredNextEvidence": "Recueillir journal/enregistrement et éventuel portrait; exclure les inventions corporelles du compte officiel.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-SURVIVE-joel-marton",
+      "historicalId": "R-SURVIVE-joel-marton",
+      "label": "Joel Marton",
+      "episode": "Survive",
+      "level": "tertiaire",
+      "historicalStatus": "pas_de_dossier_individualise_retrouve",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Nom d’archives; une entrée encyclopédique ne prouve pas une tenue de combat visible.",
+      "nextWork": "Recueillir journal/enregistrement et éventuel portrait; exclure les inventions corporelles du compte officiel.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AMetal_Gear_Survive_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "documentary_identity_visual_body_not_established",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "documentary_body_not_established",
+      "reason": "L’identité est documentaire, évoquée ou insuffisamment montrée. Aucun corps complet spécifique n’est établi dans le rapprochement de référence ; ne pas créer une apparence inventée.",
+      "requiredNextEvidence": "Recueillir journal/enregistrement et éventuel portrait; exclure les inventions corporelles du compte officiel.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-SURVIVE-AVATAR",
+      "historicalId": "R-SURVIVE-AVATAR",
+      "label": "Captain — avatar féminin/masculin et apparences personnalisées",
+      "episode": "Survive",
+      "level": "principal",
+      "historicalStatus": "avatar_generique_present_variantes_non_ventilees",
+      "source": null,
+      "linkedHistoricalUID": "archive__captain",
+      "requiredEvidence": "Le Captain possède une entrée, mais l’avatar n’est pas une seule personne à visage canonique imposé.",
+      "nextWork": "Cataloguer morphologies, vêtements et équipement sélectionnables; combinaisons dans un système modulaire, pas des milliers de faux personnages.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AMetal_Gear_Survive_Characters"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/c0e8c769837f36e3b13639b13c639bb9a07c3aa5c8dd981930b13a87714b02a7.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "1b41b380aae5a899bcce60127c368d4e510ae42f",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/c0e8c769837f36e3b13639b13c639bb9a07c3aa5c8dd981930b13a87714b02a7.png",
+          "recordedSHA256": "c0e8c769837f36e3b13639b13c639bb9a07c3aa5c8dd981930b13a87714b02a7"
+        }
+      ],
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Cataloguer morphologies, vêtements et équipement sélectionnables; combinaisons dans un système modulaire, pas des milliers de faux personnages.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MGO1",
+      "historicalId": "R-MGO1",
+      "label": "Avatars, classes et personnages uniques",
+      "episode": "MGO1",
+      "level": "bonus_officiel",
+      "historicalStatus": "operateur_unique_present_catalogue_modulaire_manquant",
+      "source": null,
+      "linkedHistoricalUID": "archive__genome_mgo1",
+      "requiredEvidence": "GRU/KGB/Ocelot Unit et personnages uniques selon le mode.",
+      "nextWork": "Référencer les catégories de corps/équipement, les restrictions et les kits propres au mode; ne pas recompter Snake/Ocelot/Quiet comme personnes nouvelles.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Metal_Gear_Online_equipment",
+        "https://www.konami.com/games/eu/fr/topics/2377/"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/26a9070c8d491b315e4609f36eafbb4c2e955e0921ea0f5a46149e1a1a5a585b.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "f8f93d18258026f83ae7c697e6a0c9124d560545",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/26a9070c8d491b315e4609f36eafbb4c2e955e0921ea0f5a46149e1a1a5a585b.png",
+          "recordedSHA256": "26a9070c8d491b315e4609f36eafbb4c2e955e0921ea0f5a46149e1a1a5a585b"
+        }
+      ],
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Référencer les catégories de corps/équipement, les restrictions et les kits propres au mode; ne pas recompter Snake/Ocelot/Quiet comme personnes nouvelles.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MGO2",
+      "historicalId": "R-MGO2",
+      "label": "Avatars, classes et personnages uniques",
+      "episode": "MGO2",
+      "level": "bonus_officiel",
+      "historicalStatus": "operateur_unique_present_catalogue_modulaire_manquant",
+      "source": null,
+      "linkedHistoricalUID": "archive__pmc_mgo2",
+      "requiredEvidence": "Avatars femmes/hommes; personnages uniques avec leurs règles Online.",
+      "nextWork": "Référencer les catégories de corps/équipement, les restrictions et les kits propres au mode; ne pas recompter Snake/Ocelot/Quiet comme personnes nouvelles.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Metal_Gear_Online_equipment",
+        "https://www.konami.com/games/eu/fr/topics/2377/"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/ec41023a8af133163717169449da285f49036e54d5b7d0c23ee529e2449e7c8c.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "57ee891f94041444b2caeebea0654c3733a63fdc",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/ec41023a8af133163717169449da285f49036e54d5b7d0c23ee529e2449e7c8c.png",
+          "recordedSHA256": "ec41023a8af133163717169449da285f49036e54d5b7d0c23ee529e2449e7c8c"
+        }
+      ],
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Référencer les catégories de corps/équipement, les restrictions et les kits propres au mode; ne pas recompter Snake/Ocelot/Quiet comme personnes nouvelles.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-MGO3",
+      "historicalId": "R-MGO3",
+      "label": "Avatars, classes et personnages uniques",
+      "episode": "MGO3",
+      "level": "bonus_officiel",
+      "historicalStatus": "operateur_unique_present_catalogue_modulaire_manquant",
+      "source": null,
+      "linkedHistoricalUID": "archive__dd_mgo3",
+      "requiredEvidence": "Scout, Enforcer, Infiltrator; Venom/Ocelot/Quiet uniques.",
+      "nextWork": "Référencer les catégories de corps/équipement, les restrictions et les kits propres au mode; ne pas recompter Snake/Ocelot/Quiet comme personnes nouvelles.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Metal_Gear_Online_equipment",
+        "https://www.konami.com/games/eu/fr/topics/2377/"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "relatedExistingOriginals": [
+        {
+          "path": "docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/ce332ba60a1dec17128860342dea2a6e1ebb96361b376c98ff21d896607c5f5f.png",
+          "presentInPinnedTree": true,
+          "gitBlobSHA": "f302cb6f05a8f4ab55bb28fb3038d4bb45ba1755",
+          "url": "https://github.com/darknigthmare/shadow-codec-ops/blob/2e2864e3cba653c10727113f574ec1107c274e41/docs/cqc-reprise/pass52/static-poses/catalogue/assets/native-sources/ce332ba60a1dec17128860342dea2a6e1ebb96361b376c98ff21d896607c5f5f.png",
+          "recordedSHA256": "ce332ba60a1dec17128860342dea2a6e1ebb96361b376c98ff21d896607c5f5f"
+        }
+      ],
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Référencer les catégories de corps/équipement, les restrictions et les kits propres au mode; ne pas recompter Snake/Ocelot/Quiet comme personnes nouvelles.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    },
+    {
+      "id": "character:R-SIDE-CATALOG",
+      "historicalId": "R-SIDE-CATALOG",
+      "label": "Ennemis et variantes de ces versions",
+      "episode": "Mobile / Touch / Arcade / Social Ops / AC!D Mobile",
+      "level": "tertiaire",
+      "historicalStatus": "un_operateur_ou_heros_ne_prouve_pas_lexhaustivite",
+      "source": null,
+      "linkedHistoricalUID": "",
+      "requiredEvidence": "Les héros/opérateurs existent dans CQC; aucun inventaire exhaustif des modèles de chaque version n’est démontré.",
+      "nextWork": "Référencer chaque version Java/3D, résolution, captures et ennemis; cartes Social Ops et cibles Touch ne deviennent pas des personnages narratifs nouveaux.",
+      "sources": [
+        "https://metalgear.fandom.com/wiki/Category%3AMetal_Gear_Solid_Mobile_Characters",
+        "https://www.konami.com/mg/archive/mga/english/introduction.html",
+        "https://metalgear.konami.net/manual/mc1/en/index.html"
+      ],
+      "scopeWarning": "Historical rows may designate groups, edition profiles or documentary identities; this row is not a count of one confirmed missing body.",
+      "baselineStatus": "group_or_variant_inventory_incomplete",
+      "selectedCandidates": [],
+      "absolute1to1CertifiedByP61": false,
+      "p61RuntimeIntegration": false,
+      "p61Status": "group_inventory_incomplete",
+      "reason": "Cette ligne est un groupe ou un ensemble de variantes. L’inventaire de ses membres/équipements reste incomplet ; elle ne vaut pas un corps unique manquant.",
+      "requiredNextEvidence": "Référencer chaque version Java/3D, résolution, captures et ennemis; cartes Social Ops et cibles Touch ne deviennent pas des personnages narratifs nouveaux.",
+      "inheritedBaselineFindingNotNewGeneration": true
+    }
+  ],
+  "costumeIndependentControl": {
+    "baselineSourceMissingOfficialSlots": 6,
+    "selectedP61CandidateSlots": 5,
+    "selectedWorkIds": [
+      "costume:roster51__volgin_delta:official--shirtless-battle",
+      "costume:completion44__diamond_dogs_scout_44:official--tactical-vest",
+      "costume:core__snake_acid2:official--epilogue-bandages",
+      "costume:archive__virgil_at9:official--deployed",
+      "costume:core__old_snake:official--octocamo-digital-red"
+    ],
+    "referenceUnresolved": [
+      {
+        "id": "amanda-injured-recovery",
+        "workIds": [
+          "costume:core__amanda_pw:official--injured-recovery"
+        ],
+        "kind": "costume",
+        "label": "Amanda — convalescence après blessure",
+        "status": "not_generated_exact_visual_state_not_established",
+        "referenceURLs": [
+          "https://www.youtube.com/watch?v=0LXgpEVQkfY",
+          "https://metalgear.fandom.com/wiki/Metal_Gear_Solid%3A_Peace_Walker_debriefings",
+          "https://metalgear.fandom.com/wiki/Amanda_Valenciano_Libre",
+          "https://www.youtube.com/watch?v=iaWyc915wn0"
+        ],
+        "evidence": "Dialogue attests injury, sickbay and crutches. Inspected thumbnail shows Amanda being carried in normal outfit, without a complete distinct recovery costume. No definitive full-body cast/crutch arrangement inspected.",
+        "reason": "Do not invent a hospital gown, cast side, crutch design or separate official full-body costume from dialogue alone. Further actual-game visual evidence needed.",
+        "historicalGenerationRefusal": false
+      }
+    ],
+    "historicalHoldsInsideSelectedCatalogue": 11,
+    "historicalHoldIds": [
+      "costume:core__eva_mgs3:cyborg",
+      "costume:core__fear:cyborg",
+      "costume:roster51__eva_delta:cyborg",
+      "costume:roster51__fear_delta:cyborg",
+      "costume:roster51__end_delta:metalgear",
+      "costume:npc53__tatyana_mgs3:cyborg",
+      "costume:core__mistral:official--two-arm-configuration",
+      "costume:archive__raiden_vr:official--x-raiden-substance",
+      "costume:core__kaz_pw:official--swimsuit",
+      "costume:archive__paz:official--swimsuit",
+      "costume:archive__paz:official--zeke-pilot"
+    ],
+    "outsideSelectedCatalogueHistoricalHolds": [
+      {
+        "id": "costume:core__raven:original-concept:oc-002",
+        "label": "Vulcan Raven — Expédition polaire",
+        "status": "historical_generation_hold",
+        "source": null,
+        "outsidePublishedSelectedCatalogues": true,
+        "evidenceFile": "docs/cqc-reprise/pass54/README.md",
+        "note": "Original CQC concept among the 20 P53 briefs, absent from the 21-entry P54 selected-source gallery after historical generator refusal. Counted separately, not silently dropped."
+      }
+    ],
+    "eraAliasCorrection": [
+      {
+        "id": "costume:completion44__xof_trooper_44:official--hospital-raid",
+        "uid": "completion44__xof_trooper_44",
+        "label": "XOF TROOPER — Assaut de l’hôpital",
+        "character": "XOF TROOPER",
+        "costumeId": "official--hospital-raid",
+        "family": "canonical",
+        "incarnation": "Original1975 GZ XOF CVCwhitehelmetBLUEband/goggles/clothbalaclava+Sz336 beforepatchremoval, not1984TPPhospital",
+        "origin": "official",
+        "source": null,
+        "status": "era_alias_to_separate_existing_original",
+        "evidenceManifest": "docs/cqc-reprise/pass52/static-poses/catalogue/manifest.json",
+        "fidelityStatus": "not_recertified_by_this_audit",
+        "resolvedBy": "costume:archive__xof_hospital_1984:original",
+        "note": "1975 XOF and 1984 hospital XOF are distinct incarnations. Do not generate an incorrect 1975 hospital costume."
+      }
+    ],
+    "notes": [
+      "Quatre sources du lot costumes plus Digital Red = cinq des six emplacements officiels source_missing traités par des sources candidates.",
+      "Amanda reste sans état visuel complet établi ; ce n’est pas un refus du générateur.",
+      "Les onze blocages historiques du catalogue restent distincts : six concepts inventés et cinq variantes officielles.",
+      "Vulcan Raven Expédition polaire est une retenue historique supplémentaire hors catalogue sélectionné, comptée séparément.",
+      "Le XOF de l’hôpital 1984 a sa propre incarnation existante ; le libellé 1975 ne doit pas entraîner une génération erronée.",
+      "Le libellé legacy Volgin torse nu est corrigé par la référence : combinaison isolante rouge à manches courtes, bras nus.",
+      "Ces sources candidates ne modifient pas le manifeste central et ne constituent ni certification 1:1 ni animation/runtime."
+    ]
+  }
+}

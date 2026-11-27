@@ -1,0 +1,292 @@
+{
+  "schema": "cqc-p65-rising-independent-visual-qa-v2",
+  "asOf": "2026-11-26T08:30:02.935338+00:00",
+  "reviewer": "acid2_sources",
+  "independentFromGenerator": true,
+  "scope": "Three selected Rising props: normal box v1, locked box v2, VR terminal v1. Original locked-box v1 review preserved in archivedVersionReviews with its exact original hash.",
+  "method": "Every native reference and original generated PNG was opened with view_image in paired order. For the follow-up, the locked-box native reference, archived v1, and selected v2 were reopened and visually compared. PIL/NumPy/SciPy only measured dimensions, alpha, connected components and hashes. Normal-box and terminal hashes rechecked unchanged. No PNG edited by this reviewer.",
+  "overall": {
+    "reviewedCount": 3,
+    "retainWithoutRequiredCorrection": 3,
+    "requiresTargetedCorrection": 0,
+    "allSingleCompleteSubjects": true,
+    "allHaveRealAlpha": true,
+    "allNativeUhd": false,
+    "pixelExactCanonCertified": false,
+    "combatAdmissionCertified": false,
+    "summary": "Trois sources sélectionnables, chacune entière et unique avec alpha réelle. La v2 du coffre verrouillé corrige les gros parasites blancs de la v1 ; sa texture réinterprétée et les franges fines résiduelles sont documentées. La preuve de v1 est conservée.",
+    "reviewedVersionCount": 4,
+    "supersededArchiveCount": 1
+  },
+  "assets": [
+    {
+      "id": "mgr-item-box-normal",
+      "path": "public/cqc/assets/p65/mgr-item-box-normal.png",
+      "reviewedVersion": "v1_snapshot",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "sha256": "f7562b7a585a9444faf995f2c828046a174fbfdd9cd8d6e1332e17b6658587e0",
+      "bytes": 1404527,
+      "reference": {
+        "path": "docs/cqc-reprise/pass65/research/mgr/mgr-item-box-normal-reference.png",
+        "sha256": "d5d52666eafa500c142dd95a9b1147ed01546558e512358efbc97654e09609e4",
+        "width": 662,
+        "height": 373,
+        "actuallyInspected": true
+      },
+      "fullSilhouetteReviewed": true,
+      "singleSubjectReviewed": true,
+      "bodyTouchesCanvasAtAlpha16": false,
+      "nativeUhd": false,
+      "absolute1to1Certified": false,
+      "combatReadyCertified": false,
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "realTransparency": true,
+        "fullyTransparentFraction": 0.517161,
+        "nearZeroAlpha1To15Fraction": 0.017669,
+        "visuallySolidAlpha240To255Fraction": 0.461741,
+        "bboxAlpha16": [
+          119,
+          177,
+          1127,
+          1104
+        ],
+        "largestComponentAreaAlpha16": 731488,
+        "connectedComponentsAtAlpha16": 1,
+        "pixelsOutsideLargestComponentAtAlpha16": 0
+      },
+      "verdict": "retain_with_documented_adaptation_and_minor_edge_fringe",
+      "correctionRequired": false,
+      "silhouette": "Coffre unique fermé, entier, vu de trois quarts ; couvercle, deux renforts verticaux de face, poignée latérale droite et toute la base visibles, avec marge de chaque côté.",
+      "referenceMatch": "Coque orange rouille, formes épaisses arrondies aux angles, deux bandes gris acier sur la face et poignée rectangulaire métallique latérale cohérentes avec la capture native.",
+      "colorAndDetailLimits": "Orange plus lumineux et texture d’usure beaucoup plus détaillée que dans la capture en environnement sombre. Les micro-rayures, joints et détails de serrure sont reconstruits. Le petit rectangle frontal reste sans texte lisible.",
+      "edgeReview": "Fines franges rouge/jaune visibles par endroits sur les arêtes supérieures et gauches. Pas de gros morceau blanc, d’objet secondaire, de sol ou d’arrière-plan incorporé.",
+      "qaNotes": [
+        "L’objet et ses attributs principaux sont identifiables et cohérents avec la référence.",
+        "La silhouette globale est exploitable comme source statique ; les franges saturées restent un défaut documenté.",
+        "Aucune échelle physique, face arrière ou géométrie complète n’est validée par cette vue."
+      ],
+      "selected": true,
+      "unchangedSinceInitialReviewHashVerified": true
+    },
+    {
+      "id": "mgr-item-box-locked",
+      "path": "public/cqc/assets/p65/mgr-item-box-locked.png",
+      "reviewedVersion": "v2",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "sha256": "2b754347c8dbaae4d7899f4e25a1ca49ea22b251831e88b143c1a9d7d886283b",
+      "bytes": 1598806,
+      "reference": {
+        "path": "docs/cqc-reprise/pass65/research/mgr/mgr-item-box-locked-reference.png",
+        "sha256": "8f1f9b80b1aa50fad496516d01b6ed78ef46a42c1b53e649f1d5de2cf6cf6ece",
+        "width": 662,
+        "height": 373,
+        "actuallyInspected": true
+      },
+      "fullSilhouetteReviewed": true,
+      "singleSubjectReviewed": true,
+      "bodyTouchesCanvasAtAlpha16": false,
+      "nativeUhd": false,
+      "absolute1to1Certified": false,
+      "combatReadyCertified": false,
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "realTransparency": true,
+        "fullyTransparentFraction": 0.457958,
+        "nearZeroAlpha1To15Fraction": 0.006142,
+        "visuallySolidAlpha240To255Fraction": 0.532305,
+        "bboxAlpha16": [
+          84,
+          146,
+          1171,
+          1125
+        ],
+        "largestComponentAreaAlpha16": 842712,
+        "connectedComponentsAtAlpha16": 1,
+        "pixelsOutsideLargestComponentAtAlpha16": 0
+      },
+      "verdict": "retain_v2_with_documented_texture_reinterpretation",
+      "correctionRequired": false,
+      "silhouette": "Coffre unique fermé, entier, de trois quarts ; coque gris clair, renforts frontaux gris foncé, poignée latérale droite et verrou horizontal visibles, avec marges.",
+      "referenceMatch": "Le module de verrouillage frontal, sa lampe centrale cyan, les deux petits éléments dorés et les accents jaune/noir suivent les principaux repères de la capture native. La forme générale de coque reste cohérente.",
+      "colorAndDetailLimits": "Le grain de surface a été réinterprété au-delà du seul contour : la v2 présente une texture plus marbrée/ondulée, moins proche du grain fin de la v1. La capture native est trop petite pour certifier ces microdétails. Les marques bleues, rivets et la lueur cyan restent interprétés ; la palette gris/acier et les éléments d’identification sont conservés.",
+      "edgeReview": "Les gros morceaux blancs et excroissances irrégulières du bord arrière/haut gauche de la v1 sont supprimés. L’arête supérieure forme désormais un tracé fin et continu, avec une fine ligne claire visuellement compatible avec le métal. Quelques points/liserés colorés très fins subsistent à fort contraste ; aucun fragment blanc important, morceau séparé ou nouveau décor observé.",
+      "qaNotes": [
+        "V2 relue visuellement à côté de la référence native et de la v1 archivée ; amélioration nette du contour supérieur.",
+        "Le coffre reste unique et entier. Géométrie générale, créneaux du couvercle, renforts frontaux, poignée droite, verrou horizontal, deux éléments dorés, accents jaune/noir et lampe cyan sont conservés.",
+        "Le grain est réinterprété sur la coque ; la correction ne peut donc pas être décrite comme une modification strictement limitée aux pixels du contour.",
+        "Fine ligne claire et très faibles liserés résiduels documentés ; aucun nouvel appel imagegen recommandé pour ce lot.",
+        "Transparence réelle et marges conservées ; PNG natif 1254 ×1254, sans certification UHD, canonique 1:1 ou combat."
+      ],
+      "selected": true,
+      "gitBlobSha": "2bdbca393330395acb777f86d940af36d9cbfb0a",
+      "comparisonWithV1": {
+        "v1Path": "docs/cqc-reprise/pass65/rejected/mgr-item-box-locked-v1.png",
+        "v1Sha256": "3bf1b6f3d29f5c10889f872a41a4d50c77c0932867d647691798c68a1e01a785",
+        "v1ArchiveMatchesInitiallyReviewedFile": true,
+        "whiteEdgeExcrescencesRemoved": true,
+        "majorGeometryAndLockPreserved": true,
+        "surfaceTextureReinterpreted": true,
+        "strictPixelsOutsideContourUnchanged": false,
+        "additionalGenerationRecommended": false
+      }
+    },
+    {
+      "id": "mgr-vr-data-terminal",
+      "path": "public/cqc/assets/p65/mgr-vr-data-terminal.png",
+      "reviewedVersion": "v1_snapshot",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "sha256": "e31f0458a4c1636dda5df34fb31bccd5a7974e790a8cb9b8eb049a79a15d1a56",
+      "bytes": 1558815,
+      "reference": {
+        "path": "docs/cqc-reprise/pass65/research/mgr/mgr-vr-data-terminal-reference.png",
+        "sha256": "14ff717e8484f76e344028472c572b1484e44e86b70258f1389bfe2b3f029f25",
+        "width": 315,
+        "height": 178,
+        "actuallyInspected": true
+      },
+      "fullSilhouetteReviewed": true,
+      "singleSubjectReviewed": true,
+      "bodyTouchesCanvasAtAlpha16": false,
+      "nativeUhd": false,
+      "absolute1to1Certified": false,
+      "combatReadyCertified": false,
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "realTransparency": true,
+        "fullyTransparentFraction": 0.53532,
+        "nearZeroAlpha1To15Fraction": 0.007056,
+        "visuallySolidAlpha240To255Fraction": 0.453904,
+        "bboxAlpha16": [
+          177,
+          55,
+          1080,
+          1194
+        ],
+        "largestComponentAreaAlpha16": 719621,
+        "connectedComponentsAtAlpha16": 1,
+        "pixelsOutsideLargestComponentAtAlpha16": 0
+      },
+      "verdict": "retain_with_documented_ui_reconstruction",
+      "correctionRequired": false,
+      "silhouette": "Terminal unique ouvert, entier : coque-valise olive, couvercle/écran, clavier noir, charnières, deux fermoirs et poignée frontale visibles ; aucune partie coupée.",
+      "referenceMatch": "La valise renforcée verte et le poste informatique ouvert reprennent la capture native. Écran à panneaux gris/noirs, cadre de fenêtre jaune et motif rouge central cohérents dans leur composition générale.",
+      "colorAndDetailLimits": "Le clavier, le pavé tactile, les charnières, la poignée et les nombreux petits panneaux/traits de l’interface sont des reconstructions détaillées depuis une référence de 315 ×178. Le motif rouge et les éventuels caractères ne constituent pas une reproduction exacte validée de l’interface.",
+      "edgeReview": "Quelques très fins liserés vert/jaune le long du boîtier et sous la poignée ; pas de gros fragment blanc, de caisse de décor, de sol ni d’autre objet repris de la référence.",
+      "qaNotes": [
+        "Silhouette lisible et fidèle à un terminal VR en valise, sans mélange avec un terminal fixe sur pied.",
+        "Objet utilisable comme source statique ; interface, alphabet et motif ne sont pas certifiés pixel exact.",
+        "Le côté arrière, l’ouverture animée et le fonctionnement interactif ne sont pas couverts."
+      ],
+      "selected": true,
+      "unchangedSinceInitialReviewHashVerified": true
+    }
+  ],
+  "parentFollowup": "One contour correction was completed by the parent and independently inspected. Locked box v2 is recommended for selection; original v1 evidence preserved. No additional generation requested.",
+  "noImageFilesChangedByThisReview": true,
+  "onlyRepositoryFileWritten": "docs/cqc-reprise/pass65/research/mgr/independent-visual-qa.json",
+  "archivedVersionReviews": [
+    {
+      "id": "mgr-item-box-locked",
+      "path": "docs/cqc-reprise/pass65/rejected/mgr-item-box-locked-v1.png",
+      "reviewedVersion": "v1_snapshot",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "sha256": "3bf1b6f3d29f5c10889f872a41a4d50c77c0932867d647691798c68a1e01a785",
+      "bytes": 1666588,
+      "reference": {
+        "path": "docs/cqc-reprise/pass65/research/mgr/mgr-item-box-locked-reference.png",
+        "sha256": "8f1f9b80b1aa50fad496516d01b6ed78ef46a42c1b53e649f1d5de2cf6cf6ece",
+        "width": 662,
+        "height": 373,
+        "actuallyInspected": true
+      },
+      "fullSilhouetteReviewed": true,
+      "singleSubjectReviewed": true,
+      "bodyTouchesCanvasAtAlpha16": false,
+      "nativeUhd": false,
+      "absolute1to1Certified": false,
+      "combatReadyCertified": false,
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "realTransparency": true,
+        "fullyTransparentFraction": 0.458096,
+        "nearZeroAlpha1To15Fraction": 0.008649,
+        "visuallySolidAlpha240To255Fraction": 0.529409,
+        "bboxAlpha16": [
+          84,
+          148,
+          1170,
+          1122
+        ],
+        "largestComponentAreaAlpha16": 838552,
+        "connectedComponentsAtAlpha16": 1,
+        "pixelsOutsideLargestComponentAtAlpha16": 0
+      },
+      "verdict": "targeted_imagegen_edge_correction_required_before_final_selection",
+      "correctionRequired": true,
+      "silhouette": "Coffre unique fermé, entier, de trois quarts ; coque gris clair, renforts frontaux gris foncé, poignée latérale droite et verrou horizontal visibles, avec marges.",
+      "referenceMatch": "Le module de verrouillage frontal, sa lampe centrale cyan, les deux petits éléments dorés et les accents jaune/noir suivent les principaux repères de la capture native. La forme générale de coque reste cohérente.",
+      "colorAndDetailLimits": "Éclairage plus uniforme, corps éclairci et textures/grains détaillés ajoutés. Le verrou et la lueur cyan sont accentués ; les rivets et marques bleues du dessus sont interprétés, leur contenu exact n’est pas établi par la petite référence.",
+      "edgeReview": "Excroissances et morceaux blancs irréguliers visibles le long du contour supérieur arrière, surtout sur la pente haute gauche et près des créneaux centraux ; ils dépassent la silhouette dure attendue et ne sont pas présents dans la référence. De petits liserés bleus/violets accompagnent certaines arêtes. Ce sont des parasites de contour, pas les reflets continus de la surface métallique.",
+      "qaNotes": [
+        "Le corps reste entier et unique ; le défaut principal est localisé au détourage supérieur.",
+        "Le masque alpha >=16 ne contient qu’un composant connexe : certains parasites touchent le corps ou ont un alpha faible, ce qui n’annule pas le défaut visuel.",
+        "Correction ciblée nécessaire, puis comparaison v1/v2 avec conservation de la géométrie et du verrou."
+      ],
+      "recommendedCorrection": {
+        "tool": "built_in_imagegen",
+        "scope": "Arêtes extérieures seulement, particulièrement arrière/haut gauche et créneaux du couvercle.",
+        "instruction": "Retirer les morceaux blancs et les liserés bleu/violet qui dépassent le contour de la coque. Restaurer une arête dure propre et la vraie transparence autour. Conserver intégralement le coffre, son cadrage, la géométrie des panneaux/renforts, la poignée droite, le verrou horizontal, les accents jaune/noir, les petits éléments dorés et la lampe cyan. Garder les reflets métalliques appartenant à la surface ; ne pas ajouter de décor ni modifier les marques du couvercle.",
+        "archiveV1": true,
+        "reviewV2BeforeSelection": true
+      },
+      "reviewedPublicPathAtInitialReview": "public/cqc/assets/p65/mgr-item-box-locked.png",
+      "archived": true,
+      "selected": false,
+      "supersededByVersion": "v2",
+      "gitBlobSha": "332029c6d3011e24c67f373ae710678dbe553f65"
+    }
+  ],
+  "reviewEvents": [
+    {
+      "at": "2026-11-26T08:28:43.865996+00:00",
+      "phase": "initial_v1_review",
+      "overallAtThatTime": {
+        "reviewedCount": 3,
+        "retainWithoutRequiredCorrection": 2,
+        "requiresTargetedCorrection": 1,
+        "allSingleCompleteSubjects": true,
+        "allHaveRealAlpha": true,
+        "allNativeUhd": false,
+        "pixelExactCanonCertified": false,
+        "combatAdmissionCertified": false,
+        "summary": "Les trois corps sont entiers et uniques, avec transparence réelle. Coffre normal et terminal conservables avec limites documentées. Le coffre verrouillé nécessite une correction locale des parasites blancs et colorés du contour supérieur."
+      }
+    },
+    {
+      "at": "2026-11-26T08:30:02.935338+00:00",
+      "phase": "locked_box_v2_review",
+      "decision": "Select v2; retain v1 as rejected/superseded archive. No further generation recommended."
+    }
+  ]
+}

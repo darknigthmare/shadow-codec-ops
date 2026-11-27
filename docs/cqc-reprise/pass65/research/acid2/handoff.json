@@ -1,0 +1,153 @@
+{
+  "schema": "cqc-p65-acid2-handoff-v1",
+  "asOf": "2026-11-26T08:24:40.270702+00:00",
+  "parentCommit": "3ab150e29deae21ee9f4451a08826b138669ec68",
+  "owner": "acid2_sources",
+  "counts": {
+    "selected": 1,
+    "generatedAttempts": 1,
+    "rejected": 0,
+    "blocked": 0
+  },
+  "assets": [
+    {
+      "id": "acid2-research-block-machinery-bay",
+      "assetId": "asset:p65:acid2-research-block-machinery-bay",
+      "label": "AC!D 2 — Research Block, fragment de baie technique",
+      "episode": "Metal Gear AC!D 2",
+      "episodeKey": "acid2",
+      "edition": "PSP — jeu original ; capture de gameplay attribuée par le titre de la vidéo",
+      "kind": "stage",
+      "workIds": [
+        "stage:acid2_research_block_machinery_bay"
+      ],
+      "referenceURLs": [
+        "https://www.youtube.com/watch?v=7H7vIk6QXJE",
+        "https://www.youtube.com/watch?v=k8iS-ao5PcA",
+        "https://i.ytimg.com/vi/7H7vIk6QXJE/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUABovOX_wMOCPOFtNEFGODqBCDgqAE=&rs=AOn4CLDS701I4GGNuPRXq0w7PGW3TgNEuQ&usqp=CBU",
+        "https://gamefaqs.gamespot.com/psp/928434-metal-gear-acid-2/faqs/40367"
+      ],
+      "scope": "Un fragment de baie technique du Stage 04 Research Block : deux îlots sombres, parois mauves et allées claires observés dans une vignette native. Ne couvre ni le plan complet du secteur, ni ses autres pièces, sorties, parcours ou rencontres.",
+      "guideSections": [
+        "02",
+        "03",
+        "05",
+        "09",
+        "10",
+        "16",
+        "17",
+        "26",
+        "29"
+      ],
+      "path": "public/cqc/assets/p65/acid2-research-block-machinery-bay.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 1680399,
+      "sha256": "ee9dd7a962bb30e95bee0042f633c82142839b549bc4ff750faa2176923be75f",
+      "gitBlobSha": "e9f90e81e8ffe970e04d95a0d12e9efe5c13e36b",
+      "colorMode": "RGB",
+      "bitDepth": 8,
+      "colorType": 2,
+      "alphaExtrema": null,
+      "nativeUhd": false,
+      "pass": "P65",
+      "sourceGenerated": true,
+      "selected": true,
+      "selectedVersion": "v1",
+      "transparentBackground": false,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "fidelityStatus": "reference_informed_fragment_pending_external_review",
+      "scopeClosed": false,
+      "runtimeBinding": {
+        "status": "not_bound_by_subagent",
+        "admittedByThisPass": false
+      },
+      "qaNotes": [
+        "Le fragment reprend le point de vue élevé oblique, les deux îlots sombres en enfilade, le sol clair lilas quadrillé, les deux lignes jaunes, les panneaux mauves et les coupes noires au premier plan de la vignette native.",
+        "Personnages, robots, portraits, compteurs et carte/compas retirés ; aucune interface ou légende ajoutée.",
+        "La géométrie générale est visuellement proche de la vignette ; circuits, vis, grilles, joints et zones masquées par les unités/HUD sont reconstruits et ne constituent pas une preuve canonique détaillée.",
+        "Le grand îlot arrière reste coupé par le bord supérieur, comme dans le cadrage de référence. Le noir périphérique représente la coupe de scène et fait partie du PNG opaque.",
+        "La référence est une vignette de 336 × 188 pixels attribuée par le titre de la vidéo, sans minutage de la frame établi ; aucune lecture de la séquence complète n’a été validée.",
+        "Source de baie technique limitée, non carte complète du Research Block. Vue oblique conservée ; aucune conversion latérale CQC, collision, animation, plan de caméra ou admission combat.",
+        "PNG RGB opaque natif 1672 × 941, sans agrandissement ultérieur ; ni UHD native ni certification absolue 1:1."
+      ],
+      "tracking": {
+        "historicalWorkIds": [],
+        "extensionWorkIds": [
+          "stage:acid2_research_block_machinery_bay"
+        ],
+        "scopeClosed": false,
+        "narrativePlansCreated": 0
+      },
+      "promptRecord": "docs/cqc-reprise/pass65/research/acid2/prompt-research-block-machinery-bay.txt",
+      "generation": {
+        "mode": "built_in_imagegen",
+        "attempts": 1,
+        "prompt": "Use case: stylized-concept\nAsset type: one individual opaque PNG environment source for the MGS Codec Simulator CQC visual atlas.\nPrimary request: reconstruct only the visible machinery bay of Metal Gear AC!D 2 (PSP), Stage 04 Research Block, using the attached native gameplay thumbnail as the geometric and color reference.\nInput image 1: native gameplay thumbnail from chaffXgrenade, “Metal Gear Ac!d 2 Walkthrough - 07 - Stage 04: Research Block (2)”; it is a reference image, not a finished asset to upscale.\nSubject and geometry: the narrow rectangular interior bay visible in the reference. Pale lilac floor made of large square tiles with thin yellow guide lines along the aisle. Tall purple-lilac paneled walls on the left and rear. Two dark rectangular technical equipment islands placed one behind the other along the centerline; they have black/dark tops with small dense yellow-green mechanical or circuit-like markings and pale square plinths. The nearer island is lower and fully visible; the rear island is taller, with the same plain box-like construction. A slim dark rectangular doorway/partition break projects from the left wall. Preserve the simple perpendicular wall joints and the black edge framing seen in the foreground.\nComposition: a clean wide landscape view of this limited bay, with the same elevated oblique isometric camera and the same spatial relationship between both equipment islands and the surrounding aisle. Keep sufficient pale floor visible around the islands. Do not expand this into a complete level plan. Do not invent architecture outside the visible bay.\nStyle: crisp faithful early-2000s cel-shaded PSP game reconstruction; simplified hard-edged forms, restrained fine detail, strong purple ambient light against pale gray-lilac flooring and near-black equipment. Clean linework and readable shapes. It must retain the distinctly violet Research Block palette.\nConstraints: remove all characters, robots, portraits, status panels, numbers, card icons, compass, tactical markers and interface from the reference. Reconstruct those small occluded areas using only immediately adjacent floor or wall patterns. No readable text, logos or watermark. No operating consoles with giant screens, no specimen pods, no test tubes, no hanging cables, no giant machinery, no extra rooms, no windows or invented exits. One scene only, no contact sheet, no collage. Opaque background, no transparency.",
+        "referenced_image_paths": [
+          "/workspace/scratch/52317e972fd3/p64-runtime-review-9725a40/docs/cqc-reprise/pass65/research/acid2/references/research-block-2-native-thumbnail.png"
+        ],
+        "transparent_background": false,
+        "generatedSourcePath": "/workspace/scratch/52317e972fd3/generated_images/exec-a403270c-3bac-4f99-be87-8320a23c8e3c.png",
+        "postProcessing": "No image editing, cropping, scaling or color correction. Byte-identical copy of built-in PNG into project."
+      }
+    }
+  ],
+  "referenceEvidence": {
+    "sourcePage": "https://www.youtube.com/watch?v=k8iS-ao5PcA",
+    "visibleRelatedVideo": "https://www.youtube.com/watch?v=7H7vIk6QXJE",
+    "visibleRelatedTitle": "Metal Gear Ac!d 2 Walkthrough - 07 - Stage 04: Research Block (2)",
+    "uploader": "chaffXgrenade",
+    "downloadedImageURL": "https://i.ytimg.com/vi/7H7vIk6QXJE/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUABovOX_wMOCPOFtNEFGODqBCDgqAE=&rs=AOn4CLDS701I4GGNuPRXq0w7PGW3TgNEuQ&usqp=CBU",
+    "method": "Visible related-video thumbnail actually inspected in browser, downloaded through browser media locator, losslessly re-encoded from AVIF to PNG at native dimensions for view_image/imagegen. Both original and PNG saved. Local PNG actually reopened before generation.",
+    "frameTimestamp": null,
+    "nativeGameFrame": true,
+    "stageAttributionBasis": "Uploader video title and consistent Stage 04 machinery environment; frame does not independently show an in-game level-title overlay.",
+    "files": [
+      {
+        "path": "docs/cqc-reprise/pass65/research/acid2/references/research-block-2-native-thumbnail.avif",
+        "width": 336,
+        "height": 188,
+        "mode": "RGB",
+        "format": "AVIF",
+        "bytes": 10173,
+        "sha256": "006af7914f83ca951eaf84472fa695c731a7fca7bb3b268b3b716b645abc6a04"
+      },
+      {
+        "path": "docs/cqc-reprise/pass65/research/acid2/references/research-block-2-native-thumbnail.png",
+        "width": 336,
+        "height": 188,
+        "mode": "RGB",
+        "format": "PNG",
+        "bytes": 91403,
+        "sha256": "460fd5279add85d7224dffd07ed8bd3eb00f2c2aed359119bb49b2d940c5583a"
+      }
+    ]
+  },
+  "visualQa": {
+    "method": "Native PNG reference reopened with view_image; generated PNG inspected as tool output then reopened locally. PIL used only for metadata and hashes.",
+    "reviewer": "acid2_sources",
+    "verdict": "retained_reference_informed_fragment",
+    "observations": [
+      "Le fragment reprend le point de vue élevé oblique, les deux îlots sombres en enfilade, le sol clair lilas quadrillé, les deux lignes jaunes, les panneaux mauves et les coupes noires au premier plan de la vignette native.",
+      "Personnages, robots, portraits, compteurs et carte/compas retirés ; aucune interface ou légende ajoutée.",
+      "La géométrie générale est visuellement proche de la vignette ; circuits, vis, grilles, joints et zones masquées par les unités/HUD sont reconstruits et ne constituent pas une preuve canonique détaillée.",
+      "Le grand îlot arrière reste coupé par le bord supérieur, comme dans le cadrage de référence. Le noir périphérique représente la coupe de scène et fait partie du PNG opaque.",
+      "La référence est une vignette de 336 × 188 pixels attribuée par le titre de la vidéo, sans minutage de la frame établi ; aucune lecture de la séquence complète n’a été validée.",
+      "Source de baie technique limitée, non carte complète du Research Block. Vue oblique conservée ; aucune conversion latérale CQC, collision, animation, plan de caméra ou admission combat.",
+      "PNG RGB opaque natif 1672 × 941, sans agrandissement ultérieur ; ni UHD native ni certification absolue 1:1."
+    ]
+  },
+  "integrationInstructions": [
+    "Parent may add the single selected PNG to the source atlas with explicit fragment label.",
+    "Do not close Research Block as a complete stage or add an isolated island merely to increase asset count.",
+    "Do not claim Control Section, Communications Tower, Terminal, Residential Area, Prototype floors or FAR B3F/B4F/B5F were visually validated by this asset."
+  ],
+  "filesEditedOutsideOwnedPaths": false,
+  "commitOrPushPerformed": false
+}

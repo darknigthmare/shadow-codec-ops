@@ -1,0 +1,457 @@
+{
+  "schemaVersion": 2,
+  "status": "passed",
+  "validatedAtUTC": "2026-11-27T13:23:04.678Z",
+  "scope": "V8 structural validation, exact combat/source identity checks and review of separate final delivery evidence; no new combat simulation by this report workflow",
+  "execution": {
+    "runtime": "functions.exec isolated V8 for structure/signatures; Python hashlib for restored engine source identity",
+    "initialStructuralCheckGroups": 10,
+    "initialStructuralAssertionsExecuted": 7893,
+    "initialStructuralInputBlob": "8d7f73b6645883c6f786b1072bac62cd7cff4805",
+    "finalRevisionAssertionsExecuted": 9,
+    "totalAssertionsExecuted": 7902,
+    "nodeTestsRerunByThisReview": false,
+    "simulationFramesRerun": 0,
+    "browserTestsRerunByThisReview": false,
+    "imageBytesDecodedByThisReview": false,
+    "externalReportsReviewed": true
+  },
+  "inputs": {
+    "runtimeCatalogue": {
+      "path": "public/cqc/data/veilbreak-content.json",
+      "githubBlobSha": "ccca1cdb0f56fdd8dd557adbec721f483e26977c",
+      "sha256": "e3f1ca7ff52c90e3a5181d235ab997a94f16401d2a84b4ed134f78a652004771",
+      "bytes": 938898
+    },
+    "baselineCatalogue": {
+      "githubBlobSha": "fd20a350551cd265a6263f75696bd1da3aed19ec"
+    },
+    "previousStructureReport": {
+      "githubBlobSha": "5dbb8e848743d11639dbeaf195d8a5e7fa36ecf0"
+    },
+    "reviewedEngineTest": {
+      "path": "scripts/test-cqc-veilbreak-content.mjs",
+      "githubBlobSha": "180139ee9a19b9db59ee82e28d44e5d6dd3199f4",
+      "executionInThisReview": "not_run"
+    },
+    "previousAssetAdmissionCatalogue": {
+      "path": "public/cqc/data/veilbreak-content.json",
+      "githubBlobSha": "8d7f73b6645883c6f786b1072bac62cd7cff4805",
+      "sha256": "91a4713e5fcd5ee538b57c90cd8a31aafad1142cc1cdc7d9616c53ff71f6efec"
+    }
+  },
+  "counts": {
+    "fighters": 10,
+    "stages": 20,
+    "enemies": 20,
+    "bosses": 20,
+    "combatProfiles": 50,
+    "moveSlots": 500,
+    "fighterStoryScenes": 60,
+    "rivalDialogues": 10,
+    "finisherConcepts": 30,
+    "costumeDesigns": 30,
+    "parallaxLayersPlanned": 100,
+    "props": 20,
+    "projectiles": 20,
+    "vfxClips": 10,
+    "vfxFramesTarget": 84,
+    "campaignEncounters": 40,
+    "bossPhases": 60
+  },
+  "uniqueContentIds": 120,
+  "checks": [
+    {
+      "id": "catalogue_counts_and_ids",
+      "status": "passed",
+      "assertions": 10,
+      "errors": []
+    },
+    {
+      "id": "500_commands_supported_fields",
+      "status": "passed",
+      "assertions": 7362,
+      "errors": []
+    },
+    {
+      "id": "campaign_boss_rush_and_phase_links",
+      "status": "passed",
+      "assertions": 244,
+      "errors": []
+    },
+    {
+      "id": "identity_cleanup_preserved",
+      "status": "passed",
+      "assertions": 40,
+      "errors": []
+    },
+    {
+      "id": "99_admitted_image_paths_and_11_missing_arsenal_entries",
+      "status": "passed",
+      "assertions": 209,
+      "errors": []
+    },
+    {
+      "id": "command_asset_references_allow_missing_png",
+      "status": "passed",
+      "assertions": 5,
+      "errors": []
+    },
+    {
+      "id": "vfx_targets_are_not_fake_files",
+      "status": "passed",
+      "assertions": 11,
+      "errors": []
+    },
+    {
+      "id": "story_and_design_counts",
+      "status": "passed",
+      "assertions": 4,
+      "errors": []
+    },
+    {
+      "id": "combat_signature_matches_actual_prior_execution",
+      "status": "passed",
+      "assertions": 5,
+      "errors": []
+    },
+    {
+      "id": "existing_node_script_null_asset_compatibility_review",
+      "status": "passed",
+      "assertions": 3,
+      "errors": []
+    }
+  ],
+  "errors": [],
+  "combatSignature": {
+    "algorithm": "SHA-256 over UTF-8 JSON.stringify([...fighters,...enemies,...bosses].map(({id,uid,power,speed,reach,visual,combat})=>({id,uid,power,speed,reach,visual,combat})))",
+    "implementation": "Pure JavaScript SHA-256 in V8; standard empty-string and abc known-answer self-checks passed",
+    "baselineSha256": "7525e5ed95f898e10666fb37c183db39b2ae158e7744bacffa79c1c70353b65f",
+    "currentSha256": "7525e5ed95f898e10666fb37c183db39b2ae158e7744bacffa79c1c70353b65f",
+    "priorEngineReportSha256": "7525e5ed95f898e10666fb37c183db39b2ae158e7744bacffa79c1c70353b65f",
+    "identical": true,
+    "excludedMetadata": [
+      "age",
+      "realName",
+      "sprite",
+      "asset",
+      "backgroundAsset",
+      "artStatus",
+      "production",
+      "vfx.frameFilePattern"
+    ],
+    "meaning": "The final 50 engine-facing profiles and the restored engine source have the exact SHA-256 identities covered by the prior 500-command/50-pair execution. Delivery metadata and native-art orientation were reviewed without re-running combat simulation."
+  },
+  "priorCoreEngineEvidence": {
+    "path": "docs/cqc-bible/veilbreak-engine-validation.json",
+    "githubBlobSha": "7c3628e31393beb608e289b762c15bdee443d64d",
+    "engineSource": "public/cqc/src/cqc-pass8-combat-engine.js",
+    "engineSourceSha256": "1999d1107315b444f0adab7e13dba8886352c18724ecea3d8f95a101eded275d",
+    "status": "passed",
+    "counts": {
+      "profiles": 50,
+      "commandsExpected": 500,
+      "commandsPassed": 500,
+      "deterministicPairsExpected": 50,
+      "deterministicPairsPassed": 50,
+      "simulatedFrames": 104516,
+      "finiteStateChecks": 104516,
+      "failures": 0
+    },
+    "reexecuted": false
+  },
+  "assetAdmissionReview": {
+    "sourceOfTruth": "docs/cqc-reprise/pass74/veilbreak/image-manifest.json",
+    "scope": "Runtime declarations cross-referenced; final PNG decoding, browser rendering and static gallery reviews are supported by the separate external reports referenced below, not by this structural check alone.",
+    "declaredImageCounts": {
+      "fighters": 10,
+      "stages": 20,
+      "enemies": 20,
+      "bosses": 20,
+      "props": 18,
+      "projectiles": 11,
+      "total": 99
+    },
+    "arsenal": {
+      "entries": 40,
+      "declaredImages": 29,
+      "declaredMissingImages": 11
+    },
+    "missingEntries": [
+      {
+        "id": "vb_prop_floor_clamp",
+        "category": "props",
+        "artStatus": "generation_blocked_no_asset"
+      },
+      {
+        "id": "vb_prop_ceramic_plate",
+        "category": "props",
+        "artStatus": "generation_unavailable_no_asset"
+      },
+      {
+        "id": "vb_proj_pdw_round",
+        "category": "projectiles",
+        "artStatus": "generation_unavailable_no_asset"
+      },
+      {
+        "id": "vb_proj_precision_round",
+        "category": "projectiles",
+        "artStatus": "generation_unavailable_no_asset"
+      },
+      {
+        "id": "vb_proj_cordon_grenade",
+        "category": "projectiles",
+        "artStatus": "generation_unavailable_no_asset"
+      },
+      {
+        "id": "vb_proj_demining_charge",
+        "category": "projectiles",
+        "artStatus": "generation_unavailable_no_asset"
+      },
+      {
+        "id": "vb_proj_drone_round",
+        "category": "projectiles",
+        "artStatus": "generation_unavailable_no_asset"
+      },
+      {
+        "id": "vb_proj_coupling_charge",
+        "category": "projectiles",
+        "artStatus": "generation_unavailable_no_asset"
+      },
+      {
+        "id": "vb_proj_piledriver_round",
+        "category": "projectiles",
+        "artStatus": "generation_unavailable_no_asset"
+      },
+      {
+        "id": "vb_proj_stun_bolt",
+        "category": "projectiles",
+        "artStatus": "generation_unavailable_no_asset"
+      },
+      {
+        "id": "vb_proj_ceramic_shard",
+        "category": "projectiles",
+        "artStatus": "generation_unavailable_no_asset"
+      }
+    ],
+    "moveReferences": {
+      "commands": 62,
+      "distinctAssetIds": 21,
+      "withPng": 13,
+      "withoutPng": 8
+    },
+    "vfxClipsWithNullFrameFilePattern": 10,
+    "missingImageInterpretation": "One known provider refusal for vb_prop_floor_clamp; ten other unavailable results have no invented cause. No retry of the refused request.",
+    "rasterReport": "docs/cqc-reprise/pass74/veilbreak/image-raster-validation.json",
+    "visualReport": "docs/cqc-reprise/pass74/veilbreak/visual-review.json",
+    "browserReport": "docs/cqc-reprise/pass74/veilbreak/evidence/portal-report.json"
+  },
+  "existingNodeScriptReview": {
+    "status": "compatible_with_final_asset_metadata",
+    "reviewedBehavior": "The only asset assertion validates move.asset_id membership in the content ID catalogue. It does not require a PNG path or a VFX frame pattern. Null assets remain known entries.",
+    "relevantSourceLines": [
+      "      if(move.asset_id)assert(known.has(move.asset_id),label+' unresolved independent asset');"
+    ],
+    "mechanicalDefinitionsChanged": false,
+    "nodeExecutionPerformed": false
+  },
+  "notProven": [
+    "A new engine simulation after final metadata admission; the prior execution is retained by exact profile and source identities",
+    "Exhaustive historical v055 browser rendering",
+    "Playing all forty campaign combats end to end",
+    "Finished actor animation, separated stage parallax, VFX clips, finisher cinematics or alternative costume artwork",
+    "Native-pixel-level inspection of every image, machine fictional scale and battle collision bounds",
+    "Balance or canonical 1:1 completion",
+    "Production deployment verification"
+  ],
+  "finalRevisionReview": {
+    "checks": [
+      {
+        "id": "metadata_revision_contains_no_mechanical_or_asset_presence_change",
+        "status": "passed"
+      },
+      {
+        "id": "all_remaining_catalogue_values_are_identical",
+        "status": "passed"
+      },
+      {
+        "id": "final_combat_signature_matches_prior_executed_profiles",
+        "status": "passed"
+      },
+      {
+        "id": "restored_engine_source_matches_prior_executed_engine",
+        "status": "passed"
+      },
+      {
+        "id": "ballast_orientation_is_corrected_metadata",
+        "status": "passed"
+      },
+      {
+        "id": "final_portal_evidence_records_11_passed_checks",
+        "status": "passed"
+      },
+      {
+        "id": "final_portal_evidence_records_six_galleries_and_99_images",
+        "status": "passed"
+      },
+      {
+        "id": "external_raster_report_decodes_and_hashes_all_99",
+        "status": "passed"
+      },
+      {
+        "id": "external_visual_review_covers_all_99_static_images",
+        "status": "passed"
+      }
+    ],
+    "diffFromAssetAdmissionCatalogue": [
+      {
+        "path": "projectiles.3.orientation",
+        "before": "right",
+        "after": "left"
+      },
+      {
+        "path": "campaign.status",
+        "before": "implemented_portal_with_per_agent_save; final_browser_regression_pending",
+        "after": "implemented_portal_with_per_agent_save; targeted_browser_and_state_regressions_passed"
+      },
+      {
+        "path": "production.visualCoherenceReview",
+        "before": "partial_visual_review; final gallery review interrupted by executor outage; exact image bytes and PNG structure verified separately",
+        "after": "Base-pose and composite-background galleries reviewed; no main cropping or opaque background defect observed. Similar silhouettes and fine projectile readability remain documented; no canonical 1:1 or animation certification."
+      },
+      {
+        "path": "production.openWork.8",
+        "before": "Équilibrage des rencontres et validation finale du parcours de progression après reconstruction; les tests unitaires et le client de combat possèdent leurs preuves séparées.",
+        "after": "Équilibrage des rencontres et parties complètes des quarante combats de campagne; les tests de progression, de résultat et les parcours navigateur ciblés sont vérifiés séparément."
+      },
+      {
+        "path": "production.runtimeIntegration.tests.portalBrowserChecks",
+        "after": 11
+      },
+      {
+        "path": "production.runtimeIntegration.tests.portalResultRegressionTests",
+        "after": 12
+      },
+      {
+        "path": "production.runtimeIntegration.tests.uniqueNodeTests",
+        "after": 40
+      },
+      {
+        "path": "production.runtimeIntegration.reports.3",
+        "after": "docs/cqc-reprise/pass74/veilbreak/evidence/portal-report.json"
+      },
+      {
+        "path": "production.runtimeIntegration.finalPortalBrowserRegression",
+        "before": "not_run_after_final_recovery; executor_unavailable; Vercel_Sandbox_quota_exhausted",
+        "after": "passed: 11 browser checks and 6 galleries covering all 99 PNGs; report docs/cqc-reprise/pass74/veilbreak/evidence/portal-report.json"
+      }
+    ],
+    "carryForwardRule": "All fields inspected by the 7,893 initial structural assertions are unchanged. The final revision changes delivery metadata, campaign status text and the native-art orientation of vb_proj_ballast_head only. The 50 combat profile signatures and the actual restored engine bytes match the prior execution evidence."
+  },
+  "restoredEngineIdentity": {
+    "path": "public/cqc/src/cqc-pass8-combat-engine.js",
+    "sha256": "1999d1107315b444f0adab7e13dba8886352c18724ecea3d8f95a101eded275d",
+    "priorExecutionSha256": "1999d1107315b444f0adab7e13dba8886352c18724ecea3d8f95a101eded275d",
+    "identical": true,
+    "bytes": 33343,
+    "method": "Python hashlib.sha256 on the restored file; no engine execution"
+  },
+  "externalDeliveryEvidence": {
+    "portal": {
+      "path": "docs/cqc-reprise/pass74/veilbreak/evidence/portal-report.json",
+      "passed": true,
+      "browserChecks": 11,
+      "galleries": 6,
+      "renderedImages": 99,
+      "unexpectedJavaScriptErrors": 0,
+      "missingResources": 0,
+      "scope": "VEILBREAK portal and direct battle launch; no full historical v055 browser run",
+      "readByThisReview": true
+    },
+    "raster": {
+      "schema": "cqc.veilbreak.raster-validation/1",
+      "date": "2026-11-27",
+      "method": "Pillow native PNG decode plus SHA256; no resampling, alpha edits or pixel rewriting",
+      "count": 99,
+      "allDecoded": true,
+      "allHashesMatch": true,
+      "path": "docs/cqc-reprise/pass74/veilbreak/image-raster-validation.json",
+      "sha256": "f9aa278a8f9d3002bb3896258760c446256588ade8bab8ca55ed994a32135fef",
+      "readByThisReview": true
+    },
+    "visual": {
+      "path": "docs/cqc-reprise/pass74/veilbreak/visual-review.json",
+      "sha256": "98fdfffee88abea5086355830078f16fdb8bf5b8ffb45ac44163f6ad55246bfc",
+      "schema": "cqc.veilbreak.visual-review/1",
+      "date": "2026-11-27",
+      "scope": "Static base artwork at rendered gallery scale; no claim of exhaustive native pixel inspection or completed animation",
+      "reviewedGroups": {
+        "fighters": 10,
+        "stages": 20,
+        "enemies": 20,
+        "bosses": 20,
+        "props": 18,
+        "projectiles": 11
+      },
+      "result": "Accepted as static base artwork for this playable prototype",
+      "observations": [
+        "All silhouettes and primary equipment are fully framed in the galleries; all 99 images load.",
+        "Consistent olive, graphite, ivory and amber palette with practical industrial materials.",
+        "Twenty distinct arena compositions provide readable central fighting surfaces.",
+        "LATCH, SWITCHBACK and ROOKGLASS share some hair/face traits, but prosthetic arm, clothing and cloak distinguish the silhouettes.",
+        "Some human enemy silhouettes remain close; CHOIR MARSHAL and PHASE CLERK share a blue-coat and dorsal-device visual family.",
+        "Large machines and aircraft are normalized for the duel renderer; gallery scale does not validate their fictional dimensions or edge collisions.",
+        "The tranquilizer dart tip is thin at gameplay scale and warrants future readability tuning.",
+        "Ballast native art points left; catalogue orientation and renderer baseFacing now preserve its leading direction without altering the PNG."
+      ],
+      "evidence": [
+        "evidence/gallery-fighters.png",
+        "evidence/gallery-stages.png",
+        "evidence/gallery-enemies.png",
+        "evidence/gallery-bosses.png",
+        "evidence/gallery-props.png",
+        "evidence/gallery-projectiles.png",
+        "objects-visual-review.json",
+        "image-raster-validation.json"
+      ],
+      "canonicalOneToOneCertified": false,
+      "animationsComplete": false,
+      "readByThisReview": true
+    },
+    "nodeSuites": {
+      "uniqueCases": 40,
+      "suites": [
+        {
+          "path": "scripts/test-cqc-p74-tag-team.mjs",
+          "cases": 16
+        },
+        {
+          "path": "scripts/test-cqc-p74-veilbreak-controller.mjs",
+          "cases": 5
+        },
+        {
+          "path": "scripts/test-cqc-veilbreak-campaign.mjs",
+          "cases": 7
+        },
+        {
+          "path": "scripts/test-cqc-veilbreak-result-state.mjs",
+          "cases": 12
+        }
+      ],
+      "executionProvenance": "Successful Node reruns reported from actual executor output by the parent and gameplay agents. No dedicated aggregate Node report was created. The twelve result cases also retain their separately scoped earlier V8 report.",
+      "earlierResultV8Report": "docs/cqc-reprise/pass74/veilbreak/evidence/portal-result-v8-report.json",
+      "overlap": "The 33-case gameplay group and the 19-case campaign/results group share the same 12 result cases; 40 unique cases total."
+    },
+    "additionalBrowserReports": [
+      {
+        "path": "docs/cqc-reprise/pass74/gameplay/evidence/team-ui-report.json",
+        "checks": 5
+      },
+      {
+        "path": "docs/cqc-reprise/pass74/gameplay/evidence/veilbreak-client/report.json",
+        "checks": 7,
+        "finalRerun": "Reported passed on final catalogue and corrected native-art direction renderer; intentional missing-PNG recovery remains a scoped test."
+      }
+    ]
+  }
+}

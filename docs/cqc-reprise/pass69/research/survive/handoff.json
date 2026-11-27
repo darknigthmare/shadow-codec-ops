@@ -1,0 +1,858 @@
+{
+  "schema": "cqc.p69.survive.handoff.v1",
+  "passId": "P69",
+  "pass": "P69",
+  "domain": "survive",
+  "parentCommit": "764ba74e7650b3f744899636cfabc2683c960bfe",
+  "checkedAt": "2026-11-26T18:11:04.448290+00:00",
+  "generationCalls": 3,
+  "generatedOutputs": 3,
+  "selectedOutputs": 3,
+  "rejectedOutputs": 0,
+  "archivedOutputs": 0,
+  "refusals": [],
+  "blockedRequests": [],
+  "assets": [
+    {
+      "path": "public/cqc/assets/p69/survive-air-shock-cannon.png",
+      "bytes": 824547,
+      "sha256": "27a2d4aa98da3bb28e675281e4f3eb2df004aaae1f5be51e8c2e576421a02a17",
+      "gitBlobSha": "02c84fbad630de587d8859ec91d4cafabc3e8f11",
+      "width": 1086,
+      "height": 1448,
+      "colorMode": "RGBA",
+      "bitDepth": 8,
+      "colorType": 6,
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1196355,
+        "nearOpaquePixels250To255": 323287,
+        "semiTransparentPixels1To249": 52886,
+        "alphaAbove16OnCanvasEdges": 0,
+        "boundsAt16": [
+          110,
+          65,
+          999,
+          1390
+        ],
+        "boundsAt128": [
+          110,
+          66,
+          998,
+          1389
+        ]
+      },
+      "id": "survive-air-shock-cannon",
+      "assetId": "asset:p69:survive-air-shock-cannon",
+      "label": "Survive — Air Shock Cannon, déployé inactif",
+      "kind": "prop",
+      "episode": "Metal Gear Survive",
+      "episodeKey": "survive",
+      "edition": "Metal Gear Survive — équipement de défense, plateforme non certifiée",
+      "pass": "P69",
+      "passId": "P69",
+      "workIds": [
+        "prop:survive_air_shock_cannon"
+      ],
+      "scope": "Un canon à choc d’air déployé, vue trois quarts frontale, statique ; nouveau candidat pour le périmètre auparavant sans vue dégagée.",
+      "bodyCoverage": "full_object",
+      "referenceFiles": [
+        "docs/cqc-reprise/pass69/research/survive/references/native-air-side-220401_10.jpg",
+        "docs/cqc-reprise/pass69/research/survive/references/native-air-support-220401_12.jpg"
+      ],
+      "referenceURLs": [
+        "https://w.atwiki.jp/mgsurvive/pages/111.html",
+        "https://img.atwiki.jp/mgsurvive/attach/111/100/220401_10.jpg",
+        "https://img.atwiki.jp/mgsurvive/attach/111/98/220401_12.jpg"
+      ],
+      "referenceMetadata": [
+        {
+          "path": "docs/cqc-reprise/pass69/research/survive/references/native-air-side-220401_10.jpg",
+          "bytes": 300444,
+          "sha256": "5a35c229924a73b1729ffa4b67bf22eeb00b14d4d87ae3b6d19744e4efd28c52",
+          "gitBlobSha": "b785500ebb485ba41495d9749e85fe1bc27d87f7",
+          "width": 1920,
+          "height": 1080,
+          "colorMode": "RGB",
+          "sourceURL": "https://img.atwiki.jp/mgsurvive/attach/111/100/220401_10.jpg",
+          "contextURL": "https://w.atwiki.jp/mgsurvive/pages/111.html",
+          "sourceKind": "native_gameplay_screenshot_hosted_on_community_wiki",
+          "officialPublisherHosted": false,
+          "usedForGeneration": true,
+          "visuallyInspected": true,
+          "editing": "none; original retrieved bytes",
+          "observation": "Vue principale P69 : disque frontal, corps et monture dégagés ; quelques éléments du pied restent sous le HUD.",
+          "retrieval": "public HTTPS GET with urllib.request and User-Agent Mozilla/5.0"
+        },
+        {
+          "path": "docs/cqc-reprise/pass69/research/survive/references/native-air-support-220401_12.jpg",
+          "bytes": 292612,
+          "sha256": "6aa3590b40a45424cbd054f373bbf257b9c9da81747dc6b05a7253e6d06d147b",
+          "gitBlobSha": "2622177ae31c7c46e7c30693d6276033b6345560",
+          "width": 1920,
+          "height": 1080,
+          "colorMode": "RGB",
+          "sourceURL": "https://img.atwiki.jp/mgsurvive/attach/111/98/220401_12.jpg",
+          "contextURL": "https://w.atwiki.jp/mgsurvive/pages/111.html",
+          "sourceKind": "native_gameplay_screenshot_hosted_on_community_wiki",
+          "officialPublisherHosted": false,
+          "usedForGeneration": true,
+          "visuallyInspected": true,
+          "editing": "none; original retrieved bytes",
+          "observation": "Seconde vue : collerette, monture, quatre appuis ; face de l’émetteur sous le HUD, couverte par la nouvelle vue 220401_10.",
+          "retrieval": "byte-for-byte copy of surviving published P68 reference",
+          "inheritedFrom": "docs/cqc-reprise/pass68/research/survive/references/native-balloon-trap-220401_12.jpg"
+        }
+      ],
+      "qaNotes": [
+        "La nouvelle capture 220401_10 dégage la face ronde olive que P68 ne pouvait pas lire sous le HUD de 220401_12. Les deux vues native-gameplay ont été inspectées avant génération.",
+        "Disque court et large, boîtier sombre, collerette blanche, monture, câble latéral, antenne et quatre appuis bas sont repris ; aucun long tube de canon ou effet lumineux ajouté.",
+        "Le rendu conserve la grande silhouette. Les vis, grilles, arêtes et textures sont interpolées à partir de petits détails, sans mesure ni validation géométrique absolue. Le boîtier opposé et le dos ne sont pas documentés.",
+        "Un seul objet, entier, sans avatar, clôture ou HUD. Quatre appuis détachés et pointes présentes. Aucun cycle actif, déplacement d’air, impact, collision ou comportement de défense livré.",
+        "Les boutons PlayStation des captures n’établissent pas à eux seuls la plateforme d’exécution. L’édition est donc enregistrée avec plateforme non certifiée.",
+        "Diagnostic demandé par le root : les taches blanches d’aperçu aux pixels (430,386) et (360,440) valent chacune RGBA(255,255,255,1), pas alpha0. Dans les rectangles [420,370,440,410] et [340,430,390,447], tous les pixels RGB clairs ont un alpha de1 ou2, aucun supérieur à16. Faible frange conservée, aucune retouche ; détails dans alpha-preview-diagnostic.json."
+      ],
+      "nextWork": [
+        "Obtenir une vue native nette du dos et du boîtier opposé puis vérifier les dimensions du disque, du pivot et des quatre appuis.",
+        "Produire séparément les états posé, armé, déclenchement, retour et désactivation à partir de séquences natives.",
+        "Définir pour CQC, après validation, un pivot et une zone d’effet orientée ; créer séparément le VFX de déplacement d’air et les réactions. Aucune donnée de combat n’est déduite de ce PNG."
+      ],
+      "transparentBackground": true,
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "publishedPath": "public/cqc/assets/p69/survive-air-shock-cannon.png",
+      "tracking": {
+        "scopeClosed": false,
+        "historicalWorkIds": [],
+        "extensionWorkIds": [
+          "prop:survive_air_shock_cannon"
+        ],
+        "narrativePlansCreated": 0
+      },
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "promptId": "survive-air-shock-cannon",
+        "promptFile": "docs/cqc-reprise/pass69/research/survive/prompts/survive-air-shock-cannon.txt",
+        "exactPrompt": "Use case: reference-grounded isolated game prop.\nCreate ONE individual PNG of the Air Shock Cannon from Metal Gear Survive, in the deployed inactive state shown in the two supplied native gameplay screenshots. The first screenshot, 220401_10, is the primary reference: its cannon is the small device to the LEFT of the survivor, in front of the fence. The second screenshot, 220401_12, clarifies the same cannon's lower support and side attachments. The balloon trap at lower right in that second image is NOT the subject.\nReproduce the visible three-quarter front/side view, with the short broad olive cylindrical emitter at upper left, its round shallow dish-like face aimed slightly left toward the viewer, the dark compact receiver and rectangular rear electronics to its right, the pale white/silver pivot collar and horizontal cradle below, the long narrow dark green vertical post, and the low four splayed flat stabilizer feet. Retain the visibly curved cable loop and small upright rear antenna. Match the native proportions, edge shapes and restrained dark olive/gunmetal palette. The emitter is SHORT AND WIDE, not a long gun barrel, speaker cone, glowing laser aperture or cannon muzzle. Keep its circular face shallow and muted as the reference shows. No added barrels, magazines, armor, handles, lights or new technology.\nFrame the complete single assembled object centered with generous transparent margins and all support tips intact. Use the primary reference orientation. Clean detailed 2D game sprite source, realistic material wear, neutral soft illumination and crisp readable silhouette. Preserve reference geometry; detail only the surfaces already visible, not an unseen opposite side. Remove people, fences, training grid, ground, placement circles, menus, health bars, captions, numbers and all other objects. No shadow or background. Genuine alpha transparency. One static prop only, no contact sheet, no exploded diagram, no projectile, no action effect, no watermark.\n",
+        "referenced_image_paths": [
+          "/workspace/scratch/f62c7b61a198/shadow-codec-p68/docs/cqc-reprise/pass69/research/survive/references/native-air-side-220401_10.jpg",
+          "/workspace/scratch/f62c7b61a198/shadow-codec-p68/docs/cqc-reprise/pass69/research/survive/references/native-air-support-220401_12.jpg"
+        ],
+        "transparent_background": true,
+        "postprocessing": "none; original generated PNG bytes preserved",
+        "originalGeneratedPath": "/workspace/scratch/f62c7b61a198/generated_images/exec-61fd50a9-c276-4d06-b82d-f378683759f2.png",
+        "transport": "referenced_image_paths; output copied byte-for-byte from local generated_images file"
+      },
+      "decision": "Agent visual selection, root independent review required before Atlas integration."
+    },
+    {
+      "path": "public/cqc/assets/p69/survive-sledgehammer-gold.png",
+      "bytes": 590712,
+      "sha256": "15822b3e2bf7601f9f8b5928d03015f3d37e52b493978b9e4e047b3e328e29d4",
+      "gitBlobSha": "afac038a4d850d2be3ce1b46e114b9c7bfaeed2d",
+      "width": 1555,
+      "height": 1012,
+      "colorMode": "RGBA",
+      "bitDepth": 8,
+      "colorType": 6,
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1348544,
+        "nearOpaquePixels250To255": 199143,
+        "semiTransparentPixels1To249": 25973,
+        "alphaAbove16OnCanvasEdges": 0,
+        "boundsAt16": [
+          40,
+          25,
+          1526,
+          984
+        ],
+        "boundsAt128": [
+          41,
+          26,
+          1526,
+          984
+        ]
+      },
+      "id": "survive-sledgehammer-gold",
+      "assetId": "asset:p69:survive-sledgehammer-gold",
+      "label": "Survive — Sledgehammer [Gold], Survival Pack",
+      "kind": "prop",
+      "episode": "Metal Gear Survive",
+      "episodeKey": "survive",
+      "edition": "Metal Gear Survive — Survival Pack / variante Gold",
+      "pass": "P69",
+      "passId": "P69",
+      "workIds": [
+        "prop:survive_sledgehammer_gold"
+      ],
+      "scope": "Masse dorée complète, une vue trois quarts diagonale du modèle d’inventaire ; accessoire séparé de tout avatar.",
+      "bodyCoverage": "full_object",
+      "referenceFiles": [
+        "docs/cqc-reprise/pass69/research/survive/references/native-heavy-weapon-20180815182912_1.jpg",
+        "docs/cqc-reprise/pass69/research/survive/references/official-mgv-preorder-beauty-shot.png"
+      ],
+      "referenceURLs": [
+        "https://w.atwiki.jp/mgsurvive/pages/25.html",
+        "https://img.atwiki.jp/mgsurvive/attach/25/71/20180815182912_1.jpg",
+        "https://www.konami.com/games/us/en/topics/917/",
+        "https://www.konami.com/kde_cms/na_publish/uploads/mgv_preorder_beauty_shot.png"
+      ],
+      "referenceMetadata": [
+        {
+          "path": "docs/cqc-reprise/pass69/research/survive/references/native-heavy-weapon-20180815182912_1.jpg",
+          "bytes": 80730,
+          "sha256": "a8849122e2ce3ec3c7952829154e37dd742fc9b527af9bb7959f58d497ab9e4d",
+          "gitBlobSha": "c9e8cc3237073aa63bdde0832a869706a3b4c749",
+          "width": 800,
+          "height": 521,
+          "colorMode": "RGB",
+          "sourceURL": "https://img.atwiki.jp/mgsurvive/attach/25/71/20180815182912_1.jpg",
+          "contextURL": "https://w.atwiki.jp/mgsurvive/pages/25.html",
+          "sourceKind": "native_inventory_render_hosted_on_community_wiki",
+          "officialPublisherHosted": false,
+          "usedForGeneration": true,
+          "visuallyInspected": true,
+          "editing": "none; original retrieved bytes",
+          "observation": "Marteau doré intégral sur grille ; silhouette comparée au Sledgehammer nommé dans la planche officielle. La page classe l’image comme exemple Heavy Weapons, sans légende individuelle Gold.",
+          "retrieval": "public HTTPS GET with urllib.request and User-Agent Mozilla/5.0"
+        },
+        {
+          "path": "docs/cqc-reprise/pass69/research/survive/references/official-mgv-preorder-beauty-shot.png",
+          "bytes": 3291001,
+          "sha256": "c457b585462e3467e92da4b6ca04e89327eaf99bab5d274b8e6c450d05646502",
+          "gitBlobSha": "48e2dca40924d8ae469bc571a5ef442a66930960",
+          "width": 1919,
+          "height": 1079,
+          "colorMode": "RGBA",
+          "bitDepth": 8,
+          "colorType": 6,
+          "alphaExtrema": [
+            255,
+            255
+          ],
+          "alphaStats": {
+            "fullyTransparentPixels": 0,
+            "nearOpaquePixels250To255": 2070601,
+            "semiTransparentPixels1To249": 0,
+            "alphaAbove16OnCanvasEdges": 5996,
+            "boundsAt16": [
+              0,
+              0,
+              1919,
+              1079
+            ],
+            "boundsAt128": [
+              0,
+              0,
+              1919,
+              1079
+            ]
+          },
+          "sourceURL": "https://www.konami.com/kde_cms/na_publish/uploads/mgv_preorder_beauty_shot.png",
+          "contextURL": "https://www.konami.com/games/us/en/topics/917/",
+          "sourceKind": "official_publisher_promotional_render",
+          "officialPublisherHosted": true,
+          "usedForGeneration": false,
+          "visuallyInspected": true,
+          "editing": "none; original retrieved bytes",
+          "observation": "Document d’identification des variantes dorées ; les vignettes de la masse et de la lance servent à corroborer la forme et le nom. Non envoyé comme référence imagegen.",
+          "retrieval": "public HTTPS GET with urllib.request and User-Agent Mozilla/5.0"
+        }
+      ],
+      "qaNotes": [
+        "Capture native de l’exemple Heavy Weapons sur atwiki, corroborée par la vignette de masse nommée dans la planche officielle Survival Pack et par l’annonce KONAMI des quatre armes dorées.",
+        "Attribution Gold fondée sur la comparaison visuelle et la source officielle ; la page communautaire ne légende pas individuellement cette image. Revue externe du modèle exact encore requise.",
+        "Tête massive à encoches, faces d’impact polygonales sombres, plaque latérale dorée, cou évasé et long manche enveloppé conservés ; tête et extrémité du manche entièrement cadrées.",
+        "Détails de surface et micro-rayures réinterprétés. La vue opposée, l’attache à la main et les collisions n’ont pas été établies. Aucun swing, coup chargé ou effet d’impact fourni."
+      ],
+      "nextWork": [
+        "Confirmer l’identifiant de modèle Gold et obtenir l’autre flanc ainsi que la vue de dessus native.",
+        "Définir un point de prise et l’axe du manche pour les futurs avatars CQC ; garder le prop autonome tant que les mains et poses correspondantes ne sont pas validées.",
+        "Créer des poses statiques puis des cycles de préparation, frappe verticale, frappe latérale et récupération à partir de captures de référence ; séparer choc, poussière et son de cette source."
+      ],
+      "transparentBackground": true,
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "publishedPath": "public/cqc/assets/p69/survive-sledgehammer-gold.png",
+      "tracking": {
+        "scopeClosed": false,
+        "historicalWorkIds": [],
+        "extensionWorkIds": [
+          "prop:survive_sledgehammer_gold"
+        ],
+        "narrativePlansCreated": 0
+      },
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "promptId": "survive-sledgehammer-gold",
+        "promptFile": "docs/cqc-reprise/pass69/research/survive/prompts/survive-sledgehammer-gold.txt",
+        "exactPrompt": "Use case: reference-grounded game prop extraction.\nCreate one individual PNG of the Sledgehammer [Gold] from Metal Gear Survive, the gold-plated Survival Pack melee weapon. Use the supplied native inventory screenshot as the exact visual reference for the entire weapon. It shows one complete hammer from the left head down to the right handle end. Reproduce the same three-quarter side view and diagonal orientation, with the head upper left and handle lower right.\nPreserve the squat long block-shaped hammer head, its flat polygonal striking ends, three recessed/notched sections along the near side silhouette, the small round fasteners on the broad gold side plate, the flared tapered metal neck joining the head, the very long slender straight handle, the rough gold-brown wrap covering most of the handle, and the small plain rounded end cap. Match the precise relative lengths, head thickness, notch shapes and attachment angle in the screenshot. Worn warm brass/gold finish with dark bronze rough impact faces and gold-colored wrapped grip. This is a rugged industrial game hammer, not a fantasy warhammer, axe or ornamental weapon. No extra spikes, no extra plates or motor, no decorative emblem.\nRender as a clean detailed 2D game source asset with crisp silhouette, neutral even lighting and realistically worn metallic surfaces. One whole object only. Center it with generous transparent margins on every side, including the handle tip. Remove the gray inventory grid, circle, all UI and the entire background. Genuine alpha transparency. No ground, cast shadow, text, label, frame, character, motion blur or impact effect. No contact sheet or extra view. Do not change the visible geometry or invent unseen mechanical internals.\n",
+        "referenced_image_paths": [
+          "/workspace/scratch/f62c7b61a198/shadow-codec-p68/docs/cqc-reprise/pass69/research/survive/references/native-heavy-weapon-20180815182912_1.jpg"
+        ],
+        "transparent_background": true,
+        "postprocessing": "none; original generated PNG bytes preserved",
+        "originalGeneratedPath": "/workspace/scratch/f62c7b61a198/generated_images/exec-dd6d1243-ea65-4024-a9a8-39b4bea44742.png",
+        "transport": "referenced_image_paths; output copied byte-for-byte from local generated_images file"
+      },
+      "decision": "Agent visual selection, root independent review required before Atlas integration."
+    },
+    {
+      "path": "public/cqc/assets/p69/survive-survival-spear-gold.png",
+      "bytes": 316046,
+      "sha256": "64ec8211084eec1816569a275f2a40336cb614b796988ace4d81e23237862b58",
+      "gitBlobSha": "c3cec297df91cb634a5f9133c288ec7f75526815",
+      "width": 2172,
+      "height": 724,
+      "colorMode": "RGBA",
+      "bitDepth": 8,
+      "colorType": 6,
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1457850,
+        "nearOpaquePixels250To255": 86377,
+        "semiTransparentPixels1To249": 28301,
+        "alphaAbove16OnCanvasEdges": 0,
+        "boundsAt16": [
+          24,
+          215,
+          2137,
+          477
+        ],
+        "boundsAt128": [
+          25,
+          216,
+          2137,
+          476
+        ]
+      },
+      "id": "survive-survival-spear-gold",
+      "assetId": "asset:p69:survive-survival-spear-gold",
+      "label": "Survive — Survival Spear [Gold], Survival Pack",
+      "kind": "prop",
+      "episode": "Metal Gear Survive",
+      "episodeKey": "survive",
+      "edition": "Metal Gear Survive — Survival Pack / variante Gold",
+      "pass": "P69",
+      "passId": "P69",
+      "workIds": [
+        "prop:survive_survival_spear_gold"
+      ],
+      "scope": "Lance dorée complète, profil trois quarts de l’inventaire, lame vers la gauche ; un PNG indépendant sans porteur.",
+      "bodyCoverage": "full_object",
+      "referenceFiles": [
+        "docs/cqc-reprise/pass69/research/survive/references/native-survival-spear-gold.jpg",
+        "docs/cqc-reprise/pass69/research/survive/references/official-mgv-preorder-beauty-shot.png"
+      ],
+      "referenceURLs": [
+        "https://w.atwiki.jp/mgsurvive/pages/24.html",
+        "https://img.atwiki.jp/mgsurvive/attach/24/64/20180815182903_1.jpg",
+        "https://www.konami.com/games/us/en/topics/917/",
+        "https://www.konami.com/kde_cms/na_publish/uploads/mgv_preorder_beauty_shot.png"
+      ],
+      "referenceMetadata": [
+        {
+          "path": "docs/cqc-reprise/pass69/research/survive/references/native-survival-spear-gold.jpg",
+          "bytes": 27961,
+          "sha256": "3074f350c1269c64ccd0b6baee3ba7049ab7f0c1cf4afbfb9fe454719784629d",
+          "gitBlobSha": "88510a6f36ebe969f6fd944c460f8fed9de00578",
+          "width": 828,
+          "height": 149,
+          "colorMode": "RGB",
+          "sourceURL": "https://img.atwiki.jp/mgsurvive/attach/24/64/20180815182903_1.jpg",
+          "contextURL": "https://w.atwiki.jp/mgsurvive/pages/24.html",
+          "sourceKind": "native_inventory_render_hosted_on_community_wiki",
+          "officialPublisherHosted": false,
+          "usedForGeneration": true,
+          "visuallyInspected": true,
+          "editing": "none; original retrieved bytes",
+          "observation": "Lance dorée intégrale sur grille ; silhouette comparée à la Survival Spear nommée dans le Survival Pack officiel. La page présente un exemple de la classe Thrust Weapons sans légende individuelle Gold.",
+          "retrieval": "public HTTPS GET with urllib.request and User-Agent Mozilla/5.0"
+        },
+        {
+          "path": "docs/cqc-reprise/pass69/research/survive/references/official-mgv-preorder-beauty-shot.png",
+          "bytes": 3291001,
+          "sha256": "c457b585462e3467e92da4b6ca04e89327eaf99bab5d274b8e6c450d05646502",
+          "gitBlobSha": "48e2dca40924d8ae469bc571a5ef442a66930960",
+          "width": 1919,
+          "height": 1079,
+          "colorMode": "RGBA",
+          "bitDepth": 8,
+          "colorType": 6,
+          "alphaExtrema": [
+            255,
+            255
+          ],
+          "alphaStats": {
+            "fullyTransparentPixels": 0,
+            "nearOpaquePixels250To255": 2070601,
+            "semiTransparentPixels1To249": 0,
+            "alphaAbove16OnCanvasEdges": 5996,
+            "boundsAt16": [
+              0,
+              0,
+              1919,
+              1079
+            ],
+            "boundsAt128": [
+              0,
+              0,
+              1919,
+              1079
+            ]
+          },
+          "sourceURL": "https://www.konami.com/kde_cms/na_publish/uploads/mgv_preorder_beauty_shot.png",
+          "contextURL": "https://www.konami.com/games/us/en/topics/917/",
+          "sourceKind": "official_publisher_promotional_render",
+          "officialPublisherHosted": true,
+          "usedForGeneration": false,
+          "visuallyInspected": true,
+          "editing": "none; original retrieved bytes",
+          "observation": "Document d’identification des variantes dorées ; les vignettes de la masse et de la lance servent à corroborer la forme et le nom. Non envoyé comme référence imagegen.",
+          "retrieval": "public HTTPS GET with urllib.request and User-Agent Mozilla/5.0"
+        }
+      ],
+      "qaNotes": [
+        "Capture native de l’exemple Thrust Weapons sur atwiki ; comparaison avec la Survival Spear dorée explicitement présente dans le Survival Pack officiel.",
+        "Lame courte asymétrique, petite garde circulaire, douille évasée, hampe fine très longue, bagues et pommeau arrondi sont conservés. La pointe, le pommeau et les marges sont présents.",
+        "Le nom précis de variante est corroboré par la planche officielle et la teinte du modèle ; la page communautaire ne fournit pas de légende individuelle Gold. Une confirmation de modèle reste ouverte.",
+        "L’échelle du relief, de l’usure et des bagues est interprétée, sans extraction 1:1 du modèle. Aucun porteur, estoc, projectile, collision ni comportement de combat n’est livré."
+      ],
+      "nextWork": [
+        "Vérifier le nom de modèle Gold, le revers de la lame, l’épaisseur de la garde et les bagues avec des vues natives supplémentaires.",
+        "Définir pour l’intégration future deux prises de mains sur la hampe sans modifier la proportion lame/hampe validée.",
+        "Documenter puis produire les positions de garde, estoc, retrait et transition de course ; traiter l’arme de mêlée séparément d’un projectile et garder l’effet de contact distinct."
+      ],
+      "transparentBackground": true,
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "publishedPath": "public/cqc/assets/p69/survive-survival-spear-gold.png",
+      "tracking": {
+        "scopeClosed": false,
+        "historicalWorkIds": [],
+        "extensionWorkIds": [
+          "prop:survive_survival_spear_gold"
+        ],
+        "narrativePlansCreated": 0
+      },
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "promptId": "survive-survival-spear-gold",
+        "promptFile": "docs/cqc-reprise/pass69/research/survive/prompts/survive-survival-spear-gold.txt",
+        "exactPrompt": "Use case: reference-grounded game prop extraction.\nCreate one individual PNG of the Survival Spear [Gold] from Metal Gear Survive, the gold-plated Survival Pack melee weapon. The supplied native inventory screenshot is the visual reference. Reproduce this complete single spear with the same long narrow proportions and same visible three-quarter side profile: the short broad blade points LEFT, the long gold cylindrical shaft extends to the RIGHT, rising very gently to the right as in the reference.\nPreserve the short knife-like asymmetric spear blade, its pointed bevelled tip and stepped back edge, the small disk-like guard/collar just behind the blade, the flared metal socket, the exceptionally long thin straight shaft, the specific subtle ring collars and stepped shaft diameters, the dark worn grip bands farther to the right, and the small rounded cylindrical pommel at the extreme right. Keep the blade short relative to the total shaft and retain the reference silhouette. Weathered brass/gold coating with dark brown worn patches and modest metallic highlights, matching the native rendering. Do not replace this with a medieval spear, trident, futuristic energy lance, long sword blade or bayonet on a rifle. No extra fins, cables, ornaments or new attachment.\nCompose one full-length isolated item on a wide landscape transparent canvas, generous padding around both tip and pommel. Sharp detailed 2D game asset, neutral even lighting, realistic material texture. No hands, character, weapon stand, ground, shadow, UI grid, targeting circle, numbers, letters, captions, border or background. Genuine alpha transparency. No contact sheet, alternate view, effect or animation. Preserve geometry visible in the reference; no invented opposite-side details.\n",
+        "referenced_image_paths": [
+          "/workspace/scratch/f62c7b61a198/shadow-codec-p68/docs/cqc-reprise/pass69/research/survive/references/native-survival-spear-gold.jpg"
+        ],
+        "transparent_background": true,
+        "postprocessing": "none; original generated PNG bytes preserved",
+        "originalGeneratedPath": "/workspace/scratch/f62c7b61a198/generated_images/exec-ec2afa99-84f0-4451-80e0-2c26c16162df.png",
+        "transport": "referenced_image_paths; output copied byte-for-byte from local generated_images file"
+      },
+      "decision": "Agent visual selection, root independent review required before Atlas integration."
+    }
+  ],
+  "archives": [],
+  "referenceFiles": [
+    {
+      "path": "docs/cqc-reprise/pass69/research/survive/references/native-air-side-220401_10.jpg",
+      "bytes": 300444,
+      "sha256": "5a35c229924a73b1729ffa4b67bf22eeb00b14d4d87ae3b6d19744e4efd28c52",
+      "gitBlobSha": "b785500ebb485ba41495d9749e85fe1bc27d87f7",
+      "width": 1920,
+      "height": 1080,
+      "colorMode": "RGB",
+      "sourceURL": "https://img.atwiki.jp/mgsurvive/attach/111/100/220401_10.jpg",
+      "contextURL": "https://w.atwiki.jp/mgsurvive/pages/111.html",
+      "sourceKind": "native_gameplay_screenshot_hosted_on_community_wiki",
+      "officialPublisherHosted": false,
+      "usedForGeneration": true,
+      "visuallyInspected": true,
+      "editing": "none; original retrieved bytes",
+      "observation": "Vue principale P69 : disque frontal, corps et monture dégagés ; quelques éléments du pied restent sous le HUD.",
+      "retrieval": "public HTTPS GET with urllib.request and User-Agent Mozilla/5.0"
+    },
+    {
+      "path": "docs/cqc-reprise/pass69/research/survive/references/native-air-support-220401_12.jpg",
+      "bytes": 292612,
+      "sha256": "6aa3590b40a45424cbd054f373bbf257b9c9da81747dc6b05a7253e6d06d147b",
+      "gitBlobSha": "2622177ae31c7c46e7c30693d6276033b6345560",
+      "width": 1920,
+      "height": 1080,
+      "colorMode": "RGB",
+      "sourceURL": "https://img.atwiki.jp/mgsurvive/attach/111/98/220401_12.jpg",
+      "contextURL": "https://w.atwiki.jp/mgsurvive/pages/111.html",
+      "sourceKind": "native_gameplay_screenshot_hosted_on_community_wiki",
+      "officialPublisherHosted": false,
+      "usedForGeneration": true,
+      "visuallyInspected": true,
+      "editing": "none; original retrieved bytes",
+      "observation": "Seconde vue : collerette, monture, quatre appuis ; face de l’émetteur sous le HUD, couverte par la nouvelle vue 220401_10.",
+      "retrieval": "byte-for-byte copy of surviving published P68 reference",
+      "inheritedFrom": "docs/cqc-reprise/pass68/research/survive/references/native-balloon-trap-220401_12.jpg"
+    },
+    {
+      "path": "docs/cqc-reprise/pass69/research/survive/references/native-heavy-weapon-20180815182912_1.jpg",
+      "bytes": 80730,
+      "sha256": "a8849122e2ce3ec3c7952829154e37dd742fc9b527af9bb7959f58d497ab9e4d",
+      "gitBlobSha": "c9e8cc3237073aa63bdde0832a869706a3b4c749",
+      "width": 800,
+      "height": 521,
+      "colorMode": "RGB",
+      "sourceURL": "https://img.atwiki.jp/mgsurvive/attach/25/71/20180815182912_1.jpg",
+      "contextURL": "https://w.atwiki.jp/mgsurvive/pages/25.html",
+      "sourceKind": "native_inventory_render_hosted_on_community_wiki",
+      "officialPublisherHosted": false,
+      "usedForGeneration": true,
+      "visuallyInspected": true,
+      "editing": "none; original retrieved bytes",
+      "observation": "Marteau doré intégral sur grille ; silhouette comparée au Sledgehammer nommé dans la planche officielle. La page classe l’image comme exemple Heavy Weapons, sans légende individuelle Gold.",
+      "retrieval": "public HTTPS GET with urllib.request and User-Agent Mozilla/5.0"
+    },
+    {
+      "path": "docs/cqc-reprise/pass69/research/survive/references/native-survival-spear-gold.jpg",
+      "bytes": 27961,
+      "sha256": "3074f350c1269c64ccd0b6baee3ba7049ab7f0c1cf4afbfb9fe454719784629d",
+      "gitBlobSha": "88510a6f36ebe969f6fd944c460f8fed9de00578",
+      "width": 828,
+      "height": 149,
+      "colorMode": "RGB",
+      "sourceURL": "https://img.atwiki.jp/mgsurvive/attach/24/64/20180815182903_1.jpg",
+      "contextURL": "https://w.atwiki.jp/mgsurvive/pages/24.html",
+      "sourceKind": "native_inventory_render_hosted_on_community_wiki",
+      "officialPublisherHosted": false,
+      "usedForGeneration": true,
+      "visuallyInspected": true,
+      "editing": "none; original retrieved bytes",
+      "observation": "Lance dorée intégrale sur grille ; silhouette comparée à la Survival Spear nommée dans le Survival Pack officiel. La page présente un exemple de la classe Thrust Weapons sans légende individuelle Gold.",
+      "retrieval": "public HTTPS GET with urllib.request and User-Agent Mozilla/5.0"
+    },
+    {
+      "path": "docs/cqc-reprise/pass69/research/survive/references/official-mgv-preorder-beauty-shot.png",
+      "bytes": 3291001,
+      "sha256": "c457b585462e3467e92da4b6ca04e89327eaf99bab5d274b8e6c450d05646502",
+      "gitBlobSha": "48e2dca40924d8ae469bc571a5ef442a66930960",
+      "width": 1919,
+      "height": 1079,
+      "colorMode": "RGBA",
+      "bitDepth": 8,
+      "colorType": 6,
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 0,
+        "nearOpaquePixels250To255": 2070601,
+        "semiTransparentPixels1To249": 0,
+        "alphaAbove16OnCanvasEdges": 5996,
+        "boundsAt16": [
+          0,
+          0,
+          1919,
+          1079
+        ],
+        "boundsAt128": [
+          0,
+          0,
+          1919,
+          1079
+        ]
+      },
+      "sourceURL": "https://www.konami.com/kde_cms/na_publish/uploads/mgv_preorder_beauty_shot.png",
+      "contextURL": "https://www.konami.com/games/us/en/topics/917/",
+      "sourceKind": "official_publisher_promotional_render",
+      "officialPublisherHosted": true,
+      "usedForGeneration": false,
+      "visuallyInspected": true,
+      "editing": "none; original retrieved bytes",
+      "observation": "Document d’identification des variantes dorées ; les vignettes de la masse et de la lance servent à corroborer la forme et le nom. Non envoyé comme référence imagegen.",
+      "retrieval": "public HTTPS GET with urllib.request and User-Agent Mozilla/5.0"
+    },
+    {
+      "path": "docs/cqc-reprise/pass69/research/survive/references/native-defenses-220401_03.jpg",
+      "bytes": 173719,
+      "sha256": "4267f01ac05c3d639af46ddffc78765f395b54d445644de6e55c0eed908f5ac2",
+      "gitBlobSha": "eceb3ac3ee31bbf9384eee980ad228ac8a7228d4",
+      "width": 1920,
+      "height": 1080,
+      "colorMode": "RGB",
+      "sourceURL": "https://img.atwiki.jp/mgsurvive/attach/111/94/220401_03.jpg",
+      "contextURL": "https://w.atwiki.jp/mgsurvive/pages/111.html",
+      "sourceKind": "native_gameplay_screenshot_hosted_on_community_wiki",
+      "officialPublisherHosted": false,
+      "usedForGeneration": false,
+      "visuallyInspected": true,
+      "editing": "none; original retrieved bytes",
+      "observation": "Réexaminée : Oil Trap et Flame Trap déjà sélectionnés P66, aucun Frost/Shock Trap distinct établi.",
+      "retrieval": "github_fetch_file encoding base64 at published P68 commit, exact P66 reference bytes",
+      "inheritedFrom": "docs/cqc-reprise/pass66/research/survive/references/native-defenses-220401_03.jpg"
+    },
+    {
+      "path": "docs/cqc-reprise/pass69/research/survive/references/native-defenses-220401_04.jpg",
+      "bytes": 225133,
+      "sha256": "074128fc431815ee965e5fee5ba3a0346c5880d7eff1078d4c19e99a0a81ba2a",
+      "gitBlobSha": "9d9ed563e0f182cc40f9da2f9ef6e1bf428bfcbb",
+      "width": 1920,
+      "height": 1080,
+      "colorMode": "RGB",
+      "sourceURL": "https://img.atwiki.jp/mgsurvive/attach/111/95/220401_04.jpg",
+      "contextURL": "https://w.atwiki.jp/mgsurvive/pages/111.html",
+      "sourceKind": "native_gameplay_screenshot_hosted_on_community_wiki",
+      "officialPublisherHosted": false,
+      "usedForGeneration": false,
+      "visuallyInspected": true,
+      "editing": "none; original retrieved bytes",
+      "observation": "Réexaminée : Machine Gun Turret déjà sélectionnée P66 ; aucun doublon généré.",
+      "retrieval": "github_fetch_file encoding base64 at published P68 commit, exact P66 reference bytes",
+      "inheritedFrom": "docs/cqc-reprise/pass66/research/survive/references/native-defenses-220401_04.jpg"
+    },
+    {
+      "path": "docs/cqc-reprise/pass69/research/survive/references/survive_defenses_official.png",
+      "bytes": 287916,
+      "sha256": "8bc5c54342155692fe56dd42f048037a1a663b580205c30d2911152224c9dd43",
+      "gitBlobSha": "18b9d210b7937e09f020327975bd50c21e99bb60",
+      "width": 518,
+      "height": 287,
+      "colorMode": "RGBA",
+      "bitDepth": 8,
+      "colorType": 6,
+      "alphaExtrema": [
+        255,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 0,
+        "nearOpaquePixels250To255": 148666,
+        "semiTransparentPixels1To249": 0,
+        "alphaAbove16OnCanvasEdges": 1610,
+        "boundsAt16": [
+          0,
+          0,
+          518,
+          287
+        ],
+        "boundsAt128": [
+          0,
+          0,
+          518,
+          287
+        ]
+      },
+      "sourceURL": "https://eu-support.konami.com/hc/article_attachments/25993239646359",
+      "contextURL": "https://eu-support.konami.com/hc/en-gb/articles/9649642757399-Game-Modes",
+      "sourceKind": "official_publisher_gameplay_screenshot",
+      "officialPublisherHosted": true,
+      "usedForGeneration": false,
+      "visuallyInspected": true,
+      "editing": "none; original retrieved bytes",
+      "observation": "Mortar déployé encore masqué par son opérateur. Aucune génération.",
+      "retrieval": "github_fetch_file encoding base64 at published P68 commit, exact P66 reference bytes",
+      "inheritedFrom": "docs/cqc-reprise/pass66/research/survive/references/survive_defenses_official.png"
+    },
+    {
+      "path": "docs/cqc-reprise/pass69/research/survive/references/native-air-spike-220401_11.jpg",
+      "bytes": 171340,
+      "sha256": "e06c0b57ca08f1867d8a5a0dbc7b90b9968eb9db5e67aad9b28d385a0a64a6da",
+      "gitBlobSha": "37e358caf1d1e3dfd2d2d860391ebeb43affc155",
+      "width": 1920,
+      "height": 1080,
+      "colorMode": "RGB",
+      "sourceURL": "https://img.atwiki.jp/mgsurvive/attach/111/102/220401_11.jpg",
+      "contextURL": "https://w.atwiki.jp/mgsurvive/pages/111.html",
+      "sourceKind": "native_gameplay_screenshot_hosted_on_community_wiki",
+      "officialPublisherHosted": false,
+      "usedForGeneration": false,
+      "visuallyInspected": true,
+      "editing": "none; original retrieved bytes",
+      "observation": "Grande barricade de pieux : centre masqué par l’avatar, aucune génération.",
+      "retrieval": "public HTTPS GET with urllib.request and User-Agent Mozilla/5.0"
+    },
+    {
+      "path": "docs/cqc-reprise/pass69/research/survive/references/native-defense-220401_06.jpg",
+      "bytes": 167006,
+      "sha256": "90cce40e349fa0abf48291d0054caf6ac8edb1b40507337bb3d8bc54b73c220f",
+      "gitBlobSha": "34c22b89dcb8be794499cef8ac50393a2f1bb3fc",
+      "width": 1920,
+      "height": 1080,
+      "colorMode": "RGB",
+      "sourceURL": "https://img.atwiki.jp/mgsurvive/attach/111/97/220401_06.jpg",
+      "contextURL": "https://w.atwiki.jp/mgsurvive/pages/111.html",
+      "sourceKind": "native_gameplay_screenshot_hosted_on_community_wiki",
+      "officialPublisherHosted": false,
+      "usedForGeneration": false,
+      "visuallyInspected": true,
+      "editing": "none; original retrieved bytes",
+      "observation": "Air Cannon moins dégagé que la vue 10 ; non envoyé à imagegen.",
+      "retrieval": "public HTTPS GET with urllib.request and User-Agent Mozilla/5.0"
+    },
+    {
+      "path": "docs/cqc-reprise/pass69/research/survive/references/native-defense-220401_08.jpg",
+      "bytes": 332704,
+      "sha256": "f5013cebced16d133817f161322e70a40482aa749ea4f8b45760be90469a0bdd",
+      "gitBlobSha": "a54b826a217ea2b93f917d5906d9a55e9354d6cb",
+      "width": 1920,
+      "height": 1080,
+      "colorMode": "RGB",
+      "sourceURL": "https://img.atwiki.jp/mgsurvive/attach/111/99/220401_08.jpg",
+      "contextURL": "https://w.atwiki.jp/mgsurvive/pages/111.html",
+      "sourceKind": "native_gameplay_screenshot_hosted_on_community_wiki",
+      "officialPublisherHosted": false,
+      "usedForGeneration": false,
+      "visuallyInspected": true,
+      "editing": "none; original retrieved bytes",
+      "observation": "Montage de clôtures ; aucun objet nouveau lisible.",
+      "retrieval": "public HTTPS GET with urllib.request and User-Agent Mozilla/5.0"
+    },
+    {
+      "path": "docs/cqc-reprise/pass69/research/survive/references/native-defense-220401_09.jpg",
+      "bytes": 129907,
+      "sha256": "b9e01bb2b079c4340b75fa6274e1562aeaf6368a8d6189c2f1c804df02ad395c",
+      "gitBlobSha": "70d617bca8cc1f81ef27e3d71797fe0e1ff8c8a7",
+      "width": 1920,
+      "height": 1080,
+      "colorMode": "RGB",
+      "sourceURL": "https://img.atwiki.jp/mgsurvive/attach/111/101/220401_09.jpg",
+      "contextURL": "https://w.atwiki.jp/mgsurvive/pages/111.html",
+      "sourceKind": "native_gameplay_screenshot_hosted_on_community_wiki",
+      "officialPublisherHosted": false,
+      "usedForGeneration": false,
+      "visuallyInspected": true,
+      "editing": "none; original retrieved bytes",
+      "observation": "Air Cannon masqué par le personnage ; non envoyé à imagegen.",
+      "retrieval": "public HTTPS GET with urllib.request and User-Agent Mozilla/5.0"
+    },
+    {
+      "path": "docs/cqc-reprise/pass69/research/survive/references/native-onehand-example-20180815182809_1.jpg",
+      "bytes": 53032,
+      "sha256": "1dd656ec27d6b17ea6ea97e25b599b7c7989a057a7554b54713170a05fb1348c",
+      "gitBlobSha": "d1c9c297a0ad75303f5d1942beebc482d5170411",
+      "width": 776,
+      "height": 352,
+      "colorMode": "RGB",
+      "sourceURL": "https://img.atwiki.jp/mgsurvive/attach/21/65/20180815182809_1.jpg",
+      "contextURL": "https://w.atwiki.jp/mgsurvive/pages/21.html",
+      "sourceKind": "native_inventory_render_hosted_on_community_wiki",
+      "officialPublisherHosted": false,
+      "usedForGeneration": false,
+      "visuallyInspected": true,
+      "editing": "none; original retrieved bytes",
+      "observation": "Exemple de machette à lame sombre et manche enveloppé ; identité de variante non établie, aucune génération. Le fichier a été renommé pour ne pas l’affirmer Gold.",
+      "retrieval": "public HTTPS GET with urllib.request and User-Agent Mozilla/5.0"
+    },
+    {
+      "path": "docs/cqc-reprise/pass69/research/survive/references/official-preorder-for-web.jpg",
+      "bytes": 3507985,
+      "sha256": "8cc8e4bf134fe4ea76fdc7d82358bdc5c460476d6477783e7edf01681a186610",
+      "gitBlobSha": "b2b12e42818f0faeb4aaa9233cc4ada40258a5bd",
+      "width": 1920,
+      "height": 1080,
+      "colorMode": "RGB",
+      "sourceURL": "https://www.konami.com/kde_cms/eu_publish/uploads/for-web.jpg",
+      "contextURL": "https://www.konami.com/games/eu/en/topics/14402/",
+      "sourceKind": "official_publisher_promotional_render",
+      "officialPublisherHosted": true,
+      "usedForGeneration": false,
+      "visuallyInspected": true,
+      "editing": "none; original retrieved bytes",
+      "observation": "Affiche générale, pas une planche d’équipement ; archivée comme piste examinée, non utilisée.",
+      "retrieval": "public HTTPS GET with urllib.request and User-Agent Mozilla/5.0"
+    },
+    {
+      "path": "docs/cqc-reprise/pass69/research/survive/references/official-preorder-1920_1080-600x338.jpg",
+      "bytes": 62009,
+      "sha256": "87dec1eaf5e95bafec67cc89642443e9d0c967baa25d33894de4816945c82246",
+      "gitBlobSha": "1dba50a160e1f3a44f3c7453f71f38e6884c6fd2",
+      "width": 600,
+      "height": 338,
+      "colorMode": "RGB",
+      "sourceURL": "https://www.konami.com/kde_cms/eu_publish/uploads/1920_1080-600x338.jpg",
+      "contextURL": "https://www.konami.com/games/eu/en/topics/14402/",
+      "sourceKind": "official_publisher_promotional_render",
+      "officialPublisherHosted": true,
+      "usedForGeneration": false,
+      "visuallyInspected": true,
+      "editing": "none; original retrieved bytes",
+      "observation": "Affiche de sortie, pas une planche d’équipement ; non utilisée.",
+      "retrieval": "public HTTPS GET with urllib.request and User-Agent Mozilla/5.0"
+    }
+  ],
+  "openCandidates": [
+    {
+      "id": "survive-air-shock-cannon",
+      "status": "new_static_candidate_not_scope_closed",
+      "reason": "New source220401_10 supports the visible front; back, active states and geometric qualification remain open."
+    },
+    {
+      "id": "survive-large-spike-barricade",
+      "status": "open_no_image_generated",
+      "reason": "Central support is still obscured by the avatar in screenshot220401_11."
+    },
+    {
+      "id": "survive-mortar-emplacement",
+      "status": "open_no_image_generated",
+      "reason": "Published official screenshot still hides support behind the operator."
+    },
+    {
+      "id": "survive-frost-shock-traps",
+      "status": "open_no_image_generated",
+      "reason": "Retrieved defense screenshots only identify Oil and Flame traps; distinct Frost and Shock geometry unconfirmed."
+    },
+    {
+      "id": "survive-onehand-example",
+      "status": "open_no_image_generated",
+      "reason": "Native blade screenshot classifies the weapon class but exact individual weapon identity not established."
+    },
+    {
+      "id": "survive-silver-scarf-avatars",
+      "status": "open_no_image_generated",
+      "reason": "Official promotional thumbnails viewed but insufficient individual surface detail; no bodies invented."
+    }
+  ],
+  "integrationNote": "Three static reference-grounded candidates only. Existing selections, history rows, code and central bible/Atlas files untouched by this agent. Native outputs are 1086x1448,1555x1012,2172x724, not native UHD. Root owns final validation and publication."
+}

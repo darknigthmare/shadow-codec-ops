@@ -1,5 +1,11 @@
 # Shadow Codec Ops - v3.10.0
 
+## CQC — bible associée et continuation P62, 25 novembre 2026
+
+Le [guide général de jeux de combat est intégré à la bible CQC](docs/cqc-bible/README.md) : **30 rubriques, 90 exigences**, preuve de l’état du code, huit pilotes avec leurs UID existants, routes/rivalités, campagne commune distincte, neutralisations, boss et quatre axes d’arène. Les [associations](docs/cqc-bible/ASSOCIATIONS.md) relient **177 PNG sélectionnés** aux besoins de conception et à l’inventaire historique ; les **5 nouveaux décors P62** complètent des secteurs partiels. [Bilan et galerie P62](docs/cqc-reprise/pass62/README.md).
+
+La production, l’intégration et la validation sont suivies séparément. Les nouvelles fiches et sources fixes de cette passe n’ajoutent pas automatiquement un combattant, une animation ou un mode jouable. Les limites de fidélité restent visibles dans les manifests.
+
 ## CQC — continuation PASS5 du 1er octobre 2026
 
 Fortune, Fatman, Vamp et Solidus MGS2 ajoutent **24 PNG natifs et 288 poses**, avec deux orientations indépendantes. Total : **18 ensembles /108 PNG /1296 poses**, dont l’OC PARALLAXE. Les couteaux de Vamp et les C4 de Fatman utilisent des images natives. Douze tableaux terminent Jungle Evil et Night Fright MG2 : **474 peintures /79 récits complets**, avec les textes et routes antérieurs conservés. Les 30 stages restent conservés. Le même contenu est disponible dans l’onglet CQC VERSUS et à `/cqc/index.html`. Objectif 1:1 au mieux, verdict `closest_supported` avec preuves et limites. Lire [les notes PASS5](docs/REPRISE_CQC_PASS5_2026-10-01.md).

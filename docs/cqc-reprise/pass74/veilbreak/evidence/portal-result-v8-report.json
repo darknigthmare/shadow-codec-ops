@@ -1,0 +1,96 @@
+{
+  "scope": "Pure production onResult, next-handler and campaign acceptResult executed in V8; only DOM/storage side effects stubbed. No browser execution.",
+  "fixedPortalBlob": "04eb28e9f5c15d5b9a73763c9f72b5802ea8d7ea",
+  "campaignBlob": "59b951617c50a6d2acd779f7ed69f40a8bac4b81",
+  "fixed": {
+    "passed": 12,
+    "failed": 0,
+    "tests": [
+      {
+        "name": "campaign last encounter defeat never announces completion or advances counters",
+        "passed": true
+      },
+      {
+        "name": "campaign last encounter draw never announces completion or advances counters",
+        "passed": true
+      },
+      {
+        "name": "campaign defeat when replaying a previously completed final encounter stays a defeat",
+        "passed": true
+      },
+      {
+        "name": "campaign final victory advances only its own counter once and announces completion",
+        "passed": true
+      },
+      {
+        "name": "campaign completed-route replay keeps counters and follows the played index",
+        "passed": true
+      },
+      {
+        "name": "bossrush last encounter defeat never announces completion or advances counters",
+        "passed": true
+      },
+      {
+        "name": "bossrush last encounter draw never announces completion or advances counters",
+        "passed": true
+      },
+      {
+        "name": "bossrush defeat when replaying a previously completed final encounter stays a defeat",
+        "passed": true
+      },
+      {
+        "name": "bossrush final victory advances only its own counter once and announces completion",
+        "passed": true
+      },
+      {
+        "name": "bossrush completed-route replay keeps counters and follows the played index",
+        "passed": true
+      },
+      {
+        "name": "invalid outcomes do not consume a session or mutate progress",
+        "passed": true
+      },
+      {
+        "name": "free combat victory has no campaign continuation or progression side effect",
+        "passed": true
+      }
+    ]
+  },
+  "previous": {
+    "portalBlob": "c5789cf0c056d2e4322d3e05f2f0db09f5b977d6",
+    "passed": 6,
+    "failed": 6,
+    "failures": [
+      {
+        "name": "campaign last encounter defeat never announces completion or advances counters",
+        "passed": false,
+        "error": "Expected \"Le contrat tient encore.\", received \"Le passage est ouvert.\""
+      },
+      {
+        "name": "campaign last encounter draw never announces completion or advances counters",
+        "passed": false,
+        "error": "Expected \"Le contrat tient encore.\", received \"Le passage est ouvert.\""
+      },
+      {
+        "name": "campaign defeat when replaying a previously completed final encounter stays a defeat",
+        "passed": false,
+        "error": "Expected \"Le contrat tient encore.\", received \"Le passage est ouvert.\""
+      },
+      {
+        "name": "bossrush last encounter defeat never announces completion or advances counters",
+        "passed": false,
+        "error": "Expected \"Le contrat tient encore.\", received \"Les vingt verrous sont tombés.\""
+      },
+      {
+        "name": "bossrush last encounter draw never announces completion or advances counters",
+        "passed": false,
+        "error": "Expected \"Le contrat tient encore.\", received \"Les vingt verrous sont tombés.\""
+      },
+      {
+        "name": "bossrush defeat when replaying a previously completed final encounter stays a defeat",
+        "passed": false,
+        "error": "Expected \"Le contrat tient encore.\", received \"Les vingt verrous sont tombés.\""
+      }
+    ]
+  }
+}

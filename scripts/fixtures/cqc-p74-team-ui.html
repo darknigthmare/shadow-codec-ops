@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CQC P74 — contrôle isolé du module équipe</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#07100d;color:#d5e7d5;font:14px system-ui}main{max-width:1050px;margin:auto;padding:16px}.setup{display:grid;gap:10px;border:1px solid #405446;padding:16px}h1{font-size:19px}p{line-height:1.5}select{padding:7px;background:#13271e;color:#d5e7d5;border:1px solid #54735f}#fightScreen{position:relative;height:290px;margin-top:16px;border:1px solid #405446}.canvas-wrap{position:absolute;inset:0 0 34px;padding:16px;background:#0d1c16}#fixtureState{white-space:pre-line}footer{position:absolute;bottom:0;padding:6px;font:11px ui-monospace}
+</style>
+<main>
+<h1>HARNESS P74 · ÉQUIPES 2v2</h1>
+<p>Vérification isolée des sélections, commandes et états du module équipe. Cette page ne représente pas le rendu du jeu.</p>
+<section class="setup" aria-label="Configuration de contrôle"></section>
+<section id="fightScreen" aria-label="Combat de contrôle">
+<div class="canvas-wrap"><b>État du moteur existant</b><p id="fixtureState"></p></div>
+<footer>Horloge fixe · CQCCombat048Pass8</footer>
+</section>
+</main>
+<script src="../../public/cqc/src/cqc-p74-tag-team.js"></script>
+<script src="../../public/cqc/src/cqc-p74-team-controls.js"></script>
+<script src="../../public/cqc/src/cqc-pass8-combat-engine.js"></script>
+<script>
+'use strict';
+function fixtureFighter(uid){const move=(slot,extra={})=>({slot,name:slot,kind:'melee',tag:'strike',level:'mid',startup:3,active:3,recovery:5,damage:300,reach:115,cost:0,meter:0,...extra});return{uid,name:'Contrôle '+uid,ep:'TEST',power:1,speed:1,reach:1,visual:{kind:'human'},combat:{resource:{kind:'ammo',label:'AMMO',max:6,regen:0},passive:{},links:[],moves:{light:move('light'),heavy:move('heavy'),special:move('special',{kind:'projectile',tag:'ballistic',speed:8,life:200,cost:1,height:140}),utility:move('utility',{kind:'reload',damage:0}),throw:move('throw',{level:'throw'})}}};}
+const roster=['Alpha','Bravo','Charlie','Delta'].map(fixtureFighter),leads=[roster[0],roster[1]],engine=CQCCombat048Pass8,ui=CQC_P74_TEAM_UI;
+let state=engine.create(...leads,{skipIntro:true}),paused=false;
+function update(){ui.update(state);document.getElementById('fixtureState').textContent='J1 : '+state.a.f.name+'\nJ2 : '+state.b.f.name+'\nFrame : '+state.frame+' · '+state.phase;}
+ui.mount({document,fighters:roster,getSelection:()=>leads,getState:()=>state,canInput:()=>!paused,onSelectionChange:()=>{},external:false});
+window.harness={
+ get state(){return state;},ui,
+ start(){state=engine.create(...leads,{skipIntro:true,seconds:99,teams:ui.resolve(roster,leads,ui.selection())});ui.resetInputs();(state.teams?.flatMap(t=>t.members)||[state.a,state.b]).forEach(p=>p.meter=60);update();},
+ tick(frames=1){for(let i=0;i<frames;i++)engine.step(state,[{...engine.empty(),teamAction:ui.read(0,new Set(),null)},{...engine.empty(),teamAction:ui.read(1,new Set(),null)}]);update();},
+ pause(value){paused=value;update();},
+ update
+};
+update();
+</script>
+</html>

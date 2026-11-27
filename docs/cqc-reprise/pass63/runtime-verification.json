@@ -1,0 +1,411 @@
+{
+  "schema": "shadow-codec-ops.cqc-p63-runtime-verification/1",
+  "asOf": "2026-11-26T03:37:28Z",
+  "status": "incremental_verification_passed",
+  "scope": "P63 source Atlas dependency graph and ledger extension; no combat admission.",
+  "method": {
+    "execution": "functions V8 isolate; executor unavailable.",
+    "dependencyScanner": "Exact discoverReferences and isRuntimePath function bodies from scripts/sync-cqc-runtime.mjs at dd6338087538d9a00e6e0241cd9cd38a24c87393, with explicit POSIX adapters and the 16 actual P48 local pins.",
+    "manifestUpdate": "Incremental in-memory equivalent of the supplied helper: replace five Atlas text rows, append 17 PNG rows, rediscover affected references, sort rows/edges, recompute totals and check reachability.",
+    "textHashing": "SHA256 of recovered UTF-8 text, including final catalog, computed in V8. SHA256 implementation checked against empty-string and abc reference vectors.",
+    "pngHashing": "PNG byte sizes, SHA256 and Git blob IDs come from the final generation catalog. Image bytes were not downloaded or decoded in this verification.",
+    "fullRuntimeVerification": false
+  },
+  "baseline": {
+    "commit": "dd6338087538d9a00e6e0241cd9cd38a24c87393",
+    "manifestBlob": "d2e24c5eb01f8656d040432d6f9a382955e31025",
+    "manifestBytes": 1651877,
+    "manifestSHA256": "5b87c8a4d9ebed3c475cdfe6f6d20640a85520f727107d1a144955561907bfed",
+    "fileCount": 3009,
+    "referenceCount": 4943,
+    "omittedReferenceCount": 740,
+    "totalBytes": 3446705189
+  },
+  "proposed": {
+    "path": "public/cqc/runtime-manifest.json",
+    "gitBlobSha": "67209827a2936248bcc1d9693cae57a9fa7c4f5d",
+    "bytes": 1657951,
+    "sha256": "586008628271d391b886b2266d5d7c591da10516886724bf306de8f9f8f86728",
+    "fileCount": 3030,
+    "referenceCount": 4966,
+    "omittedReferenceCount": 740,
+    "totalBytes": 3488155704,
+    "addedFileCount": 21,
+    "addedReferenceCount": 23,
+    "byteIncrease": 41450515
+  },
+  "preservation": {
+    "unchangedLegacyFileRows": 3008,
+    "modifiedLegacyPaths": [
+      "index.html"
+    ],
+    "removedLegacyFiles": [],
+    "removedLegacyReferences": [],
+    "all4943LegacyReferencesPreserved": true,
+    "all740HistoricalOmissionsPreserved": true,
+    "schemaEntryStorageExclusionsUnchanged": true,
+    "externalReferenceCount": 499,
+    "externalPolicySHA256": "e9db83c672685a37e66a07dc53637bf6d8b0c05877e01ed420c8853f0438e4ef",
+    "externalPolicyUnchanged": true,
+    "newBasenameCollisionWithLegacyFilesOmissionsOrExternalRoutes": false
+  },
+  "graph": {
+    "all3030DeclaredFilesReachable": true,
+    "allNewPathsReachable": true,
+    "duplicateFileRows": false,
+    "duplicateReferenceRows": false,
+    "unresolvedNewRuntimeReferences": [],
+    "addedReferences": [
+      {
+        "from": "data/cqc-p63-source-atlas.json",
+        "to": "assets/p63/acid-far-exterior.png"
+      },
+      {
+        "from": "data/cqc-p63-source-atlas.json",
+        "to": "assets/p63/acid-far-interior.png"
+      },
+      {
+        "from": "data/cqc-p63-source-atlas.json",
+        "to": "assets/p63/acid-lobito-forest.png"
+      },
+      {
+        "from": "data/cqc-p63-source-atlas.json",
+        "to": "assets/p63/acid2-cargo-train.png"
+      },
+      {
+        "from": "data/cqc-p63-source-atlas.json",
+        "to": "assets/p63/acid2-harbor-area.png"
+      },
+      {
+        "from": "data/cqc-p63-source-atlas.json",
+        "to": "assets/p63/acid2-security-monitor-room.png"
+      },
+      {
+        "from": "data/cqc-p63-source-atlas.json",
+        "to": "assets/p63/mgr-guadalajara-brain-chamber.png"
+      },
+      {
+        "from": "data/cqc-p63-source-atlas.json",
+        "to": "assets/p63/mgr-guadalajara-grad-arena.png"
+      },
+      {
+        "from": "data/cqc-p63-source-atlas.json",
+        "to": "assets/p63/mgr-pakistan-exterior.png"
+      },
+      {
+        "from": "data/cqc-p63-source-atlas.json",
+        "to": "assets/p63/mgr-wm-freight-elevator.png"
+      },
+      {
+        "from": "data/cqc-p63-source-atlas.json",
+        "to": "assets/p63/mgr-wm-japanese-garden.png"
+      },
+      {
+        "from": "data/cqc-p63-source-atlas.json",
+        "to": "assets/p63/mgr-wm-lobby.png"
+      },
+      {
+        "from": "data/cqc-p63-source-atlas.json",
+        "to": "assets/p63/mgr-wm-server-room.png"
+      },
+      {
+        "from": "data/cqc-p63-source-atlas.json",
+        "to": "assets/p63/survive-abandoned-airport.png"
+      },
+      {
+        "from": "data/cqc-p63-source-atlas.json",
+        "to": "assets/p63/survive-deserted-mine.png"
+      },
+      {
+        "from": "data/cqc-p63-source-atlas.json",
+        "to": "assets/p63/survive-fallen-village.png"
+      },
+      {
+        "from": "data/cqc-p63-source-atlas.json",
+        "to": "assets/p63/survive-wrecked-base.png"
+      },
+      {
+        "from": "index.html",
+        "to": "modules/source-atlas-v063.html"
+      },
+      {
+        "from": "modules/source-atlas-v063.html",
+        "to": "index.html"
+      },
+      {
+        "from": "modules/source-atlas-v063.html",
+        "to": "src/cqc-p63-source-atlas.css"
+      },
+      {
+        "from": "modules/source-atlas-v063.html",
+        "to": "src/cqc-p63-source-atlas.js"
+      },
+      {
+        "from": "src/cqc-p63-source-atlas.js",
+        "to": "data/cqc-p63-source-atlas.json"
+      },
+      {
+        "from": "src/cqc-p63-source-atlas.js",
+        "to": "index.html"
+      }
+    ],
+    "discovery": [
+      {
+        "from": "src/cqc-p63-source-atlas.js",
+        "references": [
+          "data/cqc-p63-source-atlas.json",
+          "index.html"
+        ],
+        "omittedReferences": []
+      },
+      {
+        "from": "index.html",
+        "references": [
+          "modules/acid-machines-v031.html",
+          "modules/arcade-chronicles-v055.html",
+          "modules/archive-front-v040.html",
+          "modules/arsenal-files-v043.html",
+          "modules/arsenal-files-v044.html",
+          "modules/atelier-v056.html",
+          "modules/battle-operations-v053.html",
+          "modules/chronicles-v056.html",
+          "modules/combat-academy-v053.html",
+          "modules/core-v032.html",
+          "modules/episode-archives-v052.html",
+          "modules/finisher-archive-v053.html",
+          "modules/franchise-hub-v053.html",
+          "modules/mission-files-v036.html",
+          "modules/recovery-files-v037.html",
+          "modules/revengeance-machines-v032.html",
+          "modules/rival-files-v039.html",
+          "modules/rival-files-v041.html",
+          "modules/rival-files-v044.html",
+          "modules/roster-command-v053.html",
+          "modules/source-atlas-v063.html",
+          "modules/support-network-v053.html",
+          "modules/unified-versus-v043.html",
+          "modules/unified-versus-v044.html",
+          "modules/unified-versus-v055.html",
+          "originals/parallaxe/index.html",
+          "src/cqc-menu-art-catalog-v1.js",
+          "src/cqc-menu-art.js"
+        ],
+        "omittedReferences": []
+      },
+      {
+        "from": "modules/source-atlas-v063.html",
+        "references": [
+          "index.html",
+          "src/cqc-p63-source-atlas.css",
+          "src/cqc-p63-source-atlas.js"
+        ],
+        "omittedReferences": []
+      },
+      {
+        "from": "src/cqc-p63-source-atlas.css",
+        "references": [],
+        "omittedReferences": []
+      },
+      {
+        "from": "data/cqc-p63-source-atlas.json",
+        "references": [
+          "assets/p63/acid-far-exterior.png",
+          "assets/p63/acid-far-interior.png",
+          "assets/p63/acid-lobito-forest.png",
+          "assets/p63/acid2-cargo-train.png",
+          "assets/p63/acid2-harbor-area.png",
+          "assets/p63/acid2-security-monitor-room.png",
+          "assets/p63/mgr-guadalajara-brain-chamber.png",
+          "assets/p63/mgr-guadalajara-grad-arena.png",
+          "assets/p63/mgr-pakistan-exterior.png",
+          "assets/p63/mgr-wm-freight-elevator.png",
+          "assets/p63/mgr-wm-japanese-garden.png",
+          "assets/p63/mgr-wm-lobby.png",
+          "assets/p63/mgr-wm-server-room.png",
+          "assets/p63/survive-abandoned-airport.png",
+          "assets/p63/survive-deserted-mine.png",
+          "assets/p63/survive-fallen-village.png",
+          "assets/p63/survive-wrecked-base.png"
+        ],
+        "omittedReferences": []
+      }
+    ]
+  },
+  "catalog": {
+    "path": "public/cqc/data/cqc-p63-source-atlas.json",
+    "gitBlobSha": "6be81bd21fddcba7a6ec06e5e570430d88c5496b",
+    "count": 17,
+    "byEpisode": {
+      "acid": 3,
+      "acid2": 3,
+      "mgr": 7,
+      "survive": 4
+    },
+    "allCombatReadyFalse": true,
+    "bytes": 36693,
+    "sha256": "6c5a8401971a0c54ec9fab26b1e01d8cc620c40314befd23504fec2fb7679dc9",
+    "selectedPNGBytes": 41387691,
+    "archiveRowsIncluded": 0,
+    "note": "The final supplied catalog contains only the 17 selected sources; rejected archives remain outside this runtime graph."
+  },
+  "changedRuntimeTextFiles": [
+    {
+      "path": "index.html",
+      "bytes": 32904,
+      "sha256": "a7b95c1159f08906bf01c0f9986e1b039bd47df7b111df87e382d20625f8ce04",
+      "gitBlobSha": "57021216cad007deb24a7e759b267b342cc0a357"
+    },
+    {
+      "path": "modules/source-atlas-v063.html",
+      "bytes": 3131,
+      "sha256": "b3ecfd8ffbf05b772dcd7095000d3331e61d543712a22ae3333941d6995b5d6f",
+      "gitBlobSha": "d674409de7a29788b790da4a283fa2aa2ba4f59f"
+    },
+    {
+      "path": "src/cqc-p63-source-atlas.js",
+      "bytes": 13914,
+      "sha256": "3acdec2c9499bdd8a81aa8ea8c976350fd40e3892a22d0ced0369cdd85194025",
+      "gitBlobSha": "191bf8729905ea3b1d97536633644c535ab19a49"
+    },
+    {
+      "path": "src/cqc-p63-source-atlas.css",
+      "bytes": 8808,
+      "sha256": "bf00897d3da8896b190d3562dcbe61ac682f271531371151372f5e9d28922c63",
+      "gitBlobSha": "376b291ffe511fcada3e41a79327cf9f3e0f1007"
+    },
+    {
+      "path": "data/cqc-p63-source-atlas.json",
+      "bytes": 36693,
+      "sha256": "6c5a8401971a0c54ec9fab26b1e01d8cc620c40314befd23504fec2fb7679dc9",
+      "gitBlobSha": "6be81bd21fddcba7a6ec06e5e570430d88c5496b"
+    }
+  ],
+  "addedPNGRows": [
+    {
+      "path": "assets/p63/acid-lobito-forest.png",
+      "bytes": 2794418,
+      "sha256": "f50fab840d6f7419b8f662012d7ca2377adeb9d4185eed970034c23c5a6328ee",
+      "blobSHA": "7100192a6c1d10f90e857f7fe4c2faec4f16f3ad"
+    },
+    {
+      "path": "assets/p63/acid-far-exterior.png",
+      "bytes": 2416018,
+      "sha256": "c041c7f32632e5717461b80150f5f0e5e0c649c2d440953bc0b02979d82da074",
+      "blobSHA": "5fb120de04937d048a6e30efbb80b5e620150833"
+    },
+    {
+      "path": "assets/p63/acid-far-interior.png",
+      "bytes": 2147477,
+      "sha256": "4f3dd74fdd3dfc77b92b7dd78e90a4ef3652bfc58bce112e83832a5d6ed0271c",
+      "blobSHA": "17980da5cb689d0e9d465cec2092242536ac6195"
+    },
+    {
+      "path": "assets/p63/acid2-harbor-area.png",
+      "bytes": 2009258,
+      "sha256": "55ffd8ad71d8cb5ae5dfafb64871b70cef4e24a98a10150bcfefe9bd76f6bffc",
+      "blobSHA": "b2d0cee0c7dac7a4910e237af920041eeee83c7c"
+    },
+    {
+      "path": "assets/p63/acid2-cargo-train.png",
+      "bytes": 1968507,
+      "sha256": "21d222f4046faeeb30a50953e4e920c799a847d0db0e9677ed4b284f963a7c3e",
+      "blobSHA": "3f86f32c5bee24bc2df7afccd925405b8be5f0c9"
+    },
+    {
+      "path": "assets/p63/acid2-security-monitor-room.png",
+      "bytes": 1482284,
+      "sha256": "80f5ea6f277d2e1e37046560488555603ea0bec2e3875b2c3fa84670cb04ba3a",
+      "blobSHA": "40f5736041c7190b580117402e165db4365022f8"
+    },
+    {
+      "path": "assets/p63/mgr-wm-lobby.png",
+      "bytes": 2493621,
+      "sha256": "9880d628f349a92a35ff1e0be1e3f08b59c5f3160303b4370463e11a63dcb4a3",
+      "blobSHA": "df6baeaaa54ad71ca447102e5c67f164029edfc4"
+    },
+    {
+      "path": "assets/p63/mgr-wm-freight-elevator.png",
+      "bytes": 2236167,
+      "sha256": "6779b29d2194a6f9652252774d8ba723dea4b0d7c5cfdf7cbb1ff08b83712cf5",
+      "blobSHA": "0ad02b18f6f211025518bda1f2630ae431a154dd"
+    },
+    {
+      "path": "assets/p63/mgr-wm-japanese-garden.png",
+      "bytes": 2813836,
+      "sha256": "efb2349cf0ce3ba7fb6da6a842749ab997b487202725f2bf8853e358718cf6f6",
+      "blobSHA": "0e4f684529f2e4c886ef2239de548e95a6827b97"
+    },
+    {
+      "path": "assets/p63/mgr-wm-server-room.png",
+      "bytes": 2497274,
+      "sha256": "410c271ef2af519a082d7e36db51ae676c57e91e625d8fbb99bea8aa823fe3d1",
+      "blobSHA": "6ec655a22ec68c84cf5512046154abae5d9caadf"
+    },
+    {
+      "path": "assets/p63/mgr-guadalajara-brain-chamber.png",
+      "bytes": 2330161,
+      "sha256": "e9e4427dcca9e35b1f9f459021235825f5bf0ddfb845efd90b53d4e5d96d19e5",
+      "blobSHA": "b7888a06a56e4c872df78abf7d0161c1f3b50e35"
+    },
+    {
+      "path": "assets/p63/mgr-guadalajara-grad-arena.png",
+      "bytes": 2409023,
+      "sha256": "5cb53fc73d439419926e26628f6108acdb823e61fe0d2241c3192b2f6d864fe1",
+      "blobSHA": "5c11ddbd2094befb567d0d76a4f2c566841c31ee"
+    },
+    {
+      "path": "assets/p63/mgr-pakistan-exterior.png",
+      "bytes": 2501455,
+      "sha256": "98d0cdcddcc07902b64bb29d07d1e4410895105bfa4f52cbe636e4b09f2154b5",
+      "blobSHA": "a8c8788ef4b3ca8bfe3e70dbc054c3ef12b54f93"
+    },
+    {
+      "path": "assets/p63/survive-wrecked-base.png",
+      "bytes": 2912978,
+      "sha256": "ff86d22773c41332f1d64d66996f59c93849d7e12b8fd8eaae631e83191d4e04",
+      "blobSHA": "9ff211b92f46324ea54c9d10ca7902fdfeb0574a"
+    },
+    {
+      "path": "assets/p63/survive-fallen-village.png",
+      "bytes": 2810683,
+      "sha256": "d9f4ace7f55a52d8ba596a8c22f52630e09769ee80dfe20b9440a63489d16f45",
+      "blobSHA": "3bbe3d63c4344209e0b9af336827ccfaa981ce11"
+    },
+    {
+      "path": "assets/p63/survive-deserted-mine.png",
+      "bytes": 3063030,
+      "sha256": "1dbfcac934375e9fe4c06462d284c7d48d442f08faff195639b30a1bd575c00a",
+      "blobSHA": "2972f757f6f737262114beab71c6d672e48a7467"
+    },
+    {
+      "path": "assets/p63/survive-abandoned-airport.png",
+      "bytes": 2501501,
+      "sha256": "07a8f251692a5c786050cd949d2c8a9369327dba4312557b67f1c6a46e3ff69c",
+      "blobSHA": "8bf29587a1c23bb759fe1f41bb1bcc4488a8bf38"
+    }
+  ],
+  "atlasVerification": {
+    "path": "docs/cqc-reprise/pass63/atlas-verification.json",
+    "gitBlobSha": "69438f34920c2a9a4f9b4121e8ce54fee11f7079",
+    "nodeTestsBeforeExecutorFailure": {
+      "passed": 14,
+      "failed": 0
+    },
+    "originalTestBodiesReplayedInV8WithAdapters": {
+      "passed": 14,
+      "failed": 0
+    },
+    "staticDOMCSSContractChecks": {
+      "passed": 23,
+      "failed": 0
+    },
+    "chromium": "blocked; no render qualification"
+  },
+  "limits": [
+    "The full node scripts/sync-cqc-runtime.mjs --verify command was not executed after executor failure.",
+    "Legacy file bytes and pinned external-owner bytes were not read or recertified; their existing rows and policy were preserved exactly.",
+    "The reconstructed HTML/CSS passed static contract checks, not browser layout verification.",
+    "The V8 URL adapters used for UI replay are not a native URL API conformance test.",
+    "No stage-layer registry or fighter/combat-admission contract was modified."
+  ]
+}

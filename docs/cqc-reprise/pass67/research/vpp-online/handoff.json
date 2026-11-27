@@ -1,0 +1,1459 @@
+{
+  "schema": "cqc.p67.vpp-online-handoff.v1",
+  "parentCommit": "5d7c6c5187f3906ad1ead53706e83674750f1c34",
+  "requests": 13,
+  "successfulOutputs": 13,
+  "selectedCount": 12,
+  "archives": [
+    {
+      "id": "mgo3-scout-nvg-mantle-portrait-v1",
+      "assetId": "archive:p67:mgo3-scout-nvg-mantle-portrait-v1",
+      "label": "MGO3 — portrait Scout v1, marge supérieure insuffisante",
+      "episode": "Metal Gear Online 3",
+      "episodeKey": "mgo3",
+      "kind": "character",
+      "bodyCoverage": "portrait",
+      "path": "docs/cqc-reprise/pass67/rejected/mgo3-scout-nvg-mantle-portrait-v1.png",
+      "reason": "Le haut du casque audio touche le cadre. Remplacé par v2 avec une marge transparente ; original brut conservé.",
+      "replacedBy": "asset:p67:mgo3-scout-nvg-mantle-portrait",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "promptId": "mgo3-scout-nvg-mantle-portrait",
+        "exactPrompt": "Create exactly one isolated character portrait sprite from the attached official Metal Gear Online 3 screenshot. Reproduce only the saluting Scout avatar shown in this exact reference: olive hood/balaclava, olive multi-lens night vision mask with its exact asymmetrical lens arrangement, black over-ear radio headset and boom, beige and pale olive camouflage shoulder mantle with the same seam geometry and length, vertical brown chest straps, dark olive clothing, raised black gloved right hand saluting on image left. Faithfully preserve the face covering, proportions, colors, visible equipment, pose and 3/4 camera angle. This is a faithful reconstruction of this particular official preset screenshot, not a generic class design. Keep the EXACT waist-up framing of the reference; terminate the portrait at the same lower torso crop, do not invent legs, boots, weapons, a different mask or additional gear. Render in the restrained textured Fox Engine game appearance, not anime or painterly style. Remove ALL scenery and isolate only the single character on true transparent RGBA. No text, labels, logos, UI, border, second figure, checkerboard or floor shadow. Small transparent margins at top and sides, clean silhouette, no glow. One portrait only.",
+        "promptFile": "docs/cqc-reprise/pass67/research/vpp-online/prompt-mgo3-scout-nvg-mantle-portrait.txt",
+        "planRecord": "docs/cqc-reprise/pass67/research/vpp-online/generation-plan.json",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass67/research/vpp-online/mgo3-official-class-01.jpg"
+        ],
+        "inputSnapshots": [],
+        "transparent_background": true,
+        "postprocessing": "none; original data URL PNG decoded byte-for-byte"
+      },
+      "referenceFiles": [
+        "docs/cqc-reprise/pass67/research/vpp-online/mgo3-official-class-01.jpg"
+      ],
+      "width": 1670,
+      "height": 942,
+      "colorMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 977445,
+        "nearOpaquePixels250To255": 572273,
+        "semiTransparentPixels1To249": 23422,
+        "boundsByThreshold": {
+          "0": [
+            89,
+            0,
+            1630,
+            942
+          ],
+          "16": [
+            345,
+            0,
+            1294,
+            942
+          ],
+          "128": [
+            345,
+            0,
+            1293,
+            941
+          ]
+        },
+        "edgePixelsByThreshold": {
+          "0": 900,
+          "16": 587,
+          "128": 3
+        }
+      },
+      "bytes": 1399176,
+      "sha256": "ca95b477ade4c353b41fc2b9b20be5c301d9921801dff4fdbcc9d45d1e78b2f5",
+      "gitBlobSha": "b07809e987db58ca094eea5e83956a83815415ab",
+      "bitDepth": 8,
+      "colorType": 6,
+      "pngIntegrity": {
+        "crcValid": true,
+        "allChunksParsed": true,
+        "idatDecompressionValid": true,
+        "decodedScanlineBytes": 6293502,
+        "trailingBytes": 0
+      },
+      "sourceGenerated": true,
+      "selected": false,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "transparentBackground": true
+    }
+  ],
+  "blockedRequests": [],
+  "assets": [
+    {
+      "id": "mgo3-scout-nvg-mantle-portrait",
+      "assetId": "asset:p67:mgo3-scout-nvg-mantle-portrait",
+      "label": "MGO3 — portrait du preset Scout au masque optique",
+      "episode": "Metal Gear Online 3",
+      "episodeKey": "mgo3",
+      "kind": "character",
+      "edition": "MGO3 — capture officielle Konami, classe Scout, preset précis",
+      "bodyCoverage": "portrait",
+      "workIds": [
+        "character:R-MGO3"
+      ],
+      "scope": "Portrait du preset Scout au masque optique et à la pèlerine camouflage, dans sa gestuelle visible. Pas de corps complet ni de tenue universelle de classe.",
+      "referenceURLs": [
+        "https://www.konami.com/mg/mgs5/tpp/jp/online/class.php"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass67/research/vpp-online/mgo3-official-class-01.jpg"
+      ],
+      "qaNotes": [
+        "Source officielle 420×237 : masque optique vert, casque audio, cagoule et cape camouflage reconnaissables. Les lentilles, raccords, motifs de tissu et microtextures sont reconstruits, pas mesurés sur le modèle natif.",
+        "La v1 touchait le bord supérieur. La v2 redonne une marge transparente au-dessus de toute la tête ; l’original est archivé hors Atlas et runtime.",
+        "Le bas du torse constitue la limite volontaire du portrait ; aucun pantalon ni équipement caché n’est inventé.",
+        "PNG individuel brut avec alpha, sans agrandissement ni retouche de pixels après génération. Source fixe candidate, pas d’animation ni d’admission au combat."
+      ],
+      "path": "public/cqc/assets/p67/mgo3-scout-nvg-mantle-portrait.png",
+      "selectedVersion": "v2",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_edit",
+        "attempts": 1,
+        "promptId": "mgo3-scout-nvg-mantle-portrait-v2",
+        "exactPrompt": "Edit the FIRST attached transparent Scout portrait to correct only its framing: the very top of the head/headset currently touches the canvas. Give the ENTIRE head and headset at least 5% clear transparent top margin and ample side margin. Keep this same single waist-up portrait, same visible silhouette, saluting gesture, exact gear, mask lens arrangement, camouflage mantle, colors, textured game rendering and bottom torso crop. The SECOND attached image is the original official game screenshot and is only a fidelity reference for the same avatar. Do not add legs, feet, a new lower garment, a weapon, glow or scenery, and do not redesign the mask, face covering, headset or chest straps. Recompose the existing portrait slightly smaller within the transparent canvas so nothing at the top or sides is cut off. Preserve genuinely transparent RGBA throughout all background pixels. One portrait, no text, extra elements, checkerboard or floor shadow.",
+        "promptFile": "docs/cqc-reprise/pass67/research/vpp-online/prompt-mgo3-scout-nvg-mantle-portrait-v2.txt",
+        "planRecord": "docs/cqc-reprise/pass67/research/vpp-online/generation-plan-4.json",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass67/rejected/mgo3-scout-nvg-mantle-portrait-v1.png",
+          "docs/cqc-reprise/pass67/research/vpp-online/mgo3-official-class-01.jpg"
+        ],
+        "inputSnapshots": [
+          {
+            "pathAtRequest": "public/cqc/assets/p67/mgo3-scout-nvg-mantle-portrait.png",
+            "immutablePath": "docs/cqc-reprise/pass67/rejected/mgo3-scout-nvg-mantle-portrait-v1.png",
+            "sha256": "ca95b477ade4c353b41fc2b9b20be5c301d9921801dff4fdbcc9d45d1e78b2f5"
+          }
+        ],
+        "transparent_background": true,
+        "postprocessing": "none; original data URL PNG decoded byte-for-byte"
+      },
+      "nextWork": "Valider les proportions, les raccords et les détails avec des captures natives plus grandes ; documenter séparément les autres variantes, les vues opposées et les postures utiles avant toute animation ou admission.",
+      "imageVisuallyInspected": true,
+      "referencesVisuallyInspected": true,
+      "qaVerdict": "accept-as-bounded-candidate",
+      "nativePixelExact": false,
+      "width": 1536,
+      "height": 1024,
+      "colorMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1065178,
+        "nearOpaquePixels250To255": 480745,
+        "semiTransparentPixels1To249": 26941,
+        "boundsByThreshold": {
+          "0": [
+            0,
+            37,
+            1516,
+            952
+          ],
+          "16": [
+            316,
+            70,
+            1186,
+            944
+          ],
+          "128": [
+            316,
+            70,
+            1185,
+            943
+          ]
+        },
+        "edgePixelsByThreshold": {
+          "0": 2,
+          "16": 0,
+          "128": 0
+        }
+      },
+      "bytes": 1831810,
+      "sha256": "0e3db3cd0b1e0412cdeb862a6f04cd1c81672d3e295dc7ef18c61ad99ccf8b14",
+      "gitBlobSha": "34038078769f4a7d45cf0d4a7146512cff526fc9",
+      "bitDepth": 8,
+      "colorType": 6,
+      "pngIntegrity": {
+        "crcValid": true,
+        "allChunksParsed": true,
+        "idatDecompressionValid": true,
+        "decodedScanlineBytes": 6292480,
+        "trailingBytes": 0
+      },
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "transparentBackground": true
+    },
+    {
+      "id": "mgo3-enforcer-visor-portrait",
+      "assetId": "asset:p67:mgo3-enforcer-visor-portrait",
+      "label": "MGO3 — portrait du preset Enforcer au casque à visière",
+      "episode": "Metal Gear Online 3",
+      "episodeKey": "mgo3",
+      "kind": "character",
+      "edition": "MGO3 — capture officielle Konami, classe Enforcer, preset précis",
+      "bodyCoverage": "portrait",
+      "workIds": [
+        "character:R-MGO3"
+      ],
+      "scope": "Portrait du preset Enforcer au casque à visière, dans la pose officielle observée.",
+      "referenceURLs": [
+        "https://www.konami.com/mg/mgs5/tpp/jp/online/class.php"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass67/research/vpp-online/mgo3-official-class-07.jpg"
+      ],
+      "qaNotes": [
+        "Casque, visière sombre et protection du haut du corps fondés sur la capture officielle 420×237. Petits éléments, attaches et textures reconstruits.",
+        "Un portrait de preset ne recense pas toutes les tenues Enforcer, toutes les faces ni les animations. Aucun bas du corps ajouté.",
+        "PNG individuel brut avec alpha, sans agrandissement ni retouche de pixels après génération. Source fixe candidate, pas d’animation ni d’admission au combat."
+      ],
+      "path": "public/cqc/assets/p67/mgo3-enforcer-visor-portrait.png",
+      "selectedVersion": "v1",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "promptId": "mgo3-enforcer-visor-portrait",
+        "exactPrompt": "Create exactly one isolated character portrait sprite from the attached official Metal Gear Online 3 screenshot. Faithfully reconstruct only the saluting Enforcer avatar shown here, in the exact same pose, proportions, frontal three-quarter viewpoint and waist-up crop. Preserve the olive armored helmet with central raised rectangular forehead fitting, large dark amber rectangular visor, visible pale lower face, high stiff olive neck protection, bulky olive chest plate with the exact diagonal magazine-pouch geometry, small dark radio/device on image right of chest, thick left image forearm protective sleeve and black glove raised in salute. Keep colors muted, worn olive surfaces and the game's restrained realistic 3D texture appearance. This is one precise official demo avatar, not a universal uniform for its customizable class. End the portrait at the same lower torso crop; do not invent legs, boots, a gun, a shield or unseen equipment. Remove the whole background and retain only this single character on genuine transparent RGBA. No text, lettering, labels, UI, outline glow, floor or checkerboard. Preserve the complete helmet and saluting hand within small transparent margins.",
+        "promptFile": "docs/cqc-reprise/pass67/research/vpp-online/prompt-mgo3-enforcer-visor-portrait.txt",
+        "planRecord": "docs/cqc-reprise/pass67/research/vpp-online/generation-plan.json",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass67/research/vpp-online/mgo3-official-class-07.jpg"
+        ],
+        "inputSnapshots": [],
+        "transparent_background": true,
+        "postprocessing": "none; original data URL PNG decoded byte-for-byte"
+      },
+      "nextWork": "Valider les proportions, les raccords et les détails avec des captures natives plus grandes ; documenter séparément les autres variantes, les vues opposées et les postures utiles avant toute animation ou admission.",
+      "imageVisuallyInspected": true,
+      "referencesVisuallyInspected": true,
+      "qaVerdict": "accept-as-bounded-candidate",
+      "nativePixelExact": false,
+      "width": 1448,
+      "height": 1086,
+      "colorMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 732547,
+        "nearOpaquePixels250To255": 803159,
+        "semiTransparentPixels1To249": 36822,
+        "boundsByThreshold": {
+          "0": [
+            0,
+            0,
+            1408,
+            1075
+          ],
+          "16": [
+            76,
+            7,
+            1350,
+            1060
+          ],
+          "128": [
+            77,
+            8,
+            1349,
+            1060
+          ]
+        },
+        "edgePixelsByThreshold": {
+          "0": 118,
+          "16": 0,
+          "128": 0
+        }
+      },
+      "bytes": 1762162,
+      "sha256": "a91a040fe185bd9c6e3e783e49247f64c61bb19059c7542e3e29513301bde14d",
+      "gitBlobSha": "978e6a51443b2f7f8e5e4243ccd86352e9f36b02",
+      "bitDepth": 8,
+      "colorType": 6,
+      "pngIntegrity": {
+        "crcValid": true,
+        "allChunksParsed": true,
+        "idatDecompressionValid": true,
+        "decodedScanlineBytes": 6291198,
+        "trailingBytes": 0
+      },
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "transparentBackground": true
+    },
+    {
+      "id": "mgo3-infiltrator-balaclava-portrait",
+      "assetId": "asset:p67:mgo3-infiltrator-balaclava-portrait",
+      "label": "MGO3 — portrait du preset Infiltrator à cagoule",
+      "episode": "Metal Gear Online 3",
+      "episodeKey": "mgo3",
+      "kind": "character",
+      "edition": "MGO3 — capture officielle Konami, classe Infiltrator, preset précis",
+      "bodyCoverage": "portrait",
+      "workIds": [
+        "character:R-MGO3"
+      ],
+      "scope": "Portrait du preset Infiltrator à cagoule, limité au cadre officiel.",
+      "referenceURLs": [
+        "https://www.konami.com/mg/mgs5/tpp/jp/online/class.php"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass67/research/vpp-online/mgo3-official-class-13.jpg"
+      ],
+      "qaNotes": [
+        "Cagoule, regard, protection du cou et équipement visibles suivis dans l’image officielle 420×237. Les détails fins ne sont pas attestés à l’échelle du pixel.",
+        "Le bas du buste atteint volontairement le bord du portrait. Ce cadrage ne constitue pas un corps complet.",
+        "PNG individuel brut avec alpha, sans agrandissement ni retouche de pixels après génération. Source fixe candidate, pas d’animation ni d’admission au combat."
+      ],
+      "path": "public/cqc/assets/p67/mgo3-infiltrator-balaclava-portrait.png",
+      "selectedVersion": "v1",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "promptId": "mgo3-infiltrator-balaclava-portrait",
+        "exactPrompt": "Create one single isolated character portrait sprite faithfully matching the attached official Metal Gear Online 3 screenshot. Reconstruct only this specific saluting Infiltrator avatar: close fitting dark olive-black knitted balaclava with two separate oval eye openings and a visible center nose ridge, brown eyes, black padded shoulders, charcoal sculpted chest armor with angular symmetrical seams and diagonal torso lacing, olive-gray upper sleeves, black forearm covering and black glove raised in salute on image left. Preserve the exact anatomy, head width, eye placement, clothing construction, pose, color palette and three-quarter frontal camera. Use the same understated realistically textured Fox Engine game aesthetic. It is a portrait of this particular official demo preset. Keep exactly the supplied waist-up framing, stop the torso at the same bottom crop; no invented legs, shoes, weapons or extra accessories. Isolate only the single avatar on a genuinely transparent RGBA background, completely remove flames and scenery. No other subject, typography, watermark, game UI, border, ground shadow or checkerboard. Small clear margins around head and hand.",
+        "promptFile": "docs/cqc-reprise/pass67/research/vpp-online/prompt-mgo3-infiltrator-balaclava-portrait.txt",
+        "planRecord": "docs/cqc-reprise/pass67/research/vpp-online/generation-plan.json",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass67/research/vpp-online/mgo3-official-class-13.jpg"
+        ],
+        "inputSnapshots": [],
+        "transparent_background": true,
+        "postprocessing": "none; original data URL PNG decoded byte-for-byte"
+      },
+      "nextWork": "Valider les proportions, les raccords et les détails avec des captures natives plus grandes ; documenter séparément les autres variantes, les vues opposées et les postures utiles avant toute animation ou admission.",
+      "imageVisuallyInspected": true,
+      "referencesVisuallyInspected": true,
+      "qaVerdict": "accept-as-bounded-candidate",
+      "nativePixelExact": false,
+      "width": 1670,
+      "height": 942,
+      "colorMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 996304,
+        "nearOpaquePixels250To255": 552752,
+        "semiTransparentPixels1To249": 24084,
+        "boundsByThreshold": {
+          "0": [
+            139,
+            9,
+            1638,
+            942
+          ],
+          "16": [
+            152,
+            15,
+            1265,
+            942
+          ],
+          "128": [
+            153,
+            15,
+            1264,
+            942
+          ]
+        },
+        "edgePixelsByThreshold": {
+          "0": 685,
+          "16": 656,
+          "128": 653
+        }
+      },
+      "bytes": 1235370,
+      "sha256": "6c1a187e299057a92458a8afab047e775af119077380839daa0adc532cf49f7f",
+      "gitBlobSha": "4c191061d9af4321e6165cd886739f8dd8b89b4c",
+      "bitDepth": 8,
+      "colorType": 6,
+      "pngIntegrity": {
+        "crcValid": true,
+        "allChunksParsed": true,
+        "idatDecompressionValid": true,
+        "decodedScanlineBytes": 6293502,
+        "trailingBytes": 0
+      },
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "transparentBackground": true
+    },
+    {
+      "id": "mobile-ngage-olive-guard",
+      "assetId": "asset:p67:mobile-ngage-olive-guard",
+      "label": "Metal Gear Solid Mobile — garde olive, variante N-Gage",
+      "episode": "Metal Gear Solid Mobile",
+      "episodeKey": "mobile",
+      "kind": "character",
+      "edition": "Metal Gear Solid Mobile — version N-Gage attribuée à la capture de gameplay",
+      "bodyCoverage": "full_body",
+      "workIds": [
+        "character:R-SIDE-CATALOG"
+      ],
+      "scope": "Un garde olive au gilet sombre, sujet gauche de la capture N-Gage, isolé dans sa pose et son esthétique polygonale.",
+      "referenceURLs": [
+        "https://vgsmproject.com/2018/04/23/metal-gear-solid-mobile/",
+        "https://sites.google.com/site/jamesblackham/metal-gear-solid--mobile--n-gage"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass67/research/vpp-online/mobile-native-soda-guard-2.jpg"
+      ],
+      "qaNotes": [
+        "Le corps complet et l’arme du garde gauche sont visibles dans metalgear2.jpg. Le garde droit ne fournit qu’un recoupement de silhouette ; la première image de la salle vide n’est pas utilisée comme preuve de personnage.",
+        "Proportions polygonales compactes et palette olive conservées. Les contours et couleurs restent une reconstruction générée, pas une extraction déterministe.",
+        "L’édition mobile est séparée des modèles PSP, PS1 et MGO. R-SIDE-CATALOG demeure partagé et ouvert pour les autres jeux.",
+        "PNG individuel brut avec alpha, sans agrandissement ni retouche de pixels après génération. Source fixe candidate, pas d’animation ni d’admission au combat."
+      ],
+      "path": "public/cqc/assets/p67/mobile-ngage-olive-guard.png",
+      "selectedVersion": "v1",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "promptId": "mobile-ngage-olive-guard",
+        "exactPrompt": "Create exactly one full-body isolated game sprite of the guard on the LEFT in the attached native Metal Gear Solid Mobile N-Gage screenshot. Reconstruct that one particular original 2008 mobile game character as faithfully as possible: short brown hair, simple light-skinned angular low-polygon face, olive mustard long-sleeve fatigues and matching loose trousers, dark blue-gray protective vest and shoulder harness, dark gloves, black calf-height boots with flat angular soles, compact dark rifle held diagonally across the front in exactly the same calm standing-ready pose facing slightly right. Use only the LEFT guard as the subject; the back-facing guard at right is a secondary view of the outfit, never a second figure in the output. Preserve the low-polygon geometric silhouette, plain flat game textures, few folds, original proportions and subdued palette. Do not upgrade into a realistic modern tactical soldier: no new pouches, radio, helmet, knee pads, facial hair or detailed firearm modifications. Keep the complete head, hands, rifle and both boots visible with generous transparent margins. Pure transparent RGBA, no cafeteria, walls, other figures, text, HUD, checkerboard, floor or shadow. One original-game-styled guard only.",
+        "promptFile": "docs/cqc-reprise/pass67/research/vpp-online/prompt-mobile-ngage-olive-guard.txt",
+        "planRecord": "docs/cqc-reprise/pass67/research/vpp-online/generation-plan-2.json",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass67/research/vpp-online/mobile-native-soda-guard-2.jpg"
+        ],
+        "inputSnapshots": [],
+        "transparent_background": true,
+        "postprocessing": "none; original data URL PNG decoded byte-for-byte"
+      },
+      "nextWork": "Valider les proportions, les raccords et les détails avec des captures natives plus grandes ; documenter séparément les autres variantes, les vues opposées et les postures utiles avant toute animation ou admission.",
+      "imageVisuallyInspected": true,
+      "referencesVisuallyInspected": true,
+      "qaVerdict": "accept-as-bounded-candidate",
+      "nativePixelExact": false,
+      "width": 1199,
+      "height": 1312,
+      "colorMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1245720,
+        "nearOpaquePixels250To255": 299975,
+        "semiTransparentPixels1To249": 27393,
+        "boundsByThreshold": {
+          "0": [
+            58,
+            38,
+            1122,
+            1312
+          ],
+          "16": [
+            291,
+            98,
+            877,
+            1241
+          ],
+          "128": [
+            292,
+            98,
+            876,
+            1240
+          ]
+        },
+        "edgePixelsByThreshold": {
+          "0": 1,
+          "16": 0,
+          "128": 0
+        }
+      },
+      "bytes": 498129,
+      "sha256": "28efd7fde3f25dfe73136748c11ae1ee297cf429a36166b4b3f86a5f54107700",
+      "gitBlobSha": "725d22202ffbdc06a3c3decd619726f722c2987f",
+      "bitDepth": 8,
+      "colorType": 6,
+      "pngIntegrity": {
+        "crcValid": true,
+        "allChunksParsed": true,
+        "idatDecompressionValid": true,
+        "decodedScanlineBytes": 6293664,
+        "trailingBytes": 0
+      },
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "transparentBackground": true
+    },
+    {
+      "id": "mgo1-rowdy-reiko-idle",
+      "assetId": "asset:p67:mgo1-rowdy-reiko-idle",
+      "label": "MGO1 — Rowdy Reiko, tenue et pose de Subsistence",
+      "episode": "Metal Gear Online 1",
+      "episodeKey": "mgo1",
+      "kind": "character",
+      "edition": "MGO1 / Subsistence PS2 — séquence native du personnage Rowdy Reiko",
+      "bodyCoverage": "full_body",
+      "workIds": [
+        "character:R-MGO1"
+      ],
+      "scope": "Rowdy Reiko en tenue noire, cheveux blonds courts et lunettes, une pose de repos observée dans MGO1.",
+      "referenceURLs": [
+        "https://www.youtube.com/watch?v=76rnHWqqP88"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass67/research/vpp-online/76rnHWqqP88-storyboard-0.jpg",
+        "docs/cqc-reprise/pass67/research/vpp-online/76rnHWqqP88-storyboard-1.jpg"
+      ],
+      "qaNotes": [
+        "Veste noire à liserés clairs, cravate, bas court, cuisses découvertes et bottes hautes repris du personnage de Subsistence, pas du costume Rumble Roses.",
+        "Les vignettes 320×180 limitent le détail du visage, du tatouage et des coutures. Le motif de cuisse est simplifié ; aucune certification de texture.",
+        "La variante Reiko normale en camouflage est distincte et n’est pas couverte par ce PNG.",
+        "PNG individuel brut avec alpha, sans agrandissement ni retouche de pixels après génération. Source fixe candidate, pas d’animation ni d’admission au combat."
+      ],
+      "path": "public/cqc/assets/p67/mgo1-rowdy-reiko-idle.png",
+      "selectedVersion": "v1",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "promptId": "mgo1-rowdy-reiko-idle",
+        "exactPrompt": "Create exactly one isolated full-body character sprite of the adult female character Rowdy Reiko as she actually appears in the attached native PS2 Metal Gear Online 1 / MGS3 Subsistence gameplay storyboard sheets. Use the clearly visible upright neutral idle stance in the TOP MIDDLE panel of the first sheet and the front/three-quarter views across the second sheet. Preserve this specific game incarnation and its original textured PS2 model proportions: short swept-back pale blonde hair, dark narrow sunglasses, black long-sleeved fitted jacket, the same light narrow front trim/tie visible in the game, black short lower garment, uncovered thighs, matching tall black knee-high boots, and the visible leg markings only as supported by the reference. Arms resting at the sides in the neutral game idle stance; full-body frontal three-quarter view angled slightly to the right. This is a neutral costume reference sprite of an adult videogame character, not a posed glamour image. Keep the same coverage of clothing and the same silhouette as the gameplay reference; do not substitute Rumble Roses alternate wrestling costumes or camouflage trousers from normal Reiko. Preserve simple PS2-era texture and shading, do not turn into anime, photography or redesign. Exactly ONE figure, no sheet or duplicates. Entire head, both hands and both boots inside the frame with generous clear margins. Genuine transparent RGBA background, no environment, text, UI, logos, floor or cast shadow.",
+        "promptFile": "docs/cqc-reprise/pass67/research/vpp-online/prompt-mgo1-rowdy-reiko-idle.txt",
+        "planRecord": "docs/cqc-reprise/pass67/research/vpp-online/generation-plan-2.json",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass67/research/vpp-online/76rnHWqqP88-storyboard-0.jpg",
+          "docs/cqc-reprise/pass67/research/vpp-online/76rnHWqqP88-storyboard-1.jpg"
+        ],
+        "inputSnapshots": [],
+        "transparent_background": true,
+        "postprocessing": "none; original data URL PNG decoded byte-for-byte"
+      },
+      "nextWork": "Valider les proportions, les raccords et les détails avec des captures natives plus grandes ; documenter séparément les autres variantes, les vues opposées et les postures utiles avant toute animation ou admission.",
+      "imageVisuallyInspected": true,
+      "referencesVisuallyInspected": true,
+      "qaVerdict": "accept-as-bounded-candidate",
+      "nativePixelExact": false,
+      "width": 1024,
+      "height": 1536,
+      "colorMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1175515,
+        "nearOpaquePixels250To255": 345635,
+        "semiTransparentPixels1To249": 51714,
+        "boundsByThreshold": {
+          "0": [
+            23,
+            28,
+            1010,
+            1536
+          ],
+          "16": [
+            257,
+            31,
+            767,
+            1497
+          ],
+          "128": [
+            258,
+            32,
+            766,
+            1496
+          ]
+        },
+        "edgePixelsByThreshold": {
+          "0": 10,
+          "16": 0,
+          "128": 0
+        }
+      },
+      "bytes": 1255005,
+      "sha256": "0dc5965bef7a602e0d2a9d367c0527e3dc27bf8428d21aa5c801837b7560ea7c",
+      "gitBlobSha": "897318fc7a2125e855275168ccd311dd546a7a85",
+      "bitDepth": 8,
+      "colorType": 6,
+      "pngIntegrity": {
+        "crcValid": true,
+        "allChunksParsed": true,
+        "idatDecompressionValid": true,
+        "decodedScanlineBytes": 6292992,
+        "trailingBytes": 0
+      },
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "transparentBackground": true
+    },
+    {
+      "id": "tpp-evangelos-constantinou-hospital",
+      "assetId": "asset:p67:tpp-evangelos-constantinou-hospital",
+      "label": "TPP — Dr Evangelos Constantinou, tenue de l’hôpital",
+      "episode": "Metal Gear Solid V: The Phantom Pain",
+      "episodeKey": "tpp",
+      "kind": "character",
+      "edition": "TPP — prologue hospitalier, cutscene du jeu publié",
+      "bodyCoverage": "full_body",
+      "workIds": [
+        "character:R-TPP-doctor"
+      ],
+      "scope": "Dr Evangelos Constantinou en blouse blanche, une pose debout neutre reconstituée à partir de plusieurs vues de l’hôpital.",
+      "referenceURLs": [
+        "https://www.youtube.com/watch?v=zDegziz58-A",
+        "https://www.youtube.com/watch?v=ZS5BLbD4vWU"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass67/research/vpp-online/zDegziz58-A-storyboard-1.jpg",
+        "docs/cqc-reprise/pass67/research/vpp-online/zDegziz58-A-storyboard-3.jpg"
+      ],
+      "qaNotes": [
+        "Visage, lunettes rondes, blouse et chemise verte établis par les vues rapprochées ; pantalon gris sombre et chaussures noirs corroborés par une autre vue du corps.",
+        "La pose debout isolée est une recomposition : elle n’est pas identique à une image native unique. Visage, badge, poches et microtextures restent reconstruits.",
+        "Aucune posture ou fonction de combat déduite du statut de médecin.",
+        "PNG individuel brut avec alpha, sans agrandissement ni retouche de pixels après génération. Source fixe candidate, pas d’animation ni d’admission au combat."
+      ],
+      "path": "public/cqc/assets/p67/tpp-evangelos-constantinou-hospital.png",
+      "selectedVersion": "v1",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "promptId": "tpp-evangelos-constantinou-hospital",
+        "exactPrompt": "Create exactly one neutral full-body isolated character source sprite of the older male doctor Evangelos Constantinou from the retail game Metal Gear Solid V The Phantom Pain hospital prologue, accurately grounded in the attached native cutscene storyboard sheets. The doctor is the bald older man in the white coat, NOT the bearded patient or the blonde/black-haired women. Use his clear upper-body views from row 3 of the FIRST sheet and the first two rows of the SECOND sheet; his dark trouser cuffs and dark shoes are visible next to the bed in row 3 of the second sheet. Preserve his balding head with gray side hair, close gray facial hair, round thin metal-rimmed glasses, middle-aged/older lined narrow face, light turquoise green collared shirt open at the neck, white long-sleeved physician's coat with lapels and the small actual chest badge/pocket details, straight dark gray trousers, plain dark low leather shoes. No necktie, gloves, surgical mask, weapon, tactical equipment or invented insignia. Show him standing naturally, calm and attentive, hands relaxed, facing three-quarter right. Preserve his lean adult proportions and restrained Fox Engine game rendering with the observed clothing construction and colors. This is his hospital narrative appearance, no combat pose, no injury. Entire head, hands and both shoes visible with transparent margin all round. One character only on true transparent RGBA, no bed, patient, other people, hospital, medical props, lettering, ground or shadows. Never reproduce the storyboard layout or interface.",
+        "promptFile": "docs/cqc-reprise/pass67/research/vpp-online/prompt-tpp-evangelos-constantinou-hospital.txt",
+        "planRecord": "docs/cqc-reprise/pass67/research/vpp-online/generation-plan-2.json",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass67/research/vpp-online/zDegziz58-A-storyboard-1.jpg",
+          "docs/cqc-reprise/pass67/research/vpp-online/zDegziz58-A-storyboard-3.jpg"
+        ],
+        "inputSnapshots": [],
+        "transparent_background": true,
+        "postprocessing": "none; original data URL PNG decoded byte-for-byte"
+      },
+      "nextWork": "Valider les proportions, les raccords et les détails avec des captures natives plus grandes ; documenter séparément les autres variantes, les vues opposées et les postures utiles avant toute animation ou admission.",
+      "imageVisuallyInspected": true,
+      "referencesVisuallyInspected": true,
+      "qaVerdict": "accept-as-bounded-candidate",
+      "nativePixelExact": false,
+      "width": 1024,
+      "height": 1536,
+      "colorMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1098603,
+        "nearOpaquePixels250To255": 442525,
+        "semiTransparentPixels1To249": 31736,
+        "boundsByThreshold": {
+          "0": [
+            0,
+            18,
+            996,
+            1536
+          ],
+          "16": [
+            268,
+            23,
+            755,
+            1527
+          ],
+          "128": [
+            269,
+            24,
+            754,
+            1526
+          ]
+        },
+        "edgePixelsByThreshold": {
+          "0": 95,
+          "16": 0,
+          "128": 0
+        }
+      },
+      "bytes": 1486601,
+      "sha256": "f182520237178ed40ee14bb04dc4cdceadbec094b9c82e0b68d8cfea22dcf1cf",
+      "gitBlobSha": "a1379f3c684e67556166ef93ec58cca0412889ea",
+      "bitDepth": 8,
+      "colorType": 6,
+      "pngIntegrity": {
+        "crcValid": true,
+        "allChunksParsed": true,
+        "idatDecompressionValid": true,
+        "decodedScanlineBytes": 6292992,
+        "trailingBytes": 0
+      },
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "transparentBackground": true
+    },
+    {
+      "id": "mgo2-white-beret-black-uniform-preset",
+      "assetId": "asset:p67:mgo2-white-beret-black-uniform-preset",
+      "label": "MGO2 — preset à béret blanc, uniforme noir et bandoulière",
+      "episode": "Metal Gear Online 2",
+      "episodeKey": "mgo2",
+      "kind": "character",
+      "edition": "MGO2 — preset personnalisé observé dans le menu du jeu",
+      "bodyCoverage": "full_body",
+      "workIds": [
+        "character:R-MGO2"
+      ],
+      "scope": "Un avatar MGO2 au béret blanc, cagoule et uniforme noirs, avec bandoulière claire.",
+      "referenceURLs": [
+        "https://www.youtube.com/watch?v=Sw7yp3t0zx8"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass67/research/vpp-online/Sw7yp3t0zx8-storyboard-0.jpg",
+        "docs/cqc-reprise/pass67/research/vpp-online/Sw7yp3t0zx8-storyboard-1.jpg"
+      ],
+      "qaNotes": [
+        "Béret, cagoule à motif clair, tenue et bandoulière observés dans les vues complètes 240×180. Aucun équipement d’un autre preset ajouté.",
+        "Motif exact du masque, nombre et épaisseur des éléments de bandoulière, mains et matière textile sont reconstruits.",
+        "Ce preset enrichit R-MGO2 ; il ne couvre ni le catalogue d’avatars ni toutes les tenues.",
+        "PNG individuel brut avec alpha, sans agrandissement ni retouche de pixels après génération. Source fixe candidate, pas d’animation ni d’admission au combat."
+      ],
+      "path": "public/cqc/assets/p67/mgo2-white-beret-black-uniform-preset.png",
+      "selectedVersion": "v1",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "promptId": "mgo2-white-beret-black-uniform-preset",
+        "exactPrompt": "Create exactly one full-body isolated character sprite matching the male custom soldier preset shown at the START of this native PS3 Metal Gear Online 2 appearance menu. The FIRST sheet establishes the complete body, and the SECOND sheet supplies close views of the same dark clothing and diagonal equipment strap. Reproduce the initial WHITE beret variant, black balaclava with the visible small pale skull-face markings and dark eyes, dark long-sleeve tactical shirt, black diagonal bandolier carrying a few pale rectangular packets, dark straight cargo trousers, dark gloves and black military boots. Use the standing menu pose angled slightly to the right, arms relaxed down, lean adult build. Preserve the PS3 model's proportions and restrained game textures; no reinterpretation as a modern heavily armored soldier, no new guns, helmet, armor plates or added pouch sets. The yellow beret and alternative shirts are not the chosen outfit. Exactly ONE complete figure on true transparent RGBA with all head, hands and boots visible and clear margins. No menu, letters, HUD, background, floor or shadow. This is a specific player-customized appearance, not the default uniform of all MGO2 soldiers.",
+        "promptFile": "docs/cqc-reprise/pass67/research/vpp-online/prompt-mgo2-white-beret-black-uniform-preset.txt",
+        "planRecord": "docs/cqc-reprise/pass67/research/vpp-online/generation-plan-3.json",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass67/research/vpp-online/Sw7yp3t0zx8-storyboard-0.jpg",
+          "docs/cqc-reprise/pass67/research/vpp-online/Sw7yp3t0zx8-storyboard-1.jpg"
+        ],
+        "inputSnapshots": [],
+        "transparent_background": true,
+        "postprocessing": "none; original data URL PNG decoded byte-for-byte"
+      },
+      "nextWork": "Valider les proportions, les raccords et les détails avec des captures natives plus grandes ; documenter séparément les autres variantes, les vues opposées et les postures utiles avant toute animation ou admission.",
+      "imageVisuallyInspected": true,
+      "referencesVisuallyInspected": true,
+      "qaVerdict": "accept-as-bounded-candidate",
+      "nativePixelExact": false,
+      "width": 1024,
+      "height": 1536,
+      "colorMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1093425,
+        "nearOpaquePixels250To255": 436381,
+        "semiTransparentPixels1To249": 43058,
+        "boundsByThreshold": {
+          "0": [
+            0,
+            14,
+            906,
+            1536
+          ],
+          "16": [
+            247,
+            16,
+            774,
+            1525
+          ],
+          "128": [
+            248,
+            17,
+            773,
+            1524
+          ]
+        },
+        "edgePixelsByThreshold": {
+          "0": 47,
+          "16": 0,
+          "128": 0
+        }
+      },
+      "bytes": 1393238,
+      "sha256": "b73c9c089f79860ce39e74fa802b356a4b2d787331d18bfb37bfb9e02e01655d",
+      "gitBlobSha": "a7b6e11459e3432b7b491573397e1e8d4d218e24",
+      "bitDepth": 8,
+      "colorType": 6,
+      "pngIntegrity": {
+        "crcValid": true,
+        "allChunksParsed": true,
+        "idatDecompressionValid": true,
+        "decodedScanlineBytes": 6292992,
+        "trailingBytes": 0
+      },
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "transparentBackground": true
+    },
+    {
+      "id": "mgo3-scout-patrol-cap-preset",
+      "assetId": "asset:p67:mgo3-scout-patrol-cap-preset",
+      "label": "MGO3 — preset Scout à casquette, tenue kaki",
+      "episode": "Metal Gear Online 3",
+      "episodeKey": "mgo3",
+      "kind": "character",
+      "edition": "MGO3 — preset Scout à casquette, menu natif",
+      "bodyCoverage": "full_body",
+      "workIds": [
+        "character:R-MGO3"
+      ],
+      "scope": "Un preset Scout complet à casquette olive, veste camouflage et arme en bandoulière.",
+      "referenceURLs": [
+        "https://www.youtube.com/watch?v=Ep8Mr3CQiEY"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass67/research/vpp-online/Ep8Mr3CQiEY-storyboard-0.jpg"
+      ],
+      "qaNotes": [
+        "Seule la première feuille de la vidéo est utilisée pour ce preset ; les variantes de coiffure suivantes sont exclues afin de ne pas mélanger les équipements.",
+        "Corps, casquette, gilet, pantalon et bottes sont visibles dans la référence. Visage, mains, configuration des poches et texture restent reconstruits.",
+        "La catégorie Scout ne fixe pas un uniforme unique ; ce fichier représente seulement l’avatar observé.",
+        "PNG individuel brut avec alpha, sans agrandissement ni retouche de pixels après génération. Source fixe candidate, pas d’animation ni d’admission au combat."
+      ],
+      "path": "public/cqc/assets/p67/mgo3-scout-patrol-cap-preset.png",
+      "selectedVersion": "v1",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "promptId": "mgo3-scout-patrol-cap-preset",
+        "exactPrompt": "Create one full-body isolated game character sprite faithfully reconstructing the adult Scout avatar preset visible in the attached native Metal Gear Online 3 customization menu. Use the full body standing view in the middle center panel of the FIRST sheet, and the closer initial outfit/headgear views to preserve the exact details. The avatar has a green olive patrol cap, short dark hair tucked underneath, the same lean face, olive camouflage sleeves and khaki shirt collar under a dark olive tactical vest with restrained straps and pouches, olive cargo trousers, dark gloves, and gray-dark olive low tactical boots; the dark long gun remains slung as in that menu view. Preserve the original equipment silhouette, proportions and colors, and the simple neutral standing pose. Do not add a sniper cape, ghillie material, a helmet, balaclava, kneepads or armor not present in this exact reference. This is this particular player preset, not a universal class uniform. Restrained Fox Engine textured videogame rendering. ONE subject with complete head, both hands and both boots visible and generous clear margins. Genuine transparent RGBA background; no interface, typography, grid, duplicates, scenery, floor or cast shadow.",
+        "promptFile": "docs/cqc-reprise/pass67/research/vpp-online/prompt-mgo3-scout-patrol-cap-preset.txt",
+        "planRecord": "docs/cqc-reprise/pass67/research/vpp-online/generation-plan-3.json",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass67/research/vpp-online/Ep8Mr3CQiEY-storyboard-0.jpg"
+        ],
+        "inputSnapshots": [],
+        "transparent_background": true,
+        "postprocessing": "none; original data URL PNG decoded byte-for-byte"
+      },
+      "nextWork": "Valider les proportions, les raccords et les détails avec des captures natives plus grandes ; documenter séparément les autres variantes, les vues opposées et les postures utiles avant toute animation ou admission.",
+      "imageVisuallyInspected": true,
+      "referencesVisuallyInspected": true,
+      "qaVerdict": "accept-as-bounded-candidate",
+      "nativePixelExact": false,
+      "width": 1024,
+      "height": 1536,
+      "colorMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1166378,
+        "nearOpaquePixels250To255": 363381,
+        "semiTransparentPixels1To249": 43105,
+        "boundsByThreshold": {
+          "0": [
+            41,
+            31,
+            1000,
+            1505
+          ],
+          "16": [
+            191,
+            37,
+            783,
+            1500
+          ],
+          "128": [
+            192,
+            38,
+            783,
+            1499
+          ]
+        },
+        "edgePixelsByThreshold": {
+          "0": 0,
+          "16": 0,
+          "128": 0
+        }
+      },
+      "bytes": 1600104,
+      "sha256": "ed6ab7d0f77ee4283d7fc8c84c8ffdb76c10b4e39cd9e68a5cb2cbfa8e9b9758",
+      "gitBlobSha": "d4c6b11df743127bc35abaeca5ffff477fe74dce",
+      "bitDepth": 8,
+      "colorType": 6,
+      "pngIntegrity": {
+        "crcValid": true,
+        "allChunksParsed": true,
+        "idatDecompressionValid": true,
+        "decodedScanlineBytes": 6292992,
+        "trailingBytes": 0
+      },
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "transparentBackground": true
+    },
+    {
+      "id": "mgo3-infiltrator-respirator-preset",
+      "assetId": "asset:p67:mgo3-infiltrator-respirator-preset",
+      "label": "MGO3 — preset Infiltrator au masque respirateur",
+      "episode": "Metal Gear Online 3",
+      "episodeKey": "mgo3",
+      "kind": "character",
+      "edition": "MGO3 — preset Infiltrator au masque respirateur, menu natif",
+      "bodyCoverage": "full_body",
+      "workIds": [
+        "character:R-MGO3"
+      ],
+      "scope": "Un preset Infiltrator complet avec masque gris, torse clair, poches olive et protections de genoux.",
+      "referenceURLs": [
+        "https://www.youtube.com/watch?v=0whcXk5SnHU"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass67/research/vpp-online/0whcXk5SnHU-storyboard-0.jpg",
+        "docs/cqc-reprise/pass67/research/vpp-online/0whcXk5SnHU-storyboard-2.jpg"
+      ],
+      "qaNotes": [
+        "Deux feuilles de menu établissent le masque fermé, les lentilles sombres, le torse crème, les poches et les protections de jambes.",
+        "Formes des conduits du masque, raccords des plaques, poches et plis reconstruits. Pas de géométrie native certifiée.",
+        "Une pose de menu sans arme tenue ; pas une animation de garde ou de déplacement.",
+        "PNG individuel brut avec alpha, sans agrandissement ni retouche de pixels après génération. Source fixe candidate, pas d’animation ni d’admission au combat."
+      ],
+      "path": "public/cqc/assets/p67/mgo3-infiltrator-respirator-preset.png",
+      "selectedVersion": "v1",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "promptId": "mgo3-infiltrator-respirator-preset",
+        "exactPrompt": "Create exactly one full-body isolated game character source sprite of the male Infiltrator avatar with armored respirator face covering shown in the attached native Metal Gear Online 3 video. Use the complete neutral standing body in the CENTER panel of the FIRST sheet as the exact silhouette anchor, and the closer face and torso views around it to preserve the details. Match the gray sculpted full-face respirator with dark lens openings and segmented lower mask, muted olive shoulder panels, olive chest pouches over the same pale khaki/beige central torso panel, dark close-fitting sleeves and forearm protection, dark olive and charcoal tactical trousers, the same knee protection and dark boots, and restrained waist equipment. Keep the unarmed relaxed menu stance, realistic adult proportions, original subdued palette and Fox Engine textured game style. This is one specific displayed outfit/preset. Do not substitute a skull balaclava, add futuristic glowing parts, extra armor, a cape, rifle, shield or a new color scheme. Show the ENTIRE body from head to soles with generous transparent margins. ONE person only, true transparent RGBA background, no menu, scenery, writing, UI, floor or shadow.",
+        "promptFile": "docs/cqc-reprise/pass67/research/vpp-online/prompt-mgo3-infiltrator-respirator-preset.txt",
+        "planRecord": "docs/cqc-reprise/pass67/research/vpp-online/generation-plan-3.json",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass67/research/vpp-online/0whcXk5SnHU-storyboard-0.jpg",
+          "docs/cqc-reprise/pass67/research/vpp-online/0whcXk5SnHU-storyboard-2.jpg"
+        ],
+        "inputSnapshots": [],
+        "transparent_background": true,
+        "postprocessing": "none; original data URL PNG decoded byte-for-byte"
+      },
+      "nextWork": "Valider les proportions, les raccords et les détails avec des captures natives plus grandes ; documenter séparément les autres variantes, les vues opposées et les postures utiles avant toute animation ou admission.",
+      "imageVisuallyInspected": true,
+      "referencesVisuallyInspected": true,
+      "qaVerdict": "accept-as-bounded-candidate",
+      "nativePixelExact": false,
+      "width": 1024,
+      "height": 1536,
+      "colorMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1101980,
+        "nearOpaquePixels250To255": 426809,
+        "semiTransparentPixels1To249": 44075,
+        "boundsByThreshold": {
+          "0": [
+            33,
+            21,
+            1010,
+            1506
+          ],
+          "16": [
+            233,
+            38,
+            794,
+            1502
+          ],
+          "128": [
+            234,
+            38,
+            793,
+            1502
+          ]
+        },
+        "edgePixelsByThreshold": {
+          "0": 0,
+          "16": 0,
+          "128": 0
+        }
+      },
+      "bytes": 1693930,
+      "sha256": "fe40b45b3fae4e934dc1a6e37a88613651449222d7f256970e61d022d05ca146",
+      "gitBlobSha": "0d13161c8b6e8ff4f5a486bc620f525a396f1785",
+      "bitDepth": 8,
+      "colorType": 6,
+      "pngIntegrity": {
+        "crcValid": true,
+        "allChunksParsed": true,
+        "idatDecompressionValid": true,
+        "decodedScanlineBytes": 6292992,
+        "trailingBytes": 0
+      },
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "transparentBackground": true
+    },
+    {
+      "id": "gz-camp-omega-poncho-salute-portrait",
+      "assetId": "asset:p67:gz-camp-omega-poncho-salute-portrait",
+      "label": "Ground Zeroes — garde de Camp Omega en poncho, salut",
+      "episode": "Metal Gear Solid V: Ground Zeroes",
+      "episodeKey": "gz",
+      "kind": "character",
+      "edition": "Ground Zeroes — introduction Camp Omega, capture native PC",
+      "bodyCoverage": "portrait",
+      "workIds": [
+        "character:R-GZ-camp"
+      ],
+      "scope": "Portrait du garde de Camp Omega en poncho olive qui salue dans l’introduction.",
+      "referenceURLs": [
+        "https://www.youtube.com/watch?v=G80bgC6koq8"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass67/research/vpp-online/G80bgC6koq8-storyboard-3.jpg"
+      ],
+      "qaNotes": [
+        "Seul le garde au centre de la deuxième rangée de la feuille 3 est ciblé : casquette, main nue levée et poncho humide. Aucun casque XOF ni partie de Skull Face des plans voisins.",
+        "Le portrait garde le cadrage de référence ; pas de jambes, de chaussures ou d’équipement hors champ inventés. Visage, boutons et plis fins sont reconstruits.",
+        "Le garde en casquette déjà sélectionné en P61 est conservé ; cette tenue à poncho est une nouvelle variante bornée.",
+        "PNG individuel brut avec alpha, sans agrandissement ni retouche de pixels après génération. Source fixe candidate, pas d’animation ni d’admission au combat."
+      ],
+      "path": "public/cqc/assets/p67/gz-camp-omega-poncho-salute-portrait.png",
+      "selectedVersion": "v1",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "promptId": "gz-camp-omega-poncho-salute-portrait",
+        "exactPrompt": "Create exactly one isolated waist-up portrait sprite of the Camp Omega Marine wearing an olive rain poncho and olive field cap, seen SALUTING in the CENTER panel (row 2 column 2) of this native Metal Gear Solid V Ground Zeroes intro storyboard. That central saluting poncho guard is the only target. Reproduce his specific adult face, small olive patrol cap with short brim, bare saluting hand, olive waterproof poncho with wet fabric sheen and its simple large draped folds, and the same close three-quarter viewpoint facing to image right. The poncho and cap silhouette must match the native screenshot. Do NOT mix in the white XOF helmets, Skull Face, prisoners or other figures from adjacent panels. Keep the same portrait framing, cropped at the lower chest/waist below the visible poncho; do not invent legs or hidden gear. Preserve a restrained realistic Fox Engine videogame appearance. Remove the foreground obstruction, fence, lighting flares, rain streaks and all scenery, and isolate ONLY the single saluting guard on genuine transparent RGBA. Leave transparent clearance above the entire cap and around the hand. No wording, interface, grids, multiple figures, ground shadow or background.",
+        "promptFile": "docs/cqc-reprise/pass67/research/vpp-online/prompt-gz-camp-omega-poncho-salute-portrait.txt",
+        "planRecord": "docs/cqc-reprise/pass67/research/vpp-online/generation-plan-4.json",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass67/research/vpp-online/G80bgC6koq8-storyboard-3.jpg"
+        ],
+        "inputSnapshots": [],
+        "transparent_background": true,
+        "postprocessing": "none; original data URL PNG decoded byte-for-byte"
+      },
+      "nextWork": "Valider les proportions, les raccords et les détails avec des captures natives plus grandes ; documenter séparément les autres variantes, les vues opposées et les postures utiles avant toute animation ou admission.",
+      "imageVisuallyInspected": true,
+      "referencesVisuallyInspected": true,
+      "qaVerdict": "accept-as-bounded-candidate",
+      "nativePixelExact": false,
+      "width": 1342,
+      "height": 1172,
+      "colorMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 702548,
+        "nearOpaquePixels250To255": 838407,
+        "semiTransparentPixels1To249": 31869,
+        "boundsByThreshold": {
+          "0": [
+            0,
+            47,
+            1306,
+            1160
+          ],
+          "16": [
+            102,
+            51,
+            1259,
+            1150
+          ],
+          "128": [
+            103,
+            52,
+            1258,
+            1149
+          ]
+        },
+        "edgePixelsByThreshold": {
+          "0": 71,
+          "16": 0,
+          "128": 0
+        }
+      },
+      "bytes": 1497200,
+      "sha256": "e14971b125d6d8eef6cb9a8450e9b5f1b5b82bd0f7b3ebc64436cf11935d63c1",
+      "gitBlobSha": "ad26ec62e185db8c942a3a406d949b3db6cdf780",
+      "bitDepth": 8,
+      "colorType": 6,
+      "pngIntegrity": {
+        "crcValid": true,
+        "allChunksParsed": true,
+        "idatDecompressionValid": true,
+        "decodedScanlineBytes": 6292468,
+        "trailingBytes": 0
+      },
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "transparentBackground": true
+    },
+    {
+      "id": "tpp-hospital-nurse-white-uniform-portrait",
+      "assetId": "asset:p67:tpp-hospital-nurse-white-uniform-portrait",
+      "label": "TPP — infirmière du prologue, portrait en tenue blanche",
+      "episode": "Metal Gear Solid V: The Phantom Pain",
+      "episodeKey": "tpp",
+      "kind": "character",
+      "edition": "TPP — infirmière visible dans le prologue hospitalier",
+      "bodyCoverage": "portrait",
+      "workIds": [
+        "character:R-TPP-nurse"
+      ],
+      "scope": "Portrait de l’infirmière observée dans le prologue, coiffe blanche, cheveux attachés et uniforme clair.",
+      "referenceURLs": [
+        "https://www.youtube.com/watch?v=zDegziz58-A"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass67/research/vpp-online/zDegziz58-A-storyboard-1.jpg",
+        "docs/cqc-reprise/pass67/research/vpp-online/zDegziz58-A-storyboard-2.jpg"
+      ],
+      "qaNotes": [
+        "Vues rapprochées des feuilles 1 et 2 : coupe du col, boutons, badge et coiffure visibles. Le cadrage reste limité au haut du corps.",
+        "Aucun prénom attribué sans preuve d’identité ; la variante visuelle ne reçoit pas le nom d’une autre infirmière. Ni jambes ni bas ni chaussures inventés.",
+        "Traits fins du visage, contenu du badge et textures reconstruits. Les franges alpha aux contours demeurent à contrôler selon le fond d’affichage.",
+        "PNG individuel brut avec alpha, sans agrandissement ni retouche de pixels après génération. Source fixe candidate, pas d’animation ni d’admission au combat."
+      ],
+      "path": "public/cqc/assets/p67/tpp-hospital-nurse-white-uniform-portrait.png",
+      "selectedVersion": "v1",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "promptId": "tpp-hospital-nurse-white-uniform-portrait",
+        "exactPrompt": "Create exactly ONE isolated waist-up character portrait source of the adult hospital nurse visible in these native retail Metal Gear Solid V The Phantom Pain prologue cutscene storyboards. The target is the light-skinned nurse with brown/light brown hair tied neatly back, a small white nurse cap, and the pale white/light blue short-sleeved button-front nurse uniform with V-shaped lapel collar and the small rectangular badge, seen across the FIRST ROW of the first sheet and the upper three rows of the second sheet. Preserve this exact observed appearance, adult facial proportions, restrained attentive expression, hairstyle, uniform seams, button arrangement and the game's muted colors. Depict the same nurse naturally facing the viewer in a slightly tilted three-quarter hospital-camera pose, without another person touching her. Retain only a portrait to the waist; no invented lower-body costume, stockings or shoes. Do not copy the male doctor, the patient, another nurse variant or Quiet. No tactical gear, mask, weapon, injury or sexualized pose. Accurate restrained Fox Engine game-style rendering, no beautification into a fashion model. Entire cap and head within a clear margin. True transparent RGBA, one portrait only, no ward, bed, charts, syringe, props, typography, HUD, border or shadow.",
+        "promptFile": "docs/cqc-reprise/pass67/research/vpp-online/prompt-tpp-hospital-nurse-white-uniform-portrait.txt",
+        "planRecord": "docs/cqc-reprise/pass67/research/vpp-online/generation-plan-4.json",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass67/research/vpp-online/zDegziz58-A-storyboard-1.jpg",
+          "docs/cqc-reprise/pass67/research/vpp-online/zDegziz58-A-storyboard-2.jpg"
+        ],
+        "inputSnapshots": [],
+        "transparent_background": true,
+        "postprocessing": "none; original data URL PNG decoded byte-for-byte"
+      },
+      "nextWork": "Valider les proportions, les raccords et les détails avec des captures natives plus grandes ; documenter séparément les autres variantes, les vues opposées et les postures utiles avant toute animation ou admission.",
+      "imageVisuallyInspected": true,
+      "referencesVisuallyInspected": true,
+      "qaVerdict": "accept-as-bounded-candidate",
+      "nativePixelExact": false,
+      "width": 1179,
+      "height": 1334,
+      "colorMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 772828,
+        "nearOpaquePixels250To255": 757944,
+        "semiTransparentPixels1To249": 42014,
+        "boundsByThreshold": {
+          "0": [
+            0,
+            31,
+            1141,
+            1334
+          ],
+          "16": [
+            162,
+            46,
+            1105,
+            1328
+          ],
+          "128": [
+            163,
+            46,
+            1104,
+            1328
+          ]
+        },
+        "edgePixelsByThreshold": {
+          "0": 902,
+          "16": 0,
+          "128": 0
+        }
+      },
+      "bytes": 1423596,
+      "sha256": "5907c26ba9b8cbb96506943a1bd8a2885b8a53413bd089a5842b99355f0535ee",
+      "gitBlobSha": "8f4f928bb6941c5fa709082fee082b68b35630d9",
+      "bitDepth": 8,
+      "colorType": 6,
+      "pngIntegrity": {
+        "crcValid": true,
+        "allChunksParsed": true,
+        "idatDecompressionValid": true,
+        "decodedScanlineBytes": 6292478,
+        "trailingBytes": 0
+      },
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "transparentBackground": true
+    },
+    {
+      "id": "mgo3-enforcer-skull-face-preset",
+      "assetId": "asset:p67:mgo3-enforcer-skull-face-preset",
+      "label": "MGO3 — preset Enforcer à motif crâne",
+      "episode": "Metal Gear Online 3",
+      "episodeKey": "mgo3",
+      "kind": "character",
+      "edition": "MGO3 — preset Enforcer au motif crâne, menu natif",
+      "bodyCoverage": "full_body",
+      "workIds": [
+        "character:R-MGO3"
+      ],
+      "scope": "Un preset Enforcer complet au visage marqué de blanc et noir, armure olive et rangée diagonale de poches.",
+      "referenceURLs": [
+        "https://www.youtube.com/watch?v=rC7BUPjjdOc"
+      ],
+      "referenceFiles": [
+        "docs/cqc-reprise/pass67/research/vpp-online/rC7BUPjjdOc-storyboard-0.jpg"
+      ],
+      "qaNotes": [
+        "La vue complète et les gros plans de la première feuille concernent le même avatar. Cheveux courts, visage, col épais, poches diagonales, genouillères et bottes sont observés.",
+        "La nature exacte du motif de visage (peinture ou accessoire), ses contours et les petits objets de ceinture ne sont pas certifiés. Le PNG les interprète comme une peinture faciale.",
+        "Configuration des sangles, mains et raccords de protection reconstruits ; aucune substitution par une tenue universelle Enforcer.",
+        "PNG individuel brut avec alpha, sans agrandissement ni retouche de pixels après génération. Source fixe candidate, pas d’animation ni d’admission au combat."
+      ],
+      "path": "public/cqc/assets/p67/mgo3-enforcer-skull-face-preset.png",
+      "selectedVersion": "v1",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "promptId": "mgo3-enforcer-skull-face-preset",
+        "exactPrompt": "Create exactly one isolated full-body source sprite of the adult male Enforcer avatar preset at the START of the attached native Metal Gear Online 3 menu footage. Use the TOP ROW for the entire standing figure and the lower close-ups for the same original face and armor. Match the short dark reddish-brown hair, white skull-like face covering/face paint with dark eye and mouth markings as visibly shown, thick dark olive scarf/high collar, bulky olive chest protection with its diagonal set of magazine pouches, restrained belt equipment with three small cylindrical items at the front, dark gloves, heavy olive-brown cargo trousers, gray segmented hard kneepads and plain dark olive/gray boots. Preserve the exact relative proportions, the same rifle slung behind the shoulder as in the reference, and the neutral standing menu pose with arms at the sides. Faithful Fox Engine videogame rendering, muted original colors. This is one specific customized avatar, not a universal Enforcer uniform. Do not add a helmet, new shoulder armor, superhero skull design, cape or new weapon. Show complete hair, hands and both boot soles with generous transparent margins. ONE subject on true transparent RGBA; no menu, text, background, floor, cast shadow or duplicated bodies.",
+        "promptFile": "docs/cqc-reprise/pass67/research/vpp-online/prompt-mgo3-enforcer-skull-face-preset.txt",
+        "planRecord": "docs/cqc-reprise/pass67/research/vpp-online/generation-plan-4.json",
+        "referenceFiles": [
+          "docs/cqc-reprise/pass67/research/vpp-online/rC7BUPjjdOc-storyboard-0.jpg"
+        ],
+        "inputSnapshots": [],
+        "transparent_background": true,
+        "postprocessing": "none; original data URL PNG decoded byte-for-byte"
+      },
+      "nextWork": "Valider les proportions, les raccords et les détails avec des captures natives plus grandes ; documenter séparément les autres variantes, les vues opposées et les postures utiles avant toute animation ou admission.",
+      "imageVisuallyInspected": true,
+      "referencesVisuallyInspected": true,
+      "qaVerdict": "accept-as-bounded-candidate",
+      "nativePixelExact": false,
+      "width": 1024,
+      "height": 1536,
+      "colorMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaStats": {
+        "fullyTransparentPixels": 1040679,
+        "nearOpaquePixels250To255": 489643,
+        "semiTransparentPixels1To249": 42542,
+        "boundsByThreshold": {
+          "0": [
+            33,
+            33,
+            1002,
+            1506
+          ],
+          "16": [
+            208,
+            37,
+            815,
+            1501
+          ],
+          "128": [
+            208,
+            40,
+            814,
+            1500
+          ]
+        },
+        "edgePixelsByThreshold": {
+          "0": 0,
+          "16": 0,
+          "128": 0
+        }
+      },
+      "bytes": 1738243,
+      "sha256": "101f021b253337f5aea0f8dcce1adaa63038ea6a7f06353a60af54d22ba10bf4",
+      "gitBlobSha": "66def624f395438143076dce91c83116af631edf",
+      "bitDepth": 8,
+      "colorType": 6,
+      "pngIntegrity": {
+        "crcValid": true,
+        "allChunksParsed": true,
+        "idatDecompressionValid": true,
+        "decodedScanlineBytes": 6292992,
+        "trailingBytes": 0
+      },
+      "sourceGenerated": true,
+      "selected": true,
+      "atlasIntegrated": false,
+      "runtimeIntegrated": false,
+      "combatRuntimeIntegrated": false,
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativeUhd": false,
+      "scopeClosed": false,
+      "fidelityStatus": "pending_external_review",
+      "transparentBackground": true
+    }
+  ],
+  "reviewMeaning": "Staging handoff before central Atlas integration; raw PNG bytes preserved. Portrait/full-body distinction is explicit.",
+  "openScopes": [
+    {
+      "workId": "character:R-GZ-camp",
+      "scopeClosed": false
+    },
+    {
+      "workId": "character:R-MGO1",
+      "scopeClosed": false
+    },
+    {
+      "workId": "character:R-MGO2",
+      "scopeClosed": false
+    },
+    {
+      "workId": "character:R-MGO3",
+      "scopeClosed": false
+    },
+    {
+      "workId": "character:R-SIDE-CATALOG",
+      "scopeClosed": false
+    },
+    {
+      "workId": "character:R-TPP-doctor",
+      "scopeClosed": false
+    },
+    {
+      "workId": "character:R-TPP-nurse",
+      "scopeClosed": false
+    }
+  ]
+}

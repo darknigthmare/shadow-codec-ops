@@ -1,0 +1,375 @@
+{
+  "schema": "cqc.p69.production-plans.v1",
+  "parentCommit": "764ba74e7650b3f744899636cfabc2683c960bfe",
+  "note": "Plans for future assets and interactions. No animation clips generated or implemented.",
+  "assets": [
+    {
+      "status": "documented_future_work_not_generated_or_implemented",
+      "classification": "proposition_CQC_a_valider_par_references_natives",
+      "framesGeneratedByP69": 1,
+      "animationClipsGeneratedByP69": 0,
+      "frameTimings": "Les durées, fenêtres et vitesses restent à mesurer sur des séquences natives puis à équilibrer dans CQC. Aucun nombre de frames canonique n’est déduit du PNG.",
+      "camera": "La vue livrée reste celle de sa référence. Une vue de profil, une orientation opposée ou une rotation demande une référence et une source distinctes.",
+      "acceptance": [
+        "Conserver l’édition, l’incarnation, la couverture et le statut natif ou conceptuel indiqués.",
+        "Valider ancrage et volumes séparément de la marge transparente.",
+        "Vérifier pause, interruption et fin de manche avant toute admission au jeu."
+      ],
+      "id": "acid2-flamethrower-soldier",
+      "role": "Variante ennemie AC!D 2 en combinaison rouge, équipée du dispositif dorsal visible. Cette source montre une pose entière oblique ; elle ne fournit ni cycle de déplacement ni attaque. La petite capture native permet de qualifier la silhouette générale, mais pas chaque attache et détail du costume.",
+      "states": [
+        {
+          "name": "Pose de référence et attente",
+          "description": "Fixer l’appui des deux bottes et l’axe du buste sans transformer la perspective plongeante en profil latéral. Une animation d’attente devra conserver le masque, les bonbonnes et la continuité du tuyau ; les déplacements secondaires ne sont pas fournis par ce PNG."
+        },
+        {
+          "name": "Patrouille et orientation",
+          "description": "Rechercher une séquence du même ennemi pour départ, marche, arrêt et pivot. Distinguer les positions des mains, du dispositif tenu et de la charge dorsale ; un simple miroir peut inverser les liaisons et ne constitue pas une nouvelle vue validée."
+        },
+        {
+          "name": "Action et récupération à documenter",
+          "description": "Isoler préparation, émission éventuelle de l’effet visuel et retour à la garde depuis une séquence native. Les effets doivent être séparés du personnage, avec origine et durée vérifiées ; le PNG ne fixe ni portée, ni dégâts, ni consommation."
+        },
+        {
+          "name": "Réaction et sortie de scène",
+          "description": "Prévoir réaction courte, interruption, déséquilibre et état de sortie compatibles avec la silhouette équipée. Les pièces dorsales et le tuyau doivent rester cohérents avec le corps ; aucun détachement ni comportement explosif n’est déduit de leur apparence."
+        }
+      ],
+      "interactions": [
+        "Établir des volumes distincts pour le corps et l’encombrement visible de l’équipement ; les zones de contact se définissent dans le moteur.",
+        "Vérifier garde, projection, passage derrière une cible et changements d’orientation sans traversée du tuyau ou du dispositif dorsal.",
+        "Séparer effets, son et réactions de cible de la source du personnage afin de pouvoir interrompre l’action proprement.",
+        "Conserver la famille AC!D 2 ; cette tenue ne couvre aucune variante AC!D 1 ni une animation héritée d’un autre opus."
+      ],
+      "separateAssetsNeeded": [
+        "Vues latérales et arrière natives",
+        "Cycle de patrouille",
+        "Pivots et actions sourcés",
+        "Effets séparés",
+        "Réactions et état de sortie"
+      ]
+    },
+    {
+      "status": "documented_future_work_not_generated_or_implemented",
+      "classification": "proposition_CQC_a_valider_par_references_natives",
+      "framesGeneratedByP69": 1,
+      "animationClipsGeneratedByP69": 0,
+      "frameTimings": "Les durées, fenêtres et vitesses restent à mesurer sur des séquences natives puis à équilibrer dans CQC. Aucun nombre de frames canonique n’est déduit du PNG.",
+      "camera": "La vue livrée reste celle de sa référence. Une vue de profil, une orientation opposée ou une rotation demande une référence et une source distinctes.",
+      "acceptance": [
+        "Conserver l’édition, l’incarnation, la couverture et le statut natif ou conceptuel indiqués.",
+        "Valider ancrage et volumes séparément de la marge transparente.",
+        "Vérifier pause, interruption et fin de manche avant toute admission au jeu."
+      ],
+      "id": "acid2-shield-guard",
+      "role": "Variante de garde AC!D 2 au béret rouge, équipée d’un bouclier et d’un objet tenu. La nouvelle source représente cet équipement dans une pose native oblique. Le bouclier, le visage et le bras partiellement couverts par les éléments d’interface restent des reconstructions à comparer à d’autres vues.",
+      "states": [
+        {
+          "name": "Garde équipée",
+          "description": "Définir un ancrage au sol et conserver l’angle du bouclier par rapport au torse. L’objet protecteur doit rester une couche ou un élément identifié séparément pour les futures animations ; sa taille affichée ne suffit pas à fixer une zone de protection."
+        },
+        {
+          "name": "Avancée, recul et pivot",
+          "description": "Documenter des pas compatibles avec l’équipement, sans faire glisser la botte avancée. Prévoir les changements de direction en conservant la latéralité des mains ; les faces interne et arrière du bouclier demandent d’autres références."
+        },
+        {
+          "name": "Protection et réaction",
+          "description": "Si un comportement de garde est retenu dans CQC, produire anticipation, contact, recul et reprise. La possibilité de contourner, interrompre ou briser cette garde est une décision à valider ; aucune invulnérabilité ou résistance chiffrée n’est attestée ici."
+        },
+        {
+          "name": "Action puis retour à la garde",
+          "description": "Qualifier le mouvement du bras et le dégagement du bouclier à partir d’une séquence du jeu. Les éclats, effets et projectiles éventuels doivent être des assets distincts ; le flash de la capture n’est pas intégré au PNG de référence."
+        }
+      ],
+      "interactions": [
+        "Tester l’occlusion du bras et du visage derrière le bouclier dans les deux orientations, avec caméra CQC définitive.",
+        "Définir séparément volumes corporels, protection et éventuels contacts du bouclier ; éviter une collision unique sur toute l’image.",
+        "Valider interruption, chute et fin de manche pour éviter un bouclier orphelin ou une protection persistante.",
+        "Conserver l’association au loadout observé, sans compter cette image comme un nouveau personnage nommé ou une famille entièrement terminée."
+      ],
+      "separateAssetsNeeded": [
+        "Face interne du bouclier",
+        "Vues opposées sourcées",
+        "Déplacement équipé",
+        "Réactions à la garde",
+        "Actions et effets séparés"
+      ]
+    },
+    {
+      "status": "documented_future_work_not_generated_or_implemented",
+      "classification": "proposition_CQC_a_valider_par_references_natives",
+      "framesGeneratedByP69": 1,
+      "animationClipsGeneratedByP69": 0,
+      "frameTimings": "Les durées, fenêtres et vitesses restent à mesurer sur des séquences natives puis à équilibrer dans CQC. Aucun nombre de frames canonique n’est déduit du PNG.",
+      "camera": "La vue livrée reste celle de sa référence. Une vue de profil, une orientation opposée ou une rotation demande une référence et une source distinctes.",
+      "acceptance": [
+        "Conserver l’édition, l’incarnation, la couverture et le statut natif ou conceptuel indiqués.",
+        "Valider ancrage et volumes séparément de la marge transparente.",
+        "Vérifier pause, interruption et fin de manche avant toute admission au jeu."
+      ],
+      "id": "acid2-high-tech-soldier",
+      "role": "Soldat Hi-Tech AC!D 2 en pose frontale issue du dessin CONCEPT3. La capture native P90 corrobore casque, visière, col et palette du haut du corps ; les jambes de cette source viennent du concept complet. Cette distinction doit rester visible dans l’Atlas et dans toute future qualification.",
+      "states": [
+        {
+          "name": "Pose conceptuelle",
+          "description": "Conserver casque clair, visière rouge, col montant, protections et poches propres à ce dessin. Cette pose neutre sert à comparer les proportions et la palette ; elle ne constitue pas une frame extraite du modèle PSP."
+        },
+        {
+          "name": "Qualification du modèle natif",
+          "description": "Rassembler des captures en pied de face, de dos et de profil pour mesurer les différences entre concept et modèle final. Documenter les écarts avant de transformer cette source en sprite de combat ; les détails du dessin ne doivent pas devenir automatiquement des propriétés du modèle."
+        },
+        {
+          "name": "Locomotion après qualification",
+          "description": "Produire les appuis et pivots à partir d’une silhouette native approuvée, en contrôlant les protections d’épaules et le col. La position neutre des bras ne documente aucune garde, course ou manipulation d’équipement."
+        },
+        {
+          "name": "Actions et réactions à produire",
+          "description": "Choisir les équipements réellement attestés pour cette variante, puis produire les poses correspondantes et leur récupération. Les réactions aux contacts, interruptions et sortie de scène doivent être compatibles avec les volumes validés ; aucun kit d’action n’est livré ici."
+        }
+      ],
+      "interactions": [
+        "Maintenir la traçabilité concept versus capture native pour chaque futur élément réutilisé.",
+        "Ne pas attribuer bonus de défense, résistance, capteur ou capacité spéciale à partir d’une plaque ou d’un voyant dessiné.",
+        "Valider amplitudes des bras et rotations de tête avec les protections avant d’utiliser les animations d’un garde standard.",
+        "Garder séparés la pose neutre, le port d’équipement natif et les variantes de personnel SaintLogic encore non qualifiées."
+      ],
+      "separateAssetsNeeded": [
+        "Captures natives en pied",
+        "Comparaison concept/modèle",
+        "Dos et profils",
+        "Déplacements du modèle qualifié",
+        "Équipements et actions séparés"
+      ]
+    },
+    {
+      "status": "documented_future_work_not_generated_or_implemented",
+      "classification": "proposition_CQC_a_valider_par_references_natives",
+      "framesGeneratedByP69": 1,
+      "animationClipsGeneratedByP69": 0,
+      "frameTimings": "Les durées, fenêtres et vitesses restent à mesurer sur des séquences natives puis à équilibrer dans CQC. Aucun nombre de frames canonique n’est déduit du PNG.",
+      "camera": "La vue livrée reste celle de sa référence. Une vue de profil, une orientation opposée ou une rotation demande une référence et une source distinctes.",
+      "acceptance": [
+        "Conserver l’édition, l’incarnation, la couverture et le statut natif ou conceptuel indiqués.",
+        "Valider ancrage et volumes séparément de la marge transparente.",
+        "Vérifier pause, interruption et fin de manche avant toute admission au jeu."
+      ],
+      "id": "mgr-mistral-collar-concept",
+      "role": "Accessoire mécanique de Mistral isolé depuis une planche de conception PlatinumGames. Cette source documente le volume apparent, les ports et le revêtement intérieur visibles. Elle ne représente pas un objet déjà assemblé au personnage dans le runtime ni une preuve de toutes les connexions du modèle final.",
+      "states": [
+        {
+          "name": "Vue de référence isolée",
+          "description": "Fixer l’orientation et une échelle documentaire cohérente avec la planche. Les surfaces internes, disques et détails périphériques peuvent servir de repères visuels, mais pas de plan technique ni de mesure d’assemblage."
+        },
+        {
+          "name": "Association au porteur",
+          "description": "Obtenir une vue native du collier porté et vérifier position relative au cou et aux épaules. Définir les points d’attache et les couches d’occlusion à partir de ces vues, sans déduire de la perspective du concept une géométrie arrière complète."
+        },
+        {
+          "name": "Transitions visibles à qualifier",
+          "description": "Rechercher les séquences où l’accessoire change d’état ou accompagne un mouvement. Chaque variation réelle de port, rotation ou connexion demande ses frames ; aucun mécanisme mobile ou effet lumineux n’est animé par la source fixe."
+        },
+        {
+          "name": "Réaction et fin de séquence",
+          "description": "Prévoir les transitions d’apparition, masquage et retrait nécessaires à la scène CQC choisie. Les états de dommage ou détachement, s’ils sont retenus et sourcés, restent des objets et animations séparés ; ne pas les inventer depuis la présence de raccords."
+        }
+      ],
+      "interactions": [
+        "Vérifier les masques d’occlusion avec le corps, les bras et la caméra avant de superposer l’accessoire au personnage.",
+        "Conserver la provenance conceptuelle dans chaque association ; la fidélité au modèle natif final demande une comparaison dédiée.",
+        "Ne pas ajouter de portée, dégâts, cible ou état actif au collier sur la seule base de son apparence mécanique.",
+        "Maintenir un retour propre à la scène initiale après pause, interruption ou changement de dossier ; aucun élément ne doit rester accroché à un autre porteur."
+      ],
+      "separateAssetsNeeded": [
+        "Vues natives porté et arrière",
+        "Échelle et points d’attache",
+        "Masques d’occlusion",
+        "États mobiles attestés",
+        "Version finale native si distincte"
+      ]
+    },
+    {
+      "status": "documented_future_work_not_generated_or_implemented",
+      "classification": "proposition_CQC_a_valider_par_references_natives",
+      "framesGeneratedByP69": 1,
+      "animationClipsGeneratedByP69": 0,
+      "frameTimings": "Les durées, fenêtres et vitesses restent à mesurer sur des séquences natives puis à équilibrer dans CQC. Aucun nombre de frames canonique n’est déduit du PNG.",
+      "camera": "La vue livrée reste celle de sa référence. Une vue de profil, une orientation opposée ou une rotation demande une référence et une source distinctes.",
+      "acceptance": [
+        "Conserver l’édition, l’incarnation, la couverture et le statut natif ou conceptuel indiqués.",
+        "Valider ancrage et volumes séparément de la marge transparente.",
+        "Vérifier pause, interruption et fin de manche avant toute admission au jeu."
+      ],
+      "id": "mgr-r00-maverick-cap-portrait",
+      "role": "Portrait d’un soldat Maverick à casquette visible dans R-00. La source s’arrête aux épaules et sert à documenter la tête, la casquette et une partie du vêtement. Le visage, les textures et les coutures sont reconstruits depuis une capture limitée ; aucun corps complet ni identité personnelle supplémentaire n’est fourni.",
+      "states": [
+        {
+          "name": "Portrait statique",
+          "description": "Conserver le cadrage documentaire, la casquette abaissée et les épaules coupées volontairement. Définir une zone de cadrage pour la fiche sans interpréter les limites de l’image comme des limites anatomiques ou un volume de collision."
+        },
+        {
+          "name": "Autres angles et expressions",
+          "description": "Rechercher des gros plans natifs avant de produire profil, regard ou expression. La visière masque les yeux dans la référence ; les faire apparaître ou inventer une expression lisible demanderait une autre source."
+        },
+        {
+          "name": "Présentation dans l’interface",
+          "description": "Si la fiche reçoit une transition, définir apparition, disparition et recadrage comme comportements d’interface CQC. Un fondu ou un léger mouvement de présentation ne devient pas une animation native du personnage et doit être décrit comme tel."
+        },
+        {
+          "name": "Qualification ultérieure du corps",
+          "description": "Conserver l’exigence de vues natives en pied pour tenue, équipements et morphologie complète. Toute intégration combattant attend ces références et les cycles correspondants ; le portrait ne réduit pas à lui seul ce travail restant."
+        }
+      ],
+      "interactions": [
+        "Séparer sélection de dossier et sélection de combattant ; la fiche doit rester consultable sans ouvrir une admission de jeu.",
+        "Vérifier lisibilité sur fonds clairs et sombres, avec respect du cadrage des épaules et des réserves d’alpha.",
+        "Ne pas associer armes, rang, nom ou capacités supplémentaires à partir du visage et de la casquette seuls.",
+        "Conserver R-00 comme contexte de cette source ; aucune couverture des autres soldats humains de Revengeance n’est transférée."
+      ],
+      "separateAssetsNeeded": [
+        "Autres gros plans natifs",
+        "Vues intégrales de la tenue",
+        "Dos et profils",
+        "Équipements qualifiés séparément",
+        "Cycles si future admission"
+      ]
+    },
+    {
+      "status": "documented_future_work_not_generated_or_implemented",
+      "classification": "proposition_CQC_a_valider_par_references_natives",
+      "framesGeneratedByP69": 1,
+      "animationClipsGeneratedByP69": 0,
+      "frameTimings": "Les durées, fenêtres et vitesses restent à mesurer sur des séquences natives puis à équilibrer dans CQC. Aucun nombre de frames canonique n’est déduit du PNG.",
+      "camera": "La vue livrée reste celle de sa référence. Une vue de profil, une orientation opposée ou une rotation demande une référence et une source distinctes.",
+      "acceptance": [
+        "Conserver l’édition, l’incarnation, la couverture et le statut natif ou conceptuel indiqués.",
+        "Valider ancrage et volumes séparément de la marge transparente.",
+        "Vérifier pause, interruption et fin de manche avant toute admission au jeu."
+      ],
+      "id": "survive-air-shock-cannon",
+      "role": "Gadget Survive déployé, documenté par deux captures natives complémentaires. La nouvelle vue dégage davantage le disque frontal et la seconde montre les appuis ; quelques zones restent masquées par l’avatar ou le HUD. La source est une reconstruction de la vue visible, avec géométrie et microdétails à confirmer.",
+      "states": [
+        {
+          "name": "Placement et ancrage",
+          "description": "Fixer une position au sol compatible avec tous les appuis et conserver la hauteur relative du mât et du bloc supérieur. Produire l’installation comme séquence séparée si elle est nécessaire ; le PNG déployé ne documente pas un dépliage."
+        },
+        {
+          "name": "Attente déployée",
+          "description": "Conserver l’orientation du disque et les relations entre bloc, monture et pied. Les variations de voyant ou de mouvement demandent une séquence native ; aucune rotation automatique n’est déduite de la présence d’un support."
+        },
+        {
+          "name": "Déclenchement à qualifier",
+          "description": "Observer une activation native pour séparer préparation, impulsion visuelle et récupération. L’effet doit être un asset distinct de l’objet ; sa portée, les cibles compatibles et la direction de réaction restent des paramètres à établir dans le jeu."
+        },
+        {
+          "name": "Interruption et retrait",
+          "description": "Prévoir retrait, désactivation et restauration après pause, fin de manche ou destruction si celle-ci est retenue. Les pieds, l’objet et l’éventuel effet doivent quitter la scène de façon cohérente, sans volume de collision résiduel."
+        }
+      ],
+      "interactions": [
+        "Valider implantation sur sol plat, bord de plateforme et proximité d’autres objets avant d’autoriser le placement.",
+        "Distinguer collision de l’appareil, zone d’activation et effet de déplacement éventuel ; une seule silhouette PNG ne suffit pas à les définir.",
+        "Obtenir les vues arrière et les zones cachées pour confirmer le nombre, la longueur et la position des appuis.",
+        "Conserver une association propre à l’Air Shock Cannon ; le Balloon Trap, le Mortar déployé et le Mortar ennemi restent des sources distinctes."
+      ],
+      "separateAssetsNeeded": [
+        "Vue arrière dégagée",
+        "Vérification des supports et proportions",
+        "Installation si attestée",
+        "Activation et récupération natives",
+        "Effet et son séparés"
+      ]
+    },
+    {
+      "status": "documented_future_work_not_generated_or_implemented",
+      "classification": "proposition_CQC_a_valider_par_references_natives",
+      "framesGeneratedByP69": 1,
+      "animationClipsGeneratedByP69": 0,
+      "frameTimings": "Les durées, fenêtres et vitesses restent à mesurer sur des séquences natives puis à équilibrer dans CQC. Aucun nombre de frames canonique n’est déduit du PNG.",
+      "camera": "La vue livrée reste celle de sa référence. Une vue de profil, une orientation opposée ou une rotation demande une référence et une source distinctes.",
+      "acceptance": [
+        "Conserver l’édition, l’incarnation, la couverture et le statut natif ou conceptuel indiqués.",
+        "Valider ancrage et volumes séparément de la marge transparente.",
+        "Vérifier pause, interruption et fin de manche avant toute admission au jeu."
+      ],
+      "id": "survive-sledgehammer-gold",
+      "role": "Masse Survive isolée dans la variante dorée rapprochée du Survival Pack. La capture de classe Heavy Weapons donne une vue entière et la planche officielle confirme une masse Gold comparable. Le nom exact du modèle de la capture reste à confirmer ; la source conserve cette réserve et ses détails de surface interpolés.",
+      "states": [
+        {
+          "name": "Objet de référence",
+          "description": "Conserver la silhouette de la tête à encoches, le cou et la longueur du manche dans leur orientation oblique. Définir un cadrage documentaire puis une échelle de jeu séparée ; les dimensions du fichier et ses marges ne donnent aucune mesure physique."
+        },
+        {
+          "name": "Prise en main à documenter",
+          "description": "Obtenir une capture native avec porteur pour déterminer prise, orientation et occlusion des mains. Les points d’attache et la position au repos ne doivent pas être inventés depuis cette vue isolée ; le porteur et ses membres restent des sources distinctes."
+        },
+        {
+          "name": "Action et récupération futures",
+          "description": "Rechercher une séquence pour décomposer préparation, déplacement, contact éventuel et retour. Les timings, trajectoires et contraintes de déplacement seront des paramètres CQC à valider ; aucune frappe, charge ou propriété spéciale n’est livrée par ce PNG."
+        },
+        {
+          "name": "Interruption et rangement",
+          "description": "Prévoir abandon d’une action, retour au repos et retrait de scène en conservant les points d’attache. Les états de chute, usure ou rupture demandent une preuve ou une décision explicite d’adaptation ; ils ne se déduisent pas de la texture rayée."
+        }
+      ],
+      "interactions": [
+        "Vérifier les deux mains et les masques d’occlusion avec le porteur retenu avant d’utiliser un sprite d’action.",
+        "Séparer volume visuel de l’objet, contact de jeu et effet d’impact ; le contour complet de l’image ne devient pas une zone de dégâts.",
+        "Contrôler proximité des murs, plateformes et autres personnages pendant les transitions futures, sans ajouter de comportement automatique.",
+        "Conserver la qualification Gold comme attribution recoupée et ouverte à vérification du modèle ; les autres variantes de masse restent séparées."
+      ],
+      "separateAssetsNeeded": [
+        "Identifiant du modèle natif",
+        "Vue opposée",
+        "Prise en main native",
+        "Poses du porteur et récupération",
+        "Effets et sons séparés"
+      ]
+    },
+    {
+      "status": "documented_future_work_not_generated_or_implemented",
+      "classification": "proposition_CQC_a_valider_par_references_natives",
+      "framesGeneratedByP69": 1,
+      "animationClipsGeneratedByP69": 0,
+      "frameTimings": "Les durées, fenêtres et vitesses restent à mesurer sur des séquences natives puis à équilibrer dans CQC. Aucun nombre de frames canonique n’est déduit du PNG.",
+      "camera": "La vue livrée reste celle de sa référence. Une vue de profil, une orientation opposée ou une rotation demande une référence et une source distinctes.",
+      "acceptance": [
+        "Conserver l’édition, l’incarnation, la couverture et le statut natif ou conceptuel indiqués.",
+        "Valider ancrage et volumes séparément de la marge transparente.",
+        "Vérifier pause, interruption et fin de manche avant toute admission au jeu."
+      ],
+      "id": "survive-survival-spear-gold",
+      "role": "Lance Survive isolée dans la variante dorée rapprochée du Survival Pack. La vue de classe Thrust Weapons montre la silhouette entière, de la lame au pommeau. La planche officielle corrobore la famille Gold ; le raccord exact entre cette capture communautaire et l’identifiant de modèle reste à confirmer.",
+      "states": [
+        {
+          "name": "Vue entière de référence",
+          "description": "Conserver la longueur relative de la hampe, la lame asymétrique, la petite garde, les bagues et le pommeau. La vue livrée est oblique et presque horizontale ; produire d’autres orientations seulement à partir de références correspondantes, avec pointe et extrémité toujours lisibles."
+        },
+        {
+          "name": "Port et garde à qualifier",
+          "description": "Obtenir des vues natives avec porteur pour observer les positions des mains et les points d’appui. Un objet isolé ne permet pas de choisir la latéralité ou la distance au corps ; ces éléments conditionnent les futures couches et collisions."
+        },
+        {
+          "name": "Mouvement et retour futurs",
+          "description": "Documenter la préparation, l’avancée visuelle et le retour de la pose native retenue. La longueur apparente ne détermine ni portée ni vitesse de jeu ; les règles de contact, déplacement et interruption doivent être définies puis testées dans CQC."
+        },
+        {
+          "name": "Réaction et sortie",
+          "description": "Prévoir réaction au contact, retour au repos et rangement en gardant la continuité entre la hampe et les mains. Aucun lancer, projectile ou état cassé n’est livré ou déduit de la forme de la lance ; ces possibilités exigeraient des preuves et assets propres."
+        }
+      ],
+      "interactions": [
+        "Valider l’ancrage de la hampe et l’occultation par chacune des mains, avec caméra et échelle définitives.",
+        "Distinguer collision de décor, contact de jeu et rendu de la pointe pour éviter une zone d’impact fondée sur toute la longueur du PNG.",
+        "Vérifier le retour au contrôle après arrêt ou interruption, ainsi que les croisements avec une petite cible et les bords de plateforme.",
+        "Conserver les données de variante et les réserves d’identification ; aucune capacité ou bonus particulier n’est attribué à la teinte dorée."
+      ],
+      "separateAssetsNeeded": [
+        "Confirmation du modèle Gold",
+        "Vue opposée et détails natifs",
+        "Port et garde du personnage",
+        "Actions et récupérations sourcées",
+        "Réactions et effets séparés"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "pass": "p61",
+  "reviewedAt": "2026-11-25",
+  "reviewer": "machines",
+  "scope": "Dedicated projectile bodies requested after machine generation",
+  "summary": {
+    "reviewed": 3,
+    "generated": 0,
+    "referenceIncomplete": 3
+  },
+  "entries": [
+    {
+      "workId": "projectile:smoke-shell",
+      "label": "Box Tank (Smoke Shell) — Peace Walker",
+      "status": "reference_incomplete",
+      "sourceGenerated": false,
+      "selected": false,
+      "identityConfirmed": true,
+      "bodyGeometryConfirmed": false,
+      "existingAlias": "launcher-grenade",
+      "finding": "L'identité est bien la munition tirée par la tourelle du BOX-T (SMK). Les descriptions établissent l'effet de fumée, pas une forme externe précise de l'obus. Les captures publiques examinées ne montrent aucun corps isolé suffisamment net ; impossible de confirmer qu'il diffère visuellement de l'alias actuel.",
+      "evidence": [
+        {
+          "url": "https://mgcvt.com/guide/mgspw/equipment.htm",
+          "type": "equipment-list",
+          "supports": "BOX-T (SMK), variante de char en carton à munition fumigène, distincte du BOX SMOKE posé au sol."
+        },
+        {
+          "url": "https://darage.com/enjoygame/mgspw/db03.html",
+          "type": "equipment-description-transcription",
+          "supports": "Le deuxième joueur tire les obus fumigènes ; aucune illustration détaillée de la munition."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=UgZLkjAzTrs",
+          "type": "gameplay-thumbnails-inspected",
+          "supports": "Char en carton/infiltration ; les vignettes hq1 et hq3 examinées montrent surtout les joueurs, sans corps d'obus résolu."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=OKJekzRHiUU",
+          "type": "briefing-capture-inspected",
+          "supports": "Vignette hq2 : briefing Miller et image du Box Tank entier, pas son projectile."
+        }
+      ],
+      "generationDecision": "Pas de cylindre, d'ailettes ou de couleur de marquage inventés. Conserver comme manque de référence du corps ; l'effet de fumée est une source séparée réalisée par root.",
+      "neededEvidence": "Capture de jeu nette du BOX-T (SMK) au tir ou modèle/texture de sa munition permettant de définir la silhouette."
+    },
+    {
+      "workId": "projectile:stun-shell",
+      "label": "Box Tank (Stun Cannon) — Peace Walker",
+      "status": "reference_incomplete",
+      "sourceGenerated": false,
+      "selected": false,
+      "identityConfirmed": true,
+      "bodyGeometryConfirmed": false,
+      "existingAlias": "launcher-grenade",
+      "finding": "L'identité est bien la munition non létale du BOX-T (STN), distincte de la boîte piège BOX STUN. Les sources attestent le type d'effet et la commande de tir ; elles n'établissent ni silhouette d'obus ni couleur de corps différente.",
+      "evidence": [
+        {
+          "url": "https://mgcvt.com/guide/mgspw/equipment.htm",
+          "type": "equipment-list",
+          "supports": "BOX-T (STN) avec canon étourdissant."
+        },
+        {
+          "url": "https://darage.com/enjoygame/mgspw/db03.html",
+          "type": "equipment-description-transcription",
+          "supports": "Le tireur peut viser et tirer des munitions étourdissantes."
+        },
+        {
+          "url": "https://w.atwiki.jp/aniwotawiki/pages/22758.html",
+          "type": "item-description",
+          "supports": "Trois variantes de munition du char en carton ; une munition fixe par variante du char. Ne décrit pas la géométrie des obus."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=iXvHHCT2-pc",
+          "type": "gameplay-thumbnails-inspected",
+          "supports": "Vignettes de déplacement ; aucune vue nette du corps de munition."
+        }
+      ],
+      "generationDecision": "Aucune source dédiée générée sans corps canonique visible ; ne pas transformer le stun-shell en grenade étourdissante à main par simple association de nom.",
+      "neededEvidence": "Capture de tir du BOX-T (STN) présentant la munition, ou preuve que le même modèle de projectile est réellement partagé avec une autre variante."
+    },
+    {
+      "workId": "projectile:crystal-grenade",
+      "label": "Projectile explosif du Mortar — Metal Gear Survive",
+      "status": "reference_incomplete",
+      "sourceGenerated": false,
+      "selected": false,
+      "identityConfirmed": true,
+      "bodyGeometryConfirmed": false,
+      "finding": "Le Mortar tire depuis son bras une masse cristalline explosive en trajectoire courbe, avec délai avant explosion et possibilité de la repousser. Il s'agit d'une attaque ennemie, pas du Kuban Crystal lure du joueur. Une vidéo dédiée montre le renvoi à la batte ; l'objet mobile apparaît comme une petite lueur rouge allongée sur les storyboards, sans facettes ou contour assez nets pour une source HD fidèle.",
+      "evidence": [
+        {
+          "url": "https://w.atwiki.jp/mgsurvive/pages/50.html",
+          "type": "enemy-behavior-reference",
+          "supports": "Section モーター : cristal explosif lancé par le bras en arc, marqueur rouge à l'impact, délai avant explosion, repoussable par attaque même sans arme."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Jx1XCEvsBIQ",
+          "title": "メタルギアサヴァイブ モーターと野球",
+          "type": "primary-gameplay",
+          "supports": "Séquence de 111 secondes ; storyboards inspectés autour de 25–75 s montrant le joueur frappant les projectiles du Mortar avec une batte. Les captures hq1/hq2 et maxres ont aussi été inspectées."
+        },
+        {
+          "url": "https://img.youtube.com/vi/Jx1XCEvsBIQ/maxresdefault.jpg",
+          "type": "gameplay-thumbnail",
+          "supports": "Mortar au loin et joueur à la batte ; l'image ne fournit pas une vue de produit du corps cristallin."
+        },
+        {
+          "url": "https://gameranx.com/features/id/140946/article/metal-gear-survive-walkthrough-chapter-18-find-sahelanthropus/",
+          "type": "walkthrough",
+          "supports": "Décrit les projectiles explosifs tirés par les ouvertures du bras, et le renvoi au pied après leur arrivée."
+        },
+        {
+          "url": "https://w.atwiki.jp/mgsurvive/pages/80.html",
+          "type": "excluded-item-reference",
+          "supports": "Kuban Crystal du joueur : appât attirant les ennemis. Identité différente ; exclue de la reconstruction."
+        }
+      ],
+      "rejectedReferences": [
+        {
+          "url": "https://www.youtube.com/watch?v=tdhL4Fa8XLk",
+          "reason": "Démo de coup de pied dans une grenade de joueur en espace d'entraînement ; ne démontre pas un projectile de Mortar."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=0iylkS7mBPM",
+          "reason": "Les grandes lueurs rouges des vignettes sont des ouvertures de wormhole, pas une preuve du corps d'obus."
+        }
+      ],
+      "accessLimit": "La lecture de métadonnées publiques et des storyboards fonctionne. Une tentative de récupération publique du court clip 720p a renvoyé HTTP 403 ; aucun contournement ni essai authentifié n'a été entrepris.",
+      "generationDecision": "Ne pas générer un cristal taillé arbitraire ni utiliser le Kuban lure. Le comportement est identifié, la géométrie reste ouverte.",
+      "neededEvidence": "Une frame non floue du cristal juste avant impact/renvoi, ou un modèle/texture canonique du projectile."
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "browser": "158.0.8127.0",
+  "checks": [
+    "standalone training loads five actual PNG assets and four authored fighters",
+    "keyboard movement and authored directional projectile produce real opponent damage",
+    "keyboard tag changes the active reserve; pointer assist enters the engine and spends its cooldown",
+    "pause stops the fixed-step simulation and resume restarts it",
+    "390px mobile layout has no horizontal overflow and touch controls are at least 44px high",
+    "same-origin parent handshake, validated session start and exit preserve token; child-origin forged start is ignored",
+    "a deliberate PNG404 after vb-ready shows an explicit error and exit still returns the validated request token; no result is emitted"
+  ],
+  "pageErrors": [],
+  "networkErrors": [],
+  "expectedFailures": [
+    "one deliberately intercepted PNG404 validates recovery without a trapped iframe"
+  ],
+  "scope": "Actual fighter/stage PNGs, live existing engine, standalone and same-origin iframe. This sequence covers fighters and a stage; enemy/boss asset admission has separate evidence."
+}

@@ -1,0 +1,684 @@
+{
+  "schema": "cqc.p72.acid-handoff.v1",
+  "parentCommit": "b9051108080855cfcad8a322d34dbfb66e8c131e",
+  "reviewedAt": "2026-11-27T08:09:25.630517+00:00",
+  "requests": 3,
+  "generationCalls": 3,
+  "generationRequests": 3,
+  "successfulOutputs": 3,
+  "selectedCount": 3,
+  "archives": [],
+  "blockedRequests": [],
+  "extensionScopes": [
+    "machine:acid_patrol_bot",
+    "prop:acid_surveillance_camera",
+    "prop:acid_gun_camera"
+  ],
+  "historicalRowsClosed": 0,
+  "assets": [
+    {
+      "id": "acid-patrol-bot",
+      "originalOutputPath": "/workspace/scratch/daa5e5a7b5bc/generated_images/exec-120d128b-a060-4ae3-bd09-e38f2a4921cc.png",
+      "localPath": "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/generated/acid-patrol-bot.png",
+      "bytes": 1328739,
+      "sha256": "9e9811ba337190a262f2005d69a3338f4c4b5862426213176c2a2bc5989fd366",
+      "gitBlobSha": "5a6c12ad57c4d61e304e5429376b5bff8bd05315",
+      "width": 1536,
+      "height": 1024,
+      "colorMode": "RGBA",
+      "bitDepth": 8,
+      "colorType": 6,
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": [
+        0,
+        17,
+        1488,
+        1024
+      ],
+      "visibleAlphaBounds": [
+        173,
+        19,
+        1352,
+        1016
+      ],
+      "solidAlphaBounds": [
+        174,
+        21,
+        1351,
+        1014
+      ],
+      "transparentPixels": 1077903,
+      "opaquePixels": 0,
+      "nearOpaquePixels240to255": 455257,
+      "weakFringePixels1to8": 22150,
+      "faintPixels9to15": 1236,
+      "translucentPixels16to239": 16318,
+      "modalPositiveAlpha": 253,
+      "edgeMaxAlpha": {
+        "top": 0,
+        "bottom": 2,
+        "left": 1,
+        "right": 0
+      },
+      "kind": "machine",
+      "bodyCoverage": "full_body",
+      "workIds": [
+        "machine:acid_patrol_bot"
+      ],
+      "scope": "Un robot de patrouille du laboratoire de Lobito, une vue oblique statique du modèle AC!D PSP avec ses trois appuis visibles ; aucun état animé.",
+      "observed": "Deux vues KONAMI montrent un robot gris angulaire, un canon unique, un bloc supérieur asymétrique et trois longs appuis terminés par des formes circulaires.",
+      "qaNotes": [
+        "Source primaire : deux captures officielles KONAMI de seulement 216×122 pixels. La seconde montre l’ensemble du robot et sert de cadrage ; la première confirme sa partie haute.",
+        "La sortie conserve un sujet complet, la direction générale du canon vers le haut-gauche, le bloc supérieur à droite et les trois appuis séparés. Les silhouettes principales sont comparables ; les proportions métriques ne sont pas validées.",
+        "Les évidements du bloc supérieur, les joints, rainures, plaques et proportions fines du canon ont été interprétés. Les surfaces cachées et la géométrie interne ne sont pas prouvées par ces vues.",
+        "Le point bas visible atteint y1016 sur une toile 1536×1024 : marge de huit pixels, pieds visibles complets ; des pixels alpha 1–2 s’étendent jusqu’au bord gauche/bas. Ne pas confondre la frange avec une découpe de la machine.",
+        "PNG RGBA brut conservé, alpha réel 0–254 avec dominante 253 ; 22 150 pixels de faible frange alpha 1–8. Aucun nettoyage, agrandissement ou détourage programmatique.",
+        "Admissible comme candidat documentaire statique avec réserves. Ni animation de marche, ni attaque, ni destruction, ni collisions ou fenêtre de jeu ne sont produites."
+      ],
+      "nextWork": [
+        "Obtenir une capture native plus grande des trois appuis, du bloc supérieur et du canon afin de corriger les détails reconstruits.",
+        "Mesurer les proportions sur une vue sans perspective avant validation de géométrie et produire les vues opposées uniquement depuis références.",
+        "Documenter les états et timings de patrouille, engagement et neutralisation ; définir pivots/collisions séparément de la source Atlas."
+      ],
+      "label": "AC!D — robot de patrouille de Lobito",
+      "episode": "Metal Gear AC!D",
+      "episodeKey": "acid",
+      "edition": "PSP — captures natives publiées par KONAMI",
+      "passId": "p72",
+      "path": "public/cqc/assets/p72/acid-patrol-bot.png",
+      "scopeClosed": false,
+      "workIdDisposition": "explicit_new_extension_scope_not_historical_row_closure",
+      "historicalRowClosureClaimed": false,
+      "referenceURLs": [
+        "https://www.konami.com/mg/archive/mga/uk/game_play_trap.html",
+        "https://www.konami.com/mg/archive/mga/uk/pic/game_04_01.gif",
+        "https://www.konami.com/mg/archive/mga/uk/pic/game_04_02.gif"
+      ],
+      "referenceFiles": [
+        "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/game_04_01.gif",
+        "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/game_04_02.gif"
+      ],
+      "referenceMetadata": [
+        {
+          "path": "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/game_04_01.gif",
+          "filename": "game_04_01.gif",
+          "bytes": 12891,
+          "sha256": "d7103467ef4dda2fc2f94eb54e192c95ace439c7d6d4a34712d6a736f072a260",
+          "gitBlobSha": "81a46b731a9b080150e718a0f1d10926877d43f0",
+          "url": "https://www.konami.com/mg/archive/mga/uk/pic/game_04_01.gif",
+          "sourceType": "native_game_screenshot_primary_publisher_host",
+          "downloaded": true,
+          "usedForGeneration": true,
+          "viewedBeforeGeneration": true,
+          "width": 216,
+          "height": 122,
+          "colorMode": "P",
+          "frameCount": 1
+        },
+        {
+          "path": "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/game_04_02.gif",
+          "filename": "game_04_02.gif",
+          "bytes": 15953,
+          "sha256": "e42cb13289d658c5d3b366b60cb03a9f9143244308c04eaaa3a7a7e2c2519f7e",
+          "gitBlobSha": "ce764c4a964dad90e03ad6effc0ddf0bd7c8fce6",
+          "url": "https://www.konami.com/mg/archive/mga/uk/pic/game_04_02.gif",
+          "sourceType": "native_game_screenshot_primary_publisher_host",
+          "downloaded": true,
+          "usedForGeneration": true,
+          "viewedBeforeGeneration": true,
+          "width": 216,
+          "height": 122,
+          "colorMode": "P",
+          "frameCount": 1
+        }
+      ],
+      "referencePageMetadata": {
+        "path": "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/konami-traps-page.html",
+        "filename": "konami-traps-page.html",
+        "bytes": 12910,
+        "sha256": "44ed800d4cbf20bebc82980782cf3760aa82841b9269a511ed63b31e6c1015dd",
+        "gitBlobSha": "53930b5dc91a2959816d2c09590759f44cd06185",
+        "url": "https://www.konami.com/mg/archive/mga/uk/game_play_trap.html",
+        "sourceType": "primary_publisher_archive_page",
+        "downloaded": true,
+        "usedForGeneration": false,
+        "viewedBeforeGeneration": false
+      },
+      "transparentBackground": true,
+      "sourceGenerated": "/workspace/scratch/daa5e5a7b5bc/generated_images/exec-120d128b-a060-4ae3-bd09-e38f2a4921cc.png",
+      "selected": true,
+      "selectedVersion": "v1",
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "fidelityStatus": "pending_external_review",
+      "imageViewedAfterGeneration": true,
+      "visualQa": "one_object_reference_comparison_with_explicit_geometry_reservations",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "promptId": "acid-patrol-bot",
+        "exactPrompt": "Create exactly one individual static source asset for the CQC Metal Gear Atlas. Use the attached official KONAMI Metal Gear AC!D PSP screenshots as the sole visual authority. Isolate the named object, preserve its visible original low-polygon game silhouette, proportions, viewing angle, muted gray-green metal palette and simple faceted surface shading. Keep only the recognizable source details; do not modernize, redesign, add ornament or invent hidden mechanisms. Clean readable edges, restrained game-like rendering. One object and one pose only, centered with a clear transparent margin, entire visible object and attached mount or supports inside frame. True transparent background. Remove the character, room, wall, floor, HUD, text, target icons and unrelated scene objects. No labels, sheet, second view, dramatic lighting, ground shadow, explosion or action effects. This is a reference-based reconstruction candidate, not a claim of exact native pixels.\nSubject: the single Lobito Lab Patrol-bot. Use the SECOND reference as the full-object pose and camera anchor, with the FIRST reference only to corroborate its upper-body shape. Preserve the squat angular mechanical body, the single long narrow machine-cannon assembly pointing diagonally toward the upper left, the small stacked boxlike upper sensor/body blocks on the right, and the three long angular leg assemblies ending in the three visible round wheel-like feet. Preserve the asymmetric perspective and all distinct leg placements exactly as shown in the second reference. The feet must remain complete. Keep the gray and charcoal block forms with the few subdued olive/brass details seen in the original. Do not replace it with a humanoid, biped, tank or a design from another Metal Gear episode. No fourth leg and no second weapon.",
+        "promptFile": "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/prompts/acid-patrol-bot.txt",
+        "toolArgs": {
+          "prompt": "Create exactly one individual static source asset for the CQC Metal Gear Atlas. Use the attached official KONAMI Metal Gear AC!D PSP screenshots as the sole visual authority. Isolate the named object, preserve its visible original low-polygon game silhouette, proportions, viewing angle, muted gray-green metal palette and simple faceted surface shading. Keep only the recognizable source details; do not modernize, redesign, add ornament or invent hidden mechanisms. Clean readable edges, restrained game-like rendering. One object and one pose only, centered with a clear transparent margin, entire visible object and attached mount or supports inside frame. True transparent background. Remove the character, room, wall, floor, HUD, text, target icons and unrelated scene objects. No labels, sheet, second view, dramatic lighting, ground shadow, explosion or action effects. This is a reference-based reconstruction candidate, not a claim of exact native pixels.\nSubject: the single Lobito Lab Patrol-bot. Use the SECOND reference as the full-object pose and camera anchor, with the FIRST reference only to corroborate its upper-body shape. Preserve the squat angular mechanical body, the single long narrow machine-cannon assembly pointing diagonally toward the upper left, the small stacked boxlike upper sensor/body blocks on the right, and the three long angular leg assemblies ending in the three visible round wheel-like feet. Preserve the asymmetric perspective and all distinct leg placements exactly as shown in the second reference. The feet must remain complete. Keep the gray and charcoal block forms with the few subdued olive/brass details seen in the original. Do not replace it with a humanoid, biped, tank or a design from another Metal Gear episode. No fourth leg and no second weapon.",
+          "referenced_image_paths": [
+            "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/game_04_01.gif",
+            "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/game_04_02.gif"
+          ],
+          "transparent_background": true
+        },
+        "referenceFiles": [
+          "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/game_04_01.gif",
+          "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/game_04_02.gif"
+        ],
+        "referenced_image_paths": [
+          "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/game_04_01.gif",
+          "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/game_04_02.gif"
+        ],
+        "transparent_background": true,
+        "num_last_images_to_include": null,
+        "outputSourcePath": "/workspace/scratch/daa5e5a7b5bc/generated_images/exec-120d128b-a060-4ae3-bd09-e38f2a4921cc.png",
+        "postprocessing": "none; exact original PNG copied byte-for-byte"
+      },
+      "productionPlan": {
+        "status": "documented_future_work_not_generated_or_implemented",
+        "classification": "proposition_CQC_a_valider_par_references_natives",
+        "framesGeneratedByP72": 1,
+        "animationClipsGeneratedByP72": 0,
+        "frameTimings": "Durées, fenêtres, portées et vitesses restent à mesurer sur des séquences natives puis à adapter ; aucun chiffre canonique déduit du PNG.",
+        "camera": "La reconstruction garde une seule vue oblique. La perspective, les revers et les vues opposées exigent des références et une validation distinctes.",
+        "acceptance": [
+          "Confirmer la géométrie et les détails reconstruits depuis des références plus grandes.",
+          "Conserver version/édition et couverture annoncées ; aucune fermeture 1:1 à partir d’un candidat.",
+          "Valider pivots, ancrages, collisions, états et interactions séparément de la transparence."
+        ],
+        "role": "Source fixe documentaire consultable dans l’Atlas ; toute utilisation jouable attend les vérifications et états décrits.",
+        "states": [
+          {
+            "name": "Statique de référence",
+            "description": "Afficher la vue courante comme reconstruction candidate, avec réserves de géométrie."
+          },
+          {
+            "name": "Patrouille à documenter",
+            "description": "Recueillir la séquence native de déplacement et les positions des appuis avant toute animation."
+          },
+          {
+            "name": "Engagement à documenter",
+            "description": "Séparer orientation, annonce et attaque depuis des séquences natives ; aucun projectile n’est généré ici."
+          },
+          {
+            "name": "Dommages et neutralisation à documenter",
+            "description": "Relever les états visuels et réponses du jeu avant adaptation."
+          }
+        ],
+        "interactions": [
+          "La page officielle identifie une arme unique ; ne pas multiplier les systèmes offensifs à partir de ce PNG.",
+          "Distances, timings, dégâts, résistance et comportement de patrouille restent à documenter ; aucun chiffre de gameplay n’est déduit de la silhouette."
+        ],
+        "separateAssetsNeeded": [
+          "Face/dos/profil natifs rapprochés",
+          "Poses des trois appuis en mouvement",
+          "Orientation et états du canon",
+          "États de dégâts/neutralisation documentés"
+        ]
+      },
+      "requirementsExtensions": {
+        "entity40": "Dossier d’entité : identité, édition et provenance établies ; géométrie, états, comportement et intégration restent ouverts.",
+        "bonus46": "Ces nouveaux objets ne créent aucun droit, abonnement, accès premium ou bonus de gameplay. Aucune fermeture de cette extension."
+      }
+    },
+    {
+      "id": "acid-surveillance-camera",
+      "originalOutputPath": "/workspace/scratch/daa5e5a7b5bc/generated_images/exec-7ebab389-fb62-4106-9835-54ba818d172a.png",
+      "localPath": "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/generated/acid-surveillance-camera.png",
+      "bytes": 460917,
+      "sha256": "ccdbb9030289ae6697ec054536d16c673156870818f599ec256df58ed24a7d91",
+      "gitBlobSha": "586a7cd11224c6a8cd1993382521496d97e14346",
+      "width": 1448,
+      "height": 1086,
+      "colorMode": "RGBA",
+      "bitDepth": 8,
+      "colorType": 6,
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        75,
+        39,
+        1128,
+        1021
+      ],
+      "visibleAlphaBounds": [
+        302,
+        159,
+        1063,
+        903
+      ],
+      "solidAlphaBounds": [
+        304,
+        160,
+        1061,
+        901
+      ],
+      "transparentPixels": 1266826,
+      "opaquePixels": 252,
+      "nearOpaquePixels240to255": 294051,
+      "weakFringePixels1to8": 6803,
+      "faintPixels9to15": 372,
+      "translucentPixels16to239": 4476,
+      "modalPositiveAlpha": 253,
+      "edgeMaxAlpha": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "kind": "prop",
+      "bodyCoverage": "full_object",
+      "workIds": [
+        "prop:acid_surveillance_camera"
+      ],
+      "scope": "Une caméra de surveillance murale AC!D PSP et son support, une vue oblique statique isolée. Ne vaut pas production du capteur infrarouge ni intégration de l’interaction proposée dans Ruins Upper.",
+      "observed": "La capture KONAMI montre une petite caméra grise angulaire fixée au mur au-dessus du personnage ; la page documente son rôle de détection.",
+      "qaNotes": [
+        "La seule image de référence mesure 216×122 pixels et la caméra occupe environ trente pixels de largeur. L’identité et la forme globale sont sourcées, mais les détails restent fortement sous-déterminés.",
+        "La sortie comporte une seule caméra grise à boîtier rectangulaire oblique et un support mural, entièrement visible sur fond transparent ; aucun décor ni personnage.",
+        "La face optique verte, les petits carrés de fixation, le contour du support et le volume exact de la coque sont des reconstructions. La lecture avant/arrière et l’orientation gauche-droite de la très petite référence doivent être contrôlées sur une capture rapprochée avant validation 1:1.",
+        "Ce candidat ne certifie pas la position d’une caméra dans Ruins Upper ; la référence montre seulement le type de caméra AC!D. Il ne remplace pas un capteur infrarouge ni une interaction runtime.",
+        "PNG RGBA brut, alpha 0–255 et dominante 253 ; 6 803 pixels de faible frange alpha 1–8, aucun pixel non transparent sur le bord de toile. Aucun traitement ni rééchantillonnage.",
+        "Admissible au dossier documentaire sous réserves de détails/angle. La caméra de jeu reste à mesurer et à animer si le périmètre CQC la retient."
+      ],
+      "nextWork": [
+        "Capturer la caméra en gros plan afin de confirmer la face optique, l’orientation et la forme du support ; corriger ou retirer les détails extrapolés.",
+        "Sourcer une présence et un emplacement précis avant toute association à Ruins Upper.",
+        "Documenter détection, angle mort et état détruit, puis définir ancrage et interactions sans assimiler la caméra au capteur infrarouge."
+      ],
+      "label": "AC!D — caméra de surveillance de Lobito",
+      "episode": "Metal Gear AC!D",
+      "episodeKey": "acid",
+      "edition": "PSP — captures natives publiées par KONAMI",
+      "passId": "p72",
+      "path": "public/cqc/assets/p72/acid-surveillance-camera.png",
+      "scopeClosed": false,
+      "workIdDisposition": "explicit_new_extension_scope_not_historical_row_closure",
+      "historicalRowClosureClaimed": false,
+      "referenceURLs": [
+        "https://www.konami.com/mg/archive/mga/uk/game_play_trap.html",
+        "https://www.konami.com/mg/archive/mga/uk/pic/game_05_01.gif"
+      ],
+      "referenceFiles": [
+        "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/game_05_01.gif"
+      ],
+      "referenceMetadata": [
+        {
+          "path": "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/game_05_01.gif",
+          "filename": "game_05_01.gif",
+          "bytes": 12521,
+          "sha256": "699051eb0e77b42c0d258754a89f18df9df91c43bb9cad8fd5850f76d3e773f5",
+          "gitBlobSha": "1aedf9f24a22395444735bd13f9fa6ab15962b5f",
+          "url": "https://www.konami.com/mg/archive/mga/uk/pic/game_05_01.gif",
+          "sourceType": "native_game_screenshot_primary_publisher_host",
+          "downloaded": true,
+          "usedForGeneration": true,
+          "viewedBeforeGeneration": true,
+          "width": 216,
+          "height": 122,
+          "colorMode": "P",
+          "frameCount": 1
+        }
+      ],
+      "referencePageMetadata": {
+        "path": "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/konami-traps-page.html",
+        "filename": "konami-traps-page.html",
+        "bytes": 12910,
+        "sha256": "44ed800d4cbf20bebc82980782cf3760aa82841b9269a511ed63b31e6c1015dd",
+        "gitBlobSha": "53930b5dc91a2959816d2c09590759f44cd06185",
+        "url": "https://www.konami.com/mg/archive/mga/uk/game_play_trap.html",
+        "sourceType": "primary_publisher_archive_page",
+        "downloaded": true,
+        "usedForGeneration": false,
+        "viewedBeforeGeneration": false
+      },
+      "transparentBackground": true,
+      "sourceGenerated": "/workspace/scratch/daa5e5a7b5bc/generated_images/exec-7ebab389-fb62-4106-9835-54ba818d172a.png",
+      "selected": true,
+      "selectedVersion": "v1",
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "fidelityStatus": "pending_external_review",
+      "imageViewedAfterGeneration": true,
+      "visualQa": "one_object_reference_comparison_with_explicit_geometry_reservations",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "promptId": "acid-surveillance-camera",
+        "exactPrompt": "Create exactly one individual static source asset for the CQC Metal Gear Atlas. Use the attached official KONAMI Metal Gear AC!D PSP screenshots as the sole visual authority. Isolate the named object, preserve its visible original low-polygon game silhouette, proportions, viewing angle, muted gray-green metal palette and simple faceted surface shading. Keep only the recognizable source details; do not modernize, redesign, add ornament or invent hidden mechanisms. Clean readable edges, restrained game-like rendering. One object and one pose only, centered with a clear transparent margin, entire visible object and attached mount or supports inside frame. True transparent background. Remove the character, room, wall, floor, HUD, text, target icons and unrelated scene objects. No labels, sheet, second view, dramatic lighting, ground shadow, explosion or action effects. This is a reference-based reconstruction candidate, not a claim of exact native pixels.\nSubject: only the wall-mounted surveillance camera visible above Snake in the provided reference. Preserve the compact angular gray rectangular camera housing, its sloping pale gray upper face, the darker small front face pointing diagonally down and toward the left, and the short dark jointed bracket joining its underside/rear to the wall. Retain the reference camera perspective and the simple original geometry. Include the visible mounting bracket as part of the one assembled object, but no wall, wall panel or cable additions. Do not add a weapon, spotlight, red alarm beacon, large lens, text or modern security-camera design.",
+        "promptFile": "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/prompts/acid-surveillance-camera.txt",
+        "toolArgs": {
+          "prompt": "Create exactly one individual static source asset for the CQC Metal Gear Atlas. Use the attached official KONAMI Metal Gear AC!D PSP screenshots as the sole visual authority. Isolate the named object, preserve its visible original low-polygon game silhouette, proportions, viewing angle, muted gray-green metal palette and simple faceted surface shading. Keep only the recognizable source details; do not modernize, redesign, add ornament or invent hidden mechanisms. Clean readable edges, restrained game-like rendering. One object and one pose only, centered with a clear transparent margin, entire visible object and attached mount or supports inside frame. True transparent background. Remove the character, room, wall, floor, HUD, text, target icons and unrelated scene objects. No labels, sheet, second view, dramatic lighting, ground shadow, explosion or action effects. This is a reference-based reconstruction candidate, not a claim of exact native pixels.\nSubject: only the wall-mounted surveillance camera visible above Snake in the provided reference. Preserve the compact angular gray rectangular camera housing, its sloping pale gray upper face, the darker small front face pointing diagonally down and toward the left, and the short dark jointed bracket joining its underside/rear to the wall. Retain the reference camera perspective and the simple original geometry. Include the visible mounting bracket as part of the one assembled object, but no wall, wall panel or cable additions. Do not add a weapon, spotlight, red alarm beacon, large lens, text or modern security-camera design.",
+          "referenced_image_paths": [
+            "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/game_05_01.gif"
+          ],
+          "transparent_background": true
+        },
+        "referenceFiles": [
+          "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/game_05_01.gif"
+        ],
+        "referenced_image_paths": [
+          "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/game_05_01.gif"
+        ],
+        "transparent_background": true,
+        "num_last_images_to_include": null,
+        "outputSourcePath": "/workspace/scratch/daa5e5a7b5bc/generated_images/exec-7ebab389-fb62-4106-9835-54ba818d172a.png",
+        "postprocessing": "none; exact original PNG copied byte-for-byte"
+      },
+      "productionPlan": {
+        "status": "documented_future_work_not_generated_or_implemented",
+        "classification": "proposition_CQC_a_valider_par_references_natives",
+        "framesGeneratedByP72": 1,
+        "animationClipsGeneratedByP72": 0,
+        "frameTimings": "Durées, fenêtres, portées et vitesses restent à mesurer sur des séquences natives puis à adapter ; aucun chiffre canonique déduit du PNG.",
+        "camera": "La reconstruction garde une seule vue oblique. La perspective, les revers et les vues opposées exigent des références et une validation distinctes.",
+        "acceptance": [
+          "Confirmer la géométrie et les détails reconstruits depuis des références plus grandes.",
+          "Conserver version/édition et couverture annoncées ; aucune fermeture 1:1 à partir d’un candidat.",
+          "Valider pivots, ancrages, collisions, états et interactions séparément de la transparence."
+        ],
+        "role": "Source fixe documentaire consultable dans l’Atlas ; toute utilisation jouable attend les vérifications et états décrits.",
+        "states": [
+          {
+            "name": "Statique de référence",
+            "description": "Afficher la source candidate actuelle avec son cadrage oblique."
+          },
+          {
+            "name": "Détection à documenter",
+            "description": "Confirmer orientation, couverture visuelle et éventuel mouvement par captures natives."
+          },
+          {
+            "name": "Alerte à documenter",
+            "description": "Distinguer la détection documentée et ses indices visuels réels avant adaptation CQC."
+          },
+          {
+            "name": "Neutralisation à documenter",
+            "description": "Capturer la forme détruite et la transition avant de produire l’état inutilisable."
+          }
+        ],
+        "interactions": [
+          "La page officielle indique une alerte lors de la détection, une caméra destructible et un angle mort directement sous elle.",
+          "Aucune valeur de portée ni durée d’alerte n’est inventée ; vérifier l’échelle et la géométrie natives avant un transfert vers CQC.",
+          "La proposition historique proposed:cqc_interaction_acid_sensor demeure ouverte : ce PNG n’ajoute pas seul un capteur fonctionnel ni une preuve de placement."
+        ],
+        "separateAssetsNeeded": [
+          "Gros plan du boîtier et de la face optique",
+          "Montage mural natif",
+          "Autres orientations réellement observées",
+          "État détruit et indices d’alerte"
+        ]
+      },
+      "requirementsExtensions": {
+        "entity40": "Dossier d’entité : identité, édition et provenance établies ; géométrie, états, comportement et intégration restent ouverts.",
+        "bonus46": "Ces nouveaux objets ne créent aucun droit, abonnement, accès premium ou bonus de gameplay. Aucune fermeture de cette extension."
+      }
+    },
+    {
+      "id": "acid-gun-camera",
+      "originalOutputPath": "/workspace/scratch/daa5e5a7b5bc/generated_images/exec-c9f0ca6a-17b0-45e4-ad41-895c2e99b5b8.png",
+      "localPath": "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/generated/acid-gun-camera.png",
+      "bytes": 788718,
+      "sha256": "b285887db9712d7b67cbe2ba2779ccb56e887fe42b7af570217cc3f7a20033d1",
+      "gitBlobSha": "07de49317852ca8446e4646605f2453449d907c1",
+      "width": 1668,
+      "height": 943,
+      "colorMode": "RGBA",
+      "bitDepth": 8,
+      "colorType": 6,
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBounds": [
+        0,
+        0,
+        1653,
+        943
+      ],
+      "visibleAlphaBounds": [
+        108,
+        40,
+        1575,
+        919
+      ],
+      "solidAlphaBounds": [
+        109,
+        42,
+        1574,
+        917
+      ],
+      "transparentPixels": 1056385,
+      "opaquePixels": 1584,
+      "nearOpaquePixels240to255": 478143,
+      "weakFringePixels1to8": 27600,
+      "faintPixels9to15": 680,
+      "translucentPixels16to239": 10116,
+      "modalPositiveAlpha": 253,
+      "edgeMaxAlpha": {
+        "top": 1,
+        "bottom": 1,
+        "left": 1,
+        "right": 0
+      },
+      "kind": "prop",
+      "bodyCoverage": "full_object",
+      "workIds": [
+        "prop:acid_gun_camera"
+      ],
+      "scope": "Une caméra armée murale AC!D PSP, assemblage statique isolé en vue oblique. Un accessoire et une seule pose, sans tirs, état détruit ou vue cachée validés.",
+      "observed": "La capture officielle montre à gauche un assemblage gris de surveillance armée fixé à un support et dirigé en diagonale vers la droite.",
+      "qaNotes": [
+        "Référence primaire unique KONAMI, 216×122 pixels. L’assemblage occupe la moitié gauche de l’image ; la résolution interdit une validation des petits raccords.",
+        "La sortie préserve la composition générale : grand bloc rectangulaire arrière à gauche, assemblage central articulé, partie avant et extension étroite vers la droite. Un seul objet est isolé, sans soldat ni décor.",
+        "Le cadre de support inférieur, les évidements arrière, les boulons, les reliefs du boîtier et l’extrémité du canon sont plus détaillés que les pixels d’origine : reconstruction à corriger depuis vues natives rapprochées, pas géométrie certifiée.",
+        "L’absence de référence arrière empêche de certifier l’épaisseur de la fixation ou la cinématique. Le support visible reconstruit ne doit pas servir de patron mécanique mesurable.",
+        "PNG RGBA brut, alpha 0–255 et dominante 253 ; 27 600 pixels alpha 1–8. Des franges alpha 1 touchent les bords haut, gauche et bas, tandis que la forme visible reste entièrement dans la toile.",
+        "Candidat statique documentaire sous réserves. Aucun effet de tir, viseur, projectile, balayage, destruction ou interaction runtime n’a été ajouté."
+      ],
+      "nextWork": [
+        "Obtenir des captures rapprochées pour corriger fixation inférieure, capteurs, articulation et canon.",
+        "Sourcer les orientations et transitions avant un découpage en parties ou toute animation.",
+        "Définir pivots et réactions à partir du jeu, puis vérifier séparément la logique de détection, tir et neutralisation."
+      ],
+      "label": "AC!D — caméra armée de Lobito",
+      "episode": "Metal Gear AC!D",
+      "episodeKey": "acid",
+      "edition": "PSP — captures natives publiées par KONAMI",
+      "passId": "p72",
+      "path": "public/cqc/assets/p72/acid-gun-camera.png",
+      "scopeClosed": false,
+      "workIdDisposition": "explicit_new_extension_scope_not_historical_row_closure",
+      "historicalRowClosureClaimed": false,
+      "referenceURLs": [
+        "https://www.konami.com/mg/archive/mga/uk/game_play_trap.html",
+        "https://www.konami.com/mg/archive/mga/uk/pic/game_06_01.gif"
+      ],
+      "referenceFiles": [
+        "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/game_06_01.gif"
+      ],
+      "referenceMetadata": [
+        {
+          "path": "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/game_06_01.gif",
+          "filename": "game_06_01.gif",
+          "bytes": 17294,
+          "sha256": "20b3654347bc89f280a0d900f07224710881d0fe304497b6ad19b946d9aaa4c5",
+          "gitBlobSha": "ca75c1e05f3f7dffae345cef28881fba0cfa9cae",
+          "url": "https://www.konami.com/mg/archive/mga/uk/pic/game_06_01.gif",
+          "sourceType": "native_game_screenshot_primary_publisher_host",
+          "downloaded": true,
+          "usedForGeneration": true,
+          "viewedBeforeGeneration": true,
+          "width": 216,
+          "height": 122,
+          "colorMode": "P",
+          "frameCount": 1
+        }
+      ],
+      "referencePageMetadata": {
+        "path": "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/konami-traps-page.html",
+        "filename": "konami-traps-page.html",
+        "bytes": 12910,
+        "sha256": "44ed800d4cbf20bebc82980782cf3760aa82841b9269a511ed63b31e6c1015dd",
+        "gitBlobSha": "53930b5dc91a2959816d2c09590759f44cd06185",
+        "url": "https://www.konami.com/mg/archive/mga/uk/game_play_trap.html",
+        "sourceType": "primary_publisher_archive_page",
+        "downloaded": true,
+        "usedForGeneration": false,
+        "viewedBeforeGeneration": false
+      },
+      "transparentBackground": true,
+      "sourceGenerated": "/workspace/scratch/daa5e5a7b5bc/generated_images/exec-c9f0ca6a-17b0-45e4-ad41-895c2e99b5b8.png",
+      "selected": true,
+      "selectedVersion": "v1",
+      "runtimeIntegrated": false,
+      "combatReady": false,
+      "combatRuntimeIntegrated": false,
+      "absolute1to1Certified": false,
+      "referenceGeometryValidated": false,
+      "nativePixelExact": false,
+      "nativeUhd": false,
+      "fidelityStatus": "pending_external_review",
+      "imageViewedAfterGeneration": true,
+      "visualQa": "one_object_reference_comparison_with_explicit_geometry_reservations",
+      "generation": {
+        "tool": "image_gen.imagegen",
+        "mode": "reference_generation",
+        "attempts": 1,
+        "promptId": "acid-gun-camera",
+        "exactPrompt": "Create exactly one individual static source asset for the CQC Metal Gear Atlas. Use the attached official KONAMI Metal Gear AC!D PSP screenshots as the sole visual authority. Isolate the named object, preserve its visible original low-polygon game silhouette, proportions, viewing angle, muted gray-green metal palette and simple faceted surface shading. Keep only the recognizable source details; do not modernize, redesign, add ornament or invent hidden mechanisms. Clean readable edges, restrained game-like rendering. One object and one pose only, centered with a clear transparent margin, entire visible object and attached mount or supports inside frame. True transparent background. Remove the character, room, wall, floor, HUD, text, target icons and unrelated scene objects. No labels, sheet, second view, dramatic lighting, ground shadow, explosion or action effects. This is a reference-based reconstruction candidate, not a claim of exact native pixels.\nSubject: only the gray wall-mounted Gun Camera assembly on the LEFT of the source frame. Preserve its source oblique perspective, its dark rectangular rear housing on the upper left, the long faceted gray main assembly descending diagonally to the lower right, the central visible joint/support shapes, and the thin muzzle/front extension pointing toward the lower right. Keep all parts that visibly belong to the mounted assembly in the original, but no soldier, room, wall or railing. Preserve the source proportions and primitive polygonal construction; do not turn it into a hand-held rifle, tripod turret or Patrol-bot, and do not add extra barrels, ammunition belts, decorative panels or unseen rear structures. A single complete visible mounted gun-camera object with a transparent margin.",
+        "promptFile": "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/prompts/acid-gun-camera.txt",
+        "toolArgs": {
+          "prompt": "Create exactly one individual static source asset for the CQC Metal Gear Atlas. Use the attached official KONAMI Metal Gear AC!D PSP screenshots as the sole visual authority. Isolate the named object, preserve its visible original low-polygon game silhouette, proportions, viewing angle, muted gray-green metal palette and simple faceted surface shading. Keep only the recognizable source details; do not modernize, redesign, add ornament or invent hidden mechanisms. Clean readable edges, restrained game-like rendering. One object and one pose only, centered with a clear transparent margin, entire visible object and attached mount or supports inside frame. True transparent background. Remove the character, room, wall, floor, HUD, text, target icons and unrelated scene objects. No labels, sheet, second view, dramatic lighting, ground shadow, explosion or action effects. This is a reference-based reconstruction candidate, not a claim of exact native pixels.\nSubject: only the gray wall-mounted Gun Camera assembly on the LEFT of the source frame. Preserve its source oblique perspective, its dark rectangular rear housing on the upper left, the long faceted gray main assembly descending diagonally to the lower right, the central visible joint/support shapes, and the thin muzzle/front extension pointing toward the lower right. Keep all parts that visibly belong to the mounted assembly in the original, but no soldier, room, wall or railing. Preserve the source proportions and primitive polygonal construction; do not turn it into a hand-held rifle, tripod turret or Patrol-bot, and do not add extra barrels, ammunition belts, decorative panels or unseen rear structures. A single complete visible mounted gun-camera object with a transparent margin.",
+          "referenced_image_paths": [
+            "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/game_06_01.gif"
+          ],
+          "transparent_background": true
+        },
+        "referenceFiles": [
+          "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/game_06_01.gif"
+        ],
+        "referenced_image_paths": [
+          "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/game_06_01.gif"
+        ],
+        "transparent_background": true,
+        "num_last_images_to_include": null,
+        "outputSourcePath": "/workspace/scratch/daa5e5a7b5bc/generated_images/exec-c9f0ca6a-17b0-45e4-ad41-895c2e99b5b8.png",
+        "postprocessing": "none; exact original PNG copied byte-for-byte"
+      },
+      "productionPlan": {
+        "status": "documented_future_work_not_generated_or_implemented",
+        "classification": "proposition_CQC_a_valider_par_references_natives",
+        "framesGeneratedByP72": 1,
+        "animationClipsGeneratedByP72": 0,
+        "frameTimings": "Durées, fenêtres, portées et vitesses restent à mesurer sur des séquences natives puis à adapter ; aucun chiffre canonique déduit du PNG.",
+        "camera": "La reconstruction garde une seule vue oblique. La perspective, les revers et les vues opposées exigent des références et une validation distinctes.",
+        "acceptance": [
+          "Confirmer la géométrie et les détails reconstruits depuis des références plus grandes.",
+          "Conserver version/édition et couverture annoncées ; aucune fermeture 1:1 à partir d’un candidat.",
+          "Valider pivots, ancrages, collisions, états et interactions séparément de la transparence."
+        ],
+        "role": "Source fixe documentaire consultable dans l’Atlas ; toute utilisation jouable attend les vérifications et états décrits.",
+        "states": [
+          {
+            "name": "Statique de référence",
+            "description": "Conserver l’angle documenté et la silhouette de l’assemblage comme candidat."
+          },
+          {
+            "name": "Orientation à documenter",
+            "description": "Relever axes, limites et variations d’angle réellement visibles dans le jeu."
+          },
+          {
+            "name": "Engagement à documenter",
+            "description": "Capturer les indices et états d’attaque avant une adaptation ; le présent PNG ne comporte aucun effet ou projectile."
+          },
+          {
+            "name": "Neutralisation à documenter",
+            "description": "Sourcer l’état détruit et sa transition avant production séparée."
+          }
+        ],
+        "interactions": [
+          "La source officielle décrit une attaque automatique dans sa portée et une neutralisation possible ; elle partage l’angle mort inférieur de la caméra de surveillance.",
+          "Le PNG ne prouve ni portée, cadence, dégâts, trajectoire, collisions ni conditions de combat CQC ; les mesurer et les implémenter dans un travail séparé."
+        ],
+        "separateAssetsNeeded": [
+          "Gros plan natif de la caméra armée",
+          "Fixation et revers visibles",
+          "Orientations et indices d’engagement",
+          "État détruit documenté"
+        ]
+      },
+      "requirementsExtensions": {
+        "entity40": "Dossier d’entité : identité, édition et provenance établies ; géométrie, états, comportement et intégration restent ouverts.",
+        "bonus46": "Ces nouveaux objets ne créent aucun droit, abonnement, accès premium ou bonus de gameplay. Aucune fermeture de cette extension."
+      }
+    }
+  ],
+  "researchOnlyExcluded": [
+    {
+      "id": "acid-infrared-sensor",
+      "reason": "Source primaire trouvée mais module trop petit dans la capture ; aucune génération et aucun asset sélectionné.",
+      "references": [
+        "game_07_01.gif",
+        "game_07_02.gif"
+      ]
+    },
+    {
+      "id": "acid-gasoline-drum",
+      "reason": "Captures avec UI et surbrillance de sélection ; choix écarté au profit des trois assemblages mieux définis. Aucune génération.",
+      "references": [
+        "game_08_01.gif",
+        "game_08_02.gif"
+      ]
+    }
+  ],
+  "duplicateAudit": {
+    "registriesReviewed": [
+      "docs/cqc-bible/asset-associations.json",
+      "docs/cqc-bible/asset-associations-p63.json",
+      "docs/cqc-bible/asset-associations-p64.json",
+      "docs/cqc-bible/asset-associations-p65.json",
+      "docs/cqc-bible/asset-associations-p66.json",
+      "docs/cqc-bible/asset-associations-p67.json",
+      "docs/cqc-bible/asset-associations-p68.json",
+      "docs/cqc-bible/asset-associations-p69.json",
+      "docs/cqc-bible/asset-associations-p71.json"
+    ],
+    "repoContentChecked": [
+      "docs/cqc-bible",
+      "public/cqc/data",
+      "public/cqc/modules/acid-machines-v031.html",
+      "src"
+    ],
+    "method": "Recherche des noms anglais/français et des chemins suivis via rg et git ls-tree --name-only ; pas de nouveau blob historique téléchargé.",
+    "result": "Aucune source statique AC!D dédiée aux trois objets trouvée. Les caméras MG1/MGS1 existantes ne sont pas réutilisées ni déclarées identiques.",
+    "noPriorRefusedTargetRetried": true
+  },
+  "limitations": [
+    "Les références primaires ont toutes seulement 216×122 pixels ; trois candidats documentaires, zéro certification de géométrie native.",
+    "Aucune modification du dépôt, du catalogue, du manifeste ou du runtime, aucun commit et aucun push dans ce sous-travail.",
+    "Les fichiers originaux et sorties brutes sont conservés ; pas de retouche Python, de découpage ou de redimensionnement."
+  ]
+}

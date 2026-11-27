@@ -1,0 +1,59 @@
+{
+  "schema": "cqc.p65.root-visual-qa.v1",
+  "asOf": "2026-11-26T08:32:30.553923+00:00",
+  "reviewer": "root",
+  "independentFromGenerators": true,
+  "method": "Les trois PNG des sous-agents et leurs références locales ont été ouverts avec view_image et comparés. Aucune retouche mécanique de pixels. Les trois props MGR sont couverts par la revue indépendante acid2_sources.",
+  "assets": [
+    {
+      "id": "acid2-research-block-machinery-bay",
+      "path": "public/cqc/assets/p65/acid2-research-block-machinery-bay.png",
+      "sha256": "ee9dd7a962bb30e95bee0042f633c82142839b549bc4ff750faa2176923be75f",
+      "referenceFiles": [
+        "docs/cqc-reprise/pass65/research/acid2/references/research-block-2-native-thumbnail.avif",
+        "docs/cqc-reprise/pass65/research/acid2/references/research-block-2-native-thumbnail.png"
+      ],
+      "verdict": "retained_with_documented_reference_limits",
+      "observations": [
+        "Comparaison avec la vignette native 336 × 188 effectivement ouverte : disposition des deux îlots, point de vue oblique, murs mauves, sol lilas, lignes jaunes et découpes noires reconnaissables.",
+        "La source générée ajoute un niveau de détail aux circuits, rivets et grilles ; les zones masquées par personnages/HUD sont extrapolées.",
+        "Le fragment est retenu comme baie technique seulement. L’îlot arrière reste tronqué par le cadrage natif, ce qui ne vaut pas un plan complet de la salle ni une arène CQC latérale."
+      ],
+      "absolute1to1Certified": false,
+      "combatReady": false
+    },
+    {
+      "id": "survive-normal-fence",
+      "path": "public/cqc/assets/p65/survive-normal-fence.png",
+      "sha256": "aae439035dde48a4f990522462fc2e1079d6f5d23c497d76375a946e5cfd124b",
+      "referenceFiles": [
+        "docs/cqc-reprise/pass65/research/survive/references/normal-fence-atwiki-220401_01.jpg",
+        "docs/cqc-reprise/pass65/research/survive/references/normal-fence-gameranx-20180222143434.jpg"
+      ],
+      "verdict": "retained_with_documented_reference_limits",
+      "observations": [
+        "La référence native entière montre deux panneaux grillagés et trois montants, comme le PNG ; les rails et les extrémités restent visibles.",
+        "La perspective et la structure sont cohérentes ; le maillage, l’épaisseur des fils et les raccords détaillés sont reconstruits. Les zones rouges apparentes de certains aperçus correspondent à des traces de faible alpha déjà mesurées par le producteur.",
+        "Source de prefab unique retenue. Aucun pied, bloc de béton, fil barbelé ou élément défensif supplémentaire ajouté."
+      ],
+      "absolute1to1Certified": false,
+      "combatReady": false
+    },
+    {
+      "id": "survive-survival-bow",
+      "path": "public/cqc/assets/p65/survive-survival-bow.png",
+      "sha256": "66ff93608ec17afa4feeb4e4f3e73254f7c9bf7c8138ceafa05e34b8793c8a4c",
+      "referenceFiles": [
+        "docs/cqc-reprise/pass65/research/survive/references/survival-bow-craft-20180222142556.jpg"
+      ],
+      "verdict": "retained_with_documented_reference_limits",
+      "observations": [
+        "La capture du menu CRAFT réellement ouverte affiche Survival Bow ; bois pâle, arc simple et ligatures jaunes aux extrémités sont reconnaissables dans le PNG.",
+        "Le panneau central masque une partie importante du bois dans la référence. La continuité de l’arc est une reconstruction explicitement conservée comme telle.",
+        "Un seul arc avec corde et sans flèche, mains ni interface. La mesure du canal alpha reste la preuve de transparence, l’aperçu RGB pouvant exposer des couleurs entièrement transparentes."
+      ],
+      "absolute1to1Certified": false,
+      "combatReady": false
+    }
+  ]
+}
