@@ -1,0 +1,515 @@
+{
+  "schema": "cqc-p72-independent-visual-review-v1",
+  "reviewer": "p72_rising_sources",
+  "asOf": "2026-11-27",
+  "scope": [
+    "acid",
+    "survive"
+  ],
+  "inputHandoffs": {
+    "acid": {
+      "path": "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/handoff.json",
+      "sha256AtReview": "e0d4135ac07ffb28ebbc598320afc2e7edec9807f0edbc0e86953f416928e44c"
+    },
+    "survive": {
+      "path": "/workspace/scratch/daa5e5a7b5bc/p72_research/survive/handoff.json",
+      "sha256AtReview": "fa67eaf34eed92793c5bad0ecb38790704f59f9a7e4aa1e36d0cb7acde365bd0"
+    }
+  },
+  "reviewCriterion": "Conservable uniquement comme source statique explicitement provisoire et non certifiée 1:1. Une reconstitution d’un raccord externe tronqué hors champ ne devient pas un objet complet sourcé par une réserve générale.",
+  "method": [
+    "Lecture des handoffs et inspection séparée des références et de chacun des six PNG.",
+    "Quelques aperçus de références ont été agrandis en mémoire pour l’inspection : cela ne crée pas de détail supplémentaire et aucun fichier source ou PNG généré n’a été modifié.",
+    "SHA256/Git blob et alpha recalculés indépendamment. Aucun test de gameplay ni métrique de correspondance géométrique réalisé."
+  ],
+  "counts": {
+    "reviewedCandidates": 6,
+    "conservableProvisional": 5,
+    "excludeAndArchive": 1,
+    "newGenerations": 0,
+    "sourceOrOutputFilesEdited": 0,
+    "repoFilesEdited": 0
+  },
+  "rootDecisionAcknowledged": "Root confirme l’archivage de acid-gun-camera et la conservation provisoire des cinq autres candidats examinés.",
+  "assets": [
+    {
+      "id": "acid-patrol-bot",
+      "label": "AC!D — robot de patrouille de Lobito",
+      "localPath": "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/generated/acid-patrol-bot.png",
+      "sha256": "9e9811ba337190a262f2005d69a3338f4c4b5862426213176c2a2bc5989fd366",
+      "gitBlobSha": "5a6c12ad57c4d61e304e5429376b5bff8bd05315",
+      "bytes": 1328739,
+      "hashMatchesHandoff": true,
+      "bodyCoverageClaimAtReview": "full_body",
+      "referenceFiles": [
+        {
+          "path": "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/game_04_01.gif",
+          "sha256": "d7103467ef4dda2fc2f94eb54e192c95ace439c7d6d4a34712d6a736f072a260",
+          "gitBlobSha": "81a46b731a9b080150e718a0f1d10926877d43f0",
+          "url": "https://www.konami.com/mg/archive/mga/uk/pic/game_04_01.gif",
+          "viewed": true,
+          "hashMatchesHandoff": true
+        },
+        {
+          "path": "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/game_04_02.gif",
+          "sha256": "e42cb13289d658c5d3b366b60cb03a9f9143244308c04eaaa3a7a7e2c2519f7e",
+          "gitBlobSha": "ce764c4a964dad90e03ad6effc0ddf0bd7c8fce6",
+          "url": "https://www.konami.com/mg/archive/mga/uk/pic/game_04_02.gif",
+          "viewed": true,
+          "hashMatchesHandoff": true
+        }
+      ],
+      "visualReviewCompleted": true,
+      "metadataMeasuredIndependently": {
+        "width": 1536,
+        "height": 1024,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          254
+        ],
+        "alphaBBox": [
+          0,
+          17,
+          1488,
+          1024
+        ],
+        "alpha128BBox": [
+          173,
+          20,
+          1352,
+          1015
+        ],
+        "alpha16BBox": [
+          173,
+          19,
+          1352,
+          1016
+        ],
+        "transparentPixels": 1077903,
+        "opaquePixels": 0,
+        "partiallyTransparentPixels": 494961,
+        "weakFringePixels1to8": 22150,
+        "dominantNonzeroAlpha": 253,
+        "edgeAlphaMax": {
+          "top": 0,
+          "bottom": 2,
+          "left": 1,
+          "right": 0
+        }
+      },
+      "decision": "candidate_conservable_provisoire",
+      "severity": "reserve_detail_alpha",
+      "observations": [
+        "Les deux captures officielles AC!D sont compatibles avec l’identité du robot : corps anguleux, canon unique dirigé haut-gauche, boîtier supérieur déporté à droite, antenne et trois appuis/roues visibles.",
+        "La sortie conserve cette organisation et la pose oblique ; aucun corps humain, quatrième patte ou changement d’épisode observé. Les pieds restent dans la toile, avec une marge basse très faible.",
+        "La résolution utile des captures ne permet pas de certifier les surfaces internes, rainures, évidements, nombre de petites vis ni épaisseurs. Les volumes secondaires et détails du canon sont interprétés.",
+        "Le brut affiche des RGB de halo hors du corps dans certains aperçus. L’alpha mesuré, et non la seule prévisualisation sur noir, doit guider le constat de fond réel. Franges faibles conservées, pas de nettoyage validé."
+      ],
+      "requiredReservations": [
+        "Conserver source statique provisoire et fidélité non certifiée.",
+        "Documenter détails et autres angles par captures plus grandes avant modèle final.",
+        "Contrôler marge basse et franges sur plusieurs fonds avant montage en jeu."
+      ],
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "nativeUhd": false
+    },
+    {
+      "id": "acid-surveillance-camera",
+      "label": "AC!D — caméra de surveillance de Lobito",
+      "localPath": "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/generated/acid-surveillance-camera.png",
+      "sha256": "ccdbb9030289ae6697ec054536d16c673156870818f599ec256df58ed24a7d91",
+      "gitBlobSha": "586a7cd11224c6a8cd1993382521496d97e14346",
+      "bytes": 460917,
+      "hashMatchesHandoff": true,
+      "bodyCoverageClaimAtReview": "full_object",
+      "referenceFiles": [
+        {
+          "path": "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/game_05_01.gif",
+          "sha256": "699051eb0e77b42c0d258754a89f18df9df91c43bb9cad8fd5850f76d3e773f5",
+          "gitBlobSha": "1aedf9f24a22395444735bd13f9fa6ab15962b5f",
+          "url": "https://www.konami.com/mg/archive/mga/uk/pic/game_05_01.gif",
+          "viewed": true,
+          "hashMatchesHandoff": true
+        }
+      ],
+      "visualReviewCompleted": true,
+      "metadataMeasuredIndependently": {
+        "width": 1448,
+        "height": 1086,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBBox": [
+          75,
+          39,
+          1128,
+          1021
+        ],
+        "alpha128BBox": [
+          303,
+          160,
+          1062,
+          902
+        ],
+        "alpha16BBox": [
+          302,
+          159,
+          1063,
+          903
+        ],
+        "transparentPixels": 1266826,
+        "opaquePixels": 252,
+        "partiallyTransparentPixels": 305450,
+        "weakFringePixels1to8": 6803,
+        "dominantNonzeroAlpha": 253,
+        "edgeAlphaMax": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        }
+      },
+      "decision": "candidate_conservable_provisoire",
+      "severity": "reserve_small_reference",
+      "observations": [
+        "La capture officielle montre la caméra entière sur son support, boîtier gris oblique fixé à gauche et face active dirigée bas-droite. La génération conserve cette organisation générale.",
+        "La petite zone lumineuse verdâtre de la capture est cohérente avec une face optique ; le grand rectangle vert, l’avant proéminent, l’épaisseur et les fixations détaillées de la sortie restent extrapolés.",
+        "Aucune coupure majeure du candidat ni ajout de lampe, arme ou autre appareil observé. La vue de référence demeure trop petite pour certifier les détails.",
+        "Le prompt évoque bas-gauche, mais l’image générée paraît orientée bas-droite comme la référence ; ne pas transformer le texte du prompt en preuve d’angle canonique."
+      ],
+      "requiredReservations": [
+        "Garder la référence de 216×122 et la faible taille utile de la caméra explicitement visibles dans la fiche.",
+        "Ne pas qualifier les petits volumes, vis et face optique de détails validés.",
+        "Aucun emplacement Ruins Upper ni comportement de détection validé par cette source."
+      ],
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "nativeUhd": false
+    },
+    {
+      "id": "acid-gun-camera",
+      "label": "AC!D — caméra armée de Lobito",
+      "localPath": "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/generated/acid-gun-camera.png",
+      "sha256": "b285887db9712d7b67cbe2ba2779ccb56e887fe42b7af570217cc3f7a20033d1",
+      "gitBlobSha": "07de49317852ca8446e4646605f2453449d907c1",
+      "bytes": 788718,
+      "hashMatchesHandoff": true,
+      "bodyCoverageClaimAtReview": "full_object",
+      "referenceFiles": [
+        {
+          "path": "/workspace/scratch/daa5e5a7b5bc/p72_research/acid/references/game_06_01.gif",
+          "sha256": "20b3654347bc89f280a0d900f07224710881d0fe304497b6ad19b946d9aaa4c5",
+          "gitBlobSha": "ca75c1e05f3f7dffae345cef28881fba0cfa9cae",
+          "url": "https://www.konami.com/mg/archive/mga/uk/pic/game_06_01.gif",
+          "viewed": true,
+          "hashMatchesHandoff": true
+        }
+      ],
+      "visualReviewCompleted": true,
+      "metadataMeasuredIndependently": {
+        "width": 1668,
+        "height": 943,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBBox": [
+          0,
+          0,
+          1653,
+          943
+        ],
+        "alpha128BBox": [
+          109,
+          41,
+          1574,
+          918
+        ],
+        "alpha16BBox": [
+          108,
+          40,
+          1575,
+          919
+        ],
+        "transparentPixels": 1056385,
+        "opaquePixels": 1584,
+        "partiallyTransparentPixels": 514955,
+        "weakFringePixels1to8": 27600,
+        "dominantNonzeroAlpha": 253,
+        "edgeAlphaMax": {
+          "top": 1,
+          "bottom": 1,
+          "left": 1,
+          "right": 0
+        }
+      },
+      "decision": "a_exclure_de_la_selection_archiver",
+      "severity": "major_unobserved_mount_completion",
+      "observations": [
+        "La structure supérieure conserve globalement le boîtier arrière à gauche, le corps articulé et l’extension avant vers la droite de la capture officielle.",
+        "Le support inférieur de la capture se poursuit hors du bord gauche. Son extrémité murale complète et la géométrie de sa plaque ne sont pas entièrement montrées.",
+        "Le PNG ajoute une plaque murale rectangulaire entière avec fixations et ferme les volumes de cette extrémité. Ce complément modifie la silhouette externe et ne constitue pas un simple détail de surface sous-déterminé.",
+        "Le producteur confirme ne disposer d’aucune seconde référence observée prouvant la terminaison complète. Une réserve générale ne justifie pas une sélection full_object sourcée.",
+        "Root a inspecté la même divergence et confirmé la décision définitive d’archiver, sans sélection ni Atlas et sans renommage destiné à faire passer l’assemblage pour complet."
+      ],
+      "requiredReservations": [
+        "Conserver PNG brut, prompt exact et GIF de référence dans une archive non sélectionnée.",
+        "Retirer de la couverture sélectionnée, de l’Atlas et du nouveau scope actif si celui-ci ne dispose d’aucun autre candidat.",
+        "Ne relancer aucune génération dans cette revue. Une éventuelle future version exige une référence montrant la fixation ou un périmètre réellement limité aux parties observées."
+      ],
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "nativeUhd": false
+    },
+    {
+      "id": "survive-large-spiked-barricade",
+      "label": "Survive — Large Spiked Barricade, déployée intacte",
+      "localPath": "/workspace/scratch/daa5e5a7b5bc/p72_research/survive/generated/survive-large-spiked-barricade.png",
+      "sha256": "6871772cdc9b9bc43a7c87730c73a77f50ed3ce7ccb945e7991084ce070c8b2d",
+      "gitBlobSha": "18f1b461b2aa6a3c941925c0d4c23f8279d3a8ce",
+      "bytes": 2017540,
+      "hashMatchesHandoff": true,
+      "bodyCoverageClaimAtReview": "full_object",
+      "referenceFiles": [
+        {
+          "path": "/workspace/scratch/daa5e5a7b5bc/p72_research/survive/references/native-air-spike-220401_11.jpg",
+          "sha256": "e06c0b57ca08f1867d8a5a0dbc7b90b9968eb9db5e67aad9b28d385a0a64a6da",
+          "gitBlobSha": "37e358caf1d1e3dfd2d2d860391ebeb43affc155",
+          "url": "https://img.atwiki.jp/mgsurvive/attach/111/102/220401_11.jpg",
+          "viewed": true,
+          "hashMatchesHandoff": true
+        }
+      ],
+      "visualReviewCompleted": true,
+      "metadataMeasuredIndependently": {
+        "width": 1774,
+        "height": 887,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBBox": [
+          0,
+          0,
+          1773,
+          887
+        ],
+        "alpha128BBox": [
+          101,
+          63,
+          1731,
+          872
+        ],
+        "alpha16BBox": [
+          100,
+          61,
+          1732,
+          873
+        ],
+        "transparentPixels": 774326,
+        "opaquePixels": 1687,
+        "partiallyTransparentPixels": 797525,
+        "weakFringePixels1to8": 76633,
+        "dominantNonzeroAlpha": 252,
+        "edgeAlphaMax": {
+          "top": 1,
+          "bottom": 1,
+          "left": 1,
+          "right": 0
+        }
+      },
+      "decision": "candidate_conservable_provisoire",
+      "severity": "reserve_occluded_center",
+      "observations": [
+        "La capture native montre la grande barricade nommée par le HUD, avec deux rangées de pieux irréguliers, rails de rondins et ligatures. La forme large, la palette et les principales extrémités de la sortie sont cohérentes.",
+        "Le personnage masque le centre inférieur de la référence. La sortie rétablit des rails, pieux/appuis et ligatures dans cette zone ; ces parties doivent rester explicitement interpolées, pas documentées 1:1.",
+        "La silhouette haute et les bords latéraux sont suffisamment visibles pour un candidat provisoire de cet obstacle. Le nombre exact, le profil de chaque pointe, l’angle et le dos ne sont pas validés.",
+        "Des pixels colorés sont visibles dans certaines prévisualisations du brut ; leur alpha doit être évalué séparément des RGB cachés. Aucun changement de matériau ou d’édition majeur constaté dans le corps de l’objet."
+      ],
+      "requiredReservations": [
+        "Conserver la réserve de centre inférieur masqué et de géométrie interpolée.",
+        "Exiger une vue dégagée avant validation du nombre/espacement des pieux et des collisions.",
+        "Ne pas assimiler cet objet à une petite barricade ni déclarer dégâts, destruction ou placement animés."
+      ],
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "nativeUhd": false
+    },
+    {
+      "id": "survive-beta-medical-workbench",
+      "label": "Survive — établi médical, bêta janvier2018",
+      "localPath": "/workspace/scratch/daa5e5a7b5bc/p72_research/survive/generated/survive-beta-medical-workbench.png",
+      "sha256": "891930686ae566ebc64a05821e8c7096698e91c271129ae6e8c380c5831b756f",
+      "gitBlobSha": "c7e0c2f52df2a347ee35af66e86ee77055457a85",
+      "bytes": 1078085,
+      "hashMatchesHandoff": true,
+      "bodyCoverageClaimAtReview": "full_object",
+      "referenceFiles": [
+        {
+          "path": "/workspace/scratch/daa5e5a7b5bc/p72_research/survive/references/falcon-beta-crafting-1920.png",
+          "sha256": "7729b942abd7eba6ab1482c05b12f4ceabd14013a5e7c2f21035c9ec930929be",
+          "gitBlobSha": "43d1a0fbb4d93c4ac6607b9643ca5ba89502e09f",
+          "url": "https://falcongamereviews.com/wp-content/uploads/2018/01/metal-gear-survive-beta-crafting.png",
+          "viewed": true,
+          "hashMatchesHandoff": true
+        }
+      ],
+      "visualReviewCompleted": true,
+      "metadataMeasuredIndependently": {
+        "width": 1672,
+        "height": 941,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBBox": [
+          25,
+          0,
+          1662,
+          941
+        ],
+        "alpha128BBox": [
+          287,
+          137,
+          1379,
+          876
+        ],
+        "alpha16BBox": [
+          286,
+          136,
+          1380,
+          876
+        ],
+        "transparentPixels": 1051678,
+        "opaquePixels": 908,
+        "partiallyTransparentPixels": 520766,
+        "weakFringePixels1to8": 31466,
+        "dominantNonzeroAlpha": 253,
+        "edgeAlphaMax": {
+          "top": 1,
+          "bottom": 1,
+          "left": 0,
+          "right": 0
+        }
+      },
+      "decision": "candidate_conservable_provisoire",
+      "severity": "reserve_beta_details",
+      "observations": [
+        "Le poste de gauche sous l’icône croix est isolé dans la référence native. La table grise, le haut casier de gauche, la petite étagère droite, les boîtes/flacons et le carton sous la table se retrouvent dans la sortie.",
+        "Les contours principaux de la table sont dégagés dans la capture. Aucun assemblage avec un poste voisin ni ajout d’avatar observé.",
+        "Le générateur précise les flacons, étiquettes, capuchons, sachets, tiroirs et usure au-delà des pixels utiles. Leur nombre et leurs inscriptions ne sont pas validés.",
+        "Le nom et la fiche conservent l’édition bêta janvier 2018. Aucune équivalence avec un niveau d’amélioration retail n’est démontrée et aucune n’est nécessaire pour retenir ce candidat documentaire."
+      ],
+      "requiredReservations": [
+        "Conserver le qualificatif bêta janvier 2018 dans le label et les associations.",
+        "Ne pas utiliser les détails de fournitures comme source de recettes ou d’instructions médicales.",
+        "Valider les pièces fines et l’alpha sur fond contrasté avant réemploi."
+      ],
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "nativeUhd": false
+    },
+    {
+      "id": "survive-beta-weapons-workbench",
+      "label": "Survive — établi d’armes, bêta janvier2018",
+      "localPath": "/workspace/scratch/daa5e5a7b5bc/p72_research/survive/generated/survive-beta-weapons-workbench.png",
+      "sha256": "e149bda6e64284172172054e234b45b0fb728b91dd019ec89ed5b0200d9dcc58",
+      "gitBlobSha": "37f3b55893b09b12caa47bc2eee9904b18ff3f82",
+      "bytes": 1817061,
+      "hashMatchesHandoff": true,
+      "bodyCoverageClaimAtReview": "full_object",
+      "referenceFiles": [
+        {
+          "path": "/workspace/scratch/daa5e5a7b5bc/p72_research/survive/references/falcon-beta-crafting-1920.png",
+          "sha256": "7729b942abd7eba6ab1482c05b12f4ceabd14013a5e7c2f21035c9ec930929be",
+          "gitBlobSha": "43d1a0fbb4d93c4ac6607b9643ca5ba89502e09f",
+          "url": "https://falcongamereviews.com/wp-content/uploads/2018/01/metal-gear-survive-beta-crafting.png",
+          "viewed": true,
+          "hashMatchesHandoff": true
+        }
+      ],
+      "visualReviewCompleted": true,
+      "metadataMeasuredIndependently": {
+        "width": 1536,
+        "height": 1024,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          254
+        ],
+        "alphaBBox": [
+          0,
+          12,
+          1536,
+          1024
+        ],
+        "alpha128BBox": [
+          113,
+          76,
+          1445,
+          982
+        ],
+        "alpha16BBox": [
+          113,
+          76,
+          1446,
+          983
+        ],
+        "transparentPixels": 982367,
+        "opaquePixels": 0,
+        "partiallyTransparentPixels": 590497,
+        "weakFringePixels1to8": 30215,
+        "dominantNonzeroAlpha": 253,
+        "edgeAlphaMax": {
+          "top": 0,
+          "bottom": 1,
+          "left": 1,
+          "right": 1
+        }
+      },
+      "decision": "candidate_conservable_provisoire",
+      "severity": "reserve_beta_supports_details",
+      "observations": [
+        "Le poste visé est la table de droite au premier plan, sous l’icône pistolet. La sortie conserve la table basse grise, le bac arrière, le panneau d’outils dressé à droite, les tiroirs et le contenant cylindrique de gauche.",
+        "Le grand casier voisin de gauche/arrière n’est pas fusionné à l’objet généré. La source montre plusieurs appuis proches qui peuvent relever de l’assemblage ou de la superposition des postes ; leur affectation et le compte exact ne sont pas démontrés par cette vue.",
+        "La génération montre six appuis/terminaisons de pied. Cette géométrie reste à vérifier, mais aucune silhouette principale incompatible avec l’objet de premier plan n’est établie à ce stade.",
+        "Les outils individuellement dessinés, leurs nombres, petites pièces et surfaces sont plus précis que la source. Le halo apparent du brut ne prouve pas un fond opaque ; plusieurs régions sont en RGB masqué à alpha nul.",
+        "L’édition bêta est conservée. La source ne doit pas être requalifiée Advanced Weapon Workbench ou Weapon Workshop commercial sans nouvelle preuve."
+      ],
+      "requiredReservations": [
+        "Maintenir la réserve explicite sur les six appuis et leurs jonctions.",
+        "Conserver le statut bêta et la distinction d’avec le poste d’équipement voisin.",
+        "Mesurer puis corriger les appuis et détails d’outils à partir d’une vue native dégagée avant certification ou collision."
+      ],
+      "combatReady": false,
+      "absolute1to1Certified": false,
+      "nativeUhd": false
+    }
+  ],
+  "globalReservations": [
+    "Les sources AC!D sont de petites captures natives officielles ; elles n’établissent pas des détails haute résolution.",
+    "Les deux établis Survive restent ceux de la bêta janvier 2018, pas des variantes retail certifiées.",
+    "Le centre masqué de la barricade, les détails des fournitures et outils, les appuis et les alpha restent des points ouverts.",
+    "Aucun candidat de cette revue n’obtient une admission au combat, une fidélité absolue ou une qualification UHD native."
+  ],
+  "recommendedIntegration": {
+    "select": [
+      "acid-patrol-bot",
+      "acid-surveillance-camera",
+      "survive-large-spiked-barricade",
+      "survive-beta-medical-workbench",
+      "survive-beta-weapons-workbench"
+    ],
+    "archive": [
+      "acid-gun-camera"
+    ],
+    "archiveReason": "Fixation murale complétée hors du cadre de la seule référence disponible."
+  }
+}

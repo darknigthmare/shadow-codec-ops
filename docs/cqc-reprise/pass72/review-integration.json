@@ -1,0 +1,53 @@
+{
+  "schema": "cqc.p72.integration-review/1",
+  "date": "2026-11-27",
+  "baselineCommit": "b9051108080855cfcad8a322d34dbfb66e8c131e",
+  "reviewer": "/root/p72_rising_sources",
+  "recordedBy": "/root",
+  "status": "no_remaining_material_issue_identified",
+  "scope": "Read-only independent inspection of builder, source records, references, Atlas append and runtime gate; not a duplicate execution of the gate or 22 Atlas tests.",
+  "resolvedFindings": [
+    {
+      "id": "archive_false_binding",
+      "affected": "acid-gun-camera",
+      "finding": "Archived source retained atlas_only binding and a nonexistent Bible dossier anchor.",
+      "resolution": "runtimeBinding and bibleURL removed; archive remains excluded from Atlas."
+    },
+    {
+      "id": "rising_original_output_paths",
+      "affected": [
+        "mgr-vr-dlc-yellow-platform-course",
+        "mgr-vr-dlc-camera-room",
+        "mgr-pincer-blades-inventory"
+      ],
+      "finding": "Research copies were recorded in the original output path fields.",
+      "resolution": "Paths restored to generated_images/exec originals; byte-for-byte comparisons recorded."
+    }
+  ],
+  "checks": {
+    "pngOutputs": 13,
+    "selectedPngs": 11,
+    "archivedPngs": 2,
+    "blockedWithoutPng": 2,
+    "generationRequests": 15,
+    "exactPromptArguments": 15,
+    "historicalAtlasEntriesPreserved": 95,
+    "totalAtlas": 106,
+    "localMarkdownLinksCheckedByIndependentReviewer": 62,
+    "sourceHostDistinctionsVerified": true,
+    "oneExistingRuntimeOwnerPlusElevenNewPngs": true,
+    "noCombatAdmissionOrAbsoluteFidelityClaim": true
+  },
+  "additionalIntegratorChecks": {
+    "reviewer": "/root/p72_acid_sources",
+    "offlineRebuildGeneratedFilesByteIdentical": 11,
+    "localMarkdownLinksAfterMissingWorkDocument": 80,
+    "historicalRegistriesPreserved": 9,
+    "localReferenceRecords": 15,
+    "completePdfOrHtmlPagesPublished": 0
+  },
+  "limits": [
+    "Static image reservations remain in the visual reviews and per-source dossiers.",
+    "This review does not certify 1:1 geometry, native pixels, browser rendering or combat readiness."
+  ]
+}

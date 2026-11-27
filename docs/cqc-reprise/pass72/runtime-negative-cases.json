@@ -1,0 +1,56 @@
+{
+  "schema": "cqc.p72.runtime-negative-cases.v1",
+  "checkedAt": "2026-11-27T08:27:03.622Z",
+  "baselineCommit": "b9051108080855cfcad8a322d34dbfb66e8c131e",
+  "subject": "saved runtime manifest",
+  "passed": 9,
+  "failed": 0,
+  "cases": [
+    {
+      "id": "missing_new_files",
+      "passed": true,
+      "rejection": "P72 files are duplicated, missing or outside the reviewed batch"
+    },
+    {
+      "id": "changed_legacy_file",
+      "passed": true,
+      "rejection": "Historical runtime row changed: index.html\n+ actual - expected\n\n  {\n    bytes: 32904,\n    path: 'index.html',\n+   sha256: '0000000000000000000000000000000000000000000000000000000000000000'\n-   sha256: 'a7b95c1159f08906bf01c0f9986e1b039bd47df7b111df87e382d20625f8ce04'\n  }\n"
+    },
+    {
+      "id": "removed_historical_edge",
+      "passed": true,
+      "rejection": "Historical runtime reference removed"
+    },
+    {
+      "id": "unreviewed_owner_edge",
+      "passed": true,
+      "rejection": "Unreviewed new runtime edge: index.html -> assets/p72/acid-patrol-bot.png"
+    },
+    {
+      "id": "changed_omission_policy",
+      "passed": true,
+      "rejection": "Historical runtime field changed: omittedReferences\n+ actual - expected\n... Skipped lines\n\n  [\n    {\n      from: 'assets/combat-costumes-pass27/roster50__sunny_mgs4/retro/metadata-v1.json',\n      to: 'preparation/combat-sprites-pass8/roster50__sunny_mgs4/references/original-ps3-frame-08150s.png'\n    },\n...\n    },\n-   {\n-     from: 'src/cqc-stage-layer-data.js',\n-     to: 'preparation/stage-layers-reprise/generated-history/zanzibar/exec-268d8a71-bf1a-43e3-90ee-49834875f971.png'\n-   }\n  ]\n"
+    },
+    {
+      "id": "changed_external_policy",
+      "passed": true,
+      "rejection": "Historical runtime field changed: externalReferences\n+ actual - expected\n... Skipped lines\n\n  {\n    entries: [\n      {\n        bytes: 2658926,\n        from: 'src/cqc-pass40-core-metadata-variants-v1.js',\n...\n      },\n-     {\n-       bytes: 2364106,\n-       from: 'assets/combat-costumes-pass47/core__armstrong/zombie/metadata-v1.json',\n-       ownerSHA256: '133053097628c0f0f2e989be18a5851248d49c11bf3092db79997d41165a63bd',\n-       sha256: '112aa2ced3888e8d25836b45a513c899af44856e2608db6ec9c93803d68e3f39',\n-       to: 'assets/combat-costumes-pass47/core__armstrong/zombie/left-main-112aa2ce.png',\n-       url: 'https://raw.githubusercontent.com/darknigthmare/shadow-codec-ops/17825895565b32ed61e50b21d726ad48896492cc/raw/112aa2ced3888e8d25836b45a513c899af44856e2608db6ec9c93803d68e3f39.png'\n-     }\n    ],\n    schema: 'shadow-codec-ops.cqc-external-references/1'\n  }\n"
+    },
+    {
+      "id": "unreviewed_runtime_row",
+      "passed": true,
+      "rejection": "P72 files are duplicated, missing or outside the reviewed batch"
+    },
+    {
+      "id": "wrong_total_bytes",
+      "passed": true,
+      "rejection": "Invalid P72 runtime byte total"
+    },
+    {
+      "id": "wrong_pinned_baseline",
+      "passed": true,
+      "rejection": "P72 requires the pinned P71 runtime baseline"
+    }
+  ],
+  "runtimeModified": false
+}
