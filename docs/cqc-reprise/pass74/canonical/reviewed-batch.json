@@ -1,0 +1,77 @@
+{
+  "schema": "cqc.p74.canonical-review.v1",
+  "asOf": "2026-11-27",
+  "method": "Inspection visuelle de chaque référence avant l’appel image_gen, inspection de chaque résultat retourné, audit anti-doublon de l’arbre HEAD et des associations sélectionnées, vérification fichier/dimensions/alpha/SHA256. Aucune certification par comparaison au modèle natif.",
+  "selected": [
+    {
+      "id": "mgr-hebidamashii",
+      "verdict": "selected_static_candidate_pending_external_review",
+      "coverage": "full_object_candidate",
+      "observations": [
+        "La main de Raiden masque une petite section ; sa reconstruction ne permet pas de certifier 1:1 la géométrie.",
+        "La calligraphie, la courbure et les proportions sont reprises de 715×402 pixels ; pas de mesure ou modèle natif.",
+        "L’aura bleue est omise pour séparer la source de l’arme de l’effet.",
+        "Aucun dos, animation, état porté ni interaction validé."
+      ],
+      "nextWork": [
+        "Capture rapprochée sans main ou modèle natif de l’arme.",
+        "Comparer la courbure, le lettrage, la prise et l’échelle avant admission au combat."
+      ]
+    },
+    {
+      "id": "mgr-khamsin-cockpit-portrait",
+      "verdict": "selected_static_candidate_pending_external_review",
+      "coverage": "upper_body_portrait",
+      "observations": [
+        "Bords du cockpit et bas du torse volontairement tronqués comme dans la source.",
+        "Détails du visage, cuir, métal et fixations interprétés à partir d’une image 715×400.",
+        "La source ne prouve ni le corps complet ni le rig du cockpit."
+      ],
+      "nextWork": [
+        "Référence officielle plus grande ou captures natives de face/profil avant correction de la ressemblance.",
+        "Mesurer les attaches si un portrait animé est envisagé."
+      ]
+    },
+    {
+      "id": "mgs3-kgb-aiming-portrait",
+      "verdict": "selected_static_candidate_pending_external_review",
+      "coverage": "upper_body_portrait",
+      "observations": [
+        "Hébergement tiers de captures du jeu, et non export de modèle fourni par KONAMI.",
+        "Le torse et l’arme ont une pose précise ; jambes, pieds et dos ne sont pas établis.",
+        "Texture/visage et détails sous-pixel sont reconstruits ; pas de certification 1:1.",
+        "Ne ferme pas le groupe KGB ni ses variantes PS2/Delta ; aucune transposition automatique au modèle PSP.",
+        "Les captures établissent le modèle du jeu original, pas la plateforme de capture : PS2 et port HD ne sont pas départagés. Le prompt PS2 est conservé comme intention de génération, pas preuve technique."
+      ],
+      "nextWork": [
+        "Corps entier natif de cette même variante PS2, vues avant/arrière et inventaire des variantes.",
+        "Références de poses/animations réelles avant création de sprite de combat."
+      ]
+    }
+  ],
+  "quarantined": [
+    {
+      "id": "mgs4-misidentified-johnny-promotional",
+      "verdict": "quarantined_identity_conflict",
+      "reason": "La référence de galerie non légendée a été prise pour un PMC. La tenue et l’insigne Rat Patrol ainsi que le rendu voisin de Meryl contredisent ce rattachement. Aucun ajout au groupe PMC et aucun remplacement du Johnny existant."
+    }
+  ],
+  "rejected": [],
+  "refusedThisPass": [],
+  "historicalHoldsRespected": [
+    "costume:core__mistral:official--two-arm-configuration",
+    "character:R-MGR-armored",
+    "mpop-tengu-soldier",
+    "mgr-sai-inventory"
+  ],
+  "counts": {
+    "selected": 3,
+    "quarantined": 1,
+    "refusedThisPass": 0,
+    "fullBodySelected": 0,
+    "newHistoricalRowsPartiallyCovered": 1,
+    "historicalRowsClosed": 0,
+    "oneToOneCertifications": 0,
+    "combatAdmissions": 0
+  }
+}

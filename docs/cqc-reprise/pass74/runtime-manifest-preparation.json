@@ -1,0 +1,97 @@
+{
+  "schema": "cqc.p74.runtime-updater-preparation.v1",
+  "asOf": "2026-11-27",
+  "implementation": "scripts/update-cqc-p74-runtime-manifest.mjs",
+  "tests": "scripts/update-cqc-p74-runtime-manifest.test.mjs",
+  "unitTestsPassed": 18,
+  "unitTestsFailed": 0,
+  "unitFixtureScopeOnly": true,
+  "actualManifestUpdateRun": true,
+  "fullRuntimeValidated": false,
+  "externalPolicyRevalidated": false,
+  "actualManifestGitBlob": "ac65f6019e86e2f40d8736f676f849f7f89e315c",
+  "observedBaselineFileCount": 3124,
+  "observedBaselineReferenceCount": 5066,
+  "observedBaselineExternalRouteCount": 499,
+  "observedBaselineTotalBytes": 3603406096,
+  "expectedOriginalPngs": 99,
+  "applicationStatus": "selected_physical_scope_verified_after_atomic_update",
+  "documentationExclusionCaseVerified": "docs/cqc-bible/veilbreak-engine-validation.json",
+  "countUpdate": {
+    "previous": 109,
+    "current": 99,
+    "confirmedOriginalBreakdown": {
+      "main": 70,
+      "props": 18,
+      "projectiles": 11
+    },
+    "missingOriginalIllustrations": 11,
+    "knownGenerationRefusal": "floor_clamp",
+    "otherGenerationResultsUnavailable": 10,
+    "reExecutedAfterCountOnlyChange": true,
+    "reason": "executor restored; 18 Node fixture tests passed with 99 default"
+  },
+  "testEvidence": {
+    "lastExecutionPassed": 18,
+    "lastExecutionFailed": 0,
+    "lastExecutedDefaultOriginalPngs": 99,
+    "currentDefaultOriginalPngs": 99
+  },
+  "actualManifestObservationScope": "restored filesystem; all 116 selected resource bytes and final manifest SHA verified",
+  "pureV8Fallback": {
+    "implementation": "scripts/rebuild-cqc-p74-runtime-manifest-from-blobs.mjs",
+    "tests": "scripts/rebuild-cqc-p74-runtime-manifest-from-blobs.test.mjs",
+    "testCount": 20,
+    "passed": 20,
+    "failed": 0,
+    "expectedOriginalPngs": 99,
+    "fullRuntimeValidated": false,
+    "checkoutAuditPerformed": false,
+    "browserValidationPerformed": false,
+    "result": {
+      "manifestGitBlob": "ac65f6019e86e2f40d8736f676f849f7f89e315c",
+      "manifestSHA256": "2963fd40f0d5a409d1cc86ad9f72277f154500b00f46fde4defd6b58fb73808e",
+      "manifestBytes": 1723982,
+      "report": "docs/cqc-reprise/pass74/runtime-manifest-update.json",
+      "reportGitBlob": "f1f3bfa42a46880034472b6e8238de4edacb7a8c",
+      "files": 3236,
+      "references": 5187,
+      "declaredBytes": 3781621097,
+      "selectedTextsRehashed": 14,
+      "binaryAttestations": 102,
+      "externalRoutesPreserved": 499,
+      "historicalFilesNotRead": 3120
+    }
+  },
+  "actualManifestUpdateRunScope": "Node atomic update of two final text files after independent immutable blob reconstruction; selected scope only",
+  "nodeUpdater99Executed": true,
+  "nodeUpdaterManifestWritten": true,
+  "physicalVerification": {
+    "report": "docs/cqc-reprise/pass74/runtime-manifest-physical-verification.json",
+    "reportGitBlob": "0ab5d8099f5237c1a9a9f96df224f53ef8483e9c",
+    "checkedAt": "2026-11-27T13:21:35.508Z",
+    "selected": 116,
+    "originalPNGs": 99,
+    "canonicalPNGs": 3,
+    "unchangedSelectedAfterUpdate": 116,
+    "nodeAndV8ManifestBytesMatch": true,
+    "manifestGitBlob": "ac65f6019e86e2f40d8736f676f849f7f89e315c",
+    "manifestSHA256": "2963fd40f0d5a409d1cc86ad9f72277f154500b00f46fde4defd6b58fb73808e",
+    "atomicUpdate": {
+      "fromManifestGitBlob": "23b0a39ab31393a3a8e49e35e1f4081df8ba54b4",
+      "fromManifestSHA256": "fe42c1164015db73d86a868cbfdfeae931b251409d935d77e34669d60683b0ea",
+      "toManifestGitBlob": "ac65f6019e86e2f40d8736f676f849f7f89e315c",
+      "toManifestSHA256": "2963fd40f0d5a409d1cc86ad9f72277f154500b00f46fde4defd6b58fb73808e",
+      "changedFiles": [
+        "data/veilbreak-content.json",
+        "originals/veilbreak/battle.js"
+      ],
+      "byteDelta": 408,
+      "lockAndConcurrentSourceChecksPassed": true
+    },
+    "historicalFilesNotRead": 3120,
+    "fullRuntimeValidated": false,
+    "browserValidationPerformed": false
+  },
+  "auditedHeadManifestGitBlob": "f76f15e2b2139bbe5414866c5a38ddc182ebda67"
+}

@@ -1,0 +1,706 @@
+{
+  "schema": "cqc.p74.original-object-visual-review.v1",
+  "asOf": "2026-11-27",
+  "scope": "18 props and 11 projectiles observed in actual gallery screenshots, plus read-only alpha/bounds inspection of 29 original PNGs",
+  "galleryScreenshots": [
+    "docs/cqc-reprise/pass74/veilbreak/evidence/gallery-props.png",
+    "docs/cqc-reprise/pass74/veilbreak/evidence/gallery-projectiles.png"
+  ],
+  "additionalNativeImageInspected": "public/cqc/originals/veilbreak/assets/projectiles/vb_proj_ballast_head.png",
+  "inputImageManifestGitBlob": "117f409edcc35005e07bb21e084545f4cbacc996",
+  "result": "base_image_framing_and_gallery_readability_reviewed",
+  "counts": {
+    "props": 18,
+    "projectiles": 11,
+    "total": 29
+  },
+  "observations": {
+    "oneIsolatedObjectPerImageObserved": true,
+    "completeFramingAtGalleryScale": true,
+    "noHumanOrMultiPoseSheetObserved": true,
+    "palette": "Graphite, olive, worn grey/off-white metals and amber accents; consistent industrial treatment at gallery scale.",
+    "silhouettes": "Cases, terminal, shield, linkage, beacon and projectiles remain distinguishable by outline.",
+    "readableAtGalleryScale": true,
+    "fullyValidatedAtCombatScale": false
+  },
+  "alphaAnalysis": {
+    "method": "Pillow decode of original PNGs, RGBA channel extrema and bbox at alpha>8; no image files modified",
+    "allRGBA": true,
+    "transparentPixelsPresent": true,
+    "alphaMaximum254Count": 8,
+    "alphaMaximum255Count": 21,
+    "significantAlphaTouchesFrame": [],
+    "rows": [
+      {
+        "id": "vb_prop_ground_probe",
+        "name": "Sonde de mise à la terre",
+        "path": "public/cqc/originals/veilbreak/assets/props/vb_prop_ground_probe.png",
+        "mode": "RGBA",
+        "width": 1536,
+        "height": 1024,
+        "alphaExtrema": [
+          0,
+          254
+        ],
+        "alphaBoundingBoxAbove8": [
+          159,
+          114,
+          1367,
+          927
+        ],
+        "frameContactAbove8": false,
+        "sha256": "f81aafcc1a897e2516ca7408f674bf381ceef3de0af463e4933508720a224c00",
+        "gitBlobSha": "a8d59839c92edd63b2d53e899a37c7aeb23790ee"
+      },
+      {
+        "id": "vb_prop_reflector_lure",
+        "name": "Leurre réflecteur",
+        "path": "public/cqc/originals/veilbreak/assets/props/vb_prop_reflector_lure.png",
+        "mode": "RGBA",
+        "width": 1223,
+        "height": 1286,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundingBoxAbove8": [
+          149,
+          11,
+          1129,
+          1275
+        ],
+        "frameContactAbove8": false,
+        "sha256": "2bf7c85e4e2c67b3d53dd618642ca5f9fbb371be671a5bf4e42879daa8bc3c3f",
+        "gitBlobSha": "46cf558c03d8a8859ac7f0f28d443ace47e8b6a0"
+      },
+      {
+        "id": "vb_prop_maintenance_terminal",
+        "name": "Terminal de maintenance local",
+        "path": "public/cqc/originals/veilbreak/assets/props/vb_prop_maintenance_terminal.png",
+        "mode": "RGBA",
+        "width": 1199,
+        "height": 1312,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundingBoxAbove8": [
+          176,
+          42,
+          989,
+          1287
+        ],
+        "frameContactAbove8": false,
+        "sha256": "d2a84b20bcec19388022f19b63f3ee2091207713f99e9e2ec7f69a3c4f306fab",
+        "gitBlobSha": "479285245e16b53f752a2312b2c0c244dfbb6f82"
+      },
+      {
+        "id": "vb_prop_field_battery",
+        "name": "Cellule de campagne",
+        "path": "public/cqc/originals/veilbreak/assets/props/vb_prop_field_battery.png",
+        "mode": "RGBA",
+        "width": 1774,
+        "height": 887,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundingBoxAbove8": [
+          81,
+          59,
+          1699,
+          825
+        ],
+        "frameContactAbove8": false,
+        "sha256": "a4e56b62862606d808ffcb9a755d3450d6bd81b3fab43cb61c1f9117574c0ef1",
+        "gitBlobSha": "92c0519157748ce75df75c31ec9893bfe87bc2ee"
+      },
+      {
+        "id": "vb_prop_signal_relay",
+        "name": "Relais de signal",
+        "path": "public/cqc/originals/veilbreak/assets/props/vb_prop_signal_relay.png",
+        "mode": "RGBA",
+        "width": 1536,
+        "height": 1024,
+        "alphaExtrema": [
+          0,
+          254
+        ],
+        "alphaBoundingBoxAbove8": [
+          291,
+          35,
+          1230,
+          967
+        ],
+        "frameContactAbove8": false,
+        "sha256": "c4d37fa3a56a3ade942c12648c31129f0786d910b141530adfb0ebed432778bf",
+        "gitBlobSha": "107027c37b90b88b26988ad6ce52bdd277b9e312"
+      },
+      {
+        "id": "vb_prop_proof_case",
+        "name": "Mallette de preuves",
+        "path": "public/cqc/originals/veilbreak/assets/props/vb_prop_proof_case.png",
+        "mode": "RGBA",
+        "width": 1536,
+        "height": 1024,
+        "alphaExtrema": [
+          0,
+          254
+        ],
+        "alphaBoundingBoxAbove8": [
+          53,
+          93,
+          1484,
+          932
+        ],
+        "frameContactAbove8": false,
+        "sha256": "7b899e845d0f7ea8aa6dd342f87ec4ff6149fba963d0af4fcc188ccd287b8f73",
+        "gitBlobSha": "4f2cd7c7f62c8bd6459e0aaf548e89356a689c42"
+      },
+      {
+        "id": "vb_prop_relay_cutoff",
+        "name": "Sectionneur du relais",
+        "path": "public/cqc/originals/veilbreak/assets/props/vb_prop_relay_cutoff.png",
+        "mode": "RGBA",
+        "width": 1536,
+        "height": 1024,
+        "alphaExtrema": [
+          0,
+          254
+        ],
+        "alphaBoundingBoxAbove8": [
+          213,
+          15,
+          1435,
+          1008
+        ],
+        "frameContactAbove8": false,
+        "sha256": "eab36cf1581c50cf6bca1edea21401cfdb7101543741da450212a83bcc658fb3",
+        "gitBlobSha": "d7d2ea2ff5dabd093c6a57d221a53d5da45591ad"
+      },
+      {
+        "id": "vb_prop_brace_cassette",
+        "name": "Cassette d’attelle",
+        "path": "public/cqc/originals/veilbreak/assets/props/vb_prop_brace_cassette.png",
+        "mode": "RGBA",
+        "width": 2172,
+        "height": 724,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundingBoxAbove8": [
+          105,
+          111,
+          2054,
+          591
+        ],
+        "frameContactAbove8": false,
+        "sha256": "756a0666739bf12e4d8bf6f347343daa3ada8b243c86059348751a916e24f8ae",
+        "gitBlobSha": "d59a00c72ee4e1b820098a4873ce67b971d4567a"
+      },
+      {
+        "id": "vb_prop_cable_coupling",
+        "name": "Coupleur sous-marin",
+        "path": "public/cqc/originals/veilbreak/assets/props/vb_prop_cable_coupling.png",
+        "mode": "RGBA",
+        "width": 2172,
+        "height": 724,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundingBoxAbove8": [
+          34,
+          52,
+          2138,
+          660
+        ],
+        "frameContactAbove8": false,
+        "sha256": "4576044ac4890a19f36c5fc6949eae1cc8c1d54614453ceec0944cb63e55a912",
+        "gitBlobSha": "7f2241d21608b623b8207b9b933c3ef63cd9f2e4"
+      },
+      {
+        "id": "vb_prop_arm_service_cradle",
+        "name": "Berceau de bras mécanique",
+        "path": "public/cqc/originals/veilbreak/assets/props/vb_prop_arm_service_cradle.png",
+        "mode": "RGBA",
+        "width": 1536,
+        "height": 1024,
+        "alphaExtrema": [
+          0,
+          254
+        ],
+        "alphaBoundingBoxAbove8": [
+          98,
+          50,
+          1445,
+          975
+        ],
+        "frameContactAbove8": false,
+        "sha256": "96c1b7886d0fde1f0096c4955ae898dac3e40700940926a0d5b7aefcede5f075",
+        "gitBlobSha": "1696e91e46eb3510749262433a5d91f76b467c0e"
+      },
+      {
+        "id": "vb_prop_folding_shield",
+        "name": "Écran balistique repliable",
+        "path": "public/cqc/originals/veilbreak/assets/props/vb_prop_folding_shield.png",
+        "mode": "RGBA",
+        "width": 1536,
+        "height": 1024,
+        "alphaExtrema": [
+          0,
+          254
+        ],
+        "alphaBoundingBoxAbove8": [
+          123,
+          80,
+          1416,
+          980
+        ],
+        "frameContactAbove8": false,
+        "sha256": "312766dcff5b9f911eeccf5f49616fcd55c77c10176e2ebcaa340ff14995cf48",
+        "gitBlobSha": "d5191028a51b2db1b793a06fffae729910b8e73f"
+      },
+      {
+        "id": "vb_prop_ballast_chain_link",
+        "name": "Maillon de ballast",
+        "path": "public/cqc/originals/veilbreak/assets/props/vb_prop_ballast_chain_link.png",
+        "mode": "RGBA",
+        "width": 2172,
+        "height": 724,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundingBoxAbove8": [
+          317,
+          48,
+          1850,
+          690
+        ],
+        "frameContactAbove8": false,
+        "sha256": "411eb8b48cbb0d555408f8306110f283967cca1832f263091fc3ffea05ebbbd7",
+        "gitBlobSha": "5ea84ba94f43fd2046d6876617217a9dfcb1e7ef"
+      },
+      {
+        "id": "vb_prop_sealed_carrier",
+        "name": "Coffre de transport scellé",
+        "path": "public/cqc/originals/veilbreak/assets/props/vb_prop_sealed_carrier.png",
+        "mode": "RGBA",
+        "width": 1774,
+        "height": 887,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundingBoxAbove8": [
+          61,
+          195,
+          1715,
+          740
+        ],
+        "frameContactAbove8": false,
+        "sha256": "c5bf9d30dc84aced0e24f09ffd5dbe53bfb7cf6b80d71f99eb8ff3386e5677d0",
+        "gitBlobSha": "7ba44e562e3f0c69441cc3b8abc2cf936f5774c3"
+      },
+      {
+        "id": "vb_prop_copper_busbar",
+        "name": "Barre de distribution",
+        "path": "public/cqc/originals/veilbreak/assets/props/vb_prop_copper_busbar.png",
+        "mode": "RGBA",
+        "width": 1983,
+        "height": 793,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundingBoxAbove8": [
+          92,
+          97,
+          1907,
+          707
+        ],
+        "frameContactAbove8": false,
+        "sha256": "4554745473b2c613b428f004109c6462853cc83d783436b068c0c8ec87d91f19",
+        "gitBlobSha": "f054ed2a7fbb59036bd0eff8201cd2222d2480f6"
+      },
+      {
+        "id": "vb_prop_rotor_hub",
+        "name": "Moyeu de rotor",
+        "path": "public/cqc/originals/veilbreak/assets/props/vb_prop_rotor_hub.png",
+        "mode": "RGBA",
+        "width": 2172,
+        "height": 724,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundingBoxAbove8": [
+          30,
+          40,
+          2144,
+          689
+        ],
+        "frameContactAbove8": false,
+        "sha256": "796e3d55a9b4cebd85f64bd3316de586095940245499a0c8c9b7411ba80b2223",
+        "gitBlobSha": "759692a043d0559e53ba77e9f03af3a4e6460637"
+      },
+      {
+        "id": "vb_prop_hydraulic_piston",
+        "name": "Vérin hydraulique",
+        "path": "public/cqc/originals/veilbreak/assets/props/vb_prop_hydraulic_piston.png",
+        "mode": "RGBA",
+        "width": 2172,
+        "height": 724,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundingBoxAbove8": [
+          39,
+          98,
+          2135,
+          628
+        ],
+        "frameContactAbove8": false,
+        "sha256": "501d82131994a4e7b6ca0bc3b9dac5a532f4cf468dceac54be0c2ef770f98eb5",
+        "gitBlobSha": "4908f9307fa0ba1b3c24caf3a9710e6966ad2be4"
+      },
+      {
+        "id": "vb_prop_evacuation_beacon",
+        "name": "Balise d’évacuation",
+        "path": "public/cqc/originals/veilbreak/assets/props/vb_prop_evacuation_beacon.png",
+        "mode": "RGBA",
+        "width": 1536,
+        "height": 1024,
+        "alphaExtrema": [
+          0,
+          254
+        ],
+        "alphaBoundingBoxAbove8": [
+          183,
+          102,
+          1337,
+          925
+        ],
+        "frameContactAbove8": false,
+        "sha256": "b38e00f93a2a2454720bba59d4e36fe777e479c4fbb00c3f228d24fbdf5fa918",
+        "gitBlobSha": "9668c1626b5395817ccec700c2f706ffc236aa0c"
+      },
+      {
+        "id": "vb_prop_manual_service_key",
+        "name": "Clé de service manuelle",
+        "path": "public/cqc/originals/veilbreak/assets/props/vb_prop_manual_service_key.png",
+        "mode": "RGBA",
+        "width": 2172,
+        "height": 724,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundingBoxAbove8": [
+          380,
+          88,
+          1801,
+          633
+        ],
+        "frameContactAbove8": false,
+        "sha256": "dd82ef8669403e9052cd43d84678c383938ed5c88189193dad8500876d076a6f",
+        "gitBlobSha": "3ad77e5c13e0822b185e8884ca20fd3f3b7a6e7a"
+      },
+      {
+        "id": "vb_proj_grapnel",
+        "name": "Grapnel de retenue",
+        "path": "public/cqc/originals/veilbreak/assets/projectiles/vb_proj_grapnel.png",
+        "mode": "RGBA",
+        "width": 2172,
+        "height": 724,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundingBoxAbove8": [
+          127,
+          20,
+          1896,
+          715
+        ],
+        "frameContactAbove8": false,
+        "sha256": "d73d81bc0a6b1d920b2d6fa00fb589fa02664fca9a8a2c9573eea2512600146a",
+        "gitBlobSha": "3aecc14294f608c00f28be081331553fa27e6457"
+      },
+      {
+        "id": "vb_proj_tranq_dart",
+        "name": "Fléchette de contention",
+        "path": "public/cqc/originals/veilbreak/assets/projectiles/vb_proj_tranq_dart.png",
+        "mode": "RGBA",
+        "width": 2172,
+        "height": 724,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundingBoxAbove8": [
+          217,
+          204,
+          1955,
+          527
+        ],
+        "frameContactAbove8": false,
+        "sha256": "1add20691f83f17da882e24bb5111b273fc741b812b3c0218a1dee03f4f25895",
+        "gitBlobSha": "30b31f65d8ad628d4a20d384755f983cb3761adc"
+      },
+      {
+        "id": "vb_proj_pressure_capsule",
+        "name": "Capsule de pression",
+        "path": "public/cqc/originals/veilbreak/assets/projectiles/vb_proj_pressure_capsule.png",
+        "mode": "RGBA",
+        "width": 2172,
+        "height": 724,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundingBoxAbove8": [
+          254,
+          91,
+          1919,
+          633
+        ],
+        "frameContactAbove8": false,
+        "sha256": "09211376167d1bd37a5cb74cc2cd8be4d3f2780dd0a568a38ea948519d656cc5",
+        "gitBlobSha": "c6d310c7cd00823e33471f4e1e310d2ed4d26192"
+      },
+      {
+        "id": "vb_proj_ballast_head",
+        "name": "Tête de ballast",
+        "path": "public/cqc/originals/veilbreak/assets/projectiles/vb_proj_ballast_head.png",
+        "mode": "RGBA",
+        "width": 1942,
+        "height": 809,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundingBoxAbove8": [
+          79,
+          78,
+          1871,
+          727
+        ],
+        "frameContactAbove8": false,
+        "sha256": "199386505c065736331b4cf8ca4d2be084f459d294d4d01a451e595777a398c3",
+        "gitBlobSha": "6b92c67a5c8d179806f8aab6cdbb0c86c7150da2"
+      },
+      {
+        "id": "vb_proj_signal_puck",
+        "name": "Palet de signal",
+        "path": "public/cqc/originals/veilbreak/assets/projectiles/vb_proj_signal_puck.png",
+        "mode": "RGBA",
+        "width": 1536,
+        "height": 1024,
+        "alphaExtrema": [
+          0,
+          254
+        ],
+        "alphaBoundingBoxAbove8": [
+          205,
+          285,
+          1348,
+          799
+        ],
+        "frameContactAbove8": false,
+        "sha256": "85abb1cea73c0fbfcb84b20d3fd6bb460553b009ab27ea01ae01435a78f72c3c",
+        "gitBlobSha": "926610545185b5e8e3d425a484173586773ba171"
+      },
+      {
+        "id": "vb_proj_carbine_round",
+        "name": "Projectile de carabine",
+        "path": "public/cqc/originals/veilbreak/assets/projectiles/vb_proj_carbine_round.png",
+        "mode": "RGBA",
+        "width": 2172,
+        "height": 724,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundingBoxAbove8": [
+          341,
+          197,
+          1822,
+          535
+        ],
+        "frameContactAbove8": false,
+        "sha256": "1ded39c1117594c2d34de19454122449ce185e1d29404bdfb8fa3b181e7fae93",
+        "gitBlobSha": "085e2c22247c735cabaf4542e6ee6f1786facfa6"
+      },
+      {
+        "id": "vb_proj_service_round",
+        "name": "Projectile de pistolet",
+        "path": "public/cqc/originals/veilbreak/assets/projectiles/vb_proj_service_round.png",
+        "mode": "RGBA",
+        "width": 2172,
+        "height": 724,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundingBoxAbove8": [
+          618,
+          130,
+          1562,
+          594
+        ],
+        "frameContactAbove8": false,
+        "sha256": "a687268140d934eef1ea5b87ba49513980d7b45bdd7f322370f0fd5176a3f520",
+        "gitBlobSha": "c4bc16ad32e21e8feba3c976415004dda64e7183"
+      },
+      {
+        "id": "vb_proj_tracking_tag",
+        "name": "Balise adhésive",
+        "path": "public/cqc/originals/veilbreak/assets/projectiles/vb_proj_tracking_tag.png",
+        "mode": "RGBA",
+        "width": 2172,
+        "height": 724,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundingBoxAbove8": [
+          261,
+          138,
+          1869,
+          571
+        ],
+        "frameContactAbove8": false,
+        "sha256": "92b6da55767a0b51f01fa1d2d53d06e18d684cd3f0d8b795c1816044b506d571",
+        "gitBlobSha": "825e94dda470bbb82a601f0b2b03d9e8bd86307d"
+      },
+      {
+        "id": "vb_proj_sentry_round",
+        "name": "Projectile de sentinelle",
+        "path": "public/cqc/originals/veilbreak/assets/projectiles/vb_proj_sentry_round.png",
+        "mode": "RGBA",
+        "width": 2172,
+        "height": 724,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundingBoxAbove8": [
+          247,
+          152,
+          1912,
+          562
+        ],
+        "frameContactAbove8": false,
+        "sha256": "dad3c2f025f648c63f7a9edc3199e322896cb68f6efd18f3599baea44e2b529c",
+        "gitBlobSha": "0981296a1a1025c1a5e3c8c9e204cff34b04dca4"
+      },
+      {
+        "id": "vb_proj_coolant_canister",
+        "name": "Cartouche réfrigérante",
+        "path": "public/cqc/originals/veilbreak/assets/projectiles/vb_proj_coolant_canister.png",
+        "mode": "RGBA",
+        "width": 2172,
+        "height": 724,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundingBoxAbove8": [
+          144,
+          136,
+          2028,
+          576
+        ],
+        "frameContactAbove8": false,
+        "sha256": "76fb9f703d1c584d12eaed9867a7e3cb78409ef9dc743ca635aacf1fc3cbe675",
+        "gitBlobSha": "a30ac37de1059fa71a4b71a2843747ac08a26855"
+      },
+      {
+        "id": "vb_proj_cutting_disc",
+        "name": "Disque de découplage",
+        "path": "public/cqc/originals/veilbreak/assets/projectiles/vb_proj_cutting_disc.png",
+        "mode": "RGBA",
+        "width": 2172,
+        "height": 724,
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundingBoxAbove8": [
+          479,
+          113,
+          1693,
+          615
+        ],
+        "frameContactAbove8": false,
+        "sha256": "e7fe2632dafa141b86f589d6b9c14debd5817856d462a95dbe78deba276f86fc",
+        "gitBlobSha": "9089eecb8f86dfdceb4f6d0dfc5cf43c0283dd19"
+      }
+    ]
+  },
+  "openObservations": [
+    {
+      "id": "dart_small_scale_readability",
+      "assetId": "vb_proj_tranq_dart",
+      "severity": "follow_up",
+      "observation": "The needle tip is very thin in the gallery; actual combat-size readability has not been demonstrated by this review."
+    }
+  ],
+  "certifications": {
+    "canonicalFidelity": false,
+    "oneToOneFidelity": false,
+    "animationCompleteness": false,
+    "mechanicalAccuracy": false,
+    "gameplayBalance": false,
+    "allCombatScaleReadability": false
+  },
+  "changesMadeToImages": false,
+  "meaning": "Visual and alpha review of 29 delivered base images only. This is not certification of official/canonical fidelity, animation, mechanics or all in-game contexts.",
+  "resolvedObservations": [
+    {
+      "id": "ballast_direction_contract",
+      "assetId": "vb_proj_ballast_head",
+      "severity": "follow_up",
+      "observation": "The mass is drawn to the left and the attachment ring to the right, while the content record currently says orientation:right. Direction handling should be checked in the combat renderer; no frame crop is needed.",
+      "status": "resolved_by_orientation_metadata",
+      "resolution": "The native PNG remains unchanged. vb_proj_ballast_head now declares orientation:left. The combat client stores baseFacing=-1 for left-facing art and multiplies the projectile travel direction by this native orientation before drawing.",
+      "dataGitBlob": "ccca1cdb0f56fdd8dd557adbec721f483e26977c",
+      "battleClientGitBlob": "c94832930a60f5e8f77cc0222c4001316b572d85",
+      "reviewerVerification": "Exact code and data blobs inspected; objectArt initialization and drawProjectile agree with the native image direction.",
+      "reportedAdHocRendererCheck": {
+        "producer": "gameplay agent",
+        "environment": "Node, real objectArt assignment and drawProjectile extracted from battle.js, minimal canvas capturing scale()",
+        "passed": 4,
+        "failed": 0,
+        "cases": [
+          {
+            "native": "left",
+            "travel": 1,
+            "scaleX": -1
+          },
+          {
+            "native": "left",
+            "travel": -1,
+            "scaleX": 1
+          },
+          {
+            "native": "right",
+            "travel": 1,
+            "scaleX": 1
+          },
+          {
+            "native": "right",
+            "travel": -1,
+            "scaleX": -1
+          }
+        ],
+        "permanentTestAdded": false,
+        "browserRerunForThisChange": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "schema": "cqc.veilbreak.delivery-verification/1",
+  "date": "2026-11-27",
+  "finalRuntimeData": {
+    "gitBlobSha": "ccca1cdb0f56fdd8dd557adbec721f483e26977c",
+    "sha256": "e3f1ca7ff52c90e3a5181d235ab997a94f16401d2a84b4ed134f78a652004771",
+    "bytes": 938898
+  },
+  "art": {
+    "mainIllustrations": 70,
+    "arsenalIllustrations": 29,
+    "totalPNGs": 99,
+    "missingArsenalIllustrations": 11,
+    "manifest": "image-manifest.json",
+    "byteVerification": "SHA256 and PNG structure computed from exact preserved generation output; immutable GitHub blob references retained",
+    "fullGalleryVisualQA": true,
+    "rasterReport": "image-raster-validation.json",
+    "visualReport": "visual-review.json"
+  },
+  "completedBeforeExecutorOutage": [
+    {
+      "scope": "Existing combat engine and 2v2/controller unit suites",
+      "result": "21 tests passed",
+      "files": [
+        "scripts/test-cqc-p74-tag-team.mjs",
+        "scripts/test-cqc-p74-veilbreak-controller.mjs"
+      ],
+      "notes": "Includes 1200-frame exact default-duel equivalence and deterministic tag replay."
+    },
+    {
+      "scope": "Campaign pure state",
+      "result": "7 tests passed",
+      "files": [
+        "scripts/test-cqc-veilbreak-campaign.mjs"
+      ]
+    },
+    {
+      "scope": "All 50 original combat profiles",
+      "result": "500 contextual commands passed; 50 deterministic match pairs; 104516 finite-state checks",
+      "report": "../../../cqc-bible/veilbreak-engine-validation.json",
+      "notes": "Final art admission and identity metadata do not alter any combat profile."
+    },
+    {
+      "scope": "Team UI browser harness",
+      "result": "5 checks passed",
+      "report": "../gameplay/evidence/team-ui-report.json"
+    },
+    {
+      "scope": "Real battle client in Chromium",
+      "result": "7 checks passed",
+      "report": "../gameplay/evidence/veilbreak-client/report.json",
+      "notes": "Includes keyboard/touch/mobile, projectile damage, tag, assist, pause, iframe handshake and deliberate PNG404 recovery."
+    },
+    {
+      "scope": "Canonical Atlas",
+      "result": "112 assertions passed",
+      "report": "../canonical/atlas-verification.json"
+    }
+  ],
+  "completedAfterOutage": [
+    {
+      "scope": "Actual portal result functions in V8",
+      "result": "12 regression cases passed; the prior buggy version fails 6 negative-control cases",
+      "report": "evidence/portal-result-v8-report.json",
+      "limitations": "DOM/storage stubs only; not a browser rendering run."
+    },
+    {
+      "scope": "Runtime manifest reconstructed from pinned blobs",
+      "result": "3236 declared reachable files, 5187 references; all 3124 previous entries retained; all 499 external routes unchanged",
+      "report": "../runtime-manifest-update.json",
+      "limitations": "Historical binary bytes were preserved by their manifest records, not re-read from a full checkout."
+    }
+  ],
+  "interrupted": [
+    {
+      "scope": "Full historical v055 rendering",
+      "status": "not_validated",
+      "reason": "The heavy legacy page previously crashed the constrained browser. Targeted team harness, inline syntax and lightweight client are verified separately."
+    }
+  ],
+  "remainingProduction": [
+    "Per-move and movement animation sheets for all actors",
+    "Articulated machines and independent weak points",
+    "100 separate parallax layers",
+    "20 alternate costume image sets",
+    "30 cinematic finishers with controllers/cameras/audio",
+    "60 separate narrative paintings",
+    "10 VFX clips, voice, music and dedicated sound production",
+    "11 missing arsenal illustrations",
+    "Balance playtesting and full rendered campaign playthrough"
+  ],
+  "claims": {
+    "canonicalOneToOneCertified": false,
+    "canonicalGroupsClosed": 0,
+    "newCanonicalCombatAdmissions": 0,
+    "allBibleRequirementsComplete": false
+  },
+  "completedAfterRecovery": [
+    {
+      "scope": "Real Node unit suites",
+      "result": "40 unique tests passed: 16 team/engine, 5 controller, 7 campaign, 12 result regressions",
+      "limitations": "No balance or full campaign playthrough claim."
+    },
+    {
+      "scope": "Final portal browser and galleries",
+      "result": "11 browser checks and all 99 PNGs across 6 galleries passed; zero JavaScript errors and zero missing-file responses",
+      "report": "evidence/portal-report.json",
+      "limitations": "Progression fixture covers protocol behavior; engine victories were not fabricated. Actual training, first campaign enemy and first boss-rush boss launch the real engine."
+    },
+    {
+      "scope": "Scoped runtime on disk",
+      "result": "116 final selected files verified on disk; Node and V8 reconstruction produce identical manifest bytes; 3124 historical entries and 499 external routes preserved",
+      "report": "../runtime-manifest-physical-verification.json"
+    },
+    {
+      "scope": "PNG native decoding",
+      "result": "99 decoded, all SHA256 matched, all 79 non-stage images have transparent pixels",
+      "report": "image-raster-validation.json"
+    },
+    {
+      "scope": "Final battle client after native-orientation fix",
+      "result": "7 Chromium checks passed; zero unexpected page/network errors; one intentional PNG404 recovery test passed",
+      "report": "../gameplay/evidence/veilbreak-client/report.json"
+    }
+  ],
+  "recovery": {
+    "localEnvironmentRecovered": true,
+    "finalPortalAndGalleryGateCompleted": true,
+    "billingChanged": false
+  }
+}

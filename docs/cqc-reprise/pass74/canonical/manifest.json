@@ -1,0 +1,335 @@
+{
+  "schema": "cqc.p74.canonical-candidates.v1",
+  "asOf": "2026-11-27",
+  "repository": "darknigthmare/shadow-codec-ops",
+  "branch": "codex/cqc-p61-missing-static-sources-20261125",
+  "auditedHead": "06d5de112e40faa2d551b77e1961f11a6af14bb4",
+  "inspectedPasses": [
+    "P61 inventory",
+    "P63–P69 selected associations",
+    "P71",
+    "P72"
+  ],
+  "uninspectedPasses": [
+    "P73"
+  ],
+  "generation": {
+    "provider": "OpenAI built-in image_gen",
+    "oneAssetPerImage": true,
+    "postProcessing": "none; returned PNG bytes preserved",
+    "exactPromptsRecorded": true
+  },
+  "qualification": "Candidats de sources fixes pour revue. Aucune certification 1:1, clôture de groupe ou admission au combat. Les deux portraits restent partiels et ne prouvent pas de corps complets.",
+  "counts": {
+    "selected": 3,
+    "quarantined": 1,
+    "refusedThisPass": 0,
+    "fullBodySelected": 0,
+    "newHistoricalRowsPartiallyCovered": 1,
+    "historicalRowsClosed": 0,
+    "oneToOneCertifications": 0,
+    "combatAdmissions": 0
+  },
+  "assets": [
+    {
+      "id": "mgr-hebidamashii",
+      "assetId": "asset:p74:mgr-hebidamashii",
+      "label": "Revengeance — Hebidamashii, sabre de bois du DLC japonais",
+      "kind": "prop",
+      "episode": "mgr",
+      "edition": "Metal Gear Rising: Revengeance — page japonaise du DLC VR Missions",
+      "workIds": [
+        "prop:mgr_hebidamashii"
+      ],
+      "rosterUids": [],
+      "scope": "Une arme de bois isolée dans la diagonale de la capture officielle. La section brièvement masquée par la main est reconstruite de manière simple.",
+      "coverage": "full_object_candidate",
+      "status": "selected_static_candidate",
+      "path": "public/cqc/assets/canon-pass74/mgr-hebidamashii.png",
+      "promptFile": "docs/cqc-reprise/pass74/canonical/prompts/mgr-hebidamashii.txt",
+      "exactPrompt": "Use case: precise-object-edit. Create one isolated canonical reference candidate for Metal Gear Rising: Revengeance, the Japanese DLC wooden sword Hebidamashii (木刀蛇魂), from the supplied official KONAMI gameplay screenshot. Redraw ONLY the complete orange-brown wooden sword that lies diagonally across the frame from upper left to lower right. Preserve the observed long blunt bokken silhouette, shallow curvature, broad wooden upper section with the two black calligraphic characters 蛇魂 exactly as seen, warm orange lacquer/wood, the narrow dark-brown central gripping area and the rounded narrow lower-right wooden tip. Keep the same perspective and diagonal, no new side or rear view. Raiden's fingers obscure a short central grip: continue only the simplest consistent wooden grip through that short gap, do not invent a guard, circuitry or ornament. Detailed game-render surface faithful to the low-resolution 2013 screenshot; do not redesign as a metal katana. Entire sword inside frame with generous transparent margins. Real alpha transparency. Remove all people, hands, pavement, background, detached particles, the blue aura, copyright caption and UI; keep only the two observed black characters that are printed on the weapon itself. No pedestal, ground shadow, repeated objects, montage or labels.",
+      "referenceIds": [
+        "konami-mgr-dlc-hebidamashii"
+      ],
+      "referencePaths": [
+        "docs/cqc-reprise/pass74/canonical/references/dlc1_pic3b.jpg"
+      ],
+      "sourceURLs": [
+        "https://www.konami.com/mg/archive/mgr/jp/dlc/",
+        "https://www.konami.com/mg/archive/mgr/jp/dlc/_img/dlc1_pic3b.jpg"
+      ],
+      "inputReferencePathsAtGeneration": [
+        "/tmp/cqc-veilbreak-work/shadow-codec-ops/docs/cqc-reprise/pass74/canonical/references/dlc1_pic3b.jpg"
+      ],
+      "image": {
+        "width": 1674,
+        "height": 940,
+        "mode": "RGBA",
+        "bytes": 376203,
+        "sha256": "af1092fa416e39c971f33d2087632eee8f39bf639f0898d6cd3ca9775dca399a",
+        "gitBlobSha": "02efe35341c651dd8e06392d80770abf18a99ad2",
+        "alphaRange": [
+          0,
+          255
+        ]
+      },
+      "duplicateAudit": "Aucun chemin de l’arbre HEAD ni source sélectionnée P63–P72 ne porte Hebidamashii, wooden sword ou soul sword. Nouveau prop hors inventaire historique, pas nouveau personnage.",
+      "observed": "Le site officiel japonais nomme 木刀蛇魂, explique qu’elle émet des répliques de Solid Snake et fournit cette capture.",
+      "proposedCqc": "Icône/dossier de l’accessoire lié au DLC japonais. Portage animé et comportement vocal CQC restent des adaptations distinctes.",
+      "limitations": [
+        "La main de Raiden masque une petite section ; sa reconstruction ne permet pas de certifier 1:1 la géométrie.",
+        "La calligraphie, la courbure et les proportions sont reprises de 715×402 pixels ; pas de mesure ou modèle natif.",
+        "L’aura bleue est omise pour séparer la source de l’arme de l’effet.",
+        "Aucun dos, animation, état porté ni interaction validé."
+      ],
+      "nextEvidence": [
+        "Capture rapprochée sans main ou modèle natif de l’arme.",
+        "Comparer la courbure, le lettrage, la prise et l’échelle avant admission au combat."
+      ],
+      "oneToOneCertified": false,
+      "combatReady": false
+    },
+    {
+      "id": "mgr-khamsin-cockpit-portrait",
+      "assetId": "asset:p74:mgr-khamsin-cockpit-portrait",
+      "label": "Revengeance — Khamsin, portrait dans le cockpit",
+      "kind": "character",
+      "episode": "mgr",
+      "edition": "Metal Gear Rising: Revengeance — Blade Wolf DLC",
+      "workIds": [
+        "portrait:core__khamsin:cockpit_closeup"
+      ],
+      "rosterUids": [
+        "core__khamsin"
+      ],
+      "scope": "Tête, torse et cadre de cockpit visibles dans la capture officielle. Cadrage supérieur conservé, sans bas du corps ou machine complète inventés.",
+      "coverage": "upper_body_portrait",
+      "status": "selected_static_candidate",
+      "path": "public/cqc/assets/canon-pass74/mgr-khamsin-cockpit-portrait.png",
+      "promptFile": "docs/cqc-reprise/pass74/canonical/prompts/mgr-khamsin-cockpit-portrait.txt",
+      "exactPrompt": "Use case: precise-image-edit. One canonical portrait reference candidate for Khamsin from Metal Gear Rising: Revengeance — Blade Wolf DLC. Use only the supplied official KONAMI screenshot. Faithfully redraw the exact visible portrait, preserving the same three-quarter head angle facing slightly toward the viewer's left, narrow buzz-cut strip on top with shaved sides and small dark temple implants, pale stern face, heavy angular brow, gray-green eyes, long straight nose, slight asymmetric mouth, olive-green sleeveless tactical vest, dark ribbed underlayer, straps, single metal dog tag at chest, and the massive dark armored cockpit/support frame immediately behind his shoulders. Match the game's 2013 rendered proportions and materials, no glamorization. The source shows only his upper body: keep a documentary head-and-upper-torso crop ending at the same lower chest boundary, with dark cockpit armor framing both sides. Do not invent legs, arms, lower torso or the entire machine. Remove only the burning street/background outside the visible cockpit silhouette, no added scene. True transparent alpha background; one figure/cockpit portrait only, no text, labels, border, pedestal, duplicate or collage. This is an upper-body cropped dossier portrait, not a complete combat sprite.",
+      "referenceIds": [
+        "konami-mgr-dlc-khamsin"
+      ],
+      "referencePaths": [
+        "docs/cqc-reprise/pass74/canonical/references/dlc3_pic5b.jpg"
+      ],
+      "sourceURLs": [
+        "https://www.konami.com/mg/archive/mgr/jp/dlc/",
+        "https://www.konami.com/mg/archive/mgr/jp/dlc/_img/dlc3_pic5b.jpg"
+      ],
+      "inputReferencePathsAtGeneration": [
+        "/tmp/cqc-veilbreak-work/shadow-codec-ops/docs/cqc-reprise/pass74/canonical/references/dlc3_pic5b.jpg"
+      ],
+      "image": {
+        "width": 1678,
+        "height": 937,
+        "mode": "RGBA",
+        "bytes": 2345584,
+        "sha256": "2987cdade69f97f6e15f53da5dfb2ad4d91d801e18ad81ba6c73291293e1b4bc",
+        "gitBlobSha": "c3bd11f7d5d386b29f79ce955e15f214a2acc382",
+        "alphaRange": [
+          0,
+          255
+        ]
+      },
+      "duplicateAudit": "Khamsin et sa machine existent déjà (pass18/pass49). Ce portrait officiel distinct ne crée ni nouveau boss ni première couverture de son corps.",
+      "observed": "La capture officielle montre le visage de Khamsin, son harnais/torse et les grandes plaques latérales du cockpit.",
+      "proposedCqc": "Portrait de dossier pour le UID existant core__khamsin ; aucune modification du boss existant.",
+      "limitations": [
+        "Bords du cockpit et bas du torse volontairement tronqués comme dans la source.",
+        "Détails du visage, cuir, métal et fixations interprétés à partir d’une image 715×400.",
+        "La source ne prouve ni le corps complet ni le rig du cockpit."
+      ],
+      "nextEvidence": [
+        "Référence officielle plus grande ou captures natives de face/profil avant correction de la ressemblance.",
+        "Mesurer les attaches si un portrait animé est envisagé."
+      ],
+      "oneToOneCertified": false,
+      "combatReady": false
+    },
+    {
+      "id": "mgs3-kgb-aiming-portrait",
+      "assetId": "asset:p74:mgs3-kgb-aiming-portrait",
+      "label": "Snake Eater — garde KGB, portrait en visée du modèle original",
+      "kind": "character",
+      "episode": "mgs3",
+      "edition": "Metal Gear Solid 3: Snake Eater — modèle original, plateforme PS2 ou port HD non départagée par les captures",
+      "workIds": [
+        "character:R-MGS3-kgb"
+      ],
+      "rosterUids": [],
+      "scope": "Une vue tête/torse/fusil de la tenue à capuche et masque clair, sans bas du corps. Troisième capture comme pose principale, deux captures complémentaires de tenue.",
+      "coverage": "upper_body_portrait",
+      "status": "selected_static_candidate",
+      "path": "public/cqc/assets/canon-pass74/mgs3-kgb-aiming-portrait.png",
+      "promptFile": "docs/cqc-reprise/pass74/canonical/prompts/mgs3-kgb-aiming-portrait.txt",
+      "exactPrompt": "Use case: precise-image-edit. Create one upper-body reference candidate of a KGB security soldier from Metal Gear Solid 3: Snake Eater, the original PS2 game, from the supplied three native game screenshots. The THIRD image is the composition and pose anchor: soldier aims his AK-47 toward the upper left, hood and shoulders in three-quarter front view. The first and second images only confirm the same olive-brown hooded uniform, light tan face cloth covering nose and mouth, simple olive equipment webbing/pouches and black gloves; do not copy any background. Preserve the hood's pointed center seam and folds, exposed eyes without goggles, the cream cloth mask, original angular PS2 model proportions and muted olive palette. Keep the rifle, hands and upper torso exactly in the aiming pose from the third reference, with muzzle inside the frame. Make only the observed head-and-upper-torso portrait ending at the same lower crop as reference three. Do not invent legs, feet, hidden pouches, helmet, modern armor, shoulder insignia, patches or a full-body pose. Render crisply while preserving the PS2 design, not a modern photoreal remake. Isolate this single observed upper-body silhouette and rifle on true transparent alpha. Remove trees, buildings, all background, captions and UI. No cast shadow, scene, label, border, duplicated character, montage or turnaround.",
+      "referenceIds": [
+        "native-mgs3-kgb-1",
+        "native-mgs3-kgb-2",
+        "native-mgs3-kgb-3"
+      ],
+      "referencePaths": [
+        "docs/cqc-reprise/pass74/canonical/references/MGS3AK47KGB.jpg",
+        "docs/cqc-reprise/pass74/canonical/references/MGS3AK47KGB2.jpg",
+        "docs/cqc-reprise/pass74/canonical/references/MGS3AK47KGB3.jpg"
+      ],
+      "sourceURLs": [
+        "https://www.imfdb.org/wiki/Metal_Gear_Solid_3%3A_Snake_Eater",
+        "https://www.imfdb.org/images/8/89/MGS3AK47KGB.jpg",
+        "https://www.imfdb.org/images/7/7f/MGS3AK47KGB2.jpg",
+        "https://www.imfdb.org/images/f/f4/MGS3AK47KGB3.jpg",
+        "https://www.konami.com/mg/archive/mgs3/english/story_main.html"
+      ],
+      "inputReferencePathsAtGeneration": [
+        "/tmp/cqc-veilbreak-work/shadow-codec-ops/docs/cqc-reprise/pass74/canonical/references/MGS3AK47KGB.jpg",
+        "/tmp/cqc-veilbreak-work/shadow-codec-ops/docs/cqc-reprise/pass74/canonical/references/MGS3AK47KGB2.jpg",
+        "/tmp/cqc-veilbreak-work/shadow-codec-ops/docs/cqc-reprise/pass74/canonical/references/MGS3AK47KGB3.jpg"
+      ],
+      "image": {
+        "width": 1699,
+        "height": 926,
+        "mode": "RGBA",
+        "bytes": 1079514,
+        "sha256": "8bf8572f85cfec5773aaf3bbd5344331cf8195a36ff90eeaa673cb27ead5fb6b",
+        "gitBlobSha": "8936d91ffc02cc56774860a19e1d409d78739530",
+        "alphaRange": [
+          0,
+          255
+        ]
+      },
+      "duplicateAudit": "character:R-MGS3-kgb figure dans les 73 lignes P72 sans candidat. Le KGB de Portable Ops Plus P72 couvre character:R-MPO-GUEST ; ce modèle PSP n’est pas fusionné avec la tenue PS2.",
+      "observed": "Trois captures natives reproduites par IMFDB documentent capuche olive, masque clair, harnais, gants et fusil. La pose retenue est celle du troisième fichier.",
+      "proposedCqc": "Première source fixe partielle pour le groupe KGB de MGS3 original ; dossier visuel uniquement.",
+      "limitations": [
+        "Hébergement tiers de captures du jeu, et non export de modèle fourni par KONAMI.",
+        "Le torse et l’arme ont une pose précise ; jambes, pieds et dos ne sont pas établis.",
+        "Texture/visage et détails sous-pixel sont reconstruits ; pas de certification 1:1.",
+        "Ne ferme pas le groupe KGB ni ses variantes PS2/Delta ; aucune transposition automatique au modèle PSP.",
+        "Les captures établissent le modèle du jeu original, pas la plateforme de capture : PS2 et port HD ne sont pas départagés. Le prompt PS2 est conservé comme intention de génération, pas preuve technique."
+      ],
+      "nextEvidence": [
+        "Corps entier natif de cette même variante PS2, vues avant/arrière et inventaire des variantes.",
+        "Références de poses/animations réelles avant création de sprite de combat."
+      ],
+      "oneToOneCertified": false,
+      "combatReady": false
+    }
+  ],
+  "quarantined": [
+    {
+      "id": "mgs4-misidentified-johnny-promotional",
+      "path": "docs/cqc-reprise/pass74/canonical/quarantine/mgs4-misidentified-johnny-promotional.png",
+      "promptFile": "docs/cqc-reprise/pass74/canonical/prompts/mgs4-misidentified-johnny-promotional.txt",
+      "exactPrompt": "Use case: stylized-concept\nAsset type: one individual full-body 2D sprite candidate for the CQC Metal Gear source atlas.\nInput reference: a Metal Gear Solid 4 promotional game-character render hosted by GameFragger, used as the sole visible geometry and palette authority. It depicts one PMC soldier; use only that same one soldier. The gray field and white circular display pedestal are not part of the character.\nCreate a clean high-resolution 2D game-character rendering faithful to the reference: entire head through both boots, same slightly frontal three-quarter camera, same relaxed stance and the same compact tan bullpup rifle held diagonally across the chest, stock toward upper image-left and barrel toward lower image-right. Preserve black close-fitting balaclava, reflective amber/gold goggles, dark forest-green long-sleeved upper garment, olive/tan vest and straps, tan cargo trousers, two tan kneepads, tan lace-up boots, visible holster straps on image-left thigh, dark gloves, belt pouches, and the visible chest patch shape. Keep relative proportions, fabric panels and equipment locations without redesigning them.\nStyle: restrained painted game sprite with crisp readable edges, subtle volumetric shading and the original muted military palette. No modern additions, exaggerated muscles, new armor, new gun attachments, extra ammunition or stylized technology. This is a new reference-based illustration, not an exact extraction of native pixels.\nComposition: exactly ONE complete character, centered on a genuinely transparent canvas with at least 8 percent margin around every extremity and firearm. No ground, pedestal, cast shadow, scene, text, label, UI, contact sheet or second pose. Preserve the reference pose; do not invent a new side view.",
+      "inputIdentity": "MGS4 PMC (incorrect)",
+      "reviewedIdentity": "Probablement Johnny/Akiba de Rat Patrol ; identification non certifiée.",
+      "status": "quarantined_identity_conflict",
+      "coverageContribution": 0,
+      "workIds": [],
+      "reason": "La référence de galerie non légendée a été prise pour un PMC. La tenue et l’insigne Rat Patrol ainsi que le rendu voisin de Meryl contredisent ce rattachement. Aucun ajout au groupe PMC et aucun remplacement du Johnny existant.",
+      "referencePaths": [
+        "docs/cqc-reprise/pass74/canonical/references/2321L.jpg",
+        "docs/cqc-reprise/pass74/canonical/references/2322L.jpg"
+      ],
+      "sourceURLs": [
+        "https://gamefragger.com/playstation/ps3/action-adventure/metal-gear-solid-4-guns-of-the-patriots/pictures/metal-gear-solid-4-guns-of-the-patriots-characters-15-i2321",
+        "https://gamefragger.com/images/pictures/2321L.jpg",
+        "https://gamefragger.com/images/pictures/2322L.jpg"
+      ],
+      "image": {
+        "width": 942,
+        "height": 1669,
+        "bytes": 1285192,
+        "sha256": "17c096dbe7a96af814436d9ea3356deb60127f7d2e9ec95888694212fd27ac18"
+      },
+      "generationOutputOriginalPath": "/workspace/scratch/6fadd51c1b79/generated_images/exec-1f716de9-12ca-4b1b-90c9-da232c2222c5.png"
+    }
+  ],
+  "historicalHoldsRespected": [
+    "costume:core__mistral:official--two-arm-configuration",
+    "character:R-MGR-armored",
+    "mpop-tengu-soldier",
+    "mgr-sai-inventory"
+  ],
+  "recovery": {
+    "cause": "Executor restart removed /tmp checkout. Generated PNGs restored byte-for-byte from retained image_gen data URLs; prompts restored verbatim; references redownloaded from their recorded URLs.",
+    "persistence": "Three selected PNGs uploaded as GitHub blobs only; no branch or commit mutation by this agent."
+  },
+  "notes": [
+    "Aucun corps entier inédit retenu : les références complètes exploitables trouvées étaient déjà couvertes, modifiées par des mods ou mal identifiées.",
+    "Les pistes Delta Monkey/Bomberman ont été différées après arrêt de l’exécuteur puis saturation du volume ; aucune sortie créée ni comptée."
+  ],
+  "references": [
+    {
+      "path": "docs/cqc-reprise/pass74/canonical/references/dlc1_pic3b.jpg",
+      "bytes": 161585,
+      "sha256": "369d25a1bf88406dd09e649a81b554be56ef0d76ac5982e39bc20da158ef76ca",
+      "width": 715,
+      "height": 402,
+      "colorMode": "RGB"
+    },
+    {
+      "path": "docs/cqc-reprise/pass74/canonical/references/2321L.jpg",
+      "bytes": 35545,
+      "sha256": "ba41e2a61e6ac75d318e0d883b6b93c44604aa7f67b7f17219d9881638ee3013",
+      "width": 452,
+      "height": 800,
+      "colorMode": "RGB"
+    },
+    {
+      "path": "docs/cqc-reprise/pass74/canonical/references/dlc3_pic5b.jpg",
+      "bytes": 90883,
+      "sha256": "d1231ef30be46b5b219880150dc2c6cdf23e82d8e7e4a7fb499f54f304acf87d",
+      "width": 715,
+      "height": 400,
+      "colorMode": "RGB"
+    },
+    {
+      "path": "docs/cqc-reprise/pass74/canonical/references/MGS3AK47KGB2.jpg",
+      "bytes": 36203,
+      "sha256": "ac40bc7e31aea2fda299443c77d25cc31e39cd53dbc76c6353fc80f7a19ab89c",
+      "width": 846,
+      "height": 453,
+      "colorMode": "RGB"
+    },
+    {
+      "path": "docs/cqc-reprise/pass74/canonical/references/2322L.jpg",
+      "bytes": 36253,
+      "sha256": "c709b27508ca5aa8e5e73daf159885586c06a4a1f5c008688596f4c8da158d4e",
+      "width": 323,
+      "height": 800,
+      "colorMode": "RGB"
+    },
+    {
+      "path": "docs/cqc-reprise/pass74/canonical/references/MGS3AK47KGB3.jpg",
+      "bytes": 48522,
+      "sha256": "2dc69ed97bbbe87fffb815e3eef9976d3ab7f4d4f740dc801c179ae67310f946",
+      "width": 843,
+      "height": 460,
+      "colorMode": "RGB"
+    },
+    {
+      "path": "docs/cqc-reprise/pass74/canonical/references/MGS3AK47KGB.jpg",
+      "bytes": 58038,
+      "sha256": "175aeaad175f93b8d38e840976703c602ee6c2c77ecedf00314bb1bca112bb57",
+      "width": 846,
+      "height": 444,
+      "colorMode": "RGB"
+    }
+  ],
+  "atlasIntegration": {
+    "catalogPath": "public/cqc/data/cqc-p63-source-atlas.json",
+    "previousCount": 106,
+    "count": 109,
+    "integratedIds": [
+      "mgr-hebidamashii",
+      "mgr-khamsin-cockpit-portrait",
+      "mgs3-kgb-aiming-portrait"
+    ],
+    "combatAdmissions": 0,
+    "absolute1to1Certifications": 0,
+    "historicalScopesClosed": 0
+  }
+}
