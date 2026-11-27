@@ -1,0 +1,282 @@
+{
+  "schema": "cqc.bible.guide-integration-verification-p71.v1",
+  "date": "2026-11-27",
+  "baselineCommit": "f2b7c526a3a6a763767afcd8ae91f60bc7012d7c",
+  "independentReview": {
+    "focusAfterDeferredFetch": {
+      "status": "passed",
+      "scope": "jsdom asynchronous fetch rebuild",
+      "action": "activity",
+      "text": "Ouvrir les Chroniques ↗",
+      "visualGeometryChecked": false
+    },
+    "moduleRouting": {
+      "status": "passed_dom_and_static_checks",
+      "messages": [
+        {
+          "payload": {
+            "type": "cqc-open-module",
+            "module": "chronicles56"
+          },
+          "targetOrigin": "https://cqc.test"
+        },
+        {
+          "payload": {
+            "type": "cqc-open-module",
+            "module": "survival48"
+          },
+          "targetOrigin": "https://cqc.test"
+        },
+        {
+          "payload": {
+            "type": "cqc-open-module",
+            "module": "relay48"
+          },
+          "targetOrigin": "https://cqc.test"
+        },
+        {
+          "payload": {
+            "type": "cqc-admin-close"
+          },
+          "targetOrigin": "https://cqc.test"
+        }
+      ],
+      "registeredModules": {
+        "chronicles56": "modules/chronicles-v056.html",
+        "survival48": "modules/battle-operations-v053.html?mode=survival",
+        "relay48": "modules/battle-operations-v053.html?mode=relay"
+      },
+      "linksFrom": [
+        "public/cqc/modules/atelier-v056.html",
+        "public/cqc/modules/source-atlas-v063.html"
+      ],
+      "realBrowserNavigationExecuted": false
+    },
+    "backupApi": {
+      "status": "passed_isolated_api_roundtrip",
+      "restoredKeys": [
+        "cqc.p71.access.a",
+        "cqc.p71.access.b",
+        "cqc.p71.access.hide-secrets"
+      ],
+      "unrelatedKeyExcluded": true,
+      "visibleImportUiEstablished": false,
+      "uiCopyCorrected": true
+    },
+    "correctedDefects": [
+      {
+        "problem": "Focus moved to the document body after asynchronous dossier loading rebuilt the detail actions.",
+        "resolution": "Restoration of the equivalent action by data-archive-action; independently reproduced after correction."
+      },
+      {
+        "problem": "The interface recommended a restore flow in the main menu without an established visible export/import interface.",
+        "resolution": "The interface states automatic local browser storage; unavailable menu restoration guidance removed."
+      }
+    ]
+  },
+  "limitations": [
+    "jsdom is not a rendered browser.",
+    "No physical gamepad, responsive geometry, visual contrast, reduced-motion rendering or real multi-tab concurrency validated here.",
+    "No combat tag, duo super, external subscription or global catalogue validation claimed."
+  ],
+  "documentaryVerification": {
+    "sourceCopies": [
+      {
+        "path": "docs/cqc-bible/sources/Combat_Games_Extension_02_Slots_Verrouilles_Deblocages_Abonnes_v1.0.txt",
+        "bytes": 47334,
+        "sha256": "08b57ea542e83c487fef3276997a612d4657f2ee9ed4f8e46b0bf65a2778038b",
+        "exactOriginalCopy": true,
+        "preexistingAtBaseline": false
+      },
+      {
+        "path": "docs/cqc-bible/sources/Combat_Games_Extension_01_Tag_Taunts_Bonus_v1.0.txt",
+        "bytes": 60589,
+        "sha256": "330fb7485a7a52b2a20f855646c940aaac0fcd9510032bc84b2e17c518edd25f",
+        "exactOriginalCopy": true,
+        "preexistingAtBaseline": false
+      },
+      {
+        "path": "docs/cqc-bible/sources/Combat_Games_Guide_General_v1.0.txt",
+        "bytes": 55172,
+        "sha256": "4844584616072ac0d52d37c2fab4365e1ec489240f17a721ee216e223b0355b7",
+        "exactOriginalCopy": true,
+        "preexistingAtBaseline": true
+      }
+    ],
+    "sections": 38,
+    "requirements": 114,
+    "uniqueRequirementIds": 114,
+    "historicalRequirementsPreserved": 90,
+    "totalDocumentedRequirements": 204,
+    "uniqueExistingPathsChecked": 38,
+    "resolvedMarkdownLinksChecked": 173,
+    "newMarkdownLinksAllResolved": true,
+    "historicalUnmaterializedLinks": [
+      {
+        "document": "docs/cqc-bible/README.md",
+        "target": "../audit-cqc-2026-10-23/README.md",
+        "preexistingLink": true,
+        "targetExistsAtBaseline": true,
+        "localTargetMaterialized": false
+      },
+      {
+        "document": "docs/cqc-bible/README.md",
+        "target": "../cqc-reprise/local-recovery-20261126/README.md",
+        "preexistingLink": true,
+        "targetExistsAtBaseline": true,
+        "localTargetMaterialized": false
+      }
+    ],
+    "verifiedRosterUids": [
+      "core__snake",
+      "core__boss",
+      "core__solid",
+      "core__ocelot_mgs1",
+      "core__raiden_mgs2",
+      "core__raiden",
+      "core__wolf",
+      "core__venom",
+      "core__quiet",
+      "core__sam",
+      "core__blade_wolf",
+      "core__snake_acid",
+      "core__teliko",
+      "core__snake_acid2",
+      "core__venus",
+      "archive__captain",
+      "archive__reeve",
+      "core__monsoon",
+      "core__mistral",
+      "core__sundowner"
+    ],
+    "legacyFilesByteUnchanged": [
+      "docs/cqc-bible/asset-associations-p63.json",
+      "docs/cqc-bible/asset-associations-p64.json",
+      "docs/cqc-bible/asset-associations-p65.json",
+      "docs/cqc-bible/asset-associations-p66.json",
+      "docs/cqc-bible/asset-associations-p67.json",
+      "docs/cqc-bible/asset-associations-p68.json",
+      "docs/cqc-bible/asset-associations-p69.json",
+      "docs/cqc-bible/asset-associations.json",
+      "docs/cqc-bible/combat-pilots.json",
+      "docs/cqc-bible/guide-map.json",
+      "docs/cqc-bible/narrative-registry.json",
+      "docs/cqc-bible/requirements-source.json",
+      "docs/cqc-bible/roster-coverage.json",
+      "docs/cqc-bible/runtime-evidence.json",
+      "docs/cqc-bible/sources-narrative.json",
+      "docs/cqc-bible/sources/Combat_Games_Guide_General_v1.0.txt"
+    ],
+    "historicalExigencesBytePrefixPreserved": true,
+    "counts": {
+      "sections": 38,
+      "requirements": 114,
+      "decisions": {
+        "retenue": 87,
+        "adaptee": 24,
+        "differee": 3
+      },
+      "implementationStatuses": {
+        "documented": 40,
+        "specification_only": 41,
+        "partial_inherited_code": 4,
+        "implemented_p71_local_scope": 20,
+        "deferred_dependency": 9
+      },
+      "verifiedExistingUids": 20,
+      "newDocumentedTauntProfiles": 8,
+      "newDocumentedPriorityPairs": 5,
+      "newDocumentedBonusProfiles": 6,
+      "localRewardDossiers": 3
+    }
+  },
+  "runtimeReportVerified": {
+    "report": "docs/cqc-reprise/pass71/access-runtime-qa.json",
+    "logicTests": {
+      "executed": 20,
+      "passed": 20,
+      "failed": 0
+    },
+    "domTests": {
+      "engine": "jsdom 29.1.1",
+      "executed": 10,
+      "passed": 10,
+      "failed": 0,
+      "visual_rendering": false
+    },
+    "browserTests": {
+      "executed": 0,
+      "status": "blocked",
+      "proof": "access-browser-attempt.json"
+    },
+    "files": [
+      {
+        "path": "public/cqc/modules/classified-archives-p71.html",
+        "sha256": "cf7728e2bdb66848ecc9a5e8696aed4980d25a0e90815a107bd61a8150b0f910",
+        "matchesExecutedReport": true
+      },
+      {
+        "path": "public/cqc/src/cqc-p71-access.js",
+        "sha256": "471a437a6c6ae9851fafd1943b8be4e5395e382fce171e4f3a1a48d837db662b",
+        "matchesExecutedReport": true
+      },
+      {
+        "path": "public/cqc/src/cqc-p71-archives.js",
+        "sha256": "c0dd45574cac7b0e1b4e26a9efaf8fdf16cbdfeceb66701f715ac9d11ba7dc7b",
+        "matchesExecutedReport": true
+      },
+      {
+        "path": "public/cqc/src/cqc-p71-archives.css",
+        "sha256": "0fc15a1f3711064bf83576d6f45537a3a18d8178bfdce1d494ccaa1f015dfcd0",
+        "matchesExecutedReport": true
+      },
+      {
+        "path": "public/cqc/data/cqc-p71-access-dossiers.json",
+        "sha256": "1ae5d34aab75bdebe7c27093e650dbf312a48db4a1368b21c83719020796a445",
+        "matchesExecutedReport": true
+      },
+      {
+        "path": "scripts/test-cqc-p71-access.mjs",
+        "sha256": "ac7ada10cd4cb130217295d5952ecf17431c5ed45a954442a9796a1fa673b981",
+        "matchesExecutedReport": true
+      },
+      {
+        "path": "scripts/test-cqc-p71-archives-dom.mjs",
+        "sha256": "97f44aada66014c5f30b9f3d44ceba29259264de21d33e33c743e99cfb41a495",
+        "matchesExecutedReport": true
+      },
+      {
+        "path": "scripts/test-cqc-p71-archives-browser.mjs",
+        "sha256": "ef8f15add7de06452f9b07bb0712b88ef7f14b8ed914e11bc97c80a075b247e2",
+        "matchesExecutedReport": true
+      }
+    ]
+  },
+  "documentationFiles": [
+    {
+      "path": "docs/cqc-bible/README.md",
+      "bytes": 30519,
+      "sha256": "b319958aa6c75c11f2eab14e6c03a819e79e36cfe794bf388e0dbd6a39e34d90"
+    },
+    {
+      "path": "docs/cqc-bible/EXIGENCES.md",
+      "bytes": 24375,
+      "sha256": "938df71c5bc3da1b356e804fd1b5ab710f427e7354489bfd30391dade5990d79"
+    },
+    {
+      "path": "docs/cqc-bible/EXTENSIONS_GUIDE_P71.md",
+      "bytes": 52378,
+      "sha256": "ebf3cbecfbb657b8ac78f2c27ff6f0c838142f8e9d60661d49b6cb0c1a76ce83"
+    },
+    {
+      "path": "docs/cqc-bible/extension-guide-map-p71.json",
+      "bytes": 144922,
+      "sha256": "57259d8097f410d53ff4307abf93e81d36ecc999a53544559328b5175cce2b45"
+    },
+    {
+      "path": "docs/cqc-bible/sources/provenance-p71.json",
+      "bytes": 3680,
+      "sha256": "1e2f721915545d86b20cd12c24d214d9f48b4f70791cac838e70e3c5349b51d5"
+    }
+  ]
+}

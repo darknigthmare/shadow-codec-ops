@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#071311">
+  <title>CQC — Archives classifiées</title>
+  <link rel="stylesheet" href="../src/cqc-p71-archives.css">
+  <script defer src="../src/cqc-p71-access.js"></script>
+  <script defer src="../src/cqc-p71-archives.js"></script>
+</head>
+<body>
+  <main id="classified-archives">
+    <header>
+      <div class="topline">
+        <a class="wordmark" href="../index.html" aria-label="Retour au commandement CQC">CQC <span>ARCHIVES</span></a>
+        <nav aria-label="Navigation des archives"><a href="atelier-v056.html">Atelier</a><a href="source-atlas-v063.html">Atlas des opérations</a><a href="../index.html">Commandement ↗</a></nav>
+      </div>
+      <p class="eyebrow">Centre de documentation / Progression locale</p>
+      <h1>Archives <em>classifiées.</em></h1>
+      <p class="intro">Tes opérations ouvrent de nouveaux dossiers. Consulte les conditions, récupère les rapports obtenus et conserve leur accès.</p>
+      <div class="toolbar">
+        <p id="archives-count" role="status">Lecture de ta progression…</p>
+        <label class="secret-setting"><input id="archives-hide-secrets" type="checkbox" checked> Masquer les noms non découverts</label>
+        <button id="archives-refresh" type="button">Actualiser la progression</button>
+      </div>
+      <p class="notice" id="archives-warning" hidden></p>
+    </header>
+    <div class="workspace">
+      <section aria-labelledby="archives-list-title">
+        <h2 class="section-label" id="archives-list-title">Dossiers de simulation</h2>
+        <div id="archives-grid" class="dossier-list"></div>
+      </section>
+      <section id="archives-detail" class="detail" aria-label="Détails du dossier sélectionné"></section>
+    </div>
+    <p id="archives-status" class="feedback" role="status" aria-live="polite"></p>
+    <footer>
+      <p>Ces trois rapports sont des créations originales de CQC. Ils s’obtiennent par les Chroniques, la Survie et les relais locaux.</p>
+      <p>Ils restent acquis dans ce profil après récupération. Les acquisitions sont sauvegardées automatiquement dans ce navigateur. Le masquage des noms s’applique à cette galerie.</p>
+    </footer>
+    <noscript><p class="notice">Activer JavaScript pour lire les conditions et consulter les dossiers.</p></noscript>
+  </main>
+  <dialog id="archives-reader" aria-labelledby="reader-title">
+    <p class="eyebrow" id="reader-origin"></p>
+    <h2 id="reader-title"></h2>
+    <div id="reader-body"></div>
+    <form method="dialog"><button class="primary">Fermer le dossier</button></form>
+  </dialog>
+</body>
+</html>

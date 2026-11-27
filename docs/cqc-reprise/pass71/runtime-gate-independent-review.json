@@ -1,0 +1,89 @@
+{
+  "schema": "cqc.p71.runtime-gate-independent-review/1",
+  "date": "2026-11-27",
+  "reviewer": "runtime_extensions",
+  "script": {
+    "path": "scripts/extend-cqc-p71-runtime.mjs",
+    "bytes": 7339,
+    "sha256": "56f1a601ac24d8e09889757218eaedf0ebd06f7e2a8f9b6af5d1da12ffc5b2df",
+    "syntax": "passed",
+    "import": "passed"
+  },
+  "referenceScanner": {
+    "path": "scripts/sync-cqc-runtime.mjs",
+    "sha256": "71d0e2ee8dae48902e8751c82f3837cc206b174b988eef7d2192a46e21ed2bf9"
+  },
+  "baseline": {
+    "commit": "f2b7c526a3a6a763767afcd8ae91f60bc7012d7c",
+    "path": "public/cqc/runtime-manifest.json",
+    "jsonDigest": "1a3b0c2f19c46ee190ce79554e3e07cd3123fc157b53ba2d9f1f90edff5612b3",
+    "digestMethod": "sha256(JSON.stringify(parsed manifest))",
+    "source": "git show of the pinned commit",
+    "unchangedAfterReview": true
+  },
+  "fixture": {
+    "kind": "in-memory proposal only",
+    "passed": true,
+    "allowedChangedPaths": 13,
+    "baselineFiles": 3103,
+    "unchangedHistoricalRows": 3100,
+    "addedFiles": 10,
+    "files": 3113,
+    "preservedReferences": 5039,
+    "addedReferences": 16,
+    "references": 5055,
+    "reachableFiles": 3113,
+    "omittedReferences": 740,
+    "externalRoutes": 499,
+    "externalPolicyIdentical": true,
+    "externalPolicyJsonSha256": "e9db83c672685a37e66a07dc53637bf6d8b0c05877e01ed420c8853f0438e4ef",
+    "construction": "Baseline rows and references retained; the 13 permitted files were read and hashed, and their static references scanned. Five required Atlas image edges were added only to the in-memory proposal because the real catalog update was still pending."
+  },
+  "rejectedMutations": [
+    {
+      "case": "historical file fingerprint changed",
+      "rejected": true
+    },
+    {
+      "case": "unexpected additional file outside the 13-path scope",
+      "rejected": true
+    },
+    {
+      "case": "historical reference removed",
+      "rejected": true
+    },
+    {
+      "case": "external policy route changed",
+      "rejected": true
+    },
+    {
+      "case": "new reference from an unreviewed historical owner",
+      "rejected": true
+    },
+    {
+      "case": "required Atlas image reference missing",
+      "rejected": true
+    },
+    {
+      "case": "required Atelier navigation reference missing",
+      "rejected": true
+    },
+    {
+      "case": "unpinned baseline supplied",
+      "rejected": true
+    }
+  ],
+  "realGenerationAtReview": {
+    "status": "blocked-as-expected",
+    "reason": "PNG is not linked by the Atlas: assets/p71/mgr-monsoon-head-module.png",
+    "catalogState": "P71 references not yet present when read; catalog integration in progress",
+    "manifestWritten": false
+  },
+  "conclusion": "No concrete defect identified within the intended finite extension scope. Builder reference scanning and verifier constraints preserve historical references, limit changed owners and local endpoints, and retain the full external policy.",
+  "limitations": [
+    "The successful fixture is not validation of the final real Atlas catalog. Root must rerun generation after catalog integration.",
+    "Historical binary resources were not reread or downloaded; unchanged manifest rows were compared against the pinned P69 baseline.",
+    "This report records the completed review; no additional tests were run while saving it."
+  ],
+  "writesDuringReview": false
+}

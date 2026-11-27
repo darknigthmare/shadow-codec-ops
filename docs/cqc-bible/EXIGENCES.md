@@ -305,3 +305,29 @@ Document CQC : [README.md](README.md).
 | `CQC-G29-01` — Séparer inspirations et règles | P0 / retenue | Les jeux du guide inspirent des choix ; leurs fonctionnalités ne sont pas attribuées automatiquement à CQC. |
 | `CQC-G29-02` — Utiliser des sources identifiables | P0 / retenue | Les faits techniques citent le code épinglé ; les faits de lore citent les références de l’incarnation. |
 | `CQC-G29-03` — Garder un vocabulaire commun | P0 / retenue | Roster, moveset, hitbox, hurtbox, rollback et placeholder sont employés avec les sens du guide. |
+
+
+<!-- BEGIN:P71-GUIDES -->
+## Extension additive P71 — sections 30 à 67
+
+La matrice historique ci-dessus conserve ses **90 exigences** et sa date d’audit. La demande du 27 novembre 2026 est appliquée dans [EXTENSIONS_GUIDE_P71.md](EXTENSIONS_GUIDE_P71.md) et [extension-guide-map-p71.json](extension-guide-map-p71.json), qui ajoutent **114 exigences identifiées `CQC-E30-01` à `CQC-E67-03`** pour les 38 nouvelles rubriques. L’ensemble documentaire couvre ainsi les 68 rubriques des trois guides, avec 204 exigences suivies dans deux registres de périmètres distincts ; ce nombre n’est pas une mesure de fonctionnalités terminées.
+
+| Source / rubriques | Application CQC | Portée de la livraison P71 |
+|---|---|---|
+| Extension 01 / 30–32 | Taunts, survol, confirmation, attente, désélection complète/abrégée | Fiches de conception ; le buff de taunt hérité reste distingué d’une nouvelle animation. |
+| Extension 01 / 33–38 | Profils d’équipe, assistance, vrai tag, jauges, super duo, neutralisations collectives | Conception détaillée ; le relais successif existant ne prouve pas un tag temps réel. |
+| Extension 01 / 39–41 | Clashes/QTE, entités, objets placés, projectiles persistants | Contrats et backlog ; pièges/projectiles hérités qualifiés séparément. |
+| Extension 01 / 42–44 | Bonus, espace de déblocage, relations et continuités | Six bonus et cinq paires documentés ; une page de dossiers locale ne constitue pas une base explorable. |
+| Extension 01 / 45–49 | Assets, accès, réseau, tests et fiches | Inventaires et critères bornés ; animation et réseau conservent leurs dépendances. |
+| Extension 02 / 50–58 | Découverte/droit/technique/compatibilité, verrous, ET/OU, récompenses | Tranche de trois dossiers originaux locaux ; pas de nouveau verrou sur les contenus historiques. |
+| Extension 02 / 59–62 | Soutiens, temporaire/permanent, expiration, réseau/replays | Conception ; backend, fournisseur et vérifications externes différés. |
+| Extension 02 / 63–67 | Textes, secret, focus, sauvegardes, fiches et sources | Tranche locale et matrice de validation ; statut exact selon les tests effectivement exécutés. |
+
+La décision historique `CQC-G12-03` ne doit plus être lue comme une absence de conception des extensions : P71 les **retient et les adapte dans la bible**, puis distingue l’implémentation de chaque composant. `CQC-G18-01` conserve la séparation entre phase de sources fixes et animations complètes. `CQC-G23-02` reste applicable aux services réseau non réalisés.
+
+Chaque nouvelle exigence possède décision, priorité, critère observable, chemins existants, scope et scénario de validation. Les statuts restent séparés : documentation, spécification seule, mécanique héritée partielle, tranche locale P71 et dépendance différée. Les tests de droits ne certifient pas les nouveaux combats, les sprites ou les services de soutien.
+
+Le [rapport runtime P71](../cqc-reprise/pass71/ACCESS_RUNTIME_QA.md) compte **20 tests de logique et de liaison et 10 parcours DOM réussis**. Les scénarios Chromium restent **non exécutés**, avec [preuve de blocage](../cqc-reprise/pass71/access-browser-attempt.json). La [vérification documentaire](guide-integration-verification-p71.json) contrôle les originaux, les rubriques, les identifiants, les chemins et la conservation des registres historiques. Ces preuves ne couvrent que leur périmètre indiqué.
+
+Les trois originaux et leurs empreintes sont dans [la provenance P71](sources/provenance-p71.json). Le guide général n’a pas été remplacé. Les références et les 24 groupes de scénarios d’acceptation sont décrits dans l’annexe, sans effacer les critères précédents.
+<!-- END:P71-GUIDES -->
